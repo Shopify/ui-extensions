@@ -10,3 +10,23 @@ packages/*/*.js
 packages/*/bin
 !packages/*/.eslintrc.js
 *.log
+
+#TS output
+packages/**/dist
+dist
+
+# Debug log from npm
+npm-debug.log
+**/npm-debug.log
+
+# Debug log from lerna
+lerna-debug.log
+
+# Debug logs from yarn
+**/yarn-error.log
+
+# IntelliJ IDE ignore
+.idea
+
+tmp
+**/test.log
