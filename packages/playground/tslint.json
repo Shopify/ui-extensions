@@ -1,0 +1,12 @@
+{
+  "extends": "tslint:recommended",
+  "rules": {
+    "interface-name": { "severity": "off" },
+    "max-classes-per-file": { "severity": "off" },
+    "object-literal-sort-keys": { "severity": "off" },
+    "lines-between-class-members": { "severity": "warning"}
+  },
+  "rulesDirectory": [
+    "node_modules/tslint-lines-between-class-members"
+  ]
+}
