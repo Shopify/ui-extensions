@@ -1,4 +1,5 @@
 import {ActionList, Button, Card, Form, Popover} from "@shopify/polaris";
+import {Renderer, useDataSource, Components} from "@shopify/scarlet-renderer";
 import { navigate, useTitle } from "hookrouter";
 import {highlight, languages} from "prismjs";
 import "prismjs/components/prism-json";
@@ -8,7 +9,6 @@ import ReactCSS from "react-cssobj";
 import {Col, Grid, Row} from "react-flexbox-grid";
 import Editor from "react-simple-code-editor";
 import PrismTheme from "../lib/prism-style";
-import {Renderer, useDataSource, Components} from "scarlet-web";
 import Snippets, {Snippet} from "./lisp-snippets";
 
 const {mapClass} = ReactCSS(PrismTheme, {local: false});

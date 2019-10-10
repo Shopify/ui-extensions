@@ -1,6 +1,6 @@
 {
-  "name": "lisp-react",
-  "version": "0.1.0",
+  "name": "@shopify/app-extensions-playground",
+  "version": "0.0.0",
   "private": true,
   "dependencies": {
     "@babel/core": "7.2.2",
@@ -8,6 +8,7 @@
     "@babel/preset-typescript": "^7.3.3",
     "@shopify/polaris": "^3.12.0",
     "@shopify/react-testing": "^1.6.0",
+    "@shopify/scarlet-renderer": "0.0.0",
     "@svgr/webpack": "4.1.0",
     "@types/chart.js": "^2.7.53",
     "@types/hookrouter": "^2.2.1",

@@ -1,6 +1,6 @@
 {
-  "name": "scarlet-web",
-  "version": "1.0.0",
+  "name": "@shopify/scarlet-renderer",
+  "version": "0.0.0",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
@@ -16,5 +16,10 @@
     "webpack": "^4.41.0",
     "webpack-cli": "^3.3.9",
     "webpack-dev-server": "^3.8.1"
+  },
+  "private": true,
+  "publishConfig": {		
+    "access": "restricted",		
+    "@shopify:registry": "https://packages.shopify.io/shopify/node/npm/"		
   }
 }

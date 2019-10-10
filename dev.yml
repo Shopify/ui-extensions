@@ -1,0 +1,24 @@
+name: app-extension-libs
+
+type: node
+
+up:
+  # - git_hooks:
+      # commit-msg: ./scripts/commitlint.sh
+      # pre-commit: ./scripts/prettier.sh
+  - railgun
+  - node:
+      version: v12.11.1
+      yarn: true
+      packages:
+        - .
+
+commands:
+  console: node
+  server: pushd ./packages/app-extensions-playground; yarn start; popd
+  build: yarn run build
+  nuke: yarn run clean && rm -rf ./node_modules
+  test: yarn run test
+
+open:
+  app: https://app-extension-libs.myshopify.io
