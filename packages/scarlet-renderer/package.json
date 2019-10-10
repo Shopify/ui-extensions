@@ -4,11 +4,8 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "yarn build:tsc",
-    "build:tsc": "NODE_ENV=production tsc"
-  },
-  "publishConfig": {
-    "directory": "dist"
+    "build:tsc": "NODE_ENV=production tsc",
+    "prepublish": "yarn build:tsc"
   },
   "dependencies": {
     "@shopify/polaris": "^4.3.0",
