@@ -1,10 +1,14 @@
 {
   "name": "scarlet-web",
   "version": "1.0.0",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "yarn build:tsc",
+    "build:tsc": "NODE_ENV=production tsc"
+  },
+  "publishConfig": {
+    "directory": "dist"
   },
   "dependencies": {
     "@shopify/polaris": "^4.3.0",

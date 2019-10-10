@@ -7,10 +7,8 @@ import React, {useEffect, useState} from "react";
 import ReactCSS from "react-cssobj";
 import {Col, Grid, Row} from "react-flexbox-grid";
 import Editor from "react-simple-code-editor";
-import * as Components from "../components";
 import PrismTheme from "../lib/prism-style";
-import {Renderer} from "../scarlet";
-import useDataSource from "../scarlet/useDataSource";
+import {Renderer, useDataSource, Components} from "scarlet-web";
 import Snippets, {Snippet} from "./lisp-snippets";
 
 const {mapClass} = ReactCSS(PrismTheme, {local: false});
