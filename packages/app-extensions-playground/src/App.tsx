@@ -24,7 +24,7 @@ function App() {
   const page = useRoutes(routes);
 
   return (
-    <AppProvider>
+    <AppProvider i18n={{}}>
       <Page fullWidth title="Render &amp; Execution Environment">
         <div style={{marginTop: "16px"}}>
           {page}

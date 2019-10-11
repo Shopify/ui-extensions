@@ -1,4 +1,4 @@
-import { FormLayout } from "@shopify/polaris";
+import { AppProvider, FormLayout } from "@shopify/polaris";
 import React from "react";
 import { Context, interpret, parse } from "./littlelisp";
 import buildStdlib from "./stdlib";
@@ -21,7 +21,13 @@ export function Renderer({code, dataSource, components, onWorkerAction}: Rendere
   };
 
   const result = interpret(typeof code == 'string' ? parse(code) : code, new Context(library));
-  if (result) { return <FormLayout>{result}</FormLayout>; }
+  if (result) {
+    return (
+      <AppProvider i18n={{}}>
+        <FormLayout>{result}</FormLayout>
+      </AppProvider>
+    );
+  }
   return null;
 }
 

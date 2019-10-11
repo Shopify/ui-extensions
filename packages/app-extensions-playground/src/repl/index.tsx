@@ -9,7 +9,7 @@ import ReactCSS from "react-cssobj";
 import {Col, Grid, Row} from "react-flexbox-grid";
 import Editor from "react-simple-code-editor";
 import PrismTheme from "../lib/prism-style";
-import Snippets, {Snippet} from "./lisp-snippets";
+import Snippets from "./lisp-snippets";
 
 const {mapClass} = ReactCSS(PrismTheme, {local: false});
 const {mapClass: mapClassEditor} = ReactCSS({
@@ -129,6 +129,7 @@ export default function Repl({snippetId}: ReplProps) {
 
         <Col last="md" md={4}>
           <Renderer
+            onWorkerAction={() => {}}
             code={evaluatedCode}
             components={Components}
             dataSource={dataSource}
