@@ -12,6 +12,10 @@ echo "----------------------------"
 pushd ./packages/scarlet-renderer
 yarn build
 popd
+
+pushd ./packages/scarlet-polaris-components
+yarn build
+popd
 # TODO: make this apply to all relevant packages
 
 echo "----------------------------"

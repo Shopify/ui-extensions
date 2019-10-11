@@ -11,7 +11,6 @@ import Textfield from "./textfield";
 
 const StackItem = Polaris.Stack.Item;
 
-
 const components = {
   Button,
   // Chart,
