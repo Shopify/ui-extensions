@@ -1,5 +1,5 @@
+import React, {useState} from "react";
 import { Checkbox as PolarisCheckbox } from "@shopify/polaris";
-import React from "react";
 
 interface CheckboxProps {
   label: string;
@@ -9,12 +9,15 @@ interface CheckboxProps {
 }
 
 export default function Checkbox({label, onChange = () => {}, value}: CheckboxProps) {
+  const [checked, setChecked] = useState(value)
+
   return <div>
     <PolarisCheckbox
-      checked={value}
+      checked={checked}
       label={label}
-      onChange={(value) => {
-        onChange(value);
+      onChange={(newValue) => {
+        setChecked(newValue);
+        onChange(newValue);
       }}
     />
   </div>;

@@ -4,8 +4,8 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "build:tsc": "NODE_ENV=production tsc",
-    "prepublish": "yarn build:tsc"
+    "dev": "yarn tsc --watch",
+    "build": "tsc"
   },
   "dependencies": {
     "@shopify/polaris": "^4.3.0",
@@ -18,8 +18,8 @@
     "webpack-dev-server": "^3.8.1"
   },
   "private": true,
-  "publishConfig": {		
-    "access": "restricted",		
-    "@shopify:registry": "https://packages.shopify.io/shopify/node/npm/"		
+  "publishConfig": {
+    "access": "restricted",
+    "@shopify:registry": "https://packages.shopify.io/shopify/node/npm/"
   }
 }

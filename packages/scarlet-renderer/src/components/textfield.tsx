@@ -13,18 +13,20 @@ interface TextfieldProps {
 
 export default function Textfield({helpText, label, multiline, value, onChange = () => {}, onValidate, disabled = false}: TextfieldProps) {
   const [error, setError] = useState("");
+  const [textValue, setTextValue] = useState("");
 
   return <PolarisTextField
     helpText={helpText}
     label={label}
     multiline={multiline}
-    value={value}
+    value={textValue}
     error={error}
     disabled={disabled}
     onChange={(newValue) => {
       if (onValidate) {
         onValidate(newValue).then((valid) => valid ? setError("") : setError("Invalid input"))
       }
+      setTextValue(newValue);
       onChange(newValue);
     }}
   />;

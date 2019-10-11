@@ -14,6 +14,7 @@ up:
         - .
 
 commands:
+  boot: yarn run bootstrap
   console: node
   server: pushd ./packages/app-extensions-playground; yarn start; popd
   build: yarn run build
