@@ -1,9 +1,9 @@
 # https://development.shopify.io/tools/dev/railgun/Railgun-Config
-name: app-extension-libs 
+name: app-extension-libs
 
 vm:
   image: /opt/dev/misc/railgun-images/default
-  ip_address: 192.168.64.218
+  ip_address: 192.168.64.281
   memory: 2G
   cores: 2
 
