@@ -3,7 +3,7 @@ name: app-extension-libs
 
 vm:
   image: /opt/dev/misc/railgun-images/default
-  ip_address: 192.168.64.281
+  ip_address: 192.168.64.28
   memory: 2G
   cores: 2
 
