@@ -1,23 +1,22 @@
 import React, {useState} from "react";
-import { Checkbox as PolarisCheckbox } from "@shopify/polaris";
+import { Checkbox as PolarisCheckbox, CheckboxProps } from "@shopify/polaris";
 
-interface CheckboxProps {
-  label: string;
-  checked: boolean;
-  onChange: (value: boolean) => void;
-  value?: boolean;
+type ScarletCheckboxProps = {
+  value: boolean;
 }
 
-export default function Checkbox({label, onChange = () => {}, value}: CheckboxProps) {
-  const [checked, setChecked] = useState(value)
+type CombinedProps = ScarletCheckboxProps & CheckboxProps;
+
+export default function Checkbox({label, onChange = () => {}, value}: CombinedProps) {
+  const [checked, setChecked] = useState(Boolean(value))
 
   return <div>
     <PolarisCheckbox
       checked={checked}
       label={label}
-      onChange={(newValue) => {
+      onChange={(newValue, id) => {
         setChecked(newValue);
-        onChange(newValue);
+        onChange(newValue, id);
       }}
     />
   </div>;

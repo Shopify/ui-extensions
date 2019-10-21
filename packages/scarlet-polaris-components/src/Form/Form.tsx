@@ -1,11 +1,7 @@
-import { FormLayout } from "@shopify/polaris";
+import { FormLayout, FormLayoutProps } from "@shopify/polaris";
 import React from "react";
 
-interface FormGroupProps {
-  children: any;
-}
-
-export default function FormGroup({ children }: FormGroupProps) {
+export default function FormGroup({ children }: FormLayoutProps) {
   return <FormLayout>
     <FormLayout.Group>
       {children}

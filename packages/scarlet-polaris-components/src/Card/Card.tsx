@@ -1,12 +1,13 @@
-import { Card as PolarisCard, FormLayout } from "@shopify/polaris";
+import { Card as PolarisCard, CardProps, FormLayout } from "@shopify/polaris";
 import React from "react";
 
-interface CardProps {
+type ScarletCardProps = {
   label: string;
-  children: any;
 }
 
-export default function Card({label, children}: CardProps) {
+type CombindeProps = ScarletCardProps & CardProps;
+
+export default function Card({label, children}: CombindeProps) {
   return <PolarisCard title={label}>
     <PolarisCard.Section>
       <FormLayout>

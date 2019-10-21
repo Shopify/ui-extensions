@@ -1,33 +1,26 @@
-import { TextField as PolarisTextField } from "@shopify/polaris";
 import React, { useState } from "react";
+import { TextField as PolarisTextField, TextFieldProps } from "@shopify/polaris";
 
-interface TextfieldProps {
-  helpText?: string;
-  label: string;
-  multiline?: boolean;
-  value: string;
-  onChange: (value: string) => void;
+type ScarletTextfieldProps = {
   onValidate?: (value: string) => Promise<boolean>;
-  disabled: boolean;
 }
 
-export default function Textfield({helpText, label, multiline, value, onChange = () => {}, onValidate, disabled = false}: TextfieldProps) {
+type CombinedProps = ScarletTextfieldProps & TextFieldProps
+
+export default function Textfield({value, onChange = () => {}, onValidate, ...props}: CombinedProps) {
   const [error, setError] = useState("");
-  const [textValue, setTextValue] = useState("");
+  const [textValue, setTextValue] = useState(value);
 
   return <PolarisTextField
-    helpText={helpText}
-    label={label}
-    multiline={multiline}
+    {...props}
     value={textValue}
     error={error}
-    disabled={disabled}
-    onChange={(newValue) => {
+    onChange={(newValue, id) => {
       if (onValidate) {
         onValidate(newValue).then((valid) => valid ? setError("") : setError("Invalid input"))
       }
       setTextValue(newValue);
-      onChange(newValue);
+      onChange(newValue, id);
     }}
   />;
 }

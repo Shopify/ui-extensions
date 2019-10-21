@@ -1,7 +1,13 @@
-import { Button as PolarisButton } from "@shopify/polaris";
+import { Button as PolarisButton, ButtonProps } from "@shopify/polaris";
 import React from "react";
 
-export default function Button({onClick, label, plain = false, ...args}: any) {
+type ScarletButton = {
+  label: string;
+}
+
+type CombinedProps = ButtonProps & ScarletButton;
+
+export default function Button({label, ...args}: CombinedProps) {
   // @ts-ignore
-  return <PolarisButton onClick={onClick} plain={plain} {...args}>{label}</PolarisButton>;
+  return <PolarisButton {...args}>{label}</PolarisButton>;
 }

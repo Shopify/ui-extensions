@@ -1,21 +1,16 @@
-import { Select as PolarisSelect } from "@shopify/polaris";
-import React from "react";
+import React, {useState} from "react";
+import { Select as PolarisSelect, SelectProps } from "@shopify/polaris";
 
-interface SelectProps {
-  label: string;
-  value: string;
-  options: [{
-    label: string,
-    value: string,
-  }];
-  onChange: (value: string) => void;
-}
+export default function Select({onChange, value, ...props}: SelectProps) {
+  const [selected, setSelected] = useState(value);
 
-export default function Select({label, onChange, value, options}: SelectProps) {
   return <PolarisSelect
-    label={label}
-    options={options}
-    value={value}
-    onChange={(value) => onChange(value)}
+    {...props}
+    value={selected}
+    onChange={(value, id) => {
+      setSelected(value)
+      // @ts-ignore
+      onChange(value, id)
+    }}
   />;
 }
