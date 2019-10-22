@@ -39,7 +39,7 @@ describe(List, () => {
     expect(dynamicList.evaluate(runtimeContext)).toEqual([1, 2]);
   });
 
-  it('can be used for function invocation ', () => {
+  it('can be used for function invocation', () => {
     const runtimeContext = {"+": (...args: number[]) => args.reduce((a, b) => a + b)};
     const expression = new List([
       new Identifier("+"),
@@ -47,5 +47,20 @@ describe(List, () => {
       new Literal(1),
     ]);
     expect(expression.evaluate(runtimeContext)).toEqual(2);
+  });
+
+  it('supports nested expressions', () => {
+    const runtimeContext = {"+": (...args: number[]) => args.reduce((a, b) => a + b)};
+    const expression = new List([
+      new Identifier("+"),
+      new Literal(1),
+      new Literal(1),
+      new List([
+        new Identifier("+"),
+        new Literal(1),
+        new Literal(1),
+      ])
+    ]);
+    expect(expression.evaluate(runtimeContext)).toEqual(4);
   });
 });
