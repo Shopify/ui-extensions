@@ -5,6 +5,10 @@ describe(Identifier, () => {
     const runtimeContext = {"test": 1};
     expect(new Identifier("test").evaluate(runtimeContext)).toEqual(1);
   });
+
+  it('can be represented as a Lisp expression', () => {
+    expect(new Identifier("test").toString()).toEqual("test");
+  })
 })
 
 describe(Literal, () => {
@@ -18,6 +22,10 @@ describe(Literal, () => {
 
   it('can evaluate to a number', () => {
     expect(new Literal(1).evaluate({})).toEqual(1);
+  });
+
+  it('can be represented as a Lisp expression', () => {
+    expect(new Literal(1).toString()).toEqual("1");
   });
 });
 
@@ -62,5 +70,19 @@ describe(List, () => {
       ])
     ]);
     expect(expression.evaluate(runtimeContext)).toEqual(4);
+  });
+
+  it('can be represented as a Lisp expression', () => {
+    const expression = new List([
+      new Identifier("+"),
+      new Literal(1),
+      new Literal(1),
+      new List([
+        new Identifier("+"),
+        new Literal(1),
+        new Literal(1),
+      ])
+    ]);
+    expect(expression.toString()).toEqual(("(+ 1 1 (+ 1 1))"));
   });
 });

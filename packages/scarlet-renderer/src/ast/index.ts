@@ -11,11 +11,19 @@ export class Identifier extends Node<string> {
   evaluate(context: RuntimeContext) {
     return context[this.value];
   }
+
+  toString() {
+    return this.value;
+  }
 }
 
 export class Literal extends Node<string | number | boolean> {
   evaluate(_context: RuntimeContext) {
     return this.value;
+  }
+
+  toString() {
+    return this.value.toString();
   }
 }
 
@@ -27,5 +35,9 @@ export class List extends Node<Array<Identifier | Literal | List>> {
     } else {
       return [first, ...rest];
     }
+  }
+
+  toString() {
+    return `(${this.value.map((v) => v.toString()).join(" ")})`
   }
 }
