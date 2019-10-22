@@ -5,8 +5,9 @@ import org.json.JSONObject
 
 class ASTProcessor {
 
-    fun evaluate(json: String): Any? = JSONArray(json).toNode().evaluate(Context())
-
+    companion object {
+        fun evaluate(json: String): Any? = JSONArray(json).toNode().evaluate(Context())
+    }
 }
 
 fun JSONObject.toNode(): Node? {
