@@ -1,3 +1,5 @@
+export { default as parseLisp } from './parseLisp';
+
 interface RuntimeContext {
   [key: string]: any;
 }
