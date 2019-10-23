@@ -8,7 +8,7 @@ class List(value: kotlin.collections.List<Node>) : Node(value) {
             val args = elements.subList(1, elements.size)
             return factory.build(context, args)
         }
-        return null
+        return elements.map { it.evaluate(context) }
     }
 
 }

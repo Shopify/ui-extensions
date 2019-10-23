@@ -6,6 +6,7 @@ class Context {
         return when (value) {
             "#" -> PropertiesFactory()
             "label" -> LabelFactory()
+            "button" -> ButtonFactory()
             else -> null
         }
     }
