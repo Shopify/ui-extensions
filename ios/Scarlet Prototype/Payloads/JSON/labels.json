@@ -1,0 +1,17 @@
+[
+    {
+        "type": "label",
+        "properties": {
+            "label": "Static",
+        }
+    },
+    {
+        "type": "label",
+        "properties": {
+            "label": {
+                "type": "get",
+                "key": "dynamic_label"
+            }
+        }
+    }
+]

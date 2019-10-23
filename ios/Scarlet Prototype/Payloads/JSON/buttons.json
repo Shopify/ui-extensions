@@ -1,0 +1,52 @@
+[
+    {
+        "type": "button",
+        "properties": {
+            "label": "Alert",
+            "onClick": {
+                "type": "lambda",
+                "arg": "",
+                "action": {
+                    "type": "alert",
+                    "properties": {
+                        "message": "HELLO WORLD IT'S ME SCARLET"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "type": "button",
+        "properties": {
+            "label": {
+                "type": "get",
+                "key": "dynamic_button"
+            },
+            "onClick": {
+                "type": "lambda",
+                "arg": "",
+                "action": {
+                    "type": "alert",
+                    "properties": {
+                        "message": "HELLO WORLD IT'S ME SCARLET"
+                    }
+                }
+            }
+        }
+    },
+    {
+        "type": "button",
+        "properties": {
+            "label": "Set",
+            "onClick": {
+                "type": "lambda",
+                "arg": "",
+                "action": {
+                    "type": "set",
+                    "key": "dave",
+                    "value": "pelletier"
+                }
+            }
+        }
+    }
+]

@@ -1,0 +1,92 @@
+[
+    {
+        "type": "card",
+        "properties": {
+            "label": "Activity details",
+            "children": [
+                {
+                    "type": "textfield",
+                    "dataStoreKey": "activityName",
+                    "properties": {
+                        "label": "Activity name",
+                        "helpText": "Only you will see this."
+                    }
+                },
+                {
+                    "type": "checkbox",
+                    "dataStoreKey": "discountPlacement",
+                    "properties": {
+                        "label": "Include discount code and offer description in your ad text"
+                    }
+                },
+                {
+                    "type": "textfield",
+                    "dataStoreKey": "adText",
+                    "properties": {
+                        "label": "Ad text",
+                        "helpText": "Write for your target audience. Explain why your products are unique. Keep it short.",
+                        "multiline": true
+                    }
+                }
+            ]
+        },
+        
+    },
+    {
+        "type": "card",
+        "properties": { "label": "Target audience" },
+        "children": [
+            {
+                "type": "checkbox",
+                "dataStoreKey": "targetSpecificInterests",
+                "properties": {
+                    "label": "Target people with specific interests"
+                }
+            },
+            {
+                "type": "if",
+                "condition": {
+                    "type": "get",
+                    "key": "targetSpecificInterests"
+                },
+                "true": {
+                    "type": "textfield",
+                    "dataStoreKey": "specificInterests",
+                    "properties": {
+                        "label": "Specific interests",
+                        "helpText": "Choose interests your potential customers will share. Multiple interests increase your audience size."
+                    }
+                },
+                "false": {}
+            },
+            {
+                "type": "checkbox",
+                "dataStoreKey": "targetSpecificGenders",
+                "properties": {
+                    "label": "Target people of a chosen gender"
+                }
+            },
+            {
+                "type": "if",
+                "condition": {
+                    "type": "get",
+                    "key": "targetSpecificGenders"
+                },
+                "true": {
+                    "type": "choicelist",
+                    "dataStoreKey": "specificGender",
+                    "properties": {
+                        "label": "Gender",
+                        "helpText": "Choose interests your potential customers will share. Multiple interests increase your audience size.",
+                        "choices": {
+                            "all": "All",
+                            "male": "Male",
+                            "female": "Female"
+                        }
+                    }
+                },
+                "false": {}
+            }
+        ]
+    }
+]
