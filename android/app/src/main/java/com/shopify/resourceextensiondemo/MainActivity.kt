@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
         renderer.setOnClickListener {
             containerView.removeAllViews()
             val json = codeEditText.text.toString()
-            val ast = ASTProcessor().evaluate(json)
+            val ast = ASTProcessor.evaluate(json)
             Log.d("AST", ast.toString())
         }
 
