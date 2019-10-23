@@ -1,4 +1,4 @@
-import { Identifier, Literal, List } from '..';
+import { Identifier, Literal, List, parse } from '..';
 
 describe(Identifier, () => {
   it('evaluates to a value in the runtime context', () => {
@@ -84,5 +84,59 @@ describe(List, () => {
       ])
     ]);
     expect(expression.toString()).toEqual(("(+ 1 1 (+ 1 1))"));
+  });
+});
+
+describe(parse, () => {
+  it('supports literals', () => {
+    const json = '{"type": "literal", "value": 1}';
+    expect(parse(json)).toEqual(new Literal(1));
+  });
+
+  it('supports identifiers', () => {
+    const json = '{"type": "identifier", "value": "+"}';
+    expect(parse(json)).toEqual(new Identifier("+"));
+  });
+
+  it('supports lists', () => {
+    const json = `
+      [
+        {"type": "identifier", "value": "+"},
+        {"type": "literal", "value": 1},
+        {"type": "literal", "value": 1}
+      ]
+    `
+
+    expect(parse(json)).toEqual(new List([
+      new Identifier("+"),
+      new Literal(1),
+      new Literal(1),
+    ]));
+  });
+
+  it('supports nested lists', () => {
+    const json = `
+      [
+        {"type": "identifier", "value": "+"},
+        {"type": "literal", "value": 1},
+        {"type": "literal", "value": 1},
+        [
+          {"type": "identifier", "value": "+"},
+          {"type": "literal", "value": 1},
+          {"type": "literal", "value": 1}
+        ]
+      ]
+    `
+
+    expect(parse(json)).toEqual(new List([
+      new Identifier("+"),
+      new Literal(1),
+      new Literal(1),
+      new List([
+        new Identifier("+"),
+        new Literal(1),
+        new Literal(1),
+      ])
+    ]));
   });
 });
