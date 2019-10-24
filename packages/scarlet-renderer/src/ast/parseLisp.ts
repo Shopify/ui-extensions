@@ -1,4 +1,4 @@
-import { Literal, Identifier, List } from '.';
+import { AST, Literal, Identifier, List } from '.';
 import { StringScanner } from "strscan";
 import { isString } from 'util';
 
@@ -9,8 +9,6 @@ const LIST_START_PATTERN = /\(/;
 const LIST_END_PATTERN = /\)/;
 const IDENTIFIER_PATTERN = /[^\s()]+(?=\s|$|\))/;
 const WHITESPACE_PATTERN = /\s+/;
-
-type AST = Literal | Identifier | List;
 
 export default function parseLisp(lisp: string | StringScanner): AST {
   const buffer: Array<AST> = [];

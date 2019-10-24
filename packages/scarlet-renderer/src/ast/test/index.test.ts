@@ -1,4 +1,4 @@
-import { Identifier, Literal, List } from '..';
+import { Identifier, Literal, List, parseLisp, parseJSON, generateJSON } from '..';
 
 describe(Identifier, () => {
   it('evaluates to a value in the runtime context', () => {
@@ -85,4 +85,11 @@ describe(List, () => {
     ]);
     expect(expression.toString()).toEqual(("(+ 1 1 (+ 1 1))"));
   });
+
+  it('supports transformations between multiple formats: Lisp -> AST -> JSON -> AST -> Lisp', () => {
+    const lisp = '(* (+ 1 1) (+ 1 1))'
+    expect(
+      parseJSON(generateJSON(parseLisp(lisp))).toString()
+    ).toEqual(lisp);
+  })
 });

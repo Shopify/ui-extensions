@@ -1,9 +1,12 @@
 export { default as parseLisp } from './parseLisp';
 export { default as parseJSON } from './parseJSON';
+export { default as generateJSON } from './generateJSON';
 
 interface RuntimeContext {
   [key: string]: any;
 }
+
+export type AST = Identifier | Literal | List;
 
 abstract class Node<T> {
   constructor(public value: T) {}

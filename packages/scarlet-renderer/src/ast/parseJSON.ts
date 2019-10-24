@@ -1,6 +1,6 @@
-import { Identifier, Literal, List } from '.';
+import { AST, Identifier, Literal, List } from '.';
 
-export default function parseJSON(json) {
+export default function parseJSON(json: string): AST {
   function instantiateNode(_, node) {
     function isIdentifier(node) {
       return typeof node === "object" && node.type === "identifier";
