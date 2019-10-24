@@ -1,6 +1,6 @@
 import {ActionList, Button, Card, Form, Popover} from "@shopify/polaris";
-import {Renderer, useDataSource} from "@shopify/scarlet-renderer";
-import Components from '@shopify/scarlet-polaris-components';
+import {Renderer, useDataSource} from "@shopify/app-extensions-renderer";
+import Components from '@shopify/app-extensions-polaris-components';
 import { navigate, useTitle } from "hookrouter";
 import {highlight, languages} from "prismjs";
 import "prismjs/components/prism-json";

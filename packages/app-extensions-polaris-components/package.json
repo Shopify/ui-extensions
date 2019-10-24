@@ -1,5 +1,5 @@
 {
-  "name": "@shopify/scarlet-polaris-components",
+  "name": "@shopify/app-extensions-polaris-components",
   "version": "0.0.0",
   "main": "dist/index.js",
   "license": "MIT",

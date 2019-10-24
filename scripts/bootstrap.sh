@@ -9,11 +9,11 @@ echo "|      Build Packages      |"
 echo "----------------------------"
 
 # Build renderer
-pushd ./packages/scarlet-renderer
+pushd ./packages/app-extensions-renderer
 yarn build
 popd
 
-pushd ./packages/scarlet-polaris-components
+pushd ./packages/app-extensions-components
 yarn build
 popd
 # TODO: make this apply to all relevant packages
