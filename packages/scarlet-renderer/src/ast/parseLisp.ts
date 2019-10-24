@@ -12,7 +12,7 @@ const WHITESPACE_PATTERN = /\s+/;
 
 type AST = Literal | Identifier | List;
 
-export default function parseLisp(lisp: any): AST {
+export default function parseLisp(lisp: string | StringScanner): AST {
   const buffer: Array<AST> = [];
   const scanner = isString(lisp) ? new StringScanner(lisp) : lisp;
   const scanString = () => scanner.scan(/.*"/);
