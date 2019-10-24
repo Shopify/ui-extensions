@@ -1,28 +1,28 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
 
+android {
+    compileSdkVersion coreVersions.shopify.compileSdk
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 
     defaultConfig {
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
+        minSdkVersion coreVersions.shopify.minSdk
+        targetSdkVersion coreVersions.shopify.targetSdk
     }
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
+    lintOptions {
+        lintConfig file('../../lint.xml')
+        abortOnError true
+        warningsAsErrors true
+        textOutput 'stdout'
+        textReport true
+        xmlReport false
     }
-
 }
 
 dependencies {
