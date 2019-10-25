@@ -13,7 +13,7 @@ pushd ./packages/app-extensions-renderer
 yarn build
 popd
 
-pushd ./packages/app-extensions-components
+pushd ./packages/app-extensions-polaris-components
 yarn build
 popd
 # TODO: make this apply to all relevant packages

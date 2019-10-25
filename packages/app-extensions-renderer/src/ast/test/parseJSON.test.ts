@@ -1,6 +1,6 @@
 import {Identifier, Literal, List, parseJSON} from '..';
 
-describe(parseJSON, () => {
+describe('parseJSON', () => {
   it('supports literals', () => {
     const json = '{"type": "literal", "value": 1}';
     expect(parseJSON(json)).toEqual(new Literal(1));

@@ -1,6 +1,6 @@
 import {Literal, Identifier, List, parseLisp} from '..';
 
-describe(parseLisp, () => {
+describe('parseLisp', () => {
   it('supports string literals', () => {
     const lisp = `"Hello"`;
     expect(parseLisp(lisp)).toEqual(new Literal('Hello'));

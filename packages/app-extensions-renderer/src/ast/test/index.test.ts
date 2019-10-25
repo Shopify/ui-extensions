@@ -1,6 +1,6 @@
 import {Identifier, Literal, List, parseLisp, parseJSON, generateJSON} from '..';
 
-describe(Identifier, () => {
+describe('Identifier', () => {
   it('evaluates to a value in the runtime context', () => {
     const runtimeContext = {test: 1};
     expect(new Identifier('test').evaluate(runtimeContext)).toEqual(1);
@@ -11,7 +11,7 @@ describe(Identifier, () => {
   });
 });
 
-describe(Literal, () => {
+describe('Literal', () => {
   it('can evaluate to a string', () => {
     expect(new Literal('something').evaluate({})).toEqual('something');
   });
@@ -29,7 +29,7 @@ describe(Literal, () => {
   });
 });
 
-describe(List, () => {
+describe('List', () => {
   it('can describe a sequence of literals', () => {
     const staticList = new List([new Literal(1), new Literal(2)]);
     expect(staticList.evaluate({})).toEqual([1, 2]);
