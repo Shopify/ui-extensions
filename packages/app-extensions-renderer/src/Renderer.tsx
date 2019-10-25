@@ -1,11 +1,15 @@
-import { AppProvider, FormLayout } from "@shopify/polaris";
-import React from "react";
-import { Context, interpret, parse } from "./littlelisp";
-import buildStdlib from "./stdlib";
-import { DataSource } from "./useDataSource";
+import {AppProvider, FormLayout} from '@shopify/polaris';
+import React from 'react';
+import {Context, interpret, parse} from './littlelisp';
+import buildStdlib from './stdlib';
+import {DataSource} from './useDataSource';
 
-interface ComponentList {[name: string]: any; }
-interface PropList {[name: string]: any; }
+interface ComponentList {
+  [name: string]: any;
+}
+interface PropList {
+  [name: string]: any;
+}
 
 interface RendererProps {
   code: string;

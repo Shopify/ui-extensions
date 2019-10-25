@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default SubHeading;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

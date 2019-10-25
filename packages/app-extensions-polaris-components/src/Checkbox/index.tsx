@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default Checkbox;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

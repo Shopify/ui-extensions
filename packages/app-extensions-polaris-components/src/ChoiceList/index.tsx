@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default ChoiceList;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default Label;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default Button;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

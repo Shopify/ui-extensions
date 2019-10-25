@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default Textfield;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

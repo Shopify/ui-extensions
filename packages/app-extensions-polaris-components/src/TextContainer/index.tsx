@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default TextContainer;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

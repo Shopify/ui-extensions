@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default Badge;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

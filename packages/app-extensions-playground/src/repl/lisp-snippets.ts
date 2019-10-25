@@ -6,7 +6,7 @@ export interface Snippet {
 
 const options: Snippet[] = [
   {
-    label: "Simple Button",
+    label: 'Simple Button',
     code: `
 ; Simple button
 ;
@@ -16,10 +16,10 @@ const options: Snippet[] = [
   "label"   "Hello"
   "onClick" (alert "Test")))
     `.trim(),
-    state: "[]",
+    state: '[]',
   },
   {
-    label: "State",
+    label: 'State',
     code: `
 ; State
 ;
@@ -36,7 +36,7 @@ const options: Snippet[] = [
     state: `[{"id": "gid://Shopify/Metafield/1", "key": "message", "value": "Hello World"}]`,
   },
   {
-    label: "Dynamic Rendering",
+    label: 'Dynamic Rendering',
     code: `
 ; Dynamic rendering
 ;
@@ -63,7 +63,7 @@ const options: Snippet[] = [
     ]`,
   },
   {
-    label: "Checkout Example",
+    label: 'Checkout Example',
     code: `
 ; Checkout example
 ;
@@ -112,7 +112,7 @@ const options: Snippet[] = [
     ]`,
   },
   {
-    label: "Client-Side Validation",
+    label: 'Client-Side Validation',
     code: `
 ; Client-side validation
 ;
@@ -128,7 +128,7 @@ const options: Snippet[] = [
     ]`,
   },
   {
-    label: "Side-Effects & HTTP",
+    label: 'Side-Effects & HTTP',
     code: `
 ; Side-effects & HTTP
 ;
@@ -153,7 +153,7 @@ const options: Snippet[] = [
     ]`,
   },
   {
-    label: "Charts",
+    label: 'Charts',
     code: `
 ; Charts
 ;
@@ -161,10 +161,10 @@ const options: Snippet[] = [
 
 (Chart (# "onLoad" (script "/draw.js")))
     `.trim(),
-    state: "[]",
+    state: '[]',
   },
   {
-    label: "Product Reviews",
+    label: 'Product Reviews',
     code: `; Product Reviews
 (Card (# "label" "Product Reviews") (
   (Stack (#) (

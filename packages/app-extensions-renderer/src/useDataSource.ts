@@ -12,10 +12,12 @@ export interface DataSource {
 }
 
 export default function useDataSource(initialEntries: any[]): DataSource {
-  if (!isDataSourceEntries(initialEntries)) { throw new Error("Unsupported entry"); }
+  if (!isDataSourceEntries(initialEntries)) {
+    throw new Error('Unsupported entry');
+  }
 
   let entries = initialEntries;
-  const setEntries = (newEntries) => {
+  const setEntries = newEntries => {
     entries = newEntries;
   };
 
@@ -28,9 +30,14 @@ export default function useDataSource(initialEntries: any[]): DataSource {
 }
 
 export function isDataSourceEntries(entries: any[]): entries is DataSourceEntry[] {
-  return entries.every((e) => isDataSourceEntry(e));
+  return entries.every(e => isDataSourceEntry(e));
 }
 
 export function isDataSourceEntry(entry: any): entry is DataSourceEntry {
-  return entry && typeof entry.id === 'string' && typeof entry.key === 'string' && entry.value !== undefined;
+  return (
+    entry &&
+    typeof entry.id === 'string' &&
+    typeof entry.key === 'string' &&
+    entry.value !== undefined
+  );
 }

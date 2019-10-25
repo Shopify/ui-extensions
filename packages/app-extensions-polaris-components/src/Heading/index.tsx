@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default Heading;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

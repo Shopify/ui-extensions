@@ -1,4 +1,4 @@
-declare module "hookrouter" {
+declare module 'hookrouter' {
   interface Routes {
     [name: string]: any;
   }

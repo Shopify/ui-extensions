@@ -1,4 +1,4 @@
-import { Identifier, Literal, List, parseJSON } from '..';
+import {Identifier, Literal, List, parseJSON} from '..';
 
 describe(parseJSON, () => {
   it('supports literals', () => {
@@ -8,7 +8,7 @@ describe(parseJSON, () => {
 
   it('supports identifiers', () => {
     const json = '{"type": "identifier", "value": "+"}';
-    expect(parseJSON(json)).toEqual(new Identifier("+"));
+    expect(parseJSON(json)).toEqual(new Identifier('+'));
   });
 
   it('supports lists', () => {
@@ -18,13 +18,11 @@ describe(parseJSON, () => {
         {"type": "literal", "value": 1},
         {"type": "literal", "value": 1}
       ]
-    `
+    `;
 
-    expect(parseJSON(json)).toEqual(new List([
-      new Identifier("+"),
-      new Literal(1),
-      new Literal(1),
-    ]));
+    expect(parseJSON(json)).toEqual(
+      new List([new Identifier('+'), new Literal(1), new Literal(1)]),
+    );
   });
 
   it('supports nested lists', () => {
@@ -39,17 +37,15 @@ describe(parseJSON, () => {
           {"type": "literal", "value": 1}
         ]
       ]
-    `
+    `;
 
-    expect(parseJSON(json)).toEqual(new List([
-      new Identifier("+"),
-      new Literal(1),
-      new Literal(1),
+    expect(parseJSON(json)).toEqual(
       new List([
-        new Identifier("+"),
+        new Identifier('+'),
         new Literal(1),
         new Literal(1),
-      ])
-    ]));
+        new List([new Identifier('+'), new Literal(1), new Literal(1)]),
+      ]),
+    );
   });
 });

@@ -1,6 +1,6 @@
-import { AST, Literal, Identifier, List } from '.';
-import { StringScanner } from "strscan";
-import { isString } from 'util';
+import {AST, Literal, Identifier, List} from '.';
+import {StringScanner} from 'strscan';
+import {isString} from 'util';
 
 const NUMBER_PATTERN = /\d+(?=\s|$|\))/;
 const STRING_PATTERN = /"/;
@@ -18,33 +18,26 @@ export default function parseLisp(lisp: string | StringScanner): AST {
   while (!scanner.hasTerminated()) {
     if (scanner.scan(NUMBER_PATTERN)) {
       buffer.push(new Literal(parseInt(scanner.match)));
-    }
-    else if (scanner.scan(STRING_PATTERN)) {
+    } else if (scanner.scan(STRING_PATTERN)) {
       let value = scanString();
-      while (value[value.length - 2] === "\\") {
+      while (value[value.length - 2] === '\\') {
         value += scanString();
       }
 
       value = value.substring(0, value.length - 1).replace('\\', '');
       buffer.push(new Literal(value));
-    }
-    else if (scanner.scan(EMPTY_LIST_PATTERN)) {
+    } else if (scanner.scan(EMPTY_LIST_PATTERN)) {
       buffer.push(new List([]));
-    }
-    else if (scanner.scan(LIST_START_PATTERN)) {
+    } else if (scanner.scan(LIST_START_PATTERN)) {
       buffer.push(parseLisp(scanner));
-    }
-    else if (scanner.scan(LIST_END_PATTERN)) {
+    } else if (scanner.scan(LIST_END_PATTERN)) {
       return new List(buffer);
-    }
-    else if (scanner.scan(WHITESPACE_PATTERN)) {
+    } else if (scanner.scan(WHITESPACE_PATTERN)) {
       // noop
-    }
-    else if (scanner.scan(IDENTIFIER_PATTERN)) {
-      buffer.push(new Identifier(scanner.match))
-    }
-    else {
-      throw "Unknown token";
+    } else if (scanner.scan(IDENTIFIER_PATTERN)) {
+      buffer.push(new Identifier(scanner.match));
+    } else {
+      throw 'Unknown token';
     }
   }
 

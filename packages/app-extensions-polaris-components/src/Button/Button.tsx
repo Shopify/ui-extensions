@@ -1,9 +1,9 @@
-import { Button as PolarisButton, ButtonProps } from "@shopify/polaris";
-import React from "react";
+import {Button as PolarisButton, ButtonProps} from '@shopify/polaris';
+import React from 'react';
 
 type ScarletButton = {
   label: string;
-}
+};
 
 type CombinedProps = ButtonProps & ScarletButton;
 

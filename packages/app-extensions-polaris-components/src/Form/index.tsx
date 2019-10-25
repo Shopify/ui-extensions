@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default Form;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

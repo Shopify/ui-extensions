@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default TextStyle;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

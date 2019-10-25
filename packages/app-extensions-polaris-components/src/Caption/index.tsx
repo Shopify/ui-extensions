@@ -3,6 +3,4 @@ import EditableProps from './props';
 
 export default Caption;
 
-export {
-  EditableProps,
-};
+export {EditableProps};

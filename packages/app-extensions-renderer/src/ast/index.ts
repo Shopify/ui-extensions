@@ -1,6 +1,6 @@
-export { default as parseLisp } from './parseLisp';
-export { default as parseJSON } from './parseJSON';
-export { default as generateJSON } from './generateJSON';
+export {default as parseLisp} from './parseLisp';
+export {default as parseJSON} from './parseJSON';
+export {default as generateJSON} from './generateJSON';
 
 interface RuntimeContext {
   [key: string]: any;
@@ -35,7 +35,7 @@ export class Literal extends Node<string | number | boolean> {
 
 export class List extends Node<Array<Identifier | Literal | List>> {
   evaluate(context: RuntimeContext) {
-    const [first, ...rest] = this.value.map((v) => v.evaluate(context));
+    const [first, ...rest] = this.value.map(v => v.evaluate(context));
     if (typeof first === 'function') {
       return first.call(undefined, ...rest);
     } else {
@@ -44,6 +44,6 @@ export class List extends Node<Array<Identifier | Literal | List>> {
   }
 
   toString() {
-    return `(${this.value.map((v) => v.toString()).join(" ")})`
+    return `(${this.value.map(v => v.toString()).join(' ')})`;
   }
 }
