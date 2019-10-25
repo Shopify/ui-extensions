@@ -3,9 +3,9 @@ name: app-extension-libs
 type: node
 
 up:
-  # - git_hooks:
+  - git_hooks:
       # commit-msg: ./scripts/commitlint.sh
-      # pre-commit: ./scripts/prettier.sh
+      pre-commit: ./scripts/prettier.sh
   - railgun
   - node:
       version: v12.11.1

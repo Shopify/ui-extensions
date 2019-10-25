@@ -16,5 +16,8 @@
   "publishConfig": {
     "access": "restricted",
     "@shopify:registry": "https://packages.shopify.io/shopify/node/npm/"
+  },
+  "devDependencies": {
+    "prettier": "^1.18.2"
   }
 }
