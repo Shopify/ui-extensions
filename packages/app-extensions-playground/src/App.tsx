@@ -9,14 +9,14 @@ const routes = {
   '/repl/:id': ({id}: {id: string}) => <Repl snippetId={parseInt(id, 10)} />,
 };
 
-const tabs = [
-  {
-    id: 'repl',
-    content: 'REPL',
-    component: Repl,
-    route: '/repl',
-  },
-];
+// const tabs = [
+//   {
+//     id: 'repl',
+//     content: 'REPL',
+//     component: Repl,
+//     route: '/repl',
+//   },
+// ];
 
 function App() {
   useRedirect('/', '/repl/0');
