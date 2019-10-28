@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6222583E233D4A4D0095B6AC"
-               BuildableName = "Scarlet Prototype.app"
-               BlueprintName = "Scarlet Prototype"
-               ReferencedContainer = "container:Scarlet Prototype.xcodeproj">
+               BuildableName = "AppExtensions.app"
+               BlueprintName = "AppExtensions"
+               ReferencedContainer = "container:AppExtensions.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -27,19 +27,17 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
-      <Testables>
-      </Testables>
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6222583E233D4A4D0095B6AC"
-            BuildableName = "Scarlet Prototype.app"
-            BlueprintName = "Scarlet Prototype"
-            ReferencedContainer = "container:Scarlet Prototype.xcodeproj">
+            BuildableName = "AppExtensions.app"
+            BlueprintName = "AppExtensions"
+            ReferencedContainer = "container:AppExtensions.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
-      <AdditionalOptions>
-      </AdditionalOptions>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
@@ -56,13 +54,11 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6222583E233D4A4D0095B6AC"
-            BuildableName = "Scarlet Prototype.app"
-            BlueprintName = "Scarlet Prototype"
-            ReferencedContainer = "container:Scarlet Prototype.xcodeproj">
+            BuildableName = "AppExtensions.app"
+            BlueprintName = "AppExtensions"
+            ReferencedContainer = "container:AppExtensions.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <AdditionalOptions>
-      </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -75,9 +71,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6222583E233D4A4D0095B6AC"
-            BuildableName = "Scarlet Prototype.app"
-            BlueprintName = "Scarlet Prototype"
-            ReferencedContainer = "container:Scarlet Prototype.xcodeproj">
+            BuildableName = "AppExtensions.app"
+            BlueprintName = "AppExtensions"
+            ReferencedContainer = "container:AppExtensions.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

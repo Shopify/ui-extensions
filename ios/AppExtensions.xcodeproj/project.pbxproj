@@ -95,7 +95,7 @@
 
 /* Begin PBXFileReference section */
 		620AAFC82350DA9100841510 /* StringHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelper.swift; sourceTree = "<group>"; };
-		6222583F233D4A4D0095B6AC /* Scarlet Prototype.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Scarlet Prototype.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6222583F233D4A4D0095B6AC /* AppExtensions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppExtensions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		62225842233D4A4D0095B6AC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62225844233D4A4D0095B6AC /* ListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
 		62225849233D4A4F0095B6AC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -185,7 +185,7 @@
 		62225840233D4A4D0095B6AC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6222583F233D4A4D0095B6AC /* Scarlet Prototype.app */,
+				6222583F233D4A4D0095B6AC /* AppExtensions.app */,
 				DED018512346D3F7004E1E95 /* Scarlet.framework */,
 				DED018592346D3F7004E1E95 /* ScarletTests.xctest */,
 			);
@@ -345,9 +345,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		6222583E233D4A4D0095B6AC /* Scarlet Prototype */ = {
+		6222583E233D4A4D0095B6AC /* AppExtensions */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 62225851233D4A4F0095B6AC /* Build configuration list for PBXNativeTarget "Scarlet Prototype" */;
+			buildConfigurationList = 62225851233D4A4F0095B6AC /* Build configuration list for PBXNativeTarget "AppExtensions" */;
 			buildPhases = (
 				6222583B233D4A4D0095B6AC /* Sources */,
 				6222583C233D4A4D0095B6AC /* Frameworks */,
@@ -359,9 +359,9 @@
 			dependencies = (
 				DED018652346D3F7004E1E95 /* PBXTargetDependency */,
 			);
-			name = "Scarlet Prototype";
+			name = AppExtensions;
 			productName = "Scarlet Prototype";
-			productReference = 6222583F233D4A4D0095B6AC /* Scarlet Prototype.app */;
+			productReference = 6222583F233D4A4D0095B6AC /* AppExtensions.app */;
 			productType = "com.apple.product-type.application";
 		};
 		DED018502346D3F7004E1E95 /* Scarlet */ = {
@@ -423,7 +423,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 6222583A233D4A4D0095B6AC /* Build configuration list for PBXProject "Scarlet Prototype" */;
+			buildConfigurationList = 6222583A233D4A4D0095B6AC /* Build configuration list for PBXProject "AppExtensions" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -436,7 +436,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6222583E233D4A4D0095B6AC /* Scarlet Prototype */,
+				6222583E233D4A4D0095B6AC /* AppExtensions */,
 				DED018502346D3F7004E1E95 /* Scarlet */,
 				DED018582346D3F7004E1E95 /* ScarletTests */,
 			);
@@ -541,7 +541,7 @@
 		};
 		DED0185E2346D3F7004E1E95 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 6222583E233D4A4D0095B6AC /* Scarlet Prototype */;
+			target = 6222583E233D4A4D0095B6AC /* AppExtensions */;
 			targetProxy = DED0185D2346D3F7004E1E95 /* PBXContainerItemProxy */;
 		};
 		DED018652346D3F7004E1E95 /* PBXTargetDependency */ = {
@@ -785,7 +785,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scarlet Prototype.app/Scarlet Prototype";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppExtensions.app/AppExtensions";
 			};
 			name = Debug;
 		};
@@ -805,14 +805,14 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Scarlet Prototype.app/Scarlet Prototype";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppExtensions.app/AppExtensions";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6222583A233D4A4D0095B6AC /* Build configuration list for PBXProject "Scarlet Prototype" */ = {
+		6222583A233D4A4D0095B6AC /* Build configuration list for PBXProject "AppExtensions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				6222584F233D4A4F0095B6AC /* Debug */,
@@ -821,7 +821,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		62225851233D4A4F0095B6AC /* Build configuration list for PBXNativeTarget "Scarlet Prototype" */ = {
+		62225851233D4A4F0095B6AC /* Build configuration list for PBXNativeTarget "AppExtensions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				62225852233D4A4F0095B6AC /* Debug */,
