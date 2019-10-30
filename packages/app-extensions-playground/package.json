@@ -47,7 +47,8 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "test-jest": "jest"
+    "test-jest": "jest",
+    "check": "tsc --pretty --noEmit"
   },
   "eslintConfig": {
     "extends": "react-app"

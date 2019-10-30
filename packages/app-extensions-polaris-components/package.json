@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "yarn tsc --watch",
-    "build": "tsc"
+    "build": "tsc",
+    "check": "tsc --pretty --noEmit"
   },
   "dependencies": {
     "@shopify/polaris": "^4.3.0",
