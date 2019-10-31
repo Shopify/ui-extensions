@@ -1,25 +1,17 @@
 import {AppProvider, FooterHelp, Link, Page} from '@shopify/polaris';
 import {useRedirect, useRoutes} from 'hookrouter';
+import UIBuilder from '@shopify/app-extensions-ui-builder';
 import React from 'react';
-
+import Home from './home';
 import Repl from './repl';
 
 const routes = {
-  '/': ({id}: {id: string}) => <Repl snippetId={parseInt(id, 10)} />,
+  '/': () => <Home />,
+  '/builder': () => <UIBuilder />,
   '/repl/:id': ({id}: {id: string}) => <Repl snippetId={parseInt(id, 10)} />,
 };
 
-// const tabs = [
-//   {
-//     id: 'repl',
-//     content: 'REPL',
-//     component: Repl,
-//     route: '/repl',
-//   },
-// ];
-
 function App() {
-  useRedirect('/', '/repl/0');
   useRedirect('/repl', '/repl/0');
   const page = useRoutes(routes);
 
@@ -27,7 +19,6 @@ function App() {
     <AppProvider i18n={{}}>
       <Page fullWidth title="Render &amp; Execution Environment">
         <div style={{marginTop: '16px'}}>{page}</div>
-
         <FooterHelp>
           Learn more about the{' '}
           <Link url="https://vault.shopify.io/projects/6839">

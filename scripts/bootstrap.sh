@@ -8,15 +8,8 @@ echo "----------------------------"
 echo "|      Build Packages      |"
 echo "----------------------------"
 
-# Build renderer
-pushd ./packages/app-extensions-renderer
-yarn build
-popd
-
-pushd ./packages/app-extensions-polaris-components
-yarn build
-popd
-# TODO: make this apply to all relevant packages
+# Build packages
+yarn lerna run build
 
 echo "----------------------------"
 echo "|      🎉🎉🎉🎉🎉🎉🎉      |"
