@@ -30,7 +30,7 @@ enum Node : Decodable {
             case "identifier":
                 self = .identifier(try root.decode(String.self, forKey: .value))
             default:
-                fatalError("Invalid node type: \(type)")
+                throw AppExtensionError.invalidNodeType(type: type)
             }
         } catch {
             self = .list(try decoder.singleValueContainer().decode([Node].self))

@@ -10,6 +10,7 @@
 		621AE20A2368A6BC00F7B51C /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621AE2092368A6BC00F7B51C /* Context.swift */; };
 		621AE20C2368A6FA00F7B51C /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621AE20B2368A6FA00F7B51C /* Factory.swift */; };
 		621AE20E2368A73900F7B51C /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621AE20D2368A73900F7B51C /* LabelFactory.swift */; };
+		626F57A7236C9DB2002CB962 /* AppExtensionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626F57A6236C9DB2002CB962 /* AppExtensionError.swift */; };
 		62963B0A23677BAB009A85B3 /* AppExtensionLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 62963B0823677BAB009A85B3 /* AppExtensionLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62963B1723677C0C009A85B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62963B1623677C0C009A85B3 /* AppDelegate.swift */; };
 		62963B1D23677C0F009A85B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62963B1C23677C0F009A85B3 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		621AE2092368A6BC00F7B51C /* Context.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		621AE20B2368A6FA00F7B51C /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		621AE20D2368A73900F7B51C /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
+		626F57A6236C9DB2002CB962 /* AppExtensionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensionError.swift; sourceTree = "<group>"; };
 		62963B0523677BAB009A85B3 /* AppExtensionLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppExtensionLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62963B0823677BAB009A85B3 /* AppExtensionLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppExtensionLib.h; sourceTree = "<group>"; };
 		62963B0923677BAB009A85B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				621AE20B2368A6FA00F7B51C /* Factory.swift */,
 				621AE20D2368A73900F7B51C /* LabelFactory.swift */,
 				62D8CA70236A0EE2002B71D4 /* PropertiesFactory.swift */,
+				626F57A6236C9DB2002CB962 /* AppExtensionError.swift */,
 			);
 			path = AppExtensionLib;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				626F57A7236C9DB2002CB962 /* AppExtensionError.swift in Sources */,
 				621AE20C2368A6FA00F7B51C /* Factory.swift in Sources */,
 				621AE20A2368A6BC00F7B51C /* Context.swift in Sources */,
 				62963B2923677C43009A85B3 /* Node.swift in Sources */,

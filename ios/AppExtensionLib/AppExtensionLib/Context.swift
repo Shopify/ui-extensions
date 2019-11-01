@@ -17,7 +17,7 @@ public class Context {
         case "label":
             return LabelFactory()
         default:
-            return nil
+            throw AppExtensionError.invalidIdentifier(identifier: identifier)
         }
     }
     
