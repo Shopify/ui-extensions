@@ -11,6 +11,7 @@
 		621AE20C2368A6FA00F7B51C /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621AE20B2368A6FA00F7B51C /* Factory.swift */; };
 		621AE20E2368A73900F7B51C /* LabelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621AE20D2368A73900F7B51C /* LabelFactory.swift */; };
 		626F57A7236C9DB2002CB962 /* AppExtensionError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626F57A6236C9DB2002CB962 /* AppExtensionError.swift */; };
+		626F57A9236CA3D6002CB962 /* invalid.json in Resources */ = {isa = PBXBuildFile; fileRef = 626F57A8236CA3D6002CB962 /* invalid.json */; };
 		62963B0A23677BAB009A85B3 /* AppExtensionLib.h in Headers */ = {isa = PBXBuildFile; fileRef = 62963B0823677BAB009A85B3 /* AppExtensionLib.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		62963B1723677C0C009A85B3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62963B1623677C0C009A85B3 /* AppDelegate.swift */; };
 		62963B1D23677C0F009A85B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62963B1C23677C0F009A85B3 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		621AE20B2368A6FA00F7B51C /* Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		621AE20D2368A73900F7B51C /* LabelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelFactory.swift; sourceTree = "<group>"; };
 		626F57A6236C9DB2002CB962 /* AppExtensionError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppExtensionError.swift; sourceTree = "<group>"; };
+		626F57A8236CA3D6002CB962 /* invalid.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = invalid.json; sourceTree = "<group>"; };
 		62963B0523677BAB009A85B3 /* AppExtensionLib.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppExtensionLib.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		62963B0823677BAB009A85B3 /* AppExtensionLib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppExtensionLib.h; sourceTree = "<group>"; };
 		62963B0923677BAB009A85B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				62963B2C23677C6A009A85B3 /* label.json */,
+				626F57A8236CA3D6002CB962 /* invalid.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				62963B2323677C0F009A85B3 /* LaunchScreen.storyboard in Resources */,
 				62963B2023677C0F009A85B3 /* Preview Assets.xcassets in Resources */,
 				62963B2D23677C6A009A85B3 /* label.json in Resources */,
+				626F57A9236CA3D6002CB962 /* invalid.json in Resources */,
 				62963B1D23677C0F009A85B3 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
