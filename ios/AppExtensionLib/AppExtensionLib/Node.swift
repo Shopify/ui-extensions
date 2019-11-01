@@ -25,7 +25,7 @@ enum Node : Decodable {
             let type = try root.decode(String.self, forKey: .type)
             switch type {
             case "literal":
-                // TODO need to handle other literal types
+                // TODO need to handle other literal types (use enum with literal types)
                 self = .literal(try root.decode(String.self, forKey: .value))
             case "identifier":
                 self = .identifier(try root.decode(String.self, forKey: .value))
