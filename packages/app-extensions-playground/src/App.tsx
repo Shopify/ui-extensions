@@ -1,6 +1,6 @@
 import {AppProvider, FooterHelp, Link, Page, Stack} from '@shopify/polaris';
 import {useRedirect, useRoutes} from 'hookrouter';
-import UIBuilder from '@shopify/app-extensions-ui-builder';
+import Builder from './builder';
 import styled from 'styled-components';
 import React from 'react';
 import Home from './home';
@@ -8,7 +8,7 @@ import Repl from './repl';
 
 const routes = {
   '/': () => <Home />,
-  '/builder': () => <UIBuilder />,
+  '/builder': () => <Builder />,
   '/repl/:id': ({id}: {id: string}) => <Repl snippetId={parseInt(id, 10)} />,
 };
 

@@ -3,14 +3,17 @@ import {AppProvider} from '@shopify/polaris';
 import {StateProvider} from './utils/StateProvider';
 import GlobalReducer from './utils/globalReducer';
 import App from './app';
+import {HeaderProps} from './app/Header';
 
-export default function UIBuilder() {
+type Props = HeaderProps;
+
+export default function UIBuilder(props) {
   const initialState = {};
 
   return (
     <AppProvider i18n={{}}>
       <StateProvider initialState={initialState} reducer={GlobalReducer}>
-        <App />
+        <App {...props} />
       </StateProvider>
     </AppProvider>
   );
