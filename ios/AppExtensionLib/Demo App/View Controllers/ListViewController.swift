@@ -33,6 +33,6 @@ class ListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let json = try! Data(contentsOf: payloads[indexPath.row])
         let components = try! ASTProcessor.evaluate(data: json)
-        print(components)
+        print(components!)
     }
 }

@@ -10,11 +10,11 @@ import Foundation
 
 class PropertiesFactory : Factory {
     
-    func build(context: Context, args: [Node]) -> Any {
+    func build(context: Context, args: [Any?]) -> Any {
         var map = [String: Any]()
         for i in stride(from: 0, to: args.count, by: 2) {
-            let key = args[i].evaluate(context: context) as! String
-            let value = args[i+1].evaluate(context: context)
+            let key = args[i] as! String
+            let value = args[i+1]
             map[key] = value
         }
         return map

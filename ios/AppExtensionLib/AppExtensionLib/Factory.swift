@@ -10,6 +10,6 @@ import Foundation
 
 protocol Factory {
     
-    func build(context: Context, args: [Node]) -> Any
+    func build(context: Context, args: [Any?]) -> Any
     
 }

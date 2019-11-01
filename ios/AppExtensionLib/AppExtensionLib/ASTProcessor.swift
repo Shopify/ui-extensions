@@ -12,7 +12,7 @@ public class ASTProcessor {
     
     public static func evaluate(data: Data) throws -> Any? {
         let rootNode = try JSONDecoder().decode(Node.self, from: data)
-        return rootNode.evaluate(context: Context())
+        return try rootNode.evaluate(context: Context())
     }
     
 }

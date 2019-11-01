@@ -10,8 +10,8 @@ import Foundation
 
 public class Context {
     
-    func get(value: String) -> Factory? {
-        switch value {
+    func get(identifier: String) throws -> Factory? {
+        switch identifier {
         case "#":
             return PropertiesFactory()
         case "label":

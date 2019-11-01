@@ -10,10 +10,10 @@ import Foundation
 
 class LabelFactory : Factory {
     
-    func build(context: Context, args: [Node]) -> Any {
+    func build(context: Context, args: [Any?]) -> Any {
         var caption = ""
-        args.forEach { (node) in
-            caption = (node.evaluate(context: context) as? [String: Any])?["caption"] as? String ?? caption
+        args.forEach { (arg) in
+            caption = (arg as? [String: Any])?["caption"] as? String ?? caption
         }
         return Label(caption)
     }

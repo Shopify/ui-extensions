@@ -37,20 +37,20 @@ enum Node : Decodable {
         }
     }
     
-    func evaluate(context: Context) -> Any? {
+    func evaluate(context: Context) throws -> Any? {
         switch self {
         case .literal(let value):
             return value
         case .identifier(let identifier):
-            return context.get(value: identifier)
+            return try context.get(identifier: identifier)
         case .list(let nodes):
             switch nodes.first {
             case .identifier(_):
-                let factory = nodes.first!.evaluate(context: context) as! Factory
-                let args = Array(nodes.dropFirst())
+                let factory = try nodes.first!.evaluate(context: context) as! Factory
+                let args = try Array(nodes.dropFirst()).map({ try $0.evaluate(context: context) })
                 return factory.build(context: context, args: args)
             default:
-                return nodes.map({ $0.evaluate(context: context) })
+                return try nodes.map({ try $0.evaluate(context: context) })
             }
         }
     }
