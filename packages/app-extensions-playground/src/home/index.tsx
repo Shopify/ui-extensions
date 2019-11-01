@@ -1,16 +1,23 @@
 import React from 'react';
-import {Card, Stack, Layout, Button} from '@shopify/polaris';
+import {Stack, Layout} from '@shopify/polaris';
+import HomeCard from './HomeCard';
 
 export default function Home() {
   return (
     <Layout>
       <Stack>
-        <Card sectioned>
-          <Button url="/repl">REPL</Button>
-        </Card>
-        <Card sectioned>
-          <Button url="/builder">UI Builder</Button>
-        </Card>
+        <HomeCard
+          url="/repl"
+          image="images/repl.jpg"
+          title="REPL"
+          description="Use LISP to test the rendering output in the REPL. LISP is not the saved format of the Renderer. It is strictly for ease of internal debugging and testing."
+        />
+        <HomeCard
+          url="/builder"
+          image="images/builder.jpg"
+          title="UI Builder"
+          description="This is a dev environment for the UI Builder. The UI Builder will live in the partners dashboard and will allow partners to generate Extensions UI."
+        />
       </Stack>
     </Layout>
   );

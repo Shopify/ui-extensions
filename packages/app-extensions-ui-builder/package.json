@@ -19,6 +19,7 @@
     "@shopify:registry": "https://packages.shopify.io/shopify/node/npm/"
   },
   "devDependencies": {
+    "@types/styled-components": "4.1.8",
     "eslint-plugin-shopify": "^31.0.0",
     "prettier": "^1.18.2"
   }
