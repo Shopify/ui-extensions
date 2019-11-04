@@ -21,6 +21,7 @@ const HeaderContainer = styled.div`
   display: flex;
   height: 75px;
   background: white;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 
   > div {
     width: 100%;
@@ -28,7 +29,7 @@ const HeaderContainer = styled.div`
 `;
 
 const BackWrapper = styled.div`
-  border-right: 1px solid #ccc;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
   width: 75px;
   height: 75px;
 `;

@@ -5,10 +5,14 @@ import GlobalReducer from './utils/globalReducer';
 import App from './app';
 import {HeaderProps} from './app/Header';
 
-type Props = HeaderProps;
+type ComponentsList = {
+  componentList?: string[];
+};
+
+type Props = HeaderProps & ComponentsList;
 
 export default function UIBuilder(props) {
-  const initialState = {};
+  const initialState = props;
 
   return (
     <AppProvider i18n={{}}>
