@@ -1,6 +1,6 @@
 import Textfield from './Textfield';
-import EditableProps from './props';
+import TextfieldDefinition from './builder-definition';
 
 export default Textfield;
 
-export {EditableProps};
+export {TextfieldDefinition};

@@ -1,6 +1,6 @@
 import Form from './Form';
-import EditableProps from './props';
+import FormDefinition from './builder-definition';
 
 export default Form;
 
-export {EditableProps};
+export {FormDefinition};

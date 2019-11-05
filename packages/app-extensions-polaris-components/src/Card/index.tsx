@@ -1,6 +1,6 @@
 import Card from './Card';
-import EditableProps from './props';
+import CardDefinition from './builder-definition';
 
 export default Card;
 
-export {EditableProps};
+export {CardDefinition};

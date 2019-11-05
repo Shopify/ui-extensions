@@ -1,6 +1,6 @@
 import Caption from './Caption';
-import EditableProps from './props';
+import CaptionDefinition from './builder-definition';
 
 export default Caption;
 
-export {EditableProps};
+export {CaptionDefinition};

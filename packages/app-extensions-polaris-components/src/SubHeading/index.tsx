@@ -1,6 +1,6 @@
 import SubHeading from './SubHeading';
-import EditableProps from './props';
+import SubHeadingDefinition from './builder-definition';
 
 export default SubHeading;
 
-export {EditableProps};
+export {SubHeadingDefinition};

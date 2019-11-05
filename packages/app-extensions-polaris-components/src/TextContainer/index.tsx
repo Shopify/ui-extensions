@@ -1,6 +1,6 @@
 import TextContainer from './TextContainer';
-import EditableProps from './props';
+import TextContainerDefinition from './builder-definition';
 
 export default TextContainer;
 
-export {EditableProps};
+export {TextContainerDefinition};

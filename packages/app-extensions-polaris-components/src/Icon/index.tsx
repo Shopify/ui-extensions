@@ -1,6 +1,6 @@
 import Icon from './Icon';
-import EditableProps from './props';
+import IconDefinition from './builder-definition';
 
 export default Icon;
 
-export {EditableProps};
+export {IconDefinition};

@@ -1,6 +1,6 @@
 import Thumbnail from './Thumbnail';
-import EditableProps from './props';
+import ThumbnailDefinition from './builder-definition';
 
 export default Thumbnail;
 
-export {EditableProps};
+export {ThumbnailDefinition};

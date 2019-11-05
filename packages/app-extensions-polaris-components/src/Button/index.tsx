@@ -1,6 +1,6 @@
 import Button from './Button';
-import EditableProps from './props';
+import ButtonDefinition from './builder-definition';
 
 export default Button;
 
-export {EditableProps};
+export {ButtonDefinition};

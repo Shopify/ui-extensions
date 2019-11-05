@@ -1,6 +1,6 @@
 import Scrollable from './Scrollable';
-import EditableProps from './props';
+import ScrollableDefinition from './builder-definition';
 
 export default Scrollable;
 
-export {EditableProps};
+export {ScrollableDefinition};

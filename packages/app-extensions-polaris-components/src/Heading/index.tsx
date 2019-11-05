@@ -1,6 +1,6 @@
 import Heading from './Heading';
-import EditableProps from './props';
+import HeadingDefinition from './builder-definition';
 
 export default Heading;
 
-export {EditableProps};
+export {HeadingDefinition};

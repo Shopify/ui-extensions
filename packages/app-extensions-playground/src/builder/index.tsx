@@ -1,15 +1,15 @@
 import React from 'react';
 import UIBuilder from '@shopify/app-extensions-ui-builder';
 
-import {ComponentProps} from '@shopify/app-extensions-polaris-components/dist';
+import {ComponentDefinitions} from '@shopify/app-extensions-polaris-components/dist';
 
 export default function Builder() {
   const componentList = [
-    ComponentProps.ButtonProps,
-    ComponentProps.TextfieldProps,
-    ComponentProps.CheckboxProps,
-    ComponentProps.CaptionProps,
-    ComponentProps.BadgeProps,
+    ComponentDefinitions.Button,
+    ComponentDefinitions.Textfield,
+    ComponentDefinitions.Checkbox,
+    ComponentDefinitions.Caption,
+    ComponentDefinitions.Badge,
   ];
 
   return (

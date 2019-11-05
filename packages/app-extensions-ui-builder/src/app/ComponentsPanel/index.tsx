@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import {Heading, Stack, Icon, Scrollable} from '@shopify/polaris';
 import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
-// import * as Components from '@shopify/app-extensions-polaris-components';
 import ComponentItem from './ComponentItem';
 import {useStateValue} from '../../utils/StateProvider';
 

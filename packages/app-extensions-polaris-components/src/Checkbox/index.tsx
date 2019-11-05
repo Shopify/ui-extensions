@@ -1,6 +1,6 @@
 import Checkbox from './Checkbox';
-import EditableProps from './props';
+import CheckboxDefinition from './builder-definition';
 
 export default Checkbox;
 
-export {EditableProps};
+export {CheckboxDefinition};

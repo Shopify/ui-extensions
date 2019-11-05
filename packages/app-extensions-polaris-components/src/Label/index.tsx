@@ -1,6 +1,6 @@
 import Label from './Label';
-import EditableProps from './props';
+import LabelDefinition from './builder-definition';
 
 export default Label;
 
-export {EditableProps};
+export {LabelDefinition};

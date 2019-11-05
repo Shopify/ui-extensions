@@ -1,6 +1,6 @@
 import Select from './Select';
-import EditableProps from './props';
+import SelectDefinition from './builder-definition';
 
 export default Select;
 
-export {EditableProps};
+export {SelectDefinition};

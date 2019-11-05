@@ -1,6 +1,6 @@
 import Badge from './Badge';
-import EditableProps from './props';
+import BadgeDefinition from './builder-definition';
 
 export default Badge;
 
-export {EditableProps};
+export {BadgeDefinition};

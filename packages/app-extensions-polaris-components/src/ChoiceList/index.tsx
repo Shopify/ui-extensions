@@ -1,6 +1,6 @@
 import ChoiceList from './ChoiceList';
-import EditableProps from './props';
+import ChoiceListDefinition from './builder-definition';
 
 export default ChoiceList;
 
-export {EditableProps};
+export {ChoiceListDefinition};

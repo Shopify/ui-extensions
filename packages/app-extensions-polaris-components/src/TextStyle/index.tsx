@@ -1,6 +1,6 @@
 import TextStyle from './TextStyle';
-import EditableProps from './props';
+import TextStyleDefinition from './builder-definition';
 
 export default TextStyle;
 
-export {EditableProps};
+export {TextStyleDefinition};

@@ -1,6 +1,6 @@
 import List from './List';
-import EditableProps from './props';
+import ListDefinition from './builder-definition';
 
 export default List;
 
-export {EditableProps};
+export {ListDefinition};
