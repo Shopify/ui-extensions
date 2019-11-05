@@ -13,8 +13,8 @@ steps:
     run:
       - yarn:
       - yarn run lint
-  - label: Build
-    timeout: 5m
-    run:
-      - yarn:
-      - yarn run build
+  # - label: Build
+  #   timeout: 5m
+  #   run:
+  #     - yarn:
+  #     - yarn run build
