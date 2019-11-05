@@ -5,6 +5,7 @@ import {AppExtensionMinor} from '@shopify/polaris-icons';
 
 type Props = {
   name: string;
+  icon: any;
 };
 
 const ItemWrapper = styled.div`
@@ -16,12 +17,12 @@ const ItemWrapper = styled.div`
   overflow: hidden;
 `;
 
-export default function ComponentItem({name}: Props) {
+export default function ComponentItem({name, icon}: Props) {
   return (
     <ItemWrapper>
       <Stack>
         <Stack.Item>
-          <Icon source={AppExtensionMinor} color="skyDark" />
+          <Icon source={icon || AppExtensionMinor} color="skyDark" />
         </Stack.Item>
         <Stack.Item fill>
           <TextStyle>{name}</TextStyle>
