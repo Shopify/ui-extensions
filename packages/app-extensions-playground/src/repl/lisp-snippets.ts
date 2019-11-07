@@ -7,12 +7,7 @@ export interface Snippet {
 const options: Snippet[] = [
   {
     label: 'Simple Button',
-    code: `
-; Simple button
-;
-; Button with a label and click-handler.
-
-(Button (#
+    code: `(Button (#
   "label"   "Hello"
   "onClick" (alert "Test")))
     `.trim(),
@@ -20,12 +15,7 @@ const options: Snippet[] = [
   },
   {
     label: 'State',
-    code: `
-; State
-;
-; Form fields with controlled local state.
-
-((Textfield (#
+    code: `((Textfield (#
    "value"    (get "message")
    "onChange" (set "message")))
 

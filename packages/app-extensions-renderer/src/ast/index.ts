@@ -37,7 +37,7 @@ export class List extends Node<Array<Identifier | Literal | List>> {
   evaluate(context: RuntimeContext) {
     const [first, ...rest] = this.value.map(v => v.evaluate(context));
     if (typeof first === 'function') {
-      return first.call(undefined, ...rest);
+      return first.call(null, ...rest);
     } else {
       return [first, ...rest];
     }

@@ -1,6 +1,6 @@
 import {AppProvider, FormLayout} from '@shopify/polaris';
 import React from 'react';
-import {Context, interpret, parse} from './littlelisp';
+import {parseLisp} from './ast';
 import buildStdlib from './stdlib';
 import {DataSource} from './useDataSource';
 
@@ -24,11 +24,13 @@ export function Renderer({code, dataSource, components, onWorkerAction}: Rendere
     ...buildComponentLib(components),
   };
 
-  const result = interpret(typeof code == 'string' ? parse(code) : code, new Context(library));
-  if (result) {
+  const ast = parseLisp(code);
+  const view = ast.evaluate(library);
+  console.log(ast, view);
+  if (view) {
     return (
       <AppProvider i18n={{}}>
-        <FormLayout>{result}</FormLayout>
+        <FormLayout>{view}</FormLayout>
       </AppProvider>
     );
   }

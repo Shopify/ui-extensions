@@ -78,4 +78,25 @@ describe('parseLisp', () => {
       ]),
     );
   });
+
+  it('supports a tree with nested lists', () => {
+    const lisp = `
+      ((Textfield (#
+        "value"    (get "message")
+        "onChange" (set "message"))))`;
+    expect(parseLisp(lisp)).toEqual(
+      new List([
+        new List([
+          new Identifier('Textfield'),
+          new List([
+            new Identifier('#'),
+            new Literal('value'),
+            new List([new Identifier('get'), new Literal('message')]),
+            new Literal('onChange'),
+            new List([new Identifier('set'), new Literal('message')]),
+          ]),
+        ]),
+      ]),
+    );
+  });
 });
