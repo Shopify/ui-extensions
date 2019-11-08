@@ -26,7 +26,6 @@ export function Renderer({code, dataSource, components, onWorkerAction}: Rendere
 
   const ast = parseLisp(code);
   const view = ast.evaluate(library);
-  console.log(ast, view);
   if (view) {
     return (
       <AppProvider i18n={{}}>
