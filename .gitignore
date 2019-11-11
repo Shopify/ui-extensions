@@ -33,3 +33,5 @@ tmp
 **/test.log
 
 tsconfig.tsbuildinfo
+
+.build
