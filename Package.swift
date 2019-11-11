@@ -12,6 +12,6 @@ let package = Package(
         .target(
             name: "AppExtensionLib",
             dependencies: [],
-            path: "AppExtensionLib"),
+            path: "ios/AppExtensionLib"),
     ]
 )
