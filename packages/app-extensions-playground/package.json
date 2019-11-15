@@ -1,11 +1,11 @@
 {
   "name": "@shopify/app-extensions-playground",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "private": true,
   "dependencies": {
-    "@shopify/app-extensions-polaris-components": "^0.0.5",
-    "@shopify/app-extensions-renderer": "^0.0.5",
-    "@shopify/app-extensions-ui-builder": "^0.0.5",
+    "@shopify/app-extensions-polaris-components": "^0.0.6",
+    "@shopify/app-extensions-renderer": "^0.0.6",
+    "@shopify/app-extensions-ui-builder": "^0.0.6",
     "@shopify/polaris": "^3.12.0",
     "@shopify/react-testing": "^1.6.0",
     "@svgr/webpack": "4.1.0",
