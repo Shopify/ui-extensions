@@ -16,8 +16,7 @@
   },
   "private": true,
   "publishConfig": {
-    "access": "restricted",
-    "@shopify:registry": "https://packages.shopify.io/shopify/node/npm/"
+    "access": "restricted"
   },
   "devDependencies": {
     "eslint-plugin-shopify": "^31.0.0",
