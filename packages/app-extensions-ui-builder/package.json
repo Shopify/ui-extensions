@@ -17,7 +17,7 @@
   "private": true,
   "publishConfig": {
     "access": "restricted",
-    "@shopify:registry": "https://packages.shopify.io/shopify/node/npm/"
+    "registry": "https://packages.shopify.io/shopify/node/npm/"
   },
   "devDependencies": {
     "@types/styled-components": "4.1.8",
