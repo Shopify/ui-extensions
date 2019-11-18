@@ -3,8 +3,8 @@
   "version": "0.0.16",
   "private": true,
   "dependencies": {
-    "@shopify/app-extensions-polaris-components": "^0.0.14",
-    "@shopify/app-extensions-renderer": "^0.0.14",
+    "@shopify/app-extensions-polaris-components": "0.0.16",
+    "@shopify/app-extensions-renderer": "0.0.16",
     "@shopify/app-extensions-ui-builder": "0.0.16",
     "@shopify/polaris": "^3.12.0",
     "@shopify/react-testing": "^1.6.0",
