@@ -14,7 +14,6 @@
     "react-dom": "^16.9.0",
     "typescript": "^3.6.4"
   },
-  "private": true,
   "publishConfig": {
     "access": "restricted",
     "registry": "https://packages.shopify.io/shopify/node/npm/"
