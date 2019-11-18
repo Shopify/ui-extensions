@@ -1,6 +1,6 @@
 {
   "name": "@shopify/app-extensions-renderer",
-  "version": "0.0.14",
+  "version": "0.0.13",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
@@ -14,7 +14,6 @@
     "react-dom": "^16.9.0",
     "typescript": "^3.6.4"
   },
-  "private": true,
   "publishConfig": {
     "access": "restricted",
     "registry": "https://packages.shopify.io/shopify/node/npm/"
