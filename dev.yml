@@ -4,7 +4,7 @@ type: node
 
 up:
   - git_hooks:
-      # commit-msg: ./scripts/commitlint.sh
+      commit-msg: ./scripts/commitlint.sh
       pre-commit: ./scripts/prettier.sh
   - railgun
   - node:
