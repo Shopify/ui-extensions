@@ -11,6 +11,13 @@ packages/*/bin
 !packages/*/.eslintrc.js
 *.log
 
+packages/app-extension-playground/.next/*
+
+
+# Built style type definitions
+**/next-env.d.ts
+**/.next
+
 #TS output
 packages/**/dist
 dist

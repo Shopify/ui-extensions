@@ -9,12 +9,12 @@ type ScarletChoiceListProps = {
 
 type CombinedProps = ChoiceListProps & ScarletChoiceListProps;
 
-export default function ChoiceList({label, onChange, value, choices}: CombinedProps) {
+export default function ChoiceList({label, onChange, value, ...props}: CombinedProps) {
   return (
     <PolarisChoiceList
       title={label}
-      choices={choices}
-      selected={[value]}
+      selected={value}
+      {...props}
       onChange={selected => {
         onChange(selected);
       }}

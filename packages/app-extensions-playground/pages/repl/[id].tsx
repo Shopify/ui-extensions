@@ -1,39 +1,19 @@
-import {ActionList, Button, Card, Form, Popover} from '@shopify/polaris';
+import {Layout, Button, Popover, Card, Form, ActionList} from '@shopify/polaris';
 import {Renderer} from '@shopify/app-extensions-renderer';
 import Components from '@shopify/app-extensions-polaris-components';
-import {navigate, useTitle} from 'hookrouter';
+import Router, {useRouter} from 'next/router';
+import Head from 'next/head';
 import {highlight, languages} from 'prismjs';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-lisp';
 import React, {useEffect, useState, useReducer, useMemo} from 'react';
-import ReactCSS from 'react-cssobj';
-import {Col, Grid, Row} from 'react-flexbox-grid';
 import Editor from 'react-simple-code-editor';
-import PrismTheme from '../lib/prism-style';
-import Snippets from './lisp-snippets';
-import ReplActions from './actions';
-import reducer from './reducer';
+import Snippets from '../../actions/repl/lisp-snippets';
+import ReplActions from '../../actions/repl/actions';
+import reducer from '../../actions/repl/reducer';
+import styled from 'styled-components';
 
-const {mapClass} = ReactCSS(PrismTheme, {local: false});
-const {mapClass: mapClassEditor} = ReactCSS({
-  '.MiniEditor': {
-    border: '.1rem solid #c4cdd5',
-    borderRadius: '3px',
-    boxShadow: 'inset 0 1px 0 0 rgba(99,115,129,.05)',
-    padding: '0.5rem 1.2rem',
-  },
-  '.MiniEditor--isFocused': {
-    boxShadow: 'inset 0 1px 0 0 rgba(99,115,129,.05), 0 0 0 0.2rem #5c6ac4',
-  },
-});
-
-interface ReplProps {
-  snippetId: number;
-}
-
-export default function Repl({snippetId}: ReplProps) {
-  useTitle('REPL');
-
+export default function Repl() {
   const [replState, dispatch] = useReducer(reducer, {
     pendingCode: '',
     pendingState: '',
@@ -41,6 +21,9 @@ export default function Repl({snippetId}: ReplProps) {
     state: '',
     activeState: {},
   });
+
+  const {id} = useRouter().query;
+  const snippetId = Number(id) || 0;
 
   useEffect(() => {
     dispatch(ReplActions.loadSnippet(Snippets[snippetId]));
@@ -69,14 +52,18 @@ export default function Repl({snippetId}: ReplProps) {
     content: value.label,
     onAction() {
       togglePopoverActive();
-      navigate(`/repl/${index}`);
+      Router.push(`/repl/${index}`);
     },
   }));
 
-  return mapClass(
-    <Grid style={{padding: 0}} fluid>
-      <Row>
-        <Col first="md" md={8}>
+  return (
+    <>
+      <Head>
+        <title>REPL</title>
+        <link href="/static/css/prism.css" rel="stylesheet" />
+      </Head>
+      <Layout>
+        <Layout.Section>
           <Card>
             <Card.Header actions={formActions} title="REPL">
               <Popover
@@ -108,13 +95,13 @@ export default function Repl({snippetId}: ReplProps) {
               </Card.Section>
             </Form>
           </Card>
-        </Col>
+        </Layout.Section>
 
-        <Col last="md" md={4}>
+        <Layout.Section oneThird>
           <Renderer code={replState.code} components={Components} dataSource={dataSource} />
-        </Col>
-      </Row>
-    </Grid>,
+        </Layout.Section>
+      </Layout>
+    </>
   );
 }
 
@@ -126,28 +113,38 @@ interface MiniEditorProps {
   onChange: (newCode: string) => void;
 }
 
+const MiniEditorContainer = styled.div`
+  border: 0.1rem solid #c4cdd5;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 0 rgba(99, 115, 129, 0.05);
+  padding: 0.5rem 1.2rem;
+
+  &.MiniEditor--isFocused {
+    box-shadow: inset 0 1px 0 0 rgba(99, 115, 129, 0.05), 0 0 0 0.2rem #5c6ac4;
+  }
+`;
+
 function MiniEditor({code, highlightCode, onChange}: MiniEditorProps) {
   const id = `MiniEditor-${MiniEditorCounter++}`;
   const [isFocused, setIsFocused] = useState(false);
-  let className = 'MiniEditor';
+  let className = '';
 
   if (isFocused) {
-    className += ' MiniEditor--isFocused';
+    className += 'MiniEditor--isFocused';
   }
 
   useEffect(() => {
     const textarea = document.getElementById(id);
-
     if (textarea) {
       textarea.onblur = () => setIsFocused(false);
       textarea.onfocus = () => setIsFocused(true);
     }
   });
 
-  return mapClassEditor(
-    <div className={className}>
+  return (
+    <MiniEditorContainer className={className}>
       <Editor
-        highlight={newCode => highlightCode(newCode)}
+        highlight={highlightCode}
         onValueChange={newCode => onChange(newCode)}
         style={{
           fontFamily: 'FMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace',
@@ -155,6 +152,6 @@ function MiniEditor({code, highlightCode, onChange}: MiniEditorProps) {
         textareaId={id}
         value={code}
       />
-    </div>,
+    </MiniEditorContainer>
   );
 }

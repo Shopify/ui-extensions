@@ -1,3 +1,3 @@
 #!/bin/sh
 
-pushd ./packages/app-extensions-playground; yarn start; popd
+pushd ./packages/app-extensions-playground; yarn dev; popd

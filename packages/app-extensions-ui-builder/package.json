@@ -11,16 +11,14 @@
   "dependencies": {
     "@shopify/polaris": "^3.0.0",
     "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react-dom": "^16.9.0",
+    "typescript": "^3.7.2"
   },
   "publishConfig": {
     "access": "restricted",
     "registry": "https://packages.shopify.io/shopify/node/npm/"
   },
   "devDependencies": {
-    "@types/styled-components": "4.1.8",
-    "eslint-plugin-shopify": "^31.0.0",
-    "prettier": "^1.18.2",
-    "typescript": "^3.7.0"
+    "@types/styled-components": "4.1.8"
   }
 }
