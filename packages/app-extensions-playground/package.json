@@ -6,7 +6,7 @@
     "@shopify/app-extensions-polaris-components": "^0.0.19",
     "@shopify/app-extensions-renderer": "^0.0.19",
     "@shopify/app-extensions-ui-builder": "^0.0.19",
-    "@shopify/polaris": "^3.12.0",
+    "@shopify/polaris": "^3.0.0",
     "@shopify/react-testing": "^1.6.0",
     "@svgr/webpack": "4.1.0",
     "@types/styled-components": "4.1.8",

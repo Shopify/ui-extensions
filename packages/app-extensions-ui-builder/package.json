@@ -9,7 +9,7 @@
     "check": "tsc --pretty --noEmit"
   },
   "dependencies": {
-    "@shopify/polaris": "^4.3.0",
+    "@shopify/polaris": "^3.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
