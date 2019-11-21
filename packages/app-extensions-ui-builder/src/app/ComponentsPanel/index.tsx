@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {Heading, Stack, Icon, Scrollable} from '@shopify/polaris';
+import {Scrollable} from '@shopify/polaris';
 import {ChevronLeftMinor, ChevronRightMinor} from '@shopify/polaris-icons';
 import ComponentItem from './ComponentItem';
+import {PanelHeader} from '../components';
 import {useStateValue} from '../../utils/StateProvider';
 
 const ComponentsPanelWrapper = styled.div`
@@ -15,23 +16,6 @@ const ComponentsPanelWrapper = styled.div`
 
   &.collapsed {
     width: 50px;
-  }
-`;
-
-const PanelHeader = styled.div`
-  height: 48px;
-  max-height: 48px;
-  background: white;
-  width: 100%;
-  padding: 12px 16px;
-`;
-
-const PanelHeaderText = styled.div`
-  opacity: 1;
-  transition: opacity 0.1s ease-out, width 0.1s ease-out;
-  &.hidden {
-    width: 0px;
-    opacity: 0;
   }
 `;
 
@@ -49,20 +33,11 @@ export default function Stage() {
   };
 
   const titleBar = (
-    <PanelHeader>
-      <Stack>
-        <Stack.Item fill>
-          <PanelHeaderText className={collasped ? 'hidden' : ''}>
-            <Heading>Components</Heading>
-          </PanelHeaderText>
-        </Stack.Item>
-        <Stack.Item>
-          <div onClick={onIconClick}>
-            <Icon source={collasped ? ChevronRightMinor : ChevronLeftMinor} />
-          </div>
-        </Stack.Item>
-      </Stack>
-    </PanelHeader>
+    <PanelHeader
+      title="Components"
+      icon={collasped ? ChevronRightMinor : ChevronLeftMinor}
+      onActionClick={onIconClick}
+    />
   );
 
   const constructedList = componentList.map(item => (
