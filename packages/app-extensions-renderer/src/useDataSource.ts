@@ -1,4 +1,4 @@
-// import { useState } from "react";
+import {useState} from 'react';
 
 export interface DataSourceEntry {
   id?: string;
@@ -16,12 +16,12 @@ export default function useDataSource(initialEntries: any[]): DataSource {
     throw new Error('Unsupported entry');
   }
 
-  let entries = initialEntries;
-  const setEntries = newEntries => {
-    entries = newEntries;
-  };
+  // let entries = initialEntries;
+  // const setEntries = newEntries => {
+  //   entries = newEntries;
+  // };
 
-  // const [entries, setEntries] = useState(initialEntries);
+  const [entries, setEntries] = useState(initialEntries);
 
   return {
     value: entries,

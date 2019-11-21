@@ -39,17 +39,17 @@ export default function(
 
     'string-join': (...strings: string[]) => strings.reduce((buf, s) => buf + s, ''),
 
-    // "get"(key: string, path?: any) {
-    //   const entry = dataSource.value.find((f) => f.key === key);
-    //   return entry ? (path ? entry.value[path] : entry.value) : undefined;
-    // },
-
-    get(key: string) {
-      const value = dataSource.value[key];
-      if (value === 'true') return true;
-      if (value === 'false') return false;
-      return dataSource.value[key];
+    get(key: string, path?: any) {
+      const entry = dataSource.value.find(f => f.key === key);
+      return entry ? (path ? entry.value[path] : entry.value) : undefined;
     },
+
+    // get(key: string) {
+    //   const value = dataSource.value[key];
+    //   if (value === 'true') return true;
+    //   if (value === 'false') return false;
+    //   return dataSource.value[key];
+    // },
 
     // Will need to be adjusted
     set: (key: string) => (value: any) => {
