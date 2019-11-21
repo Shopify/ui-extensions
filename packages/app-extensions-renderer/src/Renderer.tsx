@@ -1,10 +1,10 @@
 import {AppProvider, FormLayout} from '@shopify/polaris';
 import React, {useMemo} from 'react';
-import {parseLisp} from './ast';
+import {parseLisp, evaluate} from './ast';
 import buildStdlib from './stdlib';
 
 interface ComponentList {
-  [name: string]: any;
+  [name: string]: (props: any, children: any) => ReturnType<typeof React.createElement>;
 }
 interface PropList {
   [name: string]: any;
@@ -28,7 +28,7 @@ export function Renderer({code, dataSource, components}: RendererProps) {
       ...buildComponentLib(components),
     };
 
-    return parseLisp(code).evaluate(library);
+    return evaluate(parseLisp(code), library);
   }, [code, dataSource, components]);
 
   if (view) {
@@ -48,6 +48,14 @@ function buildComponentLib(components: ComponentList): ComponentList {
   }, {});
 }
 
-const reactify = (component: any) => (props: PropList, children: any) => {
+type CreateElementArgs<P extends number> = (typeof React.createElement extends (
+  ...args: infer U
+) => any
+  ? U
+  : never)[P];
+const reactify = (component: CreateElementArgs<0>) => (
+  props: CreateElementArgs<1>,
+  children: CreateElementArgs<2>,
+) => {
   return React.createElement(component, props, children);
 };
