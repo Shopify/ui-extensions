@@ -1,43 +1,35 @@
 import {useState} from 'react';
 
-export interface DataSourceEntry {
-  id?: string;
-  key: string;
-  value: any;
+type LiteralTypes = boolean | string | number;
+
+export interface State<T = LiteralTypes> {
+  [key: string]: T;
 }
 
-export interface DataSource {
-  value: DataSourceEntry[];
-  onChange: (value: DataSourceEntry[]) => void;
+export interface DataSource<T = LiteralTypes> {
+  get: (key: string) => T;
+  set: (key: string, value: T) => void;
+  reset: (newState: State<T>) => void;
 }
 
-export default function useDataSource(initialEntries: any[]): DataSource {
-  if (!isDataSourceEntries(initialEntries)) {
-    throw new Error('Unsupported entry');
-  }
+export default function useDataSource<T>(
+  initialState: State<T> = {},
+  onChange = (state: State<T>) => {},
+): DataSource<T> {
+  const [state, setState] = useState(initialState);
 
-  // let entries = initialEntries;
-  // const setEntries = newEntries => {
-  //   entries = newEntries;
-  // };
-
-  const [entries, setEntries] = useState(initialEntries);
-
-  return {
-    value: entries,
-    onChange: setEntries,
+  const reset: DataSource<T>['reset'] = newState => {
+    setState(newState);
+    onChange(newState);
   };
-}
 
-export function isDataSourceEntries(entries: any[]): entries is DataSourceEntry[] {
-  return entries.every(e => isDataSourceEntry(e));
-}
+  const set: DataSource<T>['set'] = (key, value) => {
+    reset({...state, [key]: value});
+  };
 
-export function isDataSourceEntry(entry: any): entry is DataSourceEntry {
-  return (
-    entry &&
-    typeof entry.id === 'string' &&
-    typeof entry.key === 'string' &&
-    entry.value !== undefined
-  );
+  const get: DataSource<T>['get'] = key => {
+    return state[key];
+  };
+
+  return {get, set, reset};
 }

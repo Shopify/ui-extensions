@@ -7,6 +7,10 @@ export default function(
   onWorkerAction: (id: string, callback: Callback) => void,
 ) {
   const library = {
+    get: dataSource.get,
+    set: (key: Parameters<DataSource['set']>[0]) => (value: Parameters<DataSource['set']>[1]) =>
+      dataSource.set(key, value),
+
     '#'(...args: any[]) {
       const obj: {[key: string]: any} = {};
       for (let i = 0; i < args.length; i += 2) {
@@ -38,38 +42,6 @@ export default function(
     },
 
     'string-join': (...strings: string[]) => strings.reduce((buf, s) => buf + s, ''),
-
-    get(key: string, path?: any) {
-      const entry = dataSource.value.find(f => f.key === key);
-      return entry ? (path ? entry.value[path] : entry.value) : undefined;
-    },
-
-    // get(key: string) {
-    //   const value = dataSource.value[key];
-    //   if (value === 'true') return true;
-    //   if (value === 'false') return false;
-    //   return dataSource.value[key];
-    // },
-
-    // Will need to be adjusted
-    set: (key: string) => (value: any) => {
-      const entries = [...dataSource.value];
-      const entryIndex = dataSource.value.findIndex(f => f.key === key);
-
-      if (entryIndex !== -1) {
-        entries.splice(entryIndex, 1, {
-          ...dataSource.value[entryIndex],
-          value,
-        });
-      } else {
-        entries.push({
-          key,
-          value,
-        });
-      }
-
-      dataSource.onChange(entries);
-    },
 
     watch: (key: string, expression: any) => {
       // useEffect(() => {
