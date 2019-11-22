@@ -23,7 +23,7 @@ const options: Snippet[] = [
    "label"   "Alert"
    "onClick" (alert (get "message")))))
     `.trim(),
-    state: `[{"id": "gid://Shopify/Metafield/1", "key": "message", "value": "Hello World"}]`,
+    state: `{"message": "Hello World"}`,
   },
   {
     label: 'Dynamic Rendering',

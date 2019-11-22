@@ -1,4 +1,2 @@
-import {Renderer} from './Renderer';
-import useDataSource from './useDataSource';
-
-export {Renderer, useDataSource};
+export {Renderer} from './Renderer';
+export {default as useDataSource} from './useDataSource';

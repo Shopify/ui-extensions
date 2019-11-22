@@ -40,7 +40,7 @@ export default function Repl({snippetId}: ReplProps) {
     SetCodeAndStateParam
   >(Snippets[snippetId]);
   const [popoverActive, setPopoverActive] = useState(false);
-  const dataSource = useDataSource([]);
+  const dataSource = useDataSource<boolean | string | number>({});
   const togglePopoverActive = () => setPopoverActive(!popoverActive);
 
   useTitle('REPL');
@@ -61,7 +61,7 @@ export default function Repl({snippetId}: ReplProps) {
       }
     }
 
-    dataSource.onChange(stateJson);
+    dataSource.reset(stateJson);
   }, [evaluatedState]);
 
   const formActions = [
