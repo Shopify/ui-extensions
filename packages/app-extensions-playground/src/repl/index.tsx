@@ -35,12 +35,14 @@ interface SetCodeAndStateParam {
 }
 
 export default function Repl({snippetId}: ReplProps) {
-  const [{code, state}, setCodeAndState] = useState<SetCodeAndStateParam>(Snippets[snippetId]);
+  const snippet = Snippets[snippetId];
+
+  const [{code, state}, setCodeAndState] = useState<SetCodeAndStateParam>(snippet);
   const [{code: evaluatedCode, state: evaluatedState}, setEvaluatedCodeAndState] = useState<
     SetCodeAndStateParam
-  >(Snippets[snippetId]);
+  >(snippet);
   const [popoverActive, setPopoverActive] = useState(false);
-  const dataSource = useDataSource<boolean | string | number>({});
+  const dataSource = useDataSource<boolean | string | number>(JSON.parse(snippet.state));
   const togglePopoverActive = () => setPopoverActive(!popoverActive);
 
   useTitle('REPL');
@@ -51,18 +53,14 @@ export default function Repl({snippetId}: ReplProps) {
   }, [snippetId]);
 
   useEffect(() => {
-    let stateJson;
+    if (!state) return;
 
-    if (evaluatedState) {
-      try {
-        stateJson = JSON.parse(evaluatedState);
-      } catch (_) {
-        stateJson = [];
-      }
+    try {
+      dataSource.reset(JSON.parse(state));
+    } catch (_) {
+      dataSource.reset({});
     }
-
-    dataSource.reset(stateJson);
-  }, [evaluatedState]);
+  }, [state]);
 
   const formActions = [
     {
