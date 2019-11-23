@@ -11,7 +11,7 @@ const options: Snippet[] = [
   "label"   "Hello"
   "onClick" (alert "Test")))
     `.trim(),
-    state: '[]',
+    state: '{}',
   },
   {
     label: 'State',
@@ -47,10 +47,10 @@ const options: Snippet[] = [
    "onClick" (alert (get "message"))
    "label" "Alert")))
     `.trim(),
-    state: `[
-      {"id": "gid://Shopify/Metafield/1", "key": "advancedSettings", "value": false},
-      {"id": "gid://Shopify/Metafield/2", "key": "message", "value": "Hello World"}
-    ]`,
+    state: `{
+  "advancedSettings": false,
+  "message": "Hello World"
+}`,
   },
   {
     label: 'Checkout Example',
@@ -94,12 +94,12 @@ const options: Snippet[] = [
      ; Empty else
      ())))
     `.trim(),
-    state: `[
-      {"id": "gid://Shopify/Metafield/1", "key": "minimumNumberOfShipments", "value": "1"},
-      {"id": "gid://Shopify/Metafield/2", "key": "shippingInterval", "value": "days"},
-      {"id": "gid://Shopify/Metafield/3", "key": "subscriptionType", "value": ""},
-      {"id": "gid://Shopify/Metafield/4", "key": "availableForSubscription", "value": false}
-    ]`,
+    state: `{
+  "minimumNumberOfShipments": "1",
+  "shippingInterval": "days",
+  "subscriptionType": "",
+  "availableForSubscription": false
+}`,
   },
   {
     label: 'Client-Side Validation',
@@ -113,9 +113,7 @@ const options: Snippet[] = [
   "onChange"   (set "value")
   "onValidate" (script "/validate.js")))
     `.trim(),
-    state: `[
-      {"id": "gid://Shopify/Metafield/1", "key": "value", "value": "Hello World"}
-    ]`,
+    state: `{"value": "Hello World"}`,
   },
   {
     label: 'Side-Effects & HTTP',
@@ -137,10 +135,7 @@ const options: Snippet[] = [
      (log (string-join "https://jsonplaceholder.typicode.com/todos/" id))
      (set "record")))))
     `.trim(),
-    state: `[
-      {"id": "gid://Shopify/Metafield/1", "key": "id", "value": ""},
-      {"id": "gid://Shopify/Metafield/2", "key": "record", "value": ""}
-    ]`,
+    state: `{"id": "", "record": ""}`,
   },
   {
     label: 'Charts',
@@ -163,10 +158,10 @@ const options: Snippet[] = [
   ))
   (Stack (#)
     (Button (# "label" "Read all reviews …")))))`,
-    state: `[
-  {"id": "gid://Shopify/Metafield/1", "key": "average-rating", "value": "4.5"},
-  {"id": "gid://Shopify/Metafield/2", "key": "total-number-of-reviews", "value": "42"}
-]`,
+    state: `{
+  "average-rating": "4.5",
+  "total-number-of-reviews": "42"
+}`,
   },
 ];
 
