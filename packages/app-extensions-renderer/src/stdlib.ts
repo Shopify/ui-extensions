@@ -2,10 +2,7 @@ import {DataSource} from './useDataSource';
 
 type Callback = (response: any) => void;
 
-export default function(
-  dataSource: DataSource,
-  onWorkerAction: (id: string, callback: Callback) => void,
-) {
+export default function(dataSource: DataSource) {
   const library = {
     get: dataSource.get,
 
@@ -56,13 +53,6 @@ export default function(
       fetch(url)
         .then(response => response.json())
         .then(callback);
-    },
-
-    sFunction: (id: string, callback: Callback) => value => {
-      const isPrimitive =
-        typeof value === 'string' || typeof value === 'number' || typeof value === 'boolean';
-      // @ts-ignore
-      onWorkerAction(id, callback, isPrimitive ? value : String(value));
     },
   };
 

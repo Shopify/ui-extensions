@@ -2,7 +2,7 @@ import {AppProvider, FormLayout} from '@shopify/polaris';
 import React from 'react';
 import {parseLisp} from './ast';
 import buildStdlib from './stdlib';
-import {DataSource} from './useDataSource';
+import useDataSource, {DataSource, State} from './useDataSource';
 
 interface ComponentList {
   [name: string]: any;
@@ -13,14 +13,16 @@ interface PropList {
 
 interface RendererProps {
   code: string;
-  dataSource: DataSource;
   components: ComponentList;
-  onWorkerAction: (id: string) => void;
+  state?: State;
+  onChange?: (state: State) => void;
 }
 
-export function Renderer({code, dataSource, components, onWorkerAction}: RendererProps) {
+export function Renderer({code, state, components, onChange}: RendererProps) {
+  const dataSource = useDataSource(state, onChange);
+
   const library = {
-    ...buildStdlib(dataSource, onWorkerAction),
+    ...buildStdlib(dataSource),
     ...buildComponentLib(components),
   };
 
