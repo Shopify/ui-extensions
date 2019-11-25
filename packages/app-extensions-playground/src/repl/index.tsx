@@ -1,5 +1,5 @@
 import {ActionList, Button, Card, Form, Popover} from '@shopify/polaris';
-import {Renderer, useDataSource} from '@shopify/app-extensions-renderer';
+import {Renderer} from '@shopify/app-extensions-renderer';
 import Components from '@shopify/app-extensions-polaris-components';
 import {navigate, useTitle} from 'hookrouter';
 import {highlight, languages} from 'prismjs';
@@ -42,7 +42,6 @@ export default function Repl({snippetId}: ReplProps) {
     SetCodeAndStateParam
   >(snippet);
   const [popoverActive, setPopoverActive] = useState(false);
-  const dataSource = useDataSource<boolean | string | number>(JSON.parse(snippet.state));
   const togglePopoverActive = () => setPopoverActive(!popoverActive);
 
   useTitle('REPL');
@@ -52,21 +51,10 @@ export default function Repl({snippetId}: ReplProps) {
     setEvaluatedCodeAndState(Snippets[snippetId]);
   }, [snippetId]);
 
-  useEffect(() => {
-    if (!state) return;
-
-    try {
-      dataSource.reset(JSON.parse(state));
-    } catch (_) {
-      dataSource.reset({});
-    }
-  }, [state]);
-
   const formActions = [
     {
       content: 'Evaluate',
       onAction() {
-        setCodeAndState({code, state});
         setEvaluatedCodeAndState({code, state});
       },
     },
@@ -119,10 +107,9 @@ export default function Repl({snippetId}: ReplProps) {
 
         <Col last="md" md={4}>
           <Renderer
-            onWorkerAction={() => {}}
             code={evaluatedCode}
             components={Components}
-            dataSource={dataSource}
+            state={JSON.parse(evaluatedState)}
           />
         </Col>
       </Row>
