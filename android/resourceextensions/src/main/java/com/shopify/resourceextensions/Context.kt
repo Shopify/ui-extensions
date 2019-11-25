@@ -7,6 +7,8 @@ class Context {
             "#" -> PropertiesFactory()
             "label" -> LabelFactory()
             "button" -> ButtonFactory()
+            "textfield" -> TextFieldFactory()
+            "checkbox" -> CheckBoxFactory()
             else -> null
         }
     }
