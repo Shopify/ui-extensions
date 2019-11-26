@@ -1,5 +1,5 @@
 import {AppProvider, FormLayout} from '@shopify/polaris';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {parseLisp} from './ast';
 import buildStdlib from './stdlib';
 import useDataSource, {DataSource, State} from './useDataSource';
@@ -20,6 +20,7 @@ interface RendererProps {
 
 export function Renderer({code, state, components, onChange}: RendererProps) {
   const dataSource = useDataSource(state, onChange);
+  useEffect(() => dataSource.reset(state || {}), [state]);
 
   const library = {
     ...buildStdlib(dataSource),
@@ -28,6 +29,9 @@ export function Renderer({code, state, components, onChange}: RendererProps) {
 
   const ast = parseLisp(code);
   const view = ast.evaluate(library);
+
+  console.log(view);
+
   if (view) {
     return (
       <AppProvider i18n={{}}>
