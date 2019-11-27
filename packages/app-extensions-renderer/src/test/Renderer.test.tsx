@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {render, fireEvent} from '@testing-library/react';
 
-import {Renderer} from '..';
+import {Renderer, RendererProps} from '..';
 
 describe('Renderer', () => {
   it('renders static UI', () => {
@@ -10,7 +10,9 @@ describe('Renderer', () => {
       Label: ({title}) => <span data-testid="label">{title}</span>,
     };
 
-    const {getByTestId} = render(<Renderer code={code} components={components} />);
+    const {getByTestId} = render(
+      <RendererWithStateManagement code={code} components={components} state={{}} />,
+    );
     expect(getByTestId('label').innerHTML).toEqual('Hello World!');
   });
 
@@ -21,7 +23,11 @@ describe('Renderer', () => {
     };
 
     const {getByTestId} = render(
-      <Renderer code={code} state={{title: 'Hello World!'}} components={components} />,
+      <RendererWithStateManagement
+        code={code}
+        state={{title: 'Hello World!'}}
+        components={components}
+      />,
     );
     expect(getByTestId('label').innerHTML).toEqual('Hello World!');
   });
@@ -43,21 +49,35 @@ describe('Renderer', () => {
       ),
     };
 
-    let receivedExpectedStateUpdate = false;
     const {getByTestId} = render(
-      <Renderer
+      <RendererWithStateManagement
         code={code}
         state={{title: 'Hello World!'}}
         components={components}
-        onChange={newState => {
-          receivedExpectedStateUpdate = newState.title === 'Bye World!';
-        }}
       />,
     );
 
     expect(getByTestId('textfield').getAttribute('value')).toEqual('Hello World!');
     fireEvent.change(getByTestId('textfield'), {target: {value: 'Bye World!'}});
     expect(getByTestId('textfield').getAttribute('value')).toEqual('Bye World!');
-    expect(receivedExpectedStateUpdate).toEqual(true);
   });
 });
+
+type InitialState = {
+  state: {
+    [key: string]: any;
+  };
+};
+
+function RendererWithStateManagement({
+  state: initialState,
+  ...props
+}: Omit<RendererProps, 'dataSource'> & InitialState) {
+  const [state, setState] = useState(initialState);
+  const dataSource = {
+    get: (key: string) => state[key],
+    set: (key: string) => (value: any) => setState({...state, [key]: value}),
+  };
+
+  return <Renderer dataSource={dataSource} {...props} />;
+}

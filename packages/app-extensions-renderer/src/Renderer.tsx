@@ -1,8 +1,7 @@
 import {AppProvider, FormLayout} from '@shopify/polaris';
-import React, {useEffect, useCallback} from 'react';
+import React, {useMemo} from 'react';
 import {parseLisp} from './ast';
 import buildStdlib from './stdlib';
-import useDataSource, {DataSource, State} from './useDataSource';
 
 interface ComponentList {
   [name: string]: any;
@@ -11,30 +10,31 @@ interface PropList {
   [name: string]: any;
 }
 
-interface RendererProps {
-  code: string;
-  components: ComponentList;
-  state?: State;
-  onChange?: (state: State) => void;
+export interface DataSource {
+  get: (key: string) => any;
+  set: (key: string) => (value: any) => void;
 }
 
-export function Renderer({code, state, components, onChange}: RendererProps) {
-  const dataSource = useDataSource(state, onChange);
-  const key = useCallback(() => Math.random(), [state, code]);
-  useEffect(() => dataSource.reset(state || {}), [state]);
+export interface RendererProps {
+  code: string;
+  components: ComponentList;
+  dataSource: DataSource;
+}
 
-  const library = {
-    ...buildStdlib(dataSource),
-    ...buildComponentLib(components),
-  };
+export function Renderer({code, dataSource, components}: RendererProps) {
+  const view = useMemo(() => {
+    const library = {
+      ...buildStdlib(dataSource),
+      ...buildComponentLib(components),
+    };
 
-  const ast = parseLisp(code);
-  const view = ast.evaluate(library);
+    return parseLisp(code).evaluate(library);
+  }, [code, dataSource, components]);
 
   if (view) {
     return (
       <AppProvider i18n={{}}>
-        <FormLayout key={key()}>{view}</FormLayout>
+        <FormLayout>{view}</FormLayout>
       </AppProvider>
     );
   }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {TextField as PolarisTextField, TextFieldProps} from '@shopify/polaris';
 
 type ScarletTextfieldProps = {

@@ -1,2 +1,2 @@
-export {Renderer} from './Renderer';
-export {default as useDataSource} from './useDataSource';
+export {Renderer, RendererProps} from './Renderer';
+export {DataSource} from './Renderer';

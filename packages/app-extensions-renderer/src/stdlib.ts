@@ -1,13 +1,11 @@
-import {DataSource} from './useDataSource';
+import {DataSource} from '.';
 
 type Callback = (response: any) => void;
 
 export default function(dataSource: DataSource) {
   const library = {
     get: dataSource.get,
-
-    set: (key: Parameters<DataSource['set']>[0]) => (value: Parameters<DataSource['set']>[1]) =>
-      dataSource.set(key, value),
+    set: dataSource.set,
 
     if: (condition, trueCase, falseCase?) => (condition ? trueCase : falseCase),
 

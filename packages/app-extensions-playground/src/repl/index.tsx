@@ -5,12 +5,14 @@ import {navigate, useTitle} from 'hookrouter';
 import {highlight, languages} from 'prismjs';
 import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-lisp';
-import React, {useEffect, useState, useReducer} from 'react';
+import React, {useEffect, useState, useReducer, useMemo} from 'react';
 import ReactCSS from 'react-cssobj';
 import {Col, Grid, Row} from 'react-flexbox-grid';
 import Editor from 'react-simple-code-editor';
 import PrismTheme from '../lib/prism-style';
-import Snippets, {Snippet} from './lisp-snippets';
+import Snippets from './lisp-snippets';
+import ReplActions from './actions';
+import reducer from './reducer';
 
 const {mapClass} = ReactCSS(PrismTheme, {local: false});
 const {mapClass: mapClassEditor} = ReactCSS({
@@ -29,70 +31,27 @@ interface ReplProps {
   snippetId: number;
 }
 
-type ReplAction<T, P = {}> = {type: T} & P;
-
-interface ReplState {
-  pendingCode: string;
-  pendingState: string;
-  code: string;
-  state: {[key: string]: any};
-}
-
-type ReplActions =
-  | ReplAction<'UPDATE_PENDING_STATE', {state: string}>
-  | ReplAction<'UPDATE_PENDING_CODE', {code: string}>
-  | ReplAction<'LOAD_SNIPPET', {state: string; code: string}>
-  | ReplAction<'EVALUATE'>;
-
-const ReplActions: {[name: string]: (...args: any) => ReplActions} = {
-  updatePendingCode: code => ({type: 'UPDATE_PENDING_CODE', code}),
-  updatePendingState: state => ({type: 'UPDATE_PENDING_STATE', state}),
-  evaluate: () => ({type: 'EVALUATE'}),
-  loadSnippet: ({code, state}: Snippet) => ({type: 'LOAD_SNIPPET', code, state}),
-};
-
-function reducer(state: ReplState, action: ReplActions): ReplState {
-  switch (action.type) {
-    case 'EVALUATE':
-      const newState = {
-        ...state,
-        code: state.pendingCode,
-        state: JSON.parse(state.pendingState || '{}'),
-      };
-      console.log('Code', newState.code);
-      console.log('State', newState.state);
-      return newState;
-    case 'LOAD_SNIPPET':
-      if (state.pendingCode === action.code && state.pendingState === action.state) return state;
-
-      return reducer(
-        {
-          ...state,
-          pendingState: action.state,
-          pendingCode: action.code,
-        },
-        {type: 'EVALUATE'},
-      );
-    case 'UPDATE_PENDING_CODE':
-      return {...state, pendingCode: action.code};
-    case 'UPDATE_PENDING_STATE':
-      return {...state, pendingState: action.state};
-  }
-}
-
 export default function Repl({snippetId}: ReplProps) {
   useTitle('REPL');
 
   const [replState, dispatch] = useReducer(reducer, {
-    code: '',
-    state: {},
     pendingCode: '',
     pendingState: '',
+    code: '',
+    state: '',
+    activeState: {},
   });
 
   useEffect(() => {
     dispatch(ReplActions.loadSnippet(Snippets[snippetId]));
   }, [snippetId]);
+
+  const dataSource = useMemo(() => {
+    return {
+      get: (key: string) => replState.activeState[key],
+      set: (key: string) => (value: any) => dispatch(ReplActions.setState(key, value)),
+    };
+  }, [replState.activeState]);
 
   const [popoverActive, setPopoverActive] = useState(false);
   const togglePopoverActive = () => setPopoverActive(!popoverActive);
@@ -152,7 +111,7 @@ export default function Repl({snippetId}: ReplProps) {
         </Col>
 
         <Col last="md" md={4}>
-          <Renderer code={replState.code} components={Components} state={replState.state} />
+          <Renderer code={replState.code} components={Components} dataSource={dataSource} />
         </Col>
       </Row>
     </Grid>,
