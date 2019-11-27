@@ -14,18 +14,16 @@ export default function Textfield({
   ...props
 }: CombinedProps) {
   const [error, setError] = useState('');
-  const [textValue, setTextValue] = useState(value);
 
   return (
     <PolarisTextField
       {...props}
-      value={textValue}
+      value={value}
       error={error}
       onChange={(newValue, id) => {
         if (onValidate) {
           onValidate(newValue).then(valid => (valid ? setError('') : setError('Invalid input')));
         }
-        setTextValue(newValue);
         onChange(newValue, id);
       }}
     />

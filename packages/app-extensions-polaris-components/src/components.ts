@@ -5,7 +5,6 @@ import Checkbox from './Checkbox';
 import ChoiceList from './ChoiceList';
 import FormGroup from './Form';
 import Label from './Label';
-import Select from './Select';
 import Textfield from './Textfield';
 
 const StackItem = Polaris.Stack.Item;
@@ -18,7 +17,6 @@ const components = {
   Textfield,
   Card,
   FormGroup,
-  Select,
   StackItem,
 };
 
