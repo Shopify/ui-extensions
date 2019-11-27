@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.23](https://github.com/Shopify/app-extension-libs/compare/v0.0.22...v0.0.23) (2019-11-27)
+
+
+### Bug Fixes
+
+* **components:** fix broken reference ([f1ad9bd](https://github.com/Shopify/app-extension-libs/commit/f1ad9bd52d365db8780e881b947484e99fbc1841))
+
+
+
+
+
 ## [0.0.17](https://github.com/Shopify/app-extension-libs/compare/v0.0.16...v0.0.17) (2019-11-18)
 
 
