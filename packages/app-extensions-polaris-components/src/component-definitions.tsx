@@ -10,7 +10,6 @@ export {default as Icon} from './Icon/builder-definition';
 export {default as Label} from './Label/builder-definition';
 export {default as List} from './List/builder-definition';
 export {default as Scrollable} from './Scrollable/builder-definition';
-export {default as Select} from './Select/builder-definition';
 export {default as SubHeading} from './SubHeading/builder-definition';
 export {default as TextContainer} from './TextContainer/builder-definition';
 export {default as TextStyle} from './TextStyle/builder-definition';
