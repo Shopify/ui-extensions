@@ -115,54 +115,6 @@ const options: Snippet[] = [
     `.trim(),
     state: `{"value": "Hello World"}`,
   },
-  {
-    label: 'Side-Effects & HTTP',
-    code: `
-; Side-effects & HTTP
-;
-; Remote data calls based on form interactions.
-
-((Card (#)
-  ((Textfield (#
-     "label"  "Record ID"
-     "value"  (get "id")
-     "onChange" (set "id")))
-
-   (Label (# "caption" (get "record" "title")))))
-
- (watch "id" (lambda (id)
-   (http-request "GET"
-     (log (string-join "https://jsonplaceholder.typicode.com/todos/" id))
-     (set "record")))))
-    `.trim(),
-    state: `{"id": "", "record": ""}`,
-  },
-  {
-    label: 'Charts',
-    code: `
-; Charts
-;
-; Chart drawing with the canvas element.
-
-(Chart (# "onLoad" (script "/draw.js")))
-    `.trim(),
-    state: '[]',
-  },
-  {
-    label: 'Product Reviews',
-    code: `; Product Reviews
-(Card (# "label" "Product Reviews") (
-  (Stack (#) (
-    (StackItem (# "fill" true) (Label (# "caption" "Average Rating")))
-    (StarRating (# "rating" (get "average-rating") "totalReviews" (get "total-number-of-reviews")))
-  ))
-  (Stack (#)
-    (Button (# "label" "Read all reviews …")))))`,
-    state: `{
-  "average-rating": "4.5",
-  "total-number-of-reviews": "42"
-}`,
-  },
 ];
 
 export default options;
