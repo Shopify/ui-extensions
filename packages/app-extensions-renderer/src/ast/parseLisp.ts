@@ -1,6 +1,5 @@
 import {AST, Literal, Identifier, List} from '.';
 import {StringScanner} from 'strscan';
-import {isString} from 'util';
 
 const NUMBER_PATTERN = /\d+(?=\s|$|\))/;
 // const STRING_PATTERN = /".*?(?<!\\)"/; // Regex from rails implementation

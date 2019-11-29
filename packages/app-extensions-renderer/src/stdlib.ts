@@ -1,7 +1,5 @@
 import {DataSource} from '.';
 
-type Callback = (response: any) => void;
-
 export default function(dataSource: DataSource) {
   const library = {
     get: dataSource.get,
@@ -30,28 +28,6 @@ export default function(dataSource: DataSource) {
     true: true,
 
     false: false,
-
-    script: (url: string) => (value: string) => {
-      const worker = new Worker(url);
-      return new Promise((resolve, reject) => {
-        worker.onmessage = ({data}) => resolve(data);
-        worker.postMessage(value);
-      });
-    },
-
-    'string-join': (...strings: string[]) => strings.reduce((buf, s) => buf + s, ''),
-
-    watch: (key: string, expression: any) => {
-      // useEffect(() => {
-      //   expression(library.get(key));
-      // }, [library.get(key)]);
-    },
-
-    'http-request': (httpMethod: string, url: string, callback: (response: any) => void) => {
-      fetch(url)
-        .then(response => response.json())
-        .then(callback);
-    },
   };
 
   return library;
