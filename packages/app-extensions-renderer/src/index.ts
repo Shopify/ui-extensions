@@ -1,2 +1,8 @@
-export {Renderer, RendererProps} from './Renderer';
+export {
+  Renderer,
+  RendererWithJSONParser,
+  RendererWithLispParser,
+  RendererProps,
+  RendererWithParserProps,
+} from './Renderer';
 export {DataSource} from './Renderer';

@@ -1,7 +1,7 @@
 import {DataSource} from '.';
 
 export default function(dataSource: DataSource) {
-  const library = {
+  return {
     get: dataSource.get,
     set: dataSource.set,
 
@@ -29,6 +29,4 @@ export default function(dataSource: DataSource) {
 
     false: false,
   };
-
-  return library;
 }

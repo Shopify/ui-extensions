@@ -1,6 +1,6 @@
 import {Identifier, Literal, List, evaluate} from '..';
 
-describe(evaluate, () => {
+describe('evaluate', () => {
   it('supports constants', () => {
     const runtimeContext = {test: 1};
     expect(evaluate(new Identifier('test'), runtimeContext)).toEqual(1);

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {render, fireEvent} from '@testing-library/react';
 
-import {Renderer, RendererProps} from '..';
+import {RendererWithLispParser as Renderer, RendererWithParserProps} from '../Renderer';
 
 describe('Renderer', () => {
   it('renders static UI', () => {
@@ -72,7 +72,7 @@ type InitialState = {
 function RendererWithStateManagement({
   state: initialState,
   ...props
-}: Omit<RendererProps, 'dataSource'> & InitialState) {
+}: Omit<RendererWithParserProps, 'dataSource'> & InitialState) {
   const [state, setState] = useState(initialState);
   const dataSource = {
     get: (key: string) => state[key],

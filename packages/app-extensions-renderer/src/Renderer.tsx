@@ -1,13 +1,11 @@
 import {AppProvider, FormLayout} from '@shopify/polaris';
 import React, {useMemo} from 'react';
-import {parseLisp, evaluate} from './ast';
+import {parseLisp, evaluate, AST, parseJSON} from './ast';
 import buildStdlib from './stdlib';
+import {SSL_OP_SSLEAY_080_CLIENT_DH_BUG} from 'constants';
 
 interface ComponentList {
   [name: string]: (props: any, children: any) => ReturnType<typeof React.createElement>;
-}
-interface PropList {
-  [name: string]: any;
 }
 
 export interface DataSource {
@@ -16,20 +14,18 @@ export interface DataSource {
 }
 
 export interface RendererProps {
-  code: string;
+  ast: AST;
   components: ComponentList;
   dataSource: DataSource;
 }
 
-export function Renderer({code, dataSource, components}: RendererProps) {
+export function Renderer({ast, dataSource, components}: RendererProps) {
+  const componentLib = useMemo(() => buildComponentLib(components), [components]);
+  const stdlib = useMemo(() => buildStdlib(dataSource), [dataSource]);
+  const library = useMemo(() => ({...componentLib, ...stdlib}), [componentLib, stdlib]);
   const view = useMemo(() => {
-    const library = {
-      ...buildStdlib(dataSource),
-      ...buildComponentLib(components),
-    };
-
-    return evaluate(parseLisp(code), library);
-  }, [code, dataSource, components]);
+    return evaluate(ast, library);
+  }, [ast, library]);
 
   if (view) {
     return (
@@ -41,6 +37,14 @@ export function Renderer({code, dataSource, components}: RendererProps) {
   return null;
 }
 
+export type RendererWithParserProps = Omit<RendererProps, 'ast'> & {code: string};
+export const createRendererWithParser = (parse: (code: string) => AST) => ({
+  code,
+  ...props
+}: RendererWithParserProps) => <Renderer ast={useMemo(() => parse(code), [code])} {...props} />;
+export const RendererWithLispParser = createRendererWithParser(parseLisp);
+export const RendererWithJSONParser = createRendererWithParser(parseJSON);
+
 function buildComponentLib(components: ComponentList): ComponentList {
   return Object.keys(components).reduce((lib: ComponentList, name) => {
     lib[name] = reactify(components[name]);
@@ -48,14 +52,10 @@ function buildComponentLib(components: ComponentList): ComponentList {
   }, {});
 }
 
-type CreateElementArgs<P extends number> = (typeof React.createElement extends (
-  ...args: infer U
-) => any
-  ? U
-  : never)[P];
-const reactify = (component: CreateElementArgs<0>) => (
-  props: CreateElementArgs<1>,
-  children: CreateElementArgs<2>,
+type CreateElementParameters = Parameters<typeof React.createElement>;
+const reactify = (component: CreateElementParameters[0]) => (
+  props: CreateElementParameters[1],
+  children: CreateElementParameters[2],
 ) => {
   return React.createElement(component, props, children);
 };

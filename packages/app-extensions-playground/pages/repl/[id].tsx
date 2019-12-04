@@ -1,5 +1,5 @@
 import {Layout, Button, Popover, Card, Form, ActionList} from '@shopify/polaris';
-import {Renderer} from '@shopify/app-extensions-renderer';
+import {RendererWithLispParser as Renderer} from '@shopify/app-extensions-renderer';
 import Components from '@shopify/app-extensions-polaris-components';
 import Router, {useRouter} from 'next/router';
 import Head from 'next/head';
