@@ -1,6 +1,6 @@
-import {Identifier, Literal, List, generateLisp} from '..'
+import {Identifier, Literal, List, generateLisp} from '..';
 
-describe(generateLisp, () => {
+describe('generateLisp', () => {
   it('supports identifiers', () => {
     expect(generateLisp(new Identifier('test'))).toEqual('test');
   });
