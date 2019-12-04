@@ -1,4 +1,4 @@
-import stdlib from '../stdlib';
+import {buildStandardLibrary} from '../runtime';
 
 class DataSource {
   private __data: any;
@@ -21,7 +21,7 @@ const buildStdLib = (initialData: any) => {
   return {
     dataSource,
     // @ts-ignore
-    library: stdlib(dataSource),
+    library: buildStandardLibrary(dataSource),
   };
 };
 

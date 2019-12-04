@@ -1,17 +1,8 @@
 import {AppProvider, FormLayout} from '@shopify/polaris';
 import React, {useMemo} from 'react';
 import {parseLisp, evaluate, AST, parseJSON} from './ast';
-import buildStdlib from './stdlib';
-import {SSL_OP_SSLEAY_080_CLIENT_DH_BUG} from 'constants';
-
-interface ComponentList {
-  [name: string]: (props: any, children: any) => ReturnType<typeof React.createElement>;
-}
-
-export interface DataSource {
-  get: (key: string) => any;
-  set: (key: string) => (value: any) => void;
-}
+import {buildStandardLibrary, ComponentList, buildComponentLibrary} from './runtime';
+import {DataSource} from '.';
 
 export interface RendererProps {
   ast: AST;
@@ -20,8 +11,8 @@ export interface RendererProps {
 }
 
 export function Renderer({ast, dataSource, components}: RendererProps) {
-  const componentLib = useMemo(() => buildComponentLib(components), [components]);
-  const stdlib = useMemo(() => buildStdlib(dataSource), [dataSource]);
+  const componentLib = useMemo(() => buildComponentLibrary(components), [components]);
+  const stdlib = useMemo(() => buildStandardLibrary(dataSource), [dataSource]);
   const library = useMemo(() => ({...componentLib, ...stdlib}), [componentLib, stdlib]);
   const view = useMemo(() => {
     return evaluate(ast, library);
@@ -44,18 +35,3 @@ export const createRendererWithParser = (parse: (code: string) => AST) => ({
 }: RendererWithParserProps) => <Renderer ast={useMemo(() => parse(code), [code])} {...props} />;
 export const RendererWithLispParser = createRendererWithParser(parseLisp);
 export const RendererWithJSONParser = createRendererWithParser(parseJSON);
-
-function buildComponentLib(components: ComponentList): ComponentList {
-  return Object.keys(components).reduce((lib: ComponentList, name) => {
-    lib[name] = reactify(components[name]);
-    return lib;
-  }, {});
-}
-
-type CreateElementParameters = Parameters<typeof React.createElement>;
-const reactify = (component: CreateElementParameters[0]) => (
-  props: CreateElementParameters[1],
-  children: CreateElementParameters[2],
-) => {
-  return React.createElement(component, props, children);
-};

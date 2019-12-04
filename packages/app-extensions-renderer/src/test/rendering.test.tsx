@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {render, fireEvent} from '@testing-library/react';
 
-import {RendererWithLispParser as Renderer, RendererWithParserProps} from '../Renderer';
+import {RendererWithLispParser, RendererWithParserProps} from '..';
 
 describe('Renderer', () => {
   it('renders static UI', () => {
@@ -79,5 +79,5 @@ function RendererWithStateManagement({
     set: (key: string) => (value: any) => setState({...state, [key]: value}),
   };
 
-  return <Renderer dataSource={dataSource} {...props} />;
+  return <RendererWithLispParser dataSource={dataSource} {...props} />;
 }

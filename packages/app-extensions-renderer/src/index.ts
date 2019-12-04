@@ -4,5 +4,11 @@ export {
   RendererWithLispParser,
   RendererProps,
   RendererWithParserProps,
-} from './Renderer';
-export {DataSource} from './Renderer';
+} from './rendering';
+
+export {buildComponentLibrary, buildStandardLibrary} from './runtime';
+
+export interface DataSource {
+  get: (key: string) => any;
+  set: (key: string) => (value: any) => void;
+}
