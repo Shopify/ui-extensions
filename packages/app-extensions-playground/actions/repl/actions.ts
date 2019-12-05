@@ -1,4 +1,4 @@
-import {Snippet} from './lisp-snippets';
+import {Snippet} from './snippets';
 
 type ReplAction<T, P = {}> = {type: T} & P;
 
@@ -14,6 +14,11 @@ const ReplActionFactories: {[name: string]: (...args: any) => ReplActions} = {
   updatePendingState: state => ({type: 'UPDATE_PENDING_STATE', state}),
   evaluate: () => ({type: 'EVALUATE'}),
   loadSnippet: ({code, state}: Snippet) => ({type: 'LOAD_SNIPPET', code, state}),
+  loadJSONSnippet: ({json, state}: Snippet) => ({
+    type: 'LOAD_SNIPPET',
+    code: JSON.stringify(JSON.parse(json), null, 2),
+    state,
+  }),
   setState: (key, value) => ({type: 'SET_STATE', key, value}),
 };
 

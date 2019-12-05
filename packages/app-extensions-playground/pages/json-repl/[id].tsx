@@ -1,5 +1,5 @@
 import {Layout, Button, Popover, Card, Form, ActionList} from '@shopify/polaris';
-import {RendererWithLispParser as Renderer} from '@shopify/app-extensions-renderer';
+import {RendererWithJSONParser as Renderer} from '@shopify/app-extensions-renderer';
 import Components from '@shopify/app-extensions-polaris-components';
 import Router, {useRouter} from 'next/router';
 import Head from 'next/head';
@@ -12,11 +12,11 @@ import ReplActions from '../../actions/repl/actions';
 import reducer from '../../actions/repl/reducer';
 import MiniEditor from '../../components/MiniEditor';
 
-export default function Repl() {
+export default function JSONRepl() {
   const [replState, dispatch] = useReducer(reducer, {
     pendingCode: '',
     pendingState: '',
-    code: '',
+    code: '{}',
     state: '',
     activeState: {},
   });
@@ -25,7 +25,7 @@ export default function Repl() {
   const snippetId = Number(id) || 0;
 
   useEffect(() => {
-    dispatch(ReplActions.loadSnippet(Snippets[snippetId]));
+    dispatch(ReplActions.loadJSONSnippet(Snippets[snippetId]));
   }, [snippetId]);
 
   const dataSource = useMemo(() => {
@@ -51,7 +51,7 @@ export default function Repl() {
     content: value.label,
     onAction() {
       togglePopoverActive();
-      Router.push(`/repl/${index}`);
+      Router.push(`/json-repl/${index}`);
     },
   }));
 
@@ -80,15 +80,15 @@ export default function Repl() {
             <Form onSubmit={() => {}}>
               <Card.Section title="Code">
                 <MiniEditor
-                  id="lisp-code"
+                  id="json-code"
                   code={replState.pendingCode}
-                  highlightCode={newCode => highlight(newCode, languages.lisp, 'lisp')}
+                  highlightCode={newCode => highlight(newCode, languages.json, 'json')}
                   onChange={code => dispatch(ReplActions.updatePendingCode(code))}
                 />
               </Card.Section>
               <Card.Section title="State">
                 <MiniEditor
-                  id="lisp-state"
+                  id="json-state"
                   code={replState.pendingState}
                   highlightCode={newState => highlight(newState, languages.json, 'json')}
                   onChange={state => dispatch(ReplActions.updatePendingState(state))}
