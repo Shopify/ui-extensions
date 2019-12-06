@@ -1,11 +1,11 @@
 import * as Polaris from '@shopify/polaris';
-import Button from './Button';
-import Card from './Card';
-import Checkbox from './Checkbox';
-import ChoiceList from './ChoiceList';
-import FormGroup from './Form';
-import Label from './Label';
-import TextField from './Textfield';
+import Button from './Button/Button';
+import Card from './Card/Card';
+import Checkbox from './Checkbox/Checkbox';
+import ChoiceList from './ChoiceList/ChoiceList';
+import FormGroup from './Form/Form';
+import List from './List/List';
+import TextField from './TextField/TextField';
 
 const StackItem = Polaris.Stack.Item;
 
@@ -13,8 +13,8 @@ const components = {
   Button,
   Checkbox,
   ChoiceList,
-  Label,
   TextField,
+  List,
   Card,
   FormGroup,
   StackItem,

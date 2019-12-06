@@ -10,10 +10,8 @@ const Container = styled.div`
 export default function Builder() {
   const componentList = [
     ComponentDefinitions.Button,
-    ComponentDefinitions.Textfield,
+    ComponentDefinitions.TextField,
     ComponentDefinitions.Checkbox,
-    ComponentDefinitions.Caption,
-    ComponentDefinitions.Badge,
   ];
 
   return (
