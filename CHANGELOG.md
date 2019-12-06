@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.24](https://github.com/Shopify/app-extension-libs/compare/v0.0.23...v0.0.24) (2019-12-06)
+
+
+### Bug Fixes
+
+* re-enable build check in CI ([91fb603](https://github.com/Shopify/app-extension-libs/commit/91fb60334dad07c58b0759333bba22ef45818056))
+
+
+### Features
+
+* **playground:** add JSON Repl page and home card ([9e36069](https://github.com/Shopify/app-extension-libs/commit/9e3606922a3a713738487c22d74d11efaaeb8a82))
+* **renderer:** extract parsing from Renderer ([289fc09](https://github.com/Shopify/app-extension-libs/commit/289fc0932b9d172fb78e99f8ab2f8fe53da7eed3))
+
+
+
+
+
 ## [0.0.23](https://github.com/Shopify/app-extension-libs/compare/v0.0.22...v0.0.23) (2019-11-27)
 
 
