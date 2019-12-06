@@ -1,6 +1,6 @@
-import Textfield from './Textfield';
-import TextfieldDefinition from './builder-definition';
+import TextField from './TextField';
+import TextFieldDefinition from './builder-definition';
 
-export default Textfield;
+export default TextField;
 
-export {TextfieldDefinition};
+export {TextFieldDefinition};

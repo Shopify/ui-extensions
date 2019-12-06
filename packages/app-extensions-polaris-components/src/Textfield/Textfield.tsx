@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import {TextField as PolarisTextField, TextFieldProps} from '@shopify/polaris';
 
-type ScarletTextfieldProps = {
+type ScarletTextFieldProps = {
   onValidate?: (value: string) => Promise<boolean>;
 };
 
-type CombinedProps = ScarletTextfieldProps & TextFieldProps;
+type CombinedProps = ScarletTextFieldProps & TextFieldProps;
 
-export default function Textfield({
+export default function TextField({
   value,
   onChange = () => {},
   onValidate,
