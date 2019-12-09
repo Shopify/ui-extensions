@@ -1,6 +1,6 @@
 {
   "name": "@shopify/app-extensions-ui-builder",
-  "version": "0.0.24",
+  "version": "0.0.25",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
