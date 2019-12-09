@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.26](https://github.com/Shopify/app-extension-libs/compare/v0.0.25...v0.0.26) (2019-12-09)
+
+
+### Bug Fixes
+
+* **components:** add items prop to List ([b986475](https://github.com/Shopify/app-extension-libs/commit/b986475d108088fc2b0d7a0d03c1f88f5e736742))
+* **components:** fix text elements rendering children ([441a1bc](https://github.com/Shopify/app-extension-libs/commit/441a1bc1390f0b6802993d9ae05c0a42f3487b8f))
+
+
+
+
+
 ## [0.0.25](https://github.com/Shopify/app-extension-libs/compare/v0.0.24...v0.0.25) (2019-12-09)
 
 **Note:** Version bump only for package @shopify/app-extensions-polaris-components
