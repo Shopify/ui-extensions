@@ -8,17 +8,16 @@ class CheckBoxFactory : Factory {
 
 }
 
-class CheckBox (context: Context, args: kotlin.collections.List<Node>) {
+class CheckBox(context: Context, args: kotlin.collections.List<Node>) {
 
-    var checked: Boolean = false
+    var label: String? = null
 
     init {
         args.forEach { node ->
             (node.evaluate(context) as? Properties)?.let { properties ->
-                // TODO
+                label = properties["label"] as String
             }
         }
     }
 
 }
-

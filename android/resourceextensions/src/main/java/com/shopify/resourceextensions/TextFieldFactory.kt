@@ -21,4 +21,3 @@ class TextField(context: Context, args: kotlin.collections.List<Node>) {
     }
 
 }
-
