@@ -17,24 +17,24 @@ export default function parseLisp(lisp: string | StringScanner): AST {
 
   while (!scanner.hasTerminated()) {
     if (scanner.scan(NUMBER_PATTERN)) {
-      buffer.push(new Literal(parseInt(scanner.match)));
+      buffer.push(Literal(parseInt(scanner.match)));
     } else if (scanner.scan(STRING_PATTERN)) {
       const value = scanner.match;
-      buffer.push(new Literal(value.substring(1, value.length - 1)));
+      buffer.push(Literal(value.substring(1, value.length - 1)));
     } else if (scanner.scan(EMPTY_LIST_PATTERN)) {
-      buffer.push(new List([]));
+      buffer.push(List([]));
     } else if (scanner.scan(LIST_START_PATTERN)) {
       buffer.push(parseLisp(scanner));
     } else if (scanner.scan(LIST_END_PATTERN)) {
-      return new List(buffer);
+      return List(buffer);
     } else if (scanner.scan(WHITESPACE_PATTERN)) {
       // noop
     } else if (scanner.scan(IDENTIFIER_PATTERN)) {
-      buffer.push(new Identifier(scanner.match));
+      buffer.push(Identifier(scanner.match));
     } else {
       throw 'Unknown token';
     }
   }
 
-  return buffer.pop() || new List([]);
+  return buffer.pop() || List([]);
 }

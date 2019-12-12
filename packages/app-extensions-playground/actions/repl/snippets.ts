@@ -47,7 +47,7 @@ const options: Snippet[] = [
   },
   {
     label: 'State',
-    code: `((Textfield (#
+    code: `((TextField (#
    "value"    (get "message")
    "onChange" (set "message")))
 
@@ -57,7 +57,7 @@ const options: Snippet[] = [
     `.trim(),
     json: `[
       [{
-          "value": "Textfield",
+          "value": "TextField",
           "type": "identifier"
         },
         [{
@@ -134,17 +134,13 @@ const options: Snippet[] = [
   {
     label: 'Dynamic Rendering',
     code: `
-; Dynamic rendering
-;
-; Conditional logic interacting with controlled local state.
-
 ((Checkbox (#
    "label"    "Customize Message"
    "checked"  (get "advancedSettings")
    "onChange" (set "advancedSettings")))
 
  (if (get "advancedSettings")
-   (Textfield (#
+   (TextField (#
      "value"    (get "message")
      "onChange" (set "message" value)))
    ())
@@ -202,7 +198,7 @@ const options: Snippet[] = [
           "type": "literal"
         }],
         [{
-            "value": "Textfield",
+            "value": "TextField",
             "type": "identifier"
           },
           [{
@@ -276,17 +272,12 @@ const options: Snippet[] = [
   {
     label: 'Checkout Example',
     code: `
-; Checkout example
-;
-; Dynamic fields with conditional logic and rendering.
-
-(Card (# label "Subscription settings")
+(Card (# "label" "Subscription settings")
   ((Checkbox (#
      "label"    "Products in this collection are available for subscription"
      "checked"  (get "availableForSubscription")
      "onChange" (set "availableForSubscription")))
 
-   ; Conditionally show form
    (if (get "availableForSubscription")
      ((ChoiceList (#
         "label"    "Subscription type"
@@ -298,7 +289,7 @@ const options: Snippet[] = [
            (# "label" "Pre-paid subscription only" "value" "prepaid-subscription-only"))))
 
       (FormGroup (#)
-        ((Textfield (#
+        ((TextField (#
             "label"    "Minimum number of shipments"
             "value"    (get "minimumNumberOfShipments")
             "onChange" (set "minimumNumberOfShipments")))
@@ -311,8 +302,6 @@ const options: Snippet[] = [
              (# "label" "Days" "value" "days")
              (# "label" "Weeks" "value" "weeks")
              (# "label" "Months" "value" "months")))))))
-
-     ; Empty else
      ())))
     `.trim(),
     json: `[{
@@ -489,7 +478,7 @@ const options: Snippet[] = [
             }],
             [
               [{
-                  "value": "Textfield",
+                  "value": "TextField",
                   "type": "identifier"
                 },
                 [{

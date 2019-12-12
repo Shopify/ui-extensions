@@ -6,6 +6,8 @@ export {
   RendererWithParserProps,
 } from './rendering';
 
+export * from './ast';
+
 export {buildComponentLibrary, buildStandardLibrary} from './runtime';
 
 export interface DataSource {

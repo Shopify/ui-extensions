@@ -2,7 +2,7 @@ import {List, Identifier, Literal, traverse, NodeType} from '..';
 
 describe('traverse', () => {
   it('performs a depth first search', () => {
-    const ast = new List([new Identifier('+'), new Literal(1), new Literal(1)]);
+    const ast = List([Identifier('+'), Literal(1), Literal(1)]);
 
     let nodeOrder: Array<NodeType> = [];
     traverse(ast, (type, _) => {
@@ -13,7 +13,7 @@ describe('traverse', () => {
   });
 
   it('can be used to implement AST evaluation', () => {
-    const ast = new List([new Identifier('+'), new Literal(1), new Literal(1)]);
+    const ast = List([Identifier('+'), Literal(1), Literal(1)]);
 
     const context = {
       '+': (a, b) => a + b,
@@ -36,7 +36,7 @@ describe('traverse', () => {
   });
 
   it('can be used to implement AST serialization', () => {
-    const ast = new List([new Identifier('+'), new Literal(1), new Literal(1)]);
+    const ast = List([Identifier('+'), Literal(1), Literal(1)]);
 
     const result = traverse(ast, (type, value) => {
       switch (type) {
