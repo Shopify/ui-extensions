@@ -1,3 +1,4 @@
+export {default as build} from './build';
 export {default as evaluate} from './evaluate';
 export {default as generateJSON} from './generateJSON';
 export {default as generateLisp} from './generateLisp';
@@ -55,7 +56,7 @@ export function isLiteral(literal: any): literal is List {
   return (
     typeof literal === 'object' &&
     literal.type === 'literal' &&
-    ['number', 'boolean', 'string'].includes(typeof literal)
+    ['number', 'boolean', 'string'].includes(typeof literal.value)
   );
 }
 
