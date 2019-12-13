@@ -2,7 +2,7 @@ import {Identifier, Literal, List, parseJSON} from '..';
 
 describe('parseJSON', () => {
   it('supports an empty tree', () => {
-    const json = '[]';
+    const json = '{"type": "list", "value": []}';
     expect(parseJSON(json)).toEqual(List([]));
   });
 
@@ -12,7 +12,7 @@ describe('parseJSON', () => {
   });
 
   it('supports literals in a list', () => {
-    const json = '[{"type": "literal", "value": 1}]';
+    const json = '{"type": "list", "value": [{"type": "literal", "value": 1}]}';
     expect(parseJSON(json)).toEqual(List([Literal(1)]));
   });
 
@@ -23,11 +23,14 @@ describe('parseJSON', () => {
 
   it('supports lists', () => {
     const json = `
-      [
-        {"type": "identifier", "value": "+"},
-        {"type": "literal", "value": 1},
-        {"type": "literal", "value": 1}
-      ]
+      {
+        "type": "list",
+        "value": [
+          {"type": "identifier", "value": "+"},
+          {"type": "literal", "value": 1},
+          {"type": "literal", "value": 1}
+        ]
+      }
     `;
 
     expect(parseJSON(json)).toEqual(List([Identifier('+'), Literal(1), Literal(1)]));
@@ -35,16 +38,22 @@ describe('parseJSON', () => {
 
   it('supports nested lists', () => {
     const json = `
-      [
-        {"type": "identifier", "value": "+"},
-        {"type": "literal", "value": 1},
-        {"type": "literal", "value": 1},
-        [
+      {
+        "type": "list",
+        "value": [
           {"type": "identifier", "value": "+"},
           {"type": "literal", "value": 1},
-          {"type": "literal", "value": 1}
+          {"type": "literal", "value": 1},
+          {
+            "type": "list",
+            "value": [
+              {"type": "identifier", "value": "+"},
+              {"type": "literal", "value": 1},
+              {"type": "literal", "value": 1}
+            ]
+          }
         ]
-      ]
+      }
     `;
 
     expect(parseJSON(json)).toEqual(

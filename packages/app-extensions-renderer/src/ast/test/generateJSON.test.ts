@@ -24,15 +24,21 @@ describe('generateJSON', () => {
   });
 
   it('supports empty lists', () => {
-    expect(JSON.parse(generateJSON(List([])))).toEqual([]);
+    expect(JSON.parse(generateJSON(List([])))).toEqual({
+      type: 'list',
+      value: [],
+    });
   });
 
   it('supports expressions', () => {
     const expression = List([Identifier('+'), Literal(1), Literal(1)]);
-    expect(JSON.parse(generateJSON(expression))).toEqual([
-      {type: 'identifier', value: '+'},
-      {type: 'literal', value: 1},
-      {type: 'literal', value: 1},
-    ]);
+    expect(JSON.parse(generateJSON(expression))).toEqual({
+      type: 'list',
+      value: [
+        {type: 'identifier', value: '+'},
+        {type: 'literal', value: 1},
+        {type: 'literal', value: 1},
+      ],
+    });
   });
 });

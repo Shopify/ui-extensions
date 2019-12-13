@@ -26,7 +26,7 @@ export interface List extends Node<Array<Identifier | Literal | List>> {
   type: 'list';
 }
 
-export function List(value: List['value']): List {
+export function List(value: List['value'] = []): List {
   return {value, type: 'list'};
 }
 
@@ -38,16 +38,24 @@ export function Literal(value: Literal['value']): Literal {
   return {value, type: 'literal'};
 }
 
+export function isAST(ast: any): ast is AST {
+  return isLiteral(ast) || isIdentifier(ast) || isList(ast);
+}
+
 export function isList(list: any): list is List {
-  return typeof list === 'object' && list.type === 'list' && list.value !== undefined;
+  return (
+    typeof list === 'object' &&
+    list.type === 'list' &&
+    list.value instanceof Array &&
+    (list.value as Array<any>).reduce((isValidAST, node) => isValidAST && isAST(node), true)
+  );
 }
 
 export function isLiteral(literal: any): literal is List {
   return (
     typeof literal === 'object' &&
-    literal &&
     literal.type === 'literal' &&
-    literal.value !== undefined
+    ['number', 'boolean', 'string'].includes(typeof literal)
   );
 }
 
@@ -55,6 +63,6 @@ export function isIdentifier(identifier: any): identifier is List {
   return (
     typeof identifier === 'object' &&
     identifier.type === 'identifier' &&
-    identifier.value !== undefined
+    typeof identifier.value === 'string'
   );
 }
