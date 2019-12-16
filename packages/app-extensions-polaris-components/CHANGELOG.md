@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.31](https://github.com/Shopify/app-extension-libs/compare/v0.0.30...v0.0.31) (2019-12-16)
+
+
+### Features
+
+* **components:** add structured component definition for Button ([6f812e3](https://github.com/Shopify/app-extension-libs/commit/6f812e3de212da40ee49a349efe978cfc770b6a1))
+
+
+
+
+
 ## [0.0.27](https://github.com/Shopify/app-extension-libs/compare/v0.0.26...v0.0.27) (2019-12-10)
 
 **Note:** Version bump only for package @shopify/app-extensions-polaris-components
