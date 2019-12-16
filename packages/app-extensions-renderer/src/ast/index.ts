@@ -6,37 +6,28 @@ export {default as parseJSON} from './parseJSON';
 export {default as parseLisp} from './parseLisp';
 export {default as traverse} from './traverse';
 
-export type NodeType = 'literal' | 'identifier' | 'list';
+export const NodeTypes = ['literal', 'identifier', 'list'] as const;
+export type NodeTypes = 'literal' | 'identifier' | 'list';
 
+export type Node<T extends NodeTypes, V> = [T, V];
+export type NodeType<N extends Node<any, any>> = N[0];
+export type NodeValue<N extends Node<any, any>> = N[1];
+
+export type Identifier = Node<'identifier', string>;
+export type Literal = Node<'literal', string | number | boolean>;
+export type List = Node<'list', Array<Identifier | Literal | List>>;
 export type AST = Identifier | Literal | List;
 
-export interface Node<T> {
-  readonly type: NodeType;
-  readonly value: T;
+export function List(value: NodeValue<List> = []): List {
+  return ['list', value];
 }
 
-export interface Identifier extends Node<string> {
-  type: 'identifier';
+export function Identifier(value: NodeValue<Identifier>): Identifier {
+  return ['identifier', value];
 }
 
-export interface Literal extends Node<string | number | boolean> {
-  type: 'literal';
-}
-
-export interface List extends Node<Array<Identifier | Literal | List>> {
-  type: 'list';
-}
-
-export function List(value: List['value'] = []): List {
-  return {value, type: 'list'};
-}
-
-export function Identifier(value: Identifier['value']): Identifier {
-  return {value, type: 'identifier'};
-}
-
-export function Literal(value: Literal['value']): Literal {
-  return {value, type: 'literal'};
+export function Literal(value: NodeValue<Literal>): Literal {
+  return ['literal', value];
 }
 
 export function isAST(ast: any): ast is AST {
@@ -44,26 +35,28 @@ export function isAST(ast: any): ast is AST {
 }
 
 export function isList(list: any): list is List {
+  if (!isNode(list)) return false;
+  const [type, value] = list;
+
   return (
-    typeof list === 'object' &&
-    list.type === 'list' &&
-    list.value instanceof Array &&
-    (list.value as Array<any>).reduce((isValidAST, node) => isValidAST && isAST(node), true)
+    type === 'list' &&
+    Array.isArray(value) &&
+    (value as Array<any>).reduce((isValidAST, node) => isValidAST && isAST(node), true)
   );
 }
 
-export function isLiteral(literal: any): literal is List {
-  return (
-    typeof literal === 'object' &&
-    literal.type === 'literal' &&
-    ['number', 'boolean', 'string'].includes(typeof literal.value)
-  );
+export function isLiteral(literal: any): literal is Literal {
+  if (!isNode(literal)) return false;
+  const [type, value] = literal;
+  return type === 'literal' && ['number', 'boolean', 'string'].includes(typeof value);
 }
 
-export function isIdentifier(identifier: any): identifier is List {
-  return (
-    typeof identifier === 'object' &&
-    identifier.type === 'identifier' &&
-    typeof identifier.value === 'string'
-  );
+export function isIdentifier(identifier: any): identifier is Identifier {
+  if (!isNode(identifier)) return false;
+  const [type, value] = identifier;
+  return type === 'identifier' && typeof value === 'string';
+}
+
+function isNode(node: any): node is Node<NodeTypes, any> {
+  return Array.isArray(node) && node.length === 2 && NodeTypes.includes(node[0]);
 }

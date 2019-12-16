@@ -1,10 +1,10 @@
-import {List, Identifier, Literal, traverse, NodeType} from '..';
+import {List, Identifier, Literal, traverse, NodeTypes} from '..';
 
 describe('traverse', () => {
   it('performs a depth first search', () => {
     const ast = List([Identifier('+'), Literal(1), Literal(1)]);
 
-    let nodeOrder: Array<NodeType> = [];
+    let nodeOrder: Array<NodeTypes> = [];
     traverse(ast, (type, _) => {
       nodeOrder.push(type);
     });
