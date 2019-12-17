@@ -1,5 +1,5 @@
 import {Layout, Button, Popover, Card, Form, ActionList} from '@shopify/polaris';
-import {RendererWithLispParser as Renderer} from '@shopify/app-extensions-renderer';
+import {RendererWithJSONParser, RendererWithLispParser} from '@shopify/app-extensions-renderer';
 import Components from '@shopify/app-extensions-polaris-components';
 import Router, {useRouter} from 'next/router';
 import Head from 'next/head';
@@ -8,7 +8,7 @@ import 'prismjs/components/prism-json';
 import 'prismjs/components/prism-lisp';
 import React, {useEffect, useState, useReducer, useMemo} from 'react';
 import Snippets from '../../actions/repl/snippets';
-import ReplActions from '../../actions/repl/actions';
+import ReplActions, { SupportedFormat, SupportedFormats } from '../../actions/repl/actions';
 import reducer from '../../actions/repl/reducer';
 import MiniEditor from '../../components/MiniEditor';
 
@@ -19,6 +19,8 @@ export default function Repl() {
     code: '',
     state: '',
     activeState: {},
+    displayFormat: 'lisp',
+    evaluatedFormat: 'lisp',
   });
 
   const {id} = useRouter().query;
@@ -35,25 +37,36 @@ export default function Repl() {
     };
   }, [replState.activeState]);
 
-  const [popoverActive, setPopoverActive] = useState(false);
-  const togglePopoverActive = () => setPopoverActive(!popoverActive);
-
   const formActions = [
     {
       content: 'Evaluate',
       onAction() {
         dispatch(ReplActions.evaluate());
       },
-    },
+    }
   ];
 
-  const actionListItems = Snippets.map((value, index) => ({
+  const [snippetPopoverActive, setSnippetPopoverActive] = useState(false);
+  const toggleSnippetPopover = () => setSnippetPopoverActive(!snippetPopoverActive);
+  const snippets = Snippets.map((value, index) => ({
     content: value.label,
     onAction() {
-      togglePopoverActive();
+      toggleSnippetPopover();
       Router.push(`/repl/${index}`);
     },
   }));
+
+  const [formatPopoverActive, setFormatPopoverActive] = useState(false);
+  const toggleFormatPopover = () => setFormatPopoverActive(!formatPopoverActive);
+  const supportedFormats = SupportedFormats.map((value: SupportedFormat) => ({
+    content: value.toUpperCase(),
+    onAction() {
+      setFormatPopoverActive(false);
+      dispatch(ReplActions.setFormat(value));
+    },
+  }));
+
+  const Renderer = replState.evaluatedFormat === 'json' ? RendererWithJSONParser : RendererWithLispParser;
 
   return (
     <>
@@ -66,15 +79,26 @@ export default function Repl() {
           <Card>
             <Card.Header actions={formActions} title="REPL">
               <Popover
-                active={popoverActive}
+                active={snippetPopoverActive}
                 activator={
-                  <Button disclosure onClick={togglePopoverActive} plain>
+                  <Button disclosure onClick={toggleSnippetPopover} plain>
                     Snippets
                   </Button>
                 }
-                onClose={togglePopoverActive}
+                onClose={toggleSnippetPopover}
               >
-                <ActionList items={actionListItems} />
+                <ActionList items={snippets} />
+              </Popover>
+              <Popover
+                active={formatPopoverActive}
+                activator={
+                  <Button disclosure onClick={toggleFormatPopover} plain>
+                    Format
+                  </Button>
+                }
+                onClose={toggleFormatPopover}
+              >
+                <ActionList items={supportedFormats} />
               </Popover>
             </Card.Header>
             <Form onSubmit={() => {}}>
@@ -82,7 +106,7 @@ export default function Repl() {
                 <MiniEditor
                   id="lisp-code"
                   code={replState.pendingCode}
-                  highlightCode={newCode => highlight(newCode, languages.lisp, 'lisp')}
+                  highlightCode={newCode => highlight(newCode, languages[replState.displayFormat], replState.displayFormat)}
                   onChange={code => dispatch(ReplActions.updatePendingCode(code))}
                 />
               </Card.Section>

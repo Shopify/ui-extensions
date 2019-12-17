@@ -7,13 +7,6 @@ export default function Home() {
     <Layout>
       <Stack>
         <HomeCard
-          url="/json-repl"
-          image="static/images/repl.jpg"
-          title="JSON REPL"
-          label="JSON"
-          description="Use JSON to test the rendering output in the REPL. JSON is the format we will use to store the AST."
-        />
-        <HomeCard
           url="/repl"
           image="static/images/repl.jpg"
           title="LISP REPL"

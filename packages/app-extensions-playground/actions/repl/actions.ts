@@ -2,23 +2,23 @@ import {Snippet} from './snippets';
 
 type ReplAction<T, P = {}> = {type: T} & P;
 
+export const SupportedFormats = ['lisp', 'json'] as const;
+export type SupportedFormat = typeof SupportedFormats[number];
+
 export type ReplActions =
   | ReplAction<'UPDATE_PENDING_STATE', {state: string}>
   | ReplAction<'UPDATE_PENDING_CODE', {code: string}>
   | ReplAction<'SET_STATE', {key: string; value: any}>
   | ReplAction<'LOAD_SNIPPET', {state: string; code: string}>
-  | ReplAction<'EVALUATE'>;
+  | ReplAction<'EVALUATE'>
+  | ReplAction<'SET_FORMAT', {displayFormat: SupportedFormat}>;
 
 const ReplActionFactories: {[name: string]: (...args: any) => ReplActions} = {
   updatePendingCode: code => ({type: 'UPDATE_PENDING_CODE', code}),
   updatePendingState: state => ({type: 'UPDATE_PENDING_STATE', state}),
   evaluate: () => ({type: 'EVALUATE'}),
   loadSnippet: ({code, state}: Snippet) => ({type: 'LOAD_SNIPPET', code, state}),
-  loadJSONSnippet: ({json, state}: Snippet) => ({
-    type: 'LOAD_SNIPPET',
-    code: JSON.stringify(JSON.parse(json), null, 2),
-    state,
-  }),
+  setFormat: (displayFormat: SupportedFormat) => ({type: 'SET_FORMAT', displayFormat}),
   setState: (key, value) => ({type: 'SET_STATE', key, value}),
 };
 
