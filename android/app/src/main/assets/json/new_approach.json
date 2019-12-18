@@ -1,0 +1,8 @@
+["list", [
+  ["identifier", "label"],
+  [
+    ["identifier", "#"],
+    ["literal", "caption"],
+    ["literal", "foo"]
+  ]
+]]

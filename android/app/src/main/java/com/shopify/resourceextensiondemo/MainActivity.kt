@@ -21,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val examplesLabels = arrayOf("Label")
-        val examplesScripts = arrayOf("json/label.json")
+        val examplesLabels = arrayOf("Label", "New approach")
+        val examplesScripts = arrayOf("json/label.json", "json/new_approach.json")
         jsonPicker.setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("Examples")
