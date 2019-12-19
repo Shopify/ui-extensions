@@ -38,14 +38,16 @@ fun JSONArray.toNode(): Node {
 }
 
 fun JSONArray.toNodeV2(): Node? {
-    return get(0).let { firstElement ->
-        when (firstElement) {
-            "literal" -> Literal(getString(1))
-            "identifier" -> Identifier(getString(1))
-            "list" -> List(this.asArray().drop(1).map { (it as JSONArray).toNodeV2()!! })
-            is JSONArray -> List(this.asArray().map {  (it as JSONArray).toNodeV2()!! })
-            else -> null
+    val type = get(0) as String
+    val value = get(1)
+    return when (type) {
+        "literal" -> Literal(value as String)
+        "identifier" -> Identifier(value as String)
+        "list" -> {
+            val listNodes = (value as JSONArray).asArray().map { (it as JSONArray).toNodeV2()!! }
+            List(listNodes)
         }
+        else -> null
     }
 }
 
