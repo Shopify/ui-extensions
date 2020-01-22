@@ -8,16 +8,18 @@ export interface RendererProps {
   ast: AST;
   components: ComponentList;
   dataSource: DataSource;
+  library?: {[name: string]: Function};
 }
 
-export function Renderer({ast, dataSource, components}: RendererProps) {
-  const componentLib = useMemo(() => buildComponentLibrary(components), [components]);
-  const stdlib = useMemo(() => buildStandardLibrary(dataSource), [dataSource]);
-  const library = useMemo(() => ({...componentLib, ...stdlib}), [componentLib, stdlib]);
-  const view = useMemo(() => {
-    return evaluate(ast, library);
-  }, [ast, library]);
-
+export function Renderer({ast, dataSource, components, library: userLibrary}: RendererProps) {
+  const componentLibrary = useMemo(() => buildComponentLibrary(components), [components]);
+  const standardLibrary = useMemo(() => buildStandardLibrary(dataSource), [dataSource]);
+  const library = useMemo(() => ({...componentLibrary, ...standardLibrary, ...userLibrary}), [
+    componentLibrary,
+    standardLibrary,
+    userLibrary,
+  ]);
+  const view = useMemo(() => evaluate(ast, library), [ast, library]);
   return view ? view : null;
 }
 
