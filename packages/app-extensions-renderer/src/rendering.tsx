@@ -18,14 +18,7 @@ export function Renderer({ast, dataSource, components}: RendererProps) {
     return evaluate(ast, library);
   }, [ast, library]);
 
-  if (view) {
-    return (
-      <AppProvider i18n={{}}>
-        <FormLayout>{view}</FormLayout>
-      </AppProvider>
-    );
-  }
-  return null;
+  return view ? view : null;
 }
 
 export type RendererWithParserProps = Omit<RendererProps, 'ast'> & {code: string};

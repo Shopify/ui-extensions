@@ -47,13 +47,14 @@ const options: Snippet[] = [
   },
   {
     label: 'State',
-    code: `((TextField (#
+    code: `(FormLayout (#) (
+ (TextField (#
    "value"    (get "message")
    "onChange" (set "message")))
 
  (Button (#
    "label"   "Alert"
-   "onClick" (alert (get "message")))))
+   "onClick" (alert (get "message"))))))
     `.trim(),
     json: `[
       [{
