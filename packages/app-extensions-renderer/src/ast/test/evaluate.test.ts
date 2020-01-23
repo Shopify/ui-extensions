@@ -51,12 +51,4 @@ describe('evaluate', () => {
 
     expect(() => evaluate(expression, {})).toThrow(`AST contains an unknown identifier: Invalid`);
   });
-
-  it('throws an error if identifier resultion is attempted without a runtime context', () => {
-    const expression = List([Identifier('Invalid')]);
-
-    expect(() => evaluate(expression)).toThrow(
-      `Cannot evaluate identifier due to missing runtime context`,
-    );
-  });
 });
