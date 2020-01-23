@@ -1,13 +1,11 @@
 import {AST, traverse} from '.';
 
-type ReturnValueOrConstant<T> = T extends (...args: any[]) => infer U ? U : T;
-type EvaluationResult<T> = ReturnValueOrConstant<T[keyof T]>;
+export default function(ast, globals?) {
+  return environment({}, globals || {}, evaluate(ast));
+}
 
-export default function<T extends {[name: string]: any}>(
-  ast: AST,
-  context?: T,
-): EvaluationResult<T> {
-  return environment({}, context || {}, ({resolve}) =>
+function evaluate(ast: AST): (environment: Environment) => any {
+  return ({resolve}) =>
     traverse(ast, (type, value) => {
       switch (type) {
         case 'identifier':
@@ -19,8 +17,7 @@ export default function<T extends {[name: string]: any}>(
           if (typeof first === 'function') return first.call(undefined, ...rest);
           return [first, ...rest];
       }
-    }),
-  );
+    });
 }
 
 interface Scope {
@@ -38,10 +35,9 @@ function environment<T>(
   program: (environment: Environment) => T,
 ): T {
   function resolve(env: Array<Scope>, identifier: string): any {
-    const ctx = env[0];
-    if (ctx === undefined) throw `Cannot evaluate identifier due to missing runtime context`;
-    if (ctx[identifier] === undefined) throw `AST contains an unknown identifier: ${identifier}`;
-    return ctx[identifier];
+    const result = env.find(scope => identifier in scope)?.[identifier];
+    if (result === undefined) throw `AST contains an unknown identifier: ${identifier}`;
+    return result;
   }
 
   function withinEnvironment<T>(env: Array<Scope>, program: (environment: Environment) => T): T {
