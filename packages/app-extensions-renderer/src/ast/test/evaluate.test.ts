@@ -51,4 +51,25 @@ describe('evaluate', () => {
 
     expect(() => evaluate(expression, {})).toThrow(`AST contains an unknown identifier: Invalid`);
   });
+
+  it('supports constructing lambda expressions that do not take any arguments', () => {
+    const lambda = List([Identifier('lambda'), List([]), Literal(1)]);
+
+    expect(evaluate(lambda)()).toEqual(1);
+  });
+
+  it('supports constructing lambda expressions that take arguments', () => {
+    const ast = List([
+      Identifier('lambda'),
+      List([Identifier('n')]),
+      List([Identifier('*'), Identifier('n'), Literal(2)]),
+    ]);
+
+    const runtimeContext = {
+      '*': (a: number, b: number) => a * b,
+    };
+
+    const double = evaluate(ast, runtimeContext) as Function;
+    expect(double(2)).toEqual(4);
+  });
 });

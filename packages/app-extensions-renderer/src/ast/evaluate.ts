@@ -1,11 +1,11 @@
-import {AST, traverse} from '.';
+import {AST} from '.';
 
 export default function(ast, globals?) {
-  return runtime({}, globals || {}, evaluate(ast));
+  return withinNewRuntimeEnvironment(evaluate(ast), {keywords, globals: globals || {}});
 }
 
-function evaluate(ast: AST): (environment: Environment) => any {
-  return ({resolve, withinSameScope}) => {
+function evaluate(ast: AST): EvaluateWithinEnvironment<any> {
+  return ({resolve, withinCurrentScope}) => {
     switch (ast[0]) {
       case 'identifier':
         return resolve(ast[1]);
@@ -14,47 +14,86 @@ function evaluate(ast: AST): (environment: Environment) => any {
       case 'list':
         if (ast[1].length == 0) return [];
         const [first, ...rest] = ast[1];
-        const functionOrConstant = withinSameScope(evaluate(first));
+        const functionOrConstant = withinCurrentScope(evaluate(first));
         if (typeof functionOrConstant === 'function') {
           return functionOrConstant(evaluate, ...rest);
         } else {
-          return [functionOrConstant, ...rest.map(item => withinSameScope(evaluate(item)))];
+          return [functionOrConstant, ...rest.map(item => withinCurrentScope(evaluate(item)))];
         }
     }
   };
 }
 
-interface Scope {
+interface SymbolScope {
   [identifier: string]: any;
 }
 
-interface Environment {
+interface RuntimeEnvironment {
   resolve(identifier: string): any;
-  withinSameScope<T>(program: (environment: Environment) => T): T;
+  withinCurrentScope<T>(evaluate: EvaluateWithinEnvironment<T>): T;
+  withinNewScope<T>(scope: SymbolScope, evaluate: EvaluateWithinEnvironment<T>): T;
 }
 
-function runtime<T>(keywords: Scope, globals: Scope, program: (environment: Environment) => T): T {
-  function resolve(env: Array<Scope>, identifier: string): any {
-    const result = env.find(scope => identifier in scope)?.[identifier];
+interface RuntimeEnvironmentConfiguration {
+  keywords: SymbolScope;
+  globals: SymbolScope;
+}
 
+interface EvaluateWithinEnvironment<T> {
+  (environment: RuntimeEnvironment): T;
+}
+
+function withinNewRuntimeEnvironment<T>(
+  evaluate: EvaluateWithinEnvironment<T>,
+  {keywords, globals}: RuntimeEnvironmentConfiguration,
+): T {
+  function resolve(symbolStack: Array<SymbolScope>, identifier: string): any {
+    const keyword = keywords[identifier];
+    if (keyword !== undefined) {
+      return (evaluate, ...args) =>
+        withinRuntimeEnvironment(symbolStack, environment =>
+          keyword(environment, evaluate, ...args),
+        );
+    }
+
+    const result = symbolStack.find(scope => identifier in scope)?.[identifier];
     switch (typeof result) {
       case 'undefined':
         throw `AST contains an unknown identifier: ${identifier}`;
       case 'function':
         return (evaluate, ...args) =>
-          result(...args.map(arg => withinEnvironment(env, evaluate(arg))));
+          result(...args.map(arg => withinRuntimeEnvironment(symbolStack, evaluate(arg))));
       default:
         return result;
     }
   }
 
-  function withinEnvironment<T>(env: Array<Scope>, program: (environment: Environment) => T): T {
-    const environment: Environment = {
+  function withinRuntimeEnvironment<T>(
+    env: Array<SymbolScope>,
+    evaluate: EvaluateWithinEnvironment<T>,
+  ): T {
+    const environment: RuntimeEnvironment = {
       resolve: identifier => resolve(env, identifier),
-      withinSameScope: program => program(environment),
+      withinCurrentScope: evaluate => evaluate(environment),
+      withinNewScope: (scope, evaluate) => withinRuntimeEnvironment([scope, ...env], evaluate),
     };
-    return program(environment);
+    return evaluate(environment);
   }
 
-  return withinEnvironment([globals], program);
+  return withinRuntimeEnvironment([globals], evaluate);
 }
+
+const keywords = {
+  lambda({withinNewScope}: RuntimeEnvironment, evaluate, parameterNames, expression) {
+    parameterNames = parameterNames[1].map(p => p[1]);
+
+    return function(...parameterValues: any[]) {
+      const scope = parameterNames.reduce((scope, name, index) => {
+        scope[name] = parameterValues[index];
+        return scope;
+      }, {});
+
+      return withinNewScope(scope, evaluate(expression));
+    };
+  },
+};
