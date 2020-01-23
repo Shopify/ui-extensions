@@ -12,9 +12,14 @@ function evaluate(ast: AST): (environment: Environment) => any {
       case 'literal':
         return ast[1];
       case 'list':
-        const [first, ...rest] = ast[1].map(node => withinSameScope(evaluate(node)));
-        if (typeof first === 'function') return first.call(undefined, ...rest);
-        return [first, ...rest];
+        if (ast[1].length == 0) return [];
+        const [first, ...rest] = ast[1];
+        const functionOrConstant = withinSameScope(evaluate(first));
+        if (typeof functionOrConstant === 'function') {
+          return functionOrConstant(evaluate, ...rest);
+        } else {
+          return [functionOrConstant, ...rest.map(item => withinSameScope(evaluate(item)))];
+        }
     }
   };
 }
@@ -31,8 +36,16 @@ interface Environment {
 function runtime<T>(keywords: Scope, globals: Scope, program: (environment: Environment) => T): T {
   function resolve(env: Array<Scope>, identifier: string): any {
     const result = env.find(scope => identifier in scope)?.[identifier];
-    if (result === undefined) throw `AST contains an unknown identifier: ${identifier}`;
-    return result;
+
+    switch (typeof result) {
+      case 'undefined':
+        throw `AST contains an unknown identifier: ${identifier}`;
+      case 'function':
+        return (evaluate, ...args) =>
+          result(...args.map(arg => withinEnvironment(env, evaluate(arg))));
+      default:
+        return result;
+    }
   }
 
   function withinEnvironment<T>(env: Array<Scope>, program: (environment: Environment) => T): T {
