@@ -29,6 +29,8 @@ export function buildStandardLibrary(dataSource: DataSource) {
     true: true,
 
     false: false,
+
+    map: (collection, iterator) => collection.map(iterator),
   };
 }
 
