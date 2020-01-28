@@ -1,2 +1,0 @@
-include ':app', ':resourceextensions'
-rootProject.name='Resource Extension Demo'

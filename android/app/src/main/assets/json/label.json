@@ -1,8 +1,0 @@
-[
-    {"type": "identifier", "value": "label"},
-    [
-        {"type": "identifier", "value": "#"},
-        {"type": "literal", "value": "caption"},
-        {"type": "literal", "value": "foo"}
-    ]
-]
