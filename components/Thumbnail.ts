@@ -11,7 +11,8 @@ enum ScaleType {
 }
 
 interface Thumbnail {
-    size: Size
-    scaleType: ScaleType
+    size?: Size
+    scaleType?: ScaleType
     url: string;
+    alt: string;
 }

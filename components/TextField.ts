@@ -6,5 +6,5 @@ interface TextField {
 
     onBlur: () => void;
     onFocus: () => void;
-    onChange: (value: string) => void;
+    onAfterChange: (value: string) => void;
 }

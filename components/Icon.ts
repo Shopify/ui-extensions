@@ -1,5 +1,6 @@
 enum IconName {
-    Star,
+    StarHollow,
+    StarPartial,
     StarFilled
     /* ... */
 }

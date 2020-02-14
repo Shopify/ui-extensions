@@ -1,5 +1,6 @@
 interface Card {
     title?: string;
-    primaryAction?: Action;
-    secondaryActions?: Action[];
+    primaryFooterAction?: Action;
+    secondaryFooterActions?: Action[];
+    children?: React.ReactNode;
 }

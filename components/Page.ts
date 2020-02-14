@@ -3,6 +3,7 @@ interface Page {
     subTitle?: string;
     primaryAction?: Action;
     secondaryActions?: Action[];
+    children?: React.ReactNode;
 }
 
 interface Action {

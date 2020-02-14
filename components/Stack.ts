@@ -1,7 +1,8 @@
 interface Stack {
-    vertical: boolean;
-    distribution: Distribution;
-    spacing: Spacing;
+    vertical?: boolean;
+    distribution?: Distribution;
+    spacing?: Spacing;
+    children: React.ReactNode;
 }
 
 enum Distribution {

@@ -1,8 +1,9 @@
 interface Modal {
     open: boolean;
-    title: string;
+    title?: string;
     message?: string
-    primaryAction: Action;
+    primaryAction?: Action;
     secondaryActions?: Action[];
     onClose: () => void;
+    children?: React.ReactNode;
 }

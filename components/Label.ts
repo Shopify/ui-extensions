@@ -15,6 +15,6 @@ enum TextSize {
 
 interface Label {
     text: string;
-    size: TextSize;
-    variation: Variation
+    size?: TextSize;
+    variation?: Variation
 }
