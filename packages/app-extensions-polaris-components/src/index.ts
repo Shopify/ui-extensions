@@ -1,5 +1,1 @@
-import Components from './components';
-import * as ComponentDefinitions from './component-definitions';
-
-export default Components;
-export {ComponentDefinitions};
+export {default as host} from './host';

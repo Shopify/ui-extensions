@@ -1,9 +1,0 @@
-export {default as Button} from './Button/builder-definition';
-export {default as Card} from './Card/builder-definition';
-export {default as Checkbox} from './Checkbox/builder-definition';
-export {default as ChoiceList} from './ChoiceList/builder-definition';
-export {default as Form} from './Form/builder-definition';
-export {default as Icon} from './Icon/builder-definition';
-export {default as List} from './List/builder-definition';
-export {default as TextField} from './TextField/builder-definition';
-export {default as Thumbnail} from './Thumbnail/builder-definition';
