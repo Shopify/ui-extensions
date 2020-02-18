@@ -1,0 +1,46 @@
+{
+  "name": "app-extensions-playground",
+  "version": "0.1.0",
+  "private": true,
+  "browserslist": [
+    "extends @shopify/browserslist-config"
+  ],
+  "scripts": {
+    "dev": "REACT_SERVER_IP=\"192.168.64.1\" REACT_SERVER_PORT=\"39358\" sewing-kit dev",
+    "test": "sewing-kit test",
+    "lint": "sewing-kit lint",
+    "type-check": "sewing-kit type-check",
+    "format": "sewing-kit format",
+    "build": "sewing-kit build --no-type-check",
+    "nuke": "sewing-kit nuke"
+  },
+  "dependencies": {
+    "@shopify/browserslist-config": "^1.0.3",
+    "@shopify/css-utilities": "^1.0.4",
+    "@shopify/network": "^1.4.2",
+    "@shopify/polaris": "^4.3.0",
+    "@shopify/react-async": "^3.0.9",
+    "@shopify/react-form": "^0.3.32",
+    "@shopify/react-html": "^9.2.3",
+    "@shopify/react-i18n": "^2.0.2",
+    "@shopify/react-i18n-universal-provider": "^1.0.14",
+    "@shopify/react-network": "^3.3.1",
+    "@shopify/react-performance": "^1.1.1",
+    "@shopify/react-router": "^0.0.9",
+    "@shopify/react-server": "^0.7.2",
+    "@shopify/react-web-worker": "^1.2.1",
+    "@shopify/sewing-kit": "^0.110.0",
+    "@shopify/typescript-configs": "^2.0.1",
+    "core-js": "^3.6.4",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.4",
+    "@types/react-dom": "^16.9.1",
+    "typescript": "~3.7.2"
+  },
+  "resolutions": {
+    "babel-core": "7.0.0-bridge.0"
+  }
+}

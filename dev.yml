@@ -12,13 +12,17 @@ up:
       yarn: true
       packages:
         - .
+  - custom:
+      name: Install playground dependencies
+      met?: test -d ./playground/node_modules
+      meet: cd ./playground && yarn
 
 commands:
   boot: yarn run bootstrap
   console: node
   server: yarn run server
   build: yarn run build
-  nuke: yarn run clean && rm -rf ./node_modules
+  nuke: yarn cache clean && rm -rf ./node_modules && rm -rf ./playground/node_modules
   test: yarn run test
 
 open:
