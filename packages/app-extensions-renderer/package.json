@@ -1,6 +1,6 @@
 {
   "name": "@shopify/app-extensions-renderer",
-  "version": "0.0.34",
+  "version": "0.0.35",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
@@ -9,13 +9,13 @@
     "check": "tsc --pretty --noEmit"
   },
   "dependencies": {
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
     "@shopify/remote-ui-core": "^0.0.14",
     "@shopify/remote-ui-react": "^0.0.16",
     "@shopify/remote-ui-types": "^0.0.9",
-    "@shopify/web-worker": "^1.3.5",
     "@shopify/useful-types": "^2.1.4",
+    "@shopify/web-worker": "^1.3.5",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
     "strscan": "^1.0.1",
     "typescript": "^3.7.2"
   },
@@ -24,7 +24,7 @@
     "registry": "https://packages.shopify.io/shopify/node/npm/"
   },
   "devDependencies": {
-    "@testing-library/react": "^9.3.2",
-    "@shopify/react-testing": "^1.6.0"
+    "@shopify/react-testing": "^1.6.0",
+    "@testing-library/react": "^9.3.2"
   }
 }
