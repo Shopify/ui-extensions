@@ -1,4 +1,3 @@
-import {AppProvider, FormLayout} from '@shopify/polaris';
 import React, {useMemo} from 'react';
 import {parseLisp, evaluate, AST, parseJSON} from './ast';
 import {buildStandardLibrary, ComponentList, buildComponentLibrary} from './runtime';
