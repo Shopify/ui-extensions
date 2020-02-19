@@ -13,7 +13,6 @@ const hostPath = 'packages/app-extensions-polaris-components/src/host/components
 const componenetDir = `${process.cwd()}/${hostPath}/${componentName}`;
 
 console.log(componentName)
-console.log(hostPath)
 console.log(componenetDir)
 
 fs.mkdirSync(componenetDir, {recursive: true}, (error) => {

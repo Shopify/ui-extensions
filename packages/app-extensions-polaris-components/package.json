@@ -12,8 +12,6 @@
   "dependencies": {
     "@shopify/polaris": "^3.0.0",
     "@shopify/remote-ui-core": "^0.0.14",
-    "@shopify/remote-ui-react": "^0.0.17",
-    "@shopify/remote-ui-types": "^0.0.9",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "typescript": "^3.7.2"
