@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "yarn tsc --watch",
     "build": "tsc",
-    "check": "tsc --pretty --noEmit"
+    "check": "tsc --pretty --noEmit",
+    "new-component": "node ../../scripts/add-component"
   },
   "dependencies": {
     "@shopify/polaris": "^3.0.0",

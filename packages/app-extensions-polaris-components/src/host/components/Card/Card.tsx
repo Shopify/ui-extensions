@@ -1,4 +1,4 @@
-import {Card as PolarisCard, CardProps, FormLayout} from '@shopify/polaris';
+import {Card as PolarisCard} from '@shopify/polaris';
 import React from 'react';
 
 interface Action {
