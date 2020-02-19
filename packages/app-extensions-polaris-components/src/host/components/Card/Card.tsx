@@ -9,6 +9,7 @@ interface Action {
 
 interface CardProps {
   title?: string;
+  sectioned?: boolean;
   primaryFooterAction?: Action;
   secondaryFooterActions?: Action[];
   children?: React.ReactNode;

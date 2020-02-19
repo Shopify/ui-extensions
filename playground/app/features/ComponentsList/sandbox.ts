@@ -1,5 +1,5 @@
-import {createRemoteComponent} from '@shopify/remote-ui-core';
 import {load, api, renderFactory, RenderRoot} from '@shopify/app-extensions-renderer';
+import {Card, Stack, TextField} from '@shopify/app-extensions-polaris-components/dist/client';
 
 Reflect.defineProperty(self, 'shopify', {
   value: api,
@@ -7,7 +7,7 @@ Reflect.defineProperty(self, 'shopify', {
 });
 
 const render = renderFactory({
-  [RenderRoot.Default]: [createRemoteComponent('Text')],
+  [RenderRoot.Default]: [Card, Stack, TextField],
 });
 
 export {load, render};

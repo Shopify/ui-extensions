@@ -12,6 +12,7 @@ export const LayoutSection = createRemoteComponent<'LayoutSection', LayoutSectio
 
 export interface CardProps {
   title: string;
+  sectioned?: boolean;
 }
 export const Card = createRemoteComponent<'Card', CardProps>('Card');
 
