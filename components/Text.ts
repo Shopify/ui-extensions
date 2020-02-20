@@ -13,7 +13,7 @@ enum TextSize {
     ExtraLarge
 }
 
-interface Label {
+interface Text {
     text: string;
     size?: TextSize;
     variation?: Variation
