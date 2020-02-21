@@ -74,6 +74,9 @@ enum Spacing {
 
 export const Stack = createRemoteComponent<'Stack', StackProps>('Stack');
 
+export interface TextProps {}
+export const Text = createRemoteComponent<'Text', TextProps>('Text');
+
 export interface RemoteComponentMap {
   [Layout.type]: [LayoutProps, typeof LayoutSection];
   [LayoutSection.type]: [LayoutSectionProps, string];
@@ -81,7 +84,8 @@ export interface RemoteComponentMap {
   [CardSection.type]: [CardSectionProps, string];
   [TextField.type]: [TextFieldProps, never];
   [Toast.type]: [any, never];
-  [Stack.type]: [any, any];
+  [Stack.type]: [StackProps, React.ReactNode];
+  [Text.type]: [TextProps, React.ReactNode];
 }
 
 interface ComponentMap extends RemoteComponentMap {}

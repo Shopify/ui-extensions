@@ -1,7 +1,8 @@
-import {Badge, Thumbnail, Label as Text, Stack} from '@shopify/polaris';
+import {Badge, Thumbnail, Stack} from '@shopify/polaris';
 
 import Card from './Card';
 import TextField from './TextField';
+import Text from './Text';
 
 export default {
   Badge,

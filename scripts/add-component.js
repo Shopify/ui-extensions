@@ -15,17 +15,23 @@ const componenetDir = `${process.cwd()}/${hostPath}/${componentName}`;
 console.log(componentName)
 console.log(componenetDir)
 
-fs.mkdirSync(componenetDir, {recursive: true}, (error) => {
-  if(error) killProcess('Couldn\'t write directory.', error);
-  else writeFiles();
-})
+fs.mkdir(componenetDir, {recursive: true}, (error) => {
+  if(error) {
+    killProcess('Couldn\'t write directory.', error);
+    return;
+  }
+  writeFiles();
+});
+
 
 function writeFiles() {
-  fs.writeFile(`${componenetDir}/${componentName}.tsx`, generateComponentTemplate(), function(err) {
+  console.log('Write files')
+  fs.writeFile(`${componenetDir}/${componentName}.tsx`, generateComponentTemplate(componentName), function(error) {
+    console.log('Component file created')
     if(error) killProcess('Cannot write component file', error);
   });
 
-  fs.writeFile(`${componenetDir}/index.tsx`, `export {default} from './${componentName}';`, function(err) {
+  fs.writeFile(`${componenetDir}/index.tsx`, `export {default} from './${componentName}';`, function(error) {
     if(error) killProcess('Cannot write component file', error);
   });
 }
@@ -39,7 +45,7 @@ function generateComponentTemplate(name) {
   const template = `import React from 'react';
 
 export default function {{name}}() {
-  return <>Componenet Code</>;
+  return <>Component Code</>;
 }
 `;
 

@@ -1,5 +1,5 @@
 import {load, api, renderFactory, RenderRoot} from '@shopify/app-extensions-renderer';
-import {Card, Stack, TextField} from '@shopify/app-extensions-polaris-components/dist/client';
+import {Card, Stack, TextField, Text} from '@shopify/app-extensions-polaris-components/dist/client';
 
 Reflect.defineProperty(self, 'shopify', {
   value: api,
@@ -7,7 +7,7 @@ Reflect.defineProperty(self, 'shopify', {
 });
 
 const render = renderFactory({
-  [RenderRoot.Default]: [Card, Stack, TextField],
+  [RenderRoot.Default]: [Card, Stack, TextField, Text],
 });
 
 export {load, render};

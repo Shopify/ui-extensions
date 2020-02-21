@@ -12,6 +12,7 @@ import {
   TextField as BaseTextField,
   Toast as BaseToast,
   Stack as BaseStack,
+  Text as BaseText,
   RemoteComponentMap,
 } from '../core';
 
@@ -40,3 +41,6 @@ export const LayoutSection: any = createRemoteReactComponent(BaseLayoutSection);
 
 export type TextFieldProps = ReactPropsFromRemoteComponentType<typeof BaseTextField>;
 export const TextField: any = createRemoteReactComponent(BaseTextField);
+
+export type TextProps = ReactPropsFromRemoteComponentType<typeof BaseText>;
+export const Text: any = createRemoteReactComponent(BaseText);
