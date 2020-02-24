@@ -7,7 +7,7 @@ enum Alignment {
 }
 
 enum Style {
-    Normal, Italic, Monospace, Bold
+    Normal, Italic, Monospace, Strong
 }
 
 enum Color {
