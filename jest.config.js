@@ -7,5 +7,10 @@ module.exports = {
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },
-  setupFilesAfterEnv: ["jest-extended", "@shopify/react-testing/matchers"]
+  globals: {
+    'ts-jest': {
+      diagnostics: false
+    }
+  },
+  setupFilesAfterEnv: ["jest-extended", "<rootDir>/test-utils/matchers.ts"]
 };
