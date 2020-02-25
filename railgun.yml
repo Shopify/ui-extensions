@@ -14,4 +14,4 @@ services:
   - nginx
 
 hostnames:
-  - app-extension-libs.myshopify.io: { proxy_to_host_port: 39358 }
+  - app-extension-libs.myshopify.io: { proxy_to_host_port: 39355 }
