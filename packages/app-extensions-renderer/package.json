@@ -4,7 +4,6 @@
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "yarn tsc --watch",
     "build": "tsc",
     "check": "tsc --pretty --noEmit"
   },

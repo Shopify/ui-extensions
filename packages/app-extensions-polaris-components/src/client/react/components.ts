@@ -13,10 +13,7 @@ import {
   Toast as BaseToast,
   Stack as BaseStack,
   Text as BaseText,
-  RemoteComponentMap,
 } from '../core';
-
-export {RemoteComponentMap};
 
 export type CardProps = ReactPropsFromRemoteComponentType<typeof BaseCard>;
 export const Card: any = createRemoteReactComponent<'Card', {}>(BaseCard);
