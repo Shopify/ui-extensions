@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.36](https://github.com/Shopify/app-extension-libs/compare/v0.0.35...v0.0.36) (2020-02-27)
+
+
+### chore
+
+* **components:** set up components package to use remote-ui ([c4f2f97](https://github.com/Shopify/app-extension-libs/commit/c4f2f973022e49bf34e7def253ef3c22221e9174))
+
+
+### Features
+
+* **component:** text with sizes ([8d755da](https://github.com/Shopify/app-extension-libs/commit/8d755da50eed62edf6d372bd08eb0c6782fc4613))
+* **components:** add text component ([a65d9a9](https://github.com/Shopify/app-extension-libs/commit/a65d9a9f960ddd67cd92f6e4474d417f0b6ffd4d))
+* **product-reviews:** set up app scaffolding in playground ([fc59504](https://github.com/Shopify/app-extension-libs/commit/fc595045f65fe355807020a1bc8c30f29cf85f8d))
+
+
+### BREAKING CHANGES
+
+* **components:** component definitions have been deleted
+
+
+
+
+
 ## [0.0.31](https://github.com/Shopify/app-extension-libs/compare/v0.0.30...v0.0.31) (2019-12-16)
 
 
