@@ -1,15 +1,13 @@
 import React from 'react';
+import {render, ExtensionPoint} from '@shopify/app-extensions-renderer';
+import {Card} from '@shopify/app-extensions-polaris-components/client';
 
-import {createRemoteComponent} from '@shopify/remote-ui-core';
-import {render} from '@shopify/remote-ui-react';
-import {registerRender, RenderRoot} from '@shopify/app-extensions-renderer';
-
-registerRender(RenderRoot.Default, root => {
-  render(<App />, root);
-});
-
-const Text = createRemoteComponent('Text');
+render(ExtensionPoint.AppLink, () => <App />);
 
 function App() {
-  return <Text>Hello world from 3p code</Text>;
+  return (
+    <Card title="Hello world" sectioned>
+      From 3p code
+    </Card>
+  );
 }

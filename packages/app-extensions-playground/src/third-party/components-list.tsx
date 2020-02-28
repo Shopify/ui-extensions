@@ -1,12 +1,9 @@
 import React from 'react';
 
-import {render} from '@shopify/remote-ui-react';
-import {registerRender, RenderRoot} from '@shopify/app-extensions-renderer';
+import {render, ExtensionPoint} from '@shopify/app-extensions-renderer';
 import {Card, Stack, TextField, Text} from '@shopify/app-extensions-polaris-components/client';
 
-registerRender(RenderRoot.Default, root => {
-  render(<App />, root);
-});
+render(ExtensionPoint.AppLink, root => <App />);
 
 function App() {
   return (

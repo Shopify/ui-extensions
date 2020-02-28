@@ -1,20 +1,14 @@
 import React from 'react';
-import {createPlainWorkerFactory, createWorkerFactory} from '@shopify/web-worker';
+import {createPlainWorkerFactory} from '@shopify/web-worker';
 import {Page} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
-import {AppExtension, RenderRoot} from '@shopify/app-extensions-renderer';
+import {ExtensionPoint} from '@shopify/app-extensions-renderer';
+import {host} from '@shopify/app-extensions-polaris-components';
+import {AppExtension} from '../../components';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
   import(/* webpackChunkName: '3p-playground' */ '../../third-party/playground'),
 );
-
-const createWorker = createWorkerFactory(() =>
-  import(/* webpackChunkName: 'home-sandbox' */ './sandbox'),
-);
-
-function Text({children}: {children: React.ReactNode}) {
-  return <span>{children}</span>;
-}
 
 export function Home() {
   usePerformanceMark('complete', 'Home');
@@ -22,10 +16,9 @@ export function Home() {
   return (
     <Page title="Home">
       <AppExtension
-        createWorker={createWorker}
-        extension={reactThirdPartyWorker.url}
-        root={RenderRoot.Default}
-        components={{Text}}
+        script={reactThirdPartyWorker.url}
+        extensionPoint={ExtensionPoint.AppLink}
+        components={{...host}}
       />
     </Page>
   );

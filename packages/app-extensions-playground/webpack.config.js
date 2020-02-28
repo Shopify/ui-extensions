@@ -12,7 +12,7 @@ module.exports = {
     filename: '[name].js',
     path: __dirname + '/dist',
   },
-  plugins: [new WebWorkerPlugin(), new HtmlWebpackPlugin()],
+  plugins: [new WebWorkerPlugin(), new HtmlWebpackPlugin({title: 'Playground - App Extensions'})],
   devServer: {
     disableHostCheck: true,
     host: '0.0.0.0',
