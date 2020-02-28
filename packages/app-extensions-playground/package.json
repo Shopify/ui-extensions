@@ -41,5 +41,9 @@
   "resolutions": {
     "babel-core": "7.0.0-bridge.0",
     "core-js": "^3.6.4"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://packages.shopify.io/shopify/node/npm/"
   }
 }
