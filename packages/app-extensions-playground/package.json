@@ -1,6 +1,6 @@
 {
   "name": "@shopify/app-extensions-playground",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "private": true,
   "browserslist": [
     "extends @shopify/browserslist-config"
