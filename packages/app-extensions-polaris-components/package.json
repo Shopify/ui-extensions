@@ -1,6 +1,6 @@
 {
   "name": "@shopify/app-extensions-polaris-components",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@shopify/remote-ui-core": "^0.0.14",
-
     "typescript": "^3.7.2"
   },
   "publishConfig": {
