@@ -1,7 +1,8 @@
 import React from 'react';
 import {Caption, DisplayText, TextStyle} from '@shopify/polaris';
 import {mountWithAppProvider as mount} from '../../../../../../../test-utils/mount';
-import Text, {TextSize, Alignment, Color, Style} from '../Text';
+import Text, {TextSize, Color, Style} from '../Text';
+import '@shopify/react-testing/matchers';
 
 describe('<Text />', () => {
   it('renders string text', () => {
