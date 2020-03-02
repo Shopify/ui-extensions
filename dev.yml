@@ -16,6 +16,7 @@ up:
 commands:
   build: yarn run build
   console: node
+  new-component: node ./scripts/new-component
   nuke: yarn run clean && rm -rf ./node_modules
   server: yarn run server
   test: yarn run test
