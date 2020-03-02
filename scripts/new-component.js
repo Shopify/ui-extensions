@@ -42,7 +42,7 @@ function createHost(componentName) {
   fs.mkdirSync(componentDir, {recursive: true});
   fs.writeFileSync(
     `${componentDir}/${componentName}.tsx`,
-    HOST_COMPONENT_TEMPLATE.replace(new RegExp(`{{name}}`, 'g'), componentName),
+    HOST_COMPONENT_TEMPLATE.replace(/{{name}}/g, componentName),
   );
   fs.writeFileSync(`${componentDir}/index.ts`, `export {default} from './${componentName}';\n`);
 
@@ -59,7 +59,7 @@ function createClient(componentName) {
   fs.mkdirSync(componentDir, {recursive: true});
   fs.writeFileSync(
     `${componentDir}/${componentName}.ts`,
-    CLIENT_COMPONENT_TEMPLATE.replace(new RegExp(`{{name}}`, 'g'), componentName),
+    CLIENT_COMPONENT_TEMPLATE.replace(/{{name}}/g, componentName),
   );
 
   console.log(`✅ Create ${componentName} client`);
