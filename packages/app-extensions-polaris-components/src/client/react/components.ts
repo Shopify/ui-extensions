@@ -16,7 +16,7 @@ import {
 } from '../core';
 
 export type CardProps = ReactPropsFromRemoteComponentType<typeof BaseCard>;
-export const Card: any = createRemoteReactComponent<'Card', {}>(BaseCard);
+export const Card = createRemoteReactComponent(BaseCard);
 
 export type CardSectionProps = ReactPropsFromRemoteComponentType<typeof BaseCardSection>;
 export const CardSection: any = createRemoteReactComponent(BaseCardSection);
@@ -24,8 +24,8 @@ export const CardSection: any = createRemoteReactComponent(BaseCardSection);
 export const Toast: any = createRemoteReactComponent(BaseToast);
 export type ToastProps = ReactPropsFromRemoteComponentType<typeof BaseToast>;
 
-export const Stack: any = createRemoteReactComponent(BaseStack);
 export type StackProps = ReactPropsFromRemoteComponentType<typeof BaseStack>;
+export const Stack = createRemoteReactComponent(BaseStack);
 
 export type CheckboxProps = ReactPropsFromRemoteComponentType<typeof BaseCheckbox>;
 export const Checkbox: any = createRemoteReactComponent(BaseCheckbox);
@@ -40,4 +40,4 @@ export type TextFieldProps = ReactPropsFromRemoteComponentType<typeof BaseTextFi
 export const TextField: any = createRemoteReactComponent(BaseTextField);
 
 export type TextProps = ReactPropsFromRemoteComponentType<typeof BaseText>;
-export const Text: any = createRemoteReactComponent(BaseText);
+export const Text = createRemoteReactComponent(BaseText);

@@ -1,8 +1,11 @@
-import React from 'react';
-import {Caption, DisplayText, TextStyle} from '@shopify/polaris';
-import {mountWithAppProvider as mount} from '../../../../../../../test-utils/mount';
-import Text, {TextSize, Color, Style} from '../Text';
 import '@shopify/react-testing/matchers';
+
+import {Caption, DisplayText, TextStyle} from '@shopify/polaris';
+import React from 'react';
+
+import {mountWithAppProvider as mount} from '../../../../../../../test-utils/mount';
+import {TextProps} from '../../../../client/core/components/Text';
+import Text from '../Text';
 
 describe('<Text />', () => {
   it('renders string text', () => {
@@ -11,20 +14,20 @@ describe('<Text />', () => {
   });
 
   it('uses the proper component for sizing the text', async () => {
-    const titleText = [
-      TextSize.TitleSmall,
-      TextSize.TitleMedium,
-      TextSize.TitleLarge,
-      TextSize.TitleExtraLarge,
+    const titleText: TextProps['size'][] = [
+      'titleSmall',
+      'titleMedium',
+      'titleLarge',
+      'titleExtraLarge',
     ];
     const displyTextMap = {
-      [TextSize.TitleSmall]: 'small',
-      [TextSize.TitleMedium]: 'medium',
-      [TextSize.TitleLarge]: 'large',
-      [TextSize.TitleExtraLarge]: 'extraLarge',
+      titleSmall: 'small',
+      titleMedium: 'medium',
+      titleLarge: 'large',
+      titleExtraLarge: 'extraLarge',
     };
 
-    const smallText = await mount(<Text size={TextSize.Small}>Small Text</Text>);
+    const smallText = await mount(<Text size="small">Small Text</Text>);
     expect(smallText).toContainReactComponent(Caption);
 
     titleText.forEach(async textSize => {
@@ -34,21 +37,21 @@ describe('<Text />', () => {
   });
 
   it('applies the proper color based on the color property', async () => {
-    const successText = await mount(<Text color={Color.Success}>Success Text</Text>);
+    const successText = await mount(<Text color="success">Success Text</Text>);
     expect(successText).toContainReactComponent(TextStyle, {variation: 'positive'});
 
-    const errorText = await mount(<Text color={Color.Error}>Error Text</Text>);
+    const errorText = await mount(<Text color="error">Error Text</Text>);
     expect(errorText).toContainReactComponent(TextStyle, {variation: 'negative'});
 
-    const secondaryText = await mount(<Text color={Color.Secondary}>Secondary Text</Text>);
+    const secondaryText = await mount(<Text color="secondary">Secondary Text</Text>);
     expect(secondaryText).toContainReactComponent(TextStyle, {variation: 'subdued'});
   });
 
   it('applies the correct text style based on the property', async () => {
-    const boldText = await mount(<Text style={Style.Strong}>Strong Text</Text>);
+    const boldText = await mount(<Text style="strong">Strong Text</Text>);
     expect(boldText).toContainReactComponent(TextStyle, {variation: 'strong'});
 
-    const codeText = await mount(<Text style={Style.Monospace}>Code Text</Text>);
+    const codeText = await mount(<Text style="monospace">Code Text</Text>);
     expect(codeText).toContainReactComponent(TextStyle, {variation: 'code'});
   });
 });

@@ -11,7 +11,7 @@ function App() {
       <Stack spacing="loose" distribution="fill">
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor{' '}
-          <Text variation="positive">incididunt ut labore</Text> et dolore magna aliqua. Amet est
+          <Text size="titleLarge">incididunt ut labore</Text> et dolore magna aliqua. Amet est
           placerat in egestas erat. Mattis pellentesque id nibh tortor. Massa vitae tortor
           condimentum lacinia quis vel.
         </Text>
