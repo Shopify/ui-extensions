@@ -1,3 +1,3 @@
-interface CardSection {
+export interface CardSection {
   children: React.ReactNode;
 }

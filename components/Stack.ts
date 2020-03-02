@@ -6,22 +6,16 @@
  * @property spacing Spacing between elements
  * @property children Elements to display inside the stack
  */
-interface Stack {
-    vertical?: boolean;
-    alignment?: Alignment
-    distribution?: Distribution;
-    spacing?: Spacing;
-    children: React.ReactNode;
+export interface Stack {
+  vertical?: boolean;
+  alignment?: Alignment;
+  distribution?: Distribution;
+  spacing?: Spacing;
+  children: React.ReactNode;
 }
 
-enum Distribution {
-    Leading, Trailing, Center, Fill
-}
+export type Distribution = 'leading' | 'trailing' | 'center' | 'fill';
 
-enum Alignment {
-    Leading, Trailing, Fill, Center, Baseline
-}
+export type Alignment = 'leading' | 'trailing' | 'fill' | 'center' | 'baseline';
 
-enum Spacing {
-    None, ExtraTight, Tight, Loose, ExtraLoose, 
-}
+export type Spacing = 'none' | 'extraTight' | 'tight' | 'loose' | 'extraLoose';

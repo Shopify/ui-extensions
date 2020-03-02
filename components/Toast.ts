@@ -1,5 +1,5 @@
 interface Toast {
-    message: string;
-    error?: boolean;
-    onDismiss?: () => void;
+  message: string;
+  error?: boolean;
+  onDismiss?: () => void;
 }

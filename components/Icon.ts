@@ -1,10 +1,5 @@
-enum IconName {
-    StarHollow,
-    StarPartial,
-    StarFilled
-    /* ... */
-}
+export type IconName = 'starHollow' | 'starPartial' | 'starFilled' /* ... */;
 
-interface Icon {
-    name: IconName;
+export interface Icon {
+  name: IconName;
 }

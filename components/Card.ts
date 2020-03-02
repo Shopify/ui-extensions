@@ -1,3 +1,9 @@
+export interface Action {
+  text: string;
+  destructive?: boolean;
+  onPress: () => void;
+}
+
 /**
  * Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
  * @property title Title content for the card
@@ -6,7 +12,7 @@
  * @property secondaryFooterActions Secondary actions for the card footer
  * @property children Inner content of the card
  */
-interface Card {
+export interface Card {
   title?: string;
   sectioned?: boolean;
   primaryFooterAction?: Action;

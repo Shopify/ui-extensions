@@ -1,13 +1,6 @@
-enum BadgeStatus {
-    Default,
-    Success,
-    Info,
-    Attention,
-    Warning,
-    New
-}
+export type BadgeStatus = 'default' | 'success' | 'info' | 'attention' | 'warning' | 'new';
 
-interface Badge {
-    message: string;
-    status: BadgeStatus;
+export interface Badge {
+  message: string;
+  status: BadgeStatus;
 }
