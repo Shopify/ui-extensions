@@ -1,9 +1,9 @@
 import {createRemoteComponent} from '@shopify/remote-ui-core';
 
 interface Action {
-  text: string;
+  content: string;
   destructive?: boolean;
-  onPress: () => void;
+  onAction?: () => void;
 }
 
 /**
