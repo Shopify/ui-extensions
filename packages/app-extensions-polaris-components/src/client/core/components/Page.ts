@@ -9,7 +9,7 @@ export interface Action {
 }
 
 export interface PageProps {
-  thumbnail?: React.ReactElement<ThumbnailProps>;
+  thumbnail?: ThumbnailProps; // TODO: explore making thumbnail as React.ReactElement<ThumbnailProps>. Ref https://github.com/Shopify/app-extension-libs/issues/176
   title: string;
   titleMetadata?: React.ReactNode;
   subTitle?: string;

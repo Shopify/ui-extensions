@@ -45,7 +45,7 @@ export type TextFieldProps = ReactPropsFromRemoteComponentType<typeof BaseTextFi
 export const TextField: any = createRemoteReactComponent(BaseTextField);
 
 export type ThumbnailProps = ReactPropsFromRemoteComponentType<typeof BaseThumbnail>;
-export const Thumbnail: any = createRemoteReactComponent(BaseThumbnail);
+export const Thumbnail = createRemoteReactComponent(BaseThumbnail);
 
 export const Toast: any = createRemoteReactComponent(BaseToast);
 export type ToastProps = ReactPropsFromRemoteComponentType<typeof BaseToast>;

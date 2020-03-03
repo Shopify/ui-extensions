@@ -1,5 +1,9 @@
+import {Thumbnail as PolarisThumbnail} from '@shopify/polaris';
 import React from 'react';
 
-export default function Thumbnail() {
-  return <>Component Code</>;
+import {ThumbnailProps} from '../../../client/core';
+
+export default function Thumbnail(props: ThumbnailProps) {
+  // TODO: need to handle props.scaleType
+  return <PolarisThumbnail {...props} />;
 }
