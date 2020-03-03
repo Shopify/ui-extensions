@@ -7,7 +7,6 @@ import {
   Stack,
   TextField,
   Text,
-  Thumbnail,
 } from '@shopify/app-extensions-polaris-components/client';
 
 render(ExtensionPoint.AppLink, root => <App />);
