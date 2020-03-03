@@ -1,10 +1,6 @@
 import {createRemoteComponent} from '@shopify/remote-ui-core';
 
-interface Action {
-  content: string;
-  destructive?: boolean;
-  onAction?: () => void;
-}
+import {Action} from '../types';
 
 /**
  * Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.

@@ -1,12 +1,7 @@
 import {createRemoteComponent} from '@shopify/remote-ui-core';
 
+import {Action} from '../types';
 import {ThumbnailProps} from './Thumbnail';
-
-export interface Action {
-  text: string;
-  destructive?: boolean;
-  onPress: () => void;
-}
 
 export interface PageProps {
   thumbnail?: ThumbnailProps; // TODO: explore making thumbnail as React.ReactElement<ThumbnailProps>. Ref https://github.com/Shopify/app-extension-libs/issues/176
