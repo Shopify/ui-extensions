@@ -80,14 +80,17 @@ const componentName = process.argv[2].trim();
 
 try {
   createHost(componentName);
-  console.log('🔥🔥🔥 Remember to update packages/app-extensions-polaris-components/src/host/components/index.ts');
 } catch (error) {
   killProcess("Couldn't create host component.", error);
 }
 
 try {
   createClient(componentName);
-  console.log('🔥🔥🔥 Remember to update packages/app-extensions-polaris-components/src/client/core/components/index.ts');
 } catch (error) {
   killProcess("Couldn't create client component.", error);
 }
+
+console.log('🔥🔥🔥 Remember to update these files:');
+console.log('packages/app-extensions-polaris-components/src/client/core/components/index.ts');
+console.log('packages/app-extensions-polaris-components/src/client/react/components.ts');
+console.log('packages/app-extensions-polaris-components/src/host/components/index.ts');
