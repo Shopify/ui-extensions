@@ -7,6 +7,7 @@ import {
   Card as BaseCard,
   CardSection as BaseCardSection,
   Checkbox as BaseCheckbox,
+  Icon as BaseIcon,
   Layout as BaseLayout,
   LayoutSection as BaseLayoutSection,
   Page as BasePage,
@@ -25,6 +26,9 @@ export const CardSection = createRemoteReactComponent(BaseCardSection);
 
 export type CheckboxProps = ReactPropsFromRemoteComponentType<typeof BaseCheckbox>;
 export const Checkbox = createRemoteReactComponent(BaseCheckbox);
+
+export type IconProps = ReactPropsFromRemoteComponentType<typeof BaseIcon>;
+export const Icon = createRemoteReactComponent(BaseIcon);
 
 export type LayoutProps = ReactPropsFromRemoteComponentType<typeof BaseLayout>;
 export const Layout = createRemoteReactComponent(BaseLayout);

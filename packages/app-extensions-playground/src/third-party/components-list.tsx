@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import {render, ExtensionPoint} from '@shopify/app-extensions-renderer';
 import {
   Card,
+  Icon,
   Page,
   Stack,
   TextField,
@@ -22,6 +23,8 @@ function App() {
         alt: 'Black leather pet collar',
       }}
     >
+      <Icon source="starFilled" color="yellow" />
+      <Icon source="starHollow" />
       <Card sectioned title="Cool card">
         <Stack spacing="loose" vertical>
           <TextField label="Name" value={name} onAfterChange={setName} />
