@@ -66,11 +66,14 @@ module.exports = {
                 },
               ],
               'babel-preset-shopify/react',
+              [
+                '@babel/preset-env',
+                {
+                  forceAllTransforms: true,
+                },
+              ],
             ],
-            plugins: [
-              '@shopify/react-i18n/babel',
-              require.resolve('@shopify/web-worker/babel'),
-            ],
+            plugins: ['@shopify/react-i18n/babel', require.resolve('@shopify/web-worker/babel')],
           },
         },
       },
