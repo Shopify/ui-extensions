@@ -7,7 +7,7 @@ export interface TextFieldProps {
   helpText?: string;
   placeholder?: string;
   multiline?: number | boolean;
-  onChange(value: string): void | Promise<void>;
+  onAfterChange: (value: string) => void;
   error?: string;
   showCharacterCount?: boolean;
   onBlur?(): void | Promise<void>;

@@ -21,16 +21,16 @@ export type CardProps = ReactPropsFromRemoteComponentType<typeof BaseCard>;
 export const Card = createRemoteReactComponent(BaseCard);
 
 export type CardSectionProps = ReactPropsFromRemoteComponentType<typeof BaseCardSection>;
-export const CardSection: any = createRemoteReactComponent(BaseCardSection);
+export const CardSection = createRemoteReactComponent(BaseCardSection);
 
 export type CheckboxProps = ReactPropsFromRemoteComponentType<typeof BaseCheckbox>;
-export const Checkbox: any = createRemoteReactComponent(BaseCheckbox);
+export const Checkbox = createRemoteReactComponent(BaseCheckbox);
 
 export type LayoutProps = ReactPropsFromRemoteComponentType<typeof BaseLayout>;
-export const Layout: any = createRemoteReactComponent(BaseLayout);
+export const Layout = createRemoteReactComponent(BaseLayout);
 
 export type LayoutSectionProps = ReactPropsFromRemoteComponentType<typeof BaseLayoutSection>;
-export const LayoutSection: any = createRemoteReactComponent(BaseLayoutSection);
+export const LayoutSection = createRemoteReactComponent(BaseLayoutSection);
 
 export type PageProps = ReactPropsFromRemoteComponentType<typeof BasePage>;
 export const Page = createRemoteReactComponent(BasePage);
@@ -42,10 +42,10 @@ export type TextProps = ReactPropsFromRemoteComponentType<typeof BaseText>;
 export const Text = createRemoteReactComponent(BaseText);
 
 export type TextFieldProps = ReactPropsFromRemoteComponentType<typeof BaseTextField>;
-export const TextField: any = createRemoteReactComponent(BaseTextField);
+export const TextField = createRemoteReactComponent(BaseTextField);
 
 export type ThumbnailProps = ReactPropsFromRemoteComponentType<typeof BaseThumbnail>;
 export const Thumbnail = createRemoteReactComponent(BaseThumbnail);
 
-export const Toast: any = createRemoteReactComponent(BaseToast);
+export const Toast = createRemoteReactComponent(BaseToast);
 export type ToastProps = ReactPropsFromRemoteComponentType<typeof BaseToast>;

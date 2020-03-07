@@ -1,18 +1,7 @@
 import React from 'react';
 import {TextField as PolarisTextField} from '@shopify/polaris';
 import {useQueuedState} from '../../hooks';
-
-interface TextFieldProps {
-  label: string;
-  value: string;
-  placeHolder?: string;
-  helpText?: string;
-  multiline?: boolean | number;
-
-  onBlur?: () => void;
-  onFocus?: () => void;
-  onAfterChange: (value: string) => void;
-}
+import {TextFieldProps} from '../../../client/core';
 
 const noop = () => undefined;
 
