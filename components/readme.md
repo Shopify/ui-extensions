@@ -10,7 +10,7 @@ A page is typically the top-level component, which defines the title, associated
 ### Card
 Cards are used to group similar concepts and tasks together
 
-[Card API](../packages/app-extensions-polaris-components/src/client/core/components/Card.ts))
+[Card API](../packages/app-extensions-polaris-components/src/client/core/components/Card.ts)
 
 ### Stack
 Used to lay out a horizontal or vertical row of components.  They can be nested to achieve complex layouts easily.
