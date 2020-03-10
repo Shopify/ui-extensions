@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@shopify/remote-ui-core';
 
 export interface CheckboxProps {
-  label: string;
+  label?: string;
   checked: boolean;
   onChange(value: boolean): void | Promise<void>;
 }

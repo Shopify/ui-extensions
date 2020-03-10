@@ -4,5 +4,9 @@ import React from 'react';
 import {CheckboxProps} from '../../../client/core';
 
 export default function Checkbox(props: CheckboxProps) {
-  return <PolarisCheckbox {...props} />;
+  const polarisProps = {
+    ...props,
+    label: props.label || '',
+  };
+  return <PolarisCheckbox {...polarisProps} />;
 }

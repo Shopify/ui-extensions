@@ -15,6 +15,7 @@ render(ExtensionPoint.AppLink, () => <App />);
 
 function App() {
   const [name, setName] = useState('');
+  const [noLabelChecked, setNoLabelChecked] = useState(false);
   const [fooChecked, setFooChecked] = useState(false);
   const [barChecked, setBarChecked] = useState(false);
 
@@ -28,6 +29,7 @@ function App() {
     >
       <Card sectioned title="Checkbox component">
         <Stack>
+          <Checkbox checked={noLabelChecked} onChange={newValue => setNoLabelChecked(newValue)} />
           <Checkbox
             label="Foo"
             checked={fooChecked}
