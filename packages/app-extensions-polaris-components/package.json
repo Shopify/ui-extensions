@@ -8,6 +8,11 @@
     "check": "tsc --pretty --noEmit",
     "new-component": "node ../../scripts/add-component"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shopify/app-extension-libs.git",
+    "directory": "packages/app-extensions-polaris-components"
+  },
   "peerDependencies": {
     "@shopify/polaris": "^4.0.0",
     "react": "^16.9.0",

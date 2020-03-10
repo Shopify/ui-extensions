@@ -7,6 +7,11 @@
     "build": "tsc",
     "check": "tsc --pretty --noEmit"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shopify/app-extension-libs.git",
+    "directory": "packages/app-extensions-renderer"
+  },
   "dependencies": {
     "@shopify/remote-ui-core": "^0.0.15",
     "@shopify/remote-ui-react": "^0.0.18",

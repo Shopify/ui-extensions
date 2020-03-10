@@ -10,6 +10,11 @@
     "build-mobile": "rm -rf ./dist && webpack --config ./webpack.mobile.config.js",
     "server": "webpack-dev-server"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shopify/app-extension-libs.git",
+    "directory": "packages/app-extensions-playground"
+  },
   "dependencies": {
     "@shopify/browserslist-config": "^1.0.3",
     "@shopify/polaris": "^4.3.0",
