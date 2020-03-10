@@ -1,7 +1,7 @@
 # Components
 
 ## Layout
----
+
 ### Page
 A page is typically the top-level component, which defines the title, associated actions, and children.
 
@@ -26,7 +26,6 @@ A text field is an input field that merchants can type into. It has a range of o
 [Text field API](TextField.ts)
 
 ## Images and Icons
----
 
 ### Thumbnail
 Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.
@@ -44,7 +43,6 @@ Icons are small visual indicators from a set of pre-defined glyphs.
 [Icon API](Icon.ts)
 
 ## Feedback
----
 
 ### Toast
 The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
