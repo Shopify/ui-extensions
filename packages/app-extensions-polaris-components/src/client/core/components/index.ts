@@ -1,3 +1,4 @@
+export * from './Badge';
 export * from './Card';
 export * from './CardSection';
 export * from './Checkbox';

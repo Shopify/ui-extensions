@@ -4,6 +4,7 @@ import {
 } from '@shopify/remote-ui-react';
 
 import {
+  Badge as BaseBadge,
   Card as BaseCard,
   CardSection as BaseCardSection,
   Checkbox as BaseCheckbox,
@@ -17,6 +18,9 @@ import {
   Thumbnail as BaseThumbnail,
   Toast as BaseToast,
 } from '../core';
+
+export type BadgeProps = ReactPropsFromRemoteComponentType<typeof BaseBadge>;
+export const Badge = createRemoteReactComponent(BaseBadge);
 
 export type CardProps = ReactPropsFromRemoteComponentType<typeof BaseCard>;
 export const Card = createRemoteReactComponent(BaseCard);

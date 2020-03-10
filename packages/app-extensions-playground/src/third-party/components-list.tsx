@@ -1,15 +1,15 @@
-import React, {useState} from 'react';
-
-import {render, ExtensionPoint} from '@shopify/app-extensions-renderer';
 import {
+  Badge,
   Card,
+  Checkbox,
   Icon,
   Page,
   Stack,
-  TextField,
   Text,
-  Checkbox,
+  TextField,
 } from '@shopify/app-extensions-polaris-components/client';
+import {ExtensionPoint, render} from '@shopify/app-extensions-renderer';
+import React, {useState} from 'react';
 
 render(ExtensionPoint.AppLink, () => <App />);
 
@@ -27,6 +27,16 @@ function App() {
         alt: 'Black leather pet collar',
       }}
     >
+      <Card sectioned title="Badge component">
+        <Stack>
+          <Badge message="Published" />
+          <Badge message="Published" status="attention" />
+          <Badge message="Published" status="info" />
+          <Badge message="Published" status="new" />
+          <Badge message="Published" status="success" />
+          <Badge message="Published" status="warning" />
+        </Stack>
+      </Card>
       <Card sectioned title="Checkbox component">
         <Stack>
           <Checkbox checked={noLabelChecked} onChange={newValue => setNoLabelChecked(newValue)} />

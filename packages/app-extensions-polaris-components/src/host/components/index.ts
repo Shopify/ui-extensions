@@ -1,5 +1,4 @@
-import {Badge} from '@shopify/polaris';
-
+import Badge from './Badge';
 import Card from './Card';
 import CardSection from './CardSection';
 import Checkbox from './Checkbox';
