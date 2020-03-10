@@ -18,7 +18,6 @@ Used to lay out a horizontal or vertical row of components.  They can be nested 
 [Stack API](../packages/app-extensions-polaris-components/src/client/core/components/Stack.ts)
 
 ## Input
----
 
 ### Text field
 A text field is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
