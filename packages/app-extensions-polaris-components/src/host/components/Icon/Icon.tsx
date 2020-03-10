@@ -15,5 +15,10 @@ const iconMap: IconMap = {
 export default function Icon(props: IconProps) {
   const {source: sourceProp, ...otherProps} = props;
   const source = iconMap[sourceProp];
-  return source && <PolarisIcon {...otherProps} source={source} />;
+
+  if (!source) {
+    throw new Error('Missing required props: source');
+  }
+
+  return <PolarisIcon {...otherProps} source={source} />;
 }
