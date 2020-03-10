@@ -5,7 +5,7 @@
 ### Page
 A page is typically the top-level component, which defines the title, associated actions, and children.
 
-[Page API](Page.ts)
+[Page API](../packages/app-extensions-polaris-components/src/client/core/components/Page.ts)
 
 ### Card
 Cards are used to group similar concepts and tasks together
