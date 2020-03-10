@@ -2,6 +2,7 @@ import {Badge} from '@shopify/polaris';
 
 import Card from './Card';
 import CardSection from './CardSection';
+import Checkbox from './Checkbox';
 import Icon from './Icon';
 import Page from './Page';
 import Stack from './Stack';
@@ -13,6 +14,7 @@ export default {
   Badge,
   Card,
   CardSection,
+  Checkbox,
   Icon,
   Page,
   Stack,

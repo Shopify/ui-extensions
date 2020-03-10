@@ -8,12 +8,15 @@ import {
   Stack,
   TextField,
   Text,
+  Checkbox,
 } from '@shopify/app-extensions-polaris-components/client';
 
 render(ExtensionPoint.AppLink, () => <App />);
 
 function App() {
   const [name, setName] = useState('');
+  const [fooChecked, setFooChecked] = useState(false);
+  const [barChecked, setBarChecked] = useState(false);
 
   return (
     <Page
@@ -23,14 +26,28 @@ function App() {
         alt: 'Black leather pet collar',
       }}
     >
-      <Icon source="starFilled" color="yellow" />
-      <Icon source="starHollow" />
-      <Card sectioned title="Cool card">
+      <Card sectioned title="Checkbox component">
+        <Stack>
+          <Checkbox
+            label="Foo"
+            checked={fooChecked}
+            onChange={newValue => setFooChecked(newValue)}
+          />
+          <Checkbox
+            label="Bar"
+            checked={barChecked}
+            onChange={newValue => setBarChecked(newValue)}
+          />
+        </Stack>
+      </Card>
+      <Card sectioned title="Icon component">
+        <Stack>
+          <Icon source="starFilled" color="yellow" />
+          <Icon source="starHollow" />
+        </Stack>
+      </Card>
+      <Card sectioned title="Text component">
         <Stack spacing="loose" vertical>
-          <TextField label="Name" value={name} onAfterChange={setName} />
-
-          <Text>Hello {name}</Text>
-
           <Text size="titleExtraLarge">Titles (Extra Large)</Text>
           <Text size="titleLarge">Large Title Text</Text>
           <Text size="titleMedium">Medium Title Text</Text>
@@ -62,6 +79,10 @@ function App() {
             Green, centered and IN YO FACE!
           </Text>
         </Stack>
+      </Card>
+      <Card sectioned title="TextField component">
+        <TextField label="Name" value={name} onAfterChange={setName} />
+        {name && <Text>Hello {name}</Text>}
       </Card>
     </Page>
   );

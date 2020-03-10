@@ -19,7 +19,9 @@ if (process.argv.length > 3) {
 const HOST_COMPONENT_TEMPLATE = `
 import React from 'react';
 
-export default function {{name}}() {
+import {{{name}}Props} from '../../../client/core';
+
+export default function {{name}}(props: {{name}}Props) {
   return <>Component Code</>;
 }
 `.trimLeft();
