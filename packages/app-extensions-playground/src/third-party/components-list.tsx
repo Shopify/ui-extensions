@@ -21,6 +21,8 @@ const SORT_ICON: IconProps = {
 
 function App() {
   const [name, setName] = useState('');
+  const [search, setSearch] = useState('');
+  const [review, setReview] = useState('');
   const [noLabelChecked, setNoLabelChecked] = useState(false);
   const [fooChecked, setFooChecked] = useState(false);
   const [barChecked, setBarChecked] = useState(false);
@@ -106,8 +108,20 @@ function App() {
         </Stack>
       </Card>
       <Card sectioned title="TextField component">
-        <TextField label="Name" value={name} onAfterChange={setName} />
+        <TextField label="Name" placeholder="Type your name" value={name} onAfterChange={setName} />
         {name && <Text>Hello {name}</Text>}
+        <TextField
+          type="search"
+          placeholder="Search for reviews"
+          value={search}
+          onAfterChange={setSearch}
+        />
+        <TextField
+          placeholder="Add a reply to this review..."
+          multiline
+          value={review}
+          onAfterChange={setReview}
+        />
       </Card>
     </Page>
   );

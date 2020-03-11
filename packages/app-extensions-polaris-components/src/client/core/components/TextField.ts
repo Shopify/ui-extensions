@@ -1,15 +1,12 @@
 import {createRemoteComponent} from '@shopify/remote-ui-core';
 
 export interface TextFieldProps {
-  label: string;
+  label?: string;
   type?: 'text' | 'search';
-  value: string;
-  helpText?: string;
+  value?: string;
   placeholder?: string;
   multiline?: number | boolean;
-  onAfterChange: (value: string) => void;
-  error?: string;
-  showCharacterCount?: boolean;
+  onAfterChange?: (value: string) => void;
   onBlur?(): void | Promise<void>;
   onFocus?(): void | Promise<void>;
 }
