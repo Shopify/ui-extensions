@@ -1,8 +1,10 @@
 import {
   Badge,
+  Button,
   Card,
   Checkbox,
   Icon,
+  IconProps,
   Page,
   Stack,
   Text,
@@ -12,6 +14,10 @@ import {ExtensionPoint, render} from '@shopify/app-extensions-renderer';
 import React, {useState} from 'react';
 
 render(ExtensionPoint.AppLink, () => <App />);
+
+const SORT_ICON: IconProps = {
+  source: 'sortMinor',
+};
 
 function App() {
   const [name, setName] = useState('');
@@ -35,6 +41,13 @@ function App() {
           <Badge message="Published" status="new" />
           <Badge message="Published" status="success" />
           <Badge message="Published" status="warning" />
+        </Stack>
+      </Card>
+      <Card sectioned title="Button component">
+        <Stack>
+          <Button title="Sort" icon={SORT_ICON} />
+          <Button title="Delete" />
+          <Button title="Publish review" primary />
         </Stack>
       </Card>
       <Card sectioned title="Checkbox component">

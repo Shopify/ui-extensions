@@ -5,6 +5,7 @@ import {
 
 import {
   Badge as BaseBadge,
+  Button as BaseButton,
   Card as BaseCard,
   CardSection as BaseCardSection,
   Checkbox as BaseCheckbox,
@@ -21,6 +22,9 @@ import {
 
 export type BadgeProps = ReactPropsFromRemoteComponentType<typeof BaseBadge>;
 export const Badge = createRemoteReactComponent(BaseBadge);
+
+export type ButtonProps = ReactPropsFromRemoteComponentType<typeof BaseButton>;
+export const Button = createRemoteReactComponent(BaseButton);
 
 export type CardProps = ReactPropsFromRemoteComponentType<typeof BaseCard>;
 export const Card = createRemoteReactComponent(BaseCard);

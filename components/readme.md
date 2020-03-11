@@ -1,6 +1,14 @@
 # Components
 
 
+## Action
+
+### Button
+Buttons are used primarily for actions, such as "Add", "Close", "Cancel", or "Save". 
+
+[Button API](../packages/app-extensions-polaris-components/src/client/core/components/Button.ts)
+
+
 ## Feedback
 
 ### Toast

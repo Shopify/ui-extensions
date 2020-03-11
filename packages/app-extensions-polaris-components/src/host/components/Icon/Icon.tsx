@@ -1,15 +1,16 @@
 import {Icon as PolarisIcon} from '@shopify/polaris';
-import {StarFilledMinor, StarOutlineMinor} from '@shopify/polaris-icons';
+import {StarFilledMinor, StarOutlineMinor, SortMinor} from '@shopify/polaris-icons';
 import React from 'react';
 
 import {IconProps} from '../../../client/core';
 
 type IconMap = {
-  [key in IconProps['source']]: React.SFC<React.SVGProps<SVGSVGElement>>;
+  [key in string]: React.SFC<React.SVGProps<SVGSVGElement>>;
 };
 const iconMap: IconMap = {
   starFilled: StarFilledMinor,
   starHollow: StarOutlineMinor,
+  sortMinor: SortMinor,
 };
 
 export default function Icon(props: IconProps) {

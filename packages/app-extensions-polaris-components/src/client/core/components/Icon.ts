@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@shopify/remote-ui-core';
 
-type Source = 'starHollow' | 'starFilled';
+type Source = 'starHollow' | 'starFilled' | 'sortMinor';
 
 type Color =
   | 'white'
