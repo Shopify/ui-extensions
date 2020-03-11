@@ -1,7 +1,7 @@
 /**
  * Configurations for a fetch request
  */
-export type FetchConfig = {
+export type Config = {
   /** HTTP method */
   method: 'GET' | 'POST' | 'PUT' | 'DELETE';
 
@@ -22,7 +22,7 @@ export interface Response {
    * Converts the response body to its JSON representation
    * @returns a Promise resolving to JSON (string, number, object, array)
    */
-  json(): Promise<object>;
+  json(): Promise<any>;
 
   /**
    * Converts the response body to a utf8 encoded string
