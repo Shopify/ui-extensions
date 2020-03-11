@@ -1,13 +1,15 @@
 export interface Console {
   /**
    * Writes a message to the console
-   * @param msg
+   * @param message
+   * @param optionalParams
    */
-  log(msg: string): void;
+  log(message?: any, ...optionalParams: any[]): void;
 
   /**
    * Writes an error message to the console
-   * @param msg
+   * @param message
+   * @param optionalParams
    */
-  error(msg: string): void;
+  error(message?: any, ...optionalParams: any[]): void;
 }
