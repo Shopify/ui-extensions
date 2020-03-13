@@ -24,7 +24,7 @@ function StatBlock({value, title}: StatItem) {
 export default function Stats({statistics}: Props) {
   return (
     <Card sectioned>
-      <Stack distribution="fillEvenly">
+      <Stack distribution="fill">
         {statistics.map(({title, value}: StatItem) => (
           <StatBlock key={title} title={title} value={value} />
         ))}

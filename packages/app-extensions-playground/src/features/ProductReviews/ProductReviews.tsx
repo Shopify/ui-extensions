@@ -14,12 +14,10 @@ export function ProductReviews() {
   usePerformanceMark('complete', 'Home');
 
   return (
-    <Page title="Product Reviews">
-      <AppExtension
-        script={reactThirdPartyWorker.url}
-        extensionPoint={ExtensionPoint.AppLink}
-        components={{...host}}
-      />
-    </Page>
+    <AppExtension
+      script={reactThirdPartyWorker.url}
+      extensionPoint={ExtensionPoint.AppLink}
+      components={{...host}}
+    />
   );
 }
