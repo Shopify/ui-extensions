@@ -8,6 +8,7 @@ export * from './Layout';
 export * from './LayoutSection';
 export * from './Page';
 export * from './Stack';
+export * from './StackItem';
 export * from './Text';
 export * from './TextField';
 export * from './Thumbnail';

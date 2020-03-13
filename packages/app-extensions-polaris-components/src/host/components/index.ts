@@ -6,6 +6,7 @@ import Checkbox from './Checkbox';
 import Icon from './Icon';
 import Page from './Page';
 import Stack from './Stack';
+import StackItem from './StackItem';
 import TextField from './TextField';
 import Text from './Text';
 import Thumbnail from './Thumbnail';
@@ -19,6 +20,7 @@ export default {
   Icon,
   Page,
   Stack,
+  StackItem,
   TextField,
   Text,
   Thumbnail,

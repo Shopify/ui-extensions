@@ -14,6 +14,7 @@ import {
   LayoutSection as BaseLayoutSection,
   Page as BasePage,
   Stack as BaseStack,
+  StackItem as BaseStackItem,
   Text as BaseText,
   TextField as BaseTextField,
   Thumbnail as BaseThumbnail,
@@ -49,6 +50,9 @@ export const Page = createRemoteReactComponent(BasePage);
 
 export type StackProps = ReactPropsFromRemoteComponentType<typeof BaseStack>;
 export const Stack = createRemoteReactComponent(BaseStack);
+
+export type StackItemProps = ReactPropsFromRemoteComponentType<typeof BaseStackItem>;
+export const StackItem = createRemoteReactComponent(BaseStackItem);
 
 export type TextProps = ReactPropsFromRemoteComponentType<typeof BaseText>;
 export const Text = createRemoteReactComponent(BaseText);

@@ -55,7 +55,7 @@ Cards are used to group similar concepts and tasks together
 
 [Card API](../packages/app-extensions-polaris-components/src/client/core/components/Card.ts)
 
-### Card.Section
+### CardSection
 Used to group similar concepts within a Card. It also adds a divider between sections if there are more than one
 
 [CardSection API](../packages/app-extensions-polaris-components/src/client/core/components/CardSection.ts)
@@ -69,6 +69,11 @@ A page is typically the top-level component, which defines the title, associated
 Used to lay out a horizontal or vertical row of components. They can be nested to achieve complex layouts easily.
 
 [Stack API](../packages/app-extensions-polaris-components/src/client/core/components/Stack.ts)
+
+### StackItem
+The stack component will treat multiple elements wrapped in a stack item component as one item. By default, each individual element is treated as one stack item. Use the fill prop on a single stack item component to make it fill the rest of the available horizontal space.
+
+[Stack API](../packages/app-extensions-polaris-components/src/client/core/components/StackItem.ts)
 
 
 ## Titles and text

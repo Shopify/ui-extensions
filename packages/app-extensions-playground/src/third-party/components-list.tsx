@@ -7,6 +7,7 @@ import {
   IconProps,
   Page,
   Stack,
+  StackItem,
   Text,
   TextField,
 } from '@shopify/app-extensions-polaris-components/client';
@@ -71,6 +72,16 @@ function App() {
         <Stack>
           <Icon source="starFilled" color="yellow" />
           <Icon source="starHollow" />
+        </Stack>
+      </Card>
+      <Card sectioned title="Stack component">
+        <Stack>
+          <StackItem fill>
+            <TextField type="search" placeholder="Search for reviews" />
+          </StackItem>
+          <StackItem>
+            <Button title="Sort" icon={SORT_ICON} />
+          </StackItem>
         </Stack>
       </Card>
       <Card sectioned title="Text component">
