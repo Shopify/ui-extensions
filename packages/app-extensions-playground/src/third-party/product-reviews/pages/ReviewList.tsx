@@ -1,19 +1,16 @@
 import React from 'react';
 import StatBlock from '../components/Stats';
+import ReviewListItem, {Rating} from '../components/ReviewListItem';
 
 import {
-  Badge,
   Button,
   Card,
-  Checkbox,
   CardSection,
   Page,
-  Text,
   Stack,
   StackItem,
   TextField,
   IconProps,
-  Icon,
 } from '@shopify/app-extensions-polaris-components/client';
 
 interface Props {
@@ -40,6 +37,36 @@ const tempStats = [
   },
 ];
 
+const tempReviewData = [
+  {
+    email: 'random@email.com',
+    rating: 3,
+    title: 'Sweet board',
+    name: 'Tote Ally Raad',
+    body: 'Super dope board yo',
+    status: 'pending',
+    created: 'April 20th, 2019',
+  },
+  {
+    email: 'big@air.com',
+    rating: 4,
+    title: 'Shred-tatistic board',
+    name: 'Sowsi Kyo',
+    body: 'Never seen a board like this before',
+    status: 'published',
+    created: 'May 15th, 2017',
+  },
+  {
+    email: 'rad@nesss.com',
+    rating: 5,
+    title: 'Pristine board',
+    name: 'Nar Lee',
+    body: 'Totally radical board dude',
+    status: 'published',
+    created: 'September 18th, 2016',
+  },
+];
+
 const sortIcon: IconProps = {
   source: 'searchMinor',
 };
@@ -54,7 +81,6 @@ export default function ReviewList({}: Props) {
       }}
     >
       <StatBlock statistics={tempStats} />
-
       <Card>
         <CardSection>
           <Stack>
@@ -64,48 +90,16 @@ export default function ReviewList({}: Props) {
             <Button title="Sort" icon={sortIcon} />
           </Stack>
         </CardSection>
-        <CardSection>
-          <Stack alignment="center">
-            <Checkbox />
-            <Stack spacing="none">
-              <Icon source="starFilled" color="yellow" />
-              <Icon source="starFilled" color="yellow" />
-              <Icon source="starFilled" color="yellow" />
-              <Icon source="starHollow" color="yellow" />
-              <Icon source="starHollow" color="yellow" />
-            </Stack>
-            <StackItem fill>
-              <Stack vertical spacing="none">
-                <Text style="strong">Good camera for an unnecessary cost</Text>
-                <Text>Really good camera with solid quality and something I dont know</Text>
-                <Text color="secondary">Jim Anderson</Text>
-              </Stack>
-            </StackItem>
-            <Text>Oct 15, 2020</Text>
-            <Badge message="Unpublished" status="warning" />
-          </Stack>
-        </CardSection>
-        <CardSection>
-          <Stack alignment="center">
-            <Checkbox />
-            <Stack spacing="none">
-              <Icon source="starFilled" color="yellow" />
-              <Icon source="starFilled" color="yellow" />
-              <Icon source="starFilled" color="yellow" />
-              <Icon source="starHollow" color="yellow" />
-              <Icon source="starHollow" color="yellow" />
-            </Stack>
-            <StackItem fill>
-              <Stack vertical spacing="none">
-                <Text style="strong">Good camera for an unnecessary cost</Text>
-                <Text>Really good camera with solid quality and something I dont know</Text>
-                <Text color="secondary">Jim Anderson</Text>
-              </Stack>
-            </StackItem>
-            <Text>Oct 15, 2020</Text>
-            <Badge message="Unpublished" status="warning" />
-          </Stack>
-        </CardSection>
+        {tempReviewData.map(review => (
+          <ReviewListItem
+            title={review.title}
+            body={review.body}
+            rating={review.rating as Rating}
+            status={review.status}
+            author={review.name}
+            created={review.created}
+          />
+        ))}
       </Card>
     </Page>
   );
