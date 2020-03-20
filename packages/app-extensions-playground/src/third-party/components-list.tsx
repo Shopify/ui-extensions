@@ -95,6 +95,11 @@ function App() {
 
           <Text size="titleExtraLarge">Colours</Text>
 
+          <Text style="normal">Normal style</Text>
+          <Text style="italic">Italic style</Text>
+          <Text style="monospace">Monospace style</Text>
+          <Text style="strong">Strong style</Text>
+
           <Text color="success">Super success text!</Text>
           <Text color="error">Womp womp... this is an error...</Text>
           <Text color="secondary">Can't always be first</Text>
