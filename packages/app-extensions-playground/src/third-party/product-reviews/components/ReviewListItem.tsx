@@ -9,15 +9,11 @@ import {
   Badge,
 } from '@shopify/app-extensions-polaris-components/client';
 
-export enum ReviewStatus {
-  'pending',
-  'published',
-  'spam',
-}
+export type ReviewStatus = 'pending' | 'published' | 'spam';
 
 export type Rating = 1 | 2 | 3 | 4 | 5;
 
-interface Props {
+export interface Props {
   title: string;
   body: string;
   rating: Rating;
