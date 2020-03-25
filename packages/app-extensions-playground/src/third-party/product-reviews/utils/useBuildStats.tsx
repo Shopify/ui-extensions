@@ -11,19 +11,19 @@ export default function useBuildStats(data: Payload): Stat[] {
   return [
     {
       title: 'Rating',
-      value: averageReviewRating || 0,
+      value: averageReviewRating,
     },
     {
       title: 'Published',
-      value: publishedReviewsCount || 0,
+      value: publishedReviewsCount,
     },
     {
       title: 'Unpublished',
-      value: pendingReviewsCount || 0,
+      value: pendingReviewsCount,
     },
     {
       title: 'Flagged',
-      value: flaggedReviewsCount || 0,
+      value: flaggedReviewsCount,
     },
   ];
 }

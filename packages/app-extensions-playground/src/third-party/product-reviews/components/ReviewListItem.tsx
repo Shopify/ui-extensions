@@ -18,7 +18,7 @@ export default function ReviewListItem({data}: Props) {
   const [selected, setSelected] = useState(false);
 
   return (
-    <CardSection key={author.replace(' ', '-')}>
+    <CardSection key={id}>
       <Stack alignment="center" wrap={false}>
         <Checkbox label="" onChange={() => setSelected(!selected)} checked={selected} />
         <StarRating rating={rating} />

@@ -1,3 +1,4 @@
+import React from 'react';
 import {
   Button,
   Card,
@@ -8,13 +9,15 @@ import {
   StackItem,
   TextField,
 } from '@shopify/app-extensions-polaris-components/client';
-import React, {useState, useEffect} from 'react';
+import {useQuery} from '@shopify/react-graphql';
 
-import {Payload, Stat} from '../types';
+import {Stat} from '../types';
 
-import ReviewListItem, {Props as ReviewListItemProps} from '../components/ReviewListItem';
+import ReviewListItem from '../components/ReviewListItem';
 import StatBlock from '../components/Stats';
 import useBuildStats from '../utils/useBuildStats';
+
+import ProductWithReviewsQuery from '../graphql/ProductWithReviews';
 
 interface Props {
   onReviewSelect: (id: string) => void;
@@ -25,73 +28,31 @@ const sortIcon: IconProps = {
   source: 'searchMinor',
 };
 
-const TOKEN =
-  'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaG9wIjoic2hvcDEubXlzaG9waWZ5LmlvIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.DPRpE9-UGNOFtgJV72KfqCfSIde0WW-0snwErCK3mHg';
-
-const BACKEND_API_ENDPOINT = 'https://product-reviews.myshopify.io/graphql';
-
-const query = `
-query {
-  product(id: 1234) {
-    id
-    remoteId
-    shopId
-    title
-    imageUrl
-    averageReviewRating
-    flaggedReviewsCount
-    publishedReviewsCount
-    pendingReviewsCount
-    reviewsCount
-    reviews {
-      id
-      productId
-      rating
-      shopId
-      title
-      body
-      author
-      state
-      createdAt
-    }
-  }
-}
-`;
-
 export default function ReviewList({}: Props) {
-  const [dataLoaded, setDataLoaded] = useState(false);
-  const [data, setData] = useState<Payload>({});
+  const {data, loading, error} = useQuery(ProductWithReviewsQuery, {
+    variables: {
+      id: 1234,
+    },
+  });
 
-  useEffect(() => {
-    const headers = new Headers({
-      authorization: TOKEN,
-      'Content-Type': 'application/json',
-    });
-
-    fetch(BACKEND_API_ENDPOINT, {
-      method: 'POST',
-      headers,
-      body: JSON.stringify({query}),
-    })
-      .then(response => response.json())
-      .then(response => {
-        // TODO: Error checking
-        setData(response.data.product);
-        setDataLoaded(true);
-      });
-  }, []);
-
-  if (!dataLoaded)
+  if (loading)
     return (
-      <Card>
-        <CardSection>
-          <Stack>Loading Data</Stack>
-        </CardSection>
-      </Card>
+      <Page title="">
+        <Card>
+          <CardSection>
+            <Stack>Loading Data</Stack>
+          </CardSection>
+        </Card>
+      </Page>
     );
 
-  const stats: Stat[] = useBuildStats(data);
-  console.log(data);
+  if (error) {
+    //do spmething here
+    console.warn('Graphql error - ', error);
+  }
+
+  const {product} = data;
+  const stats: Stat[] = useBuildStats(product);
 
   return (
     <Page
@@ -111,7 +72,7 @@ export default function ReviewList({}: Props) {
             <Button title="Sort" icon={sortIcon} />
           </Stack>
         </CardSection>
-        {(data.reviews || []).map(review => (
+        {(product.reviews || []).map(review => (
           <ReviewListItem data={review} />
         ))}
       </Card>

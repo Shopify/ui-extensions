@@ -7,7 +7,7 @@ interface Props {
 
 type StatItem = {
   title: string;
-  value: number | string;
+  value?: number | string;
 };
 
 function StatBlock({value, title}: StatItem) {
@@ -26,7 +26,7 @@ export default function Stats({statistics}: Props) {
     <Card sectioned>
       <Stack distribution="fill">
         {statistics.map(({title, value}: StatItem) => (
-          <StatBlock key={title} title={title} value={value} />
+          <StatBlock key={title} title={title} value={value || 0} />
         ))}
       </Stack>
     </Card>
