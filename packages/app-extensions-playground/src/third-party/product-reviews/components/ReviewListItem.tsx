@@ -5,31 +5,23 @@ import {
   Text,
   Checkbox,
   StackItem,
-  Icon,
-  Badge,
 } from '@shopify/app-extensions-polaris-components/client';
-
-export type ReviewStatus = 'pending' | 'published' | 'spam';
-
-export type Rating = 1 | 2 | 3 | 4 | 5;
+import {Review, Rating} from '../types';
+import {StarRating, StatusBadge} from './';
 
 export interface Props {
-  title: string;
-  body: string;
-  rating: Rating;
-  status: ReviewStatus;
-  author: string;
-  created: string;
+  data: Review;
 }
 
-export default function ReviewListItem({title, body, rating, status, author, created}: Props) {
+export default function ReviewListItem({data}: Props) {
+  const {id, rating, title, body, author, state, createdAt} = data;
   const [selected, setSelected] = useState(false);
 
   return (
-    <CardSection>
-      <Stack alignment="center">
+    <CardSection key={author.replace(' ', '-')}>
+      <Stack alignment="center" wrap={false}>
         <Checkbox label="" onChange={() => setSelected(!selected)} checked={selected} />
-        <Rating rating={rating} />
+        <StarRating rating={rating} />
         <StackItem fill>
           <Stack vertical spacing="none">
             <Text style="strong">{title}</Text>
@@ -37,25 +29,9 @@ export default function ReviewListItem({title, body, rating, status, author, cre
             <Text color="secondary">{author}</Text>
           </Stack>
         </StackItem>
-        <Text>{created}</Text>
-        <StatusBadge reviewStatus={status} />
+        <Text>{createdAt}</Text>
+        <StatusBadge reviewStatus={state} />
       </Stack>
     </CardSection>
   );
-}
-
-function Rating({rating}: {rating: Rating}) {
-  const stars = Array.from(new Array(5), (v, i) => (
-    <Icon
-      key={`starFilled-${Math.floor(Math.random() * 100000)}`}
-      source={i < rating ? 'starFilled' : 'starHollow'}
-      color="yellow"
-    />
-  ));
-
-  return <Stack spacing="none">{stars}</Stack>;
-}
-
-function StatusBadge({reviewStatus}: {reviewStatus: ReviewStatus}) {
-  return <Badge message={reviewStatus} status="warning" />;
 }

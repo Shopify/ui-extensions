@@ -12,6 +12,7 @@ export interface ShopifyApi {
     extensionPoint: T,
     callback: CallbackTypeForExtensionPoint<T>,
   ): ExtensionResult;
+  fetch?: any;
 }
 
 export interface ShopifyGlobal {

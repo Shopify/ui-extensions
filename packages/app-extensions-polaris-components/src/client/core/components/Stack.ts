@@ -19,6 +19,7 @@ export interface StackProps {
   alignment?: Alignment;
   distribution?: Distribution;
   spacing?: Spacing;
+  wrap?: boolean;
   children: React.ReactNode;
 }
 
