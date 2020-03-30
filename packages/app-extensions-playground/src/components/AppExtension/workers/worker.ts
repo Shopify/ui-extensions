@@ -3,6 +3,7 @@ import {
   CallbackTypeForExtensionPoint,
   DataTypeForExtensionCallback,
   ShopifyApi,
+  Listeners,
 } from '@shopify/app-extensions-renderer';
 import {createRemoteRoot, RemoteChannel, retain} from '@shopify/remote-ui-core';
 
@@ -35,14 +36,20 @@ export function render<T extends ExtensionPoint>(
   data: DataTypeForExtensionCallback<CallbackTypeForExtensionPoint<T>>,
   components: string[],
   channel: RemoteChannel,
+  setEventListeners?: (listeners: Listeners) => void,
 ) {
   if (!registeredExtensions.has(extensionPoint)) {
     return false;
   }
 
   retain(channel);
+  retain(setEventListeners);
 
   const callback = registeredExtensions.get(extensionPoint)!;
 
-  return callback(createRemoteRoot(channel, {components: components as any}), data);
+  return callback(
+    createRemoteRoot(channel, {components: components as any}),
+    data,
+    setEventListeners,
+  );
 }

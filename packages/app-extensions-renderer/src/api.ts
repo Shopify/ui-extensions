@@ -1,11 +1,13 @@
-import {ReactElement} from 'react';
 import {render as remoteRender} from '@shopify/remote-ui-react';
+import {ReactElement} from 'react';
+
 import {
-  ExtensionPoint,
   CallbackTypeForExtensionPoint,
   DataTypeForExtensionCallback,
+  ExtensionPoint,
   ExtensionResult,
 } from './extension-points';
+import {attachListeners} from './listeners';
 
 export interface ShopifyApi {
   extend<T extends ExtensionPoint>(
@@ -33,10 +35,10 @@ export function render<T extends ExtensionPoint>(
   extensionPoint: T,
   renderCallback: RenderCallback<T>,
 ) {
-  return extend(extensionPoint, (root, data) => {
+  return extend(extensionPoint, (root, data, setEventListeners) => {
     const element = renderCallback(
       data as DataTypeForExtensionCallback<CallbackTypeForExtensionPoint<T>>,
     );
-    remoteRender(element, root);
+    remoteRender(attachListeners(element, setEventListeners), root);
   });
 }

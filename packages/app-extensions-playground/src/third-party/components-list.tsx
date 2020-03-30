@@ -13,7 +13,7 @@ import {
   Text,
   TextField,
 } from '@shopify/app-extensions-polaris-components/client';
-import {ExtensionPoint, render} from '@shopify/app-extensions-renderer';
+import {ExtensionPoint, render, useLayout} from '@shopify/app-extensions-renderer';
 
 const SORT_ICON: IconProps = {
   source: 'sortMinor',
@@ -45,6 +45,8 @@ function App() {
   const onButtonClick = useCallback(() => {
     setButtonValue(value => value + 1);
   }, []);
+
+  const layout = useLayout();
 
   return (
     <Page
@@ -125,6 +127,9 @@ function App() {
           <Icon source="starFilled" color="yellow" />
           <Icon source="starHollow" />
         </Stack>
+      </Card>
+      <Card sectioned title="Layout">
+        <Text>{JSON.stringify(layout) || 'undefined'}</Text>
       </Card>
       <Card sectioned title="Stack component">
         <Stack>
