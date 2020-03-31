@@ -29,10 +29,17 @@ function App() {
   const [noLabelChecked, setNoLabelChecked] = useState(false);
   const [fooChecked, setFooChecked] = useState(false);
   const [barChecked, setBarChecked] = useState(false);
+  const [clickableValue, setClickableValue] = useState('');
 
-  const clickHandlerYellow = useCallback(() => alert('Yellow Star clicked'), []);
-  const clickHandlerCard = useCallback(() => alert('CardSection clicked'), []);
-  const clickHandlerBlue = useCallback(() => alert('Blue Star clicked'), []);
+  const clickHandlerYellow = useCallback(() => setClickableValue('Yellow Star clicked'), [
+    setClickableValue,
+  ]);
+  const clickHandlerCard = useCallback(() => setClickableValue('Card clicked'), [
+    setClickableValue,
+  ]);
+  const clickHandlerBlue = useCallback(() => setClickableValue('Blue Star clicked'), [
+    setClickableValue,
+  ]);
 
   return (
     <Page
@@ -73,6 +80,19 @@ function App() {
             onChange={newValue => setBarChecked(newValue)}
           />
         </Stack>
+      </Card>
+      <Card sectioned title={`Clickable component ${clickableValue ? `(${clickableValue})` : ''}`}>
+        <Clickable onClick={clickHandlerCard}>
+          <Stack>
+            <Clickable onClick={clickHandlerYellow}>
+              <Icon source="starFilled" color="yellow" />
+            </Clickable>
+            <Clickable onClick={clickHandlerBlue}>
+              <Icon source="starFilled" color="blue" />
+            </Clickable>
+            <Text>Click Yellow, Blue star, and me</Text>
+          </Stack>
+        </Clickable>
       </Card>
       <Card sectioned title="Icon component">
         <Stack>
@@ -144,20 +164,6 @@ function App() {
           value={review}
           onAfterChange={setReview}
         />
-      </Card>
-      <Card sectioned title="Clickable component">
-        <CardSection>
-          <Clickable onClick={clickHandlerYellow}>
-            <Icon source="starFilled" color="yellow" />
-          </Clickable>
-        </CardSection>
-        <Clickable onClick={clickHandlerCard}>
-          <CardSection>
-            <Clickable onClick={clickHandlerBlue}>
-              <Icon source="starFilled" color="blue" />
-            </Clickable>
-          </CardSection>
-        </Clickable>
       </Card>
     </Page>
   );

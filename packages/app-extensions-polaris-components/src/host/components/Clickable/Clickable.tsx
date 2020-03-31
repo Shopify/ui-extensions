@@ -6,11 +6,11 @@ export default function Clickable(props: ClickableProps) {
   const {onClick} = props;
   const onAction = useCallback(
     e => {
-      e.stopPropogation();
-      onClick(e);
+      e.stopPropagation();
+      onClick();
     },
     [onClick],
   );
 
-  return <div onClick={onAction} {...props} />;
+  return <div {...props} onClick={onAction} />;
 }
