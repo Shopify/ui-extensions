@@ -3,6 +3,7 @@ export * from './Button';
 export * from './Card';
 export * from './CardSection';
 export * from './Checkbox';
+export * from './Clickable';
 export * from './Icon';
 export * from './Layout';
 export * from './LayoutSection';

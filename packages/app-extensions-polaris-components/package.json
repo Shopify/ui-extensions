@@ -5,8 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "check": "tsc --pretty --noEmit",
-    "new-component": "node ../../scripts/add-component"
+    "check": "tsc --pretty --noEmit"
   },
   "repository": {
     "type": "git",

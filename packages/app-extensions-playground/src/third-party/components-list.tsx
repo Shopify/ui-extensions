@@ -2,7 +2,9 @@ import {
   Badge,
   Button,
   Card,
+  CardSection,
   Checkbox,
+  Clickable,
   Icon,
   IconProps,
   Page,
@@ -12,7 +14,7 @@ import {
   TextField,
 } from '@shopify/app-extensions-polaris-components/client';
 import {ExtensionPoint, render} from '@shopify/app-extensions-renderer';
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 
 render(ExtensionPoint.AppLink, () => <App />);
 
@@ -27,6 +29,10 @@ function App() {
   const [noLabelChecked, setNoLabelChecked] = useState(false);
   const [fooChecked, setFooChecked] = useState(false);
   const [barChecked, setBarChecked] = useState(false);
+
+  const clickHandlerYellow = useCallback(() => alert('Yellow Star clicked'), []);
+  const clickHandlerCard = useCallback(() => alert('CardSection clicked'), []);
+  const clickHandlerBlue = useCallback(() => alert('Blue Star clicked'), []);
 
   return (
     <Page
@@ -138,6 +144,20 @@ function App() {
           value={review}
           onAfterChange={setReview}
         />
+      </Card>
+      <Card sectioned title="Clickable component">
+        <CardSection>
+          <Clickable onClick={clickHandlerYellow}>
+            <Icon source="starFilled" color="yellow" />
+          </Clickable>
+        </CardSection>
+        <Clickable onClick={clickHandlerCard}>
+          <CardSection>
+            <Clickable onClick={clickHandlerBlue}>
+              <Icon source="starFilled" color="blue" />
+            </Clickable>
+          </CardSection>
+        </Clickable>
       </Card>
     </Page>
   );

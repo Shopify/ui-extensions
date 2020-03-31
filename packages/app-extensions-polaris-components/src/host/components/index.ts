@@ -3,6 +3,7 @@ import Button from './Button';
 import Card from './Card';
 import CardSection from './CardSection';
 import Checkbox from './Checkbox';
+import Clickable from './Clickable';
 import Icon from './Icon';
 import Page from './Page';
 import Stack from './Stack';
@@ -17,6 +18,7 @@ export default {
   Card,
   CardSection,
   Checkbox,
+  Clickable,
   Icon,
   Page,
   Stack,
