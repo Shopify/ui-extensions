@@ -16,8 +16,6 @@ import {
 import {ExtensionPoint, render} from '@shopify/app-extensions-renderer';
 import React, {useState, useCallback} from 'react';
 
-render(ExtensionPoint.AppLink, () => <App />);
-
 const SORT_ICON: IconProps = {
   source: 'sortMinor',
 };
@@ -168,3 +166,5 @@ function App() {
     </Page>
   );
 }
+
+render(ExtensionPoint.AppLink, () => <App />);
