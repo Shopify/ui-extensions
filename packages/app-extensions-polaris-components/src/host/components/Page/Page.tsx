@@ -1,10 +1,11 @@
 import {Page as PolarisPage, Thumbnail as PolarisThumbnail} from '@shopify/polaris';
-import React from 'react';
+import React, {useMemo} from 'react';
 
 import {PageProps} from '../../../client/core';
 
-export default function Page(props: PageProps) {
-  const {thumbnail: thumbnailProp, ...otherProps} = props;
-  const thumbnail = thumbnailProp && <PolarisThumbnail {...thumbnailProp} />;
-  return <PolarisPage {...otherProps} thumbnail={thumbnail} />;
+export default function Page({thumbnail, ...props}: PageProps) {
+  const polarisThumbnail = useMemo(() => thumbnail && <PolarisThumbnail {...thumbnail} />, [
+    thumbnail,
+  ]);
+  return <PolarisPage {...props} thumbnail={polarisThumbnail} />;
 }

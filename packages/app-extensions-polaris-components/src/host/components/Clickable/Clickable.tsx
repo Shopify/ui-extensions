@@ -2,15 +2,13 @@ import React, {useCallback} from 'react';
 
 import {ClickableProps} from '../../../client/core';
 
-export default function Clickable(props: ClickableProps) {
-  const {onClick} = props;
-  const onAction = useCallback(
+export default function Clickable({onClick, ...props}: ClickableProps) {
+  const polarisOnClick = useCallback(
     e => {
       e.stopPropagation();
       onClick();
     },
     [onClick],
   );
-
-  return <div {...props} onClick={onAction} />;
+  return <div {...props} onClick={polarisOnClick} />;
 }

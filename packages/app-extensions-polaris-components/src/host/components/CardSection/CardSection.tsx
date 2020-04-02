@@ -1,6 +1,8 @@
-import React from 'react';
 import {Card} from '@shopify/polaris';
+import React from 'react';
 
-export default function CardSection(props) {
+import {CardSectionProps} from '../../../client/core';
+
+export default function CardSection(props: CardSectionProps) {
   return <Card.Section {...props} />;
 }

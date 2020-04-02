@@ -1,4 +1,6 @@
-import React from 'react';
+import React, {useMemo} from 'react';
+
+import {Action} from '../../client/core/types';
 
 // Checks whether `element` is a React element of type `Component` (or one of
 // the passed components, if `Component` is an array of React components).
@@ -31,4 +33,25 @@ export function elementChildren<T extends React.ReactElement<{}>>(
   return React.Children.toArray(children).filter(
     child => React.isValidElement(child) && predicate(child as T),
   ) as T[];
+}
+
+// This is a hook wrapping all Proxy callbacks to prevent maximum stack size issue.
+// Ref https://github.com/Shopify/app-extension-libs/issues/254
+function wrapAction(action: Action): Action {
+  return {
+    ...action,
+    onAction: action && (() => action?.onAction?.call(null)),
+  };
+}
+
+export function useWrapAction(action: Action | undefined): Action | undefined {
+  return useMemo(() => {
+    return action && wrapAction(action);
+  }, [action]);
+}
+
+export function useWrapActions(actions: Action[] | undefined): Action[] | undefined {
+  return useMemo(() => {
+    return actions && actions.map(wrapAction);
+  }, [actions]);
 }

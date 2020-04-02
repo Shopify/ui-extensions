@@ -14,13 +14,12 @@ const iconMap: IconMap = {
   sortMinor: SortMinor,
 };
 
-export default function Icon(props: IconProps) {
-  const {source: sourceProp, ...otherProps} = props;
-  const source = iconMap[sourceProp];
+export default function Icon({source, ...props}: IconProps) {
+  const polarisSource = iconMap[source];
 
-  if (!source) {
+  if (!polarisSource) {
     throw new Error('Missing required props: source');
   }
 
-  return <PolarisIcon {...otherProps} source={source} />;
+  return <PolarisIcon {...props} source={polarisSource} />;
 }
