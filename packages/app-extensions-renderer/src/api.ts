@@ -7,7 +7,7 @@ import {
   ExtensionPoint,
   ExtensionResult,
 } from './extension-points';
-import {attachListeners} from './listeners';
+import {attach} from './bridge';
 
 export interface ShopifyApi {
   extend<T extends ExtensionPoint>(
@@ -35,10 +35,10 @@ export function render<T extends ExtensionPoint>(
   extensionPoint: T,
   renderCallback: RenderCallback<T>,
 ) {
-  return extend(extensionPoint, (root, data, setEventListeners) => {
+  return extend(extensionPoint, (root, data, bridge) => {
     const element = renderCallback(
       data as DataTypeForExtensionCallback<CallbackTypeForExtensionPoint<T>>,
     );
-    remoteRender(attachListeners(element, setEventListeners), root);
+    remoteRender(attach(element, bridge), root);
   });
 }

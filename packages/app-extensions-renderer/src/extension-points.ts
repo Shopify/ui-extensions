@@ -1,6 +1,6 @@
 import {RemoteRoot} from '@shopify/remote-ui-core';
 
-import {Listeners} from './listeners';
+import {Bridge} from './bridge';
 
 export enum ExtensionPoint {
   AppLink = 'AppLink',
@@ -15,7 +15,7 @@ export type ExtensionResult = {} | void;
 export type RenderableExtensionCallback<Data extends ExtensionContext, Root extends RemoteRoot> = (
   root: Root,
   data: Data,
-  setEventListeners?: (listeners: Listeners) => void,
+  bridge?: Bridge,
 ) => ExtensionResult;
 
 export type DataTypeForExtensionCallback<T> = T extends RenderableExtensionCallback<infer Data, any>

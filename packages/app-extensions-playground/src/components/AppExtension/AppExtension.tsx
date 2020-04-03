@@ -5,9 +5,12 @@ import {
   ExtensionPoint,
   DataTypeForExtensionCallback,
   CallbackTypeForExtensionPoint,
-  Listeners,
+  Bridge,
+  Handler,
 } from '@shopify/app-extensions-renderer';
 import {retain} from '@shopify/remote-ui-core';
+
+import useResizeObserver from './utils/ResizeObserver';
 
 interface Props<T extends ExtensionPoint> {
   extensionPoint: T;
@@ -35,39 +38,57 @@ export function AppExtension<T extends ExtensionPoint>({
 
   const worker = useWorker(createWorker);
   const receiver = useMemo(() => new RemoteReceiver(), []);
-  const [listeners, setListeners] = useState<Listeners | undefined>(undefined);
+  const [ref, entry] = useResizeObserver();
+  const [bridgeData, setBridgeData] = useState<Bridge['initialData']>();
+  const [bridgeInitialData, setBridgeInitialData] = useState<Bridge['initialData']>();
+  const [bridgeHandler, setBridgeHandler] = useState<Handler>();
 
   useEffect(() => {
-    (async () => {
-      await worker.load(typeof script === 'string' ? script : script.href);
-      worker.render(
-        extensionPoint,
-        data,
-        Object.keys(components),
-        receiver.receive,
-        newListeners => {
-          retain(newListeners);
-          setListeners(newListeners);
-        },
-      );
-    })();
-  }, [worker, receiver]);
-
-  useEffect(() => {
-    if (!listeners) {
+    if (!entry) {
       return;
     }
-    const onResize = () => {
-      const {innerWidth: width, innerHeight: height} = window;
-      listeners.onLayoutChange &&
-        listeners.onLayoutChange({
-          horizontal: width > SIZE_CLASS_BREAK_POINT ? 'regular' : 'compact',
-        });
+    const data: Bridge['initialData'] = {
+      layout: {
+        horizontal: entry.contentRect.width > SIZE_CLASS_BREAK_POINT ? 'regular' : 'compact',
+      },
     };
-    onResize();
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, [listeners]);
+    if (!bridgeInitialData) {
+      setBridgeInitialData(data);
+    }
+    if (JSON.stringify(data) !== JSON.stringify(bridgeData)) {
+      setBridgeData(data);
+    }
+  }, [entry, bridgeHandler]);
 
-  return <RemoteRenderer receiver={receiver} components={components} />;
+  useEffect(() => {
+    if (!bridgeData) {
+      return;
+    }
+    const {layout} = bridgeData;
+    if (layout) {
+      bridgeHandler?.onLayoutChange?.(layout);
+    }
+  }, [bridgeData]);
+
+  useEffect(() => {
+    if (!bridgeInitialData) {
+      return;
+    }
+    (async () => {
+      await worker.load(typeof script === 'string' ? script : script.href);
+      worker.render(extensionPoint, data, Object.keys(components), receiver.receive, {
+        initialData: bridgeInitialData,
+        setHandler: handler => {
+          retain(handler);
+          setBridgeHandler(handler);
+        },
+      });
+    })();
+  }, [worker, receiver, bridgeInitialData]);
+
+  return (
+    <div ref={ref}>
+      <RemoteRenderer receiver={receiver} components={components} />
+    </div>
+  );
 }
