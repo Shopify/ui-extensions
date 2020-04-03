@@ -7,10 +7,7 @@ import React, {ReactElement, useContext, useEffect, useState} from 'react';
 export type SizeClass = 'regular' | 'compact';
 
 export interface Layout {
-  sizeClass: {
-    v: SizeClass;
-    h: SizeClass;
-  };
+  horizontal: SizeClass;
 }
 
 const LayoutContext = React.createContext<Layout | undefined>(undefined);

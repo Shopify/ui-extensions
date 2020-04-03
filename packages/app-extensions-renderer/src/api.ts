@@ -1,5 +1,5 @@
-import {render as remoteRender} from '@shopify/remote-ui-react';
 import {ReactElement} from 'react';
+import {render as remoteRender} from '@shopify/remote-ui-react';
 
 import {
   CallbackTypeForExtensionPoint,

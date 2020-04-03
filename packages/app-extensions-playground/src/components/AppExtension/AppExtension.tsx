@@ -20,6 +20,9 @@ const createWorker = createWorkerFactory(() =>
   import(/* webpackChunkName: 'sandbox-worker' */ './workers/worker'),
 );
 
+// See https://github.com/Shopify/app-extension-libs/issues/237#issuecomment-606625111
+const SIZE_CLASS_BREAK_POINT = 480;
+
 export function AppExtension<T extends ExtensionPoint>({
   extensionPoint,
   script,
@@ -58,10 +61,7 @@ export function AppExtension<T extends ExtensionPoint>({
       const {innerWidth: width, innerHeight: height} = window;
       listeners.onLayoutChange &&
         listeners.onLayoutChange({
-          sizeClass: {
-            h: width > 480 ? 'regular' : 'compact',
-            v: height > 480 ? 'regular' : 'compact',
-          },
+          horizontal: width > SIZE_CLASS_BREAK_POINT ? 'regular' : 'compact',
         });
     };
     onResize();
