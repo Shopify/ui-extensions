@@ -1,8 +1,8 @@
+import React from 'react';
 import {host} from '@shopify/app-extensions-polaris-components';
 import {ExtensionPoint} from '@shopify/app-extensions-renderer';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
-import React from 'react';
 
 import {AppExtension} from '../../components';
 

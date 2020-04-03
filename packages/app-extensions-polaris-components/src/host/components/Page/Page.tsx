@@ -1,5 +1,5 @@
-import {Page as PolarisPage, Thumbnail as PolarisThumbnail} from '@shopify/polaris';
 import React, {useMemo} from 'react';
+import {Page as PolarisPage, Thumbnail as PolarisThumbnail} from '@shopify/polaris';
 
 import {PageProps} from '../../../client/core';
 

@@ -1,7 +1,7 @@
+import React from 'react';
 import '@shopify/react-testing/matchers';
 
 import {Caption, DisplayText, TextStyle} from '@shopify/polaris';
-import React from 'react';
 
 import {mountWithAppProvider as mount} from '../../../../../../../test-utils/mount';
 import {TextProps} from '../../../../client/core/components/Text';

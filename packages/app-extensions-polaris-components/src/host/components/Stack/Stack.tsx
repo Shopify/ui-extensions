@@ -1,5 +1,5 @@
-import {Stack as PolarisStack} from '@shopify/polaris';
 import React, {useMemo} from 'react';
+import {Stack as PolarisStack} from '@shopify/polaris';
 
 import {StackProps} from '../../../client/core';
 import {elementChildren, getElementProps, isElementOfType} from '../../utilities/components';

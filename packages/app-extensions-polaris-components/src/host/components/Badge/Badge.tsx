@@ -1,5 +1,5 @@
-import {Badge as PolarisBadge} from '@shopify/polaris';
 import React from 'react';
+import {Badge as PolarisBadge} from '@shopify/polaris';
 
 import {BadgeProps} from '../../../client/core';
 

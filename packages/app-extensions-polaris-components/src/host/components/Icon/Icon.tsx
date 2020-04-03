@@ -1,6 +1,6 @@
+import React from 'react';
 import {Icon as PolarisIcon} from '@shopify/polaris';
 import {SearchMinor, SortMinor, StarFilledMinor, StarOutlineMinor} from '@shopify/polaris-icons';
-import React from 'react';
 
 import {IconProps} from '../../../client/core';
 

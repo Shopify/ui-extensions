@@ -1,5 +1,5 @@
-import {Card} from '@shopify/polaris';
 import React from 'react';
+import {Card} from '@shopify/polaris';
 
 import {CardSectionProps} from '../../../client/core';
 

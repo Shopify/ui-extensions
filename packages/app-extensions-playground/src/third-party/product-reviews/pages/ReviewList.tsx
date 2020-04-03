@@ -9,9 +9,6 @@ import {
   StackItem,
   TextField,
 } from '@shopify/app-extensions-polaris-components/client';
-import {useQuery} from '@shopify/react-graphql';
-
-import {Stat} from '../types';
 
 import ReviewListItem from '../components/ReviewListItem';
 import StatBlock from '../components/Stats';

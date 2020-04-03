@@ -1,5 +1,5 @@
-import {TextField as PolarisTextField} from '@shopify/polaris';
 import React from 'react';
+import {TextField as PolarisTextField} from '@shopify/polaris';
 
 import {TextFieldProps} from '../../../client/core';
 import {useQueuedState} from '../../hooks';

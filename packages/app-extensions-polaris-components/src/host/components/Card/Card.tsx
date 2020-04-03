@@ -1,5 +1,5 @@
-import {Card as PolarisCard} from '@shopify/polaris';
 import React from 'react';
+import {Card as PolarisCard} from '@shopify/polaris';
 
 import {CardProps} from '../../../client/core';
 import {useWrapAction, useWrapActions} from '../../utilities/components';

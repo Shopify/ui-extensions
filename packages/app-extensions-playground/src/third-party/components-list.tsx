@@ -1,3 +1,4 @@
+import React, {useCallback, useState} from 'react';
 import {
   Badge,
   Button,
@@ -13,7 +14,6 @@ import {
   TextField,
 } from '@shopify/app-extensions-polaris-components/client';
 import {ExtensionPoint, render} from '@shopify/app-extensions-renderer';
-import React, {useCallback, useState} from 'react';
 
 const SORT_ICON: IconProps = {
   source: 'sortMinor',
@@ -43,8 +43,8 @@ function App() {
 
   const [buttonValue, setButtonValue] = useState(0);
   const onButtonClick = useCallback(() => {
-    setButtonValue(buttonValue + 1);
-  }, [buttonValue, setButtonValue]);
+    setButtonValue(value => value + 1);
+  }, []);
 
   return (
     <Page

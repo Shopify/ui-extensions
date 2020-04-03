@@ -40,7 +40,7 @@ export function elementChildren<T extends React.ReactElement<{}>>(
 function wrapAction(action: Action): Action {
   return {
     ...action,
-    onAction: action && (() => action?.onAction?.call(null)),
+    onAction: () => action.onAction?.(),
   };
 }
 
@@ -52,6 +52,6 @@ export function useWrapAction(action: Action | undefined): Action | undefined {
 
 export function useWrapActions(actions: Action[] | undefined): Action[] | undefined {
   return useMemo(() => {
-    return actions && actions.map(wrapAction);
+    return actions?.map(wrapAction);
   }, [actions]);
 }
