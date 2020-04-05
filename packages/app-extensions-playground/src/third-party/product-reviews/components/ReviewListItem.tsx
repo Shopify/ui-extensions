@@ -1,12 +1,11 @@
-import React, {useState} from 'react';
+import React, {useCallback} from 'react';
 import {
   CardSection,
   Stack,
   Text,
-  Checkbox,
   StackItem,
 } from '@shopify/app-extensions-polaris-components/client';
-import {Review, Rating} from '../types';
+import {Review} from '../types';
 import {StarRating, StatusBadge} from './';
 
 export interface Props {
@@ -15,12 +14,17 @@ export interface Props {
 
 export default function ReviewListItem({data}: Props) {
   const {id, rating, title, body, author, state, createdAt} = data;
-  const [selected, setSelected] = useState(false);
+
+  const parseDate = useCallback(() => {
+    // Hacky
+    const date = new Date(createdAt);
+    const dateElements = date.toString().split(' ');
+    return `${dateElements[0]} ${dateElements[1]} ${dateElements[2]} ${dateElements[3]}`;
+  }, [createdAt]);
 
   return (
     <CardSection key={id}>
       <Stack alignment="center" wrap={false}>
-        <Checkbox label="" onChange={() => setSelected(!selected)} checked={selected} />
         <StarRating rating={rating} />
         <StackItem fill>
           <Stack vertical spacing="none">
@@ -29,7 +33,7 @@ export default function ReviewListItem({data}: Props) {
             <Text color="secondary">{author}</Text>
           </Stack>
         </StackItem>
-        <Text>{createdAt}</Text>
+        <Text>{parseDate()}</Text>
         <StatusBadge reviewStatus={state} />
       </Stack>
     </CardSection>

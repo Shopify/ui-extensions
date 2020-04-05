@@ -1,4 +1,6 @@
+import React from 'react';
 import {Payload, Stat} from '../types';
+import {Icon} from '@shopify/app-extensions-polaris-components/client';
 
 export default function useBuildStats(data: Payload): Stat[] {
   const {
@@ -12,6 +14,7 @@ export default function useBuildStats(data: Payload): Stat[] {
     {
       title: 'Rating',
       value: averageReviewRating,
+      icon: <Icon source="starFilled" color="yellow" />,
     },
     {
       title: 'Published',

@@ -24,7 +24,7 @@ interface Props {
 }
 
 const sortIcon: IconProps = {
-  source: 'searchMinor',
+  source: 'sortMinor',
 };
 
 export default function ReviewList({}: Props) {
@@ -52,23 +52,24 @@ export default function ReviewList({}: Props) {
 
   const {product} = data;
   const stats: Stat[] = useBuildStats(product);
+  console.log(product);
 
   return (
     <Page
-      title="Nest camera"
+      title={product.title}
       thumbnail={{
-        source: 'https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg',
-        alt: 'Black leather pet collar',
+        source: product.imageUrl,
+        alt: product.title,
       }}
     >
       <StatBlock statistics={stats} />
       <Card>
         <CardSection key="search">
           <Stack>
+            <Button title="Sort" icon={sortIcon} />
             <StackItem fill>
               <TextField type="search" placeholder="Search for reviews" />
             </StackItem>
-            <Button title="Sort" icon={sortIcon} />
           </Stack>
         </CardSection>
         {(product.reviews || []).map(review => (

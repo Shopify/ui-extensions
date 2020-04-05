@@ -1,6 +1,7 @@
 export interface Stat {
   title: string;
   value?: number;
+  icon?: React.ReactNode;
 }
 
 export type ID = string | number;
