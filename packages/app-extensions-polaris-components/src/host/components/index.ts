@@ -6,6 +6,7 @@ import Checkbox from './Checkbox';
 import Clickable from './Clickable';
 import Icon from './Icon';
 import Modal from './Modal';
+import Link from './Link';
 import Page from './Page';
 import Select from './Select';
 import Spinner from './Spinner';
@@ -24,6 +25,7 @@ export default {
   Clickable,
   Icon,
   Modal,
+  Link,
   Page,
   Select,
   Spinner,

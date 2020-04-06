@@ -14,6 +14,7 @@ import {
   Layout as BaseLayout,
   LayoutSection as BaseLayoutSection,
   Modal as BaseModal,
+  Link as BaseLink,
   Page as BasePage,
   Select as BaseSelect,
   Spinner as BaseSpinner,
@@ -22,7 +23,6 @@ import {
   Text as BaseText,
   TextField as BaseTextField,
   Thumbnail as BaseThumbnail,
-  Toast as BaseToast,
 } from '../core';
 
 export type BadgeProps = ReactPropsFromRemoteComponentType<typeof BaseBadge>;
@@ -55,6 +55,9 @@ export const LayoutSection = createRemoteReactComponent(BaseLayoutSection);
 export type ModalProps = ReactPropsFromRemoteComponentType<typeof BaseModal>;
 export const Modal = createRemoteReactComponent(BaseModal);
 
+export type LinkProps = ReactPropsFromRemoteComponentType<typeof BaseLink>;
+export const Link = createRemoteReactComponent(BaseLink);
+
 export type PageProps = ReactPropsFromRemoteComponentType<typeof BasePage>;
 export const Page = createRemoteReactComponent(BasePage);
 
@@ -78,6 +81,3 @@ export const TextField = createRemoteReactComponent(BaseTextField);
 
 export type ThumbnailProps = ReactPropsFromRemoteComponentType<typeof BaseThumbnail>;
 export const Thumbnail = createRemoteReactComponent(BaseThumbnail);
-
-export const Toast = createRemoteReactComponent(BaseToast);
-export type ToastProps = ReactPropsFromRemoteComponentType<typeof BaseToast>;

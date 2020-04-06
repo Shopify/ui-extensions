@@ -9,6 +9,7 @@ import {
   Icon,
   IconProps,
   Modal,
+  Link,
   Page,
   Select,
   SelectProps,
@@ -96,6 +97,10 @@ function App() {
     return undefined;
   }, [modalShowSecondaryAction, modalShowSecondaryActions]);
 
+  const linkAction = useCallback(() => {
+    console.log('Link clicked');
+  }, []);
+
   return (
     <Page
       title="Nest camera"
@@ -182,6 +187,15 @@ function App() {
         <Stack>
           <Icon source="starFilled" color="yellow" />
           <Icon source="starHollow" />
+        </Stack>
+      </Card>
+      <Card sectioned title="Link">
+        <Stack>
+          <Link url="/product-reviews">Link to Product Reviews</Link>
+          <Link url="/product-reviews" external>
+            Link to Product Reviews in new tab
+          </Link>
+          <Link onClick={linkAction}>Link that triggers log</Link>
         </Stack>
       </Card>
       <Card sectioned title="Modal component">
