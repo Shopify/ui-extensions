@@ -2,6 +2,8 @@ import {RemoteRoot} from '@shopify/remote-ui-core';
 
 export enum ExtensionPoint {
   AppLink = 'AppLink',
+  ProductDetailsAfterVariants = 'ProductDetailsAfterVariants',
+  ProductDetailsSideBar = 'ProductDetailsSideBar',
 }
 
 export interface ExtensionContext {}
@@ -21,4 +23,6 @@ export type CallbackTypeForExtensionPoint<T extends ExtensionPoint> = ExtensionP
 
 export interface ExtensionPoints {
   [ExtensionPoint.AppLink]: RenderableExtensionCallback<{}, RemoteRoot<any>>;
+  [ExtensionPoint.ProductDetailsAfterVariants]: RenderableExtensionCallback<{}, RemoteRoot<any>>;
+  [ExtensionPoint.ProductDetailsSideBar]: RenderableExtensionCallback<{}, RemoteRoot<any>>;
 }
