@@ -6,7 +6,8 @@ interface Option {
 }
 
 export interface SelectProps {
-  label: string;
+  label?: string;
+  labelInline?: boolean;
   options: Option[];
   onChange: (value: string) => void;
   value: string;
