@@ -42,6 +42,11 @@ A checkbox is an iput field that merchants can choose selected options.
 
 [Checkbox API](../packages/app-extensions-polaris-components/src/client/core/components/Checkbox.ts)
 
+### Select
+Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
+
+[Select API](../packages/app-extensions-polaris-components/src/client/core/components/Select.ts)
+
 ### TextField
 A textfield is an input field that merchants can type into. It has a range of options and supports several text formats including numbers.
 

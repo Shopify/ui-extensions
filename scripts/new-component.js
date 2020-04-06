@@ -96,3 +96,4 @@ console.log('🔥🔥🔥 Remember to update these files:');
 console.log('packages/app-extensions-polaris-components/src/client/core/components/index.ts');
 console.log('packages/app-extensions-polaris-components/src/client/react/components.ts');
 console.log('packages/app-extensions-polaris-components/src/host/components/index.ts');
+console.log('components/readme.md');
