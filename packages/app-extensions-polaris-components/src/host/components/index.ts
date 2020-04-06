@@ -6,6 +6,7 @@ import Checkbox from './Checkbox';
 import Clickable from './Clickable';
 import Icon from './Icon';
 import Page from './Page';
+import Select from './Select';
 import Stack from './Stack';
 import StackItem from './StackItem';
 import TextField from './TextField';
@@ -21,6 +22,7 @@ export default {
   Clickable,
   Icon,
   Page,
+  Select,
   Stack,
   StackItem,
   TextField,

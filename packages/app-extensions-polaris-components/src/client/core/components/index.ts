@@ -8,6 +8,7 @@ export * from './Icon';
 export * from './Layout';
 export * from './LayoutSection';
 export * from './Page';
+export * from './Select';
 export * from './Stack';
 export * from './StackItem';
 export * from './Text';
