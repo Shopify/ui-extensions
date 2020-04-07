@@ -1,13 +1,13 @@
-import {ReactElement} from 'react';
+import {createElement, ReactElement} from 'react';
 import {render as remoteRender} from '@shopify/remote-ui-react';
 
 import {
   CallbackTypeForExtensionPoint,
-  DataTypeForExtensionCallback,
+  ExtractedInputFromRenderExtension,
   ExtensionPoint,
   ExtensionResult,
 } from './extension-points';
-import {attach} from './bridge';
+import {ExtensionInputContext} from './input';
 
 export interface ShopifyApi {
   extend<T extends ExtensionPoint>(
@@ -28,17 +28,17 @@ export function extend<T extends ExtensionPoint>(
 }
 
 export type RenderCallback<T extends ExtensionPoint> = (
-  data: DataTypeForExtensionCallback<CallbackTypeForExtensionPoint<T>>,
+  input: ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>,
 ) => ReactElement;
 
 export function render<T extends ExtensionPoint>(
   extensionPoint: T,
   renderCallback: RenderCallback<T>,
 ) {
-  return extend(extensionPoint, (root, data, bridge) => {
+  return extend(extensionPoint, (root, input) => {
     const element = renderCallback(
-      data as DataTypeForExtensionCallback<CallbackTypeForExtensionPoint<T>>,
+      input as ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>,
     );
-    remoteRender(attach(element, bridge), root);
+    remoteRender(createElement(ExtensionInputContext.Provider, {value: input}, element), root);
   });
 }

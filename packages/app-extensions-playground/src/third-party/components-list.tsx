@@ -200,4 +200,4 @@ function App() {
   );
 }
 
-render(ExtensionPoint.AppLink, () => <App />);
+render(ExtensionPoint.AppLink, input => <App />);

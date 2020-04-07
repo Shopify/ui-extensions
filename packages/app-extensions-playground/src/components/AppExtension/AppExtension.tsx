@@ -3,10 +3,11 @@ import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
 import {createWorkerFactory, useWorker} from '@shopify/react-web-worker';
 import {
   ExtensionPoint,
-  DataTypeForExtensionCallback,
+  ExtractedInputFromRenderExtension,
   CallbackTypeForExtensionPoint,
-  Bridge,
-  Handler,
+  Layout,
+  LayoutInput,
+  LayoutHandler,
 } from '@shopify/app-extensions-renderer';
 import {retain} from '@shopify/remote-ui-core';
 
@@ -16,7 +17,7 @@ interface Props<T extends ExtensionPoint> {
   extensionPoint: T;
   script?: URL | string;
   components?: {[key: string]: any};
-  data?: DataTypeForExtensionCallback<CallbackTypeForExtensionPoint<T>>;
+  input?: ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>;
 }
 
 const createWorker = createWorkerFactory(() =>
@@ -30,7 +31,7 @@ export function AppExtension<T extends ExtensionPoint>({
   extensionPoint,
   script,
   components = {},
-  data = {} as DataTypeForExtensionCallback<CallbackTypeForExtensionPoint<T>>,
+  input = {} as ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>,
 }: Props<T>) {
   if (!script) {
     return null;
@@ -38,57 +39,70 @@ export function AppExtension<T extends ExtensionPoint>({
 
   const worker = useWorker(createWorker);
   const receiver = useMemo(() => new RemoteReceiver(), []);
-  const [ref, entry] = useResizeObserver();
-  const [bridgeData, setBridgeData] = useState<Bridge['initialData']>();
-  const [bridgeInitialData, setBridgeInitialData] = useState<Bridge['initialData']>();
-  const [bridgeHandler, setBridgeHandler] = useState<Handler>();
+  const [ref, layoutInput] = useLayoutInput();
 
   useEffect(() => {
-    if (!entry) {
-      return;
-    }
-    const data: Bridge['initialData'] = {
-      layout: {
-        horizontal: entry.contentRect.width > SIZE_CLASS_BREAK_POINT ? 'regular' : 'compact',
-      },
-    };
-    if (!bridgeInitialData) {
-      setBridgeInitialData(data);
-    }
-    if (JSON.stringify(data) !== JSON.stringify(bridgeData)) {
-      setBridgeData(data);
-    }
-  }, [entry, bridgeHandler]);
-
-  useEffect(() => {
-    if (!bridgeData) {
-      return;
-    }
-    const {layout} = bridgeData;
-    if (layout) {
-      bridgeHandler?.onLayoutChange?.(layout);
-    }
-  }, [bridgeData]);
-
-  useEffect(() => {
-    if (!bridgeInitialData) {
+    if (!layoutInput) {
       return;
     }
     (async () => {
       await worker.load(typeof script === 'string' ? script : script.href);
-      worker.render(extensionPoint, data, Object.keys(components), receiver.receive, {
-        initialData: bridgeInitialData,
-        setHandler: handler => {
-          retain(handler);
-          setBridgeHandler(handler);
-        },
-      });
+      worker.render(
+        extensionPoint,
+        {...input, ...layoutInput},
+        Object.keys(components),
+        receiver.receive,
+      );
     })();
-  }, [worker, receiver, bridgeInitialData]);
+  }, [worker, receiver, layoutInput]);
 
   return (
     <div ref={ref}>
       <RemoteRenderer receiver={receiver} components={components} />
     </div>
   );
+}
+
+function useLayoutInput(): [ReturnType<typeof useResizeObserver>[0], LayoutInput | undefined] {
+  const [ref, entry] = useResizeObserver();
+  const [layout, setLayout] = useState<Layout>();
+  const [initialData, setInitialData] = useState<Layout>();
+  const [layoutHandler, setLayoutHandler] = useState<LayoutHandler>();
+
+  useEffect(() => {
+    if (!entry) {
+      return;
+    }
+    const newLayout: Layout = {
+      horizontal: entry.contentRect.width > SIZE_CLASS_BREAK_POINT ? 'regular' : 'compact',
+    };
+    if (!initialData) {
+      setInitialData(newLayout);
+    }
+    if (JSON.stringify(newLayout) !== JSON.stringify(layout)) {
+      setLayout(newLayout);
+    }
+  }, [entry]);
+
+  useEffect(() => {
+    if (!layout || !layoutHandler) {
+      return;
+    }
+    layoutHandler.onLayoutChange(layout);
+  }, [layout, layoutHandler]);
+
+  return useMemo(() => {
+    const layoutInput: LayoutInput | undefined = initialData
+      ? {
+          layout: {
+            initialData: initialData,
+            setHandler: newHandler => {
+              retain(newHandler);
+              setLayoutHandler(newHandler);
+            },
+          },
+        }
+      : undefined;
+    return [ref, layoutInput];
+  }, [initialData]);
 }

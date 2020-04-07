@@ -1,6 +1,6 @@
 import {RemoteRoot} from '@shopify/remote-ui-core';
 
-import {Bridge} from './bridge';
+import {LayoutInput} from './input';
 
 export enum ExtensionPoint {
   AppLink = 'AppLink',
@@ -8,24 +8,36 @@ export enum ExtensionPoint {
   ProductDetailsSideBar = 'ProductDetailsSideBar',
 }
 
-export interface ExtensionContext {}
-
 export type ExtensionResult = {} | void;
 
-export type RenderableExtensionCallback<Data extends ExtensionContext, Root extends RemoteRoot> = (
+export type RenderableExtensionCallback<Input, Root extends RemoteRoot> = (
   root: Root,
-  data: Data,
-  bridge?: Bridge,
+  input: Input,
 ) => ExtensionResult;
 
-export type DataTypeForExtensionCallback<T> = T extends RenderableExtensionCallback<infer Data, any>
-  ? Data
+export type ExtractedInputFromRenderExtension<T> = T extends RenderableExtensionCallback<
+  infer Input,
+  any
+>
+  ? Input
   : never;
 
 export type CallbackTypeForExtensionPoint<T extends ExtensionPoint> = ExtensionPoints[T];
 
+export type InputForRenderExtension<
+  Extension extends keyof ExtensionPoints
+> = ExtractedInputFromRenderExtension<ExtensionPoints[Extension]>;
+
+export type ExtensionStandardApi = LayoutInput;
+
 export interface ExtensionPoints {
-  [ExtensionPoint.AppLink]: RenderableExtensionCallback<{}, RemoteRoot<any>>;
-  [ExtensionPoint.ProductDetailsAfterVariants]: RenderableExtensionCallback<{}, RemoteRoot<any>>;
-  [ExtensionPoint.ProductDetailsSideBar]: RenderableExtensionCallback<{}, RemoteRoot<any>>;
+  [ExtensionPoint.AppLink]: RenderableExtensionCallback<ExtensionStandardApi, RemoteRoot<any>>;
+  [ExtensionPoint.ProductDetailsAfterVariants]: RenderableExtensionCallback<
+    ExtensionStandardApi,
+    RemoteRoot<any>
+  >;
+  [ExtensionPoint.ProductDetailsSideBar]: RenderableExtensionCallback<
+    ExtensionStandardApi,
+    RemoteRoot<any>
+  >;
 }
