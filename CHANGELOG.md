@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.41](https://github.com/Shopify/app-extension-libs/compare/v0.0.40...v0.0.41) (2020-04-07)
+
+
+### Bug Fixes
+
+* fix maximum stack size in host components ([650af48](https://github.com/Shopify/app-extension-libs/commit/650af484d9fa0e4ba86971ef78855bb8915545b1))
+
+
+### Features
+
+* enable 2 new extension points ([c2313f4](https://github.com/Shopify/app-extension-libs/commit/c2313f4a93a74dc8ff964504c7923b124cf8a028))
+* slight design adjustments ([0e1f337](https://github.com/Shopify/app-extension-libs/commit/0e1f337d0452a0a45b4d59d0d430e23ce8c9a3e3))
+* **api:** connect extension to graphql ([59c8730](https://github.com/Shopify/app-extension-libs/commit/59c8730989b52f7522c8b8214716bd55e144985c))
+
+
+
+
+
 ## [0.0.40](https://github.com/Shopify/app-extension-libs/compare/v0.0.39...v0.0.40) (2020-04-01)
 
 

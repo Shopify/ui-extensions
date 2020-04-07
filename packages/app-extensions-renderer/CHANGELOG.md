@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.41](https://github.com/Shopify/app-extension-libs/compare/v0.0.40...v0.0.41) (2020-04-07)
+
+
+### Features
+
+* enable 2 new extension points ([c2313f4](https://github.com/Shopify/app-extension-libs/commit/c2313f4a93a74dc8ff964504c7923b124cf8a028))
+
+
+
+
+
 ## [0.0.40](https://github.com/Shopify/app-extension-libs/compare/v0.0.39...v0.0.40) (2020-04-01)
 
 **Note:** Version bump only for package @shopify/app-extensions-renderer
