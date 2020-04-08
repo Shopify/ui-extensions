@@ -9,13 +9,11 @@ export default function Modal({
   secondaryActions,
   onClose,
   children,
-  message,
   ...props
 }: ModalProps) {
   const polarisPrimaryAction = useWrapAction(primaryAction);
   const polarisSecondaryActions = useWrapActions(secondaryActions);
   const polarisOnClose = useCallback(() => onClose(), [onClose]);
-  const polarisChildren = message ? message : children;
   return (
     <PolarisModal
       {...props}
@@ -23,7 +21,7 @@ export default function Modal({
       secondaryActions={polarisSecondaryActions}
       onClose={polarisOnClose}
     >
-      <PolarisModal.Section>{polarisChildren}</PolarisModal.Section>
+      <PolarisModal.Section>{children}</PolarisModal.Section>
     </PolarisModal>
   );
 }

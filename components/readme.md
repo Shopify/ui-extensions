@@ -66,7 +66,7 @@ Cards are used to group similar concepts and tasks together
 * Space between Card:
   * Web: 2rem
   * Android: 16dp
-  * iOS: ???
+  * iOS: 20pts
 * Notes:
   * If two Card next to each other, there is a space between them.
   * If other components are below Card, there is no space.
@@ -80,7 +80,7 @@ Used to group similar concepts within a Card. It also adds a divider between sec
 * Padding: 
   * Web: 2rem
   * Android: 16dp
-  * iOS: ???
+  * iOS: 20pts
 * Notes:
   * If two CardSection next to each other, there is a divider between them.
   * If other components are below CardSection, there is no divider.
@@ -93,7 +93,7 @@ A page is typically the top-level component, which defines the title, associated
 * Padding: 
   * Web: 2rem
   * Android: 16dp
-  * iOS: ???
+  * iOS: 20pts
 
 [Page API](../packages/app-extensions-polaris-components/src/client/core/components/Page.ts)
 
@@ -103,7 +103,7 @@ Used to lay out a horizontal or vertical row of components. They can be nested t
 * Space between child (except `spacing="none"`): 
   * Web: 1.6rem
   * Android: 16dp
-  * iOS: ???
+  * iOS: 8pts
 
 [Stack API](../packages/app-extensions-polaris-components/src/client/core/components/Stack.ts)
 
@@ -125,5 +125,10 @@ Used to display text in different sizes, color, and alignment.
 
 ### Modal
 Modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken. They can be disruptive because they require merchants to take an action before they can continue interacting with the rest of Shopify. It should be used thoughtfully and sparingly.
+
+* Modal content padding: 
+  * Web: 2rem
+  * Android: 16dp
+  * iOS: 20pts
 
 [Stack API](../packages/app-extensions-polaris-components/src/client/core/components/Modal.ts)
