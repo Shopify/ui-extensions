@@ -119,3 +119,11 @@ The stack component will treat multiple elements wrapped in a stack item compone
 Used to display text in different sizes, color, and alignment.
 
 [Stack API](../packages/app-extensions-polaris-components/src/client/core/components/Text.ts)
+
+
+## Overlays
+
+### Modal
+Modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken. They can be disruptive because they require merchants to take an action before they can continue interacting with the rest of Shopify. It should be used thoughtfully and sparingly.
+
+[Stack API](../packages/app-extensions-polaris-components/src/client/core/components/Modal.ts)

@@ -13,6 +13,7 @@ import {
   Icon as BaseIcon,
   Layout as BaseLayout,
   LayoutSection as BaseLayoutSection,
+  Modal as BaseModal,
   Page as BasePage,
   Select as BaseSelect,
   Spinner as BaseSpinner,
@@ -50,6 +51,9 @@ export const Layout = createRemoteReactComponent(BaseLayout);
 
 export type LayoutSectionProps = ReactPropsFromRemoteComponentType<typeof BaseLayoutSection>;
 export const LayoutSection = createRemoteReactComponent(BaseLayoutSection);
+
+export type ModalProps = ReactPropsFromRemoteComponentType<typeof BaseModal>;
+export const Modal = createRemoteReactComponent(BaseModal);
 
 export type PageProps = ReactPropsFromRemoteComponentType<typeof BasePage>;
 export const Page = createRemoteReactComponent(BasePage);

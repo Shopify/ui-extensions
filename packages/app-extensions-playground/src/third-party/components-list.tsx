@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState, useMemo} from 'react';
 import {
   Badge,
   Button,
@@ -8,6 +8,7 @@ import {
   Clickable,
   Icon,
   IconProps,
+  Modal,
   Page,
   Select,
   SelectProps,
@@ -62,6 +63,38 @@ function App() {
   const onSelectChange = useCallback(newValue => {
     setSelectValue(newValue);
   }, []);
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalShowPrimayAction, setModalShowPrimayAction] = useState(false);
+  const [modalShowSecondaryAction, setModalShowSecondaryAction] = useState(false);
+  const [modalShowSecondaryActions, setModalShowSecondaryActions] = useState(false);
+  const modalPrimaryAction = useMemo(() => {
+    return modalShowPrimayAction
+      ? {
+          content: 'Done',
+          onAction: () => setModalOpen(false),
+        }
+      : undefined;
+  }, [modalShowPrimayAction]);
+  const modalSecondaryActions = useMemo(() => {
+    const actions = [
+      {
+        content: 'Cancel',
+        onAction: () => setModalOpen(false),
+      },
+    ];
+    if (modalShowSecondaryActions) {
+      actions.push({
+        content: 'Foo',
+        onAction: () => setModalOpen(false),
+      });
+      return actions;
+    }
+    if (modalShowSecondaryAction) {
+      return actions;
+    }
+    return undefined;
+  }, [modalShowSecondaryAction, modalShowSecondaryActions]);
 
   return (
     <Page
@@ -151,8 +184,34 @@ function App() {
           <Icon source="starHollow" />
         </Stack>
       </Card>
-      <Card sectioned title="Layout">
-        <Text>{JSON.stringify(layout) || 'undefined'}</Text>
+      <Card sectioned title="Modal component">
+        <Stack vertical>
+          <Checkbox
+            label="Show primary action"
+            checked={modalShowPrimayAction}
+            onChange={setModalShowPrimayAction}
+          />
+          <Checkbox
+            label="Show seondary action"
+            checked={modalShowSecondaryAction}
+            onChange={setModalShowSecondaryAction}
+          />
+          <Checkbox
+            label="Show seondary actions"
+            checked={modalShowSecondaryActions}
+            onChange={setModalShowSecondaryActions}
+          />
+          <Button title="Open modal" onClick={() => setModalOpen(true)} />
+        </Stack>
+        <Modal
+          title="Edit subscription plan"
+          open={modalOpen}
+          onClose={() => setModalOpen(false)}
+          primaryAction={modalPrimaryAction}
+          secondaryActions={modalSecondaryActions}
+        >
+          <TextField label="Custom plan title" />
+        </Modal>
       </Card>
       <Card title="Select component">
         <CardSection title="Default">
@@ -297,6 +356,9 @@ function App() {
           value={review}
           onAfterChange={setReview}
         />
+      </Card>
+      <Card sectioned title="useLayout">
+        <Text>{JSON.stringify(layout) || 'undefined'}</Text>
       </Card>
     </Page>
   );

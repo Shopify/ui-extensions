@@ -5,6 +5,7 @@ import CardSection from './CardSection';
 import Checkbox from './Checkbox';
 import Clickable from './Clickable';
 import Icon from './Icon';
+import Modal from './Modal';
 import Page from './Page';
 import Select from './Select';
 import Spinner from './Spinner';
@@ -22,6 +23,7 @@ export default {
   Checkbox,
   Clickable,
   Icon,
+  Modal,
   Page,
   Select,
   Spinner,

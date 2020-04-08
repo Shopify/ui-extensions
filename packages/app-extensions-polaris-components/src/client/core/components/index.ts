@@ -7,6 +7,7 @@ export * from './Clickable';
 export * from './Icon';
 export * from './Layout';
 export * from './LayoutSection';
+export * from './Modal';
 export * from './Page';
 export * from './Select';
 export * from './Spinner';
