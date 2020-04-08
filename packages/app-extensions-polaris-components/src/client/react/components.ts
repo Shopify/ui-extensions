@@ -15,6 +15,7 @@ import {
   LayoutSection as BaseLayoutSection,
   Page as BasePage,
   Select as BaseSelect,
+  Spinner as BaseSpinner,
   Stack as BaseStack,
   StackItem as BaseStackItem,
   Text as BaseText,
@@ -55,6 +56,9 @@ export const Page = createRemoteReactComponent(BasePage);
 
 export type SelectProps = ReactPropsFromRemoteComponentType<typeof BaseSelect>;
 export const Select = createRemoteReactComponent(BaseSelect);
+
+export type SpinnerProps = ReactPropsFromRemoteComponentType<typeof BaseSpinner>;
+export const Spinner = createRemoteReactComponent(BaseSpinner);
 
 export type StackProps = ReactPropsFromRemoteComponentType<typeof BaseStack>;
 export const Stack = createRemoteReactComponent(BaseStack);

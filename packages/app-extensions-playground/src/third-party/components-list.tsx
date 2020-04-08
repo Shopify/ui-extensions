@@ -11,6 +11,7 @@ import {
   Page,
   Select,
   SelectProps,
+  Spinner,
   Stack,
   StackItem,
   Text,
@@ -174,6 +175,9 @@ function App() {
         <CardSection title="No label">
           <Select label="" options={SELECTS} value={selectValue} onChange={onSelectChange} />
         </CardSection>
+      </Card>
+      <Card sectioned title="Spinner component">
+        <Spinner />
       </Card>
       <Card title="Stack component">
         <CardSection>

@@ -11,6 +11,11 @@ Buttons are used primarily for actions, such as "Add", "Close", "Cancel", or "Sa
 
 ## Feedback
 
+### Spinner
+Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts.
+
+[Spinner API](../packages/app-extensions-polaris-components/src/client/core/components/Spinner.ts)
+
 ### Toast
 The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
 

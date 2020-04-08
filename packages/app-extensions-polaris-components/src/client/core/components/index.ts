@@ -9,6 +9,7 @@ export * from './Layout';
 export * from './LayoutSection';
 export * from './Page';
 export * from './Select';
+export * from './Spinner';
 export * from './Stack';
 export * from './StackItem';
 export * from './Text';

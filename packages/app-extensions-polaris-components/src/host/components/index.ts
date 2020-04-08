@@ -7,6 +7,7 @@ import Clickable from './Clickable';
 import Icon from './Icon';
 import Page from './Page';
 import Select from './Select';
+import Spinner from './Spinner';
 import Stack from './Stack';
 import StackItem from './StackItem';
 import TextField from './TextField';
@@ -23,6 +24,7 @@ export default {
   Icon,
   Page,
   Select,
+  Spinner,
   Stack,
   StackItem,
   TextField,
