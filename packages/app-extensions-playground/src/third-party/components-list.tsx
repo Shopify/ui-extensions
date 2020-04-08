@@ -3,21 +3,30 @@ import {
   Badge,
   Button,
   Card,
+  CardSection,
   Checkbox,
   Clickable,
   Icon,
   IconProps,
   Page,
+  Select,
   Stack,
   StackItem,
   Text,
   TextField,
+  SelectProps,
 } from '@shopify/app-extensions-polaris-components/client';
 import {ExtensionPoint, render, useLayout} from '@shopify/app-extensions-renderer';
 
 const SORT_ICON: IconProps = {
   source: 'sortMinor',
 };
+
+const SELECTS: SelectProps['options'] = [
+  {label: 'Today', value: 'today'},
+  {label: 'Yesterday', value: 'yesterday'},
+  {label: 'Last 7 days', value: 'lastWeek'},
+];
 
 function App() {
   const [name, setName] = useState('');
@@ -47,6 +56,11 @@ function App() {
   }, []);
 
   const layout = useLayout();
+
+  const [selectValue, setSelectValue] = useState('today');
+  const onSelectChange = useCallback(newValue => {
+    setSelectValue(newValue);
+  }, []);
 
   return (
     <Page
@@ -130,6 +144,28 @@ function App() {
       </Card>
       <Card sectioned title="Layout">
         <Text>{JSON.stringify(layout) || 'undefined'}</Text>
+      </Card>
+      <Card title="Select component">
+        <CardSection title="Default">
+          <Select
+            label="Date range"
+            options={SELECTS}
+            value={selectValue}
+            onChange={onSelectChange}
+          />
+        </CardSection>
+        <CardSection title="LabelInline">
+          <Select
+            labelInline
+            label="Date range"
+            options={SELECTS}
+            value={selectValue}
+            onChange={onSelectChange}
+          />
+        </CardSection>
+        <CardSection title="No label">
+          <Select label="" options={SELECTS} value={selectValue} onChange={onSelectChange} />
+        </CardSection>
       </Card>
       <Card sectioned title="Stack component">
         <Stack>
