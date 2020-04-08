@@ -58,20 +58,47 @@ A textfield is an input field that merchants can type into. It has a range of op
 ### Card
 Cards are used to group similar concepts and tasks together
 
+* Space between Card:
+  * Web: 2rem
+  * Android: 16dp
+  * iOS: ???
+* Notes:
+  * If two Card next to each other, there is a space between them.
+  * If other components are below Card, there is no space.
+  * If Card has `sectioned` prop, all of its children will be wrapped inside a CardSection.
+
 [Card API](../packages/app-extensions-polaris-components/src/client/core/components/Card.ts)
 
 ### CardSection
 Used to group similar concepts within a Card. It also adds a divider between sections if there are more than one
+
+* Padding: 
+  * Web: 2rem
+  * Android: 16dp
+  * iOS: ???
+* Notes:
+  * If two CardSection next to each other, there is a divider between them.
+  * If other components are below CardSection, there is no divider.
 
 [CardSection API](../packages/app-extensions-polaris-components/src/client/core/components/CardSection.ts)
 
 ### Page
 A page is typically the top-level component, which defines the title, associated actions, and children.
 
+* Padding: 
+  * Web: 2rem
+  * Android: 16dp
+  * iOS: ???
+
 [Page API](../packages/app-extensions-polaris-components/src/client/core/components/Page.ts)
 
 ### Stack
 Used to lay out a horizontal or vertical row of components. They can be nested to achieve complex layouts easily.
+
+* Space between child (except `spacing="none"`): 
+  * Web: 1.6rem
+  * Android: 16dp
+  * iOS: ???
 
 [Stack API](../packages/app-extensions-polaris-components/src/client/core/components/Stack.ts)
 

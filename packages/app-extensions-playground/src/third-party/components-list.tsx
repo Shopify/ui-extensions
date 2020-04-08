@@ -10,11 +10,11 @@ import {
   IconProps,
   Page,
   Select,
+  SelectProps,
   Stack,
   StackItem,
   Text,
   TextField,
-  SelectProps,
 } from '@shopify/app-extensions-polaris-components/client';
 import {ExtensionPoint, render, useLayout} from '@shopify/app-extensions-renderer';
 
@@ -108,6 +108,14 @@ function App() {
         <Text>PrimaryFooterAction: {cardPrimaryFooterValue}</Text>
         <Text>SecondaryFooterAction: {cardSecondaryFooterValue}</Text>
       </Card>
+      <Card title="CardSection component">
+        <CardSection title="CardSection 1">
+          <Text>Foo</Text>
+        </CardSection>
+        <CardSection title="CardSection 2">
+          <Text>Bar</Text>
+        </CardSection>
+      </Card>
       <Card sectioned title="Checkbox component">
         <Stack>
           <Checkbox checked={noLabelChecked} onChange={newValue => setNoLabelChecked(newValue)} />
@@ -167,15 +175,69 @@ function App() {
           <Select label="" options={SELECTS} value={selectValue} onChange={onSelectChange} />
         </CardSection>
       </Card>
-      <Card sectioned title="Stack component">
-        <Stack>
-          <StackItem fill>
-            <TextField type="search" placeholder="Search for reviews" />
-          </StackItem>
-          <StackItem>
-            <Button title="Sort" icon={SORT_ICON} />
-          </StackItem>
-        </Stack>
+      <Card title="Stack component">
+        <CardSection>
+          <Stack>
+            <StackItem fill>
+              <TextField type="search" placeholder="Search for reviews" />
+            </StackItem>
+            <StackItem>
+              <Button title="Sort" icon={SORT_ICON} />
+            </StackItem>
+          </Stack>
+        </CardSection>
+        <CardSection title="Default">
+          <Stack>
+            <Icon source="starFilled" color="yellow" />
+            <Icon source="starFilled" color="yellow" />
+            <Icon source="starHollow" />
+          </Stack>
+        </CardSection>
+        <CardSection title="Spacing none">
+          <Stack spacing="none">
+            <Icon source="starFilled" color="yellow" />
+            <Icon source="starFilled" color="yellow" />
+            <Icon source="starHollow" />
+          </Stack>
+        </CardSection>
+        <CardSection title="Distribution fill">
+          <Stack distribution="fill">
+            <Icon source="starFilled" color="yellow" />
+            <Icon source="starFilled" color="yellow" />
+            <Icon source="starHollow" />
+          </Stack>
+        </CardSection>
+        <CardSection title="Distribution center">
+          <Stack distribution="center">
+            <Icon source="starFilled" color="yellow" />
+            <Icon source="starFilled" color="yellow" />
+            <Icon source="starHollow" />
+          </Stack>
+        </CardSection>
+        <CardSection title="Vertical">
+          <Stack vertical>
+            <Icon source="starFilled" color="yellow" />
+            <Icon source="starFilled" color="yellow" />
+            <Icon source="starHollow" />
+          </Stack>
+        </CardSection>
+        <CardSection title="StackItem fill">
+          <Stack>
+            <Icon source="starFilled" color="yellow" />
+            <StackItem fill>
+              <Stack>
+                <StackItem>
+                  <Text>Foo</Text>
+                </StackItem>
+                <StackItem fill />
+                <StackItem>
+                  <Text>Bar</Text>
+                </StackItem>
+              </Stack>
+            </StackItem>
+            <Icon source="starHollow" />
+          </Stack>
+        </CardSection>
       </Card>
       <Card sectioned title="Text component">
         <Stack spacing="loose" vertical>
