@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.42](https://github.com/Shopify/app-extension-libs/compare/v0.0.41...v0.0.42) (2020-04-13)
+
+
+### Features
+
+* add ResizeObserver ([60ccf8b](https://github.com/Shopify/app-extension-libs/commit/60ccf8b16ba9ab88929d9798409947cc9d3a205a))
+* support screen size ([a6df892](https://github.com/Shopify/app-extension-libs/commit/a6df892ead47ce038a63a3e11698bc72b859cd96))
+
+
+
+
+
 ## [0.0.41](https://github.com/Shopify/app-extension-libs/compare/v0.0.40...v0.0.41) (2020-04-07)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.42](https://github.com/Shopify/app-extension-libs/compare/v0.0.41...v0.0.42) (2020-04-13)
+
+
+### Features
+
+* add Modal component ([9ee5b22](https://github.com/Shopify/app-extension-libs/commit/9ee5b221e43812cfaa8301593f54960ae714c7fb))
+* add Select component ([3ecb252](https://github.com/Shopify/app-extension-libs/commit/3ecb25206b5ac9762348a9f878ac41a323dae8e6))
+* add Spinner component ([0c2a2e7](https://github.com/Shopify/app-extension-libs/commit/0c2a2e761bac18bc7f36ba05baefc73efe3c1c7a))
+* implement Select component ([798c333](https://github.com/Shopify/app-extension-libs/commit/798c3337e0025818939a753b1b5bb173b2bf50ee))
+
+
+
+
+
 ## [0.0.41](https://github.com/Shopify/app-extension-libs/compare/v0.0.40...v0.0.41) (2020-04-07)
 
 
