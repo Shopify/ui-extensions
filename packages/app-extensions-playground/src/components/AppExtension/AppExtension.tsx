@@ -1,6 +1,10 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
-import {createWorkerFactory, useWorker} from '@shopify/react-web-worker';
+import {
+  createWorkerFactory,
+  useWorker,
+  createIframeWorkerMessenger,
+} from '@shopify/react-web-worker';
 import {
   ExtensionPoint,
   ExtractedInputFromRenderExtension,
@@ -37,7 +41,9 @@ export function AppExtension<T extends ExtensionPoint>({
     return null;
   }
 
-  const worker = useWorker(createWorker);
+  const worker = useWorker(createWorker, {
+    createMessenger: createIframeWorkerMessenger,
+  });
   const receiver = useMemo(() => new RemoteReceiver(), []);
   const [ref, layoutInput] = useLayoutInput();
 
