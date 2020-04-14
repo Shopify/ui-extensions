@@ -46,6 +46,7 @@ export function AppExtension<T extends ExtensionPoint>({
     createMessenger: createIframeWorkerMessenger,
   });
   const receiver = useMemo(() => new RemoteReceiver(), []);
+  const userInput = useMemo(() => input, [JSON.stringify(input)]);
   const [ref, layoutInput] = useLayoutInput();
   const sessionTokenInput = useSessionTokenInput();
 
@@ -62,7 +63,7 @@ export function AppExtension<T extends ExtensionPoint>({
         receiver.receive,
       );
     })();
-  }, [worker, extensionPoint, components, receiver, input, layoutInput, sessionTokenInput]);
+  }, [worker, extensionPoint, components, receiver, userInput, layoutInput, sessionTokenInput]);
 
   return (
     <div ref={ref}>
@@ -72,15 +73,18 @@ export function AppExtension<T extends ExtensionPoint>({
 }
 
 function useSessionTokenInput(): SessionTokenInput {
-  return {
-    sessionToken: {
-      generate: () => {
-        return Promise.resolve(
-          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaG9wIjoic2hvcDEubXlzaG9waWZ5LmlvIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.DPRpE9-UGNOFtgJV72KfqCfSIde0WW-0snwErCK3mHg',
-        );
+  return useMemo(
+    () => ({
+      sessionToken: {
+        generate: () => {
+          return Promise.resolve(
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaG9wIjoic2hvcDEubXlzaG9waWZ5LmlvIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.DPRpE9-UGNOFtgJV72KfqCfSIde0WW-0snwErCK3mHg',
+          );
+        },
       },
-    },
-  };
+    }),
+    [],
+  );
 }
 
 function useLayoutInput(): [ReturnType<typeof useResizeObserver>[0], LayoutInput | undefined] {
