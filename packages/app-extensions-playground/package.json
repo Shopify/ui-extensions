@@ -29,6 +29,7 @@
     "@shopify/react-web-worker": "^1.2.1",
     "@shopify/typescript-configs": "^2.0.1",
     "apollo-client": "^2.6.8",
+    "apollo-link-context": "^1.0.20",
     "apollo-link-http": "^1.5.16",
     "core-js": "^3.6.4",
     "graphql": "^14.6.0",
