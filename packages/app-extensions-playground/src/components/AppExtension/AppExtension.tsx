@@ -12,6 +12,7 @@ import {
   Layout,
   LayoutInput,
   LayoutHandler,
+  SessionTokenInput,
 } from '@shopify/app-extensions-renderer';
 import {retain} from '@shopify/remote-ui-core';
 
@@ -46,6 +47,7 @@ export function AppExtension<T extends ExtensionPoint>({
   });
   const receiver = useMemo(() => new RemoteReceiver(), []);
   const [ref, layoutInput] = useLayoutInput();
+  const sessionTokenInput = useSessionTokenInput();
 
   useEffect(() => {
     if (!layoutInput) {
@@ -55,18 +57,30 @@ export function AppExtension<T extends ExtensionPoint>({
       await worker.load(typeof script === 'string' ? script : script.href);
       worker.render(
         extensionPoint,
-        {...input, ...layoutInput},
+        {...input, ...layoutInput, ...sessionTokenInput},
         Object.keys(components),
         receiver.receive,
       );
     })();
-  }, [worker, receiver, layoutInput]);
+  }, [worker, receiver, layoutInput, sessionTokenInput]);
 
   return (
     <div ref={ref}>
       <RemoteRenderer receiver={receiver} components={components} />
     </div>
   );
+}
+
+function useSessionTokenInput(): SessionTokenInput {
+  return {
+    sessionToken: {
+      generate: () => {
+        return Promise.resolve(
+          'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaG9wIjoic2hvcDEubXlzaG9waWZ5LmlvIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.DPRpE9-UGNOFtgJV72KfqCfSIde0WW-0snwErCK3mHg',
+        );
+      },
+    },
+  };
 }
 
 function useLayoutInput(): [ReturnType<typeof useResizeObserver>[0], LayoutInput | undefined] {

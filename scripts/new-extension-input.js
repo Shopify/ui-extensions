@@ -17,8 +17,6 @@ if (process.argv.length > 3) {
  * Templates
  */
 const EXTENSION_INPUT_TEMPLATE = `
-import {useState} from 'react';
-
 import {useExtensionInput} from './utils';
 
 export interface {{name}} {
@@ -40,8 +38,6 @@ export function use{{name}}() {
   }
 
   const {{{name-camelCase}}} = input;
-  const [{{name-camelCase}}, set{{name}}] = useState<{{name}}>({{name-camelCase}});
-
   return {{name-camelCase}};
 }
 `.trimLeft();

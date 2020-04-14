@@ -19,7 +19,7 @@ import {
   Text,
   TextField,
 } from '@shopify/app-extensions-polaris-components/client';
-import {ExtensionPoint, render, useLayout} from '@shopify/app-extensions-renderer';
+import {ExtensionPoint, render, useLayout, useSessionToken} from '@shopify/app-extensions-renderer';
 
 const SORT_ICON: IconProps = {
   source: 'sortMinor',
@@ -100,6 +100,9 @@ function App() {
   const linkAction = useCallback(() => {
     console.log('Link clicked');
   }, []);
+
+  const {generate: generateSessionToken} = useSessionToken();
+  const [sessionToken, setSessionToken] = useState('');
 
   return (
     <Page
@@ -374,8 +377,19 @@ function App() {
       <Card sectioned title="useLayout">
         <Text>{JSON.stringify(layout) || 'undefined'}</Text>
       </Card>
+      <Card sectioned title="useSessionInput">
+        <Stack>
+          <Button
+            title="Generate new sessionToken"
+            onClick={() =>
+              generateSessionToken().then(newSessionToken => setSessionToken(newSessionToken))
+            }
+          />
+          <Text>{sessionToken}</Text>
+        </Stack>
+      </Card>
     </Page>
   );
 }
 
-render(ExtensionPoint.AppLink, input => <App />);
+render(ExtensionPoint.AppLink, () => <App />);
