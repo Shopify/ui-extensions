@@ -76,7 +76,7 @@ function useSessionTokenInput(): SessionTokenInput {
   return useMemo(
     () => ({
       sessionToken: {
-        generate: () => {
+        getSessionToken: () => {
           return Promise.resolve(
             'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzaG9wIjoic2hvcDEubXlzaG9waWZ5LmlvIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.DPRpE9-UGNOFtgJV72KfqCfSIde0WW-0snwErCK3mHg',
           );

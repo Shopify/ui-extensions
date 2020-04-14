@@ -101,7 +101,7 @@ function App() {
     console.log('Link clicked');
   }, []);
 
-  const {generate: generateSessionToken} = useSessionToken();
+  const {getSessionToken} = useSessionToken();
   const [sessionToken, setSessionToken] = useState('');
 
   return (
@@ -382,7 +382,7 @@ function App() {
           <Button
             title="Generate new sessionToken"
             onClick={() =>
-              generateSessionToken().then(newSessionToken => setSessionToken(newSessionToken))
+              getSessionToken().then(newSessionToken => setSessionToken(newSessionToken))
             }
           />
           <Text>{sessionToken}</Text>
