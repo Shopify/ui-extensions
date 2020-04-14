@@ -62,7 +62,7 @@ export function AppExtension<T extends ExtensionPoint>({
         receiver.receive,
       );
     })();
-  }, [worker, receiver, layoutInput, sessionTokenInput]);
+  }, [worker, extensionPoint, components, receiver, input, layoutInput, sessionTokenInput]);
 
   return (
     <div ref={ref}>
