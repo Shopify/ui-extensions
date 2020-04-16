@@ -1,6 +1,6 @@
 {
   "name": "@shopify/app-extensions-polaris-components",
-  "version": "0.0.42",
+  "version": "0.0.43",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {
