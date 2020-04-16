@@ -35,6 +35,7 @@ function App() {
   const [name, setName] = useState('');
   const [search, setSearch] = useState('');
   const [review, setReview] = useState('');
+  const [numberValue, setNumberValue] = useState('0');
   const [noLabelChecked, setNoLabelChecked] = useState(false);
   const [fooChecked, setFooChecked] = useState(false);
   const [barChecked, setBarChecked] = useState(false);
@@ -373,6 +374,7 @@ function App() {
           value={review}
           onAfterChange={setReview}
         />
+        <TextField type="number" value={numberValue} onAfterChange={setNumberValue} />
       </Card>
       <Card sectioned title="useLayout">
         <Text>{JSON.stringify(layout) || 'undefined'}</Text>
