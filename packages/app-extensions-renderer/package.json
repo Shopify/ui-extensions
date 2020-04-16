@@ -13,9 +13,9 @@
     "directory": "packages/app-extensions-renderer"
   },
   "dependencies": {
-    "@shopify/remote-ui-core": "^0.0.18",
-    "@shopify/remote-ui-react": "^0.0.21",
-    "@shopify/remote-ui-types": "^0.0.12",
+    "@shopify/remote-ui-core": "^0.0.19",
+    "@shopify/remote-ui-react": "^0.0.22",
+    "@shopify/remote-ui-types": "^0.0.13",
     "@shopify/useful-types": "^2.1.4",
     "@shopify/web-worker": "^1.3.5",
     "react": "^16.12.0",

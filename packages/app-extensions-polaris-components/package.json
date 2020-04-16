@@ -18,7 +18,7 @@
     "react-dom": "^16.9.0"
   },
   "dependencies": {
-    "@shopify/remote-ui-core": "^0.0.15",
+    "@shopify/remote-ui-core": "^0.0.19",
     "typescript": "^3.7.2"
   },
   "publishConfig": {

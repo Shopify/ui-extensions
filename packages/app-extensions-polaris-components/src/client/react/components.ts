@@ -26,58 +26,58 @@ import {
 } from '../core';
 
 export type BadgeProps = ReactPropsFromRemoteComponentType<typeof BaseBadge>;
-export const Badge = createRemoteReactComponent(BaseBadge as any);
+export const Badge = createRemoteReactComponent(BaseBadge);
 
 export type ButtonProps = ReactPropsFromRemoteComponentType<typeof BaseButton>;
-export const Button = createRemoteReactComponent(BaseButton as any);
+export const Button = createRemoteReactComponent(BaseButton);
 
 export type CardProps = ReactPropsFromRemoteComponentType<typeof BaseCard>;
-export const Card = createRemoteReactComponent(BaseCard as any);
+export const Card = createRemoteReactComponent(BaseCard);
 
 export type CardSectionProps = ReactPropsFromRemoteComponentType<typeof BaseCardSection>;
-export const CardSection = createRemoteReactComponent(BaseCardSection as any);
+export const CardSection = createRemoteReactComponent(BaseCardSection);
 
 export type CheckboxProps = ReactPropsFromRemoteComponentType<typeof BaseCheckbox>;
-export const Checkbox = createRemoteReactComponent(BaseCheckbox as any);
+export const Checkbox = createRemoteReactComponent(BaseCheckbox);
 
 export type ClickableProps = ReactPropsFromRemoteComponentType<typeof BaseClickable>;
-export const Clickable = createRemoteReactComponent(BaseClickable as any);
+export const Clickable = createRemoteReactComponent(BaseClickable);
 
 export type IconProps = ReactPropsFromRemoteComponentType<typeof BaseIcon>;
-export const Icon = createRemoteReactComponent(BaseIcon as any);
+export const Icon = createRemoteReactComponent(BaseIcon);
 
 export type LayoutProps = ReactPropsFromRemoteComponentType<typeof BaseLayout>;
-export const Layout = createRemoteReactComponent(BaseLayout as any);
+export const Layout = createRemoteReactComponent(BaseLayout);
 
 export type LayoutSectionProps = ReactPropsFromRemoteComponentType<typeof BaseLayoutSection>;
-export const LayoutSection = createRemoteReactComponent(BaseLayoutSection as any);
+export const LayoutSection = createRemoteReactComponent(BaseLayoutSection);
 
 export type ModalProps = ReactPropsFromRemoteComponentType<typeof BaseModal>;
-export const Modal = createRemoteReactComponent(BaseModal as any);
+export const Modal = createRemoteReactComponent(BaseModal);
 
 export type LinkProps = ReactPropsFromRemoteComponentType<typeof BaseLink>;
-export const Link = createRemoteReactComponent(BaseLink as any);
+export const Link = createRemoteReactComponent(BaseLink);
 
 export type PageProps = ReactPropsFromRemoteComponentType<typeof BasePage>;
-export const Page = createRemoteReactComponent(BasePage as any);
+export const Page = createRemoteReactComponent(BasePage);
 
 export type SelectProps = ReactPropsFromRemoteComponentType<typeof BaseSelect>;
-export const Select = createRemoteReactComponent(BaseSelect as any);
+export const Select = createRemoteReactComponent(BaseSelect);
 
 export type SpinnerProps = ReactPropsFromRemoteComponentType<typeof BaseSpinner>;
-export const Spinner = createRemoteReactComponent(BaseSpinner as any);
+export const Spinner = createRemoteReactComponent(BaseSpinner);
 
 export type StackProps = ReactPropsFromRemoteComponentType<typeof BaseStack>;
-export const Stack = createRemoteReactComponent(BaseStack as any);
+export const Stack = createRemoteReactComponent(BaseStack);
 
 export type StackItemProps = ReactPropsFromRemoteComponentType<typeof BaseStackItem>;
-export const StackItem = createRemoteReactComponent(BaseStackItem as any);
+export const StackItem = createRemoteReactComponent(BaseStackItem);
 
 export type TextProps = ReactPropsFromRemoteComponentType<typeof BaseText>;
-export const Text = createRemoteReactComponent(BaseText as any);
+export const Text = createRemoteReactComponent(BaseText);
 
 export type TextFieldProps = ReactPropsFromRemoteComponentType<typeof BaseTextField>;
-export const TextField = createRemoteReactComponent(BaseTextField as any);
+export const TextField = createRemoteReactComponent(BaseTextField);
 
 export type ThumbnailProps = ReactPropsFromRemoteComponentType<typeof BaseThumbnail>;
-export const Thumbnail = createRemoteReactComponent(BaseThumbnail as any);
+export const Thumbnail = createRemoteReactComponent(BaseThumbnail);
