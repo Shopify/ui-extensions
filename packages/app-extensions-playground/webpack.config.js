@@ -73,7 +73,11 @@ module.exports = {
                 },
               ],
             ],
-            plugins: ['@shopify/react-i18n/babel', require.resolve('@shopify/web-worker/babel')],
+            plugins: [
+              ['@babel/transform-runtime'],
+              '@shopify/react-i18n/babel',
+              require.resolve('@shopify/web-worker/babel'),
+            ],
           },
         },
       },
