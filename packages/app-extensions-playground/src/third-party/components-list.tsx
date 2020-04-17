@@ -189,8 +189,12 @@ function App() {
       </Card>
       <Card sectioned title="Icon component">
         <Stack>
-          <Icon source="starFilled" color="yellow" />
+          <Icon source="cancelSmallMirror" />
+          <Icon source="searchMinor" />
           <Icon source="starHollow" />
+          <Icon source="starFilled" />
+          <Icon source="starFilled" color="yellow" />
+          <Icon source="sortMinor" />
         </Stack>
       </Card>
       <Card sectioned title="Link">
