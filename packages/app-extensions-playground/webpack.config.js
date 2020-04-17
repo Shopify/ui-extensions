@@ -47,7 +47,6 @@ module.exports = {
     rules: [
       {
         test: /\.[j|t]s(x?)$/,
-        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -56,7 +55,7 @@ module.exports = {
               [
                 'babel-preset-shopify/web',
                 {
-                  modules: false,
+                  modules: 'commonjs',
                   typescript: true,
                   browsers: [
                     'last 1 chrome version',
@@ -74,7 +73,7 @@ module.exports = {
               ],
             ],
             plugins: [
-              ['@babel/transform-runtime'],
+              '@babel/transform-runtime',
               '@shopify/react-i18n/babel',
               require.resolve('@shopify/web-worker/babel'),
             ],
