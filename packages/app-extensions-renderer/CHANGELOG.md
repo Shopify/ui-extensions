@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.44](https://github.com/Shopify/app-extension-libs/compare/v0.0.43...v0.0.44) (2020-04-17)
+
+
+### Features
+
+* add SessionTokenInput ([e8532b9](https://github.com/Shopify/app-extension-libs/commit/e8532b986e403bdf7d10540284cd90b386dd4ab1))
+
+
+
+
+
 ## [0.0.43](https://github.com/Shopify/app-extension-libs/compare/v0.0.42...v0.0.43) (2020-04-16)
 
 **Note:** Version bump only for package @shopify/app-extensions-renderer
