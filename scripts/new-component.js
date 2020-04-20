@@ -26,12 +26,24 @@ export default function {{name}}(props: {{name}}Props) {
 }
 `.trimLeft();
 
-const CLIENT_COMPONENT_TEMPLATE = `
+const CORE_CLIENT_COMPONENT_TEMPLATE = `
 import {createRemoteComponent} from '@shopify/remote-ui-core';
 
 export interface {{name}}Props {}
 
 export const {{name}} = createRemoteComponent<'{{name}}', {{name}}Props>('{{name}}');
+`.trimLeft();
+
+const REACT_CLIENT_COMPONENT_TEMPLATE = `
+import {
+  createRemoteReactComponent,
+  ReactPropsFromRemoteComponentType,
+} from '@shopify/remote-ui-react';
+
+import {{{name}} as Base{{name}}} from '../../core';
+
+export type {{name}}Props = ReactPropsFromRemoteComponentType<typeof Base{{name}}>;
+export const {{name}} = createRemoteReactComponent(Base{{name}});
 `.trimLeft();
 
 /**
@@ -54,17 +66,30 @@ function createHost(componentName) {
 /**
  * Create client component
  */
-function createClient(componentName) {
+function createCoreClient(componentName) {
   const path = 'packages/app-extensions-polaris-components/src/client/core/components';
   const componentDir = `${process.cwd()}/${path}`;
 
   fs.mkdirSync(componentDir, {recursive: true});
   fs.writeFileSync(
     `${componentDir}/${componentName}.ts`,
-    CLIENT_COMPONENT_TEMPLATE.replace(/{{name}}/g, componentName),
+    CORE_CLIENT_COMPONENT_TEMPLATE.replace(/{{name}}/g, componentName),
   );
 
-  console.log(`✅ Create ${componentName} client`);
+  console.log(`✅ Create ${componentName} core client`);
+}
+
+function createReactClient(componentName) {
+  const path = 'packages/app-extensions-polaris-components/src/client/react/components';
+  const componentDir = `${process.cwd()}/${path}`;
+
+  fs.mkdirSync(componentDir, {recursive: true});
+  fs.writeFileSync(
+    `${componentDir}/${componentName}.ts`,
+    REACT_CLIENT_COMPONENT_TEMPLATE.replace(/{{name}}/g, componentName),
+  );
+
+  console.log(`✅ Create ${componentName} react client`);
 }
 
 /**
@@ -87,13 +112,19 @@ try {
 }
 
 try {
-  createClient(componentName);
+  createCoreClient(componentName);
 } catch (error) {
-  killProcess("Couldn't create client component.", error);
+  killProcess("Couldn't create core client component.", error);
+}
+
+try {
+  createReactClient(componentName);
+} catch (error) {
+  killProcess("Couldn't create react client component.", error);
 }
 
 console.log('🔥🔥🔥 Remember to update these files:');
 console.log('packages/app-extensions-polaris-components/src/client/core/components/index.ts');
-console.log('packages/app-extensions-polaris-components/src/client/react/components.ts');
+console.log('packages/app-extensions-polaris-components/src/client/react/components/index.ts');
 console.log('packages/app-extensions-polaris-components/src/host/components/index.ts');
 console.log('components/readme.md');
