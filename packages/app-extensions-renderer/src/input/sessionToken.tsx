@@ -1,7 +1,7 @@
 import {useExtensionInput} from './utils';
 
 export interface SessionToken {
-  getSessionToken: () => Promise<string>;
+  getSessionToken: () => Promise<string | undefined>;
 }
 
 export interface SessionTokenInput {
