@@ -379,6 +379,7 @@ function App() {
           onAfterChange={setReview}
         />
         <TextField type="number" value={numberValue} onAfterChange={setNumberValue} />
+        <TextField value="Inline error" error="This field is invalid" />
       </Card>
       <Card sectioned title="useLayout">
         <Text>{JSON.stringify(layout) || 'undefined'}</Text>
