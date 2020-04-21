@@ -4,7 +4,7 @@
 ## Action
 
 ### Button
-Buttons are used primarily for actions, such as "Add", "Close", "Cancel", or "Save". 
+Buttons are used primarily for actions, such as "Add", "Close", "Cancel", or "Save".
 
 [Button API](../packages/app-extensions-polaris-components/src/client/core/components/Button.ts)
 
@@ -21,6 +21,10 @@ The toast component is a non-disruptive message that appears at the bottom of th
 
 [Toast API](../packages/app-extensions-polaris-components/src/client/core/components/Toast.ts)
 
+### Banner
+Informs merchants about important changes or persistent conditions. Use this component if you need to communicate to merchants in a prominent way. Banners are placed at the top of the page or section they apply to, and below the page or section header.
+
+[Banner API](../packages/app-extensions-polaris-components/src/client/core/components/Banner.ts)
 
 ## Images and Icons
 
@@ -30,7 +34,7 @@ Badges are used to inform merchants of the status of an object or of an action t
 [Badge API](../packages/app-extensions-polaris-components/src/client/core/components/Badge.ts)
 
 ### Icon
-Icons are small visual indicators from a set of pre-defined glyphs. 
+Icons are small visual indicators from a set of pre-defined glyphs.
 
 [Icon API](../packages/app-extensions-polaris-components/src/client/core/components/Icon.ts)
 
@@ -77,7 +81,7 @@ Cards are used to group similar concepts and tasks together
 ### CardSection
 Used to group similar concepts within a Card. It also adds a divider between sections if there are more than one
 
-* Padding: 
+* Padding:
   * Web: 2rem
   * Android: 16dp
   * iOS: 20pts
@@ -90,7 +94,7 @@ Used to group similar concepts within a Card. It also adds a divider between sec
 ### Page
 A page is typically the top-level component, which defines the title, associated actions, and children.
 
-* Padding: 
+* Padding:
   * Web: 2rem
   * Android: 16dp
   * iOS: 20pts
@@ -100,7 +104,7 @@ A page is typically the top-level component, which defines the title, associated
 ### Stack
 Used to lay out a horizontal or vertical row of components. They can be nested to achieve complex layouts easily.
 
-* Space between child (except `spacing="none"`): 
+* Space between child (except `spacing="none"`):
   * Web: 1.6rem
   * Android: 16dp
   * iOS: 8pts
@@ -110,7 +114,7 @@ Used to lay out a horizontal or vertical row of components. They can be nested t
 ### StackItem
 The stack component will treat multiple elements wrapped in a stack item component as one item. By default, each individual element is treated as one stack item. Use the fill prop on a single stack item component to make it fill the rest of the available horizontal space.
 
-[Stack API](../packages/app-extensions-polaris-components/src/client/core/components/StackItem.ts)
+[StackItem API](../packages/app-extensions-polaris-components/src/client/core/components/StackItem.ts)
 
 
 ## Titles and text
@@ -118,7 +122,7 @@ The stack component will treat multiple elements wrapped in a stack item compone
 ### Text
 Used to display text in different sizes, color, and alignment.
 
-[Stack API](../packages/app-extensions-polaris-components/src/client/core/components/Text.ts)
+[Text API](../packages/app-extensions-polaris-components/src/client/core/components/Text.ts)
 
 
 ## Overlays
@@ -126,9 +130,9 @@ Used to display text in different sizes, color, and alignment.
 ### Modal
 Modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken. They can be disruptive because they require merchants to take an action before they can continue interacting with the rest of Shopify. It should be used thoughtfully and sparingly.
 
-* Modal content padding: 
+* Modal content padding:
   * Web: 2rem
   * Android: 16dp
   * iOS: 20pts
 
-[Stack API](../packages/app-extensions-polaris-components/src/client/core/components/Modal.ts)
+[Modal API](../packages/app-extensions-polaris-components/src/client/core/components/Modal.ts)

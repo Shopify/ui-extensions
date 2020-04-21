@@ -1,4 +1,5 @@
 import Badge from './Badge';
+import Banner from './Banner';
 import Button from './Button';
 import Card from './Card';
 import CardSection from './CardSection';
@@ -18,6 +19,7 @@ import Thumbnail from './Thumbnail';
 
 export default {
   Badge,
+  Banner,
   Button,
   Card,
   CardSection,
