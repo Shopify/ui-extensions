@@ -36,6 +36,7 @@ const SELECTS: SelectProps['options'] = [
 
 function App() {
   const [name, setName] = useState('');
+  const clearName = useCallback(() => setName(''), []);
   const [search, setSearch] = useState('');
   const [review, setReview] = useState('');
   const [numberValue, setNumberValue] = useState('0');
@@ -444,6 +445,8 @@ function App() {
             placeholder="Type your name"
             value={name}
             onAfterChange={setName}
+            clearButton
+            onClearButtonClick={clearName}
           />
           {name && <Text>Hello {name}</Text>}
           <TextField
