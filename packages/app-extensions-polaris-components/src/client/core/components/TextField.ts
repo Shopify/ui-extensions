@@ -6,6 +6,8 @@ export interface TextFieldProps {
   value?: string;
   placeholder?: string;
   multiline?: number | boolean;
+  prefix?: string;
+  suffix?: string;
   error?: string;
   onAfterChange?: (value: string) => void;
   onBlur?(): void | Promise<void>;

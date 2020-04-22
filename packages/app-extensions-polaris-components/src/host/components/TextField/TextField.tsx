@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextField as PolarisTextField} from '@shopify/polaris';
+import {TextField as PolarisTextField, Stack} from '@shopify/polaris';
 
 import {TextFieldProps} from '../../../client/core';
 import {useQueuedState} from '../../hooks';
@@ -13,6 +13,7 @@ export default function TextField({
   onAfterChange = noop,
   onBlur = noop,
   onFocus = noop,
+  prefix = '',
   ...props
 }: TextFieldProps) {
   const [appliedValue, onChange] = useQueuedState(value, onAfterChange);
@@ -22,7 +23,12 @@ export default function TextField({
     <PolarisTextField
       {...props}
       label={label}
-      prefix={connectedLeft}
+      prefix={
+        <Stack>
+          {connectedLeft}
+          <span>{prefix}</span>
+        </Stack>
+      }
       value={appliedValue}
       onBlur={onBlur}
       onFocus={onFocus}

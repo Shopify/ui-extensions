@@ -400,22 +400,37 @@ function App() {
         </Stack>
       </Card>
       <Card sectioned title="TextField component">
-        <TextField label="Name" placeholder="Type your name" value={name} onAfterChange={setName} />
-        {name && <Text>Hello {name}</Text>}
-        <TextField
-          type="search"
-          placeholder="Search for reviews"
-          value={search}
-          onAfterChange={setSearch}
-        />
-        <TextField
-          placeholder="Add a reply to this review..."
-          multiline
-          value={review}
-          onAfterChange={setReview}
-        />
-        <TextField type="number" value={numberValue} onAfterChange={setNumberValue} />
-        <TextField value="Inline error" error="This field is invalid" />
+        <Stack vertical>
+          <TextField
+            label="Name"
+            placeholder="Type your name"
+            value={name}
+            onAfterChange={setName}
+          />
+          {name && <Text>Hello {name}</Text>}
+          <TextField
+            type="search"
+            placeholder="Search for reviews"
+            value={search}
+            onAfterChange={setSearch}
+          />
+          <TextField
+            placeholder="Add a reply to this review..."
+            multiline
+            value={review}
+            onAfterChange={setReview}
+          />
+          <TextField type="number" value={numberValue} onAfterChange={setNumberValue} />
+          <TextField value="Inline error" error="This field is invalid" />
+          <TextField value="42" type="number" suffix="%" label="A real percent" />
+          <TextField value="stuff around" prefix="Only the best" label="Cool things" />
+          <TextField
+            type="search"
+            value="cool tech"
+            prefix="I'm interested in"
+            label="Search prefix"
+          />
+        </Stack>
       </Card>
       <Card sectioned title="useLayout">
         <Text>{JSON.stringify(layout) || 'undefined'}</Text>
