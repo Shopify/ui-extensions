@@ -12,6 +12,8 @@ import {
   Modal,
   Link,
   Page,
+  ResourceItem,
+  ResourceList,
   Select,
   SelectProps,
   Spinner,
@@ -108,6 +110,19 @@ function App() {
 
   const {getSessionToken} = useSessionToken();
   const [sessionToken, setSessionToken] = useState('');
+
+  const [resourceListQuery, setResourceListQuery] = useState('');
+  const resourceListFilterControl = useMemo(
+    () => ({
+      queryValue: resourceListQuery,
+      queryPlaceholder: 'Search...',
+      onQueryChange: setResourceListQuery,
+      onQueryClear: () => {
+        setResourceListQuery('');
+      },
+    }),
+    [resourceListQuery],
+  );
 
   return (
     <Page
@@ -270,6 +285,23 @@ function App() {
         >
           <TextField label="Custom plan title" />
         </Modal>
+      </Card>
+      <Card title="ResourceList component">
+        <ResourceList filterControl={resourceListFilterControl}>
+          {[1, 2, 3].map((item, index) => (
+            <ResourceItem
+              key={index}
+              id={index}
+              onClick={() => console.log('ResourceList item click:', item)}
+            >
+              <Stack alignment="center">
+                <Checkbox />
+                <StackItem fill>Every {item} week or 15 days * 20-25% off</StackItem>
+                <Text>{item} product</Text>
+              </Stack>
+            </ResourceItem>
+          ))}
+        </ResourceList>
       </Card>
       <Card title="Select component">
         <CardSection title="Default">

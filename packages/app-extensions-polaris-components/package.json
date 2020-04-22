@@ -13,7 +13,7 @@
     "directory": "packages/app-extensions-polaris-components"
   },
   "peerDependencies": {
-    "@shopify/polaris": "^4.0.0",
+    "@shopify/polaris": "^4.19.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },

@@ -9,6 +9,8 @@ import Icon from './Icon';
 import Modal from './Modal';
 import Link from './Link';
 import Page from './Page';
+import ResourceItem from './ResourceItem';
+import ResourceList from './ResourceList';
 import Select from './Select';
 import Spinner from './Spinner';
 import Stack from './Stack';
@@ -29,6 +31,8 @@ export default {
   Modal,
   Link,
   Page,
+  ResourceItem,
+  ResourceList,
   Select,
   Spinner,
   Stack,

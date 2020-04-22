@@ -11,6 +11,8 @@ export * from './LayoutSection';
 export * from './Modal';
 export * from './Link';
 export * from './Page';
+export * from './ResourceItem';
+export * from './ResourceList';
 export * from './Select';
 export * from './Spinner';
 export * from './Stack';
