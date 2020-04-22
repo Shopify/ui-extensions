@@ -44,6 +44,12 @@ export function Frame({children}: Props) {
                     exactMatch: true,
                     icon: TextBlockMajorMonotone,
                   },
+                  {
+                    label: 'Containers',
+                    url: '/containers',
+                    exactMatch: true,
+                    icon: TextBlockMajorMonotone,
+                  },
                 ]}
               />
             </Navigation>
