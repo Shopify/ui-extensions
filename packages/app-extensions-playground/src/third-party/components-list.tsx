@@ -111,12 +111,18 @@ function App() {
   const {getSessionToken} = useSessionToken();
   const [sessionToken, setSessionToken] = useState('');
 
+  const dataList = [1, 2, 3, 4, 5, 12, 13, 145];
+  const [listItems, setListItems] = useState(dataList);
+
   const [resourceListQuery, setResourceListQuery] = useState('');
   const resourceListFilterControl = useMemo(
     () => ({
       queryValue: resourceListQuery,
       queryPlaceholder: 'Search...',
-      onQueryChange: setResourceListQuery,
+      onQueryChange: q => {
+        setResourceListQuery(q);
+        setListItems(dataList.filter(r => r.toString().includes(q)));
+      },
       onQueryClear: () => {
         setResourceListQuery('');
       },
@@ -288,7 +294,7 @@ function App() {
       </Card>
       <Card title="ResourceList component">
         <ResourceList filterControl={resourceListFilterControl}>
-          {[1, 2, 3].map((item, index) => (
+          {listItems.map((item, index) => (
             <ResourceItem
               key={index}
               id={index}
