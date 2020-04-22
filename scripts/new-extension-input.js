@@ -27,7 +27,7 @@ export interface {{name}}Input {
   {{name-camelCase}}: {{name}};
 }
 
-function is{{name}}Input(input: ReturnType<typeof useExtensionInput>): input is {{name}}Input {
+function is{{name}}Input(input: any): input is {{name}}Input {
   return '{{name-camelCase}}' in input;
 }
 
