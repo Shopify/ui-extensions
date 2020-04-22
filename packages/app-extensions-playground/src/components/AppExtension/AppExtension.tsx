@@ -5,6 +5,7 @@ import {
   useWorker,
   createIframeWorkerMessenger,
 } from '@shopify/react-web-worker';
+import {Spinner, Stack} from '@shopify/polaris';
 import {
   ExtensionPoint,
   ExtractedInputFromRenderExtension,
@@ -42,6 +43,7 @@ export function AppExtension<T extends ExtensionPoint>({
     return null;
   }
 
+  const [loading, setLoading] = useState(true);
   const worker = useWorker(createWorker, {
     createMessenger: createIframeWorkerMessenger,
   });
@@ -56,17 +58,23 @@ export function AppExtension<T extends ExtensionPoint>({
     }
     (async () => {
       await worker.load(typeof script === 'string' ? script : script.href);
-      worker.render(
+      await worker.render(
         extensionPoint,
         {...input, ...layoutInput, ...sessionTokenInput},
         Object.keys(components),
         receiver.receive,
       );
+      setLoading(false);
     })();
   }, [worker, extensionPoint, components, receiver, userInput, layoutInput, sessionTokenInput]);
 
   return (
     <div ref={ref}>
+      {loading && (
+        <Stack distribution="center" alignment="center">
+          <Spinner />
+        </Stack>
+      )}
       <RemoteRenderer receiver={receiver} components={components} />
     </div>
   );
