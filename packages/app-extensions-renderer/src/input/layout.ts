@@ -19,7 +19,7 @@ export interface LayoutInput {
   };
 }
 
-function isLayoutInput(input: ReturnType<typeof useExtensionInput>): input is LayoutInput {
+function isLayoutInput(input: any): input is LayoutInput {
   return 'layout' in input;
 }
 

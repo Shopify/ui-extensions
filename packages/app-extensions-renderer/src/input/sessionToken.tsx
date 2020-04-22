@@ -8,9 +8,7 @@ export interface SessionTokenInput {
   sessionToken: SessionToken;
 }
 
-function isSessionTokenInput(
-  input: ReturnType<typeof useExtensionInput>,
-): input is SessionTokenInput {
+function isSessionTokenInput(input: any): input is SessionTokenInput {
   return 'sessionToken' in input;
 }
 
