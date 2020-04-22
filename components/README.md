@@ -116,6 +116,18 @@ The stack component will treat multiple elements wrapped in a stack item compone
 
 [StackItem API](../packages/app-extensions-polaris-components/src/client/core/components/StackItem.ts)
 
+## List
+
+### ResourceItem
+Resource items represent specific objects within a collection, such as products or orders. They provide contextual information on the resource type and link to the object's detail page.
+
+[ResourceItem API](../packages/app-extensions-polaris-components/src/client/core/components/ResourceItem.ts)
+
+### ResourceList
+A resource list displays a collection of objects of the same type, like products or customers. The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
+
+[ResourceList API](../packages/app-extensions-polaris-components/src/client/core/components/ResourceList.ts)
+
 
 ## Titles and text
 
