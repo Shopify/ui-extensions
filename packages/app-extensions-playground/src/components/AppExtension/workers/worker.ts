@@ -27,6 +27,17 @@ Reflect.defineProperty(self, 'shopify', {
 declare const importScripts: (script: string) => void;
 
 export function load(script: string) {
+  try {
+    new URL(script);
+  } catch (_) {
+    eval(script);
+    return;
+  }
+
+  if (!script.match(/\.js$/)) {
+    return;
+  }
+
   importScripts(script);
 }
 

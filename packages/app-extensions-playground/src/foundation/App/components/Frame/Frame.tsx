@@ -1,7 +1,12 @@
 import React, {ReactNode, useState} from 'react';
 import {Route} from '@shopify/react-router';
 import {Frame as PolarisFrame, Navigation, TopBar} from '@shopify/polaris';
-import {HomeMajorTwotone, ListMajorMonotone, StarOutlineMinor} from '@shopify/polaris-icons';
+import {
+  HomeMajorTwotone,
+  ListMajorMonotone,
+  StarOutlineMinor,
+  TextBlockMajorMonotone,
+} from '@shopify/polaris-icons';
 
 interface Props {
   children?: ReactNode;
@@ -32,6 +37,12 @@ export function Frame({children}: Props) {
                     url: '/components-list',
                     exactMatch: true,
                     icon: ListMajorMonotone,
+                  },
+                  {
+                    label: 'Inline Script',
+                    url: '/inline-script',
+                    exactMatch: true,
+                    icon: TextBlockMajorMonotone,
                   },
                   {
                     label: 'Product Reviews',
