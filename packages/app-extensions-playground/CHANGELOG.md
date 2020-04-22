@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.47](https://github.com/Shopify/app-extension-libs/compare/v0.0.46...v0.0.47) (2020-04-22)
+
+
+### Features
+
+* add banner component ([35914bf](https://github.com/Shopify/app-extension-libs/commit/35914bfaad320ee1b07260edcf82bef78e3d8b9c))
+* add clearButton prop to Textfield ([feb1733](https://github.com/Shopify/app-extension-libs/commit/feb1733d119b0c88bbfd658371f8fb6d51025bab))
+* add in-line errors to textfield component ([c0a2ee8](https://github.com/Shopify/app-extension-libs/commit/c0a2ee8257cffeb976166938c7dbc5e7b3e6b2ff))
+* add ResourceList component ([4d6dc99](https://github.com/Shopify/app-extension-libs/commit/4d6dc993ddb8a0dbe47f7a78ca45cc58dda6cda7))
+* add suffix prop to texrfield ([27e452f](https://github.com/Shopify/app-extension-libs/commit/27e452f043bcec7531713efbcb2ebcc974df73a2))
+
+
+
+
+
 ## [0.0.46](https://github.com/Shopify/app-extension-libs/compare/v0.0.45...v0.0.46) (2020-04-20)
 
 **Note:** Version bump only for package @shopify/app-extensions-playground

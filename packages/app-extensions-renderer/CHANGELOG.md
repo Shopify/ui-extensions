@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.47](https://github.com/Shopify/app-extension-libs/compare/v0.0.46...v0.0.47) (2020-04-22)
+
+
+### Bug Fixes
+
+* update SessionToken interface to reflect undefined state ([9569eef](https://github.com/Shopify/app-extension-libs/commit/9569eef64c70101059b3b53ea2abfedbe64f383e))
+
+
+
+
+
 ## [0.0.46](https://github.com/Shopify/app-extension-libs/compare/v0.0.45...v0.0.46) (2020-04-20)
 
 **Note:** Version bump only for package @shopify/app-extensions-renderer
