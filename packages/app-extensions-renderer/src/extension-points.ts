@@ -6,6 +6,7 @@ export enum ExtensionPoint {
   AppLink = 'AppLink',
   ProductDetailsAfterVariants = 'ProductDetailsAfterVariants',
   ProductDetailsSideBar = 'ProductDetailsSideBar',
+  SubscriptionsManagement = 'SubscriptionsManagement',
 }
 
 export type ExtensionResult = {} | void;
@@ -28,7 +29,7 @@ export type InputForRenderExtension<
   Extension extends keyof ExtensionPoints
 > = ExtractedInputFromRenderExtension<ExtensionPoints[Extension]>;
 
-export type ExtensionStandardApi = LayoutInput | SessionTokenInput;
+export type ExtensionStandardApi = LayoutInput & SessionTokenInput;
 
 export interface ExtensionPoints {
   [ExtensionPoint.AppLink]: RenderableExtensionCallback<ExtensionStandardApi, RemoteRoot<any>>;
@@ -37,6 +38,10 @@ export interface ExtensionPoints {
     RemoteRoot<any>
   >;
   [ExtensionPoint.ProductDetailsSideBar]: RenderableExtensionCallback<
+    ExtensionStandardApi,
+    RemoteRoot<any>
+  >;
+  [ExtensionPoint.SubscriptionsManagement]: RenderableExtensionCallback<
     ExtensionStandardApi,
     RemoteRoot<any>
   >;
