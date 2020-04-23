@@ -26,14 +26,6 @@ describe('worker', () => {
       expect(evalSpy).not.toHaveBeenCalledWith(url);
     });
 
-    it('does not call importScripts if non-JS url is provided', () => {
-      const url = 'https://my-script.css';
-      load(url);
-
-      expect(importScripts).not.toHaveBeenCalledWith(url);
-      expect(evalSpy).not.toHaveBeenCalledWith(url);
-    });
-
     it('evaluate script if text is provided', () => {
       const script = 'console.log("hi");';
       load(script);

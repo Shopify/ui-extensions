@@ -33,11 +33,6 @@ export function load(script: string) {
     eval(script);
     return;
   }
-
-  if (!script.match(/\.js$/)) {
-    return;
-  }
-
   importScripts(script);
 }
 
