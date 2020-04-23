@@ -1,5 +1,5 @@
 import React, {useState, useMemo} from 'react';
-import {render, ExtensionPoint} from '@shopify/app-extensions-renderer';
+import {render, ExtensionPoint, useModalActions} from '@shopify/app-extensions-renderer';
 import {
   ResourceList,
   ResourceItem,
@@ -9,11 +9,24 @@ import {
   StackItem,
 } from '@shopify/app-extensions-polaris-components/client';
 
-render(ExtensionPoint.SubscriptionsManagement, () => <App />);
-
 function App() {
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];
   const [listItems, setListItems] = useState(dataList);
+
+  const {
+    primaryAction: {setContent: setPrimaryContent, setAction: setPrimaryAction},
+    secondaryAction: {setContent: setSecondaryContent, setAction: setSecondaryAction},
+    closeModal,
+  } = useModalActions();
+
+  setPrimaryContent('Next');
+  setSecondaryContent('Back');
+  setPrimaryAction(() => {
+    closeModal();
+  });
+  setSecondaryAction(() => {
+    closeModal();
+  });
 
   const [resourceListQuery, setResourceListQuery] = useState('');
   const resourceListFilterControl = useMemo(
@@ -51,3 +64,5 @@ function App() {
     </>
   );
 }
+
+render(ExtensionPoint.SubscriptionsManagement, () => <App />);

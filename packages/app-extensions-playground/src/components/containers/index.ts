@@ -1,1 +1,1 @@
-export {ArgoModal} from './ArgoModal';
+export * from './ArgoModal';

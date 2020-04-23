@@ -1,11 +1,10 @@
 import {RemoteRoot} from '@shopify/remote-ui-core';
 
-import {LayoutInput, SessionTokenInput} from './input';
+import {LayoutInput, SessionTokenInput, ModalActionsInput} from './input';
 
 export enum ExtensionPoint {
   AppLink = 'AppLink',
-  ProductDetailsAfterVariants = 'ProductDetailsAfterVariants',
-  ProductDetailsSideBar = 'ProductDetailsSideBar',
+  Playground = 'Playground',
   SubscriptionsManagement = 'SubscriptionsManagement',
 }
 
@@ -30,19 +29,13 @@ export type InputForRenderExtension<
 > = ExtractedInputFromRenderExtension<ExtensionPoints[Extension]>;
 
 export type ExtensionStandardApi = LayoutInput & SessionTokenInput;
+export type SubscriptionsApi = ExtensionStandardApi & ModalActionsInput;
 
 export interface ExtensionPoints {
   [ExtensionPoint.AppLink]: RenderableExtensionCallback<ExtensionStandardApi, RemoteRoot<any>>;
-  [ExtensionPoint.ProductDetailsAfterVariants]: RenderableExtensionCallback<
-    ExtensionStandardApi,
-    RemoteRoot<any>
-  >;
-  [ExtensionPoint.ProductDetailsSideBar]: RenderableExtensionCallback<
-    ExtensionStandardApi,
-    RemoteRoot<any>
-  >;
+  [ExtensionPoint.Playground]: RenderableExtensionCallback<ExtensionStandardApi, RemoteRoot<any>>;
   [ExtensionPoint.SubscriptionsManagement]: RenderableExtensionCallback<
-    ExtensionStandardApi,
+    SubscriptionsApi,
     RemoteRoot<any>
   >;
 }

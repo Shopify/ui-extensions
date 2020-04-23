@@ -15,7 +15,7 @@ export function ComponentsList() {
   return (
     <AppExtension
       script={reactThirdPartyWorker.url}
-      extensionPoint={ExtensionPoint.AppLink}
+      extensionPoint={ExtensionPoint.Playground}
       components={host}
     />
   );

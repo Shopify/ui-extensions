@@ -90,7 +90,7 @@ export function Containers() {
         script={modalClientScript.url}
         extensionPoint={ExtensionPoint.SubscriptionsManagement}
         components={host}
-        height="500px"
+        height="450px"
       />
     </>
   );

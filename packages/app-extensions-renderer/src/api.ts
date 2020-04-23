@@ -20,6 +20,13 @@ export interface ShopifyGlobal {
   readonly shopify: ShopifyApi;
 }
 
+export interface RenderExtensionComponentProps<T extends ExtensionPoint> {
+  extensionPoint: T;
+  script?: string | URL;
+  input?: ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>;
+  components?: {[key: string]: any};
+}
+
 export function extend<T extends ExtensionPoint>(
   extensionPoint: T,
   callback: CallbackTypeForExtensionPoint<T>,

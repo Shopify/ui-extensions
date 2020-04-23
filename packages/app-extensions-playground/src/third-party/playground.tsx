@@ -2,7 +2,7 @@ import React from 'react';
 import {render, ExtensionPoint} from '@shopify/app-extensions-renderer';
 import {Card} from '@shopify/app-extensions-polaris-components/client';
 
-render(ExtensionPoint.AppLink, () => <App />);
+render(ExtensionPoint.Playground, () => <App />);
 
 function App() {
   return (

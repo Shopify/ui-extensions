@@ -17,7 +17,7 @@ export function Home() {
     <Page title="Home">
       <AppExtension
         script={reactThirdPartyWorker.url}
-        extensionPoint={ExtensionPoint.AppLink}
+        extensionPoint={ExtensionPoint.Playground}
         components={{...host}}
       />
     </Page>

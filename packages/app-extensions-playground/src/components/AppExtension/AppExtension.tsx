@@ -9,6 +9,7 @@ import {Spinner, Stack} from '@shopify/polaris';
 import {
   ExtensionPoint,
   ExtractedInputFromRenderExtension,
+  RenderExtensionComponentProps,
   CallbackTypeForExtensionPoint,
   Layout,
   LayoutInput,
@@ -18,13 +19,6 @@ import {
 import {retain} from '@shopify/remote-ui-core';
 
 import useResizeObserver from './utils/ResizeObserver';
-
-interface Props<T extends ExtensionPoint> {
-  extensionPoint: T;
-  script?: URL | string;
-  components?: {[key: string]: any};
-  input?: ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>;
-}
 
 const createWorker = createWorkerFactory(() =>
   import(/* webpackChunkName: 'sandbox-worker' */ './workers/worker'),
@@ -38,7 +32,7 @@ export function AppExtension<T extends ExtensionPoint>({
   script,
   components = {},
   input = {} as ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>,
-}: Props<T>) {
+}: RenderExtensionComponentProps<T>) {
   if (!script) {
     return null;
   }
