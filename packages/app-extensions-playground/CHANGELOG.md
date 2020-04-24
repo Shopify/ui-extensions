@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.49](https://github.com/Shopify/app-extension-libs/compare/v0.0.48...v0.0.49) (2020-04-24)
+
+
+### Features
+
+* add argo modal container ([2511eaa](https://github.com/Shopify/app-extension-libs/commit/2511eaa457c12b20490b561bcf31cdd87f137538))
+* enable web worker to load inline app extension scripts ([847d874](https://github.com/Shopify/app-extension-libs/commit/847d874095dd0cbe0a5c956f645bd056d104a27f))
+* hook up modal action inputs ([9784bfe](https://github.com/Shopify/app-extension-libs/commit/9784bfe4bf5c5bade33b394bce1d79b93d255e46))
+
+
+
+
+
 ## [0.0.48](https://github.com/Shopify/app-extension-libs/compare/v0.0.47...v0.0.48) (2020-04-22)
 
 **Note:** Version bump only for package @shopify/app-extensions-playground
