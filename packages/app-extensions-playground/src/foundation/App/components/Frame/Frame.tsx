@@ -44,12 +44,6 @@ export function Frame({children}: Props) {
                     exactMatch: true,
                     icon: TextBlockMajorMonotone,
                   },
-                  {
-                    label: 'Product Reviews',
-                    url: '/product-reviews',
-                    exactMatch: true,
-                    icon: StarOutlineMinor,
-                  },
                 ]}
               />
             </Navigation>

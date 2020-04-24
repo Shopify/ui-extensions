@@ -1,1 +1,0 @@
-export {ProductReviews} from './ProductReviews';
