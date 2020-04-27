@@ -33,10 +33,6 @@ export function AppExtension<T extends ExtensionPoint>({
   components = {},
   input = {} as ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>,
 }: RenderExtensionComponentProps<T>) {
-  if (!script) {
-    return null;
-  }
-
   const [loading, setLoading] = useState(true);
   const worker = useWorker(createWorker, {
     createMessenger: createIframeWorkerMessenger,
@@ -46,21 +42,32 @@ export function AppExtension<T extends ExtensionPoint>({
   const [ref, layoutInput] = useLayoutInput();
   const sessionTokenInput = useSessionTokenInput();
 
+  const inputs = useMemo(() => {
+    return {...userInput, ...layoutInput, ...sessionTokenInput};
+  }, [layoutInput, sessionTokenInput, userInput]);
+
   useEffect(() => {
-    if (!layoutInput) {
-      return;
-    }
     (async () => {
+      if (!script) {
+        return;
+      }
       await worker.load(typeof script === 'string' ? script : script.href);
-      await worker.render(
-        extensionPoint,
-        {...input, ...layoutInput, ...sessionTokenInput},
-        Object.keys(components),
-        receiver.receive,
-      );
+    })();
+  }, [script]);
+
+  useEffect(() => {
+    (async () => {
+      if (!script) {
+        return;
+      }
+      await worker.render(extensionPoint, inputs, Object.keys(components), receiver.receive);
       setLoading(false);
     })();
-  }, [worker, extensionPoint, components, receiver, userInput, layoutInput, sessionTokenInput]);
+  }, [script, worker, extensionPoint, components, receiver, inputs]);
+
+  if (!script) {
+    return null;
+  }
 
   return (
     <div ref={ref}>
