@@ -35,7 +35,7 @@ export function InlineScript() {
         <AppExtension
           script={inlineScript}
           extensionPoint={ExtensionPoint.AppLink}
-          components={{...host}}
+          components={host}
         />
       )}
     </Page>
