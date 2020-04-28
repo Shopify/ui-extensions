@@ -6,7 +6,7 @@ import {host} from '@shopify/app-extensions-polaris-components';
 import {AppExtension} from '../../components';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: 'components-list' */ '../../third-party/use-form'),
+  import(/* webpackChunkName: 'use-form' */ '../../third-party/use-form'),
 );
 
 export function UseForm() {
