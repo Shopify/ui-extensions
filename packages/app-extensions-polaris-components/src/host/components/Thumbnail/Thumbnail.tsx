@@ -3,7 +3,7 @@ import {Thumbnail as PolarisThumbnail} from '@shopify/polaris';
 
 import {ThumbnailProps} from '../../../client/core';
 
-export default function Thumbnail(props: ThumbnailProps) {
+export default function Thumbnail({alt, source, size}: ThumbnailProps) {
   // TODO: need to handle props.scaleType
-  return <PolarisThumbnail {...props} />;
+  return <PolarisThumbnail alt={alt} source={source} size={size} />;
 }

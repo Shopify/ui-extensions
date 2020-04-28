@@ -5,7 +5,14 @@ import {StackProps} from '../../../client/core';
 import {elementChildren, getElementProps, isElementOfType} from '../../utilities/components';
 import StackItem from '../StackItem';
 
-export default function Stack({children, ...props}: StackProps) {
+export default function Stack({
+  children,
+  alignment,
+  distribution,
+  spacing,
+  vertical,
+  wrap,
+}: StackProps) {
   const itemMarkup = useMemo(
     () =>
       elementChildren(children).map((child, index) => {
@@ -20,5 +27,15 @@ export default function Stack({children, ...props}: StackProps) {
       }),
     [children],
   );
-  return <PolarisStack {...props}>{itemMarkup}</PolarisStack>;
+  return (
+    <PolarisStack
+      alignment={alignment}
+      distribution={distribution}
+      spacing={spacing}
+      vertical={vertical}
+      wrap={wrap}
+    >
+      {itemMarkup}
+    </PolarisStack>
+  );
 }

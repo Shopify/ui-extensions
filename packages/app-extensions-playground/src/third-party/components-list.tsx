@@ -325,6 +325,11 @@ function App() {
             options={SELECTS}
             value={selectValue}
             onChange={onSelectChange}
+            {...{
+              onBlur: () => {
+                console.log('aaaaa');
+              },
+            }}
           />
         </CardSection>
         <CardSection title="LabelInline">

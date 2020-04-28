@@ -4,7 +4,14 @@ import {Page as PolarisPage, Thumbnail as PolarisThumbnail} from '@shopify/polar
 import {PageProps} from '../../../client/core';
 import {useWrapAction, useWrapActions} from '../../utilities/components';
 
-export default function Page({thumbnail, primaryAction, secondaryActions, ...props}: PageProps) {
+export default function Page({
+  thumbnail,
+  primaryAction,
+  secondaryActions,
+  title,
+  children,
+  subTitle,
+}: PageProps) {
   const polarisPrimaryAction = useWrapAction(primaryAction);
   const polarisSecondaryActions = useWrapActions(secondaryActions);
   const polarisThumbnail = useMemo(() => thumbnail && <PolarisThumbnail {...thumbnail} />, [
@@ -12,10 +19,13 @@ export default function Page({thumbnail, primaryAction, secondaryActions, ...pro
   ]);
   return (
     <PolarisPage
-      {...props}
+      title={title}
+      subtitle={subTitle}
       thumbnail={polarisThumbnail}
       primaryAction={polarisPrimaryAction}
       secondaryActions={polarisSecondaryActions}
-    />
+    >
+      {children}
+    </PolarisPage>
   );
 }

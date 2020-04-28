@@ -9,14 +9,16 @@ export default function Modal({
   secondaryActions,
   onClose,
   children,
-  ...props
+  open,
+  title,
 }: ModalProps) {
   const polarisPrimaryAction = useWrapAction(primaryAction);
   const polarisSecondaryActions = useWrapActions(secondaryActions);
   const polarisOnClose = useCallback(() => onClose(), [onClose]);
   return (
     <PolarisModal
-      {...props}
+      open={open}
+      title={title}
       primaryAction={polarisPrimaryAction}
       secondaryActions={polarisSecondaryActions}
       onClose={polarisOnClose}

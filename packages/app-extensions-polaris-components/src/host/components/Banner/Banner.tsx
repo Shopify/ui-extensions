@@ -1,10 +1,18 @@
 import React, {useCallback} from 'react';
 import {Banner as PolarisBanner} from '@shopify/polaris';
+
 import {BannerProps} from '../../../client/core';
 import {useWrapAction} from '../../utilities/components';
 
-export default function Banner({onDismiss, action, ...props}: BannerProps) {
+export default function Banner({onDismiss, action, status, title}: BannerProps) {
   const polarisOnDismiss = useCallback(() => onDismiss?.(), [onDismiss]);
   const polarisAction = useWrapAction(action);
-  return <PolarisBanner {...props} action={polarisAction} onDismiss={polarisOnDismiss} />;
+  return (
+    <PolarisBanner
+      status={status}
+      title={title}
+      action={polarisAction}
+      onDismiss={polarisOnDismiss}
+    />
+  );
 }

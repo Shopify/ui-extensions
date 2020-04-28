@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {TextField as PolarisTextField, Stack} from '@shopify/polaris';
 
 import {TextFieldProps} from '../../../client/core';
@@ -14,14 +14,29 @@ export default function TextField({
   onBlur = noop,
   onFocus = noop,
   prefix = '',
-  ...props
+  clearButton,
+  error,
+  multiline,
+  onClearButtonClick,
+  placeholder,
+  suffix,
+  type,
 }: TextFieldProps) {
   const [appliedValue, onChange] = useQueuedState(value, onAfterChange);
-  const connectedLeft = props.type === 'search' ? <Icon source="searchMinor" /> : undefined;
+  const connectedLeft = type === 'search' ? <Icon source="searchMinor" /> : undefined;
+  const polarisOnClearButtonClick = useCallback((id: string) => onClearButtonClick?.(id), [
+    onClearButtonClick,
+  ]);
 
   return (
     <PolarisTextField
-      {...props}
+      clearButton={clearButton}
+      error={error}
+      multiline={multiline}
+      onClearButtonClick={polarisOnClearButtonClick}
+      placeholder={placeholder}
+      suffix={suffix}
+      type={type}
       label={label}
       prefix={
         <Stack>
