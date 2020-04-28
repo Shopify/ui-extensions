@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.50](https://github.com/Shopify/app-extension-libs/compare/v0.0.49...v0.0.50) (2020-04-28)
+
+**Note:** Version bump only for package @shopify/app-extensions-polaris-components
+
+
+
+
+
 ## [0.0.49](https://github.com/Shopify/app-extension-libs/compare/v0.0.48...v0.0.49) (2020-04-24)
 
 **Note:** Version bump only for package @shopify/app-extensions-polaris-components
