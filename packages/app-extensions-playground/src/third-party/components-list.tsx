@@ -22,7 +22,13 @@ import {
   Text,
   TextField,
 } from '@shopify/app-extensions-polaris-components/client';
-import {ExtensionPoint, render, useLayout, useSessionToken} from '@shopify/app-extensions-renderer';
+import {
+  ExtensionPoint,
+  render,
+  useLayout,
+  useSessionToken,
+  useLocale,
+} from '@shopify/app-extensions-renderer';
 
 const SORT_ICON: IconProps = {
   source: 'sortMinor',
@@ -130,6 +136,8 @@ function App() {
     }),
     [resourceListQuery],
   );
+
+  const locale = useLocale();
 
   return (
     <Page
@@ -476,12 +484,15 @@ function App() {
       <Card sectioned title="useLayout">
         <Text>{JSON.stringify(layout) || 'undefined'}</Text>
       </Card>
+      <Card sectioned title="useLocale">
+        <Text>{locale}</Text>
+      </Card>
       <Card sectioned title="useSessionInput">
         <Stack>
           <Button
             title="Generate new sessionToken"
             onClick={() =>
-              getSessionToken().then(newSessionToken => setSessionToken(newSessionToken))
+              getSessionToken().then(newSessionToken => setSessionToken(newSessionToken || ''))
             }
           />
           <Text>{sessionToken}</Text>

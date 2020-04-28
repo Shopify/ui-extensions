@@ -41,10 +41,14 @@ export function AppExtension<T extends ExtensionPoint>({
   const userInput = useMemo(() => input, [JSON.stringify(input)]);
   const [ref, layoutInput] = useLayoutInput();
   const sessionTokenInput = useSessionTokenInput();
+  const localeInput = useMemo(() => ({locale: 'en'}), []);
 
   const inputs = useMemo(() => {
-    return {...userInput, ...layoutInput, ...sessionTokenInput};
-  }, [layoutInput, sessionTokenInput, userInput]);
+    if (!layoutInput) {
+      return undefined;
+    }
+    return {...userInput, ...layoutInput, ...sessionTokenInput, ...localeInput};
+  }, [layoutInput, sessionTokenInput, userInput, localeInput]);
 
   useEffect(() => {
     (async () => {
@@ -57,7 +61,7 @@ export function AppExtension<T extends ExtensionPoint>({
 
   useEffect(() => {
     (async () => {
-      if (!script) {
+      if (!script || !inputs) {
         return;
       }
       await worker.render(extensionPoint, inputs, Object.keys(components), receiver.receive);

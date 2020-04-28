@@ -1,6 +1,6 @@
 import {RemoteRoot} from '@shopify/remote-ui-core';
 
-import {LayoutInput, SessionTokenInput, ModalActionsInput} from './input';
+import {LayoutInput, LocaleInput, SessionTokenInput, ModalActionsInput} from './input';
 
 export enum ExtensionPoint {
   AppLink = 'AppLink',
@@ -28,7 +28,7 @@ export type InputForRenderExtension<
   Extension extends keyof ExtensionPoints
 > = ExtractedInputFromRenderExtension<ExtensionPoints[Extension]>;
 
-export type ExtensionStandardApi = LayoutInput & SessionTokenInput;
+export type ExtensionStandardApi = LayoutInput & LocaleInput & SessionTokenInput;
 export type SubscriptionsApi = ExtensionStandardApi & ModalActionsInput;
 
 export interface ExtensionPoints {
