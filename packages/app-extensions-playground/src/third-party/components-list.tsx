@@ -194,6 +194,15 @@ function App() {
           <Button title="Sort" icon={SORT_ICON} />
           <Button title="Delete" />
           <Button title={`Publish review ${buttonValue || ''}`} primary onClick={onButtonClick} />
+          <Button title="Sort" icon={SORT_ICON} disabled />
+          <Button title="Delete" disabled />
+          <Button
+            title={`Publish review ${buttonValue || ''}`}
+            primary
+            onClick={onButtonClick}
+            disabled
+            icon={SORT_ICON}
+          />
         </Stack>
       </Card>
       <Card

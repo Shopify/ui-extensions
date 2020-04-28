@@ -7,6 +7,7 @@ export interface ButtonProps {
   primary?: boolean;
   icon?: IconProps;
   onClick?(): void;
+  disabled?: boolean;
 }
 
 export const Button = createRemoteComponent<'Button', ButtonProps>('Button');
