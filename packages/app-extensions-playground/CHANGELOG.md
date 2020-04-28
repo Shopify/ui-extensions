@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.51](https://github.com/Shopify/app-extension-libs/compare/v0.0.50...v0.0.51) (2020-04-28)
+
+
+### Bug Fixes
+
+* fix infinite loop due to callback arguments ([a409c66](https://github.com/Shopify/app-extension-libs/commit/a409c669fe4f7a325b4b611374894b92b144dd0a))
+
+
+### Features
+
+* add disabled prop to Button component ([0359815](https://github.com/Shopify/app-extension-libs/commit/0359815dcc346b002fe25e3dcecb2e637957dcbf))
+
+
+
+
+
 ## [0.0.50](https://github.com/Shopify/app-extension-libs/compare/v0.0.49...v0.0.50) (2020-04-28)
 
 
