@@ -50,6 +50,12 @@ export function Frame({children}: Props) {
                     exactMatch: true,
                     icon: TextBlockMajorMonotone,
                   },
+                  {
+                    label: 'Use Form',
+                    url: '/use-form',
+                    exactMatch: true,
+                    icon: TextBlockMajorMonotone,
+                  },
                 ]}
               />
             </Navigation>
