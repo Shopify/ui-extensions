@@ -116,7 +116,7 @@ function App() {
   }, []);
 
   const {getSessionToken} = useSessionToken();
-  const [sessionToken, setSessionToken] = useState('');
+  const [sessionToken, setSessionToken] = useState<string | undefined>();
 
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];
   const [listItems, setListItems] = useState(dataList);
@@ -488,14 +488,14 @@ function App() {
         <Text>{locale}</Text>
       </Card>
       <Card sectioned title="useSessionInput">
-        <Stack>
+        <Stack vertical>
           <Button
             title="Generate new sessionToken"
             onClick={() =>
-              getSessionToken().then(newSessionToken => setSessionToken(newSessionToken || ''))
+              getSessionToken().then(newSessionToken => setSessionToken(newSessionToken))
             }
           />
-          <Text>{sessionToken}</Text>
+          <TextField type="text" value={sessionToken} multiline />
         </Stack>
       </Card>
     </Page>
