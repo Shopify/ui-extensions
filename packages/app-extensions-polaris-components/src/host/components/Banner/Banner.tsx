@@ -4,7 +4,7 @@ import {Banner as PolarisBanner} from '@shopify/polaris';
 import {BannerProps} from '../../../client/core';
 import {useWrapAction} from '../../utilities/components';
 
-export default function Banner({onDismiss, action, status, title}: BannerProps) {
+export default function Banner({onDismiss, action, status, title, children}: BannerProps) {
   const polarisOnDismiss = useCallback(() => onDismiss?.(), [onDismiss]);
   const polarisAction = useWrapAction(action);
   return (
@@ -13,6 +13,8 @@ export default function Banner({onDismiss, action, status, title}: BannerProps) 
       title={title}
       action={polarisAction}
       onDismiss={polarisOnDismiss}
-    />
+    >
+      {children}
+    </PolarisBanner>
   );
 }
