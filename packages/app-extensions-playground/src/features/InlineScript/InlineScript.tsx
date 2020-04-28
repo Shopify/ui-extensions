@@ -34,7 +34,7 @@ export function InlineScript() {
       {inlineScript && (
         <AppExtension
           script={inlineScript}
-          extensionPoint={ExtensionPoint.AppLink}
+          extensionPoint={ExtensionPoint.SubscriptionsManagement}
           components={host}
         />
       )}

@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {render, ExtensionPoint, useSessionToken} from '@shopify/app-extensions-renderer';
 import {Card, Text, TextField} from '@shopify/app-extensions-polaris-components/client';
 
-render(ExtensionPoint.AppLink, () => <App />);
+render(ExtensionPoint.SubscriptionsManagement, () => <App />);
 
 function App() {
   const {getSessionToken} = useSessionToken();
