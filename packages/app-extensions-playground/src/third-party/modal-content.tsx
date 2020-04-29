@@ -11,6 +11,7 @@ import {
 
 function App() {
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];
+  const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [listItems, setListItems] = useState(dataList);
 
   const {
@@ -22,9 +23,11 @@ function App() {
   setPrimaryContent('Next');
   setSecondaryContent('Back');
   setPrimaryAction(() => {
+    console.log('Clicked modal primary button');
     closeModal();
   });
   setSecondaryAction(() => {
+    console.log('Clicked modal secondary button');
     closeModal();
   });
 
@@ -39,6 +42,7 @@ function App() {
       },
       onQueryClear: () => {
         setResourceListQuery('');
+        setListItems(dataList);
       },
     }),
     [resourceListQuery],
@@ -51,10 +55,17 @@ function App() {
           <ResourceItem
             key={index}
             id={index}
-            onClick={() => console.log('ResourceList item click:', item)}
+            onClick={() => {
+              console.log('ResourceList item toggle:', item);
+              if (selectedItems.includes(item)) {
+                setSelectedItems(selectedItems.filter(o => o !== item));
+              } else {
+                setSelectedItems(selectedItems.concat(item));
+              }
+            }}
           >
             <Stack alignment="center">
-              <Checkbox />
+              <Checkbox checked={selectedItems.includes(item)} />
               <StackItem fill>Every {item} week or 15 days * 20-25% off</StackItem>
               <Text>{item} product</Text>
             </Stack>
