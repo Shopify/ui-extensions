@@ -28,7 +28,13 @@ export type InputForRenderExtension<
   Extension extends keyof ExtensionPoints
 > = ExtractedInputFromRenderExtension<ExtensionPoints[Extension]>;
 
-export type ExtensionStandardApi = LayoutInput & LocaleInput & SessionTokenInput;
+type DataInput = {
+  data?: {
+    [key: string]: any;
+  };
+};
+
+export type ExtensionStandardApi = LayoutInput & LocaleInput & SessionTokenInput & DataInput;
 export type SubscriptionsApi = ExtensionStandardApi & ModalActionsInput;
 
 export interface ExtensionPoints {
