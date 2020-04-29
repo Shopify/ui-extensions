@@ -1,10 +1,6 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
-import {
-  createWorkerFactory,
-  useWorker,
-  createIframeWorkerMessenger,
-} from '@shopify/react-web-worker';
+import {createWorkerFactory, useWorker} from '@shopify/react-web-worker';
 import {Spinner, Stack} from '@shopify/polaris';
 import {
   ExtensionPoint,
@@ -15,6 +11,7 @@ import {
   LayoutInput,
   LayoutHandler,
   SessionTokenInput,
+  createIframeWorkerMessenger,
 } from '@shopify/app-extensions-renderer';
 import {retain} from '@shopify/remote-ui-core';
 
