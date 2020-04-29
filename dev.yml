@@ -21,6 +21,8 @@ commands:
   nuke: yarn run clean && rm -rf ./node_modules
   server: yarn run server
   test: yarn run test
+  build-consumer: yarnpkg build && ./scripts/build-consumer.sh
+  restore-consumer: ./scripts/restore-consumer.sh
 
 open:
   app: https://app-extension-libs.myshopify.io
