@@ -23,11 +23,9 @@ function App() {
   setPrimaryContent('Next');
   setSecondaryContent('Back');
   setPrimaryAction(() => {
-    console.log('Clicked modal primary button');
     closeModal();
   });
   setSecondaryAction(() => {
-    console.log('Clicked modal secondary button');
     closeModal();
   });
 
