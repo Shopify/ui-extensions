@@ -56,6 +56,12 @@ export function Frame({children}: Props) {
                     exactMatch: true,
                     icon: TextBlockMajorMonotone,
                   },
+                  {
+                    label: 'Vanilla',
+                    url: '/vanilla',
+                    exactMatch: true,
+                    icon: TextBlockMajorMonotone,
+                  },
                 ]}
               />
             </Navigation>

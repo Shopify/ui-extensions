@@ -1,0 +1,23 @@
+{
+  "name": "@shopify/argo",
+  "version": "0.0.52",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "check": "tsc --pretty --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shopify/app-extension-libs.git",
+    "directory": "packages/argo"
+  },
+  "dependencies": {
+    "@shopify/remote-ui-core": "^0.0.20",
+    "typescript": "^3.7.2"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://packages.shopify.io/shopify/node/npm/"
+  }
+}

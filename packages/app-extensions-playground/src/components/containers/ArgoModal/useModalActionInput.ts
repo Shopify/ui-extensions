@@ -1,5 +1,5 @@
 import {useMemo} from 'react';
-import {ModalActionsInput} from '@shopify/app-extensions-renderer';
+import {ModalActionsInput} from '@shopify/argo';
 type SetContent = (c: string) => void;
 type SetAction = (f: () => void) => void;
 

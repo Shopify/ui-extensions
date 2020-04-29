@@ -1,11 +1,7 @@
 import React, {useState, useCallback, useMemo} from 'react';
 import {Modal, ModalProps} from '@shopify/polaris';
 import {ArgoHeader} from '../shared/Header';
-import {
-  ExtensionPoint,
-  RenderExtensionComponentProps,
-  ModalActionsInput,
-} from '@shopify/app-extensions-renderer';
+import {ExtensionPoint, RenderExtensionComponentProps, ModalActionsInput} from '@shopify/argo';
 import {retain} from '@shopify/remote-ui-core';
 
 import {AppExtension} from '../../AppExtension';

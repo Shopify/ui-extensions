@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  Banner,
-  Button,
-  Card,
-  Page,
-  Stack,
-  TextField,
-} from '@shopify/app-extensions-polaris-components/client';
-import {ExtensionPoint, render} from '@shopify/app-extensions-renderer';
+import {Banner, Button, Card, Page, Stack, TextField} from '@shopify/argo-react/components';
+import {ExtensionPoint} from '@shopify/argo';
+import {render} from '@shopify/argo-react';
 import {useField, useForm} from '@shopify/react-form';
 
 function App() {

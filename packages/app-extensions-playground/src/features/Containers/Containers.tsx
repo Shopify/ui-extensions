@@ -2,8 +2,8 @@ import React, {useState} from 'react';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
 import {Page, Layout, Card, Stack, Badge, TextField, Link} from '@shopify/polaris';
 import {ArgoModal} from '../../components/containers';
-import {host} from '@shopify/app-extensions-polaris-components';
-import {ExtensionPoint} from '@shopify/app-extensions-renderer';
+import {components} from '@shopify/argo-host';
+import {ExtensionPoint} from '@shopify/argo';
 
 const modalClientScript = createPlainWorkerFactory(() =>
   import(/* webpackChunkName: 'modal-script' */ '../../third-party/modal-content'),
@@ -89,7 +89,7 @@ export function Containers() {
         }}
         script={modalClientScript.url}
         extensionPoint={ExtensionPoint.SubscriptionsManagement}
-        components={host}
+        components={components}
         height="450px"
       />
     </>

@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {Page} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
-import {ExtensionPoint} from '@shopify/app-extensions-renderer';
-import {host} from '@shopify/app-extensions-polaris-components';
+import {ExtensionPoint} from '@shopify/argo';
+import {components} from '@shopify/argo-host';
 import {AppExtension} from '../../components';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
 
@@ -35,7 +35,7 @@ export function InlineScript() {
         <AppExtension
           script={inlineScript}
           extensionPoint={ExtensionPoint.SubscriptionsManagement}
-          components={host}
+          components={components}
         />
       )}
     </Page>

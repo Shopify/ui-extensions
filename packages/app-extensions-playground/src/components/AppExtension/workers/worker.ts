@@ -3,7 +3,7 @@ import {
   CallbackTypeForExtensionPoint,
   ExtractedInputFromRenderExtension,
   ShopifyApi,
-} from '@shopify/app-extensions-renderer';
+} from '@shopify/argo';
 import {createRemoteRoot, RemoteChannel, retain} from '@shopify/remote-ui-core';
 
 const registeredExtensions = new Map<
