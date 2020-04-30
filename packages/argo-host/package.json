@@ -13,7 +13,7 @@
     "directory": "packages/argo-host"
   },
   "dependencies": {
-    "@shopify/argo": "^0.0.51",
+    "@shopify/argo": "^0.0.52",
     "@shopify/polaris": "^4.19.0",
     "react": "^16.12.0",
     "typescript": "^3.7.2"

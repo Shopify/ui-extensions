@@ -23,6 +23,7 @@ commands:
   test: yarn run test
   build-consumer: yarnpkg build && ./scripts/build-consumer.sh
   restore-consumer: ./scripts/restore-consumer.sh
+  nuke: git clean -xdf .
 
 open:
   app: https://app-extension-libs.myshopify.io
