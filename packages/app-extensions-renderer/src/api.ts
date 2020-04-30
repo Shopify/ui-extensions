@@ -20,10 +20,15 @@ export interface ShopifyGlobal {
   readonly shopify: ShopifyApi;
 }
 
+export type StandardInput<T extends ExtensionPoint> = Omit<
+  ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>,
+  'locale' | 'layoutInput' | 'sessionToken'
+>;
+
 export interface RenderExtensionComponentProps<T extends ExtensionPoint> {
   extensionPoint: T;
   script?: string | URL;
-  input?: ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>;
+  input?: StandardInput<T>;
   components?: {[key: string]: any};
 }
 

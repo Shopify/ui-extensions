@@ -1,7 +1,11 @@
 import React, {useState, useCallback, useMemo} from 'react';
 import {Modal, ModalProps} from '@shopify/polaris';
 import {ArgoHeader} from '../shared/Header';
-import {ExtensionPoint, RenderExtensionComponentProps} from '@shopify/app-extensions-renderer';
+import {
+  ExtensionPoint,
+  RenderExtensionComponentProps,
+  ModalActionsInput,
+} from '@shopify/app-extensions-renderer';
 import {retain} from '@shopify/remote-ui-core';
 
 import {AppExtension} from '../../AppExtension';
@@ -19,7 +23,9 @@ interface ArgoModalProps {
   height?: string;
 }
 
-type Props<T extends ExtensionPoint> = ArgoModalProps & RenderExtensionComponentProps<T>;
+type Props<T extends ExtensionPoint> = RenderExtensionComponentProps<T> & ArgoModalProps;
+
+type CompleteInput<T extends ExtensionPoint> = Props<T>['input'] & ModalActionsInput;
 
 type Action = () => void;
 const noop = () => null;
@@ -44,33 +50,27 @@ export function ArgoModal<T extends ExtensionPoint>({
   const {name, icon} = appInfo;
   const onBackAction = useCallback(() => {
     onBackClick?.();
-  }, [open, onBackClick]);
+  }, [onBackClick]);
 
-  const setPrimaryActionCallback = useCallback(
-    (f: Action) => {
-      setPrimaryAction(() => f);
-      retain(f);
-    },
-    [primaryAction],
-  );
+  const setPrimaryActionCallback = useCallback((callback: Action) => {
+    setPrimaryAction(() => callback);
+    retain(callback);
+  }, []);
   const onPrimaryAction = useCallback(() => {
     primaryAction();
   }, [primaryAction]);
 
-  const setSecondaryActionCallback = useCallback(
-    (f: Action) => {
-      setSecondaryAction(() => f);
-      retain(f);
-    },
-    [secondaryAction],
-  );
+  const setSecondaryActionCallback = useCallback((callback: Action) => {
+    setSecondaryAction(() => callback);
+    retain(callback);
+  }, []);
   const onSecondaryAction = useCallback(() => {
     secondaryAction();
   }, [secondaryAction]);
 
   const onCloseAction = useCallback(() => {
     onClose();
-  }, [open]);
+  }, [onClose]);
 
   const modalActions = useModalActionsInput({
     setPrimaryContent,
@@ -101,7 +101,10 @@ export function ArgoModal<T extends ExtensionPoint>({
     ];
   }
 
-  const inputWithModalActions = {...modalActions, ...input} as typeof input;
+  const inputWithModalActions = useMemo(() => ({...modalActions, ...input} as CompleteInput<T>), [
+    input,
+    modalActions,
+  ]);
 
   return (
     <>

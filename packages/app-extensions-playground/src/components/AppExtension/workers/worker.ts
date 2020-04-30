@@ -51,5 +51,5 @@ export function render<T extends ExtensionPoint>(
 
   const callback = registeredExtensions.get(extensionPoint)!;
 
-  return callback(createRemoteRoot(channel, {components: components as any}), input);
+  return callback(createRemoteRoot(channel, {components: components as any}), input as any);
 }
