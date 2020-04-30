@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.52](https://github.com/Shopify/app-extension-libs/compare/v0.0.51...v0.0.52) (2020-04-30)
+
+
+### Bug Fixes
+
+* input types and Argo modal infinite re-render issue ([15331cb](https://github.com/Shopify/app-extension-libs/commit/15331cb251092c1e7984a8ba0e59afc9a64f6495))
+
+
+
+
+
 ## [0.0.51](https://github.com/Shopify/app-extension-libs/compare/v0.0.50...v0.0.51) (2020-04-28)
 
 
