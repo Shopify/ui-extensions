@@ -264,7 +264,7 @@ function App() {
       </Card>
       <Card sectioned title="Icon component">
         <Stack>
-          <Icon source="cancelSmallMirror" />
+          <Icon source="cancelSmallMinor" />
           <Icon source="searchMinor" />
           <Icon source="starHollow" />
           <Icon source="starFilled" />

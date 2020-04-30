@@ -14,7 +14,7 @@ type IconMap = {
   [key in string]: React.SFC<React.SVGProps<SVGSVGElement>>;
 };
 const iconMap: IconMap = {
-  cancelSmallMirror: CancelSmallMinor,
+  cancelSmallMinor: CancelSmallMinor,
   searchMinor: SearchMinor,
   starFilled: StarFilledMinor,
   starHollow: StarOutlineMinor,
