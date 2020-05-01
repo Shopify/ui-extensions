@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.53](https://github.com/Shopify/app-extension-libs/compare/v0.0.52...v0.0.53) (2020-05-01)
+
+
+### Bug Fixes
+
+* fix TextField onBlur and onFocus ([419ade6](https://github.com/Shopify/app-extension-libs/commit/419ade659ff79dc8d63db4bcc379930ab0f7b1b0))
+
+
+
+
+
 ## [0.0.52](https://github.com/Shopify/app-extension-libs/compare/v0.0.51...v0.0.52) (2020-04-30)
 
 **Note:** Version bump only for package @shopify/app-extensions-polaris-components
