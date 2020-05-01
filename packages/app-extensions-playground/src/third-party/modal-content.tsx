@@ -43,7 +43,7 @@ function App() {
         setListItems(dataList);
       },
     }),
-    [resourceListQuery],
+    [resourceListQuery, dataList],
   );
 
   return (

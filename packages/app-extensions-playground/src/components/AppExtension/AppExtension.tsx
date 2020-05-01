@@ -35,6 +35,7 @@ export function AppExtension<T extends ExtensionPoint>({
     createMessenger: createIframeWorkerMessenger,
   });
   const receiver = useMemo(() => new RemoteReceiver(), []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const userInput = useMemo(() => input, [JSON.stringify(input)]);
   const [ref, layoutInput] = useLayoutInput();
   const sessionTokenInput = useSessionTokenInput();
@@ -54,7 +55,7 @@ export function AppExtension<T extends ExtensionPoint>({
       }
       await worker.load(typeof script === 'string' ? script : script.href);
     })();
-  }, [script]);
+  }, [script, worker]);
 
   useEffect(() => {
     (async () => {
@@ -116,7 +117,7 @@ function useLayoutInput(): [ReturnType<typeof useResizeObserver>[0], LayoutInput
     if (JSON.stringify(newLayout) !== JSON.stringify(layout)) {
       setLayout(newLayout);
     }
-  }, [entry]);
+  }, [entry, initialData, layout]);
 
   useEffect(() => {
     if (!layout || !layoutHandler) {
@@ -138,5 +139,5 @@ function useLayoutInput(): [ReturnType<typeof useResizeObserver>[0], LayoutInput
         }
       : undefined;
     return [ref, layoutInput];
-  }, [initialData]);
+  }, [initialData, ref]);
 }

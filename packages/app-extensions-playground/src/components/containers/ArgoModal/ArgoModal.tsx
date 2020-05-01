@@ -48,8 +48,8 @@ export function ArgoModal<T extends ExtensionPoint>({
   const [secondaryAction, setSecondaryAction] = useState<Action>(() => noop);
 
   const {name, icon} = appInfo;
-  const onBackAction = useCallback(() => {
-    onBackClick?.();
+  const onBackAction = useMemo(() => {
+    return onBackClick ? () => onBackClick() : undefined;
   }, [onBackClick]);
 
   const setPrimaryActionCallback = useCallback((callback: Action) => {

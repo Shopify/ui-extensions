@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     getSessionToken().then(setToken);
-  }, []);
+  }, [getSessionToken]);
 
   return (
     <Card title="Hello world" sectioned>

@@ -134,7 +134,7 @@ function App() {
         setResourceListQuery('');
       },
     }),
-    [resourceListQuery],
+    [resourceListQuery, dataList],
   );
 
   const locale = useLocale();
