@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-host",
-  "version": "0.0.53",
+  "version": "0.0.54",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -13,7 +13,7 @@
     "directory": "packages/argo-host"
   },
   "dependencies": {
-    "@shopify/argo": "^0.0.53",
+    "@shopify/argo": "0.0.54",
     "@shopify/polaris": "^4.19.0",
     "react": "^16.12.0",
     "typescript": "^3.7.2"

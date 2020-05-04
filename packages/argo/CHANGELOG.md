@@ -1,0 +1,11 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [0.0.54](https://github.com/Shopify/app-extension-libs/compare/v0.0.53...v0.0.54) (2020-05-04)
+
+
+### Features
+
+* restructure ([73299ef](https://github.com/Shopify/app-extension-libs/commit/73299efe74d126d1f91b7322e4c030f735a6e4f0))
