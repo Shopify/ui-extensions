@@ -15,6 +15,7 @@ export interface ArgoExtensionsProps<T extends ExtensionPoint> {
   script?: URL | string;
   components?: {[key: string]: any};
   input?: ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>;
+  receiver?: RemoteReceiver;
 }
 
 const createWorker = createWorkerFactory(() =>
@@ -26,8 +27,9 @@ export function ArgoExtension<T extends ExtensionPoint>({
   script,
   components = {},
   input = {} as ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>,
+  receiver: externalReceiver,
 }: ArgoExtensionsProps<T>) {
-  const receiver = useMemo(() => new RemoteReceiver(), []);
+  const receiver = useMemo(() => externalReceiver || new RemoteReceiver(), [externalReceiver]);
   const worker = useWorker(createWorker, {
     createMessenger: createIframeWorkerMessenger,
   });
