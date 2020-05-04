@@ -39,7 +39,7 @@ lerna-debug.log
 tmp
 **/test.log
 
-.tsbuildinfo
-.tsbuildinfo
+tsconfig.tsbuildinfo
+tsconfig.prod.tsbuildinfo
 
 .build
