@@ -1,6 +1,5 @@
 import React, {useState, useMemo} from 'react';
-import {ExtensionPoint} from '@shopify/argo';
-import {render, useModalActions} from '@shopify/argo-react';
+import {render, ExtensionPoint, useModalActions} from '@shopify/app-extensions-renderer';
 import {
   ResourceList,
   ResourceItem,
@@ -8,7 +7,7 @@ import {
   Checkbox,
   Text,
   StackItem,
-} from '@shopify/argo-react/components';
+} from '@shopify/app-extensions-polaris-components/client';
 
 function App() {
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];

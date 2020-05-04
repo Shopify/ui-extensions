@@ -11,8 +11,8 @@ import {
   LayoutInput,
   LayoutHandler,
   SessionTokenInput,
-} from '@shopify/argo';
-import {createIframeWorkerMessenger} from '@shopify/argo-host';
+  createIframeWorkerMessenger,
+} from '@shopify/app-extensions-renderer';
 import {retain} from '@shopify/remote-ui-core';
 
 import useResizeObserver from './utils/ResizeObserver';

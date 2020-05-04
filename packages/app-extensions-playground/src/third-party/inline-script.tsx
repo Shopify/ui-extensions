@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {ExtensionPoint} from '@shopify/argo';
-import {render, useSessionToken} from '@shopify/argo-react';
-import {Card, Text, TextField} from '@shopify/argo-react/components';
+import {render, ExtensionPoint, useSessionToken} from '@shopify/app-extensions-renderer';
+import {Card, Text, TextField} from '@shopify/app-extensions-polaris-components/client';
 
 render(ExtensionPoint.SubscriptionsManagement, () => <App />);
 

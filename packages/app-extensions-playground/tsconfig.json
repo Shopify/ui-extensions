@@ -4,12 +4,10 @@
     "rootDir": "../",
     "baseUrl": "./src",
     "paths": {
-      "@shopify/argo": ["../../argo/src"],
-      "@shopify/argo/*": ["../../argo/src/*"],
-      "@shopify/argo-host": ["../../argo-host/src"],
-      "@shopify/argo-host/*": ["../../argo-host/src/*"],
-      "@shopify/argo-react": ["../../argo-react/src"],
-      "@shopify/argo-react/*": ["../../argo-react/src/*"]
+      "@shopify/app-extensions-polaris-components": ["../../app-extensions-polaris-components/src"],
+      "@shopify/app-extensions-polaris-components/*": ["../../app-extensions-polaris-components/src/*"],
+      "@shopify/app-extensions-renderer": ["../../app-extensions-renderer/src"],
+      "@shopify/app-extensions-renderer/*": ["../../app-extensions-renderer/src/*"]
     }
   },
   "include": ["./src", "../"],

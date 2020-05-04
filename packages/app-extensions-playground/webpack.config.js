@@ -35,9 +35,11 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', 'jsx', '.js', '.json'],
     alias: {
-      '@shopify/argo': resolve(__dirname, '../argo/src'),
-      '@shopify/argo-host': resolve(__dirname, '../argo-host/src'),
-      '@shopify/argo-react': resolve(__dirname, '../argo-react/src'),
+      '@shopify/app-extensions-polaris-components': resolve(
+        __dirname,
+        '../app-extensions-polaris-components/src',
+      ),
+      '@shopify/app-extensions-renderer': resolve(__dirname, '../app-extensions-renderer/src'),
     },
   },
 

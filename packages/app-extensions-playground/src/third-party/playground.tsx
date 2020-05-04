@@ -1,7 +1,6 @@
 import React from 'react';
-import {ExtensionPoint} from '@shopify/argo';
-import {render} from '@shopify/argo-react';
-import {Card} from '@shopify/argo-react/components';
+import {render, ExtensionPoint} from '@shopify/app-extensions-renderer';
+import {Card} from '@shopify/app-extensions-polaris-components/client';
 
 render(ExtensionPoint.Playground, () => <App />);
 

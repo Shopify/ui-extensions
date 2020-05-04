@@ -21,9 +21,14 @@ import {
   StackItem,
   Text,
   TextField,
-} from '@shopify/argo-react/components';
-import {render, useLayout, useSessionToken, useLocale} from '@shopify/argo-react';
-import {ExtensionPoint} from '@shopify/argo';
+} from '@shopify/app-extensions-polaris-components/client';
+import {
+  ExtensionPoint,
+  render,
+  useLayout,
+  useSessionToken,
+  useLocale,
+} from '@shopify/app-extensions-renderer';
 
 const SORT_ICON: IconProps = {
   source: 'sortMinor',
