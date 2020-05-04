@@ -4,10 +4,11 @@ import {
   ExtensionPoint,
   ExtractedInputFromRenderExtension,
 } from '@shopify/argo';
-import {createIframeWorkerMessenger} from '@shopify/argo-host';
 import {createWorkerFactory, useWorker} from '@shopify/react-web-worker';
 import {retain} from '@shopify/remote-ui-core';
 import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
+
+import {createIframeWorkerMessenger} from './messenger';
 
 interface Props<T extends ExtensionPoint> {
   extensionPoint: T;
@@ -17,7 +18,7 @@ interface Props<T extends ExtensionPoint> {
 }
 
 const createWorker = createWorkerFactory(() =>
-  import(/* webpackChunkName: 'sandbox-worker' */ './workers/worker'),
+  import(/* webpackChunkName: 'sandbox-worker' */ './workers/3pWorker'),
 );
 
 export function ArgoExtension<T extends ExtensionPoint>({

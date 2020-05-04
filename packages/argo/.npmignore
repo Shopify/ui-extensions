@@ -2,3 +2,4 @@
 node_modules
 src
 tsconfig.json
+tsconfig.prod.json
