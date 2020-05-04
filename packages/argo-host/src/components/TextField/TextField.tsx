@@ -22,8 +22,10 @@ export default function TextField({
   suffix,
   type,
 }: TextFieldProps) {
-  const [appliedValue, onChange] = useQueuedState(value, onAfterChange);
+  const [appliedValue, polarisOnChange] = useQueuedState(value, onAfterChange);
   const connectedLeft = type === 'search' ? <Icon source="searchMinor" /> : undefined;
+  const polarisOnBlur = useCallback(() => onBlur(), [onBlur]);
+  const polarisOnFocus = useCallback(() => onFocus(), [onFocus]);
   const polarisOnClearButtonClick = useCallback((id: string) => onClearButtonClick?.(id), [
     onClearButtonClick,
   ]);
@@ -45,9 +47,9 @@ export default function TextField({
         </Stack>
       }
       value={appliedValue}
-      onBlur={onBlur}
-      onFocus={onFocus}
-      onChange={onChange}
+      onBlur={polarisOnBlur}
+      onFocus={polarisOnFocus}
+      onChange={polarisOnChange}
     />
   );
 }

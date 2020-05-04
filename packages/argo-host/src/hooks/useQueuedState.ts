@@ -17,6 +17,7 @@ export function useQueuedState(
     reducedArray.shift();
     setQueue(reducedArray);
     if (reducedArray[0]) onChange(reducedArray[0]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value]);
 
   const queuedOnChange = (newValue: FieldValue) => {
