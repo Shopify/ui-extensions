@@ -1,9 +1,7 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "./tsconfig.prod.json",
   "compilerOptions": {
     "rootDir": "../",
-    "outDir": "./",
-    "composite": true,
     "baseUrl": "./",
     "paths": {}
   },

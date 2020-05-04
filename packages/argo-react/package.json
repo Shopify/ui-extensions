@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "check": "tsc --pretty --noEmit"
+    "build": "tsc --build tsconfig.prod.json",
+    "check": "tsc --build tsconfig.prod.json --pretty --noEmit"
   },
   "repository": {
     "type": "git",
