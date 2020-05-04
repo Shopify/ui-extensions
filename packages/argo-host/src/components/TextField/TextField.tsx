@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import {TextFieldProps} from '@shopify/argo/components';
 import {TextField as PolarisTextField, Stack} from '@shopify/polaris';
 
-import {useQueuedState} from '../../hooks';
+import {useQueuedState} from '../../utilities/useQueuedState';
 import Icon from '../Icon';
 
 const noop = () => undefined;
