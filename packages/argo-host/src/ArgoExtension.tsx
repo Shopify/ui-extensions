@@ -10,7 +10,7 @@ import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
 
 import {createIframeWorkerMessenger} from './messenger';
 
-interface Props<T extends ExtensionPoint> {
+export interface ArgoExtensionsProps<T extends ExtensionPoint> {
   extensionPoint: T;
   script?: URL | string;
   components?: {[key: string]: any};
@@ -26,7 +26,7 @@ export function ArgoExtension<T extends ExtensionPoint>({
   script,
   components = {},
   input = {} as ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>,
-}: Props<T>) {
+}: ArgoExtensionsProps<T>) {
   const receiver = useMemo(() => new RemoteReceiver(), []);
   const worker = useWorker(createWorker, {
     createMessenger: createIframeWorkerMessenger,

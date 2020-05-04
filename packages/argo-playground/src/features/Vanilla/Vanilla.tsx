@@ -4,7 +4,8 @@ import {Page} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {ExtensionPoint} from '@shopify/argo';
 import {components} from '@shopify/argo-host';
-import {AppExtension} from '../../components';
+
+import {StandardContainer} from '../../components/containers';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
   import(/* webpackChunkName: 'vanilla' */ '../../third-party/vanilla'),
@@ -15,7 +16,7 @@ export function Vanilla() {
 
   return (
     <Page title="Vanilla">
-      <AppExtension
+      <StandardContainer
         script={reactThirdPartyWorker.url}
         extensionPoint={ExtensionPoint.Playground}
         components={components}

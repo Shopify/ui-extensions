@@ -1,11 +1,11 @@
-import React, {useState, useCallback, useMemo} from 'react';
+import React, {useCallback, useMemo, useState} from 'react';
+import {ExtensionPoint, ModalActionsInput, RenderExtensionComponentProps} from '@shopify/argo';
+import {useModalActionsInput} from '@shopify/argo-host';
 import {Modal, ModalProps} from '@shopify/polaris';
-import {ArgoHeader} from '../shared/Header';
-import {ExtensionPoint, RenderExtensionComponentProps, ModalActionsInput} from '@shopify/argo';
-import {retain} from '@shopify/remote-ui-core';
+import {retain} from '@shopify/web-worker';
 
-import {AppExtension} from '../../AppExtension';
-import useModalActionsInput from './useModalActionInput';
+import {ArgoHeader} from './shared/Header';
+import {StandardContainer} from './StandardContainer';
 
 interface ArgoModalProps {
   open: boolean;
@@ -19,14 +19,14 @@ interface ArgoModalProps {
   height?: string;
 }
 
-type Props<T extends ExtensionPoint> = RenderExtensionComponentProps<T> & ArgoModalProps;
+type Props = RenderExtensionComponentProps<ExtensionPoint.SubscriptionsManagement> & ArgoModalProps;
 
-type CompleteInput<T extends ExtensionPoint> = Props<T>['input'] & ModalActionsInput;
+type CompleteInput = Props['input'] & ModalActionsInput;
 
 type Action = () => void;
 const noop = () => null;
 
-export function ArgoModal<T extends ExtensionPoint>({
+export function SubscriptionContainer({
   open,
   defaultTitle,
   appInfo,
@@ -37,7 +37,7 @@ export function ArgoModal<T extends ExtensionPoint>({
   components,
   input,
   height,
-}: Props<T>) {
+}: Props) {
   const [primaryContent, setPrimaryContent] = useState('Save');
   const [primaryAction, setPrimaryAction] = useState<Action>(() => noop);
   const [secondaryContent, setSecondaryContent] = useState('');
@@ -97,7 +97,7 @@ export function ArgoModal<T extends ExtensionPoint>({
     ];
   }
 
-  const inputWithModalActions = useMemo(() => ({...modalActions, ...input} as CompleteInput<T>), [
+  const inputWithModalActions = useMemo(() => ({...modalActions, ...input} as CompleteInput), [
     input,
     modalActions,
   ]);
@@ -111,11 +111,11 @@ export function ArgoModal<T extends ExtensionPoint>({
             height,
           }}
         >
-          <AppExtension
+          <StandardContainer
             script={script}
             extensionPoint={extensionPoint}
             components={components}
-            input={inputWithModalActions}
+            input={inputWithModalActions as any}
           />
         </div>
       </Modal>

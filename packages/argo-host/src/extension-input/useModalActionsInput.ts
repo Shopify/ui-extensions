@@ -1,5 +1,6 @@
 import {useMemo} from 'react';
 import {ModalActionsInput} from '@shopify/argo';
+
 type SetContent = (c: string) => void;
 type SetAction = (f: () => void) => void;
 
@@ -11,7 +12,7 @@ interface ModalActionOptions {
   closeModal: () => void;
 }
 
-export default function useModalActionsInput({
+export function useModalActionsInput({
   setPrimaryContent,
   setPrimaryAction,
   setSecondaryContent,

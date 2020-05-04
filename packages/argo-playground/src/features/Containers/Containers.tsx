@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import {createPlainWorkerFactory} from '@shopify/web-worker';
-import {Page, Layout, Card, Stack, Badge, TextField, Link} from '@shopify/polaris';
-import {ArgoModal} from '../../components/containers';
-import {components} from '@shopify/argo-host';
 import {ExtensionPoint} from '@shopify/argo';
+import {components} from '@shopify/argo-host';
+import {Badge, Card, Layout, Link, Page, Stack, TextField} from '@shopify/polaris';
+import {createPlainWorkerFactory} from '@shopify/web-worker';
+
+import {SubscriptionContainer} from '../../components/containers';
 
 const modalClientScript = createPlainWorkerFactory(() =>
   import(/* webpackChunkName: 'modal-script' */ '../../third-party/modal-content'),
@@ -76,7 +77,7 @@ export function Containers() {
           </Layout.Section>
         </Layout>
       </Page>
-      <ArgoModal
+      <SubscriptionContainer
         open={showModal}
         defaultTitle="Default title"
         appInfo={{

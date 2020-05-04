@@ -3,8 +3,9 @@ import {Page} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {ExtensionPoint} from '@shopify/argo';
 import {components} from '@shopify/argo-host';
-import {AppExtension} from '../../components';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
+
+import {StandardContainer} from '../../components/containers';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
   import(/* webpackChunkName: '3p-inline-script' */ '../../third-party/inline-script'),
@@ -32,7 +33,7 @@ export function InlineScript() {
   return (
     <Page title="Inline Script">
       {inlineScript && (
-        <AppExtension
+        <StandardContainer
           script={inlineScript}
           extensionPoint={ExtensionPoint.SubscriptionsManagement}
           components={components}
