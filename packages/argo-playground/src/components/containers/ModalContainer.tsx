@@ -19,25 +19,24 @@ interface ArgoModalProps {
   height?: string;
 }
 
-type Props = RenderExtensionComponentProps<ExtensionPoint.SubscriptionsManagement> & ArgoModalProps;
+type Props<T extends ExtensionPoint> = RenderExtensionComponentProps<T> & ArgoModalProps;
 
-type CompleteInput = Props['input'] & ModalActionsInput;
+type CompleteInput<T extends ExtensionPoint> = Props<T>['input'] & ModalActionsInput;
 
 type Action = () => void;
 const noop = () => null;
 
-export function SubscriptionContainer({
+export function ModalContainer<T extends ExtensionPoint>({
   open,
   defaultTitle,
   appInfo,
   onClose,
   onBackClick,
-  extensionPoint,
   script,
   components,
   input,
   height,
-}: Props) {
+}: Props<T>) {
   const [primaryContent, setPrimaryContent] = useState('Save');
   const [primaryAction, setPrimaryAction] = useState<Action>(() => noop);
   const [secondaryContent, setSecondaryContent] = useState('');
@@ -97,7 +96,7 @@ export function SubscriptionContainer({
     ];
   }
 
-  const inputWithModalActions = useMemo(() => ({...modalActions, ...input} as CompleteInput), [
+  const inputWithModalActions = useMemo(() => ({...modalActions, ...input} as CompleteInput<T>), [
     input,
     modalActions,
   ]);
@@ -113,7 +112,7 @@ export function SubscriptionContainer({
         >
           <StandardContainer
             script={script}
-            extensionPoint={extensionPoint}
+            extensionPoint={ExtensionPoint.SubscriptionsManagement}
             components={components}
             input={inputWithModalActions as any}
           />
