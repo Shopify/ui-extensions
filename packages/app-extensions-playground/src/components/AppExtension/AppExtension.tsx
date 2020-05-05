@@ -1,7 +1,8 @@
 import React, {useEffect, useMemo, useState} from 'react';
 import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
 import {createWorkerFactory, useWorker} from '@shopify/react-web-worker';
-import {Spinner, Stack} from '@shopify/polaris';
+import {Action} from '@shopify/remote-ui-core';
+import {Spinner, Stack, Modal, TextContainer, DisplayText, Icon, Button} from '@shopify/polaris';
 import {
   ExtensionPoint,
   ExtractedInputFromRenderExtension,
@@ -16,6 +17,9 @@ import {
 import {retain} from '@shopify/remote-ui-core';
 
 import useResizeObserver from './utils/ResizeObserver';
+import {ArgoHeader} from '../containers/shared/Header';
+
+const {default: ErrorMonitorImage} = require('../../assets/images/error-monitor.png');
 
 const createWorker = createWorkerFactory(() =>
   import(/* webpackChunkName: 'sandbox-worker' */ './workers/worker'),
@@ -34,12 +38,20 @@ export function AppExtension<T extends ExtensionPoint>({
   const worker = useWorker(createWorker, {
     createMessenger: createIframeWorkerMessenger,
   });
-  const receiver = useMemo(() => new RemoteReceiver(), []);
+  const [receiver, isRenderTimedOut] = useRenderTimeout(
+    useMemo(() => new RemoteReceiver(), []),
+    5000,
+  );
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const userInput = useMemo(() => input, [JSON.stringify(input)]);
   const [ref, layoutInput] = useLayoutInput();
   const sessionTokenInput = useSessionTokenInput();
   const localeInput = useMemo(() => ({locale: 'en'}), []);
+  const [renderTimeoutModalOpen, setRenderTimeoutModalOpen] = useState(isRenderTimedOut);
+
+  useEffect(() => {
+    setRenderTimeoutModalOpen(isRenderTimedOut);
+  }, [isRenderTimedOut]);
 
   const inputs = useMemo(() => {
     if (!layoutInput) {
@@ -78,9 +90,82 @@ export function AppExtension<T extends ExtensionPoint>({
           <Spinner />
         </Stack>
       )}
+      <RenderErrorModal
+        open={renderTimeoutModalOpen}
+        onClose={() => setRenderTimeoutModalOpen(false)}
+      />
       <RemoteRenderer receiver={receiver} components={components} />
     </div>
   );
+}
+
+function RenderErrorModal({open, onClose}: {open: boolean; onClose: () => void}) {
+  return (
+    <Modal
+      large
+      open={open}
+      onClose={onClose}
+      title={<ArgoHeader appName="my" title="Create subscription plan" />}
+    >
+      <Modal.Section>
+        <Stack distribution="center" alignment="center">
+          <Stack.Item>
+            <TextContainer>
+              <DisplayText>
+                There's a problem loading
+                <br />
+                this app
+              </DisplayText>
+
+              <Button outline>Get Support</Button>
+            </TextContainer>
+          </Stack.Item>
+          <Stack.Item>
+            <img src={ErrorMonitorImage} alt="Error Monitor" />
+          </Stack.Item>
+        </Stack>
+      </Modal.Section>
+    </Modal>
+  );
+}
+
+function useRenderTimeout(
+  receiver: RemoteReceiver,
+  timeoutInMillis: number,
+  deps: any[] = [],
+): [RemoteReceiver, boolean] {
+  const [isRenderTimedOut, setIsRenderTimedOut] = useState(false);
+  const [isRenderTimeoutEnabled, setIsRenderTimeoutEnabled] = useState(true);
+
+  useEffect(() => {
+    setIsRenderTimeoutEnabled(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
+
+  useEffect(() => {
+    if (!isRenderTimeoutEnabled) {
+      return;
+    }
+    const id = setTimeout(() => setIsRenderTimedOut(true), timeoutInMillis);
+    return () => {
+      clearTimeout(id);
+    };
+  }, [timeoutInMillis, isRenderTimeoutEnabled]);
+
+  useEffect(() => {
+    const receive = receiver.receive;
+    const wrappedReceive: RemoteReceiver['receive'] = (type, ...args) => {
+      if (type === Action.Mount) {
+        setIsRenderTimeoutEnabled(false);
+      }
+      receive(type, ...args);
+    };
+    Object.assign(receiver, {
+      receive: wrappedReceive,
+    });
+  }, [receiver]);
+
+  return useMemo(() => [receiver, isRenderTimedOut], [receiver, isRenderTimedOut]);
 }
 
 function useSessionTokenInput(): SessionTokenInput {
