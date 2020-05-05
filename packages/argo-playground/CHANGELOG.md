@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.57](https://github.com/Shopify/app-extension-libs/compare/v0.0.56...v0.0.57) (2020-05-05)
+
+**Note:** Version bump only for package @shopify/argo-playground
+
+
+
+
+
 ## [0.0.56](https://github.com/Shopify/app-extension-libs/compare/v0.0.55...v0.0.56) (2020-05-05)
 
 **Note:** Version bump only for package @shopify/argo-playground
