@@ -14,18 +14,9 @@ if (process.argv.length > 3) {
 }
 
 /**
- * Component templates
+ * Core
  */
-const HOST_COMPONENT_TEMPLATE = `
-import React from 'react';
-import {{{name}}Props} from '@shopify/argo/components';
-
-export default function {{name}}(props: {{name}}Props) {
-  return <>Component Code</>;
-}
-`.trimLeft();
-
-const CORE_CLIENT_COMPONENT_TEMPLATE = `
+const CORE_TEMPLATE = `
 import {createRemoteComponent} from '@shopify/remote-ui-core';
 
 export interface {{name}}Props {}
@@ -33,7 +24,24 @@ export interface {{name}}Props {}
 export const {{name}} = createRemoteComponent<'{{name}}', {{name}}Props>('{{name}}');
 `.trimLeft();
 
-const REACT_CLIENT_COMPONENT_TEMPLATE = `
+function createCoreClient(componentName) {
+  const path = 'packages/argo/src/components';
+  const componentDir = `${process.cwd()}/${path}`;
+
+  fs.mkdirSync(componentDir, {recursive: true});
+  fs.writeFileSync(
+    `${componentDir}/${componentName}.ts`,
+    CORE_TEMPLATE.replace(/{{name}}/g, componentName),
+  );
+
+  console.log(`✅ Create ${componentName} core`);
+}
+
+/**
+ * React
+ */
+
+const REACT_TEMPLATE = `
 import {
   createRemoteReactComponent,
   ReactPropsFromRemoteComponentType,
@@ -44,39 +52,6 @@ export type {{name}}Props = ReactPropsFromRemoteComponentType<typeof Base{{name}
 export const {{name}} = createRemoteReactComponent(Base{{name}});
 `.trimLeft();
 
-/**
- * Create host component
- */
-function createHost(componentName) {
-  const path = 'packages/argo-host/src/components';
-  const componentDir = `${process.cwd()}/${path}/${componentName}`;
-
-  fs.mkdirSync(componentDir, {recursive: true});
-  fs.writeFileSync(
-    `${componentDir}/${componentName}.tsx`,
-    HOST_COMPONENT_TEMPLATE.replace(/{{name}}/g, componentName),
-  );
-  fs.writeFileSync(`${componentDir}/index.ts`, `export {default} from './${componentName}';\n`);
-
-  console.log(`✅ Create ${componentName} host`);
-}
-
-/**
- * Create client component
- */
-function createCoreClient(componentName) {
-  const path = 'packages/argo/src/components';
-  const componentDir = `${process.cwd()}/${path}`;
-
-  fs.mkdirSync(componentDir, {recursive: true});
-  fs.writeFileSync(
-    `${componentDir}/${componentName}.ts`,
-    CORE_CLIENT_COMPONENT_TEMPLATE.replace(/{{name}}/g, componentName),
-  );
-
-  console.log(`✅ Create ${componentName} core client`);
-}
-
 function createReactClient(componentName) {
   const path = 'packages/argo-react/src/components';
   const componentDir = `${process.cwd()}/${path}`;
@@ -84,10 +59,36 @@ function createReactClient(componentName) {
   fs.mkdirSync(componentDir, {recursive: true});
   fs.writeFileSync(
     `${componentDir}/${componentName}.ts`,
-    REACT_CLIENT_COMPONENT_TEMPLATE.replace(/{{name}}/g, componentName),
+    REACT_TEMPLATE.replace(/{{name}}/g, componentName),
   );
 
-  console.log(`✅ Create ${componentName} react client`);
+  console.log(`✅ Create ${componentName} react`);
+}
+
+/**
+ * Host
+ */
+const HOST_TEMPLATE = `
+import React from 'react';
+import {{{name}}Props} from '@shopify/argo/components';
+
+export default function {{name}}(props: {{name}}Props) {
+  return <>Component Code</>;
+}
+`.trimLeft();
+
+function createHost(componentName) {
+  const path = 'packages/argo-host/src/components';
+  const componentDir = `${process.cwd()}/${path}/${componentName}`;
+
+  fs.mkdirSync(componentDir, {recursive: true});
+  fs.writeFileSync(
+    `${componentDir}/${componentName}.tsx`,
+    HOST_TEMPLATE.replace(/{{name}}/g, componentName),
+  );
+  fs.writeFileSync(`${componentDir}/index.ts`, `export {default} from './${componentName}';\n`);
+
+  console.log(`✅ Create ${componentName} host`);
 }
 
 /**
