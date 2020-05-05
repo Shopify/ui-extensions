@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {resolve} = require('path');
 const {WebWorkerPlugin} = require('@shopify/web-worker/webpack');
@@ -12,7 +13,13 @@ module.exports = {
     filename: '[name].js',
     path: __dirname + '/dist',
   },
-  plugins: [new WebWorkerPlugin(), new HtmlWebpackPlugin({title: 'Playground - App Extensions'})],
+  plugins: isDevelopment
+    ? [new WebWorkerPlugin(), new HtmlWebpackPlugin({title: 'Playground - App Extensions'})]
+    : [
+        new webpack.ProvidePlugin({
+          React: 'react',
+        }),
+      ],
   devServer: {
     disableHostCheck: true,
     host: '0.0.0.0',

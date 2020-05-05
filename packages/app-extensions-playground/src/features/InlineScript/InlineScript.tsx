@@ -7,7 +7,7 @@ import {AppExtension} from '../../components';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: '3p-inline-script' */ '../../third-party/inline-script'),
+  import(/* webpackChunkName: '3p-inline-script' */ '../../third-party/playground'),
 );
 
 export function InlineScript() {
