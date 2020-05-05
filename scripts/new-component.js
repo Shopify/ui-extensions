@@ -18,8 +18,7 @@ if (process.argv.length > 3) {
  */
 const HOST_COMPONENT_TEMPLATE = `
 import React from 'react';
-
-import {{{name}}Props} from '../../../client/core';
+import {{{name}}Props} from '@shopify/argo/components';
 
 export default function {{name}}(props: {{name}}Props) {
   return <>Component Code</>;
@@ -39,8 +38,7 @@ import {
   createRemoteReactComponent,
   ReactPropsFromRemoteComponentType,
 } from '@shopify/remote-ui-react';
-
-import {{{name}} as Base{{name}}} from '../../core';
+import {{{name}} as Base{{name}}} from '@shopify/argo/components';
 
 export type {{name}}Props = ReactPropsFromRemoteComponentType<typeof Base{{name}}>;
 export const {{name}} = createRemoteReactComponent(Base{{name}});
@@ -50,7 +48,7 @@ export const {{name}} = createRemoteReactComponent(Base{{name}});
  * Create host component
  */
 function createHost(componentName) {
-  const path = 'packages/app-extensions-polaris-components/src/host/components';
+  const path = 'packages/argo-host/src/components';
   const componentDir = `${process.cwd()}/${path}/${componentName}`;
 
   fs.mkdirSync(componentDir, {recursive: true});
@@ -67,7 +65,7 @@ function createHost(componentName) {
  * Create client component
  */
 function createCoreClient(componentName) {
-  const path = 'packages/app-extensions-polaris-components/src/client/core/components';
+  const path = 'packages/argo/src/components';
   const componentDir = `${process.cwd()}/${path}`;
 
   fs.mkdirSync(componentDir, {recursive: true});
@@ -80,7 +78,7 @@ function createCoreClient(componentName) {
 }
 
 function createReactClient(componentName) {
-  const path = 'packages/app-extensions-polaris-components/src/client/react/components';
+  const path = 'packages/argo-react/src/components';
   const componentDir = `${process.cwd()}/${path}`;
 
   fs.mkdirSync(componentDir, {recursive: true});
@@ -124,7 +122,7 @@ try {
 }
 
 console.log('🔥🔥🔥 Remember to update these files:');
-console.log('packages/app-extensions-polaris-components/src/client/core/components/index.ts');
-console.log('packages/app-extensions-polaris-components/src/client/react/components/index.ts');
-console.log('packages/app-extensions-polaris-components/src/host/components/index.ts');
+console.log('packages/argo/src/components/index.ts');
+console.log('packages/argo-react/src/components/index.ts');
+console.log('packages/argo-host/src/components/index.ts');
 console.log('components/readme.md');
