@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.55](https://github.com/Shopify/app-extension-libs/compare/v0.0.54...v0.0.55) (2020-05-05)
+
+
+### Features
+
+* extract ArgoExtension and other extension input utils ([a7b4aff](https://github.com/Shopify/app-extension-libs/commit/a7b4aff35f7cf16a091bb056fa46a38a4eab0b4e))
+
+
+
+
+
 ## [0.0.54](https://github.com/Shopify/app-extension-libs/compare/v0.0.53...v0.0.54) (2020-05-04)
 
 
