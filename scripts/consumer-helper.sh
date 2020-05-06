@@ -1,6 +1,6 @@
 #!/bin/sh
 
-AVAILABLE_PACKAGES=('app-extensions-renderer' 'app-extensions-polaris-components')
+AVAILABLE_PACKAGES=('argo' 'argo-host' 'argo-react')
 ROOT=$(pwd)
 
 # Font color

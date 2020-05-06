@@ -1,10 +1,9 @@
 import React, {useEffect, useMemo} from 'react';
 import {ExtensionPoint, ExtensionInput} from '@shopify/argo';
-import {createWorkerFactory, useWorker} from '@shopify/react-web-worker';
 import {retain} from '@shopify/remote-ui-core';
 import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
 
-import {createIframeWorkerMessenger} from './messenger';
+import {Worker} from './workers/types';
 
 export interface ArgoExtensionsProps<T extends ExtensionPoint> {
   extensionPoint: T;
@@ -12,11 +11,8 @@ export interface ArgoExtensionsProps<T extends ExtensionPoint> {
   components?: {[key: string]: any};
   input: ExtensionInput[T];
   receiver?: RemoteReceiver;
+  worker: Worker;
 }
-
-const createWorker = createWorkerFactory(() =>
-  import(/* webpackChunkName: 'sandbox-worker' */ './workers/3pWorker'),
-);
 
 export function ArgoExtension<T extends ExtensionPoint>({
   extensionPoint,
@@ -24,11 +20,9 @@ export function ArgoExtension<T extends ExtensionPoint>({
   components = {},
   input,
   receiver: externalReceiver,
+  worker,
 }: ArgoExtensionsProps<T>) {
   const receiver = useMemo(() => externalReceiver || new RemoteReceiver(), [externalReceiver]);
-  const worker = useWorker(createWorker, {
-    createMessenger: createIframeWorkerMessenger,
-  });
 
   useEffect(() => {
     (async () => {

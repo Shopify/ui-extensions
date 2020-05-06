@@ -42,11 +42,12 @@ export function render<T extends ExtensionPoint>(
   retain(input);
 
   const callback = registeredExtensions.get(extensionPoint)!;
-
-  return callback(
+  callback(
     createRemoteRoot(channel, {
       components: components as any,
     }),
     input as any,
   );
+
+  return true;
 }

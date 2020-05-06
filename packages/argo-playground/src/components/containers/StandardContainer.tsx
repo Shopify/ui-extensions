@@ -6,9 +6,20 @@ import {
   useSessionTokenInput,
   useLocaleInput,
   ArgoExtensionsProps,
+  createIframeWorkerMessenger,
 } from '@shopify/argo-host';
+import {createWorkerFactory, useWorker} from '@shopify/react-web-worker';
 
-export function StandardContainer<T extends ExtensionPoint>(props: ArgoExtensionsProps<T>) {
+const createWorker = createWorkerFactory(() =>
+  import(/* webpackChunkName: 'sandbox-worker' */ '@shopify/argo-host/workers/3pWorker'),
+);
+
+export function StandardContainer<T extends ExtensionPoint>(
+  props: Omit<ArgoExtensionsProps<T>, 'worker'>,
+) {
+  const worker = useWorker(createWorker, {
+    createMessenger: createIframeWorkerMessenger,
+  });
   const [ref, layoutInput] = useLayoutInput();
   const sessionTokenInput = useSessionTokenInput(() => {
     return Promise.resolve(
@@ -28,5 +39,9 @@ export function StandardContainer<T extends ExtensionPoint>(props: ArgoExtension
     };
   }, [layoutInput, sessionTokenInput, localeInput, props.input]);
 
-  return <div ref={ref}>{input && <ArgoExtension {...props} input={input as any} />}</div>;
+  return (
+    <div ref={ref}>
+      {input && <ArgoExtension {...props} input={input as any} worker={worker} />}
+    </div>
+  );
 }
