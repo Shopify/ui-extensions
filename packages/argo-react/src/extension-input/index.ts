@@ -3,3 +3,4 @@ export * from './locale';
 export * from './modalActions';
 export * from './sessionToken';
 export {useExtensionInput} from './utils';
+export * from './productData';

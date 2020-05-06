@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {ExtensionPoint} from '@shopify/argo';
-import {components} from '@shopify/argo-host';
+import {components, useProductData} from '@shopify/argo-host';
 import {Badge, Card, Layout, Link, Page, Stack, TextField} from '@shopify/polaris';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
 
@@ -12,6 +12,12 @@ const modalClientScript = createPlainWorkerFactory(() =>
 
 export function Containers() {
   const [showModal, setShowModal] = useState(false);
+  const [currentAction, setCurrentAction] = useState('');
+  const dataInput = useProductData({
+    shopId: 1,
+    productId: 1,
+    action: currentAction,
+  });
 
   return (
     <>
@@ -32,8 +38,22 @@ export function Containers() {
                   </div>
                   <div>
                     <Stack distribution="trailing">
-                      <Link>Remove</Link>
-                      <Link onClick={() => setShowModal(true)}>Edit</Link>
+                      <Link
+                        onClick={() => {
+                          setCurrentAction('remove');
+                          setShowModal(true);
+                        }}
+                      >
+                        Remove
+                      </Link>
+                      <Link
+                        onClick={() => {
+                          setCurrentAction('edit');
+                          setShowModal(true);
+                        }}
+                      >
+                        Edit
+                      </Link>
                     </Stack>
                   </div>
                 </Stack>
@@ -92,6 +112,7 @@ export function Containers() {
         extensionPoint={ExtensionPoint.SubscriptionsManagement}
         components={components}
         height="450px"
+        input={dataInput as any}
       />
     </>
   );

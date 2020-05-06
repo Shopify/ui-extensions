@@ -32,7 +32,7 @@ export interface {{name}}Input {
   {{name-camelCase}}: {{name}};
 }
 
-function is{{name}}Input(input: any): input is {{name}}Input {
+export function is{{name}}Input(input: any): input is {{name}}Input {
   return '{{name-camelCase}}' in input;
 }
 `.trimLeft();

@@ -96,7 +96,7 @@ export function ModalContainer<T extends ExtensionPoint>({
     ];
   }
 
-  const inputWithModalActions = useMemo(() => ({...modalActions, ...input} as CompleteInput<T>), [
+  const composedInput = useMemo(() => ({...modalActions, ...input} as CompleteInput<T>), [
     input,
     modalActions,
   ]);
@@ -114,7 +114,7 @@ export function ModalContainer<T extends ExtensionPoint>({
             script={script}
             extensionPoint={ExtensionPoint.SubscriptionsManagement}
             components={components}
-            input={inputWithModalActions as any}
+            input={composedInput as any}
           />
         </div>
       </Modal>

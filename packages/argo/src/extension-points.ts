@@ -1,6 +1,12 @@
 import {RemoteRoot} from '@shopify/remote-ui-core';
 
-import {LayoutInput, LocaleInput, ModalActionsInput, SessionTokenInput} from './extension-input';
+import {
+  LayoutInput,
+  LocaleInput,
+  ModalActionsInput,
+  SessionTokenInput,
+  ProductDataInput,
+} from './extension-input';
 
 export enum ExtensionPoint {
   AppLink = 'AppLink',
@@ -15,7 +21,7 @@ type DataInput = {
 };
 
 type StandardInput = LayoutInput & LocaleInput & SessionTokenInput & DataInput;
-type SubscriptionsInput = StandardInput & ModalActionsInput;
+type SubscriptionsInput = StandardInput & ModalActionsInput & ProductDataInput;
 
 export interface ExtensionInput {
   [ExtensionPoint.AppLink]: StandardInput;
