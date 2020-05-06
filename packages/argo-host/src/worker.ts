@@ -1,4 +1,5 @@
 import {ExtensionPoint, ExtensionInput, ExtensionPointCallback, ShopifyApi} from '@shopify/argo';
+import {WorkerCreator} from '@shopify/react-web-worker';
 import {createRemoteRoot, RemoteChannel, retain} from '@shopify/remote-ui-core';
 
 const registeredExtensions = new Map<ExtensionPoint, ExtensionPointCallback[ExtensionPoint]>();
@@ -51,3 +52,9 @@ export function render<T extends ExtensionPoint>(
 
   return true;
 }
+
+interface WorkerAPI {
+  load: typeof load;
+  render: typeof render;
+}
+export type Worker = ReturnType<WorkerCreator<WorkerAPI>>;

@@ -3,7 +3,7 @@ import {ExtensionPoint, ExtensionInput} from '@shopify/argo';
 import {retain} from '@shopify/remote-ui-core';
 import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
 
-import {Worker} from './workers/types';
+import {Worker} from './worker';
 
 export interface ArgoExtensionsProps<T extends ExtensionPoint> {
   extensionPoint: T;
