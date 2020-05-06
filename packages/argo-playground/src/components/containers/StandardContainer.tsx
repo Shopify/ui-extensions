@@ -11,7 +11,7 @@ import {
 import {createWorkerFactory, useWorker} from '@shopify/react-web-worker';
 
 const createWorker = createWorkerFactory(() =>
-  import(/* webpackChunkName: 'sandbox-worker' */ '@shopify/argo-host/workers/3pWorker'),
+  import(/* webpackChunkName: 'sandbox-worker' */ '@shopify/argo-host/worker'),
 );
 
 export function StandardContainer<T extends ExtensionPoint>(
