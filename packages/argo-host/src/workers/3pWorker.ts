@@ -1,15 +1,7 @@
-import {
-  ExtensionPoint,
-  CallbackTypeForExtensionPoint,
-  ExtractedInputFromRenderExtension,
-  ShopifyApi,
-} from '@shopify/argo';
+import {ExtensionPoint, ExtensionInput, ExtensionPointCallback, ShopifyApi} from '@shopify/argo';
 import {createRemoteRoot, RemoteChannel, retain} from '@shopify/remote-ui-core';
 
-const registeredExtensions = new Map<
-  ExtensionPoint,
-  CallbackTypeForExtensionPoint<ExtensionPoint>
->();
+const registeredExtensions = new Map<ExtensionPoint, ExtensionPointCallback[ExtensionPoint]>();
 
 const api: ShopifyApi = {
   extend(extensionPoint, callback) {
@@ -38,7 +30,7 @@ export function load(script: string) {
 
 export function render<T extends ExtensionPoint>(
   extensionPoint: T,
-  input: ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>,
+  input: ExtensionInput[T],
   components: string[],
   channel: RemoteChannel,
 ) {

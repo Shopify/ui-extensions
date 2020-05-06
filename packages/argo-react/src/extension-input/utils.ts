@@ -1,9 +1,9 @@
 import {createContext, useContext} from 'react';
-import {InputForRenderExtension, ExtensionPoints} from '@shopify/argo';
+import {ExtensionInput} from '@shopify/argo';
 
-export const ExtensionInputContext = createContext<InputForRenderExtension<
-  keyof ExtensionPoints
-> | null>(null);
+export const ExtensionInputContext = createContext<ExtensionInput[keyof ExtensionInput] | null>(
+  null,
+);
 
 export function useExtensionInput() {
   const input = useContext(ExtensionInputContext);

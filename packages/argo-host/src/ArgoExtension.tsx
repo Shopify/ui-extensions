@@ -1,9 +1,5 @@
 import React, {useEffect, useMemo} from 'react';
-import {
-  CallbackTypeForExtensionPoint,
-  ExtensionPoint,
-  ExtractedInputFromRenderExtension,
-} from '@shopify/argo';
+import {ExtensionPoint, ExtensionInput} from '@shopify/argo';
 import {createWorkerFactory, useWorker} from '@shopify/react-web-worker';
 import {retain} from '@shopify/remote-ui-core';
 import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
@@ -14,7 +10,7 @@ export interface ArgoExtensionsProps<T extends ExtensionPoint> {
   extensionPoint: T;
   script?: URL | string;
   components?: {[key: string]: any};
-  input?: ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>;
+  input: ExtensionInput[T];
   receiver?: RemoteReceiver;
 }
 
@@ -26,7 +22,7 @@ export function ArgoExtension<T extends ExtensionPoint>({
   extensionPoint,
   script,
   components = {},
-  input = {} as ExtractedInputFromRenderExtension<CallbackTypeForExtensionPoint<T>>,
+  input,
   receiver: externalReceiver,
 }: ArgoExtensionsProps<T>) {
   const receiver = useMemo(() => externalReceiver || new RemoteReceiver(), [externalReceiver]);

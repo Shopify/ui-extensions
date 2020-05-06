@@ -8,6 +8,21 @@ export enum ExtensionPoint {
   SubscriptionsManagement = 'SubscriptionsManagement',
 }
 
+type DataInput = {
+  data?: {
+    [key: string]: any;
+  };
+};
+
+type StandardInput = LayoutInput & LocaleInput & SessionTokenInput & DataInput;
+type SubscriptionsInput = StandardInput & ModalActionsInput;
+
+export interface ExtensionInput {
+  [ExtensionPoint.AppLink]: StandardInput;
+  [ExtensionPoint.Playground]: StandardInput;
+  [ExtensionPoint.SubscriptionsManagement]: SubscriptionsInput;
+}
+
 export type ExtensionResult = {} | void;
 
 export type RenderableExtensionCallback<Input, Root extends RemoteRoot> = (
@@ -15,33 +30,11 @@ export type RenderableExtensionCallback<Input, Root extends RemoteRoot> = (
   input: Input,
 ) => ExtensionResult;
 
-export type ExtractedInputFromRenderExtension<T> = T extends RenderableExtensionCallback<
-  infer Input,
-  any
->
-  ? Input
-  : never;
-
-export type CallbackTypeForExtensionPoint<T extends ExtensionPoint> = ExtensionPoints[T];
-
-export type InputForRenderExtension<
-  Extension extends keyof ExtensionPoints
-> = ExtractedInputFromRenderExtension<ExtensionPoints[Extension]>;
-
-type DataInput = {
-  data?: {
-    [key: string]: any;
-  };
-};
-
-export type ExtensionStandardApi = LayoutInput & LocaleInput & SessionTokenInput & DataInput;
-export type SubscriptionsApi = ExtensionStandardApi & ModalActionsInput;
-
-export interface ExtensionPoints {
-  [ExtensionPoint.AppLink]: RenderableExtensionCallback<ExtensionStandardApi, RemoteRoot<any>>;
-  [ExtensionPoint.Playground]: RenderableExtensionCallback<ExtensionStandardApi, RemoteRoot<any>>;
+export interface ExtensionPointCallback {
+  [ExtensionPoint.AppLink]: RenderableExtensionCallback<StandardInput, RemoteRoot<any>>;
+  [ExtensionPoint.Playground]: RenderableExtensionCallback<StandardInput, RemoteRoot<any>>;
   [ExtensionPoint.SubscriptionsManagement]: RenderableExtensionCallback<
-    SubscriptionsApi,
+    SubscriptionsInput,
     RemoteRoot<any>
   >;
 }
