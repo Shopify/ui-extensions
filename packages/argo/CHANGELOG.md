@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.59](https://github.com/Shopify/app-extension-libs/compare/v0.0.58...v0.0.59) (2020-05-07)
+
+
+### Features
+
+* add product data input ([305d464](https://github.com/Shopify/app-extension-libs/commit/305d464dff656ee4fc3f702f36601ddba309eeec))
+
+
+
+
+
 ## [0.0.58](https://github.com/Shopify/app-extension-libs/compare/v0.0.57...v0.0.58) (2020-05-06)
 
 **Note:** Version bump only for package @shopify/argo
