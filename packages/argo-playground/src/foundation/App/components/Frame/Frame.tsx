@@ -62,6 +62,12 @@ export function Frame({children}: Props) {
                     exactMatch: true,
                     icon: TextBlockMajorMonotone,
                   },
+                  {
+                    label: 'Render Timeout',
+                    url: '/render-timeout',
+                    exactMatch: true,
+                    icon: TextBlockMajorMonotone,
+                  },
                 ]}
               />
             </Navigation>
