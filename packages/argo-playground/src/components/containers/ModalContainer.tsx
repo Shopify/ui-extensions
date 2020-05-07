@@ -1,27 +1,24 @@
 import React, {useCallback, useMemo, useState} from 'react';
-import {ExtensionPoint, ModalActionsInput, RenderExtensionComponentProps} from '@shopify/argo';
+import {ExtensionPoint} from '@shopify/argo';
 import {useModalActionsInput} from '@shopify/argo-host';
 import {Modal, ModalProps} from '@shopify/polaris';
 import {retain} from '@shopify/web-worker';
 
 import {ArgoHeader} from './shared/Header';
-import {StandardContainer} from './StandardContainer';
+import {StandardContainer, StandardContainerProps} from './StandardContainer';
 
-interface ArgoModalProps {
+type BaseProps<T extends ExtensionPoint> = Omit<StandardContainerProps<T>, 'input'>;
+
+type Input<T extends ExtensionPoint> = Omit<StandardContainerProps<T>['input'], 'modalActions'>;
+
+export interface ModalContainerProps<T extends ExtensionPoint> extends BaseProps<T> {
   open: boolean;
   defaultTitle: string;
   onClose: () => void;
   onBackClick?: () => void;
-  appInfo: {
-    icon?: string;
-    name: string;
-  };
   height?: string;
+  input?: Input<T>;
 }
-
-type Props<T extends ExtensionPoint> = RenderExtensionComponentProps<T> & ArgoModalProps;
-
-type CompleteInput<T extends ExtensionPoint> = Props<T>['input'] & ModalActionsInput;
 
 type Action = () => void;
 const noop = () => null;
@@ -29,20 +26,18 @@ const noop = () => null;
 export function ModalContainer<T extends ExtensionPoint>({
   open,
   defaultTitle,
-  appInfo,
   onClose,
   onBackClick,
-  script,
-  components,
-  input,
   height,
-}: Props<T>) {
+  input: externalInput,
+  app,
+  ...props
+}: ModalContainerProps<T>) {
   const [primaryContent, setPrimaryContent] = useState('Save');
   const [primaryAction, setPrimaryAction] = useState<Action>(() => noop);
   const [secondaryContent, setSecondaryContent] = useState('');
   const [secondaryAction, setSecondaryAction] = useState<Action>(() => noop);
 
-  const {name, icon} = appInfo;
   const onBackAction = useMemo(() => {
     return onBackClick ? () => onBackClick() : undefined;
   }, [onBackClick]);
@@ -83,7 +78,12 @@ export function ModalContainer<T extends ExtensionPoint>({
     onClose: onCloseAction,
     open,
     title: (
-      <ArgoHeader appName={name} appIcon={icon} title={defaultTitle} onBackAction={onBackAction} />
+      <ArgoHeader
+        appName={app?.name || defaultTitle}
+        appIcon={app?.icon}
+        title={defaultTitle}
+        onBackAction={onBackAction}
+      />
     ),
   };
 
@@ -96,10 +96,7 @@ export function ModalContainer<T extends ExtensionPoint>({
     ];
   }
 
-  const composedInput = useMemo(() => ({...modalActions, ...input} as CompleteInput<T>), [
-    input,
-    modalActions,
-  ]);
+  const input = useMemo(() => ({...modalActions, ...externalInput}), [externalInput, modalActions]);
 
   return (
     <>
@@ -110,12 +107,7 @@ export function ModalContainer<T extends ExtensionPoint>({
             height,
           }}
         >
-          <StandardContainer
-            script={script}
-            extensionPoint={ExtensionPoint.SubscriptionsManagement}
-            components={components}
-            input={composedInput as any}
-          />
+          <StandardContainer input={input as any} {...props} />
         </div>
       </Modal>
     </>

@@ -100,8 +100,9 @@ export function Containers() {
       <ModalContainer
         open={showModal}
         defaultTitle="Default title"
-        appInfo={{
+        app={{
           name: 'OneMoreTime',
+          appId: 'one-more-time',
         }}
         onClose={() => setShowModal(false)}
         onBackClick={() => {
@@ -112,7 +113,7 @@ export function Containers() {
         extensionPoint={ExtensionPoint.SubscriptionsManagement}
         components={components}
         height="450px"
-        input={dataInput as any}
+        input={dataInput}
       />
     </>
   );

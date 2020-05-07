@@ -14,9 +14,26 @@ const createWorker = createWorkerFactory(() =>
   import(/* webpackChunkName: 'sandbox-worker' */ '@shopify/argo-host/worker'),
 );
 
-export function StandardContainer<T extends ExtensionPoint>(
-  props: Omit<ArgoExtensionsProps<T>, 'worker'>,
-) {
+type BaseProps<T extends ExtensionPoint> = Omit<
+  ArgoExtensionsProps<T>,
+  'input' | 'worker' | 'receiver'
+>;
+
+type Input<T extends ExtensionPoint> = Omit<
+  ArgoExtensionsProps<T>['input'],
+  'layout' | 'locale' | 'sessionToken'
+>;
+
+export interface StandardContainerProps<T extends ExtensionPoint> extends BaseProps<T> {
+  app?: {
+    name: string;
+    icon?: string;
+    appId: string;
+  };
+  input?: Input<T>;
+}
+
+export function StandardContainer<T extends ExtensionPoint>(props: StandardContainerProps<T>) {
   const worker = useWorker(createWorker, {
     createMessenger: createIframeWorkerMessenger,
   });
@@ -35,7 +52,7 @@ export function StandardContainer<T extends ExtensionPoint>(
       ...layoutInput,
       ...sessionTokenInput,
       ...localeInput,
-      ...(props.input || {}),
+      ...props.input,
     };
   }, [layoutInput, sessionTokenInput, localeInput, props.input]);
 
