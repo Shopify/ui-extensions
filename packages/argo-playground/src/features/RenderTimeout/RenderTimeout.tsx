@@ -2,7 +2,7 @@ import React, {useState, useEffect, useMemo} from 'react';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
 import {Page} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
-import {host} from '@shopify/app-extensions-polaris-components';
+import {components} from '@shopify/argo-host';
 import {ExtensionPoint} from '@shopify/argo';
 import {useRenderTimeout} from '@shopify/argo-host';
 import {RemoteReceiver} from '@shopify/remote-ui-react/host';
@@ -31,7 +31,7 @@ export function RenderTimeout() {
       <StandardContainer
         script={reactThirdPartyWorker.url}
         extensionPoint={ExtensionPoint.Playground}
-        components={host}
+        components={components}
         receiver={receiver}
       />
       <RenderErrorModal

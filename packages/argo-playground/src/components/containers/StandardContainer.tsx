@@ -14,10 +14,7 @@ const createWorker = createWorkerFactory(() =>
   import(/* webpackChunkName: 'sandbox-worker' */ '@shopify/argo-host/worker'),
 );
 
-type BaseProps<T extends ExtensionPoint> = Omit<
-  ArgoExtensionsProps<T>,
-  'input' | 'worker' | 'receiver'
->;
+type BaseProps<T extends ExtensionPoint> = Omit<ArgoExtensionsProps<T>, 'input' | 'worker'>;
 
 type Input<T extends ExtensionPoint> = Omit<
   ArgoExtensionsProps<T>['input'],
