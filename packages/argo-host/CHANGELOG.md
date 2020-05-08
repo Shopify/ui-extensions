@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.60](https://github.com/Shopify/app-extension-libs/compare/v0.0.59...v0.0.60) (2020-05-08)
+
+
+### Features
+
+* radiobutton ([0438e25](https://github.com/Shopify/app-extension-libs/commit/0438e25b15cdc504a03b2cdc28b9526e83ed2b15))
+* radiobutton cleanup ([7ecdaec](https://github.com/Shopify/app-extension-libs/commit/7ecdaece6f5eab9da72866693b992547eff2db2a))
+* toast ([#483](https://github.com/Shopify/app-extension-libs/issues/483)) ([0898253](https://github.com/Shopify/app-extension-libs/commit/08982538144fade980752c71597ed3e574eaa2a8))
+
+
+
+
+
 ## [0.0.59](https://github.com/Shopify/app-extension-libs/compare/v0.0.58...v0.0.59) (2020-05-07)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@shopify/app-extensions-renderer",
-  "version": "0.0.59",
+  "version": "0.0.60",
   "main": "dist/index.js",
   "license": "MIT",
   "scripts": {

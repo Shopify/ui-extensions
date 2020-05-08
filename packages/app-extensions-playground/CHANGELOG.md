@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.60](https://github.com/Shopify/app-extension-libs/compare/v0.0.59...v0.0.60) (2020-05-08)
+
+**Note:** Version bump only for package @shopify/app-extensions-playground
+
+
+
+
+
 ## [0.0.59](https://github.com/Shopify/app-extension-libs/compare/v0.0.58...v0.0.59) (2020-05-07)
 
 
