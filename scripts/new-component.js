@@ -1,4 +1,5 @@
 const fs = require('fs');
+const updateIndex = require('./updateIndex');
 
 /**
  * Validate args
@@ -34,20 +35,9 @@ function createCoreClient(componentName) {
     CORE_TEMPLATE.replace(/{{name}}/g, componentName),
   );
 
+  updateIndex(`${path}/index.ts`, `export * from './${componentName}';`);
+
   console.log(`✅ Create ${componentName} core`);
-}
-
-function updateIndex(path, addition) {
-  const currentFile = fs.readFileSync(path);
-  const currentFileContent = currentFile.toString();
-
-  const newContent = `
-${currentFileContent.trimRight()}
-${addition}
-`.trimLeft();
-
-  fs.writeFileSync(path, newContent);
-
 }
 
 /**
@@ -75,6 +65,8 @@ function createReactClient(componentName) {
     REACT_TEMPLATE.replace(/{{name}}/g, componentName),
   );
 
+  updateIndex(`${path}/index.ts`, `export * from './${componentName}';`);
+
   console.log(`✅ Create ${componentName} react`);
 }
 
@@ -101,6 +93,11 @@ function createHost(componentName) {
   );
   fs.writeFileSync(`${componentDir}/index.ts`, `export {default} from './${componentName}';\n`);
 
+  updateIndex(
+    `${path}/index.ts`,
+    `export {default as ${componentName}} from './${componentName}';`,
+  );
+
   console.log(`✅ Create ${componentName} host`);
 }
 
@@ -123,43 +120,14 @@ try {
   killProcess("Couldn't create host component.", error);
 }
 
-try{
-  updateIndex(
-    'packages/argo-host/src/components/index.ts',
-    `export {default as ${componentName}} from './${componentName}';`
-  );
-} catch (error) {
-  killProcess("Couldn't create react client component.", error);
-}
-
-
-
 try {
   createCoreClient(componentName);
 } catch (error) {
   killProcess("Couldn't create core client component.", error);
 }
 
-try{
-  updateIndex(
-    'packages/argo/src/components/index.ts',
-    `export * from './${componentName}';`
-  );
-} catch (error) {
-  killProcess("Couldn't create react client component.", error);
-}
-
 try {
   createReactClient(componentName);
-} catch (error) {
-  killProcess("Couldn't create react client component.", error);
-}
-
-try{
-  updateIndex(
-    'packages/argo-react/src/components/index.ts',
-    `export * from './${componentName}';`
-  );
 } catch (error) {
   killProcess("Couldn't create react client component.", error);
 }

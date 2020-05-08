@@ -1,4 +1,5 @@
 const fs = require('fs');
+const updateIndex = require('./updateIndex');
 
 /**
  * Validate args
@@ -49,6 +50,8 @@ function createCoreExtensionInput(extensionInputName) {
   fs.mkdirSync(extensionInputDir, {recursive: true});
   fs.writeFileSync(`${extensionInputDir}/${extensionInputNameCamelCase}.ts`, content);
 
+  updateIndex(`${path}/index.ts`, `export * from './${extensionInputNameCamelCase}';`);
+
   console.log(`✅ Create ${extensionInputName} core`);
 }
 
@@ -82,6 +85,8 @@ function createReactExtensionInput(extensionInputName) {
   fs.mkdirSync(extensionInputDir, {recursive: true});
   fs.writeFileSync(`${extensionInputDir}/${extensionInputNameCamelCase}.ts`, content);
 
+  updateIndex(`${path}/index.ts`, `export * from './${extensionInputNameCamelCase}';`);
+
   console.log(`✅ Create ${extensionInputName} react`);
 }
 
@@ -114,6 +119,8 @@ function createHostExtensionInput(extensionInputName) {
   fs.mkdirSync(extensionInputDir, {recursive: true});
   fs.writeFileSync(`${extensionInputDir}/use${extensionInputName}Input.ts`, content);
 
+  updateIndex(`${path}/index.ts`, `export * from './use${extensionInputName}Input';`);
+
   console.log(`✅ Create ${extensionInputName} host`);
 }
 
@@ -140,8 +147,5 @@ try {
 }
 
 console.log('🔥🔥🔥 Remember to update these files:');
-console.log('packages/argo/src/extension-input/index.ts');
-console.log('packages/argo-react/src/extension-input/index.ts');
-console.log('packages/argo-host/src/extension-input/index.ts');
 console.log(`packages/argo-host/src/extension-input/use${extensionInputName}Input.ts`);
 console.log('packages/argo/src/extension-points.ts');
