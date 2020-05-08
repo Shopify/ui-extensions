@@ -6,6 +6,7 @@ import {
   ModalActionsInput,
   SessionTokenInput,
   ProductDataInput,
+  ToastInput,
 } from './extension-input';
 
 export enum ExtensionPoint {
@@ -21,7 +22,7 @@ type DataInput = {
 };
 
 type StandardInput = LayoutInput & LocaleInput & SessionTokenInput & DataInput;
-type SubscriptionsInput = StandardInput & ModalActionsInput & ProductDataInput;
+type SubscriptionsInput = StandardInput & ModalActionsInput & ToastInput & ProductDataInput;
 
 export interface ExtensionInput {
   [ExtensionPoint.AppLink]: StandardInput;

@@ -22,7 +22,7 @@ import {
   Text,
   TextField,
 } from '@shopify/argo-react/components';
-import {render, useLayout, useSessionToken, useLocale} from '@shopify/argo-react';
+import {render, useLayout, useSessionToken, useLocale, useToast} from '@shopify/argo-react';
 import {ExtensionPoint} from '@shopify/argo';
 
 const SORT_ICON: IconProps = {
@@ -133,6 +133,8 @@ function App() {
   );
 
   const locale = useLocale();
+
+  const {show: showToast} = useToast();
 
   return (
     <Page
@@ -500,6 +502,15 @@ function App() {
             }
           />
           <TextField type="text" value={sessionToken} multiline />
+        </Stack>
+      </Card>
+      <Card sectioned title="useToast">
+        <Stack>
+          <Button title="Show toast" onClick={() => showToast('Show toast')} />
+          <Button
+            title="Show error toast"
+            onClick={() => showToast('Show error toast', {error: true})}
+          />
         </Stack>
       </Card>
     </Page>

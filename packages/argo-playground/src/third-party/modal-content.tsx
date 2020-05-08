@@ -1,6 +1,6 @@
 import React, {useState, useMemo, useEffect} from 'react';
 import {ExtensionPoint} from '@shopify/argo';
-import {render, useModalActions, useProductData} from '@shopify/argo-react';
+import {render, useModalActions, useProductData, useToast} from '@shopify/argo-react';
 import {
   ResourceList,
   ResourceItem,
@@ -37,6 +37,8 @@ function App() {
     }
   }, [action]);
 
+  const {show: showToast} = useToast();
+
   const [resourceListQuery, setResourceListQuery] = useState('');
   const resourceListFilterControl = useMemo(
     () => ({
@@ -57,9 +59,11 @@ function App() {
   setPrimaryContent(primaryActionText);
   setSecondaryContent(secondaryActionText);
   setPrimaryAction(() => {
+    showToast('Success');
     closeModal();
   });
   setSecondaryAction(() => {
+    showToast('Cancelled', {error: true});
     closeModal();
   });
 

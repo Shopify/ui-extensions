@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {ExtensionPoint} from '@shopify/argo';
-import {components, useProductData} from '@shopify/argo-host';
+import {components, useProductData, useToastInput} from '@shopify/argo-host';
 import {Badge, Card, Layout, Link, Page, Stack, TextField} from '@shopify/polaris';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
 
@@ -18,6 +18,7 @@ export function Containers() {
     productId: 1,
     action: currentAction,
   });
+  const [Toast, toastInput] = useToastInput();
 
   return (
     <>
@@ -112,9 +113,10 @@ export function Containers() {
         script={modalClientScript.url}
         extensionPoint={ExtensionPoint.SubscriptionsManagement}
         components={components}
+        input={{...toastInput, ...dataInput}}
         height="450px"
-        input={dataInput}
       />
+      <Toast />
     </>
   );
 }
