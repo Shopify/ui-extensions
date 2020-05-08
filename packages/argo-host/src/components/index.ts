@@ -9,6 +9,7 @@ export {default as Icon} from './Icon';
 export {default as Modal} from './Modal';
 export {default as Link} from './Link';
 export {default as Page} from './Page';
+export {default as RadioButton} from './RadioButton';
 export {default as ResourceItem} from './ResourceItem';
 export {default as ResourceList} from './ResourceList';
 export {default as Select} from './Select';

@@ -11,6 +11,7 @@ export * from './LayoutSection';
 export * from './Modal';
 export * from './Link';
 export * from './Page';
+export * from './RadioButton';
 export * from './ResourceItem';
 export * from './ResourceList';
 export * from './Select';

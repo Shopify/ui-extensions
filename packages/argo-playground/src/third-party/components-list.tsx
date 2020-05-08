@@ -12,6 +12,7 @@ import {
   Modal,
   Link,
   Page,
+  RadioButton,
   ResourceItem,
   ResourceList,
   Select,
@@ -68,6 +69,9 @@ function App() {
   }, []);
 
   const layout = useLayout();
+
+  const [radioButtonValue, setRadioButtonValue] = useState('option1');
+  const handleRadioButtonChange = useCallback(newValue => setRadioButtonValue(newValue), []);
 
   const [selectValue, setSelectValue] = useState('today');
   const onSelectChange = useCallback(newValue => {
@@ -306,6 +310,24 @@ function App() {
         >
           <TextField label="Custom plan title" />
         </Modal>
+      </Card>
+      <Card sectioned title="RadioButton component">
+        <RadioButton
+          label="Option 1"
+          helpText="Help text for option 1."
+          checked={radioButtonValue === 'option1'}
+          id="option1"
+          name="radiobuttons"
+          onChange={handleRadioButtonChange}
+        />
+        <RadioButton
+          label="Option 2"
+          helpText="Help text for option 1."
+          id="option2"
+          name="radiobuttons"
+          checked={radioButtonValue === 'option2'}
+          onChange={handleRadioButtonChange}
+        />
       </Card>
       <Card title="ResourceList component">
         <ResourceList filterControl={resourceListFilterControl}>
