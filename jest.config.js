@@ -1,9 +1,9 @@
 module.exports = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
-  modulePathIgnorePatterns: ['<rootDir>/packages/app-extensions-libs/dist'],
-  testEnvironmentOptions: {url: 'https://app-extensions-libs.myshopify.io/'},
+  modulePathIgnorePatterns: [],
+  testEnvironmentOptions: {url: 'https://argo-playground.myshopify.io/'},
   testMatch: ['<rootDir>/packages/**/*.test.ts?(x)'],
-  testURL: 'https://app-extensions-libs.myshopify.io/',
+  testURL: 'https://argo-playground.myshopify.io/',
   transform: {
     '^.+\\.tsx?$': 'ts-jest',
   },

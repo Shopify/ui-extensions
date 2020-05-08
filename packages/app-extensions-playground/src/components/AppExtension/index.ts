@@ -1,1 +1,0 @@
-export {AppExtension} from './AppExtension';

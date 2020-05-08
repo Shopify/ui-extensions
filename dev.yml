@@ -27,4 +27,4 @@ commands:
   clean: git clean -xdf ./packages
 
 open:
-  app: https://app-extension-libs.myshopify.io
+  app: https://argo-playground.myshopify.io

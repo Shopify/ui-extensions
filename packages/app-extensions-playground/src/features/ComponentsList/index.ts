@@ -1,1 +1,0 @@
-export {ComponentsList} from './ComponentsList';
