@@ -112,4 +112,4 @@ function App() {
   }
 }
 
-render(ExtensionPoint.SubscriptionsManagement, () => <App />);
+render(ExtensionPoint.SubscriptionManagement, () => <App />);

@@ -3,7 +3,7 @@ import {ExtensionPoint} from '@shopify/argo';
 import {render, useSessionToken} from '@shopify/argo-react';
 import {Card, Text, TextField} from '@shopify/argo-react/components';
 
-render(ExtensionPoint.SubscriptionsManagement, () => <App />);
+render(ExtensionPoint.SubscriptionManagement, () => <App />);
 
 function App() {
   const {getSessionToken} = useSessionToken();

@@ -12,7 +12,7 @@ import {
 export enum ExtensionPoint {
   AppLink = 'AppLink',
   Playground = 'Playground',
-  SubscriptionsManagement = 'SubscriptionsManagement',
+  SubscriptionManagement = 'SubscriptionManagement',
 }
 
 type DataInput = {
@@ -22,12 +22,12 @@ type DataInput = {
 };
 
 type StandardInput = LayoutInput & LocaleInput & SessionTokenInput & DataInput;
-type SubscriptionsInput = StandardInput & ModalActionsInput & ToastInput & ProductDataInput;
+type SubscriptionInput = StandardInput & ModalActionsInput & ToastInput & ProductDataInput;
 
 export interface ExtensionInput {
   [ExtensionPoint.AppLink]: StandardInput;
   [ExtensionPoint.Playground]: StandardInput;
-  [ExtensionPoint.SubscriptionsManagement]: SubscriptionsInput;
+  [ExtensionPoint.SubscriptionManagement]: SubscriptionInput;
 }
 
 export type ExtensionResult = {} | void;
@@ -40,8 +40,8 @@ export type RenderableExtensionCallback<Input, Root extends RemoteRoot> = (
 export interface ExtensionPointCallback {
   [ExtensionPoint.AppLink]: RenderableExtensionCallback<StandardInput, RemoteRoot<any>>;
   [ExtensionPoint.Playground]: RenderableExtensionCallback<StandardInput, RemoteRoot<any>>;
-  [ExtensionPoint.SubscriptionsManagement]: RenderableExtensionCallback<
-    SubscriptionsInput,
+  [ExtensionPoint.SubscriptionManagement]: RenderableExtensionCallback<
+    SubscriptionInput,
     RemoteRoot<any>
   >;
 }

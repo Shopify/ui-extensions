@@ -111,7 +111,7 @@ export function Containers() {
           setShowModal(false);
         }}
         script={modalClientScript.url}
-        extensionPoint={ExtensionPoint.SubscriptionsManagement}
+        extensionPoint={ExtensionPoint.SubscriptionManagement}
         components={components}
         input={{...toastInput, ...dataInput}}
         height="450px"

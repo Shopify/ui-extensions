@@ -35,7 +35,7 @@ export function InlineScript() {
       {inlineScript && (
         <StandardContainer
           script={inlineScript}
-          extensionPoint={ExtensionPoint.SubscriptionsManagement}
+          extensionPoint={ExtensionPoint.SubscriptionManagement}
           components={components}
         />
       )}
