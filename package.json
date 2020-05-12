@@ -1,0 +1,29 @@
+{
+  "name": "argo-checkout",
+  "version": "0.0.0",
+  "private": true,
+  "repository": "https://github.com/lemonmade/remote-ui.git",
+  "workspaces": [
+    "./packages/*"
+  ],
+  "scripts": {
+    "postinstall": "sk type-check",
+    "test": "sk test",
+    "lint": "sk lint",
+    "type-check": "sk type-check",
+    "build": "sk build",
+    "release": "lerna publish"
+  },
+  "devDependencies": {
+    "@sewing-kit/cli": "^0.0.46",
+    "@sewing-kit/config": "^0.0.36",
+    "@sewing-kit/eslint-plugin": "^0.0.13",
+    "@sewing-kit/plugin-eslint": "^0.0.35",
+    "@sewing-kit/plugin-javascript": "^0.0.53",
+    "@sewing-kit/plugin-jest": "^0.0.49",
+    "@sewing-kit/plugin-package-flexible-outputs": "^0.0.48",
+    "@sewing-kit/plugin-react": "^0.0.44",
+    "@sewing-kit/plugin-typescript": "^0.0.57",
+    "lerna": "^2.11.0"
+  }
+}

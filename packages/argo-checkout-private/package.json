@@ -1,0 +1,15 @@
+{
+  "name": "@shopify/argo-checkout-private",
+  "version": "0.0.0",
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://packages.shopify.io/shopify/node/npm/"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@remote-ui/core": "^0.0.20",
+    "@remote-ui/react": "^0.0.28",
+    "@types/react": "^16.0.0",
+    "react": ">=16.8.0 <17.0.0"
+  }
+}
