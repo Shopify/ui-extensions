@@ -4,7 +4,7 @@ type Components = typeof import('../components');
 type AllComponents = Components[keyof Components];
 
 export interface StandardApi {
-  readonly version: string;
+  version: string;
 }
 
 export interface ExtensionPoints {
