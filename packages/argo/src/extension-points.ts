@@ -13,6 +13,7 @@ export enum ExtensionPoint {
   AppLink = 'AppLink',
   Playground = 'Playground',
   SubscriptionManagement = 'SubscriptionManagement',
+  MerchantMetafield = 'MerchantMetafield',
 }
 
 type DataInput = {
@@ -28,6 +29,7 @@ export interface ExtensionInput {
   [ExtensionPoint.AppLink]: StandardInput;
   [ExtensionPoint.Playground]: StandardInput;
   [ExtensionPoint.SubscriptionManagement]: SubscriptionInput;
+  [ExtensionPoint.MerchantMetafield]: StandardInput;
 }
 
 export type ExtensionResult = {} | void;
@@ -44,4 +46,5 @@ export interface ExtensionPointCallback {
     SubscriptionInput,
     RemoteRoot<any>
   >;
+  [ExtensionPoint.MerchantMetafield]: RenderableExtensionCallback<StandardInput, RemoteRoot<any>>;
 }
