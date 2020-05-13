@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-checkout-private",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "publishConfig": {
     "access": "restricted",
     "registry": "https://packages.shopify.io/shopify/node/npm/"
