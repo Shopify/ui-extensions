@@ -7,7 +7,6 @@
     "./packages/*"
   ],
   "scripts": {
-    "postinstall": "sk type-check",
     "test": "sk test",
     "lint": "sk lint",
     "type-check": "sk type-check",
