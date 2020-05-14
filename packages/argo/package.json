@@ -13,7 +13,7 @@
     "directory": "packages/argo"
   },
   "dependencies": {
-    "@shopify/remote-ui-core": "^0.0.20",
+    "@shopify/remote-ui-core": "^0.0.21",
     "typescript": "^3.7.2"
   },
   "publishConfig": {

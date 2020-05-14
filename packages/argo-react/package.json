@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@shopify/argo": "0.0.60",
-    "@shopify/remote-ui-react": "^0.0.23",
+    "@shopify/remote-ui-react": "^0.0.24",
     "react": "^16.12.0",
     "typescript": "^3.7.2"
   },
