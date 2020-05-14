@@ -1,13 +1,16 @@
-import React, {useCallback, useMemo, useState} from 'react';
+import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import {ExtensionPoint} from '@shopify/argo';
-import {useModalActionsInput} from '@shopify/argo-host';
+import {ReadyState, useModalActionsInput} from '@shopify/argo-host';
 import {Modal, ModalProps} from '@shopify/polaris';
 import {retain} from '@shopify/web-worker';
 
 import {ArgoHeader} from './shared/Header';
 import {StandardContainer, StandardContainerProps} from './StandardContainer';
 
-type BaseProps<T extends ExtensionPoint> = Omit<StandardContainerProps<T>, 'input'>;
+type BaseProps<T extends ExtensionPoint> = Omit<
+  StandardContainerProps<T>,
+  'input' | 'error' | 'loading'
+>;
 
 type Input<T extends ExtensionPoint> = Omit<StandardContainerProps<T>['input'], 'modalActions'>;
 
@@ -31,8 +34,11 @@ export function ModalContainer<T extends ExtensionPoint>({
   height,
   input: externalInput,
   app,
+  onReadyStateChange,
   ...props
 }: ModalContainerProps<T>) {
+  const [readyState, setReadyState] = useState(ReadyState.Loading);
+
   const [primaryContent, setPrimaryContent] = useState('Save');
   const [primaryAction, setPrimaryAction] = useState<Action>(() => noop);
   const [secondaryContent, setSecondaryContent] = useState('');
@@ -70,14 +76,8 @@ export function ModalContainer<T extends ExtensionPoint>({
     closeModal: onCloseAction,
   });
 
-  const modalProps: ModalProps = {
-    primaryAction: {
-      content: primaryContent,
-      onAction: onPrimaryAction,
-    },
-    onClose: onCloseAction,
-    open,
-    title: (
+  const title = useMemo(
+    () => (
       <ArgoHeader
         appName={app?.name || defaultTitle}
         appIcon={app?.icon}
@@ -85,18 +85,44 @@ export function ModalContainer<T extends ExtensionPoint>({
         onBackAction={onBackAction}
       />
     ),
-  };
+    [app, defaultTitle, onBackAction],
+  );
 
-  if (secondaryContent) {
-    modalProps.secondaryActions = [
-      {
-        content: secondaryContent,
-        onAction: onSecondaryAction,
+  const modalProps: ModalProps = useMemo(
+    () => ({
+      primaryAction: {
+        content: primaryContent,
+        onAction: onPrimaryAction,
+        disabled: readyState !== ReadyState.Rendered,
       },
-    ];
-  }
+      onClose: onCloseAction,
+      open,
+      title,
+      secondaryActions: secondaryContent
+        ? [
+            {
+              content: secondaryContent,
+              onAction: onSecondaryAction,
+              disabled: readyState !== ReadyState.Rendered,
+            },
+          ]
+        : undefined,
+    }),
+    [
+      onCloseAction,
+      onPrimaryAction,
+      onSecondaryAction,
+      open,
+      primaryContent,
+      readyState,
+      secondaryContent,
+      title,
+    ],
+  );
 
   const input = useMemo(() => ({...modalActions, ...externalInput}), [externalInput, modalActions]);
+
+  useEffect(() => onReadyStateChange?.(readyState), [readyState, onReadyStateChange]);
 
   return (
     <>
@@ -107,7 +133,7 @@ export function ModalContainer<T extends ExtensionPoint>({
             height,
           }}
         >
-          <StandardContainer input={input as any} {...props} />
+          <StandardContainer {...props} input={input as any} onReadyStateChange={setReadyState} />
         </div>
       </Modal>
     </>

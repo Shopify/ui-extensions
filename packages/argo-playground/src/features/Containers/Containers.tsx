@@ -103,7 +103,7 @@ export function Containers() {
         defaultTitle="Default title"
         app={{
           name: 'OneMoreTime',
-          appId: 'one-more-time',
+          id: 'one-more-time',
         }}
         onClose={() => setShowModal(false)}
         onBackClick={() => {
