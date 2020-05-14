@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-react",
-  "version": "0.0.60",
+  "version": "0.0.61",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -13,7 +13,7 @@
     "directory": "packages/argo-react"
   },
   "dependencies": {
-    "@shopify/argo": "0.0.60",
+    "@shopify/argo": "0.0.61",
     "@shopify/remote-ui-react": "^0.0.24",
     "react": "^16.12.0",
     "typescript": "^3.7.2"

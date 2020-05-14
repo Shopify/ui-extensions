@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.61](https://github.com/Shopify/app-extension-libs/compare/v0.0.60...v0.0.61) (2020-05-14)
+
+
+### Bug Fixes
+
+* simplify stack component to remove forcing key prop ([342830d](https://github.com/Shopify/app-extension-libs/commit/342830de650f5cdc438b2ab2ec6c5e41ad1826c3))
+
+
+
+
+
 ## [0.0.60](https://github.com/Shopify/app-extension-libs/compare/v0.0.59...v0.0.60) (2020-05-08)
 
 

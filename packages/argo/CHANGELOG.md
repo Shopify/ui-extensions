@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.61](https://github.com/Shopify/app-extension-libs/compare/v0.0.60...v0.0.61) (2020-05-14)
+
+
+### Features
+
+* add MerchantMetafield extension point ([eeb975f](https://github.com/Shopify/app-extension-libs/commit/eeb975f850b155fa6619a7d7e03dafac68ac6e54))
+
+
+
+
+
 ## [0.0.60](https://github.com/Shopify/app-extension-libs/compare/v0.0.59...v0.0.60) (2020-05-08)
 
 

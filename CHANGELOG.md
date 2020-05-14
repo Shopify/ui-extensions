@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.61](https://github.com/Shopify/app-extension-libs/compare/v0.0.60...v0.0.61) (2020-05-14)
+
+
+### Bug Fixes
+
+* replace render error image ([#500](https://github.com/Shopify/app-extension-libs/issues/500)) ([dc87105](https://github.com/Shopify/app-extension-libs/commit/dc87105f9ee6352fffd13611bb3c42e0bd4a4f7e))
+* simplify stack component to remove forcing key prop ([342830d](https://github.com/Shopify/app-extension-libs/commit/342830de650f5cdc438b2ab2ec6c5e41ad1826c3))
+
+
+### Features
+
+* add MerchantMetafield extension point ([eeb975f](https://github.com/Shopify/app-extension-libs/commit/eeb975f850b155fa6619a7d7e03dafac68ac6e54))
+
+
+
+
+
 ## [0.0.60](https://github.com/Shopify/app-extension-libs/compare/v0.0.59...v0.0.60) (2020-05-08)
 
 
