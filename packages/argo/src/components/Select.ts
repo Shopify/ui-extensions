@@ -6,10 +6,12 @@ interface Option {
 }
 
 export interface SelectProps {
+  error?: string;
   label?: string;
   labelInline?: boolean;
   options: Option[];
   onChange: (value: string) => void;
+  onBlur: () => void;
   value: string;
 }
 
