@@ -7,5 +7,6 @@ packages/*/*.node
 packages/*/*.mjs
 packages/*/*.d.ts
 packages/*/*.js
+packages/*/bin
 !packages/*/.eslintrc.js
 *.log

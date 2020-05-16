@@ -26,9 +26,9 @@ export function argoCheckoutBinary() {
     react(),
     buildFlexibleOutputs({
       binaries: true,
+      node: true,
       esmodules: false,
       esnext: false,
-      node: false,
     }),
   ]);
 }

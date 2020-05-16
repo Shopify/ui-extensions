@@ -9,7 +9,6 @@
   "dependencies": {
     "@remote-ui/core": "^0.0.20",
     "@remote-ui/react": "^0.0.28",
-    "@types/react": "^16.0.0",
-    "react": ">=16.8.0 <17.0.0"
+    "@types/react": "^16.0.0"
   }
 }
