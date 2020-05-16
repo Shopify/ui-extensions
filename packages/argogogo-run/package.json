@@ -5,14 +5,24 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "bin": "./bin/argogogo",
+  "bin": {
+    "argogogo": "./bin/argogogo"
+  },
   "license": "MIT",
+  "devDependencies": {
+    "@types/koa": "^2.11.3",
+    "@types/koa-webpack": "^5.0.1",
+    "@types/webpack": "^4.41.13"
+  },
   "dependencies": {
     "@babel/core": "^7.9.6",
     "@babel/preset-env": "^7.9.6",
     "@babel/preset-typescript": "^7.9.0",
     "babel-loader": "^8.1.0",
+    "get-port": "^5.1.1",
     "koa": "^2.11.0",
-    "koa-webpack": "^5.3.0"
+    "koa-webpack": "^5.3.0",
+    "open": "^7.0.4",
+    "webpack": "^4.43.0"
   }
 }

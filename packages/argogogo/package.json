@@ -6,5 +6,11 @@
     "registry": "https://registry.npmjs.org"
   },
   "bin": "./bin/argogogo",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/cross-spawn": "^6.0.2"
+  },
+  "dependencies": {
+    "cross-spawn": "^7.0.2"
+  }
 }
