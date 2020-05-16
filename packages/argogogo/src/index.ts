@@ -42,6 +42,7 @@ function run() {
     process.exit(1);
   }
 
+  log(`Creating a project in ${directory}`);
   mkdirSync(directory);
 
   const extraDependencies = useReact ? {react: '>=16.8.0 <17.0.0'} : {};
@@ -61,7 +62,7 @@ function run() {
           ...extraDependencies,
         },
         devDependencies: {
-          'argogogo-run': '^0.0.3',
+          'argogogo-run': '^0.0.4',
           ...extraDevDependencies,
         },
       },
@@ -74,7 +75,7 @@ function run() {
     const content = `
 import {renderReact, Button} from '@shopify/argo-checkout-private';
 
-renderReact('Checkout', () => <App />);
+renderReact('LegacyCheckoutUpsell::Render', () => <App />);
 
 function App() {
   return (
@@ -91,9 +92,10 @@ function App() {
     );
   } else {
     const content = `
+import React from 'react';
 import {extend, Button} from '@shopify/argo-checkout-private';
 
-extend('Checkout', (root) => {
+extend('LegacyCheckoutUpsell::Render', (root) => {
   const button = root.createComponent(Button, {
     onPress() {
       console.log('Paid!');
