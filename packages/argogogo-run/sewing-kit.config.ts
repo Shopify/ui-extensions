@@ -3,7 +3,7 @@ import {createProjectBuildPlugin} from '@sewing-kit/plugins';
 import {argoCheckoutBinary} from '../../config/sewing-kit';
 
 export default createPackage((pkg) => {
-  pkg.binary({name: 'argogogo', root: './src/index'});
+  pkg.binary({name: 'argogogo-run', root: './src/index'});
   pkg.use(argoCheckoutBinary());
   pkg.use(
     createProjectBuildPlugin(

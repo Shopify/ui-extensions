@@ -5,9 +5,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "bin": {
-    "argogogo": "./bin/argogogo"
-  },
+  "bin": "./bin/argogogo-run",
   "license": "MIT",
   "devDependencies": {
     "@types/koa": "^2.11.3",
