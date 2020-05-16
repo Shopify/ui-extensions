@@ -17,3 +17,18 @@ export function argoCheckoutPackage() {
     buildFlexibleOutputs(),
   ]);
 }
+
+export function argoCheckoutBinary() {
+  return createComposedProjectPlugin(PLUGIN, [
+    javascript(),
+    typescript(),
+    jestProjectHooks(),
+    react(),
+    buildFlexibleOutputs({
+      binaries: true,
+      esmodules: false,
+      esnext: false,
+      node: false,
+    }),
+  ]);
+}

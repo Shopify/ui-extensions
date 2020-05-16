@@ -3,6 +3,7 @@
   "include": [],
   "references": [
     {"path": "./tsconfig.repo.json"},
-    {"path": "./packages/argo-checkout-private"}
+    {"path": "./packages/argo-checkout-private"},
+    {"path": "./packages/argogogo"}
   ]
 }
