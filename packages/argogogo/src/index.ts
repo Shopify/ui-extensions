@@ -73,6 +73,7 @@ function run() {
 
   if (useReact) {
     const content = `
+import React from 'react';
 import {renderReact, Button} from '@shopify/argo-checkout-private';
 
 renderReact('LegacyCheckoutUpsell::Render', () => <App />);
@@ -92,7 +93,6 @@ function App() {
     );
   } else {
     const content = `
-import React from 'react';
 import {extend, Button} from '@shopify/argo-checkout-private';
 
 extend('LegacyCheckoutUpsell::Render', (root) => {
@@ -161,7 +161,7 @@ function looksLikeExistingProject(directory: string) {
   try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const packageJson = require(join(directory, 'package.json'));
-    return packageJson?.scripts?.start === 'argogogo';
+    return packageJson?.scripts?.start === 'argogogo-run';
   } catch {
     return false;
   }
