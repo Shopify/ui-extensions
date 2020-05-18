@@ -1,4 +1,4 @@
-import type {ReactNode, ComponentType} from 'react';
+import type {ReactNode, FunctionComponent} from 'react';
 import type {
   RemoteComponentType,
   PropsForRemoteComponent,
@@ -10,7 +10,7 @@ export type ReactPropsFromRemoteComponentType<
 
 export type ReactComponentTypeFromRemoteComponentType<
   Type extends RemoteComponentType<any, any, any>
-> = ComponentType<ReactPropsFromRemoteComponentType<Type>>;
+> = FunctionComponent<ReactPropsFromRemoteComponentType<Type>>;
 
 /**
  * We want all the components we export to be usable and strongly
