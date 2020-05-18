@@ -58,11 +58,11 @@ function run() {
           start: 'argogogo-run',
         },
         dependencies: {
-          '@shopify/argo-checkout-private': '^0.0.4',
+          '@shopify/argo-checkout-private': '^0.0.5',
           ...extraDependencies,
         },
         devDependencies: {
-          'argogogo-run': '^0.0.4',
+          'argogogo-run': '^0.0.5',
           ...extraDevDependencies,
         },
       },
