@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-webpack-hot-client",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
