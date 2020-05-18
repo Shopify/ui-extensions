@@ -7,7 +7,7 @@ import koaWebpack from 'koa-webpack';
 import {openBrowser} from './browser';
 import {createWebpackConfiguration} from './webpack-config';
 
-const PLAYGROUND_URL = 'https://argogogo.dev';
+const PRODUCTION_PLAYGROUND_URL = 'https://argogogo.dev';
 
 run();
 
@@ -16,6 +16,7 @@ async function run() {
   const url = `http://localhost:${port}`;
   const publicPath = `${url}/assets/`;
   const filename = 'extension.js';
+  const args = process.argv.slice(2);
 
   const compiler = webpack(
     createWebpackConfiguration({
@@ -72,7 +73,7 @@ async function run() {
 
   await Promise.all([firstCompilePromise, httpListenPromise]);
 
-  const openUrl = `${PLAYGROUND_URL}?extension=${encodeURIComponent(
+  const openUrl = `${playgroundUrl(args)}?extension=${encodeURIComponent(
     JSON.stringify(`${publicPath}${filename}`),
   )}`;
 
@@ -81,6 +82,27 @@ async function run() {
     log(`Opening a preview of your extension at ${openUrl}`);
   } else {
     log(`You can see a preview of your extension at ${openUrl}`);
+  }
+}
+
+// Extract `--playground x` or `--playground=x` from an argv array.
+// Could bring in a CLI arg library, but this is fun practice :)
+function playgroundUrl(args: string[]) {
+  const interestingIndex = args.findIndex((value) =>
+    value.startsWith('--playground'),
+  );
+
+  if (interestingIndex < 0) return PRODUCTION_PLAYGROUND_URL;
+
+  const [arg, nextArg = ''] = args;
+
+  if (arg === '--playground') {
+    return nextArg.startsWith('http')
+      ? nextArg.trim()
+      : PRODUCTION_PLAYGROUND_URL;
+  } else {
+    const url = arg.replace('--playground=', '');
+    return url.startsWith('http') ? url.trim() : PRODUCTION_PLAYGROUND_URL;
   }
 }
 

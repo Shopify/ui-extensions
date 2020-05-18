@@ -9,6 +9,8 @@ try {
   process.exit(1);
 }
 
+const OWN_ARGS = new Set(['--react', '--typescript', '--npm']);
+
 function run() {
   const [, , name, ...rest] = process.argv;
 
@@ -22,6 +24,7 @@ function run() {
   const useReact = rest.includes('--react');
   const useTypeScript = rest.includes('--typescript');
   const useYarn = shouldUseYarn() && !rest.includes('--npm');
+  const runArgs = rest.filter((arg) => !OWN_ARGS.has(arg));
 
   if (existsSync(directory)) {
     if (looksLikeExistingProject(directory)) {
@@ -29,10 +32,13 @@ function run() {
 
       if (useYarn) {
         log('Running yarn start');
-        spawn('yarnpkg', ['start'], {cwd: directory, stdio: 'inherit'});
+        spawn('yarnpkg', ['start', ...runArgs], {
+          cwd: directory,
+          stdio: 'inherit',
+        });
       } else {
         log('Running npm start');
-        spawn('npm', ['start'], {cwd: directory, stdio: 'inherit'});
+        spawn('npm', ['start', ...runArgs], {cwd: directory, stdio: 'inherit'});
       }
 
       return;
@@ -62,7 +68,7 @@ function run() {
           ...extraDependencies,
         },
         devDependencies: {
-          'argogogo-run': '^0.0.5',
+          'argogogo-run': '^0.0.6',
           ...extraDevDependencies,
         },
       },
@@ -145,13 +151,13 @@ extend('Checkout::KitchenSink', (root) => {
     spawn('yarnpkg', ['install'], {cwd: directory, stdio: 'inherit'});
 
     log('Running yarn start');
-    spawn('yarnpkg', ['start'], {cwd: directory, stdio: 'inherit'});
+    spawn('yarnpkg', ['start', ...runArgs], {cwd: directory, stdio: 'inherit'});
   } else {
     log('Running npm install');
     spawn('npm', ['install'], {cwd: directory, stdio: 'inherit'});
 
     log('Running npm start');
-    spawn('npm', ['start'], {cwd: directory, stdio: 'inherit'});
+    spawn('npm', ['start', ...runArgs], {cwd: directory, stdio: 'inherit'});
   }
 }
 
