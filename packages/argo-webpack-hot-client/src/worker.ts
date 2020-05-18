@@ -45,12 +45,6 @@ function run({retry = 0} = {}) {
   );
 
   socket.addEventListener('close', () => {
-    if (open) {
-      log('lost connection to asset server, trying to reconnect...');
-    }
-
-    const timeout = 1000 * retry ** 2 + Math.random() * 100;
-
     if (retry > MAX_RETRIES) {
       log(`ending reconnect after ${MAX_RETRIES} attempts`);
       return;
@@ -61,6 +55,8 @@ function run({retry = 0} = {}) {
       log('lost connection to asset server, trying to reconnect...');
       run();
     } else {
+      const timeout = 1000 * retry ** 2 + Math.random() * 100;
+
       log(`attempting reconnect in ${timeout / 1000}s`);
 
       setTimeout(() => {
