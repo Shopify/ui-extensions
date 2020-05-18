@@ -10,9 +10,10 @@
       "es2017",
       "es2018",
       "esnext",
-      "esnext.asynciterable"
+      "esnext.asynciterable",
+      "WebWorker"
     ]
   },
   "include": ["src/**/*.ts"],
-  "references": [{"path": "../argo-webpack-hot-client"}]
+  "references": []
 }

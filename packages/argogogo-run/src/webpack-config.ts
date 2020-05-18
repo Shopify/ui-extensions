@@ -1,14 +1,21 @@
+import {resolve} from 'path';
 import type {Configuration} from 'webpack';
+import {ArgotHotClient} from '@shopify/argo-webpack-hot-client';
 
 export function createWebpackConfiguration({
   entry,
   output,
-}: Pick<Configuration, 'entry' | 'output'>): Configuration {
+}: Pick<Configuration, 'output'> & {entry: string}): Configuration {
+  const useReact = shouldUseReact();
+
   return {
     mode: 'development',
-    target: 'web',
-    entry,
-    output,
+    target: 'webworker',
+    entry: ['@shopify/argo-webpack-hot-client/worker', entry],
+    output: {
+      globalObject: 'self',
+      ...(output ?? {}),
+    },
     resolve: {
       extensions: ['.esnext', '.mjs', '.ts', '.tsx', '.js', '.json'],
     },
@@ -26,8 +33,8 @@ export function createWebpackConfiguration({
                   '@babel/preset-env',
                   {modules: false, targets: 'last 2 versions'},
                 ],
-                '@babel/preset-react',
-              ],
+                useReact && '@babel/preset-react',
+              ].filter(Boolean),
             },
           },
         },
@@ -59,12 +66,23 @@ export function createWebpackConfiguration({
                   {modules: false, targets: 'last 2 versions'},
                 ],
                 '@babel/preset-typescript',
-                '@babel/preset-react',
-              ],
+                useReact && '@babel/preset-react',
+              ].filter(Boolean),
             },
           },
         },
       ],
     },
+    plugins: [new ArgotHotClient()],
   };
+}
+
+function shouldUseReact() {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const packageJson = require(resolve('package.json'));
+    return Object.keys(packageJson.dependencies).includes('react');
+  } catch {
+    return false;
+  }
 }

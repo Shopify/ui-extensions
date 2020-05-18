@@ -5,10 +5,11 @@
     "access": "restricted",
     "registry": "https://packages.shopify.io/shopify/node/npm/"
   },
+  "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@remote-ui/core": "^0.0.20",
-    "@remote-ui/react": "^0.0.28",
+    "@remote-ui/core": "^0.0.21",
+    "@remote-ui/react": "^0.0.31",
     "@types/react": "^16.0.0"
   },
   "optionalDependencies": {

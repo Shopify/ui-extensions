@@ -7,6 +7,8 @@ import koaWebpack from 'koa-webpack';
 import {openBrowser} from './browser';
 import {createWebpackConfiguration} from './webpack-config';
 
+const PLAYGROUND_URL = 'https://argogogo.dev';
+
 run();
 
 async function run() {
@@ -48,10 +50,13 @@ async function run() {
   const app = new Koa();
   const middleware = await koaWebpack({
     compiler,
-    hotClient: false,
+    hotClient: {autoConfigure: false, logLevel: 'silent'},
     devMiddleware: {
       publicPath,
       logLevel: 'silent',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
     },
   });
 
@@ -67,7 +72,7 @@ async function run() {
 
   await Promise.all([firstCompilePromise, httpListenPromise]);
 
-  const openUrl = `https://checkout-dev.myshopify.io/playground?extension=${encodeURIComponent(
+  const openUrl = `${PLAYGROUND_URL}?extension=${encodeURIComponent(
     JSON.stringify(`${publicPath}${filename}`),
   )}`;
 
