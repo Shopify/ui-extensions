@@ -3,13 +3,13 @@ import {mkdirSync, existsSync, writeFileSync} from 'fs';
 import {execSync} from 'child_process';
 import {sync as spawnSync} from 'cross-spawn';
 
+const OWN_ARGS = new Set(['--react', '--typescript', '--npm']);
+
 try {
   run();
 } catch (error) {
   process.exit(1);
 }
-
-const OWN_ARGS = new Set(['--react', '--typescript', '--npm']);
 
 function run() {
   const [, , name, ...rest] = process.argv;
