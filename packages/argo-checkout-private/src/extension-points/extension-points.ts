@@ -8,5 +8,5 @@ export interface StandardApi {
 }
 
 export interface ExtensionPoints {
-  Checkout: RenderExtension<StandardApi, AllComponents>;
+  'Checkout::KitchenSink': RenderExtension<StandardApi, AllComponents>;
 }

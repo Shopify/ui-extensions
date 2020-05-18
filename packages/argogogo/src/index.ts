@@ -58,7 +58,7 @@ function run() {
           start: 'argogogo-run',
         },
         dependencies: {
-          '@shopify/argo-checkout-private': '^0.0.5',
+          '@shopify/argo-checkout-private': '^0.0.6',
           ...extraDependencies,
         },
         devDependencies: {
@@ -74,15 +74,24 @@ function run() {
   if (useReact) {
     const content = `
 import React from 'react';
-import {renderReact, Button} from '@shopify/argo-checkout-private';
+import {
+  renderReact,
+  Button,
+  FormLayout,
+  TextField,
+} from '@shopify/argo-checkout-private';
 
-renderReact('LegacyCheckoutUpsell::Render', () => <App />);
+renderReact('Checkout::KitchenSink', () => <App />);
 
 function App() {
   return (
-    <Button onPress={() => console.log('Paid!')}>
-      Pay
-    </Button>
+    <FormLayout>
+      <TextField
+        label="Email"
+        onChange={(value) => console.log('email', value)}
+      />
+      <Button onPress={() => console.log('Paid!')}>Pay</Button>
+    </FormLayout>
   );
 }
 `;
@@ -93,16 +102,32 @@ function App() {
     );
   } else {
     const content = `
-import {extend, Button} from '@shopify/argo-checkout-private';
+import {
+  extend,
+  Button,
+  FormLayout,
+  TextField,
+} from '@shopify/argo-checkout-private';
 
-extend('LegacyCheckoutUpsell::Render', (root) => {
+extend('Checkout::KitchenSink', (root) => {
+  const formLayout = root.createComponent(FormLayout);
+  const textField = root.createComponent(TextField, {
+    label: 'Email',
+    onChange(value) {
+      console.log('email', value);
+    },
+  });
+
   const button = root.createComponent(Button, {
     onPress() {
       console.log('Paid!');
     },
   });
   button.appendChild(root.createText('Pay'));
-  root.appendChild(button);
+
+  formLayout.appendChild(textField);
+  formLayout.appendChild(button);
+  root.appendChild(formLayout);
   root.mount();
 
   return {};

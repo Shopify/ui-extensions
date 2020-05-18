@@ -1,4 +1,4 @@
-import type {} from '../extension-points';
+import type {ShopifyGlobal} from '../globals';
 
-export const extend: typeof self.shopify.extend = (...args) =>
+export const extend: ShopifyGlobal['extend'] = (...args) =>
   self.shopify.extend(...args);
