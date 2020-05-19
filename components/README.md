@@ -1,6 +1,5 @@
 # Components
 
-
 ## Action
 
 ### Button
@@ -8,30 +7,61 @@ Buttons are used primarily for actions, such as "Add", "Close", "Cancel", or "Sa
 
 [Button API](../packages/argo/src/components/Button.ts)
 
+### Link
+Links take users to another place, and usually appear within or directly following a sentence.
+
+[Link API](../packages/argo/src/components/Link.ts)
+
+## Basic
+
+### Clickable
+
+Clickable component wraps other components to add `onClick()` functionality. Do not use on `Button` or `Link`.
+
+[Cickable API](../packages/argo/src/components/Clickable.ts)
+
+### Text
+Used to display text in different sizes, color, and alignment.
+
+[Text API](../packages/argo/src/components/Text.ts)
+
+### Stack
+Used to lay out a horizontal or vertical row of components. They can be nested to achieve complex layouts easily.
+
+* Space between child (except `spacing="none"`):
+  * Web: 1.6rem
+  * Android: 16dp
+  * iOS: 8pts
+
+```tsx
+<Stack>
+  <Badge>Paid</Badge>
+  <Badge>Processing</Badge>
+  <Badge>Fulfilled</Badge>
+  <Badge>Completed</Badge>
+</Stack>
+```
+
+[Stack API](../packages/argo/src/components/Stack.ts)
+
+### StackItem
+The stack component will treat multiple elements wrapped in a stack item component as one item. By default, each individual element is treated as one stack item. Use the fill prop on a single stack item component to make it fill the rest of the available horizontal space.
+
+[StackItem API](../packages/argo/src/components/StackItem.ts)
 
 ## Feedback
-
-### Spinner
-Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts.
-
-[Spinner API](../packages/argo/src/components/Spinner.ts)
-
-### Toast
-The toast component is a non-disruptive message that appears at the bottom of the interface to provide quick, at-a-glance feedback on the outcome of an action.
-
-[Toast API](../packages/argo/src/components/Toast.ts)
 
 ### Banner
 Informs merchants about important changes or persistent conditions. Use this component if you need to communicate to merchants in a prominent way. Banners are placed at the top of the page or section they apply to, and below the page or section header.
 
 [Banner API](../packages/argo/src/components/Banner.ts)
 
-## Images and Icons
-
 ### Badge
 Badges are used to inform merchants of the status of an object or of an action that’s been taken.
 
 [Badge API](../packages/argo/src/components/Badge.ts)
+
+## Image and Icon
 
 ### Icon
 Icons are small visual indicators from a set of pre-defined glyphs.
@@ -44,12 +74,18 @@ Use thumbnails as a visual anchor and identifier for an object. They should be u
 [Thumbnail API](../packages/argo/src/components/Thumbnail.ts)
 
 
-## Input
+## Form
 
 ### Checkbox
-A checkbox is an iput field that merchants can choose selected options.
+A checkbox is an input field that merchants can choose selected options.
 
 [Checkbox API](../packages/argo/src/components/Checkbox.ts)
+
+### Radio Button
+
+Use radio buttons where merchants must make a single selection.
+
+[Radio Button API](../packages/argo/src/components/RadioButton.ts)
 
 ### Select
 Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
@@ -62,7 +98,7 @@ A textfield is an input field that merchants can type into. It has a range of op
 [TextField API](../packages/argo/src/components/TextField.ts)
 
 
-## Layout
+## Structure
 
 ### Card
 Cards are used to group similar concepts and tasks together
@@ -101,21 +137,6 @@ A page is typically the top-level component, which defines the title, associated
 
 [Page API](../packages/argo/src/components/Page.ts)
 
-### Stack
-Used to lay out a horizontal or vertical row of components. They can be nested to achieve complex layouts easily.
-
-* Space between child (except `spacing="none"`):
-  * Web: 1.6rem
-  * Android: 16dp
-  * iOS: 8pts
-
-[Stack API](../packages/argo/src/components/Stack.ts)
-
-### StackItem
-The stack component will treat multiple elements wrapped in a stack item component as one item. By default, each individual element is treated as one stack item. Use the fill prop on a single stack item component to make it fill the rest of the available horizontal space.
-
-[StackItem API](../packages/argo/src/components/StackItem.ts)
-
 ## List
 
 ### ResourceItem
@@ -128,14 +149,12 @@ A resource list displays a collection of objects of the same type, like products
 
 [ResourceList API](../packages/argo/src/components/ResourceList.ts)
 
+## Loading
 
-## Titles and text
+### Spinner
+Spinners are used to notify merchants that their action is being processed. For loading states, spinners should only be used for content that can’t be represented with skeleton loading components, like for data charts.
 
-### Text
-Used to display text in different sizes, color, and alignment.
-
-[Text API](../packages/argo/src/components/Text.ts)
-
+[Spinner API](../packages/argo/src/components/Spinner.ts)
 
 ## Overlays
 

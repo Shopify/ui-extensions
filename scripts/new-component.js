@@ -132,5 +132,7 @@ try {
   killProcess("Couldn't create react client component.", error);
 }
 
-console.log('🔥🔥🔥 Remember to update this file:');
+console.log('🔥🔥🔥 Remember to update these files:');
 console.log('components/readme.md');
+console.log('packages/argo/src/component-sets/index.ts');
+console.log('one of the component sets in packages/argo-host/src/component-sets');

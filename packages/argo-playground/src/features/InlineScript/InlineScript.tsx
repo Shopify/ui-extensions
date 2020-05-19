@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {Page} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {ExtensionPoint} from '@shopify/argo';
-import {components} from '@shopify/argo-host';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
 
 import {StandardContainer} from '../../components/containers';
@@ -36,7 +35,6 @@ export function InlineScript() {
         <StandardContainer
           script={inlineScript}
           extensionPoint={ExtensionPoint.SubscriptionManagement}
-          components={components}
         />
       )}
     </Page>

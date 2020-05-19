@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {ExtensionPoint} from '@shopify/argo';
-import {components, useProductData, useToastInput} from '@shopify/argo-host';
+import {useProductData, useToastInput} from '@shopify/argo-host';
 import {Badge, Card, Layout, Link, Page, Stack, TextField} from '@shopify/polaris';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
 
@@ -112,7 +112,6 @@ export function Containers() {
         }}
         script={modalClientScript.url}
         extensionPoint={ExtensionPoint.SubscriptionManagement}
-        components={components}
         input={{...toastInput, ...dataInput}}
         height="450px"
       />

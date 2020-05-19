@@ -2,7 +2,6 @@ import React, {useState, useCallback} from 'react';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
 import {Page, Button, Card, Layout} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
-import {components} from '@shopify/argo-host';
 import {ExtensionPoint} from '@shopify/argo';
 
 import {ModalContainer, StandardContainer, ModalContainerProps} from '../../components/containers';
@@ -25,7 +24,6 @@ export function ModalExtension({
       }}
       script={reactThirdPartyWorker.url}
       extensionPoint={ExtensionPoint.Playground}
-      components={components}
       open={open}
       onClose={onClose}
     />
@@ -42,7 +40,6 @@ export function CardExtension() {
         <StandardContainer
           script={reactThirdPartyWorker.url}
           extensionPoint={ExtensionPoint.Playground}
-          components={components}
         />
       </Card.Section>
     </Card>

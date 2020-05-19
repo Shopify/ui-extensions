@@ -1,5 +1,4 @@
 import {RemoteRoot} from '@shopify/remote-ui-core';
-
 import {
   LayoutInput,
   LocaleInput,
@@ -8,6 +7,7 @@ import {
   ProductDataInput,
   ToastInput,
 } from './extension-input';
+import {AppLinkSchema, PlaygroundSchema, SubscriptionManagementSchema} from './component-schemas';
 
 export enum ExtensionPoint {
   AppLink = 'AppLink',
@@ -40,11 +40,14 @@ export type RenderableExtensionCallback<Input, Root extends RemoteRoot> = (
 ) => ExtensionResult;
 
 export interface ExtensionPointCallback {
-  [ExtensionPoint.AppLink]: RenderableExtensionCallback<StandardInput, RemoteRoot<any>>;
-  [ExtensionPoint.Playground]: RenderableExtensionCallback<StandardInput, RemoteRoot<any>>;
+  [ExtensionPoint.AppLink]: RenderableExtensionCallback<StandardInput, RemoteRoot<AppLinkSchema>>;
+  [ExtensionPoint.Playground]: RenderableExtensionCallback<
+    StandardInput,
+    RemoteRoot<PlaygroundSchema>
+  >;
   [ExtensionPoint.SubscriptionManagement]: RenderableExtensionCallback<
     SubscriptionInput,
-    RemoteRoot<any>
+    RemoteRoot<SubscriptionManagementSchema>
   >;
   [ExtensionPoint.MerchantMetafield]: RenderableExtensionCallback<StandardInput, RemoteRoot<any>>;
 }

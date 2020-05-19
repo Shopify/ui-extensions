@@ -1,9 +1,10 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useEffect, useMemo, useState, ComponentType} from 'react';
 import {ExtensionPoint, ExtensionInput} from '@shopify/argo';
 import {retain} from '@shopify/remote-ui-core';
 import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
 
 import {Worker} from './worker';
+import {extensionComponentsLoader} from './component-schemas';
 
 export enum ReadyState {
   Loading,
@@ -27,13 +28,14 @@ const RENDER_TIMEOUT_INTERVAL = 5000;
 export function ArgoExtension<T extends ExtensionPoint>({
   extensionPoint,
   script,
-  components = {},
+  components: externalComponents,
   input,
   receiver: externalReceiver,
   worker,
   onReadyStateChange,
 }: ArgoExtensionsProps<T>) {
   const [readyState, setReadyState] = useState(ReadyState.Loading);
+  const [components, setComponents] = useState<Record<string, ComponentType>>({});
   const receiver = useMemo(() => externalReceiver || new RemoteReceiver(), [externalReceiver]);
 
   useEffect(() => onReadyStateChange?.(readyState), [readyState, onReadyStateChange]);
@@ -49,6 +51,12 @@ export function ArgoExtension<T extends ExtensionPoint>({
       clearTimeout(id);
     };
   }, [readyState]);
+
+  useEffect(() => {
+    (async () => {
+      setComponents(externalComponents || (await extensionComponentsLoader[extensionPoint]()));
+    })();
+  }, [extensionPoint, externalComponents]);
 
   useEffect(() => {
     (async () => {

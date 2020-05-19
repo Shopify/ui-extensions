@@ -2,7 +2,6 @@ import React from 'react';
 import {createPlainWorkerFactory} from '@shopify/web-worker';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {ExtensionPoint} from '@shopify/argo';
-import {components} from '@shopify/argo-host';
 
 import {StandardContainer} from '../../components/containers';
 
@@ -17,7 +16,6 @@ export function UseForm() {
     <StandardContainer
       script={reactThirdPartyWorker.url}
       extensionPoint={ExtensionPoint.Playground}
-      components={components}
     />
   );
 }

@@ -57,6 +57,12 @@ module.exports = {
             babelrc: false,
             presets: [
               [
+                '@babel/preset-env',
+                {
+                  forceAllTransforms: true,
+                },
+              ],
+              [
                 'babel-preset-shopify/web',
                 {
                   modules: 'commonjs',
@@ -69,12 +75,7 @@ module.exports = {
                 },
               ],
               'babel-preset-shopify/react',
-              [
-                '@babel/preset-env',
-                {
-                  forceAllTransforms: true,
-                },
-              ],
+              
             ],
             plugins: [
               '@babel/transform-runtime',

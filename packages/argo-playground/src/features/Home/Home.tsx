@@ -3,7 +3,6 @@ import {createPlainWorkerFactory} from '@shopify/web-worker';
 import {Page} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {ExtensionPoint} from '@shopify/argo';
-import {components} from '@shopify/argo-host';
 
 import {StandardContainer} from '../../components/containers';
 
@@ -19,7 +18,6 @@ export function Home() {
       <StandardContainer
         script={reactThirdPartyWorker.url}
         extensionPoint={ExtensionPoint.Playground}
-        components={components}
       />
     </Page>
   );
