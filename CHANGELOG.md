@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.62](https://github.com/Shopify/app-extension-libs/compare/v0.0.61...v0.0.62) (2020-05-19)
+
+
+### Features
+
+* add validation to select ([#521](https://github.com/Shopify/app-extension-libs/issues/521)) ([a13acd8](https://github.com/Shopify/app-extension-libs/commit/a13acd86c9545fe04a15f074ee79bf7b95dcd4de))
+* enable displaying an error and loading state ([31d2a86](https://github.com/Shopify/app-extension-libs/commit/31d2a867a9248d5be4e1e98b8b4dee15031959a1))
+
+
+
+
+
 ## [0.0.61](https://github.com/Shopify/app-extension-libs/compare/v0.0.60...v0.0.61) (2020-05-14)
 
 
