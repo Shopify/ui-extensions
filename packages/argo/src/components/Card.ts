@@ -9,6 +9,7 @@ import {Action} from '../types';
  * @property primaryFooterAction Primary action for the card footer
  * @property secondaryFooterActions Secondary actions for the card footer
  * @property children Inner content of the card
+ * @property actions Card header action
  */
 export interface CardProps {
   title?: string;
@@ -16,6 +17,7 @@ export interface CardProps {
   primaryFooterAction?: Action;
   secondaryFooterActions?: Action[];
   children?: React.ReactNode;
+  actions?: Action[];
 }
 
 export const Card = createRemoteComponent<'Card', CardProps>('Card');

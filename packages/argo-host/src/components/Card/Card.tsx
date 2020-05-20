@@ -10,15 +10,18 @@ export default function Card({
   title,
   children,
   sectioned,
+  actions: cardHeaderActions,
 }: CardProps) {
   const polarisPrimaryFooterAction = useWrapAction(primaryFooterAction);
   const polarisSecondaryFooterActions = useWrapActions(secondaryFooterActions);
+  const polarisCardHeaderActions = useWrapActions(cardHeaderActions);
   return (
     <PolarisCard
       title={title}
       sectioned={sectioned}
       primaryFooterAction={polarisPrimaryFooterAction}
       secondaryFooterActions={polarisSecondaryFooterActions}
+      actions={polarisCardHeaderActions}
     >
       {children}
     </PolarisCard>

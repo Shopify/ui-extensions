@@ -62,6 +62,7 @@ function App() {
 
   const [cardPrimaryFooterValue, setCardPrimaryFooterValue] = useState('N/A');
   const [cardSecondaryFooterValue, setCardSecondaryFooterValue] = useState('N/A');
+  const [cardHeaderValue, setCardHeaderValue] = useState('N/A');
 
   const [buttonValue, setButtonValue] = useState(0);
   const onButtonClick = useCallback(() => {
@@ -223,9 +224,18 @@ function App() {
             },
           },
         ]}
+        actions={[
+          {
+            content: 'Card Header',
+            onAction: () => {
+              setCardHeaderValue(new Date().toISOString());
+            },
+          },
+        ]}
       >
         <Text>PrimaryFooterAction: {cardPrimaryFooterValue}</Text>
         <Text>SecondaryFooterAction: {cardSecondaryFooterValue}</Text>
+        <Text>CardHeaderAction: {cardHeaderValue}</Text>
       </Card>
       <Card title="CardSection component">
         <CardSection title="CardSection 1">
