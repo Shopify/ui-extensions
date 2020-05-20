@@ -2,9 +2,11 @@ import {createRemoteComponent} from '../../utilities';
 
 export interface ButtonProps {
   type?: 'button' | 'submit';
-  url?: string;
-  loading?: boolean;
   disabled?: boolean;
+  url?: string;
+  subdued?: boolean;
+  plain?: boolean;
+  loading?: boolean;
   onPress?(): void;
 }
 

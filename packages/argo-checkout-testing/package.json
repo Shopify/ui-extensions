@@ -1,9 +1,9 @@
 {
-  "name": "@shopify/argo-checkout-private",
-  "version": "0.0.7",
+  "name": "@shopify/argo-checkout-testing",
+  "version": "0.0.0",
   "publishConfig": {
-    "access": "restricted",
-    "registry": "https://packages.shopify.io/shopify/node/npm/"
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
   },
   "sideEffects": false,
   "license": "MIT",
