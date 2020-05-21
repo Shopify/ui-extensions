@@ -11,6 +11,9 @@ jest.mock('../../extend', () => ({
 describe('render()', () => {
   it('calls extend() with the extension point', () => {
     renderReact('Checkout::KitchenSink', () => <></>);
-    expect(extend).toHaveBeenCalledWith('Checkout', expect.any(Function));
+    expect(extend).toHaveBeenCalledWith(
+      'Checkout::KitchenSink',
+      expect.any(Function),
+    );
   });
 });
