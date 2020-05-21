@@ -78,6 +78,7 @@ async function run() {
 
   const openUrl = new URL(playgroundUrl(args));
   const extensionPoint = namedArgument('extension-point', args);
+
   openUrl.searchParams.set('extension', JSON.stringify(fileUrl));
 
   if (extensionPoint) {

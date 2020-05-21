@@ -68,7 +68,7 @@ function run() {
           ...extraDependencies,
         },
         devDependencies: {
-          'argogogo-run': '^0.0.8',
+          'argogogo-run': '^0.0.9',
           ...extraDevDependencies,
         },
       },
