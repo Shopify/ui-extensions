@@ -1,4 +1,5 @@
 import {resolve} from 'path';
+import {URL} from 'url';
 import getPort from 'get-port';
 import webpack from 'webpack';
 import Koa from 'koa';
@@ -16,6 +17,7 @@ async function run() {
   const url = `http://localhost:${port}`;
   const publicPath = `${url}/assets/`;
   const filename = 'extension.js';
+  const fileUrl = `${publicPath}${filename}`;
   const args = process.argv.slice(2);
 
   const compiler = webpack(
@@ -64,7 +66,7 @@ async function run() {
   app.use(middleware);
 
   log(`Starting dev server on ${url}`);
-  log(`Your script is available at ${publicPath}${filename}`);
+  log(`Your script is available at ${fileUrl}`);
 
   const httpListenPromise = new Promise((resolve) => {
     app.listen(port, () => {
@@ -74,37 +76,38 @@ async function run() {
 
   await Promise.all([firstCompilePromise, httpListenPromise]);
 
-  const openUrl = `${playgroundUrl(args)}?extension=${encodeURIComponent(
-    JSON.stringify(`${publicPath}${filename}`),
-  )}`;
+  const openUrl = new URL(playgroundUrl(args));
+  const extensionPoint = namedArgument('extension-point', args);
+  openUrl.searchParams.set('extension', JSON.stringify(fileUrl));
 
-  const opened = openBrowser(openUrl);
+  if (extensionPoint) {
+    openUrl.searchParams.set('extension-point', extensionPoint);
+  }
+
+  const opened = openBrowser(openUrl.href);
   if (opened) {
-    log(`Opening a preview of your extension at ${openUrl}`);
+    log(`Opening a preview of your extension at ${openUrl.href}`);
   } else {
-    log(`You can see a preview of your extension at ${openUrl}`);
+    log(`You can see a preview of your extension at ${openUrl.href}`);
   }
 }
 
-// Extract `--playground x` or `--playground=x` from an argv array.
-// Could bring in a CLI arg library, but this is fun practice :)
 function playgroundUrl(args: string[]) {
-  const interestingIndex = args.findIndex((value) =>
-    value.startsWith('--playground'),
-  );
+  const url = namedArgument('playground', args);
+  return url?.startsWith('http') ? url.trim() : PRODUCTION_PLAYGROUND_URL;
+}
+
+// Extract `--name x` or `--name=x` from an argv array.
+// Could bring in a CLI arg library, but this is fun practice :)
+function namedArgument(name: string, args: string[]): string | undefined {
+  const flag = `--${name}`;
+  const interestingIndex = args.findIndex((value) => value.startsWith(flag));
 
   if (interestingIndex < 0) return PRODUCTION_PLAYGROUND_URL;
 
   const [arg, nextArg = ''] = args;
 
-  if (arg === '--playground') {
-    return nextArg.startsWith('http')
-      ? nextArg.trim()
-      : PRODUCTION_PLAYGROUND_URL;
-  } else {
-    const url = arg.replace('--playground=', '');
-    return url.startsWith('http') ? url.trim() : PRODUCTION_PLAYGROUND_URL;
-  }
+  return arg === flag ? nextArg : arg.replace(`${flag}=`, '');
 }
 
 function log(message: string, {error = false} = {}) {

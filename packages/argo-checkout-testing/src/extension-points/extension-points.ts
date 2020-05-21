@@ -1,22 +1,16 @@
 import {RenderExtension} from './render-extension';
+import type {StandardApi, PostPurchaseCrossSellApi} from './input';
 
 type Components = typeof import('../components');
 type AllComponents = Components[keyof Components];
 
-export type Version = 'unstable';
-
-export interface StandardApi {
-  version: Version;
-}
-
-// Separator
-// Image
-
 export interface ExtensionPoints {
   'Checkout::KitchenSink': RenderExtension<StandardApi, AllComponents>;
   'Checkout::PostPurchaseCrossSell::Render': RenderExtension<
-    StandardApi,
+    PostPurchaseCrossSellApi,
     AllComponents
   >;
   'Checkout::PostPurchaseCrossSell::Inquiry': () => boolean;
 }
+
+export type ExtensionPoint = keyof ExtensionPoints;
