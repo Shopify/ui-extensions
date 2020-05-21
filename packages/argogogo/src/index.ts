@@ -85,7 +85,7 @@ import {
   Button,
   FormLayout,
   TextField,
-} from '@shopify/argo-checkout-private';
+} from '@shopify/argo-checkout-testing';
 
 renderReact('Checkout::KitchenSink', () => <App />);
 
@@ -113,7 +113,7 @@ import {
   Button,
   FormLayout,
   TextField,
-} from '@shopify/argo-checkout-private';
+} from '@shopify/argo-checkout-testing';
 
 extend('Checkout::KitchenSink', (root) => {
   const formLayout = root.createComponent(FormLayout);
