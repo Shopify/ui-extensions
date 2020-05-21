@@ -1,12 +1,12 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Action} from '../types';
+import {DestructableAction} from '../types';
 
 export interface ModalProps {
   open: boolean;
   title: string;
-  primaryAction?: Action;
-  secondaryActions?: Action[];
+  primaryAction?: DestructableAction;
+  secondaryActions?: DestructableAction[];
   onClose: () => void;
   children?: React.ReactNode;
 }

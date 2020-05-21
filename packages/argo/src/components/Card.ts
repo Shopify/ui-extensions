@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Action} from '../types';
+import {DestructableAction, DisableableAction} from '../types';
 
 /**
  * Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
@@ -14,10 +14,10 @@ import {Action} from '../types';
 export interface CardProps {
   title?: string;
   sectioned?: boolean;
-  primaryFooterAction?: Action;
-  secondaryFooterActions?: Action[];
+  primaryFooterAction?: DestructableAction;
+  secondaryFooterActions?: DestructableAction[];
   children?: React.ReactNode;
-  actions?: Action[];
+  actions?: DisableableAction[];
 }
 
 export const Card = createRemoteComponent<'Card', CardProps>('Card');
