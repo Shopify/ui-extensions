@@ -1,5 +1,6 @@
 export type {
   ExtensionPoints,
+  ExtensionPoint,
   RenderExtensionPoints,
   RenderExtensions,
   RenderExtension,
@@ -8,6 +9,7 @@ export type {
   InputForRenderExtension,
   ReturnTypeForExtension,
   StandardApi,
+  Version,
 } from './extension-points';
 
 export * from './components';

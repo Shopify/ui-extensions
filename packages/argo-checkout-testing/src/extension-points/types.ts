@@ -9,13 +9,17 @@ export type ArgumentsForExtension<
   ID extends keyof ExtensionPoints
 > = Parameters<ExtensionPoints[ID]>;
 
-export type RenderExtensions = {
+export type RenderExtensionPoint = {
   [ID in keyof ExtensionPoints]: ExtensionPoints[ID] extends RenderExtension<
     any,
     any
   >
-    ? ExtensionPoints[ID]
+    ? ID
     : never;
+}[keyof ExtensionPoints];
+
+export type RenderExtensions = {
+  [ID in RenderExtensionPoint]: ExtensionPoints[ID];
 };
 
 export type RenderExtensionPoints = {

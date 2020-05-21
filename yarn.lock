@@ -1170,20 +1170,20 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@remote-ui/core@^0.0.24":
-  version "0.0.24"
-  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-0.0.24.tgz#13b739bb5487d158262f6627723ce0bc5294691c"
-  integrity sha512-HdmZSVITkISHnHzXFuko/aHSfXHRmT7u3gmtwLMOgP5hPegxhYdlEURlgsuC0Ea4wLkRXGeGoUqmTJzPpbpIKw==
+"@remote-ui/core@^0.0.25":
+  version "0.0.25"
+  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-0.0.25.tgz#68aaa0bf645b4a73629a6dc62aa989a14ae8abdd"
+  integrity sha512-qnvtB8j37x1J2ai/4ft3Co43IeBjECVTork2IX6COfQczBiHG0bn3GT18m2dOPzUXKiKxq6ZcM01QVwOfz1/og==
   dependencies:
     "@remote-ui/rpc" "^0.0.9"
-    "@remote-ui/types" "^0.0.7"
+    "@remote-ui/types" "^0.0.8"
 
-"@remote-ui/react@^0.0.34":
-  version "0.0.34"
-  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-0.0.34.tgz#e0f06d44e4a71c171374dcbb3031d362e8700377"
-  integrity sha512-g6d+5i7UJFjoeAIhco3oZJpI3K/6CpyA7UD1NsyEqgImKGnaOXqDKFboQGRkF+VGEIfEvALzVlEtEBI+HM6Egw==
+"@remote-ui/react@^0.0.35":
+  version "0.0.35"
+  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-0.0.35.tgz#af4c68388d0054c05c59aa764a00c08c9d62bb0d"
+  integrity sha512-iMYq5ZiN5oK/N0jXuql3frbnBOsQ/OLpBsoV3uBssyicHro/ZFeHTuit5eOk6htLpEmdPoDouJeDRYfljAvtAA==
   dependencies:
-    "@remote-ui/core" "^0.0.24"
+    "@remote-ui/core" "^0.0.25"
     "@remote-ui/rpc" "^0.0.9"
     "@remote-ui/web-workers" "^0.0.15"
     "@types/react" ">=16.8.0 <17.0.0"
@@ -1194,10 +1194,10 @@
   resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-0.0.9.tgz#64fdf185f240b3f10e50ddd28bb449d2a0d4e605"
   integrity sha512-K+37DIpA5HO3qolLKFr7c4tI1j9ZjpYIk9IE4LSxTVyc8lxn6aeGaEJ0p6kIpcLvB3fyJWYNFI3wF57DZC6+0g==
 
-"@remote-ui/types@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@remote-ui/types/-/types-0.0.7.tgz#22657103513340dcffb74f15c161ae6d28fb5c01"
-  integrity sha512-d+WmrbkUb+CWOd9hV6mPc+UYbdzM22I+3EVCOhkphFSnGBqz1ffOaIp5ME2w287/DsAEOvd4YwsCyrNR5pIwfg==
+"@remote-ui/types@^0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@remote-ui/types/-/types-0.0.8.tgz#984e45c64a1ea0178e776f03d31cbd29c88da853"
+  integrity sha512-68MGy8mMfGA+gdekrQ69Yqr2QceZxruEbkJi7mV9ABCHGV4Lc9Y7cohFNWc3jV+NjzxQLFX0s+M4w1MAAVUclQ==
 
 "@remote-ui/web-workers@^0.0.15":
   version "0.0.15"

@@ -1,8 +1,10 @@
 import {useContext} from 'react';
+
 import {
   RenderExtensionPoints,
   InputForRenderExtension,
 } from '../../extension-points';
+
 import {ExtensionInputContext} from './context';
 
 export function useExtensionInput<
