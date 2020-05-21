@@ -64,7 +64,7 @@ function run() {
           start: 'argogogo-run',
         },
         dependencies: {
-          '@shopify/argo-checkout-testing': '^0.0.3',
+          '@shopify/argo-checkout-testing': '^0.0.4',
           ...extraDependencies,
         },
         devDependencies: {
