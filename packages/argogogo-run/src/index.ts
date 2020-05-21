@@ -104,11 +104,12 @@ function namedArgument(name: string, args: string[]): string | undefined {
   const flag = `--${name}`;
   const interestingIndex = args.findIndex((value) => value.startsWith(flag));
 
-  if (interestingIndex < 0) return PRODUCTION_PLAYGROUND_URL;
+  if (interestingIndex < 0) return undefined;
 
-  const [arg, nextArg = ''] = args;
+  const arg = args[interestingIndex];
+  const nextArg = args[interestingIndex + 1];
 
-  return arg === flag ? nextArg : arg.replace(`${flag}=`, '');
+  return arg === flag ? nextArg : arg?.replace(`${flag}=`, '');
 }
 
 function log(message: string, {error = false} = {}) {
