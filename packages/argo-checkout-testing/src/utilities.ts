@@ -5,11 +5,11 @@ import type {
 } from '@remote-ui/core';
 
 export type ReactPropsFromRemoteComponentType<
-  Type extends RemoteComponentType<any, any, any>
+  Type extends RemoteComponentType<string, any, any>
 > = PropsForRemoteComponent<Type> & {children?: ReactNode};
 
 export type ReactComponentTypeFromRemoteComponentType<
-  Type extends RemoteComponentType<any, any, any>
+  Type extends RemoteComponentType<string, any, any>
 > = FunctionComponent<ReactPropsFromRemoteComponentType<Type>>;
 
 /**
@@ -23,7 +23,7 @@ export type ReactComponentTypeFromRemoteComponentType<
 export function createRemoteComponent<
   Type extends string,
   Props = {},
-  AllowedChildren extends RemoteComponentType<any, any> | boolean = true
+  AllowedChildren extends RemoteComponentType<string, any> | boolean = true
 >(
   componentType: Type,
 ): RemoteComponentType<Type, Props, AllowedChildren> &

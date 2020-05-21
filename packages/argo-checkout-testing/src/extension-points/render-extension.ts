@@ -6,7 +6,7 @@ interface RenderResult<Input> {
 
 export interface RenderExtension<
   Input,
-  AllowedComponents extends RemoteComponentType<any, any>
+  AllowedComponents extends RemoteComponentType<string, any>
 > {
   (root: RemoteRoot<AllowedComponents, true>, input: Input): RenderResult<
     Input
