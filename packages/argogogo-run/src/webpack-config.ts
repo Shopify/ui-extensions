@@ -16,6 +16,14 @@ const BABEL_PRESET_ENV_OPTIONS = {
   useBuiltIns: 'usage',
 };
 
+const BABEL_PLUGINS = [
+  '@babel/plugin-syntax-dynamic-import',
+  '@babel/plugin-proposal-numeric-separator',
+  '@babel/plugin-proposal-optional-chaining',
+  '@babel/plugin-proposal-nullish-coalescing-operator',
+  ['@babel/plugin-proposal-class-properties', {loose: true}],
+];
+
 export function createWebpackConfiguration({
   entry,
   output,
@@ -46,6 +54,7 @@ export function createWebpackConfiguration({
                 ['@babel/preset-env', BABEL_PRESET_ENV_OPTIONS],
                 useReact && '@babel/preset-react',
               ].filter(Boolean),
+              plugins: BABEL_PLUGINS,
             },
           },
         },
@@ -56,6 +65,7 @@ export function createWebpackConfiguration({
             options: {
               configFile: false,
               presets: [['@babel/preset-env', BABEL_PRESET_ENV_OPTIONS]],
+              plugins: BABEL_PLUGINS,
             },
           },
         },
@@ -71,6 +81,7 @@ export function createWebpackConfiguration({
                 '@babel/preset-typescript',
                 useReact && '@babel/preset-react',
               ].filter(Boolean),
+              plugins: BABEL_PLUGINS,
             },
           },
         },
