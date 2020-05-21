@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React, {useCallback, useMemo} from 'react';
 import {SelectProps} from '@shopify/argo/components';
 import {Select as PolarisSelect} from '@shopify/polaris';
 
@@ -12,7 +12,7 @@ export default function Select({
   value,
 }: SelectProps) {
   const polarisOnChange = useCallback(selected => onChange(selected), [onChange]);
-  const polarisOnBlur = useCallback(() => onBlur(), [onBlur]);
+  const polarisOnBlur = useMemo(() => (onBlur ? () => onBlur() : undefined), [onBlur]);
   return (
     <PolarisSelect
       label={label}

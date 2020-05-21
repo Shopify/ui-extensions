@@ -35,7 +35,7 @@ export function ArgoExtension<T extends ExtensionPoint>({
   onReadyStateChange,
 }: ArgoExtensionsProps<T>) {
   const [readyState, setReadyState] = useState(ReadyState.Loading);
-  const [components, setComponents] = useState<Record<string, ComponentType>>({});
+  const [components, setComponents] = useState<Record<string, ComponentType<any>>>({});
   const receiver = useMemo(() => externalReceiver || new RemoteReceiver(), [externalReceiver]);
 
   useEffect(() => onReadyStateChange?.(readyState), [readyState, onReadyStateChange]);
@@ -70,10 +70,11 @@ export function ArgoExtension<T extends ExtensionPoint>({
 
   useEffect(() => {
     (async () => {
-      if (!script) {
+      const componentsList = Object.keys(components);
+      if (!script || !componentsList.length) {
         return;
       }
-      await worker.render(extensionPoint, input, Object.keys(components), (type, ...args) => {
+      await worker.render(extensionPoint, input, componentsList, (type, ...args) => {
         // Have a proper fix in remote-ui core library later
         // Ref: https://github.com/Shopify/app-extension-libs/issues/436#issuecomment-622008563
         retain(args);

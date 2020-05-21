@@ -11,7 +11,7 @@ export interface SelectProps {
   labelInline?: boolean;
   options: Option[];
   onChange: (value: string) => void;
-  onBlur: () => void;
+  onBlur?: () => void;
   value: string;
 }
 
