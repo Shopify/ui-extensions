@@ -2,6 +2,20 @@ import {resolve} from 'path';
 import type {Configuration} from 'webpack';
 import {ArgotHotClient} from '@shopify/argo-webpack-hot-client';
 
+const DEVELOPMENT_BROWSERS = [
+  'last 1 chrome version',
+  'last 1 firefox version',
+  'last 1 safari version',
+  'last 1 edge version',
+];
+
+const BABEL_PRESET_ENV_OPTIONS = {
+  corejs: 3,
+  modules: false,
+  targets: DEVELOPMENT_BROWSERS,
+  useBuiltIns: 'usage',
+};
+
 export function createWebpackConfiguration({
   entry,
   output,
@@ -29,10 +43,7 @@ export function createWebpackConfiguration({
             options: {
               configFile: false,
               presets: [
-                [
-                  '@babel/preset-env',
-                  {modules: false, targets: 'last 2 versions'},
-                ],
+                ['@babel/preset-env', BABEL_PRESET_ENV_OPTIONS],
                 useReact && '@babel/preset-react',
               ].filter(Boolean),
             },
@@ -44,12 +55,7 @@ export function createWebpackConfiguration({
             loader: 'babel-loader',
             options: {
               configFile: false,
-              presets: [
-                [
-                  '@babel/preset-env',
-                  {modules: false, targets: 'last 2 versions'},
-                ],
-              ],
+              presets: [['@babel/preset-env', BABEL_PRESET_ENV_OPTIONS]],
             },
           },
         },
@@ -61,10 +67,7 @@ export function createWebpackConfiguration({
             options: {
               configFile: false,
               presets: [
-                [
-                  '@babel/preset-env',
-                  {modules: false, targets: 'last 2 versions'},
-                ],
+                ['@babel/preset-env', BABEL_PRESET_ENV_OPTIONS],
                 '@babel/preset-typescript',
                 useReact && '@babel/preset-react',
               ].filter(Boolean),
