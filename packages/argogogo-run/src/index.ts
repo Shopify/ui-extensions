@@ -63,7 +63,8 @@ async function run() {
 
   app.use(middleware);
 
-  log(`Starting dev server at ${url}`);
+  log(`Starting dev server on ${url}`);
+  log(`Your script is available at ${publicPath}${filename}`);
 
   const httpListenPromise = new Promise((resolve) => {
     app.listen(port, () => {

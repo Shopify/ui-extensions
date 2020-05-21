@@ -26,3 +26,4 @@ export type {
 export type Components = typeof import('./components');
 
 export {extend, renderReact, useExtensionInput} from './api';
+export type {ShopifyGlobal} from './globals';

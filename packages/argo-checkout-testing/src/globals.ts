@@ -5,6 +5,7 @@ export interface ShopifyGlobal {
     extensionPoint: ExtensionPoint,
     extend: ExtensionPoints[ExtensionPoint],
   ): void;
+  reload(): void;
 }
 
 declare global {
