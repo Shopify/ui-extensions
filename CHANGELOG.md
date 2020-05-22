@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.63-alpha.0](https://github.com/Shopify/app-extension-libs/compare/v0.0.62...v0.0.63-alpha.0) (2020-05-22)
+
+
+### Bug Fixes
+
+* async cause callbacks not to work ([#556](https://github.com/Shopify/app-extension-libs/issues/556)) ([e45c1b0](https://github.com/Shopify/app-extension-libs/commit/e45c1b0695d4ead12e0c0c5f558dee8038699659))
+
+
+### Features
+
+* **card:** add card header ([d26d69f](https://github.com/Shopify/app-extension-libs/commit/d26d69fcf3c48c9356bc825a44f40ca097044df3))
+* add component groups ([#514](https://github.com/Shopify/app-extension-libs/issues/514)) ([11fb50b](https://github.com/Shopify/app-extension-libs/commit/11fb50b0ad910d923405535d109a9f220a83d9e3))
+
+
+
+
+
 ## [0.0.62](https://github.com/Shopify/app-extension-libs/compare/v0.0.61...v0.0.62) (2020-05-19)
 
 

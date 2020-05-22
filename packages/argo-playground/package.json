@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-playground",
-  "version": "0.0.62",
+  "version": "0.0.63-alpha.0",
   "private": true,
   "browserslist": [
     "extends @shopify/browserslist-config"
