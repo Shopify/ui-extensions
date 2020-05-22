@@ -42,7 +42,7 @@ export function StandardContainer<T extends ExtensionPoint>(props: StandardConta
   const worker = useMemo(
     () =>
       createWorker({
-        // createMessenger: createIframeWorkerMessenger,
+        createMessenger: createIframeWorkerMessenger,
       }),
     [],
   );
