@@ -1,5 +1,5 @@
 import React from 'react';
-import {createPlainWorkerFactory} from '@shopify/web-worker';
+import {createPlainWorkerFactory} from '@remote-ui/web-workers';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {ExtensionPoint} from '@shopify/argo';
 

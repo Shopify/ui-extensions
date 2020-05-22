@@ -1,5 +1,5 @@
 import {ExtensionPoint, ExtensionInput, ExtensionPointCallback, ShopifyApi} from '@shopify/argo';
-import {WorkerCreator} from '@shopify/react-web-worker';
+import {WorkerCreator} from '@remote-ui/web-workers';
 import {createRemoteRoot, RemoteChannel, retain} from '@remote-ui/core';
 
 const registeredExtensions = new Map<ExtensionPoint, ExtensionPointCallback[ExtensionPoint]>();

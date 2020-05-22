@@ -9,7 +9,7 @@ import {
   createIframeWorkerMessenger,
   ReadyState,
 } from '@shopify/argo-host';
-import {createWorkerFactory, useWorker} from '@shopify/react-web-worker';
+import {createWorkerFactory} from '@remote-ui/web-workers';
 import {LoadingSpinner} from './shared/LoadingSpinner';
 import {Error} from './shared/Error';
 
@@ -39,9 +39,14 @@ export function StandardContainer<T extends ExtensionPoint>(props: StandardConta
   const {onReadyStateChange, timeoutError = <Error />, loading = <LoadingSpinner />} = props;
   const [readyState, setReadyState] = useState(ReadyState.Loading);
 
-  const worker = useWorker(createWorker, {
-    // createMessenger: createIframeWorkerMessenger,
-  });
+  const worker = useMemo(
+    () =>
+      createWorker({
+        // createMessenger: createIframeWorkerMessenger,
+      }),
+    [],
+  );
+
   const [ref, layoutInput] = useLayoutInput();
   const sessionTokenInput = useSessionTokenInput(() => {
     return Promise.resolve(

@@ -2,7 +2,7 @@ import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import {ExtensionPoint} from '@shopify/argo';
 import {ReadyState, useModalActionsInput} from '@shopify/argo-host';
 import {Modal, ModalProps} from '@shopify/polaris';
-import {retain} from '@shopify/web-worker';
+import {retain} from '@remote-ui/web-workers';
 
 import {ArgoHeader} from './shared/Header';
 import {StandardContainer, StandardContainerProps} from './StandardContainer';

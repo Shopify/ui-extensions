@@ -14,10 +14,9 @@
   },
   "dependencies": {
     "@juggle/resize-observer": "^3.1.3",
+    "@remote-ui/react": "^0.0.35",
     "@shopify/argo": "0.0.62",
     "@shopify/polaris": "^4.19.0",
-    "@shopify/react-web-worker": "^1.2.9",
-    "@remote-ui/react": "^0.0.33",
     "react": "^16.12.0",
     "typescript": "^3.7.2"
   },

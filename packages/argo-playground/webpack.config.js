@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {resolve} = require('path');
-const {WebWorkerPlugin} = require('@shopify/web-worker/webpack');
+const {WebWorkerPlugin} = require('@remote-ui/web-workers/webpack');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -75,12 +75,11 @@ module.exports = {
                 },
               ],
               'babel-preset-shopify/react',
-              
             ],
             plugins: [
               '@babel/transform-runtime',
               '@shopify/react-i18n/babel',
-              require.resolve('@shopify/web-worker/babel'),
+              '@remote-ui/web-workers/babel',
             ],
           },
         },
