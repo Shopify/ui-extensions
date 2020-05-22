@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {ExtensionPoint} from '@shopify/argo';
 import {useProductData, useToastInput} from '@shopify/argo-host';
 import {Badge, Card, Layout, Link, Page, Stack, TextField} from '@shopify/polaris';
-import {createPlainWorkerFactory} from '@shopify/web-worker';
+import {createPlainWorkerFactory} from '@remote-ui/web-workers';
 
 import {ModalContainer} from '../../components/containers';
 
