@@ -1,7 +1,4 @@
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@shopify/remote-ui-react';
+import {createRemoteReactComponent, ReactPropsFromRemoteComponentType} from '@remote-ui/react';
 
 import {CardSection as BaseCardSection} from '@shopify/argo/components';
 

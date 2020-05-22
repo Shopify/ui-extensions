@@ -1,7 +1,4 @@
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@shopify/remote-ui-react';
+import {createRemoteReactComponent, ReactPropsFromRemoteComponentType} from '@remote-ui/react';
 
 import {ResourceItem as BaseResourceItem} from '@shopify/argo/components';
 

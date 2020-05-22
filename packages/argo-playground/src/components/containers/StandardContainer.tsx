@@ -40,7 +40,7 @@ export function StandardContainer<T extends ExtensionPoint>(props: StandardConta
   const [readyState, setReadyState] = useState(ReadyState.Loading);
 
   const worker = useWorker(createWorker, {
-    createMessenger: createIframeWorkerMessenger,
+    // createMessenger: createIframeWorkerMessenger,
   });
   const [ref, layoutInput] = useLayoutInput();
   const sessionTokenInput = useSessionTokenInput(() => {

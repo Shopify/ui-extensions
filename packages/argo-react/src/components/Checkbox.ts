@@ -1,7 +1,4 @@
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@shopify/remote-ui-react';
+import {createRemoteReactComponent, ReactPropsFromRemoteComponentType} from '@remote-ui/react';
 
 import {Checkbox as BaseCheckbox} from '@shopify/argo/components';
 

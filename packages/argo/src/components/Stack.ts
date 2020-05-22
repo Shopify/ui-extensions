@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '@shopify/remote-ui-core';
+import {createRemoteComponent} from '@remote-ui/core';
 
 type Distribution = 'leading' | 'trailing' | 'center' | 'fill';
 

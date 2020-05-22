@@ -1,4 +1,4 @@
-import {RemoteRoot} from '@shopify/remote-ui-core';
+import {RemoteRoot} from '@remote-ui/core';
 import {
   LayoutInput,
   LocaleInput,
