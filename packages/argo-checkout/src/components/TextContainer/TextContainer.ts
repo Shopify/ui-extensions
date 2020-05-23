@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Spacing = 'none' | 'tight' | 'loose';
-type Alignment = 'leading' | 'trailing' | 'center';
+export type Spacing = 'none' | 'tight' | 'loose';
+export type Alignment = 'leading' | 'trailing' | 'center';
 
 export interface TextContainerProps {
   /** Align children’s on the horizontal axis  */

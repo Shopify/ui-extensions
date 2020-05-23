@@ -46,11 +46,11 @@ export interface LayoutProps {
  * - `0.5` represents `50%`
  * - `1` represents `100%`
  */
-type Size = 'auto' | 'fill' | number;
+export type Size = 'auto' | 'fill' | number;
 
-type ViewportSize = 'small' | 'medium' | 'large';
+export type ViewportSize = 'small' | 'medium' | 'large';
 
-interface Media {
+export interface Media {
   /*
    * Specifies the viewport size these instruction will apply to.
    */

@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Size = 'small' | 'medium' | 'large' | 'xlarge';
+export type Size = 'small' | 'medium' | 'large' | 'xlarge';
 
 export interface TextBlockProps {
   /** Size of the text */

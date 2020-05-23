@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {Autocomplete} from '../shared';
 
-interface Option {
+export interface Option {
   /**
    * The value that will be passed to the select’s `onChange` callback
    * when this option is selected.

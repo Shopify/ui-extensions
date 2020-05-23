@@ -1,2 +1,2 @@
 export {Bookend} from './Bookend';
-export type {BookendProps} from './Bookend';
+export type {BookendProps, Alignment, Spacing} from './Bookend';

@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Spacing = 'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose';
+export type Spacing = 'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose';
 
 export interface ViewProps {
   /** Adjust the inline padding */

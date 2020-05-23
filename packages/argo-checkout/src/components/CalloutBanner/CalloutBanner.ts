@@ -1,9 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Border = 'none' | 'block';
-type Background = 'secondary' | 'transparent';
-type Alignment = 'leading' | 'center' | 'trailing';
-type Spacing = 'none' | 'tight' | 'loose';
+export type Border = 'none' | 'block';
+export type Background = 'secondary' | 'transparent';
+export type Alignment = 'leading' | 'center' | 'trailing';
+export type Spacing = 'none' | 'tight' | 'loose';
 
 export interface CalloutBannerProps {
   /**

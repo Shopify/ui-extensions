@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Level = 1 | 2 | 3;
+export type Level = 1 | 2 | 3;
 
 export interface HeadingProps {
   /**

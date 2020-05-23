@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Alignment = 'leading' | 'center' | 'trailing';
-type Spacing = 'xtight' | 'tight' | 'loose' | 'xloose';
+export type Alignment = 'leading' | 'center' | 'trailing';
+export type Spacing = 'xtight' | 'tight' | 'loose' | 'xloose';
 
 export interface BlockStackProps {
   /** Position children along the cross axis */

@@ -1,2 +1,2 @@
 export {View} from './View';
-export type {ViewProps} from './View';
+export type {ViewProps, Spacing} from './View';

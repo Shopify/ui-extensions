@@ -60,7 +60,7 @@ export interface ImageProps {
   decorative?: boolean;
 }
 
-interface Source {
+export interface Source {
   /** The path to the image */
   source: string;
   /**
@@ -75,9 +75,13 @@ interface Source {
   resolution?: Resolution;
 }
 
-type ViewportSize = 'small' | 'medium' | 'large';
-type Fit = 'cover' | 'contain';
-type Resolution = 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
-type Loading = 'eager' | 'lazy';
+export type ViewportSize = 'small' | 'medium' | 'large';
+export type Fit = 'cover' | 'contain';
+export type Resolution = 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
+export type Loading = 'eager' | 'lazy';
 
+/**
+ * Image is used for large format, responsive images.
+ * For small images use Thumbnail.
+ */
 export const Image = createRemoteComponent<'Image', ImageProps>('Image');
