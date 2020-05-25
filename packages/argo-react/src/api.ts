@@ -1,6 +1,6 @@
 import {createElement, ReactElement} from 'react';
 import {render as coreRender, ExtensionPoint, ExtensionInput} from '@shopify/argo';
-import {render as remoteRender} from '@remote-ui/react';
+import {render as remoteRender} from '@shopify/remote-ui-react';
 
 import {ExtensionInputContext} from './extension-input/utils';
 

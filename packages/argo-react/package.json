@@ -13,8 +13,8 @@
     "directory": "packages/argo-react"
   },
   "dependencies": {
-    "@remote-ui/react": "^0.0.35",
     "@shopify/argo": "0.0.63-alpha.0",
+    "@shopify/remote-ui-react": "^0.0.24",
     "react": "^16.12.0",
     "typescript": "^3.7.2"
   },

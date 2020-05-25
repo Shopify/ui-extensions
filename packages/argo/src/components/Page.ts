@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '@remote-ui/core';
+import {createRemoteComponent} from '@shopify/remote-ui-core';
 
 import {DestructableAction} from '../types';
 import {ThumbnailProps} from './Thumbnail';

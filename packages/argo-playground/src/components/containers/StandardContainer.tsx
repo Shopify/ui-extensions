@@ -9,7 +9,7 @@ import {
   createIframeWorkerMessenger,
   ReadyState,
 } from '@shopify/argo-host';
-import {createWorkerFactory} from '@remote-ui/web-workers';
+import {createWorkerFactory} from '@shopify/react-web-worker';
 import {LoadingSpinner} from './shared/LoadingSpinner';
 import {Error} from './shared/Error';
 

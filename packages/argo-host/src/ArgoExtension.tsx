@@ -1,7 +1,7 @@
 import React, {useEffect, useMemo, useState, ComponentType} from 'react';
 import {ExtensionPoint, ExtensionInput} from '@shopify/argo';
-import {retain} from '@remote-ui/core';
-import {RemoteReceiver, RemoteRenderer} from '@remote-ui/react/host';
+import {retain} from '@shopify/remote-ui-core';
+import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
 
 import {Worker} from './worker';
 import {extensionComponentsLoader} from './component-schemas';
