@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo",
-  "version": "0.0.63-alpha.0",
+  "version": "0.0.63",
   "main": "index.js",
   "license": "MIT",
   "scripts": {

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.63](https://github.com/Shopify/app-extension-libs/compare/v0.0.63-alpha.0...v0.0.63) (2020-05-25)
+
+
+### Features
+
+* added readyState no script ([#563](https://github.com/Shopify/app-extension-libs/issues/563)) ([afa23f7](https://github.com/Shopify/app-extension-libs/commit/afa23f7b8d604b7f0d4b9983d4be877e2e85e3e9))
+
+
+
+
+
 ## [0.0.63-alpha.0](https://github.com/Shopify/app-extension-libs/compare/v0.0.62...v0.0.63-alpha.0) (2020-05-22)
 
 
