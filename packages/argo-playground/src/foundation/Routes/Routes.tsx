@@ -8,7 +8,7 @@ import {
   Containers,
   UseForm,
   Vanilla,
-  RenderTimeout,
+  RenderError,
 } from '../../features';
 
 export default function Routes() {
@@ -20,7 +20,7 @@ export default function Routes() {
       <Route path="/containers" exact render={() => <Containers />} />
       <Route path="/use-form" exact render={() => <UseForm />} />
       <Route path="/vanilla" exact render={() => <Vanilla />} />
-      <Route path="/render-timeout" exact render={() => <RenderTimeout />} />
+      <Route path="/render-error" exact render={() => <RenderError />} />
     </Switch>
   );
 }

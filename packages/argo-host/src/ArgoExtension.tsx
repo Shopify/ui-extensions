@@ -8,14 +8,14 @@ import {extensionComponentsLoader} from './component-schemas';
 
 export enum ReadyState {
   Loading,
-  Rendering,
   Rendered,
   RenderErrorTimeout,
+  NoScript,
 }
 
 export interface ArgoExtensionsProps<T extends ExtensionPoint> {
   extensionPoint: T;
-  script?: URL | string;
+  script?: URL | string | null;
   components?: {[key: string]: any};
   input: ExtensionInput[T];
   receiver?: RemoteReceiver;
@@ -37,11 +37,12 @@ export function ArgoExtension<T extends ExtensionPoint>({
   const [readyState, setReadyState] = useState(ReadyState.Loading);
   const [components, setComponents] = useState<Record<string, ComponentType<any>>>({});
   const receiver = useMemo(() => externalReceiver || new RemoteReceiver(), [externalReceiver]);
+  const scriptNotFound = script === null;
 
   useEffect(() => onReadyStateChange?.(readyState), [readyState, onReadyStateChange]);
 
   useEffect(() => {
-    if (readyState === ReadyState.Rendered) {
+    if (readyState === ReadyState.Rendered || readyState === ReadyState.NoScript) {
       return;
     }
     const id = setTimeout(() => {
@@ -60,6 +61,10 @@ export function ArgoExtension<T extends ExtensionPoint>({
 
   useEffect(() => {
     (async () => {
+      if (script === null) {
+        setReadyState(ReadyState.NoScript);
+        return;
+      }
       if (!script) {
         return;
       }

@@ -63,8 +63,8 @@ export function Frame({children}: Props) {
                     icon: TextBlockMajorMonotone,
                   },
                   {
-                    label: 'Render Timeout',
-                    url: '/render-timeout',
+                    label: 'Render Error',
+                    url: '/render-error',
                     exactMatch: true,
                     icon: TextBlockMajorMonotone,
                   },

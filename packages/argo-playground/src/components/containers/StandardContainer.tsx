@@ -32,11 +32,17 @@ export interface StandardContainerProps<T extends ExtensionPoint> extends BasePr
   };
   input?: Input<T>;
   loading?: ReactNode;
+  noScriptError?: ReactNode;
   timeoutError?: ReactNode;
 }
 
 export function StandardContainer<T extends ExtensionPoint>(props: StandardContainerProps<T>) {
-  const {onReadyStateChange, timeoutError = <Error />, loading = <LoadingSpinner />} = props;
+  const {
+    onReadyStateChange,
+    noScriptError = <Error />,
+    timeoutError = <Error />,
+    loading = <LoadingSpinner />,
+  } = props;
   const [readyState, setReadyState] = useState(ReadyState.Loading);
 
   const worker = useMemo(
@@ -66,15 +72,24 @@ export function StandardContainer<T extends ExtensionPoint>(props: StandardConta
     };
   }, [layoutInput, sessionTokenInput, localeInput, props.input]);
 
-  const extension = input && (
-    <ArgoExtension
-      {...props}
-      input={input as any}
-      worker={worker}
-      onReadyStateChange={setReadyState}
-    />
-  );
-  const content = readyState === ReadyState.RenderErrorTimeout ? timeoutError : extension;
+  const content = useMemo(() => {
+    if (readyState === ReadyState.NoScript) {
+      return noScriptError;
+    }
+    if (readyState === ReadyState.RenderErrorTimeout) {
+      return timeoutError;
+    }
+    return (
+      input && (
+        <ArgoExtension
+          {...props}
+          input={input as any}
+          worker={worker}
+          onReadyStateChange={setReadyState}
+        />
+      )
+    );
+  }, [readyState, input, worker, timeoutError, noScriptError, props]);
 
   useEffect(() => onReadyStateChange?.(readyState), [readyState, onReadyStateChange]);
 

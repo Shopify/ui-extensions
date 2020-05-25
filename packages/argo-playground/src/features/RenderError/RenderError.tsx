@@ -17,7 +17,7 @@ export function ModalExtension({
 }: Pick<ModalContainerProps<ExtensionPoint.Playground>, 'open' | 'onClose'>) {
   return (
     <ModalContainer
-      defaultTitle="Modal Extension"
+      defaultTitle="Modal Extension Render Timeout"
       app={{
         name: 'OneMoreTime',
         id: 'one-more-time',
@@ -34,7 +34,7 @@ export function CardExtension() {
   return (
     <Card>
       <Card.Section>
-        <ArgoHeader appName="OneMoreTime" title="Card Extension" />
+        <ArgoHeader appName="OneMoreTime" title="Card Extension Render Timeout" />
       </Card.Section>
       <Card.Section>
         <StandardContainer
@@ -46,22 +46,41 @@ export function CardExtension() {
   );
 }
 
-export function RenderTimeout() {
-  usePerformanceMark('complete', 'RenderTimeout');
+export function NoScriptExtension() {
+  return (
+    <Card>
+      <Card.Section>
+        <ArgoHeader appName="OneMoreTime" title="Card Extension Script Not Found" />
+      </Card.Section>
+      <Card.Section>
+        <StandardContainer
+          script={null}
+          extensionPoint={ExtensionPoint.Playground}
+        />
+      </Card.Section>
+    </Card>
+  );
+}
+
+export function RenderError() {
+  usePerformanceMark('complete', 'RenderError');
 
   const [modalOpen, setModalOpen] = useState(false);
   const onCloseModal = useCallback(() => setModalOpen(false), [setModalOpen]);
 
   return (
-    <Page title="Render Timeout">
+    <Page title="Render Error">
       <Layout>
+        <Layout.Section>
+          <NoScriptExtension />
+        </Layout.Section>
+        <Layout.Section>
+          <Button onClick={() => setModalOpen(true)}>Open Modal</Button>
+        </Layout.Section>
         <Layout.Section>
           <CardExtension />
         </Layout.Section>
         <ModalExtension open={modalOpen} onClose={onCloseModal} />
-        <Layout.Section>
-          <Button onClick={() => setModalOpen(true)}>Open Modal</Button>
-        </Layout.Section>
       </Layout>
     </Page>
   );
