@@ -1,27 +1,14 @@
-import {resolve} from 'path';
 import type {Configuration} from 'webpack';
 import {ArgotHotClient} from '@shopify/argo-webpack-hot-client';
+
+import {babelConfig} from '../babel';
+import {shouldUseReact} from '../utilities';
 
 const DEVELOPMENT_BROWSERS = [
   'last 1 chrome version',
   'last 1 firefox version',
   'last 1 safari version',
   'last 1 edge version',
-];
-
-const BABEL_PRESET_ENV_OPTIONS = {
-  corejs: 3,
-  modules: false,
-  targets: DEVELOPMENT_BROWSERS,
-  useBuiltIns: 'usage',
-};
-
-const BABEL_PLUGINS = [
-  '@babel/plugin-syntax-dynamic-import',
-  '@babel/plugin-proposal-numeric-separator',
-  '@babel/plugin-proposal-optional-chaining',
-  '@babel/plugin-proposal-nullish-coalescing-operator',
-  ['@babel/plugin-proposal-class-properties', {loose: true}],
 ];
 
 export function createWebpackConfiguration({
@@ -50,11 +37,11 @@ export function createWebpackConfiguration({
             loader: 'babel-loader',
             options: {
               configFile: false,
-              presets: [
-                ['@babel/preset-env', BABEL_PRESET_ENV_OPTIONS],
-                useReact && '@babel/preset-react',
-              ].filter(Boolean),
-              plugins: BABEL_PLUGINS,
+              ...babelConfig({
+                react: useReact,
+                typescript: false,
+                targets: DEVELOPMENT_BROWSERS,
+              }),
             },
           },
         },
@@ -64,8 +51,11 @@ export function createWebpackConfiguration({
             loader: 'babel-loader',
             options: {
               configFile: false,
-              presets: [['@babel/preset-env', BABEL_PRESET_ENV_OPTIONS]],
-              plugins: BABEL_PLUGINS,
+              ...babelConfig({
+                react: false,
+                typescript: false,
+                targets: DEVELOPMENT_BROWSERS,
+              }),
             },
           },
         },
@@ -76,12 +66,11 @@ export function createWebpackConfiguration({
             loader: 'babel-loader',
             options: {
               configFile: false,
-              presets: [
-                ['@babel/preset-env', BABEL_PRESET_ENV_OPTIONS],
-                '@babel/preset-typescript',
-                useReact && '@babel/preset-react',
-              ].filter(Boolean),
-              plugins: BABEL_PLUGINS,
+              ...babelConfig({
+                react: useReact,
+                typescript: false,
+                targets: DEVELOPMENT_BROWSERS,
+              }),
             },
           },
         },
@@ -89,14 +78,4 @@ export function createWebpackConfiguration({
     },
     plugins: [new ArgotHotClient()],
   };
-}
-
-function shouldUseReact() {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const packageJson = require(resolve('package.json'));
-    return Object.keys(packageJson.dependencies).includes('react');
-  } catch {
-    return false;
-  }
 }

@@ -61,14 +61,15 @@ function run() {
         name,
         private: true,
         scripts: {
-          start: 'argogogo-run',
+          start: 'argogogo-run dev',
+          build: 'argogogo-run build',
         },
         dependencies: {
-          '@shopify/argo-checkout-testing': '^0.0.8',
+          '@shopify/argo-checkout-testing': '^0.0.9',
           ...extraDependencies,
         },
         devDependencies: {
-          'argogogo-run': '^0.0.12',
+          'argogogo-run': '^0.0.13',
           ...extraDevDependencies,
         },
       },
@@ -192,7 +193,7 @@ function looksLikeExistingProject(directory: string) {
   try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const packageJson = require(join(directory, 'package.json'));
-    return packageJson?.scripts?.start === 'argogogo-run';
+    return packageJson?.scripts?.start?.startsWith('argogogo-run') ?? false;
   } catch {
     return false;
   }

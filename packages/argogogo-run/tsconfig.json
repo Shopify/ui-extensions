@@ -13,6 +13,6 @@
       "esnext.asynciterable"
     ]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "config/typescript/modules.d.ts"],
   "references": [{"path": "../argo-webpack-hot-client"}]
 }
