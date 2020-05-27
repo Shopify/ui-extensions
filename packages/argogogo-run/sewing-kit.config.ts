@@ -18,12 +18,10 @@ export default createPackage((pkg) => {
               const variantName = Object.keys(variant)[0];
 
               await copy(
-                project.fs.resolvePath(
-                  'src/dev/browser/openChrome.applescript',
-                ),
+                project.fs.resolvePath('src/browser/openChrome.applescript'),
                 project.fs.buildPath(
                   variantName === 'commonjs' ? 'cjs' : variantName,
-                  'dev/browser/openChrome.applescript',
+                  'browser/openChrome.applescript',
                 ),
                 {
                   overwrite: true,

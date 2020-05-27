@@ -1,18 +1,13 @@
-import {resolve} from 'path';
 import {URL} from 'url';
 import getPort from 'get-port';
 import webpack from 'webpack';
 import Koa from 'koa';
 import koaWebpack from 'koa-webpack';
 
-import {log, namedArgument} from '../utilities';
-
-import {openBrowser} from './browser';
+import {log, getEntry} from './utilities';
 import {createWebpackConfiguration} from './webpack-config';
 
-const PRODUCTION_PLAYGROUND_URL = 'https://argogogo.dev';
-
-export async function dev(...args: string[]) {
+export async function serve(..._args: string[]) {
   const port = await getPort({port: 8910});
   const url = `http://localhost:${port}`;
   const publicPath = `${url}/assets/`;
@@ -21,7 +16,7 @@ export async function dev(...args: string[]) {
 
   const compiler = webpack(
     createWebpackConfiguration({
-      entry: resolve('index'),
+      entry: getEntry(),
       output: {
         filename,
         publicPath,
@@ -32,17 +27,18 @@ export async function dev(...args: string[]) {
   const firstCompilePromise = new Promise((resolve) => {
     let hasResolved = false;
 
-    compiler.hooks.done.tap('Argogogo.FirstCompile', (stats) => {
+    compiler.hooks.done.tap('Argogogo.Compiled', (stats) => {
       if (stats.hasErrors()) {
-        log(
-          `Webpack build failed with errors:${stats.toString('errors-only')}`,
-          {error: true},
-        );
+        log(`Build failed with errors:${stats.toString('errors-only')}`, {
+          error: true,
+        });
 
         return;
       }
 
-      if (!hasResolved) {
+      if (hasResolved) {
+        log(`Rebuilt your extension`);
+      } else {
         hasResolved = true;
         resolve();
       }
@@ -65,7 +61,6 @@ export async function dev(...args: string[]) {
   app.use(middleware);
 
   log(`Starting dev server on ${url}`);
-  log(`Your script is available at ${fileUrl}`);
 
   const httpListenPromise = new Promise((resolve) => {
     app.listen(port, () => {
@@ -75,24 +70,7 @@ export async function dev(...args: string[]) {
 
   await Promise.all([firstCompilePromise, httpListenPromise]);
 
-  const openUrl = new URL(playgroundUrl(args));
-  const extensionPoint = namedArgument('extension-point', args);
+  log(`Your extension is available at ${fileUrl}`);
 
-  openUrl.searchParams.set('extension', JSON.stringify(fileUrl));
-
-  if (extensionPoint) {
-    openUrl.searchParams.set('extension-point', extensionPoint);
-  }
-
-  const opened = openBrowser(openUrl.href);
-  if (opened) {
-    log(`Opening a preview of your extension at ${openUrl.href}`);
-  } else {
-    log(`You can see a preview of your extension at ${openUrl.href}`);
-  }
-}
-
-function playgroundUrl(args: string[]) {
-  const url = namedArgument('playground', args);
-  return url?.startsWith('http') ? url.trim() : PRODUCTION_PLAYGROUND_URL;
+  return new URL(fileUrl);
 }

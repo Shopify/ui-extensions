@@ -1,8 +1,8 @@
 import type {Configuration} from 'webpack';
 import {ArgotHotClient} from '@shopify/argo-webpack-hot-client';
 
-import {babelConfig} from '../babel';
-import {shouldUseReact} from '../utilities';
+import {babelConfig} from './babel';
+import {shouldUseReact} from './utilities';
 
 const DEVELOPMENT_BROWSERS = [
   'last 1 chrome version',

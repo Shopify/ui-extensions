@@ -6,14 +6,14 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import {terser} from 'rollup-plugin-terser';
 
 import {babelConfig} from './babel';
-import {log, shouldUseReact} from './utilities';
+import {log, shouldUseReact, getEntry} from './utilities';
 
 export async function build(..._args: string[]) {
   log('Starting production build');
 
   try {
     const build = await rollup({
-      input: resolve('index'),
+      input: getEntry(),
       treeshake: {
         propertyReadSideEffects: false,
       },

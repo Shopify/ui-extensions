@@ -1,6 +1,7 @@
 enum Command {
   Build,
   Dev,
+  Serve,
 }
 
 run();
@@ -22,8 +23,13 @@ async function run() {
       args = allArgs.slice(1);
       break;
     }
+    case 'server': {
+      command = Command.Serve;
+      args = allArgs.slice(1);
+      break;
+    }
     default: {
-      command = Command.Dev;
+      command = Command.Serve;
       args = allArgs;
     }
   }
@@ -32,6 +38,11 @@ async function run() {
     case Command.Build: {
       const {build} = await import('./build');
       await build(...args);
+      break;
+    }
+    case Command.Serve: {
+      const {serve} = await import('./serve');
+      await serve(...args);
       break;
     }
     case Command.Dev: {
