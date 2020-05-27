@@ -8,10 +8,10 @@ export interface ProductData {
   };
 }
 
-export interface ProductDataInput {
+export interface ProductDataApi {
   productData: ProductData;
 }
 
-export function isProductDataInput(input: any): input is ProductDataInput {
-  return 'productData' in input;
+export function isProductDataApi(api: any): api is ProductDataApi {
+  return 'productData' in api;
 }

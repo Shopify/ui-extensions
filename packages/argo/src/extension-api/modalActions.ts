@@ -9,10 +9,10 @@ export interface ModalActions {
   closeModal: () => void;
 }
 
-export interface ModalActionsInput {
+export interface ModalActionsApi {
   modalActions: ModalActions;
 }
 
-export function isModalActionsInput(input: any): input is ModalActionsInput {
-  return 'modalActions' in input;
+export function isModalActionsApi(api: any): api is ModalActionsApi {
+  return 'modalActions' in api;
 }

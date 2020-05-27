@@ -2,7 +2,7 @@ import React from 'react';
 import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {ExtensionPoint} from '@shopify/argo';
-import {useToastInput} from '@shopify/argo-host';
+import {useToastApi} from '@shopify/argo-host';
 
 import {StandardContainer} from '../../components/containers';
 
@@ -12,14 +12,14 @@ const reactThirdPartyWorker = createPlainWorkerFactory(() =>
 
 export function ComponentsList() {
   usePerformanceMark('complete', 'ComponentsList');
-  const [Toast, toastInput] = useToastInput();
+  const [Toast, toastApi] = useToastApi();
 
   return (
     <>
       <StandardContainer
         script={reactThirdPartyWorker.url}
         extensionPoint={ExtensionPoint.Playground}
-        input={toastInput as any}
+        api={toastApi as any}
       />
       <Toast />
     </>

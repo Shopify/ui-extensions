@@ -10,12 +10,12 @@ export interface ShowToast {
   (content: string, options?: ShowToastOptions): void;
 }
 
-export interface ToastInput {
+export interface ToastApi {
   toast: {
     show: ShowToast;
   };
 }
 
-export function isToastInput(input: any): input is ToastInput {
-  return 'toast' in input;
+export function isToastApi(api: any): api is ToastApi {
+  return 'toast' in api;
 }

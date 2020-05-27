@@ -8,13 +8,13 @@ export interface LayoutHandler {
   onLayoutChange: (layout: Layout) => void;
 }
 
-export interface LayoutInput {
+export interface LayoutApi {
   layout: {
     initialData: Layout;
     setHandler: (handler: LayoutHandler) => void;
   };
 }
 
-export function isLayoutInput(input: any): input is LayoutInput {
-  return 'layout' in input;
+export function isLayoutApi(api: any): api is LayoutApi {
+  return 'layout' in api;
 }

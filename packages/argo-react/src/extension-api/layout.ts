@@ -1,17 +1,17 @@
 import {useEffect, useState} from 'react';
-import {isLayoutInput, Layout} from '@shopify/argo';
+import {isLayoutApi, Layout} from '@shopify/argo';
 
-import {useExtensionInput} from './utils';
+import {useExtensionApi} from './utils';
 
 export function useLayout() {
-  const input = useExtensionInput();
-  if (!isLayoutInput(input)) {
-    throw new Error('No layout input found');
+  const api = useExtensionApi();
+  if (!isLayoutApi(api)) {
+    throw new Error('No layout api found');
   }
 
   const {
     layout: {initialData, setHandler},
-  } = input;
+  } = api;
   const [layout, setLayout] = useState<Layout>(initialData);
 
   useEffect(() => {

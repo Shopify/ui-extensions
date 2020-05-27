@@ -1,6 +1,6 @@
 import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import {ExtensionPoint} from '@shopify/argo';
-import {ReadyState, useModalActionsInput} from '@shopify/argo-host';
+import {ReadyState, useModalActionsApi} from '@shopify/argo-host';
 import {Modal, ModalProps} from '@shopify/polaris';
 import {retain} from '@shopify/react-web-worker';
 
@@ -9,10 +9,10 @@ import {StandardContainer, StandardContainerProps} from './StandardContainer';
 
 type BaseProps<T extends ExtensionPoint> = Omit<
   StandardContainerProps<T>,
-  'input' | 'error' | 'loading'
+  'api' | 'error' | 'loading'
 >;
 
-type Input<T extends ExtensionPoint> = Omit<StandardContainerProps<T>['input'], 'modalActions'>;
+type Api<T extends ExtensionPoint> = Omit<StandardContainerProps<T>['api'], 'modalActions'>;
 
 export interface ModalContainerProps<T extends ExtensionPoint> extends BaseProps<T> {
   open: boolean;
@@ -20,7 +20,7 @@ export interface ModalContainerProps<T extends ExtensionPoint> extends BaseProps
   onClose: () => void;
   onBackClick?: () => void;
   height?: string;
-  input?: Input<T>;
+  api?: Api<T>;
 }
 
 type Action = () => void;
@@ -32,7 +32,7 @@ export function ModalContainer<T extends ExtensionPoint>({
   onClose,
   onBackClick,
   height,
-  input: externalInput,
+  api: externalApi,
   app,
   onReadyStateChange,
   ...props
@@ -68,7 +68,7 @@ export function ModalContainer<T extends ExtensionPoint>({
     onClose();
   }, [onClose]);
 
-  const modalActions = useModalActionsInput({
+  const modalActions = useModalActionsApi({
     setPrimaryContent,
     setPrimaryAction: setPrimaryActionCallback,
     setSecondaryContent,
@@ -120,7 +120,7 @@ export function ModalContainer<T extends ExtensionPoint>({
     ],
   );
 
-  const input = useMemo(() => ({...modalActions, ...externalInput}), [externalInput, modalActions]);
+  const api = useMemo(() => ({...modalActions, ...externalApi}), [externalApi, modalActions]);
 
   useEffect(() => onReadyStateChange?.(readyState), [readyState, onReadyStateChange]);
 
@@ -133,7 +133,7 @@ export function ModalContainer<T extends ExtensionPoint>({
             height,
           }}
         >
-          <StandardContainer {...props} input={input as any} onReadyStateChange={setReadyState} />
+          <StandardContainer {...props} api={api as any} onReadyStateChange={setReadyState} />
         </div>
       </Modal>
     </>

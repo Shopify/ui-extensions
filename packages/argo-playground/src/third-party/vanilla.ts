@@ -1,7 +1,7 @@
 import {ExtensionPoint, render} from '@shopify/argo';
 import {Card, CardSection, TextField} from '@shopify/argo/components';
 
-render(ExtensionPoint.Playground, (root, input) => {
+render(ExtensionPoint.Playground, (root, api) => {
   const card = root.createComponent(Card, {
     title: 'My card from a ”vanilla” web worker!',
   });

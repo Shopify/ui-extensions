@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState, ComponentType} from 'react';
-import {ExtensionPoint, ExtensionInput} from '@shopify/argo';
+import {ExtensionPoint, ExtensionApi} from '@shopify/argo';
 import {retain} from '@shopify/remote-ui-core';
 import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
 
@@ -17,7 +17,7 @@ export interface ArgoExtensionsProps<T extends ExtensionPoint> {
   extensionPoint: T;
   script?: URL | string | null;
   components?: {[key: string]: any};
-  input: ExtensionInput[T];
+  api: ExtensionApi[T];
   receiver?: RemoteReceiver;
   worker: Worker;
   onReadyStateChange?: (readyState: ReadyState) => void;
@@ -29,7 +29,7 @@ export function ArgoExtension<T extends ExtensionPoint>({
   extensionPoint,
   script,
   components: externalComponents,
-  input,
+  api,
   receiver: externalReceiver,
   worker,
   onReadyStateChange,
@@ -79,7 +79,7 @@ export function ArgoExtension<T extends ExtensionPoint>({
       if (!script || !componentsList.length) {
         return;
       }
-      await worker.render(extensionPoint, input, componentsList, (type, ...args) => {
+      await worker.render(extensionPoint, api, componentsList, (type, ...args) => {
         // Have a proper fix in remote-ui core library later
         // Ref: https://github.com/Shopify/app-extension-libs/issues/436#issuecomment-622008563
         retain(args);
@@ -87,7 +87,7 @@ export function ArgoExtension<T extends ExtensionPoint>({
         return receiver.receive(type, ...args);
       });
     })();
-  }, [components, extensionPoint, input, receiver, script, worker]);
+  }, [components, extensionPoint, api, receiver, script, worker]);
 
   useEffect(() => {
     return receiver.listen(receiver.root, () => {

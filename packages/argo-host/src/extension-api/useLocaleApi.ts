@@ -1,7 +1,7 @@
 import {useMemo} from 'react';
-import {LocaleInput} from '@shopify/argo';
+import {LocaleApi} from '@shopify/argo';
 
-export function useLocaleInput(locale: string): LocaleInput {
+export function useLocaleApi(locale: string): LocaleApi {
   return useMemo(
     () => ({
       locale,

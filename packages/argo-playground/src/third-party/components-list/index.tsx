@@ -7,7 +7,7 @@ import {CheckboxExample} from './checkbox';
 import {BadgeExample} from './badge';
 import {BannerExample} from './banner';
 import {ButtonExample} from './button';
-import {ExtensionInputExample} from './extension-input';
+import {ExtensionApiExample} from './extension-api';
 import {RadioButtonExample} from './radio';
 import {CardExample} from './card';
 import {ClickableExample} from './clickable';
@@ -46,7 +46,7 @@ function App() {
       <StackExample />
       <TextExample />
       <TextFieldExample />
-      <ExtensionInputExample />
+      <ExtensionApiExample />
     </Page>
   );
 }

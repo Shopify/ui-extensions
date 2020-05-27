@@ -3,4 +3,4 @@
 *.d.ts
 
 ./components
-./extension-input
+./extension-api

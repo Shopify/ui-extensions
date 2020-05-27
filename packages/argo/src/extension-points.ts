@@ -1,12 +1,12 @@
 import {RemoteRoot} from '@shopify/remote-ui-core';
 import {
-  LayoutInput,
-  LocaleInput,
-  ModalActionsInput,
-  SessionTokenInput,
-  ProductDataInput,
-  ToastInput,
-} from './extension-input';
+  LayoutApi,
+  LocaleApi,
+  ModalActionsApi,
+  SessionTokenApi,
+  ProductDataApi,
+  ToastApi,
+} from './extension-api';
 import {AppLinkSchema, PlaygroundSchema, SubscriptionManagementSchema} from './component-schemas';
 
 export enum ExtensionPoint {
@@ -16,38 +16,38 @@ export enum ExtensionPoint {
   MerchantMetafield = 'MerchantMetafield',
 }
 
-type DataInput = {
+type DataApi = {
   data?: {
     [key: string]: any;
   };
 };
 
-type StandardInput = LayoutInput & LocaleInput & SessionTokenInput & DataInput;
-type SubscriptionInput = StandardInput & ModalActionsInput & ToastInput & ProductDataInput;
+type StandardApi = LayoutApi & LocaleApi & SessionTokenApi & DataApi;
+type SubscriptionApi = StandardApi & ModalActionsApi & ToastApi & ProductDataApi;
 
-export interface ExtensionInput {
-  [ExtensionPoint.AppLink]: StandardInput;
-  [ExtensionPoint.Playground]: StandardInput;
-  [ExtensionPoint.SubscriptionManagement]: SubscriptionInput;
-  [ExtensionPoint.MerchantMetafield]: StandardInput;
+export interface ExtensionApi {
+  [ExtensionPoint.AppLink]: StandardApi;
+  [ExtensionPoint.Playground]: StandardApi;
+  [ExtensionPoint.SubscriptionManagement]: SubscriptionApi;
+  [ExtensionPoint.MerchantMetafield]: StandardApi;
 }
 
 export type ExtensionResult = {} | void;
 
-export type RenderableExtensionCallback<Input, Root extends RemoteRoot> = (
+export type RenderableExtensionCallback<Api, Root extends RemoteRoot> = (
   root: Root,
-  input: Input,
+  api: Api,
 ) => ExtensionResult;
 
 export interface ExtensionPointCallback {
-  [ExtensionPoint.AppLink]: RenderableExtensionCallback<StandardInput, RemoteRoot<AppLinkSchema>>;
+  [ExtensionPoint.AppLink]: RenderableExtensionCallback<StandardApi, RemoteRoot<AppLinkSchema>>;
   [ExtensionPoint.Playground]: RenderableExtensionCallback<
-    StandardInput,
+    StandardApi,
     RemoteRoot<PlaygroundSchema>
   >;
   [ExtensionPoint.SubscriptionManagement]: RenderableExtensionCallback<
-    SubscriptionInput,
+    SubscriptionApi,
     RemoteRoot<SubscriptionManagementSchema>
   >;
-  [ExtensionPoint.MerchantMetafield]: RenderableExtensionCallback<StandardInput, RemoteRoot<any>>;
+  [ExtensionPoint.MerchantMetafield]: RenderableExtensionCallback<StandardApi, RemoteRoot<any>>;
 }

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Card, Stack, Button, TextField, Text} from '@shopify/argo-react/components';
 import {useLayout, useLocale, useToast, useSessionToken} from '@shopify/argo-react';
 
-export function ExtensionInputExample() {
+export function ExtensionApiExample() {
   const layout = useLayout();
   const locale = useLocale();
   const {show: showToast} = useToast();
@@ -17,7 +17,7 @@ export function ExtensionInputExample() {
       <Card sectioned title="useLocale">
         <Text>{locale}</Text>
       </Card>
-      <Card sectioned title="useSessionInput">
+      <Card sectioned title="useSessionApi">
         <Stack vertical>
           <Button
             title="Generate new sessionToken"

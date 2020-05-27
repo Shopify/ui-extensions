@@ -1,4 +1,4 @@
-import {ExtensionPoint, ExtensionInput, ExtensionPointCallback, ShopifyApi} from '@shopify/argo';
+import {ExtensionPoint, ExtensionApi, ExtensionPointCallback, ShopifyApi} from '@shopify/argo';
 import {WorkerCreator} from '@shopify/react-web-worker';
 import {createRemoteRoot, RemoteChannel, retain} from '@shopify/remote-ui-core';
 
@@ -31,7 +31,7 @@ export function load(script: string) {
 
 export function render<T extends ExtensionPoint>(
   extensionPoint: T,
-  input: ExtensionInput[T],
+  api: ExtensionApi[T],
   components: string[],
   channel: RemoteChannel,
 ) {
@@ -40,14 +40,14 @@ export function render<T extends ExtensionPoint>(
   }
 
   retain(channel);
-  retain(input);
+  retain(api);
 
   const callback = registeredExtensions.get(extensionPoint)!;
   callback(
     createRemoteRoot(channel, {
       components: components as any,
     }),
-    input as any,
+    api as any,
   );
 
   return true;

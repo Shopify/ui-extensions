@@ -1,6 +1,6 @@
 import {
   ExtensionPointCallback,
-  ExtensionInput,
+  ExtensionApi,
   ExtensionPoint,
   ExtensionResult,
 } from './extension-points';
@@ -16,15 +16,15 @@ export interface ShopifyGlobal {
   readonly shopify: ShopifyApi;
 }
 
-export type StandardInput<T extends ExtensionPoint> = Omit<
-  ExtensionInput[T],
-  'locale' | 'layoutInput' | 'sessionToken'
+export type StandardApi<T extends ExtensionPoint> = Omit<
+  ExtensionApi[T],
+  'locale' | 'layoutApi' | 'sessionToken'
 >;
 
 export interface RenderExtensionComponentProps<T extends ExtensionPoint> {
   extensionPoint: T;
   script?: string | URL;
-  input?: StandardInput<T>;
+  api?: StandardApi<T>;
   components?: {[key: string]: any};
 }
 

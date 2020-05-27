@@ -1,6 +1,6 @@
 import {LegacyRef, useCallback, useEffect, useLayoutEffect, useMemo, useState} from 'react';
 import {ResizeObserver as Polyfill, ResizeObserverEntry} from '@juggle/resize-observer';
-import {Layout, LayoutHandler, LayoutInput} from '@shopify/argo';
+import {Layout, LayoutHandler, LayoutApi} from '@shopify/argo';
 import {retain} from '@shopify/remote-ui-core';
 
 // See https://github.com/Shopify/app-extension-libs/issues/237#issuecomment-606625111
@@ -28,9 +28,9 @@ const useResizeObserver: () => [LegacyRef<any>, ResizeObserverEntry | undefined]
   return [setRef, entry];
 };
 
-export function useLayoutInput(
+export function useLayoutApi(
   sizeClassBreakPoint: number = SIZE_CLASS_BREAK_POINT,
-): [ReturnType<typeof useResizeObserver>[0], LayoutInput | undefined] {
+): [ReturnType<typeof useResizeObserver>[0], LayoutApi | undefined] {
   const [ref, entry] = useResizeObserver();
   const [layout, setLayout] = useState<Layout>();
   const [initialData, setInitialData] = useState<Layout>();
@@ -59,7 +59,7 @@ export function useLayoutInput(
   }, [layout, layoutHandler]);
 
   return useMemo(() => {
-    const layoutInput: LayoutInput | undefined = initialData
+    const layoutApi: LayoutApi | undefined = initialData
       ? {
           layout: {
             initialData: initialData,
@@ -70,6 +70,6 @@ export function useLayoutInput(
           },
         }
       : undefined;
-    return [ref, layoutInput];
+    return [ref, layoutApi];
   }, [initialData, ref]);
 }
