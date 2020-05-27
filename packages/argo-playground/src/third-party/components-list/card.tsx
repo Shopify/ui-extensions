@@ -4,6 +4,7 @@ import {Card, CardSection, Text} from '@shopify/argo-react/components';
 export function CardExample() {
   const [cardPrimaryFooterValue, setCardPrimaryFooterValue] = useState('N/A');
   const [cardSecondaryFooterValue, setCardSecondaryFooterValue] = useState('N/A');
+  const [cardHeaderValue, setCardHeaderValue] = useState('N/A');
 
   return (
     <>
@@ -24,9 +25,18 @@ export function CardExample() {
             },
           },
         ]}
+        actions={[
+          {
+            content: 'Card Header',
+            onAction: () => {
+              setCardHeaderValue(new Date().toISOString());
+            },
+          },
+        ]}
       >
         <Text>PrimaryFooterAction: {cardPrimaryFooterValue}</Text>
         <Text>SecondaryFooterAction: {cardSecondaryFooterValue}</Text>
+        <Text>CardHeaderAction: {cardHeaderValue}</Text>
       </Card>
       <Card title="CardSection component">
         <CardSection title="CardSection 1">
