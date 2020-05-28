@@ -6,7 +6,7 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import {terser} from 'rollup-plugin-terser';
 
 import {babelConfig} from './babel';
-import {log, shouldUseReact, getEntry} from './utilities';
+import {log, shouldUseReact, getEntry, namedArgument} from './utilities';
 
 export async function build(..._args: string[]) {
   log('Starting production build');
@@ -40,7 +40,7 @@ export async function build(..._args: string[]) {
     });
 
     await build.write({
-      file: resolve('build/extension.js'),
+      file: resolve(`build/${getFileNameFromArgs(_args)}.js`),
       format: 'iife',
     });
 
@@ -51,4 +51,11 @@ export async function build(..._args: string[]) {
     console.error(error);
     process.exitCode = 1;
   }
+}
+
+const DEFAULT_FILE_NAME = 'main';
+
+function getFileNameFromArgs(args: string[]) {
+  const fileName = namedArgument('filename', args);
+  return fileName || DEFAULT_FILE_NAME;
 }
