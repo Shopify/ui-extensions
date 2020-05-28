@@ -10,11 +10,10 @@ import {
   StackItem,
 } from '@shopify/argo-react/components';
 
-function App() {
+function EditSubscription() {
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [listItems, setListItems] = useState(dataList);
-  const {productId, action} = useProductData();
   const [primaryActionText, setPrimaryActionText] = useState('');
   const [secondaryActionText, setSecondaryActionText] = useState('');
 
@@ -23,19 +22,6 @@ function App() {
     secondaryAction: {setContent: setSecondaryContent, setAction: setSecondaryAction},
     closeModal,
   } = useModalActions();
-
-  useEffect(() => {
-    switch (action) {
-      case 'edit':
-        setPrimaryActionText('Next');
-        setSecondaryActionText('Back');
-        break;
-      case 'remove':
-        setPrimaryActionText('Yes');
-        setSecondaryActionText('No');
-        break;
-    }
-  }, [action]);
 
   const {show: showToast} = useToast();
 
@@ -56,18 +42,24 @@ function App() {
     [resourceListQuery, dataList],
   );
 
+  useEffect(() => {
+    setPrimaryActionText('Next');
+    setSecondaryActionText('Back');
+
+    setPrimaryAction(() => {
+      showToast('Success');
+      closeModal();
+    });
+    setSecondaryAction(() => {
+      showToast('Cancelled', {error: true});
+      closeModal();
+    });
+  }, [closeModal, setPrimaryAction, setSecondaryAction, showToast]);
+
   setPrimaryContent(primaryActionText);
   setSecondaryContent(secondaryActionText);
-  setPrimaryAction(() => {
-    showToast('Success');
-    closeModal();
-  });
-  setSecondaryAction(() => {
-    showToast('Cancelled', {error: true});
-    closeModal();
-  });
 
-  const renderList = () => (
+  return (
     <>
       <ResourceList filterControl={resourceListFilterControl}>
         {listItems.map((item, index) => (
@@ -93,23 +85,30 @@ function App() {
       </ResourceList>
     </>
   );
+}
 
-  const renderRemove = () => (
+function RemoveSubscription() {
+  const {productId} = useProductData();
+
+  const {
+    primaryAction: {setContent: setPrimaryContent, setAction: setPrimaryAction},
+    secondaryAction: {setContent: setSecondaryContent, setAction: setSecondaryAction},
+    closeModal,
+  } = useModalActions();
+
+  setPrimaryContent('Yes');
+  setSecondaryContent('No');
+  setPrimaryAction(() => closeModal());
+  setSecondaryAction(() => closeModal());
+
+  return (
     <>
       <Stack distribution="center">
         <Text size="titleMedium">{`Remove cool thing from product with Id: ${productId}`}</Text>
       </Stack>
     </>
   );
-
-  switch (action) {
-    case 'edit':
-      return renderList();
-    case 'remove':
-      return renderRemove();
-    default:
-      return <Text>No action provided</Text>;
-  }
 }
 
-render(ExtensionPoint.SubscriptionManagement, () => <App />);
+render(ExtensionPoint.SubscriptionManagementEdit, () => <EditSubscription />);
+render(ExtensionPoint.SubscriptionManagementRemove, () => <RemoveSubscription />);

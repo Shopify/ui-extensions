@@ -12,11 +12,10 @@ const modalClientScript = createPlainWorkerFactory(() =>
 
 export function Containers() {
   const [showModal, setShowModal] = useState(false);
-  const [currentAction, setCurrentAction] = useState('');
+  const [currentExtensionPoint, setCurrentExtensionPoint] = useState<ExtensionPoint>();
   const dataApi = useProductData({
     shopId: 1,
     productId: 1,
-    action: currentAction,
   });
   const [Toast, toastApi] = useToastApi();
 
@@ -41,7 +40,7 @@ export function Containers() {
                     <Stack distribution="trailing">
                       <Link
                         onClick={() => {
-                          setCurrentAction('remove');
+                          setCurrentExtensionPoint(ExtensionPoint.SubscriptionManagementRemove);
                           setShowModal(true);
                         }}
                       >
@@ -49,7 +48,7 @@ export function Containers() {
                       </Link>
                       <Link
                         onClick={() => {
-                          setCurrentAction('edit');
+                          setCurrentExtensionPoint(ExtensionPoint.SubscriptionManagementEdit);
                           setShowModal(true);
                         }}
                       >
@@ -111,7 +110,7 @@ export function Containers() {
           setShowModal(false);
         }}
         script={modalClientScript.url}
-        extensionPoint={ExtensionPoint.SubscriptionManagement}
+        extensionPoint={currentExtensionPoint!}
         api={{...toastApi, ...dataApi}}
         height="450px"
       />
