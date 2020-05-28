@@ -26,7 +26,7 @@ export function load(script: string, extraBlacklist?: Blacklist) {
   try {
     new URL(script);
   } catch (_) {
-    _eval(script);
+    _eval(new Function(script)());
     return;
   }
   _importScripts(script);
