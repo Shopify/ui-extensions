@@ -13,19 +13,18 @@ export const builtIns: Blacklist = {
 function clobber(object: Object, blacklist: Blacklist) {
   let target = object;
   do {
-    Object.getOwnPropertyNames(target).forEach(key => {
-      if (!blacklist[key]) {
-        return;
-      }
-      try {
-        Object.defineProperty(target, key, {
-          value: undefined,
-          configurable: false,
-          enumerable: false,
-          writable: false,
-        });
-      } catch (_) {}
-    });
+    Object.getOwnPropertyNames(target)
+      .filter(key => blacklist[key])
+      .forEach(key => {
+        try {
+          Object.defineProperty(target, key, {
+            value: undefined,
+            configurable: false,
+            enumerable: false,
+            writable: false,
+          });
+        } catch (_) {}
+      });
     target = Object.getPrototypeOf(target);
   } while (target !== Object.prototype);
 }
