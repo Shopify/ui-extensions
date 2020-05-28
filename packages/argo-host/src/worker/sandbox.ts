@@ -30,6 +30,6 @@ function clobber(object: Object, blacklist: Blacklist) {
   } while (target !== Object.prototype);
 }
 
-export const apply = (workerGlobalScope: Object = self, blacklist: Blacklist = builtIns) => {
+export const apply = (workerGlobalScope: Object, blacklist: Blacklist = builtIns) => {
   clobber(workerGlobalScope, blacklist);
 };

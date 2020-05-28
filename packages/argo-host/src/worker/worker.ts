@@ -2,12 +2,9 @@ import {ExtensionPoint, ExtensionApi, ExtensionPointCallback, ShopifyApi} from '
 import {WorkerCreator} from '@shopify/react-web-worker';
 import {createRemoteRoot, RemoteChannel, retain} from '@shopify/remote-ui-core';
 
-import {apply as applySandbox, Blacklist, builtIns} from './utilities/sandbox';
+import {apply as applySandbox, Blacklist, builtIns} from './sandbox';
 
-declare const importScripts: (script: string) => void;
-
-const _importScripts = typeof importScripts !== 'undefined' ? importScripts : undefined;
-const _eval = typeof eval !== 'undefined' ? eval : undefined;
+const {importScripts: _importScripts, eval: _eval} = self as any;
 
 const registeredExtensions = new Map<ExtensionPoint, ExtensionPointCallback[ExtensionPoint]>();
 
@@ -29,10 +26,10 @@ export function load(script: string, extraBlacklist?: Blacklist) {
   try {
     new URL(script);
   } catch (_) {
-    _eval?.(script);
+    _eval(script);
     return;
   }
-  _importScripts?.(script);
+  _importScripts(script);
 }
 
 export function render<T extends ExtensionPoint>(
