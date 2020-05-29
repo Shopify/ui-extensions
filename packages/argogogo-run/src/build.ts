@@ -19,6 +19,15 @@ export async function build(...args: string[]) {
         propertyReadSideEffects: false,
       },
       plugins: [
+        replace({
+          'process.env.NODE_ENV': JSON.stringify('production'),
+        }),
+        nodeResolve({
+          extensions: ['.esnext', '.ts', '.tsx', '.mjs', '.js', '.json'],
+        }),
+        commonjs({
+          include: ['node_modules/**'],
+        }),
         babel({
           compact: true,
           babelrc: false,
@@ -28,16 +37,9 @@ export async function build(...args: string[]) {
             typescript: true,
           }),
           extensions: ['.esnext', '.ts', '.tsx', '.mjs', '.js'],
-          exclude: ['**/node_modules', '!*.esnext'],
+          exclude: ['node_modules/**', '!*.esnext'],
           babelHelpers: 'bundled',
         }),
-        nodeResolve({
-          extensions: ['.esnext', '.ts', '.tsx', '.mjs', '.js', '.json'],
-        }),
-        replace({
-          'process.env.NODE_ENV': JSON.stringify('production'),
-        }),
-        commonjs(),
         terser(),
       ],
       onwarn: () => {},
