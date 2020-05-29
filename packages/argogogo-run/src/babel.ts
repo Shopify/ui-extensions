@@ -1,7 +1,6 @@
 const BABEL_PRESET_ENV_OPTIONS = {
-  corejs: 3,
   modules: false,
-  useBuiltIns: 'usage',
+  useBuiltIns: false,
 };
 
 const BABEL_PLUGINS = [

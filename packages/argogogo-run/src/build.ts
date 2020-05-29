@@ -8,7 +8,7 @@ import {terser} from 'rollup-plugin-terser';
 import {babelConfig} from './babel';
 import {log, shouldUseReact, getEntry, namedArgument} from './utilities';
 
-export async function build(..._args: string[]) {
+export async function build(...args: string[]) {
   log('Starting production build');
 
   try {
@@ -18,10 +18,6 @@ export async function build(..._args: string[]) {
         propertyReadSideEffects: false,
       },
       plugins: [
-        nodeResolve({
-          extensions: ['.esnext', '.ts', '.tsx', '.mjs', '.js', '.json'],
-        }),
-        commonjs(),
         babel({
           compact: true,
           babelrc: false,
@@ -34,13 +30,17 @@ export async function build(..._args: string[]) {
           exclude: ['**/node_modules', '!*.esnext'],
           babelHelpers: 'bundled',
         }),
+        nodeResolve({
+          extensions: ['.esnext', '.ts', '.tsx', '.mjs', '.js', '.json'],
+        }),
+        commonjs(),
         terser(),
       ],
       onwarn: () => {},
     });
 
     await build.write({
-      file: resolve(`build/${getFileNameFromArgs(_args)}.js`),
+      file: resolve(`build/${getFileNameFromArgs(args)}.js`),
       format: 'iife',
     });
 
@@ -57,5 +57,5 @@ const DEFAULT_FILE_NAME = 'main';
 
 function getFileNameFromArgs(args: string[]) {
   const fileName = namedArgument('filename', args);
-  return fileName || DEFAULT_FILE_NAME;
+  return fileName ?? DEFAULT_FILE_NAME;
 }
