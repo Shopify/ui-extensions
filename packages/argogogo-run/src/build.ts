@@ -3,6 +3,7 @@ import {rollup} from 'rollup';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import {terser} from 'rollup-plugin-terser';
 
 import {babelConfig} from './babel';
@@ -32,6 +33,9 @@ export async function build(...args: string[]) {
         }),
         nodeResolve({
           extensions: ['.esnext', '.ts', '.tsx', '.mjs', '.js', '.json'],
+        }),
+        replace({
+          'process.env.NODE_ENV': JSON.stringify('production'),
         }),
         commonjs(),
         terser(),
