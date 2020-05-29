@@ -1,11 +1,14 @@
 export interface Blacklist {
-  [key: string]: boolean;
+  [key: string]: boolean | Function;
 }
 
 export const builtIns: Blacklist = {
   // Network
   XMLHttpRequest: true,
   // Other
+  Function: () => () => {
+    // noop
+  },
   eval: true,
   importScripts: true,
 };
@@ -18,7 +21,7 @@ function clobber(object: Object, blacklist: Blacklist) {
       .forEach(key => {
         try {
           Object.defineProperty(target, key, {
-            value: undefined,
+            value: blacklist[key] === true ? undefined : blacklist[key],
             configurable: false,
             enumerable: false,
             writable: false,

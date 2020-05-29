@@ -4,7 +4,7 @@ import {createRemoteRoot, RemoteChannel, retain} from '@shopify/remote-ui-core';
 
 import {apply as applySandbox, Blacklist, builtIns} from './sandbox';
 
-const {importScripts: _importScripts, eval: _eval} = self as any;
+const {importScripts, Function: _Function} = self as any;
 
 const registeredExtensions = new Map<ExtensionPoint, ExtensionPointCallback[ExtensionPoint]>();
 
@@ -26,10 +26,10 @@ export function load(script: string, extraBlacklist?: Blacklist) {
   try {
     new URL(script);
   } catch (_) {
-    _eval(new Function(script)());
+    new _Function(script)();
     return;
   }
-  _importScripts(script);
+  importScripts(script);
 }
 
 export function render<T extends ExtensionPoint>(
