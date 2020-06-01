@@ -18,7 +18,10 @@ export type FormComponents =
 
 export type ImageComponents = Components['Thumbnail'] | Components['Icon'];
 
-export type ListComponents = Components['ResourceList'] | Components['ResourceItem'];
+export type ListComponents =
+  | Components['ResourceList']
+  | Components['ResourceItem']
+  | Components['OptionList'];
 
 export type LoadingComponents = Components['Spinner'];
 

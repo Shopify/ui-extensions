@@ -139,6 +139,14 @@ A page is typically the top-level component, which defines the title, associated
 
 ## List
 
+### OptionList
+The option list component lets you create a list of grouped items. This
+can include single selection or multiple selection of options. Option
+list usually appears in a popover, and sometimes in a modal or a
+sidebar.
+
+[OptionList API](../packages/argo/src/components/OptionList.ts)
+
 ### ResourceItem
 Resource items represent specific objects within a collection, such as products or orders. They provide contextual information on the resource type and link to the object's detail page.
 
