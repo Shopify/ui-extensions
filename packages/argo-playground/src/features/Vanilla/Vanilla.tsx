@@ -7,7 +7,7 @@ import {ExtensionPoint} from '@shopify/argo';
 import {StandardContainer} from '../../components/containers';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: 'vanilla' */ '../../third-party/vanilla'),
+  import(/* webpackChunkName: '3p-vanilla' */ '../../third-party/vanilla'),
 );
 
 export function Vanilla() {

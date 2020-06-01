@@ -7,7 +7,7 @@ import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 import {ModalContainer} from '../../components/containers';
 
 const modalClientScript = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: 'modal-script' */ '../../third-party/modal-content'),
+  import(/* webpackChunkName: '3p-modal-content' */ '../../third-party/modal-content'),
 );
 
 export function Containers() {

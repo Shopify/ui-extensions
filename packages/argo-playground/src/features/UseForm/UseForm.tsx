@@ -6,7 +6,7 @@ import {ExtensionPoint} from '@shopify/argo';
 import {StandardContainer} from '../../components/containers';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: 'use-form' */ '../../third-party/use-form'),
+  import(/* webpackChunkName: '3p-use-form' */ '../../third-party/use-form'),
 );
 
 export function UseForm() {

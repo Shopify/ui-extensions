@@ -1,4 +1,4 @@
-type Components = typeof import('../components');
+type Components = typeof import(/* webpackChunkName: 'argo-components' */ '../components');
 
 export type ActionComponents = Components['Button'] | Components['Link'];
 

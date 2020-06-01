@@ -2,7 +2,7 @@ import React from 'react';
 import {Stack, TextContainer, DisplayText, Button} from '@shopify/polaris';
 const {default: ErrorMonitorImage} = require('./error-monitor.png');
 
-import './Error.scss';
+import './Error.css';
 
 export function Error() {
   return (

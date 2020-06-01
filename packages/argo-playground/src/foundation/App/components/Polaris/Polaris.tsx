@@ -10,13 +10,15 @@ interface Props {
 export function Polaris({children}: Props) {
   const [i18n] = useI18n({
     id: 'Polaris',
-    translations(code) {
-      return import(`@shopify/polaris/locales/${code}.json`);
+    translations(locale) {
+      return import(
+        /* webpackChunkName: "Polaris-i18n", webpackMode: "lazy-once" */ `@shopify/polaris/locales/${locale}.json`
+      ).then(dictionary => dictionary && dictionary.default);
     },
   });
 
   return (
-    <PolarisProvider i18n={i18n.translations} linkComponent={Link}>
+    <PolarisProvider i18n={i18n.translations.reverse()} linkComponent={Link}>
       {children}
     </PolarisProvider>
   );

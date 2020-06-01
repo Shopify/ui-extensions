@@ -1,7 +1,7 @@
 import React from 'react';
 import {Spinner} from '@shopify/polaris';
 
-import './LoadingSpinner.scss';
+import './LoadingSpinner.css';
 
 export function LoadingSpinner() {
   return (

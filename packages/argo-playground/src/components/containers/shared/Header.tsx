@@ -2,7 +2,7 @@ import React from 'react';
 import {Stack, Icon, DisplayText, Button} from '@shopify/polaris';
 import {ChevronLeftMinor} from '@shopify/polaris-icons';
 
-import './styles.scss';
+import './styles.css';
 
 interface Props {
   appName: string;

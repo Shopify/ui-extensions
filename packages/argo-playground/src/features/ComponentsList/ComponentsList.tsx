@@ -7,7 +7,7 @@ import {useToastApi} from '@shopify/argo-host';
 import {StandardContainer} from '../../components/containers';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: 'components-list' */ '../../third-party/components-list'),
+  import(/* webpackChunkName: '3p-components-list' */ '../../third-party/components-list'),
 );
 
 export function ComponentsList() {

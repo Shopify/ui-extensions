@@ -50,7 +50,7 @@ function createCoreExtensionApi(extensionApiName) {
   fs.mkdirSync(extensionApiDir, {recursive: true});
   fs.writeFileSync(`${extensionApiDir}/${extensionApiNameCamelCase}.ts`, content);
 
-  updateIndex(`${path}/index.ts`, `export {${extensionApiName}, is${extensionApiName}Api} from './${extensionApiNameCamelCase}';`);
+  updateIndex(`${path}/index.ts`, `\nexport type {${extensionApiName}} from './${extensionApiNameCamelCase}';\nexport {is${extensionApiName}Api} from './${extensionApiNameCamelCase}';`);
 
   console.log(`✅ Create ${extensionApiName} core`);
 }

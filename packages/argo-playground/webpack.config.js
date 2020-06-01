@@ -4,6 +4,40 @@ const {WebWorkerPlugin} = require('@shopify/web-worker/webpack');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
+const BABEL_PLUGINS = [
+  [
+    '@babel/plugin-transform-runtime',
+    {
+      regenerator: true,
+      useESModules: true,
+    },
+  ],
+  '@babel/plugin-proposal-numeric-separator',
+  '@babel/plugin-proposal-optional-chaining',
+  '@babel/plugin-proposal-nullish-coalescing-operator',
+  ['@babel/plugin-proposal-class-properties', {loose: true}],
+];
+
+const BABEL_PRESETS = [
+  '@babel/preset-react',
+  '@babel/preset-typescript',
+  [
+    '@babel/preset-env',
+    {
+      modules: false,
+      targets: {
+        browsers: [
+          'last 2 chrome version',
+          'last 2 firefox version',
+          'last 2 safari version',
+          'last 2 edge version',
+        ],
+      },
+      forceAllTransforms: true,
+    },
+  ],
+];
+
 module.exports = {
   mode: isDevelopment ? 'development' : 'production',
   entry: './src/index.tsx',
@@ -50,46 +84,36 @@ module.exports = {
     rules: [
       {
         test: /\.[j|t]s(x?)$/,
+        include: [/node_modules/, resolve(__dirname, 'src/third-party')],
         use: {
           loader: 'babel-loader',
           options: {
             babelrc: false,
-            presets: [
-              [
-                '@babel/preset-env',
-                {
-                  forceAllTransforms: true,
-                },
-              ],
-              [
-                'babel-preset-shopify/web',
-                {
-                  modules: 'commonjs',
-                  typescript: true,
-                  browsers: [
-                    'last 1 chrome version',
-                    'last 1 firefox version',
-                    'last 1 safari version',
-                  ],
-                },
-              ],
-              'babel-preset-shopify/react',
-            ],
-            plugins: [
-              '@babel/transform-runtime',
-              '@shopify/react-i18n/babel',
+            presets: BABEL_PRESETS,
+            plugins: BABEL_PLUGINS,
+            sourceType: 'unambiguous',
+          },
+        },
+      },
+
+      {
+        test: /\.[j|t]s(x?)$/,
+        exclude: [/node_modules/, /third-party/],
+        use: {
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            presets: BABEL_PRESETS,
+            plugins: BABEL_PLUGINS.concat([
               require.resolve('@shopify/web-worker/babel'),
-            ],
+            ]),
+            sourceType: 'unambiguous',
           },
         },
       },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
