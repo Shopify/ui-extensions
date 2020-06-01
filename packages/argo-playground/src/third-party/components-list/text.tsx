@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Stack, Text} from '@shopify/argo-react/components';
+import {Card, Stack, Text} from '@shopify/argo';
 
 export function TextExample() {
   return (

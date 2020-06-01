@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '@shopify/remote-ui-core';
+import {createRemoteComponent} from '../utilities';
 
 export type Size = 'small' | 'medium' | 'large';
 

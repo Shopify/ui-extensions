@@ -1,9 +1,6 @@
 import React from 'react';
-import {ExtensionPoint} from '@shopify/argo';
-import {render} from '@shopify/argo-react';
-import {Card} from '@shopify/argo-react/components';
-
-render(ExtensionPoint.Playground, () => <App />);
+import {ExtensionPoint, Card} from '@shopify/argo';
+import {render} from '@shopify/argo/react';
 
 function App() {
   return (
@@ -12,3 +9,5 @@ function App() {
     </Card>
   );
 }
+
+render(ExtensionPoint.Playground, () => <App />);

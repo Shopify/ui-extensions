@@ -1,5 +1,5 @@
 import React, {useCallback, useMemo} from 'react';
-import {ResourceListProps} from '@shopify/argo/components';
+import {ResourceListProps} from '@shopify/argo';
 import {ResourceList as PolarisResouceList, Filters as PolarisFilters} from '@shopify/polaris';
 
 import {elementChildren} from '../../utilities/components';

@@ -1,7 +1,6 @@
 import React from 'react';
-import {Page} from '@shopify/argo-react/components';
-import {render} from '@shopify/argo-react';
-import {ExtensionPoint} from '@shopify/argo';
+import {ExtensionPoint, Page} from '@shopify/argo';
+import {render} from '@shopify/argo/react';
 
 import {CheckboxExample} from './checkbox';
 import {BadgeExample} from './badge';

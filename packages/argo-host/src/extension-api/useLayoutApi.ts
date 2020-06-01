@@ -1,6 +1,6 @@
 import {LegacyRef, useCallback, useEffect, useLayoutEffect, useMemo, useState} from 'react';
 import {ResizeObserver as Polyfill, ResizeObserverEntry} from '@juggle/resize-observer';
-import {Layout, LayoutHandler, LayoutApi} from '@shopify/argo';
+import {LayoutHandler, LayoutApi, LayoutPayload} from '@shopify/argo';
 import {retain} from '@shopify/remote-ui-core';
 
 // See https://github.com/Shopify/app-extension-libs/issues/237#issuecomment-606625111
@@ -32,15 +32,15 @@ export function useLayoutApi(
   sizeClassBreakPoint: number = SIZE_CLASS_BREAK_POINT,
 ): [ReturnType<typeof useResizeObserver>[0], LayoutApi | undefined] {
   const [ref, entry] = useResizeObserver();
-  const [layout, setLayout] = useState<Layout>();
-  const [initialData, setInitialData] = useState<Layout>();
+  const [layout, setLayout] = useState<LayoutPayload>();
+  const [initialData, setInitialData] = useState<LayoutPayload>();
   const [layoutHandler, setLayoutHandler] = useState<LayoutHandler>();
 
   useEffect(() => {
     if (!entry) {
       return;
     }
-    const newLayout: Layout = {
+    const newLayout: LayoutPayload = {
       horizontal: entry.contentRect.width > sizeClassBreakPoint ? 'regular' : 'compact',
     };
     if (!initialData) {

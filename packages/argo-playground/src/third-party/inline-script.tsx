@@ -1,9 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {ExtensionPoint} from '@shopify/argo';
-import {render, useSessionToken} from '@shopify/argo-react';
-import {Stack, Text, TextField} from '@shopify/argo-react/components';
-
-render(ExtensionPoint.SubscriptionManagement, () => <App />);
+import {ExtensionPoint, Stack, Text, TextField} from '@shopify/argo';
+import {render, useSessionToken} from '@shopify/argo/react';
 
 function App() {
   const {getSessionToken} = useSessionToken();
@@ -20,3 +17,5 @@ function App() {
     </Stack>
   );
 }
+
+render(ExtensionPoint.Playground, () => <App />);

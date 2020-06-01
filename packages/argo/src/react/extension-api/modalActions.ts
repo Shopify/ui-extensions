@@ -1,5 +1,4 @@
-import {isModalActionsApi} from '@shopify/argo';
-
+import {isModalActionsApi} from '../../extension-api';
 import {useExtensionApi} from './utils';
 
 export function useModalActions() {

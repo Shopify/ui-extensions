@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '@shopify/remote-ui-core';
+import {createRemoteComponent} from '../utilities';
 
 type Source = 'cancelSmallMinor' | 'searchMinor' | 'starHollow' | 'starFilled' | 'sortMinor';
 

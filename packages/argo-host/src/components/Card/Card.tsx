@@ -1,5 +1,5 @@
 import React from 'react';
-import {CardProps} from '@shopify/argo/components';
+import {CardProps} from '@shopify/argo';
 import {Card as PolarisCard} from '@shopify/polaris';
 
 import {useWrapAction, useWrapActions} from '../../utilities/components';

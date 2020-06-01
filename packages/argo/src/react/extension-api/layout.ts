@@ -1,7 +1,9 @@
 import {useEffect, useState} from 'react';
-import {isLayoutApi, Layout} from '@shopify/argo';
 
+import {isLayoutApi, LayoutApi} from '../../extension-api/layout';
 import {useExtensionApi} from './utils';
+
+type Layout = LayoutApi['layout']['initialData'];
 
 export function useLayout() {
   const api = useExtensionApi();

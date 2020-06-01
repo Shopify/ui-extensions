@@ -1,5 +1,4 @@
-import {createRemoteComponent} from '@shopify/remote-ui-core';
-import React from 'react';
+import {createRemoteComponent} from '../utilities';
 
 interface OptionDescriptor {
   /** Value of the option */

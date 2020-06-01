@@ -1,5 +1,5 @@
 import React from 'react';
-import {IconProps} from '@shopify/argo/components';
+import {IconProps} from '@shopify/argo';
 import {Icon as PolarisIcon} from '@shopify/polaris';
 import {
   SearchMinor,

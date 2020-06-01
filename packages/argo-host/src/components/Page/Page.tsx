@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {PageProps} from '@shopify/argo/components';
+import {PageProps} from '@shopify/argo';
 import {Page as PolarisPage, Thumbnail as PolarisThumbnail} from '@shopify/polaris';
 
 import {useWrapAction, useWrapActions} from '../../utilities/components';

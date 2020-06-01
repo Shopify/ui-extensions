@@ -4,7 +4,7 @@ import '@shopify/react-testing/matchers';
 import {Caption, DisplayText, TextStyle} from '@shopify/polaris';
 
 import {mountWithAppProvider as mount} from '../../../../../../test-utils/mount';
-import {TextProps} from '@shopify/argo/components';
+import {TextProps} from '@shopify/argo';
 import Text from '../Text';
 
 describe('<Text />', () => {

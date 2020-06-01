@@ -1,5 +1,5 @@
 import React, {useCallback, useMemo} from 'react';
-import {ButtonProps} from '@shopify/argo/components';
+import {ButtonProps} from '@shopify/argo';
 import {Button as PolarisButton} from '@shopify/polaris';
 
 import Icon from '../Icon';

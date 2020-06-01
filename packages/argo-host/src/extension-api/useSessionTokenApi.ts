@@ -1,8 +1,8 @@
 import {useMemo, DependencyList} from 'react';
-import {SessionToken, SessionTokenApi} from '@shopify/argo';
+import {SessionTokenPayload, SessionTokenApi} from '@shopify/argo';
 
 export function useSessionTokenApi(
-  tokenGenerator: SessionToken['getSessionToken'],
+  tokenGenerator: SessionTokenPayload['getSessionToken'],
   deps: DependencyList | undefined,
 ): SessionTokenApi {
   return useMemo(

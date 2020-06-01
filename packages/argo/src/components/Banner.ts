@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '@shopify/remote-ui-core';
+import {createRemoteComponent} from '../utilities';
 
 export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
 export interface BannerAction {

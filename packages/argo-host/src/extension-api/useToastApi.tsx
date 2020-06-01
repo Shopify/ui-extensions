@@ -1,10 +1,14 @@
 import React, {useMemo, useState} from 'react';
-
-import {ToastApi, ShowToastPayload, ShowToastOptions} from '@shopify/argo';
+import {ToastApi} from '@shopify/argo';
 import {Toast as PolarisToast} from '@shopify/polaris';
 
+type ToastPayload = {
+  content: string;
+  error?: boolean;
+};
+
 export function useToastApi(): [React.FunctionComponent<{}>, ToastApi] {
-  const [payload, setPayload] = useState<ShowToastPayload | undefined>();
+  const [payload, setPayload] = useState<ToastPayload | undefined>();
 
   const Toast: React.FunctionComponent<{}> = useMemo(
     () =>
@@ -23,7 +27,7 @@ export function useToastApi(): [React.FunctionComponent<{}>, ToastApi] {
   const toastApi = useMemo<ToastApi>(
     () => ({
       toast: {
-        show: (content: string, options?: ShowToastOptions) => setPayload({content, ...options}),
+        show: (content, options) => setPayload({content, ...options}),
       },
     }),
     [],

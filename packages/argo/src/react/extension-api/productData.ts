@@ -1,5 +1,4 @@
-import {isProductDataApi} from '@shopify/argo';
-
+import {isProductDataApi} from '../../extension-api';
 import {useExtensionApi} from './utils';
 
 export function useProductData() {

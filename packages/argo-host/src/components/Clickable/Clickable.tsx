@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {ClickableProps} from '@shopify/argo/components';
+import {ClickableProps} from '@shopify/argo';
 
 export default function Clickable({onClick, children}: ClickableProps) {
   const polarisOnClick = useCallback(

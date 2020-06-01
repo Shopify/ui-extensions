@@ -1,5 +1,5 @@
 import React from 'react';
-import {TextProps} from '@shopify/argo/components';
+import {TextProps} from '@shopify/argo';
 import {TextStyle, DisplayText, DisplayTextProps, Caption} from '@shopify/polaris';
 
 type TitleTextSize = Exclude<TextProps['size'], 'small' | 'medium' | undefined>;

@@ -1,5 +1,4 @@
-import {isLocaleApi} from '@shopify/argo';
-
+import {isLocaleApi} from '../../extension-api/locale';
 import {useExtensionApi} from './utils';
 
 export function useLocale() {
@@ -7,7 +6,5 @@ export function useLocale() {
   if (!isLocaleApi(api)) {
     throw new Error('No locale api found');
   }
-
-  const {locale} = api;
-  return locale;
+  return api.locale;
 }

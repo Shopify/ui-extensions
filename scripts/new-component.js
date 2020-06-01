@@ -15,24 +15,24 @@ if (process.argv.length > 3) {
 }
 
 /**
- * Core
+ * client
  */
-const CORE_TEMPLATE = `
-import {createRemoteComponent} from '@shopify/remote-ui-core';
+const CLIENT_TEMPLATE = `
+import {createRemoteComponent} from '../utilities';
 
 export interface {{name}}Props {}
 
 export const {{name}} = createRemoteComponent<'{{name}}', {{name}}Props>('{{name}}');
 `.trimLeft();
 
-function createCoreClient(componentName) {
+function createClient(componentName) {
   const path = 'packages/argo/src/components';
   const componentDir = `${process.cwd()}/${path}`;
 
   fs.mkdirSync(componentDir, {recursive: true});
   fs.writeFileSync(
     `${componentDir}/${componentName}.ts`,
-    CORE_TEMPLATE.replace(/{{name}}/g, componentName),
+    CLIENT_TEMPLATE.replace(/{{name}}/g, componentName),
   );
 
   updateIndex(`${path}/index.ts`, `export * from './${componentName}';`);
@@ -41,41 +41,11 @@ function createCoreClient(componentName) {
 }
 
 /**
- * React
- */
-
-const REACT_TEMPLATE = `
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@shopify/remote-ui-react';
-import {{{name}} as Base{{name}}} from '@shopify/argo/components';
-
-export type {{name}}Props = ReactPropsFromRemoteComponentType<typeof Base{{name}}>;
-export const {{name}} = createRemoteReactComponent(Base{{name}});
-`.trimLeft();
-
-function createReactClient(componentName) {
-  const path = 'packages/argo-react/src/components';
-  const componentDir = `${process.cwd()}/${path}`;
-
-  fs.mkdirSync(componentDir, {recursive: true});
-  fs.writeFileSync(
-    `${componentDir}/${componentName}.ts`,
-    REACT_TEMPLATE.replace(/{{name}}/g, componentName),
-  );
-
-  updateIndex(`${path}/index.ts`, `export * from './${componentName}';`);
-
-  console.log(`✅ Create ${componentName} react`);
-}
-
-/**
  * Host
  */
 const HOST_TEMPLATE = `
 import React from 'react';
-import {{{name}}Props} from '@shopify/argo/components';
+import {{{name}}Props} from '@shopify/argo';
 
 export default function {{name}}(props: {{name}}Props) {
   return <>Component Code</>;
@@ -121,15 +91,9 @@ try {
 }
 
 try {
-  createCoreClient(componentName);
+  createClient(componentName);
 } catch (error) {
   killProcess("Couldn't create core client component.", error);
-}
-
-try {
-  createReactClient(componentName);
-} catch (error) {
-  killProcess("Couldn't create react client component.", error);
 }
 
 console.log('🔥🔥🔥 Remember to update these files:');

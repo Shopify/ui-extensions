@@ -1,5 +1,5 @@
 import React from 'react';
-import {StackProps} from '@shopify/argo/components';
+import {StackProps} from '@shopify/argo';
 import {Stack as PolarisStack} from '@shopify/polaris';
 
 export default function Stack({

@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {Card, Stack, Link} from '@shopify/argo-react/components';
+import {Card, Stack, Link} from '@shopify/argo';
 
 export function LinkExample() {
   const linkAction = useCallback(() => {

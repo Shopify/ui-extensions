@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Card, CardSection, Text} from '@shopify/argo-react/components';
+import {Card, CardSection, Text} from '@shopify/argo';
 
 export function CardExample() {
   const [cardPrimaryFooterValue, setCardPrimaryFooterValue] = useState('N/A');

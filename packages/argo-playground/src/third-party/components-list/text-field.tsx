@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {Card, Stack, TextField, Text} from '@shopify/argo-react/components';
+import {Card, Stack, TextField, Text} from '@shopify/argo';
 
 export function TextFieldExample() {
   const [name, setName] = useState('');

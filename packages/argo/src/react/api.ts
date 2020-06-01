@@ -1,7 +1,8 @@
-import {createElement, ReactElement} from 'react';
-import {render as coreRender, ExtensionPoint, ExtensionApi} from '@shopify/argo';
 import {render as remoteRender} from '@shopify/remote-ui-react';
+import {createElement, ReactElement} from 'react';
 
+import {render as coreRender} from '../api';
+import {ExtensionApi, ExtensionPoint} from '../extension-points';
 import {ExtensionApiContext} from './extension-api/utils';
 
 export type RenderCallback<T extends ExtensionPoint> = (api: ExtensionApi[T]) => ReactElement;

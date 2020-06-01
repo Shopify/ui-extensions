@@ -1,5 +1,4 @@
-import {ExtensionPoint, render} from '@shopify/argo';
-import {Card, CardSection, TextField} from '@shopify/argo/components';
+import {ExtensionPoint, render, Card, CardSection, TextField} from '@shopify/argo';
 
 render(ExtensionPoint.Playground, (root, api) => {
   const card = root.createComponent(Card, {

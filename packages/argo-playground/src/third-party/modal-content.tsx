@@ -1,14 +1,14 @@
-import React, {useState, useMemo, useEffect} from 'react';
-import {ExtensionPoint} from '@shopify/argo';
-import {render, useModalActions, useProductData, useToast} from '@shopify/argo-react';
+import React, {useEffect, useMemo, useState} from 'react';
 import {
-  ResourceList,
-  ResourceItem,
-  Stack,
   Checkbox,
-  Text,
+  ExtensionPoint,
+  ResourceItem,
+  ResourceList,
+  Stack,
   StackItem,
-} from '@shopify/argo-react/components';
+  Text,
+} from '@shopify/argo';
+import {render, useModalActions, useProductData, useToast} from '@shopify/argo/react';
 
 function EditSubscription() {
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];

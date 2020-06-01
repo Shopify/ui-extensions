@@ -10,8 +10,6 @@
       "@shopify/argo/*": ["../argo/src/*"],
       "@shopify/argo-host": ["../argo-host/src"],
       "@shopify/argo-host/*": ["../argo-host/src/*"],
-      "@shopify/argo-react": ["../argo-react/src"],
-      "@shopify/argo-react/*": ["../argo-react/src/*"]
     }
   },
   "include": [

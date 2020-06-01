@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {CheckboxProps} from '@shopify/argo/components';
+import {CheckboxProps} from '@shopify/argo';
 import {Checkbox as PolarisCheckbox} from '@shopify/polaris';
 
 export default function Checkbox({label = '', onChange, checked}: CheckboxProps) {

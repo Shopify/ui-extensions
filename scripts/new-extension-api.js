@@ -25,12 +25,12 @@ function camelize(str) {
  * Core
  */
 const CORE_TEMPLATE = `
-export interface {{name}} {
+export interface {{name}}Payload {
   // TBD
 }
 
 export interface {{name}}Api {
-  {{name-camelCase}}: {{name}};
+  {{name-camelCase}}: {{name}}Payload;
 }
 
 export function is{{name}}Api(api: any): api is {{name}}Api {
@@ -59,8 +59,7 @@ function createCoreExtensionApi(extensionApiName) {
  * React
  */
 const REACT_TEMPLATE = `
-import {is{{name}}Api} from '@shopify/argo';
-
+import {is{{name}}Api} from '../../extension-api/{{name-camelCase}}';
 import {useExtensionApi} from './utils';
 
 export function use{{name}}() {
@@ -68,13 +67,12 @@ export function use{{name}}() {
   if (!is{{name}}Api(api)) {
     throw new Error('No {{name-camelCase}} api found');
   }
-  const {{{name-camelCase}}} = api;
-  return {{name-camelCase}};
+  return api.{{name-camelCase}};
 }
 `.trimLeft();
 
 function createReactExtensionApi(extensionApiName) {
-  const path = 'packages/argo-react/src/extension-api';
+  const path = 'packages/argo/src/react/extension-api';
   const extensionApiDir = `${process.cwd()}/${path}`;
   const extensionApiNameCamelCase = camelize(extensionApiName);
   const content = REACT_TEMPLATE.replace(/{{name}}/g, extensionApiName).replace(

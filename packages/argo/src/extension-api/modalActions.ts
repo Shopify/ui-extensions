@@ -3,14 +3,14 @@ interface ArgoModalAction {
   setAction: (onAction: () => void) => void;
 }
 
-export interface ModalActions {
+export interface ModalActionsPayload {
   primaryAction: ArgoModalAction;
   secondaryAction: ArgoModalAction;
   closeModal: () => void;
 }
 
 export interface ModalActionsApi {
-  modalActions: ModalActions;
+  modalActions: ModalActionsPayload;
 }
 
 export function isModalActionsApi(api: any): api is ModalActionsApi {

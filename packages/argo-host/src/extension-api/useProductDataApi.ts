@@ -1,6 +1,6 @@
 import {useMemo} from 'react';
-import {ProductDataApi, ProductData} from '@shopify/argo';
+import {ProductDataApi, ProductDataPayload} from '@shopify/argo';
 
-export function useProductData(productData: ProductData): ProductDataApi {
+export function useProductData(productData: ProductDataPayload): ProductDataApi {
   return useMemo(() => ({productData}), [productData]);
 }

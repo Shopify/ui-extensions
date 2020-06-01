@@ -1,8 +1,7 @@
 import React from 'react';
-import {Banner, Button, Card, Page, Stack, TextField, Select} from '@shopify/argo-react/components';
-import {ExtensionPoint} from '@shopify/argo';
-import {render} from '@shopify/argo-react';
-import {useField, useForm, notEmpty} from '@shopify/react-form';
+import {Banner, Button, Card, ExtensionPoint, Page, Select, Stack, TextField} from '@shopify/argo';
+import {render} from '@shopify/argo/react';
+import {notEmpty, useField, useForm} from '@shopify/react-form';
 
 function App() {
   const {fields, submit, reset, submitErrors} = useForm({

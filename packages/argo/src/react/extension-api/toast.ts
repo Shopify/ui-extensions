@@ -1,5 +1,4 @@
-import {isToastApi} from '@shopify/argo';
-
+import {isToastApi} from '../../extension-api';
 import {useExtensionApi} from './utils';
 
 export function useToast() {

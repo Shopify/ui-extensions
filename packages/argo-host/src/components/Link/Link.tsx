@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {LinkProps} from '@shopify/argo/components';
+import {LinkProps} from '@shopify/argo';
 import {Link as PolarisLink} from '@shopify/polaris';
 
 export default function Link({children, external, onClick, url}: LinkProps) {

@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {ResourceItemProps} from '@shopify/argo/components';
+import {ResourceItemProps} from '@shopify/argo';
 import {ResourceItem as PolarisResourceItem} from '@shopify/polaris';
 
 export default function ResourceItem({id, onClick, children}: ResourceItemProps) {

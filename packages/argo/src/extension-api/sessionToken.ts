@@ -1,9 +1,9 @@
-export interface SessionToken {
+export interface SessionTokenPayload {
   getSessionToken: () => Promise<string | undefined>;
 }
 
 export interface SessionTokenApi {
-  sessionToken: SessionToken;
+  sessionToken: SessionTokenPayload;
 }
 
 export function isSessionTokenApi(api: any): api is SessionTokenApi {
