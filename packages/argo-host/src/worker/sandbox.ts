@@ -4,6 +4,12 @@ export interface Blacklist {
 
 export const builtIns: Blacklist = {
   // Browser
+  caches: true,
+  crypto: true,
+  fonts: true,
+  indexedDB: true,
+  location: true,
+  navigator: true,
   OffscreenCanvasRenderingContext2D: true,
   PushSubscriptionOptions: true,
   PushSubscription: true,
@@ -66,13 +72,10 @@ export const builtIns: Blacklist = {
   WritableStream: true,
   WorkerNavigator: true,
   WorkerLocation: true,
-  WorkerGlobalScope: true,
   Worker: true,
   TransformStream: true,
   TextMetrics: true,
   SecurityPolicyViolationEvent: true,
-  ReadableStreamDefaultReader: true,
-  ReadableStream: true,
   PerformanceServerTiming: true,
   PerformanceResourceTiming: true,
   PerformanceObserverEntryList: true,
