@@ -1,6 +1,6 @@
 import type {StandardApi} from './standard';
 
-export interface PostPurchaseCrossSellApi extends StandardApi {
+export interface PostPurchaseApi extends StandardApi {
   orderId: number;
   shopId: number;
   token: string;

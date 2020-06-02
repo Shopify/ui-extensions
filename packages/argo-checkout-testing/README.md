@@ -8,7 +8,7 @@ The first thing to understand is that nothing in this library is strictly requir
 
 ```js
 self.shopify.extend(
-  'Checkout::PostPurchaseCrossSell::Render',
+  'Checkout::PostPurchase::Render',
   (root, input) => {
     const button = root.createComponent('Button', {
       onPress() {
@@ -32,7 +32,7 @@ The main function this library exports is called `extend`. It’s actually just 
 ```ts
 import {extend} from '@shopify/argo-checkout';
 
-extend('Checkout::PostPurchaseCrossSell::Render', (input) => {
+extend('Checkout::PostPurchase::Render', (input) => {
   /* your extension goes here */
 });
 ```
@@ -42,7 +42,7 @@ Most extensions render UI. These extensions are called with a remote "root" to w
 ```ts
 import {extend, Button} from '@shopify/argo-checkout';
 
-extend('Checkout::PostPurchaseCrossSell::Render', (root, {done}) => {
+extend('Checkout::PostPurchase::Render', (root, {done}) => {
   const button = root.createComponent(Button, {
     // If I had misspelled (like calling this `onpress()`), my editor
     // would warn me of the invalid property.

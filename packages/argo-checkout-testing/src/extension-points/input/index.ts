@@ -1,2 +1,2 @@
-export type {PostPurchaseCrossSellApi} from './post-purchase-cross-sell-render';
+export type {PostPurchaseApi} from './post-purchase-render';
 export type {StandardApi, Version} from './standard';
