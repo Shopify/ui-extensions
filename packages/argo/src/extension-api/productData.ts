@@ -1,4 +1,4 @@
-export interface ProductDataPayload {
+export interface ProductData {
   shopId: number;
   productId: number;
   variantId?: number;
@@ -9,7 +9,7 @@ export interface ProductDataPayload {
 }
 
 export interface ProductDataApi {
-  productData: ProductDataPayload;
+  productData: ProductData;
 }
 
 export function isProductDataApi(api: any): api is ProductDataApi {

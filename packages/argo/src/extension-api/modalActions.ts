@@ -1,16 +1,16 @@
-interface ArgoModalAction {
+export interface ArgoModalAction {
   setContent: (content: string) => void;
   setAction: (onAction: () => void) => void;
 }
 
-export interface ModalActionsPayload {
+export interface ModalActions {
   primaryAction: ArgoModalAction;
   secondaryAction: ArgoModalAction;
   closeModal: () => void;
 }
 
 export interface ModalActionsApi {
-  modalActions: ModalActionsPayload;
+  modalActions: ModalActions;
 }
 
 export function isModalActionsApi(api: any): api is ModalActionsApi {

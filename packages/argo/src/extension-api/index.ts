@@ -1,6 +1,6 @@
-export * from './layout';
-export * from './locale';
-export * from './modalActions';
-export * from './productData';
-export * from './sessionToken';
-export * from './toast';
+export {LayoutApi, isLayoutApi} from './layout';
+export {LocaleApi, isLocaleApi} from './locale';
+export {ModalActionsApi, isModalActionsApi} from './modalActions';
+export {ProductDataApi, isProductDataApi} from './productData';
+export {SessionTokenApi, isSessionTokenApi} from './sessionToken';
+export {ToastApi, isToastApi} from './toast';

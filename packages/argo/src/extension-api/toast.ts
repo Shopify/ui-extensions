@@ -1,13 +1,13 @@
-interface ShowToastOptions {
+export interface ShowToastOptions {
   error?: boolean;
 }
 
-export interface ToastPayload {
+export interface Toast {
   show(content: string, options?: ShowToastOptions): void;
 }
 
 export interface ToastApi {
-  toast: ToastPayload;
+  toast: Toast;
 }
 
 export function isToastApi(api: any): api is ToastApi {

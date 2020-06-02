@@ -1,5 +1,5 @@
 import React, {useMemo, useState} from 'react';
-import {ToastApi} from '@shopify/argo';
+import {ToastApi} from '@shopify/argo/extension-api/toast';
 import {Toast as PolarisToast} from '@shopify/polaris';
 
 type ToastPayload = {

@@ -25,12 +25,12 @@ function camelize(str) {
  * Core
  */
 const CORE_TEMPLATE = `
-export interface {{name}}Payload {
+export interface {{name}} {
   // TBD
 }
 
 export interface {{name}}Api {
-  {{name-camelCase}}: {{name}}Payload;
+  {{name-camelCase}}: {{name}};
 }
 
 export function is{{name}}Api(api: any): api is {{name}}Api {
@@ -50,7 +50,7 @@ function createCoreExtensionApi(extensionApiName) {
   fs.mkdirSync(extensionApiDir, {recursive: true});
   fs.writeFileSync(`${extensionApiDir}/${extensionApiNameCamelCase}.ts`, content);
 
-  updateIndex(`${path}/index.ts`, `export * from './${extensionApiNameCamelCase}';`);
+  updateIndex(`${path}/index.ts`, `export {${extensionApiName}, is${extensionApiName}Api} from './${extensionApiNameCamelCase}';`);
 
   console.log(`✅ Create ${extensionApiName} core`);
 }
@@ -93,7 +93,7 @@ function createReactExtensionApi(extensionApiName) {
  */
 const HOST_TEMPLATE = `
 import {useMemo} from 'react';
-import {{{name}}Api} from '@shopify/argo';
+import {{{name}}Api} from '@shopify/argo/extension-api/{{name-camelCase}}';
 
 export function use{{name}}(): {{name}}Api {
   return useMemo(
