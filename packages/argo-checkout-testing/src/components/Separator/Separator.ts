@@ -1,6 +1,12 @@
 import {createRemoteComponent} from '../../utilities';
 
-export interface SeparatorProps {}
+type Direction = 'horizontal' | 'vertical';
+type Width = 'thin' | 'medium' | 'thick' | 'xthick';
+
+export interface SeparatorProps {
+  width?: Width;
+  direction?: Direction;
+}
 
 export const Separator = createRemoteComponent<'Separator', SeparatorProps>(
   'Separator',

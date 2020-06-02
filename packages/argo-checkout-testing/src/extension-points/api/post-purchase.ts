@@ -51,7 +51,7 @@ interface AddVariantChangeset {
   discount?: DiscountChangeset;
 }
 
-type Changeset = AddVariantChangeset;
+type Changeset = AddVariantChangeset[];
 
 interface AppliedChangesetResult {
   errors?: string[];
