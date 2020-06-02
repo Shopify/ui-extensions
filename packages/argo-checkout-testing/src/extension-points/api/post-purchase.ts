@@ -1,7 +1,14 @@
 import type {StandardApi} from './standard';
 import type {ValueOrPromise} from './shared';
 
-export interface PostPurchaseInquiryApi extends StandardApi {}
+export interface PostPurchaseInquiryApi extends StandardApi {
+  performNetworkCall(url: string, data?: unknown): Promise<NetworkCallResult>;
+}
+
+interface NetworkCallResult {
+  ok: boolean;
+  body: unknown;
+}
 
 interface PostPurchaseInquirySignedResult {
   signature: string;
@@ -25,10 +32,7 @@ export interface PostPurchaseRenderApi extends StandardApi {
     changeset: Changeset,
   ): Promise<AppliedChangesetResult>;
   applyStoredChangeset(changeset: number): Promise<AppliedChangesetResult>;
-
   calculateChangeset(changeset: Changeset): Promise<CalculatedChangesetResult>;
-
-  performNetworkCall(url: string, data?: unknown): Promise<unknown>;
 
   done(): Promise<void>;
 }
@@ -50,7 +54,6 @@ interface AddVariantChangeset {
 type Changeset = AddVariantChangeset;
 
 interface AppliedChangesetResult {
-  // Unsure
   errors?: string[];
 }
 
