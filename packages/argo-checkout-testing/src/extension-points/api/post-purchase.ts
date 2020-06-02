@@ -2,7 +2,7 @@ import type {StandardApi} from './standard';
 import type {ValueOrPromise} from './shared';
 
 export interface PostPurchaseInquiryApi extends StandardApi {
-  performNetworkCall(url: string, data?: unknown): Promise<NetworkCallResult>;
+  checkout: Checkout;
 }
 
 interface NetworkCallResult {
@@ -10,17 +10,7 @@ interface NetworkCallResult {
   body: unknown;
 }
 
-interface PostPurchaseInquirySignedResult {
-  signature: string;
-  payload: {
-    allowedOrderChangesets: Changeset[];
-    pagePayload: any;
-  };
-}
-
-export type PostPurchaseInquiryResult = ValueOrPromise<
-  boolean | PostPurchaseInquirySignedResult
->;
+export type PostPurchaseInquiryResult = ValueOrPromise<unknown>;
 
 export interface PostPurchaseRenderApi extends StandardApi {
   order: Order;
@@ -31,7 +21,6 @@ export interface PostPurchaseRenderApi extends StandardApi {
     signature: string,
     changeset: Changeset,
   ): Promise<AppliedChangesetResult>;
-  applyStoredChangeset(changeset: number): Promise<AppliedChangesetResult>;
   calculateChangeset(changeset: Changeset): Promise<CalculatedChangesetResult>;
 
   done(): Promise<void>;
@@ -71,3 +60,5 @@ interface LineItemVariant {
   id: number;
   metafields: {[key: string]: string};
 }
+
+type Checkout = Order;
