@@ -57,7 +57,8 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React Example
 
 ```js
-import {ExtensionPoint, render, Text} from '@shopify/argo-admin';
+import {ExtensionPoint, Text} from '@shopify/argo-admin';
+import {render} from '@shopify/argo-admin/react';
 
 function App() {
   return (

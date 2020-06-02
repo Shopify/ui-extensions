@@ -27,10 +27,11 @@ This extension renders in the Product Details and Product Variants Page and is h
 - [Modal Actions](../Utilities/ModalActions.md)
 - [Layout](../Utilities/Layout.md)
 - [Locale](../Utilities/Locale.md)
-- [Product Data](../Utilities/ProductData.md)
 - [Session Token](../Utilities/SessionToken.md)
 - [Toast](../Utilities/Toast.md)
 
 ## Product Data
 
-TODO - Product data structure goes here
+TODO - [Product Data](../Utilities/ProductData.md) structure goes here
+
+
