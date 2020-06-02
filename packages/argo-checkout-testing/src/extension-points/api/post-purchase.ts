@@ -5,12 +5,7 @@ export interface PostPurchaseInquiryApi extends StandardApi {
   checkout: Checkout;
 }
 
-interface NetworkCallResult {
-  ok: boolean;
-  body: unknown;
-}
-
-export type PostPurchaseInquiryResult = ValueOrPromise<unknown>;
+export type PostPurchaseInquiryResult = ValueOrPromise<any>;
 
 export interface PostPurchaseRenderApi extends StandardApi {
   order: Order;
