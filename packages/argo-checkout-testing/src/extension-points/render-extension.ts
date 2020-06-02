@@ -10,5 +10,5 @@ export interface RenderExtension<
 > {
   (root: RemoteRoot<AllowedComponents, true>, input: Input): RenderResult<
     Input
-  >;
+  > | void;
 }
