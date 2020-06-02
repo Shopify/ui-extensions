@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.64](https://github.com/Shopify/app-extension-libs/compare/v0.0.63...v0.0.64) (2020-06-02)
+
+
+### Features
+
+* **components:** add OptionsList component ([7da5016](https://github.com/Shopify/app-extension-libs/commit/7da5016ad0bae7047b86b4e20d147cba6894cd08))
+* add blacklist sandbox for worker ([d4c37d3](https://github.com/Shopify/app-extension-libs/commit/d4c37d319b4433fce39fda151b59d384e1d7a809))
+
+
+
+
+
 ## [0.0.63](https://github.com/Shopify/app-extension-libs/compare/v0.0.63-alpha.0...v0.0.63) (2020-05-25)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.64](https://github.com/Shopify/app-extension-libs/compare/v0.0.63...v0.0.64) (2020-06-02)
+
+
+### Features
+
+* **components:** add OptionsList component ([7da5016](https://github.com/Shopify/app-extension-libs/commit/7da5016ad0bae7047b86b4e20d147cba6894cd08))
+
+
+
+
+
 ## [0.0.63](https://github.com/Shopify/app-extension-libs/compare/v0.0.63-alpha.0...v0.0.63) (2020-05-25)
 
 **Note:** Version bump only for package @shopify/argo
