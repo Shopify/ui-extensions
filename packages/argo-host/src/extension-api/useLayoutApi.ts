@@ -1,6 +1,6 @@
 import {LegacyRef, useCallback, useEffect, useLayoutEffect, useMemo, useState} from 'react';
 import {ResizeObserver as Polyfill, ResizeObserverEntry} from '@juggle/resize-observer';
-import {Layout, LayoutApi, LayoutHandler} from '@shopify/argo/extension-api/layout';
+import {Layout, LayoutApi} from '@shopify/argo/extension-api/layout';
 import {retain} from '@shopify/remote-ui-core';
 
 // See https://github.com/Shopify/app-extension-libs/issues/237#issuecomment-606625111
@@ -28,13 +28,15 @@ const useResizeObserver: () => [LegacyRef<any>, ResizeObserverEntry | undefined]
   return [setRef, entry];
 };
 
+type OnChange = (layout: Layout) => void;
+
 export function useLayoutApi(
   sizeClassBreakPoint: number = SIZE_CLASS_BREAK_POINT,
 ): [ReturnType<typeof useResizeObserver>[0], LayoutApi | undefined] {
   const [ref, entry] = useResizeObserver();
   const [layout, setLayout] = useState<Layout>();
-  const [initialData, setInitialData] = useState<Layout>();
-  const [layoutHandler, setLayoutHandler] = useState<LayoutHandler>();
+  const [initialValue, setInitialValue] = useState<Layout>();
+  const [onChange, setOnChange] = useState<OnChange>();
 
   useEffect(() => {
     if (!entry) {
@@ -43,33 +45,33 @@ export function useLayoutApi(
     const newLayout: Layout = {
       horizontal: entry.contentRect.width > sizeClassBreakPoint ? 'regular' : 'compact',
     };
-    if (!initialData) {
-      setInitialData(newLayout);
+    if (!initialValue) {
+      setInitialValue(newLayout);
     }
     if (JSON.stringify(newLayout) !== JSON.stringify(layout)) {
       setLayout(newLayout);
     }
-  }, [sizeClassBreakPoint, entry, initialData, layout]);
+  }, [sizeClassBreakPoint, entry, initialValue, layout]);
 
   useEffect(() => {
-    if (!layout || !layoutHandler) {
+    if (!layout || !onChange) {
       return;
     }
-    layoutHandler.onLayoutChange(layout);
-  }, [layout, layoutHandler]);
+    onChange(layout);
+  }, [layout, onChange]);
 
   return useMemo(() => {
-    const layoutApi: LayoutApi | undefined = initialData
+    const layoutApi: LayoutApi | undefined = initialValue
       ? {
           layout: {
-            initialData: initialData,
-            setHandler: newHandler => {
-              retain(newHandler);
-              setLayoutHandler(newHandler);
+            initialValue: initialValue,
+            setOnChange: onChange => {
+              retain(onChange);
+              setOnChange(layout => onChange(layout));
             },
           },
         }
       : undefined;
     return [ref, layoutApi];
-  }, [initialData, ref]);
+  }, [initialValue, ref]);
 }

@@ -10,15 +10,13 @@ export function useLayout() {
   }
 
   const {
-    layout: {initialData, setHandler},
+    layout: {initialValue, setOnChange},
   } = api;
-  const [layout, setLayout] = useState<Layout>(initialData);
+  const [layout, setLayout] = useState<Layout>(initialValue);
 
   useEffect(() => {
-    setHandler({
-      onLayoutChange: newLayout => setLayout(newLayout),
-    });
-  }, [setHandler]);
+    setOnChange(newLayout => setLayout(newLayout));
+  }, [setOnChange]);
 
   return layout;
 }

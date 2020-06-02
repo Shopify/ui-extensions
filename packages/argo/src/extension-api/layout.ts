@@ -1,17 +1,13 @@
 type SizeClass = 'regular' | 'compact';
 
-export interface LayoutHandler {
-  onLayoutChange: (layout: Layout) => void;
-}
-
 export interface Layout {
   horizontal: SizeClass;
 }
 
 export interface LayoutApi {
   layout: {
-    initialData: Layout;
-    setHandler: (handler: LayoutHandler) => void;
+    initialValue: Layout;
+    setOnChange: (onChange: (layout: Layout) => void) => void;
   };
 }
 
