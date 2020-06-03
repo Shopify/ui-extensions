@@ -2,7 +2,7 @@ import React from 'react';
 
 import {renderReact} from '../render';
 
-const {extend} = require.requireMock('../../extend') as {extend: jest.Mock};
+const {extend} = jest.requireMock('../../extend') as {extend: jest.Mock};
 
 jest.mock('../../extend', () => ({
   extend: jest.fn(),
