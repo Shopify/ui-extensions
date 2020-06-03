@@ -1,11 +1,11 @@
-import React, {useState, useCallback, useMemo} from 'react';
-import {createPlainWorkerFactory} from '@shopify/react-web-worker';
-import {usePerformanceMark} from '@shopify/react-performance';
+import React, {useMemo} from 'react';
 import {ExtensionPoint} from '@shopify/argo';
-import {useToastApi, useLocaleApi} from '@shopify/argo-host';
-import {Button} from '@shopify/polaris';
+import {useLocaleApi, useToastApi} from '@shopify/argo-host';
+import {usePerformanceMark} from '@shopify/react-performance';
+import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 
 import {StandardContainer} from '../../components/containers';
+import {useGlobalLocale} from '../../foundation/App/ultilities/useGlobalLocale';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
   import(/* webpackChunkName: '3p-components-list' */ '../../third-party/components-list'),
@@ -14,11 +14,8 @@ const reactThirdPartyWorker = createPlainWorkerFactory(() =>
 export function ComponentsList() {
   usePerformanceMark('complete', 'ComponentsList');
 
-  const [locale, setLocale] = useState('en');
+  const locale = useGlobalLocale();
   const localeApi = useLocaleApi(locale);
-  const onChangeLocaleClick = useCallback(() => {
-    setLocale(locale => (locale === 'en' ? 'fr' : 'en'));
-  }, []);
 
   const [Toast, toastApi] = useToastApi();
 
@@ -26,7 +23,6 @@ export function ComponentsList() {
 
   return (
     <>
-      <Button onClick={onChangeLocaleClick}>Toggle locale ({locale})</Button>
       <StandardContainer
         script={reactThirdPartyWorker.url}
         extensionPoint={ExtensionPoint.Playground}

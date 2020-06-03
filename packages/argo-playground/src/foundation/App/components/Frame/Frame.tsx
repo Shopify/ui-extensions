@@ -1,19 +1,23 @@
 import React, {ReactNode, useState} from 'react';
+import {Frame as PolarisFrame, Navigation, Select, TopBar} from '@shopify/polaris';
+import {HomeMajorTwotone, ListMajorMonotone, TextBlockMajorMonotone} from '@shopify/polaris-icons';
 import {Route} from '@shopify/react-router';
-import {Frame as PolarisFrame, Navigation, TopBar} from '@shopify/polaris';
-import {
-  HomeMajorTwotone,
-  ListMajorMonotone,
-  StarOutlineMinor,
-  TextBlockMajorMonotone,
-} from '@shopify/polaris-icons';
+
+import {GlobalLocaleProvider} from '../../ultilities/useGlobalLocale';
 
 interface Props {
   children?: ReactNode;
 }
 
+const locales = [
+  {label: 'English', value: 'en'},
+  {label: 'French', value: 'fr'},
+  {label: 'Japanese', value: 'ja'},
+];
+
 export function Frame({children}: Props) {
   const [navOpen, setNavOpen] = useState(false);
+  const [locale, setLocale] = useState(locales[0].value);
 
   return (
     <PolarisFrame
@@ -70,12 +74,15 @@ export function Frame({children}: Props) {
                   },
                 ]}
               />
+              <div style={{marginLeft: '1.6rem', marginRight: '1.6rem'}}>
+                <Select label="Locale" options={locales} onChange={setLocale} value={locale} />
+              </div>
             </Navigation>
           )}
         />
       }
     >
-      {children}
+      <GlobalLocaleProvider locale={locale}>{children}</GlobalLocaleProvider>
     </PolarisFrame>
   );
 }
