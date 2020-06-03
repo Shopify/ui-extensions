@@ -9,27 +9,29 @@ export default createPackage((pkg) => {
     createProjectBuildPlugin(
       'Argogogo.CopyAppleScript',
       ({api, hooks, project}) => {
-        hooks.steps.hook((steps, {variant}) => [
-          ...steps,
-          api.createStep(
-            {id: 'Argogogo.CopyAppleScript', label: 'Copying AppleScripts'},
-            async () => {
-              const {copy} = await import('fs-extra');
-              const variantName = Object.keys(variant)[0];
+        hooks.variant.hook(({hooks, variant}) => {
+          hooks.steps.hook((steps) => [
+            ...steps,
+            api.createStep(
+              {id: 'Argogogo.CopyAppleScript', label: 'Copying AppleScripts'},
+              async () => {
+                const {copy} = await import('fs-extra');
+                const variantName = Object.keys(variant)[0];
 
-              await copy(
-                project.fs.resolvePath('src/browser/openChrome.applescript'),
-                project.fs.buildPath(
-                  variantName === 'commonjs' ? 'cjs' : variantName,
-                  'browser/openChrome.applescript',
-                ),
-                {
-                  overwrite: true,
-                },
-              );
-            },
-          ),
-        ]);
+                await copy(
+                  project.fs.resolvePath('src/browser/openChrome.applescript'),
+                  project.fs.buildPath(
+                    variantName === 'commonjs' ? 'cjs' : variantName,
+                    'browser/openChrome.applescript',
+                  ),
+                  {
+                    overwrite: true,
+                  },
+                );
+              },
+            ),
+          ]);
+        });
       },
     ),
   );

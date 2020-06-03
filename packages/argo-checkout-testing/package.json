@@ -8,8 +8,8 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@remote-ui/core": "^0.0.25",
-    "@remote-ui/react": "^0.0.35",
+    "@remote-ui/core": "^0.0.27",
+    "@remote-ui/react": "^0.0.38",
     "@types/react": "^16.0.0"
   },
   "optionalDependencies": {
