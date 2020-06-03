@@ -1216,20 +1216,20 @@
     native-url "^0.2.6"
     schema-utils "^2.6.5"
 
-"@remote-ui/core@^0.0.27":
-  version "0.0.27"
-  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-0.0.27.tgz#723f02aed342de82aa38f3022eb95bf643b2dfc2"
-  integrity sha512-dVgUs6932QLLYqECmHDN40TfHeX//VPC4RqJvK/65mL5Pfl4538zPJOfqq8/IS+Zoj54J1CBLv3ufPKO0d+Pag==
+"@remote-ui/core@^0.0.28":
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-0.0.28.tgz#7ad03fa9b92e245b1ccc83cf26c75e85cbb3c387"
+  integrity sha512-4WycO0AtFZuvOYLtQYSUyhOix/McvEhahEhVYajdZuEdhe9RdNQEi1EfvA0T8MsgYwW82vVg0lUSisInQ77tNA==
   dependencies:
     "@remote-ui/rpc" "^0.0.10"
     "@remote-ui/types" "^0.0.8"
 
-"@remote-ui/react@^0.0.38":
-  version "0.0.38"
-  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-0.0.38.tgz#d20129b01697a0f40ce24ec8cbb94d82d44fd32f"
-  integrity sha512-Kbr/FJjBl3mQ/ecjjf0P5A2yFagXkjJ7dMIFjCkLlZZhB8OJZfxMNGfnGewkRjnpSEz+J1H272BJumP8gkFF4Q==
+"@remote-ui/react@^0.0.39":
+  version "0.0.39"
+  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-0.0.39.tgz#d8ea68cefb7379e24ab2007efa0f5414f8e053c7"
+  integrity sha512-u7jZBBDHq5NKl9qxmcm6hvjonTi++PSXXQlU4gON3Vb9AloOjQ96oQlaviXZmmK3cAH/MRKKR7lsvGA0wRFlWA==
   dependencies:
-    "@remote-ui/core" "^0.0.27"
+    "@remote-ui/core" "^0.0.28"
     "@remote-ui/rpc" "^0.0.10"
     "@remote-ui/web-workers" "^0.0.17"
     "@types/react" ">=16.8.0 <17.0.0"
