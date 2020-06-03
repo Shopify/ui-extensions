@@ -4,7 +4,7 @@ import webpack from 'webpack';
 import Koa from 'koa';
 import koaWebpack from 'koa-webpack';
 
-import {log, getEntry} from './utilities';
+import {log} from './utilities';
 import {createWebpackConfiguration} from './webpack-config';
 
 export async function serve(..._args: string[]) {
@@ -16,7 +16,7 @@ export async function serve(..._args: string[]) {
 
   const compiler = webpack(
     createWebpackConfiguration({
-      entry: getEntry(),
+      development: true,
       output: {
         filename,
         publicPath,

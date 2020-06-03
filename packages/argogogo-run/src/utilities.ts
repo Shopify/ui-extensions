@@ -1,5 +1,4 @@
 import {resolve} from 'path';
-import {sync as glob} from 'glob';
 
 // Extract `--name x` or `--name=x` from an argv array.
 // Could bring in a CLI arg library, but this is fun practice :)
@@ -32,22 +31,4 @@ export function shouldUseReact() {
   } catch {
     return false;
   }
-}
-
-export function getEntry() {
-  const indexFiles = glob('index.{ts,tsx,js}', {absolute: true});
-
-  if (indexFiles.length > 0) {
-    return indexFiles[0];
-  }
-
-  const srcIndexFiles = glob('src/index.{ts,tsx,js}', {absolute: true});
-
-  if (srcIndexFiles) {
-    return srcIndexFiles[0];
-  }
-
-  throw new Error(
-    `No entry file found in ${process.cwd()}. Make sure you have a JavaScript or TypeScript index file at the root of your project, or nested in the /src directory`,
-  );
 }

@@ -1,53 +1,31 @@
-import {resolve} from 'path';
-import {rollup} from 'rollup';
-import babel from '@rollup/plugin-babel';
-import commonjs from '@rollup/plugin-commonjs';
-import nodeResolve from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
-import {terser} from 'rollup-plugin-terser';
+import webpack from 'webpack';
 
-import {babelConfig} from './babel';
-import {log, shouldUseReact, getEntry, namedArgument} from './utilities';
+import {log, namedArgument} from './utilities';
+import {createWebpackConfiguration} from './webpack-config';
 
 export async function build(...args: string[]) {
   log('Starting production build');
 
   try {
-    const build = await rollup({
-      input: getEntry(),
-      treeshake: {
-        propertyReadSideEffects: false,
-      },
-      plugins: [
-        replace({
-          'process.env.NODE_ENV': JSON.stringify('production'),
-        }),
-        nodeResolve({
-          extensions: ['.esnext', '.ts', '.tsx', '.mjs', '.js', '.json'],
-        }),
-        commonjs({
-          include: ['node_modules/**'],
-        }),
-        babel({
-          compact: true,
-          babelrc: false,
-          configFile: false,
-          ...babelConfig({
-            react: shouldUseReact(),
-            typescript: true,
-          }),
-          extensions: ['.esnext', '.ts', '.tsx', '.mjs', '.js'],
-          exclude: ['node_modules/**', '!*.esnext'],
-          babelHelpers: 'bundled',
-        }),
-        terser(),
-      ],
-      onwarn: () => {},
-    });
+    const compiler = webpack(
+      createWebpackConfiguration({
+        output: {filename: getFileNameFromArgs(args)},
+      }),
+    );
 
-    await build.write({
-      file: resolve(`build/${getFileNameFromArgs(args)}.js`),
-      format: 'iife',
+    await new Promise((resolve, reject) => {
+      compiler.run((error, stats) => {
+        if (error) {
+          reject(error);
+          return;
+        }
+
+        if (stats.hasErrors()) {
+          reject(new Error(stats.toString('errors-only')));
+        }
+
+        resolve(stats);
+      });
     });
 
     log(`Build completed successfully`);
@@ -62,6 +40,6 @@ export async function build(...args: string[]) {
 const DEFAULT_FILE_NAME = 'main';
 
 function getFileNameFromArgs(args: string[]) {
-  const fileName = namedArgument('filename', args);
-  return fileName ?? DEFAULT_FILE_NAME;
+  const filename = namedArgument('filename', args) ?? DEFAULT_FILE_NAME;
+  return filename.endsWith('.js') ? filename : `${filename}.js`;
 }
