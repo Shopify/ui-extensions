@@ -47,7 +47,15 @@ module.exports = {
     path: __dirname + '/dist',
   },
   plugins: isDevelopment
-    ? [new WebWorkerPlugin(), new HtmlWebpackPlugin({title: 'Playground - App Extensions'})]
+    ? [
+        new WebWorkerPlugin(),
+        new HtmlWebpackPlugin({
+          title: 'Playground - App Extensions',
+          meta: {
+            viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
+          },
+        }),
+      ]
     : [
         new webpack.ProvidePlugin({
           React: 'react',
@@ -104,9 +112,7 @@ module.exports = {
           options: {
             babelrc: false,
             presets: BABEL_PRESETS,
-            plugins: BABEL_PLUGINS.concat([
-              require.resolve('@shopify/web-worker/babel'),
-            ]),
+            plugins: BABEL_PLUGINS.concat([require.resolve('@shopify/web-worker/babel')]),
             sourceType: 'unambiguous',
           },
         },
