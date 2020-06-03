@@ -28,7 +28,9 @@ const useResizeObserver: () => [LegacyRef<any>, ResizeObserverEntry | undefined]
   return [setRef, entry];
 };
 
-type OnChange = (layout: Layout) => void;
+type Callback = {
+  onLayoutChange: (layout: Layout) => void;
+};
 
 export function useLayoutApi(
   sizeClassBreakPoint: number = SIZE_CLASS_BREAK_POINT,
@@ -36,7 +38,7 @@ export function useLayoutApi(
   const [ref, entry] = useResizeObserver();
   const [layout, setLayout] = useState<Layout>();
   const [initialValue, setInitialValue] = useState<Layout>();
-  const [onChange, setOnChange] = useState<OnChange>();
+  const [callback, setCallback] = useState<Callback>();
 
   useEffect(() => {
     if (!entry) {
@@ -54,20 +56,20 @@ export function useLayoutApi(
   }, [sizeClassBreakPoint, entry, initialValue, layout]);
 
   useEffect(() => {
-    if (!layout || !onChange) {
+    if (!layout || !callback) {
       return;
     }
-    onChange(layout);
-  }, [layout, onChange]);
+    callback?.onLayoutChange(layout);
+  }, [layout, callback]);
 
   return useMemo(() => {
     const layoutApi: LayoutApi | undefined = initialValue
       ? {
           layout: {
-            initialValue: initialValue,
-            setOnChange: onChange => {
-              retain(onChange);
-              setOnChange(layout => onChange(layout));
+            initialValue,
+            setOnChange: onLayoutChange => {
+              retain(onLayoutChange);
+              setCallback({onLayoutChange});
             },
           },
         }
