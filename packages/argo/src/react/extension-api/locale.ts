@@ -1,3 +1,4 @@
+import {useEffect, useState} from 'react';
 import {isLocaleApi} from '../../extension-api/locale';
 import {useExtensionApi} from './utils';
 
@@ -6,5 +7,15 @@ export function useLocale() {
   if (!isLocaleApi(api)) {
     throw new Error('No locale api found');
   }
-  return api.locale;
+
+  const {
+    locale: {initialValue, setOnChange},
+  } = api;
+  const [locale, setLocale] = useState(initialValue);
+
+  useEffect(() => {
+    setOnChange(newLocale => setLocale(newLocale));
+  }, [setOnChange]);
+
+  return locale;
 }
