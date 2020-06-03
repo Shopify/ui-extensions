@@ -120,7 +120,7 @@ export function createWebpackConfiguration({
               configFile: false,
               ...babelConfig({
                 react: useReact,
-                typescript: false,
+                typescript: true,
                 targets,
               }),
             },
