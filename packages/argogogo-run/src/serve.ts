@@ -29,7 +29,7 @@ export async function serve(..._args: string[]) {
 
     compiler.hooks.done.tap('Argogogo.Compiled', (stats) => {
       if (stats.hasErrors()) {
-        log(`Build failed with errors:${stats.toString('errors-only')}`, {
+        log(`Build failed with errors: ${stats.toString('errors-only')}`, {
           error: true,
         });
 

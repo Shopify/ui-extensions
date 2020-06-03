@@ -1,4 +1,5 @@
 import {resolve} from 'path';
+import chalk from 'chalk';
 
 // Extract `--name x` or `--name=x` from an argv array.
 // Could bring in a CLI arg library, but this is fun practice :)
@@ -18,7 +19,7 @@ export function namedArgument(
 }
 
 export function log(message: string, {error = false} = {}) {
-  const separator = error ? '\u001b[31m>\u001b[39m' : '\u001b[2m>\u001b[22m';
+  const separator = error ? chalk.red('>') : chalk.dim('>');
   // eslint-disable-next-line no-console
   console.log(`🔭 ${separator} ${message}`);
 }
