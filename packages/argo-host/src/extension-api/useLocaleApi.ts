@@ -3,20 +3,16 @@ import {LocaleApi} from '@shopify/argo/extension-api/locale';
 import {retain} from '@shopify/remote-ui-core';
 import {useEffect} from 'react';
 
-type Callback = {
-  onLocaleChange: (locale: string) => void;
-};
-
 export function useLocaleApi(locale: string): LocaleApi {
   const [initialValue] = useState(locale);
-  const [callback, setCallback] = useState<Callback>();
+  const [onLocaleChange, setOnLocaleChange] = useState<(locale: string) => void>();
 
   useEffect(() => {
-    if (!callback) {
-      return callback;
+    if (!onLocaleChange) {
+      return;
     }
-    callback.onLocaleChange(locale);
-  }, [callback, locale]);
+    onLocaleChange(locale);
+  }, [onLocaleChange, locale]);
 
   return useMemo(
     () => ({
@@ -24,7 +20,7 @@ export function useLocaleApi(locale: string): LocaleApi {
         initialValue,
         setOnChange: onLocaleChange => {
           retain(onLocaleChange);
-          setCallback({onLocaleChange});
+          setOnLocaleChange(() => onLocaleChange);
         },
       },
     }),
