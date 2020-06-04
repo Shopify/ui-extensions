@@ -45,7 +45,10 @@ function createClient(componentName) {
  */
 const HOST_TEMPLATE = `
 import React from 'react';
-import {{{name}}Props} from '@shopify/argo';
+import {{{name}} as Argo{{name}}} from '@shopify/argo';
+import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
+
+type {{name}}Props = ReactPropsFromRemoteComponentType<typeof Argo{{name}}>;
 
 export default function {{name}}(props: {{name}}Props) {
   return <>Component Code</>;
