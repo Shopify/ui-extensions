@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.0.65](https://github.com/Shopify/app-extension-libs/compare/v0.0.64...v0.0.65) (2020-06-04)
+
+
+### Bug Fixes
+
+* clean up webpack configs and package.json ([51becc4](https://github.com/Shopify/app-extension-libs/commit/51becc48730c30e18533f521eb969103003deedb))
+* fix layout extension api ([d49ff2b](https://github.com/Shopify/app-extension-libs/commit/d49ff2b12ded8ff7d944e741d11bfb32b9eea5b3))
+* fix locale extension api ([d00a519](https://github.com/Shopify/app-extension-libs/commit/d00a519f9ebd6b7e1a226a76a9b931a5170e7dc0))
+
+
+
+
+
 ## [0.0.64](https://github.com/Shopify/app-extension-libs/compare/v0.0.63...v0.0.64) (2020-06-02)
 
 
