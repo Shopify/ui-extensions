@@ -3,7 +3,9 @@
   "compilerOptions": {
     "rootDir": "../",
     "baseUrl": "./",
-    "paths": {}
+    "paths": {
+      "react": ["../../node_modules/react"]
+    }
   },
   "include": [
     "../*/src"

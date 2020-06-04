@@ -1,9 +1,12 @@
 import React, {useCallback} from 'react';
-import {ClickableProps} from '@shopify/argo';
+import {Clickable as ArgoClickable} from '@shopify/argo';
+import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
+
+type ClickableProps = ReactPropsFromRemoteComponentType<typeof ArgoClickable>;
 
 export default function Clickable({onClick, children}: ClickableProps) {
   const polarisOnClick = useCallback(
-    e => {
+    (e) => {
       e.stopPropagation();
       onClick();
     },

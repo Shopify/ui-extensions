@@ -1,8 +1,11 @@
 import React, {useCallback} from 'react';
-import {ModalProps} from '@shopify/argo';
+import {Modal as ArgoModal} from '@shopify/argo';
+import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
 import {Modal as PolarisModal} from '@shopify/polaris';
 
 import {useWrapAction, useWrapActions} from '../../utilities/components';
+
+type ModalProps = ReactPropsFromRemoteComponentType<typeof ArgoModal>;
 
 export default function Modal({
   primaryAction,

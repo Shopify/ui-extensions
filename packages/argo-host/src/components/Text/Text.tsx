@@ -1,6 +1,9 @@
 import React from 'react';
-import {TextProps} from '@shopify/argo';
+import {Text as ArgoText} from '@shopify/argo';
+import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
 import {TextStyle, DisplayText, DisplayTextProps, Caption} from '@shopify/polaris';
+
+type TextProps = ReactPropsFromRemoteComponentType<typeof ArgoText>;
 
 type TitleTextSize = Exclude<TextProps['size'], 'small' | 'medium' | undefined>;
 

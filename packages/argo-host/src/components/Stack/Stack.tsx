@@ -1,6 +1,9 @@
 import React from 'react';
-import {StackProps} from '@shopify/argo';
+import {Stack as ArgoStack} from '@shopify/argo';
 import {Stack as PolarisStack} from '@shopify/polaris';
+import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
+
+type StackProps = ReactPropsFromRemoteComponentType<typeof ArgoStack>;
 
 export default function Stack({
   children,

@@ -1,6 +1,9 @@
 import React, {useCallback} from 'react';
-import {ResourceItemProps} from '@shopify/argo';
+import {ResourceItem as ArgoResourceItem} from '@shopify/argo';
+import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
 import {ResourceItem as PolarisResourceItem} from '@shopify/polaris';
+
+type ResourceItemProps = ReactPropsFromRemoteComponentType<typeof ArgoResourceItem>;
 
 export default function ResourceItem({id, onClick, children}: ResourceItemProps) {
   const polarisId = id.toString();

@@ -1,8 +1,11 @@
 import React from 'react';
-import {CardProps} from '@shopify/argo';
+import {Card as ArgoCard} from '@shopify/argo';
+import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
 import {Card as PolarisCard} from '@shopify/polaris';
 
 import {useWrapAction, useWrapActions} from '../../utilities/components';
+
+type CardProps = ReactPropsFromRemoteComponentType<typeof ArgoCard>;
 
 export default function Card({
   primaryFooterAction,
