@@ -8,7 +8,6 @@ export interface ModalProps {
   primaryAction?: DestructableAction;
   secondaryActions?: DestructableAction[];
   onClose: () => void;
-  children?: React.ReactNode;
 }
 
 export const Modal = createRemoteComponent<'Modal', ModalProps>('Modal');

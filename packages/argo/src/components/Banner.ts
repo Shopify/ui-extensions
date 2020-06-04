@@ -11,7 +11,6 @@ export interface BannerProps {
   status?: BannerStatus;
   title?: string;
   onDismiss: () => void;
-  children?: React.ReactNode;
 }
 
 export const Banner = createRemoteComponent<'Banner', BannerProps>('Banner');

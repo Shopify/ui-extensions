@@ -20,7 +20,6 @@ export interface StackProps {
   distribution?: Distribution;
   spacing?: Spacing;
   wrap?: boolean;
-  children: React.ReactNode;
 }
 
 export const Stack = createRemoteComponent<'Stack', StackProps>('Stack');

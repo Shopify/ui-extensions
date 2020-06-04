@@ -16,7 +16,6 @@ export interface CardProps {
   sectioned?: boolean;
   primaryFooterAction?: DestructableAction;
   secondaryFooterActions?: DestructableAction[];
-  children?: React.ReactNode;
   actions?: DisableableAction[];
 }
 

@@ -23,7 +23,6 @@ type Color = 'primary' | 'secondary' | 'warning' | 'error' | 'success';
  * @property alignment Text alignment. Defaults to left aligned
  */
 export interface TextProps {
-  children: React.ReactNode;
   size?: TextSize;
   style?: Style;
   color?: Color;

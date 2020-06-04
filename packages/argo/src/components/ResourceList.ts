@@ -9,7 +9,6 @@ interface FilterControl {
 
 export interface ResourceListProps {
   filterControl?: FilterControl;
-  children?: React.ReactNode;
 }
 
 export const ResourceList = createRemoteComponent<'ResourceList', ResourceListProps>(

@@ -9,7 +9,6 @@ export interface PageProps {
   subTitle?: string;
   primaryAction?: DestructableAction;
   secondaryActions?: DestructableAction[];
-  children?: React.ReactNode;
 }
 
 export const Page = createRemoteComponent<'Page', PageProps>('Page');
