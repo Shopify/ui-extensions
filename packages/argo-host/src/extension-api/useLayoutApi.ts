@@ -6,8 +6,11 @@ import {retain} from '@shopify/remote-ui-core';
 // See https://github.com/Shopify/app-extension-libs/issues/237#issuecomment-606625111
 const SIZE_CLASS_BREAK_POINT = 480;
 
-const ResizeObserver: typeof Polyfill =
-  (typeof window !== 'undefined' && (window as any).ResizeObserver) || Polyfill;
+function resizeObserver(callback: (entries: ResizeObserverEntry[], observer: Polyfill) => void) {
+  const ResizeObserver: typeof Polyfill =
+    typeof window === 'undefined' ? Polyfill : (window as any).ResizeObserver;
+  return new ResizeObserver(callback);
+}
 
 const useResizeObserver: () => [LegacyRef<any>, ResizeObserverEntry | undefined] = () => {
   const [entry, setEntry] = useState<ResizeObserverEntry | undefined>();
@@ -18,7 +21,7 @@ const useResizeObserver: () => [LegacyRef<any>, ResizeObserverEntry | undefined]
     if (!element) {
       return;
     }
-    const observer = new ResizeObserver(([entry]) => setEntry(entry));
+    const observer = resizeObserver(([entry]) => setEntry(entry));
     observer.observe(element);
     return () => {
       observer.disconnect();

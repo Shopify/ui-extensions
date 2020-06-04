@@ -1,4 +1,3 @@
-// import '@shopify/react-testing/matchers';
 import React from 'react';
 
 import {mountWithAppProvider as mount} from '../../../../../../test-utils/mount';

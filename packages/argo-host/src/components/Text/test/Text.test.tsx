@@ -1,5 +1,4 @@
 import React from 'react';
-import '@shopify/react-testing/matchers';
 
 import {Caption, DisplayText, TextStyle} from '@shopify/polaris';
 
