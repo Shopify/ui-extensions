@@ -1,3 +1,3 @@
 # Extensions Master List
 
-- [SubscriptionManagementExtension](./SubscriptionManagementExtension.md)
+- [SubscriptionManagementExtension](./SubscriptionManagementExtension/ReadMe.md)

@@ -30,8 +30,5 @@ This extension renders in the Product Details and Product Variants Page and is h
 - [Session Token](../Utilities/SessionToken.md)
 - [Toast](../Utilities/Toast.md)
 
-## Product Data
-
-TODO - [Product Data](../Utilities/ProductData.md) structure goes here
 
 
