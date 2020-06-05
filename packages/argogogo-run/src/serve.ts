@@ -4,11 +4,11 @@ import webpack from 'webpack';
 import Koa from 'koa';
 import koaWebpack from 'koa-webpack';
 
-import {log} from './utilities';
+import {log, namedArgument} from './utilities';
 import {createWebpackConfiguration} from './webpack-config';
 
-export async function serve(..._args: string[]) {
-  const port = await getPort({port: 8910});
+export async function serve(...args: string[]) {
+  const port = namedArgument('port', args) ?? (await getPort({port: 8910}));
   const url = `http://localhost:${port}`;
   const publicPath = `${url}/assets/`;
   const filename = 'extension.js';
