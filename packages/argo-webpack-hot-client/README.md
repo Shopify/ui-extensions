@@ -2,6 +2,12 @@
 
 This package provides utilities for automatically reloading an Argo script when content changes. The tools provided are similar to [`webpack-hot-client`](https://github.com/webpack-contrib/webpack-hot-client), but supports being run in a web worker and using the `self.shopify` API for "full" reloads.
 
+## Installation
+
+```bash
+$ yarn add @shopify/argo-webpack-hot-client --dev
+```
+
 ## Usage
 
 You’ll reference two parts of this package in your webpack configuration:
