@@ -2,21 +2,18 @@ import {RemoteRoot} from '@shopify/remote-ui-core';
 import {AppLinkSchema, PlaygroundSchema, SubscriptionManagementSchema} from './component-schemas';
 import {
   ModalActionsApi,
-  ProductDataApi,
   ToastApi,
   LayoutApi,
   LocaleApi,
   SessionTokenApi,
+  DataApi,
 } from './extension-api';
 
-type DataApi = {
-  data?: {
-    [key: string]: any;
-  };
-};
-
-type StandardApi = LayoutApi & LocaleApi & SessionTokenApi & DataApi;
-type SubscriptionApi = StandardApi & ModalActionsApi & ToastApi & ProductDataApi;
+type StandardApi = LayoutApi & LocaleApi & SessionTokenApi;
+type SubscriptionApi<T extends ExtensionPoint> = StandardApi &
+  ModalActionsApi &
+  ToastApi &
+  DataApi<T>;
 
 export type ExtensionResult = {} | void;
 
@@ -45,10 +42,18 @@ export interface ExtensionApi {
   [ExtensionPoint.MerchantMetafield]: StandardApi;
 
   // Subscription Management
-  [ExtensionPoint.SubscriptionManagementCreate]: SubscriptionApi;
-  [ExtensionPoint.SubscriptionManagementAdd]: SubscriptionApi;
-  [ExtensionPoint.SubscriptionManagementEdit]: SubscriptionApi;
-  [ExtensionPoint.SubscriptionManagementRemove]: SubscriptionApi;
+  [ExtensionPoint.SubscriptionManagementCreate]: SubscriptionApi<
+    ExtensionPoint.SubscriptionManagementCreate
+  >;
+  [ExtensionPoint.SubscriptionManagementAdd]: SubscriptionApi<
+    ExtensionPoint.SubscriptionManagementAdd
+  >;
+  [ExtensionPoint.SubscriptionManagementEdit]: SubscriptionApi<
+    ExtensionPoint.SubscriptionManagementEdit
+  >;
+  [ExtensionPoint.SubscriptionManagementRemove]: SubscriptionApi<
+    ExtensionPoint.SubscriptionManagementRemove
+  >;
 }
 
 export interface ExtensionPointCallback {
@@ -64,19 +69,19 @@ export interface ExtensionPointCallback {
 
   // Subscription Management
   [ExtensionPoint.SubscriptionManagementCreate]: RenderableExtensionCallback<
-    SubscriptionApi,
+    SubscriptionApi<ExtensionPoint.SubscriptionManagementCreate>,
     RemoteRoot<SubscriptionManagementSchema>
   >;
   [ExtensionPoint.SubscriptionManagementAdd]: RenderableExtensionCallback<
-    SubscriptionApi,
+    SubscriptionApi<ExtensionPoint.SubscriptionManagementAdd>,
     RemoteRoot<SubscriptionManagementSchema>
   >;
   [ExtensionPoint.SubscriptionManagementEdit]: RenderableExtensionCallback<
-    SubscriptionApi,
+    SubscriptionApi<ExtensionPoint.SubscriptionManagementEdit>,
     RemoteRoot<SubscriptionManagementSchema>
   >;
   [ExtensionPoint.SubscriptionManagementRemove]: RenderableExtensionCallback<
-    SubscriptionApi,
+    SubscriptionApi<ExtensionPoint.SubscriptionManagementRemove>,
     RemoteRoot<SubscriptionManagementSchema>
   >;
 }

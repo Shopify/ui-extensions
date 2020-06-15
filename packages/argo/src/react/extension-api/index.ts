@@ -4,4 +4,4 @@ export * from './locale';
 export * from './modalActions';
 export * from './sessionToken';
 export * from './toast';
-export * from './productData';
+export * from './data';

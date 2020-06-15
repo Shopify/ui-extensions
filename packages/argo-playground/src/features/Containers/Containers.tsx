@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {ExtensionPoint} from '@shopify/argo';
-import {useProductData, useToastApi} from '@shopify/argo-host';
+import {useDataApi, useToastApi} from '@shopify/argo-host';
 import {Badge, Card, Layout, Link, Page, Stack, TextField} from '@shopify/polaris';
 import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 
@@ -13,9 +13,9 @@ const modalClientScript = createPlainWorkerFactory(() =>
 export function Containers() {
   const [showModal, setShowModal] = useState(false);
   const [currentExtensionPoint, setCurrentExtensionPoint] = useState<ExtensionPoint>();
-  const dataApi = useProductData({
-    shopId: 1,
-    productId: 1,
+  const dataApi = useDataApi<ExtensionPoint.SubscriptionManagementCreate>({
+    productId: '1',
+    done: () => {},
   });
   const [Toast, toastApi] = useToastApi();
 
@@ -85,7 +85,7 @@ export function Containers() {
               Here is some information for the side bar in case you needed it.
             </Card>
             <Card sectioned title="Side bar card two">
-              {[1, 2, 3].map(i => (
+              {[1, 2, 3].map((i) => (
                 <Card.Section key={i}>
                   <Stack distribution="fill">
                     <div>Some cool text</div>

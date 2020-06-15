@@ -8,7 +8,7 @@ import {
   StackItem,
   Text,
 } from '@shopify/argo';
-import {render, useModalActions, useProductData, useToast} from '@shopify/argo/react';
+import {render, useModalActions, useData, useToast} from '@shopify/argo/react';
 
 function EditSubscription() {
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];
@@ -30,9 +30,9 @@ function EditSubscription() {
     () => ({
       queryValue: resourceListQuery,
       queryPlaceholder: 'Search...',
-      onQueryChange: q => {
+      onQueryChange: (q) => {
         setResourceListQuery(q);
-        setListItems(dataList.filter(r => r.toString().includes(q)));
+        setListItems(dataList.filter((r) => r.toString().includes(q)));
       },
       onQueryClear: () => {
         setResourceListQuery('');
@@ -69,7 +69,7 @@ function EditSubscription() {
             onClick={() => {
               console.log('ResourceList item toggle:', item);
               if (selectedItems.includes(item)) {
-                setSelectedItems(selectedItems.filter(o => o !== item));
+                setSelectedItems(selectedItems.filter((o) => o !== item));
               } else {
                 setSelectedItems(selectedItems.concat(item));
               }
@@ -88,7 +88,7 @@ function EditSubscription() {
 }
 
 function RemoveSubscription() {
-  const {productId} = useProductData();
+  const {productId} = useData<ExtensionPoint.SubscriptionManagementRemove>();
 
   const {
     primaryAction: {setContent: setPrimaryContent, setAction: setPrimaryAction},
