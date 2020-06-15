@@ -9,6 +9,7 @@ module.exports = {
     'packages/*/*.mjs',
     'packages/*/*.node',
     'packages/*/*.esnext',
+    'examples/',
   ],
   overrides: [
     {

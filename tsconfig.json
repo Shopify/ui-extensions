@@ -3,9 +3,8 @@
   "include": [],
   "references": [
     {"path": "./tsconfig.repo.json"},
-    {"path": "./packages/argo-checkout-testing"},
+    {"path": "./packages/argo-checkout"},
     {"path": "./packages/argo-webpack-hot-client"},
-    {"path": "./packages/argogogo"},
-    {"path": "./packages/argogogo-run"}
+    {"path": "./packages/argo-run"}
   ]
 }
