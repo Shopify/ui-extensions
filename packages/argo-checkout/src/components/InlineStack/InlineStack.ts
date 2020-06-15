@@ -1,16 +1,18 @@
 import {createRemoteComponent} from '../../utilities';
 
-type Spacing = 'xtight' | 'tight' | 'loose';
-type Distribution = ('fill' | 'auto' | number)[];
-type Alignment = 'leading' | 'center' | 'trailing' | 'fill' | 'baseline';
+type Spacing = 'xtight' | 'tight' | 'loose' | 'xloose';
+type Alignment = 'leading' | 'center' | 'trailing' | 'baseline';
 
 export interface InlineStackProps {
-  spacing?: Spacing;
-  fill?: boolean;
+  /** Position children along the cross axis */
   alignment?: Alignment;
-  distribution?: Distribution;
+  /** Adjust spacing between children */
+  spacing?: Spacing;
 }
 
+/**
+ * InlineStack is used to lay out a horizontal row of elements
+ */
 export const InlineStack = createRemoteComponent<
   'InlineStack',
   InlineStackProps

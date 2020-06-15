@@ -11,6 +11,10 @@ module.exports = {
     'packages/*/*.esnext',
     'examples/',
   ],
+  rules: {
+    // Conflicts with prettier rule
+    'lines-around-comment': 'off',
+  },
   overrides: [
     {
       files: ['sewing-kit.config.ts', 'config/sewing-kit/**/*'],

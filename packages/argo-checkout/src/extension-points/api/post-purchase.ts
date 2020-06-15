@@ -1,4 +1,3 @@
-/* eslint-disable lines-around-comment */
 import type {StandardApi} from './standard';
 import type {ValueOrPromise} from './shared';
 
