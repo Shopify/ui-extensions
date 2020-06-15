@@ -5,7 +5,9 @@
     "access": "public",
     "registry": "https://registry.npmjs.org"
   },
-  "bin": "./bin/argogogo-run",
+  "bin": {
+    "argo-run": "./bin/argo-run"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/glob": "^7.1.1",
