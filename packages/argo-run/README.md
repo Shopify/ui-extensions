@@ -64,5 +64,5 @@ This command will run your extension through [webpack](https://webpack.js.org) t
 The extension asset will be placed in the `build` directory adjacent to the directory in which you ran the command. By default, its name will be `main.js`, but this can be customized using the `--filename` flag:
 
 ```bash
-$ yarn run argo-run build --filename extension.js
+$ yarn argo-run build --filename extension.js
 ```
