@@ -1,2 +1,2 @@
-export {FormLayout} from './FormLayout';
-export type {FormLayoutProps} from './FormLayout';
+export {FormLayout, FormLayoutGroup} from './FormLayout';
+export type {FormLayoutProps, FormLayoutGroupProps} from './FormLayout';

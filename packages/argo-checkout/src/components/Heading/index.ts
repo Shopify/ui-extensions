@@ -1,2 +1,2 @@
-export {Heading} from './Heading';
-export type {HeadingProps} from './Heading';
+export {Heading, HeadingGroup} from './Heading';
+export type {HeadingProps, HeadingGroupProps} from './Heading';
