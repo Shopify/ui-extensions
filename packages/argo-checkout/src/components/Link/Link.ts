@@ -6,8 +6,6 @@ export interface LinkProps {
    * or both.
    */
   to?: string;
-  /** CSS class that is applied to the link */
-  className?: string;
   /** Open the link in a new window or tab */
   external?: boolean;
   /**
