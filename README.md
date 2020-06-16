@@ -5,4 +5,4 @@ This repo contains a collection of packages for using Shopify’s [Argo](TODO) f
 This repo also has some of the helper packages Shopify uses to make Argo extensions easy to develop and deploy:
 
 - [`@shopify/argo-run`](packages/argo-run) is a tiny asset dev server and production asset builder, powered by [webpack](https://webpack.js.org)
-- [`@shopify/argo-webpack-hot-client](packages/argo-webpack-hot-client) is an Argo-compatible replacement for [webpack-hot-client](https://github.com/webpack-contrib/webpack-hot-client) that enables auto-reloading in Argo extensions.
+- [`@shopify/argo-webpack-hot-client`](packages/argo-webpack-hot-client) is an Argo-compatible replacement for [webpack-hot-client](https://github.com/webpack-contrib/webpack-hot-client) that enables auto-reloading in Argo extensions.
