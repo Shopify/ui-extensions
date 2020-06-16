@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '../../utilities';
 
 type Alignment = 'leading' | 'center' | 'trailing';
-type Spacing = 'tight' | 'loose' | 'xtight';
+type Spacing = 'xtight' | 'tight' | 'loose' | 'xloose';
 
 export interface BlockStackProps {
   /** Position children along the cross axis */
