@@ -1,9 +1,10 @@
 {
   "name": "@shopify/argo-run",
   "version": "0.1.0",
+  "description": "A command line interface for developing and building Argo extensions",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org"
+    "@shopify:registry": "https://registry.npmjs.org"
   },
   "bin": {
     "argo-run": "./bin/argo-run"

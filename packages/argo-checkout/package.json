@@ -1,5 +1,6 @@
 {
   "name": "@shopify/argo-checkout",
+  "description": "The API for Argo extensions that run in Shopify’s Checkout",
   "version": "0.1.3",
   "publishConfig": {
     "access": "public",
