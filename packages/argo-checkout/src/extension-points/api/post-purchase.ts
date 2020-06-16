@@ -5,24 +5,31 @@ import type {ValueOrPromise} from './shared';
 export interface PostPurchaseInquiryApi extends StandardApi {
   /** current cart being checked out */
   checkout: Checkout;
+
+  /**
+   * provides update method to store data in the browser
+   *
+   * also contains initialData which holds the value of the previously updated storage value
+   * this allows sync access to stored data when rendering initially
+   * */
+  storage: Storage;
 }
 
 /**
  * output expected from the inquiry extension point (Checkout::PostPurchase::Inquiry)
- * a truthy value means a post-purchase page is requested; a falsy value means the opposite
+ * if the result sets requestPostPurchasePage to be true, the post purchase page might be shown after payment
  *
- * if an object is returned, it will be stored and passed onto the render extension point later on
- * see: PostPurchaseRenderApi.storedPayload
  */
-export type PostPurchaseInquiryResult = ValueOrPromise<any>;
+export type PostPurchaseInquiryResult = ValueOrPromise<{
+  render: boolean;
+}>;
 
 /** input given to the render extension point (Checkout::PostPurchase::Render) */
 export interface PostPurchaseRenderApi extends StandardApi {
   /** initial purchase */
   order: Order;
 
-  /** if the inquiry returns an object to be stored, it will be passed here */
-  storedPayload: unknown;
+  storage: Storage;
 
   /**
    * edits the initial purchase, charging the vaulted payment method for the difference in price
@@ -111,3 +118,8 @@ interface AppliedChangesetResult {
  * https://shopify.dev/docs/admin-api/graphql/reference/object/calculatedorder?api[version]=2020-04
  */
 interface CalculatedChangesetResult {}
+
+interface Storage {
+  update(value: any): Promise<void>;
+  initialData: unknown;
+}
