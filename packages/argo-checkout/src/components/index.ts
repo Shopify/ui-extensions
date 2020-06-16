@@ -22,6 +22,8 @@ export {Image} from './Image';
 export type {ImageProps} from './Image';
 export {InlineStack} from './InlineStack';
 export type {InlineStackProps} from './InlineStack';
+export {Link} from './Link';
+export type {LinkProps} from './Link';
 export {Select} from './Select';
 export type {SelectProps} from './Select';
 export {Separator} from './Separator';
