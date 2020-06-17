@@ -16,10 +16,10 @@ render(ExtensionPoint.MyExtension, (root) => {
     style: 'italic',
     color: 'success',
     alignment: 'center',
-    children: 'Formatted text is awesome!',
   });
+  formattedText.appendChild('Formatted text is awesome!');
 
-  const simpleText = root.createComponent('This simple text is a bit less awesome');
+  const simpleText = root.createText('This simple text is a bit less awesome');
 
   root.appendChild(formattedText);
   root.appendChild(simpleText);
