@@ -14,8 +14,8 @@ render(ExtensionPoint.Playground, (root, api) => {
     },
   });
 
-  cardSection.appendChild(textField as any);
-  card.appendChild(cardSection as any);
+  cardSection.appendChild(textField);
+  card.appendChild(cardSection);
   root.appendChild(card);
 
   root.mount();
