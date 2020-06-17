@@ -14,12 +14,12 @@ import {ExtensionPoint, render, ResourceList, ResourceItem} from '@shopify/argo-
 
 render(ExtensionPoint.MyExtension, (root) => {
   const resourceitem1 = root.createComponent(ResourceItem, {
-    id: 1234,
+    id: '1234',
     onClick: () => console.log('Clicked 1'),
   });
   resourceitem1.appendChild('Cool item');
   const resourceitem2 = root.createComponent(ResourceItem, {
-    id: 5678,
+    id: '5678',
     onClick: () => console.log('Clicked 2'),
   });
   resourceitem2.appendChild('Cooler item');
@@ -57,10 +57,10 @@ function App() {
         onQueryClear: () => console.log('Clear filters')
       }
     >
-      <ResourceItem id={1234} onClick={() => console.log('Clicked 1')}>
+      <ResourceItem id="1234" onClick={() => console.log('Clicked 1')}>
         Cool item
       </ResourceItem>
-      <ResourceItem id={5678} onClick={() => console.log('Clicked 2')}>
+      <ResourceItem id="5678" onClick={() => console.log('Clicked 2')}>
         Cooler item
       </ResourceItem>
     </ResourceList>
