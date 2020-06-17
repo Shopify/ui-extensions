@@ -65,7 +65,7 @@ function EditSubscription() {
         {listItems.map((item, index) => (
           <ResourceItem
             key={index}
-            id={index}
+            id={`${index}`}
             onClick={() => {
               console.log('ResourceList item toggle:', item);
               if (selectedItems.includes(item)) {

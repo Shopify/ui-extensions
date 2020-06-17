@@ -10,9 +10,9 @@ export function ResourceListExample() {
     () => ({
       queryValue: resourceListQuery,
       queryPlaceholder: 'Search...',
-      onQueryChange: q => {
+      onQueryChange: (q) => {
         setResourceListQuery(q);
-        setListItems(dataList.filter(r => r.toString().includes(q)));
+        setListItems(dataList.filter((r) => r.toString().includes(q)));
       },
       onQueryClear: () => {
         setResourceListQuery('');
@@ -27,7 +27,7 @@ export function ResourceListExample() {
         {listItems.map((item, index) => (
           <ResourceItem
             key={index}
-            id={index}
+            id={`${index}`}
             onClick={() => console.log('ResourceList item click:', item)}
           >
             <Stack alignment="center">
