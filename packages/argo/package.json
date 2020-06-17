@@ -14,7 +14,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@shopify/remote-ui-core": "^0.0.21"
+    "@shopify/remote-ui-core": "^0.0.22"
   },
   "devDependencies": {
     "@types/react": "^16.0.0"
