@@ -8,20 +8,14 @@ import {
   StackItem,
   Text,
 } from '@shopify/argo';
-import {render, useModalActions, useData, useToast} from '@shopify/argo/react';
+import {render, useContainer, useData, useToast} from '@shopify/argo/react';
 
 function EditSubscription() {
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [listItems, setListItems] = useState(dataList);
-  const [primaryActionText, setPrimaryActionText] = useState('');
-  const [secondaryActionText, setSecondaryActionText] = useState('');
 
-  const {
-    primaryAction: {setContent: setPrimaryContent, setAction: setPrimaryAction},
-    secondaryAction: {setContent: setSecondaryContent, setAction: setSecondaryAction},
-    closeModal,
-  } = useModalActions();
+  const container = useContainer();
 
   const {show: showToast} = useToast();
 
@@ -43,21 +37,24 @@ function EditSubscription() {
   );
 
   useEffect(() => {
-    setPrimaryActionText('Next');
-    setSecondaryActionText('Back');
-
-    setPrimaryAction(() => {
-      showToast('Success');
-      closeModal();
+    const {close, done, setPrimaryAction, setSecondaryAction} = container;
+    setPrimaryAction({
+      content: 'Next',
+      onAction: () => {
+        showToast('Success');
+        done();
+        close();
+      },
     });
-    setSecondaryAction(() => {
-      showToast('Cancelled', {error: true});
-      closeModal();
-    });
-  }, [closeModal, setPrimaryAction, setSecondaryAction, showToast]);
 
-  setPrimaryContent(primaryActionText);
-  setSecondaryContent(secondaryActionText);
+    setSecondaryAction({
+      content: 'Back',
+      onAction: () => {
+        showToast('Cancelled', {error: true});
+        close();
+      },
+    });
+  }, [container, showToast]);
 
   return (
     <>
@@ -90,16 +87,29 @@ function EditSubscription() {
 function RemoveSubscription() {
   const {productId} = useData<ExtensionPoint.SubscriptionManagementRemove>();
 
-  const {
-    primaryAction: {setContent: setPrimaryContent, setAction: setPrimaryAction},
-    secondaryAction: {setContent: setSecondaryContent, setAction: setSecondaryAction},
-    closeModal,
-  } = useModalActions();
+  const container = useContainer();
 
-  setPrimaryContent('Yes');
-  setSecondaryContent('No');
-  setPrimaryAction(() => closeModal());
-  setSecondaryAction(() => closeModal());
+  const {show: showToast} = useToast();
+
+  useEffect(() => {
+    const {close, done, setPrimaryAction, setSecondaryAction} = container;
+    setPrimaryAction({
+      content: 'Yes',
+      onAction: () => {
+        showToast('Removed');
+        done();
+        close();
+      },
+    });
+
+    setSecondaryAction({
+      content: 'No',
+      onAction: () => {
+        showToast('Cancelled', {error: true});
+        close();
+      },
+    });
+  }, [container, showToast]);
 
   return (
     <>

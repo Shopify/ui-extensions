@@ -1,2 +1,2 @@
-export * from './ModalContainer';
+export * from './SubscriptionManagement';
 export * from './StandardContainer';

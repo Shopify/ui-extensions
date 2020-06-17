@@ -1,25 +1,20 @@
 import React from 'react';
-import {
-  SizeClass,
-  ModalActionsApi,
-  ToastApi,
-  LayoutApi,
-  LocaleApi,
-  SessionTokenApi,
-} from '@shopify/argo';
+import {ContainerApi, ToastApi, LayoutApi, LocaleApi, SessionTokenApi} from '@shopify/argo';
 import {ExtensionApiContext, useExtensionApi} from '../utils';
 import {useLocale} from '../locale';
 import {useLayout} from '../layout';
 import {useSessionToken} from '../sessionToken';
 import {useToast} from '../toast';
-import {useModalActions} from '../modalActions';
+import {useContainer} from '../container';
 import {mountWithAppProvider} from '../../../../../../test-utils/mount';
+import {ExtensionPoint} from '../../../../extension-points';
 
-type AllApis = LayoutApi & LocaleApi & SessionTokenApi & ModalActionsApi & ToastApi;
+type AllApis = LayoutApi & LocaleApi & SessionTokenApi & ToastApi;
+type SubscriptionManagementApi = AllApis & ContainerApi<ExtensionPoint.SubscriptionManagementAdd>;
 
 const defaultApis: AllApis = {
   layout: {
-    initialValue: {horizontal: 'compact' as SizeClass},
+    initialValue: {horizontal: 'compact'},
     setOnChange() {},
   },
   locale: {
@@ -31,17 +26,6 @@ const defaultApis: AllApis = {
   },
   toast: {
     show: () => {},
-  },
-  modalActions: {
-    primaryAction: {
-      setAction: () => {},
-      setContent: () => {},
-    },
-    secondaryAction: {
-      setAction: () => {},
-      setContent: () => {},
-    },
-    closeModal: () => {},
   },
 };
 
@@ -89,9 +73,9 @@ describe('extension api', () => {
     it('returns layout', async () => {
       const hookSpy = jest.fn();
       const layout = {
-        initialValue: {horizontal: 'regular' as SizeClass},
+        initialValue: {horizontal: 'regular'},
         setOnChange() {},
-      };
+      } as LayoutApi['layout'];
 
       await mountWithAppProvider(
         <ExtensionApiContext.Provider value={{...defaultApis, layout}}>
@@ -137,28 +121,24 @@ describe('extension api', () => {
     });
   });
 
-  describe('useModalActions', () => {
-    it('returns modal actions', async () => {
+  describe('useContainer', () => {
+    it('returns container', async () => {
       const hookSpy = jest.fn();
-      const modalActions = {
-        primaryAction: {
-          setAction: () => {},
-          setContent: () => {},
-        },
-        secondaryAction: {
-          setAction: () => {},
-          setContent: () => {},
-        },
-        closeModal: () => {},
+      const container = {
+        close: () => {},
+        done: () => {},
+        setPrimaryAction: () => {},
+        setSecondaryAction: () => {},
       };
 
+      const subscriptionManagementApi: SubscriptionManagementApi = {...defaultApis, container};
       await mountWithAppProvider(
-        <ExtensionApiContext.Provider value={{...defaultApis, modalActions}}>
-          <MockComponent hook={useModalActions}>{hookSpy}</MockComponent>
+        <ExtensionApiContext.Provider value={subscriptionManagementApi}>
+          <MockComponent hook={useContainer}>{hookSpy}</MockComponent>
         </ExtensionApiContext.Provider>,
       );
 
-      expect(hookSpy).toHaveBeenCalledWith(modalActions);
+      expect(hookSpy).toHaveBeenCalledWith(container);
     });
   });
 });

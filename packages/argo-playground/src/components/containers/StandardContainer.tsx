@@ -26,7 +26,7 @@ type Api<T extends ExtensionPoint> = Omit<
 
 export interface StandardContainerProps<T extends ExtensionPoint> extends BaseProps<T> {
   app?: {
-    name: string;
+    title: string;
     icon?: string;
     id: string;
   };

@@ -1,17 +1,18 @@
 import {RemoteRoot} from '@shopify/remote-ui-core';
 import {AppLinkSchema, PlaygroundSchema, SubscriptionManagementSchema} from './component-schemas';
 import {
-  ModalActionsApi,
+  ContainerApi,
   ToastApi,
   LayoutApi,
   LocaleApi,
   SessionTokenApi,
   DataApi,
 } from './extension-api';
+import {SubscriptionManangementExtension} from './extension-api/container/subscription-management';
 
 type StandardApi = LayoutApi & LocaleApi & SessionTokenApi;
-type SubscriptionApi<T extends ExtensionPoint> = StandardApi &
-  ModalActionsApi &
+type SubscriptionApi<T extends SubscriptionManangementExtension> = StandardApi &
+  ContainerApi<T> &
   ToastApi &
   DataApi<T>;
 

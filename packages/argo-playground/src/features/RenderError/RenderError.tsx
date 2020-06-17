@@ -4,7 +4,11 @@ import {Page, Button, Card, Layout} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {ExtensionPoint} from '@shopify/argo';
 
-import {ModalContainer, StandardContainer, ModalContainerProps} from '../../components/containers';
+import {
+  SubscriptionManagement,
+  StandardContainer,
+  SubscriptionManagmentProps,
+} from '../../components/containers';
 import {ArgoHeader} from '../../components/containers/shared/Header';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
@@ -14,9 +18,9 @@ const reactThirdPartyWorker = createPlainWorkerFactory(() =>
 export function ModalExtension({
   open,
   onClose,
-}: Pick<ModalContainerProps<ExtensionPoint.Playground>, 'open' | 'onClose'>) {
+}: Pick<SubscriptionManagmentProps<ExtensionPoint.Playground>, 'open' | 'onClose'>) {
   return (
-    <ModalContainer
+    <SubscriptionManagement
       defaultTitle="Modal Extension Render Timeout"
       app={{
         name: 'OneMoreTime',
@@ -34,7 +38,7 @@ export function CardExtension() {
   return (
     <Card>
       <Card.Section>
-        <ArgoHeader appName="OneMoreTime" title="Card Extension Render Timeout" />
+        <ArgoHeader name="OneMoreTime" title="Card Extension Render Timeout" />
       </Card.Section>
       <Card.Section>
         <StandardContainer
@@ -50,7 +54,7 @@ export function NoScriptExtension() {
   return (
     <Card>
       <Card.Section>
-        <ArgoHeader appName="OneMoreTime" title="Card Extension Script Not Found" />
+        <ArgoHeader name="OneMoreTime" title="Card Extension Script Not Found" />
       </Card.Section>
       <Card.Section>
         <StandardContainer script={null} extensionPoint={ExtensionPoint.Playground} />
@@ -72,7 +76,7 @@ export function RenderError() {
           <NoScriptExtension />
         </Layout.Section>
         <Layout.Section>
-          <Button onClick={() => setModalOpen(true)}>Open Modal</Button>
+          <Button onClick={() => setModalOpen(true)}>Open subscription management modal</Button>
         </Layout.Section>
         <Layout.Section>
           <CardExtension />

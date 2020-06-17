@@ -1,23 +1,35 @@
-import React, {useState} from 'react';
+import React, {useState, useMemo, useCallback} from 'react';
 import {ExtensionPoint} from '@shopify/argo';
 import {useDataApi, useToastApi} from '@shopify/argo-host';
 import {Badge, Card, Layout, Link, Page, Stack, TextField} from '@shopify/polaris';
-import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 
-import {ModalContainer} from '../../components/containers';
-
-const modalClientScript = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: '3p-modal-content' */ '../../third-party/modal-content'),
-);
+import {SubscriptionManagement} from '../../components/containers';
 
 export function Containers() {
   const [showModal, setShowModal] = useState(false);
   const [currentExtensionPoint, setCurrentExtensionPoint] = useState<ExtensionPoint>();
+
   const dataApi = useDataApi<ExtensionPoint.SubscriptionManagementCreate>({
     productId: '1',
     done: () => {},
   });
   const [Toast, toastApi] = useToastApi();
+
+  const title = useMemo(() => {
+    switch (currentExtensionPoint) {
+      case ExtensionPoint.SubscriptionManagementRemove:
+        return 'Remove Subscription Plan';
+      default:
+        return 'Edit Subscription Plan';
+    }
+  }, [currentExtensionPoint]);
+
+  const api = useMemo(() => {
+    return {...toastApi, ...dataApi};
+  }, [dataApi, toastApi]);
+
+  const onClose = useCallback(() => setShowModal(false), []);
+  const onDone = useCallback(() => console.log('Done'), []);
 
   return (
     <>
@@ -29,7 +41,7 @@ export function Containers() {
               <TextField label="Some other field" value="" onChange={() => {}} />
               <TextField label="Yet another field" multiline value="" onChange={() => {}} />
             </Card>
-            <Card title="Modal Actions">
+            <Card title="Subscription Management">
               <Card.Section key="first-modal-trigger">
                 <Stack distribution="fillEvenly">
                   <div>Information about a thing.</div>
@@ -97,21 +109,13 @@ export function Containers() {
           </Layout.Section>
         </Layout>
       </Page>
-      <ModalContainer
+      <SubscriptionManagement
         open={showModal}
-        defaultTitle="Default title"
-        app={{
-          name: 'OneMoreTime',
-          id: 'one-more-time',
-        }}
-        onClose={() => setShowModal(false)}
-        onBackClick={() => {
-          console.log('Go back');
-          setShowModal(false);
-        }}
-        script={modalClientScript.url}
+        defaultTitle={title}
+        onClose={onClose}
+        onDone={onDone}
         extensionPoint={currentExtensionPoint!}
-        api={{...toastApi, ...dataApi}}
+        api={api}
         height="450px"
       />
       <Toast />

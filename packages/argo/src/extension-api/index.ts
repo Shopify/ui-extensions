@@ -4,8 +4,8 @@ export {isLayoutApi} from "./layout"
 export type {LocaleApi} from './locale';
 export {isLocaleApi} from './locale';
 
-export type {ModalActionsApi} from './modalActions';
-export {isModalActionsApi} from './modalActions';
+export type {ContainerApi} from './container';
+export {isContainerApi} from './container';
 
 export type {DataApi, ExtensionData} from './data';
 export {isDataApi, SubscriptionManagementActions} from './data';

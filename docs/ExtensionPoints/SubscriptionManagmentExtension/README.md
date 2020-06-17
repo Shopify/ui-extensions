@@ -24,7 +24,7 @@ This extension renders in the Product Details and Product Variants Page and is h
 
 ## Available utilities/input
 
-- [Modal Actions](../Utilities/ModalActions.md)
+- [Container](../Utilities/Container.md)
 - [Layout](../Utilities/Layout.md)
 - [Locale](../Utilities/Locale.md)
 - [Session Token](../Utilities/SessionToken.md)
