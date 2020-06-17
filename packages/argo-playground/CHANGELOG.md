@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/Shopify/app-extension-libs/compare/v0.0.65...v0.1.0) (2020-06-17)
+
+
+### Features
+
+* data api ([#704](https://github.com/Shopify/app-extension-libs/issues/704)) ([ac25d95](https://github.com/Shopify/app-extension-libs/commit/ac25d951af5e048a83c81b78dfdb3c37a2b6b48a))
+
+
+
+
+
 ## [0.0.65](https://github.com/Shopify/app-extension-libs/compare/v0.0.64...v0.0.65) (2020-06-04)
 
 
