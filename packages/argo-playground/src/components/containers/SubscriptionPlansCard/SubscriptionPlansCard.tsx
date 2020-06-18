@@ -1,6 +1,6 @@
 import React, {useState, useMemo, useCallback} from 'react';
-import {ExtensionPoint} from '@shopify/argo';
-import {useDataApi, useToastApi} from '@shopify/argo-host';
+import {DataApi, ExtensionPoint} from '@shopify/argo';
+import {useToastApi} from '@shopify/argo-host';
 import {Card, Link, Stack, Button} from '@shopify/polaris';
 
 import {SubscriptionManagement, apps, App} from './SubscriptionManagement';
@@ -9,10 +9,10 @@ export function SubscriptionPlansCard() {
   const [showModal, setShowModal] = useState(false);
   const [currentExtensionPoint, setCurrentExtensionPoint] = useState<ExtensionPoint>();
 
-  const dataApi = useDataApi<ExtensionPoint.SubscriptionManagementCreate>({
-    productId: '1',
-    done: () => {},
-  });
+  const dataApi: DataApi<ExtensionPoint.SubscriptionManagementCreate> = useMemo(
+    () => ({data: {productId: '1'}}),
+    [],
+  );
   const [Toast, toastApi] = useToastApi();
 
   const title = useMemo(() => {

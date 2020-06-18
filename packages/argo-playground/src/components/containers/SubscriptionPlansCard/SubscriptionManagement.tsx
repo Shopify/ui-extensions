@@ -6,7 +6,7 @@ import {retain} from '@shopify/react-web-worker';
 
 import {ArgoHeader} from '../shared/Header';
 import {StandardContainer, StandardContainerProps} from '../StandardContainer';
-import {SubscriptionManangementExtensionPoint, ContainerAction} from '@shopify/argo';
+import {SubscriptionManangementExtensionPoint, ContainerAction, ContainerApi} from '@shopify/argo';
 import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 
 type BaseProps<T extends ExtensionPoint> = Omit<
@@ -116,7 +116,7 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
     onDone();
   }, [onDone, setApp]);
 
-  const containerApi = useMemo(
+  const containerApi: ContainerApi<SubscriptionManangementExtensionPoint> = useMemo(
     () => ({container: {close, done, setPrimaryAction, setSecondaryAction}}),
     [close, done, setPrimaryAction, setSecondaryAction],
   );
