@@ -2,9 +2,9 @@ import {createContext} from 'react';
 
 import {
   InputForRenderExtension,
-  RenderExtensionPoints,
+  RenderExtensionPoint,
 } from '../../extension-points';
 
 export const ExtensionInputContext = createContext<InputForRenderExtension<
-  RenderExtensionPoints
+  RenderExtensionPoint
 > | null>(null);

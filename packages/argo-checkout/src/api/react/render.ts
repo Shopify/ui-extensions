@@ -2,14 +2,14 @@ import {createElement, ReactElement} from 'react';
 import {render as remoteRender} from '@remote-ui/react';
 
 import {
-  RenderExtensionPoints,
+  RenderExtensionPoint,
   InputForRenderExtension,
 } from '../../extension-points';
 import {extend} from '../extend';
 
 import {ExtensionInputContext} from './context';
 
-export function renderReact<ExtensionPoint extends RenderExtensionPoints>(
+export function renderReact<ExtensionPoint extends RenderExtensionPoint>(
   extensionPoint: ExtensionPoint,
   render: (input: InputForRenderExtension<ExtensionPoint>) => ReactElement<any>,
 ) {

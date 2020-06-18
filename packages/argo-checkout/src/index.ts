@@ -1,7 +1,6 @@
 export type {
   ExtensionPoints,
   ExtensionPoint,
-  RenderExtensionPoints,
   RenderExtensions,
   RenderExtension,
   AllowedComponentsForRenderExtension,

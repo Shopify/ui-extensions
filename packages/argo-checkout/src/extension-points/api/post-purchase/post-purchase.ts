@@ -1,5 +1,5 @@
-import type {StandardApi} from './standard';
-import type {ValueOrPromise} from './shared';
+import type {StandardApi} from '../standard';
+import type {ValueOrPromise} from '../shared';
 
 /** input given to the inquiry extension point (Checkout::PostPurchase::Inquiry) */
 export interface PostPurchaseInquiryApi extends StandardApi {
