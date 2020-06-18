@@ -1,6 +1,6 @@
 # `@shopify/argo-checkout`
 
-This library contains type definitions and other utilities for writing Argo extensions in Shopify’s checkout. However, nothing in this library is strictly required to write an Argo extension. As a developer building an Argo extension, you can forego the utilities this library provides entirely, and instead use the [global `shopify` API](src/globals) directly in a plain JavaScript file. The script below is a valid Argo script without any additional processing:
+This library contains type definitions and other utilities for writing Argo extensions in Shopify’s checkout. However, nothing in this library is strictly required to write an Argo extension. As a developer building an Argo extension, you can forego the utilities this library provides entirely, and instead use the [global `shopify` API](documentation/globals.md) directly in a plain JavaScript file. The script below is a valid Argo script without any additional processing:
 
 ```js
 shopify.extend('Checkout::PostPurchase::Render', (root, input) => {
@@ -38,12 +38,12 @@ Run `shopify serve` and start coding! Your application will be built from the `i
 
 This package provides utilities, types, and documentation for the many different APIs an Argo extension can access. Before you write your first extension, you should read through the following documentation in order:
 
-- Details about [the globals available to Argo extensions](src/globals)
-- The list of [checkout extension points](src/extension-points)
+- Details about [the globals available to Argo extensions](documentation/globals.md)
+- The list of [checkout extension points](documentation/extension-points.md)
 - An explanation of how [extensions can render UI natively in checkout](documentation/rendering.md)
-- The list of [components available to Argo extensions](src/components)
+- The list of [components available to Argo extensions](documentation/components.md)
 
 Once you’ve read the documents above, you’re ready to write a checkout extension. If you’re wanting to learn even more, this repo has a few additional guides that cover techniques for writing larger, more complex extensions:
 
 - Strategies for [unit testing extensions](documentation/testing.md)
-- A custom [React](https://reactjs.org) renderer that supports [rendering Argo extensions with React](src/react)
+- A custom [React](https://reactjs.org) renderer that supports [rendering Argo extensions with React](documentation/react.md)

@@ -2,7 +2,7 @@
 
 ## Shopify-specific globals
 
-The most important API to an Argo extension is `shopify`, an object that is globally available. This object has a single method, `extend`. `extend` takes two arguments: the name of an [available extension point](../extension-points), and a function to call when Shopify is ready to run the extension point. The function you pass is called with at least one input argument, depending on the extension point — please refer to the documentation for the extension point you are targeting to see what you have access to.
+The most important API to an Argo extension is `shopify`, an object that is globally available. This object has a single method, `extend`. `extend` takes two arguments: the name of an [available extension point](./extension-points.md), and a function to call when Shopify is ready to run the extension point. The function you pass is called with at least one input argument, depending on the extension point — please refer to the documentation for the extension point you are targeting to see what you have access to.
 
 ```ts
 shopify.extend('Checkout::PostPurchase::Inquiry', (...args) => {
@@ -38,7 +38,7 @@ You **must not** rely on any other globals being available. Many will be explici
 
 ## JavaScript environment
 
-> **Note**: if you are using [`@shopify/argo-run`](../../../argo-run) to build and develop your script, all of the build configuration discussed in this section is handled for you — just try to be mindful if you are relying on very new language features that will require additional polyfills. `@shopify/argo-run` is the default build and dev tool you get when generating your extension with the Shopify App CLI, so if you’re not sure if you’re using it, you probably are.
+> **Note**: if you are using [`@shopify/argo-run`](../../argo-run) to build and develop your script, all of the build configuration discussed in this section is handled for you — just try to be mindful if you are relying on very new language features that will require additional polyfills. `@shopify/argo-run` is the default build and dev tool you get when generating your extension with the Shopify App CLI, so if you’re not sure if you’re using it, you probably are.
 
 The sandbox that loads your extension guarantees all of the globals available in [ECMAScript 2015 (ES2015)](http://www.ecma-international.org/ecma-262/6.0/). This includes `Set`, `Map`, `Promise`, `Symbol`, and more. You should rely on these globals directly when you need them, and you should not use your own polyfill for any of these features. If you use globals added after ES2015, or new static methods on globals added after ES2015 (like `Object.entries`), you must polyfill your usage of these features.
 

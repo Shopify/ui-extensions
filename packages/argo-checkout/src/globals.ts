@@ -1,4 +1,4 @@
-import type {ExtensionPoints} from '../extension-points';
+import type {ExtensionPoints} from './extension-points';
 
 export interface ShopifyGlobal {
   extend<ExtensionPoint extends keyof ExtensionPoints>(

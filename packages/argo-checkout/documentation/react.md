@@ -6,13 +6,13 @@ Argo’s [UI rendering capabilities](../../../documentation/rendering.md) are bu
 
 To use the React bindings in Argo for Checkout, start by importing `React` as you normally would. All of the [core features of React](https://reactjs.org/docs/getting-started.html) are available, including hooks, context, and more.
 
-You’ll then import `renderReact` from `@shopify/argo-checkout`. This function is a [thing wrapper](./render.ts) around [`shopify.extend`](../../globals) and [`@remote-ui/react`’s `render()`](https://github.com/Shopify/remote-ui/tree/main/packages/react#render). You’ll pass this function the name of an extension that can render UI, and a function that should return the JSX to render when that extension point is run. This function receives the input argument for the extension point.
+You’ll then import `renderReact` from `@shopify/argo-checkout`. This function is a [thing wrapper](../src/api/react/render.ts) around [`shopify.extend`](./globals.md) and [`@remote-ui/react`’s `render()`](https://github.com/Shopify/remote-ui/tree/main/packages/react#render). You’ll pass this function the name of an extension that can render UI, and a function that should return the JSX to render when that extension point is run. This function receives the input argument for the extension point.
 
 ```tsx
 import React from 'react';
 import {renderReact} from '@shopify/argo-checkout';
 
-// `extensionPoint` is part of the [standard API](../../extension-points/api/standard)
+// `extensionPoint` is part of the [standard API](../src/extension-points/api/standard)
 renderReact('Checkout::PostPurchase::Render', ({extensionPoint}) => (
   <App extensionPoint={extensionPoint} />
 ));
@@ -49,7 +49,7 @@ function App({extensionPoint}) {
 
 ### `useExtensionInput()`
 
-`useExtensionInput` is a [custom React hook](https://reactjs.org/docs/hooks-intro.html) that gives you access to the full input argument provided to your extension point (this is the value that, if you were registering an extension point directly with [`shopify.extend`](../../globals), would be passed as the second argument to your callback). This allows you to access and call the main APIs between your extension and Shopify anywhere in your React component.
+`useExtensionInput` is a [custom React hook](https://reactjs.org/docs/hooks-intro.html) that gives you access to the full input argument provided to your extension point (this is the value that, if you were registering an extension point directly with [`shopify.extend`](./globals.md), would be passed as the second argument to your callback). This allows you to access and call the main APIs between your extension and Shopify anywhere in your React component.
 
 If you are using TypeScript, you can supply the name of the extension point as a type parameter to this function. Doing so will refine the return type to be exactly the input type for that extension point, so make sure you pass the name of the extension you are actually rendering.
 

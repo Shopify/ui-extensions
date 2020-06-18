@@ -89,7 +89,7 @@ export interface SelectProps {
 }
 
 /**
- * Selects let merchants choose one option from an options menu. Consider select
+ * Selects let buyers choose one option from an options menu. Consider select
  * when you have 4 or more options, to avoid cluttering the interface.
  */
 export const Select = createRemoteComponent<'Select', SelectProps>('Select');
