@@ -25,8 +25,6 @@ export interface SubscriptionManagmentProps<T extends ExtensionPoint> extends Ba
   onBackClick?: () => void;
   height?: string;
   api?: Api;
-  primaryAction?: ContainerAction;
-  secondaryAction?: ContainerAction;
 }
 
 export interface App {
