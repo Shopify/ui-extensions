@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/Shopify/app-extension-libs/compare/v0.1.0...v0.1.1) (2020-06-18)
+
+
+### Features
+
+* rename modal actions to container api ([50746d5](https://github.com/Shopify/app-extension-libs/commit/50746d52f7a46a87d6c51a6989fb93ebdec2953b))
+
+
+
+
+
 # [0.1.0](https://github.com/Shopify/app-extension-libs/compare/v0.0.65...v0.1.0) (2020-06-17)
 
 
