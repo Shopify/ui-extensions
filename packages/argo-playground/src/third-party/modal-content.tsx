@@ -7,14 +7,14 @@ import {
   Stack,
   StackItem,
   Text,
+  SubscriptionManangementExtensionPoint,
 } from '@shopify/argo';
 import {render, useContainer, useData, useToast} from '@shopify/argo/react';
-import {SubscriptionManangementExtension} from '@shopify/argo/src/extension-api/container/subscription-management';
 
 function Subscription({
   extensionPoint,
   children,
-}: React.PropsWithChildren<{extensionPoint: SubscriptionManangementExtension}>) {
+}: React.PropsWithChildren<{extensionPoint: SubscriptionManangementExtensionPoint}>) {
   const type = useMemo(() => {
     switch (extensionPoint) {
       case ExtensionPoint.SubscriptionManagementAdd:
@@ -28,7 +28,7 @@ function Subscription({
     }
   }, [extensionPoint]);
 
-  const {productId} = useData<SubscriptionManangementExtension>();
+  const {productId} = useData<typeof extensionPoint>();
   const container = useContainer();
   const {show: showToast} = useToast();
 

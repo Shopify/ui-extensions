@@ -1,10 +1,10 @@
-export type {LayoutApi} from "./layout"
-export {isLayoutApi} from "./layout"
+export type {LayoutApi} from './layout';
+export {isLayoutApi} from './layout';
 
 export type {LocaleApi} from './locale';
 export {isLocaleApi} from './locale';
 
-export type {ContainerApi} from './container';
+export type {ContainerApi, ContainerAction, SubscriptionManangementExtensionPoint} from './container';
 export {isContainerApi} from './container';
 
 export type {DataApi, ExtensionData} from './data';

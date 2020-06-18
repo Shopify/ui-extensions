@@ -1,12 +1,13 @@
-import {
+import type {
+  ContainerAction,
   SubscriptionManagementContainer,
-  SubscriptionManangementExtension,
+  SubscriptionManangementExtensionPoint,
 } from './subscription-management';
 import {ExtensionPoint} from '../../extension-points';
 
 export type ExtensionContainer<
   T extends ExtensionPoint
-> = T extends SubscriptionManangementExtension ? SubscriptionManagementContainer : never;
+> = T extends SubscriptionManangementExtensionPoint ? SubscriptionManagementContainer : never;
 
 export interface ContainerApi<T extends ExtensionPoint> {
   container: ExtensionContainer<T>;
@@ -15,3 +16,5 @@ export interface ContainerApi<T extends ExtensionPoint> {
 export function isContainerApi(api: any): api is ContainerApi<any> {
   return 'container' in api;
 }
+
+export type {ContainerAction, SubscriptionManangementExtensionPoint};

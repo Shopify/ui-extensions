@@ -6,10 +6,7 @@ import {retain} from '@shopify/react-web-worker';
 
 import {ArgoHeader} from '../shared/Header';
 import {StandardContainer, StandardContainerProps} from '../StandardContainer';
-import {
-  SubscriptionManangementExtension,
-  ContainerAction,
-} from '@shopify/argo/src/extension-api/container/subscription-management';
+import {SubscriptionManangementExtensionPoint, ContainerAction} from '@shopify/argo';
 import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 
 type BaseProps<T extends ExtensionPoint> = Omit<
@@ -17,7 +14,7 @@ type BaseProps<T extends ExtensionPoint> = Omit<
   'api' | 'error' | 'loading'
 >;
 
-type Api = Pick<ExtensionApi[SubscriptionManangementExtension], 'data' | 'toast'>;
+type Api = Pick<ExtensionApi[SubscriptionManangementExtensionPoint], 'data' | 'toast'>;
 
 export interface SubscriptionManagmentProps<T extends ExtensionPoint> extends BaseProps<T> {
   open: boolean;

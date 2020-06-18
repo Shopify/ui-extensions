@@ -12,7 +12,7 @@ export interface SubscriptionManagementContainer {
   setSecondaryAction(containerAction?: ContainerAction): void;
 }
 
-export type SubscriptionManangementExtension =
+export type SubscriptionManangementExtensionPoint =
   | ExtensionPoint.SubscriptionManagementAdd
   | ExtensionPoint.SubscriptionManagementCreate
   | ExtensionPoint.SubscriptionManagementEdit

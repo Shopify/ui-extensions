@@ -8,10 +8,10 @@ import {
   SessionTokenApi,
   DataApi,
 } from './extension-api';
-import {SubscriptionManangementExtension} from './extension-api/container/subscription-management';
 
 type StandardApi = LayoutApi & LocaleApi & SessionTokenApi;
-type SubscriptionApi<T extends SubscriptionManangementExtension> = StandardApi &
+
+type SubscriptionApi<T extends ExtensionPoint> = StandardApi &
   ContainerApi<T> &
   ToastApi &
   DataApi<T>;
