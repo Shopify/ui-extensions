@@ -1,14 +1,14 @@
 import {useContext} from 'react';
 
 import {
-  RenderExtensionPoints,
+  RenderExtensionPoint,
   InputForRenderExtension,
 } from '../../extension-points';
 
 import {ExtensionInputContext} from './context';
 
 export function useExtensionInput<
-  ID extends RenderExtensionPoints = RenderExtensionPoints
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >(): InputForRenderExtension<ID> {
   const input = useContext(ExtensionInputContext);
 

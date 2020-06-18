@@ -1,70 +1,49 @@
 # `@shopify/argo-checkout`
 
-This library contains type definitions and other utilities for writing Argo extensions in Shopify’s checkout.
-
-## Before you begin
-
-The first thing to understand is that nothing in this library is strictly required. The functions and types exported from it are provided to make it easier to see the types of the components, inputs, and outputs included in Argo. An "Argo script" can forego these utilities entirely if it so chooses, and instead use the global `self.shopify` API directly:
+This library contains type definitions and other utilities for writing Argo extensions in Shopify’s checkout. However, nothing in this library is strictly required to write an Argo extension. As a developer building an Argo extension, you can forego the utilities this library provides entirely, and instead use the [global `shopify` API](src/globals) directly in a plain JavaScript file. The script below is a valid Argo script without any additional processing:
 
 ```js
-self.shopify.extend(
-  'Checkout::PostPurchaseCrossSell::Render',
-  (root, input) => {
-    const button = root.createComponent('Button', {
-      onPress() {
-        console.log('Upsold!');
-        input.done();
-      },
-    });
-
-    button.appendChild('Buy now');
-
-    root.appendChild(button);
-    root.mount();
-  },
-);
-```
-
-## Usage
-
-The main function this library exports is called `extend`. It’s actually just an alias for `self.shopify.extend`, but provides the type definitions to let you know what arguments an extension point receives.
-
-```ts
-import {extend} from '@shopify/argo-checkout';
-
-extend('Checkout::PostPurchaseCrossSell::Render', (input) => {
-  /* your extension goes here */
-});
-```
-
-Most extensions render UI. These extensions are called with a remote "root" to which you can append representations of the UI you want to render. Extensions can only render components explicitly provided by Shopify, and those components have a carefully designed "props" API that allows you to configure their behavior. This package also exports these components and their types, so you can know you are rendering an accepted component (and get good editor autocompletion for its available properties!) when you import them from this package.
-
-```ts
-import {extend, Button} from '@shopify/argo-checkout';
-
-extend('Checkout::PostPurchaseCrossSell::Render', (root, {done}) => {
-  const button = root.createComponent(Button, {
-    // If I had misspelled (like calling this `onpress()`), my editor
-    // would warn me of the invalid property.
+shopify.extend('Checkout::PostPurchase::Render', (root, input) => {
+  const button = root.createComponent('Button', {
     onPress() {
-      console.log('Upsold!);
-      done();
-    }
+      console.log('Upsold!');
+      input.done();
+    },
   });
 
-  // Type `button.` or `root.` in an editor like VSCode, and you will see
-  // the methods and properties available through the API
   button.appendChild('Buy now');
+
   root.appendChild(button);
   root.mount();
 });
 ```
 
-## Organization
+Keeping in mind that any utility provided by this library is only a convenience API on top of the `shopify` global, the rest of the documentation for this library will show examples using JavaScript imports from the `@shopify/argo-checkout` library. Using JavaScript modules in this way requires a [build step](../packages/argo-run), but can provide useful developer experience features and opportunities for build-time performance optimizations.
 
-There are a few logical groupings of utilities provided by this package:
+## Getting started
 
-- **The type of `self.shopify`**. This global is the only way for extensions to interact with Shopify when running as an Argo script. The source of truth for this type is in [/globals.ts](src/globals.ts) — the rest of this library references this type when interacting with the global, and Checkout consumes this library to ensure it supplies a `self.shopify` to the extension that satisfies the API.
-- **Component definitions**. Component definitions provide the component’s name and the types of its available properties. These component definitions are exported from the [`/components` directory](src/components). At runtime, these components are just strings: that is, `import {Button} from '@shopify/argo-checkout'` is equivalent to `const Button = 'Button'`, but with strong types attached. One component is defined per file so that build tools have an easier time tree-shaking unused components (strings add up!).
-- **Extension point definitions**. The main way a consumer will use `self.shopify` is by calling `self.shopify.extend()`, which registers a function the extension wants to run against a named "extension point". The names of the extension points, and the functions they accept, are centralized in [`/extension-points/extension-points.ts`](src/extension-points/extension-points.ts). The most common type of extension, one that renders UI, is intended to always have the same signature — a function that accepts a remote "root" to which it can attach UI, and a second argument that includes all the API specific to that extension point. Additional types for standardizing those "render extensions" is available in [`/extension-points/render-extension.ts`](src/extension-points/render-extension.ts). Because the types of the API for individual extension points can be fairly large (where there are deeply nested objects), those types are stored in dedicated files under the [`/extension-points/input` directory](src/extension-points/input).
-- **React integration**. This library also exports a few small utilities for making it more ergonomic to use React in an extension. The key utility is [`renderReact()`](src/api/react/render.ts), which uses the same `self.shopify.extend()` API noted above to register a React component for an extension point. It also exposes [`useExtensionInput()`](src/api/react/hooks.ts), which allows the React app to access the API argument of an extension from anywhere in their app. These utilities are entirely removed from the resulting script when an extension does not use them.
+### 1. Install the Shopify CLI
+
+TODO: instructions :)
+
+### 2. Create an extension
+
+Run `shopify create extension` to get started. When prompted, indicate that you’d like to create a post purchase extension. This command will clone an extension template, which contains a basic extension and the necessary development tooling.
+
+### 3. Run the local server
+
+Run `shopify serve` and start coding! Your application will be built from the `index` file created by the Shopify CLI, but you may add additional JavaScript files using [`import` and `export` statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
+
+## API
+
+This package provides utilities, types, and documentation for the many different APIs an Argo extension can access. Before you write your first extension, you should read through the following documentation in order:
+
+- Details about [the globals available to Argo extensions](src/globals)
+- The list of [checkout extension points](src/extension-points)
+- An explanation of how [extensions can render UI natively in checkout](documentation/rendering.md)
+- The list of [components available to Argo extensions](src/components)
+
+Once you’ve read the documents above, you’re ready to write a checkout extension. If you’re wanting to learn even more, this repo has a few additional guides that cover techniques for writing larger, more complex extensions:
+
+- Strategies for [unit testing extensions](documentation/testing.md)
+- A custom [React](https://reactjs.org) renderer that supports [rendering Argo extensions with React](src/react)
