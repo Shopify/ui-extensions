@@ -41,10 +41,12 @@ export function SubscriptionPlansCard() {
       currentExtensionPoint === ExtensionPoint.SubscriptionManagementAdd ||
       currentExtensionPoint === ExtensionPoint.SubscriptionManagementCreate
     ) {
-      setApp(undefined);
+      // If this is triggered from the app selection screen (no app chosen yet), close the modal
       if (!app) {
         onClose();
       }
+      // Reset the app selection
+      setApp(undefined);
       return;
     }
     onClose();

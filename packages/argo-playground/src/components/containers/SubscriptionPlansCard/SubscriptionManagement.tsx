@@ -104,14 +104,6 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
   const [readyState, setReadyState] = useState(ReadyState.Loading);
   const {primary, secondary, setPrimaryAction, setSecondaryAction} = useModalActionsApi();
 
-  const defaultPrimaryAction = useMemo(
-    () => ({
-      content: 'Next',
-      onAction: () => (appId ? setApp(apps[appId]) : null),
-    }),
-    [appId, setApp],
-  );
-
   const close = useCallback(() => {
     setApp(undefined);
     setAppId(undefined);
@@ -141,13 +133,20 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
     [app, defaultTitle, onBackClick],
   );
 
+  const defaultPrimaryAction = useMemo(
+    () => ({
+      content: 'Next',
+      onAction: () => (appId ? setApp(apps[appId]) : null),
+    }),
+    [appId, setApp],
+  );
+
   useEffect(() => {
     setPrimaryAction(defaultPrimaryAction);
-
-    if (!app) {
-      setSecondaryAction();
-    }
-  }, [app, defaultPrimaryAction, setPrimaryAction, setSecondaryAction]);
+    setSecondaryAction();
+    // setPrimaryAction and setSecondaryAction are both static
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [app, defaultPrimaryAction]);
 
   const modalProps: ModalProps = useMemo(
     () => ({
