@@ -2,7 +2,8 @@ import type {StandardApi} from '../standard';
 import type {ValueOrPromise} from '../shared';
 
 /** input given to the inquiry extension point (Checkout::PostPurchase::Inquiry) */
-export interface PostPurchaseInquiryApi extends StandardApi {
+export interface PostPurchaseInquiryApi
+  extends StandardApi<'Checkout::PostPurchase::Inquiry'> {
   /** current cart being checked out */
   checkout: Checkout;
 
@@ -25,7 +26,8 @@ export type PostPurchaseInquiryResult = ValueOrPromise<{
 }>;
 
 /** input given to the render extension point (Checkout::PostPurchase::Render) */
-export interface PostPurchaseRenderApi extends StandardApi {
+export interface PostPurchaseRenderApi
+  extends StandardApi<'Checkout::PostPurchase::Render'> {
   /** initial purchase */
   order: Order;
 

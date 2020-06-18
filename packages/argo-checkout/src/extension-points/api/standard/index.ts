@@ -1,7 +1,9 @@
 export type Version = 'unstable';
 
-export interface StandardApi {
+export interface StandardApi<
+  ExtensionPoint extends import('../../extension-points').ExtensionPoint
+> {
   locale: string;
   version: Version;
-  extensionPoint: import('../../extension-points').ExtensionPoint;
+  extensionPoint: ExtensionPoint;
 }
