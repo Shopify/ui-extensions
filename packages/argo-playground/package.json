@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-playground",
-  "version": "0.1.3",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "clean": "rm -rf ./dist",
