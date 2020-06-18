@@ -32,7 +32,7 @@ Run `shopify create extension` to get started. When prompted, indicate that youâ
 
 ### 3. Run the local server
 
-Run `shopify serve` and start coding! Your application will be built from the `index` file created by the Shopify CLI, but you may add additional JavaScript files using [`import` and `export` statements](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
+Run `shopify serve` and start coding! Your application will be built from the `index` file created by the Shopify CLI, but you may add additional JavaScript files and reference them as [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
 
 ## API
 
