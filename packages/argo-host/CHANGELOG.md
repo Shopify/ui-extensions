@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/Shopify/app-extension-libs/compare/v0.1.1...v0.1.2) (2020-06-18)
+
+
+### Features
+
+* update data-api with container changes ([#761](https://github.com/Shopify/app-extension-libs/issues/761)) ([24308ed](https://github.com/Shopify/app-extension-libs/commit/24308ed9459b93373dc5218c79674dcd812cd308))
+
+
+
+
+
 ## [0.1.1](https://github.com/Shopify/app-extension-libs/compare/v0.1.0...v0.1.1) (2020-06-18)
 
 
