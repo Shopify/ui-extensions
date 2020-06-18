@@ -9,6 +9,61 @@ import {
   Text,
 } from '@shopify/argo';
 import {render, useContainer, useData, useToast} from '@shopify/argo/react';
+import {SubscriptionManangementExtension} from '@shopify/argo/src/extension-api/container/subscription-management';
+
+function Subscription({
+  extensionPoint,
+  children,
+}: React.PropsWithChildren<{extensionPoint: SubscriptionManangementExtension}>) {
+  const type = useMemo(() => {
+    switch (extensionPoint) {
+      case ExtensionPoint.SubscriptionManagementAdd:
+        return 'Add';
+      case ExtensionPoint.SubscriptionManagementEdit:
+        return 'Edit';
+      case ExtensionPoint.SubscriptionManagementRemove:
+        return 'Remove';
+      default:
+        return 'Create';
+    }
+  }, [extensionPoint]);
+
+  const {productId} = useData<SubscriptionManangementExtension>();
+  const container = useContainer();
+  const {show: showToast} = useToast();
+
+  useEffect(() => {
+    const {close, done, setPrimaryAction, setSecondaryAction} = container;
+    setPrimaryAction({
+      content: type,
+      onAction: () => {
+        showToast(`${type} Success`);
+        done();
+        close();
+      },
+    });
+
+    setSecondaryAction({
+      content: 'Cancel',
+      onAction: () => {
+        showToast(`${type} Cancelled`, {error: true});
+        close();
+      },
+    });
+  }, [container, type, showToast, extensionPoint]);
+
+  return (
+    <>
+      {children ? (
+        children
+      ) : (
+        <Stack distribution="center">
+          <Text size="titleMedium">{`${type} cool thing from product with Id: ${productId}`}</Text>
+        </Stack>
+      )}
+    </>
+  );
+}
 
 function EditSubscription() {
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];
@@ -57,7 +112,7 @@ function EditSubscription() {
   }, [container, showToast]);
 
   return (
-    <>
+    <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementEdit}>
       <ResourceList filterControl={resourceListFilterControl}>
         {listItems.map((item, index) => (
           <ResourceItem
@@ -80,45 +135,17 @@ function EditSubscription() {
           </ResourceItem>
         ))}
       </ResourceList>
-    </>
-  );
-}
-
-function RemoveSubscription() {
-  const {productId} = useData<ExtensionPoint.SubscriptionManagementRemove>();
-
-  const container = useContainer();
-
-  const {show: showToast} = useToast();
-
-  useEffect(() => {
-    const {close, done, setPrimaryAction, setSecondaryAction} = container;
-    setPrimaryAction({
-      content: 'Yes',
-      onAction: () => {
-        showToast('Removed');
-        done();
-        close();
-      },
-    });
-
-    setSecondaryAction({
-      content: 'No',
-      onAction: () => {
-        showToast('Cancelled', {error: true});
-        close();
-      },
-    });
-  }, [container, showToast]);
-
-  return (
-    <>
-      <Stack distribution="center">
-        <Text size="titleMedium">{`Remove cool thing from product with Id: ${productId}`}</Text>
-      </Stack>
-    </>
+    </Subscription>
   );
 }
 
 render(ExtensionPoint.SubscriptionManagementEdit, () => <EditSubscription />);
-render(ExtensionPoint.SubscriptionManagementRemove, () => <RemoveSubscription />);
+render(ExtensionPoint.SubscriptionManagementRemove, () => (
+  <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementRemove} />
+));
+render(ExtensionPoint.SubscriptionManagementAdd, () => (
+  <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementAdd} />
+));
+render(ExtensionPoint.SubscriptionManagementCreate, () => (
+  <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementCreate} />
+));

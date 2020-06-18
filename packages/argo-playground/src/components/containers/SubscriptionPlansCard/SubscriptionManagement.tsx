@@ -4,8 +4,8 @@ import {ReadyState} from '@shopify/argo-host';
 import {Modal, ModalProps, Stack, RadioButton} from '@shopify/polaris';
 import {retain} from '@shopify/react-web-worker';
 
-import {ArgoHeader} from './shared/Header';
-import {StandardContainer, StandardContainerProps} from './StandardContainer';
+import {ArgoHeader} from '../shared/Header';
+import {StandardContainer, StandardContainerProps} from '../StandardContainer';
 import {
   SubscriptionManangementExtension,
   ContainerAction,
@@ -14,7 +14,7 @@ import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 
 type BaseProps<T extends ExtensionPoint> = Omit<
   StandardContainerProps<T>,
-  'api' | 'error' | 'loading' | 'app'
+  'api' | 'error' | 'loading'
 >;
 
 type Api = Pick<ExtensionApi[SubscriptionManangementExtension], 'data' | 'toast'>;
@@ -23,6 +23,7 @@ export interface SubscriptionManagmentProps<T extends ExtensionPoint> extends Ba
   open: boolean;
   defaultTitle: string;
   onDone: () => void;
+  setApp: (app?: App) => void;
   onClose: () => void;
   onBackClick?: () => void;
   height?: string;
@@ -31,27 +32,24 @@ export interface SubscriptionManagmentProps<T extends ExtensionPoint> extends Ba
   secondaryAction?: ContainerAction;
 }
 
-interface App {
+export interface App {
   title: string;
   icon?: string;
   id: string;
-  script: string;
 }
 
 const modalClientScript = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: '3p-modal-content' */ '../../third-party/modal-content'),
+  import(/* webpackChunkName: '3p-modal-content' */ '../../../third-party/modal-content'),
 );
 
-const apps = {
+export const apps = {
   'one-more-time': {
     id: 'one-more-time',
     title: 'OneMoreTime',
-    script: modalClientScript.url,
   },
   'another-app': {
     id: 'another-app',
     title: 'AnotherApp',
-    script: modalClientScript.url,
   },
 };
 
@@ -97,42 +95,39 @@ function useModalActionsApi() {
 export function SubscriptionManagement<T extends ExtensionPoint>({
   open,
   defaultTitle,
+  onBackClick,
   onClose,
   onDone,
   height,
   api: externalApi,
   onReadyStateChange,
+  app,
+  setApp,
   ...props
 }: SubscriptionManagmentProps<T>) {
   const [appId, setAppId] = useState<string | undefined>();
-  const [app, setApp] = useState<App | undefined>();
   const [readyState, setReadyState] = useState(ReadyState.Loading);
   const {primary, secondary, setPrimaryAction, setSecondaryAction} = useModalActionsApi();
-
-  const onBackAction = useCallback(() => {
-    setApp(undefined);
-    if (!app) {
-      onClose();
-    }
-  }, [app, onClose]);
 
   const defaultPrimaryAction = useMemo(
     () => ({
       content: 'Next',
       onAction: () => (appId ? setApp(apps[appId]) : null),
     }),
-    [appId],
+    [appId, setApp],
   );
 
   const close = useCallback(() => {
     setApp(undefined);
+    setAppId(undefined);
     onClose();
-  }, [onClose]);
+  }, [onClose, setApp]);
 
   const done = useCallback(() => {
     setApp(undefined);
+    setAppId(undefined);
     onDone();
-  }, [onDone]);
+  }, [onDone, setApp]);
 
   const containerApi = useMemo(
     () => ({container: {close, done, setPrimaryAction, setSecondaryAction}}),
@@ -145,10 +140,10 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
         name={app?.title}
         icon={app?.icon}
         title={defaultTitle}
-        onBackAction={onBackAction}
+        onBackAction={onBackClick}
       />
     ),
-    [app, defaultTitle, onBackAction],
+    [app, defaultTitle, onBackClick],
   );
 
   useEffect(() => {
@@ -164,7 +159,7 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
       primaryAction: primary
         ? {
             ...primary,
-            disabled: !appId || (app && readyState !== ReadyState.Rendered),
+            disabled: (!appId && !app) || (app && readyState !== ReadyState.Rendered),
           }
         : undefined,
       onClose: close,
@@ -210,7 +205,7 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
     <StandardContainer
       {...props}
       app={app}
-      script={app.script}
+      script={modalClientScript.url}
       api={api as any}
       onReadyStateChange={setReadyState}
     />
