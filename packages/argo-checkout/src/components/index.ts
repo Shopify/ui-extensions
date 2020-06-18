@@ -24,6 +24,8 @@ export {InlineStack} from './InlineStack';
 export type {InlineStackProps} from './InlineStack';
 export {Link} from './Link';
 export type {LinkProps} from './Link';
+export {Radio} from './Radio';
+export type {RadioProps} from './Radio';
 export {Select} from './Select';
 export type {SelectProps} from './Select';
 export {Separator} from './Separator';

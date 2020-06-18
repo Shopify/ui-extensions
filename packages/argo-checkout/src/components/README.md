@@ -17,6 +17,7 @@ The following components are available as part of Argo for Checkout, but make su
 - [Image](./Image)
 - [InlineStack](./InlineStack)
 - [Link](./Link)
+- [Radio](./Radio)
 - [Select](./Select)
 - [Separator](./Separator)
 - [SkeletonText](./SkeletonText)
