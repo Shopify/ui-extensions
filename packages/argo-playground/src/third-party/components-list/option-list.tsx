@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Card, OptionList} from '@shopify/argo';
+import {Card, OptionList} from '@shopify/argo-admin';
 
 export function OptionListExample() {
   const [selected, setSelected] = useState<string[]>([]);

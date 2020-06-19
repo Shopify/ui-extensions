@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {Card, Stack, Button, IconProps} from '@shopify/argo';
+import {Card, Stack, Button, IconProps} from '@shopify/argo-admin';
 
 const SORT_ICON: IconProps = {
   source: 'sortMinor',

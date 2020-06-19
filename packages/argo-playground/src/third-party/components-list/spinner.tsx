@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Spinner} from '@shopify/argo';
+import {Card, Spinner} from '@shopify/argo-admin';
 
 export function SpinnerExample() {
   return (

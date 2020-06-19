@@ -1,5 +1,5 @@
 import React from 'react';
-import {CardSection as ArgoCardSection} from '@shopify/argo';
+import {CardSection as ArgoCardSection} from '@shopify/argo-admin';
 import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
 import {Card} from '@shopify/polaris';
 

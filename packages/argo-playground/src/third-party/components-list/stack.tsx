@@ -8,7 +8,7 @@ import {
   Button,
   Icon,
   IconProps,
-} from '@shopify/argo';
+} from '@shopify/argo-admin';
 import React from 'react';
 
 const SORT_ICON: IconProps = {

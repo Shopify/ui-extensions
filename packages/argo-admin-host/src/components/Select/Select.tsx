@@ -1,5 +1,5 @@
 import React, {useCallback, useMemo} from 'react';
-import {SelectProps} from '@shopify/argo';
+import {SelectProps} from '@shopify/argo-admin';
 import {Select as PolarisSelect} from '@shopify/polaris';
 
 export default function Select({

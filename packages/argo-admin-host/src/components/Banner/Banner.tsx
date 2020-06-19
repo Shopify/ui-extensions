@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {Banner as ArgoBanner} from '@shopify/argo';
+import {Banner as ArgoBanner} from '@shopify/argo-admin';
 import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
 import {Banner as PolarisBanner} from '@shopify/polaris';
 

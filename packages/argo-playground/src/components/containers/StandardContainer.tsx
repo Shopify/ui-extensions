@@ -1,5 +1,5 @@
 import React, {useMemo, useState, ReactNode, useEffect} from 'react';
-import {ExtensionPoint} from '@shopify/argo';
+import {ExtensionPoint} from '@shopify/argo-admin';
 import {
   ArgoExtension,
   useLayoutApi,

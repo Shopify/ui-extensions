@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card as ArgoCard} from '@shopify/argo';
+import {Card as ArgoCard} from '@shopify/argo-admin';
 import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
 import {Card as PolarisCard} from '@shopify/polaris';
 

@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {ExtensionPoint} from '@shopify/argo';
+import {ExtensionPoint} from '@shopify/argo-admin';
 import {useLocaleApi, useToastApi} from '@shopify/argo-host';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {createPlainWorkerFactory} from '@shopify/react-web-worker';

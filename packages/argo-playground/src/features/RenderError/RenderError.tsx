@@ -2,7 +2,7 @@ import React, {useState, useCallback} from 'react';
 import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 import {Page, Button, Card, Layout} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
-import {ExtensionPoint} from '@shopify/argo';
+import {ExtensionPoint} from '@shopify/argo-admin';
 
 import {
   SubscriptionManagement,

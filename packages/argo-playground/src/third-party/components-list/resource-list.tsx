@@ -1,5 +1,13 @@
 import React, {useState, useMemo} from 'react';
-import {Card, ResourceList, ResourceItem, Stack, Checkbox, StackItem, Text} from '@shopify/argo';
+import {
+  Card,
+  ResourceList,
+  ResourceItem,
+  Stack,
+  Checkbox,
+  StackItem,
+  Text,
+} from '@shopify/argo-admin';
 
 export function ResourceListExample() {
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];

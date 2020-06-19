@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {Card, Stack, Banner} from '@shopify/argo';
+import {Card, Stack, Banner} from '@shopify/argo-admin';
 
 export function BannerExample() {
   const bannerDismissCallback = useCallback(() => console.log('Dismiss banner'), []);

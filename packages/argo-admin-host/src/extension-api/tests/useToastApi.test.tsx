@@ -1,7 +1,7 @@
 import React from 'react';
 
 import {Toast as PolarisToast} from '@shopify/polaris';
-import {ToastApi} from '@shopify/argo';
+import {ToastApi} from '@shopify/argo-admin';
 import {useToastApi} from '../useToastApi';
 import {mountWithAppProvider as mount} from '../../../../../test-utils/mount';
 

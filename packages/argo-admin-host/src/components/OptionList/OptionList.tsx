@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {OptionListProps} from '@shopify/argo';
+import {OptionListProps} from '@shopify/argo-admin';
 import {OptionList as PolarisOptionList} from '@shopify/polaris';
 
 export default function OptionList({

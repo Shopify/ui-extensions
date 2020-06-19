@@ -1,5 +1,5 @@
 import React, {useEffect, useMemo, useState, ComponentType} from 'react';
-import {ExtensionPoint, ExtensionApi} from '@shopify/argo';
+import {ExtensionPoint, ExtensionApi} from '@shopify/argo-admin';
 import {retain} from '@shopify/remote-ui-core';
 import {RemoteReceiver, RemoteRenderer} from '@shopify/remote-ui-react/host';
 
