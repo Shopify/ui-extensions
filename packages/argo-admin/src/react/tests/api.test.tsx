@@ -1,5 +1,5 @@
 import React from 'react';
-import {ExtensionPoint} from '@shopify/argo';
+import {ExtensionPoint} from '@shopify/argo-admin';
 import {render as remoteRender} from '@shopify/remote-ui-react';
 import {render} from '../api';
 import {ExtensionApiContext} from '../extension-api/utils';

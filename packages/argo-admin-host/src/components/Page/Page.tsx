@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 import {Page as ArgoPage} from '@shopify/argo-admin';
-import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
+import {ReactPropsFromRemoteComponentType} from '@shopify/argo-admin/utilities';
 import {Page as PolarisPage, Thumbnail as PolarisThumbnail} from '@shopify/polaris';
 
 import {useWrapAction, useWrapActions} from '../../utilities/components';

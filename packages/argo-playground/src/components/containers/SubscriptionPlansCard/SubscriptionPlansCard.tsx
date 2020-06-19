@@ -1,6 +1,6 @@
 import React, {useState, useMemo, useCallback} from 'react';
 import {DataApi, ExtensionPoint} from '@shopify/argo-admin';
-import {useToastApi} from '@shopify/argo-host';
+import {useToastApi} from '@shopify/argo-admin-host';
 import {Card, Link, Stack, Button} from '@shopify/polaris';
 
 import {SubscriptionManagement, apps, App} from './SubscriptionManagement';

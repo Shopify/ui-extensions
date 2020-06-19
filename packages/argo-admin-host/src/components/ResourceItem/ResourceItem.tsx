@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import {ResourceItem as ArgoResourceItem} from '@shopify/argo-admin';
-import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
+import {ReactPropsFromRemoteComponentType} from '@shopify/argo-admin/utilities';
 import {ResourceItem as PolarisResourceItem} from '@shopify/polaris';
 
 type ResourceItemProps = ReactPropsFromRemoteComponentType<typeof ArgoResourceItem>;

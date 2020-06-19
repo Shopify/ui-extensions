@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import {Banner as ArgoBanner} from '@shopify/argo-admin';
-import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
+import {ReactPropsFromRemoteComponentType} from '@shopify/argo-admin/utilities';
 import {Banner as PolarisBanner} from '@shopify/polaris';
 
 import {useWrapAction} from '../../utilities/components';

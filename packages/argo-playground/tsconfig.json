@@ -6,10 +6,10 @@
     "composite": true,
     "baseUrl": "./",
     "paths": {
-      "@shopify/argo": ["../argo/src"],
-      "@shopify/argo/*": ["../argo/src/*"],
-      "@shopify/argo-host": ["../argo-host/src"],
-      "@shopify/argo-host/*": ["../argo-host/src/*"],
+      "@shopify/argo-admin": ["../argo-admin/src"],
+      "@shopify/argo-admin/*": ["../argo-admin/src/*"],
+      "@shopify/argo-admin-host": ["../argo-admin-host/src"],
+      "@shopify/argo-admin-host/*": ["../argo-admin-host/src/*"],
     }
   },
   "include": [

@@ -1,6 +1,6 @@
 import React, {useMemo} from 'react';
 
-import {Action} from '@shopify/argo/types';
+import {Action} from '@shopify/argo-admin/types';
 
 // Returns all children that are valid elements as an array. Can optionally be
 // filtered by passing `predicate`.
