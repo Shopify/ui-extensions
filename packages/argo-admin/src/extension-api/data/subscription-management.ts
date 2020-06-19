@@ -11,26 +11,22 @@ export declare namespace SubscriptionManagementData {
   type Actions = SubscriptionManagementActions;
 
   export interface Add {
-    done: () => void;
     productId: string;
     variantId?: string;
   }
 
   export interface Create {
-    done: () => void;
     productId: string;
     variantId?: string;
   }
 
   export interface Edit {
-    done: () => void;
     sellingPlanGroupId: string;
     productId: string;
     variantId?: string;
   }
 
   export interface Remove {
-    done: () => void;
     sellingPlanGroupId: string;
     productId: string;
     variantId?: string;
