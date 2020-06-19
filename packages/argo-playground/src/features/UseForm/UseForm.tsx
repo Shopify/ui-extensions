@@ -1,7 +1,7 @@
 import React from 'react';
 import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 import {usePerformanceMark} from '@shopify/react-performance';
-import {ExtensionPoint} from '@shopify/argo';
+import {ExtensionPoint} from '@shopify/argo-admin';
 
 import {StandardContainer} from '../../components/containers';
 

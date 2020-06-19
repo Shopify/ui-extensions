@@ -1,4 +1,9 @@
-import {ExtensionPoint, ExtensionApi, ExtensionPointCallback, ShopifyApi} from '@shopify/argo';
+import {
+  ExtensionPoint,
+  ExtensionApi,
+  ExtensionPointCallback,
+  ShopifyApi,
+} from '@shopify/argo-admin';
 import {WorkerCreator} from '@shopify/react-web-worker';
 import {createRemoteRoot, RemoteChannel, retain} from '@shopify/remote-ui-core';
 

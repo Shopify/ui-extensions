@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Page} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
-import {ExtensionPoint} from '@shopify/argo';
+import {ExtensionPoint} from '@shopify/argo-admin';
 import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 
 import {StandardContainer} from '../../components/containers';
@@ -19,7 +19,7 @@ export function InlineScript() {
         return;
       }
       const {url} = reactThirdPartyWorker;
-      const results = await fetch(url.href).then(response => {
+      const results = await fetch(url.href).then((response) => {
         return response.text();
       });
       setInlineScript(results);

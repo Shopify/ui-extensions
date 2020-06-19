@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import {ExtensionPoint, Stack, Text, TextField} from '@shopify/argo';
-import {render, useSessionToken} from '@shopify/argo/react';
+import {ExtensionPoint, Stack, Text, TextField} from '@shopify/argo-admin';
+import {render, useSessionToken} from '@shopify/argo-admin/react';
 
 function App() {
   const {getSessionToken} = useSessionToken();

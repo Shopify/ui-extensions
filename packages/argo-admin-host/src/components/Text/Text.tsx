@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text as ArgoText} from '@shopify/argo';
+import {Text as ArgoText} from '@shopify/argo-admin';
 import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
 import {TextStyle, DisplayText, DisplayTextProps, Caption} from '@shopify/polaris';
 

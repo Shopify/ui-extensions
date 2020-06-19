@@ -8,8 +8,8 @@ import {
   StackItem,
   Text,
   SubscriptionManangementExtensionPoint,
-} from '@shopify/argo';
-import {render, useContainer, useData, useToast} from '@shopify/argo/react';
+} from '@shopify/argo-admin';
+import {render, useContainer, useData, useToast} from '@shopify/argo-admin/react';
 
 function Subscription({
   extensionPoint,

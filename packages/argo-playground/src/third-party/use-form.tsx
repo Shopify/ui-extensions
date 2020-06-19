@@ -1,6 +1,15 @@
 import React from 'react';
-import {Banner, Button, Card, ExtensionPoint, Page, Select, Stack, TextField} from '@shopify/argo';
-import {render} from '@shopify/argo/react';
+import {
+  Banner,
+  Button,
+  Card,
+  ExtensionPoint,
+  Page,
+  Select,
+  Stack,
+  TextField,
+} from '@shopify/argo-admin';
+import {render} from '@shopify/argo-admin/react';
 import {notEmpty, useField, useForm} from '@shopify/react-form';
 
 function App() {
@@ -9,10 +18,10 @@ function App() {
       title: useField({value: 'some default title', validates: [notEmpty('Title is required')]}),
       color: useField({
         value: 'red',
-        validates: value => (value === 'red' ? 'Cannot be Red' : undefined),
+        validates: (value) => (value === 'red' ? 'Cannot be Red' : undefined),
       }),
     },
-    onSubmit: async _ => {
+    onSubmit: async (_) => {
       return {status: 'fail', errors: [{message: 'bad form data'}]};
     },
   });
@@ -26,7 +35,7 @@ function App() {
     submitErrors.length > 0 ? (
       <Banner
         status="critical"
-        title={submitErrors.map(err => err.message).join(', ')}
+        title={submitErrors.map((err) => err.message).join(', ')}
         onDismiss={() => {}}
       />
     ) : null;

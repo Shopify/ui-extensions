@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {ResourceItem as ArgoResourceItem} from '@shopify/argo';
+import {ResourceItem as ArgoResourceItem} from '@shopify/argo-admin';
 import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
 import {ResourceItem as PolarisResourceItem} from '@shopify/polaris';
 

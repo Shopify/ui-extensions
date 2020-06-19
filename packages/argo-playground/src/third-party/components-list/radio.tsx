@@ -1,9 +1,9 @@
 import React, {useState, useCallback} from 'react';
-import {Card, RadioButton} from '@shopify/argo';
+import {Card, RadioButton} from '@shopify/argo-admin';
 
 export function RadioButtonExample() {
   const [radioButtonValue, setRadioButtonValue] = useState('option1');
-  const handleRadioButtonChange = useCallback(newValue => setRadioButtonValue(newValue), []);
+  const handleRadioButtonChange = useCallback((newValue) => setRadioButtonValue(newValue), []);
 
   return (
     <Card sectioned title="RadioButton component">

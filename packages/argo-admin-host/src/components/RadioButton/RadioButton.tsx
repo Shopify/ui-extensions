@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {RadioButtonProps} from '@shopify/argo';
+import {RadioButtonProps} from '@shopify/argo-admin';
 import {RadioButton as PolarisRadioButton} from '@shopify/polaris';
 
 export default function RadioButton({label = '', onChange, ...props}: RadioButtonProps) {

@@ -3,7 +3,7 @@ import React from 'react';
 import {Caption, DisplayText, TextStyle} from '@shopify/polaris';
 
 import {mountWithAppProvider as mount} from '../../../../../../test-utils/mount';
-import {TextProps} from '@shopify/argo';
+import {TextProps} from '@shopify/argo-admin';
 import Text from '../Text';
 
 describe('<Text />', () => {

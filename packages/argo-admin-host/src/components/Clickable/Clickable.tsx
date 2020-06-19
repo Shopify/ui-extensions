@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {Clickable as ArgoClickable} from '@shopify/argo';
+import {Clickable as ArgoClickable} from '@shopify/argo-admin';
 import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
 
 type ClickableProps = ReactPropsFromRemoteComponentType<typeof ArgoClickable>;

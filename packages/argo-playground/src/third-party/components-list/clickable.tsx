@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {Card, Text, Clickable, Stack, Icon} from '@shopify/argo';
+import {Card, Text, Clickable, Stack, Icon} from '@shopify/argo-admin';
 
 export function ClickableExample() {
   const [clickableValue, setClickableValue] = useState('');

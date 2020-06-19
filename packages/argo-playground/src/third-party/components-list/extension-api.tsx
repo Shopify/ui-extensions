@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Card, Stack, Button, TextField, Text} from '@shopify/argo';
-import {useLayout, useLocale, useToast, useSessionToken} from '@shopify/argo/react';
+import {Card, Stack, Button, TextField, Text} from '@shopify/argo-admin';
+import {useLayout, useLocale, useToast, useSessionToken} from '@shopify/argo-admin/react';
 
 export function ExtensionApiExample() {
   const layout = useLayout();
@@ -22,7 +22,7 @@ export function ExtensionApiExample() {
           <Button
             title="Generate new sessionToken"
             onClick={() =>
-              getSessionToken().then(newSessionToken => setSessionToken(newSessionToken))
+              getSessionToken().then((newSessionToken) => setSessionToken(newSessionToken))
             }
           />
           <TextField type="text" value={sessionToken} multiline />

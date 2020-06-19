@@ -1,5 +1,5 @@
 import React from 'react';
-import {Stack as ArgoStack} from '@shopify/argo';
+import {Stack as ArgoStack} from '@shopify/argo-admin';
 import {Stack as PolarisStack} from '@shopify/polaris';
 import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
 

@@ -1,5 +1,5 @@
 import React, {useState, useMemo, useCallback} from 'react';
-import {DataApi, ExtensionPoint} from '@shopify/argo';
+import {DataApi, ExtensionPoint} from '@shopify/argo-admin';
 import {useToastApi} from '@shopify/argo-host';
 import {Card, Link, Stack, Button} from '@shopify/polaris';
 

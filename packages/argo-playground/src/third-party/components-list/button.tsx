@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {Card, Stack, Button, IconProps} from '@shopify/argo';
+import {Card, Stack, Button, IconProps} from '@shopify/argo-admin';
 
 const SORT_ICON: IconProps = {
   source: 'sortMinor',
@@ -8,7 +8,7 @@ const SORT_ICON: IconProps = {
 export function ButtonExample() {
   const [buttonValue, setButtonValue] = useState(0);
   const onButtonClick = useCallback(() => {
-    setButtonValue(value => value + 1);
+    setButtonValue((value) => value + 1);
   }, []);
 
   return (

@@ -10,7 +10,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Shopify/app-extension-libs.git",
-    "directory": "packages/argo"
+    "directory": "packages/argo-admin"
   },
   "sideEffects": false,
   "dependencies": {

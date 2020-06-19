@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {TextFieldProps} from '@shopify/argo';
+import {TextFieldProps} from '@shopify/argo-admin';
 import {TextField as PolarisTextField, Stack} from '@shopify/polaris';
 
 import {useQueuedState} from '../../utilities/useQueuedState';
