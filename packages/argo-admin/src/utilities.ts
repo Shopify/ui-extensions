@@ -1,5 +1,8 @@
 import type {ReactNode, FunctionComponent} from 'react';
-import type {RemoteComponentType, PropsForRemoteComponent} from '@shopify/remote-ui-core';
+import type {
+  RemoteComponentType,
+  PropsForRemoteComponent,
+} from '@shopify/rui-core';
 
 export type ReactPropsFromRemoteComponentType<
   Type extends RemoteComponentType<any, any, any>

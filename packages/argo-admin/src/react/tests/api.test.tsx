@@ -1,6 +1,6 @@
 import React from 'react';
 import {ExtensionPoint} from '@shopify/argo-admin';
-import {render as remoteRender} from '@shopify/remote-ui-react';
+import {render as remoteRender} from '@shopify/rui-react';
 import {render} from '../api';
 import {ExtensionApiContext} from '../extension-api/utils';
 
@@ -9,8 +9,8 @@ jest.mock('../../api', () => ({
   render: jest.fn(),
 }));
 
-jest.mock('@shopify/remote-ui-react', () => ({
-  ...require.requireActual('@shopify/remote-ui-react'),
+jest.mock('@shopify/rui-react', () => ({
+  ...require.requireActual('@shopify/rui-react'),
   render: jest.fn(),
 }));
 

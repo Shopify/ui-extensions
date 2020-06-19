@@ -18,7 +18,7 @@ export function Polaris({children}: Props) {
   });
 
   return (
-    <PolarisProvider i18n={i18n.translations.reverse()} linkComponent={Link}>
+    <PolarisProvider i18n={i18n.translations.reverse() || {}} linkComponent={Link}>
       {children}
     </PolarisProvider>
   );

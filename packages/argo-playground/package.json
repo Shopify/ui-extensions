@@ -15,7 +15,7 @@
     "directory": "packages/argo-playground"
   },
   "dependencies": {
-    "@shopify/polaris": "^4.19.0",
+    "@shopify/polaris": "4.24.0",
     "@shopify/react-form": "^0.6.0",
     "@shopify/react-html": "^9.2.3",
     "@shopify/react-i18n": "^4.0.0",

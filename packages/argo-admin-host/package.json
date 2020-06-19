@@ -17,7 +17,7 @@
     "@shopify/argo-admin": "0.2.4",
     "@shopify/polaris": "^4.19.0",
     "@shopify/react-web-worker": "^1.2.9",
-    "@shopify/remote-ui-react": "^0.0.25",
+    "@shopify/rui-react": "^0.0.26",
     "react": "^16.12.0"
   },
   "publishConfig": {
