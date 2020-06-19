@@ -4,7 +4,7 @@ interface OptionDescriptor {
   /** Value of the option */
   value: string;
   /** Display label for the option */
-  label: React.ReactNode;
+  label: string;
   /** Whether the option is disabled or not */
   disabled?: boolean;
 }
