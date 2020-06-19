@@ -5,7 +5,7 @@ import {
   ShopifyApi,
 } from '@shopify/argo-admin';
 import {WorkerCreator} from '@shopify/react-web-worker';
-import {createRemoteRoot, RemoteChannel, retain} from '@shopify/remote-ui-core';
+import {createRemoteRoot, RemoteChannel, retain} from '@shopify/rui-core';
 
 import {apply as applySandbox, Denylist, builtIns} from './sandbox';
 

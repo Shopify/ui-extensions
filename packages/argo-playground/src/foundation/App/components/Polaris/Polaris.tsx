@@ -13,12 +13,12 @@ export function Polaris({children}: Props) {
     translations(locale) {
       return import(
         /* webpackChunkName: "Polaris-i18n", webpackMode: "lazy-once" */ `@shopify/polaris/locales/${locale}.json`
-      ).then(dictionary => dictionary && dictionary.default);
+      ).then((dictionary) => dictionary && dictionary.default);
     },
   });
 
   return (
-    <PolarisProvider i18n={i18n.translations.reverse()} linkComponent={Link}>
+    <PolarisProvider i18n={i18n.translations.reverse() || {}} linkComponent={Link}>
       {children}
     </PolarisProvider>
   );
