@@ -8,13 +8,13 @@ import {
   ArgoExtensionsProps,
   createIframeWorkerMessenger,
   ReadyState,
-} from '@shopify/argo-host';
+} from '@shopify/argo-admin-host';
 import {createWorkerFactory} from '@shopify/react-web-worker';
 import {LoadingSpinner} from './shared/LoadingSpinner';
 import {Error} from './shared/Error';
 
 const createWorker = createWorkerFactory(() =>
-  import(/* webpackChunkName: 'sandbox-worker' */ '@shopify/argo-host/worker'),
+  import(/* webpackChunkName: 'sandbox-worker' */ '@shopify/argo-admin-host/worker'),
 );
 
 type BaseProps<T extends ExtensionPoint> = Omit<ArgoExtensionsProps<T>, 'api' | 'worker'>;

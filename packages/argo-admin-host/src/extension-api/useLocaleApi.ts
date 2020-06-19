@@ -1,5 +1,5 @@
 import {useMemo, useState} from 'react';
-import {LocaleApi} from '@shopify/argo/extension-api/locale';
+import {LocaleApi} from '@shopify/argo-admin/extension-api/locale';
 import {retain} from '@shopify/remote-ui-core';
 import {useEffect} from 'react';
 

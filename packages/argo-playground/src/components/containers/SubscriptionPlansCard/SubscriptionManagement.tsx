@@ -1,6 +1,6 @@
 import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import {ExtensionPoint, ExtensionApi} from '@shopify/argo-admin';
-import {ReadyState} from '@shopify/argo-host';
+import {ReadyState} from '@shopify/argo-admin-host';
 import {Modal, ModalProps, Stack, RadioButton} from '@shopify/polaris';
 import {retain} from '@shopify/react-web-worker';
 
