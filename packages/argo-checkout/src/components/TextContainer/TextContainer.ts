@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '../../utilities';
+import {createRemoteComponent} from '@remote-ui/core';
 
 type Spacing = 'none' | 'tight' | 'loose';
 type Alignment = 'trailing' | 'center';

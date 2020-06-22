@@ -1,16 +1,18 @@
 import React from 'react';
 
-import {renderReact} from '../render';
+import {render} from '../render';
 
-const {extend} = jest.requireMock('../../extend') as {extend: jest.Mock};
+const {extend} = jest.requireMock('@shopify/argo-checkout') as {
+  extend: jest.Mock;
+};
 
-jest.mock('../../extend', () => ({
+jest.mock('@shopify/argo-checkout', () => ({
   extend: jest.fn(),
 }));
 
 describe('render()', () => {
   it('calls extend() with the extension point', () => {
-    renderReact('Checkout::KitchenSink', () => <></>);
+    render('Checkout::KitchenSink', () => <></>);
     expect(extend).toHaveBeenCalledWith(
       'Checkout::KitchenSink',
       expect.any(Function),

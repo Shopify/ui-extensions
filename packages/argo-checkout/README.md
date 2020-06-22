@@ -46,4 +46,4 @@ This package provides utilities, types, and documentation for the many different
 Once you’ve read the documents above, you’re ready to write a checkout extension. If you’re wanting to learn even more, this repo has a few additional guides that cover techniques for writing larger, more complex extensions:
 
 - Strategies for [unit testing extensions](documentation/testing.md)
-- A custom [React](https://reactjs.org) renderer that supports [rendering Argo extensions with React](documentation/react.md)
+- [`@shopify/argo-checkout-react`](../argo-checkout-react), which allows complex extensions to render using all the power of [React](https://reactjs.org)

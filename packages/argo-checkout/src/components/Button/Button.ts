@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '../../utilities';
+import {createRemoteComponent} from '@remote-ui/core';
 
 export interface ButtonProps {
   /** Allows the button to submit a form */

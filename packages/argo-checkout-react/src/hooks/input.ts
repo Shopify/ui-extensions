@@ -1,11 +1,10 @@
 import {useContext} from 'react';
-
 import {
   RenderExtensionPoint,
   InputForRenderExtension,
-} from '../../extension-points';
+} from '@shopify/argo-checkout';
 
-import {ExtensionInputContext} from './context';
+import {ExtensionInputContext} from '../context';
 
 export function useExtensionInput<
   ID extends RenderExtensionPoint = RenderExtensionPoint

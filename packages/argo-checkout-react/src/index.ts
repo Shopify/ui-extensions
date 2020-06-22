@@ -1,19 +1,15 @@
+export {extend} from '@shopify/argo-checkout';
 export type {
-  ExtensionPoints,
   ExtensionPoint,
-  RenderExtensions,
-  RenderExtension,
-  RenderExtensionPoint,
+  ExtensionPoints,
   AllowedComponentsForRenderExtension,
   ArgumentsForExtension,
   InputForRenderExtension,
+  RenderExtension,
+  RenderExtensions,
   ReturnTypeForExtension,
-  StandardApi,
+  ShopifyGlobal,
   Version,
-} from './extension-points';
-
-export * from './components';
-export type {
   BlockStackProps,
   BookendProps,
   ButtonProps,
@@ -39,8 +35,8 @@ export type {
   TilesProps,
   TileProps,
   VisuallyHiddenProps,
-} from './components';
-export type Components = typeof import('./components');
+} from '@shopify/argo-checkout';
 
-export {extend} from './extend';
-export type {ShopifyGlobal} from './globals';
+export * from './components';
+export * from './hooks';
+export {render} from './render';
