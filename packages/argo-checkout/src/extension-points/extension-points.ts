@@ -7,6 +7,7 @@ import type {
 } from './api';
 
 type Components = typeof import('../components');
+
 type AllComponents = Components[keyof Components];
 
 export interface ExtensionPoints {
