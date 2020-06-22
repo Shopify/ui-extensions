@@ -1,0 +1,19 @@
+{
+  "name": "@shopify/argo-checkout-react",
+  "version": "0.0.0",
+  "description": "React bindings for @shopify/argo-checkout",
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "sideEffects": false,
+  "license": "MIT",
+  "dependencies": {
+    "@remote-ui/react": "^0.0.41",
+    "@shopify/argo-checkout": "^0.1.8",
+    "@types/react": "^16.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=16.8.0 <17.0.0"
+  }
+}

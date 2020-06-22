@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '../../utilities';
+import {createRemoteComponent} from '@remote-ui/core';
 
 type Size = 'small' | 'medium' | 'large' | 'xlarge';
 

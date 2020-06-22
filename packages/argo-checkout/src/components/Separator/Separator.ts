@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '../../utilities';
+import {createRemoteComponent} from '@remote-ui/core';
 
 type Direction = 'horizontal' | 'vertical';
 type Width = 'thin' | 'medium' | 'thick' | 'xthick';
