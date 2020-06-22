@@ -4,6 +4,7 @@
   "references": [
     {"path": "./tsconfig.repo.json"},
     {"path": "./packages/argo-checkout"},
+    {"path": "./packages/argo-checkout-react"},
     {"path": "./packages/argo-webpack-hot-client"},
     {"path": "./packages/argo-run"}
   ]
