@@ -65,9 +65,9 @@ If you are using TypeScript, you can supply the name of the extension point as a
 
 ```tsx
 import React from 'react';
-import {renderReact, useExtensionInput, Button} from '@shopify/argo-checkout';
+import {render, useExtensionInput, Button} from '@shopify/argo-checkout';
 
-renderReact('Checkout::PostPurchase::Render', () => <App />);
+render('Checkout::PostPurchase::Render', () => <App />);
 
 function App({extensionPoint}) {
   const {extensionPoint} = useExtensionInput<
@@ -86,4 +86,4 @@ function App({extensionPoint}) {
 }
 ```
 
-This hook can only be called if you registered your extension with `renderReact`, as that callback wraps the application in the necessary React context to make the input available anywhere in the tree.
+This hook can only be called if you registered your extension with `render`, as that callback wraps the application in the necessary React context to make the input available anywhere in the tree.
