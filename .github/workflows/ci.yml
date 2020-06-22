@@ -36,9 +36,9 @@ jobs:
       name: Restore TypeScript cache
       with:
         path: .sewing-kit/cache/typescript/
-        key: ${{ runner.os }}-typescript-${{ github.sha }}
+        key: ${{ runner.os }}-typescript-v2-${{ github.sha }}
         restore-keys: |
-          ${{ runner.os }}-typescript-
+          ${{ runner.os }}-typescript-v2-
 
     - name: Type check
       run: yarn type-check
