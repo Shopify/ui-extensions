@@ -44,13 +44,13 @@ This command will open your default browser to the `open` URL, with an `extensio
 The most complex example might look something like this:
 
 ```bash
-$ yarn argo-run dev --open https://argogogo.dev --extension-point Checkout::PostPurchase::Inquiry
+$ yarn argo-run dev --open https://argogogo.dev --extension-point Checkout::PostPurchase::ShouldRender
 ```
 
 Which would open your default browser to a the following URL, assuming the default asset server port is available:
 
 ```
-https://argogogo.dev?extension=%2522http%253A%252F%252Flocalhost%253A8910%252Fassets%252Fextension.js%2522&extension-point=Checkout::PostPurchase::Inquiry
+https://argogogo.dev?extension=%2522http%253A%252F%252Flocalhost%253A8910%252Fassets%252Fextension.js%2522&extension-point=Checkout::PostPurchase::ShouldRender
 ```
 
 ### `argo-run build`

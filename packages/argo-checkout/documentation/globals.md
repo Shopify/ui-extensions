@@ -5,8 +5,8 @@
 The most important API to an Argo extension is `shopify`, an object that is globally available. This object has a single method, `extend`. `extend` takes two arguments: the name of an [available extension point](./extension-points.md), and a function to call when Shopify is ready to run the extension point. The function you pass is called with at least one input argument, depending on the extension point — please refer to the documentation for the extension point you are targeting to see what you have access to.
 
 ```ts
-shopify.extend('Checkout::PostPurchase::Inquiry', (...args) => {
-  // Implement your Checkout::PostPurchase::Inquiry extension point logic here
+shopify.extend('Checkout::PostPurchase::ShouldRender', (...args) => {
+  // Implement your Checkout::PostPurchase::ShouldRender extension point logic here
 });
 ```
 
@@ -15,8 +15,8 @@ This library provides an alias for `shopify.extend` in the form of the `extend()
 ```ts
 import {extend} from '@shopify/argo-checkout';
 
-extend('Checkout::PostPurchase::Inquiry', (api) => {
-  // Implement your Checkout::PostPurchase::Inquiry extension point logic here
+extend('Checkout::PostPurchase::ShouldRender', (api) => {
+  // Implement your Checkout::PostPurchase::ShouldRender extension point logic here
   // If you hover over `api` in an editor that supports TypeScript, you’ll see
   // the properties and methods available for this extension point, even if you
   // are writing your extension in "vanilla" JavaScript.

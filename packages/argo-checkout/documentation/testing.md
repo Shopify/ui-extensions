@@ -4,7 +4,7 @@ Argo extensions can be tested with any test runner that supports JavaScript. At 
 
 ## Non-rendering extension points
 
-A non-rendering extension point, like `Checkout::PostPurchase::Inquiry`, is really just a function that takes input, and returns output. To test these functions, we recommend you export (instead of writing them as inline callback functions to `shopify.extend`), and call them directly in your tests. If you are using TypeScript, you can use the `ArgumentsForExtension` helper type to get access to the expected types for the inputs to your function, which can be useful to create API-compatible mock data.
+A non-rendering extension point, like `Checkout::PostPurchase::ShouldRender`, is really just a function that takes input, and returns output. To test these functions, we recommend you export (instead of writing them as inline callback functions to `shopify.extend`), and call them directly in your tests. If you are using TypeScript, you can use the `ArgumentsForExtension` helper type to get access to the expected types for the inputs to your function, which can be useful to create API-compatible mock data.
 
 Assuming we had an extension like this one:
 
@@ -13,9 +13,9 @@ Assuming we had an extension like this one:
 
 import {extend} from '@shopify/argo-checkout';
 
-extend('Checkout::PostPurchase::Inquiry', handleInquiryExtension);
+extend('Checkout::PostPurchase::ShouldRender', handleShouldRenderExtension);
 
-export function handleInquiryExtension({storage}) {
+export function handleShouldRenderExtension({storage}) {
   storage.update({myExtensionData: {}});
   return {render: true};
 }
@@ -26,16 +26,16 @@ You could write a test with Jest by importing the extension callback and running
 ```ts
 // In extension.test.js
 
-import {handleInquiryExtension} from './extension';
+import {handleShouldRenderExtension} from './extension';
 
-describe('inquiry', () => {
+describe('shouldRender', () => {
   it('stores some data', () => {
     const storage = {update: jest.fn()};
 
     // To be a little more future-proof, you may want to supply mock values
     // for all the fields this extension receives. For now, we’re just mocking
     // what we know our extension point callback uses.
-    handleInquiryExtension({storage});
+    handleShouldRenderExtension({storage});
 
     expect(storage.update).toHaveBeenCalledWith(expect.any(Object));
   });
