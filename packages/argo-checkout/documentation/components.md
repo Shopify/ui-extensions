@@ -25,5 +25,6 @@ The following components are available as part of Argo for Checkout, but make su
 - [TextBlock](../src/components/TextBlock)
 - [TextContainer](../src/components/TextContainer)
 - [TextField](../src/components/TextField)
-- [Tile and Tiles](../src/components/Tiles)
+- [Tiles](../src/components/Tiles)
+- [View](../src/components/View)
 - [VisuallyHidden](../src/components/VisuallyHidden)

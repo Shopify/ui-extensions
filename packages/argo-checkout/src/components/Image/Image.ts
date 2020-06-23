@@ -54,12 +54,6 @@ export interface ImageProps {
    */
   fit?: Fit;
   /**
-   * Sets the image to fill its parent container (both the width and height). The image should be the only
-   * child of the parent container. Use with `fit` to maintain the image aspect
-   * ratio. This is overridden by `aspectRatio`.
-   */
-  fill?: boolean;
-  /**
    * Indicates the image is decorative and should be hidden from assistive
    * technologies
    */

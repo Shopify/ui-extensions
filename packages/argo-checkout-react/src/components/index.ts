@@ -19,5 +19,6 @@ export {Text} from './Text';
 export {TextBlock} from './TextBlock';
 export {TextContainer} from './TextContainer';
 export {TextField} from './TextField';
-export {Tiles, Tile} from './Tiles';
+export {Tiles} from './Tiles';
+export {View} from './View';
 export {VisuallyHidden} from './VisuallyHidden';

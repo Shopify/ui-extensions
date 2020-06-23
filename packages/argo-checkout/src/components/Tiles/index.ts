@@ -1,2 +1,2 @@
-export {Tiles, Tile} from './Tiles';
-export type {TilesProps, TileProps} from './Tiles';
+export {Tiles} from './Tiles';
+export type {TilesProps} from './Tiles';

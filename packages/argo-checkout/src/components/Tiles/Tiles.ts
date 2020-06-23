@@ -27,15 +27,9 @@ export interface TilesProps {
 }
 
 /**
- * The Tiles component is used to lay out elements inside equal sized containers (`Tile`).
- * They can wrap on multiple lines as well as stack when space is limited.
+ * The Tiles component is used to lay out elements as equally-sized elements,
+ * optionally wrapping on multiple lines as well as a stack when space is limited.
+ * If you have a direct child of `Tiles` that you don’t want to stretch, wrap that
+ * child in a `View` component.
  */
 export const Tiles = createRemoteComponent<'Tiles', TilesProps>('Tiles');
-
-export interface TileProps {}
-
-/**
- * A tile should always be nested under a Tiles component. Its contents will then be
- * sized equally with any sibling tiles.
- */
-export const Tile = createRemoteComponent<'Tile', TileProps>('Tile');
