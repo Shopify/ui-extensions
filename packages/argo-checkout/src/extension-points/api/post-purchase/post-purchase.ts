@@ -7,21 +7,13 @@ export interface PostPurchaseShouldRenderApi
   /** current cart being checked out */
   checkout: Checkout;
 
-  /**
-   * provides update method to store data in the browser
-   *
-   * also contains initialData which holds the value of the previously updated storage value
-   * this allows sync access to stored data when rendering initially
-   * */
+  /** general purpose storage for extensions */
   storage: Storage;
 }
 
-/**
- * output expected from the ShouldRender extension point (Checkout::PostPurchase::ShouldRender)
- * if the result sets requestPostPurchasePage to be true, the post purchase page might be shown after payment
- *
- */
+/** output expected from the ShouldRender extension point (Checkout::PostPurchase::ShouldRender) */
 export type PostPurchaseShouldRenderResult = ValueOrPromise<{
+  /** whether or not to render the post-purchase page */
   render: boolean;
 }>;
 
@@ -31,28 +23,8 @@ export interface PostPurchaseRenderApi
   /** initial purchase */
   order: Order;
 
+  /** general purpose storage for extensions */
   storage: Storage;
-
-  /**
-   * edits the initial purchase, charging the vaulted payment method for the difference in price
-   * only perform edits that can also be performed by buyers in the storefront
-   */
-  applyUnsignedChangeset(changeset: Changeset): Promise<AppliedChangesetResult>;
-
-  /**
-   * same as applyUnsignedChangeset(), but requires the changeset to be signed
-   * this allows it to accept more sensitive edits, such as applying an arbitrary discount
-   */
-  applySignedChangeset(
-    signature: string,
-    changeset: Changeset,
-  ): Promise<AppliedChangesetResult>;
-
-  /**
-   * applies the changeset to the initial purchase, but *without* saving it
-   * useful to get cost clarity info, such as final price, discounts, taxes, shipping, etc
-   */
-  calculateChangeset(changeset: Changeset): Promise<CalculatedChangesetResult>;
 
   /**
    * signals that the extension is finished running
@@ -61,21 +33,33 @@ export interface PostPurchaseRenderApi
   done(): Promise<void>;
 }
 
+/** general-purpose, key-value browser storage for extensions */
+interface Storage {
+  /** data in the storage during the first load (read-only) */
+  initialData: unknown;
+
+  /** updates the storage to the value that it's given */
+  update(data: any): Promise<void>;
+}
+
 /**
  * kept small for development
  * many more attributes will be added before making it available to partners
  */
 interface Order {
+  id: number;
+  token: string;
+
+  /** shop where the checkout/order is from */
+  shop: Shop;
+
+  /** items being purchased */
   lineItems: LineItem[];
 }
 
 type Checkout = Order;
 
-interface LineItem {
-  variant: LineItemVariant;
-}
-
-interface LineItemVariant {
+interface Shop {
   id: number;
 
   /**
@@ -85,43 +69,32 @@ interface LineItemVariant {
   metafields: {[key: string]: string};
 }
 
-/**
- * list of requested changes to the initial purchase
- * only accepts adding a variant for now, but other edit types will be added
- */
-type Changeset = AddVariantChange[];
-
-interface AddVariantChange {
-  type: 'add_variant';
-  variantId: number;
-  quantity: number;
-  discount?: DiscountChange;
+interface LineItem {
+  /** product being purchased */
+  product: Product;
 }
 
-/** a fixed amount discount will also be available */
-type DiscountChange = PercentageDiscountChange;
+interface Product {
+  id: number;
+  title: string;
 
-interface PercentageDiscountChange {
-  valueType: 'percentage';
-  value: number;
+  /** variant being purchased */
+  variant: Variant;
+
+  /**
+   * only public listed metafields are available
+   * https://shopify.dev/tutorials/retrieve-metafields-with-storefront-api#expose-metafields-to-the-storefront-api
+   */
+  metafields: {[key: string]: string};
 }
 
-/**
- * will also get improved and have more properties
- * only kept small for development
- */
-interface AppliedChangesetResult {
-  errors?: string[];
-}
+interface Variant {
+  id: number;
+  title: string;
 
-/**
- * cost clarity after edits: final price , discounts, taxes, shipping, etc
- * final API still needs some work; right now, it returns a CalculatedOrder object
- * https://shopify.dev/docs/admin-api/graphql/reference/object/calculatedorder?api[version]=2020-04
- */
-interface CalculatedChangesetResult {}
-
-interface Storage {
-  update(value: any): Promise<void>;
-  initialData: unknown;
+  /**
+   * only public listed metafields are available
+   * https://shopify.dev/tutorials/retrieve-metafields-with-storefront-api#expose-metafields-to-the-storefront-api
+   */
+  metafields: {[key: string]: string};
 }
