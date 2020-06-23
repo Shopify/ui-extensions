@@ -27,7 +27,11 @@ render('Checkout::PostPurchase::Render', ({extensionPoint}) => (
   <App extensionPoint={extensionPoint} />
 ));
 
-function App({extensionPoint}) {
+interface Props {
+  extensionPoint: string,
+}
+
+function App({extensionPoint}: Props) {
   return <>Extension point: {extensionPoint}</>;
 }
 ```
@@ -38,18 +42,22 @@ If you’ve ever used React on the web, you’re probably used to returning DOM 
 import React from 'react';
 import {render, Button} from '@shopify/argo-checkout';
 
-render('Checkout::PostPurchase::Render', ({extensionPoint}) => (
-  <App extensionPoint={extensionPoint} />
+render('Checkout::PostPurchase::Render', (props) => (
+  <App {...props} />
 ));
 
-function App({extensionPoint}) {
+interface Props {
+  extensionPoint: string,
+}
+
+function App({extensionPoint}: Props) {
   return (
     <Button
       onPress={() => {
         console.log(`Extension point: ${extensionPoint}`);
       }}
     >
-      Log extension point
+      Log extension point to console
     </Button>
   );
 }
@@ -69,7 +77,7 @@ import {render, useExtensionInput, Button} from '@shopify/argo-checkout';
 
 render('Checkout::PostPurchase::Render', () => <App />);
 
-function App({extensionPoint}) {
+function App() {
   const {extensionPoint} = useExtensionInput<
     'Checkout::PostPurchase::Render'
   >();
@@ -80,7 +88,7 @@ function App({extensionPoint}) {
         console.log(`Extension point: ${extensionPoint}`);
       }}
     >
-      Log extension point
+      Log extension point to console
     </Button>
   );
 }
