@@ -1,1 +1,2 @@
-export {SubscriptionPlansCard} from './SubscriptionPlansCard';
+export * from './SubscriptionManagement';
+export * from './SubscriptionPlansCard';

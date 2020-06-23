@@ -15,6 +15,10 @@ const reactThirdPartyWorker = createPlainWorkerFactory(() =>
   import(/* webpackChunkName: '3p-render-timeout' */ '../../third-party/render-timeout'),
 );
 
+const noop = () => {
+  // Noop
+};
+
 export function ModalExtension({
   open,
   onClose,
@@ -23,13 +27,15 @@ export function ModalExtension({
     <SubscriptionManagement
       defaultTitle="Modal Extension Render Timeout"
       app={{
-        name: 'OneMoreTime',
+        title: 'OneMoreTime',
         id: 'one-more-time',
       }}
       script={reactThirdPartyWorker.url}
       extensionPoint={ExtensionPoint.Playground}
       open={open}
       onClose={onClose}
+      onDone={noop}
+      setApp={noop}
     />
   );
 }
