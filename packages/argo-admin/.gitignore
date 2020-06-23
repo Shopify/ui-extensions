@@ -1,0 +1,9 @@
+*.js
+*.js.map
+*.d.ts
+
+./components-schemas
+./components-sets
+./components
+./extension-api
+./react
