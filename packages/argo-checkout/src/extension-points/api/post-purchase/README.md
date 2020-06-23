@@ -1,6 +1,6 @@
 # Post purchase extension points
 
-## Inquiry (`Checkout::PostPurchase::Inquiry`)
+## ShouldRender (`Checkout::PostPurchase::ShouldRender`)
 
 This extension provides the [standard extension API](../standard).
 

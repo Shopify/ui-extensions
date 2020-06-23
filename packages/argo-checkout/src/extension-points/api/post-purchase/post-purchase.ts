@@ -1,9 +1,9 @@
 import type {StandardApi} from '../standard';
 import type {ValueOrPromise} from '../shared';
 
-/** input given to the inquiry extension point (Checkout::PostPurchase::Inquiry) */
-export interface PostPurchaseInquiryApi
-  extends StandardApi<'Checkout::PostPurchase::Inquiry'> {
+/** input given to the ShouldRender extension point (Checkout::PostPurchase::ShouldRender) */
+export interface PostPurchaseShouldRenderApi
+  extends StandardApi<'Checkout::PostPurchase::ShouldRender'> {
   /** current cart being checked out */
   checkout: Checkout;
 
@@ -17,11 +17,11 @@ export interface PostPurchaseInquiryApi
 }
 
 /**
- * output expected from the inquiry extension point (Checkout::PostPurchase::Inquiry)
+ * output expected from the ShouldRender extension point (Checkout::PostPurchase::ShouldRender)
  * if the result sets requestPostPurchasePage to be true, the post purchase page might be shown after payment
  *
  */
-export type PostPurchaseInquiryResult = ValueOrPromise<{
+export type PostPurchaseShouldRenderResult = ValueOrPromise<{
   render: boolean;
 }>;
 

@@ -4,4 +4,4 @@ An Argo extension will register for one or more extension points using [`shopify
 
 The current extension points are available for Checkout:
 
-- [`Checkout::PostPurchase::Inquiry` and `Checkout::PostPurchase::Render`](../src/extension-points/api/post-purchase), used to build post-purchase interstitials for cross sell applications.
+- [`Checkout::PostPurchase::ShouldRender` and `Checkout::PostPurchase::Render`](../src/extension-points/api/post-purchase), used to build post-purchase interstitials for cross sell applications.

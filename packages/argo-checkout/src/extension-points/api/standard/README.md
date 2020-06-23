@@ -1,6 +1,6 @@
 # Standard extension point API
 
-This document outlines the API that is provided to every extension point. When the extension point renders UI (like `Checkout::PostPurchase::Render`), these properties are part of the second argument to an extension point. When the extension point does not render UI (like `Checkout::PostPurchase::Inquiry`), these properties are part of the first argument.
+This document outlines the API that is provided to every extension point. When the extension point renders UI (like `Checkout::PostPurchase::Render`), these properties are part of the second argument to an extension point. When the extension point does not render UI (like `Checkout::PostPurchase::ShouldRender`), these properties are part of the first argument.
 
 ## `locale`
 

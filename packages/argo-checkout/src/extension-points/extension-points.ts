@@ -1,8 +1,8 @@
 import {RenderExtension} from './render-extension';
 import type {
   StandardApi,
-  PostPurchaseInquiryApi,
-  PostPurchaseInquiryResult,
+  PostPurchaseShouldRenderApi,
+  PostPurchaseShouldRenderResult,
   PostPurchaseRenderApi,
 } from './api';
 
@@ -19,9 +19,9 @@ export interface ExtensionPoints {
     PostPurchaseRenderApi,
     AllComponents
   >;
-  'Checkout::PostPurchase::Inquiry': (
-    api: PostPurchaseInquiryApi,
-  ) => PostPurchaseInquiryResult;
+  'Checkout::PostPurchase::ShouldRender': (
+    api: PostPurchaseShouldRenderApi,
+  ) => PostPurchaseShouldRenderResult;
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;

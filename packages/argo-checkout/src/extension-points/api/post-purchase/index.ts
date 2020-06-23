@@ -1,5 +1,5 @@
 export type {
   PostPurchaseRenderApi,
-  PostPurchaseInquiryApi,
-  PostPurchaseInquiryResult,
+  PostPurchaseShouldRenderApi,
+  PostPurchaseShouldRenderResult,
 } from './post-purchase';
