@@ -32,12 +32,13 @@ export type {
   SelectProps,
   SeparatorProps,
   SkeletonTextProps,
+  SpinnerProps,
   TextProps,
   TextBlockProps,
   TextContainerProps,
   TextFieldProps,
   TilesProps,
-  TileProps,
+  ViewProps,
   VisuallyHiddenProps,
 } from './components';
 export type Components = typeof import('./components');
