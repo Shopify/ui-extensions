@@ -78,6 +78,7 @@ export function createWebpackConfiguration({
           ],
         },
     resolve: {
+      mainFields: ['esnext', 'browser', 'module', 'main'],
       extensions: ['.esnext', '.mjs', '.ts', '.tsx', '.js', '.json'],
     },
     module: {
