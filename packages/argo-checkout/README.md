@@ -22,17 +22,7 @@ Keeping in mind that any utility provided by this library is only a convenience 
 
 ## Getting started
 
-### 1. Install the Shopify CLI
-
-TODO: instructions :)
-
-### 2. Create an extension
-
-Run `shopify create extension` to get started. When prompted, indicate that you’d like to create a post purchase extension. This command will clone an extension template, which contains a basic extension and the necessary development tooling.
-
-### 3. Run the local server
-
-Run `shopify serve` and start coding! Your application will be built from the `index` file created by the Shopify CLI, but you may add additional JavaScript files and reference them as [JavaScript modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import).
+Before you dig in to what this library has to offer, please read through the [getting started guide](https://docs.google.com/document/d/1JqTUEBXWZ2gKC7bfWc0wy7i6zHtHmldd3ef4N3FHoeU/edit#heading=h.1256j7138hx).
 
 ## API
 
