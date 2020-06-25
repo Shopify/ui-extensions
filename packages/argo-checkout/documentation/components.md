@@ -16,6 +16,7 @@ The following components are available as part of Argo for Checkout, but make su
 - [HiddenForAccessibility](../src/components/HiddenForAccessibility)
 - [Image](../src/components/Image)
 - [InlineStack](../src/components/InlineStack)
+- [Layout](../src/components/Layout)
 - [Link](../src/components/Link)
 - [Radio](../src/components/Radio)
 - [Select](../src/components/Select)
