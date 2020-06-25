@@ -9,6 +9,6 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@remote-ui/core": "^1.1.1"
+    "@remote-ui/core": "^1.2.0"
   }
 }
