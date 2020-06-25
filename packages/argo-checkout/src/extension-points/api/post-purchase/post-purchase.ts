@@ -66,12 +66,13 @@ interface Shop {
    * only public listed metafields are available
    * https://shopify.dev/tutorials/retrieve-metafields-with-storefront-api#expose-metafields-to-the-storefront-api
    */
-  metafields: {[key: string]: string};
+  metafields: Metafield[];
 }
 
 interface LineItem {
   /** product being purchased */
   product: Product;
+  quantity: number;
 }
 
 interface Product {
@@ -85,7 +86,7 @@ interface Product {
    * only public listed metafields are available
    * https://shopify.dev/tutorials/retrieve-metafields-with-storefront-api#expose-metafields-to-the-storefront-api
    */
-  metafields: {[key: string]: string};
+  metafields: Metafield[];
 }
 
 interface Variant {
@@ -96,5 +97,12 @@ interface Variant {
    * only public listed metafields are available
    * https://shopify.dev/tutorials/retrieve-metafields-with-storefront-api#expose-metafields-to-the-storefront-api
    */
-  metafields: {[key: string]: string};
+  metafields: Metafield[];
+}
+
+interface Metafield {
+  key: string;
+  namespace: string;
+  value: string | number;
+  valueType: 'integer' | 'string' | 'json_string';
 }
