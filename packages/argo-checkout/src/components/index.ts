@@ -32,8 +32,6 @@ export {Select} from './Select';
 export type {SelectProps} from './Select';
 export {Separator} from './Separator';
 export type {SeparatorProps} from './Separator';
-export {SkeletonText} from './SkeletonText';
-export type {SkeletonTextProps} from './SkeletonText';
 export {Spinner} from './Spinner';
 export type {SpinnerProps} from './Spinner';
 export {Text} from './Text';
