@@ -9,6 +9,9 @@ export interface PostPurchaseShouldRenderApi
 
   /** general purpose storage for extensions */
   storage: Storage;
+
+  /** shop where the checkout/order is from */
+  shop: Shop;
 }
 
 /** output expected from the ShouldRender extension point (Checkout::PostPurchase::ShouldRender) */
@@ -25,6 +28,9 @@ export interface PostPurchaseRenderApi
 
   /** general purpose storage for extensions */
   storage: Storage;
+
+  /** shop where the checkout/order is from */
+  shop: Shop;
 
   /**
    * signals that the extension is finished running
@@ -49,9 +55,6 @@ interface Storage {
 interface Order {
   id: number;
   token: string;
-
-  /** shop where the checkout/order is from */
-  shop: Shop;
 
   /** items being purchased */
   lineItems: LineItem[];
