@@ -15,6 +15,7 @@ export type {
   ButtonProps,
   ButtonGroupProps,
   CheckboxProps,
+  CalloutBannerProps,
   FormProps,
   FormLayoutProps,
   FormLayoutGroupProps,
