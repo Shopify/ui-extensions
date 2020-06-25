@@ -15,7 +15,6 @@ export {Link} from './Link';
 export {Radio} from './Radio';
 export {Select} from './Select';
 export {Separator} from './Separator';
-export {SkeletonText} from './SkeletonText';
 export {Text} from './Text';
 export {TextBlock} from './TextBlock';
 export {TextContainer} from './TextContainer';

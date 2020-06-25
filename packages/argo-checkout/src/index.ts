@@ -32,7 +32,6 @@ export type {
   RadioProps,
   SelectProps,
   SeparatorProps,
-  SkeletonTextProps,
   SpinnerProps,
   TextProps,
   TextBlockProps,

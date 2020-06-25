@@ -20,7 +20,6 @@ The following components are available as part of Argo for Checkout, but make su
 - [Radio](../src/components/Radio)
 - [Select](../src/components/Select)
 - [Separator](../src/components/Separator)
-- [SkeletonText](../src/components/SkeletonText)
 - [Text](../src/components/Text)
 - [TextBlock](../src/components/TextBlock)
 - [TextContainer](../src/components/TextContainer)
