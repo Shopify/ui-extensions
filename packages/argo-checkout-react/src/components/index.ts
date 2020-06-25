@@ -11,6 +11,7 @@ export {HeadingGroup} from './HeadingGroup';
 export {HiddenForAccessibility} from './HiddenForAccessibility';
 export {Image} from './Image';
 export {InlineStack} from './InlineStack';
+export {Layout} from './Layout';
 export {Link} from './Link';
 export {Radio} from './Radio';
 export {Select} from './Select';

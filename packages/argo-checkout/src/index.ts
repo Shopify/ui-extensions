@@ -28,6 +28,7 @@ export type {
   HiddenForAccessibilityProps,
   ImageProps,
   InlineStackProps,
+  LayoutProps,
   LinkProps,
   RadioProps,
   SelectProps,
