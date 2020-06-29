@@ -1,6 +1,6 @@
 #!/bin/sh
 
-AVAILABLE_PACKAGES=('argo' 'argo-host')
+AVAILABLE_PACKAGES=('argo-admin' 'argo-admin-host')
 ROOT=$(pwd)
 
 # Font color

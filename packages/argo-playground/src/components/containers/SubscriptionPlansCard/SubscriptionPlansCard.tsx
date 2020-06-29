@@ -3,10 +3,11 @@ import {DataApi, ExtensionPoint} from '@shopify/argo-admin';
 import {useToastApi} from '@shopify/argo-admin-host';
 import {Card, Link, Stack, Button} from '@shopify/polaris';
 
-import {SubscriptionManagement, apps, App} from './SubscriptionManagement';
+import {App} from '../StandardContainer';
+import {SubscriptionManagement, apps} from './SubscriptionManagement';
 
 export function SubscriptionPlansCard() {
-  const [showModal, setShowModal] = useState(false);
+  const [showExtension, setShowExtension] = useState(false);
   const [currentExtensionPoint, setCurrentExtensionPoint] = useState<ExtensionPoint>();
 
   const dataApi: DataApi<ExtensionPoint.SubscriptionManagementCreate> = useMemo(
@@ -33,24 +34,8 @@ export function SubscriptionPlansCard() {
   }, [dataApi, toastApi]);
 
   const [app, setApp] = useState<App | undefined>();
-  const onClose = useCallback(() => setShowModal(false), []);
+  const onClose = useCallback(() => setShowExtension(false), []);
   const onDone = useCallback(() => console.log('Done'), []);
-
-  const onBackClick = useCallback(() => {
-    if (
-      currentExtensionPoint === ExtensionPoint.SubscriptionManagementAdd ||
-      currentExtensionPoint === ExtensionPoint.SubscriptionManagementCreate
-    ) {
-      // If this is triggered from the app selection screen (no app chosen yet), close the modal
-      if (!app) {
-        onClose();
-      }
-      // Reset the app selection
-      setApp(undefined);
-      return;
-    }
-    onClose();
-  }, [app, currentExtensionPoint, onClose]);
 
   return (
     <>
@@ -66,7 +51,7 @@ export function SubscriptionPlansCard() {
                       onClick={() => {
                         setCurrentExtensionPoint(ExtensionPoint.SubscriptionManagementRemove);
                         setApp(apps[id]);
-                        setShowModal(true);
+                        setShowExtension(true);
                       }}
                     >
                       Remove
@@ -75,7 +60,7 @@ export function SubscriptionPlansCard() {
                       onClick={() => {
                         setCurrentExtensionPoint(ExtensionPoint.SubscriptionManagementEdit);
                         setApp(apps[id]);
-                        setShowModal(true);
+                        setShowExtension(true);
                       }}
                     >
                       Edit
@@ -92,7 +77,7 @@ export function SubscriptionPlansCard() {
               outline
               onClick={() => {
                 setCurrentExtensionPoint(ExtensionPoint.SubscriptionManagementCreate);
-                setShowModal(true);
+                setShowExtension(true);
               }}
             >
               Create subscription plan
@@ -100,7 +85,7 @@ export function SubscriptionPlansCard() {
             <Link
               onClick={() => {
                 setCurrentExtensionPoint(ExtensionPoint.SubscriptionManagementAdd);
-                setShowModal(true);
+                setShowExtension(true);
               }}
             >
               Add existing plan
@@ -109,14 +94,13 @@ export function SubscriptionPlansCard() {
         </Card.Section>
       </Card>
       <SubscriptionManagement
-        open={showModal}
+        open={showExtension}
         defaultTitle={title}
-        onBackClick={onBackClick}
         onClose={onClose}
         onDone={onDone}
         extensionPoint={currentExtensionPoint!}
         api={api}
-        height="450px"
+        height={450}
         app={app}
         setApp={setApp}
       />

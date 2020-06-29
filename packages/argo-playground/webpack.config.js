@@ -123,8 +123,32 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.(png|svg|jpg|gif)$/,
+        test: /\.s[a|c]ss$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              additionalData: `@import "~@shopify/polaris/styles/public-api";\n`,
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
         use: ['file-loader'],
+      },
+      {
+        test: /\.svg$/,
+        use: [
+          '@svgr/webpack',
+        ],
       },
     ],
   },

@@ -1,0 +1,67 @@
+.Container {
+  position: fixed;
+  // Fix for iOS safari where it was blocking clicking on content
+  // behind it. See this issue for more info https://github.com/Shopify/online-store-web/issues/1015
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  visibility: hidden;
+
+  &.visible {
+    z-index: z-index(modal, $fixed-element-stacking-order);
+    visibility: visible;
+    will-change: transform, opacity;
+    animation: scaleIn easing() duration();
+  }
+
+  @include breakpoint-after(layout-width(page-with-nav)) {
+    justify-content: center;
+  }
+}
+
+.ArgoAppChrome {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100%;
+  max-height: calc(100vh);
+  background-color: color('sky', 'light');
+
+  @include frame-when-nav-hidden {
+    top: auto;
+    max-height: calc(100%);
+    width: 100%;
+  }
+
+  &:focus {
+    outline: 0;
+  }
+
+  @include breakpoint-after(layout-width(page-with-nav)) {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
