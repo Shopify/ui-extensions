@@ -17,6 +17,17 @@ const createWorker = createWorkerFactory(() =>
   import(/* webpackChunkName: 'sandbox-worker' */ '@shopify/argo-admin-host/worker'),
 );
 
+export interface App {
+  title: string;
+  icon?: {
+    transformedSrc: string;
+  };
+  id: string;
+  installation: {
+    launchUrl: string;
+  };
+}
+
 type BaseProps<T extends ExtensionPoint> = Omit<ArgoExtensionsProps<T>, 'api' | 'worker'>;
 
 type Api<T extends ExtensionPoint> = Omit<
@@ -25,11 +36,7 @@ type Api<T extends ExtensionPoint> = Omit<
 >;
 
 export interface StandardContainerProps<T extends ExtensionPoint> extends BaseProps<T> {
-  app?: {
-    title: string;
-    icon?: string;
-    id: string;
-  };
+  app?: App;
   api?: Api<T>;
   loading?: ReactNode;
   noScriptError?: ReactNode;

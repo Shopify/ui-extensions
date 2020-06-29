@@ -23,7 +23,6 @@ commands:
   test: yarn run test
   build-consumer: yarnpkg build && ./scripts/build-consumer.sh
   restore-consumer: ./scripts/restore-consumer.sh
-  nuke: git clean -xdf .
   clean: git clean -xdf ./packages
 
 open:

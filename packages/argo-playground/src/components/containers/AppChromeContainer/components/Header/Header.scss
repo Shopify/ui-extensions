@@ -1,0 +1,73 @@
+$focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
+$min-height: control-height();
+
+.Header {
+  padding: spacing(tight) spacing();
+  border-bottom: border();
+  background: color('white');
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+
+  .ShopifyLogo {
+    width: 16px;
+    height: auto;
+  }
+}
+
+.AppOwnership {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img,
+  svg {
+    margin-right: 10px;
+  }
+
+  img {
+    width: 25px;
+    display: inline-block;
+  }
+
+  span:first-child {
+    display: inline-block;
+    margin-right: 5px;
+  }
+}
+
+.HeaderButton {
+  @include unstyled-button;
+  background: none;
+  border: none;
+  outline: none;
+  min-height: $min-height;
+  padding: ($min-height - line-height(body) - rem(2px)) / 2;
+
+  path {
+    shape-rendering: geometricPrecision;
+    fill: color('indigo', 'dark');
+  }
+
+  &:hover,
+  &:active {
+    // stylelint-disable-next-line selector-max-specificity
+    path:not(.ignoreFill) {
+      fill: color('indigo');
+      fill-rule: nonzero;
+    }
+  }
+
+  &:focus {
+    box-shadow: inset 0 0 2px 0 $focus-state-box-shadow-color,
+      0 0 2px 0 $focus-state-box-shadow-color;
+  }
+
+  .Content {
+    @include text-style-button;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 1px;
+    min-height: 1px;
+  }
+}
