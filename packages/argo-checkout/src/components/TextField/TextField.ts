@@ -79,6 +79,12 @@ export interface TextFieldProps {
    * specific data you would like to be entered into this field during autofill.
    */
   autocomplete?: Autocomplete | boolean;
+  /*
+   * When set to `true`, the input will try to focus after its first render.
+   *
+   * Note: focus may fail if the render is not triggered by user input.
+   */
+  autofocus?: boolean;
   /**
    * Additional hint text to display for the field. The tooltip is activated by
    * an icon pinned to the end of the field.

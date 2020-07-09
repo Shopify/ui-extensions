@@ -74,6 +74,12 @@ export interface SelectProps {
    * specific data you would like to be entered into this field during autocomplete.
    */
   autocomplete?: Autocomplete | boolean;
+  /*
+   * When set to `true`, the select will try to focus after its first render.
+   *
+   * Note: focus may fail if the render is not triggered by user input.
+   */
+  autofocus?: boolean;
   /**
    * The text displayed in the select when no value is provided.
    */
