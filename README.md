@@ -1,6 +1,6 @@
 # Argo for Checkout
 
-This repo contains a collection of packages for using Shopify’s [Argo](TODO) for Checkout. You’re probably looking for [`@shopify/argo-checkout`](packages/argo-checkout), which has all of the typings for the API available to Argo extensions. It also has documentation for the available [global API](packages/argo-checkout/documentation/globals.md), [extension points](packages/argo-checkout/documentation/extension-points.md), and [components](packages/argo-checkout/documentation/components.md).
+This repo contains a collection of packages for using Shopify’s Argo for Checkout. You’re probably looking for [`@shopify/argo-checkout`](packages/argo-checkout), which has all of the typings for the API available to Argo extensions. It also has documentation for the available [global API](packages/argo-checkout/documentation/globals.md), [extension points](packages/argo-checkout/documentation/extension-points.md), and [components](packages/argo-checkout/documentation/components.md).
 
 This repo also has some of the helper packages Shopify uses to make Argo extensions easy to develop and deploy:
 
