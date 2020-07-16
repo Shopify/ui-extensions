@@ -1,6 +1,6 @@
 import {useMemo, useState} from 'react';
 import {LocaleApi} from '@shopify/argo-admin/extension-api/locale';
-import {retain} from '@shopify/rui-core';
+import {retain} from '@remote-ui/core';
 import {useEffect} from 'react';
 
 export function useLocaleApi(locale: string): LocaleApi {

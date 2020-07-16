@@ -4,8 +4,8 @@ import {
   ExtensionPointCallback,
   ShopifyApi,
 } from '@shopify/argo-admin';
-import {WorkerCreator} from '@shopify/react-web-worker';
-import {createRemoteRoot, RemoteChannel, retain} from '@shopify/rui-core';
+import {WorkerCreator} from '@remote-ui/web-workers';
+import {createRemoteRoot, RemoteChannel, retain} from '@remote-ui/core';
 
 import {apply as applySandbox, Denylist, builtIns} from './sandbox';
 
