@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {createPlainWorkerFactory} from '@shopify/react-web-worker';
+import {createPlainWorkerFactory} from '@remote-ui/web-workers';
 import {Page, Button, Card, Layout} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {ExtensionPoint} from '@shopify/argo-admin';

@@ -1,7 +1,7 @@
 import {LegacyRef, useCallback, useEffect, useLayoutEffect, useMemo, useState} from 'react';
 import {ResizeObserver as Polyfill, ResizeObserverEntry} from '@juggle/resize-observer';
 import {Layout, LayoutApi} from '@shopify/argo-admin/extension-api/layout';
-import {retain} from '@shopify/rui-core';
+import {retain} from '@remote-ui/core';
 
 // See https://github.com/Shopify/app-extension-libs/issues/237#issuecomment-606625111
 const SIZE_CLASS_BREAK_POINT = 480;

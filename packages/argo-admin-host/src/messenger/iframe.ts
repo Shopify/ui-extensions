@@ -1,4 +1,4 @@
-import {MessageEndpoint} from '@shopify/rpc';
+import {MessageEndpoint} from '@remote-ui/rpc';
 
 const RUN = '__run';
 const defaultSrc = 'https://shopify-argo-internal.com/load.html';

@@ -1,6 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {resolve} = require('path');
-const {WebWorkerPlugin} = require('@shopify/web-worker/webpack');
+const {WebWorkerPlugin} = require('@remote-ui/web-workers/webpack');
 
 const isDevelopment = process.env.NODE_ENV !== 'production';
 
@@ -81,7 +81,8 @@ module.exports = {
   devtool: isDevelopment ? 'source-map' : false,
 
   resolve: {
-    extensions: ['.tsx', '.ts', 'jsx', '.js', '.json'],
+    extensions: ['.esnext', '.mjs', '.tsx', '.ts', 'jsx', '.js', '.json'],
+    mainFields: ['esnext', 'browser', 'module', 'main'],
     alias: {
       '@shopify/argo-admin': resolve(__dirname, '../argo-admin/src'),
       '@shopify/argo-admin-host': resolve(__dirname, '../argo-admin-host/src'),
@@ -91,7 +92,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.[j|t]s(x?)$/,
+        test: /\.([j|t]s(x?)|esnext)$/,
         include: [/node_modules/, resolve(__dirname, 'src/third-party')],
         use: {
           loader: 'babel-loader',
@@ -103,7 +104,6 @@ module.exports = {
           },
         },
       },
-
       {
         test: /\.[j|t]s(x?)$/,
         exclude: [/node_modules/, /third-party/],
@@ -112,7 +112,7 @@ module.exports = {
           options: {
             babelrc: false,
             presets: BABEL_PRESETS,
-            plugins: BABEL_PLUGINS.concat([require.resolve('@shopify/web-worker/babel')]),
+            plugins: BABEL_PLUGINS.concat([require.resolve('@remote-ui/web-workers/babel')]),
             sourceType: 'unambiguous',
           },
         },
