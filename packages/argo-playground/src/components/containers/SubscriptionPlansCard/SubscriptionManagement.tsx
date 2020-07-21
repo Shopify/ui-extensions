@@ -1,6 +1,6 @@
 import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import {ExtensionPoint, ExtensionApi} from '@shopify/argo-admin';
-import {ReadyState} from '@shopify/argo-admin-host';
+import {ReadyState, components} from '@shopify/argo-admin-host';
 import {Modal, ModalProps, Stack, RadioButton} from '@shopify/polaris';
 import {retain} from '@remote-ui/web-workers';
 
@@ -121,8 +121,8 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
   }, [onDone, setApp]);
 
   const containerApi: ContainerApi<SubscriptionManangementExtensionPoint> = useMemo(
-    () => ({container: {close, done, setPrimaryAction, setSecondaryAction}}),
-    [close, done, setPrimaryAction, setSecondaryAction],
+    () => ({container: {close, done}}),
+    [close, done],
   );
 
   const title = useMemo(
@@ -137,12 +137,17 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
     [app, defaultTitle, onBackClick],
   );
 
+  const {extensionPoint} = props;
   const defaultPrimaryAction = useMemo(
-    () => ({
-      content: 'Next',
-      onAction: () => (appId ? setApp(apps[appId]) : null),
-    }),
-    [appId, setApp],
+    () =>
+      extensionPoint === ExtensionPoint.SubscriptionManagementAdd ||
+      extensionPoint === ExtensionPoint.SubscriptionManagementRemove
+        ? {
+            content: 'Next',
+            onAction: () => (appId ? setApp(apps[appId]) : null),
+          }
+        : undefined,
+    [appId, setApp, extensionPoint],
   );
 
   useEffect(() => {
@@ -211,8 +216,9 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
     appSelectionMarkup
   );
 
+  const {ContainerActionsProvider} = components;
   return (
-    <>
+    <ContainerActionsProvider value={{setPrimaryAction, setSecondaryAction}}>
       <Modal {...modalProps}>
         <div
           className="ArgoModal-content"
@@ -223,6 +229,6 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
           {content}
         </div>
       </Modal>
-    </>
+    </ContainerActionsProvider>
   );
 }
