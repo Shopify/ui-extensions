@@ -1,5 +1,5 @@
 import {RemoteRoot} from '@remote-ui/core';
-import {AppLinkSchema, PlaygroundSchema, SubscriptionManagementSchema} from './component-schemas';
+import {ExtensionPointSchema} from './component-schemas';
 import {
   ContainerApi,
   ToastApi,
@@ -59,10 +59,13 @@ export interface ExtensionApi {
 
 export interface ExtensionPointCallback {
   // Dev
-  [ExtensionPoint.AppLink]: RenderableExtensionCallback<StandardApi, RemoteRoot<AppLinkSchema>>;
+  [ExtensionPoint.AppLink]: RenderableExtensionCallback<
+    StandardApi,
+    RemoteRoot<ExtensionPointSchema['AppLink']>
+  >;
   [ExtensionPoint.Playground]: RenderableExtensionCallback<
     StandardApi,
-    RemoteRoot<PlaygroundSchema>
+    RemoteRoot<ExtensionPointSchema['Playground']>
   >;
 
   // Merchant Metafields
@@ -71,18 +74,18 @@ export interface ExtensionPointCallback {
   // Subscription Management
   [ExtensionPoint.SubscriptionManagementCreate]: RenderableExtensionCallback<
     SubscriptionApi<ExtensionPoint.SubscriptionManagementCreate>,
-    RemoteRoot<SubscriptionManagementSchema>
+    RemoteRoot<ExtensionPointSchema['SubscriptionManagementCreate']>
   >;
   [ExtensionPoint.SubscriptionManagementAdd]: RenderableExtensionCallback<
     SubscriptionApi<ExtensionPoint.SubscriptionManagementAdd>,
-    RemoteRoot<SubscriptionManagementSchema>
+    RemoteRoot<ExtensionPointSchema['SubscriptionManagementAdd']>
   >;
   [ExtensionPoint.SubscriptionManagementEdit]: RenderableExtensionCallback<
     SubscriptionApi<ExtensionPoint.SubscriptionManagementEdit>,
-    RemoteRoot<SubscriptionManagementSchema>
+    RemoteRoot<ExtensionPointSchema['SubscriptionManagementEdit']>
   >;
   [ExtensionPoint.SubscriptionManagementRemove]: RenderableExtensionCallback<
     SubscriptionApi<ExtensionPoint.SubscriptionManagementRemove>,
-    RemoteRoot<SubscriptionManagementSchema>
+    RemoteRoot<ExtensionPointSchema['SubscriptionManagementRemove']>
   >;
 }

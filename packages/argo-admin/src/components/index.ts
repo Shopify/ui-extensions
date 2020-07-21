@@ -5,6 +5,7 @@ export * from './Card';
 export * from './CardSection';
 export * from './Checkbox';
 export * from './Clickable';
+export * from './ContainerActions';
 export * from './Icon';
 export * from './Modal';
 export * from './Link';

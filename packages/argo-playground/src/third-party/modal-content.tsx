@@ -1,5 +1,6 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import React, {useMemo, useState} from 'react';
 import {
+  Button,
   Checkbox,
   ExtensionPoint,
   ResourceItem,
@@ -8,6 +9,7 @@ import {
   StackItem,
   Text,
   SubscriptionManangementExtensionPoint,
+  ContainerActions,
 } from '@shopify/argo-admin';
 import {render, useContainer, useData, useToast} from '@shopify/argo-admin/react';
 
@@ -29,31 +31,39 @@ function Subscription({
   }, [extensionPoint]);
 
   const {productId} = useData<typeof extensionPoint>();
-  const container = useContainer();
+  const {done, close} = useContainer();
   const {show: showToast} = useToast();
 
-  useEffect(() => {
-    const {close, done, setPrimaryAction, setSecondaryAction} = container;
-    setPrimaryAction({
-      content: type,
-      onAction: () => {
-        showToast(`${type} Success`);
-        done();
-        close();
-      },
-    });
-
-    setSecondaryAction({
-      content: 'Cancel',
-      onAction: () => {
-        showToast(`${type} Cancelled`, {error: true});
-        close();
-      },
-    });
-  }, [container, type, showToast, extensionPoint]);
+  const onSuccess = () => {
+    showToast(`${type} Success`);
+    done();
+    close();
+  };
+  const onCancel = () => {
+    showToast(`${type} Cancelled`, {error: true});
+    close();
+  };
+  const isAppChrome = type === 'Edit' || type === 'Create';
+  const actions = isAppChrome ? (
+    <Stack distribution="trailing">
+      <Button title="Cancel" onClick={onCancel} />
+      <Button primary title={type} onClick={onSuccess} />
+    </Stack>
+  ) : (
+    <ContainerActions
+      primaryAction={{
+        content: type,
+        onAction: onSuccess,
+      }}
+      secondaryAction={{
+        content: 'Cancel',
+        onAction: onCancel,
+      }}
+    />
+  );
 
   return (
-    <>
+    <Stack vertical>
       {children ? (
         children
       ) : (
@@ -61,7 +71,8 @@ function Subscription({
           <Text size="titleMedium">{`${type} cool thing from product with Id: ${productId}`}</Text>
         </Stack>
       )}
-    </>
+      {actions}
+    </Stack>
   );
 }
 
@@ -69,10 +80,6 @@ function EditSubscription() {
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [listItems, setListItems] = useState(dataList);
-
-  const container = useContainer();
-
-  const {show: showToast} = useToast();
 
   const [resourceListQuery, setResourceListQuery] = useState('');
   const resourceListFilterControl = useMemo(
@@ -91,51 +98,33 @@ function EditSubscription() {
     [resourceListQuery, dataList],
   );
 
-  useEffect(() => {
-    const {close, done, setPrimaryAction, setSecondaryAction} = container;
-    setPrimaryAction({
-      content: 'Next',
-      onAction: () => {
-        showToast('Success');
-        done();
-        close();
-      },
-    });
-
-    setSecondaryAction({
-      content: 'Back',
-      onAction: () => {
-        showToast('Cancelled', {error: true});
-        close();
-      },
-    });
-  }, [container, showToast]);
-
   return (
-    <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementEdit}>
-      <ResourceList filterControl={resourceListFilterControl}>
-        {listItems.map((item, index) => (
-          <ResourceItem
-            key={index}
-            id={`${index}`}
-            onClick={() => {
-              console.log('ResourceList item toggle:', item);
-              if (selectedItems.includes(item)) {
-                setSelectedItems(selectedItems.filter((o) => o !== item));
-              } else {
-                setSelectedItems(selectedItems.concat(item));
-              }
-            }}
-          >
-            <Stack alignment="center">
-              <Checkbox checked={selectedItems.includes(item)} />
-              <StackItem fill>Every {item} week or 15 days * 20-25% off</StackItem>
-              <Text>{item} product</Text>
-            </Stack>
-          </ResourceItem>
-        ))}
-      </ResourceList>
-    </Subscription>
+    <>
+      <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementEdit}>
+        <ResourceList filterControl={resourceListFilterControl}>
+          {listItems.map((item, index) => (
+            <ResourceItem
+              key={index}
+              id={`${index}`}
+              onClick={() => {
+                console.log('ResourceList item toggle:', item);
+                if (selectedItems.includes(item)) {
+                  setSelectedItems(selectedItems.filter((o) => o !== item));
+                } else {
+                  setSelectedItems(selectedItems.concat(item));
+                }
+              }}
+            >
+              <Stack alignment="center">
+                <Checkbox checked={selectedItems.includes(item)} />
+                <StackItem fill>Every {item} week or 15 days * 20-25% off</StackItem>
+                <Text>{item} product</Text>
+              </Stack>
+            </ResourceItem>
+          ))}
+        </ResourceList>
+      </Subscription>
+    </>
   );
 }
 

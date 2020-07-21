@@ -1,3 +1,4 @@
+type Components = typeof import(/* webpackChunkName: 'argo-components' */ '../components');
 import {
   ActionComponents,
   BasicComponents,
@@ -10,7 +11,7 @@ import {
   StructureComponents,
 } from '../component-sets';
 
-export type AppLinkSchema =
+type AppLinkSchema =
   | ActionComponents
   | BasicComponents
   | FeedbackComponents
@@ -21,7 +22,7 @@ export type AppLinkSchema =
   | OverlayComponents
   | StructureComponents;
 
-export type PlaygroundSchema =
+type PlaygroundSchema =
   | ActionComponents
   | BasicComponents
   | FeedbackComponents
@@ -32,11 +33,35 @@ export type PlaygroundSchema =
   | OverlayComponents
   | StructureComponents;
 
-export type SubscriptionManagementSchema =
+type AppChromeSchema =
   | ActionComponents
   | BasicComponents
   | FeedbackComponents
   | FormComponents
   | ListComponents
   | LoadingComponents
-  | ImageComponents;
+  | ImageComponents
+  | OverlayComponents
+  | StructureComponents;
+
+type ModalSchema =
+  | ActionComponents
+  | BasicComponents
+  | FeedbackComponents
+  | FormComponents
+  | ListComponents
+  | LoadingComponents
+  | ImageComponents
+  | Components['ContainerActions'];
+
+export interface ExtensionPointSchema {
+  // @TODO: It would be better to use ExtensionPoint.SubscriptionManagementAdd, etc
+  // as props, but that would create a circular dependency.
+  // We should refactor this when we manage to separate extension types by package.
+  AppLink: AppLinkSchema;
+  Playground: PlaygroundSchema;
+  SubscriptionManagementAdd: ModalSchema;
+  SubscriptionManagementCreate: AppChromeSchema;
+  SubscriptionManagementEdit: AppChromeSchema;
+  SubscriptionManagementRemove: ModalSchema;
+}
