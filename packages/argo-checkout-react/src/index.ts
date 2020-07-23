@@ -25,6 +25,8 @@ export type {
   ImageProps,
   InlineStackProps,
   LayoutProps,
+  LayoutMediaProps,
+  LayoutSizeProps,
   LinkProps,
   RadioProps,
   SelectProps,

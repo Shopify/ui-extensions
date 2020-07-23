@@ -25,7 +25,7 @@ export type {ImageProps} from './Image';
 export {InlineStack} from './InlineStack';
 export type {InlineStackProps} from './InlineStack';
 export {Layout} from './Layout';
-export type {LayoutProps} from './Layout';
+export type {LayoutProps, LayoutMediaProps, LayoutSizeProps} from './Layout';
 export {Link} from './Link';
 export type {LinkProps} from './Link';
 export {Radio} from './Radio';
