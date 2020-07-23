@@ -46,22 +46,8 @@ export interface LayoutProps {
  * - `0.5` represents `50%`
  * - `1` represents `100%`
  */
-type BasicSize = 'auto' | 'fill' | number;
+type Size = 'auto' | 'fill' | number;
 
-interface DetailedSize {
-  /**
-   * Specifies the size of the section.
-   */
-  size: BasicSize;
-  /**
-   * Allow the section to grow and fill the space to reach the edge
-   * of the container. The section’s content will keep the size specified in `size`.
-   */
-  toBlockEdge?: boolean;
-  toInlineEdge?: boolean;
-}
-
-type Size = BasicSize | DetailedSize;
 type ViewportSize = 'small' | 'medium' | 'large';
 
 interface Media {
