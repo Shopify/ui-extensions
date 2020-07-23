@@ -17,19 +17,19 @@ export const extensionComponentsLoader: Record<ExtensionPoint, () => Promise<any
   [ExtensionPoint.SubscriptionManagementAdd]: () =>
     import(
       /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
-    ).then((module) => module.subscriptionManagementSchema.Add),
+    ).then((module) => module.subscriptionManagementSchema),
   [ExtensionPoint.SubscriptionManagementCreate]: () =>
     import(
       /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
-    ).then((module) => module.subscriptionManagementSchema.Create),
+    ).then((module) => module.subscriptionManagementSchema),
   [ExtensionPoint.SubscriptionManagementRemove]: () =>
     import(
       /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
-    ).then((module) => module.subscriptionManagementSchema.Remove),
+    ).then((module) => module.subscriptionManagementSchema),
   [ExtensionPoint.SubscriptionManagementEdit]: () =>
     import(
       /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
-    ).then((module) => module.subscriptionManagementSchema.Edit),
+    ).then((module) => module.subscriptionManagementSchema),
 
   [ExtensionPoint.MerchantMetafield]: () =>
     import(/* webpackChunkName: 'argo-merchant-metafield-components' */ './app-link').then(

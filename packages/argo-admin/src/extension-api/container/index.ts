@@ -1,4 +1,5 @@
 import type {
+  ContainerAction,
   SubscriptionManagementContainer,
   SubscriptionManangementExtensionPoint,
 } from './subscription-management';
@@ -16,4 +17,4 @@ export function isContainerApi(api: any): api is ContainerApi<any> {
   return 'container' in api;
 }
 
-export type {SubscriptionManangementExtensionPoint};
+export type {ContainerAction, SubscriptionManangementExtensionPoint};

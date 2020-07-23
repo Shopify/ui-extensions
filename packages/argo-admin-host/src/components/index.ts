@@ -20,4 +20,3 @@ export {default as TextField} from './TextField';
 export {default as Text} from './Text';
 export {default as Thumbnail} from './Thumbnail';
 export {default as OptionList} from './OptionList';
-export {default as ContainerActions, ContainerActionsProvider} from './ContainerActions';
