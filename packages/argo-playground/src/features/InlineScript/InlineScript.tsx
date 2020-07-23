@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Page} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
 import {ExtensionPoint} from '@shopify/argo-admin';
-import {createPlainWorkerFactory} from '@remote-ui/web-workers';
+import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 
 import {StandardContainer} from '../../components/containers';
 

@@ -1,4 +1,4 @@
-import {render as remoteRender} from '@remote-ui/react';
+import {render as remoteRender} from '@shopify/rui-react';
 import {createElement, ReactElement} from 'react';
 
 import {render as coreRender} from '../api';

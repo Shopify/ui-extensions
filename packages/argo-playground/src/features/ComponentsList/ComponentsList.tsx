@@ -2,7 +2,7 @@ import React, {useMemo} from 'react';
 import {ExtensionPoint} from '@shopify/argo-admin';
 import {useLocaleApi, useToastApi} from '@shopify/argo-admin-host';
 import {usePerformanceMark} from '@shopify/react-performance';
-import {createPlainWorkerFactory} from '@remote-ui/web-workers';
+import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 
 import {StandardContainer} from '../../components/containers';
 import {useGlobalLocale} from '../../foundation/App/ultilities/useGlobalLocale';
