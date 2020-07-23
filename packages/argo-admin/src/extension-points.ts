@@ -1,4 +1,4 @@
-import {RemoteRoot} from '@remote-ui/core';
+import {RemoteRoot} from '@shopify/rui-core';
 import {AppLinkSchema, PlaygroundSchema, SubscriptionManagementSchema} from './component-schemas';
 import {
   ContainerApi,

@@ -2,7 +2,7 @@ import React, {useCallback, useMemo, useState, useEffect} from 'react';
 import {ExtensionPoint, ExtensionApi} from '@shopify/argo-admin';
 import {ReadyState} from '@shopify/argo-admin-host';
 import {Modal, ModalProps, Stack, RadioButton} from '@shopify/polaris';
-import {retain} from '@remote-ui/web-workers';
+import {retain} from '@shopify/react-web-worker';
 
 import {ArgoHeader} from '../shared/Header';
 import {StandardContainer, StandardContainerProps} from '../StandardContainer';
@@ -11,7 +11,7 @@ import {
   ContainerAction,
   ContainerApi,
 } from '@shopify/argo-admin';
-import {createPlainWorkerFactory} from '@remote-ui/web-workers';
+import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 
 type BaseProps<T extends ExtensionPoint> = Omit<
   StandardContainerProps<T>,
