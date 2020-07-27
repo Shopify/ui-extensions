@@ -7,7 +7,7 @@ _this is for SubscriptionManagement and will be refactored_
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Text} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Text} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root, api) => {
   const {shopId, productId, variantId, action, additionalData} = api.productData;
@@ -30,8 +30,7 @@ render(ExtensionPoint.MyExtension, (root, api) => {
 #### React
 
 ```js
-import {ExtensionPoint, Text} from '@shopify/argo-admin';
-import {render, useProductData} from '@shopify/argo-admin/react';
+import {render, useProductData, ExtensionPoint, Text} from '@shopify/argo-admin-react';
 
 function App() {
   const {shopId, productId, variantId, action, additionalData} = useProductData();

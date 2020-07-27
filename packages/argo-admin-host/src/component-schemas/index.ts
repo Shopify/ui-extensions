@@ -1,4 +1,4 @@
-import {ExtensionPoint} from '@shopify/argo-admin';
+import {ExtensionPoint} from '@shopify/argo-admin-react';
 
 export {playgroundSchema} from './playground';
 export {appLinkSchema} from './app-link';

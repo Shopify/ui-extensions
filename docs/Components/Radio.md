@@ -7,7 +7,7 @@ Use radio buttons to present each item in a list of options where merchants must
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, RadioButton} from '@shopify/argo-admin';
+import {render, ExtensionPoint, RadioButton} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const radio1 = root.createComponent(RadioButton, {
@@ -36,8 +36,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, RadioButton} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, RadioButton} from '@shopify/argo-admin-react';
 
 function App() {
   return (

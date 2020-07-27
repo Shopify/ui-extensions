@@ -12,5 +12,8 @@ module.exports = {
       diagnostics: false
     }
   },
-  setupFilesAfterEnv: ["jest-extended", "<rootDir>/test-utils/matchers.ts"]
+  setupFilesAfterEnv: ["jest-extended", "<rootDir>/test-utils/matchers.ts"],
+  moduleNameMapper: {
+    '^test-utils/(.*)$': '<rootDir>/test-utils/$1',
+  },
 };

@@ -1,6 +1,13 @@
 import React, {useEffect, useState} from 'react';
-import {ExtensionPoint, Stack, Text, TextField} from '@shopify/argo-admin';
-import {render, useSessionToken} from '@shopify/argo-admin/react';
+import {
+  render,
+  useSessionToken,
+  ExtensionPoint,
+  Stack,
+  Text,
+  TextField,
+  Page,
+} from '@shopify/argo-admin-react';
 
 function App() {
   const {getSessionToken} = useSessionToken();
@@ -11,11 +18,13 @@ function App() {
   }, [getSessionToken]);
 
   return (
-    <Stack vertical>
-      <Text>Token from my app</Text>
-      <TextField type="text" value={token} multiline />
-    </Stack>
+    <Page title="Test">
+      <Stack vertical>
+        <Text>Token from my app</Text>
+        <TextField type="text" value={token} multiline />
+      </Stack>
+    </Page>
   );
 }
 
-render(ExtensionPoint.Playground, () => <App />);
+render(ExtensionPoint.AppLink, () => <App />);

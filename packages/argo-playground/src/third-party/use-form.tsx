@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  render,
   Banner,
   Button,
   Card,
@@ -8,8 +9,7 @@ import {
   Select,
   Stack,
   TextField,
-} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+} from '@shopify/argo-admin-react';
 import {notEmpty, useField, useForm} from '@shopify/react-form';
 
 function App() {

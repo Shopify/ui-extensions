@@ -1,5 +1,5 @@
 import React, {useState, useMemo} from 'react';
-import {Card, Stack, Checkbox, Button, Modal, TextField} from '@shopify/argo-admin';
+import {Card, Stack, Checkbox, Button, Modal, TextField} from '@shopify/argo-admin-react';
 
 export function ModalExample() {
   const [modalOpen, setModalOpen] = useState(false);

@@ -1,6 +1,5 @@
 import React from 'react';
-import {ExtensionPoint, Card} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Card} from '@shopify/argo-admin-react';
 
 function App() {
   return (

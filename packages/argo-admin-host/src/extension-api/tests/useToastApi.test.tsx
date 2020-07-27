@@ -1,9 +1,9 @@
 import React from 'react';
-
 import {Toast as PolarisToast} from '@shopify/polaris';
 import {ToastApi} from '@shopify/argo-admin';
+import {mountWithAppProvider as mount} from 'test-utils/mount';
+
 import {useToastApi} from '../useToastApi';
-import {mountWithAppProvider as mount} from '../../../../../test-utils/mount';
 
 jest.mock('@shopify/polaris', () => ({
   ...require.requireActual('@shopify/polaris'),

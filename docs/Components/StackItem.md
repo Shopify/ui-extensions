@@ -9,7 +9,7 @@ Use the fill prop on a single stack item component to make it fill the rest of t
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Stack, StackItem, Text} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Stack, StackItem, Text} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const stack = root.createComponent(Stack);
@@ -39,8 +39,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Stack, StackItem, Text} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Stack, StackItem, Text} from '@shopify/argo-admin-react';
 
 function App() {
   return (

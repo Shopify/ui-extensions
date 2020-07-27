@@ -7,7 +7,7 @@ Clickable allows you to add an onClick callback function to any component.
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Clickable, Text} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Clickable, Text} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const clickable = root.createComponent(Clickable, {
@@ -28,8 +28,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Clickable} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Clickable} from '@shopify/argo-admin-react';
 
 function App() {
   return <Clickable onClick={() => console.log('I’ve been clicked!')}>I can be clicked</Clickable>;

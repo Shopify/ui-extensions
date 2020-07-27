@@ -1,5 +1,5 @@
 import React, {useState, useCallback} from 'react';
-import {SelectProps, Card, CardSection, Select} from '@shopify/argo-admin';
+import {SelectProps, Card, CardSection, Select} from '@shopify/argo-admin-react';
 
 const SELECTS: SelectProps['options'] = [
   {label: 'Today', value: 'today'},

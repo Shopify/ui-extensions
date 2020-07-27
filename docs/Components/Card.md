@@ -9,8 +9,7 @@ Cards are used to group similar concepts and tasks together to make Shopify easi
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Card} from '@shopify/argo-admin';
-import {} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Card} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const card = root.createComponent(Card, {});
@@ -25,8 +24,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Card} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Card} from '@shopify/argo-admin-react';
 
 function App() {
   return <Card>...</Card>;

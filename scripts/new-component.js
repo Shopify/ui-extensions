@@ -18,21 +18,29 @@ if (process.argv.length > 3) {
  * client
  */
 const CLIENT_TEMPLATE = `
-import {createRemoteComponent} from '../utilities';
+import {createRemoteComponent} from '@remote-ui/core';
 
 export interface {{name}}Props {}
 
 export const {{name}} = createRemoteComponent<'{{name}}', {{name}}Props>('{{name}}');
 `.trimLeft();
 
-function createClient(componentName) {
-  const path = 'packages/argo/src/components';
+const CLIENT_REACT_TEMPLATE = `
+import {createRemoteReactComponent} from '@remote-ui/react';
+import {{{name}} as Base{{name}}} from '@shopify/argo-admin';
+
+export interface {{name}}Props {}
+
+export const {{name}} = createRemoteReactComponent(Base{{name}});
+`.trimLeft();
+
+function createClient(template, path, componentName) { 
   const componentDir = `${process.cwd()}/${path}`;
 
   fs.mkdirSync(componentDir, {recursive: true});
   fs.writeFileSync(
     `${componentDir}/${componentName}.ts`,
-    CLIENT_TEMPLATE.replace(/{{name}}/g, componentName),
+    template.replace(/{{name}}/g, componentName),
   );
 
   updateIndex(`${path}/index.ts`, `export * from './${componentName}';`);
@@ -45,8 +53,12 @@ function createClient(componentName) {
  */
 const HOST_TEMPLATE = `
 import React from 'react';
-import {{{name}} as Argo{{name}}} from '@shopify/argo';
-import {ReactPropsFromRemoteComponentType} from '@shopify/argo/utilities';
+import {{{name}} as Argo{{name}}} from '@shopify/argo-admin';
+import {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
+
+// Use ReactPropsFromRemoteComponentType only if the component
+// allows children. Otherwise you can import the props directly from argo-admin:
+// import {{{name}}Props } from '@shopify/argo-admin';
 
 type {{name}}Props = ReactPropsFromRemoteComponentType<typeof Argo{{name}}>;
 
@@ -56,7 +68,7 @@ export default function {{name}}(props: {{name}}Props) {
 `.trimLeft();
 
 function createHost(componentName) {
-  const path = 'packages/argo-host/src/components';
+  const path = 'packages/argo-admin-host/src/components';
   const componentDir = `${process.cwd()}/${path}/${componentName}`;
 
   fs.mkdirSync(componentDir, {recursive: true});
@@ -94,12 +106,18 @@ try {
 }
 
 try {
-  createClient(componentName);
+  createClient(CLIENT_TEMPLATE, 'packages/argo-admin/src/components', componentName);
 } catch (error) {
   killProcess("Couldn't create core client component.", error);
 }
 
+try {
+  createClient(CLIENT_REACT_TEMPLATE, 'packages/argo-admin-react/src/components', componentName);
+} catch (error) {
+  killProcess("Couldn't create React client component.", error);
+}
+
 console.log('🔥🔥🔥 Remember to update these files:');
 console.log('components/readme.md');
-console.log('packages/argo/src/component-sets/index.ts');
+console.log('packages/argo-admin/src/component-sets/index.ts');
 console.log('one of the component sets in packages/argo-host/src/component-sets');

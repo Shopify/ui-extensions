@@ -7,7 +7,7 @@ Icons are used to visually communicate available actions. They can act as wayfin
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Icon} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Icon} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const icon = root.createComponent(Icon, {
@@ -25,8 +25,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Icon} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Icon} from '@shopify/argo-admin-react';
 
 function App() {
   return <Icon source="cancelSmallMinor" color="blue" />;

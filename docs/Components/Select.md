@@ -7,7 +7,7 @@ Select lets merchants choose one option from an options menu. Consider select wh
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Select} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Select} from '@shopify/argo-admin';
 
 const options = [
   {
@@ -42,8 +42,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Select} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Select} from '@shopify/argo-admin-react';
 
 const options = [
   {

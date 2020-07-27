@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
-import {Modal as ArgoModal} from '@shopify/argo-admin';
-import {ReactPropsFromRemoteComponentType} from '@shopify/argo-admin/utilities';
+import {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
+import {Modal as ArgoModal} from '@shopify/argo-admin-react';
 import {Modal as PolarisModal} from '@shopify/polaris';
 
 import {useWrapAction, useWrapActions} from '../../utilities/components';

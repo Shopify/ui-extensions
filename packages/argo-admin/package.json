@@ -14,14 +14,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@remote-ui/core": "^1.2.1",
-    "@remote-ui/react": "^1.0.5"
-  },
-  "devDependencies": {
-    "@types/react": "^16.0.0"
-  },
-  "optionalDependencies": {
-    "react": "^16.8.0"
+    "@remote-ui/core": "^1.2.1"
   },
   "publishConfig": {
     "access": "public",

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Card, Stack, Icon} from '@shopify/argo-admin';
+import {Card, Stack, Icon} from '@shopify/argo-admin-react';
 
 export function IconExample() {
   return (
