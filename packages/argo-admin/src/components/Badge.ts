@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '../utilities';
+import {createRemoteComponent} from '@remote-ui/core';
 
 type Status = 'success' | 'info' | 'attention' | 'warning' | 'new';
 

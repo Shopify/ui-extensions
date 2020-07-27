@@ -1,5 +1,9 @@
 import React, {useMemo, useCallback, useState, useEffect} from 'react';
 import {
+  render,
+  useContainer,
+  useData,
+  useToast,
   Button,
   Checkbox,
   ExtensionPoint,
@@ -9,8 +13,7 @@ import {
   StackItem,
   Text,
   SubscriptionManagementExtensionPoint,
-} from '@shopify/argo-admin';
-import {render, useContainer, useData, useToast} from '@shopify/argo-admin/react';
+} from '@shopify/argo-admin-react';
 
 function Subscription({
   extensionPoint,

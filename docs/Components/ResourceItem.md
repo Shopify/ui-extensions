@@ -9,7 +9,7 @@ A ResourceItem should be rendered within a [ResourceList](./ResourceList.md).
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, ResourceList, ResourceItem} from '@shopify/argo-admin';
+import {render, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const resourceitem1 = root.createComponent(ResourceItem, {
@@ -36,8 +36,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin-react';
 
 function App() {
   return (

@@ -7,7 +7,7 @@ Spinners are used to notify merchants that their action is being processed.
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Spinner} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Spinner} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const spinner = root.createComponent(Spinner);
@@ -24,8 +24,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Spinner} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Spinner} from '@shopify/argo-admin-react';
 
 function App() {
   return <Spinner />;

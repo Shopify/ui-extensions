@@ -1,0 +1,30 @@
+{
+  "name": "@shopify/argo-admin-react",
+  "version": "0.3.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --build tsconfig.prod.json",
+    "check": "tsc --build tsconfig.prod.json --pretty --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shopify/app-extension-libs.git",
+    "directory": "packages/argo-admin-react"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@remote-ui/react": "^1.0.5",
+    "@shopify/argo-admin": "^0.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.8"
+  },
+  "peerDependencies": {
+    "react": "@>=16.8.0 <17.0.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org/"
+  }
+}

@@ -7,7 +7,7 @@ Checkboxes are most commonly used to give merchants a way to make a range of sel
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Checkbox} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Checkbox} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const checkbox = root.createComponent(Checkbox, {
@@ -25,8 +25,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Checkbox} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Checkbox} from '@shopify/argo-admin-react';
 
 function App() {
   return (

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Card, Stack, Checkbox} from '@shopify/argo-admin';
+import {Card, Stack, Checkbox} from '@shopify/argo-admin-react';
 
 export function CheckboxExample() {
   const [noLabelChecked, setNoLabelChecked] = useState(false);

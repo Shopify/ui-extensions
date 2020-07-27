@@ -7,7 +7,7 @@ Get a fresh session token for communication with your app's backend.
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, TextField} from '@shopify/argo-admin';
+import {render, ExtensionPoint, TextField} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root, api) => {
   const {sessionToken} = api;
@@ -31,8 +31,7 @@ render(ExtensionPoint.MyExtension, (root, api) => {
 #### React
 
 ```js
-import {ExtensionPoint, TextField} from '@shopify/argo-admin';
-import {render, useSessionToken} from '@shopify/argo-admin/react';
+import {render, useSessionToken, ExtensionPoint, TextField} from '@shopify/argo-admin-react';
 
 function App() {
   const {getSessionToken} = useSessionToken();

@@ -9,7 +9,7 @@ The CardSection component is ...
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, CardSection} from '@shopify/argo-admin';
+import {render, ExtensionPoint, CardSection} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const cardsection = root.createComponent(CardSection, {});
@@ -24,8 +24,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, CardSection} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, CardSection} from '@shopify/argo-admin-react';
 
 function App() {
   return <CardSection>...</CardSection>;

@@ -8,7 +8,7 @@ You can also render simple text without styling.
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Text} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Text} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const formattedText = root.createComponent(Text, {
@@ -31,8 +31,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Text} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Text} from '@shopify/argo-admin-react';
 
 function App() {
   return (

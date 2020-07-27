@@ -7,7 +7,7 @@ Buttons are used primarily for actions, such as “Add”, “Close”, “Cance
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Button} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Button} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const button = root.createComponent(Button, {
@@ -25,8 +25,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Button} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Button} from '@shopify/argo-admin-react';
 
 function App() {
   return (

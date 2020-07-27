@@ -7,7 +7,7 @@ Access the merchant’s current locale (in [IETF format](https://en.wikipedia.or
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Text} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Text} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root, api) => {
   const {locale} = api;
@@ -30,8 +30,7 @@ render(ExtensionPoint.MyExtension, (root, api) => {
 #### React
 
 ```js
-import {ExtensionPoint, Text} from '@shopify/argo-admin';
-import {render, useLocale} from '@shopify/argo-admin/react';
+import {render, useLocale, ExtensionPoint, Text} from '@shopify/argo-admin-react';
 
 function App() {
   const locale = useLocale();

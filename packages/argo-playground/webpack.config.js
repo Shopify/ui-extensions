@@ -85,6 +85,7 @@ module.exports = {
     mainFields: ['esnext', 'browser', 'module', 'main'],
     alias: {
       '@shopify/argo-admin': resolve(__dirname, '../argo-admin/src'),
+      '@shopify/argo-admin-react': resolve(__dirname, '../argo-admin-react/src'),
       '@shopify/argo-admin-host': resolve(__dirname, '../argo-admin-host/src'),
     },
   },

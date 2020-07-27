@@ -9,7 +9,7 @@ The Modal component is ...
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Modal} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Modal} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const modal = root.createComponent(Modal, {});
@@ -24,8 +24,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Modal} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Modal} from '@shopify/argo-admin-react';
 
 function App() {
   return <Modal>...</Modal>;

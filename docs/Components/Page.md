@@ -9,7 +9,7 @@ The Page component is ...
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Page} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Page} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const page = root.createComponent(Page, {});
@@ -24,8 +24,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Page} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Page} from '@shopify/argo-admin-react';
 
 function App() {
   return <Page>...</Page>;

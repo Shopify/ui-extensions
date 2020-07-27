@@ -7,7 +7,7 @@ Use thumbnails as a visual anchor and identifier for an object. They should be u
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Thumbnail} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Thumbnail} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const thumbnail = root.createComponent(Thumbnail, {
@@ -25,8 +25,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Thumbnail} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Thumbnail} from '@shopify/argo-admin-react';
 
 function App() {
   return (

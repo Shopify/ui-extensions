@@ -7,7 +7,7 @@ Informs merchants about important changes or persistent conditions. Use this com
 #### Vanilla
 
 ```js
-  import {ExtensionPoint, render, Banner} from '@shopify/argo-admin';
+  import {render, ExtensionPoint, Banner} from '@shopify/argo-admin';
 
   render(ExtensionPoint.MyExtension, (root) => {
     const banner = root.createComponent(Banner, {
@@ -33,8 +33,7 @@ Informs merchants about important changes or persistent conditions. Use this com
 #### React
 
 ```jsx
-import {ExtensionPoint, Banner} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Banner} from '@shopify/argo-admin-react';
 
 function App() {
   return (

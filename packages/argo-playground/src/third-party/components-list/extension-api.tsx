@@ -1,6 +1,15 @@
 import React, {useState} from 'react';
-import {Card, Stack, Button, TextField, Text} from '@shopify/argo-admin';
-import {useLayout, useLocale, useToast, useSessionToken} from '@shopify/argo-admin/react';
+import {
+  Card,
+  Stack,
+  Button,
+  TextField,
+  Text,
+  useLayout,
+  useLocale,
+  useToast,
+  useSessionToken,
+} from '@shopify/argo-admin-react';
 
 export function ExtensionApiExample() {
   const layout = useLayout();

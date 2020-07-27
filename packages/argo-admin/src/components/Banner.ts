@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '../utilities';
+import {createRemoteComponent} from '@remote-ui/core';
 
 export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
 export interface BannerAction {

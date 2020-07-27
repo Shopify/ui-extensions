@@ -7,7 +7,7 @@ import {
   Checkbox,
   StackItem,
   Text,
-} from '@shopify/argo-admin';
+} from '@shopify/argo-admin-react';
 
 export function ResourceListExample() {
   const dataList = [1, 2, 3, 4, 5, 12, 13, 145];

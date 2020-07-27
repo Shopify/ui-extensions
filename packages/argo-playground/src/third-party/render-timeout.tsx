@@ -1,6 +1,5 @@
 import React from 'react';
-import {Card} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, Card} from '@shopify/argo-admin-react';
 
 function App() {
   return <Card sectioned>You never see me</Card>;

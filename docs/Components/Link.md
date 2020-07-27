@@ -7,7 +7,7 @@ Links take users to another place, and usually appear within or directly followi
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Link} from '@shopify/argo-admin';
+import {render, ExtensionPoint, Link} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
   const link = root.createComponent(Link, {
@@ -31,8 +31,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, Link} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render, ExtensionPoint, Link} from '@shopify/argo-admin-react';
 
 function App() {
   return (

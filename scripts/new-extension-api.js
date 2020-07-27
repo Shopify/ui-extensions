@@ -39,7 +39,7 @@ export function is{{name}}Api(api: any): api is {{name}}Api {
 `.trimLeft();
 
 function createCoreExtensionApi(extensionApiName) {
-  const path = 'packages/argo/src/extension-api';
+  const path = 'packages/argo-admin/src/extension-api';
   const extensionApiDir = `${process.cwd()}/${path}`;
   const extensionApiNameCamelCase = camelize(extensionApiName);
   const content = CORE_TEMPLATE.replace(/{{name}}/g, extensionApiName).replace(
@@ -59,7 +59,7 @@ function createCoreExtensionApi(extensionApiName) {
  * React
  */
 const REACT_TEMPLATE = `
-import {is{{name}}Api} from '../../extension-api/{{name-camelCase}}';
+import {is{{name}}Api} from '@shopify/argo-admin/extension-api/{{name-camelCase}}';
 import {useExtensionApi} from './utils';
 
 export function use{{name}}() {
@@ -72,7 +72,7 @@ export function use{{name}}() {
 `.trimLeft();
 
 function createReactExtensionApi(extensionApiName) {
-  const path = 'packages/argo/src/react/extension-api';
+  const path = 'packages/argo-admin-react/src/extension-api';
   const extensionApiDir = `${process.cwd()}/${path}`;
   const extensionApiNameCamelCase = camelize(extensionApiName);
   const content = REACT_TEMPLATE.replace(/{{name}}/g, extensionApiName).replace(
@@ -93,7 +93,7 @@ function createReactExtensionApi(extensionApiName) {
  */
 const HOST_TEMPLATE = `
 import {useMemo} from 'react';
-import {{{name}}Api} from '@shopify/argo/extension-api/{{name-camelCase}}';
+import {{{name}}Api} from '@shopify/argo-admin-host/extension-api/{{name-camelCase}}';
 
 export function use{{name}}(): {{name}}Api {
   return useMemo(
@@ -106,7 +106,7 @@ export function use{{name}}(): {{name}}Api {
 `.trimLeft();
 
 function createHostExtensionApi(extensionApiName) {
-  const path = 'packages/argo-host/src/extension-api';
+  const path = 'packages/argo-admin-host/src/extension-api';
   const extensionApiDir = `${process.cwd()}/${path}`;
   const extensionApiNameCamelCase = camelize(extensionApiName);
   const content = HOST_TEMPLATE.replace(/{{name}}/g, extensionApiName).replace(
@@ -145,5 +145,5 @@ try {
 }
 
 console.log('🔥🔥🔥 Remember to update these files:');
-console.log(`packages/argo-host/src/extension-api/use${extensionApiName}Api.ts`);
-console.log('packages/argo/src/extension-points.ts');
+console.log(`packages/argo-admin-host/src/extension-api/use${extensionApiName}Api.ts`);
+console.log('packages/argo-admin/src/extension-points.ts');

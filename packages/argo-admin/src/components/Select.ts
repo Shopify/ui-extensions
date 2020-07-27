@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '../utilities';
+import {createRemoteComponent} from '@remote-ui/core';
 
 interface Option {
   label: string;

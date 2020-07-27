@@ -1,8 +1,8 @@
 import React from 'react';
-import {mountWithAppProvider as mount} from '../../../../../test-utils/mount';
+import {ResizeObserverEntry} from '@juggle/resize-observer';
+import {mountWithAppProvider as mount} from 'test-utils/mount';
 
 import {useLayoutApi} from '../useLayoutApi';
-import {ResizeObserverEntry} from '@juggle/resize-observer';
 
 function mockResizeObserverEntry({contentRect}: any): ResizeObserverEntry {
   return {
