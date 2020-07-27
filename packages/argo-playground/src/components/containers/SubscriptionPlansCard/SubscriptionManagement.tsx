@@ -1,16 +1,12 @@
 import React, {useCallback, useMemo, useState, useEffect} from 'react';
-import {ExtensionPoint, ExtensionApi} from '@shopify/argo-admin';
+import {ExtensionPoint, ExtensionApi, ContainerAction} from '@shopify/argo-admin';
 import {ReadyState} from '@shopify/argo-admin-host';
 import {Modal, ModalProps, Stack, RadioButton} from '@shopify/polaris';
 import {retain} from '@shopify/react-web-worker';
 
 import {ArgoHeader} from '../shared/Header';
 import {StandardContainer, StandardContainerProps} from '../StandardContainer';
-import {
-  SubscriptionManangementExtensionPoint,
-  ContainerAction,
-  ContainerApi,
-} from '@shopify/argo-admin';
+import {SubscriptionManagementExtensionPoint, ContainerApi} from '@shopify/argo-admin';
 import {createPlainWorkerFactory} from '@shopify/react-web-worker';
 
 type BaseProps<T extends ExtensionPoint> = Omit<
@@ -18,7 +14,7 @@ type BaseProps<T extends ExtensionPoint> = Omit<
   'api' | 'error' | 'loading'
 >;
 
-type Api = Pick<ExtensionApi[SubscriptionManangementExtensionPoint], 'data' | 'toast'>;
+type Api = Pick<ExtensionApi[SubscriptionManagementExtensionPoint], 'data' | 'toast'>;
 
 export interface SubscriptionManagmentProps<T extends ExtensionPoint> extends BaseProps<T> {
   open: boolean;
@@ -119,10 +115,21 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
     setAppId(undefined);
     onDone();
   }, [onDone, setApp]);
+  const {extensionPoint} = props;
+  const isModal =
+    extensionPoint === ExtensionPoint.SubscriptionManagementAdd ||
+    extensionPoint === ExtensionPoint.SubscriptionManagementRemove;
 
-  const containerApi: ContainerApi<SubscriptionManangementExtensionPoint> = useMemo(
-    () => ({container: {close, done, setPrimaryAction, setSecondaryAction}}),
-    [close, done, setPrimaryAction, setSecondaryAction],
+  const containerApi: ContainerApi<SubscriptionManagementExtensionPoint> = useMemo(
+    () => ({
+      container: {
+        close,
+        done,
+        setPrimaryAction: isModal ? setPrimaryAction : undefined,
+        setSecondaryAction: isModal ? setSecondaryAction : undefined,
+      },
+    }),
+    [close, done, setPrimaryAction, setSecondaryAction, isModal],
   );
 
   const title = useMemo(
@@ -138,11 +145,14 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
   );
 
   const defaultPrimaryAction = useMemo(
-    () => ({
-      content: 'Next',
-      onAction: () => (appId ? setApp(apps[appId]) : null),
-    }),
-    [appId, setApp],
+    () =>
+      isModal
+        ? {
+            content: 'Next',
+            onAction: () => (appId ? setApp(apps[appId]) : null),
+          }
+        : undefined,
+    [appId, setApp, isModal],
   );
 
   useEffect(() => {
@@ -212,17 +222,15 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
   );
 
   return (
-    <>
-      <Modal {...modalProps}>
-        <div
-          className="ArgoModal-content"
-          style={{
-            height,
-          }}
-        >
-          {content}
-        </div>
-      </Modal>
-    </>
+    <Modal {...modalProps}>
+      <div
+        className="ArgoModal-content"
+        style={{
+          height,
+        }}
+      >
+        {content}
+      </div>
+    </Modal>
   );
 }
