@@ -1,18 +1,31 @@
 import {ExtensionPoint} from '../../extension-points';
+import {ContainerAction} from './container-action';
 
-export interface ContainerAction {
-  content: string;
-  onAction(): void;
+export namespace SubscriptionManagementContainer {
+  interface SubscriptionManagementCallbacks {
+    close(): void;
+    done(): void;
+  }
+
+  interface SubscriptionManagementActions {
+    setPrimaryAction(containerAction?: ContainerAction): void;
+    setSecondaryAction(containerAction?: ContainerAction): void;
+  }
+
+  export type ContainerOf<
+    T extends ExtensionPoint
+  > = T extends ExtensionPoint.SubscriptionManagementAdd
+    ? SubscriptionManagementCallbacks & SubscriptionManagementActions
+    : T extends ExtensionPoint.SubscriptionManagementCreate
+    ? SubscriptionManagementCallbacks
+    : T extends ExtensionPoint.SubscriptionManagementEdit
+    ? SubscriptionManagementCallbacks
+    : T extends ExtensionPoint.SubscriptionManagementRemove
+    ? SubscriptionManagementCallbacks & SubscriptionManagementActions
+    : never;
 }
 
-export interface SubscriptionManagementContainer {
-  close(): void;
-  done(): void;
-  setPrimaryAction(containerAction?: ContainerAction): void;
-  setSecondaryAction(containerAction?: ContainerAction): void;
-}
-
-export type SubscriptionManangementExtensionPoint =
+export type SubscriptionManagementExtensionPoint =
   | ExtensionPoint.SubscriptionManagementAdd
   | ExtensionPoint.SubscriptionManagementCreate
   | ExtensionPoint.SubscriptionManagementEdit

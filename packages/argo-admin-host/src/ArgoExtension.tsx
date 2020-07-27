@@ -37,7 +37,6 @@ export function ArgoExtension<T extends ExtensionPoint>({
   const [readyState, setReadyState] = useState(ReadyState.Loading);
   const [components, setComponents] = useState<Record<string, ComponentType<any>>>({});
   const receiver = useMemo(() => externalReceiver || new RemoteReceiver(), [externalReceiver]);
-  const scriptNotFound = script === null;
 
   useEffect(() => onReadyStateChange?.(readyState), [readyState, onReadyStateChange]);
 
