@@ -1,4 +1,4 @@
-import {RemoteRoot} from '@shopify/rui-core';
+import {RemoteRoot} from '@remote-ui/core';
 import {ExtensionPointSchema} from './component-schemas';
 import {
   ContainerApi,
