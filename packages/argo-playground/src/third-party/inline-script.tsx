@@ -27,4 +27,4 @@ function App() {
   );
 }
 
-render(ExtensionPoint.AppLink, () => <App />);
+render(ExtensionPoint.Playground, () => <App />);
