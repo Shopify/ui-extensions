@@ -4,7 +4,10 @@
     "rootDir": "../",
     "baseUrl": "./",
     "paths": {
+      "@shopify/argo-admin": ["../argo-admin/src"],
+      "@shopify/argo-admin/*": ["../argo-admin/src/*"],
       "@shopify/argo-admin-react": ["../argo-admin-react/src"],
+      "@shopify/argo-admin-react/*": ["../argo-admin-react/src/*"],
     }
   },
   "include": [
