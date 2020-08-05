@@ -5,7 +5,7 @@ import type {ValueOrPromise} from '../shared';
 export interface PostPurchaseShouldRenderApi
   extends StandardApi<'Checkout::PostPurchase::ShouldRender'> {
   /** current cart being checked out */
-  checkout: Checkout;
+  initialPurchase: Purchase;
 
   /** general purpose storage for extensions */
   storage: Storage;
@@ -24,7 +24,7 @@ export type PostPurchaseShouldRenderResult = ValueOrPromise<{
 export interface PostPurchaseRenderApi
   extends StandardApi<'Checkout::PostPurchase::Render'> {
   /** initial purchase */
-  order: Order;
+  initialPurchase: Purchase;
 
   /** general purpose storage for extensions */
   storage: Storage;
@@ -52,15 +52,13 @@ interface Storage {
  * kept small for development
  * many more attributes will be added before making it available to partners
  */
-interface Order {
-  id: number;
-  token: string;
+interface Purchase {
+  /** checkout token */
+  referenceId: string;
 
   /** items being purchased */
   lineItems: LineItem[];
 }
-
-type Checkout = Order;
 
 interface Shop {
   id: number;
