@@ -1,7 +1,5 @@
 # Card
 
-⚠️ **Incomplete** (not required for MVP)
-
 Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
 
 ## Examples
@@ -27,7 +25,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 import {render, ExtensionPoint, Card} from '@shopify/argo-admin-react';
 
 function App() {
-  return <Card>...</Card>;
+  return <Card>This is the best extension.</Card>;
 }
 
 render(ExtensionPoint.MyExtension, () => <App />);
@@ -46,6 +44,6 @@ render(ExtensionPoint.MyExtension, () => <App />);
 
 | Name        | Type         | Description                                           | Required |
 | ----------- | ------------ | ----------------------------------------------------- | -------- |
-| content     | `string`     | Action label text.                                    | ☑️       |
+| content     | `string`     | Action label text.                                    | ☑️        |
 | destructive | `boolean`    | Indicates a dangerous or potentially negative action. |          |
 | onAction    | `() => void` | Callback for the action.                              |          |

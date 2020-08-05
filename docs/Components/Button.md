@@ -40,7 +40,7 @@ render(ExtensionPoint.MyExtension, () => <App />);
 
 | Name     | Type         | Description                                                                         | Required |
 | -------- | ------------ | ----------------------------------------------------------------------------------- | -------- |
-| title    | `string`     | Button label text.                                                                  | ☑️       |
+| title    | `string`     | Button label text.                                                                  | ☑️        |
 | primary  | `boolean`    | Provides extra visual weight and identifies the primary action in a set of buttons. Defaults to `false`. |          |
 | icon     | `IconProps`  | See [Icon](./Icon.md).                                                              |          |
 | onClick  | `() => void` | Callback when clicked                                                               |          |

@@ -1,8 +1,6 @@
 # CardSection
 
-⚠️ **Incomplete** (not required for MVP)
-
-The CardSection component is ...
+Card components can be separated into sections, each one visually separated by a horizontal line and an optional section title.
 
 ## Examples
 
@@ -12,10 +10,12 @@ The CardSection component is ...
 import {render, ExtensionPoint, CardSection} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
-  const cardsection = root.createComponent(CardSection, {});
+  const card = root.createComponent(Card, {});
+  root.appendChild(card);
 
-  cardsection.appendChild('This is the best extension.');
-  root.appendChild(cardsection);
+  const cardSection = root.createComponent(CardSection, {});
+  cardSection.appendChild('This is the best extension.');
+  card.appendChild(cardSection);
 
   root.mount();
 });
@@ -27,10 +27,18 @@ render(ExtensionPoint.MyExtension, (root) => {
 import {render, ExtensionPoint, CardSection} from '@shopify/argo-admin-react';
 
 function App() {
-  return <CardSection>...</CardSection>;
+  return (
+    <Card>
+      <CardSection title="">...</CardSection>
+    </Card>
+  );
 }
 
 render(ExtensionPoint.MyExtension, () => <App />);
 ```
 
 ## Props API
+
+| Name  | Type   | Description        | Required |
+| ----- | ------ | ------------------ | -------- |
+| title | string | Card Section title |          |

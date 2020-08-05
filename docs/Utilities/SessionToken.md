@@ -51,6 +51,6 @@ render(ExtensionPoint.MyExtension, () => <App />);
 
 ## Session Token API
 
-| Name            | Type                                | Description                | Required |
-| --------------- | ----------------------------------- | -------------------------- | -------- |
-| getSessionToken | `() => Promise<string | undefined>` | Get a fresh session token. | ☑️       |
+| Name            | Type                                | Description                 | Required |
+| --------------- | ----------------------------------- | --------------------------- | -------- |
+| getSessionToken | `() => Promise<string \| undefined>` | Get a fresh session token. | ☑️        |

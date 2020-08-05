@@ -2,14 +2,16 @@
 
 Each extension point is provided a container API which provides additional methods the extension can use to communicate with Shopify Admin.
 
-## Subscription Management
+## Implementation
 
-| Name               | Type       | Description                                                                            | Required |
-| ------------------ | ---------- | -------------------------------------------------------------------------------------- | -------- |
-| close              | `function` | Closes the container and the extension                                                 |          |
-| done               | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated |          |
-| setPrimaryAction   | `function` | Sets the primary action content and callback when the action is clicked                |          |
-| setSecondaryAction | `function` | Sets the secondary action content and callback when the action is clicked              |          |
+| Name               | Type       | Description                                                                              | Required |
+| ------------------ | ---------- | ---------------------------------------------------------------------------------------- | -------- |
+| close              | `function` | Closes the container and the extension                                                   |          |
+| done               | `function` | Notifies Shopify Admin that the extension workflow is complete and data has been updated |          |
+| setPrimaryAction   | `function` | Sets the primary action content and callback when the action is clicked                  |          |
+| setSecondaryAction | `function` | Sets the secondary action content and callback when the action is clicked                |          |
+
+Below are examples of implementing the data API for the Subscription Management Create extension point.
 
 #### Vanilla
 
@@ -78,5 +80,9 @@ function App() {
   return <Text>Hello world</Text>;
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+render(ExtensionPoint.SubscriptionManagementCreate, () => <App />);
 ```
+
+### Extension Points' Container API
+
+- [Subscription Management](../ExtensionPoints/SubscriptionManagement/README.md#container-api)

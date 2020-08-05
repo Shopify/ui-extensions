@@ -38,7 +38,7 @@ render(ExtensionPoint.MyExtension, () => <App />);
 
 | Name               | Type     | Description                                   | Required |
 | ------------------ | -------- | --------------------------------------------- | -------- |
-| source             | `Source` | The icon content to display.                  | ☑️       |
+| source             | `Source` | The icon content to display.                  | ☑️        |
 | color              | `Color`  | Set the color for the icon fill.              |          |
 | accessibilityLabel | `string` | Descriptive text to be read to screenreaders. |          |
 

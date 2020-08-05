@@ -1,3 +1,3 @@
-# Extensions Master List
+# Argo Admin Extensions
 
-- [SubscriptionManagementExtension](./SubscriptionManagementExtension/ReadMe.md)
+- [SubscriptionManagement](./SubscriptionManagement/README.md#extension-points)
