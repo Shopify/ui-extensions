@@ -5,13 +5,13 @@
 - [Extension Points](./ExtensionPoints/README.md)
 - [Components](./Components/README.md)
 - [Utilities](./Utilities/README.md)
-- [Calling external APIs](./ExternalApi/README.md)
+- [Calling external APIs](./ExternalAPI/README.md)
 
 ## Getting Started
 
 ### 1. Install the Shopify CLI
 
-Follow the instructions to install the app Shopify CLI (extensions fork [here](https://github.com/Shopify/shopify-app-cli-extensions))
+Follow the instructions to install the app Shopify CLI ([extensions fork](https://github.com/Shopify/shopify-app-cli-extensions))
 
 ### 2. Create an extension
 
@@ -44,7 +44,7 @@ import {ExtensionPoint, render, Text} from '@shopify/argo-admin';
 render(ExtensionPoint.MyExtension, (root) => {
   const text = root.createComponent(TextField, {
     style: 'strong',
-    alignment: 'center'
+    alignment: 'center',
   });
 
   text.appendChild('This is the best extension.');
@@ -62,15 +62,13 @@ import {render} from '@shopify/argo-admin-react';
 
 function App() {
   return (
-    <Text
-      style="strong"
-      alignment="center"
-    >
+    <Text style="strong" alignment="center">
       This is the best extension.
     </Text>
-  )
+  );
 }
 
 render(ExtensionPoint.MyExtension, () => <App />);
 ```
 
+**Note:** Some extensions have multiple extension points, like [SubscriptionManagement](./ExtensionPoints/SubscriptionManagement/README.md)

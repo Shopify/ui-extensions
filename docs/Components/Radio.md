@@ -68,9 +68,9 @@ render(ExtensionPoint.MyExtension, () => <App />);
 
 | Name     | Type                         | Description                            | Required |
 | -------- | ---------------------------- | -------------------------------------- | -------- |
-| label    | `string`                     | Label for the radio button.            | ☑️       |
+| label    | `string`                     | Label for the radio button.            | ☑️        |
 | helpText | `string`                     | Additional text to aid in use.         |          |
-| checked  | `boolean`                    | Radio button is selected.              | ☑️       |
-| id       | `string`                     | Unique ID for radio button.            | ☑️       |
-| name     | `string`                     | Name to group radio buttons together.  | ☑️       |
-| onChange | `(newValue: string) => void` | Callback when radio button is toggled. |          |
+| checked  | `boolean`                    | Radio button is selected.              | ☑️        |
+| id       | `string`                     | Unique ID for radio button.            | ☑️        |
+| name     | `string`                     | Name to group radio buttons together.  | ☑️        |
+| onChange | `(newValue: string) => void` | Callback when radio button is toggled. | ☑️        |

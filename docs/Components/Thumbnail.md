@@ -46,12 +46,5 @@ render(ExtensionPoint.MyExtension, () => <App />);
 | Name      | Type                            | Description                         | Required |
 | --------- | ------------------------------- | ----------------------------------- | -------- |
 | size      | `'small'`,`'medium'`, `'large'` | Size of the thumbnail.              |          |
-| scaleType | `ScaleType`                     | Method used to scale the thumbnail. |          |
 | source    | `string`                        | URL for the image.                  |          |
 | alt       | `string`                        | Alt text for the thumbnail.         |          |
-
-### ScaleType
-
-- `'fill'` May stretch image to fit the content view.
-- `'fit'` Preserves aspect ratio, padding remaining space.
-- `'crop'` Preserves aspect ratio, fills content view, and crops area outside content view.

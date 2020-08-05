@@ -61,11 +61,11 @@ render(ExtensionPoint.MyExtension, () => <App />);
 | action    | `BannerAction`                                   | Button to display at bottom of banner. |          |
 | status    | `'success'`, `'info'`, `'warning'`, `'critical'` | Colour of the banner.                  |          |
 | title     | `string`                                         | Title of the banner.                   |          |
-| onDismiss | `() => void`                                     | Callback when banner is dismissed.     | ☑️       |
+| onDismiss | `() => void`                                     | Callback when banner is dismissed.     | ☑️        |
 
 ### BannerAction
 
 | Name     | Type         | Description                          | Required |
 | -------- | ------------ | ------------------------------------ | -------- |
-| onAction | `() => void` | Callback when the button is clicked. | ☑️       |
-| content  | `string`     | Button label text.                   | ☑️       |
+| onAction | `() => void` | Callback when the button is clicked. | ☑️        |
+| content  | `string`     | Button label text.                   | ☑️        |

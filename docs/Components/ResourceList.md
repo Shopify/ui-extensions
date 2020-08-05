@@ -81,5 +81,5 @@ render(ExtensionPoint.MyExtension, () => <App />);
 | ---------------- | ------------------ | ----------- | -------- |
 | queryValue       | `string`           |             |          |
 | queryPlaceholder | `string`           |             |          |
-| onQueryChange    | `(string) => void` |             | ☑️       |
-| onQueryClear     | `() => void`       |             |          |
+| onQueryChange    | `(string) => void` |             | ☑️        |
+| onQueryClear     | `() => void`       |             | ☑️        |

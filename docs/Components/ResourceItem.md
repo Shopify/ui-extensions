@@ -12,23 +12,23 @@ A ResourceItem should be rendered within a [ResourceList](./ResourceList.md).
 import {render, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin';
 
 render(ExtensionPoint.MyExtension, (root) => {
-  const resourceitem1 = root.createComponent(ResourceItem, {
+  const resourceItem1 = root.createComponent(ResourceItem, {
     id: '1234',
     onClick: () => console.log('Clicked 1'),
   });
-  resourceitem1.appendChild('Cool item');
-  const resourceitem2 = root.createComponent(ResourceItem, {
+  resourceItem1.appendChild('Cool item');
+  const resourceItem2 = root.createComponent(ResourceItem, {
     id: '5678',
     onClick: () => console.log('Clicked 2'),
   });
-  resourceitem2.appendChild('Cooler item');
+  resourceItem2.appendChild('Cooler item');
 
-  const resourcelist = root.createComponent(ResourceList, {});
+  const resourceList = root.createComponent(ResourceList, {});
 
-  resourcelist.appendChild(resourceitem1);
-  resourcelist.appendChild(resourceitem2);
+  resourceList.appendChild(resourceItem1);
+  resourceList.appendChild(resourceItem2);
 
-  root.appendChild(resourcelist);
+  root.appendChild(resourceList);
   root.mount();
 });
 ```

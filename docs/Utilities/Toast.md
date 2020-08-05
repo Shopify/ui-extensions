@@ -16,13 +16,14 @@ render(ExtensionPoint.MyExtension, (root, api) => {
     label: 'Pop toast',
     onClick: () => toast.show('Toast popped!'),
   });
+  root.appendChild(button);
 
   const errorButton = root.createComponent(Button, {
     label: 'Do something',
     onClick: () => toast.show('That didn’t work.', {error: true}),
   });
+  root.appendChild(errorButton);
 
-  root.appendChild(toast);
   root.mount();
 });
 ```
@@ -54,7 +55,7 @@ Returns void.
 
 | Name    | Type      | Description                      | Required |
 | ------- | --------- | -------------------------------- | -------- |
-| message | `string`  | Message to display in the toast. | ☑️       |
+| message | `string`  | Message to display in the toast. | ☑️        |
 | options | `Options` |                                  |          |
 
 ### Options

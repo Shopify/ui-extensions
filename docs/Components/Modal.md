@@ -1,8 +1,6 @@
 # Modal
 
-⚠️ **Incomplete** (not required for MVP)
-
-The Modal component is ...
+Modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken.
 
 ## Implementation
 
@@ -27,10 +25,26 @@ render(ExtensionPoint.MyExtension, (root) => {
 import {render, ExtensionPoint, Modal} from '@shopify/argo-admin-react';
 
 function App() {
-  return <Modal>...</Modal>;
+  return <Modal>This is the best extension.</Modal>;
 }
 
 render(ExtensionPoint.MyExtension, () => <App />);
 ```
 
 ## Props API
+
+| Name             | Type         | Description                         | Required |
+| ---------------- | ------------ | ----------------------------------- | -------- |
+| open             | `boolean`    | Whether the modal is open .         | ☑️        |
+| title            | `string`     | Title content for the modal.        | ☑️        |
+| primaryAction    | `Action`     | Modal's primary action.             |          |
+| secondaryActions | `Action[]`   | Modal's secondary action(s).        |          |
+| onClose          | `() => void` | Callback when the modal is closed.  | ☑️        |
+
+### Action
+
+| Name        | Type         | Description                                           | Required |
+| ----------- | ------------ | ----------------------------------------------------- | -------- |
+| content     | `string`     | Action label text.                                    | ☑️        |
+| destructive | `boolean`    | Indicates a dangerous or potentially negative action. |          |
+| onAction    | `() => void` | Callback for the action.                              |          |

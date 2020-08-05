@@ -78,11 +78,12 @@ render(ExtensionPoint.MyExtension, () => <App />);
 
 | Name        | Type              | Description                                                  | Required |
 | ----------- | ----------------- | ------------------------------------------------------------ | -------- |
+| error       | `string`          | Display an error state                                       |          |
 | label       | `string`          | Label for the select.                                        |          |
 | labelInline | `boolean`         | Show the label to the left of the value, inside the control. |          |
-| options     | `Option[]`        | Options for the select.                                      | ☑️       |
-| onChange    | `(value) => void` | Callback when selection is changed.                          | ☑️       |
-| value       | `string`          | Value for form input.                                        | ☑️       |
+| options     | `Option[]`        | Options for the select.                                      | ☑️        |
+| onChange    | `(value) => void` | Callback when selection is changed.                          | ☑️        |
+| value       | `string`          | Value for form input.                                        | ☑️        |
 
 ### Option
 
