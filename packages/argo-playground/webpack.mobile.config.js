@@ -2,7 +2,7 @@ const defaultConfig = require('./webpack.config');
 
 module.exports = {
   ...defaultConfig,
-  entry: '../argo-host/src/worker.ts',
+  entry: '../argo-admin-host/src/worker/worker.ts',
   output: {
     globalObject: 'self',
     filename: 'mobile.js',
