@@ -1,5 +1,6 @@
 export type {ExtensionPoints, ExtensionPoint} from './extension-points';
 export type {StandardApi, Version} from './api';
+export {ChangeType, ExplicitDiscountType} from './api';
 export type {RenderExtension} from './render-extension';
 export type {
   RenderExtensions,

@@ -1,4 +1,4 @@
-export {extend} from '@shopify/argo-checkout';
+export {extend, ChangeType, ExplicitDiscountType} from '@shopify/argo-checkout';
 export type {
   ExtensionPoint,
   ExtensionPoints,
@@ -38,7 +38,6 @@ export type {
   ViewProps,
   VisuallyHiddenProps,
 } from '@shopify/argo-checkout';
-
 export * from './components';
 export * from './hooks';
 export {render} from './render';

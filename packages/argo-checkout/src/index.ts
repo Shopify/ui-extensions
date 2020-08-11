@@ -12,6 +12,8 @@ export type {
   Version,
 } from './extension-points';
 
+export {ChangeType, ExplicitDiscountType} from './extension-points';
+
 export * from './components';
 export type {
   BlockStackProps,
