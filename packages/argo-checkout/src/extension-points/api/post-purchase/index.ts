@@ -3,6 +3,5 @@ export type {
   PostPurchaseShouldRenderApi,
   PostPurchaseShouldRenderResult,
   ChangeType,
-  ChangesetProcessingStatus,
   ExplicitDiscountType,
 } from './post-purchase';
