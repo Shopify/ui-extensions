@@ -16,6 +16,7 @@ export {Link} from './Link';
 export {Radio} from './Radio';
 export {Select} from './Select';
 export {Separator} from './Separator';
+export {Spinner} from './Spinner';
 export {Text} from './Text';
 export {TextBlock} from './TextBlock';
 export {TextContainer} from './TextContainer';
