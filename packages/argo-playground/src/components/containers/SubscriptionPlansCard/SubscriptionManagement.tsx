@@ -73,14 +73,9 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
     extensionPoint === ExtensionPoint.SubscriptionManagementAdd ||
     extensionPoint === ExtensionPoint.SubscriptionManagementRemove;
 
-  const onBackClick = useMemo(
-    () =>
-      (extensionPoint === ExtensionPoint.SubscriptionManagementAdd ||
-        extensionPoint === ExtensionPoint.SubscriptionManagementCreate) &&
-      app
-        ? () => setApp(undefined) // Reset the app selection
-        : undefined, // Don't show the back button in a modal container
-    [app, extensionPoint, setApp],
+  const onBackClick = useCallback(
+    () => setApp(undefined), // Reset the app selection
+    [setApp],
   );
 
   const appSelectModalProps: ModalProps = useMemo(
