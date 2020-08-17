@@ -12,7 +12,7 @@ describe('worker', () => {
   it('calls apply sandbox when load is called', () => {
     load('');
 
-    expect(applyMock).toBeCalledWith(self, builtIns);
+    expect(applyMock).toHaveBeenCalledWith(self, builtIns);
   });
 
   it('calls apply sandbox with extraDenylist when load is called', () => {
@@ -20,6 +20,6 @@ describe('worker', () => {
 
     load('', extraDenylist);
 
-    expect(applyMock).toBeCalledWith(self, {...builtIns, ...extraDenylist});
+    expect(applyMock).toHaveBeenCalledWith(self, {...builtIns, ...extraDenylist});
   });
 });

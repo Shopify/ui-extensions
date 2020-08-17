@@ -1,8 +1,8 @@
 import React from 'react';
-
 import {useAcceptLanguage} from '@shopify/react-network';
 import {I18nUniversalProvider} from '@shopify/react-i18n-universal-provider';
 import {Router} from '@shopify/react-router';
+
 import Routes from '../Routes';
 
 import {ContentSecurityPolicy, Metadata, Performance, Polaris, Frame} from './components';

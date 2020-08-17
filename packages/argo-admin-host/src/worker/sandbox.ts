@@ -1,5 +1,5 @@
 export interface Denylist {
-  [key: string]: boolean | Function;
+  [key: string]: boolean | (() => any);
 }
 
 export const builtIns: Denylist = {
@@ -144,11 +144,12 @@ export const builtIns: Denylist = {
   importScripts: true,
 };
 
-function clobber(object: Object, denylist: Denylist) {
+function clobber(object: object, denylist: Denylist) {
   let target = object;
   do {
     Object.getOwnPropertyNames(target)
       .filter((key) => denylist[key])
+      // eslint-disable-next-line no-loop-func
       .forEach((key) => {
         try {
           Object.defineProperty(target, key, {
@@ -157,12 +158,13 @@ function clobber(object: Object, denylist: Denylist) {
             enumerable: false,
             writable: false,
           });
+          // eslint-disable-next-line no-empty
         } catch (_) {}
       });
     target = Object.getPrototypeOf(target);
   } while (target !== Object.prototype);
 }
 
-export const apply = (workerGlobalScope: Object, denylist: Denylist = builtIns) => {
+export const apply = (workerGlobalScope: object, denylist: Denylist = builtIns) => {
   clobber(workerGlobalScope, denylist);
 };

@@ -4,6 +4,7 @@ import {useToastApi} from '@shopify/argo-admin-host';
 import {Card, Link, Stack, Button} from '@shopify/polaris';
 
 import {App} from '../StandardContainer';
+
 import {SubscriptionManagement, apps} from './SubscriptionManagement';
 
 export function SubscriptionPlansCard() {
@@ -44,8 +45,8 @@ export function SubscriptionPlansCard() {
           return (
             <Card.Section key={id}>
               <Stack distribution="fillEvenly">
-                <div>{`Information about ${title}`}</div>
-                <div>
+                <Stack.Item>Information about {title}</Stack.Item>
+                <Stack.Item>
                   <Stack distribution="trailing">
                     <Link
                       onClick={() => {
@@ -66,7 +67,7 @@ export function SubscriptionPlansCard() {
                       Edit
                     </Link>
                   </Stack>
-                </div>
+                </Stack.Item>
               </Stack>
             </Card.Section>
           );

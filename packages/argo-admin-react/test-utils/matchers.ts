@@ -9,8 +9,13 @@ Object.defineProperty(window, 'matchMedia', {
     matches: false,
     media: query,
     onchange: null,
-    addListener: jest.fn(), // deprecated
-    removeListener: jest.fn(), // deprecated
+
+    // deprecated
+    addListener: jest.fn(),
+
+    // deprecated
+    removeListener: jest.fn(),
+
     addEventListener: jest.fn(),
     removeEventListener: jest.fn(),
     dispatchEvent: jest.fn(),

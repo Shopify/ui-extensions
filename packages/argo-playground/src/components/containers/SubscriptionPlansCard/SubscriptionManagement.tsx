@@ -74,7 +74,8 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
     extensionPoint === ExtensionPoint.SubscriptionManagementRemove;
 
   const onBackClick = useCallback(
-    () => setApp(undefined), // Reset the app selection
+    // Reset the app selection
+    () => setApp(undefined),
     [setApp],
   );
 
@@ -159,5 +160,6 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
     [containerProps, defaultTitle, height, isModal, onBackClick],
   );
 
-  return <>{app ? containerMarkup : appSelectionMarkup}</>;
+  const containerOrAppSelectionMarkup = app ? containerMarkup : appSelectionMarkup;
+  return <>{containerOrAppSelectionMarkup}</>;
 }

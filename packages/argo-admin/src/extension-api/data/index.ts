@@ -1,7 +1,8 @@
-import {SubscriptionManagementActions, SubscriptionManagementData} from './subscription-management';
-import {ExtensionPoint} from '../../extension-points';
+import {ExtensionPoint} from '../../extension-point';
 
-export {SubscriptionManagementActions};
+import {SubscriptionManagementData} from './subscription-management';
+
+export {SubscriptionManagementActions} from './subscription-management';
 
 export type ExtensionData<T extends ExtensionPoint> = SubscriptionManagementData.DataOf<T>;
 

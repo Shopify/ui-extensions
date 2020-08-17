@@ -7,8 +7,8 @@ import {
 } from '@shopify/argo-admin';
 import {Modal, ModalProps} from '@shopify/polaris';
 import {retain} from '@remote-ui/web-workers';
-
 import {ReadyState} from '@shopify/argo-admin-host';
+
 import {ArgoHeader} from './shared/Header';
 import {StandardContainer, StandardContainerProps} from './StandardContainer';
 
@@ -44,8 +44,8 @@ export function useModalActionsApi() {
     () => ({
       primary: primary ? primary : undefined,
       secondary: secondary ? secondary : undefined,
-      setPrimaryAction: setPrimaryAction,
-      setSecondaryAction: setSecondaryAction,
+      setPrimaryAction,
+      setSecondaryAction,
     }),
     [primary, secondary, setPrimaryAction, setSecondaryAction],
   );

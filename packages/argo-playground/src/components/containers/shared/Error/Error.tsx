@@ -1,8 +1,8 @@
 import React from 'react';
 import {Stack, TextContainer, DisplayText, Button} from '@shopify/polaris';
-const {default: ErrorMonitorImage} = require('./error-monitor.png');
-
 import './Error.css';
+
+import ErrorMonitorImage from './error-monitor.png';
 
 export function Error() {
   return (
@@ -11,9 +11,7 @@ export function Error() {
         <Stack.Item>
           <TextContainer>
             <DisplayText>
-              There's a problem loading
-              <br />
-              this app
+              There's a problem loading <br /> this app
             </DisplayText>
 
             <Button outline>Get Support</Button>

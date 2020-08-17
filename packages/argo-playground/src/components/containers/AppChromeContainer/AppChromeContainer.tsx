@@ -6,9 +6,10 @@ import {
   ExtensionPoint,
   SubscriptionManagementExtensionPoint,
 } from '@shopify/argo-admin';
-import {Dialog, Header} from './components';
+
 import {StandardContainer, StandardContainerProps} from '../StandardContainer';
 
+import {Dialog, Header} from './components';
 import styles from './AppChromeContainer.scss';
 
 export interface AppChromeContainerProps<T extends ExtensionPoint>
