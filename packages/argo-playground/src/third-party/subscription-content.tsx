@@ -68,17 +68,15 @@ function Subscription({
     });
   }, [onCancel, setSecondaryAction]);
 
-  return (
-    <Stack vertical>
-      {children ? (
-        children
-      ) : (
-        <Stack distribution="center">
-          <Text size="titleMedium">{`${type} cool thing from product with Id: ${productId}`}</Text>
-        </Stack>
-      )}
+  const childrenOrDefault = children ? (
+    children
+  ) : (
+    <Stack distribution="center">
+      <Text size="titleMedium">{`${type} cool thing from product with Id: ${productId}`}</Text>
     </Stack>
   );
+
+  return <Stack vertical>{childrenOrDefault}</Stack>;
 }
 
 function AddSubscription() {
@@ -91,9 +89,9 @@ function AddSubscription() {
     () => ({
       queryValue: resourceListQuery,
       queryPlaceholder: 'Search...',
-      onQueryChange: (q) => {
-        setResourceListQuery(q);
-        setListItems(dataList.filter((r) => r.toString().includes(q)));
+      onQueryChange: (query) => {
+        setResourceListQuery(query);
+        setListItems(dataList.filter((item) => item.toString().includes(query)));
       },
       onQueryClear: () => {
         setResourceListQuery('');
@@ -136,7 +134,7 @@ function AddSubscription() {
               onClick={() => {
                 console.log('ResourceList item toggle:', item);
                 if (selectedItems.includes(item)) {
-                  setSelectedItems(selectedItems.filter((o) => o !== item));
+                  setSelectedItems(selectedItems.filter((_item) => _item !== item));
                 } else {
                   setSelectedItems(selectedItems.concat(item));
                 }

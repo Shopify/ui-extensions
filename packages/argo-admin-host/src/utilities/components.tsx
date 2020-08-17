@@ -1,5 +1,4 @@
 import React, {useMemo} from 'react';
-
 import {Action} from '@shopify/argo-admin/types';
 
 // Returns all children that are valid elements as an array. Can optionally be
@@ -31,5 +30,6 @@ export function useWrapAction(action: Action | undefined): Action | undefined {
 export function useWrapActions(actions: Action[] | undefined): Action[] | undefined {
   return useMemo(() => {
     return actions?.map(wrapAction);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [actions]);
 }

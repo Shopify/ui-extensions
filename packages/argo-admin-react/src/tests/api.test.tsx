@@ -1,13 +1,9 @@
 import React from 'react';
 import {ExtensionPoint} from '@shopify/argo-admin';
 import {render as remoteRender} from '@remote-ui/react';
+
 import {render} from '../api';
 import {ExtensionApiContext} from '../extension-api/utils';
-
-jest.mock('../../api', () => ({
-  ...require.requireActual('../../api'),
-  render: jest.fn(),
-}));
 
 jest.mock('@remote-ui/react', () => ({
   ...require.requireActual('@remote-ui/react'),
@@ -29,7 +25,7 @@ const reactCreateElement = require.requireMock('react').createElement;
 
 describe('render()', () => {
   it('calls shopify argo renderer', () => {
-    render(ExtensionPoint.Playground, () => <div></div>);
+    render(ExtensionPoint.Playground, () => <div />);
 
     expect(coreRender).toHaveBeenCalledWith(ExtensionPoint.Playground, expect.any(Function));
     coreRender.mockReset();
@@ -38,12 +34,12 @@ describe('render()', () => {
   it('calls remote render with generated element', () => {
     reactCreateElement.mockReset();
 
-    const element = <div></div>;
+    const element = <div />;
     render(ExtensionPoint.Playground, () => element);
     const root = {};
     const api = {locale: 'en'};
 
-    const createdElement = <p></p>;
+    const createdElement = <p />;
 
     reactCreateElement.mockImplementation(() => createdElement);
 

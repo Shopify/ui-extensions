@@ -29,6 +29,7 @@ Reflect.defineProperty(self, 'shopify', {
 export function load(script: string, extraDenylist?: Denylist) {
   applySandbox(self, {...builtIns, ...extraDenylist});
   try {
+    // eslint-disable-next-line no-new
     new URL(script);
   } catch (_) {
     new _Function(script)();

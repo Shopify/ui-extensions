@@ -19,9 +19,9 @@ export function ResourceListExample() {
     () => ({
       queryValue: resourceListQuery,
       queryPlaceholder: 'Search...',
-      onQueryChange: (q) => {
-        setResourceListQuery(q);
-        setListItems(dataList.filter((r) => r.toString().includes(q)));
+      onQueryChange: (query) => {
+        setResourceListQuery(query);
+        setListItems(dataList.filter((item) => item.toString().includes(query)));
       },
       onQueryClear: () => {
         setResourceListQuery('');
@@ -40,7 +40,7 @@ export function ResourceListExample() {
             onClick={() => {
               console.log('ResourceList item toggle:', item);
               if (selectedItems.includes(item)) {
-                setSelectedItems(selectedItems.filter((o) => o !== item));
+                setSelectedItems(selectedItems.filter((_item) => _item !== item));
               } else {
                 setSelectedItems(selectedItems.concat(item));
               }

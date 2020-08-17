@@ -1,7 +1,7 @@
 import {render as remoteRender} from '@remote-ui/react';
 import {createElement, ReactElement} from 'react';
-
 import {render as coreRender, ExtensionApi, ExtensionPoint} from '@shopify/argo-admin';
+
 import {ExtensionApiContext} from './extension-api/utils';
 
 export type {ShopifyApi} from '@shopify/argo-admin';

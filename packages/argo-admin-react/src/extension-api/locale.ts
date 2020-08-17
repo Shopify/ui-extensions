@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react';
 import {isLocaleApi} from '@shopify/argo-admin/extension-api/locale';
+
 import {useExtensionApi} from './utils';
 
 export function useLocale() {

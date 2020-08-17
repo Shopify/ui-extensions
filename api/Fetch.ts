@@ -1,7 +1,7 @@
 /**
  * Configurations for a fetch request
  */
-export type Config = {
+export interface Config {
   /** HTTP method */
   method: 'GET' | 'POST' | 'PUT' | 'DELETE';
 
@@ -10,7 +10,7 @@ export type Config = {
 
   /** utf8 encoded string */
   body?: string;
-};
+}
 
 /**
  * Response interface

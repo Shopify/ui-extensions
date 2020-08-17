@@ -17,12 +17,12 @@ const resizeObserveSpy = jest.fn();
 const resizeDisconnectSpy = jest.fn();
 
 class MockResizeObserver {
+  observe = resizeObserveSpy;
+  disconnect = resizeDisconnectSpy;
+
   constructor(fn: (args: any[]) => void) {
     onResize = fn;
   }
-
-  observe = resizeObserveSpy;
-  disconnect = resizeDisconnectSpy;
 }
 
 function MockComponent({children}: any) {
@@ -32,7 +32,7 @@ function MockComponent({children}: any) {
 }
 
 describe('useLayoutApi()', () => {
-  let ResizeObserver = (window as any).ResizeObserver;
+  const ResizeObserver = (window as any).ResizeObserver;
 
   beforeEach(() => {
     (window as any).ResizeObserver = MockResizeObserver;

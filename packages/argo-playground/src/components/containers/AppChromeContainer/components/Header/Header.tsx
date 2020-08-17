@@ -13,8 +13,8 @@ import {
   Truncate,
 } from '@shopify/polaris';
 import {AppExtensionMinor, ChevronLeftMinor, HorizontalDotsMinor} from '@shopify/polaris-icons';
-import ShopifyLogoMono from './shopify-logo-mono.svg';
 
+import ShopifyLogoMono from './shopify-logo-mono.svg';
 import {Button} from './Button';
 import styles from './Header.scss';
 
@@ -101,7 +101,7 @@ export default function Header({launchUrl, icon, onClose = () => {}, title}: Pro
       <Modal
         open={supportModalActive}
         onClose={toggleSupportModalActive}
-        title={'Get support'}
+        title="Get support"
         activator={getSupportLink}
       >
         <Modal.Section>

@@ -1,4 +1,6 @@
 import {RemoteRoot} from '@remote-ui/core';
+
+import {ExtensionPoint} from './extension-point';
 import {ExtensionPointSchema} from './component-schemas';
 import {
   ContainerApi,
@@ -8,6 +10,8 @@ import {
   SessionTokenApi,
   DataApi,
 } from './extension-api';
+
+export {ExtensionPoint};
 
 type StandardApi = LayoutApi & LocaleApi & SessionTokenApi;
 
@@ -22,18 +26,6 @@ export type RenderableExtensionCallback<Api, Root extends RemoteRoot> = (
   root: Root,
   api: Api,
 ) => ExtensionResult;
-
-export enum ExtensionPoint {
-  AppLink = 'AppLink',
-  Playground = 'Playground',
-
-  MerchantMetafield = 'MerchantMetafield',
-
-  SubscriptionManagementCreate = 'Admin::Product::SubscriptionManagement::Create',
-  SubscriptionManagementAdd = 'Admin::Product::SubscriptionManagement::Add',
-  SubscriptionManagementEdit = 'Admin::Product::SubscriptionManagement::Edit',
-  SubscriptionManagementRemove = 'Admin::Product::SubscriptionManagement::Remove',
-}
 
 export interface ExtensionApi {
   [ExtensionPoint.AppLink]: StandardApi;

@@ -4,7 +4,12 @@ export {isLayoutApi} from './layout';
 export type {LocaleApi} from './locale';
 export {isLocaleApi} from './locale';
 
-export type {ContainerApi, ContainerAction, ExtensionContainer, SubscriptionManagementExtensionPoint} from './container';
+export type {
+  ContainerApi,
+  ContainerAction,
+  ExtensionContainer,
+  SubscriptionManagementExtensionPoint,
+} from './container';
 export {isContainerApi} from './container';
 
 export type {DataApi, ExtensionData} from './data';

@@ -7,7 +7,7 @@ import {ExtensionPoint} from '@shopify/argo-admin';
 import {
   SubscriptionManagement,
   StandardContainer,
-  SubscriptionManagmentProps,
+  SubscriptionManagementProps,
 } from '../../components/containers';
 import {ArgoHeader} from '../../components/containers/shared/Header';
 
@@ -22,7 +22,7 @@ const noop = () => {
 export function ModalExtension({
   open,
   onClose,
-}: Pick<SubscriptionManagmentProps<ExtensionPoint.Playground>, 'open' | 'onClose'>) {
+}: Pick<SubscriptionManagementProps<ExtensionPoint.Playground>, 'open' | 'onClose'>) {
   return (
     <SubscriptionManagement
       defaultTitle="Modal Extension Render Timeout"

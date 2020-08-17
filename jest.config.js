@@ -9,11 +9,14 @@ module.exports = {
   },
   globals: {
     'ts-jest': {
-      diagnostics: false
-    }
+      diagnostics: false,
+    },
   },
-  setupFilesAfterEnv: ["jest-extended", "<rootDir>/test-utils/matchers.ts"],
+  setupFilesAfterEnv: [
+    'jest-extended',
+    '<rootDir>/packages/argo-admin-react/test-utils/matchers.ts',
+  ],
   moduleNameMapper: {
-    '^test-utils/(.*)$': '<rootDir>/test-utils/$1',
+    '^test-utils/(.*)$': '<rootDir>/packages/argo-admin-react/test-utils/$1',
   },
 };

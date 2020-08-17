@@ -14,7 +14,9 @@ function App() {
   const [token, setToken] = useState<string | undefined>();
 
   useEffect(() => {
-    getSessionToken().then(setToken);
+    getSessionToken()
+      .then(setToken)
+      .catch((error) => console.log(`Get session token error: ${error}`));
   }, [getSessionToken]);
 
   return (

@@ -18,7 +18,7 @@ export function ArgoHeader({name, icon, title, onBackAction}: Props) {
   const appName = name ? (
     <>
       <span>by </span>
-      <img className="ArgoHeader-app-icon" src={icon ? icon : defaultIcon} />
+      <img className="ArgoHeader-app-icon" alt="App Icon" src={icon ?? defaultIcon} />
       <span>{` ${name} app`}</span>
     </>
   ) : (

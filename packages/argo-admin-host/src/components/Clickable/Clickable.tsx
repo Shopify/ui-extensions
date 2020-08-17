@@ -6,11 +6,13 @@ type ClickableProps = ReactPropsFromRemoteComponentType<typeof ArgoClickable>;
 
 export default function Clickable({onClick, children}: ClickableProps) {
   const polarisOnClick = useCallback(
-    (e) => {
-      e.stopPropagation();
+    (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      event.stopPropagation();
       onClick();
     },
     [onClick],
   );
+  // Need to make accessible
+  // eslint-disable-next-line jsx-a11y/click-events-have-key-events
   return <div onClick={polarisOnClick}>{children}</div>;
 }

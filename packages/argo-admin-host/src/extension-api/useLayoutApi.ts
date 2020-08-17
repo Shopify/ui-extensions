@@ -15,6 +15,7 @@ function resizeObserver(callback: (entries: ResizeObserverEntry[], observer: Pol
 const useResizeObserver: () => [LegacyRef<any>, ResizeObserverEntry | undefined] = () => {
   const [entry, setEntry] = useState<ResizeObserverEntry | undefined>();
   const [element, setElement] = useState<Element | undefined>();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const setRef = useCallback(setElement, []);
 
   useLayoutEffect(() => {

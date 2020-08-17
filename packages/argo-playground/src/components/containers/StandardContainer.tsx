@@ -10,6 +10,7 @@ import {
   ReadyState,
 } from '@shopify/argo-admin-host';
 import {createWorkerFactory} from '@remote-ui/web-workers';
+
 import {LoadingSpinner} from './shared/LoadingSpinner';
 import {Error} from './shared/Error';
 
