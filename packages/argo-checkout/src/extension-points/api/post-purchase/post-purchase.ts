@@ -29,12 +29,14 @@ export interface PostPurchaseRenderApi
   /** Shop where the checkout/order is from */
   shop: Shop;
   /** Returns the calculations that would result from the provided changeset being applied. Used to provide cost-clarity for buyers. */
-  calculateChangeset(changeset: Readonly<Changeset>): Promise<ChangesetResult>;
+  calculateChangeset(
+    changeset: Readonly<Changeset>,
+  ): Promise<CalculateChangesetResult>;
   /**  Requests a changeset to be applied to the initial purchase, and to charge the buyer with the difference in total price, if any. */
   applyChangeset(
     signature: string,
     changeset: Readonly<Changeset>,
-  ): Promise<ChangesetResult>;
+  ): Promise<ApplyChangesetResult>;
   /**
    * Indicates that the extension has finished running.
    * Currently, effectively redirects buyers to the thank you page.
@@ -115,7 +117,15 @@ interface AddVariantChange {
   discount?: ExplicitDiscount;
 }
 
-type Changes = AddVariantChange[];
+interface AddShippingLineChange {
+  type: 'add_shipping_line';
+  price: number;
+  title?: string;
+  presentmentTitle?: string;
+  phone?: string;
+}
+
+type Changes = (AddVariantChange | AddShippingLineChange)[];
 
 interface Changeset {
   changes: Changes;
@@ -159,13 +169,19 @@ interface UpdatedLineItem {
   quantity: number;
 }
 
-interface UpdatedPurchase {
+interface AddedShippingLine {
+  priceSet: MoneyBag;
+  presentmentTitle: string;
+}
+
+interface CalculatedPurchase {
   /** Updated total price of the purchase with discounts but before shipping, taxes, and tips. */
   subtotalPriceSet: MoneyBag;
   /** Updated final price of the purchase */
   totalPriceSet: MoneyBag;
   addedTaxLines: AddedTaxLine[];
   updatedLineItems: UpdatedLineItem[];
+  addedShippingLines: AddedShippingLine[];
   /** The amount left unpaid after the update */
   totalOutstandingSet: MoneyBag;
 }
@@ -174,18 +190,21 @@ interface ChangesetError {
   code: string;
   message: string;
 }
-
-type ChangesetResult =
+type CalculateChangesetResult =
   | {
       errors: ChangesetError[];
       status: 'unprocessed';
-      updatedPurchase: UpdatedPurchase | null;
     }
   | {
       errors: ChangesetError[];
-      status: 'processed' | 'partially_processed';
-      updatedPurchase: UpdatedPurchase;
+      status: 'processed';
+      calculatedPurchase: CalculatedPurchase;
     };
+
+interface ApplyChangesetResult {
+  errors: ChangesetError[];
+  status: ChangesetProcessingStatus;
+}
 
 export type ChangesetProcessingStatus =
   /** Changeset was successfully processed */
@@ -200,4 +219,4 @@ export type ChangesetProcessingStatus =
 
 export type ExplicitDiscountType = 'percentage' | 'fixed_amount';
 
-export type ChangeType = 'add_variant';
+export type ChangeType = 'add_variant' | 'add_shipping_line';
