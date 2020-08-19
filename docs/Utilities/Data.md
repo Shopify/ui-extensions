@@ -30,7 +30,7 @@ render(ExtensionPoint.SubscriptionManagementAdd, (root, api) => {
 
 ```js
 import {ExtensionPoint, Text} from '@shopify/argo-admin';
-import {render, useProductData} from '@shopify/argo-admin/react';
+import {render, useData} from '@shopify/argo-admin-react';
 
 function App() {
   const {productId, variantId} = useData();

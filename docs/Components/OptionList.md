@@ -36,7 +36,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 
 ```jsx
 import {ExtensionPoint, OptionList} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin/react';
+import {render} from '@shopify/argo-admin-react';
 
 function App() {
   const options = [
