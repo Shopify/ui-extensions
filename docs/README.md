@@ -11,7 +11,7 @@
 
 ### 1. Install the Shopify CLI
 
-Follow the instructions to install the app Shopify CLI ([extensions fork](https://github.com/Shopify/shopify-app-cli-extensions))
+Follow the instructions to install the app Shopify CLI [here](https://shopify.github.io/shopify-app-cli/getting-started/install/)
 
 ### 2. Create an extension
 

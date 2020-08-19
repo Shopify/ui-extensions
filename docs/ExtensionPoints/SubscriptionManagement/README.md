@@ -30,10 +30,10 @@ function Remove() {
   /* ... */
 }
 
-render(ExtensionPoint.SubscriptionManagementAdd);
-render(ExtensionPoint.SubscriptionManagementCreate);
-render(ExtensionPoint.SubscriptionManagementEdit);
-render(ExtensionPoint.SubscriptionManagementRemove);
+render(ExtensionPoint.SubscriptionManagementAdd, Add);
+render(ExtensionPoint.SubscriptionManagementCreate, Create);
+render(ExtensionPoint.SubscriptionManagementEdit, Edit);
+render(ExtensionPoint.SubscriptionManagementRemove, Remove);
 ```
 
 ### Data API
@@ -82,6 +82,8 @@ See [Container](../../Utilities/Container.md) for more info about how to customi
 
 ## Available components
 
+The following components are available for all Subscription Management extension points:
+
 - [Badge](../../Components/Badge.md)
 - [Banner](../../Components/Banner.md)
 - [Button](../../Components/Button.md)
@@ -89,6 +91,7 @@ See [Container](../../Utilities/Container.md) for more info about how to customi
 - [Clickable](../../Components/Clickable.md)
 - [Icon](../../Components/Icon.md)
 - [Link](../../Components/Link.md)
+- [OptionList](../../Components/OptionList.md)
 - [Radio](../../Components/Radio.md)
 - [ResourceItem](../../Components/ResourceItem.md)
 - [ResourceList](../../Components/ResourceList.md)
@@ -99,6 +102,13 @@ See [Container](../../Utilities/Container.md) for more info about how to customi
 - [Text](../../Components/Text.md)
 - [TextField](../../Components/TextField.md)
 - [Thumbnail](../../Components/Thumbnail.md)
+
+The following components are available only for Subscription Management Create and Edit extension points:
+
+- [Card](../../Components/Card.md)
+- [CardSection](../../Components/CardSection.md)
+- [Modal](../../Components/Modal.md)
+- [Page](../../Components/Page.md)
 
 ## Available utilities
 
