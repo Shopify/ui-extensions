@@ -33,13 +33,13 @@ render(ExtensionPoint.MyExtension, () => <App />);
 
 ## Props API
 
-| Name             | Type             | Description                                           | Required |
-| ---------------- | ---------------- | ----------------------------------------------------- | -------- |
-| title            | `string`         | Title content for the modal.                          | ☑️       |
-| subTitle         | `string`         | Sub-title content for the modal.                      |          |
-| primaryAction    | `Action`         | Modal's primary action.                               |          |
-| secondaryActions | `Action[]`       | Modal's secondary action(s).                          |          |
-| thumbnail        | `ThumbnailProps` | See [Thumbnail Props API](./Thumbnail.md#Props%20API) |          |
+| Name             | Type             | Description                                                                              | Required |
+| ---------------- | ---------------- | ---------------------------------------------------------------------------------------- | -------- |
+| title            | `string`         | Page title, in large type                                                                | ☑️       |
+| subTitle         | `string`         | Page subtitle, in regular type                                                           |          |
+| primaryAction    | `Action`         | Primary page-level action. See [Action](#Action) action                                  |          |
+| secondaryActions | `Action[]`       | Collection of secondary page-level actions. See [Action](#Action)actions                 |          |
+| thumbnail        | `ThumbnailProps` | Thumbnail that precedes the title. See [Thumbnail Props API](./Thumbnail.md#Props%20API) |          |
 
 ### Action
 
