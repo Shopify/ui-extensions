@@ -113,6 +113,7 @@ The following components are available only for Subscription Management Create a
 ## Available utilities
 
 - [Container](../../Utilities/Container.md)
+- [Data](../../Utilities/Data.md)
 - [Layout](../../Utilities/Layout.md)
 - [Locale](../../Utilities/Locale.md)
 - [Session Token](../../Utilities/SessionToken.md)
