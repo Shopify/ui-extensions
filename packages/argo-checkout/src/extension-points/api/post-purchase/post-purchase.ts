@@ -194,6 +194,7 @@ type CalculateChangesetResult =
   | {
       errors: ChangesetError[];
       status: 'unprocessed';
+      calculatedPurchase?: never;
     }
   | {
       errors: ChangesetError[];
