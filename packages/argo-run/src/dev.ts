@@ -1,4 +1,6 @@
 import {URL} from 'url';
+import {join, resolve} from 'path';
+
 import getPort from 'get-port';
 import webpack from 'webpack';
 import Koa from 'koa';
@@ -11,9 +13,13 @@ import {openBrowser} from './browser';
 export async function dev(...args: string[]) {
   const port = namedArgument('port', args) ?? (await getPort({port: 8910}));
   const url = `http://localhost:${port}`;
-  const publicPath = `${url}/assets/`;
+  const pathPrefix = '/assets/';
+  const publicPath = `${url}${pathPrefix}`;
   const filename = 'extension.js';
   const fileUrl = `${publicPath}${filename}`;
+  const configPath = `${pathPrefix}config`;
+
+  const config = readConfig();
 
   const compiler = webpack(
     createWebpackConfiguration({
@@ -59,6 +65,14 @@ export async function dev(...args: string[]) {
     },
   });
 
+  if (config) {
+    app.use(async (ctx, next) => {
+      if (ctx.path !== configPath) {
+        return next();
+      }
+      ctx.body = config;
+    });
+  }
   app.use(middleware);
 
   log(`Starting dev server on ${url}`);
@@ -97,4 +111,13 @@ export async function dev(...args: string[]) {
 function getOpenUrl(args: string[]) {
   const openArg = namedArgument('open', args);
   return (openArg ?? '').startsWith('http') ? new URL(openArg!) : undefined;
+}
+
+function readConfig() {
+  const path = resolve(join(process.cwd(), 'extension.config.json'));
+  try {
+    return require(path);
+  } catch {
+    return null;
+  }
 }
