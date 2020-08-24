@@ -9,10 +9,12 @@ export function LinkExample() {
   return (
     <Card sectioned title="Link">
       <Stack>
-        <Link url="/product-reviews">Link to Product Reviews</Link>
-        <Link url="/product-reviews" external>
-          Link to Product Reviews in new tab
+        <Link url="/admin/products">Relative link to Products</Link>
+        <Link url="/admin/products" external>
+          Relative external link to Products
         </Link>
+        <Link url="http://google.com">Link to Google that should always open in new tab</Link>
+        <Link url="javascript:alert(window.location);">Sanitized Javascript in links</Link>
         <Link onClick={linkAction}>Link that triggers log</Link>
       </Stack>
     </Card>
