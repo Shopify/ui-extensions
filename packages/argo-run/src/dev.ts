@@ -1,4 +1,5 @@
-import {URL} from 'url';
+import {URL, URLSearchParams} from 'url';
+import {resolve, join} from 'path';
 import getPort from 'get-port';
 import webpack from 'webpack';
 import Koa from 'koa';
@@ -24,6 +25,8 @@ export async function dev(...args: string[]) {
       },
     }),
   );
+
+  const extensionConfig = readConfig();
 
   const firstCompilePromise = new Promise((resolve) => {
     let hasResolved = false;
@@ -73,6 +76,17 @@ export async function dev(...args: string[]) {
 
   log(`Your extension is available at ${fileUrl}`);
 
+  // XXX we should replace this with a check for extension type
+  // to only show the query parameters for post purchase extensions
+  if (extensionConfig) {
+    const query = new URLSearchParams();
+    query.set('script_url', fileUrl);
+
+    query.set('config', JSON.stringify(extensionConfig));
+
+    log(`You can append this query string: ${query.toString()}`);
+  }
+
   const openUrl = getOpenUrl(args);
 
   if (openUrl) {
@@ -97,4 +111,13 @@ export async function dev(...args: string[]) {
 function getOpenUrl(args: string[]) {
   const openArg = namedArgument('open', args);
   return (openArg ?? '').startsWith('http') ? new URL(openArg!) : undefined;
+}
+
+function readConfig() {
+  const path = resolve(join(process.cwd(), 'extension.config.json'));
+  try {
+    return require(path);
+  } catch {
+    return null;
+  }
 }
