@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/Shopify/app-extension-libs/compare/v0.4.0...v0.4.1) (2020-08-25)
+
+
+### Bug Fixes
+
+* **app-chrome-container:** remove unnecessary conditional ([cd99192](https://github.com/Shopify/app-extension-libs/commit/cd99192b17fae7a72d16f6b84f25c1e3ca398c6d))
+
+
+### Features
+
+* **app-chrome-container:** add playground example ([a1e314e](https://github.com/Shopify/app-extension-libs/commit/a1e314e845b1d573bb317eb5ba2a3373abfec1cb))
+
+
+
+
+
 # [0.4.0](https://github.com/Shopify/app-extension-libs/compare/v0.4.0-alpha.0...v0.4.0) (2020-08-05)
 
 **Note:** Version bump only for package @shopify/argo-playground
