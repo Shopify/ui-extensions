@@ -15,6 +15,7 @@ export async function dev(...args: string[]) {
   const publicPath = `${url}/assets/`;
   const filename = 'extension.js';
   const fileUrl = `${publicPath}${filename}`;
+  const configPath = `/config`;
 
   const compiler = webpack(
     createWebpackConfiguration({
@@ -61,6 +62,15 @@ export async function dev(...args: string[]) {
       },
     },
   });
+
+  if (extensionConfig) {
+    app.use(async (ctx, next) => {
+      if (ctx.path !== configPath) {
+        return next();
+      }
+      ctx.body = extensionConfig;
+    });
+  }
 
   app.use(middleware);
 
