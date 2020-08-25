@@ -26,9 +26,7 @@ export default function TextField({
   const connectedLeft = type === 'search' ? <Icon source="searchMinor" /> : undefined;
   const polarisOnBlur = useCallback(() => onBlur(), [onBlur]);
   const polarisOnFocus = useCallback(() => onFocus(), [onFocus]);
-  const polarisOnClearButtonClick = useCallback((id: string) => onClearButtonClick?.(id), [
-    onClearButtonClick,
-  ]);
+  const polarisOnClearButtonClick = useCallback(() => onClearButtonClick?.(), [onClearButtonClick]);
 
   return (
     <PolarisTextField
