@@ -13,7 +13,7 @@ export interface TextFieldProps {
   onBlur?(): void | Promise<void>;
   onFocus?(): void | Promise<void>;
   clearButton?: boolean;
-  onClearButtonClick?(id: string): void;
+  onClearButtonClick?(): void;
 }
 
 export const TextField = createRemoteComponent<'TextField', TextFieldProps>('TextField');
