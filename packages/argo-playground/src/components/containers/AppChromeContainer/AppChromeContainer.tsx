@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {Portal, Backdrop, Scrollable} from '@shopify/polaris';
+import {Portal, Backdrop, Scrollable, Layout} from '@shopify/polaris';
 import {TransitionGroup} from 'react-transition-group';
 import {
   ContainerApi,
@@ -61,7 +61,11 @@ export function AppChromeContainer<T extends ExtensionPoint>(props: AppChromeCon
       <TransitionGroup appear enter exit>
         <Dialog open={open === true} onClose={() => {}}>
           {headerMarkup}
-          <Scrollable className={styles.Body}>{content}</Scrollable>
+          <Scrollable className={styles.Body}>
+            <Layout sectioned>
+              <Layout.Section>{content}</Layout.Section>
+            </Layout>
+          </Scrollable>
         </Dialog>
       </TransitionGroup>
       {backdrop}
