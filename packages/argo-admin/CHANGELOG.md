@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/Shopify/app-extension-libs/compare/v0.4.1...v0.4.2) (2020-08-26)
+
+
+### Bug Fixes
+
+* make links safe ([bac28f0](https://github.com/Shopify/app-extension-libs/commit/bac28f067f3861482adb872be2ba36cebdc8f4f8))
+
+
+
+
+
 ## [0.4.1](https://github.com/Shopify/app-extension-libs/compare/v0.4.0...v0.4.1) (2020-08-25)
 
 
