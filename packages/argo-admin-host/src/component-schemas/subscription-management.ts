@@ -7,8 +7,8 @@ import {
   loadingComponents,
   imageComponents,
   overlayComponents,
-  structureComponents,
 } from '../component-sets';
+import {Card, CardSection} from '../components';
 
 const appChromeSchema = {
   ...actionComponents,
@@ -19,7 +19,8 @@ const appChromeSchema = {
   ...loadingComponents,
   ...imageComponents,
   ...overlayComponents,
-  ...structureComponents,
+  Card,
+  CardSection,
 };
 
 const modalSchema = {

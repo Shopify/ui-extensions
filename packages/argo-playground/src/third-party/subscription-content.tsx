@@ -5,12 +5,12 @@ import {
   useData,
   useLayout,
   useToast,
+  Button,
   Card,
   CardSection,
   Checkbox,
   ExtensionPoint,
   Link,
-  Page,
   ResourceItem,
   ResourceList,
   Stack,
@@ -167,37 +167,54 @@ function EditSubscription() {
   const onCancel = useCallback(() => {
     showToast('Edit Cancelled', {error: true});
     close();
-  }, [showToast, close]);
+  }, [close, showToast]);
 
-  const pageProps = {
-    primaryAction: {
-      content: 'Save',
-      onAction: onSuccess,
-    },
-    secondaryActions: [
-      {
-        content: 'Cancel',
-        onAction: onCancel,
-      },
-    ],
-  };
+  const primaryActionButton = useMemo(() => <Button title="Save" onClick={onSuccess} primary />, [
+    onSuccess,
+  ]);
+  const secondaryActionButton = useMemo(() => <Button title="Cancel" onClick={onCancel} />, [
+    onCancel,
+  ]);
+
+  const pageHeader = useMemo(
+    () => (
+      <Stack>
+        <Text size="titleLarge">My app extension!</Text>
+        <Stack distribution="trailing">
+          {secondaryActionButton}
+          {primaryActionButton}
+        </Stack>
+      </Stack>
+    ),
+    [primaryActionButton, secondaryActionButton],
+  );
+
+  const pageActions = useMemo(
+    () => (
+      <Stack distribution="fill">
+        {secondaryActionButton}
+        <Stack distribution="trailing">{primaryActionButton}</Stack>
+      </Stack>
+    ),
+    [primaryActionButton, secondaryActionButton],
+  );
 
   return (
     <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementEdit}>
-      <Page title="My app extension!" {...pageProps}>
-        <Card sectioned>
-          <CardSection>
-            <Text>
-              This is an example of an app extension inside a full screen container, we are calling
-              it "App Chrome" for the time being. This <Link onClick={close}>link</Link> will close
-              the container.
-            </Text>
-          </CardSection>
-          <CardSection title="Current Layout">
-            <Text>{layout?.horizontal}</Text>
-          </CardSection>
-        </Card>
-      </Page>
+      {pageHeader}
+      <Card sectioned>
+        <CardSection>
+          <Text>
+            This is an example of an app extension inside a full screen container, we are calling it
+            "App Overlay" for the time being. This <Link onClick={close}>link</Link> will close the
+            the container.
+          </Text>
+        </CardSection>
+        <CardSection title="Current Layout">
+          <Text>{layout?.horizontal}</Text>
+        </CardSection>
+      </Card>
+      {pageActions}
     </Subscription>
   );
 }
