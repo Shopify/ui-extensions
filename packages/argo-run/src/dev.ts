@@ -1,5 +1,7 @@
 import {URL, URLSearchParams} from 'url';
+import {readFileSync, existsSync} from 'fs';
 import {resolve, join} from 'path';
+import {safeLoad as loadYaml} from 'js-yaml';
 import getPort from 'get-port';
 import webpack from 'webpack';
 import Koa from 'koa';
@@ -124,9 +126,13 @@ function getOpenUrl(args: string[]) {
 }
 
 function readConfig() {
-  const path = resolve(join(process.cwd(), 'extension.config.json'));
+  const configPath = resolve(join(process.cwd(), 'extension.config.yml'));
+  if (!existsSync(configPath)) {
+    return null;
+  }
+
   try {
-    return require(path);
+    return loadYaml(readFileSync(configPath, 'utf8'));
   } catch {
     return null;
   }
