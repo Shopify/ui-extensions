@@ -55,6 +55,9 @@ interface Storage {
 interface Purchase {
   /** Initial purchase's unique identifier */
   referenceId: string;
+  customerId?: string;
+  destinationCountryCode?: string;
+  totalPriceSet: MoneyBag;
   /** Items being purchased */
   lineItems: LineItem[];
 }
@@ -72,6 +75,7 @@ interface LineItem {
   /** Product being purchased */
   product: Product;
   quantity: number;
+  totalPriceSet: MoneyBag;
 }
 
 interface Product {
