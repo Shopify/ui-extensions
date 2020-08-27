@@ -133,7 +133,9 @@ function readConfig() {
 
   try {
     return loadYaml(readFileSync(configPath, 'utf8'));
-  } catch {
+  } catch (error) {
+    log('Failed parsing extension.config.yml', {error: true});
+    log(error, {error: true});
     return null;
   }
 }
