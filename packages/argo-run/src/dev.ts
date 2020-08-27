@@ -88,12 +88,12 @@ export async function dev(...args: string[]) {
 
   log(`Your extension is available at ${fileUrl}`);
 
-  // XXX we should replace this with a check for extension type
+  // we could replace this with a check for extension type
   // to only show the query parameters for post purchase extensions
   if (extensionConfig) {
     const query = new URLSearchParams();
-    query.set('script_url', fileUrl);
 
+    query.set('script_url', fileUrl);
     query.set('config', JSON.stringify(extensionConfig));
 
     log(`You can append this query string: ${query.toString()}`);
