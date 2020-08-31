@@ -6,7 +6,6 @@ import {
   Stack,
   Text,
   TextField,
-  Page,
 } from '@shopify/argo-admin-react';
 
 function App() {
@@ -20,12 +19,10 @@ function App() {
   }, [getSessionToken]);
 
   return (
-    <Page title="Test">
-      <Stack vertical>
-        <Text>Token from my app</Text>
-        <TextField type="text" value={token} multiline />
-      </Stack>
-    </Page>
+    <Stack vertical>
+      <Text>Token from my app</Text>
+      <TextField type="text" value={token} multiline />
+    </Stack>
   );
 }
 

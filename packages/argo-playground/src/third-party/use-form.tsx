@@ -5,7 +5,6 @@ import {
   Button,
   Card,
   ExtensionPoint,
-  Page,
   Select,
   Stack,
   TextField,
@@ -41,32 +40,30 @@ function App() {
     ) : null;
 
   return (
-    <Page title="Use Form">
-      <Card sectioned>
-        <Stack vertical>
-          {errors}
-          <TextField
-            label="Name"
-            placeholder="Type your name"
-            value={fields.title.value}
-            onAfterChange={fields.title.onChange}
-            onBlur={fields.title.onBlur}
-            error={fields.title.error}
-          />
-          <Select
-            labelInline
-            label="Colors"
-            options={colors}
-            value={fields.color.value}
-            onChange={fields.color.onChange}
-            onBlur={fields.color.onBlur}
-            error={fields.color.error}
-          />
-          <Button title="Reset" onClick={reset} />
-          <Button title="Submit" onClick={submit} />
-        </Stack>
-      </Card>
-    </Page>
+    <Card title="Use Form" sectioned>
+      <Stack vertical>
+        {errors}
+        <TextField
+          label="Name"
+          placeholder="Type your name"
+          value={fields.title.value}
+          onAfterChange={fields.title.onChange}
+          onBlur={fields.title.onBlur}
+          error={fields.title.error}
+        />
+        <Select
+          labelInline
+          label="Colors"
+          options={colors}
+          value={fields.color.value}
+          onChange={fields.color.onChange}
+          onBlur={fields.color.onBlur}
+          error={fields.color.error}
+        />
+        <Button title="Reset" onClick={reset} />
+        <Button title="Submit" onClick={submit} />
+      </Stack>
+    </Card>
   );
 }
 
