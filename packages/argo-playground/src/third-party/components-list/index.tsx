@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, ExtensionPoint, Page} from '@shopify/argo-admin-react';
+import {render, ExtensionPoint} from '@shopify/argo-admin-react';
 
 import {CheckboxExample} from './checkbox';
 import {BadgeExample} from './badge';
@@ -22,13 +22,7 @@ import {OptionListExample} from './option-list';
 
 function App() {
   return (
-    <Page
-      title="Nest camera"
-      thumbnail={{
-        source: 'https://burst.shopifycdn.com/photos/black-leather-choker-necklace_373x@2x.jpg',
-        alt: 'Black leather pet collar',
-      }}
-    >
+    <>
       <CheckboxExample />
       <BadgeExample />
       <BannerExample />
@@ -47,7 +41,7 @@ function App() {
       <TextExample />
       <TextFieldExample />
       <ExtensionApiExample />
-    </Page>
+    </>
   );
 }
 
