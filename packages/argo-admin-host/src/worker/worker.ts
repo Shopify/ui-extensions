@@ -41,7 +41,7 @@ export function load(script: string, extraDenylist?: Denylist) {
 export function render<T extends ExtensionPoint>(
   extensionPoint: T,
   api: ExtensionApi[T],
-  components: string[],
+  components: string[] | undefined,
   channel: RemoteChannel,
 ) {
   if (!registeredExtensions.has(extensionPoint)) {
