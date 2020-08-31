@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-run",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A command line interface for developing and building Argo extensions",
   "publishConfig": {
     "access": "public",
@@ -12,9 +12,9 @@
   "license": "MIT",
   "devDependencies": {
     "@types/glob": "^7.1.1",
+    "@types/js-yaml": "^3.12.5",
     "@types/koa": "^2.11.3",
     "@types/koa-webpack": "^5.0.1",
-    "@types/js-yaml": "^3.12.5",
     "@types/webpack": "^4.41.13"
   },
   "dependencies": {
