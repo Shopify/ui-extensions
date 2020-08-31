@@ -64,6 +64,7 @@ interface Purchase {
 
 interface Shop {
   id: number;
+  domain: string;
   /**
    * Only public listed metafields are available
    * https://shopify.dev/tutorials/retrieve-metafields-with-storefront-api#expose-metafields-to-the-storefront-api
