@@ -1,3 +1,5 @@
+export {Banner} from './Banner';
+export type {BannerProps} from './Banner';
 export {BlockStack} from './BlockStack';
 export type {BlockStackProps} from './BlockStack';
 export {Bookend} from './Bookend';
