@@ -1,10 +1,11 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 /**
-   * Info:
-   * Use to convey general information or actions that aren’t critical or tied to a particular action. 
- 
-   * Success:
+ * Info:
+ * Use to convey general information or actions that aren’t critical or tied to
+ * a particular action.
+ *
+ * Success:
  * Use rarely, only if you need additional visual confirmation that a
  * non-standard action has been completed successfully, for example adding an
  * item to an order as an upsell.
