@@ -1,7 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 /**
- * Success:
+   * Info:
+   * Use to convey general information or actions that aren’t critical or tied to a particular action. 
+ 
+   * Success:
  * Use rarely, only if you need additional visual confirmation that a
  * non-standard action has been completed successfully, for example adding an
  * item to an order as an upsell.
@@ -26,7 +29,7 @@ export interface BannerProps {
    */
   title?: string;
   /**
-   * What status icon & color scheme to use
+   * Sets the status of the banner.
    * @default 'info'
    */
   status?: Status;
