@@ -30,7 +30,7 @@ export interface PostPurchaseRenderApi
   shop: Shop;
   /** Returns the calculations that would result from the provided changeset being applied. Used to provide cost-clarity for buyers. */
   calculateChangeset(
-    changeset: Readonly<Changeset>,
+    changeset: Readonly<Changeset> | string,
   ): Promise<CalculateChangesetResult>;
   /**  Requests a changeset to be applied to the initial purchase, and to charge the buyer with the difference in total price, if any. */
   applyChangeset(
