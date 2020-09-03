@@ -4,6 +4,7 @@ export {BlockStack} from './BlockStack';
 export type {BlockStackProps} from './BlockStack';
 export {Bookend} from './Bookend';
 export type {BookendProps} from './Bookend';
+export {Button} from './Button';
 export type {ButtonProps} from './Button';
 export {ButtonGroup} from './ButtonGroup';
 export type {ButtonGroupProps} from './ButtonGroup';
