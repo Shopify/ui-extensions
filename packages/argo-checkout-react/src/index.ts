@@ -10,6 +10,7 @@ export type {
   ReturnTypeForExtension,
   ShopifyGlobal,
   Version,
+  BannerProps,
   BlockStackProps,
   BookendProps,
   ButtonProps,
