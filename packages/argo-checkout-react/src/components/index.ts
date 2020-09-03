@@ -1,3 +1,4 @@
+export {Banner} from './Banner';
 export {BlockStack} from './BlockStack';
 export {Bookend} from './Bookend';
 export {Button} from './Button';
