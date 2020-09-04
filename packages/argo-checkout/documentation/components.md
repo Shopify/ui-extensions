@@ -4,6 +4,7 @@ Argo provides many powerful UI components that a [rendering extension](./renderi
 
 The following components are available as part of Argo for Checkout, but make sure that you check the documentation for your [extension point](./extension-points.md) to ensure the component is available in the extension points you are targeting.
 
+- [Banner](../src/components/Banner)
 - [BlockStack](../src/components/BlockStack)
 - [Bookend](../src/components/Bookend)
 - [Button](../src/components/Button)
