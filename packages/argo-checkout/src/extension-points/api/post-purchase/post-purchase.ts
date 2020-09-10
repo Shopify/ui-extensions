@@ -33,10 +33,7 @@ export interface PostPurchaseRenderApi
     changeset: Readonly<Changeset>,
   ): Promise<CalculateChangesetResult>;
   /**  Requests a changeset to be applied to the initial purchase, and to charge the buyer with the difference in total price, if any. */
-  applyChangeset(
-    signature: string,
-    changeset: Readonly<Changeset>,
-  ): Promise<ApplyChangesetResult>;
+  applyChangeset(changeset: string): Promise<ApplyChangesetResult>;
   /**
    * Indicates that the extension has finished running.
    * Currently, effectively redirects buyers to the thank you page.
