@@ -149,8 +149,8 @@ interface MoneyBag {
 }
 
 interface LineItem {
-  /** The discounted price per quantity. */
-  discountedPriceSet: MoneyBag;
+  /** The discounted total price. */
+  totalPriceSet: MoneyBag;
   /** The price per quantity */
   priceSet: MoneyBag;
 }
@@ -163,8 +163,8 @@ interface AddedTaxLine {
 }
 
 interface UpdatedLineItem {
-  /** The discounted price per quantity. */
-  discountedPriceSet: MoneyBag;
+  /** The discounted total price. */
+  totalPriceSet: MoneyBag;
   /** The price per quantity */
   priceSet: MoneyBag;
   productId: number;
