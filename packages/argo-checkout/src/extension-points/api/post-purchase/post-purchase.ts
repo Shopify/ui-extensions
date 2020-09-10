@@ -148,13 +148,6 @@ interface MoneyBag {
   presentmentMoney: Money;
 }
 
-interface LineItem {
-  /** The discounted total price. */
-  totalPriceSet: MoneyBag;
-  /** The price per quantity */
-  priceSet: MoneyBag;
-}
-
 interface AddedTaxLine {
   /** The tax amount */
   priceSet: MoneyBag;
