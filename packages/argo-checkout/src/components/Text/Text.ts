@@ -35,6 +35,8 @@ export interface TextProps {
    * to associate an accessible label with an action.
    */
   id?: string;
+  /** Changes the visual appearance */
+  appearance?: 'critical' | 'warning' | 'success';
 }
 
 /**
