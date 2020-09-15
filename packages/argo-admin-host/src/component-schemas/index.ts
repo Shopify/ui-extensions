@@ -30,9 +30,4 @@ export const extensionComponentsLoader: Record<ExtensionPoint, () => Promise<any
     import(
       /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
     ).then((module) => module.subscriptionManagementSchema.Edit),
-
-  [ExtensionPoint.MerchantMetafield]: () =>
-    import(/* webpackChunkName: 'argo-merchant-metafield-components' */ './app-link').then(
-      (module) => module.appLinkSchema,
-    ),
 };
