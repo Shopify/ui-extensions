@@ -11,6 +11,8 @@ export interface TextBlockProps {
   subdued?: boolean;
   /** Unique identifier */
   id?: string;
+  /** Changes the visual appearance */
+  appearance?: 'critical' | 'warning' | 'success';
 }
 
 /**
