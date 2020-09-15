@@ -31,9 +31,6 @@ export interface ExtensionApi {
   [ExtensionPoint.AppLink]: StandardApi;
   [ExtensionPoint.Playground]: StandardApi;
 
-  // Merchant Metafields
-  [ExtensionPoint.MerchantMetafield]: StandardApi;
-
   // Subscription Management
   [ExtensionPoint.SubscriptionManagementCreate]: SubscriptionApi<
     ExtensionPoint.SubscriptionManagementCreate
@@ -59,9 +56,6 @@ export interface ExtensionPointCallback {
     StandardApi,
     RemoteRoot<ExtensionPointSchema['Playground']>
   >;
-
-  // Merchant Metafields
-  [ExtensionPoint.MerchantMetafield]: RenderableExtensionCallback<StandardApi, RemoteRoot<any>>;
 
   // Subscription Management
   [ExtensionPoint.SubscriptionManagementCreate]: RenderableExtensionCallback<
