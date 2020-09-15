@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.3](https://github.com/Shopify/app-extension-libs/compare/v0.4.2...v0.4.3) (2020-09-15)
+
+
+### Features
+
+* error unsupported component ([#902](https://github.com/Shopify/app-extension-libs/issues/902)) ([938363e](https://github.com/Shopify/app-extension-libs/commit/938363e561225cdf24693f6a7e012016d37d851f))
+
+
+
+
+
 ## [0.4.2](https://github.com/Shopify/app-extension-libs/compare/v0.4.1...v0.4.2) (2020-08-26)
 
 
