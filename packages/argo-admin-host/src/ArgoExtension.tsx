@@ -1,16 +1,18 @@
-import React, {useEffect, useMemo, useState, ComponentType} from 'react';
+import React, {useEffect, useMemo, useState, useCallback, ComponentType} from 'react';
 import {ExtensionPoint, ExtensionApi} from '@shopify/argo-admin';
 import {retain} from '@remote-ui/core';
 import {RemoteReceiver, RemoteRenderer} from '@remote-ui/react/host';
 
 import {Worker} from './worker';
 import {extensionComponentsLoader} from './component-schemas';
+import {UnsupportedComponentError} from './utilities/UnsupportedComponentError';
 
 export enum ReadyState {
   Loading,
   Rendered,
   RenderErrorTimeout,
   NoScript,
+  UnsupportedComponent,
 }
 
 export interface ArgoExtensionsProps<T extends ExtensionPoint> {
@@ -78,13 +80,21 @@ export function ArgoExtension<T extends ExtensionPoint>({
       if (!script || !componentsList.length) {
         return;
       }
-      await worker.render(extensionPoint, api, componentsList, (type, ...args) => {
-        // Have a proper fix in remote-ui core library later
-        // Ref: https://github.com/Shopify/app-extension-libs/issues/436#issuecomment-622008563
-        retain(args);
+      try {
+        await worker.render(extensionPoint, api, componentsList, (type, ...args) => {
+          // Have a proper fix in remote-ui core library later
+          // Ref: https://github.com/Shopify/app-extension-libs/issues/436#issuecomment-622008563
+          retain(args);
 
-        return receiver.receive(type, ...args);
-      });
+          return receiver.receive(type, ...args);
+        });
+      } catch (error) {
+        if (error.message.includes('Unsupported component')) {
+          setReadyState(ReadyState.UnsupportedComponent);
+          const [, component] = error.message.match(/Unsupported component:\s(\w+)/);
+          throw new UnsupportedComponentError(extensionPoint, component);
+        }
+      }
     })();
   }, [components, extensionPoint, api, receiver, script, worker]);
 

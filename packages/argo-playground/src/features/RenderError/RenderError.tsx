@@ -69,6 +69,22 @@ export function NoScriptExtension() {
   );
 }
 
+function UnsupportedComponent() {
+  return (
+    <Card>
+      <Card.Section>
+        <ArgoHeader name="OneMoreTime" title="Unsupported Component" />
+      </Card.Section>
+      <Card.Section>
+        <StandardContainer
+          script={reactThirdPartyWorker.url}
+          extensionPoint={ExtensionPoint.SubscriptionManagementRemove}
+        />
+      </Card.Section>
+    </Card>
+  );
+}
+
 export function RenderError() {
   usePerformanceMark('complete', 'RenderError');
 
@@ -79,13 +95,16 @@ export function RenderError() {
     <Page title="Render Error">
       <Layout>
         <Layout.Section>
-          <NoScriptExtension />
+          <UnsupportedComponent />
         </Layout.Section>
         <Layout.Section>
           <Button onClick={() => setModalOpen(true)}>Open subscription management modal</Button>
         </Layout.Section>
         <Layout.Section>
           <CardExtension />
+        </Layout.Section>
+        <Layout.Section>
+          <NoScriptExtension />
         </Layout.Section>
         <ModalExtension open={modalOpen} onClose={onCloseModal} />
       </Layout>
