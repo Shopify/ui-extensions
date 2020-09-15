@@ -145,10 +145,12 @@ module.exports = {
         use: ['file-loader'],
       },
       {
-        test: /\.svg$/,
-        use: [
-          '@svgr/webpack',
-        ],
+        test: /raw\.svg$/,
+        use: ['file-loader'],
+      },
+      {
+        test: /(?<!raw)\.svg$/,
+        use: ['@svgr/webpack'],
       },
     ],
   },

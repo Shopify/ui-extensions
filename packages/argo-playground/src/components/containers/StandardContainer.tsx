@@ -13,6 +13,7 @@ import {createWorkerFactory} from '@remote-ui/web-workers';
 
 import {LoadingSpinner} from './shared/LoadingSpinner';
 import {Error} from './shared/Error';
+import {UnsupportedComponentError} from './shared/UnsupportedComponentError';
 
 const createWorker = createWorkerFactory(() =>
   import(/* webpackChunkName: 'sandbox-worker' */ '@shopify/argo-admin-host/worker'),
@@ -42,6 +43,7 @@ export interface StandardContainerProps<T extends ExtensionPoint> extends BasePr
   loading?: ReactNode;
   noScriptError?: ReactNode;
   timeoutError?: ReactNode;
+  unsupportedComponentError?: ReactNode;
 }
 
 export function StandardContainer<T extends ExtensionPoint>(props: StandardContainerProps<T>) {
@@ -49,6 +51,7 @@ export function StandardContainer<T extends ExtensionPoint>(props: StandardConta
     onReadyStateChange,
     noScriptError = <Error />,
     timeoutError = <Error />,
+    unsupportedComponentError = <UnsupportedComponentError />,
     loading = <LoadingSpinner />,
   } = props;
   const [readyState, setReadyState] = useState(ReadyState.Loading);
@@ -87,6 +90,9 @@ export function StandardContainer<T extends ExtensionPoint>(props: StandardConta
     if (readyState === ReadyState.RenderErrorTimeout) {
       return timeoutError;
     }
+    if (readyState === ReadyState.UnsupportedComponent) {
+      return unsupportedComponentError;
+    }
     return (
       api && (
         <ArgoExtension
@@ -97,7 +103,7 @@ export function StandardContainer<T extends ExtensionPoint>(props: StandardConta
         />
       )
     );
-  }, [readyState, api, worker, timeoutError, noScriptError, props]);
+  }, [readyState, api, worker, timeoutError, noScriptError, unsupportedComponentError, props]);
 
   useEffect(() => onReadyStateChange?.(readyState), [readyState, onReadyStateChange]);
 
