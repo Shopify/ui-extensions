@@ -1,10 +1,13 @@
 import React, {useRef, useCallback} from 'react';
-import {RadioProps} from '@shopify/argo-admin';
+import {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
+import {Radio as ArgoRadio} from '@shopify/argo-admin';
 import {RadioButton as PolarisRadio} from '@shopify/polaris';
 
 let nextUniqueId = 0;
 
-export default function Radio({label = '', value, onChange, id, ...props}: RadioProps) {
+type RadioProps = ReactPropsFromRemoteComponentType<typeof ArgoRadio>;
+
+export default function Radio({value, onChange, id, children, ...props}: RadioProps) {
   const polarisOnChange = useCallback(() => onChange(value), [onChange, value]);
   const {current: uniqueId} = useRef(`argo-radio-${nextUniqueId++}`);
 
@@ -12,7 +15,7 @@ export default function Radio({label = '', value, onChange, id, ...props}: Radio
     <PolarisRadio
       {...props}
       id={id || uniqueId}
-      label={label}
+      label={children}
       value={value}
       onChange={polarisOnChange}
     />

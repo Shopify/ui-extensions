@@ -1,7 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 export interface RadioProps {
-  label: string;
   helpText?: string;
   checked?: boolean;
   id?: string;
