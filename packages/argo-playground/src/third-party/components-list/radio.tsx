@@ -11,7 +11,6 @@ export function RadioExample() {
         label="Option 1"
         helpText="Help text for option 1."
         checked={radioValue === 'option-1'}
-        id="option1"
         name="radios"
         value="option-1"
         onChange={handleRadioChange}
@@ -19,7 +18,6 @@ export function RadioExample() {
       <Radio
         label="Option 2"
         helpText="Help text for option 2."
-        id="option2"
         name="radios"
         checked={radioValue === 'option-2'}
         value="option-2"

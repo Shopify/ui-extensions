@@ -73,8 +73,10 @@ extend(
 | -------- | ---------------------------- | -------------------------------------- | -------- |
 | label    | `string`                     | Label for the radio button.            | ☑️       |
 | helpText | `string`                     | Additional text to aid in use.         |          |
-| checked  | `boolean`                    | Radio button is selected.              | ☑️       |
-| id       | `string`                     | Unique ID for radio button.            | ☑️       |
+| checked  | `boolean`                    | Radio button is selected.              |          |
+| id\*     | `string`                     | Unique ID for radio button.            |          |
 | name     | `string`                     | Name to group radio buttons together.  | ☑️       |
 | value    | `string`                     | Value of form input on selected        | ☑️       |
 | onChange | `(newValue: string) => void` | Callback when radio button is toggled. | ☑️       |
+
+\*note: If `id` isn't passed, an auto-generated ID will be created for the radio
