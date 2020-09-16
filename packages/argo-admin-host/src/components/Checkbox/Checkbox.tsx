@@ -1,8 +1,12 @@
 import React, {useCallback} from 'react';
-import {CheckboxProps} from '@shopify/argo-admin';
+import {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
+import {Checkbox as ArgoCheckbox} from '@shopify/argo-admin';
 import {Checkbox as PolarisCheckbox} from '@shopify/polaris';
 
-export default function Checkbox({label = '', onChange, checked}: CheckboxProps) {
+type CheckboxProps = ReactPropsFromRemoteComponentType<typeof ArgoCheckbox>;
+
+export default function Checkbox({children, onChange, checked}: CheckboxProps) {
   const polarisOnChange = useCallback((newChecked: boolean) => onChange?.(newChecked), [onChange]);
-  return <PolarisCheckbox checked={checked} label={label} onChange={polarisOnChange} />;
+
+  return <PolarisCheckbox checked={checked} label={children} onChange={polarisOnChange} />;
 }

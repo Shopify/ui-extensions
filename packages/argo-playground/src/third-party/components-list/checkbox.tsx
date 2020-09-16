@@ -10,16 +10,12 @@ export function CheckboxExample() {
     <Card sectioned title="Checkbox component">
       <Stack>
         <Checkbox checked={noLabelChecked} onChange={(newValue) => setNoLabelChecked(newValue)} />
-        <Checkbox
-          label="Foo"
-          checked={fooChecked}
-          onChange={(newValue) => setFooChecked(newValue)}
-        />
-        <Checkbox
-          label="Bar"
-          checked={barChecked}
-          onChange={(newValue) => setBarChecked(newValue)}
-        />
+        <Checkbox checked={fooChecked} onChange={(newValue) => setFooChecked(newValue)}>
+          Foo
+        </Checkbox>
+        <Checkbox checked={barChecked} onChange={(newValue) => setBarChecked(newValue)}>
+          Bar
+        </Checkbox>
       </Stack>
     </Card>
   );
