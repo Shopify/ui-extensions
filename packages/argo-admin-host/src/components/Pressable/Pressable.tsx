@@ -1,10 +1,10 @@
 import React, {useCallback} from 'react';
 import {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
-import {Clickable as ArgoClickable} from '@shopify/argo-admin-react';
+import {Pressable as ArgoPressable} from '@shopify/argo-admin-react';
 
-type ClickableProps = ReactPropsFromRemoteComponentType<typeof ArgoClickable>;
+type PressableProps = ReactPropsFromRemoteComponentType<typeof ArgoPressable>;
 
-export default function Clickable({onPress, children}: ClickableProps) {
+export default function Pressable({onPress, children}: PressableProps) {
   const polarisOnClick = useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       event.stopPropagation();

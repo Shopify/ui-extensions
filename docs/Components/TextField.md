@@ -79,4 +79,4 @@ extend(
 | onFocus            | `() => void`                     | Callback when input is focused.        |          |
 | onBlur             | `() => void`                     | Callback when focus is removed.        |          |
 | clearButton        | `boolean`                        | Show a clear text button in the input. |          |
-| onClearButtonPress | `(string) => void`               | Callback when clear button is clicked. |          |
+| onClearButtonPress | `(string) => void`               | Callback when clear button is pressed. |          |

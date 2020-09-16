@@ -57,7 +57,7 @@ export interface ModalContainerProps<T extends ExtensionPoint> extends StandardC
   loading?: boolean;
   onClose: () => void;
   onDone?: () => void;
-  onBackClick?: () => void;
+  onBackPress?: () => void;
   open?: boolean;
 }
 
@@ -70,7 +70,7 @@ export function ModalContainer<T extends ExtensionPoint>(props: ModalContainerPr
     loading = false,
     onClose,
     onDone = () => {},
-    onBackClick,
+    onBackPress,
     onReadyStateChange,
     open = false,
   } = props;
@@ -94,8 +94,8 @@ export function ModalContainer<T extends ExtensionPoint>(props: ModalContainerPr
   ]) as any;
 
   const onBackAction = useCallback(() => {
-    onBackClick?.();
-  }, [onBackClick]);
+    onBackPress?.();
+  }, [onBackPress]);
 
   const [readyState, setReadyState] = useState(ReadyState.Loading);
 
@@ -114,10 +114,10 @@ export function ModalContainer<T extends ExtensionPoint>(props: ModalContainerPr
         name={name}
         icon={transformedSrc}
         title={defaultTitle}
-        onBackAction={onBackClick && onBackAction}
+        onBackAction={onBackPress && onBackAction}
       />
     );
-  }, [app, defaultTitle, onBackClick, onBackAction]);
+  }, [app, defaultTitle, onBackPress, onBackAction]);
 
   const extensionModalProps: ModalProps = useMemo(
     () => ({

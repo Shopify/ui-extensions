@@ -8,7 +8,7 @@ import {ButtonExample} from './button';
 import {ExtensionApiExample} from './extension-api';
 import {RadioButtonExample} from './radio';
 import {CardExample} from './card';
-import {ClickableExample} from './clickable';
+import {PressableExample} from './pressable';
 import {ModalExample} from './modal';
 import {TextFieldExample} from './text-field';
 import {TextExample} from './text';
@@ -28,7 +28,7 @@ function App() {
       <BannerExample />
       <ButtonExample />
       <CardExample />
-      <ClickableExample />
+      <PressableExample />
       <IconExample />
       <LinkExample />
       <ModalExample />

@@ -3,7 +3,7 @@ import {Card, Stack, Banner} from '@shopify/argo-admin-react';
 
 export function BannerExample() {
   const bannerDismissCallback = useCallback(() => console.log('Dismiss banner'), []);
-  const bannerActionCallback = useCallback(() => console.log('Action Clicked'), []);
+  const bannerActionCallback = useCallback(() => console.log('Action pressed'), []);
 
   return (
     <Card sectioned title="Banner component">
@@ -30,7 +30,7 @@ export function BannerExample() {
         </Banner>
         <Banner
           title="Action Banner"
-          action={{content: 'Click me', onAction: bannerActionCallback}}
+          action={{content: 'Press me', onAction: bannerActionCallback}}
           onDismiss={bannerDismissCallback}
         >
           Some super cool content for you in a banner. This is important stuff. Read this or you

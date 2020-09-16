@@ -73,7 +73,7 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
     extensionPoint === ExtensionPoint.SubscriptionManagementAdd ||
     extensionPoint === ExtensionPoint.SubscriptionManagementRemove;
 
-  const onBackClick = useCallback(
+  const onBackPress = useCallback(
     // Reset the app selection
     () => setApp(undefined),
     [setApp],
@@ -151,13 +151,13 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
         <ModalContainer
           {...containerProps}
           defaultTitle={defaultTitle}
-          onBackClick={onBackClick}
+          onBackPress={onBackPress}
           height={height}
         />
       ) : (
         <AppChromeContainer {...containerProps} />
       ),
-    [containerProps, defaultTitle, height, isModal, onBackClick],
+    [containerProps, defaultTitle, height, isModal, onBackPress],
   );
 
   const containerOrAppSelectionMarkup = app ? containerMarkup : appSelectionMarkup;

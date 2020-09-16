@@ -8,8 +8,8 @@ Each extension point is provided a container API which provides additional metho
 | ------------------ | ---------- | ---------------------------------------------------------------------------------------- | -------- |
 | close              | `function` | Closes the container and the extension                                                   |          |
 | done               | `function` | Notifies Shopify Admin that the extension workflow is complete and data has been updated |          |
-| setPrimaryAction   | `function` | Sets the primary action content and callback when the action is clicked                  |          |
-| setSecondaryAction | `function` | Sets the secondary action content and callback when the action is clicked                |          |
+| setPrimaryAction   | `function` | Sets the primary action content and callback when the action is pressed                  |          |
+| setSecondaryAction | `function` | Sets the secondary action content and callback when the action is pressed                |          |
 
 Below are examples of implementing the data API for the Subscription Management Create extension point.
 

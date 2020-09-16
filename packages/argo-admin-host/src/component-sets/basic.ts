@@ -1,7 +1,7 @@
-import {Clickable, Text, Stack, StackItem} from '../components';
+import {Pressable, Text, Stack, StackItem} from '../components';
 
 export const basicComponents = {
-  Clickable,
+  Pressable,
   Text,
   Stack,
   StackItem,

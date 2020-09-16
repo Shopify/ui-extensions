@@ -4,7 +4,7 @@ export {default as Button} from './Button';
 export {default as Card} from './Card';
 export {default as CardSection} from './CardSection';
 export {default as Checkbox} from './Checkbox';
-export {default as Clickable} from './Clickable';
+export {default as Pressable} from './Pressable';
 export {default as Icon} from './Icon';
 export {default as Modal} from './Modal';
 export {default as Link} from './Link';
