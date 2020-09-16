@@ -6,6 +6,7 @@ export interface RadioButtonProps {
   checked: boolean;
   id: string;
   name: string;
+  value: string;
   onChange: (newValue: string) => void;
 }
 
