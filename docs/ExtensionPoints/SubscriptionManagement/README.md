@@ -100,7 +100,7 @@ The following components are available for all Subscription Management extension
 - [Banner](../../Components/Banner.md)
 - [Button](../../Components/Button.md)
 - [Checkbox](../../Components/Checkbox.md)
-- [Clickable](../../Components/Clickable.md)
+- [Pressable](../../Components/Pressable.md)
 - [Icon](../../Components/Icon.md)
 - [Link](../../Components/Link.md)
 - [OptionList](../../Components/OptionList.md)

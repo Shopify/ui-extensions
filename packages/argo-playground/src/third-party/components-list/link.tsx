@@ -3,7 +3,7 @@ import {Card, Stack, Link} from '@shopify/argo-admin-react';
 
 export function LinkExample() {
   const linkAction = useCallback(() => {
-    console.log('Link clicked');
+    console.log('Link pressed');
   }, []);
 
   return (

@@ -12,8 +12,8 @@ Informs merchants about important changes or persistent conditions. Use this com
   extend(ExtensionPoint.MyExtension, (root) => {
     const banner = root.createComponent(Banner, {
       action:  {
-        onAction: () => console.log('Clicked the action'),
-        content: 'Click me';
+        onAction: () => console.log('Pressed the action'),
+        content: 'Press me';
       };
       status: 'warning';
       title: 'This is a warning';
@@ -39,8 +39,8 @@ function App() {
   return (
     <Banner
       action={{
-        onAction: () => console.log('Clicked the action');
-        content: 'Click me';
+        onAction: () => console.log('Pressed the action');
+        content: 'Press me';
       }}
       status="warning"
       title="This is a warning"
@@ -61,11 +61,11 @@ extend(ExtensionPoint.MyExtension, render(() => <App />));
 | action    | `BannerAction`                                   | Button to display at bottom of banner. |          |
 | status    | `'success'`, `'info'`, `'warning'`, `'critical'` | Colour of the banner.                  |          |
 | title     | `string`                                         | Title of the banner.                   |          |
-| onDismiss | `() => void`                                     | Callback when banner is dismissed.     | ☑️        |
+| onDismiss | `() => void`                                     | Callback when banner is dismissed.     | ☑️       |
 
 ### BannerAction
 
 | Name     | Type         | Description                          | Required |
 | -------- | ------------ | ------------------------------------ | -------- |
-| onAction | `() => void` | Callback when the button is clicked. | ☑️        |
-| content  | `string`     | Button label text.                   | ☑️        |
+| onAction | `() => void` | Callback when the button is pressed. | ☑️       |
+| content  | `string`     | Button label text.                   | ☑️       |

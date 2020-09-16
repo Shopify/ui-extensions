@@ -3,7 +3,7 @@ type Components = typeof import(/* webpackChunkName: 'argo-components' */ '../co
 export type ActionComponents = Components['Button'] | Components['Link'];
 
 export type BasicComponents =
-  | Components['Clickable']
+  | Components['Pressable']
   | Components['Text']
   | Components['Stack']
   | Components['StackItem'];

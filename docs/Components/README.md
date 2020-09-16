@@ -8,7 +8,7 @@ Here is a cumulative list of all available components in Argo.
 - [Card](./Card.md)
 - [CardSection](./CardSection.md)
 - [Checkbox](./Checkbox.md)
-- [Clickable](./Clickable.md)
+- [Pressable](./Pressable.md)
 - [Icon](./Icon.md)
 - [Link](./Link.md)
 - [Modal](./Modal.md)

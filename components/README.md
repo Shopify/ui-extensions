@@ -16,11 +16,11 @@ Links take users to another place, and usually appear within or directly followi
 
 ## Basic
 
-### Clickable
+### Pressable
 
-Clickable component wraps other components to add `onPress()` functionality. Do not use on `Button` or `Link`.
+Pressable component wraps other components to add `onPress()` functionality. Do not use on `Button` or `Link`.
 
-[Cickable API](../packages/argo-admin/src/components/Clickable.ts)
+[Cickable API](../packages/argo-admin/src/components/Pressable.ts)
 
 ### Text
 
