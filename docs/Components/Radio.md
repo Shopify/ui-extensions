@@ -20,7 +20,7 @@ render(ExtensionPoint.MyExtension, (root) => {
   });
   const radio2 = root.createComponent(RadioButton, {
     label: 'Option 2',
-    helpText: 'Help text for option 1.',
+    helpText: 'Help text for option 2.',
     id: 'option2',
     name: 'greatOptions',
     checked: false,
@@ -51,7 +51,7 @@ function App() {
       />
       <RadioButton
         label="Option 2"
-        helpText="Help text for option 1."
+        helpText="Help text for option 2."
         id="option2"
         name="greatOptions"
         checked={false}
@@ -68,9 +68,10 @@ render(ExtensionPoint.MyExtension, () => <App />);
 
 | Name     | Type                         | Description                            | Required |
 | -------- | ---------------------------- | -------------------------------------- | -------- |
-| label    | `string`                     | Label for the radio button.            | ☑️        |
+| label    | `string`                     | Label for the radio button.            | ☑️       |
 | helpText | `string`                     | Additional text to aid in use.         |          |
-| checked  | `boolean`                    | Radio button is selected.              | ☑️        |
-| id       | `string`                     | Unique ID for radio button.            | ☑️        |
-| name     | `string`                     | Name to group radio buttons together.  | ☑️        |
-| onChange | `(newValue: string) => void` | Callback when radio button is toggled. | ☑️        |
+| checked  | `boolean`                    | Radio button is selected.              | ☑️       |
+| id       | `string`                     | Unique ID for radio button.            | ☑️       |
+| name     | `string`                     | Name to group radio buttons together.  | ☑️       |
+| value    | `string`                     | Value of form input on selected        | ☑️       |
+| onChange | `(newValue: string) => void` | Callback when radio button is toggled. | ☑️       |
