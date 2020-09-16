@@ -81,7 +81,8 @@ export function ArgoExtension<T extends ExtensionPoint>({
         return;
       }
       try {
-        await worker.render(extensionPoint, api, componentsList, (type, ...args) => {
+        const _api = {...api, extensionPoint};
+        await worker.render(extensionPoint, _api, componentsList, (type, ...args) => {
           // Have a proper fix in remote-ui core library later
           // Ref: https://github.com/Shopify/app-extension-libs/issues/436#issuecomment-622008563
           retain(args);

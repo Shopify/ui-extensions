@@ -5,6 +5,7 @@ import {
   Button,
   TextField,
   Text,
+  useExtensionApi,
   useLayout,
   useLocale,
   useToast,
@@ -12,6 +13,7 @@ import {
 } from '@shopify/argo-admin-react';
 
 export function ExtensionApiExample() {
+  const {extensionPoint} = useExtensionApi();
   const layout = useLayout();
   const locale = useLocale();
   const {show: showToast} = useToast();
@@ -20,6 +22,9 @@ export function ExtensionApiExample() {
 
   return (
     <>
+      <Card sectioned title="Extension point">
+        <Text>{extensionPoint}</Text>
+      </Card>
       <Card sectioned title="useLayout">
         <Text>{JSON.stringify(layout) || 'undefined'}</Text>
       </Card>
