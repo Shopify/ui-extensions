@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 export interface LinkProps {
-  onClick?: () => void;
+  onPress?: () => void;
   external?: boolean;
   url?: string;
 }

@@ -1,6 +1,6 @@
 # Clickable
 
-Clickable allows you to add an onClick callback function to any component.
+Clickable allows you to add an onPress callback function to any component.
 
 ## Examples
 
@@ -11,7 +11,7 @@ import {extend, ExtensionPoint, Clickable, Text} from '@shopify/argo-admin';
 
 extend(ExtensionPoint.MyExtension, (root) => {
   const clickable = root.createComponent(Clickable, {
-    onClick: () => console.log('I’ve been clicked!'),
+    onPress: () => console.log('I’ve been clicked!'),
   });
 
   const clickableText = root.createComponent(Text, {
@@ -31,7 +31,7 @@ extend(ExtensionPoint.MyExtension, (root) => {
 import {extend, render, ExtensionPoint, Clickable} from '@shopify/argo-admin-react';
 
 function App() {
-  return <Clickable onClick={() => console.log('I’ve been clicked!')}>I can be clicked</Clickable>;
+  return <Clickable onPress={() => console.log('I’ve been clicked!')}>I can be clicked</Clickable>;
 }
 
 extend(
@@ -44,4 +44,4 @@ extend(
 
 | Name    | Type         | Description                 | Required |
 | ------- | ------------ | --------------------------- | -------- |
-| onClick | `() => void` | Callback for the clickable. | ☑️       |
+| onPress | `() => void` | Callback for the clickable. | ☑️       |

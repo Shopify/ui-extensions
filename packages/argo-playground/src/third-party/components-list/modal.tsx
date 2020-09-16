@@ -52,7 +52,7 @@ export function ModalExample() {
           checked={modalShowSecondaryActions}
           onChange={setModalShowSecondaryActions}
         />
-        <Button title="Open modal" onClick={() => setModalOpen(true)} />
+        <Button title="Open modal" onPress={() => setModalOpen(true)} />
       </Stack>
       <Modal
         title="Edit subscription plan"

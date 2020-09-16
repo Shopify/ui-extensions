@@ -17,7 +17,7 @@ export default function TextField({
   clearButton,
   error,
   multiline,
-  onClearButtonClick,
+  onClearButtonPress,
   placeholder,
   suffix,
   type,
@@ -26,7 +26,7 @@ export default function TextField({
   const connectedLeft = type === 'search' ? <Icon source="searchMinor" /> : undefined;
   const polarisOnBlur = useCallback(() => onBlur(), [onBlur]);
   const polarisOnFocus = useCallback(() => onFocus(), [onFocus]);
-  const polarisOnClearButtonClick = useCallback(() => onClearButtonClick?.(), [onClearButtonClick]);
+  const polarisOnClearButtonClick = useCallback(() => onClearButtonPress?.(), [onClearButtonPress]);
 
   return (
     <PolarisTextField

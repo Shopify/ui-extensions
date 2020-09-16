@@ -30,8 +30,8 @@ export function isExternalLink(url: string) {
   return url.startsWith('/') && !url.startsWith('/admin');
 }
 
-export default function Link({children, external, onClick, url}: LinkProps) {
-  const polarisOnClick = useCallback(() => onClick?.(), [onClick]);
+export default function Link({children, external, onPress, url}: LinkProps) {
+  const polarisOnClick = useCallback(() => onPress?.(), [onPress]);
 
   if (!url) {
     return <PolarisLink onClick={polarisOnClick}>{children}</PolarisLink>;

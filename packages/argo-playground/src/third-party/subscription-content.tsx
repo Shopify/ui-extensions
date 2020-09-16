@@ -132,7 +132,7 @@ function AddSubscription() {
             <ResourceItem
               key={index}
               id={`${index}`}
-              onClick={() => {
+              onPress={() => {
                 console.log('ResourceList item toggle:', item);
                 if (selectedItems.includes(item)) {
                   setSelectedItems(selectedItems.filter((_item) => _item !== item));
@@ -170,10 +170,10 @@ function EditSubscription() {
     close();
   }, [close, showToast]);
 
-  const primaryActionButton = useMemo(() => <Button title="Save" onClick={onSuccess} primary />, [
+  const primaryActionButton = useMemo(() => <Button title="Save" onPress={onSuccess} primary />, [
     onSuccess,
   ]);
-  const secondaryActionButton = useMemo(() => <Button title="Cancel" onClick={onCancel} />, [
+  const secondaryActionButton = useMemo(() => <Button title="Cancel" onPress={onCancel} />, [
     onCancel,
   ]);
 
@@ -207,7 +207,7 @@ function EditSubscription() {
         <CardSection>
           <Text>
             This is an example of an app extension inside a full screen container, we are calling it
-            "App Overlay" for the time being. This <Link onClick={close}>link</Link> will close the
+            "App Overlay" for the time being. This <Link onPress={close}>link</Link> will close the
             the container.
           </Text>
         </CardSection>

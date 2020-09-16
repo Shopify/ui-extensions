@@ -5,15 +5,15 @@ import styles from './Header.scss';
 export interface Props {
   icon?: React.ReactElement;
   accessibilityLabel?: string;
-  onClick: () => void;
+  onPress: () => void;
   children?: React.ReactNode;
 }
 
-export function Button({children, icon, accessibilityLabel, onClick}: Props) {
+export function Button({children, icon, accessibilityLabel, onPress}: Props) {
   return (
     <button
       type="button"
-      onClick={onClick}
+      onClick={onPress}
       aria-label={accessibilityLabel}
       className={styles.HeaderButton}
     >

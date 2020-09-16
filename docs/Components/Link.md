@@ -17,7 +17,7 @@ extend(ExtensionPoint.MyExtension, (root) => {
   link.appendChild('The best product ever!');
 
   const logLink = root.createComponent(Link, {
-    onClick: () => console.log('I was clicked'),
+    onPress: () => console.log('I was clicked'),
   });
   logLink.appendChild('I don’t do much.');
 
@@ -39,7 +39,7 @@ function App() {
       <Link url="https://shopify.com" external>
         The best product ever!
       </Link>
-      <Link onClick={() => console.log('I was clicked.')}>I don't do much.</Link>
+      <Link onPress={() => console.log('I was clicked.')}>I don't do much.</Link>
     </>
   );
 }
@@ -54,6 +54,6 @@ extend(
 
 | Name     | Type         | Description                        | Required |
 | -------- | ------------ | ---------------------------------- | -------- |
-| onClick  | `() => void` | Callback when the link is clicked. |          |
+| onPress  | `() => void` | Callback when the link is clicked. |          |
 | external | `boolean`    | Makes the link open in a new tab.  |          |
 | url      | `string`     | The URL to link to.                |          |
