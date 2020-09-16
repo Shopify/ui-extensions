@@ -30,7 +30,7 @@ export function ExtensionApiExample() {
         <Stack vertical>
           <Button
             title="Generate new sessionToken"
-            onClick={() =>
+            onPress={() =>
               getSessionToken().then((newSessionToken) => setSessionToken(newSessionToken))
             }
           />
@@ -39,10 +39,10 @@ export function ExtensionApiExample() {
       </Card>
       <Card sectioned title="useToast">
         <Stack>
-          <Button title="Show toast" onClick={() => showToast('Show toast')} />
+          <Button title="Show toast" onPress={() => showToast('Show toast')} />
           <Button
             title="Show error toast"
-            onClick={() => showToast('Show error toast', {error: true})}
+            onPress={() => showToast('Show error toast', {error: true})}
           />
         </Stack>
       </Card>

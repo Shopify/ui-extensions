@@ -38,7 +38,7 @@ export default function Header({launchUrl, icon, onClose = () => {}, title}: Pro
   }, []);
 
   const activatorMarkup = (
-    <Button onClick={togglePopoverActive} accessibilityLabel="Shows additional actions">
+    <Button onPress={togglePopoverActive} accessibilityLabel="Shows additional actions">
       <Icon source={HorizontalDotsMinor} color="indigoDark" />
     </Button>
   );
@@ -74,7 +74,7 @@ export default function Header({launchUrl, icon, onClose = () => {}, title}: Pro
       <Stack alignment="center" wrap={false}>
         <Button
           icon={<Icon source={ChevronLeftMinor} color="indigoDark" />}
-          onClick={onClose}
+          onPress={onClose}
           accessibilityLabel="Close App Extension"
         >
           <ShopifyLogoMono />

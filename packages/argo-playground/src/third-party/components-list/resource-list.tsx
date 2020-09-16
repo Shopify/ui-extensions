@@ -37,7 +37,7 @@ export function ResourceListExample() {
           <ResourceItem
             key={index}
             id={`${index}`}
-            onClick={() => {
+            onPress={() => {
               console.log('ResourceList item toggle:', item);
               if (selectedItems.includes(item)) {
                 setSelectedItems(selectedItems.filter((_item) => _item !== item));

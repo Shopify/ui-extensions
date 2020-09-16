@@ -24,7 +24,7 @@ It has a range of options and supports several text formats including numbers.
       onFocus: () => console.log('Welcome to the super field!'),
       onBlur: () => console.log('Left to do something else'),
       clearButton: true,
-      onClearButtonClick: () => console.log('Clear that silly statement'),
+      onClearButtonPress: () => console.log('Clear that silly statement'),
     });
 
     root.appendChild(textfield);
@@ -52,7 +52,7 @@ function App() {
       onFocus={() => console.log('Welcome to the super field!')}
       onBlur={() => console.log('Left to do something else')}
       clearButton
-      onClearButtonClick={() => console.log('Clear that silly statement')}
+      onClearButtonPress={() => console.log('Clear that silly statement')}
     />
   );
 }
@@ -79,4 +79,4 @@ extend(
 | onFocus            | `() => void`                     | Callback when input is focused.        |          |
 | onBlur             | `() => void`                     | Callback when focus is removed.        |          |
 | clearButton        | `boolean`                        | Show a clear text button in the input. |          |
-| onClearButtonClick | `(string) => void`               | Callback when clear button is clicked. |          |
+| onClearButtonPress | `(string) => void`               | Callback when clear button is clicked. |          |

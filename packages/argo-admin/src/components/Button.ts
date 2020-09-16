@@ -6,7 +6,7 @@ export interface ButtonProps {
   title: string;
   primary?: boolean;
   icon?: IconProps;
-  onClick?(): void;
+  onPress?(): void;
   disabled?: boolean;
 }
 

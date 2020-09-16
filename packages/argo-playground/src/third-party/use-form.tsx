@@ -61,8 +61,8 @@ function App() {
           onBlur={fields.color.onBlur}
           error={fields.color.error}
         />
-        <Button title="Reset" onClick={reset} />
-        <Button title="Submit" onClick={submit} />
+        <Button title="Reset" onPress={reset} />
+        <Button title="Submit" onPress={submit} />
       </Stack>
     </Card>
   );

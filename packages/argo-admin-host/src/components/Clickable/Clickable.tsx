@@ -4,13 +4,13 @@ import {Clickable as ArgoClickable} from '@shopify/argo-admin-react';
 
 type ClickableProps = ReactPropsFromRemoteComponentType<typeof ArgoClickable>;
 
-export default function Clickable({onClick, children}: ClickableProps) {
+export default function Clickable({onPress, children}: ClickableProps) {
   const polarisOnClick = useCallback(
     (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
       event.stopPropagation();
-      onClick();
+      onPress();
     },
-    [onClick],
+    [onPress],
   );
   // Need to make accessible
   // eslint-disable-next-line jsx-a11y/click-events-have-key-events

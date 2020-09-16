@@ -7,7 +7,7 @@ const SORT_ICON: IconProps = {
 
 export function ButtonExample() {
   const [buttonValue, setButtonValue] = useState(0);
-  const onButtonClick = useCallback(() => {
+  const onButtonPress = useCallback(() => {
     setButtonValue((value) => value + 1);
   }, []);
 
@@ -16,13 +16,13 @@ export function ButtonExample() {
       <Stack>
         <Button title="Sort" icon={SORT_ICON} />
         <Button title="Delete" />
-        <Button title={`Publish review ${buttonValue || ''}`} primary onClick={onButtonClick} />
+        <Button title={`Publish review ${buttonValue || ''}`} primary onPress={onButtonPress} />
         <Button title="Sort" icon={SORT_ICON} disabled />
         <Button title="Delete" disabled />
         <Button
           title={`Publish review ${buttonValue || ''}`}
           primary
-          onClick={onButtonClick}
+          onPress={onButtonPress}
           disabled
           icon={SORT_ICON}
         />

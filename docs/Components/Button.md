@@ -13,7 +13,7 @@ extend(ExtensionPoint.MyExtension, (root) => {
   const button = root.createComponent(Button, {
     title: 'Click Me',
     primary: true,
-    onClick: () => console.log('Clicked'),
+    onPress: () => console.log('Clicked'),
     disabled: false,
   });
 
@@ -29,7 +29,7 @@ import {extend, render, ExtensionPoint, Button} from '@shopify/argo-admin-react'
 
 function App() {
   return (
-    <Button title="Click Me" primary onClick={() => console.log('Clicked')} disabled={false} />
+    <Button title="Click Me" primary onPress={() => console.log('Clicked')} disabled={false} />
   );
 }
 
@@ -41,10 +41,10 @@ extend(
 
 ## Props API
 
-| Name     | Type         | Description                                                                         | Required |
-| -------- | ------------ | ----------------------------------------------------------------------------------- | -------- |
-| title    | `string`     | Button label text.                                                                  | ☑️        |
+| Name     | Type         | Description                                                                                              | Required |
+| -------- | ------------ | -------------------------------------------------------------------------------------------------------- | -------- |
+| title    | `string`     | Button label text.                                                                                       | ☑️       |
 | primary  | `boolean`    | Provides extra visual weight and identifies the primary action in a set of buttons. Defaults to `false`. |          |
-| icon     | `IconProps`  | See [Icon](./Icon.md).                                                              |          |
-| onClick  | `() => void` | Callback when clicked                                                               |          |
-| disabled | `boolean`    | Disables the button, disallowing interaction.                                       |          |
+| icon     | `IconProps`  | See [Icon](./Icon.md).                                                                                   |          |
+| onPress  | `() => void` | Callback when clicked                                                                                    |          |
+| disabled | `boolean`    | Disables the button, disallowing interaction.                                                            |          |

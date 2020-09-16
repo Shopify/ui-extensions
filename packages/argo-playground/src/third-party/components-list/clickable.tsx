@@ -15,12 +15,12 @@ export function ClickableExample() {
 
   return (
     <Card sectioned title={`Clickable component ${clickableValue ? `(${clickableValue})` : ''}`}>
-      <Clickable onClick={clickHandlerCard}>
+      <Clickable onPress={clickHandlerCard}>
         <Stack>
-          <Clickable onClick={clickHandlerYellow}>
+          <Clickable onPress={clickHandlerYellow}>
             <Icon source="starFilled" color="yellow" />
           </Clickable>
-          <Clickable onClick={clickHandlerBlue}>
+          <Clickable onPress={clickHandlerBlue}>
             <Icon source="starFilled" color="blue" />
           </Clickable>
           <Text>Click Yellow, Blue star, and me</Text>

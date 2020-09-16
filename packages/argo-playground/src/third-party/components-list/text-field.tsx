@@ -17,7 +17,7 @@ export function TextFieldExample() {
           value={name}
           onAfterChange={setName}
           clearButton
-          onClearButtonClick={clearName}
+          onClearButtonPress={clearName}
         />
         {name && <Text>Hello {name}</Text>}
         <TextField

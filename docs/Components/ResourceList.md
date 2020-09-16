@@ -15,12 +15,12 @@ import {extend, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-
 extend(ExtensionPoint.MyExtension, (root) => {
   const resourceitem1 = root.createComponent(ResourceItem, {
     id: '1234',
-    onClick: () => console.log('Clicked 1'),
+    onPress: () => console.log('Clicked 1'),
   });
   resourceitem1.appendChild('Cool item');
   const resourceitem2 = root.createComponent(ResourceItem, {
     id: '5678',
-    onClick: () => console.log('Clicked 2'),
+    onPress: () => console.log('Clicked 2'),
   });
   resourceitem2.appendChild('Cooler item');
 
@@ -56,10 +56,10 @@ function App() {
         onQueryClear: () => console.log('Clear filters')
       }
     >
-      <ResourceItem id="1234" onClick={() => console.log('Clicked 1')}>
+      <ResourceItem id="1234" onPress={() => console.log('Clicked 1')}>
         Cool item
       </ResourceItem>
-      <ResourceItem id="5678" onClick={() => console.log('Clicked 2')}>
+      <ResourceItem id="5678" onPress={() => console.log('Clicked 2')}>
         Cooler item
       </ResourceItem>
     </ResourceList>
@@ -84,5 +84,5 @@ extend(
 | ---------------- | ------------------ | ----------- | -------- |
 | queryValue       | `string`           |             |          |
 | queryPlaceholder | `string`           |             |          |
-| onQueryChange    | `(string) => void` |             | ☑️        |
-| onQueryClear     | `() => void`       |             | ☑️        |
+| onQueryChange    | `(string) => void` |             | ☑️       |
+| onQueryClear     | `() => void`       |             | ☑️       |
