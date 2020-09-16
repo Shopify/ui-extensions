@@ -90,11 +90,11 @@ A checkbox is an input field that merchants can choose selected options.
 
 [Checkbox API](../packages/argo-admin/src/components/Checkbox.ts)
 
-### Radio Button
+### Radio
 
-Use radio buttons where merchants must make a single selection.
+Use radios where merchants must make a single selection.
 
-[Radio Button API](../packages/argo-admin/src/components/RadioButton.ts)
+[Radio API](../packages/argo-admin/src/components/Radio.ts)
 
 ### Select
 

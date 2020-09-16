@@ -12,7 +12,7 @@ export type FeedbackComponents = Components['Badge'] | Components['Banner'];
 
 export type FormComponents =
   | Components['Checkbox']
-  | Components['RadioButton']
+  | Components['Radio']
   | Components['Select']
   | Components['TextField'];
 

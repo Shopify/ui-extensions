@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export interface RadioButtonProps {
+export interface RadioProps {
   label: string;
   helpText?: string;
   checked: boolean;
@@ -10,4 +10,4 @@ export interface RadioButtonProps {
   onChange: (newValue: string) => void;
 }
 
-export const RadioButton = createRemoteComponent<'RadioButton', RadioButtonProps>('RadioButton');
+export const Radio = createRemoteComponent<'Radio', RadioProps>('Radio');
