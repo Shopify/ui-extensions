@@ -13,9 +13,11 @@ import {
 
 export {ExtensionPoint};
 
-type StandardApi = LayoutApi & LocaleApi & SessionTokenApi;
+type StandardApi<T extends ExtensionPoint> = {extensionPoint: T} & LayoutApi &
+  LocaleApi &
+  SessionTokenApi;
 
-type SubscriptionApi<T extends ExtensionPoint> = StandardApi &
+type SubscriptionApi<T extends ExtensionPoint> = StandardApi<T> &
   ContainerApi<T> &
   ToastApi &
   DataApi<T>;
@@ -28,8 +30,8 @@ export type RenderableExtensionCallback<Api, Root extends RemoteRoot> = (
 ) => ExtensionResult;
 
 export interface ExtensionApi {
-  [ExtensionPoint.AppLink]: StandardApi;
-  [ExtensionPoint.Playground]: StandardApi;
+  [ExtensionPoint.AppLink]: StandardApi<ExtensionPoint.AppLink>;
+  [ExtensionPoint.Playground]: StandardApi<ExtensionPoint.Playground>;
 
   // Subscription Management
   [ExtensionPoint.SubscriptionManagementCreate]: SubscriptionApi<
@@ -49,11 +51,11 @@ export interface ExtensionApi {
 export interface ExtensionPointCallback {
   // Dev
   [ExtensionPoint.AppLink]: RenderableExtensionCallback<
-    StandardApi,
+    StandardApi<ExtensionPoint.AppLink>,
     RemoteRoot<ExtensionPointSchema['AppLink']>
   >;
   [ExtensionPoint.Playground]: RenderableExtensionCallback<
-    StandardApi,
+    StandardApi<ExtensionPoint.Playground>,
     RemoteRoot<ExtensionPointSchema['Playground']>
   >;
 
