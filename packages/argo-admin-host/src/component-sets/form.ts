@@ -1,8 +1,8 @@
-import {Checkbox, RadioButton, Select, TextField} from '../components';
+import {Checkbox, Radio, Select, TextField} from '../components';
 
 export const formComponents = {
   Checkbox,
-  RadioButton,
+  Radio,
   Select,
   TextField,
 };

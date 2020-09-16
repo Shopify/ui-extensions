@@ -6,7 +6,7 @@ import {BadgeExample} from './badge';
 import {BannerExample} from './banner';
 import {ButtonExample} from './button';
 import {ExtensionApiExample} from './extension-api';
-import {RadioButtonExample} from './radio';
+import {RadioExample} from './radio';
 import {CardExample} from './card';
 import {PressableExample} from './pressable';
 import {ModalExample} from './modal';
@@ -32,7 +32,7 @@ function App() {
       <IconExample />
       <LinkExample />
       <ModalExample />
-      <RadioButtonExample />
+      <RadioExample />
       <OptionListExample />
       <ResourceListExample />
       <SelectExample />

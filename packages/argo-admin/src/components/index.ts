@@ -9,7 +9,7 @@ export * from './Icon';
 export * from './Modal';
 export * from './Link';
 export * from './Page';
-export * from './RadioButton';
+export * from './Radio';
 export * from './ResourceItem';
 export * from './ResourceList';
 export * from './Select';
