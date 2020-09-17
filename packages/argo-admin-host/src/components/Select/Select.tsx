@@ -11,7 +11,7 @@ export default function Select({
   onBlur,
   value,
 }: SelectProps) {
-  const polarisOnChange = useCallback((selected) => onChange(selected), [onChange]);
+  const polarisOnChange = useCallback((selected) => onChange?.(selected), [onChange]);
   const polarisOnBlur = useMemo(() => (onBlur ? () => onBlur() : undefined), [onBlur]);
   return (
     <PolarisSelect

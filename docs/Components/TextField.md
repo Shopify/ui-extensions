@@ -67,7 +67,7 @@ extend(
 
 | Name               | Type                             | Description                            | Required |
 | ------------------ | -------------------------------- | -------------------------------------- | -------- |
-| label              | `string`                         | Label for the input.                   |          |
+| label              | `string`                         | Label for the input.                   | ☑️       |
 | type               | `'text'`, `'search'`, `'number'` | Type of the input.                     |          |
 | value              | `string`                         | Initial value for the input.           |          |
 | placeholder        | `string`                         | Hint text to display.                  |          |
