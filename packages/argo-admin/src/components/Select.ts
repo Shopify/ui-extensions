@@ -7,12 +7,12 @@ interface Option {
 
 export interface SelectProps {
   error?: string;
-  label?: string;
+  label: string;
   labelInline?: boolean;
   options: Option[];
-  onChange: (value: string) => void;
+  onChange?: (value: string) => void;
   onBlur?: () => void;
-  value: string;
+  value?: string;
 }
 
 export const Select = createRemoteComponent<'Select', SelectProps>('Select');

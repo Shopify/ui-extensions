@@ -5,8 +5,8 @@ export interface RadioProps {
   checked?: boolean;
   id?: string;
   name: string;
-  value: string;
-  onChange: (newValue: string) => void;
+  value?: string;
+  onChange?: (newValue: string) => void;
 }
 
 export const Radio = createRemoteComponent<'Radio', RadioProps>('Radio');

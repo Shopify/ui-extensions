@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 export interface TextFieldProps {
-  label?: string;
+  label: string;
   type?: 'text' | 'search' | 'number';
   value?: string;
   placeholder?: string;
