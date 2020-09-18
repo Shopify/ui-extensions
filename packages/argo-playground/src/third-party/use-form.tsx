@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+  extend,
   render,
   Banner,
   Button,
@@ -67,4 +68,7 @@ function App() {
   );
 }
 
-render(ExtensionPoint.Playground, () => <App />);
+extend(
+  ExtensionPoint.Playground,
+  render(() => <App />),
+);

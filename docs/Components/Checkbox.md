@@ -7,9 +7,9 @@ Checkboxes are most commonly used to give merchants a way to make a range of sel
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Checkbox} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Checkbox} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const checkbox = root.createComponent(Checkbox, {
     label: 'Opt in to something cool',
     checked: true,
@@ -25,7 +25,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, Checkbox} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Checkbox} from '@shopify/argo-admin-react';
 
 function App() {
   return (
@@ -35,7 +35,10 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API

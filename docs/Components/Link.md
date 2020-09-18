@@ -7,9 +7,9 @@ Links take users to another place, and usually appear within or directly followi
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Link} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Link} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const link = root.createComponent(Link, {
     url: 'https://shopify.com',
     external: true,
@@ -31,7 +31,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, Link} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Link} from '@shopify/argo-admin-react';
 
 function App() {
   return (
@@ -44,7 +44,10 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API

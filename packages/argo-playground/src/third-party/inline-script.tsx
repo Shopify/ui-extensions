@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
+  extend,
   render,
   useSessionToken,
   ExtensionPoint,
@@ -26,4 +27,7 @@ function App() {
   );
 }
 
-render(ExtensionPoint.Playground, () => <App />);
+extend(
+  ExtensionPoint.Playground,
+  render(() => <App />),
+);

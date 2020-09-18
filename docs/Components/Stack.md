@@ -9,7 +9,7 @@ Use [StackItem](./StackItem) to group multiple elements inside a Stack together.
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Stack, Text} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Stack, Text} from '@shopify/argo-admin';
 
 function buildInlineText(root) {
   const text = root.createComponent(Text);
@@ -23,7 +23,7 @@ function buildStackText(root) {
   return text;
 }
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const vStack = root.createComponent(Stack, {
     vertical: true,
   });
@@ -53,7 +53,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, Stack, Text} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Stack, Text} from '@shopify/argo-admin-react';
 
 function App() {
   return (
@@ -70,7 +70,10 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API

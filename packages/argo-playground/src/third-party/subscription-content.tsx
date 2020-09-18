@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import {
+  extend,
   render,
   useContainer,
   useData,
@@ -219,11 +220,19 @@ function EditSubscription() {
   );
 }
 
-render(ExtensionPoint.SubscriptionManagementEdit, () => <EditSubscription />);
-render(ExtensionPoint.SubscriptionManagementRemove, () => (
-  <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementRemove} />
-));
-render(ExtensionPoint.SubscriptionManagementAdd, () => <AddSubscription />);
-render(ExtensionPoint.SubscriptionManagementCreate, () => (
-  <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementCreate} />
-));
+extend(
+  ExtensionPoint.SubscriptionManagementEdit,
+  render(() => <EditSubscription />),
+);
+extend(
+  ExtensionPoint.SubscriptionManagementRemove,
+  render(() => <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementRemove} />),
+);
+extend(
+  ExtensionPoint.SubscriptionManagementAdd,
+  render(() => <AddSubscription />),
+);
+extend(
+  ExtensionPoint.SubscriptionManagementCreate,
+  render(() => <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementCreate} />),
+);

@@ -9,9 +9,9 @@ Below are examples of implementing the data API for the Subscription Management 
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, Text} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Text} from '@shopify/argo-admin';
 
-render(ExtensionPoint.SubscriptionManagementAdd, (root, api) => {
+extend(ExtensionPoint.SubscriptionManagementAdd, (root, api) => {
   const {productId, variantId} = api.data;
 
   const productDataText = root.createComponent(Text);
@@ -28,9 +28,8 @@ render(ExtensionPoint.SubscriptionManagementAdd, (root, api) => {
 
 #### React
 
-```js
-import {ExtensionPoint, Text} from '@shopify/argo-admin';
-import {render, useData} from '@shopify/argo-admin-react';
+```jsx
+import {extend, render, ExtensionPoint, Text, useData} from '@shopify/argo-admin-react';
 
 function App() {
   const {productId, variantId} = useData();
@@ -46,7 +45,10 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Extension Points with Data API

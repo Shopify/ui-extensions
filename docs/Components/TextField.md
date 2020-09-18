@@ -8,9 +8,9 @@ It has a range of options and supports several text formats including numbers.
 #### Vanilla
 
 ```js
-  import {render, ExtensionPoint, TextField} from '@shopify/argo-admin';
+  import {extend, ExtensionPoint, TextField} from '@shopify/argo-admin';
 
-  render(ExtensionPoint.MyExtension, (root) => {
+  extend(ExtensionPoint.MyExtension, (root) => {
     const textfield = root.createComponent(TextField, {
       label: 'Super text field',
       type: 'text';
@@ -35,7 +35,7 @@ It has a range of options and supports several text formats including numbers.
 #### React
 
 ```jsx
-import {render, ExtensionPoint, TextField} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, TextField} from '@shopify/argo-admin-react';
 
 function App() {
   return (
@@ -57,7 +57,10 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API

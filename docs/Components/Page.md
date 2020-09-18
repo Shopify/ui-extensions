@@ -7,9 +7,9 @@ Use to build the outer wrapper of a page, including the page title and associate
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Page} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Page} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const page = root.createComponent(Page, {});
 
   page.appendChild('This is the best extension.');
@@ -22,13 +22,16 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, Page} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Page} from '@shopify/argo-admin-react';
 
 function App() {
   return <Page>This is the best extension.</Page>;
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API

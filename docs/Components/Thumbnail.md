@@ -7,9 +7,9 @@ Use thumbnails as a visual anchor and identifier for an object. They should be u
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Thumbnail} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Thumbnail} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const thumbnail = root.createComponent(Thumbnail, {
     size: 'small',
     scaleType: 'fit',
@@ -25,7 +25,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, Thumbnail} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Thumbnail} from '@shopify/argo-admin-react';
 
 function App() {
   return (
@@ -38,13 +38,16 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API
 
-| Name      | Type                            | Description                         | Required |
-| --------- | ------------------------------- | ----------------------------------- | -------- |
-| size      | `'small'`,`'medium'`, `'large'` | Size of the thumbnail.              |          |
-| source    | `string`                        | URL for the image.                  |          |
-| alt       | `string`                        | Alt text for the thumbnail.         |          |
+| Name   | Type                            | Description                 | Required |
+| ------ | ------------------------------- | --------------------------- | -------- |
+| size   | `'small'`,`'medium'`, `'large'` | Size of the thumbnail.      |          |
+| source | `string`                        | URL for the image.          |          |
+| alt    | `string`                        | Alt text for the thumbnail. |          |

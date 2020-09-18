@@ -7,9 +7,9 @@ Icons are used to visually communicate available actions. They can act as wayfin
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Icon} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Icon} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const icon = root.createComponent(Icon, {
     source: 'cancelSmallMinor',
     color: 'blue',
@@ -25,20 +25,23 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, Icon} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Icon} from '@shopify/argo-admin-react';
 
 function App() {
   return <Icon source="cancelSmallMinor" color="blue" />;
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API
 
 | Name               | Type     | Description                                   | Required |
 | ------------------ | -------- | --------------------------------------------- | -------- |
-| source             | `Source` | The icon content to display.                  | ☑️        |
+| source             | `Source` | The icon content to display.                  | ☑️       |
 | color              | `Color`  | Set the color for the icon fill.              |          |
 | accessibilityLabel | `string` | Descriptive text to be read to screenreaders. |          |
 

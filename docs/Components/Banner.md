@@ -7,9 +7,9 @@ Informs merchants about important changes or persistent conditions. Use this com
 #### Vanilla
 
 ```js
-  import {render, ExtensionPoint, Banner} from '@shopify/argo-admin';
+  import {extend, ExtensionPoint, Banner} from '@shopify/argo-admin';
 
-  render(ExtensionPoint.MyExtension, (root) => {
+  extend(ExtensionPoint.MyExtension, (root) => {
     const banner = root.createComponent(Banner, {
       action:  {
         onAction: () => console.log('Clicked the action'),
@@ -33,7 +33,7 @@ Informs merchants about important changes or persistent conditions. Use this com
 #### React
 
 ```jsx
-import {render, ExtensionPoint, Banner} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Banner} from '@shopify/argo-admin-react';
 
 function App() {
   return (
@@ -51,7 +51,7 @@ function App() {
   )
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(ExtensionPoint.MyExtension, render(() => <App />));
 ```
 
 ## Props API

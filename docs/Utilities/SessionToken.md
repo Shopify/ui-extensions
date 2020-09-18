@@ -7,9 +7,9 @@ Get a fresh session token for communication with your app's backend.
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, TextField} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, TextField} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root, api) => {
+extend(ExtensionPoint.MyExtension, (root, api) => {
   const {sessionToken} = api;
   const text = root.createComponent(TextField, {
     disabled: true,
@@ -31,7 +31,13 @@ render(ExtensionPoint.MyExtension, (root, api) => {
 #### React
 
 ```js
-import {render, useSessionToken, ExtensionPoint, TextField} from '@shopify/argo-admin-react';
+import {
+  extend,
+  render,
+  useSessionToken,
+  ExtensionPoint,
+  TextField,
+} from '@shopify/argo-admin-react';
 
 function App() {
   const {getSessionToken} = useSessionToken();
@@ -46,11 +52,14 @@ function App() {
   return <TextField label="Session Token" value={token} disabled />;
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Session Token API
 
-| Name            | Type                                | Description                 | Required |
-| --------------- | ----------------------------------- | --------------------------- | -------- |
-| getSessionToken | `() => Promise<string \| undefined>` | Get a fresh session token. | ☑️        |
+| Name            | Type                                 | Description                | Required |
+| --------------- | ------------------------------------ | -------------------------- | -------- |
+| getSessionToken | `() => Promise<string \| undefined>` | Get a fresh session token. | ☑️       |
