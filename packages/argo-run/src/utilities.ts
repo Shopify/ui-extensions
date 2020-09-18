@@ -73,11 +73,11 @@ export function readEnvFile() {
 
   for (const entry of lines) {
     const matches = entry.match(/(.*?)=(.*)/);
-    if (!matches || !matches[1] || !matches[2]) {
+    if (!matches || !matches[1]) {
       throw new Error(`Can't parse: ${entry}`);
     }
 
-    parsedEnv[matches[1].trim()] = matches[2].trim();
+    parsedEnv[matches[1].trim()] = (matches[2] || '').trim();
   }
 
   return parsedEnv;
