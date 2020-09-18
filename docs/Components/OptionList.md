@@ -7,9 +7,9 @@ The option list component lets you create a list of grouped items that merchants
 #### Vanilla
 
 ```js
-import {ExtensionPoint, render, OptionsList} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, OptionsList} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const options = [
     {label: 'Red', value: 'red', disabled: false},
     {label: 'Green', value: 'green', disabled: false},
@@ -35,8 +35,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {ExtensionPoint, OptionList} from '@shopify/argo-admin';
-import {render} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, OptionList} from '@shopify/argo-admin-react';
 
 function App() {
   const options = [
@@ -55,7 +54,10 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API

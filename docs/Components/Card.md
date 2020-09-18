@@ -7,9 +7,9 @@ Cards are used to group similar concepts and tasks together to make Shopify easi
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Card} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Card} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const card = root.createComponent(Card, {});
 
   card.appendChild('This is the best extension.');
@@ -22,13 +22,16 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, Card} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Card} from '@shopify/argo-admin-react';
 
 function App() {
   return <Card>This is the best extension.</Card>;
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API
@@ -44,6 +47,6 @@ render(ExtensionPoint.MyExtension, () => <App />);
 
 | Name        | Type         | Description                                           | Required |
 | ----------- | ------------ | ----------------------------------------------------- | -------- |
-| content     | `string`     | Action label text.                                    | ☑️        |
+| content     | `string`     | Action label text.                                    | ☑️       |
 | destructive | `boolean`    | Indicates a dangerous or potentially negative action. |          |
 | onAction    | `() => void` | Callback for the action.                              |          |

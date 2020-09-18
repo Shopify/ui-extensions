@@ -28,7 +28,7 @@ export interface RenderExtensionComponentProps<T extends ExtensionPoint> {
   components?: {[key: string]: any};
 }
 
-export function render<T extends ExtensionPoint>(
+export function extend<T extends ExtensionPoint>(
   extensionPoint: T,
   callback: ExtensionPointCallback[T],
 ) {

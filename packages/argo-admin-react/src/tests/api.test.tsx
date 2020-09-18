@@ -17,25 +17,21 @@ jest.mock('react', () => ({
 
 jest.mock('@shopify/argo-admin', () => ({
   ...require.requireActual('@shopify/argo-admin'),
-  render: jest.fn(),
+  extend: jest.fn(),
 }));
 
-const coreRender = require.requireMock('@shopify/argo-admin').render;
+const extend = require.requireMock('@shopify/argo-admin').extend;
 const reactCreateElement = require.requireMock('react').createElement;
 
-describe('render()', () => {
-  it('calls shopify argo renderer', () => {
-    render(ExtensionPoint.Playground, () => <div />);
-
-    expect(coreRender).toHaveBeenCalledWith(ExtensionPoint.Playground, expect.any(Function));
-    coreRender.mockReset();
-  });
-
+describe('extend()', () => {
   it('calls remote render with generated element', () => {
     reactCreateElement.mockReset();
 
     const element = <div />;
-    render(ExtensionPoint.Playground, () => element);
+    extend(
+      ExtensionPoint.Playground,
+      render(() => element),
+    );
     const root = {};
     const api = {locale: 'en'};
 
@@ -43,8 +39,8 @@ describe('render()', () => {
 
     reactCreateElement.mockImplementation(() => createdElement);
 
-    const coreRenderCallback = coreRender.mock.calls[0][1];
-    coreRenderCallback(root, api);
+    const extendCallback = extend.mock.calls[0][1];
+    extendCallback(root, api);
 
     expect(reactCreateElement).toHaveBeenCalledWith(
       ExtensionApiContext.Provider,

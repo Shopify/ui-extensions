@@ -30,10 +30,22 @@ function Remove() {
   /* ... */
 }
 
-render(ExtensionPoint.SubscriptionManagementAdd, Add);
-render(ExtensionPoint.SubscriptionManagementCreate, Create);
-render(ExtensionPoint.SubscriptionManagementEdit, Edit);
-render(ExtensionPoint.SubscriptionManagementRemove, Remove);
+extend(
+  ExtensionPoint.SubscriptionManagementAdd,
+  render(() => <Add />),
+);
+extend(
+  ExtensionPoint.SubscriptionManagementCreate,
+  render(() => <Create />),
+);
+extend(
+  ExtensionPoint.SubscriptionManagementEdit,
+  render(() => <Edit />),
+);
+extend(
+  ExtensionPoint.SubscriptionManagementRemove,
+  render(() => <Remove />),
+);
 ```
 
 ### Data API

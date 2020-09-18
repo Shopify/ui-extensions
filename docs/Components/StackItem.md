@@ -9,9 +9,9 @@ Use the fill prop on a single stack item component to make it fill the rest of t
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Stack, StackItem, Text} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Stack, StackItem, Text} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const stack = root.createComponent(Stack);
   const stackItemFill = root.createComponent(StackItem, {fill: true});
 
@@ -39,7 +39,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, Stack, StackItem, Text} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Stack, StackItem, Text} from '@shopify/argo-admin-react';
 
 function App() {
   return (
@@ -55,7 +55,10 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API

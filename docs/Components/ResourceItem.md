@@ -9,9 +9,9 @@ A ResourceItem should be rendered within a [ResourceList](./ResourceList.md).
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const resourceItem1 = root.createComponent(ResourceItem, {
     id: '1234',
     onClick: () => console.log('Clicked 1'),
@@ -36,7 +36,13 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin-react';
+import {
+  extend,
+  render,
+  ExtensionPoint,
+  ResourceList,
+  ResourceItem,
+} from '@shopify/argo-admin-react';
 
 function App() {
   return (
@@ -51,7 +57,10 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API

@@ -16,9 +16,9 @@ Below are examples of implementing the data API for the Subscription Management 
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Button} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Button} from '@shopify/argo-admin';
 
-render(ExtensionPoint.SubscriptionManagementCreate, (root, api) => {
+extend(ExtensionPoint.SubscriptionManagementCreate, (root, api) => {
   const {
     container: {close, done, setPrimaryAction, setSecondaryAction},
   } = api;
@@ -52,7 +52,7 @@ render(ExtensionPoint.SubscriptionManagementCreate, (root, api) => {
 #### React
 
 ```js
-import {render, useContainer, ExtensionPoint, Text} from '@shopify/argo-admin-react';
+import {extend, render, useContainer, ExtensionPoint, Text} from '@shopify/argo-admin-react';
 
 function App() {
   const container = useContainer();
@@ -80,7 +80,10 @@ function App() {
   return <Text>Hello world</Text>;
 }
 
-render(ExtensionPoint.SubscriptionManagementCreate, () => <App />);
+extend(
+  ExtensionPoint.SubscriptionManagementCreate,
+  render(() => <App />),
+);
 ```
 
 ### Extension Points' Container API

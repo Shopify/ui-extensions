@@ -7,9 +7,9 @@ Card components can be separated into sections, each one visually separated by a
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, CardSection} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, CardSection} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const card = root.createComponent(Card, {});
   root.appendChild(card);
 
@@ -24,7 +24,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, CardSection} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, CardSection} from '@shopify/argo-admin-react';
 
 function App() {
   return (
@@ -34,7 +34,10 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API

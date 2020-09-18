@@ -7,9 +7,9 @@ Modals are overlays that prevent merchants from interacting with the rest of the
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Modal} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Modal} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const modal = root.createComponent(Modal, {});
 
   modal.appendChild('This is the best extension.');
@@ -22,29 +22,32 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, Modal} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Modal} from '@shopify/argo-admin-react';
 
 function App() {
   return <Modal>This is the best extension.</Modal>;
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API
 
-| Name             | Type         | Description                         | Required |
-| ---------------- | ------------ | ----------------------------------- | -------- |
-| open             | `boolean`    | Whether the modal is open .         | ☑️        |
-| title            | `string`     | Title content for the modal.        | ☑️        |
-| primaryAction    | `Action`     | Modal's primary action.             |          |
-| secondaryActions | `Action[]`   | Modal's secondary action(s).        |          |
-| onClose          | `() => void` | Callback when the modal is closed.  | ☑️        |
+| Name             | Type         | Description                        | Required |
+| ---------------- | ------------ | ---------------------------------- | -------- |
+| open             | `boolean`    | Whether the modal is open .        | ☑️       |
+| title            | `string`     | Title content for the modal.       | ☑️       |
+| primaryAction    | `Action`     | Modal's primary action.            |          |
+| secondaryActions | `Action[]`   | Modal's secondary action(s).       |          |
+| onClose          | `() => void` | Callback when the modal is closed. | ☑️       |
 
 ### Action
 
 | Name        | Type         | Description                                           | Required |
 | ----------- | ------------ | ----------------------------------------------------- | -------- |
-| content     | `string`     | Action label text.                                    | ☑️        |
+| content     | `string`     | Action label text.                                    | ☑️       |
 | destructive | `boolean`    | Indicates a dangerous or potentially negative action. |          |
 | onAction    | `() => void` | Callback for the action.                              |          |

@@ -7,9 +7,9 @@ Badges are used to inform merchants of the status of an object or of an action t
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Badge} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Badge} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
+extend(ExtensionPoint.MyExtension, (root) => {
   const badge = root.createComponent(Badge, {
     message: 'Example message',
     status: 'success',
@@ -23,13 +23,16 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, Badge} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Badge} from '@shopify/argo-admin-react';
 
 function App() {
   return <Badge message="Example message" status="success" />;
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API

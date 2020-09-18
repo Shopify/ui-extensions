@@ -7,9 +7,9 @@ The toast component is a non-disruptive message that appears at the bottom of th
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, Button} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Button} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root, api) => {
+extend(ExtensionPoint.MyExtension, (root, api) => {
   const {toast} = api;
 
   const button = root.createComponent(Button, {
@@ -31,7 +31,7 @@ render(ExtensionPoint.MyExtension, (root, api) => {
 #### React
 
 ```jsx
-import {render, useToast, ExtensionPoint, Button} from '@shopify/argo-admin-react';
+import {extend, render, useToast, ExtensionPoint, Button} from '@shopify/argo-admin-react';
 
 function App() {
   const {show: showToast} = useToast();
@@ -44,7 +44,10 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Toast API

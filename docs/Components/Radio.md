@@ -7,11 +7,10 @@ Use radio buttons to present each item in a list of options where merchants must
 #### Vanilla
 
 ```js
-import {render, ExtensionPoint, RadioButton} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, Radio} from '@shopify/argo-admin';
 
-render(ExtensionPoint.MyExtension, (root) => {
-  const radio1 = root.createComponent(RadioButton, {
-    label: 'Option 1',
+extend(ExtensionPoint.MyExtension, (root) => {
+  const radio1 = root.createComponent(Radio, {
     helpText: 'Help text for option 1.',
     checked: true,
     id: 'option1',
@@ -36,7 +35,7 @@ render(ExtensionPoint.MyExtension, (root) => {
 #### React
 
 ```jsx
-import {render, ExtensionPoint, RadioButton} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint, Radio} from '@shopify/argo-admin-react';
 
 function App() {
   return (
@@ -61,7 +60,10 @@ function App() {
   );
 }
 
-render(ExtensionPoint.MyExtension, () => <App />);
+extend(
+  ExtensionPoint.MyExtension,
+  render(() => <App />),
+);
 ```
 
 ## Props API

@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, ExtensionPoint} from '@shopify/argo-admin-react';
+import {extend, render, ExtensionPoint} from '@shopify/argo-admin-react';
 
 import {CheckboxExample} from './checkbox';
 import {BadgeExample} from './badge';
@@ -45,4 +45,7 @@ function App() {
   );
 }
 
-render(ExtensionPoint.Playground, () => <App />);
+extend(
+  ExtensionPoint.Playground,
+  render(() => <App />),
+);
