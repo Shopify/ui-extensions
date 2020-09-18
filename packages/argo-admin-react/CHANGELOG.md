@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4-alpha.0](https://github.com/Shopify/app-extension-libs/compare/v0.4.3...v0.4.4-alpha.0) (2020-09-18)
+
+
+### Features
+
+* rename pressable to clickable ([e48be20](https://github.com/Shopify/app-extension-libs/commit/e48be20b3282f6299e225d4e7d937b2b0c70302a))
+* rename radio button to radio ([5a15c0a](https://github.com/Shopify/app-extension-libs/commit/5a15c0a9ed25fb0b196252db059bd86601c72263))
+
+
+
+
+
 ## [0.4.3](https://github.com/Shopify/app-extension-libs/compare/v0.4.2...v0.4.3) (2020-09-15)
 
 **Note:** Version bump only for package @shopify/argo-admin-react

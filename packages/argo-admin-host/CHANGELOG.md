@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4-alpha.0](https://github.com/Shopify/app-extension-libs/compare/v0.4.3...v0.4.4-alpha.0) (2020-09-18)
+
+
+### Features
+
+* add extension point to api ([f30fd1c](https://github.com/Shopify/app-extension-libs/commit/f30fd1cef7adedd86e0025d5f3d397113f4e5f3a))
+* api consistency onclick to onpress ([6c68dd6](https://github.com/Shopify/app-extension-libs/commit/6c68dd6291cdaee34539c6a4357ba07f0190b075))
+* consistent form api ([21b251e](https://github.com/Shopify/app-extension-libs/commit/21b251e0d1fec7e4de15eb1b2f66c36e57b4a383))
+* radio and checkbox to use children not label ([e5c7705](https://github.com/Shopify/app-extension-libs/commit/e5c77051d6c3039aa40d912c699d049fa8d191a0))
+* radio id and checked is optional ([9c3954e](https://github.com/Shopify/app-extension-libs/commit/9c3954e7852e0aa6d314a824c2e64dc68d967886))
+* radio onchange gives value not id ([#914](https://github.com/Shopify/app-extension-libs/issues/914)) ([9202a9e](https://github.com/Shopify/app-extension-libs/commit/9202a9e16863153ceb686e5abdd604cee8b7841a))
+* rename pressable to clickable ([e48be20](https://github.com/Shopify/app-extension-libs/commit/e48be20b3282f6299e225d4e7d937b2b0c70302a))
+* rename radio button to radio ([5a15c0a](https://github.com/Shopify/app-extension-libs/commit/5a15c0a9ed25fb0b196252db059bd86601c72263))
+
+
+
+
+
 ## [0.4.3](https://github.com/Shopify/app-extension-libs/compare/v0.4.2...v0.4.3) (2020-09-15)
 
 
