@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-admin-host",
-  "version": "0.4.3",
+  "version": "0.4.4-alpha.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -18,8 +18,8 @@
     "@remote-ui/react": "^1.1.0",
     "@remote-ui/rpc": "^1.0.4",
     "@remote-ui/web-workers": "^1.1.0",
-    "@shopify/argo-admin": "0.4.3",
-    "@shopify/argo-admin-react": "0.4.3",
+    "@shopify/argo-admin": "0.4.4-alpha.0",
+    "@shopify/argo-admin-react": "0.4.4-alpha.0",
     "@shopify/polaris": "^4.26.0",
     "@shopify/polaris-icons": "^3.10.0",
     "react": "^16.12.0"
