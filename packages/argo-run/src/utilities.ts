@@ -1,5 +1,8 @@
-import {resolve} from 'path';
+import {resolve, join} from 'path';
+import {readFileSync, existsSync} from 'fs';
 import chalk from 'chalk';
+
+import {safeLoad as loadYaml} from 'js-yaml';
 
 // Extract `--name x` or `--name=x` from an argv array.
 // Could bring in a CLI arg library, but this is fun practice :)
@@ -31,5 +34,20 @@ export function shouldUseReact() {
     return Object.keys(packageJson.dependencies).includes('react');
   } catch {
     return false;
+  }
+}
+
+export function readConfig() {
+  const configPath = resolve(join(process.cwd(), 'extension.config.yml'));
+  if (!existsSync(configPath)) {
+    return null;
+  }
+
+  try {
+    return loadYaml(readFileSync(configPath, 'utf8'));
+  } catch (error) {
+    log('Failed parsing extension.config.yml', {error: true});
+    log(error, {error: true});
+    return null;
   }
 }

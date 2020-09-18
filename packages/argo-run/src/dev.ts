@@ -1,13 +1,11 @@
 import {URL, URLSearchParams} from 'url';
-import {readFileSync, existsSync} from 'fs';
-import {resolve, join} from 'path';
-import {safeLoad as loadYaml} from 'js-yaml';
+
 import getPort from 'get-port';
 import webpack from 'webpack';
 import Koa from 'koa';
 import koaWebpack from 'koa-webpack';
 
-import {log, namedArgument} from './utilities';
+import {log, namedArgument, readConfig} from './utilities';
 import {createWebpackConfiguration} from './webpack-config';
 import {openBrowser} from './browser';
 
@@ -123,19 +121,4 @@ export async function dev(...args: string[]) {
 function getOpenUrl(args: string[]) {
   const openArg = namedArgument('open', args);
   return (openArg ?? '').startsWith('http') ? new URL(openArg!) : undefined;
-}
-
-function readConfig() {
-  const configPath = resolve(join(process.cwd(), 'extension.config.yml'));
-  if (!existsSync(configPath)) {
-    return null;
-  }
-
-  try {
-    return loadYaml(readFileSync(configPath, 'utf8'));
-  } catch (error) {
-    log('Failed parsing extension.config.yml', {error: true});
-    log(error, {error: true});
-    return null;
-  }
 }
