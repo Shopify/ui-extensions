@@ -21,7 +21,7 @@ export function StackExample() {
       <CardSection>
         <Stack>
           <StackItem fill>
-            <TextField type="search" placeholder="Search for reviews" />
+            <TextField label="Reviews" type="search" placeholder="Search for reviews" />
           </StackItem>
           <StackItem>
             <Button title="Sort" icon={SORT_ICON} />
