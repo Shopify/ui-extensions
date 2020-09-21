@@ -39,7 +39,7 @@ export function ExtensionApiExample() {
               getSessionToken().then((newSessionToken) => setSessionToken(newSessionToken))
             }
           />
-          <TextField type="text" value={sessionToken} multiline />
+          <TextField label="Session Token" type="text" value={sessionToken} multiline />
         </Stack>
       </Card>
       <Card sectioned title="useToast">

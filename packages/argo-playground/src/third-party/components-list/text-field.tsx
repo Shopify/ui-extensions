@@ -21,19 +21,26 @@ export function TextFieldExample() {
         />
         {name && <Text>Hello {name}</Text>}
         <TextField
+          label="Reviews"
           type="search"
           placeholder="Search for reviews"
           value={search}
           onAfterChange={setSearch}
         />
         <TextField
+          label="Reply"
           placeholder="Add a reply to this review..."
           multiline
           value={review}
           onAfterChange={setReview}
         />
-        <TextField type="number" value={numberValue} onAfterChange={setNumberValue} />
-        <TextField value="Inline error" error="This field is invalid" />
+        <TextField
+          label="Number"
+          type="number"
+          value={numberValue}
+          onAfterChange={setNumberValue}
+        />
+        <TextField label="Error" value="Inline error" error="This field is invalid" />
         <TextField value="42" type="number" suffix="%" label="A real percent" />
         <TextField value="stuff around" prefix="Only the best" label="Cool things" />
         <TextField

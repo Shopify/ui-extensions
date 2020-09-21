@@ -22,7 +22,7 @@ function App() {
   return (
     <Stack vertical>
       <Text>Token from my app</Text>
-      <TextField type="text" value={token} multiline />
+      <TextField label="Token" type="text" value={token} multiline />
     </Stack>
   );
 }
