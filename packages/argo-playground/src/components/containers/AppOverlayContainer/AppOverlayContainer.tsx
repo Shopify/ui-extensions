@@ -10,16 +10,16 @@ import {
 import {StandardContainer, StandardContainerProps} from '../StandardContainer';
 
 import {Dialog, Header} from './components';
-import styles from './AppChromeContainer.scss';
+import styles from './AppOverlayContainer.scss';
 
-export interface AppChromeContainerProps<T extends ExtensionPoint>
+export interface AppOverlayContainerProps<T extends ExtensionPoint>
   extends StandardContainerProps<T> {
   onClose: () => void;
   onDone?: () => void;
   open?: boolean;
 }
 
-export function AppChromeContainer<T extends ExtensionPoint>(props: AppChromeContainerProps<T>) {
+export function AppOverlayContainer<T extends ExtensionPoint>(props: AppOverlayContainerProps<T>) {
   const {app, api: externalApi, open, onClose, onDone = () => {}} = props;
 
   const containerApi: ContainerApi<SubscriptionManagementExtensionPoint> = useMemo(

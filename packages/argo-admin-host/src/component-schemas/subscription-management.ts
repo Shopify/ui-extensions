@@ -10,7 +10,7 @@ import {
 } from '../component-sets';
 import {Card, CardSection} from '../components';
 
-const appChromeSchema = {
+const appOverlaySchema = {
   ...actionComponents,
   ...basicComponents,
   ...feedbackComponents,
@@ -38,7 +38,7 @@ export const subscriptionManagementSchema = {
   // as props, but that would create a circular dependency.
   // We should refactor this when we manage to separate extension types by package.
   Add: modalSchema,
-  Create: appChromeSchema,
-  Edit: appChromeSchema,
+  Create: appOverlaySchema,
+  Edit: appOverlaySchema,
   Remove: modalSchema,
 };
