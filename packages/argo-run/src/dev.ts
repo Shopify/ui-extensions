@@ -1,13 +1,16 @@
-import {URL, URLSearchParams} from 'url';
-import {readFileSync, existsSync} from 'fs';
-import {resolve, join} from 'path';
-import {safeLoad as loadYaml} from 'js-yaml';
+import {URL} from 'url';
+
 import getPort from 'get-port';
 import webpack from 'webpack';
 import Koa from 'koa';
 import koaWebpack from 'koa-webpack';
 
-import {log, namedArgument} from './utilities';
+import {
+  getData,
+  convertDataToQueryString,
+  log,
+  namedArgument,
+} from './utilities';
 import {createWebpackConfiguration} from './webpack-config';
 import {openBrowser} from './browser';
 
@@ -18,6 +21,7 @@ export async function dev(...args: string[]) {
   const filename = 'extension.js';
   const fileUrl = `${publicPath}${filename}`;
   const configPath = `/config`;
+  const dataPath = '/data';
 
   const compiler = webpack(
     createWebpackConfiguration({
@@ -29,7 +33,7 @@ export async function dev(...args: string[]) {
     }),
   );
 
-  const extensionConfig = readConfig();
+  const data = getData(fileUrl);
 
   const firstCompilePromise = new Promise((resolve) => {
     let hasResolved = false;
@@ -65,14 +69,24 @@ export async function dev(...args: string[]) {
     },
   });
 
-  if (extensionConfig) {
+  // this will stay here for older versions of the extension and can be removed on 01.10.2020
+  // it's not being DRY'd up to make deletion easier
+  if (data.config) {
     app.use(async (ctx, next) => {
       if (ctx.path !== configPath) {
         return next();
       }
-      ctx.body = extensionConfig;
+      ctx.body = data.config;
     });
   }
+
+  app.use(async (ctx, next) => {
+    if (ctx.path !== dataPath) {
+      return next();
+    }
+
+    ctx.body = data;
+  });
 
   app.use(middleware);
 
@@ -88,16 +102,7 @@ export async function dev(...args: string[]) {
 
   log(`Your extension is available at ${fileUrl}`);
 
-  // we could replace this with a check for extension type
-  // to only show the query parameters for post purchase extensions
-  if (extensionConfig) {
-    const query = new URLSearchParams();
-
-    query.set('script_url', fileUrl);
-    query.set('config', JSON.stringify(extensionConfig));
-
-    log(`You can append this query string: ${query.toString()}`);
-  }
+  log(`You can append this query string: ${convertDataToQueryString(data)}`);
 
   const openUrl = getOpenUrl(args);
 
@@ -123,19 +128,4 @@ export async function dev(...args: string[]) {
 function getOpenUrl(args: string[]) {
   const openArg = namedArgument('open', args);
   return (openArg ?? '').startsWith('http') ? new URL(openArg!) : undefined;
-}
-
-function readConfig() {
-  const configPath = resolve(join(process.cwd(), 'extension.config.yml'));
-  if (!existsSync(configPath)) {
-    return null;
-  }
-
-  try {
-    return loadYaml(readFileSync(configPath, 'utf8'));
-  } catch (error) {
-    log('Failed parsing extension.config.yml', {error: true});
-    log(error, {error: true});
-    return null;
-  }
 }
