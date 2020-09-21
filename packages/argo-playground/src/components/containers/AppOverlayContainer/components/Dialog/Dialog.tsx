@@ -17,7 +17,7 @@ export default function Dialog({open, children, onClose}: Props) {
       data-polaris-layer
       data-polaris-overlay
     >
-      <div className={styles.ArgoAppChrome} role="dialog" tabIndex={-1}>
+      <div className={styles.ArgoAppOverlay} role="dialog" tabIndex={-1}>
         <KeypressListener keyCode={Key.Escape} handler={onClose} />
         {children}
       </div>

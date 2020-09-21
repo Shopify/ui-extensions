@@ -1,3 +1,3 @@
 export * from './SubscriptionPlansCard';
 export * from './StandardContainer';
-export * from './AppChromeContainer';
+export * from './AppOverlayContainer';

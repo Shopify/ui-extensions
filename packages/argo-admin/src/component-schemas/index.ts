@@ -32,7 +32,7 @@ type PlaygroundSchema =
   | OverlayComponents
   | StructureComponents;
 
-type AppChromeSchema =
+type AppOverlaySchema =
   | ActionComponents
   | BasicComponents
   | FeedbackComponents
@@ -59,7 +59,7 @@ export interface ExtensionPointSchema {
   AppLink: AppLinkSchema;
   Playground: PlaygroundSchema;
   SubscriptionManagementAdd: ModalSchema;
-  SubscriptionManagementCreate: AppChromeSchema;
-  SubscriptionManagementEdit: AppChromeSchema;
+  SubscriptionManagementCreate: AppOverlaySchema;
+  SubscriptionManagementEdit: AppOverlaySchema;
   SubscriptionManagementRemove: ModalSchema;
 }

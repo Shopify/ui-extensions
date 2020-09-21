@@ -10,9 +10,10 @@ import {createPlainWorkerFactory} from '@remote-ui/web-workers';
 
 import {ModalContainer, ModalContainerProps} from '../ModalContainer';
 import {App} from '../StandardContainer';
-import {AppChromeContainer, AppChromeContainerProps} from '../AppChromeContainer';
+import {AppOverlayContainer, AppOverlayContainerProps} from '../AppOverlayContainer';
 
-type ContainerProps<T extends ExtensionPoint> = AppChromeContainerProps<T> & ModalContainerProps<T>;
+type ContainerProps<T extends ExtensionPoint> = AppOverlayContainerProps<T> &
+  ModalContainerProps<T>;
 
 type BaseProps<T extends ExtensionPoint> = Omit<ContainerProps<T>, 'api' | 'error' | 'loading'>;
 
@@ -155,7 +156,7 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
           height={height}
         />
       ) : (
-        <AppChromeContainer {...containerProps} />
+        <AppOverlayContainer {...containerProps} />
       ),
     [containerProps, defaultTitle, height, isModal, onBackPress],
   );
