@@ -24,7 +24,7 @@ const options = [
   },
 ];
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const select = root.createComponent(Select, {
     label: 'Select an option',
     options,
@@ -72,7 +72,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

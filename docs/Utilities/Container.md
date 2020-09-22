@@ -18,7 +18,7 @@ Below are examples of implementing the data API for the Subscription Management 
 ```js
 import {extend, ExtensionPoint, Button} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.SubscriptionManagementCreate, (root, api) => {
+extend('Admin::Product::SubscriptionPlan::Create', (root, api) => {
   const {
     container: {close, done, setPrimaryAction, setSecondaryAction},
   } = api;
@@ -81,7 +81,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.SubscriptionManagementCreate,
+  'Admin::Product::SubscriptionPlan::Create',
   render(() => <App />),
 );
 ```

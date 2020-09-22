@@ -9,7 +9,7 @@ Badges are used to inform merchants of the status of an object or of an action t
 ```js
 import {extend, ExtensionPoint, Badge} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const badge = root.createComponent(Badge, {
     message: 'Example message',
     status: 'success',
@@ -30,7 +30,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

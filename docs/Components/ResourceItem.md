@@ -11,7 +11,7 @@ A ResourceItem should be rendered within a [ResourceList](./ResourceList.md).
 ```js
 import {extend, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const resourceItem1 = root.createComponent(ResourceItem, {
     id: '1234',
     onPress: () => console.log('Pressed 1'),
@@ -58,7 +58,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

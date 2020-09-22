@@ -11,7 +11,7 @@ export function SubscriptionPlansCard() {
   const [showExtension, setShowExtension] = useState(false);
   const [currentExtensionPoint, setCurrentExtensionPoint] = useState<ExtensionPoint>();
 
-  const dataApi: DataApi<ExtensionPoint.SubscriptionManagementCreate> = useMemo(
+  const dataApi: DataApi<'Admin::Product::SubscriptionPlan::Create'> = useMemo(
     () => ({data: {productId: '1'}}),
     [],
   );
@@ -19,11 +19,11 @@ export function SubscriptionPlansCard() {
 
   const title = useMemo(() => {
     switch (currentExtensionPoint) {
-      case ExtensionPoint.SubscriptionManagementAdd:
+      case 'Admin::Product::SubscriptionPlan::Add':
         return 'Add Subscription Plan';
-      case ExtensionPoint.SubscriptionManagementEdit:
+      case 'Admin::Product::SubscriptionPlan::Edit':
         return 'Edit Subscription Plan';
-      case ExtensionPoint.SubscriptionManagementRemove:
+      case 'Admin::Product::SubscriptionPlan::Remove':
         return 'Remove Subscription Plan';
       default:
         return 'Create Subscription Plan';
@@ -50,7 +50,7 @@ export function SubscriptionPlansCard() {
                   <Stack distribution="trailing">
                     <Link
                       onClick={() => {
-                        setCurrentExtensionPoint(ExtensionPoint.SubscriptionManagementRemove);
+                        setCurrentExtensionPoint('Admin::Product::SubscriptionPlan::Remove');
                         setApp(apps[id]);
                         setShowExtension(true);
                       }}
@@ -59,7 +59,7 @@ export function SubscriptionPlansCard() {
                     </Link>
                     <Link
                       onClick={() => {
-                        setCurrentExtensionPoint(ExtensionPoint.SubscriptionManagementEdit);
+                        setCurrentExtensionPoint('Admin::Product::SubscriptionPlan::Edit');
                         setApp(apps[id]);
                         setShowExtension(true);
                       }}
@@ -77,7 +77,7 @@ export function SubscriptionPlansCard() {
             <Button
               outline
               onClick={() => {
-                setCurrentExtensionPoint(ExtensionPoint.SubscriptionManagementCreate);
+                setCurrentExtensionPoint('Admin::Product::SubscriptionPlan::Create');
                 setShowExtension(true);
               }}
             >
@@ -85,7 +85,7 @@ export function SubscriptionPlansCard() {
             </Button>
             <Link
               onClick={() => {
-                setCurrentExtensionPoint(ExtensionPoint.SubscriptionManagementAdd);
+                setCurrentExtensionPoint('Admin::Product::SubscriptionPlan::Add');
                 setShowExtension(true);
               }}
             >

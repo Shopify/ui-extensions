@@ -23,12 +23,12 @@ export interface Remove {
   variantIds: string[];
 }
 
-export type DataOf<T extends ExtensionPoint> = T extends ExtensionPoint.SubscriptionManagementAdd
+export type DataOf<T extends ExtensionPoint> = T extends 'Admin::Product::SubscriptionPlan::Add'
   ? Add
-  : T extends ExtensionPoint.SubscriptionManagementCreate
+  : T extends 'Admin::Product::SubscriptionPlan::Create'
   ? Create
-  : T extends ExtensionPoint.SubscriptionManagementEdit
+  : T extends 'Admin::Product::SubscriptionPlan::Edit'
   ? Edit
-  : T extends ExtensionPoint.SubscriptionManagementRemove
+  : T extends 'Admin::Product::SubscriptionPlan::Remove'
   ? Remove
   : never;

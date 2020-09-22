@@ -9,7 +9,7 @@ Links take users to another place, and usually appear within or directly followi
 ```js
 import {extend, ExtensionPoint, Link} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const link = root.createComponent(Link, {
     url: 'https://shopify.com',
     external: true,
@@ -45,7 +45,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

@@ -26,11 +26,11 @@ function Subscription({
 }: React.PropsWithChildren<{extensionPoint: SubscriptionManagementExtensionPoint}>) {
   const type = useMemo(() => {
     switch (extensionPoint) {
-      case ExtensionPoint.SubscriptionManagementAdd:
+      case 'Admin::Product::SubscriptionPlan::Add':
         return 'Add';
-      case ExtensionPoint.SubscriptionManagementEdit:
+      case 'Admin::Product::SubscriptionPlan::Edit':
         return 'Edit';
-      case ExtensionPoint.SubscriptionManagementRemove:
+      case 'Admin::Product::SubscriptionPlan::Remove':
         return 'Remove';
       default:
         return 'Create';
@@ -104,7 +104,7 @@ function AddSubscription() {
 
   const {show: showToast} = useToast();
   const {close, setPrimaryAction, setSecondaryAction} = useContainer<
-    typeof ExtensionPoint.SubscriptionManagementAdd
+    'Admin::Product::SubscriptionPlan::Add'
   >();
 
   useEffect(() => {
@@ -126,7 +126,7 @@ function AddSubscription() {
 
   return (
     <>
-      <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementAdd}>
+      <Subscription extensionPoint="Admin::Product::SubscriptionPlan::Add">
         <ResourceList filterControl={resourceListFilterControl}>
           {listItems.map((item, index) => (
             <ResourceItem
@@ -157,7 +157,7 @@ function AddSubscription() {
 function EditSubscription() {
   const layout = useLayout();
   const {show: showToast} = useToast();
-  const {close, done} = useContainer<typeof ExtensionPoint.SubscriptionManagementEdit>();
+  const {close, done} = useContainer<'Admin::Product::SubscriptionPlan::Edit'>();
 
   const onSuccess = useCallback(() => {
     showToast('Saved');
@@ -201,7 +201,7 @@ function EditSubscription() {
   );
 
   return (
-    <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementEdit}>
+    <Subscription extensionPoint="Admin::Product::SubscriptionPlan::Edit">
       {pageHeader}
       <Card sectioned>
         <CardSection>
@@ -221,18 +221,18 @@ function EditSubscription() {
 }
 
 extend(
-  ExtensionPoint.SubscriptionManagementEdit,
+  'Admin::Product::SubscriptionPlan::Edit',
   render(() => <EditSubscription />),
 );
 extend(
-  ExtensionPoint.SubscriptionManagementRemove,
-  render(() => <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementRemove} />),
+  'Admin::Product::SubscriptionPlan::Remove',
+  render(() => <Subscription extensionPoint="Admin::Product::SubscriptionPlan::Remove" />),
 );
 extend(
-  ExtensionPoint.SubscriptionManagementAdd,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <AddSubscription />),
 );
 extend(
-  ExtensionPoint.SubscriptionManagementCreate,
-  render(() => <Subscription extensionPoint={ExtensionPoint.SubscriptionManagementCreate} />),
+  'Admin::Product::SubscriptionPlan::Create',
+  render(() => <Subscription extensionPoint="Admin::Product::SubscriptionPlan::Create" />),
 );

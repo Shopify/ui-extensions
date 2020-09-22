@@ -10,8 +10,8 @@ describe('extend()', () => {
     (shopifyGlobal as any).shopify = {extend: jest.fn()};
 
     const callback = () => {};
-    extend(ExtensionPoint.Playground, callback);
+    extend('Playground', callback);
 
-    expect(shopifyGlobal.shopify.extend).toHaveBeenCalledWith(ExtensionPoint.Playground, callback);
+    expect(shopifyGlobal.shopify.extend).toHaveBeenCalledWith('Playground', callback);
   });
 });

@@ -9,7 +9,7 @@ Get a fresh session token for communication with your app's backend.
 ```js
 import {extend, ExtensionPoint, TextField} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root, api) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root, api) => {
   const {sessionToken} = api;
   const text = root.createComponent(TextField, {
     disabled: true,
@@ -53,7 +53,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

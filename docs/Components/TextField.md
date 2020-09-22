@@ -10,7 +10,7 @@ It has a range of options and supports several text formats including numbers.
 ```js
   import {extend, ExtensionPoint, TextField} from '@shopify/argo-admin';
 
-  extend(ExtensionPoint.MyExtension, (root) => {
+  extend('Admin::Product::SubscriptionPlan::Add', (root) => {
     const textfield = root.createComponent(TextField, {
       label: 'Super text field',
       type: 'text';
@@ -60,7 +60,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

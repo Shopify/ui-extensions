@@ -11,7 +11,7 @@ Use the fill prop on a single stack item component to make it fill the rest of t
 ```js
 import {extend, ExtensionPoint, Stack, StackItem, Text} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const stack = root.createComponent(Stack);
   const stackItemFill = root.createComponent(StackItem, {fill: true});
 
@@ -56,7 +56,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

@@ -12,7 +12,7 @@ A resource list should contain [ResourceItem](./ResourceItem.md) components.
 ```js
 import {extend, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const resourceitem1 = root.createComponent(ResourceItem, {
     id: '1234',
     onPress: () => console.log('Pressed 1'),
@@ -67,7 +67,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

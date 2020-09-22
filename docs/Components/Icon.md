@@ -9,7 +9,7 @@ Icons are used to visually communicate available actions. They can act as wayfin
 ```js
 import {extend, ExtensionPoint, Icon} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const icon = root.createComponent(Icon, {
     source: 'cancelSmallMinor',
     color: 'blue',
@@ -32,7 +32,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

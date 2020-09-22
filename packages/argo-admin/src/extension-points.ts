@@ -30,50 +30,43 @@ export type RenderableExtensionCallback<Api, Root extends RemoteRoot> = (
 ) => ExtensionResult;
 
 export interface ExtensionApi {
-  [ExtensionPoint.AppLink]: StandardApi<ExtensionPoint.AppLink>;
-  [ExtensionPoint.Playground]: StandardApi<ExtensionPoint.Playground>;
+  Playground: StandardApi<'Playground'>;
 
   // Subscription Management
-  [ExtensionPoint.SubscriptionManagementCreate]: SubscriptionApi<
-    ExtensionPoint.SubscriptionManagementCreate
+  'Admin::Product::SubscriptionPlan::Create': SubscriptionApi<
+    'Admin::Product::SubscriptionPlan::Create'
   >;
-  [ExtensionPoint.SubscriptionManagementAdd]: SubscriptionApi<
-    ExtensionPoint.SubscriptionManagementAdd
+  'Admin::Product::SubscriptionPlan::Add': SubscriptionApi<'Admin::Product::SubscriptionPlan::Add'>;
+  'Admin::Product::SubscriptionPlan::Edit': SubscriptionApi<
+    'Admin::Product::SubscriptionPlan::Edit'
   >;
-  [ExtensionPoint.SubscriptionManagementEdit]: SubscriptionApi<
-    ExtensionPoint.SubscriptionManagementEdit
-  >;
-  [ExtensionPoint.SubscriptionManagementRemove]: SubscriptionApi<
-    ExtensionPoint.SubscriptionManagementRemove
+  'Admin::Product::SubscriptionPlan::Remove': SubscriptionApi<
+    'Admin::Product::SubscriptionPlan::Remove'
   >;
 }
 
 export interface ExtensionPointCallback {
   // Dev
-  [ExtensionPoint.AppLink]: RenderableExtensionCallback<
-    StandardApi<ExtensionPoint.AppLink>,
-    RemoteRoot<ExtensionPointSchema['AppLink']>
-  >;
-  [ExtensionPoint.Playground]: RenderableExtensionCallback<
-    StandardApi<ExtensionPoint.Playground>,
+  Playground: RenderableExtensionCallback<
+    StandardApi<'Playground'>,
     RemoteRoot<ExtensionPointSchema['Playground']>
   >;
 
   // Subscription Management
-  [ExtensionPoint.SubscriptionManagementCreate]: RenderableExtensionCallback<
-    SubscriptionApi<ExtensionPoint.SubscriptionManagementCreate>,
-    RemoteRoot<ExtensionPointSchema['SubscriptionManagementCreate']>
+  'Admin::Product::SubscriptionPlan::Create': RenderableExtensionCallback<
+    SubscriptionApi<'Admin::Product::SubscriptionPlan::Create'>,
+    RemoteRoot<ExtensionPointSchema['Admin::Product::SubscriptionPlan::Create']>
   >;
-  [ExtensionPoint.SubscriptionManagementAdd]: RenderableExtensionCallback<
-    SubscriptionApi<ExtensionPoint.SubscriptionManagementAdd>,
-    RemoteRoot<ExtensionPointSchema['SubscriptionManagementAdd']>
+  'Admin::Product::SubscriptionPlan::Add': RenderableExtensionCallback<
+    SubscriptionApi<'Admin::Product::SubscriptionPlan::Add'>,
+    RemoteRoot<ExtensionPointSchema['Admin::Product::SubscriptionPlan::Add']>
   >;
-  [ExtensionPoint.SubscriptionManagementEdit]: RenderableExtensionCallback<
-    SubscriptionApi<ExtensionPoint.SubscriptionManagementEdit>,
-    RemoteRoot<ExtensionPointSchema['SubscriptionManagementEdit']>
+  'Admin::Product::SubscriptionPlan::Edit': RenderableExtensionCallback<
+    SubscriptionApi<'Admin::Product::SubscriptionPlan::Edit'>,
+    RemoteRoot<ExtensionPointSchema['Admin::Product::SubscriptionPlan::Edit']>
   >;
-  [ExtensionPoint.SubscriptionManagementRemove]: RenderableExtensionCallback<
-    SubscriptionApi<ExtensionPoint.SubscriptionManagementRemove>,
-    RemoteRoot<ExtensionPointSchema['SubscriptionManagementRemove']>
+  'Admin::Product::SubscriptionPlan::Remove': RenderableExtensionCallback<
+    SubscriptionApi<'Admin::Product::SubscriptionPlan::Remove'>,
+    RemoteRoot<ExtensionPointSchema['Admin::Product::SubscriptionPlan::Remove']>
   >;
 }

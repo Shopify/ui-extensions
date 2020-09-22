@@ -9,7 +9,7 @@ You can use the Layout utility to adjust your content based on the user's screen
 ```js
 import {extend, ExtensionPoint, Text} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root, api) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root, api) => {
   const {layout} = api;
   const currentLayoutText = root.createComponent(Text, {
     children: `The current layout is: ${layout.initialValue.horizontal}`,
@@ -36,7 +36,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

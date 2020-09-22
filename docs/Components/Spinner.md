@@ -9,7 +9,7 @@ Spinners are used to notify merchants that their action is being processed.
 ```js
 import {extend, ExtensionPoint, Spinner} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const spinner = root.createComponent(Spinner);
   root.appendChild(spinner);
 
@@ -31,7 +31,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

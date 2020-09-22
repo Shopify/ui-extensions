@@ -46,7 +46,7 @@ extend(
 ```js
 import {extend, ExtensionPoint, Text} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('App', (root) => {
   const text = root.createComponent(TextField, {
     style: 'strong',
     alignment: 'center',
@@ -74,7 +74,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

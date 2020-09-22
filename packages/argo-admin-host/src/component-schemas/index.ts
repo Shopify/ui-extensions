@@ -1,32 +1,27 @@
 import {ExtensionPoint} from '@shopify/argo-admin';
 
 export {playgroundSchema} from './playground';
-export {appLinkSchema} from './app-link';
 export {subscriptionManagementSchema} from './subscription-management';
 
 export const extensionComponentsLoader: Record<ExtensionPoint, () => Promise<any>> = {
-  [ExtensionPoint.AppLink]: () =>
-    import(/* webpackChunkName: 'argo-app-link-components' */ './app-link').then(
-      (module) => module.appLinkSchema,
-    ),
-  [ExtensionPoint.Playground]: () =>
+  Playground: () =>
     import(/* webpackChunkName: 'argo-playground-components' */ './playground').then(
       (module) => module.playgroundSchema,
     ),
 
-  [ExtensionPoint.SubscriptionManagementAdd]: () =>
+  'Admin::Product::SubscriptionPlan::Add': () =>
     import(
       /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
     ).then((module) => module.subscriptionManagementSchema.Add),
-  [ExtensionPoint.SubscriptionManagementCreate]: () =>
+  'Admin::Product::SubscriptionPlan::Create': () =>
     import(
       /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
     ).then((module) => module.subscriptionManagementSchema.Create),
-  [ExtensionPoint.SubscriptionManagementRemove]: () =>
+  'Admin::Product::SubscriptionPlan::Remove': () =>
     import(
       /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
     ).then((module) => module.subscriptionManagementSchema.Remove),
-  [ExtensionPoint.SubscriptionManagementEdit]: () =>
+  'Admin::Product::SubscriptionPlan::Edit': () =>
     import(
       /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
     ).then((module) => module.subscriptionManagementSchema.Edit),

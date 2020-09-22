@@ -1,11 +1,12 @@
-import {ExtensionPoint, extend, Card, CardSection, TextField} from '@shopify/argo-admin';
+import {extend, Card, CardSection, TextField} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.Playground, (root, api) => {
+extend('Playground', (root, api) => {
   const card = root.createComponent(Card, {
     title: 'My card from a ”vanilla” web worker!',
   });
   const cardSection = root.createComponent(CardSection, {});
   const textField = root.createComponent(TextField, {
+    label: 'text field',
     value: '',
     label: '',
     onChange(value: string) {

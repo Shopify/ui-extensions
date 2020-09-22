@@ -15,10 +15,7 @@ export function Home() {
 
   return (
     <Page title="Home">
-      <StandardContainer
-        script={reactThirdPartyWorker.url}
-        extensionPoint={ExtensionPoint.Playground}
-      />
+      <StandardContainer script={reactThirdPartyWorker.url} extensionPoint="Playground" />
     </Page>
   );
 }

@@ -12,6 +12,6 @@ extend(
 
 // for Unsupported Component error
 extend(
-  ExtensionPoint.SubscriptionManagementRemove,
+  'Admin::Product::SubscriptionPlan::Remove',
   render(() => <App />),
 );

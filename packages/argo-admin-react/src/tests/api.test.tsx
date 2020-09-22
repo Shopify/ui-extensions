@@ -29,7 +29,7 @@ describe('extend()', () => {
 
     const element = <div />;
     extend(
-      ExtensionPoint.Playground,
+      'Playground',
       render(() => element),
     );
     const root = {};

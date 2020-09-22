@@ -12,10 +12,5 @@ const reactThirdPartyWorker = createPlainWorkerFactory(() =>
 export function UseForm() {
   usePerformanceMark('complete', 'UseForm');
 
-  return (
-    <StandardContainer
-      script={reactThirdPartyWorker.url}
-      extensionPoint={ExtensionPoint.Playground}
-    />
-  );
+  return <StandardContainer script={reactThirdPartyWorker.url} extensionPoint="Playground" />;
 }

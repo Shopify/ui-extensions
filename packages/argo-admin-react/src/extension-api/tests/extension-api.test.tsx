@@ -16,10 +16,14 @@ import {useSessionToken} from '../sessionToken';
 import {useToast} from '../toast';
 import {useContainer} from '../container';
 
-type AllApis = LayoutApi & LocaleApi & SessionTokenApi & ToastApi;
-type SubscriptionManagementApi = AllApis & ContainerApi<ExtensionPoint.SubscriptionManagementAdd>;
+type AllApis = {extensionPoint: ExtensionPoint} & LayoutApi &
+  LocaleApi &
+  SessionTokenApi &
+  ToastApi;
+type SubscriptionManagementApi = AllApis & ContainerApi<'Admin::Product::SubscriptionPlan::Add'>;
 
 const defaultApis: AllApis = {
+  extensionPoint: 'Admin::Product::SubscriptionPlan::Add',
   layout: {
     initialValue: {horizontal: 'compact'},
     setOnChange() {},

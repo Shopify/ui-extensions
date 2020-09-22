@@ -23,7 +23,7 @@ function buildStackText(root) {
   return text;
 }
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const vStack = root.createComponent(Stack, {
     vertical: true,
   });
@@ -71,7 +71,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```
