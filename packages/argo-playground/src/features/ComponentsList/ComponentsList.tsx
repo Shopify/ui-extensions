@@ -23,11 +23,7 @@ export function ComponentsList() {
 
   return (
     <>
-      <StandardContainer
-        script={reactThirdPartyWorker.url}
-        extensionPoint={ExtensionPoint.Playground}
-        api={api}
-      />
+      <StandardContainer script={reactThirdPartyWorker.url} extensionPoint="Playground" api={api} />
       <Toast />
     </>
   );

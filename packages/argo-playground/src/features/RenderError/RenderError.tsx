@@ -2,7 +2,6 @@ import React, {useState, useCallback} from 'react';
 import {createPlainWorkerFactory} from '@remote-ui/web-workers';
 import {Page, Button, Card, Layout} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
-import {ExtensionPoint} from '@shopify/argo-admin';
 
 import {
   SubscriptionManagement,
@@ -22,7 +21,7 @@ const noop = () => {
 export function ModalExtension({
   open,
   onClose,
-}: Pick<SubscriptionManagementProps<ExtensionPoint.Playground>, 'open' | 'onClose'>) {
+}: Pick<SubscriptionManagementProps<'Playground'>, 'open' | 'onClose'>) {
   return (
     <SubscriptionManagement
       defaultTitle="Modal Extension Render Timeout"
@@ -31,7 +30,7 @@ export function ModalExtension({
         id: 'one-more-time',
       }}
       script={reactThirdPartyWorker.url}
-      extensionPoint={ExtensionPoint.Playground}
+      extensionPoint="Playground"
       open={open}
       onClose={onClose}
       onDone={noop}
@@ -47,10 +46,7 @@ export function CardExtension() {
         <ArgoHeader name="OneMoreTime" title="Card Extension Render Timeout" />
       </Card.Section>
       <Card.Section>
-        <StandardContainer
-          script={reactThirdPartyWorker.url}
-          extensionPoint={ExtensionPoint.Playground}
-        />
+        <StandardContainer script={reactThirdPartyWorker.url} extensionPoint="Playground" />
       </Card.Section>
     </Card>
   );
@@ -63,7 +59,7 @@ export function NoScriptExtension() {
         <ArgoHeader name="OneMoreTime" title="Card Extension Script Not Found" />
       </Card.Section>
       <Card.Section>
-        <StandardContainer script={null} extensionPoint={ExtensionPoint.Playground} />
+        <StandardContainer script={null} extensionPoint="Playground" />
       </Card.Section>
     </Card>
   );
@@ -78,7 +74,7 @@ function UnsupportedComponent() {
       <Card.Section>
         <StandardContainer
           script={reactThirdPartyWorker.url}
-          extensionPoint={ExtensionPoint.SubscriptionManagementRemove}
+          extensionPoint="Admin::Product::SubscriptionPlan::Remove"
         />
       </Card.Section>
     </Card>

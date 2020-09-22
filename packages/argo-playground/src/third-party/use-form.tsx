@@ -69,6 +69,6 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.Playground,
+  'Playground',
   render(() => <App />),
 );

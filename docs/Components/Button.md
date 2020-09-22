@@ -9,7 +9,7 @@ Buttons are used primarily for actions, such as “Add”, “Close”, “Cance
 ```js
 import {extend, ExtensionPoint, Button} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const button = root.createComponent(Button, {
     title: 'Press Me',
     primary: true,
@@ -34,7 +34,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

@@ -10,7 +10,7 @@ You can also render simple text without styling.
 ```js
 import {extend, ExtensionPoint, Text} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const formattedText = root.createComponent(Text, {
     size: 'small',
     style: 'italic',
@@ -45,7 +45,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

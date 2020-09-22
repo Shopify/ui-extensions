@@ -15,10 +15,7 @@ export function Vanilla() {
 
   return (
     <Page title="Vanilla">
-      <StandardContainer
-        script={reactThirdPartyWorker.url}
-        extensionPoint={ExtensionPoint.Playground}
-      />
+      <StandardContainer script={reactThirdPartyWorker.url} extensionPoint="Playground" />
     </Page>
   );
 }

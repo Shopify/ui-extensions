@@ -9,7 +9,7 @@ Informs merchants about important changes or persistent conditions. Use this com
 ```js
   import {extend, ExtensionPoint, Banner} from '@shopify/argo-admin';
 
-  extend(ExtensionPoint.MyExtension, (root) => {
+  extend('Admin::Product::SubscriptionPlan::Add', (root) => {
     const banner = root.createComponent(Banner, {
       action:  {
         onAction: () => console.log('Pressed the action'),
@@ -51,7 +51,7 @@ function App() {
   )
 }
 
-extend(ExtensionPoint.MyExtension, render(() => <App />));
+extend('Admin::Product::SubscriptionPlan::Add', render(() => <App />));
 ```
 
 ## Props API

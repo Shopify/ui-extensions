@@ -9,7 +9,7 @@ The option list component lets you create a list of grouped items that merchants
 ```js
 import {extend, ExtensionPoint, OptionsList} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const options = [
     {label: 'Red', value: 'red', disabled: false},
     {label: 'Green', value: 'green', disabled: false},
@@ -55,7 +55,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

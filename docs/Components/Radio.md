@@ -9,7 +9,7 @@ Use radio buttons to present each item in a list of options where merchants must
 ```js
 import {extend, ExtensionPoint, Radio} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const radio1 = root.createComponent(Radio, {
     label: 'Option 1',
     helpText: 'Help text for option 1.',
@@ -63,7 +63,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

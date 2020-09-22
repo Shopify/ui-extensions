@@ -31,9 +31,7 @@ export function InlineScript() {
 
   return (
     <Page title="Inline Script">
-      {inlineScript && (
-        <StandardContainer script={inlineScript} extensionPoint={ExtensionPoint.Playground} />
-      )}
+      {inlineScript && <StandardContainer script={inlineScript} extensionPoint="Playground" />}
     </Page>
   );
 }

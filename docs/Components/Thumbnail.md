@@ -9,7 +9,7 @@ Use thumbnails as a visual anchor and identifier for an object. They should be u
 ```js
 import {extend, ExtensionPoint, Thumbnail} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const thumbnail = root.createComponent(Thumbnail, {
     size: 'small',
     scaleType: 'fit',
@@ -39,7 +39,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

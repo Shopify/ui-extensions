@@ -9,7 +9,7 @@ Card components can be separated into sections, each one visually separated by a
 ```js
 import {extend, ExtensionPoint, CardSection} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const card = root.createComponent(Card, {});
   root.appendChild(card);
 
@@ -35,7 +35,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

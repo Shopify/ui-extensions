@@ -9,7 +9,7 @@ Cards are used to group similar concepts and tasks together to make Shopify easi
 ```js
 import {extend, ExtensionPoint, Card} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const card = root.createComponent(Card, {});
 
   card.appendChild('This is the best extension.');
@@ -29,7 +29,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

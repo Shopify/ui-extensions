@@ -83,8 +83,8 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
   }, [onDone, setApp]);
   const {extensionPoint} = props;
   const isModal =
-    extensionPoint === ExtensionPoint.SubscriptionManagementAdd ||
-    extensionPoint === ExtensionPoint.SubscriptionManagementRemove;
+    extensionPoint === 'Admin::Product::SubscriptionPlan::Add' ||
+    extensionPoint === 'Admin::Product::SubscriptionPlan::Remove';
 
   const onBackPress = useCallback(
     // Reset the app selection

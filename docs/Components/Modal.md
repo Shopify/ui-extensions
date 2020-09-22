@@ -9,7 +9,7 @@ Modals are overlays that prevent merchants from interacting with the rest of the
 ```js
 import {extend, ExtensionPoint, Modal} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const modal = root.createComponent(Modal, {});
 
   modal.appendChild('This is the best extension.');
@@ -29,7 +29,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

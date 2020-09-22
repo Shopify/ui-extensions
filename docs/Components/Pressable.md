@@ -9,7 +9,7 @@ Pressable allows you to add an onPress callback function to any component.
 ```js
 import {extend, ExtensionPoint, Pressable, Text} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root) => {
   const pressable = root.createComponent(Pressable, {
     onPress: () => console.log('I’ve been pressed!'),
   });
@@ -35,7 +35,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

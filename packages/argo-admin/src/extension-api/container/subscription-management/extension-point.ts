@@ -1,7 +1,5 @@
-import {ExtensionPoint} from '../../../extension-point';
-
 export type SubscriptionManagementExtensionPoint =
-  | ExtensionPoint.SubscriptionManagementAdd
-  | ExtensionPoint.SubscriptionManagementCreate
-  | ExtensionPoint.SubscriptionManagementEdit
-  | ExtensionPoint.SubscriptionManagementRemove;
+  | 'Admin::Product::SubscriptionPlan::Add'
+  | 'Admin::Product::SubscriptionPlan::Create'
+  | 'Admin::Product::SubscriptionPlan::Edit'
+  | 'Admin::Product::SubscriptionPlan::Remove';

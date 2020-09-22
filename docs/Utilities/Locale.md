@@ -9,7 +9,7 @@ Access the merchant’s current locale (in [IETF format](https://en.wikipedia.or
 ```js
 import {extend, ExtensionPoint, Text} from '@shopify/argo-admin';
 
-extend(ExtensionPoint.MyExtension, (root, api) => {
+extend('Admin::Product::SubscriptionPlan::Add', (root, api) => {
   const {locale} = api;
 
   const text = root.createComponent(Text, {
@@ -39,7 +39,7 @@ function App() {
 }
 
 extend(
-  ExtensionPoint.MyExtension,
+  'Admin::Product::SubscriptionPlan::Add',
   render(() => <App />),
 );
 ```

@@ -13,12 +13,12 @@ interface SubscriptionManagementActions {
 
 export type ContainerOf<
   T extends ExtensionPoint
-> = T extends ExtensionPoint.SubscriptionManagementAdd
+> = T extends 'Admin::Product::SubscriptionPlan::Add'
   ? SubscriptionManagementCallbacks & SubscriptionManagementActions
-  : T extends ExtensionPoint.SubscriptionManagementCreate
+  : T extends 'Admin::Product::SubscriptionPlan::Create'
   ? SubscriptionManagementCallbacks
-  : T extends ExtensionPoint.SubscriptionManagementEdit
+  : T extends 'Admin::Product::SubscriptionPlan::Edit'
   ? SubscriptionManagementCallbacks
-  : T extends ExtensionPoint.SubscriptionManagementRemove
+  : T extends 'Admin::Product::SubscriptionPlan::Remove'
   ? SubscriptionManagementCallbacks & SubscriptionManagementActions
   : never;
