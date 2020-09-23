@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.4-alpha.1](https://github.com/Shopify/app-extension-libs/compare/v0.4.4-alpha.0...v0.4.4-alpha.1) (2020-09-23)
+
+**Note:** Version bump only for package @shopify/argo-admin-host
+
+
+
+
+
 ## [0.4.4-alpha.0](https://github.com/Shopify/app-extension-libs/compare/v0.4.3...v0.4.4-alpha.0) (2020-09-18)
 
 
