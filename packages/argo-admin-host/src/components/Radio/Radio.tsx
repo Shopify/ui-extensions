@@ -9,7 +9,7 @@ export default function Radio({
   value,
   onChange,
   id,
-  children,
+  label = '',
   helpText,
   checked,
   name,
@@ -21,7 +21,7 @@ export default function Radio({
       id={id}
       name={name}
       checked={checked}
-      label={children}
+      label={label}
       helpText={helpText}
       value={value}
       onChange={polarisOnChange}

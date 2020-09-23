@@ -37,15 +37,21 @@ export function ModalExample() {
   return (
     <Card sectioned title="Modal component">
       <Stack vertical>
-        <Checkbox checked={modalShowPrimayAction} onChange={setModalShowPrimayAction}>
-          Show primary action
-        </Checkbox>
-        <Checkbox checked={modalShowSecondaryAction} onChange={setModalShowSecondaryAction}>
-          Show Secondary Action
-        </Checkbox>
-        <Checkbox checked={modalShowSecondaryActions} onChange={setModalShowSecondaryActions}>
-          Show secondary actions
-        </Checkbox>
+        <Checkbox
+          label="Show primary action"
+          checked={modalShowPrimayAction}
+          onChange={setModalShowPrimayAction}
+        />
+        <Checkbox
+          label="Show Secondary Action"
+          checked={modalShowSecondaryAction}
+          onChange={setModalShowSecondaryAction}
+        />
+        <Checkbox
+          label="Show secondary actions"
+          checked={modalShowSecondaryActions}
+          onChange={setModalShowSecondaryActions}
+        />
         <Button title="Open modal" onPress={() => setModalOpen(true)} />
       </Stack>
       <Modal

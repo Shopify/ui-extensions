@@ -5,8 +5,8 @@ import {Checkbox as PolarisCheckbox} from '@shopify/polaris';
 
 type CheckboxProps = ReactPropsFromRemoteComponentType<typeof ArgoCheckbox>;
 
-export default function Checkbox({children, onChange, checked}: CheckboxProps) {
+export default function Checkbox({label = '', onChange, checked}: CheckboxProps) {
   const polarisOnChange = useCallback((newChecked: boolean) => onChange?.(newChecked), [onChange]);
 
-  return <PolarisCheckbox checked={checked} label={children} onChange={polarisOnChange} />;
+  return <PolarisCheckbox checked={checked} label={label} onChange={polarisOnChange} />;
 }

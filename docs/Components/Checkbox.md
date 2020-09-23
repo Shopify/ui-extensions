@@ -11,10 +11,10 @@ import {extend, ExtensionPoint, Checkbox} from '@shopify/argo-admin';
 
 extend(ExtensionPoint.MyExtension, (root) => {
   const checkbox = root.createComponent(Checkbox, {
+    label: 'Opt in to something cool',
     checked: true,
     onChange: () => console.log('Checked'),
   });
-  checkbox.appendChild('Opt in to something cool');
 
   root.appendChild(checkbox);
 
@@ -29,9 +29,7 @@ import {extend, render, ExtensionPoint, Checkbox} from '@shopify/argo-admin-reac
 
 function App() {
   return (
-    <Checkbox checked onChange={() => console.log('Checked')}>
-      Opt in to something cool
-    </Checkbox>
+    <Checkbox label="Opt in to something cool" checked onChange={() => console.log('Checked')} />
   );
 }
 
@@ -45,5 +43,6 @@ extend(
 
 | Name     | Type                | Description                        | Required |
 | -------- | ------------------- | ---------------------------------- | -------- |
+| label    | `string`            | Label for the checkbox.            |          |
 | checked  | `boolean`           | Checkbox is selected.              |          |
 | onChange | `(boolean) => void` | Callback when checkbox is toggled. |          |
