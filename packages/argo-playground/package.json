@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-playground",
-  "version": "0.4.4-alpha.0",
+  "version": "0.4.4-alpha.1",
   "private": true,
   "scripts": {
     "clean": "rm -rf ./dist",
@@ -16,9 +16,9 @@
   },
   "dependencies": {
     "@remote-ui/web-workers": "^1.1.0",
-    "@shopify/argo-admin": "0.4.4-alpha.0",
-    "@shopify/argo-admin-host": "0.4.4-alpha.0",
-    "@shopify/argo-admin-react": "0.4.4-alpha.0",
+    "@shopify/argo-admin": "0.4.4-alpha.1",
+    "@shopify/argo-admin-host": "0.4.4-alpha.1",
+    "@shopify/argo-admin-react": "0.4.4-alpha.1",
     "@shopify/css-utilities": "^1.0.6",
     "@shopify/polaris": "^4.26.0",
     "@shopify/polaris-icons": "^3.10.0",
