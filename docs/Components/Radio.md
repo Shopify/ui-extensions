@@ -11,22 +11,22 @@ import {extend, ExtensionPoint, Radio} from '@shopify/argo-admin';
 
 extend(ExtensionPoint.MyExtension, (root) => {
   const radio1 = root.createComponent(Radio, {
+    label: 'Option 1',
     helpText: 'Help text for option 1.',
     checked: true,
     id: 'option1',
     name: 'greatOptions',
     onChange: () => console.log('Option 1 selected'),
   });
-  radio1.appendChild('Option 1');
 
   const radio2 = root.createComponent(Radio, {
+    label: 'Option 2',
     helpText: 'Help text for option 2.',
     id: 'option2',
     name: 'greatOptions',
     checked: false,
     onChange: () => console.log('Option 2 selected'),
   });
-  radio2.appendChild('Option 2');
 
   root.appendChild(radio1);
   root.appendChild(radio2);
@@ -43,23 +43,21 @@ function App() {
   return (
     <>
       <Radio
+        label="Option 1"
         helpText="Help text for option 1."
         checked
         id="option1"
         name="greatOptions"
         onChange={() => console.log('Option 1 selected')}
-      >
-        Option 1
-      </Radio>
+      />
       <Radio
+        label="Option 2"
         helpText="Help text for option 2."
         id="option2"
         name="greatOptions"
         checked={false}
         onChange={() => console.log('Option 2 selected')}
       />
-        Option 2
-      </Radio>
     </>
   );
 }
@@ -74,6 +72,7 @@ extend(
 
 | Name     | Type                         | Description                            | Required |
 | -------- | ---------------------------- | -------------------------------------- | -------- |
+| label    | `string`                     | Label for the radio button.            |          |
 | helpText | `string`                     | Additional text to aid in use.         |          |
 | checked  | `boolean`                    | Radio button is selected.              |          |
 | id       | `string`                     | Unique ID for radio button.            |          |
