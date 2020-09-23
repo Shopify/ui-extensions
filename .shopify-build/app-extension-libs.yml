@@ -8,6 +8,11 @@ steps:
     run:
       - yarn:
       - CI=true yarn test
+  - label: Pretter
+    timeout: 5m
+    run:
+      - yarn:
+      - yarn run prettier
   - label: Linting
     timeout: 5m
     run:
