@@ -2,36 +2,53 @@ $focus-state-box-shadow-color: rgba(92, 106, 196, 0.8);
 $min-height: control-height();
 
 .Header {
-  padding: spacing(tight) spacing();
   border-bottom: border();
   background: color('white');
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-
-  .ShopifyLogo {
-    width: 16px;
-    height: auto;
-  }
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .AppOwnership {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-left: spacing(loose);
+}
 
-  img,
-  svg {
-    margin-right: 10px;
-  }
+.Icon {
+  display: inherit;
+  align-items: center;
 
+  span:first-child,
   img {
-    width: 25px;
-    display: inline-block;
+    width: rem(30px);
+    height: auto;
   }
+}
 
-  span:first-child {
-    display: inline-block;
-    margin-right: 5px;
-  }
+.AppOwnershipDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: spacing();
+  height: rem(32px);
+}
+
+.AppName,
+.DeveloperInfo {
+  display: inherit;
+  line-height: 100%;
+}
+
+.AppName {
+  @include text-emphasis-strong;
+  font-size: rem(16px);
+  margin-top: -3px;
+  margin-bottom: 3px;
+}
+
+.DeveloperInfo {
+  font-size: rem(14px);
+  margin-right: 3px;
 }
 
 .HeaderButton {
@@ -39,26 +56,24 @@ $min-height: control-height();
   background: none;
   border: none;
   outline: none;
-  min-height: $min-height;
-  padding: ($min-height - line-height(body) - rem(2px)) / 2;
 
   path {
     shape-rendering: geometricPrecision;
-    fill: color('indigo', 'dark');
+    fill: color('ink');
   }
 
   &:hover,
   &:active {
     // stylelint-disable-next-line selector-max-specificity
-    path:not(.ignoreFill) {
-      fill: color('indigo');
+    path {
+      fill: color('ink', 'lighter');
       fill-rule: nonzero;
     }
   }
 
   &:focus {
     box-shadow: inset 0 0 2px 0 $focus-state-box-shadow-color,
-      0 0 2px 0 $focus-state-box-shadow-color;
+    0 0 2px 0 $focus-state-box-shadow-color;
   }
 
   .Content {
@@ -69,5 +84,21 @@ $min-height: control-height();
     align-items: center;
     min-width: 1px;
     min-height: 1px;
+  }
+}
+
+.CloseButton {
+  border-left: 1px solid color('sky');
+
+  button {
+    display: block;
+    min-height: $min-height;
+    padding: spacing(loose);
+  }
+
+  span {
+    display: block;
+    width: rem(16px);
+    height: rem(16px);
   }
 }

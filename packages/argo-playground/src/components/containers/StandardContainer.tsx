@@ -28,6 +28,7 @@ export interface App {
   installation: {
     launchUrl: string;
   };
+  developerName: string;
 }
 
 type BaseProps<T extends ExtensionPoint> = Omit<ArgoExtensionsProps<T>, 'api' | 'worker'>;
