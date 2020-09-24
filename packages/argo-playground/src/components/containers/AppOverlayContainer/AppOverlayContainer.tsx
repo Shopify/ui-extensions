@@ -39,7 +39,13 @@ export function AppOverlayContainer<T extends ExtensionPoint>(props: AppOverlayC
       return;
     }
 
-    const {id, title, icon: {transformedSrc} = {}, installation: {launchUrl = ''} = {}} = app;
+    const {
+      id,
+      developerName,
+      title,
+      icon: {transformedSrc} = {},
+      installation: {launchUrl = ''} = {},
+    } = app;
 
     return (
       <Header
@@ -47,6 +53,7 @@ export function AppOverlayContainer<T extends ExtensionPoint>(props: AppOverlayC
         onClose={onClose}
         icon={transformedSrc}
         launchUrl={launchUrl}
+        developerName={developerName}
         title={title}
       />
     );
