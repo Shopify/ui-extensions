@@ -7,7 +7,8 @@ extend(ExtensionPoint.Playground, (root, api) => {
   const cardSection = root.createComponent(CardSection, {});
   const textField = root.createComponent(TextField, {
     value: '',
-    onAfterChange(value: string) {
+    label: '',
+    onChange(value: string) {
       textField.updateProps({
         value,
       });

@@ -3,6 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 export interface CheckboxProps {
   label?: string;
   checked?: boolean;
+  value: boolean;
   onChange?(value: boolean): void | Promise<void>;
 }
 

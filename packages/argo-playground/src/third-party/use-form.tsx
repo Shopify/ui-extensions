@@ -48,7 +48,7 @@ function App() {
           label="Name"
           placeholder="Type your name"
           value={fields.title.value}
-          onAfterChange={fields.title.onChange}
+          onChange={fields.title.onChange}
           onBlur={fields.title.onBlur}
           error={fields.title.error}
         />

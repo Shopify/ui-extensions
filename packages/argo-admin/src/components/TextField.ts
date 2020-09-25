@@ -9,7 +9,8 @@ export interface TextFieldProps {
   prefix?: string;
   suffix?: string;
   error?: string;
-  onAfterChange?: (value: string) => void;
+  onInput?: (value: string) => void;
+  onChange?: (value: string) => void;
   onBlur?(): void | Promise<void>;
   onFocus?(): void | Promise<void>;
   clearButton?: boolean;

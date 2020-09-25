@@ -20,7 +20,8 @@ It has a range of options and supports several text formats including numbers.
       prefix: 'I typed:',
       suffix: 'into this text field',
       error: 'I hate to break this to you, but you cannot fly',
-      onAfterChange: (value: string) => console.log(value, ' was typed'),
+      onChange: (value: string) => console.log(value, ' was typed'),
+      onInput: (value: string) => console.log(value, ' was typing'),
       onFocus: () => console.log('Welcome to the super field!'),
       onBlur: () => console.log('Left to do something else'),
       clearButton: true,
@@ -48,7 +49,8 @@ function App() {
       prefix="I typed:"
       suffix="into this text field"
       error="I hate to break this to you, but you cannot fly"
-      onAfterChange={(value) => console.log(value, ' was typed')}
+      onChange={(value) => console.log(value, ' was typed')}
+      onInput: (value: string) => console.log(value, ' was typing'),
       onFocus={() => console.log('Welcome to the super field!')}
       onBlur={() => console.log('Left to do something else')}
       clearButton
@@ -75,7 +77,8 @@ extend(
 | prefix             | `string`                         | Text to display before the value.      |          |
 | suffix             | `string`                         | Text to display after the value.       |          |
 | error              | `string`                         | Error to display beneath the label.    |          |
-| onAfterChange      | `(string) => void`               | Callback when value is changed.        |          |
+| onInput            | `(string) => void`               | Callback when value is changed.        |          |
+| onChange           | `(string) => void`               | Callback when a user leaves the input. |          |
 | onFocus            | `() => void`                     | Callback when input is focused.        |          |
 | onBlur             | `() => void`                     | Callback when focus is removed.        |          |
 | clearButton        | `boolean`                        | Show a clear text button in the input. |          |
