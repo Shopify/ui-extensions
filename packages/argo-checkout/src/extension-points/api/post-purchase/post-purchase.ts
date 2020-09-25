@@ -127,7 +127,11 @@ interface AddShippingLineChange {
   phone?: string;
 }
 
-type Changes = (AddVariantChange | AddShippingLineChange)[];
+interface SetMetafield extends Metafield {
+  type: 'set_metafield';
+}
+
+type Changes = (AddVariantChange | AddShippingLineChange | SetMetafield)[];
 
 interface Changeset {
   changes: Changes;
