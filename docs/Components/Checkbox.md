@@ -41,8 +41,9 @@ extend(
 
 ## Props API
 
-| Name     | Type                | Description                        | Required |
-| -------- | ------------------- | ---------------------------------- | -------- |
-| label    | `string`            | Label for the checkbox.            |          |
-| checked  | `boolean`           | Checkbox is selected.              |          |
-| onChange | `(boolean) => void` | Callback when checkbox is toggled. |          |
+| Name     | Type                | Description                                                                                | Required |
+| -------- | ------------------- | ------------------------------------------------------------------------------------------ | -------- |
+| label    | `string`            | Label for the checkbox.                                                                    |          |
+| checked  | `boolean`           | Checkbox is selected.                                                                      |          |
+| value    | `boolean`           | An alias of checked. If both checked and value are define, checked is the source of truth. |          |
+| onChange | `(boolean) => void` | Callback when checkbox is toggled.                                                         |          |

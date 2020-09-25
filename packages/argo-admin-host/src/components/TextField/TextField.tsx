@@ -10,7 +10,8 @@ const noop = () => undefined;
 export default function TextField({
   label = '',
   value = '',
-  onAfterChange = noop,
+  onInput = noop,
+  onChange = noop,
   onBlur = noop,
   onFocus = noop,
   prefix = '',
@@ -22,9 +23,12 @@ export default function TextField({
   suffix,
   type,
 }: TextFieldProps) {
-  const [appliedValue, polarisOnChange] = useQueuedState(value, onAfterChange);
+  const [appliedValue, polarisOnChange] = useQueuedState(value, onInput);
   const connectedLeft = type === 'search' ? <Icon source="searchMinor" /> : undefined;
-  const polarisOnBlur = useCallback(() => onBlur(), [onBlur]);
+  const polarisOnBlur = useCallback(() => {
+    onChange?.(appliedValue);
+    onBlur();
+  }, [onBlur, onChange, appliedValue]);
   const polarisOnFocus = useCallback(() => onFocus(), [onFocus]);
   const polarisOnClearButtonClick = useCallback(() => onClearButtonPress?.(), [onClearButtonPress]);
 

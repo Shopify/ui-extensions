@@ -15,7 +15,7 @@ export function TextFieldExample() {
           label="Name"
           placeholder="Type your name"
           value={name}
-          onAfterChange={setName}
+          onChange={setName}
           clearButton
           onClearButtonPress={clearName}
         />
@@ -25,21 +25,16 @@ export function TextFieldExample() {
           type="search"
           placeholder="Search for reviews"
           value={search}
-          onAfterChange={setSearch}
+          onChange={setSearch}
         />
         <TextField
           label="Reply"
           placeholder="Add a reply to this review..."
           multiline
           value={review}
-          onAfterChange={setReview}
+          onChange={setReview}
         />
-        <TextField
-          label="Number"
-          type="number"
-          value={numberValue}
-          onAfterChange={setNumberValue}
-        />
+        <TextField label="Number" type="number" value={numberValue} onChange={setNumberValue} />
         <TextField label="Error" value="Inline error" error="This field is invalid" />
         <TextField value="42" type="number" suffix="%" label="A real percent" />
         <TextField value="stuff around" prefix="Only the best" label="Cool things" />
