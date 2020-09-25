@@ -11,13 +11,13 @@ export function CheckboxExample() {
       <Stack>
         <Checkbox checked={noLabelChecked} onChange={(newValue) => setNoLabelChecked(newValue)} />
         <Checkbox
-          label="Foo"
+          label="Checkbox with checked"
           checked={fooChecked}
           onChange={(newValue) => setFooChecked(newValue)}
         />
         <Checkbox
-          label="Bar"
-          checked={barChecked}
+          label="Checkbox with value"
+          value={barChecked}
           onChange={(newValue) => setBarChecked(newValue)}
         />
       </Stack>
