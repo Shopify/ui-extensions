@@ -78,7 +78,7 @@ extend(
 | suffix             | `string`                         | Text to display after the value.       |          |
 | error              | `string`                         | Error to display beneath the label.    |          |
 | onInput            | `(string) => void`               | Callback when value is changed.        |          |
-| onChange           | `(string) => void`               | Callback when a user leaves the input. |          |
+| onChange           | `(string) => void`               | Callback when user leaves the input.   |          |
 | onFocus            | `() => void`                     | Callback when input is focused.        |          |
 | onBlur             | `() => void`                     | Callback when focus is removed.        |          |
 | clearButton        | `boolean`                        | Show a clear text button in the input. |          |
