@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0-alpha.0](https://github.com/Shopify/app-extension-libs/compare/v0.4.4...v0.5.0-alpha.0) (2020-09-28)
+
+
+### Bug Fixes
+
+* standardize form field naming ([5391b59](https://github.com/Shopify/app-extension-libs/commit/5391b598a9e6f516f2d4aff603d9aeee634d67e3))
+
+
+### Features
+
+* **app-overlay:** update header ([f34da64](https://github.com/Shopify/app-extension-libs/commit/f34da64b789aa3be967c2e19f57ebe5f294f3ef5))
+
+
+
+
+
 ## [0.4.4](https://github.com/Shopify/app-extension-libs/compare/v0.4.4-alpha.1...v0.4.4) (2020-09-24)
 
 **Note:** Version bump only for package @shopify/argo-playground
