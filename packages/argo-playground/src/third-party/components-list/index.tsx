@@ -18,7 +18,6 @@ import {SelectExample} from './select';
 import {IconExample} from './icon';
 import {LinkExample} from './link';
 import {SpinnerExample} from './spinner';
-import {OptionListExample} from './option-list';
 
 function App() {
   return (
@@ -33,7 +32,6 @@ function App() {
       <LinkExample />
       <ModalExample />
       <RadioExample />
-      <OptionListExample />
       <ResourceListExample />
       <SelectExample />
       <SpinnerExample />
