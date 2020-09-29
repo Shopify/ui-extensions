@@ -3,22 +3,22 @@ import {
   basicComponents,
   feedbackComponents,
   formComponents,
-  listComponents,
   loadingComponents,
   imageComponents,
   overlayComponents,
 } from '../component-sets';
-import {Card, CardSection} from '../components';
+import {Card, CardSection, ResourceList, ResourceItem} from '../components';
 
 const appOverlaySchema = {
   ...actionComponents,
   ...basicComponents,
   ...feedbackComponents,
   ...formComponents,
-  ...listComponents,
   ...loadingComponents,
   ...imageComponents,
   ...overlayComponents,
+  ResourceList,
+  ResourceItem,
   Card,
   CardSection,
 };
@@ -28,9 +28,10 @@ const modalSchema = {
   ...basicComponents,
   ...feedbackComponents,
   ...formComponents,
-  ...listComponents,
   ...loadingComponents,
   ...imageComponents,
+  ResourceList,
+  ResourceItem,
 };
 
 export const subscriptionManagementSchema = {
