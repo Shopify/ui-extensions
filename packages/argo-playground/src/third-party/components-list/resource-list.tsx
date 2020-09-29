@@ -25,6 +25,7 @@ export function ResourceListExample() {
       },
       onQueryClear: () => {
         setResourceListQuery('');
+        setListItems(dataList);
       },
     }),
     [resourceListQuery, dataList],
