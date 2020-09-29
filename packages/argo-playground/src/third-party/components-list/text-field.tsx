@@ -2,8 +2,10 @@ import React, {useState, useCallback} from 'react';
 import {Card, Stack, TextField, Text} from '@shopify/argo-admin-react';
 
 export function TextFieldExample() {
-  const [name, setName] = useState('');
-  const clearName = useCallback(() => setName(''), []);
+  const [firstName, setFirstName] = useState('');
+  const clearFirstName = useCallback(() => setFirstName(''), []);
+  const [lastName, setLastName] = useState('');
+  const clearLastName = useCallback(() => setLastName(''), []);
   const [search, setSearch] = useState('');
   const [review, setReview] = useState('');
   const [numberValue, setNumberValue] = useState('0');
@@ -12,14 +14,23 @@ export function TextFieldExample() {
     <Card sectioned title="TextField component">
       <Stack vertical>
         <TextField
-          label="Name"
-          placeholder="Type your name"
-          value={name}
-          onChange={setName}
+          label="First name"
+          placeholder="Type your first name (onChange)"
+          value={firstName}
+          onChange={setFirstName}
           clearButton
-          onClearButtonPress={clearName}
+          onClearButtonPress={clearFirstName}
         />
-        {name && <Text>Hello {name}</Text>}
+        {firstName && <Text>First name: {firstName}</Text>}
+        <TextField
+          label="Last name"
+          placeholder="Type your last name (onInput)"
+          value={lastName}
+          onInput={setLastName}
+          clearButton
+          onClearButtonPress={clearLastName}
+        />
+        {lastName && <Text>Last name: {lastName}</Text>}
         <TextField
           label="Reviews"
           type="search"
