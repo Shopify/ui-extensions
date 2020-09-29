@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0-alpha.1](https://github.com/Shopify/app-extension-libs/compare/v0.5.0-alpha.0...v0.5.0-alpha.1) (2020-09-29)
+
+
+### Bug Fixes
+
+* remove OptionList from Subscription extension point ([45b4d20](https://github.com/Shopify/app-extension-libs/commit/45b4d202be63acbc677cb33e4c75a13f22ac8f23))
+
+
+
+
+
 # [0.5.0-alpha.0](https://github.com/Shopify/app-extension-libs/compare/v0.4.4...v0.5.0-alpha.0) (2020-09-28)
 
 
