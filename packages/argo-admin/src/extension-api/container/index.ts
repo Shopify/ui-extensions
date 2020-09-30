@@ -1,13 +1,13 @@
 import {ExtensionPoint} from '../../extension-point';
 
-import {SubscriptionManagementContainer} from './subscription-management';
+import {ProductSubscriptionContainer} from './product-subscription';
 
 export type {ContainerAction} from './container-action';
-export type {SubscriptionManagementExtensionPoint} from './subscription-management/extension-point';
+export type {ProductSubscriptionExtensionPoint} from './product-subscription/extension-point';
 
-export type ExtensionContainer<
-  T extends ExtensionPoint
-> = SubscriptionManagementContainer.ContainerOf<T>;
+export type ExtensionContainer<T extends ExtensionPoint> = ProductSubscriptionContainer.ContainerOf<
+  T
+>;
 
 export interface ContainerApi<T extends ExtensionPoint> {
   container: ExtensionContainer<T>;

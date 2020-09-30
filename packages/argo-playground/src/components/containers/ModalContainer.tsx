@@ -3,7 +3,7 @@ import {
   ContainerAction,
   ContainerApi,
   ExtensionPoint,
-  SubscriptionManagementExtensionPoint,
+  ProductSubscriptionExtensionPoint,
 } from '@shopify/argo-admin';
 import {Modal, ModalProps} from '@shopify/polaris';
 import {retain} from '@remote-ui/web-workers';
@@ -77,7 +77,7 @@ export function ModalContainer<T extends ExtensionPoint>(props: ModalContainerPr
 
   const {primary, secondary, setPrimaryAction, setSecondaryAction} = useModalActionsApi();
 
-  const containerApi: ContainerApi<SubscriptionManagementExtensionPoint> = useMemo(
+  const containerApi: ContainerApi<ProductSubscriptionExtensionPoint> = useMemo(
     () => ({
       container: {
         close: onClose,

@@ -1,12 +1,12 @@
 import {ExtensionPoint} from '../../../extension-point';
 import {ContainerAction} from '../container-action';
 
-interface SubscriptionManagementCallbacks {
+interface ProductSubscriptionCallbacks {
   close(): void;
   done(): void;
 }
 
-interface SubscriptionManagementActions {
+interface ProductSubscriptionActions {
   setPrimaryAction(containerAction?: ContainerAction): void;
   setSecondaryAction(containerAction?: ContainerAction): void;
 }
@@ -14,11 +14,11 @@ interface SubscriptionManagementActions {
 export type ContainerOf<
   T extends ExtensionPoint
 > = T extends 'Admin::Product::SubscriptionPlan::Add'
-  ? SubscriptionManagementCallbacks & SubscriptionManagementActions
+  ? ProductSubscriptionCallbacks & ProductSubscriptionActions
   : T extends 'Admin::Product::SubscriptionPlan::Create'
-  ? SubscriptionManagementCallbacks
+  ? ProductSubscriptionCallbacks
   : T extends 'Admin::Product::SubscriptionPlan::Edit'
-  ? SubscriptionManagementCallbacks
+  ? ProductSubscriptionCallbacks
   : T extends 'Admin::Product::SubscriptionPlan::Remove'
-  ? SubscriptionManagementCallbacks & SubscriptionManagementActions
+  ? ProductSubscriptionCallbacks & ProductSubscriptionActions
   : never;

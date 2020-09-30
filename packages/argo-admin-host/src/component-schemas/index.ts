@@ -1,7 +1,7 @@
 import {ExtensionPoint} from '@shopify/argo-admin';
 
 export {playgroundSchema} from './playground';
-export {subscriptionManagementSchema} from './subscription-management';
+export {ProductSubscriptionSchema} from './product-subscription';
 
 export const extensionComponentsLoader: Record<ExtensionPoint, () => Promise<any>> = {
   Playground: () =>
@@ -11,18 +11,18 @@ export const extensionComponentsLoader: Record<ExtensionPoint, () => Promise<any
 
   'Admin::Product::SubscriptionPlan::Add': () =>
     import(
-      /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
-    ).then((module) => module.subscriptionManagementSchema.Add),
+      /* webpackChunkName: 'argo-product-subscription-components' */ './product-subscription'
+    ).then((module) => module.ProductSubscriptionSchema.Add),
   'Admin::Product::SubscriptionPlan::Create': () =>
     import(
-      /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
-    ).then((module) => module.subscriptionManagementSchema.Create),
+      /* webpackChunkName: 'argo-product-subscription-components' */ './product-subscription'
+    ).then((module) => module.ProductSubscriptionSchema.Create),
   'Admin::Product::SubscriptionPlan::Remove': () =>
     import(
-      /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
-    ).then((module) => module.subscriptionManagementSchema.Remove),
+      /* webpackChunkName: 'argo-product-subscription-components' */ './product-subscription'
+    ).then((module) => module.ProductSubscriptionSchema.Remove),
   'Admin::Product::SubscriptionPlan::Edit': () =>
     import(
-      /* webpackChunkName: 'argo-subscription-management-components' */ './subscription-management'
-    ).then((module) => module.subscriptionManagementSchema.Edit),
+      /* webpackChunkName: 'argo-product-subscription-components' */ './product-subscription'
+    ).then((module) => module.ProductSubscriptionSchema.Edit),
 };

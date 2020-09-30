@@ -17,13 +17,13 @@ import {
   Stack,
   StackItem,
   Text,
-  SubscriptionManagementExtensionPoint,
+  ProductSubscriptionExtensionPoint,
 } from '@shopify/argo-admin-react';
 
 function Subscription({
   extensionPoint,
   children,
-}: React.PropsWithChildren<{extensionPoint: SubscriptionManagementExtensionPoint}>) {
+}: React.PropsWithChildren<{extensionPoint: ProductSubscriptionExtensionPoint}>) {
   const type = useMemo(() => {
     switch (extensionPoint) {
       case 'Admin::Product::SubscriptionPlan::Add':

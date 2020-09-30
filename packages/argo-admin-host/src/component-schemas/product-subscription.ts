@@ -34,7 +34,7 @@ const modalSchema = {
   ResourceItem,
 };
 
-export const subscriptionManagementSchema = {
+export const ProductSubscriptionSchema = {
   Add: modalSchema,
   Create: appOverlaySchema,
   Edit: appOverlaySchema,

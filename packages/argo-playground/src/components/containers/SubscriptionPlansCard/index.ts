@@ -1,2 +1,2 @@
-export * from './SubscriptionManagement';
+export * from './ProductSubscription';
 export * from './SubscriptionPlansCard';

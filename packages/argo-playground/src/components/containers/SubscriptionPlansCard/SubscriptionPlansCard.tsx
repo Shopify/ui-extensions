@@ -5,7 +5,7 @@ import {Card, Link, Stack, Button} from '@shopify/polaris';
 
 import {App} from '../StandardContainer';
 
-import {SubscriptionManagement, apps} from './SubscriptionManagement';
+import {ProductSubscription, apps} from './ProductSubscription';
 
 export function SubscriptionPlansCard() {
   const [showExtension, setShowExtension] = useState(false);
@@ -40,7 +40,7 @@ export function SubscriptionPlansCard() {
 
   return (
     <>
-      <Card title="Subscription Management">
+      <Card title="Product Subscription">
         {Object.values(apps).map(({id, title}) => {
           return (
             <Card.Section key={id}>
@@ -94,7 +94,7 @@ export function SubscriptionPlansCard() {
           </Stack>
         </Card.Section>
       </Card>
-      <SubscriptionManagement
+      <ProductSubscription
         open={showExtension}
         defaultTitle={title}
         onClose={onClose}

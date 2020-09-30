@@ -1,11 +1,7 @@
 import React, {useMemo} from 'react';
 import {Portal, Backdrop, Scrollable, Layout} from '@shopify/polaris';
 import {TransitionGroup} from 'react-transition-group';
-import {
-  ContainerApi,
-  ExtensionPoint,
-  SubscriptionManagementExtensionPoint,
-} from '@shopify/argo-admin';
+import {ContainerApi, ExtensionPoint, ProductSubscriptionExtensionPoint} from '@shopify/argo-admin';
 
 import {StandardContainer, StandardContainerProps} from '../StandardContainer';
 
@@ -22,7 +18,7 @@ export interface AppOverlayContainerProps<T extends ExtensionPoint>
 export function AppOverlayContainer<T extends ExtensionPoint>(props: AppOverlayContainerProps<T>) {
   const {app, api: externalApi, open, onClose, onDone = () => {}} = props;
 
-  const containerApi: ContainerApi<SubscriptionManagementExtensionPoint> = useMemo(
+  const containerApi: ContainerApi<ProductSubscriptionExtensionPoint> = useMemo(
     () => ({
       container: {
         close: onClose,

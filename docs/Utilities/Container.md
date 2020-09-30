@@ -11,7 +11,7 @@ Each extension point is provided a container API which provides additional metho
 | setPrimaryAction   | `function` | Sets the primary action content and callback when the action is pressed                  |          |
 | setSecondaryAction | `function` | Sets the secondary action content and callback when the action is pressed                |          |
 
-Below are examples of implementing the data API for the Subscription Management Create extension point.
+Below are examples of implementing the data API for the Product Subscription Create extension point.
 
 #### Vanilla
 
@@ -88,4 +88,4 @@ extend(
 
 ### Extension Points' Container API
 
-- [Subscription Management](../ExtensionPoints/SubscriptionManagement/README.md#container-api)
+- [Product Subscription](../ExtensionPoints/ProductSubscription/README.md#container-api)

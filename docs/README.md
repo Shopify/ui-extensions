@@ -5,7 +5,6 @@
 - [Extension Points](./ExtensionPoints/README.md)
 - [Components](./Components/README.md)
 - [Utilities](./Utilities/README.md)
-- [Calling external APIs](./ExternalAPI/README.md)
 
 ## Getting Started
 
@@ -79,4 +78,4 @@ extend(
 );
 ```
 
-**Note:** Some extensions have multiple extension points, like [SubscriptionManagement](./ExtensionPoints/SubscriptionManagement/README.md)
+**Note:** Some extensions have multiple extension points, like [ProductSubscription](./ExtensionPoints/ProductSubscription/README.md)

@@ -1,9 +1,5 @@
 import React, {useCallback, useMemo, useState, useEffect} from 'react';
-import {
-  ExtensionPoint,
-  ExtensionApi,
-  SubscriptionManagementExtensionPoint,
-} from '@shopify/argo-admin';
+import {ExtensionPoint, ExtensionApi, ProductSubscriptionExtensionPoint} from '@shopify/argo-admin';
 import {ReadyState} from '@shopify/argo-admin-host';
 import {Modal, ModalProps, Stack, RadioButton} from '@shopify/polaris';
 import {createPlainWorkerFactory} from '@remote-ui/web-workers';
@@ -17,9 +13,9 @@ type ContainerProps<T extends ExtensionPoint> = AppOverlayContainerProps<T> &
 
 type BaseProps<T extends ExtensionPoint> = Omit<ContainerProps<T>, 'api' | 'error' | 'loading'>;
 
-type Api = Pick<ExtensionApi[SubscriptionManagementExtensionPoint], 'data' | 'toast'>;
+type Api = Pick<ExtensionApi[ProductSubscriptionExtensionPoint], 'data' | 'toast'>;
 
-export interface SubscriptionManagementProps<T extends ExtensionPoint> extends BaseProps<T> {
+export interface ProductSubscriptionProps<T extends ExtensionPoint> extends BaseProps<T> {
   open: boolean;
   onDone: () => void;
   setApp: (app?: App) => void;
@@ -55,7 +51,7 @@ export const apps = {
   },
 };
 
-export function SubscriptionManagement<T extends ExtensionPoint>({
+export function ProductSubscription<T extends ExtensionPoint>({
   open,
   defaultTitle,
   onClose,
@@ -66,7 +62,7 @@ export function SubscriptionManagement<T extends ExtensionPoint>({
   app,
   setApp,
   ...props
-}: SubscriptionManagementProps<T>) {
+}: ProductSubscriptionProps<T>) {
   const [appId, setAppId] = useState<string | undefined>();
   const [readyState, setReadyState] = useState(ReadyState.Loading);
 

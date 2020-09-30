@@ -1,10 +1,10 @@
 import {ExtensionPoint} from '../../extension-point';
 
-import {SubscriptionManagementData} from './subscription-management';
+import {ProductSubscriptionData} from './product-subscription';
 
-export {SubscriptionManagementActions} from './subscription-management';
+export {ProductSubscriptionActions} from './product-subscription';
 
-export type ExtensionData<T extends ExtensionPoint> = SubscriptionManagementData.DataOf<T>;
+export type ExtensionData<T extends ExtensionPoint> = ProductSubscriptionData.DataOf<T>;
 
 export interface DataApi<T extends ExtensionPoint> {
   data: ExtensionData<T>;
