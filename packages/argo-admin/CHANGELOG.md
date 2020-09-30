@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0-alpha.0](https://github.com/Shopify/app-extension-libs/compare/v0.5.0...v0.6.0-alpha.0) (2020-09-30)
+
+
+### Features
+
+* remove extension point enum ([06479db](https://github.com/Shopify/app-extension-libs/commit/06479db477722dad8fa5625cbc99274a07916037))
+* rename subscription management ([#973](https://github.com/Shopify/app-extension-libs/issues/973)) ([5752089](https://github.com/Shopify/app-extension-libs/commit/575208901f6e7a5b37d2d0dfb2799c59fdbee15b))
+
+
+
+
+
 # [0.5.0](https://github.com/Shopify/app-extension-libs/compare/v0.5.0-alpha.1...v0.5.0) (2020-09-30)
 
 **Note:** Version bump only for package @shopify/argo-admin
