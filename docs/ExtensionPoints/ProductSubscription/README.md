@@ -1,10 +1,10 @@
-# Subscription Management Extension
+# Product Subscription Extension
 
 This extension renders in the Product Details and Product Variants Page inside a Modal container.
 
 ## Extension Points
 
-Subscription Management has multiple extension points. Each is triggered by a different merchant action, receives different data, and has a different responsibility.
+Product Subscription has multiple extension points. Each is triggered by a different merchant action, receives different data, and has a different responsibility.
 
 The different extension points are:
 
@@ -52,21 +52,21 @@ extend(
 
 See [Data](../../Utilities/Data.md) for more info about how to access subscription data provided by the host page.
 
-#### SubscriptionManagement Add
+#### ProductSubscription Add
 
 | Name      | Type     | Description                            |
 | --------- | -------- | -------------------------------------- |
 | productId | `string` | The id of the current product.         |
 | variantId | `string` | The id of the current product variant. |
 
-#### SubscriptionManagement Create
+#### ProductSubscription Create
 
 | Name      | Type     | Description                            |
 | --------- | -------- | -------------------------------------- |
 | productId | `string` | The id of the current product.         |
 | variantId | `string` | The id of the current product variant. |
 
-#### SubscriptionManagement Edit
+#### ProductSubscription Edit
 
 | Name           | Type     | Description                            |
 | -------------- | -------- | -------------------------------------- |
@@ -74,7 +74,7 @@ See [Data](../../Utilities/Data.md) for more info about how to access subscripti
 | variantId      | `string` | The id of the current product variant. |
 | sellingGroupId | `string` | The id of the current selling group.   |
 
-#### SubscriptionManagement Remove
+#### ProductSubscription Remove
 
 | Name           | Type       | Description                              |
 | -------------- | ---------- | ---------------------------------------- |
@@ -94,7 +94,7 @@ See [Container](../../Utilities/Container.md) for more info about how to customi
 
 ## Available components
 
-The following components are available for all Subscription Management extension points:
+The following components are available for all Product Subscription extension points:
 
 - [Badge](../../Components/Badge.md)
 - [Banner](../../Components/Banner.md)
@@ -115,7 +115,7 @@ The following components are available for all Subscription Management extension
 - [TextField](../../Components/TextField.md)
 - [Thumbnail](../../Components/Thumbnail.md)
 
-The following components are available only for Subscription Management Create and Edit extension points:
+The following components are available only for Product Subscription Create and Edit extension points:
 
 - [Card](../../Components/Card.md)
 - [CardSection](../../Components/CardSection.md)

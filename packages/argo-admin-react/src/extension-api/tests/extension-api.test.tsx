@@ -20,7 +20,7 @@ type AllApis = {extensionPoint: ExtensionPoint} & LayoutApi &
   LocaleApi &
   SessionTokenApi &
   ToastApi;
-type SubscriptionManagementApi = AllApis & ContainerApi<'Admin::Product::SubscriptionPlan::Add'>;
+type ProductSubscriptionApi = AllApis & ContainerApi<'Admin::Product::SubscriptionPlan::Add'>;
 
 const defaultApis: AllApis = {
   extensionPoint: 'Admin::Product::SubscriptionPlan::Add',
@@ -142,9 +142,9 @@ describe('extension api', () => {
         setSecondaryAction: () => {},
       };
 
-      const subscriptionManagementApi: SubscriptionManagementApi = {...defaultApis, container};
+      const ProductSubscriptionApi: ProductSubscriptionApi = {...defaultApis, container};
       await mountWithAppProvider(
-        <ExtensionApiContext.Provider value={subscriptionManagementApi}>
+        <ExtensionApiContext.Provider value={ProductSubscriptionApi}>
           <MockComponent hook={useContainer}>{hookSpy}</MockComponent>
         </ExtensionApiContext.Provider>,
       );

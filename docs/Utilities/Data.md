@@ -4,7 +4,7 @@ Extension points may provide relevant data to the extension. The type of data va
 
 ## Implementation
 
-Below are examples of implementing the data API for the Subscription Management Add extension point.
+Below are examples of implementing the data API for the Product Subscription Add extension point.
 
 #### Vanilla
 
@@ -53,4 +53,4 @@ extend(
 
 ## Extension Points with Data API
 
-- [Subscription Management](../ExtensionPoints/SubscriptionManagement/README.md#data-api)
+- [Product Subscription](../ExtensionPoints/ProductSubscription/README.md#data-api)

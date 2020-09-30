@@ -8,12 +8,12 @@ export type {
   ContainerApi,
   ContainerAction,
   ExtensionContainer,
-  SubscriptionManagementExtensionPoint,
+  ProductSubscriptionExtensionPoint,
 } from './container';
 export {isContainerApi} from './container';
 
 export type {DataApi, ExtensionData} from './data';
-export {isDataApi, SubscriptionManagementActions} from './data';
+export {isDataApi, ProductSubscriptionActions} from './data';
 
 export type {SessionTokenApi} from './sessionToken';
 export {isSessionTokenApi} from './sessionToken';

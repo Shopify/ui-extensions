@@ -4,9 +4,9 @@ import {Page, Button, Card, Layout} from '@shopify/polaris';
 import {usePerformanceMark} from '@shopify/react-performance';
 
 import {
-  SubscriptionManagement,
+  ProductSubscription,
   StandardContainer,
-  SubscriptionManagementProps,
+  ProductSubscriptionProps,
 } from '../../components/containers';
 import {ArgoHeader} from '../../components/containers/shared/Header';
 
@@ -21,9 +21,9 @@ const noop = () => {
 export function ModalExtension({
   open,
   onClose,
-}: Pick<SubscriptionManagementProps<'Playground'>, 'open' | 'onClose'>) {
+}: Pick<ProductSubscriptionProps<'Playground'>, 'open' | 'onClose'>) {
   return (
-    <SubscriptionManagement
+    <ProductSubscription
       defaultTitle="Modal Extension Render Timeout"
       app={{
         title: 'OneMoreTime',
@@ -94,7 +94,7 @@ export function RenderError() {
           <UnsupportedComponent />
         </Layout.Section>
         <Layout.Section>
-          <Button onClick={() => setModalOpen(true)}>Open subscription management modal</Button>
+          <Button onClick={() => setModalOpen(true)}>Open product subscription modal</Button>
         </Layout.Section>
         <Layout.Section>
           <CardExtension />

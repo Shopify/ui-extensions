@@ -1,6 +1,6 @@
 # Session Token
 
-Get a fresh session token for communication with your app's backend.
+Get a fresh session token for communication with your app's backend service. Calls to Shopify APIs must be made by your app’s backend service.
 
 ## Implementation
 

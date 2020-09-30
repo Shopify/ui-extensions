@@ -32,7 +32,7 @@ export type RenderableExtensionCallback<Api, Root extends RemoteRoot> = (
 export interface ExtensionApi {
   Playground: StandardApi<'Playground'>;
 
-  // Subscription Management
+  // Product Subscription
   'Admin::Product::SubscriptionPlan::Create': SubscriptionApi<
     'Admin::Product::SubscriptionPlan::Create'
   >;
@@ -52,7 +52,7 @@ export interface ExtensionPointCallback {
     RemoteRoot<ExtensionPointSchema['Playground']>
   >;
 
-  // Subscription Management
+  // Product Subscription
   'Admin::Product::SubscriptionPlan::Create': RenderableExtensionCallback<
     SubscriptionApi<'Admin::Product::SubscriptionPlan::Create'>,
     RemoteRoot<ExtensionPointSchema['Admin::Product::SubscriptionPlan::Create']>
