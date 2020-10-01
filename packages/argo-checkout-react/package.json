@@ -9,7 +9,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@remote-ui/react": "^1.0.5",
+    "@remote-ui/react": "^2.0.0",
     "@shopify/argo-checkout": "^0.5.4",
     "@types/react": "^16.0.0"
   },
