@@ -27,6 +27,9 @@ export function render<ExtensionPoint extends RenderExtensionPoint>(
           render(input as InputForRenderExtension<ExtensionPoint>),
         ),
         root,
+        () => {
+          root.mount();
+        },
       );
 
       return {};
