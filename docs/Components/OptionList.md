@@ -62,18 +62,18 @@ extend(
 
 ## Props API
 
-| Name          | Type               | Description                               | Required |
-| ------------- | ------------------ | ----------------------------------------- | -------- |
-| title         | string             | List title                                |          |
-| selected      | string[]           | Values selected                           | ☑️       |
-| options       | OptionDescriptor[] | Collection of options to be listed        |          |
-| allowMultiple | boolean            | Allow more than one option to be selected |          |
-| onChange      | string             | Callback when selection is changed        | ☑️       |
+| Name          | Type                 | Description                               | Required |
+| ------------- | -------------------- | ----------------------------------------- | -------- |
+| title         | `string`             | List title                                |          |
+| selected      | `string[]`           | Values selected                           | ☑️       |
+| options       | `OptionDescriptor[]` | Collection of options to be listed        |          |
+| allowMultiple | `boolean`            | Allow more than one option to be selected |          |
+| onChange      | `(string[]) => void` | Callback when selection is changed        | ☑️       |
 
 ## OptionDescriptor
 
-| Name     | Type    | Description                    | Required |
-| -------- | ------- | ------------------------------ | -------- |
-| value    | string  | Option value                   | ☑️       |
-| label    | string  | Option display label           | ☑️       |
-| disabled | boolean | Whether the option is disabled |          |
+| Name     | Type      | Description                    | Required |
+| -------- | --------- | ------------------------------ | -------- |
+| value    | `string`  | Option value                   | ☑️       |
+| label    | `string`  | Option display label           | ☑️       |
+| disabled | `boolean` | Whether the option is disabled |          |

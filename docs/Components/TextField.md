@@ -50,7 +50,7 @@ function App() {
       suffix="into this text field"
       error="I hate to break this to you, but you cannot fly"
       onChange={(value) => console.log(value, ' was typed')}
-      onInput: (value: string) => console.log(value, ' was typing'),
+      onInput={(value) => console.log(value, ' was typing')}
       onFocus={() => console.log('Welcome to the super field!')}
       onBlur={() => console.log('Left to do something else')}
       clearButton
@@ -82,4 +82,4 @@ extend(
 | onFocus            | `() => void`                     | Callback when input is focused.        |          |
 | onBlur             | `() => void`                     | Callback when focus is removed.        |          |
 | clearButton        | `boolean`                        | Show a clear text button in the input. |          |
-| onClearButtonPress | `(string) => void`               | Callback when clear button is pressed. |          |
+| onClearButtonPress | `() => void`                     | Callback when clear button is pressed. |          |

@@ -42,6 +42,6 @@ extend(
 
 ## Props API
 
-| Name  | Type   | Description        | Required |
-| ----- | ------ | ------------------ | -------- |
-| title | string | Card Section title |          |
+| Name  | Type     | Description        | Required |
+| ----- | -------- | ------------------ | -------- |
+| title | `string` | Card Section title |          |
