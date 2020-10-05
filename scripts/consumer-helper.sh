@@ -1,6 +1,6 @@
 #!/bin/sh
 
-AVAILABLE_PACKAGES=('argo-admin' 'argo-admin-host')
+AVAILABLE_PACKAGES=('argo-admin' 'argo-admin-host' 'argo-admin-react')
 ROOT=$(pwd)
 
 # Font color
@@ -46,7 +46,7 @@ function validate_package {
   else
     packages=($packageName)
 
-    if [[ ! ${AVAILABLE_PACKAGES[*]} =~ "$packageName" ]]; then
+    if [[ ! ${AVAILABLE_PACKAGES[*]} =~ "$packages" ]]; then
       local availablePackageNames=$(IFS=','; echo "${AVAILABLE_PACKAGES[*]}")
       err "${BOLD}$packageName${NORMAL} is not a valid package. Available packages: ${BOLD}$availablePackageNames${NORMAL}"
       exit 0
