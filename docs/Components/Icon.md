@@ -1,15 +1,22 @@
 # Icon
 
-Icons are used to visually communicate available actions. They can act as wayfinding tools to help merchants more easily understand where they are in the product, and common interaction patterns that are available.
+Icons are small visual indicators from a set of pre-defined glyphs. Icons have a default color of black.
+
+| ✅ Do                                                                                                                           | 🛑 Don't                                        |
+| ------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------- |
+| Use Icons to provide visual indicators to your actions, such as sorting and searching                                           | Use the same accessibility label for every Icon |
+| Use a unique accessibility label that describes the Icon, so that the merchants device’s screen reader can announce the content |                                                 |
+
+For more guidelines, refer to Polaris' [Icon related guidelines](https://polaris.shopify.com/components/images-and-icons/icon#section-related-guidelines).
 
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Icon} from '@shopify/argo-admin';
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const icon = root.createComponent(Icon, {
     source: 'cancelSmallMinor',
     color: 'blue',
@@ -22,7 +29,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, Icon} from '@shopify/argo-admin-react';
@@ -32,7 +39,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

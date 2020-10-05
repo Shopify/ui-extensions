@@ -1,16 +1,24 @@
 # Text
 
-The Text component applies styling to your text.
-You can also render simple text without styling.
+The Text component is used to render text in different sizes, colors, and alignments.
+
+## Behavior
+
+📱 Do not nest other components other than Text, they will be ignored and not rendered. Nested Text will be used to render the content of Text
+
+| ✅ Do                                          | 🛑 Don't |
+| ---------------------------------------------- | -------- |
+| Use Text to add rich content to your extension |          |
+| Use size to (de)-emphasize your content        |          |
 
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Text} from '@shopify/argo-admin';
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const formattedText = root.createComponent(Text, {
     size: 'small',
     style: 'italic',
@@ -28,7 +36,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, Text} from '@shopify/argo-admin-react';
@@ -45,7 +53,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

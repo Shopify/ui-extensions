@@ -1,25 +1,16 @@
-# Component Master List
+# Components
 
-Here is a cumulative list of all available components in Argo.
+- Action: [Button](./Button.md), [Link](./Link.md), [Pressable](./Pressable.md)
+- Text: [Text](./Text.md)
+- Feedback: [Badge](./Badge.md), [Banner](./Banner.md)
+- Form: [Checkbox](./Checkbox.md), [Radio](./Radio.md), [Select](./Select.md), [TextField](./TextField.md)
+- Image: [Icon](./Icon.md), [Thumbnail](./Thumbnail.md)
+- Layout: [Card](./Card.md), [CardSection](./CardSection.md), [Page](./Page.md), [Stack](./Stack.md), [StackItem](./StackItem.md)
+- List: [OptionList](./OptionList.md), [ResourceItem](./ResourceItem.md), [ResourceList](./ResourceList.md)
+- Loading: [Spinner](./Spinner.md)
+- Overlays: [Modal](./Modal.md)
 
-- [Badge](./Badge.md)
-- [Banner](./Banner.md)
-- [Button](./Button.md)
-- [Card](./Card.md)
-- [CardSection](./CardSection.md)
-- [Checkbox](./Checkbox.md)
-- [Pressable](./Pressable.md)
-- [Icon](./Icon.md)
-- [Link](./Link.md)
-- [Modal](./Modal.md)
-- [Page](./Page.md)
-- [Radio](./Radio.md)
-- [ResourceItem](./ResourceItem.md)
-- [ResourceList](./ResourceList.md)
-- [Select](./Select.md)
-- [Spinner](./Spinner.md)
-- [Stack](./Stack.md)
-- [StackItem](./StackItem.md)
-- [Text](./Text.md)
-- [TextField](./TextField.md)
-- [Thumbnail](./Thumbnail.md)
+Each component has general guidelines for usage as well as additional information regarding the behavior on certain platforms.
+
+- 📱 denotes mobile specific information
+- 🖥 denotes desktop specific information

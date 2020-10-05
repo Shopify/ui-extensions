@@ -1,18 +1,24 @@
 # ResourceList
 
-A resource list displays a collection of objects of the same type, like products or customers.
-The main job of a resource list is to help merchants find an object and navigate to a full-page representation of it.
+ResourceLists display a collection of objects of the same type, like products or customers.
+The main job of a ResourceList is to help merchants find an object and navigate to a full-page representation of it.
 
 A resource list should contain [ResourceItem](./ResourceItem.md) components.
 
+| ✅ Do                                              | 🛑 Don't                                                           |
+| -------------------------------------------------- | ------------------------------------------------------------------ |
+| Use ResourceList to show a summary of the resource | ResourceLists should not contain elements other than ResourceItems |
+
+For more guidelines, refer to Polaris' [Resource List best practices](https://polaris.shopify.com/components/lists-and-tables/resource-list#section-best-practices).
+
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin';
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const resourceitem1 = root.createComponent(ResourceItem, {
     id: '1234',
     onPress: () => console.log('Pressed 1'),
@@ -41,7 +47,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin-react';
@@ -67,7 +73,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

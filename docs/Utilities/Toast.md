@@ -4,7 +4,7 @@ The toast component is a non-disruptive message that appears at the bottom of th
 
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Button} from '@shopify/argo-admin';
@@ -28,7 +28,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root, api) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, useToast, ExtensionPoint, Button} from '@shopify/argo-admin-react';

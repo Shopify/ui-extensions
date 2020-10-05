@@ -1,16 +1,27 @@
 # TextField
 
-A text field is an input field that merchants can type into.
-It has a range of options and supports several text formats including numbers.
+TextField is an input field that merchants can type into.
+It has a range of options and supports several input formats including numbers.
+
+## Behavior
+
+- TextFields will expand to the width of the container
+
+| ✅ Do                                                                       | 🛑 Don't                         |
+| --------------------------------------------------------------------------- | -------------------------------- |
+| 📱 Vertically align your TextFields, rather than horizontally aligning them | 📱 Horizontally stack TextFields |
+| Use TextField to capture merchant text input                                |                                  |
+
+For more guidelines, refer to Polaris' [Text Field best practices](https://polaris.shopify.com/components/forms/text-field#section-best-practices).
 
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
   import {extend, ExtensionPoint, TextField} from '@shopify/argo-admin';
 
-  extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+  extend('Playground', (root) => {
     const textfield = root.createComponent(TextField, {
       label: 'Super text field',
       type: 'text';
@@ -33,7 +44,7 @@ It has a range of options and supports several text formats including numbers.
   });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, TextField} from '@shopify/argo-admin-react';
@@ -60,7 +71,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

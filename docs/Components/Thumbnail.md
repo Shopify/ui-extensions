@@ -1,15 +1,21 @@
 # Thumbnail
 
-Use thumbnails as a visual anchor and identifier for an object. They should be used along with text to provide context.
+Thumbnails are used as a visual anchor and identifier for an object. They should be used along with text to provide context.
+
+| ✅ Do                                  | 🛑 Don't                                  |
+| -------------------------------------- | ----------------------------------------- |
+| Use Thumbnails with supporting context | Use Thumbnails without supporting context |
+
+Also refer to Polaris' [Thumbnail best practices](https://polaris.shopify.com/components/images-and-icons/thumbnail#section-best-practices).
 
 ## Examples
 
-#### Vanilla
+#### Vanilla javascript example
 
 ```js
 import {extend, ExtensionPoint, Thumbnail} from '@shopify/argo-admin';
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const thumbnail = root.createComponent(Thumbnail, {
     size: 'small',
     scaleType: 'fit',
@@ -39,7 +45,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

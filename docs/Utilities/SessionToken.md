@@ -4,7 +4,7 @@ Get a fresh session token for communication with your app's backend service. Cal
 
 ## Implementation
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, TextField} from '@shopify/argo-admin';
@@ -28,7 +28,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root, api) => {
 });
 ```
 
-#### React
+#### React example
 
 ```js
 import {

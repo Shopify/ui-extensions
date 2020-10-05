@@ -1,15 +1,17 @@
 # Page
 
+**Note:** This component is note available in Product Subscription extensions. See the [full list of available components](../ExtensionPoints/ProductSubscription/README.md).
+
 Use to build the outer wrapper of a page, including the page title and associated actions.
 
 ## Implementation
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Page} from '@shopify/argo-admin';
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const page = root.createComponent(Page, {});
 
   page.appendChild('This is the best extension.');
@@ -19,7 +21,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, Page} from '@shopify/argo-admin-react';
@@ -29,7 +31,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```
