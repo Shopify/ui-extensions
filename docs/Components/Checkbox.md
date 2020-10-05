@@ -1,15 +1,22 @@
 # Checkbox
 
-Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple). They may also be used as a way to have merchants indicate they agree to specific terms and services.
+Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple).
+
+| ✅ Do                                                  | 🛑 Don't                      |
+| ------------------------------------------------------ | ----------------------------- |
+| Use Checkboxes to give merchants a multi select choice | Horizontally stack Checkboxes |
+| Vertically align Checkboxes                            |                               |
+
+For more guidelines, refer to Polaris' [Checkbox best practices](https://polaris.shopify.com/components/forms/checkbox#section-best-practices).
 
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Checkbox} from '@shopify/argo-admin';
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const checkbox = root.createComponent(Checkbox, {
     label: 'Opt in to something cool',
     checked: true,
@@ -22,7 +29,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, Checkbox} from '@shopify/argo-admin-react';
@@ -34,7 +41,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

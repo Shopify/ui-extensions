@@ -8,6 +8,7 @@ type ResourceItemProps = ReactPropsFromRemoteComponentType<typeof ArgoResourceIt
 export default function ResourceItem({id, onPress, children}: ResourceItemProps) {
   const polarisId = id;
   const polarisOnClick = useCallback(() => onPress(), [onPress]);
+
   return (
     <PolarisResourceItem id={polarisId} onClick={polarisOnClick}>
       {children}

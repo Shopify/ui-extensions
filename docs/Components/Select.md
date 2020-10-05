@@ -1,10 +1,16 @@
 # Select
 
-Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
+Select allows merchants to choose one option from a dropdown menu. Consider Select when you have 4 or more options, to avoid creating clutter and make your component more scalable.
+
+| ✅ Do                                      | 🛑 Don't                |
+| ------------------------------------------ | ----------------------- |
+| Use Select when you have 4 or more options | Have only a single item |
+
+For more guidelines, refer to Polaris' [Select best practices](https://polaris.shopify.com/components/forms/select#section-best-practices).
 
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Select} from '@shopify/argo-admin';
@@ -24,7 +30,7 @@ const options = [
   },
 ];
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const select = root.createComponent(Select, {
     label: 'Select an option',
     options,
@@ -39,7 +45,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, Select} from '@shopify/argo-admin-react';
@@ -72,7 +78,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

@@ -40,7 +40,7 @@ extend(
 - `ExtensionPoint`: Where in the Shopify Admin the extension should render. Import this enum from Argo.
 - `renderCallback`: A method that returns Argo components to be rendered.
 
-#### Vanilla Example
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Text} from '@shopify/argo-admin';
@@ -58,7 +58,7 @@ extend('App', (root) => {
 });
 ```
 
-#### React Example
+#### React example
 
 ```js
 import {ExtensionPoint, Text} from '@shopify/argo-admin';

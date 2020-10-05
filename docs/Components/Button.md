@@ -2,14 +2,29 @@
 
 Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”.
 
+## Behavior
+
+- 📱 Buttons will wrap their content if placed inside a `Stack` component, otherwise they will expand to the width of the container
+- 🖥 Buttons wrap their content, regardless of the container they are placed in
+
+| ✅ Do                                              | 🛑 Don't                                     |
+| -------------------------------------------------- | -------------------------------------------- |
+| 📱 Align buttons vertically                        | 📱Buttons should not be stacked horizontally |
+| Use short, succinct titles that describe an action |                                              |
+| Use an icon to supplement the title of the button  |                                              |
+| Use only a single primary Button per section       |                                              |
+| Primary buttons should be before secondary buttons |                                              |  |
+
+For more guidelines, refer to Polaris' [Button best practices](https://polaris.shopify.com/components/actions/button#section-best-practices).
+
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Button} from '@shopify/argo-admin';
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const button = root.createComponent(Button, {
     title: 'Press Me',
     primary: true,
@@ -22,7 +37,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, Button} from '@shopify/argo-admin-react';
@@ -34,7 +49,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

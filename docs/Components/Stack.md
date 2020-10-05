@@ -4,9 +4,22 @@ Use to lay out a horizontal row of components or to achieve no-fuss vertical cen
 
 Use [StackItem](./StackItem) to group multiple elements inside a Stack together.
 
+## Behavior
+
+- 📱 All children of Stack are placed in a single view object, which makes recycling the views expensive and results in poorer performance when scrolling. Consider keeping your Stacks simple.
+- By default, Stacks alignment is `'leading’`.
+- Distribution is ignored for vertical stacks
+
+| ✅ Do                                                                             | 🛑 Don't                              |
+| --------------------------------------------------------------------------------- | ------------------------------------- |
+| 📱 Keep Stacks narrow. There is typically more vertical space than horizontal     | 📱 Use complex and deep Stack layouts |
+| 📱 Keep Horizontal Stacks shallow. Complex hierarchies have performance penalties |                                       |
+
+For more guidelines, refer to Polaris' [Stack best practices](https://polaris.shopify.com/components/structure/stack#section-best-practices).
+
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Stack, Text} from '@shopify/argo-admin';
@@ -23,7 +36,7 @@ function buildStackText(root) {
   return text;
 }
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const vStack = root.createComponent(Stack, {
     vertical: true,
   });
@@ -50,7 +63,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, Stack, Text} from '@shopify/argo-admin-react';
@@ -71,7 +84,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

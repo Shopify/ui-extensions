@@ -1,10 +1,10 @@
 # Product Subscription Extension
 
-This extension renders in the Product Details and Product Variants Page inside a Modal container.
+This extension renders in the Product Details and Product Variants Page inside a **Modal container** or **App overlay** container.
 
 ## Extension Points
 
-Product Subscription has multiple extension points. Each is triggered by a different merchant action, receives different data, and has a different responsibility.
+The Product subscription extension uses multiple extension points. Each is triggered by a different merchant action, receives different data, and is responsible for handling a distinct part of the subscriptions experience.
 
 The different extension points are:
 
@@ -52,6 +52,9 @@ extend(
 
 See [Data](../../Utilities/Data.md) for more info about how to access subscription data provided by the host page.
 
+- `variantId` is null except in the context of the Variant admin page. It specifies which variant should be removed from the SellingPlanGroup association.
+- `variantIds` is used in the context of the Product admin page. Since plans can be associated to the Product either directly at the product-level or indirectly at the variant-level, we want all of those associations to be removed when a merchant clicks remove. So, any association between the SellingPlanGroup and productId should be removed and all associations between the SellingPlanGroup and the variants within `variantIds` should be removed
+
 #### ProductSubscription Add
 
 | Name      | Type     | Description                            |
@@ -85,12 +88,188 @@ See [Data](../../Utilities/Data.md) for more info about how to access subscripti
 
 ### Container API
 
-See [Container](../../Utilities/Container.md) for more info about how to customize your extension’s container component using the Container API
+See [Container](../../Utilities/Container.md) for more info about how to customize your extension’s container component using the Container API.
 
-| Name  | Type       | Description                                                                              | Required |
-| ----- | ---------- | ---------------------------------------------------------------------------------------- | -------- |
-| close | `function` | Closes the container and the extension                                                   |          |
-| done  | `function` | Notifies Shopify Admin that the extension workflow is complete and data has been updated |          |
+There are two different container types for the Product subscription extension, depending on the extension mode:
+
+#### Add, Remove
+
+**App modal container**: A smaller overlay typically used for editing an existing configuration or confirming a change. In the app modal container, primary and secondary action buttons are responsible for triggering a custom behavior, such as performing a resource update.
+
+#### Create, Edit
+
+**App overlay container**: A full-screen container designed for complex tasks, like configuring a subscription for the first time.
+
+#### Add, Remove (Modal container)
+
+| Name               | Type       | Description                                                                            | Required |
+| ------------------ | ---------- | -------------------------------------------------------------------------------------- | -------- |
+| close              | `function` | Closes the container and the extension                                                 |          |
+| done               | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated |          |
+| setPrimaryAction   | `function` | Sets the primary action content and callback when the action is clicked                |          |
+| setSecondaryAction | `function` | Sets the secondary action content and callback when the action is clicked              |          |
+
+##### Vanilla JavaScript example
+
+```js
+import {extend, ExtensionPoint, Button} from '@shopify/argo-admin';
+
+extend(ExtensionPoint.SubscriptionManagementAdd, (root, api) => {
+  const {
+    container: {close, done, setPrimaryAction, setSecondaryAction},
+  } = api;
+
+  setPrimaryAction({
+    content: 'Add',
+    onAction: () => {
+      console.log('Added');
+      done();
+      close();
+    },
+  });
+
+  setSecondaryAction({
+    content: 'Cancel',
+    onAction: () => {
+      console.log('Cancelled');
+      close();
+    },
+  });
+
+  const text = root.createComponent(Button, {
+    children: 'Hello world',
+  });
+
+  root.appendChild(text);
+  root.mount();
+});
+```
+
+##### React example
+
+```jsx
+import {extend, render, useContainer, ExtensionPoint, Text} from '@shopify/argo-admin-react';
+
+function App() {
+  const container = useContainer();
+
+  useEffect(() => {
+    const {close, done, setPrimaryAction, setSecondaryAction} = container;
+    setPrimaryAction({
+      content: 'Save',
+      onAction: () => {
+        console.log('Saved');
+        done();
+        close();
+      },
+    });
+
+    setSecondaryAction({
+      content: 'Cancel',
+      onAction: () => {
+        console.log('Cancelled');
+        close();
+      },
+    });
+  }, [container]);
+
+  return <Text>Hello world</Text>;
+}
+
+extend(
+  ExtensionPoint.SubscriptionManagementAdd,
+  render(() => <App />),
+);
+```
+
+#### Create, Edit (App overlay container)
+
+| Name  | Type       | Description                                                                            | Required |
+| ----- | ---------- | -------------------------------------------------------------------------------------- | -------- |
+| close | `function` | Closes the container and the extension                                                 |          |
+| done  | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated |          |
+
+##### Vanilla JavaScript example
+
+```js
+import {extend, ExtensionPoint, Button} from '@shopify/argo-admin';
+
+extend(ExtensionPoint.SubscriptionManagementEdit, (root, api) => {
+  const {
+    container: {close, done},
+  } = api;
+
+  const primaryButton = root.createComponent(Button, {
+    title: 'Edit plan',
+    primary: true,
+    onClick: () => {
+      console.log('Updated');
+      done();
+      close();
+    },
+  });
+
+  const secondaryButton = root.createComponent(Button, {
+    title: 'Cancel',
+    onClick: () => {
+      console.log('Cancelled');
+      close();
+    },
+  });
+
+  const text = root.createComponent(Button, {
+    children: 'Hello world',
+  });
+
+  root.appendChild(text);
+  root.appendChild(secondaryButton);
+  root.appendChild(primaryButton);
+  root.mount();
+});
+```
+
+##### React example
+
+```jsx
+import {extend, render, useContainer, ExtensionPoint, Text} from '@shopify/argo-admin-react';
+
+function App() {
+  const {close, done} = useContainer();
+
+  const onPrimaryAction = useCallback(() => {
+    console.log('Updated');
+    done();
+    close();
+  }, [getSessionToken, done, close]);
+
+  const onSecondaryAction = useCallback(() => {
+    console.log('Cancelled');
+    close();
+  }, [getSessionToken, done, close]);
+
+  const actions = useMemo(
+    () => (
+      <>
+        <Button title="Cancel" onClick={onSecondaryAction} />
+        <Button title="Edit plan" onClick={onPrimaryAction} primary />
+      </>
+    ),
+    [onPrimaryAction, onSecondaryAction],
+  );
+
+  return (
+    <>
+      <Text>Hello world</Text>
+      {actions}
+    </>
+  );
+}
+
+extend(
+  ExtensionPoint.SubscriptionManagementEdit,
+  render(() => <App />),
+);
+```
 
 ## Available components
 
@@ -103,7 +282,6 @@ The following components are available for all Product Subscription extension po
 - [Pressable](../../Components/Pressable.md)
 - [Icon](../../Components/Icon.md)
 - [Link](../../Components/Link.md)
-- [OptionList](../../Components/OptionList.md)
 - [Radio](../../Components/Radio.md)
 - [ResourceItem](../../Components/ResourceItem.md)
 - [ResourceList](../../Components/ResourceList.md)
@@ -120,7 +298,6 @@ The following components are available only for Product Subscription Create and 
 - [Card](../../Components/Card.md)
 - [CardSection](../../Components/CardSection.md)
 - [Modal](../../Components/Modal.md)
-- [Page](../../Components/Page.md)
 
 ## Available utilities
 

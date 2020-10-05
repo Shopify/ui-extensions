@@ -1,15 +1,22 @@
 # Modal
 
-Modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken.
+Modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken. They are disruptive by design, requiring merchants to take an action before they can continue, so use them thoughtfully and sparingly.
+
+| ✅ Do                                                         | 🛑 Don't                                   |
+| ------------------------------------------------------------- | ------------------------------------------ |
+| Use modals thoughtfully and sparingly                         | Avoid overly complex or multi-step content |
+| Use modals with a small and simple set of actions to complete |                                            |
+
+For more guidelines, refer to Polaris' [Modal best practices](https://polaris.shopify.com/components/overlays/modal#section-best-practices).
 
 ## Implementation
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Modal} from '@shopify/argo-admin';
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const modal = root.createComponent(Modal, {});
 
   modal.appendChild('This is the best extension.');
@@ -19,7 +26,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, Modal} from '@shopify/argo-admin-react';
@@ -29,7 +36,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

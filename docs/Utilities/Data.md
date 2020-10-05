@@ -6,7 +6,7 @@ Extension points may provide relevant data to the extension. The type of data va
 
 Below are examples of implementing the data API for the Product Subscription Add extension point.
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Text} from '@shopify/argo-admin';
@@ -26,7 +26,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root, api) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, Text, useData} from '@shopify/argo-admin-react';

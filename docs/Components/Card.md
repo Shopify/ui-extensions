@@ -1,15 +1,25 @@
 # Card
 
-Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done.
+Cards are used to group similar concepts and tasks together to make Shopify easier for merchants to scan, read, and get things done. The action API should be used to create actionable components for the card. Cards should be contained, independent, and individual.
+
+## Behavior
+
+- 📱 Do not nest Cards within another component. This will result in unintended behavior, and will not render correctly
+
+| ✅ Do                                                       | 🛑 Don't                       |
+| ----------------------------------------------------------- | ------------------------------ |
+| Cards should be at the top level of the component hierarchy | Use too many secondary actions |
+
+For more guidelines, refer to Polaris' [Card best practices](https://polaris.shopify.com/components/structure/card#section-best-practices).
 
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Card} from '@shopify/argo-admin';
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const card = root.createComponent(Card, {});
 
   card.appendChild('This is the best extension.');
@@ -19,7 +29,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, Card} from '@shopify/argo-admin-react';
@@ -29,7 +39,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

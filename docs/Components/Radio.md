@@ -1,15 +1,22 @@
 # Radio
 
-Use radio buttons to present each item in a list of options where merchants must make a single selection.
+Radio allows merchants to choose a single item from a list of radio buttons.
+
+| ✅ Do                                              | 🛑 Don't                         |
+| -------------------------------------------------- | -------------------------------- |
+| Use Radio to give merchants a single select choice | Horizontally stack Radio options |
+| Vertically align Radio options                     |                                  |
+
+For more guidelines, refer to Polaris' [Radio button best practices](https://polaris.shopify.com/components/forms/radio-button#section-best-practices).
 
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Radio} from '@shopify/argo-admin';
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const radio1 = root.createComponent(Radio, {
     label: 'Option 1',
     helpText: 'Help text for option 1.',
@@ -34,7 +41,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {extend, render, ExtensionPoint, Radio} from '@shopify/argo-admin-react';
@@ -63,7 +70,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```

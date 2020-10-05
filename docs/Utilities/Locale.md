@@ -4,7 +4,7 @@ Access the merchant’s current locale (in [IETF format](https://en.wikipedia.or
 
 ## Implementation
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, Text} from '@shopify/argo-admin';
@@ -27,7 +27,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root, api) => {
 });
 ```
 
-#### React
+#### React example
 
 ```js
 import {extend, render, useLocale, ExtensionPoint, Text} from '@shopify/argo-admin-react';

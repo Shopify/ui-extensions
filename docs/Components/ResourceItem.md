@@ -4,14 +4,23 @@ Resource items represent specific objects within a collection, such as products 
 
 A ResourceItem should be rendered within a [ResourceList](./ResourceList.md).
 
+## Behavior
+
+- 📱 All children of ResourceItems are placed in a single view object, which makes recycling the views expensive. Consider making your ResourceItems simple.
+- 📱 Any child of ResourceItem that has an `onPress` will take precedence and the `onPress` of ResourceItem will not be invoked
+
+| ✅ Do                                                                        | 🛑 Don't                              |
+| ---------------------------------------------------------------------------- | ------------------------------------- |
+| 📱 Keep ResourceItem shallow. Complex hierarchies have performance penalties | 📱 Use complex and deep Stack layouts |
+
 ## Examples
 
-#### Vanilla
+#### Vanilla JavaScript example
 
 ```js
 import {extend, ExtensionPoint, ResourceList, ResourceItem} from '@shopify/argo-admin';
 
-extend('Admin::Product::SubscriptionPlan::Add', (root) => {
+extend('Playground', (root) => {
   const resourceItem1 = root.createComponent(ResourceItem, {
     id: '1234',
     onPress: () => console.log('Pressed 1'),
@@ -33,7 +42,7 @@ extend('Admin::Product::SubscriptionPlan::Add', (root) => {
 });
 ```
 
-#### React
+#### React example
 
 ```jsx
 import {
@@ -58,7 +67,7 @@ function App() {
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```
