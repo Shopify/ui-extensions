@@ -106,8 +106,15 @@ There are two different container types for the Product subscription extension, 
 | ------------------ | ---------- | -------------------------------------------------------------------------------------- | -------- |
 | close              | `function` | Closes the container and the extension                                                 |          |
 | done               | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated |          |
-| setPrimaryAction   | `function` | Sets the primary action content and callback when the action is clicked                |          |
-| setSecondaryAction | `function` | Sets the secondary action content and callback when the action is clicked              |          |
+| setPrimaryAction   | `Action`   | Sets the primary action                                                                |          |
+| setSecondaryAction | `Action`   | Sets the secondary action                                                              |          |
+
+##### Action
+
+| Name     | Type         | Description              | Required |
+| -------- | ------------ | ------------------------ | -------- |
+| content  | `string`     | Action label text.       | ☑️       |
+| onAction | `() => void` | Callback for the action. |          |
 
 ##### Vanilla JavaScript example
 

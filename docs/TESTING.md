@@ -8,11 +8,11 @@ Run `shopify serve` to start the simulator, which runs your extension code loca
 
 In the simulator, you can add mock data for each extension point.
 
-**Note:**  The shape of the data is different for each extension point.
+**Note:** The shape of the data is different for each extension point.
 
 ## Testing on a Shop
 
-Once your Argo Extension is ready, push your code to Shopify and publish a version to see your extension in a Shopify store.
+Once your Argo extension is ready, push your code to Shopify and publish a version to see your extension in a Shopify store.
 
 **Note:** Currently, you need to publish a version of your extension before running it on a Shopify store.
 
