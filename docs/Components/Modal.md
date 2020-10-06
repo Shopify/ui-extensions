@@ -45,7 +45,7 @@ extend(
 
 | Name             | Type         | Description                        | Required |
 | ---------------- | ------------ | ---------------------------------- | -------- |
-| open             | `boolean`    | Whether the modal is open .        | ☑️       |
+| open             | `boolean`    | Whether the modal is open.         | ☑️       |
 | title            | `string`     | Title content for the modal.       | ☑️       |
 | primaryAction    | `Action`     | Modal's primary action.            |          |
 | secondaryActions | `Action[]`   | Modal's secondary action(s).       |          |
