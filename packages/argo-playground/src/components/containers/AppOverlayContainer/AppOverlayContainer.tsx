@@ -6,7 +6,7 @@ import {ContainerApi, ExtensionPoint, ProductSubscriptionExtensionPoint} from '@
 import {StandardContainer, StandardContainerProps} from '../StandardContainer';
 
 import {Dialog, Header} from './components';
-import styles from './AppOverlayContainer.scss';
+import styles from './AppOverlayContainer.module.scss';
 
 export interface AppOverlayContainerProps<T extends ExtensionPoint>
   extends StandardContainerProps<T> {

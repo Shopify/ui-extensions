@@ -1,6 +1,6 @@
 import React from 'react';
 
-import styles from './Header.scss';
+import styles from './Header.module.scss';
 
 export interface Props {
   icon?: React.ReactElement;

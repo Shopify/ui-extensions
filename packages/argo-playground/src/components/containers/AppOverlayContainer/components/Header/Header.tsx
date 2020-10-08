@@ -16,7 +16,7 @@ import {
 import {AppExtensionMinor, MobileCancelMajorMonotone, DropdownMinor} from '@shopify/polaris-icons';
 
 import {Button} from './Button';
-import styles from './Header.scss';
+import styles from './Header.module.scss';
 
 export interface Props {
   appId: string;
