@@ -14,7 +14,7 @@ export default function Button({title, icon, onPress, primary, disabled}: Button
       onClick={polarisOnClick}
       disabled={disabled}
     >
-      {title}
+      {title || undefined}
     </PolarisButton>
   );
 }
