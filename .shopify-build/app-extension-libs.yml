@@ -8,7 +8,7 @@ steps:
     run:
       - yarn:
       - CI=true yarn test
-  - label: Pretter
+  - label: Prettier
     timeout: 5m
     run:
       - yarn:
