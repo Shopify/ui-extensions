@@ -2,7 +2,7 @@ import React from 'react';
 import {Key, KeypressListener} from '@shopify/polaris';
 import {classNames} from '@shopify/css-utilities';
 
-import styles from './Dialog.scss';
+import styles from './Dialog.module.scss';
 
 export interface Props {
   children?: React.ReactNode;

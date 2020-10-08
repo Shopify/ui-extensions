@@ -10,7 +10,6 @@ import {
   Card,
   CardSection,
   Checkbox,
-  ExtensionPoint,
   Link,
   ResourceItem,
   ResourceList,
@@ -72,12 +71,14 @@ function Subscription({
   const childrenOrDefault = children ? (
     children
   ) : (
-    <Stack distribution="center">
-      <Text size="titleMedium">{`${type} cool thing from product with Id: ${productId}`}</Text>
+    <Stack vertical>
+      <Stack distribution="center">
+        <Text size="titleMedium">{`${type} cool thing from product with Id: ${productId}`}</Text>
+      </Stack>
     </Stack>
   );
 
-  return <Stack vertical>{childrenOrDefault}</Stack>;
+  return <>{childrenOrDefault}</>;
 }
 
 function AddSubscription() {
@@ -192,7 +193,7 @@ function EditSubscription() {
 
   const pageActions = useMemo(
     () => (
-      <Stack distribution="fill">
+      <Stack spacing="none" distribution="fill">
         {secondaryActionButton}
         <Stack distribution="trailing">{primaryActionButton}</Stack>
       </Stack>

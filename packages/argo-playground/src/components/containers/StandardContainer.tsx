@@ -15,6 +15,8 @@ import {LoadingSpinner} from './shared/LoadingSpinner';
 import {Error} from './shared/Error';
 import {UnsupportedComponentError} from './shared/UnsupportedComponentError';
 
+import './ArgoStyleOverrides.scss';
+
 const createWorker = createWorkerFactory(() =>
   import(/* webpackChunkName: 'sandbox-worker' */ '@shopify/argo-admin-host/worker'),
 );
@@ -109,7 +111,10 @@ export function StandardContainer<T extends ExtensionPoint>(props: StandardConta
   useEffect(() => onReadyStateChange?.(readyState), [readyState, onReadyStateChange]);
 
   return (
-    <div style={{position: 'relative', minHeight: '60px', height: '100%'}}>
+    <div
+      className="ArgoExtension"
+      style={{position: 'relative', minHeight: '60px', height: '100%'}}
+    >
       <div ref={ref}>{content}</div>
       {readyState === ReadyState.Loading && loading}
     </div>
