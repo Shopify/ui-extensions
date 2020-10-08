@@ -8,7 +8,6 @@ extend('Playground', (root, api) => {
   const textField = root.createComponent(TextField, {
     label: 'text field',
     value: '',
-    label: '',
     onChange(value: string) {
       textField.updateProps({
         value,

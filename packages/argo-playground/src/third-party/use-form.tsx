@@ -5,7 +5,6 @@ import {
   Banner,
   Button,
   Card,
-  ExtensionPoint,
   Select,
   Stack,
   TextField,
