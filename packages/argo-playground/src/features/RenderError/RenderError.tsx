@@ -28,6 +28,10 @@ export function ModalExtension({
       app={{
         title: 'OneMoreTime',
         id: 'one-more-time',
+        developerName: 'Shopify',
+        installation: {
+          launchUrl: '/admin/apps/subscriptions',
+        },
       }}
       script={reactThirdPartyWorker.url}
       extensionPoint="Playground"
