@@ -137,7 +137,7 @@ module.exports = {
           {
             loader: 'sass-loader',
             options: {
-              additionalData: `@import "~@shopify/polaris/styles/public-api";\n`,
+              additionalData: `@import "~@shopify/polaris/dist/styles/public-api";\n`,
             },
           },
         ],
