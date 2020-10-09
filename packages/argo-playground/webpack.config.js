@@ -50,10 +50,7 @@ module.exports = {
     ? [
         new WebWorkerPlugin(),
         new HtmlWebpackPlugin({
-          title: 'Playground - App Extensions',
-          meta: {
-            viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no',
-          },
+          template: './src/templates/index.ejs',
         }),
       ]
     : [
