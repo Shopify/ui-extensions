@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import '@shopify/polaris/styles.css';
+import '@shopify/polaris/dist/styles.css';
 
 import {App} from './foundation';
 
