@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {Portal, Backdrop, Scrollable, Layout} from '@shopify/polaris';
+import {Portal, ScrollLock, Scrollable, Layout} from '@shopify/polaris';
 import {TransitionGroup} from 'react-transition-group';
 import {ContainerApi, ExtensionPoint, ProductSubscriptionExtensionPoint} from '@shopify/argo-admin';
 
@@ -57,10 +57,8 @@ export function AppOverlayContainer<T extends ExtensionPoint>(props: AppOverlayC
 
   const content = useMemo(() => <StandardContainer {...props} api={api as any} />, [api, props]);
 
-  const backdrop = open ? <Backdrop /> : null;
-
   return (
-    <Portal idPrefix="argo-app-chrome">
+    <Portal idPrefix="argo-app-overlay">
       <TransitionGroup appear enter exit>
         <Dialog open={open === true} onClose={() => {}}>
           {headerMarkup}
@@ -71,7 +69,7 @@ export function AppOverlayContainer<T extends ExtensionPoint>(props: AppOverlayC
           </Scrollable>
         </Dialog>
       </TransitionGroup>
-      {backdrop}
+      {open && <ScrollLock />}
     </Portal>
   );
 }

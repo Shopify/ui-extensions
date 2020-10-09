@@ -30,20 +30,16 @@ $min-height: control-height();
   flex-direction: column;
   justify-content: space-between;
   margin-left: spacing();
-  height: rem(32px);
 }
 
 .AppName,
 .DeveloperInfo {
-  display: inherit;
-  line-height: 100%;
+  display: inline-block;
 }
 
 .AppName {
   @include text-emphasis-strong;
   font-size: rem(16px);
-  margin-top: -3px;
-  margin-bottom: 3px;
 }
 
 .DeveloperInfo {
@@ -64,6 +60,8 @@ $min-height: control-height();
 
   &:hover,
   &:active {
+    color: color('ink', 'lighter'); // Overrides Safari User Agent styles
+
     // stylelint-disable-next-line selector-max-specificity
     path {
       fill: color('ink', 'lighter');
