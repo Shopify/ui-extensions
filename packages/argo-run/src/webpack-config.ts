@@ -61,7 +61,7 @@ export function createWebpackConfiguration({
                   `Licenses: ${licenseFilename}`,
               },
               terserOptions: {
-                ecma: 8,
+                ecma: 5,
                 warnings: false,
                 // Per one of the authors of Preact, the extra pass may inline more esmodule imports
                 // @see https://github.com/webpack-contrib/mini-css-extract-plugin/pull/509#issuecomment-599083073
