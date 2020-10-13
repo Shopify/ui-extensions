@@ -8,3 +8,5 @@ type StackItemProps = ReactPropsFromRemoteComponentType<typeof ArgoStackItem>;
 export default function StackItem({children, fill}: StackItemProps) {
   return <PolarisStack.Item fill={fill}>{children}</PolarisStack.Item>;
 }
+
+(StackItem as any).__type__ = PolarisStack.Item;
