@@ -10,7 +10,7 @@ const noop = () => undefined;
 export default function TextField({
   label = '',
   value = '',
-  onInput = noop,
+  onInput,
   onChange = noop,
   onBlur = noop,
   onFocus = noop,
