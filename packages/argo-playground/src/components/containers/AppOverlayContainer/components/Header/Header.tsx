@@ -13,7 +13,7 @@ import {
   Toast,
   Truncate,
 } from '@shopify/polaris';
-import {AppExtensionMinor, MobileCancelMajorMonotone, DropdownMinor} from '@shopify/polaris-icons';
+import {AppExtensionMinor, CancelSmallMinor, DropdownMinor} from '@shopify/polaris-icons';
 
 import {Button} from './Button';
 import styles from './Header.module.scss';
@@ -115,7 +115,7 @@ export default function Header({launchUrl, icon, onClose = () => {}, title, deve
 
         <div className={styles.CloseButton}>
           <Button
-            icon={<Icon source={MobileCancelMajorMonotone} color="inkLighter" />}
+            icon={<Icon source={CancelSmallMinor} color="inkLighter" />}
             onClick={onClose}
             accessibilityLabel="Close App Extension"
           />

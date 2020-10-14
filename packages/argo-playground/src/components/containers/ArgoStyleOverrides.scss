@@ -4,8 +4,8 @@ Wrapped inside `ArgoExtension` to ensure these rules only apply to Argo related 
  */
 
 .ArgoExtension {
-  .Polaris-Stack + .Polaris-Card,
-  .Polaris-Card + .Polaris-Stack {
+  [class^='Polaris-Stack'] + [class^='Polaris-Card'],
+  [class^='Polaris-Card'] + [class^='Polaris-Stack'] {
     margin-top: spacing(loose);
   }
 }
