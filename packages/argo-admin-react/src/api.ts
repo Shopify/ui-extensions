@@ -13,6 +13,8 @@ export {extend};
 export function render<T extends ExtensionPoint>(renderCallback: RenderCallback<T>) {
   return (root, api) => {
     const element = renderCallback(api as ExtensionApi[T]);
-    remoteRender(createElement(ExtensionApiContext.Provider, {value: api}, element), root);
+    remoteRender(createElement(ExtensionApiContext.Provider, {value: api}, element), root, () => {
+      root.mount();
+    });
   };
 }
