@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Shopify/app-extension-libs/compare/v0.6.0...v0.7.0) (2020-10-15)
+
+
+### Bug Fixes
+
+* **playground:** add style override for top-level cards ([719ef7f](https://github.com/Shopify/app-extension-libs/commit/719ef7fa52ca2cef94662175804230e990a186a7))
+* **playground:** fix missing icon, polaris overrides ([a890eaf](https://github.com/Shopify/app-extension-libs/commit/a890eafb504e58e34bb4a32424d0241c03e1365a))
+
+
+
+
+
 # [0.6.0](https://github.com/Shopify/app-extension-libs/compare/v0.6.0-alpha.0...v0.6.0) (2020-10-07)
 
 **Note:** Version bump only for package @shopify/argo-playground
