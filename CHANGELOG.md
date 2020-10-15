@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/Shopify/app-extension-libs/compare/v0.6.0...v0.7.0) (2020-10-15)
+
+
+### Bug Fixes
+
+* **playground:** fix missing icon, polaris overrides ([a890eaf](https://github.com/Shopify/app-extension-libs/commit/a890eafb504e58e34bb4a32424d0241c03e1365a))
+* button with icon is centered when displayed without text ([#1010](https://github.com/Shopify/app-extension-libs/issues/1010)) ([1f0133b](https://github.com/Shopify/app-extension-libs/commit/1f0133b85ba35343f02f6aee885e99ab2b76a2c1))
+* queued state ([#1022](https://github.com/Shopify/app-extension-libs/issues/1022)) ([ce59897](https://github.com/Shopify/app-extension-libs/commit/ce598976e3bcab839d6e4a4beb805ce785600d1d))
+* queued state ([#1027](https://github.com/Shopify/app-extension-libs/issues/1027)) ([bd65dde](https://github.com/Shopify/app-extension-libs/commit/bd65dde232c9805d13c311288b11599f7a7da902))
+* text-field onchange error ([#1015](https://github.com/Shopify/app-extension-libs/issues/1015)) ([d76197e](https://github.com/Shopify/app-extension-libs/commit/d76197e12b6ce658136921550c33253aa01f7dd0))
+* **playground:** add style override for top-level cards ([719ef7f](https://github.com/Shopify/app-extension-libs/commit/719ef7fa52ca2cef94662175804230e990a186a7))
+
+
+
+
+
 # [0.6.0](https://github.com/Shopify/app-extension-libs/compare/v0.6.0-alpha.0...v0.6.0) (2020-10-07)
 
 
