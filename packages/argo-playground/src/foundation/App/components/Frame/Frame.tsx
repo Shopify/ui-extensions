@@ -1,6 +1,14 @@
 import React, {ReactNode, useState} from 'react';
 import {Frame as PolarisFrame, Navigation, Select, TopBar} from '@shopify/polaris';
-import {HomeMajorTwotone, ListMajorMonotone, TextBlockMajorMonotone} from '@shopify/polaris-icons';
+import {
+  CodeMajor,
+  DetailedPopUpMajor,
+  FormsMajor,
+  HomeMajor,
+  ListMajor,
+  QuestionMarkMajor,
+  TextBlockMajor,
+} from '@shopify/polaris-icons';
 import {Route} from '@shopify/react-router';
 
 import {GlobalLocaleProvider} from '../../ultilities/useGlobalLocale';
@@ -34,43 +42,43 @@ export function Frame({children}: Props) {
                     label: 'Home',
                     url: '',
                     exactMatch: true,
-                    icon: HomeMajorTwotone,
+                    icon: HomeMajor,
                   },
                   {
                     label: 'Components List',
                     url: '/components-list',
                     exactMatch: true,
-                    icon: ListMajorMonotone,
+                    icon: ListMajor,
                   },
                   {
                     label: 'Inline Script',
                     url: '/inline-script',
                     exactMatch: true,
-                    icon: TextBlockMajorMonotone,
+                    icon: TextBlockMajor,
                   },
                   {
                     label: 'Containers',
                     url: '/containers',
                     exactMatch: true,
-                    icon: TextBlockMajorMonotone,
+                    icon: DetailedPopUpMajor,
                   },
                   {
                     label: 'Use Form',
                     url: '/use-form',
                     exactMatch: true,
-                    icon: TextBlockMajorMonotone,
+                    icon: FormsMajor,
                   },
                   {
                     label: 'Vanilla',
                     url: '/vanilla',
                     exactMatch: true,
-                    icon: TextBlockMajorMonotone,
+                    icon: CodeMajor,
                   },
                   {
                     label: 'Render Error',
                     url: '/render-error',
                     exactMatch: true,
-                    icon: TextBlockMajorMonotone,
+                    icon: QuestionMarkMajor,
                   },
                 ]}
               />
