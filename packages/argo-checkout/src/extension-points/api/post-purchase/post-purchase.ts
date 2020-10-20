@@ -134,7 +134,6 @@ interface AddShippingLineChange {
   price: number;
   title?: string;
   presentmentTitle?: string;
-  phone?: string;
 }
 
 interface SetMetafieldChange extends Metafield {
