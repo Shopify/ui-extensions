@@ -15,3 +15,5 @@ export default function ResourceItem({id, onPress, children}: ResourceItemProps)
     </PolarisResourceItem>
   );
 }
+
+(ResourceItem as any).__type__ = PolarisResourceItem;
