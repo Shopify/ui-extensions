@@ -31,6 +31,7 @@ export type {
   SelectProps,
   SeparatorProps,
   SpinnerProps,
+  StepperProps,
   TextProps,
   TextBlockProps,
   TextContainerProps,

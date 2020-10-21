@@ -38,6 +38,8 @@ export {Separator} from './Separator';
 export type {SeparatorProps} from './Separator';
 export {Spinner} from './Spinner';
 export type {SpinnerProps} from './Spinner';
+export {Stepper} from './Stepper';
+export type {StepperProps} from './Stepper';
 export {Text} from './Text';
 export type {TextProps} from './Text';
 export {TextBlock} from './TextBlock';

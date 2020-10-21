@@ -18,6 +18,7 @@ export {Radio} from './Radio';
 export {Select} from './Select';
 export {Separator} from './Separator';
 export {Spinner} from './Spinner';
+export {Stepper} from './Stepper';
 export {Text} from './Text';
 export {TextBlock} from './TextBlock';
 export {TextContainer} from './TextContainer';
