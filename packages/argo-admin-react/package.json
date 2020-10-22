@@ -18,7 +18,6 @@
     "@shopify/argo-admin": "0.7.0"
   },
   "devDependencies": {
-    "@shopify/polaris": "5.8.7-beta.11",
     "@shopify/react-testing": "^1.6.0",
     "@types/react": "^16.9.8"
   },
