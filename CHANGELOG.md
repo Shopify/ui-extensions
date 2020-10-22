@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.1](https://github.com/Shopify/app-extension-libs/compare/v0.7.0...v0.7.1) (2020-10-22)
+
+
+### Bug Fixes
+
+* fix nested stack item layout issue ([768eb1c](https://github.com/Shopify/app-extension-libs/commit/768eb1cddaee94be61f84e85ac0f4710ac7aeb6d))
+* **playground:** inject script after content ([d47b830](https://github.com/Shopify/app-extension-libs/commit/d47b830f9837585a6f2fe1472d9e00af7f7dc8ea))
+* **playground:** main menu icons ([2b25be6](https://github.com/Shopify/app-extension-libs/commit/2b25be6d959f4a5c374920905cac7e42a38d49df))
+
+
+
+
+
 # [0.7.0](https://github.com/Shopify/app-extension-libs/compare/v0.6.0...v0.7.0) (2020-10-15)
 
 
