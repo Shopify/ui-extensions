@@ -1,3 +1,4 @@
+import {IconProps} from '@shopify/argo-admin';
 import {
   Card,
   Stack,
@@ -7,7 +8,6 @@ import {
   TextField,
   Button,
   Icon,
-  IconProps,
 } from '@shopify/argo-admin-react';
 import React from 'react';
 
