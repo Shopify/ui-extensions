@@ -9,7 +9,6 @@ export function IconExample() {
         <Icon source="searchMinor" />
         <Icon source="starHollow" />
         <Icon source="starFilled" />
-        <Icon source="starFilled" color="yellow" />
         <Icon source="sortMinor" />
       </Stack>
     </Card>

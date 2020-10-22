@@ -20,14 +20,12 @@ const iconMap: IconMap = {
   sortMinor: SortMinor,
 };
 
-export default function Icon({source, accessibilityLabel, color}: IconProps) {
+export default function Icon({source, accessibilityLabel}: IconProps) {
   const polarisSource = iconMap[source];
 
   if (!polarisSource) {
     throw new Error('Missing required props: source');
   }
 
-  return (
-    <PolarisIcon accessibilityLabel={accessibilityLabel} color={color} source={polarisSource} />
-  );
+  return <PolarisIcon accessibilityLabel={accessibilityLabel} source={polarisSource} />;
 }
