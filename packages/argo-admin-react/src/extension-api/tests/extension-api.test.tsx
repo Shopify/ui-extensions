@@ -7,7 +7,7 @@ import {
   LocaleApi,
   SessionTokenApi,
 } from '@shopify/argo-admin';
-import {mountWithAppProvider} from 'test-utils/mount';
+import {mount} from '@shopify/react-testing';
 
 import {ExtensionApiContext, useExtensionApi} from '../utils';
 import {useLocale} from '../locale';
@@ -46,20 +46,16 @@ const MockComponent = ({hook, children}) => {
   return null;
 };
 
-const mount = (component, api = {}) => {
-  return mountWithAppProvider(
-    <ExtensionApiContext.Provider value={{...defaultApis, ...api}}>
-      {component}
-    </ExtensionApiContext.Provider>,
-  );
-};
-
 describe('extension api', () => {
   describe('useExtensionApi', () => {
     it('returns extension api', async () => {
       const hookSpy = jest.fn();
 
-      await mount(<MockComponent hook={useExtensionApi}>{hookSpy}</MockComponent>);
+      await mount(
+        <ExtensionApiContext.Provider value={{...defaultApis}}>
+          <MockComponent hook={useExtensionApi}>{hookSpy}</MockComponent>
+        </ExtensionApiContext.Provider>,
+      );
 
       expect(hookSpy).toHaveBeenCalledWith(defaultApis);
     });
@@ -70,7 +66,7 @@ describe('extension api', () => {
       const hookSpy = jest.fn();
 
       const locale = {initialValue: 'fr', setOnChange() {}};
-      await mountWithAppProvider(
+      await mount(
         <ExtensionApiContext.Provider value={{...defaultApis, locale}}>
           <MockComponent hook={useLocale}>{hookSpy}</MockComponent>
         </ExtensionApiContext.Provider>,
@@ -88,7 +84,7 @@ describe('extension api', () => {
         setOnChange() {},
       } as LayoutApi['layout'];
 
-      await mountWithAppProvider(
+      await mount(
         <ExtensionApiContext.Provider value={{...defaultApis, layout}}>
           <MockComponent hook={useLayout}>{hookSpy}</MockComponent>
         </ExtensionApiContext.Provider>,
@@ -105,7 +101,7 @@ describe('extension api', () => {
         getSessionToken: () => Promise.resolve('token'),
       };
 
-      await mountWithAppProvider(
+      await mount(
         <ExtensionApiContext.Provider value={{...defaultApis, sessionToken}}>
           <MockComponent hook={useSessionToken}>{hookSpy}</MockComponent>
         </ExtensionApiContext.Provider>,
@@ -122,7 +118,7 @@ describe('extension api', () => {
         show: () => {},
       };
 
-      await mountWithAppProvider(
+      await mount(
         <ExtensionApiContext.Provider value={{...defaultApis, toast}}>
           <MockComponent hook={useToast}>{hookSpy}</MockComponent>
         </ExtensionApiContext.Provider>,
@@ -143,7 +139,7 @@ describe('extension api', () => {
       };
 
       const ProductSubscriptionApi: ProductSubscriptionApi = {...defaultApis, container};
-      await mountWithAppProvider(
+      await mount(
         <ExtensionApiContext.Provider value={ProductSubscriptionApi}>
           <MockComponent hook={useContainer}>{hookSpy}</MockComponent>
         </ExtensionApiContext.Provider>,
