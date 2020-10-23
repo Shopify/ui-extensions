@@ -102,12 +102,12 @@ There are two different container types for the Product subscription extension, 
 
 #### Add, Remove (Modal container)
 
-| Name               | Type       | Description                                                                            | Required |
-| ------------------ | ---------- | -------------------------------------------------------------------------------------- | -------- |
-| close              | `function` | Closes the container and the extension                                                 |          |
-| done               | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated |          |
-| setPrimaryAction   | `Action`   | Sets the primary action                                                                |          |
-| setSecondaryAction | `Action`   | Sets the secondary action                                                              |          |
+| Name               | Type       | Description                                                                                                                            | Required |
+| ------------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| close              | `function` | Closes the container and the extension                                                                                                 |          |
+| done               | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated. It also closes the conatiner and the extension |          |
+| setPrimaryAction   | `Action`   | Sets the primary action                                                                                                                |          |
+| setSecondaryAction | `Action`   | Sets the secondary action                                                                                                              |          |
 
 ##### Action
 
@@ -189,10 +189,10 @@ extend(
 
 #### Create, Edit (App overlay container)
 
-| Name  | Type       | Description                                                                            | Required |
-| ----- | ---------- | -------------------------------------------------------------------------------------- | -------- |
-| close | `function` | Closes the container and the extension                                                 |          |
-| done  | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated |          |
+| Name  | Type       | Description                                                                                                                            | Required |
+| ----- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| close | `function` | Closes the container and the extension                                                                                                 |          |
+| done  | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated. It also closes the conatiner and the extension |          |
 
 ##### Vanilla JavaScript example
 
