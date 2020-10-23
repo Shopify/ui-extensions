@@ -131,7 +131,6 @@ extend(ExtensionPoint.SubscriptionManagementAdd, (root, api) => {
     onAction: () => {
       console.log('Added');
       done();
-      close();
     },
   });
 
@@ -167,7 +166,6 @@ function App() {
       onAction: () => {
         console.log('Saved');
         done();
-        close();
       },
     });
 
@@ -212,7 +210,6 @@ extend(ExtensionPoint.SubscriptionManagementEdit, (root, api) => {
     onClick: () => {
       console.log('Updated');
       done();
-      close();
     },
   });
 
@@ -246,13 +243,12 @@ function App() {
   const onPrimaryAction = useCallback(() => {
     console.log('Updated');
     done();
-    close();
-  }, [getSessionToken, done, close]);
+  }, [getSessionToken, done]);
 
   const onSecondaryAction = useCallback(() => {
     console.log('Cancelled');
     close();
-  }, [getSessionToken, done, close]);
+  }, [getSessionToken, close]);
 
   const actions = useMemo(
     () => (
