@@ -9,8 +9,7 @@
 
 .Body {
   width: 100%;
-  padding-right: 2rem;
-  padding-bottom: 2rem;
+  padding: spacing(none) spacing(loose);
 }
 
 .Spinner {

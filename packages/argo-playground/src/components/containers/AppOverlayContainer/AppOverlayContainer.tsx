@@ -1,5 +1,5 @@
 import React, {useMemo} from 'react';
-import {Portal, ScrollLock, Scrollable, Layout} from '@shopify/polaris';
+import {Portal, ScrollLock, Scrollable, Page} from '@shopify/polaris';
 import {TransitionGroup} from 'react-transition-group';
 import {ContainerApi, ExtensionPoint, ProductSubscriptionExtensionPoint} from '@shopify/argo-admin';
 
@@ -63,9 +63,7 @@ export function AppOverlayContainer<T extends ExtensionPoint>(props: AppOverlayC
         <Dialog open={open === true} onClose={() => {}}>
           {headerMarkup}
           <Scrollable className={styles.Body}>
-            <Layout sectioned>
-              <Layout.Section>{content}</Layout.Section>
-            </Layout>
+            <Page>{content}</Page>
           </Scrollable>
         </Dialog>
       </TransitionGroup>
