@@ -45,8 +45,7 @@ function Subscription({
   const onSuccess = useCallback(() => {
     showToast(`${type} Success`);
     done();
-    close();
-  }, [done, close, type, showToast]);
+  }, [done, type, showToast]);
   const onCancel = useCallback(() => {
     showToast(`${type} Cancelled`, {error: true});
     close();
