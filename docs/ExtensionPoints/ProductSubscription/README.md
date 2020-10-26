@@ -105,7 +105,7 @@ There are two different container types for the Product subscription extension, 
 | Name               | Type       | Description                                                                                                                            | Required |
 | ------------------ | ---------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | close              | `function` | Closes the container and the extension                                                                                                 |          |
-| done               | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated. It also closes the conatiner and the extension |          |
+| done               | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated. It also closes the container and the extension |          |
 | setPrimaryAction   | `Action`   | Sets the primary action                                                                                                                |          |
 | setSecondaryAction | `Action`   | Sets the secondary action                                                                                                              |          |
 
@@ -192,7 +192,7 @@ extend(
 | Name  | Type       | Description                                                                                                                            | Required |
 | ----- | ---------- | -------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | close | `function` | Closes the container and the extension                                                                                                 |          |
-| done  | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated. It also closes the conatiner and the extension |          |
+| done  | `function` | Notify Shopify Admin that the extension workflow is complete and data has been updated. It also closes the container and the extension |          |
 
 ##### Vanilla JavaScript example
 
