@@ -162,8 +162,7 @@ function EditSubscription() {
   const onSuccess = useCallback(() => {
     showToast('Saved');
     done();
-    close();
-  }, [done, close, showToast]);
+  }, [done, showToast]);
 
   const onCancel = useCallback(() => {
     showToast('Edit Cancelled', {error: true});
