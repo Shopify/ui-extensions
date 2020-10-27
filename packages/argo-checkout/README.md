@@ -14,7 +14,6 @@ shopify.extend('Checkout::PostPurchase::Render', (root, input) => {
   button.appendChild('Buy now');
 
   root.appendChild(button);
-  root.mount();
 });
 ```
 

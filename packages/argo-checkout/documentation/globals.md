@@ -23,6 +23,8 @@ extend('Checkout::PostPurchase::ShouldRender', (api) => {
 });
 ```
 
+For extensions that render UI, like [`Checkout::PostPurchase::ShouldRender`](./extension-points.md), the first argument is always a [`@remote-ui` `RemoteRoot` object](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoteroot) that allows you to render UI components into your extension point in checkout. You do not need to explicitly [`mount()`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootmount) this object; once the callback you registered for this extension point ends (or, if it returns a `Promise`, once that promise resolves), your initial UI will be rendered.
+
 That’s really all the global API you need to know to start writing an Argo extension. You’ll find the documentation for additional APIs that are provided when an extension point is run in the [extension points documentation](./extension-points.md).
 
 ## Web platform globals
