@@ -19,8 +19,8 @@ extend('Playground', (root) => {
   const thumbnail = root.createComponent(Thumbnail, {
     size: 'small',
     scaleType: 'fit',
-    source: 'https://somecoolpicture.com',
-    alt: 'Probably a picture of someone skateboarding',
+    source: 'https://cdn.shopify.com/shopify-marketing_assets/static/shopify-favicon.png',
+    alt: 'Shopify',
   });
 
   root.appendChild(thumbnail);
@@ -38,8 +38,8 @@ function App() {
     <Thumbnail
       size="small"
       scaleType="fit"
-      source="https://somecoolpicture.com"
-      alt="Probably a picture of someone skateboarding"
+      source="https://cdn.shopify.com/shopify-marketing_assets/static/shopify-favicon.png"
+      alt="Shopify"
     />
   );
 }

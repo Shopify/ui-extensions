@@ -27,9 +27,8 @@ extend('Playground', (root) => {
     onPress: () => console.log('I’ve been pressed!'),
   });
 
-  const pressableText = root.createComponent(Text, {
-    children: 'I can be pressed',
-  });
+  const pressableText = root.createComponent(Text);
+  pressableText.appendChild('I can be pressed');
 
   pressable.appendChild(pressableText);
   root.appendChild(pressable);
