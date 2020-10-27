@@ -32,8 +32,8 @@ extend('Playground', (root) => {
 
   const resourcelist = root.createComponent(ResourceList, {
     filterControl: {
-      queryValue: '123';
-      queryPlaceholder: 'Filter list';
+      queryValue: '123',
+      queryPlaceholder: 'Filter list',
       onQueryChange: (queryValue) => console.log('Filtering for', queryValue),
       onQueryClear: () => console.log('Clear value'),
     }

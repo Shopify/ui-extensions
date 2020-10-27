@@ -25,11 +25,11 @@ For more guidelines, refer to Polaris' [Banner best practices](https://polaris.s
     const banner = root.createComponent(Banner, {
       action:  {
         onAction: () => console.log('Pressed the action'),
-        content: 'Press me';
-      };
-      status: 'warning';
-      title: 'This is a warning';
-      onDismiss: () => console.log('Closed');
+        content: 'Press me',
+      },
+      status: 'warning',
+      title: 'This is a warning',
+      onDismiss: () => console.log('Closed')
     });
 
     const bannerText = root.createComponent(Text, {

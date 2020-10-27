@@ -78,4 +78,6 @@ extend(
 );
 ```
 
+Your extension will render natively in Shopify mobile apps but there are some restrictions on how components are nested in your layout. Refer to the **Behavior** section of each [component page](./Components) for more information.
+
 **Note:** Some extensions have multiple extension points, like [ProductSubscription](./ExtensionPoints/ProductSubscription/README.md)

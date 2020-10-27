@@ -19,29 +19,29 @@ For more guidelines, refer to Polaris' [Text Field best practices](https://polar
 #### Vanilla JavaScript example
 
 ```js
-  import {extend, ExtensionPoint, TextField} from '@shopify/argo-admin';
+import {extend, ExtensionPoint, TextField} from '@shopify/argo-admin';
 
-  extend('Playground', (root) => {
-    const textfield = root.createComponent(TextField, {
-      label: 'Super text field',
-      type: 'text';
-      value: 'I can fly!',
-      placeholder: 'Type a thing',
-      multiline: 3,
-      prefix: 'I typed:',
-      suffix: 'into this text field',
-      error: 'I hate to break this to you, but you cannot fly',
-      onChange: (value: string) => console.log(value, ' was typed'),
-      onInput: (value: string) => console.log(value, ' was typing'),
-      onFocus: () => console.log('Welcome to the super field!'),
-      onBlur: () => console.log('Left to do something else'),
-      clearButton: true,
-      onClearButtonPress: () => console.log('Clear that silly statement'),
-    });
-
-    root.appendChild(textfield);
-    root.mount();
+extend('Playground', (root) => {
+  const textfield = root.createComponent(TextField, {
+    label: 'Super text field',
+    type: 'text',
+    value: 'I can fly!',
+    placeholder: 'Type a thing',
+    multiline: 3,
+    prefix: 'I typed:',
+    suffix: 'into this text field',
+    error: 'I hate to break this to you, but you cannot fly',
+    onChange: (value) => console.log(value, ' was typed'),
+    onInput: (value) => console.log(value, ' was typing'),
+    onFocus: () => console.log('Welcome to the super field!'),
+    onBlur: () => console.log('Left to do something else'),
+    clearButton: true,
+    onClearButtonPress: () => console.log('Clear that silly statement'),
   });
+
+  root.appendChild(textfield);
+  root.mount();
+});
 ```
 
 #### React example
