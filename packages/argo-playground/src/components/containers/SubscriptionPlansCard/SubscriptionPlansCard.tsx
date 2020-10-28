@@ -36,7 +36,10 @@ export function SubscriptionPlansCard() {
 
   const [app, setApp] = useState<App | undefined>();
   const onClose = useCallback(() => setShowExtension(false), []);
-  const onDone = useCallback(() => console.log('Done'), []);
+  const onDone = useCallback(() => {
+    setShowExtension(false);
+    console.log('Done');
+  }, []);
 
   return (
     <>
