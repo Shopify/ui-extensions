@@ -10,6 +10,7 @@ import {
   ReadyState,
 } from '@shopify/argo-admin-host';
 import {createWorkerFactory} from '@remote-ui/web-workers';
+import {useWorker} from '@remote-ui/react/host';
 
 import {LoadingSpinner} from './shared/LoadingSpinner';
 import {Error} from './shared/Error';
@@ -59,13 +60,9 @@ export function StandardContainer<T extends ExtensionPoint>(props: StandardConta
   } = props;
   const [readyState, setReadyState] = useState(ReadyState.Loading);
 
-  const worker = useMemo(
-    () =>
-      createWorker({
-        createMessenger: createIframeWorkerMessenger,
-      }),
-    [],
-  );
+  const worker = useWorker(createWorker, {
+    createMessenger: createIframeWorkerMessenger,
+  });
 
   const [ref, layoutApi] = useLayoutApi();
   const sessionTokenApi = useSessionTokenApi(() => {

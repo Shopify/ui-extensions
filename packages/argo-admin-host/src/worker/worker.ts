@@ -8,6 +8,7 @@ import {WorkerCreator} from '@remote-ui/web-workers';
 import {createRemoteRoot, RemoteChannel, retain} from '@remote-ui/core';
 
 import {apply as applySandbox, Denylist, builtIns} from './sandbox';
+import {makeApiFunctionsHotSwappable} from './hotswap';
 
 const {importScripts, Function: _Function} = self as any;
 
@@ -50,6 +51,8 @@ export function render<T extends ExtensionPoint>(
 
   retain(channel);
   retain(api);
+
+  makeApiFunctionsHotSwappable(api);
 
   const callback = registeredExtensions.get(extensionPoint)!;
   callback(

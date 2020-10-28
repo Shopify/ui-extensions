@@ -15,6 +15,7 @@
     "directory": "packages/argo-playground"
   },
   "dependencies": {
+    "@remote-ui/react": "^2.0.4",
     "@remote-ui/web-workers": "^1.2.2",
     "@shopify/argo-admin": "0.7.1",
     "@shopify/argo-admin-host": "0.7.1",
