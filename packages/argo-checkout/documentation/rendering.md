@@ -18,7 +18,6 @@ extend('Checkout::PostPurchase::Render', (root) => {
 
   button.appendChild('Press me');
   root.appendChild(button);
-  root.mount();
 });
 ```
 
@@ -49,7 +48,6 @@ extend('Checkout::PostPurchase::Render', (root) => {
 
   button.appendChild(buttonText);
   root.appendChild(button);
-  root.mount();
 });
 
 function labelText(pressCount: number) {

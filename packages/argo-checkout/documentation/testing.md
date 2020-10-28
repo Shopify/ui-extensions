@@ -65,7 +65,6 @@ export function handleRenderExtension(root, api) {
   });
   button.appendChild(text);
   root.appendChild(button);
-  root.mount();
 }
 ```
 
