@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.2](https://github.com/Shopify/app-extension-libs/compare/v0.7.1...v0.7.2) (2020-10-29)
+
+
+### Features
+
+* upgrade remote-ui 1.5.0 ([#1121](https://github.com/Shopify/app-extension-libs/issues/1121)) ([1350755](https://github.com/Shopify/app-extension-libs/commit/13507554568ad75872f2bd10a3ef417956411639))
+
+
+
+
+
 ## [0.7.1](https://github.com/Shopify/app-extension-libs/compare/v0.7.0...v0.7.1) (2020-10-22)
 
 **Note:** Version bump only for package @shopify/argo-admin
