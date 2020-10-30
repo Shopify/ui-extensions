@@ -25,4 +25,18 @@ describe('makeApiFunctionsHotSwappable()', () => {
 
     expect(newAction).toHaveBeenCalled();
   });
+
+  it('returns value from calling hot-swappable api', () => {
+    const api = {
+      someApi: {
+        getSessionToken: () => {
+          return '1234';
+        },
+      },
+    };
+
+    makeApiFunctionsHotSwappable(api);
+
+    expect(api.someApi.getSessionToken()).toStrictEqual('1234');
+  });
 });
