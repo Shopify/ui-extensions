@@ -69,7 +69,7 @@ export function makeApiFunctionsHotSwappable(api: object) {
     return (...args: any[]) => {
       updateEachFunction(args, setCurrentReference, currentArgs);
       currentArgs = args;
-      apiFn(...args);
+      return apiFn(...args);
     };
   });
 }
