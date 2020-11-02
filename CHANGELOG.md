@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.3](https://github.com/Shopify/app-extension-libs/compare/v0.7.2...v0.7.3) (2020-11-02)
+
+
+### Bug Fixes
+
+* fix missing return value for hotswap container api ([34e9b45](https://github.com/Shopify/app-extension-libs/commit/34e9b4536e55cca3956dbe1a77049f76ec9dd0dd))
+
+
+
+
+
 ## [0.7.2](https://github.com/Shopify/app-extension-libs/compare/v0.7.1...v0.7.2) (2020-10-29)
 
 
