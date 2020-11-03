@@ -84,7 +84,7 @@ export function createWebpackConfiguration({
     module: {
       rules: [
         {
-          test: /\.js$/,
+          test: /\.(jsx?|esnext)$/,
           exclude: /node_modules/,
           use: {
             loader: 'babel-loader',
@@ -99,7 +99,8 @@ export function createWebpackConfiguration({
           },
         },
         {
-          test: /\.esnext$/,
+          test: /\.(js|esnext)$/,
+          include: /node_modules/,
           use: {
             loader: 'babel-loader',
             options: {
