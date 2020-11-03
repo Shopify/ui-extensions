@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.4](https://github.com/Shopify/app-extension-libs/compare/v0.7.3...v0.7.4) (2020-11-03)
+
+
+### Bug Fixes
+
+* fix remote-ui hotswap nested function ([76e31cd](https://github.com/Shopify/app-extension-libs/commit/76e31cd59db8a1609c876fd81ae2f79d4bbe8437))
+
+
+
+
+
 ## [0.7.3](https://github.com/Shopify/app-extension-libs/compare/v0.7.2...v0.7.3) (2020-11-02)
 
 **Note:** Version bump only for package @shopify/argo-admin
