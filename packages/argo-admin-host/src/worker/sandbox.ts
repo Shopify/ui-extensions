@@ -148,7 +148,7 @@ function clobber(object: object, denylist: Denylist) {
   let target = object;
   do {
     Object.getOwnPropertyNames(target)
-      .filter((key) => denylist[key])
+      .filter((key) => key in denylist && denylist[key] !== false)
       // eslint-disable-next-line no-loop-func
       .forEach((key) => {
         try {
