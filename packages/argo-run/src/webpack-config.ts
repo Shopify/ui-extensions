@@ -105,6 +105,7 @@ export function createWebpackConfiguration({
             loader: 'babel-loader',
             options: {
               configFile: false,
+              compact: true,
               ...babelConfig({
                 react: false,
                 typescript: false,
