@@ -14,7 +14,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@remote-ui/core": "^1.5.1"
+    "@remote-ui/core": "^1.5.3"
   },
   "publishConfig": {
     "access": "public",
