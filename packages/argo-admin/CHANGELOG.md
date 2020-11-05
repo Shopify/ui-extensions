@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.5](https://github.com/Shopify/app-extension-libs/compare/v0.7.4...v0.7.5) (2020-11-05)
+
+
+### Bug Fixes
+
+* fix hotswap nested array object in remote-ui ([9be1bf6](https://github.com/Shopify/app-extension-libs/commit/9be1bf678a0f575150ab0d913223c452737e389f))
+
+
+
+
+
 ## [0.7.4](https://github.com/Shopify/app-extension-libs/compare/v0.7.3...v0.7.4) (2020-11-03)
 
 
