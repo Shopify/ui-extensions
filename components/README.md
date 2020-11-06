@@ -117,7 +117,7 @@ Cards are used to group similar concepts and tasks together
 - Space between Card:
   - Web: 2rem
   - Android: 16dp
-  - iOS: 20pts
+  - iOS: 16pts
 - Notes:
   - If two Card next to each other, there is a space between them.
   - If other components are below Card, there is no space.
@@ -132,7 +132,7 @@ Used to group similar concepts within a Card. It also adds a divider between sec
 - Padding:
   - Web: 2rem
   - Android: 16dp
-  - iOS: 20pts
+  - iOS: 16pts
 - Notes:
   - If two CardSection next to each other, there is a divider between them.
   - If other components are below CardSection, there is no divider.
@@ -146,7 +146,7 @@ A page is typically the top-level component, which defines the title, associated
 - Padding:
   - Web: 2rem
   - Android: 16dp
-  - iOS: 20pts
+  - iOS: 16pts
 
 [Page API](../packages/argo-admin/src/components/Page.ts)
 
@@ -190,6 +190,6 @@ Modals are overlays that prevent merchants from interacting with the rest of the
 - Modal content padding:
   - Web: 2rem
   - Android: 16dp
-  - iOS: 20pts
+  - iOS: 16pts
 
 [Modal API](../packages/argo-admin/src/components/Modal.ts)
