@@ -55,5 +55,5 @@ extend(
 | Name   | Type                            | Description                 | Required |
 | ------ | ------------------------------- | --------------------------- | -------- |
 | size   | `'small'`,`'medium'`, `'large'` | Size of the thumbnail.      |          |
-| source | `string`                        | URL for the image.          |          |
-| alt    | `string`                        | Alt text for the thumbnail. |          |
+| source | `string`                        | URL for the image.          | ☑️       |
+| alt    | `string`                        | Alt text for the thumbnail. | ☑️       |
