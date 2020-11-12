@@ -52,8 +52,9 @@ extend(
 
 ## Props API
 
-| Name   | Type                            | Description                 | Required |
-| ------ | ------------------------------- | --------------------------- | -------- |
-| size   | `'small'`,`'medium'`, `'large'` | Size of the thumbnail.      |          |
-| source | `string`                        | URL for the image.          | ☑️       |
-| alt    | `string`                        | Alt text for the thumbnail. | ☑️       |
+| Name      | Type                            | Description                  | Required |
+| --------- | ------------------------------- | ---------------------------- | -------- |
+| size      | `'small'`,`'medium'`, `'large'` | Size of the thumbnail.       |          |
+| scaleType | `'fill'`,`'fit'`, `'crop'`      | Scale type of the thumbnail. |          |
+| source    | `string`                        | URL for the image.           | ☑️       |
+| alt       | `string`                        | Alt text for the thumbnail.  | ☑️       |
