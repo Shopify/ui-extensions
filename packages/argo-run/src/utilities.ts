@@ -32,7 +32,10 @@ export function shouldUseReact() {
   try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const packageJson = require(resolve('package.json'));
-    return Object.keys(packageJson.dependencies).includes('react');
+    return (
+      Object.keys(packageJson.dependencies).includes('react')
+      || Object.keys(packageJson.peerDependencies).includes('react')
+    );
   } catch {
     return false;
   }
