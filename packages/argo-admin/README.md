@@ -1,6 +1,6 @@
 # Argo Admin
 
-Argo Admin is a library that enables 1P and 3P developers to write custom JavaScript to be sent to and presented within a Shopify-controlled host (Admin, mobile, etc.). It makes use of Shopify's [remote-ui](https://github.com/Shopify/remote-ui) library, which exposes the methods to create a “remote root” -- a root node that communicates operations (adding or removing children, changing properties of components, etc.) through [postMessage](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) communication.
+Argo Admin is a library that enables 1P and 3P developers to write custom JavaScript to be sent to and presented within a Shopify-controlled host (Admin, mobile, etc.). It makes use of Shopify's [remote-ui](https://github.com/Shopify/remote-ui) library, which exposes the methods to create a “remote root” -- a root node that communicates operations (adding or removing children, changing properties of components, etc.) through a [`MessageChannel`](https://github.com/Shopify/remote-ui/blob/dae08cda64117bd1ab24356bdb94cd9dc36d650c/packages/web-workers/README.md#advanced.).
 
 ## Usage
 
