@@ -20,7 +20,7 @@
     "@remote-ui/web-workers": "^1.2.6",
     "@shopify/argo-admin": "0.7.5",
     "@shopify/argo-admin-react": "0.7.5",
-    "@shopify/polaris": "^5.5.0",
+    "@shopify/polaris": "^5.10.1",
     "@shopify/polaris-icons": "^4.0.0",
     "react": "^16.12.0"
   },
