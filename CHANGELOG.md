@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.6](https://github.com/Shopify/app-extension-libs/compare/v0.7.5...v0.7.6) (2020-11-20)
+
+
+### Bug Fixes
+
+* improve readme structure ([b42da3c](https://github.com/Shopify/app-extension-libs/commit/b42da3c1866f864559bc69176316602cc4c13a1b))
+* update polaris and polaris icons ([4da7004](https://github.com/Shopify/app-extension-libs/commit/4da700468637e2a12b9f48c86f9599336b52869c))
+* update readme with more accurate info about remote-ui functionality ([ab66a0c](https://github.com/Shopify/app-extension-libs/commit/ab66a0c621196a4bde71a48bff1f9ae54337a551))
+
+
+
+
+
 ## [0.7.5](https://github.com/Shopify/app-extension-libs/compare/v0.7.4...v0.7.5) (2020-11-05)
 
 
