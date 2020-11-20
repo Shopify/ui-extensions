@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.6](https://github.com/Shopify/app-extension-libs/compare/v0.7.5...v0.7.6) (2020-11-20)
+
+
+### Bug Fixes
+
+* improve readme structure ([b42da3c](https://github.com/Shopify/app-extension-libs/commit/b42da3c1866f864559bc69176316602cc4c13a1b))
+
+
+
+
+
 ## [0.7.5](https://github.com/Shopify/app-extension-libs/compare/v0.7.4...v0.7.5) (2020-11-05)
 
 
