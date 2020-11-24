@@ -39,7 +39,7 @@ for package in "${packages[@]}"; do
   targetDir=$(resolve "$ROOT/../$projectDirectory/node_modules/@shopify/$package")
   packageFile="shopify-$package-latest.tgz"
 
-  echo "Processing ${ORANGE}$package${NONE}:"
+  echo "Processing ${CYAN}$package${NONE}:"
 
   if [[ -d $packageDir ]]; then
     debug $debug "cd $packageDir"
