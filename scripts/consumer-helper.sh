@@ -6,6 +6,7 @@ ROOT=$(pwd)
 # Font color
 ORANGE='\033[1;31m'
 GREEN='\033[0;32m'
+CYAN='\033[0;36m'
 NONE='\033[0m'
 
 # Font styles
@@ -32,7 +33,7 @@ function validate_project {
     exit 0
   fi
 
-  echo "Target project: ${ORANGE}$projectDirectory${NONE}"
+  echo "Target project: ${CYAN}$projectDirectory${NONE}"
 }
 
 # Validation - package names
@@ -53,7 +54,7 @@ function validate_package {
     fi
   fi
 
-  echo "Source package(s): ${ORANGE}${packages[@]}${NONE}"
+  echo "Source package(s): ${CYAN}${packages[@]}${NONE}"
 }
 
 function err() {
