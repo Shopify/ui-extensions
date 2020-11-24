@@ -53,6 +53,12 @@ Which would open your default browser to a the following URL, assuming the defau
 https://argogogo.dev?extension=%2522http%253A%252F%252Flocalhost%253A8910%252Fassets%252Fextension.js%2522&extension-point=Checkout::PostPurchase::ShouldRender
 ```
 
+### Browser extension and `/data` endpoint
+
+During development, the dev server exposes a `/data` endpoint which serves the `api_key` entry of the `.env` file and a json-parsed version of the `extension.config.yml`.
+
+This endpoint is consumed by a browser extension, that we share with partners, which makes it easier to test locally developped post purchase extensions.
+
 ### `argo-run build`
 
 ```bash
