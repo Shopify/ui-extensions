@@ -7,7 +7,7 @@ Usage: $(basename "$0") <target_project> [<package_name>]
 
 Build Argo packages into a project
 
- <target_project>  Target project i.e. \`app-extension-libs\`
+ <target_project>  Target project i.e. \`argo-admin\`
  <package_name>    Space separated package names
                    default: ${AVAILABLE_PACKAGES[@]}
 
@@ -47,7 +47,7 @@ for package in "${packages[@]}"; do
     cd $packageDir
 
     packCmd="yarn pack --filename $packageFile"
-    
+
     if [[ $debug = 0 ]]; then
       buildCmd+=" > /dev/null"
       packCmd+=" > /dev/null"
@@ -86,7 +86,7 @@ for package in "${packages[@]}"; do
     tar xzf $packageFile --strip-components=1 -C $targetDir
     rm -rf "$targetDir/src"
   fi
-  
+
   if [[ -f "$packageFile" ]]; then
     debug $debug "rm $packageFile"
 
