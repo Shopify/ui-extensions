@@ -7,9 +7,11 @@ import {retain} from '@remote-ui/core';
 const SIZE_CLASS_BREAK_POINT = 480;
 
 function resizeObserver(callback: (entries: ResizeObserverEntry[], observer: Polyfill) => void) {
-  const ResizeObserver: typeof Polyfill =
-    typeof window === 'undefined' ? Polyfill : (window as any).ResizeObserver;
-  return new ResizeObserver(callback);
+  if (typeof window === 'undefined') {
+    return Polyfill;
+  }
+
+  return new ((window as any).ResizeObserver || Polyfill)(callback);
 }
 
 const useResizeObserver: () => [LegacyRef<any>, ResizeObserverEntry | undefined] = () => {
