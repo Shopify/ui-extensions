@@ -30,8 +30,9 @@
     "@shopify/react-network": "^3.3.1",
     "@shopify/react-performance": "^1.1.1",
     "@shopify/react-router": "^0.0.9",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "@types/webpack": "^4.41.25",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0",
     "react-transition-group": "^4.4.1"
   },
   "devDependencies": {

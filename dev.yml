@@ -20,6 +20,7 @@ commands:
   new-extension-api: node ./scripts/new-extension-api
   nuke: yarn run clean && rm -rf ./node_modules
   server: yarn run server
+  simulator: yarn run simulator
   test: yarn run test
   build-consumer: yarnpkg build && ./scripts/build-consumer.sh
   restore-consumer: ./scripts/restore-consumer.sh

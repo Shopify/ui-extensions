@@ -1,0 +1,65 @@
+.Container {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  visibility: hidden;
+}
+.Container.visible {
+  z-index: 519;
+  visibility: visible;
+  will-change: transform, opacity;
+  animation: scaleIn cubic-bezier(0.64, 0, 0.35, 1) 200ms;
+}
+@media (min-width: 48.0625em) {
+  .Container {
+    justify-content: center;
+  }
+}
+
+.ArgoAppOverlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  max-height: calc(100vh);
+  background-color: #f4f6f8;
+}
+@media (max-width: 48.0525em) {
+  .ArgoAppOverlay {
+    top: auto;
+    max-height: calc(100%);
+    width: 100%;
+  }
+}
+.ArgoAppOverlay:focus {
+  outline: 0;
+}
+@media (min-width: 48.0625em) {
+  .ArgoAppOverlay {
+    position: relative;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(1.15);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
