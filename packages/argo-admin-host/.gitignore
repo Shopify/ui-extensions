@@ -2,10 +2,10 @@
 *.js.map
 *.d.ts
 
-./components-schemas
-./components-sets
-./components
-./extension-api
-./messenger
-./utilities
-./worker
+/components-schemas
+/components-sets
+/components
+/extension-api
+/messenger
+/utilities
+/worker

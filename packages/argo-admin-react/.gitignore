@@ -2,5 +2,5 @@
 *.js.map
 *.d.ts
 
-./components
-./extension-api
+/components
+/extension-api
