@@ -1,6 +1,6 @@
 {
-  "name": "@shopify/argo-checkout-react",
-  "version": "0.8.1",
+  "name": "@shopify/argo-checkout-vue",
+  "version": "0.0.0",
   "description": "React bindings for @shopify/argo-checkout",
   "publishConfig": {
     "access": "public",
@@ -9,11 +9,13 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@remote-ui/react": "^3.0.0-alpha.2",
-    "@shopify/argo-checkout": "^0.8.1",
-    "@types/react": ">=16.8.0 <18.0.0"
+    "@remote-ui/vue": "^0.1.0-alpha.1",
+    "@shopify/argo-checkout": "^0.8.1"
   },
   "peerDependencies": {
-    "react": ">=16.8.0 <18.0.0"
+    "vue": ">=3.0.0 <4.0.0"
+  },
+  "devDependencies": {
+    "vue": ">=3.0.0 <4.0.0"
   }
 }
