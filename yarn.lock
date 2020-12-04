@@ -1300,12 +1300,12 @@
     native-url "^0.2.6"
     schema-utils "^2.6.5"
 
-"@remote-ui/core@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-1.6.0.tgz#d50ad91778b0d9214cc5014ccbc738e49f59df69"
-  integrity sha512-NUOBStpXqXaqmRLg/ZOoS8JmeqZOWY13tyP1R3hgIh5J9uuXbYHnbhiwsUT7+Obc8Qeee6iNw11yqYgGs+8MDg==
+"@remote-ui/core@^1.6.0", "@remote-ui/core@^1.6.1":
+  version "1.6.1"
+  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-1.6.1.tgz#9d530716a0e23928f344a538b1cfdc95996cf762"
+  integrity sha512-B5/XT65OPV2IlDi5eqlV+e9zGekKCV8ukB4vk+KojTZ7PQhR/uzKdL+dykyyFIPfnmJfCaccPbozSSmeZeJ16w==
   dependencies:
-    "@remote-ui/rpc" "^1.0.12"
+    "@remote-ui/rpc" "^1.0.13"
     "@remote-ui/types" "^1.0.4"
 
 "@remote-ui/react@^3.0.0":
@@ -1319,23 +1319,23 @@
     "@types/react" ">=16.8.0 <18.0.0"
     react-reconciler ">=0.25.0 <1.0.0"
 
-"@remote-ui/rpc@^1.0.12":
-  version "1.0.12"
-  resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.0.12.tgz#edda00e7f7579a132231606828b589a718f03665"
-  integrity sha512-ahfbuRGlB4WLh8U0breN/SgYmzFejW+yly1B9T984jyfa1aBGzrtdjalupUt4XTDDguBMF3WbUubXc5Fr7weow==
+"@remote-ui/rpc@^1.0.12", "@remote-ui/rpc@^1.0.13":
+  version "1.0.13"
+  resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.0.13.tgz#bae8a7ab46da95457215dbff5f67ff1478b6d19c"
+  integrity sha512-0mWFe7we67kwnqCgZCEbbtfKiG9Gv7DUOBjPVA+kBtg0wX8upQisSHg1/zSa6xkb4/5jk0umBNDkV71+lJ3w0A==
 
 "@remote-ui/types@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@remote-ui/types/-/types-1.0.4.tgz#3697205e4048c9fe7fdc1e873ff51a3bbe1b7b92"
   integrity sha512-iTUzrmiFrbfFNJ4HHI+JIhOSY5+PyLC6pg2RSGFjrxrLebKpLpKZuyahwpA1RfKKKN4mhF7aPVhkDUjkJfkHIA==
 
-"@remote-ui/vue@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@remote-ui/vue/-/vue-0.1.0.tgz#e8d6c779d9c212c650868fe9e42fc186a589e983"
-  integrity sha512-7uAHS1L1HfUKmlauuEsZLAqtJwyMQX8O9cF3jrQ2PAS6PPzEFs2ITW/fvMswF6fFxZBU8z3843k4cME7IrcVWA==
+"@remote-ui/vue@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@remote-ui/vue/-/vue-0.1.1.tgz#19037a52c120136f31b833ed3b436b305d36ebd2"
+  integrity sha512-e9cJJhR5YAW4SelcT8762mUG2HdMHPJEYMieIQH9Cd8u3yoGaHLh9+6gTREdBQs2AbyxHVFBClc89MQM5DrFQw==
   dependencies:
-    "@remote-ui/core" "^1.6.0"
-    "@remote-ui/rpc" "^1.0.12"
+    "@remote-ui/core" "^1.6.1"
+    "@remote-ui/rpc" "^1.0.13"
     "@vue/runtime-core" ">=3.0.0 <4.0.0"
 
 "@remote-ui/web-workers@^1.2.8":
