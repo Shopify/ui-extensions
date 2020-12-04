@@ -3,6 +3,6 @@ import {createRemoteVueComponent} from '@remote-ui/vue';
 
 export const ArgoRadio = createRemoteVueComponent(Radio, {
   emits: {
-    press: 'onPress',
+    change: 'onChange',
   },
 });
