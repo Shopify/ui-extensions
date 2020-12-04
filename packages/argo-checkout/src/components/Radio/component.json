@@ -1,3 +1,3 @@
 {
-  "eventHandlerProps": ["onPress"]
+  "eventHandlerProps": ["onChange"]
 }
