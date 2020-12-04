@@ -9,7 +9,7 @@
   "sideEffects": false,
   "license": "MIT",
   "dependencies": {
-    "@remote-ui/vue": "^0.1.0-alpha.1",
+    "@remote-ui/vue": "^0.1.0",
     "@shopify/argo-checkout": "^0.8.2-alpha.0"
   },
   "peerDependencies": {

@@ -1300,51 +1300,50 @@
     native-url "^0.2.6"
     schema-utils "^2.6.5"
 
-"@remote-ui/core@^1.6.0-alpha.0":
-  version "1.6.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-1.6.0-alpha.0.tgz#6b7cc151ea6b0f2c3b53ef03343478bc8aec6e27"
-  integrity sha512-SWMhYU6AqYx8ya4czuBvPG41Nyt5Eidv4HS6laqyIU0BT4dde4QoEX5qNdyO2BNB4ItSk1FpCM8PwkDBnOmmXg==
+"@remote-ui/core@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-1.6.0.tgz#d50ad91778b0d9214cc5014ccbc738e49f59df69"
+  integrity sha512-NUOBStpXqXaqmRLg/ZOoS8JmeqZOWY13tyP1R3hgIh5J9uuXbYHnbhiwsUT7+Obc8Qeee6iNw11yqYgGs+8MDg==
   dependencies:
-    "@remote-ui/rpc" "^1.1.0-alpha.0"
+    "@remote-ui/rpc" "^1.0.12"
     "@remote-ui/types" "^1.0.4"
 
-"@remote-ui/react@^3.0.0-alpha.2":
-  version "3.0.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-3.0.0-alpha.2.tgz#a3994c4348184dd9b239c5248403587e352701aa"
-  integrity sha512-eipdwwF8NHKcUA+3m6ZYJPZtqICPJ4mgBvQkAfAJO1ZgHpgfQoQBkN2IcWLSGRMoUpAzyjU7OAC+6BKQQsU4yA==
+"@remote-ui/react@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-3.0.0.tgz#a44c32dfc599d1cdbe7e664230cf8f9736a8168c"
+  integrity sha512-u8gjlWtHi2ImHHYcYUmlpmpnuazcsLcMabVWSj6XKDrZUFrL7FoHJBo8jQyCjqXaWO54XD5jCg3fot8wbPh71A==
   dependencies:
-    "@remote-ui/core" "^1.6.0-alpha.0"
-    "@remote-ui/rpc" "^1.1.0-alpha.0"
-    "@remote-ui/web-workers" "^1.3.0-alpha.0"
+    "@remote-ui/core" "^1.6.0"
+    "@remote-ui/rpc" "^1.0.12"
+    "@remote-ui/web-workers" "^1.2.8"
     "@types/react" ">=16.8.0 <18.0.0"
     react-reconciler ">=0.25.0 <1.0.0"
 
-"@remote-ui/rpc@^1.1.0-alpha.0":
-  version "1.1.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.1.0-alpha.0.tgz#78a8bc025dd04357cad67d81bf8b62b05fd72100"
-  integrity sha512-G/MoGRRunrQdOAbR5sYuTIZmJvsHR3xc84Uzt01J3Haowz0npHOT7/0nCO0zTvwXf+79wgV0DQU32wA6gPPWMQ==
+"@remote-ui/rpc@^1.0.12":
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.0.12.tgz#edda00e7f7579a132231606828b589a718f03665"
+  integrity sha512-ahfbuRGlB4WLh8U0breN/SgYmzFejW+yly1B9T984jyfa1aBGzrtdjalupUt4XTDDguBMF3WbUubXc5Fr7weow==
 
 "@remote-ui/types@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@remote-ui/types/-/types-1.0.4.tgz#3697205e4048c9fe7fdc1e873ff51a3bbe1b7b92"
   integrity sha512-iTUzrmiFrbfFNJ4HHI+JIhOSY5+PyLC6pg2RSGFjrxrLebKpLpKZuyahwpA1RfKKKN4mhF7aPVhkDUjkJfkHIA==
 
-"@remote-ui/vue@^0.1.0-alpha.1":
-  version "0.1.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@remote-ui/vue/-/vue-0.1.0-alpha.1.tgz#ec08ee6a525952b890c66ce166ab74e73640e9fc"
-  integrity sha512-xze1B7eJ+hFBOyamkIrJGc6rzJjzppbx6FTl+MjGcqcbQM01QUVwDZ6bKOSFGLUZKMuZ4bOd0UhbgqJ5+r4GCg==
+"@remote-ui/vue@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@remote-ui/vue/-/vue-0.1.0.tgz#e8d6c779d9c212c650868fe9e42fc186a589e983"
+  integrity sha512-7uAHS1L1HfUKmlauuEsZLAqtJwyMQX8O9cF3jrQ2PAS6PPzEFs2ITW/fvMswF6fFxZBU8z3843k4cME7IrcVWA==
   dependencies:
-    "@remote-ui/core" "^1.6.0-alpha.0"
-    "@remote-ui/rpc" "^1.1.0-alpha.0"
+    "@remote-ui/core" "^1.6.0"
+    "@remote-ui/rpc" "^1.0.12"
     "@vue/runtime-core" ">=3.0.0 <4.0.0"
-    vue ">=3.0.0 <4.0.0"
 
-"@remote-ui/web-workers@^1.3.0-alpha.0":
-  version "1.3.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/@remote-ui/web-workers/-/web-workers-1.3.0-alpha.0.tgz#26c7980d7dad628406cc676a97c044c6c29d4823"
-  integrity sha512-G/gz6qNe1p63ZkhiSJxgl6MH32RmRXJFPmaAc4Bdni9O9LHJvCPR/RU4Uxlyffml7Bg/pPU2q6cTShPCLXdPfw==
+"@remote-ui/web-workers@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@remote-ui/web-workers/-/web-workers-1.2.8.tgz#59ef6052b96d8b6667b324bd5033c1f96de720ac"
+  integrity sha512-058/jsLGgMwY41iqI/nb+W3JchcP5NdbvSbfAubvZmoytMHmKk7Y0bAj3UqTfWNwMLhjBDpxxY5RNVnRbaGGdw==
   dependencies:
-    "@remote-ui/rpc" "^1.1.0-alpha.0"
+    "@remote-ui/rpc" "^1.0.12"
     "@sewing-kit/plugins" "^0.1.4"
     "@types/webpack" "^4.41.12"
     loader-utils "^2.0.0"
