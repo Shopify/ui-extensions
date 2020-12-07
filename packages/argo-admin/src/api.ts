@@ -1,7 +1,7 @@
 import {
+  ExtensionPoint,
   ExtensionPointCallback,
   ExtensionApi,
-  ExtensionPoint,
   ExtensionResult,
 } from './extension-points';
 
@@ -16,6 +16,7 @@ export interface ShopifyGlobal {
   readonly shopify: ShopifyApi;
 }
 
+// For external consumption
 export type StandardApi<T extends ExtensionPoint> = Omit<
   ExtensionApi[T],
   'locale' | 'layoutApi' | 'sessionToken'

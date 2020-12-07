@@ -1,4 +1,4 @@
-import {ExtensionPoint} from '../../extension-point';
+import {ExtensionPoint} from '../../extension-points';
 
 import {ProductSubscriptionContainer} from './product-subscription';
 
