@@ -10,9 +10,11 @@ export type {
   ExtensionContainer,
   ProductSubscriptionExtensionPoint,
 } from './container';
+
 export {isContainerApi} from './container';
 
 export type {DataApi, ExtensionData} from './data';
+
 export {isDataApi, ProductSubscriptionActions} from './data';
 
 export type {SessionTokenApi} from './sessionToken';
