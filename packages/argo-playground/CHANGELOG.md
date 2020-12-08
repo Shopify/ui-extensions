@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2020-12-08)
+
+
+### Bug Fixes
+
+* fix hotswap nested array object in remote-ui ([9be1bf6](https://github.com/Shopify/argo-admin/commit/9be1bf678a0f575150ab0d913223c452737e389f))
+* fix remote-ui hotswap nested function ([76e31cd](https://github.com/Shopify/argo-admin/commit/76e31cd59db8a1609c876fd81ae2f79d4bbe8437))
+* improve readme structure ([b42da3c](https://github.com/Shopify/argo-admin/commit/b42da3c1866f864559bc69176316602cc4c13a1b))
+* update polaris and polaris icons ([4da7004](https://github.com/Shopify/argo-admin/commit/4da700468637e2a12b9f48c86f9599336b52869c))
+* **app-chrome-container:** remove unnecessary conditional ([cd99192](https://github.com/Shopify/argo-admin/commit/cd99192b17fae7a72d16f6b84f25c1e3ca398c6d))
+* **playground:** add style override for top-level cards ([719ef7f](https://github.com/Shopify/argo-admin/commit/719ef7fa52ca2cef94662175804230e990a186a7))
+* **playground:** fix missing icon, polaris overrides ([a890eaf](https://github.com/Shopify/argo-admin/commit/a890eafb504e58e34bb4a32424d0241c03e1365a))
+* **playground:** inject script after content ([d47b830](https://github.com/Shopify/argo-admin/commit/d47b830f9837585a6f2fe1472d9e00af7f7dc8ea))
+* **playground:** main menu icons ([2b25be6](https://github.com/Shopify/argo-admin/commit/2b25be6d959f4a5c374920905cac7e42a38d49df))
+* clean up webpack configs and package.json ([51becc4](https://github.com/Shopify/argo-admin/commit/51becc48730c30e18533f521eb969103003deedb))
+* correct name SubscriptionManagement ([#496](https://github.com/Shopify/argo-admin/issues/496)) ([3577d00](https://github.com/Shopify/argo-admin/commit/3577d009f9a416c4636fdb1a7ebd29379020bc0b))
+* fix locale extension api ([d00a519](https://github.com/Shopify/argo-admin/commit/d00a519f9ebd6b7e1a226a76a9b931a5170e7dc0))
+* make links safe ([bac28f0](https://github.com/Shopify/argo-admin/commit/bac28f067f3861482adb872be2ba36cebdc8f4f8))
+* re-add card action ([#602](https://github.com/Shopify/argo-admin/issues/602)) ([cdd6785](https://github.com/Shopify/argo-admin/commit/cdd6785c47417d4f6fe2e8e94bab64cb758a79b8))
+* replace render error image ([#500](https://github.com/Shopify/argo-admin/issues/500)) ([dc87105](https://github.com/Shopify/argo-admin/commit/dc87105f9ee6352fffd13611bb3c42e0bd4a4f7e))
+* reset independent versioning ([5e6761a](https://github.com/Shopify/argo-admin/commit/5e6761a0075b57538aacfc28f5437e647930a450))
+* resource list onQueryClear reset the list items ([9209240](https://github.com/Shopify/argo-admin/commit/920924045cb94af2f81c3dc7b056883540e4a3f5))
+* standardize form field naming ([5391b59](https://github.com/Shopify/argo-admin/commit/5391b598a9e6f516f2d4aff603d9aeee634d67e3))
+
+
+### Features
+
+* add component groups ([#514](https://github.com/Shopify/argo-admin/issues/514)) ([11fb50b](https://github.com/Shopify/argo-admin/commit/11fb50b0ad910d923405535d109a9f220a83d9e3))
+* add extension point to api ([f30fd1c](https://github.com/Shopify/argo-admin/commit/f30fd1cef7adedd86e0025d5f3d397113f4e5f3a))
+* add product data input ([305d464](https://github.com/Shopify/argo-admin/commit/305d464dff656ee4fc3f702f36601ddba309eeec))
+* add render timeout hook and example playground ([#473](https://github.com/Shopify/argo-admin/issues/473)) ([5976199](https://github.com/Shopify/argo-admin/commit/5976199b669d95ce539a021dc484148ef1f0d1bf))
+* add validation to select ([#521](https://github.com/Shopify/argo-admin/issues/521)) ([a13acd8](https://github.com/Shopify/argo-admin/commit/a13acd86c9545fe04a15f074ee79bf7b95dcd4de))
+* added readyState no script ([#563](https://github.com/Shopify/argo-admin/issues/563)) ([afa23f7](https://github.com/Shopify/argo-admin/commit/afa23f7b8d604b7f0d4b9983d4be877e2e85e3e9))
+* api consistency onclick to onpress ([6c68dd6](https://github.com/Shopify/argo-admin/commit/6c68dd6291cdaee34539c6a4357ba07f0190b075))
+* data api ([#704](https://github.com/Shopify/argo-admin/issues/704)) ([ac25d95](https://github.com/Shopify/argo-admin/commit/ac25d951af5e048a83c81b78dfdb3c37a2b6b48a))
+* enable displaying an error and loading state ([31d2a86](https://github.com/Shopify/argo-admin/commit/31d2a867a9248d5be4e1e98b8b4dee15031959a1))
+* error unsupported component ([#902](https://github.com/Shopify/argo-admin/issues/902)) ([938363e](https://github.com/Shopify/argo-admin/commit/938363e561225cdf24693f6a7e012016d37d851f))
+* extension point components ([#820](https://github.com/Shopify/argo-admin/issues/820)) ([9be8c61](https://github.com/Shopify/argo-admin/commit/9be8c61f7a567be8b1c2ec13156a5dd3422182d0))
+* hot-swap api ([#1096](https://github.com/Shopify/argo-admin/issues/1096)) ([473597b](https://github.com/Shopify/argo-admin/commit/473597bbacc846f194431a44ebb9c90a27b181d6))
+* radio and checkbox to use children not label ([e5c7705](https://github.com/Shopify/argo-admin/commit/e5c77051d6c3039aa40d912c699d049fa8d191a0))
+* radio id and checked is optional ([9c3954e](https://github.com/Shopify/argo-admin/commit/9c3954e7852e0aa6d314a824c2e64dc68d967886))
+* radio onchange gives value not id ([#914](https://github.com/Shopify/argo-admin/issues/914)) ([9202a9e](https://github.com/Shopify/argo-admin/commit/9202a9e16863153ceb686e5abdd604cee8b7841a))
+* radiobutton ([0438e25](https://github.com/Shopify/argo-admin/commit/0438e25b15cdc504a03b2cdc28b9526e83ed2b15))
+* remove extension point enum ([06479db](https://github.com/Shopify/argo-admin/commit/06479db477722dad8fa5625cbc99274a07916037))
+* rename modal actions to container api ([50746d5](https://github.com/Shopify/argo-admin/commit/50746d52f7a46a87d6c51a6989fb93ebdec2953b))
+* rename pressable to clickable ([e48be20](https://github.com/Shopify/argo-admin/commit/e48be20b3282f6299e225d4e7d937b2b0c70302a))
+* rename radio button to radio ([5a15c0a](https://github.com/Shopify/argo-admin/commit/5a15c0a9ed25fb0b196252db059bd86601c72263))
+* rename subscription management ([#973](https://github.com/Shopify/argo-admin/issues/973)) ([5752089](https://github.com/Shopify/argo-admin/commit/575208901f6e7a5b37d2d0dfb2799c59fdbee15b))
+* toast ([#483](https://github.com/Shopify/argo-admin/issues/483)) ([0898253](https://github.com/Shopify/argo-admin/commit/08982538144fade980752c71597ed3e574eaa2a8))
+* update data-api with container changes ([#761](https://github.com/Shopify/argo-admin/issues/761)) ([24308ed](https://github.com/Shopify/argo-admin/commit/24308ed9459b93373dc5218c79674dcd812cd308))
+* upgrade remote-ui 1.5.0 ([#1121](https://github.com/Shopify/argo-admin/issues/1121)) ([1350755](https://github.com/Shopify/argo-admin/commit/13507554568ad75872f2bd10a3ef417956411639))
+* **app-chrome-container:** add playground example ([a1e314e](https://github.com/Shopify/argo-admin/commit/a1e314e845b1d573bb317eb5ba2a3373abfec1cb))
+* **app-overlay:** update header ([f34da64](https://github.com/Shopify/argo-admin/commit/f34da64b789aa3be967c2e19f57ebe5f294f3ef5))
+* **argo-admin-react:** create separate package for react components ([e6625cb](https://github.com/Shopify/argo-admin/commit/e6625cb365aca18ee3d211db45b60b7947312892))
+* **card:** add card header ([d26d69f](https://github.com/Shopify/argo-admin/commit/d26d69fcf3c48c9356bc825a44f40ca097044df3))
+* **components:** add OptionsList component ([7da5016](https://github.com/Shopify/argo-admin/commit/7da5016ad0bae7047b86b4e20d147cba6894cd08))
+
+
+### Reverts
+
+* Revert "chore: change to original remote-ui (#713)" ([5f9bd71](https://github.com/Shopify/argo-admin/commit/5f9bd715f285a0768455ff7ffe150f18d4d6f221)), closes [#713](https://github.com/Shopify/argo-admin/issues/713)
+* Revert "v0.2.8-unstable.0" ([43e74ac](https://github.com/Shopify/argo-admin/commit/43e74ac80783b12ea596444e94b757996ae80d75))
+
+
+
+
+
 ## [0.7.6](https://github.com/Shopify/argo-admin/compare/v0.7.5...v0.7.6) (2020-11-20)
 
 ### Bug Fixes

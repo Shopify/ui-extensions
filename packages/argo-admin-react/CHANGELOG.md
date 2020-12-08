@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.8.0 (2020-12-08)
+
+
+### Bug Fixes
+
+* fix hotswap nested array object in remote-ui ([9be1bf6](https://github.com/Shopify/argo-admin/commit/9be1bf678a0f575150ab0d913223c452737e389f))
+* fix remote-ui hotswap nested function ([76e31cd](https://github.com/Shopify/argo-admin/commit/76e31cd59db8a1609c876fd81ae2f79d4bbe8437))
+* improve readme structure ([b42da3c](https://github.com/Shopify/argo-admin/commit/b42da3c1866f864559bc69176316602cc4c13a1b))
+
+
+### Features
+
+* remove extension point enum ([06479db](https://github.com/Shopify/argo-admin/commit/06479db477722dad8fa5625cbc99274a07916037))
+* rename pressable to clickable ([e48be20](https://github.com/Shopify/argo-admin/commit/e48be20b3282f6299e225d4e7d937b2b0c70302a))
+* rename radio button to radio ([5a15c0a](https://github.com/Shopify/argo-admin/commit/5a15c0a9ed25fb0b196252db059bd86601c72263))
+* rename subscription management ([#973](https://github.com/Shopify/argo-admin/issues/973)) ([5752089](https://github.com/Shopify/argo-admin/commit/575208901f6e7a5b37d2d0dfb2799c59fdbee15b))
+* upgrade remote-ui 1.5.0 ([#1121](https://github.com/Shopify/argo-admin/issues/1121)) ([1350755](https://github.com/Shopify/argo-admin/commit/13507554568ad75872f2bd10a3ef417956411639))
+* **app-chrome-container:** add playground example ([a1e314e](https://github.com/Shopify/argo-admin/commit/a1e314e845b1d573bb317eb5ba2a3373abfec1cb))
+* **argo-admin-react:** create separate package for react components ([e6625cb](https://github.com/Shopify/argo-admin/commit/e6625cb365aca18ee3d211db45b60b7947312892))
+
+
+
+
+
 ## [0.7.6](https://github.com/Shopify/argo-admin/compare/v0.7.5...v0.7.6) (2020-11-20)
 
 ### Bug Fixes
