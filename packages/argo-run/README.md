@@ -33,6 +33,12 @@ This command will print the `localhost` address of the asset server when it star
 $ yarn argo-run dev --port 3000
 ```
 
+Default entry file for your extension is `index.{ts,tsx,js}` or `src/index.{ts,tsx,js}`. To control the entry file, you can pass the `--entry` flag:
+
+```bash
+$ yarn argo-run dev --entry ./custom/entry/file.ts
+```
+
 If there is a website that can load a preview of your extension, this command can automatically navigate your browser to that page on start. To do so, pass a `--open` flag with the URL to navigate to:
 
 ```bash
@@ -65,4 +71,22 @@ The extension asset will be placed in the `build` directory adjacent to the dire
 
 ```bash
 $ yarn argo-run build --filename extension.js
+```
+
+To control the whole output directory, you can pass the `--ouptut` flag:
+
+```bash
+$ yarn argo-run build --output ./custom/output/directory/extension.js
+```
+
+To control the entry file, you can pass the `--entry` flag:
+
+```bash
+$ yarn argo-run build --entry ./custom/entry/file.ts
+```
+
+To watch the build file for changes, you can pass the `--watch` flag:
+
+```bash
+$ yarn argo-run build --watch
 ```
