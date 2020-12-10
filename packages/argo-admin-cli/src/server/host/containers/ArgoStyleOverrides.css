@@ -1,8 +1,0 @@
-/**
-This file contains overrides to account for current Argo limitations, such as not allowing `Card` components inside `Stack`.
-Wrapped inside `ArgoExtension` to ensure these rules only apply to Argo related elements.
- */
-.ArgoExtension .Polaris-Stack + .Polaris-Card,
-.ArgoExtension .Polaris-Card + .Polaris-Stack {
-  margin-top: 2rem;
-}
