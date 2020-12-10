@@ -4,7 +4,6 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import {WebWorkerPlugin} from '@remote-ui/web-workers/webpack';
 
 import {createWebpackConfiguration} from '../webpackConfig';
 
@@ -98,7 +97,6 @@ export async function server({port, entry, type, env}: ServerConfig) {
       publicPath: `${url}/`,
     },
     plugins: [
-      new WebWorkerPlugin(),
       new HtmlWebpackPlugin({
         title: `Argo Admin Simulator - ${type}`,
         template: path.resolve(__dirname, 'host/templates/index.ejs'),
@@ -134,6 +132,9 @@ export async function server({port, entry, type, env}: ServerConfig) {
           use: ['@svgr/webpack', 'file-loader'],
         },
       ],
+    },
+    externals: {
+      react: 'React',
     },
   });
 

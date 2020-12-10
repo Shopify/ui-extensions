@@ -47,7 +47,6 @@ export function createWebpackConfiguration(config: any): any {
                 '@babel/plugin-proposal-optional-chaining',
                 '@babel/plugin-proposal-nullish-coalescing-operator',
                 ['@babel/plugin-proposal-class-properties', {loose: true}],
-                require.resolve('@remote-ui/web-workers/babel'),
               ],
               sourceType: 'unambiguous',
             },

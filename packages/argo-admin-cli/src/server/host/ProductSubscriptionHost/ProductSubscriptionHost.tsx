@@ -17,12 +17,12 @@ import merge from 'lodash/fp/merge';
 
 import {HostProps} from '../types';
 
-import {ModalContainer} from './ModalContainer';
-import {AppOverlayContainer} from './AppOverlayContainer';
 import {ProductSubscriptionAction} from './types';
 import {actionFields, defaultSettings} from './config';
 import {usePageState, useSettings} from './useStorage';
 import {SettingsForm} from './components/SettingsForm';
+
+const {ArgoAppOverlay, ArgoModal, PlaygroundContext} = window.argoAdminHost;
 
 const actionToExtensionPoint: {[key: string]: ExtensionPoint} = {
   [ProductSubscriptionAction.Add]: 'Admin::Product::SubscriptionPlan::Add',
@@ -83,14 +83,6 @@ export function ProductSubscriptionHost(props: HostProps) {
     () => ({
       ...props,
       api: outSettings,
-      app: {
-        id: 'app-id',
-        title: 'App name',
-        developerName: 'Partner company name',
-        installation: {
-          launchUrl: 'https://shop.myshopify.com/apps/mycoolapp',
-        },
-      },
       extensionPoint,
       onClose: close,
       onDone: done,
@@ -102,9 +94,9 @@ export function ProductSubscriptionHost(props: HostProps) {
   const extension = useMemo(
     () =>
       isModal ? (
-        <ModalContainer {...containerProps} defaultTitle="Default title" />
+        <ArgoModal {...containerProps} defaultTitle="Default title" />
       ) : (
-        <AppOverlayContainer {...containerProps} />
+        <ArgoAppOverlay {...containerProps} />
       ),
     [containerProps, isModal],
   );
@@ -155,41 +147,43 @@ export function ProductSubscriptionHost(props: HostProps) {
   );
 
   return (
-    <Frame navigation={navigation} topBar={<TopBar />}>
-      <Page
-        title="Product Subscription"
-        primaryAction={{
-          content: 'Show extension',
-          onAction: () => setPageState((state) => state.extensionOpen, true),
-        }}
-      >
-        {extension}
-        {confirmResetModal}
-        <Layout>
-          <SettingsForm settings={settings} updateSettings={updateSettings} />
-          <Layout.Section oneHalf>
-            <Card sectioned>
-              <pre>{JSON.stringify(outSettings, null, '  ')}</pre>
-            </Card>
-          </Layout.Section>
-          <Layout.Section>
-            <PageActions
-              primaryAction={{
-                content: 'Show extension',
-                onAction: () => setPageState((state) => state.extensionOpen, true),
-              }}
-              secondaryActions={[
-                {
-                  content: 'Reset',
-                  destructive: true,
-                  onAction: () => setConfirmResetOpen(true),
-                },
-              ]}
-            />
-          </Layout.Section>
-        </Layout>
-        <Toast />
-      </Page>
-    </Frame>
+    <PlaygroundContext>
+      <Frame navigation={navigation} topBar={<TopBar />}>
+        <Page
+          title="Product Subscription"
+          primaryAction={{
+            content: 'Show extension',
+            onAction: () => setPageState((state) => state.extensionOpen, true),
+          }}
+        >
+          {extension}
+          {confirmResetModal}
+          <Layout>
+            <SettingsForm settings={settings} updateSettings={updateSettings} />
+            <Layout.Section oneHalf>
+              <Card sectioned>
+                <pre>{JSON.stringify(outSettings, null, '  ')}</pre>
+              </Card>
+            </Layout.Section>
+            <Layout.Section>
+              <PageActions
+                primaryAction={{
+                  content: 'Show extension',
+                  onAction: () => setPageState((state) => state.extensionOpen, true),
+                }}
+                secondaryActions={[
+                  {
+                    content: 'Reset',
+                    destructive: true,
+                    onAction: () => setConfirmResetOpen(true),
+                  },
+                ]}
+              />
+            </Layout.Section>
+          </Layout>
+          <Toast />
+        </Page>
+      </Frame>
+    </PlaygroundContext>
   );
 }
