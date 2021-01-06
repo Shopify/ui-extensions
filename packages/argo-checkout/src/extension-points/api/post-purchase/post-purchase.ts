@@ -1,6 +1,5 @@
 import type {StandardApi} from '../standard';
-import type {ValueOrPromise} from '../shared';
-import {Metafield, MoneyBag} from '../shared';
+import type {ValueOrPromise, Metafield, MoneyBag} from '../shared';
 
 /** Input given to the ShouldRender extension point (Checkout::PostPurchase::ShouldRender) */
 export interface PostPurchaseShouldRenderApi

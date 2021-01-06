@@ -1,5 +1,5 @@
-import {ExtensionPoint as RegisteredExtensionPoint} from 'extension-points';
-import {Purchase, Shop} from '../shared';
+import type {ExtensionPoint as RegisteredExtensionPoint} from '../../extension-points';
+import type {Purchase, Shop} from '../shared';
 
 export type Version = 'unstable';
 
