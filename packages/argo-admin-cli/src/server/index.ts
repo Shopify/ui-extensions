@@ -22,7 +22,7 @@ const alias = process.env.SHOPIFY_DEV
     }
   : {};
 
-export async function server({port, entry, type, env}: ServerConfig) {
+function setupClient({port, entry, env}: ServerConfig) {
   const url = `http://localhost:${port}`;
 
   const pathEnv = typeof env === 'string' ? path.resolve(env) : undefined;
@@ -41,7 +41,6 @@ export async function server({port, entry, type, env}: ServerConfig) {
       globalObject: 'self',
       filename: 'third-party-script.js',
       path: path.resolve(__dirname, 'build'),
-      publicPath: '/build/',
     },
     devtool: 'source-map',
     plugins: [...dotEnvPlugin],
@@ -83,6 +82,10 @@ export async function server({port, entry, type, env}: ServerConfig) {
       console.error('Error compiling', err);
     }
   });
+}
+
+function setupHost({port, type}: ServerConfig) {
+  const url = `http://localhost:${port}`;
 
   const serverCompilerConfig = createWebpackConfiguration({
     mode: 'development',
@@ -94,7 +97,6 @@ export async function server({port, entry, type, env}: ServerConfig) {
       globalObject: 'self',
       filename: '[name].js',
       path: path.resolve(__dirname, 'build'),
-      publicPath: `${url}/`,
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -171,4 +173,9 @@ export async function server({port, entry, type, env}: ServerConfig) {
     }
     console.log(`Starting dev server...`);
   });
+}
+
+export async function server(config: ServerConfig) {
+  setupClient(config);
+  setupHost(config);
 }
