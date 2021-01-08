@@ -10,6 +10,7 @@ export interface ShopifyApi {
     extensionPoint: T,
     callback: ExtensionPointCallback[T],
   ): ExtensionResult;
+  reload(): void;
 }
 
 export interface ShopifyGlobal {

@@ -20,6 +20,7 @@ interface ExtensionInfo {
 
 interface ContainerProps<T extends ExtensionPoint> extends ExtensionInfo {
   api: ExtensionApi[T];
+  liveReloadingEnabled?: boolean;
 }
 
 interface ArgoModalProps<T extends ExtensionPoint> extends ContainerProps<T> {
