@@ -94,9 +94,9 @@ export function ProductSubscriptionHost(props: HostProps) {
   const extension = useMemo(
     () =>
       isModal ? (
-        <ArgoModal {...containerProps} defaultTitle="Default title" />
+        <ArgoModal {...containerProps} defaultTitle="Default title" liveReloadingEnabled />
       ) : (
-        <ArgoAppOverlay {...containerProps} />
+        <ArgoAppOverlay {...containerProps} liveReloadingEnabled />
       ),
     [containerProps, isModal],
   );

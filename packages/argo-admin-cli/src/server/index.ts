@@ -4,8 +4,13 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import getPort from 'get-port';
+import Koa from 'koa';
+import koaWebpack from 'koa-webpack';
 
 import {createWebpackConfiguration} from '../webpackConfig';
+
+import {ArgotHotClient} from './hot-client';
 
 interface ServerConfig {
   port: number;
@@ -22,7 +27,7 @@ const alias = process.env.SHOPIFY_DEV
     }
   : {};
 
-function setupClient({port, entry, env}: ServerConfig) {
+async function setupClient({port, entry, env}: ServerConfig) {
   const url = `http://localhost:${port}`;
 
   const pathEnv = typeof env === 'string' ? path.resolve(env) : undefined;
@@ -36,14 +41,14 @@ function setupClient({port, entry, env}: ServerConfig) {
   const staticCompilerConfig = createWebpackConfiguration({
     mode: 'development',
     target: 'webworker',
-    entry: path.resolve(entry),
+    entry: [path.resolve(__dirname, './hot-client/worker.ts'), path.resolve(entry)],
     output: {
       globalObject: 'self',
       filename: 'third-party-script.js',
       path: path.resolve(__dirname, 'build'),
     },
     devtool: 'source-map',
-    plugins: [...dotEnvPlugin],
+    plugins: [...dotEnvPlugin, new ArgotHotClient()],
   });
   staticCompilerConfig.resolve.alias = alias;
 
@@ -77,11 +82,44 @@ function setupClient({port, entry, env}: ServerConfig) {
     }
   });
 
-  staticCompiler.watch({}, (err) => {
-    if (err) {
-      console.error('Error compiling', err);
-    }
+  const hotClientPort = await getPort({port: 9000});
+  const app = new Koa();
+  const middleware = await koaWebpack({
+    compiler: staticCompiler,
+    hotClient: {autoConfigure: false, logLevel: 'silent'},
+    devMiddleware: {
+      publicPath: './build',
+      logLevel: 'silent',
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+      writeToDisk: true,
+    },
   });
+  app.use(middleware);
+  await Promise.all([
+    new Promise<void>((resolve) => {
+      let hasResolved = false;
+      staticCompiler.hooks.done.tap('HotClient', (stats) => {
+        if (stats.hasErrors()) {
+          console.log(`Build failed with errors: ${stats.toString('errors-only')}`, {
+            error: true,
+          });
+          return;
+        }
+        if (hasResolved) {
+          return;
+        }
+        hasResolved = true;
+        resolve();
+      });
+    }),
+    new Promise<void>((resolve) => {
+      app.listen(hotClientPort, () => {
+        resolve();
+      });
+    }),
+  ]).catch(console.error);
 }
 
 function setupHost({port, type}: ServerConfig) {

@@ -6,6 +6,8 @@ import {
 } from '@shopify/argo-admin';
 import {WorkerCreator} from '@remote-ui/web-workers';
 import {createRemoteRoot, RemoteChannel, retain} from '@remote-ui/core';
+import {endpoint as untypedEndpoint} from '@remote-ui/web-workers/worker';
+import type {Endpoint} from '@remote-ui/rpc';
 
 import {apply as applySandbox, Denylist, builtIns} from './sandbox';
 import {makeApiFunctionsHotSwappable} from './hotswap';
@@ -14,9 +16,15 @@ const {importScripts, Function: _Function} = self as any;
 
 const registeredExtensions = new Map<ExtensionPoint, ExtensionPointCallback[ExtensionPoint]>();
 
+const endpoint: Endpoint<{reload(): void}> = untypedEndpoint as any;
+endpoint.callable('reload');
+
 const api: ShopifyApi = {
   extend(extensionPoint, callback) {
     registeredExtensions.set(extensionPoint, callback);
+  },
+  reload() {
+    endpoint.call.reload();
   },
 };
 
