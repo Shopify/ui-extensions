@@ -82,7 +82,7 @@ async function setupClient({port, entry, env}: ServerConfig) {
     }
   });
 
-  const hotClientPort = await getPort({port: 9000});
+  const hotClientPort = await getPort();
   const app = new Koa();
   const middleware = await koaWebpack({
     compiler: staticCompiler,
