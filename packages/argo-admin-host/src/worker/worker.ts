@@ -19,7 +19,11 @@ const registeredExtensions = new Map<ExtensionPoint, ExtensionPointCallback[Exte
 const endpoint: Endpoint<{reload(): void}> = untypedEndpoint as any;
 endpoint.callable('reload');
 
-const api: ShopifyApi = {
+type Api = ShopifyApi & {
+  reload(): void;
+};
+
+const api: Api = {
   extend(extensionPoint, callback) {
     registeredExtensions.set(extensionPoint, callback);
   },
