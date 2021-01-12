@@ -97,6 +97,7 @@ async function setupClient({port, entry, env}: ServerConfig) {
     },
   });
   app.use(middleware);
+
   await Promise.all([
     new Promise<void>((resolve) => {
       let hasResolved = false;
@@ -107,9 +108,7 @@ async function setupClient({port, entry, env}: ServerConfig) {
           });
           return;
         }
-        if (hasResolved) {
-          return;
-        }
+        if (hasResolved) return;
         hasResolved = true;
         resolve();
       });

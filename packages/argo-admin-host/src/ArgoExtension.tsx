@@ -23,7 +23,6 @@ export interface ArgoExtensionsProps<T extends ExtensionPoint> {
   receiver?: RemoteReceiver;
   worker: Worker;
   onReadyStateChange?: (readyState: ReadyState) => void;
-  liveReloadingEnabled?: boolean;
 }
 
 const RENDER_TIMEOUT_INTERVAL = 5000;
@@ -36,7 +35,6 @@ export function ArgoExtension<T extends ExtensionPoint>({
   receiver: externalReceiver,
   worker,
   onReadyStateChange,
-  liveReloadingEnabled,
 }: ArgoExtensionsProps<T>) {
   const [readyState, setReadyState] = useState(ReadyState.Loading);
   const [components, setComponents] = useState<Record<string, ComponentType<any>>>({});
@@ -72,11 +70,9 @@ export function ArgoExtension<T extends ExtensionPoint>({
         return;
       }
       setReadyState(ReadyState.Loading);
-      await worker.load(typeof script === 'string' ? script : script.href, {
-        WebSocket: liveReloadingEnabled !== true,
-      });
+      await worker.load(typeof script === 'string' ? script : script.href);
     })();
-  }, [script, worker, liveReloadingEnabled]);
+  }, [script, worker]);
 
   useEffect(() => {
     (async () => {
