@@ -139,6 +139,7 @@ function setupHost({port, type}: ServerConfig) {
       new HtmlWebpackPlugin({
         title: `Argo Admin Simulator - ${type}`,
         template: path.resolve(__dirname, 'host/templates/index.ejs'),
+        timestamp: Date.now(),
       }),
       new webpack.DefinePlugin({
         THIRD_PARTY_SCRIPT: `"${url}/build/third-party-script.js"`,
