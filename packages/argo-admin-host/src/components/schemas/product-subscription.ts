@@ -6,8 +6,8 @@ import {
   loadingComponents,
   imageComponents,
   overlayComponents,
-} from '../component-sets';
-import {Card, CardSection, ResourceList, ResourceItem} from '../components';
+} from '../sets';
+import {Card, CardSection, ResourceList, ResourceItem} from '..';
 
 const appOverlaySchema = {
   ...actionComponents,

@@ -1,3 +1,3 @@
-import {Modal} from '../components';
+import {Modal} from '..';
 
 export const overlayComponents = {Modal};

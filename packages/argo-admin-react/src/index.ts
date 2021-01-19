@@ -1,5 +1,5 @@
-export * from '@shopify/argo-admin/component-schemas';
-export * from '@shopify/argo-admin/component-sets';
+export * from '@shopify/argo-admin/components/schemas';
+export * from '@shopify/argo-admin/components/sets';
 export * from '@shopify/argo-admin/extension-points';
 export * from '@shopify/argo-admin/extension-api';
 

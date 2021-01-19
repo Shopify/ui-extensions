@@ -1,3 +1,3 @@
-import {Spinner} from '../components';
+import {Spinner} from '..';
 
 export const loadingComponents = {Spinner};

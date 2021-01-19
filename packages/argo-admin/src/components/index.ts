@@ -20,3 +20,6 @@ export * from './Text';
 export * from './TextField';
 export * from './Thumbnail';
 export * from './OptionList';
+
+export * from './schemas';
+export * from './sets';

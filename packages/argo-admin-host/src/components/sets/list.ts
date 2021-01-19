@@ -1,4 +1,4 @@
-import {ResourceList, ResourceItem, OptionList} from '../components';
+import {ResourceList, ResourceItem, OptionList} from '..';
 
 export const listComponents = {
   OptionList,

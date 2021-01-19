@@ -1,4 +1,4 @@
-import {PlaygroundSchema, ModalSchema, AppOverlaySchema} from './schema-types';
+import {PlaygroundSchema, ModalSchema, AppOverlaySchema} from './containers';
 
 export interface ExtensionPointSchema {
   Playground: PlaygroundSchema;

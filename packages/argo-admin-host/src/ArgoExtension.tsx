@@ -4,7 +4,7 @@ import {retain} from '@remote-ui/core';
 import {RemoteReceiver, RemoteRenderer} from '@remote-ui/react/host';
 
 import {Worker} from './worker';
-import {extensionComponentsLoader} from './component-schemas';
+import {extensionComponentsLoader} from './components';
 import {UnsupportedComponentError} from './utilities/UnsupportedComponentError';
 
 export enum ReadyState {
