@@ -1,6 +1,6 @@
 import {RemoteRoot} from '@remote-ui/core';
 
-import {ExtensionPointSchema} from '../component-schemas';
+import {ExtensionPointSchema} from '../components';
 
 import {ProductSubscriptionExtensionPointCallback} from './product-subscriptions';
 import {RenderableExtensionCallback} from './renderable-extension-callback';

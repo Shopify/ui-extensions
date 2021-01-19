@@ -1,3 +1,3 @@
-import {Thumbnail, Icon} from '../components';
+import {Thumbnail, Icon} from '..';
 
 export const imageComponents = {Thumbnail, Icon};

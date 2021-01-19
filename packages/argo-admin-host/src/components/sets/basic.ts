@@ -1,4 +1,4 @@
-import {Pressable, Text, Stack, StackItem} from '../components';
+import {Pressable, Text, Stack, StackItem} from '..';
 
 export const basicComponents = {
   Pressable,

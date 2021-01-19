@@ -20,3 +20,16 @@ export {default as TextField} from './TextField';
 export {default as Text} from './Text';
 export {default as Thumbnail} from './Thumbnail';
 export {default as OptionList} from './OptionList';
+
+export {playgroundSchema, ProductSubscriptionSchema, extensionComponentsLoader} from './schemas';
+export {
+  actionComponents,
+  basicComponents,
+  feedbackComponents,
+  formComponents,
+  imageComponents,
+  listComponents,
+  loadingComponents,
+  overlayComponents,
+  structureComponents,
+} from './sets';

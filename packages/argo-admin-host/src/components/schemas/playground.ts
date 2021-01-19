@@ -8,7 +8,7 @@ import {
   imageComponents,
   overlayComponents,
   structureComponents,
-} from '../component-sets';
+} from '../sets';
 
 export const playgroundSchema = {
   ...actionComponents,

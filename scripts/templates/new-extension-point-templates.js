@@ -23,7 +23,7 @@ function newCallbackTemplate(page, id, name) {
   return `
 import {RemoteRoot} from '@remote-ui/core';
 
-import {ExtensionPointSchema} from '../../component-schemas';
+import {ExtensionPointSchema} from '../../components/schemas';
 import {RenderableExtensionCallback} from '../renderable-extension-callback';
 
 import {${name}Api} from './api';

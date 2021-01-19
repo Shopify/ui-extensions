@@ -1,4 +1,4 @@
-import {Button, Link} from '../components';
+import {Button, Link} from '..';
 
 export const actionComponents = {
   Button,

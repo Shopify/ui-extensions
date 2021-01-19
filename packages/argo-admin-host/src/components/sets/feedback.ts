@@ -1,4 +1,4 @@
-import {Badge, Banner, Spinner} from '../components';
+import {Badge, Banner, Spinner} from '..';
 
 export const feedbackComponents = {
   Badge,

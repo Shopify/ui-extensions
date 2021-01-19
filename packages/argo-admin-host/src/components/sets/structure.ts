@@ -1,4 +1,4 @@
-import {Card, CardSection, Page} from '../components';
+import {Card, CardSection, Page} from '..';
 
 export const structureComponents = {
   Card,

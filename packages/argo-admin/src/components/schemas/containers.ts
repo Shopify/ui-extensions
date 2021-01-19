@@ -8,7 +8,7 @@ import {
   ImageComponents,
   OverlayComponents,
   StructureComponents,
-} from '../component-sets';
+} from '../sets';
 
 export type PlaygroundSchema =
   | ActionComponents

@@ -107,24 +107,22 @@ function updateExtensionPoint(baseUrl, id) {
 }
 
 function updateSchemaTypes(name) {
-  const path = `${process.cwd()}/packages/argo-admin/src/component-schemas/schema-types.ts`;
+  const path = `${process.cwd()}/packages/argo-admin/src/components/schemas/types.ts`;
   const content = getFileContent(path);
 
   if (content.includes(name)) {
-    console.log(
-      'This schema Type already exists. No changes made to src/component-schemas/schema-types.ts ',
-    );
+    console.log('This type already exists. No changes made to src/components/schemas/types.ts');
   } else {
     const newSchemaType = `\nexport type ${name}Schema = any;\n`;
     fs.appendFileSync(path, newSchemaType);
     console.log(
-      '✅  Added type to src/component-schemas/schema-types.ts -❗️ Remember to edit new Type❗️',
+      '✅  Added type to src/components/schemas/types.ts -❗️ Remember to edit new Type❗️',
     );
   }
 }
 
 function updateSchema(id, name) {
-  const path = `${process.cwd()}/packages/argo-admin/src/component-schemas/extension-point-schema.ts`;
+  const path = `${process.cwd()}/packages/argo-admin/src/components/schemas/extension-point-schema.ts`;
   const content = getFileContent(path);
 
   let newContent = `
