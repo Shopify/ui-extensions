@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3-alpha.0](https://github.com/Shopify/argo-admin/compare/v0.8.2...v0.8.3-alpha.0) (2021-01-21)
+
+
+### Bug Fixes
+
+* update remote-ui to prevent cache issue in worker file ([959a415](https://github.com/Shopify/argo-admin/commit/959a415b5515c121889164c2c19ef92f45fd0cc1))
+
+
+### Features
+
+* add live reloading to argo-admin-cli ([ce3e7d8](https://github.com/Shopify/argo-admin/commit/ce3e7d89d0d7af98a8b8de661abdd6e6d6ea6296))
+* **argo-admin-cli:** share host assets ([2b3dc45](https://github.com/Shopify/argo-admin/commit/2b3dc456f888715914aec165ac6a2ff602b48691))
+
+
+
+
+
 ## [0.8.2](https://github.com/Shopify/argo-admin/compare/v0.8.1...v0.8.2) (2020-12-11)
 
 
