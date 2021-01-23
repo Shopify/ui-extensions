@@ -2,7 +2,7 @@ interface Options {
   https: boolean;
   hmr: boolean;
   reload: boolean;
-  webSocket: {host: string; port: number};
+  webSocket: {host: string; port: number; path?: string};
 }
 
 declare global {
@@ -35,18 +35,24 @@ function run({retry = 0} = {}) {
     return;
   }
 
-  const {host, port} = options.webSocket;
+  const {host, port, path} = options.webSocket;
 
   if (host === '*') {
     throw new Error(
-      `@shopify/argo-webpack-hot-client does not support setting the host to "*", because the window’s location is not guaranteed to be available in a worker.`,
+      `Hot client does not support setting the host to "*", because the window’s location is not guaranteed to be available in a worker.`,
     );
   }
 
-  let open = false;
-  const socket = new WebSocket(`${options.https ? 'wss' : 'ws'}://${host}:${port}`);
+  /**
+   * This helps to clean up existing WebSocket in case client script is executed more than one.
+   */
+  (self as any).__destroyHotClientSocket__?.();
+  (self as any).__destroyHotClientSocket__ = destroy;
 
-  socket.addEventListener('close', () => {
+  let open = false;
+  const socket = new WebSocket(`${options.https ? 'wss' : 'ws'}://${host}:${port}/${path}`);
+
+  const onClose = () => {
     if (retry > MAX_RETRIES) {
       log(`ending reconnect after ${MAX_RETRIES} attempts`);
       return;
@@ -65,9 +71,10 @@ function run({retry = 0} = {}) {
         run({retry: retry + 1});
       }, timeout);
     }
-  });
+  };
+  socket.addEventListener('close', onClose);
 
-  socket.addEventListener('message', (event) => {
+  const onMessage = (event) => {
     const message = JSON.parse(event.data) as Message;
 
     switch (message.type) {
@@ -87,7 +94,7 @@ function run({retry = 0} = {}) {
         break;
       }
       case 'invalid': {
-        log(`recompiling ${message.data.fileName}`);
+        log('recompiling...');
         break;
       }
       case 'errors': {
@@ -100,7 +107,14 @@ function run({retry = 0} = {}) {
         break;
       }
     }
-  });
+  };
+  socket.addEventListener('message', onMessage);
+
+  function destroy() {
+    socket.removeEventListener('close', onClose);
+    socket.removeEventListener('message', onMessage);
+    socket.close();
+  }
 }
 
 function reload() {

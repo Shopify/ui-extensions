@@ -5,12 +5,8 @@ import WebpackDevServer from 'webpack-dev-server';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import getPort from 'get-port';
-import Koa from 'koa';
-import koaWebpack from 'koa-webpack';
 
 import {createWebpackConfiguration} from '../webpackConfig';
-
-import {ArgotHotClient} from './hot-client';
 
 interface ServerConfig {
   port: number;
@@ -27,8 +23,14 @@ const alias = process.env.SHOPIFY_DEV
     }
   : {};
 
-async function setupClient({port, entry, env}: ServerConfig) {
+export async function server(config: ServerConfig) {
+  const {entry, type, env} = config;
+  const port = await getPort({port: config.port});
   const url = `http://localhost:${port}`;
+  const publicPath = `${url}/assets/`;
+  const filename = 'extension.js';
+  const fileUrl = `${publicPath}${filename}`;
+  const sockPath = 'live-reloading';
 
   const pathEnv = typeof env === 'string' ? path.resolve(env) : undefined;
   if (pathEnv === path.resolve('.env')) {
@@ -38,102 +40,37 @@ async function setupClient({port, entry, env}: ServerConfig) {
   }
   const dotEnvPlugin = pathEnv ? [new Dotenv({path: pathEnv})] : [];
 
-  const staticCompilerConfig = createWebpackConfiguration({
+  const clientWebpackConfig = createWebpackConfiguration({
     mode: 'development',
     target: 'webworker',
-    entry: [path.resolve(__dirname, './hot-client/worker.ts'), path.resolve(entry)],
+    entry: [path.resolve(__dirname, './hotClient.ts'), path.resolve(entry)],
     output: {
       globalObject: 'self',
-      filename: 'third-party-script.js',
-      path: path.resolve(__dirname, 'build'),
+      filename,
+      publicPath,
     },
     devtool: 'source-map',
-    plugins: [...dotEnvPlugin, new ArgotHotClient()],
+    plugins: [
+      ...dotEnvPlugin,
+      new webpack.DefinePlugin({
+        __hotClientOptions__: JSON.stringify({
+          webSocket: {
+            host: 'localhost',
+            port,
+            path: sockPath,
+          },
+        }),
+      }),
+    ],
   });
-  staticCompilerConfig.resolve.alias = alias;
+  clientWebpackConfig.resolve.alias = alias;
 
-  const staticCompiler = webpack(staticCompilerConfig);
-
-  let serverInitialized = false;
-
-  staticCompiler.hooks.done.tap('ArgoSimulator', (stats) => {
-    if (!serverInitialized) {
-      console.log(`Your extension is available at ${url}`);
-      serverInitialized = true;
-    }
-  });
-
-  staticCompiler.hooks.thisCompilation.tap('ArgoSimulator', () => {
-    if (serverInitialized) {
-      console.log('Recompiling...');
-    }
-  });
-
-  staticCompiler.hooks.afterCompile.tap('ArgoSimulator', (compilation) => {
-    const compilerStats = compilation.getStats();
-    if (compilerStats.hasErrors()) {
-      compilerStats.toJson().errors.forEach((error) => {
-        console.error('Error compiling:', error);
-      });
-      return;
-    }
-    if (serverInitialized) {
-      console.log('Done!');
-    }
-  });
-
-  const hotClientPort = await getPort();
-  const app = new Koa();
-  const middleware = await koaWebpack({
-    compiler: staticCompiler,
-    hotClient: {autoConfigure: false, logLevel: 'silent'},
-    devMiddleware: {
-      publicPath: './build',
-      logLevel: 'silent',
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-      writeToDisk: true,
-    },
-  });
-  app.use(middleware);
-
-  await Promise.all([
-    new Promise<void>((resolve) => {
-      let hasResolved = false;
-      staticCompiler.hooks.done.tap('HotClient', (stats) => {
-        if (stats.hasErrors()) {
-          console.log(`Build failed with errors: ${stats.toString('errors-only')}`, {
-            error: true,
-          });
-          return;
-        }
-        if (hasResolved) return;
-        hasResolved = true;
-        resolve();
-      });
-    }),
-    new Promise<void>((resolve) => {
-      app.listen(hotClientPort, () => {
-        resolve();
-      });
-    }),
-  ]).catch(console.error);
-}
-
-function setupHost({port, type}: ServerConfig) {
-  const url = `http://localhost:${port}`;
-
-  const serverCompilerConfig = createWebpackConfiguration({
+  const serverWebpackConfig = createWebpackConfiguration({
     mode: 'development',
     target: 'web',
-    entry: {
-      main: path.resolve(__dirname, './host/index'),
-    },
+    entry: path.resolve(__dirname, './host/index'),
     output: {
       globalObject: 'self',
-      filename: '[name].js',
-      path: path.resolve(__dirname, 'build'),
     },
     plugins: [
       new HtmlWebpackPlugin({
@@ -142,11 +79,10 @@ function setupHost({port, type}: ServerConfig) {
         timestamp: Date.now(),
       }),
       new webpack.DefinePlugin({
-        THIRD_PARTY_SCRIPT: `"${url}/build/third-party-script.js"`,
-        EXTENSION_POINT: `"${type}"`,
+        THIRD_PARTY_SCRIPT: JSON.stringify(fileUrl),
+        EXTENSION_POINT: JSON.stringify(type),
       }),
     ],
-    devtool: false,
     module: {
       rules: [
         {
@@ -177,17 +113,48 @@ function setupHost({port, type}: ServerConfig) {
       react: 'React',
     },
   });
+  serverWebpackConfig.resolve.alias = alias;
 
-  serverCompilerConfig.resolve.alias = alias;
+  let serverInitialized = false;
+  const webpackCompiler = webpack([clientWebpackConfig, serverWebpackConfig]);
+  webpackCompiler.hooks.done.tap('ArgoSimulator', () => {
+    if (!serverInitialized) {
+      console.log(`Your extension is available at ${fileUrl}`);
+      console.log(`Your playground is available at ${url}`);
+      serverInitialized = true;
+    }
+  });
 
-  const serverCompiler = webpack([serverCompilerConfig]);
+  const server = new WebpackDevServer(webpackCompiler, {
+    /**
+     * webpack-dev-server injects a lot of things to the client
+     * which are imcompatible with WebWorker environment.
+     * It's also unnecessary because we have an alternative here
+     * `packages/argo-admin-cli/src/server/hotClient.ts`
+     */
+    injectClient: false,
 
-  const serverConfig = {
-    disableHostCheck: true,
+    /**
+     * This makes local server public so that
+     * it can be forwarded from ngrok
+     */
     host: '0.0.0.0',
-    hot: false,
-    inline: process.env.SHOPIFY_DEV !== undefined,
     port,
+    disableHostCheck: true,
+
+    /**
+     * This enables hot reload but do not automatically refresh the page.
+     * `transportMode` switches to `ws` so that the worker file can use WebSocket
+     * instead of default SocketJs in webpack-dev-server.
+     * `sockPath` allows to override default path from webpack-dev-server.
+     */
+    hot: true,
+    hotOnly: true,
+    liveReload: false,
+    inline: true,
+    transportMode: 'ws',
+    sockPath,
+
     historyApiFallback: {
       rewrites: [
         {
@@ -196,24 +163,14 @@ function setupHost({port, type}: ServerConfig) {
         },
       ],
     },
-    contentBase: path.resolve(__dirname),
-    noInfo: process.env.DEBUG === undefined,
+
     stats: process.env.DEBUG === undefined ? ('errors-only' as const) : ('verbose' as const),
-  };
-
-  // eslint-disable-next-line @typescript-eslint/ban-ts-ignore
-  // @ts-ignore
-  const server = new WebpackDevServer(serverCompiler, serverConfig);
-
+  });
   server.listen(port, 'localhost', (err) => {
     if (err) {
       console.log('err', err);
+      return;
     }
-    console.log(`Starting dev server...`);
+    console.log('Starting dev server...');
   });
-}
-
-export async function server(config: ServerConfig) {
-  setupClient(config);
-  setupHost(config);
 }

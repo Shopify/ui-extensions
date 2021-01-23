@@ -1,4 +1,6 @@
-export function createWebpackConfiguration(config: any): any {
+import webpack from 'webpack';
+
+export function createWebpackConfiguration(config: webpack.Configuration): any {
   const {module, ...partialConfig} = config;
   return {
     ...partialConfig,
