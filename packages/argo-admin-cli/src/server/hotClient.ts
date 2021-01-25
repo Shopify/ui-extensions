@@ -6,6 +6,7 @@ interface Options {
 }
 
 declare global {
+  const __hotClientOptionsOverride__: Options | undefined;
   const __hotClientOptions__: Options;
 
   interface WindowOrWorkerGlobalScope {
@@ -13,7 +14,10 @@ declare global {
   }
 }
 
-const options = typeof __hotClientOptions__ === 'object' ? __hotClientOptions__ : undefined;
+const options =
+  (typeof __hotClientOptionsOverride__ === 'object' ? __hotClientOptionsOverride__ : undefined) ||
+  (typeof __hotClientOptions__ === 'object' ? __hotClientOptions__ : undefined);
+
 const MAX_RETRIES = 10;
 
 interface DevServerMessage<Type extends string, Data extends object = {}> {
@@ -22,13 +26,17 @@ interface DevServerMessage<Type extends string, Data extends object = {}> {
 }
 
 type Message =
-  | DevServerMessage<'invalid', {fileName: string}>
+  | DevServerMessage<'invalid'>
   | DevServerMessage<'ok'>
   | DevServerMessage<'window-reload'>
   | DevServerMessage<'errors', {errors: string[]}>
   | DevServerMessage<'warnings', {warnings: string[]}>;
 
-run();
+try {
+  run();
+} catch (error) {
+  console.error(error);
+}
 
 function run({retry = 0} = {}) {
   if (!options || typeof WebSocket === 'undefined') {
