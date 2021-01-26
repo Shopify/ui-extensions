@@ -5,7 +5,7 @@ import Dotenv from 'dotenv-webpack';
 
 import {createWebpackConfiguration} from './webpackConfig';
 
-interface BuildConfig {
+export interface BuildConfig {
   entry: string;
   env?: string;
   output?: string;
