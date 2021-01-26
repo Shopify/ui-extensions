@@ -9,11 +9,14 @@ import webpackDevMiddlewareReporter from 'webpack-dev-middleware/lib/reporter';
 
 import {createWebpackConfiguration} from '../webpackConfig';
 
-interface ServerConfig {
-  port: number;
+export interface ServerConfig {
+  apiKey?: string;
   entry: string;
-  type: string;
   env?: string;
+  port: number;
+  resourceId?: number;
+  type: string;
+  title?: string;
 }
 
 const alias = process.env.SHOPIFY_DEV
@@ -25,12 +28,12 @@ const alias = process.env.SHOPIFY_DEV
   : undefined;
 
 export async function server(config: ServerConfig) {
-  const {entry, type, env} = config;
+  const {apiKey = 'argo_app_key', env, entry, resourceId, type, title = 'Argo Extension'} = config;
   const port = await getPort({port: config.port});
   const url = `http://localhost:${port}`;
-  const publicPath = `${url}/assets/`;
+  const publicPath = '/assets/';
   const filename = 'extension.js';
-  const fileUrl = `${publicPath}${filename}`;
+  const fileUrl = `${url}${publicPath}${filename}`;
   const sockPath = 'liveReload';
 
   const pathEnv = typeof env === 'string' ? path.resolve(env) : undefined;
@@ -162,6 +165,20 @@ export async function server(config: ServerConfig) {
           to: '/index.html',
         },
       ],
+    },
+
+    before(app) {
+      app.get('/data', function (req, res) {
+        const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+        res.setHeader('Access-Control-Allow-Origin', '*');
+        res.json({
+          apiKey,
+          type,
+          resourceId,
+          title,
+          script: `${protocol}://${req.headers.host}${publicPath}${filename}`,
+        });
+      });
     },
 
     logLevel: 'silent',

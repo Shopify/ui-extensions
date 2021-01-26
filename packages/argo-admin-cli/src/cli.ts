@@ -16,6 +16,9 @@ import {server} from './server';
           entry: {type: 'string', demandOption: true},
           port: {type: 'number', demandOption: true},
           env: {type: 'string'},
+          apiKey: {type: 'string'},
+          resourceId: {type: 'number'},
+          title: {type: 'string'},
         }),
       server,
     )
@@ -33,3 +36,6 @@ import {server} from './server';
     )
     .strict().argv;
 })();
+
+export {BuildConfig} from './build';
+export {ServerConfig} from './server';
