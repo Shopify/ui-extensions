@@ -30,7 +30,7 @@ export async function server(config: ServerConfig) {
   const publicPath = `${url}/assets/`;
   const filename = 'extension.js';
   const fileUrl = `${publicPath}${filename}`;
-  const sockPath = 'live-reloading';
+  const sockPath = 'liveReload';
 
   const pathEnv = typeof env === 'string' ? path.resolve(env) : undefined;
   if (pathEnv === path.resolve('.env')) {

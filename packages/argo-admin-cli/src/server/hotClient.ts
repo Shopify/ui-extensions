@@ -1,22 +1,39 @@
 interface Options {
   https: boolean;
-  hmr: boolean;
-  reload: boolean;
   webSocket: {host: string; port: number; path?: string};
 }
 
 declare global {
-  const __hotClientOptionsOverride__: Options | undefined;
+  /**
+   * This is defined by webpack DefinePlugin during compile time.
+   * It means __hotClientOptions__ won't be an actual var in javascript.
+   */
   const __hotClientOptions__: Options;
+
+  /**
+   * This is defined by mobile to override default option provided by webpack DefinePlugin.
+   * This will be an actual var in javascript at runtime.
+   */
+  const __hotClientOptionsOverride__: Options | undefined;
 
   interface WindowOrWorkerGlobalScope {
     readonly shopify: {reload(): void};
   }
 }
 
-const options =
-  (typeof __hotClientOptionsOverride__ === 'object' ? __hotClientOptionsOverride__ : undefined) ||
-  (typeof __hotClientOptions__ === 'object' ? __hotClientOptions__ : undefined);
+const hotClientOptionsOverride =
+  typeof __hotClientOptionsOverride__ === 'object' ? __hotClientOptionsOverride__ : undefined;
+const options = typeof __hotClientOptions__ === 'object' ? __hotClientOptions__ : undefined;
+if (options) {
+  Object.assign(options, {
+    ...options,
+    ...hotClientOptionsOverride,
+    webSocket: {
+      ...options.webSocket,
+      ...hotClientOptionsOverride?.webSocket,
+    },
+  });
+}
 
 const MAX_RETRIES = 10;
 
