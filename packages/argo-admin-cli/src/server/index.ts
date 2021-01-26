@@ -5,6 +5,7 @@ import WebpackDevServer from 'webpack-dev-server';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import getPort from 'get-port';
+import webpackDevMiddlewareReporter from 'webpack-dev-middleware/lib/reporter';
 
 import {createWebpackConfiguration} from '../webpackConfig';
 
@@ -167,7 +168,10 @@ export async function server(config: ServerConfig) {
       ],
     },
 
+    logLevel: 'silent',
     stats: process.env.DEBUG === undefined ? ('errors-only' as const) : ('verbose' as const),
+
+    ...({reporter} as any),
   });
   server.listen(port, 'localhost', (err) => {
     if (err) {
@@ -177,3 +181,14 @@ export async function server(config: ServerConfig) {
     console.log('Starting dev server...');
   });
 }
+
+/**
+ * Workaround to output changes in console as this is not an official API
+ * See https://github.com/webpack/webpack-dev-middleware/blob/v3.7.2/lib/reporter.js
+ */
+const reporter: typeof webpackDevMiddlewareReporter = (middlewareOptions, options) => {
+  return webpackDevMiddlewareReporter(middlewareOptions, {
+    ...options,
+    log: console,
+  });
+};
