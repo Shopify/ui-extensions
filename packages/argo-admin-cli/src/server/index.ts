@@ -21,7 +21,7 @@ const alias = process.env.SHOPIFY_DEV
       '@shopify/argo-admin-react': path.resolve(__dirname, '../../../argo-admin-react/src'),
       '@shopify/argo-admin-host': path.resolve(__dirname, '../../../argo-admin-host/src'),
     }
-  : {};
+  : undefined;
 
 export async function server(config: ServerConfig) {
   const {entry, type, env} = config;
@@ -43,7 +43,7 @@ export async function server(config: ServerConfig) {
   const clientWebpackConfig = createWebpackConfiguration({
     mode: 'development',
     target: 'webworker',
-    entry: [path.resolve(__dirname, './hotClient.ts'), path.resolve(entry)],
+    entry: [path.resolve(__dirname, './hot-client.ts'), path.resolve(entry)],
     output: {
       globalObject: 'self',
       filename,
@@ -62,8 +62,10 @@ export async function server(config: ServerConfig) {
         }),
       }),
     ],
+    resolve: {
+      alias,
+    },
   });
-  clientWebpackConfig.resolve.alias = alias;
 
   const serverWebpackConfig = createWebpackConfiguration({
     mode: 'development',
@@ -112,15 +114,16 @@ export async function server(config: ServerConfig) {
     externals: {
       react: 'React',
     },
+    resolve: {
+      alias,
+    },
   });
-  serverWebpackConfig.resolve.alias = alias;
 
   let serverInitialized = false;
   const webpackCompiler = webpack([clientWebpackConfig, serverWebpackConfig]);
   webpackCompiler.hooks.done.tap('ArgoSimulator', () => {
     if (!serverInitialized) {
-      console.log(`Your extension is available at ${fileUrl}`);
-      console.log(`Your playground is available at ${url}`);
+      console.log(`Your extension is available at ${url}`);
       serverInitialized = true;
     }
   });

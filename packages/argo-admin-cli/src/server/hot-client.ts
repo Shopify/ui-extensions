@@ -7,6 +7,7 @@ declare global {
   /**
    * This is defined by webpack DefinePlugin during compile time.
    * It means __hotClientOptions__ won't be an actual var in javascript.
+   * Ref https://github.com/webpack-contrib/webpack-hot-client/blob/1b7f221918217be0db7a6089fb77fffde9a973f6/lib/compiler.js#L146
    */
   const __hotClientOptions__: Options;
 
@@ -23,17 +24,17 @@ declare global {
 
 const hotClientOptionsOverride =
   typeof __hotClientOptionsOverride__ === 'object' ? __hotClientOptionsOverride__ : undefined;
-const options = typeof __hotClientOptions__ === 'object' ? __hotClientOptions__ : undefined;
-if (options) {
-  Object.assign(options, {
-    ...options,
-    ...hotClientOptionsOverride,
-    webSocket: {
-      ...options.webSocket,
-      ...hotClientOptionsOverride?.webSocket,
-    },
-  });
-}
+const defaultHotClientOptions =
+  typeof __hotClientOptions__ === 'object' ? __hotClientOptions__ : undefined;
+
+const options = {
+  ...defaultHotClientOptions,
+  ...hotClientOptionsOverride,
+  webSocket: {
+    ...defaultHotClientOptions?.webSocket,
+    ...hotClientOptionsOverride?.webSocket,
+  },
+} as Options;
 
 const MAX_RETRIES = 10;
 
@@ -56,7 +57,7 @@ try {
 }
 
 function run({retry = 0} = {}) {
-  if (!options || typeof WebSocket === 'undefined') {
+  if (!options.webSocket || typeof WebSocket === 'undefined') {
     return;
   }
 
