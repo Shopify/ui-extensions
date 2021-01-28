@@ -1,5 +1,6 @@
 .*
 node_modules
 src
+sample-extension.tsx
 tsconfig.json
 tsconfig.prod.json
