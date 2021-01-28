@@ -1,14 +1,4 @@
-import path from 'path';
-
 import webpack from 'webpack';
-
-const alias = process.env.SHOPIFY_DEV
-  ? {
-      '@shopify/argo-admin': path.resolve(__dirname, '../../argo-admin/src'),
-      '@shopify/argo-admin-react': path.resolve(__dirname, '../../argo-admin-react/src'),
-      '@shopify/argo-admin-host': path.resolve(__dirname, '../../argo-admin-host/src'),
-    }
-  : undefined;
 
 export function createWebpackConfiguration(config: webpack.Configuration): any {
   const {module, ...partialConfig} = config;
@@ -18,7 +8,6 @@ export function createWebpackConfiguration(config: webpack.Configuration): any {
     resolve: {
       extensions: ['.tsx', '.ts', '.js', '.json', '.mjs', '.ejs', '.esnext'],
       mainFields: ['esnext', 'browser', 'module', 'main'],
-      alias,
     },
     module: {
       rules: [

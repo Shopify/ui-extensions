@@ -16,6 +16,14 @@ interface ServerConfig {
   env?: string;
 }
 
+const alias = process.env.SHOPIFY_DEV
+  ? {
+      '@shopify/argo-admin': path.resolve(__dirname, '../../../argo-admin/src'),
+      '@shopify/argo-admin-react': path.resolve(__dirname, '../../../argo-admin-react/src'),
+      '@shopify/argo-admin-host': path.resolve(__dirname, '../../../argo-admin-host/src'),
+    }
+  : undefined;
+
 export async function server(config: ServerConfig) {
   const {entry, type, env} = config;
   const port = await getPort({port: config.port});
@@ -56,6 +64,7 @@ export async function server(config: ServerConfig) {
       }),
     ],
   });
+  clientWebpackConfig.resolve.alias = alias;
 
   const serverWebpackConfig = createWebpackConfiguration({
     mode: 'development',
@@ -105,6 +114,7 @@ export async function server(config: ServerConfig) {
       react: 'React',
     },
   });
+  serverWebpackConfig.resolve.alias = alias;
 
   let serverInitialized = false;
   const webpackCompiler = webpack([clientWebpackConfig, serverWebpackConfig]);
