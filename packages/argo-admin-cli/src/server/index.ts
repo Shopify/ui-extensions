@@ -44,7 +44,7 @@ export async function server(config: ServerConfig) {
   const clientWebpackConfig = createWebpackConfiguration({
     mode: 'development',
     target: 'webworker',
-    entry: [path.resolve(__dirname, './hot-client.ts'), path.resolve(entry)],
+    entry: [path.resolve(__dirname, './hot-client'), path.resolve(entry)],
     output: {
       globalObject: 'self',
       filename,
