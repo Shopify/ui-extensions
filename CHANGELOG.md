@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3-alpha.1](https://github.com/Shopify/argo-admin/compare/v0.8.3-alpha.0...v0.8.3-alpha.1) (2021-01-29)
+
+
+### Bug Fixes
+
+* fix webpack alias in argo-admin-cli ([42ad519](https://github.com/Shopify/argo-admin/commit/42ad519cc1ba1a6f985d98213e15e810928b7fa7))
+* fix webpack in argo-admin-cli ([21732d2](https://github.com/Shopify/argo-admin/commit/21732d266e2c6ee13d60ebfcc9e5e38bef736ccb))
+
+
+### Features
+
+* **argo-admin-cli:** serve JSON manifest file ([bcb05c6](https://github.com/Shopify/argo-admin/commit/bcb05c6ea104bfe0016e96277efc284323784a7b))
+* update argo-admin-cli to use webpack-dev-server ([1f9f869](https://github.com/Shopify/argo-admin/commit/1f9f869582083cb4cf1e33f2d7b98bfd967bbb84))
+
+
+
+
+
 ## [0.8.3-alpha.0](https://github.com/Shopify/argo-admin/compare/v0.8.2...v0.8.3-alpha.0) (2021-01-21)
 
 
