@@ -14,9 +14,15 @@ export interface ServerConfig {
   entry: string;
   env?: string;
   port: number;
-  resourceId?: number;
   type: string;
-  title?: string;
+  resourceUrl?: string;
+  name?: string;
+}
+
+interface Specification {
+  identifier: string;
+  name: string;
+  resources: string[];
 }
 
 const alias = process.env.SHOPIFY_DEV
@@ -26,9 +32,8 @@ const alias = process.env.SHOPIFY_DEV
       '@shopify/argo-admin-host': path.resolve(__dirname, '../../../argo-admin-host/src'),
     }
   : undefined;
-
 export async function server(config: ServerConfig) {
-  const {apiKey = 'argo_app_key', env, entry, resourceId, type, title = 'Argo Extension'} = config;
+  const {apiKey = 'argo_app_key', env, entry, name = 'Argo Extension', resourceUrl, type} = config;
   const port = await getPort({port: config.port});
   const url = `http://localhost:${port}`;
   const publicPath = '/assets/';
@@ -173,10 +178,11 @@ export async function server(config: ServerConfig) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.json({
           apiKey,
-          type,
-          resourceId,
-          title,
-          script: `${protocol}://${req.headers.host}${publicPath}${filename}`,
+          name,
+          resourceUrl,
+          scriptUrl: `${protocol}://${req.headers.host}${publicPath}${filename}`,
+          identifier: type,
+          resources: ['products', 'productVariant'],
         });
       });
     },
