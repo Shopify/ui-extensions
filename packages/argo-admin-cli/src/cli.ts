@@ -17,8 +17,8 @@ import {server} from './server';
           port: {type: 'number', demandOption: true},
           env: {type: 'string'},
           apiKey: {type: 'string'},
-          resourceId: {type: 'number'},
-          title: {type: 'string'},
+          name: {type: 'string'},
+          resourceUrl: {type: 'string'},
         }),
       server,
     )
