@@ -35,8 +35,8 @@ If you find any incompatibilities with this React replacement and an NPM package
 ```diff
 {
   "dependencies": {
-    "react": "^17.0.0",
-    "@remote-ui/react": "^3.1.0"
++     "react": "^17.0.0",
++     "@remote-ui/react": "^3.1.0"
   }
 }
 ```
