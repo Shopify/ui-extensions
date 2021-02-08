@@ -21,6 +21,7 @@
     "./": "./"
   },
   "dependencies": {
+    "@remote-ui/mini-react": "^1.1.0",
     "@shopify/argo-checkout": "^0.8.1",
     "@types/react": "^17.0.0"
   },
