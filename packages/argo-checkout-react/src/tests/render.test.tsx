@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {render} from '../render';
 
 const {extend} = jest.requireMock('@shopify/argo-checkout') as {

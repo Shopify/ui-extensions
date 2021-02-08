@@ -1,4 +1,4 @@
-import {createElement, ReactElement} from 'react';
+import type {ReactElement} from 'react';
 import {render as remoteRender} from '@remote-ui/react';
 
 import {extend} from '@shopify/argo-checkout';
@@ -21,11 +21,9 @@ export function render<ExtensionPoint extends RenderExtensionPoint>(
     extensionPoint as any,
     (root, input) => {
       remoteRender(
-        createElement(
-          ExtensionInputContext.Provider,
-          {value: input},
-          render(input as InputForRenderExtension<ExtensionPoint>),
-        ),
+        <ExtensionInputContext.Provider value={input}>
+          {render(input as InputForRenderExtension<ExtensionPoint>)}
+        </ExtensionInputContext.Provider>,
         root,
         () => {
           root.mount();
