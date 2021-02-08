@@ -80,6 +80,15 @@ export function createWebpackConfiguration({
     resolve: {
       mainFields: ['esnext', 'browser', 'module', 'main'],
       extensions: ['.esnext', '.mjs', '.ts', '.tsx', '.js', '.json'],
+      alias:
+        useReact === 'mini'
+          ? {
+              react$: '@remote-ui/mini-react/compat',
+              'react/jsx-runtime$': '@remote-ui/mini-react/jsx-runtime',
+              'react-dom$': '@remote-ui/mini-react/compat',
+              '@remote-ui/react$': '@remote-ui/mini-react/compat',
+            }
+          : {},
     },
     module: {
       rules: [

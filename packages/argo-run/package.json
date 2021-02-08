@@ -10,6 +10,7 @@
     "argo-run": "./bin/argo-run"
   },
   "license": "MIT",
+  "sideEffects": false,
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
