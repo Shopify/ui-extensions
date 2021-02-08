@@ -11,6 +11,7 @@ import {createWebpackConfiguration} from '../webpackConfig';
 
 export interface ServerConfig {
   apiKey?: string;
+  extensionId?: string;
   entry: string;
   env?: string;
   port: number;
@@ -33,7 +34,15 @@ const alias = process.env.SHOPIFY_DEV
     }
   : undefined;
 export async function server(config: ServerConfig) {
-  const {apiKey = 'argo_app_key', env, entry, name = 'Argo Extension', resourceUrl, type} = config;
+  const {
+    apiKey = 'argo_app_key',
+    extensionId = 12345,
+    env,
+    entry,
+    name = 'Argo Extension',
+    resourceUrl,
+    type,
+  } = config;
   const port = await getPort({port: config.port});
   const url = `http://localhost:${port}`;
   const publicPath = '/assets/';
@@ -178,6 +187,7 @@ export async function server(config: ServerConfig) {
         res.setHeader('Access-Control-Allow-Origin', '*');
         res.json({
           apiKey,
+          extensionId,
           name,
           resourceUrl,
           scriptUrl: `${protocol}://${req.headers.host}${publicPath}${filename}`,
