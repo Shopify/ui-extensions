@@ -10,6 +10,18 @@
     "argo-run": "./bin/argo-run"
   },
   "license": "MIT",
+  "main": "index.js",
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./": "./"
+  },
   "devDependencies": {
     "@types/glob": "^7.1.1",
     "@types/js-yaml": "^3.12.5",

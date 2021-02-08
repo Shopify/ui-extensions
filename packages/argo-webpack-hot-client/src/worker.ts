@@ -16,7 +16,10 @@ declare global {
 const options = __hotClientOptions__;
 const MAX_RETRIES = 10;
 
-interface DevServerMessage<Type extends string, Data extends object = {}> {
+interface DevServerMessage<
+  Type extends string,
+  Data extends Record<string, unknown> = Record<string, unknown>
+> {
   type: Type;
   data: Data;
 }

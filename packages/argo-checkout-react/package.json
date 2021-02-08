@@ -8,9 +8,24 @@
   },
   "sideEffects": false,
   "license": "MIT",
+  "main": "index.js",
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./": "./"
+  },
   "dependencies": {
     "@shopify/argo-checkout": "^0.8.1",
     "@types/react": "^17.0.0"
+  },
+  "devDependencies": {
+    "@remote-ui/react": "^3.1.0"
   },
   "peerDependencies": {
     "@remote-ui/react": "^3.1.0",

@@ -4,6 +4,7 @@
     "outDir": "build/ts",
     "baseUrl": "src",
     "rootDir": "src",
+    "jsx": "react-jsx",
     "lib": [
       "es2015",
       "es2016",
@@ -14,6 +15,6 @@
       "WebWorker"
     ]
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "references": [{"path": "../argo-checkout"}]
 }

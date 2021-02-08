@@ -14,17 +14,17 @@
     "release": "lerna publish"
   },
   "devDependencies": {
-    "@sewing-kit/cli": "^0.1.0",
+    "@sewing-kit/cli": "^0.2.0",
     "@sewing-kit/config": "^0.1.0",
     "@sewing-kit/eslint-plugin": "^0.0.14",
     "@sewing-kit/plugin-eslint": "^0.1.0",
-    "@sewing-kit/plugin-javascript": "^0.1.0",
+    "@sewing-kit/plugin-javascript": "^0.2.0",
     "@sewing-kit/plugin-jest": "^0.1.0",
     "@sewing-kit/plugin-package-flexible-outputs": "^0.1.0",
     "@sewing-kit/plugin-react": "^0.1.0",
     "@sewing-kit/plugin-typescript": "^0.1.0",
     "lerna": "^2.11.0",
-    "react": ">=16.8.0 <17.0.0"
+    "react": ">=17.0.0 <18.0.0"
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "^4.0.0",
