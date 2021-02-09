@@ -35,7 +35,7 @@ export async function dev(...args: string[]) {
 
   const data = getData(fileUrl);
 
-  const firstCompilePromise = new Promise((resolve) => {
+  const firstCompilePromise = new Promise<void>((resolve) => {
     let hasResolved = false;
 
     compiler.hooks.done.tap('Argogogo.Compiled', (stats) => {
@@ -92,7 +92,7 @@ export async function dev(...args: string[]) {
 
   log(`Starting dev server on ${url}`);
 
-  const httpListenPromise = new Promise((resolve) => {
+  const httpListenPromise = new Promise<void>((resolve) => {
     app.listen(port, () => {
       resolve();
     });

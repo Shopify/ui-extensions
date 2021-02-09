@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-run",
-  "version": "0.2.4",
+  "version": "0.3.0-0",
   "description": "A command line interface for developing and building Argo extensions",
   "publishConfig": {
     "access": "public",
@@ -10,6 +10,19 @@
     "argo-run": "./bin/argo-run"
   },
   "license": "MIT",
+  "sideEffects": false,
+  "main": "index.js",
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./": "./"
+  },
   "devDependencies": {
     "@types/glob": "^7.1.1",
     "@types/js-yaml": "^3.12.5",
@@ -18,22 +31,22 @@
     "@types/webpack": "^4.41.13"
   },
   "dependencies": {
-    "@babel/core": "^7.9.6",
-    "@babel/plugin-proposal-class-properties": "^7.8.3",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.8.3",
-    "@babel/plugin-proposal-numeric-separator": "^7.8.3",
-    "@babel/plugin-proposal-optional-chaining": "^7.9.0",
-    "@babel/preset-env": "^7.9.6",
-    "@babel/preset-react": "^7.9.4",
-    "@babel/preset-typescript": "^7.9.0",
-    "@shopify/argo-webpack-hot-client": "^0.1.1",
-    "babel-loader": "^8.1.0",
+    "@babel/core": "^7.12.0",
+    "@babel/plugin-proposal-class-properties": "^7.12.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.12.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.12.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.12.0",
+    "@babel/preset-env": "^7.12.0",
+    "@babel/preset-react": "^7.12.0",
+    "@babel/preset-typescript": "^7.12.0",
+    "@shopify/argo-webpack-hot-client": "^0.1.2-0",
+    "babel-loader": "^8.2.0",
     "brotli-size": "^4.0.0",
     "chalk": "^4.0.0",
     "core-js": "^3.0.0",
     "get-port": "^5.1.1",
-    "glob": "^7.1.6",
-    "gzip-size": "^5.1.1",
+    "glob": "^7.0.0",
+    "gzip-size": "^6.0.0",
     "js-yaml": "^3.14.0",
     "koa": "^2.11.0",
     "koa-webpack": "^5.3.0",

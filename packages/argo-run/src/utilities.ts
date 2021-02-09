@@ -28,11 +28,17 @@ export function log(message: string, {error = false} = {}) {
   console.log(`🔭 ${separator} ${message}`);
 }
 
-export function shouldUseReact() {
+export function shouldUseReact(): boolean | 'mini' {
   try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const packageJson = require(resolve('package.json'));
-    return Object.keys(packageJson.dependencies).includes('react');
+    const dependencies = Object.keys(packageJson.dependencies);
+
+    if (!dependencies.includes('@shopify/argo-checkout-react')) {
+      return false;
+    }
+
+    return dependencies.includes('@remote-ui/react') ? true : 'mini';
   } catch {
     return false;
   }

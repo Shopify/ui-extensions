@@ -9,7 +9,6 @@
     "moduleResolution": "node",
     "module": "commonjs",
     "target": "es2017",
-    "jsx": "react",
     "strict": true,
     "noImplicitAny": true,
     "noImplicitThis": true,

@@ -80,6 +80,15 @@ export function createWebpackConfiguration({
     resolve: {
       mainFields: ['esnext', 'browser', 'module', 'main'],
       extensions: ['.esnext', '.mjs', '.ts', '.tsx', '.js', '.json'],
+      alias:
+        useReact === 'mini'
+          ? {
+              react$: '@remote-ui/mini-react/compat',
+              'react/jsx-runtime$': '@remote-ui/mini-react/jsx-runtime',
+              'react-dom$': '@remote-ui/mini-react/compat',
+              '@remote-ui/react$': '@remote-ui/mini-react/compat',
+            }
+          : {},
     },
     module: {
       rules: [
@@ -157,12 +166,22 @@ export function babelConfig({
   react = false,
   typescript = false,
   targets,
-}: {react?: boolean; typescript?: boolean; targets?: string[]} = {}) {
+}: {
+  react?: ReturnType<typeof shouldUseReact>;
+  typescript?: boolean;
+  targets?: string[];
+} = {}) {
   return {
     presets: [
       ['@babel/preset-env', {...BABEL_PRESET_ENV_OPTIONS, targets}],
       typescript && '@babel/preset-typescript',
-      react && '@babel/preset-react',
+      react && [
+        '@babel/preset-react',
+        {
+          runtime: 'automatic',
+          importSource: react === 'mini' ? '@remote-ui/mini-react' : 'react',
+        },
+      ],
     ].filter(Boolean),
     plugins: BABEL_PLUGINS,
   };
