@@ -30,7 +30,7 @@ If you use TypeScript, you will also need to change the following option in your
 }
 ```
 
-If you find any incompatibilities with this React replacement and an NPM package that depends on React, please [raise an issue](https://github.com/Shopify/argo-checkout/issues/new). You can revert to the old system, which used [`@remote-ui/react`](https://github.com/Shopify/remote-ui/tree/main/packages/react) to bridge your code to the “Real” version of React, by adding both `react` (minimum version: 17.0.0) and `@remote-ui/react` (minimum version: 3.1.0) as dependencies in your project’s `package.json`:
+If you find any incompatibilities with this React replacement and an NPM package that depends on React, please [raise an issue](https://github.com/Shopify/argo-checkout/issues/new). You can revert to the old system, which used [`@remote-ui/react`](https://github.com/Shopify/remote-ui/tree/main/packages/react) to bridge your code to the “real” version of React, by adding both `react` (minimum version: 17.0.0) and `@remote-ui/react` (minimum version: 3.1.0) as dependencies in your project’s `package.json`:
 
 ```diff
 {
