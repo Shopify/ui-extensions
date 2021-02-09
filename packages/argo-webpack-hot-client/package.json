@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-webpack-hot-client",
-  "version": "0.1.2-0",
+  "version": "0.1.2",
   "description": "A custom webpack-hot-client implementation that works in the web worker environment of an Argo extension",
   "publishConfig": {
     "access": "public",
