@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-run",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "A command line interface for developing and building Argo extensions",
   "publishConfig": {
     "access": "public",
@@ -39,7 +39,7 @@
     "@babel/preset-env": "^7.12.0",
     "@babel/preset-react": "^7.12.0",
     "@babel/preset-typescript": "^7.12.0",
-    "@shopify/argo-webpack-hot-client": "^0.1.2",
+    "@shopify/argo-webpack-hot-client": "^0.1.3",
     "babel-loader": "^8.2.0",
     "brotli-size": "^4.0.0",
     "chalk": "^4.0.0",
