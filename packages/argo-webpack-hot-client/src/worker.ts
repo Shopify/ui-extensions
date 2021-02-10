@@ -33,7 +33,7 @@ type Message =
 
 run();
 
-function run({retry = 0} = {}) {
+function run() {
   const {host, port} = options.webSocket;
 
   if (host === '*') {
@@ -43,70 +43,101 @@ function run({retry = 0} = {}) {
   }
 
   let open = false;
-  const socket = new WebSocket(
-    `${options.https ? 'wss' : 'ws'}://${host}:${port}`,
-  );
+  let retry = 0;
 
-  socket.addEventListener('close', () => {
-    if (retry > MAX_RETRIES) {
-      log(`ending reconnect after ${MAX_RETRIES} attempts`);
-      return;
+  const cleanupActions = new Set<() => void>();
+
+  connect();
+
+  function cleanup() {
+    for (const action of cleanupActions) {
+      action();
     }
 
-    if (open) {
-      open = false;
-      log('lost connection to asset server, trying to reconnect...');
-      run();
-    } else {
-      const timeout = 1000 * retry ** 2 + Math.random() * 100;
+    cleanupActions.clear();
+  }
 
-      log(`attempting reconnect in ${timeout / 1000}s`);
+  function connect() {
+    const socket = new WebSocket(
+      `${options.https ? 'wss' : 'ws'}://${host}:${port}`,
+    );
 
-      setTimeout(() => {
-        run({retry: retry + 1});
-      }, timeout);
-    }
-  });
+    const handleOpen = () => {
+      open = true;
+      retry = 0;
+      log('listening for changes...');
+    };
 
-  socket.addEventListener('message', (event) => {
-    const message = JSON.parse(event.data) as Message;
+    const handleClose = () => {
+      cleanup();
 
-    switch (message.type) {
-      case 'ok':
-      case 'warnings': {
-        if (open) {
+      if (retry > MAX_RETRIES) {
+        log(`ending reconnect after ${MAX_RETRIES} attempts`);
+        return;
+      }
+
+      if (open) {
+        open = false;
+        log('lost connection to asset server, trying to reconnect...');
+        connect();
+      } else {
+        const timeout = 1000 * retry ** 2 + Math.random() * 100;
+        retry += 1;
+
+        log(`attempting reconnect in ${timeout / 1000}s`);
+
+        setTimeout(() => {
+          connect();
+        }, timeout);
+      }
+    };
+
+    const handleMessage = (event: MessageEvent<any>) => {
+      const message = JSON.parse(event.data) as Message;
+
+      switch (message.type) {
+        case 'ok':
+        case 'warnings': {
           reload();
-        } else {
-          open = true;
-          log('listening for changes...');
+          break;
         }
-
-        break;
-      }
-      case 'window-reload': {
-        reload();
-        break;
-      }
-      case 'invalid': {
-        log(`recompiling ${message.data.fileName}`);
-        break;
-      }
-      case 'errors': {
-        log('build failed with errors:');
-
-        for (const error of message.data.errors) {
-          // eslint-disable-next-line no-console
-          console.log(error);
+        case 'window-reload': {
+          reload();
+          break;
         }
+        case 'invalid': {
+          log(`recompiling ${message.data.fileName}`);
+          break;
+        }
+        case 'errors': {
+          log('build failed with errors:');
 
-        break;
+          for (const error of message.data.errors) {
+            // eslint-disable-next-line no-console
+            console.log(error);
+          }
+
+          break;
+        }
       }
-    }
-  });
-}
+    };
 
-function reload() {
-  self.shopify.reload();
+    socket.addEventListener('open', handleOpen);
+    socket.addEventListener('close', handleClose);
+    socket.addEventListener('message', handleMessage);
+
+    cleanupActions.add(() => {
+      socket.removeEventListener('open', handleOpen);
+      socket.removeEventListener('close', handleClose);
+      socket.removeEventListener('message', handleMessage);
+      socket.close();
+    });
+  }
+
+  function reload() {
+    cleanup();
+    self.shopify.reload();
+  }
 }
 
 function log(message: string) {
