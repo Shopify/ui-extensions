@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-checkout-react",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "React bindings for @shopify/argo-checkout",
   "publishConfig": {
     "access": "public",
