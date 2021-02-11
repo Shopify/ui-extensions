@@ -2184,10 +2184,10 @@
     "@remote-ui/rpc" "^1.0.17"
     "@remote-ui/types" "^1.0.7"
 
-"@remote-ui/mini-react@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@remote-ui/mini-react/-/mini-react-1.1.0.tgz#fef3e450dd41006d14fc1b61932af5e45db6cea7"
-  integrity sha512-Nk3kYAzEiM0ZOsD7MCZqfPSauXTkZEk6w/MgQw6lSOnMilZgpIE9yk1NHGa0Govrwvg42HAjG2vHncToYjKxOg==
+"@remote-ui/mini-react@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@remote-ui/mini-react/-/mini-react-1.1.1.tgz#c8f189081baaa266bc5c8b46c84a079a54242eef"
+  integrity sha512-IcJmhU4sxxqGO8tYy2Oi5KyMwTAB4P1Yk0/awi7RztRZpEUT6FHq06ERlHvjPe1KJPQbX0wFZyJ0iqWt4QFH/A==
   dependencies:
     "@quilted/react-testing" "^0.2.3"
     "@remote-ui/core" "^1.6.5"
