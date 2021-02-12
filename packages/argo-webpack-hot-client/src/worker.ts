@@ -43,6 +43,7 @@ function run() {
   }
 
   let open = false;
+  let initial = true;
   let retry = 0;
 
   const cleanupActions = new Set<() => void>();
@@ -64,6 +65,7 @@ function run() {
 
     const handleOpen = () => {
       open = true;
+      initial = true;
       retry = 0;
       log('listening for changes...');
     };
@@ -98,7 +100,11 @@ function run() {
       switch (message.type) {
         case 'ok':
         case 'warnings': {
-          reload();
+          if (initial) {
+            initial = false;
+          } else {
+            reload();
+          }
           break;
         }
         case 'window-reload': {
