@@ -12,9 +12,14 @@ export function namedArgument(
   args: string[],
 ): string | undefined {
   const flag = `--${name}`;
-  const interestingIndex = args.findIndex((value) => value.startsWith(flag));
 
-  if (interestingIndex < 0) return undefined;
+  const reversedInterestingIndex = args
+    .reverse()
+    .findIndex((value) => value.startsWith(flag));
+
+  if (reversedInterestingIndex < 0) return undefined;
+
+  const interestingIndex = args.length - reversedInterestingIndex - 1;
 
   const arg = args[interestingIndex];
   const nextArg = args[interestingIndex + 1];
