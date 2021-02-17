@@ -2158,17 +2158,6 @@
     native-url "^0.2.6"
     schema-utils "^2.6.5"
 
-"@quilted/react-testing@^0.2.3":
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/@quilted/react-testing/-/react-testing-0.2.3.tgz#db845ce3f20866fae5bb539bc5c44874bdd3c101"
-  integrity sha512-+bOOn7/qLK2uo5kEv+i6xrk0dIeYSPnkTIAz4g3lr1hGeu/+ZG+WuyyaO23A3FnCP9q4LX5nXVXPU5Q69m7bCw==
-  dependencies:
-    "@sewing-kit/plugins" "^0.1.6"
-    "@types/react-test-renderer" "^17.0.0"
-    jest-matcher-utils "^26.6.2"
-    react-reconciler "^0.26.0"
-    react-test-renderer "^17.0.0"
-
 "@remote-ui/async-subscription@^2.0.0":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.0.0.tgz#ee1a32191ba3004cbba71fa53b9946a40277ac5d"
@@ -2183,15 +2172,6 @@
   dependencies:
     "@remote-ui/rpc" "^1.0.17"
     "@remote-ui/types" "^1.0.7"
-
-"@remote-ui/mini-react@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@remote-ui/mini-react/-/mini-react-1.1.1.tgz#c8f189081baaa266bc5c8b46c84a079a54242eef"
-  integrity sha512-IcJmhU4sxxqGO8tYy2Oi5KyMwTAB4P1Yk0/awi7RztRZpEUT6FHq06ERlHvjPe1KJPQbX0wFZyJ0iqWt4QFH/A==
-  dependencies:
-    "@quilted/react-testing" "^0.2.3"
-    "@remote-ui/core" "^1.6.5"
-    htm "^3.0.0"
 
 "@remote-ui/react@^3.1.0":
   version "3.1.0"
@@ -2812,14 +2792,7 @@
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
 
-"@types/react-test-renderer@^17.0.0":
-  version "17.0.0"
-  resolved "https://registry.yarnpkg.com/@types/react-test-renderer/-/react-test-renderer-17.0.0.tgz#9be47b375eeb906fced37049e67284a438d56620"
-  integrity sha512-nvw+F81OmyzpyIE1S0xWpLonLUZCMewslPuA8BtjSKc5XEbn8zEQBXS7KuOLHTNnSOEM2Pum50gHOoZ62tqTRg==
-  dependencies:
-    "@types/react" "*"
-
-"@types/react@*", "@types/react@>=16.8.0 <18.0.0", "@types/react@^17.0.0":
+"@types/react@>=16.8.0 <18.0.0", "@types/react@^17.0.0":
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.1.tgz#eb1f1407dea8da3bc741879c1192aa703ab9975b"
   integrity sha512-w8t9f53B2ei4jeOqf/gxtc2Sswnc3LBK5s0DyJcg5xd10tMHXts2N31cKjWfH9IC/JvEPa/YF1U4YeP1t4R6HQ==
@@ -6383,11 +6356,6 @@ hosted-git-info@^3.0.6:
   dependencies:
     lru-cache "^6.0.0"
 
-htm@^3.0.0:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/htm/-/htm-3.0.4.tgz#c90c891645d2d792bdb9f8c867964b18e3503718"
-  integrity sha512-VRdvxX3tmrXuT/Ovt59NMp/ORMFi4bceFMDjos1PV4E0mV+5votuID8R60egR9A4U8nLt238R/snlJGz3UYiTQ==
-
 html-encoding-sniffer@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/html-encoding-sniffer/-/html-encoding-sniffer-2.0.1.tgz#42a6dc4fd33f00281176e8b23759ca4e4fa185f3"
@@ -9443,7 +9411,7 @@ range-parser@^1.2.1:
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
   integrity sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg==
 
-react-is@^16.12.0, "react-is@^16.12.0 || ^17.0.0", react-is@^16.8.1:
+react-is@^16.12.0, react-is@^16.8.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
@@ -9453,7 +9421,7 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
-"react-reconciler@>=0.25.0 <1.0.0", react-reconciler@^0.26.0:
+"react-reconciler@>=0.25.0 <1.0.0":
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.26.1.tgz#860952dd359fd870f94895c254271e3a9de3b2d6"
   integrity sha512-6E/CvH9zcDmHjhiNJlP0qJ8+3ufnY2b5RWs774Uy8XKWN0l6qfnlkz0XnDacxqj2rbJdq76w9dlFXjPPOQrmqA==
@@ -9466,24 +9434,6 @@ react-refresh@^0.8.2:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
-
-react-shallow-renderer@^16.13.1:
-  version "16.14.1"
-  resolved "https://registry.yarnpkg.com/react-shallow-renderer/-/react-shallow-renderer-16.14.1.tgz#bf0d02df8a519a558fd9b8215442efa5c840e124"
-  integrity sha512-rkIMcQi01/+kxiTE9D3fdS959U1g7gs+/rborw++42m1O9FAQiNI/UNRZExVUoAOprn4umcXf+pFRou8i4zuBg==
-  dependencies:
-    object-assign "^4.1.1"
-    react-is "^16.12.0 || ^17.0.0"
-
-react-test-renderer@^17.0.0:
-  version "17.0.1"
-  resolved "https://registry.yarnpkg.com/react-test-renderer/-/react-test-renderer-17.0.1.tgz#3187e636c3063e6ae498aedf21ecf972721574c7"
-  integrity sha512-/dRae3mj6aObwkjCcxZPlxDFh73XZLgvwhhyON2haZGUEhiaY5EjfAdw+d/rQmlcFwdTpMXCSGVk374QbCTlrA==
-  dependencies:
-    object-assign "^4.1.1"
-    react-is "^17.0.1"
-    react-shallow-renderer "^16.13.1"
-    scheduler "^0.20.1"
 
 "react@>=17.0.0 <18.0.0":
   version "17.0.1"
