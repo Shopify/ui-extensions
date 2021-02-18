@@ -43,7 +43,7 @@ export function shouldUseReact(): boolean | 'mini' {
       return false;
     }
 
-    return dependencies.includes('@remote-ui/react') ? true : 'mini';
+    return dependencies.includes('@remote-ui/mini-react') ? 'mini' : true;
   } catch {
     return false;
   }
