@@ -193,6 +193,7 @@ export async function server(config: ServerConfig) {
           scriptUrl: `${protocol}://${req.headers.host}${publicPath}${filename}`,
           identifier: type,
           resources: ['products', 'productVariant'],
+          stats: `wss://${req.headers.host}/${sockPath}`,
         });
       });
     },
