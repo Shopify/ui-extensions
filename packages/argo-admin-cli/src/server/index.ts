@@ -8,6 +8,7 @@ import getPort from 'get-port';
 import webpackDevMiddlewareReporter from 'webpack-dev-middleware/lib/reporter';
 
 import {createWebpackConfiguration} from '../webpackConfig';
+import {log} from '../utilities';
 
 export interface ServerConfig {
   apiKey?: string;
@@ -137,7 +138,12 @@ export async function server(config: ServerConfig) {
   const webpackCompiler = webpack([clientWebpackConfig, serverWebpackConfig]);
   webpackCompiler.hooks.done.tap('ArgoSimulator', () => {
     if (!serverInitialized) {
-      console.log(`Your extension is available at ${url}`);
+      log(`Starting dev server on ${url}`);
+      log(`| What's next?`);
+      log(`| Run shopify tunnel --port=${port}`);
+      log(
+        `| Open extension on your development store using https://YOUR-TEST-SHOP.myshopify.com/admin/extensions-dev?url=https://TUNNEL-URL/data`,
+      );
       serverInitialized = true;
     }
   });
@@ -203,12 +209,12 @@ export async function server(config: ServerConfig) {
 
     ...({reporter} as any),
   });
-  server.listen(port, 'localhost', (err) => {
-    if (err) {
-      console.log('err', err);
+  server.listen(port, 'localhost', (error) => {
+    if (error) {
+      log(error.message, {error: true});
       return;
     }
-    console.log('Starting dev server...');
+    log('Starting dev server...');
   });
 }
 
