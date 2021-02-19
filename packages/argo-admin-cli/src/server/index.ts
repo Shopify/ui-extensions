@@ -48,7 +48,7 @@ export async function server(config: ServerConfig) {
   const publicPath = '/assets/';
   const filename = 'extension.js';
   const fileUrl = `${url}${publicPath}${filename}`;
-  const sockPath = 'liveReload';
+  const sockPath = 'stats';
 
   const pathEnv = typeof env === 'string' ? path.resolve(env) : undefined;
   if (pathEnv === path.resolve('.env')) {
