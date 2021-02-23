@@ -19,6 +19,7 @@ import {server} from './server';
           apiKey: {type: 'string'},
           name: {type: 'string'},
           resourceUrl: {type: 'string'},
+          shop: {type: 'string'},
         }),
       server,
     )
