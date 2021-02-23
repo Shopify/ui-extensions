@@ -19,6 +19,7 @@ export interface ServerConfig {
   type: string;
   resourceUrl?: string;
   name?: string;
+  shop?: string;
 }
 
 interface Specification {
@@ -43,6 +44,7 @@ export async function server(config: ServerConfig) {
     name = 'Argo Extension',
     resourceUrl,
     type,
+    shop = 'YOUR-TEST-SHOP.myshopify.com',
   } = config;
   const port = await getPort({port: config.port});
   const url = `http://localhost:${port}`;
@@ -142,7 +144,7 @@ export async function server(config: ServerConfig) {
       log(`| What's next?`);
       log(`| Run shopify tunnel --port=${port}`);
       log(
-        `| Open extension on your development store using https://YOUR-TEST-SHOP.myshopify.com/admin/extensions-dev?url=https://TUNNEL-URL/data`,
+        `| Open extension on your development store using https://${shop}/admin/extensions-dev?url=https://TUNNEL-URL/data`,
       );
       serverInitialized = true;
     }
