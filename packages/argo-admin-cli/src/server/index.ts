@@ -2,17 +2,20 @@ import path from 'path';
 
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import getPort from 'get-port';
 import webpackDevMiddlewareReporter from 'webpack-dev-middleware/lib/reporter';
+import {merge} from 'lodash';
 
 import {createWebpackConfiguration} from '../webpackConfig';
 import {log} from '../utilities';
 
 export interface ServerConfig {
   apiKey?: string;
-  extensionId?: string;
+  uuid?: string;
   entry: string;
   env?: string;
   port: number;
@@ -35,10 +38,11 @@ const alias = process.env.SHOPIFY_DEV
       '@shopify/argo-admin-host': path.resolve(__dirname, '../../../argo-admin-host/src'),
     }
   : undefined;
+
 export async function server(config: ServerConfig) {
   const {
     apiKey = 'argo_app_key',
-    extensionId = 12345,
+    uuid = '',
     env,
     entry,
     name = 'Argo Extension',
@@ -46,6 +50,7 @@ export async function server(config: ServerConfig) {
     type,
     shop = 'YOUR-TEST-SHOP.myshopify.com',
   } = config;
+
   const port = await getPort({port: config.port});
   const url = `http://localhost:${port}`;
   const publicPath = '/assets/';
@@ -190,18 +195,52 @@ export async function server(config: ServerConfig) {
     },
 
     before(app) {
-      app.get('/data', function (req, res) {
+      app.use(bodyParser.json());
+      app.use(cors());
+
+      const manifest = {
+        apiKey,
+        uuid,
+        name,
+        resourceUrl,
+        identifier: type,
+        resources: ['products', 'productVariant'],
+      };
+
+      let manifestWithAdditionalMobileData = {};
+
+      function withRoutes(req) {
         const protocol = req.headers['x-forwarded-proto'] || req.protocol;
-        res.setHeader('Access-Control-Allow-Origin', '*');
+        const host = req.headers.host;
+
+        const origin = `${protocol}://${host}`;
+        return {
+          scriptUrl: `${origin}${publicPath}${filename}`,
+          stats: `${origin}/${sockPath}`,
+          mobile: `${origin}/mobile`,
+        };
+      }
+
+      app.get('/data', function (req, res) {
         res.json({
-          apiKey,
-          extensionId,
-          name,
-          resourceUrl,
-          scriptUrl: `${protocol}://${req.headers.host}${publicPath}${filename}`,
-          identifier: type,
-          resources: ['products', 'productVariant'],
-          stats: `${protocol}://${req.headers.host}/${sockPath}`,
+          ...manifest,
+          ...withRoutes(req),
+        });
+      });
+
+      app.post('/mobile', function (req, res) {
+        const {app, resourceUrl} = req.body;
+        manifestWithAdditionalMobileData = merge({}, manifest, {app, resourceUrl});
+        res.json({});
+      });
+
+      app.get('/mobile', function (req, res) {
+        res.json({
+          version: 1,
+          payload: {
+            ...manifestWithAdditionalMobileData,
+            ...withRoutes(req),
+          },
         });
       });
     },
