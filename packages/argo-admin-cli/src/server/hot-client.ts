@@ -1,8 +1,3 @@
-interface Options {
-  https: boolean;
-  webSocket: {host: string; port: number; path?: string};
-}
-
 declare global {
   /**
    * This is defined by webpack DefinePlugin during compile time.
@@ -22,6 +17,23 @@ declare global {
   }
 }
 
+interface Options {
+  https: boolean;
+  webSocket: {host: string; port: number; path?: string};
+}
+
+interface DevServerMessage<Type extends string, Data extends object = {}> {
+  type: Type;
+  data: Data;
+}
+
+type Message =
+  | DevServerMessage<'invalid'>
+  | DevServerMessage<'ok'>
+  | DevServerMessage<'window-reload'>
+  | DevServerMessage<'errors', {errors: string[]}>
+  | DevServerMessage<'warnings', {warnings: string[]}>;
+
 const hotClientOptionsOverride =
   typeof __hotClientOptionsOverride__ === 'object' ? __hotClientOptionsOverride__ : undefined;
 const defaultHotClientOptions =
@@ -38,28 +50,14 @@ const options = {
 
 const MAX_RETRIES = 10;
 
-interface DevServerMessage<Type extends string, Data extends object = {}> {
-  type: Type;
-  data: Data;
-}
+let open = false;
+let initial = true;
+let retry = 0;
 
-type Message =
-  | DevServerMessage<'invalid'>
-  | DevServerMessage<'ok'>
-  | DevServerMessage<'window-reload'>
-  | DevServerMessage<'errors', {errors: string[]}>
-  | DevServerMessage<'warnings', {warnings: string[]}>;
+connect();
 
-try {
-  run();
-} catch (error) {
-  console.error(error);
-}
-
-function run({retry = 0} = {}) {
-  if (!options.webSocket || typeof WebSocket === 'undefined') {
-    return;
-  }
+function connect() {
+  if (!options.webSocket || typeof WebSocket === 'undefined') return;
 
   const {host, port, path} = options.webSocket;
 
@@ -75,8 +73,14 @@ function run({retry = 0} = {}) {
   (self as any).__destroyHotClientSocket__?.();
   (self as any).__destroyHotClientSocket__ = destroy;
 
-  let open = false;
   const socket = new WebSocket(`${options.https ? 'wss' : 'ws'}://${host}:${port}/${path}`);
+
+  const onOpen = () => {
+    open = true;
+    initial = true;
+    retry = 0;
+    log('listening for changes...');
+  };
 
   const onClose = () => {
     if (retry > MAX_RETRIES) {
@@ -87,32 +91,26 @@ function run({retry = 0} = {}) {
     if (open) {
       open = false;
       log('lost connection to asset server, trying to reconnect...');
-      run();
+      connect();
     } else {
       const timeout = 1000 * retry ** 2 + Math.random() * 100;
-
+      retry += 1;
       log(`attempting reconnect in ${timeout / 1000}s`);
-
-      setTimeout(() => {
-        run({retry: retry + 1});
-      }, timeout);
+      setTimeout(connect, timeout);
     }
   };
-  socket.addEventListener('close', onClose);
 
-  const onMessage = (event) => {
+  const onMessage = (event: any) => {
     const message = JSON.parse(event.data) as Message;
 
     switch (message.type) {
       case 'ok':
       case 'warnings': {
-        if (open) {
-          reload();
+        if (initial) {
+          initial = false;
         } else {
-          open = true;
-          log('listening for changes...');
+          reload();
         }
-
         break;
       }
       case 'window-reload': {
@@ -125,20 +123,22 @@ function run({retry = 0} = {}) {
       }
       case 'errors': {
         log('build failed with errors:');
-
         for (const error of message.data.errors) {
           console.log(error);
         }
-
         break;
       }
     }
   };
+
+  socket.addEventListener('open', onOpen);
   socket.addEventListener('message', onMessage);
+  socket.addEventListener('close', onClose);
 
   function destroy() {
-    socket.removeEventListener('close', onClose);
+    socket.removeEventListener('open', onOpen);
     socket.removeEventListener('message', onMessage);
+    socket.removeEventListener('close', onClose);
     socket.close();
   }
 }
