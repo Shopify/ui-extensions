@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.3-alpha.2](https://github.com/Shopify/argo-admin/compare/v0.8.3-alpha.1...v0.8.3-alpha.2) (2021-03-11)
+
+
+### Features
+
+* add /mobile route ([132715e](https://github.com/Shopify/argo-admin/commit/132715eb9690804f3bfdd395948cabf1e81af013))
+* add stats key in manifest to expose websocket url to host ([877a9c7](https://github.com/Shopify/argo-admin/commit/877a9c71bb0c23f19d97870bb7aa4d233235ae53))
+
+
+
+
+
 ## [0.8.3-alpha.1](https://github.com/Shopify/argo-admin/compare/v0.8.3-alpha.0...v0.8.3-alpha.1) (2021-01-29)
 
 
