@@ -220,7 +220,7 @@ export async function run(
 
     ...({reporter} as any),
   });
-  server.listen(port, 'localhost', (error) => {
+  server.listen(port, '0.0.0.0', (error) => {
     if (error) {
       log(error.message, {error: true});
       return;
@@ -316,7 +316,7 @@ export async function server(config: ServerConfig) {
       },
     },
     () => {
-      log(`Starting dev server on ${serverUrl}`);
+      log(`Started dev server on ${serverUrl}`);
       log(`| What's next?`);
       log(`| Run shopify tunnel --port=${port}`);
       log(

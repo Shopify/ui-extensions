@@ -1,6 +1,9 @@
 import path from 'path';
+
 import bodyParser from 'body-parser';
 import cors from 'cors';
+import yargs from 'yargs/yargs';
+import {hideBin} from 'yargs/helpers';
 import {createClientConfig, run} from '@shopify/argo-admin-cli/server';
 import {log} from '@shopify/argo-admin-cli/utilities';
 
@@ -32,10 +35,11 @@ const scripts: Script[] = [
   },
 ];
 
+const argv = yargs(hideBin(process.argv)).argv;
 const port = 39355;
 const publicPath = '/';
 const sockPath = 'stats';
-const hostUrl = 'https://argo-playground.myshopify.io';
+const hostUrl = argv.host ? argv.host : `http://localhost:${port}`;
 
 const configs = scripts.map(({label, path: entry}) => {
   const fileExtension = path.extname(entry);
@@ -78,7 +82,6 @@ run(
     },
   },
   () => {
-    log(`Starting dev server`);
     log(`Available scripts:`);
     manifest.forEach(({scriptUrl}) => log(scriptUrl));
     log(`| What's next?`);
