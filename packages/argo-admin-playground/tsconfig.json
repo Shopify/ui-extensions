@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "../",
+    "outDir": "./",
+    "composite": true,
+    "baseUrl": "./",
+    "paths": {
+      "@shopify/argo-admin": ["../argo-admin/src"],
+      "@shopify/argo-admin/*": ["../argo-admin/src/*"],
+      "@shopify/argo-admin-cli": ["../argo-admin-cli/src"],
+      "@shopify/argo-admin-cli/*": ["../argo-admin-cli/src/*"],
+      "@shopify/argo-admin-react": ["../argo-admin-react/src"],
+      "@shopify/argo-admin-react/*": ["../argo-admin-react/src/*"]
+    }
+  },
+  "include": [
+    "../*/src"
+  ]
+}
