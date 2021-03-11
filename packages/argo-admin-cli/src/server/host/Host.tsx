@@ -13,6 +13,16 @@ export {HostWrapper as Host};
 declare const THIRD_PARTY_SCRIPT: string;
 declare const EXTENSION_POINT: ExtensionPoint;
 
+function getScriptUrl() {
+  const absoluteUrlRegex = /^https?:\/\//i;
+  if (absoluteUrlRegex.test(THIRD_PARTY_SCRIPT)) {
+    return THIRD_PARTY_SCRIPT;
+  }
+  const url = new URL(location.href);
+  url.pathname = THIRD_PARTY_SCRIPT;
+  return url.toString();
+}
+
 const extensionProps: HostProps = {
   extensionVersionUuid: 'extensionVersionUuid',
   app: {
@@ -29,7 +39,7 @@ const extensionProps: HostProps = {
     },
   },
   appId: 'app-id',
-  script: THIRD_PARTY_SCRIPT,
+  script: getScriptUrl(),
   extensionPoint: 'Admin::Product::SubscriptionPlan::Add',
 };
 

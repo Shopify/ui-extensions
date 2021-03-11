@@ -1,0 +1,31 @@
+{
+  "name": "@shopify/argo-admin-playground",
+  "version": "0.8.3-alpha.2",
+  "private": true,
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "server": "ts-node -r tsconfig-paths/register ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shopify/argo-admin.git",
+    "directory": "packages/argo-admin-playground"
+  },
+  "dependencies": {
+    "@shopify/argo-admin": "0.8.3-alpha.2",
+    "@shopify/argo-admin-cli": "0.8.3-alpha.2",
+    "@shopify/argo-admin-react": "0.8.3-alpha.2",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "react": "^16.13.0",
+    "ts-node": "^9.0.0",
+    "tsconfig-paths": "^3.9.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.4"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://packages.shopify.io/shopify/node/npm/"
+  }
+}

@@ -13,6 +13,27 @@ import {merge} from 'lodash';
 import {createWebpackConfiguration} from '../webpackConfig';
 import {log} from '../utilities';
 
+export interface ClientConfig {
+  env?: string;
+  entry: string;
+  port: number;
+  sockPath: string;
+  output?: {
+    publicPath?: string;
+    filename?: string;
+  };
+}
+
+export interface HostConfig {
+  type: string;
+  scriptUrl: string;
+}
+
+export type DevServerConfig = Pick<WebpackDevServer.Configuration, 'before'> & {
+  port: number;
+  sockPath: string;
+};
+
 export interface ServerConfig {
   apiKey?: string;
   uuid?: string;
@@ -25,12 +46,6 @@ export interface ServerConfig {
   shop?: string;
 }
 
-interface Specification {
-  identifier: string;
-  name: string;
-  resources: string[];
-}
-
 const alias = process.env.SHOPIFY_DEV
   ? {
       '@shopify/argo-admin': path.resolve(__dirname, '../../../argo-admin/src'),
@@ -39,24 +54,15 @@ const alias = process.env.SHOPIFY_DEV
     }
   : undefined;
 
-export async function server(config: ServerConfig) {
-  const {
-    apiKey = 'argo_app_key',
-    uuid = '',
-    env,
-    entry,
-    name = 'Argo Extension',
-    resourceUrl,
-    type,
-    shop = 'YOUR-TEST-SHOP.myshopify.com',
-  } = config;
-
-  const port = await getPort({port: config.port});
-  const url = `http://localhost:${port}`;
-  const publicPath = '/assets/';
-  const filename = 'extension.js';
-  const fileUrl = `${url}${publicPath}${filename}`;
-  const sockPath = 'stats';
+export function createClientConfig(
+  config: ClientConfig,
+): ReturnType<typeof createWebpackConfiguration> {
+  const {env, entry, port, sockPath} = config;
+  const {publicPath, filename} = {
+    publicPath: '/assets/',
+    filename: 'extension.js',
+    ...config.output,
+  };
 
   const pathEnv = typeof env === 'string' ? path.resolve(env) : undefined;
   if (pathEnv === path.resolve('.env')) {
@@ -66,7 +72,7 @@ export async function server(config: ServerConfig) {
   }
   const dotEnvPlugin = pathEnv ? [new Dotenv({path: pathEnv})] : [];
 
-  const clientWebpackConfig = createWebpackConfiguration({
+  const webpackConfig = createWebpackConfiguration({
     mode: 'development',
     target: 'webworker',
     entry: [path.resolve(__dirname, './hot-client'), path.resolve(entry)],
@@ -89,7 +95,15 @@ export async function server(config: ServerConfig) {
       }),
     ],
   });
-  clientWebpackConfig.resolve.alias = alias;
+  webpackConfig.resolve.alias = alias;
+
+  return webpackConfig;
+}
+
+export function createHostConfig(
+  config: HostConfig,
+): ReturnType<typeof createWebpackConfiguration> {
+  const {type, scriptUrl} = config;
 
   const serverWebpackConfig = createWebpackConfiguration({
     mode: 'development',
@@ -105,7 +119,7 @@ export async function server(config: ServerConfig) {
         timestamp: Date.now(),
       }),
       new webpack.DefinePlugin({
-        THIRD_PARTY_SCRIPT: JSON.stringify(fileUrl),
+        THIRD_PARTY_SCRIPT: JSON.stringify(scriptUrl),
         EXTENSION_POINT: JSON.stringify(type),
       }),
     ],
@@ -141,16 +155,21 @@ export async function server(config: ServerConfig) {
   });
   serverWebpackConfig.resolve.alias = alias;
 
+  return serverWebpackConfig;
+}
+
+export async function run(
+  configs: ReturnType<typeof createWebpackConfiguration>[],
+  devServerConfig: DevServerConfig,
+  onReady?: () => void,
+) {
+  const {port, sockPath, before} = devServerConfig;
+
   let serverInitialized = false;
-  const webpackCompiler = webpack([clientWebpackConfig, serverWebpackConfig]);
+  const webpackCompiler = webpack(configs);
   webpackCompiler.hooks.done.tap('ArgoSimulator', () => {
     if (!serverInitialized) {
-      log(`Starting dev server on ${url}`);
-      log(`| What's next?`);
-      log(`| Run shopify tunnel --port=${port}`);
-      log(
-        `| Open extension on your development store using https://${shop}/admin/extensions-dev?url=https://TUNNEL-URL/data`,
-      );
+      onReady?.();
       serverInitialized = true;
     }
   });
@@ -194,56 +213,7 @@ export async function server(config: ServerConfig) {
       ],
     },
 
-    before(app) {
-      app.use(bodyParser.json());
-      app.use(cors());
-
-      const manifest = {
-        apiKey,
-        uuid,
-        name,
-        resourceUrl,
-        identifier: type,
-        resources: ['products', 'productVariant'],
-      };
-
-      let manifestWithAdditionalMobileData = {};
-
-      function withRoutes(req) {
-        const protocol = req.headers['x-forwarded-proto'] || req.protocol;
-        const host = req.headers.host;
-
-        const origin = `${protocol}://${host}`;
-        return {
-          scriptUrl: `${origin}${publicPath}${filename}`,
-          stats: `${origin}/${sockPath}`,
-          mobile: `${origin}/mobile`,
-        };
-      }
-
-      app.get('/data', function (req, res) {
-        res.json({
-          ...manifest,
-          ...withRoutes(req),
-        });
-      });
-
-      app.post('/mobile', function (req, res) {
-        const {app, resourceUrl} = req.body;
-        manifestWithAdditionalMobileData = merge({}, manifest, {app, resourceUrl});
-        res.json({});
-      });
-
-      app.get('/mobile', function (req, res) {
-        res.json({
-          version: 1,
-          payload: {
-            ...manifestWithAdditionalMobileData,
-            ...withRoutes(req),
-          },
-        });
-      });
-    },
+    before,
 
     logLevel: 'silent',
     stats: process.env.DEBUG === undefined ? ('errors-only' as const) : ('verbose' as const),
@@ -257,6 +227,103 @@ export async function server(config: ServerConfig) {
     }
     log('Starting dev server...');
   });
+}
+
+export async function server(config: ServerConfig) {
+  const {
+    entry,
+    env,
+    apiKey = 'argo_app_key',
+    uuid = '',
+    name = 'Argo Extension',
+    resourceUrl,
+    type,
+    shop = 'YOUR-TEST-SHOP.myshopify.com',
+  } = config;
+  const port = await getPort({port: config.port});
+  const sockPath = 'stats';
+  const publicPath = '/assets/';
+  const filename = 'extension.js';
+  const serverUrl = `http://localhost:${port}`;
+  const scriptUrl = `${publicPath}${filename}`;
+
+  const clientWebpackConfig = createClientConfig({
+    entry,
+    env,
+    port,
+    sockPath,
+    output: {
+      filename,
+      publicPath,
+    },
+  });
+  const hostWebpackConfig = createHostConfig({type, scriptUrl});
+
+  run(
+    [clientWebpackConfig, hostWebpackConfig],
+    {
+      port,
+      sockPath,
+      before(app) {
+        app.use(bodyParser.json());
+        app.use(cors());
+
+        const manifest = {
+          apiKey,
+          uuid,
+          name,
+          resourceUrl,
+          identifier: type,
+          resources: ['products', 'productVariant'],
+        };
+
+        let manifestWithAdditionalMobileData = {};
+
+        function withRoutes(req) {
+          const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+          const host = req.headers.host;
+
+          const origin = `${protocol}://${host}`;
+          return {
+            scriptUrl: `${origin}${publicPath}${filename}`,
+            stats: `${origin}/${sockPath}`,
+            mobile: `${origin}/mobile`,
+          };
+        }
+
+        app.get('/data', function (req, res) {
+          res.json({
+            ...manifest,
+            ...withRoutes(req),
+          });
+        });
+
+        app.post('/mobile', function (req, res) {
+          const {app, resourceUrl} = req.body;
+          manifestWithAdditionalMobileData = merge({}, manifest, {app, resourceUrl});
+          res.json({});
+        });
+
+        app.get('/mobile', function (req, res) {
+          res.json({
+            version: 1,
+            payload: {
+              ...manifestWithAdditionalMobileData,
+              ...withRoutes(req),
+            },
+          });
+        });
+      },
+    },
+    () => {
+      log(`Starting dev server on ${serverUrl}`);
+      log(`| What's next?`);
+      log(`| Run shopify tunnel --port=${port}`);
+      log(
+        `| Open extension on your development store using https://${shop}/admin/extensions-dev?url=https://TUNNEL-URL/data`,
+      );
+    },
+  );
 }
 
 /**
