@@ -15,11 +15,13 @@
     "@shopify/argo-admin": "0.8.3-alpha.2",
     "@shopify/argo-admin-cli": "0.8.3-alpha.2",
     "@shopify/argo-admin-react": "0.8.3-alpha.2",
+    "@shopify/react-form": "^0.6.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "react": "^16.13.0",
     "ts-node": "^9.0.0",
-    "tsconfig-paths": "^3.9.0"
+    "tsconfig-paths": "^3.9.0",
+    "yargs": "^16.2.0"
   },
   "devDependencies": {
     "@types/react": "^16.9.4"
