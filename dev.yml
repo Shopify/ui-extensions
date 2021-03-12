@@ -19,7 +19,7 @@ commands:
   new-component: node ./scripts/new-component
   new-extension-point: node ./scripts/new-extension-point
   new-extension-api: node ./scripts/new-extension-api
-  nuke: yarn run clean && rm -rf ./node_modules
+  nuke: yarn run nuke && rm -rf ./node_modules
   server: yarn run server --host=https://argo-playground.myshopify.io
   simulator: yarn run simulator
   test: yarn run test

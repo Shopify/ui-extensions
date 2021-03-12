@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf ./dist",
-    "server": "ts-node -r tsconfig-paths/register ./src"
+    "server": "SHOPIFY_DEV=true ts-node -r tsconfig-paths/register ./src"
   },
   "repository": {
     "type": "git",
