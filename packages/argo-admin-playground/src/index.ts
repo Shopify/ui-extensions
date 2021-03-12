@@ -4,8 +4,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import yargs from 'yargs/yargs';
 import {hideBin} from 'yargs/helpers';
-import {createClientConfig, run} from '@shopify/argo-admin-cli/server';
 import {log} from '@shopify/argo-admin-cli/utilities';
+import {createClientConfig, run} from '@shopify/argo-admin-cli/server/utilities';
 
 interface Script {
   label: string;
@@ -68,9 +68,9 @@ const manifest = configs.map(({label, scriptPath}) => ({
   scriptUrl: `${hostUrl}${scriptPath}`,
 }));
 
-run(
-  webpackConfigs,
-  {
+run({
+  configs: webpackConfigs,
+  devServer: {
     port,
     sockPath,
     before(app) {
@@ -81,10 +81,10 @@ run(
       });
     },
   },
-  () => {
+  onReady: () => {
     log(`Available scripts:`);
     manifest.forEach(({scriptUrl}) => log(scriptUrl));
     log(`| What's next?`);
     log(`| Open https://cdn.shopify.com/shopifycloud/web/assets/v1/argo-admin-playground.html`);
   },
-);
+});
