@@ -7,7 +7,9 @@ import {StandardContainer} from '../../components/containers';
 import {useGlobalLocale} from '../../foundation/App/ultilities/useGlobalLocale';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: '3p-components-list' */ '../../third-party/components-list'),
+  import(
+    /* webpackChunkName: '3p-components-list' */ '../../../../argo-admin-playground/src/scripts/components-list'
+  ),
 );
 
 export function ComponentsList() {

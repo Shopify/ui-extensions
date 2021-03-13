@@ -5,7 +5,9 @@ import {usePerformanceMark} from '@shopify/react-performance';
 import {StandardContainer} from '../../components/containers';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: '3p-use-form' */ '../../third-party/use-form'),
+  import(
+    /* webpackChunkName: '3p-use-form' */ '../../../../argo-admin-playground/src/scripts/use-form'
+  ),
 );
 
 export function UseForm() {
