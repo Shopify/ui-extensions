@@ -91,7 +91,11 @@ module.exports = {
     rules: [
       {
         test: /\.([j|t]s(x?)|esnext)$/,
-        include: [/node_modules/, resolve(__dirname, 'src/third-party')],
+        include: [
+          /node_modules/,
+          resolve(__dirname, 'src/third-party'),
+          resolve(__dirname, '../argo-admin-playground/src/scripts'),
+        ],
         use: {
           loader: 'babel-loader',
           options: {

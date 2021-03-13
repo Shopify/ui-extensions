@@ -6,7 +6,9 @@ import {usePerformanceMark} from '@shopify/react-performance';
 import {StandardContainer} from '../../components/containers';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: '3p-vanilla' */ '../../third-party/vanilla'),
+  import(
+    /* webpackChunkName: '3p-vanilla' */ '../../../../argo-admin-playground/src/scripts/vanilla'
+  ),
 );
 
 export function Vanilla() {

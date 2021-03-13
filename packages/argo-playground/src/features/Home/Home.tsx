@@ -6,7 +6,9 @@ import {usePerformanceMark} from '@shopify/react-performance';
 import {StandardContainer} from '../../components/containers';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: '3p-playground' */ '../../third-party/playground'),
+  import(
+    /* webpackChunkName: '3p-playground' */ '../../../../argo-admin-playground/src/scripts/playground'
+  ),
 );
 
 export function Home() {

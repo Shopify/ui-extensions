@@ -6,7 +6,9 @@ import {createPlainWorkerFactory} from '@remote-ui/web-workers';
 import {StandardContainer} from '../../components/containers';
 
 const reactThirdPartyWorker = createPlainWorkerFactory(() =>
-  import(/* webpackChunkName: '3p-inline-script' */ '../../third-party/inline-script'),
+  import(
+    /* webpackChunkName: '3p-inline-script' */ '../../../../argo-admin-playground/src/scripts/inline-script'
+  ),
 );
 
 export function InlineScript() {
