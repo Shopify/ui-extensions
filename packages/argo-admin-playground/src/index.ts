@@ -15,9 +15,8 @@ const publicPath = '/';
 const sockPath = 'stats';
 const hostUrl = argv.host ? argv.host : `http://localhost:${port}`;
 
-const configs = scripts.map(({label, path: entry, excludeFromManifest}) => {
-  const fileExtension = path.extname(entry);
-  const filename = `3p-${path.basename(entry, fileExtension)}.worker.js`;
+const configs = scripts.map(({label, path: entry, name, excludeFromManifest}) => {
+  const filename = `${name}.js`;
 
   const webpackConfig = createClientConfig({
     entry: path.resolve(__dirname, entry),
