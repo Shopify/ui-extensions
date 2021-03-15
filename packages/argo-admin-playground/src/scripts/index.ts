@@ -28,6 +28,7 @@ const scripts: Script[] = [
   {
     label: 'SubscriptionContent',
     path: './scripts/subscription-content.tsx',
+    excludeFromManifest: true,
   },
 ];
 
