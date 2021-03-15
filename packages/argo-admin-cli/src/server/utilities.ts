@@ -18,6 +18,7 @@ export interface ClientConfig {
     publicPath?: string;
     filename?: string;
   };
+  disableLiveReload?: boolean;
 }
 
 export interface HostConfig {
@@ -47,7 +48,7 @@ const alias = process.env.SHOPIFY_DEV
 export function createClientConfig(
   config: ClientConfig,
 ): ReturnType<typeof createWebpackConfiguration> {
-  const {env, entry, port, sockPath} = config;
+  const {env, entry, port, sockPath, disableLiveReload} = config;
   const {publicPath, filename} = {
     publicPath: '/assets/',
     filename: 'extension.js',
@@ -65,7 +66,9 @@ export function createClientConfig(
   const webpackConfig = createWebpackConfiguration({
     mode: 'development',
     target: 'webworker',
-    entry: [path.resolve(__dirname, './hot-client'), path.resolve(entry)],
+    entry: disableLiveReload
+      ? [path.resolve(entry)]
+      : [path.resolve(__dirname, './hot-client'), path.resolve(entry)],
     output: {
       globalObject: 'self',
       filename,
