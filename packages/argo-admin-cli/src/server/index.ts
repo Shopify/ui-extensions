@@ -19,27 +19,15 @@ export interface ServerConfig {
   shop?: string;
 }
 
-const DEFAULT_API_KEY = 'argo_app_key';
-const DEFAULT_SHOP = 'YOUR-TEST-SHOP.myshopify.com';
-
 export async function server(config: ServerConfig) {
-  const {
-    entry,
-    env,
-    apiKey = DEFAULT_API_KEY,
-    uuid = '',
-    name = 'Argo Extension',
-    resourceUrl,
-    type,
-    shop = DEFAULT_SHOP,
-  } = config;
+  const {entry, env, apiKey, uuid = '', name = 'Argo Extension', resourceUrl, type, shop} = config;
   const port = await getPort({port: config.port});
   const sockPath = 'stats';
   const publicPath = '/assets/';
   const filename = 'extension.js';
   const serverUrl = `http://localhost:${port}`;
   const scriptUrl = `${publicPath}${filename}`;
-  const isLegacyCli = shop === DEFAULT_SHOP && apiKey === DEFAULT_API_KEY;
+  const isLegacyCli = !shop || !apiKey;
 
   const clientWebpackConfig = createClientConfig({
     entry,
