@@ -19,16 +19,19 @@ export interface ServerConfig {
   shop?: string;
 }
 
+const DEFAULT_API_KEY = 'argo_app_key';
+const DEFAULT_SHOP = 'YOUR-TEST-SHOP.myshopify.com';
+
 export async function server(config: ServerConfig) {
   const {
     entry,
     env,
-    apiKey = 'argo_app_key',
+    apiKey = DEFAULT_API_KEY,
     uuid = '',
     name = 'Argo Extension',
     resourceUrl,
     type,
-    shop = 'YOUR-TEST-SHOP.myshopify.com',
+    shop = DEFAULT_SHOP,
   } = config;
   const port = await getPort({port: config.port});
   const sockPath = 'stats';
@@ -36,6 +39,7 @@ export async function server(config: ServerConfig) {
   const filename = 'extension.js';
   const serverUrl = `http://localhost:${port}`;
   const scriptUrl = `${publicPath}${filename}`;
+  const isLegacyCli = shop === DEFAULT_SHOP && apiKey === DEFAULT_API_KEY;
 
   const clientWebpackConfig = createClientConfig({
     entry,
@@ -46,6 +50,7 @@ export async function server(config: ServerConfig) {
       filename,
       publicPath,
     },
+    disableLiveReload: isLegacyCli,
   });
   const hostWebpackConfig = createHostConfig({type, scriptUrl});
 
@@ -106,6 +111,11 @@ export async function server(config: ServerConfig) {
       },
     },
     onReady: () => {
+      if (isLegacyCli) {
+        log(`Your extension is available at ${serverUrl}`);
+        return;
+      }
+
       log(`Started dev server on ${serverUrl}`);
       log(`| What's next?`);
       log(`| Run shopify tunnel --port=${port}`);
