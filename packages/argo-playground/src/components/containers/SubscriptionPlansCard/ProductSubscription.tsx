@@ -24,7 +24,7 @@ export interface ProductSubscriptionProps<T extends ExtensionPoint> extends Base
 
 const subscriptionClientScript = createPlainWorkerFactory(() =>
   import(
-    /* webpackChunkName: '3p-subscription-content' */ '../../../third-party/subscription-content'
+    /* webpackChunkName: '3p-subscription-content' */ '../../../../../argo-admin-playground/src/scripts/subscription-content'
   ),
 );
 
