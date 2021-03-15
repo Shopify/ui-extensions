@@ -11,7 +11,7 @@
     "check": "prettier --check \"**/src/**/*.{ts,tsx}\"",
     "format": "prettier --write \"**/src/**/*.{ts,tsx}\"",
     "lint": "eslint ./src --ext .ts,.tsx --format codeframe",
-    "server": "SHOPIFY_DEV=true ts-node ./src/cli server --entry \"sample-extension.tsx\" --port=39351 --type=\"PRODUCT_SUBSCRIPTION\"",
+    "server": "SHOPIFY_DEV=true ts-node ./src/cli server --entry \"sample-extension.tsx\" --port=39351 --type=\"PRODUCT_SUBSCRIPTION\" --shop=shop1.myshopify.io --apiKey=subscriptions-dev-key",
     "test-build": "SHOPIFY_DEV=true ts-node ./src/cli build --entry \"sample-extension.tsx\""
   },
   "bin": {
