@@ -9,8 +9,8 @@ import {
   PageActions,
   Modal,
   TextContainer,
+  Toast as PolarisToast,
 } from '@shopify/polaris';
-import {useToastApi} from '@shopify/argo-admin-host';
 import {ProductsMajor} from '@shopify/polaris-icons';
 import {ExtensionPoint} from '@shopify/argo-admin';
 import merge from 'lodash/fp/merge';
@@ -22,7 +22,7 @@ import {actionFields, defaultSettings} from './config';
 import {usePageState, useSettings} from './useStorage';
 import {SettingsForm} from './components/SettingsForm';
 
-const {ArgoAppOverlay, ArgoModal, PlaygroundContext} = window.argoAdminHost;
+const {ArgoAppOverlay, ArgoModal, PlaygroundContext, useToastApi} = window.argoAdminHost;
 
 const actionToExtensionPoint: {[key: string]: ExtensionPoint} = {
   [ProductSubscriptionAction.Add]: 'Admin::Product::SubscriptionPlan::Add',
@@ -53,7 +53,7 @@ export function ProductSubscriptionHost(props: HostProps) {
     return _settings;
   }, {} as any);
 
-  const [Toast, toastApi] = useToastApi();
+  const [Toast, toastApi] = useToastApi(PolarisToast);
   const outSettings = merge(
     {...toastApi, ...settings, data: outData},
     {

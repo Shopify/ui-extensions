@@ -1,4 +1,6 @@
 import {ExtensionApi, ExtensionPoint} from '@shopify/argo-admin';
+import {ToastApi} from '@shopify/argo-admin/extension-api/toast';
+import {Toast as PolarisToast} from '@shopify/polaris';
 
 interface ExtensionInfo {
   extensionVersionUuid: string;
@@ -44,6 +46,7 @@ declare global {
       ArgoAppOverlay: React.JSXElementConstructor<AppOverlayProps<ExtensionPoint>>;
       ArgoModal: React.JSXElementConstructor<ArgoModalProps<ExtensionPoint>>;
       PlaygroundContext: React.JSXElementConstructor<React.PropsWithChildren<{}>>;
+      useToastApi: (ToastComponent: typeof PolarisToast) => [React.FunctionComponent<{}>, ToastApi];
     };
   }
 }

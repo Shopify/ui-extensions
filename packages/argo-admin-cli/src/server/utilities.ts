@@ -41,7 +41,6 @@ const alias = process.env.SHOPIFY_DEV
   ? {
       '@shopify/argo-admin': path.resolve(__dirname, '../../../argo-admin/src'),
       '@shopify/argo-admin-react': path.resolve(__dirname, '../../../argo-admin-react/src'),
-      '@shopify/argo-admin-host': path.resolve(__dirname, '../../../argo-admin-host/src'),
     }
   : undefined;
 

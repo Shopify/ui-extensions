@@ -12,11 +12,5 @@ module.exports = {
       diagnostics: false,
     },
   },
-  setupFilesAfterEnv: [
-    'jest-extended',
-    '<rootDir>/packages/argo-admin-host/test-utils/matchers.ts',
-  ],
-  moduleNameMapper: {
-    '^test-utils/(.*)$': '<rootDir>/packages/argo-admin-host/test-utils/$1',
-  },
+  setupFilesAfterEnv: ['jest-extended'],
 };
