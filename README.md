@@ -28,7 +28,7 @@ This repo also has some of the helper packages Shopify uses to make Argo extensi
 | [argo-admin](./packages/argo-admin/README.md)             | Enables devs to write custom JS to be exposed within a Shopify-controlled host |
 | [argo-admin-react](./packages/argo-admin-react/README.md) |     Built on top of Argo Admin; allows a devs to write React-style scripts     |
 | [argo-host](./packages/argo-host/README.md)               |                    A mock host that renders Argo components                    |
-| [argo-admin-playground](./packages/argo-admin-playground/README.md)   |             A demo environment used for internal Argo development              |
+| [argo-admin-playground](./packages/argo-admin-playground/README.md)   |  Sample extension scripts to showcase Argo Admin features          |
 
 ## Development quick start
 
