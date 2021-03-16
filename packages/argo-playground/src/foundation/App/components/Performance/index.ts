@@ -1,1 +1,0 @@
-export {Performance} from './Performance';

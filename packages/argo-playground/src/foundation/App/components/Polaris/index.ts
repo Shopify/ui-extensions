@@ -1,1 +1,0 @@
-export {Polaris} from './Polaris';

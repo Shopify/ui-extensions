@@ -1,1 +1,0 @@
-export {UnsupportedComponentError} from './UnsupportedComponentError';
