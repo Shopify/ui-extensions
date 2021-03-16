@@ -1,8 +1,8 @@
-# Owners of the packages.
-packages/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell
+# Owners of docs
+*.md @iainmcampbell
 
 # Owners of the generators
 scripts/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell
 
-# Owners of docs
-*.md @iainmcampbell
+# Owners of the packages.
+packages/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell
