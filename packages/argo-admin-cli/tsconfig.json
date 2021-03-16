@@ -6,8 +6,6 @@
     "paths": {
       "@shopify/argo-admin": ["../argo-admin/src"],
       "@shopify/argo-admin/*": ["../argo-admin/src/*"],
-      "@shopify/argo-admin-host": ["../argo-admin-host/src"],
-      "@shopify/argo-admin-host/*": ["../argo-admin-host/src/*"],
       "@shopify/argo-admin-react": ["../argo-admin-react/src"],
       "@shopify/argo-admin-react/*": ["../argo-admin-react/src/*"],
       "react": ["../../node_modules/react"]
