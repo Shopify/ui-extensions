@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.1](https://github.com/Shopify/argo-admin/compare/v0.9.0...v0.9.1) (2021-03-23)
+
+
+### Bug Fixes
+
+* **argo-admin-cli:** use Polaris version 6.2.0 ([f22ee24](https://github.com/Shopify/argo-admin/commit/f22ee24007474074037db1d0322277524e0bf73a))
+
+
+
+
+
 # [0.9.0](https://github.com/Shopify/argo-admin/compare/v0.8.3-alpha.4...v0.9.0) (2021-03-16)
 
 **Note:** Version bump only for package root
