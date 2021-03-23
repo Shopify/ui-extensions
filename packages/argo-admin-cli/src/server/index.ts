@@ -106,7 +106,7 @@ export async function server(config: ServerConfig) {
 
       log(`Started dev server on ${serverUrl}`);
       log(`| What's next?`);
-      log(`| Run shopify tunnel --port=${port}`);
+      log(`| Run shopify tunnel start --port=${port}`);
       log(
         `| Open extension on your development store using https://${shop}/admin/extensions-dev?url=https://TUNNEL-URL/data`,
       );
