@@ -94,7 +94,7 @@ export async function createDependencyGraph(entry: string) {
       usedConcurrency -= 1;
 
       if (usedConcurrency === 0) {
-        resolve();
+        resolve(undefined);
       }
     }
 
@@ -529,7 +529,10 @@ function collectLocalsFromStatement(
         switch (specifier.type) {
           case 'ExportSpecifier': {
             const importedName = specifier.local.name;
-            const exportedName = specifier.exported.name;
+            const exportedName =
+              specifier.exported.type === 'Identifier'
+                ? specifier.exported.name
+                : '';
             context.exportedLocals.add(exportedName);
 
             if (resolved) {
