@@ -1,8 +1,6 @@
-interface Options {
+export interface Options {
   https: boolean;
-  hmr: boolean;
-  reload: boolean;
-  webSocket: {host: string; port: number};
+  webSocket: {host: string; port: number; path: string};
 }
 
 declare global {
@@ -25,7 +23,7 @@ interface DevServerMessage<
 }
 
 type Message =
-  | DevServerMessage<'invalid', {fileName: string}>
+  | DevServerMessage<'invalid'>
   | DevServerMessage<'ok'>
   | DevServerMessage<'window-reload'>
   | DevServerMessage<'errors', {errors: string[]}>
@@ -34,7 +32,7 @@ type Message =
 run();
 
 function run() {
-  const {host, port} = options.webSocket;
+  const {host, port, path} = options.webSocket;
 
   if (host === '*') {
     throw new Error(
@@ -60,7 +58,7 @@ function run() {
 
   function connect() {
     const socket = new WebSocket(
-      `${options.https ? 'wss' : 'ws'}://${host}:${port}`,
+      `${options.https ? 'wss' : 'ws'}://${host}:${port}${path}`,
     );
 
     const handleOpen = () => {
@@ -112,7 +110,7 @@ function run() {
           break;
         }
         case 'invalid': {
-          log(`recompiling ${message.data.fileName}`);
+          log('recompiling...');
           break;
         }
         case 'errors': {

@@ -19,11 +19,13 @@ const DEVELOPMENT_TARGETS = [
 interface Options {
   output?: Configuration['output'];
   development?: boolean;
+  hotOptions?: ConstructorParameters<typeof ArgotHotClient>[0];
 }
 
 export function createWebpackConfiguration({
   output,
   development = false,
+  hotOptions,
 }: Options = {}): Configuration {
   const useReact = shouldUseReact();
   const targets = development ? DEVELOPMENT_TARGETS : PRODUCTION_TARGETS;
@@ -141,7 +143,7 @@ export function createWebpackConfiguration({
       ],
     },
     plugins: [
-      development && new ArgotHotClient(),
+      development && new ArgotHotClient(hotOptions),
       new DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),

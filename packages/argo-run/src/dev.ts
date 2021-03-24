@@ -2,8 +2,7 @@ import {URL} from 'url';
 
 import getPort from 'get-port';
 import webpack from 'webpack';
-import Koa from 'koa';
-import koaWebpack from 'koa-webpack';
+import WebpackDevServer from 'webpack-dev-server';
 
 import {
   getData,
@@ -14,14 +13,19 @@ import {
 import {createWebpackConfiguration} from './webpack-config';
 import {openBrowser} from './browser';
 
+const DATA_PATH = '/data';
+const WEBSOCKET_PATH = '/build';
+
+const PUBLIC_PATH = '/assets/';
+
 export async function dev(...args: string[]) {
-  const port = namedArgument('port', args) ?? (await getPort({port: 8910}));
+  const port = Number(
+    namedArgument('port', args) ?? (await getPort({port: 8910})),
+  );
   const url = `http://localhost:${port}`;
-  const publicPath = `${url}/assets/`;
+  const publicPath = `${url}${PUBLIC_PATH}`;
   const filename = 'extension.js';
   const fileUrl = `${publicPath}${filename}`;
-  const configPath = `/config`;
-  const dataPath = '/data';
 
   const compiler = webpack(
     createWebpackConfiguration({
@@ -29,6 +33,10 @@ export async function dev(...args: string[]) {
       output: {
         filename,
         publicPath,
+      },
+      hotOptions: {
+        https: false,
+        webSocket: {host: 'localhost', port, path: WEBSOCKET_PATH},
       },
     }),
   );
@@ -56,45 +64,60 @@ export async function dev(...args: string[]) {
     });
   });
 
-  const app = new Koa();
-  const middleware = await koaWebpack({
-    compiler,
-    hotClient: {autoConfigure: false, logLevel: 'silent'},
-    devMiddleware: {
-      publicPath,
-      logLevel: 'silent',
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
+  const server = new WebpackDevServer(compiler, {
+    // webpack-dev-server injects a lot of things to the client
+    // which are imcompatible with WebWorker environment.
+    // It's also unnecessary because we have an alternative provided by
+    // `@shopify/argo-webpack-hot-client/worker`
+    injectClient: false,
+
+    // This makes local server public so that
+    // it can be forwarded from ngrok
+    host: '0.0.0.0',
+    port,
+    disableHostCheck: true,
+
+    // `transportMode` switches to `ws` so that the worker file can use WebSocket
+    // instead of default SocketJs in webpack-dev-server.
+    // `sockPath` allows to override default path from webpack-dev-server.
+    hot: false,
+    hotOnly: false,
+    liveReload: false,
+    inline: false,
+    transportMode: 'ws',
+    sockPath: WEBSOCKET_PATH,
+
+    publicPath: PUBLIC_PATH,
+
+    before(app) {
+      app.get(DATA_PATH, (_, res) => {
+        res.set('Access-Control-Allow-Origin', '*');
+        res.json(data);
+      });
     },
+
+    // Webpack has a horrible setup for disabling logs. There is a `noInfo`
+    // option, which just sets the overall `logLevel` to `warn`, and so
+    // continues to show things like webpack build output that we want to
+    // hide. There’s a `quiet` option, but that is ignored on startup
+    // so that the URL of the dev server is always printed (which again,
+    // we do not want). This was the only approach I found that works —
+    // pass `logLevel`, which is not actually typed as being available, but
+    // is used when creating the logger :/
+    ...({logLevel: 'silent'} as any),
+    clientLogLevel: 'silent',
+    stats: process.env.DEBUG === undefined ? false : 'verbose',
   });
-
-  // this will stay here for older versions of the extension and can be removed on 01.10.2020
-  // it's not being DRY'd up to make deletion easier
-  if (data.config) {
-    app.use(async (ctx, next) => {
-      if (ctx.path !== configPath) {
-        return next();
-      }
-      ctx.body = data.config;
-    });
-  }
-
-  app.use(async (ctx, next) => {
-    if (ctx.path !== dataPath) {
-      return next();
-    }
-
-    ctx.body = data;
-  });
-
-  app.use(middleware);
 
   log(`Starting dev server on ${url}`);
 
-  const httpListenPromise = new Promise<void>((resolve) => {
-    app.listen(port, () => {
-      resolve();
+  const httpListenPromise = new Promise<void>((resolve, reject) => {
+    server.listen(port, '0.0.0.0', (error) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve();
+      }
     });
   });
 
