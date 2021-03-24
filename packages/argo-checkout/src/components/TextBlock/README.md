@@ -4,4 +4,4 @@ TextBlock is used to render a block of text that occupies the full width availab
  
 ## Props
 required = *
-<table><tr><th>Name</th><th>Type</th><th>Description</th></tr><tr><td>size</td><td><code>"small"</code> | <code>"medium"</code> | <code>"large"</code> | <code>"xlarge"</code></td><td>Size of the text </td></tr><tr><td>emphasized</td><td><code>boolean</code></td><td></td></tr><tr><td>subdued</td><td><code>boolean</code></td><td></td></tr><tr><td>id</td><td><code>string</code></td><td>Unique identifier </td></tr></table>
+<table><tr><th>Name</th><th>Type</th><th>Description</th></tr><tr><td>size</td><td><code>"small"</code> | <code>"medium"</code> | <code>"large"</code> | <code>"xlarge"</code></td><td>Size of the text </td></tr><tr><td>emphasized</td><td><code>boolean</code></td><td></td></tr><tr><td>subdued</td><td><code>boolean</code></td><td></td></tr><tr><td>id</td><td><code>string</code></td><td>Unique identifier </td></tr><tr><td>appearance</td><td><code>"critical"</code> | <code>"warning"</code> | <code>"success"</code></td><td>Changes the visual appearance </td></tr></table>

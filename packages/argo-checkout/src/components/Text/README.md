@@ -10,4 +10,4 @@ required = *
   "kind": "UndocumentedType"
 }</pre> | <pre>{
   "kind": "UndocumentedType"
-}</pre></td><td>Assign semantic value </td></tr><tr><td>id</td><td><code>string</code></td><td>Unique identifier. Typically used as a target for another component’s controls to associate an accessible label with an action. </td></tr></table>
+}</pre></td><td>Assign semantic value </td></tr><tr><td>id</td><td><code>string</code></td><td>Unique identifier. Typically used as a target for another component’s controls to associate an accessible label with an action. </td></tr><tr><td>appearance</td><td><code>"critical"</code> | <code>"warning"</code> | <code>"success"</code></td><td>Changes the visual appearance </td></tr></table>
