@@ -37,12 +37,7 @@ export async function server(config: ServerConfig) {
   const serverUrl = `http://localhost:${port}`;
   const scriptUrl = `${publicPath}${filename}`;
   const isLegacyCli = !shop || !apiKey;
-
-  const formattedResourceUrl = externalResourceUrl?.trim()?.replace(/^\//, '');
-  const resourceUrl =
-    !formattedResourceUrl || /^admin\/.*/.test(formattedResourceUrl)
-      ? `/${formattedResourceUrl}`
-      : `/admin/${formattedResourceUrl}`;
+  const resourceUrl = normalizeResourceUrl(externalResourceUrl);
 
   const clientWebpackConfig = createClientConfig({
     entry,
@@ -127,4 +122,13 @@ export async function server(config: ServerConfig) {
       );
     },
   });
+}
+
+function normalizeResourceUrl(resourceUrl: string | undefined) {
+  if (!resourceUrl) return undefined;
+  const normalizedResourceUrl = resourceUrl.trim().replace(/^\//, '');
+  if (/^admin\/.*/.test(normalizedResourceUrl)) {
+    return `/${normalizedResourceUrl}`;
+  }
+  return `/admin/${normalizedResourceUrl}`;
 }
