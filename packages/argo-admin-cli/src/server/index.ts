@@ -20,7 +20,16 @@ export interface ServerConfig {
 }
 
 export async function server(config: ServerConfig) {
-  const {entry, env, apiKey, uuid = '', name = 'Argo Extension', resourceUrl, type, shop} = config;
+  const {
+    entry,
+    env,
+    apiKey,
+    uuid = '',
+    name = 'Argo Extension',
+    resourceUrl: externalResourceUrl,
+    type,
+    shop,
+  } = config;
   const port = await getPort({port: config.port});
   const sockPath = 'stats';
   const publicPath = '/assets/';
@@ -28,6 +37,12 @@ export async function server(config: ServerConfig) {
   const serverUrl = `http://localhost:${port}`;
   const scriptUrl = `${publicPath}${filename}`;
   const isLegacyCli = !shop || !apiKey;
+
+  const formattedResourceUrl = externalResourceUrl?.trim()?.replace(/^\//, '');
+  const resourceUrl =
+    !formattedResourceUrl || /^admin\/.*/.test(formattedResourceUrl)
+      ? `/${formattedResourceUrl}`
+      : `/admin/${formattedResourceUrl}`;
 
   const clientWebpackConfig = createClientConfig({
     entry,
