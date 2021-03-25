@@ -90,6 +90,9 @@ export async function dev(...args: string[]) {
     publicPath: PUBLIC_PATH,
 
     before(app) {
+      // This endpoint powers a browser extension that was built for the
+      // post-purchase extension:
+      // https://github.com/Shopify/post-purchase-devtools/blob/master/src/background/background.ts#L16-L35
       app.get(DATA_PATH, (_, res) => {
         res.set('Access-Control-Allow-Origin', '*');
         res.json(data);
