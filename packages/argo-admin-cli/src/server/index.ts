@@ -30,7 +30,7 @@ export async function server(config: ServerConfig) {
     type,
     shop,
   } = config;
-  const port = await getPort({port: config.port});
+  const port = await getPort({port: config.port, host: '0.0.0.0'});
   const sockPath = 'stats';
   const publicPath = '/assets/';
   const filename = 'extension.js';
