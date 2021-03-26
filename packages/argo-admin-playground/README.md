@@ -5,3 +5,4 @@ Argo Admin Playground is a demo environment used for internal Argo Admin develop
 ## How to add new script?
 - Create new script at `./src/scripts/` using `Playground` extension point.
 - Register the script at `./src/scripts/index.ts`.
+- Run `dev s`.
