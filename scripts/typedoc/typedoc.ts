@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs';
+import {v4 as uuidv4} from 'uuid';
 
 import type {ImportedReference} from './types';
 import {createDependencyGraph, Module} from './utilities/dependency-graph';
@@ -8,7 +9,7 @@ run();
 
 async function run() {
   const componentIndex = path.resolve(
-    'packages/argo-checkout/src/components/index.ts',
+    '../checkout-web/packages/argo-checkout/src/components/index.ts',
   );
 
   const graph = await createDependencyGraph(componentIndex);
@@ -21,6 +22,12 @@ async function run() {
       ),
     ),
   ];
+
+  const devDocs = path.resolve(
+    '../shopify-dev/content/tools/argo-checkout/components',
+  );
+
+  let index = `---\ngid: ${uuidv4()}\nurl: /tools/argo-checkout/components/index\ntitle: Argo Checkout Components\ndescription: A list of Argo Checkout Components.\nhidden: true\n---\n\n`;
 
   // Loop through each directory, get all exports from the index, and build docs.
   resolvedComponentDirs.forEach((directory) => {
@@ -40,13 +47,12 @@ async function run() {
       ({value}: any) => value.kind === 'Component',
     );
 
-    let markdown = '';
-
     // Go through each component and build a README.md with the component name and doc content.
     // Find the component props and recursively build the props table.
     // Nested interfaces are rendered as nested tables in the type column.
     components.forEach(({value: {name, docs, props}}: any) => {
-      markdown += `# ${name}\n${docs ? strip(docs.content) : ''}`;
+      let markdown = `---\ngid: ${uuidv4()}\nurl: /tools/argo-checkout/components/${name.toLowerCase()}\ntitle: ${name}\nhidden: true\n---\n\n`;
+      markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
 
       const {
         value: {properties},
@@ -56,12 +62,25 @@ async function run() {
         markdown += '## Props\nrequired = *\n';
         markdown += propsTable(properties, exports, directory);
       }
-    });
 
-    fs.writeFile(`${directory}/README.md`, markdown, function (err) {
-      if (err) throw err;
+      index += `- [${name}](/tools/argo-checkout/components/${name.toLowerCase()})\n`;
+      fs.writeFile(`${devDocs}/${name.toLowerCase()}.md`, markdown, function (
+        err,
+      ) {
+        if (err) throw err;
+      });
     });
   });
+
+  fs.writeFile(
+    path.resolve(
+      '../shopify-dev/content/tools/argo-checkout/components/index.md',
+    ),
+    index,
+    function (err) {
+      if (err) throw err;
+    },
+  );
 }
 
 function propsTable(properties: any, exports: any, dir: string) {
@@ -98,7 +117,12 @@ function propType(value: any, exports: any[], dir: string): any {
       const local = exports.find(
         ({value: exportValue}: any) => exportValue.name === value.name,
       );
+
       if (local == null) {
+        if (value.name === 'T') {
+          return '<code>T</code>';
+        }
+
         throw new Error(
           `Can’t resolve export type \`${value.name}\` in ${dir}/index.ts. It’s probably not exported from the component index.`,
         );
