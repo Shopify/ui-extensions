@@ -32,6 +32,8 @@ export async function server(config: ServerConfig) {
   } = config;
   const port = await getPort({port: config.port, host: '0.0.0.0'});
   const sockPath = 'stats';
+  const dataPath = 'data';
+  const mobilePath = 'mobile';
   const publicPath = '/assets/';
   const filename = 'extension.js';
   const serverUrl = `http://localhost:${port}`;
@@ -80,24 +82,25 @@ export async function server(config: ServerConfig) {
           return {
             scriptUrl: `${origin}${publicPath}${filename}`,
             stats: `${origin}/${sockPath}`,
-            mobile: `${origin}/mobile`,
+            mobile: `${origin}/${mobilePath}`,
+            data: `${origin}/${dataPath}`,
           };
         }
 
-        app.get('/data', function (req, res) {
+        app.get(`/${dataPath}`, function (req, res) {
           res.json({
             ...manifest,
             ...withRoutes(req),
           });
         });
 
-        app.post('/mobile', function (req, res) {
+        app.post(`/${mobilePath}`, function (req, res) {
           const {app, resourceUrl} = req.body;
           manifestWithAdditionalMobileData = merge({}, manifest, {app, resourceUrl});
           res.json({});
         });
 
-        app.get('/mobile', function (req, res) {
+        app.get(`/${mobilePath}`, function (req, res) {
           res.json({
             version: 1,
             payload: {
