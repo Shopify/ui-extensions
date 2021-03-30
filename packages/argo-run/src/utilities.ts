@@ -94,7 +94,7 @@ export function readEnvFile() {
   return parsedEnv;
 }
 
-export function getData(scriptUrl: string): Data {
+export function getLegacyPostPurchaseData(scriptUrl: string): Data {
   const config = readConfig();
   const env = readEnvFile();
 
@@ -105,7 +105,7 @@ export function getData(scriptUrl: string): Data {
   };
 }
 
-export function convertDataToQueryString(data: Data) {
+export function convertLegacyPostPurchaseDataToQueryString(data: Data) {
   const query = new URLSearchParams();
 
   query.set('script_url', data.scriptUrl);
