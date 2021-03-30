@@ -5,15 +5,15 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
 import {
-  getData,
-  convertDataToQueryString,
+  getLegacyPostPurchaseData,
+  convertLegacyPostPurchaseDataToQueryString,
   log,
   namedArgument,
 } from './utilities';
 import {createWebpackConfiguration} from './webpack-config';
 import {openBrowser} from './browser';
 
-const DATA_PATH = '/data';
+const LEGACY_POST_PURCHASE_DATA_PATH = '/data';
 const WEBSOCKET_PATH = '/build';
 
 const PUBLIC_PATH = '/assets/';
@@ -23,16 +23,16 @@ export async function dev(...args: string[]) {
     namedArgument('port', args) ?? (await getPort({port: 8910})),
   );
   const url = `http://localhost:${port}`;
-  const publicPath = `${url}${PUBLIC_PATH}`;
   const filename = 'extension.js';
-  const fileUrl = `${publicPath}${filename}`;
+  const localhostScriptUrl = `${url}${PUBLIC_PATH}${filename}`;
+  const legacyPostPurchaseData = getLegacyPostPurchaseData(localhostScriptUrl);
 
   const compiler = webpack(
     createWebpackConfiguration({
       development: true,
       output: {
         filename,
-        publicPath,
+        publicPath: PUBLIC_PATH,
       },
       hotOptions: {
         https: false,
@@ -40,8 +40,6 @@ export async function dev(...args: string[]) {
       },
     }),
   );
-
-  const data = getData(fileUrl);
 
   const firstCompilePromise = new Promise<void>((resolve) => {
     let hasResolved = false;
@@ -70,6 +68,7 @@ export async function dev(...args: string[]) {
     // It's also unnecessary because we have an alternative provided by
     // `@shopify/argo-webpack-hot-client/worker`
     injectClient: false,
+    injectHot: false,
 
     // This makes local server public so that
     // it can be forwarded from ngrok
@@ -90,13 +89,28 @@ export async function dev(...args: string[]) {
     publicPath: PUBLIC_PATH,
 
     before(app) {
+      app.get('/', (_, res) => {
+        res.set('Content-Type', 'text/html');
+        res.send('<html>TODO</html>');
+        res.end();
+      });
+
       // This endpoint powers a browser extension that was built for the
       // post-purchase extension:
       // https://github.com/Shopify/post-purchase-devtools/blob/master/src/background/background.ts#L16-L35
-      app.get(DATA_PATH, (_, res) => {
+      app.get(LEGACY_POST_PURCHASE_DATA_PATH, (_, res) => {
         res.set('Access-Control-Allow-Origin', '*');
-        res.json(data);
+        res.json(legacyPostPurchaseData);
       });
+    },
+
+    historyApiFallback: {
+      rewrites: [
+        {
+          from: /./,
+          to: '/',
+        },
+      ],
     },
 
     // Webpack has a horrible setup for disabling logs. There is a `noInfo`
@@ -126,16 +140,19 @@ export async function dev(...args: string[]) {
 
   await Promise.all([firstCompilePromise, httpListenPromise]);
 
-  log(`Your extension is available at ${fileUrl}`);
-
-  log(`You can append this query string: ${convertDataToQueryString(data)}`);
+  log(`Your extension is available at ${localhostScriptUrl}`);
+  log(
+    `You can append this query string: ${convertLegacyPostPurchaseDataToQueryString(
+      legacyPostPurchaseData,
+    )}`,
+  );
 
   const openUrl = getOpenUrl(args);
 
   if (openUrl) {
     const extensionPoint = namedArgument('extension-point', args);
 
-    openUrl.searchParams.set('extension', JSON.stringify(fileUrl));
+    openUrl.searchParams.set('extension', JSON.stringify(localhostScriptUrl));
 
     if (extensionPoint) {
       openUrl.searchParams.set('extension-point', extensionPoint);
