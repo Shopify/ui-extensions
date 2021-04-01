@@ -5,6 +5,7 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
 import {
+  loadExtension,
   getLegacyPostPurchaseData,
   convertLegacyPostPurchaseDataToQueryString,
   log,
@@ -19,13 +20,14 @@ const WEBSOCKET_PATH = '/build';
 const PUBLIC_PATH = '/assets/';
 
 export async function dev(...args: string[]) {
+  const extension = loadExtension();
+
   const port = Number(
     namedArgument('port', args) ?? (await getPort({port: 8910})),
   );
   const url = `http://localhost:${port}`;
   const filename = 'extension.js';
   const localhostScriptUrl = `${url}${PUBLIC_PATH}${filename}`;
-  const legacyPostPurchaseData = getLegacyPostPurchaseData(localhostScriptUrl);
 
   const compiler = webpack(
     createWebpackConfiguration({
@@ -91,8 +93,35 @@ export async function dev(...args: string[]) {
     before(app) {
       app.get('/', (_, res) => {
         res.set('Content-Type', 'text/html');
+        res.set('Cache-Control', 'no-cache');
         res.send('<html>TODO</html>');
         res.end();
+      });
+
+      // This endpoint is used by C1 to request information about the local workspace,
+      // including what extensions are available locally, and how to connect to the
+      // build server websocket for those extensions.
+      app.get('/query', (req, res) => {
+        const protocol = req.headers['x-forwarded-proto'] ?? req.protocol;
+        const host = req.headers.host;
+        const origin = `${protocol}://${host}`;
+
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Cache-Control', 'no-cache');
+
+        res.json({
+          queryUrl: `${origin}${req.path}`,
+          extensions: [
+            {
+              scriptUrl: `${origin}${PUBLIC_PATH}${filename}`,
+              socketUrl: `${origin.replace(/^http/, 'ws')}${WEBSOCKET_PATH}`,
+              extensionPoint:
+                extension.type === 'checkout'
+                  ? extension.config.extensionPoints[0]
+                  : 'Checkout::PostPurchase::Render',
+            },
+          ],
+        });
       });
 
       // This endpoint powers a browser extension that was built for the
@@ -100,7 +129,7 @@ export async function dev(...args: string[]) {
       // https://github.com/Shopify/post-purchase-devtools/blob/master/src/background/background.ts#L16-L35
       app.get(LEGACY_POST_PURCHASE_DATA_PATH, (_, res) => {
         res.set('Access-Control-Allow-Origin', '*');
-        res.json(legacyPostPurchaseData);
+        res.json(getLegacyPostPurchaseData(localhostScriptUrl, extension));
       });
     },
 
@@ -141,11 +170,22 @@ export async function dev(...args: string[]) {
   await Promise.all([firstCompilePromise, httpListenPromise]);
 
   log(`Your extension is available at ${localhostScriptUrl}`);
-  log(
-    `You can append this query string: ${convertLegacyPostPurchaseDataToQueryString(
-      legacyPostPurchaseData,
-    )}`,
-  );
+
+  if (extension.type === 'post-purchase') {
+    log(
+      `You can append this query string: ${convertLegacyPostPurchaseDataToQueryString(
+        getLegacyPostPurchaseData(localhostScriptUrl, extension),
+      )}`,
+    );
+  } else {
+    log(`Next, run \`shopify tunnel start --port=${port}\` in a new terminal.`);
+    log(
+      `You’ll then need to create a checkout on your development shop, and append this query string to the first page of checkout,`,
+    );
+    log(
+      `replacing TUNNEL_URL with your own ngrok URL: \`?dev=https://TUNNEL_URL/query\``,
+    );
+  }
 
   const openUrl = getOpenUrl(args);
 
