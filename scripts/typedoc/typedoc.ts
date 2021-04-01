@@ -92,9 +92,15 @@ async function extensionPoints() {
     markdown += '\n\n---\n\n';
   });
 
-  fs.writeFile(resolve('./test.md'), markdown, function (err) {
-    if (err) throw err;
-  });
+  fs.writeFile(
+    resolve(
+      '../checkout-web/packages/argo-checkout/src/extension-points/README.md',
+    ),
+    markdown,
+    function (err) {
+      if (err) throw err;
+    },
+  );
 }
 
 // components();
