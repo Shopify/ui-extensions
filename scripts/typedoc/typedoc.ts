@@ -1,14 +1,106 @@
-import * as path from 'path';
+import {resolve} from 'path';
 import * as fs from 'fs';
 import {v4 as uuidv4} from 'uuid';
 
-import type {ImportedReference} from './types';
+import type {
+  ImportedReference,
+  InterfaceType,
+  LocalReference,
+  RemoteComponent,
+  Type,
+} from './types';
 import {createDependencyGraph, Module} from './utilities/dependency-graph';
 
-run();
+extensionPoints();
 
-async function run() {
-  const componentIndex = path.resolve(
+const additionalPropsTables: string[] = [];
+
+async function extensionPoints() {
+  const extensionsIndex = resolve(
+    '../checkout-web/packages/argo-checkout/src/extension-points/index.ts',
+  );
+
+  const graph = await createDependencyGraph(extensionsIndex);
+
+  const allInterfaces: InterfaceType[] = [];
+
+  for (const value of graph.values()) {
+    const localValues = [...value.locals.values()];
+    allInterfaces.push(
+      ...(localValues.filter(
+        ({kind}) => kind === 'InterfaceType',
+      ) as InterfaceType[]),
+    );
+  }
+
+  const exports: {
+    value: RemoteComponent | Type | LocalReference;
+    module: Module | undefined;
+  }[] = [];
+
+  graph.forEach((value) => {
+    value.exports.forEach((value, key) => {
+      if (value.kind === 'Imported') {
+        const resolved = resolveImport(value, graph) as any;
+
+        if (resolved.value.name == null) {
+          resolved.value.name = key;
+        }
+
+        exports.push(resolved);
+      }
+    });
+
+    value.locals.forEach((value: any, key) => {
+      if (value.kind !== 'Imported') {
+        if (value.name == null) {
+          value.name = key;
+        }
+        exports.push({value, module: undefined});
+      }
+    });
+  });
+
+  const interfaceEntryPoints = [
+    'PostPurchaseShouldRenderApi',
+    'PostPurchaseShouldRenderResult',
+    'PostPurchaseRenderApi',
+    'InputData',
+    'Purchase',
+    'Shop',
+    'MoneyBag',
+    'LineItem',
+    'Metafield',
+    'Merchandise',
+    'Money',
+    'Attribute',
+    'Product',
+    'MerchandiseImage',
+    'MerchandiseOption',
+    'Variant',
+  ];
+
+  const interfaces = allInterfaces.filter(({name}) =>
+    interfaceEntryPoints.includes(name),
+  );
+
+  let markdown = '';
+  interfaces.forEach(({name, docs, properties}) => {
+    markdown += `<a name="${name}"></a>\n\n## ${name}\n\n`;
+    markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
+    markdown += propsTable(properties, exports, extensionsIndex);
+    markdown += '\n\n---\n\n';
+  });
+
+  fs.writeFile(resolve('./test.md'), markdown, function (err) {
+    if (err) throw err;
+  });
+}
+
+// components();
+
+async function components() {
+  const componentIndex = resolve(
     '../checkout-web/packages/argo-checkout/src/components/index.ts',
   );
 
@@ -23,7 +115,7 @@ async function run() {
     ),
   ];
 
-  const devDocs = path.resolve(
+  const devDocs = resolve(
     '../shopify-dev/content/tools/argo-checkout/components',
   );
 
@@ -60,7 +152,7 @@ async function run() {
 
       if (properties.length > 0) {
         markdown += '## Props\nrequired = *\n';
-        markdown += propsTable(properties, exports, directory);
+        markdown += propsTable(properties, exports, `${directory}/index.ts`);
       }
 
       index += `- [${name}](/tools/argo-checkout/components/${name.toLowerCase()})\n`;
@@ -73,9 +165,7 @@ async function run() {
   });
 
   fs.writeFile(
-    path.resolve(
-      '../shopify-dev/content/tools/argo-checkout/components/index.md',
-    ),
+    resolve('../shopify-dev/content/tools/argo-checkout/components/index.md'),
     index,
     function (err) {
       if (err) throw err;
@@ -123,13 +213,16 @@ function propType(value: any, exports: any[], dir: string): any {
           return '<code>T</code>';
         }
 
-        throw new Error(
-          `Can’t resolve export type \`${value.name}\` in ${dir}/index.ts. It’s probably not exported from the component index.`,
+        // eslint-disable-next-line no-console
+        console.warn(
+          `Can’t resolve export type \`${value.name}\` in ${dir}. Maybe it’s not exported from the component index or imported from a remote package.`,
         );
+
+        return `<code>${value.name}</code>`;
       }
       return propType(local.value, exports, dir);
     case 'InterfaceType':
-      return propsTable(value.properties, exports, dir);
+      return `<code><a href="#${value.name}">${value.name}</a></code>`;
     case 'UnionType':
       return value.types
         .map((type: any) => {

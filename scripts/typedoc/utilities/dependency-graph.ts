@@ -25,6 +25,7 @@ import type {
   RemoteComponent,
   UndocumentedType,
   Exportable,
+  StringLiteralType,
 } from '../types';
 
 interface UnresolvedLocal {
@@ -375,7 +376,7 @@ function resolveNodeToLocal(
         node.callee.type !== 'Identifier' ||
         node.callee.name !== 'createRemoteComponent'
       ) {
-        return {kind: 'UndocumentedType'};
+        return UNDOCUMENTED;
       }
 
       const typeParams = node.typeParameters?.params;
@@ -411,10 +412,40 @@ function resolveNodeToLocal(
 
       return array;
     }
+    case 'TSTypeOperator': {
+      switch (node.operator) {
+        case 'keyof': {
+          const local = resolveNodeToLocal(node.typeAnnotation, context);
+          if (local.kind === 'Local') {
+            const ref = context.resolvedLocals.get(local.name);
+
+            if (ref && ref.kind === 'InterfaceType') {
+              const types = ref.properties.map((prop) => {
+                const type: StringLiteralType = {
+                  kind: 'StringLiteralType',
+                  value: prop.name,
+                };
+                return type;
+              });
+
+              return {
+                kind: 'UnionType',
+                types,
+              };
+            }
+          }
+
+          return UNDOCUMENTED;
+        }
+        default: {
+          return UNDOCUMENTED;
+        }
+      }
+    }
     default: {
-      return {
-        kind: 'UndocumentedType',
-      };
+      // eslint-disable-next-line no-console
+      console.log(`${node.type} is unhandled`);
+      return UNDOCUMENTED;
     }
   }
 }
