@@ -91,10 +91,80 @@ export async function dev(...args: string[]) {
     publicPath: PUBLIC_PATH,
 
     before(app) {
-      app.get('/', (_, res) => {
+      app.get('/', (req, res) => {
+        const protocol = req.headers['x-forwarded-proto'] ?? req.protocol;
+        const host = req.headers.host;
+        const origin = `${protocol}://${host}`;
+
         res.set('Content-Type', 'text/html');
         res.set('Cache-Control', 'no-cache');
-        res.send('<html>TODO</html>');
+
+        function renderIndexPage(content: string) {
+          res.send(`
+            <html>
+              <head>
+                <meta data-react-html="true" name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, viewport-fit=cover">
+                <style>
+                  * {
+                    box-sizing: border-box;
+                  }
+
+                  body {
+                    min-height: 100vh;
+                    min-height: -webkit-fill-available;
+                    display: grid;
+                    margin: 0;
+                    align-content: center;
+                    justify-content: center;
+
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                      sans-serif;
+                  }
+
+                  html {
+                    height: -webkit-fill-available;
+                    background: black;
+                    color: white;
+                  }
+
+                  .content {
+                    max-width: 40rem;
+                    padding: 2rem;
+                    font-size: 1.5em;
+                  }
+
+                  code {
+                    color: mediumseagreen;
+                    word-break: keep-all;
+                  }
+                </style>
+              </head>
+
+              <body>
+                <div class="content">
+                  <p>
+                    This page is served by your local Argo development server. Instead of
+                    visiting this page directly, you will need to connect your local development
+                    environment to a real checkout environment.
+                  </p>
+                  <p>${content}</p>
+                </div>
+              </body>
+            </html>
+          `);
+        }
+
+        if (protocol === 'https') {
+          renderIndexPage(
+            `Create a checkout and append <code>?dev=${origin}/query</code> to the URL to start developing your extension.`,
+          );
+        } else {
+          renderIndexPage(`Make sure you have an secure URL for your local development server by running <code>shopify tunnel start --port=${port}</code>,
+            create a checkout, and append <code>?dev=https://TUNNEL_URL/query</code> to the URL, where <code>TUNNEL_URL</code> is
+            replaced with your own ngrok URL.`);
+        }
+
         res.end();
       });
 
