@@ -3,15 +3,21 @@ import * as fs from 'fs';
 import {v4 as uuidv4} from 'uuid';
 
 import type {
-  ImportedReference,
+  Documentation,
   InterfaceType,
   LocalReference,
   RemoteComponent,
   Type,
+  PropertySignature,
 } from './types';
 import {createDependencyGraph, Module} from './utilities/dependency-graph';
 
 extensionPoints();
+
+interface Node {
+  value: RemoteComponent | Type | LocalReference;
+  module: Module | undefined;
+}
 
 const additionalPropsTables: string[] = [];
 
@@ -33,77 +39,57 @@ async function extensionPoints() {
     );
   }
 
-  const exports: {
-    value: RemoteComponent | Type | LocalReference;
-    module: Module | undefined;
-  }[] = [];
+  const nodes: Node[] = [];
 
   graph.forEach((value) => {
-    value.exports.forEach((value, key) => {
-      if (value.kind === 'Imported') {
-        const resolved = resolveImport(value, graph) as any;
-
-        if (resolved.value.name == null) {
-          resolved.value.name = key;
-        }
-
-        exports.push(resolved);
-      }
-    });
-
     value.locals.forEach((value: any, key) => {
       if (value.kind !== 'Imported') {
         if (value.name == null) {
           value.name = key;
         }
-        exports.push({value, module: undefined});
+        nodes.push({value, module: undefined});
       }
     });
   });
 
   const interfaceEntryPoints = [
     'PostPurchaseShouldRenderApi',
-    'PostPurchaseShouldRenderResult',
     'PostPurchaseRenderApi',
-    'InputData',
-    'Purchase',
-    'Shop',
-    'MoneyBag',
-    'LineItem',
-    'Metafield',
-    'Merchandise',
-    'Money',
-    'Attribute',
-    'Product',
-    'MerchandiseImage',
-    'MerchandiseOption',
-    'Variant',
   ];
 
   const interfaces = allInterfaces.filter(({name}) =>
     interfaceEntryPoints.includes(name),
   );
 
-  let markdown = '';
+  const apiFile = resolve(
+    '../shopify-dev/content/tools/argo-checkout/extension-points/api.md',
+  );
+
+  const folder = resolve(
+    '../shopify-dev/content/tools/argo-checkout/extension-points',
+  );
+
+  if (!fs.existsSync(folder)) {
+    fs.mkdirSync(folder);
+  }
+
+  const uuid = findUuid(apiFile);
+
+  let markdown = `---\ngid: ${uuid}\nurl: /tools/argo-checkout/extension-points/api.md}\ntitle: Extension Points API\nhidden: true\n---\n\n`;
   interfaces.forEach(({name, docs, properties}) => {
-    markdown += `<a name="${name}"></a>\n\n## ${name}\n\n`;
-    markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
-    markdown += propsTable(properties, exports, extensionsIndex);
-    markdown += '\n\n---\n\n';
+    markdown += propsTable(name, docs, properties, nodes, extensionsIndex);
   });
 
-  fs.writeFile(
-    resolve(
-      '../checkout-web/packages/argo-checkout/src/extension-points/README.md',
-    ),
-    markdown,
-    function (err) {
-      if (err) throw err;
-    },
-  );
+  markdown += additionalPropsTables.reverse().join('');
+
+  fs.writeFile(apiFile, markdown, function (err) {
+    if (err) throw err;
+  });
+
+  additionalPropsTables.length = 0;
 }
 
-// components();
+components();
 
 async function components() {
   const componentIndex = resolve(
@@ -112,90 +98,107 @@ async function components() {
 
   const graph = await createDependencyGraph(componentIndex);
 
-  // Get de-duped component directories as they should be 1:1 with README files.
-  const resolvedComponentDirs = [
-    ...new Set(
-      [...graph.get(componentIndex)!.exports.values()].map(({path}: any) =>
-        path.substring(0, path.length - 9),
-      ),
-    ),
-  ];
+  const nodes: Node[] = [];
+
+  graph.forEach((value) => {
+    value.locals.forEach((value: any, key) => {
+      if (value.kind !== 'Imported') {
+        if (value.name == null) {
+          value.name = key;
+        }
+        nodes.push({value, module: undefined});
+      }
+    });
+  });
 
   const devDocs = resolve(
     '../shopify-dev/content/tools/argo-checkout/components',
   );
 
-  let index = `---\ngid: ${uuidv4()}\nurl: /tools/argo-checkout/components/index\ntitle: Argo Checkout Components\ndescription: A list of Argo Checkout Components.\nhidden: true\n---\n\n`;
+  const indexFile = resolve(
+    '../shopify-dev/content/tools/argo-checkout/components/index.md',
+  );
 
-  // Loop through each directory, get all exports from the index, and build docs.
-  resolvedComponentDirs.forEach((directory) => {
-    const exports = [] as any;
-    graph.get(`${directory}/index.ts`)!.exports.forEach((value, key) => {
-      const resolved = resolveImport(value as any, graph) as any;
+  let index = `---\ngid: ${findUuid(
+    indexFile,
+  )}\nurl: /tools/argo-checkout/components/index\ntitle: Argo Checkout Components\ndescription: A list of Argo Checkout Components.\nhidden: true\n---\n\n`;
 
-      if (resolved.value.name == null) {
-        resolved.value.name = key;
-      }
+  const components = [
+    ...new Set(nodes.filter(({value}: any) => value.kind === 'Component')),
+  ];
 
-      exports.push(resolved);
+  components.forEach(({value: {name, docs, props}}: any) => {
+    const file = `${devDocs}/${name.toLowerCase()}.md`;
+    const uuid = findUuid(file);
+
+    let markdown = `---\ngid: ${uuid}\nurl: /tools/argo-checkout/components/${name.toLowerCase()}\ntitle: ${name}\nhidden: true\n---\n\n`;
+    markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
+
+    const face = nodes.find(({value}: any) => value.name === props.name);
+    if (
+      face &&
+      face.value.kind === 'InterfaceType' &&
+      face.value.properties.length > 0
+    ) {
+      markdown += '## Props\noptional = ?\n';
+      markdown += propsTable(
+        name,
+        docs,
+        face.value.properties,
+        nodes,
+        componentIndex,
+        false,
+      );
+    }
+
+    markdown += additionalPropsTables.reverse().join('');
+
+    index += `- [${name}](/tools/argo-checkout/components/${name.toLowerCase()})\n`;
+    fs.writeFile(`${devDocs}/${name.toLowerCase()}.md`, markdown, function (
+      err,
+    ) {
+      if (err) throw err;
     });
 
-    // Find the components in the exports. This uses Array#filter because FormLayout has 2 components.
-    const components = exports.filter(
-      ({value}: any) => value.kind === 'Component',
-    );
-
-    // Go through each component and build a README.md with the component name and doc content.
-    // Find the component props and recursively build the props table.
-    // Nested interfaces are rendered as nested tables in the type column.
-    components.forEach(({value: {name, docs, props}}: any) => {
-      let markdown = `---\ngid: ${uuidv4()}\nurl: /tools/argo-checkout/components/${name.toLowerCase()}\ntitle: ${name}\nhidden: true\n---\n\n`;
-      markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
-
-      const {
-        value: {properties},
-      } = exports.find(({value}: any) => value.name === props.name);
-
-      if (properties.length > 0) {
-        markdown += '## Props\nrequired = *\n';
-        markdown += propsTable(properties, exports, `${directory}/index.ts`);
-      }
-
-      index += `- [${name}](/tools/argo-checkout/components/${name.toLowerCase()})\n`;
-      fs.writeFile(`${devDocs}/${name.toLowerCase()}.md`, markdown, function (
-        err,
-      ) {
-        if (err) throw err;
-      });
-    });
+    additionalPropsTables.length = 0;
   });
 
-  fs.writeFile(
-    resolve('../shopify-dev/content/tools/argo-checkout/components/index.md'),
-    index,
-    function (err) {
-      if (err) throw err;
-    },
-  );
+  // Write the component table of contents
+  fs.writeFile(indexFile, index, function (err) {
+    if (err) throw err;
+  });
 }
 
-function propsTable(properties: any, exports: any, dir: string) {
-  let tableMarkdown =
-    '<table><tr><th>Name</th><th>Type</th><th>Description</th></tr>';
+function propsTable(
+  name: string,
+  docs: Documentation | undefined,
+  properties: PropertySignature[],
+  exports: Node[],
+  dir: string,
+  titleAndDocs = true,
+) {
+  let markdown = '';
 
-  properties.forEach(({name, optional, value, docs}: any) => {
-    tableMarkdown += `<tr><td>${name}${optional ? '' : '*'}</td><td>${propType(
+  if (titleAndDocs) {
+    markdown += `<a name="${name}"></a>\n\n## ${name}\n\n`;
+    markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
+  }
+  markdown += '<table><tr><th>Name</th><th>Type</th><th>Description</th></tr>';
+
+  properties.forEach(({name: propName, optional, value, docs: propDocs}) => {
+    markdown += `<tr><td>${propName}${optional ? '?' : ''}</td><td>${propType(
       value,
       exports,
       dir,
     )}</td><td>${
-      docs ? strip(docs.content).replace(/(\r\n|\n|\r)/gm, '') : ''
+      propDocs ? strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, '') : ''
     }</td></tr>`;
   });
 
-  tableMarkdown += '</table>';
+  markdown += '</table>';
+  markdown += '\n\n---\n\n';
 
-  return tableMarkdown;
+  return markdown;
 }
 
 function propType(value: any, exports: any[], dir: string): any {
@@ -205,7 +208,7 @@ function propType(value: any, exports: any[], dir: string): any {
     case 'BooleanType':
       return '<code>boolean</code>';
     case 'ArrayType':
-      return `Array of ${propType(value.elements, exports, dir)}`;
+      return `${propType(value.elements, exports, dir)}[]`;
     case 'NumberType':
       return '<code>number</code>';
     case 'Local':
@@ -228,6 +231,9 @@ function propType(value: any, exports: any[], dir: string): any {
       }
       return propType(local.value, exports, dir);
     case 'InterfaceType':
+      additionalPropsTables.push(
+        propsTable(value.name, value.docs, value.properties, exports, dir),
+      );
       return `<code><a href="#${value.name}">${value.name}</a></code>`;
     case 'UnionType':
       return value.types
@@ -240,62 +246,20 @@ function propType(value: any, exports: any[], dir: string): any {
     case 'NumberLiteralType':
       return `<code>${value.value}</code>`;
     case 'FunctionType':
-      return `<code>(${paramsType(value.parameters)}) => ${returnType(
-        value.returnType.kind,
-      )}</code>`;
+      return `<code>(${paramsType(
+        value.parameters,
+        exports,
+        dir,
+      )}) => ${propType(value.returnType, exports, dir)}</code>`;
     default:
       return `<pre>${JSON.stringify(value, null, 2)}</pre>`;
   }
 }
 
-function returnType(type: string) {
-  switch (type) {
-    case 'VoidType':
-      return 'void';
-    default:
-      return type;
-  }
-}
-
-function argType(type: string) {
-  switch (type) {
-    case 'BooleanType':
-      return 'boolean';
-    case 'StringType':
-      return 'string';
-    default:
-      return type;
-  }
-}
-
-function paramsType(params: any[]) {
+function paramsType(params: any[], exports: any[], dir: string) {
   return params
-    .map((param) => `${param.name}: ${argType(param.type.kind)}`)
+    .map((param) => `${param.name}: ${propType(param.type, exports, dir)}`)
     .join(', ');
-}
-
-function resolveImport(
-  {name, path}: Pick<ImportedReference, 'name' | 'path'>,
-  modules: Map<string, Module>,
-) {
-  let resolvePath = path;
-  let resolveName = name;
-
-  while (true) {
-    const module = modules.get(resolvePath);
-    const resolved = module?.exports.get(resolveName);
-
-    if (resolved == null) {
-      throw new Error(
-        `Can’t resolve export ${resolveName} in ${JSON.stringify(resolvePath)}`,
-      );
-    } else if (resolved.kind === 'Imported') {
-      resolvePath = resolved.path;
-      resolveName = resolved.name;
-    } else {
-      return {value: resolved, module};
-    }
-  }
 }
 
 function strip(content: string) {
@@ -317,4 +281,21 @@ function escapeHTML(html: string) {
     '"': '&#34;',
   };
   return html.replace(/[&<>"]/g, (tag: string) => chars[tag] || tag);
+}
+
+function findUuid(file: string) {
+  let uuid = uuidv4();
+  if (fs.existsSync(file)) {
+    const uuidMatch = fs
+      .readFileSync(file, 'utf8')
+      .match(
+        /\b[0-9a-f]{8}\b-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-\b[0-9a-f]{12}\b/g,
+      );
+
+    if (uuidMatch != null) {
+      uuid = uuidMatch[0];
+    }
+  }
+
+  return uuid;
 }

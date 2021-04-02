@@ -272,9 +272,9 @@ function resolveNodeToLocal(
               ? parameter.name
               : (parameter.argument as Identifier).name,
           type:
-            node.typeAnnotation == null
+            parameter.typeAnnotation == null
               ? UNDOCUMENTED
-              : (resolveNodeToLocal(node.typeAnnotation, context) as any),
+              : (resolveNodeToLocal(parameter.typeAnnotation, context) as any),
         })),
         returnType:
           node.typeAnnotation == null
