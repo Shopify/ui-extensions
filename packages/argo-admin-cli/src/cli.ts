@@ -25,6 +25,7 @@ import {server} from './server';
             resourceUrl: {type: 'string'},
             shop: {type: 'string'},
             argoVersion: {type: 'string'},
+            uuid: {type: 'string'},
           }),
       server,
     )
