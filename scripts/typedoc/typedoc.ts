@@ -13,6 +13,7 @@ import type {
 import {createDependencyGraph, Module} from './utilities/dependency-graph';
 
 extensionPoints();
+components();
 
 interface Node {
   value: RemoteComponent | Type | LocalReference;
@@ -89,8 +90,6 @@ async function extensionPoints() {
   additionalPropsTables.length = 0;
 }
 
-components();
-
 async function components() {
   const componentIndex = resolve(
     '../checkout-web/packages/argo-checkout/src/components/index.ts',
@@ -153,7 +152,6 @@ async function components() {
 
     markdown += additionalPropsTables.reverse().join('');
 
-    index += `- [${name}](/tools/argo-checkout/components/${name.toLowerCase()})\n`;
     fs.writeFile(`${devDocs}/${name.toLowerCase()}.md`, markdown, function (
       err,
     ) {
@@ -161,6 +159,7 @@ async function components() {
     });
 
     additionalPropsTables.length = 0;
+    index += `- [${name}](/tools/argo-checkout/components/${name.toLowerCase()})\n`;
   });
 
   // Write the component table of contents
