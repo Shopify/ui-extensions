@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export type Spacing = 'xtight' | 'tight' | 'loose' | 'xloose';
-export type Alignment = 'leading' | 'center' | 'trailing' | 'baseline';
+type Spacing = 'xtight' | 'tight' | 'loose' | 'xloose';
+type Alignment = 'leading' | 'center' | 'trailing' | 'baseline';
 
 export interface BookendProps {
   /** Sets the leading child to its inherent size */

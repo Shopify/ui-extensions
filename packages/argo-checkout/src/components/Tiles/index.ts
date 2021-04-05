@@ -1,2 +1,2 @@
 export {Tiles} from './Tiles';
-export type {TilesProps, Alignment, Spacing} from './Tiles';
+export type {TilesProps} from './Tiles';

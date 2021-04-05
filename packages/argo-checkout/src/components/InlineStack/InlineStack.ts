@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export type Spacing = 'xtight' | 'tight' | 'loose' | 'xloose';
-export type Alignment = 'leading' | 'center' | 'trailing' | 'baseline';
+type Spacing = 'xtight' | 'tight' | 'loose' | 'xloose';
+type Alignment = 'leading' | 'center' | 'trailing' | 'baseline';
 
 export interface InlineStackProps {
   /** Position children along the cross axis */

@@ -1,9 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {Autocomplete} from '../shared';
 
-export type Type = 'text' | 'email' | 'number' | 'telephone';
+type Type = 'text' | 'email' | 'number' | 'telephone';
 
-export interface Tooltip {
+interface Tooltip {
   /**
    * A label to indicate what information the tooltip will provide. Currently,
    * this label is only used for assistive technologies.

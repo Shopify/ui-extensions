@@ -21,7 +21,7 @@ import {createRemoteComponent} from '@remote-ui/core';
  * if card details couldn't be processed. Seeing these banners can be stressful
  * for customers so be cautious about using them.
  */
-export type Status = 'info' | 'success' | 'warning' | 'critical';
+type Status = 'info' | 'success' | 'warning' | 'critical';
 
 export interface BannerProps {
   /**

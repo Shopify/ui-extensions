@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export type Size = 'small' | 'medium' | 'large' | 'xlarge';
-export type Role =
+type Size = 'small' | 'medium' | 'large' | 'xlarge';
+type Role =
   /** Indicate the text is a contact information. Typically used for addresses. */
   | 'address'
   /** Indicate the text has been deleted. Typically used for discounted prices. */

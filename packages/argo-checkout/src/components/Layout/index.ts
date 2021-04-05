@@ -1,2 +1,2 @@
 export {Layout} from './Layout';
-export type {LayoutProps, Size, ViewportSize, Media} from './Layout';
+export type {LayoutProps} from './Layout';
