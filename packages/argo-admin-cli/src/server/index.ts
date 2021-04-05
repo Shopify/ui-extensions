@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import getPort from 'get-port';
@@ -6,6 +8,8 @@ import {merge} from 'lodash';
 import {log} from '../utilities';
 
 import {createClientConfig, createHostConfig, run} from './utilities';
+
+const tunnelErrorHtml = fs.readFileSync(`${__dirname}/tunnel-error/index.html`, 'utf8').toString();
 
 export interface ServerConfig {
   apiKey?: string;
@@ -87,6 +91,20 @@ export async function server(config: ServerConfig) {
           };
         }
 
+        if (!isLegacyCli) {
+          app.get('/', function (req, res) {
+            const protocol = req.headers['x-forwarded-proto'] || req.protocol;
+            const host = req.headers.host;
+
+            const isLocalHost = /(0.0.0.0|127.0.0.1|localhost)/.test(host || '');
+            if (isLocalHost || protocol !== 'https') {
+              res.send(tunnelErrorHtml);
+            } else {
+              res.redirect(`https://${shop}/admin/extensions-dev?url=https://${host}/${dataPath}`);
+            }
+          });
+        }
+
         app.get(`/${dataPath}`, function (req, res) {
           res.json({
             ...manifest,
@@ -120,9 +138,7 @@ export async function server(config: ServerConfig) {
       log(`Started dev server on ${serverUrl}`);
       log(`| What's next?`);
       log(`| Run shopify tunnel start --port=${port}`);
-      log(
-        `| Open extension on your development store using https://${shop}/admin/extensions-dev?url=https://TUNNEL-URL/data`,
-      );
+      log(`| Open the tunnel url`);
     },
   });
 }
