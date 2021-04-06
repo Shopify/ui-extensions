@@ -97,7 +97,7 @@ export async function dev(...args: string[]) {
         const origin = `${protocol}://${host}`;
 
         res.set('Content-Type', 'text/html');
-        res.set('Cache-Control', 'no-cache');
+        res.set('Cache-Control', 'no-store');
 
         function renderIndexPage(content: string) {
           res.send(`
