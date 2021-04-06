@@ -1,4 +1,4 @@
-import {resolve} from 'path';
+import {resolve, extname} from 'path';
 import * as fs from 'fs';
 import {v4 as uuidv4} from 'uuid';
 
@@ -24,7 +24,7 @@ const additionalPropsTables: string[] = [];
 
 async function extensionPoints() {
   const extensionsIndex = resolve(
-    '../checkout-web/packages/argo-checkout/src/extension-points/index.ts',
+    '../checkout-web/packages/argo-checkout/src/index.ts',
   );
 
   const graph = await createDependencyGraph(extensionsIndex);
@@ -54,7 +54,8 @@ async function extensionPoints() {
   });
 
   const interfaceEntryPoints = [
-    'PostPurchaseShouldRenderApi',
+    'ExtensionPoints',
+    // 'PostPurchaseShouldRenderApi',
     'PostPurchaseRenderApi',
   ];
 
@@ -76,12 +77,12 @@ async function extensionPoints() {
 
   const uuid = findUuid(apiFile);
 
-  let markdown = `---\ngid: ${uuid}\nurl: /tools/argo-checkout/extension-points/api.md}\ntitle: Extension Points API\nhidden: true\n---\n\n`;
+  let markdown = `---\ngid: ${uuid}\nurl: /tools/argo-checkout/extension-points/api.md\ntitle: Extension Points API\nhidden: true\n---\n\n`;
   interfaces.forEach(({name, docs, properties}) => {
     markdown += propsTable(name, docs, properties, nodes, extensionsIndex);
   });
 
-  markdown += additionalPropsTables.reverse().join('');
+  markdown += dedupe(additionalPropsTables).reverse().join('');
 
   fs.writeFile(apiFile, markdown, function (err) {
     if (err) throw err;
@@ -133,6 +134,13 @@ async function components() {
     let markdown = `---\ngid: ${uuid}\nurl: /tools/argo-checkout/components/${name.toLowerCase()}\ntitle: ${name}\nhidden: true\n---\n\n`;
     markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
 
+    const examples = getComponentExamplesFor(name);
+
+    if (examples.length > 0) {
+      markdown += '## Examples\n\n';
+      markdown += getComponentExamplesFor(name).join('');
+    }
+
     const face = nodes.find(({value}: any) => value.name === props.name);
     if (
       face &&
@@ -150,7 +158,7 @@ async function components() {
       );
     }
 
-    markdown += additionalPropsTables.reverse().join('');
+    markdown += dedupe(additionalPropsTables).reverse().join('');
 
     fs.writeFile(`${devDocs}/${name.toLowerCase()}.md`, markdown, function (
       err,
@@ -194,8 +202,7 @@ function propsTable(
     }</td></tr>`;
   });
 
-  markdown += '</table>';
-  markdown += '\n\n---\n\n';
+  markdown += '</table>\n\n';
 
   return markdown;
 }
@@ -297,4 +304,28 @@ function findUuid(file: string) {
   }
 
   return uuid;
+}
+
+function dedupe<T>(array: T[]) {
+  return [...new Set(array)];
+}
+
+function getComponentExamplesFor(name: string) {
+  const examples: string[] = [];
+  const folder = resolve(
+    `../checkout-web/packages/argo-checkout/src/components/${name}/examples`,
+  );
+
+  if (fs.existsSync(folder)) {
+    fs.readdirSync(folder).forEach((file) => {
+      examples.push(
+        `\`\`\`${extname(file).split('.').pop()}\n${fs.readFileSync(
+          `${folder}/${file}`,
+          'utf8',
+        )}\n\`\`\`\n\n`,
+      );
+    });
+  }
+
+  return examples;
 }
