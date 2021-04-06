@@ -1,6 +1,7 @@
 import {URLSearchParams} from 'url';
 import {resolve, join} from 'path';
 import {readFileSync, existsSync} from 'fs';
+import camelcaseKeys from 'camelcase-keys';
 import chalk from 'chalk';
 
 import {safeLoad as loadYaml} from 'js-yaml';
@@ -49,19 +50,50 @@ export function shouldUseReact(): boolean | 'mini' {
   }
 }
 
-export function readConfig() {
-  const configPath = resolve(join(process.cwd(), 'extension.config.yml'));
-  if (!existsSync(configPath)) {
-    return null;
-  }
+export interface CheckoutExtensionConfig {
+  readonly extensionPoints: string[];
+}
 
-  try {
-    return loadYaml(readFileSync(configPath, 'utf8'));
-  } catch (error) {
-    log('Failed parsing extension.config.yml', {error: true});
-    log(error, {error: true});
-    return null;
-  }
+export interface CheckoutExtension {
+  readonly type: 'checkout';
+  readonly config: CheckoutExtensionConfig;
+}
+
+export interface PostPurchaseExtensionConfig {
+  readonly metafields?: any;
+}
+
+export interface PostPurchaseExtension {
+  readonly type: 'post-purchase';
+  readonly config?: PostPurchaseExtensionConfig;
+}
+
+export type Extension = CheckoutExtension | PostPurchaseExtension;
+
+export function loadExtension(): Extension {
+  const config = readConfig();
+
+  return config == null || !('extensionPoints' in config)
+    ? {
+        type: 'post-purchase',
+        config,
+      }
+    : {
+        type: 'checkout',
+        config,
+      };
+}
+
+function readConfig() {
+  const configPath = resolve(join(process.cwd(), 'extension.config.yml'));
+  if (!existsSync(configPath)) return;
+
+  const config = loadYaml(readFileSync(configPath, 'utf8')) as
+    | CheckoutExtensionConfig
+    | PostPurchaseExtensionConfig
+    | undefined;
+
+  return config && camelcaseKeys(config, {deep: true});
 }
 
 type EnvFile = Record<string, string>;
@@ -71,7 +103,7 @@ interface Data {
   apiKey: string;
 }
 
-export function readEnvFile() {
+function readEnvFile() {
   const envPath = resolve(join(process.cwd(), '.env'));
 
   if (!existsSync(envPath)) {
@@ -94,13 +126,15 @@ export function readEnvFile() {
   return parsedEnv;
 }
 
-export function getLegacyPostPurchaseData(scriptUrl: string): Data {
-  const config = readConfig();
+export function getLegacyPostPurchaseData(
+  scriptUrl: string,
+  extension: Extension,
+): Data {
   const env = readEnvFile();
 
   return {
     scriptUrl,
-    config,
+    config: extension.config,
     apiKey: env.SHOPIFY_API_KEY || '',
   };
 }

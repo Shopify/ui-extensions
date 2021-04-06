@@ -5,6 +5,7 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
 import {
+  loadExtension,
   getLegacyPostPurchaseData,
   convertLegacyPostPurchaseDataToQueryString,
   log,
@@ -19,13 +20,14 @@ const WEBSOCKET_PATH = '/build';
 const PUBLIC_PATH = '/assets/';
 
 export async function dev(...args: string[]) {
+  const extension = loadExtension();
+
   const port = Number(
     namedArgument('port', args) ?? (await getPort({port: 8910})),
   );
   const url = `http://localhost:${port}`;
   const filename = 'extension.js';
   const localhostScriptUrl = `${url}${PUBLIC_PATH}${filename}`;
-  const legacyPostPurchaseData = getLegacyPostPurchaseData(localhostScriptUrl);
 
   const compiler = webpack(
     createWebpackConfiguration({
@@ -89,10 +91,107 @@ export async function dev(...args: string[]) {
     publicPath: PUBLIC_PATH,
 
     before(app) {
-      app.get('/', (_, res) => {
+      app.get('/', (req, res) => {
+        const protocol = req.headers['x-forwarded-proto'] ?? req.protocol;
+        const host = req.headers.host;
+        const origin = `${protocol}://${host}`;
+
         res.set('Content-Type', 'text/html');
-        res.send('<html>TODO</html>');
+        res.set('Cache-Control', 'no-store');
+
+        function renderIndexPage(content: string) {
+          res.send(`
+            <html>
+              <head>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, viewport-fit=cover">
+                <style>
+                  * {
+                    box-sizing: border-box;
+                  }
+
+                  body {
+                    min-height: 100vh;
+                    min-height: -webkit-fill-available;
+                    display: grid;
+                    margin: 0;
+                    align-content: center;
+                    justify-content: center;
+
+                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+                      sans-serif;
+                  }
+
+                  html {
+                    height: -webkit-fill-available;
+                    background: black;
+                    color: white;
+                  }
+
+                  .content {
+                    max-width: 40rem;
+                    padding: 2rem;
+                    font-size: 1.5em;
+                  }
+
+                  code {
+                    color: mediumseagreen;
+                    word-break: keep-all;
+                  }
+                </style>
+              </head>
+
+              <body>
+                <div class="content">
+                  <p>
+                    This page is served by your local Argo development server. Instead of
+                    visiting this page directly, you will need to connect your local development
+                    environment to a real checkout environment.
+                  </p>
+                  <p>${content}</p>
+                </div>
+              </body>
+            </html>
+          `);
+        }
+
+        if (protocol === 'https') {
+          renderIndexPage(
+            `Create a checkout and append <code>?dev=${origin}/query</code> to the URL to start developing your extension.`,
+          );
+        } else {
+          renderIndexPage(`Make sure you have an secure URL for your local development server by running <code>shopify tunnel start --port=${port}</code>,
+            create a checkout, and append <code>?dev=https://TUNNEL_URL/query</code> to the URL, where <code>TUNNEL_URL</code> is
+            replaced with your own ngrok URL.`);
+        }
+
         res.end();
+      });
+
+      // This endpoint is used by C1 to request information about the local workspace,
+      // including what extensions are available locally, and how to connect to the
+      // build server websocket for those extensions.
+      app.get('/query', (req, res) => {
+        const protocol = req.headers['x-forwarded-proto'] ?? req.protocol;
+        const host = req.headers.host;
+        const origin = `${protocol}://${host}`;
+
+        res.set('Access-Control-Allow-Origin', '*');
+        res.set('Cache-Control', 'no-cache');
+
+        res.json({
+          queryUrl: `${origin}${req.path}`,
+          extensions: [
+            {
+              scriptUrl: `${origin}${PUBLIC_PATH}${filename}`,
+              socketUrl: `${origin.replace(/^http/, 'ws')}${WEBSOCKET_PATH}`,
+              extensionPoint:
+                extension.type === 'checkout'
+                  ? extension.config.extensionPoints[0]
+                  : 'Checkout::PostPurchase::Render',
+            },
+          ],
+        });
       });
 
       // This endpoint powers a browser extension that was built for the
@@ -100,7 +199,7 @@ export async function dev(...args: string[]) {
       // https://github.com/Shopify/post-purchase-devtools/blob/master/src/background/background.ts#L16-L35
       app.get(LEGACY_POST_PURCHASE_DATA_PATH, (_, res) => {
         res.set('Access-Control-Allow-Origin', '*');
-        res.json(legacyPostPurchaseData);
+        res.json(getLegacyPostPurchaseData(localhostScriptUrl, extension));
       });
     },
 
@@ -141,11 +240,22 @@ export async function dev(...args: string[]) {
   await Promise.all([firstCompilePromise, httpListenPromise]);
 
   log(`Your extension is available at ${localhostScriptUrl}`);
-  log(
-    `You can append this query string: ${convertLegacyPostPurchaseDataToQueryString(
-      legacyPostPurchaseData,
-    )}`,
-  );
+
+  if (extension.type === 'post-purchase') {
+    log(
+      `You can append this query string: ${convertLegacyPostPurchaseDataToQueryString(
+        getLegacyPostPurchaseData(localhostScriptUrl, extension),
+      )}`,
+    );
+  } else {
+    log(`Next, run \`shopify tunnel start --port=${port}\` in a new terminal.`);
+    log(
+      `You’ll then need to create a checkout on your development shop, and append this query string to the first page of checkout,`,
+    );
+    log(
+      `replacing TUNNEL_URL with your own ngrok URL: \`?dev=https://TUNNEL_URL/query\``,
+    );
+  }
 
   const openUrl = getOpenUrl(args);
 
