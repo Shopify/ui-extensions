@@ -24,6 +24,7 @@ import {server} from './server';
             name: {type: 'string'},
             resourceUrl: {type: 'string'},
             shop: {type: 'string'},
+            argoVersion: {type: 'string'},
           }),
       server,
     )
