@@ -21,6 +21,7 @@ export interface ServerConfig {
   resourceUrl?: string;
   name?: string;
   shop?: string;
+  argoVersion?: string;
 }
 
 export async function server(config: ServerConfig) {
@@ -33,6 +34,7 @@ export async function server(config: ServerConfig) {
     resourceUrl: externalResourceUrl,
     type,
     shop,
+    argoVersion,
   } = config;
   const port = await getPort({port: config.port, host: '0.0.0.0'});
   const sockPath = 'stats';
@@ -74,6 +76,7 @@ export async function server(config: ServerConfig) {
           resourceUrl,
           identifier: type,
           resources: ['products', 'productVariant'],
+          argoVersion,
         };
 
         let manifestWithAdditionalMobileData = {};
