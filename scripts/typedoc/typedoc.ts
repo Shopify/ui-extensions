@@ -137,8 +137,7 @@ async function components() {
     const examples = getComponentExamplesFor(name);
 
     if (examples.length > 0) {
-      markdown += '## Examples\n\n';
-      markdown += getComponentExamplesFor(name).join('');
+      markdown += getComponentExamplesFor(name);
     }
 
     const face = nodes.find(({value}: any) => value.name === props.name);
@@ -311,21 +310,47 @@ function dedupe<T>(array: T[]) {
 }
 
 function getComponentExamplesFor(name: string) {
-  const examples: string[] = [];
-  const folder = resolve(
+  let markdown = '';
+  const jsExamples: string[] = [];
+  const reactExamples: string[] = [];
+  const jsFolder = resolve(
     `../checkout-web/packages/argo-checkout/src/components/${name}/examples`,
   );
+  const reactFolder = resolve(
+    `../checkout-web/packages/argo-checkout-react/src/components/${name}/examples`,
+  );
 
-  if (fs.existsSync(folder)) {
-    fs.readdirSync(folder).forEach((file) => {
-      examples.push(
+  if (fs.existsSync(jsFolder)) {
+    fs.readdirSync(jsFolder).forEach((file) => {
+      jsExamples.push(
         `\`\`\`${extname(file).split('.').pop()}\n${fs.readFileSync(
-          `${folder}/${file}`,
+          `${jsFolder}/${file}`,
           'utf8',
         )}\n\`\`\`\n\n`,
       );
     });
   }
 
-  return examples;
+  if (fs.existsSync(reactFolder)) {
+    fs.readdirSync(reactFolder).forEach((file) => {
+      reactExamples.push(
+        `\`\`\`${extname(file).split('.').pop()}\n${fs.readFileSync(
+          `${reactFolder}/${file}`,
+          'utf8',
+        )}\n\`\`\`\n\n`,
+      );
+    });
+  }
+
+  if (jsExamples.length > 0 && reactExamples.length > 0) {
+    markdown += '{% sections "JS, React" %}\n\n';
+    markdown += jsExamples.join('');
+    markdown += '\n\n----\n\n';
+    markdown += reactExamples.join('');
+    markdown += '{% endsections %}\n\n';
+  } else {
+    markdown += jsExamples.join('') + reactExamples.join('');
+  }
+
+  return markdown;
 }
