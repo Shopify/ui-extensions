@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-post-purchase-react",
-  "version": "0.9.3",
+  "version": "0.0.0",
   "description": "React bindings for @shopify/argo-post-purchase",
   "publishConfig": {
     "access": "public",
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@remote-ui/react": "^4.0.0",
-    "@shopify/argo-post-purchase": "^0.9.1",
+    "@shopify/argo-post-purchase": "^0.0.0",
     "@types/react": "^17.0.0"
   },
   "peerDependencies": {
