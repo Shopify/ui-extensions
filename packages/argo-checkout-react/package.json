@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@remote-ui/react": "^4.0.0",
-    "@shopify/argo-post-purchase": "^0.9.1",
+    "@shopify/argo-checkout": "^0.9.1",
     "@types/react": "^17.0.0"
   },
   "peerDependencies": {
