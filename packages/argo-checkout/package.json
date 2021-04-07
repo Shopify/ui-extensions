@@ -1,0 +1,26 @@
+{
+  "name": "@shopify/argo-checkout",
+  "description": "The API for Argo extensions that run in Shopify’s Checkout",
+  "version": "0.9.1",
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "sideEffects": false,
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./": "./"
+  },
+  "dependencies": {
+    "@remote-ui/core": "^2.0.0"
+  }
+}
