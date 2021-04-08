@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.3](https://github.com/Shopify/argo-admin/compare/v0.9.2...v0.9.3) (2021-04-08)
+
+
+### Bug Fixes
+
+* add missing tunnel-error dir ([12f42ec](https://github.com/Shopify/argo-admin/commit/12f42ecd68160b76f93e243816c1b18e34fdbc3f))
+
+
+
+
+
 ## [0.9.2](https://github.com/Shopify/argo-admin/compare/v0.9.1...v0.9.2) (2021-04-08)
 
 
