@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-admin-react",
-  "version": "0.9.2",
+  "version": "0.9.3",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -15,7 +15,7 @@
   "sideEffects": false,
   "dependencies": {
     "@remote-ui/react": "^2.0.8",
-    "@shopify/argo-admin": "0.9.2"
+    "@shopify/argo-admin": "0.9.3"
   },
   "devDependencies": {
     "@shopify/react-testing": "^1.6.0",
