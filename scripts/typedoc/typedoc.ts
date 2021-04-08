@@ -323,10 +323,10 @@ function getComponentExamplesFor(name: string) {
   if (fs.existsSync(jsFolder)) {
     fs.readdirSync(jsFolder).forEach((file) => {
       jsExamples.push(
-        `\`\`\`${extname(file).split('.').pop()}\n${fs.readFileSync(
+        `{% highlight ${extname(file).split('.').pop()} %}\n${fs.readFileSync(
           `${jsFolder}/${file}`,
           'utf8',
-        )}\n\`\`\`\n\n`,
+        )}\n{% endhighlight %}\n\n`,
       );
     });
   }
@@ -334,10 +334,10 @@ function getComponentExamplesFor(name: string) {
   if (fs.existsSync(reactFolder)) {
     fs.readdirSync(reactFolder).forEach((file) => {
       reactExamples.push(
-        `\`\`\`${extname(file).split('.').pop()}\n${fs.readFileSync(
+        `{% highlight ${extname(file).split('.').pop()} %}\n${fs.readFileSync(
           `${reactFolder}/${file}`,
           'utf8',
-        )}\n\`\`\`\n\n`,
+        )}\n{% endhighlight %}\n\n`,
       );
     });
   }
