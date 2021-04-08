@@ -218,11 +218,17 @@ function resolveNodeToLocal(
         throw new Error();
       }
 
-      const name = node.typeName.name;
+      const typeParams = node.typeParameters?.params;
+      let params;
 
+      if (typeParams) {
+        params = typeParams.map((param) => resolveNodeToLocal(param, context));
+      }
+
+      const name = node.typeName.name;
       context.localsToResolve.add(name);
 
-      return {kind: 'Local', name};
+      return {kind: 'Local', name, params};
     }
     case 'TSTypeAnnotation': {
       return resolveNodeToLocal(node.typeAnnotation, context);
@@ -261,6 +267,9 @@ function resolveNodeToLocal(
     case 'TSUnknownKeyword': {
       return {kind: 'UnknownType'};
     }
+    case 'TSAnyKeyword': {
+      return {kind: 'AnyType'};
+    }
     case 'TSFunctionType': {
       return {
         kind: 'FunctionType',
@@ -296,7 +305,19 @@ function resolveNodeToLocal(
       const properties: PropertySignature[] = [];
 
       for (const property of node.body.body) {
-        if (property.type === 'TSPropertySignature') {
+        if (property.type === 'TSCallSignatureDeclaration') {
+          if (property.typeAnnotation == null) {
+            continue;
+          }
+
+          properties.push({
+            kind: 'PropertySignature',
+            name: 'Anything',
+            optional: false,
+            value: resolveNodeToLocal(property.typeAnnotation, context) as any,
+            docs: docsFromCommentBlocks([property.leadingComments], context),
+          });
+        } else if (property.type === 'TSPropertySignature') {
           if (
             (property.key.type !== 'Identifier' &&
               property.key.type !== 'StringLiteral') ||

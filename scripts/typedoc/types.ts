@@ -9,6 +9,7 @@ export interface Documentable {
 export interface LocalReference {
   kind: 'Local';
   name: string;
+  params?: (LocalReference | Exportable)[];
 }
 
 export interface ImportedReference {
@@ -56,6 +57,10 @@ export interface NullType {
 
 export interface UnknownType {
   kind: 'UnknownType';
+}
+
+export interface AnyType {
+  kind: 'AnyType';
 }
 
 export interface UndocumentedType {
@@ -109,7 +114,9 @@ export type Type =
   | NullType
   | ArrayType
   | UnknownType
-  | UndocumentedType;
+  | AnyType
+  | UndocumentedType
+  | LocalReference;
 
 export type RemoteComponentProps = LocalReference | InterfaceType;
 

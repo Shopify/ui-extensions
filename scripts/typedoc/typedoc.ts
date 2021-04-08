@@ -53,11 +53,7 @@ async function extensionPoints() {
     });
   });
 
-  const interfaceEntryPoints = [
-    'ExtensionPoints',
-    // 'PostPurchaseShouldRenderApi',
-    'PostPurchaseRenderApi',
-  ];
+  const interfaceEntryPoints = ['ExtensionPoints'];
 
   const interfaces = allInterfaces.filter(({name}) =>
     interfaceEntryPoints.includes(name),
@@ -192,11 +188,9 @@ function propsTable(
   markdown += '<table><tr><th>Name</th><th>Type</th><th>Description</th></tr>';
 
   properties.forEach(({name: propName, optional, value, docs: propDocs}) => {
-    markdown += `<tr><td>${propName}${optional ? '?' : ''}</td><td>${propType(
-      value,
-      exports,
-      dir,
-    )}</td><td>${
+    markdown += `<tr><td>${propName}${
+      optional ? '?' : ''
+    }</td><td><code>${propType(value, exports, dir)}</code></td><td>${
       propDocs ? strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, '') : ''
     }</td></tr>`;
   });
@@ -207,7 +201,20 @@ function propsTable(
 }
 
 function propType(value: any, exports: any[], dir: string): any {
+  let params = '';
+  if (value.params != null && value.params.length > 0) {
+    params = `<${value.params
+      .map((param: any) => propType(param, exports, dir))
+      .join(', ')}>`;
+  }
+
   switch (value.kind) {
+    case 'AnyType':
+      return '<code>any</code>';
+    case 'NullType':
+      return '<code>null</code>';
+    case 'UnknownType':
+      return '<code>unknown</code>';
     case 'VoidType':
       return '<code>void</code>';
     case 'StringType':
@@ -225,23 +232,20 @@ function propType(value: any, exports: any[], dir: string): any {
       );
 
       if (local == null) {
-        if (value.name === 'T') {
-          return '<code>T</code>';
-        }
-
         // eslint-disable-next-line no-console
         console.warn(
           `Can’t resolve export type \`${value.name}\` in ${dir}. Maybe it’s not exported from the component index or imported from a remote package.`,
         );
 
-        return `<code>${value.name}</code>`;
+        return `<code>${value.name}${params}</code>`;
       }
+      local.value.params = value.params;
       return propType(local.value, exports, dir);
     case 'InterfaceType':
       additionalPropsTables.push(
         propsTable(value.name, value.docs, value.properties, exports, dir),
       );
-      return `<code><a href="#${value.name}">${value.name}</a></code>`;
+      return `<code><a href="#${value.name}">${value.name}</a>${params}</code>`;
     case 'UnionType':
       return value.types
         .map((type: any) => {
@@ -259,6 +263,9 @@ function propType(value: any, exports: any[], dir: string): any {
         dir,
       )}) => ${propType(value.returnType, exports, dir)}</code>`;
     default:
+      if (value.kind === 'UndocumentedType' && value.name === 'T') {
+        return '<code>T</code>';
+      }
       return `<pre>${JSON.stringify(value, null, 2)}</pre>`;
   }
 }
