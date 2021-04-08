@@ -185,15 +185,33 @@ function propsTable(
     markdown += `<a name="${name}"></a>\n\n## ${name}\n\n`;
     markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
   }
-  markdown += '<table><tr><th>Name</th><th>Type</th><th>Description</th></tr>';
 
-  properties.forEach(({name: propName, optional, value, docs: propDocs}) => {
-    markdown += `<tr><td>${propName}${
-      optional ? '?' : ''
-    }</td><td><code>${propType(value, exports, dir)}</code></td><td>${
-      propDocs ? strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, '') : ''
-    }</td></tr>`;
-  });
+  const nameHeading =
+    properties.filter(({parameters}) => parameters).length > 0
+      ? ''
+      : '<th>Name</th>';
+
+  markdown += `<table><tr>${nameHeading}<th>Type</th><th>Description</th></tr>`;
+
+  properties.forEach(
+    ({name: propName, optional, value, docs: propDocs, parameters}) => {
+      if (parameters) {
+        markdown += `<tr><td><code>(${paramsType(
+          parameters,
+          exports,
+          dir,
+        )}): ${propType(value, exports, dir)}</code></td><td>${
+          propDocs ? strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, '') : ''
+        }</td></tr>`;
+      } else {
+        markdown += `<tr><td>${propName}${
+          optional ? '?' : ''
+        }</td><td><code>${propType(value, exports, dir)}</code></td><td>${
+          propDocs ? strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, '') : ''
+        }</td></tr>`;
+      }
+    },
+  );
 
   markdown += '</table>\n\n';
 
@@ -255,6 +273,8 @@ function propType(value: any, exports: any[], dir: string): any {
     case 'StringLiteralType':
       return `<code>"${value.value}"</code>`;
     case 'NumberLiteralType':
+      return `<code>${value.value}</code>`;
+    case 'BooleanLiteralType':
       return `<code>${value.value}</code>`;
     case 'FunctionType':
       return `<code>(${paramsType(
