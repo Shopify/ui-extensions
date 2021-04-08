@@ -208,6 +208,8 @@ function propsTable(
 
 function propType(value: any, exports: any[], dir: string): any {
   switch (value.kind) {
+    case 'VoidType':
+      return '<code>void</code>';
     case 'StringType':
       return '<code>string</code>';
     case 'BooleanType':
