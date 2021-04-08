@@ -26,6 +26,7 @@ import type {
   UndocumentedType,
   Exportable,
   StringLiteralType,
+  ParameterType,
 } from '../types';
 
 interface UnresolvedLocal {
@@ -241,6 +242,9 @@ function resolveNodeToLocal(
         case 'NumericLiteral': {
           return {kind: 'NumberLiteralType', value: node.literal.value};
         }
+        case 'BooleanLiteral': {
+          return {kind: 'BooleanLiteralType', value: node.literal.value};
+        }
         default: {
           throw new Error();
         }
@@ -310,12 +314,31 @@ function resolveNodeToLocal(
             continue;
           }
 
+          const parameters: ParameterType[] = property.parameters.map(
+            (parameter) => ({
+              kind: 'ParameterType',
+              rest: parameter.type === 'RestElement',
+              name:
+                parameter.type === 'Identifier'
+                  ? parameter.name
+                  : (parameter.argument as Identifier).name,
+              type:
+                parameter.typeAnnotation == null
+                  ? UNDOCUMENTED
+                  : (resolveNodeToLocal(
+                      parameter.typeAnnotation,
+                      context,
+                    ) as any),
+            }),
+          );
+
           properties.push({
             kind: 'PropertySignature',
-            name: 'Anything',
+            name: '',
             optional: false,
             value: resolveNodeToLocal(property.typeAnnotation, context) as any,
             docs: docsFromCommentBlocks([property.leadingComments], context),
+            parameters,
           });
         } else if (property.type === 'TSPropertySignature') {
           if (

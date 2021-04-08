@@ -29,6 +29,7 @@ export interface PropertySignature extends Documentable {
   optional?: boolean;
   name: string;
   value: Type;
+  parameters?: ParameterType[];
 }
 
 export interface StringType {
@@ -77,6 +78,11 @@ export interface NumberLiteralType {
   value: number;
 }
 
+export interface BooleanLiteralType {
+  kind: 'BooleanLiteralType';
+  value: boolean;
+}
+
 export interface ArrayType {
   kind: 'ArrayType';
   elements: Type;
@@ -106,6 +112,7 @@ export type Type =
   | StringLiteralType
   | StringType
   | BooleanType
+  | BooleanLiteralType
   | NumberType
   | NumberLiteralType
   | FunctionType
