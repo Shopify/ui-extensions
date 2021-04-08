@@ -23,7 +23,7 @@ function toSpinalCase(str) {
 function toPascalCase(str) {
   return str
     .replace(str[0], str[0].toUpperCase())
-    .replace(/-./g, (x) => x.toUpperCase()[1])
+    .replace(/(_|-)./g, (x) => x.toUpperCase()[1])
     .replace(/\s/g, (x) => x.toUpperCase()[1]);
 }
 
@@ -32,4 +32,5 @@ module.exports = {
   killProcess,
   pascalCaseValidator,
   toSpinalCase,
+  toPascalCase,
 };
