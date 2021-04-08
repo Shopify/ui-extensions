@@ -2,172 +2,123 @@ const fs = require('fs');
 const {exec} = require('child_process');
 const prompts = require('prompts');
 
-const {getFileContent, killProcess, pascalCaseValidator, toSpinalCase} = require('./utils');
+const {getFileContent, killProcess, pascalCaseValidator, toPascalCase} = require('./utils');
 
-const {
-  newApiTemplate,
-  newCallbackTemplate,
-  indexTemplate,
-} = require('./templates/new-extension-point-templates.js');
+function newExtensionPoint(id, name) {
+  return `
+import {RemoteRoot} from '@remote-ui/core';
+
+import {AllComponentsSchema} from '../../containers';
+
+import {RenderableExtensionCallback, StandardApi, ToastApi} from '../types';
+
+// Add the unique extension point(s) as a union string
+// This example only contains a single extension point
+
+export type ${name}ExtensionPoint = '${id}';
+
+// Declare the Container API if needed
+export interface ${name}ExtensionContainerApi {
+  container: {};
+}
+
+// Declare the Data API if needed
+export interface ${name}ExtensionDataApi {
+  data: {};
+}
+
+// Update APIs for your needs
+// All Extension APIs should include the StandardApi by default
+export interface ${name}ExtensionApi {
+  '${id}': StandardApi<${name}ExtensionPoint> & ToastApi & ${name}ExtensionContainerApi & ${name}ExtensionDataApi;
+}
+
+// Replace AllComponentsSchema with a schema for your needs
+export interface ${name}ExtensionPointCallback {
+  '${id}': RenderableExtensionCallback<${name}ExtensionApi, RemoteRoot<AllComponentsSchema>>;
+}
+`.trimStart();
+}
+
+function getExtensionPointImport(identifier, name) {
+  return `
+import {
+  ${name}ExtensionPoint,
+  ${name}ExtensionApi,
+  ${name}ExtensionPointCallback,
+} from './identifiers/${identifier}';
+export {${name}ExtensionPoint};
+
+/*
+Placeholder for new imports
+*/
+
+  `.trimStart();
+}
 
 async function createExtensionPoint() {
-  const {page, name} = await prompt();
+  const {page, identifier} = await prompt();
+  const name = toPascalCase(identifier);
   const id = extensionPointId(page, name);
   const baseUrl = `${process.cwd()}/packages/argo-admin/src/extension-points`;
-  const dirName = toSpinalCase(page);
-  const props = {baseUrl, dirName, id, name, page};
+  const props = {baseUrl, identifier, id, name, page};
 
-  updateExtensionPoint(baseUrl, id);
-  updateSchemaTypes(name);
-  updateSchema(id, name);
-  updateExtensionApi(baseUrl, dirName, page);
-  updateExtensionPointCallback(props);
-
-  ['api', 'callback', 'index'].forEach((fileType) => updateOrCreatePageFiles(fileType, props));
+  updateOrCreatePageFiles(props);
+  updateExtensionPoint(baseUrl, identifier, name);
 
   formatFiles();
 
   console.log(`🆔  New extension point ID: "${id}"`);
-  console.log(`💥  Updated or created 3 files in: src/extension-points/${dirName}`);
-  console.log(`  ① api.ts`);
-  console.log(`  ② callback.ts`);
-  console.log(`  ③ index.ts`);
   console.log(
     `📚 Read more about this generator here: ${process.cwd()}/docs/Scripts/extension-point-generator.md`,
   );
 }
 
-function updateOrCreatePageFiles(fileType, props) {
-  const {baseUrl, dirName} = props;
-  // Create the extension point directory if it does not exist
-  if (!fs.existsSync(`${baseUrl}/${dirName}`)) {
-    fs.mkdirSync(`${baseUrl}/${dirName}`);
-    console.log(`📁  Created new directory: src/extension-points/${dirName}`);
-  }
+function updateOrCreatePageFiles(props) {
+  const {baseUrl, identifier, id, name} = props;
+  const path = `${baseUrl}/identifiers/${identifier}.ts`;
+  const readablePath = path.replace(`${process.cwd()}/`, '');
 
-  // Create api.ts, callback.ts, and index.ts in the extension point directory if they do not exist
-  if (fs.existsSync(`${baseUrl}/${dirName}/${fileType}.ts`)) {
-    updatePageFile(fileType, props);
+  if (fs.existsSync(path)) {
+    update(path, newExtensionPoint(id, name));
+    console.log(`💥  Updated ${readablePath}`);
   } else {
-    createPageFile(fileType, props);
+    fs.writeFileSync(path, newExtensionPoint(id, name));
+    console.log(`💥  Created ${readablePath}`);
   }
 }
 
-function updatePageFile(fileType, {baseUrl, dirName, id, name, page}) {
-  const path = `${baseUrl}/${dirName}/${fileType}.ts`;
+function updateExtensionPoint(baseUrl, identifier, name) {
+  const path = `${baseUrl}/index.ts`;
+  const readablePath = path.replace(`${process.cwd()}/`, '');
   const content = getFileContent(path);
-  if (fileType === 'api') {
-    updateApiFile(content, id, name, path);
-  } else if (fileType === 'callback') {
-    updateCallbackFile(content, id, name, path);
-  }
-}
 
-function updateApiFile(content, id, name, path) {
-  const newContent = `${content
-    .replace(
-      'export interface',
-      `export type ${name}Api<T extends ExtensionPoint> = StandardApi<T> & ToastApi & DataApi<T>;\n\nexport interface`,
+  const importContent = getExtensionPointImport(identifier, name);
+
+  // Return early if we've already imported this extension definition
+  if(content.match(importContent)) {
+    return;
+  }
+
+  const newContent = content
+    .replace(/\/\*\nPlaceholder for new imports\n\*\//,
+      `\n${importContent}`,
     )
-    .replace(`}\n`, `'${id}': ${name}Api<'${id}'>;\n}\n`)}`;
+    .replace(
+      /export type ExtensionPoint =(.+?);/s,
+      `export type ExtensionPoint =$1 | ${name}ExtensionPoint;`,
+    )
+    .replace(
+      /export type ExtensionApi =(.+?);/s,
+      `export type ExtensionApi =$1 & ${name}ExtensionApi;`,
+    )
+    .replace(
+      /export type ExtensionPointCallback =(.+?);/s,
+      `export type ExtensionPointCallback =$1 & ${name}ExtensionPointCallback;`,
+    ).trimStart();
 
   update(path, newContent);
-}
-
-function updateCallbackFile(content, id, name, path) {
-  const newContent = `${content.replace("} from './api';", `, ${name}Api} from './api';`).replace(
-    `>;\n}\n`,
-    `>;\n'${id}': RenderableExtensionCallback<
-    ${name}Api<'${id}'>,
-    RemoteRoot<ExtensionPointSchema['${id}']>
-  >;
-  }\n`,
-  )}`;
-
-  update(path, newContent);
-}
-
-function createPageFile(fileType, {baseUrl, dirName, id, name, page}) {
-  const path = `${baseUrl}/${dirName}/${fileType}.ts`;
-  const templateMap = {
-    api: newApiTemplate(page, id, name),
-    callback: newCallbackTemplate(page, id, name),
-    index: indexTemplate(page),
-  };
-
-  fs.writeFileSync(path, templateMap[fileType]);
-}
-
-function updateExtensionPoint(baseUrl, id) {
-  const path = `${baseUrl}/extension-point.ts`;
-  const content = getFileContent(path);
-  const newContent = `${content.replace(';', `\n  | '${id}';`)}`.trimStart();
-
-  update(path, newContent);
-}
-
-function updateSchemaTypes(name) {
-  const path = `${process.cwd()}/packages/argo-admin/src/components/schemas/types.ts`;
-  const content = getFileContent(path);
-
-  if (content.includes(name)) {
-    console.log('This type already exists. No changes made to src/components/schemas/types.ts');
-  } else {
-    const newSchemaType = `\nexport type ${name}Schema = any;\n`;
-    fs.appendFileSync(path, newSchemaType);
-    console.log(
-      '✅  Added type to src/components/schemas/types.ts -❗️ Remember to edit new Type❗️',
-    );
-  }
-}
-
-function updateSchema(id, name) {
-  const path = `${process.cwd()}/packages/argo-admin/src/components/schemas/extension-point-schema.ts`;
-  const content = getFileContent(path);
-
-  let newContent = `
-    ${content.replace('}\n', `  '${id}': ${name}Schema;}\n`)}`.trimStart();
-
-  // Only import Schema if it has not yet been imported
-  if (!content.includes(name)) {
-    newContent = `${newContent.replace('import {', `import {${name}Schema,`)}`;
-  }
-
-  update(path, newContent);
-}
-
-function updateExtensionApi(baseUrl, dirName, page) {
-  const path = `${baseUrl}/extension-api.ts`;
-  const content = getFileContent(path);
-
-  // Only import and extend ExtensionApi if it has not yet been imported
-  if (!content.includes(page)) {
-    const newContent = `
-      ${content
-        .replace(
-          '\nexport interface',
-          `import {${page}ExtensionApi} from './${dirName}';\n\nexport interface`,
-        )
-        .replace(`extends `, `extends ${page}ExtensionApi,\n`)}`.trimStart();
-    update(path, newContent);
-  }
-}
-
-function updateExtensionPointCallback({baseUrl, dirName, page}) {
-  const path = `${baseUrl}/extension-point-callback.ts`;
-  const content = getFileContent(path);
-
-  // Only import and extend ExtensionPointCallback if it has not yet been imported
-  if (!content.includes(page)) {
-    const newContent = `${content
-      .replace(
-        '\nexport interface',
-        `import {${page}ExtensionPointCallback} from './${dirName}';\n\n export interface`,
-      )
-      .replace('extends', `extends ${page}ExtensionPointCallback,`)}`;
-
-    update(path, newContent);
-  }
+  console.log(`💥  Updated ${readablePath}`);
 }
 
 async function prompt() {
@@ -195,9 +146,8 @@ async function prompt() {
     },
     {
       type: 'text',
-      name: 'name',
-      message: 'Enter name of new Extension Point (PascalCase).',
-      validate: (value) => (pascalCaseValidator(value) ? true : 'Name must use PascalCase'),
+      name: 'identifier',
+      message: 'Enter the identifier of the new extension type (Snake Case).',
     },
   ];
 
@@ -216,8 +166,16 @@ function update(path, newContent) {
 }
 
 function formatFiles() {
-  exec('yarn run format', (err) => {
-    if (err) throw err;
+  // Fix import orders and other eslint issues
+  exec('yarn run lint --fix', (err, stdout) => {
+    if(err) {
+      console.log('error:', stdout);
+    }
+  });
+  exec('yarn run format', (err, stdout) => {
+    if(err) {
+      console.log('error:', stdout);
+    }
   });
 }
 

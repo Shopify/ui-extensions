@@ -1,9 +1,4 @@
-import {
-  ExtensionPoint,
-  ExtensionPointCallback,
-  ExtensionApi,
-  ExtensionResult,
-} from './extension-points';
+import {ExtensionPoint, ExtensionPointCallback, ExtensionResult} from './extension-points';
 
 export interface ShopifyApi {
   extend<T extends ExtensionPoint>(
