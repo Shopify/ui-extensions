@@ -7,7 +7,7 @@
   "license": "MIT",
   "main": "cli.js",
   "scripts": {
-    "build": "tsc --build tsconfig.prod.json && cp -r ./src/server/host ./server/host",
+    "build": "tsc --build tsconfig.prod.json && cp -r ./src/server/host ./server/host  && cp -r ./src/server/tunnel-error ./server/tunnel-error",
     "check": "prettier --check \"**/src/**/*.{ts,tsx}\"",
     "format": "prettier --write \"**/src/**/*.{ts,tsx}\"",
     "lint": "eslint ./src --ext .ts,.tsx --format codeframe",
