@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.2](https://github.com/Shopify/argo-admin/compare/v0.9.1...v0.9.2) (2021-04-08)
+
+
+### Bug Fixes
+
+* fix getPort ([86050af](https://github.com/Shopify/argo-admin/commit/86050af078d1974d5ac261da5f09e4ebb9024dec))
+
+
+### Features
+
+* **argo-admin-cli:** non-legacy redirects ([f03ac8a](https://github.com/Shopify/argo-admin/commit/f03ac8ac17a396107a0527504eb2365cf49aa2a3))
+
+
+
+
+
 ## [0.9.1](https://github.com/Shopify/argo-admin/compare/v0.9.0...v0.9.1) (2021-03-23)
 
 
