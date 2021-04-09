@@ -1,7 +1,7 @@
 {
   "name": "@shopify/argo-checkout",
   "description": "The API for Argo extensions that run in Shopify’s Checkout",
-  "version": "0.9.1",
+  "version": "0.10.0-alpha.0",
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"

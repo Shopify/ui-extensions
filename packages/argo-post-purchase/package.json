@@ -1,7 +1,7 @@
 {
   "name": "@shopify/argo-post-purchase",
   "description": "The API for Argo extensions that run in the post-purchase step of Shopify’s Checkout",
-  "version": "0.0.0",
+  "version": "0.9.1",
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
