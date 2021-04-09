@@ -1,4 +1,5 @@
 export {extend} from '@shopify/argo-checkout';
+
 export type {
   ExtensionPoint,
   ExtensionPoints,

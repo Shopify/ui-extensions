@@ -29,6 +29,7 @@ export type {
 } from './extension-points';
 
 export * from './components';
+
 export type {
   BlockSpacerProps,
   BlockStackProps,
