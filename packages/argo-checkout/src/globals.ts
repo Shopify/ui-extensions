@@ -10,6 +10,6 @@ export interface ShopifyGlobal {
 
 declare global {
   interface WorkerGlobalScope {
-    readonly shopify: ShopifyGlobal;
+    readonly le_shopify: ShopifyGlobal;
   }
 }

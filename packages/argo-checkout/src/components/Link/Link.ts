@@ -14,6 +14,12 @@ export interface LinkProps {
    */
   id?: string;
   /**
+   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+   * Reference of values: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry (see "subtag")
+   */
+  language?: string;
+  /**
    * Callback when pressed. If `to` is provided, it will execute the callback and
    * then navigate to the location specified by `to`.
    */

@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Spacing = 'xtight' | 'tight' | 'loose' | 'xloose';
+type Spacing = 'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose';
 type Alignment = 'leading' | 'center' | 'trailing' | 'baseline';
 
 export interface BookendProps {
@@ -10,7 +10,10 @@ export interface BookendProps {
   trailing?: boolean;
   /** Position children along the cross axis */
   alignment?: Alignment;
-  /** Adjust spacing between children */
+  /**
+   * Adjust spacing between children
+   * @default `base`
+   */
   spacing?: Spacing;
 }
 

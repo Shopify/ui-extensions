@@ -21,6 +21,7 @@
     "./": "./"
   },
   "dependencies": {
+    "@remote-ui/async-subscription": "^2.0.0",
     "@remote-ui/react": "^4.0.0",
     "@shopify/argo-checkout": "^0.9.1",
     "@types/react": "^17.0.0"

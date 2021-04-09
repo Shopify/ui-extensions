@@ -11,7 +11,7 @@ The `RemoteRoot` API is very similar to the DOM. You create components by callin
 ```tsx
 import {extend, Button} from '@shopify/argo-checkout';
 
-extend('Checkout::PostPurchase::Render', (root) => {
+extend('Checkout::Feature::Render', (root) => {
   const button = root.createComponent(Button, {
     onPress: () => console.log('Pressed!'),
   });
@@ -26,7 +26,7 @@ The `RemoteRoot` API also supports mutating components in the tree after they’
 ```tsx
 import {extend, Button} from '@shopify/argo-checkout';
 
-extend('Checkout::PostPurchase::Render', (root) => {
+extend('Checkout::Feature::Render', (root) => {
   let pressedTimes = 0;
 
   const buttonText = root.createText(labelText(0));

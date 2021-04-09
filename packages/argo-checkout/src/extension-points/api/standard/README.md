@@ -21,15 +21,36 @@ extend('FirstExtensionPoint', handleExtensionPoint);
 extend('SecondExtensionPoint', handleExtensionPoint);
 
 function handleExtensionPoint(input) {
-  switch (input.extensionPoint) {
-    case 'FirstExtensionPoint': {
-      // ...
-      break;
+    switch (input.extensionPoint) {
+        case 'FirstExtensionPoint': {
+            // ...
+            break;
+        }
+        case 'SecondExtensionPoint': {
+            // ...
+            break;
+        }
     }
-    case 'SecondExtensionPoint': {
-      // ...
-      break;
-    }
-  }
 }
+```
+
+## `lineItems`
+
+The `lineItems` property gives you access to the merchandise the buyer is purchasing through checkout. Like other resources in checkout, this value is wrapped in a `StatefulRemoteSubscribable` in order to give your extension a way to subscribe to changes to the line items. These changes can happen when there are stock problems that require the buyer to change the contents of their cart, or when other extensions change the line items through the `applyLineItemChange()` APIs documented below.
+
+```ts
+import {extend} from '@shopify/argo-checkout';
+
+extend('ExtensionPoint', (root, {lineItems}) => {
+    const text = root.createText(
+        `Your line items are: ${JSON.stringify(lineItems.current)}`,
+    );
+    root.appendChild(text);
+
+    lineItems.subscribe((newLineItems) => {
+        text.updateText(
+            `Your new line items are: ${JSON.stringify(newLineItems)}`,
+        );
+    });
+});
 ```

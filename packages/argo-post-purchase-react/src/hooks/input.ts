@@ -2,7 +2,7 @@ import {useContext} from 'react';
 import {
   RenderExtensionPoint,
   InputForRenderExtension,
-} from '@shopify/argo-checkout';
+} from '@shopify/argo-post-purchase';
 
 import {ExtensionInputContext} from '../context';
 

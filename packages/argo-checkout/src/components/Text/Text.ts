@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Size = 'small' | 'medium' | 'large' | 'xlarge';
+type Size = 'extraSmall' | 'small' | 'base' | 'medium' | 'large' | 'extraLarge';
 type Role =
   /** Indicate the text is a contact information. Typically used for addresses. */
   | 'address'
@@ -36,7 +36,7 @@ export interface TextProps {
    */
   id?: string;
   /** Changes the visual appearance */
-  appearance?: 'critical' | 'warning' | 'success';
+  appearance?: 'critical' | 'warning' | 'success' | 'accent';
 }
 
 /**

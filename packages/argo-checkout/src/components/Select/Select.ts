@@ -1,4 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
+
 import {Autocomplete} from '../shared';
 
 interface Option {
@@ -54,6 +55,10 @@ export interface SelectProps {
    * Whether the select can be changed.
    */
   disabled?: boolean;
+  /**
+   * Whether the field is read only
+   */
+  readonly?: boolean;
   /**
    * An error label to present with the field.
    */

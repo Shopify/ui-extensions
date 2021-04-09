@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Size = 'small' | 'medium' | 'large' | 'xlarge';
+type Size = 'extraSmall' | 'small' | 'base' | 'medium' | 'large' | 'extraLarge';
 
 export interface TextBlockProps {
   /** Size of the text */
@@ -12,7 +12,7 @@ export interface TextBlockProps {
   /** Unique identifier */
   id?: string;
   /** Changes the visual appearance */
-  appearance?: 'critical' | 'warning' | 'success';
+  appearance?: 'critical' | 'warning' | 'success' | 'accent';
 }
 
 /**

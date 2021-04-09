@@ -39,11 +39,11 @@ export type RenderExtensions = {
   [ID in RenderExtensionPoint]: ExtensionPoints[ID];
 };
 
-type ExtractedInputFromRenderExtension<T> = T extends RenderExtension<
-  infer Input,
+type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
+  infer Api,
   any
 >
-  ? Input
+  ? Api
   : never;
 
 type ExtractedAllowedComponentsFromRenderExtension<
@@ -51,14 +51,14 @@ type ExtractedAllowedComponentsFromRenderExtension<
 > = T extends RenderExtension<any, infer Components> ? Components : never;
 
 /**
- * For a given rendering extension point, returns the input type that the
- * extension point will receive. This input type is the second argument to
+ * For a given rendering extension point, returns the type of the API that the
+ * extension will receive at runtime. This API type is the second argument to
  * the callback for that extension point (the first callback for all rendering
  * extension points is the same — they all receive a `RemoteRoot` object)
  */
-export type InputForRenderExtension<
+export type ApiForRenderExtension<
   ID extends keyof RenderExtensions
-> = ExtractedInputFromRenderExtension<RenderExtensions[ID]>;
+> = ExtractedApiFromRenderExtension<RenderExtensions[ID]>;
 
 /**
  * For a given rendering extension point, returns the Argo components that the

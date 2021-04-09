@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 type Direction = 'horizontal' | 'vertical';
-type Width = 'thin' | 'medium' | 'thick' | 'xthick';
+type Width = 'thin' | 'medium' | 'thick' | 'extraThick';
 
 export interface SeparatorProps {
   width?: Width;

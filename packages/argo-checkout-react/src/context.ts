@@ -1,10 +1,9 @@
 import {createContext} from 'react';
-
 import {
-  InputForRenderExtension,
+  ApiForRenderExtension,
   RenderExtensionPoint,
 } from '@shopify/argo-checkout';
 
-export const ExtensionInputContext = createContext<InputForRenderExtension<
+export const ExtensionApiContext = createContext<ApiForRenderExtension<
   RenderExtensionPoint
 > | null>(null);

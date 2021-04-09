@@ -1,7 +1,13 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 type Alignment = 'leading' | 'center' | 'trailing' | 'baseline';
-type Spacing = 'none' | 'xtight' | 'tight' | 'loose' | 'xloose';
+type Spacing =
+  | 'none'
+  | 'extraTight'
+  | 'tight'
+  | 'base'
+  | 'loose'
+  | 'extraLoose';
 
 export interface TilesProps {
   /**

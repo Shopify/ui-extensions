@@ -5,6 +5,8 @@
     {"path": "./tsconfig.repo.json"},
     {"path": "./packages/argo-checkout"},
     {"path": "./packages/argo-checkout-react"},
+    {"path": "./packages/argo-post-purchase"},
+    {"path": "./packages/argo-post-purchase-react"},
     {"path": "./packages/argo-webpack-hot-client"},
     {"path": "./packages/argo-run"}
   ]

@@ -1,5 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+type Spacing = 'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose';
+
 export interface LayoutProps {
   /**
    * Specifies the inline alignment of the layout in its container.
@@ -25,9 +27,14 @@ export interface LayoutProps {
    */
   maxInlineSize?: number;
   /**
-   * Default sizes for each section of the layout
+   * Default sizes for each section of the layout.
    */
   sizes?: Size[];
+  /**
+   * Default spacing between sections
+   */
+  spacing?: Spacing;
+
   /**
    * Sizes at different media
    */
@@ -48,7 +55,7 @@ export interface LayoutProps {
  */
 type Size = 'auto' | 'fill' | number;
 
-type ViewportSize = 'small' | 'medium' | 'large';
+type ViewportSize = 'aboveSmall' | 'aboveMedium' | 'aboveLarge';
 
 interface Media {
   /*
@@ -73,6 +80,10 @@ interface Media {
    * If a `maxInlineSize` is specified, make sure you adapt your pixel values accordingly.
    */
   sizes?: Size[];
+  /*
+   * Spacing between sections for this viewport.
+   */
+  spacing?: Spacing;
 }
 
 /**

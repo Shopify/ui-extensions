@@ -9,6 +9,8 @@ export interface ButtonProps {
   subdued?: boolean;
   /** Renders a button that visually looks like a Link */
   plain?: boolean;
+  /** Whether the button should fill all available inline space. */
+  fill?: boolean;
   /** Replaces content with a loading indicator */
   loading?: boolean;
   /** Accessible label for the loading indicator when user prefers reduced motion */

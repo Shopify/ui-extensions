@@ -1,4 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
+
 import {Autocomplete} from '../shared';
 
 type Type = 'text' | 'email' | 'number' | 'telephone';
@@ -31,11 +32,24 @@ export interface TextFieldProps {
    * when the field is empty.
    */
   label: string;
+  /* A detailed description for screen readers. */
+  accessibilityDescription?: string;
   /**
    * Current value for the field. If omitted, the field will be empty. You should update
    * this value in response to the `onChange` callback on a text field.
    */
   value?: string;
+  /**
+   * In rare cases, like the PhoneField component, we completely control state.
+   * In those cases, there is never a difference between the `value` prop of the field
+   * and the current value in the field, and so this component never considers the
+   * field to have changed. Use the `controlledValue` prop to provide the value that
+   * should be shown to the buyer in those circumstances, but where the `value` prop
+   * will continue to be used as the comparison value to determine whether the field
+   * has changed (this will usually be set to the last committed, unformatted value
+   * for the controlled input).
+   */
+  controlledValue?: string;
   /**
    * The content type a buyer will enter into the field. This type is used to provide
    * semantic value to the field and, where possible, will provide the buyer with
@@ -61,8 +75,9 @@ export interface TextFieldProps {
   error?: string;
   /**
    * Whether the field supports multiple lines of input.
+   * Set a `number` to define the default lines of the input.
    */
-  multiline?: boolean;
+  multiline?: boolean | number;
   /**
    * A hint as to the intended content of the field.
    *
@@ -79,6 +94,10 @@ export interface TextFieldProps {
    * specific data you would like to be entered into this field during autofill.
    */
   autocomplete?: Autocomplete | boolean;
+  /* Whether the field can be modified */
+  disabled?: boolean;
+  /* Whether the field is read-only */
+  readonly?: boolean;
   /**
    * Additional hint text to display for the field. The tooltip is activated by
    * an icon pinned to the end of the field.

@@ -1,13 +1,27 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Spacing = 'xtight' | 'tight' | 'loose' | 'xloose';
 type Alignment = 'leading' | 'center' | 'trailing' | 'baseline';
+type Spacing =
+  | 'none'
+  | 'extraTight'
+  | 'tight'
+  | 'base'
+  | 'loose'
+  | 'extraLoose';
 
 export interface InlineStackProps {
   /** Position children along the cross axis */
   alignment?: Alignment;
-  /** Adjust spacing between children */
+  /**
+   * Adjust spacing between children
+   * @default `base`
+   **/
   spacing?: Spacing;
+  /**
+   * Wrap elements on multiple lines if content is larger
+   * than parent container.
+   */
+  wrap?: boolean;
 }
 
 /**
