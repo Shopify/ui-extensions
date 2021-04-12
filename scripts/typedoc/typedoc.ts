@@ -14,6 +14,41 @@ import {createDependencyGraph, Module} from './utilities/dependency-graph';
 
 extensionPoints();
 components();
+gettingStarted();
+
+function gettingStarted() {
+  const indexFile = resolve(
+    '../shopify-dev/content/tools/argo-checkout/index.md',
+  );
+
+  let markdown = `---\ngid: ${findUuid(
+    indexFile,
+  )}\nurl: /tools/argo-checkout/index\ntitle: Getting Started with Argo Checkout\ndescription: Getting Started with Argo Checkout.\nhidden: true\n---\n\n`;
+
+  const contentFolder = resolve(
+    '../checkout-web/packages/argo-checkout/documentation',
+  );
+
+  const files = [
+    'getting-started.md',
+    'extension-points.md',
+    'globals.md',
+    'rendering.md',
+    'components.md',
+  ];
+
+  if (fs.existsSync(contentFolder)) {
+    files.forEach((file) => {
+      markdown += `${fs.readFileSync(`${contentFolder}/${file}`, 'utf8')}\n`;
+    });
+  }
+
+  fs.writeFile(indexFile, markdown, function (err) {
+    if (err) throw err;
+  });
+
+  return markdown;
+}
 
 interface Node {
   value: RemoteComponent | Type | LocalReference;
@@ -124,6 +159,7 @@ async function components() {
   ];
 
   components.forEach(({value: {name, docs, props}}: any) => {
+    if (name === 'View') return;
     const file = `${devDocs}/${name.toLowerCase()}.md`;
     const uuid = findUuid(file);
 
@@ -154,6 +190,7 @@ async function components() {
     }
 
     markdown += dedupe(additionalPropsTables).reverse().join('');
+    markdown += getAdditionalContentFor(name);
 
     fs.writeFile(`${devDocs}/${name.toLowerCase()}.md`, markdown, function (
       err,
@@ -206,7 +243,11 @@ function propsTable(
       } else {
         markdown += `<tr><td>${propName}${
           optional ? '?' : ''
-        }</td><td><code>${propType(value, exports, dir)}</code></td><td>${
+        }</td><td style="word-wrap:break-word;"><code>${propType(
+          value,
+          exports,
+          dir,
+        )}</code></td><td>${
           propDocs ? strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, '') : ''
         }</td></tr>`;
       }
@@ -379,6 +420,22 @@ function getComponentExamplesFor(name: string) {
     markdown += '{% endsections %}\n\n';
   } else {
     markdown += jsExamples.join('') + reactExamples.join('');
+  }
+
+  return markdown;
+}
+
+function getAdditionalContentFor(name: string) {
+  let markdown = '';
+
+  const contentFolder = resolve(
+    `../checkout-web/packages/argo-checkout/src/components/${name}/content`,
+  );
+
+  if (fs.existsSync(contentFolder)) {
+    fs.readdirSync(contentFolder).forEach((file) => {
+      markdown += fs.readFileSync(`${contentFolder}/${file}`, 'utf8');
+    });
   }
 
   return markdown;

@@ -286,7 +286,7 @@ function resolveNodeToLocal(
               : (parameter.argument as Identifier).name,
           type:
             parameter.typeAnnotation == null
-              ? UNDOCUMENTED
+              ? undocumented(node)
               : (resolveNodeToLocal(parameter.typeAnnotation, context) as any),
         })),
         returnType:
@@ -324,7 +324,7 @@ function resolveNodeToLocal(
                   : (parameter.argument as Identifier).name,
               type:
                 parameter.typeAnnotation == null
-                  ? UNDOCUMENTED
+                  ? undocumented(node)
                   : (resolveNodeToLocal(
                       parameter.typeAnnotation,
                       context,
@@ -420,12 +420,12 @@ function resolveNodeToLocal(
         node.callee.type !== 'Identifier' ||
         node.callee.name !== 'createRemoteComponent'
       ) {
-        return UNDOCUMENTED;
+        return undocumented(node);
       }
 
       const typeParams = node.typeParameters?.params;
 
-      if (typeParams == null) return UNDOCUMENTED;
+      if (typeParams == null) return undocumented(node);
 
       const [nameType, propsType] = typeParams;
 
@@ -435,7 +435,7 @@ function resolveNodeToLocal(
           ? nameType.literal.value
           : undefined;
 
-      if (componentName == null) return UNDOCUMENTED;
+      if (componentName == null) return undocumented(node);
 
       const component: RemoteComponent = {
         kind: 'Component',
@@ -478,18 +478,15 @@ function resolveNodeToLocal(
               };
             }
           }
-
-          return UNDOCUMENTED;
+          return undocumented(node);
         }
         default: {
-          return UNDOCUMENTED;
+          return undocumented(node);
         }
       }
     }
     default: {
-      // eslint-disable-next-line no-console
-      console.log(`${node.type} is unhandled`);
-      return UNDOCUMENTED;
+      return undocumented(node);
     }
   }
 }
@@ -634,4 +631,11 @@ function resolveImportPath(from: string, to: string) {
     basedir: path.dirname(from),
     extensions: ['.ts', '.tsx', '.js'],
   });
+}
+
+function undocumented(node: Node) {
+  // console.log(JSON.stringify(node, null, 2));
+  // eslint-disable-next-line no-console
+  console.log(`${node.type} is unhandled.`);
+  return UNDOCUMENTED;
 }
