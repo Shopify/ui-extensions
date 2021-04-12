@@ -139,17 +139,6 @@ Used to group similar concepts within a Card. It also adds a divider between sec
 
 [CardSection API](../packages/argo-admin/src/components/CardSection.ts)
 
-### Page
-
-A page is typically the top-level component, which defines the title, associated actions, and children.
-
-- Padding:
-  - Web: 2rem
-  - Android: 16dp
-  - iOS: 16pts
-
-[Page API](../packages/argo-admin/src/components/Page.ts)
-
 ## List
 
 ### OptionList
