@@ -8,7 +8,6 @@ export * from './Pressable';
 export * from './Icon';
 export * from './Modal';
 export * from './Link';
-export * from './Page';
 export * from './Radio';
 export * from './ResourceItem';
 export * from './ResourceList';
