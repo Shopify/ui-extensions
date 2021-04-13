@@ -16,4 +16,4 @@ export type StandardApi<T> = {[key: string]: undefined} & {extensionPoint: T} & 
   LocaleApi &
   SessionTokenApi;
 
-export {LayoutApi, LocaleApi, SessionTokenApi, ToastApi};
+export type {LayoutApi, LocaleApi, SessionTokenApi, ToastApi};
