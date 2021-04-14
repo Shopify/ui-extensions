@@ -122,11 +122,7 @@ async function extensionPoints() {
   additionalPropsTables.length = 0;
 }
 
-async function components() {
-  const componentIndex = resolve(
-    '../checkout-web/packages/argo-checkout/src/components/index.ts',
-  );
-
+async function buildComponentGraph(componentIndex: string) {
   const graph = await createDependencyGraph(componentIndex);
 
   const nodes: Node[] = [];
@@ -142,6 +138,19 @@ async function components() {
     });
   });
 
+  const components = [
+    ...new Set(nodes.filter(({value}: any) => value.kind === 'Component')),
+  ];
+
+  return {nodes, components};
+}
+
+export async function components() {
+  const componentIndex = resolve(
+    '../checkout-web/packages/argo-checkout/src/components/index.ts',
+  );
+  const {nodes, components} = await buildComponentGraph(componentIndex);
+
   const devDocs = resolve(
     '../shopify-dev/content/tools/argo-checkout/components',
   );
@@ -150,21 +159,29 @@ async function components() {
     '../shopify-dev/content/tools/argo-checkout/components/index.md',
   );
 
-  let index = `---\ngid: ${findUuid(
-    indexFile,
-  )}\nurl: /tools/argo-checkout/components/index\ntitle: Argo Checkout Components\ndescription: A list of Argo Checkout Components.\nhidden: true\n---\n\n`;
-
-  const components = [
-    ...new Set(nodes.filter(({value}: any) => value.kind === 'Component')),
-  ];
+  let index = renderYamlFrontMatter({
+    gid: findUuid(indexFile),
+    url: '/tools/argo-checkout/components/index',
+    title: 'Argo Checkout Components',
+    description: 'A list of Argo Checkout Components.',
+    hidden: true,
+  });
 
   components.forEach(({value: {name, docs, props}}: any) => {
     if (name === 'View') return;
     const file = `${devDocs}/${name.toLowerCase()}.md`;
     const uuid = findUuid(file);
 
-    let markdown = `---\ngid: ${uuid}\nurl: /tools/argo-checkout/components/${name.toLowerCase()}\ntitle: ${name}\nhidden: true\n---\n\n`;
-    markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
+    const docsContent = docs ? strip(docs.content).trim() : '';
+
+    let markdown = renderYamlFrontMatter({
+      gid: uuid,
+      url: `/tools/argo-checkout/components/${name.toLowerCase()}`,
+      title: `${name}`,
+      // description: docsContent,
+      hidden: true,
+    });
+    markdown += docsContent ? `${docsContent}\n\n` : '';
 
     const examples = getComponentExamplesFor(name);
 
@@ -206,6 +223,25 @@ async function components() {
   fs.writeFile(indexFile, index, function (err) {
     if (err) throw err;
   });
+}
+
+interface FrontMatter {
+  gid: string;
+  url: string;
+  title: string;
+  description?: string;
+  hidden: boolean;
+}
+
+function renderYamlFrontMatter(frontMatter: FrontMatter) {
+  let matter = '---\n';
+
+  Object.keys(frontMatter).forEach((key) => {
+    matter += `${key}: ${frontMatter[key]}\n`;
+  });
+
+  matter += '---\n\n';
+  return matter;
 }
 
 function propsTable(
