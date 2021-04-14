@@ -187,6 +187,7 @@ export async function components(paths: Paths) {
 
   components.forEach(({value: {name, docs, props}}: any) => {
     if (name === 'View') return;
+
     const componentFile = `${componentDocs}/${name.toLowerCase()}.md`;
 
     const docsContent = docs ? strip(docs.content).trim() : '';
@@ -204,10 +205,9 @@ export async function components(paths: Paths) {
     });
     markdown += docsContent ? `${docsContent}\n\n` : '';
 
-    const examples = getComponentExamplesFor(name);
-
+    const examples = renderComponentExamplesFor(name, paths.packages);
     if (examples.length > 0) {
-      markdown += getComponentExamplesFor(name);
+      markdown += examples;
     }
 
     const face = nodes.find(({value}: any) => value.name === props.name);
@@ -434,47 +434,34 @@ function dedupe<T>(array: T[]) {
   return [...new Set(array)];
 }
 
-function getComponentExamplesFor(name: string) {
+function renderComponentExamplesFor(name: string, packages: Packages): string {
+  const examples: any = {};
+
+  Object.keys(packages).forEach((packageName) => {
+    const packagePath = packages[packageName];
+    const folder = resolve(`${packagePath}/src/components/${name}/examples`);
+
+    if (fs.existsSync(folder)) {
+      fs.readdirSync(folder).forEach((file) => {
+        const extension = extname(file).split('.').pop();
+        examples[packageName] = `{% highlight ${extension} %}\n`;
+        examples[packageName] += fs.readFileSync(`${folder}/${file}`, 'utf8');
+        examples[packageName] += '\n{% endhighlight %}\n\n';
+      });
+    }
+  });
+
   let markdown = '';
-  const jsExamples: string[] = [];
-  const reactExamples: string[] = [];
-  const jsFolder = resolve(
-    `../checkout-web/packages/argo-checkout/src/components/${name}/examples`,
-  );
-  const reactFolder = resolve(
-    `../checkout-web/packages/argo-checkout-react/src/components/${name}/examples`,
-  );
 
-  if (fs.existsSync(jsFolder)) {
-    fs.readdirSync(jsFolder).forEach((file) => {
-      jsExamples.push(
-        `{% highlight ${extname(file).split('.').pop()} %}\n${fs.readFileSync(
-          `${jsFolder}/${file}`,
-          'utf8',
-        )}\n{% endhighlight %}\n\n`,
-      );
-    });
-  }
+  const exampleCount = Object.keys(examples).length;
 
-  if (fs.existsSync(reactFolder)) {
-    fs.readdirSync(reactFolder).forEach((file) => {
-      reactExamples.push(
-        `{% highlight ${extname(file).split('.').pop()} %}\n${fs.readFileSync(
-          `${reactFolder}/${file}`,
-          'utf8',
-        )}\n{% endhighlight %}\n\n`,
-      );
-    });
-  }
-
-  if (jsExamples.length > 0 && reactExamples.length > 0) {
-    markdown += '{% sections "JS, React" %}\n\n';
-    markdown += jsExamples.join('');
-    markdown += '\n\n----\n\n';
-    markdown += reactExamples.join('');
+  if (exampleCount > 1) {
+    const sections = Object.keys(examples).join(', ');
+    markdown += `{% sections "${sections}" %}\n\n`;
+    markdown += Object.values(examples).join('\n\n----\n\n');
     markdown += '{% endsections %}\n\n';
-  } else {
-    markdown += jsExamples.join('') + reactExamples.join('');
+  } else if (exampleCount > 0) {
+    markdown += Object.values(examples).join('\n\n----\n\n');
   }
 
   return markdown;
