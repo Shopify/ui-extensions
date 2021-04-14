@@ -256,7 +256,7 @@ interface FrontMatter {
 function renderYamlFrontMatter(frontMatter: FrontMatter) {
   let matter = '---\n';
 
-  Object.keys(frontMatter).forEach((key) => {
+  (Object.keys(frontMatter) as (keyof FrontMatter)[]).forEach((key) => {
     matter += `${key}: ${frontMatter[key]}\n`;
   });
 
