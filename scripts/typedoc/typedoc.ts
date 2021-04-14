@@ -12,9 +12,25 @@ import type {
 } from './types';
 import {createDependencyGraph, Module} from './utilities/dependency-graph';
 
-extensionPoints();
-components();
-gettingStarted();
+interface Packages {
+  [key: string]: string;
+}
+
+interface Paths {
+  root: string;
+  /**
+   * Output path (in shopify-dev repo)
+   */
+  devDocsRoot: string;
+  packages: Packages;
+  shopifyDevUrl: string;
+}
+
+export function renderForShopifyDev(paths: Paths) {
+  extensionPoints();
+  components(paths);
+  gettingStarted();
+}
 
 function gettingStarted() {
   const indexFile = resolve(
@@ -145,23 +161,25 @@ async function buildComponentGraph(componentIndex: string) {
   return {nodes, components};
 }
 
-export async function components() {
-  const componentIndex = resolve(
-    '../checkout-web/packages/argo-checkout/src/components/index.ts',
-  );
+export async function components(paths: Paths) {
+  const componentIndex = resolve(`${paths.root}/src/components/index.ts`);
   const {nodes, components} = await buildComponentGraph(componentIndex);
 
-  const devDocs = resolve(
-    '../shopify-dev/content/tools/argo-checkout/components',
-  );
+  const devDocsRoot = resolve(`${paths.devDocsRoot}`);
+  const componentDocs = resolve(`${paths.devDocsRoot}/components`);
 
-  const indexFile = resolve(
-    '../shopify-dev/content/tools/argo-checkout/components/index.md',
-  );
+  if (!fs.existsSync(devDocsRoot)) {
+    fs.mkdirSync(devDocsRoot);
+  }
 
+  if (!fs.existsSync(componentDocs)) {
+    fs.mkdirSync(componentDocs);
+  }
+
+  const indexFile = resolve(`${paths.devDocsRoot}/components/index.md`);
   let index = renderYamlFrontMatter({
     gid: findUuid(indexFile),
-    url: '/tools/argo-checkout/components/index',
+    url: `${paths.shopifyDevUrl}/components/index`,
     title: 'Argo Checkout Components',
     description: 'A list of Argo Checkout Components.',
     hidden: true,
@@ -169,14 +187,17 @@ export async function components() {
 
   components.forEach(({value: {name, docs, props}}: any) => {
     if (name === 'View') return;
-    const file = `${devDocs}/${name.toLowerCase()}.md`;
-    const uuid = findUuid(file);
+    const componentFile = `${componentDocs}/${name.toLowerCase()}.md`;
 
     const docsContent = docs ? strip(docs.content).trim() : '';
 
+    const componentUrl = `${
+      paths.shopifyDevUrl
+    }/components/${name.toLowerCase()}`;
+
     let markdown = renderYamlFrontMatter({
-      gid: uuid,
-      url: `/tools/argo-checkout/components/${name.toLowerCase()}`,
+      gid: findUuid(componentFile),
+      url: componentUrl,
       title: `${name}`,
       // description: docsContent,
       hidden: true,
@@ -209,14 +230,12 @@ export async function components() {
     markdown += dedupe(additionalPropsTables).reverse().join('');
     markdown += getAdditionalContentFor(name);
 
-    fs.writeFile(`${devDocs}/${name.toLowerCase()}.md`, markdown, function (
-      err,
-    ) {
+    fs.writeFile(componentFile, markdown, function (err) {
       if (err) throw err;
     });
 
     additionalPropsTables.length = 0;
-    index += `- [${name}](/tools/argo-checkout/components/${name.toLowerCase()})\n`;
+    index += `- [${name}](${componentUrl})\n`;
   });
 
   // Write the component table of contents
