@@ -17,11 +17,8 @@ interface Packages {
 }
 
 interface Paths {
-  root: string;
-  /**
-   * Output path (in shopify-dev repo)
-   */
-  devDocsRoot: string;
+  inputRoot: string;
+  outputRoot: string;
   packages: Packages;
   shopifyDevUrl: string;
 }
@@ -162,21 +159,21 @@ async function buildComponentGraph(componentIndex: string) {
 }
 
 export async function components(paths: Paths) {
-  const componentIndex = resolve(`${paths.root}/src/components/index.ts`);
+  const componentIndex = resolve(`${paths.inputRoot}/src/components/index.ts`);
   const {nodes, components} = await buildComponentGraph(componentIndex);
 
-  const devDocsRoot = resolve(`${paths.devDocsRoot}`);
-  const componentDocs = resolve(`${paths.devDocsRoot}/components`);
+  const outputRoot = resolve(`${paths.outputRoot}`);
+  const componentDocsPath = resolve(`${paths.outputRoot}/components`);
 
-  if (!fs.existsSync(devDocsRoot)) {
-    fs.mkdirSync(devDocsRoot);
+  if (!fs.existsSync(outputRoot)) {
+    fs.mkdirSync(outputRoot);
   }
 
-  if (!fs.existsSync(componentDocs)) {
-    fs.mkdirSync(componentDocs);
+  if (!fs.existsSync(componentDocsPath)) {
+    fs.mkdirSync(componentDocsPath);
   }
 
-  const indexFile = resolve(`${paths.devDocsRoot}/components/index.md`);
+  const indexFile = resolve(`${paths.outputRoot}/components/index.md`);
   let index = renderYamlFrontMatter({
     gid: findUuid(indexFile),
     url: `${paths.shopifyDevUrl}/components/index`,
@@ -188,7 +185,7 @@ export async function components(paths: Paths) {
   components.forEach(({value: {name, docs, props}}: any) => {
     if (name === 'View') return;
 
-    const componentFile = `${componentDocs}/${name.toLowerCase()}.md`;
+    const outputFile = `${componentDocsPath}/${name.toLowerCase()}.md`;
 
     const docsContent = docs ? strip(docs.content).trim() : '';
 
@@ -197,7 +194,7 @@ export async function components(paths: Paths) {
     }/components/${name.toLowerCase()}`;
 
     let markdown = renderYamlFrontMatter({
-      gid: findUuid(componentFile),
+      gid: findUuid(outputFile),
       url: componentUrl,
       title: `${name}`,
       // description: docsContent,
@@ -228,9 +225,13 @@ export async function components(paths: Paths) {
     }
 
     markdown += dedupe(additionalPropsTables).reverse().join('');
-    markdown += getAdditionalContentFor(name);
 
-    fs.writeFile(componentFile, markdown, function (err) {
+    const contentFolder = resolve(
+      `${paths.inputRoot}/src/components/${name}/content`,
+    );
+    markdown += getAdditionalContentFor(contentFolder);
+
+    fs.writeFile(outputFile, markdown, function (err) {
       if (err) throw err;
     });
 
@@ -467,12 +468,8 @@ function renderComponentExamplesFor(name: string, packages: Packages): string {
   return markdown;
 }
 
-function getAdditionalContentFor(name: string) {
+function getAdditionalContentFor(contentFolder: string) {
   let markdown = '';
-
-  const contentFolder = resolve(
-    `../checkout-web/packages/argo-checkout/src/components/${name}/content`,
-  );
 
   if (fs.existsSync(contentFolder)) {
     fs.readdirSync(contentFolder).forEach((file) => {
