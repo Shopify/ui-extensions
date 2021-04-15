@@ -5,7 +5,14 @@ import {readFileSync} from 'fs';
 import {sync as resolveSync} from 'resolve';
 
 import {parse} from '@babel/parser';
-import {TSDocParser, TSDocEmitter, StringBuilder} from '@microsoft/tsdoc';
+import {
+  TSDocParser,
+  TSDocEmitter,
+  StringBuilder,
+  DocNode,
+  DocExcerpt,
+  DocComment,
+} from '@microsoft/tsdoc';
 
 import type {
   Node,
@@ -27,6 +34,7 @@ import type {
   Exportable,
   StringLiteralType,
   ParameterType,
+  Tag,
 } from '../types';
 
 interface UnresolvedLocal {
@@ -359,7 +367,11 @@ function resolveNodeToLocal(
             name,
             optional: property.optional ?? false,
             value: resolveNodeToLocal(property.typeAnnotation, context) as any,
-            docs: docsFromCommentBlocks([property.leadingComments], context),
+            docs: docsFromCommentBlocks(
+              [property.leadingComments],
+              context,
+              true,
+            ),
           });
         } else if (property.type === 'TSMethodSignature') {
           if (
@@ -515,9 +527,59 @@ function flattenParenthesized(
     : node.typeAnnotation;
 }
 
+function contentWithTags(docComment: DocComment) {
+  let tagName: string;
+
+  const tags: Tag[] = [];
+
+  // using summarySection omits tags
+  const content = recurseDocNodes(docComment.summarySection);
+
+  // Parse block tags
+  docComment.customBlocks.forEach((block) => recurseDocNodes(block, true));
+
+  /**
+   * Parse modifier tags (ie beta)
+   * see:
+   *   https://github.com/microsoft/tsdoc/blob/master/tsdoc/src/details/StandardTags.ts
+   *   https://github.com/microsoft/tsdoc/blob/bab67532f80d731087eb167c586943e946dc8b11/tsdoc/src/configuration/TSDocTagDefinition.ts#L7-L24
+   */
+  docComment.modifierTagSet.nodes.forEach((x) => {
+    if (x.tagName) {
+      tags.push({name: x.tagName, content: ''});
+    }
+  });
+
+  return {content, tags};
+
+  function recurseDocNodes(docNode?: DocNode, accumulate?: boolean): string {
+    let result = '';
+    if (docNode) {
+      if (docNode instanceof DocExcerpt) {
+        if (docNode.kind === 'Excerpt' && accumulate) {
+          if (docNode.excerptKind === 'BlockTag') {
+            tagName = docNode.content.toString();
+          } else if (docNode.excerptKind === 'PlainText') {
+            tags.push({
+              name: tagName,
+              content: docNode.content.toString().replace(/^ /g, ''),
+            });
+          }
+        }
+        result += docNode.content.toString();
+      }
+      for (const childNode of docNode.getChildNodes()) {
+        result += recurseDocNodes(childNode, accumulate);
+      }
+    }
+    return result;
+  }
+}
+
 function docsFromCommentBlocks(
   blocks: (readonly Comment[] | undefined | null)[],
   {source}: ProcessContext,
+  parseTags?: boolean,
 ): RemoteComponent['docs'] {
   const docs: string[] = [];
 
@@ -538,11 +600,15 @@ function docsFromCommentBlocks(
   const parserContext = parser.parseString(docs.join('\n'));
   const {docComment} = parserContext;
 
-  // oh microsoft
-  const stringBuilder = new StringBuilder();
-  new TSDocEmitter().renderComment(stringBuilder, docComment);
-
-  return {content: stringBuilder.toString()};
+  if (parseTags) {
+    const {content, tags} = contentWithTags(docComment);
+    return {content, tags};
+  } else {
+    // oh microsoft
+    const stringBuilder = new StringBuilder();
+    new TSDocEmitter().renderComment(stringBuilder, docComment);
+    return {content: stringBuilder.toString()};
+  }
 }
 
 function collectLocalsFromStatement(

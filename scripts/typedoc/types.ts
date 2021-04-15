@@ -1,5 +1,11 @@
+export interface Tag {
+  name: string;
+  content: string;
+}
+
 export interface Documentation {
   content: string;
+  tags?: Tag[];
 }
 
 export interface Documentable {

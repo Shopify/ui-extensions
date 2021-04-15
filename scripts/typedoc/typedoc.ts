@@ -9,6 +9,7 @@ import type {
   RemoteComponent,
   Type,
   PropertySignature,
+  Tag,
 } from './types';
 import {createDependencyGraph, Module} from './utilities/dependency-graph';
 
@@ -297,15 +298,19 @@ function propsTable(
           propDocs ? strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, '') : ''
         }</td></tr>`;
       } else {
+        const content = propDocs
+          ? strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, '')
+          : '';
+        const tags = propDocs?.tags?.length
+          ? propDocs.tags.map(stringifyTag).join('<br/>')
+          : '';
         markdown += `<tr><td>${propName}${
           optional ? '?' : ''
         }</td><td style="word-wrap:break-word;"><code>${propType(
           value,
           exports,
           dir,
-        )}</code></td><td>${
-          propDocs ? strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, '') : ''
-        }</td></tr>`;
+        )}</code></td><td>${content}${tags ? '<br />' : ''}${tags}</td></tr>`;
       }
     },
   );
@@ -313,6 +318,20 @@ function propsTable(
   markdown += '</table>\n\n';
 
   return markdown;
+}
+
+function stringifyTag(tag: Tag) {
+  let string = sentenceCaseTagName(tag.name);
+  if (tag.content) {
+    string += `: <code>${tag.content}</code>`;
+  }
+  return string;
+}
+
+function sentenceCaseTagName(tagName: string) {
+  const input = tagName.slice(1);
+  const result = input.replace(/([A-Z])/g, ' $1').toLowerCase();
+  return result.charAt(0).toUpperCase() + result.slice(1);
 }
 
 function propType(value: any, exports: any[], dir: string): any {
