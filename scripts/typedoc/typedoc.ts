@@ -297,16 +297,10 @@ function propsTable(
           exports,
           dir,
         )}): ${propType(value, exports, dir)}</code></td><td>${
-          propDocs
-            ? converter.makeHtml(
-                strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, ''),
-              )
-            : ''
+          propDocs ? converter.makeHtml(strip(propDocs.content)) : ''
         }</td></tr>`;
       } else {
-        const content = propDocs
-          ? strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, '')
-          : '';
+        const content = propDocs ? strip(propDocs.content) : '';
         const tags = propDocs?.tags?.length
           ? propDocs.tags.map(stringifyTag).join('<br/>')
           : '';
