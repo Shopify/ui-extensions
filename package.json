@@ -40,6 +40,7 @@
     "lerna": "^3.22.1",
     "nodemon": "^2.0.4",
     "resolve": "^1.17.0",
+    "showdown": "^1.9.1",
     "uuid": "^8.3.2"
   },
   "resolutions": {

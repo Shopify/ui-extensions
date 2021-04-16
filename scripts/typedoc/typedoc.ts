@@ -1,6 +1,7 @@
 import {resolve, extname} from 'path';
 import * as fs from 'fs';
 import {v4 as uuidv4} from 'uuid';
+import showdown from 'showdown';
 
 import type {
   Documentation,
@@ -70,6 +71,7 @@ interface Node {
 }
 
 const additionalPropsTables: string[] = [];
+const converter = new showdown.Converter();
 
 async function extensionPoints() {
   const extensionsIndex = resolve(
@@ -295,7 +297,11 @@ function propsTable(
           exports,
           dir,
         )}): ${propType(value, exports, dir)}</code></td><td>${
-          propDocs ? strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, '') : ''
+          propDocs
+            ? converter.makeHtml(
+                strip(propDocs.content).replace(/(\r\n|\n|\r)/gm, ''),
+              )
+            : ''
         }</td></tr>`;
       } else {
         const content = propDocs
@@ -306,11 +312,13 @@ function propsTable(
           : '';
         markdown += `<tr><td>${propName}${
           optional ? '?' : ''
-        }</td><td style="word-wrap:break-word;"><code>${propType(
+        }</td><td><code>${propType(
           value,
           exports,
           dir,
-        )}</code></td><td>${content}${tags ? '<br />' : ''}${tags}</td></tr>`;
+        )}</code></td><td style="word-break: break-word;">${converter.makeHtml(
+          content,
+        )}${tags}</td></tr>`;
       }
     },
   );
@@ -337,9 +345,9 @@ function sentenceCaseTagName(tagName: string) {
 function propType(value: any, exports: any[], dir: string): any {
   let params = '';
   if (value.params != null && value.params.length > 0) {
-    params = `<${value.params
+    params = `<<wbr>${value.params
       .map((param: any) => propType(param, exports, dir))
-      .join(', ')}>`;
+      .join(', ')}<wbr>>`;
   }
 
   switch (value.kind) {
