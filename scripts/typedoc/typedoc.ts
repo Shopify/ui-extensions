@@ -26,37 +26,59 @@ interface Paths {
 }
 
 export function renderForShopifyDev(paths: Paths) {
-  extensionPoints();
+  extensionPoints(paths);
   components(paths);
-  gettingStarted();
+  gettingStarted(paths);
 }
 
-function gettingStarted() {
-  const indexFile = resolve(
-    '../shopify-dev/content/tools/argo-checkout/index.md',
+function gettingStarted(paths: Paths) {
+  const outputRoot = resolve(paths.outputRoot);
+  const extensionPointsDocsPath = resolve(
+    `${paths.outputRoot}/extension-points`,
   );
 
-  let markdown = `---\ngid: ${findUuid(
-    indexFile,
-  )}\nurl: /tools/argo-checkout/index\ntitle: Getting Started with Argo Checkout\ndescription: Getting Started with Argo Checkout.\nhidden: true\n---\n\n`;
+  if (!fs.existsSync(outputRoot)) {
+    fs.mkdirSync(outputRoot);
+  }
 
-  const contentFolder = resolve(
-    '../checkout-web/packages/argo-checkout/documentation',
-  );
+  if (!fs.existsSync(extensionPointsDocsPath)) {
+    fs.mkdirSync(extensionPointsDocsPath);
+  }
 
-  const files = [
-    'getting-started.md',
-    'extension-points.md',
-    'globals.md',
-    'rendering.md',
-    'components.md',
-  ];
+  const indexFile = resolve(`${extensionPointsDocsPath}/index.md`);
 
-  if (fs.existsSync(contentFolder)) {
+  let markdown = renderYamlFrontMatter({
+    gid: findUuid(indexFile),
+    url: `${paths.shopifyDevUrl}/extension-points/index`,
+    title: 'Checkout extensions API reference',
+    description:
+      'API reference for Checkout extension points. Learn about global objects, rendering, components, and how you’ll interact with them.',
+    hidden: true,
+  });
+
+  const docsInputPath = resolve(`${paths.inputRoot}/documentation`);
+
+  const files = ['extension-points.md', 'globals.md', 'rendering.md'];
+
+  if (fs.existsSync(docsInputPath)) {
     files.forEach((file) => {
-      markdown += `${fs.readFileSync(`${contentFolder}/${file}`, 'utf8')}\n`;
+      markdown += `${fs.readFileSync(`${docsInputPath}/${file}`, 'utf8')}\n`;
     });
   }
+
+  // Demote each heading
+  markdown = markdown.replace(/# /g, '## ');
+  // Replace github links to in-page anchors
+  markdown = markdown.replace(/\.\/([\w-]+)\.md/g, '#$1');
+  // Add a link to the extension points API
+  markdown = markdown.replace(
+    ' `Checkout::Feature::Render`',
+    ` [\`Checkout::Feature::Render\`](${paths.shopifyDevUrl}/extension-points/api)`,
+  );
+  markdown = markdown.replace(
+    '#components',
+    `${paths.shopifyDevUrl}/components`,
+  );
 
   fs.writeFile(indexFile, markdown, function (err) {
     if (err) throw err;
@@ -73,10 +95,8 @@ interface Node {
 const additionalPropsTables: string[] = [];
 const converter = new showdown.Converter();
 
-async function extensionPoints() {
-  const extensionsIndex = resolve(
-    '../checkout-web/packages/argo-checkout/src/index.ts',
-  );
+async function extensionPoints(paths: Paths) {
+  const extensionsIndex = resolve(`${paths.inputRoot}/src/index.ts`);
 
   const graph = await createDependencyGraph(extensionsIndex);
 
@@ -110,21 +130,20 @@ async function extensionPoints() {
     interfaceEntryPoints.includes(name),
   );
 
-  const apiFile = resolve(
-    '../shopify-dev/content/tools/argo-checkout/extension-points/api.md',
-  );
-
-  const folder = resolve(
-    '../shopify-dev/content/tools/argo-checkout/extension-points',
-  );
+  const apiFile = resolve(`${paths.outputRoot}/extension-points/api.md`);
+  const folder = resolve(`${paths.outputRoot}/extension-points`);
 
   if (!fs.existsSync(folder)) {
     fs.mkdirSync(folder);
   }
 
-  const uuid = findUuid(apiFile);
+  let markdown = renderYamlFrontMatter({
+    gid: findUuid(apiFile),
+    url: `${paths.shopifyDevUrl}/extension-points/api`,
+    title: 'Extension points API',
+    hidden: true,
+  });
 
-  let markdown = `---\ngid: ${uuid}\nurl: /tools/argo-checkout/extension-points/api.md\ntitle: Extension Points API\nhidden: true\n---\n\n`;
   interfaces.forEach(({name, docs, properties}) => {
     markdown += propsTable(name, docs, properties, nodes, extensionsIndex);
   });
@@ -180,10 +199,22 @@ export async function components(paths: Paths) {
   let index = renderYamlFrontMatter({
     gid: findUuid(indexFile),
     url: `${paths.shopifyDevUrl}/components/index`,
-    title: 'Argo Checkout Components',
-    description: 'A list of Argo Checkout Components.',
+    title: 'Components for checkout extensions',
+    description: 'A list of components for checkout extensions.',
     hidden: true,
   });
+
+  index += `Argo provides many powerful UI components that a 
+  [rendering extension](${paths.shopifyDevUrl}/extension-points#rendering) can 
+  use to build an interface. This UI is rendered natively by Shopify, so you 
+  can depend on it to be performant, accessible, and work in all of Checkout’s 
+  supported browsers. \n\nThe following components are available as part of Argo 
+  for Checkout, but make sure that you check the documentation for your 
+  [extension point](${paths.shopifyDevUrl}/extension-points#extension-points) 
+  to ensure the component is available in the extension points you are 
+  targeting.\n\n`;
+
+  index += '<ul style="column-count: auto;column-width: 12rem;">';
 
   components.forEach(({value: {name, docs, props}}: any) => {
     if (name === 'View') return;
@@ -239,8 +270,10 @@ export async function components(paths: Paths) {
     });
 
     additionalPropsTables.length = 0;
-    index += `- [${name}](${componentUrl})\n`;
+    index += `<li><a href="${componentUrl}">${name}</a></li>`;
   });
+
+  index += '</ul>';
 
   // Write the component table of contents
   fs.writeFile(indexFile, index, function (err) {
@@ -291,6 +324,8 @@ function propsTable(
 
   properties.forEach(
     ({name: propName, optional, value, docs: propDocs, parameters}) => {
+      if (propName === 'Checkout::KitchenSink') return;
+
       if (parameters) {
         markdown += `<tr><td><code>(${paramsType(
           parameters,
