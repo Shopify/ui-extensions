@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-admin-playground",
-  "version": "0.9.3",
+  "version": "0.10.0-alpha.0",
   "private": true,
   "scripts": {
     "clean": "rm -rf ./dist",
@@ -12,9 +12,9 @@
     "directory": "packages/argo-admin-playground"
   },
   "dependencies": {
-    "@shopify/argo-admin": "0.9.3",
-    "@shopify/argo-admin-cli": "0.9.3",
-    "@shopify/argo-admin-react": "0.9.3",
+    "@shopify/argo-admin": "0.10.0-alpha.0",
+    "@shopify/argo-admin-cli": "0.10.0-alpha.0",
+    "@shopify/argo-admin-react": "0.10.0-alpha.0",
     "@shopify/react-form": "^0.6.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

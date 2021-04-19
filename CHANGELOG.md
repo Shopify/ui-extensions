@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-alpha.0](https://github.com/Shopify/argo-admin/compare/v0.9.3...v0.10.0-alpha.0) (2021-04-19)
+
+
+### Bug Fixes
+
+* **argo-admin:** shared api exports ([8f4244c](https://github.com/Shopify/argo-admin/commit/8f4244c07fb3509b86ea7c8486f52af5ca26a184))
+
+
+### Features
+
+* add VisuallyHidden ([2eca41f](https://github.com/Shopify/argo-admin/commit/2eca41f11526c42152eac89aa2b47e43ba18d4a1))
+* **argo-admin-cli:** Extension UUID Flag ([7bd0512](https://github.com/Shopify/argo-admin/commit/7bd05127aeef307251829f122c00a3bbd3395e0c))
+
+
+
+
+
 ## [0.9.3](https://github.com/Shopify/argo-admin/compare/v0.9.2...v0.9.3) (2021-04-08)
 
 

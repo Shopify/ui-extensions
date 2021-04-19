@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-alpha.0](https://github.com/Shopify/argo-admin/compare/v0.9.3...v0.10.0-alpha.0) (2021-04-19)
+
+
+### Features
+
+* **argo-admin-cli:** Extension UUID Flag ([7bd0512](https://github.com/Shopify/argo-admin/commit/7bd05127aeef307251829f122c00a3bbd3395e0c))
+
+
+
+
+
 ## [0.9.3](https://github.com/Shopify/argo-admin/compare/v0.9.2...v0.9.3) (2021-04-08)
 
 
