@@ -10,3 +10,35 @@ packages/*/*.js
 packages/*/bin
 !packages/*/.eslintrc.js
 *.log
+
+# Built style type definitions
+**/next-env.d.ts
+**/.next
+
+#TS output
+packages/**/dist
+dist
+build
+
+# Debug log from npm
+npm-debug.log
+**/npm-debug.log
+
+# Debug log from lerna
+lerna-debug.log
+
+# Debug logs from yarn
+**/yarn-error.log
+
+# IntelliJ IDE ignore
+.idea
+
+.DS_Store
+
+tmp
+**/test.log
+
+tsconfig.tsbuildinfo
+tsconfig.prod.tsbuildinfo
+
+.build

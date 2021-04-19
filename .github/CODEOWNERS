@@ -1,0 +1,8 @@
+# Owners of the packages.
+packages/* @vividviolet @henry-tao @alanthai @davidmuzi @Fionoble @dave-pelletier
+
+# Owners of the generators
+scripts/* @vividviolet @henry-tao @alanthai @Fionoble
+
+# Owners of the docs
+docs/* @amanbis @iainmcampbell

@@ -1,0 +1,1 @@
+export {SubscriptionPlansCard} from './SubscriptionPlansCard';

@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "../",
+    "outDir": "./",
+    "composite": true,
+    "baseUrl": "./",
+    "paths": {
+      "@shopify/argo": ["../argo/src"],
+      "@shopify/argo/*": ["../argo/src/*"],
+      "@shopify/argo-host": ["../argo-host/src"],
+      "@shopify/argo-host/*": ["../argo-host/src/*"],
+    }
+  },
+  "include": [
+    "../*/src"
+  ]
+}

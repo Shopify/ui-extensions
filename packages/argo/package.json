@@ -1,0 +1,29 @@
+{
+  "name": "@shopify/argo",
+  "version": "0.1.2",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --build tsconfig.prod.json",
+    "check": "tsc --build tsconfig.prod.json --pretty --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shopify/app-extension-libs.git",
+    "directory": "packages/argo"
+  },
+  "sideEffects": false,
+  "dependencies": {
+    "@shopify/remote-ui-core": "^0.0.22"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.0"
+  },
+  "optionalDependencies": {
+    "react": "^16.8.0"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://packages.shopify.io/shopify/node/npm/"
+  }
+}

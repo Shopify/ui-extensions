@@ -1,0 +1,11 @@
+umd
+*.js
+*.js.map
+*.d.ts
+*.sh
+
+!webpack.*.js
+!config.*.js
+
+build/
+node_modules/
