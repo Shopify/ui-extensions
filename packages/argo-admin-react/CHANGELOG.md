@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0-alpha.0](https://github.com/Shopify/argo-admin/compare/v0.9.3...v0.10.0-alpha.0) (2021-04-19)
+
+
+### Features
+
+* add VisuallyHidden ([2eca41f](https://github.com/Shopify/argo-admin/commit/2eca41f11526c42152eac89aa2b47e43ba18d4a1))
+
+
+
+
+
 ## [0.9.3](https://github.com/Shopify/argo-admin/compare/v0.9.2...v0.9.3) (2021-04-08)
 
 **Note:** Version bump only for package @shopify/argo-admin-react
