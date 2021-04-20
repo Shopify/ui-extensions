@@ -3,12 +3,11 @@ import {createRemoteComponent} from '@remote-ui/core';
 type Status = 'success' | 'info' | 'attention' | 'warning' | 'new';
 
 export interface BadgeProps {
-  /**
-   * The content to display inside the badge.
-   */
+  /** The content to display inside the badge. */
   message: string;
   /**
-   * Set the colour of the badge for the given status. Defaults to no status.
+   * Set the colour of the badge for the given status.
+   * @defaultValue none
    */
   status?: Status;
 }

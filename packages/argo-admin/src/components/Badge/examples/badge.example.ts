@@ -1,4 +1,4 @@
-import {extend, ExtensionPoint, Badge} from '@shopify/argo-admin';
+import {extend, Badge} from '@shopify/argo-admin';
 
 extend('Playground', (root) => {
   const badge = root.createComponent(Badge, {
