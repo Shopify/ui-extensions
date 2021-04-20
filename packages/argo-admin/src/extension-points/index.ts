@@ -16,7 +16,7 @@ export {ProductSubscriptionExtensionPoint};
 Placeholder for new imports
 */
 
-export {ExtensionResult, RenderableExtensionCallback} from './types';
+export {ContainerAction, ExtensionResult, RenderableExtensionCallback} from './types';
 
 export type ExtensionPoint = PlaygroundExtensionPoint | ProductSubscriptionExtensionPoint;
 

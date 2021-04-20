@@ -1,7 +1,7 @@
 import {RemoteRoot} from '@remote-ui/core';
 
 import {ModalSchema, AppOverlaySchema} from '../../containers';
-import {RenderableExtensionCallback, StandardApi, ToastApi} from '../types';
+import {RenderableExtensionCallback, StandardApi, ToastApi, ContainerAction} from '../types';
 
 export type ProductSubscriptionExtensionPoint =
   | 'Admin::Product::SubscriptionPlan::Add'
@@ -12,11 +12,6 @@ export type ProductSubscriptionExtensionPoint =
 export interface ProductSubscriptionContainerApi {
   close(): void;
   done(): void;
-}
-
-export interface ContainerAction {
-  content: string;
-  onAction(): void;
 }
 
 export interface ProductSubscriptionModalContainerApi {

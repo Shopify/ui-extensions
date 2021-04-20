@@ -17,3 +17,8 @@ export type StandardApi<T> = {[key: string]: undefined} & {extensionPoint: T} & 
   SessionTokenApi;
 
 export type {LayoutApi, LocaleApi, SessionTokenApi, ToastApi};
+
+export interface ContainerAction {
+  content: string;
+  onAction(): void;
+}
