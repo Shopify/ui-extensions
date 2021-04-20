@@ -10,5 +10,8 @@ export interface PlaygroundExtensionApi {
 }
 
 export interface PlaygroundExtensionPointCallback {
-  Playground: RenderableExtensionCallback<PlaygroundExtensionApi, RemoteRoot<AllComponentsSchema>>;
+  Playground: RenderableExtensionCallback<
+    PlaygroundExtensionApi['Playground'],
+    RemoteRoot<AllComponentsSchema>
+  >;
 }

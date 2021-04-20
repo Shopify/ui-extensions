@@ -41,7 +41,8 @@ export type ProductSubscriptionCreateApi = ProductSubscriptionStandardApi<
 export type ProductSubscriptionAddApi = ProductSubscriptionStandardApi<
   'Admin::Product::SubscriptionPlan::Add'
 > & {
-  container: ProductSubscriptionContainerApi & ProductSubscriptionModalContainerApi;
+  container: ProductSubscriptionContainerApi &
+    ProductSubscriptionModalContainerApi;
   data: {
     productId: string;
     variantId?: string;
@@ -62,7 +63,8 @@ export type ProductSubscriptionEditApi = ProductSubscriptionStandardApi<
 export type ProductSubscriptionRemoveApi = ProductSubscriptionStandardApi<
   'Admin::Product::SubscriptionPlan::Remove'
 > & {
-  container: ProductSubscriptionContainerApi & ProductSubscriptionModalContainerApi;
+  container: ProductSubscriptionContainerApi &
+    ProductSubscriptionModalContainerApi;
   data: {
     sellingPlanGroupId: string;
     productId: string;
@@ -80,19 +82,19 @@ export interface ProductSubscriptionExtensionApi {
 
 export interface ProductSubscriptionExtensionPointCallback {
   'Admin::Product::SubscriptionPlan::Create': RenderableExtensionCallback<
-    ProductSubscriptionExtensionApi,
+    ProductSubscriptionExtensionApi['Admin::Product::SubscriptionPlan::Create'],
     RemoteRoot<AppOverlaySchema>
   >;
   'Admin::Product::SubscriptionPlan::Add': RenderableExtensionCallback<
-    ProductSubscriptionExtensionApi,
+    ProductSubscriptionExtensionApi['Admin::Product::SubscriptionPlan::Add'],
     RemoteRoot<ModalSchema>
   >;
   'Admin::Product::SubscriptionPlan::Edit': RenderableExtensionCallback<
-    ProductSubscriptionExtensionApi,
+    ProductSubscriptionExtensionApi['Admin::Product::SubscriptionPlan::Edit'],
     RemoteRoot<AppOverlaySchema>
   >;
   'Admin::Product::SubscriptionPlan::Remove': RenderableExtensionCallback<
-    ProductSubscriptionExtensionApi,
+    ProductSubscriptionExtensionApi['Admin::Product::SubscriptionPlan::Remove'],
     RemoteRoot<ModalSchema>
   >;
 }
