@@ -7,7 +7,9 @@ labels: Bug
 ## Where is this issue occuring?
 
 - [ ] CLI
-- [ ] Argo Library
+- [ ] Argo Checkout Library
+- [ ] Checkout
+- [ ] Argo Admin Library
 - [ ] Admin
 - [ ] Other (please specify)
 
@@ -16,7 +18,6 @@ labels: Bug
 <!--
 Write a short description of the issue here ↓
 -->
-
 
 ## Expected behavior
 
@@ -40,22 +41,18 @@ If you include an animated gif showing your issue, wrapping it in a details tag 
 
 -->
 
-
 ## Steps to reproduce the problem
 
-1.
-2.
-3.
+1. 2. 3.
 
 ## Specifications
 
-Are you using the React components? (Y/N):
--
-Argo version number:
--
-Browser:
--
-Device:
--
-Operating System:
--
+## Are you using the React components? (Y/N):
+
+## Argo version number:
+
+## Browser:
+
+## Device:
+
+## Operating System:

@@ -5,4 +5,7 @@
 scripts/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell
 
 # Owners of the packages.
-packages/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell
+packages/argo-admin/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell
+packages/argo-admin-react/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell
+packages/argo-admin-cli/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell
+packages/argo-admin-playground/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell

@@ -10,6 +10,7 @@ module.exports = {
     'packages/*/*.node',
     'packages/*/*.esnext',
     'examples/',
+    'scripts/',
   ],
   rules: {
     // Conflicts with prettier rule
