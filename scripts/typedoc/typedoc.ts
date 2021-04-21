@@ -307,11 +307,16 @@ function propsTable(
   exports: Node[],
   dir: string,
   titleAndDocs = true,
+  headingLevel = 2,
 ) {
   let markdown = '';
 
   if (titleAndDocs) {
-    markdown += `<a name="${name}"></a>\n\n## ${name}\n\n`;
+    let heading = '';
+    for (let hh = 0; hh < headingLevel; hh++) {
+      heading += '#';
+    }
+    markdown += `<a name="${name}"></a>\n\n${heading} ${name}\n\n`;
     markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
   }
 
@@ -414,7 +419,15 @@ function propType(value: any, exports: any[], dir: string): any {
       return propType(local.value, exports, dir);
     case 'InterfaceType':
       additionalPropsTables.push(
-        propsTable(value.name, value.docs, value.properties, exports, dir),
+        propsTable(
+          value.name,
+          value.docs,
+          value.properties,
+          exports,
+          dir,
+          true,
+          3,
+        ),
       );
       return `<code><a href="#${value.name}">${value.name}</a>${params}</code>`;
     case 'UnionType':
