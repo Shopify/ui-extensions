@@ -1,11 +1,22 @@
 import React, {useState, useMemo} from 'react';
-import {Card, Stack, Checkbox, Button, Modal, TextField} from '@shopify/argo-admin-react';
+import {
+  Card,
+  Stack,
+  Checkbox,
+  Button,
+  Modal,
+  TextField,
+} from '@shopify/argo-admin-react';
 
 export function ModalExample() {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalShowPrimayAction, setModalShowPrimayAction] = useState(false);
-  const [modalShowSecondaryAction, setModalShowSecondaryAction] = useState(false);
-  const [modalShowSecondaryActions, setModalShowSecondaryActions] = useState(false);
+  const [modalShowSecondaryAction, setModalShowSecondaryAction] = useState(
+    false,
+  );
+  const [modalShowSecondaryActions, setModalShowSecondaryActions] = useState(
+    false,
+  );
   const modalPrimaryAction = useMemo(() => {
     return modalShowPrimayAction
       ? {

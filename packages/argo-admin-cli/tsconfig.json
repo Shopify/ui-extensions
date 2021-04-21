@@ -3,17 +3,15 @@
   "compilerOptions": {
     "rootDir": "../",
     "baseUrl": "./",
+    "jsx": "react-jsx",
     "paths": {
       "@shopify/argo-admin": ["../argo-admin/src"],
       "@shopify/argo-admin/*": ["../argo-admin/src/*"],
       "@shopify/argo-admin-react": ["../argo-admin-react/src"],
       "@shopify/argo-admin-react/*": ["../argo-admin-react/src/*"],
-      "react": ["../../node_modules/react"]
+      "react": ["node_modules/react"]
     }
   },
-  "include": [
-    "../*/src",
-    "../*/sample-extension.tsx"
-  ],
+  "include": ["src", "../argo-admin/src", "../argo-admin-react/src"],
   "exclude": []
 }

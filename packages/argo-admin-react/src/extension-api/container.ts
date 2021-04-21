@@ -1,4 +1,7 @@
-import {isContainerApi, ExtensionContainer} from '@shopify/argo-admin/extension-api';
+import {
+  isContainerApi,
+  ExtensionContainer,
+} from '@shopify/argo-admin/extension-api';
 import {ExtensionPoint} from '@shopify/argo-admin/extension-points';
 
 import {useExtensionApi} from './utils';

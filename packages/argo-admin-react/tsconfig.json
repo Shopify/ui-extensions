@@ -5,11 +5,8 @@
     "baseUrl": "./",
     "paths": {
       "@shopify/argo-admin": ["../argo-admin/src"],
-      "@shopify/argo-admin/*": ["../argo-admin/src/*"],
-      "react": ["../../node_modules/react"]
+      "@shopify/argo-admin/*": ["../argo-admin/src/*"]
     }
   },
-  "include": [
-    "../*/src"
-  ]
+  "include": ["../argo-admin/src", "src"]
 }

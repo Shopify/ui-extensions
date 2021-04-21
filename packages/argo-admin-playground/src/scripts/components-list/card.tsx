@@ -3,7 +3,9 @@ import {Card, CardSection, Text} from '@shopify/argo-admin-react';
 
 export function CardExample() {
   const [cardPrimaryFooterValue, setCardPrimaryFooterValue] = useState('N/A');
-  const [cardSecondaryFooterValue, setCardSecondaryFooterValue] = useState('N/A');
+  const [cardSecondaryFooterValue, setCardSecondaryFooterValue] = useState(
+    'N/A',
+  );
   const [cardHeaderValue, setCardHeaderValue] = useState('N/A');
 
   return (

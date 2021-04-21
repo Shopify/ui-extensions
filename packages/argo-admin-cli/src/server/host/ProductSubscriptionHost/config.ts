@@ -91,10 +91,18 @@ export const LOCALES = [
   },
 ];
 
-export const actionFields: Record<ProductSubscriptionAction, (keyof SubscriptionData)[]> = {
+export const actionFields: Record<
+  ProductSubscriptionAction,
+  (keyof SubscriptionData)[]
+> = {
   [ProductSubscriptionAction.Add]: ['action', 'productId', 'variantId'],
   [ProductSubscriptionAction.Create]: ['action', 'productId', 'variantId'],
-  [ProductSubscriptionAction.Edit]: ['action', 'productId', 'sellingPlanGroupId', 'variantId'],
+  [ProductSubscriptionAction.Edit]: [
+    'action',
+    'productId',
+    'sellingPlanGroupId',
+    'variantId',
+  ],
   [ProductSubscriptionAction.Remove]: [
     'action',
     'productId',
@@ -114,4 +122,5 @@ export const defaultSettings: Settings = {
   },
   locale: 'en',
   sessionToken: '',
+  extensionOpen: false,
 };

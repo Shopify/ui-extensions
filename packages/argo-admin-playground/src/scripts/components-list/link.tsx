@@ -13,8 +13,12 @@ export function LinkExample() {
         <Link url="/admin/products" external>
           Relative external link to Products
         </Link>
-        <Link url="http://google.com">Link to Google that should always open in new tab</Link>
-        <Link url="javascript:alert(window.location);">Sanitized Javascript in links</Link>
+        <Link url="http://google.com">
+          Link to Google that should always open in new tab
+        </Link>
+        <Link url="javascript:alert(window.location);">
+          Sanitized Javascript in links
+        </Link>
         <Link onPress={linkAction}>Link that triggers log</Link>
       </Stack>
     </Card>

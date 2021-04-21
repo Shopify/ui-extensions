@@ -4,10 +4,15 @@ import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import Dotenv from 'dotenv-webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import webpackDevMiddlewareReporter from 'webpack-dev-middleware/lib/reporter';
 
 import {createWebpackConfiguration} from '../webpackConfig';
 import {log} from '../utilities';
+
+const webpackDevMiddlewareReporter: (
+  middlewareOptions: any,
+  options: any,
+  // eslint-disable-next-line @typescript-eslint/no-var-requires
+) => any = require('webpack-dev-middleware/lib/reporter');
 
 export interface ClientConfig {
   env?: string;
@@ -40,7 +45,10 @@ export interface RunConfig {
 const alias = process.env.SHOPIFY_DEV
   ? {
       '@shopify/argo-admin': path.resolve(__dirname, '../../../argo-admin/src'),
-      '@shopify/argo-admin-react': path.resolve(__dirname, '../../../argo-admin-react/src'),
+      '@shopify/argo-admin-react': path.resolve(
+        __dirname,
+        '../../../argo-admin-react/src',
+      ),
     }
   : undefined;
 
@@ -150,7 +158,11 @@ export function createHostConfig(
   return serverWebpackConfig;
 }
 
-export async function run({configs, devServer: {port, sockPath, before}, onReady}: RunConfig) {
+export async function run({
+  configs,
+  devServer: {port, sockPath, before},
+  onReady,
+}: RunConfig) {
   let serverInitialized = false;
   const webpackCompiler = webpack(configs);
   webpackCompiler.hooks.done.tap('ArgoSimulator', () => {
@@ -202,7 +214,10 @@ export async function run({configs, devServer: {port, sockPath, before}, onReady
     before,
 
     logLevel: 'silent',
-    stats: process.env.DEBUG === undefined ? ('errors-only' as const) : ('verbose' as const),
+    stats:
+      process.env.DEBUG === undefined
+        ? ('errors-only' as const)
+        : ('verbose' as const),
 
     ...({reporter} as any),
   });
@@ -219,7 +234,7 @@ export async function run({configs, devServer: {port, sockPath, before}, onReady
  * Workaround to output changes in console as this is not an official API
  * See https://github.com/webpack/webpack-dev-middleware/blob/v3.7.2/lib/reporter.js
  */
-const reporter: typeof webpackDevMiddlewareReporter = (middlewareOptions, options) => {
+const reporter = (middlewareOptions: any, options: any) => {
   return webpackDevMiddlewareReporter(middlewareOptions, {
     ...options,
     log: console,

@@ -11,6 +11,7 @@ export interface ResourceListProps {
   filterControl?: FilterControl;
 }
 
-export const ResourceList = createRemoteComponent<'ResourceList', ResourceListProps>(
+export const ResourceList = createRemoteComponent<
   'ResourceList',
-);
+  ResourceListProps
+>('ResourceList');

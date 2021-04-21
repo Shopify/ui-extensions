@@ -21,7 +21,11 @@ export function StackExample() {
       <CardSection>
         <Stack>
           <StackItem fill>
-            <TextField label="Reviews" type="search" placeholder="Search for reviews" />
+            <TextField
+              label="Reviews"
+              type="search"
+              placeholder="Search for reviews"
+            />
           </StackItem>
           <StackItem>
             <Button title="Sort" icon={SORT_ICON} />
@@ -30,42 +34,42 @@ export function StackExample() {
       </CardSection>
       <CardSection title="Default">
         <Stack>
-          <Icon source="starFilled" color="yellow" />
-          <Icon source="starFilled" color="yellow" />
+          <Icon source="starFilled" />
+          <Icon source="starFilled" />
           <Icon source="starHollow" />
         </Stack>
       </CardSection>
       <CardSection title="Spacing none">
         <Stack spacing="none">
-          <Icon source="starFilled" color="yellow" />
-          <Icon source="starFilled" color="yellow" />
+          <Icon source="starFilled" />
+          <Icon source="starFilled" />
           <Icon source="starHollow" />
         </Stack>
       </CardSection>
       <CardSection title="Distribution fill">
         <Stack distribution="fill">
-          <Icon source="starFilled" color="yellow" />
-          <Icon source="starFilled" color="yellow" />
+          <Icon source="starFilled" />
+          <Icon source="starFilled" />
           <Icon source="starHollow" />
         </Stack>
       </CardSection>
       <CardSection title="Distribution center">
         <Stack distribution="center">
-          <Icon source="starFilled" color="yellow" />
-          <Icon source="starFilled" color="yellow" />
+          <Icon source="starFilled" />
+          <Icon source="starFilled" />
           <Icon source="starHollow" />
         </Stack>
       </CardSection>
       <CardSection title="Vertical">
         <Stack vertical>
-          <Icon source="starFilled" color="yellow" />
-          <Icon source="starFilled" color="yellow" />
+          <Icon source="starFilled" />
+          <Icon source="starFilled" />
           <Icon source="starHollow" />
         </Stack>
       </CardSection>
       <CardSection title="StackItem fill">
         <Stack>
-          <Icon source="starFilled" color="yellow" />
+          <Icon source="starFilled" />
           <StackItem fill>
             <Stack>
               <StackItem>

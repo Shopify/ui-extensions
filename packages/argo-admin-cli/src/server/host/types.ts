@@ -1,8 +1,7 @@
-import {ExtensionApi, ExtensionPoint} from '@shopify/argo-admin';
-import {ToastApi} from '@shopify/argo-admin/extension-api/toast';
+import {ExtensionApi, ExtensionPoint, ToastApi} from '@shopify/argo-admin';
 import {Toast as PolarisToast} from '@shopify/polaris';
 
-interface ExtensionInfo {
+export interface ExtensionInfo {
   extensionVersionUuid: string;
   script: URL | string;
   app: {
@@ -43,10 +42,16 @@ interface AppOverlayProps<T extends ExtensionPoint> extends ContainerProps<T> {
 declare global {
   interface Window {
     argoAdminHost: {
-      ArgoAppOverlay: React.JSXElementConstructor<AppOverlayProps<ExtensionPoint>>;
+      ArgoAppOverlay: React.JSXElementConstructor<
+        AppOverlayProps<ExtensionPoint>
+      >;
       ArgoModal: React.JSXElementConstructor<ArgoModalProps<ExtensionPoint>>;
-      PlaygroundContext: React.JSXElementConstructor<React.PropsWithChildren<{}>>;
-      useToastApi: (ToastComponent: typeof PolarisToast) => [React.FunctionComponent<{}>, ToastApi];
+      PlaygroundContext: React.JSXElementConstructor<
+        React.PropsWithChildren<Record<string, any>>
+      >;
+      useToastApi: (
+        ToastComponent: typeof PolarisToast,
+      ) => [React.FunctionComponent<Record<string, any>>, ToastApi];
     };
   }
 }

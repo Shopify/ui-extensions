@@ -1,12 +1,11 @@
 import React from 'react';
 import {AppProvider} from '@shopify/polaris';
 import {ExtensionPoint} from '@shopify/argo-admin';
-import {ThemeConfig} from '@shopify/polaris/types/latest/src/utilities/theme';
+import {ThemeConfig} from '@shopify/polaris/dist/types/latest/src/utilities/theme';
 import translations from '@shopify/polaris/locales/en.json';
 
 import {ProductSubscriptionHost} from './ProductSubscriptionHost';
 import {HostProps} from './types';
-import logoUrl from './logo.svg';
 
 export {HostWrapper as Host};
 
@@ -45,20 +44,20 @@ const extensionProps: HostProps = {
 
 function HostWrapper() {
   const theme: ThemeConfig = {
-    colors: {
-      topBar: {
-        background: '#FAFAFA',
-      },
-    },
     logo: {
-      topBarSource: logoUrl,
-      url: '/',
+      topBarSource:
+        'https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-primary-logo-456baa801ee66a0a435671082365958316831c9960c480451dd0330bcdae304f.svg',
       accessibilityLabel: 'Shopify',
+      url: '/',
     },
   };
 
   return (
-    <AppProvider theme={theme} i18n={translations} features={{newDesignLanguage: true}}>
+    <AppProvider
+      theme={theme}
+      i18n={translations}
+      features={{newDesignLanguage: true}}
+    >
       <Host {...extensionProps} />
     </AppProvider>
   );

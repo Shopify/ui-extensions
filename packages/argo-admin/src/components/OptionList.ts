@@ -28,4 +28,6 @@ export interface OptionListProps {
   onChange(selected: string[]): void;
 }
 
-export const OptionList = createRemoteComponent<'OptionList', OptionListProps>('OptionList');
+export const OptionList = createRemoteComponent<'OptionList', OptionListProps>(
+  'OptionList',
+);

@@ -9,7 +9,10 @@ export function CheckboxExample() {
   return (
     <Card sectioned title="Checkbox component">
       <Stack>
-        <Checkbox checked={noLabelChecked} onChange={(newValue) => setNoLabelChecked(newValue)} />
+        <Checkbox
+          checked={noLabelChecked}
+          onChange={(newValue) => setNoLabelChecked(newValue)}
+        />
         <Checkbox
           label="Checkbox with checked"
           checked={fooChecked}

@@ -1,12 +1,4 @@
-import React from 'react';
-import {
-  ExtensionPoint,
-  ContainerApi,
-  ToastApi,
-  LayoutApi,
-  LocaleApi,
-  SessionTokenApi,
-} from '@shopify/argo-admin';
+import {ExtensionApi, LayoutApi} from '@shopify/argo-admin';
 import {mount} from '@shopify/react-testing';
 
 import {ExtensionApiContext, useExtensionApi} from '../utils';
@@ -16,21 +8,15 @@ import {useSessionToken} from '../sessionToken';
 import {useToast} from '../toast';
 import {useContainer} from '../container';
 
-type AllApis = {extensionPoint: ExtensionPoint} & LayoutApi &
-  LocaleApi &
-  SessionTokenApi &
-  ToastApi;
-type ProductSubscriptionApi = AllApis & ContainerApi<'Admin::Product::SubscriptionPlan::Add'>;
-
-const defaultApis: AllApis = {
-  extensionPoint: 'Admin::Product::SubscriptionPlan::Add',
+const defaultApis: ExtensionApi['Playground'] = {
+  extensionPoint: 'Playground',
   layout: {
     initialValue: {horizontal: 'compact'},
     setOnChange() {},
   },
   locale: {
     initialValue: 'en',
-    setOnChange() {},
+    setOnChange(_onChange) {},
   },
   sessionToken: {
     getSessionToken: () => Promise.resolve(''),
@@ -38,9 +24,16 @@ const defaultApis: AllApis = {
   toast: {
     show: () => {},
   },
+  data: {},
 };
 
-const MockComponent = ({hook, children}) => {
+const MockComponent = ({
+  hook,
+  children,
+}: {
+  hook: () => any;
+  children: (...args: any) => any;
+}) => {
   const result = hook();
   children(result);
   return null;
@@ -52,7 +45,7 @@ describe('extension api', () => {
       const hookSpy = jest.fn();
 
       await mount(
-        <ExtensionApiContext.Provider value={{...defaultApis}}>
+        <ExtensionApiContext.Provider value={defaultApis}>
           <MockComponent hook={useExtensionApi}>{hookSpy}</MockComponent>
         </ExtensionApiContext.Provider>,
       );
@@ -138,7 +131,12 @@ describe('extension api', () => {
         setSecondaryAction: () => {},
       };
 
-      const ProductSubscriptionApi: ProductSubscriptionApi = {...defaultApis, container};
+      const ProductSubscriptionApi: ExtensionApi['Admin::Product::SubscriptionPlan::Remove'] = {
+        ...defaultApis,
+        container,
+        extensionPoint: 'Admin::Product::SubscriptionPlan::Remove',
+        data: {sellingPlanGroupId: 'B', productId: 'A', variantIds: []},
+      };
       await mount(
         <ExtensionApiContext.Provider value={ProductSubscriptionApi}>
           <MockComponent hook={useContainer}>{hookSpy}</MockComponent>

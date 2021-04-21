@@ -4,7 +4,6 @@ type: node
 
 up:
   - git_hooks:
-      commit-msg: ./scripts/commitlint.sh
       pre-commit: ./scripts/prettier.sh
   - railgun
   - node:
@@ -16,9 +15,7 @@ up:
 commands:
   build: yarn run build
   console: node
-  new-component: node ./scripts/new-component
-  new-extension-point: node ./scripts/new-extension-point
-  new-extension-api: node ./scripts/new-extension-api
+  new-extension-point: node ./scripts/argo-admin/new-extension-point
   nuke: yarn run nuke && rm -rf ./node_modules
   server: yarn run server --host=https://argo-playground.myshopify.io
   simulator: yarn run simulator

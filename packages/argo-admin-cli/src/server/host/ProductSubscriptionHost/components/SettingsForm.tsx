@@ -12,7 +12,8 @@ interface Props {
 }
 
 export function SettingsForm({settings, updateSettings}: Props) {
-  const selectedAction = settings.data?.action || ProductSubscriptionAction.Create;
+  const selectedAction =
+    settings.data?.action || ProductSubscriptionAction.Create;
 
   const dataForm = actionFields[selectedAction].map((field) => {
     const Field = ActionField[field];
@@ -37,7 +38,9 @@ export function SettingsForm({settings, updateSettings}: Props) {
           <TextField
             label="sessionToken"
             value={settings.sessionToken}
-            onChange={(value) => updateSettings((state) => state.sessionToken, value)}
+            onChange={(value) =>
+              updateSettings((state) => state.sessionToken, value)
+            }
           />
         </Stack>
       </Card>

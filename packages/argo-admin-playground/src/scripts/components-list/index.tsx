@@ -18,7 +18,7 @@ import {SpinnerExample} from './spinner';
 import {StackExample} from './stack';
 import {TextFieldExample} from './text-field';
 import {TextExample} from './text';
-import {VisuallyHiddenExample} from './visuallyHidden';
+// import {VisuallyHiddenExample} from './visuallyHidden';
 
 function App() {
   return (
@@ -39,7 +39,7 @@ function App() {
       <StackExample />
       <TextExample />
       <TextFieldExample />
-      <VisuallyHiddenExample />
+      {/* <VisuallyHiddenExample /> */}
       <ExtensionApiExample />
     </>
   );

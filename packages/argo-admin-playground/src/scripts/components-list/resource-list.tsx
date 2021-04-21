@@ -21,7 +21,9 @@ export function ResourceListExample() {
       queryPlaceholder: 'Search...',
       onQueryChange: (query) => {
         setResourceListQuery(query);
-        setListItems(dataList.filter((item) => item.toString().includes(query)));
+        setListItems(
+          dataList.filter((item) => item.toString().includes(query)),
+        );
       },
       onQueryClear: () => {
         setResourceListQuery('');
@@ -41,7 +43,9 @@ export function ResourceListExample() {
             onPress={() => {
               console.log('ResourceList item toggle:', item);
               if (selectedItems.includes(item)) {
-                setSelectedItems(selectedItems.filter((_item) => _item !== item));
+                setSelectedItems(
+                  selectedItems.filter((_item) => _item !== item),
+                );
               } else {
                 setSelectedItems(selectedItems.concat(item));
               }
@@ -49,7 +53,9 @@ export function ResourceListExample() {
           >
             <Stack alignment="center">
               <Checkbox checked={selectedItems.includes(item)} />
-              <StackItem fill>Every {item} week or 15 days * 20-25% off</StackItem>
+              <StackItem fill>
+                Every {item} week or 15 days * 20-25% off
+              </StackItem>
               <Text>{item} product</Text>
             </Stack>
           </ResourceItem>

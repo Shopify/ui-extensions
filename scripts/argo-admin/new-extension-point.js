@@ -35,7 +35,7 @@ export interface ${name}ExtensionApi {
 
 // Replace AllComponentsSchema with a schema for your needs
 export interface ${name}ExtensionPointCallback {
-  '${id}': RenderableExtensionCallback<${name}ExtensionApi, RemoteRoot<AllComponentsSchema>>;
+  '${id}': RenderableExtensionCallback<${name}ExtensionApi['${id}'], RemoteRoot<AllComponentsSchema>>;
 }
 `.trimStart();
 }

@@ -36,10 +36,17 @@ export function ExtensionApiExample() {
           <Button
             title="Generate new sessionToken"
             onPress={() =>
-              getSessionToken().then((newSessionToken) => setSessionToken(newSessionToken))
+              getSessionToken().then((newSessionToken) =>
+                setSessionToken(newSessionToken),
+              )
             }
           />
-          <TextField label="Session Token" type="text" value={sessionToken} multiline />
+          <TextField
+            label="Session Token"
+            type="text"
+            value={sessionToken}
+            multiline
+          />
         </Stack>
       </Card>
       <Card sectioned title="useToast">

@@ -1,6 +1,6 @@
 import {extend, Card, CardSection, TextField} from '@shopify/argo-admin';
 
-extend('Playground', (root, api) => {
+extend('Playground', (root, _api) => {
   const card = root.createComponent(Card, {
     title: 'My card from a ”vanilla” web worker!',
   });

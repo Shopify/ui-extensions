@@ -22,7 +22,9 @@ import {
 function Subscription({
   extensionPoint,
   children,
-}: React.PropsWithChildren<{extensionPoint: ProductSubscriptionExtensionPoint}>) {
+}: React.PropsWithChildren<{
+  extensionPoint: ProductSubscriptionExtensionPoint;
+}>) {
   const type = useMemo(() => {
     switch (extensionPoint) {
       case 'Admin::Product::SubscriptionPlan::Add':
@@ -38,7 +40,9 @@ function Subscription({
 
   const {productId} = useData<typeof extensionPoint>();
   const {show: showToast} = useToast();
-  const {done, close, ...containerActions} = useContainer<typeof extensionPoint>();
+  const {done, close, ...containerActions} = useContainer<
+    typeof extensionPoint
+  >();
   const setPrimaryAction = (containerActions as any).setPrimaryAction;
   const setSecondaryAction = (containerActions as any).setSecondaryAction;
 
@@ -92,7 +96,9 @@ function AddSubscription() {
       queryPlaceholder: 'Search...',
       onQueryChange: (query) => {
         setResourceListQuery(query);
-        setListItems(dataList.filter((item) => item.toString().includes(query)));
+        setListItems(
+          dataList.filter((item) => item.toString().includes(query)),
+        );
       },
       onQueryClear: () => {
         setResourceListQuery('');
@@ -135,7 +141,9 @@ function AddSubscription() {
               onPress={() => {
                 console.log('ResourceList item toggle:', item);
                 if (selectedItems.includes(item)) {
-                  setSelectedItems(selectedItems.filter((_item) => _item !== item));
+                  setSelectedItems(
+                    selectedItems.filter((_item) => _item !== item),
+                  );
                 } else {
                   setSelectedItems(selectedItems.concat(item));
                 }
@@ -143,7 +151,9 @@ function AddSubscription() {
             >
               <Stack alignment="center">
                 <Checkbox checked={selectedItems.includes(item)} />
-                <StackItem fill>Every {item} week or 15 days * 20-25% off</StackItem>
+                <StackItem fill>
+                  Every {item} week or 15 days * 20-25% off
+                </StackItem>
                 <Text>{item} product</Text>
               </Stack>
             </ResourceItem>
@@ -157,7 +167,9 @@ function AddSubscription() {
 function EditSubscription() {
   const layout = useLayout();
   const {show: showToast} = useToast();
-  const {close, done} = useContainer<'Admin::Product::SubscriptionPlan::Edit'>();
+  const {close, done} = useContainer<
+    'Admin::Product::SubscriptionPlan::Edit'
+  >();
 
   const onSuccess = useCallback(() => {
     showToast('Saved');
@@ -169,12 +181,14 @@ function EditSubscription() {
     close();
   }, [close, showToast]);
 
-  const primaryActionButton = useMemo(() => <Button title="Save" onPress={onSuccess} primary />, [
-    onSuccess,
-  ]);
-  const secondaryActionButton = useMemo(() => <Button title="Cancel" onPress={onCancel} />, [
-    onCancel,
-  ]);
+  const primaryActionButton = useMemo(
+    () => <Button title="Save" onPress={onSuccess} primary />,
+    [onSuccess],
+  );
+  const secondaryActionButton = useMemo(
+    () => <Button title="Cancel" onPress={onCancel} />,
+    [onCancel],
+  );
 
   const pageHeader = useMemo(
     () => (
@@ -205,9 +219,9 @@ function EditSubscription() {
       <Card sectioned>
         <CardSection>
           <Text>
-            This is an example of an app extension inside a full screen container, we are calling it
-            "App Overlay" for the time being. This <Link onPress={close}>link</Link> will close the
-            the container.
+            This is an example of an app extension inside a full screen
+            container, we are calling it "App Overlay" for the time being. This{' '}
+            <Link onPress={close}>link</Link> will close the the container.
           </Text>
         </CardSection>
         <CardSection title="Current Layout">
@@ -225,7 +239,9 @@ extend(
 );
 extend(
   'Admin::Product::SubscriptionPlan::Remove',
-  render(() => <Subscription extensionPoint="Admin::Product::SubscriptionPlan::Remove" />),
+  render(() => (
+    <Subscription extensionPoint="Admin::Product::SubscriptionPlan::Remove" />
+  )),
 );
 extend(
   'Admin::Product::SubscriptionPlan::Add',
@@ -233,5 +249,7 @@ extend(
 );
 extend(
   'Admin::Product::SubscriptionPlan::Create',
-  render(() => <Subscription extensionPoint="Admin::Product::SubscriptionPlan::Create" />),
+  render(() => (
+    <Subscription extensionPoint="Admin::Product::SubscriptionPlan::Create" />
+  )),
 );

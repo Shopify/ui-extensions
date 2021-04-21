@@ -3,7 +3,10 @@ import {Card, Radio} from '@shopify/argo-admin-react';
 
 export function RadioExample() {
   const [radioValue, setRadioValue] = useState('option-1');
-  const handleRadioChange = useCallback((newValue) => setRadioValue(newValue), []);
+  const handleRadioChange = useCallback(
+    (newValue) => setRadioValue(newValue),
+    [],
+  );
 
   return (
     <Card sectioned title="Radio component">

@@ -7,4 +7,6 @@ export interface CheckboxProps {
   onChange?(value: boolean): void | Promise<void>;
 }
 
-export const Checkbox = createRemoteComponent<'Checkbox', CheckboxProps>('Checkbox');
+export const Checkbox = createRemoteComponent<'Checkbox', CheckboxProps>(
+  'Checkbox',
+);
