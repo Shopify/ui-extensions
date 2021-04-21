@@ -501,9 +501,9 @@ function renderComponentExamplesFor(name: string, packages: Packages): string {
     if (fs.existsSync(folder)) {
       fs.readdirSync(folder).forEach((file) => {
         const extension = extname(file).split('.').pop();
-        examples[packageName] = `{% highlight ${extension} %}\n`;
+        examples[packageName] = `{% highlight ${extension} %}{% raw %}\n`;
         examples[packageName] += fs.readFileSync(`${folder}/${file}`, 'utf8');
-        examples[packageName] += '\n{% endhighlight %}\n\n';
+        examples[packageName] += '\n{% endraw %}{% endhighlight %}\n\n';
       });
     }
   });
