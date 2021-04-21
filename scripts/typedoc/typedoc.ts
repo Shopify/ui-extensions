@@ -177,6 +177,17 @@ async function buildComponentGraph(componentIndex: string) {
     ...new Set(nodes.filter(({value}: any) => value.kind === 'Component')),
   ];
 
+  // Sort alphabetically (tsdoc seems to get this confused)
+  components.sort((aa: any, bb: any) => {
+    if (aa.value.name > bb.value.name) {
+      return 1;
+    } else if (aa.value.name < bb.value.name) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+
   return {nodes, components};
 }
 
