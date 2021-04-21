@@ -21,7 +21,9 @@ export async function build({entry, env, output, watch}: BuildConfig) {
   }
   const dotEnvPlugin = pathEnv ? [new Dotenv({path: pathEnv})] : [];
 
-  const outPath = output ? path.resolve(output) : path.resolve('.', 'build', 'main.js');
+  const outPath = output
+    ? path.resolve(output)
+    : path.resolve('.', 'build', 'main.js');
 
   const staticCompiler = webpack(
     createWebpackConfiguration({

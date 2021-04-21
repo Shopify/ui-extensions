@@ -13,7 +13,10 @@ export function OptionListExample() {
 
   const handleSelectionChange = (selected: string[]) => {
     setSelected(selected);
-    console.log('Selection changed. Selected items are: ', JSON.stringify(selected));
+    console.log(
+      'Selection changed. Selected items are: ',
+      JSON.stringify(selected),
+    );
   };
 
   return (

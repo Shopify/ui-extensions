@@ -17,4 +17,6 @@ export interface TextFieldProps {
   onClearButtonPress?(): void;
 }
 
-export const TextField = createRemoteComponent<'TextField', TextFieldProps>('TextField');
+export const TextField = createRemoteComponent<'TextField', TextFieldProps>(
+  'TextField',
+);

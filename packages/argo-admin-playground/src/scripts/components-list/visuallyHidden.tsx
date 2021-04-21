@@ -1,5 +1,10 @@
 import React from 'react';
-import {Card, Stack, StackItem, VisuallyHidden} from '@shopify/argo-admin-react';
+import {
+  Card,
+  Stack,
+  StackItem,
+  VisuallyHidden,
+} from '@shopify/argo-admin-react';
 
 export function VisuallyHiddenExample() {
   return (

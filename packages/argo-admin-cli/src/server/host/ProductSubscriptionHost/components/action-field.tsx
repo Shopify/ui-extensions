@@ -36,16 +36,20 @@ export interface BasicFieldProps<T> {
   optional?: boolean;
 }
 
-export type SettingsFieldProps = Pick<BasicFieldProps<Settings>, 'state' | 'updateState'>;
+export type SettingsFieldProps = Pick<
+  BasicFieldProps<Settings>,
+  'state' | 'updateState'
+>;
 
-export function BasicField<T extends object>({
+export function BasicField<T extends Settings>({
   pathFn,
   state,
   updateState,
   optional,
 }: BasicFieldProps<T>) {
   const path = proxyGetPath(pathFn);
-  const getValue = (value: string) => (optional && value === '' ? undefined : value);
+  const getValue = (value: string) =>
+    optional && value === '' ? undefined : value;
   return (
     <TextField
       label={last(path) as string}
@@ -59,7 +63,7 @@ export interface SelectProps<T, O> extends BasicFieldProps<T> {
   options: O;
 }
 
-export function Select<T extends object, O>({
+export function Select<T extends Settings, O>({
   options,
   pathFn,
   state,
@@ -157,7 +161,7 @@ function VariantIds({state, updateState}: SettingsFieldProps) {
 
 export const ActionField: Record<
   keyof SubscriptionData,
-  (props: SettingsFieldProps) => React.ReactNode
+  (props: SettingsFieldProps) => JSX.Element
 > = {
   action: Action,
   productId: ProductId,

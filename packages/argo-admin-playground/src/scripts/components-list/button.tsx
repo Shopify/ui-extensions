@@ -16,7 +16,11 @@ export function ButtonExample() {
       <Stack>
         <Button title="Sort" icon={SORT_ICON} />
         <Button title="Delete" />
-        <Button title={`Publish review ${buttonValue || ''}`} primary onPress={onButtonPress} />
+        <Button
+          title={`Publish review ${buttonValue || ''}`}
+          primary
+          onPress={onButtonPress}
+        />
         <Button title="Sort" icon={SORT_ICON} disabled />
         <Button title="Delete" disabled />
         <Button

@@ -22,13 +22,20 @@ import {actionFields, defaultSettings} from './config';
 import {usePageState, useSettings} from './useStorage';
 import {SettingsForm} from './components/SettingsForm';
 
-const {ArgoAppOverlay, ArgoModal, PlaygroundContext, useToastApi} = window.argoAdminHost;
+const {
+  ArgoAppOverlay,
+  ArgoModal,
+  PlaygroundContext,
+  useToastApi,
+} = window.argoAdminHost;
 
 const actionToExtensionPoint: {[key: string]: ExtensionPoint} = {
   [ProductSubscriptionAction.Add]: 'Admin::Product::SubscriptionPlan::Add',
-  [ProductSubscriptionAction.Create]: 'Admin::Product::SubscriptionPlan::Create',
+  [ProductSubscriptionAction.Create]:
+    'Admin::Product::SubscriptionPlan::Create',
   [ProductSubscriptionAction.Edit]: 'Admin::Product::SubscriptionPlan::Edit',
-  [ProductSubscriptionAction.Remove]: 'Admin::Product::SubscriptionPlan::Remove',
+  [ProductSubscriptionAction.Remove]:
+    'Admin::Product::SubscriptionPlan::Remove',
 };
 
 export function ProductSubscriptionHost(props: HostProps) {
@@ -36,9 +43,12 @@ export function ProductSubscriptionHost(props: HostProps) {
   const [{extensionOpen}, setPageState] = usePageState();
   const [confirmResetOpen, setConfirmResetOpen] = useState(false);
 
-  const selectedAction = settings.data?.action || ProductSubscriptionAction.Create;
+  const selectedAction =
+    settings.data?.action || ProductSubscriptionAction.Create;
 
-  const extensionPoint = useMemo(() => actionToExtensionPoint[selectedAction], [selectedAction]);
+  const extensionPoint = useMemo(() => actionToExtensionPoint[selectedAction], [
+    selectedAction,
+  ]);
 
   const isModal =
     extensionPoint === 'Admin::Product::SubscriptionPlan::Add' ||
@@ -70,9 +80,10 @@ export function ProductSubscriptionHost(props: HostProps) {
     },
   );
 
-  const close = useCallback(() => setPageState((state) => state.extensionOpen, false), [
-    setPageState,
-  ]);
+  const close = useCallback(
+    () => setPageState((state) => state.extensionOpen, false),
+    [setPageState],
+  );
 
   const done = useCallback(() => {
     close();
@@ -83,7 +94,6 @@ export function ProductSubscriptionHost(props: HostProps) {
     () => ({
       ...props,
       api: outSettings,
-      extensionPoint,
       onClose: close,
       onDone: done,
       open: extensionOpen,
@@ -94,9 +104,13 @@ export function ProductSubscriptionHost(props: HostProps) {
   const extension = useMemo(
     () =>
       isModal ? (
-        <ArgoModal {...containerProps} defaultTitle="Default title" liveReloadingEnabled />
+        <ArgoModal
+          {...(containerProps as any)}
+          defaultTitle="Default title"
+          liveReloadingEnabled
+        />
       ) : (
-        <ArgoAppOverlay {...containerProps} liveReloadingEnabled />
+        <ArgoAppOverlay {...(containerProps as any)} liveReloadingEnabled />
       ),
     [containerProps, isModal],
   );
@@ -169,7 +183,8 @@ export function ProductSubscriptionHost(props: HostProps) {
               <PageActions
                 primaryAction={{
                   content: 'Show extension',
-                  onAction: () => setPageState((state) => state.extensionOpen, true),
+                  onAction: () =>
+                    setPageState((state) => state.extensionOpen, true),
                 }}
                 secondaryActions={[
                   {

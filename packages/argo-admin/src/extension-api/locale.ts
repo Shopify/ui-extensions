@@ -1,7 +1,7 @@
 export interface LocaleApi {
   locale: {
     initialValue: string;
-    setOnChange(onChange: (locale: string) => void);
+    setOnChange(onChange: (locale: string) => void): void;
   };
 }
 

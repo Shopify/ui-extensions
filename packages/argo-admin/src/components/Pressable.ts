@@ -4,4 +4,6 @@ export interface PressableProps {
   onPress: () => void;
 }
 
-export const Pressable = createRemoteComponent<'Pressable', PressableProps>('Pressable');
+export const Pressable = createRemoteComponent<'Pressable', PressableProps>(
+  'Pressable',
+);

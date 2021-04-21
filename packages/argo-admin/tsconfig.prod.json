@@ -1,11 +1,8 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "../../config/typescript/tsconfig.admin.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "./",
-    "composite": true
+    "outDir": "./"
   },
-  "include": [
-    "./src"
-  ]
+  "include": ["./src"]
 }

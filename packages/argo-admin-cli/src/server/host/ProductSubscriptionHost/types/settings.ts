@@ -18,4 +18,5 @@ export interface Settings {
   locale?: string;
   sessionToken?: string;
   data?: SubscriptionData;
+  extensionOpen?: boolean;
 }

@@ -5,4 +5,6 @@ export interface StackItemProps {
   fill?: boolean;
 }
 
-export const StackItem = createRemoteComponent<'StackItem', StackItemProps>('StackItem');
+export const StackItem = createRemoteComponent<'StackItem', StackItemProps>(
+  'StackItem',
+);

@@ -9,7 +9,9 @@ import {log} from '../utilities';
 
 import {createClientConfig, createHostConfig, run} from './utilities';
 
-const tunnelErrorHtml = fs.readFileSync(`${__dirname}/tunnel-error/index.html`, 'utf8').toString();
+const tunnelErrorHtml = fs
+  .readFileSync(`${__dirname}/tunnel-error/index.html`, 'utf8')
+  .toString();
 
 export interface ServerConfig {
   apiKey?: string;
@@ -81,7 +83,15 @@ export async function server(config: ServerConfig) {
 
         let manifestWithAdditionalMobileData = {};
 
-        function withRoutes(req) {
+        function withRoutes<
+          Request extends {
+            headers: {
+              host?: string;
+              'x-forwarded-proto'?: string;
+            };
+            protocol?: string;
+          }
+        >(req: Request) {
           const protocol = req.headers['x-forwarded-proto'] || req.protocol;
           const host = req.headers.host;
 
@@ -99,11 +109,15 @@ export async function server(config: ServerConfig) {
             const protocol = req.headers['x-forwarded-proto'] || req.protocol;
             const host = req.headers.host;
 
-            const isLocalHost = /(0.0.0.0|127.0.0.1|localhost)/.test(host || '');
+            const isLocalHost = /(0.0.0.0|127.0.0.1|localhost)/.test(
+              host || '',
+            );
             if (isLocalHost || protocol !== 'https') {
               res.send(tunnelErrorHtml);
             } else {
-              res.redirect(`https://${shop}/admin/extensions-dev?url=https://${host}/${dataPath}`);
+              res.redirect(
+                `https://${shop}/admin/extensions-dev?url=https://${host}/${dataPath}`,
+              );
             }
           });
         }
@@ -117,7 +131,10 @@ export async function server(config: ServerConfig) {
 
         app.post(`/${mobilePath}`, function (req, res) {
           const {app, resourceUrl} = req.body;
-          manifestWithAdditionalMobileData = merge({}, manifest, {app, resourceUrl});
+          manifestWithAdditionalMobileData = merge({}, manifest, {
+            app,
+            resourceUrl,
+          });
           res.json({});
         });
 

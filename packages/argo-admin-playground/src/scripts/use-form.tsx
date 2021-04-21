@@ -14,7 +14,10 @@ import {notEmpty, useField, useForm} from '@shopify/react-form';
 function App() {
   const {fields, submit, reset, submitErrors} = useForm({
     fields: {
-      title: useField({value: 'some default title', validates: [notEmpty('Title is required')]}),
+      title: useField({
+        value: 'some default title',
+        validates: [notEmpty('Title is required')],
+      }),
       color: useField({
         value: 'red',
         validates: (value) => (value === 'red' ? 'Cannot be Red' : undefined),

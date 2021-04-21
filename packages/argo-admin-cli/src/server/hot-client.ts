@@ -22,7 +22,10 @@ interface Options {
   webSocket: {host: string; port: number; path?: string};
 }
 
-interface DevServerMessage<Type extends string, Data extends object = {}> {
+interface DevServerMessage<
+  Type extends string,
+  Data extends Record<string, string[]> = Record<string, never>
+> {
   type: Type;
   data: Data;
 }
@@ -35,7 +38,9 @@ type Message =
   | DevServerMessage<'warnings', {warnings: string[]}>;
 
 const hotClientOptionsOverride =
-  typeof __hotClientOptionsOverride__ === 'object' ? __hotClientOptionsOverride__ : undefined;
+  typeof __hotClientOptionsOverride__ === 'object'
+    ? __hotClientOptionsOverride__
+    : undefined;
 const defaultHotClientOptions =
   typeof __hotClientOptions__ === 'object' ? __hotClientOptions__ : undefined;
 
@@ -73,7 +78,9 @@ function connect() {
   (self as any).__destroyHotClientSocket__?.();
   (self as any).__destroyHotClientSocket__ = destroy;
 
-  const socket = new WebSocket(`${options.https ? 'wss' : 'ws'}://${host}:${port}/${path}`);
+  const socket = new WebSocket(
+    `${options.https ? 'wss' : 'ws'}://${host}:${port}/${path}`,
+  );
 
   const onOpen = () => {
     open = true;

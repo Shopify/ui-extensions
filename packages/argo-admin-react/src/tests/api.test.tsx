@@ -1,20 +1,20 @@
-import React from 'react';
+import {RemoteRoot} from '@remote-ui/react';
 
 import {render} from '../api';
 import {ExtensionApiContext} from '../extension-api/utils';
 
 jest.mock('@remote-ui/react', () => ({
-  ...jest.requireActual('@remote-ui/react'),
+  ...(jest.requireActual('@remote-ui/react') as any),
   render: jest.fn(),
 }));
 
 jest.mock('react', () => ({
-  ...jest.requireActual('react'),
+  ...(jest.requireActual('react') as any),
   createElement: jest.fn(),
 }));
 
 jest.mock('@shopify/argo-admin', () => ({
-  ...jest.requireActual('@shopify/argo-admin'),
+  ...(jest.requireActual('@shopify/argo-admin') as any),
   extend: jest.fn(),
 }));
 
@@ -27,8 +27,8 @@ describe('extend()', () => {
 
     const element = <div />;
 
-    const root = {mount: jest.fn()};
-    const api = {locale: 'en'};
+    const root = ({mount: jest.fn()} as unknown) as RemoteRoot;
+    const api = {locale: 'en'} as any;
 
     const createdElement = <p />;
 
@@ -42,7 +42,11 @@ describe('extend()', () => {
       {value: api},
       element,
     );
-    expect(remoteRender).toHaveBeenCalledWith(createdElement, root, expect.any(Function));
+    expect(remoteRender).toHaveBeenCalledWith(
+      createdElement,
+      root,
+      expect.any(Function),
+    );
 
     const renderCallback = remoteRender.mock.calls[0][2];
     renderCallback();

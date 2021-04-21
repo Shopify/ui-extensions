@@ -1,5 +1,10 @@
 import React, {useState, useCallback} from 'react';
-import {SelectProps, Card, CardSection, Select} from '@shopify/argo-admin-react';
+import {
+  SelectProps,
+  Card,
+  CardSection,
+  Select,
+} from '@shopify/argo-admin-react';
 
 const SELECTS: SelectProps['options'] = [
   {label: 'Today', value: 'today'},
@@ -33,7 +38,12 @@ export function SelectExample() {
         />
       </CardSection>
       <CardSection title="No label">
-        <Select label="" options={SELECTS} value={selectValue} onChange={onSelectChange} />
+        <Select
+          label=""
+          options={SELECTS}
+          value={selectValue}
+          onChange={onSelectChange}
+        />
       </CardSection>
     </Card>
   );

@@ -1,4 +1,8 @@
-import {ExtensionPoint, ExtensionPointCallback, ExtensionResult} from './extension-points';
+import {
+  ExtensionPoint,
+  ExtensionPointCallback,
+  ExtensionResult,
+} from './extension-points';
 
 export interface ShopifyApi {
   extend<T extends ExtensionPoint>(
@@ -15,5 +19,8 @@ export function extend<T extends ExtensionPoint>(
   extensionPoint: T,
   callback: ExtensionPointCallback[T],
 ) {
-  return ((self as any) as ShopifyGlobal).shopify.extend(extensionPoint, callback);
+  return ((self as any) as ShopifyGlobal).shopify.extend(
+    extensionPoint,
+    callback,
+  );
 }

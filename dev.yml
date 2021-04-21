@@ -4,11 +4,10 @@ type: node
 
 up:
   - git_hooks:
-      commit-msg: ./scripts/commitlint.sh
       pre-commit: ./scripts/prettier.sh
   - railgun
   - node:
-      version: v12.11.1
+      version: v12.16.3
       yarn: true
       packages:
         - .
@@ -16,12 +15,10 @@ up:
 commands:
   build: yarn run build
   console: node
-  new-component: node ./scripts/new-component
-  new-extension-point: node ./scripts/new-extension-point
-  new-extension-api: node ./scripts/new-extension-api
+  new-extension-point: node ./scripts/argo-admin/new-extension-point
   nuke: yarn run nuke && rm -rf ./node_modules
-  server: yarn run server --host=https://argo-playground.myshopify.io
-  simulator: yarn run simulator
+  server: yarn run server:argo --host=https://argo-playground.myshopify.io
+  simulator: yarn run simulator:argo
   test: yarn run test
   build-consumer: yarnpkg build && ./scripts/build-consumer.sh
   restore-consumer: ./scripts/restore-consumer.sh

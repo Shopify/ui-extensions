@@ -45,10 +45,23 @@ export function TextFieldExample() {
           value={review}
           onChange={setReview}
         />
-        <TextField label="Number" type="number" value={numberValue} onChange={setNumberValue} />
-        <TextField label="Error" value="Inline error" error="This field is invalid" />
+        <TextField
+          label="Number"
+          type="number"
+          value={numberValue}
+          onChange={setNumberValue}
+        />
+        <TextField
+          label="Error"
+          value="Inline error"
+          error="This field is invalid"
+        />
         <TextField value="42" type="number" suffix="%" label="A real percent" />
-        <TextField value="stuff around" prefix="Only the best" label="Cool things" />
+        <TextField
+          value="stuff around"
+          prefix="Only the best"
+          label="Cool things"
+        />
         <TextField
           type="search"
           value="cool tech"

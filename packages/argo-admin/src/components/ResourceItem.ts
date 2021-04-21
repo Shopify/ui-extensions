@@ -5,6 +5,7 @@ export interface ResourceItemProps {
   onPress(): void;
 }
 
-export const ResourceItem = createRemoteComponent<'ResourceItem', ResourceItemProps>(
+export const ResourceItem = createRemoteComponent<
   'ResourceItem',
-);
+  ResourceItemProps
+>('ResourceItem');
