@@ -17,8 +17,8 @@ commands:
   console: node
   new-extension-point: node ./scripts/argo-admin/new-extension-point
   nuke: yarn run nuke && rm -rf ./node_modules
-  server: yarn run server:argo --host=https://argo-playground.myshopify.io
-  simulator: yarn run simulator:argo
+  server: yarn run server:admin --host=https://argo-playground.myshopify.io
+  simulator: yarn run simulator:admin
   test: yarn run test
   build-consumer: yarnpkg build && ./scripts/build-consumer.sh
   restore-consumer: ./scripts/restore-consumer.sh
