@@ -34,17 +34,22 @@ export function log(message: string, {error = false} = {}) {
   console.log(`🔭 ${separator} ${message}`);
 }
 
+const REACT_ARGO_PACKAGES = [
+  '@shopify/argo-checkout-react',
+  '@shopify/argo-post-purchase-react',
+];
+
 export function shouldUseReact(): boolean | 'mini' {
   try {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
     const packageJson = require(resolve('package.json'));
-    const dependencies = Object.keys(packageJson.dependencies);
+    const dependencies = new Set(Object.keys(packageJson.dependencies));
 
-    if (!dependencies.includes('@shopify/argo-checkout-react')) {
+    if (!REACT_ARGO_PACKAGES.some((pkg) => dependencies.has(pkg))) {
       return false;
     }
 
-    return dependencies.includes('@remote-ui/mini-react') ? 'mini' : true;
+    return dependencies.has('@remote-ui/mini-react') ? 'mini' : true;
   } catch {
     return false;
   }
