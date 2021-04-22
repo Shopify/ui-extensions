@@ -10,8 +10,6 @@
     {"path": "./packages/argo-webpack-hot-client"},
     {"path": "./packages/argo-run"},
     {"path": "./packages/argo-admin"},
-    {"path": "./packages/argo-admin-react"},
-    {"path": "./packages/argo-admin-cli"},
-    {"path": "./packages/argo-admin-playground"}
+    {"path": "./packages/argo-admin-react"}
   ]
 }

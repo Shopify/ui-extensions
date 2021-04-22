@@ -7,5 +7,3 @@ scripts/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbel
 # Owners of the packages.
 packages/argo-admin/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell
 packages/argo-admin-react/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell
-packages/argo-admin-cli/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell
-packages/argo-admin-playground/* @vividviolet @henrytao-me @alanthai @Fionoble @elanalynn @iainmcampbell

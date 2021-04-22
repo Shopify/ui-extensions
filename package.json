@@ -10,12 +10,14 @@
     "test": "sk test",
     "lint": "sk lint",
     "type-check": "sk type-check",
-    "build": "sk build; yarn run build:admin",
+    "build": "sk build",
     "version-bump": "lerna version --no-push --include-merged-tags",
     "deploy": "lerna publish from-package --yes",
-    "build:admin": "lerna run build",
-    "server:admin": "yarn workspace @shopify/argo-admin-playground run server",
-    "simulator:admin": "yarn workspace @shopify/argo-admin-cli run server"
+    "nuke": "yarn run nuke && rm -rf ./node_modules",
+    "build-consumer": "yarnpkg build && ./scripts/build-consumer.sh",
+    "restore-consumer": "./scripts/restore-consumer.sh",
+    "clean": "git clean -xdf ./packages",
+    "clear-cache": "rm -rf .sewing-kit/cache"
   },
   "devDependencies": {
     "@sewing-kit/cli": "^0.2.0",

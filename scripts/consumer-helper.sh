@@ -1,6 +1,6 @@
 #!/bin/sh
 
-AVAILABLE_PACKAGES=('argo-admin' 'argo-admin-react' 'argo-admin-cli')
+AVAILABLE_PACKAGES=('argo-admin' 'argo-admin-react' 'argo-checkout', 'argo-checkout-react', 'argo-post-purchase', 'argo-post-purchase-react')
 ROOT=$(pwd)
 
 # Font color
