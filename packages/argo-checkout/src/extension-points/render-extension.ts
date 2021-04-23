@@ -16,8 +16,7 @@ export interface RenderExtension<
   Input,
   AllowedComponents extends RemoteComponentType<string, any, any>
 > {
-  (
-    root: RemoteRoot<AllowedComponents, true>,
-    input: Input,
-  ): RenderResult<Input> | void;
+  (root: RemoteRoot<AllowedComponents, true>, input: Input): RenderResult<
+    Input
+  > | void;
 }

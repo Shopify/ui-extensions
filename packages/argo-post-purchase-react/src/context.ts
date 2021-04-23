@@ -5,6 +5,6 @@ import {
   RenderExtensionPoint,
 } from '@shopify/argo-post-purchase';
 
-export const ExtensionInputContext = createContext<InputForRenderExtension<RenderExtensionPoint> | null>(
-  null,
-);
+export const ExtensionInputContext = createContext<InputForRenderExtension<
+  RenderExtensionPoint
+> | null>(null);

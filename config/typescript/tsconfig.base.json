@@ -16,7 +16,6 @@
     "noUnusedParameters": true,
     "sourceMap": false,
     "noEmitOnError": false,
-    "skipLibCheck": true,
     "lib": [
       "dom",
       "dom.iterable",

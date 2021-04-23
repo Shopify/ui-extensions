@@ -26,7 +26,9 @@ import {useSubscription} from './subscription';
  * ```
  */
 export function useConfiguration<
-  ConfigType extends ApiForRenderExtension<RenderExtensionPoint>['configuration']['current']
+  ConfigType extends ApiForRenderExtension<
+    RenderExtensionPoint
+  >['configuration']['current']
 >(): ConfigType {
   const {configuration} = useExtensionApi();
 
