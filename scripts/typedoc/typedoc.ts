@@ -228,8 +228,6 @@ export async function components(paths: Paths) {
   index += '<ul style="column-count: auto;column-width: 12rem;">';
 
   components.forEach(({value: {name, docs, props}}: any) => {
-    if (name === 'View') return;
-
     const outputFile = `${componentDocsPath}/${name.toLowerCase()}.md`;
 
     const docsContent = docs ? strip(docs.content).trim() : '';
