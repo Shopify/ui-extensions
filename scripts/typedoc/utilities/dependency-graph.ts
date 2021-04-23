@@ -213,6 +213,7 @@ async function extractModule(file: string): Promise<Module> {
   return {path: file, exports, locals, usedImports: new Set(imports)};
 }
 
+/** https://astexplorer.net/ */
 function resolveNodeToLocal(
   node: Node,
   context: ProcessContext,
@@ -221,6 +222,15 @@ function resolveNodeToLocal(
   switch (node.type) {
     case 'TSParenthesizedType': {
       return resolveNodeToLocal(node.typeAnnotation, context);
+    }
+    case 'TSTypeParameter': {
+      if (node.constraint) {
+        const local = resolveNodeToLocal(node.constraint, context);
+        if (local.kind === 'Local') {
+          return {kind: 'TypeParameter', constraint: local.name};
+        }
+      }
+      return undocumented(node);
     }
     case 'TSTypeReference': {
       if (node.typeName.type !== 'Identifier') {
@@ -497,6 +507,37 @@ function resolveNodeToLocal(
         }
       }
     }
+
+    // todo
+    // case 'TSTypeLiteral': {
+
+    // }
+
+    // todo
+    // case 'TSTupleType': {
+
+    // }
+
+    /**
+     * https://www.typescriptlang.org/docs/handbook/2/mapped-types.html
+     */
+    case 'TSMappedType': {
+      const {typeParameter} = node;
+      const local = resolveNodeToLocal(typeParameter, context);
+
+      if (local.kind === 'TypeParameter' && local.constraint) {
+        if (typeof node.start === 'number' && typeof node.end === 'number') {
+          const mapping = context.source.substr(node.start, node.end);
+          return {
+            kind: 'MappedType',
+            ref: local.constraint,
+            mapping,
+          };
+        }
+      }
+      return undocumented(node);
+    }
+
     default: {
       return undocumented(node);
     }
@@ -700,8 +741,7 @@ function resolveImportPath(from: string, to: string) {
 }
 
 function undocumented(node: Node) {
-  // console.log(JSON.stringify(node, null, 2));
   // eslint-disable-next-line no-console
-  console.log(`${node.type} is unhandled.`);
+  console.warn(`${node.type} is unhandled.`);
   return UNDOCUMENTED;
 }

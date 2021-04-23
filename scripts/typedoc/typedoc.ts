@@ -215,14 +215,14 @@ export async function components(paths: Paths) {
     hidden: true,
   });
 
-  index += `Argo provides many powerful UI components that a 
-  [rendering extension](${paths.shopifyDevUrl}/extension-points#rendering) can 
-  use to build an interface. This UI is rendered natively by Shopify, so you 
-  can depend on it to be performant, accessible, and work in all of Checkout’s 
-  supported browsers. \n\nThe following components are available as part of Argo 
-  for Checkout, but make sure that you check the documentation for your 
-  [extension point](${paths.shopifyDevUrl}/extension-points#extension-points) 
-  to ensure the component is available in the extension points you are 
+  index += `Argo provides many powerful UI components that a
+  [rendering extension](${paths.shopifyDevUrl}/extension-points#rendering) can
+  use to build an interface. This UI is rendered natively by Shopify, so you
+  can depend on it to be performant, accessible, and work in all of Checkout’s
+  supported browsers. \n\nThe following components are available as part of Argo
+  for Checkout, but make sure that you check the documentation for your
+  [extension point](${paths.shopifyDevUrl}/extension-points#extension-points)
+  to ensure the component is available in the extension points you are
   targeting.\n\n`;
 
   index += '<ul style="column-count: auto;column-width: 12rem;">';
@@ -459,6 +459,14 @@ function propType(value: any, exports: any[], dir: string): any {
         exports,
         dir,
       )}) => ${propType(value.returnType, exports, dir)}</code>`;
+    case 'MappedType':
+      // eslint-disable-next-line no-case-declarations
+      const ref = exports.find(
+        ({value: exportValue}: any) => exportValue.name === value.ref,
+      );
+      // special case for Responsive only
+      additionalPropsTables.push(responsive(ref));
+      return `<code><a href="#${value.name}">${value.name}</a></code>`;
     default:
       if (value.kind === 'UndocumentedType' && value.name === 'T') {
         return '<code>T</code>';
@@ -556,6 +564,25 @@ function getAdditionalContentFor(contentFolder: string) {
       markdown += fs.readFileSync(`${contentFolder}/${file}`, 'utf8');
     });
   }
+
+  return markdown;
+}
+
+function responsive(breakpoint: any) {
+  const breakpoints = propType(breakpoint.value, [], '');
+
+  let markdown = '<a name="Responsive"></a>\n\n### Responsive\n\n';
+
+  markdown += `Responsive is a [Mapped Type](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html). It allows you to set different values at different breakpoints by providing an object where the keys are Breakpoints: <code>${breakpoints}</code>\n\n`;
+  markdown +=
+    'For example, if a property accepts `number | Responsive`, it would accept a number or an object where the keys are Breakpoints and the values are numbers:\n\n';
+  markdown += `{% highlight js %}{% raw %}
+{
+  'base': 1,
+  'small': 0.5,
+  'large': 2
+}
+{% endraw %}{% endhighlight %}\n\n`;
 
   return markdown;
 }

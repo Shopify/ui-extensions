@@ -112,6 +112,18 @@ export interface FunctionType {
   returnType: Type;
 }
 
+export interface MappedType {
+  kind: 'MappedType';
+  ref: string;
+  mapping: string;
+}
+
+export interface TypeParameter {
+  kind: 'TypeParameter';
+  constraint?: string;
+  default?: string;
+}
+
 export type Type =
   | UnionType
   | InterfaceType
@@ -122,6 +134,8 @@ export type Type =
   | NumberType
   | NumberLiteralType
   | FunctionType
+  | MappedType
+  | TypeParameter
   | VoidType
   | UndefinedType
   | NullType
