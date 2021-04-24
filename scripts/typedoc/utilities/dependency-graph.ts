@@ -508,11 +508,13 @@ function resolveNodeToLocal(
       }
     }
 
+    // eslint-disable-next-line no-warning-comments
     // todo
     // case 'TSTypeLiteral': {
 
     // }
 
+    // eslint-disable-next-line no-warning-comments
     // todo
     // case 'TSTupleType': {
 
