@@ -1,8 +1,0 @@
-{
-  "extends": "../../config/typescript/tsconfig.admin.json",
-  "compilerOptions": {
-    "rootDir": "./src",
-    "outDir": "./"
-  },
-  "include": ["./src"]
-}
