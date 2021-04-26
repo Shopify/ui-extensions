@@ -12,7 +12,12 @@
     "type-check": "sk type-check",
     "build": "sk build",
     "version-bump": "lerna version --no-push --include-merged-tags",
-    "deploy": "lerna publish from-package --yes"
+    "deploy": "lerna publish from-package --yes",
+    "nuke": "yarn run nuke && rm -rf ./node_modules",
+    "build-consumer": "yarnpkg build && ./scripts/build-consumer.sh",
+    "restore-consumer": "./scripts/restore-consumer.sh",
+    "clean": "git clean -xdf ./packages",
+    "clear-cache": "rm -rf .sewing-kit/cache"
   },
   "devDependencies": {
     "@sewing-kit/cli": "^0.2.0",
@@ -25,8 +30,8 @@
     "@sewing-kit/plugin-react": "^0.1.0",
     "@sewing-kit/plugin-typescript": "^0.1.0",
     "@types/execa": "^0.9.0",
-    "lerna": "^3.22.1",
-    "react": ">=17.0.0 <18.0.0"
+    "react": ">=17.0.0 <18.0.0",
+    "lerna": "^3.22.1"
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "^4.0.0",

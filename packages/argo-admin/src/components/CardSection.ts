@@ -4,4 +4,7 @@ export interface CardSectionProps {
   title?: string;
 }
 
-export const CardSection = createRemoteComponent<'CardSection', CardSectionProps>('CardSection');
+export const CardSection = createRemoteComponent<
+  'CardSection',
+  CardSectionProps
+>('CardSection');

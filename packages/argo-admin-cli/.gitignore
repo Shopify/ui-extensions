@@ -1,7 +1,0 @@
-*.js
-*.js.map
-*.d.ts
-
-/server
-
-!.eslintrc.js

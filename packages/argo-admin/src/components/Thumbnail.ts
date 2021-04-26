@@ -19,4 +19,6 @@ export interface ThumbnailProps {
   alt: string;
 }
 
-export const Thumbnail = createRemoteComponent<'Thumbnail', ThumbnailProps>('Thumbnail');
+export const Thumbnail = createRemoteComponent<'Thumbnail', ThumbnailProps>(
+  'Thumbnail',
+);

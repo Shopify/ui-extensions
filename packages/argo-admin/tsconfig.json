@@ -1,13 +1,9 @@
 {
-  "extends": "./tsconfig.prod.json",
+  "extends": "../../config/typescript/tsconfig.admin.json",
   "compilerOptions": {
-    "rootDir": "../",
-    "baseUrl": "./",
-    "paths": {
-      "react": ["../../node_modules/react"]
-    }
+    "rootDir": "src",
+    "outDir": "./",
+    "baseUrl": "src"
   },
-  "include": [
-    "../*/src"
-  ]
+  "include": ["src/**/*.ts"]
 }

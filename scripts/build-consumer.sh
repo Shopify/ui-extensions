@@ -5,7 +5,7 @@
 usage="
 Usage: $(basename "$0") <target_project> [<package_name>]
 
-Build Argo packages into a project
+Build Argo Admin packages into a project
 
  <target_project>  Target project i.e. \`argo-admin\`
  <package_name>    Space separated package names

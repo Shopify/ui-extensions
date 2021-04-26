@@ -8,6 +8,8 @@
     {"path": "./packages/argo-post-purchase"},
     {"path": "./packages/argo-post-purchase-react"},
     {"path": "./packages/argo-webpack-hot-client"},
-    {"path": "./packages/argo-run"}
+    {"path": "./packages/argo-run"},
+    {"path": "./packages/argo-admin"},
+    {"path": "./packages/argo-admin-react"}
   ]
 }

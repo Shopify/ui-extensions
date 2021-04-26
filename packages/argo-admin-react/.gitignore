@@ -1,5 +1,5 @@
 *.js
-*.js.map
+*.map
 *.d.ts
 
 /components

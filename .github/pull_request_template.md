@@ -12,5 +12,4 @@
 
 ### Checklist
 
-- [ ] It is safe to simply rollback this change
 - [ ] I have :tophat:'d these changes
