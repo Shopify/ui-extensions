@@ -1,0 +1,9 @@
+{
+  "extends": "../../config/typescript/tsconfig.admin.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "./",
+    "baseUrl": "src"
+  },
+  "include": ["src/**/*.ts"]
+}

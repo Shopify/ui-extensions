@@ -1,0 +1,6 @@
+*.js
+*.map
+*.d.ts
+
+/components
+/extension-api

@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es2016", "es2015", "dom"],
+    "allowJs": false,
+    "downlevelIteration": true,
+    "resolveJsonModule": true,
+    "noUnusedLocals": false,
+    "noImplicitAny": false,
+  },
+  "exclude": [
+    "node_modules",
+    "**/*.test.**",
+    "**/*.example.**"
+  ]
+}

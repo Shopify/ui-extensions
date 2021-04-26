@@ -1,0 +1,14 @@
+{
+  "extends": "../../config/typescript/tsconfig.admin.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "./",
+    "baseUrl": "src",
+    "jsx": "react-jsx",
+    "paths": {
+      "@shopify/argo-admin": ["../argo-admin/src"],
+      "@shopify/argo-admin/*": ["../argo-admin/src/*"]
+    }
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx"]
+}
