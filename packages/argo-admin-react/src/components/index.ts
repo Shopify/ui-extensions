@@ -19,4 +19,3 @@ export * from './StackItem';
 export * from './Text';
 export * from './TextField';
 export * from './Thumbnail';
-export * from './VisuallyHidden';
