@@ -1,5 +1,4 @@
-import {isDataApi, ExtensionData} from '@shopify/argo-admin/extension-api';
-import {ExtensionPoint} from '@shopify/argo-admin/extension-points';
+import {isDataApi, ExtensionData, ExtensionPoint} from '@shopify/argo-admin';
 
 import {useExtensionApi} from './utils';
 
@@ -10,3 +9,5 @@ export function useData<T extends ExtensionPoint>() {
   }
   return api.data as ExtensionData<T>;
 }
+
+export {isDataApi, ExtensionData};

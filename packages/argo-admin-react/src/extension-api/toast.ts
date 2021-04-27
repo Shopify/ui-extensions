@@ -1,4 +1,4 @@
-import {isToastApi} from '@shopify/argo-admin/extension-api';
+import {isToastApi} from '@shopify/argo-admin';
 
 import {useExtensionApi} from './utils';
 
@@ -9,3 +9,5 @@ export function useToast() {
   }
   return api.toast;
 }
+
+export {isToastApi};

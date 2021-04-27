@@ -1,4 +1,4 @@
-import {isSessionTokenApi} from '@shopify/argo-admin/extension-api';
+import {isSessionTokenApi} from '@shopify/argo-admin';
 
 import {useExtensionApi} from './utils';
 
@@ -9,3 +9,5 @@ export function useSessionToken() {
   }
   return api.sessionToken;
 }
+
+export {isSessionTokenApi};

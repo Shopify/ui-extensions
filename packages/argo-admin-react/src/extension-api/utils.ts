@@ -1,5 +1,5 @@
 import {createContext, useContext} from 'react';
-import {ExtensionApi} from '@shopify/argo-admin/extension-points';
+import {ExtensionApi} from '@shopify/argo-admin';
 
 export const ExtensionApiContext = createContext<
   ExtensionApi[keyof ExtensionApi] | null

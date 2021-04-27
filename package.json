@@ -16,8 +16,8 @@
     "nuke": "yarn run nuke && rm -rf ./node_modules",
     "build-consumer": "yarnpkg build && ./scripts/build-consumer.sh",
     "restore-consumer": "./scripts/restore-consumer.sh",
-    "clean": "git clean -xdf ./packages",
-    "clear-cache": "rm -rf .sewing-kit/cache"
+    "clean": "git clean -xdf ./packages; rm -rf ./build",
+    "clear-cache": "rm -rf .sewing-kit"
   },
   "devDependencies": {
     "@sewing-kit/cli": "^0.2.0",
