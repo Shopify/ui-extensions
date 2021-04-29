@@ -20,7 +20,8 @@
     "clear-cache": "rm -rf .sewing-kit",
     "run:ts": "babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "run:ts:watch": "nodemon --ext .ts,.tsx,.mjs,.json,.graphql node_modules/.bin/babel-node --extensions .ts,.tsx,.mjs,.js,.json",
-    "docs": "babel-node --extensions .ts,.tsx,.mjs,.js,.json scripts/generate-docs.ts"
+    "docs:checkout": "babel-node --extensions .ts,.tsx,.mjs,.js,.json scripts/generate-docs-checkout.ts",
+    "docs:admin": "babel-node --extensions .ts,.tsx,.mjs,.js,.json scripts/generate-docs-admin.ts"
   },
   "devDependencies": {
     "@babel/node": "^7.8.7",

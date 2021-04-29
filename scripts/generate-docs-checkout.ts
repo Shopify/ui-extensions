@@ -1,12 +1,12 @@
-import {renderForShopifyDev} from './typedoc/typedoc';
+import {renderForShopifyDev} from './typedoc';
 
 const paths = {
   inputRoot: '../checkout-web/packages/argo-checkout',
-  outputRoot: '../shopify-dev/content/docs/checkout-extensions',
   packages: {
     JS: '../checkout-web/packages/argo-checkout',
     React: '../checkout-web/packages/argo-checkout-react',
   },
+  outputRoot: '../shopify-dev/content/docs/checkout-extensions',
   shopifyDevUrl: '/docs/checkout-extensions',
 };
 
