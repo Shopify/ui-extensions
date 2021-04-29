@@ -40,3 +40,5 @@ export {Thumbnail} from './Thumbnail';
 export type {ThumbnailProps} from './Thumbnail';
 export {OptionList} from './OptionList';
 export type {OptionListProps} from './OptionList';
+
+export type {DestructableAction, DisableableAction} from './types';
