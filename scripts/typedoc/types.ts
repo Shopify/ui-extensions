@@ -124,6 +124,11 @@ export interface TypeParameter {
   default?: string;
 }
 
+export interface ExtendsType {
+  kind: 'Extends';
+  extends: string;
+}
+
 export type Type =
   | UnionType
   | InterfaceType
@@ -136,6 +141,7 @@ export type Type =
   | FunctionType
   | MappedType
   | TypeParameter
+  | ExtendsType
   | VoidType
   | UndefinedType
   | NullType

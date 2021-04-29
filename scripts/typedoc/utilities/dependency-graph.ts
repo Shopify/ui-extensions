@@ -326,6 +326,20 @@ function resolveNodeToLocal(
     case 'TSInterfaceDeclaration': {
       const properties: PropertySignature[] = [];
 
+      // If this interface extends another, find the base
+      // we're extending and grab its properties
+      if(node.extends) {
+        for (const extens of node.extends) {
+          const resolved = resolveNodeToLocal(extens, context)
+          if(resolved.kind === 'Extends'){
+            const extendedNode = context.resolvedLocals.get(resolved.extends);
+            if(extendedNode && extendedNode.kind === 'InterfaceType') {
+              extendedNode.properties.forEach(property => properties.push(property));
+            }
+          }
+        }
+      }
+
       for (const property of node.body.body) {
         if (property.type === 'TSCallSignatureDeclaration') {
           if (property.typeAnnotation == null) {
@@ -519,6 +533,18 @@ function resolveNodeToLocal(
     // case 'TSTupleType': {
 
     // }
+
+    case 'TSExpressionWithTypeArguments': {
+      const {expression} = node;
+      if(expression.type === 'Identifier'){
+        const name = expression.name;
+        return {
+          kind: 'Extends',
+          extends: name,
+        };
+      }
+      return undocumented(node);
+    }
 
     /**
      * https://www.typescriptlang.org/docs/handbook/2/mapped-types.html
