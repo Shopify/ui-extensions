@@ -1,15 +1,12 @@
-import {extend, ShopifyGlobal} from '../api';
-
-const shopifyGlobal: ShopifyGlobal = self as any;
+import {extend} from '../api';
 
 describe('extend()', () => {
   it('calls shopify extend', () => {
-    (shopifyGlobal as any).shopify = {extend: jest.fn()};
-
+    global.self = {shopify: {extend: jest.fn()}} as any;
     const callback = () => {};
     extend('Playground', callback);
 
-    expect(shopifyGlobal.shopify.extend).toHaveBeenCalledWith(
+    expect((self as any).shopify.extend).toHaveBeenCalledWith(
       'Playground',
       callback,
     );

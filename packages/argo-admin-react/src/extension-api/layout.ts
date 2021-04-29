@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {isLayoutApi, Layout} from '@shopify/argo-admin/extension-api/layout';
+import {isLayoutApi, Layout} from '@shopify/argo-admin';
 
 import {useExtensionApi} from './utils';
 

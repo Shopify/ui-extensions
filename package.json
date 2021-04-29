@@ -2,7 +2,7 @@
   "name": "argo-checkout",
   "version": "0.0.0",
   "private": true,
-  "repository": "https://github.com/lemonmade/remote-ui.git",
+  "repository": "https://github.com/Shopify/argo-checkout.git",
   "workspaces": [
     "./packages/*"
   ],

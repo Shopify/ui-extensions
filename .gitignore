@@ -11,9 +11,6 @@ packages/*/bin
 !packages/*/.eslintrc.js
 *.log
 
-#TS output
-packages/**/dist
-
 # IntelliJ IDE ignore
 .idea
 

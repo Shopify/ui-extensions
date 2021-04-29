@@ -2,12 +2,18 @@
   "name": "@shopify/argo-admin",
   "version": "0.10.1",
   "main": "index.js",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Shopify/argo-admin.git",
-    "directory": "packages/argo-admin"
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./": "./"
   },
+  "license": "MIT",
   "sideEffects": false,
   "dependencies": {
     "@remote-ui/core": "^2.0.0"
