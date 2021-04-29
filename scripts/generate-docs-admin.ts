@@ -1,4 +1,4 @@
-import {renderForShopifyDev} from './typedoc';
+import {components, extensionPoints} from './typedoc/shopify-dev-renderer';
 
 const paths = {
   inputRoot: './packages/argo-admin',
@@ -10,4 +10,5 @@ const paths = {
   shopifyDevUrl: '/tools/argo-admin',
 };
 
-renderForShopifyDev(paths);
+components(paths);
+extensionPoints(paths);

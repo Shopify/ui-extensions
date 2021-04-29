@@ -1,1 +1,1 @@
-export {renderForShopifyDev} from './typedoc';
+export {renderForShopifyDev} from './shopify-dev-renderer';
