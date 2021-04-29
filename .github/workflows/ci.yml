@@ -15,30 +15,30 @@ jobs:
         with:
           node-version: 12.16.3
 
-      - name: Get yarn cache directory
-        id: yarn-cache-get-dir
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+      # - name: Get yarn cache directory
+      #   id: yarn-cache-get-dir
+      #   run: echo "::set-output name=dir::$(yarn cache dir)"
 
-      - uses: actions/cache@v1
-        id: yarn-cache
-        name: Restore yarn cache
-        with:
-          path: ${{ steps.yarn-cache-get-dir.outputs.dir }}
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
+      # - uses: actions/cache@v1
+      #   id: yarn-cache
+      #   name: Restore yarn cache
+      #   with:
+      #     path: ${{ steps.yarn-cache-get-dir.outputs.dir }}
+      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-yarn-
 
       - name: Yarn install
         run: yarn install --frozen-lockfile
 
-      - uses: actions/cache@v1
-        id: typescript-cache
-        name: Restore TypeScript cache
-        with:
-          path: .sewing-kit/cache/typescript/
-          key: ${{ runner.os }}-typescript-v4-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-typescript-v4-
+      # - uses: actions/cache@v1
+      #   id: typescript-cache
+      #   name: Restore TypeScript cache
+      #   with:
+      #     path: .sewing-kit/cache/typescript/
+      #     key: ${{ runner.os }}-typescript-v4-${{ github.sha }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-typescript-v4-
 
       - name: Type check
         run: yarn type-check
