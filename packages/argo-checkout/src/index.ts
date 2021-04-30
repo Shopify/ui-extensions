@@ -5,9 +5,11 @@ export type {
   RenderExtensions,
   RenderExtension,
   RenderExtensionPoint,
+  Address,
   AllowedComponentsForRenderExtension,
   ArgumentsForExtension,
   ApiForRenderExtension,
+  CountryCode,
   ReturnTypeForExtension,
   StandardApi,
   Storage,
@@ -21,15 +23,18 @@ export type {
   MetafieldChangeResultSuccess,
   MetafieldChangeResult,
   Attribute,
-  LineItem,
   Merchandise,
   MerchandiseImage,
   MerchandiseOption,
   Money,
+  LineItem,
+  LineItemChange,
+  LineItemAddChange,
+  LineItemUpdateChange,
+  LineItemRemoveChange,
 } from './extension-points';
 
 export * from './components';
-
 export type {
   BlockSpacerProps,
   BlockStackProps,
@@ -45,7 +50,6 @@ export type {
   FormLayoutGroupProps,
   HeadingProps,
   HeadingGroupProps,
-  HiddenForAccessibilityProps,
   ImageProps,
   InlineSpacerProps,
   InlineStackProps,
@@ -62,7 +66,6 @@ export type {
   TextFieldProps,
   TilesProps,
   ViewProps,
-  VisuallyHiddenProps,
 } from './components';
 export type Components = typeof import('./components');
 

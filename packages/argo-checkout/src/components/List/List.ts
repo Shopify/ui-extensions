@@ -12,12 +12,12 @@ export type Spacing =
 export interface ListProps {
   /**
    * Adjust spacing between list items
-   * @default 'base'
+   * @defaultValue 'base'
    */
   spacing?: Spacing;
   /**
    * Type of marker to display
-   * @default 'bullet'
+   * @defaultValue 'bullet'
    */
   marker?: Marker;
 }

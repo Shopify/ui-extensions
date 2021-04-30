@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
+import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 type Subscriber<T> = Parameters<StatefulRemoteSubscribable<T>['subscribe']>[0];
 

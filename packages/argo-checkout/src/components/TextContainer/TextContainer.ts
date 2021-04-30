@@ -8,7 +8,7 @@ export interface TextContainerProps {
   alignment?: Alignment;
   /**
    * Adjust spacing between children
-   * @default `base`
+   * @defaultValue 'base'
    */
   spacing?: Spacing;
 }

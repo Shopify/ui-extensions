@@ -1,5 +1,7 @@
 export type {
+  Address,
   Attribute,
+  CountryCode,
   Extension,
   Merchandise,
   MerchandiseImage,
@@ -17,4 +19,9 @@ export type {
   MetafieldChangeResultSuccess,
   MetafieldChangeResult,
   LineItem,
+  LineItemChange,
+  LineItemAddChange,
+  LineItemUpdateChange,
+  LineItemRemoveChange,
 } from './standard';
+export {CurrencyCode} from './shared';

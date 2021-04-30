@@ -1,18 +1,22 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {Responsive} from '../shared';
+
+type Alignment = 'center' | 'leading' | 'trailing';
 type Spacing = 'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose';
 
 export interface LayoutProps {
   /**
    * Specifies the inline alignment of the layout in its container.
-   * By default, it will be centered.
+   * @defaultValue 'center'
    */
-  inlineAlignment?: 'leading' | 'trailing';
+  inlineAlignment?: Alignment;
+
   /**
    * Specifies the block alignment of the layout in its container.
-   * By default, it will be leading.
+   * @defaultValue 'leading'
    */
-  blockAlignment?: 'center' | 'trailing';
+  blockAlignment?: Alignment;
   /**
    * Default maximum inline size of the layout within its viewport.
    * The size specified will constrain the space available for its sections and will
@@ -25,20 +29,15 @@ export interface LayoutProps {
    * - `0.5` represents `50%`
    * - `1` represents `100%`
    */
-  maxInlineSize?: number;
+  maxInlineSize?: number | Responsive<number>;
   /**
    * Default sizes for each section of the layout.
    */
-  sizes?: Size[];
+  sizes?: Size[] | Responsive<Size[]>;
   /**
    * Default spacing between sections
    */
-  spacing?: Spacing;
-
-  /**
-   * Sizes at different media
-   */
-  media?: Media[];
+  spacing?: Spacing | Responsive<Spacing>;
 }
 
 /**
@@ -54,37 +53,6 @@ export interface LayoutProps {
  * - `1` represents `100%`
  */
 type Size = 'auto' | 'fill' | number;
-
-type ViewportSize = 'aboveSmall' | 'aboveMedium' | 'aboveLarge';
-
-interface Media {
-  /*
-   * Specifies the viewport size these instruction will apply to.
-   */
-  viewportSize: ViewportSize;
-  /**
-   * Maximum inline size of the layout for this viewport.
-   * The size specified will constrain the space available for its sections and will
-   * be centered in the viewport unless specified otherwise with `inlineAlignment`.
-   *
-   * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
-   *
-   * Examples:
-   * - `500` represents `500px`
-   * - `0.5` represents `50%`
-   * - `1` represents `100%`
-   */
-  maxInlineSize?: number;
-  /**
-   * Sizes for each section of the layout for this media.
-   * If a `maxInlineSize` is specified, make sure you adapt your pixel values accordingly.
-   */
-  sizes?: Size[];
-  /*
-   * Spacing between sections for this viewport.
-   */
-  spacing?: Spacing;
-}
 
 /**
  * Layout is used to create macro layouts that responds to different media sizes.

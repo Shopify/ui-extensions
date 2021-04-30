@@ -1,6 +1,8 @@
 export type {ExtensionPoints, ExtensionPoint} from './extension-points';
 export type {
+  Address,
   Attribute,
+  CountryCode,
   Extension,
   Merchandise,
   MerchandiseImage,
@@ -17,7 +19,12 @@ export type {
   MetafieldChangeResultError,
   MetafieldChangeResultSuccess,
   MetafieldChangeResult,
+  CurrencyCode,
   LineItem,
+  LineItemChange,
+  LineItemAddChange,
+  LineItemUpdateChange,
+  LineItemRemoveChange,
 } from './api';
 export type {RenderExtension} from './render-extension';
 export type {

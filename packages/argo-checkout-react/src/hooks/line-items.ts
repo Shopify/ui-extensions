@@ -14,3 +14,9 @@ export function useLineItems<
 
   return useSubscription(lineItems);
 }
+
+export function useApplyLineItemsChange<
+  ID extends RenderExtensionPoint = RenderExtensionPoint
+>() {
+  return useExtensionApi<ID>().applyLineItemsChange;
+}

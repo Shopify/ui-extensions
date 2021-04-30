@@ -15,6 +15,12 @@ export interface ButtonProps {
   loading?: boolean;
   /** Accessible label for the loading indicator when user prefers reduced motion */
   loadingLabel?: string;
+  /**
+   * A label used for buyers using assistive technologies. When provided, any
+   * 'children' supplied to this component are hidden from being seen for
+   * accessibility purposes to prevent duplicate content from being read.
+   */
+  accessibilityLabel?: string;
   /** Disables the button, disallowing any interaction */
   disabled?: boolean;
   /** Callback when pressed */

@@ -4,18 +4,6 @@ import {Autocomplete} from '../shared';
 
 type Type = 'text' | 'email' | 'number' | 'telephone';
 
-interface Tooltip {
-  /**
-   * A label to indicate what information the tooltip will provide. Currently,
-   * this label is only used for assistive technologies.
-   */
-  label: string;
-  /**
-   * The content to display within the tooltip.
-   */
-  content: string;
-}
-
 export interface TextFieldProps {
   /**
    * A unique identifier for the field. When no `id` is provided,
@@ -32,7 +20,17 @@ export interface TextFieldProps {
    * when the field is empty.
    */
   label: string;
-  /* A detailed description for screen readers. */
+  /**
+   * Content to render before the value.
+   */
+  prefix?: string;
+  /**
+   * Content to render at the end of the text field.
+   */
+  suffix?: string;
+  /**
+   * A detailed description for screen readers.
+   */
   accessibilityDescription?: string;
   /**
    * Current value for the field. If omitted, the field will be empty. You should update
@@ -94,15 +92,10 @@ export interface TextFieldProps {
    * specific data you would like to be entered into this field during autofill.
    */
   autocomplete?: Autocomplete | boolean;
-  /* Whether the field can be modified */
+  /* Whether the field can be modified. */
   disabled?: boolean;
-  /* Whether the field is read-only */
+  /* Whether the field is read-only. */
   readonly?: boolean;
-  /**
-   * Additional hint text to display for the field. The tooltip is activated by
-   * an icon pinned to the end of the field.
-   */
-  tooltip?: Tooltip;
   /**
    * Callback when input is focused.
    */
@@ -155,6 +148,15 @@ export interface TextFieldProps {
 
 /**
  * A text field is an input field that merchants can type into.
+ *
+ * Its children will be rendered as actions inside at the end of the text field.
+ *
+ * Focused `input` and `select` children elements will toggle text field's focus state
+ * so place there only elements tighly coupled with the text field.
+ * For the other cases consider the `Connected` component.
+ *
+ * Its children are commonly used to display an icon that opens a `Tooltip` that provides more
+ * information about the field.
  */
 export const TextField = createRemoteComponent<'TextField', TextFieldProps>(
   'TextField',

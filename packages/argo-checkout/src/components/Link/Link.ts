@@ -20,6 +20,12 @@ export interface LinkProps {
    */
   language?: string;
   /**
+   * A label used for buyers using assistive technologies. When provided, any
+   * 'children' supplied to this component are hidden from being seen for
+   * accessibility purposes to prevent duplicate content from being read.
+   */
+  accessibilityLabel?: string;
+  /**
    * Callback when pressed. If `to` is provided, it will execute the callback and
    * then navigate to the location specified by `to`.
    */

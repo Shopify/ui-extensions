@@ -1,6 +1,6 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
-import type {CurrencyCode} from '../shared';
+import type {CurrencyCode, CountryCode} from '../shared';
 
 /**
  * This is a key / value storage object for extension points.
@@ -91,6 +91,9 @@ export interface Metafield {
 
 /** Removes a public or private metafield. */
 export interface MetafieldRemoveChange {
+  /**
+   * The type of the `MetafieldRemoveChange` API.
+   */
   type: 'removeMetafield';
 
   /**
@@ -109,6 +112,9 @@ export interface MetafieldRemoveChange {
  * provided key and namespace does not already exist, it will be created.
  */
 export interface MetafieldUpdateChange {
+  /**
+   * The type of the `MetafieldUpdateChange` API.
+   */
   type: 'updateMetafield';
 
   /** The name of the metafield to update. */
@@ -129,10 +135,16 @@ export interface MetafieldUpdateChange {
 export type MetafieldChange = MetafieldRemoveChange | MetafieldUpdateChange;
 
 export interface MetafieldChangeResultSuccess {
+  /**
+   * The type of the `MetafieldChangeResultSuccess` API.
+   */
   type: 'success';
 }
 
 export interface MetafieldChangeResultError {
+  /**
+   * The type of the `MetafieldChangeResultError` API.
+   */
   type: 'error';
 
   /**
@@ -148,7 +160,9 @@ export type MetafieldChangeResult =
   | MetafieldChangeResultError;
 
 export type Version = 'unstable';
-
+/**
+ * The following APIs are provided to all extension points.
+ */
 export interface StandardApi<
   ExtensionPoint extends import('../../extension-points').ExtensionPoint
 > {
@@ -176,6 +190,15 @@ export interface StandardApi<
   locale: StatefulRemoteSubscribable<string>;
 
   /**
+   * The proposed billing address is what the buyer has input in the billing
+   * address form of the payment page. The address will update once the field is
+   * committed (on change) rather than every keystroke. This form value always be
+   * available in the API and is distinct from shipping address, even when the buyer
+   * selects the "same as shipping" option.
+   */
+  billingAddress: StatefulRemoteSubscribable<Address>;
+
+  /**
    * The identifier of the running extension point.
    * @example 'Checkout::PostPurchase::Render'
    */
@@ -190,6 +213,13 @@ export interface StandardApi<
    * Key / value storage for this extension point.
    */
   storage: Storage;
+
+  /**
+   * Proposed buyer shipping address. During the information step, the address
+   * will update once the field is committed (on change) rather than every keystroke.
+   * Where the shipping address is not required, fields will return undefined.
+   */
+  shippingAddress: StatefulRemoteSubscribable<Address>;
 
   /** Shop where the checkout is taking place. */
   shop: Shop;
@@ -214,8 +244,8 @@ export interface StandardApi<
    * then the metafield should be public since it will be accessed outside of
    * your application.
    *
-   * Once the order is created, you can query these metafields through our
-   * [admin GraphQL API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01).
+   * Once the order is created, you can query these metafields using the
+   * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
    */
   metafields: StatefulRemoteSubscribable<Metafield[]>;
 
@@ -225,8 +255,8 @@ export interface StandardApi<
    * scoped to your application, and are shared by all extensions you author as part
    * of your application running on the checkout.
    *
-   * Once the order is created, you can query these metafields through our
-   * [admin GraphQL API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#privatemetafield-2021-01).
+   * Once the order is created, you can query these metafields using the
+   * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#privatemetafield-2021-01).
    */
   privateMetafields: StatefulRemoteSubscribable<Metafield[]>;
 
@@ -252,6 +282,7 @@ export interface StandardApi<
    * Merchandise items the buyer is purchasing.
    */
   lineItems: StatefulRemoteSubscribable<LineItem[]>;
+  applyLineItemsChange(change: LineItemChange): Promise<LineItemChangeResult>;
 }
 
 export interface Shop {
@@ -270,7 +301,35 @@ export interface Shop {
   storefrontUrl?: string;
 }
 
+export interface Address {
+  name?: string;
+  firstName?: string;
+  lastName?: string;
+  company?: string;
+  address1?: string;
+  address2?: string;
+  city?: string;
+  postalCode?: string;
+  countryCode: CountryCode;
+  zoneCode?: string;
+  phone?: string;
+}
+
+export {CountryCode};
+
+export interface GeographicalCoordinates {
+  latitude: number;
+  longitude: number;
+}
+
 export interface LineItem {
+  /**
+   * Line Item id.
+   * These line item IDs are not stable at the moment, they might change after any operations on the line items. You should always
+   * look up for an updated ID before any call to `applyLineItemsChange` because you'll need the ID to create a `LineItemChange` object.
+   * @example 'gid://shopify/MerchandiseLineItem/123'
+   */
+  id: string;
   /**
    * Merchandise being purchased.
    */
@@ -280,7 +339,7 @@ export interface LineItem {
    */
   quantity: number;
   /**
-   * Price for the merchandise multiplied by the quantity
+   * Price for the merchandise multiplied by the quantity.
    */
   totalPrice: Money;
   /**
@@ -332,7 +391,7 @@ export interface Merchandise {
 
 export interface MerchandiseImage {
   /**
-   * Image url.
+   * Image URL.
    */
   url: string;
   /**
@@ -342,11 +401,100 @@ export interface MerchandiseImage {
 }
 
 export interface Attribute {
+  /**
+   * Key for the attribute.
+   */
   key: string;
+  /**
+   *Value for the attribute.
+   */
   value: string;
 }
 
 export interface MerchandiseOption {
+  /**
+   *Name of the merchandise option.
+   */
   name: string;
+  /**
+   *Value of the merchandise option.
+   */
   value: string;
+}
+
+export interface LineItemChangeResultSuccess {
+  type: 'success';
+}
+
+export interface LineItemChangeResultError {
+  type: 'error';
+
+  /**
+   * A message that explains the error. This message is useful for debugging.
+   * It is **not** localized, and therefore should not be presented directly
+   * to the buyer.
+   */
+  message: string;
+}
+
+export type LineItemChangeResult =
+  | LineItemChangeResultSuccess
+  | LineItemChangeResultError;
+
+export type LineItemChange =
+  | LineItemAddChange
+  | LineItemRemoveChange
+  | LineItemUpdateChange;
+
+export interface LineItemAddChange {
+  type: 'addLineItem';
+  /**
+   * Merchandise id being added.
+   * @example 'gid://shopify/ProductVariantMerchandise/123'
+   */
+  merchandiseId: string;
+  /**
+   * Quantity of merchandised being added.
+   */
+  quantity: number;
+  /**
+   * Attributes associated to the line item.
+   */
+  customAttributes?: Attribute[];
+}
+
+export interface LineItemRemoveChange {
+  type: 'removeLineItem';
+  /**
+   * Line Item id.
+   * @example 'gid://shopify/MerchandiseLineItem/123'
+   */
+  id: string;
+  /**
+   * Quantity being removed for this line item.
+   */
+  quantity: number;
+}
+
+export interface LineItemUpdateChange {
+  type: 'updateLineItem';
+  /**
+   * Line Item id.
+   * @example 'gid://shopify/MerchandiseLineItem/123'
+   */
+  id: string;
+  /**
+   * New merchandise id for the line item.
+   * @example 'gid://shopify/ProductVariantMerchandise/123'
+   */
+  merchandiseId?: string;
+  /**
+   * New quantity for the line item.
+   * @example 'gid://shopify/ProductVariantMerchandise/123'
+   */
+  quantity?: number;
+  /**
+   * New attributes for the line item.
+   */
+  customAttributes?: Attribute[];
 }
