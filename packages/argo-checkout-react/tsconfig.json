@@ -5,6 +5,7 @@
     "baseUrl": "src",
     "rootDir": "src",
     "jsx": "react-jsx",
+    "isolatedModules": true,
     "lib": [
       "es2015",
       "es2016",

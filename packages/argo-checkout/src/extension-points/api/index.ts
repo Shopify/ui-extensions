@@ -1,7 +1,6 @@
 export type {
   Address,
   Attribute,
-  CountryCode,
   Extension,
   Merchandise,
   MerchandiseImage,
@@ -24,4 +23,4 @@ export type {
   LineItemUpdateChange,
   LineItemRemoveChange,
 } from './standard';
-export {CurrencyCode} from './shared';
+export type {CurrencyCode, CountryCode} from './shared';

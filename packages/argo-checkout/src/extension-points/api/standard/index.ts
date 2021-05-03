@@ -315,8 +315,6 @@ export interface Address {
   phone?: string;
 }
 
-export {CountryCode};
-
 export interface GeographicalCoordinates {
   latitude: number;
   longitude: number;

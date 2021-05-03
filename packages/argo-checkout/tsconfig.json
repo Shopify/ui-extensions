@@ -4,6 +4,7 @@
     "outDir": "build/ts",
     "baseUrl": "src",
     "rootDir": "src",
+    "isolatedModules": true,
     "lib": [
       "WebWorker",
       "es2015",
