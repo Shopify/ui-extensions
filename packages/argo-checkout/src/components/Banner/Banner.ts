@@ -31,7 +31,7 @@ export interface BannerProps {
   title?: string;
   /**
    * Sets the status of the banner.
-   * @default 'info'
+   * @defaultValue 'info'
    */
   status?: Status;
   /** Makes the content collapsible */

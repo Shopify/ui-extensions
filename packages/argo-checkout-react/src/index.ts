@@ -1,5 +1,4 @@
 export {extend} from '@shopify/argo-checkout';
-
 export type {
   ExtensionPoint,
   ExtensionPoints,
@@ -26,7 +25,6 @@ export type {
   FormLayoutGroupProps,
   HeadingProps,
   HeadingGroupProps,
-  HiddenForAccessibilityProps,
   ImageProps,
   InlineSpacerProps,
   InlineStackProps,
@@ -43,7 +41,6 @@ export type {
   TextFieldProps,
   TilesProps,
   ViewProps,
-  VisuallyHiddenProps,
 } from '@shopify/argo-checkout';
 
 export * from './components';

@@ -14,7 +14,7 @@ export interface BlockStackProps {
   alignment?: Alignment;
   /**
    * Adjust spacing between children
-   * @default `base`
+   * @defaultValue 'base'
    **/
   spacing?: Spacing;
 }

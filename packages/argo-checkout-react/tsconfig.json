@@ -16,5 +16,6 @@
     ]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "exclude": ["src/**/*.example.tsx"],
   "references": [{"path": "../argo-checkout"}]
 }

@@ -5,7 +5,7 @@ type Size = 'extraSmall' | 'small' | 'base' | 'large' | 'extraLarge';
 export interface InlineSpacerProps {
   /**
    * Adjust size of the spacer
-   * @default `base`
+   * @defaultValue 'base'
    **/
   size?: Size;
 }

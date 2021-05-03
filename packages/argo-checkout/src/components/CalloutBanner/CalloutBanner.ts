@@ -13,22 +13,22 @@ export interface CalloutBannerProps {
   title?: string;
   /**
    * Adds a top and bottom border to the callout banner
-   * @default 'block'
+   * @defaultValue 'block'
    */
   border?: Border;
   /**
    * Sets the background color of the callout banner
-   * @default 'secondary'
+   * @defaultValue 'secondary'
    */
   background?: Background;
   /**
    * Sets the alignment of the title and children
-   * @default 'center'
+   * @defaultValue 'center'
    */
   alignment?: Alignment;
   /**
    * Sets the spacing between the title and children
-   * @default 'tight'
+   * @defaultValue 'tight'
    */
   spacing?: Spacing;
 }
@@ -36,15 +36,6 @@ export interface CalloutBannerProps {
 /**
  * CalloutBanner is used to inform buyers about the details of a limited
  * time offer. They differ from Banner which is used to report status.
- *
- * Guidelines:
- *
- * - Never display more than one CalloutBanner
- * - Place callout banners near the top of the page to bring the buyer's attention
- * - The text should be written as concisely as possible
- * - Be considerate and avoid anxiety provoking language:
- *   - Avoid exclamation points  – “Wait! Before time runs out!”
- *   - Give it a feeling of personalization
  */
 export const CalloutBanner = createRemoteComponent<
   'CalloutBanner',

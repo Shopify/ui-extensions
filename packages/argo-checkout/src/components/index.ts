@@ -24,8 +24,6 @@ export {Heading} from './Heading';
 export type {HeadingProps} from './Heading';
 export {HeadingGroup} from './HeadingGroup';
 export type {HeadingGroupProps} from './HeadingGroup';
-export {HiddenForAccessibility} from './HiddenForAccessibility';
-export type {HiddenForAccessibilityProps} from './HiddenForAccessibility';
 export {Image} from './Image';
 export type {ImageProps} from './Image';
 export {InlineStack} from './InlineStack';
@@ -56,5 +54,10 @@ export {Tiles} from './Tiles';
 export type {TilesProps} from './Tiles';
 export {View} from './View';
 export type {ViewProps} from './View';
-export {VisuallyHidden} from './VisuallyHidden';
-export type {VisuallyHiddenProps} from './VisuallyHidden';
+export type {
+  Autocomplete,
+  AutocompleteField,
+  AutocompleteGroup,
+  Breakpoint,
+  Responsive,
+} from './shared';
