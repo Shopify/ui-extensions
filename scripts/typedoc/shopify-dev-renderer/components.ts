@@ -62,7 +62,7 @@ export async function components(paths: Paths) {
       gid: findUuid(outputFile),
       url: componentUrl,
       title: `${name}`,
-      description: firstSentence(docsContent),
+      description: `"${firstSentence(docsContent)}"`,
       hidden: true,
     });
     markdown += docsContent ? `${docsContent}\n\n` : '';
