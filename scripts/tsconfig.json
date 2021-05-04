@@ -1,0 +1,9 @@
+{
+  "extends": "../config/typescript/tsconfig.base.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "noEmit": true,
+    "lib": ["dom"]
+  },
+  "include": ["./**/*.ts"]
+}
