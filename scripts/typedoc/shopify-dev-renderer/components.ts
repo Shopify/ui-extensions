@@ -8,7 +8,7 @@ import type {
 
 import {createDependencyGraph} from '../utilities/dependency-graph';
 
-import {renderYamlFrontMatter, findUuid, dedupe, propsTable, strip} from './shared';
+import {renderYamlFrontMatter, findUuid, dedupe, propsTable, strip, firstSentence} from './shared';
 import type {Node} from './shared';
 
 const additionalPropsTables: string[] = [];
@@ -62,7 +62,7 @@ export async function components(paths: Paths) {
       gid: findUuid(outputFile),
       url: componentUrl,
       title: `${name}`,
-      // description: docsContent,
+      description: firstSentence(docsContent),
       hidden: true,
     });
     markdown += docsContent ? `${docsContent}\n\n` : '';
@@ -86,7 +86,7 @@ export async function components(paths: Paths) {
         nodes,
         componentIndex,
         additionalPropsTables,
-        undefined,
+        false,
         undefined,
       );
     }

@@ -244,10 +244,19 @@ export function strip(content: string) {
     content
       .replace('/**', '')
       .replace('*/', '')
-      .replace('\n * ', '\n')
-      .replace('\n *', '\n')
-      .replace('\n\n * ', '\n\n'),
+      .replace(/\n \* /g, '\n')
+      .replace(/\n \*/g, '\n')
+      .replace(/\n\n \* /g, '\n\n')
   );
+}
+
+export function firstSentence(content: string) {
+  const lines = content.split(/(\n|\. )/g);
+  let firstSentence = lines.length ? lines[0] : content;
+  if(firstSentence[firstSentence.length-1] !== '.'){
+    firstSentence += '.';
+  }
+  return firstSentence;
 }
 
 function paramsType(params: any[], exports: any[], dir: string, additionalPropsTables: string[]) {
