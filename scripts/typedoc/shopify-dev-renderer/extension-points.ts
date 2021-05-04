@@ -47,12 +47,12 @@ export async function extensionPoints(paths: Paths) {
     interfaceEntryPoints.includes(name),
   );
 
-  const apiFile = resolve(`${paths.outputRoot}/extension-points/api.md`);
   const folder = resolve(`${paths.outputRoot}/extension-points`);
-
   if (!fs.existsSync(folder)) {
     fs.mkdirSync(folder);
   }
+
+  const apiFile = resolve(`${paths.outputRoot}/extension-points/api.md`);
 
   let markdown = renderYamlFrontMatter({
     gid: findUuid(apiFile),
