@@ -6,5 +6,5 @@
     "rootDir": "."
   },
   "include": ["**/sewing-kit.config.ts", "./config/sewing-kit/**/*"],
-  "references": [{"path": "scripts"}]
+  "references": []
 }
