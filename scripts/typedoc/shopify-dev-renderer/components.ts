@@ -13,7 +13,14 @@ import type {Node} from './shared';
 
 const additionalPropsTables: string[] = [];
 
-export async function components(paths: Paths) {
+interface Content {
+  title: string;
+  frontMatterDescription: string;
+  description: string;
+}
+
+export async function components(paths: Paths, content: Content) {
+  const {title, frontMatterDescription, description} = content;
   const componentIndex = resolve(`${paths.inputRoot}/src/components/index.ts`);
   const {nodes, components} = await buildComponentGraph(componentIndex);
 
@@ -32,20 +39,12 @@ export async function components(paths: Paths) {
   let index = renderYamlFrontMatter({
     gid: findUuid(indexFile),
     url: `${paths.shopifyDevUrl}/components/index`,
-    title: 'Components for checkout extensions',
-    description: 'A list of components for checkout extensions.',
+    title: title,
+    description: frontMatterDescription,
     hidden: true,
   });
 
-  index += `Argo provides many powerful UI components that a
-  [rendering extension](${paths.shopifyDevUrl}/extension-points#rendering) can
-  use to build an interface. This UI is rendered natively by Shopify, so you
-  can depend on it to be performant, accessible, and work in all of Checkout’s
-  supported browsers. \n\nThe following components are available as part of Argo
-  for Checkout, but make sure that you check the documentation for your
-  [extension point](${paths.shopifyDevUrl}/extension-points#extension-points)
-  to ensure the component is available in the extension points you are
-  targeting.\n\n`;
+  index += `${description}\n\n`;
 
   index += '<ul style="column-count: auto;column-width: 12rem;">';
 
