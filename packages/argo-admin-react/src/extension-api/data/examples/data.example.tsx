@@ -2,7 +2,7 @@ import React from 'react';
 import {extend, render, Text, useData} from '@shopify/argo-admin-react';
 
 function App() {
-  const {productId, variantId} = useData();
+  const {productId, variantId} = useData<'Admin::Product::SubscriptionPlan::Add'>();
 
   return (
     <Text>
