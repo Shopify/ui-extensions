@@ -4,7 +4,7 @@ import {
 } from '@shopify/argo-admin/extension-api';
 import {ExtensionPoint} from '@shopify/argo-admin/extension-points';
 
-import {useExtensionApi} from './utils';
+import {useExtensionApi} from '../utils';
 
 export function useContainer<T extends ExtensionPoint>() {
   const api = useExtensionApi();

@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {DestructableAction, DisableableAction} from '../../types';
+import {DestructableAction, DisableableAction} from '../types';
 
 export interface CardProps {
   /** Title content for the card */

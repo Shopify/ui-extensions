@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {DestructableAction} from '../../types';
+import {DestructableAction} from '../types';
 
 export interface ModalProps {
   /**
