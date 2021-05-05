@@ -19,9 +19,15 @@
     "build-consumer": "yarnpkg build && ./scripts/build-consumer.sh",
     "restore-consumer": "./scripts/restore-consumer.sh",
     "clean": "git clean -xdf ./packages; rm -rf ./build",
-    "clear-cache": "rm -rf .sewing-kit"
+    "clear-cache": "rm -rf .sewing-kit",
+    "run:ts": "babel-node --extensions .ts,.tsx,.mjs,.js,.json",
+    "run:ts:watch": "nodemon --ext .ts,.tsx,.mjs,.json,.graphql node_modules/.bin/babel-node --extensions .ts,.tsx,.mjs,.js,.json",
+    "docs:checkout": "babel-node --extensions .ts,.tsx,.mjs,.js,.json scripts/generate-docs-checkout.ts",
+    "docs:admin": "babel-node --extensions .ts,.tsx,.mjs,.js,.json scripts/generate-docs-admin.ts"
   },
   "devDependencies": {
+    "@babel/node": "^7.8.7",
+    "@microsoft/tsdoc": "^0.12.20",
     "@sewing-kit/cli": "^0.2.0",
     "@sewing-kit/config": "^0.1.0",
     "@sewing-kit/eslint-plugin": "^0.0.14",
@@ -32,8 +38,14 @@
     "@sewing-kit/plugin-react": "^0.1.0",
     "@sewing-kit/plugin-typescript": "^0.1.0",
     "@types/execa": "^0.9.0",
+    "@types/resolve": "^1.17.1",
+    "@types/uuid": "^8.3.0",
+    "lerna": "^3.22.1",
+    "markdown-table": "^2.0.0",
+    "nodemon": "^2.0.4",
     "react": ">=17.0.0 <18.0.0",
-    "lerna": "^3.22.1"
+    "resolve": "^1.17.0",
+    "uuid": "^8.3.2"
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "^4.0.0",
