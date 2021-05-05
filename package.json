@@ -37,13 +37,12 @@
     "@sewing-kit/plugin-typescript": "^0.1.0",
     "@types/execa": "^0.9.0",
     "@types/resolve": "^1.17.1",
-    "@types/showdown": "^1.9.3",
     "@types/uuid": "^8.3.0",
-    "react": ">=17.0.0 <18.0.0",
     "lerna": "^3.22.1",
+    "markdown-table": "^2.0.0",
     "nodemon": "^2.0.4",
+    "react": ">=17.0.0 <18.0.0",
     "resolve": "^1.17.0",
-    "showdown": "^1.9.1",
     "uuid": "^8.3.2"
   },
   "resolutions": {

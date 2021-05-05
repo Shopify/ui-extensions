@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import {v4 as uuidv4} from 'uuid';
-import showdown from 'showdown';
+import markdownTable from 'markdown-table'
 
 import type {
   LocalReference,
@@ -69,7 +69,6 @@ export function propsTable(
   titleAndDocs = true,
   headingLevel = 2,
 ) {
-  const converter = new showdown.Converter();
   let markdown = '';
 
   if (titleAndDocs) {
@@ -79,51 +78,69 @@ export function propsTable(
     }
     markdown += `<a name="${name}"></a>\n\n${heading} ${name}\n\n`;
     markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
+  } else {
+    markdown += '\n';
   }
 
-  const nameHeading =
-    properties.filter(({parameters}) => parameters).length > 0
-      ? ''
-      : '<th>Name</th>';
+  const table = [];
 
-  markdown += `<table><tr>${nameHeading}<th>Type</th><th>Description</th></tr>`;
+  // table header row
+  const propertiesHaveParameters = properties.filter(({parameters}) => parameters).length > 0;
+  if(propertiesHaveParameters){
+    table.push(['Type', 'Description'])
+  } else {
+    table.push(['Name', 'Type', 'Description'])
+  }
+
 
   properties.forEach(
     ({name: propName, optional, value, docs: propDocs, parameters}) => {
       if (propName === 'Checkout::KitchenSink') return;
 
-      if (parameters) {
-        markdown += `<tr><td><code>(${paramsType(
+      if(parameters) {
+        const thisParamType = paramsType(
           parameters,
           exports,
           dir,
           additionalPropsTables
-        )}): ${propType(value, exports, dir, additionalPropsTables)}</code></td><td>${
-          propDocs ? converter.makeHtml(strip(propDocs.content)) : ''
-        }</td></tr>`;
+        );
+        const thisPropType = propType(value, exports, dir, additionalPropsTables);
+        const type = `<code>(${thisParamType}): ${thisPropType}</code>`;
+        const description = propDocs ? strip(propDocs.content) : ''
+        table.push([type, description]);
       } else {
-        const content = propDocs ? strip(propDocs.content) : '';
-        const tags = propDocs?.tags?.length
-          ? propDocs.tags.map(stringifyTag).join('<br/>')
-          : '';
-        markdown += `<tr><td>${propName}${
-          optional ? '?' : ''
-        }</td><td><code>${propType(
+        const name = `${propName}${optional ? '?' : ''}`;
+        const type = `<code>${propType(
           value,
           exports,
           dir,
           additionalPropsTables
-        )}</code></td><td style="word-break: break-word;">${converter.makeHtml(
-          content,
-        )}${tags}</td></tr>`;
+        )}</code>`;
+
+        const content = propDocs ? strip(propDocs.content) : '';
+        const tags = propDocs?.tags?.length
+        ? propDocs.tags.map(stringifyTag).join('\n')
+        : '';
+        const description = `${newLineToBr(content + tags)}`;
+
+        table.push([name, type, description]);
       }
-    },
+    }
   );
 
-  markdown += '</table>\n\n';
+  markdown += markdownTable(table, {
+    stringLength: () => 3,
+  });
 
   return markdown;
 }
+
+function newLineToBr(string): string {
+  return string
+   .replace(/\n\n/g, '<br /><br />')
+   .replace(/\n/g, ' ')
+}
+
 
 function propType(value: any, exports: any[], dir: string, additionalPropsTables: string[]): any {
   let params = '';
@@ -135,21 +152,21 @@ function propType(value: any, exports: any[], dir: string, additionalPropsTables
 
   switch (value.kind) {
     case 'AnyType':
-      return '<code>any</code>';
+      return 'any';
     case 'NullType':
-      return '<code>null</code>';
+      return 'null';
     case 'UnknownType':
-      return '<code>unknown</code>';
+      return 'unknown';
     case 'VoidType':
-      return '<code>void</code>';
+      return 'void';
     case 'StringType':
-      return '<code>string</code>';
+      return 'string';
     case 'BooleanType':
-      return '<code>boolean</code>';
+      return 'boolean';
     case 'ArrayType':
       return `${propType(value.elements, exports, dir, additionalPropsTables)}[]`;
     case 'NumberType':
-      return '<code>number</code>';
+      return 'number';
     case 'Local':
       // eslint-disable-next-line no-case-declarations
       const local = exports.find(
@@ -162,7 +179,7 @@ function propType(value: any, exports: any[], dir: string, additionalPropsTables
           `Can’t resolve export type \`${value.name}\` in ${dir}. Maybe it’s not exported from the component index or imported from a remote package.`,
         );
 
-        return `<code>${value.name}${params}</code>`;
+        return `${value.name}${params}`;
       }
       local.value.params = value.params;
       return propType(local.value, exports, dir, additionalPropsTables);
@@ -179,26 +196,28 @@ function propType(value: any, exports: any[], dir: string, additionalPropsTables
           3,
         ),
       );
-      return `<code><a href="#${value.name}">${value.name}</a>${params}</code>`;
+      return `<a href="#${value.name}">${value.name}</a>${params}`;
     case 'UnionType':
-      return value.types
+      const PIPE = '&#124;';
+      const union = value.types
         .map((type: any) => {
           return propType(type, exports, dir, additionalPropsTables);
         })
-        .join(' | ');
+        .join(` ${PIPE} `)
+      return `${union}`;
     case 'StringLiteralType':
-      return `<code>"${value.value}"</code>`;
+      return `"${value.value}"`;
     case 'NumberLiteralType':
-      return `<code>${value.value}</code>`;
+      return `${value.value}`;
     case 'BooleanLiteralType':
-      return `<code>${value.value}</code>`;
+      return `${value.value}`;
     case 'FunctionType':
-      return `<code>(${paramsType(
+      return `(${paramsType(
         value.parameters,
         exports,
         dir,
         additionalPropsTables
-      )}) => ${propType(value.returnType, exports, dir, additionalPropsTables)}</code>`;
+      )}) => ${propType(value.returnType, exports, dir, additionalPropsTables)}`;
     case 'MappedType':
       // eslint-disable-next-line no-case-declarations
       const ref = exports.find(
@@ -206,10 +225,10 @@ function propType(value: any, exports: any[], dir: string, additionalPropsTables
       );
       // special case for Responsive only
       additionalPropsTables.push(responsive(ref, additionalPropsTables));
-      return `<code><a href="#${value.name}">${value.name}</a></code>`;
+      return `<a href="#${value.name}">${value.name}</a>`;
     default:
       if (value.kind === 'UndocumentedType' && value.name === 'T') {
-        return '<code>T</code>';
+        return 'T';
       }
       return `<pre>${JSON.stringify(value, null, 2)}</pre>`;
   }
