@@ -179,18 +179,30 @@ export async function dev(...args: string[]) {
         res.set('Access-Control-Allow-Origin', '*');
         res.set('Cache-Control', 'no-cache');
 
+        const defaultExtension = {
+          scriptUrl: `${origin}${PUBLIC_PATH}${filename}`,
+          socketUrl: `${origin.replace(/^http/, 'ws')}${WEBSOCKET_PATH}`,
+        };
+        let extensions;
+        if (extension.type === 'checkout') {
+          extensions = extension.config.extensionPoints.map(
+            (extensionPoint) => ({
+              ...defaultExtension,
+              extensionPoint,
+            }),
+          );
+        } else {
+          extensions = [
+            {
+              ...defaultExtension,
+              extensionPoint: 'Checkout::PostPurchase::Render',
+            },
+          ];
+        }
+
         res.json({
           queryUrl: `${origin}${req.path}`,
-          extensions: [
-            {
-              scriptUrl: `${origin}${PUBLIC_PATH}${filename}`,
-              socketUrl: `${origin.replace(/^http/, 'ws')}${WEBSOCKET_PATH}`,
-              extensionPoint:
-                extension.type === 'checkout'
-                  ? extension.config.extensionPoints[0]
-                  : 'Checkout::PostPurchase::Render',
-            },
-          ],
+          extensions,
         });
       });
 
