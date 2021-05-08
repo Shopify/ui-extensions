@@ -14,26 +14,79 @@ DIM='\033[2m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
-projectDirectory=$1
+projectDirectoryOrWorkspace=$1
 packageName=$2
 packages=()
 debug=0
 
+function set_globals() {
+  if [[ -z $spin ]]; then
+    targetRoot=$(resolve "$ROOT/../$projectDirectoryOrWorkspace")
+    noTargetError="A target project directory is required: "
+  else
+    echo "Running command on spin"
+    projectName="$(cut -d'.' -f1 <<<"$projectDirectoryOrWorkspace")"
+    targetRoot="src/github.com/shopify/$projectName"
+    noTargetError="A workspace is required: "
+  fi
+  
+  shopifyNodeModulesDir="$targetRoot/node_modules/@shopify"
+}
+
+function run_command {
+  local command=$1
+  if [[ -z $spin ]]; then
+    $command
+  else
+    ssh -o LogLevel=ERROR $projectDirectoryOrWorkspace $command
+  fi
+}
+
+function copy_to_target {
+  local package=$1
+  local packageFile=$2
+
+  echo "copy_to_target -->"
+
+  if [[ -z $spin ]]; then
+    targetDir=$(resolve "$ROOT/../$projectDirectoryOrWorkspace/node_modules/@shopify/$package")
+  else
+    targetDir="$shopifyNodeModulesDir/$package"
+  fi
+
+  if (run_command "[ -d $targetDir ]"); then
+    debug $debug "rm -rf $targetDir"
+    run_command "rm -rf $targetDir"
+  fi
+
+  if (run_command "[ ! -d $targetDir ]"); then
+    debug $debug "mkdir $targetDir"
+
+    run_command "mkdir -p $targetDir"
+  fi
+
+  if (run_command "[ -d $targetDir ]" && [[ -f "$packageFile" ]]); then
+    echo "${DIM}[3/3]${NORMAL} 💿 Installing to node_modules..."
+
+    debug $debug "$copy_command"
+    cat $packageFile | run_command "tar xzf - --strip-components=1 -C $targetDir"
+  fi
+}
+
 # Validation - project
 function validate_project {
   local command=$1
-  if [[ -z "$projectDirectory" ]]; then
-    err "A target project directory is required: ${BOLD}$command${NORMAL}"
+
+  if (run_command "[ -z $projectDirectoryOrWorkspace ]"); then
+    err "$noTargetError ${BOLD}$command${NORMAL}"
     exit 0
   fi
 
-  local targetDir=$(resolve "$ROOT/../$projectDirectory")
-  if [[ ! -d $targetDir ]]; then
-    err "Project ${BOLD}$projectDirectory${NORMAL} not found in $targetDir"
+  if (run_command "[ ! -d $shopifyNodeModulesDir ]"); then
+    err "node_modules directory not found in ${BOLD}$projectDirectoryOrWorkspace${NORMAL}"
     exit 0
   fi
-
-  echo "Target project: ${CYAN}$projectDirectory${NONE}"
+  echo "Target: ${CYAN}$projectDirectoryOrWorkspace${NONE}"
 }
 
 # Validation - package names
@@ -106,4 +159,101 @@ function resolve() {
   echo $(IFS='/'; echo "${resolvedSegments[*]}")
 
   return 1
+}
+
+function build_consumer {
+  spin=$1
+
+  echo "💃 ${BOLD}Running build-consumer...${NORMAL}"
+
+  set_globals
+  validate_project '`yarn build-consumer PROJECT_DIRECTORY`'
+  validate_package "$packageName"
+
+  for package in "${packages[@]}"; do
+    packageDir="$ROOT/packages/$package"
+    packageFile="shopify-$package-latest.tgz"
+
+    echo "Processing ${CYAN}$package${NONE}:"
+
+    if [[ -d $packageDir ]]; then
+      debug $debug "cd $packageDir"
+
+      cd $packageDir
+
+      packCmd="yarn pack --filename $packageFile"
+
+      if [[ $debug = 0 ]]; then
+        buildCmd+=" > /dev/null"
+        packCmd+=" > /dev/null"
+      fi
+
+      echo "${DIM}[1/3]${NORMAL} 🏗  Building package..."
+      debug $debug "$buildCmd"
+      eval $buildCmd
+
+      if [[ $? != 0 ]]; then
+        err "Build failed. Please ensure there are no errors in the package."
+        exit 1
+      fi
+
+      echo "${DIM}[2/3]${NORMAL} 📦 Packing for transport..."
+      debug $debug "$packCmd"
+      eval $packCmd
+    fi
+
+    copy_to_target $package $packageFile
+
+    if [[ -f "$packageFile" ]]; then
+    debug $debug "rm $packageFile"
+
+    rm $packageFile
+    fi
+
+    echo "💪 Done."
+
+  done
+
+  echo "💃 ${GREEN}Build copied to ${BOLD}$projectDirectory${NORMAL}.${NONE} Run the project to see your changes from Argo."
+
+  exit 0
+}
+
+function restore_consumer {
+  spin=$1
+
+  echo "💃 ${BOLD}Running restore-consumer...${NORMAL}"
+
+  set_globals
+  validate_project '`yarn restore-consumer PROJECT_DIRECTORY`'
+
+  for package in "${AVAILABLE_PACKAGES[@]}"; do
+    targetDir="$shopifyNodeModulesDir/$package"
+    echo "targetDIr: $targetDir"
+    if (run_command "[ -d $targetDir ]"); then
+      echo "🗑️  Cleaning up package ${ORANGE}$package${NONE}..."
+      debug $debug "rm -rf $targetDir"
+
+      rm -rf $targetDir
+    fi
+
+  done
+
+  if (run_command "[ -d $targetRoot ]"); then
+    debug $debug "cd $targetRoot"
+
+    run_command "cd $targetRoot"
+
+    echo "Running \`yarn install\` from $targetRoot"
+    
+    installCmd="yarn install --force --ignore-engines"
+
+    debug $debug "$installCmd"
+
+    $installCmd
+  fi
+
+  echo "💃 ${GREEN}Project ${BOLD}$projectDirectoryOrWorkspace${NORMAL} ${GREEN}restored.${NONE}"
+
+  exit 0
 }

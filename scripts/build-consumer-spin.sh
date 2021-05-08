@@ -3,11 +3,11 @@
 . "$PWD/scripts/consumer-helper.sh"
 
 usage="
-Usage: $(basename "$0") <target_project> [<package_name>]
+Usage: $(basename "$0") <workspace> [<package_name>]
 
 Build Argo packages into a project
 
- <target_project>  Target project relative to Shopify root \`src/github.com/shopify\`, i.e. \`web\` or \`checkout-web\`
+ <workspace>  Target spin workspace, i.e. \`web.test.trish-ta.us.spin.dev\`
  <package_name>    Space separated package names
                    default: ${AVAILABLE_PACKAGES[@]}
 
@@ -29,4 +29,4 @@ while [[ $# > 0 ]]; do
   shift
 done
 
-build_consumer
+build_consumer true

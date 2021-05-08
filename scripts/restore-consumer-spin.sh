@@ -3,11 +3,11 @@
 . "$PWD/scripts/consumer-helper.sh"
 
 usage="
-Usage: $(basename "$0") <target_project>
+Usage: $(basename "$0") <workspace>
 
 Restore a project by removing Argo packages and running \`yarn install\`
 
- <target_project>  Target project relative to Shopify root \`src/github.com/shopify\`, i.e. \`web\` or \`checkout-web\`
+ <workspace>  Target spin workspace, i.e. \`web.test.trish-ta.us.spin.dev\`
 
  Options:
   -h, --help       Show this help text
@@ -19,4 +19,4 @@ while [[ "$#" > 0 ]]; do case $1 in
   -d|--debug) debug=1; shift;;
 esac; shift; done
 
-restore_consumer
+restore_consumer true
