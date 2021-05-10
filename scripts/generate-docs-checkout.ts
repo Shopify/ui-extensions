@@ -6,8 +6,8 @@ const paths = {
     JS: '../checkout-web/packages/argo-checkout',
     React: '../checkout-web/packages/argo-checkout-react',
   },
-  outputRoot: '../shopify-dev/content/docs/checkout-extensions',
-  shopifyDevUrl: '/docs/checkout-extensions',
+  outputRoot: '../shopify-dev/content/beta/checkout-extensions',
+  shopifyDevUrl: '/beta/checkout-extensions',
 };
 
 const componentsPageContent = {

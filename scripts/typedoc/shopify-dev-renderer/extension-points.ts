@@ -63,6 +63,7 @@ export async function extensionPoints(paths: Paths) {
     gid: findUuid(apiFile),
     url: `${paths.shopifyDevUrl}/extension-points/api`,
     title: 'Extension points API',
+    description: 'An API reference for checkout extension points and their respective types',
     hidden: true,
   });
 
