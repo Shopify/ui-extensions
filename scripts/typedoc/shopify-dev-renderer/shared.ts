@@ -106,7 +106,7 @@ export function propsTable(
         );
         const thisPropType = propType(value, exports, dir, additionalPropsTables);
         const type = `<code>(${thisParamType}): ${thisPropType}</code>`;
-        const description = propDocs ? strip(propDocs.content) : ''
+        const description = propDocs ? newLineToBr(strip(propDocs.content)) : ''
         table.push([type, description]);
       } else {
         const name = `${propName}${optional ? '?' : ''}`;
@@ -121,7 +121,7 @@ export function propsTable(
         const tags = propDocs?.tags?.length
         ? propDocs.tags.map(stringifyTag).join('\n')
         : '';
-        const description = `${newLineToBr(content + tags)}`;
+        const description = newLineToBr(content + tags);
 
         table.push([name, type, description]);
       }
@@ -196,7 +196,7 @@ function propType(value: any, exports: any[], dir: string, additionalPropsTables
           3,
         ),
       );
-      return `<a href="#${value.name}">${value.name}</a>${params}`;
+      return `${anchorLink(value.name)}${params}`;
     case 'UnionType':
       const PIPE = '&#124;';
       const union = value.types
@@ -225,13 +225,17 @@ function propType(value: any, exports: any[], dir: string, additionalPropsTables
       );
       // special case for Responsive only
       additionalPropsTables.push(responsive(ref, additionalPropsTables));
-      return `<a href="#${value.name}">${value.name}</a>`;
+      return anchorLink(value.name);
     default:
       if (value.kind === 'UndocumentedType' && value.name === 'T') {
         return 'T';
       }
-      return `<pre>${JSON.stringify(value, null, 2)}</pre>`;
+      return value.kind;
   }
+}
+
+function anchorLink(string): string {
+  return `<a href="#${string.toLowerCase()}">${string}</a>`;
 }
 
 function sentenceCaseTagName(tagName: string) {
