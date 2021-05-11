@@ -12,11 +12,11 @@ export function gettingStarted(paths: Paths) {
   );
 
   if (!fs.existsSync(outputRoot)) {
-    fs.mkdirSync(outputRoot);
+    fs.mkdirSync(outputRoot, {recursive: true});
   }
 
   if (!fs.existsSync(extensionPointsDocsPath)) {
-    fs.mkdirSync(extensionPointsDocsPath);
+    fs.mkdirSync(extensionPointsDocsPath, {recursive: true});
   }
 
   const indexFile = resolve(`${extensionPointsDocsPath}/index.md`);
