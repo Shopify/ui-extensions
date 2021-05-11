@@ -6,9 +6,9 @@ With Argo, you create app extensions by writing JavaScript or TypeScript to defi
 
 ## Key features
 
-- Shopify runs your app extension code and renders the UI for fully native performance and speed
-- Argo extensions can be built with ReactExtensions can be written in vanilla JavaScript or TypeScript
-- Unlike embedded apps, they’re “frameless” — no iframes or SameSite headachesExtensions are versioned, to enable smoother rollouts (and rollbacks)
+- Consistent user experience - no iFrames or SameSite headaches. Shopify renders your UI as part of the native platform.
+- Fast and secure -  Shopify uses [remote-ui](https://github.com/Shopify/remote-ui) to render your UI as fast as possible while keeping the platform secure.
+- Standard developer experience - Argo extensions are written in either JavaScript or TypeScript. React developers can leverage the high-level component interface, and vanilla JavaScript developers can use a DOM-like interface.
 
 ## Why did Shopify build Argo?
 
