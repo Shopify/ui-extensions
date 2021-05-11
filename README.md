@@ -18,8 +18,6 @@ To do that, we had to rethink how apps surface UI on all Shopify surfaces, such 
 
 Argo uses “frameless” components — Shopify renders your UI for you, so there’s no performance hit, and your app has a fully native look and feel wherever it shows up. This may sound complex, but as you’ll soon see, the code you’ll write to implement this new type of UI extension should feel pretty familiar to you. 
 
-These first two extensions are fairly high level and use-case specific, but as you work your way through this document and build your first Argo based UI extensions, we think you’ll see how Argo levels up the merchant experience of interacting with Apps on Shopify. Shopify’s goal is 
-
 [About this repo](#about-this-repo) | [Commands for Getting Started](#getting-started) | [Contributing](#contributing)
 
 ## About this repo
