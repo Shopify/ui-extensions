@@ -1,6 +1,6 @@
 # Argo
 
-Argo allows apps to integrate directly into the Shopify admin, mobile apps, checkout, or POS. It includes a set of consistent UI components, and development tools for authoring them.
+Argo allows apps to integrate directly into Shopify surfaces such as Shopify admin, mobile apps, checkout, or POS. It includes a set of consistent UI components, and development tools for authoring them.
 
 With Argo, you create app extensions by writing JavaScript or TypeScript to define your app’s behavior. Shopify securely hosts and renders your UI on the client. The result is a faster user experience, without the performance compromises that come with embedded apps.
 
