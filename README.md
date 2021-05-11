@@ -1,6 +1,24 @@
 # Argo
 
-Argo is an extensible framework that allows rendering of remote content inside of Shopify's apps.
+Argo allows apps to integrate directly into the Shopify admin, mobile apps, checkout, or POS. It includes a set of consistent UI components, and development tools for authoring them.
+
+With Argo, you create app extensions by writing JavaScript or TypeScript to define your app’s behavior. Shopify securely hosts and renders your UI on the client. The result is a faster user experience, without the performance compromises that come with embedded apps.
+
+## Key features
+
+- Shopify runs your app extension code and renders the UI for fully native performance and speed
+- Argo extensions can be built with ReactExtensions can be written in vanilla JavaScript or TypeScript
+- Unlike embedded apps, they’re “frameless” — no iframes or SameSite headachesExtensions are versioned, to enable smoother rollouts (and rollbacks)
+
+## Why did Shopify build Argo?
+
+We built Argo so that apps can be first-class citizens on all of Shopify’s UI surfaces. 
+
+To do that, we had to rethink how apps surface UI on all Shopify surfaces, such as the admin, mobile apps, and POS. Today, embedded apps render inside an iframe creating technical barriers to providing a fast and performant user experience. 
+
+Argo uses “frameless” components — Shopify renders your UI for you, so there’s no performance hit, and your app has a fully native look and feel wherever it shows up. This may sound complex, but as you’ll soon see, the code you’ll write to implement this new type of UI extension should feel pretty familiar to you. 
+
+These first two extensions are fairly high level and use-case specific, but as you work your way through this document and build your first Argo based UI extensions, we think you’ll see how Argo levels up the merchant experience of interacting with Apps on Shopify. Shopify’s goal is 
 
 [About this repo](#about-this-repo) | [Commands for Getting Started](#getting-started) | [Contributing](#contributing)
 
