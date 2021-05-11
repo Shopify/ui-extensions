@@ -57,6 +57,7 @@ export function shouldUseReact(): boolean | 'mini' {
 
 export interface CheckoutExtensionConfig {
   readonly extensionPoints: string[];
+  readonly metafields?: {namespace: string; key: string}[];
 }
 
 export interface CheckoutExtension {

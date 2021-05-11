@@ -189,6 +189,7 @@ export async function dev(...args: string[]) {
                 extension.type === 'checkout'
                   ? extension.config.extensionPoints
                   : ['Checkout::PostPurchase::Render'],
+              metafields: extension.config?.metafields || [],
             },
           ],
         });
