@@ -220,7 +220,7 @@ export async function dev(...args: string[]) {
     // we do not want). This was the only approach I found that works —
     // pass `logLevel`, which is not actually typed as being available, but
     // is used when creating the logger :/
-    ...({logLevel: 'silent'} as any),
+    ...({logLevel: 'error'} as any),
     clientLogLevel: 'silent',
     stats: process.env.DEBUG === undefined ? false : 'verbose',
   });
