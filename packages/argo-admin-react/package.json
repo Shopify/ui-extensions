@@ -16,7 +16,7 @@
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@remote-ui/react": "^4.0.0",
+    "@remote-ui/react": "^4.0.3",
     "@shopify/argo-admin": "^0.11.0-alpha.0"
   },
   "devDependencies": {

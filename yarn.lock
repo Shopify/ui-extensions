@@ -31,7 +31,7 @@
   resolved "https://registry.yarnpkg.com/@babel/compat-data/-/compat-data-7.12.13.tgz#27e19e0ed3726ccf54067ced4109501765e7e2e8"
   integrity sha512-U/hshG5R+SIoW7HVWIdmy1cB7s3ki+r3FpyEZiCgpi4tFgPnX/vynY80ZGSASOIrUM6O7VxOgCZgdt7h97bUGg==
 
-"@babel/core@^7.0.0", "@babel/core@^7.1.0", "@babel/core@^7.12.0", "@babel/core@^7.7.5", "@babel/core@^7.8.0", "@babel/core@^7.9.0":
+"@babel/core@^7.0.0", "@babel/core@^7.1.0", "@babel/core@^7.12.0", "@babel/core@^7.7.5", "@babel/core@^7.8.0":
   version "7.12.13"
   resolved "https://registry.yarnpkg.com/@babel/core/-/core-7.12.13.tgz#b73a87a3a3e7d142a66248bf6ad88b9ceb093425"
   integrity sha512-BQKE9kXkPlXHPeqissfxo0lySWJcYdEP0hdtJOH/iJfDdhOCcgtNCjftCJg3qqauB4h+lz2N6ixM++b9DN1Tcw==
@@ -2161,23 +2161,23 @@
   dependencies:
     "@remote-ui/rpc" "^1.0.17"
 
-"@remote-ui/core@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.0.0.tgz#b8d37e28624b9a575a3fc825d79d15a72fa91e97"
-  integrity sha512-xr8sS7bKmlpsEt/fs2V+q6FE5llIhaNQhKgiCRVWGholD9f3hwjP1ItFyaRXmbk9ed4aDM2J5/FcAU++wcJgaw==
+"@remote-ui/core@^2.0.0", "@remote-ui/core@^2.0.1":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.0.1.tgz#eb429f01a27d1548c0080a9e7ae3fd5d879eeae6"
+  integrity sha512-Rhb40j070KEBBVKK4/wr4G4QcDCt/+IqQ1eLFeW9V3Mgo1bnGERQgGCGVSDI3K7Vs0svKpOGTifA3wGA/MR13A==
   dependencies:
     "@remote-ui/rpc" "^1.0.17"
     "@remote-ui/types" "^1.0.7"
 
-"@remote-ui/react@^4.0.0":
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.0.0.tgz#0ca030716e723a2abb65224af81132a490a6fc0f"
-  integrity sha512-PnG5PauM0fBBtU/ZXyRh8qDzVKE8O35wg4MAwyeYL0Er8Gmk+nfPIvgbZ68Xz2gtLl4f/AyRSQMAyYYog6F6aA==
+"@remote-ui/react@^4.0.0", "@remote-ui/react@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.0.3.tgz#ea32f1ca5a7989b68167b46af2ca5df8edf6b166"
+  integrity sha512-9E6YVYmWngIlMxSyz9D7F8u2VdybUx71lR3ID0Rpjh4920Q4aUJbzbw1kyrEGr5wUgst7tBmqUpBTmGNr6KQ5A==
   dependencies:
     "@remote-ui/async-subscription" "^2.0.0"
-    "@remote-ui/core" "^2.0.0"
+    "@remote-ui/core" "^2.0.1"
     "@remote-ui/rpc" "^1.0.17"
-    "@remote-ui/web-workers" "^1.4.0"
+    "@remote-ui/web-workers" "^1.4.1"
     "@types/react" ">=17.0.0 <18.0.0"
     react-reconciler ">=0.26.0 <1.0.0"
 
@@ -2191,21 +2191,12 @@
   resolved "https://registry.yarnpkg.com/@remote-ui/types/-/types-1.0.7.tgz#c4ac74e230ab5c33ee39a327332a11f84cc3dc8e"
   integrity sha512-Zn+Q2asasiHGN0Gzpyaol48tl24yfWVtWt1fOu4XvgS/iUg97Vj+1VkSrEcRb+burelLAkFXtn4jPcCkW7jikQ==
 
-"@remote-ui/web-workers@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/@remote-ui/web-workers/-/web-workers-1.4.0.tgz#c071e18ca68f4558ed83c20fc0a303fcbd540b7d"
-  integrity sha512-VyE6+9v6tBznRNck2p25K4dFACzX2RHaSsQAgakShlgzMwk4AawLff4Hw4WnNHwRmsfCxWeYJv6tSZNYAyitzQ==
+"@remote-ui/web-workers@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@remote-ui/web-workers/-/web-workers-1.4.1.tgz#b1f95f21a4b0211f2b4725e26c9a8c48dee12598"
+  integrity sha512-TYfGiQsDH7er0dle1abjwDoLdrdn6AI/SwYUCr00nhs3NEoEkmphNwup/GRKRoBuRBkfLJ/16Dcw0S5E/DqJtg==
   dependencies:
     "@remote-ui/rpc" "^1.0.17"
-    "@sewing-kit/plugins" "^0.1.0"
-    "@types/webpack" "^4.41.12"
-    loader-utils "^2.0.0"
-    webpack-virtual-modules "^0.3.0"
-  optionalDependencies:
-    "@babel/core" "^7.9.0"
-    "@sewing-kit/plugin-javascript" "^0.2.0"
-    "@sewing-kit/plugin-webpack" "^0.1.0"
-    webpack "^4.43.0"
 
 "@sewing-kit/cli@^0.2.0":
   version "0.2.0"
@@ -2437,7 +2428,7 @@
     "@sewing-kit/plugin-jest" "^0.1.21"
     "@sewing-kit/plugin-webpack" "^0.1.9"
 
-"@sewing-kit/plugin-webpack@^0.1.0", "@sewing-kit/plugin-webpack@^0.1.9":
+"@sewing-kit/plugin-webpack@^0.1.9":
   version "0.1.9"
   resolved "https://registry.yarnpkg.com/@sewing-kit/plugin-webpack/-/plugin-webpack-0.1.9.tgz#802fa9e0284a69191d67c4f31b511017400e861a"
   integrity sha512-1PLJMzNgM2R7PUdX8iORdNuxS/Z++2ymByO6Ie9q3pRmOB71er95OEGgu7iyD/BD2YOp+nth4Bvt7GVbojucpA==
@@ -2454,7 +2445,7 @@
     webpack "^4.42.1"
     webpack-merge "^4.2.2"
 
-"@sewing-kit/plugins@^0.1.0", "@sewing-kit/plugins@^0.1.6":
+"@sewing-kit/plugins@^0.1.6":
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/@sewing-kit/plugins/-/plugins-0.1.6.tgz#7a4fbd0cb9239e60f85968b51891287cad51e25d"
   integrity sha512-RLfGdchyLu6ZEpTPernAtI/3dUltIZDvYGExxfhRjwNWkKZEmhsRIm6VRSOFwAx/L2BGbHVzh0pYYWmIqSjuag==
@@ -4812,7 +4803,7 @@ debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.9:
   dependencies:
     ms "2.0.0"
 
-debug@3.1.0, debug@^3.0.0, debug@^3.1.0:
+debug@3.1.0, debug@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   integrity sha512-OX8XqP7/1a9cqkxYw2yXss15f26NKWBpDXQd0/uK/KPqdQhxbPa994hnzjcE2VqQpDslf55723cKPUOGSmMY3g==
@@ -8070,15 +8061,6 @@ loader-utils@^1.2.3, loader-utils@^1.4.0:
     big.js "^5.2.2"
     emojis-list "^3.0.0"
     json5 "^1.0.1"
-
-loader-utils@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/loader-utils/-/loader-utils-2.0.0.tgz#e4cace5b816d425a166b5f097e10cd12b36064b0"
-  integrity sha512-rP4F0h2RaWSvPEkD7BLDFQnvSf+nK+wr3ESUjNTyAGobqrijmW92zc+SO6d4p4B1wh7+B/Jg1mkQe5NYUEHtHQ==
-  dependencies:
-    big.js "^5.2.2"
-    emojis-list "^3.0.0"
-    json5 "^2.1.2"
 
 locate-path@^2.0.0:
   version "2.0.0"
@@ -12139,13 +12121,6 @@ webpack-sources@^1.4.0, webpack-sources@^1.4.1, webpack-sources@^1.4.3:
   dependencies:
     source-list-map "^2.0.0"
     source-map "~0.6.1"
-
-webpack-virtual-modules@^0.3.0:
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/webpack-virtual-modules/-/webpack-virtual-modules-0.3.2.tgz#b7baa30971a22d99451f897db053af48ec29ad2c"
-  integrity sha512-RXQXioY6MhzM4CNQwmBwKXYgBs6ulaiQ8bkNQEl2J6Z+V+s7lgl/wGvaI/I0dLnYKB8cKsxQc17QOAVIphPLDw==
-  dependencies:
-    debug "^3.0.0"
 
 "webpack@>=4 <5", webpack@^4.42.1, webpack@^4.43.0:
   version "4.46.0"
