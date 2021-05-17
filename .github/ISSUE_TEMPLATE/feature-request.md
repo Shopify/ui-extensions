@@ -18,7 +18,7 @@ A clear and concise description of what the problem is. Ex. I’m always frustra
 **Describe the changes you are looking for**
 A clear and concise description of what you want to happen.
 
-**Describe alternatives you've considered**
+**Describe alternatives you’ve considered**
 Let us know any alternate approaches you've tried, and what the gaps in functionality are.
 
 **Additional context**
