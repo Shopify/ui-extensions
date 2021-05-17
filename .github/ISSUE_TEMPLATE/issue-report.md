@@ -11,7 +11,7 @@ assignees: ''
 e.g. argo-checkout, argo-checkout-react
 
 **Describe the bug**
-A clear and concise description of what the bug is. Please include specific affected APIs/components if relevant.
+A clear and concise description of what the bug is. Please include specific affected APIs/components, browser version, and operating system if relevant.
 
 **To Reproduce**
 Steps to reproduce the behavior:
