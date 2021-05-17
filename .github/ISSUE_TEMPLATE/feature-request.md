@@ -13,7 +13,7 @@ e.g. argo-checkout, argo-checkout-react
 You can either reference existing APIs & components, or functionality that might require new ones.
 
 **Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+A clear and concise description of what the problem is. Ex. I’m always frustrated when [...]
 
 **Describe the changes you are looking for**
 A clear and concise description of what you want to happen.
