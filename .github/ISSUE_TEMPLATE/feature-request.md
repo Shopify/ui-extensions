@@ -19,7 +19,7 @@ A clear and concise description of what the problem is. Ex. I’m always frustra
 A clear and concise description of what you want to happen.
 
 **Describe alternatives you’ve considered**
-Let us know any alternate approaches you've tried, and what the gaps in functionality are.
+Let us know any alternate approaches you’ve tried, and what the gaps in functionality are.
 
 **Additional context**
 Add any other context or screenshots about the feature request here.
