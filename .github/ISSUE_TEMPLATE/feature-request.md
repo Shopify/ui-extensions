@@ -9,7 +9,7 @@ assignees: ''
 **Please list the related package(s)**
 e.g. argo-checkout, argo-checkout-react
 
-**If this related to specific APIs or components, please list them here**
+**If this is related to specific APIs or components, please list them here**
 You can either reference existing APIs & components, or functionality that might require new ones.
 
 **Is your feature request related to a problem? Please describe.**
