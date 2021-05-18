@@ -33,6 +33,6 @@ export interface LinkProps {
 }
 
 /**
- * Link is used to navigate the buyer to another page.
+ * Link makes text interactive so customers can perform an action, such as navigating to another location.
  */
 export const Link = createRemoteComponent<'Link', LinkProps>('Link');

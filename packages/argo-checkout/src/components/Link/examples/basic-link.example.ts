@@ -6,7 +6,7 @@ extend('Checkout::Feature::Render', (root) => {
     {
       to: 'https://shopify.com',
     },
-    'Link',
+    'Shopify',
   );
 
   root.appendChild(link);

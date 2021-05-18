@@ -24,6 +24,8 @@ export {Heading} from './Heading';
 export type {HeadingProps} from './Heading';
 export {HeadingGroup} from './HeadingGroup';
 export type {HeadingGroupProps} from './HeadingGroup';
+export type {IconProps} from './Icon';
+export {Icon} from './Icon';
 export {Image} from './Image';
 export type {ImageProps} from './Image';
 export {InlineStack} from './InlineStack';
@@ -42,6 +44,8 @@ export {Separator} from './Separator';
 export type {SeparatorProps} from './Separator';
 export {Spinner} from './Spinner';
 export type {SpinnerProps} from './Spinner';
+export {Tag} from './Tag';
+export type {TagProps} from './Tag';
 export {Text} from './Text';
 export type {TextProps} from './Text';
 export {TextBlock} from './TextBlock';
@@ -60,4 +64,5 @@ export type {
   AutocompleteGroup,
   Breakpoint,
   Responsive,
+  CSSShorthand,
 } from './shared';

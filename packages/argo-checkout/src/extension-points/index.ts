@@ -3,8 +3,10 @@ export type {
   Address,
   Attribute,
   CountryCode,
+  Interceptor,
   Extension,
   Merchandise,
+  ProductVariantMerchandise,
   MerchandiseImage,
   MerchandiseOption,
   Money,
@@ -12,6 +14,7 @@ export type {
   StandardApi,
   Storage,
   Version,
+  AppMetafieldEntryTarget,
   Metafield,
   MetafieldRemoveChange,
   MetafieldUpdateChange,
@@ -25,6 +28,7 @@ export type {
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,
+  SignedChange,
 } from './api';
 export type {RenderExtension} from './render-extension';
 export type {

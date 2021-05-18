@@ -41,7 +41,6 @@ export interface BannerProps {
 }
 
 /**
- * A Banner is used to give feedback and is typically displayed at the top of a
- * page or section.
+ * Use banners to communicate important messages to customers in a prominent way.
  */
 export const Banner = createRemoteComponent<'Banner', BannerProps>('Banner');

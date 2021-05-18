@@ -2,7 +2,9 @@ export type {
   Address,
   Attribute,
   Extension,
+  Interceptor,
   Merchandise,
+  ProductVariantMerchandise,
   MerchandiseImage,
   MerchandiseOption,
   Money,
@@ -10,6 +12,7 @@ export type {
   Storage,
   Shop,
   Version,
+  AppMetafieldEntryTarget,
   Metafield,
   MetafieldRemoveChange,
   MetafieldUpdateChange,
@@ -22,5 +25,6 @@ export type {
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,
+  SignedChange,
 } from './standard';
 export type {CurrencyCode, CountryCode} from './shared';
