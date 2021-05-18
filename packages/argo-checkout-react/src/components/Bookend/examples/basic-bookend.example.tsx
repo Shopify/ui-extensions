@@ -4,9 +4,9 @@ render('Checkout::Feature::Render', () => <App />);
 
 function App() {
   return (
-    <Bookend>
+    <Bookend trailing>
       <TextField label="Discount" />
-      <Button>Submit</Button>
+      <Button plain>Apply</Button>
     </Bookend>
   );
 }
