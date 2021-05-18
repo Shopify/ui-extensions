@@ -28,11 +28,11 @@ export async function components(paths: Paths, content: Content) {
   const componentDocsPath = resolve(`${paths.outputRoot}/components`);
 
   if (!fs.existsSync(outputRoot)) {
-    fs.mkdirSync(outputRoot);
+    fs.mkdirSync(outputRoot, {recursive: true});
   }
 
   if (!fs.existsSync(componentDocsPath)) {
-    fs.mkdirSync(componentDocsPath);
+    fs.mkdirSync(componentDocsPath, {recursive: true});
   }
 
   const indexFile = resolve(`${paths.outputRoot}/components/index.md`);

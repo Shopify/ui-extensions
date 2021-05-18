@@ -47,14 +47,9 @@ export async function extensionPoints(paths: Paths) {
     interfaceEntryPoints.includes(name),
   );
 
-  const rootFolder = resolve(paths.outputRoot)
-  if (!fs.existsSync(rootFolder)) {
-    fs.mkdirSync(rootFolder);
-  }
-
   const folder = resolve(`${paths.outputRoot}/extension-points`);
   if (!fs.existsSync(folder)) {
-    fs.mkdirSync(folder);
+    fs.mkdirSync(folder, {recursive: true});
   }
 
   const apiFile = resolve(`${paths.outputRoot}/extension-points/api.md`);
