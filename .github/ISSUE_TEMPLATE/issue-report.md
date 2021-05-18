@@ -1,30 +1,27 @@
 ---
 name: Issue Report
-about: Let us know about an issue you've found
-title: ''
+about: Let us know about an issue you’ve found
 labels: 'bug'
-assignees: ''
-
 ---
 
-**Please list the package(s) involved in the issue**
-e.g. argo-checkout, argo-checkout-react
+<!-- For feature requests, please use the following template: https://github.com/Shopify/argo/issues/new?labels=enhancement&template=feature-request.md -->
 
-**Describe the bug**
-A clear and concise description of what the bug is. Please include specific affected APIs/components, browser version, and operating system if relevant.
+## Please list the package(s) involved in the issue
+<!-- e.g. argo-checkout, argo-admin-react -->
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## Describe the bug
+<!-- A clear and concise description of what the bug is. Please include specific affected APIs/components if relevant. -->
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## Steps to reproduce the behavior:
+1.
+1.
+1.
 
-**Screenshots**
-If applicable, add screenshots or a short video to help explain your problem.
+## Expected behavior
+<!-- A clear and concise description of what you expected to happen. -->
 
-**Additional context**
-Add any other context about the problem here, examples could be the package version, troubleshooting steps you've tried, etc.
+## Screenshots
+<!-- If applicable, add screenshots or a short video to help explain your problem. -->
+
+## Additional context
+<!-- Add any other context about the problem here, examples could be the package version, troubleshooting steps you’ve tried, etc. -->
