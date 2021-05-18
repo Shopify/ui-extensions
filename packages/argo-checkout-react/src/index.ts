@@ -25,6 +25,7 @@ export type {
   FormLayoutGroupProps,
   HeadingProps,
   HeadingGroupProps,
+  IconProps,
   ImageProps,
   InlineSpacerProps,
   InlineStackProps,
