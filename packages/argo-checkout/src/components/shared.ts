@@ -127,3 +127,7 @@ export type AutocompleteField =
 export type Breakpoint = 'base' | 'small' | 'medium' | 'large';
 
 export type Responsive<T> = {[key in Breakpoint]?: T};
+export type CSSShorthand<CSSValue> =
+  | CSSValue
+  | [CSSValue, CSSValue]
+  | [CSSValue, CSSValue, CSSValue, CSSValue];

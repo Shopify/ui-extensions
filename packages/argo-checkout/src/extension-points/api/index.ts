@@ -2,7 +2,9 @@ export type {
   Address,
   Attribute,
   Extension,
+  Interceptor,
   Merchandise,
+  ProductVariantMerchandise,
   MerchandiseImage,
   MerchandiseOption,
   Money,
@@ -17,10 +19,13 @@ export type {
   MetafieldChangeResultError,
   MetafieldChangeResultSuccess,
   MetafieldChangeResult,
+  AppMetafieldEntryTarget,
+  AppMetafieldEntry,
   LineItem,
   LineItemChange,
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,
+  SignedChange,
 } from './standard';
 export type {CurrencyCode, CountryCode} from './shared';

@@ -10,6 +10,7 @@ export type {
   ArgumentsForExtension,
   ApiForRenderExtension,
   CountryCode,
+  Interceptor,
   ReturnTypeForExtension,
   StandardApi,
   Storage,
@@ -22,8 +23,11 @@ export type {
   MetafieldChangeResultError,
   MetafieldChangeResultSuccess,
   MetafieldChangeResult,
+  AppMetafieldEntryTarget,
+  AppMetafieldEntry,
   Attribute,
   Merchandise,
+  ProductVariantMerchandise,
   MerchandiseImage,
   MerchandiseOption,
   Money,
@@ -32,6 +36,7 @@ export type {
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,
+  SignedChange,
 } from './extension-points';
 
 export * from './components';
@@ -50,6 +55,7 @@ export type {
   FormLayoutGroupProps,
   HeadingProps,
   HeadingGroupProps,
+  IconProps,
   ImageProps,
   InlineSpacerProps,
   InlineStackProps,
@@ -60,6 +66,7 @@ export type {
   SelectProps,
   SeparatorProps,
   SpinnerProps,
+  TagProps,
   TextProps,
   TextBlockProps,
   TextContainerProps,

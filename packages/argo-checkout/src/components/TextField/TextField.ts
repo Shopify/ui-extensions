@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 import {Autocomplete} from '../shared';
+import {IconSource} from '../Icon';
 
 type Type = 'text' | 'email' | 'number' | 'telephone';
 
@@ -10,6 +11,10 @@ export interface TextFieldProps {
    * a globally unique value will be used instead.
    */
   id?: string;
+  /**
+   * An icon to render at the start of the field.
+   */
+  icon?: IconSource;
   /**
    * An identifier for the field that is unique within the nearest
    * containing `<Form />` component.

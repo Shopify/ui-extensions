@@ -3,8 +3,10 @@ export type {
   Address,
   Attribute,
   CountryCode,
+  Interceptor,
   Extension,
   Merchandise,
+  ProductVariantMerchandise,
   MerchandiseImage,
   MerchandiseOption,
   Money,
@@ -19,12 +21,15 @@ export type {
   MetafieldChangeResultError,
   MetafieldChangeResultSuccess,
   MetafieldChangeResult,
+  AppMetafieldEntryTarget,
+  AppMetafieldEntry,
   CurrencyCode,
   LineItem,
   LineItemChange,
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,
+  SignedChange,
 } from './api';
 export type {RenderExtension} from './render-extension';
 export type {

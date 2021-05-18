@@ -159,7 +159,30 @@ export type MetafieldChangeResult =
   | MetafieldChangeResultSuccess
   | MetafieldChangeResultError;
 
+/**
+ * The metafield owner.
+ */
+export interface AppMetafieldEntryTarget {
+  /** The type of the metafield owner. */
+  type: 'product' | 'shop' | 'variant';
+
+  /** The numeric owner ID that is associated with the metafield. */
+  id: string;
+}
+
+/**
+ * A metafield associated with the shop or a resource on the checkout.
+ */
+export interface AppMetafieldEntry {
+  /** The target that is associated to the metadata. */
+  target: AppMetafieldEntryTarget;
+
+  /** The metadata information. */
+  metafield: Metafield;
+}
+
 export type Version = 'unstable';
+
 /**
  * The following APIs are provided to all extension points.
  */
@@ -190,13 +213,35 @@ export interface StandardApi<
   locale: StatefulRemoteSubscribable<string>;
 
   /**
+   * The minimum a buyer can expect to pay at the current step of checkout.
+   * This value excludes amounts yet to be negotiated. For example, the information step
+   * may not have delivery costs calculated.
+   */
+  runningTotal: StatefulRemoteSubscribable<Money | undefined>;
+
+  /**
+   * Provides details on buyer progression through the steps of the checkout.
+   */
+  buyerJourney: {
+    /**
+     * Function for intercepting and preventing navigation on checkout. You can block
+     * navigation by returning an object with `{behavior: 'block'}`. If you do, you are
+     * expected to also update some part of your UI to reflect the reason why navigation
+     * was blocked.
+     */
+    intercept(interceptor: Interceptor): Promise<() => void>;
+  };
+
+  /**
    * The proposed billing address is what the buyer has input in the billing
    * address form of the payment page. The address will update once the field is
    * committed (on change) rather than every keystroke. This form value always be
    * available in the API and is distinct from shipping address, even when the buyer
-   * selects the "same as shipping" option.
+   * selects the "same as shipping" option. Billing address will not be collected if
+   * the buyer doesn't specify a direct payment line; in this case, this subscribable
+   * value will be undefined.
    */
-  billingAddress: StatefulRemoteSubscribable<Address>;
+  billingAddress: StatefulRemoteSubscribable<Address | undefined>;
 
   /**
    * The identifier of the running extension point.
@@ -210,6 +255,13 @@ export interface StandardApi<
   extension: Extension;
 
   /**
+   * The primaryAddress field is a shortcut to the first address a buyer fills out in checkout, if any.
+   * When an checkout requires shipping, this field is identical to the shippingAddress field.
+   * When a checkout does not require shipping, this field is identical to the billingAddress field.
+   */
+  primaryAddress: StatefulRemoteSubscribable<Address | undefined>;
+
+  /**
    * Key / value storage for this extension point.
    */
   storage: Storage;
@@ -217,12 +269,23 @@ export interface StandardApi<
   /**
    * Proposed buyer shipping address. During the information step, the address
    * will update once the field is committed (on change) rather than every keystroke.
-   * Where the shipping address is not required, fields will return undefined.
+   * An address value is only present if delivery is required. Otherwise, the
+   * subscribable value will be undefined.
    */
-  shippingAddress: StatefulRemoteSubscribable<Address>;
+  shippingAddress: StatefulRemoteSubscribable<Address | undefined>;
 
   /** Shop where the checkout is taking place. */
   shop: Shop;
+
+  /**
+   * A note left by the buyer to the merchant either in their cart or during checkout.
+   */
+  note: StatefulRemoteSubscribable<string | undefined>;
+
+  /**
+   * Custom attributes left by the buyer to the merchant either in their cart or during checkout.
+   */
+  customAttributes: StatefulRemoteSubscribable<Attribute[] | undefined>;
 
   /**
    * The metafields that apply to the current checkout. The actual resource
@@ -282,7 +345,28 @@ export interface StandardApi<
    * Merchandise items the buyer is purchasing.
    */
   lineItems: StatefulRemoteSubscribable<LineItem[]>;
+  /**
+   * Performs an update on the merchandise line items. It resolves once the new
+   * line items have been negotiated and will result in an update to the value
+   * retrieved through the `lineItems` property.
+   */
   applyLineItemsChange(change: LineItemChange): Promise<LineItemChangeResult>;
+  /**
+   * Performs a signed update on the checkout. It resolves once the new
+   * checkout has been negotiated and will result in an update to be data being updated.
+   */
+  applySignedChange(change: SignedChange): Promise<SignedChangeResult>;
+
+  /**
+   * The metafields requested in your extension.config.yml. These metafields will
+   * be updated when there is a change in the merchandise items being purchased by the buyer.
+   *
+   * NOTE: There will be a delay between the merchandise items updating and receiving the
+   * updated metafields values. This is a temporary limitation and should get resolved when
+   * this API goes public such that expected behaviour would be that the metafields data
+   * are synchronous with the merchandise items updates.
+   */
+  appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 }
 
 export interface Shop {
@@ -299,6 +383,10 @@ export interface Shop {
    * The primary storefront url.
    */
   storefrontUrl?: string;
+  /**
+   * The shop's myshopify.com domain.
+   */
+  myshopifyDomain: string;
 }
 
 export interface Address {
@@ -322,9 +410,10 @@ export interface GeographicalCoordinates {
 
 export interface LineItem {
   /**
-   * Line Item id.
-   * These line item IDs are not stable at the moment, they might change after any operations on the line items. You should always
-   * look up for an updated ID before any call to `applyLineItemsChange` because you'll need the ID to create a `LineItemChange` object.
+   * These line item IDs are not stable at the moment, they might change after
+   * any operations on the line items. You should always look up for an updated
+   * ID before any call to `applyLineItemsChange` or `applySignedChange`
+   * because you'll need the ID to create a `LineItemChange` object.
    * @example 'gid://shopify/MerchandiseLineItem/123'
    */
   id: string;
@@ -358,12 +447,18 @@ export interface Money {
   currencyCode: CurrencyCode;
 }
 
-export interface Merchandise {
+export type Merchandise = ProductVariantMerchandise;
+
+export interface BaseMerchandise {
   /**
    * Merchandise id.
    * @example 'gid://shopify/ProductVariantMerchandise/123'
    */
   id: string;
+}
+
+export interface ProductVariantMerchandise extends BaseMerchandise {
+  type: 'variant';
   /**
    * Merchandise title.
    */
@@ -495,4 +590,50 @@ export interface LineItemUpdateChange {
    * New attributes for the line item.
    */
   customAttributes?: Attribute[];
+}
+
+export interface SignedChangeResultSuccess {
+  type: 'success';
+}
+
+export interface SignedChangeResultError {
+  type: 'error';
+
+  /**
+   * A message that explains the error. This message is useful for debugging.
+   * It is **not** localized, and therefore should not be presented directly
+   * to the buyer.
+   */
+  message: string;
+}
+
+export type SignedChangeResult =
+  | SignedChangeResultSuccess
+  | SignedChangeResultError;
+
+/**
+ * Signed token allowing to update data in the checkout
+ */
+export type SignedChange = string;
+
+type InterceptorBehavior = 'allow' | 'block';
+
+interface InterceptorResult {
+  behavior: InterceptorBehavior;
+}
+
+export interface InterceptorRequest {
+  behavior: InterceptorBehavior;
+
+  /**
+   * This callback is called once all interceptors finish. It is recommended
+   * to set errors or reason for blocking at this stage so that all errors in
+   * the UI show up at once.
+   * @param result InterceptorResult with behavior as either 'allow' or 'block'
+   */
+  perform?(result: InterceptorResult): void;
+}
+
+export interface Interceptor {
+  (): InterceptorRequest | Promise<InterceptorRequest>;
 }

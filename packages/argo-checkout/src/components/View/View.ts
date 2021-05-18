@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Responsive} from '../shared';
+import {Responsive, CSSShorthand} from '../shared';
 
 type Background =
   | 'surfacePrimary'
@@ -45,13 +45,7 @@ export interface ViewProps {
    * - [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`
    * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
    */
-  padding?:
-    | Spacing
-    | [Spacing, Spacing]
-    | [Spacing, Spacing, Spacing, Spacing]
-    | Responsive<
-        Spacing | [Spacing, Spacing] | [Spacing, Spacing, Spacing, Spacing]
-      >;
+  padding?: CSSShorthand<Spacing> | Responsive<CSSShorthand<Spacing>>;
 
   /**
    * Adjust the background.
@@ -68,15 +62,7 @@ export interface ViewProps {
    * - [`base`, `none`] means blockStart and blockEnd border styles are `base`, inlineStart and inlineEnd border styles are `none`
    * - [`base`, `none`, `dotted`, `base`] means blockStart border style is `base`, inlineEnd border style is `none`, blockEnd border style is `dotted` and  blockStart border style is `base`
    */
-  border?:
-    | BorderStyle
-    | [BorderStyle, BorderStyle]
-    | [BorderStyle, BorderStyle, BorderStyle, BorderStyle]
-    | Responsive<
-        | BorderStyle
-        | [BorderStyle, BorderStyle]
-        | [BorderStyle, BorderStyle, BorderStyle, BorderStyle]
-      >;
+  border?: CSSShorthand<BorderStyle> | Responsive<CSSShorthand<BorderStyle>>;
 
   /**
    * Adjust the border width.
@@ -89,14 +75,8 @@ export interface ViewProps {
    * - [`base`, `thick`, `thick`, `base`] means blockStart border width is `base`, inlineEnd border width is `thick`, blockEnd border width is `thick` and  blockStart border width is `base`
    */
   borderWidth?:
-    | BorderWidth
-    | [BorderWidth, BorderWidth]
-    | [BorderWidth, BorderWidth, BorderWidth, BorderWidth]
-    | Responsive<
-        | BorderWidth
-        | [BorderWidth, BorderWidth]
-        | [BorderWidth, BorderWidth, BorderWidth, BorderWidth]
-      >;
+    | CSSShorthand<BorderWidth>
+    | Responsive<CSSShorthand<BorderWidth>>;
 
   /**
    * Adjust the border color.
@@ -114,14 +94,8 @@ export interface ViewProps {
    * - [`base`, `none`, `tight`, `base`] means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`
    */
   borderRadius?:
-    | BorderRadius
-    | [BorderRadius, BorderRadius]
-    | [BorderRadius, BorderRadius, BorderRadius, BorderRadius]
-    | Responsive<
-        | BorderRadius
-        | [BorderRadius, BorderRadius]
-        | [BorderRadius, BorderRadius, BorderRadius, BorderRadius]
-      >;
+    | CSSShorthand<BorderRadius>
+    | Responsive<CSSShorthand<BorderRadius>>;
 
   /**
    * Changes the visibility of the element.

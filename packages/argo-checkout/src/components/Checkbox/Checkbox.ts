@@ -55,11 +55,7 @@ export interface CheckboxProps {
 }
 
 /**
- * Checkboxes are used to give buyers a binary option. They are commonly used to
- * present terms and conditions.
- *
- * Unlike most field components, any children passed to this component will be used
- * as the label for the checkbox.
+ * Use checkboxes to give customers a single binary option, such as signing up for marketing, or agreeing to terms and conditions.
  */
 export const Checkbox = createRemoteComponent<'Checkbox', CheckboxProps>(
   'Checkbox',

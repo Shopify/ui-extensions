@@ -1,11 +1,13 @@
-import {extend, InlineSpacer, View} from '@shopify/argo-checkout';
+import {extend, InlineSpacer, InlineStack, View} from '@shopify/argo-checkout';
 
 extend('Checkout::Feature::Render', (root) => {
-  const inlineStack = root.createComponent(View, undefined, [
-    root.createComponent(View, undefined, 'View'),
-    root.createComponent(InlineSpacer),
-    root.createComponent(View, undefined, 'View'),
+  const inlineSpacer = root.createComponent(InlineStack, undefined, [
+    root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
+    root.createComponent(InlineSpacer, {size: 'large'}),
+    root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
+    root.createComponent(InlineSpacer, {size: 'small'}),
+    root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
   ]);
 
-  root.appendChild(inlineStack);
+  root.appendChild(inlineSpacer);
 });

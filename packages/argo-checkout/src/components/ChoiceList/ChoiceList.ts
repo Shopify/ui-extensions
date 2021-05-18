@@ -52,11 +52,7 @@ export const ChoiceList = createRemoteComponent<
 >('ChoiceList');
 
 /**
- * Use choices to represent a single choice in a choice list. If a buyer has
- * only a single, boolean choice, use a checkbox instead.
- *
- * Unlike most field components, any children passed to this component will
- * be used as the label for the choice.
+ * Use choice lists to create a group of related options for customers to choose from. A choice list can be made up of radio buttons or checkboxes.
  */
 
 export const Choice = createRemoteComponent<'Choice', ChoiceProps>('Choice');

@@ -19,7 +19,7 @@ To use the React bindings in Argo for Checkout, start by importing `React` as yo
 You’ll then import `render` from `@shopify/argo-checkout-react`. This function is a [thing wrapper](./src/render.ts) around [`shopify.extend`](../argo-checkout/documentation/globals.md) and [`@remote-ui/react`’s `render()`](https://github.com/Shopify/remote-ui/tree/main/packages/react#render). You’ll pass this function the name of an extension that can render UI, and a function that should return the JSX to render when that extension point is run. This function receives the input argument for the extension point.
 
 ```tsx
-import {render} from '@shopify/argo-checkout';
+import {render} from '@shopify/argo-checkout-react';
 
 // `extensionPoint` is part of the [standard API](../argo-checkout/src/extension-points/api/standard)
 render('Checkout::PostPurchase::Render', ({extensionPoint}) => (
@@ -38,7 +38,7 @@ function App({extensionPoint}: Props) {
 If you’ve ever used React on the web, you’re probably used to returning DOM nodes as part of your React components. Because Argo extensions execute in a web worker and have no access to the DOM, returning DOM components is an error in Argo extensions. Instead, you can return the components you import from `@shopify/argo-checkout-react`, which are the equivalent of the DOM in Argo — they are the “leaf” elements, the lowest-level UI primitives that exist.
 
 ```tsx
-import {render, Button} from '@shopify/argo-checkout';
+import {render, Button} from '@shopify/argo-checkout-react';
 
 render('Checkout::PostPurchase::Render', (props) => <App {...props} />);
 
@@ -68,7 +68,7 @@ function App({extensionPoint}: Props) {
 If you are using TypeScript, you can supply the name of the extension point as a type parameter to this function. Doing so will refine the return type to be exactly the input type for that extension point, so make sure you pass the name of the extension you are actually rendering.
 
 ```tsx
-import {render, useExtensionApi, Button} from '@shopify/argo-checkout';
+import {render, useExtensionApi, Button} from '@shopify/argo-checkout-react';
 
 render('Checkout::PostPurchase::Render', () => <App />);
 
