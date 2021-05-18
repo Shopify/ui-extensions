@@ -66,6 +66,8 @@ export async function components(paths: Paths, content: Content) {
     });
     markdown += docsContent ? `${docsContent}\n\n` : '';
 
+    markdown += renderExampleImageFor(name, paths.shopifyDevAssets);
+
     const examples = renderComponentExamplesFor(name, paths.packages);
     if (examples.length > 0) {
       markdown += examples;
@@ -180,6 +182,16 @@ function renderComponentExamplesFor(name: string, packages: Packages): string {
   }
 
   return markdown;
+}
+
+function renderExampleImageFor(componentName: string, shopifyDevAssetsUrl: string) {
+  const filename = componentName.toLowerCase();
+  const image = resolve(`${shopifyDevAssetsUrl}/components/${filename}.png`);
+  if (fs.existsSync(image)) {
+    return `<img src="/assets/api/checkout-extensions/components/${filename}.png" width="50%" alt="${filename}" align="center" />`;
+  }
+
+  return '';
 }
 
 function getAdditionalContentFor(contentFolder: string) {
