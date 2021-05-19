@@ -35,4 +35,4 @@ Which package you explore depends on the extension you are building.
 
 ## Contributing
 
-Check out our [contribution guidelines](/contributing.md).
+Check out our [contribution guidelines](/CONTRIBUTING.md).
