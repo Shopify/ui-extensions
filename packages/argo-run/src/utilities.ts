@@ -10,11 +10,11 @@ import {safeLoad as loadYaml} from 'js-yaml';
 // Could bring in a CLI arg library, but this is fun practice :)
 export function namedArgument(
   name: string,
-  args: string[],
+  args: readonly string[],
 ): string | undefined {
   const flag = `--${name}`;
 
-  const reversedInterestingIndex = args
+  const reversedInterestingIndex = [...args]
     .reverse()
     .findIndex((value) => value.startsWith(flag));
 

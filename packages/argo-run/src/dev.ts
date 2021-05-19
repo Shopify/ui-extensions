@@ -26,8 +26,13 @@ export async function dev(...args: string[]) {
     namedArgument('port', args) ?? (await getPort({port: 8910})),
   );
   const url = `http://localhost:${port}`;
+  const publicUrl = namedArgument('publicUrl', args);
+  const tunnelStarted = Boolean(publicUrl);
   const filename = 'extension.js';
-  const localhostScriptUrl = `${url}${PUBLIC_PATH}${filename}`;
+  const scriptUrl = new URL(
+    `${PUBLIC_PATH}${filename}`,
+    publicUrl || url,
+  ).toString();
 
   const compiler = webpack(
     createWebpackConfiguration({
@@ -200,7 +205,7 @@ export async function dev(...args: string[]) {
       // https://github.com/Shopify/post-purchase-devtools/blob/master/src/background/background.ts#L16-L35
       app.get(LEGACY_POST_PURCHASE_DATA_PATH, (_, res) => {
         res.set('Access-Control-Allow-Origin', '*');
-        res.json(getLegacyPostPurchaseData(localhostScriptUrl, extension));
+        res.json(getLegacyPostPurchaseData(scriptUrl, extension));
       });
     },
 
@@ -226,7 +231,7 @@ export async function dev(...args: string[]) {
     stats: process.env.DEBUG === undefined ? false : 'verbose',
   });
 
-  log(`Starting dev server on ${url}`);
+  log(`Starting dev server on port ${port}`);
 
   const httpListenPromise = new Promise<void>((resolve, reject) => {
     server.listen(port, '0.0.0.0', (error) => {
@@ -240,18 +245,24 @@ export async function dev(...args: string[]) {
 
   await Promise.all([firstCompilePromise, httpListenPromise]);
 
-  log(`Your extension is available at ${localhostScriptUrl}`);
+  log(`Your extension is available at ${scriptUrl}`);
 
-  if (extension.type === 'post-purchase') {
+  const isPostPurchaseExtension = extension.type === 'post-purchase';
+  if (isPostPurchaseExtension) {
     log(
       `You can append this query string: ${convertLegacyPostPurchaseDataToQueryString(
-        getLegacyPostPurchaseData(localhostScriptUrl, extension),
+        getLegacyPostPurchaseData(scriptUrl, extension),
       )}`,
     );
-  } else {
-    log(`Next, run \`shopify tunnel start --port=${port}\` in a new terminal.`);
+  } else if (tunnelStarted) {
+    log(`Next, you’ll need to create a checkout on your development shop and`);
     log(
-      `You’ll then need to create a checkout on your development shop, and append this query string to the first page of checkout,`,
+      `append this query string to the first page of checkout: \`?dev=${publicUrl}/query\``,
+    );
+  } else {
+    log(`next, run \`shopify tunnel start --port=${port}\` in a new terminal.`);
+    log(
+      `you’ll then need to create a checkout on your development shop, and append this query string to the first page of checkout,`,
     );
     log(
       `replacing TUNNEL_URL with your own ngrok URL: \`?dev=https://TUNNEL_URL/query\``,
@@ -263,7 +274,7 @@ export async function dev(...args: string[]) {
   if (openUrl) {
     const extensionPoint = namedArgument('extension-point', args);
 
-    openUrl.searchParams.set('extension', JSON.stringify(localhostScriptUrl));
+    openUrl.searchParams.set('extension', JSON.stringify(scriptUrl));
 
     if (extensionPoint) {
       openUrl.searchParams.set('extension-point', extensionPoint);
