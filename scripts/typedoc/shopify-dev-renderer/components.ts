@@ -66,6 +66,8 @@ export async function components(paths: Paths, content: Content) {
     });
     markdown += docsContent ? `${docsContent}\n\n` : '';
 
+    markdown += renderExampleImageFor(name, paths.shopifyDevAssets);
+
     const examples = renderComponentExamplesFor(name, paths.packages);
     if (examples.length > 0) {
       markdown += examples;
@@ -95,7 +97,7 @@ export async function components(paths: Paths, content: Content) {
     const contentFolder = resolve(
       `${paths.inputRoot}/src/components/${name}/content`,
     );
-    markdown += getAdditionalContentFor(contentFolder);
+    markdown += '\n\n' + getAdditionalContentFor(contentFolder);
 
     fs.writeFile(outputFile, markdown, function (err) {
       if (err) throw err;
@@ -180,6 +182,16 @@ function renderComponentExamplesFor(name: string, packages: Packages): string {
   }
 
   return markdown;
+}
+
+function renderExampleImageFor(componentName: string, shopifyDevAssetsUrl: string) {
+  const filename = componentName.toLowerCase();
+  const image = resolve(`${shopifyDevAssetsUrl}/components/${filename}.png`);
+  if (fs.existsSync(image)) {
+    return `![${filename}](/assets/api/checkout-extensions/components/${filename}.png)`;
+  }
+
+  return '';
 }
 
 function getAdditionalContentFor(contentFolder: string) {

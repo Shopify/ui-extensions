@@ -8,6 +8,7 @@ const paths = {
   },
   outputRoot: '../shopify-dev/content/beta/checkout-extensions',
   shopifyDevUrl: '/beta/checkout-extensions',
+  shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
 };
 
 const componentsPageContent = {
