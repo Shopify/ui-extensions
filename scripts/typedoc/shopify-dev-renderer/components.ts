@@ -97,7 +97,7 @@ export async function components(paths: Paths, content: Content) {
     const contentFolder = resolve(
       `${paths.inputRoot}/src/components/${name}/content`,
     );
-    markdown += getAdditionalContentFor(contentFolder);
+    markdown += '\n\n' + getAdditionalContentFor(contentFolder);
 
     fs.writeFile(outputFile, markdown, function (err) {
       if (err) throw err;
@@ -188,7 +188,7 @@ function renderExampleImageFor(componentName: string, shopifyDevAssetsUrl: strin
   const filename = componentName.toLowerCase();
   const image = resolve(`${shopifyDevAssetsUrl}/components/${filename}.png`);
   if (fs.existsSync(image)) {
-    return `<img src="/assets/api/checkout-extensions/components/${filename}.png" width="50%" alt="${filename}" align="center" />`;
+    return `![${filename}](/assets/api/checkout-extensions/components/${filename}.png)`;
   }
 
   return '';
