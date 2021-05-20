@@ -1,6 +1,6 @@
 {
   "name": "@shopify/argo-run",
-  "version": "0.4.0-alpha.0",
+  "version": "0.4.0-alpha.1",
   "description": "A command line interface for developing and building Argo extensions",
   "publishConfig": {
     "access": "public",
