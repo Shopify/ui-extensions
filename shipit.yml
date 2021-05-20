@@ -10,7 +10,7 @@ deploy:
   pre:
     - yarn run build
   override:
-    - yarn run deploy --dist-tag=%{NPM_DIST_TAG}
+    - yarn run deploy --dist-tag=$NPM_DIST_TAG
   variables:
     - name: NPM_DIST_TAG
       title: Select the dist tag for npm, defaults to "latest"
