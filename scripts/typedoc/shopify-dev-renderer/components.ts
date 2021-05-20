@@ -53,7 +53,7 @@ export async function components(paths: Paths, content: Content, options?: Optio
   index += '<ul style="column-count: auto;column-width: 12rem;">';
 
   components.forEach(({value: {name, docs, props}}: any) => {
-    if (options.componentsToSkip.includes(name)) return;
+    if (options?.componentsToSkip?.includes(name)) return;
 
     const filename = name.toLowerCase();
     const outputFile = `${componentDocsPath}/${filename}.md`;
@@ -106,7 +106,7 @@ export async function components(paths: Paths, content: Content, options?: Optio
     const additionalPropsTablesMd = dedupe(additionalPropsTables).reverse().join('');
     markdown += additionalPropsTablesMd;
 
-    if (Object.keys(options.subcomponentMap).includes(name)) {
+    if (options && options.subcomponentMap && Object.keys(options.subcomponentMap).includes(name)) {
       const subcomponentsMd = options.subcomponentMap[name].map((subcomponent) => {
         const {value: {name: subName, docs: subDocs, props: subProps}} = components.find(({value}: any) => value.name === subcomponent) as any;
 
@@ -150,7 +150,7 @@ export async function components(paths: Paths, content: Content, options?: Optio
       if (err) throw err;
     });
 
-    if (options.generateReadmes === true) {
+    if (options?.generateReadmes === true) {
       const readmeFile = resolve(`${paths.inputRoot}/src/components/${name}/README.md`);
       const title = `# ${name}\n\n`;
       let readmeMarkdown = title + docsContentMd + propsTableMd + additionalPropsTablesMd;
