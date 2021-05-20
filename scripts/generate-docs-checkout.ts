@@ -1,10 +1,10 @@
 import {extensionPoints, components, gettingStarted} from './typedoc/shopify-dev-renderer';
 
 const paths = {
-  inputRoot: '../checkout-web/packages/argo-checkout',
+  inputRoot: './packages/argo-checkout',
   packages: {
-    JS: '../checkout-web/packages/argo-checkout',
-    React: '../checkout-web/packages/argo-checkout-react',
+    JS: './packages/argo-checkout',
+    React: './packages/argo-checkout-react',
   },
   outputRoot: '../shopify-dev/content/beta/checkout-extensions',
   shopifyDevUrl: '/beta/checkout-extensions',
@@ -26,5 +26,9 @@ const componentsPageContent = {
 }
 
 extensionPoints(paths);
-components(paths, componentsPageContent);
+components(paths, componentsPageContent, {
+  subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
+  componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
+  generateReadmes: true
+});
 gettingStarted(paths);
