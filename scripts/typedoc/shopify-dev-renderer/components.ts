@@ -11,15 +11,19 @@ import {createDependencyGraph} from '../utilities/dependency-graph';
 import {renderYamlFrontMatter, findUuid, dedupe, propsTable, strip, firstSentence} from './shared';
 import type {Node} from './shared';
 
-const additionalPropsTables: string[] = [];
-
 interface Content {
   title: string;
   frontMatterDescription: string;
   description: string;
 }
 
-export async function components(paths: Paths, content: Content) {
+interface Options {
+  subcomponentMap?: {[rootComponent: string]: string[]};
+  componentsToSkip?: string[];
+  generateReadmes?: boolean;
+}
+
+export async function components(paths: Paths, content: Content, options?: Options) {
   const {title, frontMatterDescription, description} = content;
   const componentIndex = resolve(`${paths.inputRoot}/src/components/index.ts`);
   const {nodes, components} = await buildComponentGraph(componentIndex);
@@ -49,13 +53,16 @@ export async function components(paths: Paths, content: Content) {
   index += '<ul style="column-count: auto;column-width: 12rem;">';
 
   components.forEach(({value: {name, docs, props}}: any) => {
-    const outputFile = `${componentDocsPath}/${name.toLowerCase()}.md`;
+    if (options.componentsToSkip.includes(name)) return;
+
+    const filename = name.toLowerCase();
+    const outputFile = `${componentDocsPath}/${filename}.md`;
 
     const docsContent = docs ? strip(docs.content).trim() : '';
 
     const componentUrl = `${
       paths.shopifyDevUrl
-    }/components/${name.toLowerCase()}`;
+    }/components/${filename}`;
 
     let markdown = renderYamlFrontMatter({
       gid: findUuid(outputFile),
@@ -64,7 +71,8 @@ export async function components(paths: Paths, content: Content) {
       description: `"${firstSentence(docsContent)}"`,
       hidden: true,
     });
-    markdown += docsContent ? `${docsContent}\n\n` : '';
+    const docsContentMd = docsContent ? `${docsContent}\n\n` : '';
+    markdown += docsContentMd;
 
     markdown += renderExampleImageFor(name, paths.shopifyDevAssets);
 
@@ -73,14 +81,16 @@ export async function components(paths: Paths, content: Content) {
       markdown += examples;
     }
 
+    const additionalPropsTables: string[] = [];
+    let propsTableMd = '';
     const face = nodes.find(({value}: any) => value.name === props.name);
     if (
       face &&
       face.value.kind === 'InterfaceType' &&
       face.value.properties.length > 0
     ) {
-      markdown += '## Props\noptional = ?\n';
-      markdown += propsTable(
+      propsTableMd += '## Props\noptional = ?\n';
+      propsTableMd += propsTable(
         name,
         docs,
         face.value.properties,
@@ -91,19 +101,65 @@ export async function components(paths: Paths, content: Content) {
         undefined,
       );
     }
+    markdown += propsTableMd;
 
-    markdown += dedupe(additionalPropsTables).reverse().join('');
+    const additionalPropsTablesMd = dedupe(additionalPropsTables).reverse().join('');
+    markdown += additionalPropsTablesMd;
+
+    if (Object.keys(options.subcomponentMap).includes(name)) {
+      const subcomponentsMd = options.subcomponentMap[name].map((subcomponent) => {
+        const {value: {name: subName, docs: subDocs, props: subProps}} = components.find(({value}: any) => value.name === subcomponent) as any;
+
+        const subTitle = `## ${subName}\n\n`
+        const subDocsContent = subDocs ? strip(subDocs.content).trim() : '';
+        const subDocsContentMd = subDocsContent ? `${subDocsContent}\n\n` : '';
+        const subAdditionalPropsTables: string[] = [];
+        let subPropsTableMd = '';
+        const subFace = nodes.find(({value}: any) => value.name === subProps.name);
+        if (
+          subFace &&
+          subFace.value.kind === 'InterfaceType' &&
+          subFace.value.properties.length > 0
+        ) {
+          subPropsTableMd += '### Props\noptional = ?\n';
+          subPropsTableMd += propsTable(
+            subName,
+            subDocs,
+            subFace.value.properties,
+            nodes,
+            componentIndex,
+            subAdditionalPropsTables,
+            false,
+            undefined,
+          );
+        }
+
+        return subTitle + subDocsContentMd + subPropsTableMd + subAdditionalPropsTables;
+      }).join('\n\n');
+
+      markdown += '\n\n' + subcomponentsMd;
+    }
 
     const contentFolder = resolve(
       `${paths.inputRoot}/src/components/${name}/content`,
     );
-    markdown += '\n\n' + getAdditionalContentFor(contentFolder);
+    const additionalContent = '\n\n' + getAdditionalContentFor(contentFolder, paths.shopifyDevUrl);
+    markdown += additionalContent;
 
     fs.writeFile(outputFile, markdown, function (err) {
       if (err) throw err;
     });
 
-    additionalPropsTables.length = 0;
+    if (options.generateReadmes === true) {
+      const readmeFile = resolve(`${paths.inputRoot}/src/components/${name}/README.md`);
+      const title = `# ${name}\n\n`;
+      let readmeMarkdown = title + docsContentMd + propsTableMd + additionalPropsTablesMd;
+
+      fs.writeFile(readmeFile, readmeMarkdown, function (err) {
+        if (err) throw err;
+      });
+    }
+
     index += `<li><a href="${componentUrl}">${name}</a></li>`;
   });
 
@@ -194,7 +250,7 @@ function renderExampleImageFor(componentName: string, shopifyDevAssetsUrl: strin
   return '';
 }
 
-function getAdditionalContentFor(contentFolder: string) {
+function getAdditionalContentFor(contentFolder: string, shopifyDevUrl: string) {
   let markdown = '';
 
   if (fs.existsSync(contentFolder)) {
@@ -202,6 +258,9 @@ function getAdditionalContentFor(contentFolder: string) {
       markdown += fs.readFileSync(`${contentFolder}/${file}`, 'utf8');
     });
   }
+
+  markdown = markdown.replace(/https:\/\/github\.com\/Shopify\/argo\/tree\/main\/packages\/argo-checkout\/src\/components\/(\w+)/g, (_match, p1) => `${shopifyDevUrl}/components/${p1}`.toLowerCase());
+  markdown = markdown.replace(/https:\/\/github\.com\/Shopify\/checkout-web\/tree\/master\/packages\/argo-checkout\/src\/components\/(\w+)/g, (_match, p1) => `${shopifyDevUrl}/components/${p1}`.toLowerCase());
 
   return markdown;
 }
