@@ -244,7 +244,7 @@ function renderExampleImageFor(componentName: string, shopifyDevAssetsUrl: strin
   const filename = componentName.toLowerCase();
   const image = resolve(`${shopifyDevAssetsUrl}/components/${filename}.png`);
   if (fs.existsSync(image)) {
-    return `![${filename}](/assets/api/checkout-extensions/components/${filename}.png)`;
+    return `---\n### Example\n![${filename}](/assets/api/checkout-extensions/components/${filename}.png)`;
   }
 
   return '';
