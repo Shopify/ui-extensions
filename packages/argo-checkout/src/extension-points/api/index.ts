@@ -23,6 +23,8 @@ export type {
   AppMetafieldEntry,
   LineItem,
   LineItemChange,
+  LineItemChangeResultError,
+  LineItemChangeResultSuccess,
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,

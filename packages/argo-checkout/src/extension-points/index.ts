@@ -26,6 +26,8 @@ export type {
   CurrencyCode,
   LineItem,
   LineItemChange,
+  LineItemChangeResultError,
+  LineItemChangeResultSuccess,
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,

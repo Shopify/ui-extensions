@@ -33,6 +33,8 @@ export type {
   Money,
   LineItem,
   LineItemChange,
+  LineItemChangeResultError,
+  LineItemChangeResultSuccess,
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,
