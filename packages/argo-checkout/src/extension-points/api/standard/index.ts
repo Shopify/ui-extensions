@@ -403,11 +403,6 @@ export interface Address {
   phone?: string;
 }
 
-export interface GeographicalCoordinates {
-  latitude: number;
-  longitude: number;
-}
-
 export interface LineItem {
   /**
    * These line item IDs are not stable at the moment, they might change after
