@@ -28,6 +28,6 @@ export interface ButtonProps {
 }
 
 /**
- * Buttons are used for actions, such as “Add”, “Continue”, or “Pay now”, or “Save”.
+ * Buttons are used for actions, such as “Add”, “Continue”, “Pay now”, or “Save”.
  */
 export const Button = createRemoteComponent<'Button', ButtonProps>('Button');
