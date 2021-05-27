@@ -217,6 +217,7 @@ type CalculateChangesetResult =
 interface ApplyChangesetResult {
   errors: ChangesetError[];
   status: ChangesetProcessingStatus;
+  redirectUrl?: string;
 }
 
 export type ChangesetProcessingStatus =
