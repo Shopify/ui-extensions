@@ -29,10 +29,9 @@ export async function dev(...args: string[]) {
   const publicUrl = namedArgument('publicUrl', args);
   const tunnelStarted = Boolean(publicUrl);
   const filename = 'extension.js';
-  const scriptUrl = new URL(
-    `${PUBLIC_PATH}${filename}`,
-    publicUrl || url,
-  ).toString();
+  const script = new URL(`${PUBLIC_PATH}${filename}`, publicUrl || url);
+  const scriptUrl = script.toString();
+  const isHttps = script.protocol === 'https:';
 
   const compiler = webpack(
     createWebpackConfiguration({
@@ -42,8 +41,12 @@ export async function dev(...args: string[]) {
         publicPath: PUBLIC_PATH,
       },
       hotOptions: {
-        https: false,
-        webSocket: {host: 'localhost', port, path: WEBSOCKET_PATH},
+        https: isHttps,
+        webSocket: {
+          host: script.hostname,
+          port: Number(script.port) || (isHttps ? 443 : 80),
+          path: WEBSOCKET_PATH,
+        },
       },
     }),
   );
