@@ -29,9 +29,8 @@ export async function dev(...args: string[]) {
   const publicUrl = namedArgument('publicUrl', args);
   const tunnelStarted = Boolean(publicUrl);
   const filename = 'extension.js';
-  const script = new URL(`${PUBLIC_PATH}${filename}`, publicUrl || url);
-  const scriptUrl = script.toString();
-  const isHttps = script.protocol === 'https:';
+  const scriptUrl = new URL(`${PUBLIC_PATH}${filename}`, publicUrl || url);
+  const isHttps = scriptUrl.protocol === 'https:';
 
   const compiler = webpack(
     createWebpackConfiguration({
@@ -43,8 +42,8 @@ export async function dev(...args: string[]) {
       hotOptions: {
         https: isHttps,
         webSocket: {
-          host: script.hostname,
-          port: Number(script.port) || (isHttps ? 443 : 80),
+          host: scriptUrl.hostname,
+          port: Number(scriptUrl.port) || (isHttps ? 443 : 80),
           path: WEBSOCKET_PATH,
         },
       },
@@ -208,7 +207,7 @@ export async function dev(...args: string[]) {
       // https://github.com/Shopify/post-purchase-devtools/blob/master/src/background/background.ts#L16-L35
       app.get(LEGACY_POST_PURCHASE_DATA_PATH, (_, res) => {
         res.set('Access-Control-Allow-Origin', '*');
-        res.json(getLegacyPostPurchaseData(scriptUrl, extension));
+        res.json(getLegacyPostPurchaseData(scriptUrl.toString(), extension));
       });
     },
 
@@ -254,7 +253,7 @@ export async function dev(...args: string[]) {
   if (isPostPurchaseExtension) {
     log(
       `You can append this query string: ${convertLegacyPostPurchaseDataToQueryString(
-        getLegacyPostPurchaseData(scriptUrl, extension),
+        getLegacyPostPurchaseData(scriptUrl.toString(), extension),
       )}`,
     );
   } else if (tunnelStarted) {
