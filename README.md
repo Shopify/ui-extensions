@@ -26,7 +26,7 @@ In addition to the basic message passing and component model, remove-ui offers i
 
 On top of this technical foundation, Argo provides a set of components that extensions can render. In remote-ui, the components your extension renders are actually just tiny JavaScript objects — they don’t have any DOM attached to them at all. These minimal components are sent to the host application to be rendered into native UI. This allows us to expose a minimal API for components that is focused on what you as a developer actually need to do — responding to events or customizing the appearance — while giving Shopify the ability to offer a tightly-optimized, highly-performant set of native UI components in the host application. Because your extension does not render to the actual DOM, Shopify can change or update the components without you needing to take any action, and we can make sure the components fit in seamlessly if they are in a context that allows merchant theming, like Shopify’s Checkout.
 
-The exact components available to the extension depend on the surface area you are embedding — please refer to the documentation linked above for references on what components you can use. If you’ve ever used [Polaris](https://polaris.shopify.com/), though, the components you will find will look extremely familiar, as many components and props are based on their Polaris equivalents.
+The exact components available to the extension depend on the surface area you are embedding — please refer to the [documentation linked above](#i-just-want-to-build-an-argo-extension-not-learn-about-them) for references on what components you can use. If you’ve ever used [Polaris](https://polaris.shopify.com/), though, the components you will find will look extremely familiar, as many components and props are based on their Polaris equivalents.
 
 ### Extension points
 
@@ -78,7 +78,7 @@ extend('Checkout::Feature::Render', (root) => {
 });
 ```
 
-As with UI components, the Argo extensibility framework lets us provide different arguments to your extension, depending the extension point you selected and other factors, like your app’s permissions. For full details on what arguments are passed for each extension point, please refer to the documentation for the [Argo-supporting surface area you want to extend](./packages).
+As with UI components, the Argo extensibility framework lets us provide different arguments to your extension, depending the extension point you selected and other factors, like your app’s permissions. For full details on what arguments are passed for each extension point, please refer to the documentation for the [Argo-supporting surface area you want to extend](#i-just-want-to-build-an-argo-extension-not-learn-about-them).
 
 ## Contributing
 
