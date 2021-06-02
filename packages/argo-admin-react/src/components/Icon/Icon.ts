@@ -1,6 +1,4 @@
-import {Icon as BaseIcon, IconProps} from '@shopify/argo-admin';
+import {Icon as BaseIcon} from '@shopify/argo-admin';
 import {createRemoteReactComponent} from '@remote-ui/react';
 
 export const Icon = createRemoteReactComponent(BaseIcon);
-
-export {IconProps};
