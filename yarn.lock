@@ -2158,7 +2158,7 @@
     "@remote-ui/rpc" "^1.0.17"
     "@remote-ui/types" "^1.0.7"
 
-"@remote-ui/react@^4.0.0", "@remote-ui/react@^4.0.1":
+"@remote-ui/react@^4.0.0", "@remote-ui/react@^4.0.1", "@remote-ui/react@^4.0.3":
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.0.3.tgz#ea32f1ca5a7989b68167b46af2ca5df8edf6b166"
   integrity sha512-9E6YVYmWngIlMxSyz9D7F8u2VdybUx71lR3ID0Rpjh4920Q4aUJbzbw1kyrEGr5wUgst7tBmqUpBTmGNr6KQ5A==
