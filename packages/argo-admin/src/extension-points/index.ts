@@ -9,14 +9,13 @@ import {
   ProductSubscriptionExtensionPointCallback,
 } from './identifiers/product_subscription';
 
-export {PlaygroundExtensionPoint};
-export {ProductSubscriptionExtensionPoint};
+export type {PlaygroundExtensionPoint, ProductSubscriptionExtensionPoint};
 
 /*
 Placeholder for new imports
 */
 
-export {
+export type {
   ContainerAction,
   ExtensionResult,
   RenderableExtensionCallback,
