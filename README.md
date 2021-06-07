@@ -18,9 +18,9 @@ Argo is the name we give to the patterns we provide for extending our user inter
 
 ### Open-source core
 
-The underlying technology for Argo is [remote-ui](https://github.com/Shopify/remote-ui), and open source technology built by Shopify. remote-ui provides the basic [message passing](https://github.com/Shopify/remote-ui/tree/main/packages/rpc) system that is used by an Argo extension to communicate with the “host” application it is extending. remote-ui also provides the [component model](https://github.com/Shopify/remote-ui/tree/main/packages/core). If you are familiar with building for the web, remote-ui is very similar to the DOM — it gives you a programmatic model for defining UI components and attaching UI to the screen.
+The underlying technology for Argo is [remote-ui](https://github.com/Shopify/remote-ui), an open source technology built by Shopify. remote-ui provides the basic [message passing](https://github.com/Shopify/remote-ui/tree/main/packages/rpc) system that is used by an Argo extension to communicate with the “host” application it is extending. remote-ui also provides the [component model](https://github.com/Shopify/remote-ui/tree/main/packages/core). If you are familiar with building for the web, remote-ui is very similar to the DOM — it gives you a programmatic model for defining UI components and attaching UI to the screen.
 
-In addition to the basic message passing and component model, remove-ui offers integrations for frameworks like [React](https://github.com/Shopify/remote-ui/tree/main/packages/react) and [Vue](https://github.com/Shopify/remote-ui/tree/main/packages/vue), which we make use of within Argo to provide framework-specific bindings with little additional effort.
+In addition to the basic message passing and component model, remote-ui offers integrations for frameworks like [React](https://github.com/Shopify/remote-ui/tree/main/packages/react) and [Vue](https://github.com/Shopify/remote-ui/tree/main/packages/vue), which we make use of within Argo to provide framework-specific bindings with little additional effort.
 
 ### Components
 
@@ -30,7 +30,7 @@ The exact components available to the extension depend on the surface area you a
 
 ### Extension points
 
-While remote-ui provides the component model, and takes care of propagating updates to an extension’s UI into the host application, it does not have any built-in notion of an “extension” at all. To create an extension system, Shopify authors a bit of extra code: a mapping of “extension points” (which, in code, are just strings with a specific naming format), and a way to load third party code that can register to be called for those extension points. This might sound little complicated, but the code to put it all together is actually quite straightforward. The Argo ”runtime” code, which is used to construct the sandbox your extension will run in, looks almost exactly like this for all Argo-capable surface areas in Shopify:
+While remote-ui provides the component model, and takes care of propagating updates to an extension’s UI into the host application, it does not have any built-in notion of an “extension” at all. To create an extension system, Shopify authors a bit of extra code: a mapping of “extension points” (which, in code, are just strings with a specific naming format), and a way to load third-party code that can register to be called for those extension points. This might sound little complicated, but the code to put it all together is actually quite straightforward. The Argo ”runtime” code, which is used to construct the sandbox your extension will run in, looks almost exactly like this for all Argo-capable surface areas in Shopify:
 
 ```js
 // We keep a mapping of all the extension points you register for
@@ -52,7 +52,10 @@ export function load(script) {
   // it in the future as new web platform features are available!
 }
 
-// Once your script is loaded, it has had its chance to register for extension
+// Once your script is loaded, it can register callbacks for extension points.
+// Executing this function results in calling your registered callbacks with arguments from
+// the host application, like the data your extension has access to and the UI “root“
+// your components will be attached to.
 // points, and we can now simply call your extension with the arguments from the
 // host application, like the data your extension has access to and the UI “root“
 // your components will be attached to.
@@ -82,7 +85,7 @@ As with UI components, the Argo extensibility framework lets us provide differen
 
 ## Contributing
 
-We provide the libraries in this repo as public NPM packages so that they can be installed and used in your local development. Because the packages are public, we have also made the repo public, so you can more easily refer to the in-code comments we make heavy use of for documenting Argo APIs. However, the code in this repo is not a traditional open source project.
+We provide the libraries in this repo as public NPM packages so that they can be installed and used in your local project. Because the packages are public, we have also made the repo public. This way, you can easily refer to the in-code comments we use for documenting Argo APIs. However, the code in this repo is not a traditional open source project.
 
 These packages act as the public API Shopify is exposing for UI extensions in our applications, and as a result, we **are not accepting contributions that change or add to these APIs**. Any change to these repos is typically only one part of the full required change, with the rest being done in private Shopify repos that third-party developers do not have access to.
 
