@@ -1,4 +1,4 @@
-import {render, Layout, View} from '@shopify/argo-checkout-react';
+import {render, Layout, View} from '@shopify/argo-post-purchase-react';
 
 render('Checkout::Feature::Render', () => <App />);
 

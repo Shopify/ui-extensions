@@ -3,7 +3,7 @@ import {
   HeadingGroup,
   Heading,
   View,
-} from '@shopify/argo-checkout-react';
+} from '@shopify/argo-post-purchase-react';
 
 render('Checkout::Feature::Render', () => <App />);
 

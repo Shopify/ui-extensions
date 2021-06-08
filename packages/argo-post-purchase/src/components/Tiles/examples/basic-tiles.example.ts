@@ -1,4 +1,4 @@
-import {extend, View, Tiles} from '@shopify/argo-checkout';
+import {extend, View, Tiles} from '@shopify/argo-post-purchase';
 
 extend('Checkout::Feature::Render', (root) => {
   const tiles = root.createComponent(Tiles, undefined, [

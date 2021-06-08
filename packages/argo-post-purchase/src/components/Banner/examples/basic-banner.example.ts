@@ -1,4 +1,4 @@
-import {extend, Banner} from '@shopify/argo-checkout';
+import {extend, Banner} from '@shopify/argo-post-purchase';
 
 extend('Checkout::Feature::Render', (root) => {
   const banner = root.createComponent(Banner, {

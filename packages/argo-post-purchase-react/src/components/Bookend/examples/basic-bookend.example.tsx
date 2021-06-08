@@ -1,4 +1,4 @@
-import {render, Bookend, TextField, Button} from '@shopify/argo-checkout-react';
+import {render, Bookend, TextField, Button} from '@shopify/argo-post-purchase-react';
 
 render('Checkout::Feature::Render', () => <App />);
 

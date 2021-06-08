@@ -1,4 +1,4 @@
-import {extend, ButtonGroup, Button} from '@shopify/argo-checkout';
+import {extend, ButtonGroup, Button} from '@shopify/argo-post-purchase';
 
 extend('Checkout::Feature::Render', (root) => {
   const buttonGroup = root.createComponent(ButtonGroup, undefined, [

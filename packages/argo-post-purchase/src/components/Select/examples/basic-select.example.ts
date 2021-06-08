@@ -1,4 +1,4 @@
-import {extend, Select} from '@shopify/argo-checkout';
+import {extend, Select} from '@shopify/argo-post-purchase';
 
 extend('Checkout::Feature::Render', (root) => {
   const select = root.createComponent(Select, {

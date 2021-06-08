@@ -3,7 +3,7 @@ import {
   FormLayout,
   FormLayoutGroup,
   TextField,
-} from '@shopify/argo-checkout';
+} from '@shopify/argo-post-purchase';
 
 extend('Checkout::Feature::Render', (root) => {
   const formLayout = root.createComponent(FormLayout, undefined, [

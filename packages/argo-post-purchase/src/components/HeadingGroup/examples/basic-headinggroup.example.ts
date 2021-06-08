@@ -1,4 +1,4 @@
-import {extend, HeadingGroup, Heading, View} from '@shopify/argo-checkout';
+import {extend, HeadingGroup, Heading, View} from '@shopify/argo-post-purchase';
 
 extend('Checkout::Feature::Render', (root) => {
   const headingGroup = root.createComponent(View, undefined, [

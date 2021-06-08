@@ -1,4 +1,4 @@
-import {extend, Form, Button} from '@shopify/argo-checkout';
+import {extend, Form, Button} from '@shopify/argo-post-purchase';
 
 extend('Checkout::Feature::Render', (root) => {
   const form = root.createComponent(

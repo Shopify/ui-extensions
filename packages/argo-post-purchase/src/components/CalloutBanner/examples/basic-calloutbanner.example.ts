@@ -1,4 +1,4 @@
-import {extend, CalloutBanner, Text} from '@shopify/argo-checkout';
+import {extend, CalloutBanner, Text} from '@shopify/argo-post-purchase';
 
 extend('Checkout::Feature::Render', (root) => {
   const calloutBanner = root.createComponent(

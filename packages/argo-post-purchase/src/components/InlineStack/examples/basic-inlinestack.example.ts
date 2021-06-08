@@ -1,4 +1,4 @@
-import {extend, InlineStack, View} from '@shopify/argo-checkout';
+import {extend, InlineStack, View} from '@shopify/argo-post-purchase';
 
 extend('Checkout::Feature::Render', (root) => {
   const inlineStack = root.createComponent(
