@@ -1,7 +1,11 @@
 # BlockStack
 
 BlockStack is used to vertically stack elements
- 
+
 ## Props
-required = *
-<table><tr><th>Name</th><th>Type</th><th>Description</th></tr><tr><td>alignment</td><td><code>"leading"</code> | <code>"center"</code> | <code>"trailing"</code></td><td>Position children along the cross axis </td></tr><tr><td>spacing</td><td><code>"xtight"</code> | <code>"tight"</code> | <code>"loose"</code> | <code>"xloose"</code></td><td>Adjust spacing between children </td></tr></table>
+optional = ?
+
+| Name | Type | Description |
+| --- | --- | --- |
+| alignment? | <code>"leading" &#124; "center" &#124; "trailing"</code> | Position children along the cross axis  |
+| spacing? | <code>"xtight" &#124; "tight" &#124; "loose" &#124; "xloose"</code> | Adjust spacing between children  |

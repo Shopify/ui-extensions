@@ -1,6 +1,6 @@
 # Button
 
-Buttons are used for actions, such as “Add”, “Continue”, or “Pay now”, or “Save”.
+Buttons are used for actions, such as “Add”, “Continue”, “Pay now”, or “Save”.
 
 ## Props
 optional = ?
