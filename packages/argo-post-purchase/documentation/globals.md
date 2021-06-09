@@ -1,4 +1,4 @@
-# Global environment
+# Globals
 
 ## Shopify-specific globals
 
