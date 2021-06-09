@@ -1,4 +1,8 @@
-import {extensionPoints, components, gettingStarted} from './typedoc/shopify-dev-renderer';
+import {
+  extensionPoints,
+  components,
+  gettingStarted,
+} from './typedoc/shopify-dev-renderer';
 
 const checkout = {
   inputRoot: './packages/argo-checkout',
@@ -34,22 +38,23 @@ const componentsPageContent = (url: string) => ({
   [extension point](${url}/extension-points#extension-points)
   to ensure the component is available in the extension points you are
   targeting.`,
-})
+});
 
 // Checkout docs
 extensionPoints(checkout);
 components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
   subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
   componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
-  generateReadmes: true
+  generateReadmes: true,
 });
 gettingStarted(checkout);
 
-// Post-purchase docs  
-extensionPoints(postPurchase);
+// Post-purchase docs
+extensionPoints(postPurchase, {visibility: 'postUnite'});
 components(postPurchase, componentsPageContent(postPurchase.shopifyDevUrl), {
   subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
   componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
-  generateReadmes: true
+  generateReadmes: true,
+  visibility: 'postUnite',
 });
-gettingStarted(postPurchase);
+gettingStarted(postPurchase, {visibility: 'postUnite'});

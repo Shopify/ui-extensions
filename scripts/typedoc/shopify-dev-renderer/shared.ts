@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import {v4 as uuidv4} from 'uuid';
-import markdownTable from 'markdown-table'
+import markdownTable from 'markdown-table';
 
 import type {
   LocalReference,
@@ -18,14 +18,18 @@ export interface Node {
   module: Module | undefined;
 }
 
-
 interface FrontMatter {
   gid: string;
   url: string;
   title: string;
   description?: string;
-  hidden: boolean;
+  hidden?: boolean;
+  post_unite?: string;
 }
+
+type VisibilityFrontMatter = Pick<FrontMatter, 'hidden' | 'post_unite'>;
+
+export type Visibility = 'hidden' | 'postUnite' | 'visible';
 
 export function renderYamlFrontMatter(frontMatter: FrontMatter) {
   let matter = '---\n';
@@ -37,6 +41,15 @@ export function renderYamlFrontMatter(frontMatter: FrontMatter) {
   matter += '---\n\n';
   return matter;
 }
+
+export const visibilityToFrontMatterMap = new Map<
+  Visibility,
+  VisibilityFrontMatter
+>([
+  ['hidden', {hidden: true}],
+  ['postUnite', {post_unite: 'show'}],
+  ['visible', {}],
+]);
 
 export function findUuid(file: string) {
   let uuid = uuidv4();
@@ -85,28 +98,35 @@ export function propsTable(
   const table = [];
 
   // table header row
-  const propertiesHaveParameters = properties.filter(({parameters}) => parameters).length > 0;
-  if(propertiesHaveParameters){
-    table.push(['Type', 'Description'])
+  const propertiesHaveParameters =
+    properties.filter(({parameters}) => parameters).length > 0;
+  if (propertiesHaveParameters) {
+    table.push(['Type', 'Description']);
   } else {
-    table.push(['Name', 'Type', 'Description'])
+    table.push(['Name', 'Type', 'Description']);
   }
-
 
   properties.forEach(
     ({name: propName, optional, value, docs: propDocs, parameters}) => {
       if (propName === 'Checkout::KitchenSink') return;
 
-      if(parameters) {
+      if (parameters) {
         const thisParamType = paramsType(
           parameters,
           exports,
           dir,
-          additionalPropsTables
+          additionalPropsTables,
         );
-        const thisPropType = propType(value, exports, dir, additionalPropsTables);
+        const thisPropType = propType(
+          value,
+          exports,
+          dir,
+          additionalPropsTables,
+        );
         const type = `<code>(${thisParamType}): ${thisPropType}</code>`;
-        const description = propDocs ? newLineToBr(strip(propDocs.content)) : ''
+        const description = propDocs
+          ? newLineToBr(strip(propDocs.content))
+          : '';
         table.push([type, description]);
       } else {
         const name = `${propName}${optional ? '?' : ''}`;
@@ -114,18 +134,18 @@ export function propsTable(
           value,
           exports,
           dir,
-          additionalPropsTables
+          additionalPropsTables,
         )}</code>`;
 
         const content = propDocs ? strip(propDocs.content) : '';
         const tags = propDocs?.tags?.length
-        ? propDocs.tags.map(stringifyTag).join('\n')
-        : '';
+          ? propDocs.tags.map(stringifyTag).join('\n')
+          : '';
         const description = newLineToBr(content + tags);
 
         table.push([name, type, description]);
       }
-    }
+    },
   );
 
   markdown += markdownTable(table, {
@@ -136,13 +156,15 @@ export function propsTable(
 }
 
 function newLineToBr(string): string {
-  return string
-   .replace(/\n\n/g, '<br /><br />')
-   .replace(/\n/g, ' ')
+  return string.replace(/\n\n/g, '<br /><br />').replace(/\n/g, ' ');
 }
 
-
-function propType(value: any, exports: any[], dir: string, additionalPropsTables: string[]): any {
+function propType(
+  value: any,
+  exports: any[],
+  dir: string,
+  additionalPropsTables: string[],
+): any {
   let params = '';
   if (value.params != null && value.params.length > 0) {
     params = `<<wbr>${value.params
@@ -164,7 +186,12 @@ function propType(value: any, exports: any[], dir: string, additionalPropsTables
     case 'BooleanType':
       return 'boolean';
     case 'ArrayType':
-      return `${propType(value.elements, exports, dir, additionalPropsTables)}[]`;
+      return `${propType(
+        value.elements,
+        exports,
+        dir,
+        additionalPropsTables,
+      )}[]`;
     case 'NumberType':
       return 'number';
     case 'Local':
@@ -203,7 +230,7 @@ function propType(value: any, exports: any[], dir: string, additionalPropsTables
         .map((type: any) => {
           return propType(type, exports, dir, additionalPropsTables);
         })
-        .join(` ${PIPE} `)
+        .join(` ${PIPE} `);
       return `${union}`;
     case 'StringLiteralType':
       return `"${value.value}"`;
@@ -216,8 +243,13 @@ function propType(value: any, exports: any[], dir: string, additionalPropsTables
         value.parameters,
         exports,
         dir,
-        additionalPropsTables
-      )}) => ${propType(value.returnType, exports, dir, additionalPropsTables)}`;
+        additionalPropsTables,
+      )}) => ${propType(
+        value.returnType,
+        exports,
+        dir,
+        additionalPropsTables,
+      )}`;
     case 'MappedType':
       // eslint-disable-next-line no-case-declarations
       const ref = exports.find(
@@ -269,22 +301,35 @@ export function strip(content: string) {
       .replace('*/', '')
       .replace(/\n \* /g, '\n')
       .replace(/\n \*/g, '\n')
-      .replace(/\n\n \* /g, '\n\n')
+      .replace(/\n\n \* /g, '\n\n'),
   );
 }
 
 export function firstSentence(content: string) {
   const lines = content.split(/(\n|\. )/g);
   let firstSentence = lines.length ? lines[0] : content;
-  if(firstSentence[firstSentence.length-1] !== '.'){
+  if (firstSentence[firstSentence.length - 1] !== '.') {
     firstSentence += '.';
   }
   return firstSentence;
 }
 
-function paramsType(params: any[], exports: any[], dir: string, additionalPropsTables: string[]) {
+function paramsType(
+  params: any[],
+  exports: any[],
+  dir: string,
+  additionalPropsTables: string[],
+) {
   return params
-    .map((param) => `${param.name}: ${propType(param.type, exports, dir, additionalPropsTables)}`)
+    .map(
+      (param) =>
+        `${param.name}: ${propType(
+          param.type,
+          exports,
+          dir,
+          additionalPropsTables,
+        )}`,
+    )
     .join(', ');
 }
 
