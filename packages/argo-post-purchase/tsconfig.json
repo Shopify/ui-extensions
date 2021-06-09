@@ -15,5 +15,6 @@
     ]
   },
   "include": ["src/**/*.ts"],
+  "exclude": ["src/**/*.example.ts"],
   "references": []
 }

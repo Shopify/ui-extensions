@@ -3,13 +3,24 @@ import * as fs from 'fs';
 
 import type {Paths} from '../types';
 
-import {renderYamlFrontMatter, findUuid} from './shared';
+import {
+  renderYamlFrontMatter,
+  findUuid,
+  visibilityToFrontMatterMap,
+} from './shared';
+import type {Visibility} from './shared';
 
-export function gettingStarted(paths: Paths) {
+interface Options {
+  visibility?: Visibility;
+}
+
+export function gettingStarted(paths: Paths, options: Options = {}) {
   const outputRoot = resolve(paths.outputRoot);
   const extensionPointsDocsPath = resolve(
     `${paths.outputRoot}/extension-points`,
   );
+  const {visibility = 'hidden'} = options;
+  const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
 
   if (!fs.existsSync(outputRoot)) {
     fs.mkdirSync(outputRoot, {recursive: true});
@@ -27,7 +38,7 @@ export function gettingStarted(paths: Paths) {
     title: 'Checkout extensions API reference',
     description:
       'API reference for Checkout extension points. Learn about global objects, rendering, components, and how you’ll interact with them.',
-    hidden: true,
+    ...visibilityFrontMatter,
   });
 
   const docsInputPath = resolve(`${paths.inputRoot}/documentation`);
@@ -48,6 +59,11 @@ export function gettingStarted(paths: Paths) {
   markdown = markdown.replace(
     ' `Checkout::Feature::Render`',
     ` [\`Checkout::Feature::Render\`](${paths.shopifyDevUrl}/extension-points/api)`,
+  );
+  // Add a link to the PP extension point API
+  markdown = markdown.replace(
+    '../src/extension-points/api/post-purchase',
+    `${paths.shopifyDevUrl}/extension-points/api`,
   );
   markdown = markdown.replace(
     '#components',

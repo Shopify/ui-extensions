@@ -1,19 +1,28 @@
 import {resolve} from 'path';
 import * as fs from 'fs';
 
-import type {
-  Paths,
-  InterfaceType,
-} from '../types';
+import type {Paths, InterfaceType} from '../types';
 
 import {createDependencyGraph} from '../utilities/dependency-graph';
-import {renderYamlFrontMatter, findUuid, dedupe, propsTable} from './shared';
-import type {Node} from './shared';
+import {
+  renderYamlFrontMatter,
+  findUuid,
+  dedupe,
+  propsTable,
+  visibilityToFrontMatterMap,
+} from './shared';
+import type {Node, Visibility} from './shared';
 
 const additionalPropsTables: string[] = [];
 
-export async function extensionPoints(paths: Paths) {
+interface Options {
+  visibility?: Visibility;
+}
+
+export async function extensionPoints(paths: Paths, options: Options = {}) {
   const extensionsIndex = resolve(`${paths.inputRoot}/src/index.ts`);
+  const {visibility = 'hidden'} = options;
+  const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
 
   const graph = await createDependencyGraph(extensionsIndex);
 
@@ -58,8 +67,9 @@ export async function extensionPoints(paths: Paths) {
     gid: findUuid(apiFile),
     url: `${paths.shopifyDevUrl}/extension-points/api`,
     title: 'Extension points API',
-    description: 'An API reference for checkout extension points and their respective types',
-    hidden: true,
+    description:
+      'An API reference for checkout extension points and their respective types',
+    ...visibilityFrontMatter,
   });
 
   interfaces.forEach(({name, docs, properties}) => {
@@ -83,4 +93,3 @@ export async function extensionPoints(paths: Paths) {
 
   additionalPropsTables.length = 0;
 }
-
