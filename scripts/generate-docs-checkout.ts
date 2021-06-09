@@ -22,17 +22,18 @@ const postPurchase = {
   shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
 };
 
-
+// Using an anchor tag because markdown links starting with
+// "/api" are getting stripped in shopify-dev
 const componentsPageContent = (url: string) => ({
   title: 'Components for checkout extensions',
   frontMatterDescription: 'A list of components for checkout extensions.',
   description: `Argo provides many powerful UI components that a
-  [rendering extension](${url}/extension-points#rendering) can
+  <a href="${url}/extension-points#rendering">rendering extension</a> can
   use to build an interface. This UI is rendered natively by Shopify, so you
   can depend on it to be performant, accessible, and work in all of Checkout’s
   supported browsers. \n\nThe following components are available as part of Argo
   for Checkout, but make sure that you check the documentation for your
-  [extension point](${url}/extension-points#extension-points)
+  <a href="${url}/extension-points#extension-points">extension point</a>
   to ensure the component is available in the extension points you are
   targeting.`,
 })
