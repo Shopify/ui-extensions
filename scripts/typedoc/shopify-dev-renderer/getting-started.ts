@@ -50,11 +50,9 @@ export function gettingStarted(paths: Paths) {
     ` [\`Checkout::Feature::Render\`](${paths.shopifyDevUrl}/extension-points/api)`,
   );
   // Add a link to the PP extension point API
-  // Using an anchor tag because shopify-dev seems to be stripping
-  // markdown links which start with "/api"
   markdown = markdown.replace(
-    '[`Checkout::PostPurchase::ShouldRender` and `Checkout::PostPurchase::Render`](../src/extension-points/api/post-purchase)',
-    `<a href="${paths.shopifyDevUrl}/extension-points/api">\`Checkout::PostPurchase::ShouldRender\` and \`Checkout::PostPurchase::Render\`</a>`,
+    '../src/extension-points/api/post-purchase',
+    `${paths.shopifyDevUrl}/extension-points/api`,
   );
   markdown = markdown.replace(
     '#components',
