@@ -18,6 +18,9 @@
   "dependencies": {
     "@remote-ui/core": "^2.0.0"
   },
+  "devDependencies": {
+    "@shopify/ui-extensions": "^0.1.0"
+  },
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org/"

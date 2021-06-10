@@ -1,6 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-
-export type BannerStatus = 'success' | 'info' | 'warning' | 'critical';
+import type {BaseBannerProps} from '@shopify/ui-extensions';
 
 export interface BannerAction {
   /** Callback when the Banner action button is pressed. */
@@ -10,18 +9,9 @@ export interface BannerAction {
   content: string;
 }
 
-export interface BannerProps {
+export interface BannerProps extends BaseBannerProps {
   /** Button to display at bottom of banner. */
   action?: BannerAction;
-
-  /** Colour of the banner. */
-  status?: BannerStatus;
-
-  /** Title of the banner. */
-  title?: string;
-
-  /** Callback when banner is dismissed. */
-  onDismiss: () => void;
 }
 
 /**

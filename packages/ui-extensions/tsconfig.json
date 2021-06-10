@@ -5,7 +5,5 @@
     "outDir": "build/ts",
     "jsx": "react-jsx"
   },
-  "references": [{"path": "../argo-admin"}],
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
-  "exclude": ["./src/**/*.example.*"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

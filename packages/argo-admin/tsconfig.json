@@ -2,9 +2,9 @@
   "extends": "../../config/typescript/tsconfig.admin.json",
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "build/ts",
-    "baseUrl": "src"
+    "outDir": "build/ts"
   },
+  "references": [{"path": "../ui-extensions"}],
   "include": ["./src/**/*.ts"],
   "exclude": ["./src/**/*.example.*"]
 }
