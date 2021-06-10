@@ -3,12 +3,7 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "build/ts",
-    "baseUrl": "./",
-    "jsx": "react-jsx",
-    "paths": {
-      "@shopify/argo-admin": ["../argo-admin/src"],
-      "@shopify/argo-admin/*": ["../argo-admin/src/*"]
-    }
+    "jsx": "react-jsx"
   },
   "references": [{"path": "../argo-admin"}],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],

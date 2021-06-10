@@ -1,14 +1,10 @@
 {
   "extends": "../../config/typescript/tsconfig.admin.json",
   "compilerOptions": {
-    "rootDir": "../",
-    "outDir": "build/ts",
-    "baseUrl": "./",
-    "paths": {
-      "@shopify/ui-extensions": ["../ui-extensions/src"],
-      "@shopify/ui-extensions/*": ["../ui-extensions/src/*"]
-    }
+    "rootDir": "src",
+    "outDir": "build/ts"
   },
-  "include": ["./src/**/*.ts", "../ui-extensions/**/*.ts"],
+  "references": [{"path": "../ui-extensions"}],
+  "include": ["./src/**/*.ts"],
   "exclude": ["./src/**/*.example.*"]
 }
