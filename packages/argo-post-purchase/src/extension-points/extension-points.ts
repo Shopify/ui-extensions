@@ -15,10 +15,14 @@ export interface ExtensionPoints {
     StandardApi<'Checkout::KitchenSink'>,
     AllComponents
   >;
+  /** The `Render` extension point is used to render the section in the post-purchase page. 
+  Also, it provides additional functionality, such as communicating with Shopify to add items to the initial purchase. */
   'Checkout::PostPurchase::Render': RenderExtension<
     PostPurchaseRenderApi,
     AllComponents
   >;
+  /** The `ShouldRender` extension point is used to determine whether a post-purchase page should be shown to the customer.
+  It also allows data to be pre-cached and used when the page renders. */
   'Checkout::PostPurchase::ShouldRender': (
     api: PostPurchaseShouldRenderApi,
   ) => PostPurchaseShouldRenderResult;

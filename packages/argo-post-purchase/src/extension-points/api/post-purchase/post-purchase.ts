@@ -110,12 +110,16 @@ interface Variant {
 }
 
 interface Metafield {
+  /** The metafield key. */
   key: string;
+  /** The metafield namespace. */
   namespace: string;
+  /** The metafield value. */
   value: string | number;
+  /** The metafield value type. */
   valueType: 'integer' | 'string' | 'json_string';
 }
-
+/** Requests to attach an explicit discount to a compatible change. */
 interface ExplicitDiscount {
   value: number;
   valueType: ExplicitDiscountType;
@@ -136,7 +140,10 @@ interface AddShippingLineChange {
   presentmentTitle?: string;
 }
 
+/** Requests to set a metafield on the initial purchase.
+If a metafield with the same namespace and key pair already exists, then its contents are replaced. */
 interface SetMetafieldChange extends Metafield {
+  /** A fixed value of "set_metafield". */
   type: 'set_metafield';
 }
 
@@ -145,8 +152,9 @@ type Changes = (
   | AddShippingLineChange
   | SetMetafieldChange
 )[];
-
+/** A list of requested changes to be made to the initial purchase. */
 interface Changeset {
+  /** A change request. */
   changes: Changes;
 }
 
@@ -198,8 +206,24 @@ interface CalculatedPurchase {
   totalOutstandingSet: MoneyBag;
 }
 
+/** Represents an error occurred while calculating or applying a changeset.
+ *
+ * **Possible values for `code`:**
+ *
+ * - `payment_required` - The original payment method couldn't be charged.
+ * - `insufficient_inventory` - An item requested to be added is out of stock.
+ * - `changeset_already_applied` - Indicates if the changeset has been applied. Changesets can only be applied once.
+ * - `unsupported_payment_method` - Indicates that the payment method was unsupported. The payment method used to pay for the initial purchase can't be used to pay for changesets.
+ * - `invalid_request` - The request is invalid. It shouldn't be re-sent without modifications.
+ * - `server_error` - An unexpected error has happened.
+ */
 interface ChangesetError {
+  /** An error code corresponding to an error that occurred while calculating or applying a changeset.
+  Useful for grouping errors that can be handled similarily.
+  */
   code: string;
+  /** The error description.
+  */
   message: string;
 }
 type CalculateChangesetResult =
