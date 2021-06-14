@@ -5,7 +5,7 @@ import {
   TextField,
 } from '@shopify/argo-post-purchase';
 
-extend('Checkout::Feature::Render', (root) => {
+extend('Checkout::PostPurchase::Render', (root) => {
   const formLayout = root.createComponent(FormLayout, undefined, [
     root.createComponent(TextField, {
       label: 'Address',

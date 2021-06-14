@@ -1,6 +1,6 @@
 import {extend, Layout, View} from '@shopify/argo-post-purchase';
 
-extend('Checkout::Feature::Render', (root) => {
+extend('Checkout::PostPurchase::Render', (root) => {
   const layout = root.createComponent(
     Layout,
     {

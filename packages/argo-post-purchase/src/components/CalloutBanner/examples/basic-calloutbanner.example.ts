@@ -1,6 +1,6 @@
 import {extend, CalloutBanner, Text} from '@shopify/argo-post-purchase';
 
-extend('Checkout::Feature::Render', (root) => {
+extend('Checkout::PostPurchase::Render', (root) => {
   const calloutBanner = root.createComponent(
     CalloutBanner,
     {title: 'Special offer today only'},
