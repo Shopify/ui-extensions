@@ -213,9 +213,12 @@ type CalculateChangesetResult =
       status: 'processed';
       calculatedPurchase: CalculatedPurchase;
     };
-
+/** Requests a changeset to be applied to the initial purchase,
+and to charge the buyer with the difference in total price if any. */
 interface ApplyChangesetResult {
+  /** Represents an error occurred while calculating or applying a changeset. */
   errors: ChangesetError[];
+  /** An enum representing the result of attempting to apply or calculate a changeset. */
   status: ChangesetProcessingStatus;
 }
 
