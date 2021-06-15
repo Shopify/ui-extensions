@@ -11,7 +11,7 @@ import type {} from '@sewing-kit/plugin-jest';
 
 const PLUGIN = 'ArgoCheckout.DefaultPackage';
 
-export function argoPackage({react: useReact = false} = {}) {
+export function uiExtensionsPackage({react: useReact = false} = {}) {
   return createComposedProjectPlugin(PLUGIN, (composer) => {
     composer.use(javascript(), typescript(), buildFlexibleOutputs());
 
@@ -21,7 +21,7 @@ export function argoPackage({react: useReact = false} = {}) {
   });
 }
 
-export function argoCheckoutBinary() {
+export function checkouUiExtensionsBinary() {
   return createComposedProjectPlugin(PLUGIN, [
     javascript(),
     typescript(),

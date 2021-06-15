@@ -1,6 +1,6 @@
 #!/bin/sh
 
-AVAILABLE_PACKAGES=('argo-admin' 'argo-admin-react' 'argo-checkout', 'argo-checkout-react', 'argo-post-purchase', 'argo-post-purchase-react', 'argo-run')
+AVAILABLE_PACKAGES=('admin-ui-extensions' 'admin-ui-extensions-react' 'checkout-ui-extensions', 'checkout-ui-extensions-react', 'post-purchase-ui-extensions', 'post-purchase-ui-extensions-react', 'checkout-ui-extensions-run')
 ROOT=$(pwd)
 
 # Font color
@@ -214,7 +214,7 @@ function build_consumer {
 
   done
 
-  echo "💃 ${GREEN}Build copied to ${BOLD}$projectDirectory${NORMAL}.${NONE} Run the project to see your changes from Argo."
+  echo "💃 ${GREEN}Build copied to ${BOLD}$projectDirectory${NORMAL}.${NONE} Run the project to see your changes from UI Extensions packages."
 
   exit 0
 }

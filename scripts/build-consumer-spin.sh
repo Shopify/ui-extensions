@@ -5,7 +5,7 @@
 usage="
 Usage: $(basename "$0") <workspace> [<package_name>]
 
-Build Argo packages into a project
+Build UI Extensions packages into a project
 
  <workspace>  Target spin workspace, i.e. \`web.test.trish-ta.us.spin.dev\`
  <package_name>    Space separated package names

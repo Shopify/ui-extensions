@@ -1,8 +1,8 @@
 {
-  "name": "argo-checkout",
+  "name": "ui-extensions",
   "version": "0.0.0",
   "private": true,
-  "repository": "https://github.com/Shopify/argo-checkout.git",
+  "repository": "https://github.com/Shopify/ui-extensions.git",
   "workspaces": [
     "./packages/*"
   ],
@@ -12,10 +12,10 @@
     "type-check": "sk type-check",
     "build": "sk build",
     "version-bump": "lerna version --no-push --include-merged-tags",
-    "version-bump:checkout": "lerna version --no-push --ignore-changes 'packages/argo-admin*/**' --include-merged-tags",
-    "version-bump:admin": "lerna version --no-push --ignore-changes 'packages/!(argo-admin*)/**' --include-merged-tags",
+    "version-bump:checkout": "lerna version --no-push --ignore-changes 'packages/admin-ui-extensions*/**' --include-merged-tags",
+    "version-bump:admin": "lerna version --no-push --ignore-changes 'packages/!(admin-ui-extensions*)/**' --include-merged-tags",
     "deploy": "lerna publish from-package --yes",
-    "nuke": "yarn run nuke && rm -rf ./node_modules",
+    "nuke": "lerna clean --yes && rm -rf node_modules && yarn cache clean",
     "build-consumer": "yarnpkg build && ./scripts/build-consumer.sh",
     "build-consumer-spin": "yarnpkg build && ./scripts/build-consumer-spin.sh",
     "restore-consumer": "./scripts/restore-consumer.sh",

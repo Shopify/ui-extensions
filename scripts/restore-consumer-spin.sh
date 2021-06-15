@@ -5,7 +5,7 @@
 usage="
 Usage: $(basename "$0") <workspace>
 
-Restore a project by removing Argo packages and running \`yarn install\`
+Restore a project by removing UI Extension packages and running \`yarn install\`
 
  <workspace>  Target spin workspace, i.e. \`web.test.trish-ta.us.spin.dev\`
 
