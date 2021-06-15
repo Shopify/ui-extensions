@@ -1,6 +1,6 @@
 import {extend, Checkbox} from '@shopify/argo-post-purchase';
 
-extend('Checkout::Feature::Render', (root) => {
+extend('Checkout::PostPurchase::Render', (root) => {
   const checkbox = root.createComponent(
     Checkbox,
     {id: 'checkbox', name: 'checkbox'},

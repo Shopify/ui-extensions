@@ -5,7 +5,7 @@ import {
   View,
 } from '@shopify/argo-post-purchase-react';
 
-render('Checkout::Feature::Render', () => <App />);
+render('Checkout::PostPurchase::Render', () => <App />);
 
 function App() {
   return (
