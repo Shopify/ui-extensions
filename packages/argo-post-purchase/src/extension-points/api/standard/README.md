@@ -8,7 +8,7 @@ The locale of the checkout in which the extension is running. This value is prov
 
 ## `version`
 
-The Argo version being used for this extension. Currently, there is only a single version, `'unstable'`.
+The App Bridge Checkout version being used for this extension. Currently, there is only a single version, `'unstable'`.
 
 ## `extensionPoint`
 

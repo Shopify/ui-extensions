@@ -103,11 +103,11 @@ export interface TextFieldProps {
    * that point, you are expected to store this “committed value” in state, and reflect
    * it in the text field’s `value` property.
    *
-   * This state management model is important given how Argo renders UI. Argo components
+   * This state management model is important given how App Bridge Checkout renders UI. App Bridge Checkout components
    * run on a separate thread from the UI, so they can’t respond to input synchronously.
    * A pattern popularized by [controlled React components](https://reactjs.org/docs/forms.html#controlled-components)
    * is to have the component be the source of truth for the input `value`, and update
-   * the `value` on every user input. The delay in responding to events from an Argo
+   * the `value` on every user input. The delay in responding to events from an App Bridge Checkout
    * extension is only a few milliseconds, but attempting to strictly store state with
    * this delay can cause issues if a user types quickly, or if the buyer is using a
    * lower-powered device. Having the UI thread take ownership for “in progress” input,

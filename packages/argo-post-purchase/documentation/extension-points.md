@@ -6,7 +6,7 @@ For more information, refer to [the post-purchase extension overeview](/apps/che
 
 # Extension points
 
-An Argo extension will register for one or more extension points using [`shopify.extend()`](./globals.md). An extension point in an Argo extension is a plain JavaScript function. This function receives some API for interacting with the application, and is expected to return a value in a specific shape. The input arguments and the output type are different for each extension point.
+An App Bridge Checkout extension will register for one or more extension points using [`shopify.extend()`](./globals.md). An extension point in an App Bridge Checkout extension is a plain JavaScript function. This function receives some API for interacting with the application, and is expected to return a value in a specific shape. The input arguments and the output type are different for each extension point.
 
 The current extension points are available for post-purchase:
 

@@ -58,57 +58,69 @@ interface InputData {
   /** Post Purchase API version */
   version: string;
 }
-
+/** Represents the initial purchase's state when the extension is loaded. */
 interface Purchase {
-  /** Initial purchase's unique identifier */
+  /** Initial purchase's unique identifier. */
   referenceId: string;
+  /** The unique identifier of the buyer. */
   customerId?: string;
+  /** The unique identifier of the country for shipping. */
   destinationCountryCode?: string;
+  /** The total price of the purchase, including shipping, taxes and discounts. */
   totalPriceSet: MoneyBag;
-  /** Items being purchased */
+  /** Items being purchased. */
   lineItems: LineItem[];
 }
-
+/** The shop where the extension is running. */
 interface Shop {
+  /** The shop's unique identifier. */
   id: number;
+  /** The primary domain of the shop (ending with “.myshopify.com”). */
   domain: string;
   /**
-   * Only public listed metafields are available
-   * https://shopify.dev/tutorials/retrieve-metafields-with-storefront-api#expose-metafields-to-the-storefront-api
+   * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
+   *
    */
   metafields: Metafield[];
 }
-
+/** The items purchased. */
 interface LineItem {
   /** Product being purchased */
   product: Product;
+  /** The amount of items for the line. */
   quantity: number;
+  /** The total price of the line item, with line discounts. */
   totalPriceSet: MoneyBag;
 }
-
+/** The product for purchase. */
 interface Product {
+  /** The product's unique identifier. */
   id: number;
+  /** The product title. */
   title: string;
   /** Variant being purchased */
   variant: Variant;
-
   /**
-   * only public listed metafields are available
-   * https://shopify.dev/tutorials/retrieve-metafields-with-storefront-api#expose-metafields-to-the-storefront-api
+   * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
+   *
    */
   metafields: Metafield[];
 }
 
 interface Variant {
+  /** The variant's unique identifier. */
   id: number;
+  /** The variant title. */
   title: string;
   /**
-   * Only public listed metafields are available
-   * https://shopify.dev/tutorials/retrieve-metafields-with-storefront-api#expose-metafields-to-the-storefront-api
+   * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
+   *
    */
   metafields: Metafield[];
 }
-
+/** The metafields associated with a resource.
+* You'll need to individually request which metafields you need in the [configuration file](/api/checkout/extension-points/#configuration-file).
+*/
 interface Metafield {
   /** The metafield key. */
   key: string;
@@ -121,22 +133,33 @@ interface Metafield {
 }
 /** Requests to attach an explicit discount to a compatible change. */
 interface ExplicitDiscount {
+  /** The discount value. */
   value: number;
+  /** The discount type. */
   valueType: ExplicitDiscountType;
+  /** The reason for adding the discount. */
   title: string;
 }
-
+/** Requests a variant to be added to the initial purchase. */
 interface AddVariantChange {
+  /** A fixed value of "add_variant". */
   type: 'add_variant';
+  /** The product variant to add. */
   variantId: number;
+  /** The quantity of the specified variant. */
   quantity: number;
+  /** Refer to [ExplicitDiscount](/api/checkout/extension-points/api#explicitdiscount). */
   discount?: ExplicitDiscount;
 }
-
+/** Requests a shipping line to be added to the initial purchase. */
 interface AddShippingLineChange {
+  /** A fixed value of "add_shipping_line". */
   type: 'add_shipping_line';
+  /** The shipping line price without taxes. */
   price: number;
+  /** The merchant-facing line title. */
   title?: string;
+  /** The buyer-facing line title. */
   presentmentTitle?: string;
 }
 
@@ -157,16 +180,19 @@ interface Changeset {
   /** A change request. */
   changes: Changes;
 }
-
+/** A list of requested changes to be made to the initial purchase. */
 interface Money {
+  /** The actual amount. */
   amount: string;
-  /** In ISO 4217 format */
+  /** In ISO 4217 format. */
   currencyCode: string;
 }
 
 /** Represents an amount in both shop and presentment currencies. */
 interface MoneyBag {
+  /** Amount in shop currency. */
   shopMoney: Money;
+  /** Amount in presentment currency. */
   presentmentMoney: Money;
 }
 
