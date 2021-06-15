@@ -2,7 +2,12 @@ const fs = require('fs');
 const {exec} = require('child_process');
 const prompts = require('prompts');
 
-const {getFileContent, killProcess, pascalCaseValidator, toPascalCase} = require('./utils');
+const {
+  getFileContent,
+  killProcess,
+  pascalCaseValidator,
+  toPascalCase,
+} = require('./utils');
 
 function newExtensionPoint(id, name) {
   return `
@@ -60,7 +65,7 @@ async function createExtensionPoint() {
   const {page, identifier} = await prompt();
   const name = toPascalCase(identifier);
   const id = extensionPointId(page, name);
-  const baseUrl = `${process.cwd()}/packages/argo-admin/src/extension-points`;
+  const baseUrl = `${process.cwd()}/packages/admin-ui-extensions/src/extension-points`;
   const props = {baseUrl, identifier, id, name, page};
 
   updateOrCreatePageFiles(props);
@@ -96,14 +101,12 @@ function updateExtensionPoint(baseUrl, identifier, name) {
   const importContent = getExtensionPointImport(identifier, name);
 
   // Return early if we've already imported this extension definition
-  if(content.match(importContent)) {
+  if (content.match(importContent)) {
     return;
   }
 
   const newContent = content
-    .replace(/\/\*\nPlaceholder for new imports\n\*\//,
-      `\n${importContent}`,
-    )
+    .replace(/\/\*\nPlaceholder for new imports\n\*\//, `\n${importContent}`)
     .replace(
       /export type ExtensionPoint =(.+?);/s,
       `export type ExtensionPoint =$1 | ${name}ExtensionPoint;`,
@@ -115,7 +118,8 @@ function updateExtensionPoint(baseUrl, identifier, name) {
     .replace(
       /export type ExtensionPointCallback =(.+?);/s,
       `export type ExtensionPointCallback =$1 & ${name}ExtensionPointCallback;`,
-    ).trimStart();
+    )
+    .trimStart();
 
   update(path, newContent);
   console.log(`💥  Updated ${readablePath}`);
@@ -126,7 +130,8 @@ async function prompt() {
     {
       type: 'select',
       name: 'page',
-      message: 'Where in the Admin would you like to expose your new Extension Point?',
+      message:
+        'Where in the Admin would you like to expose your new Extension Point?',
       choices: [
         {title: 'Customer Details', value: 'CustomerDetails'},
         {title: 'Customer List', value: 'CustomerList'},
@@ -141,8 +146,10 @@ async function prompt() {
     {
       type: (prev) => (prev == 'other' ? 'text' : null),
       name: 'page',
-      message: 'Enter the page where you would like to expose your Extension Point (PascalCase).',
-      validate: (value) => (pascalCaseValidator(value) ? true : 'Page must use PascalCase'),
+      message:
+        'Enter the page where you would like to expose your Extension Point (PascalCase).',
+      validate: (value) =>
+        pascalCaseValidator(value) ? true : 'Page must use PascalCase',
     },
     {
       type: 'text',
@@ -168,12 +175,12 @@ function update(path, newContent) {
 function formatFiles() {
   // Fix import orders and other eslint issues
   exec('yarn run lint --fix', (err, stdout) => {
-    if(err) {
+    if (err) {
       console.log('error:', stdout);
     }
   });
   exec('yarn run format', (err, stdout) => {
-    if(err) {
+    if (err) {
       console.log('error:', stdout);
     }
   });

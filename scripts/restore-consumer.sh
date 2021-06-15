@@ -5,7 +5,7 @@
 usage="
 Usage: $(basename "$0") <target_project>
 
-Restore a project by removing Argo packages and running \`yarn install\`
+Restore a project by removing UI Extension packages and running \`yarn install\`
 
  <target_project>  Target project relative to Shopify root \`src/github.com/shopify\`, i.e. \`web\` or \`checkout-web\`
 

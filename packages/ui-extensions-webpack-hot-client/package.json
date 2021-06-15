@@ -1,0 +1,34 @@
+{
+  "name": "@shopify/ui-extensions-webpack-hot-client",
+  "version": "0.1.7",
+  "description": "A custom webpack-hot-client implementation that works in the web worker environment of a UI extension",
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "sideEffects": false,
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./": "./",
+    "./worker": {
+      "esnext": "./worker.esnext",
+      "import": "./worker.mjs",
+      "require": "./worker.js"
+    }
+  },
+  "devDependencies": {
+    "@types/webpack": "^4.41.13"
+  },
+  "dependencies": {
+    "webpack": "^4.43.0"
+  }
+}

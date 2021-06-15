@@ -5,7 +5,7 @@
 usage="
 Usage: $(basename "$0") <target_project> [<package_name>]
 
-Build Argo packages into a project
+Build UI Extensions packages into a project
 
  <target_project>  Target project relative to Shopify root \`src/github.com/shopify\`, i.e. \`web\` or \`checkout-web\`
  <package_name>    Space separated package names

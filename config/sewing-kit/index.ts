@@ -9,9 +9,9 @@ import {react} from '@sewing-kit/plugin-react';
 import {buildFlexibleOutputs} from '@sewing-kit/plugin-package-flexible-outputs';
 import type {} from '@sewing-kit/plugin-jest';
 
-const PLUGIN = 'ArgoCheckout.DefaultPackage';
+const PLUGIN = 'CheckoutUIExtensions.DefaultPackage';
 
-export function argoPackage({react: useReact = false} = {}) {
+export function uiExtensionsPackage({react: useReact = false} = {}) {
   return createComposedProjectPlugin(PLUGIN, (composer) => {
     composer.use(javascript(), typescript(), buildFlexibleOutputs());
 
@@ -21,7 +21,7 @@ export function argoPackage({react: useReact = false} = {}) {
   });
 }
 
-export function argoCheckoutBinary() {
+export function checkouUiExtensionsBinary() {
   return createComposedProjectPlugin(PLUGIN, [
     javascript(),
     typescript(),
