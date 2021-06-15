@@ -300,11 +300,11 @@ function getAdditionalContentFor(contentFolder: string, shopifyDevUrl: string) {
   }
 
   markdown = markdown.replace(
-    /https:\/\/github\.com\/Shopify\/argo\/tree\/main\/packages\/argo-checkout\/src\/components\/(\w+)/g,
+    /https:\/\/github\.com\/Shopify\/ui-extensions\/tree\/main\/packages\/checkout-ui-extensions\/src\/components\/(\w+)/g,
     (_match, p1) => `${shopifyDevUrl}/components/${p1}`.toLowerCase(),
   );
   markdown = markdown.replace(
-    /https:\/\/github\.com\/Shopify\/checkout-web\/tree\/master\/packages\/argo-checkout\/src\/components\/(\w+)/g,
+    /https:\/\/github\.com\/Shopify\/checkout-web\/tree\/master\/packages\/checkout-ui-extensions\/src\/components\/(\w+)/g,
     (_match, p1) => `${shopifyDevUrl}/components/${p1}`.toLowerCase(),
   );
 

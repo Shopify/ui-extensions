@@ -1,18 +1,18 @@
 import {components, extensionPoints} from './typedoc/shopify-dev-renderer';
 
 const paths = {
-  inputRoot: './packages/argo-admin',
+  inputRoot: './packages/admin-ui-extensions',
   packages: {
-    JavaScript: './packages/argo-admin',
-    React: './packages/argo-admin-react',
+    JavaScript: './packages/admin-ui-extensions',
+    React: './packages/admin-ui-extensions-react',
   },
-  outputRoot: '../shopify-dev/content/tools/argo-admin',
-  shopifyDevUrl: '/tools/argo-admin',
+  outputRoot: '../shopify-dev/content/tools/admin-ui-extensions',
+  shopifyDevUrl: '/tools/admin-ui-extensions',
 };
 
 components(paths, {
-  title: 'Components for Argo Admin',
-  frontMatterDescription: 'A list of components for Argo Admin.',
+  title: 'Components for Admin UI extensions',
+  frontMatterDescription: 'A list of components for Admin UI extensions.',
   description: `
 Each component has general guidelines for usage as well as additional information regarding the behavior on certain platforms.
 

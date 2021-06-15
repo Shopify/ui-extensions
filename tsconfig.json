@@ -3,14 +3,14 @@
   "include": [],
   "references": [
     {"path": "./tsconfig.repo.json"},
-    {"path": "./packages/argo-checkout"},
-    {"path": "./packages/argo-checkout-react"},
-    {"path": "./packages/argo-post-purchase"},
-    {"path": "./packages/argo-post-purchase-react"},
-    {"path": "./packages/argo-webpack-hot-client"},
-    {"path": "./packages/argo-run"},
-    {"path": "./packages/argo-admin"},
-    {"path": "./packages/argo-admin-react"},
+    {"path": "./packages/checkout-ui-extensions"},
+    {"path": "./packages/checkout-ui-extensions-react"},
+    {"path": "./packages/post-purchase-ui-extensions"},
+    {"path": "./packages/post-purchase-ui-extensions-react"},
+    {"path": "./packages/ui-extensions-webpack-hot-client"},
+    {"path": "./packages/checkout-ui-extensions-run"},
+    {"path": "./packages/admin-ui-extensions"},
+    {"path": "./packages/admin-ui-extensions-react"},
     {"path": "./packages/ui-extensions"}
   ]
 }

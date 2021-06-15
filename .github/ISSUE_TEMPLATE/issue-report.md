@@ -4,11 +4,11 @@ about: Let us know about an issue you’ve found
 labels: 'bug'
 ---
 
-<!-- For feature requests, please use the following template: https://github.com/Shopify/argo/issues/new?labels=enhancement&template=feature-request.md -->
+<!-- For feature requests, please use the following template: https://github.com/Shopify/ui-extensions/issues/new?labels=enhancement&template=feature-request.md -->
 
 ## Please list the package(s) involved in the issue, and include the version you are using
 
-<!-- e.g. argo-checkout V0.10.1, argo-admin-react V0.11.0 -->
+<!-- e.g. checkout-ui-extensions V0.10.1, admin-ui-extensions-react V0.11.0 -->
 
 ## Describe the bug
 
