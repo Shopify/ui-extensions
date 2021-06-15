@@ -305,13 +305,23 @@ export function strip(content: string) {
   );
 }
 
+/**
+ * extract first sentence (line or up to '.') for yaml description field
+ */
 export function firstSentence(content: string) {
   const lines = content.split(/(\n|\. )/g);
   let firstSentence = lines.length ? lines[0] : content;
+
+  // try to split on period if first line doesn't have one
+  if (lines.length && lines[0].indexOf('.') !== 0) {
+    const sentences = content.split('.');
+    firstSentence = sentences[0];
+  }
+
   if (firstSentence[firstSentence.length - 1] !== '.') {
     firstSentence += '.';
   }
-  return firstSentence;
+  return firstSentence.replace('\n', ' ');
 }
 
 function paramsType(
