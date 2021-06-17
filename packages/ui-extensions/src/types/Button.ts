@@ -12,15 +12,13 @@ export interface BaseButtonProps {
    * @default 'primary'*/
   kind?: 'primary' | 'secondary' | 'plain';
   /**
-   *  Specifies the color of the Button. The button will keep the style of the chodsen `kind`,
+   *  Specifies the color of the Button. The button will keep the style of the chosen `kind`,
    *  but replace its color according to the appearance.
    *
    * `monochrome`: button will inherit the color of its parent
    * `critical`: button will take inherit the color of the Critical color group (in Checkout)
    *  		 and map to 'destructive' (in Admin/Polaris). Typically used for destructive actions.
    *
-   *  Excludes 'success' | 'warning' since buttons in a Banner will be `monochrome`
-   *  and use the default colors set by the Banner.
    */
   appearance?: 'monochrome' | 'critical';
   /** Changes the size of the button
@@ -36,10 +34,6 @@ export interface BaseButtonProps {
    */
   loading?: boolean;
   /**
-   * A label replacing the loading indicator when user prefers reduced motion
-   */
-  loadingLabel?: string;
-  /**
    * A label that will be announced to buyers using assistive technologies
    */
   accessibilityLabel?: string;
@@ -47,10 +41,6 @@ export interface BaseButtonProps {
    * Disables the button, disallowing any interaction
    */
   disabled?: boolean;
-  /**
-   * Allows the button to submit a form
-   */
-  submit?: boolean;
   /**
    * Callback when pressed
    */
