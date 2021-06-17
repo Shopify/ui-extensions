@@ -115,9 +115,10 @@ interface Variant {
    */
   metafields: Metafield[];
 }
-/** The metafields associated with a resource.
-* You'll need to individually request which metafields you need in the [configuration file](/api/checkout/extension-points/#configuration-file).
-*/
+/**
+ * The metafields associated with a resource.
+ * You'll need to individually request which metafields you need in the [configuration file](/api/checkout/extension-points/#configuration-file).
+ */
 interface Metafield {
   /** The metafield key. */
   key: string;
@@ -245,8 +246,9 @@ interface ChangesetError {
   Useful for grouping errors that can be handled similarily.
   */
   code: string;
-  /** The error description.
-  */
+  /**
+   * The error description.
+   */
   message: string;
 }
 type CalculateChangesetResult =
