@@ -11,9 +11,9 @@ type Components = typeof import('../components');
 type AllComponents = Components[keyof Components];
 
 /** Post-purchase checkout extensions allow developers and Plus merchants to add a post-purchase page directly into the Shopify checkout.
-* The page appears after the order is confirmed, but before the thank you page.
-* Post-purchase checkout extensions can use the `ShouldRender` and `Render` extension points.
-* For more information, refer to the [post-purchase checkout extensions overview](/apps/checkout/post-purchase).
+ * The page appears after the order is confirmed, but before the thank you page.
+ * Post-purchase checkout extensions can use the `ShouldRender` and `Render` extension points.
+ * For more information, refer to the [post-purchase checkout extensions overview](/apps/checkout/post-purchase).
  */
 export interface ExtensionPoints {
   'Checkout::KitchenSink': RenderExtension<
