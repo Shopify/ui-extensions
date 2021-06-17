@@ -1,12 +1,12 @@
 import type {StandardApi} from '../standard';
 import type {ValueOrPromise} from '../shared';
 
-/** Input given to the ShouldRender extension point (Checkout::PostPurchase::ShouldRender) */
+/** Input given to the ShouldRender extension point (Checkout::PostPurchase::ShouldRender). */
 export interface PostPurchaseShouldRenderApi
   extends StandardApi<'Checkout::PostPurchase::ShouldRender'> {
-  /** Input data given to the extension point */
+  /** Input data given to the extension point. */
   inputData: InputData;
-  /** General purpose storage for extensions */
+  /** General purpose storage for extensions. */
   storage: Storage;
 }
 
@@ -16,12 +16,12 @@ export type PostPurchaseShouldRenderResult = ValueOrPromise<{
   render: boolean;
 }>;
 
-/** Input given to the render extension point (Checkout::PostPurchase::Render) */
+/** Input given to the render extension point (Checkout::PostPurchase::Render). */
 export interface PostPurchaseRenderApi
   extends StandardApi<'Checkout::PostPurchase::Render'> {
-  /** Input data given to the extension point */
+  /** Input data given to the extension point. */
   inputData: InputData;
-  /** General purpose storage for extensions */
+  /** General purpose storage for extensions. */
   storage: Storage;
   /** Returns the calculations that would result from the provided changeset being applied. Used to provide cost-clarity for buyers. */
   calculateChangeset(
@@ -36,26 +36,26 @@ export interface PostPurchaseRenderApi
   done(): Promise<void>;
 }
 
-/** General-purpose, key-value browser storage for extensions */
+/** General-purpose, key-value browser storage for extensions. */
 interface Storage {
-  /** Data in the storage during the first load (read-only) */
+  /** Data in the storage during the first load (read-only). */
   initialData: unknown;
-  /** Updates the storage to the value that it's given */
+  /** Updates the storage to the value that it's given. */
   update(data: any): Promise<void>;
 }
-
+/** The data given as input to both extension points. */
 interface InputData {
-  /** Identifier for the extension point */
+  /** Identifier for the extension point. */
   extensionPoint: string;
-  /** Initial purchase */
+  /** Initial purchase. */
   initialPurchase: Purchase;
-  /** Checkout customer locale */
+  /** Checkout customer locale. */
   locale: string;
-  /** Shop where the checkout/order is from */
+  /** Shop where the checkout/order is from. */
   shop: Shop;
-  /** JWT representing the input_data payload */
+  /** JWT representing the input_data payload. */
   token: string;
-  /** Post Purchase API version */
+  /** Post Purchase API version. */
   version: string;
 }
 /** Represents the initial purchase's state when the extension is loaded. */
@@ -79,13 +79,12 @@ interface Shop {
   domain: string;
   /**
    * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
-   *
    */
   metafields: Metafield[];
 }
 /** The items purchased. */
 interface LineItem {
-  /** Product being purchased */
+  /** Product being purchased. */
   product: Product;
   /** The amount of items for the line. */
   quantity: number;
@@ -98,15 +97,14 @@ interface Product {
   id: number;
   /** The product title. */
   title: string;
-  /** Variant being purchased */
+  /** Variant being purchased. */
   variant: Variant;
   /**
    * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
-   *
    */
   metafields: Metafield[];
 }
-
+/** The product variant for purchase. */
 interface Variant {
   /** The variant's unique identifier. */
   id: number;
@@ -114,7 +112,6 @@ interface Variant {
   title: string;
   /**
    * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
-   *
    */
   metafields: Metafield[];
 }
