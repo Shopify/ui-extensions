@@ -2,7 +2,7 @@
 
 This API reference describes the technical details of how to build your post-purchase app extension. It covers the available extension points, including their input and output types and their structure.
 
-For more information, refer to [the post-purchase extension overeview](/apps/checkout/post-purchase/) and [*Building a post-purchase checkout extension*](/apps/checkout/post-purchase/getting-started-post-purchase-extension).
+For more information, refer to [the post-purchase extension overview](/apps/checkout/post-purchase/) and [Building a post-purchase checkout extension](/apps/checkout/post-purchase/getting-started-post-purchase-extension).
 
 # Extension points
 

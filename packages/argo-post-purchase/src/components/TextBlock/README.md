@@ -1,6 +1,7 @@
 # TextBlock
 
-TextBlock is used to render a block of text that occupies the full width available. Usually used to render paragraphs or text.
+TextBlock is used to render a block of text that occupies the full width available.
+Usually used to render paragraphs or text.
 
 ## Props
 optional = ?

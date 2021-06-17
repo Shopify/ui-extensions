@@ -16,4 +16,4 @@ optional = ?
 | loadingLabel? | <code>string</code> | Accessible label for the loading indicator when user prefers reduced motion  |
 | accessibilityLabel? | <code>string</code> | A label used for buyers using assistive technologies. When provided, any 'children' supplied to this component are hidden from being seen for accessibility purposes to prevent duplicate content from being read.  |
 | disabled? | <code>boolean</code> | Disables the button, disallowing any interaction  |
-| onPress? | <code>() => void</code> |  Callback when pressed    |
+| onPress? | <code>() => void</code> | Callback when pressed  |

@@ -1,6 +1,7 @@
 # Image
 
-Image is used for large format, responsive images. For small images use Thumbnail.
+Image is used for large format, responsive images.
+For small images use Thumbnail.
 
 ## Props
 optional = ?
