@@ -1,6 +1,7 @@
 # Spinner
 
-Spinner is used to notify buyers that their action is being processed. The Spinner is usually used when sending or receiving data from a server.
+Spinner is used to notify buyers that their action is being processed.
+The Spinner is usually used when sending or receiving data from a server.
 
 ## Props
 optional = ?

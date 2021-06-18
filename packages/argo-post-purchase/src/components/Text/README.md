@@ -1,6 +1,7 @@
 # Text
 
-Text is used to visually style and provide semantic value for a small piece of text content.
+Text is used to visually style and provide semantic value for a small piece of text
+content.
 
 ## Props
 optional = ?

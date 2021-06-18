@@ -1,6 +1,8 @@
 # InlineSpacer
 
-InlineSpacer is used to create empty inline space, typically when variable spacing is needed between multiple elements. Note that you should favor InlineStack when spacing between all elements is the same.
+InlineSpacer is used to create empty inline space, typically when variable spacing
+is needed between multiple elements.
+Note that you should favor InlineStack when spacing between all elements is the same.
 
 ## Props
 optional = ?

@@ -1,6 +1,7 @@
 # TextContainer
 
-TextContainer is used to wrap text elements such as TextBlock and Heading, and provide consistent vertical spacing.
+TextContainer is used to wrap text elements such as TextBlock and Heading, and provide
+consistent vertical spacing.
 
 ## Props
 optional = ?

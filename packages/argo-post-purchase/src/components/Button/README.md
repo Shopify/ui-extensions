@@ -14,4 +14,4 @@ optional = ?
 | loading? | <code>boolean</code> | Replaces content with a loading indicator  |
 | loadingLabel? | <code>string</code> | Accessible label for the loading indicator when user prefers reduced motion  |
 | disabled? | <code>boolean</code> | Disables the button, disallowing any interaction  |
-| onPress? | <code>() => void</code> |  Callback when pressed    |
+| onPress? | <code>() => void</code> | Callback when pressed  |

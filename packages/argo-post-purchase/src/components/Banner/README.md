@@ -1,6 +1,7 @@
 # Banner
 
-A Banner is used to give feedback and is typically displayed at the top of a page or section.
+A Banner is used to give feedback and is typically displayed at the top of a
+page or section.
 
 ## Props
 optional = ?

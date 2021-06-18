@@ -1,8 +1,12 @@
 # Radio
 
-Use radios to present each item in a list of options where buyers must make a single selection. Radio components should always appear in groups of two or more; if a buyer has only a single, boolean option, use a checkbox instead.
+Use radios to present each item in a list of options where buyers must
+make a single selection. Radio components should always appear in groups of
+two or more; if a buyer has only a single, boolean option, use a checkbox
+instead.
 
-Unlike most field components, any children passed to this component will be used as the label for the checkbox.
+Unlike most field components, any children passed to this component will be used
+as the label for the checkbox.
 
 ## Props
 optional = ?
@@ -15,4 +19,4 @@ optional = ?
 | checked? | <code>boolean</code> | Whether the radio is selected.  |
 | disabled? | <code>boolean</code> | Whether the radio can be changed.  |
 | accessibilityLabel? | <code>string</code> | A label to use for the field that will be used for buyers using assistive technologies. When provided, any `children` supplied to this component are hidden from being seen for accessibility purposes to prevent duplicate content from being read.  |
-| onChange? | <code>(value: boolean) => void</code> |  A callback that is run whenever the checkbox is changed. This callback is called with a boolean indicating whether the radio should now be active or inactive. This component is [controlled](https://reactjs.org/docs/forms.html#controlled-components), so you **must** store this value in state and reflect it back in the `checked` or `value` props.    |
+| onChange? | <code>(value: boolean) => void</code> | A callback that is run whenever the checkbox is changed. This callback is called with a boolean indicating whether the radio should now be active or inactive. This component is [controlled](https://reactjs.org/docs/forms.html#controlled-components), so you **must** store this value in state and reflect it back in the `checked` or `value` props.  |

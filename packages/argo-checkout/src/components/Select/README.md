@@ -1,6 +1,7 @@
 # Select
 
-Selects let buyers choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
+Selects let buyers choose one option from an options menu. Consider select
+when you have 4 or more options, to avoid cluttering the interface.
 
 ## Props
 optional = ?
@@ -18,15 +19,13 @@ optional = ?
 | error? | <code>string</code> | An error label to present with the field.  |
 | autocomplete? | <code><a href="#autocomplete">Autocomplete</a> &#124; boolean</code> | A hint as to the intended content of the field.<br /><br />When set to `true`, this property indicates that the field should support autofill, but you do not have any more semantic information on the intended contents.<br /><br />When set to `false`, you are indicating that this field contains sensitive information, or contents that are never saved, like one-time codes. Note that it is impossible to prevent autocomplete in some browsers, so do not depend on its absence.<br /><br />Alternatively, you can provide an `Autocomplete` object, which describes the specific data you would like to be entered into this field during autocomplete.  |
 | placeholder? | <code>string</code> | The text displayed in the select when no value is provided.  |
-| onChange? | <code>(value: string) => void</code> |  A callback that is run whenever the selected option changes. This callback is called with the string `value` of the selected `option`. This component is [controlled](https://reactjs.org/docs/forms.html#controlled-components), so you **must** store this value in state and reflect it back in the `value` prop of the select.    |<a name="Autocomplete"></a>
+| onChange? | <code>(value: string) => void</code> | A callback that is run whenever the selected option changes. This callback is called with the string `value` of the selected `option`. This component is [controlled](https://reactjs.org/docs/forms.html#controlled-components), so you **must** store this value in state and reflect it back in the `value` prop of the select.  |<a name="Autocomplete"></a>
 
 ### Autocomplete
 
-A descriptor for selecting the data a field would like to receive during autocomplete. This attribute is modeled off of a limited set of the autocomplete values supported in browsers.
-
-@see
-
-https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens
+A descriptor for selecting the data a field would like to receive during
+autocomplete. This attribute is modeled off of a limited set of the autocomplete
+values supported in browsers.
 
 | Name | Type | Description |
 | --- | --- | --- |
