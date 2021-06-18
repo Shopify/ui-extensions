@@ -61,7 +61,7 @@ export type InputForRenderExtension<
 > = ExtractedInputFromRenderExtension<RenderExtensions[ID]>;
 
 /**
- * For a given rendering extension point, returns the App Bridge Checkout components that the
+ * For a given rendering extension point, returns the components that the
  * extension point supports.
  */
 export type AllowedComponentsForRenderExtension<
