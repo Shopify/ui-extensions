@@ -21,8 +21,8 @@ const postPurchase = {
     JS: './packages/argo-post-purchase',
     React: './packages/argo-post-purchase-react',
   },
-  outputRoot: '../shopify-dev/content/api/checkout',
-  shopifyDevUrl: '/api/checkout',
+  outputRoot: '../shopify-dev/content/api/checkout-extensions',
+  shopifyDevUrl: '/api/checkout-extensions',
   shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
 };
 
