@@ -1,6 +1,6 @@
 # `checkout-ui-extensions-run`
 
-This package provides a command line interface for developing and building Checkout UI extensions.
+This package provides a command line interface for developing and building Checkout UI Extensions.
 
 ## Installation
 
@@ -31,26 +31,6 @@ This command will print the `localhost` address of the asset server when it star
 
 ```bash
 $ yarn checkout-ui-extensions-run dev --port 3000
-```
-
-If there is a website that can load a preview of your extension, this command can automatically navigate your browser to that page on start. To do so, pass a `--open` flag with the URL to navigate to:
-
-```bash
-$ yarn checkout-ui-extensions-run dev --open https://argogogo.dev
-```
-
-This command will open your default browser to the `open` URL, with an `extension` query parameter set to a JSON-stringified version of the extension asset’s URL. Additionally, if you pass an `--extension-point` flag to this command, it will be forwarded as an `extension-point` query parameter when the URL is opened in a browser.
-
-The most complex example might look something like this:
-
-```bash
-$ yarn checkout-ui-extensions-run dev --open https://argogogo.dev --extension-point Checkout::PostPurchase::ShouldRender
-```
-
-Which would open your default browser to a the following URL, assuming the default asset server port is available:
-
-```
-https://argogogo.dev?extension=%2522http%253A%252F%252Flocalhost%253A8910%252Fassets%252Fextension.js%2522&extension-point=Checkout::PostPurchase::ShouldRender
 ```
 
 ### Browser extension and `/data` endpoint

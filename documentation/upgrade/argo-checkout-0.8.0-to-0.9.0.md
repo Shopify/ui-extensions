@@ -1,3 +1,5 @@
+NOTE: Some of the packages discused in this guide have been renamed in later releases.
+
 # Upgrading from `@shopify/argo-checkout(-react)` 0.8.x to 0.9.x
 
 In `@shopify/argo-checkout` and `@shopify/argo-checkout-react` version 0.9.x, significant changes were made to the build process to enable smaller bundle sizes.

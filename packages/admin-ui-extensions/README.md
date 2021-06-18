@@ -1,6 +1,6 @@
 # Admin UI Extensions
 
-Admin UI Extensions is a library that enables developers to write custom JavaScript to be sent to and rendered within the Shopify Admin UI on Web, Android, and iOS. It makes use of Shopify's [remote-ui](https://github.com/Shopify/remote-ui) library, which exposes the methods to create a `RemoteRoot` -- a root node that communicates operations (adding or removing children, changing properties of components, etc.) through a [`MessageChannel`](https://github.com/Shopify/remote-ui/blob/dae08cda64117bd1ab24356bdb94cd9dc36d650c/packages/web-workers/README.md#advanced.) to the Shopify app.
+Admin UI Extensions is a library that enables developers to write custom JavaScript to be sent to and rendered within the Shopify Admin UI on Web, Android, and iOS. It makes use of Shopify's [remote-ui](https://github.com/Shopify/remote-ui) library, which exposes the methods to create a `RemoteRoot` -- a root node that communicates operations (adding or removing children, changing properties of components, etc.) through a [`MessageChannel`](https://github.com/Shopify/remote-ui/blob/dae08cda64117bd1ab24356bdb94cd9dc36d650c/packages/web-workers/README.md#advanced) to the Shopify app.
 
 ## Usage
 
@@ -8,7 +8,7 @@ Admin UI Extensions is a library that enables developers to write custom JavaScr
 import {extend, ExtensionPoint, Text} from '@shopify/admin-ui-extensions';
 
 extend('App', (root) => {
-  const text = root.createComponent(TextField, {
+  const text = root.createComponent(Text, {
     style: 'strong',
     alignment: 'center',
   });

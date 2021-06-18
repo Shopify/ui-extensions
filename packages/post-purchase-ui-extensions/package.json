@@ -1,6 +1,6 @@
 {
   "name": "@shopify/post-purchase-ui-extensions",
-  "description": "The API for UI extensions that run in the post-purchase step of Shopify’s Checkout",
+  "description": "The API for UI Extensions that run in the post-purchase step of Shopify’s Checkout",
   "version": "0.9.3",
   "publishConfig": {
     "access": "public",
