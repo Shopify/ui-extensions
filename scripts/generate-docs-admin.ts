@@ -11,8 +11,8 @@ const paths = {
 };
 
 components(paths, {
-  title: 'Components for Admin UI extensions',
-  frontMatterDescription: 'A list of components for Admin UI extensions.',
+  title: 'Components for Admin UI Extensions',
+  frontMatterDescription: 'A list of components for Admin UI Extensions.',
   description: `
 Each component has general guidelines for usage as well as additional information regarding the behavior on certain platforms.
 

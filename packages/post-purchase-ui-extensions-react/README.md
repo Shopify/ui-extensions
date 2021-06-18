@@ -1,6 +1,6 @@
 # `@shopify/post-purchase-ui-extensions-react`
 
-This library provides utilities for writing UI extensions for Checkout post-purchase using [React](https://reactjs.org).
+This library provides utilities for writing UI Extensions for Checkout post-purchase using [React](https://reactjs.org).
 
 ## Installation
 
@@ -10,7 +10,7 @@ $ yarn add @shopify/post-purchase-ui-extensions-react
 
 ## Usage
 
-[UI extensions rendering capabilities](../checkout-ui-extensions/documentation/rendering.md) are built on top of a library called [remote-ui](https://github.com/Shopify/remote-ui). One of the powerful aspects of remote-ui is that it can be the target for JavaScript libraries that support custom (non-DOM) rendering. [React](https://reactjs.org) is one such library, and remote-ui provides a [custom renderer for React](https://github.com/Shopify/remote-ui/tree/main/packages/react) that allows you to use all the power of React, while outputting UI mutations that UI Extensions can understand.
+[UI Extensions rendering capabilities](../checkout-ui-extensions/documentation/rendering.md) are built on top of a library called [remote-ui](https://github.com/Shopify/remote-ui). One of the powerful aspects of remote-ui is that it can be the target for JavaScript libraries that support custom (non-DOM) rendering. [React](https://reactjs.org) is one such library, and remote-ui provides a [custom renderer for React](https://github.com/Shopify/remote-ui/tree/main/packages/react) that allows you to use all the power of React, while outputting UI mutations that UI Extensions can understand.
 
 `@shopify/post-purchase-ui-extensions-react` provides a few additional utilities if you are writing a UI extension in React (it also re-exports all the relevant values from [`@shopify/post-purchase-ui-extensions`](../post-purchase-ui-extensions)). Before you start down this path, though, make sure you are working on an extension that will be complex enough to warrant the additional bundle size of including React. The [core API of remote-ui](https://github.com/Shopify/remote-ui/tree/main/packages/core) is built to be usable directly, and remote-ui provides other bindings, like [this one to `htm`](https://github.com/Shopify/remote-ui/tree/main/packages/htm), that provide some of the ergonomics of React without so much overhead. For additional details, please read the [performance guide](../post-purchase-ui-extensions/documentation/performance.md).
 
@@ -35,7 +35,7 @@ function App({extensionPoint}: Props) {
 }
 ```
 
-If you’ve ever used React on the web, you’re probably used to returning DOM nodes as part of your React components. Because UI extensions execute in a web worker and have no access to the DOM, returning DOM components is an error in UI extensions. Instead, you can return the components you import from `@shopify/post-purchase-ui-extensions-react`, which are the equivalent of the DOM in Post Purchase UI Extensions — they are the “leaf” elements, the lowest-level UI primitives that exist.
+If you’ve ever used React on the web, you’re probably used to returning DOM nodes as part of your React components. Because UI Extensions execute in a web worker and have no access to the DOM, returning DOM components is an error in UI Extensions. Instead, you can return the components you import from `@shopify/post-purchase-ui-extensions-react`, which are the equivalent of the DOM in Post Purchase UI Extensions — they are the “leaf” elements, the lowest-level UI primitives that exist.
 
 ```tsx
 import {render, Button} from '@shopify/post-purchase-ui-extensions-react';

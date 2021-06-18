@@ -9,7 +9,7 @@ import type {
 import {ExtensionApiContext} from './context';
 
 /**
- * Registers your React-based UI extension to run for the selected extension point.
+ * Registers your React-based UI Extension to run for the selected extension point.
  * Additionally, this function will automatically provide the extension API as React
  * context, which you can access anywhere in your extension by using the `useExtensionApi()`
  * hook.

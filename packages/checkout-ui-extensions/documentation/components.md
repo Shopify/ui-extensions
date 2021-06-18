@@ -1,6 +1,6 @@
 # Components
 
-UI Extensions provides many powerful UI components that a [rendering extension](./rendering.md) can use to build an interface. This UI is rendered natively by Shopify, so you can depend on it to be performant, accessible, and work in all of Checkout’s supported browsers.
+UI Extensions provide many powerful UI components that a [rendering extension](./rendering.md) can use to build an interface. This UI is rendered natively by Shopify, so you can depend on it to be performant, accessible, and work in all of Checkout’s supported browsers.
 
 The following components are available as part of UI Extensions for Checkout, but make sure that you check the documentation for your [extension point](./extension-points.md) to ensure the component is available in the extension points you are targeting.
 

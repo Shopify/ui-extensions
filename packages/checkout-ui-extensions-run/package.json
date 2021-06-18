@@ -1,7 +1,7 @@
 {
   "name": "@shopify/checkout-ui-extensions-run",
   "version": "0.4.1",
-  "description": "A command line interface for developing and building Checkout UI extensions",
+  "description": "A command line interface for developing and building Checkout UI Extensions",
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"

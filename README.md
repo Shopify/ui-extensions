@@ -12,13 +12,9 @@ If you’re ready to start building, you’ll want to refer to the documentation
 
 If you want to learn a little more about the patterns found throughout these libraries, and the way that they are rendered into the applications they extend, read on!
 
-## What are UI Extensions, really?
-
-UI Extensions consist of the components, APIs, patterns, and the underlying technology we provide for extending our user interfaces. Let’s dig into some of the things that add up to create UI Extensions.
-
 ### Open-source core
 
-The underlying technology for UI Extensions is [remote-ui](https://github.com/Shopify/remote-ui), an open source technology built by Shopify. remote-ui provides the basic [message passing](https://github.com/Shopify/remote-ui/tree/main/packages/rpc) system that is used by UI extensions to communicate with the “host” application they are extending. remote-ui also provides the [component model](https://github.com/Shopify/remote-ui/tree/main/packages/core) extensions use to describe their UI. If you are familiar with building for the web, remote-ui is very similar to the DOM — it gives you a programmatic model for defining UI components and attaching UI to the screen.
+The underlying technology for UI Extensions is [remote-ui](https://github.com/Shopify/remote-ui), an open source technology built by Shopify. remote-ui provides the basic [message passing](https://github.com/Shopify/remote-ui/tree/main/packages/rpc) system that is used by UI Extensions to communicate with the “host” application they are extending. remote-ui also provides the [component model](https://github.com/Shopify/remote-ui/tree/main/packages/core) extensions use to describe their UI. If you are familiar with building for the web, remote-ui is very similar to the DOM — it gives you a programmatic model for defining UI components and attaching UI to the screen.
 
 In addition to the basic message passing and component model, remote-ui offers integrations for frameworks like [React](https://github.com/Shopify/remote-ui/tree/main/packages/react) and [Vue](https://github.com/Shopify/remote-ui/tree/main/packages/vue). These integrations are used by UI Extensions to provide framework-specific bindings, allowing developers to use UI frameworks they are already familiar with.
 
@@ -83,12 +79,12 @@ extend('Checkout::Feature::Render', (root) => {
 });
 ```
 
-As with UI components, the UI Extensions extensibility framework lets us provide different arguments to your extension, depending on the extension point you selected. The extension API you receive may also be affected by other factors, like your app’s permissions. For full details on what arguments are passed for each extension point, please refer to the documentation for the [Admin and Checkout surface area you want to extend](#i-just-want-to-build-an-ui-extension-not-learn-about-them).
+Your UI Extension will receive different arguments depending on the extension point you’ve selected. The extension API you receive may also be affected by other factors, like your app’s permissions. For full details on what arguments are passed for each extension point, please refer to the documentation for the [Admin and Checkout surface area you want to extend](#i-just-want-to-build-an-ui-extension-not-learn-about-them).
 
 ## Contributing
 
 We provide the libraries in this repo as public NPM packages so that they can be installed and used in your local project. Because the packages are public, we have also made the repo public. This way, you can easily refer to the in-code comments we use for documenting UI Extensions APIs. However, the code in this repo is not a traditional open source project.
 
-These packages act as the public API Shopify is exposing for UI extensions in our applications, and as a result, we **are not accepting contributions that change or add to these APIs**. Any change to these repos is typically only one part of the full required change, with the rest being done in private Shopify repos that third-party developers do not have access to.
+These packages act as the public API Shopify is exposing for UI Extensions in our applications, and as a result, we **are not accepting contributions that change or add to these APIs**. Any change to these repos is typically only one part of the full required change, with the rest being done in private Shopify repos that third-party developers do not have access to.
 
 Though we are not accepting contributions, we’d still love to hear from you! If you have ideas for new components or APIs, please [raise an issue on this repo](https://github.com/Shopify/ui-extensions/issues/new/choose). We will also happily accept pull requests for fixing typos in the documentation. If you do raise an issue or PR on this repo, please read [the code of conduct](./CODE_OF_CONDUCT.md), which all contributors must adhere to.

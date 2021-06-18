@@ -1,6 +1,6 @@
 # Testing
 
-UI extensions can be tested with any test runner that supports JavaScript. At Shopify, we use [happily use Jest](https://jestjs.io) for all JavaScript testing, but you can use whatever you like, as no testing setup is provided by default. However, the test runner is only one part of the equation. This document outlines how to use the test runner, and some helper libraries provided by Shopify, to write meaningful tests for an extension.
+UI Extensions can be tested with any test runner that supports JavaScript. At Shopify, we use [happily use Jest](https://jestjs.io) for all JavaScript testing, but you can use whatever you like, as no testing setup is provided by default. However, the test runner is only one part of the equation. This document outlines how to use the test runner, and some helper libraries provided by Shopify, to write meaningful tests for an extension.
 
 ## Non-rendering extension points
 
@@ -46,7 +46,7 @@ describe('shouldRender', () => {
 
 A rendering extension point is more complex to test, because these extension points kick off a long-running process where your code can respond to buyer actions with UI updates. Our recommended approach for testing these extensions is to make assertions on the current state of the [`@remote-ui/core` `RemoteRoot` object](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoteroot), which is provided as the first argument for every rendering extension point.
 
-[`@remote-ui/testing`](https://github.com/Shopify/remote-ui/tree/main/packages/testing) is built for exactly this purpose, and it is our recommended approach for testing most UI extensions. To use it, first install it as a dev dependency using `yarn add @remote-ui/testing --dev` or `npm install @remote-ui/testing --save-dev`. You will again need to separate your extension point callback into a function your test can import, like the example below:
+[`@remote-ui/testing`](https://github.com/Shopify/remote-ui/tree/main/packages/testing) is built for exactly this purpose, and it is our recommended approach for testing most UI Extensions. To use it, first install it as a dev dependency using `yarn add @remote-ui/testing --dev` or `npm install @remote-ui/testing --save-dev`. You will again need to separate your extension point callback into a function your test can import, like the example below:
 
 ```ts
 // In extension.js
