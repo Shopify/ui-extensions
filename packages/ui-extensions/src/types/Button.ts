@@ -9,7 +9,7 @@ export interface BaseButtonProps {
    * `primary`: button used for main actions or green-path. Ex: Continue to next step, Discount field
    * `secondary`: button used for secondary actions not blocking user progress. Ex: Download Shop app
    * `plain`: Renders a button that visually looks like a Link
-   * @default 'primary'*/
+   */
   kind?: 'primary' | 'secondary' | 'plain';
   /**
    *  Specifies the color of the Button. The button will keep the style of the chosen `kind`,
@@ -28,7 +28,7 @@ export interface BaseButtonProps {
   /**
    * Whether the button should fill all available inline space.
    * */
-  fill?: boolean;
+  inlineSize?: 'fill';
   /**
    * Replaces content with a loading indicator
    */
