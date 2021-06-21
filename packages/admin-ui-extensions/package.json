@@ -1,6 +1,6 @@
 {
   "name": "@shopify/admin-ui-extensions",
-  "version": "0.12.0-alpha.0",
+  "version": "0.12.0-alpha.1",
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
@@ -17,7 +17,7 @@
   "sideEffects": false,
   "dependencies": {
     "@remote-ui/core": "^2.0.0",
-    "@shopify/ui-extensions": "^0.1.0-alpha.1"
+    "@shopify/ui-extensions": "^0.2.0-alpha.0"
   },
   "publishConfig": {
     "access": "public",

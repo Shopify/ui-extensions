@@ -1,7 +1,7 @@
 {
   "name": "@shopify/post-purchase-ui-extensions-react",
-  "version": "0.9.6-alpha.0",
-  "description": "React bindings for @shopify/post-purchase-ui-extensions-react",
+  "version": "0.10.0-alpha.0",
+  "description": "React bindings for @shopify/post-purchase-ui-extensions",
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@remote-ui/react": "^4.0.0",
-    "@shopify/post-purchase-ui-extensions": "^0.9.4-alpha.0",
+    "@shopify/post-purchase-ui-extensions": "^0.10.0-alpha.0",
     "@types/react": "^17.0.0"
   },
   "peerDependencies": {

@@ -1,7 +1,7 @@
 {
   "name": "@shopify/post-purchase-ui-extensions",
-  "description": "The API for UI extensions that run in the post-purchase step of Shopify’s Checkout",
-  "version": "0.9.4-alpha.0",
+  "description": "The API for UI Extensions that run in the post-purchase step of Shopify’s Checkout",
+  "version": "0.10.0-alpha.0",
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
