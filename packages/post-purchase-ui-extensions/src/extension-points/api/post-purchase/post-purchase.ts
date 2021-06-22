@@ -53,7 +53,7 @@ interface InputData {
   locale: string;
   /** Shop where the checkout/order is from. */
   shop: Shop;
-  /** JWT representing the input_data payload. */
+  /** JWT representing the `input_data` payload. For more information, refer to [JWT specification](/api/checkout-extensions/jwt-specification). */
   token: string;
   /** Post Purchase API version. */
   version: string;
