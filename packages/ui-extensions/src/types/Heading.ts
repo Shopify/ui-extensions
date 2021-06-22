@@ -1,4 +1,4 @@
-type Level = 1 | 2 | 3;
+export type Level = 1 | 2 | 3;
 
 export interface BaseHeadingProps {
   /**
@@ -12,9 +12,8 @@ export interface BaseHeadingProps {
    */
   level?: Level;
   /**
-   * A custom accessibility role for this heading. Currently, only `presentation`
-   * is supported. `presentation` will strip the semantic meaning of the heading,
-   * but leave the visual styling intact.
+   * A custom accessibility role for this heading.
+   * `presentation` will strip the semantic meaning of the heading, but leave the visual styling intact.
    */
   role?: 'presentation';
 }
