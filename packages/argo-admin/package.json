@@ -16,9 +16,7 @@
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@remote-ui/core": "^2.0.0"
-  },
-  "devDependencies": {
+    "@remote-ui/core": "^2.0.0",
     "@shopify/ui-extensions": "^0.1.0-alpha.0"
   },
   "publishConfig": {
