@@ -1,7 +1,7 @@
-import {resolve, extname} from 'path';
+import {resolve} from 'path';
 import * as fs from 'fs';
 
-import type {Paths, Packages} from '../types';
+import type {Paths} from '../types';
 
 import {createDependencyGraph} from '../utilities/dependency-graph';
 
@@ -14,10 +14,13 @@ import {
   strip,
   firstSentence,
   mkdir,
-  renderExamples,
-  findExamplesFor,
 } from './shared';
 import type {Node, Visibility} from './shared';
+
+import {
+  findExamplesForComponent,
+  renderComponentExamplesForComponent,
+} from './components/examples';
 
 export interface Content {
   title: string;
@@ -29,6 +32,7 @@ interface Options {
   subcomponentMap?: {[rootComponent: string]: string[]};
   componentsToSkip?: string[];
   generateReadmes?: boolean;
+  compileExamples?: boolean;
   visibility?: Visibility;
 }
 
@@ -45,6 +49,7 @@ export async function components(
     componentsToSkip = [],
     generateReadmes = false,
     visibility = 'hidden',
+    compileExamples = false,
   } = options;
 
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
@@ -94,9 +99,9 @@ export async function components(
     markdown += renderExampleImageFor(name, paths.shopifyDevAssets);
 
     // 2. Examples
-    const examples = findExamplesFor(name, paths.packages, '/components');
+    const examples = findExamplesForComponent(name, paths.packages);
     if (examples.size > 0) {
-      markdown += renderExamples(examples);
+      markdown += renderComponentExamplesForComponent(examples);
     }
 
     // 3. Props table
@@ -204,7 +209,7 @@ export async function components(
       });
     }
 
-    indexContent.push(`<li><a href="${componentUrl}">${name}</a></li>`);
+    index += `<li><a href="${componentUrl}">${name}</a></li>`;
   });
 
   index += [
