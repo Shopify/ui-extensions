@@ -1,0 +1,37 @@
+{
+  "name": "@shopify/checkout-ui-extensions-react",
+  "version": "0.11.0-alpha.1",
+  "description": "React bindings for @shopify/checkout-ui-extensions",
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "sideEffects": false,
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./": "./"
+  },
+  "dependencies": {
+    "@remote-ui/async-subscription": "^2.0.0",
+    "@remote-ui/react": "^4.0.1",
+    "@shopify/checkout-ui-extensions": "^0.11.0-alpha.1",
+    "@types/react": "^17.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0 <18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    }
+  }
+}
