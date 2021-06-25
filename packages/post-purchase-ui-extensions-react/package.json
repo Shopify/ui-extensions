@@ -21,7 +21,7 @@
     "./": "./"
   },
   "dependencies": {
-    "@remote-ui/react": "^4.0.0",
+    "@remote-ui/react": "^4.1.4",
     "@shopify/post-purchase-ui-extensions": "^0.10.0",
     "@types/react": "^17.0.0"
   },

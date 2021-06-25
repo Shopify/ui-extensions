@@ -2143,49 +2143,68 @@
     native-url "^0.2.6"
     schema-utils "^2.6.5"
 
-"@remote-ui/async-subscription@^2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.0.0.tgz#ee1a32191ba3004cbba71fa53b9946a40277ac5d"
-  integrity sha512-ugOoUHyTyQHMK/ZlXWLExgXx4A8gTywrER9GFlnkf8R4kfFhLa8ICKEv9DEuxvq/LJAOI06/You0Kl8PpUZ7yQ==
+"@remote-ui/async-subscription@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.1.3.tgz#31b95e08c5485626dd881cde048ed6951aafa8f2"
+  integrity sha512-7WoqdOtbIKQ04oiKfLd03PJJX+HpLz7cGgTn0KdnDVRLbZe4+cBs8StRbS9S3F8drKrtdX1D8fNvTQ0GTsZHug==
   dependencies:
-    "@remote-ui/rpc" "^1.0.17"
+    "@remote-ui/rpc" "^1.2.2"
 
-"@remote-ui/core@^2.0.0", "@remote-ui/core@^2.0.1":
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.0.1.tgz#eb429f01a27d1548c0080a9e7ae3fd5d879eeae6"
-  integrity sha512-Rhb40j070KEBBVKK4/wr4G4QcDCt/+IqQ1eLFeW9V3Mgo1bnGERQgGCGVSDI3K7Vs0svKpOGTifA3wGA/MR13A==
+"@remote-ui/core@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.1.3.tgz#b3d0c4070826c96aac5c59ad93592d4c29b13928"
+  integrity sha512-HtubhTyb4FBbaoJQzeoSxM+a88YTt+HIh50iJWu4grS24PY2cjHHok/aINpxASwvZo5653y7oCFV8O1VcQyXGA==
   dependencies:
-    "@remote-ui/rpc" "^1.0.17"
-    "@remote-ui/types" "^1.0.7"
+    "@remote-ui/rpc" "^1.2.2"
+    "@remote-ui/types" "^1.1.0"
 
-"@remote-ui/react@^4.0.0", "@remote-ui/react@^4.0.1", "@remote-ui/react@^4.0.3":
-  version "4.0.3"
-  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.0.3.tgz#ea32f1ca5a7989b68167b46af2ca5df8edf6b166"
-  integrity sha512-9E6YVYmWngIlMxSyz9D7F8u2VdybUx71lR3ID0Rpjh4920Q4aUJbzbw1kyrEGr5wUgst7tBmqUpBTmGNr6KQ5A==
+"@remote-ui/react@^4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.1.3.tgz#e74d783077841ea1c7e4c9923c51ceaf3eb44b2d"
+  integrity sha512-l7AWSiG1Pj+jggnByA4x5HWn1V95+o50TkFV52nKHIii/qz4PQUxSAIBrQNUL1NTlhtYWWnwYoKhIF6iyZ0b1w==
   dependencies:
-    "@remote-ui/async-subscription" "^2.0.0"
-    "@remote-ui/core" "^2.0.1"
-    "@remote-ui/rpc" "^1.0.17"
-    "@remote-ui/web-workers" "^1.4.1"
+    "@remote-ui/async-subscription" "^2.1.3"
+    "@remote-ui/core" "^2.1.3"
+    "@remote-ui/rpc" "^1.2.2"
+    "@remote-ui/web-workers" "^1.5.3"
     "@types/react" ">=17.0.0 <18.0.0"
     react-reconciler ">=0.26.0 <1.0.0"
 
-"@remote-ui/rpc@^1.0.17":
-  version "1.0.17"
-  resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.0.17.tgz#5bc7230680d5a41820eb1fe12d8e4f3c16577c0d"
-  integrity sha512-xeWySnRH8qXzD76lSl50eoncPnQLHe/3VUalYjNImgImeUXgIRYjYq9HQU5c0z6edq7WaegEhdWCTAGHiuDbrQ==
-
-"@remote-ui/types@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@remote-ui/types/-/types-1.0.7.tgz#c4ac74e230ab5c33ee39a327332a11f84cc3dc8e"
-  integrity sha512-Zn+Q2asasiHGN0Gzpyaol48tl24yfWVtWt1fOu4XvgS/iUg97Vj+1VkSrEcRb+burelLAkFXtn4jPcCkW7jikQ==
-
-"@remote-ui/web-workers@^1.4.1":
-  version "1.4.1"
-  resolved "https://registry.yarnpkg.com/@remote-ui/web-workers/-/web-workers-1.4.1.tgz#b1f95f21a4b0211f2b4725e26c9a8c48dee12598"
-  integrity sha512-TYfGiQsDH7er0dle1abjwDoLdrdn6AI/SwYUCr00nhs3NEoEkmphNwup/GRKRoBuRBkfLJ/16Dcw0S5E/DqJtg==
+"@remote-ui/react@^4.1.4":
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.1.4.tgz#94e13401b38c5642b2fefbe273f30245eb04e0ea"
+  integrity sha512-7tuOFLQ1HdaxpdWaznsbqqIiw5YM5URzhPhXr0X7rQjfWn2VLSc6HTgK7dAzcftDKDK5P/lD/oplLPQIHbkchA==
   dependencies:
-    "@remote-ui/rpc" "^1.0.17"
+    "@remote-ui/async-subscription" "^2.1.3"
+    "@remote-ui/core" "^2.1.3"
+    "@remote-ui/rpc" "^1.2.2"
+    "@remote-ui/web-workers" "^1.5.4"
+    "@types/react" ">=17.0.0 <18.0.0"
+    react-reconciler ">=0.26.0 <1.0.0"
+
+"@remote-ui/rpc@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.2.2.tgz#af6ac94f49a95573985fd2ffdb20e53887fa640a"
+  integrity sha512-R4AuKYmSrYDV3c00Wh97B4b0vdHILW243C6jL75mil0aHMH50J1243VY1QECTwVsymUkwP3sXQnIdeX8YxSA2Q==
+
+"@remote-ui/types@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@remote-ui/types/-/types-1.1.0.tgz#fe18b996fd85b1e415f7a9529551ea860f8569f0"
+  integrity sha512-CN+2J90Y0LenLWc0MCamI7QgWHqsYRcNx6mEU0clbDFvCkMw316TxCXm1HdqbtEz3zgxCms6/VYz2LgGADTMZg==
+
+"@remote-ui/web-workers@^1.5.3":
+  version "1.5.3"
+  resolved "https://registry.yarnpkg.com/@remote-ui/web-workers/-/web-workers-1.5.3.tgz#0ff27f91eb2d99031fd7235db309ea508433f1d6"
+  integrity sha512-T037RJc65c3HGytH4A2+nWgm05Kw7y+nSefXiYqG0ULFkoQM7lEaCG5NaGldtaN35SuO02r7QhhVdD4h4mxxeg==
+  dependencies:
+    "@remote-ui/rpc" "^1.2.2"
+
+"@remote-ui/web-workers@^1.5.4":
+  version "1.5.4"
+  resolved "https://registry.yarnpkg.com/@remote-ui/web-workers/-/web-workers-1.5.4.tgz#4a267569feef8c66f4d817094bc391ba2ff4214b"
+  integrity sha512-hhUL3nJmUHPBpdBxQtCBYOxH/PqWZWfKyptudkAfKlJMrGcCkGCLAHILDy3oA+jxSY4+fDQSPpbQJrms63IAIw==
+  dependencies:
+    "@remote-ui/rpc" "^1.2.2"
 
 "@sewing-kit/cli@^0.2.0":
   version "0.2.0"
