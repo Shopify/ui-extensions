@@ -50,6 +50,11 @@ export interface PropertySignature extends Documentable {
   parameters?: ParameterType[];
 }
 
+export interface TypeLiteral extends Documentable {
+  kind: 'TypeLiteral';
+  properties: PropertySignature[];
+}
+
 export interface StringType {
   kind: 'StringType';
 }
@@ -130,6 +135,10 @@ export interface MappedType {
   mapping: string;
 }
 
+export interface NeverKeyword {
+  kind: 'NeverKeyword';
+}
+
 export interface TypeParameter {
   kind: 'TypeParameter';
   constraint?: string;
@@ -160,6 +169,8 @@ export type Type =
   | ArrayType
   | UnknownType
   | AnyType
+  | TypeLiteral
+  | NeverKeyword
   | UndocumentedType
   | LocalReference;
 

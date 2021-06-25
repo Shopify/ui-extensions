@@ -75,7 +75,7 @@ export function dedupe<T>(array: T[]) {
 export function propsTable(
   name: string,
   docs: Documentation | undefined,
-  properties: PropertySignature[],
+  allProperties: PropertySignature[] | PropertySignature[][],
   exports: Node[],
   dir: string,
   additionalPropsTables: string[],
@@ -97,56 +97,76 @@ export function propsTable(
 
   const table = [];
 
-  // table header row
-  const propertiesHaveParameters =
-    properties.filter(({parameters}) => parameters).length > 0;
-  if (propertiesHaveParameters) {
-    table.push(['Type', 'Description']);
-  } else {
-    table.push(['Name', 'Type', 'Description']);
+  function addPropertiesToTable(properties) {
+    if (!table.length) {
+      // table header row
+      const propertiesHaveParameters =
+        properties.filter(({parameters}) => parameters).length > 0;
+      if (propertiesHaveParameters) {
+        table.push(['Type', 'Description']);
+      } else {
+        table.push(['Name', 'Type', 'Description']);
+      }
+    }
+
+    if (table.length > 2) {
+      // "OR" delimiter
+      const propertiesHaveParameters =
+        properties.filter(({parameters}) => parameters).length > 0;
+      if (propertiesHaveParameters) {
+        table.push(['OR', '-']);
+      } else {
+        table.push(['OR', '-', '-']);
+      }
+    }
+
+    properties.forEach(
+      ({name: propName, optional, value, docs: propDocs, parameters}) => {
+        if (propName === 'Checkout::KitchenSink') return;
+
+        if (parameters) {
+          const thisParamType = paramsType(
+            parameters,
+            exports,
+            dir,
+            additionalPropsTables,
+          );
+          const thisPropType = propType(
+            value,
+            exports,
+            dir,
+            additionalPropsTables,
+          );
+
+          const type = `<code>(${thisParamType}): ${thisPropType}</code>`;
+          const description = propDocs
+            ? newLineToBr(strip(propDocs.content))
+            : '';
+          table.push([type, description]);
+        } else {
+          const name = `${propName}${optional ? '?' : ''}`;
+          const type = `<code>${propType(
+            value,
+            exports,
+            dir,
+            additionalPropsTables,
+          )}</code>`;
+
+          const content = propDocs ? strip(propDocs.content) : '';
+          const tags = propDocs?.tags?.length
+            ? propDocs.tags.map(stringifyTag).join('\n')
+            : '';
+          const description = newLineToBr(content + tags);
+
+          table.push([name, type, description]);
+        }
+      },
+    );
   }
 
-  properties.forEach(
-    ({name: propName, optional, value, docs: propDocs, parameters}) => {
-      if (propName === 'Checkout::KitchenSink') return;
-
-      if (parameters) {
-        const thisParamType = paramsType(
-          parameters,
-          exports,
-          dir,
-          additionalPropsTables,
-        );
-        const thisPropType = propType(
-          value,
-          exports,
-          dir,
-          additionalPropsTables,
-        );
-        const type = `<code>(${thisParamType}): ${thisPropType}</code>`;
-        const description = propDocs
-          ? newLineToBr(strip(propDocs.content))
-          : '';
-        table.push([type, description]);
-      } else {
-        const name = `${propName}${optional ? '?' : ''}`;
-        const type = `<code>${propType(
-          value,
-          exports,
-          dir,
-          additionalPropsTables,
-        )}</code>`;
-
-        const content = propDocs ? strip(propDocs.content) : '';
-        const tags = propDocs?.tags?.length
-          ? propDocs.tags.map(stringifyTag).join('\n')
-          : '';
-        const description = newLineToBr(content + tags);
-
-        table.push([name, type, description]);
-      }
-    },
-  );
+  Array.isArray(allProperties[0])
+      ? allProperties.map(properties => addPropertiesToTable(properties))
+      : addPropertiesToTable(allProperties);
 
   markdown += markdownTable(table, {
     stringLength: () => 3,
@@ -185,6 +205,8 @@ function propType(
       return 'string';
     case 'BooleanType':
       return 'boolean';
+    case 'NeverKeyword':
+      return 'never';
     case 'ArrayType':
       return `${propType(
         value.elements,
@@ -225,6 +247,29 @@ function propType(
       );
       return `${anchorLink(value.name)}${params}`;
     case 'UnionType':
+      const isTypeLiterals = value.types.every(type => type.kind === 'TypeLiteral')
+
+      if (isTypeLiterals) {
+        const properties = value.types.map(type => {
+          return type.properties
+        })
+
+        additionalPropsTables.push(
+            propsTable(
+              value.name,
+              undefined,
+              properties,
+              exports,
+              dir,
+              additionalPropsTables,
+              true,
+              3,
+            ),
+          );
+
+        return `${anchorLink(value.name)}${params}`;
+      }
+
       const PIPE = '&#124;';
       const union = value.types
         .map((type: any) => {

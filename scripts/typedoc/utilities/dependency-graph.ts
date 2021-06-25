@@ -219,6 +219,116 @@ function resolveNodeToLocal(
   context: ProcessContext,
   comments?: readonly Comment[],
 ): Exportable | LocalReference {
+  function getInterfaceProperties(rawProperties) {
+    const properties: PropertySignature[] = []
+
+    for (const property of rawProperties) {
+      if (property.type === 'TSCallSignatureDeclaration') {
+        if (property.typeAnnotation == null) {
+          continue;
+        }
+
+        const parameters: ParameterType[] = property.parameters.map(
+          (parameter) => ({
+            kind: 'ParameterType',
+            rest: parameter.type === 'RestElement',
+            name:
+              parameter.type === 'Identifier'
+                ? parameter.name
+                : (parameter.argument as Identifier).name,
+            type:
+              parameter.typeAnnotation == null
+                ? undocumented(node)
+                : (resolveNodeToLocal(
+                    parameter.typeAnnotation,
+                    context,
+                  ) as any),
+          }),
+        );
+
+        properties.push({
+          kind: 'PropertySignature',
+          name: '',
+          optional: false,
+          value: resolveNodeToLocal(property.typeAnnotation, context) as any,
+          docs: docsFromCommentBlocks([property.leadingComments], context),
+          parameters,
+        });
+      } else if (property.type === 'TSPropertySignature') {
+        if (
+          (property.key.type !== 'Identifier' &&
+            property.key.type !== 'StringLiteral') ||
+          property.typeAnnotation == null
+        ) {
+          continue;
+        }
+
+        const name =
+          property.key.type === 'Identifier'
+            ? property.key.name
+            : property.key.value;
+
+        properties.push({
+          kind: 'PropertySignature',
+          name,
+          optional: property.optional ?? false,
+          value: resolveNodeToLocal(property.typeAnnotation, context) as any,
+          docs: docsFromCommentBlocks(
+            [property.leadingComments],
+            context,
+            true,
+          ),
+        });
+      } else if (property.type === 'TSMethodSignature') {
+        if (
+          property.key.type !== 'Identifier' ||
+          property.typeAnnotation == null
+        ) {
+          continue;
+        }
+
+        properties.push({
+          kind: 'PropertySignature',
+          name: property.key.name,
+          optional: property.optional ?? false,
+          value: {
+            kind: 'FunctionType',
+            parameters: property.parameters.map((parameter) => {
+              // if (
+              //   parameter.type !== 'Identifier' ||
+              //   parameter.typeAnnotation == null
+              // ) {
+              //   throw new Error();
+              // }
+
+              return {
+                kind: 'ParameterType',
+                name:
+                  parameter.type === 'Identifier'
+                    ? parameter.name
+                    : (parameter.argument as Identifier).name,
+                rest: parameter.type === 'RestElement',
+                type:
+                  parameter.typeAnnotation == null
+                    ? {kind: 'VoidType'}
+                    : (resolveNodeToLocal(
+                        parameter.typeAnnotation,
+                        context,
+                      ) as any),
+              };
+            }),
+            returnType: property.typeAnnotation
+              ? (resolveNodeToLocal(property.typeAnnotation, context) as any)
+              : {kind: 'VoidType'},
+          },
+          docs: docsFromCommentBlocks([property.leadingComments], context),
+        });
+      }
+    }
+
+    return properties;
+  }
+
   switch (node.type) {
     case 'TSParenthesizedType': {
       return resolveNodeToLocal(node.typeAnnotation, context);
@@ -267,6 +377,9 @@ function resolveNodeToLocal(
           throw new Error();
         }
       }
+    }
+    case 'TSNeverKeyword': {
+      return {kind: 'NeverKeyword'};
     }
     case 'TSStringKeyword': {
       return {kind: 'StringType'};
@@ -324,7 +437,7 @@ function resolveNodeToLocal(
       };
     }
     case 'TSInterfaceDeclaration': {
-      const properties: PropertySignature[] = [];
+      let properties: PropertySignature[] = [];
 
       // If this interface extends another, find the base
       // we're extending and grab its properties
@@ -342,109 +455,7 @@ function resolveNodeToLocal(
         }
       }
 
-      for (const property of node.body.body) {
-        if (property.type === 'TSCallSignatureDeclaration') {
-          if (property.typeAnnotation == null) {
-            continue;
-          }
-
-          const parameters: ParameterType[] = property.parameters.map(
-            (parameter) => ({
-              kind: 'ParameterType',
-              rest: parameter.type === 'RestElement',
-              name:
-                parameter.type === 'Identifier'
-                  ? parameter.name
-                  : (parameter.argument as Identifier).name,
-              type:
-                parameter.typeAnnotation == null
-                  ? undocumented(node)
-                  : (resolveNodeToLocal(
-                      parameter.typeAnnotation,
-                      context,
-                    ) as any),
-            }),
-          );
-
-          properties.push({
-            kind: 'PropertySignature',
-            name: '',
-            optional: false,
-            value: resolveNodeToLocal(property.typeAnnotation, context) as any,
-            docs: docsFromCommentBlocks([property.leadingComments], context),
-            parameters,
-          });
-        } else if (property.type === 'TSPropertySignature') {
-          if (
-            (property.key.type !== 'Identifier' &&
-              property.key.type !== 'StringLiteral') ||
-            property.typeAnnotation == null
-          ) {
-            continue;
-          }
-
-          const name =
-            property.key.type === 'Identifier'
-              ? property.key.name
-              : property.key.value;
-
-          properties.push({
-            kind: 'PropertySignature',
-            name,
-            optional: property.optional ?? false,
-            value: resolveNodeToLocal(property.typeAnnotation, context) as any,
-            docs: docsFromCommentBlocks(
-              [property.leadingComments],
-              context,
-              true,
-            ),
-          });
-        } else if (property.type === 'TSMethodSignature') {
-          if (
-            property.key.type !== 'Identifier' ||
-            property.typeAnnotation == null
-          ) {
-            continue;
-          }
-
-          properties.push({
-            kind: 'PropertySignature',
-            name: property.key.name,
-            optional: property.optional ?? false,
-            value: {
-              kind: 'FunctionType',
-              parameters: property.parameters.map((parameter) => {
-                // if (
-                //   parameter.type !== 'Identifier' ||
-                //   parameter.typeAnnotation == null
-                // ) {
-                //   throw new Error();
-                // }
-
-                return {
-                  kind: 'ParameterType',
-                  name:
-                    parameter.type === 'Identifier'
-                      ? parameter.name
-                      : (parameter.argument as Identifier).name,
-                  rest: parameter.type === 'RestElement',
-                  type:
-                    parameter.typeAnnotation == null
-                      ? {kind: 'VoidType'}
-                      : (resolveNodeToLocal(
-                          parameter.typeAnnotation,
-                          context,
-                        ) as any),
-                };
-              }),
-              returnType: property.typeAnnotation
-                ? (resolveNodeToLocal(property.typeAnnotation, context) as any)
-                : {kind: 'VoidType'},
-            },
-            docs: docsFromCommentBlocks([property.leadingComments], context),
-          });
-        }
-      }
+      properties = properties.concat(getInterfaceProperties(node.body.body));
 
       return {
         kind: 'InterfaceType',
@@ -524,11 +535,13 @@ function resolveNodeToLocal(
       }
     }
 
-    // eslint-disable-next-line no-warning-comments
-    // todo
-    // case 'TSTypeLiteral': {
-
-    // }
+    case 'TSTypeLiteral': {
+      return {
+        kind: 'TypeLiteral',
+        properties: getInterfaceProperties(node.members),
+        docs: docsFromCommentBlocks([node.leadingComments, comments], context),
+      };
+    }
 
     // eslint-disable-next-line no-warning-comments
     // todo
