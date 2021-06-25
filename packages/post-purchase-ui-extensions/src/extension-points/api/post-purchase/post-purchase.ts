@@ -252,16 +252,18 @@ interface ChangesetError {
   message: string;
 }
 type CalculateChangesetResult =
-  | {
-      errors: ChangesetError[];
-      status: 'unprocessed';
-      calculatedPurchase?: never;
-    }
-  | {
-      errors: ChangesetError[];
-      status: 'processed';
-      calculatedPurchase: CalculatedPurchase;
-    };
+  | CalculateChangesetUnprocessedResult
+  | CalculateChangesetProcessedResult;
+interface CalculateChangesetUnprocessedResult {
+  errors: ChangesetError[];
+  status: 'unprocessed';
+  calculatedPurchase?: never;
+}
+interface CalculateChangesetProcessedResult {
+  errors: ChangesetError[];
+  status: 'processed';
+  calculatedPurchase: CalculatedPurchase;
+}
 /** Requests a changeset to be applied to the initial purchase,
 and to charge the buyer with the difference in total price if any. */
 interface ApplyChangesetResult {
