@@ -1,9 +1,9 @@
-import {resolve} from 'path';
+import {resolve, extname} from 'path';
 import * as fs from 'fs';
 
-import type {Paths} from '../types';
+import type {Paths} from '../../types';
 
-import {createDependencyGraph} from '../utilities/dependency-graph';
+import {createDependencyGraph} from '../../utilities/dependency-graph';
 
 import {
   renderYamlFrontMatter,
@@ -14,13 +14,15 @@ import {
   strip,
   firstSentence,
   mkdir,
-} from './shared';
-import type {Node, Visibility} from './shared';
+} from '../shared';
+import type {Node, Visibility} from '../shared';
 
 import {
   findExamplesForComponent,
-  renderComponentExamplesForComponent,
-} from './components/examples';
+  renderExamplesForComponent,
+  renderSandboxComponentExamples,
+  compileComponentExamples,
+} from './utilities';
 
 export interface Content {
   title: string;
@@ -100,34 +102,21 @@ export async function components(
     markdown += renderExampleImageFor(name, paths.shopifyDevAssets);
 
     // 2. Examples
-    const examples = findExamplesForComponent(name, paths.packages);
+    const examples = findExamplesForComponent(
+      name,
+      paths.packages,
+      '/components',
+    );
 
     if (examples.size > 0) {
-      if(compileExamples === true) {
-        const componentExampleFolder = `${componentDocsPath}/${filename}/examples`;
-        if (!fs.existsSync(componentExampleFolder)) {
-          fs.mkdirSync(componentExampleFolder, {recursive: true});
-        }
+      if (compileExamples === true) {
+        const examplesUrl = `/sandbox-examples/${filename}`;
+        const examplesPath = resolve(`../shopify-dev/public/${examplesUrl}`);
 
-        examples.forEach(async (example, key) => {
-          // todo: rollup JSX support
-          if(key === 'React') return;
-
-          try {
-            const compiledContent = await compileForSandbox(example.content)
-
-            fs.writeFile(`${componentExampleFolder}/${example.filename}`, compiledContent, function (err) {
-              if (err) throw err;
-            });
-
-          } catch(error) {
-            console.log(`error compiling ${name}/${key}`)
-            console.log(error)
-          }
-
-        })
+        compileComponentExamples(examples, examplesPath);
+        markdown += renderSandboxComponentExamples(examples, examplesUrl);
       } else {
-        markdown += renderComponentExamplesForComponent(examples);
+        markdown += renderExamplesForComponent(examples);
       }
     }
 
@@ -236,7 +225,7 @@ export async function components(
       });
     }
 
-    index += `<li><a href="${componentUrl}">${name}</a></li>`;
+    indexContent.push(`<li><a href="${componentUrl}">${name}</a></li>`);
   });
 
   index += [
