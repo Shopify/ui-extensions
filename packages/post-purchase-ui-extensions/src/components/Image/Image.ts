@@ -14,21 +14,18 @@ export interface ImageProps {
   /**
    * An alternative text description that describe the image for the reader to
    * understand what it is about. It is extremely useful for both buyers using
-   * assistive technology and sighted buyers.
+   * assistive technology and sighted buyers. A well written `description`
+   * provides people with visual impairments the ability to participate in
+   * consuming non-text content. When a screen readers encounters an `Image`,
+   * the description is read and announced aloud. If an image fails to load,
+   * potentially due to a poor connection, the `description` is displayed on
+   * screen instead. This has the benefit of letting a sighted buyer know an
+   * image was meant to load here, but as an alternative, they’re still able to
+   * consume the text content. Read
+   * [considerations when writing alt text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204)
+   * to learn more.
    *
-   * - A well written `description` provides people with visual impairments the
-   *   ability to participate in consuming non-text content. When a screen
-   *   readers encounters an `Image`, the description is read and announced
-   *   aloud.
-   * - If an image fails to load, potentially due to a poor connection, the
-   *   `description` is displayed on screen instead. This has the benefit of
-   *   letting a sighted buyer know an image was meant to load here, but as an
-   *   alternative, they’re still able to consume the text content.
-   *
-   * Learn more how to write good alternative text on the Shopify UX blog:
-   * https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204
-   *
-   * @default ''
+   * @defaultValue ''
    */
   description?: string;
   /**
@@ -80,4 +77,7 @@ type Fit = 'cover' | 'contain';
 type Resolution = 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
 type Loading = 'eager' | 'lazy';
 
+/**
+ * Image is used for large format, responsive images. For small images use Thumbnail.
+ */
 export const Image = createRemoteComponent<'Image', ImageProps>('Image');

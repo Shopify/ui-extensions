@@ -8,6 +8,9 @@ export interface SeparatorProps {
   direction?: Direction;
 }
 
+/**
+ * Separators create visual separation between sections of an interface.
+ */
 export const Separator = createRemoteComponent<'Separator', SeparatorProps>(
   'Separator',
 );

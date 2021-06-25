@@ -66,9 +66,9 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
   let markdown = renderYamlFrontMatter({
     gid: findUuid(apiFile),
     url: `${paths.shopifyDevUrl}/extension-points/api`,
-    title: 'Extension points API',
+    title: 'Post-purchase extension points API',
     description:
-      'An API reference for checkout extension points and their respective types',
+      'An API reference for Post-purchase extension points and their respective types.',
     ...visibilityFrontMatter,
   });
 

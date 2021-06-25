@@ -1,5 +1,7 @@
 # Separator
 
+Separators create visual separation between sections of an interface.
+
 ## Props
 optional = ?
 
