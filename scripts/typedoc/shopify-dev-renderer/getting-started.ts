@@ -35,15 +35,15 @@ export function gettingStarted(paths: Paths, options: Options = {}) {
   let markdown = renderYamlFrontMatter({
     gid: findUuid(indexFile),
     url: `${paths.shopifyDevUrl}/extension-points/index`,
-    title: 'Checkout extensions API reference',
+    title: 'Post-purchase extensions API reference',
     description:
-      'API reference for Checkout extension points. Learn about global objects, rendering, components, and how you’ll interact with them.',
+      'API reference for Post-purchase extension points. Learn about global objects, rendering, components, and how you’ll interact with them.',
     ...visibilityFrontMatter,
   });
 
   const docsInputPath = resolve(`${paths.inputRoot}/documentation`);
 
-  const files = ['extension-points.md', 'globals.md', 'rendering.md'];
+  const files = ['extension-points.md'];
 
   if (fs.existsSync(docsInputPath)) {
     files.forEach((file) => {

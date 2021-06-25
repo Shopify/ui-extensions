@@ -27,8 +27,8 @@ const postPurchase = {
 };
 
 const componentsPageContent = (url: string) => ({
-  title: 'Components for checkout extensions',
-  frontMatterDescription: 'A list of components for checkout extensions.',
+  title: 'Components for Post-purchase extensions',
+  frontMatterDescription: 'A list of components for Post-purchase extensions.',
   description: `Checkout UI Extensions provide many powerful UI components that a
   [rendering extension](${url}/extension-points#rendering) can
   use to build an interface. This UI is rendered natively by Shopify, so you
