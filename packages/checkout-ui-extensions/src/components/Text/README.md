@@ -13,7 +13,7 @@ optional = ?
 | subdued? | <code>boolean</code> |  |
 | role? | <code>"address" &#124; "deletion" &#124; <a href="#abbreviationroletype">AbbreviationRoleType</a> &#124; <a href="#directionaloverrideroletype">DirectionalOverrideRoleType</a> &#124; <a href="#datetimeroletype">DatetimeRoleType</a></code> | Assign semantic value  |
 | id? | <code>string</code> | Unique identifier. Typically used as a target for another component’s controls to associate an accessible label with an action.  |
-| appearance? | <code>"critical" &#124; "warning" &#124; "success"</code> | Changes the visual appearance  |<a name="DatetimeRoleType"></a>
+| appearance? | <code>"critical" &#124; "warning" &#124; "success" &#124; "accent"</code> | Changes the visual appearance  |<a name="DatetimeRoleType"></a>
 
 ### DatetimeRoleType
 

@@ -141,6 +141,10 @@ export interface ExtendsType {
   extends: string;
 }
 
+export interface NeverKeyword {
+  kind: 'NeverKeyword';
+}
+
 export type Type =
   | UnionType
   | InterfaceType
@@ -160,6 +164,7 @@ export type Type =
   | ArrayType
   | UnknownType
   | AnyType
+  | NeverKeyword
   | UndocumentedType
   | LocalReference;
 

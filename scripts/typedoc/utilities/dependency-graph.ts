@@ -536,6 +536,10 @@ function resolveNodeToLocal(
 
     // }
 
+    case 'TSNeverKeyword': {
+      return {kind: 'NeverKeyword'};
+    }
+
     case 'TSExpressionWithTypeArguments': {
       const {expression} = node;
       if (expression.type === 'Identifier') {
