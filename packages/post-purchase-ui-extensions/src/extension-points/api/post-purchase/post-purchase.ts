@@ -78,7 +78,7 @@ interface Shop {
   /** The primary domain of the shop (ending with “.myshopify.com”). */
   domain: string;
   /**
-   * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
+   * Only [public listed](/custom-storefronts/products/metafields#expose-metafields) metafields are available.
    */
   metafields: Metafield[];
 }
@@ -100,7 +100,7 @@ interface Product {
   /** Variant being purchased. */
   variant: Variant;
   /**
-   * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
+   * Only [public listed](/custom-storefronts/products/metafields#expose-metafields) metafields are available.
    */
   metafields: Metafield[];
 }
@@ -111,13 +111,13 @@ interface Variant {
   /** The variant title. */
   title: string;
   /**
-   * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
+   * Only [public listed](/custom-storefronts/products/metafields#expose-metafields) metafields are available.
    */
   metafields: Metafield[];
 }
 /**
  * The metafields associated with a resource.
- * You'll need to individually request which metafields you need in the [configuration file](/api/checkout/extension-points/#configuration-file).
+ * You'll need to individually request which metafields you need in the [configuration file](/api/checkout-extensions/extension-points#configuration-file).
  */
 interface Metafield {
   /** The metafield key. */
