@@ -31,6 +31,11 @@ export async function dev(...args: string[]) {
   const filename = 'extension.js';
   const scriptUrl = new URL(`${PUBLIC_PATH}${filename}`, publicUrl || url);
   const isHttps = scriptUrl.protocol === 'https:';
+  const shop = namedArgument('shop', args);
+  const createShopUrl = buildUrlGeneratorForHost(shop);
+  const resourceUrl = namedArgument('resourceUrl', args);
+  const permalinkUrl = createShopUrl(resourceUrl, {dev: publicUrl})
+  const passwordPageUrl = createShopUrl("/password")
 
   const compiler = webpack(
     createWebpackConfiguration({
@@ -257,10 +262,15 @@ export async function dev(...args: string[]) {
       )}`,
     );
   } else if (tunnelStarted) {
-    log(`Next, you’ll need to create a checkout on your development shop and`);
-    log(
-      `append this query string to the first page of checkout: \`?dev=${publicUrl}/query\``,
-    );
+    if (permalinkUrl && passwordPageUrl) {
+      log(`Next, visit ${permalinkUrl} to create a checkout and test your extension.`)
+      log(`If this is first time you are testing the extension, please login to your development store first by visiting ${passwordPageUrl}.`)
+    } else {
+      log(`Next, you’ll need to create a checkout on your development shop and`);
+      log(
+        `append this query string to the first page of checkout: \`?dev=${publicUrl}/query\``,
+      );
+    }
   } else {
     log(`next, run \`shopify tunnel start --port=${port}\` in a new terminal.`);
     log(
@@ -295,4 +305,17 @@ export async function dev(...args: string[]) {
 function getOpenUrl(args: string[]) {
   const openArg = namedArgument('open', args);
   return (openArg ?? '').startsWith('http') ? new URL(openArg!) : undefined;
+}
+
+const buildUrlGeneratorForHost: (host?: string) => (path?: string, query?: Record<string, string|number|undefined>) => string | undefined = (host) => (path, query = {}) => {
+  if (!host) return undefined;
+  if (!path) return undefined;
+
+  const url = new URL(`https://${host}`);
+  url.pathname = path;
+  Object.keys(query).forEach((parameter) => {
+    url.searchParams.append(parameter, query[parameter])
+  })
+
+  return url.toString();
 }
