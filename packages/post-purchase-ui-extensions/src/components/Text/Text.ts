@@ -6,20 +6,35 @@ type Role =
   | 'address'
   /** Indicate the text has been deleted. Typically used for discounted prices. */
   | 'deletion'
-  /**
-   * Indicate the text is an abbreviation or acronym. Use the "for" option to
-   * provide a description of the abbreviation.
-   */
-  | {type: 'abbreviation'; for?: string}
-  /** Override the text directionality. Typically used for email and phone numbers. */
-  | {type: 'directional-override'; direction: 'ltr' | 'rtl'}
-  /**
-   * Indicate the text is a date, a time or a duration. Use the "machineReadable" option
-   * to help browsers, tools or software understand the human-readable date. Valid format
-   * for "machineReadable" can be found here:
-   * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#Valid_datetime_Values
-   */
-  | {type: 'datetime'; machineReadable?: string};
+  | AbbreviationRoleType
+  | DirectionalOverrideRoleType
+  | DatetimeRoleType;
+
+/**
+ * Indicate the text is an abbreviation or acronym. Use the "for" option to
+ * provide a description of the abbreviation.
+ */
+interface AbbreviationRoleType {
+  type: 'abbreviation';
+  for?: string;
+}
+
+/** Override the text directionality. Typically used for email and phone numbers. */
+interface DirectionalOverrideRoleType {
+  type: 'directional-override';
+  direction: 'ltr' | 'rtl';
+}
+
+/**
+ * Indicate the text is a date, a time or a duration. Use the "machineReadable" option
+ * to help browsers, tools or software understand the human-readable date. Valid format
+ * for "machineReadable" can be found here:
+ * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#Valid_datetime_Values
+ */
+interface DatetimeRoleType {
+  type: 'datetime';
+  machineReadable?: string;
+}
 
 export interface TextProps {
   /** Size of the text */

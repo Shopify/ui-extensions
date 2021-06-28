@@ -78,7 +78,7 @@ interface Shop {
   /** The primary domain of the shop (ending with “.myshopify.com”). */
   domain: string;
   /**
-   * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
+   * Only [public listed](/custom-storefronts/products/metafields#expose-metafields) metafields are available.
    */
   metafields: Metafield[];
 }
@@ -100,7 +100,7 @@ interface Product {
   /** Variant being purchased. */
   variant: Variant;
   /**
-   * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
+   * Only [public listed](/custom-storefronts/products/metafields#expose-metafields) metafields are available.
    */
   metafields: Metafield[];
 }
@@ -111,13 +111,13 @@ interface Variant {
   /** The variant title. */
   title: string;
   /**
-   * Only [public listed](/custom-storefronts/browsing/metafields#1-expose-metafields) metafields are available.
+   * Only [public listed](/custom-storefronts/products/metafields#expose-metafields) metafields are available.
    */
   metafields: Metafield[];
 }
 /**
  * The metafields associated with a resource.
- * You'll need to individually request which metafields you need in the [configuration file](/api/checkout/extension-points/#configuration-file).
+ * You'll need to individually request which metafields you need in the [configuration file](/api/checkout-extensions/extension-points#configuration-file).
  */
 interface Metafield {
   /** The metafield key. */
@@ -193,40 +193,50 @@ interface MoneyBag {
   /** Amount in presentment currency. */
   presentmentMoney: Money;
 }
-
+/** Represents the information about the tax charged on the associated line item. */
 interface AddedTaxLine {
-  /** The tax amount */
+  /** The tax amount. */
   priceSet: MoneyBag;
+  /** The tax rate to be applied. */
   rate: number;
+  /** The name of the tax. */
   title: string;
 }
-
+/** Represents the updated state of a line item after a changeset has been calculated including any added line items. */
 interface UpdatedLineItem {
   /** The discounted total price. */
   totalPriceSet: MoneyBag;
   /** The price per quantity */
   priceSet: MoneyBag;
+  /** The product ID. */
   productId: number;
+  /** The variant ID. */
   variantId: number;
+  /** The product slug in kebab-case. */
   productHandle: string;
   /** How many items are being purchased in this line.*/
   quantity: number;
 }
-
+/** Represents a shipping line that was added after a changeset was calculated.*/
 interface AddedShippingLine {
+  /** The shipping line price.*/
   priceSet: MoneyBag;
+  /** The customer facing line title.*/
   presentmentTitle: string;
 }
-
+/** Represents the updated state of the initial purchase.*/
 interface CalculatedPurchase {
   /** Updated total price of the purchase with discounts but before shipping, taxes, and tips. */
   subtotalPriceSet: MoneyBag;
-  /** Updated final price of the purchase */
+  /** Updated final price of the purchase. */
   totalPriceSet: MoneyBag;
+  /** Array of `AddedTaxLine`. */
   addedTaxLines: AddedTaxLine[];
+  /** Array of `UpdatedLineItem`. */
   updatedLineItems: UpdatedLineItem[];
+  /** Array of `AddedShippingLine`. */
   addedShippingLines: AddedShippingLine[];
-  /** The amount left unpaid after the update */
+  /** The amount left unpaid after the update. */
   totalOutstandingSet: MoneyBag;
 }
 
@@ -252,16 +262,26 @@ interface ChangesetError {
   message: string;
 }
 type CalculateChangesetResult =
-  | {
-      errors: ChangesetError[];
-      status: 'unprocessed';
-      calculatedPurchase?: never;
-    }
-  | {
-      errors: ChangesetError[];
-      status: 'processed';
-      calculatedPurchase: CalculatedPurchase;
-    };
+  | CalculateChangesetUnprocessedResult
+  | CalculateChangesetProcessedResult;
+/** Returns an array of `ChangesetError`, when the changeset can't be processed. */
+interface CalculateChangesetUnprocessedResult {
+  /** Array of errors. */
+  errors: ChangesetError[];
+  /** Always returns `unprocessed`. */
+  status: 'unprocessed';
+  /** Not returned for unprocessed result. */
+  calculatedPurchase?: never;
+}
+/** Returns a `CalculatedPurchase` for processed changeset. */
+interface CalculateChangesetProcessedResult {
+  /** Empty array of errors. */
+  errors: ChangesetError[];
+  /** Always returns `processed`. */
+  status: 'processed';
+  /** Returns `CalculatedPurchase`. */
+  calculatedPurchase: CalculatedPurchase;
+}
 /** Requests a changeset to be applied to the initial purchase,
 and to charge the buyer with the difference in total price if any. */
 interface ApplyChangesetResult {

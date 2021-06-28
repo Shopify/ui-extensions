@@ -185,6 +185,8 @@ function propType(
       return 'string';
     case 'BooleanType':
       return 'boolean';
+    case 'NeverKeyword':
+      return 'never';
     case 'ArrayType':
       return `${propType(
         value.elements,
