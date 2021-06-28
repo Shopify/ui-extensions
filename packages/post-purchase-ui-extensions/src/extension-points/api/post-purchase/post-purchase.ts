@@ -270,7 +270,7 @@ interface CalculateChangesetUnprocessedResult {
   errors: ChangesetError[];
   /** Always returns `unprocessed`. */
   status: 'unprocessed';
-  /** Returns string `never`. */
+  /** Not returned for unprocessed result. */
   calculatedPurchase?: never;
 }
 /** Returns a `CalculatedPurchase` for processed changeset. */
