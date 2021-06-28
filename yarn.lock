@@ -2150,6 +2150,11 @@
   dependencies:
     "@remote-ui/rpc" "^1.2.2"
 
+"@remote-ui/async-subscription@file:../remote-ui/packages/async-subscription":
+  version "2.1.3"
+  dependencies:
+    "@remote-ui/rpc" "^1.2.2"
+
 "@remote-ui/core@^2.1.3":
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.1.3.tgz#b3d0c4070826c96aac5c59ad93592d4c29b13928"
@@ -2158,16 +2163,19 @@
     "@remote-ui/rpc" "^1.2.2"
     "@remote-ui/types" "^1.1.0"
 
-"@remote-ui/react@^4.1.3":
+"@remote-ui/core@file:../remote-ui/packages/core":
+  version "2.1.3"
+  dependencies:
+    "@remote-ui/rpc" "^1.2.2"
+    "@remote-ui/types" "^1.1.0"
+
+"@remote-ui/react@file:../remote-ui/packages/react":
   version "4.1.3"
-  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.1.3.tgz#e74d783077841ea1c7e4c9923c51ceaf3eb44b2d"
-  integrity sha512-l7AWSiG1Pj+jggnByA4x5HWn1V95+o50TkFV52nKHIii/qz4PQUxSAIBrQNUL1NTlhtYWWnwYoKhIF6iyZ0b1w==
   dependencies:
     "@remote-ui/async-subscription" "^2.1.3"
     "@remote-ui/core" "^2.1.3"
     "@remote-ui/rpc" "^1.2.2"
     "@remote-ui/web-workers" "^1.5.3"
-    "@types/react" ">=17.0.0 <18.0.0"
     react-reconciler ">=0.26.0 <1.0.0"
 
 "@remote-ui/rpc@^1.2.2":
@@ -2686,11 +2694,6 @@
   resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-2.2.0.tgz#a4e8205a4955690eef712a6d0394a1d2e121e721"
   integrity sha512-O3SQC6+6AySHwrspYn2UvC6tjo6jCTMMmylxZUFhE1CulVu5l3AxU6ca9lrJDTQDVllF62LIxVSx5fuYL6LiZg==
 
-"@types/prop-types@*":
-  version "15.7.3"
-  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
-  integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
-
 "@types/qs@*":
   version "6.9.5"
   resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.5.tgz#434711bdd49eb5ee69d90c1d67c354a9a8ecb18b"
@@ -2700,14 +2703,6 @@
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@types/range-parser/-/range-parser-1.2.3.tgz#7ee330ba7caafb98090bece86a5ee44115904c2c"
   integrity sha512-ewFXqrQHlFsgc09MK5jP5iR7vumV/BYayNC6PgJO2LPe8vrnNFyjQjSppfEngITi0qvfKtzFvgKymGheFM9UOA==
-
-"@types/react@>=17.0.0 <18.0.0", "@types/react@^17.0.0":
-  version "17.0.2"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.2.tgz#3de24c4efef902dd9795a49c75f760cbe4f7a5a8"
-  integrity sha512-Xt40xQsrkdvjn1EyWe1Bc0dJLcil/9x2vAuW7ya+PuQip4UYUaXyhzWmAbwRsdMgwOFHpfp7/FFZebDU6Y8VHA==
-  dependencies:
-    "@types/prop-types" "*"
-    csstype "^3.0.2"
 
 "@types/resolve@^1.17.1":
   version "1.20.0"
@@ -4725,11 +4720,6 @@ cssstyle@^2.2.0:
   integrity sha512-AZL67abkUzIuvcHqk7c09cezpGNcxUxU4Ioi/05xHk4DQeTkWmGYftIE6ctU6AEt+Gn4n1lDStOtj7FKycP71A==
   dependencies:
     cssom "~0.3.6"
-
-csstype@^3.0.2:
-  version "3.0.6"
-  resolved "https://registry.yarnpkg.com/csstype/-/csstype-3.0.6.tgz#865d0b5833d7d8d40f4e5b8a6d76aea3de4725ef"
-  integrity sha512-+ZAmfyWMT7TiIlzdqJgjMb7S4f1beorDbWbsocyK4RaiqA5RTX3K14bnBWmmA9QEM0gRdsjyyrEmcyga8Zsxmw==
 
 currently-unhandled@^0.4.1:
   version "0.4.1"

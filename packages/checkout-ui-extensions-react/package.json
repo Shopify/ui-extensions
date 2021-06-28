@@ -21,12 +21,13 @@
     "./": "./"
   },
   "dependencies": {
-    "@remote-ui/async-subscription": "^2.1.3",
-    "@remote-ui/react": "^4.1.3",
-    "@shopify/checkout-ui-extensions": "^0.11.0-alpha.1",
-    "@types/react": "^17.0.0"
+    "@remote-ui/async-subscription": "file:../../../remote-ui/packages/async-subscription",
+    "@remote-ui/react": "file:../../../remote-ui/packages/react",
+    "@shopify/checkout-ui-extensions": "^0.11.0-alpha.1"
   },
   "peerDependencies": {
+    "@types/react": ">=17.0.0 <18.0.0",
+    "@types/react-reconciler": ">=0.26.0 <1.0.0",
     "react": ">=17.0.0 <18.0.0"
   },
   "peerDependenciesMeta": {
