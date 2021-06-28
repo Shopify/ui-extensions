@@ -22,8 +22,11 @@
   },
   "dependencies": {
     "@remote-ui/react": "^4.1.4",
-    "@shopify/post-purchase-ui-extensions": "^0.10.0",
-    "@types/react": "^17.0.0"
+    "@shopify/post-purchase-ui-extensions": "^0.10.0"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.0",
+    "@types/react-reconciler": "^0.26.0"
   },
   "peerDependencies": {
     "react": ">=17.0.0 <18.0.0"
