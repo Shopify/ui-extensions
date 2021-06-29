@@ -21,7 +21,7 @@
     "./": "./"
   },
   "dependencies": {
-    "@remote-ui/react": "file:../../../remote-ui/packages/react",
+    "@remote-ui/react": "^4.1.3",
     "@shopify/post-purchase-ui-extensions": "^0.10.0"
   },
   "devDependencies": {

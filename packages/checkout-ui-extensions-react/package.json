@@ -21,8 +21,8 @@
     "./": "./"
   },
   "dependencies": {
-    "@remote-ui/async-subscription": "file:../../../remote-ui/packages/async-subscription",
-    "@remote-ui/react": "file:../../../remote-ui/packages/react",
+    "@remote-ui/async-subscription": "^2.1.3",
+    "@remote-ui/react": "^4.1.3",
     "@shopify/checkout-ui-extensions": "^0.11.0"
   },
   "devDependencies": {
