@@ -21,6 +21,6 @@
     "./": "./"
   },
   "dependencies": {
-    "@remote-ui/core": "^2.0.1"
+    "@remote-ui/core": "^2.1.3"
   }
 }
