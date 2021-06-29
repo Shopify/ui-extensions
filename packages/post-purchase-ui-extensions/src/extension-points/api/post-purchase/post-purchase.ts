@@ -289,6 +289,8 @@ interface ApplyChangesetResult {
   errors: ChangesetError[];
   /** An enum representing the result of attempting to apply or calculate a changeset. */
   status: ChangesetProcessingStatus;
+  /** How many changesets can still be applied to the initial purchase. */
+  changesetApplicationsRemaining: number;
 }
 
 export type ChangesetProcessingStatus =
