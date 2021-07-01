@@ -1,6 +1,5 @@
 import {URL} from 'url';
 
-import getPort from 'get-port';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 
@@ -10,50 +9,24 @@ import {
   convertLegacyPostPurchaseDataToQueryString,
   log,
   namedArgument,
+  parseDevelopmentServerConfig,
+  argumentParserFor,
+  DevelopmentServerConfiguration,
 } from './utilities';
 import {createWebpackConfiguration} from './webpack-config';
 import {openBrowser} from './browser';
 
 const LEGACY_POST_PURCHASE_DATA_PATH = '/data';
 const WEBSOCKET_PATH = '/build';
-
 const PUBLIC_PATH = '/assets/';
 
 export async function dev(...args: string[]) {
   const extension = loadExtension();
-
-  const port = Number(
-    namedArgument('port', args) ?? (await getPort({port: 8910})),
-  );
-  const url = `http://localhost:${port}`;
-  const publicUrl = namedArgument('publicUrl', args);
-  const tunnelStarted = Boolean(publicUrl);
-  const filename = 'extension.js';
-  const scriptUrl = new URL(`${PUBLIC_PATH}${filename}`, publicUrl || url);
-  const isHttps = scriptUrl.protocol === 'https:';
-  const shop = namedArgument('shop', args);
-  const createShopUrl = buildUrlGeneratorForHost(shop);
-  const resourceUrl = namedArgument('resourceUrl', args);
-  const permalinkUrl = createShopUrl(resourceUrl, {dev: publicUrl})
-  const passwordPageUrl = createShopUrl("/password")
-
-  const compiler = webpack(
-    createWebpackConfiguration({
-      development: true,
-      output: {
-        filename,
-        publicPath: PUBLIC_PATH,
-      },
-      hotOptions: {
-        https: isHttps,
-        webSocket: {
-          host: scriptUrl.hostname,
-          port: Number(scriptUrl.port) || (isHttps ? 443 : 80),
-          path: WEBSOCKET_PATH,
-        },
-      },
-    }),
-  );
+  const config = await parseDevelopmentServerConfig({
+    fetchArgument: argumentParserFor(args),
+    createWebpackConfiguration,
+  });
+  const compiler = webpack(config.webpackConfiguration);
 
   const firstCompilePromise = new Promise<void>((resolve) => {
     let hasResolved = false;
@@ -87,7 +60,7 @@ export async function dev(...args: string[]) {
     // This makes local server public so that
     // it can be forwarded from ngrok
     host: '0.0.0.0',
-    port,
+    port: config.port,
     disableHostCheck: true,
 
     // `transportMode` switches to `ws` so that the worker file can use WebSocket
@@ -172,7 +145,7 @@ export async function dev(...args: string[]) {
             `Create a checkout and append <code>?dev=${origin}/query</code> to the URL to start developing your extension.`,
           );
         } else {
-          renderIndexPage(`Make sure you have a secure URL for your local development server by running <code>shopify tunnel start --port=${port}</code>,
+          renderIndexPage(`Make sure you have a secure URL for your local development server by running <code>shopify tunnel start --port=${config.port}</code>,
             create a checkout, and append <code>?dev=https://TUNNEL_URL/query</code> to the URL, where <code>TUNNEL_URL</code> is
             replaced with your own ngrok URL.`);
         }
@@ -195,7 +168,7 @@ export async function dev(...args: string[]) {
           queryUrl: `${origin}${req.path}`,
           extensions: [
             {
-              scriptUrl: `${origin}${PUBLIC_PATH}${filename}`,
+              scriptUrl: `${origin}${PUBLIC_PATH}${config.filename}`,
               socketUrl: `${origin.replace(/^http/, 'ws')}${WEBSOCKET_PATH}`,
               extensionPoints:
                 extension.type === 'checkout'
@@ -212,7 +185,9 @@ export async function dev(...args: string[]) {
       // https://github.com/Shopify/post-purchase-devtools/blob/master/src/background/background.ts#L16-L35
       app.get(LEGACY_POST_PURCHASE_DATA_PATH, (_, res) => {
         res.set('Access-Control-Allow-Origin', '*');
-        res.json(getLegacyPostPurchaseData(scriptUrl.toString(), extension));
+        res.json(
+          getLegacyPostPurchaseData(config.scriptUrl.toString(), extension),
+        );
       });
     },
 
@@ -238,10 +213,10 @@ export async function dev(...args: string[]) {
     stats: process.env.DEBUG === undefined ? false : 'verbose',
   });
 
-  log(`Starting dev server on port ${port}`);
+  log(`Starting dev server on port ${config.port}`);
 
   const httpListenPromise = new Promise<void>((resolve, reject) => {
-    server.listen(port, '0.0.0.0', (error) => {
+    server.listen(Number(config.port), '0.0.0.0', (error) => {
       if (error) {
         reject(error);
       } else {
@@ -252,44 +227,15 @@ export async function dev(...args: string[]) {
 
   await Promise.all([firstCompilePromise, httpListenPromise]);
 
-  log(`Your extension is available at ${scriptUrl}`);
-
-  const isPostPurchaseExtension = extension.type === 'post-purchase';
-  if (isPostPurchaseExtension) {
-    log(
-      `You can append this query string: ${convertLegacyPostPurchaseDataToQueryString(
-        getLegacyPostPurchaseData(scriptUrl.toString(), extension),
-      )}`,
-    );
-  } else if (tunnelStarted) {
-    if (permalinkUrl && passwordPageUrl) {
-      log(`Next, visit ${permalinkUrl} to create a checkout and test your extension.`)
-      log(`If this is first time you are testing the extension, please login to your development store first by visiting ${passwordPageUrl}.`)
-    } else {
-      log(`Next, you’ll need to create a checkout on your development shop and`);
-      log(
-        `append this query string to the first page of checkout: \`?dev=${publicUrl}/query\``,
-      );
-    }
-  } else {
-    log(`next, run \`shopify tunnel start --port=${port}\` in a new terminal.`);
-    log(
-      `you’ll then need to create a checkout on your development shop, and append this query string to the first page of checkout,`,
-    );
-    log(
-      `replacing TUNNEL_URL with your own ngrok URL: \`?dev=https://TUNNEL_URL/query\``,
-    );
-  }
+  printNextSteps({log, config, extension});
 
   const openUrl = getOpenUrl(args);
 
   if (openUrl) {
-    const extensionPoint = namedArgument('extension-point', args);
+    openUrl.searchParams.set('extension', JSON.stringify(config.scriptUrl));
 
-    openUrl.searchParams.set('extension', JSON.stringify(scriptUrl));
-
-    if (extensionPoint) {
-      openUrl.searchParams.set('extension-point', extensionPoint);
+    if (config.extensionPoint) {
+      openUrl.searchParams.set('extension-point', config.extensionPoint);
     }
 
     const opened = openBrowser(openUrl.href);
@@ -307,15 +253,53 @@ function getOpenUrl(args: string[]) {
   return (openArg ?? '').startsWith('http') ? new URL(openArg!) : undefined;
 }
 
-const buildUrlGeneratorForHost: (host?: string) => (path?: string, query?: Record<string, string|number|undefined>) => string | undefined = (host) => (path, query = {}) => {
-  if (!host) return undefined;
-  if (!path) return undefined;
+function printNextSteps({
+  log,
+  config,
+  extension,
+}: {
+  log: (message: string) => unknown;
+  config: DevelopmentServerConfiguration;
+  extension: ReturnType<typeof loadExtension>;
+}) {
+  const isPostPurchaseExtension = extension.type === 'post-purchase';
 
-  const url = new URL(`https://${host}`);
-  url.pathname = path;
-  Object.keys(query).forEach((parameter) => {
-    url.searchParams.append(parameter, query[parameter])
-  })
+  log(`Your extension is available at ${config.scriptUrl}`);
 
-  return url.toString();
+  if (isPostPurchaseExtension) {
+    log(
+      `You can append this query string: ${convertLegacyPostPurchaseDataToQueryString(
+        getLegacyPostPurchaseData(config.scriptUrl.toString(), extension),
+      )}`,
+    );
+  } else if (config.publicUrl) {
+    if (config.permalinkUrl && config.passwordPageUrl) {
+      log('');
+      log(`If this is first time you are testing the extension, `);
+      log(`please login to your development store first by visiting`);
+      log(config.passwordPageUrl);
+      log('');
+      log(
+        `To create a checkout and test your extension please visit the following URL:`,
+      );
+      log(config.permalinkUrl);
+    } else {
+      log(
+        `Next, you’ll need to create a checkout on your development shop and`,
+      );
+      log(
+        `append this query string to the first page of checkout: \`?dev=${config.publicUrl}/query\``,
+      );
+    }
+  } else {
+    log(
+      `next, run \`shopify tunnel start --port=${config.port}\` in a new terminal.`,
+    );
+    log(
+      `you’ll then need to create a checkout on your development shop, and append this query string to the first page of checkout,`,
+    );
+    log(
+      `replacing TUNNEL_URL with your own ngrok URL: \`?dev=https://TUNNEL_URL/query\``,
+    );
+  }
 }

@@ -1,10 +1,13 @@
-import {URLSearchParams} from 'url';
+import {URL, URLSearchParams} from 'url';
 import {resolve, join} from 'path';
 import {readFileSync, existsSync} from 'fs';
 import camelcaseKeys from 'camelcase-keys';
 import chalk from 'chalk';
-
 import {safeLoad as loadYaml} from 'js-yaml';
+
+export const argumentParserFor = (args: string[]) => (name: string) => {
+  return namedArgument(name, args);
+};
 
 // Extract `--name x` or `--name=x` from an argv array.
 // Could bring in a CLI arg library, but this is fun practice :)
@@ -160,3 +163,93 @@ export function convertLegacyPostPurchaseDataToQueryString(data: Data) {
 
   return query.toString();
 }
+
+export interface DevelopmentServerConfiguration {
+  port: string;
+  scriptUrl: string;
+  filename: string;
+  webpackConfiguration: ReturnType<
+    DevelopmentServerConfigurationGeneratorDependencies['createWebpackConfiguration']
+  >;
+  shop?: string;
+  resourceUrl?: string;
+  publicUrl?: string;
+  passwordPageUrl?: string;
+  permalinkUrl?: string;
+  extensionPoint?: string;
+}
+
+export interface DevelopmentServerConfigurationGeneratorDependencies {
+  fetchArgument(name: string): string | undefined;
+  createWebpackConfiguration(
+    settings: Record<string, any>,
+  ): Record<string, any>;
+}
+
+export const parseDevelopmentServerConfig = ({
+  fetchArgument,
+  createWebpackConfiguration,
+}: DevelopmentServerConfigurationGeneratorDependencies): DevelopmentServerConfiguration => {
+  const port = fetchArgument('port') || '8910';
+  const shop = fetchArgument('shop');
+  const resourceUrl = fetchArgument('resourceUrl');
+  const publicUrl = fetchArgument('publicUrl');
+  const generatePublicUrl = urlGeneratorFor(publicUrl);
+  const generateLocalUrl = urlGeneratorFor(`http://localhost:${port}`);
+  const filename = 'extension.js';
+  const path = `/assets/${filename}`;
+  const scriptUrl = (generatePublicUrl(path) || generateLocalUrl(path))!;
+  const generateShopUrl = urlGeneratorFor(`https://${shop}`);
+  const permalinkUrl =
+    resourceUrl && publicUrl && shop
+      ? generateShopUrl(resourceUrl, {
+          dev: generatePublicUrl('query')!.toString(),
+        })
+      : undefined;
+  const passwordPageUrl = shop && generateShopUrl('/password');
+  const extensionPoint = fetchArgument('extension-point');
+  const useSSL = scriptUrl.protocol === 'https:';
+  const webpackConfiguration = createWebpackConfiguration({
+    development: true,
+    output: {
+      filename,
+      publicPath: '/assets/',
+    },
+    hotOptions: {
+      https: useSSL,
+      webSocket: {
+        host: scriptUrl.hostname,
+        port: Number(scriptUrl.port) || (useSSL ? 443 : 80),
+        path: '/build',
+      },
+    },
+  });
+
+  return {
+    shop,
+    resourceUrl,
+    publicUrl,
+    scriptUrl: scriptUrl.toString(),
+    port,
+    permalinkUrl: permalinkUrl?.toString(),
+    passwordPageUrl: passwordPageUrl?.toString(),
+    webpackConfiguration,
+    filename,
+    extensionPoint,
+  };
+};
+
+export const urlGeneratorFor = (baseUrl?: string) => (
+  path?: string,
+  query: Record<string, string> = {},
+): URL | undefined => {
+  if (!baseUrl) return undefined;
+  if (!path) return undefined;
+
+  const url = new URL(path, baseUrl);
+  Object.keys(query).forEach((parameter) => {
+    url.searchParams.append(parameter, query[parameter]);
+  });
+
+  return url;
+};
