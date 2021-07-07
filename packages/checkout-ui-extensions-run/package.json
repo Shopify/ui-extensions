@@ -44,7 +44,6 @@
     "camelcase-keys": "^6.0.0",
     "chalk": "^4.0.0",
     "core-js": "^3.0.0",
-    "get-port": "^5.1.1",
     "glob": "^7.0.0",
     "gzip-size": "^6.0.0",
     "js-yaml": "^3.14.0",

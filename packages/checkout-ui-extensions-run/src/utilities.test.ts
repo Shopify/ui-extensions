@@ -1,5 +1,6 @@
 import {URL} from 'url';
 import {argumentParserFor, parseDevelopmentServerConfig} from './utilities';
+import * as WebpackConfig from './webpack-config';
 
 describe('argumentParserFor', () => {
   test('creates a function', () => {
@@ -19,53 +20,40 @@ describe('parseDevelopmentServerConfig', () => {
     '--publicUrl=https://example.com',
     '--port=5678',
   ];
-  const fetchArgument = argumentParserFor(args);
-  const createWebpackConfiguration = () => ({});
 
   test('includes shop', () => {
-    expect(
-      parseDevelopmentServerConfig({fetchArgument, createWebpackConfiguration}),
-    ).toMatchObject({
+    expect(parseDevelopmentServerConfig(args)).toMatchObject({
       shop: 'shop1.myshopify.io',
     });
   });
 
   test('includes resource URL', () => {
-    expect(
-      parseDevelopmentServerConfig({fetchArgument, createWebpackConfiguration}),
-    ).toMatchObject({
+    expect(parseDevelopmentServerConfig(args)).toMatchObject({
       resourceUrl: '/cart/1:1',
     });
   });
 
   test('includes public URL', () => {
-    expect(
-      parseDevelopmentServerConfig({fetchArgument, createWebpackConfiguration}),
-    ).toMatchObject({
+    expect(parseDevelopmentServerConfig(args)).toMatchObject({
       publicUrl: 'https://example.com',
     });
   });
 
   test('includes port', () => {
-    expect(
-      parseDevelopmentServerConfig({fetchArgument, createWebpackConfiguration}),
-    ).toMatchObject({
+    expect(parseDevelopmentServerConfig(args)).toMatchObject({
       port: '5678',
     });
   });
 
   test('includes filename', () => {
-    expect(
-      parseDevelopmentServerConfig({fetchArgument, createWebpackConfiguration}),
-    ).toMatchObject({
+    expect(parseDevelopmentServerConfig(args)).toMatchObject({
       filename: 'extension.js',
     });
   });
 
   test('includes extensionPoint', () => {
-    const fetchArgument = argumentParserFor(['--extension-point=test']);
     expect(
-      parseDevelopmentServerConfig({fetchArgument, createWebpackConfiguration}),
+      parseDevelopmentServerConfig([...args, '--extension-point=test']),
     ).toMatchObject({
       extensionPoint: 'test',
     });
@@ -73,39 +61,23 @@ describe('parseDevelopmentServerConfig', () => {
 
   describe('scriptUrl', () => {
     test('points to localhost:8910 when no public url and port is provided', () => {
-      const fetchArgument = argumentParserFor([]);
-      expect(
-        parseDevelopmentServerConfig({
-          fetchArgument,
-          createWebpackConfiguration,
-        }),
-      ).toMatchObject({
+      expect(parseDevelopmentServerConfig([])).toMatchObject({
         scriptUrl: 'http://localhost:8910/assets/extension.js',
       });
     });
 
     test('supports custom port', () => {
-      const fetchArgument = argumentParserFor(['--port=1234']);
-      expect(
-        parseDevelopmentServerConfig({
-          fetchArgument,
-          createWebpackConfiguration,
-        }),
-      ).toMatchObject({
+      expect(parseDevelopmentServerConfig(['--port=1234'])).toMatchObject({
         scriptUrl: 'http://localhost:1234/assets/extension.js',
       });
     });
 
     test('points to public URL if one was provided and ignores port', () => {
-      const fetchArgument = argumentParserFor([
-        '--port=1234',
-        '--publicUrl=https://example.com',
-      ]);
       expect(
-        parseDevelopmentServerConfig({
-          fetchArgument,
-          createWebpackConfiguration,
-        }),
+        parseDevelopmentServerConfig([
+          '--port=1234',
+          '--publicUrl=https://example.com',
+        ]),
       ).toMatchObject({
         scriptUrl: 'https://example.com/assets/extension.js',
       });
@@ -128,44 +100,31 @@ describe('parseDevelopmentServerConfig', () => {
       ];
       const configWithoutPermalinkUrl = {permalinkUrl: undefined};
 
-      expect(
-        parseDevelopmentServerConfig({
-          fetchArgument: argumentParserFor(argsWithoutShop),
-          createWebpackConfiguration,
-        }),
-      ).toMatchObject(configWithoutPermalinkUrl);
+      expect(parseDevelopmentServerConfig(argsWithoutShop)).toMatchObject(
+        configWithoutPermalinkUrl,
+      );
 
       expect(
-        parseDevelopmentServerConfig({
-          fetchArgument: argumentParserFor(argsWithoutResourceUrl),
-          createWebpackConfiguration,
-        }),
+        parseDevelopmentServerConfig(argsWithoutResourceUrl),
       ).toMatchObject(configWithoutPermalinkUrl);
 
-      expect(
-        parseDevelopmentServerConfig({
-          fetchArgument: argumentParserFor(argsWithoutPublicUrl),
-          createWebpackConfiguration,
-        }),
-      ).toMatchObject(configWithoutPermalinkUrl);
+      expect(parseDevelopmentServerConfig(argsWithoutPublicUrl)).toMatchObject(
+        configWithoutPermalinkUrl,
+      );
     });
 
     test('returns a permalinkUrl if all necessary command line flags are present', () => {
-      const args = [
-        '--resourceUrl=/cart/1:1',
-        '--publicUrl=https://example.com',
-        '--shop=shop1.myshopify.com',
-      ];
-
       const permalink = new URL('https://shop1.myshopify.com/cart/1:1');
       permalink.searchParams.append('dev', 'https://example.com/query');
       const configWithPermalink = {permalinkUrl: permalink.toString()};
 
       expect(
-        parseDevelopmentServerConfig({
-          fetchArgument: argumentParserFor(args),
-          createWebpackConfiguration,
-        }),
+        parseDevelopmentServerConfig([
+          ...args,
+          '--resourceUrl=/cart/1:1',
+          '--publicUrl=https://example.com',
+          '--shop=shop1.myshopify.com',
+        ]),
       ).toMatchObject(configWithPermalink);
     });
   });
@@ -175,12 +134,9 @@ describe('parseDevelopmentServerConfig', () => {
       const configWithoutPasswordPageUrl = {
         passwordPageUrl: undefined,
       };
-      expect(
-        parseDevelopmentServerConfig({
-          fetchArgument: argumentParserFor([]),
-          createWebpackConfiguration,
-        }),
-      ).toMatchObject(configWithoutPasswordPageUrl);
+      expect(parseDevelopmentServerConfig([])).toMatchObject(
+        configWithoutPasswordPageUrl,
+      );
     });
 
     test('returns https://<shop>/password if shop flag is present', () => {
@@ -188,28 +144,35 @@ describe('parseDevelopmentServerConfig', () => {
         passwordPageUrl: 'https://shop1.myshopify.io/password',
       };
       expect(
-        parseDevelopmentServerConfig({
-          fetchArgument: argumentParserFor(['--shop=shop1.myshopify.io']),
-          createWebpackConfiguration,
-        }),
+        parseDevelopmentServerConfig([...args, '--shop=shop1.myshopify.io']),
       ).toMatchObject(configWithPasswordPageUrl);
     });
   });
 
   describe('webpackConfiguration', () => {
     test('runs in development mode', () => {
-      const createWebpackConfiguration = jest.fn();
-      parseDevelopmentServerConfig({fetchArgument, createWebpackConfiguration});
-      expect(createWebpackConfiguration).toBeCalledWith(
-        settingsContaining({development: true}),
+      const createWebpackConfigurationSpy = jest.spyOn(
+        WebpackConfig,
+        'createWebpackConfiguration',
+      );
+
+      parseDevelopmentServerConfig(args);
+
+      expect(createWebpackConfigurationSpy).toHaveBeenCalledWith(
+        expect.objectContaining({development: true}),
       );
     });
 
     test('correct output settings', () => {
-      const createWebpackConfiguration = jest.fn();
-      parseDevelopmentServerConfig({fetchArgument, createWebpackConfiguration});
-      expect(createWebpackConfiguration).toBeCalledWith(
-        settingsContaining({
+      const createWebpackConfigurationSpy = jest.spyOn(
+        WebpackConfig,
+        'createWebpackConfiguration',
+      );
+
+      parseDevelopmentServerConfig(args);
+
+      expect(createWebpackConfigurationSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
           output: {
             filename: 'extension.js',
             publicPath: '/assets/',
@@ -219,11 +182,15 @@ describe('parseDevelopmentServerConfig', () => {
     });
 
     test('websocket points to localhost:8910 by default', () => {
-      const fetchArgument = argumentParserFor([]);
-      const createWebpackConfiguration = jest.fn();
-      parseDevelopmentServerConfig({fetchArgument, createWebpackConfiguration});
-      expect(createWebpackConfiguration).toBeCalledWith(
-        settingsContaining({
+      const createWebpackConfigurationSpy = jest.spyOn(
+        WebpackConfig,
+        'createWebpackConfiguration',
+      );
+
+      parseDevelopmentServerConfig([]);
+
+      expect(createWebpackConfigurationSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
           hotOptions: {
             https: false,
             webSocket: {
@@ -237,13 +204,15 @@ describe('parseDevelopmentServerConfig', () => {
     });
 
     test('websocket points to the public endpoint if --publicUrl was provided', () => {
-      const fetchArgument = argumentParserFor([
-        '--publicUrl=https://example.com/',
-      ]);
-      const createWebpackConfiguration = jest.fn();
-      parseDevelopmentServerConfig({fetchArgument, createWebpackConfiguration});
-      expect(createWebpackConfiguration).toBeCalledWith(
-        settingsContaining({
+      const createWebpackConfigurationSpy = jest.spyOn(
+        WebpackConfig,
+        'createWebpackConfiguration',
+      );
+
+      parseDevelopmentServerConfig(['--publicUrl=https://example.com/']);
+
+      expect(createWebpackConfigurationSpy).toHaveBeenCalledWith(
+        expect.objectContaining({
           hotOptions: {
             https: true,
             webSocket: {
@@ -255,8 +224,5 @@ describe('parseDevelopmentServerConfig', () => {
         }),
       );
     });
-
-    const settingsContaining = (settings: Record<string, any>) =>
-      expect.objectContaining(settings);
   });
 });

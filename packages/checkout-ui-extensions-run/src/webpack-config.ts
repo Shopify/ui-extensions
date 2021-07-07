@@ -5,7 +5,26 @@ import {DefinePlugin} from 'webpack';
 import type {Configuration} from 'webpack';
 import {UIExtensionsHotClient} from '@shopify/ui-extensions-webpack-hot-client';
 
-import {shouldUseReact} from './utilities';
+const REACT_UI_EXTENSIONS_PACKAGES = [
+  '@shopify/checkout-ui-extensions-react',
+  '@shopify/post-purchase-ui-extensions-react',
+];
+
+export function shouldUseReact(): boolean | 'mini' {
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
+    const packageJson = require(path.resolve('package.json'));
+    const dependencies = new Set(Object.keys(packageJson.dependencies));
+
+    if (!REACT_UI_EXTENSIONS_PACKAGES.some((pkg) => dependencies.has(pkg))) {
+      return false;
+    }
+
+    return dependencies.has('@remote-ui/mini-react') ? 'mini' : true;
+  } catch {
+    return false;
+  }
+}
 
 const PRODUCTION_TARGETS = undefined;
 

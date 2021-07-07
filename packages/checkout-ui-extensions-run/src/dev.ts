@@ -10,10 +10,9 @@ import {
   log,
   namedArgument,
   parseDevelopmentServerConfig,
-  argumentParserFor,
+  Extension,
   DevelopmentServerConfiguration,
 } from './utilities';
-import {createWebpackConfiguration} from './webpack-config';
 import {openBrowser} from './browser';
 
 const LEGACY_POST_PURCHASE_DATA_PATH = '/data';
@@ -22,11 +21,15 @@ const PUBLIC_PATH = '/assets/';
 
 export async function dev(...args: string[]) {
   const extension = loadExtension();
-  const config = await parseDevelopmentServerConfig({
-    fetchArgument: argumentParserFor(args),
-    createWebpackConfiguration,
-  });
-  const compiler = webpack(config.webpackConfiguration);
+  const config = await parseDevelopmentServerConfig(args);
+  const {
+    extensionPoint,
+    filename,
+    port,
+    scriptUrl,
+    webpackConfiguration,
+  } = config;
+  const compiler = webpack(webpackConfiguration);
 
   const firstCompilePromise = new Promise<void>((resolve) => {
     let hasResolved = false;
@@ -60,7 +63,7 @@ export async function dev(...args: string[]) {
     // This makes local server public so that
     // it can be forwarded from ngrok
     host: '0.0.0.0',
-    port: config.port,
+    port,
     disableHostCheck: true,
 
     // `transportMode` switches to `ws` so that the worker file can use WebSocket
@@ -145,7 +148,7 @@ export async function dev(...args: string[]) {
             `Create a checkout and append <code>?dev=${origin}/query</code> to the URL to start developing your extension.`,
           );
         } else {
-          renderIndexPage(`Make sure you have a secure URL for your local development server by running <code>shopify tunnel start --port=${config.port}</code>,
+          renderIndexPage(`Make sure you have a secure URL for your local development server by running <code>shopify tunnel start --port=${port}</code>,
             create a checkout, and append <code>?dev=https://TUNNEL_URL/query</code> to the URL, where <code>TUNNEL_URL</code> is
             replaced with your own ngrok URL.`);
         }
@@ -168,7 +171,7 @@ export async function dev(...args: string[]) {
           queryUrl: `${origin}${req.path}`,
           extensions: [
             {
-              scriptUrl: `${origin}${PUBLIC_PATH}${config.filename}`,
+              scriptUrl: `${origin}${PUBLIC_PATH}${filename}`,
               socketUrl: `${origin.replace(/^http/, 'ws')}${WEBSOCKET_PATH}`,
               extensionPoints:
                 extension.type === 'checkout'
@@ -185,9 +188,7 @@ export async function dev(...args: string[]) {
       // https://github.com/Shopify/post-purchase-devtools/blob/master/src/background/background.ts#L16-L35
       app.get(LEGACY_POST_PURCHASE_DATA_PATH, (_, res) => {
         res.set('Access-Control-Allow-Origin', '*');
-        res.json(
-          getLegacyPostPurchaseData(config.scriptUrl.toString(), extension),
-        );
+        res.json(getLegacyPostPurchaseData(scriptUrl.toString(), extension));
       });
     },
 
@@ -213,10 +214,10 @@ export async function dev(...args: string[]) {
     stats: process.env.DEBUG === undefined ? false : 'verbose',
   });
 
-  log(`Starting dev server on port ${config.port}`);
+  log(`Starting dev server on port ${port}`);
 
   const httpListenPromise = new Promise<void>((resolve, reject) => {
-    server.listen(Number(config.port), '0.0.0.0', (error) => {
+    server.listen(Number(port), '0.0.0.0', (error) => {
       if (error) {
         reject(error);
       } else {
@@ -232,10 +233,10 @@ export async function dev(...args: string[]) {
   const openUrl = getOpenUrl(args);
 
   if (openUrl) {
-    openUrl.searchParams.set('extension', JSON.stringify(config.scriptUrl));
+    openUrl.searchParams.set('extension', JSON.stringify(scriptUrl));
 
-    if (config.extensionPoint) {
-      openUrl.searchParams.set('extension-point', config.extensionPoint);
+    if (extensionPoint) {
+      openUrl.searchParams.set('extension-point', extensionPoint);
     }
 
     const opened = openBrowser(openUrl.href);
@@ -255,46 +256,44 @@ function getOpenUrl(args: string[]) {
 
 function printNextSteps({
   log,
-  config,
+  config: {passwordPageUrl, permalinkUrl, port, publicUrl, scriptUrl},
   extension,
 }: {
-  log: (message: string) => unknown;
+  log: (message: string) => void;
   config: DevelopmentServerConfiguration;
-  extension: ReturnType<typeof loadExtension>;
+  extension: Extension;
 }) {
   const isPostPurchaseExtension = extension.type === 'post-purchase';
 
-  log(`Your extension is available at ${config.scriptUrl}`);
+  log(`Your extension is available at ${scriptUrl}`);
 
   if (isPostPurchaseExtension) {
     log(
       `You can append this query string: ${convertLegacyPostPurchaseDataToQueryString(
-        getLegacyPostPurchaseData(config.scriptUrl.toString(), extension),
+        getLegacyPostPurchaseData(scriptUrl.toString(), extension),
       )}`,
     );
-  } else if (config.publicUrl) {
-    if (config.permalinkUrl && config.passwordPageUrl) {
+  } else if (publicUrl) {
+    if (permalinkUrl && passwordPageUrl) {
       log('');
       log(`If this is first time you are testing the extension, `);
       log(`please login to your development store first by visiting`);
-      log(config.passwordPageUrl);
+      log(passwordPageUrl);
       log('');
       log(
         `To create a checkout and test your extension please visit the following URL:`,
       );
-      log(config.permalinkUrl);
+      log(permalinkUrl);
     } else {
       log(
         `Next, you’ll need to create a checkout on your development shop and`,
       );
       log(
-        `append this query string to the first page of checkout: \`?dev=${config.publicUrl}/query\``,
+        `append this query string to the first page of checkout: \`?dev=${publicUrl}/query\``,
       );
     }
   } else {
-    log(
-      `next, run \`shopify tunnel start --port=${config.port}\` in a new terminal.`,
-    );
+    log(`next, run \`shopify tunnel start --port=${port}\` in a new terminal.`);
     log(
       `you’ll then need to create a checkout on your development shop, and append this query string to the first page of checkout,`,
     );

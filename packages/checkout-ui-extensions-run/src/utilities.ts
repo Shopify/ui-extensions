@@ -5,6 +5,8 @@ import camelcaseKeys from 'camelcase-keys';
 import chalk from 'chalk';
 import {safeLoad as loadYaml} from 'js-yaml';
 
+import {createWebpackConfiguration} from './webpack-config';
+
 export const argumentParserFor = (args: string[]) => (name: string) => {
   return namedArgument(name, args);
 };
@@ -37,27 +39,6 @@ export function log(message: string, {error = false} = {}) {
   console.log(`🔭 ${separator} ${message}`);
 }
 
-const REACT_UI_EXTENSIONS_PACKAGES = [
-  '@shopify/checkout-ui-extensions-react',
-  '@shopify/post-purchase-ui-extensions-react',
-];
-
-export function shouldUseReact(): boolean | 'mini' {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const packageJson = require(resolve('package.json'));
-    const dependencies = new Set(Object.keys(packageJson.dependencies));
-
-    if (!REACT_UI_EXTENSIONS_PACKAGES.some((pkg) => dependencies.has(pkg))) {
-      return false;
-    }
-
-    return dependencies.has('@remote-ui/mini-react') ? 'mini' : true;
-  } catch {
-    return false;
-  }
-}
-
 export interface CheckoutExtensionConfig {
   readonly extensionPoints: string[];
   readonly metafields?: {namespace: string; key: string}[];
@@ -78,6 +59,18 @@ export interface PostPurchaseExtension {
 }
 
 export type Extension = CheckoutExtension | PostPurchaseExtension;
+
+export interface DevelopmentServerConfiguration {
+  port: string;
+  scriptUrl: string;
+  filename: string;
+  shop?: string;
+  resourceUrl?: string;
+  publicUrl?: string;
+  passwordPageUrl?: string;
+  permalinkUrl?: string;
+  extensionPoint?: string;
+}
 
 export function loadExtension(): Extension {
   const config = readConfig();
@@ -164,32 +157,8 @@ export function convertLegacyPostPurchaseDataToQueryString(data: Data) {
   return query.toString();
 }
 
-export interface DevelopmentServerConfiguration {
-  port: string;
-  scriptUrl: string;
-  filename: string;
-  webpackConfiguration: ReturnType<
-    DevelopmentServerConfigurationGeneratorDependencies['createWebpackConfiguration']
-  >;
-  shop?: string;
-  resourceUrl?: string;
-  publicUrl?: string;
-  passwordPageUrl?: string;
-  permalinkUrl?: string;
-  extensionPoint?: string;
-}
-
-export interface DevelopmentServerConfigurationGeneratorDependencies {
-  fetchArgument(name: string): string | undefined;
-  createWebpackConfiguration(
-    settings: Record<string, any>,
-  ): Record<string, any>;
-}
-
-export const parseDevelopmentServerConfig = ({
-  fetchArgument,
-  createWebpackConfiguration,
-}: DevelopmentServerConfigurationGeneratorDependencies): DevelopmentServerConfiguration => {
+export function parseDevelopmentServerConfig(args: string[]) {
+  const fetchArgument = argumentParserFor(args);
   const port = fetchArgument('port') || '8910';
   const shop = fetchArgument('shop');
   const resourceUrl = fetchArgument('resourceUrl');
@@ -237,7 +206,7 @@ export const parseDevelopmentServerConfig = ({
     filename,
     extensionPoint,
   };
-};
+}
 
 export const urlGeneratorFor = (baseUrl?: string) => (
   path?: string,
