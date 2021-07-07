@@ -9,9 +9,11 @@ import type {
   Documentation,
   PropertySignature,
   Tag,
-} from '../types';
+} from '../../types';
 
-import {Module} from '../utilities/dependency-graph';
+import {Module} from '../../utilities/dependency-graph';
+
+export {renderExamples, findExamplesFor} from './examples';
 
 export interface Node {
   value: RemoteComponent | Type | LocalReference;
@@ -362,4 +364,10 @@ function responsive(breakpoint: any, additionalPropsTables: string[]) {
 {% endraw %}{% endhighlight %}\n\n`;
 
   return markdown;
+}
+
+export function mkdir(directory) {
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory, {recursive: true});
+  }
 }
