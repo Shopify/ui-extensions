@@ -34,6 +34,14 @@ export function createWebpackConfiguration({
   // eslint-disable-next-line @typescript-eslint/no-var-requires
   const TerserWebpackPlugin = require('terser-webpack-plugin');
 
+  const plugins = [];
+  if (development) {
+    if (!hotOptions) {
+      throw new Error('When development=true, hotOptions are required');
+    }
+    plugins.push(new UIExtensionsHotClient(hotOptions));
+  }
+
   return {
     mode,
     target: 'webworker',
@@ -143,7 +151,7 @@ export function createWebpackConfiguration({
       ],
     },
     plugins: [
-      development && new UIExtensionsHotClient(hotOptions),
+      ...plugins,
       new DefinePlugin({
         'process.env.NODE_ENV': JSON.stringify(mode),
       }),
