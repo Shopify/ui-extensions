@@ -35,6 +35,7 @@ import type {
   StringLiteralType,
   ParameterType,
   Tag,
+  InterfaceType,
 } from '../types';
 
 interface UnresolvedLocal {
@@ -524,18 +525,6 @@ function resolveNodeToLocal(
       }
     }
 
-    // eslint-disable-next-line no-warning-comments
-    // todo
-    // case 'TSTypeLiteral': {
-
-    // }
-
-    // eslint-disable-next-line no-warning-comments
-    // todo
-    // case 'TSTupleType': {
-
-    // }
-
     case 'TSNeverKeyword': {
       return {kind: 'NeverKeyword'};
     }
@@ -770,4 +759,19 @@ function undocumented(node: Node) {
   // eslint-disable-next-line no-console
   console.warn(`${node.type} is unhandled.`);
   return UNDOCUMENTED;
+}
+
+export function filterGraph(graph: Map<string, Module>, filterMethod: (any) => boolean): InterfaceType[] {
+  const allInterfaces: InterfaceType[] = [];
+
+  graph.forEach(value => {
+    const localValues = [...value.locals.values()];
+    allInterfaces.push(
+      ...(localValues.filter(
+        ({name, kind}) => filterMethod({name, kind})
+      ) as InterfaceType[]),
+    );
+  })
+
+  return allInterfaces;
 }

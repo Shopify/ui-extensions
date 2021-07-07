@@ -3,7 +3,7 @@ import * as fs from 'fs';
 
 import type {Paths, InterfaceType} from '../types';
 
-import {createDependencyGraph} from '../utilities/dependency-graph';
+import {createDependencyGraph, filterGraph} from '../utilities/dependency-graph';
 import {
   renderYamlFrontMatter,
   findUuid,
@@ -25,17 +25,7 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
 
   const graph = await createDependencyGraph(extensionsIndex);
-
-  const allInterfaces: InterfaceType[] = [];
-
-  for (const value of graph.values()) {
-    const localValues = [...value.locals.values()];
-    allInterfaces.push(
-      ...(localValues.filter(
-        ({kind}) => kind === 'InterfaceType',
-      ) as InterfaceType[]),
-    );
-  }
+  const allInterfaces = filterGraph(graph, ({kind}) => kind === 'InterfaceType')
 
   const nodes: Node[] = [];
 
