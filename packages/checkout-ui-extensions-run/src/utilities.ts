@@ -64,7 +64,7 @@ export interface DevelopmentServerConfiguration {
   port: string;
   scriptUrl: string;
   filename: string;
-  shop?: string;
+  store?: string;
   resourceUrl?: string;
   publicUrl?: string;
   passwordPageUrl?: string;
@@ -160,7 +160,7 @@ export function convertLegacyPostPurchaseDataToQueryString(data: Data) {
 export function parseDevelopmentServerConfig(args: string[]) {
   const fetchArgument = argumentParserFor(args);
   const port = fetchArgument('port') || '8910';
-  const shop = fetchArgument('shop');
+  const store = fetchArgument('store');
   const resourceUrl = fetchArgument('resourceUrl');
   const publicUrl = fetchArgument('publicUrl');
   const generatePublicUrl = urlGeneratorFor(publicUrl);
@@ -168,14 +168,14 @@ export function parseDevelopmentServerConfig(args: string[]) {
   const filename = 'extension.js';
   const path = `/assets/${filename}`;
   const scriptUrl = (generatePublicUrl(path) || generateLocalUrl(path))!;
-  const generateShopUrl = urlGeneratorFor(`https://${shop}`);
+  const generateShopUrl = urlGeneratorFor(`https://${store}`);
   const permalinkUrl =
-    resourceUrl && publicUrl && shop
+    resourceUrl && publicUrl && store
       ? generateShopUrl(resourceUrl, {
           dev: generatePublicUrl('query')!.toString(),
         })
       : undefined;
-  const passwordPageUrl = shop && generateShopUrl('/password');
+  const passwordPageUrl = store && generateShopUrl('/password');
   const extensionPoint = fetchArgument('extension-point');
   const useSSL = scriptUrl.protocol === 'https:';
   const webpackConfiguration = createWebpackConfiguration({
@@ -195,7 +195,7 @@ export function parseDevelopmentServerConfig(args: string[]) {
   });
 
   return {
-    shop,
+    store,
     resourceUrl,
     publicUrl,
     scriptUrl: scriptUrl.toString(),

@@ -8,22 +8,22 @@ describe('argumentParserFor', () => {
   });
 
   test('creates a function for accessing individual arguments', () => {
-    const fetch = argumentParserFor(['--shop=shop1.myshopify.io']);
-    expect(fetch('shop')).toBe('shop1.myshopify.io');
+    const fetch = argumentParserFor(['--store=shop1.myshopify.io']);
+    expect(fetch('store')).toBe('shop1.myshopify.io');
   });
 });
 
 describe('parseDevelopmentServerConfig', () => {
   const args = [
-    '--shop=shop1.myshopify.io',
+    '--store=shop1.myshopify.io',
     '--resourceUrl=/cart/1:1',
     '--publicUrl=https://example.com',
     '--port=5678',
   ];
 
-  test('includes shop', () => {
+  test('includes store', () => {
     expect(parseDevelopmentServerConfig(args)).toMatchObject({
-      shop: 'shop1.myshopify.io',
+      store: 'shop1.myshopify.io',
     });
   });
 
@@ -85,17 +85,17 @@ describe('parseDevelopmentServerConfig', () => {
   });
 
   describe('permalinkUrl', () => {
-    test('returns undefined if resourceUrl, publicUrl or shop are missing', () => {
+    test('returns undefined if resourceUrl, publicUrl or store are missing', () => {
       const argsWithoutShop = [
         '--resourceUrl=/cart/1:1',
         '--publicUrl=https://example.com',
       ];
       const argsWithoutResourceUrl = [
         '--publicUrl=https://example.com',
-        '--shop=shop1.myshopify.io',
+        '--store=shop1.myshopify.io',
       ];
       const argsWithoutPublicUrl = [
-        '--shop=shop1.myshopify.io',
+        '--store=shop1.myshopify.io',
         '--resourceUrl=/cart/1:1',
       ];
       const configWithoutPermalinkUrl = {permalinkUrl: undefined};
@@ -123,14 +123,14 @@ describe('parseDevelopmentServerConfig', () => {
           ...args,
           '--resourceUrl=/cart/1:1',
           '--publicUrl=https://example.com',
-          '--shop=shop1.myshopify.com',
+          '--store=shop1.myshopify.com',
         ]),
       ).toMatchObject(configWithPermalink);
     });
   });
 
   describe('passwordPageUrl', () => {
-    test('returns undefined if shop flag is missing', () => {
+    test('returns undefined if store flag is missing', () => {
       const configWithoutPasswordPageUrl = {
         passwordPageUrl: undefined,
       };
@@ -139,12 +139,12 @@ describe('parseDevelopmentServerConfig', () => {
       );
     });
 
-    test('returns https://<shop>/password if shop flag is present', () => {
+    test('returns https://<store>/password if store flag is present', () => {
       const configWithPasswordPageUrl = {
         passwordPageUrl: 'https://shop1.myshopify.io/password',
       };
       expect(
-        parseDevelopmentServerConfig([...args, '--shop=shop1.myshopify.io']),
+        parseDevelopmentServerConfig([...args, '--store=shop1.myshopify.io']),
       ).toMatchObject(configWithPasswordPageUrl);
     });
   });
