@@ -15,7 +15,7 @@ import {
   firstSentence,
   mkdir,
   renderExamples,
-  findExamplesFor
+  findExamplesFor,
 } from './shared';
 import type {Node, Visibility} from './shared';
 
@@ -59,7 +59,7 @@ export async function components(
   let index = renderYamlFrontMatter({
     gid: findUuid(indexFile),
     url: `${paths.shopifyDevUrl}/components/index`,
-    title: title,
+    title,
     description: frontMatterDescription,
     ...visibilityFrontMatter,
   });
@@ -174,15 +174,17 @@ export async function components(
         })
         .join('\n\n');
 
-      markdown += '\n\n' + subcomponentsMd;
+      markdown += `\n\n${subcomponentsMd}`;
     }
 
     // 5. Additional content
     const contentFolder = resolve(
       `${paths.inputRoot}/src/components/${name}/content`,
     );
-    const additionalContent =
-      '\n\n' + getAdditionalContentFor(contentFolder, paths.shopifyDevUrl);
+    const additionalContent = `\n\n${getAdditionalContentFor(
+      contentFolder,
+      paths.shopifyDevUrl,
+    )}`;
     markdown += additionalContent;
 
     fs.writeFile(outputFile, markdown, function (err) {
@@ -194,7 +196,7 @@ export async function components(
         `${paths.inputRoot}/src/components/${name}/README.md`,
       );
       const title = `# ${name}\n\n`;
-      let readmeMarkdown =
+      const readmeMarkdown =
         title + docsContentMd + propsTableMd + additionalPropsTablesMd;
 
       fs.writeFile(readmeFile, readmeMarkdown, function (err) {
@@ -211,6 +213,10 @@ export async function components(
   fs.writeFile(indexFile, index, function (err) {
     if (err) throw err;
   });
+
+  console.log(
+    `📄  Generated docs for ${components.length} components to ${componentDocsPath}.`,
+  );
 }
 
 async function buildComponentGraph(componentIndex: string) {
@@ -246,8 +252,6 @@ async function buildComponentGraph(componentIndex: string) {
 
   return {nodes, components};
 }
-
-
 
 function renderExampleImageFor(
   componentName: string,

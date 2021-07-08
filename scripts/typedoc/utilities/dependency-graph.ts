@@ -756,22 +756,24 @@ function resolveImportPath(from: string, to: string) {
 }
 
 function undocumented(node: Node) {
-  // eslint-disable-next-line no-console
   console.warn(`${node.type} is unhandled.`);
   return UNDOCUMENTED;
 }
 
-export function filterGraph(graph: Map<string, Module>, filterMethod: (any) => boolean): InterfaceType[] {
+export function filterGraph(
+  graph: Map<string, Module>,
+  filterMethod: (any) => boolean,
+): InterfaceType[] {
   const allInterfaces: InterfaceType[] = [];
 
-  graph.forEach(value => {
-    const localValues = [...value.locals.values()];
+  graph.forEach((value) => {
+    const localValues: any[] = [...value.locals.values()];
     allInterfaces.push(
-      ...(localValues.filter(
-        ({name, kind}) => filterMethod({name, kind})
+      ...(localValues.filter(({name, kind}) =>
+        filterMethod({name, kind}),
       ) as InterfaceType[]),
     );
-  })
+  });
 
   return allInterfaces;
 }

@@ -1,13 +1,11 @@
 import {resolve} from 'path';
 import * as fs from 'fs';
 
-import type {
-  Paths,
-} from '../types';
+import type {Paths} from '../types';
 
 import {
   createDependencyGraph,
-  filterGraph
+  filterGraph,
 } from '../utilities/dependency-graph';
 import type {Module} from '../utilities/dependency-graph';
 
@@ -31,15 +29,15 @@ interface Options {
 const additionalPropsTables: string[] = [];
 
 export async function adminExtensionApi(paths: Paths, options: Options) {
-  const {
-    componentsToSkip = [],
-  } = options;
-  const extensionsIndex = resolve(`${paths.inputRoot}/src/extension-api/index.ts`);
+  const {componentsToSkip = []} = options;
+  const extensionsIndex = resolve(
+    `${paths.inputRoot}/src/extension-api/index.ts`,
+  );
 
   const graph = await createDependencyGraph(extensionsIndex);
   const allApis = filterGraph(
     graph,
-    ({name, kind}) => kind === 'InterfaceType' && name.endsWith('Api')
+    ({name, kind}) => kind === 'InterfaceType' && name.endsWith('Api'),
   );
 
   // also filter the graph for all nodes (in case we need to reference them)
@@ -49,12 +47,12 @@ export async function adminExtensionApi(paths: Paths, options: Options) {
   const extensionApisPath = resolve(`${paths.outputRoot}/api`);
   mkdir(extensionApisPath);
 
-  const extensionApisUrl = `${paths.shopifyDevUrl}/api`
+  const extensionApisUrl = `${paths.shopifyDevUrl}/api`;
 
   let indexContent = '';
 
   allApis.forEach(({name, docs, properties}) => {
-    if(componentsToSkip.includes(name)) return;
+    if (componentsToSkip.includes(name)) return;
     const pathname = name.toLowerCase();
     const outputFile = `${extensionApisPath}/${pathname}.md`;
     const url = `${extensionApisUrl}/${pathname}`;
@@ -96,11 +94,12 @@ export async function adminExtensionApi(paths: Paths, options: Options) {
       undefined,
     );
 
-    const propsTablesToRender = dedupe(additionalPropsTables).reverse().join('');
-    markdown += removeFirstHeader(propsTablesToRender)
+    const propsTablesToRender = dedupe(additionalPropsTables)
+      .reverse()
+      .join('');
+    markdown += removeFirstHeader(propsTablesToRender);
 
     additionalPropsTables.length = 0;
-
 
     fs.writeFile(outputFile, markdown, function (err) {
       if (err) throw err;
@@ -126,6 +125,10 @@ export async function adminExtensionApi(paths: Paths, options: Options) {
   fs.writeFile(indexFile, indexMarkdown, function (err) {
     if (err) throw err;
   });
+
+  console.log(
+    `📄  Generated docs for ${allApis.length} APIs to ${extensionApisPath}`,
+  );
 }
 
 function filterNodes(graph: Map<string, Module>): Node[] {
@@ -148,13 +151,13 @@ function removeFirstHeader(markdown: string): string {
 
   let indexToRemove = -1;
   for (let i = 0; i < lines.length; i++) {
-    if(lines[i].startsWith('###')) {
+    if (lines[i].startsWith('###')) {
       indexToRemove = i;
       break;
     }
   }
 
-  if(indexToRemove !== -1) {
+  if (indexToRemove !== -1) {
     lines.splice(indexToRemove, 1);
   }
 

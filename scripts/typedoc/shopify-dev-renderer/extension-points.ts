@@ -3,7 +3,10 @@ import * as fs from 'fs';
 
 import type {Paths, InterfaceType} from '../types';
 
-import {createDependencyGraph, filterGraph} from '../utilities/dependency-graph';
+import {
+  createDependencyGraph,
+  filterGraph,
+} from '../utilities/dependency-graph';
 import {
   renderYamlFrontMatter,
   findUuid,
@@ -25,7 +28,10 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
 
   const graph = await createDependencyGraph(extensionsIndex);
-  const allInterfaces = filterGraph(graph, ({kind}) => kind === 'InterfaceType')
+  const allInterfaces = filterGraph(
+    graph,
+    ({kind}) => kind === 'InterfaceType',
+  );
 
   const nodes: Node[] = [];
 
@@ -82,4 +88,6 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
   });
 
   additionalPropsTables.length = 0;
+
+  console.log(`📄  Generated extension point docs to ${apiFile}.`);
 }

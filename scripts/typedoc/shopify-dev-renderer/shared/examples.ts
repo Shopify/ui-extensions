@@ -8,19 +8,28 @@ interface Example {
   content: string;
 }
 
-export function findExamplesFor(name: string, packages: Packages, subPath: string): Map<string, Example> {
+export function findExamplesFor(
+  name: string,
+  packages: Packages,
+  subPath: string,
+): Map<string, Example> {
   const examples = new Map();
 
   Object.keys(packages).forEach((packageName) => {
     const packagePath = packages[packageName];
-    const componentExamplesFolder = resolve(`${packagePath}/src${subPath}/${name}/examples`);
+    const componentExamplesFolder = resolve(
+      `${packagePath}/src${subPath}/${name}/examples`,
+    );
 
     if (fs.existsSync(componentExamplesFolder)) {
       fs.readdirSync(componentExamplesFolder).forEach((file) => {
         examples.set(packageName, {
           extension: extname(file).split('.').pop(),
-          content: fs.readFileSync(`${componentExamplesFolder}/${file}`, 'utf8'),
-        })
+          content: fs.readFileSync(
+            `${componentExamplesFolder}/${file}`,
+            'utf8',
+          ),
+        });
       });
     }
   });
@@ -35,35 +44,14 @@ export function renderExamples(examples: Map<string, Example>): string {
 
   examples.forEach((example, key) => {
     markdown += [
-      `{% code ${example.extension}, title: "${key}" %}`,
+      `{% code ${example.extension}, title: "${key}" %}{% raw %}`,
       `${example.content}`,
-      '{% endcode %}',
-      '\n'
+      '{% endraw %}{% endcode %}',
+      '\n',
     ].join('\n');
-  })
+  });
 
   markdown += '{% endcodeblock %}\n\n';
 
   return markdown;
 }
-
-// export function renderSandboxComponentExamples(examples: Map<string, Example>, compiledPath: string): string {
-//   let markdown = '';
-
-//   const compiledFilename = getCompiledFilename(examples);
-
-//   markdown += `{% codeblock extensions_sandbox, compiled: "${compiledPath}/${compiledFilename}" %}\n\n`;
-
-//   examples.forEach((example, key) => {
-//     markdown += [
-//       `{% code ${example.extension}, title: "${key}" %}`,
-//       `${example.content}`,
-//       '{% endcode %}',
-//       '\n'
-//     ].join('\n');
-//   })
-
-//   markdown += '{% endcodeblock %}\n';
-
-//   return markdown;
-// }
