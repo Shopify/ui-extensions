@@ -8,7 +8,7 @@ The locale of the checkout in which the extension is running. This value is prov
 
 ## `version`
 
-The UI extension renderer version being used for this extension. Currently, there is only a single version, `'unstable'`.
+The UI extensions platform version being used for this extension. Currently, there is only a single version, `'unstable'`.
 
 ## `extensionPoint`
 

@@ -21,15 +21,19 @@ export type {
   MetafieldChangeResultError,
   MetafieldChangeResultSuccess,
   MetafieldChangeResult,
+  AppMetafield,
   AppMetafieldEntryTarget,
   AppMetafieldEntry,
   CurrencyCode,
   LineItem,
   LineItemChange,
+  LineItemChangeResultError,
+  LineItemChangeResultSuccess,
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,
   SignedChange,
+  CustomerAccount,
 } from './api';
 export type {RenderExtension} from './render-extension';
 export type {

@@ -1,5 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {Responsive} from '../shared';
+
 export interface ImageProps {
   /**
    * The default image path. This is used for single images, as a fallback if
@@ -7,10 +9,11 @@ export interface ImageProps {
    */
   source: string;
   /**
-   * An array of image sources to offer alternative versions of an image for
-   * different device widths and pixel densities
+   * An object where the keys are the device widths and the values are arrays of
+   * image sources to offer alternative versions of an image for
+   * different device widths and pixel densities.
    */
-  sources?: Source[];
+  sources?: Responsive<string | Source | Source[]>;
   /**
    * An alternative text description that describe the image for the reader to
    * understand what it is about. It is extremely useful for both buyers using
@@ -35,8 +38,6 @@ export interface ImageProps {
    * whether or not the image is currently within the visible viewport.
    */
   loading?: Loading;
-  /** Adds a border to the image */
-  bordered?: boolean;
   /**
    * Displays the image at the specified aspect ratio (fills the width of the
    * parent container and sets the height accordingly) and creates an invisible
@@ -61,18 +62,12 @@ interface Source {
   /** The path to the image */
   source: string;
   /**
-   * Specify if the image should be loaded for small, medium, or large
-   * viewport sizes
-   */
-  viewportSize?: ViewportSize;
-  /**
    * Specify that the image should be used for devices with a matching pixel
    * density
    */
   resolution?: Resolution;
 }
 
-type ViewportSize = 'small' | 'medium' | 'large';
 type Fit = 'cover' | 'contain';
 type Resolution = 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
 type Loading = 'eager' | 'lazy';

@@ -120,15 +120,16 @@ export interface TextFieldProps {
    * that point, you are expected to store this “committed value” in state, and reflect
    * it in the text field’s `value` property.
    *
-   * This state management model is important given how UI Extensions are rendered. UI Extension components
-   * run on a separate thread from the UI, so they can’t respond to input synchronously.
-   * A pattern popularized by [controlled React components](https://reactjs.org/docs/forms.html#controlled-components)
+   * This state management model is important given how extension UIs are rendered.
+   * UI extension components run on a separate thread from the checkout UI, so they can’t
+   * respond to input synchronously. A pattern popularized by
+   * [controlled React components](https://reactjs.org/docs/forms.html#controlled-components)
    * is to have the component be the source of truth for the input `value`, and update
-   * the `value` on every user input. The delay in responding to events from an UI
+   * the `value` on every user input. The delay in responding to events from a UI
    * extension is only a few milliseconds, but attempting to strictly store state with
    * this delay can cause issues if a user types quickly, or if the buyer is using a
-   * lower-powered device. Having the UI thread take ownership for “in progress” input,
-   * and only synchronizing when the user is finished with a field, avoids this risk.
+   * lower-powered device. Having the checkout UI thread take ownership for “in progress”
+   * input, and only synchronizing when the user is finished with a field, avoids this risk.
    *
    * It can still sometimes be useful to be notified when the user makes any input in
    * the field. If you need this capability, you can use the `onInput` prop. However,

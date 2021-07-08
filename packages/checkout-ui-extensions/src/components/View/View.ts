@@ -7,10 +7,12 @@ type Background =
   | 'surfaceSecondary'
   | 'surfaceTertiary'
   | 'transparent';
+type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
+type BackgroundFit = 'cover' | 'contain';
 type BorderColor = 'base' | 'emphasized';
-type BorderRadius = 'base' | 'tight' | 'none';
+type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
 type BorderStyle = 'base' | 'dotted' | 'none';
-type BorderWidth = 'base' | 'thick';
+type BorderWidth = 'base' | 'medium';
 type Spacing =
   | 'extraTight'
   | 'tight'
@@ -51,6 +53,29 @@ export interface ViewProps {
    * Adjust the background.
    */
   background?: Background | Responsive<Background>;
+
+  /**
+   * Sets one or multiple responsive background images.
+   */
+  backgroundImage?: string | Responsive<string>;
+
+  /**
+   * Indicates if the background image should scale its container without cropping
+   * and stretching, or scale as large as possible to fill the container and stretching if necessary.
+   */
+  backgroundFit?: BackgroundFit;
+
+  /**
+   * Sets the initial position of the background image.
+   * @defaultValue 'center'
+   */
+  backgroundPosition?: BackgroundPosition;
+
+  /**
+   * Sets how background image are repeated.
+   * @defaultValue false
+   */
+  backgroundRepeat?: boolean;
 
   /**
    * Adjust the border style.
