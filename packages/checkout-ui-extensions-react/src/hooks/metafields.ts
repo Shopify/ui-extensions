@@ -1,15 +1,41 @@
 import type {RenderExtensionPoint} from '@shopify/checkout-ui-extensions';
+import {useMemo} from 'react';
 
 import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
 
+interface MetafieldsFilters {
+  namespace: string;
+  key?: string;
+}
+
 /**
  * Returns the current array of `metafields` applied to the checkout.
+ * @arg {MetafieldsFilters} - filter the list of returned metafields
  */
 export function useMetafields<
   ID extends RenderExtensionPoint = RenderExtensionPoint
->() {
-  return useSubscription(useExtensionApi<ID>().metafields);
+>(filters?: MetafieldsFilters) {
+  const metaFields = useSubscription(useExtensionApi<ID>().metafields);
+
+  return useMemo(() => {
+    if (filters) {
+      const {namespace, key} = filters;
+
+      if (!namespace) {
+        throw new Error('You must pass in a namespace with a key');
+      }
+
+      const filteredResults = metaFields.filter(
+        (metafield) =>
+          metafield.namespace === namespace && (!key || metafield.key === key),
+      );
+
+      return filteredResults;
+    }
+
+    return metaFields;
+  }, [filters, metaFields]);
 }
 
 /**

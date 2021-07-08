@@ -1,4 +1,8 @@
-import {extend, TextBlock, TextContainer} from '@shopify/checkout-ui-extensions';
+import {
+  extend,
+  TextBlock,
+  TextContainer,
+} from '@shopify/checkout-ui-extensions';
 
 extend('Checkout::Feature::Render', (root) => {
   const textContainer = root.createComponent(TextContainer, undefined, [

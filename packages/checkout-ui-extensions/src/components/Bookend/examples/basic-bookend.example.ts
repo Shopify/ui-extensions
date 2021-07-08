@@ -1,4 +1,9 @@
-import {extend, Bookend, TextField, Button} from '@shopify/checkout-ui-extensions';
+import {
+  extend,
+  Bookend,
+  TextField,
+  Button,
+} from '@shopify/checkout-ui-extensions';
 
 extend('Checkout::Feature::Render', (root) => {
   const bookend = root.createComponent(Bookend, {trailing: true}, [

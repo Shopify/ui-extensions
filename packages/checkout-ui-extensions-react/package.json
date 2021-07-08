@@ -33,5 +33,10 @@
     "react": {
       "optional": false
     }
+  },
+  "devDependencies": {
+    "@quilted/react-testing": "^0.3.7",
+    "@types/faker": "^5.5.3",
+    "faker": "^5.5.3"
   }
 }

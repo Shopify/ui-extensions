@@ -47,7 +47,7 @@ export interface Extension {
    *
    * @example 3.0.10
    */
-  version: string | null;
+  version?: string;
 
   /**
    * URL to the script that started the extension point.
@@ -55,12 +55,17 @@ export interface Extension {
   scriptUrl: string;
 
   /**
-   * Function for subscribing to 'render' events
+   * Function for subscribing to events.
    *
-   * A render is the first time a unique extension point is displayed
-   * on the screen.
+   * The supported events and their meanings are as follows:
+   *
+   * - `render`
+   *   - Triggered when the extension is displayed
+   * in the user interface.
+   * - `remove`
+   *   - Triggered when the extension is removed from the user interface. If the extension always remains visible after render, this event may not be triggered.
    */
-  on(event: 'render', callback: () => void): void;
+  on(event: 'render' | 'remove', callback: () => void): void;
 }
 
 /**
@@ -160,11 +165,28 @@ export type MetafieldChangeResult =
   | MetafieldChangeResultError;
 
 /**
+ * Represents a custom metadata attached to a resource.
+ */
+export interface AppMetafield {
+  /** The key name of a metafield. */
+  key: string;
+
+  /** The namespace for a metafield. */
+  namespace: string;
+
+  /** The value of a metafield. */
+  value: string | number | boolean;
+
+  /** The metafield’s information type. */
+  valueType: 'boolean' | 'float' | 'integer' | 'json_string' | 'string';
+}
+
+/**
  * The metafield owner.
  */
 export interface AppMetafieldEntryTarget {
   /** The type of the metafield owner. */
-  type: 'product' | 'shop' | 'variant';
+  type: 'customer' | 'product' | 'shop' | 'variant';
 
   /** The numeric owner ID that is associated with the metafield. */
   id: string;
@@ -178,7 +200,7 @@ export interface AppMetafieldEntry {
   target: AppMetafieldEntryTarget;
 
   /** The metadata information. */
-  metafield: Metafield;
+  metafield: AppMetafield;
 }
 
 export type Version = 'unstable';
@@ -202,6 +224,7 @@ export interface StandardApi<
 
   /**
    * The renderer version being used for the extension.
+   *
    * @example 'unstable'
    */
   version: Version;
@@ -286,6 +309,13 @@ export interface StandardApi<
    * Custom attributes left by the buyer to the merchant either in their cart or during checkout.
    */
   customAttributes: StatefulRemoteSubscribable<Attribute[] | undefined>;
+
+  /**
+   * Customer account from the buyer. This value will update when there's a
+   * change in the account. The value is undefined if the buyer doesn't have
+   * any account.
+   */
+  customerAccount: StatefulRemoteSubscribable<CustomerAccount | undefined>;
 
   /**
    * The metafields that apply to the current checkout. The actual resource
@@ -482,11 +512,14 @@ export interface ProductVariantMerchandise extends BaseMerchandise {
   options: MerchandiseOption[];
 }
 
-export interface MerchandiseImage {
+export interface Image {
   /**
    * Image URL.
    */
   url: string;
+}
+
+export interface MerchandiseImage extends Image {
   /**
    * Alternative text for the image.
    */
@@ -612,7 +645,7 @@ export type SignedChangeResult =
   | SignedChangeResultError;
 
 /**
- * Signed token allowing to update data in the checkout
+ * Signed token allowing updates to data in the checkout.
  */
 export type SignedChange = string;
 
@@ -636,4 +669,43 @@ export interface InterceptorRequest {
 
 export interface Interceptor {
   (): InterceptorRequest | Promise<InterceptorRequest>;
+}
+
+/**
+ * Information about a customer account.
+ */
+export interface CustomerAccount {
+  /**
+   * Customer id.
+   * @example 'gid://shopify/Customer/123'
+   */
+  id: string;
+  /**
+   * The email of the customer.
+   */
+  email?: string;
+  /**
+   * The phone number of the customer.
+   */
+  phone?: string;
+  /**
+   * The full name of the customer.
+   */
+  fullName?: string;
+  /**
+   * The first name of the customer.
+   */
+  firstName?: string;
+  /**
+   * The last name of the customer.
+   */
+  lastName?: string;
+  /**
+   * The image assotiated with the customer.
+   */
+  image: Image;
+  /**
+   * Defines if the customer accepts marketing activities.
+   */
+  acceptsMarketing: boolean;
 }

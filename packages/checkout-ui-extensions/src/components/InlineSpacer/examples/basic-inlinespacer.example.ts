@@ -1,4 +1,9 @@
-import {extend, InlineSpacer, InlineStack, View} from '@shopify/checkout-ui-extensions';
+import {
+  extend,
+  InlineSpacer,
+  InlineStack,
+  View,
+} from '@shopify/checkout-ui-extensions';
 
 extend('Checkout::Feature::Render', (root) => {
   const inlineSpacer = root.createComponent(InlineStack, undefined, [

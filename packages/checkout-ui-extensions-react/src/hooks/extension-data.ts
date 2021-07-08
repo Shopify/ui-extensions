@@ -3,7 +3,7 @@ import type {RenderExtensionPoint} from '@shopify/checkout-ui-extensions';
 import {useExtensionApi} from './api';
 
 /**
- * Returns the meta data about the extension.
+ * Returns the metadata about the extension.
  */
 export function useExtensionData<
   ID extends RenderExtensionPoint = RenderExtensionPoint

@@ -23,6 +23,7 @@ export type {
   MetafieldChangeResultError,
   MetafieldChangeResultSuccess,
   MetafieldChangeResult,
+  AppMetafield,
   AppMetafieldEntryTarget,
   AppMetafieldEntry,
   Attribute,
@@ -33,10 +34,13 @@ export type {
   Money,
   LineItem,
   LineItemChange,
+  LineItemChangeResultError,
+  LineItemChangeResultSuccess,
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,
   SignedChange,
+  CustomerAccount,
 } from './extension-points';
 
 export * from './components';
@@ -50,6 +54,7 @@ export type {
   CalloutBannerProps,
   ChoiceListProps,
   ChoiceProps,
+  DividerProps,
   FormProps,
   FormLayoutProps,
   FormLayoutGroupProps,
@@ -64,7 +69,7 @@ export type {
   ListProps,
   ListItemProps,
   SelectProps,
-  SeparatorProps,
+  StepperProps,
   SpinnerProps,
   TagProps,
   TextProps,
