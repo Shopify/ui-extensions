@@ -223,7 +223,7 @@ export interface StandardApi<
   configuration: StatefulRemoteSubscribable<Record<string, unknown>>;
 
   /**
-   * The UI extensions platform version being used for the extension.
+   * The renderer version being used for the extension.
    *
    * @example 'unstable'
    */

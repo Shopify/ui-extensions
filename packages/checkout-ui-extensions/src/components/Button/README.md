@@ -1,6 +1,6 @@
 # Button
 
-Button is used primarily for actions, such as “Continue”, “Apply”, or “Pay”.
+Button is used primarily for actions such as “Continue”, “Apply”, or “Pay”.
  
 ## Props
 required = *
