@@ -16,7 +16,10 @@ export function useBuyerJourney<
 }
 
 /**
- * Buyer journey intercept hook
+ * Takes a function that allows you to block the buyer’s progress through the checkout
+ * by returning an object with `{behavior: 'block'}`.
+ * If you block, you are expected to also update some part of your UI to reflect
+ * the reason why navigation was blocked.
  */
 export function useBuyerJourneyIntercept<
   ID extends RenderExtensionPoint = RenderExtensionPoint
