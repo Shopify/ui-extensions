@@ -3,7 +3,9 @@ import {extend, render, TextBlock} from '@shopify/admin-ui-extensions-react';
 
 function App() {
   return (
-    <TextBlock>TextBlock</TextBlock>
+    <TextBlock size="small" variation="subdued">
+      TextBlock
+    </TextBlock>
   );
 }
 
