@@ -1,10 +1,15 @@
-import {URLSearchParams} from 'url';
+import {URL, URLSearchParams} from 'url';
 import {resolve, join} from 'path';
 import {readFileSync, existsSync} from 'fs';
 import camelcaseKeys from 'camelcase-keys';
 import chalk from 'chalk';
-
 import {safeLoad as loadYaml} from 'js-yaml';
+
+import {createWebpackConfiguration} from './webpack-config';
+
+export const argumentParserFor = (args: string[]) => (name: string) => {
+  return namedArgument(name, args);
+};
 
 // Extract `--name x` or `--name=x` from an argv array.
 // Could bring in a CLI arg library, but this is fun practice :)
@@ -34,27 +39,6 @@ export function log(message: string, {error = false} = {}) {
   console.log(`🔭 ${separator} ${message}`);
 }
 
-const REACT_UI_EXTENSIONS_PACKAGES = [
-  '@shopify/checkout-ui-extensions-react',
-  '@shopify/post-purchase-ui-extensions-react',
-];
-
-export function shouldUseReact(): boolean | 'mini' {
-  try {
-    // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const packageJson = require(resolve('package.json'));
-    const dependencies = new Set(Object.keys(packageJson.dependencies));
-
-    if (!REACT_UI_EXTENSIONS_PACKAGES.some((pkg) => dependencies.has(pkg))) {
-      return false;
-    }
-
-    return dependencies.has('@remote-ui/mini-react') ? 'mini' : true;
-  } catch {
-    return false;
-  }
-}
-
 export interface CheckoutExtensionConfig {
   readonly extensionPoints: string[];
   readonly metafields?: {namespace: string; key: string}[];
@@ -75,6 +59,18 @@ export interface PostPurchaseExtension {
 }
 
 export type Extension = CheckoutExtension | PostPurchaseExtension;
+
+export interface DevelopmentServerConfiguration {
+  port: string;
+  scriptUrl: string;
+  filename: string;
+  store?: string;
+  resourceUrl?: string;
+  publicUrl?: string;
+  passwordPageUrl?: string;
+  permalinkUrl?: string;
+  extensionPoint?: string;
+}
 
 export function loadExtension(): Extension {
   const config = readConfig();
@@ -160,3 +156,69 @@ export function convertLegacyPostPurchaseDataToQueryString(data: Data) {
 
   return query.toString();
 }
+
+export function parseDevelopmentServerConfig(args: string[]) {
+  const fetchArgument = argumentParserFor(args);
+  const port = fetchArgument('port') || '8910';
+  const store = fetchArgument('store');
+  const resourceUrl = fetchArgument('resourceUrl');
+  const publicUrl = fetchArgument('publicUrl');
+  const generatePublicUrl = urlGeneratorFor(publicUrl);
+  const generateLocalUrl = urlGeneratorFor(`http://localhost:${port}`);
+  const filename = 'extension.js';
+  const path = `/assets/${filename}`;
+  const scriptUrl = (generatePublicUrl(path) || generateLocalUrl(path))!;
+  const generateShopUrl = urlGeneratorFor(`https://${store}`);
+  const permalinkUrl =
+    resourceUrl && publicUrl && store
+      ? generateShopUrl(resourceUrl, {
+          dev: generatePublicUrl('query')!.toString(),
+        })
+      : undefined;
+  const passwordPageUrl = store && generateShopUrl('/password');
+  const extensionPoint = fetchArgument('extension-point');
+  const useSSL = scriptUrl.protocol === 'https:';
+  const webpackConfiguration = createWebpackConfiguration({
+    development: true,
+    output: {
+      filename,
+      publicPath: '/assets/',
+    },
+    hotOptions: {
+      https: useSSL,
+      webSocket: {
+        host: scriptUrl.hostname,
+        port: Number(scriptUrl.port) || (useSSL ? 443 : 80),
+        path: '/build',
+      },
+    },
+  });
+
+  return {
+    store,
+    resourceUrl,
+    publicUrl,
+    scriptUrl: scriptUrl.toString(),
+    port,
+    permalinkUrl: permalinkUrl?.toString(),
+    passwordPageUrl: passwordPageUrl?.toString(),
+    webpackConfiguration,
+    filename,
+    extensionPoint,
+  };
+}
+
+export const urlGeneratorFor = (baseUrl?: string) => (
+  path?: string,
+  query: Record<string, string> = {},
+): URL | undefined => {
+  if (!baseUrl) return undefined;
+  if (!path) return undefined;
+
+  const url = new URL(path, baseUrl);
+  Object.keys(query).forEach((parameter) => {
+    url.searchParams.append(parameter, query[parameter]);
+  });
+
+  return url;
+};
