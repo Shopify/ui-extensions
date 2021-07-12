@@ -13,7 +13,7 @@ export interface TextBlockProps {
 
 /**
  * TextBlock is used to render a block of text that occupies the full width available.
- * Usually used to render paragraphs or text.
+ * Usually used to render paragraphs of text.
  */
 export const TextBlock = createRemoteComponent<'TextBlock', TextBlockProps>(
   'TextBlock',
