@@ -128,16 +128,11 @@ export async function createDependencyGraph(entry: string) {
     }
   });
 
-  return modules;
+  return resolveRemoteExtends(modules);
 }
 
 async function extractModule(file: string): Promise<Module> {
   const source = readFileSync(file, 'utf8');
-
-  // const parser = new TSDocParser();
-  // const {docComment} = parser.parseString(
-  //   '/** How to align children along the cross axis. */',
-  // );
 
   const parsed = parse(source, {
     sourceType: 'module',
@@ -326,18 +321,29 @@ function resolveNodeToLocal(
     }
     case 'TSInterfaceDeclaration': {
       const properties: PropertySignature[] = [];
+      let remoteExtends: string | undefined;
 
       // If this interface extends another, find the base
       // we're extending and grab its properties
       if (node.extends) {
         for (const extens of node.extends) {
           const resolved = resolveNodeToLocal(extens, context);
+
           if (resolved.kind === 'Extends') {
             const extendedNode = context.resolvedLocals.get(resolved.extends);
-            if (extendedNode && extendedNode.kind === 'InterfaceType') {
-              extendedNode.properties.forEach((property) =>
-                properties.push(property),
-              );
+
+            if (extendedNode) {
+              if (extendedNode.kind === 'InterfaceType') {
+                extendedNode.properties.forEach((property) =>
+                  properties.push(property),
+                );
+              } else if (extendedNode.kind === 'Imported') {
+                // if this interface extends a node that's imported from outside this project,
+                // flag it for later resolution (see resolveRemoteExtends).
+                // At this point, we haven't collected  types from the remotely imported file yet,
+                // so we can't resolve these properties yet.
+                remoteExtends = extendedNode.name;
+              }
             }
           }
         }
@@ -451,6 +457,7 @@ function resolveNodeToLocal(
         kind: 'InterfaceType',
         name: node.id.name,
         properties,
+        remoteExtends,
         docs: docsFromCommentBlocks([node.leadingComments, comments], context),
       };
     }
@@ -704,6 +711,7 @@ function collectLocalsFromStatement(
 
       return references;
     }
+    // ie "export {Thing} from './path';"
     case 'ExportNamedDeclaration': {
       if (node.declaration) {
         const exported = collectLocalsFromStatement(
@@ -745,10 +753,49 @@ function collectLocalsFromStatement(
       }
       break;
     }
+    // ie "import {Thing} from './path';"
+    case 'ImportDeclaration': {
+      if (node.importKind !== 'type') break;
+
+      const resolved = node.source
+        ? resolveImportPath(context.path, node.source.value)
+        : undefined;
+
+      for (const specifier of node.specifiers) {
+        switch (specifier.type) {
+          case 'ImportSpecifier': {
+            const importedName = specifier.local.name;
+            const exportedName =
+              specifier.imported.type === 'Identifier'
+                ? specifier.imported.name
+                : '';
+
+            if (resolved) {
+              const imported: ImportedReference = {
+                kind: 'Imported',
+                name: importedName,
+                path: resolved,
+              };
+
+              context.resolvedLocals.set(exportedName, imported);
+            }
+          }
+        }
+      }
+    }
   }
 }
 
 function resolveImportPath(from: string, to: string) {
+  if (to.startsWith('@shopify')) {
+    const packageName = to.replace('@shopify/', '');
+    return resolveSync(`${packageName}/src`, {
+      basedir: path.dirname(from),
+      moduleDirectory: 'packages',
+      extensions: ['.ts', '.tsx', '.js'],
+    });
+  }
+
   return resolveSync(to, {
     basedir: path.dirname(from),
     extensions: ['.ts', '.tsx', '.js'],
@@ -758,6 +805,34 @@ function resolveImportPath(from: string, to: string) {
 function undocumented(node: Node) {
   console.warn(`${node.type} is unhandled.`);
   return UNDOCUMENTED;
+}
+
+/**
+ * Resolves situations like:
+ *
+ * import {BaseProps} from '@shopify/ui-extensions';
+ * export interface Props extends BaseProps {}
+ */
+function resolveRemoteExtends(graph: Map<string, Module>): Map<string, Module> {
+  graph.forEach((graphModule) => {
+    graphModule.locals.forEach((local) => {
+      if (local.kind === 'InterfaceType' && local.remoteExtends) {
+        const extendedNodes = filterGraph(
+          graph,
+          ({name, kind}) => kind !== 'Imported' && name === local.remoteExtends,
+        );
+
+        if (extendedNodes.length) {
+          const extendedNode = extendedNodes[0];
+          extendedNode.properties.forEach((property) =>
+            local.properties.push(property),
+          );
+        }
+      }
+    });
+  });
+
+  return graph;
 }
 
 export function filterGraph(
