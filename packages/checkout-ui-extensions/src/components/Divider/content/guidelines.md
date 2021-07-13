@@ -6,4 +6,5 @@
 
 ## Related components
 
-- [InlineSpacer](https://github.com/Shopify/checkout-web/tree/master/packages/checkout-ui-extensions/src/components/InlineSpacer): Controls vertical margin.
+- [BlockSpacer](https://github.com/Shopify/checkout-web/tree/master/packages/checkout-ui-extensions/src/components/BlockSpacer): Controls vertical margin.
+- [InlineSpacer](https://github.com/Shopify/checkout-web/tree/master/packages/checkout-ui-extensions/src/components/InlineSpacer): Controls horizontal margin.
