@@ -9,9 +9,11 @@ import type {
   Documentation,
   PropertySignature,
   Tag,
-} from '../types';
+} from '../../types';
 
-import {Module} from '../utilities/dependency-graph';
+import {Module} from '../../utilities/dependency-graph';
+
+export {renderExamples, findExamplesFor} from './examples';
 
 export interface Node {
   value: RemoteComponent | Type | LocalReference;
@@ -171,6 +173,7 @@ function propType(
       .map((param: any) => propType(param, exports, dir, additionalPropsTables))
       .join(', ')}<wbr>>`;
   }
+  const PIPE = '&#124;';
 
   switch (value.kind) {
     case 'AnyType':
@@ -203,7 +206,6 @@ function propType(
       );
 
       if (local == null) {
-        // eslint-disable-next-line no-console
         console.warn(
           `Can’t resolve export type \`${value.name}\` in ${dir}. Maybe it’s not exported from the component index or imported from a remote package.`,
         );
@@ -227,13 +229,11 @@ function propType(
       );
       return `${anchorLink(value.name)}${params}`;
     case 'UnionType':
-      const PIPE = '&#124;';
-      const union = value.types
+      return value.types
         .map((type: any) => {
           return propType(type, exports, dir, additionalPropsTables);
         })
         .join(` ${PIPE} `);
-      return `${union}`;
     case 'StringLiteralType':
       return `"${value.value}"`;
     case 'NumberLiteralType':
@@ -362,4 +362,10 @@ function responsive(breakpoint: any, additionalPropsTables: string[]) {
 {% endraw %}{% endhighlight %}\n\n`;
 
   return markdown;
+}
+
+export function mkdir(directory) {
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory, {recursive: true});
+  }
 }

@@ -5,7 +5,7 @@ export interface ShowToastOptions {
 
 export interface Toast {
   /**
-   *
+   * Trigger a toast message to appear.
    * @param content Message to display in the toast.
    * @param options
    */

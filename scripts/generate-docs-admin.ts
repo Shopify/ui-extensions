@@ -1,4 +1,4 @@
-import {components, extensionPoints} from './typedoc/shopify-dev-renderer';
+import {components, adminExtensionApi} from './typedoc/shopify-dev-renderer';
 
 const paths = {
   inputRoot: './packages/admin-ui-extensions',
@@ -6,8 +6,8 @@ const paths = {
     JavaScript: './packages/admin-ui-extensions',
     React: './packages/admin-ui-extensions-react',
   },
-  outputRoot: '../shopify-dev/content/tools/admin-ui-extensions',
-  shopifyDevUrl: '/tools/admin-ui-extensions',
+  outputRoot: '../shopify-dev/content/apps/app-extensions/ui-extensions',
+  shopifyDevUrl: '/apps/app-extensions/ui-extensions',
 };
 
 components(paths, {
@@ -20,4 +20,7 @@ Each component has general guidelines for usage as well as additional informatio
 - 🖥 denotes desktop specific information
   `,
 });
-extensionPoints(paths);
+
+adminExtensionApi(paths, {
+  componentsToSkip: ['ContainerApi', 'DataApi'],
+});

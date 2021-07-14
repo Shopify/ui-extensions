@@ -10,4 +10,4 @@ ${addition}
 `.trimLeft();
 
   fs.writeFileSync(path, newContent);
-}
+};

@@ -10,7 +10,7 @@ module.exports = {
     'packages/*/*.node',
     'packages/*/*.esnext',
     'examples/',
-    'scripts/',
+    'scripts/argo-admin/',
   ],
   rules: {
     // Conflicts with prettier rule
