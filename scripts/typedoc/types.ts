@@ -39,6 +39,7 @@ export interface ImportedReference {
 export interface InterfaceType extends Documentable {
   kind: 'InterfaceType';
   name: string;
+  remoteExtends?: string;
   properties: PropertySignature[];
 }
 
