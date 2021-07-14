@@ -26,7 +26,7 @@ export interface HeadingProps {
 }
 
 /**
- * Headings are used as the titles of each major section of the checkout. 
+ * Headings are used as the titles of each major section of the checkout.
  * For example, Contact information, Shipping address, or Shipping method.
  */
 export const Heading = createRemoteComponent<'Heading', HeadingProps>(
