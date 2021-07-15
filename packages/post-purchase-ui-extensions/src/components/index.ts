@@ -52,3 +52,10 @@ export {View} from './View';
 export type {ViewProps} from './View';
 export {VisuallyHidden} from './VisuallyHidden';
 export type {VisuallyHiddenProps} from './VisuallyHidden';
+export type {
+  Autocomplete,
+  AutocompleteField,
+  AutocompleteGroup,
+  Breakpoint,
+  Responsive,
+} from './shared';
