@@ -14,6 +14,7 @@
     "version-bump": "lerna version --no-push --include-merged-tags",
     "version-bump:checkout": "lerna version --no-push --ignore-changes 'packages/{admin-ui-extensions*,ui-extensions}/**' --include-merged-tags",
     "version-bump:admin": "lerna version --no-push --ignore-changes 'packages/!({admin*,ui-extensions})/**' --include-merged-tags",
+    "version-bump:post-purchase": "lerna version --no-push --ignore-changes 'packages/{admin-ui-extensions*,ui-extensions,checkout-ui-extensions*}/**' --include-merged-tags",
     "deploy": "lerna publish from-package --yes",
     "nuke": "lerna clean --yes && rm -rf node_modules && yarn cache clean",
     "build-consumer": "yarnpkg build && ./scripts/build-consumer.sh",
