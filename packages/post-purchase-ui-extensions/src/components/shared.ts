@@ -123,3 +123,7 @@ export type AutocompleteField =
   | 'pager telephone-extension'
   | 'pager email'
   | 'pager instant-message';
+
+export type Breakpoint = 'base' | 'small' | 'medium' | 'large';
+
+export type Responsive<T> = {[key in Breakpoint]?: T};
