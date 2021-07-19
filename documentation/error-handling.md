@@ -1,56 +1,30 @@
 # Error handling
 
-Because UI extension scripts run in non-browser environments (Web Worker in web, JavascriptCore on Mobile), it is recommended to manually set up error listeners and error reporting. However, it is possible to use external libraries for error reporting.
+UI extensions support standard web errors. You can add `unhandledrejection` listener for unhandled promise rejections or `error` listener for other exceptions like Javascript runtime error or a resource fails to load.
 
-## Error handling in UI extensions
+```javascript
+// For unhandled promise rejections
+self.addEventListener('unhandledrejection', (error) => {
+  console.warn('event unhandledrejection', error);
+});
 
-UI extensions can throw two types of error: lifecycle errors and non-lifecycle errors.
+// For other exceptions
+self.addEventListener('error', (error) => {
+  console.warn('event error', error);
+});
+```
 
-### Lifecycle error
+## Reporting errors
 
-Most errors will fall into this type. These errors can be thrown when:
-
-- a UI extension script is loaded or imported
-- the UI extension script is run
-- during any callback interaction with UI extension components or APIs
-
-To catch these errors, add an event listener for `unhandledrejection`.
-
-  ```javascript
-  self.onunhandledrejection = (error) => {
-    console.warn('onunhandledrejection', error);
-  };
-  // or
-  self.addEventListener('unhandledrejection', (error) => {
-    console.warn('event unhandledrejection', error);
-  });
-  ```
-
-### Non-lifecycle error
-
-These errors can be thrown when the script encounters an exception while running a `setTimeout` callback. To catch these errors, add an event listener for `error`.
-
-  ```javascript
-  self.onerror = (error) => {
-    console.warn('onerror', error);
-  };
-  // or
-  self.addEventListener('error', (error) => {
-    console.warn('event error', error);
-  });
-  ```
-
-## Handle errors via 3rd-party libraries
+It's possible to use 3rd party libaries for reporting errors like Bugsnag or Sentry. However, it might require some extra configs or setup depending on which libraries you are using because UI extensions are run inside WebWorker.
 
 ### Bugsnag
 
-See https://docs.bugsnag.com/platforms/javascript/.
-
-You can run Bugsnag using the CDN version or npm dependencies. However, Bugsnag requires additional polyfills at runtime, as it will try to access the browser environment. The script below has been tested at the time of writing these docs.
+Follow [Bugsnag documentation](https://docs.bugsnag.com/platforms/javascript/) to install it to your extension. If you use [CDN version](https://docs.bugsnag.com/platforms/javascript/cdn-guide/), you need to add polyfill code below as Bugsnag tries to access some variables that are not available in WebWorker.
 
 ```javascript
 /**
- * Window polyfill
+ * CDN polyfill
  */
 (() => {
   const document = {
@@ -68,46 +42,23 @@ You can run Bugsnag using the CDN version or npm dependencies. However, Bugsnag 
   window.document = document;
   window.history = history;
 })();
-
-/**
- * Bugsnag
- */
-// Add bugsnag CDN javascript here
-Bugsnag.start({apiKey: 'YOUR-BUGSNAG-API-KEY'});
-
-/**
- * Add error handlers
- */
-self.onerror = (error) => {
-  Bugsnag.notify(error);
-};
 ```
 
-By default, Bugsnag will listen for `unhandledrejection`. You only need to manually listen to `onerror`.
+There is no need to add custom event listeners as Bugsnag does it for you out of the box.
 
 ### Sentry
 
-See https://docs.sentry.io/platforms/javascript/.
-
-Using Sentry for UI extensions is straightforward. You only need to import the main Sentry bundle or `@sentry/browser` No polyfills are required.
+Follow [Sentry documentation](https://docs.sentry.io/platforms/javascript/) to install it to your extension. There is no polyfill required for using Sentry. However, Sentry does not add any event listeners out of the box. So, you need to add them manually.
 
 ```javascript
-// Add Sentry CDN javascript here
-self.Sentry = Sentry;
-Sentry.init({
-  dsn: 'YOUR-SENTRY-DSN-VALUE',
-});
-
 /**
  * Add error handlers
  */
-self.onerror = (error) => {
+self.addEventListener('unhandledrejection', (error) => {
   Sentry.captureException(new Error(error.reason.stack));
-};
+});
 
-self.onunhandledrejection = (error) => {
+self.addEventListener('error', (error) => {
   Sentry.captureException(new Error(error.reason.stack));
-};
+});
 ```
-
-By default, Sentry does not listen for any errors. You will need to manually add listeners for both `error` and `unhandledRejection`.
