@@ -18,6 +18,8 @@ export {Modal} from './Modal';
 export type {ModalProps} from './Modal';
 export {Link} from './Link';
 export type {LinkProps} from './Link';
+export {Page} from './Page';
+export type {PageProps} from './Page';
 export {Radio} from './Radio';
 export type {RadioProps} from './Radio';
 export {ResourceItem} from './ResourceItem';
