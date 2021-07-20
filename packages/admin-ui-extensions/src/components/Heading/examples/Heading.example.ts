@@ -1,4 +1,4 @@
-import {extend, Heading} from '@shopify/argo-admin';
+import {extend, Heading} from '@shopify/admin-ui-extensions';
 
 extend('Playground', (root) => {
   const heading = root.createComponent(Heading, {
