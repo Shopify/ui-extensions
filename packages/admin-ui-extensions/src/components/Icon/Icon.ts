@@ -2,6 +2,9 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 type Source =
   | 'cancelSmallMinor'
+  | 'export'
+  | 'import'
+  | 'mobileAccept'
   | 'searchMinor'
   | 'starHollow'
   | 'starFilled'

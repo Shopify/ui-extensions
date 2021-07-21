@@ -24,6 +24,8 @@ export interface LinkAction {
   url: string;
 }
 
+export type DestructableActionWithIcon = DestructableAction & {icon?: string};
+
 export interface PageProps {
   /** Remove the normal max-width on the page */
   fullWidth?: boolean;
@@ -32,11 +34,11 @@ export interface PageProps {
   /** Displays a divider between the page header and the page content */
   divider?: boolean;
   /** Primary page-level action */
-  primaryAction?: DestructableAction;
+  primaryAction?: DestructableActionWithIcon;
   /** Collection of breadcrumbs */
   breadcrumbs?: (CallbackAction | LinkAction)[];
   /** Collection of secondary page-level actions */
-  secondaryActions?: DestructableAction[];
+  secondaryActions?: DestructableActionWithIcon[];
   /** Title of Page */
   title?: string;
 }
