@@ -50,10 +50,13 @@ components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
 gettingStarted(checkout);
 
 // Post-purchase docs
-extensionPoints(postPurchase, {visibility: 'postUnite'});
+extensionPoints(postPurchase, {
+  title: 'Post-purchase',
+  visibility: 'postUnite',
+});
 components(postPurchase, componentsPageContent(postPurchase.shopifyDevUrl), {
   subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
   componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
   generateReadmes: true,
 });
-gettingStarted(postPurchase);
+gettingStarted(postPurchase, {title: 'Post-purchase', visibility: 'postUnite'});
