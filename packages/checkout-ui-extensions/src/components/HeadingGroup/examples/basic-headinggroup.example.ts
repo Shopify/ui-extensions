@@ -1,4 +1,9 @@
-import {extend, HeadingGroup, Heading, View} from '@shopify/checkout-ui-extensions';
+import {
+  extend,
+  HeadingGroup,
+  Heading,
+  View,
+} from '@shopify/checkout-ui-extensions';
 
 extend('Checkout::Feature::Render', (root) => {
   const headingGroup = root.createComponent(View, undefined, [

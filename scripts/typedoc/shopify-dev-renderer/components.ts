@@ -13,6 +13,9 @@ import {
   propsTable,
   strip,
   firstSentence,
+  mkdir,
+  renderExamples,
+  findExamplesFor,
 } from './shared';
 import type {Node, Visibility} from './shared';
 
@@ -47,21 +50,16 @@ export async function components(
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
 
   const outputRoot = resolve(`${paths.outputRoot}`);
+  mkdir(outputRoot);
+
   const componentDocsPath = resolve(`${paths.outputRoot}/components`);
-
-  if (!fs.existsSync(outputRoot)) {
-    fs.mkdirSync(outputRoot, {recursive: true});
-  }
-
-  if (!fs.existsSync(componentDocsPath)) {
-    fs.mkdirSync(componentDocsPath, {recursive: true});
-  }
+  mkdir(componentDocsPath);
 
   const indexFile = resolve(`${paths.outputRoot}/components/index.md`);
   let index = renderYamlFrontMatter({
     gid: findUuid(indexFile),
     url: `${paths.shopifyDevUrl}/components/index`,
-    title: title,
+    title,
     description: frontMatterDescription,
     ...visibilityFrontMatter,
   });
@@ -80,6 +78,7 @@ export async function components(
 
     const componentUrl = `${paths.shopifyDevUrl}/components/${filename}`;
 
+    // 0. yaml frontmatter
     let markdown = renderYamlFrontMatter({
       gid: findUuid(outputFile),
       url: componentUrl,
@@ -87,16 +86,20 @@ export async function components(
       description: `"${firstSentence(docsContent)}"`,
       ...visibilityFrontMatter,
     });
+
+    // 1. Intro content
     const docsContentMd = docsContent ? `${docsContent}\n\n` : '';
     markdown += docsContentMd;
 
     markdown += renderExampleImageFor(name, paths.shopifyDevAssets);
 
-    const examples = renderComponentExamplesFor(name, paths.packages);
-    if (examples.length > 0) {
-      markdown += examples;
+    // 2. Examples
+    const examples = findExamplesFor(name, paths.packages, '/components');
+    if (examples.size > 0) {
+      markdown += renderExamples(examples);
     }
 
+    // 3. Props table
     const additionalPropsTables: string[] = [];
     let propsTableMd = '';
     const face = nodes.find(({value}: any) => value.name === props.name);
@@ -124,6 +127,7 @@ export async function components(
       .join('');
     markdown += additionalPropsTablesMd;
 
+    // 4. Subcomponents
     if (Object.keys(subcomponentMap).includes(name)) {
       const subcomponentsMd = subcomponentMap[name]
         .map((subcomponent) => {
@@ -170,14 +174,17 @@ export async function components(
         })
         .join('\n\n');
 
-      markdown += '\n\n' + subcomponentsMd;
+      markdown += `\n\n${subcomponentsMd}`;
     }
 
+    // 5. Additional content
     const contentFolder = resolve(
       `${paths.inputRoot}/src/components/${name}/content`,
     );
-    const additionalContent =
-      '\n\n' + getAdditionalContentFor(contentFolder, paths.shopifyDevUrl);
+    const additionalContent = `\n\n${getAdditionalContentFor(
+      contentFolder,
+      paths.shopifyDevUrl,
+    )}`;
     markdown += additionalContent;
 
     fs.writeFile(outputFile, markdown, function (err) {
@@ -189,7 +196,7 @@ export async function components(
         `${paths.inputRoot}/src/components/${name}/README.md`,
       );
       const title = `# ${name}\n\n`;
-      let readmeMarkdown =
+      const readmeMarkdown =
         title + docsContentMd + propsTableMd + additionalPropsTablesMd;
 
       fs.writeFile(readmeFile, readmeMarkdown, function (err) {
@@ -206,6 +213,10 @@ export async function components(
   fs.writeFile(indexFile, index, function (err) {
     if (err) throw err;
   });
+
+  console.log(
+    `📄  Generated docs for ${components.length} components to ${componentDocsPath}.`,
+  );
 }
 
 async function buildComponentGraph(componentIndex: string) {
@@ -228,8 +239,6 @@ async function buildComponentGraph(componentIndex: string) {
     ...new Set(nodes.filter(({value}: any) => value.kind === 'Component')),
   ];
 
-  // console.log(JSON.stringify(nodes))
-
   // Sort alphabetically (tsdoc seems to get this confused)
   components.sort((aa: any, bb: any) => {
     if (aa.value.name > bb.value.name) {
@@ -242,39 +251,6 @@ async function buildComponentGraph(componentIndex: string) {
   });
 
   return {nodes, components};
-}
-
-function renderComponentExamplesFor(name: string, packages: Packages): string {
-  const examples: any = {};
-
-  Object.keys(packages).forEach((packageName) => {
-    const packagePath = packages[packageName];
-    const folder = resolve(`${packagePath}/src/components/${name}/examples`);
-
-    if (fs.existsSync(folder)) {
-      fs.readdirSync(folder).forEach((file) => {
-        const extension = extname(file).split('.').pop();
-        examples[packageName] = `{% highlight ${extension} %}{% raw %}\n`;
-        examples[packageName] += fs.readFileSync(`${folder}/${file}`, 'utf8');
-        examples[packageName] += '\n{% endraw %}{% endhighlight %}\n\n';
-      });
-    }
-  });
-
-  let markdown = '';
-
-  const exampleCount = Object.keys(examples).length;
-
-  if (exampleCount > 1) {
-    const sections = Object.keys(examples).join(', ');
-    markdown += `{% sections "${sections}" %}\n\n`;
-    markdown += Object.values(examples).join('\n\n----\n\n');
-    markdown += '{% endsections %}\n\n';
-  } else if (exampleCount > 0) {
-    markdown += Object.values(examples).join('\n\n----\n\n');
-  }
-
-  return markdown;
 }
 
 function renderExampleImageFor(

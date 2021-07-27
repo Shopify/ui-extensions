@@ -1,6 +1,6 @@
 {
   "name": "@shopify/checkout-ui-extensions-run",
-  "version": "0.5.2",
+  "version": "0.7.0",
   "description": "A command line interface for developing and building Checkout UI Extensions",
   "publishConfig": {
     "access": "public",
@@ -38,13 +38,12 @@
     "@babel/preset-env": "7.12.13",
     "@babel/preset-react": "7.12.13",
     "@babel/preset-typescript": "7.12.13",
-    "@shopify/ui-extensions-webpack-hot-client": "^0.2.1",
+    "@shopify/ui-extensions-webpack-hot-client": "^0.2.2",
     "babel-loader": "^8.2.0",
     "brotli-size": "^4.0.0",
     "camelcase-keys": "^6.0.0",
     "chalk": "^4.0.0",
     "core-js": "^3.0.0",
-    "get-port": "^5.1.1",
     "glob": "^7.0.0",
     "gzip-size": "^6.0.0",
     "js-yaml": "^3.14.0",

@@ -1,4 +1,9 @@
-import {extend, ChoiceList, Choice, BlockStack} from '@shopify/checkout-ui-extensions';
+import {
+  extend,
+  ChoiceList,
+  Choice,
+  BlockStack,
+} from '@shopify/checkout-ui-extensions';
 
 extend('Checkout::Feature::Render', (root) => {
   const choiceList = root.createComponent(

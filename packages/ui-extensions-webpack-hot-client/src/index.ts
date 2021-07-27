@@ -8,7 +8,7 @@ const ParserHelpers = require('webpack/lib/ParserHelpers');
 
 // @see https://github.com/webpack-contrib/webpack-hot-client/blob/1b7f221918217be0db7a6089fb77fffde9a973f6/lib/compiler.js#L63
 export class UIExtensionsHotClient {
-  constructor(private readonly options?: Options) {}
+  constructor(private readonly options: Options) {}
 
   apply(compiler: Compiler) {
     const {options} = this;

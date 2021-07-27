@@ -1,19 +1,17 @@
-export type {LayoutApi, Layout} from './layout';
-export {isLayoutApi} from './layout';
+export type {LayoutApi, Layout} from './LayoutApi';
+export {isLayoutApi} from './LayoutApi';
 
-export type {LocaleApi} from './locale';
-export {isLocaleApi} from './locale';
+export type {LocaleApi} from './LocaleApi';
+export {isLocaleApi} from './LocaleApi';
 
-export type {ContainerApi, ExtensionContainer} from './container';
+export type {ContainerApi, ExtensionContainer} from './ContainerApi';
+export {isContainerApi} from './ContainerApi';
 
-export {isContainerApi} from './container';
+export type {DataApi, ExtensionData} from './DataApi';
+export {isDataApi} from './DataApi';
 
-export type {DataApi, ExtensionData} from './data';
+export type {SessionTokenApi} from './SessionTokenApi';
+export {isSessionTokenApi} from './SessionTokenApi';
 
-export {isDataApi} from './data';
-
-export type {SessionTokenApi} from './sessionToken';
-export {isSessionTokenApi} from './sessionToken';
-
-export type {ToastApi} from './toast';
-export {isToastApi} from './toast';
+export type {ToastApi} from './ToastApi';
+export {isToastApi} from './ToastApi';

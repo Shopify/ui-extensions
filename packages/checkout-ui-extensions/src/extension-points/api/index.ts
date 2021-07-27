@@ -19,13 +19,18 @@ export type {
   MetafieldChangeResultError,
   MetafieldChangeResultSuccess,
   MetafieldChangeResult,
+  AppMetafield,
   AppMetafieldEntryTarget,
   AppMetafieldEntry,
   LineItem,
   LineItemChange,
+  LineItemChangeResultError,
+  LineItemChangeResultSuccess,
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,
   SignedChange,
+  CustomerAccount,
 } from './standard';
 export type {CurrencyCode, CountryCode} from './shared';
+export type {LineItemRenderAfterApi} from './line-item-render-after';

@@ -1,1 +1,1 @@
-export * from './types';
+export type {BaseBannerProps, BaseButtonProps, BaseHeadingProps} from './types';
