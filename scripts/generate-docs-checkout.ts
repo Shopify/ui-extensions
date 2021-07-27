@@ -55,6 +55,5 @@ components(postPurchase, componentsPageContent(postPurchase.shopifyDevUrl), {
   subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
   componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
   generateReadmes: true,
-  visibility: 'postUnite',
 });
-gettingStarted(postPurchase, {visibility: 'postUnite'});
+gettingStarted(postPurchase);
