@@ -22,13 +22,13 @@ Responsive is a [Mapped Type](https://www.typescriptlang.org/docs/handbook/2/map
 
 For example, if a property accepts `number | Responsive`, it would accept a number or an object where the keys are Breakpoints and the values are numbers:
 
-{% highlight js %}{% raw %}
+```js
 {
   'base': 1,
   'small': 0.5,
   'large': 2
 }
-{% endraw %}{% endhighlight %}
+```
 
 <a name="Source"></a>
 
