@@ -18,6 +18,7 @@ export type {
   RadioProps,
   ResourceItemProps,
   ResourceListProps,
+  ResourcePickerProps,
   SelectProps,
   SpinnerProps,
   StackItemProps,

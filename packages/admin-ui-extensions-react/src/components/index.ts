@@ -15,6 +15,7 @@ export * from './OptionList';
 export * from './Radio';
 export * from './ResourceItem';
 export * from './ResourceList';
+export * from './ResourcePicker';
 export * from './Select';
 export * from './Spinner';
 export * from './StackItem';

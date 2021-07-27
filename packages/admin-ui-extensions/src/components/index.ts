@@ -32,6 +32,13 @@ export {ResourceItem} from './ResourceItem';
 export type {ResourceItemProps} from './ResourceItem';
 export {ResourceList} from './ResourceList';
 export type {ResourceListProps} from './ResourceList';
+export {ResourcePicker} from './ResourcePicker';
+export type {
+  Item,
+  NestedItem,
+  ResourcePickerProps,
+  SelectedItem,
+} from './ResourcePicker';
 export {Select} from './Select';
 export type {SelectProps} from './Select';
 export {Spinner} from './Spinner';

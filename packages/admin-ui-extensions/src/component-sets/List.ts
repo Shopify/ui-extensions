@@ -1,14 +1,16 @@
 import {
-  ResourceList,
-  ResourceItem,
-  OptionList,
   List,
   ListItem,
+  OptionList,
+  ResourceItem,
+  ResourceList,
+  ResourcePicker,
 } from '../components';
 
 export type ListComponents =
   | typeof List
   | typeof ListItem
-  | typeof ResourceList
+  | typeof OptionList
   | typeof ResourceItem
-  | typeof OptionList;
+  | typeof ResourceList
+  | typeof ResourcePicker;
