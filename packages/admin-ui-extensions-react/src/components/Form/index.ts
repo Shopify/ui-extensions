@@ -1,2 +1,5 @@
+import type {PropsWithChildren} from 'react';
+import type {FormProps as BaseFormProps} from '@shopify/admin-ui-extensions';
+
+export type FormProps = PropsWithChildren<BaseFormProps>;
 export {Form} from './Form';
-export type {FormProps} from '@shopify/admin-ui-extensions';
