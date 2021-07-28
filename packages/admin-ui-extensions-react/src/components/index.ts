@@ -7,6 +7,7 @@ export * from './Checkbox';
 export * from './Form';
 export * from './Pressable';
 export * from './Icon';
+export * from './Heading';
 export * from './Link';
 export * from './Modal';
 export * from './OptionList';
