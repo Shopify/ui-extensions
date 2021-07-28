@@ -20,11 +20,12 @@ const additionalPropsTables: string[] = [];
 
 interface Options {
   visibility?: Visibility;
+  title?: string;
 }
 
 export async function extensionPoints(paths: Paths, options: Options = {}) {
   const extensionsIndex = resolve(`${paths.inputRoot}/src/index.ts`);
-  const {visibility = 'hidden'} = options;
+  const {visibility = 'hidden', title = 'Checkout'} = options;
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
 
   const graph = await createDependencyGraph(extensionsIndex);
@@ -62,9 +63,8 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
   let markdown = renderYamlFrontMatter({
     gid: findUuid(apiFile),
     url: `${paths.shopifyDevUrl}/extension-points/api`,
-    title: 'Post-purchase extension points API',
-    description:
-      'An API reference for Post-purchase extension points and their respective types.',
+    title: `${title} extension points API`,
+    description: `An API reference for ${title} extension points and their respective types.`,
     ...visibilityFrontMatter,
   });
 
