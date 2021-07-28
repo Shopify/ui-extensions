@@ -52,7 +52,7 @@ gettingStarted(checkout);
 // Post-purchase docs
 extensionPoints(postPurchase, {
   title: 'Post-purchase',
-  visibility: 'postUnite',
+  visibility: 'visible',
 });
 components(
   postPurchase,
@@ -61,6 +61,7 @@ components(
     subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
     componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
     generateReadmes: true,
+    visibility: 'visible',
   },
 );
-gettingStarted(postPurchase, {title: 'Post-purchase', visibility: 'postUnite'});
+gettingStarted(postPurchase, {title: 'Post-purchase', visibility: 'visible'});
