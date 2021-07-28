@@ -3,11 +3,11 @@
 . "$PWD/scripts/consumer-helper.sh"
 
 usage="
-Usage: $(basename "$0") <workspace> [<package_name>]
+Usage: $(basename "$0") <workspace short name> [<package_name>]
 
 Build UI Extensions packages into a project
 
- <workspace>  Target spin workspace, i.e. \`web.test.trish-ta.us.spin.dev\`
+ <workspace short name>  Target spin workspace, i.e. only enter \`web\` if your workspace is \`web.test.trish-ta.us.spin.dev\`
  <package_name>    Space separated package names
                    default: ${AVAILABLE_PACKAGES[@]}
 

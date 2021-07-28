@@ -38,7 +38,7 @@ function run_command {
   if [[ -z $spin ]]; then
     $command
   else
-    ssh -o LogLevel=ERROR $projectDirectoryOrWorkspace $command
+    ssh -o LogLevel=ERROR `spin show | grep Shopify/$projectName | awk '{print $1}'` $command
   fi
 }
 
@@ -214,7 +214,7 @@ function build_consumer {
 
   done
 
-  echo "💃 ${GREEN}Build copied to ${BOLD}$projectDirectory${NORMAL}.${NONE} Run the project to see your changes from UI Extensions packages."
+  echo "💃 ${GREEN}Build copied to ${BOLD}$projectDirectoryOrWorkspace${NORMAL}.${NONE} Run the project to see your changes from UI Extensions packages."
 
   exit 0
 }
