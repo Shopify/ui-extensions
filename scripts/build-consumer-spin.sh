@@ -7,7 +7,7 @@ Usage: $(basename "$0") <workspace short name> [<package_name>]
 
 Build UI Extensions packages into a project
 
- <workspace short name>  Target spin workspace, i.e. only enter \`web\` if your workspace is \`web.test.trish-ta.us.spin.dev\`
+ <workspace short name>  Target spin workspace short name, i.e. only enter \`web\` if your workspace is \`web.test.trish-ta.us.spin.dev\`
  <package_name>    Space separated package names
                    default: ${AVAILABLE_PACKAGES[@]}
 
