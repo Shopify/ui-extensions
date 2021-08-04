@@ -1,0 +1,34 @@
+name: Rebase from main
+
+on:
+  push:
+    branches: [rebase-test-main]
+
+jobs:
+  rebase-from-main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout admin-rc
+        with:
+          ref: rebase-test-admin-rc
+
+      - name: get GITHUB_EVENT_PATH
+        run: cat $GITHUB_EVENT_PATH
+
+      - name: Set up
+        env:
+          USER_NAME: jq -r ".head_commit.author.name" "$GITHUB_EVENT_PATH"
+          USER_EMAIL: jq -r ".head_commit.author.email" "$GITHUB_EVENT_PATH"
+        run: |
+             git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+             git config --global user.email "$USER_EMAIL"
+             git config --global user.name "$USER_NAME"
+             echo $USER_EMAIL
+             echo $USER_NAME
+
+      - name: Rebase and push
+        run: |
+             git pull --rebase origin rebase-test-main
+             git push --force
