@@ -21,3 +21,5 @@ export interface LinkProps {
  * Links take users to another place, and usually appear within or directly following a sentence.
  */
 export const Link = createRemoteComponent<'Link', LinkProps>('Link');
+
+const hello: string = 0;
