@@ -37,6 +37,17 @@ export interface TextFieldProps {
    */
   value?: string;
   /**
+   * In rare cases, like the PhoneField component, we completely control state.
+   * In those cases, there is never a difference between the `value` prop of the field
+   * and the current value in the field, and so this component never considers the
+   * field to have changed. Use the `controlledValue` prop to provide the value that
+   * should be shown to the buyer in those circumstances, but where the `value` prop
+   * will continue to be used as the comparison value to determine whether the field
+   * has changed (this will usually be set to the last committed, unformatted value
+   * for the controlled input).
+   */
+  controlledValue?: string;
+  /**
    * The content type a buyer will enter into the field. This type is used to provide
    * semantic value to the field and, where possible, will provide the buyer with
    * a better editing experience for the content type.
