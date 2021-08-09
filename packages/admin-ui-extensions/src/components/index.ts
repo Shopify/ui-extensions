@@ -2,6 +2,8 @@ export {Badge} from './Badge';
 export type {BadgeProps} from './Badge';
 export {Banner} from './Banner';
 export type {BannerProps} from './Banner';
+export {BlockStack} from './BlockStack';
+export type {BlockStackProps} from './BlockStack';
 export {Button} from './Button';
 export type {ButtonProps} from './Button';
 export {Card} from './Card';
