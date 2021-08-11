@@ -12,6 +12,7 @@ import type {Visibility} from './shared';
 
 interface Options {
   visibility?: Visibility;
+  title?: string;
 }
 
 export function gettingStarted(paths: Paths, options: Options = {}) {
@@ -19,7 +20,7 @@ export function gettingStarted(paths: Paths, options: Options = {}) {
   const extensionPointsDocsPath = resolve(
     `${paths.outputRoot}/extension-points`,
   );
-  const {visibility = 'hidden'} = options;
+  const {visibility = 'hidden', title = 'Checkout'} = options;
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
 
   if (!fs.existsSync(outputRoot)) {
@@ -35,9 +36,8 @@ export function gettingStarted(paths: Paths, options: Options = {}) {
   let markdown = renderYamlFrontMatter({
     gid: findUuid(indexFile),
     url: `${paths.shopifyDevUrl}/extension-points/index`,
-    title: 'Post-purchase extensions API reference',
-    description:
-      'API reference for Post-purchase extension points. Learn about global objects, rendering, components, and how you’ll interact with them.',
+    title: `${title} extensions API reference`,
+    description: `API reference for ${title} extension points. Learn about global objects, rendering, components, and how you’ll interact with them.`,
     ...visibilityFrontMatter,
   });
 

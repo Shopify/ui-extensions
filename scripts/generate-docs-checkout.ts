@@ -26,9 +26,9 @@ const postPurchase = {
   shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
 };
 
-const componentsPageContent = (url: string) => ({
-  title: 'Components for Post-purchase extensions',
-  frontMatterDescription: 'A list of components for Post-purchase extensions.',
+const componentsPageContent = (url: string, title = 'Checkout') => ({
+  title: `Components for ${title} extensions`,
+  frontMatterDescription: `A list of components for ${title} extensions.`,
   description: `Checkout UI Extensions provide many powerful UI components that a
   [rendering extension](${url}/extension-points#rendering) can
   use to build an interface. This UI is rendered natively by Shopify, so you
@@ -50,11 +50,18 @@ components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
 gettingStarted(checkout);
 
 // Post-purchase docs
-extensionPoints(postPurchase, {visibility: 'postUnite'});
-components(postPurchase, componentsPageContent(postPurchase.shopifyDevUrl), {
-  subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
-  componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
-  generateReadmes: true,
-  visibility: 'postUnite',
+extensionPoints(postPurchase, {
+  title: 'Post-purchase',
+  visibility: 'visible',
 });
-gettingStarted(postPurchase, {visibility: 'postUnite'});
+components(
+  postPurchase,
+  componentsPageContent(postPurchase.shopifyDevUrl, 'Post-purchase'),
+  {
+    subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
+    componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
+    generateReadmes: true,
+    visibility: 'visible',
+  },
+);
+gettingStarted(postPurchase, {title: 'Post-purchase', visibility: 'visible'});

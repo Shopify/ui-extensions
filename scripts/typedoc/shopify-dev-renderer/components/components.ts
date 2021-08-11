@@ -1,9 +1,9 @@
 import {resolve, extname} from 'path';
 import * as fs from 'fs';
 
-import type {Paths, Packages} from '../types';
+import type {Paths} from '../../types';
 
-import {createDependencyGraph} from '../utilities/dependency-graph';
+import {createDependencyGraph} from '../../utilities/dependency-graph';
 
 import {
   renderYamlFrontMatter,
@@ -14,10 +14,15 @@ import {
   strip,
   firstSentence,
   mkdir,
-  renderExamples,
-  findExamplesFor,
-} from './shared';
-import type {Node, Visibility} from './shared';
+} from '../shared';
+import type {Node, Visibility} from '../shared';
+
+import {
+  findExamplesForComponent,
+  renderExamplesForComponent,
+  renderSandboxComponentExamples,
+  compileComponentExamples,
+} from './utilities';
 
 export interface Content {
   title: string;
@@ -29,6 +34,8 @@ interface Options {
   subcomponentMap?: {[rootComponent: string]: string[]};
   componentsToSkip?: string[];
   generateReadmes?: boolean;
+  /** Compile examples using Rollup and output alongside example files */
+  compileExamples?: boolean;
   visibility?: Visibility;
 }
 
@@ -45,6 +52,7 @@ export async function components(
     componentsToSkip = [],
     generateReadmes = false,
     visibility = 'hidden',
+    compileExamples = false,
   } = options;
 
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
@@ -66,7 +74,7 @@ export async function components(
 
   index += `${description}\n\n`;
 
-  index += '<ul style="column-count: auto;column-width: 12rem;">';
+  const indexContent = [];
 
   components.forEach(({value: {name, docs, props}}: any) => {
     if (componentsToSkip.includes(name)) return;
@@ -94,9 +102,22 @@ export async function components(
     markdown += renderExampleImageFor(name, paths.shopifyDevAssets);
 
     // 2. Examples
-    const examples = findExamplesFor(name, paths.packages, '/components');
+    const examples = findExamplesForComponent(
+      name,
+      paths.packages,
+      '/components',
+    );
+
     if (examples.size > 0) {
-      markdown += renderExamples(examples);
+      if (compileExamples === true) {
+        const examplesUrl = `/sandbox-examples/${filename}`;
+        const examplesPath = resolve(`../shopify-dev/public/${examplesUrl}`);
+
+        compileComponentExamples(examples, examplesPath);
+        markdown += renderSandboxComponentExamples(examples, examplesUrl);
+      } else {
+        markdown += renderExamplesForComponent(examples);
+      }
     }
 
     // 3. Props table
@@ -204,10 +225,14 @@ export async function components(
       });
     }
 
-    index += `<li><a href="${componentUrl}">${name}</a></li>`;
+    indexContent.push(`<li><a href="${componentUrl}">${name}</a></li>`);
   });
 
-  index += '</ul>';
+  index += [
+    '<ul style="column-count: auto;column-width: 12rem;">',
+    ...indexContent,
+    '</ul>',
+  ].join('\n');
 
   // Write the component table of contents
   fs.writeFile(indexFile, index, function (err) {
