@@ -3,11 +3,11 @@
 . "$PWD/scripts/consumer-helper.sh"
 
 usage="
-Usage: $(basename "$0") <workspace>
+Usage: $(basename "$0") <workspace short name>
 
 Restore a project by removing UI Extension packages and running \`yarn install\`
 
- <workspace>  Target spin workspace, i.e. \`web.test.trish-ta.us.spin.dev\`
+ <workspace short name>  Target spin workspace short name, i.e. only enter \`web\` if your workspace is \`web.test.trish-ta.us.spin.dev\`
 
  Options:
   -h, --help       Show this help text
