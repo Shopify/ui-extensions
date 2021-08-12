@@ -18,9 +18,28 @@ self.addEventListener('error', (error) => {
 
 It's possible to use 3rd party libaries for reporting errors like Bugsnag or Sentry. However, it might require some extra configs or setup depending on which libraries you are using because UI extensions are run inside WebWorker.
 
+### Sentry (recommended)
+
+Follow [Sentry documentation](https://docs.sentry.io/platforms/javascript/) to install it to your extension. There is no polyfill required for using Sentry. However, Sentry does not add any event listeners out of the box. So, you need to add them manually.
+
+```javascript
+/**
+ * Add error handlers
+ */
+self.addEventListener('unhandledrejection', (error) => {
+  Sentry.captureException(new Error(error.reason.stack));
+});
+
+self.addEventListener('error', (error) => {
+  Sentry.captureException(new Error(error.reason.stack));
+});
+```
+
+If you are writing your UI extensions in React, you can follow Sentry's [React integration guide](https://docs.sentry.io/platforms/javascript/guides/react/) to get additional context on errors thrown while rendering your components.
+
 ### Bugsnag
 
-Follow [Bugsnag documentation](https://docs.bugsnag.com/platforms/javascript/) to install it to your extension. If you use [CDN version](https://docs.bugsnag.com/platforms/javascript/cdn-guide/), you need to add polyfill code below as Bugsnag tries to access some variables that are not available in WebWorker.
+Follow [Bugsnag documentation](https://docs.bugsnag.com/platforms/javascript/) to install it to your extension. If you use [CDN version](https://docs.bugsnag.com/platforms/javascript/cdn-guide/), you need to add polyfill code below before importing Bugsnag because Bugsnag tries to access some variables that are not available in WebWorker ([issue here](https://github.com/bugsnag/bugsnag-js/issues/1506)).
 
 ```javascript
 /**
@@ -44,21 +63,4 @@ Follow [Bugsnag documentation](https://docs.bugsnag.com/platforms/javascript/) t
 })();
 ```
 
-There is no need to add custom event listeners as Bugsnag does it for you out of the box.
-
-### Sentry
-
-Follow [Sentry documentation](https://docs.sentry.io/platforms/javascript/) to install it to your extension. There is no polyfill required for using Sentry. However, Sentry does not add any event listeners out of the box. So, you need to add them manually.
-
-```javascript
-/**
- * Add error handlers
- */
-self.addEventListener('unhandledrejection', (error) => {
-  Sentry.captureException(new Error(error.reason.stack));
-});
-
-self.addEventListener('error', (error) => {
-  Sentry.captureException(new Error(error.reason.stack));
-});
-```
+There is no need to add custom event listeners as Bugsnag does it for you out of the box. If you are writing your UI extension in React, you can follow Bugsnag's [React integration guide](https://docs.bugsnag.com/platforms/javascript/legacy/react/) to get additional context on errors thrown while rendering your components.
