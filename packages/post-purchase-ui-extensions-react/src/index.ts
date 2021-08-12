@@ -15,6 +15,7 @@ export type {
   BookendProps,
   ButtonProps,
   ButtonGroupProps,
+  BuyerConsentProps,
   CheckboxProps,
   CalloutBannerProps,
   FormProps,

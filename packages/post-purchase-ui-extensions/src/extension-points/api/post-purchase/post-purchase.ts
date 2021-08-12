@@ -90,6 +90,8 @@ interface LineItem {
   quantity: number;
   /** The total price of the line item, with line discounts. */
   totalPriceSet: MoneyBag;
+  /** The selling plan's unique identifier */
+  sellingPlanId?: number;
 }
 /** The product for purchase. */
 interface Product {
@@ -168,10 +170,36 @@ interface SetMetafieldChange extends Metafield {
   type: 'set_metafield';
 }
 
+/** Requests a subscription to be added to the initial purchase. */
+interface AddSubscriptionChange {
+  /** A fixed value of "add_subscription". */
+  type: 'add_subscription';
+  /** The product variant to add. */
+  variantId: number;
+  /** The selling plan to apply. */
+  sellingPlanId: number;
+  /** The shipping line price without taxes for the first shipping cycle. */
+  initialShippingPrice: number;
+  /** The shipping line price without taxes for the recurring shipping cycles. */
+  recurringShippingPrice: number;
+  /** The quantity of the specified variant. */
+  quantity: number;
+  /** Additional information concerning shipping. */
+  shippingOption: ShippingOption;
+  /** Refer to [ExplicitDiscount](/api/checkout/extension-points/api#explicitdiscount). */
+  discount?: ExplicitDiscount;
+}
+
+interface ShippingOption {
+  title?: string;
+  presentmentTitle?: string;
+}
+
 type Changes = (
   | AddVariantChange
   | AddShippingLineChange
   | SetMetafieldChange
+  | AddSubscriptionChange
 )[];
 /** A list of requested changes to be made to the initial purchase. */
 interface Changeset {
@@ -212,6 +240,8 @@ interface UpdatedLineItem {
   productId: number;
   /** The variant ID. */
   variantId: number;
+  /** The selling plan ID. */
+  sellingPlanId?: number;
   /** The product slug in kebab-case. */
   productHandle: string;
   /** How many items are being purchased in this line.*/
