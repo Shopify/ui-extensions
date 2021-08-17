@@ -270,9 +270,9 @@ interface CalculatedPurchase {
   totalOutstandingSet: MoneyBag;
 }
 
-/** Represents an error occurred while calculating or applying a changeset.
+/** Error code while calculating or applying a changeset.
  *
- * **Possible values for `code`:**
+ * **Possible values :**
  *
  * - `payment_required` - The original payment method couldn't be charged.
  * - `insufficient_inventory` - An item requested to be added is out of stock.
@@ -280,12 +280,24 @@ interface CalculatedPurchase {
  * - `unsupported_payment_method` - Indicates that the payment method was unsupported. The payment method used to pay for the initial purchase can't be used to pay for changesets.
  * - `invalid_request` - The request is invalid. It shouldn't be re-sent without modifications.
  * - `server_error` - An unexpected error has happened.
+ * - `buyer_consent_required` - Indicates that the buyer's consent was required in order to apply the changeset, but none was provided.
+ */
+type ChangesetErrorCode =
+  | 'payment_required'
+  | 'insufficient_inventory'
+  | 'changeset_already_applied'
+  | 'unsupported_payment_method'
+  | 'invalid_request'
+  | 'server_error'
+  | 'buyer_consent_required';
+
+/** Represents an error occurred while calculating or applying a changeset.
  */
 interface ChangesetError {
   /** An error code corresponding to an error that occurred while calculating or applying a changeset.
   Useful for grouping errors that can be handled similarily.
   */
-  code: string;
+  code: ChangesetErrorCode;
   /**
    * The error description.
    */
