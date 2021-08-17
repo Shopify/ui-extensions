@@ -9,7 +9,6 @@ export type {
   CardProps,
   CardSectionProps,
   CheckboxProps,
-  FormProps,
   PressableProps,
   IconProps,
   InlineStackProps,
