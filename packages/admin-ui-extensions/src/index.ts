@@ -12,6 +12,7 @@ export type {
   FormProps,
   PressableProps,
   IconProps,
+  InlineStackProps,
   ModalProps,
   LinkProps,
   RadioProps,
