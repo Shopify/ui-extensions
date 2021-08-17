@@ -4,7 +4,6 @@ export * from './Button';
 export * from './Card';
 export * from './CardSection';
 export * from './Checkbox';
-export * from './Form';
 export * from './Pressable';
 export * from './Icon';
 export * from './Heading';
