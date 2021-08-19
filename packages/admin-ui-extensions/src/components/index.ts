@@ -10,8 +10,6 @@ export {CardSection} from './CardSection';
 export type {CardSectionProps} from './CardSection';
 export {Checkbox} from './Checkbox';
 export type {CheckboxProps} from './Checkbox';
-export {Form} from './Form';
-export type {FormProps} from './Form';
 export {Heading} from './Heading';
 export type {HeadingProps} from './Heading';
 export {Icon} from './Icon';
