@@ -45,15 +45,28 @@ export function renderExamplesForComponent(
   markdown += `{% codeblock %}\n\n`;
 
   examples.forEach((example, key) => {
-    markdown += [
-      `{% code ${example.extension}, title: "${key}" %}{% raw %}`,
-      `${example.content}`,
-      '{% endraw %}{% endcode %}',
-      '\n',
-    ].join('\n');
+    markdown += renderExample({example, key});
   });
 
   markdown += '{% endcodeblock %}\n\n';
 
   return markdown;
+}
+
+export function renderExample({
+  example,
+  key,
+}: {
+  example: Example;
+  key: string;
+}): string {
+  return [
+    // ```js?title: "title"
+    `\`\`\`${example.extension}?title: "${key}"`,
+    '{% raw %}',
+    `${example.content}`,
+    '{% endraw %}',
+    '```',
+    '\n',
+  ].join('\n');
 }

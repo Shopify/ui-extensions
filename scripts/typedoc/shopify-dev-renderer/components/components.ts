@@ -232,6 +232,7 @@ export async function components(
     '<ul style="column-count: auto;column-width: 12rem;">',
     ...indexContent,
     '</ul>',
+    '',
   ].join('\n');
 
   // Write the component table of contents
@@ -308,6 +309,8 @@ function getAdditionalContentFor(contentFolder: string, shopifyDevUrl: string) {
     /https:\/\/github\.com\/Shopify\/checkout-web\/tree\/master\/packages\/checkout-ui-extensions\/src\/components\/(\w+)/g,
     (_match, p1) => `${shopifyDevUrl}/components/${p1}`.toLowerCase(),
   );
+
+  markdown += '\n';
 
   return markdown;
 }
