@@ -23,7 +23,8 @@ Each component has general guidelines for usage as well as additional informatio
   `,
   },
   {
-    compileExamples: true,
+    compileExamples: false,
+    visibility: 'visible',
   },
 );
 
