@@ -11,9 +11,4 @@ export interface BaseHeadingProps {
    * The visual level of the heading.
    */
   level?: Level;
-  /**
-   * A custom accessibility role for this heading.
-   * `presentation` will strip the semantic meaning of the heading, but leave the visual styling intact.
-   */
-  role?: 'presentation';
 }
