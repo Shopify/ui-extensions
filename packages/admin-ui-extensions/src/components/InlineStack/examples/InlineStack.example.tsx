@@ -7,16 +7,16 @@ function buildStackText(root) {
 }
 
 extend('Playground', (root) => {
-  const InlineStack = root.createComponent(InlineStack, {
+  const inlineStack = root.createComponent(InlineStack, {
     inlineAlignment: 'center',
     spacing: 'loose',
   });
 
-  InlineStack.appendChild(buildStackText(root));
-  InlineStack.appendChild(buildStackText(root));
-  InlineStack.appendChild(buildStackText(root));
+  inlineStack.appendChild(buildStackText(root));
+  inlineStack.appendChild(buildStackText(root));
+  inlineStack.appendChild(buildStackText(root));
 
-  root.appendChild(InlineStack);
+  root.appendChild(inlineStack);
 
   root.mount();
 });
