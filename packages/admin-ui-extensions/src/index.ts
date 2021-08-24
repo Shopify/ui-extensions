@@ -5,6 +5,7 @@ export * from './components';
 export type {
   BadgeProps,
   BannerProps,
+  BlockStackProps,
   ButtonProps,
   CardProps,
   CardSectionProps,
