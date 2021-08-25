@@ -18,7 +18,7 @@ import {
   firstSentence,
   mkdir,
   findExamplesFor,
-  renderExamples,
+  renderExamplesFor,
 } from './shared';
 import type {Node} from './shared';
 
@@ -72,9 +72,13 @@ export async function adminExtensionApi(paths: Paths, options: Options) {
     markdown += docsContent ? `${docsContent}\n\n` : '';
 
     // 2. Examples
-    const examples = findExamplesFor(name, paths.packages, '/extension-api');
+    const examples = findExamplesFor({
+      name,
+      packages: paths.packages,
+      subPath: '/extension-api',
+    });
     if (examples.size > 0) {
-      markdown += renderExamples(examples);
+      markdown += renderExamplesFor(examples);
     }
 
     // 3. Props table

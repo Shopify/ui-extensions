@@ -4,9 +4,9 @@ import {rollup, ModuleFormat} from 'rollup';
 import virtual from '@rollup/plugin-virtual';
 import jsx from 'rollup-plugin-jsx';
 
+import {renderExample} from '../../shared';
+import type {Example} from '../../shared';
 import {skypackUrlResolve} from './skypack-url-resolve';
-import type {Example} from './types';
-import {renderExample} from './examples';
 
 export function renderSandboxComponentExamples(
   examples: Map<string, Example>,

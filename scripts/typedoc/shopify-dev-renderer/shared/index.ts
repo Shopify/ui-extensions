@@ -13,7 +13,8 @@ import type {
 
 import {Module} from '../../utilities/dependency-graph';
 
-export {renderExamples, findExamplesFor} from './examples';
+export {findExamplesFor, renderExamplesFor, renderExample} from './examples';
+export type {Example} from './examples';
 
 export interface Node {
   value: RemoteComponent | Type | LocalReference;

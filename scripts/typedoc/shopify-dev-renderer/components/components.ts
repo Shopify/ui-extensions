@@ -14,12 +14,12 @@ import {
   strip,
   firstSentence,
   mkdir,
+  findExamplesFor,
+  renderExamplesFor,
 } from '../shared';
 import type {Node, Visibility} from '../shared';
 
 import {
-  findExamplesForComponent,
-  renderExamplesForComponent,
   renderSandboxComponentExamples,
   compileComponentExamples,
 } from './utilities';
@@ -102,11 +102,11 @@ export async function components(
     markdown += renderExampleImageFor(name, paths.shopifyDevAssets);
 
     // 2. Examples
-    const examples = findExamplesForComponent(
+    const examples = findExamplesFor({
       name,
-      paths.packages,
-      '/components',
-    );
+      packages: paths.packages,
+      subPath: '/components',
+    });
 
     if (examples.size > 0) {
       if (compileExamples === true) {
@@ -116,7 +116,7 @@ export async function components(
         compileComponentExamples(examples, examplesPath);
         markdown += renderSandboxComponentExamples(examples, examplesUrl);
       } else {
-        markdown += renderExamplesForComponent(examples);
+        markdown += renderExamplesFor(examples);
       }
     }
 
