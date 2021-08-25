@@ -21,5 +21,5 @@ jobs:
 
       - name: Rebase and push
         run: |
-             git pull origin main
+             git pull --rebase=false origin main
              git push --force
