@@ -1,7 +1,16 @@
-import {Pressable, Text, Stack, StackItem} from '../components';
+import {
+  Heading,
+  Pressable,
+  Stack,
+  StackItem,
+  Text,
+  TextBlock,
+} from '../components';
 
 export type BasicComponents =
+  | typeof Heading
   | typeof Pressable
-  | typeof Text
   | typeof Stack
-  | typeof StackItem;
+  | typeof StackItem
+  | typeof Text
+  | typeof TextBlock;
