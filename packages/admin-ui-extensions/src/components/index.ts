@@ -16,6 +16,8 @@ export {Heading} from './Heading';
 export type {HeadingProps} from './Heading';
 export {Icon} from './Icon';
 export type {IconProps} from './Icon';
+export {InlineStack} from './InlineStack';
+export type {InlineStackProps} from './InlineStack';
 export {Modal} from './Modal';
 export type {ModalProps} from './Modal';
 export {Link} from './Link';
