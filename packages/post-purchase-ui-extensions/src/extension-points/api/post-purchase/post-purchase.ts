@@ -281,6 +281,8 @@ interface CalculatedPurchase {
  * - `invalid_request` - The request is invalid. It shouldn't be re-sent without modifications.
  * - `server_error` - An unexpected error has happened.
  * - `buyer_consent_required` - Indicates that the buyer's consent was required in order to apply the changeset, but none was provided.
+ * - `subscription_vaulting_error` - Indicates that an error occurred during the payment method vaulting phase of the application of an `add_subscription` change. The subscription could not be created.
+ * - `subscription_contract_creation_error` - Indicates that an error occurred during the contract creation phase of the application of an `add_subscription` change. The subscription could not be created.
  */
 type ChangesetErrorCode =
   | 'payment_required'
@@ -289,7 +291,9 @@ type ChangesetErrorCode =
   | 'unsupported_payment_method'
   | 'invalid_request'
   | 'server_error'
-  | 'buyer_consent_required';
+  | 'buyer_consent_required'
+  | 'subscription_vaulting_error'
+  | 'subscription_contract_creation_error';
 
 /** Represents an error occurred while calculating or applying a changeset.
  */
