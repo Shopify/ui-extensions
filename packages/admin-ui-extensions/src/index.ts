@@ -12,6 +12,7 @@ export type {
   CheckboxProps,
   PressableProps,
   IconProps,
+  InlineStackProps,
   ModalProps,
   LinkProps,
   RadioProps,
