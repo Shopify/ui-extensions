@@ -4,30 +4,26 @@ Admin UI Extensions is a library that enables developers to write custom JavaScr
 
 ## Usage
 
-```js
-import {extend, ExtensionPoint, Text} from '@shopify/admin-ui-extensions';
+There are two ways to use Admin UI Extensions components in your extension - vanilla JS and React.
 
-extend('App', (root) => {
-  const text = root.createComponent(Text, {
-    style: 'strong',
-    alignment: 'center',
+With the vanilla JS approach, adding a button looks like the following:
+
+```js
+import {extend, Button} from '@shopify/admin-ui-extensions';
+
+extend('Playground', (root) => {
+  const button = root.createComponent(Button, {
+    title: 'Press Me',
+    primary: true,
+    onPress: () => console.log('Pressed'),
+    disabled: false,
   });
 
-  text.appendChild('This is the best extension.');
-  root.appendChild(text);
-
+  root.appendChild(button);
   root.mount();
 });
 ```
 
-## CLI
+You can find more component usage examples alongside each component in [packages/admin-ui-extensions/src/components](packages/admin-ui-extensions/src/components)
 
-### Creating Extension Points
-
-To create a new extension point, run `yarn new-extension-point`. No need to pass any arguments in - you will be prompted for input.
-
-The script will prompt you to select the page within the Admin surface to expose your new extension points. The options are: "Customer List", "Customer Detail", "Order List", "Order Detail", "Product List", "Product Detail" and "Other". If you select "Other", you will be asked to enter the name (in PascalCase) of the page for which you are creating an extension point.
-
-Next, you will be prompted to enter a name (in PascalCase) for the new extension.
-
-The script will create and update all the files that you need to get started with creating an extension point. Make sure to read the notes that are printed in the log and review all of the new and changed files.
+To use the React implementation, check out [packages/admin-ui-extensions-react](packages/admin-ui-extensions/README.md).
