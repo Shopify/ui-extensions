@@ -90,6 +90,8 @@ interface LineItem {
   quantity: number;
   /** The total price of the line item, with line discounts. */
   totalPriceSet: MoneyBag;
+  /** The selling plan's unique identifier */
+  sellingPlanId?: number;
 }
 /** The product for purchase. */
 interface Product {
@@ -168,10 +170,36 @@ interface SetMetafieldChange extends Metafield {
   type: 'set_metafield';
 }
 
+/** Requests a subscription to be added to the initial purchase. */
+interface AddSubscriptionChange {
+  /** A fixed value of "add_subscription". */
+  type: 'add_subscription';
+  /** The product variant to add. */
+  variantId: number;
+  /** The selling plan to apply. */
+  sellingPlanId: number;
+  /** The shipping line price without taxes for the first shipping cycle. */
+  initialShippingPrice: number;
+  /** The shipping line price without taxes for the recurring shipping cycles. */
+  recurringShippingPrice: number;
+  /** The quantity of the specified variant. */
+  quantity: number;
+  /** Additional information concerning shipping. */
+  shippingOption: ShippingOption;
+  /** Refer to [ExplicitDiscount](/api/checkout/extension-points/api#explicitdiscount). */
+  discount?: ExplicitDiscount;
+}
+
+interface ShippingOption {
+  title?: string;
+  presentmentTitle?: string;
+}
+
 type Changes = (
   | AddVariantChange
   | AddShippingLineChange
   | SetMetafieldChange
+  | AddSubscriptionChange
 )[];
 /** A list of requested changes to be made to the initial purchase. */
 interface Changeset {
@@ -212,6 +240,8 @@ interface UpdatedLineItem {
   productId: number;
   /** The variant ID. */
   variantId: number;
+  /** The selling plan ID. */
+  sellingPlanId?: number;
   /** The product slug in kebab-case. */
   productHandle: string;
   /** How many items are being purchased in this line.*/
@@ -240,9 +270,9 @@ interface CalculatedPurchase {
   totalOutstandingSet: MoneyBag;
 }
 
-/** Represents an error occurred while calculating or applying a changeset.
+/** Error code while calculating or applying a changeset.
  *
- * **Possible values for `code`:**
+ * **Possible values :**
  *
  * - `payment_required` - The original payment method couldn't be charged.
  * - `insufficient_inventory` - An item requested to be added is out of stock.
@@ -250,12 +280,30 @@ interface CalculatedPurchase {
  * - `unsupported_payment_method` - Indicates that the payment method was unsupported. The payment method used to pay for the initial purchase can't be used to pay for changesets.
  * - `invalid_request` - The request is invalid. It shouldn't be re-sent without modifications.
  * - `server_error` - An unexpected error has happened.
+ * - `buyer_consent_required` - Indicates that the buyer's consent was required in order to apply the changeset, but none was provided.
+ * - `subscription_vaulting_error` - Indicates that an error occurred during the payment method vaulting phase of the application of an `add_subscription` change. The subscription could not be created.
+ * - `subscription_contract_creation_error` - Indicates that an error occurred during the contract creation phase of the application of an `add_subscription` change. The subscription could not be created.
+ * - `subscription_limit_error` - Indicates that no more subscriptions can be added to this order via the post-purchase API.
+ */
+type ChangesetErrorCode =
+  | 'payment_required'
+  | 'insufficient_inventory'
+  | 'changeset_already_applied'
+  | 'unsupported_payment_method'
+  | 'invalid_request'
+  | 'server_error'
+  | 'buyer_consent_required'
+  | 'subscription_vaulting_error'
+  | 'subscription_contract_creation_error'
+  | 'subscription_limit_error';
+
+/** Represents an error occurred while calculating or applying a changeset.
  */
 interface ChangesetError {
   /** An error code corresponding to an error that occurred while calculating or applying a changeset.
   Useful for grouping errors that can be handled similarily.
   */
-  code: string;
+  code: ChangesetErrorCode;
   /**
    * The error description.
    */

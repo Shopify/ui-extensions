@@ -3,6 +3,7 @@ export {BlockStack} from './BlockStack';
 export {Bookend} from './Bookend';
 export {Button} from './Button';
 export {ButtonGroup} from './ButtonGroup';
+export {BuyerConsent} from './BuyerConsent';
 export {Checkbox} from './Checkbox';
 export {CalloutBanner} from './CalloutBanner';
 export {Form} from './Form';

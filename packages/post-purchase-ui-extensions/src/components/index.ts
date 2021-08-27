@@ -8,6 +8,8 @@ export {Button} from './Button';
 export type {ButtonProps} from './Button';
 export {ButtonGroup} from './ButtonGroup';
 export type {ButtonGroupProps} from './ButtonGroup';
+export {BuyerConsent} from './BuyerConsent';
+export type {BuyerConsentProps} from './BuyerConsent';
 export {CalloutBanner} from './CalloutBanner';
 export type {CalloutBannerProps} from './CalloutBanner';
 export {Checkbox} from './Checkbox';
