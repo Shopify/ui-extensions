@@ -16,6 +16,10 @@ export type PostPurchaseShouldRenderResult = ValueOrPromise<{
   render: boolean;
 }>;
 
+export interface ApplyChangesetOptions {
+  buyerConsentToSubscriptions?: boolean;
+}
+
 /** Input given to the render extension point (Checkout::PostPurchase::Render). */
 export interface PostPurchaseRenderApi
   extends StandardApi<'Checkout::PostPurchase::Render'> {
@@ -28,7 +32,10 @@ export interface PostPurchaseRenderApi
     changeset: Readonly<Changeset> | string,
   ): Promise<CalculateChangesetResult>;
   /**  Requests a changeset to be applied to the initial purchase, and to charge the buyer with the difference in total price, if any. */
-  applyChangeset(changeset: string): Promise<ApplyChangesetResult>;
+  applyChangeset(
+    changeset: string,
+    options?: ApplyChangesetOptions,
+  ): Promise<ApplyChangesetResult>;
   /**
    * Indicates that the extension has finished running.
    * Currently, effectively redirects buyers to the thank you page.
