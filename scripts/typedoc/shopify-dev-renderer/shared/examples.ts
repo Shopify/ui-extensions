@@ -3,16 +3,21 @@ import {resolve, extname} from 'path';
 
 import type {Packages} from '../../types';
 
-interface Example {
+export interface Example {
+  filename: string;
   extension: string;
   content: string;
 }
 
-export function findExamplesFor(
-  name: string,
-  packages: Packages,
-  subPath: string,
-): Map<string, Example> {
+export function findExamplesFor({
+  name,
+  packages,
+  subPath,
+}: {
+  name: string;
+  packages: Packages;
+  subPath: string;
+}): Map<string, Example> {
   const examples = new Map();
 
   Object.keys(packages).forEach((packageName) => {
@@ -24,6 +29,7 @@ export function findExamplesFor(
     if (fs.existsSync(componentExamplesFolder)) {
       fs.readdirSync(componentExamplesFolder).forEach((file) => {
         examples.set(packageName, {
+          filename: file,
           extension: extname(file).split('.').pop(),
           content: fs.readFileSync(
             `${componentExamplesFolder}/${file}`,
@@ -37,21 +43,37 @@ export function findExamplesFor(
   return examples;
 }
 
-export function renderExamples(examples: Map<string, Example>): string {
+export function renderExamplesFor(examples: Map<string, Example>): string {
+  if (examples.size === 0) {
+    return '';
+  }
   let markdown = '';
 
   markdown += `{% codeblock %}\n\n`;
 
   examples.forEach((example, key) => {
-    markdown += [
-      `{% code ${example.extension}, title: "${key}" %}{% raw %}`,
-      `${example.content}`,
-      '{% endraw %}{% endcode %}',
-      '\n',
-    ].join('\n');
+    markdown += renderExample({example, key});
   });
 
   markdown += '{% endcodeblock %}\n\n';
 
   return markdown;
+}
+
+export function renderExample({
+  example,
+  key,
+}: {
+  example: Example;
+  key: string;
+}): string {
+  return [
+    // ```js?title: "title"
+    `\`\`\`${example.extension}?title: "${key}"`,
+    '{% raw %}',
+    `${example.content}`,
+    '{% endraw %}',
+    '```',
+    '\n',
+  ].join('\n');
 }
