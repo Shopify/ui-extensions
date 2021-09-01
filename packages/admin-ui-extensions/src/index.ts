@@ -51,4 +51,5 @@ export type {
   ExtensionPoint,
   ExtensionApi,
   ExtensionPointCallback,
+  OrderTaskExtensionPoint,
 } from './extension-points';

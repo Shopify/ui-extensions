@@ -15,8 +15,12 @@ import {
   OrderTaskExtensionPointCallback,
 } from './identifiers/order_task';
 
-export type {PlaygroundExtensionPoint, ProductSubscriptionExtensionPoint};
-export {OrderTaskExtensionPoint};
+export type {
+  PlaygroundExtensionPoint,
+  ProductSubscriptionExtensionPoint,
+  OrderTaskExtensionPoint,
+};
+// export {OrderTaskExtensionPoint};
 
 /*
 Placeholder for new imports
