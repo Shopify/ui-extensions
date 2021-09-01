@@ -9,6 +9,7 @@ export interface BaseButtonProps {
    * `primary`: button used for main actions or green-path. Ex: Continue to next step, Discount field
    * `secondary`: button used for secondary actions not blocking user progress. Ex: Download Shop app
    * `plain`: Renders a button that visually looks like a Link
+   *  @default 'primary'
    */
   kind?: 'primary' | 'secondary' | 'plain';
   /**
