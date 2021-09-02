@@ -1,38 +1,23 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type TextSize =
-  | 'small'
-  | 'medium'
-  | 'titleSmall'
-  | 'titleMedium'
-  | 'titleLarge'
-  | 'titleExtraLarge';
-
-type Alignment = 'left' | 'right' | 'center' | 'justify';
-
-type Style = 'normal' | 'italic' | 'monospace' | 'strong';
-
-type Color = 'primary' | 'secondary' | 'warning' | 'error' | 'success';
-
 export interface TextProps {
-  /**
-   * @defaultValue 'medium'
-   */
-  size?: TextSize;
+  /* Changes the visual appearance */
+  appearance?: 'critical' | 'code' | 'subdued' | 'success';
 
-  /** Text style enhances text with additional visual meaning. For example, using subdued text to de-emphasize it from its surrounding text. */
-  style?: Style;
+  /* Use to emphasize text that is more important than other nearby text */
+  emphasized?: boolean;
 
   /**
-   * @defaultValue 'primary'
+   * Unique identifier. Typically used as a target for another component’s controls
+   * to associate an accessible label with an action.
    */
-  color?: Color;
+  id?: string;
 
-  /**
-   * Vertical alignment of the text.
-   * @defaultValue 'left'
-   */
-  alignment?: Alignment;
+  /* Size of the text */
+  size?: 'extraSmall' | 'small' | 'base' | 'medium' | 'large' | 'extraLarge';
+
+  /* Use for bold text that is more important than other nearby text */
+  strong?: boolean;
 }
 
 /**
