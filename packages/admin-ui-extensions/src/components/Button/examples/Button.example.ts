@@ -2,7 +2,7 @@ import {extend, Button} from '@shopify/admin-ui-extensions';
 
 extend('Playground', (root) => {
   const button = root.createComponent(Button, {
-    to: '/settings',
+    title: 'Settings',
     kind: 'secondary',
     appearance: 'monochrome',
     size: 'large',

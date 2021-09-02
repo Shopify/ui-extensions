@@ -4,7 +4,7 @@ import {extend, render, Button} from '@shopify/admin-ui-extensions-react';
 function App() {
   return (
     <Button
-      to="/settings"
+      title="Settings"
       kind="secondary"
       appearance="monochrome"
       size="large"
