@@ -1,9 +1,5 @@
 export interface BaseButtonProps {
   /**
-   * Destination to link to, renders a Link
-   */
-  to?: string;
-  /**
    * The type of button that will be rendered.
    *
    * `primary`: button used for main actions or green-path. Ex: Continue to next step, Discount field
