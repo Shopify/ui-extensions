@@ -17,7 +17,7 @@ export interface BaseButtonProps {
    *  		 and map to 'destructive' (in Admin/Polaris). Typically used for destructive actions.
    *
    */
-  appearance?: 'monochrome' | 'critical';
+  appearance?: 'critical';
   /** Changes the size of the button
    * @default 'base'
    */

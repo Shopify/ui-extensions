@@ -5,16 +5,14 @@ function App() {
   return (
     <Button
       title="Settings"
-      kind="secondary"
-      appearance="monochrome"
+      kind="primary"
+      appearance="critical"
       size="large"
       inlineSize="fill"
       accessibilityLabel="open settings"
       disabled={false}
       onPress={() => console.log('Pressed')}
-    >
-      Settings
-    </Button>
+    />
   );
 }
 
