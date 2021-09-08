@@ -36,8 +36,6 @@ export {Select} from './Select';
 export type {SelectProps} from './Select';
 export {Spinner} from './Spinner';
 export type {SpinnerProps} from './Spinner';
-export {Stack} from './Stack';
-export type {StackProps} from './Stack';
 export {StackItem} from './StackItem';
 export type {StackItemProps} from './StackItem';
 export {Text} from './Text';
