@@ -4,8 +4,9 @@ import {rollup, ModuleFormat} from 'rollup';
 import virtual from '@rollup/plugin-virtual';
 import jsx from 'rollup-plugin-jsx';
 
+import {renderExample} from '../../shared';
+import type {Example} from '../../shared';
 import {skypackUrlResolve} from './skypack-url-resolve';
-import type {Example} from './types';
 
 export function renderSandboxComponentExamples(
   examples: Map<string, Example>,
@@ -18,12 +19,7 @@ export function renderSandboxComponentExamples(
   markdown += `{% codeblock extensions_sandbox, compiled: "${compiledPath}/${compiledFilename}" %}\n\n`;
 
   examples.forEach((example, key) => {
-    markdown += [
-      `{% code ${example.extension}, title: "${key}" %}`,
-      `${example.content}`,
-      '{% endcode %}',
-      '\n',
-    ].join('\n');
+    markdown += renderExample({example, key});
   });
 
   markdown += '{% endcodeblock %}\n';

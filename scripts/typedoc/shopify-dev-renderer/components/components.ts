@@ -14,12 +14,12 @@ import {
   strip,
   firstSentence,
   mkdir,
+  findExamplesFor,
+  renderExamplesFor,
 } from '../shared';
 import type {Node, Visibility} from '../shared';
 
 import {
-  findExamplesForComponent,
-  renderExamplesForComponent,
   renderSandboxComponentExamples,
   compileComponentExamples,
 } from './utilities';
@@ -102,11 +102,11 @@ export async function components(
     markdown += renderExampleImageFor(name, paths.shopifyDevAssets);
 
     // 2. Examples
-    const examples = findExamplesForComponent(
+    const examples = findExamplesFor({
       name,
-      paths.packages,
-      '/components',
-    );
+      packages: paths.packages,
+      subPath: '/components',
+    });
 
     if (examples.size > 0) {
       if (compileExamples === true) {
@@ -116,7 +116,7 @@ export async function components(
         compileComponentExamples(examples, examplesPath);
         markdown += renderSandboxComponentExamples(examples, examplesUrl);
       } else {
-        markdown += renderExamplesForComponent(examples);
+        markdown += renderExamplesFor(examples);
       }
     }
 
@@ -232,6 +232,7 @@ export async function components(
     '<ul style="column-count: auto;column-width: 12rem;">',
     ...indexContent,
     '</ul>',
+    '',
   ].join('\n');
 
   // Write the component table of contents
@@ -308,6 +309,8 @@ function getAdditionalContentFor(contentFolder: string, shopifyDevUrl: string) {
     /https:\/\/github\.com\/Shopify\/checkout-web\/tree\/master\/packages\/checkout-ui-extensions\/src\/components\/(\w+)/g,
     (_match, p1) => `${shopifyDevUrl}/components/${p1}`.toLowerCase(),
   );
+
+  markdown += '\n';
 
   return markdown;
 }

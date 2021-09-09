@@ -1,5 +1,3 @@
-export {findExamplesForComponent, renderExamplesForComponent} from './examples';
-
 export {
   renderSandboxComponentExamples,
   compileComponentExamples,
