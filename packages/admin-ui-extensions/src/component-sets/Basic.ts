@@ -1,4 +1,5 @@
 import {
+  InlineStack,
   Heading,
   Pressable,
   Stack,
@@ -9,6 +10,7 @@ import {
 } from '../components';
 
 export type BasicComponents =
+  | typeof InlineStack
   | typeof Heading
   | typeof Pressable
   | typeof Stack
