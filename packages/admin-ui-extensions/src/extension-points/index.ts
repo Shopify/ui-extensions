@@ -9,13 +9,14 @@ import {
   ProductSubscriptionExtensionPointCallback,
 } from './identifiers/product_subscription';
 
-export type {PlaygroundExtensionPoint, ProductSubscriptionExtensionPoint};
-
 import {
   PurchaseOptionsExtensionPoint,
   PurchaseOptionsExtensionApi,
   PurchaseOptionsExtensionPointCallback,
 } from './identifiers/purchase_options';
+
+export type {PlaygroundExtensionPoint, ProductSubscriptionExtensionPoint};
+
 export {PurchaseOptionsExtensionPoint};
 
 /*
