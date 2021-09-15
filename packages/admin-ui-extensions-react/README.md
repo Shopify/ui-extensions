@@ -4,20 +4,27 @@ Admin UI Extensions React is built on top of Admin UI Extensions. It allows a de
 
 ## Usage
 
+With the React approach, adding a button looks like the following:
+
 ```js
-import {ExtensionPoint, Text} from '@shopify/admin-ui-extensions';
-import {extend, render} from '@shopify/admin-ui-extensions-react';
+import React from 'react';
+import {extend, render, Button} from '@shopify/admin-ui-extensions-react';
 
 function App() {
   return (
-    <Text style="strong" alignment="center">
-      This is the best extension.
-    </Text>
+    <Button
+      title="Press Me"
+      primary
+      onPress={() => console.log('Pressed')}
+      disabled={false}
+    />
   );
 }
 
 extend(
-  'Admin::Product::SubscriptionPlan::Add',
+  'Playground',
   render(() => <App />),
 );
 ```
+
+You can find more component usage examples alongside each component in [packages/admin-ui-extensions-react/src/components](packages/admin-ui-extensions-react/src/components)
