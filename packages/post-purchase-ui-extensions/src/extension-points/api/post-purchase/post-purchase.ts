@@ -290,6 +290,7 @@ interface CalculatedPurchase {
  * - `buyer_consent_required` - Indicates that the buyer's consent was required in order to apply the changeset, but none was provided.
  * - `subscription_vaulting_error` - Indicates that an error occurred during the payment method vaulting phase of the application of an `add_subscription` change. The subscription could not be created.
  * - `subscription_contract_creation_error` - Indicates that an error occurred during the contract creation phase of the application of an `add_subscription` change. The subscription could not be created.
+ * - `subscription_no_shipping_address_error` - Indicates that the order is missing the required customer shipping address for an `add_subscription` change.
  * - `subscription_limit_error` - Indicates that no more subscriptions can be added to this order via the post-purchase API.
  */
 type ChangesetErrorCode =
@@ -302,6 +303,7 @@ type ChangesetErrorCode =
   | 'buyer_consent_required'
   | 'subscription_vaulting_error'
   | 'subscription_contract_creation_error'
+  | 'subscription_no_shipping_address_error'
   | 'subscription_limit_error';
 
 /** Represents an error occurred while calculating or applying a changeset.
