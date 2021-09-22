@@ -22,7 +22,9 @@ export interface PurchaseOptionsExtensionDataApi {
 // Update APIs for your needs
 // All Extension APIs should include the StandardApi by default
 export interface PurchaseOptionsExtensionApi {
-  'Admin::ProductDetails::PurchaseOptions': StandardApi<PurchaseOptionsExtensionPoint> &
+  'Admin::ProductDetails::PurchaseOptions': StandardApi<
+    PurchaseOptionsExtensionPoint
+  > &
     ToastApi &
     PurchaseOptionsExtensionContainerApi &
     PurchaseOptionsExtensionDataApi;
