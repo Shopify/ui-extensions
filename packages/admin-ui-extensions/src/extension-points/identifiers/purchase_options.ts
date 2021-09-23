@@ -8,18 +8,13 @@ import {
   ToastApi,
 } from '../types';
 
-// Add the unique extension point(s) as a union string
-// This example only contains a single extension point
-
 export type PurchaseOptionsExtensionPoint =
-  | 'Admin::ProductDetails::PurchaseOptions::Add'
-  | 'Admin::ProductDetails::PurchaseOptions::Create'
-  | 'Admin::ProductDetails::PurchaseOptions::Edit'
-  | 'Admin::ProductDetails::PurchaseOptions::Remove';
+  | 'Admin::Product::PurchaseOptions::Add'
+  | 'Admin::Product::PurchaseOptions::Create'
+  | 'Admin::Product::PurchaseOptions::Edit'
+  | 'Admin::Product::PurchaseOptions::Remove';
 
-// Declare the Container API if needed
 export interface PurchaseOptionsExtensionContainerApi {
-  container: unknown;
   close(): void;
   done(): void;
 }
@@ -29,14 +24,12 @@ export interface PurchaseOptionsModalContainerApi {
   setSecondaryAction(containerAction?: ContainerAction): void;
 }
 
-// Update APIs for your needs
-// All Extension APIs should include the StandardApi by default
 export type PurchaseOptionsStandardApi<
   T extends PurchaseOptionsExtensionPoint
 > = StandardApi<T> & ToastApi;
 
 export type PurchaseOptionsCreateApi = PurchaseOptionsStandardApi<
-  'Admin::ProductDetails::PurchaseOptions::Create'
+  'Admin::Product::PurchaseOptions::Create'
 > & {
   container: PurchaseOptionsExtensionContainerApi;
   data: {
@@ -46,7 +39,7 @@ export type PurchaseOptionsCreateApi = PurchaseOptionsStandardApi<
 };
 
 export type PurchaseOptionsAddApi = PurchaseOptionsStandardApi<
-  'Admin::ProductDetails::PurchaseOptions::Add'
+  'Admin::Product::PurchaseOptions::Add'
 > & {
   container: PurchaseOptionsExtensionContainerApi &
     PurchaseOptionsModalContainerApi;
@@ -57,7 +50,7 @@ export type PurchaseOptionsAddApi = PurchaseOptionsStandardApi<
 };
 
 export type PurchaseOptionsEditApi = PurchaseOptionsStandardApi<
-  'Admin::ProductDetails::PurchaseOptions::Edit'
+  'Admin::Product::PurchaseOptions::Edit'
 > & {
   container: PurchaseOptionsExtensionContainerApi;
   data: {
@@ -68,7 +61,7 @@ export type PurchaseOptionsEditApi = PurchaseOptionsStandardApi<
 };
 
 export type PurchaseOptionsRemoveApi = PurchaseOptionsStandardApi<
-  'Admin::ProductDetails::PurchaseOptions::Remove'
+  'Admin::Product::PurchaseOptions::Remove'
 > & {
   container: PurchaseOptionsExtensionContainerApi &
     PurchaseOptionsModalContainerApi;
@@ -81,28 +74,27 @@ export type PurchaseOptionsRemoveApi = PurchaseOptionsStandardApi<
 };
 
 export interface PurchaseOptionsExtensionApi {
-  'Admin::ProductDetails::PurchaseOptions::Create': PurchaseOptionsCreateApi;
-  'Admin::ProductDetails::PurchaseOptions::Add': PurchaseOptionsAddApi;
-  'Admin::ProductDetails::PurchaseOptions::Edit': PurchaseOptionsEditApi;
-  'Admin::ProductDetails::PurchaseOptions::Remove': PurchaseOptionsRemoveApi;
+  'Admin::Product::PurchaseOptions::Create': PurchaseOptionsCreateApi;
+  'Admin::Product::PurchaseOptions::Add': PurchaseOptionsAddApi;
+  'Admin::Product::PurchaseOptions::Edit': PurchaseOptionsEditApi;
+  'Admin::Product::PurchaseOptions::Remove': PurchaseOptionsRemoveApi;
 }
 
-// Replace AllComponentsSchema with a schema for your needs
 export interface PurchaseOptionsExtensionPointCallback {
-  'Admin::ProductDetails::PurchaseOptions::Create': RenderableExtensionCallback<
-    PurchaseOptionsExtensionApi['Admin::ProductDetails::PurchaseOptions::Create'],
+  'Admin::Product::PurchaseOptions::Create': RenderableExtensionCallback<
+    PurchaseOptionsExtensionApi['Admin::Product::PurchaseOptions::Create'],
     RemoteRoot<AppOverlaySchema>
   >;
-  'Admin::ProductDetails::PurchaseOptions::Add': RenderableExtensionCallback<
-    PurchaseOptionsExtensionApi['Admin::ProductDetails::PurchaseOptions::Add'],
+  'Admin::Product::PurchaseOptions::Add': RenderableExtensionCallback<
+    PurchaseOptionsExtensionApi['Admin::Product::PurchaseOptions::Add'],
     RemoteRoot<ModalSchema>
   >;
-  'Admin::ProductDetails::PurchaseOptions::Edit': RenderableExtensionCallback<
-    PurchaseOptionsExtensionApi['Admin::ProductDetails::PurchaseOptions::Edit'],
+  'Admin::Product::PurchaseOptions::Edit': RenderableExtensionCallback<
+    PurchaseOptionsExtensionApi['Admin::Product::PurchaseOptions::Edit'],
     RemoteRoot<AppOverlaySchema>
   >;
-  'Admin::ProductDetails::PurchaseOptions::Remove': RenderableExtensionCallback<
-    PurchaseOptionsExtensionApi['Admin::ProductDetails::PurchaseOptions::Remove'],
+  'Admin::Product::PurchaseOptions::Remove': RenderableExtensionCallback<
+    PurchaseOptionsExtensionApi['Admin::Product::PurchaseOptions::Remove'],
     RemoteRoot<ModalSchema>
   >;
 }
