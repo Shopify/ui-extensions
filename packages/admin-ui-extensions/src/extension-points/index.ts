@@ -15,9 +15,11 @@ import {
   PurchaseOptionsExtensionPointCallback,
 } from './identifiers/purchase_options';
 
-export type {PlaygroundExtensionPoint, ProductSubscriptionExtensionPoint};
-
-export {PurchaseOptionsExtensionPoint};
+export type {
+  PlaygroundExtensionPoint,
+  ProductSubscriptionExtensionPoint,
+  PurchaseOptionsExtensionPoint,
+};
 
 /*
 Placeholder for new imports

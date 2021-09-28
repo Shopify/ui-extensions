@@ -51,4 +51,5 @@ export type {
   ExtensionPoint,
   ExtensionApi,
   ExtensionPointCallback,
+  PurchaseOptionsExtensionPoint,
 } from './extension-points';
