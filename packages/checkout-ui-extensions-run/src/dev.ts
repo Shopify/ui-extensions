@@ -148,7 +148,7 @@ export async function dev(...args: string[]) {
             `Create a checkout and append <code>?dev=${origin}/query</code> to the URL to start developing your extension.`,
           );
         } else {
-          renderIndexPage(`Make sure you have a secure URL for your local development server by running <code>shopify tunnel start --port=${port}</code>,
+          renderIndexPage(`Make sure you have a secure URL for your local development server by running <code>shopify extension tunnel start --port=${port}</code>,
             create a checkout, and append <code>?dev=https://TUNNEL_URL/query</code> to the URL, where <code>TUNNEL_URL</code> is
             replaced with your own ngrok URL.`);
         }
@@ -293,7 +293,9 @@ function printNextSteps({
       );
     }
   } else {
-    log(`next, run \`shopify tunnel start --port=${port}\` in a new terminal.`);
+    log(
+      `next, run \`shopify extension tunnel start --port=${port}\` in a new terminal.`,
+    );
     log(
       `you’ll then need to create a checkout on your development shop, and append this query string to the first page of checkout,`,
     );
