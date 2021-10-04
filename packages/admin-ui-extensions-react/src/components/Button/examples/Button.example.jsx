@@ -3,7 +3,16 @@ import {extend, render, Button} from '@shopify/admin-ui-extensions-react';
 
 function App() {
   return (
-    <Button title="Press Me" primary onPress={() => console.log('Pressed')} disabled={false} />
+    <Button
+      title="Settings"
+      kind="primary"
+      appearance="critical"
+      size="large"
+      inlineSize="fill"
+      accessibilityLabel="open settings"
+      disabled={false}
+      onPress={() => console.log('Pressed')}
+    />
   );
 }
 
