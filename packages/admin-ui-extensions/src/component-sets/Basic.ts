@@ -15,5 +15,4 @@ export type BasicComponents =
   | typeof Pressable
   | typeof StackItem
   | typeof Text
-  | typeof TextBlock
-  ;
+  | typeof TextBlock;
