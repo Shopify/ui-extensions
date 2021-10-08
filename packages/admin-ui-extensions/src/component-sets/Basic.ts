@@ -5,6 +5,7 @@ import {
   StackItem,
   Text,
   TextBlock,
+  Map,
 } from '../components';
 
 export type BasicComponents =
@@ -13,4 +14,5 @@ export type BasicComponents =
   | typeof Stack
   | typeof StackItem
   | typeof Text
-  | typeof TextBlock;
+  | typeof TextBlock
+  | typeof Map;

@@ -27,6 +27,7 @@ export type {
   OptionListProps,
   DestructableAction,
   DisableableAction,
+  MapProps,
 } from './components';
 
 export * from './extension-api';
@@ -52,4 +53,5 @@ export type {
   ExtensionApi,
   ExtensionPointCallback,
   OrderTaskExtensionPoint,
+  OrderTaskExpandedExtensionPoint,
 } from './extension-points';

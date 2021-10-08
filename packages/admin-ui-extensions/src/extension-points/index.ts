@@ -14,13 +14,21 @@ import {
   OrderTaskExtensionApi,
   OrderTaskExtensionPointCallback,
 } from './identifiers/order_task';
+// export {OrderTaskExtensionPoint};
+
+import {
+  OrderTaskExpandedExtensionPoint,
+  OrderTaskExpandedExtensionApi,
+  OrderTaskExpandedExtensionPointCallback,
+} from './identifiers/order_task_expanded';
 
 export type {
   PlaygroundExtensionPoint,
   ProductSubscriptionExtensionPoint,
   OrderTaskExtensionPoint,
+  OrderTaskExpandedExtensionPoint,
 };
-// export {OrderTaskExtensionPoint};
+// export {OrderTaskExpandedExtensionPoint};
 
 /*
 Placeholder for new imports
@@ -35,12 +43,15 @@ export type {
 export type ExtensionPoint =
   | PlaygroundExtensionPoint
   | ProductSubscriptionExtensionPoint
-  | OrderTaskExtensionPoint;
+  | OrderTaskExtensionPoint
+  | OrderTaskExpandedExtensionPoint;
 
 export type ExtensionApi = PlaygroundExtensionApi &
   ProductSubscriptionExtensionApi &
-  OrderTaskExtensionApi;
+  OrderTaskExtensionApi &
+  OrderTaskExpandedExtensionApi;
 
 export type ExtensionPointCallback = PlaygroundExtensionPointCallback &
   ProductSubscriptionExtensionPointCallback &
-  OrderTaskExtensionPointCallback;
+  OrderTaskExtensionPointCallback &
+  OrderTaskExpandedExtensionPointCallback;

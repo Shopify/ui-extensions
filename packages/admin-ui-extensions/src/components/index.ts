@@ -44,5 +44,7 @@ export {TextField} from './TextField';
 export type {TextFieldProps} from './TextField';
 export {Thumbnail} from './Thumbnail';
 export type {ThumbnailProps} from './Thumbnail';
+export {Map} from './Map';
+export type {MapProps} from './Map';
 
 export type {DestructableAction, DisableableAction} from './types';
