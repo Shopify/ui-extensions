@@ -23,3 +23,4 @@ export * from './Text';
 export * from './TextBlock';
 export * from './TextField';
 export * from './Thumbnail';
+export * from './LineChart';

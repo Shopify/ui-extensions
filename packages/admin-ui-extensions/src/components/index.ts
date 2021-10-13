@@ -48,5 +48,7 @@ export {TextField} from './TextField';
 export type {TextFieldProps} from './TextField';
 export {Thumbnail} from './Thumbnail';
 export type {ThumbnailProps} from './Thumbnail';
+export {LineChart} from './LineChart';
+export type {LineChartProps} from './LineChart';
 
 export type {DestructableAction, DisableableAction} from './types';

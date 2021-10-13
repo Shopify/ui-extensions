@@ -7,6 +7,7 @@ import {
   StackItem,
   Text,
   TextBlock,
+  LineChart,
 } from '../components';
 
 export type BasicComponents =
@@ -17,4 +18,5 @@ export type BasicComponents =
   | typeof BlockStack
   | typeof StackItem
   | typeof Text
-  | typeof TextBlock;
+  | typeof TextBlock
+  | typeof LineChart;

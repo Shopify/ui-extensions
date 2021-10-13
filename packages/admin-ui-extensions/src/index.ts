@@ -29,6 +29,7 @@ export type {
   OptionListProps,
   DestructableAction,
   DisableableAction,
+  LineChartProps,
 } from './components';
 
 export * from './extension-api';
