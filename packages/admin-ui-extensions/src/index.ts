@@ -53,4 +53,5 @@ export type {
   ExtensionPoint,
   ExtensionApi,
   ExtensionPointCallback,
+  InventoryForecastingExtensionPoint,
 } from './extension-points';
