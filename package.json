@@ -44,6 +44,7 @@
     "@types/markdown-table": "^2.0.0",
     "@types/resolve": "^1.17.1",
     "@types/uuid": "^8.3.0",
+    "eslint": "^7.19.0",
     "lerna": "^3.22.1",
     "markdown-table": "^2.0.0",
     "node-fetch": "^2.6.1",

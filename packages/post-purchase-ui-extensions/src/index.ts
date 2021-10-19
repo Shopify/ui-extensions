@@ -1,4 +1,5 @@
 export type {
+  ApplyChangesetOptions,
   ExtensionPoints,
   ExtensionPoint,
   RenderExtensions,

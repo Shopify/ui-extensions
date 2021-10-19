@@ -1,4 +1,5 @@
 export type {
+  ApplyChangesetOptions,
   PostPurchaseRenderApi,
   PostPurchaseShouldRenderApi,
   PostPurchaseShouldRenderResult,
