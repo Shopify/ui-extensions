@@ -17,7 +17,6 @@ export * from './ResourceItem';
 export * from './ResourceList';
 export * from './Select';
 export * from './Spinner';
-export * from './Stack';
 export * from './StackItem';
 export * from './Text';
 export * from './TextBlock';

@@ -1,9 +1,9 @@
 import React from 'react';
-import {extend, render, Stack, StackItem, Text} from '@shopify/admin-ui-extensions-react';
+import {extend, render, InlineStack, StackItem, Text} from '@shopify/admin-ui-extensions-react';
 
 function App() {
   return (
-    <Stack>
+    <InlineStack>
       <StackItem fill>
         <Text>Fill the space</Text>
       </StackItem>
@@ -11,7 +11,7 @@ function App() {
         <Text>Other text</Text>
         <Text>Even more text</Text>
       </StackItem>
-    </Stack>
+    </InlineStack>
   );
 }
 
