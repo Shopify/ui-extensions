@@ -22,20 +22,20 @@ type Role =
   | {type: 'datetime'; machineReadable?: string};
 
 export interface TextProps {
-  /** Size of the text */
+  /** The size of the text. */
   size?: Size;
-  /* Use to emphasize text that is more important than other nearby text */
+  /** Use to emphasize text that is more important than other nearby text. */
   emphasized?: boolean;
-  /* Use to de-emphasize text that is less important than other nearby text */
+  /** Use to de-emphasize text that is less important than other nearby text. */
   subdued?: boolean;
-  /** Assign semantic value */
+  /** Assign semantic value. */
   role?: Role;
   /**
    * Unique identifier. Typically used as a target for another component’s controls
    * to associate an accessible label with an action.
    */
   id?: string;
-  /** Changes the visual appearance */
+  /** The visual appearance of the text. */
   appearance?: 'critical' | 'warning' | 'success' | 'accent';
 }
 
