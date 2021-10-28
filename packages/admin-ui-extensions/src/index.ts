@@ -20,7 +20,6 @@ export type {
   ResourceListProps,
   SelectProps,
   SpinnerProps,
-  StackProps,
   StackItemProps,
   TextProps,
   TextBlockProps,

@@ -1,14 +1,11 @@
 export interface BaseButtonProps {
   /**
-   * Destination to link to, renders a Link
-   */
-  to?: string;
-  /**
    * The type of button that will be rendered.
    *
    * `primary`: button used for main actions or green-path. Ex: Continue to next step, Discount field
    * `secondary`: button used for secondary actions not blocking user progress. Ex: Download Shop app
    * `plain`: Renders a button that visually looks like a Link
+   *  @default 'primary'
    */
   kind?: 'primary' | 'secondary' | 'plain';
   /**
@@ -20,7 +17,7 @@ export interface BaseButtonProps {
    *  		 and map to 'destructive' (in Admin/Polaris). Typically used for destructive actions.
    *
    */
-  appearance?: 'monochrome' | 'critical';
+  appearance?: 'critical';
   /** Changes the size of the button
    * @default 'base'
    */

@@ -1,7 +1,7 @@
-import {extend, Stack, StackItem, Text} from '@shopify/admin-ui-extensions';
+import {extend, InlineStack, StackItem, Text} from '@shopify/admin-ui-extensions';
 
 extend('Playground', (root) => {
-  const stack = root.createComponent(Stack);
+  const stack = root.createComponent(InlineStack);
   const stackItemFill = root.createComponent(StackItem, {fill: true});
 
   const stackItemText = root.createComponent(Text);

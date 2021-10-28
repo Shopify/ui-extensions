@@ -1,20 +1,18 @@
 import {
-  InlineStack,
-  Heading,
-  Pressable,
-  Stack,
   BlockStack,
+  Heading,
+  InlineStack,
+  Pressable,
   StackItem,
   Text,
   TextBlock,
 } from '../components';
 
 export type BasicComponents =
-  | typeof InlineStack
-  | typeof Heading
-  | typeof Pressable
-  | typeof Stack
   | typeof BlockStack
+  | typeof Heading
+  | typeof InlineStack
+  | typeof Pressable
   | typeof StackItem
   | typeof Text
   | typeof TextBlock;
