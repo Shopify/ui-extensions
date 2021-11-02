@@ -1,6 +1,8 @@
 import type {RenderExtensionPoint} from '@shopify/checkout-ui-extensions';
 import {useMemo} from 'react';
 
+import {CheckoutUIExtensionError} from '../errors';
+
 import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
 
@@ -23,7 +25,9 @@ export function useMetafields<
       const {namespace, key} = filters;
 
       if (!namespace) {
-        throw new Error('You must pass in a namespace with a key');
+        throw new CheckoutUIExtensionError(
+          'You must pass in a namespace with a key',
+        );
       }
 
       const filteredResults = metaFields.filter(

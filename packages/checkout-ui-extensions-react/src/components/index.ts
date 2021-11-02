@@ -19,6 +19,8 @@ export {InlineStack} from './InlineStack';
 export {Layout} from './Layout';
 export {Link} from './Link';
 export {List, ListItem} from './List';
+export {PhoneField} from './PhoneField';
+export {SkeletonText} from './SkeletonText';
 export {Select} from './Select';
 export {Spinner} from './Spinner';
 export {Stepper} from './Stepper';

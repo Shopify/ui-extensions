@@ -35,6 +35,7 @@ export type {
   ListProps,
   ListItemProps,
   SelectProps,
+  SkeletonTextProps,
   SpinnerProps,
   TextProps,
   TextBlockProps,
