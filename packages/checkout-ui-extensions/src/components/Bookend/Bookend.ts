@@ -1,6 +1,12 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Spacing = 'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose';
+type Spacing =
+  | 'none'
+  | 'extraTight'
+  | 'tight'
+  | 'base'
+  | 'loose'
+  | 'extraLoose';
 type Alignment = 'leading' | 'center' | 'trailing' | 'baseline';
 
 export interface BookendProps {

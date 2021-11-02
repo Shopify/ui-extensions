@@ -152,6 +152,18 @@ export interface ViewProps {
    * A unique identifier for the View.
    */
   id?: string;
+
+  /**
+   * Adjust the block size.
+   *
+   * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
+   *
+   * Examples:
+   * - `500` represents `500px`
+   * - `0.5` represents `50%`
+   * - `1` represents `100%`
+   */
+  blockSize?: number | Responsive<number>;
 }
 
 /**

@@ -38,6 +38,11 @@ export interface ButtonProps {
    */
   fill?: boolean;
   /**
+   * Specifies the inline alignment of the content.
+   * @defaultValue `center`
+   */
+  inlineAlignment?: 'leading' | 'center' | 'trailing';
+  /**
    * Replaces content with a loading indicator
    */
   loading?: boolean;

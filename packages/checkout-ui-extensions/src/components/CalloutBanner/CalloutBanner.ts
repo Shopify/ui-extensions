@@ -34,8 +34,8 @@ export interface CalloutBannerProps {
 }
 
 /**
- * CalloutBanner is used to inform buyers about the details of a limited
- * time offer. They differ from Banner which is used to report status.
+ * Use callout banners to inform buyers about new features or opportunities.
+ * They differ from the Banner component which is used to report status.
  */
 export const CalloutBanner = createRemoteComponent<
   'CalloutBanner',

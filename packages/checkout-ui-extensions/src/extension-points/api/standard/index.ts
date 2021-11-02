@@ -55,17 +55,17 @@ export interface Extension {
   scriptUrl: string;
 
   /**
-   * Function for subscribing to events.
+   * Whether your extension is currently rendered to the screen.
    *
-   * The supported events and their meanings are as follows:
+   * Shopify may render your extension before it is actually visible in the UI,
+   * typically to pre-render extensions that will appear on a later step of the
+   * checkout.
    *
-   * - `render`
-   *   - Triggered when the extension is displayed
-   * in the user interface.
-   * - `remove`
-   *   - Triggered when the extension is removed from the user interface. If the extension always remains visible after render, this event may not be triggered.
+   * Your extension may also continue to run “in the background” after the buyer
+   * has navigated away from where it was rendered. This is done so that, if the
+   * buyer navigates back, your extension is immediately available to render.
    */
-  on(event: 'render' | 'remove', callback: () => void): void;
+  rendered: StatefulRemoteSubscribable<boolean>;
 }
 
 /**
@@ -428,7 +428,7 @@ export interface Address {
   address2?: string;
   city?: string;
   postalCode?: string;
-  countryCode: CountryCode;
+  countryCode?: CountryCode;
   zoneCode?: string;
   phone?: string;
 }

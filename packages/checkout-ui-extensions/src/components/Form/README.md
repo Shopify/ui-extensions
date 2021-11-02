@@ -1,8 +1,8 @@
 # Form
 
-The `Form` component should be used to wrap one or more form controls.
-This component provides an &#34;implicit submit&#34; behavior, where buyers can
-submit the form from any input by pressing &#34;enter&#34; on their keyboards. This
+The form component should be used to wrap one or more form controls. This
+component provides an &#34;implicit submit&#34; behavior, where customers can submit
+the form from any input by pressing &#34;Enter&#34; on their keyboards. This
 behavior is widely expected, and should be respected as often as possible.
 
 Unlike an HTML `form` element, this component does not support configuring

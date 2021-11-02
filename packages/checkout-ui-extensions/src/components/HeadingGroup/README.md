@@ -1,7 +1,7 @@
 # HeadingGroup
 
-Heading groups provide the document structure that accessibility technology uses
-to navigate the checkout. When you use a heading, any children related to that
-heading should be nested in a heading group. This ensures that any nested headings
-will use a semantically-appropriate heading level.
+Heading group controls the H level of headings when nested within it, like H1, H2, H3.
+
+Use a heading group whenever you use a heading to ensure the experience is the same
+for screen reader users.
 
