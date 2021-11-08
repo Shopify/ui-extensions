@@ -1,6 +1,6 @@
 # Stepper
 
-A Stepper is used as a quick way for buyers to change a pre-defined number.
+Use a stepper to increase or decrease a value, like changing the quantity from 1 to 2.
 
 ## Props
 optional = ?

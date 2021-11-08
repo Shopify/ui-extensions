@@ -1,3 +1,5 @@
+import {CheckoutUIExtensionError} from '../errors';
+
 import {useMetafields} from './metafields';
 
 interface MetafieldFilter {
@@ -13,7 +15,9 @@ export function useMetafield(filters: MetafieldFilter) {
   const {namespace, key} = filters;
 
   if (!namespace || !key) {
-    throw new Error('You must pass in both a namespace and key');
+    throw new CheckoutUIExtensionError(
+      'You must pass in both a namespace and key',
+    );
   }
 
   const metafields = useMetafields({namespace, key});

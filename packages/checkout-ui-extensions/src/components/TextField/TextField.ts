@@ -89,9 +89,7 @@ export interface TextFieldProps {
    * contents.
    *
    * When set to `false`, you are indicating that this field contains sensitive
-   * information, or contents that are never saved, like one-time codes. Note that
-   * it is impossible to prevent autofill in some browsers, so do not depend on
-   * its absence.
+   * information, or contents that are never saved, like one-time codes.
    *
    * Alternatively, you can provide an `Autocomplete` object, which describes the
    * specific data you would like to be entered into this field during autofill.
@@ -152,16 +150,12 @@ export interface TextFieldProps {
 }
 
 /**
- * A text field is an input field that merchants can type into.
+ * Use a text field to get text input from a customer.
  *
- * Its children will be rendered as actions inside at the end of the text field.
- *
- * Focused `input` and `select` children elements will toggle text field's focus state
- * so place there only elements tighly coupled with the text field.
- * For the other cases consider the `Connected` component.
- *
- * Its children are commonly used to display an icon that opens a `Tooltip` that provides more
- * information about the field.
+ * A text field’s children will be rendered as side actions within the text field. Some
+ * focused children will toggle text fields’s focus state, so only pass elements as
+ * children that are tightly coupled to the text field. Its children are commonly used
+ * to display an icon that opens a tooltip providing more information about the field.
  */
 export const TextField = createRemoteComponent<'TextField', TextFieldProps>(
   'TextField',

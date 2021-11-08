@@ -1,15 +1,11 @@
 # TextField
 
-A text field is an input field that merchants can type into.
+Use a text field to get text input from a customer.
 
-Its children will be rendered as actions inside at the end of the text field.
-
-Focused `input` and `select` children elements will toggle text field's focus state
-so place there only elements tighly coupled with the text field.
-For the other cases consider the `Connected` component.
-
-Its children are commonly used to display an icon that opens a `Tooltip` that provides more
-information about the field.
+A text field’s children will be rendered as side actions within the text field. Some
+focused children will toggle text fields’s focus state, so only pass elements as
+children that are tightly coupled to the text field. Its children are commonly used
+to display an icon that opens a tooltip providing more information about the field.
 
 ## Props
 optional = ?
@@ -17,7 +13,7 @@ optional = ?
 | Name | Type | Description |
 | --- | --- | --- |
 | id? | <code>string</code> | A unique identifier for the field. When no `id` is provided, a globally unique value will be used instead.  |
-| icon? | <code>"arrowLeft" &#124; "arrowRight" &#124; "calendar" &#124; "camera" &#124; "cancelCircle" &#124; "caretDown" &#124; "cart" &#124; "checkmark" &#124; "checkmarkCircle" &#124; "chevronDown" &#124; "chevronUp" &#124; "chevronRight" &#124; "chevronLeft" &#124; "close" &#124; "critical" &#124; "discount" &#124; "delivered" &#124; "delivery" &#124; "disabled" &#124; "errorFill" &#124; "geolocation" &#124; "info" &#124; "list" &#124; "locateMe" &#124; "lock" &#124; "map" &#124; "marker" &#124; "minus" &#124; "mobile" &#124; "plus" &#124; "questionFill" &#124; "reorder" &#124; "spinner" &#124; "spinnerSmall" &#124; "store" &#124; "success" &#124; "truck" &#124; "warning" &#124; "warningCircle" &#124; "warningFill" &#124; "giftFill" &#124; "external"</code> | An icon to render at the start of the field.  |
+| icon? | <code>"arrowLeft" &#124; "arrowRight" &#124; "calendar" &#124; "camera" &#124; "cancelCircle" &#124; "caretDown" &#124; "cart" &#124; "checkmark" &#124; "checkmarkCircle" &#124; "chevronDown" &#124; "chevronUp" &#124; "chevronRight" &#124; "chevronLeft" &#124; "close" &#124; "critical" &#124; "discount" &#124; "delivered" &#124; "delivery" &#124; "disabled" &#124; "errorFill" &#124; "geolocation" &#124; "grid" &#124; "hamburger" &#124; "info" &#124; "infoFill" &#124; "list" &#124; "locateMe" &#124; "lock" &#124; "map" &#124; "marker" &#124; "minus" &#124; "mobile" &#124; "note" &#124; "verticalDots" &#124; "plus" &#124; "questionFill" &#124; "reorder" &#124; "spinner" &#124; "spinnerSmall" &#124; "store" &#124; "success" &#124; "truck" &#124; "warning" &#124; "warningCircle" &#124; "warningFill" &#124; "giftFill" &#124; "external"</code> | An icon to render at the start of the field.  |
 | name? | <code>string</code> | An identifier for the field that is unique within the nearest containing `&lt;Form /&gt;` component.  |
 | label | <code>string</code> | Content to use as the field label. This value is also used as the placeholder when the field is empty.  |
 | prefix? | <code>string</code> | Content to render before the value.  |
@@ -29,7 +25,7 @@ optional = ?
 | required? | <code>boolean</code> | Whether the field needs a value. This requirement adds semantic value to the field, but it will not cause an error to appear automatically. If you want to present an error when this field is empty, you can do so with the `error` prop.  |
 | error? | <code>string</code> | An error label to present with the field.  |
 | multiline? | <code>boolean &#124; number</code> | Whether the field supports multiple lines of input. Set a `number` to define the default lines of the input.  |
-| autocomplete? | <code><a href="#autocomplete">Autocomplete</a> &#124; boolean</code> | A hint as to the intended content of the field.<br /><br />When set to `true`, this property indicates that the field should support autofill, but you do not have any more semantic information on the intended contents.<br /><br />When set to `false`, you are indicating that this field contains sensitive information, or contents that are never saved, like one-time codes. Note that it is impossible to prevent autofill in some browsers, so do not depend on its absence.<br /><br />Alternatively, you can provide an `Autocomplete` object, which describes the specific data you would like to be entered into this field during autofill.  |
+| autocomplete? | <code><a href="#autocomplete">Autocomplete</a> &#124; boolean</code> | A hint as to the intended content of the field.<br /><br />When set to `true`, this property indicates that the field should support autofill, but you do not have any more semantic information on the intended contents.<br /><br />When set to `false`, you are indicating that this field contains sensitive information, or contents that are never saved, like one-time codes.<br /><br />Alternatively, you can provide an `Autocomplete` object, which describes the specific data you would like to be entered into this field during autofill.  |
 | disabled? | <code>boolean</code> |  |
 | readonly? | <code>boolean</code> |  |
 | onFocus? | <code>() => void</code> | Callback when input is focused.  |
@@ -45,5 +41,5 @@ values supported in browsers.
 
 | Name | Type | Description |
 | --- | --- | --- |
-| group? | <code>"shipping" &#124; "billing"</code> | The contact information “group” the autocomplete data should be sourced from.  |
+| group? | <code>"shipping" &#124; "billing" &#124; "location"</code> | The contact information “group” the autocomplete data should be sourced from.  |
 | field | <code>"name" &#124; "honorific-prefix" &#124; "given-name" &#124; "additional-name" &#124; "family-name" &#124; "honorific-suffix" &#124; "nickname" &#124; "username" &#124; "new-password" &#124; "current-password" &#124; "one-time-code" &#124; "organization-title" &#124; "organization" &#124; "street-address" &#124; "address-line1" &#124; "address-line2" &#124; "address-line3" &#124; "address-level4" &#124; "address-level3" &#124; "address-level2" &#124; "address-level1" &#124; "country" &#124; "country-name" &#124; "postal-code" &#124; "credit-card-name" &#124; "credit-card-given-name" &#124; "credit-card-additional-name" &#124; "credit-card-family-name" &#124; "credit-card-number" &#124; "credit-card-expiry" &#124; "credit-card-expiry-month" &#124; "credit-card-expiry-year" &#124; "credit-card-security-code" &#124; "credit-card-type" &#124; "transaction-currency" &#124; "transaction-amount" &#124; "language" &#124; "birthday" &#124; "birthday-day" &#124; "birthday-month" &#124; "birthday-year" &#124; "sex" &#124; "url" &#124; "photo" &#124; "telephone" &#124; "telephone-country-code" &#124; "telephone-national" &#124; "telephone-area-code" &#124; "telephone-local" &#124; "telephone-local-prefix" &#124; "telephone-local-suffix" &#124; "telephone-extension" &#124; "email" &#124; "instant-message" &#124; "home telephone" &#124; "home telephone-country-code" &#124; "home telephone-national" &#124; "home telephone-area-code" &#124; "home telephone-local" &#124; "home telephone-local-prefix" &#124; "home telephone-local-suffix" &#124; "home telephone-extension" &#124; "home email" &#124; "home instant-message" &#124; "work telephone" &#124; "work telephone-country-code" &#124; "work telephone-national" &#124; "work telephone-area-code" &#124; "work telephone-local" &#124; "work telephone-local-prefix" &#124; "work telephone-local-suffix" &#124; "work telephone-extension" &#124; "work email" &#124; "work instant-message" &#124; "mobile telephone" &#124; "mobile telephone-country-code" &#124; "mobile telephone-national" &#124; "mobile telephone-area-code" &#124; "mobile telephone-local" &#124; "mobile telephone-local-prefix" &#124; "mobile telephone-local-suffix" &#124; "mobile telephone-extension" &#124; "mobile email" &#124; "mobile instant-message" &#124; "fax telephone" &#124; "fax telephone-country-code" &#124; "fax telephone-national" &#124; "fax telephone-area-code" &#124; "fax telephone-local" &#124; "fax telephone-local-prefix" &#124; "fax telephone-local-suffix" &#124; "fax telephone-extension" &#124; "fax email" &#124; "fax instant-message" &#124; "pager telephone" &#124; "pager telephone-country-code" &#124; "pager telephone-national" &#124; "pager telephone-area-code" &#124; "pager telephone-local" &#124; "pager telephone-local-prefix" &#124; "pager telephone-local-suffix" &#124; "pager telephone-extension" &#124; "pager email" &#124; "pager instant-message"</code> | The type of data that should be inserted into a field supporting autocomplete.  |

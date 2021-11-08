@@ -25,9 +25,9 @@ export interface FormProps {
 }
 
 /**
- * The `Form` component should be used to wrap one or more form controls.
- * This component provides an "implicit submit" behavior, where buyers can
- * submit the form from any input by pressing "enter" on their keyboards. This
+ * The form component should be used to wrap one or more form controls. This
+ * component provides an "implicit submit" behavior, where customers can submit
+ * the form from any input by pressing "Enter" on their keyboards. This
  * behavior is widely expected, and should be respected as often as possible.
  *
  * Unlike an HTML `form` element, this component does not support configuring

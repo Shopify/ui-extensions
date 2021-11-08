@@ -31,6 +31,22 @@ export interface ExtensionPoints {
     LineItemRenderAfterApi,
     AllComponents
   >;
+  'Checkout::ShippingMethod::RenderAfter': RenderExtension<
+    StandardApi<'Checkout::ShippingMethod::RenderAfter'>,
+    AllComponents
+  >;
+  'Checkout::PaymentMethods::Header::RenderAfter': RenderExtension<
+    StandardApi<'Checkout::PaymentMethods::Header::RenderAfter'>,
+    AllComponents
+  >;
+  'Checkout::PriceLines::RenderAfter': RenderExtension<
+    StandardApi<'Checkout::PriceLines::RenderAfter'>,
+    AllComponents
+  >;
+  'Checkout::Actions::RenderAfter': RenderExtension<
+    StandardApi<'Checkout::Actions::RenderAfter'>,
+    AllComponents
+  >;
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;

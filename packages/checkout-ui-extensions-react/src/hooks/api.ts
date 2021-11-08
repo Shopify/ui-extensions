@@ -4,6 +4,7 @@ import {
   ApiForRenderExtension,
 } from '@shopify/checkout-ui-extensions';
 
+import {CheckoutUIExtensionError} from '../errors';
 import {ExtensionApiContext} from '../context';
 
 /**
@@ -16,7 +17,7 @@ export function useExtensionApi<
   const api = useContext(ExtensionApiContext);
 
   if (api == null) {
-    throw new Error(
+    throw new CheckoutUIExtensionError(
       'You can only call this hook when running as a UI extension.',
     );
   }

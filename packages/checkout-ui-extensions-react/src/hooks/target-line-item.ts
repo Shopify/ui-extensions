@@ -4,6 +4,8 @@ import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
 
 class ExtensionHasNoTargetError extends Error {
+  name = 'ExtensionHasNoTargetError';
+
   constructor(extensionPoint: ExtensionPoint) {
     super(
       `Cannot call 'useTargetLineItem()' on extensionPoint '${extensionPoint}'. Property 'target' is not found on api.`,

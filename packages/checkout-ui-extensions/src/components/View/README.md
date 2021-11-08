@@ -26,7 +26,8 @@ optional = ?
 | visibility? | <code>"hidden"</code> | Changes the visibility of the element.<br /><br />'hidden' visually hides the component while keeping it accessible to assistive technology (for example, a screen reader). Hidden elements do not take any visual space contrary to CSS visibility: hidden;  |
 | accessibilityVisibility? | <code>"hidden"</code> | Changes the visibility of the element to assistive technologies.<br /><br />'hidden' hides the component from assistive technology (for example, a screen reader) but remains visually visible.  |
 | display? | <code>"block" &#124; "inline"</code> | Changes the display of the View.<br /><br />'inline' follows the direction of words in a sentence based on the document’s writing mode. 'block' follows the direction of paragraphs based on the document’s writing mode.<br /><br />Default value: <code>'block'</code> |
-| id? | <code>string</code> | A unique identifier for the View.  |<a name="Responsive"></a>
+| id? | <code>string</code> | A unique identifier for the View.  |
+| blockSize? | <code>number &#124; <a href="#responsive">Responsive</a></code> | Adjust the block size.<br /><br />Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.<br /><br />Examples: - `500` represents `500px` - `0.5` represents `50%` - `1` represents `100%`  |<a name="Responsive"></a>
 
 ### Responsive
 

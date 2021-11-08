@@ -40,6 +40,9 @@ export type {
   LineItemUpdateChange,
   LineItemRemoveChange,
   SignedChange,
+  SignedChangeResult,
+  SignedChangeResultError,
+  SignedChangeResultSuccess,
   CustomerAccount,
 } from './extension-points';
 
@@ -68,7 +71,9 @@ export type {
   LinkProps,
   ListProps,
   ListItemProps,
+  PhoneFieldProps,
   SelectProps,
+  SkeletonTextProps,
   StepperProps,
   SpinnerProps,
   TagProps,
