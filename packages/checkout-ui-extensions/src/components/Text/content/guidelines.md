@@ -1,7 +1,7 @@
 ## Best practices
 
 - Use larger text when you want to emphasize content that’s not a heading, like a price total
-- Use subdued if the text is less important than its surrounding text, like placeholder text
+- Create contrast between more and less important text with `size`, `emphasized`, and `subdued` props
 
 
 ## Related components

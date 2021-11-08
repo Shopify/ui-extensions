@@ -30,6 +30,9 @@ export type {
   LineItemUpdateChange,
   LineItemRemoveChange,
   SignedChange,
+  SignedChangeResult,
+  SignedChangeResultError,
+  SignedChangeResultSuccess,
   CustomerAccount,
 } from './standard';
 export type {CurrencyCode, CountryCode} from './shared';

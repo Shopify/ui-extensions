@@ -33,6 +33,9 @@ export type {
   LineItemUpdateChange,
   LineItemRemoveChange,
   SignedChange,
+  SignedChangeResult,
+  SignedChangeResultError,
+  SignedChangeResultSuccess,
   CustomerAccount,
 } from './api';
 export type {RenderExtension} from './render-extension';

@@ -1,6 +1,6 @@
 ## Best practices
 
-- Create contrast between more and less important text with `size`, `emphasis`, and `subdued` props
+- Create contrast between more and less important text with `size`, `emphasized`, and `subdued` props
 
 ## Related components
 

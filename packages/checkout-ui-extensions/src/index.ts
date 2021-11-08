@@ -40,6 +40,9 @@ export type {
   LineItemUpdateChange,
   LineItemRemoveChange,
   SignedChange,
+  SignedChangeResult,
+  SignedChangeResultError,
+  SignedChangeResultSuccess,
   CustomerAccount,
 } from './extension-points';
 
