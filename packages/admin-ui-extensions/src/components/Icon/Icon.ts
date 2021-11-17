@@ -5,7 +5,8 @@ type Source =
   | 'searchMinor'
   | 'starHollow'
   | 'starFilled'
-  | 'sortMinor';
+  | 'sortMinor'
+  | 'plusMinor';
 
 export interface IconProps {
   /** Pre-defined glyph content to display. */
