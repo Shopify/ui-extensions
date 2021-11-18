@@ -27,4 +27,4 @@ extend(
 );
 ```
 
-You can find more component usage examples alongside each component in [packages/admin-ui-extensions-react/src/components](packages/admin-ui-extensions-react/src/components)
+You can find more component usage examples alongside each component in [packages/admin-ui-extensions-react/src/components](/packages/admin-ui-extensions-react/src/components)

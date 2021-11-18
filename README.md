@@ -79,7 +79,7 @@ extend('Checkout::Feature::Render', (root) => {
 });
 ```
 
-Your UI Extension will receive different arguments depending on the extension point you’ve selected. The extension API you receive may also be affected by other factors, like your app’s permissions. For full details on what arguments are passed for each extension point, please refer to the documentation for the [Admin and Checkout surface area you want to extend](#i-just-want-to-build-an-ui-extension-not-learn-about-them).
+Your UI Extension will receive different arguments depending on the extension point you’ve selected. The extension API you receive may also be affected by other factors, like your app’s permissions. For full details on what arguments are passed for each extension point, please refer to the documentation for the [Admin and Checkout surface area you want to extend](#i-just-want-to-build-a-ui-extension-not-learn-about-them).
 
 ## Contributing
 
