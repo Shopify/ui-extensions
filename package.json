@@ -7,6 +7,7 @@
     "./packages/*"
   ],
   "scripts": {
+    "admin-create-component": "babel-node --extensions .ts,.tsx,.mjs,.js,.json scripts/admin/create-component",
     "build": "sk build",
     "build-consumer": "yarnpkg build && ./scripts/build-consumer.sh",
     "build-consumer-spin": "yarnpkg build && ./scripts/build-consumer-spin.sh",
