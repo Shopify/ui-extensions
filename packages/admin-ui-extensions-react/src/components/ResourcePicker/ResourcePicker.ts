@@ -1,0 +1,4 @@
+import {ResourcePicker as BaseResourcePicker} from '@shopify/admin-ui-extensions';
+import {createRemoteReactComponent} from '@remote-ui/react';
+
+export const ResourcePicker = createRemoteReactComponent(BaseResourcePicker);
