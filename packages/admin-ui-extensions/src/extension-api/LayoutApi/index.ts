@@ -1,12 +1,12 @@
 type SizeClass = 'regular' | 'compact';
 
-export interface Layout {
+export interface LayoutValue {
   horizontal: SizeClass;
 }
 
 interface LayoutApiContent {
-  initialValue: Layout;
-  setOnChange: (onChange: (layout: Layout) => void) => void;
+  initialValue: LayoutValue;
+  setOnChange: (onChange: (layout: LayoutValue) => void) => void;
 }
 
 /**

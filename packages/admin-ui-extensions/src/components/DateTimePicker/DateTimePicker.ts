@@ -1,8 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 export interface DateTimePickerProps {
-  dateLabel: string;
-  timeLabel: string;
+  label: string;
   value: string;
   onChange(newValue: string): void;
   error?: string;

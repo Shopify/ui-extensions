@@ -34,7 +34,7 @@ export type {
 export * from './extension-api';
 export type {
   LayoutApi,
-  Layout,
+  LayoutValue,
   LocaleApi,
   ContainerApi,
   ExtensionContainer,

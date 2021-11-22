@@ -1,4 +1,4 @@
-export type {LayoutApi, Layout} from './LayoutApi';
+export type {LayoutApi, LayoutValue} from './LayoutApi';
 export {isLayoutApi} from './LayoutApi';
 
 export type {LocaleApi} from './LocaleApi';

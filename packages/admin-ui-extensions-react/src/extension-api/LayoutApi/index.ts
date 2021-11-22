@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {isLayoutApi, Layout} from '@shopify/admin-ui-extensions';
+import {isLayoutApi, LayoutValue} from '@shopify/admin-ui-extensions';
 
 import {useExtensionApi} from '../utils';
 
@@ -12,7 +12,7 @@ export function useLayout() {
   const {
     layout: {initialValue, setOnChange},
   } = api;
-  const [layout, setLayout] = useState<Layout>(initialValue);
+  const [layout, setLayout] = useState<LayoutValue>(initialValue);
 
   useEffect(() => {
     setOnChange((newLayout) => setLayout(newLayout));

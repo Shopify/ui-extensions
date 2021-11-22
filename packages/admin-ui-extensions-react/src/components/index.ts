@@ -5,6 +5,8 @@ export * from './Button';
 export * from './Card';
 export * from './CardSection';
 export * from './Checkbox';
+export * from './Layout';
+export * from './LayoutSection';
 export * from './DateTimePicker';
 export * from './Pressable';
 export * from './Icon';
