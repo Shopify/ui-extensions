@@ -41,6 +41,7 @@ export type {
   DataApi,
   ExtensionData,
   SessionTokenApi,
+  ApiTokenApi,
   ToastApi,
   ContextualSaveBarApi,
 } from './extension-api';

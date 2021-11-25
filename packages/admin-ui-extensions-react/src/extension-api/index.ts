@@ -3,5 +3,6 @@ export * from './LayoutApi';
 export * from './LocaleApi';
 export * from './ContainerApi';
 export * from './SessionTokenApi';
+export * from './ApiTokenApi';
 export * from './ToastApi';
 export * from './DataApi';
