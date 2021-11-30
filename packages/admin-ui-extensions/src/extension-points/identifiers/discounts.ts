@@ -18,6 +18,7 @@ export type DiscountsExtensionPoint =
 
 export interface DiscountsExtensionContainerApi {
   container: {
+    setTitle(title: string): void;
     save: () => void;
     discard: () => void;
   };
