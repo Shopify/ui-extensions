@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 type Source =
   | 'cancelSmallMinor'
+  | 'deleteMinor'
   | 'searchMinor'
   | 'starHollow'
   | 'starFilled'
