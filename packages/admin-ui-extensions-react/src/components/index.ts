@@ -4,6 +4,7 @@ export * from './BlockStack';
 export * from './Button';
 export * from './Card';
 export * from './CardSection';
+export * from './CardSummary';
 export * from './Checkbox';
 export * from './Layout';
 export * from './LayoutSection';
