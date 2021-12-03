@@ -1,0 +1,16 @@
+import { render, useExtensionApi, Button } from '@shopify/post-purchase-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+render('Checkout::PostPurchase::Render', () => /*#__PURE__*/_jsx(App, {}));
+
+function App() {
+  const {
+    extensionPoint
+  } = useExtensionApi();
+  return /*#__PURE__*/_jsx(Button, {
+    onPress: () => {
+      // eslint-disable-next-line no-console
+      console.log(`Extension point: ${extensionPoint}`);
+    },
+    children: "Log extension point to console"
+  });
+}

@@ -1,0 +1,1 @@
+{"version":3,"file":"InlineStack.d.ts","sourceRoot":"","sources":["../../../src/types/InlineStack.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAC,OAAO,EAAC,MAAM,UAAU,CAAC;AAEtC,MAAM,WAAW,oBAAoB;IACnC;;;OAGG;IACH,cAAc,CAAC,EAAE,SAAS,GAAG,QAAQ,GAAG,UAAU,GAAG,UAAU,CAAC;IAChE;;;OAGG;IACH,eAAe,CAAC,EAAE,SAAS,GAAG,QAAQ,GAAG,UAAU,CAAC;IACpD;;;QAGI;IACJ,OAAO,CAAC,EAAE,OAAO,CAAC;CACnB"}

@@ -1,0 +1,6 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * InlineStack is used to lay out a horizontal row of elements
+ */
+export const InlineStack = createRemoteComponent('InlineStack');

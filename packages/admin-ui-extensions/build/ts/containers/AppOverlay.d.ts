@@ -1,0 +1,3 @@
+import { ActionComponents, BasicComponents, FeedbackComponents, FormComponents, ListComponents, LoadingComponents, ImageComponents, OverlayComponents, StructureComponents } from '../component-sets';
+export declare type AppOverlaySchema = ActionComponents | BasicComponents | FeedbackComponents | FormComponents | ListComponents | LoadingComponents | ImageComponents | OverlayComponents | StructureComponents;
+//# sourceMappingURL=AppOverlay.d.ts.map

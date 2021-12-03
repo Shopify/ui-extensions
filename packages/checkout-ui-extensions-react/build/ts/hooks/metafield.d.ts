@@ -1,0 +1,11 @@
+interface MetafieldFilter {
+    namespace: string;
+    key: string;
+}
+/**
+ * Returns a single filtered Metafield or undefined
+ * @arg {MetafieldFilter} - filter the list of returned metafields to a single metafield
+ */
+export declare function useMetafield(filters: MetafieldFilter): import("@shopify/checkout-ui-extensions").Metafield | undefined;
+export {};
+//# sourceMappingURL=metafield.d.ts.map

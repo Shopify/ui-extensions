@@ -1,0 +1,1 @@
+{"version":3,"file":"SkeletonText.d.ts","sourceRoot":"","sources":["../../../../src/components/SkeletonText/SkeletonText.ts"],"names":[],"mappings":"AAEA,OAAO,EAAC,SAAS,EAAC,MAAM,SAAS,CAAC;AAElC,MAAM,WAAW,iBACf,SAAQ,IAAI,CAAC,SAAS,EAAE,IAAI,GAAG,MAAM,GAAG,YAAY,CAAC;IACrD;;;;;;;;;OASG;IACH,UAAU,CAAC,EAAE,MAAM,CAAC;CACrB;AAED;;GAEG;AACH,eAAO,MAAM,YAAY,wFAGR,CAAC"}

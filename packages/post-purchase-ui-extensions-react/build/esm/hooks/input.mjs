@@ -1,0 +1,11 @@
+import { useContext } from 'react';
+import { ExtensionInputContext } from '../context';
+export function useExtensionInput() {
+  var input = useContext(ExtensionInputContext);
+
+  if (input == null) {
+    throw new Error('You can only call this hook when running as a UI extension.');
+  }
+
+  return input;
+}

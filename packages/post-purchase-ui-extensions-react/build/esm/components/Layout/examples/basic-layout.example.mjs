@@ -1,0 +1,30 @@
+import { render, Layout, View } from '@shopify/post-purchase-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+import { jsxs as _jsxs } from "react/jsx-runtime";
+render('Checkout::PostPurchase::Render', function () {
+  return /*#__PURE__*/_jsx(App, {});
+});
+
+function App() {
+  return /*#__PURE__*/_jsxs(Layout, {
+    spacing: "base",
+    sizes: [1, 0.2, 0.8, 1],
+    children: [/*#__PURE__*/_jsx(View, {
+      border: "base",
+      padding: "base",
+      children: "Header"
+    }), /*#__PURE__*/_jsx(View, {
+      border: "base",
+      padding: "base",
+      children: "Sidebar"
+    }), /*#__PURE__*/_jsx(View, {
+      border: "base",
+      padding: "base",
+      children: "Content"
+    }), /*#__PURE__*/_jsx(View, {
+      border: "base",
+      padding: "base",
+      children: "Footer"
+    })]
+  });
+}

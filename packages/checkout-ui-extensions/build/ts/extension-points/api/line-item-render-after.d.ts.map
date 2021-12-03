@@ -1,0 +1,1 @@
+{"version":3,"file":"line-item-render-after.d.ts","sourceRoot":"","sources":["../../../../src/extension-points/api/line-item-render-after.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAC,0BAA0B,EAAC,MAAM,+BAA+B,CAAC;AAE9E,OAAO,EAAC,QAAQ,EAAE,WAAW,EAAC,MAAM,YAAY,CAAC;AAEjD,MAAM,WAAW,sBACf,SAAQ,WAAW,CAAC,iCAAiC,CAAC;IACtD;;OAEG;IACH,MAAM,EAAE,0BAA0B,CAAC,QAAQ,CAAC,CAAC;CAC9C"}

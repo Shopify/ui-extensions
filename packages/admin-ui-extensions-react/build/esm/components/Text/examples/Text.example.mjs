@@ -1,0 +1,23 @@
+import React from 'react';
+import { extend, render, Text } from '@shopify/admin-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+import { Fragment as _Fragment } from "react/jsx-runtime";
+import { jsxs as _jsxs } from "react/jsx-runtime";
+
+function App() {
+  return /*#__PURE__*/_jsxs(_Fragment, {
+    children: [/*#__PURE__*/_jsx(Text, {
+      size: "small",
+      emphasized: true,
+      subdued: true,
+      role: "address",
+      id: "some_id",
+      appearance: "accent",
+      children: "Formatted text is awesome!"
+    }), "This simple text is a bit less awesome"]
+  });
+}
+
+extend('Playground', render(function () {
+  return /*#__PURE__*/_jsx(App, {});
+}));

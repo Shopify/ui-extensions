@@ -1,0 +1,8 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * `ResourcePicker` displays a ResourceList in a modal
+ *
+ * `ResourcePicker` provide a generic UI to display any type of data in an interactive list.
+ */
+export const ResourcePicker = createRemoteComponent('ResourcePicker');

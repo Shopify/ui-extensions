@@ -1,0 +1,2 @@
+import { createContext } from 'react';
+export const ExtensionApiContext = /*#__PURE__*/createContext(null);

@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../../../src/extension-points/api/standard/index.ts"],"names":[],"mappings":"AAAA,oBAAY,OAAO,GAAG,UAAU,CAAC;AAEjC,MAAM,WAAW,WAAW,CAC1B,cAAc,SAAS,OAAO,wBAAwB,EAAE,cAAc;IAEtE,OAAO,EAAE,OAAO,CAAC;IACjB,MAAM,EAAE,MAAM,CAAC;IACf,cAAc,EAAE,cAAc,CAAC;CAChC"}

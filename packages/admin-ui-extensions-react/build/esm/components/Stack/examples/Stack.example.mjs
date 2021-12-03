@@ -1,0 +1,33 @@
+import React from 'react';
+import { extend, render, Stack, Text } from '@shopify/admin-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+import { jsxs as _jsxs } from "react/jsx-runtime";
+
+function App() {
+  return /*#__PURE__*/_jsxs(Stack, {
+    vertical: true,
+    children: [/*#__PURE__*/_jsxs(Stack, {
+      distribution: "center",
+      alignment: "fill",
+      spacing: "loose",
+      wrap: false,
+      children: [/*#__PURE__*/_jsx(Text, {
+        children: "Inline item"
+      }), /*#__PURE__*/_jsx(Text, {
+        children: "Inline item"
+      }), /*#__PURE__*/_jsx(Text, {
+        children: "Inline item"
+      })]
+    }), /*#__PURE__*/_jsx(Text, {
+      children: "Items to stack"
+    }), /*#__PURE__*/_jsx(Text, {
+      children: "Items to stack"
+    }), /*#__PURE__*/_jsx(Text, {
+      children: "Items to stack"
+    })]
+  });
+}
+
+extend('Playground', render(function () {
+  return /*#__PURE__*/_jsx(App, {});
+}));

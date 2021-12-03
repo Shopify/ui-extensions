@@ -1,0 +1,19 @@
+import React from 'react';
+import { extend, render, Text, useData } from '@shopify/admin-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+
+function App() {
+  const {
+    productId,
+    variantId
+  } = useData();
+  return /*#__PURE__*/_jsx(Text, {
+    children: `
+      Here is my product data:
+      - product id: ${productId}
+      - variant id: ${variantId}
+    `
+  });
+}
+
+extend('Admin::Product::SubscriptionPlan::Add', render(() => /*#__PURE__*/_jsx(App, {})));

@@ -1,0 +1,13 @@
+import { render, BuyerConsent } from '@shopify/post-purchase-ui-extensions-react';
+import { useState } from 'react';
+import { jsx as _jsx } from "react/jsx-runtime";
+render('Checkout::PostPurchase::Render', () => /*#__PURE__*/_jsx(App, {}));
+
+function App() {
+  const [consent, setConsent] = useState(false);
+  return /*#__PURE__*/_jsx(BuyerConsent, {
+    policy: "subscriptions",
+    checked: consent,
+    onChange: setConsent
+  });
+}

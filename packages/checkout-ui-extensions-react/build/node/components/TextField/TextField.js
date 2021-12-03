@@ -1,0 +1,13 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TextField = void 0;
+
+var _checkoutUiExtensions = require("@shopify/checkout-ui-extensions");
+
+var _react = require("@remote-ui/react");
+
+const TextField = (0, _react.createRemoteReactComponent)(_checkoutUiExtensions.TextField);
+exports.TextField = TextField;

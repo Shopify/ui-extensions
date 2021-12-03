@@ -1,0 +1,33 @@
+import { useMemo } from 'react';
+import { CheckoutUIExtensionError } from '../errors';
+import { useExtensionApi } from './api';
+import { useSubscription } from './subscription';
+
+/**
+ * Returns the metafields configured via extension.config.yml.
+ * @arg {AppMetafieldFilters} - filter the list of returned metafields
+ */
+export function useAppMetafields(filters = {}) {
+  const appMetafields = useSubscription(useExtensionApi().appMetafields);
+  return useMemo(() => {
+    if (filters.key && !filters.namespace) {
+      throw new CheckoutUIExtensionError('You must pass in a namespace with a key');
+    }
+
+    const filterKeys = Object.keys(filters);
+
+    if (filterKeys.length) {
+      return appMetafields.filter(app => {
+        return filterKeys.every(key => {
+          if (key === 'id' || key === 'type') {
+            return app.target[key] === filters[key];
+          }
+
+          return app.metafield[key] === filters[key];
+        });
+      });
+    }
+
+    return appMetafields;
+  }, [filters, appMetafields]);
+}

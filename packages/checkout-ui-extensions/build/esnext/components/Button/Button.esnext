@@ -1,0 +1,6 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * Buttons are used for actions, such as “Add”, “Continue”, “Pay now”, or “Save”.
+ */
+export const Button = createRemoteComponent('Button');

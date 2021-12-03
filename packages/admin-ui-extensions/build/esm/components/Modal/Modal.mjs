@@ -1,0 +1,8 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * Modals are overlays that prevent merchants from interacting with the rest of the application until a specific action is taken.
+ *
+ * Modals are disruptive by design, requiring merchants to take an action before they can continue, so use them thoughtfully and sparingly.
+ */
+export var Modal = createRemoteComponent('Modal');

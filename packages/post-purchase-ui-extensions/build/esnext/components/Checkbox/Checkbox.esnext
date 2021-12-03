@@ -1,0 +1,10 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * Checkboxes are used to give buyers a binary option. They are commonly used to
+ * present terms and conditions.
+ *
+ * Unlike most field components, any children passed to this component will be used
+ * as the label for the checkbox.
+ */
+export const Checkbox = createRemoteComponent('Checkbox');

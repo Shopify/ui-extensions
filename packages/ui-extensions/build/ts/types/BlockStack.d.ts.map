@@ -1,0 +1,1 @@
+{"version":3,"file":"BlockStack.d.ts","sourceRoot":"","sources":["../../../src/types/BlockStack.ts"],"names":[],"mappings":"AAAA,OAAO,KAAK,EAAC,OAAO,EAAC,MAAM,UAAU,CAAC;AAEtC,MAAM,WAAW,mBAAmB;IAClC;;;OAGG;IACH,eAAe,CAAC,EAAE,SAAS,GAAG,QAAQ,GAAG,UAAU,CAAC;IACpD;;;QAGI;IACJ,OAAO,CAAC,EAAE,OAAO,CAAC;CACnB"}

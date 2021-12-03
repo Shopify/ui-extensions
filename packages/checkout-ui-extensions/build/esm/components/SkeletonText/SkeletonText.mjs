@@ -1,0 +1,6 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * SkeletonText is used to provide a low fidelity representation of text content before it appears on the page.
+ */
+export var SkeletonText = createRemoteComponent('SkeletonText');

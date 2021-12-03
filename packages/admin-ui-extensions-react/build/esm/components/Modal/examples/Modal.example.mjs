@@ -1,0 +1,18 @@
+import React from 'react';
+import { extend, render, Modal } from '@shopify/admin-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+
+function App() {
+  return /*#__PURE__*/_jsx(Modal, {
+    open: true,
+    title: "The best modal",
+    onClose: function onClose() {
+      return console.log('modal closed!');
+    },
+    children: "This is the content of the modal."
+  });
+}
+
+extend('Playground', render(function () {
+  return /*#__PURE__*/_jsx(App, {});
+}));

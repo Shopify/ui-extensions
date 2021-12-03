@@ -1,0 +1,7 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * Text is used to visually style and provide semantic value for a small piece of text
+ * content.
+ */
+export const Text = createRemoteComponent('Text');

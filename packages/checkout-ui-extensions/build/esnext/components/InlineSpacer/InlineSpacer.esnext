@@ -1,0 +1,8 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * InlineSpacer is used to create empty inline space, typically when variable spacing
+ * is needed between multiple elements.
+ * Note that you should favor InlineStack when spacing between all elements is the same.
+ */
+export const InlineSpacer = createRemoteComponent('InlineSpacer');

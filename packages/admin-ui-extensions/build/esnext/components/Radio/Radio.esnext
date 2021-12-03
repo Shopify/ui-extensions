@@ -1,0 +1,6 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * Radio allows merchants to choose a single item from a list.
+ */
+export const Radio = createRemoteComponent('Radio');

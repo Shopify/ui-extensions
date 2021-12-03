@@ -1,0 +1,15 @@
+import React from 'react';
+import { extend, render, TextBlock } from '@shopify/admin-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+
+function App() {
+  return /*#__PURE__*/_jsx(TextBlock, {
+    size: "small",
+    variation: "subdued",
+    children: "TextBlock"
+  });
+}
+
+extend('Playground', render(function () {
+  return /*#__PURE__*/_jsx(App, {});
+}));

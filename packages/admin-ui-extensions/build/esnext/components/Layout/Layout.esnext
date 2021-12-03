@@ -1,0 +1,2 @@
+import { createRemoteComponent } from '@remote-ui/core';
+export const Layout = createRemoteComponent('Layout');

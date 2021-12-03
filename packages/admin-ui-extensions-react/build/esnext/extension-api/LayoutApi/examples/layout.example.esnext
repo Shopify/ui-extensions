@@ -1,0 +1,12 @@
+import React from 'react';
+import { extend, render, useLayout, Text } from '@shopify/admin-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+
+function App() {
+  const layout = useLayout();
+  return /*#__PURE__*/_jsx(Text, {
+    children: `The current layout is: ${layout.horizontal}`
+  });
+}
+
+extend('Admin::Product::SubscriptionPlan::Add', render(() => /*#__PURE__*/_jsx(App, {})));

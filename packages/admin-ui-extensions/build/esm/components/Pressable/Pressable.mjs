@@ -1,0 +1,7 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * Pressable wraps components to add interactivity with rendering a UI element.
+ * Wrap small UI elements in Pressable to perform actions that don’t fit Button or Link.
+ */
+export var Pressable = createRemoteComponent('Pressable');

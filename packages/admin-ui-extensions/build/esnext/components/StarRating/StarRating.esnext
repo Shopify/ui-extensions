@@ -1,0 +1,7 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * Temporary Component for hackdays
+ *
+ */
+export const StarRating = createRemoteComponent('StarRating');

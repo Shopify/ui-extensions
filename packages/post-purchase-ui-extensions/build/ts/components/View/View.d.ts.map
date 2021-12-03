@@ -1,0 +1,1 @@
+{"version":3,"file":"View.d.ts","sourceRoot":"","sources":["../../../../src/components/View/View.ts"],"names":[],"mappings":"AAEA,aAAK,OAAO,GAAG,YAAY,GAAG,OAAO,GAAG,MAAM,GAAG,OAAO,GAAG,YAAY,CAAC;AAExE,MAAM,WAAW,SAAS;IACxB,gCAAgC;IAChC,aAAa,CAAC,EAAE,OAAO,CAAC;IACxB,+BAA+B;IAC/B,YAAY,CAAC,EAAE,OAAO,CAAC;CACxB;AAED;;;;GAIG;AACH,eAAO,MAAM,IAAI,wEAAmD,CAAC"}

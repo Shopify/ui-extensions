@@ -1,0 +1,6 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * Use a stepper to increase or decrease a value, like changing the quantity from 1 to 2.
+ */
+export const Stepper = createRemoteComponent('Stepper');

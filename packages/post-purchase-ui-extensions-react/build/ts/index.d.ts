@@ -1,0 +1,6 @@
+export { extend } from '@shopify/post-purchase-ui-extensions';
+export type { ExtensionPoint, ExtensionPoints, AllowedComponentsForRenderExtension, ArgumentsForExtension, InputForRenderExtension, RenderExtension, RenderExtensions, ReturnTypeForExtension, ShopifyGlobal, Version, BannerProps, BlockStackProps, BookendProps, ButtonProps, ButtonGroupProps, BuyerConsentProps, CheckboxProps, CalloutBannerProps, FormProps, FormLayoutProps, FormLayoutGroupProps, HeadingProps, HeadingGroupProps, HiddenForAccessibilityProps, ImageProps, InlineStackProps, LayoutProps, LinkProps, RadioProps, SelectProps, SeparatorProps, SpinnerProps, TextProps, TextBlockProps, TextContainerProps, TextFieldProps, TilesProps, ViewProps, VisuallyHiddenProps, } from '@shopify/post-purchase-ui-extensions';
+export * from './components';
+export * from './hooks';
+export { render } from './render';
+//# sourceMappingURL=index.d.ts.map

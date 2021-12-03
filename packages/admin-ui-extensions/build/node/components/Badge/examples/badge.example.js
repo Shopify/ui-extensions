@@ -1,0 +1,12 @@
+"use strict";
+
+var _adminUiExtensions = require("@shopify/admin-ui-extensions");
+
+(0, _adminUiExtensions.extend)('Playground', root => {
+  const badge = root.createComponent(_adminUiExtensions.Badge, {
+    message: 'Example message',
+    status: 'success'
+  });
+  root.appendChild(badge);
+  root.mount();
+});

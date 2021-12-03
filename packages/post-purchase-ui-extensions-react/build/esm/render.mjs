@@ -1,0 +1,19 @@
+import { render as remoteRender } from '@remote-ui/react';
+import { extend } from '@shopify/post-purchase-ui-extensions';
+import { ExtensionInputContext } from './context';
+import { jsx as _jsx } from "react/jsx-runtime";
+export function render(extensionPoint, render) {
+  // TypeScript can’t infer the type of the callback because it’s a big union
+  // type. To get around it, we’ll just fake like we are rendering the
+  // KitchenSink extension, since all render extensions have the same general
+  // shape (`RenderExtension`).
+  return extend(extensionPoint, function (root, input) {
+    remoteRender( /*#__PURE__*/_jsx(ExtensionInputContext.Provider, {
+      value: input,
+      children: render(input)
+    }), root, function () {
+      root.mount();
+    });
+    return {};
+  });
+}

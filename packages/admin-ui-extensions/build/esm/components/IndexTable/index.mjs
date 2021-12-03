@@ -1,0 +1,1 @@
+export { IndexTable } from './IndexTable';

@@ -1,0 +1,33 @@
+import React from 'react';
+import { extend, render, Radio } from '@shopify/admin-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+import { Fragment as _Fragment } from "react/jsx-runtime";
+import { jsxs as _jsxs } from "react/jsx-runtime";
+
+function App() {
+  return /*#__PURE__*/_jsxs(_Fragment, {
+    children: [/*#__PURE__*/_jsx(Radio, {
+      label: "Option 1",
+      helpText: "Help text for option 1.",
+      checked: true,
+      id: "option1",
+      name: "greatOptions",
+      onChange: function onChange() {
+        return console.log('Option 1 selected');
+      }
+    }), /*#__PURE__*/_jsx(Radio, {
+      label: "Option 2",
+      helpText: "Help text for option 2.",
+      id: "option2",
+      name: "greatOptions",
+      checked: false,
+      onChange: function onChange() {
+        return console.log('Option 2 selected');
+      }
+    })]
+  });
+}
+
+extend('Playground', render(function () {
+  return /*#__PURE__*/_jsx(App, {});
+}));

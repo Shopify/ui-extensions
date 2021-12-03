@@ -1,0 +1,11 @@
+import { createContext, useContext } from 'react';
+export const ExtensionApiContext = /*#__PURE__*/createContext(null);
+export function useExtensionApi() {
+  const api = useContext(ExtensionApiContext);
+
+  if (api === null) {
+    throw new Error('No extension api found');
+  }
+
+  return api;
+}

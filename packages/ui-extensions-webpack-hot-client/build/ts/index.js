@@ -1,0 +1,38 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.UIExtensionsHotClient = void 0;
+const webpack_1 = require("webpack");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ParserHelpers = require('webpack/lib/ParserHelpers');
+// @see https://github.com/webpack-contrib/webpack-hot-client/blob/1b7f221918217be0db7a6089fb77fffde9a973f6/lib/compiler.js#L63
+class UIExtensionsHotClient {
+    constructor(options) {
+        this.options = options;
+    }
+    apply(compiler) {
+        const { options } = this;
+        if (options) {
+            const definePlugin = new webpack_1.DefinePlugin({
+                __hotClientOptions__: JSON.stringify(options),
+            });
+            definePlugin.apply(compiler);
+        }
+        const hmrPlugin = new webpack_1.HotModuleReplacementPlugin();
+        compiler.hooks.compilation.tap('HotModuleReplacementPlugin', (_, { normalModuleFactory }) => {
+            const handler = (parser) => {
+                parser.hooks.evaluateIdentifier.for('module.hot').tap({
+                    name: 'HotModuleReplacementPlugin',
+                    before: 'NodeStuffPlugin',
+                }, (expr) => ParserHelpers.evaluateToIdentifier('module.hot', Boolean(parser.state.compilation.hotUpdateChunkTemplate))(expr));
+            };
+            normalModuleFactory.hooks.parser
+                .for('javascript/auto')
+                .tap('HotModuleReplacementPlugin', handler);
+            normalModuleFactory.hooks.parser
+                .for('javascript/dynamic')
+                .tap('HotModuleReplacementPlugin', handler);
+        });
+        hmrPlugin.apply(compiler);
+    }
+}
+exports.UIExtensionsHotClient = UIExtensionsHotClient;

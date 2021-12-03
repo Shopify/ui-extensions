@@ -1,0 +1,16 @@
+import React from 'react';
+import { extend, render, Thumbnail } from '@shopify/admin-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+
+function App() {
+  return /*#__PURE__*/_jsx(Thumbnail, {
+    size: "small",
+    scaleType: "fit",
+    source: "https://cdn.shopify.com/shopify-marketing_assets/static/shopify-favicon.png",
+    alt: "Shopify"
+  });
+}
+
+extend('Playground', render(function () {
+  return /*#__PURE__*/_jsx(App, {});
+}));

@@ -1,0 +1,9 @@
+import { render, Stepper } from '@shopify/checkout-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+render('Checkout::Feature::Render', () => /*#__PURE__*/_jsx(App, {}));
+
+function App() {
+  return /*#__PURE__*/_jsx(Stepper, {
+    label: "Stepper"
+  });
+}

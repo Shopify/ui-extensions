@@ -1,0 +1,6 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * Checkboxes are most commonly used to give merchants a way to make a range of selections (zero, one, or multiple).
+ */
+export const Checkbox = createRemoteComponent('Checkbox');

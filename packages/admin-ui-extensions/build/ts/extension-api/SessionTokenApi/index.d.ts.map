@@ -1,0 +1,1 @@
+{"version":3,"file":"index.d.ts","sourceRoot":"","sources":["../../../../src/extension-api/SessionTokenApi/index.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,YAAY;IAC3B,iCAAiC;IACjC,eAAe,EAAE,MAAM,OAAO,CAAC,MAAM,GAAG,SAAS,CAAC,CAAC;CACpD;AAED;;;GAGG;AACH,MAAM,WAAW,eAAe;IAC9B,YAAY,EAAE,YAAY,CAAC;CAC5B;AAED,wBAAgB,iBAAiB,CAAC,GAAG,EAAE,GAAG,GAAG,GAAG,IAAI,eAAe,CAElE"}

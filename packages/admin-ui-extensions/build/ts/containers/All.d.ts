@@ -1,0 +1,3 @@
+import { ActionComponents, BasicComponents, FeedbackComponents, FormComponents, ListComponents, LoadingComponents, ImageComponents, OverlayComponents, StructureComponents } from '../component-sets';
+export declare type AllComponentsSchema = ActionComponents | BasicComponents | FeedbackComponents | FormComponents | ListComponents | LoadingComponents | ImageComponents | OverlayComponents | StructureComponents;
+//# sourceMappingURL=All.d.ts.map

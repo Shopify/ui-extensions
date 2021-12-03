@@ -1,0 +1,32 @@
+"use strict";
+
+var _checkoutUiExtensionsReact = require("@shopify/checkout-ui-extensions-react");
+
+var _jsxRuntime = require("react/jsx-runtime");
+
+(0, _checkoutUiExtensionsReact.render)('Checkout::Feature::Render', function () {
+  return /*#__PURE__*/(0, _jsxRuntime.jsx)(App, {});
+});
+
+function App() {
+  return /*#__PURE__*/(0, _jsxRuntime.jsxs)(_checkoutUiExtensionsReact.InlineStack, {
+    spacing: "none",
+    children: [/*#__PURE__*/(0, _jsxRuntime.jsx)(_checkoutUiExtensionsReact.View, {
+      border: "base",
+      padding: "base",
+      children: "View"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_checkoutUiExtensionsReact.InlineSpacer, {
+      size: "small"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_checkoutUiExtensionsReact.View, {
+      border: "base",
+      padding: "base",
+      children: "View"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_checkoutUiExtensionsReact.InlineSpacer, {
+      size: "large"
+    }), /*#__PURE__*/(0, _jsxRuntime.jsx)(_checkoutUiExtensionsReact.View, {
+      border: "base",
+      padding: "base",
+      children: "View"
+    })]
+  });
+}

@@ -1,0 +1,26 @@
+import React from 'react';
+import { extend, render, ResourceList, ResourceItem } from '@shopify/admin-ui-extensions-react';
+import { jsx as _jsx } from "react/jsx-runtime";
+import { jsxs as _jsxs } from "react/jsx-runtime";
+
+function App() {
+  return /*#__PURE__*/_jsxs(ResourceList, {
+    children: [/*#__PURE__*/_jsx(ResourceItem, {
+      id: "1234",
+      onPress: function onPress() {
+        return console.log('Pressed 1');
+      },
+      children: "Cool item"
+    }), /*#__PURE__*/_jsx(ResourceItem, {
+      id: "5678",
+      onPress: function onPress() {
+        return console.log('Pressed 2');
+      },
+      children: "Cooler item"
+    })]
+  });
+}
+
+extend('Playground', render(function () {
+  return /*#__PURE__*/_jsx(App, {});
+}));

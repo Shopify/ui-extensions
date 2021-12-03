@@ -1,0 +1,11 @@
+/// <reference types="react" />
+export declare const Tiles: ("Tiles" & {
+    readonly type?: "Tiles" | undefined;
+    readonly props?: import("@shopify/checkout-ui-extensions").TilesProps | undefined;
+    readonly children?: true | undefined;
+} & import("react").ComponentClass<import("@remote-ui/react").ReactPropsFromRemoteComponentType<import("@remote-ui/types").RemoteComponentType<"Tiles", import("@shopify/checkout-ui-extensions").TilesProps, true>>, any>) | ("Tiles" & {
+    readonly type?: "Tiles" | undefined;
+    readonly props?: import("@shopify/checkout-ui-extensions").TilesProps | undefined;
+    readonly children?: true | undefined;
+} & import("react").FunctionComponent<import("@remote-ui/react").ReactPropsFromRemoteComponentType<import("@remote-ui/types").RemoteComponentType<"Tiles", import("@shopify/checkout-ui-extensions").TilesProps, true>>>);
+//# sourceMappingURL=Tiles.d.ts.map

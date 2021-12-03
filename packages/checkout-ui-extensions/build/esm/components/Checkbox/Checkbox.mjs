@@ -1,0 +1,6 @@
+import { createRemoteComponent } from '@remote-ui/core';
+
+/**
+ * Use checkboxes to give customers a single binary option, such as signing up for marketing, or agreeing to terms and conditions.
+ */
+export var Checkbox = createRemoteComponent('Checkbox');
