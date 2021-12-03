@@ -10,6 +10,8 @@ export {Card} from './Card';
 export type {CardProps} from './Card';
 export {CardSection} from './CardSection';
 export type {CardSectionProps} from './CardSection';
+export {CardSummary} from './CardSummary';
+export type {CardSummaryProps} from './CardSummary';
 export {Checkbox} from './Checkbox';
 export type {CheckboxProps} from './Checkbox';
 export {DateTimePicker} from './DateTimePicker';
