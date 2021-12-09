@@ -52,6 +52,7 @@ function copy_to_target {
     targetDir=$(resolve "$ROOT/../$projectDirectoryOrWorkspace/node_modules/@shopify/$package")
   else
     targetDir="$shopifyNodeModulesDir/$package"
+    echo "🌀 spin instance: `spin show | grep Shopify/$projectName | awk '{print $1}'` "
   fi
 
   if (run_command "[ -d $targetDir ]"); then
