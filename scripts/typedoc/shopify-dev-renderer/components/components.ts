@@ -1,9 +1,8 @@
 import {resolve, extname} from 'path';
 import * as fs from 'fs';
+import {createDependencyGraph} from '@shopify/docs-tools';
 
 import type {Paths} from '../../types';
-
-import {createDependencyGraph} from '../../utilities/dependency-graph';
 
 import {
   renderYamlFrontMatter,

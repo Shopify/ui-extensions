@@ -1,12 +1,9 @@
 import {resolve} from 'path';
 import * as fs from 'fs';
+import {createDependencyGraph, filterGraph} from '@shopify/docs-tools';
 
 import type {Paths, InterfaceType} from '../types';
 
-import {
-  createDependencyGraph,
-  filterGraph,
-} from '../utilities/dependency-graph';
 import {
   renderYamlFrontMatter,
   findUuid,
