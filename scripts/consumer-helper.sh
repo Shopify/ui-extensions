@@ -24,7 +24,7 @@ function set_globals() {
     targetRoot=$(resolve "$ROOT/../$projectDirectoryOrWorkspace")
     noTargetError="A target project directory is required: "
   else
-    echo "Running command on spin"
+    echo "🌀 Running command on spin: `spin info fqdn`"
     projectName="$(cut -d'.' -f1 <<<"$projectDirectoryOrWorkspace")"
     targetRoot="src/github.com/shopify/$projectName"
     noTargetError="A workspace is required: "
@@ -52,7 +52,6 @@ function copy_to_target {
     targetDir=$(resolve "$ROOT/../$projectDirectoryOrWorkspace/node_modules/@shopify/$package")
   else
     targetDir="$shopifyNodeModulesDir/$package"
-    echo "🌀 spin instance: `spin show | grep Shopify/$projectName | awk '{print $1}'` "
   fi
 
   if (run_command "[ -d $targetDir ]"); then
