@@ -14,6 +14,7 @@ DIM='\033[2m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
+spinUrl=`spin info fqdn`
 projectDirectoryOrWorkspace=$1
 packageName=$2
 packages=()
@@ -24,7 +25,7 @@ function set_globals() {
     targetRoot=$(resolve "$ROOT/../$projectDirectoryOrWorkspace")
     noTargetError="A target project directory is required: "
   else
-    echo "Running command on spin"
+    echo "🌀 Running command on spin: $spinUrl"
     projectName="$(cut -d'.' -f1 <<<"$projectDirectoryOrWorkspace")"
     targetRoot="src/github.com/shopify/$projectName"
     noTargetError="A workspace is required: "
@@ -38,7 +39,7 @@ function run_command {
   if [[ -z $spin ]]; then
     $command
   else
-    ssh -o LogLevel=ERROR `spin show | grep Shopify/$projectName | awk '{print $1}'` $command
+    ssh -o LogLevel=ERROR $spinUrl $command
   fi
 }
 
