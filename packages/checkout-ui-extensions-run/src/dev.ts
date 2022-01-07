@@ -187,6 +187,10 @@ export async function dev(...args: string[]) {
       // post-purchase extension:
       // https://github.com/Shopify/post-purchase-devtools/blob/master/src/background/background.ts#L16-L35
       app.get(LEGACY_POST_PURCHASE_DATA_PATH, (_, res) => {
+        // The browser extension allows for the user to update his extension configuration
+        // without having to restart the server.
+        // In order to do so, we have to read the file every time the endpoint is called.
+        const extension = loadExtension();
         res.set('Access-Control-Allow-Origin', '*');
         res.json(getLegacyPostPurchaseData(scriptUrl.toString(), extension));
       });
