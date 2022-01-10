@@ -1,6 +1,7 @@
 import * as fs from 'fs';
 import {v4 as uuidv4} from 'uuid';
 import markdownTable from 'markdown-table';
+import {Module} from '@shopify/docs-tools';
 
 import type {
   LocalReference,
@@ -10,8 +11,6 @@ import type {
   PropertySignature,
   Tag,
 } from '../../types';
-
-import {Module} from '../../utilities/dependency-graph';
 
 export {findExamplesFor, renderExamplesFor, renderExample} from './examples';
 export type {Example} from './examples';

@@ -271,6 +271,11 @@
   resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.12.15.tgz#2b20de7f0b4b332d9b119dd9c33409c538b8aacf"
   integrity sha512-AQBOU2Z9kWwSZMd6lNjCX0GUgFonL1wAM1db8L8PMk9UDaGsRCArBkU4Sc+UCM3AE4hjbXx+h58Lb3QT4oRmrA==
 
+"@babel/parser@^7.16.4":
+  version "7.16.4"
+  resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.16.4.tgz#d5f92f57cf2c74ffe9b37981c0e72fee7311372e"
+  integrity sha512-6V0qdPUaiVHH3RtZeLIsc+6pDhbYzHR8ogA8w+f+Wc77DuXto19g2QUwveINoS34Uw+W8/hQDGJCx+i4n7xcng==
+
 "@babel/plugin-proposal-async-generator-functions@^7.12.13":
   version "7.12.13"
   resolved "https://registry.yarnpkg.com/@babel/plugin-proposal-async-generator-functions/-/plugin-proposal-async-generator-functions-7.12.13.tgz#d1c6d841802ffb88c64a2413e311f7345b9e66b5"
@@ -1957,6 +1962,11 @@
   resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.12.24.tgz#30728e34ebc90351dd3aff4e18d038eed2c3e098"
   integrity sha512-Mfmij13RUTmHEMi9vRUhMXD7rnGR2VvxeNYtaGtaJ4redwwjT4UXYJ+nzmVJF7hhd4pn/Fx5sncDKxMVFJSWPg==
 
+"@microsoft/tsdoc@^0.13.2":
+  version "0.13.2"
+  resolved "https://registry.yarnpkg.com/@microsoft/tsdoc/-/tsdoc-0.13.2.tgz#3b0efb6d3903bd49edb073696f60e90df08efb26"
+  integrity sha512-WrHvO8PDL8wd8T2+zBGKrMwVL5IyzR3ryWUsl0PXgEV0QHup4mTLi0QcATefGI6Gx9Anu7vthPyyyLpY0EpiQg==
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -2508,6 +2518,15 @@
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/@sewing-kit/webpack-plugin-hash-output/-/webpack-plugin-hash-output-0.0.2.tgz#a41ddef000619ac20e64513edbbfc6f28afe7905"
   integrity sha512-BF3gmC9YZf4VY5RLAc5qUbxft16O614jnTtGr8gPRbJF4y3Qz3AVSxSB8dJDldzk4AH9lTQvH0e1Wkbgp5tR8g==
+
+"@shopify/docs-tools@^0.0.11":
+  version "0.0.11"
+  resolved "https://registry.yarnpkg.com/@shopify/docs-tools/-/docs-tools-0.0.11.tgz#bba6d39967654f168101a6a2ad5894903a7f4c0a"
+  integrity sha512-zLSQuZSDui6dxjYO31tQlhBYFw6WsMuNvck/RCkHIcKhN7igea14SZevKBjnmeDfi23Uq3IW9+psomcq6BtjSA==
+  dependencies:
+    "@babel/parser" "^7.16.4"
+    "@microsoft/tsdoc" "^0.13.2"
+    resolve "^1.20.0"
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
@@ -7134,6 +7153,13 @@ is-core-module@^2.1.0:
   dependencies:
     has "^1.0.3"
 
+is-core-module@^2.2.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/is-core-module/-/is-core-module-2.8.0.tgz#0321336c3d0925e497fd97f5d95cb114a5ccd548"
+  integrity sha512-vd15qHsaqrRL7dtH6QNuy0ndJmRDrS9HAM1CAiSifNUFv4x1a0CCVsj18hJ1mShxIG6T2i1sO78MkP56r0nYRw==
+  dependencies:
+    has "^1.0.3"
+
 is-data-descriptor@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/is-data-descriptor/-/is-data-descriptor-0.1.4.tgz#0b5ee648388e2c860282e793f1856fec3f301b56"
@@ -10539,6 +10565,14 @@ resolve@^1.10.0, resolve@^1.10.1, resolve@^1.12.0, resolve@^1.13.1, resolve@^1.1
   integrity sha512-rArEXAgsBG4UgRGcynxWIWKFvh/XZCcS8UJdHhwy91zwAvCZIbcs+vAbflgBnNjYMs/i/i+/Ux6IZhML1yPvxg==
   dependencies:
     is-core-module "^2.1.0"
+    path-parse "^1.0.6"
+
+resolve@^1.20.0:
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.20.0.tgz#629a013fb3f70755d6f0b7935cc1c2c5378b1975"
+  integrity sha512-wENBPt4ySzg4ybFQW2TT1zMQucPK95HSh/nq2CFTZVOGut2+pQvSsgtda4d26YrYcr067wjbmzOG8byDPBX63A==
+  dependencies:
+    is-core-module "^2.2.0"
     path-parse "^1.0.6"
 
 responselike@^1.0.2:
