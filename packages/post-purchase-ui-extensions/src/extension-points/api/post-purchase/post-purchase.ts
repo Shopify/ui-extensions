@@ -155,7 +155,7 @@ interface AddVariantChange {
   variantId: number;
   /** The quantity of the specified variant. */
   quantity: number;
-  /** Refer to [ExplicitDiscount](/api/checkout/extension-points/api#explicitdiscount). */
+  /** Refer to [ExplicitDiscount](/api/checkout-extensions/extension-points/api#explicitdiscount). */
   discount?: ExplicitDiscount;
 }
 /** Requests a shipping line to be added to the initial purchase. */
@@ -193,7 +193,7 @@ interface AddSubscriptionChange {
   quantity: number;
   /** Additional information concerning shipping. */
   shippingOption: ShippingOption;
-  /** Refer to [ExplicitDiscount](/api/checkout/extension-points/api#explicitdiscount). */
+  /** Refer to [ExplicitDiscount](/api/checkout-extensions/extension-points/api#explicitdiscount). */
   discount?: ExplicitDiscount;
 }
 

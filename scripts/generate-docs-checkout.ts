@@ -30,7 +30,7 @@ const componentsPageContent = (url: string, title = 'Checkout') => ({
   title: `Components for ${title} extensions`,
   frontMatterDescription: `A list of components for ${title} extensions.`,
   description: `Checkout UI Extensions provide many powerful UI components that a
-  [rendering extension](${url}/extension-points#rendering) can
+  [rendering extension](${url}/extension-points/api#renderextension) can
   use to build an interface. This UI is rendered natively by Shopify, so you
   can depend on it to be performant, accessible, and work in all of Checkout’s
   supported browsers. \n\nThe following components are available as part of UI Extensions
