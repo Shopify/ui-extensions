@@ -46,7 +46,7 @@
     "@types/uuid": "^8.3.0",
     "lerna": "^3.22.1",
     "markdown-table": "^2.0.0",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.1.1",
     "nodemon": "^2.0.4",
     "react": ">=17.0.0 <18.0.0",
     "resolve": "^1.17.0",
