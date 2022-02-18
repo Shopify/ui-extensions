@@ -1,14 +1,6 @@
 import {RemoteRoot, RemoteComponentType} from '@remote-ui/core';
 
 /**
- * Description about RenderResult.
- */
-interface RenderResult<Input> {
-  /** Description text. */
-  update?(input: Partial<Input>): void;
-}
-
-/**
  * A type of extension point that is capable of rendering UI into Checkout
  * natively. This type of extension point receives an object to manipulate
  * the UI as its first argument, and additional data and methods as a second
@@ -20,8 +12,7 @@ export interface RenderExtension<
   Input,
   AllowedComponents extends RemoteComponentType<string, any, any>
 > {
-  /** `RemoteRoot`object that has methods methods for mutating the tree of UI components. */
-  (root: RemoteRoot<AllowedComponents, true>, input: Input): RenderResult<
-    Input
-  > | void;
+  (root: RemoteRoot<AllowedComponents, true>, input: Input): void | Promise<
+    void
+  >;
 }

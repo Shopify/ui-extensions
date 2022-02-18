@@ -22,7 +22,7 @@ export interface HeadingProps {
    * is supported, which will strip the semantic meaning of the heading, but leave
    * the visual styling intact.
    */
-  role?: 'presentation';
+  accessibilityRole?: 'presentation';
 }
 
 /**

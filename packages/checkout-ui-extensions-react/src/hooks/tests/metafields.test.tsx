@@ -1,4 +1,4 @@
-import faker from 'faker';
+import faker from '@faker-js/faker';
 import {Metafield} from '@shopify/checkout-ui-extensions';
 
 import {useMetafields} from '..';
@@ -12,7 +12,7 @@ describe('useMetafields', () => {
 
   function createMetafield(props: Partial<Metafield> = {}): Metafield {
     return {
-      key: `key-${faker.random.uuid()}`,
+      key: `key-${faker.datatype.uuid()}`,
       namespace: `namespace-${faker.random.word}`,
       value: `value-${faker.random.word}`,
       valueType: 'string',

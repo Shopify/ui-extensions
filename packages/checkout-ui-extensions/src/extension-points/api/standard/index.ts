@@ -205,6 +205,30 @@ export interface AppMetafieldEntry {
 
 export type Version = 'unstable';
 
+export interface I18n {
+  /**
+   * This is the buyer's locale.
+   * @example en-US
+   *
+   * The value is a BCP-47 language tag.
+   * See https://en.wikipedia.org/wiki/IETF_language_tag
+   */
+  locale: StatefulRemoteSubscribable<string>;
+
+  /**
+   * This returns a localized number.
+   *
+   * This behaves like the standard Intl.NumberFormat()
+   * with a style of 'decimal' and uses the buyer's locale by default.
+   *
+   * @param options.inExtensionLocale - if true, use the extension's locale
+   */
+  formatNumber: (
+    number: number | bigint,
+    options?: {inExtensionLocale?: boolean} & Intl.NumberFormatOptions,
+  ) => string;
+}
+
 /**
  * The following APIs are provided to all extension points.
  */
@@ -248,7 +272,7 @@ export interface StandardApi<
   buyerJourney: {
     /**
      * Function for intercepting and preventing navigation on checkout. You can block
-     * navigation by returning an object with `{behavior: 'block'}`. If you do, you are
+     * navigation by returning an object with `{behavior: 'block', reason: InvalidResultReason.UnknownReason}`. If you do, you are
      * expected to also update some part of your UI to reflect the reason why navigation
      * was blocked.
      */
@@ -397,6 +421,11 @@ export interface StandardApi<
    * are synchronous with the merchandise items updates.
    */
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
+
+  /**
+   * This defines the i18n (internationalization) API for the extension.
+   */
+  i18n: I18n;
 }
 
 export interface Shop {
@@ -649,22 +678,57 @@ export type SignedChangeResult =
  */
 export type SignedChange = string;
 
-type InterceptorBehavior = 'allow' | 'block';
-
-interface InterceptorResult {
-  behavior: InterceptorBehavior;
+export enum InvalidResultReason {
+  MissingSourceId = 'MISSING_SOURCE_ID',
+  BlankSubscriptionAgreement = 'BLANK_SUBSCRIPTION_AGREEMENT',
+  EmptyPaymentLines = 'EMPTY_PAYMENT_LINES',
+  MissingTermsOfService = 'MISSING_TERMS_OF_SERVICE',
+  CardFieldInputIsInvalid = 'CARD_FIELD_INPUT_IS_INVALID',
+  CardFieldsIsLoading = 'CARD_FIELDS_IS_LOADING',
+  InstallmentsFailed = 'INSTALLMENTS_FAILED',
+  ShopPayPaymentFailed = 'SHOPPAY_PAYMENT_FAILED',
+  MissingEmailInPaypalExpress = 'MISSING_EMAIL_IN_PAYPAL_EXPRESS',
+  RedirectingToAmazonPayClassic = 'REDIRECTING_TO_AMAZON_PAY_CLASSIC',
+  InvalidAddress = 'INVALID_ADDRESS',
+  UnknownReason = 'UNKNOWN_REASON',
 }
 
-export interface InterceptorRequest {
-  behavior: InterceptorBehavior;
+type InterceptorResult = InterceptorResultAllow | InterceptorResultBlock;
 
+interface InterceptorResultAllow {
+  behavior: 'allow';
+}
+// The reasons are used for tracing and debugging purposes.
+interface InterceptorResultBlock {
+  behavior: 'block';
+  reasons: InvalidResultReason[];
+}
+
+export type InterceptorRequest =
+  | InterceptorRequestAllow
+  | InterceptorRequestBlock;
+
+interface InterceptorRequestAllow {
+  behavior: 'allow';
   /**
    * This callback is called once all interceptors finish. It is recommended
    * to set errors or reason for blocking at this stage so that all errors in
    * the UI show up at once.
    * @param result InterceptorResult with behavior as either 'allow' or 'block'
    */
-  perform?(result: InterceptorResult): void;
+  perform?(result: InterceptorResult): void | Promise<void>;
+}
+// The reason is used for tracing and debugging purposes.
+interface InterceptorRequestBlock {
+  behavior: 'block';
+  reason: InvalidResultReason;
+  /**
+   * This callback is called once all interceptors finish. It is recommended
+   * to set errors or reason for blocking at this stage so that all errors in
+   * the UI show up at once.
+   * @param result InterceptorResult with behavior as either 'allow' or 'block'
+   */
+  perform(result: InterceptorResult): void | Promise<void>;
 }
 
 export interface Interceptor {

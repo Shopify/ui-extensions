@@ -17,7 +17,7 @@ export function useBuyerJourney<
 
 /**
  * Takes a function that allows you to block the buyer’s progress through the checkout
- * by returning an object with `{behavior: 'block'}`.
+ * by returning an object with `{behavior: 'block', reason: InvalidResultReason.UnknownReason}`.
  * If you block, you are expected to also update some part of your UI to reflect
  * the reason why navigation was blocked.
  */

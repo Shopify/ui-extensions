@@ -1,5 +1,4 @@
 ## Best practices
 
-- Clearly label the text field so it’s obvious what customers should enter into the field.
-- Label text fields as optional when you need to request input that’s not required, like “First name (optional)“. When it’s optional, fields should not pass `true` to the `required` prop.
-- Only ask for information that’s really needed.
+- Clearly label the text field so it’s obvious to customers what they should enter.
+- Label text fields as “Optional” when input isn’t required. For example, “First name (optional)”. When it’s optional, fields should not pass `true` to the `required` property.

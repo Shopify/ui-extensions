@@ -1,3 +1,4 @@
+export {InvalidResultReason} from './standard';
 export type {
   Address,
   Attribute,
@@ -8,6 +9,7 @@ export type {
   MerchandiseImage,
   MerchandiseOption,
   Money,
+  I18n,
   StandardApi,
   Storage,
   Shop,

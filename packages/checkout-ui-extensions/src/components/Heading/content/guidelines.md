@@ -1,8 +1,7 @@
 ## Best practices
 
-- Clearly describe the section of interface they refer to.
-- Highlight the most important concept or piece of information customers need to know.
-- Sits at the top of the section of interface they’re referring to.
+- A heading sits at the top of a section and clearly describe what’s below.
+- It highlights the most important concept or piece of information customers need to know.
 
 ## Related components
 

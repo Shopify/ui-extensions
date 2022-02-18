@@ -1,5 +1,5 @@
 import {Metafield} from '@shopify/checkout-ui-extensions';
-import faker from 'faker';
+import faker from '@faker-js/faker';
 
 import {useAppMetafields} from '../app-metafields';
 
@@ -12,7 +12,7 @@ describe('useAppMetafields', () => {
 
   function createMetafield(props: Partial<Metafield> = {}): Metafield {
     return {
-      key: `key-${faker.random.uuid()}`,
+      key: `key-${faker.datatype.uuid()}`,
       namespace: 'example-namespace',
       value: 'example-value',
       valueType: 'string',
@@ -21,12 +21,12 @@ describe('useAppMetafields', () => {
   }
 
   const productEntry = {
-    target: {id: faker.random.uuid(), type: 'product' as const},
+    target: {id: faker.datatype.uuid(), type: 'product' as const},
     metafield: createMetafield(),
   };
 
   const variantEntry = {
-    target: {id: faker.random.uuid(), type: 'variant' as const},
+    target: {id: faker.datatype.uuid(), type: 'variant' as const},
     metafield: createMetafield(),
   };
 
@@ -55,7 +55,7 @@ describe('useAppMetafields', () => {
   });
 
   it('returns filtered app metafield entry based on id', () => {
-    const testId = faker.random.uuid();
+    const testId = faker.datatype.uuid();
     const newEntry = {
       target: {id: testId, type: 'product' as const},
       metafield: createMetafield(),
@@ -76,7 +76,7 @@ describe('useAppMetafields', () => {
   it('returns filtered app metafield entries based on namespace', () => {
     const testNamespace = 'test_namespace';
     const newEntry = {
-      target: {id: faker.random.uuid(), type: 'product' as const},
+      target: {id: faker.datatype.uuid(), type: 'product' as const},
       metafield: createMetafield({namespace: testNamespace}),
     };
 
@@ -97,7 +97,7 @@ describe('useAppMetafields', () => {
     const testNamespace = 'test_namespace';
     const testKey = 'test_key';
     const newEntry = {
-      target: {id: faker.random.uuid(), type: 'product' as const},
+      target: {id: faker.datatype.uuid(), type: 'product' as const},
       metafield: createMetafield({namespace: testNamespace, key: testKey}),
     };
 
@@ -132,7 +132,7 @@ describe('useAppMetafields', () => {
   it('returns filtered app metafield entries based on all searchable fields', () => {
     const testNamespace = 'test_namespace';
     const testKey = 'test_key';
-    const testId = faker.random.uuid();
+    const testId = faker.datatype.uuid();
 
     const newEntry = {
       target: {id: testId, type: 'product' as const},

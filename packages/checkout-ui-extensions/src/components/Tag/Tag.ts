@@ -1,9 +1,26 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {IconSource} from '../Icon';
+
 export interface TagProps {
-  /** An accessible label for the remove button in a Tag */
+  children?: string;
+  /**
+   * Icon source
+   */
+  icon?: IconSource;
+  /**
+   * A label used for buyers using assistive technologies. When provided, any
+   * 'children' supplied to this component are hidden from being seen for
+   * accessibility purposes to prevent duplicate content from being read.
+   */
+  accessibilityLabel?: string;
+  /**
+   * An accessible label for the remove button in a Tag
+   */
   removeControlAccessibilityLabel?: string;
-  /** Callback when tag is removed */
+  /**
+   * Callback when tag is removed
+   */
   onRemove?(): void;
 }
 

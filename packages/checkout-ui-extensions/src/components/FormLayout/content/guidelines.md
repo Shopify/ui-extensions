@@ -1,8 +1,8 @@
 ## Best practices
 
-- Be considerate of customers’ time and privacy by only asking for information that’s required
-- Group related tasks under section titles to provide more context and make the interface easier to scan
-- Follow a logical, predictable order
+- Be considerate of customers’ time and privacy by only asking for required information.
+- Group related tasks under section titles to provide more context and make the interface easier to scan.
+- Follow a logical, predictable order.
 
 ## Related components
 

@@ -1,3 +1,4 @@
+export {InvalidResultReason} from './extension-points';
 export type {
   Extension,
   ExtensionPoints,
@@ -12,6 +13,7 @@ export type {
   CountryCode,
   Interceptor,
   ReturnTypeForExtension,
+  I18n,
   StandardApi,
   Storage,
   Version,

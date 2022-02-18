@@ -33,16 +33,20 @@ export function render<ExtensionPoint extends RenderExtensionPoint>(
   // KitchenSink extension, since all render extensions have the same general
   // shape (`RenderExtension`).
   return extend<'Checkout::KitchenSink'>(extensionPoint as any, (root, api) => {
-    remoteRender(
-      <ExtensionApiContext.Provider value={api}>
-        {render(api as ApiForRenderExtension<ExtensionPoint>)}
-      </ExtensionApiContext.Provider>,
-      root,
-      () => {
-        root.mount();
-      },
-    );
-
-    return {};
+    return new Promise((resolve, reject) => {
+      try {
+        remoteRender(
+          <ExtensionApiContext.Provider value={api}>
+            {render(api as ApiForRenderExtension<ExtensionPoint>)}
+          </ExtensionApiContext.Provider>,
+          root,
+          () => {
+            resolve();
+          },
+        );
+      } catch (error) {
+        reject(error);
+      }
+    });
   });
 }
