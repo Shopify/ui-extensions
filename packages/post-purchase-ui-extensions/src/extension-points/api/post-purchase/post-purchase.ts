@@ -85,7 +85,7 @@ interface Shop {
   /** The primary domain of the shop (ending with “.myshopify.com”). */
   domain: string;
   /**
-   * Only [public listed](/custom-storefronts/products/metafields#step-1-expose-metafields) metafields are available.
+   * Only [public listed](/api/examples/metafields#step-1-expose-metafields) metafields are available.
    */
   metafields: Metafield[];
 }
@@ -109,7 +109,7 @@ interface Product {
   /** Variant being purchased. */
   variant: Variant;
   /**
-   * Only [public listed](/custom-storefronts/products/metafields#step-1-expose-metafields) metafields are available.
+   * Only [public listed](/api/examples/metafields#step-1-expose-metafields) metafields are available.
    */
   metafields: Metafield[];
 }
@@ -120,7 +120,7 @@ interface Variant {
   /** The variant title. */
   title: string;
   /**
-   * Only [public listed](/custom-storefronts/products/metafields#step-1-expose-metafields) metafields are available.
+   * Only [public listed](/api/examples/metafields#step-1-expose-metafields) metafields are available.
    */
   metafields: Metafield[];
 }
