@@ -20,7 +20,7 @@ export interface RenderExtension<
   Input,
   AllowedComponents extends RemoteComponentType<string, any, any>
 > {
-  /** `RemoteRoot`object that has methods methods for mutating the tree of UI components. */
+  /** `RemoteRoot`object that has methods for mutating the tree of UI components. */
   (root: RemoteRoot<AllowedComponents, true>, input: Input): RenderResult<
     Input
   > | void;
