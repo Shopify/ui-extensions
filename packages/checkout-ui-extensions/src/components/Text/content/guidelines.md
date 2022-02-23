@@ -1,7 +1,8 @@
 ## Best practices
 
-- Use larger text when you want to emphasize content that’s not a heading, like a price total
-- Create contrast between more and less important text with `size`, `emphasized`, and `subdued` props
+- Use larger text when you want to emphasize content that’s not a heading, such as a price total.
+- Create contrast between more and less important text using different component properties such as `size`, `emphasized` and `subdued`.
+
 
 ## Related components
 

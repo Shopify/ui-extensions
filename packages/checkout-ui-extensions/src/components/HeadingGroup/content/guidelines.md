@@ -1,6 +1,6 @@
 ## Best practices
 
-- Use to create content hierarchy in the document outline.
+- Use this component to create a content hierarchy within the document outline.
 
 ## Related components
 

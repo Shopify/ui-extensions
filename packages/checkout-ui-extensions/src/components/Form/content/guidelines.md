@@ -1,7 +1,7 @@
 ## Best practices
 
-- Implicit submit is set to true by default. This behavior is widely expected, and should be respected as often as possible.
 - Wrap around all form input elements.
+- Forms can have only one submit button and it must be at the end of the form.
 
 ## Related components
 

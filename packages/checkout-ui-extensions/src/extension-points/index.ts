@@ -1,4 +1,5 @@
 export type {ExtensionPoints, ExtensionPoint} from './extension-points';
+export {InvalidResultReason} from './api';
 export type {
   Address,
   Attribute,
@@ -11,6 +12,7 @@ export type {
   MerchandiseOption,
   Money,
   Shop,
+  I18n,
   StandardApi,
   Storage,
   Version,

@@ -30,11 +30,3 @@ For example, if a property accepts `number | Responsive`, it would accept a numb
 }
 ```
 
-<a name="Source"></a>
-
-### Source
-
-| Name | Type | Description |
-| --- | --- | --- |
-| source | <code>string</code> | The path to the image  |
-| resolution? | <code>1 &#124; 1.3 &#124; 1.5 &#124; 2 &#124; 2.6 &#124; 3 &#124; 3.5 &#124; 4</code> | Specify that the image should be used for devices with a matching pixel density  |

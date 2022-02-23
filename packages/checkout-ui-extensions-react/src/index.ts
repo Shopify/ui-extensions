@@ -1,4 +1,4 @@
-export {extend} from '@shopify/checkout-ui-extensions';
+export {extend, InvalidResultReason} from '@shopify/checkout-ui-extensions';
 export type {
   ExtensionPoint,
   ExtensionPoints,

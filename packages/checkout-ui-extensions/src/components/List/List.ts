@@ -20,6 +20,12 @@ export interface ListProps {
    * @defaultValue 'bullet'
    */
   marker?: Marker;
+  /**
+   * A label that describes the purpose or contents of the list. When provided,
+   * it will be announced to buyers using assistive technologies and will
+   * provide them with more context.
+   */
+  accessibilityLabel?: string;
 }
 
 export interface ListItemProps {}

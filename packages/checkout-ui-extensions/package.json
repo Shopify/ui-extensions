@@ -21,6 +21,7 @@
     "./": "./"
   },
   "dependencies": {
-    "@remote-ui/core": "^2.1.3"
+    "@remote-ui/async-subscription": "^2.1.7",
+    "@remote-ui/core": "^2.1.6"
   }
 }
