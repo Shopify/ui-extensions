@@ -172,7 +172,14 @@ function propType(
 ): any {
   let params = '';
   if (value.params != null && value.params.length > 0) {
-    params = `<<wbr>${value.params
+    // This hacky workaround is necessary to avoid stack overflow
+    // due to infinite recursion from a nested parameter being a
+    // circular dependency.
+    // See: https://github.com/Shopify/ui-extensions/issues/268
+    const filteredParams = value.params.filter(
+      (nestedParam) => !Object.is(nestedParam, value),
+    );
+    params = `<<wbr>${filteredParams
       .map((param: any) => propType(param, exports, dir, additionalPropsTables))
       .join(', ')}<wbr>>`;
   }
