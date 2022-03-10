@@ -1,0 +1,25 @@
+{
+  "name": "@shopify/retail-ui-extensions",
+  "version": "0.0.1",
+  "main": "index.js",
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./": "./"
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "dependencies": {
+    "@remote-ui/core": "^2.1.3"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org/"
+  }
+}
