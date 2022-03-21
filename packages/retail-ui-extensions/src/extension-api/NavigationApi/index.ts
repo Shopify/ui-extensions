@@ -1,5 +1,5 @@
 interface NavigationApiContent {
-  /** Opens a full screen with the Retail::POS::SmartGrid::Modal extension point */
+  /** Opens a full screen with the Retail::SmartGrid::Modal extension point */
   navigateToFullScreenModal(): void;
 
   /** Dismisses the modal highest on the stack */
