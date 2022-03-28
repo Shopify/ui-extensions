@@ -8,12 +8,12 @@ type Tile = typeof import('../components/Tile');
 type TileComponent = Tile[keyof Tile];
 
 export interface ExtensionPoints {
-  'Retail::Pos::SmartGrid::Tile': RenderExtension<
-    StandardApi<'Retail::Pos::SmartGrid::Tile'>,
+  'Retail::SmartGrid::Tile': RenderExtension<
+    StandardApi<'Retail::SmartGrid::Tile'>,
     TileComponent
   >;
-  'Retail::Pos::SmartGrid::Modal': RenderExtension<
-    StandardApi<'Retail::Pos::SmartGrid::Modal'>,
+  'Retail::SmartGrid::Modal': RenderExtension<
+    StandardApi<'Retail::SmartGrid::Modal'>,
     AllComponents
   >;
 }

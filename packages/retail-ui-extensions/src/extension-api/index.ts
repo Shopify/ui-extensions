@@ -1,5 +1,6 @@
 import type {CartApi} from './CartApi';
 import type {LocaleApi} from './LocaleApi';
+import type {NavigationApi} from './NavigationApi';
 import type {SessionTokenApi} from './SessionTokenApi';
 
 export type {LocaleApi} from './LocaleApi';
@@ -21,4 +22,5 @@ export type StandardApi<T> = {[key: string]: any} & {
   extensionPoint: T;
 } & LocaleApi &
   CartApi &
+  NavigationApi &
   SessionTokenApi;
