@@ -1,7 +1,10 @@
-import {SmartGridExtensionApi} from './identifiers/smart-grid';
-
-export type {ExtensionResult} from './types';
-
-export type {ExtensionPoint} from './identifiers/smart-grid';
-
-export type ExtensionApi = SmartGridExtensionApi;
+export type {ExtensionPoints, ExtensionPoint} from './extension-points';
+export type {RenderExtension} from './render-extension';
+export type {
+  RenderExtensions,
+  RenderExtensionPoint,
+  AllowedComponentsForRenderExtension,
+  ArgumentsForExtension,
+  ApiForRenderExtension,
+  ReturnTypeForExtension,
+} from './types';
