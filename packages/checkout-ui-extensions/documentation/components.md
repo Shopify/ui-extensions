@@ -10,7 +10,6 @@ The following components are available as part of checkout UI extensions, but ma
 - [Bookend](../src/components/Bookend)
 - [Button](../src/components/Button)
 - [ButtonGroup](../src/components/ButtonGroup)
-- [CalloutBanner](../src/components/CalloutBanner)
 - [Checkbox](../src/components/Checkbox)
 - [ChoiceList](../src/components/ChoiceList)
 - [Divider](../src/components/Divider)
