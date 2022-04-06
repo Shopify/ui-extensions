@@ -43,7 +43,7 @@ export function gettingStarted(paths: Paths, options: Options = {}) {
 
   const docsInputPath = resolve(`${paths.inputRoot}/documentation`);
 
-  const files = ['extension-points.md'];
+  const files = ['extension-points.md', 'globals.md'];
 
   if (fs.existsSync(docsInputPath)) {
     files.forEach((file) => {
