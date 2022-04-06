@@ -1,1 +1,2 @@
-export {Tag, TagVariant} from './Tag';
+export {Tag} from './Tag';
+export type {TagVariant, TagProps} from './Tag';
