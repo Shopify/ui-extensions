@@ -209,3 +209,6 @@ export type AccessibilityRole =
   | 'status'
   /** Used for important, and usually time-sensitive, information. */
   | 'alert';
+
+export type UnitSuffix = 'fr' | '%' | 'px';
+export type Unit<Suffix extends UnitSuffix> = `${number}${Suffix}`;

@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^5.5.3",
-    "@quilted/react-testing": "^0.3.7",
+    "@quilted/react-testing": "^0.4.10",
     "@types/faker": "^5.5.9",
     "react": "^17.0.0"
   }

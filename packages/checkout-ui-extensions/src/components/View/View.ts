@@ -28,9 +28,13 @@ export interface ViewProps extends Bordered {
    *
    * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
    *
+   *
    * Examples:
+   *
    * - `500` represents `500px`
+   *
    * - `0.5` represents `50%`
+   *
    * - `1` represents `100%`
    */
   maxInlineSize?: number | Responsive<number>;
@@ -40,9 +44,13 @@ export interface ViewProps extends Bordered {
    *
    * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
    *
+   *
    * Examples:
+   *
    * - `500` represents `500px`
+   *
    * - `0.5` represents `50%`
+   *
    * - `1` represents `100%`
    */
   minInlineSize?: number | Responsive<number>;
@@ -52,9 +60,13 @@ export interface ViewProps extends Bordered {
    *
    * To shorten the code, it is possible to specify all the padding properties in one property.
    *
+   *
    * Examples:
+   *
    * - `base` means blockStart, inlineEnd, blockEnd and inlineStart paddings are `base`
+   *
    * - [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`
+   *
    * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
    */
   padding?: CSSShorthand<Spacing> | Responsive<CSSShorthand<Spacing>>;
@@ -77,12 +89,14 @@ export interface ViewProps extends Bordered {
 
   /**
    * Sets the initial position of the background image.
+   *
    * @defaultValue 'center'
    */
   backgroundPosition?: BackgroundPosition;
 
   /**
    * Sets how background image are repeated.
+   *
    * @defaultValue false
    */
   backgroundRepeat?: boolean;
@@ -90,7 +104,7 @@ export interface ViewProps extends Bordered {
   /**
    * Changes the visibility of the element.
    *
-   * 'hidden' visually hides the component while keeping it accessible to assistive technology (for example,
+   * `hidden` visually hides the component while keeping it accessible to assistive technology (for example,
    * a screen reader). Hidden elements do not take any visual space contrary to CSS visibility: hidden;
    */
   visibility?: Visibility;
@@ -98,7 +112,7 @@ export interface ViewProps extends Bordered {
   /**
    * Changes the visibility of the element to assistive technologies.
    *
-   * 'hidden' hides the component from assistive technology (for example,
+   * `hidden` hides the component from assistive technology (for example,
    * a screen reader) but remains visually visible.
    */
   accessibilityVisibility?: AccessibilityVisibility;
@@ -106,8 +120,11 @@ export interface ViewProps extends Bordered {
   /**
    * Changes the display of the View.
    *
-   * 'inline' follows the direction of words in a sentence based on the document’s writing mode.
-   * 'block' follows the direction of paragraphs based on the document’s writing mode.
+   *
+   * `inline` follows the direction of words in a sentence based on the document’s writing mode.
+   *
+   * `block` follows the direction of paragraphs based on the document’s writing mode.
+   *
    *
    * @defaultValue 'block'
    */
@@ -123,9 +140,12 @@ export interface ViewProps extends Bordered {
    *
    * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
    *
+   *
    * Examples:
    * - `500` represents `500px`
+   *
    * - `0.5` represents `50%`
+   *
    * - `1` represents `100%`
    */
   blockSize?: number | Responsive<number>;
@@ -133,7 +153,7 @@ export interface ViewProps extends Bordered {
 
 /**
  *  View is a generic container component. Its contents will always be their
- * “natural” size, so this component can be useful in layout components (like `Layout`, `Tiles`,
+ * “natural” size, so this component can be useful in layout components (like `Grid`,
  * `BlockStack`, `InlineStack`) that would otherwise stretch their children to fit.
  *
  * Note: View’s box model related properties like `padding`, `border`, `borderRadius`, and `borderColor` are implemented as

@@ -20,7 +20,8 @@ export interface FormLayoutGroupProps {}
  * appear inline with one another when possible, with each field taking up equal
  * spacing.
  *
- * @deprecated This component is deprecated and will be removed, use InlineLayout or BlockStack instead.
+ * @deprecated This component is deprecated and will eventually be removed.
+ * Use one of the layout primitives instead (Grid, BlockLayout, InlineLayout, BlockStack, InlineStack).
  */
 export const FormLayoutGroup = createRemoteComponent<
   'FormLayoutGroup',

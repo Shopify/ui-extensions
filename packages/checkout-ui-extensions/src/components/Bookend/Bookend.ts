@@ -10,14 +10,21 @@ type Spacing =
 type Alignment = 'leading' | 'center' | 'trailing' | 'baseline';
 
 export interface BookendProps {
-  /** Sets the leading child to its inherent size */
+  /**
+   * Sets the leading child to its inherent size
+   */
   leading?: boolean;
-  /** Sets the trailing child to its inherent size */
+  /**
+   * Sets the trailing child to its inherent size
+   */
   trailing?: boolean;
-  /** Position children along the cross axis */
+  /**
+   * Position children along the cross axis
+   */
   alignment?: Alignment;
   /**
    * Adjust spacing between children
+   *
    * @defaultValue 'base'
    */
   spacing?: Spacing;

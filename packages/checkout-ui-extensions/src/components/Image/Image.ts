@@ -26,7 +26,7 @@ export interface ImageProps
    * screen instead. This has the benefit of letting a sighted buyer know an
    * image was meant to load here, but as an alternative, they’re still able to
    * consume the text content. Read
-   * [considerations when writing alt text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204)
+   * [considerations when writing alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204)
    * to learn more.
    *
    * @defaultValue ''
@@ -34,6 +34,7 @@ export interface ImageProps
   description?: string;
   /**
    * Indicates how the browser should load the image, either lazy or eager.
+   *
    * Uses native browser behavior and is not supported by all browsers.
    * If no value is provided the image is loaded immediately, regardless of
    * whether or not the image is currently within the visible viewport.
@@ -48,8 +49,9 @@ export interface ImageProps
    */
   aspectRatio?: number;
   /**
-   * Indicates how the image fits in its frame. Use if the image is not
-   * displayed at its intrinsic size to maintain the aspect ratio.
+   * Indicates how the image fits in its frame.
+   * Use if the image is not displayed at its intrinsic size to maintain
+   * the aspect ratio.
    */
   fit?: Fit;
   /**
@@ -75,6 +77,7 @@ type Loading = 'eager' | 'lazy';
 
 /**
  * Image is used for large format, responsive images.
+ *
  * For small images use Thumbnail.
  */
 export const Image = createRemoteComponent<'Image', ImageProps>('Image');

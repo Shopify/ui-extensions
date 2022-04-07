@@ -12,10 +12,13 @@ type Spacing =
   | 'extraLoose';
 
 export interface BlockStackProps {
-  /** Position children along the cross axis */
+  /**
+   * Position children along the cross axis
+   */
   alignment?: Alignment;
   /**
    * Adjust spacing between children
+   *
    * @defaultValue 'base'
    **/
   spacing?: Spacing;
@@ -23,6 +26,12 @@ export interface BlockStackProps {
   accessibilityRole?:
     | AccessibilityRole
     | [AccessibilityRole, AccessibilityRole];
+  /**
+   * A label that describes the purpose or contents of the element. When provided,
+   * it will be announced to buyers using assistive technologies and will
+   * provide them with more context.
+   */
+  accessibilityLabel?: string;
 }
 
 /**

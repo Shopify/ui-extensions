@@ -7,7 +7,7 @@ import {useSubscription} from './subscription';
  * Returns the proposed `custom attributes` applied to the checkout.
  */
 export function useCustomAttributes<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
   return useSubscription(useExtensionApi<ID>().customAttributes);
 }

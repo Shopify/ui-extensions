@@ -1,6 +1,7 @@
 export {useConfiguration} from './configuration';
 export {useExtensionApi} from './api';
 export {useLocale} from './locale';
+export {useExtensionLocale} from './extension-locale';
 export {useBuyerJourney, useBuyerJourneyIntercept} from './buyer-journey';
 export {useMetafield} from './metafield';
 export {useMetafields, useApplyMetafieldsChange} from './metafields';
@@ -10,10 +11,6 @@ export {useShippingAddress} from './shipping-address';
 export {useBillingAddress} from './billing-address';
 export {usePrimaryAddress} from './primary-address';
 export {useRunningTotal} from './running-total';
-export {
-  usePrivateMetafields,
-  useApplyPrivateMetafieldsChange,
-} from './private-metafields';
 export {useLineItems, useApplyLineItemsChange} from './line-items';
 export {useTargetLineItem} from './target-line-item';
 export {useApplySignedChange} from './signed';
@@ -22,3 +19,4 @@ export {useShop} from './shop';
 export {useStorage} from './storage';
 export {useExtensionData} from './extension-data';
 export {useCustomerAccount} from './customer-account';
+export {useTranslate} from './translate';

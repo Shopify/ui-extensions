@@ -5,12 +5,10 @@ import {Responsive} from '../shared';
 interface Size {
   /**
    * Inline size of the skeleton in pixels.
-   *
    */
   inline: number;
   /**
    * Block size of the skeleton in pixels.
-   *
    */
   block: number;
 }
@@ -18,7 +16,6 @@ interface Size {
 export interface SkeletonImageProps {
   /**
    * Adjust the size of the skeleton.
-   *
    */
   size?: Size | Responsive<Size>;
   /**

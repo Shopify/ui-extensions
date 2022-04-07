@@ -3,12 +3,14 @@ import {createRemoteComponent} from '@remote-ui/core';
 export interface SpinnerProps {
   /**
    * Adjust the size.
+   *
    * If not specified, it will use the default size which is
    * about twice as big as the base text.
    */
   size?: 'base' | 'small' | 'large';
   /**
    * Specify that the Spinner will inherit its color from its parent.
+   *
    * If not specified, it will take the `interactive` color from the theme.
    */
   color?: 'inherit';

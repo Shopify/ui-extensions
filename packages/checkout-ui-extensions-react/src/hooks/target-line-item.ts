@@ -17,7 +17,7 @@ class ExtensionHasNoTargetError extends Error {
  * Returns the target line item.
  */
 export function useTargetLineItem() {
-  const api = useExtensionApi<'Checkout::LineItem::RenderAfter'>();
+  const api = useExtensionApi<'Checkout::LineItemDetails::RenderAfter'>();
   if (!api.target) {
     throw new ExtensionHasNoTargetError(api.extensionPoint);
   }

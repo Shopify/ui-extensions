@@ -1,6 +1,6 @@
 import {
-  RenderExtensionPoint,
   ApiForRenderExtension,
+  RenderExtensionPoint,
 } from '@shopify/checkout-ui-extensions';
 
 import {useExtensionApi} from './api';
@@ -11,9 +11,9 @@ import {useSubscription} from './subscription';
  * your component if the locale changes.
  */
 export function useLocale<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
->(): ApiForRenderExtension<ID>['locale']['current'] {
-  const {locale} = useExtensionApi<ID>();
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
+>(): ApiForRenderExtension<ID>['i18n']['locale']['current'] {
+  const {i18n} = useExtensionApi<ID>();
 
-  return useSubscription(locale);
+  return useSubscription(i18n.locale);
 }

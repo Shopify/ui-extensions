@@ -27,7 +27,11 @@ export interface ExtensionPoints {
     StandardApi<'Checkout::KitchenSink'>,
     AllComponents
   >;
-  'Checkout::LineItem::RenderAfter': RenderExtension<
+  /**
+   * This static extension point renders on every line item, inside the details,
+   * under the line item properties element.
+   */
+  'Checkout::LineItemDetails::RenderAfter': RenderExtension<
     LineItemRenderAfterApi,
     AllComponents
   >;

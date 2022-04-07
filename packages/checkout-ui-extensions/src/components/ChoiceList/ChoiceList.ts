@@ -3,7 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 export interface ChoiceListProps<T extends string | string[]> {
   /**
    * An identifier for the field that is unique within the nearest
-   * containing `<Form />` component.
+   * containing `Form` component.
    */
   name: string;
   /**
@@ -23,36 +23,11 @@ export interface ChoiceListProps<T extends string | string[]> {
   onChange(value: T): void;
 }
 
-export interface ChoiceProps {
-  /**
-   * A unique identifier for the choice.
-   */
-  id: string;
-  /**
-   * Whether the choice can be changed.
-   */
-  disabled?: boolean;
-  /**
-   * A label to use for the choice that will be used for buyers using
-   * assistive technologies. When provided, any `children` supplied to
-   * this component are hidden from being seen for accessibility purposes
-   * to prevent duplicate content from being read.
-   */
-  accessibilityLabel?: string;
-}
-
 /**
  * Use choice lists to present a list of choices where buyers can make
  * a single selection or multiple selections.
  */
-
 export const ChoiceList = createRemoteComponent<
   'ChoiceList',
   ChoiceListProps<string | string[]>
 >('ChoiceList');
-
-/**
- * Use choice lists to create a group of related options for customers to choose from. A choice list can be made up of radio buttons or checkboxes.
- */
-
-export const Choice = createRemoteComponent<'Choice', ChoiceProps>('Choice');

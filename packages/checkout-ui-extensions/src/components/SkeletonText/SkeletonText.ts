@@ -6,7 +6,6 @@ export interface SkeletonTextProps
   extends Omit<TextProps, 'id' | 'role' | 'appearance'> {
   /**
    * Adjust the length of the text when no children are passed.
-   *
    */
   inlineSize?: 'small' | 'medium' | 'large';
 }

@@ -11,22 +11,33 @@ type Spacing =
   | 'extraLoose';
 
 export interface InlineStackProps {
-  /** Sets the semantic meaning of the component's content. */
+  /**
+   * Sets the semantic meaning of the component's content.
+   */
   accessibilityRole?:
     | AccessibilityRole
     | [AccessibilityRole, AccessibilityRole];
   /**
+   * A label that describes the purpose or contents of the element. When provided,
+   * it will be announced to buyers using assistive technologies and will
+   * provide them with more context.
+   */
+  accessibilityLabel?: string;
+  /**
    * Position children along the cross axis
-   * @defaultValue `leading`
+   *
+   * @defaultValue 'leading'
    */
   blockAlignment?: 'leading' | 'center' | 'trailing' | 'baseline';
   /**
    * Position children along the main axis
-   * @defaultValue `leading`
+   *
+   * @defaultValue 'leading'
    */
   inlineAlignment?: 'leading' | 'center' | 'trailing';
   /**
    * Adjust spacing between children
+   *
    * @defaultValue 'base'
    **/
   spacing?: Spacing;

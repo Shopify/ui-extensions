@@ -6,17 +6,21 @@ export interface LinkProps {
    * or both.
    */
   to?: string;
-  /** Open the link in a new window or tab */
+  /**
+   * Open the link in a new window or tab
+   */
   external?: boolean;
   /**
-   * Unique identifier. Typically used as a target for another component’s controls
+   * Unique identifier.
+   *
+   * Typically used as a target for another component’s controls
    * to associate an accessible label with an action.
    */
   id?: string;
   /**
    * Indicate the text language. Useful when the text is in a different language than the rest of the page.
    * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
-   * Reference of values: https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry (see "subtag")
+   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
    */
   language?: string;
   /**

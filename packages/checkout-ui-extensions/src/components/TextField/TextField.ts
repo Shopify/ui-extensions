@@ -17,7 +17,7 @@ export interface TextFieldProps {
   icon?: IconSource;
   /**
    * An identifier for the field that is unique within the nearest
-   * containing `<Form />` component.
+   * containing `Form` component.
    */
   name?: string;
   /**
@@ -79,13 +79,9 @@ export interface TextFieldProps {
    * When set as a string, the string is presented close to the Checkbox.
    *
    * When set as a boolean, `true`, the developer can position the error message
-   * as they need using an `<InlineError>` component. To ensure the error message is
+   * as they need using an `InlineError` component. To ensure the error message is
    * associated with the input and accessible to all users, set the `id` property on this
-   * component and the `controlId` on the `<InlineError>` component. E.g.,
-   * ```
-   * <InlineError controlID="my-unique-id">Error message goes here</InlineError>
-   * <Textfield id="my-unique-id" error={true} />
-   * ```
+   * component and the `controlId` on the `InlineError` component. E.g.,
    */
   error?: string | boolean;
   /**

@@ -54,6 +54,7 @@ export type {
 
 export * from './components';
 export type {
+  BlockLayoutProps,
   BlockSpacerProps,
   BlockStackProps,
   BookendProps,
@@ -67,10 +68,13 @@ export type {
   FormProps,
   FormLayoutProps,
   FormLayoutGroupProps,
+  GridProps,
+  GridItemProps,
   HeadingProps,
   HeadingGroupProps,
   IconProps,
   ImageProps,
+  InlineLayoutProps,
   InlineSpacerProps,
   InlineStackProps,
   LayoutProps,
@@ -86,7 +90,6 @@ export type {
   TextProps,
   TextBlockProps,
   TextFieldProps,
-  TilesProps,
   ViewProps,
 } from './components';
 export type Components = typeof import('./components');
