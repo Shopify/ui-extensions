@@ -47,8 +47,8 @@ export type IconSource =
   | 'warningCircle'
   | 'warningFill'
   | 'giftFill'
-  | 'external';
-
+  | 'external'
+  | 'profile';
 /**
  * Accent:
  * Use to convey emphasis and draw attention to the icon.

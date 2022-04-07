@@ -1,18 +1,16 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Responsive, CSSShorthand} from '../shared';
+import {Responsive, CSSShorthand, Bordered} from '../shared';
 
 type Background =
   | 'surfacePrimary'
   | 'surfaceSecondary'
   | 'surfaceTertiary'
-  | 'transparent';
+  | 'transparent'
+  | 'color1'
+  | 'color2';
 type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
 type BackgroundFit = 'cover' | 'contain';
-type BorderColor = 'base' | 'emphasized';
-type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
-type BorderStyle = 'base' | 'dotted' | 'none';
-type BorderWidth = 'base' | 'medium';
 type Spacing =
   | 'extraTight'
   | 'tight'
@@ -24,7 +22,7 @@ type Visibility = 'hidden';
 type AccessibilityVisibility = 'hidden';
 type Display = 'block' | 'inline';
 
-export interface ViewProps {
+export interface ViewProps extends Bordered {
   /**
    * Adjust the maximum inline size.
    *
@@ -36,6 +34,18 @@ export interface ViewProps {
    * - `1` represents `100%`
    */
   maxInlineSize?: number | Responsive<number>;
+
+  /**
+   * Adjust the minimum inline size.
+   *
+   * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
+   *
+   * Examples:
+   * - `500` represents `500px`
+   * - `0.5` represents `50%`
+   * - `1` represents `100%`
+   */
+  minInlineSize?: number | Responsive<number>;
 
   /**
    * Adjust the padding.
@@ -76,51 +86,6 @@ export interface ViewProps {
    * @defaultValue false
    */
   backgroundRepeat?: boolean;
-
-  /**
-   * Adjust the border style.
-   *
-   * To shorten the code, it is possible to specify all the border style properties in one property.
-   *
-   * Examples:
-   * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border styles are `base`
-   * - [`base`, `none`] means blockStart and blockEnd border styles are `base`, inlineStart and inlineEnd border styles are `none`
-   * - [`base`, `none`, `dotted`, `base`] means blockStart border style is `base`, inlineEnd border style is `none`, blockEnd border style is `dotted` and  blockStart border style is `base`
-   */
-  border?: CSSShorthand<BorderStyle> | Responsive<CSSShorthand<BorderStyle>>;
-
-  /**
-   * Adjust the border width.
-   *
-   * To shorten the code, it is possible to specify all the border width properties in one property.
-   *
-   * Examples:
-   * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border widths are `base`
-   * - [`base`, `thick`] means blockStart and blockEnd border widths are `base`, inlineStart and inlineEnd border widths are `thick`
-   * - [`base`, `thick`, `thick`, `base`] means blockStart border width is `base`, inlineEnd border width is `thick`, blockEnd border width is `thick` and  blockStart border width is `base`
-   */
-  borderWidth?:
-    | CSSShorthand<BorderWidth>
-    | Responsive<CSSShorthand<BorderWidth>>;
-
-  /**
-   * Adjust the border color.
-   */
-  borderColor?: BorderColor | Responsive<BorderColor>;
-
-  /**
-   * Adjust the border radius.
-   *
-   * To shorten the code, it is possible to specify all the border width properties in one property.
-   *
-   * Examples:
-   * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border radii are `base`
-   * - [`base`, `none`] means blockStart and blockEnd border radii are `base`, inlineStart and inlineEnd border radii are `none`
-   * - [`base`, `none`, `tight`, `base`] means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`
-   */
-  borderRadius?:
-    | CSSShorthand<BorderRadius>
-    | Responsive<CSSShorthand<BorderRadius>>;
 
   /**
    * Changes the visibility of the element.

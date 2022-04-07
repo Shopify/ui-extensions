@@ -60,8 +60,6 @@ export {Text} from './Text';
 export type {TextProps} from './Text';
 export {TextBlock} from './TextBlock';
 export type {TextBlockProps} from './TextBlock';
-export {TextContainer} from './TextContainer';
-export type {TextContainerProps} from './TextContainer';
 export {TextField} from './TextField';
 export type {TextFieldProps} from './TextField';
 export {Tiles} from './Tiles';
@@ -69,10 +67,11 @@ export type {TilesProps} from './Tiles';
 export {View} from './View';
 export type {ViewProps} from './View';
 export type {
+  AccessibilityRole,
   Autocomplete,
   AutocompleteField,
   AutocompleteGroup,
   Breakpoint,
-  Responsive,
   CSSShorthand,
+  Responsive,
 } from './shared';

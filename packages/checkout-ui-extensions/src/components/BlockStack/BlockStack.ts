@@ -1,5 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {AccessibilityRole} from '../shared';
+
 type Alignment = 'leading' | 'center' | 'trailing';
 type Spacing =
   | 'none'
@@ -17,6 +19,10 @@ export interface BlockStackProps {
    * @defaultValue 'base'
    **/
   spacing?: Spacing;
+  /** Set the semantic of the component’s content */
+  accessibilityRole?:
+    | AccessibilityRole
+    | [AccessibilityRole, AccessibilityRole];
 }
 
 /**

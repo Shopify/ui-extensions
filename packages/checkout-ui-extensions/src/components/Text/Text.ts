@@ -8,7 +8,7 @@ type AccessibilityRole =
   | 'deletion'
   /**
    * Indicate the text is marked or highlighted and relevant to the buyer’s current action.
-   * Typically used to indicate the charachters that matched a search query.
+   * Typically used to indicate the characters that matched a search query.
    */
   | 'marking'
   /**
@@ -29,11 +29,24 @@ type AccessibilityRole =
 export interface TextProps {
   /** Size of the text */
   size?: Size;
-  /* Use to emphasize text that is more important than other nearby text */
-  emphasized?: boolean;
-  /* Use to de-emphasize text that is less important than other nearby text */
-  subdued?: boolean;
-  /** Assign semantic value */
+  /**
+   * Use to emphasize a word or a group of words compared to other nearby text.
+   *
+   * `strong`:
+   * Indicate strong importance, seriousness, or urgency.
+   * By default the text will be bold.
+   *
+   * `stress`:
+   * Indicate emphatic stress. By default the text will be italic.
+   *
+   * `offset`:
+   * Indicate an offset from the normal prose of the text. Typically used to indicate
+   * a foreign word, fictional character thoughts, or when the text refers to the definition of a word
+   * instead of representing its semantic meaning.
+   * By default the text will be italic.
+   */
+  emphasis?: 'stress' | 'offset' | 'strong';
+  /** Set the semantic of the component’s content */
   accessibilityRole?: AccessibilityRole;
   /**
    * Unique identifier. Typically used as a target for another component’s controls
@@ -41,7 +54,13 @@ export interface TextProps {
    */
   id?: string;
   /** Changes the visual appearance */
-  appearance?: 'critical' | 'warning' | 'success' | 'accent';
+  appearance?:
+    | 'critical'
+    | 'warning'
+    | 'success'
+    | 'accent'
+    | 'subdued'
+    | 'information';
 }
 
 /**

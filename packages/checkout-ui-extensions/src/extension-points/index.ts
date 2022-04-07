@@ -12,7 +12,6 @@ export type {
   MerchandiseOption,
   Money,
   Shop,
-  I18n,
   StandardApi,
   Storage,
   Version,
@@ -27,6 +26,7 @@ export type {
   AppMetafieldEntryTarget,
   AppMetafieldEntry,
   CurrencyCode,
+  Timezone,
   LineItem,
   LineItemChange,
   LineItemChangeResultError,
@@ -39,6 +39,9 @@ export type {
   SignedChangeResultError,
   SignedChangeResultSuccess,
   CustomerAccount,
+  I18n,
+  Buyer,
+  I18nTranslate,
 } from './api';
 export type {RenderExtension} from './render-extension';
 export type {

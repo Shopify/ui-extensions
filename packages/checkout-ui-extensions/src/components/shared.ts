@@ -131,3 +131,81 @@ export type CSSShorthand<CSSValue> =
   | CSSValue
   | [CSSValue, CSSValue]
   | [CSSValue, CSSValue, CSSValue, CSSValue];
+
+type BorderColor = 'base' | 'emphasized';
+type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
+type BorderStyle = 'base' | 'dotted' | 'none';
+type BorderWidth = 'base' | 'medium';
+
+export interface Bordered {
+  /**
+   * Adjust the border style.
+   *
+   * To shorten the code, it is possible to specify all the border style properties in one property.
+   *
+   * Examples:
+   * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border styles are `base`
+   * - [`base`, `none`] means blockStart and blockEnd border styles are `base`, inlineStart and inlineEnd border styles are `none`
+   * - [`base`, `none`, `dotted`, `base`] means blockStart border style is `base`, inlineEnd border style is `none`, blockEnd border style is `dotted` and  blockStart border style is `base`
+   */
+  border?: CSSShorthand<BorderStyle> | Responsive<CSSShorthand<BorderStyle>>;
+
+  /**
+   * Adjust the border width.
+   *
+   * To shorten the code, it is possible to specify all the border width properties in one property.
+   *
+   * Examples:
+   * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border widths are `base`
+   * - [`base`, `thick`] means blockStart and blockEnd border widths are `base`, inlineStart and inlineEnd border widths are `thick`
+   * - [`base`, `thick`, `thick`, `base`] means blockStart border width is `base`, inlineEnd border width is `thick`, blockEnd border width is `thick` and  blockStart border width is `base`
+   */
+  borderWidth?:
+    | CSSShorthand<BorderWidth>
+    | Responsive<CSSShorthand<BorderWidth>>;
+
+  /**
+   * Adjust the border color.
+   */
+  borderColor?: BorderColor | Responsive<BorderColor>;
+
+  /**
+   * Adjust the border radius.
+   *
+   * To shorten the code, it is possible to specify all the border width properties in one property.
+   *
+   * Examples:
+   * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border radii are `base`
+   * - [`base`, `none`] means blockStart and blockEnd border radii are `base`, inlineStart and inlineEnd border radii are `none`
+   * - [`base`, `none`, `tight`, `base`] means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`
+   */
+  borderRadius?:
+    | CSSShorthand<BorderRadius>
+    | Responsive<CSSShorthand<BorderRadius>>;
+}
+
+export type AccessibilityRole =
+  /** Used to indicate the primary content. */
+  | 'main'
+  /** Used to indicate the component is a header. */
+  | 'header'
+  /** Used to display information such as copyright information, navigation links, and privacy statements. */
+  | 'footer'
+  /** Used to indicate a generic section. */
+  | 'section'
+  /** Used to designate a supporting section that relates to the main content. */
+  | 'complementary'
+  /** Used to identify major groups of links used for navigating. */
+  | 'navigation'
+  /** Used to identify a list of ordered items. */
+  | 'orderedList'
+  /** Used to identify an item inside a list of items. */
+  | 'listItem'
+  /** Used to identify a list of unordered items. */
+  | 'unorderedList'
+  /** Used to indicates the component acts as a divider that separates and distinguishes sections of content. */
+  | 'separator'
+  /** Used to define a live region containing advisory information for the user that is not important enough to be an alert. */
+  | 'status'
+  /** Used for important, and usually time-sensitive, information. */
+  | 'alert';

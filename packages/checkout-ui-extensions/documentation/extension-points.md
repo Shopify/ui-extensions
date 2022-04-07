@@ -4,4 +4,4 @@ A UI extension will register for one or more extension points using [`shopify.ex
 
 The current extension points are available for Checkout:
 
-- `Checkout::Feature::Render`, used to build extensions that the merchant can position anywhere in their checkout.
+- `Checkout::Dynamic::Render`, used to build extensions that the merchant can position anywhere in their checkout.

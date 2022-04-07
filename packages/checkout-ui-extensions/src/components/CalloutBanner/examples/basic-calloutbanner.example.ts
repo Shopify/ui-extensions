@@ -1,6 +1,6 @@
 import {extend, CalloutBanner, Text} from '@shopify/checkout-ui-extensions';
 
-extend('Checkout::Feature::Render', (root) => {
+extend('Checkout::Dynamic::Render', (root) => {
   const calloutBanner = root.createComponent(
     CalloutBanner,
     {title: 'Special offer today only'},

@@ -26,6 +26,7 @@ export interface BookendProps {
 /**
  * Bookend sets the leading and/or trailing child to its inherent size while the remaining
  * children fill the available space
+ * @deprecated This component is deprecated and will be removed, use InlineLayout instead.
  */
 export const Bookend = createRemoteComponent<'Bookend', BookendProps>(
   'Bookend',

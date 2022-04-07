@@ -1,6 +1,6 @@
 import {extend, Stepper} from '@shopify/checkout-ui-extensions';
 
-extend('Checkout::Feature::Render', (root) => {
+extend('Checkout::Dynamic::Render', (root) => {
   const stepper = root.createComponent(Stepper, {
     label: 'Stepper',
   });

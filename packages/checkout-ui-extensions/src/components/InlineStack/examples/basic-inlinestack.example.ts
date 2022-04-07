@@ -1,6 +1,6 @@
 import {extend, InlineStack, View} from '@shopify/checkout-ui-extensions';
 
-extend('Checkout::Feature::Render', (root) => {
+extend('Checkout::Dynamic::Render', (root) => {
   const inlineStack = root.createComponent(
     InlineStack,
     {

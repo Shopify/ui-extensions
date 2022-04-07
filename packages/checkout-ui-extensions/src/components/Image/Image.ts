@@ -1,8 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Responsive} from '../shared';
+import {Responsive, Bordered} from '../shared';
 
-export interface ImageProps {
+export interface ImageProps
+  extends Pick<Bordered, 'borderRadius' | 'borderWidth' | 'border'> {
   /**
    * The default image path. This is used for single images, as a fallback if
    * no sources match, or if a browser does not support picture element sources.

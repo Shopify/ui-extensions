@@ -5,7 +5,7 @@ import {
   BlockStack,
 } from '@shopify/checkout-ui-extensions';
 
-extend('Checkout::Feature::Render', (root) => {
+extend('Checkout::Dynamic::Render', (root) => {
   const choiceList = root.createComponent(
     ChoiceList,
     {

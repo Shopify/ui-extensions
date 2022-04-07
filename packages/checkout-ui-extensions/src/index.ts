@@ -11,9 +11,10 @@ export type {
   ArgumentsForExtension,
   ApiForRenderExtension,
   CountryCode,
+  CurrencyCode,
+  Timezone,
   Interceptor,
   ReturnTypeForExtension,
-  I18n,
   StandardApi,
   Storage,
   Version,
@@ -46,6 +47,9 @@ export type {
   SignedChangeResultError,
   SignedChangeResultSuccess,
   CustomerAccount,
+  I18n,
+  Buyer,
+  I18nTranslate,
 } from './extension-points';
 
 export * from './components';
@@ -81,7 +85,6 @@ export type {
   TagProps,
   TextProps,
   TextBlockProps,
-  TextContainerProps,
   TextFieldProps,
   TilesProps,
   ViewProps,

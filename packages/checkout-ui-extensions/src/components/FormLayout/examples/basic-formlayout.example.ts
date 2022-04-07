@@ -5,7 +5,7 @@ import {
   TextField,
 } from '@shopify/checkout-ui-extensions';
 
-extend('Checkout::Feature::Render', (root) => {
+extend('Checkout::Dynamic::Render', (root) => {
   const formLayout = root.createComponent(FormLayout, undefined, [
     root.createComponent(TextField, {
       label: 'Address',
