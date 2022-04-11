@@ -1,4 +1,4 @@
-import type {Address, Cart, Customer, CustomSale} from '../Models/Cart';
+import type {Address, Cart, Customer, CustomSale} from '../types';
 
 export type DiscountType = 'Percentage' | 'FixedAmount' | 'Code';
 

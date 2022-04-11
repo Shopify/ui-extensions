@@ -1,4 +1,4 @@
-interface NavigationApiContent {
+export interface NavigationApiContent {
   /** Opens a full screen with the Retail::SmartGrid::Modal extension point */
   navigateToFullScreenModal(): void;
 
@@ -11,8 +11,4 @@ interface NavigationApiContent {
  */
 export interface NavigationApi {
   navigation: NavigationApiContent;
-}
-
-export function isNavigationApi(api: any): api is NavigationApi {
-  return 'navigation' in api;
 }

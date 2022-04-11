@@ -1,4 +1,4 @@
-export interface SessionToken {
+export interface SessionTokenApiContent {
   /** Get a fresh session token. */
   getSessionToken: () => Promise<string | undefined>;
 }
@@ -8,9 +8,5 @@ export interface SessionToken {
  * Calls to Shopify APIs must be made by your app’s backend service.
  */
 export interface SessionTokenApi {
-  sessionToken: SessionToken;
-}
-
-export function isSessionTokenApi(api: any): api is SessionTokenApi {
-  return 'sessionToken' in api;
+  sessionToken: SessionTokenApiContent;
 }
