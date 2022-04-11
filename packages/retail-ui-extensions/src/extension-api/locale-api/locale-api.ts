@@ -1,4 +1,4 @@
-interface LocaleApiContent {
+export interface LocaleApiContent {
   /** IETF-formatted locale at time of page load */
   initialValue: string;
 
@@ -11,8 +11,4 @@ interface LocaleApiContent {
  */
 export interface LocaleApi {
   locale: LocaleApiContent;
-}
-
-export function isLocaleApi(api: any): api is LocaleApi {
-  return 'locale' in api;
 }

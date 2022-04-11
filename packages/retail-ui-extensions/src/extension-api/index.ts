@@ -1,26 +1,19 @@
-import type {CartApi} from './CartApi';
-import type {LocaleApi} from './LocaleApi';
-import type {NavigationApi} from './NavigationApi';
-import type {SessionTokenApi} from './SessionTokenApi';
+export type {LocaleApi} from './locale-api';
+export type {CartApiContent, DiscountType} from './cart-api/cart-api';
+export type {CartApi} from './cart-api';
+export type {NavigationApi, NavigationApiContent} from './navigation-api';
+export type {StandardApi} from './standard-api';
 
-export type {LocaleApi} from './LocaleApi';
-export {isLocaleApi} from './LocaleApi';
+export type {
+  SessionTokenApiContent,
+  SessionTokenApi,
+} from './session-token-api';
 
-export type {SessionTokenApi} from './SessionTokenApi';
-export {isSessionTokenApi} from './SessionTokenApi';
-
-export type {CartApiContent, DiscountType} from './CartApi/CartApiContent';
-export type {CartApi} from './CartApi';
-export {isCartApi} from './CartApi';
-
-export type {Cart, LineItem, Customer, Discount, CustomSale} from './Models';
-
-export type {NavigationApi} from './NavigationApi';
-export {isNavigationApi} from './NavigationApi';
-
-export type StandardApi<T> = {[key: string]: any} & {
-  extensionPoint: T;
-} & LocaleApi &
-  CartApi &
-  NavigationApi &
-  SessionTokenApi;
+export type {
+  Address,
+  Cart,
+  LineItem,
+  Customer,
+  Discount,
+  CustomSale,
+} from './types';

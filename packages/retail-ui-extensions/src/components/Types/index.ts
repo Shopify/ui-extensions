@@ -1,1 +1,1 @@
-export type {AutoCapitalizationType} from './AutoCapitalizationType';
+export type {AutoCapitalizationType} from './auto-capitalization-type';
