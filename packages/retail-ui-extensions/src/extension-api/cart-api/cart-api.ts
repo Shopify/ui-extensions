@@ -1,5 +1,12 @@
 import type {Address, Cart, Customer, CustomSale} from '../types';
 
+/**
+ * Access the merchant’s current cart.
+ */
+export interface CartApi {
+  cart: CartApiContent;
+}
+
 export type DiscountType = 'Percentage' | 'FixedAmount' | 'Code';
 
 export interface CartApiContent {
