@@ -1,5 +1,5 @@
 export type {LocaleApi} from './locale-api';
-export type {CartApiContent, DiscountType} from './cart-api/cart-api-content';
+export type {CartApiContent, DiscountType} from './cart-api/cart-api';
 export type {CartApi} from './cart-api';
 export type {NavigationApi, NavigationApiContent} from './navigation-api';
 export type {StandardApi} from './standard-api';
