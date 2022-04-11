@@ -9,8 +9,9 @@ describe('useExtensionLocale', () => {
     const {value} = mount.hook(() => useExtensionLocale(), {
       extensionApi: {
         i18n: {
-          extensionLocale:
-            createMockStatefulRemoteSubscribable(extensionLocale),
+          extensionLocale: createMockStatefulRemoteSubscribable(
+            extensionLocale,
+          ),
         },
       },
     });

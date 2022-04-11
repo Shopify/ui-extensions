@@ -10,7 +10,7 @@ import {useExtensionApi} from './api';
  * Returns the `buyerJourney` details on buyer progression in checkout
  */
 export function useBuyerJourney<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >() {
   return useExtensionApi<ID>().buyerJourney;
 }
@@ -22,7 +22,7 @@ export function useBuyerJourney<
  * the reason why navigation was blocked.
  */
 export function useBuyerJourneyIntercept<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >(interceptor: Interceptor) {
   const buyerJourney = useBuyerJourney<ID>();
   const interceptorRef = useRef(interceptor);
