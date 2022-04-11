@@ -65,7 +65,7 @@ export function run(extensionPoint, ...args) {
 In your extension code, you make use of these APIs using patterns that feel idiomatic in JavaScript:
 
 ```js
-shopify.extend('Checkout::Feature::Render', (root) => {
+shopify.extend('Checkout::Dynamic::Render', (root) => {
   root.appendChild(root.createText('Hello world!'));
 });
 
@@ -74,7 +74,7 @@ shopify.extend('Checkout::Feature::Render', (root) => {
 
 import {extend} from '@shopify/checkout-ui-extensions';
 
-extend('Checkout::Feature::Render', (root) => {
+extend('Checkout::Dynamic::Render', (root) => {
   root.appendChild(root.createText('Hello world!'));
 });
 ```

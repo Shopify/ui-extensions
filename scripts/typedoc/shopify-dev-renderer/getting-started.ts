@@ -57,8 +57,8 @@ export function gettingStarted(paths: Paths, options: Options = {}) {
   markdown = markdown.replace(/\.\/([\w-]+)\.md/g, '#$1');
   // Add a link to the extension points API
   markdown = markdown.replace(
-    ' `Checkout::Feature::Render`',
-    ` [\`Checkout::Feature::Render\`](${paths.shopifyDevUrl}/extension-points/api)`,
+    ' `Checkout::Dynamic::Render`',
+    ` [\`Checkout::Dynamic::Render\`](${paths.shopifyDevUrl}/extension-points/api)`,
   );
   // Add a link to the PP extension point API
   markdown = markdown.replace(
