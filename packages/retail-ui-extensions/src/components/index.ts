@@ -8,3 +8,4 @@ export * from './SegmentedControl';
 export * from './Tag';
 export * from './Dialog';
 export * from './SearchBar';
+export * from './Types';

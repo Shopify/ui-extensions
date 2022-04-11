@@ -1,1 +1,1 @@
-export * from './AutoCapitalizationType';
+export type {AutoCapitalizationType} from './AutoCapitalizationType';
