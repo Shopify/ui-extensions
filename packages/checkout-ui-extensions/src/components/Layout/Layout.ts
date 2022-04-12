@@ -8,12 +8,14 @@ type Spacing = 'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose';
 export interface LayoutProps {
   /**
    * Specifies the inline alignment of the layout in its container.
+   *
    * @defaultValue 'center'
    */
   inlineAlignment?: Alignment;
 
   /**
    * Specifies the block alignment of the layout in its container.
+   *
    * @defaultValue 'leading'
    */
   blockAlignment?: Alignment;
@@ -24,9 +26,13 @@ export interface LayoutProps {
    *
    * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
    *
+   *
    * Examples:
+   *
    * - `500` represents `500px`
+   *
    * - `0.5` represents `50%`
+   *
    * - `1` represents `100%`
    */
   maxInlineSize?: number | Responsive<number>;
@@ -43,18 +49,28 @@ export interface LayoutProps {
 /**
  * Options available for section sizes.
  *
+ *
  * `auto` will fit to the size of its content.
+ *
  * `fill` will take the remaining space available.
+ *
  * `Number` less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
  *
+ *
  * Examples:
+ *
  * - `500` represents `500px`
+ *
  * - `0.5` represents `50%`
+ *
  * - `1` represents `100%`
  */
 type Size = 'auto' | 'fill' | number;
 
 /**
  * Layout is used to create macro layouts that responds to different media sizes.
+ *
+ * @deprecated This component is deprecated and will eventually be removed.
+ * Use one of the layout primitives instead (Grid, BlockLayout, InlineLayout, BlockStack, InlineStack).
  */
 export const Layout = createRemoteComponent<'Layout', LayoutProps>('Layout');

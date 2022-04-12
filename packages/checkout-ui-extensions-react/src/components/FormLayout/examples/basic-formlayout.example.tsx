@@ -5,7 +5,7 @@ import {
   TextField,
 } from '@shopify/checkout-ui-extensions-react';
 
-render('Checkout::Feature::Render', () => <App />);
+render('Checkout::Dynamic::Render', () => <App />);
 
 function App() {
   return (

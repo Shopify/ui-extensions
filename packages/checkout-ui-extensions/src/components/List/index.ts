@@ -1,2 +1,2 @@
-export {List, ListItem} from './List';
-export type {ListProps, ListItemProps} from './List';
+export {List} from './List';
+export type {ListProps} from './List';

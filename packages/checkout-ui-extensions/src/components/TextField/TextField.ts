@@ -17,7 +17,7 @@ export interface TextFieldProps {
   icon?: IconSource;
   /**
    * An identifier for the field that is unique within the nearest
-   * containing `<Form />` component.
+   * containing `Form` component.
    */
   name?: string;
   /**
@@ -73,9 +73,17 @@ export interface TextFieldProps {
    */
   required?: boolean;
   /**
-   * An error label to present with the field.
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   *
+   * When set as a string, the string is presented close to the Checkbox.
+   *
+   * When set as a boolean, `true`, the developer can position the error message
+   * as they need using an `InlineError` component. To ensure the error message is
+   * associated with the input and accessible to all users, set the `id` property on this
+   * component and the `controlId` on the `InlineError` component. E.g.,
    */
-  error?: string;
+  error?: string | boolean;
   /**
    * Whether the field supports multiple lines of input.
    * Set a `number` to define the default lines of the input.

@@ -7,4 +7,4 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| inlineSize? | <code>"small" &#124; "medium" &#124; "large"</code> | Adjust the length of the text when no children are passed.<br /><br /> |
+| inlineSize? | <code>"small" &#124; "medium" &#124; "large"</code> | Adjust the length of the text when no children are passed.  |

@@ -8,15 +8,13 @@ export interface SkeletonTextBlockProps
   extends Omit<TextBlockProps, 'id' | 'appearance'> {
   /**
    * Adjust the size of the last line. It also applies when the number of lines is `1`.
-   *
    */
   lastLineSize?: LineSize;
-
   /**
    * Number of lines to display when no children are passed.
+   *
    * @defaultValue 1
-
-  */
+   */
   lines?: number;
 }
 

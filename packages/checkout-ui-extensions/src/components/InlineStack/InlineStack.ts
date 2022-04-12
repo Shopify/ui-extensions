@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Alignment = 'leading' | 'center' | 'trailing' | 'baseline';
+import {AccessibilityRole} from '../shared';
+
 type Spacing =
   | 'none'
   | 'extraTight'
@@ -10,22 +11,40 @@ type Spacing =
   | 'extraLoose';
 
 export interface InlineStackProps {
-  /** Position children along the cross axis */
-  alignment?: Alignment;
+  /**
+   * Sets the semantic meaning of the component's content.
+   */
+  accessibilityRole?:
+    | AccessibilityRole
+    | [AccessibilityRole, AccessibilityRole];
+  /**
+   * A label that describes the purpose or contents of the element. When provided,
+   * it will be announced to buyers using assistive technologies and will
+   * provide them with more context.
+   */
+  accessibilityLabel?: string;
+  /**
+   * Position children along the cross axis
+   *
+   * @defaultValue 'leading'
+   */
+  blockAlignment?: 'leading' | 'center' | 'trailing' | 'baseline';
+  /**
+   * Position children along the main axis
+   *
+   * @defaultValue 'leading'
+   */
+  inlineAlignment?: 'leading' | 'center' | 'trailing';
   /**
    * Adjust spacing between children
+   *
    * @defaultValue 'base'
    **/
   spacing?: Spacing;
-  /**
-   * Wrap elements on multiple lines if content is larger
-   * than parent container.
-   */
-  wrap?: boolean;
 }
 
 /**
- * InlineStack is used to lay out a horizontal row of elements
+ * InlineStack is used to lay out a horizontal row of elements. Elements always wrap.
  */
 export const InlineStack = createRemoteComponent<
   'InlineStack',

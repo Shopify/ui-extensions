@@ -9,7 +9,7 @@ export interface CheckboxProps {
 
   /**
    * An identifier for the field that is unique within the nearest
-   * containing `<Form />` component.
+   * containing `Form` component.
    */
   name?: string;
 
@@ -32,9 +32,17 @@ export interface CheckboxProps {
   disabled?: boolean;
 
   /**
-   * An error label to present with the field.
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   *
+   * When set as a string, the string is presented close to the Checkbox.
+   *
+   * When set as a boolean, `true`, the developer can position the error message
+   * as they need using an `InlineError` component. To ensure the error message is
+   * associated with the input and accessible to all users, set the `id` property on this
+   * component and the `controlId` on the `InlineError` component.
    */
-  error?: string;
+  error?: string | boolean;
 
   /**
    * A label to use for the field that will be used for buyers using

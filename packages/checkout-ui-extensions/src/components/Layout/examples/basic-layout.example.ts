@@ -1,6 +1,6 @@
 import {extend, Layout, View} from '@shopify/checkout-ui-extensions';
 
-extend('Checkout::Feature::Render', (root) => {
+extend('Checkout::Dynamic::Render', (root) => {
   const layout = root.createComponent(
     Layout,
     {

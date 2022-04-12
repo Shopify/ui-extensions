@@ -13,21 +13,25 @@ export interface CalloutBannerProps {
   title?: string;
   /**
    * Adds a top and bottom border to the callout banner
+   *
    * @defaultValue 'block'
    */
   border?: Border;
   /**
    * Sets the background color of the callout banner
+   *
    * @defaultValue 'secondary'
    */
   background?: Background;
   /**
    * Sets the alignment of the title and children
+   *
    * @defaultValue 'center'
    */
   alignment?: Alignment;
   /**
    * Sets the spacing between the title and children
+   *
    * @defaultValue 'tight'
    */
   spacing?: Spacing;

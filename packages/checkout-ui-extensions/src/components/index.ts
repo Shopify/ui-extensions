@@ -1,5 +1,7 @@
 export {Banner} from './Banner';
 export type {BannerProps} from './Banner';
+export {BlockLayout} from './BlockLayout';
+export type {BlockLayoutProps} from './BlockLayout';
 export {BlockSpacer} from './BlockSpacer';
 export type {BlockSpacerProps} from './BlockSpacer';
 export {BlockStack} from './BlockStack';
@@ -14,14 +16,20 @@ export {CalloutBanner} from './CalloutBanner';
 export type {CalloutBannerProps} from './CalloutBanner';
 export {Checkbox} from './Checkbox';
 export type {CheckboxProps} from './Checkbox';
-export {ChoiceList, Choice} from './ChoiceList';
-export type {ChoiceListProps, ChoiceProps} from './ChoiceList';
+export {Choice} from './Choice';
+export type {ChoiceProps} from './Choice';
+export {ChoiceList} from './ChoiceList';
+export type {ChoiceListProps} from './ChoiceList';
 export {Divider} from './Divider';
 export type {DividerProps} from './Divider';
 export {Form} from './Form';
 export type {FormProps} from './Form';
 export {FormLayout, FormLayoutGroup} from './FormLayout';
 export type {FormLayoutProps, FormLayoutGroupProps} from './FormLayout';
+export {Grid} from './Grid';
+export type {GridProps, GridSize} from './Grid';
+export {GridItem} from './GridItem';
+export type {GridItemProps} from './GridItem';
 export {Heading} from './Heading';
 export type {HeadingProps} from './Heading';
 export {HeadingGroup} from './HeadingGroup';
@@ -30,6 +38,8 @@ export type {IconProps} from './Icon';
 export {Icon} from './Icon';
 export {Image} from './Image';
 export type {ImageProps} from './Image';
+export {InlineLayout} from './InlineLayout';
+export type {InlineLayoutProps} from './InlineLayout';
 export {InlineStack} from './InlineStack';
 export type {InlineStackProps} from './InlineStack';
 export {InlineSpacer} from './InlineSpacer';
@@ -38,8 +48,10 @@ export {Layout} from './Layout';
 export type {LayoutProps} from './Layout';
 export {Link} from './Link';
 export type {LinkProps} from './Link';
-export {List, ListItem} from './List';
-export type {ListProps, ListItemProps} from './List';
+export {List} from './List';
+export type {ListProps} from './List';
+export {ListItem} from './ListItem';
+export type {ListItemProps} from './ListItem';
 export {PhoneField} from './PhoneField';
 export type {PhoneFieldProps} from './PhoneField';
 export {Select} from './Select';
@@ -60,19 +72,18 @@ export {Text} from './Text';
 export type {TextProps} from './Text';
 export {TextBlock} from './TextBlock';
 export type {TextBlockProps} from './TextBlock';
-export {TextContainer} from './TextContainer';
-export type {TextContainerProps} from './TextContainer';
 export {TextField} from './TextField';
 export type {TextFieldProps} from './TextField';
-export {Tiles} from './Tiles';
-export type {TilesProps} from './Tiles';
 export {View} from './View';
 export type {ViewProps} from './View';
 export type {
+  AccessibilityRole,
   Autocomplete,
   AutocompleteField,
   AutocompleteGroup,
   Breakpoint,
-  Responsive,
   CSSShorthand,
+  Responsive,
+  Unit,
+  UnitSuffix,
 } from './shared';

@@ -5,8 +5,8 @@
 The most important API to a UI extension is `shopify`, an object that is globally available. This object has a single method, `extend`. `extend` takes two arguments: the name of an [available extension point](./extension-points.md), and a function to call when Shopify is ready to run the extension point. The function you pass is called with at least one input argument, depending on the extension point — please refer to the documentation for the extension point you are targeting to see what you have access to.
 
 ```ts
-shopify.extend('Checkout::Feature::Render', (...args) => {
-  // Implement your Checkout::Feature::Render extension point logic here
+shopify.extend('Checkout::Dynamic::Render', (...args) => {
+  // Implement your Checkout::Dynamic::Render extension point logic here
 });
 ```
 
@@ -15,15 +15,15 @@ This library provides an alias for `shopify.extend` in the form of the `extend()
 ```ts
 import {extend} from '@shopify/checkout-ui-extensions';
 
-extend('Checkout::Feature::Render', (root, api) => {
-  // Implement your Checkout::Feature::Render extension point logic here
+extend('Checkout::Dynamic::Render', (root, api) => {
+  // Implement your Checkout::Dynamic::Render extension point logic here
   // If you hover over `api` in an editor that supports TypeScript, you’ll see
   // the properties and methods available for this extension point, even if you
   // are writing your extension in "vanilla" JavaScript.
 });
 ```
 
-For extensions that render UI, like [`Checkout::Feature::Render`](./extension-points.md), the first argument is always a [`@remote-ui` `RemoteRoot` object](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoteroot) that allows you to render UI components into your extension point in checkout. You do not need to explicitly call [`mount()`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootmount) on this object; once the callback you registered for this extension point ends (or, if it returns a `Promise`, once that promise resolves), your initial UI will be rendered.
+For extensions that render UI, like [`Checkout::Dynamic::Render`](./extension-points.md), the first argument is always a [`@remote-ui` `RemoteRoot` object](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoteroot) that allows you to render UI components into your extension point in checkout. You do not need to explicitly call [`mount()`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootmount) on this object; once the callback you registered for this extension point ends (or, if it returns a `Promise`, once that promise resolves), your initial UI will be rendered.
 
 That’s really all the global API you need to know to start writing a UI extension. You’ll find the documentation for additional APIs that are provided when an extension point is run in the [extension points documentation](./extension-points.md).
 

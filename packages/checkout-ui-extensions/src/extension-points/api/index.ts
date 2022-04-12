@@ -9,7 +9,6 @@ export type {
   MerchandiseImage,
   MerchandiseOption,
   Money,
-  I18n,
   StandardApi,
   Storage,
   Shop,
@@ -36,6 +35,9 @@ export type {
   SignedChangeResultError,
   SignedChangeResultSuccess,
   CustomerAccount,
+  I18n,
+  Buyer,
+  I18nTranslate,
 } from './standard';
-export type {CurrencyCode, CountryCode} from './shared';
+export type {CurrencyCode, CountryCode, Timezone} from './shared';
 export type {LineItemRenderAfterApi} from './line-item-render-after';

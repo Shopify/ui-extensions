@@ -12,24 +12,29 @@ type Spacing =
   | 'extraLoose';
 
 export interface DividerProps {
-  /** Use to insert space around the divider. */
+  /**
+   * Use to insert space around the divider.
+   */
   blockSpacing?: Spacing;
 
   /**
    * Use to create dividers with varying widths.
-   * By default it will be thin.
+   *
+   * @defaultValue 'thin'
    */
   width?: Width;
 
   /**
    * Use to specify direction of divider.
-   * By default it will be horizontal.
+   *
+   * @defaultValue 'horizontal'
    */
   direction?: Direction;
 
   /**
    * Use to specify alignment of contents of divider.
-   * By default it will be center.
+   *
+   * @defaultValue 'center'
    */
   alignment?: Alignment;
 }

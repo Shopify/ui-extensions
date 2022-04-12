@@ -4,9 +4,9 @@ type Level = 1 | 2 | 3;
 
 export interface HeadingProps {
   /**
-   * Unique identifier. Typically used to make the heading a target
-   * that another component can refer to in order to provide an alternative
-   * accessibility label.
+   * Unique identifier.
+   * Typically used to make the heading a target that another component
+   * can refer to in order to provide an alternative accessibility label.
    */
   id?: string;
   /**

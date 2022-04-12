@@ -11,4 +11,4 @@ optional = ?
 | leading? | <code>boolean</code> | Sets the leading child to its inherent size  |
 | trailing? | <code>boolean</code> | Sets the trailing child to its inherent size  |
 | alignment? | <code>"leading" &#124; "center" &#124; "trailing"</code> | Position children along the cross axis  |
-| spacing? | <code>"none" &#124; "extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose"</code> | Adjust spacing between children Default value: <code>'base'</code> |
+| spacing? | <code>"none" &#124; "extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose"</code> | Adjust spacing between children<br /><br />Default value: <code>'base'</code> |

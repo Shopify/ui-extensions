@@ -13,7 +13,7 @@ A rendering extension point is complex to test, because these extension points k
 
 import {extend, Button} from '@shopify/checkout-ui-extensions';
 
-extend('Checkout::Feature::Render', handleRenderExtension);
+extend('Checkout::Dynamic::Render', handleRenderExtension);
 
 export function handleRenderExtension(root, api) {
   const text = root.createText('Not pressed');

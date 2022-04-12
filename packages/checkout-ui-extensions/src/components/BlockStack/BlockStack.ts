@@ -1,5 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {AccessibilityRole} from '../shared';
+
 type Alignment = 'leading' | 'center' | 'trailing';
 type Spacing =
   | 'none'
@@ -10,13 +12,26 @@ type Spacing =
   | 'extraLoose';
 
 export interface BlockStackProps {
-  /** Position children along the cross axis */
+  /**
+   * Position children along the cross axis
+   */
   alignment?: Alignment;
   /**
    * Adjust spacing between children
+   *
    * @defaultValue 'base'
    **/
   spacing?: Spacing;
+  /** Set the semantic of the component’s content */
+  accessibilityRole?:
+    | AccessibilityRole
+    | [AccessibilityRole, AccessibilityRole];
+  /**
+   * A label that describes the purpose or contents of the element. When provided,
+   * it will be announced to buyers using assistive technologies and will
+   * provide them with more context.
+   */
+  accessibilityLabel?: string;
 }
 
 /**

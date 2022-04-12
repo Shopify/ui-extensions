@@ -1,6 +1,6 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
-import type {CurrencyCode, CountryCode} from '../shared';
+import type {CurrencyCode, CountryCode, Timezone} from '../shared';
 
 /**
  * This is a key / value storage object for extension points.
@@ -94,7 +94,7 @@ export interface Metafield {
   valueType: 'integer' | 'string' | 'json_string';
 }
 
-/** Removes a public or private metafield. */
+/** Removes a metafield. */
 export interface MetafieldRemoveChange {
   /**
    * The type of the `MetafieldRemoveChange` API.
@@ -113,7 +113,7 @@ export interface MetafieldRemoveChange {
 }
 
 /**
- * Updates a public or private metafield. If a metafield with the
+ * Updates a metafield. If a metafield with the
  * provided key and namespace does not already exist, it will be created.
  */
 export interface MetafieldUpdateChange {
@@ -205,15 +205,43 @@ export interface AppMetafieldEntry {
 
 export type Version = 'unstable';
 
+/**
+ * This defines the i18n.translate() signature.
+ */
+export interface I18nTranslate {
+  <ReplacementType = string>(
+    key: string,
+    options?: {[placeholderKey: string]: ReplacementType | string | number},
+  ): ReplacementType extends string | number
+    ? string
+    : (string | ReplacementType)[];
+}
+
 export interface I18n {
   /**
    * This is the buyer's locale.
+   * @example 'en' for English, or 'en-US' for English local to United States.
+   *
+   * The value is a BCP-47 language tag. It may contain a dash followed by an ISO 3166-1 alpha-2 region code.
+   *
+   * See https://en.wikipedia.org/wiki/IETF_language_tag
+   * See https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+   */
+  locale: StatefulRemoteSubscribable<string>;
+
+  /**
+   * This is the buyer's locale, as supported by the extension.
    * @example en-US
+   *
+   * If the buyer's actual locale is not supported by the extension,
+   * this is the fallback locale used for translations.
+   * For example, if the buyer's locale is fr-CA but the extension
+   * only supports translations for fr then fr is the extension's locale.
    *
    * The value is a BCP-47 language tag.
    * See https://en.wikipedia.org/wiki/IETF_language_tag
    */
-  locale: StatefulRemoteSubscribable<string>;
+  extensionLocale: StatefulRemoteSubscribable<string>;
 
   /**
    * This returns a localized number.
@@ -227,6 +255,50 @@ export interface I18n {
     number: number | bigint,
     options?: {inExtensionLocale?: boolean} & Intl.NumberFormatOptions,
   ) => string;
+
+  /**
+   * This returns a localized currency value.
+   *
+   * This behaves like the standard Intl.NumberFormat()
+   * with a style of 'currency' and uses the buyer's locale by default.
+   *
+   * @param options.inExtensionLocale - if true, use the extension's locale
+   */
+  formatCurrency: (
+    number: number | bigint,
+    options?: {inExtensionLocale?: boolean} & Intl.NumberFormatOptions,
+  ) => string;
+
+  /**
+   * This returns translated content in the buyer's locale,
+   * as supported by the extension.
+   *
+   * - options.count is a special numeric value used in pluralization.
+   * - The other option keys and values are treated as replacements for interpolation.
+   * - If the replacements are all primitives, translate() returns a single string.
+   * - If replacements contain UI components, translate() returns an array of elements.
+   */
+  translate: I18nTranslate;
+}
+
+export interface Buyer {
+  /**
+   * This is the buyer's currency.
+   * @example USD
+   *
+   * The value is an ISO-4217 code.
+   * See https://www.iso.org/iso-4217-currency-codes.html
+   */
+  currency: StatefulRemoteSubscribable<CurrencyCode>;
+
+  /**
+   * This is the buyer's time zone.
+   * @example America/New_York
+   *
+   * The value is an IANA time zone.
+   * See https://www.iana.org/time-zones
+   */
+  timezone: StatefulRemoteSubscribable<Timezone>;
 }
 
 /**
@@ -252,12 +324,6 @@ export interface StandardApi<
    * @example 'unstable'
    */
   version: Version;
-
-  /**
-   * The IETF tag for the locale of the checkout.
-   * @example 'en' for English
-   */
-  locale: StatefulRemoteSubscribable<string>;
 
   /**
    * The minimum a buyer can expect to pay at the current step of checkout.
@@ -303,7 +369,7 @@ export interface StandardApi<
 
   /**
    * The primaryAddress field is a shortcut to the first address a buyer fills out in checkout, if any.
-   * When an checkout requires shipping, this field is identical to the shippingAddress field.
+   * When a checkout requires shipping, this field is identical to the shippingAddress field.
    * When a checkout does not require shipping, this field is identical to the billingAddress field.
    */
   primaryAddress: StatefulRemoteSubscribable<Address | undefined>;
@@ -354,12 +420,7 @@ export interface StandardApi<
    *   results from checkout.
    *
    * These metafields are shared by all extensions running on checkout, and are
-   * persisted for as long as the buyer is working on this checkout. If the data you
-   * are writing is only relevant to your own merchant-facing application, you
-   * should use `privateMetafields` instead. For example, if the merchant
-   * might reference the metafield in a template for order confirmation emails,
-   * then the metafield should be public since it will be accessed outside of
-   * your application.
+   * persisted for as long as the buyer is working on this checkout.
    *
    * Once the order is created, you can query these metafields using the
    * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
@@ -367,33 +428,11 @@ export interface StandardApi<
   metafields: StatefulRemoteSubscribable<Metafield[]>;
 
   /**
-   * The `privateMetafields` property is identical to `metafields`, but includes
-   * the private metafields for your application instead. These metafields are
-   * scoped to your application, and are shared by all extensions you author as part
-   * of your application running on the checkout.
-   *
-   * Once the order is created, you can query these metafields using the
-   * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#privatemetafield-2021-01).
-   */
-  privateMetafields: StatefulRemoteSubscribable<Metafield[]>;
-
-  /**
    * Performs an update on a piece of metadata attached to the checkout. If
    * successful, this mutation will result in an update to the value retrieved
-   * through the `metafields` property. If you want to change metadata that is
-   * only ever used by your own back-office application, you should use
-   * `applyPrivateMetafieldChange` instead.
+   * through the `metafields` property.
    */
   applyMetafieldChange(change: MetafieldChange): Promise<MetafieldChangeResult>;
-
-  /**
-   * Performs an update on a piece of app-scoped metadata attached to the checkout.
-   * If successful, this mutation will result in an update to the value retrieved
-   * through the `privateMetafields` property.
-   */
-  applyPrivateMetafieldChange(
-    change: MetafieldChange,
-  ): Promise<MetafieldChangeResult>;
 
   /**
    * Merchandise items the buyer is purchasing.
@@ -426,6 +465,12 @@ export interface StandardApi<
    * This defines the i18n (internationalization) API for the extension.
    */
   i18n: I18n;
+
+  /**
+   * This defines the buyer API for the extension.
+   * It provides the currency and timezone of the buyer.
+   */
+  buyer: Buyer;
 }
 
 export interface Shop {

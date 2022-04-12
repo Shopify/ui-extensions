@@ -1,21 +1,21 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 /**
- * Info:
+ * `info`:
  * Use to convey general information or actions that aren’t critical or tied to
  * a particular action.
  *
- * Success:
+ * `success`:
  * Use rarely, only if you need additional visual confirmation that a
  * non-standard action has been completed successfully, for example adding an
  * item to an order as an upsell.
  *
- * Warning:
+ * `warning`:
  * Use to display information that needs attention or that customers need to
  * take action on. Seeing these banners can be stressful for customers so be
  * cautious about using them. Does not block progress to next step.
  *
- * Critical:
+ * `critical`:
  * Use to communicate problems that have to be resolved immediately for
  * customers to complete a task. For example, using a different payment method
  * if card details couldn't be processed. Seeing these banners can be stressful
@@ -31,12 +31,17 @@ export interface BannerProps {
   title?: string;
   /**
    * Sets the status of the banner.
+   *
    * @defaultValue 'info'
    */
   status?: Status;
-  /** Makes the content collapsible */
+  /**
+   * Makes the content collapsible
+   */
   collapsible?: boolean;
-  /** Hides the status icon */
+  /**
+   * Hides the status icon
+   */
   iconHidden?: boolean;
 }
 

@@ -5,6 +5,7 @@ UI extensions have access to powerful UI components for [rendering](./rendering.
 The following components are available as part of checkout UI extensions, but make sure that you check the documentation for your [extension point](./extension-points.md) to ensure the component is available in the extension points you are targeting.
 
 - [Banner](../src/components/Banner)
+- [BlockLayout](../src/components/BlockLayout)
 - [BlockSpacer](../src/components/BlockSpacer)
 - [BlockStack](../src/components/BlockStack)
 - [Bookend](../src/components/Bookend)
@@ -15,10 +16,12 @@ The following components are available as part of checkout UI extensions, but ma
 - [Divider](../src/components/Divider)
 - [Form](../src/components/Form)
 - [FormLayout and FormLayoutGroup](../src/components/FormLayout)
+- [Grid and GridItem](../src/components/Grid)
 - [Heading](../src/components/Heading)
 - [HeadingGroup](../src/components/HeadingGroup)
 - [Icon](../src/components/Icon)
 - [Image](../src/components/Image)
+- [InlineLayout](../src/components/InlineLayout)
 - [InlineSpacer](../src/components/InlineSpacer)
 - [InlineStack](../src/components/InlineStack)
 - [Layout](../src/components/Layout)
@@ -33,7 +36,5 @@ The following components are available as part of checkout UI extensions, but ma
 - [Stepper](../src/components/Stepper)
 - [Text](../src/components/Text)
 - [TextBlock](../src/components/TextBlock)
-- [TextContainer](../src/components/TextContainer)
 - [TextField](../src/components/TextField)
-- [Tiles](../src/components/Tiles)
 - [View](../src/components/View)

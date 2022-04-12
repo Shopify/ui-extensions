@@ -1,6 +1,6 @@
 import {
-  RenderExtensionPoint,
   ApiForRenderExtension,
+  RenderExtensionPoint,
 } from '@shopify/checkout-ui-extensions';
 
 import {useExtensionApi} from './api';
@@ -12,8 +12,8 @@ import {useSubscription} from './subscription';
  */
 export function useLocale<
   ID extends RenderExtensionPoint = RenderExtensionPoint
->(): ApiForRenderExtension<ID>['locale']['current'] {
-  const {locale} = useExtensionApi<ID>();
+>(): ApiForRenderExtension<ID>['i18n']['locale']['current'] {
+  const {i18n} = useExtensionApi<ID>();
 
-  return useSubscription(locale);
+  return useSubscription(i18n.locale);
 }

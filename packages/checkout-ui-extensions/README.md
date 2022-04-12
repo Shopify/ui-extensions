@@ -3,7 +3,7 @@
 This library contains type definitions and other utilities for writing UI extensions in Shopify’s checkout. However, nothing in this library is strictly required to write a UI extension. As a developer building a UI extension, you can forego the utilities this library provides entirely, and instead use the [global `shopify` API](documentation/globals.md) directly in a plain JavaScript file. The script below is a valid UI extension script without any additional processing:
 
 ```js
-shopify.extend('Checkout::Feature::Render', (root, api) => {
+shopify.extend('Checkout::Dynamic::Render', (root, api) => {
   const button = root.createComponent('Button', {
     onPress() {
       console.log('Upsold!');

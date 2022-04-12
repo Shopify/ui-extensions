@@ -47,28 +47,28 @@ export type IconSource =
   | 'warningCircle'
   | 'warningFill'
   | 'giftFill'
-  | 'external';
-
+  | 'external'
+  | 'profile';
 /**
- * Accent:
+ * `accent`:
  * Use to convey emphasis and draw attention to the icon.
  *
- * Interactive:
+ * `interactive`:
  * Use to convey that the icon is pressable, hoverable or otherwise interactive.
  *
- * Subdued:
+ * `subdued`:
  * Use to convey a subdued or disabled state for the icon.
  *
- * Info:
+ * `info`:
  * Use to convey icon is informative or has information.
  *
- * Success:
+ * `success`:
  * Use to convey a successful interaction.
  *
- * Warning:
+ * `warning`:
  * Use to convey something needs attention or an action needs to be taken.
  *
- * Critical:
+ * `critical`:
  * Use to convey a problem has arisen.
  */
 type Appearance =
@@ -83,22 +83,28 @@ type Appearance =
 type Size = 'small' | 'base' | 'large';
 
 export interface IconProps {
-  /** A label to use for the icon that will be used for buyers using assistive technology like screen readers. */
+  /**
+   * A label to use for the icon that will be used for buyers using assistive technology like screen readers.
+   */
   accessibilityLabel?: string;
 
   /**
    * Sets the appearance (color) of the icon.
+   *
    * By default the icon will inherit the color of its container.
    */
   appearance?: Appearance;
 
   /**
    * Adjusts the size of the icon.
+   *
    * By default the icon will take up the entire width of its container
    * */
   size?: Size;
 
-  /** Specifies which icon symbol to display */
+  /**
+   * Specifies which icon symbol to display
+   */
   source: IconSource;
 }
 

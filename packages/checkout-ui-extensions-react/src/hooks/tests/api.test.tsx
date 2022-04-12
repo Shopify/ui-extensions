@@ -5,10 +5,10 @@ import {mount} from './mount';
 describe('useExtensionApi', () => {
   it('returns api', async () => {
     const extensionApi = {
-      extensionPoint: 'Checkout::Feature::Render' as const,
+      extensionPoint: 'Checkout::Dynamic::Render' as const,
     };
     const {value} = mount.hook(
-      () => useExtensionApi<'Checkout::Feature::Render'>(),
+      () => useExtensionApi<'Checkout::Dynamic::Render'>(),
       {extensionApi},
     );
 

@@ -1,2 +1,2 @@
-export {ChoiceList, Choice} from './ChoiceList';
-export type {ChoiceListProps, ChoiceProps} from './ChoiceList';
+export {ChoiceList} from './ChoiceList';
+export type {ChoiceListProps} from './ChoiceList';
