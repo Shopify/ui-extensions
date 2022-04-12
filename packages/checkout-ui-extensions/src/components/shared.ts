@@ -211,7 +211,4 @@ export type AccessibilityRole =
   | 'alert';
 
 export type UnitSuffix = 'fr' | '%' | 'px';
-/* eslint-disable eslint-comments/no-unlimited-disable */
-// eslint-disable-next-line
 export type Unit<Suffix extends UnitSuffix> = `${number}${Suffix}`;
-/* eslint-enable eslint-comments/no-unlimited-disable */

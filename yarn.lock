@@ -2169,37 +2169,37 @@
     react-reconciler "^0.26.0"
     react-test-renderer "^17.0.0"
 
-"@remote-ui/async-subscription@^2.1.7", "@remote-ui/async-subscription@^2.1.8":
-  version "2.1.8"
-  resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.1.8.tgz#c5852180ec5a909ca74eb4d064c995cfa516d40a"
-  integrity sha512-prrHLURIqJQKDMDHn404u4uywYXBm4oz7ke43OLQx5e/dvM0Io72KHJUx3ZwoYNCTS9q9M+wICHS6g9S2d8d3g==
+"@remote-ui/async-subscription@^2.1.9":
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.1.9.tgz#84f413e40a8136ba28ee6ee0f946e4c1f85832d7"
+  integrity sha512-+5UmqyjQJXLJLOVbEBvfzc/Yt4mV/9J36IGJhCJdpdEmIBde7DjkWBt91eSFxa3+Zx6Enq1unkBl4rqosYgpgw==
   dependencies:
-    "@remote-ui/rpc" "^1.2.6"
+    "@remote-ui/rpc" "^1.3.0"
 
-"@remote-ui/core@^2.1.3", "@remote-ui/core@^2.1.6", "@remote-ui/core@^2.1.7":
-  version "2.1.7"
-  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.1.7.tgz#5936810a18225f6cef586ec8baf3b1bd00459006"
-  integrity sha512-urcIKnhGLwTn/fE0RyKqvYAxxDDBj46ANHT0zNooIHLeOMxKafAvrWZcdItxYKH6k51lR1/wmbOPKwG0lzm7Qg==
+"@remote-ui/core@^2.1.9":
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.1.9.tgz#dd3c8eee304b5660189c520f5848b9562ec6f7dc"
+  integrity sha512-a8HbfrZ1fq7u8/mmlFnmfl3LlQsFA9kkuvBtSnRf82dbUsspCT/y0yU6cN6/3Ek+tsPvuAd06lrlhd5L+VCMNg==
   dependencies:
-    "@remote-ui/rpc" "^1.2.6"
+    "@remote-ui/rpc" "^1.3.0"
     "@remote-ui/types" "^1.1.2"
 
-"@remote-ui/react@^4.1.3", "@remote-ui/react@^4.1.5", "@remote-ui/react@^4.3.0":
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.4.2.tgz#ad5c39beb023150a2eb792936b21c0070e9bae51"
-  integrity sha512-jQXsg9LwdfLJ0Sr31C/WtO/SwKolWvlJhhc8YGbYlWknUAnjTDrI682Mmv6Zh5VVRh+8fMjeuThJA7Bfhx8vXg==
+"@remote-ui/react@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.5.0.tgz#359969a80b9ad1abfde1404048a3f23783e0672c"
+  integrity sha512-NE9cvNu4i91/ymVp72x/jvtv6gfOatlq8ZWQBMt3MP0i93EBscqWs0932SestJUDLIdr6JgiceBgzLPD0qRblA==
   dependencies:
-    "@remote-ui/async-subscription" "^2.1.8"
-    "@remote-ui/core" "^2.1.7"
-    "@remote-ui/rpc" "^1.2.6"
+    "@remote-ui/async-subscription" "^2.1.9"
+    "@remote-ui/core" "^2.1.9"
+    "@remote-ui/rpc" "^1.3.0"
     "@types/react" ">=17.0.0 <18.0.0"
     "@types/react-reconciler" "^0.26.0"
-    react-reconciler ">=0.26.0 <1.0.0"
+    react-reconciler ">=0.26.0 <0.27.0"
 
-"@remote-ui/rpc@^1.2.6":
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.2.6.tgz#33ebfd97f5d5ab16b000bacbe392d96738b3d693"
-  integrity sha512-KdfDEnQEJmlNh8gbcPMG5Ldae94rsRytDqeuFUVsviQQ2CDui3RygN64iZlw8bVqbKiRpJ66hlVfpHkY6NbEDg==
+"@remote-ui/rpc@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.3.0.tgz#e9469803e8024707f096bd52041fdfe61154dac8"
+  integrity sha512-tO0nYON8IhErx/DYxufo7ccwnSh1Vo5mS41HAjUQ+fCctNmRABug0tjvCdOq1E6R6JAq1EbxN0U5w+7pYMcaFg==
 
 "@remote-ui/types@^1.1.2":
   version "1.1.2"
@@ -9827,9 +9827,9 @@ prettier-linter-helpers@^1.0.0:
     fast-diff "^1.1.2"
 
 prettier@^2.0.4:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.0.5.tgz#d6d56282455243f2f92cc1716692c08aa31522d4"
-  integrity sha512-7PtVymN48hGcO4fGjybyBSIWDsLU4H4XlvOHfq91pz9kkGlonzwTfYkaIEwiRg/dAJF9YlbsduBAgtYLi+8cFg==
+  version "2.6.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.6.2.tgz#e26d71a18a74c3d0f0597f55f01fb6c06c206032"
+  integrity sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==
 
 pretty-bytes@^5.3.0:
   version "5.5.0"
@@ -10116,16 +10116,7 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.1.tgz#5b3531bd76a645a4c9fb6e693ed36419e3301339"
   integrity sha512-NAnt2iGDXohE5LI7uBnLnqvLQMtzhkiAOLXTmv+qnF9Ky7xAPcX8Up/xWIhxvLVGJvuLiNc4xQLtuqDRzb4fSA==
 
-"react-reconciler@>=0.26.0 <1.0.0":
-  version "0.26.1"
-  resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.26.1.tgz#860952dd359fd870f94895c254271e3a9de3b2d6"
-  integrity sha512-6E/CvH9zcDmHjhiNJlP0qJ8+3ufnY2b5RWs774Uy8XKWN0l6qfnlkz0XnDacxqj2rbJdq76w9dlFXjPPOQrmqA==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
-    scheduler "^0.20.1"
-
-react-reconciler@^0.26.0:
+"react-reconciler@>=0.26.0 <0.27.0", react-reconciler@^0.26.0:
   version "0.26.2"
   resolved "https://registry.yarnpkg.com/react-reconciler/-/react-reconciler-0.26.2.tgz#bbad0e2d1309423f76cf3c3309ac6c96e05e9d91"
   integrity sha512-nK6kgY28HwrMNwDnMui3dvm3rCFjZrcGiuwLc5COUipBK5hWHLOxMJhSnSomirqWwjPBJKV1QcbkI0VJr7Gl1Q==
@@ -10720,14 +10711,6 @@ saxes@^5.0.0:
   integrity sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==
   dependencies:
     xmlchars "^2.2.0"
-
-scheduler@^0.20.1:
-  version "0.20.1"
-  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.20.1.tgz#da0b907e24026b01181ecbc75efdc7f27b5a000c"
-  integrity sha512-LKTe+2xNJBNxu/QhHvDR14wUXHRQbVY5ZOYpOGWRzhydZUqrLb2JBvLPY7cAqFmqrWuDED0Mjk7013SZiOz6Bw==
-  dependencies:
-    loose-envify "^1.1.0"
-    object-assign "^4.1.1"
 
 scheduler@^0.20.2:
   version "0.20.2"

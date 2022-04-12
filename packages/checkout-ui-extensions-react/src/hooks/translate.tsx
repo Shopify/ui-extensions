@@ -8,7 +8,7 @@ import type {RemoteComponentType} from '@remote-ui/types';
 import {useExtensionApi} from './api';
 
 export function useTranslate<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
   const {i18n} = useExtensionApi<ID>();
 

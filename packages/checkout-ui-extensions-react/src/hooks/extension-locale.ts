@@ -7,7 +7,7 @@ import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
 
 export function useExtensionLocale<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): ApiForRenderExtension<ID>['i18n']['extensionLocale']['current'] {
   const {i18n} = useExtensionApi<ID>();
 
