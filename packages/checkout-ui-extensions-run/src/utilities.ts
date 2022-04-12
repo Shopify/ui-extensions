@@ -208,17 +208,16 @@ export function parseDevelopmentServerConfig(args: string[]) {
   };
 }
 
-export const urlGeneratorFor = (baseUrl?: string) => (
-  path?: string,
-  query: Record<string, string> = {},
-): URL | undefined => {
-  if (!baseUrl) return undefined;
-  if (!path) return undefined;
+export const urlGeneratorFor =
+  (baseUrl?: string) =>
+  (path?: string, query: Record<string, string> = {}): URL | undefined => {
+    if (!baseUrl) return undefined;
+    if (!path) return undefined;
 
-  const url = new URL(path, baseUrl);
-  Object.keys(query).forEach((parameter) => {
-    url.searchParams.append(parameter, query[parameter]);
-  });
+    const url = new URL(path, baseUrl);
+    Object.keys(query).forEach((parameter) => {
+      url.searchParams.append(parameter, query[parameter]);
+    });
 
-  return url;
-};
+    return url;
+  };
