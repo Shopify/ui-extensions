@@ -1,0 +1,1 @@
+export {useExtensionApi} from './useExtension';

@@ -1,5 +1,6 @@
 export {render} from './render';
 export {extend} from '@shopify/retail-ui-extensions/src';
+export {useExtensionApi} from './hooks';
 export * from './components';
 
 export type {
