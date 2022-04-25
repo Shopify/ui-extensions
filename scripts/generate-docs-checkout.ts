@@ -15,7 +15,6 @@ const checkout = {
   shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
 };
 
-
 const componentsPageContent = (url: string, title = 'Checkout') => ({
   title: `Components for ${title} extensions`,
   frontMatterDescription: `A list of components for ${title} extensions.`,
