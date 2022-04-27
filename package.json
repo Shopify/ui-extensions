@@ -25,7 +25,8 @@
     "type-check": "sk type-check",
     "version-bump:admin": "lerna version --no-push --ignore-changes 'packages/!(admin*|ui-extensions)/**' --include-merged-tags",
     "version-bump:checkout": "lerna version --no-push --ignore-changes 'packages/!(checkout*)/**' --include-merged-tags",
-    "version-bump:post-purchase": "lerna version --no-push --ignore-changes 'packages/!(post-purchase*)/**' --include-merged-tags"
+    "version-bump:post-purchase": "lerna version --no-push --ignore-changes 'packages/!(post-purchase*)/**' --include-merged-tags",
+    "version-bump:retail": "lerna version --no-push --ignore-changes 'packages/!(retail*)/**' --include-merged-tags"
   },
   "devDependencies": {
     "@babel/node": "^7.8.7",
