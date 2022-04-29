@@ -2548,10 +2548,10 @@
   resolved "https://registry.yarnpkg.com/@sewing-kit/webpack-plugin-hash-output/-/webpack-plugin-hash-output-0.0.2.tgz#a41ddef000619ac20e64513edbbfc6f28afe7905"
   integrity sha512-BF3gmC9YZf4VY5RLAc5qUbxft16O614jnTtGr8gPRbJF4y3Qz3AVSxSB8dJDldzk4AH9lTQvH0e1Wkbgp5tR8g==
 
-"@shopify/docs-tools@^0.0.11":
-  version "0.0.11"
-  resolved "https://registry.yarnpkg.com/@shopify/docs-tools/-/docs-tools-0.0.11.tgz#bba6d39967654f168101a6a2ad5894903a7f4c0a"
-  integrity sha512-zLSQuZSDui6dxjYO31tQlhBYFw6WsMuNvck/RCkHIcKhN7igea14SZevKBjnmeDfi23Uq3IW9+psomcq6BtjSA==
+"@shopify/docs-tools@^0.0.12":
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/@shopify/docs-tools/-/docs-tools-0.0.12.tgz#cd383f2e2b89bbb8db4adea327e505155e86d6de"
+  integrity sha512-IZN913Zx9gucp7gYuV++vU4ZnPs5Q7Gj0UvP3wvPBmNwjiKRxsCjqHMtV5npLsvl8quxFUw1RGF+8bY+WmJlKQ==
   dependencies:
     "@babel/parser" "^7.16.4"
     "@microsoft/tsdoc" "^0.13.2"

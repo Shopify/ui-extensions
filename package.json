@@ -26,7 +26,8 @@
     "type-check": "sk type-check",
     "version-bump:admin": "lerna version --no-push --ignore-changes 'packages/!(admin*|ui-extensions)/**' --include-merged-tags",
     "version-bump:checkout": "lerna version --no-push --ignore-changes 'packages/!(checkout*)/**' --include-merged-tags",
-    "version-bump:post-purchase": "lerna version --no-push --ignore-changes 'packages/!(post-purchase*)/**' --include-merged-tags"
+    "version-bump:post-purchase": "lerna version --no-push --ignore-changes 'packages/!(post-purchase*)/**' --include-merged-tags",
+    "version-bump:retail": "lerna version --no-push --ignore-changes 'packages/!(retail*)/**' --include-merged-tags"
   },
   "devDependencies": {
     "@babel/node": "^7.8.7",
@@ -54,7 +55,7 @@
     "rollup": "^2.52.2",
     "rollup-plugin-jsx": "^1.0.3",
     "uuid": "^8.3.2",
-    "@shopify/docs-tools": "^0.0.11"
+    "@shopify/docs-tools": "^0.0.12"
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "^4.0.0",
