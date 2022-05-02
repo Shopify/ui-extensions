@@ -13,7 +13,7 @@ const checkout = {
   outputRoot: '../shopify-dev/content/api/checkout-extensions/checkout',
   shopifyDevUrl: '/api/checkout-extensions/checkout',
   shopifyDevAssets:
-    '../shopify-dev/app/assets/images/api/checkout-extensions/checkout',
+    '../shopify-dev/app/assets/images/api/checkout-extensions',
 };
 
 const componentsPageContent = (url: string, title = 'Checkout') => ({
