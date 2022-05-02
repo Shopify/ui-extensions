@@ -35,7 +35,11 @@ type VisibilityFrontMatter = Pick<
   'hidden' | 'post_unite' | 'feature_flag_enabled'
 >;
 
-export type Visibility = 'hidden' | 'postUnite' | 'visible' | 'betaCheckoutExtensions';
+export type Visibility =
+  | 'hidden'
+  | 'postUnite'
+  | 'visible'
+  | 'betaCheckoutExtensions';
 
 export function renderYamlFrontMatter(frontMatter: FrontMatter) {
   let matter = '---\n';
