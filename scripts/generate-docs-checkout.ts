@@ -12,7 +12,8 @@ const checkout = {
   },
   outputRoot: '../shopify-dev/content/api/checkout-extensions/checkout',
   shopifyDevUrl: '/api/checkout-extensions/checkout',
-  shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions/checkout',
+  shopifyDevAssets:
+    '../shopify-dev/app/assets/images/api/checkout-extensions/checkout',
 };
 
 const componentsPageContent = (url: string, title = 'Checkout') => ({
@@ -31,14 +32,14 @@ const componentsPageContent = (url: string, title = 'Checkout') => ({
 
 // Checkout docs
 extensionPoints(checkout, {
-  visibility: 'beta'
+  visibility: 'beta',
 });
 components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
   subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
   componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
   generateReadmes: true,
-  visibility: 'beta'
+  visibility: 'beta',
 });
 gettingStarted(checkout, {
-  visibility: 'beta'
+  visibility: 'beta',
 });

@@ -30,7 +30,10 @@ interface FrontMatter {
   feature_flag_enabled?: string;
 }
 
-type VisibilityFrontMatter = Pick<FrontMatter, 'hidden' | 'post_unite' | 'feature_flag_enabled'>;
+type VisibilityFrontMatter = Pick<
+  FrontMatter,
+  'hidden' | 'post_unite' | 'feature_flag_enabled'
+>;
 
 export type Visibility = 'hidden' | 'postUnite' | 'visible' | 'beta';
 
