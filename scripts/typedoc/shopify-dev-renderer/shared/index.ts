@@ -27,11 +27,12 @@ interface FrontMatter {
   description?: string;
   hidden?: boolean;
   post_unite?: string;
+  feature_flag_enabled?: string;
 }
 
-type VisibilityFrontMatter = Pick<FrontMatter, 'hidden' | 'post_unite'>;
+type VisibilityFrontMatter = Pick<FrontMatter, 'hidden' | 'post_unite' | 'feature_flag_enabled'>;
 
-export type Visibility = 'hidden' | 'postUnite' | 'visible';
+export type Visibility = 'hidden' | 'postUnite' | 'visible' | 'beta';
 
 export function renderYamlFrontMatter(frontMatter: FrontMatter) {
   let matter = '---\n';
@@ -51,6 +52,7 @@ export const visibilityToFrontMatterMap = new Map<
   Visibility,
   VisibilityFrontMatter
 >([
+  ['beta', {feature_flag_enabled: 'checkout_extensions'}],
   ['hidden', {hidden: true}],
   ['postUnite', {post_unite: 'show'}],
   ['visible', {}],
