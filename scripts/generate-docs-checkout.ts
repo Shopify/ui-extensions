@@ -32,14 +32,14 @@ const componentsPageContent = (url: string, title = 'Checkout') => ({
 
 // Checkout docs
 extensionPoints(checkout, {
-  visibility: 'beta',
+  visibility: 'betaCheckoutExtensions',
 });
 components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
   subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
   componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
   generateReadmes: true,
-  visibility: 'beta',
+  visibility: 'betaCheckoutExtensions',
 });
 gettingStarted(checkout, {
-  visibility: 'beta',
+  visibility: 'betaCheckoutExtensions',
 });
