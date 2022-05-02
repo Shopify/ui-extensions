@@ -17,7 +17,6 @@
     ]
   },
   "include": [
-    "config/typescript/faker.d.ts",
     "src/**/*.ts",
     "src/**/*.tsx"
   ],
