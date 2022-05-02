@@ -4,14 +4,14 @@ import {
   gettingStarted,
 } from './typedoc/shopify-dev-renderer';
 
-const checkout = {
-  inputRoot: './packages/checkout-ui-extensions',
+const postPurchase = {
+  inputRoot: './packages/post-purchase-ui-extensions',
   packages: {
-    JS: './packages/checkout-ui-extensions',
-    React: './packages/checkout-ui-extensions-react',
+    JS: './packages/post-purchase-ui-extensions',
+    React: './packages/post-purchase-ui-extensions-react',
   },
-  outputRoot: '../shopify-dev/content/beta/checkout-extensions',
-  shopifyDevUrl: '/beta/checkout-extensions',
+  outputRoot: '../shopify-dev/content/api/checkout-extensions',
+  shopifyDevUrl: '/api/checkout-extensions',
   shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
 };
 
@@ -29,11 +29,19 @@ const componentsPageContent = (url: string, title = 'Checkout') => ({
   targeting.`,
 });
 
-// Checkout docs
-extensionPoints(checkout);
-components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
-  subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
-  componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
-  generateReadmes: true,
+// Post-purchase docs
+extensionPoints(postPurchase, {
+  title: 'Post-purchase',
+  visibility: 'visible',
 });
-gettingStarted(checkout);
+components(
+  postPurchase,
+  componentsPageContent(postPurchase.shopifyDevUrl, 'Post-purchase'),
+  {
+    subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
+    componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
+    generateReadmes: true,
+    visibility: 'visible',
+  },
+);
+gettingStarted(postPurchase, {title: 'Post-purchase', visibility: 'visible'});

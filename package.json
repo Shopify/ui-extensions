@@ -15,6 +15,7 @@
     "deploy": "lerna publish from-package --yes",
     "docs:admin": "babel-node --extensions .ts,.tsx,.mjs,.js,.json scripts/generate-docs-admin.ts",
     "docs:checkout": "babel-node --extensions .ts,.tsx,.mjs,.js,.json scripts/generate-docs-checkout.ts",
+    "docs:post-purchase": "babel-node --extensions .ts,.tsx,.mjs,.js,.json scripts/generate-docs-post-purchase.ts",
     "lint": "sk lint",
     "nuke": "lerna clean --yes && rm -rf node_modules && yarn cache clean",
     "restore-consumer": "./scripts/restore-consumer.sh",
