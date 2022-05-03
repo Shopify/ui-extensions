@@ -186,6 +186,8 @@ function propType(
   const PIPE = '&#124;';
 
   switch (value.kind) {
+    case 'UndefinedType':
+      return 'undefined';
     case 'AnyType':
       return 'any';
     case 'NullType':
@@ -209,6 +211,8 @@ function propType(
       )}[]`;
     case 'NumberType':
       return 'number';
+    case 'BigIntType':
+      return 'bigint';
     case 'Local':
       // eslint-disable-next-line no-case-declarations
       const local = exports.find(
@@ -221,7 +225,10 @@ function propType(
         // console.warn(
         //   `Can’t resolve export type \`${value.name}\` in ${dir}. Maybe it’s not exported from the component index or imported from a remote package.`,
         // );
-
+        if(value.name === 'Unknown' && value?.params[0]) {
+          //HACK: to get the TSMethodSignature name to show instead of simply "Unknown"
+          return `${value.params[0].name}${params}`;
+        }
         return `${value.name}${params}`;
       }
       local.value.params = value.params;
@@ -264,6 +271,19 @@ function propType(
         dir,
         additionalPropsTables,
       )}`;
+    case 'MethodSignatureType':
+      const retVal = `(${paramsType(
+        value.parameters,
+        exports,
+        dir,
+        additionalPropsTables,
+      )}) => ${propType(
+        value.returnType,
+        exports,
+        dir,
+        additionalPropsTables,
+      )}`;
+      return retVal;
     case 'MappedType':
       // eslint-disable-next-line no-case-declarations
       const ref = exports.find(
@@ -272,10 +292,11 @@ function propType(
       // special case for Responsive only
       additionalPropsTables.push(responsive(ref, additionalPropsTables));
       return anchorLink(value.name);
+
     default:
       if (value.kind === 'UndocumentedType' && value.name === 'T') {
         return 'T';
-      }
+      } 
       return value.kind;
   }
 }
