@@ -225,7 +225,7 @@ function propType(
         // console.warn(
         //   `Can’t resolve export type \`${value.name}\` in ${dir}. Maybe it’s not exported from the component index or imported from a remote package.`,
         // );
-        if(value.name === 'Unknown' && value?.params[0]) {
+        if(value.name === 'Unknown' && value?.params[0]?.name) {
           //HACK: to get the TSMethodSignature name to show instead of simply "Unknown"
           return `${value.params[0].name}${params}`;
         }
