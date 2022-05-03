@@ -4,6 +4,8 @@ import {
   gettingStarted,
 } from './typedoc/shopify-dev-renderer';
 
+
+
 const checkout = {
   inputRoot: './packages/checkout-ui-extensions',
   packages: {

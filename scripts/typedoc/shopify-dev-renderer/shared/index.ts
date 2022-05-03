@@ -216,9 +216,11 @@ function propType(
       );
 
       if (local == null) {
-        console.warn(
-          `Can’t resolve export type \`${value.name}\` in ${dir}. Maybe it’s not exported from the component index or imported from a remote package.`,
-        );
+
+        //Hack: turn off the noise
+        // console.warn(
+        //   `Can’t resolve export type \`${value.name}\` in ${dir}. Maybe it’s not exported from the component index or imported from a remote package.`,
+        // );
 
         return `${value.name}${params}`;
       }
