@@ -1,5 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {AutoCapitalizationType} from '../types';
+import type {AutoCapitalizationType} from '../shared';
 
 export type InputType =
   | 'text'

@@ -1,5 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {AutoCapitalizationType} from '../types';
+import {AutoCapitalizationType} from '../shared';
 
 export interface SearchBarProps {
   initialValue?: string;
