@@ -326,7 +326,7 @@ function propType(
         dir,
         additionalPropsTables,
       )}]: ${propType(
-        value.props,
+        value.properties,
         exports,
         dir,
         additionalPropsTables,
