@@ -8,4 +8,5 @@ export * from './SegmentedControl';
 export * from './Tag';
 export * from './Dialog';
 export * from './SearchBar';
-export * from './types';
+
+export type {AutoCapitalizationType} from './shared';
