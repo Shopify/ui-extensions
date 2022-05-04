@@ -293,6 +293,30 @@ function propType(
       additionalPropsTables.push(responsive(ref, additionalPropsTables));
       return anchorLink(value.name);
 
+    case 'ConditionalType': 
+        
+      return `${propType(
+        value.checkType,
+        exports,
+        dir,
+        additionalPropsTables,
+      )} extends ${propType(
+        value.extendsType,
+        exports,
+        dir,
+        additionalPropsTables,
+      )} ? ${propType(
+        value.trueType,
+        exports,
+        dir,
+        additionalPropsTables,
+      )} : ${propType(
+        value.falseType,
+        exports,
+        dir,
+        additionalPropsTables,
+      )}`;
+
     default:
       if (value.kind === 'UndocumentedType' && value.name === 'T') {
         return 'T';
