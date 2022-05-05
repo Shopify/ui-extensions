@@ -331,6 +331,17 @@ function propType(
         dir,
         additionalPropsTables,
       )}`
+    
+    case 'TupleType':
+      return `[${value.elements.map((element) => {
+        return propType(
+          element,
+          exports,
+          dir,
+          additionalPropsTables,
+        )
+      })}]`;
+    
 
     default:
       if (value.kind === 'UndocumentedType' && value.name === 'T') {
