@@ -346,7 +346,7 @@ function propType(
       if(value.kind === 'UndocumentedType' && value.name?.length > 0) {
         return value.name
       } 
-      console.warn('🚨 An UndocumentedType could not be resolved and is being used in documentation showing as `UndocumentedType`. Check the output for the affected docs.');
+      console.warn('🚨 An type could not be resolved and is being used in documentation showing as `UndocumentedType`. Check the output for the affected docs.');
       return value.kind;
 
     default:
