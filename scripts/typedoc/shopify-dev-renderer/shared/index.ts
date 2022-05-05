@@ -220,9 +220,12 @@ function propType(
       );
 
       if (local == null) {
-
-        if (value.name === 'Unknown' && value?.params[0]?.name) {
-          // HACK: to get the TSMethodSignature name to show instead of simply "Unknown"
+        // Show the MethodSignatureType name instead of simply "Unknown"
+        if (
+          value.name === 'Unknown' &&
+          value?.params[0]?.kind === 'MethodSignatureType' &&
+          value?.params[0]?.name?.length > 0
+        ) {
           return `${value.params[0].name}${params}`;
         }
         return `${value.name}${params}`;
@@ -320,7 +323,7 @@ function propType(
         return value.name;
       }
       console.warn(
-        '🚨 An type could not be resolved and is being used in documentation showing as `UndocumentedType`. Check the output for the affected docs.',
+        '🚨 A type could not be resolved and is being used in documentation showing as `UndocumentedType`. Check the output for the affected docs.',
       );
       return value.kind;
     default:
