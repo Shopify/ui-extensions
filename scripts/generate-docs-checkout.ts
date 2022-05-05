@@ -10,8 +10,8 @@ const checkout = {
     JS: './packages/checkout-ui-extensions',
     React: './packages/checkout-ui-extensions-react',
   },
-  outputRoot: '../shopify-dev/content/beta/checkout-extensions',
-  shopifyDevUrl: '/beta/checkout-extensions',
+  outputRoot: '../shopify-dev/content/api/checkout-extensions/checkout',
+  shopifyDevUrl: '/api/checkout-extensions/checkout',
   shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
 };
 
@@ -30,10 +30,15 @@ const componentsPageContent = (url: string, title = 'Checkout') => ({
 });
 
 // Checkout docs
-extensionPoints(checkout);
+extensionPoints(checkout, {
+  visibility: 'betaCheckoutExtensions',
+});
 components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
   subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
   componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
   generateReadmes: true,
+  visibility: 'betaCheckoutExtensions',
 });
-gettingStarted(checkout);
+gettingStarted(checkout, {
+  visibility: 'betaCheckoutExtensions',
+});
