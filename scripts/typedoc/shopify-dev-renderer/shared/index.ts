@@ -220,14 +220,13 @@ function propType(
       );
 
       if (local == null) {
-
-        //Hack: turn off the noise
+        // Hack: turn off the noise
         // console.warn(
         //   `Can’t resolve export type \`${value.name}\` in ${dir}. Maybe it’s not exported from the component index or imported from a remote package.`,
         // );
-        
-        if(value.name === 'Unknown' && value?.params[0]?.name) {
-          //HACK: to get the TSMethodSignature name to show instead of simply "Unknown"
+
+        if (value.name === 'Unknown' && value?.params[0]?.name) {
+          // HACK: to get the TSMethodSignature name to show instead of simply "Unknown"
           return `${value.params[0].name}${params}`;
         }
         return `${value.name}${params}`;
@@ -273,7 +272,7 @@ function propType(
         additionalPropsTables,
       )}`;
     case 'MethodSignatureType':
-      const retVal = `(${paramsType(
+      return `(${paramsType(
         value.parameters,
         exports,
         dir,
@@ -284,7 +283,6 @@ function propType(
         dir,
         additionalPropsTables,
       )}`;
-      return retVal;
     case 'MappedType':
       // eslint-disable-next-line no-case-declarations
       const ref = exports.find(
@@ -293,9 +291,7 @@ function propType(
       // special case for Responsive only
       additionalPropsTables.push(responsive(ref, additionalPropsTables));
       return anchorLink(value.name);
-
-    case 'ConditionalType': 
-        
+    case 'ConditionalType':
       return `${propType(
         value.checkType,
         exports,
@@ -311,44 +307,26 @@ function propType(
         exports,
         dir,
         additionalPropsTables,
-      )} : ${propType(
-        value.falseType,
-        exports,
-        dir,
-        additionalPropsTables,
-      )}`;
-
+      )} : ${propType(value.falseType, exports, dir, additionalPropsTables)}`;
     case 'IndexSignatureType':
-      
       return `[${paramsType(
         value.parameters,
         exports,
         dir,
         additionalPropsTables,
-      )}]: ${propType(
-        value.properties,
-        exports,
-        dir,
-        additionalPropsTables,
-      )}`
-    
+      )}]: ${propType(value.properties, exports, dir, additionalPropsTables)}`;
     case 'TupleType':
       return `[${value.elements.map((element) => {
-        return propType(
-          element,
-          exports,
-          dir,
-          additionalPropsTables,
-        )
+        return propType(element, exports, dir, additionalPropsTables);
       })}]`;
-    
     case 'UndocumentedType':
-      if(value.kind === 'UndocumentedType' && value.name?.length > 0) {
-        return value.name
-      } 
-      console.warn('🚨 An type could not be resolved and is being used in documentation showing as `UndocumentedType`. Check the output for the affected docs.');
+      if (value.kind === 'UndocumentedType' && value.name?.length > 0) {
+        return value.name;
+      }
+      console.warn(
+        '🚨 An type could not be resolved and is being used in documentation showing as `UndocumentedType`. Check the output for the affected docs.',
+      );
       return value.kind;
-
     default:
       return value.kind;
   }
