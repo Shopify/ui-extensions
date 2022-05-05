@@ -342,11 +342,14 @@ function propType(
         )
       })}]`;
     
+    case 'UndocumentedType':
+      if(value.kind === 'UndocumentedType' && value.name?.length > 0) {
+        return value.name
+      } 
+      console.warn('An UndocumentedType could not be resolved and is being used in documentation.');
+      return value.kind;
 
     default:
-      if (value.kind === 'UndocumentedType' && value.name === 'T') {
-        return 'T';
-      } 
       return value.kind;
   }
 }
