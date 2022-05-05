@@ -8,4 +8,4 @@ import type {ShopifyGlobal} from './globals';
  * is ready to run the extension point.
  */
 export const extend: ShopifyGlobal['extend'] = (...args) =>
-  ((self as any) as {shopify: ShopifyGlobal}).shopify.extend(...args);
+  ((globalThis as any) as WorkerGlobalScope).shopify.extend(...args);
