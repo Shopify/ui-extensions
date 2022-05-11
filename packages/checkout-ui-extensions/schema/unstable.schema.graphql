@@ -1,0 +1,90 @@
+scalar CurrencyCode
+scalar CountryCode
+scalar Timezone
+scalar Locale
+scalar Decimal
+
+type Query {
+  buyerIdentity: BuyerIdentity!
+  localization: Localization!
+
+  metafield(namespace: String!, key: String!): Metafield
+
+  note: String!
+  lines: [Line!]!
+  deliveryGroups: [DeliveryGroup!]!
+}
+
+type BuyerIdentity {
+  email: String
+  phone: String
+}
+
+type Localization {
+  locale: Locale!
+  currency: CurrencyCode!
+}
+
+type Line {
+  id: ID!
+  quantity: Int!
+  cost: Cost!
+  merchandise: Merchandise!
+}
+
+type Cost {
+  totalAmount: Money!
+  totalTaxAmount: Money
+}
+
+type Address {
+  id: ID!
+  address1: String
+  address2: String
+  city: String
+  company: String
+  countryCode: CountryCode!
+  firstName: String
+  lastName: String
+  name: String
+  phone: String
+  zoneCode: String
+  postalCode: String
+}
+
+type Money {
+  amount: Decimal!
+  currencyCode: CurrencyCode!
+}
+
+type Metafield {
+  key: String!
+  namespace: String!
+  value: String!
+  type: String!
+}
+
+interface Merchandise {
+  requiresShipping: Boolean!
+}
+
+type ProductVariant implements Merchandise {
+  id: ID!
+  title: String!
+  metafield(key: String!, namespace: String!): Metafield
+  requiresShipping: Boolean!
+}
+
+type Product {
+  id: ID!
+  metafield(key: String!, namespace: String!): Metafield
+}
+
+type DeliveryGroup {
+  cartLines: [Line!]!
+  deliveryAddress: Address
+}
+
+schema {
+  query: Query
+}

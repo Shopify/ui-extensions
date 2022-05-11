@@ -318,6 +318,8 @@ export interface StandardApi<
    */
   configuration: StatefulRemoteSubscribable<Record<string, unknown>>;
 
+  data: StatefulRemoteSubscribable<Record<string, unknown>>;
+
   /**
    * The renderer version being used for the extension.
    *

@@ -1,5 +1,6 @@
 export {useConfiguration} from './configuration';
 export {useExtensionApi} from './api';
+export {useData} from './data';
 export {useLocale} from './locale';
 export {useExtensionLocale} from './extension-locale';
 export {useBuyerJourney, useBuyerJourneyIntercept} from './buyer-journey';

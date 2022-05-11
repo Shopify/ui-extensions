@@ -20,7 +20,7 @@ const WEBSOCKET_PATH = '/build';
 const PUBLIC_PATH = '/assets/';
 
 export async function dev(...args: string[]) {
-  const extension = loadExtension();
+  let extension = loadExtension();
   const config = await parseDevelopmentServerConfig(args);
   const {
     extensionPoint,
@@ -160,6 +160,8 @@ export async function dev(...args: string[]) {
       // including what extensions are available locally, and how to connect to the
       // build server websocket for those extensions.
       app.get('/query', (req, res) => {
+        extension = loadExtension();
+
         const protocol = req.headers['x-forwarded-proto'] ?? req.protocol;
         const host = req.headers.host;
         const origin = `${protocol}://${host}`;
@@ -178,6 +180,10 @@ export async function dev(...args: string[]) {
                   ? extension.config.extensionPoints
                   : ['Checkout::PostPurchase::Render'],
               metafields: extension.config?.metafields || [],
+              inputQuery:
+                extension.type === 'checkout'
+                  ? extension.config.inputQuery
+                  : undefined,
             },
           ],
         });

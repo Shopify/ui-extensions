@@ -41,6 +41,7 @@ export function log(message: string, {error = false} = {}) {
 
 export interface CheckoutExtensionConfig {
   readonly extensionPoints: string[];
+  readonly inputQuery?: string;
   readonly metafields?: {namespace: string; key: string}[];
 }
 
@@ -73,7 +74,7 @@ export interface DevelopmentServerConfiguration {
 }
 
 export function loadExtension(): Extension {
-  const config = readConfig();
+  const config = readConfig() as any;
 
   return config == null || !('extensionPoints' in config)
     ? {
@@ -82,7 +83,13 @@ export function loadExtension(): Extension {
       }
     : {
         type: 'checkout',
-        config,
+        config: {
+          ...config,
+          inputQuery:
+            config.inputQuery && existsSync(config.inputQuery)
+              ? readFileSync(config.inputQuery, {encoding: 'utf8'})
+              : undefined,
+        },
       };
 }
 
