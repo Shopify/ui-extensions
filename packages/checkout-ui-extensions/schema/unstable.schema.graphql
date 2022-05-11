@@ -73,6 +73,7 @@ type ProductVariant implements Merchandise {
   title: String!
   metafield(key: String!, namespace: String!): Metafield
   requiresShipping: Boolean!
+  product: Product!
 }
 
 type Product {
