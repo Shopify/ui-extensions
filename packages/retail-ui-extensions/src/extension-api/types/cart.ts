@@ -17,6 +17,7 @@ export interface Customer {
 }
 
 export interface LineItem {
+  uuid: string;
   price?: number;
   quantity: number;
   title?: string;

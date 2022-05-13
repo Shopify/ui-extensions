@@ -48,10 +48,10 @@ export interface CartApiContent {
    */
   addLineItem(variantId: number, quantity: number): void;
 
-  /** Remove the line item at this index from the cart
-   * @param index the index of the line item that should be removed
+  /** Remove the line item at this uuid from the cart
+   * @param uuid the uuid of the line item that should be removed
    */
-  removeLineItem(index: number): void;
+  removeLineItem(uuid: string): void;
 
   /** Adds custom properties to the cart
    * @param properties the custom key to value object to attribute to the cart
@@ -64,37 +64,34 @@ export interface CartApiContent {
   removeCartProperties(keys: string[]): void;
 
   /** Adds custom properties to the specified line item
-   * @param index the index of the line item to which the properties should be added
+   * @param uuid the uuid of the line item to which the properties should be stringd
    * @param properties the custom key to value object to attribute to the line item
    */
-  addLineItemProperties(
-    index: number,
-    properties: Record<string, string>,
-  ): void;
+  addLineItemProperties(uuid: string, properties: Record<string, string>): void;
 
   /** Removes the specified line item properties
-   * @param index the index of the line item to which the properties should be removed
+   * @param uuid the uuid of the line item to which the properties should be removed
    * @param keys the collection of keys to be removed from the line item properties
    */
-  removeLineItemProperties(index: number, keys: string[]): void;
+  removeLineItemProperties(uuid: string, keys: string[]): void;
 
   /** Add a discount on a line item to the cart
-   * @param index the index of the line item that should receive a discount
+   * @param uuid the uuid of the line item that should receive a discount
    * @param type the type of discount applied (example: 'Percentage')
    * @param title the title attributed with the discount
    * @param amount the percentage or fixed monetary amount deducted with the discout
    */
   setLineItemDiscount(
-    index: number,
+    uuid: number,
     type: DiscountType,
     title: string,
     amount: string,
   ): void;
 
   /** Remove all discounts from a line item
-   * @param index the index of the line item whose discounts should be removed
+   * @param uuid the uuid of the line item whose discounts should be removed
    */
-  removeLineItemDiscount(index: number): void;
+  removeLineItemDiscount(uuid: string): void;
 
   /** Add an address to the customer (Customer must be present)
    * @param address the address object to add to the customer in cart
