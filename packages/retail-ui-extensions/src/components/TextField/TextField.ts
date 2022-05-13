@@ -1,31 +1,36 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import type {AutoCapitalizationType} from '../shared';
 
-export type InputType =
-  | 'text'
-  | 'number'
-  | 'percent'
-  | 'boundlessPercent'
-  | 'currency'
-  | 'giftcard'
-  | 'expiry'
-  | 'date'
-  | 'zip'
-  | 'password'
-  | 'email'
-  | 'url'
-  | 'phone';
+interface Action {
+  type: 'action';
+  message: string;
+  onPress: (value: string) => void;
+}
+
+interface Info {
+  type: 'info';
+  message: string;
+  alwaysShow?: boolean;
+}
+
+interface Success {
+  type: 'success';
+  message?: string;
+}
+
+interface Password {
+  type: 'password';
+  onPress: (value: string) => void;
+}
+
+export type EmbeddedElementStyle = Action | Info | Success | Password;
 
 export interface TextFieldProps {
-  inputType?: InputType;
   title?: string;
-  initialValue?: string;
+  subtitle?: string;
+  isValid?: boolean;
   hint?: string;
+  rightElementStyle?: EmbeddedElementStyle;
   errorMessage?: string;
-  showError?: boolean;
-  autoCapitalize?: AutoCapitalizationType;
-  onUpdate?: (value: string) => void;
-  customValidator?: (text: string) => boolean;
 }
 
 export const TextField = createRemoteComponent<'TextField', TextFieldProps>(
