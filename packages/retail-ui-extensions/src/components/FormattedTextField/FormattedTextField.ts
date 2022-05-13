@@ -28,6 +28,7 @@ export interface FormattedTextFieldProps {
   customValidator?: (text: string) => boolean;
 }
 
-export const FormattedTextField = createRemoteComponent<'FormattedTextField', FormattedTextFieldProps>(
+export const FormattedTextField = createRemoteComponent<
   'FormattedTextField',
-);
+  FormattedTextFieldProps
+>('FormattedTextField');
