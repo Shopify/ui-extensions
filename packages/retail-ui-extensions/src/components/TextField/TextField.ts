@@ -17,6 +17,7 @@ export type InputType =
   | 'phone';
 
 export interface TextFieldProps {
+  inputType?: InputType;
   title?: string;
   initialValue?: string;
   hint?: string;
