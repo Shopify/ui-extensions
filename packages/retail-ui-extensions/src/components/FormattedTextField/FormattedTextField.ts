@@ -1,7 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import {TextFieldProps} from 'components/TextField';
 import type {AutoCapitalizationType} from '../shared';
 
-export type InputType =
+type InputType =
   | 'text'
   | 'number'
   | 'percent'
@@ -16,15 +17,10 @@ export type InputType =
   | 'url'
   | 'phone';
 
-export interface FormattedTextFieldProps {
+export interface FormattedTextFieldProps extends TextFieldProps {
   inputType?: InputType;
-  title?: string;
-  initialValue?: string;
-  hint?: string;
-  errorMessage?: string;
   showError?: boolean;
   autoCapitalize?: AutoCapitalizationType;
-  onUpdate?: (value: string) => void;
   customValidator?: (text: string) => boolean;
 }
 
