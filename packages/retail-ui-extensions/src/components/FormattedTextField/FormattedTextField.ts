@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import {TextFieldProps} from 'components/TextField';
 import type {AutoCapitalizationType} from '../shared';
 
-type InputType =
+export type InputType =
   | 'text'
   | 'number'
   | 'percent'

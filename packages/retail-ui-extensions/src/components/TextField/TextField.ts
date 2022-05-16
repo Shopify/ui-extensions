@@ -22,7 +22,7 @@ interface PasswordProps {
   onPress: (value: string) => void;
 }
 
-type EmbeddedElementProps =
+export type EmbeddedElementProps =
   | ActionProps
   | InfoProps
   | SuccessProps
