@@ -13,10 +13,10 @@ export type {Spacing, StackProps} from './Stack';
 export type {VerticalSpacing, HorizontalSpacing} from './Spacing';
 
 export {FormattedTextField} from './FormattedTextField';
-export type {InputType, FormattedTextFieldProps} from './FormattedTextField';
+export type {FormattedTextFieldProps} from './FormattedTextField';
 
 export {TextField} from './TextField';
-export type {EmbeddedElementStyle, TextFieldProps} from './TextField';
+export type {TextFieldProps} from './TextField';
 
 export {SegmentedControl} from './SegmentedControl';
 export type {Segment, SegmentedControlProps} from './SegmentedControl';
