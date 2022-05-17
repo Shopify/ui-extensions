@@ -1,6 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {BaseTextFieldProps} from 'components/shared/BaseTextField';
-import type {AutoCapitalizationType} from '../shared';
+import type {AutoCapitalizationType, BaseTextFieldProps} from '../shared';
 
 export type InputType =
   | 'text'
