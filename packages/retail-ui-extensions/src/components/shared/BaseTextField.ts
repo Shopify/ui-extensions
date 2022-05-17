@@ -1,7 +1,7 @@
 export interface BaseTextFieldProps {
   title?: string;
   subtitle?: string;
-  initialValue?: string;
+  value?: string;
   hint?: string;
   isValid?: boolean;
   errorMessage?: string;
