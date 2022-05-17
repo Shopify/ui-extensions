@@ -1,23 +1,24 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import {BaseTextFieldProps} from 'components/shared/BaseTextField';
 
-interface ActionProps {
+export interface ActionProps {
   type: 'action';
   message: string;
   onPress: (value: string) => void;
 }
 
-interface InfoProps {
+export interface InfoProps {
   type: 'info';
   message: string;
   alwaysShow?: boolean;
 }
 
-interface SuccessProps {
+export interface SuccessProps {
   type: 'success';
   message?: string;
 }
 
-interface PasswordProps {
+export interface PasswordProps {
   type: 'password';
   onPress: (value: string) => void;
 }
@@ -28,15 +29,8 @@ export type EmbeddedElementProps =
   | SuccessProps
   | PasswordProps;
 
-export interface TextFieldProps {
-  title?: string;
-  subtitle?: string;
-  initialValue?: string;
-  hint?: string;
-  isValid?: boolean;
+export interface TextFieldProps extends BaseTextFieldProps {
   rightElementStyle?: EmbeddedElementProps;
-  errorMessage?: string;
-  onChangeText?: (value: string) => void;
 }
 
 export const TextField = createRemoteComponent<'TextField', TextFieldProps>(

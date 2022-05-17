@@ -1,5 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {TextFieldProps} from 'components/TextField';
+import {BaseTextFieldProps} from 'components/shared/BaseTextField';
 import type {AutoCapitalizationType} from '../shared';
 
 export type InputType =
@@ -17,7 +17,7 @@ export type InputType =
   | 'url'
   | 'phone';
 
-export interface FormattedTextFieldProps extends TextFieldProps {
+export interface FormattedTextFieldProps extends BaseTextFieldProps {
   inputType?: InputType;
   showError?: boolean;
   autoCapitalize?: AutoCapitalizationType;
