@@ -3,20 +3,8 @@ import {createRemoteComponent} from '@remote-ui/core';
 type Direction = 'horizontal' | 'vertical';
 type Width = 'thin' | 'medium' | 'thick' | 'extraThick';
 type Alignment = 'start' | 'center' | 'end';
-type Spacing =
-  | 'none'
-  | 'extraTight'
-  | 'tight'
-  | 'base'
-  | 'loose'
-  | 'extraLoose';
 
 export interface DividerProps {
-  /**
-   * Use to insert space around the divider.
-   */
-  blockSpacing?: Spacing;
-
   /**
    * Use to create dividers with varying widths.
    *

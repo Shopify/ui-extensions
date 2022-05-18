@@ -1,4 +1,11 @@
 import {ListItem as BaseListItem} from '@shopify/checkout-ui-extensions';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {
+  createRemoteReactComponent,
+  ReactPropsFromRemoteComponentType,
+} from '@remote-ui/react';
+
+export type ListItemProps = ReactPropsFromRemoteComponentType<
+  typeof BaseListItem
+>;
 
 export const ListItem = createRemoteReactComponent(BaseListItem);

@@ -305,7 +305,7 @@ export interface Buyer {
  * The following APIs are provided to all extension points.
  */
 export interface StandardApi<
-  ExtensionPoint extends import('../../extension-points').ExtensionPoint
+  ExtensionPoint extends import('../../extension-points').ExtensionPoint,
 > {
   /**
    * Merchant configuration for this extension.
@@ -316,7 +316,7 @@ export interface StandardApi<
    *
    * @example {layoutPosition: 'center'}
    */
-  configuration: StatefulRemoteSubscribable<Record<string, unknown>>;
+  configuration: StatefulRemoteSubscribable<{[key: string]: unknown}>;
 
   /**
    * The renderer version being used for the extension.
@@ -734,6 +734,7 @@ export enum InvalidResultReason {
   ShopPayPaymentFailed = 'SHOPPAY_PAYMENT_FAILED',
   MissingEmailInPaypalExpress = 'MISSING_EMAIL_IN_PAYPAL_EXPRESS',
   RedirectingToAmazonPayClassic = 'REDIRECTING_TO_AMAZON_PAY_CLASSIC',
+  RedirectingToShopPay = 'REDIRECTING_TO_SHOP_PAY',
   InvalidAddress = 'INVALID_ADDRESS',
   UnknownReason = 'UNKNOWN_REASON',
 }

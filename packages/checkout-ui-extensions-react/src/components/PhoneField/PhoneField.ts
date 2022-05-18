@@ -1,4 +1,13 @@
 import {PhoneField as BasePhoneField} from '@shopify/checkout-ui-extensions';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {
+  createRemoteReactComponent,
+  ReactPropsFromRemoteComponentType,
+} from '@remote-ui/react';
 
-export const PhoneField = createRemoteReactComponent(BasePhoneField);
+export type PhoneFieldProps = ReactPropsFromRemoteComponentType<
+  typeof BasePhoneField
+>;
+
+export const PhoneField = createRemoteReactComponent(BasePhoneField, {
+  fragmentProps: ['accessory'],
+});

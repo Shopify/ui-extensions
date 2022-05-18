@@ -48,6 +48,10 @@ export interface ButtonProps {
    */
   fill?: boolean;
   /**
+   * Whether the button should handle rendering full width multiple labels.
+   */
+  multiLabel?: boolean;
+  /**
    * Specifies the inline alignment of the content.
    *
    * @defaultValue 'center'

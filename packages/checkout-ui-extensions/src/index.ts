@@ -37,6 +37,7 @@ export type {
   Money,
   LineItem,
   LineItemChange,
+  LineItemChangeResult,
   LineItemChangeResultError,
   LineItemChangeResultSuccess,
   LineItemAddChange,
@@ -57,7 +58,6 @@ export type {
   BlockLayoutProps,
   BlockSpacerProps,
   BlockStackProps,
-  BookendProps,
   ButtonProps,
   ButtonGroupProps,
   CheckboxProps,
@@ -66,10 +66,9 @@ export type {
   ChoiceProps,
   DividerProps,
   FormProps,
-  FormLayoutProps,
-  FormLayoutGroupProps,
   GridProps,
   GridItemProps,
+  GridSize,
   HeadingProps,
   HeadingGroupProps,
   IconProps,
@@ -77,7 +76,6 @@ export type {
   InlineLayoutProps,
   InlineSpacerProps,
   InlineStackProps,
-  LayoutProps,
   LinkProps,
   ListProps,
   ListItemProps,
@@ -91,8 +89,27 @@ export type {
   TextBlockProps,
   TextFieldProps,
   ViewProps,
+  ViewCoordinate,
+  ViewTranslate,
+  ViewPosition,
+  ViewPositionType,
+  AccessibilityRole,
+  Autocomplete,
+  AutocompleteField,
+  AutocompleteGroup,
+  Breakpoint,
+  CSSShorthand,
+  Responsive,
+  Unit,
+  UnitSuffix,
 } from './components';
 export type Components = typeof import('./components');
 
 export {extend} from './extend';
 export type {ShopifyGlobal} from './globals';
+export type {
+  Conditions,
+  ConditionalStyle,
+  ConditionalValue,
+  MaybeConditionalStyle,
+} from './style';
