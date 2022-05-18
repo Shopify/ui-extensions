@@ -227,7 +227,7 @@ function propType(
       const local = exports.find(
         ({value: exportValue}: any) => exportValue.name === value.name,
       );
-
+      
       if (local == null) {
         // Show the MethodSignatureType name instead of simply "Unknown"
         if (
@@ -239,22 +239,27 @@ function propType(
         }
         return `${value.name}${params}`;
       }
+      ;
       local.value.params = value.params;
       return propType(local.value, exports, dir, additionalPropsTables);
     case 'InterfaceType':
-      additionalPropsTables.push(
-        propsTable(
-          value.name,
-          value.docs,
-          value.properties,
-          exports,
-          dir,
-          additionalPropsTables,
-          true,
-          3,
-        ),
-      );
-      return `${anchorLink(value.name)}${params}`;
+
+      if(value.name != '') {
+        additionalPropsTables.push(
+          propsTable(
+            value.name,
+            value.docs,
+            value.properties,
+            exports,
+            dir,
+            additionalPropsTables,
+            true,
+            3,
+          ),
+        );
+        return `${anchorLink(value.name)}${params}`;
+      }
+      return value.kind;
     case 'UnionType':
       return value.types
         .map((type: any) => {

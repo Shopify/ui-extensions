@@ -87,3 +87,9 @@ export type {
   Unit,
   UnitSuffix,
 } from './shared';
+// export type {
+//   MaybeConditionalStyle,
+//   ConditionalStyle,
+//   ConditionalValue,
+//   Conditions,
+// } from '../style'

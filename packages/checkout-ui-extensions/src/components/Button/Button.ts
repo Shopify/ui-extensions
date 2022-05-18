@@ -2,6 +2,8 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import {Responsive} from '../shared';
 
+import {MaybeConditionalStyle} from '../../style'
+
 type Size = 'base' | 'large' | 'extraLarge';
 
 export interface ButtonProps {
@@ -19,7 +21,7 @@ export interface ButtonProps {
    *
    * @defaultValue 'primary'
    */
-  kind?: 'primary' | 'secondary' | 'plain';
+  kind?: MaybeConditionalStyle<'primary' | 'secondary' | 'plain'>;
   /**
    * Changes the size of the button
    *
@@ -60,7 +62,7 @@ export interface ButtonProps {
   /**
    * Replaces content with a loading indicator
    */
-  loading?: boolean;
+  loading?: MaybeConditionalStyle<boolean>;
   /**
    * Accessible label for the loading indicator when user prefers reduced motion
    */

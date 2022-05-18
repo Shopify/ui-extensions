@@ -246,7 +246,7 @@ export async function components(
 
 async function buildComponentGraph(componentIndex: string) {
   const graph = await createDependencyGraph(componentIndex);
-
+    debugger;
   const nodes: Node[] = [];
 
   graph.forEach((value) => {
