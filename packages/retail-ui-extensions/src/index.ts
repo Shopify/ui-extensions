@@ -27,6 +27,7 @@ export {
   Tag,
   Dialog,
   SearchBar,
+  ProductImage,
 } from './components';
 
 export type {
@@ -56,6 +57,7 @@ export type {
   StackProps,
   VerticalSpacing,
   HorizontalSpacing,
+  ProductImageProps,
 } from './components';
 
 export type {
