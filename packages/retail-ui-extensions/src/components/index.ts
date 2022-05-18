@@ -41,3 +41,6 @@ export type {AutoCapitalizationType} from './shared';
 
 export {ProductImage} from './ProductImage';
 export type {ProductImageProps} from './ProductImage';
+
+export {RadioButtonList} from './RadioButtonList';
+export type {RadioButtonListProps} from './RadioButtonList';
