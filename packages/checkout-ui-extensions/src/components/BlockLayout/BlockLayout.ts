@@ -11,14 +11,16 @@ export interface BlockLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
    *
    * `fill`: fills the remaining available space. When multiple elements are set to `fill`, the remaining space is shared equally.
    *
-   * `Unit`: size in pixels `px`, percentages `%` or fractions `fr`.
+   * `Unit<'%' | 'fr'>`: size in percentages `%` or fractions `fr`.
+   *
+   * `number`: size in pixels `px`.
    *
    *
    * - When the sum of the defined sizes is larger than the available space, elements will shrink to avoid overflow.
    *
    * - When the size of an element is not explicitly set, it will fill the remaining space available.
    *
-   * - When only one size is set, all elements of the layout will take that size.
+   * - When only one size is set and outside of an array, all elements of the layout will take that size.
    *
    *
    * @defaultValue 'fill'

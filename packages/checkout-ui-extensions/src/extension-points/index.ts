@@ -29,6 +29,7 @@ export type {
   Timezone,
   LineItem,
   LineItemChange,
+  LineItemChangeResult,
   LineItemChangeResultError,
   LineItemChangeResultSuccess,
   LineItemAddChange,

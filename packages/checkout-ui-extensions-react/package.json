@@ -1,29 +1,15 @@
 {
   "name": "@shopify/checkout-ui-extensions-react",
-  "version": "0.15.0",
   "description": "React bindings for @shopify/checkout-ui-extensions",
-  "publishConfig": {
-    "access": "public",
-    "@shopify:registry": "https://registry.npmjs.org"
-  },
+  "version": "0.0.0-internal",
+  "private": true,
   "sideEffects": false,
   "license": "MIT",
-  "main": "index.js",
-  "module": "index.mjs",
-  "esnext": "index.esnext",
-  "types": "index.d.ts",
-  "exports": {
-    ".": {
-      "esnext": "./index.esnext",
-      "import": "./index.mjs",
-      "require": "./index.js"
-    },
-    "./": "./"
-  },
+  "main": "src/index.ts",
   "dependencies": {
-    "@remote-ui/async-subscription": "^2.1.7",
-    "@remote-ui/react": "^4.3.0",
-    "@shopify/checkout-ui-extensions": "^0.15.0",
+    "@remote-ui/async-subscription": "^2.1.9",
+    "@remote-ui/react": "^4.5.0",
+    "@shopify/checkout-ui-extensions": "0.0.0-internal",
     "@types/react": ">=17.0.0 <18.0.0"
   },
   "peerDependencies": {
@@ -36,7 +22,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^5.5.3",
-    "@quilted/react-testing": "^0.3.7",
+    "@quilted/react-testing": "^0.4.10",
     "@types/faker": "^5.5.9",
     "react": "^17.0.0"
   }

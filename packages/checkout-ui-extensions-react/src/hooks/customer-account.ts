@@ -7,7 +7,7 @@ import {useSubscription} from './subscription';
  * Returns the customer account associated to the buyer.
  */
 export function useCustomerAccount<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
   return useSubscription(useExtensionApi<ID>().customerAccount);
 }

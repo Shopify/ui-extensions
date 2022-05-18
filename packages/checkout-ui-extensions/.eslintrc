@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "import/no-extraneous-dependencies": "error"
+  },
+  "overrides": [
+    {
+      "files": ["*.example.*"],
+      "rules": {
+        "import/no-extraneous-dependencies": "off"
+      }
+    }
+  ]
+}

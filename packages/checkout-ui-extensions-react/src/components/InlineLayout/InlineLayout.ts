@@ -1,4 +1,11 @@
 import {InlineLayout as BaseInlineLayout} from '@shopify/checkout-ui-extensions';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {
+  createRemoteReactComponent,
+  ReactPropsFromRemoteComponentType,
+} from '@remote-ui/react';
+
+export type InlineLayoutProps = ReactPropsFromRemoteComponentType<
+  typeof BaseInlineLayout
+>;
 
 export const InlineLayout = createRemoteReactComponent(BaseInlineLayout);

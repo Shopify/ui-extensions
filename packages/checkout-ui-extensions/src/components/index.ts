@@ -6,8 +6,6 @@ export {BlockSpacer} from './BlockSpacer';
 export type {BlockSpacerProps} from './BlockSpacer';
 export {BlockStack} from './BlockStack';
 export type {BlockStackProps} from './BlockStack';
-export {Bookend} from './Bookend';
-export type {BookendProps} from './Bookend';
 export {Button} from './Button';
 export type {ButtonProps} from './Button';
 export {ButtonGroup} from './ButtonGroup';
@@ -24,8 +22,6 @@ export {Divider} from './Divider';
 export type {DividerProps} from './Divider';
 export {Form} from './Form';
 export type {FormProps} from './Form';
-export {FormLayout, FormLayoutGroup} from './FormLayout';
-export type {FormLayoutProps, FormLayoutGroupProps} from './FormLayout';
 export {Grid} from './Grid';
 export type {GridProps, GridSize} from './Grid';
 export {GridItem} from './GridItem';
@@ -44,8 +40,6 @@ export {InlineStack} from './InlineStack';
 export type {InlineStackProps} from './InlineStack';
 export {InlineSpacer} from './InlineSpacer';
 export type {InlineSpacerProps} from './InlineSpacer';
-export {Layout} from './Layout';
-export type {LayoutProps} from './Layout';
 export {Link} from './Link';
 export type {LinkProps} from './Link';
 export {List} from './List';
@@ -75,7 +69,13 @@ export type {TextBlockProps} from './TextBlock';
 export {TextField} from './TextField';
 export type {TextFieldProps} from './TextField';
 export {View} from './View';
-export type {ViewProps} from './View';
+export type {
+  ViewProps,
+  ViewPosition,
+  ViewPositionType,
+  ViewTranslate,
+  ViewCoordinate,
+} from './View';
 export type {
   AccessibilityRole,
   Autocomplete,

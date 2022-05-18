@@ -4,7 +4,7 @@ render('Checkout::Dynamic::Render', () => <App />);
 
 function App() {
   return (
-    <Grid columns={['20%', 'fill']} rows={['auto', '300px', '100px']}>
+    <Grid columns={['20%', 'fill']} rows={['auto', 300, 100]}>
       <View border="base" padding="base">
         20% / auto
       </View>
@@ -12,16 +12,16 @@ function App() {
         fill / auto
       </View>
       <View border="base" padding="base">
-        20% / 300px
+        20% / 300
       </View>
       <View border="base" padding="base">
-        fill / 300px
+        fill / 300
       </View>
       <View border="base" padding="base">
-        20% / 100px
+        20% / 100
       </View>
       <View border="base" padding="base">
-        fill / 100px
+        fill / 100
       </View>
     </Grid>
   );

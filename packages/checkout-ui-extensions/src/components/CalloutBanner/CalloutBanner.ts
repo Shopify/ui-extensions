@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 type Border = 'none' | 'block';
-type Background = 'secondary' | 'transparent';
+type Background = 'transparent' | 'color1' | 'color2' | 'color3';
 type Alignment = 'leading' | 'center' | 'trailing';
 type Spacing = 'none' | 'tight' | 'loose';
 
@@ -20,7 +20,7 @@ export interface CalloutBannerProps {
   /**
    * Sets the background color of the callout banner
    *
-   * @defaultValue 'secondary'
+   * @defaultValue 'color2'
    */
   background?: Background;
   /**

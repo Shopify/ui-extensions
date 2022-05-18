@@ -14,8 +14,8 @@ optional = ?
 | --- | --- | --- |
 | maxInlineSize? | <code>number &#124; <a href="#responsive">Responsive</a></code> | Adjust the maximum inline size.<br /><br />Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.<br /><br /> Examples:<br /><br />- `500` represents `500px`<br /><br />- `0.5` represents `50%`<br /><br />- `1` represents `100%`  |
 | minInlineSize? | <code>number &#124; <a href="#responsive">Responsive</a></code> | Adjust the minimum inline size.<br /><br />Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.<br /><br /> Examples:<br /><br />- `500` represents `500px`<br /><br />- `0.5` represents `50%`<br /><br />- `1` represents `100%`  |
-| padding? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the padding.<br /><br />To shorten the code, it is possible to specify all the padding properties in one property.<br /><br /> Examples:<br /><br />- `base` means blockStart, inlineEnd, blockEnd and inlineStart paddings are `base`<br /><br />- [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`<br /><br />- [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`  |
-| background? | <code>"secondary" &#124; "transparent" &#124; <a href="#responsive">Responsive</a></code> | Adjust the background.  |
+| padding? | <code>CSSValue &#124; MultiPick &#124; MultiPick &#124; <a href="#responsive">Responsive</a></code> | Adjust the padding.<br /><br />To shorten the code, it is possible to specify all the padding properties in one property.<br /><br /> Examples:<br /><br />- `base` means blockStart, inlineEnd, blockEnd and inlineStart paddings are `base`<br /><br />- [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`<br /><br />- [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`  |
+| background? | <code>"transparent" &#124; "color1" &#124; "color2" &#124; "color3" &#124; <a href="#responsive">Responsive</a></code> | Adjust the background.  |
 | backgroundImage? | <code>string &#124; <a href="#responsive">Responsive</a></code> | Sets one or multiple responsive background images.  |
 | backgroundFit? | <code>"cover" &#124; "contain"</code> | Indicates if the background image should scale its container without cropping and stretching, or scale as large as possible to fill the container and stretching if necessary.  |
 | backgroundPosition? | <code>"top" &#124; "bottom" &#124; "left" &#124; "right" &#124; "center"</code> | Sets the initial position of the background image.<br /><br />Default value: <code>'center'</code> |
@@ -25,10 +25,25 @@ optional = ?
 | display? | <code>"block" &#124; "inline"</code> | Changes the display of the View.<br /><br /> `inline` follows the direction of words in a sentence based on the document’s writing mode.<br /><br />`block` follows the direction of paragraphs based on the document’s writing mode.<br /><br /> Default value: <code>'block'</code> |
 | id? | <code>string</code> | A unique identifier for the View.  |
 | blockSize? | <code>number &#124; <a href="#responsive">Responsive</a></code> | Adjust the block size.<br /><br />Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.<br /><br /> Examples: - `500` represents `500px`<br /><br />- `0.5` represents `50%`<br /><br />- `1` represents `100%`  |
-| border? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the border style.<br /><br />To shorten the code, it is possible to specify all the border style properties in one property.<br /><br />Examples: - `base` means blockStart, inlineEnd, blockEnd and inlineStart border styles are `base` - [`base`, `none`] means blockStart and blockEnd border styles are `base`, inlineStart and inlineEnd border styles are `none` - [`base`, `none`, `dotted`, `base`] means blockStart border style is `base`, inlineEnd border style is `none`, blockEnd border style is `dotted` and  blockStart border style is `base`  |
-| borderWidth? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the border width.<br /><br />To shorten the code, it is possible to specify all the border width properties in one property.<br /><br />Examples: - `base` means blockStart, inlineEnd, blockEnd and inlineStart border widths are `base` - [`base`, `thick`] means blockStart and blockEnd border widths are `base`, inlineStart and inlineEnd border widths are `thick` - [`base`, `thick`, `thick`, `base`] means blockStart border width is `base`, inlineEnd border width is `thick`, blockEnd border width is `thick` and  blockStart border width is `base`  |
-| borderColor? | <code>"base" &#124; "emphasized" &#124; <a href="#responsive">Responsive</a></code> | Adjust the border color.  |
-| borderRadius? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the border radius.<br /><br />To shorten the code, it is possible to specify all the border width properties in one property.<br /><br />Examples: - `base` means blockStart, inlineEnd, blockEnd and inlineStart border radii are `base` - [`base`, `none`] means blockStart and blockEnd border radii are `base`, inlineStart and inlineEnd border radii are `none` - [`base`, `none`, `tight`, `base`] means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`  |<a name="Responsive"></a>
+| opacity? | <code>10 &#124; 20 &#124; 30 &#124; 40 &#124; 50 &#124; 60 &#124; 70 &#124; 80 &#124; 90</code> | Sets the opacity of the View. The opacity will be applied to the background as well as all the childrens of the View. Use carefully as this could decrease the contrast ratio between the background and foreground elements resulting in unreadable and inaccessible text.  |
+| accessibilityLabel? | <code>string</code> | A label that describes the purpose or contents of the element. When provided, it will be announced to buyers using assistive technologies and will provide them with more context.  |
+| accessibilityRole? | <code>"main" &#124; "header" &#124; "footer" &#124; "section" &#124; "complementary" &#124; "navigation" &#124; "orderedList" &#124; "listItem" &#124; "unorderedList" &#124; "separator" &#124; "status" &#124; "alert" &#124; MultiPick</code> | Set the semantic of the component’s content  |
+| position? | <code>Position<<wbr><a href="#"></a><wbr>> &#124; <a href="#responsive">Responsive</a></code> | Changes how the View is positioned.  |
+| translate? | <code><a href="#translate">Translate</a><<wbr><wbr>> &#124; <a href="#responsive">Responsive</a></code> | Specifies a two-dimensional translation of the View.  |
+| blockAlignment? | <code>"center" &#124; "leading" &#124; "trailing" &#124; "baseline"</code> | Position children along the cross axis  |
+| inlineAlignment? | <code>"center" &#124; "leading" &#124; "trailing"</code> | Position children along the main axis  |<a name="Translate"></a>
+
+### Translate
+
+| Name | Type | Description |
+| --- | --- | --- |
+| block? | <code>number &#124; Unit</code> | Adjust the translation on the cross axis.<br /><br />A percentage value refers to the block size of the View.  |
+| inline? | <code>number &#124; Unit</code> | Adjust the translation on the main axis.<br /><br />A percentage value refers to the inline size of the View.  |<a name=""></a>
+
+### 
+
+| Name | Type | Description |
+| --- | --- | --- |<a name="Responsive"></a>
 
 ### Responsive
 

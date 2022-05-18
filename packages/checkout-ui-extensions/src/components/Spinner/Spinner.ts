@@ -2,18 +2,21 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export interface SpinnerProps {
   /**
-   * Adjust the size.
+   * Adjusts the size of the icon.
    *
-   * If not specified, it will use the default size which is
-   * about twice as big as the base text.
+   * @defaultValue 'base'
    */
-  size?: 'base' | 'small' | 'large';
+  size?: 'extraSmall' | 'small' | 'base' | 'large' | 'fill';
+
   /**
-   * Specify that the Spinner will inherit its color from its parent.
+   * Sets the appearance (color) of the icon.
    *
-   * If not specified, it will take the `interactive` color from the theme.
+   * * `monochrome` will take the color of its parent.
+   *
+   * @defaultValue 'accent'
    */
-  color?: 'inherit';
+  appearance?: 'accent' | 'monochrome';
+
   /**
    * A label to use for the Spinner that will be used for buyers using
    * assistive technologies like screen readers. If will also be used to replace
