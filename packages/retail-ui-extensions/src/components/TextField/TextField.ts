@@ -1,5 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {BaseTextFieldProps} from 'components/shared/BaseTextField';
+import type {BaseTextFieldProps} from '../shared';
 
 export interface ActionProps {
   type: 'action';
