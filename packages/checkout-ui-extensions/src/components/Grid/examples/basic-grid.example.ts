@@ -5,13 +5,29 @@ extend('Checkout::Dynamic::Render', (root) => {
     Grid,
     {
       columns: ['20%', 'fill'],
-      rows: ['auto', '200px'],
+      rows: ['auto', 200],
     },
     [
-      root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
-      root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
-      root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
-      root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
+      root.createComponent(
+        View,
+        {border: 'base', padding: 'base'},
+        '20% / auto',
+      ),
+      root.createComponent(
+        View,
+        {border: 'base', padding: 'base'},
+        'fill / auto',
+      ),
+      root.createComponent(
+        View,
+        {border: 'base', padding: 'base'},
+        '20% / 200',
+      ),
+      root.createComponent(
+        View,
+        {border: 'base', padding: 'base'},
+        'fill / 200',
+      ),
     ],
   );
 

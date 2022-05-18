@@ -8,7 +8,7 @@ import {useSubscription} from './subscription';
  * the proposed `billingAddress` applied to the checkout.
  */
 export function usePrimaryAddress<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
   return useSubscription(useExtensionApi<ID>().primaryAddress);
 }

@@ -54,12 +54,12 @@ export interface ExtensionPoints {
    * This is a static extension point that is rendered between the shipping method
    * header and shipping method options.
    */
-  'Checkout::ShippingMethod::RenderBefore': RenderExtension<
-    StandardApi<'Checkout::ShippingMethod::RenderBefore'>,
+  'Checkout::ShippingMethods::RenderBefore': RenderExtension<
+    StandardApi<'Checkout::ShippingMethods::RenderBefore'>,
     AllComponents
   >;
-  'Checkout::ShippingMethod::RenderAfter': RenderExtension<
-    StandardApi<'Checkout::ShippingMethod::RenderAfter'>,
+  'Checkout::ShippingMethods::RenderAfter': RenderExtension<
+    StandardApi<'Checkout::ShippingMethods::RenderAfter'>,
     AllComponents
   >;
   'Checkout::PaymentMethods::Header::RenderAfter': RenderExtension<

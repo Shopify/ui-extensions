@@ -12,10 +12,9 @@ type Spacing =
 type InlineAlignment = 'center' | 'leading' | 'trailing';
 type BlockAlignment = 'center' | 'leading' | 'trailing' | 'baseline';
 
-export type Size = 'auto' | 'fill' | Unit<'fr' | 'px' | '%'>;
-type Columns = Size[] | Size | number;
-type Rows = Size[] | Size | number;
-
+export type Size = 'auto' | 'fill' | number | Unit<'fr' | '%'>;
+type Columns = Size[] | Size;
+type Rows = Size[] | Size;
 export interface GridProps {
   /**
    * Sizes for each column of the layout.
@@ -25,14 +24,14 @@ export interface GridProps {
    *
    * `fill`: fills the remaining available space. When multiple columns are set to `fill`, the remaining space is shared equally.
    *
-   * `Unit`: size in pixels `px`, percentages `%` or fractions `fr`.
+   * `Unit<'%' | 'fr'>`: size in percentages `%` or fractions `fr`.
    *
-   * `number`: set the number of columns in the grid. Each column will be of equal size.
+   * `number`: size in pixels.
    *
    *
    * - When the sum of the defined sizes is larger than the available space, elements will shrink to avoid overflow.
    *
-   * - When only one size is set, the grid will have one column of that size.
+   * - When only one size is set and outside of an array, the grid will have one column of that size.
    *
    * @defaultValue 'fill'
    */
@@ -45,14 +44,14 @@ export interface GridProps {
    *
    * `fill`: fills the remaining available space. When multiple rows are set to `fill`, the remaining space is shared equally.
    *
-   * `Unit`: size in pixels `px`, percentages `%` or fractions `fr`.
+   * `Unit<'%' | 'fr'>`: size in percentages `%` or fractions `fr`.
    *
-   * `number`: set the number of equal rows in the grid. Each row will be of equal size.
+   * `number`: size in pixels.
    *
    *
    * - When the sum of the defined sizes is larger than the available space, elements will shrink to avoid overflow.
    *
-   * - When only one size is set, the grid will have one row of that size.
+   * - When only one size is set and outside of an array, the grid will have one row of that size.
    *
    * @defaultValue 'fill'
    */

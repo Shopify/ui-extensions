@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '@remote-ui/core';
+import {createRemoteComponent, RemoteFragment} from '@remote-ui/core';
 
 import {Autocomplete} from '../shared';
 import {IconSource} from '../Icon';
@@ -14,7 +14,7 @@ export interface TextFieldProps {
   /**
    * An icon to render at the start of the field.
    */
-  icon?: IconSource;
+  icon?: IconSource | {source: IconSource; position?: 'start' | 'end'};
   /**
    * An identifier for the field that is unique within the nearest
    * containing `Form` component.
@@ -26,13 +26,18 @@ export interface TextFieldProps {
    */
   label: string;
   /**
-   * Content to render before the value.
+   * Text content to render before the value.
    */
   prefix?: string;
   /**
-   * Content to render at the end of the text field.
+   * Text content to render at the end of the text field.
    */
   suffix?: string;
+  /**
+   * Any content to render at the end of the text field. Commonly used
+   * to display an icon that opens a tooltip providing more information about the field.
+   */
+  accessory?: string | RemoteFragment;
   /**
    * A detailed description for screen readers.
    */
@@ -159,11 +164,6 @@ export interface TextFieldProps {
 
 /**
  * Use a text field to get text input from a customer.
- *
- * A text field’s children will be rendered as side actions within the text field. Some
- * focused children will toggle text fields’s focus state, so only pass elements as
- * children that are tightly coupled to the text field. Its children are commonly used
- * to display an icon that opens a tooltip providing more information about the field.
  */
 export const TextField = createRemoteComponent<'TextField', TextFieldProps>(
   'TextField',
