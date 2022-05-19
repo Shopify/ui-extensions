@@ -18,15 +18,14 @@ const checkout = {
 const componentsPageContent = (url: string, title = 'Checkout') => ({
   title: `Components for ${title} extensions`,
   frontMatterDescription: `A list of components for ${title} extensions.`,
-  description: `Checkout UI Extensions provide many powerful UI components that a
-  [rendering extension](${url}/extension-points/api#renderextension) can
-  use to build an interface. This UI is rendered natively by Shopify, so you
-  can depend on it to be performant, accessible, and work in all of Checkout’s
-  supported browsers. \n\nThe following components are available as part of UI Extensions
-  for Checkout, but make sure that you check the documentation for your
-  [extension point](${url}/extension-points#extension-points)
-  to ensure the component is available in the extension points you are
-  targeting.`,
+  // This will use a mardown file for the component index page, and will not auto-generate a list of components in the table of contents
+  sourceFile: `${checkout.inputRoot}/documentation/components.md`,
+  sourceFileStringReplacements: [
+    // Replace relative in-repo link "../src/{component}" with "{shopifyDevUrl}/components/{component}"
+    { find: /...src\/components\/(\w+)/g, replaceWith: (_match, p1) => `${checkout.shopifyDevUrl}/components/${p1}`.toLowerCase()},
+    // Specifically replace in-repo ./rendering.md link
+    { find: /\.\/rendering.md/g, replaceWith: () => `${checkout.shopifyDevUrl}/extension-points/api#renderextension`}
+  ]
 });
 
 // Checkout docs
