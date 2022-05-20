@@ -27,13 +27,13 @@ const componentsPageContent = (url: string, title = 'Checkout'): Content => ({
     {
       find: /...src\/components\/(\w+)/g,
       replaceWith: (_match, p1) =>
-        `${checkout.shopifyDevUrl}/components/${p1}`.toLowerCase(),
+        `${url}/components/${p1}`.toLowerCase(),
     },
     // Specifically replace in-repo ./rendering.md link
     {
       find: /\.\/rendering.md/g,
       replaceWith: () =>
-        `${checkout.shopifyDevUrl}/extension-points/api#renderextension`,
+        `${url}/extension-points/api#renderextension`,
     },
   ],
 });
