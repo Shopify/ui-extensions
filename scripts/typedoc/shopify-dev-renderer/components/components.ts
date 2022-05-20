@@ -28,8 +28,8 @@ export interface Content {
   frontMatterDescription: string;
   description?: string;
   /** If you want to use a source markdown file for the contents instead of an auto-generated page. **Warning**: the table of contents for the components will not be generated in this case. */
-  sourceFile?: string
-  sourceFileStringReplacements?: StringReplacments[]
+  sourceFile?: string;
+  sourceFileStringReplacements?: StringReplacments[];
 }
 
 interface Options {
@@ -43,7 +43,7 @@ interface Options {
 
 interface StringReplacments {
   find: RegExp;
-  replaceWith: Function;
+  replaceWith: (_match: string, p1: string) => string;
 }
 
 export async function components(
@@ -51,7 +51,13 @@ export async function components(
   content: Content,
   options: Options = {},
 ) {
-  const {title, frontMatterDescription, description, sourceFile, sourceFileStringReplacements} = content;
+  const {
+    title,
+    frontMatterDescription,
+    description,
+    sourceFile,
+    sourceFileStringReplacements,
+  } = content;
   const componentIndex = resolve(`${paths.inputRoot}/src/components/index.ts`);
   const {nodes, components} = await buildComponentGraph(componentIndex);
   const {
@@ -79,19 +85,18 @@ export async function components(
     ...visibilityFrontMatter,
   });
 
-  const useSourceFileForIndex = sourceFile ? true : false;
+  const useSourceFileForIndex = Boolean(sourceFile);
 
-  if(useSourceFileForIndex) {
+  if (useSourceFileForIndex) {
     index += fs.readFileSync(sourceFile, 'utf8');
-    if(sourceFileStringReplacements) {
-      sourceFileStringReplacements.forEach(sfr => {
-        index = index.replace(sfr.find, sfr.replaceWith as any)
-      })
+    if (sourceFileStringReplacements) {
+      sourceFileStringReplacements.forEach((sfr) => {
+        index = index.replace(sfr.find, sfr.replaceWith as any);
+      });
     }
   } else {
     index += `${description}\n\n`;
   }
-  
 
   const indexContent = [];
 
@@ -248,7 +253,7 @@ export async function components(
   });
 
   // Only append a table of contents if we are not using a static source file for the index page
-  if(!useSourceFileForIndex) {
+  if (!useSourceFileForIndex) {
     index += [
       '<ul style="column-count: auto;column-width: 12rem;">',
       ...indexContent,

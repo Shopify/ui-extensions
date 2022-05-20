@@ -4,6 +4,8 @@ import {
   gettingStarted,
 } from './typedoc/shopify-dev-renderer';
 
+import type {Content} from './typedoc/shopify-dev-renderer';
+
 const checkout = {
   inputRoot: './packages/checkout-ui-extensions',
   packages: {
@@ -15,17 +17,25 @@ const checkout = {
   shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
 };
 
-const componentsPageContent = (url: string, title = 'Checkout') => ({
+const componentsPageContent = (url: string, title = 'Checkout'): Content => ({
   title: `Components for ${title} extensions`,
   frontMatterDescription: `A list of components for ${title} extensions.`,
   // This will use a mardown file for the component index page, and will not auto-generate a list of components in the table of contents
   sourceFile: `${checkout.inputRoot}/documentation/components.md`,
   sourceFileStringReplacements: [
     // Replace relative in-repo link "../src/{component}" with "{shopifyDevUrl}/components/{component}"
-    { find: /...src\/components\/(\w+)/g, replaceWith: (_match, p1) => `${checkout.shopifyDevUrl}/components/${p1}`.toLowerCase()},
+    {
+      find: /...src\/components\/(\w+)/g,
+      replaceWith: (_match, p1) =>
+        `${checkout.shopifyDevUrl}/components/${p1}`.toLowerCase(),
+    },
     // Specifically replace in-repo ./rendering.md link
-    { find: /\.\/rendering.md/g, replaceWith: () => `${checkout.shopifyDevUrl}/extension-points/api#renderextension`}
-  ]
+    {
+      find: /\.\/rendering.md/g,
+      replaceWith: () =>
+        `${checkout.shopifyDevUrl}/extension-points/api#renderextension`,
+    },
+  ],
 });
 
 // Checkout docs
