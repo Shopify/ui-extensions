@@ -7,7 +7,7 @@ import {useSubscription} from './subscription';
  * Returns the proposed `note` applied to the checkout.
  */
 export function useNote<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >() {
   return useSubscription(useExtensionApi<ID>().note);
 }

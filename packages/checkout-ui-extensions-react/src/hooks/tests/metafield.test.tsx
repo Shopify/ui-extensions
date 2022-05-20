@@ -89,7 +89,7 @@ describe('useMetafields', () => {
       metafields: createMockStatefulRemoteSubscribable(createMetafields()),
     };
 
-    const key = undefined as unknown as string;
+    const key = (undefined as unknown) as string;
 
     expect(() =>
       mount.hook(() => useMetafield({namespace: 'test_namespace', key}), {
