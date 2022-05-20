@@ -26,14 +26,12 @@ const componentsPageContent = (url: string, title = 'Checkout'): Content => ({
     // Replace relative in-repo link "../src/{component}" with "{shopifyDevUrl}/components/{component}"
     {
       find: /...src\/components\/(\w+)/g,
-      replaceWith: (_match, p1) =>
-        `${url}/components/${p1}`.toLowerCase(),
+      replaceWith: (_match, p1) => `${url}/components/${p1}`.toLowerCase(),
     },
     // Specifically replace in-repo ./rendering.md link
     {
       find: /\.\/rendering.md/g,
-      replaceWith: () =>
-        `${url}/extension-points/api#renderextension`,
+      replaceWith: () => `${url}/extension-points/api#renderextension`,
     },
   ],
 });
