@@ -1,9 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Responsive} from '../shared';
-
-type Size = 'base' | 'large' | 'extraLarge';
-
 export interface ButtonProps {
   /**
    * The type of button that will be rendered. The visual of these buttons are controlled
@@ -21,12 +17,6 @@ export interface ButtonProps {
    */
   kind?: 'primary' | 'secondary' | 'plain';
   /**
-   * Changes the size of the button
-   *
-   * @defaultValue 'base'
-   */
-  size?: Size | Responsive<Size>;
-  /**
    * Specify the color treatment of the Button. By default, it will use the "Primary / Secondary Action" colors.
    *
    *
@@ -43,10 +33,6 @@ export interface ButtonProps {
    * Destination to link to, renders a Link
    */
   to?: string;
-  /**
-   * Whether the button should fill all available inline space.
-   */
-  fill?: boolean;
   /**
    * Specifies the inline alignment of the content.
    *

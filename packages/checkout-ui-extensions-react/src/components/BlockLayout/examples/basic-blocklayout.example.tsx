@@ -4,12 +4,12 @@ render('Checkout::Dynamic::Render', () => <App />);
 
 function App() {
   return (
-    <BlockLayout rows={['auto', '200px']}>
+    <BlockLayout rows={['auto', 200]}>
       <View border="base" padding="base">
-        View
+        auto
       </View>
       <View border="base" padding="base">
-        View
+        200
       </View>
     </BlockLayout>
   );

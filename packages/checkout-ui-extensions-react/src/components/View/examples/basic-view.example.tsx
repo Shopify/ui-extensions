@@ -4,7 +4,7 @@ render('Checkout::Dynamic::Render', () => <App />);
 
 function App() {
   return (
-    <View background="surfaceSecondary" padding="base" border="base">
+    <View background="color2" padding="base" border="base">
       View
     </View>
   );

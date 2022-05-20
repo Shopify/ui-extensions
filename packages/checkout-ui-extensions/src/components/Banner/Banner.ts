@@ -40,9 +40,12 @@ export interface BannerProps {
    */
   collapsible?: boolean;
   /**
-   * Hides the status icon
+   * Callback when banner is dismissed. This component is
+   * [controlled](https://reactjs.org/docs/forms.html#controlled-components),
+   * so you **must** manage the visibility of the Banner in state by using
+   * the onDismiss callback.
    */
-  iconHidden?: boolean;
+  onDismiss?(): void;
 }
 
 /**

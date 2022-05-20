@@ -2,22 +2,18 @@
 
 Use a text field to get text input from a customer.
 
-A text field’s children will be rendered as side actions within the text field. Some
-focused children will toggle text fields’s focus state, so only pass elements as
-children that are tightly coupled to the text field. Its children are commonly used
-to display an icon that opens a tooltip providing more information about the field.
-
 ## Props
 optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
 | id? | <code>string</code> | A unique identifier for the field. When no `id` is provided, a globally unique value will be used instead.  |
-| icon? | <code>"arrowLeft" &#124; "arrowRight" &#124; "calendar" &#124; "camera" &#124; "cancelCircle" &#124; "caretDown" &#124; "cart" &#124; "checkmark" &#124; "checkmarkCircle" &#124; "chevronDown" &#124; "chevronUp" &#124; "chevronRight" &#124; "chevronLeft" &#124; "close" &#124; "critical" &#124; "discount" &#124; "delivered" &#124; "delivery" &#124; "disabled" &#124; "errorFill" &#124; "geolocation" &#124; "grid" &#124; "hamburger" &#124; "info" &#124; "infoFill" &#124; "list" &#124; "locateMe" &#124; "lock" &#124; "map" &#124; "marker" &#124; "minus" &#124; "mobile" &#124; "note" &#124; "verticalDots" &#124; "plus" &#124; "questionFill" &#124; "reorder" &#124; "spinner" &#124; "spinnerSmall" &#124; "store" &#124; "success" &#124; "truck" &#124; "warning" &#124; "warningCircle" &#124; "warningFill" &#124; "giftFill" &#124; "external" &#124; "profile"</code> | An icon to render at the start of the field.  |
+| icon? | <code>"arrowLeft" &#124; "arrowRight" &#124; "arrowUp" &#124; "arrowDown" &#124; "calendar" &#124; "camera" &#124; "caretDown" &#124; "cart" &#124; "checkmark" &#124; "chevronDown" &#124; "chevronUp" &#124; "chevronRight" &#124; "chevronLeft" &#124; "close" &#124; "critical" &#124; "discount" &#124; "delivered" &#124; "delivery" &#124; "disabled" &#124; "errorFill" &#124; "geolocation" &#124; "grid" &#124; "hamburger" &#124; "horizontalDots" &#124; "info" &#124; "infoFill" &#124; "list" &#124; "lock" &#124; "magnify" &#124; "map" &#124; "marker" &#124; "minus" &#124; "mobile" &#124; "note" &#124; "pen" &#124; "verticalDots" &#124; "plus" &#124; "questionFill" &#124; "reorder" &#124; "store" &#124; "success" &#124; "truck" &#124; "warning" &#124; "warningFill" &#124; "giftFill" &#124; "external" &#124; "profile" &#124; Unknown<<wbr>Unit, Unit<wbr>></code> | An icon to render at the start of the field.  |
 | name? | <code>string</code> | An identifier for the field that is unique within the nearest containing `Form` component.  |
 | label | <code>string</code> | Content to use as the field label. This value is also used as the placeholder when the field is empty.  |
-| prefix? | <code>string</code> | Content to render before the value.  |
-| suffix? | <code>string</code> | Content to render at the end of the text field.  |
+| prefix? | <code>string</code> | Text content to render before the value.  |
+| suffix? | <code>string</code> | Text content to render at the end of the text field.  |
+| accessory? | <code>string &#124; RemoteFragment</code> | Any content to render at the end of the text field. Commonly used to display an icon that opens a tooltip providing more information about the field.  |
 | accessibilityDescription? | <code>string</code> | A detailed description for screen readers.  |
 | value? | <code>string</code> | Current value for the field. If omitted, the field will be empty. You should update this value in response to the `onChange` callback on a text field.  |
 | controlledValue? | <code>string</code> | In rare cases, like the PhoneField component, we completely control state. In those cases, there is never a difference between the `value` prop of the field and the current value in the field, and so this component never considers the field to have changed. Use the `controlledValue` prop to provide the value that should be shown to the buyer in those circumstances, but where the `value` prop will continue to be used as the comparison value to determine whether the field has changed (this will usually be set to the last committed, unformatted value for the controlled input).  |
