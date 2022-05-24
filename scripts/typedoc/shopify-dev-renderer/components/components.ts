@@ -26,7 +26,10 @@ import {
 export interface Content {
   title: string;
   frontMatterDescription: string;
-  description: string;
+  description?: string;
+  /** If you want to use a source markdown file for the contents instead of an auto-generated page. **Warning**: the table of contents for the components will not be generated in this case. */
+  sourceFile?: string;
+  sourceFileStringReplacements?: StringReplacments[];
 }
 
 interface Options {
@@ -38,12 +41,23 @@ interface Options {
   visibility?: Visibility;
 }
 
+interface StringReplacments {
+  find: RegExp;
+  replaceWith: (_match: string, p1: string) => string;
+}
+
 export async function components(
   paths: Paths,
   content: Content,
   options: Options = {},
 ) {
-  const {title, frontMatterDescription, description} = content;
+  const {
+    title,
+    frontMatterDescription,
+    description,
+    sourceFile,
+    sourceFileStringReplacements,
+  } = content;
   const componentIndex = resolve(`${paths.inputRoot}/src/components/index.ts`);
   const {nodes, components} = await buildComponentGraph(componentIndex);
   const {
@@ -71,7 +85,18 @@ export async function components(
     ...visibilityFrontMatter,
   });
 
-  index += `${description}\n\n`;
+  const useSourceFileForIndex = Boolean(sourceFile);
+
+  if (useSourceFileForIndex) {
+    index += fs.readFileSync(sourceFile, 'utf8');
+    if (sourceFileStringReplacements) {
+      sourceFileStringReplacements.forEach((sfr) => {
+        index = index.replace(sfr.find, sfr.replaceWith as any);
+      });
+    }
+  } else {
+    index += `${description}\n\n`;
+  }
 
   const indexContent = [];
 
@@ -227,12 +252,15 @@ export async function components(
     indexContent.push(`<li><a href="${componentUrl}">${name}</a></li>`);
   });
 
-  index += [
-    '<ul style="column-count: auto;column-width: 12rem;">',
-    ...indexContent,
-    '</ul>',
-    '',
-  ].join('\n');
+  // Only append a table of contents if we are not using a static source file for the index page
+  if (!useSourceFileForIndex) {
+    index += [
+      '<ul style="column-count: auto;column-width: 12rem;">',
+      ...indexContent,
+      '</ul>',
+      '',
+    ].join('\n');
+  }
 
   // Write the component table of contents
   fs.writeFile(indexFile, index, function (err) {
