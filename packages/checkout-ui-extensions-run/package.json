@@ -20,8 +20,7 @@
       "esnext": "./index.esnext",
       "import": "./index.mjs",
       "require": "./index.js"
-    },
-    "./": "./"
+    }
   },
   "devDependencies": {
     "@types/glob": "^7.1.1",

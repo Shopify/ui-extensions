@@ -10,8 +10,7 @@
       "esnext": "./index.esnext",
       "import": "./index.mjs",
       "require": "./index.js"
-    },
-    "./": "./"
+    }
   },
   "license": "MIT",
   "sideEffects": false,
