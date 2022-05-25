@@ -17,8 +17,7 @@
       "esnext": "./index.esnext",
       "import": "./index.mjs",
       "require": "./index.js"
-    },
-    "./*": "./*"
+    }
   },
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.7",
