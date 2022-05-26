@@ -37,7 +37,7 @@ export type {DialogType, DialogProps} from './Dialog';
 export {SearchBar} from './SearchBar';
 export type {SearchBarProps} from './SearchBar';
 
-export type {AutoCapitalizationType} from './shared';
+export type {AutoCapitalizationType, BaseTextFieldProps} from './shared';
 
 export {ProductImage} from './ProductImage';
 export type {ProductImageProps} from './ProductImage';
