@@ -335,6 +335,8 @@ function propType(
         '🚨 A type could not be resolved and is being used in documentation showing as `UndocumentedType`. Check the output for the affected docs.',
       );
       return value.kind;
+    case 'Hook': 
+      return `() => ${value.returnType ? propType(value.returnType, exports, dir, additionalPropsTables) : 'Unknown'}`;
     default:
       return value.kind;
   }

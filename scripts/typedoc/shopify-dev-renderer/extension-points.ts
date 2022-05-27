@@ -2,7 +2,7 @@ import {resolve} from 'path';
 import * as fs from 'fs';
 import {createDependencyGraph, filterGraph} from '@shopify/docs-tools';
 
-import type {Paths, InterfaceType} from '../types';
+import type {Paths, InterfaceType, PropertySignature} from '../types';
 
 import {
   renderYamlFrontMatter,
@@ -70,6 +70,7 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
   });
   
   interfaces.forEach(({name, docs, properties}) => {
+    
     markdown += propsTable(
       name,
       docs,
@@ -85,16 +86,20 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
   markdown += dedupe(additionalPropsTables).reverse().join('');
 
   
-  reactGraph.hooks.forEach(({value: {name, docs, props}}: any) => {
+  reactGraph.hooks.forEach(({value}: any) => {
     
-    const face = reactGraph.nodes.find(({value}: any) => {
-      return value.name === props.params[0].constraint
-    });
-   debugger;
+    const property: PropertySignature = {
+      kind: 'PropertySignature',
+      optional: false,
+      name: value.name,
+      value: value
+    }
+    
+   
     markdown += propsTable(
-      name,
-      docs,
-      face?.value?.properties ?? [],
+      value.name,
+      value.docs,
+      [property],
       reactGraph.nodes,
       reactIndex,
       additionalPropsTables,
@@ -153,7 +158,7 @@ async function buildHooksGraph(hooksIndex: string) {
       }
     });
   });
-  debugger;
+  
   const hooks = [
     ...new Set(nodes.filter(({value}: any) => value.kind === 'Hook')),
   ];
