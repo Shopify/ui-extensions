@@ -34,6 +34,7 @@ export {
 export type {
   SearchBarProps,
   AutoCapitalizationType,
+  BaseTextFieldProps,
   DialogType,
   DialogProps,
   TagVariant,

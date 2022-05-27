@@ -4,12 +4,13 @@ export type DialogType = 'default' | 'alert' | 'error' | 'destructive';
 
 export interface DialogProps {
   title: string;
-  content: string;
+  content?: string;
   actionText: string;
-  dialogType: DialogType;
-  isVisible: boolean;
-  onCancel: () => void;
-  onAction?: () => void;
+  secondaryActionText?: string;
+  showSecondaryAction?: boolean;
+  type?: DialogType;
+  onCancel?: () => void;
+  onAction: () => void;
 }
 
 export const Dialog = createRemoteComponent<'Dialog', DialogProps>('Dialog');
