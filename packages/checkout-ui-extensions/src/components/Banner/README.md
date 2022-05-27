@@ -10,4 +10,4 @@ optional = ?
 | title? | <code>string</code> | Banners have an optional title. Use a title to grab the buyers attention with a short, concise message.  |
 | status? | <code>"info" &#124; "success" &#124; "warning" &#124; "critical"</code> | Sets the status of the banner.<br /><br />Default value: <code>'info'</code> |
 | collapsible? | <code>boolean</code> | Makes the content collapsible  |
-| iconHidden? | <code>boolean</code> | Hides the status icon  |
+| onDismiss? | <code>() => void</code> | Callback when banner is dismissed. This component is [controlled](https://reactjs.org/docs/forms.html#controlled-components), so you **must** manage the visibility of the Banner in state by using the onDismiss callback.  |

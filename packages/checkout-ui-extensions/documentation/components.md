@@ -21,14 +21,12 @@ Checkout components are designed to be flexible, enabling you to layer and mix t
       <p><code><a href="../src/components/Banner">BlockLayout</a></code></p>
       <p><code><a href="../src/components/BlockSpacer">BlockSpacer</a></code></p>
       <p><code><a href="../src/components/BlockStack">BlockStack</a></code></p>
-      <p><code><a href="../src/components/Bookend">Bookend</a></code></p>
       <p><code><a href="../src/components/Divider">Divider</a></code></p>
       <p><code><a href="../src/components/Grid">Grid</a></code></p>
       <p><code><a href="../src/components/GridItem">Grid Item</a></code></p>
       <p><code><a href="../src/components/InlineLayout">InlineLayout</a></code></p>
       <p><code><a href="../src/components/InlineSpacer">InlineSpacer</a></code></p>
       <p><code><a href="../src/components/InlineStack">InlineStack</a></code></p>
-      <p><code><a href="../src/components/Layout">Layout</a></code></p>
       <p><code><a href="../src/components/View">View</a></code></p>
   </div>
 
@@ -45,7 +43,6 @@ Checkout components are designed to be flexible, enabling you to layer and mix t
       <p><code><a href="../src/components/Checkbox">Checkbox</a></code></p>
       <p><code><a href="../src/components/ChoiceList">ChoiceList</a></code></p>
       <p><code><a href="../src/components/Form">Form</a></code></p>
-      <p><code><a href="../src/components/FormLayout">FormLayout and FormLayoutGroup</a></code></p>
       <p><code><a href="../src/components/PhoneField">PhoneField</a></code></p>
       <p><code><a href="../src/components/Select">Select</a></code></p>
       <p><code><a href="../src/components/Stepper">Stepper</a></code></p>
@@ -70,7 +67,6 @@ Checkout components are designed to be flexible, enabling you to layer and mix t
   <div class="checkout-component-grid-item">
     <h3 class="checkout-component-grid-item_title">Other</h3>
       <p><code><a href="../src/components/Button">Button</a></code></p>
-      <p><code><a href="../src/components/ButtonGroup">ButtonGroup</a></code></p>
       <p><code><a href="../src/components/Link">Link</a></code></p>
       <p><code><a href="../src/components/List">List</a></code></p>
       <p><code><a href="../src/components/Tag">Tag</a></code></p>

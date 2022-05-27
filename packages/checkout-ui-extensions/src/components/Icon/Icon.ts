@@ -3,13 +3,13 @@ import {createRemoteComponent} from '@remote-ui/core';
 export type IconSource =
   | 'arrowLeft'
   | 'arrowRight'
+  | 'arrowUp'
+  | 'arrowDown'
   | 'calendar'
   | 'camera'
-  | 'cancelCircle'
   | 'caretDown'
   | 'cart'
   | 'checkmark'
-  | 'checkmarkCircle'
   | 'chevronDown'
   | 'chevronUp'
   | 'chevronRight'
@@ -24,27 +24,26 @@ export type IconSource =
   | 'geolocation'
   | 'grid'
   | 'hamburger'
+  | 'horizontalDots'
   | 'info'
   | 'infoFill'
   | 'list'
-  | 'locateMe'
   | 'lock'
+  | 'magnify'
   | 'map'
   | 'marker'
   | 'minus'
   | 'mobile'
   | 'note'
+  | 'pen'
   | 'verticalDots'
   | 'plus'
   | 'questionFill'
   | 'reorder'
-  | 'spinner'
-  | 'spinnerSmall'
   | 'store'
   | 'success'
   | 'truck'
   | 'warning'
-  | 'warningCircle'
   | 'warningFill'
   | 'giftFill'
   | 'external'
@@ -80,7 +79,7 @@ type Appearance =
   | 'warning'
   | 'critical';
 
-type Size = 'small' | 'base' | 'large';
+type Size = 'extraSmall' | 'small' | 'base' | 'fill';
 
 export interface IconProps {
   /**
@@ -98,8 +97,8 @@ export interface IconProps {
   /**
    * Adjusts the size of the icon.
    *
-   * By default the icon will take up the entire width of its container
-   * */
+   * @defaultValue 'base'
+   */
   size?: Size;
 
   /**

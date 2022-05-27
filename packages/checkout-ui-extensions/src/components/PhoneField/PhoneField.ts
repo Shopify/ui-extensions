@@ -5,8 +5,10 @@ import type {TextFieldProps} from '../TextField';
 export interface PhoneFieldProps
   extends Pick<
     TextFieldProps,
+    | 'autocomplete'
     | 'id'
     | 'icon'
+    | 'accessory'
     | 'name'
     | 'label'
     | 'accessibilityDescription'

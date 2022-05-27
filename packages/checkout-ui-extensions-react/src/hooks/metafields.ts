@@ -1,4 +1,7 @@
-import type {RenderExtensionPoint} from '@shopify/checkout-ui-extensions';
+import type {
+  StandardApi,
+  RenderExtensionPoint,
+} from '@shopify/checkout-ui-extensions';
 import {useMemo} from 'react';
 
 import {CheckoutUIExtensionError} from '../errors';
@@ -47,6 +50,6 @@ export function useMetafields<
  */
 export function useApplyMetafieldsChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint
->() {
+>(): StandardApi<ID>['applyMetafieldChange'] {
   return useExtensionApi<ID>().applyMetafieldChange;
 }

@@ -1,6 +1,7 @@
 import type {
-  RenderExtensionPoint,
   LineItem,
+  StandardApi,
+  RenderExtensionPoint,
 } from '@shopify/checkout-ui-extensions';
 
 import {useExtensionApi} from './api';
@@ -20,6 +21,6 @@ export function useLineItems<
 
 export function useApplyLineItemsChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint
->() {
+>(): StandardApi<ID>['applyLineItemsChange'] {
   return useExtensionApi<ID>().applyLineItemsChange;
 }

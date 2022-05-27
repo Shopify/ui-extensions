@@ -4,11 +4,11 @@ extend('Checkout::Dynamic::Render', (root) => {
   const blockLayout = root.createComponent(
     BlockLayout,
     {
-      rows: ['auto', '200px'],
+      rows: ['auto', 200],
     },
     [
-      root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
-      root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
+      root.createComponent(View, {border: 'base', padding: 'base'}, 'auto'),
+      root.createComponent(View, {border: 'base', padding: 'base'}, '200'),
     ],
   );
 

@@ -210,8 +210,53 @@ export type AccessibilityRole =
   /** Used for important, and usually time-sensitive, information. */
   | 'alert';
 
-export type UnitSuffix = 'fr' | '%' | 'px';
+export type UnitSuffix = 'fr' | '%';
 /* eslint-disable eslint-comments/no-unlimited-disable */
 // eslint-disable-next-line
 export type Unit<Suffix extends UnitSuffix> = `${number}${Suffix}`;
 /* eslint-enable eslint-comments/no-unlimited-disable */
+
+/**
+ * Takes a base type (Base) and a list of accepted combinations of
+ * its properties (AcceptedCombinations) and returns a new type
+ * that only allows the properties listed in AcceptedCombinations
+ * to be used together.
+ *
+ * Example:
+ *
+ * We want to accept either aspectRatio or width and height on a type,
+ * but not both simultaneously:
+ *
+ * type BaseDimensions = {
+ *   aspectRatio: number,
+ *   height: number,
+ *   width: number,
+ * };
+ *
+ * type OneDimension = MultiPick<BaseDimensions, ['height' | 'width', 'aspectRatio']>;
+ *
+ * The OneDimension type would be equivalent to:
+ *
+ * {
+ *   aspectRatio?: number,
+ *   height?: never,
+ *   width?: never,
+ * } | {
+ *   aspectRatio?: never,
+ *   height?: number,
+ *   width?: number,
+ * }
+ *
+ */
+export type MultiPick<Base, AcceptedCombinations extends (keyof Base)[]> = {
+  [Combination in keyof AcceptedCombinations]: {
+    [Accepted in AcceptedCombinations[Combination] as Accepted extends keyof Base
+      ? Accepted
+      : never]?: Accepted extends keyof Base ? Base[Accepted] : never;
+  } & {
+    [NotAccepted in Exclude<
+      keyof Base,
+      AcceptedCombinations[Combination]
+    >]?: never;
+  };
+}[number];
