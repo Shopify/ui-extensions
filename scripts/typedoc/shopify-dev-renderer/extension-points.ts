@@ -22,10 +22,14 @@ interface Options {
 
 export async function extensionPoints(paths: Paths, options: Options = {}) {
   const extensionsIndex = resolve(`${paths.inputRoot}/src/index.ts`);
+  const reactIndex = resolve(`${paths.packages.React}/src/hooks/index.ts`);
   const {visibility = 'hidden', title = 'Checkout'} = options;
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
 
+  const reactGraph = await buildHooksGraph(reactIndex);
+
   const graph = await createDependencyGraph(extensionsIndex);
+  
   const allInterfaces = filterGraph(
     graph,
     ({kind}) => kind === 'InterfaceType',
@@ -64,7 +68,7 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
     description: `An API reference for ${title} extension points and their respective types.`,
     ...visibilityFrontMatter,
   });
-
+  
   interfaces.forEach(({name, docs, properties}) => {
     markdown += propsTable(
       name,
@@ -77,8 +81,54 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
       undefined,
     );
   });
-
+  
   markdown += dedupe(additionalPropsTables).reverse().join('');
+
+  
+  reactGraph.hooks.forEach(({value: {name, docs, props}}: any) => {
+    
+    const face = reactGraph.nodes.find(({value}: any) => {
+      return value.name === props.params[0].constraint
+    });
+   debugger;
+    markdown += propsTable(
+      name,
+      docs,
+      face?.value?.properties ?? [],
+      reactGraph.nodes,
+      reactIndex,
+      additionalPropsTables,
+      true,
+      3,
+    );
+  });
+
+  // debugger;
+  // const hookInterface = reactGraph.nodes[0].value;
+  //   markdown += propsTable(
+  //     hookInterface.name,
+  //     hookInterface.docs,
+  //     hookInterface.properties,
+  //     reactGraph.nodes,
+  //     reactIndex,
+  //     additionalPropsTables,
+  //     true,
+  //     3,
+  //   );
+  
+  //   debugger;
+  //   markdown += propsTable(
+  //     "React Hooks",
+  //     undefined,
+  //     reactGraph.hooks,
+  //     reactGraph.nodes,
+  //     reactIndex,
+  //     additionalPropsTables,
+  //     true,
+  //     3,
+  //   );
+  // //});
+
 
   fs.writeFile(apiFile, markdown, function (err) {
     if (err) throw err;
@@ -87,4 +137,36 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
   additionalPropsTables.length = 0;
 
   console.log(`📄  Generated extension point docs to ${apiFile}.`);
+}
+
+async function buildHooksGraph(hooksIndex: string) {
+  const graph = await createDependencyGraph(hooksIndex);
+  const nodes: Node[] = [];
+
+  graph.forEach((value) => {
+    value.locals.forEach((value: any, key) => {
+      if (value.kind !== 'Imported') {
+        if (value.name == null) {
+          value.name = key;
+        }
+        nodes.push({value, module: undefined});
+      }
+    });
+  });
+  debugger;
+  const hooks = [
+    ...new Set(nodes.filter(({value}: any) => value.kind === 'Hook')),
+  ];
+
+  // Sort alphabetically (tsdoc seems to get this confused)
+  hooks.sort((aa: any, bb: any) => {
+    if (aa.value.name > bb.value.name) {
+      return 1;
+    } else if (aa.value.name < bb.value.name) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+  return {nodes, hooks};
 }

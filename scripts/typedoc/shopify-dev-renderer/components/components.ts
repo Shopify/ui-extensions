@@ -153,6 +153,7 @@ export async function components(
       face.value.kind === 'InterfaceType' &&
       face.value.properties.length > 0
     ) {
+      
       propsTableMd += '## Props\noptional = ?\n';
       propsTableMd += propsTable(
         name,
