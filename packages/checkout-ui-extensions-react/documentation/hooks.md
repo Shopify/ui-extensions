@@ -9,6 +9,8 @@
 | namespace? | <code>string</code>                                                     | A container for a set of metafields. You need to define a custom namespace for your metafields to distinguish them from the metafields used by other apps. This must be between 2 and 20 characters in length (inclusive). |
 | key?       | <code>string</code>                                                     | The name of the metafield. It must be between 3 and 30 characters in length (inclusive).                                                                                                                                   |
 
+<a name="reacthooks"></a>
+
 ### React Hooks
 
 A collection of [React hooks](https://reactjs.org/docs/hooks-intro.html) are provided to make it easy to update your UI when shopify data has changed.
