@@ -2,7 +2,7 @@ import {resolve} from 'path';
 import * as fs from 'fs';
 import {createDependencyGraph, filterGraph} from '@shopify/docs-tools';
 
-import type {Paths, InterfaceType} from '../types';
+import type {Paths} from '../types';
 
 import {
   renderYamlFrontMatter,

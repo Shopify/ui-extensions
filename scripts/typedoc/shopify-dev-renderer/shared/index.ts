@@ -10,7 +10,7 @@ import type {
   Documentation,
   PropertySignature,
   Tag,
-} from '../../types';
+} from '@shopify/docs-tools/build/ts/src/types';
 
 export {findExamplesFor, renderExamplesFor, renderExample} from './examples';
 export type {Example} from './examples';
