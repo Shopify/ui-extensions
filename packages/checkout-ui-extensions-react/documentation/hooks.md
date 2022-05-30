@@ -11,7 +11,31 @@
 
 ### React Hooks
 
-A collection of hooks you can use in your React Checkout UI Extension.
+A collection of [React hooks](https://reactjs.org/docs/hooks-intro.html) are provided to make it easy to update your UI when shopify data has changed.
+
+```jsx
+import React from 'react';
+import {
+  render,
+  Text,
+  useShippingAddress,
+} from '@shopify/checkout-ui-extensions-react';
+
+render('Checkout::Dynamic::Render', () => <App />);
+
+function App() {
+  // Access and subscribe to the shipping address
+  // Your <App /> will automatically re-render when the address has changed
+  const address = useShippingAddress();
+  const firstName = address?.firstName ?? 'guest';
+
+  // Render UI
+  return <Text>Hi {firstName}!</Text>;
+}
+```
+
+> Note
+> React hooks are only available if you are using React. If you are using JavaScript only, you'll need to manually subscribe to the target `StatefulRemoteSubscribable` with a callback. Such as `shippingAddress.subscribe(newValue => updateYourUI())`.
 
 | Name                     | Type                                                                                                                                                                                                                                                                                                                                                                       | Description                                                                                                                                                                                                                                                                                                                                                                                                        |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
