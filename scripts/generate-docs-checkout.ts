@@ -4,7 +4,10 @@ import {
   gettingStarted,
 } from './typedoc/shopify-dev-renderer';
 
-import type {Content} from './typedoc/shopify-dev-renderer';
+import type {
+  Content,
+  PartialStaticContent,
+} from './typedoc/shopify-dev-renderer';
 
 const checkout = {
   inputRoot: './packages/checkout-ui-extensions',
@@ -36,8 +39,12 @@ const componentsPageContent = (url: string, title = 'Checkout'): Content => ({
   ],
 });
 
+const extensionPointsPageContent = (url: string): PartialStaticContent[] => [
+  {sourceFile: `${checkout.packages.React}/documentation/hooks.md`},
+];
+
 // Checkout docs
-extensionPoints(checkout, {
+extensionPoints(checkout, extensionPointsPageContent(checkout.shopifyDevUrl), {
   visibility: 'betaCheckoutExtensions',
 });
 components(checkout, componentsPageContent(checkout.shopifyDevUrl), {

@@ -12,6 +12,7 @@ import {
   visibilityToFrontMatterMap,
 } from './shared';
 import type {Node, Visibility} from './shared';
+import {PartialStaticContent} from './components';
 
 const additionalPropsTables: string[] = [];
 
@@ -20,7 +21,11 @@ interface Options {
   title?: string;
 }
 
-export async function extensionPoints(paths: Paths, options: Options = {}) {
+export async function extensionPoints(
+  paths: Paths,
+  partialStaticContent?: PartialStaticContent[],
+  options: Options = {},
+) {
   const extensionsIndex = resolve(`${paths.inputRoot}/src/index.ts`);
   const {visibility = 'hidden', title = 'Checkout'} = options;
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
@@ -79,6 +84,13 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
   });
 
   markdown += dedupe(additionalPropsTables).reverse().join('');
+
+  if (partialStaticContent) {
+    partialStaticContent.forEach((partialStaticSection) => {
+      markdown += '\n';
+      markdown += fs.readFileSync(partialStaticSection.sourceFile, 'utf8');
+    });
+  }
 
   fs.writeFile(apiFile, markdown, function (err) {
     if (err) throw err;

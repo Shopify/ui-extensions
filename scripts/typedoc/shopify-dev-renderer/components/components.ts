@@ -32,6 +32,11 @@ export interface Content {
   sourceFileStringReplacements?: StringReplacments[];
 }
 
+export interface PartialStaticContent {
+  sourceFile: string;
+  sourceFileStringReplacements?: StringReplacments[];
+}
+
 interface Options {
   subcomponentMap?: {[rootComponent: string]: string[]};
   componentsToSkip?: string[];

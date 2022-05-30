@@ -30,7 +30,7 @@ const componentsPageContent = (url: string, title = 'Checkout') => ({
 });
 
 // Post-purchase docs
-extensionPoints(postPurchase, {
+extensionPoints(postPurchase, [], {
   title: 'Post-purchase',
   visibility: 'visible',
 });
