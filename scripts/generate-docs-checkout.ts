@@ -45,6 +45,12 @@ components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
   componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
   generateReadmes: true,
   visibility: 'betaCheckoutExtensions',
+  conditionalDocs: [
+    {
+      sourceFile: `${checkout.inputRoot}/documentation/conditional-props.md`,
+      propTypeNames: ['MaybeConditionalStyle'],
+    },
+  ],
 });
 gettingStarted(checkout, {
   visibility: 'betaCheckoutExtensions',

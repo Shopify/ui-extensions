@@ -193,7 +193,6 @@ function propType(
       .join(', ')}<wbr>>`;
   }
   const PIPE = '&#124;';
-
   switch (value.kind) {
     case 'UndefinedType':
       return 'undefined';
@@ -237,9 +236,29 @@ function propType(
         ) {
           return `${value.params[0].name}${params}`;
         }
+
+        // If we have a generic type, but have a param, use that instead
+        if (value.name === 'T' && value?.params?.length > 0) {
+          return propType(
+            value?.params[0],
+            exports,
+            dir,
+            additionalPropsTables,
+          );
+        }
+
         return `${value.name}${params}`;
       }
+
+      // HACK: Don't resolve the same local, can cause infinite loop
+      // This should be properly resolved in `docs-tools` because it should always resolve the local
+      // This could result in incomplete documentation
+      if (local.value.kind === 'Local') {
+        return `${value.name}`;
+      }
+
       local.value.params = value.params;
+
       return propType(local.value, exports, dir, additionalPropsTables);
     case 'InterfaceType':
       additionalPropsTables.push(
@@ -258,9 +277,19 @@ function propType(
     case 'UnionType':
       return value.types
         .map((type: any) => {
+          type = replaceGenericTypeWithActual(type, value);
+          if (type.name === 'T' && !type.params && value?.params?.length > 0) {
+            type.params = value.params;
+          } else if (type?.params?.length > 0) {
+            type.params = type.params.map((typeParam) => {
+              return replaceGenericTypeWithActual(typeParam, value);
+            });
+          }
+
           return propType(type, exports, dir, additionalPropsTables);
         })
         .join(` ${PIPE} `);
+
     case 'StringLiteralType':
       return `"${value.value}"`;
     case 'NumberLiteralType':
@@ -440,4 +469,11 @@ export function mkdir(directory) {
   if (!fs.existsSync(directory)) {
     fs.mkdirSync(directory, {recursive: true});
   }
+}
+
+function replaceGenericTypeWithActual(type, value) {
+  if (type.name === 'T' && !type.params && value?.params?.length > 0) {
+    type.params = value.params;
+  }
+  return type;
 }

@@ -39,11 +39,19 @@ interface Options {
   /** Compile examples using Rollup and output alongside example files */
   compileExamples?: boolean;
   visibility?: Visibility;
+  /** Accepts an array of markdown files that can be conditionally injected into component pages, depending if certain prop types are mentioned. */
+  conditionalDocs?: PropTypeDocumentation[];
 }
 
 interface StringReplacments {
   find: RegExp;
   replaceWith: (_match: string, p1: string) => string;
+}
+
+interface PropTypeDocumentation {
+  sourceFile: string;
+  /** The  array of prop types to look for, if one or more are matched on a component then this document will be appended to the component page. */
+  propTypeNames: string[];
 }
 
 export async function components(
@@ -66,6 +74,7 @@ export async function components(
     generateReadmes = false,
     visibility = 'hidden',
     compileExamples = false,
+    conditionalDocs = [],
   } = options;
 
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
@@ -164,8 +173,28 @@ export async function components(
         false,
         undefined,
       );
+
+      markdown += propsTableMd;
+
+      if (conditionalDocs) {
+        // Check the additional documentation we have and see if this need to be injected into this component page
+        conditionalDocs.forEach(({sourceFile, propTypeNames}) => {
+          const componentProperties =
+            face.value.kind === 'InterfaceType' ? face.value.properties : [];
+
+          // If properties contain a type reference we are looking for...
+          if (
+            componentProperties.filter(
+              (prop) =>
+                prop.value.kind === 'Local' &&
+                propTypeNames.includes(prop.value.name),
+            ).length > 0
+          ) {
+            markdown += `\n\n${fs.readFileSync(sourceFile, 'utf8')}`;
+          }
+        });
+      }
     }
-    markdown += propsTableMd;
 
     const additionalPropsTablesMd = dedupe(additionalPropsTables)
       .reverse()
