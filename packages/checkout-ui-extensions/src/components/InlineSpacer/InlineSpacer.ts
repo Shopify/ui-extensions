@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Size = 'extraSmall' | 'small' | 'base' | 'large' | 'extraLarge';
+import {Spacing} from '../shared';
 
 export interface InlineSpacerProps {
   /**
@@ -8,7 +8,10 @@ export interface InlineSpacerProps {
    *
    * @defaultValue 'base'
    **/
-  size?: Size;
+  spacing?: Extract<
+    Spacing,
+    'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose'
+  >;
 }
 
 /**

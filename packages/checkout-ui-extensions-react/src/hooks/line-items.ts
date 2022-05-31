@@ -12,7 +12,7 @@ import {useSubscription} from './subscription';
  * your component if line items are added, removed, or updated.
  */
 export function useLineItems<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): LineItem[] {
   const {lineItems} = useExtensionApi<ID>();
 
@@ -20,7 +20,7 @@ export function useLineItems<
 }
 
 export function useApplyLineItemsChange<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): StandardApi<ID>['applyLineItemsChange'] {
   return useExtensionApi<ID>().applyLineItemsChange;
 }

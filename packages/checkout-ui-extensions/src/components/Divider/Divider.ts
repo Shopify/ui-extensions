@@ -1,21 +1,19 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Direction = 'horizontal' | 'vertical';
-type Width = 'thin' | 'medium' | 'thick' | 'extraThick';
-type Alignment = 'start' | 'center' | 'end';
+import {Size, Alignment, Direction} from '../shared';
 
 export interface DividerProps {
   /**
    * Use to create dividers with varying widths.
    *
-   * @defaultValue 'thin'
+   * @defaultValue 'small'
    */
-  width?: Width;
+  size?: Extract<Size, 'small' | 'base' | 'large' | 'extraLarge'>;
 
   /**
    * Use to specify direction of divider.
    *
-   * @defaultValue 'horizontal'
+   * @defaultValue 'inline'
    */
   direction?: Direction;
 

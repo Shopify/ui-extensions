@@ -1,4 +1,8 @@
-export {extend, InvalidResultReason} from '@shopify/checkout-ui-extensions';
+export {
+  extend,
+  InvalidResultReason,
+  Style,
+} from '@shopify/checkout-ui-extensions';
 export type {
   ExtensionPoint,
   ExtensionPoints,
@@ -10,21 +14,29 @@ export type {
   ReturnTypeForExtension,
   ShopifyGlobal,
   Version,
-  GridSize,
+  GridItemSize,
   I18nTranslate,
   ViewCoordinate,
   ViewTranslate,
   ViewPosition,
   ViewPositionType,
   AccessibilityRole,
+  ViewLikeAccessibilityRole,
+  NonPresentationalAccessibilityRole,
   Autocomplete,
   AutocompleteField,
   AutocompleteGroup,
   Breakpoint,
+  Conditions,
+  ConditionalStyle,
+  ConditionalValue,
+  MaybeConditionalStyle,
   CSSShorthand,
   Responsive,
   Unit,
   UnitSuffix,
+  Spacing,
+  Size,
 } from '@shopify/checkout-ui-extensions';
 
 export * from './components';

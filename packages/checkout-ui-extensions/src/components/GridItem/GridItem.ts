@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {AccessibilityRole} from '../shared';
+import {ViewLikeAccessibilityRole} from '../shared';
 
 export interface GridItemProps {
   /**
@@ -12,11 +12,11 @@ export interface GridItemProps {
    */
   rowSpan?: number;
   /**
-   * Set the semantic of the component’s content
+   * Sets the semantic meaning of the component’s content. When provided,
+   * the role will be used by assistive technologies to help buyers
+   * navigate the page.
    */
-  accessibilityRole?:
-    | AccessibilityRole
-    | [AccessibilityRole, AccessibilityRole];
+  accessibilityRole?: ViewLikeAccessibilityRole;
 }
 
 /**

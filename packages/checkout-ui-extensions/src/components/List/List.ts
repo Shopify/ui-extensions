@@ -1,13 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {Spacing} from '../shared';
+
 export type Marker = 'none' | 'bullet' | 'number';
-export type Spacing =
-  | 'none'
-  | 'extraTight'
-  | 'tight'
-  | 'base'
-  | 'loose'
-  | 'extraLoose';
 
 export interface ListProps {
   /**

@@ -21,7 +21,7 @@ export type {DividerProps} from './Divider';
 export {Form} from './Form';
 export type {FormProps} from './Form';
 export {Grid} from './Grid';
-export type {GridProps, GridSize} from './Grid';
+export type {GridProps, GridItemSize} from './Grid';
 export {GridItem} from './GridItem';
 export type {GridItemProps} from './GridItem';
 export {Heading} from './Heading';
@@ -76,12 +76,19 @@ export type {
 } from './View';
 export type {
   AccessibilityRole,
+  ViewLikeAccessibilityRole,
+  NonPresentationalAccessibilityRole,
   Autocomplete,
   AutocompleteField,
   AutocompleteGroup,
   Breakpoint,
   CSSShorthand,
   Responsive,
+  Status,
+  Size,
+  Spacing,
+  Alignment,
+  Appearance,
   Unit,
   UnitSuffix,
 } from './shared';

@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import {Responsive} from '../shared';
 
-interface Size {
+interface Dimensions {
   /**
    * Inline size of the skeleton in pixels.
    */
@@ -17,7 +17,7 @@ export interface SkeletonImageProps {
   /**
    * Adjust the size of the skeleton.
    */
-  size?: Size | Responsive<Size>;
+  dimensions?: Dimensions | Responsive<Dimensions>;
   /**
    * Displays the skeleton at the specified aspect ratio (fills the width of the
    * parent container and sets the height accordingly).

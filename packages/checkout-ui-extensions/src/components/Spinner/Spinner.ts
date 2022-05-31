@@ -1,12 +1,14 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {Size, Appearance} from '../shared';
+
 export interface SpinnerProps {
   /**
    * Adjusts the size of the icon.
    *
    * @defaultValue 'base'
    */
-  size?: 'extraSmall' | 'small' | 'base' | 'large' | 'fill';
+  size?: Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'fill'>;
 
   /**
    * Sets the appearance (color) of the icon.
@@ -15,7 +17,7 @@ export interface SpinnerProps {
    *
    * @defaultValue 'accent'
    */
-  appearance?: 'accent' | 'monochrome';
+  appearance?: Extract<Appearance, 'accent' | 'monochrome'>;
 
   /**
    * A label to use for the Spinner that will be used for buyers using

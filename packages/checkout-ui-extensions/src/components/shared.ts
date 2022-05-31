@@ -208,13 +208,153 @@ export type AccessibilityRole =
   /** Used to define a live region containing advisory information for the user that is not important enough to be an alert. */
   | 'status'
   /** Used for important, and usually time-sensitive, information. */
-  | 'alert';
+  | 'alert'
+  /** Used to indicate that an image is decorative and should be hidden from assistive technologies. */
+  | 'decorative'
+  /** Used to strip the semantic meaning of an element, but leave the visual styling intact. */
+  | 'presentation';
+
+export type NonPresentationalAccessibilityRole = Exclude<
+  AccessibilityRole,
+  'decorative' | 'presentation'
+>;
+export type ViewLikeAccessibilityRole =
+  | NonPresentationalAccessibilityRole
+  | [NonPresentationalAccessibilityRole, NonPresentationalAccessibilityRole];
+
+export type TextAccessibilityRole =
+  /**
+   * Indicate the text is a contact information. Typically used for addresses.
+   */
+  | 'address'
+  /**
+   * Indicate the text has been deleted. Typically used for discounted prices.
+   */
+  | 'deletion'
+  /**
+   * Indicate the text is marked or highlighted and relevant to the buyer's current action.
+   * Typically used to indicate the characters that matched a search query.
+   */
+  | 'marking'
+  /**
+   * Indicate the text is an abbreviation or acronym. Use the “for” option to
+   * provide a description of the abbreviation.
+   */
+  | {type: 'abbreviation'; for?: string}
+  /**
+   * Override the text directionality. Typically used for email and phone numbers.
+   */
+  | {type: 'directional-override'; direction: 'ltr' | 'rtl'}
+  /**
+   * Indicate the text is a date, a time or a duration. Use the “machineReadable” option
+   * to help browsers, tools or software understand the human-readable date. Valid format
+   * for “machineReadable” can be found here:
+   * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#Valid_datetime_Values
+   */
+  | {type: 'datetime'; machineReadable?: string};
 
 export type UnitSuffix = 'fr' | '%';
-/* eslint-disable eslint-comments/no-unlimited-disable */
-// eslint-disable-next-line
 export type Unit<Suffix extends UnitSuffix> = `${number}${Suffix}`;
-/* eslint-enable eslint-comments/no-unlimited-disable */
+
+/**
+ * `info`:
+ * Use to convey general information or actions that aren't critical or tied to
+ * a particular action.
+ *
+ * `success`:
+ * Use rarely, only if you need additional visual confirmation that a
+ * non-standard action has been completed successfully, for example adding an
+ * item to an order as an upsell.
+ *
+ * `warning`:
+ * Use to display information that needs attention or that customers should
+ * take action on. Seeing these banners can be stressful for customers so be
+ * cautious about using them. Should not block progress to next step.
+ *
+ * `critical`:
+ * Use to communicate problems that have to be resolved immediately for
+ * customers to complete a task. For example, using a different payment method
+ * if card details couldn't be processed. Seeing these banners can be stressful
+ * for customers so be cautious about using them.
+ */
+export type Status = 'info' | 'success' | 'warning' | 'critical';
+
+export type Size =
+  | 'extraSmall'
+  | 'small'
+  | 'base'
+  | 'large'
+  | 'extraLarge'
+  | 'fill';
+
+export type Spacing =
+  | 'none'
+  | 'extraTight'
+  | 'tight'
+  | 'base'
+  | 'loose'
+  | 'extraLoose';
+
+export type Alignment = 'start' | 'center' | 'end';
+export type InlineAlignment = Alignment;
+export type BlockAlignment = Alignment | 'baseline';
+
+/**
+ * `accent`:
+ * Use to convey emphasis and draw attention to the icon.
+ *
+ * `interactive`:
+ * Use to convey that the icon is pressable, hoverable or otherwise interactive.
+ *
+ * `subdued`:
+ * Use to convey a subdued or disabled state for the icon.
+ *
+ * `info`:
+ * Use to convey icon is informative or has information.
+ *
+ * `success`:
+ * Use to convey a successful interaction.
+ *
+ * `warning`:
+ * Use to convey something needs attention or an action needs to be taken.
+ *
+ * `critical`:
+ * Use to convey a problem has arisen.
+ *
+ * `monochrome`:
+ * Will take the color of its parent
+ */
+export type Appearance =
+  | 'accent'
+  | 'interactive'
+  | 'subdued'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'critical'
+  | 'monochrome';
+
+export type Direction = 'inline' | 'block';
+
+export type Fit = 'cover' | 'contain';
+
+/**
+ * Use to emphasize a word or a group of words compared to other nearby text.
+ *
+ * `strong`:
+ * Indicate strong importance, seriousness, or urgency.
+ * By default the text will be bold.
+ *
+ * `stress`:
+ * Indicate emphatic stress. By default the text will be italic.
+ *
+ * `offset`:
+ * Indicate an offset from the normal prose of the text. Typically used to indicate
+ * a foreign word, fictional character thoughts, or when the text refers to the definition of a word
+ * instead of representing its semantic meaning.
+ * By default the text will be italic.
+ */
+export type Emphasis = 'stress' | 'offset' | 'strong';
 
 /**
  * Takes a base type (Base) and a list of accepted combinations of

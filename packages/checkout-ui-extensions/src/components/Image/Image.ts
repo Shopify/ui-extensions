@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Responsive, Bordered} from '../shared';
+import {Responsive, Bordered, Fit, AccessibilityRole} from '../shared';
 
 export interface ImageProps
   extends Pick<Bordered, 'borderRadius' | 'borderWidth' | 'border'> {
@@ -31,7 +31,7 @@ export interface ImageProps
    *
    * @defaultValue ''
    */
-  description?: string;
+  accessibilityDescription?: string;
   /**
    * Indicates how the browser should load the image, either lazy or eager.
    *
@@ -55,10 +55,11 @@ export interface ImageProps
    */
   fit?: Fit;
   /**
-   * Indicates the image is decorative and should be hidden from assistive
-   * technologies
+   * Sets the semantic meaning of the component’s content.  When provided,
+   * the role will be used by assistive technologies to help buyers
+   * navigate the page.
    */
-  decorative?: boolean;
+  accessibilityRole?: Extract<AccessibilityRole, 'decorative'>;
 }
 
 interface Source {
@@ -71,7 +72,6 @@ interface Source {
   resolution?: Resolution;
 }
 
-type Fit = 'cover' | 'contain';
 type Resolution = 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
 type Loading = 'eager' | 'lazy';
 

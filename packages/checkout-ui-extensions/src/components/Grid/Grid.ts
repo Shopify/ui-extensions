@@ -1,20 +1,16 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {AccessibilityRole, Unit} from '../shared';
+import {
+  ViewLikeAccessibilityRole,
+  Unit,
+  Spacing,
+  InlineAlignment,
+  BlockAlignment,
+} from '../shared';
 
-type Spacing =
-  | 'none'
-  | 'extraTight'
-  | 'tight'
-  | 'base'
-  | 'loose'
-  | 'extraLoose';
-type InlineAlignment = 'center' | 'leading' | 'trailing';
-type BlockAlignment = 'center' | 'leading' | 'trailing' | 'baseline';
-
-export type Size = 'auto' | 'fill' | number | Unit<'fr' | '%'>;
-type Columns = Size[] | Size;
-type Rows = Size[] | Size;
+export type GridItemSize = 'auto' | 'fill' | number | Unit<'fr' | '%'>;
+type Columns = GridItemSize[] | GridItemSize;
+type Rows = GridItemSize[] | GridItemSize;
 export interface GridProps {
   /**
    * Sizes for each column of the layout.
@@ -71,11 +67,11 @@ export interface GridProps {
    */
   inlineAlignment?: InlineAlignment;
   /**
-   * Set the semantic of the component’s content
+   * Sets the semantic meaning of the component’s content. When provided,
+   * the role will be used by assistive technologies to help buyers
+   * navigate the page.
    */
-  accessibilityRole?:
-    | AccessibilityRole
-    | [AccessibilityRole, AccessibilityRole];
+  accessibilityRole?: ViewLikeAccessibilityRole;
   /**
    * A label that describes the purpose or contents of the element. When provided,
    * it will be announced to buyers using assistive technologies and will

@@ -67,7 +67,7 @@ export type {
   FormProps,
   GridProps,
   GridItemProps,
-  GridSize,
+  GridItemSize,
   HeadingProps,
   HeadingGroupProps,
   IconProps,
@@ -93,6 +93,8 @@ export type {
   ViewPosition,
   ViewPositionType,
   AccessibilityRole,
+  ViewLikeAccessibilityRole,
+  NonPresentationalAccessibilityRole,
   Autocomplete,
   AutocompleteField,
   AutocompleteGroup,
@@ -103,6 +105,14 @@ export type {
   UnitSuffix,
 } from './components';
 export type Components = typeof import('./components');
+
+export type {
+  Conditions,
+  ConditionalStyle,
+  ConditionalValue,
+  MaybeConditionalStyle,
+} from './style';
+export {Style} from './style';
 
 export {extend} from './extend';
 export type {ShopifyGlobal} from './globals';
