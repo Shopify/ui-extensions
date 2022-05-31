@@ -98,7 +98,7 @@ export function propsTable(
 ) {
   let markdown = '';
 
-  if (titleAndDocs) {
+  if (titleAndDocs && name) {
     let heading = '';
     for (let hh = 0; hh < headingLevel; hh++) {
       heading += '#';
@@ -116,7 +116,7 @@ export function propsTable(
     properties.filter(({parameters}) => parameters).length > 0;
   if (propertiesHaveParameters) {
     table.push(['Type', 'Description']);
-  } else {
+  } else if(properties.length > 0) {
     table.push(['Name', 'Type', 'Description']);
   }
 
