@@ -116,7 +116,7 @@ export function propsTable(
     properties.filter(({parameters}) => parameters).length > 0;
   if (propertiesHaveParameters) {
     table.push(['Type', 'Description']);
-  } else if(properties.length > 0) {
+  } else if (properties.length > 0) {
     table.push(['Name', 'Type', 'Description']);
   }
 
