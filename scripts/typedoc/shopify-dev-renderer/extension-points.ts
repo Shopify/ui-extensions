@@ -12,7 +12,6 @@ import {
   visibilityToFrontMatterMap,
 } from './shared';
 import type {Node, Visibility} from './shared';
-import {PartialStaticContent} from './components';
 
 const additionalPropsTables: string[] = [];
 
@@ -21,8 +20,13 @@ interface Options {
   title?: string;
 }
 
+export interface PartialStaticContent {
+  sourceFile: string;
+}
+
 export async function extensionPoints(
   paths: Paths,
+  /** Optionally, define an array of markdown files to append to extension points api  */
   partialStaticContent?: PartialStaticContent[],
   options: Options = {},
 ) {
@@ -85,10 +89,13 @@ export async function extensionPoints(
 
   markdown += dedupe(additionalPropsTables).reverse().join('');
 
+  // Optionally append addidtional markdown files onto the page
   if (partialStaticContent) {
     partialStaticContent.forEach((partialStaticSection) => {
-      markdown += '\n';
-      markdown += fs.readFileSync(partialStaticSection.sourceFile, 'utf8');
+      markdown += `\n\n${fs.readFileSync(
+        partialStaticSection.sourceFile,
+        'utf8',
+      )}`;
     });
   }
 
