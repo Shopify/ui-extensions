@@ -19,6 +19,7 @@ export interface ChoiceProps {
 }
 
 /**
- * Use choice lists to create a group of related options for customers to choose from. A choice list can be made up of radio buttons or checkboxes.
+ * Options inside a `ChoiceList`.
+ * The wrapping `ChoiceList` component will dictate if the choice renders as radio buttons or checkboxes.
  */
 export const Choice = createRemoteComponent<'Choice', ChoiceProps>('Choice');
