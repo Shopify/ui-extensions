@@ -239,6 +239,14 @@ function propType(
         }
         return `${value.name}${params}`;
       }
+
+      // HACK: Don't resolve the same local, can cause infinite loop
+      // This should be properly resolved in `docs-tools` because it should always resolve the local
+      // This could result in incomplete documentation
+      if (local.value.kind === 'Local') {
+        return `${value.name}`;
+      }
+
       local.value.params = value.params;
       return propType(local.value, exports, dir, additionalPropsTables);
     case 'InterfaceType':
