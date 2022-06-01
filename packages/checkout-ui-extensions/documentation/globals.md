@@ -2,9 +2,9 @@
 
 ## Shopify-specific globals
 
-The most important API to a UI extension is `shopify`, an object that's globally available. This object has a single method, `extend`. `extend` takes the following arguments:
+The most important API to a checkout UI extension is `shopify`, an object that's globally available. This object has a single method, `extend`. `extend` takes the following arguments:
 
-- The name of an [available extension point](./extension-points.md)
+- The name of an available [checkout UI extension point](./extension-points.md)
 - A function to call when Shopify;s ready to run the extension point. The function that you pass is called with at least one input argument, depending on the extension point. To see what you have access to, refer to the documentation for the extension point that you're targeting.
 
 ```ts

@@ -20,7 +20,7 @@ export function gettingStarted(paths: Paths, options: Options = {}) {
   const extensionPointsDocsPath = resolve(
     `${paths.outputRoot}/extension-points`,
   );
-  const {visibility = 'hidden', title = 'Checkout'} = options;
+  const {visibility = 'hidden', title = 'Checkout UI'} = options;
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
 
   if (!fs.existsSync(outputRoot)) {

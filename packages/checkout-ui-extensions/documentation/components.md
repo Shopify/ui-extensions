@@ -23,7 +23,7 @@ Checkout components are designed to be flexible, enabling you to layer and mix t
       <p><code><a href="../src/components/BlockStack">BlockStack</a></code></p>
       <p><code><a href="../src/components/Divider">Divider</a></code></p>
       <p><code><a href="../src/components/Grid">Grid</a></code></p>
-      <p><code><a href="../src/components/GridItem">Grid Item</a></code></p>
+      <p><code><a href="../src/components/GridItem">GridItem</a></code></p>
       <p><code><a href="../src/components/InlineLayout">InlineLayout</a></code></p>
       <p><code><a href="../src/components/InlineSpacer">InlineSpacer</a></code></p>
       <p><code><a href="../src/components/InlineStack">InlineStack</a></code></p>

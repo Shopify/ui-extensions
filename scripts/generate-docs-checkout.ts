@@ -17,10 +17,13 @@ const checkout = {
   shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
 };
 
-const componentsPageContent = (url: string, title = 'Checkout'): Content => ({
+const componentsPageContent = (
+  url: string,
+  title = 'checkout UI',
+): Content => ({
   title: `Components for ${title} extensions`,
   frontMatterDescription: `A list of components for ${title} extensions.`,
-  // This will use a mardown file for the component index page, and will not auto-generate a list of components in the table of contents
+  // This will use a markdown file for the component index page, and will not auto-generate a list of components in the table of contents
   sourceFile: `${checkout.inputRoot}/documentation/components.md`,
   sourceFileStringReplacements: [
     // Replace relative in-repo link "../src/{component}" with "{shopifyDevUrl}/components/{component}"
