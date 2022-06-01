@@ -9,9 +9,8 @@ export function isEqual<
     | number
     | boolean
     | string
-    | Function
     | null
-    | undefined,
+    | undefined
 >(first: T, second: T): boolean {
   if (Object.is(first, second)) {
     return true;

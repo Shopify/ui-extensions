@@ -7,7 +7,7 @@ import {useSubscription} from './subscription';
  * Returns the running total calculated at the current step.
  */
 export function useRunningTotal<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >() {
   return useSubscription(useExtensionApi<ID>().runningTotal);
 }

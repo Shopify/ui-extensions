@@ -6,7 +6,7 @@ import type {
 import {useExtensionApi} from './api';
 
 export function useApplySignedChange<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >(): StandardApi<ID>['applySignedChange'] {
   return useExtensionApi<ID>().applySignedChange;
 }
