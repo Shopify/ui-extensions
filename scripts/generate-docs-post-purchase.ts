@@ -15,16 +15,16 @@ const postPurchase = {
   shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
 };
 
-const componentsPageContent = (url: string, title = 'Checkout') => ({
+const componentsPageContent = (url: string, title = 'Post-purchase') => ({
   title: `Components for ${title} extensions`,
   frontMatterDescription: `A list of components for ${title} extensions.`,
-  description: `Checkout UI Extensions provide many powerful UI components that a
+  description: `Post-purchase extensions provide many powerful UI components that a
   [rendering extension](${url}/extension-points/api#renderextension) can
   use to build an interface. This UI is rendered natively by Shopify, so you
-  can depend on it to be performant, accessible, and work in all of Checkout’s
-  supported browsers. \n\nThe following components are available as part of UI Extensions
-  for Checkout, but make sure that you check the documentation for your
-  [extension point](${url}/extension-points#extension-points)
+  can depend on it to be performant, accessible, and work in all of checkout’s
+  supported browsers. \n\nThe following components are available as part of
+  post-purchase extensions for checkout, but make sure that you check the 
+  documentation for your [extension point](${url}/extension-points#extension-points)
   to ensure the component is available in the extension points you are
   targeting.`,
 });
