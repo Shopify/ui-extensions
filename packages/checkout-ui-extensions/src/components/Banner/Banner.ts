@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Status} from '../shared';
+import type {Status} from '../shared';
 
 export interface BannerProps {
   /**
