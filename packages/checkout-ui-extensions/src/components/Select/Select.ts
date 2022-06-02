@@ -88,10 +88,6 @@ export interface SelectProps {
    */
   autocomplete?: Autocomplete | boolean;
   /**
-   * The text displayed in the select when no value is provided.
-   */
-  placeholder?: string;
-  /**
    * A callback that is run whenever the selected option changes. This callback
    * is called with the string `value` of the selected `option`. This component
    * is [controlled](https://reactjs.org/docs/forms.html#controlled-components),

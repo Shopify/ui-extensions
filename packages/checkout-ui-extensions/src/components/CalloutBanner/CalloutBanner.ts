@@ -1,9 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {InlineAlignment, Spacing} from '../shared';
+
 type Border = 'none' | 'block';
 type Background = 'transparent' | 'color1' | 'color2' | 'color3';
-type Alignment = 'leading' | 'center' | 'trailing';
-type Spacing = 'none' | 'tight' | 'loose';
 
 export interface CalloutBannerProps {
   /**
@@ -28,13 +28,13 @@ export interface CalloutBannerProps {
    *
    * @defaultValue 'center'
    */
-  alignment?: Alignment;
+  inlineAlignment?: InlineAlignment;
   /**
    * Sets the spacing between the title and children
    *
    * @defaultValue 'tight'
    */
-  spacing?: Spacing;
+  spacing?: Extract<Spacing, 'none' | 'tight' | 'loose'>;
 }
 
 /**

@@ -1,5 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {Appearance} from '../shared';
+
 export interface LinkProps {
   /**
    * Destination to navigate to. You **must** provide either this property, `onPress`,
@@ -29,6 +31,11 @@ export interface LinkProps {
    * accessibility purposes to prevent duplicate content from being read.
    */
   accessibilityLabel?: string;
+  /**
+   * Specify the color of the link.
+   * `monochrome` will take the color of its parent.
+   */
+  appearance?: Extract<Appearance, 'monochrome'>;
   /**
    * Callback when pressed. If `to` is provided, it will execute the callback and
    * then navigate to the location specified by `to`.

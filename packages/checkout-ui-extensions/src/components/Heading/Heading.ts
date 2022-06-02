@@ -1,5 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {InlineAlignment, AccessibilityRole} from '../shared';
+
 type Level = 1 | 2 | 3;
 
 export interface HeadingProps {
@@ -18,11 +20,15 @@ export interface HeadingProps {
    */
   level?: Level;
   /**
-   * A custom accessibility role for this heading. Currently, only `presentation`
-   * is supported, which will strip the semantic meaning of the heading, but leave
-   * the visual styling intact.
+   * Sets the semantic meaning of the component’s content. When provided,
+   * the role will be used by assistive technologies to help buyers
+   * navigate the page.
    */
-  accessibilityRole?: 'presentation';
+  accessibilityRole?: Extract<AccessibilityRole, 'presentation'>;
+  /**
+   * Align text along the main axis.
+   */
+  inlineAlignment?: InlineAlignment;
 }
 
 /**

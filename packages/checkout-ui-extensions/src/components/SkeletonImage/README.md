@@ -7,7 +7,7 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| size? | <code>"extraSmall" &#124; "small" &#124; "base" &#124; "large" &#124; "extraLarge" &#124; <a href="#responsive">Responsive</a></code> | Adjust the size of the skeleton.  |
+| dimensions? | <code><a href="#dimensions">Dimensions</a> &#124; <a href="#responsive">Responsive</a></code> | Adjust the size of the skeleton.  |
 | aspectRatio? | <code>number</code> | Displays the skeleton at the specified aspect ratio (fills the width of the parent container and sets the height accordingly).  |<a name="Responsive"></a>
 
 ### Responsive
@@ -24,3 +24,11 @@ For example, if a property accepts `number | Responsive`, it would accept a numb
 }
 ```
 
+<a name="Dimensions"></a>
+
+### Dimensions
+
+| Name | Type | Description |
+| --- | --- | --- |
+| inline | <code>number</code> | Inline size of the skeleton in pixels.  |
+| block | <code>number</code> | Block size of the skeleton in pixels.  |

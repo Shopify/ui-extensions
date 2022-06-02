@@ -1,5 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {Appearance, Size} from '../shared';
+
 export type IconSource =
   | 'arrowLeft'
   | 'arrowRight'
@@ -48,38 +50,6 @@ export type IconSource =
   | 'giftFill'
   | 'external'
   | 'profile';
-/**
- * `accent`:
- * Use to convey emphasis and draw attention to the icon.
- *
- * `interactive`:
- * Use to convey that the icon is pressable, hoverable or otherwise interactive.
- *
- * `subdued`:
- * Use to convey a subdued or disabled state for the icon.
- *
- * `info`:
- * Use to convey icon is informative or has information.
- *
- * `success`:
- * Use to convey a successful interaction.
- *
- * `warning`:
- * Use to convey something needs attention or an action needs to be taken.
- *
- * `critical`:
- * Use to convey a problem has arisen.
- */
-type Appearance =
-  | 'accent'
-  | 'interactive'
-  | 'subdued'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'critical';
-
-type Size = 'extraSmall' | 'small' | 'base' | 'fill';
 
 export interface IconProps {
   /**
@@ -99,7 +69,7 @@ export interface IconProps {
    *
    * @defaultValue 'base'
    */
-  size?: Size;
+  size?: Extract<Size, 'extraSmall' | 'small' | 'base' | 'fill'>;
 
   /**
    * Specifies which icon symbol to display

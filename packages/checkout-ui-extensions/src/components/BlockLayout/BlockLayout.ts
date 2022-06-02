@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {GridProps, GridSize} from '../Grid';
+import {GridProps, GridItemSize} from '../Grid';
 
 export interface BlockLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
   /**
@@ -25,7 +25,7 @@ export interface BlockLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
    *
    * @defaultValue 'fill'
    */
-  rows?: GridSize | GridSize[];
+  rows?: GridItemSize | GridItemSize[];
 }
 
 /**

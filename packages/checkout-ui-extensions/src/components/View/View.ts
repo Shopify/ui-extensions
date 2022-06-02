@@ -6,24 +6,18 @@ import {
   Bordered,
   MultiPick,
   Unit,
-  AccessibilityRole,
+  ViewLikeAccessibilityRole,
+  InlineAlignment,
+  BlockAlignment,
+  Spacing,
 } from '../shared';
 
 type Background = 'transparent' | 'color1' | 'color2' | 'color3';
 type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
 type BackgroundFit = 'cover' | 'contain';
-type Spacing =
-  | 'extraTight'
-  | 'tight'
-  | 'base'
-  | 'loose'
-  | 'extraLoose'
-  | 'none';
 type Visibility = 'hidden';
 type AccessibilityVisibility = 'hidden';
 type Display = 'block' | 'inline';
-type BlockAlignment = 'center' | 'leading' | 'trailing';
-type InlineAlignment = 'center' | 'leading' | 'trailing';
 type Opacity = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 
 export type PositionType = 'absolute' | 'relative';
@@ -268,11 +262,11 @@ export interface ViewProps extends Bordered {
    */
   accessibilityLabel?: string;
   /**
-   * Set the semantic of the component’s content
+   * Sets the semantic meaning of the component’s content. When provided,
+   * the role will be used by assistive technologies to help buyers
+   * navigate the page.
    */
-  accessibilityRole?:
-    | AccessibilityRole
-    | [AccessibilityRole, AccessibilityRole];
+  accessibilityRole?: ViewLikeAccessibilityRole;
   /**
    * Changes how the View is positioned.
    */
@@ -284,7 +278,7 @@ export interface ViewProps extends Bordered {
   /**
    * Position children along the cross axis
    */
-  blockAlignment?: BlockAlignment;
+  blockAlignment?: Extract<BlockAlignment, 'start' | 'center' | 'end'>;
   /**
    * Position children along the main axis
    */

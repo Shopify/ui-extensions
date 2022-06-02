@@ -1,9 +1,11 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {Appearance, InlineAlignment} from '../shared';
+
 export interface ButtonProps {
   /**
-   * The type of button that will be rendered. The visual of these buttons are controlled
-   * by merchants through the Branding API.
+   * The type of button that will be rendered. The visual presentation of the button type
+   * is controlled by merchants through the Branding API.
    *
    *
    * - `primary`: button used for main actions. Ex: "Continue to next step"
@@ -18,33 +20,31 @@ export interface ButtonProps {
   kind?: 'primary' | 'secondary' | 'plain';
   /**
    * Specify the color treatment of the Button. By default, it will use the "Primary / Secondary Action" colors.
-   *
-   *
-   * - `monochrome` will take the color of its parent.
-   *
-   * - `critical` will take the critical color.
    */
-  appearance?: 'monochrome' | 'critical';
+  appearance?: Extract<Appearance, 'monochrome' | 'critical'>;
   /**
    * Allows the button to submit a form
    */
   submit?: boolean;
   /**
-   * Destination to link to, renders a Link
+   * Destination URL to link to. If this value is set, the button will render as a Link.
    */
   to?: string;
   /**
-   * Specifies the inline alignment of the content.
+   * Specifies the inline alignment of the content
    *
    * @defaultValue 'center'
    */
-  inlineAlignment?: 'leading' | 'center' | 'trailing';
+  inlineAlignment?: InlineAlignment;
   /**
    * Replaces content with a loading indicator
+   *
+   * @defaultValue false
    */
   loading?: boolean;
   /**
-   * Accessible label for the loading indicator when user prefers reduced motion
+   * Accessible label for the loading indicator when user prefers reduced motion. This value is
+   * only used if `loading` is true.
    */
   loadingLabel?: string;
   /**
@@ -55,10 +55,12 @@ export interface ButtonProps {
   accessibilityLabel?: string;
   /**
    * Disables the button, disallowing any interaction
+   *
+   * @defaultValue false
    */
   disabled?: boolean;
   /**
-   * Callback when pressed
+   * Callback that is run when the button is pressed
    */
   onPress?(): void;
 }

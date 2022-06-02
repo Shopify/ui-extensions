@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import {Size} from '../shared';
 import {TextProps} from '../Text';
 
 export interface SkeletonTextProps
@@ -7,7 +8,7 @@ export interface SkeletonTextProps
   /**
    * Adjust the length of the text when no children are passed.
    */
-  inlineSize?: 'small' | 'medium' | 'large';
+  inlineSize?: Extract<Size, 'small' | 'base' | 'large'>;
 }
 
 /**

@@ -10,4 +10,4 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| size? | <code>"extraSmall" &#124; "small" &#124; "base" &#124; "large" &#124; "extraLarge"</code> | Adjust size of the spacer<br /><br />Default value: <code>'base'</code> |
+| spacing? | <code>Extract<<wbr>"none" &#124; "extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose", "extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose"<wbr>></code> | Adjust size of the spacer<br /><br />Default value: <code>'base'</code> |

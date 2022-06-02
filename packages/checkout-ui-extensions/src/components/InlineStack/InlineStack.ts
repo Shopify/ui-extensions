@@ -1,22 +1,19 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {AccessibilityRole} from '../shared';
-
-type Spacing =
-  | 'none'
-  | 'extraTight'
-  | 'tight'
-  | 'base'
-  | 'loose'
-  | 'extraLoose';
+import {
+  ViewLikeAccessibilityRole,
+  Spacing,
+  InlineAlignment,
+  BlockAlignment,
+} from '../shared';
 
 export interface InlineStackProps {
   /**
-   * Sets the semantic meaning of the component's content.
+   * Sets the semantic meaning of the component’s content. When provided,
+   * the role will be used by assistive technologies to help buyers
+   * navigate the page.
    */
-  accessibilityRole?:
-    | AccessibilityRole
-    | [AccessibilityRole, AccessibilityRole];
+  accessibilityRole?: ViewLikeAccessibilityRole;
   /**
    * A label that describes the purpose or contents of the element. When provided,
    * it will be announced to buyers using assistive technologies and will
@@ -26,15 +23,15 @@ export interface InlineStackProps {
   /**
    * Position children along the cross axis
    *
-   * @defaultValue 'leading'
+   * @defaultValue 'start'
    */
-  blockAlignment?: 'leading' | 'center' | 'trailing' | 'baseline';
+  blockAlignment?: BlockAlignment;
   /**
    * Position children along the main axis
    *
-   * @defaultValue 'leading'
+   * @defaultValue 'start'
    */
-  inlineAlignment?: 'leading' | 'center' | 'trailing';
+  inlineAlignment?: InlineAlignment;
   /**
    * Adjust spacing between children
    *

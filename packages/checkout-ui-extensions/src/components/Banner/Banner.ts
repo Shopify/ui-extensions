@@ -1,32 +1,12 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/**
- * `info`:
- * Use to convey general information or actions that aren’t critical or tied to
- * a particular action.
- *
- * `success`:
- * Use rarely, only if you need additional visual confirmation that a
- * non-standard action has been completed successfully, for example adding an
- * item to an order as an upsell.
- *
- * `warning`:
- * Use to display information that needs attention or that customers need to
- * take action on. Seeing these banners can be stressful for customers so be
- * cautious about using them. Does not block progress to next step.
- *
- * `critical`:
- * Use to communicate problems that have to be resolved immediately for
- * customers to complete a task. For example, using a different payment method
- * if card details couldn't be processed. Seeing these banners can be stressful
- * for customers so be cautious about using them.
- */
-type Status = 'info' | 'success' | 'warning' | 'critical';
+import type {Status} from '../shared';
 
 export interface BannerProps {
   /**
-   * Banners have an optional title. Use a title to grab the buyers attention
-   * with a short, concise message.
+   * Banners have an optional title. Use a title to grab the buyer’s attention
+   * with a short, concise message. Banners with no title should have child elements
+   * to convey the banner’s purpose to the buyer.
    */
   title?: string;
   /**
@@ -36,7 +16,10 @@ export interface BannerProps {
    */
   status?: Status;
   /**
-   * Makes the content collapsible
+   * Makes the content collapsible. A collapsible banner will conceal child
+   * elements initially, but allow the user to expand to see them.
+   *
+   * @defaultValue false
    */
   collapsible?: boolean;
   /**
