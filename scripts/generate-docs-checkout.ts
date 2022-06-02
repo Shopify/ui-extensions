@@ -44,8 +44,6 @@ extensionPoints(checkout, {
   visibility: 'betaCheckoutExtensions',
 });
 components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
-  subcomponentMap: {ChoiceList: ['Choice'], FormLayout: ['FormLayoutGroup']},
-  componentsToSkip: ['FormLayoutGroup', 'ListItem', 'Choice'],
   generateReadmes: true,
   visibility: 'betaCheckoutExtensions',
 });
