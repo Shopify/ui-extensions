@@ -162,9 +162,12 @@ export function propsTable(
     },
   );
 
-  markdown += markdownTable(table, {
-    stringLength: () => 3,
-  });
+  markdown += `
+<div style="border: 2px red solid;">\n
+${markdownTable(table, {
+  stringLength: () => 3,
+})}
+\n</div>`;
 
   return markdown;
 }

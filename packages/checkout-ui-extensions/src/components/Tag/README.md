@@ -5,6 +5,9 @@ A Tag is used to help label, organize or categorize objects. It is commonly used
 ## Props
 optional = ?
 
+
+<div style="border: 2px red solid;">
+
 | Name | Type | Description |
 | --- | --- | --- |
 | children? | <code>string</code> |  |
@@ -12,3 +15,5 @@ optional = ?
 | accessibilityLabel? | <code>string</code> | A label used for buyers using assistive technologies. When provided, any `children` supplied to this component are hidden from being seen for accessibility purposes to prevent duplicate content from being read.  |
 | removeControlAccessibilityLabel? | <code>string</code> | An accessible label for the remove button in a Tag  |
 | onRemove? | <code>() => void</code> | Callback when tag is removed  |
+
+</div>

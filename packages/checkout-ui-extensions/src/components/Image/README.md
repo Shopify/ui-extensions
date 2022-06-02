@@ -7,6 +7,9 @@ For small images use Thumbnail.
 ## Props
 optional = ?
 
+
+<div style="border: 2px red solid;">
+
 | Name | Type | Description |
 | --- | --- | --- |
 | source | <code>string</code> | The default image path. This is used for single images, as a fallback if no sources match, or if a browser does not support picture element sources.  |
@@ -19,7 +22,9 @@ optional = ?
 | border? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the border style.<br /><br />To shorten the code, it is possible to specify all the border style properties in one property.<br /><br />Examples: - `base` means blockStart, inlineEnd, blockEnd and inlineStart border styles are `base` - [`base`, `none`] means blockStart and blockEnd border styles are `base`, inlineStart and inlineEnd border styles are `none` - [`base`, `none`, `dotted`, `base`] means blockStart border style is `base`, inlineEnd border style is `none`, blockEnd border style is `dotted` and  blockStart border style is `base`  |
 | borderWidth? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the border width.<br /><br />To shorten the code, it is possible to specify all the border width properties in one property.<br /><br />Examples: - `base` means blockStart, inlineEnd, blockEnd and inlineStart border widths are `base` - [`base`, `thick`] means blockStart and blockEnd border widths are `base`, inlineStart and inlineEnd border widths are `thick` - [`base`, `thick`, `thick`, `base`] means blockStart border width is `base`, inlineEnd border width is `thick`, blockEnd border width is `thick` and  blockStart border width is `base`  |
 | borderColor? | <code>"base" &#124; "emphasized" &#124; <a href="#responsive">Responsive</a></code> | Adjust the border color.  |
-| borderRadius? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the border radius.<br /><br />To shorten the code, it is possible to specify all the border width properties in one property.<br /><br />Examples: - `base` means blockStart, inlineEnd, blockEnd and inlineStart border radii are `base` - [`base`, `none`] means blockStart and blockEnd border radii are `base`, inlineStart and inlineEnd border radii are `none` - [`base`, `none`, `tight`, `base`] means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`  |<a name="Responsive"></a>
+| borderRadius? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the border radius.<br /><br />To shorten the code, it is possible to specify all the border width properties in one property.<br /><br />Examples: - `base` means blockStart, inlineEnd, blockEnd and inlineStart border radii are `base` - [`base`, `none`] means blockStart and blockEnd border radii are `base`, inlineStart and inlineEnd border radii are `none` - [`base`, `none`, `tight`, `base`] means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`  |
+
+</div><a name="Responsive"></a>
 
 ### Responsive
 
@@ -39,7 +44,12 @@ For example, if a property accepts `number | Responsive`, it would accept a numb
 
 ### Source
 
+
+<div style="border: 2px red solid;">
+
 | Name | Type | Description |
 | --- | --- | --- |
 | source | <code>string</code> | The path to the image  |
 | resolution? | <code>1 &#124; 1.3 &#124; 1.5 &#124; 2 &#124; 2.6 &#124; 3 &#124; 3.5 &#124; 4</code> | Specify that the image should be used for devices with a matching pixel density  |
+
+</div>

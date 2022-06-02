@@ -8,6 +8,11 @@ Note that you should favor InlineStack when spacing between all elements is the 
 ## Props
 optional = ?
 
+
+<div style="border: 2px red solid;">
+
 | Name | Type | Description |
 | --- | --- | --- |
 | size? | <code>"extraSmall" &#124; "small" &#124; "base" &#124; "large" &#124; "extraLarge"</code> | Adjust size of the spacer<br /><br />Default value: <code>'base'</code> |
+
+</div>

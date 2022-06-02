@@ -5,6 +5,9 @@ Use a stepper to increase or decrease a value, like changing the quantity from 1
 ## Props
 optional = ?
 
+
+<div style="border: 2px red solid;">
+
 | Name | Type | Description |
 | --- | --- | --- |
 | accessibilityDescription? | <code>string</code> | A detailed description for screen readers.  |
@@ -22,3 +25,5 @@ optional = ?
 | required? | <code>boolean</code> | Whether the stepper field needs a value. This requirement adds semantic value to the field, but it will not cause an error to appear automatically. If you want to present an error when this field is empty, you can do so with the `error` prop.  |
 | step? | <code>number</code> | The amount the value can increase or decrease by. This can be an integer or decimal. If a `max` or `min` is specified with `step` when increasing/decreasing the value via the stepper buttons the final value will always round to the `max` or `min` rather than the closest valid amount.<br /><br />Default value: <code>1</code> |
 | value? | <code>number</code> | Current value for the stepper. If omitted, the field will be empty. You should update this value in response to the `onChange` callback on a stepper field.  |
+
+</div>

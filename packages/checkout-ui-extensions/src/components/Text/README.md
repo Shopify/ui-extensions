@@ -6,6 +6,9 @@ content.
 ## Props
 optional = ?
 
+
+<div style="border: 2px red solid;">
+
 | Name | Type | Description |
 | --- | --- | --- |
 | size? | <code>"extraSmall" &#124; "small" &#124; "base" &#124; "large" &#124; "extraLarge"</code> | Size of the text  |
@@ -13,3 +16,5 @@ optional = ?
 | accessibilityRole? | <code>"main" &#124; "header" &#124; "footer" &#124; "section" &#124; "complementary" &#124; "navigation" &#124; "orderedList" &#124; "listItem" &#124; "unorderedList" &#124; "separator" &#124; "status" &#124; "alert"</code> | Set the semantic of the component’s content  |
 | id? | <code>string</code> | Unique identifier. Typically used as a target for another component’s controls to associate an accessible label with an action.  |
 | appearance? | <code>"critical" &#124; "warning" &#124; "success" &#124; "accent" &#124; "subdued" &#124; "information"</code> | Changes the visual appearance  |
+
+</div>

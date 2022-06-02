@@ -5,10 +5,15 @@ SkeletonImage is used to provide a low fidelity representation of an image befor
 ## Props
 optional = ?
 
+
+<div style="border: 2px red solid;">
+
 | Name | Type | Description |
 | --- | --- | --- |
 | size? | <code>"extraSmall" &#124; "small" &#124; "base" &#124; "large" &#124; "extraLarge" &#124; <a href="#responsive">Responsive</a></code> | Adjust the size of the skeleton.  |
-| aspectRatio? | <code>number</code> | Displays the skeleton at the specified aspect ratio (fills the width of the parent container and sets the height accordingly).  |<a name="Responsive"></a>
+| aspectRatio? | <code>number</code> | Displays the skeleton at the specified aspect ratio (fills the width of the parent container and sets the height accordingly).  |
+
+</div><a name="Responsive"></a>
 
 ### Responsive
 

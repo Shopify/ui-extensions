@@ -10,6 +10,9 @@ Note: View’s box model related properties like `padding`, `border`, `borderRad
 ## Props
 optional = ?
 
+
+<div style="border: 2px red solid;">
+
 | Name | Type | Description |
 | --- | --- | --- |
 | maxInlineSize? | <code>number &#124; <a href="#responsive">Responsive</a></code> | Adjust the maximum inline size.<br /><br />Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.<br /><br /> Examples:<br /><br />- `500` represents `500px`<br /><br />- `0.5` represents `50%`<br /><br />- `1` represents `100%`  |
@@ -35,19 +38,31 @@ optional = ?
 | border? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the border style.<br /><br />To shorten the code, it is possible to specify all the border style properties in one property.<br /><br />Examples: - `base` means blockStart, inlineEnd, blockEnd and inlineStart border styles are `base` - [`base`, `none`] means blockStart and blockEnd border styles are `base`, inlineStart and inlineEnd border styles are `none` - [`base`, `none`, `dotted`, `base`] means blockStart border style is `base`, inlineEnd border style is `none`, blockEnd border style is `dotted` and  blockStart border style is `base`  |
 | borderWidth? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the border width.<br /><br />To shorten the code, it is possible to specify all the border width properties in one property.<br /><br />Examples: - `base` means blockStart, inlineEnd, blockEnd and inlineStart border widths are `base` - [`base`, `thick`] means blockStart and blockEnd border widths are `base`, inlineStart and inlineEnd border widths are `thick` - [`base`, `thick`, `thick`, `base`] means blockStart border width is `base`, inlineEnd border width is `thick`, blockEnd border width is `thick` and  blockStart border width is `base`  |
 | borderColor? | <code>"base" &#124; "emphasized" &#124; <a href="#responsive">Responsive</a></code> | Adjust the border color.  |
-| borderRadius? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the border radius.<br /><br />To shorten the code, it is possible to specify all the border width properties in one property.<br /><br />Examples: - `base` means blockStart, inlineEnd, blockEnd and inlineStart border radii are `base` - [`base`, `none`] means blockStart and blockEnd border radii are `base`, inlineStart and inlineEnd border radii are `none` - [`base`, `none`, `tight`, `base`] means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`  |<a name="Translate"></a>
+| borderRadius? | <code>CSSValue &#124; [CSSValue,CSSValue] &#124; [CSSValue,CSSValue,CSSValue,CSSValue] &#124; <a href="#responsive">Responsive</a></code> | Adjust the border radius.<br /><br />To shorten the code, it is possible to specify all the border width properties in one property.<br /><br />Examples: - `base` means blockStart, inlineEnd, blockEnd and inlineStart border radii are `base` - [`base`, `none`] means blockStart and blockEnd border radii are `base`, inlineStart and inlineEnd border radii are `none` - [`base`, `none`, `tight`, `base`] means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`  |
+
+</div><a name="Translate"></a>
 
 ### Translate
+
+
+<div style="border: 2px red solid;">
 
 | Name | Type | Description |
 | --- | --- | --- |
 | block? | <code>number &#124; Unit</code> | Adjust the translation on the cross axis.<br /><br />A percentage value refers to the block size of the View.  |
-| inline? | <code>number &#124; Unit</code> | Adjust the translation on the main axis.<br /><br />A percentage value refers to the inline size of the View.  |<a name=""></a>
+| inline? | <code>number &#124; Unit</code> | Adjust the translation on the main axis.<br /><br />A percentage value refers to the inline size of the View.  |
+
+</div><a name=""></a>
 
 ### 
 
+
+<div style="border: 2px red solid;">
+
 | Name | Type | Description |
-| --- | --- | --- |<a name="Responsive"></a>
+| --- | --- | --- |
+
+</div><a name="Responsive"></a>
 
 ### Responsive
 

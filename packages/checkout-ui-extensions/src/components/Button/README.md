@@ -5,6 +5,9 @@ Buttons are used for actions, such as “Add”, “Continue”, “Pay now”, 
 ## Props
 optional = ?
 
+
+<div style="border: 2px red solid;">
+
 | Name | Type | Description |
 | --- | --- | --- |
 | kind? | <code>"primary" &#124; "secondary" &#124; "plain"</code> | The type of button that will be rendered. The visual of these buttons are controlled by merchants through the Branding API.<br /><br /> - `primary`: button used for main actions. Ex: &#34;Continue to next step&#34;<br /><br />- `secondary`: button used for secondary actions not blocking user progress. Ex: &#34;Download Shop app&#34;<br /><br />- `plain`: renders a button that visually looks like a Link<br /><br /> Default value: <code>'primary'</code> |
@@ -17,3 +20,5 @@ optional = ?
 | accessibilityLabel? | <code>string</code> | A label used for buyers using assistive technologies. When provided, any `children` supplied to this component are hidden from being seen for accessibility purposes to prevent duplicate content from being read.  |
 | disabled? | <code>boolean</code> | Disables the button, disallowing any interaction  |
 | onPress? | <code>() => void</code> | Callback when pressed  |
+
+</div>
