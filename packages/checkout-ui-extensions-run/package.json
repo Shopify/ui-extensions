@@ -1,6 +1,6 @@
 {
   "name": "@shopify/checkout-ui-extensions-run",
-  "version": "0.7.2",
+  "version": "0.7.4",
   "description": "A command line interface for developing and building Checkout UI Extensions",
   "publishConfig": {
     "access": "public",
