@@ -2,7 +2,7 @@ import {resolve} from 'path';
 import * as fs from 'fs';
 import {createDependencyGraph, filterGraph} from '@shopify/docs-tools';
 
-import type {Paths, InterfaceType} from '../types';
+import type {Paths} from '../types';
 
 import {
   renderYamlFrontMatter,
@@ -20,7 +20,16 @@ interface Options {
   title?: string;
 }
 
-export async function extensionPoints(paths: Paths, options: Options = {}) {
+export interface PartialStaticContent {
+  sourceFile: string;
+}
+
+export async function extensionPoints(
+  paths: Paths,
+  /** Optionally, define an array of markdown files to append to extension points api  */
+  partialStaticContent?: PartialStaticContent[],
+  options: Options = {},
+) {
   const extensionsIndex = resolve(`${paths.inputRoot}/src/index.ts`);
   const {visibility = 'hidden', title = 'Checkout'} = options;
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
@@ -79,6 +88,16 @@ export async function extensionPoints(paths: Paths, options: Options = {}) {
   });
 
   markdown += dedupe(additionalPropsTables).reverse().join('');
+
+  // Optionally append addidtional markdown files onto the page
+  if (partialStaticContent) {
+    partialStaticContent.forEach((partialStaticSection) => {
+      markdown += `\n\n${fs.readFileSync(
+        partialStaticSection.sourceFile,
+        'utf8',
+      )}`;
+    });
+  }
 
   fs.writeFile(apiFile, markdown, function (err) {
     if (err) throw err;
