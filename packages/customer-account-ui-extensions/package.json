@@ -1,0 +1,24 @@
+{
+  "name": "@shopify/customer-account-ui-extensions",
+  "description": "The API for UI Extensions that run in Shopify's Customer Account",
+  "version": "0.0.1",
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "sideEffects": false,
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./": "./"
+  },
+  "dependencies": {}
+}

@@ -5,6 +5,8 @@
     {"path": "./tsconfig.repo.json"},
     {"path": "./packages/checkout-ui-extensions"},
     {"path": "./packages/checkout-ui-extensions-react"},
+    {"path": "./packages/customer-account-ui-extensions"},
+    {"path": "./packages/customer-account-ui-extensions-react"},
     {"path": "./packages/post-purchase-ui-extensions"},
     {"path": "./packages/post-purchase-ui-extensions-react"},
     {"path": "./packages/ui-extensions-webpack-hot-client"},
