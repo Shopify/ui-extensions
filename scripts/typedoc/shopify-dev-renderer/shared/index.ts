@@ -277,15 +277,15 @@ function propType(
     case 'UnionType':
       return value.types
         .map((type: any) => {
-          if(isGenericTypeReplaceable(type, value)) {
+          if (isGenericTypeReplaceable(type, value)) {
             type.params = value.params;
           }
           if (type?.params?.length > 0) {
             type.params = type.params.map((typeParam) => {
-            if(isGenericTypeReplaceable(typeParam, value)) {
-              typeParam.params = value.params;
-            }
-              return typeParam
+              if (isGenericTypeReplaceable(typeParam, value)) {
+                typeParam.params = value.params;
+              }
+              return typeParam;
             });
           }
 
@@ -477,4 +477,3 @@ export function mkdir(directory) {
     fs.mkdirSync(directory, {recursive: true});
   }
 }
-
