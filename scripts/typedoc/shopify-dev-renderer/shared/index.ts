@@ -193,7 +193,6 @@ function propType(
       .join(', ')}<wbr>>`;
   }
   const PIPE = '&#124;';
-
   switch (value.kind) {
     case 'UndefinedType':
       return 'undefined';
@@ -237,6 +236,17 @@ function propType(
         ) {
           return `${value.params[0].name}${params}`;
         }
+
+        // If we have a generic type, but have a param, use that instead
+        if (value.name === 'T' && value?.params?.length > 0) {
+          return propType(
+            value?.params[0],
+            exports,
+            dir,
+            additionalPropsTables,
+          );
+        }
+
         return `${value.name}${params}`;
       }
 
@@ -248,6 +258,7 @@ function propType(
       }
 
       local.value.params = value.params;
+
       return propType(local.value, exports, dir, additionalPropsTables);
     case 'InterfaceType':
       additionalPropsTables.push(
@@ -266,9 +277,22 @@ function propType(
     case 'UnionType':
       return value.types
         .map((type: any) => {
+          if (isGenericTypeReplaceable(type, value)) {
+            type.params = value.params;
+          }
+          if (type?.params?.length > 0) {
+            type.params = type.params.map((typeParam) => {
+              if (isGenericTypeReplaceable(typeParam, value)) {
+                typeParam.params = value.params;
+              }
+              return typeParam;
+            });
+          }
+
           return propType(type, exports, dir, additionalPropsTables);
         })
         .join(` ${PIPE} `);
+
     case 'StringLiteralType':
       return `"${value.value}"`;
     case 'NumberLiteralType':
@@ -442,6 +466,10 @@ function responsive(breakpoint: any, additionalPropsTables: string[]) {
 \`\`\`\n\n`;
 
   return markdown;
+}
+
+function isGenericTypeReplaceable(type, value) {
+  return type.name === 'T' && !type.params && value?.params?.length > 0;
 }
 
 export function mkdir(directory) {

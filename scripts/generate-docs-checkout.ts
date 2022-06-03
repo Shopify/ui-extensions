@@ -53,6 +53,12 @@ extensionPoints(checkout, extensionPointsPageContent(checkout.shopifyDevUrl), {
 components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
   generateReadmes: true,
   visibility: 'betaCheckoutExtensions',
+  conditionalDocs: [
+    {
+      sourceFile: `${checkout.inputRoot}/documentation/conditional-props.md`,
+      propTypeNames: ['MaybeConditionalStyle'],
+    },
+  ],
 });
 gettingStarted(checkout, {
   visibility: 'betaCheckoutExtensions',
