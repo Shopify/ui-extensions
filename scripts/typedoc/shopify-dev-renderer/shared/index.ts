@@ -277,12 +277,15 @@ function propType(
     case 'UnionType':
       return value.types
         .map((type: any) => {
-          type = replaceGenericTypeWithActual(type, value);
-          if (type.name === 'T' && !type.params && value?.params?.length > 0) {
+          if(isGenericTypeReplaceable(type, value)) {
             type.params = value.params;
-          } else if (type?.params?.length > 0) {
+          }
+          if (type?.params?.length > 0) {
             type.params = type.params.map((typeParam) => {
-              return replaceGenericTypeWithActual(typeParam, value);
+            if(isGenericTypeReplaceable(typeParam, value)) {
+              typeParam.params = value.params;
+            }
+              return typeParam
             });
           }
 
@@ -465,15 +468,13 @@ function responsive(breakpoint: any, additionalPropsTables: string[]) {
   return markdown;
 }
 
+function isGenericTypeReplaceable(type, value) {
+  return type.name === 'T' && !type.params && value?.params?.length > 0;
+}
+
 export function mkdir(directory) {
   if (!fs.existsSync(directory)) {
     fs.mkdirSync(directory, {recursive: true});
   }
 }
 
-function replaceGenericTypeWithActual(type, value) {
-  if (type.name === 'T' && !type.params && value?.params?.length > 0) {
-    type.params = value.params;
-  }
-  return type;
-}
