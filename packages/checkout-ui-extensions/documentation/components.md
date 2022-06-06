@@ -2,15 +2,6 @@ You can use checkout components to build app extensions that feel at home in any
 
 Checkout UI extensions provide UI components that a [rendering extension](./rendering.md) can use to build an interface. Shopify renders the UI natively, so it's performant, accessible, and works in all of checkout's supported browsers.
 
-## Merchant branding
-
-Merchants can apply their own branding to checkout. Checkout brand settings are automatically applied to the UI components for building the extension.
-
-<video style="width: 100%; height: auto;" autoplay muted loop controls>
-  <source src="/assets/apps/checkout/branding.webm" type="video/webm">
-  <source src="/assets/apps/checkout/branding.mp4" type="video/mp4">
-</video>
-
 ## Components as building blocks
 
 Checkout components are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the checkout experience.
@@ -18,7 +9,7 @@ Checkout components are designed to be flexible, enabling you to layer and mix t
 <div class="checkout-component-grid">
   <div class="checkout-component-grid-item">
     <h3 class="checkout-component-grid-item_title">Structure</h3>
-      <p><code><a href="../src/components/Banner">BlockLayout</a></code></p>
+      <p><code><a href="../src/components/BlockLayout">BlockLayout</a></code></p>
       <p><code><a href="../src/components/BlockSpacer">BlockSpacer</a></code></p>
       <p><code><a href="../src/components/BlockStack">BlockStack</a></code></p>
       <p><code><a href="../src/components/Divider">Divider</a></code></p>
@@ -71,3 +62,12 @@ Checkout components are designed to be flexible, enabling you to layer and mix t
       <p><code><a href="../src/components/Tag">Tag</a></code></p>
   </div>
 </div>
+
+## Merchant branding
+
+Merchants can apply their own branding to checkout. Checkout brand settings are automatically applied to the UI components for building the extension.
+
+<video style="width: 100%; height: auto;" autoplay muted loop controls>
+  <source src="/assets/apps/checkout/branding.webm" type="video/webm">
+  <source src="/assets/apps/checkout/branding.mp4" type="video/mp4">
+</video>
