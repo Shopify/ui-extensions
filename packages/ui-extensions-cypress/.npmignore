@@ -1,0 +1,7 @@
+.*
+node_modules
+src
+tsconfig.json
+
+*.config.ts
+cypress

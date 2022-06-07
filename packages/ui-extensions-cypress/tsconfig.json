@@ -1,0 +1,11 @@
+{
+  "extends": "../../config/typescript/tsconfig.admin.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "build/ts",
+    "jsx": "react-jsx"
+  },
+  "references": [],
+  "include": ["**/*.tsx"],
+  "exclude": []
+}
