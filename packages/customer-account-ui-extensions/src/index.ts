@@ -1,1 +1,4 @@
-export const cats = 'are the best';
+export * from './components';
+export {extend} from './extend';
+export * from './extension-points';
+export type {ShopifyGlobal} from './globals';
