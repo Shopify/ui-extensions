@@ -2,10 +2,11 @@
   "compilerOptions": {
     "jsx": "react",
     "target": "es5",
-    "types": ["cypress", "node"],
+    "lib": ["es5", "dom"],
+    "types": ["cypress", "node"]
   },
   "include": [
-    "cypress/**/*.(ts|tsx)"
+    "**/*.(ts|tsx)"
   ],
   "exclude": [
     "node_modules"
