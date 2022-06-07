@@ -1,11 +1,33 @@
 {
   "extends": "../../config/typescript/tsconfig.admin.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "build/ts",
-    "jsx": "react-jsx"
+    "target": "es5",
+    "module": "es5",
+    "strict": true,
+    "jsx": "react",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "useDefineForClassFields": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "lib": [
+      "esnext",
+      "dom",
+      "dom.iterable",
+      "scripthost"
+    ],
+    "types": ["cypress", "node"],
   },
+  "include": [
+    "cypress/**/*.ts",
+    "cypress/**/*.tsx",
+  ],
+  "exclude": [
+    "node_modules"
+  ],
   "references": [],
-  "include": ["**/*.tsx"],
-  "exclude": []
 }
