@@ -1,5 +1,5 @@
 describe('Example.cy.ts', () => {
   it('playground', () => {
-    // cy.mount()
+    (cy as any).mount(<div />);
   });
 });
