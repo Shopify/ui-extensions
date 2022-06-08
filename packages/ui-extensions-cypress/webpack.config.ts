@@ -1,9 +1,9 @@
 import {WebWorkerPlugin} from '@shopify/web-worker/webpack';
 
 module.exports = {
-  // resolve: {
-  //   extensions: ['.ts', '.tsx', '.js', '.json'],
-  // },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js', '.json'],
+  },
   plugins: [
     // any other plugins...
     new WebWorkerPlugin(),
@@ -20,7 +20,7 @@ module.exports = {
       /**
        * Fix MJS issues w/ web-worker/babel
        * @see https://github.com/apollographql/apollo-link-state/issues/302#issuecomment-431219631
-       **/
+       *g*/
       {
         test: /\.mjs$/,
         include: /node_modules/,

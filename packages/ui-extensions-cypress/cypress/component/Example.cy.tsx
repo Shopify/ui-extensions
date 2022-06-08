@@ -6,7 +6,7 @@ import {createWorkerFactory} from '@shopify/web-worker';
 
 interface IFoobar {}
 
-const createWorker = createWorkerFactory(() => import('../worker.ts'));
+const createWorker = createWorkerFactory(() => import('../worker'));
 
 export function WorkerRenderer() {
   return null;
@@ -14,6 +14,7 @@ export function WorkerRenderer() {
 
 describe('Example.cy.ts', () => {
   it('playground', () => {
+    WorkerRenderer();
     cy.mount(<div>FOOBAR</div>);
     cy.window('shopify');
     cy.window().then((win) => {
@@ -26,10 +27,10 @@ describe('Example.cy.ts', () => {
       });
       `);
     });
-    cy.window().then((win) => {
-      win.eval(`
-      window.run()
-      `);
-    });
+    // cy.window().then((win) => {
+    //   win.eval(`
+    //   run()
+    //   `);
+    // });
   });
 });
