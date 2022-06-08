@@ -178,6 +178,7 @@ function propType(
   exports: any[],
   dir: string,
   additionalPropsTables: string[],
+  inArrayType = false,
 ): any {
   let params = '';
   if (value.params != null && value.params.length > 0) {
@@ -189,7 +190,9 @@ function propType(
       (nestedParam) => !Object.is(nestedParam, value),
     );
     params = `<<wbr>${filteredParams
-      .map((param: any) => propType(param, exports, dir, additionalPropsTables))
+      .map((param: any) =>
+        propType(param, exports, dir, additionalPropsTables, inArrayType),
+      )
       .join(', ')}<wbr>>`;
   }
   const PIPE = '&#124;';
@@ -216,6 +219,7 @@ function propType(
         exports,
         dir,
         additionalPropsTables,
+        true,
       )}[]`;
     case 'NumberType':
       return 'number';
@@ -244,6 +248,7 @@ function propType(
             exports,
             dir,
             additionalPropsTables,
+            inArrayType,
           );
         }
 
@@ -259,7 +264,13 @@ function propType(
 
       local.value.params = value.params;
 
-      return propType(local.value, exports, dir, additionalPropsTables);
+      return propType(
+        local.value,
+        exports,
+        dir,
+        additionalPropsTables,
+        inArrayType,
+      );
     case 'InterfaceType':
       additionalPropsTables.push(
         propsTable(
@@ -275,7 +286,8 @@ function propType(
       );
       return `${anchorLink(value.name)}${params}`;
     case 'UnionType':
-      return value.types
+      // eslint-disable-next-line no-case-declarations
+      const values = value.types
         .map((type: any) => {
           if (isGenericTypeReplaceable(type, value)) {
             type.params = value.params;
@@ -292,6 +304,8 @@ function propType(
           return propType(type, exports, dir, additionalPropsTables);
         })
         .join(` ${PIPE} `);
+
+      return inArrayType ? `(${values})` : values;
 
     case 'StringLiteralType':
       return `"${value.value}"`;
