@@ -24,10 +24,11 @@
     "@remote-ui/react": "^4.1.5",
     "@shopify/admin-ui-extensions": "^1.0.1",
     "@shopify/admin-ui-extensions-react": "^1.0.1",
-    "@shopify/web-worker": "^5.0.0",
+    "@shopify/web-worker": "5",
     "@types/react": ">=17.0.0 <18.0.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "webpack": "5",
     "webpack-virtual-modules": "^0.4.3"
   },
   "peerDependencies": {
