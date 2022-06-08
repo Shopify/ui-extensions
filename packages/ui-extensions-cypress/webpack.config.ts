@@ -17,11 +17,20 @@ module.exports = {
   // node: {fs: 'empty', child_process: 'empty', readline: 'empty'},
   module: {
     rules: [
+      /**
+       * Fix MJS issues w/ web-worker/babel
+       * @see https://github.com/apollographql/apollo-link-state/issues/302#issuecomment-431219631
+       **/
+      {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
+      },
       // other rules...
       // This is the rule for our application JavaScript/ TypeScript
       {
-        // test: /\.[tj]sx?$/,
-        test: /\.(ts|js)x?$/,
+        test: /\.[tj]sx?$/,
+        // test: /\.(ts|js)x?$/,
         exclude: /node_modules/,
         use: [
           // However you configure Babel, just make sure to include the plugin.
@@ -30,7 +39,7 @@ module.exports = {
             options: {
               configFile: false,
               presets: ['@babel/env', '@babel/react', '@babel/typescript'],
-              // plugins: [require.resolve('@shopify/web-worker/babel')],
+              plugins: [require.resolve('@shopify/web-worker/babel')],
             },
           },
         ],
