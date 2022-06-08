@@ -1,3 +1,4 @@
+import {ProvidePlugin} from 'webpack';
 import {WebWorkerPlugin} from '@shopify/web-worker/webpack';
 
 module.exports = {
@@ -5,6 +6,15 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   plugins: [
+    // Work around for Buffer is undefined:
+    // https://github.com/webpack/changelog-v5/issues/10
+    // https://stackoverflow.com/a/68723223
+    new ProvidePlugin({
+      Buffer: ['buffer', 'Buffer'],
+    }),
+    new ProvidePlugin({
+      process: 'process/browser',
+    }),
     // any other plugins...
     new WebWorkerPlugin(),
   ],

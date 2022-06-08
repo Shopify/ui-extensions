@@ -2,6 +2,7 @@
 
 import {createRemoteRoot, RemoteRoot, RemoteReceiver} from '@remote-ui/core';
 
+console.warn('Worker.js');
 type RenderCallback = (root: RemoteRoot) => void;
 
 let renderCallback: RenderCallback | undefined;
