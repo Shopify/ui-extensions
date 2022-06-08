@@ -1,7 +1,13 @@
+import {WebWorkerPlugin} from '@shopify/web-worker/webpack';
+
 module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
   },
+  plugins: [
+    // any other plugins...
+    new WebWorkerPlugin(),
+  ],
   // resolve: {
   //   extensions: ['.ts', '.tsx'],
   // },
@@ -21,7 +27,7 @@ module.exports = {
             options: {
               configFile: false,
               presets: ['@babel/env', '@babel/react', '@babel/typescript'],
-              // plugins: [require.resolve('@remote-ui/web-workers/babel')],
+              plugins: [require.resolve('@shopify/web-worker/babel')],
             },
           },
         ],

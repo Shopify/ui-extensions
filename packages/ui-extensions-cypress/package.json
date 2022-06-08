@@ -23,9 +23,11 @@
     "@remote-ui/react": "^4.1.5",
     "@shopify/admin-ui-extensions": "^1.0.1",
     "@shopify/admin-ui-extensions-react": "^1.0.1",
+    "@shopify/web-worker": "^5.0.0",
     "@types/react": ">=17.0.0 <18.0.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "webpack-virtual-modules": "^0.4.3"
   },
   "peerDependencies": {
     "react": ">=17.0.0 <18.0.0"
@@ -35,7 +37,6 @@
     "@shopify:registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@remote-ui/web-workers": "^2.0.0",
     "babel-loader": "^8.2.5",
     "cypress": "^10.0.3",
     "ts-loader": "~8.2.0"
