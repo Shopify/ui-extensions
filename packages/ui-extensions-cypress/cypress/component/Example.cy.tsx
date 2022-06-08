@@ -1,6 +1,16 @@
 import * as React from 'react';
 
+// in WorkerRenderer.tsx
+
+import {createWorkerFactory} from '@shopify/web-worker';
+
 interface IFoobar {}
+
+const createWorker = createWorkerFactory(() => import('../worker.ts'));
+
+export function WorkerRenderer() {
+  return null;
+}
 
 describe('Example.cy.ts', () => {
   it('playground', () => {
