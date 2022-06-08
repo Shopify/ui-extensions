@@ -18,6 +18,7 @@
     // specific extension point.
     globalThis.shopify = {
       extend(extensionPoint, extension) {
+        console.warn('---EXTEND---')
         registeredExtensionPoints.set(extensionPoint, extension);
       },
     };

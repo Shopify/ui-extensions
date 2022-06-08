@@ -35,6 +35,8 @@
     "@shopify:registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
+    "@remote-ui/web-workers": "^2.0.0",
+    "babel-loader": "^8.2.5",
     "cypress": "^10.0.3",
     "ts-loader": "~8.2.0"
   }
