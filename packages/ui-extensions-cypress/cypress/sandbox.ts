@@ -1,13 +1,6 @@
 import {retain, createRemoteRoot, RemoteChannel} from '@remote-ui/core';
 
-import {endpoint} from '@remote-ui/web-workers/worker';
-
-import {Card, Button, User, RenderCallback} from './worker/api';
-
-// By default, a worker can’t call anything on the main thread. This method indicates
-// that the worker expects the main thread to expose an `authenticatedFetch()` function,
-// which we will use below.
-endpoint.callable('authenticatedFetch');
+import {Card, Button, User, RenderCallback} from './components';
 
 let renderCallback: RenderCallback | undefined;
 
@@ -18,17 +11,6 @@ Reflect.defineProperty(self, 'onRender', {
   value: (callback: RenderCallback) => {
     renderCallback = callback;
   },
-  writable: false,
-});
-
-// We also expose an additional global method, self.authenticatedFetch(). This function
-// will call the `authenticatedFetch()` function exposed by the main thread in
-// `WorkerRenderer`.
-Reflect.defineProperty(self, 'authenticatedFetch', {
-  value: (httpEndpoint: string) =>
-    (endpoint.call as {
-      authenticatedFetch(httpEndpoint: string): Promise<any>;
-    }).authenticatedFetch(httpEndpoint),
   writable: false,
 });
 

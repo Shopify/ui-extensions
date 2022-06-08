@@ -3,7 +3,13 @@ import * as React from 'react';
 // in WorkerRenderer.tsx
 
 import {createWorkerFactory} from '@shopify/web-worker';
-import {createRemoteRoot, createRemoteReceiver} from '@remote-ui/core';
+// import {createRemoteRoot, createRemoteReceiver} from '@remote-ui/core';
+import {createRemoteReceiver} from '@remote-ui/core';
+import {
+  render,
+  createRemoteRoot,
+  createRemoteReactComponent,
+} from '@remote-ui/react';
 
 import {mount} from '@remote-ui/testing';
 
@@ -76,14 +82,28 @@ describe('Remote.cy.ts', () => {
       console.log('Mounted!');
     });
 
-    const root = createRemoteRoot(receiver.receive);
-    const button = root.createComponent('Button', {
-      onPress() {
-        console.log('Pressed!');
-      },
-    });
-    root.appendChild(button);
-    root.mount();
+    // const root = createRemoteRoot(receiver.receive);
+    const root = createRemoteRoot(receiver.receive, {components: ['Button']});
+    // const Button = 'Button';
+    const Button = createRemoteReactComponent<'Button', {onPress(): void}>(
+      'Button',
+    );
+
+    // const button = root.createComponent('Button', {
+    //   onPress() {
+    //     console.log('Pressed!');
+    //   },
+    // });
+    // root.appendChild(button);
+    // root.mount();
+
+    // render(root);
+    function App() {
+      return <Button onClick={() => console.log('clicked!')}>Click me!</Button>;
+    }
+
+    render(<App />, remoteRoot);
+
     cy.wrap(root);
     cy.log('hi');
   });
