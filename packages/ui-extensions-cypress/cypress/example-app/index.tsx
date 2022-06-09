@@ -15,6 +15,7 @@ export default function App() {
   const worker = useWorker(createWorker, {
     createMessenger: createIframeWorkerMessenger,
   });
+  console.warn('METHODS', worker, Object.keys(worker));
   // const worker = useWorker(createWorker);
 
   const [toastActive, setToastActive] = React.useState(false);
