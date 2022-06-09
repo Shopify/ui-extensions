@@ -5,10 +5,11 @@ export type DialogType = 'default' | 'alert' | 'error' | 'destructive';
 export interface DialogProps {
   title: string;
   content?: string;
+  isVisible: boolean;
+  type?: DialogType;
   actionText: string;
   secondaryActionText?: string;
   showSecondaryAction?: boolean;
-  type?: DialogType;
   onCancel?: () => void;
   onAction: () => void;
 }
