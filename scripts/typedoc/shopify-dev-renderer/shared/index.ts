@@ -196,6 +196,8 @@ function propType(
       .join(', ')}<wbr>>`;
   }
   const PIPE = '&#124;';
+  const BACKTICK = '&#96';
+
   switch (value.kind) {
     case 'UndefinedType':
       return 'undefined';
@@ -313,8 +315,7 @@ function propType(
       return `${value.value}`;
     case 'BooleanLiteralType':
       return `${value.value}`;
-    case 'TemplateLiteralType':
-      // eslint-disable-next-line no-case-declarations
+    case 'TemplateLiteralType': {
       const sortedValues = [...value.quasis, ...value.expressions].sort(
         (first, second) => {
           if (first.start > second.start) {
@@ -326,7 +327,7 @@ function propType(
         },
       );
 
-      return `&#96${sortedValues
+      const result = sortedValues
         .map((node) => {
           if (node.type === 'TemplateElement') {
             return node.value.cooked ?? node.value.raw;
@@ -338,7 +339,10 @@ function propType(
             additionalPropsTables,
           )}}`;
         })
-        .join('')}&#96`;
+        .join('');
+
+      return `${BACKTICK}${result}${BACKTICK}`;
+    }
     case 'FunctionType':
       return `(${paramsType(
         value.parameters,
