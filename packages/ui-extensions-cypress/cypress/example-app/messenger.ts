@@ -1,5 +1,8 @@
 const RUN = '__run';
-const defaultSrc = 'https://shopify-argo-internal.com/load.html';
+// const defaultSrc = 'https://shopify-argo-internal.com/load.html';
+
+// const defaultSrc = 'load.html';
+const defaultSrc = `${window?.location?.origin}/load.html`;
 
 export function createIframeWorkerMessenger(url) {
   const {port1, port2} = new MessageChannel();

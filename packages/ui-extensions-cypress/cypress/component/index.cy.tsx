@@ -18,6 +18,7 @@ describe('Third Try', () => {
         <App />
       </React.StrictMode>,
     );
+    cy.log('xxx');
     cy.wait(1000);
   });
 });

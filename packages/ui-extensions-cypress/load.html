@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Shopify Argo Internal</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <script>
+      window.addEventListener("message", function (event) {
+        var data = event.data;
+        if (data == null || typeof data.__run !== "string") return;
+        var workerScript = URL.createObjectURL(
+          new Blob(["importScripts(" + JSON.stringify(data.__run) + ");"])
+        );
+        var worker = new Worker(workerScript);
+        worker.postMessage({ __replace: event.ports[0] }, [event.ports[0]]);
+      });
+    </script>
+  </body>
+</html>
