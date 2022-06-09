@@ -41,8 +41,8 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| block? | <code>number &#124; Unit</code> | Adjust the translation on the cross axis.<br /><br />A percentage value refers to the block size of the View.  |
-| inline? | <code>number &#124; Unit</code> | Adjust the translation on the main axis.<br /><br />A percentage value refers to the inline size of the View.  |
+| block? | <code>number &#124; &#96${number}%&#96</code> | Adjust the translation on the cross axis.<br /><br />A percentage value refers to the block size of the View.  |
+| inline? | <code>number &#124; &#96${number}%&#96</code> | Adjust the translation on the main axis.<br /><br />A percentage value refers to the inline size of the View.  |
 <a name="Responsive"></a>
 
 ### Responsive

@@ -313,6 +313,32 @@ function propType(
       return `${value.value}`;
     case 'BooleanLiteralType':
       return `${value.value}`;
+    case 'TemplateLiteralType':
+      // eslint-disable-next-line no-case-declarations
+      const sortedValues = [...value.quasis, ...value.expressions].sort(
+        (first, second) => {
+          if (first.start > second.start) {
+            return 1;
+          } else if (second.start > first.start) {
+            return -1;
+          }
+          return 0;
+        },
+      );
+
+      return `&#96${sortedValues
+        .map((node) => {
+          if (node.type === 'TemplateElement') {
+            return node.value.cooked ?? node.value.raw;
+          }
+          return `$\{${propType(
+            node.value,
+            exports,
+            dir,
+            additionalPropsTables,
+          )}}`;
+        })
+        .join('')}&#96`;
     case 'FunctionType':
       return `(${paramsType(
         value.parameters,

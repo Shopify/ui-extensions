@@ -7,11 +7,13 @@ export interface InlineLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
    * Sizes for each column of the layout.
    *
    *
-   * `auto`: intrinsic size of the element
+   * `auto`: intrinsic size of the element.
    *
    * `fill`: fills the remaining available space. When multiple elements are set to `fill`, the remaining space is shared equally.
    *
-   * `Unit<'%' | 'fr'>`: size in percentages `%` or fractions `fr`.
+   * `` `${number}%` ``: size in percentages.
+   *
+   * `` `${number}fr` ``: size in fractions.
    *
    * `number`: size in pixels `px`.
    *
