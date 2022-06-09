@@ -1,4 +1,5 @@
-import {useCallback, useState} from 'react';
+import * as React from 'react';
+// import {useCallback, useState} from 'react';
 // import { useWorker } from "@remote-ui/react/host";
 import {useWorker} from '@shopify/react-web-worker';
 
@@ -15,19 +16,19 @@ export default function App() {
     createMessenger: createIframeWorkerMessenger,
   });
 
-  const [toastActive, setToastActive] = useState(false);
-  const [toastMessage, setToastMessage] = useState('');
-  const dismissToast = useCallback(() => setToastActive(false), []);
+  const [toastActive, setToastActive] = React.useState(false);
+  const [toastMessage, setToastMessage] = React.useState('');
+  const dismissToast = React.useCallback(() => setToastActive(false), []);
 
   // const showJavascriptMessageChannel = useCallback(() => {
   //   location.href = '/message-channel/index.html';
   // }, []);
 
-  const loadExtension = useCallback(async () => {
+  const loadExtension = React.useCallback(async () => {
     await worker.load(new URL('/external-script.js', location.href).toString());
   }, []);
 
-  const renderExtension = useCallback(async () => {
+  const renderExtension = React.useCallback(async () => {
     await worker.render('Playground', {
       toast: {
         show: (message) => {
