@@ -12,7 +12,9 @@ const postPurchase = {
   },
   outputRoot: '../shopify-dev/content/api/checkout-extensions',
   shopifyDevUrl: '/api/checkout-extensions',
-  shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
+  shopifyDevAssetsPath:
+    '../shopify-dev/app/assets/images/api/checkout-extensions/post-purchase',
+  shopifyDevAssetsUrl: '/assets/api/checkout-extensions/post-purchase',
 };
 
 const componentsPageContent = (url: string, title = 'Post-purchase') => ({
@@ -23,7 +25,7 @@ const componentsPageContent = (url: string, title = 'Post-purchase') => ({
   use to build an interface. This UI is rendered natively by Shopify, so you
   can depend on it to be performant, accessible, and work in all of checkout’s
   supported browsers. \n\nThe following components are available as part of
-  post-purchase extensions for checkout, but make sure that you check the 
+  post-purchase extensions for checkout, but make sure that you check the
   documentation for your [extension point](${url}/extension-points#extension-points)
   to ensure the component is available in the extension points you are
   targeting.`,

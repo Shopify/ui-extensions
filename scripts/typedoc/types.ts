@@ -7,7 +7,8 @@ export interface Paths {
   outputRoot: string;
   packages: Packages;
   shopifyDevUrl: string;
-  shopifyDevAssets?: string;
+  shopifyDevAssetsPath: string;
+  shopifyDevAssetsUrl: string;
 }
 
 export interface Tag {
