@@ -31,11 +31,11 @@ module.exports = {
        * Fix MJS issues w/ web-worker/babel
        * @see https://github.com/apollographql/apollo-link-state/issues/302#issuecomment-431219631
        *g*/
-      // {
-      //   test: /\.mjs$/,
-      //   include: /node_modules/,
-      //   type: 'javascript/auto',
-      // },
+      {
+        test: /\.mjs$/,
+        include: /node_modules/,
+        type: 'javascript/auto',
+      },
       // other rules...
       // This is the rule for our application JavaScript/ TypeScript
       {
