@@ -132,7 +132,7 @@ export async function components(
     const docsContentMd = docsContent ? `${docsContent}\n\n` : '';
     markdown += docsContentMd;
 
-    markdown += renderExampleImageFor(name, paths.shopifyDevAssets);
+    markdown += renderExampleMediaFor(name, paths.shopifyDevAssets);
 
     // 2. Examples
     const examples = findExamplesFor({
@@ -335,14 +335,33 @@ async function buildComponentGraph(componentIndex: string) {
   return {nodes, components};
 }
 
-function renderExampleImageFor(
+function renderExampleMediaFor(
   componentName: string,
   shopifyDevAssetsUrl: string,
 ) {
   const filename = componentName.toLowerCase();
-  const image = resolve(`${shopifyDevAssetsUrl}/components/${filename}.png`);
-  if (fs.existsSync(image)) {
-    return `---\n### Example\n![${filename}](/assets/api/checkout-extensions/components/${filename}.png)`;
+  const mediaPNG = resolve(`${shopifyDevAssetsUrl}/components/${filename}.png`);
+  const mediaMP4 = resolve(`${shopifyDevAssetsUrl}/components/${filename}.mp4`);
+  const mediaWEBM = resolve(
+    `${shopifyDevAssetsUrl}/components/${filename}.webm`,
+  );
+
+  let hasFile: boolean;
+  let mediaMarkup: string;
+
+  if (fs.existsSync(mediaMP4) && fs.existsSync(mediaWEBM)) {
+    hasFile = true;
+    mediaMarkup = `<video style="width: 100%; height: auto;" autoplay muted loop controls>
+                    <source src="/assets/api/checkout-extensions/components/${filename}.webm" type="video/webm">
+                    <source src="/assets/api/checkout-extensions/components/${filename}.mp4" type="video/mp4">
+                  </video>`;
+  } else if (fs.existsSync(mediaPNG)) {
+    hasFile = true;
+    mediaMarkup = `![${filename}](/assets/api/checkout-extensions/components/${filename}.png)`;
+  }
+
+  if (hasFile) {
+    return `---\n### Example\n${mediaMarkup}`;
   }
 
   return '';
