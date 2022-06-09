@@ -1,3 +1,7 @@
+{% include /apps/checkout/extensions-beta.md %}
+
+{% include /apps/checkout/plus-merchants.md %}
+
 You can use checkout components to build app extensions that feel at home in any checkout experience.
 
 Checkout UI extensions provide UI components that a [rendering extension](./rendering.md) can use to build an interface. Shopify renders the UI natively, so it's performant, accessible, and works in all of checkout's supported browsers.
