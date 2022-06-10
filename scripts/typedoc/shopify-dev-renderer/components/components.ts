@@ -346,15 +346,16 @@ function renderExampleMediaFor(
     `${shopifyDevAssetsUrl}/components/${filename}.webm`,
   );
 
-  let hasFile: boolean;
-  let mediaMarkup: string;
+  let hasFile = false;
+  let mediaMarkup = '';
 
   if (fs.existsSync(mediaMP4) && fs.existsSync(mediaWEBM)) {
     hasFile = true;
-    mediaMarkup = `<video style="width: 100%; height: auto;" autoplay muted loop controls>
-                    <source src="/assets/api/checkout-extensions/components/${filename}.webm" type="video/webm">
-                    <source src="/assets/api/checkout-extensions/components/${filename}.mp4" type="video/mp4">
-                  </video>`;
+    mediaMarkup = `
+      <video style="width: 100%; height: auto;" autoplay muted loop controls>
+        <source src="/assets/api/checkout-extensions/components/${filename}.webm" type="video/webm">
+        <source src="/assets/api/checkout-extensions/components/${filename}.mp4" type="video/mp4">
+      </video>`;
   } else if (fs.existsSync(mediaPNG)) {
     hasFile = true;
     mediaMarkup = `![${filename}](/assets/api/checkout-extensions/components/${filename}.png)`;
