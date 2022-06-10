@@ -5,7 +5,6 @@ import {
   CSSShorthand,
   Bordered,
   MultiPick,
-  Unit,
   ViewLikeAccessibilityRole,
   InlineAlignment,
   BlockAlignment,
@@ -106,20 +105,24 @@ export type Position = {
   type?: PositionType;
 } & PositionCoordinates;
 
+/* eslint-disable eslint-comments/no-unlimited-disable */
+/* eslint-disable */
 export interface Translate {
   /**
    * Adjust the translation on the cross axis.
    *
    * A percentage value refers to the block size of the View.
    */
-  block?: number | Unit<'%'>;
+  block?: number | `${number}%`;
   /**
    * Adjust the translation on the main axis.
    *
    * A percentage value refers to the inline size of the View.
    */
-  inline?: number | Unit<'%'>;
+  inline?: number | `${number}%`;
 }
+/* eslint-enable eslint-comments/no-unlimited-disable */
+/* eslint-enable */
 
 export interface ViewProps extends Bordered {
   /**

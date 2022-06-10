@@ -2,13 +2,15 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import {
   ViewLikeAccessibilityRole,
-  Unit,
   Spacing,
   InlineAlignment,
   BlockAlignment,
 } from '../shared';
 
-export type GridItemSize = 'auto' | 'fill' | number | Unit<'fr' | '%'>;
+/* eslint-disable eslint-comments/no-unlimited-disable */
+// eslint-disable-next-line
+export type GridItemSize = 'auto' | 'fill' | number | `${number}fr` | `${number}%`;
+/* eslint-enable eslint-comments/no-unlimited-disable */
 type Columns = GridItemSize[] | GridItemSize;
 type Rows = GridItemSize[] | GridItemSize;
 export interface GridProps {
@@ -20,7 +22,9 @@ export interface GridProps {
    *
    * `fill`: fills the remaining available space. When multiple columns are set to `fill`, the remaining space is shared equally.
    *
-   * `Unit<'%' | 'fr'>`: size in percentages `%` or fractions `fr`.
+   * `` `${number}%` ``: size in percentages.
+   *
+   * `` `${number}fr` ``: size in fractions.
    *
    * `number`: size in pixels.
    *
@@ -40,7 +44,9 @@ export interface GridProps {
    *
    * `fill`: fills the remaining available space. When multiple rows are set to `fill`, the remaining space is shared equally.
    *
-   * `Unit<'%' | 'fr'>`: size in percentages `%` or fractions `fr`.
+   * `` `${number}%` ``: size in percentage.
+   *
+   * `` `${number}fr` ``: size in fraction.
    *
    * `number`: size in pixels.
    *

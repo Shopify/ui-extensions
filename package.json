@@ -56,7 +56,7 @@
     "rollup": "^2.52.2",
     "rollup-plugin-jsx": "^1.0.3",
     "uuid": "^8.3.2",
-    "@shopify/docs-tools": "^0.0.14"
+    "@shopify/docs-tools": "^0.0.15"
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "^4.0.0",
