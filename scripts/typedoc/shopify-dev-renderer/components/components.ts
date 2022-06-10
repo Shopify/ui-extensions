@@ -362,12 +362,12 @@ function renderExampleMediaFor(
     hasFile = true;
     mediaMarkup = `
       <video style="width: 100%; height: auto;" autoplay muted loop controls>
-        <source src="${shopifyDevAssetsUrl}/${filename}.webm" type="video/webm">
-        <source src="${shopifyDevAssetsUrl}/${filename}.mp4" type="video/mp4">
+        <source src="${shopifyDevAssetsUrl}/components/${filename}.webm" type="video/webm">
+        <source src="${shopifyDevAssetsUrl}/components/${filename}.mp4" type="video/mp4">
       </video>`;
   } else if (fs.existsSync(mediaPNG)) {
     hasFile = true;
-    mediaMarkup = `![${filename}](${shopifyDevAssetsUrl}/${filename}.png)`;
+    mediaMarkup = `![${filename}](${shopifyDevAssetsUrl}/components/${filename}.png)`;
   }
 
   if (hasFile) {
