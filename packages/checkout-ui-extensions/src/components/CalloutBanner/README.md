@@ -12,4 +12,4 @@ optional = ?
 | border? | <code>"none" &#124; "block"</code> | Adds a top and bottom border to the callout banner<br /><br />Default value: <code>'block'</code> |
 | background? | <code>"transparent" &#124; "color1" &#124; "color2" &#124; "color3"</code> | Sets the background color of the callout banner<br /><br />Default value: <code>'color2'</code> |
 | inlineAlignment? | <code>InlineAlignment</code> | Sets the alignment of the title and children<br /><br />Default value: <code>'center'</code> |
-| spacing? | <code>Extract<<wbr>"none" &#124; "extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose", "none" &#124; "tight" &#124; "loose"<wbr>></code> | Sets the spacing between the title and children<br /><br />Default value: <code>'tight'</code> |
+| spacing? | <code>"none" &#124; "tight" &#124; "loose"</code> | Sets the spacing between the title and children<br /><br />Default value: <code>'tight'</code> |
