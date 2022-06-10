@@ -17,7 +17,9 @@ const checkout = {
   },
   outputRoot: '../shopify-dev/content/api/checkout-extensions/checkout',
   shopifyDevUrl: '/api/checkout-extensions/checkout',
-  shopifyDevAssets: '../shopify-dev/app/assets/images/api/checkout-extensions',
+  shopifyDevAssets:
+    '../shopify-dev/app/assets/images/api/checkout-extensions/checkout',
+  shopifyDevAssetsUrl: '/assets/api/checkout-extensions/checkout',
 };
 
 const componentsPageContent = (
