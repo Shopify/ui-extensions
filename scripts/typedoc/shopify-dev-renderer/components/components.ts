@@ -352,7 +352,7 @@ function renderExampleMediaFor(
     `${shopifyDevAssetsPath}/components/${filename}.mp4`,
   );
   const mediaWEBM = resolve(
-    `${shopifyDevAssetsUrl}/components/${filename}.webm`,
+    `${shopifyDevAssetsPath}/components/${filename}.webm`,
   );
 
   let hasFile = false;
