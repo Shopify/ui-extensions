@@ -26,4 +26,4 @@ extend('CustomerAccount::FullPage::RenderWithin', (root, api) => {
 
 ### React
 
-To use the React implementation, check out [packages/customer-account-ui-extensions-react](packages/customer-account-ui-extensions/README.md).
+To use the React implementation, check out [packages/customer-account-ui-extensions-react](../customer-account-ui-extensions/README.md).

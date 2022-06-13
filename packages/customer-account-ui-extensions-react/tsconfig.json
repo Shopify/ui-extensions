@@ -4,7 +4,12 @@
     "outDir": "build/ts",
     "baseUrl": "src",
     "rootDir": "src",
+    "jsx": "react-jsx",
     "isolatedModules": true
   },
-  "include": ["src/**/*.ts"]
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
+  "references": [
+    {"path": "../customer-account-ui-extensions"},
+    {"path": "../checkout-ui-extensions-react"}
+  ]
 }

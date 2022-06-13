@@ -20,5 +20,8 @@
     },
     "./": "./"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@remote-ui/core": "^2.1.10",
+    "@shopify/checkout-ui-extensions": "^0.15.2"
+  }
 }
