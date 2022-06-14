@@ -42,7 +42,7 @@ export type Visibility =
   | 'betaCheckoutExtensions';
 
 const PIPE = '&#124;';
-const BACKTICK = '&#96';
+const BACKTICK = '&#96;';
 
 export function renderYamlFrontMatter(frontMatter: FrontMatter) {
   let matter = '---\n';
