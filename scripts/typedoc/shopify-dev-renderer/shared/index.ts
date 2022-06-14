@@ -41,6 +41,9 @@ export type Visibility =
   | 'visible'
   | 'betaCheckoutExtensions';
 
+const PIPE = '&#124;';
+const BACKTICK = '&#96';
+
 export function renderYamlFrontMatter(frontMatter: FrontMatter) {
   let matter = '---\n';
 
@@ -144,11 +147,14 @@ export function propsTable(
         table.push([type, description]);
       } else {
         const name = `${propName}${optional ? '?' : ''}`;
+
         const type = `<code>${propType(
           value,
           exports,
           dir,
           additionalPropsTables,
+          false,
+          findRepeatingTypes(value, exports),
         )}</code>`;
 
         const content = propDocs ? strip(propDocs.content) : '';
@@ -169,6 +175,62 @@ export function propsTable(
   return markdown;
 }
 
+function renderUnionType(
+  value,
+  exports,
+  dir,
+  additionalPropsTables,
+  repeatingTypes,
+) {
+  return value.types
+    .map((type: any) => {
+      if (isGenericTypeReplaceable(type, value)) {
+        type.params = value.params;
+      }
+      if (type?.params?.length > 0) {
+        type.params = type.params.map((typeParam) => {
+          if (isGenericTypeReplaceable(typeParam, value)) {
+            typeParam.params = value.params;
+          }
+          return typeParam;
+        });
+      }
+
+      return propType(
+        type,
+        exports,
+        dir,
+        additionalPropsTables,
+        false,
+        repeatingTypes,
+      );
+    })
+    .join(` ${PIPE} `);
+}
+
+export function unionTypeTable(
+  value,
+  exports: Node[],
+  dir: string,
+  additionalPropsTables: string[],
+  repeatingTypes: string[],
+) {
+  let markdown = '';
+
+  markdown += `\n<a name="${value.name}"></a>\n\n## ${value.name}\n\n`;
+  markdown += `${value.docs ? `${strip(value.docs.content).trim()}\n\n` : ''}`;
+
+  markdown += `<code>${renderUnionType(
+    value,
+    exports,
+    dir,
+    additionalPropsTables,
+    repeatingTypes,
+  )}</code>`;
+
+  return markdown;
+}
+
 function newLineToBr(string): string {
   return string.replace(/\n\n/g, '<br /><br />').replace(/\n/g, ' ');
 }
@@ -179,6 +241,7 @@ function propType(
   dir: string,
   additionalPropsTables: string[],
   inArrayType = false,
+  repeatingTypes: string[] = [],
 ): any {
   let params = '';
   if (value.params != null && value.params.length > 0) {
@@ -191,13 +254,17 @@ function propType(
     );
     params = `<<wbr>${filteredParams
       .map((param: any) =>
-        propType(param, exports, dir, additionalPropsTables, inArrayType),
+        propType(
+          param,
+          exports,
+          dir,
+          additionalPropsTables,
+          inArrayType,
+          repeatingTypes,
+        ),
       )
       .join(', ')}<wbr>>`;
   }
-  const PIPE = '&#124;';
-  const BACKTICK = '&#96';
-
   switch (value.kind) {
     case 'UndefinedType':
       return 'undefined';
@@ -222,13 +289,13 @@ function propType(
         dir,
         additionalPropsTables,
         true,
+        repeatingTypes,
       )}[]`;
     case 'NumberType':
       return 'number';
     case 'BigIntType':
       return 'bigint';
-    case 'Local':
-      // eslint-disable-next-line no-case-declarations
+    case 'Local': {
       const local = exports.find(
         ({value: exportValue}: any) => exportValue.name === value.name,
       );
@@ -251,6 +318,7 @@ function propType(
             dir,
             additionalPropsTables,
             inArrayType,
+            repeatingTypes,
           );
         }
 
@@ -272,7 +340,9 @@ function propType(
         dir,
         additionalPropsTables,
         inArrayType,
+        repeatingTypes,
       );
+    }
     case 'InterfaceType':
       additionalPropsTables.push(
         propsTable(
@@ -287,28 +357,31 @@ function propType(
         ),
       );
       return `${anchorLink(value.name)}${params}`;
-    case 'UnionType':
-      // eslint-disable-next-line no-case-declarations
-      const values = value.types
-        .map((type: any) => {
-          if (isGenericTypeReplaceable(type, value)) {
-            type.params = value.params;
-          }
-          if (type?.params?.length > 0) {
-            type.params = type.params.map((typeParam) => {
-              if (isGenericTypeReplaceable(typeParam, value)) {
-                typeParam.params = value.params;
-              }
-              return typeParam;
-            });
-          }
+    case 'UnionType': {
+      if (repeatingTypes.includes(value.name)) {
+        additionalPropsTables.push(
+          unionTypeTable(
+            value,
+            exports,
+            dir,
+            additionalPropsTables,
+            repeatingTypes,
+          ),
+        );
 
-          return propType(type, exports, dir, additionalPropsTables);
-        })
-        .join(` ${PIPE} `);
+        return anchorLink(value.name);
+      }
+
+      const values = renderUnionType(
+        value,
+        exports,
+        dir,
+        additionalPropsTables,
+        repeatingTypes,
+      );
 
       return inArrayType ? `(${values})` : values;
-
+    }
     case 'StringLiteralType':
       return `"${value.value}"`;
     case 'NumberLiteralType':
@@ -354,6 +427,8 @@ function propType(
         exports,
         dir,
         additionalPropsTables,
+        false,
+        repeatingTypes,
       )}`;
     case 'MethodSignatureType':
       return `(${paramsType(
@@ -366,6 +441,8 @@ function propType(
         exports,
         dir,
         additionalPropsTables,
+        false,
+        repeatingTypes,
       )}`;
     case 'MappedType':
       // eslint-disable-next-line no-case-declarations
@@ -381,28 +458,57 @@ function propType(
         exports,
         dir,
         additionalPropsTables,
+        false,
+        repeatingTypes,
       )} extends ${propType(
         value.extendsType,
         exports,
         dir,
         additionalPropsTables,
+        false,
+        repeatingTypes,
       )} ? ${propType(
         value.trueType,
         exports,
         dir,
         additionalPropsTables,
-      )} : ${propType(value.falseType, exports, dir, additionalPropsTables)}`;
+        false,
+        repeatingTypes,
+      )} : ${propType(
+        value.falseType,
+        exports,
+        dir,
+        additionalPropsTables,
+        false,
+        repeatingTypes,
+      )}`;
     case 'IndexSignatureType':
       return `[${paramsType(
         value.parameters,
         exports,
         dir,
         additionalPropsTables,
-      )}]: ${propType(value.properties, exports, dir, additionalPropsTables)}`;
+      )}]: ${propType(
+        value.properties,
+        exports,
+        dir,
+        additionalPropsTables,
+        false,
+        repeatingTypes,
+      )}`;
     case 'TupleType':
-      return `[${value.elements.map((element) => {
-        return propType(element, exports, dir, additionalPropsTables);
-      })}]`;
+      return `[${value.elements
+        .map((element) => {
+          return propType(
+            element,
+            exports,
+            dir,
+            additionalPropsTables,
+            false,
+            repeatingTypes,
+          );
+        })
+        .join(', ')}]`;
     case 'UndocumentedType':
       if (value.kind === 'UndocumentedType' && value.name?.length > 0) {
         return value.name;
@@ -488,6 +594,7 @@ function paramsType(
           exports,
           dir,
           additionalPropsTables,
+          false,
         )}`,
     )
     .join(', ');
@@ -520,4 +627,55 @@ export function mkdir(directory) {
   if (!fs.existsSync(directory)) {
     fs.mkdirSync(directory, {recursive: true});
   }
+}
+
+function findRepeatingTypes(obj: Type, exports: Node[]) {
+  const occurences = {};
+
+  function traverse(obj: Type) {
+    if ('types' in obj && obj.types) {
+      for (const type of obj.types) {
+        traverse(type);
+      }
+    }
+
+    if ('elements' in obj && obj.elements) {
+      if (Array.isArray(obj.elements)) {
+        for (const element of obj.elements) {
+          traverse(element);
+        }
+      } else {
+        traverse(obj.elements);
+      }
+    }
+
+    if ('name' in obj && obj.name) {
+      let exported;
+
+      if (obj.kind === 'Local' && !obj.params) {
+        exported = exports.find(
+          (x) => 'name' in x.value && x.value.name === obj.name,
+        );
+      }
+
+      if (exported) {
+        traverse(exported.value as Type);
+      } else {
+        occurences[obj.name] = occurences[obj.name] || 0;
+        occurences[obj.name]++;
+      }
+    }
+  }
+
+  traverse(obj);
+
+  const repeatingTypes = [];
+
+  for (const name in occurences) {
+    if (occurences[name] > 1) {
+      repeatingTypes.push(name);
+    }
+  }
+
+  return repeatingTypes;
 }
