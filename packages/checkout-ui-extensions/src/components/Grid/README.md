@@ -18,9 +18,22 @@ optional = ?
 
 ## NonPresentationalAccessibilityRole
 
-<code>"main" &#124; "header" &#124; "footer" &#124; "section" &#124; "complementary" &#124; "navigation" &#124; "orderedList" &#124; "listItem" &#124; "unorderedList" &#124; "separator" &#124; "status" &#124; "alert"</code>
+| Value | Description |
+| --- | --- |
+| <code>"main"</code> | Used to indicate the primary content. |
+| <code>"header"</code> | Used to indicate the component is a header. |
+| <code>"footer"</code> | Used to display information such as copyright information, navigation links, and privacy statements. |
+| <code>"section"</code> | Used to indicate a generic section. |
+| <code>"complementary"</code> | Used to designate a supporting section that relates to the main content. |
+| <code>"navigation"</code> | Used to identify major groups of links used for navigating. |
+| <code>"orderedList"</code> | Used to identify a list of ordered items. |
+| <code>"listItem"</code> | Used to identify an item inside a list of items. |
+| <code>"unorderedList"</code> | Used to identify a list of unordered items. |
+| <code>"separator"</code> | Used to indicates the component acts as a divider that separates and distinguishes sections of content. |
+| <code>"status"</code> | Used to define a live region containing advisory information for the user that is not important enough to be an alert. |
+| <code>"alert"</code> | Used for important, and usually time-sensitive, information. |
 <a name="GridItemSize"></a>
 
 ## GridItemSize
 
-<code>"auto" &#124; "fill" &#124; number &#124; &#96${number}fr&#96 &#124; &#96${number}%&#96</code>
+<code>"auto" &#124; "fill" &#124; number &#124; &#96;${number}fr&#96; &#124; &#96;${number}%&#96;</code>

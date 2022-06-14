@@ -220,13 +220,36 @@ export function unionTypeTable(
   markdown += `\n<a name="${value.name}"></a>\n\n## ${value.name}\n\n`;
   markdown += `${value.docs ? `${strip(value.docs.content).trim()}\n\n` : ''}`;
 
-  markdown += `<code>${renderUnionType(
-    value,
-    exports,
-    dir,
-    additionalPropsTables,
-    repeatingTypes,
-  )}</code>`;
+  if (value.types.some((type) => type.comments)) {
+    const table = [];
+    table.push(['Value', 'Description']);
+
+    for (const type of value.types) {
+      table.push([
+        `<code>${propType(
+          type,
+          exports,
+          dir,
+          additionalPropsTables,
+          false,
+          repeatingTypes,
+        )}</code>`,
+        type.comments.join(' '),
+      ]);
+    }
+
+    markdown += markdownTable(table, {
+      stringLength: () => 3,
+    });
+  } else {
+    markdown += `<code>${renderUnionType(
+      value,
+      exports,
+      dir,
+      additionalPropsTables,
+      repeatingTypes,
+    )}</code>`;
+  }
 
   return markdown;
 }
