@@ -32,7 +32,7 @@ export {
   TextBlock,
   TextField,
   View,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/checkout-ui-extensions-react';
 
 export type {
   BannerProps,
@@ -84,4 +84,4 @@ export type {
   Spacing,
   Alignment,
   Appearance,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/checkout-ui-extensions-react';

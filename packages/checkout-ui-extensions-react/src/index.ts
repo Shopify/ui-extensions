@@ -37,6 +37,9 @@ export type {
   UnitSuffix,
   Spacing,
   Size,
+  Status,
+  Alignment,
+  Appearance,
 } from '@shopify/checkout-ui-extensions';
 
 export * from './components';
