@@ -182,20 +182,19 @@ function renderUnionType(
   additionalPropsTables,
   repeatingTypes,
 ) {
+  function replaceGenericParams(type, value) {
+    if (isGenericTypeReplaceable(type, value)) {
+      type.params = value.params;
+    }
+
+    if (type?.params?.length > 0) {
+      type.params.map((typeParam) => replaceGenericParams(typeParam, value));
+    }
+  }
+
   return value.types
     .map((type: any) => {
-      if (isGenericTypeReplaceable(type, value)) {
-        type.params = value.params;
-      }
-      if (type?.params?.length > 0) {
-        type.params = type.params.map((typeParam) => {
-          if (isGenericTypeReplaceable(typeParam, value)) {
-            typeParam.params = value.params;
-          }
-          return typeParam;
-        });
-      }
-
+      replaceGenericParams(type, value);
       return propType(
         type,
         exports,
@@ -319,9 +318,14 @@ function propType(
     case 'BigIntType':
       return 'bigint';
     case 'Local': {
-      const local = exports.find(
+      const localSource = exports.find(
         ({value: exportValue}: any) => exportValue.name === value.name,
       );
+
+      // Do not, under any circumstance mutate exported locals (localSource)
+      const local = localSource
+        ? JSON.parse(JSON.stringify(localSource))
+        : undefined;
 
       if (local == null) {
         // Show the MethodSignatureType name instead of simply "Unknown"
