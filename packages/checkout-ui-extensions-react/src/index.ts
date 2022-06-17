@@ -7,6 +7,7 @@ export {
 export type {
   AccessibilityRole,
   Alignment,
+  Appearance,
   AllowedComponentsForRenderExtension,
   ApiForRenderExtension,
   ArgumentsForExtension,
@@ -43,6 +44,7 @@ export type {
   ShorthandProperty,
   Size,
   Spacing,
+  Status,
   Version,
   ViewCoordinate,
   ViewTranslate,
