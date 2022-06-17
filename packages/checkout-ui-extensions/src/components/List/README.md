@@ -7,7 +7,7 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| spacing? | <code>("auto" &#124; "fill" &#124; number &#124; &#96;${number}fr&#96; &#124; &#96;${number}%&#96;)[] &#124; "auto" &#124; "fill" &#124; number &#124; &#96;${number}fr&#96; &#124; &#96;${number}%&#96; &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>("auto" &#124; "fill" &#124; number &#124; &#96;${number}fr&#96; &#124; &#96;${number}%&#96;)[] &#124; "auto" &#124; "fill" &#124; number &#124; &#96;${number}fr&#96; &#124; &#96;${number}%&#96;<wbr>></code> | Adjust spacing between list items<br /><br />Default value: <code>'base'</code> |
+| spacing? | <code>("auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;)[] &#124; "auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96; &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>("auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;)[] &#124; "auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;<wbr>></code> | Adjust spacing between list items<br /><br />Default value: <code>'base'</code> |
 | marker? | <code>"none" &#124; "bullet" &#124; "number"</code> | Type of marker to display<br /><br />Default value: <code>'bullet'</code> |
 | accessibilityLabel? | <code>string</code> | A label that describes the purpose or contents of the list. When set, it will be announced to buyers using assistive technologies and will provide them with more context.  |<a name="ConditionalStyle"></a>
 
