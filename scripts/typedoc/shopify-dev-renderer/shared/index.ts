@@ -428,7 +428,7 @@ function propType(
           if (node.type === 'TemplateElement') {
             return node.value.cooked ?? node.value.raw;
           }
-          return `$\{${propType(
+          return `&dollar;{${propType(
             node.value,
             exports,
             dir,
