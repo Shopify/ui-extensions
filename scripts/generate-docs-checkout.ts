@@ -61,6 +61,7 @@ components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
       propTypeNames: ['MaybeConditionalStyle'],
     },
   ],
+  componentsToSkip: ['isConditionalStyle'],
 });
 gettingStarted(checkout, {
   visibility: 'betaCheckoutExtensions',
