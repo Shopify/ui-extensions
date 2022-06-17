@@ -1,3 +1,5 @@
+<!-- This is a partial mardown file that will be injected into generated component pages if they use the `MaybeConditionalStyle` prop type -->
+
 ### Conditional Styles
 
 Components can have conditional properties, which enable you to set different values when certain conditions are met. The conditions that Shopify currently supports are changes in the viewport sizes and in interactive states such as `hover` and `focus`.

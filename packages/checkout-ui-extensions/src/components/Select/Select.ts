@@ -20,7 +20,7 @@ interface Option {
 
 export interface SelectProps {
   /**
-   * A unique identifier for the field. When no `id` is provided,
+   * A unique identifier for the field. When no `id` is set,
    * a globally unique value will be used instead.
    */
   id?: string;
@@ -35,7 +35,7 @@ export interface SelectProps {
   name?: string;
   /**
    * The active option for the select. This should match to one of the
-   * `value` properties in the `options` prop. When not provided,
+   * `value` properties in the `options` prop. When not set,
    * the value will default to an empty string, which will show the
    * `placeholder` text as the "selected value".
    */

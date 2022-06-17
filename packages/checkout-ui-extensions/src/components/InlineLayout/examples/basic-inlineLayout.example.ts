@@ -4,10 +4,10 @@ extend('Checkout::Dynamic::Render', (root) => {
   const inlineLayout = root.createComponent(
     InlineLayout,
     {
-      columns: [200, 'fill'],
+      columns: ['20%', 'fill'],
     },
     [
-      root.createComponent(View, {border: 'base', padding: 'base'}, '200'),
+      root.createComponent(View, {border: 'base', padding: 'base'}, '20%'),
       root.createComponent(View, {border: 'base', padding: 'base'}, 'fill'),
     ],
   );

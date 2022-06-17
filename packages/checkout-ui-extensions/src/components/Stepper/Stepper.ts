@@ -25,7 +25,7 @@ export interface StepperProps {
   error?: string | boolean;
 
   /**
-   * A unique identifier for the stepper. When no `id` is provided,
+   * A unique identifier for the stepper. When no `id` is set,
    * a globally unique value will be used instead.
    */
   id?: string;

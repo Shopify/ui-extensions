@@ -19,6 +19,7 @@ export interface PhoneFieldProps
     | 'readonly'
     | 'onFocus'
     | 'onBlur'
+    | 'maxLength'
   > {
   /**
    * Callback when the buyer has **finished editing** a field or pressed the country dropdown.

@@ -14,11 +14,16 @@ export type {
   CurrencyCode,
   Timezone,
   Interceptor,
+  InterceptorRequest,
   ReturnTypeForExtension,
   StandardApi,
   Storage,
   Version,
   Shop,
+  NoteChange,
+  NoteChangeResult,
+  NoteChangeResultSuccess,
+  NoteChangeResultError,
   Metafield,
   MetafieldRemoveChange,
   MetafieldUpdateChange,
@@ -30,6 +35,8 @@ export type {
   AppMetafieldEntryTarget,
   AppMetafieldEntry,
   Attribute,
+  AttributeChange,
+  AttributeChangeResult,
   Merchandise,
   ProductVariantMerchandise,
   MerchandiseImage,
@@ -43,10 +50,6 @@ export type {
   LineItemAddChange,
   LineItemUpdateChange,
   LineItemRemoveChange,
-  SignedChange,
-  SignedChangeResult,
-  SignedChangeResultError,
-  SignedChangeResultSuccess,
   CustomerAccount,
   I18n,
   Buyer,
@@ -60,14 +63,12 @@ export type {
   BlockStackProps,
   ButtonProps,
   CheckboxProps,
-  CalloutBannerProps,
   ChoiceListProps,
   ChoiceProps,
   DividerProps,
   FormProps,
   GridProps,
   GridItemProps,
-  GridItemSize,
   HeadingProps,
   HeadingGroupProps,
   IconProps,
@@ -79,6 +80,7 @@ export type {
   ListProps,
   ListItemProps,
   PhoneFieldProps,
+  ScrollViewProps,
   SelectProps,
   SkeletonTextProps,
   StepperProps,
@@ -99,10 +101,8 @@ export type {
   AutocompleteField,
   AutocompleteGroup,
   Breakpoint,
-  CSSShorthand,
-  Responsive,
-  Unit,
-  UnitSuffix,
+  ShorthandProperty,
+  MaybeShorthandProperty,
 } from './components';
 export type Components = typeof import('./components');
 
@@ -112,7 +112,7 @@ export type {
   ConditionalValue,
   MaybeConditionalStyle,
 } from './style';
-export {Style} from './style';
+export {Style, isConditionalStyle} from './style';
 
 export {extend} from './extend';
 export type {ShopifyGlobal} from './globals';

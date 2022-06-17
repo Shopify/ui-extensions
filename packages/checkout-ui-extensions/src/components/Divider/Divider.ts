@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Size, Alignment, Direction} from '../shared';
+import type {Size, Alignment, Direction} from '../shared';
 
 export interface DividerProps {
   /**

@@ -1,3 +1,5 @@
+import {MaybeConditionalStyle} from '../style';
+
 /**
  * A descriptor for selecting the data a field would like to receive during
  * autocomplete. This attribute is modeled off of a limited set of the autocomplete
@@ -126,16 +128,17 @@ export type AutocompleteField =
 
 export type Breakpoint = 'base' | 'small' | 'medium' | 'large';
 
-export type Responsive<T> = {[key in Breakpoint]?: T};
-export type CSSShorthand<CSSValue> =
-  | CSSValue
-  | [CSSValue, CSSValue]
-  | [CSSValue, CSSValue, CSSValue, CSSValue];
+export type ShorthandProperty<Property> =
+  | [Property, Property]
+  | [Property, Property, Property, Property];
 
-type BorderColor = 'base' | 'emphasized';
-type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
-type BorderStyle = 'base' | 'dotted' | 'none';
-type BorderWidth = 'base' | 'medium';
+export type MaybeShorthandProperty<Property> =
+  | Property
+  | ShorthandProperty<Property>;
+
+export type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
+export type BorderStyle = 'base' | 'dotted' | 'none';
+export type BorderWidth = 'base' | 'medium';
 
 export interface Bordered {
   /**
@@ -148,7 +151,7 @@ export interface Bordered {
    * - [`base`, `none`] means blockStart and blockEnd border styles are `base`, inlineStart and inlineEnd border styles are `none`
    * - [`base`, `none`, `dotted`, `base`] means blockStart border style is `base`, inlineEnd border style is `none`, blockEnd border style is `dotted` and  blockStart border style is `base`
    */
-  border?: CSSShorthand<BorderStyle> | Responsive<CSSShorthand<BorderStyle>>;
+  border?: MaybeConditionalStyle<MaybeShorthandProperty<BorderStyle>>;
 
   /**
    * Adjust the border width.
@@ -160,14 +163,7 @@ export interface Bordered {
    * - [`base`, `thick`] means blockStart and blockEnd border widths are `base`, inlineStart and inlineEnd border widths are `thick`
    * - [`base`, `thick`, `thick`, `base`] means blockStart border width is `base`, inlineEnd border width is `thick`, blockEnd border width is `thick` and  blockStart border width is `base`
    */
-  borderWidth?:
-    | CSSShorthand<BorderWidth>
-    | Responsive<CSSShorthand<BorderWidth>>;
-
-  /**
-   * Adjust the border color.
-   */
-  borderColor?: BorderColor | Responsive<BorderColor>;
+  borderWidth?: MaybeConditionalStyle<MaybeShorthandProperty<BorderWidth>>;
 
   /**
    * Adjust the border radius.
@@ -179,9 +175,7 @@ export interface Bordered {
    * - [`base`, `none`] means blockStart and blockEnd border radii are `base`, inlineStart and inlineEnd border radii are `none`
    * - [`base`, `none`, `tight`, `base`] means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`
    */
-  borderRadius?:
-    | CSSShorthand<BorderRadius>
-    | Responsive<CSSShorthand<BorderRadius>>;
+  borderRadius?: MaybeConditionalStyle<MaybeShorthandProperty<BorderRadius>>;
 }
 
 export type AccessibilityRole =
@@ -253,12 +247,6 @@ export type TextAccessibilityRole =
    */
   | {type: 'datetime'; machineReadable?: string};
 
-export type UnitSuffix = 'fr' | '%';
-/* eslint-disable eslint-comments/no-unlimited-disable */
-// eslint-disable-next-line
-export type Unit<Suffix extends UnitSuffix> = `${number}${Suffix}`;
-/* eslint-enable eslint-comments/no-unlimited-disable */
-
 /**
  * `info`:
  * Use to convey general information or actions that aren't critical or tied to
@@ -302,6 +290,10 @@ export type Alignment = 'start' | 'center' | 'end';
 export type InlineAlignment = Alignment;
 export type BlockAlignment = Alignment | 'baseline';
 
+export type Background = 'transparent' | 'color1' | 'color2' | 'color3';
+export type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
+export type BackgroundFit = 'cover' | 'contain';
+
 /**
  * `accent`:
  * Use to convey emphasis and draw attention to the icon.
@@ -340,6 +332,16 @@ export type Appearance =
 export type Direction = 'inline' | 'block';
 
 export type Fit = 'cover' | 'contain';
+
+export type GridItemSize =
+  | 'auto'
+  | 'fill'
+  | number
+  | `${number}fr`
+  | `${number}%`;
+
+export type Columns = GridItemSize[] | GridItemSize;
+export type Rows = GridItemSize[] | GridItemSize;
 
 /**
  * Use to emphasize a word or a group of words compared to other nearby text.

@@ -10,9 +10,9 @@ jest.mock('@shopify/checkout-ui-extensions', () => ({
 
 describe('render()', () => {
   it('calls extend() with the extension point', () => {
-    render('Checkout::KitchenSink', () => <></>);
+    render('Checkout::Dynamic::Render', () => <></>);
     expect(extend).toHaveBeenCalledWith(
-      'Checkout::KitchenSink',
+      'Checkout::Dynamic::Render',
       expect.any(Function),
     );
   });

@@ -4,10 +4,25 @@ extend('Checkout::Dynamic::Render', (root) => {
   const grid = root.createComponent(
     Grid,
     {
-      columns: ['20%', 'fill'],
-      rows: ['auto', 200],
+      columns: ['20%', 'fill', 'auto'],
+      rows: [300, 'auto'],
     },
     [
+      root.createComponent(
+        View,
+        {border: 'base', padding: 'base'},
+        '20% / 300',
+      ),
+      root.createComponent(
+        View,
+        {border: 'base', padding: 'base'},
+        'fill / 300',
+      ),
+      root.createComponent(
+        View,
+        {border: 'base', padding: 'base'},
+        'auto / 300',
+      ),
       root.createComponent(
         View,
         {border: 'base', padding: 'base'},
@@ -21,12 +36,7 @@ extend('Checkout::Dynamic::Render', (root) => {
       root.createComponent(
         View,
         {border: 'base', padding: 'base'},
-        '20% / 200',
-      ),
-      root.createComponent(
-        View,
-        {border: 'base', padding: 'base'},
-        'fill / 200',
+        'auto / auto',
       ),
     ],
   );

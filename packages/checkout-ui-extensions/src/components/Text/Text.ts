@@ -1,6 +1,11 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {TextAccessibilityRole, Emphasis, Size, Appearance} from '../shared';
+import type {
+  TextAccessibilityRole,
+  Emphasis,
+  Size,
+  Appearance,
+} from '../shared';
 
 export interface TextProps {
   /**

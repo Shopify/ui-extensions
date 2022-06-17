@@ -1,4 +1,3 @@
-import {ConditionalStyle} from './types';
 import {Style} from './style';
 
 describe('Style', () => {
@@ -6,7 +5,7 @@ describe('Style', () => {
     it('returns a conditional value with a default', () => {
       const defaultValue = Style.default('default');
 
-      expect(defaultValue).toStrictEqual<ConditionalStyle<string>>({
+      expect(defaultValue).toStrictEqual({
         default: 'default',
         conditionals: [],
       });
@@ -15,9 +14,7 @@ describe('Style', () => {
     it('returns a conditional value with a default and a condition when chained with when()', () => {
       const defaultValue = Style.default('default');
 
-      expect(defaultValue.when({hover: true}, 'value')).toStrictEqual<
-        ConditionalStyle<string>
-      >({
+      expect(defaultValue.when({hover: true}, 'value')).toStrictEqual({
         default: 'default',
         conditionals: [{value: 'value', conditions: {hover: true}}],
       });
@@ -36,9 +33,8 @@ describe('Style', () => {
     it('returns a conditional value with no default', () => {
       const conditionalValue = Style.when({hover: true}, 'value');
 
-      expect(conditionalValue).toStrictEqual<ConditionalStyle<string>>({
+      expect(conditionalValue).toStrictEqual({
         conditionals: [{value: 'value', conditions: {hover: true}}],
-        default: undefined,
       });
     });
 
@@ -48,7 +44,7 @@ describe('Style', () => {
         'value1',
       );
 
-      expect(conditionalValue).toStrictEqual<ConditionalStyle<string>>({
+      expect(conditionalValue).toStrictEqual({
         default: 'default',
         conditionals: [
           {
@@ -78,7 +74,7 @@ describe('Style', () => {
         .when({hover: true}, 'value1')
         .when({viewportInlineSize: {min: 'small'}}, 'value2');
 
-      expect(conditionalValue).toStrictEqual<ConditionalStyle<string>>({
+      expect(conditionalValue).toStrictEqual({
         default: 'default',
         conditionals: [
           {value: 'value1', conditions: {hover: true}},

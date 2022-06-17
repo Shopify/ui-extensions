@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Appearance, Size} from '../shared';
+import type {Appearance, Size} from '../shared';
 
 export type IconSource =
   | 'arrowLeft'
@@ -53,14 +53,18 @@ export type IconSource =
 
 export interface IconProps {
   /**
-   * A label to use for the icon that will be used for buyers using assistive technology like screen readers.
+   * A label that describes the purpose or contents of the icon. When set,
+   * it will be announced to buyers using assistive technologies and will
+   * provide them with more context.
    */
   accessibilityLabel?: string;
 
   /**
    * Sets the appearance (color) of the icon.
    *
-   * By default the icon will inherit the color of its container.
+   * By default the icon will inherit the color of its parent.
+   *
+   * @defaultValue 'monochrome'
    */
   appearance?: Appearance;
 
@@ -72,13 +76,13 @@ export interface IconProps {
   size?: Extract<Size, 'extraSmall' | 'small' | 'base' | 'fill'>;
 
   /**
-   * Specifies which icon symbol to display
+   * Specifies which icon to display
    */
   source: IconSource;
 }
 
 /**
- * An Icon is a glyph used to visually represent something else and communicate core.
+ * Icons are pictograms or graphic symbols.
  * They can act as wayfinding tools or as a means of communicating functionality.
  */
 export const Icon = createRemoteComponent<'Icon', IconProps>('Icon');

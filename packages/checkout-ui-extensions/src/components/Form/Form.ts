@@ -7,14 +7,6 @@ export interface FormProps {
    */
   disabled?: boolean;
   /**
-   * Whether this form should be submitted when the buyer presses the "enter"
-   * key on their keyboard. Defaults to `true`. When set to a string value,
-   * the implicit submit behavior will be enabled, and the string will be used
-   * as a label for an explicit submit button that is visible only to assistive
-   * technologies.
-   */
-  implicitSubmit?: boolean | string;
-  /**
    * A callback that is run when the form is submitted.
    */
   onSubmit(): void;

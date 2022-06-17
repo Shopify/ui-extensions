@@ -3,22 +3,39 @@ import {
   ChoiceList,
   Choice,
   BlockStack,
+  InlineStack,
 } from '@shopify/checkout-ui-extensions-react';
 
 render('Checkout::Dynamic::Render', () => <App />);
 
 function App() {
   return (
-    <ChoiceList
-      name="Choice"
-      value="first"
-      // eslint-disable-next-line no-console
-      onChange={() => console.log('onChange Triggered')}
-    >
-      <BlockStack>
-        <Choice id="first">First choice</Choice>
-        <Choice id="second">Second choice</Choice>
-      </BlockStack>
-    </ChoiceList>
+    <InlineStack>
+      <ChoiceList
+        name="choice"
+        value="first"
+        onChange={(value) => {
+          console.log(`onChange event with value: ${value}`);
+        }}
+      >
+        <BlockStack>
+          <Choice id="first">Ship</Choice>
+          <Choice id="second">Pickup</Choice>
+        </BlockStack>
+      </ChoiceList>
+
+      <ChoiceList
+        name="choiceMultiple"
+        value={['multipleFirst']}
+        onChange={(value) => {
+          console.log(`onChange event with value: ${value}`);
+        }}
+      >
+        <BlockStack>
+          <Choice id="multipleFirst">Gift message</Choice>
+          <Choice id="multipleSecond">Gift wrapping</Choice>
+        </BlockStack>
+      </ChoiceList>
+    </InlineStack>
   );
 }

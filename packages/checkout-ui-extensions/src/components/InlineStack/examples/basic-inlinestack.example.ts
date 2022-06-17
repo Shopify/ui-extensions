@@ -10,6 +10,7 @@ extend('Checkout::Dynamic::Render', (root) => {
       root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
       root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
       root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
+      root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
     ],
   );
 

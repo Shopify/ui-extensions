@@ -7,7 +7,7 @@ type Type = 'text' | 'email' | 'number' | 'telephone';
 
 export interface TextFieldProps {
   /**
-   * A unique identifier for the field. When no `id` is provided,
+   * A unique identifier for the field. When no `id` is set,
    * a globally unique value will be used instead.
    */
   id?: string;
@@ -112,6 +112,10 @@ export interface TextFieldProps {
   disabled?: boolean;
   /* Whether the field is read-only. */
   readonly?: boolean;
+  /**
+   * Specifies the maximum number of characters allowed.
+   */
+  maxLength?: number;
   /**
    * Callback when input is focused.
    */

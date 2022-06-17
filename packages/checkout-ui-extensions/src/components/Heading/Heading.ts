@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {InlineAlignment, AccessibilityRole} from '../shared';
+import type {InlineAlignment, AccessibilityRole} from '../shared';
 
 type Level = 1 | 2 | 3;
 
@@ -12,7 +12,7 @@ export interface HeadingProps {
    */
   id?: string;
   /**
-   * The visual level of the heading. When not provided, the heading will use
+   * The visual level of the heading. When not set, the heading will use
    * its “automatic” heading level, which is determined by the level of nesting
    * within ancestor `HeadingGroup`s. No matter what value you provide here,
    * the semantic level (e.g., how the heading contributes to the document outline)
@@ -20,7 +20,7 @@ export interface HeadingProps {
    */
   level?: Level;
   /**
-   * Sets the semantic meaning of the component’s content. When provided,
+   * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help buyers
    * navigate the page.
    */

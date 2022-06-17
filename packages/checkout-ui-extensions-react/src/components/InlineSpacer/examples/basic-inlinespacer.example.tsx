@@ -13,11 +13,7 @@ function App() {
       <View border="base" padding="base">
         View
       </View>
-      <InlineSpacer size="small" />
-      <View border="base" padding="base">
-        View
-      </View>
-      <InlineSpacer size="large" />
+      <InlineSpacer spacing="loose" />
       <View border="base" padding="base">
         View
       </View>

@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.9",
-    "@remote-ui/core": "^2.1.9",
-    "reselect": "^4.1.5"
+    "@remote-ui/core": "^2.1.9"
   }
 }

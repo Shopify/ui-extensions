@@ -2,10 +2,10 @@
 
 ## Shopify-specific globals
 
-The most important API to a checkout UI extension is `shopify`, an object that's globally available. This object has a single method, `extend`. `extend` takes the following arguments:
+The most important API to a checkout UI extension is `shopify`, which is an object that’s globally available. This object has a single method, `extend`. `extend` takes the following arguments:
 
 - The name of an available [checkout UI extension point](./extension-points.md)
-- A function to call when Shopify;s ready to run the extension point. The function that you pass is called with at least one input argument, depending on the extension point. To see what you have access to, refer to the documentation for the extension point that you're targeting.
+- A function to call when Shopify’s ready to run the extension point. The function that you pass is called with at least one input argument, depending on the extension point. To see what you have access to, refer to the documentation for the extension point that you’re targeting.
 
 ```ts
 shopify.extend('Checkout::Dynamic::Render', (...args) => {
@@ -13,7 +13,7 @@ shopify.extend('Checkout::Dynamic::Render', (...args) => {
 });
 ```
 
-This library provides an alias for `shopify.extend` in the form of the `extend()` export. This function is also strongly-typed, so you'll get feedback about the input arguments to that extension point if you're working in an editor that supports TypeScript’s language server. We recommend [VSCode](https://code.visualstudio.com).
+This library provides an alias for `shopify.extend` in the form of the `extend()` export. This function is also strongly-typed. If you’re working in an editor that supports TypeScript’s language server (we recommend [VSCode](https://code.visualstudio.com)), then you get feedback about the input arguments to that extension point.
 
 ```ts
 import {extend} from '@shopify/checkout-ui-extensions';
@@ -44,11 +44,8 @@ Checkout UI extensions always run in a [web worker](https://developer.mozilla.or
 
 ## JavaScript environment
 
-> Note:
-> If you're using [`@shopify/checkout-ui-extensions-run`](../../checkout-ui-extensions-run) to build and develop your script, then all of the build configuration discussed in this section is handled for you. Just be mindful of whether you're relying on very new language features that will require additional polyfills. `@shopify/checkout-ui-extensions-run` is the default build and dev tool that you get when you use Shopify CLI to generate your extension. So, if you’re not sure whether you’re using it, you probably are.
-
 The sandbox that loads your extension guarantees all of the globals available in [ECMAScript 2015 (ES2015)](http://www.ecma-international.org/ecma-262/6.0/). This includes `Set`, `Map`, `Promise`, `Symbol`, and more. You should rely on these globals directly when you need them, and you shouldn't use your own polyfill for any of these features. If you use globals added after ES2015, or new static methods on globals added after ES2015 (like `Object.entries`), then you must polyfill your usage of these features.
 
 Your UI extension shouldn't ship any ES2015 (or newer) syntax, like [`class`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/class), [`const/let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const), or [`for..of` loops](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of). This syntax isn't understood by some of the browsers that checkout supports. If you use these features in your source code, then make sure that they're compiled to ES5 syntax in your final JavaScript file.
 
-The UI extension sandbox makes a `regeneratorRuntime` instance available globally. This object is provided by [regenerator-runtime](https://github.com/facebook/regenerator/tree/master/packages/regenerator-runtime), and is used by many compilers to provide an ES5-compatible compilation target for [generator functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*) and [async/ await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await). If you use generators or async/ await, then make sure you compile it down to code that uses regenerator-runtime, and make sure you don't import your own version of that polyfill.
+The UI extension sandbox makes a `regeneratorRuntime` instance available globally. This object is provided by [regenerator-runtime](https://github.com/facebook/regenerator/tree/main/packages/runtime), and is used by many compilers to provide an ES5-compatible compilation target for [generator functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*) and [async/ await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await). If you use generators or async/ await, then make sure you compile it down to code that uses regenerator-runtime, and make sure you don't import your own version of that polyfill.

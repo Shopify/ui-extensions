@@ -20,11 +20,11 @@ interface AppMetafieldFilters {
 type AppMetafieldFilterKeys = keyof AppMetafieldFilters;
 
 /**
- * Returns the metafields configured via extension.config.yml.
+ * Returns the metafields configured with `shopify.ui.extension.toml`.
  * @arg {AppMetafieldFilters} - filter the list of returned metafields
  */
 export function useAppMetafields<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(filters: AppMetafieldFilters = {}) {
   const appMetafields = useSubscription(useExtensionApi<ID>().appMetafields);
 

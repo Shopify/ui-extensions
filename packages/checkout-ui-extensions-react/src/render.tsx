@@ -30,23 +30,26 @@ export function render<ExtensionPoint extends RenderExtensionPoint>(
 ) {
   // TypeScript can’t infer the type of the callback because it’s a big union
   // type. To get around it, we’ll just fake like we are rendering the
-  // KitchenSink extension, since all render extensions have the same general
+  // Checkout::Dynamic::Render extension, since all render extensions have the same general
   // shape (`RenderExtension`).
-  return extend<'Checkout::KitchenSink'>(extensionPoint as any, (root, api) => {
-    return new Promise((resolve, reject) => {
-      try {
-        remoteRender(
-          <ExtensionApiContext.Provider value={api}>
-            {render(api as ApiForRenderExtension<ExtensionPoint>)}
-          </ExtensionApiContext.Provider>,
-          root,
-          () => {
-            resolve();
-          },
-        );
-      } catch (error) {
-        reject(error);
-      }
-    });
-  });
+  return extend<'Checkout::Dynamic::Render'>(
+    extensionPoint as any,
+    (root, api) => {
+      return new Promise((resolve, reject) => {
+        try {
+          remoteRender(
+            <ExtensionApiContext.Provider value={api}>
+              {render(api as ApiForRenderExtension<ExtensionPoint>)}
+            </ExtensionApiContext.Provider>,
+            root,
+            () => {
+              resolve();
+            },
+          );
+        } catch (error) {
+          reject(error);
+        }
+      });
+    },
+  );
 }

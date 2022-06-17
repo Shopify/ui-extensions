@@ -1,5 +1,4 @@
-import {defaultMemoize as memoize} from 'reselect';
-
+import {memoize} from './memoize';
 import {Conditions, ConditionalStyle} from './types';
 import {isEqual} from './isEqual';
 
@@ -10,57 +9,81 @@ const MEMOIZE_OPTIONS = {
   maxSize: MAX_CACHE_SIZE,
 };
 
-type WhenMethod<T> = (
+type ChainableConditionalStyle<T> = ConditionalStyle<T> & {
+  when: typeof when;
+};
+
+/**
+ * Style is a helper for authoring conditional values for prop styles.
+ * Write complex conditional styles based on one or more conditions (viewport
+ * sizes and interactive states) in a concise and expressive way.
+ */
+export const Style = {
+  /**
+   * Sets an optional default value to use when no other condition is met.
+   *
+   * @param defaultValue The default value
+   * @returns The chainable condition style
+   */
+  default: memoize(
+    <T>(defaultValue: T): ChainableConditionalStyle<T> =>
+      createChainableConditionalStyle({
+        default: defaultValue,
+        conditionals: [],
+      }),
+    MEMOIZE_OPTIONS,
+  ),
+  /**
+   * Adjusts the style based on different conditions. All conditions, expressed
+   * as a literal object, must be met for the associated value to be applied.
+   *
+   * The `when` method can be chained together to build more complex styles.
+   *
+   * @param conditions The condition(s)
+   * @param value The conditional value that can be applied if the conditions are met
+   * @returns The chainable condition style
+   */
+  when: memoize(when, MEMOIZE_OPTIONS),
+} as const;
+
+function when<T>(
+  // Not happy about having to use any here, but it's the only way to make the types work on the chained methods
+  this: any,
   conditions: Conditions,
   value: T,
-) => Readonly<ChainableConditionalStyle<T>>;
-
-interface WhenObject<T> {
-  when: WhenMethod<T>;
+): ChainableConditionalStyle<T> {
+  if (isConditionalStyle<T>(this)) {
+    return createChainableConditionalStyle({
+      default: this.default,
+      conditionals: [...this.conditionals, {conditions, value}],
+    });
+  } else {
+    return createChainableConditionalStyle({
+      conditionals: [{conditions, value}],
+    });
+  }
 }
-type ChainableConditionalStyle<T> = ConditionalStyle<T> & WhenObject<T>;
 
-function createChainableConditionalStyle<T>({
-  conditionals = [],
-  defaultValue,
-}: {
-  conditionals?: ConditionalStyle<T>['conditionals'];
-  defaultValue?: T;
-}): Readonly<ChainableConditionalStyle<T>> {
-  const proto = {} as WhenObject<T>;
+function createChainableConditionalStyle<T>(
+  conditionalStyle: ConditionalStyle<T>,
+): ChainableConditionalStyle<T> {
+  const proto = {} as {
+    when: typeof when;
+  };
+
   const returnConditionalStyle = Object.create(
     proto,
   ) as ChainableConditionalStyle<T>;
 
-  Object.assign(returnConditionalStyle, {
-    default: defaultValue,
-    conditionals,
-  });
+  Object.assign(returnConditionalStyle, conditionalStyle);
 
-  const whenMethod = (conditions: Conditions, value: T) =>
-    createChainableConditionalStyle({
-      conditionals: [
-        ...returnConditionalStyle.conditionals,
-        {conditions, value},
-      ],
-      defaultValue: returnConditionalStyle.default,
-    });
-
-  proto.when = memoize(whenMethod, MEMOIZE_OPTIONS);
+  proto.when = memoize(when.bind(returnConditionalStyle), MEMOIZE_OPTIONS);
 
   return returnConditionalStyle;
 }
 
-export const Style = {
-  default: memoize(
-    <T>(defaultValue: T) => createChainableConditionalStyle({defaultValue}),
-    MEMOIZE_OPTIONS,
-  ),
-  when: memoize(
-    <T>(conditions: Conditions, value: T) =>
-      createChainableConditionalStyle({
-        conditionals: [{conditions, value}],
-      }),
-    MEMOIZE_OPTIONS,
-  ),
-};
+export function isConditionalStyle<T>(
+  value?: any,
+): value is ConditionalStyle<T> {
+  return value !== null && typeof value === 'object' && 'conditionals' in value;
+}

@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {InlineAlignment, Emphasis, Size, Appearance} from '../shared';
+import type {InlineAlignment, Emphasis, Size, Appearance} from '../shared';
 
 export interface TextBlockProps {
   /**

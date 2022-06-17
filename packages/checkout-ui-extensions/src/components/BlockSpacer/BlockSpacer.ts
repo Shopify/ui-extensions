@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Spacing} from '../shared';
+import type {MaybeConditionalStyle} from '../../style';
+import type {Spacing} from '../shared';
 
 export interface BlockSpacerProps {
   /**
@@ -8,9 +9,8 @@ export interface BlockSpacerProps {
    *
    * @defaultValue 'base'
    **/
-  spacing?: Extract<
-    Spacing,
-    'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose'
+  spacing?: MaybeConditionalStyle<
+    Extract<Spacing, 'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose'>
   >;
 }
 

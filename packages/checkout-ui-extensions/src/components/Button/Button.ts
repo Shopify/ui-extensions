@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Appearance, InlineAlignment} from '../shared';
+import type {Appearance, InlineAlignment} from '../shared';
 
 export interface ButtonProps {
   /**
@@ -48,7 +48,7 @@ export interface ButtonProps {
    */
   loadingLabel?: string;
   /**
-   * A label used for buyers using assistive technologies. When provided, any
+   * A label used for buyers using assistive technologies. When set, any
    * `children` supplied to this component are hidden from being seen for
    * accessibility purposes to prevent duplicate content from being read.
    */

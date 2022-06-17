@@ -1,4 +1,4 @@
-export {Style} from './style';
+export {Style, isConditionalStyle} from './style';
 export type {
   Conditions,
   ConditionalStyle,

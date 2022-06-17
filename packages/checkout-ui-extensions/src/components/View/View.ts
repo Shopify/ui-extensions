@@ -1,73 +1,54 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {
-  Responsive,
-  CSSShorthand,
-  Bordered,
-  MultiPick,
-  ViewLikeAccessibilityRole,
-  InlineAlignment,
+import {MaybeConditionalStyle} from '../../style';
+import {Bordered} from '../shared';
+import type {
   BlockAlignment,
+  InlineAlignment,
+  MaybeShorthandProperty,
+  MultiPick,
   Spacing,
+  ViewLikeAccessibilityRole,
 } from '../shared';
 
-type Background = 'transparent' | 'color1' | 'color2' | 'color3';
-type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
-type BackgroundFit = 'cover' | 'contain';
 type Visibility = 'hidden';
 type AccessibilityVisibility = 'hidden';
 type Display = 'block' | 'inline';
 type Opacity = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 
 export type PositionType = 'absolute' | 'relative';
-export type Coordinate = number;
+export type Coordinate = number | `${number}%`;
 interface BaseCoordinates {
   /**
    * Adjust the block start offset.
    *
-   * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
-   * A percentage value refers to the block size of the parent component.
+   * `number`: size in pixels.
    *
-   * Examples:
-   * - `500` represents `500px`
-   * - `0.5` represents `50%`
-   * - `1` represents `100%`
+   * `` `${number}%` ``: size in percentages. It refers to the block size of the parent component.
    */
   blockStart: Coordinate;
   /**
    * Adjust the inline start offset.
    *
-   * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
-   * A percentage value refers to the inline size of the parent component.
+   * `number`: size in pixels.
    *
-   * Examples:
-   * - `500` represents `500px`
-   * - `0.5` represents `50%`
-   * - `1` represents `100%`
+   * `` `${number}%` ``: size in percentages. It refers to the block size of the parent component.
    */
   inlineStart: Coordinate;
   /**
    * Adjust the block end offset.
    *
-   * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
-   * A percentage value refers to the block size of the parent component.
+   * `number`: size in pixels.
    *
-   * Examples:
-   * - `500` represents `500px`
-   * - `0.5` represents `50%`
-   * - `1` represents `100%`
+   * `` `${number}%` ``: size in percentages. It refers to the block size of the parent component.
    */
   blockEnd: Coordinate;
   /**
    * Adjust the inline end offset.
    *
-   * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
-   * A percentage value refers to the inline size of the parent component.
+   * `number`: size in pixels.
    *
-   * Examples:
-   * - `500` represents `500px`
-   * - `0.5` represents `50%`
-   * - `1` represents `100%`
+   * `` `${number}%` ``: size in percentages. It refers to the block size of the parent component.
    */
   inlineEnd: Coordinate;
 }
@@ -105,8 +86,6 @@ export type Position = {
   type?: PositionType;
 } & PositionCoordinates;
 
-/* eslint-disable eslint-comments/no-unlimited-disable */
-/* eslint-disable */
 export interface Translate {
   /**
    * Adjust the translation on the cross axis.
@@ -121,41 +100,40 @@ export interface Translate {
    */
   inline?: number | `${number}%`;
 }
-/* eslint-enable eslint-comments/no-unlimited-disable */
-/* eslint-enable */
 
 export interface ViewProps extends Bordered {
   /**
    * Adjust the maximum inline size.
    *
-   * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
+   * `number`: size in pixels.
    *
+   * `` `${number}%` ``: size in percentages.
    *
-   * Examples:
-   *
-   * - `500` represents `500px`
-   *
-   * - `0.5` represents `50%`
-   *
-   * - `1` represents `100%`
+   * `fill`: takes all the available space.
    */
-  maxInlineSize?: number | Responsive<number>;
+  maxInlineSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
 
   /**
    * Adjust the minimum inline size.
    *
-   * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
+   * `number`: size in pixels.
    *
+   * `` `${number}%` ``: size in percentages.
    *
-   * Examples:
-   *
-   * - `500` represents `500px`
-   *
-   * - `0.5` represents `50%`
-   *
-   * - `1` represents `100%`
+   * `fill`: takes all the available space.
    */
-  minInlineSize?: number | Responsive<number>;
+  minInlineSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
+
+  /**
+   * Adjust the block size.
+   *
+   * `number`: size in pixels.
+   *
+   * `` `${number}%` ``: size in percentages.
+   *
+   * `fill`: takes all the available space.
+   */
+  minBlockSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
 
   /**
    * Adjust the padding.
@@ -171,37 +149,7 @@ export interface ViewProps extends Bordered {
    *
    * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
    */
-  padding?: CSSShorthand<Spacing> | Responsive<CSSShorthand<Spacing>>;
-
-  /**
-   * Adjust the background.
-   */
-  background?: Background | Responsive<Background>;
-
-  /**
-   * Sets one or multiple responsive background images.
-   */
-  backgroundImage?: string | Responsive<string>;
-
-  /**
-   * Indicates if the background image should scale its container without cropping
-   * and stretching, or scale as large as possible to fill the container and stretching if necessary.
-   */
-  backgroundFit?: BackgroundFit;
-
-  /**
-   * Sets the initial position of the background image.
-   *
-   * @defaultValue 'center'
-   */
-  backgroundPosition?: BackgroundPosition;
-
-  /**
-   * Sets how background image are repeated.
-   *
-   * @defaultValue false
-   */
-  backgroundRepeat?: boolean;
+  padding?: MaybeConditionalStyle<MaybeShorthandProperty<Spacing>>;
 
   /**
    * Changes the visibility of the element.
@@ -238,54 +186,47 @@ export interface ViewProps extends Bordered {
   id?: string;
 
   /**
-   * Adjust the block size.
-   *
-   * Numbers less than or equal to 1 are treated as percentages and numbers greater than 1 are treated as pixels.
-   *
-   *
-   * Examples:
-   * - `500` represents `500px`
-   *
-   * - `0.5` represents `50%`
-   *
-   * - `1` represents `100%`
-   */
-  blockSize?: number | Responsive<number>;
-
-  /**
    * Sets the opacity of the View. The opacity will be applied to the background as well as all
    * the childrens of the View. Use carefully as this could decrease the contrast ratio between
    * the background and foreground elements resulting in unreadable and inaccessible text.
    */
   opacity?: Opacity;
   /**
-   * A label that describes the purpose or contents of the element. When provided,
+   * A label that describes the purpose or contents of the element. When set,
    * it will be announced to buyers using assistive technologies and will
    * provide them with more context.
    */
   accessibilityLabel?: string;
   /**
-   * Sets the semantic meaning of the component’s content. When provided,
+   * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help buyers
    * navigate the page.
+   *
+   *
+   * Examples:
+   *
+   * - In an HTML host a `["listItem", "separator"]` tuple will render: `<li role="separator">`
+   * - In an HTML host a `"listItem"` string will render: `<li>`
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
   /**
    * Changes how the View is positioned.
    */
-  position?: Position | Responsive<Position>;
+  position?: MaybeConditionalStyle<Position>;
   /**
    * Specifies a two-dimensional translation of the View.
    */
-  translate?: Translate | Responsive<Translate>;
+  translate?: MaybeConditionalStyle<Translate>;
   /**
    * Position children along the cross axis
    */
-  blockAlignment?: Extract<BlockAlignment, 'start' | 'center' | 'end'>;
+  blockAlignment?: MaybeConditionalStyle<
+    Extract<BlockAlignment, 'start' | 'center' | 'end'>
+  >;
   /**
    * Position children along the main axis
    */
-  inlineAlignment?: InlineAlignment;
+  inlineAlignment?: MaybeConditionalStyle<InlineAlignment>;
 }
 
 /**

@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {
+import type {MaybeConditionalStyle} from '../../style';
+import type {
   ViewLikeAccessibilityRole,
   Spacing,
   InlineAlignment,
@@ -9,13 +10,13 @@ import {
 
 export interface InlineStackProps {
   /**
-   * Sets the semantic meaning of the component’s content. When provided,
+   * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help buyers
    * navigate the page.
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
   /**
-   * A label that describes the purpose or contents of the element. When provided,
+   * A label that describes the purpose or contents of the element. When set,
    * it will be announced to buyers using assistive technologies and will
    * provide them with more context.
    */
@@ -25,19 +26,19 @@ export interface InlineStackProps {
    *
    * @defaultValue 'start'
    */
-  blockAlignment?: BlockAlignment;
+  blockAlignment?: MaybeConditionalStyle<BlockAlignment>;
   /**
    * Position children along the main axis
    *
    * @defaultValue 'start'
    */
-  inlineAlignment?: InlineAlignment;
+  inlineAlignment?: MaybeConditionalStyle<InlineAlignment>;
   /**
    * Adjust spacing between children
    *
    * @defaultValue 'base'
    **/
-  spacing?: Spacing;
+  spacing?: MaybeConditionalStyle<Spacing>;
 }
 
 /**

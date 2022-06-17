@@ -14,8 +14,8 @@ type AllComponents = Components[keyof Components];
  */
 export interface ExtensionPoints {
   /**
-   * This extension point is used to render completely
-   * new content added to the flow of checkout. This extension point is not attached
+   * An extension point that is used to render completely
+   * new content added to the flow of checkout. The extension point is not attached
    * to any other element in checkout. Instead, a merchant can select the step and position
    * of your extension when configuring the overall flow of their checkout.
    */
@@ -23,12 +23,8 @@ export interface ExtensionPoints {
     StandardApi<'Checkout::Dynamic::Render'>,
     AllComponents
   >;
-  'Checkout::KitchenSink': RenderExtension<
-    StandardApi<'Checkout::KitchenSink'>,
-    AllComponents
-  >;
   /**
-   * This static extension point renders on every line item, inside the details,
+   * A static extension point that renders on every line item, inside the details
    * under the line item properties element.
    */
   'Checkout::LineItemDetails::RenderAfter': RenderExtension<
@@ -36,14 +32,14 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * This is a static extension point rendered after all line items.
+   * A static extension point that is rendered after all line items.
    */
   'Checkout::LineItems::RenderAfter': RenderExtension<
     StandardApi<'Checkout::LineItems::RenderAfter'>,
     AllComponents
   >;
   /**
-   * This is a static extension point rendered between the shipping address header
+   * A static extension point that is rendered between the shipping address header
    * and shipping address form elements.
    */
   'Checkout::DeliveryAddress::RenderBefore': RenderExtension<
@@ -51,34 +47,30 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * This is a static extension point that is rendered between the shipping method
+   * A static extension point that is rendered between the shipping method
    * header and shipping method options.
    */
   'Checkout::ShippingMethods::RenderBefore': RenderExtension<
     StandardApi<'Checkout::ShippingMethods::RenderBefore'>,
     AllComponents
   >;
+  /**
+   * A static extension point that is rendered after the shipping method
+   * options.
+   */
   'Checkout::ShippingMethods::RenderAfter': RenderExtension<
     StandardApi<'Checkout::ShippingMethods::RenderAfter'>,
     AllComponents
   >;
-  'Checkout::PaymentMethods::Header::RenderAfter': RenderExtension<
-    StandardApi<'Checkout::PaymentMethods::Header::RenderAfter'>,
-    AllComponents
-  >;
-  'Checkout::PriceLines::RenderAfter': RenderExtension<
-    StandardApi<'Checkout::PriceLines::RenderAfter'>,
-    AllComponents
-  >;
   /**
-   * This is a static extension point rendered in the order summary, before the discount form.
+   * A static extension point that is rendered in the order summary, before the discount form element.
    */
   'Checkout::Reductions::RenderBefore': RenderExtension<
     StandardApi<'Checkout::Reductions::RenderBefore'>,
     AllComponents
   >;
   /**
-   * This is a static extension point rendered in the order summary, after the discount form
+   * A static extension point that is rendered in the order summary, after the discount form
    * and discount tag elements.
    */
   'Checkout::Reductions::RenderAfter': RenderExtension<
@@ -86,21 +78,14 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * This is a static extension point that is rendered immediately before any actions within each step.
+   * A static extension point that is rendered immediately before any actions within each step.
    */
   'Checkout::Actions::RenderBefore': RenderExtension<
     StandardApi<'Checkout::Actions::RenderBefore'>,
     AllComponents
   >;
   /**
-   * This is a static extension point that is rendered immediately after any actions within each step.
-   */
-  'Checkout::Actions::RenderAfter': RenderExtension<
-    StandardApi<'Checkout::Actions::RenderAfter'>,
-    AllComponents
-  >;
-  /**
-   * This is a static extension point that is rendered immediately after the Contact Form block.
+   * A static extension point that is rendered immediately after the contact form element.
    */
   'Checkout::Contact::RenderAfter': RenderExtension<
     StandardApi<'Checkout::Contact::RenderAfter'>,

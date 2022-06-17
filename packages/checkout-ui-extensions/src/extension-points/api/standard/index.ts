@@ -3,23 +3,23 @@ import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 import type {CurrencyCode, CountryCode, Timezone} from '../shared';
 
 /**
- * This is a key / value storage object for extension points.
+ * A key-value storage object for extension points.
  *
- * Stored data will only be available to this specific app
+ * Stored data is only available to this specific app
  * at this specific extension point.
  *
- * The storage backend is implemented with localStorage and
- * will persist across the buyer's checkout session but this
+ * The storage backend is implemented with `localStorage` and
+ * should persist across the buyer's checkout session, however, this
  * is not guaranteed.
  */
 export interface Storage {
   /**
    * Read and return a stored value by key.
    *
-   * The stored data will be deserialized from JSON and returned as
+   * The stored data is deserialized from JSON and returned as
    * its original primitive.
    *
-   * This returns null if no stored data exists.
+   * Returns null if no stored data exists.
    */
   read<T = unknown>(key: string): Promise<T | null>;
 
@@ -43,7 +43,7 @@ export interface Extension {
   /**
    * Published version of the running extension point.
    *
-   * For unpublished extensions, this will be null.
+   * For unpublished extensions, the value is null.
    *
    * @example 3.0.10
    */
@@ -57,7 +57,7 @@ export interface Extension {
   /**
    * Whether your extension is currently rendered to the screen.
    *
-   * Shopify may render your extension before it is actually visible in the UI,
+   * Shopify may render your extension before it's actually visible in the UI,
    * typically to pre-render extensions that will appear on a later step of the
    * checkout.
    *
@@ -67,6 +67,102 @@ export interface Extension {
    */
   rendered: StatefulRemoteSubscribable<boolean>;
 }
+
+/**
+ * Removes a note
+ */
+export interface NoteRemoveChange {
+  type: 'removeNote';
+}
+
+/**
+ * An Update to a note on the order.
+ * for example, the buyer could request detailed packaging instructions in an order note
+ */
+export interface NoteUpdateChange {
+  type: 'updateNote';
+  note: string;
+}
+
+export type NoteChange = NoteRemoveChange | NoteUpdateChange;
+
+export interface NoteChangeResultSuccess {
+  /**
+   * The type of the `NoteChangeResultSuccess` API.
+   */
+  type: 'success';
+}
+
+export interface NoteChangeResultError {
+  /**
+   * The type of the `NoteChangeResultError` API.
+   */
+  type: 'error';
+
+  /**
+   * A message that explains the error. This message is useful for debugging.
+   * It is **not** localized, and therefore should not be presented directly
+   * to the buyer.
+   */
+  message: string;
+}
+
+export type NoteChangeResult = NoteChangeResultSuccess | NoteChangeResultError;
+
+/**
+ * Updates an attribute on the order. If an attribute with the
+ * provided key does not already exist, it gets created.
+ */
+export interface AttributeUpdateChange {
+  /**
+   * The type of the `AttributeUpdateChange` API.
+   */
+  type: 'updateAttribute';
+
+  /**
+   * Key of the attribute to add or update
+   */
+  key: string;
+
+  /**
+   * Value for the attribute to add or update
+   */
+  value: string;
+}
+
+export type AttributeChange = AttributeUpdateChange;
+
+/**
+ * The returned result of a successful update to an attribute.
+ */
+export interface AttributeChangeResultSuccess {
+  /**
+   * The type of the `AttributeChangeResultSuccess` API.
+   */
+  type: 'success';
+}
+
+/**
+ * The returned result of an unsuccessful update to an attribute
+ * with a message detailing the type of error that occurred.
+ */
+export interface AttributeChangeResultError {
+  /**
+   * The type of the `AttributeChangeResultError` API.
+   */
+  type: 'error';
+
+  /**
+   * A message that explains the error. This message is useful for debugging.
+   * It is **not** localized, and therefore should not be presented directly
+   * to the buyer.
+   */
+  message: string;
+}
+
+export type AttributeChangeResult =
+  | AttributeChangeResultSuccess
+  | AttributeChangeResultError;
 
 /**
  * Metadata associated with the checkout.
@@ -114,7 +210,7 @@ export interface MetafieldRemoveChange {
 
 /**
  * Updates a metafield. If a metafield with the
- * provided key and namespace does not already exist, it will be created.
+ * provided key and namespace does not already exist, it gets created.
  */
 export interface MetafieldUpdateChange {
   /**
@@ -209,6 +305,11 @@ export type Version = 'unstable';
  * This defines the i18n.translate() signature.
  */
 export interface I18nTranslate {
+  /**
+   * This returns a translated string matching a key in a locale file.
+   *
+   * @example translate("banner.title")
+   */
   <ReplacementType = string>(
     key: string,
     options?: {[placeholderKey: string]: ReplacementType | string | number},
@@ -305,19 +406,8 @@ export interface Buyer {
  * The following APIs are provided to all extension points.
  */
 export interface StandardApi<
-  ExtensionPoint extends import('../../extension-points').ExtensionPoint
+  ExtensionPoint extends import('../../extension-points').ExtensionPoint,
 > {
-  /**
-   * Merchant configuration for this extension.
-   *
-   * If the extension allows configuration, this object will hold values
-   * that have been set by merchants. If the extension does not allow
-   * configuration, the object will be empty.
-   *
-   * @example {layoutPosition: 'center'}
-   */
-  configuration: StatefulRemoteSubscribable<{[key: string]: unknown}>;
-
   /**
    * The renderer version being used for the extension.
    *
@@ -327,7 +417,7 @@ export interface StandardApi<
 
   /**
    * The minimum a buyer can expect to pay at the current step of checkout.
-   * This value excludes amounts yet to be negotiated. For example, the information step
+   * This value excludes amounts that are yet to be negotiated. For example, the information step
    * may not have delivery costs calculated.
    */
   runningTotal: StatefulRemoteSubscribable<Money | undefined>;
@@ -337,8 +427,8 @@ export interface StandardApi<
    */
   buyerJourney: {
     /**
-     * Function for intercepting and preventing navigation on checkout. You can block
-     * navigation by returning an object with `{behavior: 'block', reason: InvalidResultReason.UnknownReason}`. If you do, you are
+     * A function for intercepting and preventing navigation on checkout. You can block
+     * navigation by returning an object with `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState}`. If you do, you are
      * expected to also update some part of your UI to reflect the reason why navigation
      * was blocked.
      */
@@ -347,12 +437,12 @@ export interface StandardApi<
 
   /**
    * The proposed billing address is what the buyer has input in the billing
-   * address form of the payment page. The address will update once the field is
-   * committed (on change) rather than every keystroke. This form value always be
-   * available in the API and is distinct from shipping address, even when the buyer
-   * selects the "same as shipping" option. Billing address will not be collected if
-   * the buyer doesn't specify a direct payment line; in this case, this subscribable
-   * value will be undefined.
+   * address form of the payment page. The address updates when the field is
+   * committed (on change) rather than every keystroke. This form value is always
+   * available in the API and is distinct from the shipping address, even when the buyer
+   * selects the "same as shipping" option. If the buyer doesn't specify a direct payment
+   * line, then the billing address is not collected and the subscribable value
+   * is undefined.
    */
   billingAddress: StatefulRemoteSubscribable<Address | undefined>;
 
@@ -369,8 +459,8 @@ export interface StandardApi<
 
   /**
    * The primaryAddress field is a shortcut to the first address a buyer fills out in checkout, if any.
-   * When a checkout requires shipping, this field is identical to the shippingAddress field.
-   * When a checkout does not require shipping, this field is identical to the billingAddress field.
+   * When a checkout requires shipping, this field is identical to the `shippingAddress` field.
+   * When a checkout does not require shipping, this field is identical to the `billingAddress` field.
    */
   primaryAddress: StatefulRemoteSubscribable<Address | undefined>;
 
@@ -380,10 +470,10 @@ export interface StandardApi<
   storage: Storage;
 
   /**
-   * Proposed buyer shipping address. During the information step, the address
-   * will update once the field is committed (on change) rather than every keystroke.
+   * The proposed buyer shipping address. During the information step, the address
+   * updates when the field is committed (on change) rather than every keystroke.
    * An address value is only present if delivery is required. Otherwise, the
-   * subscribable value will be undefined.
+   * subscribable value is undefined.
    */
   shippingAddress: StatefulRemoteSubscribable<Address | undefined>;
 
@@ -391,36 +481,50 @@ export interface StandardApi<
   shop: Shop;
 
   /**
-   * A note left by the buyer to the merchant either in their cart or during checkout.
+   * A note left by the customer to the merchant, either in their cart or during checkout.
    */
   note: StatefulRemoteSubscribable<string | undefined>;
 
   /**
-   * Custom attributes left by the buyer to the merchant either in their cart or during checkout.
+   * Performs an update on the note attached to the cart and checkout. If
+   * successful, this mutation results in an update to the value retrieved
+   * through the `note` property.
    */
-  customAttributes: StatefulRemoteSubscribable<Attribute[] | undefined>;
+  applyNoteChange(change: NoteChange): Promise<NoteChangeResult>;
 
   /**
-   * Customer account from the buyer. This value will update when there's a
-   * change in the account. The value is undefined if the buyer doesn't have
-   * any account.
+   * Custom attributes left by the customer to the merchant, either in their cart or during checkout.
+   */
+  attributes: StatefulRemoteSubscribable<Attribute[] | undefined>;
+
+  /**
+   * Performs an update on an attribute attached to the cart and checkout. If
+   * successful, this mutation results in an update to the value retrieved
+   * through the `attributes` property.
+   */
+  applyAttributeChange(change: AttributeChange): Promise<AttributeChangeResult>;
+
+  /**
+   * The account belonging to the customer. This value updates when there's a
+   * change in the account. The value is undefined if the customer doesn't have
+   * an account or if they aren't logged in.
    */
   customerAccount: StatefulRemoteSubscribable<CustomerAccount | undefined>;
 
   /**
    * The metafields that apply to the current checkout. The actual resource
-   * on which these metafields exists depends on the source of the checkout:
+   * on which these metafields exist depends on the source of the checkout:
    *
-   * - If the source is an order, the metafields are on the order.
-   * - If the source is a draft order, the initial value of metafields are
-   *   from the draft order, and any new metafields you write will be applied
+   * - If the source is an order, then the metafields are on the order.
+   * - If the source is a draft order, then the initial value of metafields are
+   *   from the draft order, and any new metafields you write are applied
    *   to the order created by this checkout.
    * - For all other sources, the metafields are only stored locally on the
-   *   client creating the checkout, and will be applied to the order that
+   *   client creating the checkout, and are applied to the order that
    *   results from checkout.
    *
-   * These metafields are shared by all extensions running on checkout, and are
-   * persisted for as long as the buyer is working on this checkout.
+   * These metafields are shared by all extensions running on checkout, and
+   * persist for as long as the customer is working on this checkout.
    *
    * Once the order is created, you can query these metafields using the
    * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
@@ -429,40 +533,34 @@ export interface StandardApi<
 
   /**
    * Performs an update on a piece of metadata attached to the checkout. If
-   * successful, this mutation will result in an update to the value retrieved
+   * successful, this mutation results in an update to the value retrieved
    * through the `metafields` property.
    */
   applyMetafieldChange(change: MetafieldChange): Promise<MetafieldChangeResult>;
 
   /**
-   * Merchandise items the buyer is purchasing.
+   * Merchandise items the customer is purchasing.
    */
   lineItems: StatefulRemoteSubscribable<LineItem[]>;
   /**
-   * Performs an update on the merchandise line items. It resolves once the new
-   * line items have been negotiated and will result in an update to the value
+   * Performs an update on the merchandise line items. It resolves when the new
+   * line items have been negotiated and results in an update to the value
    * retrieved through the `lineItems` property.
    */
   applyLineItemsChange(change: LineItemChange): Promise<LineItemChangeResult>;
   /**
-   * Performs a signed update on the checkout. It resolves once the new
-   * checkout has been negotiated and will result in an update to be data being updated.
-   */
-  applySignedChange(change: SignedChange): Promise<SignedChangeResult>;
-
-  /**
-   * The metafields requested in your extension.config.yml. These metafields will
-   * be updated when there is a change in the merchandise items being purchased by the buyer.
+   * The metafields requested in the `shopify.ui.extension.toml` file. These metafields are
+   * updated when there's a change in the merchandise items being purchased by the customer.
    *
-   * NOTE: There will be a delay between the merchandise items updating and receiving the
-   * updated metafields values. This is a temporary limitation and should get resolved when
-   * this API goes public such that expected behaviour would be that the metafields data
-   * are synchronous with the merchandise items updates.
+   * NOTE: There is a delay between the merchandise items updating and receiving the
+   * updated metafield values. This is a temporary limitation and should get resolved when
+   * this API goes public such that expected behavior would be that the metafields data
+   * are synchronous with the merchandise items' updates.
    */
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 
   /**
-   * This defines the i18n (internationalization) API for the extension.
+   * Defines the i18n (internationalization) API for the extension.
    */
   i18n: I18n;
 
@@ -475,7 +573,7 @@ export interface StandardApi<
 
 export interface Shop {
   /**
-   * The shop id.
+   * The shop ID.
    * @example 'gid://shopify/Shop/123'
    */
   id: string;
@@ -484,7 +582,7 @@ export interface Shop {
    */
   name: string;
   /**
-   * The primary storefront url.
+   * The primary storefront URL.
    */
   storefrontUrl?: string;
   /**
@@ -494,16 +592,70 @@ export interface Shop {
 }
 
 export interface Address {
+  /**
+   * The buyer's full name.
+   * @example 'John Doe'
+   */
   name?: string;
+
+  /**
+   * The buyer's first name.
+   * @example 'John'
+   */
   firstName?: string;
+
+  /**
+   * The buyer's last name.
+   * @example 'Doe'
+   */
   lastName?: string;
+
+  /**
+   * The buyer's company name.
+   * @example 'Shopify'
+   */
   company?: string;
+
+  /**
+   * The first line of the buyer's address, including street name and number.
+   * @example '151 O'Connor Street'
+   */
   address1?: string;
+
+  /**
+   * The second line of the buyer's address, like apartment number, suite, etc.
+   * @example 'Ground floor'
+   */
   address2?: string;
+
+  /**
+   * The buyer's city.
+   * @example 'Ottawa'
+   */
   city?: string;
+
+  /**
+   * The buyer's postal or ZIP code.
+   * @example 'K2P 2L8'
+   */
   postalCode?: string;
+
+  /**
+   * The ISO 3166 Alpha-2 format for the buyer's country. Refer to https://www.iso.org/iso-3166-country-codes.html.
+   * @example 'CA' for Canada.
+   */
   countryCode?: CountryCode;
+
+  /**
+   * The buyer's zone code, such as state, province, prefecture, or region.
+   * @example 'ON' for Ontario.
+   */
   zoneCode?: string;
+
+  /**
+   * The buyer's phone number.
+   * @example '+1 613 111 2222'.
+   */
   phone?: string;
 }
 
@@ -516,32 +668,32 @@ export interface LineItem {
   /**
    * These line item IDs are not stable at the moment, they might change after
    * any operations on the line items. You should always look up for an updated
-   * ID before any call to `applyLineItemsChange` or `applySignedChange`
-   * because you'll need the ID to create a `LineItemChange` object.
+   * ID before any call to `applyLineItemsChange` because you'll need the ID to
+   * create a `LineItemChange` object.
    * @example 'gid://shopify/MerchandiseLineItem/123'
    */
   id: string;
   /**
-   * Merchandise being purchased.
+   * The merchandise being purchased.
    */
   merchandise: Merchandise;
   /**
-   * Quantity of the Merchandise being purchased.
+   * The quantity of the merchandise being purchased.
    */
   quantity: number;
   /**
-   * Price for the merchandise multiplied by the quantity.
+   * The price for the merchandise multiplied by the quantity.
    */
   totalPrice: Money;
   /**
-   * Line item additional custom attributes.
+   * The line item additional custom attributes.
    */
-  customAttributes: Attribute[];
+  attributes: Attribute[];
 }
 
 export interface Money {
   /**
-   * Price amount
+   * The price amount.
    */
   amount: number;
   /**
@@ -555,7 +707,7 @@ export type Merchandise = ProductVariantMerchandise;
 
 export interface BaseMerchandise {
   /**
-   * Merchandise id.
+   * The merchandise ID.
    * @example 'gid://shopify/ProductVariantMerchandise/123'
    */
   id: string;
@@ -564,23 +716,23 @@ export interface BaseMerchandise {
 export interface ProductVariantMerchandise extends BaseMerchandise {
   type: 'variant';
   /**
-   * Merchandise title.
+   * The merchandise title.
    */
   title: string;
   /**
-   * Merchandise vendor name.
+   * The merchandise vendor name.
    */
   vendor: string;
   /**
-   * Merchandise image.
+   * The merchandise image.
    */
   image?: MerchandiseImage;
   /**
-   * Merchandise product type.
+   * The merchandise product type.
    */
   productType: string;
   /**
-   * Merchandise options.
+   * The merchandise options.
    * @example Variant name and value
    */
   options: MerchandiseOption[];
@@ -588,45 +740,52 @@ export interface ProductVariantMerchandise extends BaseMerchandise {
 
 export interface Image {
   /**
-   * Image URL.
+   * The image URL.
    */
   url: string;
 }
 
 export interface MerchandiseImage extends Image {
   /**
-   * Alternative text for the image.
+   * The alternative text for the image.
    */
   altText?: string;
 }
 
 export interface Attribute {
   /**
-   * Key for the attribute.
+   * The key for the attribute.
    */
   key: string;
+
   /**
-   *Value for the attribute.
+   * The value for the attribute.
    */
   value: string;
 }
 
 export interface MerchandiseOption {
   /**
-   *Name of the merchandise option.
+   * The name of the merchandise option.
    */
   name: string;
   /**
-   *Value of the merchandise option.
+   * The value of the merchandise option.
    */
   value: string;
 }
 
 export interface LineItemChangeResultSuccess {
+  /**
+   * Indicates that the line item was changed successfully.
+   */
   type: 'success';
 }
 
 export interface LineItemChangeResultError {
+  /**
+   * Indicates that the line item was not changed successfully. Refer to the `message` property for details about the error.
+   */
   type: 'error';
 
   /**
@@ -647,81 +806,68 @@ export type LineItemChange =
   | LineItemUpdateChange;
 
 export interface LineItemAddChange {
+  /**
+   * An identifier for changes that add line items.
+   */
   type: 'addLineItem';
   /**
-   * Merchandise id being added.
+   * The merchandise ID being added.
    * @example 'gid://shopify/ProductVariantMerchandise/123'
    */
   merchandiseId: string;
   /**
-   * Quantity of merchandised being added.
+   * The quantity of the merchandise being added.
    */
   quantity: number;
   /**
-   * Attributes associated to the line item.
+   * The attributes associated with the line item.
    */
-  customAttributes?: Attribute[];
+  attributes?: Attribute[];
 }
 
 export interface LineItemRemoveChange {
-  type: 'removeLineItem';
   /**
-   * Line Item id.
+   * An identifier for changes that remove line items.
+   */
+  type: 'removeLineItem';
+
+  /**
+   * Line Item ID.
    * @example 'gid://shopify/MerchandiseLineItem/123'
    */
   id: string;
   /**
-   * Quantity being removed for this line item.
+   * The quantity being removed for this line item.
    */
   quantity: number;
 }
 
 export interface LineItemUpdateChange {
-  type: 'updateLineItem';
   /**
-   * Line Item id.
+   * An identifier for changes that update line items.
+   */
+  type: 'updateLineItem';
+
+  /**
+   * Line Item ID.
    * @example 'gid://shopify/MerchandiseLineItem/123'
    */
   id: string;
   /**
-   * New merchandise id for the line item.
+   * The new merchandise ID for the line item.
    * @example 'gid://shopify/ProductVariantMerchandise/123'
    */
   merchandiseId?: string;
   /**
-   * New quantity for the line item.
+   * The new quantity for the line item.
    * @example 'gid://shopify/ProductVariantMerchandise/123'
    */
   quantity?: number;
   /**
-   * New attributes for the line item.
+   * The new attributes for the line item.
    */
-  customAttributes?: Attribute[];
+  attributes?: Attribute[];
 }
-
-export interface SignedChangeResultSuccess {
-  type: 'success';
-}
-
-export interface SignedChangeResultError {
-  type: 'error';
-
-  /**
-   * A message that explains the error. This message is useful for debugging.
-   * It is **not** localized, and therefore should not be presented directly
-   * to the buyer.
-   */
-  message: string;
-}
-
-export type SignedChangeResult =
-  | SignedChangeResultSuccess
-  | SignedChangeResultError;
-
-/**
- * Signed token allowing updates to data in the checkout.
- */
-export type SignedChange = string;
 
 export enum InvalidResultReason {
   MissingSourceId = 'MISSING_SOURCE_ID',
@@ -737,16 +883,29 @@ export enum InvalidResultReason {
   RedirectingToShopPay = 'REDIRECTING_TO_SHOP_PAY',
   InvalidAddress = 'INVALID_ADDRESS',
   UnknownReason = 'UNKNOWN_REASON',
+  InvalidExtensionState = 'INVALID_EXTENSION_STATE',
 }
 
 type InterceptorResult = InterceptorResultAllow | InterceptorResultBlock;
 
 interface InterceptorResultAllow {
+  /**
+   * Allows the buyer's journey to continue after interception.
+   */
   behavior: 'allow';
 }
 // The reasons are used for tracing and debugging purposes.
 interface InterceptorResultBlock {
+  /**
+   * Blocks the buyer's journey from continuing after interception.
+   *
+   * For example, if the buyer needs to resolve an error in the extension UI, the interceptor can block checkout until it's resolved.
+   */
   behavior: 'block';
+
+  /**
+   * An array of reasons why the interceptor blocked the buyer's journey.
+   */
   reasons: InvalidResultReason[];
 }
 
@@ -755,10 +914,13 @@ export type InterceptorRequest =
   | InterceptorRequestBlock;
 
 interface InterceptorRequestAllow {
+  /**
+   * Indicates that the interceptor will allow the buyer's journey to continue.
+   */
   behavior: 'allow';
   /**
-   * This callback is called once all interceptors finish. It is recommended
-   * to set errors or reason for blocking at this stage so that all errors in
+   * This callback is called when all interceptors finish. We recommend
+   * setting errors or reasons for blocking at this stage, so that all the errors in
    * the UI show up at once.
    * @param result InterceptorResult with behavior as either 'allow' or 'block'
    */
@@ -766,11 +928,18 @@ interface InterceptorRequestAllow {
 }
 // The reason is used for tracing and debugging purposes.
 interface InterceptorRequestBlock {
+  /**
+   * Indicates that the interceptor will block the buyer's journey from continuing.
+   */
   behavior: 'block';
+
+  /**
+   * The reason for blocking the interceptor request.
+   */
   reason: InvalidResultReason;
   /**
-   * This callback is called once all interceptors finish. It is recommended
-   * to set errors or reason for blocking at this stage so that all errors in
+   * This callback is called when all interceptors finish. We recommend
+   * setting errors or reasons for blocking at this stage, so that all the errors in
    * the UI show up at once.
    * @param result InterceptorResult with behavior as either 'allow' or 'block'
    */
@@ -786,7 +955,7 @@ export interface Interceptor {
  */
 export interface CustomerAccount {
   /**
-   * Customer id.
+   * Customer ID.
    * @example 'gid://shopify/Customer/123'
    */
   id: string;
@@ -811,7 +980,7 @@ export interface CustomerAccount {
    */
   lastName?: string;
   /**
-   * The image assotiated with the customer.
+   * The image associated with the customer.
    */
   image: Image;
   /**

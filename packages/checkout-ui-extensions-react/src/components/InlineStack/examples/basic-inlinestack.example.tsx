@@ -14,6 +14,9 @@ function App() {
       <View border="base" padding="base">
         View
       </View>
+      <View border="base" padding="base">
+        View
+      </View>
     </InlineStack>
   );
 }
