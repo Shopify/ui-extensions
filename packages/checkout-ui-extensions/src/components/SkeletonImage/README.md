@@ -7,8 +7,8 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| blockSize? | <code>("auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;)[] &#124; "auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96; &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>("auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;)[] &#124; "auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;<wbr>></code> | Adjust the block size of the skeleton.  |
-| inlineSize? | <code>("auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;)[] &#124; "auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96; &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>("auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;)[] &#124; "auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;<wbr>></code> | Adjust the inline size of the skeleton.  |
+| blockSize? | <code>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill"<wbr>></code> | Adjust the block size of the skeleton.  |
+| inlineSize? | <code>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill"<wbr>></code> | Adjust the inline size of the skeleton.  |
 | aspectRatio? | <code>number</code> | Displays the skeleton at the specified aspect ratio (fills the width of the parent container and sets the height accordingly).  |<a name="ConditionalStyle"></a>
 
 ### ConditionalStyle

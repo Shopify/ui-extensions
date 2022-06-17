@@ -10,7 +10,7 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| spacing? | <code>("auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;)[] &#124; "auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96; &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>("auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;)[] &#124; "auto" &#124; "fill" &#124; number &#124; &#96;&dollar;{number}fr&#96; &#124; &#96;&dollar;{number}%&#96;<wbr>></code> | Adjust size of the spacer<br /><br />Default value: <code>'base'</code> |<a name="ConditionalStyle"></a>
+| spacing? | <code>"extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>"extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose"<wbr>></code> | Adjust size of the spacer<br /><br />Default value: <code>'base'</code> |<a name="ConditionalStyle"></a>
 
 ### ConditionalStyle
 
