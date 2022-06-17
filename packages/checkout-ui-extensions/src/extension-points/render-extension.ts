@@ -10,13 +10,12 @@ import {RemoteRoot, RemoteComponentType} from '@remote-ui/core';
  */
 export interface RenderExtension<
   Input,
-  AllowedComponents extends RemoteComponentType<string, any, any>,
+  AllowedComponents extends RemoteComponentType<string, any, any>
 > {
   /**
    * An extension callback that receives a root and an API object.
    */
-  (
-    root: RemoteRoot<AllowedComponents, true>,
-    input: Input,
-  ): void | Promise<void>;
+  (root: RemoteRoot<AllowedComponents, true>, input: Input): void | Promise<
+    void
+  >;
 }

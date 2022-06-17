@@ -10,7 +10,7 @@ import {useSubscription} from './subscription';
  * an account or if they aren't logged in.
  */
 export function useCustomerAccount<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >() {
   return useSubscription(useExtensionApi<ID>().customerAccount);
 }

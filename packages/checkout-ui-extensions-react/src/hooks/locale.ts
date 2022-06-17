@@ -11,7 +11,7 @@ import {useSubscription} from './subscription';
  * your component if the locale changes.
  */
 export function useLocale<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >(): ApiForRenderExtension<ID>['i18n']['locale']['current'] {
   const {i18n} = useExtensionApi<ID>();
 

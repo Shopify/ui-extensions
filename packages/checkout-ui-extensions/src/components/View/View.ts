@@ -17,6 +17,7 @@ type Display = 'block' | 'inline';
 type Opacity = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 
 export type PositionType = 'absolute' | 'relative';
+// eslint-disable-next-line prettier/prettier
 export type Coordinate = number | `${number}%`;
 interface BaseCoordinates {
   /**

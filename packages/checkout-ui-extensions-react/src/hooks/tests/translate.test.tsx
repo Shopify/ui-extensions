@@ -28,7 +28,6 @@ describe('useTranslate', () => {
 
     const simpleTranslation = [
       'Hello, ',
-      // eslint-disable-next-line react/jsx-key
       <Name />,
       ' . You are applicant #',
       1,

@@ -337,6 +337,7 @@ export type GridItemSize =
   | 'auto'
   | 'fill'
   | number
+  // eslint-disable-next-line prettier/prettier
   | `${number}fr`
   | `${number}%`;
 

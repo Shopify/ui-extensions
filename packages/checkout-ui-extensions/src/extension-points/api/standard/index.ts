@@ -406,7 +406,7 @@ export interface Buyer {
  * The following APIs are provided to all extension points.
  */
 export interface StandardApi<
-  ExtensionPoint extends import('../../extension-points').ExtensionPoint,
+  ExtensionPoint extends import('../../extension-points').ExtensionPoint
 > {
   /**
    * The renderer version being used for the extension.

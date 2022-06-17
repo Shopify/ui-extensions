@@ -35,6 +35,7 @@ export interface ScrollViewProps {
    *
    * `fill`: takes all the available space.
    */
+  // eslint-disable-next-line prettier/prettier
   minBlockSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
   /**
    * Adjust the maximum block size.
