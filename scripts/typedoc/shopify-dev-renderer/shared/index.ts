@@ -405,6 +405,20 @@ function propType(
 
       return inArrayType ? `(${values})` : values;
     }
+    case 'TypeLiteralType':
+      return `{${value.properties
+        .map(
+          (property) =>
+            `${property.name}${property.optional ? '?' : ''}: ${propType(
+              property.value,
+              exports,
+              dir,
+              additionalPropsTables,
+              false,
+              repeatingTypes,
+            )}`,
+        )
+        .join(', ')}}`;
     case 'StringLiteralType':
       return `"${value.value}"`;
     case 'NumberLiteralType':
@@ -655,7 +669,17 @@ export function mkdir(directory) {
 function findRepeatingTypes(obj: Type, exports: Node[]) {
   const occurences = {};
 
-  function traverse(obj: Type) {
+  function traverse(obj?: Type) {
+    if (!obj) {
+      return;
+    }
+
+    if ('properties' in obj && obj.properties) {
+      for (const property of obj.properties) {
+        traverse(property.value);
+      }
+    }
+
     if ('types' in obj && obj.types) {
       for (const type of obj.types) {
         traverse(type);
