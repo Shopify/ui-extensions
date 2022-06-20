@@ -11,6 +11,7 @@ export interface DialogProps {
   type?: DialogType;
   onCancel?: () => void;
   onAction: () => void;
+  isVisible: boolean;
 }
 
 export const Dialog = createRemoteComponent<'Dialog', DialogProps>('Dialog');
