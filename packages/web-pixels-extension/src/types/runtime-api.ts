@@ -8,7 +8,7 @@ type SchemaVersion = typeof SCHEMA_VERSIONS[number];
 export interface RuntimeAPI {
   configuration: Configuration;
   analytics: AnalyticsAPI;
-  client: ClientAPI;
+  browser: BrowserAPI;
 }
 
 type Configuration = Record<string, any>;
@@ -45,7 +45,7 @@ interface SubscribeOptions extends EventBusSubscribeOptions {
   schemaVersion?: SchemaVersion;
 }
 
-interface ClientAPI {
+interface BrowserAPI {
   readonly cookie: {
     get: (name?: string) => Promise<string>;
     set: (cookieOrName: string, value?: string) => Promise<string>;

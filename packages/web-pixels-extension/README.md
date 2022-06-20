@@ -15,8 +15,8 @@ Registering a Web Pixels Extension:
 ```js
 import {register} from '@shopify/web-pixels-extension';
 
-register(({configuration, analytics, client}) => {
-  const origin = await client.origin.get();
+register(({configuration, analytics, browser}) => {
+  const origin = await browser.origin.get();
 
   window.my_pixel.configure({
     pixelId: configuration.pixelId,
@@ -24,7 +24,7 @@ register(({configuration, analytics, client}) => {
   });
 
   analytics.subscribe("page_viewed", async (event, metadata) => {
-    const cookieValue = await client.cookie.get("my_pixel_cookie");
+    const cookieValue = await browser.cookie.get("my_pixel_cookie");
 
     window.my_pixel.publish("page_viewed", {
       href: event.href,
