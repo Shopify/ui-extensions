@@ -1,6 +1,6 @@
 {
-  "name": "@shopify/web-pixel-ui-extensions",
-  "description": "Provides tools to create Web Pixel extension",
+  "name": "@shopify/web-pixels-extension",
+  "description": "Provides tools to create Web Pixels extension",
   "version": "0.0.1",
   "publishConfig": {
     "access": "public",
@@ -17,10 +17,6 @@
       "esnext": "./index.esnext",
       "import": "./index.mjs",
       "require": "./index.js"
-    },
-    "./": "./"
-  },
-  "dependencies": {
-    "@remote-ui/core": "^2.1.10"
+    }
   }
 }
