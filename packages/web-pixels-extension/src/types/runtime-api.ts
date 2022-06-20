@@ -55,6 +55,6 @@ interface ClientAPI {
   };
   readonly sendBeacon: (
     url: string | URL,
-    data?: BodyInit | null,
+    data?: Record<string, unknown> | null,
   ) => Promise<boolean>;
 }

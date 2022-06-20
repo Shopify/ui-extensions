@@ -1,6 +1,6 @@
 {
   "name": "@shopify/web-pixels-extension",
-  "description": "Provides tools to create Web Pixels extension",
+  "description": "Provides tools to author Web Pixels extension",
   "version": "0.0.1",
   "publishConfig": {
     "access": "public",

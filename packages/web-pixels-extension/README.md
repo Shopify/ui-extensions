@@ -1,6 +1,6 @@
 # Web Pixels Extension
 
-Provides an `extend` method to register a Web Pixels Extension.
+Provides an `register` method to register a Web Pixels Extension.
 
 ## Installation
 
@@ -15,8 +15,7 @@ Registering a Web Pixels Extension:
 ```js
 import {register} from '@shopify/web-pixels-extension';
 
-register((
-  {configuration, analytics, client}) => {
+register(({configuration, analytics, client}) => {
   const origin = await client.origin.get();
 
   window.my_pixel.configure({
