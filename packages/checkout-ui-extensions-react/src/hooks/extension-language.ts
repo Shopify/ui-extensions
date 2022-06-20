@@ -6,10 +6,10 @@ import type {
 import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
 
-export function useExtensionLocale<
+export function useExtensionLanguage<
   ID extends RenderExtensionPoint = RenderExtensionPoint
->(): ApiForRenderExtension<ID>['i18n']['extensionLocale']['current'] {
-  const {i18n} = useExtensionApi<ID>();
+>(): ApiForRenderExtension<ID>['localization']['extensionLanguage']['current'] {
+  const {localization} = useExtensionApi<ID>();
 
-  return useSubscription(i18n.extensionLocale);
+  return useSubscription(localization.extensionLanguage);
 }

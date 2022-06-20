@@ -80,7 +80,7 @@ export interface ScrollViewProps {
    */
   direction?: 'block' | 'inline';
   /**
-   * Scroll to an especific position or to an element.
+   * Scroll to a specific position or to an element.
    */
   scrollTo?: number | HTMLElement;
   /**

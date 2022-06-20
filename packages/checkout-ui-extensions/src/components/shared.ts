@@ -247,28 +247,31 @@ export type TextAccessibilityRole =
    */
   | {type: 'datetime'; machineReadable?: string};
 
-/**
- * `info`:
- * Use to convey general information or actions that aren't critical or tied to
- * a particular action.
- *
- * `success`:
- * Use rarely, only if you need additional visual confirmation that a
- * non-standard action has been completed successfully, for example adding an
- * item to an order as an upsell.
- *
- * `warning`:
- * Use to display information that needs attention or that customers should
- * take action on. Seeing these banners can be stressful for customers so be
- * cautious about using them. Should not block progress to next step.
- *
- * `critical`:
- * Use to communicate problems that have to be resolved immediately for
- * customers to complete a task. For example, using a different payment method
- * if card details couldn't be processed. Seeing these banners can be stressful
- * for customers so be cautious about using them.
- */
-export type Status = 'info' | 'success' | 'warning' | 'critical';
+export type Status =
+  /**
+   * Use to convey general information or actions that aren't critical or tied to
+   * a particular action.
+   */
+  | 'info'
+  /**
+   * Use rarely, only if you need additional visual confirmation that a
+   * non-standard action has been completed successfully, for example adding an
+   * item to an order as an upsell.
+   */
+  | 'success'
+  /**
+   * Use to display information that needs attention or that customers should
+   * take action on. Seeing these banners can be stressful for customers so be
+   * cautious about using them. Should not block progress to next step.
+   */
+  | 'warning'
+  /**
+   * Use to communicate problems that have to be resolved immediately for
+   * customers to complete a task. For example, using a different payment method
+   * if card details couldn't be processed. Seeing these banners can be stressful
+   * for customers so be cautious about using them.
+   */
+  | 'critical';
 
 export type Size =
   | 'extraSmall'
@@ -287,46 +290,29 @@ export type Spacing =
   | 'extraLoose';
 
 export type Alignment = 'start' | 'center' | 'end';
-export type InlineAlignment = Alignment;
+export type InlineAlignment = 'start' | 'center' | 'end';
 export type BlockAlignment = Alignment | 'baseline';
 
 export type Background = 'transparent' | 'color1' | 'color2' | 'color3';
 export type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
 export type BackgroundFit = 'cover' | 'contain';
 
-/**
- * `accent`:
- * Use to convey emphasis and draw attention to the icon.
- *
- * `interactive`:
- * Use to convey that the icon is pressable, hoverable or otherwise interactive.
- *
- * `subdued`:
- * Use to convey a subdued or disabled state for the icon.
- *
- * `info`:
- * Use to convey icon is informative or has information.
- *
- * `success`:
- * Use to convey a successful interaction.
- *
- * `warning`:
- * Use to convey something needs attention or an action needs to be taken.
- *
- * `critical`:
- * Use to convey a problem has arisen.
- *
- * `monochrome`:
- * Will take the color of its parent
- */
 export type Appearance =
+  /** Use to convey emphasis and draw attention to the icon.*/
   | 'accent'
+  /** Use to convey that the icon is pressable, hoverable or otherwise interactive.*/
   | 'interactive'
+  /** Use to convey a subdued or disabled state for the icon.*/
   | 'subdued'
+  /** Use to convey icon is informative or has information.*/
   | 'info'
+  /** Use to convey a successful interaction.*/
   | 'success'
+  /** Use to convey something needs attention or an action needs to be taken.*/
   | 'warning'
+  /** Use to convey a problem has arisen.*/
   | 'critical'
+  /** Will take the color of its parent*/
   | 'monochrome';
 
 export type Direction = 'inline' | 'block';
@@ -346,21 +332,25 @@ export type Rows = GridItemSize[] | GridItemSize;
 
 /**
  * Use to emphasize a word or a group of words compared to other nearby text.
- *
- * `strong`:
- * Indicate strong importance, seriousness, or urgency.
- * By default the text will be bold.
- *
- * `stress`:
- * Indicate emphatic stress. By default the text will be italic.
- *
- * `offset`:
- * Indicate an offset from the normal prose of the text. Typically used to indicate
- * a foreign word, fictional character thoughts, or when the text refers to the definition of a word
- * instead of representing its semantic meaning.
- * By default the text will be italic.
  */
-export type Emphasis = 'stress' | 'offset' | 'strong';
+export type Emphasis =
+  /**
+   * Indicate emphatic stress.
+   * By default the text will be italic and render a `<em>` tag in an HTML host.
+   */
+  | 'stress'
+  /**
+   *  Indicate an offset from the normal prose of the text. Typically used to indicate
+   * a foreign word, fictional character thoughts, or when the text refers to the definition of a word
+   * instead of representing its semantic meaning.
+   * By default the text will be italic and render a `<i>` tag in an HTML host.
+   */
+  | 'offset'
+  /**
+   * Indicate strong importance, seriousness, or urgency.
+   * By default the text will be bold and render a `<strong>` tag in an HTML host.
+   */
+  | 'strong';
 
 /**
  * Takes a base type (Base) and a list of accepted combinations of
@@ -392,7 +382,6 @@ export type Emphasis = 'stress' | 'offset' | 'strong';
  *   height?: number,
  *   width?: number,
  * }
- *
  */
 export type MultiPick<Base, AcceptedCombinations extends (keyof Base)[]> = {
   [Combination in keyof AcceptedCombinations]: {

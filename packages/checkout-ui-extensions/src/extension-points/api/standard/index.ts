@@ -72,6 +72,9 @@ export interface Extension {
  * Removes a note
  */
 export interface NoteRemoveChange {
+  /**
+   * The type of the `NoteRemoveChange` API.
+   */
   type: 'removeNote';
 }
 
@@ -80,7 +83,13 @@ export interface NoteRemoveChange {
  * for example, the buyer could request detailed packaging instructions in an order note
  */
 export interface NoteUpdateChange {
+  /**
+   * The type of the `NoteUpdateChange` API.
+   */
   type: 'updateNote';
+  /**
+   * The new value of the note.
+   */
   note: string;
 }
 
@@ -320,31 +329,6 @@ export interface I18nTranslate {
 
 export interface I18n {
   /**
-   * This is the buyer's locale.
-   * @example 'en' for English, or 'en-US' for English local to United States.
-   *
-   * The value is a BCP-47 language tag. It may contain a dash followed by an ISO 3166-1 alpha-2 region code.
-   *
-   * See https://en.wikipedia.org/wiki/IETF_language_tag
-   * See https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-   */
-  locale: StatefulRemoteSubscribable<string>;
-
-  /**
-   * This is the buyer's locale, as supported by the extension.
-   * @example en-US
-   *
-   * If the buyer's actual locale is not supported by the extension,
-   * this is the fallback locale used for translations.
-   * For example, if the buyer's locale is fr-CA but the extension
-   * only supports translations for fr then fr is the extension's locale.
-   *
-   * The value is a BCP-47 language tag.
-   * See https://en.wikipedia.org/wiki/IETF_language_tag
-   */
-  extensionLocale: StatefulRemoteSubscribable<string>;
-
-  /**
    * This returns a localized number.
    *
    * This behaves like the standard Intl.NumberFormat()
@@ -382,24 +366,53 @@ export interface I18n {
   translate: I18nTranslate;
 }
 
-export interface Buyer {
+export interface Language {
   /**
-   * This is the buyer's currency.
-   * @example USD
+   * The BCP-47 language tag. It may contain a dash followed by an ISO 3166-1 alpha-2 region code.
    *
-   * The value is an ISO-4217 code.
-   * See https://www.iso.org/iso-4217-currency-codes.html
+   * @example 'en' for English, or 'en-US' for English local to United States.
+   * @see https://en.wikipedia.org/wiki/IETF_language_tag
+   * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
    */
-  currency: StatefulRemoteSubscribable<CurrencyCode>;
+  isoCode: string;
+}
+
+export interface Currency {
+  /**
+   * The ISO-4217 code for this currency.
+   * @see https://www.iso.org/iso-4217-currency-codes.html
+   */
+  isoCode: CurrencyCode;
+}
+
+export interface Localization {
+  /**
+   * The currency that the buyer sees for money amounts in the checkout.
+   */
+  currency: StatefulRemoteSubscribable<Currency>;
 
   /**
-   * This is the buyer's time zone.
-   * @example America/New_York
-   *
-   * The value is an IANA time zone.
-   * See https://www.iana.org/time-zones
+   * The buyer’s time zone.
    */
   timezone: StatefulRemoteSubscribable<Timezone>;
+
+  /**
+   * The language the buyer sees in the checkout.
+   */
+  language: StatefulRemoteSubscribable<Language>;
+
+  /**
+   * This is the buyer's language, as supported by the extension.
+   * If the buyer's actual language is not supported by the extension,
+   * this is the fallback locale used for translations.
+   *
+   * For example, if the buyer's language is 'fr-CA' but your extension
+   * only supports translations for 'fr', then the `isoCode` for this
+   * language is 'fr'. If your extension does not provide french
+   * translations at all, this value is the default locale for your
+   * extension (that is, the one matching your .default.json file).
+   */
+  extensionLanguage: StatefulRemoteSubscribable<Language>;
 }
 
 /**
@@ -414,13 +427,6 @@ export interface StandardApi<
    * @example 'unstable'
    */
   version: Version;
-
-  /**
-   * The minimum a buyer can expect to pay at the current step of checkout.
-   * This value excludes amounts that are yet to be negotiated. For example, the information step
-   * may not have delivery costs calculated.
-   */
-  runningTotal: StatefulRemoteSubscribable<Money | undefined>;
 
   /**
    * Provides details on buyer progression through the steps of the checkout.
@@ -481,6 +487,11 @@ export interface StandardApi<
   shop: Shop;
 
   /**
+   * Details on the costs the buyer will pay for this checkout.
+   */
+  cost: CartCost;
+
+  /**
    * A note left by the customer to the merchant, either in their cart or during checkout.
    */
   note: StatefulRemoteSubscribable<string | undefined>;
@@ -539,15 +550,17 @@ export interface StandardApi<
   applyMetafieldChange(change: MetafieldChange): Promise<MetafieldChangeResult>;
 
   /**
-   * Merchandise items the customer is purchasing.
+   * A list of lines containing information about the items the customer intends to purchase.
    */
-  lineItems: StatefulRemoteSubscribable<LineItem[]>;
+  lines: StatefulRemoteSubscribable<CartLine[]>;
+
   /**
    * Performs an update on the merchandise line items. It resolves when the new
    * line items have been negotiated and results in an update to the value
-   * retrieved through the `lineItems` property.
+   * retrieved through the `lines` property.
    */
-  applyLineItemsChange(change: LineItemChange): Promise<LineItemChangeResult>;
+  applyCartLinesChange(change: CartLineChange): Promise<CartLineChangeResult>;
+
   /**
    * The metafields requested in the `shopify.ui.extension.toml` file. These metafields are
    * updated when there's a change in the merchandise items being purchased by the customer.
@@ -560,15 +573,16 @@ export interface StandardApi<
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 
   /**
-   * Defines the i18n (internationalization) API for the extension.
+   * Details about the location, language, and currency of the buyer. For utilities to easily
+   * format and translate content based on these details, you can use the `i18n` object instead.
    */
-  i18n: I18n;
+  localization: Localization;
 
   /**
-   * This defines the buyer API for the extension.
-   * It provides the currency and timezone of the buyer.
+   * Utilities for translating content and formatting values according to the current `localization`
+   * of the checkout.
    */
-  buyer: Buyer;
+  i18n: I18n;
 }
 
 export interface Shop {
@@ -659,36 +673,57 @@ export interface Address {
   phone?: string;
 }
 
+export interface CartCost {
+  /**
+   * A `Money` value representing the minimum a buyer can expect to pay at the current
+   * step of checkout. This value excludes amounts yet to be negotiated. For example,
+   * the information step may not have delivery costs calculated.
+   */
+  totalAmount: StatefulRemoteSubscribable<Money>;
+}
+
 export interface GeographicalCoordinates {
   latitude: number;
   longitude: number;
 }
 
-export interface LineItem {
+export interface CartLine {
   /**
    * These line item IDs are not stable at the moment, they might change after
    * any operations on the line items. You should always look up for an updated
-   * ID before any call to `applyLineItemsChange` because you'll need the ID to
-   * create a `LineItemChange` object.
-   * @example 'gid://shopify/MerchandiseLineItem/123'
+   * ID before any call to `applyCartLinesChange` because you'll need the ID to
+   * create a `CartLineChange` object.
+   * @example 'gid://shopify/CartLine/123'
    */
   id: string;
+
   /**
    * The merchandise being purchased.
    */
   merchandise: Merchandise;
+
   /**
    * The quantity of the merchandise being purchased.
    */
   quantity: number;
+
   /**
-   * The price for the merchandise multiplied by the quantity.
+   * Details about the cost components attributed to this cart line.
    */
-  totalPrice: Money;
+  cost: CartLineCost;
+
   /**
    * The line item additional custom attributes.
    */
   attributes: Attribute[];
+}
+
+export interface CartLineCost {
+  /**
+   * The total amount the buyer can expect to pay that is directly attributable to a single
+   * cart line.
+   */
+  totalAmount: Money;
 }
 
 export interface Money {
@@ -775,14 +810,14 @@ export interface MerchandiseOption {
   value: string;
 }
 
-export interface LineItemChangeResultSuccess {
+export interface CartLineChangeResultSuccess {
   /**
    * Indicates that the line item was changed successfully.
    */
   type: 'success';
 }
 
-export interface LineItemChangeResultError {
+export interface CartLineChangeResultError {
   /**
    * Indicates that the line item was not changed successfully. Refer to the `message` property for details about the error.
    */
@@ -796,73 +831,80 @@ export interface LineItemChangeResultError {
   message: string;
 }
 
-export type LineItemChangeResult =
-  | LineItemChangeResultSuccess
-  | LineItemChangeResultError;
+export type CartLineChangeResult =
+  | CartLineChangeResultSuccess
+  | CartLineChangeResultError;
 
-export type LineItemChange =
-  | LineItemAddChange
-  | LineItemRemoveChange
-  | LineItemUpdateChange;
+export type CartLineChange =
+  | CartLineAddChange
+  | CartLineRemoveChange
+  | CartLineUpdateChange;
 
-export interface LineItemAddChange {
+export interface CartLineAddChange {
   /**
    * An identifier for changes that add line items.
    */
-  type: 'addLineItem';
+  type: 'addCartLine';
+
   /**
    * The merchandise ID being added.
    * @example 'gid://shopify/ProductVariantMerchandise/123'
    */
   merchandiseId: string;
+
   /**
    * The quantity of the merchandise being added.
    */
   quantity: number;
+
   /**
    * The attributes associated with the line item.
    */
   attributes?: Attribute[];
 }
 
-export interface LineItemRemoveChange {
+export interface CartLineRemoveChange {
   /**
    * An identifier for changes that remove line items.
    */
-  type: 'removeLineItem';
+  type: 'removeCartLine';
 
   /**
    * Line Item ID.
-   * @example 'gid://shopify/MerchandiseLineItem/123'
+   * @example 'gid://shopify/CartLine/123'
    */
   id: string;
+
   /**
    * The quantity being removed for this line item.
    */
   quantity: number;
 }
 
-export interface LineItemUpdateChange {
+export interface CartLineUpdateChange {
   /**
    * An identifier for changes that update line items.
    */
-  type: 'updateLineItem';
+  type: 'updateCartLine';
 
   /**
    * Line Item ID.
-   * @example 'gid://shopify/MerchandiseLineItem/123'
+   * @example 'gid://shopify/CartLine/123'
    */
   id: string;
+
   /**
    * The new merchandise ID for the line item.
    * @example 'gid://shopify/ProductVariantMerchandise/123'
    */
+
   merchandiseId?: string;
   /**
    * The new quantity for the line item.
    * @example 'gid://shopify/ProductVariantMerchandise/123'
    */
   quantity?: number;
+
   /**
    * The new attributes for the line item.
    */

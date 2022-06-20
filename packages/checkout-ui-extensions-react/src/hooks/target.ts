@@ -14,10 +14,10 @@ class ExtensionHasNoTargetError extends Error {
 }
 
 /**
- * Returns the target line item.
+ * Returns the cart line this extension is attached to.
  */
-export function useTargetLineItem() {
-  const api = useExtensionApi<'Checkout::LineItemDetails::RenderAfter'>();
+export function useTarget() {
+  const api = useExtensionApi<'Checkout::CartLineDetails::RenderAfter'>();
   if (!api.target) {
     throw new ExtensionHasNoTargetError(api.extensionPoint);
   }

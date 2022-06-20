@@ -10,4 +10,4 @@ optional = ?
 | lines? | <code>number</code> | Number of lines to display when no children are passed.<br /><br />Default value: <code>1</code> |
 | size? | <code>"extraSmall" &#124; "small" &#124; "base" &#124; "large" &#124; "extraLarge" &#124; "medium"</code> | Size of the text  |
 | emphasis? | <code>"stress" &#124; "offset" &#124; "strong"</code> | Use to emphasize a word or a group of words compared to other nearby text.  |
-| inlineAlignment? | <code>InlineAlignment</code> | Align text along the main axis.  |
+| inlineAlignment? | <code>"start" &#124; "center" &#124; "end"</code> | Align text along the main axis.  |

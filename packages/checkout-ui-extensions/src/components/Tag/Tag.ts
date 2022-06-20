@@ -15,10 +15,6 @@ export interface TagProps {
    */
   accessibilityLabel?: string;
   /**
-   * An accessible label for the remove button in a Tag
-   */
-  removeControlAccessibilityLabel?: string;
-  /**
    * Callback when tag is removed
    */
   onRemove?(): void;

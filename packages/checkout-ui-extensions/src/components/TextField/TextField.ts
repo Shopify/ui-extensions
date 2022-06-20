@@ -5,14 +5,15 @@ import {IconSource} from '../Icon';
 
 type Type = 'text' | 'email' | 'number' | 'telephone';
 
-export interface TextFieldProps {
+export interface TextFieldProps<T extends string | number> {
   /**
    * A unique identifier for the field. When no `id` is set,
    * a globally unique value will be used instead.
    */
   id?: string;
   /**
-   * An icon to render at the start of the field.
+   * An icon to render at the start or end of the field.
+   * It will render at the start by default.
    */
   icon?: IconSource | {source: IconSource; position?: 'start' | 'end'};
   /**
@@ -44,9 +45,9 @@ export interface TextFieldProps {
   accessibilityDescription?: string;
   /**
    * Current value for the field. If omitted, the field will be empty. You should update
-   * this value in response to the `onChange` callback on a text field.
+   * this value in response to the `onChange` callback.
    */
-  value?: string;
+  value?: T;
   /**
    * In rare cases, like the PhoneField component, we completely control state.
    * In those cases, there is never a difference between the `value` prop of the field
@@ -57,7 +58,7 @@ export interface TextFieldProps {
    * has changed (this will usually be set to the last committed, unformatted value
    * for the controlled input).
    */
-  controlledValue?: string;
+  controlledValue?: T;
   /**
    * The content type a buyer will enter into the field. This type is used to provide
    * semantic value to the field and, where possible, will provide the buyer with
@@ -80,15 +81,8 @@ export interface TextFieldProps {
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
-   *
-   * When set as a string, the string is presented close to the Checkbox.
-   *
-   * When set as a boolean, `true`, the developer can position the error message
-   * as they need using an `InlineError` component. To ensure the error message is
-   * associated with the input and accessible to all users, set the `id` property on this
-   * component and the `controlId` on the `InlineError` component. E.g.,
    */
-  error?: string | boolean;
+  error?: string;
   /**
    * Whether the field supports multiple lines of input.
    * Set a `number` to define the default lines of the input.
@@ -108,9 +102,13 @@ export interface TextFieldProps {
    * specific data you would like to be entered into this field during autofill.
    */
   autocomplete?: Autocomplete | boolean;
-  /* Whether the field can be modified. */
+  /**
+   * Whether the field can be modified.
+   */
   disabled?: boolean;
-  /* Whether the field is read-only. */
+  /**
+   * Whether the field is read-only.
+   */
   readonly?: boolean;
   /**
    * Specifies the maximum number of characters allowed.
@@ -153,7 +151,7 @@ export interface TextFieldProps {
    * is the same as the current `value` prop provided to the field, the `onChange` callback
    * will not be run.
    */
-  onChange?(value: string): void;
+  onChange?(value: T): void;
   /**
    * Callback when the user makes any changes in the field. As noted in the documentation
    * for `onChange`, you **must not** use this to update `state` — use the `onChange`
@@ -163,12 +161,13 @@ export interface TextFieldProps {
    *
    * This callback is called with the current value of the field.
    */
-  onInput?(value: string): void;
+  onInput?(value: T): void;
 }
 
 /**
  * Use a text field to get text input from a customer.
  */
-export const TextField = createRemoteComponent<'TextField', TextFieldProps>(
+export const TextField = createRemoteComponent<
   'TextField',
-);
+  TextFieldProps<string>
+>('TextField');

@@ -1,5 +1,5 @@
 import {RenderExtension} from './render-extension';
-import type {LineItemRenderAfterApi, StandardApi} from './api';
+import type {CartLineRenderAfterApi, StandardApi} from './api';
 
 type Components = typeof import('../components');
 
@@ -27,15 +27,15 @@ export interface ExtensionPoints {
    * A static extension point that renders on every line item, inside the details
    * under the line item properties element.
    */
-  'Checkout::LineItemDetails::RenderAfter': RenderExtension<
-    LineItemRenderAfterApi,
+  'Checkout::CartLineDetails::RenderAfter': RenderExtension<
+    CartLineRenderAfterApi,
     AllComponents
   >;
   /**
    * A static extension point that is rendered after all line items.
    */
-  'Checkout::LineItems::RenderAfter': RenderExtension<
-    StandardApi<'Checkout::LineItems::RenderAfter'>,
+  'Checkout::CartLines::RenderAfter': RenderExtension<
+    StandardApi<'Checkout::CartLines::RenderAfter'>,
     AllComponents
   >;
   /**

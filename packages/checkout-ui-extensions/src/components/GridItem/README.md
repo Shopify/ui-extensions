@@ -11,7 +11,7 @@ optional = ?
 | --- | --- | --- |
 | columnSpan? | <code>number</code> | Number of columns the item will span across  |
 | rowSpan? | <code>number</code> | Number of rows the item will span across  |
-| accessibilityRole? | <code><a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a> &#124; [<a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>, <a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>]</code> | Sets the semantic meaning of the component’s content. When set, the role will be used by assistive technologies to help buyers navigate the page.  |
+| accessibilityRole? | <code><a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a> &#124; [<a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>, <a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>]</code> | Sets the semantic meaning of the component’s content. When set, the role will be used by assistive technologies to help buyers navigate the page.<br /><br /> Examples:<br /><br />- In an HTML host a `[&#34;listItem&#34;, &#34;separator&#34;]` tuple will render: `&lt;li role=&#34;separator&#34;&gt;`<br /><br />- In an HTML host a `&#34;listItem&#34;` string will render: `&lt;li&gt;`  |
 <a name="NonPresentationalAccessibilityRole"></a>
 
 ## NonPresentationalAccessibilityRole

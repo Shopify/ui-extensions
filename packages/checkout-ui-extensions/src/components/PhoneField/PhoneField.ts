@@ -4,7 +4,7 @@ import type {TextFieldProps} from '../TextField';
 
 export interface PhoneFieldProps
   extends Pick<
-    TextFieldProps,
+    TextFieldProps<string>,
     | 'autocomplete'
     | 'id'
     | 'icon'

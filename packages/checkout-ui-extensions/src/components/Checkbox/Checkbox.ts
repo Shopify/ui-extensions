@@ -34,15 +34,8 @@ export interface CheckboxProps {
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
-   *
-   * When set as a string, the string is presented close to the Checkbox.
-   *
-   * When set as a boolean, `true`, the developer can position the error message
-   * as they need using an `InlineError` component. To ensure the error message is
-   * associated with the input and accessible to all users, set the `id` property on this
-   * component and the `controlId` on the `InlineError` component.
    */
-  error?: string | boolean;
+  error?: string;
 
   /**
    * A label to use for the field that will be used for buyers using
