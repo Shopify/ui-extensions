@@ -216,7 +216,7 @@ export function unionTypeTable(
 ) {
   let markdown = '';
 
-  markdown += `\n<a name="${value.name}"></a>\n\n## ${value.name}\n\n`;
+  markdown += `\n<a name="${value.name}"></a>\n\n### ${value.name}\n\n`;
   markdown += `${value.docs ? `${strip(value.docs.content).trim()}\n\n` : ''}`;
 
   if (value.types.some((type) => type.comments)) {

@@ -39,7 +39,7 @@ optional = ?
 | inline? | <code>number &#124; &#96;&dollar;{number}%&#96;</code> | Adjust the translation on the main axis.<br /><br />A percentage value refers to the inline size of the View.  |
 <a name="NonPresentationalAccessibilityRole"></a>
 
-## NonPresentationalAccessibilityRole
+### NonPresentationalAccessibilityRole
 
 | Value | Description |
 | --- | --- |

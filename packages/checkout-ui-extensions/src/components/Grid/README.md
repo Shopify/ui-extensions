@@ -16,7 +16,7 @@ optional = ?
 | accessibilityLabel? | <code>string</code> | A label that describes the purpose or contents of the element. When set, it will be announced to buyers using assistive technologies and will provide them with more context.  |
 <a name="NonPresentationalAccessibilityRole"></a>
 
-## NonPresentationalAccessibilityRole
+### NonPresentationalAccessibilityRole
 
 | Value | Description |
 | --- | --- |
