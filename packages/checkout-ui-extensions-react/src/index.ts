@@ -1,7 +1,6 @@
 export {
   extend,
   isConditionalStyle,
-  InvalidResultReason,
   Style,
 } from '@shopify/checkout-ui-extensions';
 export type {

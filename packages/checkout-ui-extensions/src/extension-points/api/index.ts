@@ -1,4 +1,3 @@
-export {InvalidResultReason} from './standard';
 export type {
   Attribute,
   AttributeChange,
