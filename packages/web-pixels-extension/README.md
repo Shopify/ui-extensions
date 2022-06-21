@@ -15,7 +15,7 @@ Registering a Web Pixels Extension:
 ```js
 import {register} from '@shopify/web-pixels-extension';
 
-register(({configuration, analytics, browser}) => {
+register(async ({configuration, analytics, browser}) => {
   const origin = await browser.origin.get();
 
   window.my_pixel.configure({
