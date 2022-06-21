@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export interface CheckboxProps {
   /**
-   * A unique identifier for the field. When no `id` is provided,
+   * A unique identifier for the field. When no `id` is set,
    * a globally unique value will be used instead.
    */
   id?: string;
@@ -17,7 +17,7 @@ export interface CheckboxProps {
    * Whether the checkbox is active. This prop is an alias for `checked`,
    * and can be useful in form libraries that provide a normalized API for
    * dealing with both `boolean` and `string` values. If both `value` and
-   * `checked` are provided, `checked` takes precedence.
+   * `checked` are set, `checked` takes precedence.
    */
   value?: boolean;
 
@@ -34,19 +34,12 @@ export interface CheckboxProps {
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
-   *
-   * When set as a string, the string is presented close to the Checkbox.
-   *
-   * When set as a boolean, `true`, the developer can position the error message
-   * as they need using an `InlineError` component. To ensure the error message is
-   * associated with the input and accessible to all users, set the `id` property on this
-   * component and the `controlId` on the `InlineError` component.
    */
-  error?: string | boolean;
+  error?: string;
 
   /**
    * A label to use for the field that will be used for buyers using
-   * assistive technologies. When provided, any `children` supplied to
+   * assistive technologies. When set, any `children` supplied to
    * this component are hidden from being seen for accessibility purposes
    * to prevent duplicate content from being read.
    */

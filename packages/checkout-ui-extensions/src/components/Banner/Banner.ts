@@ -17,7 +17,7 @@ export interface BannerProps {
   status?: Status;
   /**
    * Makes the content collapsible. A collapsible banner will conceal child
-   * elements initially, but allow the user to expand to see them.
+   * elements initially, but allow the user to expand the Banner to see them.
    *
    * @defaultValue false
    */

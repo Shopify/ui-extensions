@@ -8,7 +8,7 @@ function App() {
       <View border="base" padding="base">
         View
       </View>
-      <BlockSpacer />
+      <BlockSpacer spacing="loose" />
       <View border="base" padding="base">
         View
       </View>

@@ -8,9 +8,9 @@ render('Checkout::Dynamic::Render', () => <App />);
 
 function App() {
   return (
-    <InlineLayout columns={[200, 'fill']}>
+    <InlineLayout columns={['20%', 'fill']}>
       <View border="base" padding="base">
-        200
+        20%
       </View>
       <View border="base" padding="base">
         fill

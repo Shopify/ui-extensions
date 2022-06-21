@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Size, Appearance} from '../shared';
+import type {Size, Appearance} from '../shared';
 
 export interface SpinnerProps {
   /**

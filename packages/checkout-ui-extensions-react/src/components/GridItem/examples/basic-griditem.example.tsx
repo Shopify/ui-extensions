@@ -9,21 +9,28 @@ render('Checkout::Dynamic::Render', () => <App />);
 
 function App() {
   return (
-    <Grid columns={3}>
-      <View>View</View>
+    <Grid
+      columns={['20%', 'fill', 'auto']}
+      rows={[300, 'auto']}
+      spacing="loose"
+    >
+      <View border="base" padding="base">
+        20% / 300
+      </View>
+      <View border="base" padding="base">
+        fill / 300
+      </View>
+      <View border="base" padding="base">
+        auto / 300
+      </View>
       <GridItem columnSpan={2}>
-        <View blockSize={1}>View span 2 columns</View>
+        <View border="base" padding="base">
+          20% + fill / auto
+        </View>
       </GridItem>
-      <View>View</View>
-      <View>View</View>
-      <View>View</View>
-      <GridItem rowSpan={2}>
-        <View blockSize={1}>View span 2 rows</View>
-      </GridItem>
-      <View>View</View>
-      <View>View</View>
-      <View>View</View>
-      <View>View</View>
+      <View border="base" padding="base">
+        auto / auto
+      </View>
     </Grid>
   );
 }

@@ -1,6 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {GridProps, GridItemSize} from '../Grid';
+import type {MaybeConditionalStyle} from '../../style';
+import type {Columns} from '../shared';
+import type {GridProps} from '../Grid';
 
 export interface InlineLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
   /**
@@ -15,7 +17,7 @@ export interface InlineLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
    *
    * `` `${number}fr` ``: size in fractions.
    *
-   * `number`: size in pixels `px`.
+   * `number`: size in pixels.
    *
    *
    * - When the sum of the defined sizes is larger than the available space, elements will shrink to avoid overflow.
@@ -27,7 +29,7 @@ export interface InlineLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
    *
    * @defaultValue 'fill'
    */
-  columns?: GridItemSize | GridItemSize[];
+  columns?: MaybeConditionalStyle<Columns>;
 }
 
 /**

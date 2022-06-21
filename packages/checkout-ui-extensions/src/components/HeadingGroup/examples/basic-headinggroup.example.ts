@@ -7,11 +7,11 @@ import {
 
 extend('Checkout::Dynamic::Render', (root) => {
   const headingGroup = root.createComponent(View, undefined, [
-    root.createComponent(Heading, undefined, 'Hi John Doe! (h1)'),
+    root.createComponent(Heading, undefined, 'Heading <h1>'),
     root.createComponent(HeadingGroup, undefined, [
-      root.createComponent(Heading, undefined, 'Your account (h2)'),
+      root.createComponent(Heading, undefined, 'Heading <h2>'),
       root.createComponent(HeadingGroup, undefined, [
-        root.createComponent(Heading, undefined, 'Change Password (h3)'),
+        root.createComponent(Heading, undefined, 'Heading <h3>'),
       ]),
     ]),
   ]);

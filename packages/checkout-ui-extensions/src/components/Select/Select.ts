@@ -20,7 +20,7 @@ interface Option {
 
 export interface SelectProps {
   /**
-   * A unique identifier for the field. When no `id` is provided,
+   * A unique identifier for the field. When no `id` is set,
    * a globally unique value will be used instead.
    */
   id?: string;
@@ -35,7 +35,7 @@ export interface SelectProps {
   name?: string;
   /**
    * The active option for the select. This should match to one of the
-   * `value` properties in the `options` prop. When not provided,
+   * `value` properties in the `options` prop. When not set,
    * the value will default to an empty string, which will show the
    * `placeholder` text as the "selected value".
    */
@@ -62,15 +62,8 @@ export interface SelectProps {
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
-   *
-   * When set as a string, the string is presented close to the Checkbox.
-   *
-   * When set as a boolean, `true`, the developer can position the error message
-   * as they need using an `InlineError` component. To ensure the error message is
-   * associated with the input and accessible to all users, set the `id` property on this
-   * component and the `controlId` on the `InlineError` component.
    */
-  error?: string | boolean;
+  error?: string;
   /**
    * A hint as to the intended content of the field.
    *

@@ -1,23 +1,17 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Responsive} from '../shared';
-
-interface Dimensions {
-  /**
-   * Inline size of the skeleton in pixels.
-   */
-  inline: number;
-  /**
-   * Block size of the skeleton in pixels.
-   */
-  block: number;
-}
+import {MaybeConditionalStyle} from '../../style';
 
 export interface SkeletonImageProps {
   /**
-   * Adjust the size of the skeleton.
+   * Adjust the block size of the skeleton.
    */
-  dimensions?: Dimensions | Responsive<Dimensions>;
+  // eslint-disable-next-line prettier/prettier
+  blockSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
+  /**
+   * Adjust the inline size of the skeleton.
+   */
+  inlineSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
   /**
    * Displays the skeleton at the specified aspect ratio (fills the width of the
    * parent container and sets the height accordingly).

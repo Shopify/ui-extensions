@@ -1,11 +1,31 @@
-import {render, Form, Button} from '@shopify/checkout-ui-extensions-react';
+import {
+  render,
+  BlockSpacer,
+  Button,
+  Form,
+  Grid,
+  GridItem,
+  TextField,
+  View,
+} from '@shopify/checkout-ui-extensions-react';
 
 render('Checkout::Dynamic::Render', () => <App />);
 
 function App() {
   return (
-    // eslint-disable-next-line no-console
-    <Form onSubmit={() => console.log('Submitted!')}>
+    <Form onSubmit={() => console.log('onSubmit event')}>
+      <Grid columns={['50%', '50%']} spacing="base">
+        <View>
+          <TextField label="First name" />
+        </View>
+        <View>
+          <TextField label="Last name" />
+        </View>
+        <GridItem columnSpan={2}>
+          <TextField label="Company" />
+        </GridItem>
+      </Grid>
+      <BlockSpacer spacing="base" />
       <Button submit>Submit</Button>
     </Form>
   );

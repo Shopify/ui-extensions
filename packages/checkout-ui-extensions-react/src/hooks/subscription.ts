@@ -29,7 +29,7 @@ export function useSubscription<T>(
     const unsubscribe = subscription.subscribe(checkForUpdates);
 
     // Because we're subscribing in a passive effect,
-    // it's possible that an update has occurred between render and our effect handler.
+    // it's possible for an update to occur between render and the effect handler.
     // Check for this and schedule an update if work has occurred.
     checkForUpdates(subscription.current);
 

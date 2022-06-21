@@ -7,7 +7,7 @@ import type {
 import {useExtensionApi} from './api';
 
 /**
- * Returns the `buyerJourney` details on buyer progression in checkout
+ * Returns the `buyerJourney` details on buyer progression in checkout.
  */
 export function useBuyerJourney<
   ID extends RenderExtensionPoint = RenderExtensionPoint
@@ -18,7 +18,7 @@ export function useBuyerJourney<
 /**
  * Takes a function that allows you to block the buyer’s progress through the checkout
  * by returning an object with `{behavior: 'block', reason: InvalidResultReason.UnknownReason}`.
- * If you block, you are expected to also update some part of your UI to reflect
+ * If you block, you should also update some part of your UI to reflect
  * the reason why navigation was blocked.
  */
 export function useBuyerJourneyIntercept<

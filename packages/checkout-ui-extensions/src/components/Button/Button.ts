@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Appearance, InlineAlignment} from '../shared';
+import type {Appearance, InlineAlignment} from '../shared';
 
 export interface ButtonProps {
   /**
@@ -8,18 +8,18 @@ export interface ButtonProps {
    * is controlled by merchants through the Branding API.
    *
    *
-   * - `primary`: button used for main actions. Ex: "Continue to next step"
+   * `primary`: button used for main actions. Ex: "Continue to next step"
    *
-   * - `secondary`: button used for secondary actions not blocking user progress. Ex: "Download Shop app"
+   * `secondary`: button used for secondary actions not blocking user progress. Ex: "Download Shop app"
    *
-   * - `plain`: renders a button that visually looks like a Link
+   * `plain`: renders a button that visually looks like a Link
    *
    *
    * @defaultValue 'primary'
    */
   kind?: 'primary' | 'secondary' | 'plain';
   /**
-   * Specify the color treatment of the Button. By default, it will use the "Primary / Secondary Action" colors.
+   * Specify the color treatment of the Button.
    */
   appearance?: Extract<Appearance, 'monochrome' | 'critical'>;
   /**
@@ -48,7 +48,7 @@ export interface ButtonProps {
    */
   loadingLabel?: string;
   /**
-   * A label used for buyers using assistive technologies. When provided, any
+   * A label used for buyers using assistive technologies. When set, any
    * `children` supplied to this component are hidden from being seen for
    * accessibility purposes to prevent duplicate content from being read.
    */

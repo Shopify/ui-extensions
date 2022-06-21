@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Size} from '../shared';
+import type {Size} from '../shared';
 import {TextProps} from '../Text';
 
 export interface SkeletonTextProps

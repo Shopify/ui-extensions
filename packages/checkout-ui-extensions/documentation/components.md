@@ -22,6 +22,7 @@ Checkout components are designed to be flexible, enabling you to layer and mix t
       <p><code><a href="../src/components/InlineSpacer">InlineSpacer</a></code></p>
       <p><code><a href="../src/components/InlineStack">InlineStack</a></code></p>
       <p><code><a href="../src/components/View">View</a></code></p>
+      <p><code><a href="../src/components/ScrollView">ScrollView</a></code></p>
   </div>
 
   <div class="checkout-component-grid-item">

@@ -5,9 +5,7 @@ render('Checkout::Dynamic::Render', () => <App />);
 function App() {
   return (
     <List>
-      <ListItem>ListItem</ListItem>
-      <ListItem>ListItem</ListItem>
-      <ListItem>ListItem</ListItem>
+      <ListItem>100% organic cotton</ListItem>
     </List>
   );
 }

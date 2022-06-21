@@ -9,15 +9,11 @@ export interface TagProps {
    */
   icon?: IconSource;
   /**
-   * A label used for buyers using assistive technologies. When provided, any
+   * A label used for buyers using assistive technologies. When set, any
    * `children` supplied to this component are hidden from being seen for
    * accessibility purposes to prevent duplicate content from being read.
    */
   accessibilityLabel?: string;
-  /**
-   * An accessible label for the remove button in a Tag
-   */
-  removeControlAccessibilityLabel?: string;
   /**
    * Callback when tag is removed
    */

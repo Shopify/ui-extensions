@@ -1,20 +1,15 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Responsive, Bordered, Fit, AccessibilityRole} from '../shared';
+import type {MaybeConditionalStyle} from '../../style';
+import {Bordered} from '../shared';
+import type {Fit, AccessibilityRole} from '../shared';
 
 export interface ImageProps
   extends Pick<Bordered, 'borderRadius' | 'borderWidth' | 'border'> {
   /**
-   * The default image path. This is used for single images, as a fallback if
-   * no sources match, or if a browser does not support picture element sources.
+   * The image path.
    */
   source: string;
-  /**
-   * An object where the keys are the device widths and the values are arrays of
-   * image sources to offer alternative versions of an image for
-   * different device widths and pixel densities.
-   */
-  sources?: Responsive<string | Source | Source[]>;
   /**
    * An alternative text description that describe the image for the reader to
    * understand what it is about. It is extremely useful for both buyers using
@@ -53,31 +48,18 @@ export interface ImageProps
    * Use if the image is not displayed at its intrinsic size to maintain
    * the aspect ratio.
    */
-  fit?: Fit;
+  fit?: MaybeConditionalStyle<Fit>;
   /**
-   * Sets the semantic meaning of the component’s content.  When provided,
+   * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help buyers
    * navigate the page.
    */
   accessibilityRole?: Extract<AccessibilityRole, 'decorative'>;
 }
 
-interface Source {
-  /** The path to the image */
-  source: string;
-  /**
-   * Specify that the image should be used for devices with a matching pixel
-   * density
-   */
-  resolution?: Resolution;
-}
-
-type Resolution = 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
 type Loading = 'eager' | 'lazy';
 
 /**
  * Image is used for large format, responsive images.
- *
- * For small images use Thumbnail.
  */
 export const Image = createRemoteComponent<'Image', ImageProps>('Image');

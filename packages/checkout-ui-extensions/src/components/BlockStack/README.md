@@ -7,13 +7,13 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| inlineAlignment? | <code>InlineAlignment</code> | Position children along the main axis  |
-| spacing? | <code>"none" &#124; "extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose"</code> | Adjust spacing between children<br /><br />Default value: <code>'base'</code> |
-| accessibilityRole? | <code><a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a> &#124; [<a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>, <a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>]</code> | Sets the semantic meaning of the component’s content.  When provided, the role will be used by assistive technologies to help buyers navigate the page.  |
-| accessibilityLabel? | <code>string</code> | A label that describes the purpose or contents of the element. When provided, it will be announced to buyers using assistive technologies and will provide them with more context.  |
+| inlineAlignment? | <code>"start" &#124; "center" &#124; "end" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>"start" &#124; "center" &#124; "end"<wbr>></code> | Position children along the main axis  |
+| spacing? | <code>"none" &#124; "extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>"none" &#124; "extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose"<wbr>></code> | Adjust spacing between children<br /><br />Default value: <code>'base'</code> |
+| accessibilityRole? | <code><a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a> &#124; [<a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>, <a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>]</code> | Sets the semantic meaning of the component’s content. When set, the role will be used by assistive technologies to help buyers navigate the page.<br /><br /> Examples:<br /><br />- In an HTML host a `['listItem', 'separator']` tuple will render: &lt;li role='separator'&gt;<br /><br />- In an HTML host a `listItem` string will render: &lt;li&gt;  |
+| accessibilityLabel? | <code>string</code> | A label that describes the purpose or contents of the element. When set, it will be announced to buyers using assistive technologies and will provide them with more context.  |
 <a name="NonPresentationalAccessibilityRole"></a>
 
-## NonPresentationalAccessibilityRole
+### NonPresentationalAccessibilityRole
 
 | Value | Description |
 | --- | --- |
@@ -28,4 +28,18 @@ optional = ?
 | <code>"unorderedList"</code> | Used to identify a list of unordered items. |
 | <code>"separator"</code> | Used to indicates the component acts as a divider that separates and distinguishes sections of content. |
 | <code>"status"</code> | Used to define a live region containing advisory information for the user that is not important enough to be an alert. |
-| <code>"alert"</code> | Used for important, and usually time-sensitive, information. |
+| <code>"alert"</code> | Used for important, and usually time-sensitive, information. |<a name="ConditionalStyle"></a>
+
+### ConditionalStyle
+
+| Name | Type | Description |
+| --- | --- | --- |
+| default? | <code>T</code> | The default value applied when none of the conditional values specified in `conditionals` are met.  |
+| conditionals | <code><a href="#conditionalvalue">ConditionalValue</a><<wbr>T<wbr>>[]</code> | An array of conditional values.  |<a name="ConditionalValue"></a>
+
+### ConditionalValue
+
+| Name | Type | Description |
+| --- | --- | --- |
+| conditions | <code>Conditions</code> | The conditions that must be met for the value to be applied. At least one condition must be specified.  |
+| value | <code>T</code> | The value that will be applied if the conditions are met.  |

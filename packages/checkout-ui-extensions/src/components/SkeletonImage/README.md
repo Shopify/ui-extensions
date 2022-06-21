@@ -7,28 +7,20 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| dimensions? | <code><a href="#dimensions">Dimensions</a> &#124; <a href="#responsive">Responsive</a></code> | Adjust the size of the skeleton.  |
-| aspectRatio? | <code>number</code> | Displays the skeleton at the specified aspect ratio (fills the width of the parent container and sets the height accordingly).  |<a name="Responsive"></a>
+| blockSize? | <code>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill"<wbr>></code> | Adjust the block size of the skeleton.  |
+| inlineSize? | <code>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill"<wbr>></code> | Adjust the inline size of the skeleton.  |
+| aspectRatio? | <code>number</code> | Displays the skeleton at the specified aspect ratio (fills the width of the parent container and sets the height accordingly).  |<a name="ConditionalStyle"></a>
 
-### Responsive
-
-Responsive is a [Mapped Type](https://www.typescriptlang.org/docs/handbook/2/mapped-types.html). It allows you to set different values at different breakpoints by providing an object where the keys are Breakpoints: <code>"base" &#124; "small" &#124; "medium" &#124; "large"</code>
-
-For example, if a property accepts `number | Responsive`, it would accept a number or an object where the keys are Breakpoints and the values are numbers:
-
-```js
-{
-  'base': 1,
-  'small': 0.5,
-  'large': 2
-}
-```
-
-<a name="Dimensions"></a>
-
-### Dimensions
+### ConditionalStyle
 
 | Name | Type | Description |
 | --- | --- | --- |
-| inline | <code>number</code> | Inline size of the skeleton in pixels.  |
-| block | <code>number</code> | Block size of the skeleton in pixels.  |
+| default? | <code>T</code> | The default value applied when none of the conditional values specified in `conditionals` are met.  |
+| conditionals | <code><a href="#conditionalvalue">ConditionalValue</a><<wbr>T<wbr>>[]</code> | An array of conditional values.  |<a name="ConditionalValue"></a>
+
+### ConditionalValue
+
+| Name | Type | Description |
+| --- | --- | --- |
+| conditions | <code>Conditions</code> | The conditions that must be met for the value to be applied. At least one condition must be specified.  |
+| value | <code>T</code> | The value that will be applied if the conditions are met.  |

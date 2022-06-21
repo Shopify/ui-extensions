@@ -8,8 +8,6 @@ export {BlockStack} from './BlockStack';
 export type {BlockStackProps} from './BlockStack';
 export {Button} from './Button';
 export type {ButtonProps} from './Button';
-export {CalloutBanner} from './CalloutBanner';
-export type {CalloutBannerProps} from './CalloutBanner';
 export {Checkbox} from './Checkbox';
 export type {CheckboxProps} from './Checkbox';
 export {Choice} from './Choice';
@@ -21,7 +19,7 @@ export type {DividerProps} from './Divider';
 export {Form} from './Form';
 export type {FormProps} from './Form';
 export {Grid} from './Grid';
-export type {GridProps, GridItemSize} from './Grid';
+export type {GridProps} from './Grid';
 export {GridItem} from './GridItem';
 export type {GridItemProps} from './GridItem';
 export {Heading} from './Heading';
@@ -46,6 +44,8 @@ export {ListItem} from './ListItem';
 export type {ListItemProps} from './ListItem';
 export {PhoneField} from './PhoneField';
 export type {PhoneFieldProps} from './PhoneField';
+export {ScrollView} from './ScrollView';
+export type {ScrollViewProps, ScrollViewEvent} from './ScrollView';
 export {Select} from './Select';
 export type {SelectProps} from './Select';
 export {SkeletonImage} from './SkeletonImage';
@@ -81,14 +81,24 @@ export type {
   Autocomplete,
   AutocompleteField,
   AutocompleteGroup,
+  Background,
+  BackgroundFit,
+  BackgroundPosition,
+  BlockAlignment,
+  InlineAlignment,
+  BorderRadius,
+  BorderStyle,
+  BorderWidth,
   Breakpoint,
-  CSSShorthand,
-  Responsive,
+  ShorthandProperty,
+  MaybeShorthandProperty,
+  Fit,
   Status,
   Size,
   Spacing,
   Alignment,
   Appearance,
-  Unit,
-  UnitSuffix,
+  GridItemSize,
+  Columns,
+  Rows,
 } from './shared';

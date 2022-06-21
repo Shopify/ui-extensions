@@ -7,9 +7,9 @@ export interface ChoiceListProps<T extends string | string[]> {
    */
   name: string;
   /**
-   * A string or array of strings indicating the ids of selected choices. When
-   * a string is provided, choices render as radios. When a string array is
-   * provided, choices render as checkboxes.
+   * A `string` or `string[]` indicating the ids of selected choices. When
+   * a string is set, choices render as radios. When a string array is
+   * set, choices render as checkboxes.
    */
   value: T;
   /**

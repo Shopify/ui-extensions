@@ -2,23 +2,22 @@ import {
   render,
   HeadingGroup,
   Heading,
-  View,
 } from '@shopify/checkout-ui-extensions-react';
 
 render('Checkout::Dynamic::Render', () => <App />);
 
 function App() {
   return (
-    <View>
-      <Heading>Hi John Doe! (h1)</Heading>
+    <>
+      <Heading>Heading &lt;h1&rt;</Heading>
 
       <HeadingGroup>
-        <Heading>Your account (h2)</Heading>
+        <Heading>Heading &lt;h2&rt;</Heading>
 
         <HeadingGroup>
-          <Heading>Change Password (h3)</Heading>
+          <Heading>Heading &lt;h3&rt;</Heading>
         </HeadingGroup>
       </HeadingGroup>
-    </View>
+    </>
   );
 }

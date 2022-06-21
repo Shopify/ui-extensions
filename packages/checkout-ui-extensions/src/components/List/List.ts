@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Spacing} from '../shared';
+import type {Spacing} from '../shared';
+import type {MaybeConditionalStyle} from '../../style';
 
 export type Marker = 'none' | 'bullet' | 'number';
 
@@ -10,7 +11,7 @@ export interface ListProps {
    *
    * @defaultValue 'base'
    */
-  spacing?: Spacing;
+  spacing?: MaybeConditionalStyle<Spacing>;
   /**
    * Type of marker to display
    *
@@ -18,7 +19,7 @@ export interface ListProps {
    */
   marker?: Marker;
   /**
-   * A label that describes the purpose or contents of the list. When provided,
+   * A label that describes the purpose or contents of the list. When set,
    * it will be announced to buyers using assistive technologies and will
    * provide them with more context.
    */

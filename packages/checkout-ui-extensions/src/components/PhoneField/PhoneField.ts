@@ -4,7 +4,7 @@ import type {TextFieldProps} from '../TextField';
 
 export interface PhoneFieldProps
   extends Pick<
-    TextFieldProps,
+    TextFieldProps<string>,
     | 'autocomplete'
     | 'id'
     | 'icon'
@@ -19,6 +19,7 @@ export interface PhoneFieldProps
     | 'readonly'
     | 'onFocus'
     | 'onBlur'
+    | 'maxLength'
   > {
   /**
    * Callback when the buyer has **finished editing** a field or pressed the country dropdown.

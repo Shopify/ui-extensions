@@ -2169,6 +2169,13 @@
     react-reconciler "^0.26.0"
     react-test-renderer "^17.0.0"
 
+"@remote-ui/async-subscription@^2.1.10":
+  version "2.1.10"
+  resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.1.10.tgz#65e6928ad338dc6d38e4212eb62fd686ce270fb2"
+  integrity sha512-nVWh4QjnKPDDFpis7w6Qu3X47Uff380oWs5qoSis/B2pIXDauqxhg1vneNxkxXlJnHoPKq4tTRJvPG0bmU2IVA==
+  dependencies:
+    "@remote-ui/rpc" "^1.3.1"
+
 "@remote-ui/async-subscription@^2.1.9":
   version "2.1.9"
   resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.1.9.tgz#84f413e40a8136ba28ee6ee0f946e4c1f85832d7"
@@ -2176,12 +2183,20 @@
   dependencies:
     "@remote-ui/rpc" "^1.3.0"
 
-"@remote-ui/core@^2.1.10", "@remote-ui/core@^2.1.3", "@remote-ui/core@^2.1.6", "@remote-ui/core@^2.1.9":
+"@remote-ui/core@^2.1.10", "@remote-ui/core@^2.1.3", "@remote-ui/core@^2.1.6":
   version "2.1.10"
   resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.1.10.tgz#f91dfa84744bcefe0989ff682297e795feb9b151"
   integrity sha512-zHDO9yxli61QrfQO8U7HP82KHYLtBRjFUDrsVxMOsZpmMQI53wBX0ohWtcEqZUjcmf1l67ck03GFMOr3L3uGpw==
   dependencies:
     "@remote-ui/rpc" "^1.3.0"
+    "@remote-ui/types" "^1.1.2"
+
+"@remote-ui/core@^2.1.12":
+  version "2.1.12"
+  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.1.12.tgz#94b821b5b786f45fd501cfe3ef8deea7fbadae77"
+  integrity sha512-smjkHOt3lbtod/hU2JPIUqDOFopRt+xkL64eHQ0XrdGn4W1AwWVHfZkyY/02kWiekpdg96VtKh1OW053zdppiA==
+  dependencies:
+    "@remote-ui/rpc" "^1.3.1"
     "@remote-ui/types" "^1.1.2"
 
 "@remote-ui/react@^4.1.3", "@remote-ui/react@^4.1.5", "@remote-ui/react@^4.5.0", "@remote-ui/react@^4.5.2":
@@ -2196,10 +2211,27 @@
     "@types/react-reconciler" "^0.26.0"
     react-reconciler ">=0.26.0 <0.27.0"
 
+"@remote-ui/react@^4.5.4":
+  version "4.5.4"
+  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.5.4.tgz#5d3aa431df2241eda1584840b83e958d2ff42955"
+  integrity sha512-cBa5OzXwGH40czjh7gmPPVNKarbo9KCbFmxn9XVmeIIbMJtxYWtuCRXXdRcauoWeRfx5qOThf0zLdX4JyuT+PA==
+  dependencies:
+    "@remote-ui/async-subscription" "^2.1.10"
+    "@remote-ui/core" "^2.1.12"
+    "@remote-ui/rpc" "^1.3.1"
+    "@types/react" ">=17.0.0 <18.0.0"
+    "@types/react-reconciler" "^0.26.0"
+    react-reconciler ">=0.26.0 <0.27.0"
+
 "@remote-ui/rpc@^1.3.0":
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.3.0.tgz#e9469803e8024707f096bd52041fdfe61154dac8"
   integrity sha512-tO0nYON8IhErx/DYxufo7ccwnSh1Vo5mS41HAjUQ+fCctNmRABug0tjvCdOq1E6R6JAq1EbxN0U5w+7pYMcaFg==
+
+"@remote-ui/rpc@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.3.1.tgz#6bce1980f4974ae5cedcc78869e9bbe76fb79066"
+  integrity sha512-mdz1jQf5UPBOpSJaFF4XhCotBwVTVeUV01Pf6wZmIoEbHn/2m6g2b44qT3qHLOsEWTKF8LVpNtEQqS9yKCLxZQ==
 
 "@remote-ui/types@^1.1.2":
   version "1.1.2"
@@ -10512,11 +10544,6 @@ requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
   integrity sha1-kl0mAdOaxIXgkc8NpcbmlNw9yv8=
-
-reselect@^4.1.5:
-  version "4.1.5"
-  resolved "https://registry.yarnpkg.com/reselect/-/reselect-4.1.5.tgz#852c361247198da6756d07d9296c2b51eddb79f6"
-  integrity sha512-uVdlz8J7OO+ASpBYoz1Zypgx0KasCY20H+N8JD13oUMtPvSHQuscrHop4KbXrbsBcdB9Ds7lVK7eRkBIfO43vQ==
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
