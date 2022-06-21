@@ -9,8 +9,8 @@ import {useSubscription} from './subscription';
  * The value is undefined if the customer doesn't have
  * an account or if they aren't logged in.
  */
-export function useCustomerAccount<
+export function useCustomer<
   ID extends RenderExtensionPoint = RenderExtensionPoint
 >() {
-  return useSubscription(useExtensionApi<ID>().customerAccount);
+  return useSubscription(useExtensionApi<ID>().buyerIdentity.customer);
 }

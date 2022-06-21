@@ -442,17 +442,6 @@ export interface StandardApi<
   };
 
   /**
-   * The proposed billing address is what the buyer has input in the billing
-   * address form of the payment page. The address updates when the field is
-   * committed (on change) rather than every keystroke. This form value is always
-   * available in the API and is distinct from the shipping address, even when the buyer
-   * selects the "same as shipping" option. If the buyer doesn't specify a direct payment
-   * line, then the billing address is not collected and the subscribable value
-   * is undefined.
-   */
-  billingAddress: StatefulRemoteSubscribable<Address | undefined>;
-
-  /**
    * The identifier of the running extension point.
    * @example 'Checkout::PostPurchase::Render'
    */
@@ -462,13 +451,6 @@ export interface StandardApi<
    * Meta information about the extension.
    */
   extension: Extension;
-
-  /**
-   * The primaryAddress field is a shortcut to the first address a buyer fills out in checkout, if any.
-   * When a checkout requires shipping, this field is identical to the `shippingAddress` field.
-   * When a checkout does not require shipping, this field is identical to the `billingAddress` field.
-   */
-  primaryAddress: StatefulRemoteSubscribable<Address | undefined>;
 
   /**
    * Key / value storage for this extension point.
@@ -481,7 +463,12 @@ export interface StandardApi<
    * An address value is only present if delivery is required. Otherwise, the
    * subscribable value is undefined.
    */
-  shippingAddress: StatefulRemoteSubscribable<Address | undefined>;
+  shippingAddress: StatefulRemoteSubscribable<MailingAddress | undefined>;
+
+  /**
+   * Information about the buyer that is interacting with the checkout.
+   */
+  buyerIdentity: BuyerIdentity;
 
   /** Shop where the checkout is taking place. */
   shop: Shop;
@@ -514,13 +501,6 @@ export interface StandardApi<
    * through the `attributes` property.
    */
   applyAttributeChange(change: AttributeChange): Promise<AttributeChangeResult>;
-
-  /**
-   * The account belonging to the customer. This value updates when there's a
-   * change in the account. The value is undefined if the customer doesn't have
-   * an account or if they aren't logged in.
-   */
-  customerAccount: StatefulRemoteSubscribable<CustomerAccount | undefined>;
 
   /**
    * The metafields that apply to the current checkout. The actual resource
@@ -585,6 +565,16 @@ export interface StandardApi<
   i18n: I18n;
 }
 
+export interface BuyerIdentity {
+  /**
+   * This defines the i18n (internationalization) API for the extension.
+   * The customer account from the buyer. This value will update when there's a
+   * change in the account. The value is undefined if the buyer isn’t a known customer
+   * for this shop.
+   */
+  customer: StatefulRemoteSubscribable<Customer | undefined>;
+}
+
 export interface Shop {
   /**
    * The shop ID.
@@ -605,7 +595,7 @@ export interface Shop {
   myshopifyDomain: string;
 }
 
-export interface Address {
+export interface MailingAddress {
   /**
    * The buyer's full name.
    * @example 'John Doe'
@@ -652,7 +642,7 @@ export interface Address {
    * The buyer's postal or ZIP code.
    * @example 'K2P 2L8'
    */
-  postalCode?: string;
+  zip?: string;
 
   /**
    * The ISO 3166 Alpha-2 format for the buyer's country. Refer to https://www.iso.org/iso-3166-country-codes.html.
@@ -664,7 +654,7 @@ export interface Address {
    * The buyer's zone code, such as state, province, prefecture, or region.
    * @example 'ON' for Ontario.
    */
-  zoneCode?: string;
+  provinceCode?: string;
 
   /**
    * The buyer's phone number.
@@ -680,11 +670,6 @@ export interface CartCost {
    * the information step may not have delivery costs calculated.
    */
   totalAmount: StatefulRemoteSubscribable<Money>;
-}
-
-export interface GeographicalCoordinates {
-  latitude: number;
-  longitude: number;
 }
 
 export interface CartLine {
@@ -738,49 +723,69 @@ export interface Money {
   currencyCode: CurrencyCode;
 }
 
-export type Merchandise = ProductVariantMerchandise;
+export type Merchandise = ProductVariant;
 
 export interface BaseMerchandise {
   /**
    * The merchandise ID.
-   * @example 'gid://shopify/ProductVariantMerchandise/123'
    */
   id: string;
 }
 
-export interface ProductVariantMerchandise extends BaseMerchandise {
+export interface ProductVariant extends BaseMerchandise {
   type: 'variant';
+
   /**
-   * The merchandise title.
+   * A globally-unique identifier.
+   * @example 'gid://shopify/ProductVariant/123'
+   */
+  id: string;
+
+  /**
+   * The product variant’s title.
    */
   title: string;
+
   /**
-   * The merchandise vendor name.
+   * Image associated with the product variant. This field falls back to the product
+   * image if no image is available.
    */
-  vendor: string;
+  image?: ImageDetails;
+
   /**
-   * The merchandise image.
+   * List of product options applied to the variant.
    */
-  image?: MerchandiseImage;
+  selectedOptions: SelectedOption[];
+
   /**
-   * The merchandise product type.
+   * The product object that the product variant belongs to.
    */
-  productType: string;
-  /**
-   * The merchandise options.
-   * @example Variant name and value
-   */
-  options: MerchandiseOption[];
+  product: Product;
 }
 
-export interface Image {
+export interface Product {
+  /**
+   * A globally-unique identifier.
+   */
+  id: string;
+
+  /**
+   * The product’s vendor name.
+   */
+  vendor: string;
+
+  /**
+   * A categorization that a product can be tagged with, commonly used for filtering and searching.
+   */
+  productType: string;
+}
+
+export interface ImageDetails {
   /**
    * The image URL.
    */
   url: string;
-}
 
-export interface MerchandiseImage extends Image {
   /**
    * The alternative text for the image.
    */
@@ -799,11 +804,12 @@ export interface Attribute {
   value: string;
 }
 
-export interface MerchandiseOption {
+export interface SelectedOption {
   /**
    * The name of the merchandise option.
    */
   name: string;
+
   /**
    * The value of the merchandise option.
    */
@@ -848,7 +854,7 @@ export interface CartLineAddChange {
 
   /**
    * The merchandise ID being added.
-   * @example 'gid://shopify/ProductVariantMerchandise/123'
+   * @example 'gid://shopify/ProductVariant/123'
    */
   merchandiseId: string;
 
@@ -895,13 +901,13 @@ export interface CartLineUpdateChange {
 
   /**
    * The new merchandise ID for the line item.
-   * @example 'gid://shopify/ProductVariantMerchandise/123'
+   * @example 'gid://shopify/ProductVariant/123'
    */
 
   merchandiseId?: string;
   /**
    * The new quantity for the line item.
-   * @example 'gid://shopify/ProductVariantMerchandise/123'
+   * @example 'gid://shopify/ProductVariant/123'
    */
   quantity?: number;
 
@@ -993,9 +999,9 @@ export interface Interceptor {
 }
 
 /**
- * Information about a customer account.
+ * Information about a customer who has previously purchased from this shop.
  */
-export interface CustomerAccount {
+export interface Customer {
   /**
    * Customer ID.
    * @example 'gid://shopify/Customer/123'
@@ -1024,7 +1030,7 @@ export interface CustomerAccount {
   /**
    * The image associated with the customer.
    */
-  image: Image;
+  image: ImageDetails;
   /**
    * Defines if the customer accepts marketing activities.
    */

@@ -19,9 +19,9 @@ export interface GridItemProps {
    *
    * Examples:
    *
-   * - In an HTML host a `["listItem", "separator"]` tuple will render: `<li role="separator">`
+   * - In an HTML host a `['listItem', 'separator']` tuple will render: <li role='separator'>
    *
-   * - In an HTML host a `"listItem"` string will render: `<li>`
+   * - In an HTML host a `listItem` string will render: <li>
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
 }

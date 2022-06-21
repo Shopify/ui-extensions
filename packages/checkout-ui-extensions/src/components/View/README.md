@@ -22,7 +22,7 @@ optional = ?
 | id? | <code>string</code> | A unique identifier for the View.  |
 | opacity? | <code>10 &#124; 20 &#124; 30 &#124; 40 &#124; 50 &#124; 60 &#124; 70 &#124; 80 &#124; 90</code> | Sets the opacity of the View. The opacity will be applied to the background as well as all the childrens of the View. Use carefully as this could decrease the contrast ratio between the background and foreground elements resulting in unreadable and inaccessible text.  |
 | accessibilityLabel? | <code>string</code> | A label that describes the purpose or contents of the element. When set, it will be announced to buyers using assistive technologies and will provide them with more context.  |
-| accessibilityRole? | <code><a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a> &#124; [<a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>, <a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>]</code> | Sets the semantic meaning of the component’s content. When set, the role will be used by assistive technologies to help buyers navigate the page.<br /><br /> Examples:<br /><br />- In an HTML host a `[&#34;listItem&#34;, &#34;separator&#34;]` tuple will render: `&lt;li role=&#34;separator&#34;&gt;`<br /><br />- In an HTML host a `&#34;listItem&#34;` string will render: `&lt;li&gt;`  |
+| accessibilityRole? | <code><a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a> &#124; [<a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>, <a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>]</code> | Sets the semantic meaning of the component’s content. When set, the role will be used by assistive technologies to help buyers navigate the page.<br /><br /> Examples:<br /><br />- In an HTML host a `['listItem', 'separator']` tuple will render: &lt;li role='separator'&gt;<br /><br />- In an HTML host a `listItem` string will render: &lt;li&gt;  |
 | position? | <code>Position &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>Position<wbr>></code> | Changes how the View is positioned.  |
 | translate? | <code><a href="#translate">Translate</a> &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr><a href="#translate">Translate</a><wbr>></code> | Specifies a two-dimensional translation of the View.  |
 | blockAlignment? | <code>"start" &#124; "center" &#124; "end" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>"start" &#124; "center" &#124; "end"<wbr>></code> | Position children along the cross axis  |
@@ -60,8 +60,8 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| default? | <code>T</code> |  |
-| conditionals | <code><a href="#conditionalvalue">ConditionalValue</a><<wbr>T<wbr>>[]</code> |  |<a name="ConditionalValue"></a>
+| default? | <code>T</code> | The default value applied when none of the conditional values specified in `conditionals` are met.  |
+| conditionals | <code><a href="#conditionalvalue">ConditionalValue</a><<wbr>T<wbr>>[]</code> | An array of conditional values.  |<a name="ConditionalValue"></a>
 
 ### ConditionalValue
 

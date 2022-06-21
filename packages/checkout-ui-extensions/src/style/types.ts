@@ -28,7 +28,14 @@ export interface ConditionalValue<T> {
 }
 
 export interface ConditionalStyle<T> {
+  /**
+   * The default value applied when none of the conditional values
+   * specified in `conditionals` are met.
+   */
   default?: T;
+  /**
+   * An array of conditional values.
+   */
   conditionals: ConditionalValue<T>[];
 }
 

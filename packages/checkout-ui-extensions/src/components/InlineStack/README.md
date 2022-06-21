@@ -7,7 +7,7 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| accessibilityRole? | <code><a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a> &#124; [<a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>, <a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>]</code> | Sets the semantic meaning of the component’s content. When set, the role will be used by assistive technologies to help buyers navigate the page.<br /><br /> Examples:<br /><br />- In an HTML host a `[&#34;listItem&#34;, &#34;separator&#34;]` tuple will render: `&lt;li role=&#34;separator&#34;&gt;`<br /><br />- In an HTML host a `&#34;listItem&#34;` string will render: `&lt;li&gt;`  |
+| accessibilityRole? | <code><a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a> &#124; [<a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>, <a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>]</code> | Sets the semantic meaning of the component’s content. When set, the role will be used by assistive technologies to help buyers navigate the page.<br /><br /> Examples:<br /><br />- In an HTML host a `'listItem'` string will render: `&lt;li&gt;`<br /><br />- In an HTML host a `['listItem', 'separator']` tuple will render: `&lt;li role='separator'&gt;`  |
 | accessibilityLabel? | <code>string</code> | A label that describes the purpose or contents of the element. When set, it will be announced to buyers using assistive technologies and will provide them with more context.  |
 | blockAlignment? | <code>"start" &#124; "center" &#124; "end" &#124; "baseline" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>"start" &#124; "center" &#124; "end" &#124; "baseline"<wbr>></code> | Position children along the cross axis<br /><br />Default value: <code>'start'</code> |
 | inlineAlignment? | <code>"start" &#124; "center" &#124; "end" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>"start" &#124; "center" &#124; "end"<wbr>></code> | Position children along the main axis<br /><br />Default value: <code>'start'</code> |
@@ -17,8 +17,8 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| default? | <code>T</code> |  |
-| conditionals | <code><a href="#conditionalvalue">ConditionalValue</a><<wbr>T<wbr>>[]</code> |  |<a name="ConditionalValue"></a>
+| default? | <code>T</code> | The default value applied when none of the conditional values specified in `conditionals` are met.  |
+| conditionals | <code><a href="#conditionalvalue">ConditionalValue</a><<wbr>T<wbr>>[]</code> | An array of conditional values.  |<a name="ConditionalValue"></a>
 
 ### ConditionalValue
 

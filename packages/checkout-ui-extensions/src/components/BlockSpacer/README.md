@@ -16,8 +16,8 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| default? | <code>T</code> |  |
-| conditionals | <code><a href="#conditionalvalue">ConditionalValue</a><<wbr>T<wbr>>[]</code> |  |<a name="ConditionalValue"></a>
+| default? | <code>T</code> | The default value applied when none of the conditional values specified in `conditionals` are met.  |
+| conditionals | <code><a href="#conditionalvalue">ConditionalValue</a><<wbr>T<wbr>>[]</code> | An array of conditional values.  |<a name="ConditionalValue"></a>
 
 ### ConditionalValue
 

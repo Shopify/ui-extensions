@@ -53,13 +53,6 @@ export interface ImageProps
    * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help buyers
    * navigate the page.
-   *
-   *
-   * Examples:
-   *
-   * - In an HTML host a `["listItem", "separator"]` tuple will render: `<li role="separator">`
-   *
-   * - In an HTML host a `"listItem"` string will render: `<li>`
    */
   accessibilityRole?: Extract<AccessibilityRole, 'decorative'>;
 }
