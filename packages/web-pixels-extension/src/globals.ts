@@ -1,10 +1,10 @@
 import {RuntimeAPI} from './types/runtime-api';
 
-type ExtensionPoint = 'WebPixel::Render';
+export const EXTENSION_POINT = 'WebPixel::Render';
 
 export interface ShopifyGlobal {
   extend(
-    extensionPoint: ExtensionPoint,
+    extensionPoint: typeof EXTENSION_POINT,
     extend: (api: RuntimeAPI) => void,
   ): void;
 }

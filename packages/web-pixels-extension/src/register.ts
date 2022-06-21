@@ -1,4 +1,9 @@
-import type {ShopifyGlobal} from './globals';
+import {ShopifyGlobal, EXTENSION_POINT} from './globals';
+import {RuntimeAPI} from './types/runtime-api';
 
-export const register: ShopifyGlobal['extend'] = (...args) =>
-  ((self as any) as {shopify: ShopifyGlobal}).shopify.extend(...args);
+declare const shopify: ShopifyGlobal;
+
+type Register = (extend: (api: RuntimeAPI) => void) => void;
+
+export const register: Register = (extend) =>
+  shopify.extend(EXTENSION_POINT, extend);
