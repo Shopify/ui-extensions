@@ -15,7 +15,7 @@ import {Style} from '@shopify/checkout-ui-extensions';
 If you're using React:
 
 ```jsx
-import {Style} from '@shopify/checkout-ui-extennsions-react';
+import {Style} from '@shopify/checkout-ui-extensions-react';
 ```
 
 #### `Style` helper class
@@ -56,8 +56,11 @@ Using simple conditional styling enables you to specify a styling change when a 
 Default styling can be combined with specific conditions. In this example, the Grid’s children will be stacked by default and side by side on viewports above the `small` breakpoint.
 
 ```jsx
-<Grid columns={Style.default('fill')
-  .when({inlineViewportSize: 'small'}, ['30%','70%'])}
+<Grid
+  columns={Style.default('fill').when({inlineViewportSize: 'small'}, [
+    '30%',
+    '70%',
+  ])}
 >
   <View>Content</View>
   <View>Content</View>
