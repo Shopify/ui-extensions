@@ -1,5 +1,4 @@
 export type {ExtensionPoints, ExtensionPoint} from './extension-points';
-export {InvalidResultReason} from './api';
 export type {
   Attribute,
   AttributeChange,

@@ -917,44 +917,22 @@ export interface CartLineUpdateChange {
   attributes?: Attribute[];
 }
 
-export enum InvalidResultReason {
-  MissingSourceId = 'MISSING_SOURCE_ID',
-  BlankSubscriptionAgreement = 'BLANK_SUBSCRIPTION_AGREEMENT',
-  EmptyPaymentLines = 'EMPTY_PAYMENT_LINES',
-  MissingTermsOfService = 'MISSING_TERMS_OF_SERVICE',
-  CardFieldInputIsInvalid = 'CARD_FIELD_INPUT_IS_INVALID',
-  CardFieldsIsLoading = 'CARD_FIELDS_IS_LOADING',
-  InstallmentsFailed = 'INSTALLMENTS_FAILED',
-  ShopPayPaymentFailed = 'SHOPPAY_PAYMENT_FAILED',
-  MissingEmailInPaypalExpress = 'MISSING_EMAIL_IN_PAYPAL_EXPRESS',
-  RedirectingToAmazonPayClassic = 'REDIRECTING_TO_AMAZON_PAY_CLASSIC',
-  RedirectingToShopPay = 'REDIRECTING_TO_SHOP_PAY',
-  InvalidAddress = 'INVALID_ADDRESS',
-  UnknownReason = 'UNKNOWN_REASON',
-  InvalidExtensionState = 'INVALID_EXTENSION_STATE',
-}
-
 type InterceptorResult = InterceptorResultAllow | InterceptorResultBlock;
 
 interface InterceptorResultAllow {
   /**
-   * Allows the buyer's journey to continue after interception.
+   * Indicates that the buyer was allowed to progress through checkout.
    */
   behavior: 'allow';
 }
-// The reasons are used for tracing and debugging purposes.
+
 interface InterceptorResultBlock {
   /**
-   * Blocks the buyer's journey from continuing after interception.
-   *
-   * For example, if the buyer needs to resolve an error in the extension UI, the interceptor can block checkout until it's resolved.
+   * Indicates that some part of the checkout UI intercepted and prevented
+   * the buyer’s progress. The buyer typically needs to take some action
+   * to resolve this issue and to move on to the next step.
    */
   behavior: 'block';
-
-  /**
-   * An array of reasons why the interceptor blocked the buyer's journey.
-   */
-  reasons: InvalidResultReason[];
 }
 
 export type InterceptorRequest =
@@ -966,6 +944,7 @@ interface InterceptorRequestAllow {
    * Indicates that the interceptor will allow the buyer's journey to continue.
    */
   behavior: 'allow';
+
   /**
    * This callback is called when all interceptors finish. We recommend
    * setting errors or reasons for blocking at this stage, so that all the errors in
@@ -982,9 +961,12 @@ interface InterceptorRequestBlock {
   behavior: 'block';
 
   /**
-   * The reason for blocking the interceptor request.
+   * The reason for blocking the interceptor request. This value is **not** presented to
+   * the buyer, so it does not need to be localized. It is used only for Shopify’s own
+   * internal debugging and metrics.
    */
-  reason: InvalidResultReason;
+  reason: string;
+
   /**
    * This callback is called when all interceptors finish. We recommend
    * setting errors or reasons for blocking at this stage, so that all the errors in

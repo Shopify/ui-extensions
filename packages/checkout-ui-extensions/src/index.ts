@@ -1,4 +1,3 @@
-export {InvalidResultReason} from './extension-points';
 export type {
   Extension,
   ExtensionPoints,

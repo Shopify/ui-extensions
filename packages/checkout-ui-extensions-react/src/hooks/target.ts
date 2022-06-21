@@ -8,7 +8,7 @@ class ExtensionHasNoTargetError extends Error {
 
   constructor(extensionPoint: ExtensionPoint) {
     super(
-      `Cannot call 'useTargetLineItem()' on extensionPoint '${extensionPoint}'. Property 'target' is not found on api.`,
+      `Cannot call 'useTarget()' on extensionPoint '${extensionPoint}'. Property 'target' is not found on api.`,
     );
   }
 }
