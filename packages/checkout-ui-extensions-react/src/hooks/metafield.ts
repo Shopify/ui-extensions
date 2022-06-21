@@ -8,7 +8,7 @@ interface MetafieldFilter {
 }
 
 /**
- * Returns a single filtered Metafield or undefined
+ * Returns a single filtered `Metafield` or `undefined`
  * @arg {MetafieldFilter} - filter the list of returned metafields to a single metafield
  */
 export function useMetafield(filters: MetafieldFilter) {

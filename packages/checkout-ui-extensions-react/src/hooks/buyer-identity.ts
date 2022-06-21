@@ -4,10 +4,10 @@ import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
- * Returns the account belonging to to the customer.
+ * Returns the account belonging to the customer.
  *
- * The value is undefined if the customer doesn't have
- * an account or if they aren't logged in.
+ * The value is `undefined` if the customer doesn’t have
+ * an account or if they aren’t logged in.
  */
 export function useCustomer<
   ID extends RenderExtensionPoint = RenderExtensionPoint

@@ -160,8 +160,8 @@ export interface Bordered {
    *
    * Examples:
    * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border widths are `base`
-   * - [`base`, `thick`] means blockStart and blockEnd border widths are `base`, inlineStart and inlineEnd border widths are `thick`
-   * - [`base`, `thick`, `thick`, `base`] means blockStart border width is `base`, inlineEnd border width is `thick`, blockEnd border width is `thick` and  blockStart border width is `base`
+   * - [`base`, `medium`] means blockStart and blockEnd border widths are `base`, inlineStart and inlineEnd border widths are `medium`
+   * - [`base`, `medium`, `medium`, `base`] means blockStart border width is `base`, inlineEnd border width is `medium`, blockEnd border width is `medium` and  blockStart border width is `base`
    */
   borderWidth?: MaybeConditionalStyle<MaybeShorthandProperty<BorderWidth>>;
 
