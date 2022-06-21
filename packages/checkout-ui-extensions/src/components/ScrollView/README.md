@@ -5,7 +5,7 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| hint? | <code>"innerShadow" &#124; Unknown<<wbr>MultiPick, MultiPick<wbr>></code> | Provides a hint to the user that the area is scrollable.<br /><br />`pill`: renders a pill with a message at the end of the the scrollable area. It disappear as soon as the user starts scrolling.<br /><br />`innerShadow`: renders an inner visual hint to indicate that the content is scrollable.  |
+| hint? | <code>"innerShadow" &#124; {type: "pill", content: string}</code> | Provides a hint to the user that the area is scrollable.<br /><br />`pill`: renders a pill with a message at the end of the the scrollable area. It disappear as soon as the user starts scrolling.<br /><br />`innerShadow`: renders an inner visual hint to indicate that the content is scrollable.  |
 | minBlockSize? | <code>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill"<wbr>></code> | Adjust the minimum block size.<br /><br />`number`: size in pixels.<br /><br />`` `${number}%` ``: size in percentages.<br /><br />`fill`: takes all the available space.  |
 | maxBlockSize? | <code>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill"<wbr>></code> | Adjust the maximum block size.<br /><br />`number`: size in pixels.<br /><br />`` `${number}%` ``: size in percentages.<br /><br />`fill`: takes all the available space.  |
 | minInlineSize? | <code>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>number &#124; &#96;&dollar;{number}%&#96; &#124; "fill"<wbr>></code> | Adjust the minimum inline size.<br /><br />`number`: size in pixels.<br /><br />`` `${number}%` ``: size in percentages.<br /><br />`fill`: takes all the available space.  |
@@ -19,8 +19,8 @@ optional = ?
 
 | Name | Type | Description |
 | --- | --- | --- |
-| position | <code>Unknown<<wbr>MultiPick, MultiPick<wbr>></code> |  |
-| scrolledTo | <code>Unknown<<wbr>MultiPick, MultiPick<wbr>></code> |  |<a name="ConditionalStyle"></a>
+| position | <code>{inline: number, block: number}</code> |  |
+| scrolledTo | <code>{inline: "start" &#124; "end" &#124; null, block: "start" &#124; "end" &#124; null}</code> |  |<a name="ConditionalStyle"></a>
 
 ### ConditionalStyle
 
