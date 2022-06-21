@@ -1,6 +1,6 @@
 {
   "name": "@shopify/checkout-ui-extensions-react",
-  "version": "0.16.0",
+  "version": "0.17.0",
   "description": "React bindings for @shopify/checkout-ui-extensions",
   "publishConfig": {
     "access": "public",
@@ -22,7 +22,7 @@
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.10",
     "@remote-ui/react": "^4.5.4",
-    "@shopify/checkout-ui-extensions": "^0.16.0",
+    "@shopify/checkout-ui-extensions": "^0.17.0",
     "@types/react": ">=17.0.0 <18.0.0"
   },
   "peerDependencies": {
