@@ -1,0 +1,114 @@
+{
+  "definitions": {
+    "product": {
+      "properties": {
+        "product_id": {"type": "uint32"},
+        "product_gid": {"type": "string"},
+        "variant_id": {"type": "uint32"},
+        "collection_title": {"type": "string"},
+        "currency": {"type": "string"},
+        "product_title": {"type": "string"},
+        "product_vendor": {"type": "string"},
+        "quantity": {"type": "uint32"},
+        "variant_price": {"type": "float32"},
+        "variant_sku": {"type": "string"},
+        "variant_title": {"type": "string"}
+      }
+    }
+  },
+  "discriminator": "event_name",
+  "mapping": {
+    "checkout_completed": {
+      "properties": {
+        "checkout_id": {"type": "uint32"},
+        "order_id": {"type": "uint32"},
+        "discount_code": {"type": "string"},
+        "email_sha256": {"type": "string"},
+        "phone_sha256": {"type": "string"},
+        "products": {"elements": {"ref": "product"}},
+        "shipping_price": {"type": "float32"},
+        "subtotal_price": {"type": "float32"},
+        "tax_price": {"type": "float32"},
+        "total_price": {"type": "float32"}
+      },
+      "optionalProperties": {
+        "event_id": {"type": "string"},
+        "event_schema_version": {"type": "string"}
+      }
+    },
+    "checkout_started": {
+      "properties": {
+        "products": {"elements": {"ref": "product"}},
+        "total_price": {"type": "float32"}
+      },
+      "optionalProperties": {
+        "event_id": {"type": "string"},
+        "event_schema_version": {"type": "string"}
+      }
+    },
+    "collection_viewed": {
+      "properties": {
+        "collection_title": {"type": "string"}
+      },
+      "optionalProperties": {
+        "event_id": {"type": "string"},
+        "event_schema_version": {"type": "string"}
+      }
+    },
+    "page_viewed": {
+      "optionalProperties": {
+        "event_id": {"type": "string"},
+        "event_schema_version": {"type": "string"},
+        "page_referrer": {"type": "string"},
+        "page_title": {"type": "string"},
+        "page_url": {"type": "string"}
+      }
+    },
+    "payment_info_submitted": {
+      "properties": {
+        "currency": {"type": "string"},
+        "total_price": {"type": "float32"}
+      },
+      "optionalProperties": {
+        "event_id": {"type": "string"},
+        "event_schema_version": {"type": "string"}
+      }
+    },
+    "product_added_to_cart": {
+      "properties": {
+        "products": {"elements": {"ref": "product"}}
+      },
+      "optionalProperties": {
+        "event_id": {"type": "string"},
+        "event_schema_version": {"type": "string"}
+      }
+    },
+    "product_viewed": {
+      "properties": {
+        "products": {"elements": {"ref": "product"}}
+      },
+      "optionalProperties": {
+        "event_id": {"type": "string"},
+        "event_schema_version": {"type": "string"}
+      }
+    },
+    "product_variant_viewed": {
+      "properties": {
+        "products": {"elements": {"ref": "product"}}
+      },
+      "optionalProperties": {
+        "event_id": {"type": "string"},
+        "event_schema_version": {"type": "string"}
+      }
+    },
+    "search_submitted": {
+      "properties": {
+        "search_query": {"type": "string"}
+      },
+      "optionalProperties": {
+        "event_id": {"type": "string"},
+        "event_schema_version": {"type": "string"}
+      }
+    }
+  }
+}

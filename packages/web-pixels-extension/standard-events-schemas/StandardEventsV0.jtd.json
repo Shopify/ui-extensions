@@ -1,0 +1,53 @@
+{
+  "discriminator": "event_name",
+  "mapping": {
+    "checkout_completed": {
+      "properties": {
+        "event_schema_version": {"type": "string"},
+        "page_url": {"type": "string"}
+      }
+    },
+    "checkout_started": {
+      "properties": {
+        "event_schema_version": {"type": "string"},
+        "page_url": {"type": "string"}
+      }
+    },
+    "collection_view": {
+      "properties": {
+        "event_schema_version": {"type": "string"},
+        "page_url": {"type": "string"}
+      }
+    },
+    "page_view": {
+      "properties": {
+        "event_schema_version": {"type": "string"},
+        "page_url": {"type": "string"}
+      }
+    },
+    "payment_info_submitted": {
+      "properties": {
+        "event_schema_version": {"type": "string"},
+        "page_url": {"type": "string"}
+      }
+    },
+    "product_added_to_cart": {
+      "properties": {
+        "event_schema_version": {"type": "string"},
+        "page_url": {"type": "string"}
+      }
+    },
+    "product_view": {
+      "properties": {
+        "event_schema_version": {"type": "string"},
+        "page_url": {"type": "string"}
+      }
+    },
+    "performed_search": {
+      "properties": {
+        "event_schema_version": {"type": "string"},
+        "page_url": {"type": "string"}
+      }
+    }
+  }
+}
