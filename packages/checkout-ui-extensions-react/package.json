@@ -20,8 +20,8 @@
     }
   },
   "dependencies": {
-    "@remote-ui/async-subscription": "^2.1.9",
-    "@remote-ui/react": "^4.5.0",
+    "@remote-ui/async-subscription": "^2.1.10",
+    "@remote-ui/react": "^4.5.4",
     "@shopify/checkout-ui-extensions": "^0.15.2",
     "@types/react": ">=17.0.0 <18.0.0"
   },
