@@ -3,8 +3,11 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {Size} from '../shared';
 import {TextProps} from '../Text';
 
-export interface SkeletonTextProps
-  extends Omit<TextProps, 'id' | 'role' | 'appearance'> {
+export interface SkeletonTextProps extends Pick<TextProps, 'size'> {
+  /**
+   * Use to emphasize a word or a group of words compared to other nearby text.
+   */
+  emphasis?: 'strong';
   /**
    * Adjust the length of the text when no children are passed.
    */
