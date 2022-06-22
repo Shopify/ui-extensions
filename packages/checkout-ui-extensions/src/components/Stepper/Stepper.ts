@@ -5,7 +5,7 @@ import {IconSource} from '../Icon';
 
 export interface StepperProps
   extends Pick<
-    TextFieldProps<number>,
+    TextFieldProps<number | undefined>,
     | 'id'
     | 'name'
     | 'label'
