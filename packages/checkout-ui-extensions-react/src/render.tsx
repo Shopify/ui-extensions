@@ -47,6 +47,9 @@ export function render<ExtensionPoint extends RenderExtensionPoint>(
             },
           );
         } catch (error) {
+          // Workaround for https://github.com/Shopify/ui-extensions/issues/325
+          // eslint-disable-next-line no-console
+          console.error(error);
           reject(error);
         }
       });
