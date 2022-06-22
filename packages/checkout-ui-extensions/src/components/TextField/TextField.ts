@@ -5,7 +5,7 @@ import {IconSource} from '../Icon';
 
 type Type = 'text' | 'email' | 'number' | 'telephone';
 
-export interface TextFieldProps<T extends string | number> {
+export interface TextFieldProps<T extends string | number | undefined> {
   /**
    * A unique identifier for the field. When no `id` is set,
    * a globally unique value will be used instead.
