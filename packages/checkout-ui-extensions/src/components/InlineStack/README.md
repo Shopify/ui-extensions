@@ -9,9 +9,19 @@ optional = ?
 | --- | --- | --- |
 | accessibilityRole? | <code><a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a> &#124; [<a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>, <a href="#nonpresentationalaccessibilityrole">NonPresentationalAccessibilityRole</a>]</code> | Sets the semantic meaning of the component’s content. When set, the role will be used by assistive technologies to help buyers navigate the page.<br /><br /> Examples:<br /><br />- In an HTML host a `'listItem'` string will render: `&lt;li&gt;`<br /><br />- In an HTML host a `['listItem', 'separator']` tuple will render: `&lt;li role='separator'&gt;`  |
 | accessibilityLabel? | <code>string</code> | A label that describes the purpose or contents of the element. When set, it will be announced to buyers using assistive technologies and will provide them with more context.  |
-| blockAlignment? | <code>"start" &#124; "center" &#124; "end" &#124; "baseline" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>"start" &#124; "center" &#124; "end" &#124; "baseline"<wbr>></code> | Position children along the cross axis<br /><br />Default value: <code>'start'</code> |
-| inlineAlignment? | <code>"start" &#124; "center" &#124; "end" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>"start" &#124; "center" &#124; "end"<wbr>></code> | Position children along the main axis<br /><br />Default value: <code>'start'</code> |
-| spacing? | <code>"none" &#124; "extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose" &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr>"none" &#124; "extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose"<wbr>></code> | Adjust spacing between children<br /><br />Default value: <code>'base'</code> |<a name="ConditionalStyle"></a>
+| blockAlignment? | <code><a href="#blockalignment">BlockAlignment</a> &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr><a href="#blockalignment">BlockAlignment</a><wbr>></code> | Position children along the cross axis<br /><br />Default value: <code>'start'</code> |
+| inlineAlignment? | <code><a href="#inlinealignment">InlineAlignment</a> &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr><a href="#inlinealignment">InlineAlignment</a><wbr>></code> | Position children along the main axis<br /><br />Default value: <code>'start'</code> |
+| spacing? | <code><a href="#spacing">Spacing</a> &#124; <a href="#conditionalstyle">ConditionalStyle</a><<wbr><a href="#spacing">Spacing</a><wbr>></code> | Adjust spacing between children<br /><br />Default value: <code>'base'</code> |
+<a name="Spacing"></a>
+
+### Spacing
+
+<code>"none" &#124; "extraTight" &#124; "tight" &#124; "base" &#124; "loose" &#124; "extraLoose"</code>
+<a name="InlineAlignment"></a>
+
+### InlineAlignment
+
+<code>"start" &#124; "center" &#124; "end"</code><a name="ConditionalStyle"></a>
 
 ### ConditionalStyle
 
@@ -26,6 +36,16 @@ optional = ?
 | --- | --- | --- |
 | conditions | <code>Conditions</code> | The conditions that must be met for the value to be applied. At least one condition must be specified.  |
 | value | <code>T</code> | The value that will be applied if the conditions are met.  |
+<a name="BlockAlignment"></a>
+
+### BlockAlignment
+
+<code><a href="#alignment">Alignment</a> &#124; "baseline"</code>
+<a name="Alignment"></a>
+
+### Alignment
+
+<code>"start" &#124; "center" &#124; "end"</code>
 <a name="NonPresentationalAccessibilityRole"></a>
 
 ### NonPresentationalAccessibilityRole
