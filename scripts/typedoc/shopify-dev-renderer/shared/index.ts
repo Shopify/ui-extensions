@@ -413,7 +413,9 @@ function propType(
       return `{${value.properties
         .map(
           (property) =>
-            `${property.name}${property.optional ? '?' : ''}: ${propType(
+            `${property.name}${property.optional ? '?' : ''}${
+              property.value.kind === 'FunctionType' ? '' : ': '
+            }${propType(
               property.value,
               exports,
               dir,
