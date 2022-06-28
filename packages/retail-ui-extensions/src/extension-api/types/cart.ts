@@ -37,6 +37,7 @@ export interface CustomSale {
   quantity: number;
   title: string;
   price: string;
+  taxable: boolean;
 }
 
 export interface Address {
