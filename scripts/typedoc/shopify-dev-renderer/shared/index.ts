@@ -675,47 +675,61 @@ export function mkdir(directory) {
 function findRepeatingTypes(obj: Type, exports: Node[]) {
   const occurences = {};
 
-  function traverse(obj?: Type) {
+  function traverse(obj?: Type, stash?) {
     if (!obj) {
       return;
     }
 
-    if ('properties' in obj && obj.properties) {
-      for (const property of obj.properties) {
-        traverse(property.value);
-      }
-    }
-
-    if ('types' in obj && obj.types) {
-      for (const type of obj.types) {
-        traverse(type);
-      }
-    }
-
-    if ('elements' in obj && obj.elements) {
-      if (Array.isArray(obj.elements)) {
-        for (const element of obj.elements) {
-          traverse(element);
-        }
-      } else {
-        traverse(obj.elements);
-      }
-    }
-
     if ('name' in obj && obj.name) {
+      if (obj.name === 'T') {
+        return traverse(stash);
+      }
+
       let exported;
 
-      if (obj.kind === 'Local' && !obj.params) {
+      if (obj.kind === 'Local') {
         exported = exports.find(
           (x) => 'name' in x.value && x.value.name === obj.name,
         );
       }
 
       if (exported) {
-        traverse(exported.value as Type);
+        if (exported.value.kind !== 'InterfaceType') {
+          return traverse(exported.value as Type, obj?.params?.[0]);
+        } else if (stash) {
+          return traverse(stash);
+        }
       } else {
         occurences[obj.name] = occurences[obj.name] || 0;
         occurences[obj.name]++;
+      }
+    }
+
+    if ('params' in obj && obj.params) {
+      for (const param of obj.params) {
+        traverse(param, stash);
+      }
+    }
+
+    if ('properties' in obj && obj.properties) {
+      for (const property of obj.properties) {
+        traverse(property.value, stash);
+      }
+    }
+
+    if ('types' in obj && obj.types) {
+      for (const type of obj.types) {
+        traverse(type, stash);
+      }
+    }
+
+    if ('elements' in obj && obj.elements) {
+      if (Array.isArray(obj.elements)) {
+        for (const element of obj.elements) {
+          traverse(element, stash);
+        }
+      } else {
+        traverse(obj.elements, stash);
       }
     }
   }
