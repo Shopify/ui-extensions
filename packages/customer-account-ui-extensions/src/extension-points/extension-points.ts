@@ -17,6 +17,10 @@ export interface ExtensionPoints {
     StandardApi,
     AllComponents
   >;
+  'CustomerAccount::KitchenSink': RenderExtension<
+    StandardApi & {name: string},
+    AllComponents
+  >;
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;

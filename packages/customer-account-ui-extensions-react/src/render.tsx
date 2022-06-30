@@ -2,9 +2,12 @@ import type {ReactElement} from 'react';
 import {render as remoteRender} from '@remote-ui/react';
 import {extend} from '@shopify/customer-account-ui-extensions';
 import type {
-  RenderExtensionPoint,
   ApiForRenderExtension,
+  RenderExtension,
+  RenderExtensionPoint,
 } from '@shopify/customer-account-ui-extensions';
+
+type RenderFunction<T> = RenderExtension<T, any>;
 
 /**
  * Registers your React-based UI Extension to run for the selected extension point.
@@ -22,16 +25,12 @@ export function render<ExtensionPoint extends RenderExtensionPoint>(
   extensionPoint: ExtensionPoint,
   render: (api: ApiForRenderExtension<ExtensionPoint>) => ReactElement<any>,
 ) {
-  return extend<ExtensionPoint>(extensionPoint, (root, api) => {
+  const extendCallback: RenderFunction<any> = (root, api) => {
     return new Promise<void>((resolve, reject) => {
       try {
-        remoteRender(
-          render(api as ApiForRenderExtension<ExtensionPoint>),
-          root,
-          () => {
-            resolve();
-          },
-        );
+        remoteRender(render(api), root, () => {
+          resolve();
+        });
       } catch (error) {
         // Workaround for https://github.com/Shopify/ui-extensions/issues/325
         // eslint-disable-next-line no-console
@@ -39,5 +38,7 @@ export function render<ExtensionPoint extends RenderExtensionPoint>(
         reject(error);
       }
     });
-  });
+  };
+
+  return extend<ExtensionPoint>(extensionPoint, extendCallback);
 }
