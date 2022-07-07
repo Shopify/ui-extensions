@@ -49,9 +49,12 @@ const extensionPointsPageContent = (url: string): PartialStaticContent[] => [
 ];
 
 // Checkout docs
-extensionPoints(checkout, extensionPointsPageContent(checkout.shopifyDevUrl));
+extensionPoints(checkout, extensionPointsPageContent(checkout.shopifyDevUrl), {
+  visibility: 'visible',
+});
 components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
   generateReadmes: true,
+  visibility: 'visible',
   conditionalDocs: [
     {
       sourceFile: `${checkout.inputRoot}/documentation/conditional-props.md`,
@@ -60,4 +63,6 @@ components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
   ],
   componentsToSkip: ['isConditionalStyle'],
 });
-gettingStarted(checkout);
+gettingStarted(checkout, {
+  visibility: 'visible',
+});
