@@ -161,7 +161,27 @@ export function propsTable(
         const tags = propDocs?.tags?.length
           ? propDocs.tags.map(stringifyTag).join('\n')
           : '';
-        const description = newLineToBr(content + tags);
+        const comments = [];
+        if (value.kind === 'Local') {
+          const exported = exports.find(
+            (x) => 'name' in x.value && x.value.name === value.name,
+          );
+
+          if (exported && exported.value.kind === 'UnionType') {
+            for (const type of exported.value.types) {
+              if ('comments' in type && type.comments) {
+                comments.push(
+                  `\n\n<code>${propType(
+                    type,
+                    exports,
+                    dir,
+                  )}</code>: ${type.comments.join(' ')}`,
+                );
+              }
+            }
+          }
+        }
+        const description = newLineToBr(content + tags + comments.join(''));
 
         table.push([name, type, description]);
       }
