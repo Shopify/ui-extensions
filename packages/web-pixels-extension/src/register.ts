@@ -1,5 +1,5 @@
 import {ShopifyGlobal, EXTENSION_POINT} from './globals';
-import {WebPixelAPI} from './types/runtime-api';
+import {WebPixelAPI} from './types';
 
 declare const shopify: ShopifyGlobal;
 

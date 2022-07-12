@@ -1,4 +1,4 @@
-import {WebPixelAPI} from './types/runtime-api';
+import {WebPixelAPI} from './types';
 
 export const EXTENSION_POINT = 'WebPixel::Render';
 

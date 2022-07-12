@@ -52,13 +52,13 @@ export type WebPixelCallback = (
 ) => void;
 
 interface EventCallbackMetadata {
-  location?: {
+  location: {
     href: string;
     host: string;
     hostname: string;
     origin: string;
   };
-  referrer?: string;
+  referrer: string;
 }
 
 export interface WebPixelSubscribeOptions extends EventBusSubscribeOptions {
@@ -73,7 +73,7 @@ export interface WebPixelEventBus {
   ) => () => boolean;
 }
 
-// Publish Runtime API
+// Public Web Pixel API
 type Configuration = Record<string, any>;
 
 interface AnalyticsAPI {
@@ -88,15 +88,12 @@ interface BrowserAPI {
   readonly origin: {
     get: () => Promise<string>;
   };
-  readonly sendBeacon: (
-    url: string | URL,
-    data?: Record<string, unknown> | null,
-  ) => Promise<boolean>;
+  readonly sendBeacon: (url: string | URL, data?: string) => Promise<boolean>;
 }
 
 export interface WebPixelAPI {
-  configuration: Configuration;
-  analytics: AnalyticsAPI;
-  browser: BrowserAPI;
+  readonly configuration: Configuration;
+  readonly analytics: AnalyticsAPI;
+  readonly browser: BrowserAPI;
   readonly _pixelInfo: Record<string, unknown>;
 }
