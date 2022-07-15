@@ -1,6 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
-// import type {CSSShorthand, Responsive} from '@shopify/checkout-ui-extensions';
-// import type {Spacing} from '../shared-components';
+import type {
+  MaybeConditionalStyle,
+  MaybeShorthandProperty,
+  Spacing,
+} from '../shared-components';
 
 type Background = 'transparent' | 'color1' | 'color2' | 'color3';
 
@@ -23,8 +26,7 @@ export interface PageBlockProps {
    *
    * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
    */
-  //   padding?: CSSShorthand<Spacing> | Responsive<CSSShorthand<Spacing>>;
-  padding: any;
+  padding?: MaybeConditionalStyle<MaybeShorthandProperty<Spacing>>;
 }
 
 export const PageBlock = createRemoteComponent<'PageBlock', PageBlockProps>(
