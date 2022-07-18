@@ -1,8 +1,9 @@
-import type {StandardEventsV0} from './standard-events-V0';
-import type {StandardEventsV1} from './standard-events-V1';
+import type {StandardEventsV0, StandardEventNameV0} from './StandardEventsV0';
+import type {StandardEventsV1, StandardEventNameV1} from './StandardEventsV1';
 
 // Standard Events
 type StandardEvent = StandardEventsV0 | StandardEventsV1;
+type StandardEventName = StandardEventNameV0 | StandardEventNameV1;
 const SCHEMA_VERSIONS = ['v0', 'v1'] as const;
 export type SchemaVersion = typeof SCHEMA_VERSIONS[number];
 
@@ -26,7 +27,7 @@ export type EventBusSubscribe<T> = (
 
 interface EventBus {
   subscribe: (
-    channel: string,
+    channel: StandardEventName,
     callback: WebPixelCallback,
     options?: SubscribeOptions,
   ) => () => boolean;
