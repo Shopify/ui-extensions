@@ -1,11 +1,12 @@
-import {createRemoteComponent} from '@remote-ui/core';
-import {Background, SpacingProps} from 'components/shared';
+import type {
+  MaybeConditionalStyle,
+  MaybeShorthandProperty,
+  Spacing,
+} from './shared-components';
 
-export interface PageBlockProps {
-  /**
-   * Adjust the background.
-   */
-  background?: Background;
+export type Background = 'transparent' | 'color1' | 'color2' | 'color3';
+
+export interface SpacingProps {
   /**
    * Adjust the padding.
    *
@@ -20,9 +21,5 @@ export interface PageBlockProps {
    *
    * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
    */
-  padding?: SpacingProps['padding'];
+  padding?: MaybeConditionalStyle<MaybeShorthandProperty<Spacing>>;
 }
-
-export const PageBlock = createRemoteComponent<'PageBlock', PageBlockProps>(
-  'PageBlock',
-);
