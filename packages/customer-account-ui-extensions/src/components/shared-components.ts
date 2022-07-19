@@ -58,6 +58,8 @@ export type {
   LinkProps,
   ListProps,
   ListItemProps,
+  MaybeConditionalStyle,
+  MaybeShorthandProperty,
   SelectProps,
   SkeletonImageProps,
   SkeletonTextProps,
