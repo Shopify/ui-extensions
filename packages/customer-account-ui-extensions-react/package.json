@@ -1,6 +1,6 @@
 {
   "name": "@shopify/customer-account-ui-extensions-react",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "React bindings for @shopify/customer-account-ui-extensions",
   "publishConfig": {
     "access": "public",
@@ -23,7 +23,7 @@
   "dependencies": {
     "@remote-ui/react": "^4.5.2",
     "@shopify/checkout-ui-extensions-react": "^0.17.1",
-    "@shopify/customer-account-ui-extensions": "^0.0.7"
+    "@shopify/customer-account-ui-extensions": "^0.0.8"
   },
   "peerDependencies": {
     "react": ">=17.0.0 <18.0.0"
