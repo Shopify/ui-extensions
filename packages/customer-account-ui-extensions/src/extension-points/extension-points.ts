@@ -17,6 +17,14 @@ export interface ExtensionPoints {
     StandardApi,
     AllComponents
   >;
+  'CustomerAccount::Returns::FullPage::RenderWithin': RenderExtension<
+    StandardApi,
+    AllComponents
+  >;
+  'CustomerAccount::Subscriptions::FullPage::RenderWithin': RenderExtension<
+    StandardApi,
+    AllComponents
+  >;
   'CustomerAccount::KitchenSink': RenderExtension<
     StandardApi & {name: string},
     AllComponents
