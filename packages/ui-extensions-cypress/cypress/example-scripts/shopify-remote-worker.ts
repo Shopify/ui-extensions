@@ -37,7 +37,6 @@ addEventListener("message", ({ data }) => {
 //  * with the host
 //  */
 // const endpoint = createEndpoint(self);
-
 !(function (e, t) {
   "object" == typeof exports && "object" == typeof module
     ? (module.exports = t())
@@ -575,3 +574,26 @@ try {
 } catch(err) {
   console.log('Couldn\'t define indexedDB')
 }
+
+/**
+ * Error handling
+ */
+// 1
+self.onerror = (error) => {
+  console.warn("self.onerror", error);
+};
+
+// 3
+self.addEventListener("error", (error) => {
+  console.warn("event error", error);
+});
+
+// 2
+self.onunhandledrejection = (error) => {
+  console.warn("self.onunhandledrejection", error);
+};
+
+// 4
+self.addEventListener("unhandledrejection", (error) => {
+  console.warn("event unhandledrejection", error);
+});
