@@ -557,7 +557,7 @@ const api = {
 };
 
 endpoint.expose(api);
-// console.warn('ENDPOINT EXPOSED', endpoint, api)
+console.warn('ENDPOINT EXPOSED', endpoint, api)
 
 // export default { foo: 'bar' }
 
