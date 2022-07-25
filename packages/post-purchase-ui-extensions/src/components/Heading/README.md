@@ -1,6 +1,6 @@
 # Heading
 
-Headings are used as the titles of each major section of he checkout. Unlike HTML
+Headings are used as the titles of each major section of the checkout. Unlike HTML
 headings, you do not explicitly specify the position of the heading in the document
 outline. Instead, use headings nested in heading groups to create a document structure
 that accessibility technologies can use to speed up navigation.
