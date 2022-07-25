@@ -2,7 +2,7 @@ import * as React from 'react';
 // import {useCallback, useState} from 'react';
 // import { useWorker } from "@remote-ui/react/host";
 import {useWorker} from '@shopify/react-web-worker';
-// import {Toast} from '@shopify/admin-ui-extensions-react';
+import {useToast} from '@shopify/admin-ui-extensions-react';
 
 import {createWorkerFactory} from '@shopify/web-worker';
 import {createIframeWorkerMessenger} from './messenger';
@@ -19,6 +19,7 @@ export default function App() {
   const worker = useWorker(createWorker, {
     createMessenger: createIframeWorkerMessenger,
   });
+  const toastAPI = useToast();
   console.warn('METHODS', worker, Object.keys(worker));
   // const worker = useWorker(createWorker);
 
@@ -40,6 +41,7 @@ export default function App() {
         show: (message) => {
           setToastMessage(message);
           setToastActive(true);
+          toastAPI.showToast(message);
         },
       },
     });
