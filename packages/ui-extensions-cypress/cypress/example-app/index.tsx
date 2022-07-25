@@ -1,5 +1,8 @@
 import * as React from 'react';
 import {useWorker} from '@shopify/react-web-worker';
+import {Toast} from '@shopify/polaris';
+import '@shopify/polaris/build/esm/styles.css';
+
 // import {useToast} from '@shopify/admin-ui-extensions-react';
 
 import {createWorkerFactory} from '@shopify/web-worker';
@@ -49,8 +52,11 @@ export default function App() {
         <button onClick={renderExtension}>Render extension</button>
       </article>
       {toastActive ? (
-        <button onClick={dismissToast}>Toast Message Sent!</button>
+        <Toast content={toastMessage} onDismiss={dismissToast} />
       ) : null}
+      {/* {toastActive ? (
+        <button onClick={dismissToast}>Toast Message Sent!</button>
+      ) : null} */}
     </section>
   );
 }
