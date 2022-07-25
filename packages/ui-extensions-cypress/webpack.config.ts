@@ -3,7 +3,7 @@ import {WebWorkerPlugin} from '@shopify/web-worker/webpack';
 
 module.exports = {
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json'],
+    extensions: ['.mjs', '.ts', '.tsx', '.js', '.json'],
   },
   plugins: [
     // Work around for Buffer is undefined:
@@ -35,6 +35,12 @@ module.exports = {
         test: /\.mjs$/,
         include: /node_modules/,
         type: 'javascript/auto',
+        // Must add fullySpecified: false to avoid errors w/ strict type ecma modules like admin-ui-extensions-react
+        // Because it is using mjs modules in the esm build
+        // https://github.com/graphql/graphql-js/issues/2721#issuecomment-723008284
+        resolve: {
+          fullySpecified: false,
+        },
       },
       // other rules...
       // This is the rule for our application JavaScript/ TypeScript
