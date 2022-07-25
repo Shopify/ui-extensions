@@ -2,6 +2,7 @@ import * as React from 'react';
 // import {useCallback, useState} from 'react';
 // import { useWorker } from "@remote-ui/react/host";
 import {useWorker} from '@shopify/react-web-worker';
+// import {Toast} from '@shopify/admin-ui-extensions-react';
 
 import {createWorkerFactory} from '@shopify/web-worker';
 import {createIframeWorkerMessenger} from './messenger';
@@ -9,7 +10,7 @@ import {createIframeWorkerMessenger} from './messenger';
 const createWorker = createWorkerFactory(
   () =>
     import(
-      /* webpackChunkName: 'example' */ '../example-scripts/shopify-worker'
+      /* webpackChunkName: 'worker' */ '../example-scripts/shopify-worker'
     ),
   // new URL('/worker.js', location.href).toString(),
 );
@@ -56,8 +57,10 @@ export default function App() {
         <button onClick={renderExtension}>Render extension</button>
       </article>
       {toastActive ? <button onClick={dismissToast}>TOAST</button> : null}
-      <button>TOAST HERE</button>
-      {/* // <Toast content={toastMessage} onDismiss={dismissToast} /> */}
+      {/* <button>TOAST HERE</button> */}
+      {/* {toastActive ? (
+        <Toast content={toastMessage} onDismiss={dismissToast} />
+      ) : null} */}
     </section>
   );
 }
