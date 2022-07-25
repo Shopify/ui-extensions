@@ -7,7 +7,10 @@ import {createWorkerFactory} from '@shopify/web-worker';
 import {createIframeWorkerMessenger} from './messenger';
 
 const createWorker = createWorkerFactory(
-  () => import(/* webpackChunkName: 'example' */ '../example-scripts/worker'),
+  () =>
+    import(
+      /* webpackChunkName: 'example' */ '../example-scripts/shopify-worker'
+    ),
   // new URL('/worker.js', location.href).toString(),
 );
 
@@ -53,6 +56,7 @@ export default function App() {
         <button onClick={renderExtension}>Render extension</button>
       </article>
       {toastActive ? <button onClick={dismissToast}>TOAST</button> : null}
+      <button>TOAST HERE</button>
       {/* // <Toast content={toastMessage} onDismiss={dismissToast} /> */}
     </section>
   );
