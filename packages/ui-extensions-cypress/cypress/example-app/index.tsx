@@ -1,8 +1,17 @@
 import * as React from 'react';
 import {useWorker} from '@shopify/react-web-worker';
-import {Toast} from '@shopify/polaris';
-// import '@shopify/polaris/build/esm/styles.css';
+import {
+  AppProvider,
+  Frame,
+  Card,
+  Stack,
+  Button,
+  ButtonGroup,
+  Toast,
+} from '@shopify/polaris';
+import '@shopify/polaris/build/esm/styles.css';
 
+// TODO: Figure out what's up with the missing API here?
 // import {useToast} from '@shopify/admin-ui-extensions-react';
 
 import {createWorkerFactory} from '@shopify/web-worker';
@@ -44,19 +53,29 @@ export default function App() {
   }, []);
 
   return (
-    <section>
-      <h1>Remote UI deep dive"</h1>
-      <p>Inspect the page to see console log</p>
-      <article>
-        <button onClick={loadExtension}>Load extension</button>
-        <button onClick={renderExtension}>Render extension</button>
-      </article>
-      {/* {toastActive ? (
-        <Toast content={toastMessage} onDismiss={dismissToast} />
-      ) : null} */}
-      {toastActive ? (
-        <button onClick={dismissToast}>Toast Message Sent!</button>
-      ) : null}
-    </section>
+    <AppProvider i18n={{}}>
+      <Frame>
+        <Card title="Testing UI Ext. Components w/ Cypress">
+          <Card.Section>
+            <Stack spacing="loose" vertical>
+              <p>Load an external script, then press "render" to execute it</p>
+              <p>Inspect the page to see console log</p>
+              <br />
+            </Stack>
+            <Stack spacing="loose" distribution="trailing">
+              <ButtonGroup>
+                <Button primary onClick={loadExtension}>
+                  Load extension
+                </Button>
+                <Button onClick={renderExtension}>Render extension</Button>
+              </ButtonGroup>
+            </Stack>
+          </Card.Section>
+        </Card>
+        {toastActive ? (
+          <Toast content={toastMessage} onDismiss={dismissToast} />
+        ) : null}
+      </Frame>
+    </AppProvider>
   );
 }
