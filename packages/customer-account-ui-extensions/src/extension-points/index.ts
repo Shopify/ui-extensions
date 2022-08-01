@@ -1,6 +1,6 @@
 export type {ExtensionPoints, ExtensionPoint} from './extension-points';
 export type {RenderExtension} from './render-extension';
-export type {StandardApi} from './standard-api';
+export type {StandardApi, Language, Localization} from './standard-api';
 export type {
   ApiForRenderExtension,
   ArgumentsForExtension,
