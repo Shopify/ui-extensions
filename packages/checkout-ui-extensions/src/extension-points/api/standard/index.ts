@@ -680,12 +680,12 @@ export interface PresentmentCartLine {
   /**
    * Line item title.
    */
-  title: String;
+  title: string;
 
   /**
    * Line item subtitle.
    */
-  subtitle: String;
+  subtitle: string;
 
   /**
    * Merchandises being purchased.
