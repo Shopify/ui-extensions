@@ -535,6 +535,11 @@ export interface StandardApi<
   lines: StatefulRemoteSubscribable<CartLine[]>;
 
   /**
+   * A list of the line items displayed in the checkout. These may be the same as lines, or may be a subset.
+   */
+  presentmentLines: StatefulRemoteSubscribable<PresentmentCartLine[]>;
+
+  /**
    * Performs an update on the merchandise line items. It resolves when the new
    * line items have been negotiated and results in an update to the value
    * retrieved through the `lines` property.
@@ -670,6 +675,47 @@ export interface CartCost {
    * the information step may not have delivery costs calculated.
    */
   totalAmount: StatefulRemoteSubscribable<Money>;
+}
+export interface PresentmentCartLine {
+  /**
+   * Line item title.
+   */
+  title: String;
+
+  /**
+   * Line item subtitle.
+   */
+  subtitle: String;
+
+  /**
+   * Merchandises being purchased.
+   */
+  merchandiseLines: Merchandise[];
+
+  /**
+   * Quantity of the Merchandise being purchased.
+   */
+  quantity: number;
+
+  /**
+   * Price before discount for this cart line.
+   */
+  priceBeforeReduction: Money;
+
+  /**
+   * Price after discount for this cart line.
+   */
+  priceAfterReduction: Money;
+
+  /**
+   * Line item additional custom attributes.
+   */
+  attributes: Attribute[];
+
+  /**
+   * Image associated with the line item.
+   */
+  image?: ImageDetails;
 }
 
 export interface CartLine {
