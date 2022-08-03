@@ -677,6 +677,12 @@ export interface CartCost {
   totalAmount: StatefulRemoteSubscribable<Money>;
 }
 export interface PresentmentCartLine {
+
+  /**
+   * TODO unclear yet what form this will take.
+   */
+  id: string;
+
   /**
    * Line item title.
    */
