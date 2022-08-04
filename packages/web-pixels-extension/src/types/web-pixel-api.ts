@@ -1,9 +1,9 @@
-import type {StandardEventsV0, StandardEventNameV0} from './StandardEventsV0';
-import type {StandardEventsV1, StandardEventNameV1} from './StandardEventsV1';
+import type {StandardEventsV0} from './StandardEventsV0';
+import type {StandardEventsV1} from './StandardEventsV1';
 
 // Standard Events
 type StandardEvent = StandardEventsV0 | StandardEventsV1;
-type StandardEventName = StandardEventNameV0 | StandardEventNameV1;
+type CustomEvent = Record<string, any>;
 const SCHEMA_VERSIONS = ['v0', 'v1'] as const;
 export type SchemaVersion = typeof SCHEMA_VERSIONS[number];
 
@@ -27,7 +27,7 @@ export type EventBusSubscribe<T> = (
 
 interface EventBus {
   subscribe: (
-    channel: StandardEventName,
+    channel: EventBusChannel,
     callback: WebPixelCallback,
     options?: SubscribeOptions,
   ) => () => boolean;
@@ -48,7 +48,7 @@ export interface WebPixelPublishPayload extends EventBusPublishPayload {
 }
 
 export type WebPixelCallback = (
-  event: StandardEvent,
+  event: StandardEvent | CustomEvent,
   metadata: EventCallbackMetadata,
 ) => void;
 
@@ -64,14 +64,6 @@ interface EventCallbackMetadata {
 
 export interface WebPixelSubscribeOptions extends EventBusSubscribeOptions {
   schemaVersion?: SchemaVersion;
-}
-export interface WebPixelEventBus {
-  publish: EventBusPublish<WebPixelPublishPayload>;
-  subscribe: (
-    channel: string,
-    callback: WebPixelCallback,
-    options?: WebPixelSubscribeOptions,
-  ) => () => boolean;
 }
 
 // Public Web Pixel API
@@ -90,6 +82,22 @@ interface BrowserAPI {
     get: () => Promise<string>;
   };
   readonly sendBeacon: (url: string | URL, data?: string) => Promise<boolean>;
+  readonly localStorage: {
+    setItem: (key: string, value: any) => void;
+    getItem: (key: string) => Promise<string | null>;
+    key: (index: number) => Promise<string | null>;
+    removeItem: (key: string) => void;
+    clear: () => void;
+    length: () => Promise<number | null>;
+  };
+  readonly sessionStorage: {
+    setItem: (key: string, value: any) => void;
+    getItem: (key: string) => Promise<string | null>;
+    key: (index: number) => Promise<string | null>;
+    removeItem: (key: string) => void;
+    clear: () => void;
+    length: () => Promise<number | null>;
+  };
 }
 
 export interface WebPixelAPI {
