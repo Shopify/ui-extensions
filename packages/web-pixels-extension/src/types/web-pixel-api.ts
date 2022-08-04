@@ -65,6 +65,7 @@ interface EventCallbackMetadata {
 export interface WebPixelSubscribeOptions extends EventBusSubscribeOptions {
   schemaVersion?: SchemaVersion;
 }
+
 export interface WebPixelEventBus {
   publish: EventBusPublish<WebPixelPublishPayload>;
   subscribe: (
@@ -90,6 +91,22 @@ interface BrowserAPI {
     get: () => Promise<string>;
   };
   readonly sendBeacon: (url: string | URL, data?: string) => Promise<boolean>;
+  readonly localStorage: {
+    setItem: (key: string, value: any) => void;
+    getItem: (key: string) => Promise<string | null>;
+    key: (index: number) => Promise<string | null>;
+    removeItem: (key: string) => void;
+    clear: () => void;
+    length: () => Promise<number | null>;
+  };
+  readonly sessionStorage: {
+    setItem: (key: string, value: any) => void;
+    getItem: (key: string) => Promise<string | null>;
+    key: (index: number) => Promise<string | null>;
+    removeItem: (key: string) => void;
+    clear: () => void;
+    length: () => Promise<number | null>;
+  };
 }
 
 export interface WebPixelAPI {
