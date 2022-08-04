@@ -676,6 +676,7 @@ export interface CartCost {
    */
   totalAmount: StatefulRemoteSubscribable<Money>;
 }
+
 export interface PresentmentCartLine {
   /**
    * TODO unclear yet what form this will take.
@@ -693,9 +694,9 @@ export interface PresentmentCartLine {
   subtitle: string;
 
   /**
-   * Merchandises being purchased.
+   * Merchandise lines being purchased.
    */
-  merchandiseLines: Merchandise[];
+  merchandiseLines: PresentmentMerchandiseLine[];
 
   /**
    * Quantity of the Merchandise being purchased.
@@ -712,15 +713,47 @@ export interface PresentmentCartLine {
    */
   priceAfterReduction: Money;
 
+
+  /**
+   * Image associated with the line item.
+   */
+  image?: ImageDetails;
+}
+
+export interface PresentmentMerchandiseLine extends BaseMerchandise {
+  type: 'presentmentMerchandise';
+
+  /**
+   * A globally-unique identifier.
+   * @example 'gid://shopify/PresentmentMerchandise/123'
+   */
+  id: string;
+
   /**
    * Line item additional custom attributes.
    */
   attributes: Attribute[];
 
   /**
-   * Image associated with the line item.
+   * The product variant’s title.
+   */
+  title: string;
+
+  /**
+   * Image associated with the product variant. This field falls back to the product
+   * image if no image is available.
    */
   image?: ImageDetails;
+
+  /**
+   * List of product options applied to the variant.
+   */
+  selectedOptions: SelectedOption[];
+
+  /**
+   * The product object that the product variant belongs to.
+   */
+  product: Product;
 }
 
 export interface CartLine {

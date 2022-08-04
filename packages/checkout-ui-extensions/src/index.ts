@@ -55,6 +55,7 @@ export type {
   CartLineUpdateChange,
   CartLineRemoveChange,
   PresentmentCartLine,
+  PresentmentMerchandiseLine,
   I18n,
   I18nTranslate,
   Currency,
