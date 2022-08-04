@@ -696,7 +696,7 @@ export interface PresentmentCartLine {
   /**
    * Merchandise lines being purchased.
    */
-  merchandiseLines: PresentmentMerchandiseLine[];
+  merchandiseLines: PresentmentMerchandise[];
 
   /**
    * Quantity of the Merchandise being purchased.
@@ -713,12 +713,13 @@ export interface PresentmentCartLine {
    */
   priceAfterReduction: Money;
 
-
   /**
    * Image associated with the line item.
    */
   image?: ImageDetails;
 }
+
+type PresentmentMerchandise = PresentmentMerchandiseLine;
 
 export interface PresentmentMerchandiseLine extends BaseMerchandise {
   type: 'presentmentMerchandise';
