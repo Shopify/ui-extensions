@@ -21,6 +21,7 @@
     "./": "./"
   },
   "dependencies": {
+    "@remote-ui/async-subscription": "^2.1.10",
     "@remote-ui/core": "^2.1.10",
     "@shopify/checkout-ui-extensions": "^0.17.1"
   }
