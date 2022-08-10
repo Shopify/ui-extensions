@@ -166,12 +166,22 @@ export async function components(
       face.value.kind === 'InterfaceType' &&
       face.value.properties.length > 0
     ) {
+      const exports = [...nodes];
+      const params = face.value.params;
+      if (params?.[0]) {
+        exports.unshift({
+          value: {
+            name: params[0].name,
+            ...params[0].constraint,
+          },
+        } as Node);
+      }
       propsTableMd += '## Props\noptional = ?\n';
       propsTableMd += propsTable(
         name,
         docs,
         face.value.properties,
-        nodes,
+        exports,
         componentIndex,
         additionalPropsTables,
         false,
