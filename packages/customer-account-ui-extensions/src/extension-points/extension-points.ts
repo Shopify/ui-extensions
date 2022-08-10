@@ -1,3 +1,4 @@
+import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 import {RenderExtension} from './render-extension';
 import type {StandardApi} from './standard-api';
 
@@ -14,13 +15,20 @@ type AllComponents = Components[keyof Components];
  */
 export interface ExtensionPoints {
   'CustomerAccount::FullPage::RenderWithin': RenderExtension<
-    StandardApi,
+    StandardApi & FullPageApi,
     AllComponents
   >;
   'CustomerAccount::KitchenSink': RenderExtension<
     StandardApi & {name: string},
     AllComponents
   >;
+}
+
+interface FullPageApi {
+  location: StatefulRemoteSubscribable<{
+    pathname: string;
+    search: string;
+  }>;
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;
