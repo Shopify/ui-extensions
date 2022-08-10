@@ -1,4 +1,4 @@
-import {resolve, extname} from 'path';
+import {resolve} from 'path';
 import * as fs from 'fs';
 import {createDependencyGraph} from '@shopify/docs-tools';
 
@@ -96,7 +96,7 @@ export async function components(
 
   const useSourceFileForIndex = Boolean(sourceFile);
 
-  if (useSourceFileForIndex) {
+  if (useSourceFileForIndex && sourceFile) {
     index += fs.readFileSync(sourceFile, 'utf8');
     if (sourceFileStringReplacements) {
       sourceFileStringReplacements.forEach((sfr) => {
@@ -107,7 +107,7 @@ export async function components(
     index += `${description}\n\n`;
   }
 
-  const indexContent = [];
+  const indexContent: string[] = [];
 
   components.forEach(({value: {name, docs, props}}: any) => {
     if (componentsToSkip.includes(name)) return;
@@ -189,7 +189,7 @@ export async function components(
           // If properties contain a type reference we are looking for...
           if (
             componentProperties.filter(
-              (prop) =>
+              (prop: any) =>
                 prop.value.kind === 'Local' &&
                 propTypeNames.includes(prop.value.name),
             ).length > 0
@@ -310,8 +310,8 @@ async function buildComponentGraph(componentIndex: string) {
 
   const nodes: Node[] = [];
 
-  graph.forEach((value) => {
-    value.locals.forEach((value: any, key) => {
+  graph.forEach((value: any) => {
+    value.locals.forEach((value: any, key: string) => {
       if (value.kind !== 'Imported') {
         if (value.name == null) {
           value.name = key;
