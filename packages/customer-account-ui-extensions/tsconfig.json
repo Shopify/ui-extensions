@@ -7,5 +7,6 @@
     "isolatedModules": true
   },
   "include": ["src/**/*.ts"],
+  "exclude": ["src/**/tests/**"],
   "references": [{"path": "../checkout-ui-extensions"}]
 }
