@@ -69,10 +69,10 @@ export type {TextFieldProps} from './TextField';
 export {View} from './View';
 export type {
   ViewProps,
+  ViewCoordinate,
   ViewPosition,
   ViewPositionType,
   ViewTranslate,
-  ViewCoordinate,
 } from './View';
 export type {
   AccessibilityRole,
@@ -84,6 +84,7 @@ export type {
   Background,
   BackgroundFit,
   BackgroundPosition,
+  BackgroundRepeat,
   BlockAlignment,
   InlineAlignment,
   BorderRadius,
@@ -101,4 +102,9 @@ export type {
   GridItemSize,
   Columns,
   Rows,
+  BackgroundProps,
+  BorderProps,
+  SizingProps,
+  SpacingProps,
+  VisibilityProps,
 } from './shared';

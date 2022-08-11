@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {MaybeConditionalStyle} from '../../style';
+import {BorderProps, SizingProps, SpacingProps} from '../shared';
 
 export interface ScrollViewEvent {
   position: {
@@ -17,7 +17,10 @@ export interface ScrollViewEvent {
   };
 }
 
-export interface ScrollViewProps {
+export interface ScrollViewProps
+  extends BorderProps,
+    SizingProps,
+    SpacingProps {
   /**
    * Provides a hint to the user that the area is scrollable.
    *
@@ -26,47 +29,6 @@ export interface ScrollViewProps {
    * `innerShadow`: renders an inner visual hint to indicate that the content is scrollable.
    */
   hint?: 'innerShadow' | {type: 'pill'; content: string};
-  /**
-   * Adjust the minimum block size.
-   *
-   * `number`: size in pixels.
-   *
-   * `` `${number}%` ``: size in percentages.
-   *
-   * `fill`: takes all the available space.
-   */
-  // eslint-disable-next-line prettier/prettier
-  minBlockSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
-  /**
-   * Adjust the maximum block size.
-   *
-   * `number`: size in pixels.
-   *
-   * `` `${number}%` ``: size in percentages.
-   *
-   * `fill`: takes all the available space.
-   */
-  maxBlockSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
-  /**
-   * Adjust the minimum inline size.
-   *
-   * `number`: size in pixels.
-   *
-   * `` `${number}%` ``: size in percentages.
-   *
-   * `fill`: takes all the available space.
-   */
-  minInlineSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
-  /**
-   * Adjust the maximum inline size.
-   *
-   * `number`: size in pixels.
-   *
-   * `` `${number}%` ``: size in percentages.
-   *
-   * `fill`: takes all the available space.
-   */
-  maxInlineSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
   /**
    * The direction on which the content is scrollable.
    *
@@ -99,6 +61,10 @@ export interface ScrollViewProps {
   onScrolledToEdge?: (args: ScrollViewEvent) => void;
 }
 
+/**
+ * ScrollView is a container for long form content, such as order summary line items,
+ * that allows for scrolling so customers can expose more content as they view.
+ */
 export const ScrollView = createRemoteComponent<'ScrollView', ScrollViewProps>(
   'ScrollView',
 );

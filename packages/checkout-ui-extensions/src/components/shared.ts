@@ -140,16 +140,50 @@ export type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
 export type BorderStyle = 'base' | 'dotted' | 'none';
 export type BorderWidth = 'base' | 'medium';
 
-export interface Bordered {
+export interface BackgroundProps {
+  /**
+   * Adjust the background.
+   */
+  background?: MaybeConditionalStyle<Background>;
+  /**
+   * Sets one or multiple responsive background images.
+   */
+  backgroundImage?: MaybeConditionalStyle<string>;
+
+  /**
+   * Indicates if the background image should scale its container without cropping
+   * and stretching, or scale as large as possible to fill the container and stretching if necessary.
+   */
+  backgroundFit?: BackgroundFit;
+
+  /**
+   * Sets the initial position of the background image.
+   *
+   * @defaultValue 'center'
+   */
+  backgroundPosition?: BackgroundPosition;
+
+  /**
+   * Sets how background image are repeated.
+   *
+   * @defaultValue 'noRepeat'
+   */
+  backgroundRepeat?: BackgroundRepeat;
+}
+
+export interface BorderProps {
   /**
    * Adjust the border style.
    *
    * To shorten the code, it is possible to specify all the border style properties in one property.
    *
-   * Examples:
+   * For example:
+   *
    * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border styles are `base`
-   * - [`base`, `none`] means blockStart and blockEnd border styles are `base`, inlineStart and inlineEnd border styles are `none`
-   * - [`base`, `none`, `dotted`, `base`] means blockStart border style is `base`, inlineEnd border style is `none`, blockEnd border style is `dotted` and  blockStart border style is `base`
+   *
+   * - `['base', 'none']` means blockStart and blockEnd border styles are `base`, inlineStart and inlineEnd border styles are `none`
+   *
+   * - `['base', 'none', 'dotted', 'base']` means blockStart border style is `base`, inlineEnd border style is `none`, blockEnd border style is `dotted` and  blockStart border style is `base`
    */
   border?: MaybeConditionalStyle<MaybeShorthandProperty<BorderStyle>>;
 
@@ -158,10 +192,13 @@ export interface Bordered {
    *
    * To shorten the code, it is possible to specify all the border width properties in one property.
    *
-   * Examples:
+   * For example:
+   *
    * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border widths are `base`
-   * - [`base`, `medium`] means blockStart and blockEnd border widths are `base`, inlineStart and inlineEnd border widths are `medium`
-   * - [`base`, `medium`, `medium`, `base`] means blockStart border width is `base`, inlineEnd border width is `medium`, blockEnd border width is `medium` and  blockStart border width is `base`
+   *
+   * - `['base', 'medium']` means blockStart and blockEnd border widths are `base`, inlineStart and inlineEnd border widths are `medium`
+   *
+   * - `['base', 'medium', 'medium', 'base']` means blockStart border width is `base`, inlineEnd border width is `medium`, blockEnd border width is `medium` and  blockStart border width is `base`
    */
   borderWidth?: MaybeConditionalStyle<MaybeShorthandProperty<BorderWidth>>;
 
@@ -170,12 +207,80 @@ export interface Bordered {
    *
    * To shorten the code, it is possible to specify all the border width properties in one property.
    *
-   * Examples:
+   * For example:
+   *
    * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border radii are `base`
-   * - [`base`, `none`] means blockStart and blockEnd border radii are `base`, inlineStart and inlineEnd border radii are `none`
-   * - [`base`, `none`, `tight`, `base`] means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`
+   *
+   * - `['base', 'none']` means blockStart and blockEnd border radii are `base`, inlineStart and inlineEnd border radii are `none`
+   *
+   * - `['base', 'none', 'tight', 'base']` means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`
    */
   borderRadius?: MaybeConditionalStyle<MaybeShorthandProperty<BorderRadius>>;
+}
+
+export interface SizingProps {
+  /**
+   * Adjust the maximum block size.
+   *
+   * `number`: size in pixels.
+   *
+   * `` `${number}%` ``: size in percentages.
+   *
+   * `fill`: takes all the available space.
+   */
+  // eslint-disable-next-line prettier/prettier
+  maxBlockSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
+
+  /**
+   * Adjust the maximum inline size.
+   *
+   * `number`: size in pixels.
+   *
+   * `` `${number}%` ``: size in percentages.
+   *
+   * `fill`: takes all the available space.
+   */
+  maxInlineSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
+
+  /**
+   * Adjust the minimum inline size.
+   *
+   * `number`: size in pixels.
+   *
+   * `` `${number}%` ``: size in percentages.
+   *
+   * `fill`: takes all the available space.
+   */
+  minInlineSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
+
+  /**
+   * Adjust the block size.
+   *
+   * `number`: size in pixels.
+   *
+   * `` `${number}%` ``: size in percentages.
+   *
+   * `fill`: takes all the available space.
+   */
+  minBlockSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
+}
+
+export interface SpacingProps {
+  /**
+   * Adjust the padding.
+   *
+   * To shorten the code, it is possible to specify all the padding properties in one property.
+   *
+   *
+   * Examples:
+   *
+   * - `base` means blockStart, inlineEnd, blockEnd and inlineStart paddings are `base`
+   *
+   * - [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`
+   *
+   * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
+   */
+  padding?: MaybeConditionalStyle<MaybeShorthandProperty<Spacing>>;
 }
 
 export type AccessibilityRole =
@@ -294,8 +399,9 @@ export type InlineAlignment = 'start' | 'center' | 'end';
 export type BlockAlignment = Alignment | 'baseline';
 
 export type Background = 'transparent' | 'color1' | 'color2' | 'color3';
-export type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
 export type BackgroundFit = 'cover' | 'contain';
+export type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
+export type BackgroundRepeat = 'repeat' | 'noRepeat';
 
 export type Appearance =
   /** Use to convey emphasis and draw attention to the icon.*/
@@ -317,13 +423,20 @@ export type Appearance =
 
 export type Direction = 'inline' | 'block';
 
-export type Fit = 'cover' | 'contain';
+export type Fit =
+  /**
+   * Image maintains its aspect ratio while fitting within the frame.
+   */
+  | 'cover'
+  /**
+   * Image maintains its aspect ratio while filling the frame. If the image is larger than the frame, it will be cropped.
+   */
+  | 'contain';
 
 export type GridItemSize =
   | 'auto'
   | 'fill'
   | number
-  // eslint-disable-next-line prettier/prettier
   | `${number}fr`
   | `${number}%`;
 
@@ -340,7 +453,7 @@ export type Emphasis =
    */
   | 'stress'
   /**
-   *  Indicate an offset from the normal prose of the text. Typically used to indicate
+   * Indicate an offset from the normal prose of the text. Typically used to indicate
    * a foreign word, fictional character thoughts, or when the text refers to the definition of a word
    * instead of representing its semantic meaning.
    * By default the text will be italic and render a `<i>` tag in an HTML host.
@@ -395,3 +508,14 @@ export type MultiPick<Base, AcceptedCombinations extends (keyof Base)[]> = {
     >]?: never;
   };
 }[number];
+
+export type Visibility = 'hidden';
+export interface VisibilityProps {
+  /**
+   * Changes the visibility of the element.
+   *
+   * `hidden` visually hides the component while keeping it accessible to assistive technology (for example,
+   * a screen reader). Hidden elements do not take any visual space contrary to CSS visibility: hidden;
+   */
+  visibility?: Visibility;
+}

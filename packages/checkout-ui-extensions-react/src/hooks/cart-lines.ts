@@ -19,6 +19,9 @@ export function useCartLines<
   return useSubscription(lines);
 }
 
+/**
+ * Returns a function to mutate the `lines` property of checkout.
+ */
 export function useApplyCartLinesChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint
 >(): StandardApi<ID>['applyCartLinesChange'] {

@@ -37,6 +37,17 @@ export interface Storage {
 }
 
 /**
+ * High-level capabilities an extension is allowed to have access to.
+ *
+ * * `network_access` allows an extension to make network calls via fetch() and
+ *    is requested by a partner
+ *
+ * * `block_progress` allows an extension to block a buyer's progress through
+ *    checkout and may be granted by a merchant in differing checkout contexts
+ */
+export type Capability = 'network_access' | 'block_progress';
+
+/**
  * Meta information about an extension point.
  */
 export interface Extension {
@@ -66,6 +77,11 @@ export interface Extension {
    * buyer navigates back, your extension is immediately available to render.
    */
   rendered: StatefulRemoteSubscribable<boolean>;
+
+  /**
+   * High-level capabilities an extension is allowed to have access to.
+   */
+  capabilities: StatefulRemoteSubscribable<Capability[]>;
 }
 
 /**
@@ -355,6 +371,23 @@ export interface I18n {
   ) => string;
 
   /**
+   * This returns a localized date value.
+   *
+   * This behaves like the standard Intl.DateTimeFormatOptions() and uses
+   * the buyers locale by default. Formatting options can be passed in as
+   * options.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat0
+   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options
+   *
+   * @param options.inExtensionLocale - if true, use the extension's locale
+   */
+  formatDate: (
+    date: Date,
+    options?: {inExtensionLocale?: boolean} & Intl.DateTimeFormatOptions,
+  ) => string;
+
+  /**
    * This returns translated content in the buyer's locale,
    * as supported by the extension.
    *
@@ -453,7 +486,7 @@ export interface StandardApi<
   extension: Extension;
 
   /**
-   * Key / value storage for this extension point.
+   * Key-value storage for this extension point.
    */
   storage: Storage;
 
@@ -563,11 +596,18 @@ export interface StandardApi<
    * of the checkout.
    */
   i18n: I18n;
+
+  /**
+   * The settings values matching the settings schema defined in the `shopify.ui.extension.toml` file.
+   *
+   * NOTE: When an extension is being installed in the editor, the settings values will be empty until
+   * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
+   */
+  settings: StatefulRemoteSubscribable<ExtensionSettings>;
 }
 
 export interface BuyerIdentity {
   /**
-   * This defines the i18n (internationalization) API for the extension.
    * The customer account from the buyer. This value will update when there's a
    * change in the account. The value is undefined if the buyer isn’t a known customer
    * for this shop.
@@ -907,7 +947,6 @@ export interface CartLineUpdateChange {
   merchandiseId?: string;
   /**
    * The new quantity for the line item.
-   * @example 'gid://shopify/ProductVariant/123'
    */
   quantity?: number;
 
@@ -976,8 +1015,19 @@ interface InterceptorRequestBlock {
   perform(result: InterceptorResult): void | Promise<void>;
 }
 
+export interface InterceptorProps {
+  /**
+   * Indicates to the interceptor that it does not have the capability to block
+   * a buyer's progress through checkout. This ability may be granted by a
+   * merchant in differing checkout contexts.
+   */
+  canBlockProgress: boolean;
+}
+
 export interface Interceptor {
-  (): InterceptorRequest | Promise<InterceptorRequest>;
+  (interceptorProps: InterceptorProps):
+    | InterceptorRequest
+    | Promise<InterceptorRequest>;
 }
 
 /**
@@ -1017,4 +1067,11 @@ export interface Customer {
    * Defines if the customer accepts marketing activities.
    */
   acceptsMarketing: boolean;
+}
+
+/**
+ * The merchant defined settings values for this extension.
+ */
+export interface ExtensionSettings {
+  [key: string]: string | number | boolean | undefined;
 }

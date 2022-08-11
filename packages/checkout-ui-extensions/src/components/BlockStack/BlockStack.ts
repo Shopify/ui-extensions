@@ -1,13 +1,19 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 import type {
-  ViewLikeAccessibilityRole,
-  Spacing,
+  BorderProps,
   InlineAlignment,
+  SizingProps,
+  Spacing,
+  SpacingProps,
+  ViewLikeAccessibilityRole,
 } from '../shared';
 import {MaybeConditionalStyle} from '../../style';
 
-export interface BlockStackProps {
+export interface BlockStackProps
+  extends BorderProps,
+    SizingProps,
+    SpacingProps {
   /**
    * Position children along the main axis
    */
@@ -24,7 +30,7 @@ export interface BlockStackProps {
    * navigate the page.
    *
    *
-   * Examples:
+   * For example:
    *
    * - In an HTML host a `['listItem', 'separator']` tuple will render: <li role='separator'>
    *

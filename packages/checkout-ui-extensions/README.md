@@ -7,7 +7,6 @@ shopify.extend('Checkout::Dynamic::Render', (root, api) => {
   const button = root.createComponent('Button', {
     onPress() {
       console.log('Upsold!');
-      api.done();
     },
   });
 
@@ -17,11 +16,11 @@ shopify.extend('Checkout::Dynamic::Render', (root, api) => {
 });
 ```
 
-Keeping in mind that any utility provided by this library is only a convenience API on top of the `shopify` global, the rest of the documentation for this library will show examples using JavaScript imports from the `@shopify/checkout-ui-extensions` library. Using JavaScript modules in this way requires a [build step](../packages/checkout-ui-extensions-run), but can provide useful developer experience features and opportunities for build-time performance optimizations.
+Keeping in mind that any utility provided by this library is only a convenience API on top of the `shopify` global, the rest of the documentation for this library will show examples using JavaScript imports from the `@shopify/checkout-ui-extensions` library. Using JavaScript modules in this way requires a [build step](https://shopify.dev/apps/checkout/custom-fields/getting-started#step-2-preview-your-extension), but can provide useful developer experience features and opportunities for build-time performance optimizations.
 
 ## Getting started
 
-Before you dig in to what this library has to offer, please read through the [getting started guide](https://docs.google.com/document/d/1JqTUEBXWZ2gKC7bfWc0wy7i6zHtHmldd3ef4N3FHoeU/edit#heading=h.1256j7138hx).
+Before you dig in to what this library has to offer, please read through the [Checkout UI extensions overview](https://shopify.dev/api/checkout-extensions/checkout), and a getting started guide from one of the [checkout extension examples](https://shopify.dev/apps/checkout/custom-fields/getting-started).
 
 ## API
 

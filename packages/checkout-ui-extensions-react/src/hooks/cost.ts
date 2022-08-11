@@ -7,7 +7,7 @@ import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
- * A `Money` value representing the minimum a buyer can expect to pay at the current
+ * Returns a `Money` value representing the minimum a buyer can expect to pay at the current
  * step of checkout. This value excludes amounts yet to be negotiated. For example,
  * the information step may not have delivery costs calculated.
  */

@@ -1,5 +1,8 @@
 export {useExtensionApi} from './api';
+export {useCurrency} from './currency';
 export {useLanguage} from './language';
+export {useTimezone} from './timezone';
+export {useExtensionCapabilities, useExtensionCapability} from './capabilities';
 export {useExtensionLanguage} from './extension-language';
 export {useBuyerJourney, useBuyerJourneyIntercept} from './buyer-journey';
 export {useMetafield} from './metafield';
@@ -17,3 +20,4 @@ export {useExtensionData} from './extension-data';
 export {useSubscription} from './subscription';
 export {useCustomer} from './buyer-identity';
 export {useTranslate} from './translate';
+export {useSettings} from './settings';

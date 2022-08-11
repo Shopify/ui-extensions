@@ -2,20 +2,26 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {MaybeConditionalStyle} from '../../style';
 import type {
-  ViewLikeAccessibilityRole,
-  Spacing,
-  InlineAlignment,
   BlockAlignment,
+  BorderProps,
+  InlineAlignment,
+  SizingProps,
+  Spacing,
+  SpacingProps,
+  ViewLikeAccessibilityRole,
 } from '../shared';
 
-export interface InlineStackProps {
+export interface InlineStackProps
+  extends BorderProps,
+    SizingProps,
+    SpacingProps {
   /**
    * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help buyers
    * navigate the page.
    *
    *
-   * Examples:
+   * For example:
    *
    * - In an HTML host a `'listItem'` string will render: `<li>`
    *

@@ -5,9 +5,10 @@ import type {
   Emphasis,
   Size,
   Appearance,
+  VisibilityProps,
 } from '../shared';
 
-export interface TextProps {
+export interface TextProps extends VisibilityProps {
   /**
    * Size of the text
    */

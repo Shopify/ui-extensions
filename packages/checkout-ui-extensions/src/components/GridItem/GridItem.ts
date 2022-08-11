@@ -1,8 +1,12 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {ViewLikeAccessibilityRole} from '../shared';
+import type {
+  BorderProps,
+  SpacingProps,
+  ViewLikeAccessibilityRole,
+} from '../shared';
 
-export interface GridItemProps {
+export interface GridItemProps extends BorderProps, SpacingProps {
   /**
    * Number of columns the item will span across
    */
@@ -17,7 +21,7 @@ export interface GridItemProps {
    * navigate the page.
    *
    *
-   * Examples:
+   * For example:
    *
    * - In an HTML host a `['listItem', 'separator']` tuple will render: <li role='separator'>
    *

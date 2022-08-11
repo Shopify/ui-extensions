@@ -9,7 +9,10 @@ const MEMOIZE_OPTIONS = {
   maxSize: MAX_CACHE_SIZE,
 };
 
-type ChainableConditionalStyle<T> = ConditionalStyle<T> & {
+type ChainableConditionalStyle<
+  T,
+  AcceptedConditions = Conditions
+> = ConditionalStyle<T, AcceptedConditions> & {
   when: typeof when;
 };
 
@@ -26,7 +29,9 @@ export const Style = {
    * @returns The chainable condition style
    */
   default: memoize(
-    <T>(defaultValue: T): ChainableConditionalStyle<T> =>
+    <T, AcceptedConditions = Conditions>(
+      defaultValue: T,
+    ): ChainableConditionalStyle<T, AcceptedConditions> =>
       createChainableConditionalStyle({
         default: defaultValue,
         conditionals: [],
@@ -46,13 +51,13 @@ export const Style = {
   when: memoize(when, MEMOIZE_OPTIONS),
 } as const;
 
-function when<T>(
+function when<T, AcceptedConditions = Conditions>(
   // Not happy about having to use any here, but it's the only way to make the types work on the chained methods
   this: any,
-  conditions: Conditions,
+  conditions: AcceptedConditions,
   value: T,
-): ChainableConditionalStyle<T> {
-  if (isConditionalStyle<T>(this)) {
+): ChainableConditionalStyle<T, AcceptedConditions> {
+  if (isConditionalStyle<T, AcceptedConditions>(this)) {
     return createChainableConditionalStyle({
       default: this.default,
       conditionals: [...this.conditionals, {conditions, value}],
@@ -64,16 +69,16 @@ function when<T>(
   }
 }
 
-function createChainableConditionalStyle<T>(
-  conditionalStyle: ConditionalStyle<T>,
-): ChainableConditionalStyle<T> {
+function createChainableConditionalStyle<T, AcceptedConditions = Conditions>(
+  conditionalStyle: ConditionalStyle<T, AcceptedConditions>,
+): ChainableConditionalStyle<T, AcceptedConditions> {
   const proto = {} as {
     when: typeof when;
   };
 
   const returnConditionalStyle = Object.create(
     proto,
-  ) as ChainableConditionalStyle<T>;
+  ) as ChainableConditionalStyle<T, AcceptedConditions>;
 
   Object.assign(returnConditionalStyle, conditionalStyle);
 
@@ -82,8 +87,8 @@ function createChainableConditionalStyle<T>(
   return returnConditionalStyle;
 }
 
-export function isConditionalStyle<T>(
+export function isConditionalStyle<T, AcceptedConditions = Conditions>(
   value?: any,
-): value is ConditionalStyle<T> {
+): value is ConditionalStyle<T, AcceptedConditions> {
   return value !== null && typeof value === 'object' && 'conditionals' in value;
 }

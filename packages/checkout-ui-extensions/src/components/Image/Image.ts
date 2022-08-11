@@ -1,11 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 import type {MaybeConditionalStyle} from '../../style';
-import {Bordered} from '../shared';
+import {BorderProps} from '../shared';
 import type {Fit, AccessibilityRole} from '../shared';
 
-export interface ImageProps
-  extends Pick<Bordered, 'borderRadius' | 'borderWidth' | 'border'> {
+export interface ImageProps extends BorderProps {
   /**
    * The image path.
    */
@@ -28,10 +27,10 @@ export interface ImageProps
    */
   accessibilityDescription?: string;
   /**
-   * Indicates how the browser should load the image, either lazy or eager.
+   * Indicates how the browser should load the image, either eager or lazy.
    *
    * Uses native browser behavior and is not supported by all browsers.
-   * If no value is provided the image is loaded immediately, regardless of
+   * If no value is provided then the image is loaded immediately, regardless of
    * whether or not the image is currently within the visible viewport.
    */
   loading?: Loading;
@@ -57,7 +56,15 @@ export interface ImageProps
   accessibilityRole?: Extract<AccessibilityRole, 'decorative'>;
 }
 
-type Loading = 'eager' | 'lazy';
+type Loading =
+  /**
+   * Image is loaded immediately, regardless of whether or not the image is currently within the visible viewport.
+   */
+  | 'eager'
+  /**
+   * Image is loaded when it’s within the visible viewport.
+   */
+  | 'lazy';
 
 /**
  * Image is used for large format, responsive images.

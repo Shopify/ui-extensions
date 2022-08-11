@@ -13,8 +13,6 @@ export interface SpinnerProps {
   /**
    * Sets the appearance (color) of the icon.
    *
-   * * `monochrome` will take the color of its parent.
-   *
    * @defaultValue 'accent'
    */
   appearance?: Extract<Appearance, 'accent' | 'monochrome'>;

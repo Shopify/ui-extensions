@@ -1,6 +1,6 @@
 # Testing
 
-UI extensions can be tested with any test runner that supports JavaScript. At Shopify, we use [happily use Jest](https://jestjs.io) for all JavaScript testing, but you can use whatever you like, as no testing setup is provided by default. However, the test runner is only one part of the equation. This document outlines how to use the test runner, and some helper libraries provided by Shopify, to write meaningful tests for an extension.
+UI extensions can be tested with any test runner that supports JavaScript. At Shopify, we happily use [Jest](https://jestjs.io) for all JavaScript testing, but you can use your preferred testing framework, as no testing setup is provided by default. However, the test runner is only one part of the equation. This document outlines how to use the test runner, and some helper libraries provided by Shopify, to write meaningful tests for an extension.
 
 ## Rendering extension points
 
@@ -17,13 +17,15 @@ extend('Checkout::Dynamic::Render', handleRenderExtension);
 
 export function handleRenderExtension(root, api) {
   const text = root.createText('Not pressed');
-  const button = root.createComponent(Button, {
-    onPress() {
-      text.updateText('Pressed!');
-      api.done();
+  const button = root.createComponent(
+    Button,
+    {
+      onPress: () => {
+        text.updateText('Pressed!');
+      },
     },
-  });
-  button.appendChild(text);
+    text,
+  );
   root.appendChild(button);
 }
 ```
