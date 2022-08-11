@@ -1,5 +1,3 @@
-import {Paths} from '../types';
-
 export {gettingStarted} from './getting-started';
 export {extensionPoints} from './extension-points';
 export {components} from './components';
