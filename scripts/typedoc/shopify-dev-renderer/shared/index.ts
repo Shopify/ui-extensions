@@ -392,6 +392,10 @@ function propType(
       );
     }
     case 'InterfaceType':
+      if (value.name === 'ConditionalStyle') {
+        return value.name + params;
+      }
+
       additionalPropsTables.push(
         propsTable(
           value.name,
