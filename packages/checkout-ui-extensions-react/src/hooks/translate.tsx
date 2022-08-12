@@ -7,6 +7,9 @@ import type {RemoteComponentType} from '@remote-ui/types';
 
 import {useExtensionApi} from './api';
 
+/**
+ * Returns the `I18nTranslate` interface used to translate strings.
+ */
 export function useTranslate<
   ID extends RenderExtensionPoint = RenderExtensionPoint
 >() {

@@ -204,6 +204,14 @@ export async function components(
                 propTypeNames.includes(prop.value.name),
             ).length > 0
           ) {
+            markdown = markdown.replace(
+              /ConditionalStyle/g,
+              '<a href="#conditional-styles">ConditionalStyle</a>',
+            );
+            markdown = markdown.replace(
+              /AcceptedConditions/g,
+              '<a href="#conditions">Conditions</a>',
+            );
             markdown += `\n\n${fs.readFileSync(sourceFile, 'utf8')}`;
           }
         });

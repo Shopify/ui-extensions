@@ -22,5 +22,6 @@ export interface BlockSpacerProps {
  */
 export const BlockSpacer = createRemoteComponent<
   'BlockSpacer',
-  BlockSpacerProps
+  BlockSpacerProps,
+  false
 >('BlockSpacer');

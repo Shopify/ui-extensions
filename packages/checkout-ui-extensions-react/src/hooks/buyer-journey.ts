@@ -16,10 +16,7 @@ export function useBuyerJourney<
 }
 
 /**
- * Takes a function that allows you to block the buyer’s progress through the checkout
- * by returning an object with `{behavior: 'block', reason: InvalidResultReason.UnknownReason}`.
- * If you block, you should also update some part of your UI to reflect
- * the reason why navigation was blocked.
+ * Returns a function to intercept and block navigation in checkout.
  */
 export function useBuyerJourneyIntercept<
   ID extends RenderExtensionPoint = RenderExtensionPoint
@@ -29,8 +26,8 @@ export function useBuyerJourneyIntercept<
   interceptorRef.current = interceptor;
 
   useEffect(() => {
-    const teardownPromise = buyerJourney.intercept(() =>
-      interceptorRef.current(),
+    const teardownPromise = buyerJourney.intercept((interceptorProps) =>
+      interceptorRef.current(interceptorProps),
     );
 
     return () => {

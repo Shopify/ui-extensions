@@ -16,6 +16,7 @@ interface MetafieldsFilters {
 
 /**
  * Returns the current array of `metafields` applied to the checkout.
+ * You can optionally filter the list.
  * @arg {MetafieldsFilters} - filter the list of returned metafields
  */
 export function useMetafields<

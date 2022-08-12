@@ -2,6 +2,7 @@ export type {
   Extension,
   ExtensionPoints,
   ExtensionPoint,
+  ExtensionSettings,
   RenderExtensions,
   RenderExtension,
   RenderExtensionPoint,
@@ -9,6 +10,7 @@ export type {
   ArgumentsForExtension,
   ApiForRenderExtension,
   BuyerIdentity,
+  Capability,
   CartCost,
   CartLineCost,
   CountryCode,
@@ -96,9 +98,9 @@ export type {
   TextFieldProps,
   ViewProps,
   ViewCoordinate,
-  ViewTranslate,
   ViewPosition,
   ViewPositionType,
+  ViewTranslate,
   AccessibilityRole,
   ViewLikeAccessibilityRole,
   NonPresentationalAccessibilityRole,
@@ -115,7 +117,10 @@ export type {
   Conditions,
   ConditionalStyle,
   ConditionalValue,
+  DefaultConditions,
+  InteractiveConditions,
   MaybeConditionalStyle,
+  ViewportSizeCondition,
 } from './style';
 export {Style, isConditionalStyle} from './style';
 

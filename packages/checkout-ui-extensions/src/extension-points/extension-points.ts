@@ -14,10 +14,12 @@ type AllComponents = Components[keyof Components];
  */
 export interface ExtensionPoints {
   /**
-   * An extension point that is used to render completely
-   * new content added to the flow of checkout. The extension point is not attached
-   * to any other element in checkout. Instead, a merchant can select the step and position
-   * of your extension when configuring the overall flow of their checkout.
+   * A [dynamic extension point](https://shopify.dev/api/checkout-extensions/checkout#extension-points) that isn't tied to a specific checkout section or feature.
+   * Unlike static extension points, dynamic extension points render where the merchant
+   * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
+   *
+   * The [supported locations](https://shopify.dev/api/checkout-extensions/checkout#supported-locations) for dynamic extension points can be previewed during development
+   * by [using a URL parameter](https://shopify.dev/apps/checkout/test-ui-extensions#dynamic-extension-points).
    */
   'Checkout::Dynamic::Render': RenderExtension<
     StandardApi<'Checkout::Dynamic::Render'>,

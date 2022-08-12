@@ -8,45 +8,51 @@ When this documentation refers to a “rendering” extension point, it means th
 
 The `RemoteRoot` API is very similar to the DOM. You create components by calling [`root.createComponent`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootcreatecomponent) (comparable to `document.createElement` in the DOM), and you can attach children to the root, or nested components, using methods like [`appendChild`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootappendchild) and [`removeChild`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootremovechild).
 
-```tsx
+```ts
 import {extend, Button} from '@shopify/checkout-ui-extensions';
 
 extend('Checkout::Dynamic::Render', (root) => {
-  const button = root.createComponent(Button, {
-    onPress: () => console.log('Pressed!'),
-  });
+  const button = root.createComponent(
+    Button,
+    {
+      onPress: () => console.log('Pressed!'),
+    },
+    'Press me',
+  );
 
-  button.appendChild('Press me');
   root.appendChild(button);
 });
 ```
 
 The `RemoteRoot` API also supports mutating components in the tree after they’ve been attached. The example below shows how the [`updateProps`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remotecomponentupdateprops) and [`updateText`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remotecomponentupdatetext) APIs can be used to respond to user events by updating UI:
 
-```tsx
+```ts
 import {extend, Button} from '@shopify/checkout-ui-extensions';
 
 extend('Checkout::Dynamic::Render', (root) => {
   let pressedTimes = 0;
 
   const buttonText = root.createText(labelText(0));
-  const button = root.createComponent(Button, {
-    onPress: () => {
-      pressedTimes += 1;
+  const button = root.createComponent(
+    Button,
+    {
+      onPress: () => {
+        pressedTimes += 1;
 
-      if (pressedTimes < 5) {
-        buttonText.updateText(labelText(pressedTimes));
-      } else {
-        buttonText.updateText('That’s enough');
-        button.updateProps({
-          disabled: true,
-          onPress: undefined,
-        });
-      }
+        if (pressedTimes < 5) {
+          buttonText.updateText(labelText(pressedTimes));
+        } else {
+          buttonText.updateText('That’s enough');
+          button.updateProps({
+            disabled: true,
+            onPress: undefined,
+          });
+        }
+      },
     },
-  });
+    buttonText,
+  );
 
-  button.appendChild(buttonText);
   root.appendChild(button);
 });
 

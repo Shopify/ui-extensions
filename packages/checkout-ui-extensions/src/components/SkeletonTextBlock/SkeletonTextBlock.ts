@@ -2,7 +2,8 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import {TextBlockProps} from '../TextBlock';
 
-export interface SkeletonTextBlockProps extends Pick<TextBlockProps, 'size'> {
+export interface SkeletonTextBlockProps
+  extends Pick<TextBlockProps, 'size' | 'emphasis'> {
   /**
    * Use to emphasize a word or a group of words compared to other nearby text.
    */
