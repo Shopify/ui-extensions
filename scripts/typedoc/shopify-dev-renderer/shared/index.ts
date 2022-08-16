@@ -157,16 +157,14 @@ export function propsTable(
 
         const content = propDocs ? strip(propDocs.content) : '';
         const tags = propDocs?.tags?.length
-          ? propDocs.tags.map(stringifyTag).join('\n')
+          ? `\n\n${propDocs.tags.map(stringifyTag).join('\n')}`
           : '';
-        const comments = [];
-        if (value.kind === 'Local') {
-          const exported = exports.find(
-            (x) => 'name' in x.value && x.value.name === value.name,
-          );
 
-          if (exported && exported.value.kind === 'UnionType') {
-            for (const type of exported.value.types) {
+        const getCommentsFromUnion = (obj: Type) => {
+          const comments = [];
+
+          if (obj && obj.kind === 'UnionType') {
+            for (const type of obj.types) {
               if ('comments' in type && type.comments) {
                 comments.push(
                   `\n\n<code>${propType(
@@ -179,8 +177,23 @@ export function propsTable(
               }
             }
           }
+
+          return comments;
+        };
+
+        let comments = [];
+
+        if (value.kind === 'Local') {
+          const exported = exports.find(
+            (x) => 'name' in x.value && x.value.name === value.name,
+          );
+
+          comments = getCommentsFromUnion(exported?.value as Type);
+        } else {
+          comments = getCommentsFromUnion(value);
         }
-        const description = newLineToBr(content + tags + comments.join(''));
+
+        const description = newLineToBr(content + comments.join('') + tags);
 
         table.push([name, type, description]);
       }
@@ -275,7 +288,7 @@ export function unionTypeTable(
 }
 
 function newLineToBr(string: string): string {
-  return string.replace(/\n\n/g, '<br /><br />').replace(/\n/g, ' ');
+  return string.replace(/\n\n+/g, '<br /><br />').replace(/\n/g, ' ');
 }
 
 function propType(
@@ -621,6 +634,7 @@ function escapeHTML(html: string) {
 export function strip(content: string) {
   return escapeHTML(
     content
+      .trim()
       .replace('/**', '')
       .replace('*/', '')
       .replace(/\n \* /g, '\n')
