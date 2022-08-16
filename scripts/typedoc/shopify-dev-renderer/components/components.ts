@@ -208,10 +208,7 @@ export async function components(
               /ConditionalStyle/g,
               '<a href="#conditional-styles">ConditionalStyle</a>',
             );
-            markdown = markdown.replace(
-              /AcceptedConditions/g,
-              '<a href="#conditions">Conditions</a>',
-            );
+            markdown = markdown.replace(/, AcceptedConditions/g, '');
             markdown += `\n\n${fs.readFileSync(sourceFile, 'utf8')}`;
           }
         });
