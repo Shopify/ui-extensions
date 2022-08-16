@@ -9,6 +9,7 @@ import type {
   Type,
   Documentation,
   PropertySignature,
+  IndexSignature,
   Tag,
 } from '@shopify/docs-tools/build/ts/src/types';
 
@@ -90,7 +91,7 @@ export function dedupe<T>(array: T[]) {
 export function propsTable(
   name: string,
   docs: Documentation | undefined,
-  properties: PropertySignature[],
+  properties: (PropertySignature | IndexSignature)[],
   exports: Node[],
   dir: string,
   additionalPropsTables: string[],
@@ -110,99 +111,124 @@ export function propsTable(
     markdown += '\n';
   }
 
-  const table = [];
-
-  // table header row
-  const propertiesHaveParameters =
-    properties.filter(({parameters}) => parameters).length > 0;
-  if (propertiesHaveParameters) {
-    table.push(['Type', 'Description']);
-  } else if (properties.length > 0) {
-    table.push(['Name', 'Type', 'Description']);
-  }
-
-  properties.forEach(
-    ({name: propName, optional, value, docs: propDocs, parameters}) => {
-      if (propName === 'Checkout::KitchenSink') return;
-
-      if (parameters) {
-        const thisParamType = paramsType(
-          parameters,
-          exports,
-          dir,
-          additionalPropsTables,
-        );
-        const thisPropType = propType(
-          value,
-          exports,
-          dir,
-          additionalPropsTables,
-        );
-        const type = `<code>(${thisParamType}): ${thisPropType}</code>`;
-        const description = propDocs
-          ? newLineToBr(strip(propDocs.content))
-          : '';
-        table.push([type, description]);
-      } else {
-        const name = `${propName}${optional ? '?' : ''}`;
-
-        const type = `<code>${propType(
-          value,
-          exports,
-          dir,
-          additionalPropsTables,
-          false,
-          findRepeatingTypes(value, exports),
-        )}</code>`;
-
-        const content = propDocs ? strip(propDocs.content) : '';
-        const tags = propDocs?.tags?.length
-          ? `\n\n${propDocs.tags.map(stringifyTag).join('\n')}`
-          : '';
-
-        const getCommentsFromUnion = (obj: Type) => {
-          const comments = [];
-
-          if (obj && obj.kind === 'UnionType') {
-            for (const type of obj.types) {
-              if ('comments' in type && type.comments) {
-                comments.push(
-                  `\n\n<code>${propType(
-                    type,
-                    exports,
-                    dir,
-                    additionalPropsTables,
-                  )}</code>: ${type.comments.join(' ')}`,
-                );
-              }
-            }
-          }
-
-          return comments;
-        };
-
-        let comments = [];
-
-        if (value.kind === 'Local') {
-          const exported = exports.find(
-            (x) => 'name' in x.value && x.value.name === value.name,
-          );
-
-          comments = getCommentsFromUnion(exported?.value as Type);
-        } else {
-          comments = getCommentsFromUnion(value);
-        }
-
-        const description = newLineToBr(content + comments.join('') + tags);
-
-        table.push([name, type, description]);
-      }
-    },
+  const indexSignatures: IndexSignature[] = properties.filter(
+    (property): property is IndexSignature =>
+      property.kind === 'IndexSignature',
+  );
+  const propertySignatures: PropertySignature[] = properties.filter(
+    (property): property is PropertySignature =>
+      property.kind === 'PropertySignature',
   );
 
-  markdown += markdownTable(table, {
-    stringLength: () => 3,
-  });
+  if (indexSignatures?.length) {
+    const property = indexSignatures[0];
+
+    markdown += `<code>[${property.index.key}: ${propType(
+      property.index.type,
+      exports,
+      dir,
+      additionalPropsTables,
+    )}]: ${propType(
+      property.value,
+      exports,
+      dir,
+      additionalPropsTables,
+    )}</code>`;
+  } else if (propertySignatures?.length) {
+    const table = [];
+
+    // table header row
+    const propertiesHaveParameters =
+      propertySignatures.filter(({parameters}) => parameters).length > 0;
+    if (propertiesHaveParameters) {
+      table.push(['Type', 'Description']);
+    } else if (propertySignatures.length > 0) {
+      table.push(['Name', 'Type', 'Description']);
+    }
+
+    propertySignatures.forEach(
+      ({name: propName, optional, value, docs: propDocs, parameters}) => {
+        if (propName === 'Checkout::KitchenSink') return;
+
+        if (parameters) {
+          const thisParamType = paramsType(
+            parameters,
+            exports,
+            dir,
+            additionalPropsTables,
+          );
+          const thisPropType = propType(
+            value,
+            exports,
+            dir,
+            additionalPropsTables,
+          );
+          const type = `<code>(${thisParamType}): ${thisPropType}</code>`;
+          const description = propDocs
+            ? newLineToBr(strip(propDocs.content))
+            : '';
+          table.push([type, description]);
+        } else {
+          const name = `${propName}${optional ? '?' : ''}`;
+
+          const type = `<code>${propType(
+            value,
+            exports,
+            dir,
+            additionalPropsTables,
+            false,
+            findRepeatingTypes(value, exports),
+          )}</code>`;
+
+          const content = propDocs ? strip(propDocs.content) : '';
+          const tags = propDocs?.tags?.length
+            ? `\n\n${propDocs.tags.map(stringifyTag).join('\n')}`
+            : '';
+
+          const getCommentsFromUnion = (obj: Type) => {
+            const comments = [];
+
+            if (obj && obj.kind === 'UnionType') {
+              for (const type of obj.types) {
+                if ('comments' in type && type.comments) {
+                  comments.push(
+                    `\n\n<code>${propType(
+                      type,
+                      exports,
+                      dir,
+                      additionalPropsTables,
+                    )}</code>: ${type.comments.join(' ')}`,
+                  );
+                }
+              }
+            }
+
+            return comments;
+          };
+
+          let comments = [];
+
+          if (value.kind === 'Local') {
+            const exported = exports.find(
+              (x) => 'name' in x.value && x.value.name === value.name,
+            );
+
+            comments = getCommentsFromUnion(exported?.value as Type);
+          } else {
+            comments = getCommentsFromUnion(value);
+          }
+
+          const description = newLineToBr(content + comments.join('') + tags);
+
+          table.push([name, type, description]);
+        }
+      },
+    );
+
+    markdown += markdownTable(table, {
+      stringLength: () => 3,
+    });
+  }
 
   return markdown;
 }
@@ -399,7 +425,7 @@ function propType(
               value.selfRef = true;
             } else {
               markSelfReferences(value, name);
-      }
+            }
           }
         }
       };
