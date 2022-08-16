@@ -17,7 +17,7 @@ export interface ChoiceListProps<T extends string | string[]> {
    * is called with a string or array of strings indicating the ids of choices
    * that should now be selected. This component is
    * [controlled](https://reactjs.org/docs/forms.html#controlled-components),
-   * so you **must** store this value in state and reflect it back in the
+   * so you must store this value in state and reflect it back in the
    * `value` prop.
    */
   onChange(value: T): void;

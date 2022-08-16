@@ -6,13 +6,13 @@ Components can have conditional properties, which enable you to set different va
 
 #### Getting started
 
-You'll need the `Style` helper to help you write conditional styles easily. If you are using vanilla JavaScript:
+You'll need the `Style` helper to help you write conditional styles easily. If you are using vanilla JavaScript, then use the following package:
 
 ```js
 import {Style} from '@shopify/checkout-ui-extensions';
 ```
 
-If you're using React:
+If you're using React, then use the following package:
 
 ```jsx
 import {Style} from '@shopify/checkout-ui-extensions-react';
@@ -22,7 +22,7 @@ import {Style} from '@shopify/checkout-ui-extensions-react';
 
 `Style` is a helper for authoring conditional values for prop styles.
 
-Write complex conditional styles based on one or more conditions (viewport sizes and interactive states) in a concise and expressive way.
+Write complex conditional styles based on one or more conditions, such as viewport sizes and interactive states, in a concise and expressive way.
 
 | Name    | Type                                                                                                                                       | Description                                                                                                                                                                                                                                  |
 | ------- | ------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -37,11 +37,13 @@ Multiple conditions can be set on the same `when` method.
 
 | Name                | Type                                                       | Description                                                                         |
 | ------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| hover?              | <code>true</code>                                          | Met when an element is hovered on with the cursor (mouse pointer).                  |
-| focus?              | <code>true</code>                                          | Met when an element is clicked, tapped on or selected using the <kbd>Tab</kbd> key. |
-| viewportInlineSize? | <code>{min: "small" &#124; "medium" &#124; "large"}</code> | Met when the device matches the minimum width.                                      |
+| hover?              | <code>true</code>                                          | This condition is met when an element is hovered on with the cursor (mouse pointer).                  |
+| focus?              | <code>true</code>                                          | This condition is met when an element is clicked, tapped on or selected using the <kbd>Tab</kbd> key. |
+| viewportInlineSize? | <code>{min: "small" &#124; "medium" &#124; "large"}</code> | This condition is met when the device matches the minimum width.                                      |
 
 #### Examples
+
+This section provides examples of conditions.
 
 ##### Simple condition
 
@@ -57,7 +59,7 @@ Default styling can be combined with specific conditions. In this example, the G
 
 ```jsx
 <Grid columns={Style.default('fill')
-  .when({inlineViewportSize: 'small'}, ['30%','70%'])}
+  .when({inlineViewportSize: {min: 'small'}}, ['30%','70%'])}
 >
   <View>Content</View>
   <View>Content</View>
@@ -68,7 +70,7 @@ Default styling can be combined with specific conditions. In this example, the G
 
 Conditions can also be combined to accomodate more complex interactions and user interfaces.
 
-In this example, the Grid’s children will be:
+In this example, the Grid’s children will have the following characteristics:
 
 - stacked by default
 - side by side (`30%` and `70%`) on viewports above the `small` breakpoint
@@ -77,8 +79,8 @@ In this example, the Grid’s children will be:
 ```jsx
 <Grid
   columns={Style.default('fill')
-    .when({inlineViewportSize: `small`}, ['30%', '70%'])
-    .when({inlineViewportSize: `small`, hover: true}, ['50%', '50%'])}
+    .when({inlineViewportSize: {min: 'small'}}, ['30%', '70%'])
+    .when({inlineViewportSize: {min: 'small'}, hover: true}, ['50%', '50%'])}
 >
   <View>Content</View>
   <View>Content</View>

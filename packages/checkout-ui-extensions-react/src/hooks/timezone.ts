@@ -7,8 +7,8 @@ import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
- * Returns the timezone of the checkout, and automatically re-renders
- * your component if the timezone changes.
+ * Returns the time zone of the checkout, and automatically re-renders
+ * your component if the time zone changes.
  */
 export function useTimezone<
   ID extends RenderExtensionPoint = RenderExtensionPoint

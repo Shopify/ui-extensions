@@ -30,6 +30,7 @@ export interface GridProps extends BorderProps, SizingProps, SpacingProps {
    *
    *
    * - When the sum of the defined sizes is larger than the available space, elements will shrink to avoid overflow.
+   * - Except when in scrollview, where the grid will fill the space with the defined sizes.
    *
    * - When only one size is set and outside of an array, the grid will have one column of that size.
    *

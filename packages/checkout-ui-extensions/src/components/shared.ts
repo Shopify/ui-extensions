@@ -323,7 +323,7 @@ export type ViewLikeAccessibilityRole =
 
 export type TextAccessibilityRole =
   /**
-   * Indicate the text is a contact information. Typically used for addresses.
+   * Indicate the text is contact information. Typically used for addresses.
    */
   | 'address'
   /**
@@ -346,8 +346,8 @@ export type TextAccessibilityRole =
   | {type: 'directional-override'; direction: 'ltr' | 'rtl'}
   /**
    * Indicate the text is a date, a time or a duration. Use the “machineReadable” option
-   * to help browsers, tools or software understand the human-readable date. Valid format
-   * for “machineReadable” can be found here:
+   * to help browsers, tools or software understand the human-readable date. The valid
+   * format for “machineReadable” can be found here:
    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#Valid_datetime_Values
    */
   | {type: 'datetime'; machineReadable?: string};
@@ -429,7 +429,8 @@ export type Fit =
    */
   | 'cover'
   /**
-   * Image maintains its aspect ratio while filling the frame. If the image is larger than the frame, it will be cropped.
+   * Image maintains its aspect ratio while filling the frame.
+   * If the image is larger than the frame, then it will be cropped.
    */
   | 'contain';
 
@@ -514,8 +515,9 @@ export interface VisibilityProps {
   /**
    * Changes the visibility of the element.
    *
-   * `hidden` visually hides the component while keeping it accessible to assistive technology (for example,
-   * a screen reader). Hidden elements do not take any visual space contrary to CSS visibility: hidden;
+   * `hidden` visually hides the component while keeping it accessible
+   * to assistive technology, such as screen readers.
+   * Hidden elements don't take any visual space contrary to CSS visibility: hidden;
    */
   visibility?: Visibility;
 }

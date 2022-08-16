@@ -49,7 +49,7 @@ export interface CheckboxProps {
    * A callback that is run whenever the checkbox is changed. This callback
    * is called with a boolean indicating whether the checkbox should now be
    * active or inactive. This component is [controlled](https://reactjs.org/docs/forms.html#controlled-components),
-   * so you **must** store this value in state and reflect it back in the
+   * so you must store this value in state and reflect it back in the
    * `checked` or `value` props.
    */
   onChange?(value: boolean): void;

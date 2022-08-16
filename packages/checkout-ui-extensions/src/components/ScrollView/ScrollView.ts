@@ -3,12 +3,18 @@ import {createRemoteComponent} from '@remote-ui/core';
 import {BorderProps, SizingProps, SpacingProps} from '../shared';
 
 export interface ScrollViewEvent {
+  /**
+   * The current scroll position, in pixels.
+   */
   position: {
     /** The current scroll horizontal position, in pixels.*/
     inline: number;
     /** The current scroll vertical position, in pixels.*/
     block: number;
   };
+  /**
+   * A flag to indicate if the scroll is at the start or end of an axis.
+   */
   scrolledTo: {
     /** A flag to indicate if the scroll is at the start or end of cross axis. */
     inline: 'start' | 'end' | null;

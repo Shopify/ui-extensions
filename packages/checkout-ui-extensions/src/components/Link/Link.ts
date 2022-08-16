@@ -4,7 +4,7 @@ import type {Appearance} from '../shared';
 
 export interface LinkProps {
   /**
-   * Destination to navigate to. You **must** provide either this property, `onPress`,
+   * Destination to navigate to. You must provide either this property, `onPress`,
    * or both.
    */
   to?: string;

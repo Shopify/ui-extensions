@@ -25,7 +25,7 @@ export interface BannerProps {
   /**
    * Callback when banner is dismissed. This component is
    * [controlled](https://reactjs.org/docs/forms.html#controlled-components),
-   * so you **must** manage the visibility of the Banner in state by using
+   * so you must manage the visibility of the banner in state by using
    * the onDismiss callback.
    */
   onDismiss?(): void;

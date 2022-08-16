@@ -44,8 +44,8 @@ export interface TextFieldProps<T extends string | number | undefined> {
    */
   accessibilityDescription?: string;
   /**
-   * Current value for the field. If omitted, the field will be empty. You should update
-   * this value in response to the `onChange` callback.
+   * The current value for the field. If omitted, the field will be empty. You should
+   * update this value in response to the `onChange` callback.
    */
   value?: T;
   /**
@@ -55,8 +55,8 @@ export interface TextFieldProps<T extends string | number | undefined> {
    * field to have changed. Use the `controlledValue` prop to provide the value that
    * should be shown to the buyer in those circumstances, but where the `value` prop
    * will continue to be used as the comparison value to determine whether the field
-   * has changed (this will usually be set to the last committed, unformatted value
-   * for the controlled input).
+   * has changed. This value will usually be set to the last committed, unformatted value
+   * for the controlled input.
    */
   controlledValue?: T;
   /**
