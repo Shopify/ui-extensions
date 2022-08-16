@@ -352,6 +352,10 @@ function propType(
     case 'BigIntType':
       return 'bigint';
     case 'Local': {
+      if (value.selfRef) {
+        return anchorLink(value.name);
+      }
+
       const localSource = exports.find(
         ({value: exportValue}: any) => exportValue.name === value.name,
       );
@@ -386,12 +390,21 @@ function propType(
         return `${value.name}${params}`;
       }
 
-      // HACK: Don't resolve the same local, can cause infinite loop
-      // This should be properly resolved in `docs-tools` because it should always resolve the local
-      // This could result in incomplete documentation
-      if (local.value.kind === 'Local') {
-        return `${value.name}`;
+      const markSelfReferences = (obj: any, name: string) => {
+        for (const key of Object.keys(obj)) {
+          const value = obj[key];
+
+          if (typeof value === 'object') {
+            if (value.kind === 'Local' && value.name === name) {
+              value.selfRef = true;
+            } else {
+              markSelfReferences(value, name);
       }
+          }
+        }
+      };
+
+      markSelfReferences(local.value, local.value.name);
 
       local.value.params = value.params;
 
