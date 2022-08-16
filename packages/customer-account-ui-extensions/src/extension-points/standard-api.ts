@@ -32,4 +32,8 @@ export interface StandardApi {
    * Details about the language of the buyer. More could be added in the future.
    */
   localization: Localization;
+  router: {
+    getExtensionFullPageUrl(relative: string): Promise<string>;
+    navigate(to: string): Promise<void>;
+  };
 }
