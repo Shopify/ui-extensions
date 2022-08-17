@@ -8,11 +8,11 @@ export interface ButtonProps {
    * is controlled by merchants through the Branding API.
    *
    *
-   * `primary`: button used for main actions. Ex: "Continue to next step"
+   * `primary`: button used for main actions. For example: "Continue to next step".
    *
-   * `secondary`: button used for secondary actions not blocking user progress. Ex: "Download Shop app"
+   * `secondary`: button used for secondary actions not blocking user progress. For example: "Download Shop app".
    *
-   * `plain`: renders a button that visually looks like a Link
+   * `plain`: renders a button that visually looks like a link.
    *
    *
    * @defaultValue 'primary'
@@ -23,7 +23,7 @@ export interface ButtonProps {
    */
   appearance?: Extract<Appearance, 'monochrome' | 'critical'>;
   /**
-   * Allows the button to submit a form
+   * Allows the button to submit a form.
    */
   submit?: boolean;
   /**
@@ -31,13 +31,13 @@ export interface ButtonProps {
    */
   to?: string;
   /**
-   * Specifies the inline alignment of the content
+   * Specifies the inline alignment of the content.
    *
    * @defaultValue 'center'
    */
   inlineAlignment?: InlineAlignment;
   /**
-   * Replaces content with a loading indicator
+   * Replaces content with a loading indicator.
    *
    * @defaultValue false
    */
@@ -54,13 +54,13 @@ export interface ButtonProps {
    */
   accessibilityLabel?: string;
   /**
-   * Disables the button, disallowing any interaction
+   * Disables the button, disallowing any interaction.
    *
    * @defaultValue false
    */
   disabled?: boolean;
   /**
-   * Callback that is run when the button is pressed
+   * Callback that is run when the button is pressed.
    */
   onPress?(): void;
 }

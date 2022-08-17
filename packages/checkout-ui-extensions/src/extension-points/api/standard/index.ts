@@ -9,8 +9,8 @@ import type {CurrencyCode, CountryCode, Timezone} from '../shared';
  * at this specific extension point.
  *
  * The storage backend is implemented with `localStorage` and
- * should persist across the buyer's checkout session, however, this
- * is not guaranteed.
+ * should persist across the buyer's checkout session.
+ * However, data persistence isn't guaranteed.
  */
 export interface Storage {
   /**
@@ -19,7 +19,7 @@ export interface Storage {
    * The stored data is deserialized from JSON and returned as
    * its original primitive.
    *
-   * Returns null if no stored data exists.
+   * Returns `null` if no stored data exists.
    */
   read<T = unknown>(key: string): Promise<T | null>;
 
@@ -37,7 +37,7 @@ export interface Storage {
 }
 
 /**
- * High-level capabilities an extension is allowed to have access to.
+ * The high-level capabilities an extension is allowed to have access to.
  *
  * * `network_access` allows an extension to make network calls via fetch() and
  *    is requested by a partner
@@ -52,34 +52,42 @@ export type Capability = 'network_access' | 'block_progress';
  */
 export interface Extension {
   /**
-   * Published version of the running extension point.
+   * The published version of the running extension point.
    *
-   * For unpublished extensions, the value is null.
+   * For unpublished extensions, the value is `null`.
    *
    * @example 3.0.10
    */
   version?: string;
 
   /**
-   * URL to the script that started the extension point.
+   * The URL to the script that started the extension point.
    */
   scriptUrl: string;
 
   /**
    * Whether your extension is currently rendered to the screen.
    *
-   * Shopify may render your extension before it's actually visible in the UI,
+   * Shopify might render your extension before it's visible in the UI,
    * typically to pre-render extensions that will appear on a later step of the
    * checkout.
    *
-   * Your extension may also continue to run “in the background” after the buyer
-   * has navigated away from where it was rendered. This is done so that, if the
-   * buyer navigates back, your extension is immediately available to render.
+   * Your extension might also continue to run after the buyer has navigated away
+   * from where it was rendered. The extension continues running so that
+   * your extension is immediately available to render if the buyer navigates back.
    */
   rendered: StatefulRemoteSubscribable<boolean>;
 
   /**
-   * High-level capabilities an extension is allowed to have access to.
+   * The allowed capabilities of this extension, defined
+   * in your `shopify.ui.extension.toml` file .
+   *
+   * `network_access`:
+   * You must [request access](https://shopify.dev/api/checkout-extensions/checkout/configuration#complete-a-request-for-network-access)
+   * to make network calls.
+   *
+   * `block_progress`: Coming soon.
+   * Merchants will be able to control whether your extension can block checkout progress via the `buyerJourney` intercept.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 }
@@ -345,10 +353,10 @@ export interface I18nTranslate {
 
 export interface I18n {
   /**
-   * This returns a localized number.
+   * Returns a localized number.
    *
-   * This behaves like the standard Intl.NumberFormat()
-   * with a style of 'decimal' and uses the buyer's locale by default.
+   * This function behaves like the standard `Intl.NumberFormat()`
+   * with a style of `decimal` applied. It uses the buyer's locale by default.
    *
    * @param options.inExtensionLocale - if true, use the extension's locale
    */
@@ -358,10 +366,10 @@ export interface I18n {
   ) => string;
 
   /**
-   * This returns a localized currency value.
+   * Returns a localized currency value.
    *
-   * This behaves like the standard Intl.NumberFormat()
-   * with a style of 'currency' and uses the buyer's locale by default.
+   * This function behaves like the standard `Intl.NumberFormat()`
+   * with a style of `currency` applied. It uses the buyer's locale by default.
    *
    * @param options.inExtensionLocale - if true, use the extension's locale
    */
@@ -371,10 +379,10 @@ export interface I18n {
   ) => string;
 
   /**
-   * This returns a localized date value.
+   * Returns a localized date value.
    *
-   * This behaves like the standard Intl.DateTimeFormatOptions() and uses
-   * the buyers locale by default. Formatting options can be passed in as
+   * This function behaves like the standard `Intl.DateTimeFormatOptions()` and uses
+   * the buyer's locale by default. Formatting options can be passed in as
    * options.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat0
@@ -388,13 +396,13 @@ export interface I18n {
   ) => string;
 
   /**
-   * This returns translated content in the buyer's locale,
+   * Returns translated content in the buyer's locale,
    * as supported by the extension.
    *
-   * - options.count is a special numeric value used in pluralization.
+   * - `options.count` is a special numeric value used in pluralization.
    * - The other option keys and values are treated as replacements for interpolation.
-   * - If the replacements are all primitives, translate() returns a single string.
-   * - If replacements contain UI components, translate() returns an array of elements.
+   * - If the replacements are all primitives, then `translate()` returns a single string.
+   * - If replacements contain UI components, then `translate()` returns an array of elements.
    */
   translate: I18nTranslate;
 }
@@ -467,8 +475,8 @@ export interface StandardApi<
   buyerJourney: {
     /**
      * A function for intercepting and preventing navigation on checkout. You can block
-     * navigation by returning an object with `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState}`. If you do, you are
-     * expected to also update some part of your UI to reflect the reason why navigation
+     * navigation by returning an object with `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState}`.
+     * If you do, then you're expected to also update some part of your UI to reflect the reason why navigation
      * was blocked.
      */
     intercept(interceptor: Interceptor): Promise<() => void>;
@@ -600,10 +608,15 @@ export interface StandardApi<
   /**
    * The settings values matching the settings schema defined in the `shopify.ui.extension.toml` file.
    *
-   * NOTE: When an extension is being installed in the editor, the settings values will be empty until
+   * **Note:** When an extension is being installed in the editor, the settings values will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
    */
   settings: StatefulRemoteSubscribable<ExtensionSettings>;
+
+  /**
+   * Exposes a `analytics.publish` method to publish analytics events.
+   */
+  analytics: Analytics;
 }
 
 export interface BuyerIdentity {
@@ -707,7 +720,7 @@ export interface CartCost {
   /**
    * A `Money` value representing the minimum a buyer can expect to pay at the current
    * step of checkout. This value excludes amounts yet to be negotiated. For example,
-   * the information step may not have delivery costs calculated.
+   * the information step might not have delivery costs calculated.
    */
   totalAmount: StatefulRemoteSubscribable<Money>;
 }
@@ -1000,9 +1013,9 @@ interface InterceptorRequestBlock {
   behavior: 'block';
 
   /**
-   * The reason for blocking the interceptor request. This value is **not** presented to
-   * the buyer, so it does not need to be localized. It is used only for Shopify’s own
-   * internal debugging and metrics.
+   * The reason for blocking the interceptor request. This value isn't presented to
+   * the buyer, so it doesn't need to be localized. The value is used only for Shopify’s
+   * own internal debugging and metrics.
    */
   reason: string;
 
@@ -1017,14 +1030,19 @@ interface InterceptorRequestBlock {
 
 export interface InterceptorProps {
   /**
-   * Indicates to the interceptor that it does not have the capability to block
-   * a buyer's progress through checkout. This ability may be granted by a
-   * merchant in differing checkout contexts.
+   * Whether the interceptor has the capability to block a buyer's progress through
+   * checkout. This ability might be granted by a merchant in differing checkout contexts.
    */
   canBlockProgress: boolean;
 }
 
 export interface Interceptor {
+  /**
+   * A function for intercepting and preventing navigation on checkout. You can block
+   * navigation by returning an object with `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState}`.
+   * If you do, then you're expected to also update some part of your UI to reflect the reason why navigation
+   * was blocked.
+   */
   (interceptorProps: InterceptorProps):
     | InterceptorRequest
     | Promise<InterceptorRequest>;
@@ -1070,8 +1088,24 @@ export interface Customer {
 }
 
 /**
- * The merchant defined settings values for this extension.
+ * The merchant-defined setting values for this extension.
  */
 export interface ExtensionSettings {
   [key: string]: string | number | boolean | undefined;
+}
+
+interface EventInputPayload {
+  [key: string]:
+    | string
+    | number
+    | boolean
+    | EventInputPayload
+    | EventInputPayload[];
+}
+
+export interface Analytics {
+  /**
+   * Publish method to emit analytics events to Web Pixels.
+   */
+  publish(eventName: string, payload: EventInputPayload): Promise<boolean>;
 }

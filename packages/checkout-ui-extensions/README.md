@@ -20,7 +20,7 @@ Keeping in mind that any utility provided by this library is only a convenience 
 
 ## Getting started
 
-Before you dig in to what this library has to offer, please read through the [Checkout UI extensions overview](https://shopify.dev/api/checkout-extensions/checkout), and a getting started guide from one of the [checkout extension examples](https://shopify.dev/apps/checkout/custom-fields/getting-started).
+Before you dig in to what this library has to offer, read through the [Checkout UI extensions overview](https://shopify.dev/api/checkout-extensions/checkout), and a getting started guide from one of the [checkout extension examples](https://shopify.dev/apps/checkout/custom-fields/getting-started).
 
 ## API
 

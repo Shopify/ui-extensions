@@ -84,7 +84,7 @@ export interface SelectProps {
    * A callback that is run whenever the selected option changes. This callback
    * is called with the string `value` of the selected `option`. This component
    * is [controlled](https://reactjs.org/docs/forms.html#controlled-components),
-   * so you **must** store this value in state and reflect it back in the `value`
+   * so you must store this value in state and reflect it back in the `value`
    * prop of the select.
    */
   onChange?(value: string): void;

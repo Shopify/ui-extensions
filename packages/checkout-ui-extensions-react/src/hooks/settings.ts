@@ -4,7 +4,7 @@ import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
- * Returns the settings values defined by the merchant for this extension.
+ * Returns the setting values defined by the merchant for this extension.
  */
 export function useSettings<Settings extends ExtensionSettings>(): Partial<
   Settings
