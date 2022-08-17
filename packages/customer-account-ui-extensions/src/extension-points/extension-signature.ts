@@ -14,3 +14,7 @@ export interface RenderExtension<
 > {
   (root: RemoteRoot<AllowedComponents, true>, api: Api): void | Promise<void>;
 }
+
+export interface RunExtension<Api, Return> {
+  (api: Api): Promise<Return>;
+}
