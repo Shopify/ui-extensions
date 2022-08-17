@@ -1,5 +1,5 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
-import {RenderExtension} from './render-extension';
+import type {RenderExtension, RunExtension} from './extension-signature';
 import type {StandardApi} from './standard-api';
 
 type Components = typeof import('../components');
@@ -18,9 +18,14 @@ export interface ExtensionPoints {
     StandardApi & FullPageApi,
     AllComponents
   >;
+  'CustomerAccount::Returns::InitiateUrl': RunExtension<StandardApi, string>;
   'CustomerAccount::KitchenSink': RenderExtension<
     StandardApi & {name: string},
     AllComponents
+  >;
+  'CustomerAccount::KitchenSinkRun': RunExtension<
+    StandardApi & {name: string},
+    string
   >;
 }
 

@@ -1,5 +1,5 @@
+import {RenderExtension, RunExtension} from './extension-signature';
 import {ExtensionPoints} from './extension-points';
-import {RenderExtension} from './render-extension';
 
 /**
  * For a given extension point, returns the value that is expected to be
@@ -32,6 +32,15 @@ export type RenderExtensionPoint = {
     : never;
 }[keyof ExtensionPoints];
 
+export type RunExtensionPoint = {
+  [ID in keyof ExtensionPoints]: ExtensionPoints[ID] extends RunExtension<
+    any,
+    any
+  >
+    ? ID
+    : never;
+}[keyof ExtensionPoints];
+
 /**
  * A mapping of each “render extension” name to its callback type.
  */
@@ -39,11 +48,28 @@ export type RenderExtensions = {
   [ID in RenderExtensionPoint]: ExtensionPoints[ID];
 };
 
+export type RunExtensions = {
+  [ID in RunExtensionPoint]: ExtensionPoints[ID];
+};
+
 type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
   infer Api,
   any
 >
   ? Api
+  : never;
+
+type ExtractedApiFromRunExtension<T> = T extends RunExtension<
+  infer Api,
+  unknown
+>
+  ? Api
+  : never;
+
+type ExtractedApiFromExtension<T> = T extends RenderExtension<any, any>
+  ? ExtractedApiFromRenderExtension<T>
+  : T extends RunExtension<any, any>
+  ? ExtractedApiFromRunExtension<T>
   : never;
 
 /**
@@ -55,3 +81,11 @@ type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
 export type ApiForRenderExtension<
   ID extends keyof RenderExtensions
 > = ExtractedApiFromRenderExtension<RenderExtensions[ID]>;
+
+export type ApiForRunExtension<
+  ID extends keyof RunExtensions
+> = ExtractedApiFromRunExtension<RunExtensions[ID]>;
+
+export type ApiForExtension<
+  ID extends keyof ExtensionPoints
+> = ExtractedApiFromExtension<ExtensionPoints[ID]>;
