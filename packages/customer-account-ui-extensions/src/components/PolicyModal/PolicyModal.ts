@@ -1,5 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+type PolicyType = 'refund';
+
 export interface PolicyModalProps {
   /**
    * Whether the modal should be rendered.
@@ -12,7 +14,7 @@ export interface PolicyModalProps {
    * not when it exits the viewport.
    * You’ll usually want to use this callback to set the `open` prop to `false`.
    */
-  onClose?: () => void;
+  onClose: () => void;
   /**
    * A title rendered as a `Heading` at the top of the modal.
    */
@@ -20,7 +22,7 @@ export interface PolicyModalProps {
   /**
    * Type of policy to render
    */
-  type: string;
+  type: PolicyType;
 }
 
 export const PolicyModal = createRemoteComponent<
