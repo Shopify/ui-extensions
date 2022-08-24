@@ -20,7 +20,7 @@ export interface PolicyModalProps {
    */
   title: string;
   /**
-   * Type of policy to render
+   * Type of policy to render.
    */
   type: PolicyType;
 }
