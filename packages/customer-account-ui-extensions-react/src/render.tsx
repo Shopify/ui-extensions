@@ -6,6 +6,7 @@ import type {
   RenderExtension,
   RenderExtensionPoint,
 } from '@shopify/customer-account-ui-extensions';
+import {ExtensionApiContext} from './context';
 
 type RenderFunction<T> = RenderExtension<T, any>;
 
@@ -28,9 +29,15 @@ export function render<ExtensionPoint extends RenderExtensionPoint>(
   const extendCallback: RenderFunction<any> = (root, api) => {
     return new Promise<void>((resolve, reject) => {
       try {
-        remoteRender(render(api), root, () => {
-          resolve();
-        });
+        remoteRender(
+          <ExtensionApiContext.Provider value={api}>
+            {render(api as ApiForRenderExtension<ExtensionPoint>)}
+          </ExtensionApiContext.Provider>,
+          root,
+          () => {
+            resolve();
+          },
+        );
       } catch (error) {
         // Workaround for https://github.com/Shopify/ui-extensions/issues/325
         // eslint-disable-next-line no-console
