@@ -17,12 +17,12 @@
       "esnext": "./index.esnext",
       "import": "./index.mjs",
       "require": "./index.js"
-    },
-    "./": "./"
+    }
   },
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.12",
     "@remote-ui/react": "^4.5.7",
+    "@shopify/checkout-ui-extensions": "^0.18.1",
     "@shopify/checkout-ui-extensions-react": "^0.18.1",
     "@shopify/customer-account-ui-extensions": "^0.0.14"
   },
@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@testing-library/react-hooks": "^8.0.1",
-    "react": "^17.0.0"
+    "react": "^17.0.0",
+    "@quilted/react-testing": "^0.4.10"
   }
 }
