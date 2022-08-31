@@ -1,11 +1,13 @@
 export {extend, Style} from '@shopify/customer-account-ui-extensions';
 export type {
-  ApiForRenderExtension,
+  ApiForExtension,
   ArgumentsForExtension,
   ExtensionPoint,
   ExtensionPoints,
   RenderExtension,
   RenderExtensionPoint,
+  RunExtension,
+  RunExtensionPoint,
   ReturnTypeForExtension,
 } from '@shopify/customer-account-ui-extensions';
 export * from './components';

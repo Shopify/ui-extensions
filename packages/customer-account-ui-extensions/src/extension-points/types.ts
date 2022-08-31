@@ -1,5 +1,5 @@
+import {RenderExtension, RunExtension} from './extension-signature';
 import {ExtensionPoints} from './extension-points';
-import {RenderExtension} from './render-extension';
 
 /**
  * For a given extension point, returns the value that is expected to be
@@ -33,11 +33,18 @@ export type RenderExtensionPoint = {
 }[keyof ExtensionPoints];
 
 /**
- * A mapping of each “render extension” name to its callback type.
+ * A union type containing all extension points that follow the pattern of
+ * accepting an `api` argument, and using those arguments to run code that does not render anything, but instead return
+ * a value or execute a side effect.
  */
-export type RenderExtensions = {
-  [ID in RenderExtensionPoint]: ExtensionPoints[ID];
-};
+export type RunExtensionPoint = {
+  [ID in keyof ExtensionPoints]: ExtensionPoints[ID] extends RunExtension<
+    any,
+    any
+  >
+    ? ID
+    : never;
+}[keyof ExtensionPoints];
 
 type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
   infer Api,
@@ -46,12 +53,23 @@ type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
   ? Api
   : never;
 
+type ExtractedApiFromRunExtension<T> = T extends RunExtension<
+  infer Api,
+  unknown
+>
+  ? Api
+  : never;
+
+type ExtractedApiFromExtension<T> = T extends RenderExtension<any, any>
+  ? ExtractedApiFromRenderExtension<T>
+  : T extends RunExtension<any, any>
+  ? ExtractedApiFromRunExtension<T>
+  : never;
+
 /**
- * For a given rendering extension point, returns the type of the API that the
- * extension will receive at runtime. This API type is the second argument to
- * the callback for that extension point (the first callback for all rendering
- * extension points is the same — they all receive a `RemoteRoot` object)
+ * For a given extension point, returns the type of the API that the
+ * extension will receive at runtime.
  */
-export type ApiForRenderExtension<
-  ID extends keyof RenderExtensions
-> = ExtractedApiFromRenderExtension<RenderExtensions[ID]>;
+export type ApiForExtension<
+  ID extends keyof ExtensionPoints
+> = ExtractedApiFromExtension<ExtensionPoints[ID]>;

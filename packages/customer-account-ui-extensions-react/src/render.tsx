@@ -2,7 +2,7 @@ import type {ReactElement} from 'react';
 import {render as remoteRender} from '@remote-ui/react';
 import {extend} from '@shopify/customer-account-ui-extensions';
 import type {
-  ApiForRenderExtension,
+  ApiForExtension,
   RenderExtension,
   RenderExtensionPoint,
 } from '@shopify/customer-account-ui-extensions';
@@ -23,7 +23,7 @@ type RenderFunction<T> = RenderExtension<T, any>;
  */
 export function render<ExtensionPoint extends RenderExtensionPoint>(
   extensionPoint: ExtensionPoint,
-  render: (api: ApiForRenderExtension<ExtensionPoint>) => ReactElement<any>,
+  render: (api: ApiForExtension<ExtensionPoint>) => ReactElement<any>,
 ) {
   const extendCallback: RenderFunction<any> = (root, api) => {
     return new Promise<void>((resolve, reject) => {
