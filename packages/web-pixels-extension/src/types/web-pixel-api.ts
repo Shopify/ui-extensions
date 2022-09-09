@@ -111,6 +111,7 @@ interface BrowserAPI {
 
 export interface WebPixelAPI {
   readonly configuration: Configuration;
+  readonly settings?: Configuration;
   readonly analytics: AnalyticsAPI;
   readonly browser: BrowserAPI;
   readonly _pixelInfo: Record<string, unknown>;
