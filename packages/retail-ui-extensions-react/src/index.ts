@@ -1,5 +1,5 @@
 export {render} from './render';
-export {extend} from '@shopify/retail-ui-extensions/src';
+export {extend} from '@shopify/retail-ui-extensions';
 export * from './components';
 
 export type {

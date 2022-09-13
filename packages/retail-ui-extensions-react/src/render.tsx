@@ -1,10 +1,10 @@
 import type {ReactElement} from 'react';
 import {render as remoteRender} from '@remote-ui/react';
-import {extend} from '@shopify/retail-ui-extensions/src';
+import {extend} from '@shopify/retail-ui-extensions';
 import type {
   RenderExtensionPoint,
   ApiForRenderExtension,
-} from '@shopify/retail-ui-extensions/src';
+} from '@shopify/retail-ui-extensions';
 
 import {ExtensionApiContext} from './context';
 
