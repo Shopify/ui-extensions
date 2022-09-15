@@ -1,0 +1,1612 @@
+{
+  "definitions": {
+    "Browser": {
+      "properties": {
+        "cookie": {
+          "metadata": {
+            "description": "This object replaces the native document.cookie API and provides a setter/getter to set cookies on the top frame."
+          },
+          "properties": {
+            "get": {
+              "metadata": {
+                "description": "An asynchronous method to get a specific cookie by name. Takes a cookie name of type `string` and returns the cookie value as a `string`",
+                "typescriptType": "(name?: string) => Promise<string>"
+              }
+            },
+            "set": {
+              "metadata": {
+                "description": "An asynchronous method to set a cookie by name. It takes two arguments, a string of form `key=value` as [decribed here](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie#write_a_new_cookie) or the name of the cookie as the first argument and the value as the second argument.",
+                "typescriptType": "(cookieOrName: string, value?: string) => Promise<string>"
+              }
+            }
+          }
+        },
+        "sendBeacon": {
+          "metadata": {
+            "description": "The navigator.sendBeacon() method asynchronously sends an HTTP POST request containing a small amount of data to a web server.",
+            "typescriptType": "(url: string, body?: string) => Promise<boolean>"
+          }
+        },
+        "localStorage": {
+          "properties": {
+            "length": {
+              "metadata": {
+                "description": "Returns an integer representing the number of data items stored in the Storage object.",
+                "typescriptType": "() => Promise<WindowLocalStorage['localStorage']['length']>"
+              }
+            },
+            "key": {
+              "metadata": {
+                "description": "When passed a number n, this method will return the name of the nth key in the storage.",
+                "typescriptType": "(index: number) => Promise<ReturnType<WindowLocalStorage['localStorage']['key']>>"
+              }
+            },
+            "getItem": {
+              "metadata": {
+                "description": "When passed a key name, will return that key's value.",
+                "typescriptType": "(key: string) => Promise<ReturnType<WindowLocalStorage['localStorage']['getItem']>>"
+              }
+            },
+            "setItem": {
+              "metadata": {
+                "description": "When passed a key name and value, will add that key to the storage, or update that key's value if it already exists.",
+                "typescriptType": "(key: string, value: any) => Promise<ReturnType<WindowLocalStorage['localStorage']['setItem']>>"
+              }
+            },
+            "removeItem": {
+              "metadata": {
+                "description": "When passed a key name, will remove that key from the storage.",
+                "typescriptType": "(key: string) => Promise<ReturnType<WindowLocalStorage['localStorage']['removeItem']>>"
+              }
+            },
+            "clear": {
+              "metadata": {
+                "description": "When invoked, will empty all keys out of the storage.",
+                "typescriptType": "() => Promise<ReturnType<WindowLocalStorage['localStorage']['clear']>>"
+              }
+            }
+          }
+        },
+        "sessionStorage": {
+          "properties": {
+            "length": {
+              "metadata": {
+                "description": "Returns an integer representing the number of data items stored in the Storage object.",
+                "typescriptType": "() => Promise<WindowSessionStorage['sessionStorage']['length']>"
+              }
+            },
+            "key": {
+              "metadata": {
+                "description": "When passed a number n, this method will return the name of the nth key in the storage.",
+                "typescriptType": "(index: number) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['key']>>"
+              }
+            },
+            "getItem": {
+              "metadata": {
+                "description": "When passed a key name, will return that key's value.",
+                "typescriptType": "(key: string) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['getItem']>>"
+              }
+            },
+            "setItem": {
+              "metadata": {
+                "description": "When passed a key name and value, will add that key to the storage, or update that key's value if it already exists.",
+                "typescriptType": "(key: string, value: any) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['setItem']>>"
+              }
+            },
+            "removeItem": {
+              "metadata": {
+                "description": "When passed a key name, will remove that key from the storage.",
+                "typescriptType": "(key: string) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['removeItem']>>"
+              }
+            },
+            "clear": {
+              "metadata": {
+                "description": "When invoked, will empty all keys out of the storage.",
+                "typescriptType": "() => Promise<ReturnType<WindowSessionStorage['sessionStorage']['clear']>>"
+              }
+            }
+          }
+        }
+      }
+    },
+    "Context": {
+      "properties": {
+        "window": {
+          "ref": "WebPixelsWindow",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "document": {
+          "ref": "WebPixelsDocument",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "navigator": {
+          "ref": "WebPixelsNavigator",
+          "metadata": {
+            "description": "TODO"
+          }
+        }
+      }
+    },
+    "InitData": {
+      "properties": {
+        "customer": {
+          "nullable": true,
+          "ref": "Customer"
+        },
+        "cart": {
+          "nullable": true,
+          "ref": "Cart"
+        },
+        "productVariants": {
+          "nullable": true,
+          "elements": {
+            "ref": "ProductVariant"
+          }
+        }
+      }
+    },
+    "WebPixelsWindow": {
+      "properties": {
+        "userAgent": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "innerHeight": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "innerWidth": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "outerHeight": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "outerWidth": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "pageXOffset": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "pageYOffset": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "screenX": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "screenY": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "scrollX": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "scrollY": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "origin": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "location": {
+          "ref": "Location",
+          "metadata": {
+            "description": "TODO"
+          }
+        }
+      }
+    },
+    "Location": {
+      "properties": {
+        "href": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "protocol": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "host": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "hostname": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "port": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "pathname": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "search": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "hash": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "origin": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        }
+      }
+    },
+    "WebPixelsDocument": {
+      "properties": {
+        "characterSet": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "documentURI": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "hidden": {
+          "type": "boolean",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "visibilityState": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "lastModified": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "location": {
+          "ref": "Location",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "readyState": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "title": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        }
+      }
+    },
+    "WebPixelsNavigator": {
+      "properties": {
+        "cookieEnabled": {
+          "type": "boolean",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "hardwareConcurrency": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "language": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "languages": {
+          "metadata": {
+            "description": "TODO",
+            "typescriptType": "ReadonlyArray<string>"
+          }
+        },
+        "maxTouchPoints": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "onLine": {
+          "type": "boolean",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "pdfViewerEnabled": {
+          "type": "boolean",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "userAgent": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "webdriver": {
+          "type": "boolean",
+          "metadata": {
+            "description": "TODO"
+          }
+        }
+      }
+    },
+    "Connection": {
+      "properties": {
+        "downlink": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "downlinkMax": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "effectiveType": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "rtt": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "saveData": {
+          "type": "boolean",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "type": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        }
+      }
+    },
+    "NavigatorUAData": {
+      "properties": {
+        "brands": {
+          "elements": {
+            "type": "string"
+          },
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "mobile": {
+          "type": "boolean",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "platform": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        }
+      }
+    },
+    "Checkout": {
+      "properties": {
+        "currencyCode": {
+          "ref": "CurrencyCode",
+          "metadata": {
+            "description": "The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,\nand non-standard codes.\n"
+          }
+        },
+        "email": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        },
+        "id": {
+          "type": "string",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        },
+        "lineItems": {
+          "elements": {
+            "ref": "CheckoutLineItem",
+            "metadata": {
+              "description": "A single line item in the checkout, grouped by variant and attributes."
+            }
+          }
+        },
+        "order": {
+          "ref": "Order",
+          "metadata": {
+            "description": "An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information."
+          }
+        },
+        "shippingAddress": {
+          "ref": "MailingAddress",
+          "metadata": {
+            "description": "Represents a mailing address for customers and shipping."
+          }
+        },
+        "shippingLine": {
+          "ref": "ShippingRate",
+          "metadata": {
+            "description": "A shipping rate to be applied to a checkout."
+          }
+        },
+        "subtotalPrice": {
+          "ref": "MoneyV2",
+          "metadata": {
+            "description": "A monetary value with currency.\n"
+          }
+        },
+        "totalPrice": {
+          "ref": "MoneyV2",
+          "metadata": {
+            "description": "A monetary value with currency.\n"
+          }
+        },
+        "totalTax": {
+          "ref": "MoneyV2",
+          "metadata": {
+            "description": "A monetary value with currency.\n"
+          }
+        }
+      }
+    },
+    "CurrencyCode": {
+      "enum": [
+        "AED",
+        "AFN",
+        "ALL",
+        "AMD",
+        "ANG",
+        "AOA",
+        "ARS",
+        "AUD",
+        "AWG",
+        "AZN",
+        "BAM",
+        "BBD",
+        "BDT",
+        "BGN",
+        "BHD",
+        "BIF",
+        "BMD",
+        "BND",
+        "BOB",
+        "BRL",
+        "BSD",
+        "BTN",
+        "BWP",
+        "BYN",
+        "BYR",
+        "BZD",
+        "CAD",
+        "CDF",
+        "CHF",
+        "CLP",
+        "CNY",
+        "COP",
+        "CRC",
+        "CVE",
+        "CZK",
+        "DJF",
+        "DKK",
+        "DOP",
+        "DZD",
+        "EGP",
+        "ERN",
+        "ETB",
+        "EUR",
+        "FJD",
+        "FKP",
+        "GBP",
+        "GEL",
+        "GHS",
+        "GIP",
+        "GMD",
+        "GNF",
+        "GTQ",
+        "GYD",
+        "HKD",
+        "HNL",
+        "HRK",
+        "HTG",
+        "HUF",
+        "IDR",
+        "ILS",
+        "INR",
+        "IQD",
+        "IRR",
+        "ISK",
+        "JEP",
+        "JMD",
+        "JOD",
+        "JPY",
+        "KES",
+        "KGS",
+        "KHR",
+        "KID",
+        "KMF",
+        "KRW",
+        "KWD",
+        "KYD",
+        "KZT",
+        "LAK",
+        "LBP",
+        "LKR",
+        "LRD",
+        "LSL",
+        "LTL",
+        "LVL",
+        "LYD",
+        "MAD",
+        "MDL",
+        "MGA",
+        "MKD",
+        "MMK",
+        "MNT",
+        "MOP",
+        "MRU",
+        "MUR",
+        "MVR",
+        "MWK",
+        "MXN",
+        "MYR",
+        "MZN",
+        "NAD",
+        "NGN",
+        "NIO",
+        "NOK",
+        "NPR",
+        "NZD",
+        "OMR",
+        "PAB",
+        "PEN",
+        "PGK",
+        "PHP",
+        "PKR",
+        "PLN",
+        "PYG",
+        "QAR",
+        "RON",
+        "RSD",
+        "RUB",
+        "RWF",
+        "SAR",
+        "SBD",
+        "SCR",
+        "SDG",
+        "SEK",
+        "SGD",
+        "SHP",
+        "SLL",
+        "SOS",
+        "SRD",
+        "SSP",
+        "STD",
+        "STN",
+        "SYP",
+        "SZL",
+        "THB",
+        "TJS",
+        "TMT",
+        "TND",
+        "TOP",
+        "TRY",
+        "TTD",
+        "TWD",
+        "TZS",
+        "UAH",
+        "UGX",
+        "USD",
+        "UYU",
+        "UZS",
+        "VED",
+        "VEF",
+        "VES",
+        "VND",
+        "VUV",
+        "WST",
+        "XAF",
+        "XCD",
+        "XOF",
+        "XPF",
+        "XXX",
+        "YER",
+        "ZAR",
+        "ZMW"
+      ]
+    },
+    "CheckoutLineItem": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        },
+        "quantity": {
+          "type": "uint32",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        },
+        "title": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        },
+        "unitPrice": {
+          "ref": "MoneyV2",
+          "metadata": {
+            "description": "A monetary value with currency.\n"
+          }
+        },
+        "variant": {
+          "ref": "ProductVariant",
+          "metadata": {
+            "description": "A product variant represents a different version of a product, such as differing sizes or differing colors."
+          }
+        }
+      }
+    },
+    "MoneyV2": {
+      "properties": {
+        "amount": {
+          "type": "float64",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        },
+        "currencyCode": {
+          "ref": "CurrencyCode",
+          "metadata": {
+            "description": "The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,\nand non-standard codes.\n"
+          }
+        }
+      }
+    },
+    "ProductVariant": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        },
+        "image": {
+          "ref": "Image",
+          "metadata": {
+            "description": "Represents an image resource."
+          }
+        },
+        "price": {
+          "ref": "MoneyV2",
+          "metadata": {
+            "description": "A monetary value with currency.\n"
+          }
+        },
+        "product": {
+          "ref": "Product",
+          "metadata": {
+            "description": "A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.\nFor example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty)."
+          }
+        },
+        "sku": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        },
+        "title": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        }
+      }
+    },
+    "Image": {
+      "properties": {
+        "src": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        }
+      }
+    },
+    "Product": {
+      "properties": {
+        "id": {
+          "type": "string",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        },
+        "title": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        },
+        "vendor": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        }
+      }
+    },
+    "Order": {
+      "properties": {
+        "currencyCode": {
+          "ref": "CurrencyCode",
+          "metadata": {
+            "description": "The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,\nand non-standard codes.\n"
+          }
+        },
+        "id": {
+          "type": "string",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        },
+        "name": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        },
+        "orderNumber": {
+          "type": "uint32",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        },
+        "phone": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        },
+        "shippingAddress": {
+          "ref": "MailingAddress",
+          "metadata": {
+            "description": "Represents a mailing address for customers and shipping."
+          }
+        },
+        "totalPrice": {
+          "ref": "MoneyV2",
+          "metadata": {
+            "description": "A monetary value with currency.\n"
+          }
+        }
+      }
+    },
+    "MailingAddress": {
+      "properties": {
+        "country": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        },
+        "countryCode": {
+          "ref": "CountryCode",
+          "metadata": {
+            "description": "The code designating a country/region, which generally follows ISO 3166-1 alpha-2 guidelines.\nIf a territory doesn't have a country code value in the `CountryCode` enum, then it might be considered a subdivision\nof another country. For example, the territories associated with Spain are represented by the country code `ES`,\nand the territories associated with the United States of America are represented by the country code `US`.\n"
+          }
+        },
+        "province": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        },
+        "provinceCode": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        }
+      }
+    },
+    "CountryCode": {
+      "enum": [
+        "AC",
+        "AD",
+        "AE",
+        "AF",
+        "AG",
+        "AI",
+        "AL",
+        "AM",
+        "AN",
+        "AO",
+        "AR",
+        "AT",
+        "AU",
+        "AW",
+        "AX",
+        "AZ",
+        "BA",
+        "BB",
+        "BD",
+        "BE",
+        "BF",
+        "BG",
+        "BH",
+        "BI",
+        "BJ",
+        "BL",
+        "BM",
+        "BN",
+        "BO",
+        "BQ",
+        "BR",
+        "BS",
+        "BT",
+        "BV",
+        "BW",
+        "BY",
+        "BZ",
+        "CA",
+        "CC",
+        "CD",
+        "CF",
+        "CG",
+        "CH",
+        "CI",
+        "CK",
+        "CL",
+        "CM",
+        "CN",
+        "CO",
+        "CR",
+        "CU",
+        "CV",
+        "CW",
+        "CX",
+        "CY",
+        "CZ",
+        "DE",
+        "DJ",
+        "DK",
+        "DM",
+        "DO",
+        "DZ",
+        "EC",
+        "EE",
+        "EG",
+        "EH",
+        "ER",
+        "ES",
+        "ET",
+        "FI",
+        "FJ",
+        "FK",
+        "FO",
+        "FR",
+        "GA",
+        "GB",
+        "GD",
+        "GE",
+        "GF",
+        "GG",
+        "GH",
+        "GI",
+        "GL",
+        "GM",
+        "GN",
+        "GP",
+        "GQ",
+        "GR",
+        "GS",
+        "GT",
+        "GW",
+        "GY",
+        "HK",
+        "HM",
+        "HN",
+        "HR",
+        "HT",
+        "HU",
+        "ID",
+        "IE",
+        "IL",
+        "IM",
+        "IN",
+        "IO",
+        "IQ",
+        "IR",
+        "IS",
+        "IT",
+        "JE",
+        "JM",
+        "JO",
+        "JP",
+        "KE",
+        "KG",
+        "KH",
+        "KI",
+        "KM",
+        "KN",
+        "KP",
+        "KR",
+        "KW",
+        "KY",
+        "KZ",
+        "LA",
+        "LB",
+        "LC",
+        "LI",
+        "LK",
+        "LR",
+        "LS",
+        "LT",
+        "LU",
+        "LV",
+        "LY",
+        "MA",
+        "MC",
+        "MD",
+        "ME",
+        "MF",
+        "MG",
+        "MK",
+        "ML",
+        "MM",
+        "MN",
+        "MO",
+        "MQ",
+        "MR",
+        "MS",
+        "MT",
+        "MU",
+        "MV",
+        "MW",
+        "MX",
+        "MY",
+        "MZ",
+        "NA",
+        "NC",
+        "NE",
+        "NF",
+        "NG",
+        "NI",
+        "NL",
+        "NO",
+        "NP",
+        "NR",
+        "NU",
+        "NZ",
+        "OM",
+        "PA",
+        "PE",
+        "PF",
+        "PG",
+        "PH",
+        "PK",
+        "PL",
+        "PM",
+        "PN",
+        "PS",
+        "PT",
+        "PY",
+        "QA",
+        "RE",
+        "RO",
+        "RS",
+        "RU",
+        "RW",
+        "SA",
+        "SB",
+        "SC",
+        "SD",
+        "SE",
+        "SG",
+        "SH",
+        "SI",
+        "SJ",
+        "SK",
+        "SL",
+        "SM",
+        "SN",
+        "SO",
+        "SR",
+        "SS",
+        "ST",
+        "SV",
+        "SX",
+        "SY",
+        "SZ",
+        "TA",
+        "TC",
+        "TD",
+        "TF",
+        "TG",
+        "TH",
+        "TJ",
+        "TK",
+        "TL",
+        "TM",
+        "TN",
+        "TO",
+        "TR",
+        "TT",
+        "TV",
+        "TW",
+        "TZ",
+        "UA",
+        "UG",
+        "UM",
+        "US",
+        "UY",
+        "UZ",
+        "VA",
+        "VC",
+        "VE",
+        "VG",
+        "VN",
+        "VU",
+        "WF",
+        "WS",
+        "XK",
+        "YE",
+        "YT",
+        "ZA",
+        "ZM",
+        "ZW",
+        "ZZ"
+      ]
+    },
+    "ShippingRate": {
+      "properties": {
+        "price": {
+          "ref": "MoneyV2",
+          "metadata": {
+            "description": "A monetary value with currency.\n"
+          }
+        }
+      }
+    },
+    "Cart": {
+      "properties": {
+        "cost": {
+          "ref": "CartCost",
+          "metadata": {
+            "description": "The costs that the buyer will pay at checkout.\nIt uses [`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/cartbuyeridentity) to determine\n[international pricing](https://shopify.dev/api/examples/international-pricing#create-a-cart).\n"
+          }
+        },
+        "id": {
+          "type": "string",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        },
+        "lines": {
+          "elements": {
+            "ref": "CartLine",
+            "metadata": {
+              "description": "Represents information about the merchandise in the cart."
+            }
+          }
+        },
+        "totalQuantity": {
+          "type": "uint32",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        }
+      }
+    },
+    "CartCost": {
+      "properties": {
+        "totalAmount": {
+          "ref": "MoneyV2",
+          "metadata": {
+            "description": "A monetary value with currency.\n"
+          }
+        }
+      }
+    },
+    "CartLine": {
+      "properties": {
+        "cost": {
+          "ref": "CartLineCost",
+          "metadata": {
+            "description": "The cost of the merchandise line that the buyer will pay at checkout."
+          }
+        },
+        "merchandise": {
+          "ref": "ProductVariant",
+          "metadata": {
+            "description": "The merchandise to be purchased at checkout."
+          }
+        },
+        "quantity": {
+          "type": "uint32",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        }
+      }
+    },
+    "CartLineCost": {
+      "properties": {
+        "totalAmount": {
+          "ref": "MoneyV2",
+          "metadata": {
+            "description": "A monetary value with currency.\n"
+          }
+        }
+      }
+    },
+    "Customer": {
+      "properties": {
+        "email": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        },
+        "id": {
+          "type": "string",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        },
+        "phone": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        }
+      }
+    },
+    "Collection": {
+      "properties": {
+        "handle": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        },
+        "id": {
+          "type": "string",
+          "metadata": {
+            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+          }
+        },
+        "title": {
+          "type": "string",
+          "metadata": {
+            "description": "JavaScript's String type is used to represent textual data."
+          }
+        }
+      }
+    },
+    "Id": {
+      "type": "string",
+      "metadata": {
+        "description": "TODO"
+      }
+    },
+    "Name": {
+      "type": "string",
+      "metadata": {
+        "description": "TODO"
+      }
+    },
+    "Timestamp": {
+      "type": "string",
+      "metadata": {
+        "description": "TODO"
+      }
+    },
+    "CustomData": {
+      "metadata": {
+        "description": "TODO",
+        "typescriptType": "Record<string, unknown>"
+      }
+    },
+    "SearchResult": {
+      "metadata": {
+        "description": "TODO"
+      },
+      "properties": {
+        "query": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO"
+          }
+        },
+        "totalResults": {
+          "type": "uint32",
+          "metadata": {
+            "description": "TODO"
+          }
+        }
+      }
+    }
+  },
+  "properties": {
+    "custom_event": {
+      "metadata": {
+        "description": "This event represents any custom events."
+      },
+      "properties": {
+        "id": {
+          "ref": "Id"
+        },
+        "name": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO",
+            "typescriptType": "'custom_event'"
+          }
+        },
+        "timestamp": {
+          "ref": "Timestamp"
+        },
+        "context": {
+          "ref": "Context"
+        },
+        "customData": {
+          "nullable": true,
+          "ref": "CustomData"
+        }
+      }
+    },
+    "checkout_completed": {
+      "metadata": {
+        "description": "This event is published when a checkout was completed."
+      },
+      "properties": {
+        "id": {
+          "ref": "Id"
+        },
+        "name": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO",
+            "typescriptType": "'checkout_completed'"
+          }
+        },
+        "timestamp": {
+          "ref": "Timestamp"
+        },
+        "context": {
+          "ref": "Context"
+        },
+        "data": {
+          "properties": {
+            "checkout": {
+              "nullable": true,
+              "ref": "Checkout"
+            }
+          }
+        }
+      }
+    },
+    "checkout_started": {
+      "metadata": {
+        "description": "This event is published when a checkout was started."
+      },
+      "properties": {
+        "id": {
+          "ref": "Id"
+        },
+        "name": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO",
+            "typescriptType": "'checkout_started'"
+          }
+        },
+        "timestamp": {
+          "ref": "Timestamp"
+        },
+        "context": {
+          "ref": "Context"
+        },
+        "data": {
+          "properties": {
+            "checkout": {
+              "nullable": true,
+              "ref": "Checkout"
+            }
+          }
+        }
+      }
+    },
+    "payment_info_submitted": {
+      "metadata": {
+        "description": "TODO"
+      },
+      "properties": {
+        "id": {
+          "ref": "Id"
+        },
+        "name": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO",
+            "typescriptType": "'payment_info_submitted'"
+          }
+        },
+        "timestamp": {
+          "ref": "Timestamp"
+        },
+        "context": {
+          "ref": "Context"
+        },
+        "data": {
+          "properties": {
+            "checkout": {
+              "nullable": true,
+              "ref": "Checkout"
+            }
+          }
+        }
+      }
+    },
+    "collection_viewed": {
+      "metadata": {
+        "description": "When a collection page viewed. (Ex. /collections/all)"
+      },
+      "properties": {
+        "id": {
+          "ref": "Id"
+        },
+        "name": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO",
+            "typescriptType": "'collection_viewed'"
+          }
+        },
+        "timestamp": {
+          "ref": "Timestamp"
+        },
+        "context": {
+          "ref": "Context"
+        },
+        "data": {
+          "properties": {
+            "collection": {
+              "nullable": true,
+              "ref": "Collection"
+            }
+          }
+        }
+      }
+    },
+    "page_viewed": {
+      "metadata": {
+        "description": "When any given page was viewed. (Ex. /products/product-handle, /cart)"
+      },
+      "properties": {
+        "id": {
+          "ref": "Id"
+        },
+        "name": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO",
+            "typescriptType": "'page_viewed'"
+          }
+        },
+        "timestamp": {
+          "ref": "Timestamp"
+        },
+        "context": {
+          "ref": "Context"
+        }
+      }
+    },
+    "product_added_to_cart": {
+      "metadata": {
+        "description": "TODO"
+      },
+      "properties": {
+        "id": {
+          "ref": "Id"
+        },
+        "name": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO",
+            "typescriptType": "'product_added_to_cart'"
+          }
+        },
+        "timestamp": {
+          "ref": "Timestamp"
+        },
+        "context": {
+          "ref": "Context"
+        },
+        "data": {
+          "properties": {
+            "cartLine": {
+              "nullable": true,
+              "ref": "CartLine"
+            }
+          }
+        }
+      }
+    },
+    "product_viewed": {
+      "metadata": {
+        "description": "TODO"
+      },
+      "properties": {
+        "id": {
+          "ref": "Id"
+        },
+        "name": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO",
+            "typescriptType": "'product_viewed'"
+          }
+        },
+        "timestamp": {
+          "ref": "Timestamp"
+        },
+        "context": {
+          "ref": "Context"
+        },
+        "data": {
+          "properties": {
+            "productVariant": {
+              "nullable": true,
+              "ref": "ProductVariant"
+            }
+          }
+        }
+      }
+    },
+    "product_variant_viewed": {
+      "metadata": {
+        "description": "TODO"
+      },
+      "properties": {
+        "id": {
+          "ref": "Id"
+        },
+        "name": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO",
+            "typescriptType": "'product_variant_viewed'"
+          }
+        },
+        "timestamp": {
+          "ref": "Timestamp"
+        },
+        "context": {
+          "ref": "Context"
+        },
+        "data": {
+          "properties": {
+            "productVariant": {
+              "nullable": true,
+              "ref": "ProductVariant"
+            }
+          }
+        }
+      }
+    },
+    "search_submitted": {
+      "metadata": {
+        "description": "TODO"
+      },
+      "properties": {
+        "id": {
+          "ref": "Id"
+        },
+        "name": {
+          "type": "string",
+          "metadata": {
+            "description": "TODO",
+            "typescriptType": "'search_submitted'"
+          }
+        },
+        "timestamp": {
+          "ref": "Timestamp"
+        },
+        "context": {
+          "ref": "Context"
+        },
+        "data": {
+          "properties": {
+            "searchResult": {
+              "nullable": true,
+              "ref": "SearchResult"
+            }
+          }
+        }
+      }
+    }
+  }
+}
