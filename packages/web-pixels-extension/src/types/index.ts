@@ -14,7 +14,9 @@ import {CountryCode, CurrencyCode} from './Shared';
 import type {
   PublisherData,
   PublisherCustomData,
+  PublisherOptions,
   SubscriberCallback,
+  SubscriberOptions,
   KeyOfEvent,
   Events,
   EventBus,
@@ -30,7 +32,9 @@ export type {Event} from './Event';
 export type {
   PublisherData,
   PublisherCustomData,
+  PublisherOptions,
   SubscriberCallback,
+  SubscriberOptions,
   KeyOfEvent,
   Events,
   EventBus,
