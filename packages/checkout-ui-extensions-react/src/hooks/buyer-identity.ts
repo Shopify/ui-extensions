@@ -1,5 +1,7 @@
 import type {RenderExtensionPoint} from '@shopify/checkout-ui-extensions';
 
+import {ScopeNotGrantedError} from '../errors';
+
 import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
 
@@ -10,7 +12,15 @@ import {useSubscription} from './subscription';
  * an account or if they aren’t logged in.
  */
 export function useCustomer<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
-  return useSubscription(useExtensionApi<ID>().buyerIdentity.customer);
+  const buyerIdentity = useExtensionApi<ID>().buyerIdentity;
+
+  if (!buyerIdentity) {
+    throw new ScopeNotGrantedError(
+      'Using buyer identity requires having personal customer data permissions granted to your app.',
+    );
+  }
+
+  return useSubscription(buyerIdentity.customer);
 }

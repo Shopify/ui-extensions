@@ -85,7 +85,7 @@ export function findUuid(file: string) {
 }
 
 export function dedupe<T>(array: T[]) {
-\  return [...new Set(array)];
+  return [...new Set(array)];
 }
 
 export function propsTable(

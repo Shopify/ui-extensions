@@ -74,6 +74,7 @@ function createLruCache(maxSize: number, equals: EqualityFn): Cache {
 
   function put(key: unknown, value: unknown) {
     if (get(key) === NOT_FOUND) {
+      // TODO Is unshift slow?
       entries.unshift({key, value});
       if (entries.length > maxSize) {
         entries.pop();

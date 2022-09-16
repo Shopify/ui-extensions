@@ -6,7 +6,7 @@ import {useExtensionApi} from './api';
  * Returns the key-value `Storage` interface for this extension point.
  */
 export function useStorage<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
   return useExtensionApi<ID>().storage;
 }

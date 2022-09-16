@@ -20,7 +20,7 @@ interface MetafieldsFilters {
  * @arg {MetafieldsFilters} - filter the list of returned metafields
  */
 export function useMetafields<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(filters?: MetafieldsFilters) {
   const metaFields = useSubscription(useExtensionApi<ID>().metafields);
 
@@ -50,7 +50,7 @@ export function useMetafields<
  * Returns a function to mutate the `metafields` property of the checkout.
  */
 export function useApplyMetafieldsChange<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): StandardApi<ID>['applyMetafieldChange'] {
   return useExtensionApi<ID>().applyMetafieldChange;
 }

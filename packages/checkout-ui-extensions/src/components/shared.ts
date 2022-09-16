@@ -228,7 +228,6 @@ export interface SizingProps {
    *
    * `fill`: takes all the available space.
    */
-  // eslint-disable-next-line prettier/prettier
   maxBlockSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
 
   /**

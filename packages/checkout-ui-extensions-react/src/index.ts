@@ -1,6 +1,7 @@
 export {
   extend,
   isConditionalStyle,
+  isConditionalStyleWithDefault,
   Style,
 } from '@shopify/checkout-ui-extensions';
 export type {
@@ -35,9 +36,9 @@ export type {
   I18nTranslate,
   InlineAlignment,
   MaybeConditionalStyle,
+  ResolutionCondition,
   ViewportSizeCondition,
   InteractiveConditions,
-  DefaultConditions,
   MaybeShorthandProperty,
   NonPresentationalAccessibilityRole,
   RenderExtension,
@@ -58,6 +59,7 @@ export type {
   ViewPosition,
   ViewPositionType,
   ViewLikeAccessibilityRole,
+  AtLeastOne,
 } from '@shopify/checkout-ui-extensions';
 
 export * from './components';
