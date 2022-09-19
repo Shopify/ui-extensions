@@ -110,23 +110,26 @@
       }
     },
     "Context": {
+      "metadata": {
+        "description": "Snapshot of various read-only properties of the browser at the time of event"
+      },
       "properties": {
         "window": {
           "ref": "WebPixelsWindow",
           "metadata": {
-            "description": "TODO"
+            "description": "Snapshot of a subset of properties of the `window` object in the top frame of the browser"
           }
         },
         "document": {
           "ref": "WebPixelsDocument",
           "metadata": {
-            "description": "TODO"
+            "description": "Snapshot of a subset of properties of the `document` object in the top frame of the browser"
           }
         },
         "navigator": {
           "ref": "WebPixelsNavigator",
           "metadata": {
-            "description": "TODO"
+            "description": "Snapshot of a subset of properties of the `navigator` object in the top frame of the browser"
           }
         }
       }
@@ -150,381 +153,272 @@
       }
     },
     "WebPixelsWindow": {
+      "metadata": {
+        "description": "Snapshot of a subset of properties of the `window` object in the top frame of the browser"
+      },
       "properties": {
-        "userAgent": {
-          "type": "string",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
         "innerHeight": {
           "type": "uint32",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), gets the height of the content area of the browser window including, if rendered, the horizontal scrollbar"
           }
         },
         "innerWidth": {
           "type": "uint32",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), gets the width of the content area of the browser window including, if rendered, the vertical scrollbar"
           }
         },
         "outerHeight": {
           "type": "uint32",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), gets the height of the outside of the browser window"
           }
         },
         "outerWidth": {
           "type": "uint32",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), gets the width of the outside of the browser window"
           }
         },
         "pageXOffset": {
           "type": "uint32",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), an alias for window.scrollX"
           }
         },
         "pageYOffset": {
           "type": "uint32",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), an alias for window.scrollY"
           }
         },
         "screenX": {
           "type": "uint32",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the horizontal distance from the left border of the user's browser viewport to the left side of the screen"
           }
         },
         "screenY": {
           "type": "uint32",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the vertical distance from the top border of the user's browser viewport to the top side of the screen"
           }
         },
         "scrollX": {
           "type": "uint32",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the number of pixels that the document has already been scrolled horizontally"
           }
         },
         "scrollY": {
           "type": "uint32",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the number of pixels that the document has already been scrolled vertically"
           }
         },
         "origin": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the global object's origin, serialized as a string"
           }
         },
         "location": {
           "ref": "Location",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the location, or current URL, of the window object"
           }
         }
       }
     },
     "Location": {
+      "metadata": {
+        "description": "Snapshot of a subset of properties of the `location` object in the top frame of the browser"
+      },
       "properties": {
         "href": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the entire URL"
           }
         },
         "protocol": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the protocol scheme of the URL, including the final `':'`"
           }
         },
         "host": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the host, that is the hostname, a `':'`, and the port of the URL"
           }
         },
         "hostname": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the domain of the URL"
           }
         },
         "port": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the port number of the URL"
           }
         },
         "pathname": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing an initial `'/'` followed by the path of the URL, not including the query string or fragment"
           }
         },
         "search": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing a `'?'` followed by the parameters or \"querystring\" of the URL"
           }
         },
         "hash": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing a `'#'` followed by the fragment identifier of the URL"
           }
         },
         "origin": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the canonical form of the origin of the specific location"
           }
         }
       }
     },
     "WebPixelsDocument": {
+      "metadata": {
+        "description": "Snapshot of a subset of properties of the `document` object in the top frame of the browser"
+      },
       "properties": {
         "characterSet": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
-          }
-        },
-        "documentURI": {
-          "type": "string",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "hidden": {
-          "type": "boolean",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "visibilityState": {
-          "type": "string",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "lastModified": {
-          "type": "string",
-          "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document), returns the character set being used by the document"
           }
         },
         "location": {
           "ref": "Location",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document), returns the URI of the current document"
           }
         },
-        "readyState": {
+        "referrer": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document), returns the URI of the page that linked to this page"
           }
         },
         "title": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document), returns the title of the current document"
           }
         }
       }
     },
     "WebPixelsNavigator": {
+      "metadata": {
+        "description": "Snapshot of a subset of properties of the `navigator` object in the top frame of the browser"
+      },
       "properties": {
         "cookieEnabled": {
           "type": "boolean",
           "metadata": {
-            "description": "TODO"
-          }
-        },
-        "hardwareConcurrency": {
-          "type": "uint32",
-          "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator), returns false if setting a cookie will be ignored and true otherwise"
           }
         },
         "language": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator), returns a string representing the preferred language of the user, usually the language of the browser UI. The null value is returned when this is unknown"
           }
         },
         "languages": {
           "metadata": {
-            "description": "TODO",
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator), returns an array of strings representing the languages known to the user, by order of preference",
             "typescriptType": "ReadonlyArray<string>"
-          }
-        },
-        "maxTouchPoints": {
-          "type": "uint32",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "onLine": {
-          "type": "boolean",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "pdfViewerEnabled": {
-          "type": "boolean",
-          "metadata": {
-            "description": "TODO"
           }
         },
         "userAgent": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
-          }
-        },
-        "webdriver": {
-          "type": "boolean",
-          "metadata": {
-            "description": "TODO"
-          }
-        }
-      }
-    },
-    "Connection": {
-      "properties": {
-        "downlink": {
-          "type": "uint32",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "downlinkMax": {
-          "type": "uint32",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "effectiveType": {
-          "type": "string",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "rtt": {
-          "type": "uint32",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "saveData": {
-          "type": "boolean",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "type": {
-          "type": "string",
-          "metadata": {
-            "description": "TODO"
-          }
-        }
-      }
-    },
-    "NavigatorUAData": {
-      "properties": {
-        "brands": {
-          "elements": {
-            "type": "string"
-          },
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "mobile": {
-          "type": "boolean",
-          "metadata": {
-            "description": "TODO"
-          }
-        },
-        "platform": {
-          "type": "string",
-          "metadata": {
-            "description": "TODO"
+            "description": "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator), returns the user agent string for the current browser"
           }
         }
       }
     },
     "Checkout": {
+      "metadata": {
+        "description": "A container for all the information required to checkout items and pay."
+      },
       "properties": {
         "currencyCode": {
           "ref": "CurrencyCode",
           "metadata": {
-            "description": "The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,\nand non-standard codes.\n"
+            "description": "The currency code for the checkout."
           }
         },
         "email": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The email attached to this checkout."
           }
         },
         "id": {
           "type": "string",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+            "description": "A globally-unique identifier."
           }
         },
         "lineItems": {
           "elements": {
             "ref": "CheckoutLineItem",
             "metadata": {
-              "description": "A single line item in the checkout, grouped by variant and attributes."
+              "description": "A list of line item objects, each one containing information about an item in the checkout."
             }
           }
         },
         "order": {
           "ref": "Order",
           "metadata": {
-            "description": "An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information."
+            "description": "The resulting order from a paid checkout."
           }
         },
         "shippingAddress": {
           "ref": "MailingAddress",
           "metadata": {
-            "description": "Represents a mailing address for customers and shipping."
+            "description": "The shipping address to where the line items will be shipped."
           }
         },
         "shippingLine": {
           "ref": "ShippingRate",
           "metadata": {
-            "description": "A shipping rate to be applied to a checkout."
+            "description": "Once a shipping rate is selected by the customer it is transitioned to a `shipping_line` object."
           }
         },
         "subtotalPrice": {
           "ref": "MoneyV2",
           "metadata": {
-            "description": "A monetary value with currency.\n"
+            "description": "The price at checkout before duties, shipping, and taxes."
           }
         },
         "totalPrice": {
           "ref": "MoneyV2",
           "metadata": {
-            "description": "A monetary value with currency.\n"
+            "description": "The sum of all the prices of all the items in the checkout, including duties, taxes, and discounts."
           }
         },
         "totalTax": {
           "ref": "MoneyV2",
           "metadata": {
-            "description": "A monetary value with currency.\n"
+            "description": "The sum of all the taxes applied to the line items and shipping lines in the checkout."
           }
         }
       }
@@ -692,200 +586,206 @@
         "YER",
         "ZAR",
         "ZMW"
-      ]
+      ],
+      "metadata": {
+        "description": "The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,\nand non-standard codes.\n"
+      }
     },
     "CheckoutLineItem": {
+      "metadata": {
+        "description": "A single line item in the checkout, grouped by variant and attributes."
+      },
       "properties": {
         "id": {
           "type": "string",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+            "description": "A globally-unique identifier."
           }
         },
         "quantity": {
           "type": "uint32",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+            "description": "The quantity of the line item."
           }
         },
         "title": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
-          }
-        },
-        "unitPrice": {
-          "ref": "MoneyV2",
-          "metadata": {
-            "description": "A monetary value with currency.\n"
+            "description": "Title of the line item. Defaults to the product's title."
           }
         },
         "variant": {
           "ref": "ProductVariant",
           "metadata": {
-            "description": "A product variant represents a different version of a product, such as differing sizes or differing colors."
-          }
-        }
-      }
-    },
-    "MoneyV2": {
-      "properties": {
-        "amount": {
-          "type": "float64",
-          "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
-          }
-        },
-        "currencyCode": {
-          "ref": "CurrencyCode",
-          "metadata": {
-            "description": "The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,\nand non-standard codes.\n"
+            "description": "Product variant of the line item."
           }
         }
       }
     },
     "ProductVariant": {
+      "metadata": {
+        "description": "A product variant represents a different version of a product, such as differing sizes or differing colors."
+      },
       "properties": {
         "id": {
           "type": "string",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+            "description": "A globally-unique identifier."
           }
         },
         "image": {
           "ref": "Image",
           "metadata": {
-            "description": "Represents an image resource."
+            "description": "Image associated with the product variant. This field falls back to the product image if no image is available.\n"
           }
         },
         "price": {
           "ref": "MoneyV2",
           "metadata": {
-            "description": "A monetary value with currency.\n"
+            "description": "The product variant’s price."
           }
         },
         "product": {
           "ref": "Product",
           "metadata": {
-            "description": "A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.\nFor example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty)."
+            "description": "The product object that the product variant belongs to."
           }
         },
         "sku": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The SKU (stock keeping unit) associated with the variant."
           }
         },
         "title": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The product variant’s title."
           }
         }
       }
     },
     "Image": {
+      "metadata": {
+        "description": "Represents an image resource."
+      },
       "properties": {
         "src": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The location of the image as a URL."
+          }
+        }
+      }
+    },
+    "MoneyV2": {
+      "metadata": {
+        "description": "A monetary value with currency.\n"
+      },
+      "properties": {
+        "amount": {
+          "type": "float64",
+          "metadata": {
+            "description": "Decimal money amount."
+          }
+        },
+        "currencyCode": {
+          "ref": "CurrencyCode",
+          "metadata": {
+            "description": "Currency of the money."
           }
         }
       }
     },
     "Product": {
+      "metadata": {
+        "description": "A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.\nFor example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty)."
+      },
       "properties": {
         "id": {
           "type": "string",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+            "description": "A globally-unique identifier."
           }
         },
         "title": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The product’s title."
           }
         },
         "vendor": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The product’s vendor name."
           }
         }
       }
     },
     "Order": {
+      "metadata": {
+        "description": "An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information."
+      },
       "properties": {
-        "currencyCode": {
-          "ref": "CurrencyCode",
-          "metadata": {
-            "description": "The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,\nand non-standard codes.\n"
-          }
-        },
         "id": {
           "type": "string",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+            "description": "A globally-unique identifier."
           }
         },
         "name": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "Unique identifier for the order that appears on the order.\nFor example, _#1000_ or _Store1001.\n"
           }
         },
         "orderNumber": {
           "type": "uint32",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
-          }
-        },
-        "phone": {
-          "type": "string",
-          "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
-          }
-        },
-        "shippingAddress": {
-          "ref": "MailingAddress",
-          "metadata": {
-            "description": "Represents a mailing address for customers and shipping."
-          }
-        },
-        "totalPrice": {
-          "ref": "MoneyV2",
-          "metadata": {
-            "description": "A monetary value with currency.\n"
+            "description": "A unique numeric identifier for the order for use by shop owner and customer."
           }
         }
       }
     },
     "MailingAddress": {
+      "metadata": {
+        "description": "Represents a mailing address for customers and shipping."
+      },
       "properties": {
+        "city": {
+          "type": "string",
+          "metadata": {
+            "description": "The name of the city, district, village, or town.\n"
+          }
+        },
         "country": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The name of the country.\n"
           }
         },
         "countryCode": {
           "ref": "CountryCode",
           "metadata": {
-            "description": "The code designating a country/region, which generally follows ISO 3166-1 alpha-2 guidelines.\nIf a territory doesn't have a country code value in the `CountryCode` enum, then it might be considered a subdivision\nof another country. For example, the territories associated with Spain are represented by the country code `ES`,\nand the territories associated with the United States of America are represented by the country code `US`.\n"
+            "description": "The two-letter code for the country of the address.\n\nFor example, US.\n"
+          }
+        },
+        "phone": {
+          "type": "string",
+          "metadata": {
+            "description": "A unique phone number for the customer.\n\nFormatted using E.164 standard. For example, _+16135551111_.\n"
           }
         },
         "province": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The region of the address, such as the province, state, or district."
           }
         },
         "provinceCode": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The two-letter code for the region.\n\nFor example, ON.\n"
           }
         }
       }
@@ -1137,130 +1037,148 @@
         "ZM",
         "ZW",
         "ZZ"
-      ]
+      ],
+      "metadata": {
+        "description": "The code designating a country/region, which generally follows ISO 3166-1 alpha-2 guidelines.\nIf a territory doesn't have a country code value in the `CountryCode` enum, then it might be considered a subdivision\nof another country. For example, the territories associated with Spain are represented by the country code `ES`,\nand the territories associated with the United States of America are represented by the country code `US`.\n"
+      }
     },
     "ShippingRate": {
+      "metadata": {
+        "description": "A shipping rate to be applied to a checkout."
+      },
       "properties": {
         "price": {
           "ref": "MoneyV2",
           "metadata": {
-            "description": "A monetary value with currency.\n"
+            "description": "Price of this shipping rate."
           }
         }
       }
     },
     "Cart": {
+      "metadata": {
+        "description": "A cart represents the merchandise that a buyer intends to purchase, and the estimated cost associated with the cart. To learn how to interact with a cart during a customer's session, refer to [Manage a cart with the Storefront API](https://shopify.dev/api/examples/cart)."
+      },
       "properties": {
         "cost": {
           "ref": "CartCost",
           "metadata": {
-            "description": "The costs that the buyer will pay at checkout.\nIt uses [`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/cartbuyeridentity) to determine\n[international pricing](https://shopify.dev/api/examples/international-pricing#create-a-cart).\n"
+            "description": "The estimated costs that the buyer will pay at checkout. The costs are subject to change and changes will be reflected at checkout. The `cost` field uses the `buyerIdentity` field to determine [international pricing](https://shopify.dev/api/examples/international-pricing#create-a-cart)."
           }
         },
         "id": {
           "type": "string",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+            "description": "A globally-unique identifier."
           }
         },
         "lines": {
           "elements": {
             "ref": "CartLine",
             "metadata": {
-              "description": "Represents information about the merchandise in the cart."
+              "description": "A list of lines containing information about the items the customer intends to purchase."
             }
           }
         },
         "totalQuantity": {
           "type": "uint32",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+            "description": "The total number of items in the cart."
           }
         }
       }
     },
     "CartCost": {
+      "metadata": {
+        "description": "The costs that the buyer will pay at checkout.\nIt uses [`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/cartbuyeridentity) to determine\n[international pricing](https://shopify.dev/api/examples/international-pricing#create-a-cart).\n"
+      },
       "properties": {
         "totalAmount": {
           "ref": "MoneyV2",
           "metadata": {
-            "description": "A monetary value with currency.\n"
+            "description": "The total amount for the customer to pay."
           }
         }
       }
     },
     "CartLine": {
+      "metadata": {
+        "description": "Represents information about the merchandise in the cart."
+      },
       "properties": {
         "cost": {
           "ref": "CartLineCost",
           "metadata": {
-            "description": "The cost of the merchandise line that the buyer will pay at checkout."
+            "description": "The cost of the merchandise that the buyer will pay for at checkout. The costs are subject to change and changes will be reflected at checkout."
           }
         },
         "merchandise": {
           "ref": "ProductVariant",
           "metadata": {
-            "description": "The merchandise to be purchased at checkout."
+            "description": "The merchandise that the buyer intends to purchase."
           }
         },
         "quantity": {
           "type": "uint32",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+            "description": "The quantity of the merchandise that the customer intends to purchase."
           }
         }
       }
     },
     "CartLineCost": {
+      "metadata": {
+        "description": "The cost of the merchandise line that the buyer will pay at checkout."
+      },
       "properties": {
         "totalAmount": {
           "ref": "MoneyV2",
           "metadata": {
-            "description": "A monetary value with currency.\n"
+            "description": "The total cost of the merchandise line."
           }
         }
       }
     },
     "Customer": {
+      "metadata": {
+        "description": "A customer represents a customer account with the shop. Customer accounts store contact information for the customer, saving logged-in customers the trouble of having to provide it at every checkout."
+      },
       "properties": {
         "email": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The customer’s email address."
           }
         },
         "id": {
           "type": "string",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+            "description": "A unique identifier for the customer."
           }
         },
         "phone": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The customer’s phone number."
           }
         }
       }
     },
     "Collection": {
+      "metadata": {
+        "description": "A collection represents a grouping of products that a shop owner can create to organize them or make their shops easier to browse."
+      },
       "properties": {
-        "handle": {
-          "type": "string",
-          "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
-          }
-        },
         "id": {
           "type": "string",
           "metadata": {
-            "description": "The Number type is a [double-precision 64-bit binary format IEEE 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-point_format)."
+            "description": "A globally-unique identifier."
           }
         },
         "title": {
           "type": "string",
           "metadata": {
-            "description": "JavaScript's String type is used to represent textual data."
+            "description": "The collection’s name. Limit of 255 characters."
           }
         }
       }
@@ -1268,42 +1186,48 @@
     "Id": {
       "type": "string",
       "metadata": {
-        "description": "TODO"
+        "description": "The unique identifier for the customer event"
+      }
+    },
+    "ClientId": {
+      "type": "string",
+      "metadata": {
+        "description": "The unique client-side cookie identifier (provided by Shopify)"
       }
     },
     "Name": {
       "type": "string",
       "metadata": {
-        "description": "TODO"
+        "description": "The name of the customer event"
       }
     },
     "Timestamp": {
       "type": "string",
       "metadata": {
-        "description": "TODO"
+        "description": "The timestamp of when the customer event occurred"
+      }
+    },
+    "Data": {
+      "metadata": {
+        "description": "A free-form JSON object representing data specific to this event provided by Shopify",
+        "typescriptType": "Record<string, unknown>"
       }
     },
     "CustomData": {
       "metadata": {
-        "description": "TODO",
+        "description": "A free-form JSON object representing data specific to a custom event provided by the custom event publisher",
         "typescriptType": "Record<string, unknown>"
       }
     },
     "SearchResult": {
       "metadata": {
-        "description": "TODO"
+        "description": "An object containing metadata of when a search has been performed."
       },
       "properties": {
         "query": {
           "type": "string",
           "metadata": {
-            "description": "TODO"
-          }
-        },
-        "totalResults": {
-          "type": "uint32",
-          "metadata": {
-            "description": "TODO"
+            "description": "The search query that was executed"
           }
         }
       }
@@ -1312,16 +1236,19 @@
   "properties": {
     "custom_event": {
       "metadata": {
-        "description": "This event represents any custom events."
+        "description": "This event represents any custom events emitted by partners or merchants via the `publish` method"
       },
       "properties": {
         "id": {
           "ref": "Id"
         },
+        "clientId": {
+          "ref": "ClientId"
+        },
         "name": {
           "type": "string",
           "metadata": {
-            "description": "TODO",
+            "description": "The name of the customer event",
             "typescriptType": "'custom_event'"
           }
         },
@@ -1339,16 +1266,19 @@
     },
     "checkout_completed": {
       "metadata": {
-        "description": "This event is published when a checkout was completed."
+        "description": "The `checkout_completed` event logs when a visitor completes a purchase. This event is available on the Order Status and Checkout pages"
       },
       "properties": {
         "id": {
           "ref": "Id"
         },
+        "clientId": {
+          "ref": "ClientId"
+        },
         "name": {
           "type": "string",
           "metadata": {
-            "description": "TODO",
+            "description": "The name of the customer event",
             "typescriptType": "'checkout_completed'"
           }
         },
@@ -1361,7 +1291,6 @@
         "data": {
           "properties": {
             "checkout": {
-              "nullable": true,
               "ref": "Checkout"
             }
           }
@@ -1370,16 +1299,19 @@
     },
     "checkout_started": {
       "metadata": {
-        "description": "This event is published when a checkout was started."
+        "description": "The `checkout_started` event logs an instance of a buyer starting the checkout process. This event is available on the Checkout pages"
       },
       "properties": {
         "id": {
           "ref": "Id"
         },
+        "clientId": {
+          "ref": "ClientId"
+        },
         "name": {
           "type": "string",
           "metadata": {
-            "description": "TODO",
+            "description": "The name of the customer event",
             "typescriptType": "'checkout_started'"
           }
         },
@@ -1392,7 +1324,6 @@
         "data": {
           "properties": {
             "checkout": {
-              "nullable": true,
               "ref": "Checkout"
             }
           }
@@ -1401,16 +1332,19 @@
     },
     "payment_info_submitted": {
       "metadata": {
-        "description": "TODO"
+        "description": "The `payment_info_submitted` event logs an instance of a buyer submitting their payment information. This event is available on the Checkout pages"
       },
       "properties": {
         "id": {
           "ref": "Id"
         },
+        "clientId": {
+          "ref": "ClientId"
+        },
         "name": {
           "type": "string",
           "metadata": {
-            "description": "TODO",
+            "description": "The name of the customer event",
             "typescriptType": "'payment_info_submitted'"
           }
         },
@@ -1423,7 +1357,6 @@
         "data": {
           "properties": {
             "checkout": {
-              "nullable": true,
               "ref": "Checkout"
             }
           }
@@ -1432,16 +1365,19 @@
     },
     "collection_viewed": {
       "metadata": {
-        "description": "When a collection page viewed. (Ex. /collections/all)"
+        "description": "The `collection_viewed` event logs an instance where a buyer visited to a product collection index page. This event is available on the Online Store pages"
       },
       "properties": {
         "id": {
           "ref": "Id"
         },
+        "clientId": {
+          "ref": "ClientId"
+        },
         "name": {
           "type": "string",
           "metadata": {
-            "description": "TODO",
+            "description": "The name of the customer event",
             "typescriptType": "'collection_viewed'"
           }
         },
@@ -1454,7 +1390,6 @@
         "data": {
           "properties": {
             "collection": {
-              "nullable": true,
               "ref": "Collection"
             }
           }
@@ -1463,16 +1398,19 @@
     },
     "page_viewed": {
       "metadata": {
-        "description": "When any given page was viewed. (Ex. /products/product-handle, /cart)"
+        "description": "The `page_viewed` event logs an instance where a buyer visited a page. This event is available on the Online Store, Checkout, and Order Status pages"
       },
       "properties": {
         "id": {
           "ref": "Id"
         },
+        "clientId": {
+          "ref": "ClientId"
+        },
         "name": {
           "type": "string",
           "metadata": {
-            "description": "TODO",
+            "description": "The name of the customer event",
             "typescriptType": "'page_viewed'"
           }
         },
@@ -1486,16 +1424,19 @@
     },
     "product_added_to_cart": {
       "metadata": {
-        "description": "TODO"
+        "description": "The `product_added_to_cart` event logs an instance where a buyer adds a product to their cart. This event is available on the Online Store pages"
       },
       "properties": {
         "id": {
           "ref": "Id"
         },
+        "clientId": {
+          "ref": "ClientId"
+        },
         "name": {
           "type": "string",
           "metadata": {
-            "description": "TODO",
+            "description": "The name of the customer event",
             "typescriptType": "'product_added_to_cart'"
           }
         },
@@ -1517,16 +1458,19 @@
     },
     "product_viewed": {
       "metadata": {
-        "description": "TODO"
+        "description": "The `product_viewed` event logs an instance where a buyer visited a product details page. This event is available on the Product page"
       },
       "properties": {
         "id": {
           "ref": "Id"
         },
+        "clientId": {
+          "ref": "ClientId"
+        },
         "name": {
           "type": "string",
           "metadata": {
-            "description": "TODO",
+            "description": "The name of the customer event",
             "typescriptType": "'product_viewed'"
           }
         },
@@ -1539,7 +1483,6 @@
         "data": {
           "properties": {
             "productVariant": {
-              "nullable": true,
               "ref": "ProductVariant"
             }
           }
@@ -1548,16 +1491,19 @@
     },
     "product_variant_viewed": {
       "metadata": {
-        "description": "TODO"
+        "description": "The `product_variant_viewed` event logs an instance where a buyer interacts with the product page and views a different variant than the initial `product_viewed` impression. This event is available on the Product page"
       },
       "properties": {
         "id": {
           "ref": "Id"
         },
+        "clientId": {
+          "ref": "ClientId"
+        },
         "name": {
           "type": "string",
           "metadata": {
-            "description": "TODO",
+            "description": "The name of the customer event",
             "typescriptType": "'product_variant_viewed'"
           }
         },
@@ -1570,7 +1516,6 @@
         "data": {
           "properties": {
             "productVariant": {
-              "nullable": true,
               "ref": "ProductVariant"
             }
           }
@@ -1579,16 +1524,19 @@
     },
     "search_submitted": {
       "metadata": {
-        "description": "TODO"
+        "description": "The `search_submitted event` logs an instance where a buyer performed a search on the storefront. This event is available on the Online Store pages"
       },
       "properties": {
         "id": {
           "ref": "Id"
         },
+        "clientId": {
+          "ref": "ClientId"
+        },
         "name": {
           "type": "string",
           "metadata": {
-            "description": "TODO",
+            "description": "The name of the customer event",
             "typescriptType": "'search_submitted'"
           }
         },
@@ -1601,7 +1549,6 @@
         "data": {
           "properties": {
             "searchResult": {
-              "nullable": true,
               "ref": "SearchResult"
             }
           }
