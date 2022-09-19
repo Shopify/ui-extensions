@@ -2,172 +2,185 @@
 
 export type Shared = any;
 
+/**
+ * A cart represents the merchandise that a buyer intends to purchase, and the
+ * estimated cost associated with the cart. To learn how to interact with a
+ * cart during a customer's session, refer to [Manage a cart with the Storefront
+ * API](https://shopify.dev/api/examples/cart).
+ */
 export interface Cart {
   /**
-   * The costs that the buyer will pay at checkout.
-   * It uses
-   * [`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/car
-   * tbuyeridentity) to determine
-   * [international pricing](https://shopify.dev/api/examples/international-
-   * pricing#create-a-cart).
+   * The estimated costs that the buyer will pay at checkout. The costs
+   * are subject to change and changes will be reflected at checkout. The
+   * `cost` field uses the `buyerIdentity` field to determine [international
+   * pricing](https://shopify.dev/api/examples/international-pricing#create-
+   * a-cart).
    */
   cost: CartCost;
 
   /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
+   * A globally-unique identifier.
    */
   id: string;
   lines: CartLine[];
 
   /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
+   * The total number of items in the cart.
    */
   totalQuantity: number;
 }
 
+/**
+ * The costs that the buyer will pay at checkout.
+ * It uses
+ * [`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/cartb
+ * uyeridentity) to determine
+ * [international pricing](https://shopify.dev/api/examples/international-
+ * pricing#create-a-cart).
+ */
 export interface CartCost {
   /**
-   * A monetary value with currency.
+   * The total amount for the customer to pay.
    */
   totalAmount: MoneyV2;
 }
 
+/**
+ * Represents information about the merchandise in the cart.
+ */
 export interface CartLine {
   /**
-   * The cost of the merchandise line that the buyer will pay at checkout.
+   * The cost of the merchandise that the buyer will pay for at checkout. The
+   * costs are subject to change and changes will be reflected at checkout.
    */
   cost: CartLineCost;
 
   /**
-   * The merchandise to be purchased at checkout.
+   * The merchandise that the buyer intends to purchase.
    */
   merchandise: ProductVariant;
 
   /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
+   * The quantity of the merchandise that the customer intends to purchase.
    */
   quantity: number;
 }
 
+/**
+ * The cost of the merchandise line that the buyer will pay at checkout.
+ */
 export interface CartLineCost {
   /**
-   * A monetary value with currency.
+   * The total cost of the merchandise line.
    */
   totalAmount: MoneyV2;
 }
 
+/**
+ * A container for all the information required to checkout items and pay.
+ */
 export interface Checkout {
   /**
-   * The three-letter currency codes that represent the world currencies used in
-   * stores. These include standard ISO 4217 codes, legacy codes,
-   * and non-standard codes.
+   * The currency code for the checkout.
    */
   currencyCode: CurrencyCode;
 
   /**
-   * JavaScript's String type is used to represent textual data.
+   * The email attached to this checkout.
    */
   email: string;
 
   /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
+   * A globally-unique identifier.
    */
   id: string;
   lineItems: CheckoutLineItem[];
 
   /**
-   * An order is a customer’s completed request to purchase one or more products
-   * from a shop. An order is created when a customer completes the checkout
-   * process, during which time they provides an email address, billing address
-   * and payment information.
+   * The resulting order from a paid checkout.
    */
   order: Order;
 
   /**
-   * Represents a mailing address for customers and shipping.
+   * The shipping address to where the line items will be shipped.
    */
   shippingAddress: MailingAddress;
 
   /**
-   * A shipping rate to be applied to a checkout.
+   * Once a shipping rate is selected by the customer it is transitioned to a
+   * `shipping_line` object.
    */
   shippingLine: ShippingRate;
 
   /**
-   * A monetary value with currency.
+   * The price at checkout before duties, shipping, and taxes.
    */
   subtotalPrice: MoneyV2;
 
   /**
-   * A monetary value with currency.
+   * The sum of all the prices of all the items in the checkout, including
+   * duties, taxes, and discounts.
    */
   totalPrice: MoneyV2;
 
   /**
-   * A monetary value with currency.
+   * The sum of all the taxes applied to the line items and shipping lines in
+   * the checkout.
    */
   totalTax: MoneyV2;
 }
 
+/**
+ * A single line item in the checkout, grouped by variant and attributes.
+ */
 export interface CheckoutLineItem {
   /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
+   * A globally-unique identifier.
    */
   id: string;
 
   /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
+   * The quantity of the line item.
    */
   quantity: number;
 
   /**
-   * JavaScript's String type is used to represent textual data.
+   * Title of the line item. Defaults to the product's title.
    */
   title: string;
 
   /**
-   * A monetary value with currency.
-   */
-  unitPrice: MoneyV2;
-
-  /**
-   * A product variant represents a different version of a product, such as
-   * differing sizes or differing colors.
+   * Product variant of the line item.
    */
   variant: ProductVariant;
 }
 
+/**
+ * A collection represents a grouping of products that a shop owner can create
+ * to organize them or make their shops easier to browse.
+ */
 export interface Collection {
   /**
-   * JavaScript's String type is used to represent textual data.
-   */
-  handle: string;
-
-  /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
+   * A globally-unique identifier.
    */
   id: string;
 
   /**
-   * JavaScript's String type is used to represent textual data.
+   * The collection’s name. Limit of 255 characters.
    */
   title: string;
 }
 
+/**
+ * The code designating a country/region, which generally follows ISO 3166-1
+ * alpha-2 guidelines.
+ * If a territory doesn't have a country code value in the `CountryCode` enum,
+ * then it might be considered a subdivision
+ * of another country. For example, the territories associated with Spain are
+ * represented by the country code `ES`,
+ * and the territories associated with the United States of America are
+ * represented by the country code `US`.
+ */
 export enum CountryCode {
   Ac = 'AC',
   Ad = 'AD',
@@ -416,6 +429,11 @@ export enum CountryCode {
   Zz = 'ZZ',
 }
 
+/**
+ * The three-letter currency codes that represent the world currencies used in
+ * stores. These include standard ISO 4217 codes, legacy codes,
+ * and non-standard codes.
+ */
 export enum CurrencyCode {
   Aed = 'AED',
   Afn = 'AFN',
@@ -580,180 +598,186 @@ export enum CurrencyCode {
   Zmw = 'ZMW',
 }
 
+/**
+ * A customer represents a customer account with the shop. Customer accounts
+ * store contact information for the customer, saving logged-in customers the
+ * trouble of having to provide it at every checkout.
+ */
 export interface Customer {
   /**
-   * JavaScript's String type is used to represent textual data.
+   * The customer’s email address.
    */
   email: string;
 
   /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
+   * A unique identifier for the customer.
    */
   id: string;
 
   /**
-   * JavaScript's String type is used to represent textual data.
+   * The customer’s phone number.
    */
   phone: string;
 }
 
+/**
+ * Represents an image resource.
+ */
 export interface Image {
   /**
-   * JavaScript's String type is used to represent textual data.
+   * The location of the image as a URL.
    */
   src: string;
 }
 
+/**
+ * Represents a mailing address for customers and shipping.
+ */
 export interface MailingAddress {
   /**
-   * JavaScript's String type is used to represent textual data.
+   * The name of the city, district, village, or town.
+   */
+  city: string;
+
+  /**
+   * The name of the country.
    */
   country: string;
 
   /**
-   * The code designating a country/region, which generally follows ISO 3166-1
-   * alpha-2 guidelines.
-   * If a territory doesn't have a country code value in the `CountryCode` enum,
-   * then it might be considered a subdivision
-   * of another country. For example, the territories associated with Spain are
-   * represented by the country code `ES`,
-   * and the territories associated with the United States of America are
-   * represented by the country code `US`.
+   * The two-letter code for the country of the address.
+   *
+   * For example, US.
    */
   countryCode: CountryCode;
 
   /**
-   * JavaScript's String type is used to represent textual data.
-   */
-  province: string;
-
-  /**
-   * JavaScript's String type is used to represent textual data.
-   */
-  provinceCode: string;
-}
-
-export interface MoneyV2 {
-  /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
-   */
-  amount: number;
-
-  /**
-   * The three-letter currency codes that represent the world currencies used in
-   * stores. These include standard ISO 4217 codes, legacy codes,
-   * and non-standard codes.
-   */
-  currencyCode: CurrencyCode;
-}
-
-export interface Order {
-  /**
-   * The three-letter currency codes that represent the world currencies used in
-   * stores. These include standard ISO 4217 codes, legacy codes,
-   * and non-standard codes.
-   */
-  currencyCode: CurrencyCode;
-
-  /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
-   */
-  id: string;
-
-  /**
-   * JavaScript's String type is used to represent textual data.
-   */
-  name: string;
-
-  /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
-   */
-  orderNumber: number;
-
-  /**
-   * JavaScript's String type is used to represent textual data.
+   * A unique phone number for the customer.
+   *
+   * Formatted using E.164 standard. For example, _+16135551111_.
    */
   phone: string;
 
   /**
-   * Represents a mailing address for customers and shipping.
+   * The region of the address, such as the province, state, or district.
    */
-  shippingAddress: MailingAddress;
+  province: string;
 
   /**
-   * A monetary value with currency.
+   * The two-letter code for the region.
+   *
+   * For example, ON.
    */
-  totalPrice: MoneyV2;
+  provinceCode: string;
 }
 
-export interface Product {
+/**
+ * A monetary value with currency.
+ */
+export interface MoneyV2 {
   /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
+   * Decimal money amount.
+   */
+  amount: number;
+
+  /**
+   * Currency of the money.
+   */
+  currencyCode: CurrencyCode;
+}
+
+/**
+ * An order is a customer’s completed request to purchase one or more products
+ * from a shop. An order is created when a customer completes the checkout
+ * process, during which time they provides an email address, billing address
+ * and payment information.
+ */
+export interface Order {
+  /**
+   * A globally-unique identifier.
    */
   id: string;
 
   /**
-   * JavaScript's String type is used to represent textual data.
+   * Unique identifier for the order that appears on the order.
+   * For example, _#1000_ or _Store1001.
+   */
+  name: string;
+
+  /**
+   * A unique numeric identifier for the order for use by shop owner and
+   * customer.
+   */
+  orderNumber: number;
+}
+
+/**
+ * A product represents an individual item for sale in a Shopify store. Products
+ * are often physical, but they don't have to be.
+ * For example, a digital download (such as a movie, music or ebook file) also
+ * qualifies as a product, as do services (such as equipment rental, work for
+ * hire, customization of another product or an extended warranty).
+ */
+export interface Product {
+  /**
+   * A globally-unique identifier.
+   */
+  id: string;
+
+  /**
+   * The product’s title.
    */
   title: string;
 
   /**
-   * JavaScript's String type is used to represent textual data.
+   * The product’s vendor name.
    */
   vendor: string;
 }
 
+/**
+ * A product variant represents a different version of a product, such as
+ * differing sizes or differing colors.
+ */
 export interface ProductVariant {
   /**
-   * The Number type is a [double-precision 64-bit binary format IEEE
-   * 754 value](https://en.wikipedia.org/wiki/Double_precision_floating-
-   * point_format).
+   * A globally-unique identifier.
    */
   id: string;
 
   /**
-   * Represents an image resource.
+   * Image associated with the product variant. This field falls back to the
+   * product image if no image is available.
    */
   image: Image;
 
   /**
-   * A monetary value with currency.
+   * The product variant’s price.
    */
   price: MoneyV2;
 
   /**
-   * A product represents an individual item for sale in a Shopify store.
-   * Products are often physical, but they don't have to be.
-   * For example, a digital download (such as a movie, music or ebook file) also
-   * qualifies as a product, as do services (such as equipment rental, work for
-   * hire, customization of another product or an extended warranty).
+   * The product object that the product variant belongs to.
    */
   product: Product;
 
   /**
-   * JavaScript's String type is used to represent textual data.
+   * The SKU (stock keeping unit) associated with the variant.
    */
   sku: string;
 
   /**
-   * JavaScript's String type is used to represent textual data.
+   * The product variant’s title.
    */
   title: string;
 }
 
+/**
+ * A shipping rate to be applied to a checkout.
+ */
 export interface ShippingRate {
   /**
-   * A monetary value with currency.
+   * Price of this shipping rate.
    */
   price: MoneyV2;
 }
