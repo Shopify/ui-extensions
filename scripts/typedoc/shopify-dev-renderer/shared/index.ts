@@ -383,7 +383,8 @@ function propType(
       }
 
       const localSource = exports.find(
-        ({value: exportValue}: any) => exportValue.name === value.name,
+        ({value: exportValue}: any) =>
+          exportValue.name === value.name && exportValue.kind !== 'Local',
       );
 
       // Do not, under any circumstance mutate exported locals (localSource)
