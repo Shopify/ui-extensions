@@ -98,9 +98,14 @@ export interface CartApiContent {
    */
   addAddress(address: Address): void;
 
-  /** Update an address associated to the customer in the cart
-   * @param index the index of the address to update.
-   * @param address the updated address object.
+  /**
+   * Delete an address from the customer (Customer must be present)
+   * @param addressId the address ID to delete
    */
-  setAddress(index: number, address: Address): void;
+  deleteAddress(addressId: number): void;
+
+  /** Update the default address for the customer (Customer must be present)
+   * @param addressId the address ID to set as the default address
+   */
+  updateDefaultAddress(addressId: number): void;
 }

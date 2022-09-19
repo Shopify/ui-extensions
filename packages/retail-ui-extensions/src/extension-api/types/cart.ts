@@ -1,3 +1,5 @@
+import {CountryCode} from './CountryCode';
+
 export interface Cart {
   subtotal: string;
   taxTotal: string;
@@ -53,5 +55,5 @@ export interface Address {
   zip?: string;
   name?: string;
   provinceCode?: string;
-  countryCode?: string;
+  countryCode?: CountryCode;
 }
