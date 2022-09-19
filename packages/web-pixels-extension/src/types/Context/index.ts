@@ -140,7 +140,7 @@ export interface WebPixelsNavigator {
    * returns an array of strings representing the languages known to the user,
    * by order of preference
    */
-  languages: ReadonlyArray<string>;
+  languages: readonly string[];
 
   /**
    * Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator),
