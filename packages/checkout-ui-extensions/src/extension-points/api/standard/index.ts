@@ -578,6 +578,11 @@ export interface StandardApi<
   lines: StatefulRemoteSubscribable<CartLine[]>;
 
   /**
+   * A list of the line items displayed in the checkout. These may be the same as lines, or may be a subset.
+   */
+  presentmentLines: StatefulRemoteSubscribable<PresentmentCartLine[]>;
+
+  /**
    * Performs an update on the merchandise line items. It resolves when the new
    * line items have been negotiated and results in an update to the value
    * retrieved through the `lines` property.
@@ -869,6 +874,52 @@ export interface SelectedOption {
    * The value of the merchandise option.
    */
   value: string;
+}
+
+export interface PresentmentCartLine {
+  /**
+   * These IDs are not stable at the moment, they might change after
+   * any operations on the line items.
+   * @example 'gid://shopify/PresentmentCartLine/123'
+   */
+  id: string;
+
+  /**
+   * Quantity of the Merchandise being purchased.
+   */
+  quantity: number;
+
+  /**
+   * Details about the cost components attributed to this presentment cart line.
+   */
+  cost: PresentmentCartLineCost;
+
+  /**
+   * Line item title.
+   */
+  title: string;
+
+  /**
+   * Line item subtitle.
+   */
+  subtitle?: string;
+
+  /**
+   * Image associated with the line item.
+   */
+  image?: ImageDetails;
+
+  /**
+   * Merchandise lines being purchased.
+   */
+  lines: CartLine[];
+}
+
+export interface PresentmentCartLineCost {
+  /**
+   * The total cost of the merchandise line.
+   */
+  totalAmount: Money;
 }
 
 export interface CartLineChangeResultSuccess {

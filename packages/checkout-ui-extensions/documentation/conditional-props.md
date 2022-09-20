@@ -35,8 +35,8 @@ The following conditions are supported for conditional styles.
 
 Multiple conditions can be set on the same `when` method.
 
-| Name                | Type                                                       | Description                                                                         |
-| ------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| Name                | Type                                                       | Description                                                                                           |
+| ------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | hover?              | <code>true</code>                                          | This condition is met when an element is hovered on with the cursor (mouse pointer).                  |
 | focus?              | <code>true</code>                                          | This condition is met when an element is clicked, tapped on or selected using the <kbd>Tab</kbd> key. |
 | viewportInlineSize? | <code>{min: "small" &#124; "medium" &#124; "large"}</code> | This condition is met when the device matches the minimum width.                                      |
@@ -58,8 +58,11 @@ Using simple conditional styling enables you to specify a styling change when a 
 Default styling can be combined with specific conditions. In this example, the Grid’s children will be stacked by default and side by side on viewports above the `small` breakpoint.
 
 ```jsx
-<Grid columns={Style.default('fill')
-  .when({inlineViewportSize: {min: 'small'}}, ['30%','70%'])}
+<Grid
+  columns={Style.default('fill').when({viewportInlineSize: {min: 'small'}}, [
+    '30%',
+    '70%',
+  ])}
 >
   <View>Content</View>
   <View>Content</View>
@@ -79,8 +82,8 @@ In this example, the Grid’s children will have the following characteristics:
 ```jsx
 <Grid
   columns={Style.default('fill')
-    .when({inlineViewportSize: {min: 'small'}}, ['30%', '70%'])
-    .when({inlineViewportSize: {min: 'small'}, hover: true}, ['50%', '50%'])}
+    .when({viewportInlineSize: {min: 'small'}}, ['30%', '70%'])
+    .when({viewportInlineSize: {min: 'small'}, hover: true}, ['50%', '50%'])}
 >
   <View>Content</View>
   <View>Content</View>
