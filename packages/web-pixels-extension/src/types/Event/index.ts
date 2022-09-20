@@ -1071,6 +1071,7 @@ export interface Image {
 
 export interface InitData {
   cart: Cart | null;
+  checkout: Checkout | null;
   customer: Customer | null;
   productVariants: ProductVariant[] | null;
 }
