@@ -144,6 +144,10 @@
           "nullable": true,
           "ref": "Cart"
         },
+        "checkout": {
+          "nullable": true,
+          "ref": "Checkout"
+        },
         "productVariants": {
           "nullable": true,
           "elements": {
