@@ -86,8 +86,8 @@ export interface Extension {
    * You must [request access](https://shopify.dev/api/checkout-extensions/checkout/configuration#complete-a-request-for-network-access)
    * to make network calls.
    *
-   * `block_progress`: Coming soon.
-   * Merchants will be able to control whether your extension can block checkout progress via the `buyerJourney` intercept.
+   * `block_progress`:
+   * Merchants control whether your extension [can block checkout progress](https://shopify.dev/api/checkout-extensions/checkout/configuration#block-progress)
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 }
@@ -474,10 +474,12 @@ export interface StandardApi<
    */
   buyerJourney: {
     /**
-     * A function for intercepting and preventing navigation on checkout. You can block
-     * navigation by returning an object with `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState}`.
-     * If you do, then you're expected to also update some part of your UI to reflect the reason why navigation
+     * A function for intercepting and preventing progress on checkout. You can block
+     * checkout progress by returning an object with `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState}`.
+     * If you do, then you're expected to also update some part of your UI to reflect the reason why progress
      * was blocked.
+     *
+     * To block checkout progress, you must set the [block_progress](https://shopify.dev/api/checkout-extensions/checkout/configuration#block-progress) capability in your extension's configuration.
      */
     intercept(interceptor: Interceptor): Promise<() => void>;
   };
@@ -504,12 +506,12 @@ export interface StandardApi<
    * An address value is only present if delivery is required. Otherwise, the
    * subscribable value is undefined.
    */
-  shippingAddress: StatefulRemoteSubscribable<MailingAddress | undefined>;
+  shippingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
 
   /**
    * Information about the buyer that is interacting with the checkout.
    */
-  buyerIdentity: BuyerIdentity;
+  buyerIdentity?: BuyerIdentity;
 
   /** Shop where the checkout is taking place. */
   shop: Shop;
@@ -576,6 +578,11 @@ export interface StandardApi<
   lines: StatefulRemoteSubscribable<CartLine[]>;
 
   /**
+   * A list of the line items displayed in the checkout. These may be the same as lines, or may be a subset.
+   */
+  presentmentLines: StatefulRemoteSubscribable<PresentmentCartLine[]>;
+
+  /**
    * Performs an update on the merchandise line items. It resolves when the new
    * line items have been negotiated and results in an update to the value
    * retrieved through the `lines` property.
@@ -606,9 +613,9 @@ export interface StandardApi<
   i18n: I18n;
 
   /**
-   * The settings values matching the settings schema defined in the `shopify.ui.extension.toml` file.
+   * The settings matching the settings definition written in the `shopify.ui.extension.toml` file.
    *
-   * **Note:** When an extension is being installed in the editor, the settings values will be empty until
+   * **Note:** When an extension is being installed in the editor, the settings will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
    */
   settings: StatefulRemoteSubscribable<ExtensionSettings>;
@@ -867,6 +874,52 @@ export interface SelectedOption {
    * The value of the merchandise option.
    */
   value: string;
+}
+
+export interface PresentmentCartLine {
+  /**
+   * These IDs are not stable at the moment, they might change after
+   * any operations on the line items.
+   * @example 'gid://shopify/PresentmentCartLine/123'
+   */
+  id: string;
+
+  /**
+   * Quantity of the Merchandise being purchased.
+   */
+  quantity: number;
+
+  /**
+   * Details about the cost components attributed to this presentment cart line.
+   */
+  cost: PresentmentCartLineCost;
+
+  /**
+   * Line item title.
+   */
+  title: string;
+
+  /**
+   * Line item subtitle.
+   */
+  subtitle?: string;
+
+  /**
+   * Image associated with the line item.
+   */
+  image?: ImageDetails;
+
+  /**
+   * Merchandise lines being purchased.
+   */
+  lines: CartLine[];
+}
+
+export interface PresentmentCartLineCost {
+  /**
+   * The total cost of the merchandise line.
+   */
+  totalAmount: Money;
 }
 
 export interface CartLineChangeResultSuccess {

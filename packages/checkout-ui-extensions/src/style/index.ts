@@ -1,10 +1,15 @@
-export {Style, isConditionalStyle} from './style';
+export {
+  Style,
+  isConditionalStyle,
+  isConditionalStyleWithDefault,
+} from './style';
 export type {
+  AtLeastOne,
   Conditions,
   ConditionalStyle,
   ConditionalValue,
-  DefaultConditions,
   InteractiveConditions,
   MaybeConditionalStyle,
+  ResolutionCondition,
   ViewportSizeCondition,
 } from './types';

@@ -56,6 +56,7 @@ export type {
   CartLineAddChange,
   CartLineUpdateChange,
   CartLineRemoveChange,
+  PresentmentCartLine,
   I18n,
   I18nTranslate,
   Currency,
@@ -114,15 +115,20 @@ export type {
 export type Components = typeof import('./components');
 
 export type {
+  AtLeastOne,
   Conditions,
   ConditionalStyle,
   ConditionalValue,
-  DefaultConditions,
   InteractiveConditions,
   MaybeConditionalStyle,
+  ResolutionCondition,
   ViewportSizeCondition,
 } from './style';
-export {Style, isConditionalStyle} from './style';
+export {
+  Style,
+  isConditionalStyle,
+  isConditionalStyleWithDefault,
+} from './style';
 
 export {extend} from './extend';
 export type {ShopifyGlobal} from './globals';

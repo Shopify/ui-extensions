@@ -1,5 +1,5 @@
 import {memoize} from './memoize';
-import {Conditions, ConditionalStyle} from './types';
+import {Conditions, ConditionalStyle, BaseConditions} from './types';
 import {isEqual} from './isEqual';
 
 const MAX_CACHE_SIZE = 50;
@@ -9,11 +9,75 @@ const MEMOIZE_OPTIONS = {
   maxSize: MAX_CACHE_SIZE,
 };
 
-type ChainableConditionalStyle<
+type Chainable<TConditionalStyle> = TConditionalStyle extends ConditionalStyle<
+  infer T,
+  infer TAcceptedConditions
+>
+  ? TConditionalStyle & {
+      when: <
+        U,
+        AcceptedConditions extends BaseConditions = TAcceptedConditions
+      >(
+        this: TConditionalStyle,
+        conditions: AcceptedConditions,
+        value: U,
+      ) => Chainable<
+        TConditionalStyle extends {default: T}
+          ? Required<ConditionalStyle<U, AcceptedConditions>>
+          : ConditionalStyle<U, AcceptedConditions>
+      >;
+    }
+  : never;
+
+type WhenContext<T, AcceptedConditions extends BaseConditions = Conditions> =
+  | typeof Style
+  | ConditionalStyle<T, AcceptedConditions>
+  | Required<ConditionalStyle<T, AcceptedConditions>>;
+
+type WhenReturnType<
   T,
-  AcceptedConditions = Conditions
-> = ConditionalStyle<T, AcceptedConditions> & {
-  when: typeof when;
+  TContext extends WhenContext<any, AcceptedConditions>,
+  AcceptedConditions extends BaseConditions = Conditions
+> = Chainable<
+  TContext extends typeof Style
+    ? ConditionalStyle<T, AcceptedConditions>
+    : TContext extends {default: infer U}
+    ? Required<ConditionalStyle<T | U, AcceptedConditions>>
+    : TContext extends {default?: infer U}
+    ? ConditionalStyle<T | U, AcceptedConditions>
+    : ConditionalStyle<T, AcceptedConditions>
+>;
+
+interface WhenFunction {
+  <
+    T,
+    TContext extends WhenContext<any, AcceptedConditions>,
+    AcceptedConditions extends BaseConditions = Conditions
+  >(
+    this: TContext,
+    conditions: AcceptedConditions,
+    value: T,
+  ): WhenReturnType<T, TContext, AcceptedConditions>;
+}
+
+// eslint-disable-next-line func-style
+const when: WhenFunction = function when<
+  T,
+  TContext extends WhenContext<any, AcceptedConditions>,
+  AcceptedConditions extends BaseConditions = Conditions
+>(this: TContext, conditions: AcceptedConditions, value: T) {
+  const config = isConditionalStyle<T, AcceptedConditions>(this)
+    ? {
+        default: this.default,
+        conditionals: [...this.conditionals, {conditions, value}],
+      }
+    : {
+        conditionals: [{conditions, value}],
+      };
+
+  return createChainableConditionalStyle<T, AcceptedConditions>(
+    config,
+  ) as WhenReturnType<T, TContext, AcceptedConditions>;
 };
 
 /**
@@ -29,10 +93,14 @@ export const Style = {
    * @returns The chainable condition style
    */
   default: memoize(
-    <T, AcceptedConditions = Conditions>(
+    <T, AcceptedConditions extends BaseConditions = Conditions>(
       defaultValue: T,
-    ): ChainableConditionalStyle<T, AcceptedConditions> =>
-      createChainableConditionalStyle({
+    ) =>
+      createChainableConditionalStyle<
+        T,
+        AcceptedConditions,
+        Required<ConditionalStyle<T, AcceptedConditions>>
+      >({
         default: defaultValue,
         conditionals: [],
       }),
@@ -51,34 +119,21 @@ export const Style = {
   when: memoize(when, MEMOIZE_OPTIONS),
 } as const;
 
-function when<T, AcceptedConditions = Conditions>(
-  // Not happy about having to use any here, but it's the only way to make the types work on the chained methods
-  this: any,
-  conditions: AcceptedConditions,
-  value: T,
-): ChainableConditionalStyle<T, AcceptedConditions> {
-  if (isConditionalStyle<T, AcceptedConditions>(this)) {
-    return createChainableConditionalStyle({
-      default: this.default,
-      conditionals: [...this.conditionals, {conditions, value}],
-    });
-  } else {
-    return createChainableConditionalStyle({
-      conditionals: [{conditions, value}],
-    });
-  }
-}
-
-function createChainableConditionalStyle<T, AcceptedConditions = Conditions>(
-  conditionalStyle: ConditionalStyle<T, AcceptedConditions>,
-): ChainableConditionalStyle<T, AcceptedConditions> {
+function createChainableConditionalStyle<
+  T,
+  AcceptedConditions extends BaseConditions = Conditions,
+  TConditionalStyle extends ConditionalStyle<
+    T,
+    AcceptedConditions
+  > = ConditionalStyle<T, AcceptedConditions>
+>(conditionalStyle: TConditionalStyle): Chainable<TConditionalStyle> {
   const proto = {} as {
-    when: typeof when;
+    when: WhenFunction;
   };
 
-  const returnConditionalStyle = Object.create(
-    proto,
-  ) as ChainableConditionalStyle<T, AcceptedConditions>;
+  const returnConditionalStyle = Object.create(proto) as Chainable<
+    TConditionalStyle
+  >;
 
   Object.assign(returnConditionalStyle, conditionalStyle);
 
@@ -87,8 +142,20 @@ function createChainableConditionalStyle<T, AcceptedConditions = Conditions>(
   return returnConditionalStyle;
 }
 
-export function isConditionalStyle<T, AcceptedConditions = Conditions>(
-  value?: any,
-): value is ConditionalStyle<T, AcceptedConditions> {
+export function isConditionalStyle<
+  T,
+  AcceptedConditions extends BaseConditions = Conditions
+>(value?: any): value is ConditionalStyle<T, AcceptedConditions> {
   return value !== null && typeof value === 'object' && 'conditionals' in value;
+}
+
+export function isConditionalStyleWithDefault<
+  T,
+  AcceptedConditions extends BaseConditions = Conditions
+>(value?: any): value is Required<ConditionalStyle<T, AcceptedConditions>> {
+  return (
+    isConditionalStyle(value) &&
+    'default' in value &&
+    value.default !== undefined
+  );
 }

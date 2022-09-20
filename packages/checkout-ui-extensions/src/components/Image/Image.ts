@@ -1,14 +1,24 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {MaybeConditionalStyle} from '../../style';
+import type {
+  MaybeConditionalStyle,
+  ResolutionCondition,
+  ViewportSizeCondition,
+  AtLeastOne,
+} from '../../style';
 import {BorderProps} from '../shared';
 import type {Fit, AccessibilityRole} from '../shared';
 
 export interface ImageProps extends BorderProps {
   /**
-   * The image path.
+   * The url or path to the image. Supports the `resolution` and `viewportInlineSize` conditional styles only.
    */
-  source: string;
+  source: Required<
+    MaybeConditionalStyle<
+      string,
+      AtLeastOne<ViewportSizeCondition & ResolutionCondition>
+    >
+  >;
   /**
    * An alternative text description that describe the image for the reader to
    * understand what it is about. It is extremely useful for both buyers using
