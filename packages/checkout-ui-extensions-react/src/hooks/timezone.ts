@@ -11,7 +11,7 @@ import {useSubscription} from './subscription';
  * your component if the time zone changes.
  */
 export function useTimezone<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >(): ApiForRenderExtension<ID>['localization']['timezone']['current'] {
   const {localization} = useExtensionApi<ID>();
 

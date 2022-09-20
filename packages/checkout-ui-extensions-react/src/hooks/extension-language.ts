@@ -10,7 +10,7 @@ import {useSubscription} from './subscription';
  * Returns the buyer's language, as supported by this extension.
  */
 export function useExtensionLanguage<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >(): ApiForRenderExtension<ID>['localization']['extensionLanguage']['current'] {
   const {localization} = useExtensionApi<ID>();
 

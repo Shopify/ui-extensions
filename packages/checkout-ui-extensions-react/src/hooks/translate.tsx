@@ -11,7 +11,7 @@ import {useExtensionApi} from './api';
  * Returns the `I18nTranslate` interface used to translate strings.
  */
 export function useTranslate<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >() {
   const {i18n} = useExtensionApi<ID>();
 

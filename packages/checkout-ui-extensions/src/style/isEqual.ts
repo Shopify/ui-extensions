@@ -10,7 +10,7 @@ export function isEqual<
     | boolean
     | string
     | null
-    | undefined,
+    | undefined
 >(first: T, second: T): boolean {
   if (Object.is(first, second)) {
     return true;

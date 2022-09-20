@@ -12,7 +12,7 @@ import {useSubscription} from './subscription';
  * your component if line items are added, removed, or updated.
  */
 export function useCartLines<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >(): CartLine[] {
   const {lines} = useExtensionApi<ID>();
 
@@ -23,7 +23,7 @@ export function useCartLines<
  * Returns a function to mutate the `lines` property of checkout.
  */
 export function useApplyCartLinesChange<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >(): StandardApi<ID>['applyCartLinesChange'] {
   return useExtensionApi<ID>().applyCartLinesChange;
 }

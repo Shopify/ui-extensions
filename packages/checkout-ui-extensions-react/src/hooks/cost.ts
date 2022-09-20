@@ -12,7 +12,7 @@ import {useSubscription} from './subscription';
  * the information step might not have delivery costs calculated.
  */
 export function useTotalAmount<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >(): Money {
   return useSubscription(useExtensionApi<ID>().cost.totalAmount);
 }

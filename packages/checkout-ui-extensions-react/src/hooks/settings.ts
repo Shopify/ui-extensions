@@ -6,9 +6,9 @@ import {useSubscription} from './subscription';
 /**
  * Returns the setting values defined by the merchant for this extension.
  */
-export function useSettings<
-  Settings extends ExtensionSettings,
->(): Partial<Settings> {
+export function useSettings<Settings extends ExtensionSettings>(): Partial<
+  Settings
+> {
   const settings = useSubscription(useExtensionApi().settings);
 
   return settings as Settings;

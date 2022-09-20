@@ -12,7 +12,7 @@ import {useSubscription} from './subscription';
  * an account or if they aren’t logged in.
  */
 export function useCustomer<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >() {
   const buyerIdentity = useExtensionApi<ID>().buyerIdentity;
 

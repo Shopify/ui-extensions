@@ -28,7 +28,7 @@ export type BaseConditions = AtLeastOne<
 
 export interface ConditionalValue<
   T,
-  AcceptedConditions extends BaseConditions = Conditions,
+  AcceptedConditions extends BaseConditions = Conditions
 > {
   /**
    * The conditions that must be met for the value to be applied. At least one
@@ -43,7 +43,7 @@ export interface ConditionalValue<
 
 export interface ConditionalStyle<
   T,
-  AcceptedConditions extends BaseConditions = Conditions,
+  AcceptedConditions extends BaseConditions = Conditions
 > {
   /**
    * The default value applied when none of the conditional values
@@ -58,5 +58,5 @@ export interface ConditionalStyle<
 
 export type MaybeConditionalStyle<
   T,
-  AcceptedConditions extends BaseConditions = Conditions,
+  AcceptedConditions extends BaseConditions = Conditions
 > = T | ConditionalStyle<T, AcceptedConditions>;

@@ -16,7 +16,7 @@ type Chainable<TConditionalStyle> = TConditionalStyle extends ConditionalStyle<
   ? TConditionalStyle & {
       when: <
         U,
-        AcceptedConditions extends BaseConditions = TAcceptedConditions,
+        AcceptedConditions extends BaseConditions = TAcceptedConditions
       >(
         this: TConditionalStyle,
         conditions: AcceptedConditions,
@@ -37,7 +37,7 @@ type WhenContext<T, AcceptedConditions extends BaseConditions = Conditions> =
 type WhenReturnType<
   T,
   TContext extends WhenContext<any, AcceptedConditions>,
-  AcceptedConditions extends BaseConditions = Conditions,
+  AcceptedConditions extends BaseConditions = Conditions
 > = Chainable<
   TContext extends typeof Style
     ? ConditionalStyle<T, AcceptedConditions>
@@ -52,7 +52,7 @@ interface WhenFunction {
   <
     T,
     TContext extends WhenContext<any, AcceptedConditions>,
-    AcceptedConditions extends BaseConditions = Conditions,
+    AcceptedConditions extends BaseConditions = Conditions
   >(
     this: TContext,
     conditions: AcceptedConditions,
@@ -64,7 +64,7 @@ interface WhenFunction {
 const when: WhenFunction = function when<
   T,
   TContext extends WhenContext<any, AcceptedConditions>,
-  AcceptedConditions extends BaseConditions = Conditions,
+  AcceptedConditions extends BaseConditions = Conditions
 >(this: TContext, conditions: AcceptedConditions, value: T) {
   const config = isConditionalStyle<T, AcceptedConditions>(this)
     ? {
@@ -125,15 +125,15 @@ function createChainableConditionalStyle<
   TConditionalStyle extends ConditionalStyle<
     T,
     AcceptedConditions
-  > = ConditionalStyle<T, AcceptedConditions>,
+  > = ConditionalStyle<T, AcceptedConditions>
 >(conditionalStyle: TConditionalStyle): Chainable<TConditionalStyle> {
   const proto = {} as {
     when: WhenFunction;
   };
 
-  const returnConditionalStyle = Object.create(
-    proto,
-  ) as Chainable<TConditionalStyle>;
+  const returnConditionalStyle = Object.create(proto) as Chainable<
+    TConditionalStyle
+  >;
 
   Object.assign(returnConditionalStyle, conditionalStyle);
 
@@ -144,14 +144,14 @@ function createChainableConditionalStyle<
 
 export function isConditionalStyle<
   T,
-  AcceptedConditions extends BaseConditions = Conditions,
+  AcceptedConditions extends BaseConditions = Conditions
 >(value?: any): value is ConditionalStyle<T, AcceptedConditions> {
   return value !== null && typeof value === 'object' && 'conditionals' in value;
 }
 
 export function isConditionalStyleWithDefault<
   T,
-  AcceptedConditions extends BaseConditions = Conditions,
+  AcceptedConditions extends BaseConditions = Conditions
 >(value?: any): value is Required<ConditionalStyle<T, AcceptedConditions>> {
   return (
     isConditionalStyle(value) &&

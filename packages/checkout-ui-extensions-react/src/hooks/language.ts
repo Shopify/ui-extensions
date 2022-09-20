@@ -11,7 +11,7 @@ import {useSubscription} from './subscription';
  * your component if the language changes.
  */
 export function useLanguage<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionPoint = RenderExtensionPoint
 >(): ApiForRenderExtension<ID>['localization']['language']['current'] {
   const {localization} = useExtensionApi<ID>();
 
