@@ -6,3 +6,5 @@ export type {
   LineItem,
   CustomSale,
 } from './cart';
+
+export type {CountryCode} from './CountryCode';
