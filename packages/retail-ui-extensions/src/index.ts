@@ -1,6 +1,7 @@
 export type {
   LocaleApi,
   CartApiContent,
+  CountryCode,
   DiscountType,
   CartApi,
   NavigationApi,

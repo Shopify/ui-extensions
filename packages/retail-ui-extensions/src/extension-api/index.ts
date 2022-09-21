@@ -12,6 +12,7 @@ export type {
 export type {
   Address,
   Cart,
+  CountryCode,
   LineItem,
   Customer,
   Discount,
