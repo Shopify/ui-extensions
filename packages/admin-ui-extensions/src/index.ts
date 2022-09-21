@@ -1,5 +1,5 @@
-export {extend} from './api';
-export type {ShopifyApi, ShopifyGlobal} from './api';
+export { extend } from './api';
+export type { ShopifyApi, ShopifyGlobal } from './api';
 
 export * from './components';
 export type {
@@ -46,6 +46,7 @@ export type {
 export type {
   PlaygroundExtensionPoint,
   ProductSubscriptionExtensionPoint,
+  BundlesExtensionPoint,
   ContainerAction,
   ExtensionResult,
   RenderableExtensionCallback,
