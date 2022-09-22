@@ -11,7 +11,17 @@
       "import": "./index.mjs",
       "require": "./index.js"
     },
-    "./*": "./*"
+    "./*": "./*",
+    "./extension-api": {
+      "esnext": "./extension-api.esnext",
+      "import": "./extension-api.mjs",
+      "require": "./extension-api.js"
+    },
+    "./extension-points": {
+      "esnext": "./extension-points.esnext",
+      "import": "./extension-points.mjs",
+      "require": "./extension-points.js"
+    }
   },
   "license": "MIT",
   "sideEffects": false,
