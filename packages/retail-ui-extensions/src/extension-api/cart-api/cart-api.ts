@@ -7,7 +7,11 @@ export interface CartApi {
   cart: CartApiContent;
 }
 
-export type DiscountType = 'Percentage' | 'FixedAmount' | 'Code';
+export type DiscountType =
+  | 'Percentage'
+  | 'FixedAmount'
+  | 'PriceOverride'
+  | 'Code';
 
 export interface CartApiContent {
   /** Initial value of the Cart when the screen is rendered. */
@@ -82,7 +86,7 @@ export interface CartApiContent {
    * @param amount the percentage or fixed monetary amount deducted with the discout
    */
   setLineItemDiscount(
-    uuid: number,
+    uuid: string,
     type: DiscountType,
     title: string,
     amount: string,
