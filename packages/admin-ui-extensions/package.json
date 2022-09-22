@@ -11,7 +11,11 @@
       "import": "./index.mjs",
       "require": "./index.js"
     },
-    "./*": "./*"
+    "./*": {
+      "esnext": "./*.esnext",
+      "import": "./*.mjs",
+      "require": "./*.js"
+    }
   },
   "license": "MIT",
   "sideEffects": false,
