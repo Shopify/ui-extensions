@@ -6,6 +6,7 @@ export type {
   AutoCapitalizationType,
   ButtonType,
   ButtonProps,
+  CountryCode,
   DialogProps,
   DialogType,
   SearchBarProps,
