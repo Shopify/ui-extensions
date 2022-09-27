@@ -23,15 +23,15 @@ export interface ExtensionPoints {
     void
   >;
   'CustomerAccount::Profile::RenderAfter': RenderExtension<
-    StandardApi & FullPageApi,
+    StandardApi,
     AllComponents
   >;
   'CustomerAccount::TopNav::RenderWithin': RenderExtension<
-    StandardApi & FullPageApi,
+    StandardApi,
     AllComponents
   >;
   'CustomerAccount::PageWidget::RenderOnce': RenderExtension<
-    StandardApi & FullPageApi,
+    StandardApi,
     AllComponents
   >;
 
