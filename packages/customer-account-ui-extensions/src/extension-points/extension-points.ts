@@ -22,6 +22,19 @@ export interface ExtensionPoints {
     StandardApi & {orderId: string},
     void
   >;
+  'CustomerAccount::Profile::RenderAfter': RenderExtension<
+    StandardApi & FullPageApi,
+    AllComponents
+  >;
+  'CustomerAccount::TopNav::RenderWithin': RenderExtension<
+    StandardApi & FullPageApi,
+    AllComponents
+  >;
+  'CustomerAccount::PageWidget::RenderOnce': RenderExtension<
+    StandardApi & FullPageApi,
+    AllComponents
+  >;
+
   'CustomerAccount::KitchenSink': RenderExtension<
     StandardApi & {name: string},
     AllComponents
