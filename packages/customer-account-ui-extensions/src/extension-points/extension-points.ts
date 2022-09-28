@@ -26,9 +26,9 @@ export interface ExtensionPoints {
     StandardApi,
     AllComponents
   >;
-  'CustomerAccount::TopNav::RenderWithin': RenderExtension<
+  'CustomerAccount::TopNav::RenderWithin': RunExtension<
     StandardApi,
-    AllComponents
+    {url: string; label: string}[]
   >;
   'CustomerAccount::PageWidget::RenderOnce': RenderExtension<
     StandardApi,
