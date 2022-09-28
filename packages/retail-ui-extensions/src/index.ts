@@ -17,6 +17,8 @@ export type {
   Discount,
 } from './extension-api';
 
+export type {AllComponents, SmartGridTileComponents} from './component-sets';
+
 export {
   Text,
   Tile,
@@ -65,16 +67,11 @@ export type {
 } from './components';
 
 export type {
-  RenderExtensions,
-  RenderExtensionPoint,
-  AllowedComponentsForRenderExtension,
-  ArgumentsForExtension,
-  ApiForRenderExtension,
-  ReturnTypeForExtension,
-  RenderExtension,
-  ExtensionPoints,
   ExtensionPoint,
+  ExtensionApi,
+  ExtensionPointCallback,
 } from './extension-points';
 
 export {extend} from './extend';
-export type {ShopifyGlobal} from './globals';
+export type {ShopifyApi, ShopifyGlobal} from './extend';
+// export type {ShopifyGlobal} from './globals';
