@@ -79,7 +79,7 @@ export interface Extension {
   rendered: StatefulRemoteSubscribable<boolean>;
 
   /**
-   * The allowed capabilities of this extension, defined
+   * The allowed capabilities of the extension, defined
    * in your `shopify.ui.extension.toml` file .
    *
    * `network_access`:
@@ -496,7 +496,7 @@ export interface StandardApi<
   extension: Extension;
 
   /**
-   * Key-value storage for this extension point.
+   * Key-value storage for the extension point.
    */
   storage: Storage;
 
@@ -753,7 +753,7 @@ export interface CartLine {
   quantity: number;
 
   /**
-   * Details about the cost components attributed to this cart line.
+   * The details about the cost components attributed to the cart line.
    */
   cost: CartLineCost;
 
@@ -878,39 +878,39 @@ export interface SelectedOption {
 
 export interface PresentmentCartLine {
   /**
-   * These IDs are not stable at the moment, they might change after
+   * The ID of the present cart line. This ID isn't stable and might change after
    * any operations on the line items.
    * @example 'gid://shopify/PresentmentCartLine/123'
    */
   id: string;
 
   /**
-   * Quantity of the Merchandise being purchased.
+   * The quantity of the merchandise being purchased.
    */
   quantity: number;
 
   /**
-   * Details about the cost components attributed to this presentment cart line.
+   * The details about the cost components attributed to the presentment cart line.
    */
   cost: PresentmentCartLineCost;
 
   /**
-   * Line item title.
+   * The title of the line item.
    */
   title: string;
 
   /**
-   * Line item subtitle.
+   * The subtitle of the line item.
    */
   subtitle?: string;
 
   /**
-   * Image associated with the line item.
+   * The image associated with the line item.
    */
   image?: ImageDetails;
 
   /**
-   * Merchandise lines being purchased.
+   * The merchandise lines being purchased.
    */
   lines: CartLine[];
 }
@@ -1141,24 +1141,15 @@ export interface Customer {
 }
 
 /**
- * The merchant-defined setting values for this extension.
+ * The merchant-defined setting values for the extension.
  */
 export interface ExtensionSettings {
   [key: string]: string | number | boolean | undefined;
 }
 
-interface EventInputPayload {
-  [key: string]:
-    | string
-    | number
-    | boolean
-    | EventInputPayload
-    | EventInputPayload[];
-}
-
+/**
+ * Publish method to emit analytics events to Web Pixels.
+ */
 export interface Analytics {
-  /**
-   * Publish method to emit analytics events to Web Pixels.
-   */
-  publish(eventName: string, payload: EventInputPayload): Promise<boolean>;
+  publish(name: string, data: {[key: string]: unknown}): Promise<boolean>;
 }

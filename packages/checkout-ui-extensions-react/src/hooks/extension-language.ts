@@ -7,7 +7,7 @@ import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
- * Returns the buyer's language, as supported by this extension.
+ * Returns the buyer's language, as supported by the extension.
  */
 export function useExtensionLanguage<
   ID extends RenderExtensionPoint = RenderExtensionPoint

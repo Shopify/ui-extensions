@@ -11,7 +11,7 @@ import type {Fit, AccessibilityRole} from '../shared';
 
 export interface ImageProps extends BorderProps {
   /**
-   * The url or path to the image. Supports the `resolution` and `viewportInlineSize` conditional styles only.
+   * The URL or path to the image. Supports the `resolution` and `viewportInlineSize` conditional styles only.
    */
   source: Required<
     MaybeConditionalStyle<
