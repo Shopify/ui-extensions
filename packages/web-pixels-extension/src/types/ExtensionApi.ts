@@ -1,4 +1,4 @@
-import type {Browser} from './Browser';
+import type {Browser} from './PixelEvents';
 import type {EventBus} from './EventBus';
 import type {RegisterInit} from './RegisterInit';
 
