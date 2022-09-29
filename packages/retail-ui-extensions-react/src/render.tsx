@@ -1,4 +1,5 @@
 import type {ReactElement} from 'react';
+import {createElement} from 'react';
 import {render as remoteRender} from '@remote-ui/react';
 import {extend} from '@shopify/retail-ui-extensions';
 import type {
@@ -35,20 +36,15 @@ export function render<ExtensionPoint extends RenderExtensionPoint>(
   return extend<'Retail::SmartGrid::Tile'>(
     extensionPoint as any,
     (root, api) => {
-      return new Promise((resolve, reject) => {
-        try {
-          remoteRender(
-            <ExtensionApiContext.Provider value={api}>
-              {render(api as ApiForRenderExtension<ExtensionPoint>)}
-            </ExtensionApiContext.Provider>,
-            root,
-            () => {
-              resolve();
-            },
-          );
-        } catch (error) {
-          reject(error);
-        }
+      return new Promise(() => {
+        const element = render(api as ApiForRenderExtension<ExtensionPoint>);
+        remoteRender(
+          createElement(ExtensionApiContext.Provider, {value: api}, element),
+          root,
+          () => {
+            root.mount();
+          },
+        );
       });
     },
   );
