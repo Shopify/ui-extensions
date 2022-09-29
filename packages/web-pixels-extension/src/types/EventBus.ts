@@ -1,11 +1,11 @@
-import type {Event} from './Event';
+import type {PixelEvents} from './PixelEvents';
 
 export type SchemaVersion = 'v1';
 
-export interface Events extends Event {
-  all_events: Event[keyof Event];
-  all_standard_events: Event[keyof Event];
-  all_custom_events: Event[keyof Event];
+export interface Events extends PixelEvents {
+  all_events: PixelEvents[keyof PixelEvents];
+  all_standard_events: PixelEvents[keyof PixelEvents];
+  all_custom_events: PixelEvents[keyof PixelEvents];
 }
 
 export type KeyOfEvent<T> = Extract<keyof T, string>;

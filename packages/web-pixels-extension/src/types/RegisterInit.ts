@@ -1,5 +1,10 @@
-import type {Context} from './Context';
-import type {Cart, Customer, ProductVariant} from './Shared';
+import type {
+  Context,
+  Cart,
+  Checkout,
+  Customer,
+  ProductVariant,
+} from './PixelEvents';
 
 // This is passed to the register function init object
 export interface RegisterInit {
@@ -14,5 +19,6 @@ export interface RegisterInit {
 export interface InitData {
   customer?: Customer;
   cart?: Cart;
+  checkout?: Checkout;
   productVariants?: ProductVariant[];
 }

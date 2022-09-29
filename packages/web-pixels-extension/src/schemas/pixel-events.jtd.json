@@ -371,11 +371,19 @@
         },
         "email": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "The email attached to this checkout."
           }
         },
-        "id": {
+        "phone": {
+          "type": "string",
+          "nullable": true,
+          "metadata": {
+            "description": "The phone attached to this checkout."
+          }
+        },
+        "token": {
           "type": "string",
           "metadata": {
             "description": "A globally-unique identifier."
