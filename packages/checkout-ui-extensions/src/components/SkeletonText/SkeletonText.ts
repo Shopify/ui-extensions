@@ -8,7 +8,7 @@ export interface SkeletonTextProps
   /**
    * Use to emphasize a word or a group of words compared to other nearby text.
    */
-  emphasis?: 'strong';
+  emphasis?: 'bold';
   /**
    * Adjust the length of the text when no children are passed.
    */

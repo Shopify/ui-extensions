@@ -7,7 +7,7 @@ export interface SkeletonTextBlockProps
   /**
    * Use to emphasize a word or a group of words compared to other nearby text.
    */
-  emphasis?: 'strong';
+  emphasis?: 'bold';
   /**
    * Number of lines to display when no children are passed.
    *

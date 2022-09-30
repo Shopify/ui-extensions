@@ -14,7 +14,7 @@ class ExtensionHasNoTargetError extends Error {
 }
 
 /**
- * Returns the cart line this extension is attached to. This is only applicable to the `Checkout::CartLineDetails::RenderAfter` extension point.
+ * Returns the cart line the extension is attached to. This is only applicable to the `Checkout::CartLineDetails::RenderAfter` extension point.
  */
 export function useTarget() {
   const api = useExtensionApi<'Checkout::CartLineDetails::RenderAfter'>();
