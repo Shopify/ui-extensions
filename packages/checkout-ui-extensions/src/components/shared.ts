@@ -350,7 +350,27 @@ export type TextAccessibilityRole =
    * format for “machineReadable” can be found here:
    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#Valid_datetime_Values
    */
-  | {type: 'datetime'; machineReadable?: string};
+  | {type: 'datetime'; machineReadable?: string}
+  /**
+   * Indicate emphatic stress. Typically for words that have a stressed emphasis compared to surrounding text.
+   *
+   * In an HTML host, the text will be rendered in a `<em>` tag.
+   */
+  | 'stress'
+  /**
+   * Indicate an offset from the normal prose of the text. Typically used to indicate
+   * a foreign word, fictional character thoughts, or when the text refers to the definition of a word
+   * instead of representing its semantic meaning.
+   *
+   * In an HTML host, the text will be rendered in a `<i>` tag.
+   */
+  | 'offset'
+  /**
+   * Indicate strong importance, seriousness, or urgency.
+   *
+   * In an HTML host, the text will be rendered in a `<strong>` tag.
+   */
+  | 'strong';
 
 export type Status =
   /**
@@ -449,22 +469,16 @@ export type Rows = GridItemSize[] | GridItemSize;
  */
 export type Emphasis =
   /**
-   * Indicate emphatic stress.
-   * By default the text will be italic and render a `<em>` tag in an HTML host.
+   * Set the text in italic.
+   *
+   * Combine with an accessibilyRole of 'offset' or 'stress'
+   * to add more meaning to the text.
    */
-  | 'stress'
+  | 'italic'
   /**
-   * Indicate an offset from the normal prose of the text. Typically used to indicate
-   * a foreign word, fictional character thoughts, or when the text refers to the definition of a word
-   * instead of representing its semantic meaning.
-   * By default the text will be italic and render a `<i>` tag in an HTML host.
+   * Set the text in bold.
    */
-  | 'offset'
-  /**
-   * Indicate strong importance, seriousness, or urgency.
-   * By default the text will be bold and render a `<strong>` tag in an HTML host.
-   */
-  | 'strong';
+  | 'bold';
 
 /**
  * Takes a base type (Base) and a list of accepted combinations of
