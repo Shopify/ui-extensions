@@ -8,6 +8,7 @@ export interface Cart {
   cartDiscount?: Discount;
   customer?: Customer;
   lineItems: LineItem[];
+  properties: Record<string, string>;
 }
 
 export interface Customer {
@@ -27,6 +28,9 @@ export interface LineItem {
   productId?: number;
   discount?: Discount;
   taxable: boolean;
+  sku?: string;
+  vendor?: string;
+  properties: {[key: string]: string};
 }
 
 export interface Discount {
