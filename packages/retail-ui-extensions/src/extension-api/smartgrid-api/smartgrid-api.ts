@@ -1,6 +1,6 @@
 export interface SmartGridApiContent {
   /** Opens a full screen with the Retail::SmartGrid::Modal extension point */
-  navigateToFullScreenModal(): void;
+  presentModal(): void;
 }
 
 /**

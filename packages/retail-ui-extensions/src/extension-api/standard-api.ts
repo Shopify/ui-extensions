@@ -1,7 +1,6 @@
 import type {CartApi} from './cart-api';
 import type {LocaleApi} from './locale-api';
 import type {NavigationApi} from './navigation-api';
-import type {SmartGridApi} from './smartgrid-api';
 import type {SessionTokenApi} from './session-token-api';
 
 export type StandardApi<T> = {[key: string]: any} & {
@@ -9,5 +8,4 @@ export type StandardApi<T> = {[key: string]: any} & {
 } & LocaleApi &
   CartApi &
   NavigationApi &
-  SmartGridApi &
   SessionTokenApi;
