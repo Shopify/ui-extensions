@@ -6,6 +6,8 @@ export type {
   CartApi,
   NavigationApi,
   NavigationApiContent,
+  SmartGridApi,
+  SmartGridApiContent,
   StandardApi,
   SessionTokenApi,
   SessionTokenApiContent,
