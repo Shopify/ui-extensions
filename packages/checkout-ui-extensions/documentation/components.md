@@ -1,5 +1,3 @@
-{% include /apps/checkout/extensions-beta.md %}
-
 {% include /apps/checkout/plus-merchants.md %}
 
 You can use checkout components to build app extensions that feel at home in any checkout experience.

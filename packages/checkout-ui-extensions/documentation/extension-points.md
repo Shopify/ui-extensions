@@ -1,5 +1,3 @@
-{% include /apps/checkout/extensions-beta.md %}
-
 {% include /apps/checkout/plus-merchants.md %}
 
 # Extension points
