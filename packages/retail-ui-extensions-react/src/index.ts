@@ -23,4 +23,6 @@ export type {
   TextFieldProps,
   InputType,
   TileProps,
+  ListProps,
+  ListItem,
 } from '@shopify/retail-ui-extensions';
