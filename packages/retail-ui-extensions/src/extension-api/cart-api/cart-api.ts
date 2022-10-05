@@ -1,7 +1,7 @@
 import type {Address, Cart, Customer, CustomSale} from '../types';
 
 /**
- * Access the merchant’s current cart.
+ * Access and modify the merchant’s current cart.
  */
 export interface CartApi {
   cart: CartApiContent;

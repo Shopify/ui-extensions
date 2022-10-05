@@ -5,10 +5,7 @@ export type {NavigationApi, NavigationApiContent} from './navigation-api';
 export type {SmartGridApi, SmartGridApiContent} from './smartgrid-api';
 export type {StandardApi} from './standard-api';
 
-export type {
-  SessionTokenApiContent,
-  SessionTokenApi,
-} from './session-token-api';
+export type {SessionApiContent, SessionApi} from './session-api';
 
 export type {
   Address,
@@ -18,4 +15,5 @@ export type {
   Customer,
   Discount,
   CustomSale,
+  Session,
 } from './types';
