@@ -4,7 +4,7 @@
     "rootDir": "src",
     "outDir": "build/ts"
   },
-  "references": [{"path": "../ui-extensions"}],
+  "references": [],
   "include": ["./src/**/*.ts"],
   "exclude": ["./src/**/*.example.*"]
 }

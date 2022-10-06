@@ -1,10 +1,17 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import type {BaseHeadingProps} from '@shopify/ui-extensions';
 
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
-export interface HeadingProps extends Omit<BaseHeadingProps, 'level'> {
+export interface HeadingProps {
   /**
+   * Unique identifier. Typically used to make the heading a target
+   * that another component can refer to in order to provide an alternative
+   * accessibility label.
+   */
+  id?: string;
+
+  /**
+   * The visual level of the heading.
    * @default 2
    */
   level?: Level;

@@ -1,7 +1,26 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import type {BaseInlineStackProps} from '@shopify/ui-extensions';
 
-export type {BaseInlineStackProps as InlineStackProps} from '@shopify/ui-extensions';
+import type {Spacing} from '../types';
+
+export interface InlineStackProps {
+  /**
+   * Specifies the block alignment. This affects the vertical flow of elements.
+   * @defaultValue `leading`
+   */
+  blockAlignment?: 'leading' | 'center' | 'trailing' | 'baseline';
+
+  /**
+   * Specifies the inline alignment. This affects the horizontal flow of elements.
+   * @defaultValue `leading`
+   */
+  inlineAlignment?: 'leading' | 'center' | 'trailing';
+
+  /**
+   * Adjust spacing between children.
+   * @defaultValue 'base'
+   **/
+  spacing?: Spacing;
+}
 
 /**
  * Use to lay out a horizontal row of components.
@@ -11,5 +30,5 @@ export type {BaseInlineStackProps as InlineStackProps} from '@shopify/ui-extensi
  */
 export const InlineStack = createRemoteComponent<
   'InlineStack',
-  BaseInlineStackProps
+  InlineStackProps
 >('InlineStack');
