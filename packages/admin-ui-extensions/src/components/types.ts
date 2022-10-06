@@ -1,3 +1,11 @@
+export type Spacing =
+  | 'none'
+  | 'extraTight'
+  | 'tight'
+  | 'base'
+  | 'loose'
+  | 'extraLoose';
+
 export interface Action {
   /**
    * Action label text.
