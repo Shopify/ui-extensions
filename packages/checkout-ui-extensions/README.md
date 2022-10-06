@@ -15,7 +15,7 @@ shopify.extend('Checkout::Dynamic::Render', (root, api) => {
   root.appendChild(button);
 });
 ```
-
+Hello World
 Keeping in mind that any utility provided by this library is only a convenience API on top of the `shopify` global, the rest of the documentation for this library will show examples using JavaScript imports from the `@shopify/checkout-ui-extensions` library. Using JavaScript modules in this way requires a [build step](https://shopify.dev/apps/checkout/custom-fields/getting-started#step-2-preview-your-extension), but can provide useful developer experience features and opportunities for build-time performance optimizations.
 
 ## Getting started
