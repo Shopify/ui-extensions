@@ -34,6 +34,9 @@ export type {Segment, SegmentedControlProps} from './SegmentedControl';
 export {Tag} from './Tag';
 export type {TagVariant, TagProps} from './Tag';
 
+export {Stepper} from './Stepper';
+export type {StepperProps} from './Stepper';
+
 export {Dialog} from './Dialog';
 export type {DialogType, DialogProps} from './Dialog';
 
