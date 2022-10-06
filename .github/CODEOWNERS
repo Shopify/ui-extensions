@@ -1,0 +1,5 @@
+# Details https://help.github.com/articles/about-codeowners/
+
+# UI Extension components
+/packages/checkout-ui-extensions/ @Shopify/checkout-ui-extensions-api-stewardship
+/packages/checkout-ui-extensions-react/ @Shopify/checkout-ui-extensions-api-stewardship
