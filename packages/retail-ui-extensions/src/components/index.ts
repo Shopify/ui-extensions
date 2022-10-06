@@ -15,6 +15,9 @@ export type {VerticalSpacing, HorizontalSpacing} from './Spacing';
 export {FormattedTextField} from './FormattedTextField';
 export type {InputType, FormattedTextFieldProps} from './FormattedTextField';
 
+export {List} from './List';
+export type {ListItem, ListProps} from './List';
+
 export {TextField} from './TextField';
 export type {
   ActionProps,
