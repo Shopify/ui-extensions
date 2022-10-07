@@ -173,6 +173,7 @@ export async function dev(...args: string[]) {
             {
               scriptUrl: `${origin}${PUBLIC_PATH}${filename}`,
               socketUrl: `${origin.replace(/^http/, 'ws')}${WEBSOCKET_PATH}`,
+              localization: extension.localization,
               extensionPoints:
                 extension.type === 'checkout'
                   ? extension.config.extensionPoints

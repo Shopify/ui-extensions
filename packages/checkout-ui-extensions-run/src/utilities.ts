@@ -1,6 +1,6 @@
 import {URL, URLSearchParams} from 'url';
 import {resolve, join} from 'path';
-import {readFileSync, existsSync} from 'fs';
+import {readFileSync, readdirSync, existsSync} from 'fs';
 import camelcaseKeys from 'camelcase-keys';
 import chalk from 'chalk';
 import {safeLoad as loadYaml} from 'js-yaml';
@@ -44,9 +44,19 @@ export interface CheckoutExtensionConfig {
   readonly metafields?: {namespace: string; key: string}[];
 }
 
+type Translation = string | {[key: string]: Translation};
+
+export interface Localization {
+  defaultLocale: string;
+  translations: {
+    [locale: string]: Record<string, Translation>;
+  };
+}
+
 export interface CheckoutExtension {
   readonly type: 'checkout';
   readonly config: CheckoutExtensionConfig;
+  readonly localization: Localization | null;
 }
 
 export interface PostPurchaseExtensionConfig {
@@ -56,6 +66,7 @@ export interface PostPurchaseExtensionConfig {
 export interface PostPurchaseExtension {
   readonly type: 'post-purchase';
   readonly config?: PostPurchaseExtensionConfig;
+  readonly localization: Localization | null;
 }
 
 export type Extension = CheckoutExtension | PostPurchaseExtension;
@@ -74,16 +85,45 @@ export interface DevelopmentServerConfiguration {
 
 export function loadExtension(): Extension {
   const config = readConfig();
+  const localization = readLocales();
 
   return config == null || !('extensionPoints' in config)
     ? {
         type: 'post-purchase',
         config,
+        localization,
       }
     : {
         type: 'checkout',
         config,
+        localization,
       };
+}
+
+function readLocales(): Localization | null {
+  const localesPath = resolve(join(process.cwd(), 'locales'));
+  if (!existsSync(localesPath)) {
+    return null;
+  }
+
+  let defaultLocale = '';
+  const translations: Localization['translations'] = {};
+
+  for (const localeFile of readdirSync(localesPath)) {
+    const localePath = resolve(join(localesPath, localeFile));
+
+    const locale = localeFile.split('.')[0];
+    if (localeFile.endsWith('.default.json')) {
+      defaultLocale = locale;
+    }
+
+    translations[locale] = JSON.parse(readFileSync(localePath, 'utf8'));
+  }
+
+  return {
+    defaultLocale,
+    translations,
+  };
 }
 
 function readConfig() {
