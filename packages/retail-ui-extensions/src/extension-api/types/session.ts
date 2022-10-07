@@ -18,5 +18,5 @@ export interface Session {
    * The staff ID who is currently pinned into the POS.
    * Note that this staff member ID may be different to the User ID, as the staff member who enters their PIN may be different to the User who logged onto POS.
    */
-  staffMemberId: number;
+  staffMemberId?: number;
 }
