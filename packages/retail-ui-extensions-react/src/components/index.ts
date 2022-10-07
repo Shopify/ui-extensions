@@ -8,3 +8,4 @@ export {Tag} from './Tag';
 export {Dialog} from './Dialog';
 export {SearchBar} from './SearchBar';
 export {List} from './List';
+export {Stepper} from './Stepper';

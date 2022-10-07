@@ -25,4 +25,5 @@ export type {
   TileProps,
   ListProps,
   ListItem,
+  StepperProps,
 } from '@shopify/retail-ui-extensions';
