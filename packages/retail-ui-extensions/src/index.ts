@@ -33,7 +33,7 @@ export {
   Stepper,
   Dialog,
   SearchBar,
-  ProductImage,
+  Image,
   RadioButtonList,
 } from './components';
 
@@ -68,7 +68,7 @@ export type {
   StackProps,
   VerticalSpacing,
   HorizontalSpacing,
-  ProductImageProps,
+  ImageProps,
   RadioButtonListProps,
 } from './components';
 

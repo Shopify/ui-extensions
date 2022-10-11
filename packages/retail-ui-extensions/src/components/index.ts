@@ -45,8 +45,8 @@ export type {SearchBarProps} from './SearchBar';
 
 export type {AutoCapitalizationType, BaseTextFieldProps} from './shared';
 
-export {ProductImage} from './ProductImage';
-export type {ProductImageProps} from './ProductImage';
+export {Image} from './Image';
+export type {ImageProps} from './Image';
 
 export {RadioButtonList} from './RadioButtonList';
 export type {RadioButtonListProps} from './RadioButtonList';
