@@ -26,4 +26,7 @@ export type {
   ListProps,
   ListItem,
   StepperProps,
+  ImageProps,
+  RadioButtonListProps,
+  FormattedTextFieldProps,
 } from '@shopify/retail-ui-extensions';
