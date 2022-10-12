@@ -1,6 +1,6 @@
 {
   "name": "@shopify/retail-ui-extensions-react",
-  "version": "0.21.1",
+  "version": "0.22.0",
   "description": "React bindings for @shopify/retail-ui-extensions",
   "publishConfig": {
     "access": "public",
