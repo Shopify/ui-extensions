@@ -4,8 +4,10 @@ export interface ListItem {
   uuid: string;
   title: string;
   subtitle?: string;
+  subtitleColor?: 'success' | 'warning' | 'critical';
   imageUri?: string;
-  rightDetail?: string;
+  detail?: string;
+  detailColor?: 'subdued' | 'action';
   onClick?: () => void;
 }
 

@@ -1,5 +1,5 @@
 export {render} from './render';
-export {extend} from '@shopify/retail-ui-extensions';
+export {extend, CountryCode} from '@shopify/retail-ui-extensions';
 export {useExtensionApi, useCart, useLocale} from './extension-api';
 export * from './components';
 
@@ -8,7 +8,6 @@ export type {
   ButtonType,
   ButtonProps,
   ColorType,
-  CountryCode,
   DialogProps,
   DialogType,
   FormattedTextFieldProps,
