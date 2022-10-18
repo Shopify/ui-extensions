@@ -14,7 +14,7 @@ DIM=$'\e[2m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
-spinUrl=`spin show --latest --output=fqdn`
+spinUrl=`spin show --output=fqdn`
 projectDirectoryOrWorkspace=$1
 packageName=$2
 packages=()
