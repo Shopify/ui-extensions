@@ -16,7 +16,11 @@ import {
   ProductSubscriptionExtensionPointCallback,
 } from './identifiers/product_subscription';
 
-export type {PlaygroundExtensionPoint, ProductSubscriptionExtensionPoint};
+export type {
+  PlaygroundExtensionPoint,
+  ProductSubscriptionExtensionPoint,
+  OrderDetailsExtensionPoint,
+};
 
 /*
 Placeholder for new imports

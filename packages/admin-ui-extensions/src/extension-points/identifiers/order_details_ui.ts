@@ -1,17 +1,29 @@
 import {RemoteRoot} from '@remote-ui/core';
 
-import {AllComponentsSchema} from '../../containers';
+import {AppOverlaySchema} from '../../containers';
 import {RenderableExtensionCallback, StandardApi, ToastApi} from '../types';
 
 export type OrderDetailsExtensionPoint = 'Admin::OrderDetails';
 
+export type OrderDetailsExtensionStandardApi<
+  T extends OrderDetailsExtensionPoint
+> = StandardApi<T> & ToastApi;
+
+export type OrderDetailsExtensionApiTest = OrderDetailsExtensionStandardApi<
+  'Admin::OrderDetails'
+> & {
+  data: {
+    value: string;
+  };
+};
+
 export interface OrderDetailsExtensionApi {
-  OrderDetails: StandardApi<OrderDetailsExtensionPoint> & ToastApi;
+  'Admin::OrderDetails': OrderDetailsExtensionApiTest;
 }
 
 export interface OrderDetailsExtensionPointCallback {
-  OrderDetails: RenderableExtensionCallback<
-    OrderDetailsExtensionApi['OrderDetails'],
-    RemoteRoot<AllComponentsSchema>
+  'Admin::OrderDetails': RenderableExtensionCallback<
+    OrderDetailsExtensionApi['Admin::OrderDetails'],
+    RemoteRoot<AppOverlaySchema>
   >;
 }
