@@ -5,6 +5,12 @@ import {
 } from './identifiers/playground';
 
 import {
+  OrderDetailsExtensionPoint,
+  OrderDetailsExtensionApi,
+  OrderDetailsExtensionPointCallback,
+} from './identifiers/order_details_ui';
+
+import {
   ProductSubscriptionExtensionPoint,
   ProductSubscriptionExtensionApi,
   ProductSubscriptionExtensionPointCallback,
@@ -24,10 +30,13 @@ export type {
 
 export type ExtensionPoint =
   | PlaygroundExtensionPoint
-  | ProductSubscriptionExtensionPoint;
+  | ProductSubscriptionExtensionPoint
+  | OrderDetailsExtensionPoint;
 
 export type ExtensionApi = PlaygroundExtensionApi &
-  ProductSubscriptionExtensionApi;
+  ProductSubscriptionExtensionApi &
+  OrderDetailsExtensionApi;
 
 export type ExtensionPointCallback = PlaygroundExtensionPointCallback &
-  ProductSubscriptionExtensionPointCallback;
+  ProductSubscriptionExtensionPointCallback &
+  OrderDetailsExtensionPointCallback;
