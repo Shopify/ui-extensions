@@ -31,6 +31,7 @@ export {
   SegmentedControl,
   Tag,
   Stepper,
+  ScrollView,
   Dialog,
   SearchBar,
   Image,

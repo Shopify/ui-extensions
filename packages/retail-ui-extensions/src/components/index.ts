@@ -37,6 +37,8 @@ export type {TagVariant, TagProps} from './Tag';
 export {Stepper} from './Stepper';
 export type {StepperProps} from './Stepper';
 
+export {ScrollView} from './ScrollView';
+
 export {Dialog} from './Dialog';
 export type {DialogType, DialogProps} from './Dialog';
 

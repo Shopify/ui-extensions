@@ -8,6 +8,7 @@ export {SearchBar} from './SearchBar';
 export {SegmentedControl} from './SegmentedControl';
 export {Stack} from './Stack';
 export {Stepper} from './Stepper';
+export {ScrollView} from './ScrollView';
 export {Tag} from './Tag';
 export {Text} from './Text';
 export {TextField} from './TextField';
