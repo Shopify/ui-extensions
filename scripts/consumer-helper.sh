@@ -4,17 +4,17 @@ AVAILABLE_PACKAGES=('admin-ui-extensions' 'admin-ui-extensions-react' 'checkout-
 ROOT=$(pwd)
 
 # Font color
-ORANGE='\033[1;31m'
-GREEN='\033[0;32m'
-CYAN='\033[0;36m'
-NONE='\033[0m'
+ORANGE=$'\e[1;31m'
+GREEN=$'\e[0;32m'
+CYAN=$'\e[0;36m'
+NONE=$'\e[0m'
 
 # Font styles
-DIM='\033[2m'
+DIM=$'\e[2m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
-spinUrl=`spin info fqdn`
+spinUrl=`spin show --latest --output=fqdn`
 projectDirectoryOrWorkspace=$1
 packageName=$2
 packages=()
@@ -27,10 +27,10 @@ function set_globals() {
   else
     echo "🌀 Running command on spin: $spinUrl"
     projectName="$(cut -d'.' -f1 <<<"$projectDirectoryOrWorkspace")"
-    targetRoot="src/github.com/shopify/$projectName"
+    targetRoot="src/github.com/Shopify/$projectName"
     noTargetError="A workspace is required: "
   fi
-  
+
   shopifyNodeModulesDir="$targetRoot/node_modules/@shopify"
 }
 
@@ -47,13 +47,13 @@ function copy_to_target {
   local package=$1
   local packageFile=$2
 
-  echo "copy_to_target -->"
-
   if [[ -z $spin ]]; then
     targetDir=$(resolve "$ROOT/../$projectDirectoryOrWorkspace/node_modules/@shopify/$package")
   else
     targetDir="$shopifyNodeModulesDir/$package"
   fi
+
+  echo "copy_to_target --> $targetDir"
 
   if (run_command "[ -d $targetDir ]"); then
     debug $debug "rm -rf $targetDir"
@@ -246,7 +246,7 @@ function restore_consumer {
     run_command "cd $targetRoot"
 
     echo "Running \`yarn install\` from $targetRoot"
-    
+
     installCmd="yarn install --force --ignore-engines"
 
     debug $debug "$installCmd"
