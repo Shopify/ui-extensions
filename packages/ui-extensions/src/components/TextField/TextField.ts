@@ -8,11 +8,11 @@ export interface TextFieldProps {
   value?: string;
 
   /**
-   * Callback when the buyer has **finished editing** a field. Unlike `onChange`
+   * Callback when the user has **finished editing** a field. Unlike `onChange`
    * callbacks you may be familiar with from Polaris or other React component libraries,
    * this callback is **not** run on every change to the input. Text fields are
-   * “partially controlled” components, which means that while the buyer edits the
-   * field, its state is controlled by the component. Once the buyer has signalled that
+   * “partially controlled” components, which means that while the user edits the
+   * field, its state is controlled by the component. Once the user has signalled that
    * they have finished editing the field (typically, by blurring the field), `onChange`
    * is called if the input actually changed from the most recent `value` property. At
    * that point, you are expected to store this “committed value” in state, and reflect
@@ -24,7 +24,7 @@ export interface TextFieldProps {
    * is to have the component be the source of truth for the input `value`, and update
    * the `value` on every user input. The delay in responding to events from a UI
    * extension is only a few milliseconds, but attempting to strictly store state with
-   * this delay can cause issues if a user types quickly, or if the buyer is using a
+   * this delay can cause issues if a user types quickly, or if the user is using a
    * lower-powered device. Having the UI thread take ownership for “in progress” input,
    * and only synchronizing when the user is finished with a field, avoids this risk.
    *
