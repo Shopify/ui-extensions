@@ -2,6 +2,11 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export interface TextFieldProps {
   /**
+   * Content to use as the field label.
+   */
+  label: string;
+
+  /**
    * The current value for the field. If omitted, the field will be empty. You should
    * update this value in response to the `onChange` callback.
    */
