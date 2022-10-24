@@ -9,6 +9,11 @@ export type {
   RunExtension,
   RunExtensionPoint,
   ReturnTypeForExtension,
+  StandardApi,
+  Language,
+  Localization,
+  I18nTranslate,
+  I18n,
 } from '@shopify/customer-account-ui-extensions';
 export * from './components';
 export * from './hooks';
