@@ -7,6 +7,9 @@ export type {TileProps} from './Tile';
 export {Button} from './Button';
 export type {ButtonProps, ButtonType} from './Button';
 
+export type {SelectableProps} from './Selectable';
+export {Selectable} from './Selectable';
+
 export {Stack} from './Stack';
 export type {Spacing, StackProps} from './Stack';
 
