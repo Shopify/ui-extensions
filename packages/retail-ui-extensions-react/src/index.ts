@@ -28,5 +28,7 @@ export type {
   TextVariant,
   TextFieldProps,
   TileProps,
+  IconProps,
+  IconName,
   VerticalSpacing,
 } from '@shopify/retail-ui-extensions';
