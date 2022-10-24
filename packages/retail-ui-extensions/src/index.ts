@@ -35,6 +35,7 @@ export {
   SearchBar,
   Image,
   RadioButtonList,
+  Icon,
 } from './components';
 
 export type {
@@ -70,6 +71,8 @@ export type {
   HorizontalSpacing,
   ImageProps,
   RadioButtonListProps,
+  IconName,
+  IconProps,
 } from './components';
 
 export type {

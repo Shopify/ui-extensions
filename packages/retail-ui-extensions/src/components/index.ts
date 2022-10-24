@@ -50,3 +50,6 @@ export type {ImageProps} from './Image';
 
 export {RadioButtonList} from './RadioButtonList';
 export type {RadioButtonListProps} from './RadioButtonList';
+
+export {Icon} from './Icon';
+export type {IconName, IconProps} from './Icon';
