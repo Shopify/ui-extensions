@@ -14,3 +14,4 @@ export {Text} from './Text';
 export {TextField} from './TextField';
 export {Icon} from './Icon';
 export {Tile} from './Tile';
+export {Selectable} from './Selectable';
