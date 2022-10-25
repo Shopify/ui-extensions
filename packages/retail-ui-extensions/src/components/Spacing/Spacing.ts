@@ -7,8 +7,10 @@ export type VerticalSpacing =
   | 'ExtraLarge';
 
 export type HorizontalSpacing =
+  | 'HalfPoint'
   | 'ExtraSmall'
   | 'Small'
   | 'Medium'
   | 'Large'
-  | 'ExtraLarge';
+  | 'ExtraLarge'
+  | 'ExtraExtraLarge';

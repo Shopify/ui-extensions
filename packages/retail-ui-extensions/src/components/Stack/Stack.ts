@@ -1,4 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import {HorizontalSpacing, VerticalSpacing} from 'components/Spacing';
 
 export type Spacing =
   | 0.5
@@ -25,6 +26,8 @@ export interface StackProps {
     | 'space-around'
     | 'space-between'
     | 'space-evenly';
+  paddingVertical?: VerticalSpacing;
+  paddingHorizontal?: HorizontalSpacing;
   spacing?: Spacing;
   flexChildren?: boolean;
   flex?: number;
