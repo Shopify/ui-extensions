@@ -1,17 +1,15 @@
+import {BasicComponents, SmartGridComponents} from 'component-sets';
 import {SmartGridApi, StandardApi} from '../extension-api';
 import {RenderExtension} from './render-extension';
-
-type Components = typeof import('../components');
-type AllComponents = Components[keyof Components];
 
 export interface ExtensionPoints {
   'Retail::SmartGrid::Tile': RenderExtension<
     StandardApi<'Retail::SmartGrid::Tile'> & SmartGridApi,
-    AllComponents
+    SmartGridComponents
   >;
   'Retail::SmartGrid::Modal': RenderExtension<
     StandardApi<'Retail::SmartGrid::Modal'>,
-    AllComponents
+    BasicComponents
   >;
 }
 
