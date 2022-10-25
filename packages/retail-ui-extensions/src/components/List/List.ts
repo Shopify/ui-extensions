@@ -4,7 +4,7 @@ export interface ListItem {
   uuid: string;
   title: string;
   subtitle?: string;
-  subtitleColor?: 'success' | 'warning' | 'critical';
+  subtitleColor?: 'subdued' | 'success' | 'warning' | 'critical';
   imageUri?: string;
   detail?: string;
   detailColor?: 'subdued' | 'action';
