@@ -1,7 +1,6 @@
 export type {
   LocaleApi,
   CartApiContent,
-  CountryCode,
   DiscountType,
   CartApi,
   NavigationApi,
@@ -19,6 +18,8 @@ export type {
   Customer,
   Discount,
 } from './extension-api';
+
+export {CountryCode} from './extension-api';
 
 export {
   Text,

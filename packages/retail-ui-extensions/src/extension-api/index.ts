@@ -10,10 +10,11 @@ export type {SessionApiContent, SessionApi} from './session-api';
 export type {
   Address,
   Cart,
-  CountryCode,
   LineItem,
   Customer,
   Discount,
   CustomSale,
   Session,
 } from './types';
+
+export {CountryCode} from './types';
