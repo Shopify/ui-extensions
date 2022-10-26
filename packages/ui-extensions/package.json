@@ -4,7 +4,7 @@
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
-  "types": "./build/typescript/index.d.ts",
+  "types": "./build/ts/index.d.ts",
   "typesVersions": {
     "*": {
       "admin": [
