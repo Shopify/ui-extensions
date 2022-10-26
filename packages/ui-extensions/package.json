@@ -8,10 +8,10 @@
   "typesVersions": {
     "*": {
       "admin": [
-        "./build/typescript/surfaces/admin/index.d.ts"
+        "./build/ts/surfaces/admin/index.d.ts"
       ],
       "checkout": [
-        "./build/typescript/surfaces/checkout/index.d.ts"
+        "./build/ts/surfaces/checkout/index.d.ts"
       ]
     }
   },
