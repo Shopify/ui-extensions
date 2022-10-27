@@ -4,14 +4,14 @@
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
-  "types": "./build/typescript/index.d.ts",
+  "types": "./build/ts/index.d.ts",
   "typesVersions": {
     "*": {
       "admin": [
-        "./build/typescript/surfaces/admin/index.d.ts"
+        "./build/ts/surfaces/admin/index.d.ts"
       ],
       "checkout": [
-        "./build/typescript/surfaces/checkout/index.d.ts"
+        "./build/ts/surfaces/checkout/index.d.ts"
       ]
     }
   },
