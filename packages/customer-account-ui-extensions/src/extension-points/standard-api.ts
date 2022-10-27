@@ -1,5 +1,4 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
-import type {Timezone} from './shared';
 
 export type Version = 'unstable';
 
@@ -15,11 +14,6 @@ export interface Language {
 }
 
 export interface Localization {
-  /**
-   * The buyer’s time zone.
-   */
-  timezone: StatefulRemoteSubscribable<Timezone>;
-
   /**
    * The language the buyer sees in the customer account hub.
    */
