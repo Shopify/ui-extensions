@@ -3,6 +3,9 @@ import {
   Dialog,
   FormattedTextField,
   Image,
+  Icon,
+  ScrollView,
+  Selectable,
   List,
   RadioButtonList,
   SearchBar,
@@ -16,6 +19,9 @@ import {
 
 export type BasicComponents =
   | typeof Button
+  | typeof ScrollView
+  | typeof Icon
+  | typeof Selectable
   | typeof Dialog
   | typeof FormattedTextField
   | typeof Image
