@@ -15,7 +15,7 @@ export interface NavigationApiContent {
    * which can then be used to determine which component should be mounted.
    * @param params the parameters you want to pass for the new screen.
    */
-  push(screenName: string, params: any): void;
+  push(screenName: string, params?: any): void;
 }
 
 /**
