@@ -3,27 +3,33 @@ import {RemoteRoot} from '@remote-ui/core';
 import {AppOverlaySchema} from '../../containers';
 import {RenderableExtensionCallback, StandardApi, ToastApi} from '../types';
 
-export type OrderDetailsExtensionPoint = 'Admin::OrderDetails';
+export type OrderDetailsExtensionPoint ='Admin::OrderDetails::Sidebar::RenderAfterNotes'
 
 export type OrderDetailsExtensionStandardApi<
   T extends OrderDetailsExtensionPoint
 > = StandardApi<T> & ToastApi;
 
-export type OrderDetailsExtensionApiTest = OrderDetailsExtensionStandardApi<
-  'Admin::OrderDetails'
+export interface OrderDetailsExtensionContainerApi {
+  saveMetafield(): void
+  done(): void
+}
+
+export type OrderDetailsExtensionApiRenderAfterNotes = OrderDetailsExtensionStandardApi<
+  'Admin::OrderDetails::Sidebar::RenderAfterNotes'
 > & {
+  container: OrderDetailsExtensionContainerApi;
   data: {
-    value: string;
+    metafields: Array<{ [key: string]: string }>;
   };
 };
 
 export interface OrderDetailsExtensionApi {
-  'Admin::OrderDetails': OrderDetailsExtensionApiTest;
+  'Admin::OrderDetails::Sidebar::RenderAfterNotes': OrderDetailsExtensionApiRenderAfterNotes;
 }
 
 export interface OrderDetailsExtensionPointCallback {
-  'Admin::OrderDetails': RenderableExtensionCallback<
-    OrderDetailsExtensionApi['Admin::OrderDetails'],
+  'Admin::OrderDetails::Sidebar::RenderAfterNotes': RenderableExtensionCallback<
+    OrderDetailsExtensionApi['Admin::OrderDetails::Sidebar::RenderAfterNotes'],
     RemoteRoot<AppOverlaySchema>
-  >;
+  >
 }
