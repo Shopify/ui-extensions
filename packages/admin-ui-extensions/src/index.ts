@@ -46,6 +46,7 @@ export type {
 export type {
   PlaygroundExtensionPoint,
   ProductSubscriptionExtensionPoint,
+  OrderDetailsExtensionPoint,
   ContainerAction,
   ExtensionResult,
   RenderableExtensionCallback,
