@@ -4,6 +4,9 @@ export type {BlockStackProps} from './components/BlockStack/BlockStack';
 export {Button} from './components/Button/Button';
 export type {ButtonProps} from './components/Button/Button';
 
+export {Checkbox} from './components/Checkbox/Checkbox';
+export type {CheckboxProps} from './components/Checkbox/Checkbox';
+
 export {Text} from './components/Text/Text';
 export type {TextProps} from './components/Text/Text';
 
