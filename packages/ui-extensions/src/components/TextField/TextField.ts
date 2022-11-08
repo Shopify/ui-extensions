@@ -38,6 +38,17 @@ export interface TextFieldProps {
    * will not be run.
    */
   onChange?(value: string): void;
+
+  /**
+   * Callback when the user makes any changes in the field. As noted in the documentation
+   * for `onChange`, you **must not** use this to update `state` — use the `onChange`
+   * callback for that purpose. Use the `onInput` prop when you need to do something
+   * as soon as the user makes a change, like clearing validation errors that apply to
+   * the field as soon as the user begins making the necessary adjustments.
+   *
+   * This callback is called with the current value of the field.
+   */
+  onInput?(value: string): void;
 }
 
 export const TextField = createRemoteComponent<'TextField', TextFieldProps>(
