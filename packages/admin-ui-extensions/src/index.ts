@@ -52,4 +52,5 @@ export type {
   ExtensionPoint,
   ExtensionApi,
   ExtensionPointCallback,
+  IcbExtensionExtensionPoint,
 } from './extension-points';
