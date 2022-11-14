@@ -15,6 +15,9 @@ export type {Spacing, StackProps} from './Stack';
 
 export type {VerticalSpacing, HorizontalSpacing} from './Spacing';
 
+export {Section} from './Section';
+export type {SectionProps} from './Section';
+
 export {FormattedTextField} from './FormattedTextField';
 export type {InputType, FormattedTextFieldProps} from './FormattedTextField';
 
