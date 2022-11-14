@@ -11,15 +11,15 @@ import {
 } from './identifiers/product_subscription';
 
 import {
-  IcbExtensionExtensionPoint,
-  IcbExtensionTimelineApi,
-  IcbExtensionExtensionPointCallback,
-} from './identifiers/icb_extension';
+  FulfillmentCardTimelineExtensionPoint,
+  FulfillmentCardTimelineTimelineApi,
+  FulfillmentCardTimelineExtensionPointCallback,
+} from './identifiers/fulfillmentcard_timeline';
 
 export type {
   PlaygroundExtensionPoint,
   ProductSubscriptionExtensionPoint,
-  IcbExtensionExtensionPoint,
+  FulfillmentCardTimelineExtensionPoint,
 };
 
 /*
@@ -34,13 +34,13 @@ export type {
 
 export type ExtensionPoint =
   | PlaygroundExtensionPoint
-  | IcbExtensionExtensionPoint
+  | FulfillmentCardTimelineExtensionPoint
   | ProductSubscriptionExtensionPoint;
 
 export type ExtensionApi = PlaygroundExtensionApi &
   ProductSubscriptionExtensionApi &
-  IcbExtensionTimelineApi;
+  FulfillmentCardTimelineTimelineApi;
 
 export type ExtensionPointCallback = PlaygroundExtensionPointCallback &
   ProductSubscriptionExtensionPointCallback &
-  IcbExtensionExtensionPointCallback;
+  FulfillmentCardTimelineExtensionPointCallback;

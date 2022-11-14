@@ -52,5 +52,5 @@ export type {
   ExtensionPoint,
   ExtensionApi,
   ExtensionPointCallback,
-  IcbExtensionExtensionPoint,
+  FulfillmentCardTimeline,
 } from './extension-points';
