@@ -14,6 +14,7 @@ import {
   Stepper,
   Tag,
   Text,
+  Section,
   TextField,
 } from '../components';
 
@@ -21,6 +22,7 @@ export type BasicComponents =
   | typeof Button
   | typeof ScrollView
   | typeof Icon
+  | typeof Section
   | typeof Selectable
   | typeof Dialog
   | typeof FormattedTextField
