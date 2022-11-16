@@ -117,4 +117,14 @@ export interface StandardApi {
     getExtensionFullPageUrl(relative: string): Promise<string>;
     navigate(to: string): Promise<void>;
   };
+
+  /**
+   * An authenticated redirect is a way to seamlessly integrate 3P apps
+   * built outside of self-serve into the self-serve experience. The 3P app accepts this data,
+   * bypasses any authentication screens on their side, and sends the user directly into
+   * their app to complete the task at hand. Once the task is complete, the app routes the user back into self-serve.
+   */
+  authenticatedRedirect: {
+    getStartUrl(): Promise<string>;
+  };
 }
