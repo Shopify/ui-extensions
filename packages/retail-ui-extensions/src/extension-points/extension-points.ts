@@ -1,6 +1,6 @@
 import type {BasicComponents, SmartGridComponents} from 'component-sets';
 import type {SmartGridApi, StandardApi} from '../extension-api';
-import {RenderExtension} from './render-extension';
+import type {RenderExtension} from './render-extension';
 
 export interface ExtensionPoints {
   'Retail::SmartGrid::Tile': RenderExtension<
