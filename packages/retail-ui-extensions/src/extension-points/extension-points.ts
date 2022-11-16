@@ -1,5 +1,5 @@
-import {BasicComponents, SmartGridComponents} from 'component-sets';
-import {SmartGridApi, StandardApi} from '../extension-api';
+import type {BasicComponents, SmartGridComponents} from 'component-sets';
+import type {SmartGridApi, StandardApi} from '../extension-api';
 import {RenderExtension} from './render-extension';
 
 export interface ExtensionPoints {
