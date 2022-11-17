@@ -12,7 +12,7 @@ import {
 
 import {
   FulfillmentCardTimelineExtensionPoint,
-  FulfillmentCardTimelineTimelineApi,
+  FulfillmentCardTimelineApi,
   FulfillmentCardTimelineExtensionPointCallback,
 } from './identifiers/fulfillmentcard_timeline';
 
@@ -39,7 +39,7 @@ export type ExtensionPoint =
 
 export type ExtensionApi = PlaygroundExtensionApi &
   ProductSubscriptionExtensionApi &
-  FulfillmentCardTimelineTimelineApi;
+  FulfillmentCardTimelineApi;
 
 export type ExtensionPointCallback = PlaygroundExtensionPointCallback &
   ProductSubscriptionExtensionPointCallback &
