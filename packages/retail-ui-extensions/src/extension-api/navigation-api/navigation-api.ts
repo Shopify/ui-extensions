@@ -7,6 +7,9 @@ export interface NavigationApiContent {
   /** The parameters the screen was displayed with */
   params?: any;
 
+  /** Pops the currently presented screen */
+  pop(): void;
+
   /** Dismisses the modal highest on the stack */
   dismiss(): void;
 
