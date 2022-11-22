@@ -30,4 +30,6 @@ export type {
   IconProps,
   IconName,
   VerticalSpacing,
+  Screen,
+  Navigator,
 } from '@shopify/retail-ui-extensions';
