@@ -16,6 +16,8 @@ import {
   Text,
   Section,
   TextField,
+  Screen,
+  Navigator,
 } from '../components';
 
 export type BasicComponents =
@@ -35,4 +37,6 @@ export type BasicComponents =
   | typeof Stepper
   | typeof Tag
   | typeof Text
-  | typeof TextField;
+  | typeof TextField
+  | typeof Screen
+  | typeof Navigator;
