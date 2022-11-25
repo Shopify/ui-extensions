@@ -16,6 +16,7 @@ export * from './Radio';
 export * from './ResourceItem';
 export * from './ResourceList';
 export * from './Select';
+export * from './SegmentationTemplate';
 export * from './Spinner';
 export * from './StackItem';
 export * from './Text';
