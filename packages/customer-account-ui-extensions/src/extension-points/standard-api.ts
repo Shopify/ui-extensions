@@ -127,4 +127,9 @@ export interface StandardApi {
   authenticatedRedirect: {
     getStartUrl(): Promise<string>;
   };
+
+  /**
+   * A list of feature names for features enabled on a shop
+   */
+  features: string[];
 }
