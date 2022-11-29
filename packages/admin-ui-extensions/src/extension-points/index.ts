@@ -11,6 +11,12 @@ import {
 } from './identifiers/order_details_ui';
 
 import {
+  DraftOrderDetailsExtensionPoint,
+  DraftOrderDetailsExtensionApi,
+  DraftOrderDetailsExtensionPointCallback,
+} from './identifiers/draft_order_details_ui';
+
+import {
   ProductSubscriptionExtensionPoint,
   ProductSubscriptionExtensionApi,
   ProductSubscriptionExtensionPointCallback,
@@ -20,6 +26,7 @@ export type {
   PlaygroundExtensionPoint,
   ProductSubscriptionExtensionPoint,
   OrderDetailsExtensionPoint,
+  DraftOrderDetailsExtensionPoint,
 };
 
 /*
@@ -35,12 +42,15 @@ export type {
 export type ExtensionPoint =
   | PlaygroundExtensionPoint
   | ProductSubscriptionExtensionPoint
-  | OrderDetailsExtensionPoint;
+  | OrderDetailsExtensionPoint
+  | DraftOrderDetailsExtensionPoint;
 
 export type ExtensionApi = PlaygroundExtensionApi &
   ProductSubscriptionExtensionApi &
-  OrderDetailsExtensionApi;
+  OrderDetailsExtensionApi &
+  DraftOrderDetailsExtensionApi;
 
 export type ExtensionPointCallback = PlaygroundExtensionPointCallback &
   ProductSubscriptionExtensionPointCallback &
-  OrderDetailsExtensionPointCallback;
+  OrderDetailsExtensionPointCallback &
+  DraftOrderDetailsExtensionPointCallback;
