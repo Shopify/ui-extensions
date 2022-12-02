@@ -3,11 +3,11 @@ import {argumentParserFor, parseDevelopmentServerConfig} from './utilities';
 import * as WebpackConfig from './webpack-config';
 
 describe('argumentParserFor', () => {
-  test('creates a function', () => {
+  it('creates a function', () => {
     expect(argumentParserFor([])).toBeInstanceOf(Function);
   });
 
-  test('creates a function for accessing individual arguments', () => {
+  it('creates a function for accessing individual arguments', () => {
     const fetch = argumentParserFor(['--store=shop1.myshopify.io']);
     expect(fetch('store')).toBe('shop1.myshopify.io');
   });
@@ -21,37 +21,37 @@ describe('parseDevelopmentServerConfig', () => {
     '--port=5678',
   ];
 
-  test('includes store', () => {
+  it('includes store', () => {
     expect(parseDevelopmentServerConfig(args)).toMatchObject({
       store: 'shop1.myshopify.io',
     });
   });
 
-  test('includes resource URL', () => {
+  it('includes resource URL', () => {
     expect(parseDevelopmentServerConfig(args)).toMatchObject({
       resourceUrl: '/cart/1:1',
     });
   });
 
-  test('includes public URL', () => {
+  it('includes public URL', () => {
     expect(parseDevelopmentServerConfig(args)).toMatchObject({
       publicUrl: 'https://example.com',
     });
   });
 
-  test('includes port', () => {
+  it('includes port', () => {
     expect(parseDevelopmentServerConfig(args)).toMatchObject({
       port: '5678',
     });
   });
 
-  test('includes filename', () => {
+  it('includes filename', () => {
     expect(parseDevelopmentServerConfig(args)).toMatchObject({
       filename: 'extension.js',
     });
   });
 
-  test('includes extensionPoint', () => {
+  it('includes extensionPoint', () => {
     expect(
       parseDevelopmentServerConfig([...args, '--extension-point=test']),
     ).toMatchObject({
@@ -60,19 +60,19 @@ describe('parseDevelopmentServerConfig', () => {
   });
 
   describe('scriptUrl', () => {
-    test('points to localhost:8910 when no public url and port is provided', () => {
+    it('points to localhost:8910 when no public url and port is provided', () => {
       expect(parseDevelopmentServerConfig([])).toMatchObject({
         scriptUrl: 'http://localhost:8910/assets/extension.js',
       });
     });
 
-    test('supports custom port', () => {
+    it('supports custom port', () => {
       expect(parseDevelopmentServerConfig(['--port=1234'])).toMatchObject({
         scriptUrl: 'http://localhost:1234/assets/extension.js',
       });
     });
 
-    test('points to public URL if one was provided and ignores port', () => {
+    it('points to public URL if one was provided and ignores port', () => {
       expect(
         parseDevelopmentServerConfig([
           '--port=1234',
@@ -85,7 +85,7 @@ describe('parseDevelopmentServerConfig', () => {
   });
 
   describe('permalinkUrl', () => {
-    test('returns undefined if resourceUrl, publicUrl or store are missing', () => {
+    it('returns undefined if resourceUrl, publicUrl or store are missing', () => {
       const argsWithoutShop = [
         '--resourceUrl=/cart/1:1',
         '--publicUrl=https://example.com',
@@ -113,7 +113,7 @@ describe('parseDevelopmentServerConfig', () => {
       );
     });
 
-    test('returns a permalinkUrl if all necessary command line flags are present', () => {
+    it('returns a permalinkUrl if all necessary command line flags are present', () => {
       const permalink = new URL('https://shop1.myshopify.com/cart/1:1');
       permalink.searchParams.append('dev', 'https://example.com/query');
       const configWithPermalink = {permalinkUrl: permalink.toString()};
@@ -130,7 +130,7 @@ describe('parseDevelopmentServerConfig', () => {
   });
 
   describe('passwordPageUrl', () => {
-    test('returns undefined if store flag is missing', () => {
+    it('returns undefined if store flag is missing', () => {
       const configWithoutPasswordPageUrl = {
         passwordPageUrl: undefined,
       };
@@ -139,7 +139,7 @@ describe('parseDevelopmentServerConfig', () => {
       );
     });
 
-    test('returns https://<store>/password if store flag is present', () => {
+    it('returns https://<store>/password if store flag is present', () => {
       const configWithPasswordPageUrl = {
         passwordPageUrl: 'https://shop1.myshopify.io/password',
       };
@@ -150,7 +150,7 @@ describe('parseDevelopmentServerConfig', () => {
   });
 
   describe('webpackConfiguration', () => {
-    test('runs in development mode', () => {
+    it('runs in development mode', () => {
       const createWebpackConfigurationSpy = jest.spyOn(
         WebpackConfig,
         'createWebpackConfiguration',
@@ -163,7 +163,7 @@ describe('parseDevelopmentServerConfig', () => {
       );
     });
 
-    test('correct output settings', () => {
+    it('outputs the asset to /assets/extension.js', () => {
       const createWebpackConfigurationSpy = jest.spyOn(
         WebpackConfig,
         'createWebpackConfiguration',
@@ -181,7 +181,7 @@ describe('parseDevelopmentServerConfig', () => {
       );
     });
 
-    test('websocket points to localhost:8910 by default', () => {
+    it('websocket points to localhost:8910 by default', () => {
       const createWebpackConfigurationSpy = jest.spyOn(
         WebpackConfig,
         'createWebpackConfiguration',
@@ -203,7 +203,7 @@ describe('parseDevelopmentServerConfig', () => {
       );
     });
 
-    test('websocket points to the public endpoint if --publicUrl was provided', () => {
+    it('websocket points to the public endpoint if --publicUrl was provided', () => {
       const createWebpackConfigurationSpy = jest.spyOn(
         WebpackConfig,
         'createWebpackConfiguration',

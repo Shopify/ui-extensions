@@ -9,7 +9,7 @@ export type ExtensionResult = Record<string, never> | void;
 
 export interface RenderExtension<
   Api,
-  AllowedComponents extends RemoteComponentType<string, any, any>
+  AllowedComponents extends RemoteComponentType<string, any, any>,
 > {
   (root: RemoteRoot<AllowedComponents, true>, api: Api): ExtensionResult;
 }

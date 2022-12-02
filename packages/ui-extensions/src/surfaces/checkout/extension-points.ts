@@ -16,6 +16,5 @@ export interface ExtensionPoints {
 
 export type ExtensionPoint = keyof ExtensionPoints;
 
-export type ExtensionForExtensionPoint<
-  T extends ExtensionPoint
-> = ExtensionPoints[T];
+export type ExtensionForExtensionPoint<T extends ExtensionPoint> =
+  ExtensionPoints[T];

@@ -24,7 +24,7 @@ export interface ExtensionRegistrationFunction<ExtensionPoints> {
  * provided by a version of `@remote-ui/core` that the extension controls.
  */
 export function createExtensionRegistrationFunction<
-  ExtensionPoints
+  ExtensionPoints,
 >(): ExtensionRegistrationFunction<ExtensionPoints> {
   const extensionWrapper: ExtensionRegistrationFunction<ExtensionPoints> = (
     _extensionPoint,

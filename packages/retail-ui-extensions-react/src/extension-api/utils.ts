@@ -6,7 +6,7 @@ import {
 import {ExtensionApiContext} from '../context';
 
 export function useExtensionApi<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): ApiForRenderExtension<ID> {
   const api = useContext(ExtensionApiContext);
 

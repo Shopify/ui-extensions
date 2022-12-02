@@ -77,9 +77,8 @@ import {
 render('Checkout::PostPurchase::Render', () => <App />);
 
 function App() {
-  const {extensionPoint} = useExtensionInput<
-    'Checkout::PostPurchase::Render'
-  >();
+  const {extensionPoint} =
+    useExtensionInput<'Checkout::PostPurchase::Render'>();
 
   return (
     <Button

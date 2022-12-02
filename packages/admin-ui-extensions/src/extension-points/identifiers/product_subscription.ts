@@ -25,53 +25,49 @@ export interface ProductSubscriptionModalContainerApi {
 }
 
 export type ProductSubscriptionStandardApi<
-  T extends ProductSubscriptionExtensionPoint
+  T extends ProductSubscriptionExtensionPoint,
 > = StandardApi<T> & ToastApi;
 
-export type ProductSubscriptionCreateApi = ProductSubscriptionStandardApi<
-  'Admin::Product::SubscriptionPlan::Create'
-> & {
-  container: ProductSubscriptionContainerApi;
-  data: {
-    productId: string;
-    variantId?: string;
+export type ProductSubscriptionCreateApi =
+  ProductSubscriptionStandardApi<'Admin::Product::SubscriptionPlan::Create'> & {
+    container: ProductSubscriptionContainerApi;
+    data: {
+      productId: string;
+      variantId?: string;
+    };
   };
-};
 
-export type ProductSubscriptionAddApi = ProductSubscriptionStandardApi<
-  'Admin::Product::SubscriptionPlan::Add'
-> & {
-  container: ProductSubscriptionContainerApi &
-    ProductSubscriptionModalContainerApi;
-  data: {
-    productId: string;
-    variantId?: string;
+export type ProductSubscriptionAddApi =
+  ProductSubscriptionStandardApi<'Admin::Product::SubscriptionPlan::Add'> & {
+    container: ProductSubscriptionContainerApi &
+      ProductSubscriptionModalContainerApi;
+    data: {
+      productId: string;
+      variantId?: string;
+    };
   };
-};
 
-export type ProductSubscriptionEditApi = ProductSubscriptionStandardApi<
-  'Admin::Product::SubscriptionPlan::Edit'
-> & {
-  container: ProductSubscriptionContainerApi;
-  data: {
-    sellingPlanGroupId: string;
-    productId: string;
-    variantId?: string;
+export type ProductSubscriptionEditApi =
+  ProductSubscriptionStandardApi<'Admin::Product::SubscriptionPlan::Edit'> & {
+    container: ProductSubscriptionContainerApi;
+    data: {
+      sellingPlanGroupId: string;
+      productId: string;
+      variantId?: string;
+    };
   };
-};
 
-export type ProductSubscriptionRemoveApi = ProductSubscriptionStandardApi<
-  'Admin::Product::SubscriptionPlan::Remove'
-> & {
-  container: ProductSubscriptionContainerApi &
-    ProductSubscriptionModalContainerApi;
-  data: {
-    sellingPlanGroupId: string;
-    productId: string;
-    variantId?: string;
-    variantIds: string[];
+export type ProductSubscriptionRemoveApi =
+  ProductSubscriptionStandardApi<'Admin::Product::SubscriptionPlan::Remove'> & {
+    container: ProductSubscriptionContainerApi &
+      ProductSubscriptionModalContainerApi;
+    data: {
+      sellingPlanGroupId: string;
+      productId: string;
+      variantId?: string;
+      variantIds: string[];
+    };
   };
-};
 
 export interface ProductSubscriptionExtensionApi {
   'Admin::Product::SubscriptionPlan::Create': ProductSubscriptionCreateApi;

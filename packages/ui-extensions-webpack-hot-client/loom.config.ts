@@ -7,4 +7,3 @@ export default createPackage((pkg) => {
   pkg.entry({name: 'worker', root: './src/worker.ts'});
   pkg.use(defaultProjectPlugin());
 });
-

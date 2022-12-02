@@ -8,4 +8,3 @@ export default createPackage((pkg) => {
   pkg.entry({name: 'checkout', root: './src/surfaces/checkout/index.ts'});
   pkg.use(defaultProjectPlugin());
 });
-

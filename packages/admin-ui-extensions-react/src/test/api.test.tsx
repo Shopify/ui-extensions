@@ -26,7 +26,7 @@ describe('api', () => {
   it('render calls remote render with generated element', () => {
     const element = <div />;
 
-    const root = ({mount: jest.fn()} as unknown) as RemoteRoot;
+    const root = {mount: jest.fn()} as unknown as RemoteRoot;
     const api = {locale: 'en'} as any;
 
     const createdElement = <p />;

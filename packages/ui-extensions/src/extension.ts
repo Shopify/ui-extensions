@@ -12,7 +12,7 @@ export interface RenderExtensionConnection<
   AllowedComponents extends RemoteComponentType<
     string,
     any
-  > = RemoteComponentType<any, any>
+  > = RemoteComponentType<any, any>,
 > {
   channel: RemoteChannel;
   components: AllowedComponents[];
@@ -23,7 +23,7 @@ export interface RenderExtension<
   AllowedComponents extends RemoteComponentType<
     string,
     any
-  > = RemoteComponentType<any, any>
+  > = RemoteComponentType<any, any>,
 > {
   (
     connection: RenderExtensionConnection<AllowedComponents>,
@@ -36,7 +36,7 @@ export interface RenderExtensionWithRemoteRoot<
   AllowedComponents extends RemoteComponentType<
     string,
     any
-  > = RemoteComponentType<any, any>
+  > = RemoteComponentType<any, any>,
 > {
   (
     root: RemoteRoot<AllowedComponents, AllowedComponents>,

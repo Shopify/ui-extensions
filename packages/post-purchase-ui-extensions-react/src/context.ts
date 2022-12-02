@@ -5,6 +5,5 @@ import {
   RenderExtensionPoint,
 } from '@shopify/post-purchase-ui-extensions';
 
-export const ExtensionInputContext = createContext<InputForRenderExtension<
-  RenderExtensionPoint
-> | null>(null);
+export const ExtensionInputContext =
+  createContext<InputForRenderExtension<RenderExtensionPoint> | null>(null);

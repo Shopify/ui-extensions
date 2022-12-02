@@ -8,9 +8,8 @@ export function skypackUrlResolve() {
   return {
     async resolveId(source: string) {
       const convertedSource = await convertToSkypackSource(source);
-      const maybeAbsoluteUrl = convertSkypackPathsToAbsoluteUrls(
-        convertedSource,
-      );
+      const maybeAbsoluteUrl =
+        convertSkypackPathsToAbsoluteUrls(convertedSource);
       const url = parseURL(maybeAbsoluteUrl);
       return url && isValidURL(url) ? url.href : null;
     },

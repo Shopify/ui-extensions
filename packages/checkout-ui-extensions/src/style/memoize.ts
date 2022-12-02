@@ -151,7 +151,7 @@ export function memoize<F extends (...args: any[]) => any>(
   function memoized() {
     let value = cache.get(arguments);
     if (value === NOT_FOUND) {
-      // @ts-ignore
+      // @ts-expect-error - we know that arguments is an array-like object
       value = func.apply(null, arguments);
 
       if (resultEqualityCheck) {

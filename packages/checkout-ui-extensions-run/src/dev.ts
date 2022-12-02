@@ -22,13 +22,8 @@ const PUBLIC_PATH = '/assets/';
 export async function dev(...args: string[]) {
   const extension = loadExtension();
   const config = await parseDevelopmentServerConfig(args);
-  const {
-    extensionPoint,
-    filename,
-    port,
-    scriptUrl,
-    webpackConfiguration,
-  } = config;
+  const {extensionPoint, filename, port, scriptUrl, webpackConfiguration} =
+    config;
   const compiler = webpack(webpackConfiguration);
 
   const firstCompilePromise = new Promise<void>((resolve) => {

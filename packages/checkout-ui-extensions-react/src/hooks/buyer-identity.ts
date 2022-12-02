@@ -12,7 +12,7 @@ import {useSubscription} from './subscription';
  * `undefined` otherwise.
  */
 export function useCustomer<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
   const buyerIdentity = useExtensionApi<ID>().buyerIdentity;
 

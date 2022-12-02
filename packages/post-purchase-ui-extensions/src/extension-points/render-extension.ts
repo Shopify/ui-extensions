@@ -19,12 +19,13 @@ interface RenderResult<Input> {
  */
 export interface RenderExtension<
   Input,
-  AllowedComponents extends RemoteComponentType<string, any, any>
+  AllowedComponents extends RemoteComponentType<string, any, any>,
 > {
   /**
    * Input type for RenderExtension.
    */
-  (root: RemoteRoot<AllowedComponents, true>, input: Input): RenderResult<
-    Input
-  > | void;
+  (
+    root: RemoteRoot<AllowedComponents, true>,
+    input: Input,
+  ): RenderResult<Input> | void;
 }

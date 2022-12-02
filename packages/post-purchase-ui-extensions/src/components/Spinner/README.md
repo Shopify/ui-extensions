@@ -8,9 +8,10 @@ the animated loading indicator when buyers prefers reduced motion. If not includ
 it will use the loading indicator for all buyers.
 
 ## Props
+
 optional = ?
 
-| Name | Type | Description |
-| --- | --- | --- |
-| size? | <code>"small" &#124; "large"</code> | Adjust the size. If not specified, it will use the default size which is about twice as big as the base text.  |
-| color? | <code>"inherit"</code> | Specify that the Spinner will inherit its color from its parent. If not specified, it will take the `interactive` color from the theme.  |
+| Name   | Type                                | Description                                                                                                                             |
+| ------ | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| size?  | <code>"small" &#124; "large"</code> | Adjust the size. If not specified, it will use the default size which is about twice as big as the base text.                           |
+| color? | <code>"inherit"</code>              | Specify that the Spinner will inherit its color from its parent. If not specified, it will take the `interactive` color from the theme. |
