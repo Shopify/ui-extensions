@@ -17,16 +17,19 @@
   },
   "exports": {
     ".": {
+      "types": "./build/ts/index.d.ts",
       "esnext": "./index.esnext",
       "import": "./index.mjs",
       "require": "./index.js"
     },
     "./admin": {
+      "types": "./build/ts/admin/index.d.ts",
       "esnext": "./admin.esnext",
       "import": "./admin.mjs",
       "require": "./admin.js"
     },
     "./checkout": {
+      "types": "./build/ts/checkout/index.d.ts",
       "esnext": "./checkout.esnext",
       "import": "./checkout.mjs",
       "require": "./checkout.js"
