@@ -23,15 +23,6 @@ module.exports = {
 
     // This rule is just bad
     '@typescript-eslint/consistent-indexed-object-style': 'off',
-
-    // // Shopify configuration messes up on comments at the start of blocks
-    // 'lines-around-comment': 'off',
-
-    // // Only a problem in extremely outdated browsers ("IE 8 and earlier")
-    // 'no-catch-shadow': 'off',
-
-    // // This rule is buggy with optional chaining
-    // 'babel/no-unused-expressions': 'off',
   },
   overrides: [
     {
