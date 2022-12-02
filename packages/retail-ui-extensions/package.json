@@ -1,7 +1,7 @@
 {
   "name": "@shopify/retail-ui-extensions",
   "description": "The API for UI Extensions that run in Shopify Point of Sale",
-  "version": "0.32.0",
+  "version": "0.33.0",
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
