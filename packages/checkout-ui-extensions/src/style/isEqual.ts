@@ -24,8 +24,8 @@ export function isEqual<
         );
       }
     } else {
-      const firstEntries = Object.entries(first);
-      const secondEntries = Object.entries(second);
+      const firstEntries = Object.entries(first!);
+      const secondEntries = Object.entries(second!);
       if (firstEntries.length === secondEntries.length) {
         return firstEntries.every(([key]) =>
           isEqual(

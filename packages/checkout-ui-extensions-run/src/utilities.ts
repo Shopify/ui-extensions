@@ -86,14 +86,14 @@ export function loadExtension(): Extension {
       };
 }
 
-function readConfig() {
+function readConfig():
+  | CheckoutExtensionConfig
+  | PostPurchaseExtensionConfig
+  | undefined {
   const configPath = resolve(join(process.cwd(), 'extension.config.yml'));
   if (!existsSync(configPath)) return;
 
-  const config = loadYaml(readFileSync(configPath, 'utf8')) as
-    | CheckoutExtensionConfig
-    | PostPurchaseExtensionConfig
-    | undefined;
+  const config = loadYaml(readFileSync(configPath, 'utf8')) as any;
 
   return config && camelcaseKeys(config, {deep: true});
 }
