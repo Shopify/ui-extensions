@@ -128,13 +128,13 @@ export type AutocompleteField =
 
 export type Breakpoint = 'base' | 'small' | 'medium' | 'large';
 
-export type ShorthandProperty<Property> =
-  | [Property, Property]
-  | [Property, Property, Property, Property];
+export type ShorthandProperty<T> =
+  | [T, T]
+  | [T, T, T, T];
 
-export type MaybeShorthandProperty<Property> =
-  | Property
-  | ShorthandProperty<Property>;
+export type MaybeShorthandProperty<T> =
+  | T
+  | ShorthandProperty<T>;
 
 export type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
 export type BorderStyle = 'base' | 'dotted' | 'none';

@@ -301,8 +301,14 @@ export function unionTypeTable(
       stringLength: () => 3,
     });
   } else {
+    // get rid of `params` property to render generics as is
+    const cleanValue = {
+      kind: 'UnionType',
+      types: value.types,
+    };
+
     markdown += `<code>${renderUnionType(
-      value,
+      cleanValue,
       exports,
       dir,
       additionalPropsTables,
@@ -474,7 +480,7 @@ function propType(
           ),
         );
 
-        return anchorLink(value.name);
+        return `${anchorLink(value.name)}${params}`;
       }
 
       const values = renderUnionType(
@@ -752,7 +758,7 @@ export function mkdir(directory: any) {
 }
 
 function findRepeatingTypes(obj: Type, exports: Node[]) {
-  const occurences: any = {};
+  const occurrences: any = {};
 
   function traverse(obj?: Type, stash?: any): any {
     if (!obj) {
@@ -779,8 +785,8 @@ function findRepeatingTypes(obj: Type, exports: Node[]) {
           return traverse(stash);
         }
       } else {
-        occurences[obj.name] = occurences[obj.name] || 0;
-        occurences[obj.name]++;
+        occurrences[obj.name] = occurrences[obj.name] || 0;
+        occurrences[obj.name]++;
       }
     }
 
@@ -817,8 +823,8 @@ function findRepeatingTypes(obj: Type, exports: Node[]) {
 
   const repeatingTypes = [];
 
-  for (const name in occurences) {
-    if (occurences[name] > 1) {
+  for (const name in occurrences) {
+    if (occurrences[name] > 1) {
       repeatingTypes.push(name);
     }
   }
