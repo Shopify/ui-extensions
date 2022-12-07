@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {
   MaybeConditionalStyle,
+  MaybeResponsiveConditionalStyle,
   ResolutionCondition,
   ViewportSizeCondition,
   AtLeastOne,
@@ -57,7 +58,7 @@ export interface ImageProps extends BorderProps {
    * Use if the image is not displayed at its intrinsic size to maintain
    * the aspect ratio.
    */
-  fit?: MaybeConditionalStyle<Fit>;
+  fit?: MaybeResponsiveConditionalStyle<Fit>;
   /**
    * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help buyers

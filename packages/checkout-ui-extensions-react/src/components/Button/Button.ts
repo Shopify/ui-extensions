@@ -6,4 +6,6 @@ import {
 
 export type ButtonProps = ReactPropsFromRemoteComponentType<typeof BaseButton>;
 
-export const Button = createRemoteReactComponent(BaseButton);
+export const Button = createRemoteReactComponent(BaseButton, {
+  fragmentProps: ['overlay'],
+});

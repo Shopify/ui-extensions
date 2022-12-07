@@ -10,6 +10,7 @@ export type {
   ConditionalValue,
   InteractiveConditions,
   MaybeConditionalStyle,
+  MaybeResponsiveConditionalStyle,
   ResolutionCondition,
   ViewportSizeCondition,
 } from './types';

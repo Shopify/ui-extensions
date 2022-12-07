@@ -32,7 +32,11 @@ extend('Checkout::Dynamic::Render', (root) => {
     ],
   );
   const spacer = root.createComponent(BlockSpacer, {spacing: 'base'});
-  const button = root.createComponent(Button, {submit: true}, 'Submit');
+  const button = root.createComponent(
+    Button,
+    {accessibilityRole: 'submit'},
+    'Submit',
+  );
 
   const form = root.createComponent(
     Form,

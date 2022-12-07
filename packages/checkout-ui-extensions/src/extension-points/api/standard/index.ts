@@ -90,6 +90,20 @@ export interface Extension {
    * Merchants control whether your extension [can block checkout progress](https://shopify.dev/api/checkout-extensions/checkout/configuration#block-progress)
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
+
+  /**
+   * Information about the editor where the extension is being rendered.
+   *
+   * The value is undefined if the extension is not rendering in an editor.
+   */
+  editor?: Editor;
+}
+
+export interface Editor {
+  /**
+   * Indicates whether the extension is rendering in the checkout editor.
+   */
+  type: 'checkout';
 }
 
 /**
@@ -590,13 +604,22 @@ export interface StandardApi<
   applyCartLinesChange(change: CartLineChange): Promise<CartLineChangeResult>;
 
   /**
+   * A list of discount codes currently applied to the checkout
+   */
+  discountCodes: StatefulRemoteSubscribable<CartDiscountCode[]>;
+
+  /**
+   * Performs an update on the discount codes.
+   * It resolves when the new discount codes have been negotiated and results in an update
+   * to the value retrieved through the `discountCodes` property.
+   */
+  applyDiscountCodeChange(
+    change: DiscountCodeChange,
+  ): Promise<DiscountCodeChangeResult>;
+
+  /**
    * The metafields requested in the `shopify.ui.extension.toml` file. These metafields are
    * updated when there's a change in the merchandise items being purchased by the customer.
-   *
-   * NOTE: There is a delay between the merchandise items updating and receiving the
-   * updated metafield values. This is a temporary limitation and should get resolved when
-   * this API goes public such that expected behavior would be that the metafields data
-   * are synchronous with the merchandise items' updates.
    */
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 
@@ -631,8 +654,29 @@ export interface BuyerIdentity {
    * The customer account from the buyer. This value will update when there's a
    * change in the account. The value is undefined if the buyer isn’t a known customer
    * for this shop.
+   *
+   * Protected resource: Requires approval to access protected customer data.
+   * More info - https://shopify.dev/apps/store/data-protection/protected-customer-data
    */
   customer: StatefulRemoteSubscribable<Customer | undefined>;
+
+  /**
+   * The email address of the buyer that is interacting with the cart. This value will update when there's a
+   * change in the checkout formulary. The value is undefined if no permission given.
+   *
+   * Protected resource: Requires approval to access protected customer data (Level 2).
+   * More info - https://shopify.dev/apps/store/data-protection/protected-customer-data
+   */
+  email: StatefulRemoteSubscribable<string | undefined>;
+
+  /**
+   * The phone number of the buyer that is interacting with the cart. This value will update when there's a
+   * change in the checkout formulary. The value is undefined if no permission given.
+   *
+   * Protected resource: Requires approval to access protected customer data (Level 2).
+   * More info - https://shopify.dev/apps/store/data-protection/protected-customer-data
+   */
+  phone: StatefulRemoteSubscribable<string | undefined>;
 }
 
 export interface Shop {
@@ -1020,6 +1064,52 @@ export interface CartLineUpdateChange {
    * The new attributes for the line item.
    */
   attributes?: Attribute[];
+}
+
+export interface CartDiscountCode {
+  /**
+   * The code for the discount
+   */
+  code: string;
+}
+
+export type DiscountCodeChange = DiscountCodeAddChange;
+
+export type DiscountCodeChangeResult =
+  | DiscountCodeChangeResultSuccess
+  | DiscountCodeChangeResultError;
+
+export interface DiscountCodeAddChange {
+  /**
+   * The type of the `DiscountCodeChange` API.
+   */
+  type: 'addDiscountCode';
+
+  /**
+   * The code for the discount
+   */
+  code: string;
+}
+
+export interface DiscountCodeChangeResultSuccess {
+  /**
+   * Indicates that the discount code change was applied successfully.
+   */
+  type: 'success';
+}
+
+export interface DiscountCodeChangeResultError {
+  /**
+   * Indicates that the discount code change failed.
+   */
+  type: 'error';
+
+  /**
+   * A message that explains the error. This message is useful for debugging.
+   * It is **not** localized, and therefore should not be presented directly
+   * to the buyer.
+   */
+  message: string;
 }
 
 type InterceptorResult = InterceptorResultAllow | InterceptorResultBlock;

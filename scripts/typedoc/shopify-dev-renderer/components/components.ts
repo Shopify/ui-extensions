@@ -29,7 +29,7 @@ export interface Content {
   description?: string;
   /** If you want to use a source markdown file for the contents instead of an auto-generated page. **Warning**: the table of contents for the components will not be generated in this case. */
   sourceFile?: string;
-  sourceFileStringReplacements?: StringReplacments[];
+  sourceFileStringReplacements?: StringReplacements[];
 }
 
 interface Options {
@@ -43,7 +43,7 @@ interface Options {
   conditionalDocs?: PropTypeDocumentation[];
 }
 
-interface StringReplacments {
+interface StringReplacements {
   find: RegExp;
   replaceWith: (_match: string, p1: string) => string;
 }
@@ -205,7 +205,7 @@ export async function components(
             ).length > 0
           ) {
             markdown = markdown.replace(
-              /ConditionalStyle/g,
+              /(MaybeResponsive)?ConditionalStyle/g,
               '<a href="#conditional-styles">ConditionalStyle</a>',
             );
             markdown = markdown.replace(/, AcceptedConditions/g, '');
@@ -325,13 +325,35 @@ async function buildComponentGraph(componentIndex: string) {
 
   const nodes: Node[] = [];
 
-  graph.forEach((value: any) => {
-    value.locals.forEach((value: any, key: string) => {
+  graph.forEach((child: any) => {
+    child.locals.forEach((value: any, key: string) => {
       if (value.kind !== 'Imported') {
         if (value.name == null) {
           value.name = key;
         }
-        nodes.push({value, module: undefined});
+
+        if (value.properties?.length === 0) {
+          // console.log(value)
+        }
+
+        if (value.name === key) {
+          nodes.push({value, module: undefined});
+        } else {
+          const reassigned = value.name ? child.locals.get(value.name) : value;
+
+          if (
+            reassigned &&
+            (reassigned.kind !== 'InterfaceType' ||
+              reassigned.properties.length)
+          ) {
+            console.log('pushing', reassigned);
+
+            nodes.push({
+              value: {...reassigned, name: key},
+              module: undefined,
+            });
+          }
+        }
       }
     });
   });

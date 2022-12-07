@@ -1,4 +1,6 @@
-import {MaybeConditionalStyle} from '../style';
+import {RemoteFragment} from '@remote-ui/core';
+
+import {MaybeConditionalStyle, MaybeResponsiveConditionalStyle} from '../style';
 
 /**
  * A descriptor for selecting the data a field would like to receive during
@@ -128,13 +130,11 @@ export type AutocompleteField =
 
 export type Breakpoint = 'base' | 'small' | 'medium' | 'large';
 
-export type ShorthandProperty<T> =
-  | [T, T]
-  | [T, T, T, T];
+export type Display = 'block' | 'inline';
 
-export type MaybeShorthandProperty<T> =
-  | T
-  | ShorthandProperty<T>;
+export type ShorthandProperty<T> = [T, T] | [T, T, T, T];
+
+export type MaybeShorthandProperty<T> = T | ShorthandProperty<T>;
 
 export type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
 export type BorderStyle = 'base' | 'dotted' | 'none';
@@ -185,7 +185,7 @@ export interface BorderProps {
    *
    * - `['base', 'none', 'dotted', 'base']` means blockStart border style is `base`, inlineEnd border style is `none`, blockEnd border style is `dotted` and  blockStart border style is `base`
    */
-  border?: MaybeConditionalStyle<MaybeShorthandProperty<BorderStyle>>;
+  border?: MaybeResponsiveConditionalStyle<MaybeShorthandProperty<BorderStyle>>;
 
   /**
    * Adjust the border width.
@@ -200,7 +200,9 @@ export interface BorderProps {
    *
    * - `['base', 'medium', 'medium', 'base']` means blockStart border width is `base`, inlineEnd border width is `medium`, blockEnd border width is `medium` and  blockStart border width is `base`
    */
-  borderWidth?: MaybeConditionalStyle<MaybeShorthandProperty<BorderWidth>>;
+  borderWidth?: MaybeResponsiveConditionalStyle<
+    MaybeShorthandProperty<BorderWidth>
+  >;
 
   /**
    * Adjust the border radius.
@@ -215,7 +217,9 @@ export interface BorderProps {
    *
    * - `['base', 'none', 'tight', 'base']` means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`
    */
-  borderRadius?: MaybeConditionalStyle<MaybeShorthandProperty<BorderRadius>>;
+  borderRadius?: MaybeResponsiveConditionalStyle<
+    MaybeShorthandProperty<BorderRadius>
+  >;
 }
 
 export interface SizingProps {
@@ -228,8 +232,10 @@ export interface SizingProps {
    *
    * `fill`: takes all the available space.
    */
-  // eslint-disable-next-line prettier/prettier
-  maxBlockSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
+  maxBlockSize?: MaybeResponsiveConditionalStyle<
+    // eslint-disable-next-line prettier/prettier
+    number | `${number}%` | 'fill'
+  >;
 
   /**
    * Adjust the maximum inline size.
@@ -240,7 +246,9 @@ export interface SizingProps {
    *
    * `fill`: takes all the available space.
    */
-  maxInlineSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
+  maxInlineSize?: MaybeResponsiveConditionalStyle<
+    number | `${number}%` | 'fill'
+  >;
 
   /**
    * Adjust the minimum inline size.
@@ -251,7 +259,9 @@ export interface SizingProps {
    *
    * `fill`: takes all the available space.
    */
-  minInlineSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
+  minInlineSize?: MaybeResponsiveConditionalStyle<
+    number | `${number}%` | 'fill'
+  >;
 
   /**
    * Adjust the block size.
@@ -262,7 +272,9 @@ export interface SizingProps {
    *
    * `fill`: takes all the available space.
    */
-  minBlockSize?: MaybeConditionalStyle<number | `${number}%` | 'fill'>;
+  minBlockSize?: MaybeResponsiveConditionalStyle<
+    number | `${number}%` | 'fill'
+  >;
 }
 
 export interface SpacingProps {
@@ -280,7 +292,7 @@ export interface SpacingProps {
    *
    * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
    */
-  padding?: MaybeConditionalStyle<MaybeShorthandProperty<Spacing>>;
+  padding?: MaybeResponsiveConditionalStyle<MaybeShorthandProperty<Spacing>>;
 }
 
 export type AccessibilityRole =
@@ -321,6 +333,8 @@ export type ViewLikeAccessibilityRole =
   | NonPresentationalAccessibilityRole
   | [NonPresentationalAccessibilityRole, NonPresentationalAccessibilityRole];
 
+export type ButtonAccessibilityRole = 'button' | 'submit';
+
 export type TextAccessibilityRole =
   /**
    * Indicate the text is contact information. Typically used for addresses.
@@ -331,12 +345,12 @@ export type TextAccessibilityRole =
    */
   | 'deletion'
   /**
-   * Indicate the text is marked or highlighted and relevant to the buyer's current action.
+   * Indicate the text is marked or highlighted and relevant to the buyer’s current action.
    * Typically used to indicate the characters that matched a search query.
    */
   | 'marking'
   /**
-   * Indicate the text is an abbreviation or acronym. Use the “for” option to
+   * Indicate the text is an abbreviation or acronym. Use the `for` option to
    * provide a description of the abbreviation.
    */
   | {type: 'abbreviation'; for?: string}
@@ -345,9 +359,9 @@ export type TextAccessibilityRole =
    */
   | {type: 'directional-override'; direction: 'ltr' | 'rtl'}
   /**
-   * Indicate the text is a date, a time or a duration. Use the “machineReadable” option
+   * Indicate the text is a date, a time or a duration. Use the `machineReadable` option
    * to help browsers, tools or software understand the human-readable date. The valid
-   * format for “machineReadable” can be found here:
+   * format for `machineReadable` can be found here:
    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#Valid_datetime_Values
    */
   | {type: 'datetime'; machineReadable?: string}
@@ -374,7 +388,7 @@ export type TextAccessibilityRole =
 
 export type Status =
   /**
-   * Use to convey general information or actions that aren't critical or tied to
+   * Use to convey general information or actions that aren’t critical or tied to
    * a particular action.
    */
   | 'info'
@@ -406,13 +420,7 @@ export type Size =
   | 'extraLarge'
   | 'fill';
 
-export type Spacing =
-  | 'none'
-  | 'extraTight'
-  | 'tight'
-  | 'base'
-  | 'loose'
-  | 'extraLoose';
+export type Spacing = 'none' | 'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose';
 
 export type Alignment = 'start' | 'center' | 'end';
 export type InlineAlignment = 'start' | 'center' | 'end';
@@ -465,18 +473,21 @@ export type Columns = GridItemSize[] | GridItemSize;
 export type Rows = GridItemSize[] | GridItemSize;
 
 /**
- * Use to emphasize a word or a group of words compared to other nearby text.
+ * Use to emphasize a word or a group of words.
  */
 export type Emphasis =
   /**
    * Set the text in italic.
    *
-   * Combine with an accessibilyRole of 'offset' or 'stress'
+   * Combine with an `accessibilityRole` of `offset` or `stress`
    * to add more meaning to the text.
    */
   | 'italic'
   /**
    * Set the text in bold.
+   *
+   * Combine with an `accessibilityRole` of `strong`
+   * to add more meaning to the text.
    */
   | 'bold';
 
@@ -534,4 +545,11 @@ export interface VisibilityProps {
    * Hidden elements don't take any visual space contrary to CSS visibility: hidden;
    */
   visibility?: Visibility;
+}
+
+export interface OverlayActivatorProps {
+  /**
+   * An overlay component to render when the user interacts with the component.
+   */
+  overlay?: RemoteFragment;
 }

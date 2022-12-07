@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {MaybeConditionalStyle} from '../../style';
+import type {MaybeResponsiveConditionalStyle} from '../../style';
 import type {
   BlockAlignment,
   BorderProps,
@@ -36,7 +36,7 @@ export interface GridProps extends BorderProps, SizingProps, SpacingProps {
    *
    * @defaultValue 'fill'
    */
-  columns?: MaybeConditionalStyle<Columns>;
+  columns?: MaybeResponsiveConditionalStyle<Columns>;
   /**
    * Sizes for each row of the layout.
    *
@@ -58,21 +58,25 @@ export interface GridProps extends BorderProps, SizingProps, SpacingProps {
    *
    * @defaultValue 'fill'
    */
-  rows?: MaybeConditionalStyle<Rows>;
+  rows?: MaybeResponsiveConditionalStyle<Rows>;
   /**
-   * Adjust spacing between children
+   * Adjust spacing between children.
+   *
+   * - `base` means the space between rows and columns is `base`.
+   *
+   * - [`base`, `none`] means the space between rows is `base`, space between columns is `none`.
    *
    * @defaultValue 'none'
    **/
-  spacing?: MaybeConditionalStyle<Spacing>;
+  spacing?: MaybeResponsiveConditionalStyle<Spacing | [Spacing, Spacing]>;
   /**
-   * Position children along the cross axis
+   * Position children along the cross axis.
    */
-  blockAlignment?: MaybeConditionalStyle<BlockAlignment>;
+  blockAlignment?: MaybeResponsiveConditionalStyle<BlockAlignment>;
   /**
-   * Position children along the main axis
+   * Position children along the main axis.
    */
-  inlineAlignment?: MaybeConditionalStyle<InlineAlignment>;
+  inlineAlignment?: MaybeResponsiveConditionalStyle<InlineAlignment>;
   /**
    * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help buyers

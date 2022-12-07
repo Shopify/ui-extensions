@@ -68,9 +68,19 @@ Checkout components are designed to be flexible, enabling you to layer and mix t
   </div>
 
   <div class="checkout-component-grid-item">
-    <h3 class="checkout-component-grid-item_title">Other</h3>
+    <h3 class="checkout-component-grid-item_title">Actions</h3>
       <p><code><a href="../src/components/Button">Button</a></code></p>
       <p><code><a href="../src/components/Link">Link</a></code></p>
+      <p><code><a href="../src/components/Pressable">Pressable</a></code></p>
+  </div>
+
+  <div class="checkout-component-grid-item">
+    <h3 class="checkout-component-grid-item_title">Overlays</h3>
+      <p><code><a href="../src/components/Tooltip">Tooltip</a></code></p>
+  </div>
+
+  <div class="checkout-component-grid-item">
+    <h3 class="checkout-component-grid-item_title">Other</h3>
       <p><code><a href="../src/components/List">List</a></code> and <code><a href="../src/components/ListItem">ListItem</a></code></p>
       <p><code><a href="../src/components/Tag">Tag</a></code></p>
   </div>

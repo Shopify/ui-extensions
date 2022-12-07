@@ -1,20 +1,22 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+import type {MaybeResponsiveConditionalStyle} from '../../style';
 import type {
   BorderProps,
+  SizingProps,
   SpacingProps,
   ViewLikeAccessibilityRole,
 } from '../shared';
 
-export interface GridItemProps extends BorderProps, SpacingProps {
+export interface GridItemProps extends BorderProps, SizingProps, SpacingProps {
   /**
    * Number of columns the item will span across
    */
-  columnSpan?: number;
+  columnSpan?: MaybeResponsiveConditionalStyle<number>;
   /**
    * Number of rows the item will span across
    */
-  rowSpan?: number;
+  rowSpan?: MaybeResponsiveConditionalStyle<number>;
   /**
    * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help buyers

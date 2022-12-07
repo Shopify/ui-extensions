@@ -1,21 +1,20 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {MaybeConditionalStyle} from '../../style';
-import {
+import {MaybeResponsiveConditionalStyle} from '../../style';
+import type {
+  BlockAlignment,
   BorderProps,
+  InlineAlignment,
   SizingProps,
   SpacingProps,
   VisibilityProps,
-} from '../shared';
-import type {
-  BlockAlignment,
-  InlineAlignment,
+  Display,
   MultiPick,
   ViewLikeAccessibilityRole,
 } from '../shared';
 
 type AccessibilityVisibility = 'hidden';
-type Display = 'block' | 'inline';
+
 type Opacity = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 
 export type PositionType = 'absolute' | 'relative' | 'sticky';
@@ -163,21 +162,27 @@ export interface ViewProps
   /**
    * Changes how the View is positioned.
    */
-  position?: MaybeConditionalStyle<Position>;
+  position?: MaybeResponsiveConditionalStyle<Position>;
   /**
    * Specifies a two-dimensional translation of the View.
    */
-  translate?: MaybeConditionalStyle<Translate>;
+  translate?: MaybeResponsiveConditionalStyle<Translate>;
   /**
    * Position children along the cross axis
    */
-  blockAlignment?: MaybeConditionalStyle<
+  blockAlignment?: MaybeResponsiveConditionalStyle<
     Extract<BlockAlignment, 'start' | 'center' | 'end'>
   >;
   /**
    * Position children along the main axis
    */
-  inlineAlignment?: MaybeConditionalStyle<InlineAlignment>;
+  inlineAlignment?: MaybeResponsiveConditionalStyle<InlineAlignment>;
+  /**
+   * Adjust the inline size.
+   *
+   * `fill`: takes all the available space.
+   */
+  inlineSize?: MaybeResponsiveConditionalStyle<'fill'>;
 }
 
 /**

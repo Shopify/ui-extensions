@@ -8,7 +8,7 @@ import type {
   SpacingProps,
   ViewLikeAccessibilityRole,
 } from '../shared';
-import {MaybeConditionalStyle} from '../../style';
+import {MaybeResponsiveConditionalStyle} from '../../style';
 
 export interface BlockStackProps
   extends BorderProps,
@@ -17,13 +17,13 @@ export interface BlockStackProps
   /**
    * Position children along the main axis
    */
-  inlineAlignment?: MaybeConditionalStyle<InlineAlignment>;
+  inlineAlignment?: MaybeResponsiveConditionalStyle<InlineAlignment>;
   /**
    * Adjust spacing between children
    *
    * @defaultValue 'base'
    */
-  spacing?: MaybeConditionalStyle<Spacing>;
+  spacing?: MaybeResponsiveConditionalStyle<Spacing>;
   /**
    * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help buyers
