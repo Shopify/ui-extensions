@@ -1,6 +1,6 @@
 {
   "name": "@shopify/admin-ui-extensions-react",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
@@ -16,8 +16,8 @@
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@remote-ui/react": "^4.1.5",
-    "@shopify/admin-ui-extensions": "^1.0.4",
+    "@remote-ui/react": "4.5.x",
+    "@shopify/admin-ui-extensions": "^1.0.5",
     "@types/react": ">=17.0.0 <18.0.0"
   },
   "peerDependencies": {
