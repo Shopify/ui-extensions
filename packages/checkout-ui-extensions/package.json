@@ -21,6 +21,6 @@
   },
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.12",
-    "@remote-ui/core": "^2.1.15"
+    "@remote-ui/core": "2.1.x"
   }
 }
