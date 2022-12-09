@@ -36,6 +36,7 @@ export type {
   I18nTranslate,
   InlineAlignment,
   MaybeConditionalStyle,
+  MaybeResponsiveConditionalStyle,
   ResolutionCondition,
   ViewportSizeCondition,
   InteractiveConditions,
@@ -60,6 +61,7 @@ export type {
   ViewPositionType,
   ViewLikeAccessibilityRole,
   AtLeastOne,
+  OverlayActivatorProps,
 } from '@shopify/checkout-ui-extensions';
 
 export * from './components';

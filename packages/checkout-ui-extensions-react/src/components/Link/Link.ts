@@ -6,4 +6,6 @@ import {
 
 export type LinkProps = ReactPropsFromRemoteComponentType<typeof BaseLink>;
 
-export const Link = createRemoteReactComponent(BaseLink);
+export const Link = createRemoteReactComponent(BaseLink, {
+  fragmentProps: ['overlay'],
+});

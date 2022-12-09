@@ -1,8 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {Appearance} from '../shared';
+import type {Appearance, OverlayActivatorProps} from '../shared';
 
-export interface LinkProps {
+export interface LinkProps extends OverlayActivatorProps {
   /**
    * Destination to navigate to. You must provide either this property, `onPress`,
    * or both.

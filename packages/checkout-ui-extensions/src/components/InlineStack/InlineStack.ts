@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {MaybeConditionalStyle} from '../../style';
+import type {MaybeResponsiveConditionalStyle} from '../../style';
 import type {
   BlockAlignment,
   BorderProps,
@@ -39,19 +39,19 @@ export interface InlineStackProps
    *
    * @defaultValue 'start'
    */
-  blockAlignment?: MaybeConditionalStyle<BlockAlignment>;
+  blockAlignment?: MaybeResponsiveConditionalStyle<BlockAlignment>;
   /**
    * Position children along the main axis
    *
    * @defaultValue 'start'
    */
-  inlineAlignment?: MaybeConditionalStyle<InlineAlignment>;
+  inlineAlignment?: MaybeResponsiveConditionalStyle<InlineAlignment>;
   /**
    * Adjust spacing between children
    *
    * @defaultValue 'base'
    **/
-  spacing?: MaybeConditionalStyle<Spacing>;
+  spacing?: MaybeResponsiveConditionalStyle<Spacing>;
 }
 
 /**

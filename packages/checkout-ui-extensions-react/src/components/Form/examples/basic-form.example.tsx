@@ -26,7 +26,7 @@ function App() {
         </GridItem>
       </Grid>
       <BlockSpacer spacing="base" />
-      <Button submit>Submit</Button>
+      <Button accessibilityRole="submit">Submit</Button>
     </Form>
   );
 }

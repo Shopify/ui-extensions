@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {MaybeConditionalStyle} from '../../style';
+import type {MaybeResponsiveConditionalStyle} from '../../style';
 import type {BorderProps, Columns, SizingProps, SpacingProps} from '../shared';
 import type {GridProps} from '../Grid';
 
@@ -33,7 +33,7 @@ export interface InlineLayoutProps
    *
    * @defaultValue 'fill'
    */
-  columns?: MaybeConditionalStyle<Columns>;
+  columns?: MaybeResponsiveConditionalStyle<Columns>;
 }
 
 /**

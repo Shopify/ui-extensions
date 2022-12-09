@@ -1,8 +1,13 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {Appearance, InlineAlignment} from '../shared';
+import type {
+  Appearance,
+  InlineAlignment,
+  ButtonAccessibilityRole,
+  OverlayActivatorProps,
+} from '../shared';
 
-export interface ButtonProps {
+export interface ButtonProps extends OverlayActivatorProps {
   /**
    * The type of button that will be rendered. The visual presentation of the button type
    * is controlled by merchants through the Branding API.
@@ -24,6 +29,7 @@ export interface ButtonProps {
   appearance?: Extract<Appearance, 'monochrome' | 'critical'>;
   /**
    * Allows the button to submit a form.
+   * @deprecated use `accessibilityRole="submit"` instead
    */
   submit?: boolean;
   /**
@@ -53,6 +59,16 @@ export interface ButtonProps {
    * accessibility purposes to prevent duplicate content from being read.
    */
   accessibilityLabel?: string;
+  /**
+   * The role of the button that will be rendered.
+   *
+   * `button`: renders a regular button.
+   *
+   * `submit`: renders a button that submits a form.
+   *
+   * @defaultValue 'button'
+   */
+  accessibilityRole?: ButtonAccessibilityRole;
   /**
    * Disables the button, disallowing any interaction.
    *

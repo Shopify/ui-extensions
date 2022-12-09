@@ -60,3 +60,8 @@ export type MaybeConditionalStyle<
   T,
   AcceptedConditions extends BaseConditions = Conditions
 > = T | ConditionalStyle<T, AcceptedConditions>;
+
+export type MaybeResponsiveConditionalStyle<T> = MaybeConditionalStyle<
+  T,
+  ViewportSizeCondition
+>;

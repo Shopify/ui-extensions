@@ -14,3 +14,4 @@ optional = ?
 | accessibilityLabel? | <code>string</code> | A label used for buyers using assistive technologies. When set, any 'children' supplied to this component are hidden from being seen for accessibility purposes to prevent duplicate content from being read. |
 | appearance? | <code>"monochrome"</code> | Specify the color of the link. `monochrome` will take the color of its parent.<br /><br /><code>"monochrome"</code>: Will take the color of its parent |
 | onPress? | <code>() => void</code> | Callback when pressed. If `to` is set, it will execute the callback and then navigate to the location specified by `to`. |
+| overlay? | <code>RemoteFragment</code> | An overlay component to render when the user interacts with the component. |

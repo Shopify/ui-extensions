@@ -58,7 +58,10 @@ components(checkout, componentsPageContent(checkout.shopifyDevUrl), {
   conditionalDocs: [
     {
       sourceFile: `${checkout.inputRoot}/documentation/conditional-props.md`,
-      propTypeNames: ['MaybeConditionalStyle'],
+      propTypeNames: [
+        'MaybeConditionalStyle',
+        'MaybeResponsiveConditionalStyle',
+      ],
     },
   ],
   componentsToSkip: ['isConditionalStyle'],

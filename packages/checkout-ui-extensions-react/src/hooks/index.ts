@@ -18,6 +18,7 @@ export {useShop} from './shop';
 export {useStorage} from './storage';
 export {useExtensionData} from './extension-data';
 export {useSubscription} from './subscription';
-export {useCustomer} from './buyer-identity';
+export {useCustomer, useEmail, usePhone} from './buyer-identity';
 export {useTranslate} from './translate';
 export {useSettings} from './settings';
+export {useExtensionEditor} from './extension-editor';

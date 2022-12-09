@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {MaybeConditionalStyle} from '../../style';
+import {MaybeResponsiveConditionalStyle} from '../../style';
 import type {Rows} from '../shared';
 import type {GridProps} from '../Grid';
 
@@ -29,7 +29,7 @@ export interface BlockLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
    *
    * @defaultValue 'fill'
    */
-  rows?: MaybeConditionalStyle<Rows>;
+  rows?: MaybeResponsiveConditionalStyle<Rows>;
 }
 
 /**

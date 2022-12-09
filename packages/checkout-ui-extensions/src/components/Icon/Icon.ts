@@ -8,6 +8,7 @@ export type IconSource =
   | 'arrowUp'
   | 'arrowUpRight'
   | 'arrowDown'
+  | 'bag'
   | 'calendar'
   | 'camera'
   | 'caretDown'
@@ -75,7 +76,7 @@ export interface IconProps {
    *
    * @defaultValue 'base'
    */
-  size?: Extract<Size, 'extraSmall' | 'small' | 'base' | 'fill'>;
+  size?: Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'fill'>;
 
   /**
    * Specifies which icon to display

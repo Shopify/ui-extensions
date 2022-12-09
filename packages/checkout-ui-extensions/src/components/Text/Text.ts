@@ -16,7 +16,7 @@ export interface TextProps extends VisibilityProps {
     | Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'extraLarge'>
     | 'medium';
   /**
-   * Use to emphasize a word or a group of words compared to other nearby text.
+   * Use to emphasize a word or a group of words.
    */
   emphasis?: Emphasis;
   /**

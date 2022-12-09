@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 import type {Spacing} from '../shared';
-import type {MaybeConditionalStyle} from '../../style';
+import type {MaybeResponsiveConditionalStyle} from '../../style';
 
 export type Marker = 'none' | 'bullet' | 'number';
 
@@ -11,7 +11,7 @@ export interface ListProps {
    *
    * @defaultValue 'base'
    */
-  spacing?: MaybeConditionalStyle<Spacing>;
+  spacing?: MaybeResponsiveConditionalStyle<Spacing>;
   /**
    * Type of marker to display
    *

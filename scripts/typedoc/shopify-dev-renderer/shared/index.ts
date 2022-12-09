@@ -774,7 +774,8 @@ function findRepeatingTypes(obj: Type, exports: Node[]) {
 
       if (obj.kind === 'Local') {
         exported = exports.find(
-          (x) => 'name' in x.value && x.value.name === obj.name,
+          (x) =>
+            x.value !== obj && 'name' in x.value && x.value.name === obj.name,
         );
       }
 

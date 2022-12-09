@@ -15,5 +15,7 @@ optional = ?
 | loading? | <code>boolean</code> | Replaces content with a loading indicator.<br /><br />Default value: <code>false</code> |
 | loadingLabel? | <code>string</code> | Accessible label for the loading indicator when user prefers reduced motion. This value is only used if `loading` is true. |
 | accessibilityLabel? | <code>string</code> | A label used for buyers using assistive technologies. When set, any `children` supplied to this component are hidden from being seen for accessibility purposes to prevent duplicate content from being read. |
+| accessibilityRole? | <code>"button" &#124; "submit"</code> | The role of the button that will be rendered.<br /><br />`button`: renders a regular button.<br /><br />`submit`: renders a button that submits a form.<br /><br />Default value: <code>'button'</code> |
 | disabled? | <code>boolean</code> | Disables the button, disallowing any interaction.<br /><br />Default value: <code>false</code> |
 | onPress? | <code>() => void</code> | Callback that is run when the button is pressed. |
+| overlay? | <code>RemoteFragment</code> | An overlay component to render when the user interacts with the component. |
