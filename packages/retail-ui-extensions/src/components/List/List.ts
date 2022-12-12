@@ -15,6 +15,7 @@ export interface ListProps {
   data: ListItem[];
   showDisclosureIndicator: boolean;
   title?: string;
+  onEndReached?: () => void;
 }
 
 export const List = createRemoteComponent<'List', ListProps>('List');
