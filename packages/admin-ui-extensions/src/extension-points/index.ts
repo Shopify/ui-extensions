@@ -1,3 +1,5 @@
+import {RemoteRoot} from '@remote-ui/core';
+import {AllComponentsSchema} from '../containers';
 import {
   PlaygroundExtensionPoint,
   PlaygroundExtensionApi,
@@ -9,6 +11,7 @@ import {
   ProductSubscriptionExtensionApi,
   ProductSubscriptionExtensionPointCallback,
 } from './identifiers/product_subscription';
+import {RenderableExtensionCallback, StandardApi} from './types';
 
 export type {PlaygroundExtensionPoint, ProductSubscriptionExtensionPoint};
 
@@ -24,10 +27,20 @@ export type {
 
 export type ExtensionPoint =
   | PlaygroundExtensionPoint
-  | ProductSubscriptionExtensionPoint;
+  | ProductSubscriptionExtensionPoint
+  | 'Admin::ProductDetails::RenderBundleCard';
 
 export type ExtensionApi = PlaygroundExtensionApi &
-  ProductSubscriptionExtensionApi;
+  ProductSubscriptionExtensionApi & {
+    'Admin::ProductDetails::RenderBundleCard': StandardApi<
+      'Admin::ProductDetails::RenderBundleCard'
+    >;
+  };
 
 export type ExtensionPointCallback = PlaygroundExtensionPointCallback &
-  ProductSubscriptionExtensionPointCallback;
+  ProductSubscriptionExtensionPointCallback & {
+    'Admin::ProductDetails::RenderBundleCard': RenderableExtensionCallback<
+      ExtensionApi['Admin::ProductDetails::RenderBundleCard'],
+      RemoteRoot<AllComponentsSchema>
+    >;
+  };
