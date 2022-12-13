@@ -1,31 +1,26 @@
+import type {Modal} from '../types';
+
 export interface NavigationApiContent {
-  /** The name of the current screen on the stack.
-   * This property can be used to evaluate which component you want to mount.
+  /** Contains the information about the currently presented modal */
+  currentModal: Modal;
+
+  /** Presents a new modal on top of the current one.
+   * @param modal this interface contains the information about the path and any initial parameters.
    */
-  currentScreen?: string;
+  presentModal(modal: Modal): void;
 
-  /** The parameters the screen was displayed with */
-  params?: any;
+  /** Navigate to a route in current navigation tree.
+   * Pushes the specified screen if it isn't present in the navigation tree, goes back to a created screen otherwise.
+   * @param screenName the title of the screen you want to navigate to.
+   * @param params the parameters you want to pass to that screen.
+   */
+  navigate(screenName: string, params?: any): void;
 
-  /** Pops the currently presented screen */
+  /** Pops the currently shown screen */
   pop(): void;
 
   /** Dismisses the modal highest on the stack */
   dismiss(): void;
-
-  /** Pushes a screen onto the stack.
-   * @param screenName the title of the screen you want to push onto the stack. This property is then returned in this API as `currentScreen`
-   * which can then be used to determine which component should be mounted.
-   * @param params the parameters you want to pass for the new screen.
-   */
-  push(screenName: string, params?: any): void;
-
-  /** Opens a full screen with the `Retail::SmartGrid::Modal` extension point.
-   * @param screenName the title of the screen you want to push onto the stack. This property is then returned in this API as `currentScreen`
-   * which can then be used to determine which component should be mounted.
-   * @param params the parameters you want to pass for the new screen.
-   */
-  presentModal(screenName?: string, params?: any): void;
 }
 
 /**

@@ -15,6 +15,7 @@ export type {
   Discount,
   CustomSale,
   Session,
+  Modal,
 } from './types';
 
 export {CountryCode} from './types';

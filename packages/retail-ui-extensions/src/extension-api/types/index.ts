@@ -7,6 +7,8 @@ export type {
   CustomSale,
 } from './cart';
 
-export {CountryCode} from './CountryCode';
+export {CountryCode} from './country-code';
 
 export type {Session} from './session';
+
+export type {Modal} from './modal';
