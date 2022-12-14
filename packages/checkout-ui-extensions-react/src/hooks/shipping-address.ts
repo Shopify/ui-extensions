@@ -9,7 +9,7 @@ import {useSubscription} from './subscription';
  * Returns the proposed `shippingAddress` applied to the checkout.
  */
 export function useShippingAddress<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
   const shippingAddress = useExtensionApi<ID>().shippingAddress;
 

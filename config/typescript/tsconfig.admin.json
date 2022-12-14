@@ -7,9 +7,7 @@
     "downlevelIteration": true,
     "resolveJsonModule": true,
     "noUnusedLocals": false,
-    "noImplicitAny": false,
+    "noImplicitAny": false
   },
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

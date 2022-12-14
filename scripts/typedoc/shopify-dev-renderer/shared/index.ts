@@ -767,7 +767,8 @@ function findRepeatingTypes(obj: Type, exports: Node[]) {
 
     if ('name' in obj && obj.name) {
       if (obj.name === 'T') {
-        return traverse(stash);
+        traverse(stash);
+        return;
       }
 
       let exported;
@@ -781,9 +782,11 @@ function findRepeatingTypes(obj: Type, exports: Node[]) {
 
       if (exported) {
         if (exported.value.kind !== 'InterfaceType') {
-          return traverse(exported.value as Type, (obj as any)?.params?.[0]);
+          traverse(exported.value as Type, (obj as any)?.params?.[0]);
+          return;
         } else if (stash) {
-          return traverse(stash);
+          traverse(stash);
+          return;
         }
       } else {
         occurrences[obj.name] = occurrences[obj.name] || 0;

@@ -11,7 +11,7 @@ import {useSubscription} from './subscription';
  * your component if the currency changes.
  */
 export function useCurrency<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): ApiForRenderExtension<ID>['localization']['currency']['current'] {
   const {localization} = useExtensionApi<ID>();
 

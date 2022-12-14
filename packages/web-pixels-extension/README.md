@@ -22,10 +22,10 @@ register(({configuration, analytics, browser, init}) => {
     origin: init.context.window.location.origin,
   });
 
-  analytics.subscribe("page_viewed", async (event) => {
-    const cookieValue = await browser.cookie.get("my_pixel_cookie");
+  analytics.subscribe('page_viewed', async (event) => {
+    const cookieValue = await browser.cookie.get('my_pixel_cookie');
 
-    window.my_pixel.publish("page_viewed", {
+    window.my_pixel.publish('page_viewed', {
       href: event.context.window.location.href,
       origin: event.context.window.location.origin,
       cookie: cookieValue,

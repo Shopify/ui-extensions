@@ -4,9 +4,8 @@ import {useSubscription} from '../subscription';
 
 describe('useSubscription()', () => {
   it('updates the value when it changes', () => {
-    const statefulRemoteSubscribable = createMockStatefulRemoteSubscribable(
-      'hello',
-    );
+    const statefulRemoteSubscribable =
+      createMockStatefulRemoteSubscribable('hello');
 
     const {result, rerender} = renderHook(() => {
       return useSubscription(statefulRemoteSubscribable);
@@ -26,9 +25,8 @@ describe('useSubscription()', () => {
   });
 
   it('stops subscribing from future updates when unsubscribed is called', () => {
-    const statefulRemoteSubscribable = createMockStatefulRemoteSubscribable(
-      'hello',
-    );
+    const statefulRemoteSubscribable =
+      createMockStatefulRemoteSubscribable('hello');
     const unsubscribe = jest.fn();
     statefulRemoteSubscribable.subscribe.mockReturnValue(unsubscribe);
 
@@ -54,7 +52,7 @@ describe('useSubscription()', () => {
   });
 });
 
-export function createMockStatefulRemoteSubscribable<T>(value: T) {
+function createMockStatefulRemoteSubscribable<T>(value: T) {
   const subscribable = {
     get current() {
       return value;

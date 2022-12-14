@@ -19,7 +19,7 @@ export function extend<T extends ExtensionPoint>(
   extensionPoint: T,
   callback: ExtensionPointCallback[T],
 ) {
-  return ((self as any) as ShopifyGlobal).shopify.extend(
+  return (self as any as ShopifyGlobal).shopify.extend(
     extensionPoint,
     callback,
   );

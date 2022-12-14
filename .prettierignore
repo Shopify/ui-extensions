@@ -1,0 +1,3 @@
+node_modules
+packages/*/build
+packages/web-pixels-extension/src/schemas/pixel-events.jtd.json

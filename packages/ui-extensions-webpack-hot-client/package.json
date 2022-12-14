@@ -11,15 +11,23 @@
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
-  "types": "index.d.ts",
+  "types": "./build/ts/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "worker": [
+        "./build/ts/worker.d.ts"
+      ]
+    }
+  },
   "exports": {
     ".": {
+      "types": "./build/ts/index.d.ts",
       "esnext": "./index.esnext",
       "import": "./index.mjs",
       "require": "./index.js"
     },
-    "./*": "./*",
     "./worker": {
+      "types": "./build/ts/worker.d.ts",
       "esnext": "./worker.esnext",
       "import": "./worker.mjs",
       "require": "./worker.js"

@@ -1,32 +1,40 @@
 module.exports = {
-  extends: ['plugin:@sewing-kit/typescript', 'plugin:@sewing-kit/prettier'],
+  extends: [
+    'plugin:@shopify/typescript',
+    'plugin:@shopify/jest',
+    'plugin:@shopify/prettier',
+  ],
   ignorePatterns: [
+    'build/',
+    'examples/',
     'node_modules/',
-    '**/build/',
+    'packages/*/build/',
     'packages/*/*.d.ts',
     'packages/*/*.js',
     '!packages/*/.eslintrc.js',
     'packages/*/*.mjs',
     'packages/*/*.node',
     'packages/*/*.esnext',
-    'examples/',
-    'scripts/argo-admin/',
   ],
   rules: {
-    // Conflicts with prettier rule
-    'lines-around-comment': 'off',
-    // These are all removed in a resolution version of the typescript rules we have,
-    // but are enabled in the shared config written against an older version.
-    '@typescript-eslint/camelcase': 'off',
-    '@typescript-eslint/ban-ts-ignore': 'off',
-    '@typescript-eslint/class-name-casing': 'off',
+    // Codebase was originally written without some strict Shopify conventions
+    'import/order': 'off',
+    '@typescript-eslint/naming-convention': 'off',
+
+    // This rule is just bad
+    '@typescript-eslint/consistent-indexed-object-style': 'off',
   },
   overrides: [
     {
-      files: ['sewing-kit.config.ts', 'config/sewing-kit/**/*'],
+      files: ['loom.config.ts', 'config/loom/**/*'],
       rules: {
+        // Doesn’t understand that loom dependencies come from the root package.json
         'import/no-extraneous-dependencies': 'off',
       },
+    },
+    {
+      files: ['**/.eslintrc.js'],
+      env: {node: true},
     },
   ],
 };

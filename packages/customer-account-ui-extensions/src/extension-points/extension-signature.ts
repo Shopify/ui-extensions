@@ -10,7 +10,7 @@ import {RemoteRoot, RemoteComponentType} from '@remote-ui/core';
  */
 export interface RenderExtension<
   Api,
-  AllowedComponents extends RemoteComponentType<string, any, any>
+  AllowedComponents extends RemoteComponentType<string, any, any>,
 > {
   (root: RemoteRoot<AllowedComponents, true>, api: Api): void | Promise<void>;
 }

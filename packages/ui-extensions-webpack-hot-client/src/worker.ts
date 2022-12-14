@@ -16,7 +16,7 @@ const MAX_RETRIES = 10;
 
 interface DevServerMessage<
   Type extends string,
-  Data extends Record<string, unknown> = Record<string, unknown>
+  Data extends Record<string, unknown> = Record<string, unknown>,
 > {
   type: Type;
   data: Data;

@@ -7,7 +7,7 @@ import {
 import {ExtensionInputContext} from '../context';
 
 export function useExtensionInput<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): InputForRenderExtension<ID> {
   const input = useContext(ExtensionInputContext);
 

@@ -16,11 +16,7 @@
       "WebWorker"
     ]
   },
-  "include": [
-    "config/typescript/faker.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx"
-  ],
+  "include": ["config/typescript/faker.d.ts", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["src/**/*.example.tsx", "src/**/tests/**"],
   "references": [{"path": "../checkout-ui-extensions"}]
 }

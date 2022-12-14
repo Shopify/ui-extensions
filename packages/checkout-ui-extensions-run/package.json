@@ -14,9 +14,10 @@
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
-  "types": "index.d.ts",
+  "types": "./build/ts/index.d.ts",
   "exports": {
     ".": {
+      "types": "./build/ts/index.d.ts",
       "esnext": "./index.esnext",
       "import": "./index.mjs",
       "require": "./index.js"
@@ -53,5 +54,10 @@
     "terser-webpack-plugin": "^3.0.3",
     "webpack": "^4.43.0",
     "webpack-dev-server": "^3.11.0"
+  },
+  "eslintConfig": {
+    "rules": {
+      "no-process-env": "off"
+    }
   }
 }

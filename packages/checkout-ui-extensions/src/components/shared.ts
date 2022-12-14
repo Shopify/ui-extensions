@@ -233,7 +233,6 @@ export interface SizingProps {
    * `fill`: takes all the available space.
    */
   maxBlockSize?: MaybeResponsiveConditionalStyle<
-    // eslint-disable-next-line prettier/prettier
     number | `${number}%` | 'fill'
   >;
 
@@ -420,7 +419,13 @@ export type Size =
   | 'extraLarge'
   | 'fill';
 
-export type Spacing = 'none' | 'extraTight' | 'tight' | 'base' | 'loose' | 'extraLoose';
+export type Spacing =
+  | 'none'
+  | 'extraTight'
+  | 'tight'
+  | 'base'
+  | 'loose'
+  | 'extraLoose';
 
 export type Alignment = 'start' | 'center' | 'end';
 export type InlineAlignment = 'start' | 'center' | 'end';

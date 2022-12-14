@@ -5,17 +5,15 @@ import {ExtensionPoints} from './extension-points';
  * For a given extension point, returns the value that is expected to be
  * returned by that extension point’s callback type.
  */
-export type ReturnTypeForExtension<
-  ID extends keyof ExtensionPoints
-> = ReturnType<ExtensionPoints[ID]>;
+export type ReturnTypeForExtension<ID extends keyof ExtensionPoints> =
+  ReturnType<ExtensionPoints[ID]>;
 
 /**
  * For a given extension point, returns the tuple of arguments that would
  * be provided to that extension point’s callback type.
  */
-export type ArgumentsForExtension<
-  ID extends keyof ExtensionPoints
-> = Parameters<ExtensionPoints[ID]>;
+export type ArgumentsForExtension<ID extends keyof ExtensionPoints> =
+  Parameters<ExtensionPoints[ID]>;
 
 /**
  * A union type containing all extension points that follow the pattern of
@@ -70,6 +68,5 @@ type ExtractedApiFromExtension<T> = T extends RenderExtension<any, any>
  * For a given extension point, returns the type of the API that the
  * extension will receive at runtime.
  */
-export type ApiForExtension<
-  ID extends keyof ExtensionPoints
-> = ExtractedApiFromExtension<ExtensionPoints[ID]>;
+export type ApiForExtension<ID extends keyof ExtensionPoints> =
+  ExtractedApiFromExtension<ExtensionPoints[ID]>;

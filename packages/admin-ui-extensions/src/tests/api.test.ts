@@ -2,7 +2,8 @@ import {extend} from '../api';
 
 describe('extend()', () => {
   it('calls shopify extend', () => {
-    global.self = {shopify: {extend: jest.fn()}} as any;
+    Reflect.defineProperty(self, 'shopify', {value: {extend: jest.fn()}});
+
     const callback = () => {};
     extend('Playground', callback);
 

@@ -1,5 +1,5 @@
 import * as fs from 'fs';
-import {resolve, extname} from 'path';
+import {extname} from 'path';
 import {rollup, ModuleFormat} from 'rollup';
 import virtual from '@rollup/plugin-virtual';
 import jsx from 'rollup-plugin-jsx';
@@ -68,13 +68,13 @@ export function compileComponentExamples(
 }
 
 export async function compileForSandbox(inputCode: string): Promise<string> {
-  const LOCAL_ID = 'INPUT';
+  const localId = 'INPUT';
   const virtualModules = {
-    [LOCAL_ID]: inputCode,
+    [localId]: inputCode,
   };
 
   const inputOptions = {
-    input: LOCAL_ID,
+    input: localId,
     plugins: [
       // The virtual plugin let us supply a string instead of a file as input
       virtual(virtualModules),

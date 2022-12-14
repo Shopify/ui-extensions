@@ -4,20 +4,33 @@
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
-  "types": "index.d.ts",
+  "types": "./build/ts/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "extension-api": [
+        "./build/ts/extension-api/index.d.ts"
+      ],
+      "extension-points": [
+        "./build/ts/extension-points/index.d.ts"
+      ]
+    }
+  },
   "exports": {
     ".": {
+      "types": "./build/ts/index.d.ts",
       "esnext": "./index.esnext",
       "import": "./index.mjs",
       "require": "./index.js"
     },
     "./*": "./*",
     "./extension-api": {
+      "types": "./build/ts/extension-api/index.d.ts",
       "esnext": "./extension-api.esnext",
       "import": "./extension-api.mjs",
       "require": "./extension-api.js"
     },
     "./extension-points": {
+      "types": "./build/ts/extension-points/index.d.ts",
       "esnext": "./extension-points.esnext",
       "import": "./extension-points.mjs",
       "require": "./extension-points.js"

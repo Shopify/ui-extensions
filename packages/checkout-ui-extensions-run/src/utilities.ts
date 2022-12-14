@@ -15,7 +15,7 @@ export const argumentParserFor = (args: string[]) => (name: string) => {
 // Could bring in a CLI arg library, but this is fun practice :)
 export function namedArgument(
   name: string,
-  args: readonly string[],
+  args: ReadonlyArray<string>,
 ): string | undefined {
   const flag = `--${name}`;
 
@@ -86,14 +86,14 @@ export function loadExtension(): Extension {
       };
 }
 
-function readConfig() {
+function readConfig():
+  | CheckoutExtensionConfig
+  | PostPurchaseExtensionConfig
+  | undefined {
   const configPath = resolve(join(process.cwd(), 'extension.config.yml'));
-  if (!existsSync(configPath)) return;
+  if (!existsSync(configPath)) return undefined;
 
-  const config = loadYaml(readFileSync(configPath, 'utf8')) as
-    | CheckoutExtensionConfig
-    | PostPurchaseExtensionConfig
-    | undefined;
+  const config = loadYaml(readFileSync(configPath, 'utf8')) as any;
 
   return config && camelcaseKeys(config, {deep: true});
 }
@@ -208,17 +208,16 @@ export function parseDevelopmentServerConfig(args: string[]) {
   };
 }
 
-export const urlGeneratorFor = (baseUrl?: string) => (
-  path?: string,
-  query: Record<string, string> = {},
-): URL | undefined => {
-  if (!baseUrl) return undefined;
-  if (!path) return undefined;
+export const urlGeneratorFor =
+  (baseUrl?: string) =>
+  (path?: string, query: Record<string, string> = {}): URL | undefined => {
+    if (!baseUrl) return undefined;
+    if (!path) return undefined;
 
-  const url = new URL(path, baseUrl);
-  Object.keys(query).forEach((parameter) => {
-    url.searchParams.append(parameter, query[parameter]);
-  });
+    const url = new URL(path, baseUrl);
+    Object.keys(query).forEach((parameter) => {
+      url.searchParams.append(parameter, query[parameter]);
+    });
 
-  return url;
-};
+    return url;
+  };
