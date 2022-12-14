@@ -26,7 +26,7 @@ export function useCustomer<
 }
 
 export function useEmail<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
   const buyerIdentity = useExtensionApi<ID>().buyerIdentity;
 
@@ -40,7 +40,7 @@ export function useEmail<
 }
 
 export function usePhone<
-  ID extends RenderExtensionPoint = RenderExtensionPoint
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
   const buyerIdentity = useExtensionApi<ID>().buyerIdentity;
 
