@@ -1,10 +1,10 @@
+import type {Modal} from '../types';
+
 export interface SmartGridApiContent {
-  /** Opens a full screen with the `Retail::SmartGrid::Modal` extension point.
-   * @param screenName you can specify a screen name, which will be returned in the `NavigationAPI` as `currentScreen`.
-   * This value can be used to evaluate which component should be mounted. The `push(screenName: string)` method in the NavigationAPI can be used then to push
-   * additional screens on top of the stack.
+  /** Presents a new modal on top of the Smart Grid.
+   * @param modal this interface contains the information about the path and any initial parameters.
    */
-  presentModal(screenName?: string): void;
+  presentModal(modal: Modal): void;
 }
 
 /**

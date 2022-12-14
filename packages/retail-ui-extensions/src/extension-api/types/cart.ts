@@ -1,4 +1,4 @@
-import {CountryCode} from './CountryCode';
+import {CountryCode} from './country-code';
 
 export interface Cart {
   subtotal: string;
