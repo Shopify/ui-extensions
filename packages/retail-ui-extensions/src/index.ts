@@ -17,6 +17,7 @@ export type {
   CustomSale,
   Customer,
   Discount,
+  Modal,
 } from './extension-api';
 
 export {CountryCode} from './extension-api';
