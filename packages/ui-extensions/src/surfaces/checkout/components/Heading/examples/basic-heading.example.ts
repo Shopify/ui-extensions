@@ -1,4 +1,4 @@
-import {extend, Heading} from '@shopify/checkout-ui-extensions';
+import {extend, Heading} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const heading = root.createComponent(Heading, undefined, 'Store name');

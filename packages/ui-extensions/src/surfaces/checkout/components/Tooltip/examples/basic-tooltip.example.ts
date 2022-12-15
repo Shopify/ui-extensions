@@ -3,7 +3,7 @@ import {
   Icon,
   Pressable,
   Tooltip,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const tooltipFragment = root.createFragment();

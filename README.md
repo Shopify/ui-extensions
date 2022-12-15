@@ -4,11 +4,7 @@ This repo contains the packages that make up the UI extensibility framework for 
 
 ## I just want to _build_ a UI Extension, not learn about them!
 
-If you’re ready to start building, you’ll want to refer to the documentation covering the components and APIs available to you. Where you’ll find that depends on what surface area of Shopify you are building an extension for:
-
-- Building an extension for the post-purchase page of the Shopify Checkout? You should read the documentation for [`@shopify/post-purchase-ui-extensions`](./packages/post-purchase-ui-extensions) (and [`@shopify/post-purchase-ui-extensions-react`](./packages/post-purchase-ui-extensions-react), if you use React)
-- Building an extension for other parts of the Shopify Checkout? You should read the documentation for [`@shopify/checkout-ui-extensions`](./packages/checkout-ui-extensions) (and [`@shopify/checkout-ui-extensions-react`](./packages/checkout-ui-extensions-react), if you use React)
-- Building an extension for the Shopify Admin? You should read the documentation for [`@shopify/admin-ui-extensions`](./packages/admin-ui-extensions) (and [`@shopify/admin-ui-extensions-react`](./packages/admin-ui-extensions-react), if you use React)
+Get started by adding your new UI extension APIs to the [`@shopify/ui-extensions` package](./packages/ui-extensions/). We also provide [a React library](./packages/ui-extensions-react/) you may need to update as well.
 
 If you want to learn a little more about the patterns found throughout these libraries, and the way that they are rendered into the applications they extend, read on!
 
@@ -72,7 +68,7 @@ shopify.extend('Checkout::Dynamic::Render', (root) => {
 // Or, if you are using our NPM libraries, we offer a bit of sugar over the
 // global:
 
-import {extend} from '@shopify/checkout-ui-extensions';
+import {extend} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   root.appendChild(root.createText('Hello world!'));

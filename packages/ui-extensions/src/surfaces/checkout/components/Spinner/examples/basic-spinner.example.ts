@@ -1,4 +1,4 @@
-import {extend, Spinner} from '@shopify/checkout-ui-extensions';
+import {extend, Spinner} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const spinner = root.createComponent(Spinner);

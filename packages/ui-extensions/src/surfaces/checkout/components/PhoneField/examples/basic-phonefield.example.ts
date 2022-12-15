@@ -1,4 +1,4 @@
-import {extend, PhoneField} from '@shopify/checkout-ui-extensions';
+import {extend, PhoneField} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const phoneField = root.createComponent(PhoneField, {

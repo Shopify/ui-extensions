@@ -1,4 +1,4 @@
-import {extend, SkeletonImage} from '@shopify/checkout-ui-extensions';
+import {extend, SkeletonImage} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const skeletonImage = root.createComponent(SkeletonImage, {

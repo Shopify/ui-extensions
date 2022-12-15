@@ -1,4 +1,4 @@
-import {extend, Banner} from '@shopify/checkout-ui-extensions';
+import {extend, Banner} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const banner = root.createComponent(Banner, {

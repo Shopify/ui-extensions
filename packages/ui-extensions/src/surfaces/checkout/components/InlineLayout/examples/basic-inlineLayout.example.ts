@@ -1,4 +1,4 @@
-import {extend, InlineLayout, View} from '@shopify/checkout-ui-extensions';
+import {extend, InlineLayout, View} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const inlineLayout = root.createComponent(

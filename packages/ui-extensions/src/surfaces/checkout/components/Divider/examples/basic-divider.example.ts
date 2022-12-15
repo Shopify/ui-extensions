@@ -1,4 +1,4 @@
-import {extend, Divider} from '@shopify/checkout-ui-extensions';
+import {extend, Divider} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const divider = root.createComponent(Divider);

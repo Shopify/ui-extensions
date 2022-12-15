@@ -1,4 +1,4 @@
-import {extend, List, ListItem} from '@shopify/checkout-ui-extensions';
+import {extend, List, ListItem} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const list = root.createComponent(List, undefined, [

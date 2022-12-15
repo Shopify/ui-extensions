@@ -3,7 +3,7 @@ import {
   InlineSpacer,
   InlineStack,
   View,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const inlineSpacer = root.createComponent(InlineStack, {spacing: 'none'}, [

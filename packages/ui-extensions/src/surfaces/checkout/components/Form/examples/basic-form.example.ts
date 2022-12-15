@@ -7,7 +7,7 @@ import {
   GridItem,
   TextField,
   View,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const fields = root.createComponent(
