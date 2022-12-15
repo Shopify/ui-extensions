@@ -1,6 +1,6 @@
 {
   "name": "@shopify/ui-extensions",
-  "version": "2022.10.0",
+  "version": "2022.10.1",
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
@@ -36,6 +36,13 @@
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org/"
   },
+  "files": [
+    "build",
+    "src",
+    "index.*",
+    "checkout.*",
+    "README.md"
+  ],
   "eslintConfig": {
     "rules": {
       "@shopify/strict-component-boundaries": "off"
