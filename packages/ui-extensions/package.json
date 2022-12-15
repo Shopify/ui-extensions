@@ -1,6 +1,6 @@
 {
   "name": "@shopify/ui-extensions",
-  "version": "2022.10.2",
+  "version": "2022.10.3",
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
@@ -8,7 +8,7 @@
   "typesVersions": {
     "*": {
       "checkout": [
-        "./build/ts/surfaces/checkout/index.d.ts"
+        "./build/ts/surfaces/checkout.d.ts"
       ]
     }
   },
@@ -20,7 +20,7 @@
       "require": "./index.js"
     },
     "./checkout": {
-      "types": "./build/ts/checkout/index.d.ts",
+      "types": "./build/ts/surfaces/checkout.d.ts",
       "esnext": "./checkout.esnext",
       "import": "./checkout.mjs",
       "require": "./checkout.js"
