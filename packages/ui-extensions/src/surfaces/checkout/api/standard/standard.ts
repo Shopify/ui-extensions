@@ -52,7 +52,7 @@ export type Capability = 'network_access' | 'block_progress';
 /**
  * Meta information about an extension point.
  */
-export interface Extension {
+export interface ExtensionInstance {
   /**
    * The published version of the running extension point.
    *
@@ -508,7 +508,7 @@ export interface StandardApi<ExtensionPoint extends AnyExtensionPoint>
   /**
    * Meta information about the extension.
    */
-  extension: Extension;
+  extension: ExtensionInstance;
 
   /**
    * Key-value storage for the extension point.
