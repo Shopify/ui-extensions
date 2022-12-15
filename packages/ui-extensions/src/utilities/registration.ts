@@ -1,19 +1,8 @@
-import {createRemoteRoot} from '@remote-ui/core';
-import type {
-  RenderExtension,
-  RenderExtensionWithRemoteRoot,
-} from '../extension';
-
 export interface ExtensionRegistrationFunction<ExtensionPoints> {
-  <Point extends keyof ExtensionPoints>(
-    _extensionPoint: Point,
-    extensionWithRemoteRoot: ExtensionPoints[Point] extends RenderExtension<
-      infer Api,
-      infer AllowedComponents
-    >
-      ? RenderExtensionWithRemoteRoot<Api, AllowedComponents>
-      : ExtensionPoints[Point],
-  ): ExtensionPoints[Point];
+  <Target extends keyof ExtensionPoints>(
+    target: Target,
+    implementation: ExtensionPoints[Target],
+  ): ExtensionPoints[Target];
 }
 
 /**
@@ -27,33 +16,11 @@ export function createExtensionRegistrationFunction<
   ExtensionPoints,
 >(): ExtensionRegistrationFunction<ExtensionPoints> {
   const extensionWrapper: ExtensionRegistrationFunction<ExtensionPoints> = (
-    _extensionPoint,
-    extensionWithRemoteRoot,
+    target,
+    implementation,
   ) => {
-    async function extension(...args: any[]) {
-      // This handles extensions that do not take a `RemoteChannel` as their first argument.
-      // This is true for ”non-rendering” extension points, like `Checkout::PostPurchase::ShouldRender`.
-      if (
-        args.length === 1 ||
-        typeof args[0] !== 'object' ||
-        args[0] == null ||
-        !('channel' in args[0])
-      ) {
-        const result = await (extensionWithRemoteRoot as any)(...args);
-        return result;
-      }
-
-      const [{channel, components}, ...rest] = args;
-
-      const root = createRemoteRoot(channel, {components, strict: true});
-
-      const result = await (extensionWithRemoteRoot as any)(root, ...rest);
-      await root.mount();
-
-      return result;
-    }
-
-    return extension as any;
+    globalThis.shopify.extend(target, implementation);
+    return implementation;
   };
 
   return extensionWrapper;

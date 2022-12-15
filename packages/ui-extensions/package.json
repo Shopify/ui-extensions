@@ -1,15 +1,12 @@
 {
   "name": "@shopify/ui-extensions",
-  "version": "2.0.0-alpha.2",
+  "version": "2022.10.0",
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
   "types": "./build/ts/index.d.ts",
   "typesVersions": {
     "*": {
-      "admin": [
-        "./build/ts/surfaces/admin/index.d.ts"
-      ],
       "checkout": [
         "./build/ts/surfaces/checkout/index.d.ts"
       ]
@@ -22,12 +19,6 @@
       "import": "./index.mjs",
       "require": "./index.js"
     },
-    "./admin": {
-      "types": "./build/ts/admin/index.d.ts",
-      "esnext": "./admin.esnext",
-      "import": "./admin.mjs",
-      "require": "./admin.js"
-    },
     "./checkout": {
       "types": "./build/ts/checkout/index.d.ts",
       "esnext": "./checkout.esnext",
@@ -38,10 +29,16 @@
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@remote-ui/core": "^2.1.16"
+    "@remote-ui/async-subscription": "^2.1.12",
+    "@remote-ui/core": "2.1.x"
   },
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org/"
+  },
+  "eslintConfig": {
+    "rules": {
+      "@shopify/strict-component-boundaries": "off"
+    }
   }
 }
