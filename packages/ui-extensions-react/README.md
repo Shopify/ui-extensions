@@ -1,1 +1,1 @@
-# `@shopify/ui-extensions`
+# `@shopify/ui-extensions-react`
