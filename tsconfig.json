@@ -16,6 +16,7 @@
     {"path": "./packages/retail-ui-extensions"},
     {"path": "./packages/retail-ui-extensions-react"},
     {"path": "./packages/ui-extensions"},
+    {"path": "./packages/ui-extensions-react"},
     {"path": "./packages/web-pixels-extension"}
   ]
 }

@@ -1,0 +1,69 @@
+{
+  "name": "@shopify/ui-extensions-react",
+  "version": "2022.10.3",
+  "description": "React bindings for @shopify/ui-extensions",
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org"
+  },
+  "sideEffects": false,
+  "license": "MIT",
+  "main": "index.js",
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "./build/ts/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "checkout": [
+        "./build/ts/surfaces/checkout.d.ts"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "types": "./build/ts/index.d.ts",
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./checkout": {
+      "types": "./build/ts/surfaces/checkout.d.ts",
+      "esnext": "./checkout.esnext",
+      "import": "./checkout.mjs",
+      "require": "./checkout.js"
+    }
+  },
+  "dependencies": {
+    "@remote-ui/async-subscription": "^2.1.12",
+    "@remote-ui/react": "4.5.x",
+    "@shopify/ui-extensions": "2022.10.2",
+    "@types/react": ">=17.0.0 <18.0.0"
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0 <18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": false
+    }
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^5.5.3",
+    "@quilted/react-testing": "^0.4.10",
+    "@types/faker": "^5.5.9",
+    "react": "^17.0.0"
+  },
+  "files": [
+    "build",
+    "src",
+    "index.*",
+    "checkout.*",
+    "README.md"
+  ],
+  "eslintConfig": {
+    "rules": {
+      "@shopify/strict-component-boundaries": "off",
+      "react/react-in-jsx-scope": "off"
+    }
+  }
+}
