@@ -1,1 +1,0 @@
-export {useExtensionInput} from './input';

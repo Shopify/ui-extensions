@@ -1,1 +1,0 @@
-export {HeadingGroup} from './HeadingGroup';

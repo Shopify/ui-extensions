@@ -1,1 +1,0 @@
-export {FormattedTextField} from './FormattedTextField';

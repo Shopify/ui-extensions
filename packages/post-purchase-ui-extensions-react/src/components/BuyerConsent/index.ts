@@ -1,1 +1,0 @@
-export {BuyerConsent} from './BuyerConsent';

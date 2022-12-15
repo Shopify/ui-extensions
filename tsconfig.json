@@ -3,20 +3,7 @@
   "include": [],
   "references": [
     {"path": "./tsconfig.repo.json"},
-    {"path": "./packages/checkout-ui-extensions"},
-    {"path": "./packages/checkout-ui-extensions-react"},
-    {"path": "./packages/customer-account-ui-extensions"},
-    {"path": "./packages/customer-account-ui-extensions-react"},
-    {"path": "./packages/post-purchase-ui-extensions"},
-    {"path": "./packages/post-purchase-ui-extensions-react"},
-    {"path": "./packages/ui-extensions-webpack-hot-client"},
-    {"path": "./packages/checkout-ui-extensions-run"},
-    {"path": "./packages/admin-ui-extensions"},
-    {"path": "./packages/admin-ui-extensions-react"},
-    {"path": "./packages/retail-ui-extensions"},
-    {"path": "./packages/retail-ui-extensions-react"},
     {"path": "./packages/ui-extensions"},
-    {"path": "./packages/ui-extensions-react"},
-    {"path": "./packages/web-pixels-extension"}
+    {"path": "./packages/ui-extensions-react"}
   ]
 }
