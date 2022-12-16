@@ -1,1 +1,5 @@
-export {useCart} from './cart-api';
+export {
+  useCartSubscription,
+  useStatefulSubscribableCart,
+  destroyStatefulSubscribableCart,
+} from './cart-api';

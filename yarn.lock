@@ -3173,19 +3173,19 @@
     react-reconciler "^0.26.0"
     react-test-renderer "^17.0.0"
 
+"@remote-ui/async-subscription@2.1.x", "@remote-ui/async-subscription@^2.1.13":
+  version "2.1.13"
+  resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.1.13.tgz#458ca03d407e2bd931ef2b5246a7c2b79f44a13d"
+  integrity sha512-Mc7iZ4nCIizdG/UWTW31HdtdmGpmjTah6Im+NJgwmmXZ8cnfFjxHFgpKc+kIhJTVKdmuN4KFHmNIXVSmeMTZdA==
+  dependencies:
+    "@remote-ui/rpc" "^1.3.4"
+
 "@remote-ui/async-subscription@^2.1.12":
   version "2.1.12"
   resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.1.12.tgz#e0ebc7507546f333bfbcb6a157391f2f44c29a8a"
   integrity sha512-O+PaG8r8u+a6VBx0L20GGvbZMuCWNpmmxi+GrLzRDZOUbJCTFGnSzS7+KsTi2wRHSkVWB4W2A5jqTU1fTKf+vQ==
   dependencies:
     "@remote-ui/rpc" "^1.3.3"
-
-"@remote-ui/async-subscription@^2.1.13":
-  version "2.1.13"
-  resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.1.13.tgz#458ca03d407e2bd931ef2b5246a7c2b79f44a13d"
-  integrity sha512-Mc7iZ4nCIizdG/UWTW31HdtdmGpmjTah6Im+NJgwmmXZ8cnfFjxHFgpKc+kIhJTVKdmuN4KFHmNIXVSmeMTZdA==
-  dependencies:
-    "@remote-ui/rpc" "^1.3.4"
 
 "@remote-ui/core@2.1.x", "@remote-ui/core@^2.1.16":
   version "2.1.16"

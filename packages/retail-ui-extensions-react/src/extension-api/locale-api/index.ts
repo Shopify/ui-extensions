@@ -1,1 +1,5 @@
-export {useLocale} from './locale-api';
+export {
+  useLocaleSubscription,
+  useStatefulSubscribableLocale,
+  destroyStatefulSubscribableLocale,
+} from './locale-api';

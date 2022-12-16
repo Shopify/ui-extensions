@@ -1,9 +1,11 @@
-export interface LocaleApiContent {
-  /** IETF-formatted locale at time of page load */
-  initialValue: string;
+import type {RemoteSubscribable} from '@remote-ui/async-subscription';
 
-  /** Callback when user changes locale during runtime */
-  setOnChange(onChange: (locale: string) => void): void;
+export interface LocaleApiContent {
+  /** IETF-formatted locale at time of page load and a callback to subsribe to value changes. Current supports only one subscription.
+   * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
+   * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
+   */
+  subscribable: RemoteSubscribable<string>;
 }
 
 /**
