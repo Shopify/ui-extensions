@@ -1,5 +1,5 @@
 import {BasicComponents, SmartGridComponents} from 'component-sets';
-import {SmartGridApi, StandardApi} from '../extension-api';
+import {SmartGridApi, NavigationApi, StandardApi} from '../extension-api';
 import {RenderExtension} from './render-extension';
 
 export interface ExtensionPoints {
@@ -8,7 +8,7 @@ export interface ExtensionPoints {
     SmartGridComponents
   >;
   'Retail::SmartGrid::Modal': RenderExtension<
-    StandardApi<'Retail::SmartGrid::Modal'>,
+    StandardApi<'Retail::SmartGrid::Modal'> & NavigationApi,
     BasicComponents
   >;
 }
