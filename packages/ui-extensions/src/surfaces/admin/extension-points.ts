@@ -1,6 +1,10 @@
 import type {RenderExtension} from '../../extension';
 
-import type {CheckoutEditorRenderSettingsApi, ProductDetailsComponentsApi, ProductVariantDetailsComponentsApi} from './api';
+import type {
+  CheckoutEditorRenderSettingsApi,
+  ProductDetailsComponentsApi,
+  ProductVariantDetailsComponentsApi,
+} from './api';
 import type {AnyComponent} from './shared';
 
 export interface ExtensionPoints {
