@@ -1,1 +1,4 @@
-export {useStatefulSubscribableLocale} from './locale-api';
+export {
+  useStatefulSubscribableLocale,
+  destroyStatefulSubscribableLocale,
+} from './locale-api';

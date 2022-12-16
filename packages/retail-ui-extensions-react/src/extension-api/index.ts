@@ -1,3 +1,9 @@
 export {useExtensionApi} from './utils';
-export {useStatefulSubscribableCart} from './cart-api';
-export {useStatefulSubscribableLocale} from './locale-api';
+export {
+  useStatefulSubscribableCart,
+  destroyStatefulSubscribableCart,
+} from './cart-api';
+export {
+  useStatefulSubscribableLocale,
+  destroyStatefulSubscribableLocale,
+} from './locale-api';

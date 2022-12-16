@@ -7,7 +7,9 @@ export {
 export {
   useExtensionApi,
   useStatefulSubscribableCart,
+  destroyStatefulSubscribableCart,
   useStatefulSubscribableLocale,
+  destroyStatefulSubscribableLocale,
 } from './extension-api';
 export * from './components';
 
