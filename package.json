@@ -34,6 +34,8 @@
   },
   "devDependencies": {
     "@babel/node": "^7.8.7",
+    "@changesets/changelog-github": "^0.4.7",
+    "@changesets/cli": "^2.25.2",
     "@microsoft/tsdoc": "^0.12.20",
     "@rollup/plugin-virtual": "^2.0.3",
     "@shopify/babel-preset": "^24.1.0",
