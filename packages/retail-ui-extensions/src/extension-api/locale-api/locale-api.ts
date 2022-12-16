@@ -3,9 +3,9 @@ import type {RemoteSubscribable} from '@remote-ui/async-subscription';
 export interface LocaleApiContent {
   /** IETF-formatted locale at time of page load and a callback to subsribe to value changes. Current supports only one subscription.
    * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
-   * Using `makeStatefulSubscribable` counts as a subscription so it needs to be shared between the `Screen` objects.
+   * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
    */
-  current: RemoteSubscribable<string>;
+  subscribable: RemoteSubscribable<string>;
 }
 
 /**

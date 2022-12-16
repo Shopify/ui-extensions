@@ -17,9 +17,9 @@ export type DiscountType =
 export interface CartApiContent {
   /** Initial value and a callback to subsribe to value changes. Current supports only one subscription.
    * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
-   * Using `makeStatefulSubscribable` counts as a subscription so it needs to be shared between the `Screen` objects.
+   * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
    */
-  current: RemoteSubscribable<Cart>;
+  subscribable: RemoteSubscribable<Cart>;
 
   /** Apply a cart level discount
    * @param type the type of discount applied (example: 'Percentage')

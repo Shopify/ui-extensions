@@ -4,7 +4,11 @@ export {
   makeStatefulSubscribable,
   CountryCode,
 } from '@shopify/retail-ui-extensions';
-export {useExtensionApi} from './extension-api';
+export {
+  useExtensionApi,
+  useStatefulSubscribableCart,
+  useStatefulSubscribableLocale,
+} from './extension-api';
 export * from './components';
 
 export type {

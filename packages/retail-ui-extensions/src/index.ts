@@ -100,4 +100,8 @@ export type {
 export {extend} from './extend';
 export type {ShopifyGlobal} from './globals';
 
+export type {
+  RemoteSubscribable,
+  StatefulRemoteSubscribable,
+} from '@remote-ui/async-subscription';
 export {makeStatefulSubscribable} from '@remote-ui/async-subscription';
