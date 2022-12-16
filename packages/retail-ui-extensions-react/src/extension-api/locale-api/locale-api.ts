@@ -1,6 +1,7 @@
 import type {StatefulRemoteSubscribable} from '@shopify/retail-ui-extensions/src';
 import {makeStatefulSubscribable} from '@shopify/retail-ui-extensions';
 import {useExtensionApi} from '../utils';
+import {useEffect, useRef, useState} from 'react';
 
 /**
  * Global instance of the subscribable that is created on the first `useStatefulSubscribableLocale` call.
@@ -14,6 +15,29 @@ let statefulSubscribable: StatefulRemoteSubscribable<string> | undefined;
 const isLocaleApi = (api: any): boolean => {
   return 'locale' in api;
 };
+
+/**
+ * A hook utilizing `useState` and the `useStatefulSubscribableLocale` function to create a component state.
+ * @returns this hook returns the latest Locale state which re-renders on change.
+ */
+export function useLocaleSubscription() {
+  const statefulSubscribableLocale = useStatefulSubscribableLocale();
+  const [locale, setLocale] = useState<string>(
+    statefulSubscribableLocale.current,
+  );
+
+  const unsubscribeRef = useRef<() => void>();
+
+  useEffect(() => {
+    if (!unsubscribeRef.current) {
+      statefulSubscribableLocale.subscribe((locale: string) => {
+        setLocale(locale);
+      });
+    }
+  }, [statefulSubscribableLocale]);
+
+  return locale;
+}
 
 /**
  * A hook utilizing the `makeStatefulSubscribable` function to allow multiple Locale subscriptions.

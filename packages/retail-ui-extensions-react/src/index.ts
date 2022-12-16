@@ -6,8 +6,10 @@ export {
 } from '@shopify/retail-ui-extensions';
 export {
   useExtensionApi,
+  useCartSubscription,
   useStatefulSubscribableCart,
   destroyStatefulSubscribableCart,
+  useLocaleSubscription,
   useStatefulSubscribableLocale,
   destroyStatefulSubscribableLocale,
 } from './extension-api';
