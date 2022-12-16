@@ -1,4 +1,5 @@
 import type {Address, Cart, Customer, CustomSale} from '../types';
+import type {RemoteSubscribable} from '@remote-ui/async-subscription';
 
 /**
  * Access and modify the merchant’s current cart.
@@ -14,11 +15,11 @@ export type DiscountType =
   | 'Code';
 
 export interface CartApiContent {
-  /** Initial value of the Cart when the screen is rendered. */
-  initialValue: Cart;
-
-  /** Callback when the cart changes */
-  setOnChange(onChange: (cart: Cart) => void): void;
+  /** Initial value and a callback to subsribe to value changes. Current supports only one subscription.
+   * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
+   * Using `makeStatefulSubscribable` counts as a subscription so it needs to be shared between the `Screen` objects.
+   */
+  current: RemoteSubscribable<Cart>;
 
   /** Apply a cart level discount
    * @param type the type of discount applied (example: 'Percentage')
