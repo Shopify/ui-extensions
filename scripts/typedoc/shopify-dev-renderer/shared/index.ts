@@ -135,7 +135,8 @@ const PII_APPENDS = [
     value: ' {% include /apps/checkout/privacy-icon.md %}',
   },
   {
-    condition: (context: any) => context.name === 'email',
+    condition: (context: any) =>
+      context.name === 'email' && context.docs.content.match('the customer'),
     value: ' {% include /apps/checkout/privacy-icon.md %}',
   },
   {
@@ -156,7 +157,8 @@ const PII_APPENDS = [
     value: ' {% include /apps/checkout/privacy-icon.md %}',
   },
   {
-    condition: (context: any) => context.name === 'phone',
+    condition: (context: any) =>
+      context.name === 'phone' && !context.docs.content.match('cart'),
     value: ' {% include /apps/checkout/privacy-icon.md %}',
   },
   {
