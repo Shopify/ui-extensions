@@ -88,6 +88,99 @@ export function dedupe<T>(array: T[]) {
   return [...new Set(array)];
 }
 
+const PII_APPENDS = [
+  {
+    condition: (context: any) => context.name === 'AppMetafieldEntryTarget',
+    value: `{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/apps/store/data-protection/protected-customer-data) in order to return \`customer\` metafields.\n\n`,
+  },
+  {
+    condition: (context: any) => context.name === 'BuyerIdentity',
+    value: `{% include /apps/checkout/access-required-message.md %}\n\n`,
+  },
+  {
+    condition: (context: any) => context.name === 'Customer',
+    value: `{% include /apps/checkout/access-required-message.md %}\n\n`,
+  },
+  {
+    condition: (context: any) => context.name === 'MailingAddress',
+    value: `{% include /apps/checkout/access-required-message.md %}\n\n`,
+  },
+  {
+    condition: (context: any) => context.name === 'StandardApi',
+    value: `{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/apps/store/data-protection/protected-customer-data) for some of the APIs.\n\n`,
+  },
+
+  {
+    condition: (context: any) => context.name === 'address1',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) => context.name === 'address2',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) => context.name === 'appMetafields',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) => context.name === 'buyerIdentity',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) => context.name === 'city',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) => context.name === 'countryCode',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) =>
+      context.name === 'email' && context.docs.content.match('the customer'),
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) => context.name === 'firstName',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) => context.name === 'fullName',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) => context.name === 'lastName',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) =>
+      context.name === 'name' && context.docs.content.match('buyer'),
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) =>
+      context.name === 'phone' && !context.docs.content.match('cart'),
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) => context.name === 'provinceCode',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) => context.name === 'shippingAddress',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) =>
+      context.name === 'target' &&
+      context.value.name === 'AppMetafieldEntryTarget',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+  {
+    condition: (context: any) => context.name === 'zip',
+    value: ' {% include /apps/checkout/privacy-icon.md %}',
+  },
+];
+
 export function propsTable(
   name: string,
   docs: Documentation | undefined,
@@ -109,6 +202,12 @@ export function propsTable(
     markdown += `${docs ? `${strip(docs.content).trim()}\n\n` : ''}`;
   } else {
     markdown += '\n';
+  }
+
+  const matchingAppend = PII_APPENDS.find((append) => append.condition({name}));
+
+  if (matchingAppend) {
+    markdown += matchingAppend.value;
   }
 
   const indexSignatures: IndexSignature[] = properties.filter(
@@ -169,7 +268,12 @@ export function propsTable(
             : '';
           table.push([type, description]);
         } else {
-          const name = `${propName}${optional ? '?' : ''}`;
+          const matchingAppend = PII_APPENDS.find((append) =>
+            append.condition({docs: propDocs, name: propName, value}),
+          );
+          const name = `${propName}${optional ? '?' : ''}${
+            matchingAppend ? matchingAppend.value : ''
+          }`;
 
           const type = `<code>${propType(
             value,
