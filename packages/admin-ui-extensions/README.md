@@ -24,6 +24,6 @@ extend('Playground', (root) => {
 });
 ```
 
-You can find more component usage examples alongside each component in [packages/admin-ui-extensions/src/components](packages/admin-ui-extensions/src/components)
+You can find more component usage examples alongside each component in [packages/admin-ui-extensions/src/components](/packages/admin-ui-extensions/src/components)
 
-To use the React implementation, check out [packages/admin-ui-extensions-react](packages/admin-ui-extensions/README.md).
+To use the React implementation, check out [packages/admin-ui-extensions-react](/packages/admin-ui-extensions/README.md).
