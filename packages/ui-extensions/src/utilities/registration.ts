@@ -19,7 +19,7 @@ export function createExtensionRegistrationFunction<
     target,
     implementation,
   ) => {
-    globalThis.shopify.extend(target, implementation);
+    (globalThis as any).shopify?.extend(target, implementation);
     return implementation;
   };
 
