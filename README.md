@@ -1,86 +1,27 @@
 # UI Extensions
 
-This repo contains the packages that make up the UI extensibility framework for Shopify’s first-party applications. It includes a collection of patterns and libraries that give Shopify a performant, strongly-typed way of providing UI extension points for third-party developers.
+This repo contains the public definition of Shopify’s UI extension API. App developers can use these libraries for a strongly-typed, optimized development experience that lets them focus on integrating their app’s features deep into Shopify workflows. You can learn more about what is possible with UI extensions in [Shopify’s developer documentation](https://shopify.dev/api/checkout-extensions/checkout).
 
-## I just want to _build_ a UI Extension, not learn about them!
+Shopify provides different “variants” of UI extension APIs that are suitable for different developers:
 
-Get started by adding your new UI extension APIs to the [`@shopify/ui-extensions` package](./packages/ui-extensions/). We also provide [a React library](./packages/ui-extensions-react/) you may need to update as well.
+- [`@shopify/ui-extensions`](./packages/ui-extensions/) lets developers use a small, strongly-typed JavaScript API for creating UI extensions
+- [`@shopify/ui-extensions-react`](./packages/ui-extensions-react/) lets developers create UI extensions using [React](https://reactjs.org/), a popular JavaScript library for building user interfaces
 
-If you want to learn a little more about the patterns found throughout these libraries, and the way that they are rendered into the applications they extend, read on!
+## What are “UI extensions”?
 
-### Open-source core
+A UI extension is a JavaScript-based module that can hook in to client-side behaviors on any of Shopify’s first party UI surface areas. The most minimal definition of a UI extension has the following properties:
 
-The underlying technology for UI Extensions is [remote-ui](https://github.com/Shopify/remote-ui), an open source technology built by Shopify. remote-ui provides the basic [message passing](https://github.com/Shopify/remote-ui/tree/main/packages/rpc) system that is used by UI Extensions to communicate with the “host” application they are extending. remote-ui also provides the [component model](https://github.com/Shopify/remote-ui/tree/main/packages/core) extensions use to describe their UI. If you are familiar with building for the web, remote-ui is very similar to the DOM — it gives you a programmatic model for defining UI components and attaching UI to the screen.
+- A **name** that is presented to merchants when interacting with the extension.
+- The **extension points** that the UI extension implements. These are represented with string identifiers that describe the surface and responsibility of the extension. For example, [`Checkout::CartLines::RenderAfter`](https://shopify.dev/api/checkout-extensions/checkout/extension-points/api) gives the UI Extension the ability to render UI after the cart lines in a checkout. A UI Extension can register to support multiple extension points, and must map each to a JavaScript module in their application.
 
-In addition to the basic message passing and component model, remote-ui offers integrations for frameworks like [React](https://github.com/Shopify/remote-ui/tree/main/packages/react) and [Vue](https://github.com/Shopify/remote-ui/tree/main/packages/vue). These integrations are used by UI Extensions to provide framework-specific bindings, allowing developers to use UI frameworks they are already familiar with.
+The types in this package allow us to represent additional details about the extension points developers can implement. Each extension point can define what APIs it supports, including:
 
-### Components
+- What **UI Components** are available to be rendered, and what properties those UI components accept
+- What **imperative APIs** are provided by the host, for reading and writing data relevant to the extension
 
-On top of this technical foundation, UI Extensions provide a set of components that extensions can render. In remote-ui, the components your extension renders are actually just tiny JavaScript objects — they don’t have any DOM attached to them at all. These minimal components are sent to the host application to be rendered into native UI. This allows us to expose a minimal API for components that is focused on what you as a developer actually need to do — responding to events or customizing the appearance — while giving Shopify the ability to offer a highly-optimized set of native UI components in the host application. Because your extension does not render to the actual DOM, Shopify can change or update the components without you needing to take any action. This also gives Shopify the ability to make the components fit in seamlessly if they are in a context that allows merchant theming, like Shopify’s Checkout.
+The available components and APIs can be different for each extension point. Additionally, Shopify can vary the components and APIs it provides based on many other factors at runtime, like:
 
-The exact components available to the extension depend on the surface area you are embedding — please refer to the [documentation linked above](#i-just-want-to-build-a-ui-extension-not-learn-about-them) for more details. If you’ve ever used [Polaris](https://polaris.shopify.com/), though, the components you will find will look extremely familiar, as many components and props are based on their Polaris equivalents.
+- Whether the API client that owns the extension has certain approval scopes,
+- Whether the shop or API client has particular beta flags enabled
 
-### Extension points
-
-While remote-ui provides the component model, and takes care of propagating updates to the host application, it does not have any built-in notion of an “extension”. To create an extension system, Shopify authors a bit of extra code:
-
-- A mapping of “extension points” which, in code, are just strings with a specific naming format
-- A way to load third-party code that can register to be called for those extension points.
-
-These might sound little complicated, but there’s actually very little Shopify code needed construct the “UI Extension sandbox” that manages the extensions. The sandbox is just a slightly more complex version of the following code snippet:
-
-```js
-// We keep a mapping of all the extension points you register for
-const registeredExtensionPoints = new Map();
-
-// We define a globally-available `shopify` object. The only thing this object
-// can do is register an extension (which is just a callback function) for a
-// specific extension point.
-globalThis.shopify = {
-  extend(extensionPoint, extension) {
-    registeredExtensionPoints.set(extensionPoint, extension);
-  },
-};
-
-// Here’s the function the host application will call to load your extension’s
-// script into the sandbox
-export function load(script) {
-  // Internal workings — don’t worry too much about this, because we might change
-  // it in the future as new web platform features are available!
-}
-
-// Once your script is loaded, it can register callbacks for extension points using `shopify.extend()`.
-// The host calls this `run()` function with the public API for this extension point, like the data your
-// extension has access to and the UI “root“ your components will be attached to. `run()` then forwards
-// the arguments it received to the callback you registered for this extension point.
-export function run(extensionPoint, ...args) {
-  return registeredExtensionPoints.get(extensionPoint)?.(...args);
-}
-```
-
-In your extension code, you make use of these APIs using patterns that feel idiomatic in JavaScript:
-
-```js
-shopify.extend('Checkout::Dynamic::Render', (root) => {
-  root.appendChild(root.createText('Hello world!'));
-});
-
-// Or, if you are using our NPM libraries, we offer a bit of sugar over the
-// global:
-
-import {extend} from '@shopify/ui-extensions/checkout';
-
-extend('Checkout::Dynamic::Render', (root) => {
-  root.appendChild(root.createText('Hello world!'));
-});
-```
-
-Your UI Extension will receive different arguments depending on the extension point you’ve selected. The extension API you receive may also be affected by other factors, like your app’s permissions. For full details on what arguments are passed for each extension point, please refer to the documentation for the [Admin and Checkout surface area you want to extend](#i-just-want-to-build-a-ui-extension-not-learn-about-them).
-
-## Contributing
-
-We provide the libraries in this repo as public NPM packages so that they can be installed and used in your local project. Because the packages are public, we have also made the repo public. This way, you can easily refer to the in-code comments we use for documenting UI Extensions APIs. However, the code in this repo is not a traditional open source project.
-
-These packages act as the public API Shopify is exposing for UI Extensions in our applications, and as a result, we **are not accepting contributions that change or add to these APIs**. Any change to these repos is typically only one part of the full required change, with the rest being done in private Shopify repos that third-party developers do not have access to.
-
-Though we are not accepting contributions, we’d still love to hear from you! If you have ideas for new components or APIs, please [raise an issue on this repo](https://github.com/Shopify/ui-extensions/issues/new/choose). We will also happily accept pull requests for fixing typos in the documentation. If you do raise an issue or PR on this repo, please read [the code of conduct](./CODE_OF_CONDUCT.md), which all contributors must adhere to.
+We have also written a [technical explanation of how extensions work under the hood](./documentation/how-extensions-work.md) for those who want to learn more.
