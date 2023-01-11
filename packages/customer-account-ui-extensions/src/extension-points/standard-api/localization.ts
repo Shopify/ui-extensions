@@ -1,17 +1,4 @@
-import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
-
-export type Version = 'unstable';
-
-export interface Language {
-  /**
-   * The BCP-47 language tag. It may contain a dash followed by an ISO 3166-1 alpha-2 region code.
-   *
-   * @example 'en' for English, or 'en-US' for English local to United States.
-   * @see https://en.wikipedia.org/wiki/IETF_language_tag
-   * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-   */
-  isoCode: string;
-}
+import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 export interface Localization {
   /**
@@ -31,6 +18,17 @@ export interface Localization {
    * extension (that is, the one matching your .default.json file).
    */
   extensionLanguage: StatefulRemoteSubscribable<Language>;
+}
+
+export interface Language {
+  /**
+   * The BCP-47 language tag. It may contain a dash followed by an ISO 3166-1 alpha-2 region code.
+   *
+   * @example 'en' for English, or 'en-US' for English local to United States.
+   * @see https://en.wikipedia.org/wiki/IETF_language_tag
+   * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+   */
+  isoCode: string;
 }
 
 /**
@@ -91,45 +89,4 @@ export interface I18n {
    * - If replacements contain UI components, then `translate()` returns an array of elements.
    */
   translate: I18nTranslate;
-}
-
-/**
- * The following APIs are provided to all extension points.
- */
-export interface StandardApi {
-  customerApi: {
-    getEndpoint(version: 'unstable'): Promise<string>;
-    getAccessToken(): Promise<string>;
-  };
-
-  /**
-   * Details about the language of the buyer.
-   */
-  localization: Localization;
-
-  /**
-   * Utilities for translating content and formatting values according to the current `localization`
-   * of the user.
-   */
-  i18n: I18n;
-
-  router: {
-    getExtensionFullPageUrl(relative: string): Promise<string>;
-    navigate(to: string): Promise<void>;
-  };
-
-  /**
-   * An authenticated redirect is a way to seamlessly integrate 3P apps
-   * built outside of self-serve into the self-serve experience. The 3P app accepts this data,
-   * bypasses any authentication screens on their side, and sends the user directly into
-   * their app to complete the task at hand. Once the task is complete, the app routes the user back into self-serve.
-   */
-  authenticatedRedirect: {
-    getStartUrl(): Promise<string>;
-  };
-
-  /**
-   * A list of feature names for features enabled on a shop
-   */
-  features: string[];
 }
