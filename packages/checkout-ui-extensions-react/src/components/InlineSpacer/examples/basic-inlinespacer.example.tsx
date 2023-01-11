@@ -17,6 +17,14 @@ function App() {
       <View border="base" padding="base">
         View
       </View>
+      <InlineSpacer spacing="tight" />
+      <View border="base" padding="base">
+        View
+      </View>
+      <InlineSpacer spacing="base" />
+      <View border="base" padding="base">
+        View
+      </View>
     </InlineStack>
   );
 }

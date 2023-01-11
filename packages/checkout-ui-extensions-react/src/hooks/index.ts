@@ -22,3 +22,8 @@ export {useCustomer, useEmail, usePhone} from './buyer-identity';
 export {useTranslate} from './translate';
 export {useSettings} from './settings';
 export {useExtensionEditor} from './extension-editor';
+export {
+  useDiscountAllocations,
+  useApplyDiscountCodeChange,
+  useDiscountCodes,
+} from './discounts';

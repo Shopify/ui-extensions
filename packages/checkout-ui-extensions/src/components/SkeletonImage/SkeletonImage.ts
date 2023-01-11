@@ -6,7 +6,6 @@ export interface SkeletonImageProps {
   /**
    * Adjust the block size of the skeleton.
    */
-
   blockSize?: MaybeResponsiveConditionalStyle<number | `${number}%` | 'fill'>;
   /**
    * Adjust the inline size of the skeleton.

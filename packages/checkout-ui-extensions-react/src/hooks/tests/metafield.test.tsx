@@ -71,7 +71,8 @@ describe('useMetafields', () => {
       mount.hook(
         () =>
           useMetafield({
-            // @ts-expect-error - testing a case that goes against the types
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-expect-error
             namespace: undefined,
             key: 'test_key',
           }),
