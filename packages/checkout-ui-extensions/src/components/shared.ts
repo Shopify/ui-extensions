@@ -140,6 +140,8 @@ export type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
 export type BorderStyle = 'base' | 'dotted' | 'none';
 export type BorderWidth = 'base' | 'medium';
 
+export type CornerRadius = 'base' | 'small' | 'large' | 'fullyRounded' | 'none';
+
 export interface BackgroundProps {
   /**
    * Adjust the background.
@@ -217,8 +219,27 @@ export interface BorderProps {
    *
    * - `['base', 'none', 'tight', 'base']` means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`
    */
-  borderRadius?: MaybeResponsiveConditionalStyle<
-    MaybeShorthandProperty<BorderRadius>
+  borderRadius?: MaybeConditionalStyle<MaybeShorthandProperty<BorderRadius>>;
+}
+
+export interface CornerProps {
+  /**
+   * Adjust the corner radius.
+   *
+   * To shorten the code, it is possible to specify all the corner radii in one property.
+   *
+   * For example:
+   *
+   * - `base` means all 4 corner radii are `base`
+   *
+   * - `['base', 'none']` means the StartStart and EndEnd corner radii are `base`, StartEnd and EndStart corner radii are `none`.
+   *    When the context’s language direction is left to right, StartStart and EndEnd corners are the top left and bottom right corners
+   *    while StartEnd and EndStart corners are the top right and bottom left corners.
+   *
+   * - `['base', 'none', 'small', 'base']` means StartStart corner radius is `base`, StartEnd corner radius is `none`, EndEnd corner radius is `small` and  EndStart corner radius is `base`
+   */
+  cornerRadius?: MaybeResponsiveConditionalStyle<
+    MaybeShorthandProperty<CornerRadius>
   >;
 }
 

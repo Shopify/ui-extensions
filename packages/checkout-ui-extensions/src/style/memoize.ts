@@ -151,7 +151,8 @@ export function memoize<F extends (...args: any[]) => any>(
   function memoized() {
     let value = cache.get(arguments);
     if (value === NOT_FOUND) {
-      // @ts-expect-error - we know that arguments is an array-like object
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       value = func.apply(null, arguments);
 
       if (resultEqualityCheck) {

@@ -332,10 +332,6 @@ async function buildComponentGraph(componentIndex: string) {
           value.name = key;
         }
 
-        if (value.properties?.length === 0) {
-          // console.log(value)
-        }
-
         if (value.name === key) {
           nodes.push({value, module: undefined});
         } else {
@@ -346,8 +342,6 @@ async function buildComponentGraph(componentIndex: string) {
             (reassigned.kind !== 'InterfaceType' ||
               reassigned.properties.length)
           ) {
-            console.log('pushing', reassigned);
-
             nodes.push({
               value: {...reassigned, name: key},
               module: undefined,

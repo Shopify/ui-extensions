@@ -26,10 +26,12 @@ type DeepPartial<T> = {
   [P in keyof T]?: DeepPartial<T[P]>;
 };
 
-type ExtensionApi = DeepPartial<ApiForRenderExtension<RenderExtensionPoint>>;
+export type PartialExtensionApi = DeepPartial<
+  ApiForRenderExtension<RenderExtensionPoint>
+>;
 
 interface Options {
-  extensionApi?: ExtensionApi;
+  extensionApi?: PartialExtensionApi;
 }
 
 export function createMockStatefulRemoteSubscribable<T>(

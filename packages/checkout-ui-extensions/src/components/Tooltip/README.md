@@ -6,3 +6,4 @@ Currently, activator components are `Button`, `Link`, and `Pressable`.
 
 The library takes care of applying the WAI-ARIA Tooltip Widget pattern automatically for the activator
 and the tooltip content. Expect screen readers to read the tooltip content when the user focuses the activator.
+
