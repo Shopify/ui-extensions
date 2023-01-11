@@ -18,6 +18,7 @@ export type {
   RadioProps,
   ResourceItemProps,
   ResourceListProps,
+  ResourcePickerProps,
   SelectProps,
   SpinnerProps,
   StackItemProps,
@@ -41,11 +42,13 @@ export type {
   ExtensionData,
   SessionTokenApi,
   ToastApi,
+  ContextualSaveBarApi,
 } from './extension-api';
 
 export type {
   PlaygroundExtensionPoint,
   ProductSubscriptionExtensionPoint,
+  DiscountsExtensionPoint,
   ContainerAction,
   ExtensionResult,
   RenderableExtensionCallback,

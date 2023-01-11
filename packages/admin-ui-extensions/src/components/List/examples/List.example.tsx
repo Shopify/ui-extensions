@@ -1,0 +1,19 @@
+import {extend, List, ListItem} from '@shopify/admin-ui-extensions';
+
+function buildListItem(root) {
+  const listItem = root.createComponent(ListItem);
+  listItem.appendChild('Item in list');
+  return listItem;
+}
+
+extend('Playground', (root) => {
+  const list = root.createComponent(List);
+
+  list.appendChild(buildListItem(root));
+  list.appendChild(buildListItem(root));
+  list.appendChild(buildListItem(root)); 
+
+  root.appendChild(list);
+
+  root.mount();
+});

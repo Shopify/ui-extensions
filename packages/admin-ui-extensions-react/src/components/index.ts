@@ -15,6 +15,7 @@ export * from './OptionList';
 export * from './Radio';
 export * from './ResourceItem';
 export * from './ResourceList';
+export * from './ResourcePicker';
 export * from './Select';
 export * from './Spinner';
 export * from './StackItem';
@@ -22,3 +23,7 @@ export * from './Text';
 export * from './TextBlock';
 export * from './TextField';
 export * from './Thumbnail';
+
+export * from './List';
+export * from './DatePicker';
+export * from './TimePicker';

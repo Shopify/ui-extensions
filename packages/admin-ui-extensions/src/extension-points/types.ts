@@ -4,6 +4,7 @@ import type {LayoutApi} from '../extension-api/LayoutApi';
 import type {LocaleApi} from '../extension-api/LocaleApi';
 import type {ToastApi} from '../extension-api/ToastApi';
 import type {SessionTokenApi} from '../extension-api/SessionTokenApi';
+import type {ContextualSaveBarApi} from '../extension-api/ContextualSaveBarApi';
 
 export type ExtensionResult = Record<string, never> | void;
 
@@ -25,7 +26,13 @@ export type StandardApi<T> = {[key: string]: any} & {
   LocaleApi &
   SessionTokenApi;
 
-export type {LayoutApi, LocaleApi, SessionTokenApi, ToastApi};
+export type {
+  LayoutApi,
+  LocaleApi,
+  SessionTokenApi,
+  ToastApi,
+  ContextualSaveBarApi,
+};
 
 export interface ContainerAction {
   content: string;

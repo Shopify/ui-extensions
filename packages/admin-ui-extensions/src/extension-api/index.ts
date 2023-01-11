@@ -15,3 +15,6 @@ export {isSessionTokenApi} from './SessionTokenApi';
 
 export type {ToastApi} from './ToastApi';
 export {isToastApi} from './ToastApi';
+
+export type {ContextualSaveBarApi} from './ContextualSaveBarApi';
+export {isContextualSaveBarApi} from './ContextualSaveBarApi';
