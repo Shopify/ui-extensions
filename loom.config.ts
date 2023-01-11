@@ -7,6 +7,6 @@ export default createWorkspace((workspace) => {
   workspace.use(
     buildLibraryWorkspace(),
     eslint(),
-    prettier({files: '**/*.{md,json,yaml,yml}'}),
+    prettier({files: '**/*.{json,yaml,yml}'}),
   );
 });
