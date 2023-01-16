@@ -1,6 +1,6 @@
 #!/bin/bash
 
-AVAILABLE_PACKAGES=('admin-ui-extensions' 'admin-ui-extensions-react' 'checkout-ui-extensions' 'checkout-ui-extensions-react' 'post-purchase-ui-extensions' 'post-purchase-ui-extensions-react' 'checkout-ui-extensions-run' 'customer-account-ui-extensions' 'customer-account-ui-extensions-react')
+AVAILABLE_PACKAGES=('ui-extensions' 'ui-extensions-react')
 ROOT=$(pwd)
 
 # Font color
