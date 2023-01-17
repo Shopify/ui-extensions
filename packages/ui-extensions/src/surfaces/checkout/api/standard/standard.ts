@@ -605,9 +605,14 @@ export interface StandardApi<ExtensionPoint extends AnyExtensionPoint>
   applyCartLinesChange(change: CartLineChange): Promise<CartLineChangeResult>;
 
   /**
-   * A list of discount codes currently applied to the checkout
+   * A list of discount codes currently applied to the checkout.
    */
   discountCodes: StatefulRemoteSubscribable<CartDiscountCode[]>;
+
+  /**
+   * Discounts that have been applied to the entire cart.
+   */
+  discountAllocations: StatefulRemoteSubscribable<CartDiscountAllocation[]>;
 
   /**
    * Performs an update on the discount codes.
@@ -806,6 +811,26 @@ export interface CartLine {
    * The line item additional custom attributes.
    */
   attributes: Attribute[];
+
+  /**
+   * Discounts applied to the cart line.
+   */
+  discountAllocations: CartDiscountAllocation[];
+
+  /** @private */
+  __lineComponents: CartLineComponentType[];
+}
+
+/** @private */
+type CartLineComponentType = CartBundleLineComponent;
+
+/** @private */
+export interface CartBundleLineComponent {
+  id: string;
+  merchandise: Merchandise;
+  quantity: number;
+  cost: CartLineCost;
+  attributes: Attribute[];
 }
 
 export interface CartLineCost {
@@ -850,6 +875,11 @@ export interface ProductVariant extends BaseMerchandise {
    * The product variant’s title.
    */
   title: string;
+
+  /**
+   * The product variant's subtitle.
+   */
+  subtitle?: string;
 
   /**
    * Image associated with the product variant. This field falls back to the product
@@ -1074,7 +1104,59 @@ export interface CartDiscountCode {
   code: string;
 }
 
-export type DiscountCodeChange = DiscountCodeAddChange;
+export type CartDiscountAllocation =
+  | CartCodeDiscountAllocation
+  | CartAutomaticDiscountAllocation
+  | CartCustomDiscountAllocation;
+
+export interface CartDiscountAllocationBase {
+  /**
+   * The money amount that has been discounted from the order
+   */
+  discountedAmount: Money;
+}
+
+export interface CartCodeDiscountAllocation extends CartDiscountAllocationBase {
+  /**
+   * The code for the discount
+   */
+  code: string;
+
+  /**
+   * The type of the code discount
+   */
+  type: 'code';
+}
+
+export interface CartAutomaticDiscountAllocation
+  extends CartDiscountAllocationBase {
+  /**
+   * The title of the automatic discount
+   */
+  title: string;
+
+  /**
+   * The type of the automatic discount
+   */
+  type: 'automatic';
+}
+
+export interface CartCustomDiscountAllocation
+  extends CartDiscountAllocationBase {
+  /**
+   * The title of the custom discount
+   */
+  title: string;
+
+  /**
+   * The type of the custom discount
+   */
+  type: 'custom';
+}
+
+export type DiscountCodeChange =
+  | DiscountCodeAddChange
+  | DiscountCodeRemoveChange;
 
 export type DiscountCodeChangeResult =
   | DiscountCodeChangeResultSuccess
@@ -1085,6 +1167,18 @@ export interface DiscountCodeAddChange {
    * The type of the `DiscountCodeChange` API.
    */
   type: 'addDiscountCode';
+
+  /**
+   * The code for the discount
+   */
+  code: string;
+}
+
+export interface DiscountCodeRemoveChange {
+  /**
+   * The type of the `DiscountCodeChange` API.
+   */
+  type: 'removeDiscountCode';
 
   /**
    * The code for the discount

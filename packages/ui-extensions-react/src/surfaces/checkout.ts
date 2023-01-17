@@ -23,6 +23,8 @@ export type {
   BlockAlignment,
   BorderRadius,
   BorderProps,
+  CornerProps,
+  CornerRadius,
   BorderStyle,
   BorderWidth,
   Breakpoint,
