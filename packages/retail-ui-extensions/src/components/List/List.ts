@@ -8,7 +8,7 @@ export interface ListItem {
   imageUri?: string;
   detail?: string;
   detailColor?: 'subdued' | 'action';
-  onClick?: () => void;
+  onTap?: () => void;
 }
 
 export interface ListProps {

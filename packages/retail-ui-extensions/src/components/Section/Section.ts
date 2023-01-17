@@ -8,7 +8,6 @@ export interface SectionHeaderAction {
 export interface SectionProps {
   title?: string;
   action?: SectionHeaderAction;
-  hideSeparators?: boolean;
 }
 
 export const Section = createRemoteComponent<'Section', SectionProps>(
