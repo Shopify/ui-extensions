@@ -1,6 +1,6 @@
 {
   "name": "@shopify/ui-extensions",
-  "version": "2022.10.4",
+  "version": "2022.10.5",
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
