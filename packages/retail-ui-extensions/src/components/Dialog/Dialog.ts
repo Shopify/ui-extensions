@@ -9,8 +9,8 @@ export interface DialogProps {
   secondaryActionText?: string;
   showSecondaryAction?: boolean;
   type?: DialogType;
-  onCancel?: () => void;
-  onAction: () => void;
+  onAction?: () => void;
+  onSecondaryAction: () => void;
   isVisible: boolean;
 }
 

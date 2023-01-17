@@ -1,12 +1,12 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 export interface SearchBarProps {
-  value?: string;
-  onUpdate?: (value: string) => void;
+  initialValue?: string;
+  onTextChange?: (value: string) => void;
   onSearch: (value: string) => void;
   onFocus?: () => void;
   editable?: boolean;
-  placeHolder?: string;
+  placeholder?: string;
   showBarcodeIcon?: boolean;
 }
 

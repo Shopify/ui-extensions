@@ -1,8 +1,8 @@
 export interface BaseTextFieldProps {
   title?: string;
   subtitle?: string;
-  value?: string;
-  hint?: string;
+  initialValue?: string;
+  placeholder?: string;
   isValid?: boolean;
   errorMessage?: string;
   onChangeText?: (value: string) => void;

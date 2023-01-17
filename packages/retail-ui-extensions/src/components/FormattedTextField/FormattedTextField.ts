@@ -18,7 +18,6 @@ export type InputType =
 
 export interface FormattedTextFieldProps extends BaseTextFieldProps {
   inputType?: InputType;
-  showError?: boolean;
   autoCapitalize?: AutoCapitalizationType;
   customValidator?: (text: string) => boolean;
 }

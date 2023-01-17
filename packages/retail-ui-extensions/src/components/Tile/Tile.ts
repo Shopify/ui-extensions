@@ -4,6 +4,7 @@ export interface TileProps {
   title: string;
   subtitle?: string;
   enabled: boolean;
+  destructive?: boolean;
   onPress: () => void;
 }
 

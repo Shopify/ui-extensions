@@ -3,8 +3,8 @@ import {createRemoteComponent} from '@remote-ui/core';
 export interface RadioButtonListProps {
   items: string[];
   onItemSelected: (item: string) => void;
-  selectedItem?: string;
-  renderFromTop?: boolean;
+  initialSelectedItem?: string;
+  initialOffsetToShowSelectedItem?: boolean;
 }
 
 export const RadioButtonList = createRemoteComponent<
