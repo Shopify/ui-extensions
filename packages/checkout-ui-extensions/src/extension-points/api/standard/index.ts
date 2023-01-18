@@ -652,6 +652,21 @@ export interface StandardApi<
    * Exposes a `analytics.publish` method to publish analytics events.
    */
   analytics: Analytics;
+
+  /**
+   * Provides access to session tokens, which can be used to validate requests between your extension and your backend.
+   */
+  sessionToken: SessionToken;
+}
+
+export interface SessionToken {
+  /**
+   * Requests a session token that hasn't expired. You should call this method every
+   * time you need to make a request to your backend in order to get a valid token.
+   * This method will cache tokens until their expiry itself, so you don’t need to worry
+   * about storing these tokens yourself.
+   */
+  get(): Promise<string>;
 }
 
 export interface BuyerIdentity {

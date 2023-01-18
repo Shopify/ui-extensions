@@ -20,6 +20,7 @@ export {useExtensionData} from './extension-data';
 export {useSubscription} from './subscription';
 export {useCustomer, useEmail, usePhone} from './buyer-identity';
 export {useTranslate} from './translate';
+export {useSessionToken} from './session-token';
 export {useSettings} from './settings';
 export {useExtensionEditor} from './extension-editor';
 export {
