@@ -31,7 +31,6 @@ export {
   Text,
   TextBlock,
   TextField,
-  View,
 } from '@shopify/checkout-ui-extensions';
 
 export type {
@@ -70,7 +69,6 @@ export type {
   TextProps,
   TextBlockProps,
   TextFieldProps,
-  ViewProps,
   ViewPosition,
   ViewPositionType,
   ViewTranslate,
