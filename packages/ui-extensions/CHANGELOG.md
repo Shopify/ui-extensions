@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2022.10.6
+
+### Patch Changes
+
+- [`0a35c45b`](https://github.com/Shopify/ui-extensions/commit/0a35c45bff5ff8e3ddff19aa80c5c222ef07fcfa) Thanks [@lemonmade](https://github.com/lemonmade)! - Example unstable change
+
 ## 2022.10.5
 
 ### Patch Changes
