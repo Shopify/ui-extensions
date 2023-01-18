@@ -19,8 +19,15 @@ jobs:
 
       - uses: ./.github/workflows/actions/prepare
 
+      - name: Create an .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+
       - name: Deploy snapshot versions
         run: yarn run deploy:unstable
         env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
