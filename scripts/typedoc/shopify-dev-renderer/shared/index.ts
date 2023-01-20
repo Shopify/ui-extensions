@@ -181,6 +181,10 @@ const PII_APPENDS = [
   },
 ];
 
+interface Options {
+  excludePrivateFields?: boolean;
+}
+
 export function propsTable(
   name: string,
   docs: Documentation | undefined,
@@ -190,6 +194,7 @@ export function propsTable(
   additionalPropsTables: string[],
   titleAndDocs = true,
   headingLevel = 2,
+  options: Options = {},
 ) {
   let markdown = '';
 
@@ -216,7 +221,10 @@ export function propsTable(
   );
   const propertySignatures: PropertySignature[] = properties.filter(
     (property): property is PropertySignature =>
-      property.kind === 'PropertySignature',
+      property.kind === 'PropertySignature' &&
+      (options.excludePrivateFields
+        ? !property.docs?.content.includes('@private')
+        : true),
   );
 
   if (indexSignatures?.length) {
@@ -227,11 +235,17 @@ export function propsTable(
       exports,
       dir,
       additionalPropsTables,
+      false,
+      [],
+      options,
     )}]: ${propType(
       property.value,
       exports,
       dir,
       additionalPropsTables,
+      false,
+      [],
+      options,
     )}</code>`;
   } else if (propertySignatures?.length) {
     const table = [];
@@ -261,6 +275,9 @@ export function propsTable(
             exports,
             dir,
             additionalPropsTables,
+            false,
+            [],
+            options,
           );
           const type = `<code>(${thisParamType}): ${thisPropType}</code>`;
           const description = propDocs
@@ -282,6 +299,7 @@ export function propsTable(
             additionalPropsTables,
             false,
             findRepeatingTypes(value, exports),
+            options,
           )}</code>`;
 
           const content = propDocs ? strip(propDocs.content) : '';
@@ -301,6 +319,9 @@ export function propsTable(
                       exports,
                       dir,
                       additionalPropsTables,
+                      false,
+                      [],
+                      options,
                     )}</code>: ${type.comments.join(' ')}`,
                   );
                 }
@@ -434,6 +455,7 @@ function propType(
   additionalPropsTables: string[],
   inArrayType = false,
   repeatingTypes: string[] = [],
+  options: Options = {},
 ): any {
   let params = '';
   if (value.params != null && value.params.length > 0) {
@@ -453,6 +475,7 @@ function propType(
           additionalPropsTables,
           inArrayType,
           repeatingTypes,
+          options,
         ),
       )
       .join(', ')}<wbr>>`;
@@ -482,6 +505,7 @@ function propType(
         additionalPropsTables,
         true,
         repeatingTypes,
+        options,
       )}[]`;
     case 'NumberType':
       return 'number';
@@ -521,6 +545,7 @@ function propType(
             additionalPropsTables,
             inArrayType,
             repeatingTypes,
+            options,
           );
         }
 
@@ -552,6 +577,7 @@ function propType(
         additionalPropsTables,
         inArrayType,
         repeatingTypes,
+        options,
       );
     }
     case 'InterfaceType':
@@ -569,6 +595,7 @@ function propType(
           additionalPropsTables,
           true,
           3,
+          options,
         ),
       );
       return `${anchorLink(value.name)}${params}`;
@@ -610,6 +637,7 @@ function propType(
               additionalPropsTables,
               false,
               repeatingTypes,
+              options,
             )}`,
         )
         .join(', ')}}`;
@@ -641,6 +669,9 @@ function propType(
             exports,
             dir,
             additionalPropsTables,
+            false,
+            [],
+            options,
           )}}`;
         })
         .join('');
@@ -660,6 +691,7 @@ function propType(
         additionalPropsTables,
         false,
         repeatingTypes,
+        options,
       )}`;
     case 'MethodSignatureType':
       return `(${paramsType(
@@ -674,6 +706,7 @@ function propType(
         additionalPropsTables,
         false,
         repeatingTypes,
+        options,
       )}`;
     case 'MappedType':
       // eslint-disable-next-line no-case-declarations
@@ -691,6 +724,7 @@ function propType(
         additionalPropsTables,
         false,
         repeatingTypes,
+        options,
       )} extends ${propType(
         value.extendsType,
         exports,
@@ -698,6 +732,7 @@ function propType(
         additionalPropsTables,
         false,
         repeatingTypes,
+        options,
       )} ? ${propType(
         value.trueType,
         exports,
@@ -705,6 +740,7 @@ function propType(
         additionalPropsTables,
         false,
         repeatingTypes,
+        options,
       )} : ${propType(
         value.falseType,
         exports,
@@ -712,6 +748,7 @@ function propType(
         additionalPropsTables,
         false,
         repeatingTypes,
+        options,
       )}`;
     case 'IndexSignatureType':
       return `[${paramsType(
@@ -726,6 +763,7 @@ function propType(
         additionalPropsTables,
         false,
         repeatingTypes,
+        options,
       )}`;
     case 'TupleType':
       return `[${value.elements
@@ -737,6 +775,7 @@ function propType(
             additionalPropsTables,
             false,
             repeatingTypes,
+            options,
           );
         })
         .join(', ')}]`;

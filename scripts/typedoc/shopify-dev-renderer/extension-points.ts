@@ -18,6 +18,7 @@ const additionalPropsTables: string[] = [];
 interface Options {
   visibility?: Visibility;
   title?: string;
+  excludePrivateFields?: boolean;
 }
 
 export interface PartialStaticContent {
@@ -31,7 +32,11 @@ export async function extensionPoints(
   options: Options = {},
 ) {
   const extensionsIndex = resolve(`${paths.inputRoot}/src/index.ts`);
-  const {visibility = 'hidden', title = 'Checkout'} = options;
+  const {
+    visibility = 'hidden',
+    title = 'Checkout',
+    excludePrivateFields = true,
+  } = options;
   const visibilityFrontMatter = visibilityToFrontMatterMap.get(visibility);
 
   const graph = await createDependencyGraph(extensionsIndex);
@@ -84,6 +89,9 @@ export async function extensionPoints(
       additionalPropsTables,
       undefined,
       undefined,
+      {
+        excludePrivateFields,
+      },
     );
   });
 
