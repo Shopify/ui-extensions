@@ -9,6 +9,9 @@
     "*": {
       "checkout": [
         "./build/ts/surfaces/checkout.d.ts"
+      ],
+      "admin": [
+        "./build/ts/surfaces/admin.d.ts"
       ]
     }
   },
@@ -24,6 +27,12 @@
       "esnext": "./build/esnext/surfaces/checkout.esnext",
       "import": "./build/esm/surfaces/checkout.mjs",
       "require": "./build/cjs/surfaces/checkout.js"
+    },
+    "./admin": {
+      "types": "./build/ts/surfaces/admin.d.ts",
+      "esnext": "./build/esnext/surfaces/admin.esnext",
+      "import": "./build/esm/surfaces/admin.mjs",
+      "require": "./build/cjs/surfaces/admin.js"
     }
   },
   "license": "MIT",

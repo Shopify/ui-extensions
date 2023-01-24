@@ -1,4 +1,4 @@
-import {extend, TextField} from '@shopify/ui-extensions/checkout';
+import {extension, TextField} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const textfield = root.createComponent(TextField, {

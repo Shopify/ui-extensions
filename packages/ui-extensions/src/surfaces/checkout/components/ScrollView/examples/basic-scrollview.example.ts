@@ -1,4 +1,4 @@
-import {extend, ScrollView, View} from '@shopify/ui-extensions/checkout';
+import {extension, ScrollView, View} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const scrollView = root.createComponent(ScrollView, {maxBlockSize: 400}, [

@@ -1,4 +1,4 @@
-import {extend, Button} from '@shopify/ui-extensions/checkout';
+import {extension, Button} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const button = root.createComponent(
