@@ -1,6 +1,11 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
-import type {CurrencyCode, CountryCode, Timezone} from '../shared';
+import type {
+  CurrencyCode,
+  CountryCode,
+  Timezone,
+  GraphQLError,
+} from '../shared';
 
 /**
  * A key-value storage object for extension points.
@@ -39,13 +44,18 @@ export interface Storage {
 /**
  * The high-level capabilities an extension is allowed to have access to.
  *
+ * * `api_access` allows an extension to make API calls via `fetch()` or `query`.
+ *    This is always granted to an extension when present in the
+ *    `shopify.ui.extension.toml` file. This is declared upfront so that API
+ *     access tokens can be generated only for extensions that need them.
+ *
  * * `network_access` allows an extension to make network calls via fetch() and
  *    is requested by a partner
  *
  * * `block_progress` allows an extension to block a buyer's progress through
  *    checkout and may be granted by a merchant in differing checkout contexts
  */
-export type Capability = 'network_access' | 'block_progress';
+export type Capability = 'api_access' | 'network_access' | 'block_progress';
 
 /**
  * Meta information about an extension point.
@@ -54,7 +64,7 @@ export interface Extension {
   /**
    * The published version of the running extension point.
    *
-   * For unpublished extensions, the value is `null`.
+   * For unpublished extensions, the value is `undefined`.
    *
    * @example 3.0.10
    */
@@ -496,6 +506,13 @@ export interface StandardApi<
      * To block checkout progress, you must set the [block_progress](https://shopify.dev/api/checkout-extensions/checkout/configuration#block-progress) capability in your extension's configuration.
      */
     intercept(interceptor: Interceptor): Promise<() => void>;
+
+    /**
+     * This subscribable value will be true if the buyer completed submitting their order.
+     *
+     * For example, when viewing the order status page after submitting payment, the buyer will have completed their order.
+     */
+    completed: StatefulRemoteSubscribable<boolean>;
   };
 
   /**
@@ -623,6 +640,18 @@ export interface StandardApi<
   ): Promise<DiscountCodeChangeResult>;
 
   /**
+   * Gift Cards that have been applied to the checkout.
+   */
+  appliedGiftCards: StatefulRemoteSubscribable<AppliedGiftCard[]>;
+
+  /**
+   * Performs an update on the gift cards.
+   * It resolves when gift card change have been negotiated and results in an update
+   * to the value retrieved through the `appliedGiftCards` property.
+   */
+  applyGiftCardChange(change: GiftCardChange): Promise<GiftCardChangeResult>;
+
+  /**
    * The metafields requested in the `shopify.ui.extension.toml` file. These metafields are
    * updated when there's a change in the merchandise items being purchased by the customer.
    */
@@ -652,6 +681,34 @@ export interface StandardApi<
    * Exposes a `analytics.publish` method to publish analytics events.
    */
   analytics: Analytics;
+
+  /**
+   * Order information that's available post-checkout.
+   */
+  order: StatefulRemoteSubscribable<Order | undefined>;
+
+  /**
+   * Provides access to session tokens, which can be used to validate requests between your extension and your backend.
+   */
+  sessionToken: SessionToken;
+
+  /**
+   * Used to query the storefront graphql API with prefetched token
+   */
+  query: <Data = unknown, Variables = {[key: string]: unknown}>(
+    query: string,
+    options?: {variables?: Variables},
+  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
+}
+
+export interface SessionToken {
+  /**
+   * Requests a session token that hasn't expired. You should call this method every
+   * time you need to make a request to your backend in order to get a valid token.
+   * This method will cache tokens until their expiry itself, so you don’t need to worry
+   * about storing these tokens yourself.
+   */
+  get(): Promise<string>;
 }
 
 export interface BuyerIdentity {
@@ -682,6 +739,23 @@ export interface BuyerIdentity {
    * More info - https://shopify.dev/apps/store/data-protection/protected-customer-data
    */
   phone: StatefulRemoteSubscribable<string | undefined>;
+}
+
+export interface AppliedGiftCard {
+  /**
+   * The last four characters of the applied gift card's code.
+   */
+  lastCharacters: string;
+
+  /**
+   * The amount of the applied gift card that will be used when the checkout is completed.
+   */
+  amountUsed: Money;
+
+  /**
+   * The current balance of the applied gift card prior to checkout completion.
+   */
+  balance: Money;
 }
 
 export interface Shop {
@@ -816,25 +890,52 @@ export interface CartLine {
    */
   discountAllocations: CartDiscountAllocation[];
 
-  /** @private */
-  __lineComponents: CartLineComponentType[];
+  /**
+   * Sub lines of the merchandise line. If no sub lines are present, this will be an empty array.
+   */
+  lineComponents: CartLineComponentType[];
 }
 
-/** @private */
 type CartLineComponentType = CartBundleLineComponent;
 
-/** @private */
 export interface CartBundleLineComponent {
+  type: 'bundle';
+
+  /**
+   * A unique identifier for the bundle line component.
+   *
+   * This ID is not stable. If an operation updates the line items in any way, all IDs could change.
+   *
+   * @example 'gid://shopify/CartLineComponent/123'
+   */
   id: string;
+
+  /**
+   * The merchandise of this bundle line component.
+   */
   merchandise: Merchandise;
+
+  /**
+   * The quantity of merchandise being purchased.
+   */
   quantity: number;
+
+  /**
+   * The cost attributed to this bundle line component.
+   */
   cost: CartLineCost;
+
+  /**
+   * Additional custom attributes for the bundle line component.
+   *
+   * @example [{key: 'engraving', value: 'hello world'}]
+   */
   attributes: Attribute[];
 }
 
 export interface CartLineCost {
   /**
-   * The total amount the buyer can expect to pay that is directly attributable to a single
+   * The total amount after reductions the buyer can expect to pay that is directly attributable to a single
    * cart line.
    */
   totalAmount: Money;
@@ -895,6 +996,11 @@ export interface ProductVariant extends BaseMerchandise {
    * The product object that the product variant belongs to.
    */
   product: Product;
+
+  /**
+   * The selling plan associated with the merchandise.
+   */
+  sellingPlan?: SellingPlan;
 }
 
 export interface Product {
@@ -912,6 +1018,14 @@ export interface Product {
    * A categorization that a product can be tagged with, commonly used for filtering and searching.
    */
   productType: string;
+}
+
+export interface SellingPlan {
+  /**
+   * A globally-unique identifier.
+   * @example 'gid://shopify/SellingPlan/1'
+   */
+  id: string;
 }
 
 export interface ImageDetails {
@@ -1205,6 +1319,57 @@ export interface DiscountCodeChangeResultError {
   message: string;
 }
 
+export type GiftCardChange = GiftCardAddChange | GiftCardRemoveChange;
+
+export type GiftCardChangeResult =
+  | GiftCardChangeResultSuccess
+  | GiftCardChangeResultError;
+
+export interface GiftCardAddChange {
+  /**
+   * The type of the `GiftCardChange` API.
+   */
+  type: 'addGiftCard';
+
+  /**
+   * Gift card code.
+   */
+  code: string;
+}
+
+export interface GiftCardRemoveChange {
+  /**
+   * The type of the `GiftCardChange` API.
+   */
+  type: 'removeGiftCard';
+
+  /**
+   * Gift card code.
+   */
+  code: string;
+}
+
+export interface GiftCardChangeResultSuccess {
+  /**
+   * Indicates that the gift card change was applied successfully.
+   */
+  type: 'success';
+}
+
+export interface GiftCardChangeResultError {
+  /**
+   * Indicates that the gift card change failed.
+   */
+  type: 'error';
+
+  /**
+   * A message that explains the error. This message is useful for debugging.
+   * It is **not** localized, and therefore should not be presented directly
+   * to the buyer.
+   */
+  message: string;
+}
+
 type InterceptorResult = InterceptorResultAllow | InterceptorResultBlock;
 
 interface InterceptorResultAllow {
@@ -1335,4 +1500,24 @@ export interface ExtensionSettings {
  */
 export interface Analytics {
   publish(name: string, data: {[key: string]: unknown}): Promise<boolean>;
+}
+
+/**
+ * Information about an order that was placed.
+ */
+export interface Order {
+  /**
+   * A globally-unique identifier.
+   * @example 'gid://shopify/Order/1'
+   */
+  id: string;
+  /**
+   * Unique identifier for the order that appears on the order.
+   * @example '#1000'
+   */
+  name: string;
+  /**
+   * If cancelled, the time at which the order was cancelled.
+   */
+  cancelledAt?: string;
 }

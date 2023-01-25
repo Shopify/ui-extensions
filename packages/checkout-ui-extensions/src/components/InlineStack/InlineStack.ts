@@ -49,9 +49,13 @@ export interface InlineStackProps
   /**
    * Adjust spacing between children
    *
+   * - `base` means the space between rows and columns is `base`.
+   *
+   * - [`base`, `none`] means the space between rows is `base`, space between columns is `none`.
+   *
    * @defaultValue 'base'
    **/
-  spacing?: MaybeResponsiveConditionalStyle<Spacing>;
+  spacing?: MaybeResponsiveConditionalStyle<Spacing | [Spacing, Spacing]>;
 }
 
 /**

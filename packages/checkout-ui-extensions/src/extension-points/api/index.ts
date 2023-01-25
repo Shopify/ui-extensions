@@ -57,11 +57,19 @@ export type {
   DiscountCodeChangeResult,
   DiscountCodeChangeResultError,
   DiscountCodeChangeResultSuccess,
+  GiftCardAddChange,
+  GiftCardChange,
+  GiftCardChangeResult,
+  GiftCardChangeResultSuccess,
+  GiftCardRemoveChange,
+  GiftCardChangeResultError,
+  AppliedGiftCard,
   I18n,
   I18nTranslate,
   Currency,
   Language,
   Localization,
+  Order,
 } from './standard';
 export type {CurrencyCode, CountryCode, Timezone} from './shared';
 export type {CartLineRenderAfterApi} from './cart-line-render-after';
