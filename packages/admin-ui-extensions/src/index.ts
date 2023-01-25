@@ -52,4 +52,6 @@ export type {
   ExtensionPoint,
   ExtensionApi,
   ExtensionPointCallback,
+  StoreHoursExtensionPoint,
+  RetailStoreExtensionPoint
 } from './extension-points';

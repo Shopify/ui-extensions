@@ -12,6 +12,20 @@ import {
 
 export type {PlaygroundExtensionPoint, ProductSubscriptionExtensionPoint};
 
+import {
+  StoreHoursExtensionPoint,
+  StoreHoursExtensionApi,
+  StoreHoursExtensionPointCallback,
+} from './identifiers/store_hours';
+export type {StoreHoursExtensionPoint};
+
+import {
+  RetailStoreExtensionPoint,
+  RetailStoreExtensionApi,
+  RetailStoreExtensionPointCallback,
+} from './identifiers/retail_store';
+export type {RetailStoreExtensionPoint};
+
 /*
 Placeholder for new imports
 */
@@ -24,10 +38,16 @@ export type {
 
 export type ExtensionPoint =
   | PlaygroundExtensionPoint
-  | ProductSubscriptionExtensionPoint;
+  | ProductSubscriptionExtensionPoint
+  | StoreHoursExtensionPoint
+  | RetailStoreExtensionPoint;
 
 export type ExtensionApi = PlaygroundExtensionApi &
-  ProductSubscriptionExtensionApi;
+  ProductSubscriptionExtensionApi &
+  StoreHoursExtensionApi &
+  RetailStoreExtensionApi;
 
 export type ExtensionPointCallback = PlaygroundExtensionPointCallback &
-  ProductSubscriptionExtensionPointCallback;
+  ProductSubscriptionExtensionPointCallback &
+  StoreHoursExtensionPointCallback &
+  RetailStoreExtensionPointCallback;
