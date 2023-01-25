@@ -1,5 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import type {HorizontalSpacing, VerticalSpacing} from 'components/Spacing';
+import type {HorizontalSpacing, VerticalSpacing} from '../Spacing';
 
 export type Spacing =
   | 0.5
