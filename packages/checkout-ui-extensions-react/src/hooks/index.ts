@@ -4,7 +4,11 @@ export {useLanguage} from './language';
 export {useTimezone} from './timezone';
 export {useExtensionCapabilities, useExtensionCapability} from './capabilities';
 export {useExtensionLanguage} from './extension-language';
-export {useBuyerJourney, useBuyerJourneyIntercept} from './buyer-journey';
+export {
+  useBuyerJourney,
+  useBuyerJourneyIntercept,
+  useBuyerJourneyCompleted,
+} from './buyer-journey';
 export {useMetafield} from './metafield';
 export {useMetafields, useApplyMetafieldsChange} from './metafields';
 export {useNote, useApplyNoteChange} from './note';
@@ -20,6 +24,7 @@ export {useExtensionData} from './extension-data';
 export {useSubscription} from './subscription';
 export {useCustomer, useEmail, usePhone} from './buyer-identity';
 export {useTranslate} from './translate';
+export {useSessionToken} from './session-token';
 export {useSettings} from './settings';
 export {useExtensionEditor} from './extension-editor';
 export {
@@ -27,3 +32,5 @@ export {
   useApplyDiscountCodeChange,
   useDiscountCodes,
 } from './discounts';
+export {useOrder} from './order';
+export {useAppliedGiftCards, useApplyGiftCardChange} from './gift-cards';

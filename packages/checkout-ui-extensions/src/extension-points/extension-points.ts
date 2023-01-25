@@ -65,6 +65,13 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
+   * A static extension point that is renders above the payment method in payment step of checkout.
+   */
+  'Checkout::GiftCard::Render': RenderExtension<
+    StandardApi<'Checkout::GiftCard::Render'>,
+    AllComponents
+  >;
+  /**
    * A static extension point that is rendered in the order summary, before the discount form element.
    */
   'Checkout::Reductions::RenderBefore': RenderExtension<
@@ -91,6 +98,13 @@ export interface ExtensionPoints {
    */
   'Checkout::Contact::RenderAfter': RenderExtension<
     StandardApi<'Checkout::Contact::RenderAfter'>,
+    AllComponents
+  >;
+  /**
+   * A static extension point that is rendered after a purchase below the customer information.
+   */
+  'Checkout::CustomerInformation::RenderAfter': RenderExtension<
+    StandardApi<'Checkout::CustomerInformation::RenderAfter'>,
     AllComponents
   >;
 }

@@ -61,11 +61,19 @@ export type {
   DiscountCodeChangeResult,
   DiscountCodeChangeResultError,
   DiscountCodeChangeResultSuccess,
+  AppliedGiftCard,
+  GiftCardAddChange,
+  GiftCardChange,
+  GiftCardChangeResult,
+  GiftCardChangeResultSuccess,
+  GiftCardRemoveChange,
+  GiftCardChangeResultError,
   I18n,
   I18nTranslate,
   Currency,
   Language,
   Localization,
+  Order,
 } from './api';
 export type {RenderExtension} from './render-extension';
 export type {

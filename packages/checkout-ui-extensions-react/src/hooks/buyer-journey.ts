@@ -5,6 +5,7 @@ import type {
 } from '@shopify/checkout-ui-extensions';
 
 import {useExtensionApi} from './api';
+import {useSubscription} from './subscription';
 
 /**
  * Returns the `buyerJourney` details on buyer progression in checkout.
@@ -16,12 +17,26 @@ export function useBuyerJourney<
 }
 
 /**
+ * Returns true if the buyer completed submitting their order.
+ *
+ * For example, when viewing the order status page after submitting payment, the buyer will have completed their order.
+ */
+export function useBuyerJourneyCompleted<
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
+>() {
+  const buyerJourney = useExtensionApi<ID>().buyerJourney;
+  const buyerJourneyCompleted = useSubscription(buyerJourney.completed);
+
+  return buyerJourneyCompleted;
+}
+
+/**
  * Returns a function to intercept and block navigation in checkout.
  */
 export function useBuyerJourneyIntercept<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(interceptor: Interceptor) {
-  const buyerJourney = useBuyerJourney<ID>();
+  const buyerJourney = useExtensionApi<ID>().buyerJourney;
   const interceptorRef = useRef(interceptor);
   interceptorRef.current = interceptor;
 

@@ -808,3 +808,14 @@ export type CountryCode =
   | 'ZM'
   | 'ZW'
   | 'ZZ';
+
+/**
+ * GraphQL error returned by the Shopify Storefront APIs.
+ */
+export interface GraphQLError {
+  message: string;
+  extensions: {
+    requestId: string;
+    code: string;
+  };
+}
