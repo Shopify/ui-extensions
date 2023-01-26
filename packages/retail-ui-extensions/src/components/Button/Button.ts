@@ -7,6 +7,7 @@ export interface ButtonProps {
   type?: ButtonType;
   onPress?: () => void;
   isDisabled?: boolean;
+  isLoading?: boolean;
 }
 
 export const Button = createRemoteComponent<'Button', ButtonProps>('Button');
