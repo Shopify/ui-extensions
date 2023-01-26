@@ -3,10 +3,11 @@ import {RemoteRoot} from '@remote-ui/core';
 import {AllComponentsSchema} from '../../containers';
 import {RenderableExtensionCallback, StandardApi, ToastApi} from '../types';
 
-export type BundlesExtensionPoint = 'Admin::Product::Bundles::Render';
+export type ProductConfigurationExtensionPoint =
+  'Admin::Product::Configuration::Render';
 
-export interface BundlesExtensionApi {
-  'Admin::Product::Bundles::Render': StandardApi<BundlesExtensionPoint> &
+export interface ProductConfigurationExtensionApi {
+  'Admin::Product::Configuration::Render': StandardApi<ProductConfigurationExtensionPoint> &
     ToastApi & {
       data: {
         productId: string;
@@ -19,9 +20,9 @@ export interface BundlesExtensionApi {
     };
 }
 
-export interface BundlesExtensionPointCallback {
-  'Admin::Product::Bundles::Render': RenderableExtensionCallback<
-    BundlesExtensionApi['Admin::Product::Bundles::Render'],
+export interface ProductConfigurationExtensionPointCallback {
+  'Admin::Product::Configuration::Render': RenderableExtensionCallback<
+    ProductConfigurationExtensionApi['Admin::Product::Configuration::Render'],
     RemoteRoot<AllComponentsSchema>
   >;
 }
