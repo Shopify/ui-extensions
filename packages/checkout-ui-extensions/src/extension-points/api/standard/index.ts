@@ -688,7 +688,8 @@ export interface StandardApi<
   order: StatefulRemoteSubscribable<Order | undefined>;
 
   /**
-   * Provides access to session tokens, which can be used to validate requests between your extension and your backend.
+   * Provides access to session tokens, which can be used to validate requests made to your backend or properly
+   * configured third party APIs.
    */
   sessionToken: SessionToken;
 
