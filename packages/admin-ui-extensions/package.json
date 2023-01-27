@@ -1,6 +1,6 @@
 {
   "name": "@shopify/admin-ui-extensions",
-  "version": "1.0.5",
+  "version": "1.1.0",
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
