@@ -10,7 +10,17 @@ import {
   ProductSubscriptionExtensionPointCallback,
 } from './identifiers/product_subscription';
 
-export type {PlaygroundExtensionPoint, ProductSubscriptionExtensionPoint};
+import {
+  ProductConfigurationExtensionPoint,
+  ProductConfigurationExtensionApi,
+  ProductConfigurationExtensionPointCallback,
+} from './identifiers/product_configuration';
+
+export type {
+  PlaygroundExtensionPoint,
+  ProductSubscriptionExtensionPoint,
+  ProductConfigurationExtensionPoint,
+};
 
 /*
 Placeholder for new imports
@@ -24,10 +34,13 @@ export type {
 
 export type ExtensionPoint =
   | PlaygroundExtensionPoint
-  | ProductSubscriptionExtensionPoint;
+  | ProductSubscriptionExtensionPoint
+  | ProductConfigurationExtensionPoint;
 
 export type ExtensionApi = PlaygroundExtensionApi &
-  ProductSubscriptionExtensionApi;
+  ProductSubscriptionExtensionApi &
+  ProductConfigurationExtensionApi;
 
 export type ExtensionPointCallback = PlaygroundExtensionPointCallback &
-  ProductSubscriptionExtensionPointCallback;
+  ProductSubscriptionExtensionPointCallback &
+  ProductConfigurationExtensionPointCallback;
