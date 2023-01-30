@@ -136,7 +136,7 @@ function Extension() {
 
 import {
   reactExtension,
-  useExtensionApi,
+  useApi,
   Banner,
   useTranslate,
 } from '@shopify/ui-extensions-react/checkout';
@@ -144,7 +144,7 @@ import {
 export default reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
 function Extension() {
-  const {extensionPoint} = useExtensionApi();
+  const {extensionPoint} = useApi();
   const translate = useTranslate();
 
   return (

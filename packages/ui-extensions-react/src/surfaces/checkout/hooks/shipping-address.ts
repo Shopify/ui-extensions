@@ -2,7 +2,7 @@ import type {RenderExtensionPoint} from '@shopify/ui-extensions/checkout';
 
 import {ScopeNotGrantedError} from '../errors';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -11,7 +11,7 @@ import {useSubscription} from './subscription';
 export function useShippingAddress<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
-  const shippingAddress = useExtensionApi<ID>().shippingAddress;
+  const shippingAddress = useApi<ID>().shippingAddress;
 
   if (!shippingAddress) {
     throw new ScopeNotGrantedError(

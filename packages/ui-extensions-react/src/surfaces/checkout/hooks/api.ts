@@ -11,7 +11,7 @@ import {ExtensionApiContext} from '../context';
  * Returns the full API object that was passed in to your
  * extension when it was created.
  */
-export function useExtensionApi<
+export function useApi<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): ApiForRenderExtension<ID> {
   const api = useContext(ExtensionApiContext);

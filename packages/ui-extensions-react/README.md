@@ -14,14 +14,14 @@ A checkout extension using React would be written as follows:
 import {useState} from 'react';
 import {
   reactExtension,
-  useExtensionApi,
+  useApi,
   TextField,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension('Checkout::Dynamic::Render', () => <GiftNote />);
 
 function GiftNote() {
-  const {i18n, metafields, applyMetafieldChange} = useExtensionApi();
+  const {i18n, metafields, applyMetafieldChange} = useApi();
 
   const [value, setValue] = useState(() => {
     const metafield = metafields.current.find(

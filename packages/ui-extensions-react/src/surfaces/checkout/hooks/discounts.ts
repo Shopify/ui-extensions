@@ -5,7 +5,7 @@ import type {
   RenderExtensionPoint,
 } from '@shopify/ui-extensions/checkout';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -15,7 +15,7 @@ import {useSubscription} from './subscription';
 export function useDiscountCodes<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): CartDiscountCode[] {
-  const {discountCodes} = useExtensionApi<ID>();
+  const {discountCodes} = useApi<ID>();
 
   return useSubscription(discountCodes);
 }
@@ -27,7 +27,7 @@ export function useDiscountCodes<
 export function useDiscountAllocations<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): CartDiscountAllocation[] {
-  const {discountAllocations} = useExtensionApi<ID>();
+  const {discountAllocations} = useApi<ID>();
 
   return useSubscription(discountAllocations);
 }
@@ -38,5 +38,5 @@ export function useDiscountAllocations<
 export function useApplyDiscountCodeChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): StandardApi<ID>['applyDiscountCodeChange'] {
-  return useExtensionApi<ID>().applyDiscountCodeChange;
+  return useApi<ID>().applyDiscountCodeChange;
 }

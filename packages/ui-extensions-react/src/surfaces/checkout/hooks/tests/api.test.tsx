@@ -1,14 +1,14 @@
-import {useExtensionApi} from '../api';
+import {useApi} from '../api';
 
 import {mount} from './mount';
 
-describe('useExtensionApi', () => {
+describe('useApi', () => {
   it('returns api', async () => {
     const extensionApi = {
       extensionPoint: 'Checkout::Dynamic::Render' as const,
     };
     const {value} = mount.hook(
-      () => useExtensionApi<'Checkout::Dynamic::Render'>(),
+      () => useApi<'Checkout::Dynamic::Render'>(),
       {extensionApi},
     );
 
@@ -17,7 +17,7 @@ describe('useExtensionApi', () => {
 
   it('throws when not run inside a UI extension', async () => {
     const runner = async () => {
-      return mount.hook(() => useExtensionApi());
+      return mount.hook(() => useApi());
     };
     await expect(runner).rejects.toThrow(
       'You can only call this hook when running as a UI extension.',

@@ -3,7 +3,7 @@ import type {
   StandardApi,
 } from '@shopify/ui-extensions/checkout';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -12,7 +12,7 @@ import {useSubscription} from './subscription';
 export function useNote<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
-  return useSubscription(useExtensionApi<ID>().note);
+  return useSubscription(useApi<ID>().note);
 }
 
 /**
@@ -21,5 +21,5 @@ export function useNote<
 export function useApplyNoteChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): StandardApi<ID>['applyNoteChange'] {
-  return useExtensionApi<ID>().applyNoteChange;
+  return useApi<ID>().applyNoteChange;
 }

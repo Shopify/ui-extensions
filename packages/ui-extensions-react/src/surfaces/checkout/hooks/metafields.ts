@@ -6,7 +6,7 @@ import {useMemo} from 'react';
 
 import {CheckoutUIExtensionError} from '../errors';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 interface MetafieldsFilters {
@@ -22,7 +22,7 @@ interface MetafieldsFilters {
 export function useMetafields<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(filters?: MetafieldsFilters) {
-  const metaFields = useSubscription(useExtensionApi<ID>().metafields);
+  const metaFields = useSubscription(useApi<ID>().metafields);
 
   return useMemo(() => {
     if (filters) {
@@ -52,5 +52,5 @@ export function useMetafields<
 export function useApplyMetafieldsChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): StandardApi<ID>['applyMetafieldChange'] {
-  return useExtensionApi<ID>().applyMetafieldChange;
+  return useApi<ID>().applyMetafieldChange;
 }
