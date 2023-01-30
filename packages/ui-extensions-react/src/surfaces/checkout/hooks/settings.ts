@@ -1,6 +1,6 @@
 import type {ExtensionSettings} from '@shopify/ui-extensions/checkout';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -9,7 +9,7 @@ import {useSubscription} from './subscription';
 export function useSettings<
   Settings extends ExtensionSettings,
 >(): Partial<Settings> {
-  const settings = useSubscription(useExtensionApi().settings);
+  const settings = useSubscription(useApi().settings);
 
   return settings as Settings;
 }

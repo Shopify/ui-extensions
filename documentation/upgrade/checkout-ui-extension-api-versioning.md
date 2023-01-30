@@ -113,7 +113,7 @@ If you use React, the new format will be a similarly minor change, compared to t
 
 ```tsx
 import {
-  useExtensionApi,
+  useApi,
   render,
   Banner,
   useTranslate,
@@ -122,7 +122,7 @@ import {
 render('Checkout::Dynamic::Render', () => <Extension />);
 
 function Extension() {
-  const {extensionPoint} = useExtensionApi();
+  const {extensionPoint} = useApi();
   const translate = useTranslate();
 
   return (
@@ -136,7 +136,7 @@ function Extension() {
 
 import {
   reactExtension,
-  useExtensionApi,
+  useApi,
   Banner,
   useTranslate,
 } from '@shopify/ui-extensions-react/checkout';
@@ -144,7 +144,7 @@ import {
 export default reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
 function Extension() {
-  const {extensionPoint} = useExtensionApi();
+  const {extensionPoint} = useApi();
   const translate = useTranslate();
 
   return (

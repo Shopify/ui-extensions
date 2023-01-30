@@ -4,7 +4,7 @@ import type {
   RenderExtensionPoint,
 } from '@shopify/ui-extensions/checkout';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -14,7 +14,7 @@ import {useSubscription} from './subscription';
 export function useCartLines<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): CartLine[] {
-  const {lines} = useExtensionApi<ID>();
+  const {lines} = useApi<ID>();
 
   return useSubscription(lines);
 }
@@ -25,5 +25,5 @@ export function useCartLines<
 export function useApplyCartLinesChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): StandardApi<ID>['applyCartLinesChange'] {
-  return useExtensionApi<ID>().applyCartLinesChange;
+  return useApi<ID>().applyCartLinesChange;
 }

@@ -11,7 +11,7 @@ import {ExtensionApiContext} from '../context';
  * Returns the full API object that was passed in to your
  * extension when it was created.
  */
-export function useExtensionApi<
+export function useApi<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): ApiForRenderExtension<ID> {
   const api = useContext(ExtensionApiContext);
@@ -23,4 +23,15 @@ export function useExtensionApi<
   }
 
   return api as ApiForRenderExtension<ID>;
+}
+
+/**
+ * Returns the full API object that was passed in to your
+ * extension when it was created.
+ * @deprecated you shoud be importing useApi instead
+ */
+export function useExtensionApi<
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
+>(): ApiForRenderExtension<ID> {
+  return useApi();
 }

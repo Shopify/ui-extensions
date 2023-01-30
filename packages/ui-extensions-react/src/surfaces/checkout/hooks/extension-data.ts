@@ -1,6 +1,6 @@
 import type {RenderExtensionPoint} from '@shopify/ui-extensions/checkout';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 
 /**
  * Returns the metadata about the extension.
@@ -8,5 +8,5 @@ import {useExtensionApi} from './api';
 export function useExtensionData<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
-  return useExtensionApi<ID>().extension;
+  return useApi<ID>().extension;
 }
