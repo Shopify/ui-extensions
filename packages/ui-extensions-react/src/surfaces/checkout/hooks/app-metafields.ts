@@ -7,7 +7,7 @@ import {useMemo} from 'react';
 
 import {CheckoutUIExtensionError} from '../errors';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 interface AppMetafieldFilters {
@@ -26,7 +26,7 @@ type AppMetafieldFilterKeys = keyof AppMetafieldFilters;
 export function useAppMetafields<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(filters: AppMetafieldFilters = {}) {
-  const appMetafields = useSubscription(useExtensionApi<ID>().appMetafields);
+  const appMetafields = useSubscription(useApi<ID>().appMetafields);
 
   return useMemo(() => {
     if (filters.key && !filters.namespace) {

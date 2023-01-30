@@ -1,4 +1,4 @@
-export {useExtensionApi} from './api';
+export {useApi} from './api';
 export {useCurrency} from './currency';
 export {useLanguage} from './language';
 export {useTimezone} from './timezone';
