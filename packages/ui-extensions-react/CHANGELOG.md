@@ -1,5 +1,14 @@
 # @shopify/ui-extensions-react
 
+## 2022.10.6
+
+### Patch Changes
+
+- [#717](https://github.com/Shopify/ui-extensions/pull/717) [`5c2f511b`](https://github.com/Shopify/ui-extensions/commit/5c2f511bbea3b4f36fc9c63f79089a79a90ccf26) Thanks [@vividviolet](https://github.com/vividviolet)! - Fix exports for Checkout's surface
+
+- Updated dependencies [[`5c2f511b`](https://github.com/Shopify/ui-extensions/commit/5c2f511bbea3b4f36fc9c63f79089a79a90ccf26)]:
+  - @shopify/ui-extensions@2022.10.6
+
 ## 2022.10.5
 
 ### Patch Changes
