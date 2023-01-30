@@ -4,7 +4,7 @@ import type {
   Interceptor,
 } from '@shopify/ui-extensions/checkout';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 
 /**
  * Returns the `buyerJourney` details on buyer progression in checkout.
@@ -12,7 +12,7 @@ import {useExtensionApi} from './api';
 export function useBuyerJourney<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >() {
-  return useExtensionApi<ID>().buyerJourney;
+  return useApi<ID>().buyerJourney;
 }
 
 /**

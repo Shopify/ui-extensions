@@ -3,7 +3,7 @@ import {
   RenderExtensionPoint,
 } from '@shopify/ui-extensions/checkout';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -13,7 +13,7 @@ import {useSubscription} from './subscription';
 export function useLanguage<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): ApiForRenderExtension<ID>['localization']['language']['current'] {
-  const {localization} = useExtensionApi<ID>();
+  const {localization} = useApi<ID>();
 
   return useSubscription(localization.language);
 }
