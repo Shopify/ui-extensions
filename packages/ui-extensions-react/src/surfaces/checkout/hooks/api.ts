@@ -24,3 +24,14 @@ export function useApi<
 
   return api as ApiForRenderExtension<ID>;
 }
+
+/**
+ * Returns the full API object that was passed in to your
+ * extension when it was created.
+ * @deprecated you shoud be importing useApi instead
+ */
+export function useExtensionApi<
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
+>(): ApiForRenderExtension<ID> {
+  return useApi();
+}
