@@ -7,10 +7,9 @@ describe('useApi', () => {
     const extensionApi = {
       extensionPoint: 'Checkout::Dynamic::Render' as const,
     };
-    const {value} = mount.hook(
-      () => useApi<'Checkout::Dynamic::Render'>(),
-      {extensionApi},
-    );
+    const {value} = mount.hook(() => useApi<'Checkout::Dynamic::Render'>(), {
+      extensionApi,
+    });
 
     expect(value).toMatchObject(extensionApi);
   });
