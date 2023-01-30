@@ -364,7 +364,7 @@
       },
       "properties": {
         "currencyCode": {
-          "ref": "CurrencyCode",
+          "type": "string",
           "metadata": {
             "description": "The currency code for the checkout."
           }
@@ -386,7 +386,7 @@
         "token": {
           "type": "string",
           "metadata": {
-            "description": "A globally-unique identifier."
+            "description": "A unique identifier for a particular checkout."
           }
         },
         "lineItems": {
@@ -399,18 +399,21 @@
         },
         "order": {
           "ref": "Order",
+          "nullable": true,
           "metadata": {
             "description": "The resulting order from a paid checkout."
           }
         },
         "shippingAddress": {
           "ref": "MailingAddress",
+          "nullable": true,
           "metadata": {
             "description": "The shipping address to where the line items will be shipped."
           }
         },
         "shippingLine": {
           "ref": "ShippingRate",
+          "nullable": true,
           "metadata": {
             "description": "Once a shipping rate is selected by the customer it is transitioned to a `shipping_line` object."
           }
@@ -435,174 +438,6 @@
         }
       }
     },
-    "CurrencyCode": {
-      "enum": [
-        "AED",
-        "AFN",
-        "ALL",
-        "AMD",
-        "ANG",
-        "AOA",
-        "ARS",
-        "AUD",
-        "AWG",
-        "AZN",
-        "BAM",
-        "BBD",
-        "BDT",
-        "BGN",
-        "BHD",
-        "BIF",
-        "BMD",
-        "BND",
-        "BOB",
-        "BRL",
-        "BSD",
-        "BTN",
-        "BWP",
-        "BYN",
-        "BYR",
-        "BZD",
-        "CAD",
-        "CDF",
-        "CHF",
-        "CLP",
-        "CNY",
-        "COP",
-        "CRC",
-        "CVE",
-        "CZK",
-        "DJF",
-        "DKK",
-        "DOP",
-        "DZD",
-        "EGP",
-        "ERN",
-        "ETB",
-        "EUR",
-        "FJD",
-        "FKP",
-        "GBP",
-        "GEL",
-        "GHS",
-        "GIP",
-        "GMD",
-        "GNF",
-        "GTQ",
-        "GYD",
-        "HKD",
-        "HNL",
-        "HRK",
-        "HTG",
-        "HUF",
-        "IDR",
-        "ILS",
-        "INR",
-        "IQD",
-        "IRR",
-        "ISK",
-        "JEP",
-        "JMD",
-        "JOD",
-        "JPY",
-        "KES",
-        "KGS",
-        "KHR",
-        "KID",
-        "KMF",
-        "KRW",
-        "KWD",
-        "KYD",
-        "KZT",
-        "LAK",
-        "LBP",
-        "LKR",
-        "LRD",
-        "LSL",
-        "LTL",
-        "LVL",
-        "LYD",
-        "MAD",
-        "MDL",
-        "MGA",
-        "MKD",
-        "MMK",
-        "MNT",
-        "MOP",
-        "MRU",
-        "MUR",
-        "MVR",
-        "MWK",
-        "MXN",
-        "MYR",
-        "MZN",
-        "NAD",
-        "NGN",
-        "NIO",
-        "NOK",
-        "NPR",
-        "NZD",
-        "OMR",
-        "PAB",
-        "PEN",
-        "PGK",
-        "PHP",
-        "PKR",
-        "PLN",
-        "PYG",
-        "QAR",
-        "RON",
-        "RSD",
-        "RUB",
-        "RWF",
-        "SAR",
-        "SBD",
-        "SCR",
-        "SDG",
-        "SEK",
-        "SGD",
-        "SHP",
-        "SLL",
-        "SOS",
-        "SRD",
-        "SSP",
-        "STD",
-        "STN",
-        "SYP",
-        "SZL",
-        "THB",
-        "TJS",
-        "TMT",
-        "TND",
-        "TOP",
-        "TRY",
-        "TTD",
-        "TWD",
-        "TZS",
-        "UAH",
-        "UGX",
-        "USD",
-        "UYU",
-        "UZS",
-        "VED",
-        "VEF",
-        "VES",
-        "VND",
-        "VUV",
-        "WST",
-        "XAF",
-        "XCD",
-        "XOF",
-        "XPF",
-        "XXX",
-        "YER",
-        "ZAR",
-        "ZMW"
-      ],
-      "metadata": {
-        "description": "The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,\nand non-standard codes.\n"
-      }
-    },
     "CheckoutLineItem": {
       "metadata": {
         "description": "A single line item in the checkout, grouped by variant and attributes."
@@ -622,12 +457,14 @@
         },
         "title": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "Title of the line item. Defaults to the product's title."
           }
         },
         "variant": {
           "ref": "ProductVariant",
+          "nullable": true,
           "metadata": {
             "description": "Product variant of the line item."
           }
@@ -647,14 +484,15 @@
         },
         "image": {
           "ref": "Image",
+          "nullable": true,
           "metadata": {
-            "description": "Image associated with the product variant. This field falls back to the product image if no image is available.\n"
+            "description": "Image associated with the product variant. This field falls back to the product image if no image is available."
           }
         },
         "price": {
           "ref": "MoneyV2",
           "metadata": {
-            "description": "The product variant’s price."
+            "description": "The product variant's price."
           }
         },
         "product": {
@@ -665,6 +503,7 @@
         },
         "sku": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "The SKU (stock keeping unit) associated with the variant."
           }
@@ -672,7 +511,7 @@
         "title": {
           "type": "string",
           "metadata": {
-            "description": "The product variant’s title."
+            "description": "The product variant's title."
           }
         }
       }
@@ -692,7 +531,7 @@
     },
     "MoneyV2": {
       "metadata": {
-        "description": "A monetary value with currency.\n"
+        "description": "A monetary value with currency."
       },
       "properties": {
         "amount": {
@@ -702,7 +541,7 @@
           }
         },
         "currencyCode": {
-          "ref": "CurrencyCode",
+          "type": "string",
           "metadata": {
             "description": "Currency of the money."
           }
@@ -711,7 +550,7 @@
     },
     "Product": {
       "metadata": {
-        "description": "A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.\nFor example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty)."
+        "description": "A product represents an individual item for sale in a Shopify store. Products are often physical, but they don't have to be.\nFor example, a digital download (such as a movie, music or ebook file) also qualifies as a product, as do services (such as equipment rental, work for hire, customization of another product or an extended warranty).\n"
       },
       "properties": {
         "id": {
@@ -723,38 +562,26 @@
         "title": {
           "type": "string",
           "metadata": {
-            "description": "The product’s title."
+            "description": "The product's title."
           }
         },
         "vendor": {
           "type": "string",
           "metadata": {
-            "description": "The product’s vendor name."
+            "description": "The product's vendor name."
           }
         }
       }
     },
     "Order": {
       "metadata": {
-        "description": "An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information."
+        "description": "An order is a customer's completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information."
       },
       "properties": {
         "id": {
           "type": "string",
           "metadata": {
             "description": "A globally-unique identifier."
-          }
-        },
-        "name": {
-          "type": "string",
-          "metadata": {
-            "description": "Unique identifier for the order that appears on the order.\nFor example, _#1000_ or _Store1001.\n"
-          }
-        },
-        "orderNumber": {
-          "type": "uint32",
-          "metadata": {
-            "description": "A unique numeric identifier for the order for use by shop owner and customer."
           }
         }
       }
@@ -766,292 +593,46 @@
       "properties": {
         "city": {
           "type": "string",
+          "nullable": true,
           "metadata": {
-            "description": "The name of the city, district, village, or town.\n"
+            "description": "The name of the city, district, village, or town."
           }
         },
         "country": {
           "type": "string",
+          "nullable": true,
           "metadata": {
-            "description": "The name of the country.\n"
+            "description": "The name of the country."
           }
         },
         "countryCode": {
-          "ref": "CountryCode",
+          "type": "string",
+          "nullable": true,
           "metadata": {
-            "description": "The two-letter code for the country of the address.\n\nFor example, US.\n"
+            "description": "The two-letter code for the country of the address.\nFor example, US.\n"
           }
         },
         "phone": {
           "type": "string",
+          "nullable": true,
           "metadata": {
-            "description": "A unique phone number for the customer.\n\nFormatted using E.164 standard. For example, _+16135551111_.\n"
+            "description": "A unique phone number for the customer."
           }
         },
         "province": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "The region of the address, such as the province, state, or district."
           }
         },
         "provinceCode": {
           "type": "string",
+          "nullable": true,
           "metadata": {
-            "description": "The two-letter code for the region.\n\nFor example, ON.\n"
+            "description": "The two-letter code for the region.\nFor example, ON.\n"
           }
         }
-      }
-    },
-    "CountryCode": {
-      "enum": [
-        "AC",
-        "AD",
-        "AE",
-        "AF",
-        "AG",
-        "AI",
-        "AL",
-        "AM",
-        "AN",
-        "AO",
-        "AR",
-        "AT",
-        "AU",
-        "AW",
-        "AX",
-        "AZ",
-        "BA",
-        "BB",
-        "BD",
-        "BE",
-        "BF",
-        "BG",
-        "BH",
-        "BI",
-        "BJ",
-        "BL",
-        "BM",
-        "BN",
-        "BO",
-        "BQ",
-        "BR",
-        "BS",
-        "BT",
-        "BV",
-        "BW",
-        "BY",
-        "BZ",
-        "CA",
-        "CC",
-        "CD",
-        "CF",
-        "CG",
-        "CH",
-        "CI",
-        "CK",
-        "CL",
-        "CM",
-        "CN",
-        "CO",
-        "CR",
-        "CU",
-        "CV",
-        "CW",
-        "CX",
-        "CY",
-        "CZ",
-        "DE",
-        "DJ",
-        "DK",
-        "DM",
-        "DO",
-        "DZ",
-        "EC",
-        "EE",
-        "EG",
-        "EH",
-        "ER",
-        "ES",
-        "ET",
-        "FI",
-        "FJ",
-        "FK",
-        "FO",
-        "FR",
-        "GA",
-        "GB",
-        "GD",
-        "GE",
-        "GF",
-        "GG",
-        "GH",
-        "GI",
-        "GL",
-        "GM",
-        "GN",
-        "GP",
-        "GQ",
-        "GR",
-        "GS",
-        "GT",
-        "GW",
-        "GY",
-        "HK",
-        "HM",
-        "HN",
-        "HR",
-        "HT",
-        "HU",
-        "ID",
-        "IE",
-        "IL",
-        "IM",
-        "IN",
-        "IO",
-        "IQ",
-        "IR",
-        "IS",
-        "IT",
-        "JE",
-        "JM",
-        "JO",
-        "JP",
-        "KE",
-        "KG",
-        "KH",
-        "KI",
-        "KM",
-        "KN",
-        "KP",
-        "KR",
-        "KW",
-        "KY",
-        "KZ",
-        "LA",
-        "LB",
-        "LC",
-        "LI",
-        "LK",
-        "LR",
-        "LS",
-        "LT",
-        "LU",
-        "LV",
-        "LY",
-        "MA",
-        "MC",
-        "MD",
-        "ME",
-        "MF",
-        "MG",
-        "MK",
-        "ML",
-        "MM",
-        "MN",
-        "MO",
-        "MQ",
-        "MR",
-        "MS",
-        "MT",
-        "MU",
-        "MV",
-        "MW",
-        "MX",
-        "MY",
-        "MZ",
-        "NA",
-        "NC",
-        "NE",
-        "NF",
-        "NG",
-        "NI",
-        "NL",
-        "NO",
-        "NP",
-        "NR",
-        "NU",
-        "NZ",
-        "OM",
-        "PA",
-        "PE",
-        "PF",
-        "PG",
-        "PH",
-        "PK",
-        "PL",
-        "PM",
-        "PN",
-        "PS",
-        "PT",
-        "PY",
-        "QA",
-        "RE",
-        "RO",
-        "RS",
-        "RU",
-        "RW",
-        "SA",
-        "SB",
-        "SC",
-        "SD",
-        "SE",
-        "SG",
-        "SH",
-        "SI",
-        "SJ",
-        "SK",
-        "SL",
-        "SM",
-        "SN",
-        "SO",
-        "SR",
-        "SS",
-        "ST",
-        "SV",
-        "SX",
-        "SY",
-        "SZ",
-        "TA",
-        "TC",
-        "TD",
-        "TF",
-        "TG",
-        "TH",
-        "TJ",
-        "TK",
-        "TL",
-        "TM",
-        "TN",
-        "TO",
-        "TR",
-        "TT",
-        "TV",
-        "TW",
-        "TZ",
-        "UA",
-        "UG",
-        "UM",
-        "US",
-        "UY",
-        "UZ",
-        "VA",
-        "VC",
-        "VE",
-        "VG",
-        "VN",
-        "VU",
-        "WF",
-        "WS",
-        "XK",
-        "YE",
-        "YT",
-        "ZA",
-        "ZM",
-        "ZW",
-        "ZZ"
-      ],
-      "metadata": {
-        "description": "The code designating a country/region, which generally follows ISO 3166-1 alpha-2 guidelines.\nIf a territory doesn't have a country code value in the `CountryCode` enum, then it might be considered a subdivision\nof another country. For example, the territories associated with Spain are represented by the country code `ES`,\nand the territories associated with the United States of America are represented by the country code `US`.\n"
       }
     },
     "ShippingRate": {
@@ -1158,8 +739,9 @@
       "properties": {
         "email": {
           "type": "string",
+          "nullable": true,
           "metadata": {
-            "description": "The customer’s email address."
+            "description": "The customer's email address."
           }
         },
         "id": {
@@ -1170,8 +752,9 @@
         },
         "phone": {
           "type": "string",
+          "nullable": true,
           "metadata": {
-            "description": "The customer’s phone number."
+            "description": "The customer's phone number."
           }
         }
       }
@@ -1190,7 +773,7 @@
         "title": {
           "type": "string",
           "metadata": {
-            "description": "The collection’s name. Limit of 255 characters."
+            "description": "The collection's name. Limit of 255 characters."
           }
         }
       }
