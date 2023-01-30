@@ -15,6 +15,7 @@ export interface ListProps {
   data: ListItem[];
   showDisclosureIndicator: boolean;
   title?: string;
+  imageDisplayStrategy?: 'automatic' | 'always' | 'never';
   onEndReached?: () => void;
 }
 
