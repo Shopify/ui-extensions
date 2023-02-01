@@ -37,7 +37,7 @@ export function createExtensionRegistrationFunction<
   const extensionWrapper: ExtensionRegistrationFunctionWithRoot<
     ExtensionPoints
   > = (target, implementation) => {
-    function extension(...args: any[]) {
+    async function extension(...args: any[]) {
       // Rendering extensions have two arguments. Non-rendering extensions don’t have
       // a `RemoteChannel` that needs to be normalized, so we can just pass the arguments
       // through.
@@ -55,7 +55,19 @@ export function createExtensionRegistrationFunction<
         strict: true,
       });
 
-      return (implementation as any)(root, api);
+      let renderResult = (implementation as any)(root, api);
+      
+      if (
+        typeof renderResult === 'object' &&
+        renderResult != null &&
+        'then' in renderResult
+      ) {
+        renderResult = await renderResult;
+      }
+
+      root.mount();
+
+      return renderResult;
     }
 
     (globalThis as any).shopify?.extend(target, extension);
