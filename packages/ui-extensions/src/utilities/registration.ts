@@ -56,7 +56,7 @@ export function createExtensionRegistrationFunction<
       });
 
       let renderResult = (implementation as any)(root, api);
-      
+
       if (
         typeof renderResult === 'object' &&
         renderResult != null &&
