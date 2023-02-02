@@ -6,6 +6,13 @@ import type {
 
 export type Background = 'transparent' | 'color1' | 'color2' | 'color3';
 
+export interface BackgroundProps {
+  /**
+   * Adjust the background.
+   */
+  background?: MaybeConditionalStyle<MaybeShorthandProperty<Background>>;
+}
+
 export interface SpacingProps {
   /**
    * Adjust the padding.
