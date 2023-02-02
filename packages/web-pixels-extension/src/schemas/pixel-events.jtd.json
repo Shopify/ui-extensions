@@ -358,13 +358,32 @@
         }
       }
     },
+    "Attribute": {
+      "metadata": {
+        "description": "Custom attributes left by the customer to the merchant, either in their cart or during checkout."
+      },
+      "properties": {
+        "key": {
+          "type": "string",
+          "metadata": {
+            "description": "The key for the attribute."
+          }
+        },
+        "value": {
+          "type": "string",
+          "metadata": {
+            "description": "The value for the attribute."
+          }
+        }
+      }
+    },
     "Checkout": {
       "metadata": {
         "description": "A container for all the information required to checkout items and pay."
       },
       "properties": {
         "currencyCode": {
-          "ref": "CurrencyCode",
+          "type": "string",
           "metadata": {
             "description": "The currency code for the checkout."
           }
@@ -399,18 +418,21 @@
         },
         "order": {
           "ref": "Order",
+          "nullable": true,
           "metadata": {
             "description": "The resulting order from a paid checkout."
           }
         },
         "shippingAddress": {
           "ref": "MailingAddress",
+          "nullable": true,
           "metadata": {
             "description": "The shipping address to where the line items will be shipped."
           }
         },
         "shippingLine": {
           "ref": "ShippingRate",
+          "nullable": true,
           "metadata": {
             "description": "Once a shipping rate is selected by the customer it is transitioned to a `shipping_line` object."
           }
@@ -432,175 +454,15 @@
           "metadata": {
             "description": "The sum of all the taxes applied to the line items and shipping lines in the checkout."
           }
+        },
+        "attributes": {
+          "elements": {
+            "ref": "Attribute",
+            "metadata": {
+              "description": "A list of attributes accumulated throughout the checkout process."
+            }
+          }
         }
-      }
-    },
-    "CurrencyCode": {
-      "enum": [
-        "AED",
-        "AFN",
-        "ALL",
-        "AMD",
-        "ANG",
-        "AOA",
-        "ARS",
-        "AUD",
-        "AWG",
-        "AZN",
-        "BAM",
-        "BBD",
-        "BDT",
-        "BGN",
-        "BHD",
-        "BIF",
-        "BMD",
-        "BND",
-        "BOB",
-        "BRL",
-        "BSD",
-        "BTN",
-        "BWP",
-        "BYN",
-        "BYR",
-        "BZD",
-        "CAD",
-        "CDF",
-        "CHF",
-        "CLP",
-        "CNY",
-        "COP",
-        "CRC",
-        "CVE",
-        "CZK",
-        "DJF",
-        "DKK",
-        "DOP",
-        "DZD",
-        "EGP",
-        "ERN",
-        "ETB",
-        "EUR",
-        "FJD",
-        "FKP",
-        "GBP",
-        "GEL",
-        "GHS",
-        "GIP",
-        "GMD",
-        "GNF",
-        "GTQ",
-        "GYD",
-        "HKD",
-        "HNL",
-        "HRK",
-        "HTG",
-        "HUF",
-        "IDR",
-        "ILS",
-        "INR",
-        "IQD",
-        "IRR",
-        "ISK",
-        "JEP",
-        "JMD",
-        "JOD",
-        "JPY",
-        "KES",
-        "KGS",
-        "KHR",
-        "KID",
-        "KMF",
-        "KRW",
-        "KWD",
-        "KYD",
-        "KZT",
-        "LAK",
-        "LBP",
-        "LKR",
-        "LRD",
-        "LSL",
-        "LTL",
-        "LVL",
-        "LYD",
-        "MAD",
-        "MDL",
-        "MGA",
-        "MKD",
-        "MMK",
-        "MNT",
-        "MOP",
-        "MRU",
-        "MUR",
-        "MVR",
-        "MWK",
-        "MXN",
-        "MYR",
-        "MZN",
-        "NAD",
-        "NGN",
-        "NIO",
-        "NOK",
-        "NPR",
-        "NZD",
-        "OMR",
-        "PAB",
-        "PEN",
-        "PGK",
-        "PHP",
-        "PKR",
-        "PLN",
-        "PYG",
-        "QAR",
-        "RON",
-        "RSD",
-        "RUB",
-        "RWF",
-        "SAR",
-        "SBD",
-        "SCR",
-        "SDG",
-        "SEK",
-        "SGD",
-        "SHP",
-        "SLL",
-        "SOS",
-        "SRD",
-        "SSP",
-        "STD",
-        "STN",
-        "SYP",
-        "SZL",
-        "THB",
-        "TJS",
-        "TMT",
-        "TND",
-        "TOP",
-        "TRY",
-        "TTD",
-        "TWD",
-        "TZS",
-        "UAH",
-        "UGX",
-        "USD",
-        "UYU",
-        "UZS",
-        "VED",
-        "VEF",
-        "VES",
-        "VND",
-        "VUV",
-        "WST",
-        "XAF",
-        "XCD",
-        "XOF",
-        "XPF",
-        "XXX",
-        "YER",
-        "ZAR",
-        "ZMW"
-      ],
-      "metadata": {
-        "description": "The three-letter currency codes that represent the world currencies used in stores. These include standard ISO 4217 codes, legacy codes,\nand non-standard codes.\n"
       }
     },
     "CheckoutLineItem": {
@@ -622,12 +484,14 @@
         },
         "title": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "Title of the line item. Defaults to the product's title."
           }
         },
         "variant": {
           "ref": "ProductVariant",
+          "nullable": true,
           "metadata": {
             "description": "Product variant of the line item."
           }
@@ -647,6 +511,7 @@
         },
         "image": {
           "ref": "Image",
+          "nullable": true,
           "metadata": {
             "description": "Image associated with the product variant. This field falls back to the product image if no image is available."
           }
@@ -665,6 +530,7 @@
         },
         "sku": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "The SKU (stock keeping unit) associated with the variant."
           }
@@ -702,7 +568,7 @@
           }
         },
         "currencyCode": {
-          "ref": "CurrencyCode",
+          "type": "string",
           "metadata": {
             "description": "Currency of the money."
           }
@@ -754,292 +620,46 @@
       "properties": {
         "city": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "The name of the city, district, village, or town."
           }
         },
         "country": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "The name of the country."
           }
         },
         "countryCode": {
-          "ref": "CountryCode",
+          "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "The two-letter code for the country of the address.\nFor example, US.\n"
           }
         },
         "phone": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "A unique phone number for the customer."
           }
         },
         "province": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "The region of the address, such as the province, state, or district."
           }
         },
         "provinceCode": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "The two-letter code for the region.\nFor example, ON.\n"
           }
         }
-      }
-    },
-    "CountryCode": {
-      "enum": [
-        "AC",
-        "AD",
-        "AE",
-        "AF",
-        "AG",
-        "AI",
-        "AL",
-        "AM",
-        "AN",
-        "AO",
-        "AR",
-        "AT",
-        "AU",
-        "AW",
-        "AX",
-        "AZ",
-        "BA",
-        "BB",
-        "BD",
-        "BE",
-        "BF",
-        "BG",
-        "BH",
-        "BI",
-        "BJ",
-        "BL",
-        "BM",
-        "BN",
-        "BO",
-        "BQ",
-        "BR",
-        "BS",
-        "BT",
-        "BV",
-        "BW",
-        "BY",
-        "BZ",
-        "CA",
-        "CC",
-        "CD",
-        "CF",
-        "CG",
-        "CH",
-        "CI",
-        "CK",
-        "CL",
-        "CM",
-        "CN",
-        "CO",
-        "CR",
-        "CU",
-        "CV",
-        "CW",
-        "CX",
-        "CY",
-        "CZ",
-        "DE",
-        "DJ",
-        "DK",
-        "DM",
-        "DO",
-        "DZ",
-        "EC",
-        "EE",
-        "EG",
-        "EH",
-        "ER",
-        "ES",
-        "ET",
-        "FI",
-        "FJ",
-        "FK",
-        "FO",
-        "FR",
-        "GA",
-        "GB",
-        "GD",
-        "GE",
-        "GF",
-        "GG",
-        "GH",
-        "GI",
-        "GL",
-        "GM",
-        "GN",
-        "GP",
-        "GQ",
-        "GR",
-        "GS",
-        "GT",
-        "GW",
-        "GY",
-        "HK",
-        "HM",
-        "HN",
-        "HR",
-        "HT",
-        "HU",
-        "ID",
-        "IE",
-        "IL",
-        "IM",
-        "IN",
-        "IO",
-        "IQ",
-        "IR",
-        "IS",
-        "IT",
-        "JE",
-        "JM",
-        "JO",
-        "JP",
-        "KE",
-        "KG",
-        "KH",
-        "KI",
-        "KM",
-        "KN",
-        "KP",
-        "KR",
-        "KW",
-        "KY",
-        "KZ",
-        "LA",
-        "LB",
-        "LC",
-        "LI",
-        "LK",
-        "LR",
-        "LS",
-        "LT",
-        "LU",
-        "LV",
-        "LY",
-        "MA",
-        "MC",
-        "MD",
-        "ME",
-        "MF",
-        "MG",
-        "MK",
-        "ML",
-        "MM",
-        "MN",
-        "MO",
-        "MQ",
-        "MR",
-        "MS",
-        "MT",
-        "MU",
-        "MV",
-        "MW",
-        "MX",
-        "MY",
-        "MZ",
-        "NA",
-        "NC",
-        "NE",
-        "NF",
-        "NG",
-        "NI",
-        "NL",
-        "NO",
-        "NP",
-        "NR",
-        "NU",
-        "NZ",
-        "OM",
-        "PA",
-        "PE",
-        "PF",
-        "PG",
-        "PH",
-        "PK",
-        "PL",
-        "PM",
-        "PN",
-        "PS",
-        "PT",
-        "PY",
-        "QA",
-        "RE",
-        "RO",
-        "RS",
-        "RU",
-        "RW",
-        "SA",
-        "SB",
-        "SC",
-        "SD",
-        "SE",
-        "SG",
-        "SH",
-        "SI",
-        "SJ",
-        "SK",
-        "SL",
-        "SM",
-        "SN",
-        "SO",
-        "SR",
-        "SS",
-        "ST",
-        "SV",
-        "SX",
-        "SY",
-        "SZ",
-        "TA",
-        "TC",
-        "TD",
-        "TF",
-        "TG",
-        "TH",
-        "TJ",
-        "TK",
-        "TL",
-        "TM",
-        "TN",
-        "TO",
-        "TR",
-        "TT",
-        "TV",
-        "TW",
-        "TZ",
-        "UA",
-        "UG",
-        "UM",
-        "US",
-        "UY",
-        "UZ",
-        "VA",
-        "VC",
-        "VE",
-        "VG",
-        "VN",
-        "VU",
-        "WF",
-        "WS",
-        "XK",
-        "YE",
-        "YT",
-        "ZA",
-        "ZM",
-        "ZW",
-        "ZZ"
-      ],
-      "metadata": {
-        "description": "The code designating a country/region, which generally follows ISO 3166-1 alpha-2 guidelines.\nIf a territory doesn't have a country code value in the `CountryCode` enum, then it might be considered a subdivision\nof another country. For example, the territories associated with Spain are represented by the country code `ES`,\nand the territories associated with the United States of America are represented by the country code `US`.\n"
       }
     },
     "ShippingRate": {
@@ -1146,6 +766,7 @@
       "properties": {
         "email": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "The customer's email address."
           }
@@ -1158,6 +779,7 @@
         },
         "phone": {
           "type": "string",
+          "nullable": true,
           "metadata": {
             "description": "The customer's phone number."
           }
@@ -1228,6 +850,14 @@
           "type": "string",
           "metadata": {
             "description": "The search query that was executed"
+          }
+        },
+        "productVariants": {
+          "elements": {
+            "ref": "ProductVariant",
+            "metadata": {
+              "description": "A list of product variants returned by the search query"
+            }
           }
         }
       }

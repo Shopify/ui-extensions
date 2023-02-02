@@ -71,7 +71,7 @@ export interface PixelEventsCollectionViewed {
 export interface PixelEventsCustomEvent {
   clientId: ClientId;
   context: Context;
-  customData: CustomData | null;
+  customData: (CustomData | null);
   id: Id;
 
   /**
@@ -119,7 +119,7 @@ export interface PixelEventsPaymentInfoSubmitted {
 }
 
 export interface PixelEventsProductAddedToCartData {
-  cartLine: CartLine | null;
+  cartLine: (CartLine | null);
 }
 
 /**
@@ -268,6 +268,22 @@ export interface PixelEvents {
 }
 
 /**
+ * Custom attributes left by the customer to the merchant, either in their cart
+ * or during checkout.
+ */
+export interface Attribute {
+  /**
+   * The key for the attribute.
+   */
+  key: string;
+
+  /**
+   * The value for the attribute.
+   */
+  value: string;
+}
+
+/**
  * This object replaces the native document.cookie API and provides a
  * setter/getter to set cookies on the top frame.
  */
@@ -297,17 +313,13 @@ export interface BrowserLocalStorage {
   /**
    * When passed a key name, will return that key's value.
    */
-  getItem: (
-    key: string,
-  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['getItem']>>;
+  getItem: (key: string) => Promise<ReturnType<WindowLocalStorage['localStorage']['getItem']>>;
 
   /**
    * When passed a number n, this method will return the name of the nth key in
    * the storage.
    */
-  key: (
-    index: number,
-  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['key']>>;
+  key: (index: number) => Promise<ReturnType<WindowLocalStorage['localStorage']['key']>>;
 
   /**
    * Returns an integer representing the number of data items stored in the
@@ -318,42 +330,31 @@ export interface BrowserLocalStorage {
   /**
    * When passed a key name, will remove that key from the storage.
    */
-  removeItem: (
-    key: string,
-  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['removeItem']>>;
+  removeItem: (key: string) => Promise<ReturnType<WindowLocalStorage['localStorage']['removeItem']>>;
 
   /**
    * When passed a key name and value, will add that key to the storage, or
    * update that key's value if it already exists.
    */
-  setItem: (
-    key: string,
-    value: any,
-  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['setItem']>>;
+  setItem: (key: string, value: any) => Promise<ReturnType<WindowLocalStorage['localStorage']['setItem']>>;
 }
 
 export interface BrowserSessionStorage {
   /**
    * When invoked, will empty all keys out of the storage.
    */
-  clear: () => Promise<
-    ReturnType<WindowSessionStorage['sessionStorage']['clear']>
-  >;
+  clear: () => Promise<ReturnType<WindowSessionStorage['sessionStorage']['clear']>>;
 
   /**
    * When passed a key name, will return that key's value.
    */
-  getItem: (
-    key: string,
-  ) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['getItem']>>;
+  getItem: (key: string) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['getItem']>>;
 
   /**
    * When passed a number n, this method will return the name of the nth key in
    * the storage.
    */
-  key: (
-    index: number,
-  ) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['key']>>;
+  key: (index: number) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['key']>>;
 
   /**
    * Returns an integer representing the number of data items stored in the
@@ -364,20 +365,13 @@ export interface BrowserSessionStorage {
   /**
    * When passed a key name, will remove that key from the storage.
    */
-  removeItem: (
-    key: string,
-  ) => Promise<
-    ReturnType<WindowSessionStorage['sessionStorage']['removeItem']>
-  >;
+  removeItem: (key: string) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['removeItem']>>;
 
   /**
    * When passed a key name and value, will add that key to the storage, or
    * update that key's value if it already exists.
    */
-  setItem: (
-    key: string,
-    value: any,
-  ) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['setItem']>>;
+  setItem: (key: string, value: any) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['setItem']>>;
 }
 
 export interface Browser {
@@ -474,37 +468,39 @@ export interface CartLineCost {
  * A container for all the information required to checkout items and pay.
  */
 export interface Checkout {
+  attributes: Attribute[];
+
   /**
    * The currency code for the checkout.
    */
-  currencyCode: CurrencyCode;
+  currencyCode: string;
 
   /**
    * The email attached to this checkout.
    */
-  email: string | null;
+  email: (string | null);
   lineItems: CheckoutLineItem[];
 
   /**
    * The resulting order from a paid checkout.
    */
-  order: Order;
+  order: (Order | null);
 
   /**
    * The phone attached to this checkout.
    */
-  phone: string | null;
+  phone: (string | null);
 
   /**
    * The shipping address to where the line items will be shipped.
    */
-  shippingAddress: MailingAddress;
+  shippingAddress: (MailingAddress | null);
 
   /**
    * Once a shipping rate is selected by the customer it is transitioned to a
    * `shipping_line` object.
    */
-  shippingLine: ShippingRate;
+  shippingLine: (ShippingRate | null);
 
   /**
    * The price at checkout before duties, shipping, and taxes.
@@ -546,12 +542,12 @@ export interface CheckoutLineItem {
   /**
    * Title of the line item. Defaults to the product's title.
    */
-  title: string;
+  title: (string | null);
 
   /**
    * Product variant of the line item.
    */
-  variant: ProductVariant;
+  variant: (ProductVariant | null);
 }
 
 /**
@@ -599,433 +595,6 @@ export interface Context {
 }
 
 /**
- * The code designating a country/region, which generally follows ISO 3166-1
- * alpha-2 guidelines.
- * If a territory doesn't have a country code value in the `CountryCode` enum,
- * then it might be considered a subdivision
- * of another country. For example, the territories associated with Spain are
- * represented by the country code `ES`,
- * and the territories associated with the United States of America are
- * represented by the country code `US`.
- */
-export enum CountryCode {
-  Ac = 'AC',
-  Ad = 'AD',
-  Ae = 'AE',
-  Af = 'AF',
-  Ag = 'AG',
-  Ai = 'AI',
-  Al = 'AL',
-  Am = 'AM',
-  An = 'AN',
-  Ao = 'AO',
-  Ar = 'AR',
-  At = 'AT',
-  Au = 'AU',
-  Aw = 'AW',
-  Ax = 'AX',
-  Az = 'AZ',
-  Ba = 'BA',
-  Bb = 'BB',
-  Bd = 'BD',
-  Be = 'BE',
-  Bf = 'BF',
-  Bg = 'BG',
-  Bh = 'BH',
-  Bi = 'BI',
-  Bj = 'BJ',
-  Bl = 'BL',
-  Bm = 'BM',
-  Bn = 'BN',
-  Bo = 'BO',
-  Bq = 'BQ',
-  Br = 'BR',
-  Bs = 'BS',
-  Bt = 'BT',
-  Bv = 'BV',
-  Bw = 'BW',
-  By = 'BY',
-  Bz = 'BZ',
-  Ca = 'CA',
-  Cc = 'CC',
-  Cd = 'CD',
-  Cf = 'CF',
-  Cg = 'CG',
-  Ch = 'CH',
-  Ci = 'CI',
-  Ck = 'CK',
-  Cl = 'CL',
-  Cm = 'CM',
-  Cn = 'CN',
-  Co = 'CO',
-  Cr = 'CR',
-  Cu = 'CU',
-  Cv = 'CV',
-  Cw = 'CW',
-  Cx = 'CX',
-  Cy = 'CY',
-  Cz = 'CZ',
-  De = 'DE',
-  Dj = 'DJ',
-  Dk = 'DK',
-  Dm = 'DM',
-  Do = 'DO',
-  Dz = 'DZ',
-  Ec = 'EC',
-  Ee = 'EE',
-  Eg = 'EG',
-  Eh = 'EH',
-  Er = 'ER',
-  Es = 'ES',
-  Et = 'ET',
-  Fi = 'FI',
-  Fj = 'FJ',
-  Fk = 'FK',
-  Fo = 'FO',
-  Fr = 'FR',
-  Ga = 'GA',
-  Gb = 'GB',
-  Gd = 'GD',
-  Ge = 'GE',
-  Gf = 'GF',
-  Gg = 'GG',
-  Gh = 'GH',
-  Gi = 'GI',
-  Gl = 'GL',
-  Gm = 'GM',
-  Gn = 'GN',
-  Gp = 'GP',
-  Gq = 'GQ',
-  Gr = 'GR',
-  Gs = 'GS',
-  Gt = 'GT',
-  Gw = 'GW',
-  Gy = 'GY',
-  Hk = 'HK',
-  Hm = 'HM',
-  Hn = 'HN',
-  Hr = 'HR',
-  Ht = 'HT',
-  Hu = 'HU',
-  Id = 'ID',
-  Ie = 'IE',
-  Il = 'IL',
-  Im = 'IM',
-  In = 'IN',
-  Io = 'IO',
-  Iq = 'IQ',
-  Ir = 'IR',
-  Is = 'IS',
-  It = 'IT',
-  Je = 'JE',
-  Jm = 'JM',
-  Jo = 'JO',
-  Jp = 'JP',
-  Ke = 'KE',
-  Kg = 'KG',
-  Kh = 'KH',
-  Ki = 'KI',
-  Km = 'KM',
-  Kn = 'KN',
-  Kp = 'KP',
-  Kr = 'KR',
-  Kw = 'KW',
-  Ky = 'KY',
-  Kz = 'KZ',
-  La = 'LA',
-  Lb = 'LB',
-  Lc = 'LC',
-  Li = 'LI',
-  Lk = 'LK',
-  Lr = 'LR',
-  Ls = 'LS',
-  Lt = 'LT',
-  Lu = 'LU',
-  Lv = 'LV',
-  Ly = 'LY',
-  Ma = 'MA',
-  Mc = 'MC',
-  Md = 'MD',
-  Me = 'ME',
-  Mf = 'MF',
-  Mg = 'MG',
-  Mk = 'MK',
-  Ml = 'ML',
-  Mm = 'MM',
-  Mn = 'MN',
-  Mo = 'MO',
-  Mq = 'MQ',
-  Mr = 'MR',
-  Ms = 'MS',
-  Mt = 'MT',
-  Mu = 'MU',
-  Mv = 'MV',
-  Mw = 'MW',
-  Mx = 'MX',
-  My = 'MY',
-  Mz = 'MZ',
-  Na = 'NA',
-  Nc = 'NC',
-  Ne = 'NE',
-  Nf = 'NF',
-  Ng = 'NG',
-  Ni = 'NI',
-  Nl = 'NL',
-  No = 'NO',
-  Np = 'NP',
-  Nr = 'NR',
-  Nu = 'NU',
-  Nz = 'NZ',
-  Om = 'OM',
-  Pa = 'PA',
-  Pe = 'PE',
-  Pf = 'PF',
-  Pg = 'PG',
-  Ph = 'PH',
-  Pk = 'PK',
-  Pl = 'PL',
-  Pm = 'PM',
-  Pn = 'PN',
-  Ps = 'PS',
-  Pt = 'PT',
-  Py = 'PY',
-  Qa = 'QA',
-  Re = 'RE',
-  Ro = 'RO',
-  Rs = 'RS',
-  Ru = 'RU',
-  Rw = 'RW',
-  Sa = 'SA',
-  Sb = 'SB',
-  Sc = 'SC',
-  Sd = 'SD',
-  Se = 'SE',
-  Sg = 'SG',
-  Sh = 'SH',
-  Si = 'SI',
-  Sj = 'SJ',
-  Sk = 'SK',
-  Sl = 'SL',
-  Sm = 'SM',
-  Sn = 'SN',
-  So = 'SO',
-  Sr = 'SR',
-  Ss = 'SS',
-  St = 'ST',
-  Sv = 'SV',
-  Sx = 'SX',
-  Sy = 'SY',
-  Sz = 'SZ',
-  Ta = 'TA',
-  Tc = 'TC',
-  Td = 'TD',
-  Tf = 'TF',
-  Tg = 'TG',
-  Th = 'TH',
-  Tj = 'TJ',
-  Tk = 'TK',
-  Tl = 'TL',
-  Tm = 'TM',
-  Tn = 'TN',
-  To = 'TO',
-  Tr = 'TR',
-  Tt = 'TT',
-  Tv = 'TV',
-  Tw = 'TW',
-  Tz = 'TZ',
-  Ua = 'UA',
-  Ug = 'UG',
-  Um = 'UM',
-  Us = 'US',
-  Uy = 'UY',
-  Uz = 'UZ',
-  Va = 'VA',
-  Vc = 'VC',
-  Ve = 'VE',
-  Vg = 'VG',
-  Vn = 'VN',
-  Vu = 'VU',
-  Wf = 'WF',
-  Ws = 'WS',
-  Xk = 'XK',
-  Ye = 'YE',
-  Yt = 'YT',
-  Za = 'ZA',
-  Zm = 'ZM',
-  Zw = 'ZW',
-  Zz = 'ZZ',
-}
-
-/**
- * The three-letter currency codes that represent the world currencies used in
- * stores. These include standard ISO 4217 codes, legacy codes,
- * and non-standard codes.
- */
-export enum CurrencyCode {
-  Aed = 'AED',
-  Afn = 'AFN',
-  All = 'ALL',
-  Amd = 'AMD',
-  Ang = 'ANG',
-  Aoa = 'AOA',
-  Ars = 'ARS',
-  Aud = 'AUD',
-  Awg = 'AWG',
-  Azn = 'AZN',
-  Bam = 'BAM',
-  Bbd = 'BBD',
-  Bdt = 'BDT',
-  Bgn = 'BGN',
-  Bhd = 'BHD',
-  Bif = 'BIF',
-  Bmd = 'BMD',
-  Bnd = 'BND',
-  Bob = 'BOB',
-  Brl = 'BRL',
-  Bsd = 'BSD',
-  Btn = 'BTN',
-  Bwp = 'BWP',
-  Byn = 'BYN',
-  Byr = 'BYR',
-  Bzd = 'BZD',
-  Cad = 'CAD',
-  Cdf = 'CDF',
-  Chf = 'CHF',
-  Clp = 'CLP',
-  Cny = 'CNY',
-  Cop = 'COP',
-  Crc = 'CRC',
-  Cve = 'CVE',
-  Czk = 'CZK',
-  Djf = 'DJF',
-  Dkk = 'DKK',
-  Dop = 'DOP',
-  Dzd = 'DZD',
-  Egp = 'EGP',
-  Ern = 'ERN',
-  Etb = 'ETB',
-  Eur = 'EUR',
-  Fjd = 'FJD',
-  Fkp = 'FKP',
-  Gbp = 'GBP',
-  Gel = 'GEL',
-  Ghs = 'GHS',
-  Gip = 'GIP',
-  Gmd = 'GMD',
-  Gnf = 'GNF',
-  Gtq = 'GTQ',
-  Gyd = 'GYD',
-  Hkd = 'HKD',
-  Hnl = 'HNL',
-  Hrk = 'HRK',
-  Htg = 'HTG',
-  Huf = 'HUF',
-  Idr = 'IDR',
-  Ils = 'ILS',
-  Inr = 'INR',
-  Iqd = 'IQD',
-  Irr = 'IRR',
-  Isk = 'ISK',
-  Jep = 'JEP',
-  Jmd = 'JMD',
-  Jod = 'JOD',
-  Jpy = 'JPY',
-  Kes = 'KES',
-  Kgs = 'KGS',
-  Khr = 'KHR',
-  Kid = 'KID',
-  Kmf = 'KMF',
-  Krw = 'KRW',
-  Kwd = 'KWD',
-  Kyd = 'KYD',
-  Kzt = 'KZT',
-  Lak = 'LAK',
-  Lbp = 'LBP',
-  Lkr = 'LKR',
-  Lrd = 'LRD',
-  Lsl = 'LSL',
-  Ltl = 'LTL',
-  Lvl = 'LVL',
-  Lyd = 'LYD',
-  Mad = 'MAD',
-  Mdl = 'MDL',
-  Mga = 'MGA',
-  Mkd = 'MKD',
-  Mmk = 'MMK',
-  Mnt = 'MNT',
-  Mop = 'MOP',
-  Mru = 'MRU',
-  Mur = 'MUR',
-  Mvr = 'MVR',
-  Mwk = 'MWK',
-  Mxn = 'MXN',
-  Myr = 'MYR',
-  Mzn = 'MZN',
-  Nad = 'NAD',
-  Ngn = 'NGN',
-  Nio = 'NIO',
-  Nok = 'NOK',
-  Npr = 'NPR',
-  Nzd = 'NZD',
-  Omr = 'OMR',
-  Pab = 'PAB',
-  Pen = 'PEN',
-  Pgk = 'PGK',
-  Php = 'PHP',
-  Pkr = 'PKR',
-  Pln = 'PLN',
-  Pyg = 'PYG',
-  Qar = 'QAR',
-  Ron = 'RON',
-  Rsd = 'RSD',
-  Rub = 'RUB',
-  Rwf = 'RWF',
-  Sar = 'SAR',
-  Sbd = 'SBD',
-  Scr = 'SCR',
-  Sdg = 'SDG',
-  Sek = 'SEK',
-  Sgd = 'SGD',
-  Shp = 'SHP',
-  Sll = 'SLL',
-  Sos = 'SOS',
-  Srd = 'SRD',
-  Ssp = 'SSP',
-  Std = 'STD',
-  Stn = 'STN',
-  Syp = 'SYP',
-  Szl = 'SZL',
-  Thb = 'THB',
-  Tjs = 'TJS',
-  Tmt = 'TMT',
-  Tnd = 'TND',
-  Top = 'TOP',
-  Try = 'TRY',
-  Ttd = 'TTD',
-  Twd = 'TWD',
-  Tzs = 'TZS',
-  Uah = 'UAH',
-  Ugx = 'UGX',
-  Usd = 'USD',
-  Uyu = 'UYU',
-  Uzs = 'UZS',
-  Ved = 'VED',
-  Vef = 'VEF',
-  Ves = 'VES',
-  Vnd = 'VND',
-  Vuv = 'VUV',
-  Wst = 'WST',
-  Xaf = 'XAF',
-  Xcd = 'XCD',
-  Xof = 'XOF',
-  Xpf = 'XPF',
-  Xxx = 'XXX',
-  Yer = 'YER',
-  Zar = 'ZAR',
-  Zmw = 'ZMW',
-}
-
-/**
  * A free-form JSON object representing data specific to a custom event provided
  * by the custom event publisher
  */
@@ -1040,7 +609,7 @@ export interface Customer {
   /**
    * The customer's email address.
    */
-  email: string;
+  email: (string | null);
 
   /**
    * A unique identifier for the customer.
@@ -1050,7 +619,7 @@ export interface Customer {
   /**
    * The customer's phone number.
    */
-  phone: string;
+  phone: (string | null);
 }
 
 /**
@@ -1075,10 +644,10 @@ export interface Image {
 }
 
 export interface InitData {
-  cart: Cart | null;
-  checkout: Checkout | null;
-  customer: Customer | null;
-  productVariants: ProductVariant[] | null;
+  cart: (Cart | null);
+  checkout: (Checkout | null);
+  customer: (Customer | null);
+  productVariants: (ProductVariant[] | null);
 }
 
 /**
@@ -1151,34 +720,34 @@ export interface MailingAddress {
   /**
    * The name of the city, district, village, or town.
    */
-  city: string;
+  city: (string | null);
 
   /**
    * The name of the country.
    */
-  country: string;
+  country: (string | null);
 
   /**
    * The two-letter code for the country of the address.
    * For example, US.
    */
-  countryCode: CountryCode;
+  countryCode: (string | null);
 
   /**
    * A unique phone number for the customer.
    */
-  phone: string;
+  phone: (string | null);
 
   /**
    * The region of the address, such as the province, state, or district.
    */
-  province: string;
+  province: (string | null);
 
   /**
    * The two-letter code for the region.
    * For example, ON.
    */
-  provinceCode: string;
+  provinceCode: (string | null);
 }
 
 /**
@@ -1193,7 +762,7 @@ export interface MoneyV2 {
   /**
    * Currency of the money.
    */
-  currencyCode: CurrencyCode;
+  currencyCode: string;
 }
 
 /**
@@ -1252,7 +821,7 @@ export interface ProductVariant {
    * Image associated with the product variant. This field falls back to the
    * product image if no image is available.
    */
-  image: Image;
+  image: (Image | null);
 
   /**
    * The product variant's price.
@@ -1267,7 +836,7 @@ export interface ProductVariant {
   /**
    * The SKU (stock keeping unit) associated with the variant.
    */
-  sku: string;
+  sku: (string | null);
 
   /**
    * The product variant's title.
@@ -1279,6 +848,8 @@ export interface ProductVariant {
  * An object containing metadata of when a search has been performed.
  */
 export interface SearchResult {
+  productVariants: ProductVariant[];
+
   /**
    * The search query that was executed
    */
