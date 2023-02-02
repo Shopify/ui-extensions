@@ -7,7 +7,6 @@ export interface SectionHeaderAction {
 
 export interface SectionProps {
   title?: string;
-  isLoading?: boolean;
   action?: SectionHeaderAction;
 }
 
