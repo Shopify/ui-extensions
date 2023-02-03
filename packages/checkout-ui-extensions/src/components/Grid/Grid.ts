@@ -5,6 +5,7 @@ import type {
   BlockAlignment,
   BorderProps,
   Columns,
+  CornerProps,
   InlineAlignment,
   Rows,
   SizingProps,
@@ -13,7 +14,11 @@ import type {
   ViewLikeAccessibilityRole,
 } from '../shared';
 
-export interface GridProps extends BorderProps, SizingProps, SpacingProps {
+export interface GridProps
+  extends BorderProps,
+    CornerProps,
+    SizingProps,
+    SpacingProps {
   /**
    * Sizes for each column of the layout.
    *
@@ -85,9 +90,9 @@ export interface GridProps extends BorderProps, SizingProps, SpacingProps {
    *
    * For example:
    *
-   * - In an HTML host a `['listItem', 'separator']` tuple will render: <li role='separator'>
+   * - In an HTML host a `['listItem', 'separator']` tuple will render: `<li role='separator'>`
    *
-   * - In an HTML host a `listItem` string will render: <li>
+   * - In an HTML host a `listItem` string will render: `<li>`
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
   /**

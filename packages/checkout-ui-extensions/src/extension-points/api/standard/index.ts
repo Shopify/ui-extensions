@@ -5,6 +5,7 @@ import type {
   CountryCode,
   Timezone,
   GraphQLError,
+  StorefrontApiVersion,
 } from '../shared';
 
 /**
@@ -688,7 +689,8 @@ export interface StandardApi<
   order: StatefulRemoteSubscribable<Order | undefined>;
 
   /**
-   * Provides access to session tokens, which can be used to validate requests between your extension and your backend.
+   * Provides access to session tokens, which can be used to validate requests made to your backend or properly
+   * configured third party APIs.
    */
   sessionToken: SessionToken;
 
@@ -697,7 +699,7 @@ export interface StandardApi<
    */
   query: <Data = unknown, Variables = {[key: string]: unknown}>(
     query: string,
-    options?: {variables?: Variables},
+    options?: {variables?: Variables; version?: StorefrontApiVersion},
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
 }
 

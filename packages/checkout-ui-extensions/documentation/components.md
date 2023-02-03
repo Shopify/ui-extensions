@@ -9,13 +9,13 @@ Checkout UI extensions provide UI components that a [rendering extension](./rend
 Checkout components are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the checkout experience.
 
 {% resource_card_container %}
-{% resource_card
+  {% resource_card
     type: :library,
     link: "https://www.figma.com/community/file/1121180079120732846",
     title: "Figma UI kit"
   %}
-Prototype checkout UI extensions faster with Shopify's public Figma component library
-{% endresource_card %}
+    Prototype checkout UI extensions faster with Shopify's public Figma component library
+  {% endresource_card %}
 {% endresource_card_container %}
 
 <div class="checkout-component-grid">
@@ -76,7 +76,9 @@ Prototype checkout UI extensions faster with Shopify's public Figma component li
 
   <div class="checkout-component-grid-item">
     <h3 class="checkout-component-grid-item_title">Overlays</h3>
+      <p><code><a href="../src/components/Modal">Modal</a></code></p>
       <p><code><a href="../src/components/Tooltip">Tooltip</a></code></p>
+      <p><code><a href="../src/components/Popover">Popover</a></code></p>
   </div>
 
   <div class="checkout-component-grid-item">

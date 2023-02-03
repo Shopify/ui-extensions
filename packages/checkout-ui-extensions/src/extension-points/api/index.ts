@@ -71,5 +71,11 @@ export type {
   Localization,
   Order,
 } from './standard';
-export type {CurrencyCode, CountryCode, Timezone} from './shared';
+export type {
+  CurrencyCode,
+  CountryCode,
+  Timezone,
+  GraphQLError,
+  StorefrontApiVersion,
+} from './shared';
 export type {CartLineRenderAfterApi} from './cart-line-render-after';

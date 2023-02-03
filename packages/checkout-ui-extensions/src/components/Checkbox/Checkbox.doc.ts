@@ -1,0 +1,41 @@
+import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
+const data: ReferenceEntityTemplateSchema = {
+  name: 'Checkbox',
+  description:
+    'Use checkboxes to give customers a single binary option, such as signing up for marketing, or agreeing to terms and conditions.',
+  thumbnail: 'checkbox-thumbnail.png',
+  requires: '',
+  isVisualComponent: true,
+  type: '',
+  definitions: [
+    {
+      title: 'CheckboxProps',
+      description: '',
+      type: 'CheckboxProps',
+    },
+  ],
+  category: 'Components',
+  subCategory: 'Forms',
+  defaultExample: {
+    image: 'checkbox-default.png',
+    codeblock: {
+      title: 'Basic Checkbox',
+      tabs: [
+        {
+          title: 'React',
+          code: '../../../../checkout-ui-extensions-react/src/components/Checkbox/examples/basic-checkbox.example.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'JS',
+          code: './examples/basic-checkbox.example.ts',
+          language: 'js',
+        },
+      ],
+    },
+  },
+  related: [],
+};
+
+export default data;

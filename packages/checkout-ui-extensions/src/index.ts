@@ -82,13 +82,20 @@ export type {
   GiftCardChangeResultError,
   GiftCardChangeResultSuccess,
   GiftCardRemoveChange,
+  GraphQLError,
+  StorefrontApiVersion,
 } from './extension-points';
 
 export * from './components';
 export type {
+  AccessibilityRole,
+  Autocomplete,
+  AutocompleteField,
+  AutocompleteGroup,
   BlockLayoutProps,
   BlockSpacerProps,
   BlockStackProps,
+  Breakpoint,
   ButtonProps,
   CheckboxProps,
   ChoiceListProps,
@@ -107,8 +114,11 @@ export type {
   LinkProps,
   ListProps,
   ListItemProps,
-  PressableProps,
+  ModalProps,
+  MaybeShorthandProperty,
+  NonPresentationalAccessibilityRole,
   PhoneFieldProps,
+  PressableProps,
   ScrollViewProps,
   SelectProps,
   SkeletonTextProps,
@@ -124,15 +134,8 @@ export type {
   ViewPosition,
   ViewPositionType,
   ViewTranslate,
-  AccessibilityRole,
   ViewLikeAccessibilityRole,
-  NonPresentationalAccessibilityRole,
-  Autocomplete,
-  AutocompleteField,
-  AutocompleteGroup,
-  Breakpoint,
   ShorthandProperty,
-  MaybeShorthandProperty,
 } from './components';
 export type Components = typeof import('./components');
 

@@ -3,12 +3,17 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {MaybeResponsiveConditionalStyle} from '../../style';
 import type {
   BorderProps,
+  CornerProps,
   SizingProps,
   SpacingProps,
   ViewLikeAccessibilityRole,
 } from '../shared';
 
-export interface GridItemProps extends BorderProps, SizingProps, SpacingProps {
+export interface GridItemProps
+  extends BorderProps,
+    CornerProps,
+    SizingProps,
+    SpacingProps {
   /**
    * Number of columns the item will span across
    */
@@ -25,9 +30,9 @@ export interface GridItemProps extends BorderProps, SizingProps, SpacingProps {
    *
    * For example:
    *
-   * - In an HTML host a `['listItem', 'separator']` tuple will render: <li role='separator'>
+   * - In an HTML host a `['listItem', 'separator']` tuple will render: `<li role='separator'>`
    *
-   * - In an HTML host a `listItem` string will render: <li>
+   * - In an HTML host a `listItem` string will render: `<li>`
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
 }

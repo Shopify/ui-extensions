@@ -4,6 +4,7 @@ import type {MaybeResponsiveConditionalStyle} from '../../style';
 import type {
   BlockAlignment,
   BorderProps,
+  CornerProps,
   InlineAlignment,
   SizingProps,
   Spacing,
@@ -13,6 +14,7 @@ import type {
 
 export interface InlineStackProps
   extends BorderProps,
+    CornerProps,
     SizingProps,
     SpacingProps {
   /**

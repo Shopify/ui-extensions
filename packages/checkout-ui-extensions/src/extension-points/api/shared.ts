@@ -810,6 +810,16 @@ export type CountryCode =
   | 'ZZ';
 
 /**
+ * Union of supported storefront API versions
+ */
+export type StorefrontApiVersion =
+  | '2022-04'
+  | '2022-07'
+  | '2022-10'
+  | '2023-01'
+  | 'unstable';
+
+/**
  * GraphQL error returned by the Shopify Storefront APIs.
  */
 export interface GraphQLError {
