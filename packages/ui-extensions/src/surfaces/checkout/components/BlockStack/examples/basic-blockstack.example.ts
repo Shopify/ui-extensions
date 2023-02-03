@@ -1,4 +1,4 @@
-import {extension, BlockStack, View} from '@shopify/ui-extensions/checkout';
+import {extend, BlockStack, View} from '@shopify/ui-extensions/checkout';
 
 extend('Checkout::Dynamic::Render', (root) => {
   const blockStack = root.createComponent(BlockStack, undefined, [
