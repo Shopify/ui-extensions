@@ -186,6 +186,9 @@ export async function components(
         additionalPropsTables,
         false,
         undefined,
+        {
+          excludePrivateFields: true,
+        },
       );
 
       markdown += propsTableMd;
