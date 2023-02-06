@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {
   BorderProps,
+  CornerProps,
   InlineAlignment,
   SizingProps,
   Spacing,
@@ -12,6 +13,7 @@ import {MaybeResponsiveConditionalStyle} from '../../style';
 
 export interface BlockStackProps
   extends BorderProps,
+    CornerProps,
     SizingProps,
     SpacingProps {
   /**
@@ -32,9 +34,9 @@ export interface BlockStackProps
    *
    * For example:
    *
-   * - In an HTML host a `['listItem', 'separator']` tuple will render: <li role='separator'>
+   * - In an HTML host a `['listItem', 'separator']` tuple will render: `<li role='separator'>`
    *
-   * - In an HTML host a `listItem` string will render: <li>
+   * - In an HTML host a `listItem` string will render: `<li>`
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
   /**

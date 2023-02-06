@@ -11,6 +11,7 @@ import type {
   Display,
   MultiPick,
   ViewLikeAccessibilityRole,
+  CornerProps,
 } from '../shared';
 
 type AccessibilityVisibility = 'hidden';
@@ -104,6 +105,7 @@ export interface Translate {
 
 export interface ViewProps
   extends BorderProps,
+    CornerProps,
     SizingProps,
     SpacingProps,
     VisibilityProps {
@@ -153,9 +155,9 @@ export interface ViewProps
    *
    * For example:
    *
-   * - In an HTML host a `['listItem', 'separator']` tuple will render: <li role='separator'>
+   * - In an HTML host a `['listItem', 'separator']` tuple will render: `<li role='separator'>`
    *
-   * - In an HTML host a `listItem` string will render: <li>
+   * - In an HTML host a `listItem` string will render: `<li>`
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
   /**
@@ -188,8 +190,5 @@ export interface ViewProps
  *  View is a generic container component. Its contents will always be their
  * “natural” size, so this component can be useful in layout components (like `Grid`,
  * `BlockStack`, `InlineStack`) that would otherwise stretch their children to fit.
- *
- * Note: View’s box model related properties like `padding`, `border`, `borderRadius`, and `borderColor` are implemented as
- * [CSS Logical Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties/Basic_concepts).
  */
 export const View = createRemoteComponent<'View', ViewProps>('View');

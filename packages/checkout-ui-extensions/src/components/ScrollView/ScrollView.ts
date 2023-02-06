@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {BorderProps, SizingProps, SpacingProps} from '../shared';
+import {BorderProps, CornerProps, SizingProps, SpacingProps} from '../shared';
 
 export interface ScrollViewEvent {
   /**
@@ -25,6 +25,7 @@ export interface ScrollViewEvent {
 
 export interface ScrollViewProps
   extends BorderProps,
+    CornerProps,
     SizingProps,
     SpacingProps {
   /**

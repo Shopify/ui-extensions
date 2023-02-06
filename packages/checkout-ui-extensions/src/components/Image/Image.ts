@@ -7,10 +7,10 @@ import type {
   ViewportSizeCondition,
   AtLeastOne,
 } from '../../style';
-import {BorderProps} from '../shared';
+import {BorderProps, CornerProps} from '../shared';
 import type {Fit, AccessibilityRole} from '../shared';
 
-export interface ImageProps extends BorderProps {
+export interface ImageProps extends BorderProps, CornerProps {
   /**
    * The URL or path to the image. Supports the `resolution` and `viewportInlineSize` conditional styles only.
    */

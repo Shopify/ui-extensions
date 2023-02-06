@@ -4,6 +4,7 @@ import {TextBlockProps} from '../TextBlock';
 
 export interface SkeletonTextBlockProps extends Pick<TextBlockProps, 'size'> {
   /**
+   * @private
    * Use to emphasize a word or a group of words.
    */
   emphasis?: 'bold';

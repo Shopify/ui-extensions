@@ -59,10 +59,8 @@ Default styling can be combined with specific conditions. In this example, the G
 
 ```jsx
 <Grid
-  columns={Style.default('fill').when({viewportInlineSize: {min: 'small'}}, [
-    '30%',
-    '70%',
-  ])}
+  columns={Style.default('fill')
+    .when({viewportInlineSize: {min: 'small'}}, ['30%','70%'])}
 >
   <View>Content</View>
   <View>Content</View>

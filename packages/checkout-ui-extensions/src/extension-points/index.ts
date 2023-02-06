@@ -74,6 +74,8 @@ export type {
   Language,
   Localization,
   Order,
+  GraphQLError,
+  StorefrontApiVersion,
 } from './api';
 export type {RenderExtension} from './render-extension';
 export type {

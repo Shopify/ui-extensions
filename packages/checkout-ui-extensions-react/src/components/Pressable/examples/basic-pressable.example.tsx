@@ -10,7 +10,7 @@ render('Checkout::Dynamic::Render', () => <App />);
 
 function App() {
   return (
-    <Pressable border="base" borderRadius="base" padding="base">
+    <Pressable border="base" cornerRadius="base" padding="base">
       <InlineLayout columns={['fill', 'auto']}>
         <Text>Details</Text>
         <Icon source="chevronDown" size="small" />

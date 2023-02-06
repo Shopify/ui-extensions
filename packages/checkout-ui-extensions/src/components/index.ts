@@ -42,10 +42,14 @@ export {List} from './List';
 export type {ListProps} from './List';
 export {ListItem} from './ListItem';
 export type {ListItemProps} from './ListItem';
+export {Modal} from './Modal';
+export type {ModalProps} from './Modal';
 export {PhoneField} from './PhoneField';
 export type {PhoneFieldProps} from './PhoneField';
 export {Pressable} from './Pressable';
 export type {PressableProps} from './Pressable';
+export {Popover} from './Popover';
+export type {PopoverProps, PopoverPosition} from './Popover';
 export {ScrollView} from './ScrollView';
 export type {ScrollViewProps, ScrollViewEvent} from './ScrollView';
 export {Select} from './Select';
@@ -80,38 +84,38 @@ export type {
 } from './View';
 export type {
   AccessibilityRole,
-  ViewLikeAccessibilityRole,
-  NonPresentationalAccessibilityRole,
+  Alignment,
+  Appearance,
   Autocomplete,
   AutocompleteField,
   AutocompleteGroup,
   Background,
   BackgroundFit,
   BackgroundPosition,
+  BackgroundProps,
   BackgroundRepeat,
   BlockAlignment,
-  InlineAlignment,
+  BorderProps,
   BorderRadius,
   BorderStyle,
   BorderWidth,
   Breakpoint,
+  Columns,
   CornerRadius,
-  ShorthandProperty,
-  MaybeShorthandProperty,
+  CornerProps,
   Fit,
+  GridItemSize,
+  InlineAlignment,
+  MaybeShorthandProperty,
+  NonPresentationalAccessibilityRole,
+  OverlayActivatorProps,
+  Rows,
+  ShorthandProperty,
   Status,
   Size,
   Spacing,
-  Alignment,
-  Appearance,
-  GridItemSize,
-  Columns,
-  Rows,
-  BackgroundProps,
-  BorderProps,
-  CornerProps,
   SizingProps,
   SpacingProps,
+  ViewLikeAccessibilityRole,
   VisibilityProps,
-  OverlayActivatorProps,
 } from './shared';

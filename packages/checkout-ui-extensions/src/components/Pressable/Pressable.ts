@@ -10,11 +10,13 @@ import type {
   Display,
   ButtonAccessibilityRole,
   OverlayActivatorProps,
+  CornerProps,
 } from '../shared';
 import type {ViewProps} from '../View';
 
 export interface PressableProps
   extends BorderProps,
+    CornerProps,
     SizingProps,
     SpacingProps,
     OverlayActivatorProps,

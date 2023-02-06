@@ -65,7 +65,11 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is renders above the payment method in payment step of checkout.
+   * A static extension point that renders the gift card entry form fields after
+   * the buyer ticks a box to use a gift card. This does not replace the
+   * native gift card entry form which is rendered in a separate part of checkout.
+   *
+   * @private
    */
   'Checkout::GiftCard::Render': RenderExtension<
     StandardApi<'Checkout::GiftCard::Render'>,
