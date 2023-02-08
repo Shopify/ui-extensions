@@ -22,6 +22,14 @@ export type {
   ProductConfigurationExtensionPoint,
 };
 
+import {
+  CompanyLocationExtensionPoint,
+  CompanyLocationExtensionApi,
+  CompanyLocationExtensionPointCallback,
+} from './identifiers/company_location';
+
+export type {CompanyLocationExtensionPoint};
+
 /*
 Placeholder for new imports
 */
@@ -35,12 +43,15 @@ export type {
 export type ExtensionPoint =
   | PlaygroundExtensionPoint
   | ProductSubscriptionExtensionPoint
-  | ProductConfigurationExtensionPoint;
+  | ProductConfigurationExtensionPoint
+  | CompanyLocationExtensionPoint;
 
 export type ExtensionApi = PlaygroundExtensionApi &
   ProductSubscriptionExtensionApi &
-  ProductConfigurationExtensionApi;
+  ProductConfigurationExtensionApi &
+  CompanyLocationExtensionApi;
 
 export type ExtensionPointCallback = PlaygroundExtensionPointCallback &
   ProductSubscriptionExtensionPointCallback &
-  ProductConfigurationExtensionPointCallback;
+  ProductConfigurationExtensionPointCallback &
+  CompanyLocationExtensionPointCallback;
