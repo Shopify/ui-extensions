@@ -2,10 +2,12 @@ import type {ReactElement} from 'react';
 import {render as remoteRender} from '@remote-ui/react';
 import {extend} from '@shopify/customer-account-ui-extensions';
 import type {
-  ApiForExtension,
   RenderExtension,
   RenderExtensionPoint,
+  ApiForRenderExtension,
 } from '@shopify/customer-account-ui-extensions';
+
+import {ExtensionApiContext} from './context';
 
 type RenderFunction<T> = RenderExtension<T, any>;
 
@@ -23,14 +25,20 @@ type RenderFunction<T> = RenderExtension<T, any>;
  */
 export function render<ExtensionPoint extends RenderExtensionPoint>(
   extensionPoint: ExtensionPoint,
-  render: (api: ApiForExtension<ExtensionPoint>) => ReactElement<any>,
+  render: (api: ApiForRenderExtension<ExtensionPoint>) => ReactElement<any>,
 ) {
   const extendCallback: RenderFunction<any> = (root, api) => {
     return new Promise<void>((resolve, reject) => {
       try {
-        remoteRender(render(api), root, () => {
-          resolve();
-        });
+        remoteRender(
+          <ExtensionApiContext.Provider value={api}>
+            {render(api as ApiForRenderExtension<ExtensionPoint>)}
+          </ExtensionApiContext.Provider>,
+          root,
+          () => {
+            resolve();
+          },
+        );
       } catch (error) {
         // Workaround for https://github.com/Shopify/ui-extensions/issues/325
         // eslint-disable-next-line no-console

@@ -70,3 +70,19 @@ type ExtractedApiFromExtension<T> = T extends RenderExtension<any, any>
  */
 export type ApiForExtension<ID extends keyof ExtensionPoints> =
   ExtractedApiFromExtension<ExtensionPoints[ID]>;
+
+/**
+ * A mapping of each “render extension” name to its callback type.
+ */
+export type RenderExtensions = {
+  [ID in RenderExtensionPoint]: ExtensionPoints[ID];
+};
+
+/**
+ * For a given rendering extension point, returns the type of the API that the
+ * extension will receive at runtime. This API type is the second argument to
+ * the callback for that extension point. The first callback for all of the rendering
+ * extension points each receive a `RemoteRoot` object.
+ */
+export type ApiForRenderExtension<ID extends keyof RenderExtensions> =
+  ExtractedApiFromRenderExtension<RenderExtensions[ID]>;
