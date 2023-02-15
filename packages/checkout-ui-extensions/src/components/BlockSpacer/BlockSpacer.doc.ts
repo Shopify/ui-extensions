@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'BlockSpacer',
   description:
-    'BlockSpacer is used to create empty block space, typically when variable spacing \n\nis needed between multiple elements.\n\nNote that you should favor BlockStack when spacing between all elements is the same.',
+    'BlockSpacer is used to create empty block space, typically when variable spacing is needed between multiple elements.\n\nNote that you should favor BlockStack when spacing between all elements is the same.',
   isVisualComponent: true,
   thumbnail: 'blockspacer-thumbnail.png',
   requires: '',
