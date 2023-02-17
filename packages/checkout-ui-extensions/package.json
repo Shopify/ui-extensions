@@ -12,6 +12,9 @@
   "module": "index.mjs",
   "esnext": "index.esnext",
   "types": "./build/ts/index.d.ts",
+  "scripts": {
+    "build-docs": "sh ./docs/build-docs.sh"
+  },
   "exports": {
     ".": {
       "types": "./build/ts/index.d.ts",

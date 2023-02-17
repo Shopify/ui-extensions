@@ -10,6 +10,7 @@
     "build": "loom build",
     "build-consumer": "yarnpkg build && ./scripts/build-consumer.sh",
     "build-consumer-spin": "yarnpkg build && ./scripts/build-consumer-spin.sh",
+    "build:api-docs": "yarn workspace @shopify/checkout-ui-extensions build-docs",
     "clean": "git clean -xdf ./packages; rm -rf ./build",
     "clear-cache": "rm -rf .sewing-kit",
     "deploy": "lerna publish from-package --yes",
