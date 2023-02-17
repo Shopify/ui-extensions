@@ -63,6 +63,19 @@ export interface I18n {
   ) => string;
 
   /**
+   * Returns a localized currency value.
+   *
+   * This function behaves like the standard `Intl.NumberFormat()`
+   * with a style of `currency` applied. It uses the buyer's locale by default.
+   *
+   * @param options.inExtensionLocale - if true, use the extension's locale
+   */
+  formatCurrency: (
+    number: number | bigint,
+    options?: {inExtensionLocale?: boolean} & Intl.NumberFormatOptions,
+  ) => string;
+
+  /**
    * Returns a localized date value.
    *
    * This function behaves like the standard `Intl.DateTimeFormatOptions()` and uses
