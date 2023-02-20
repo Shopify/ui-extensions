@@ -3,7 +3,6 @@ import type {
   RemoteChannel,
   RemoteComponentType,
 } from '@remote-ui/core';
-import { ApiForRenderExtension } from './surfaces/admin';
 
 export interface Extension<Api, Result> {
   (api: Api): Result;
