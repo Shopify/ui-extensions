@@ -20,7 +20,7 @@ import {ExtensionApiContext} from './context';
  * point must be a `RenderExtensionPoint`; if you are trying to register for a non-
  * rendering extension point, like `Admin::Customers::SegmentationTemplatesFirstTimeBuyers::Show`, use the
  * `extension()` function provided by this library instead.
- * 
+ *
  * @param render The function that will be called when Admin begins rendering
  * your extension. This function is called with the API Admin provided to your
  * extension, and must return a React element that will be rendered into the extension
