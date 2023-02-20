@@ -15,7 +15,7 @@ export enum EnabledCustomerSegmentationFeatures {
 export type SegmentationTemplatesRenderResult = ValueOrPromise<{
   title: string;
   description: string;
-  polarisIcon: any
+  polarisIcon: string
   segmentQueryTemplate: string;
   segmentQueryToInsert: string;
 }[]>;
