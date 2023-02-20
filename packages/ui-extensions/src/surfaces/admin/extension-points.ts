@@ -1,10 +1,34 @@
-import type {RenderExtension} from '../../extension';
+import type {RenderExtension, Extension} from '../../extension';
 
 import type {AnyComponent} from './shared';
-import type {StandardApi} from './api';
+import type {StandardApi, SegmentationTemplatesApi, SegmentationTemplatesRenderResult} from './api';
 
 export interface ExtensionPoints {
   Playground: RenderExtension<StandardApi<'Playground'>, AnyComponent>;
+  'Admin::Customers::SegmentationTemplatesFirstTimeBuyers::Show': Extension<
+    SegmentationTemplatesApi<'Admin::Customers::SegmentationTemplatesFirstTimeBuyers::Show'>,
+    SegmentationTemplatesRenderResult
+  >,
+  'Admin::Customers::SegmentationTemplatesHighValue::Show': Extension<
+    SegmentationTemplatesApi<'Admin::Customers::SegmentationTemplatesHighValue::Show'>,
+    SegmentationTemplatesRenderResult
+  >,
+  'Admin::Customers::SegmentationTemplatesReEngage::Show': Extension<
+    SegmentationTemplatesApi<'Admin::Customers::SegmentationTemplatesReEngage::Show'>,
+    SegmentationTemplatesRenderResult
+  >,
+  'Admin::Customers::SegmentationTemplatesAbandonedCheckout::Show': Extension<
+    SegmentationTemplatesApi<'Admin::Customers::SegmentationTemplatesAbandonedCheckout::Show'>,
+    SegmentationTemplatesRenderResult
+  >,
+  'Admin::Customers::SegmentationTemplatesPurchaseBehaviour::Show': Extension<
+    SegmentationTemplatesApi<'Admin::Customers::SegmentationTemplatesPurchaseBehaviour::Show'>,
+    SegmentationTemplatesRenderResult
+  >,
+  'Admin::Customers::SegmentationTemplatesLocation::Show': Extension<
+    SegmentationTemplatesApi<'Admin::Customers::SegmentationTemplatesLocation::Show'>,
+    SegmentationTemplatesRenderResult
+  >
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;
