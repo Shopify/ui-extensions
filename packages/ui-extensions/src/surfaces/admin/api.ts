@@ -1,5 +1,7 @@
 export type {StandardApi} from './api/standard/standard';
 export type {
+  I18n,
+  I18nTranslate,
   SegmentationTemplatesApi,
   SegmentationTemplatesRenderResult,
   EnabledCustomerSegmentationFeature,
