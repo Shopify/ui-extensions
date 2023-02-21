@@ -3,12 +3,12 @@ import {SmartGridApi, NavigationApi, StandardApi} from '../extension-api';
 import {RenderExtension} from './render-extension';
 
 export interface ExtensionPoints {
-  'Retail::SmartGrid::Tile': RenderExtension<
-    StandardApi<'Retail::SmartGrid::Tile'> & SmartGridApi,
+  'pos.home.tile.render': RenderExtension<
+    StandardApi<'pos.home.tile.render'> & SmartGridApi,
     SmartGridComponents
   >;
-  'Retail::SmartGrid::Modal': RenderExtension<
-    StandardApi<'Retail::SmartGrid::Modal'> & NavigationApi,
+  'pos.home.modal.render': RenderExtension<
+    StandardApi<'pos.home.modal.render'> & NavigationApi,
     BasicComponents
   >;
 }
