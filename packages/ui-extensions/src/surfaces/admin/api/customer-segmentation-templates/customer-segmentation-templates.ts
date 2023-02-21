@@ -3,7 +3,7 @@ import type {ExtensionPoint as AnyExtensionPoint} from '../../extension-points';
 
 type ValueOrPromise<T> = T extends PromiseLike<any> ? T : T | Promise<T>;
 
-export enum EnabledCustomerSegmentationFeature {
+export enum CustomerSegmentationFeature {
   ProductsPurchasedOnTags,
   AggregateFilters,
 }
@@ -12,7 +12,7 @@ export interface SegmentationTemplatesApi<
   ExtensionPoint extends AnyExtensionPoint,
 > extends StandardApi<ExtensionPoint> {
   /** Enabled segmentation query language features given to the extension point. */
-  enabledFeatures: [EnabledCustomerSegmentationFeature];
+  enabledFeatures: [CustomerSegmentationFeature];
   /** Utilities for translating content according to the current `localization` of the admin. */
   i18n: I18n;
 }

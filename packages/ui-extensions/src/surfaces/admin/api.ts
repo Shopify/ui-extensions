@@ -4,5 +4,5 @@ export type {
   I18nTranslate,
   SegmentationTemplatesApi,
   SegmentationTemplatesRenderResult,
-  EnabledCustomerSegmentationFeature,
 } from './api/customer-segmentation-templates/customer-segmentation-templates';
+export {CustomerSegmentationFeature} from './api/customer-segmentation-templates/customer-segmentation-templates';
