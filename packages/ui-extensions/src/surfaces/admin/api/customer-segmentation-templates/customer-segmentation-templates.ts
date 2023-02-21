@@ -12,7 +12,7 @@ export interface SegmentationTemplatesApi<
   ExtensionPoint extends AnyExtensionPoint,
 > extends StandardApi<ExtensionPoint> {
   /** Enabled segmentation query language features given to the extension point. */
-  enabledFeatures: EnabledCustomerSegmentationFeature;
+  enabledFeatures: [EnabledCustomerSegmentationFeature];
   /** Utilities for translating content according to the current `localization` of the admin. */
   i18n: I18n;
 }
