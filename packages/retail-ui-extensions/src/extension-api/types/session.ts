@@ -10,6 +10,11 @@ export interface Session {
   userId: number;
 
   /**
+   * The shop domain associated with the shop currently logged into POS.
+   */
+  shopDomain: string;
+
+  /**
    * The location ID associated with the POS' current location.
    */
   locationId: number;
