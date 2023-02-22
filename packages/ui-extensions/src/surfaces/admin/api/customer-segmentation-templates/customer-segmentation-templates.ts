@@ -22,8 +22,8 @@ export type SegmentationTemplatesRenderResult = ValueOrPromise<
     title: string;
     description: string;
     polarisIcon: string;
-    segmentQueryTemplate: string;
-    segmentQueryToInsert?: string;
+    templateQuery: string;
+    templateQueryToInsert?: string;
   }[]
 >;
 
