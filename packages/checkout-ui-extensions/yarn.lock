@@ -48,10 +48,10 @@
   resolved "https://registry.yarnpkg.com/@remote-ui/types/-/types-1.1.2.tgz#ae9219a56bb4bb6ff5aabfacb29a1e71adbd97d4"
   integrity sha512-F2u6McqvHj2c89FHeozQ0O8qbqhOFMMNYR2HqF33mHCMNTEXzUVheCj7laNO1/dGNXwcJHpoWIBNwfChbEfVyA==
 
-"@shopify/generate-docs@^0.8.3":
-  version "0.8.6"
-  resolved "https://registry.yarnpkg.com/@shopify/generate-docs/-/generate-docs-0.8.6.tgz#d58ccbff631f6dc442154abcbb1178dda30d1b2d"
-  integrity sha512-92nBQaZDXGwE3HAk1nMBHG6mb3r4sFSJ1zK4AssaapFelGnuKRFEnDQ1iHxfBYccZRS8An7+nn6CFTjerEiFAw==
+"@shopify/generate-docs@^0.8.10":
+  version "0.8.10"
+  resolved "https://registry.yarnpkg.com/@shopify/generate-docs/-/generate-docs-0.8.10.tgz#c721683c7d8bc3e8d20ed4748476886d425a9017"
+  integrity sha512-eFqHRA0FhPCFsTDffdO7sr4HIIHP49XqW6Gkrtp9MikmZreuDhATvEDdVSfaW6OHCDmPHq7LrvFCvxgBs9VgLQ==
   dependencies:
     "@types/react" "^18.0.21"
     globby "^11.1.0"
