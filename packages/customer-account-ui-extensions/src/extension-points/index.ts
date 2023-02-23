@@ -1,4 +1,8 @@
-export type {ExtensionPoints, ExtensionPoint} from './extension-points';
+export type {
+  ExtensionPoints,
+  ExtensionPoint,
+  FullPageApi,
+} from './extension-points';
 export type {
   Language,
   Localization,
@@ -15,6 +19,8 @@ export type {
   RenderExtensionPoint,
   RunExtensionPoint,
   ReturnTypeForExtension,
+  RenderExtensions,
+  ApiForRenderExtension,
 } from './types';
 
 export type {RenderExtension, RunExtension} from './extension-signature';
