@@ -23,6 +23,7 @@ export type {
   Shop,
   StandardApi,
   Storage,
+  ApiVersion,
   Version,
   NoteChange,
   NoteChangeResult,

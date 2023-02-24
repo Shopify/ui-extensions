@@ -335,7 +335,7 @@ export interface SpacingProps {
    *
    * - [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`
    *
-   * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
+   * - [`base`, `none`, `large200`, `small200`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `large200` and  blockStart padding is `small200`
    */
   padding?: MaybeResponsiveConditionalStyle<MaybeShorthandProperty<Spacing>>;
 }
@@ -465,7 +465,6 @@ export type Size =
   | 'extraLarge'
   | 'fill';
 
-/* @todo: remove the type override on docs/typeOverride.json once we align with other libraries */
 export type Spacing =
   | 'none'
   | 'base'

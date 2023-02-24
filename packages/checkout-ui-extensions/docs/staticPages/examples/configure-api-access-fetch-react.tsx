@@ -11,7 +11,7 @@ render('Checkout::Dynamic::Render', () => (
 ));
 
 function Extension() {
-  const {query, shop} = useExtensionApi();
+  const {shop} = useExtensionApi();
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -27,8 +27,10 @@ function Extension() {
       variables: {first: 5},
     };
 
+    const apiVersion = 'unstable';
+
     fetch(
-      `${shop.storefrontUrl}api/{api_version}/graphql.json`,
+      `${shop.storefrontUrl}api/${apiVersion}/graphql.json`,
       {
         method: 'POST',
         headers: {

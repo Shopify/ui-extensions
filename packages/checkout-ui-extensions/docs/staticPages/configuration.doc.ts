@@ -59,7 +59,7 @@ const data: LandingTemplateSchema = {
         {
           title: 'When to use API access',
           sectionContent: `
-API access is used when your extension needs to retrieve data from the Storefront API. For example, you may need to check the product tags on an item in the cart, or convert a product's price to another currency.
+API access is used when your extension needs to retrieve data from the [Storefront API](/api/storefront). For example, you may need to check the product tags on an item in the cart, or convert a product's price to another currency.
 
 > Tip:
 > Shopify handles the authentication for all API calls from an extension.

@@ -36,21 +36,5 @@ module.exports = {
       files: ['**/.eslintrc.js'],
       env: {node: true},
     },
-    {
-      files: './packages/checkout-ui-extensions/docs/staticPages/examples/**',
-      rules: {
-        'no-console': 'off',
-        'react/react-in-jsx-scope': 'off',
-        '@shopify/jsx-no-hardcoded-content': 'off',
-        'import/no-extraneous-dependencies': 'off',
-        'prettier/prettier': [
-          'error',
-          {
-            printWidth: 50,
-          },
-        ],
-        'promise/catch-or-return': 'off',
-      },
-    },
   ],
 };
