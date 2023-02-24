@@ -25,7 +25,6 @@ export function useTranslate<
 
       return translation.map((part, index) => {
         if (isValidElement(part)) {
-          // eslint-disable-next-line react/no-array-index-key
           return cloneElement(part as RemoteComponentType<any>, {key: index});
         }
         return part;

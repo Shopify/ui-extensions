@@ -74,6 +74,7 @@ function createLruCache(maxSize: number, equals: EqualityFn): Cache {
 
   function put(key: unknown, value: unknown) {
     if (get(key) === NOT_FOUND) {
+      // eslint-disable-next-line no-warning-comments
       // TODO Is unshift slow?
       entries.unshift({key, value});
       if (entries.length > maxSize) {
@@ -152,6 +153,7 @@ export function memoize<F extends (...args: any[]) => any>(
   function memoized() {
     let value = cache.get(arguments);
     if (value === NOT_FOUND) {
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       value = func.apply(null, arguments);
 
