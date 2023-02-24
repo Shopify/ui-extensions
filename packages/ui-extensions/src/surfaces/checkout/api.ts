@@ -1,3 +1,4 @@
+export type {I18n, I18nTranslate} from '../../api';
 export type {CountryCode, CurrencyCode, Timezone} from './api/shared';
 export type {
   StandardApi,
@@ -58,8 +59,6 @@ export type {
   DiscountCodeChangeResult,
   DiscountCodeChangeResultError,
   DiscountCodeChangeResultSuccess,
-  I18n,
-  I18nTranslate,
   Currency,
   Language,
   Localization,

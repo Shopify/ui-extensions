@@ -12,6 +12,8 @@ export {CardSection} from './components/CardSection/CardSection';
 export type {CardSectionProps} from './components/CardSection/CardSection';
 export {Checkbox} from './components/Checkbox/Checkbox';
 export type {CheckboxProps} from './components/Checkbox/Checkbox';
+export {CustomerSegmentationTemplate} from './components/CustomerSegmentationTemplate/CustomerSegmentationTemplate';
+export type {CustomerSegmentationTemplateProps} from './components/CustomerSegmentationTemplate/CustomerSegmentationTemplate';
 export {Heading} from './components/Heading/Heading';
 export type {HeadingProps} from './components/Heading/Heading';
 export {Icon} from './components/Icon/Icon';

@@ -1,10 +1,19 @@
 import type {RenderExtension} from '../../extension';
 
-import type {AnyComponent} from './shared';
-import type {StandardApi} from './api';
+import type {AnyComponent, Components} from './shared';
+import type {StandardApi, CustomerSegmentationTemplateApi} from './api';
+import {AnyComponentBuilder} from '../../shared';
+
+type CustomerSegmentationTemplateComponent = AnyComponentBuilder<
+  Pick<Components, 'CustomerSegmentationTemplate'>
+>;
 
 export interface ExtensionPoints {
   Playground: RenderExtension<StandardApi<'Playground'>, AnyComponent>;
+  'admin.customers.segmentation-templates.render': RenderExtension<
+    CustomerSegmentationTemplateApi<'admin.customers.segmentation-templates.render'>,
+    CustomerSegmentationTemplateComponent
+  >;
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;
