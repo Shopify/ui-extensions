@@ -32,7 +32,7 @@ export interface ExtensionPoints {
   >;
 }
 
-interface FullPageApi {
+export interface FullPageApi {
   location: StatefulRemoteSubscribable<{
     pathname: string;
     search: string;
