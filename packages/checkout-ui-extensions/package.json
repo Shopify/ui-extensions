@@ -28,6 +28,6 @@
     "@remote-ui/core": "2.1.x"
   },
   "devDependencies": {
-    "@shopify/generate-docs": "^0.8.10"
+    "@shopify/generate-docs": "^0.8.11"
   }
 }
