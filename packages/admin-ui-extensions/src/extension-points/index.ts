@@ -16,10 +16,17 @@ import {
   ProductConfigurationExtensionPointCallback,
 } from './identifiers/product_configuration';
 
+import {
+  LocationDetailsExtensionPoint,
+  LocationDetailsExtensionApi,
+  LocationDetailsExtensionPointCallback,
+} from './identifiers/location_details';
+
 export type {
   PlaygroundExtensionPoint,
   ProductSubscriptionExtensionPoint,
   ProductConfigurationExtensionPoint,
+  LocationDetailsExtensionPoint,
 };
 
 /*
@@ -35,12 +42,15 @@ export type {
 export type ExtensionPoint =
   | PlaygroundExtensionPoint
   | ProductSubscriptionExtensionPoint
-  | ProductConfigurationExtensionPoint;
+  | ProductConfigurationExtensionPoint
+  | LocationDetailsExtensionPoint;
 
 export type ExtensionApi = PlaygroundExtensionApi &
   ProductSubscriptionExtensionApi &
-  ProductConfigurationExtensionApi;
+  ProductConfigurationExtensionApi &
+  LocationDetailsExtensionApi;
 
 export type ExtensionPointCallback = PlaygroundExtensionPointCallback &
   ProductSubscriptionExtensionPointCallback &
-  ProductConfigurationExtensionPointCallback;
+  ProductConfigurationExtensionPointCallback &
+  LocationDetailsExtensionPointCallback;
