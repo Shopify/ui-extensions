@@ -1,0 +1,7 @@
+type = "checkout_ui_extension"
+name = "my-checkout-extension"
+
+# ...
+
+[capabilities]
+network_access = true

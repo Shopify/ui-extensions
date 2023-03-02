@@ -1,6 +1,9 @@
 <Pressable
   onPress={() => alert('press')}
-  background={Style.default('color1').when({hover: true}, 'color2')}
+  border={Style.default(['base', 'dotted']).when(
+    {viewportInlineSize: {min: 'small'}},
+    ['base', 'dotted', 'none', 'base'],
+  )}
 >
   Content
 </Pressable>;

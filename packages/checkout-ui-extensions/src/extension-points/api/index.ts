@@ -1,4 +1,5 @@
 export type {
+  ApiVersion,
   Attribute,
   AttributeChange,
   AttributeChangeResult,

@@ -23,6 +23,7 @@ export type {
   ReturnTypeForExtension,
   StandardApi,
   Storage,
+  ApiVersion,
   Version,
   Shop,
   NoteChange,

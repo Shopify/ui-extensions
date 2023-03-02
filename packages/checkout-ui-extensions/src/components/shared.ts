@@ -465,12 +465,11 @@ export type Size =
   | 'extraLarge'
   | 'fill';
 
-/* @todo: remove the type override on docs/typeOverride.json once we align with other libraries */
 export type Spacing =
   | 'none'
+  | 'base'
   | 'extraTight'
   | 'tight'
-  | 'base'
   | 'loose'
   | 'extraLoose';
 

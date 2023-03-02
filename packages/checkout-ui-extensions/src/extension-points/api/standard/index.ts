@@ -72,6 +72,13 @@ export interface Extension {
   version?: string;
 
   /**
+   * The API version that was set in the extension config file.
+   *
+   * @example '2023-01', '2022-10'
+   */
+  apiVersion: ApiVersion;
+
+  /**
    * The URL to the script that started the extension point.
    */
   scriptUrl: string;
@@ -357,24 +364,21 @@ export interface AppMetafieldEntry {
   metafield: AppMetafield;
 }
 
-export type Version = 'unstable';
+export type ApiVersion = '2022-10' | '2023-01' | 'unstable';
+
+export type Version = string;
 
 /**
- * This defines the i18n.translate() signature.
+ * This returns a translated string matching a key in a locale file.
+ *
+ * @example translate("banner.title")
  */
-export interface I18nTranslate {
-  /**
-   * This returns a translated string matching a key in a locale file.
-   *
-   * @example translate("banner.title")
-   */
-  <ReplacementType = string>(
-    key: string,
-    options?: {[placeholderKey: string]: ReplacementType | string | number},
-  ): ReplacementType extends string | number
-    ? string
-    : (string | ReplacementType)[];
-}
+export type I18nTranslate<ReplacementType = string> = (
+  key: string,
+  options?: {[placeholderKey: string]: ReplacementType | string | number},
+) => ReplacementType extends string | number
+  ? string
+  : (string | ReplacementType)[];
 
 export interface I18n {
   /**
@@ -499,12 +503,11 @@ export interface StandardApi<
    */
   buyerJourney: {
     /**
-     * A function for intercepting and preventing progress on checkout. You can block
-     * checkout progress by returning an object with `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState}`.
-     * If you do, then you're expected to also update some part of your UI to reflect the reason why progress
-     * was blocked.
+     * Installs a function for intercepting and preventing progress on checkout.
      *
-     * To block checkout progress, you must set the [block_progress](https://shopify.dev/api/checkout-extensions/checkout/configuration#block-progress) capability in your extension's configuration.
+     * This returns a promise that resolves to a teardown function. Calling the teardown function will remove the interceptor.
+     *
+     * To block checkout progress, you must set the [block_progress](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress) capability in your extension's configuration.
      */
     intercept(interceptor: Interceptor): Promise<() => void>;
 
@@ -1439,17 +1442,15 @@ export interface InterceptorProps {
   canBlockProgress: boolean;
 }
 
-export interface Interceptor {
-  /**
-   * A function for intercepting and preventing navigation on checkout. You can block
-   * navigation by returning an object with `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState}`.
-   * If you do, then you're expected to also update some part of your UI to reflect the reason why navigation
-   * was blocked.
-   */
-  (interceptorProps: InterceptorProps):
-    | InterceptorRequest
-    | Promise<InterceptorRequest>;
-}
+/**
+ * A function for intercepting and preventing navigation on checkout. You can block
+ * navigation by returning an object with `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState}`.
+ * If you do, then you're expected to also update some part of your UI to reflect the reason why navigation
+ * was blocked.
+ */
+export type Interceptor = (
+  interceptorProps: InterceptorProps,
+) => InterceptorRequest | Promise<InterceptorRequest>;
 
 /**
  * Information about a customer who has previously purchased from this shop.

@@ -12,6 +12,9 @@
   "module": "index.mjs",
   "esnext": "index.esnext",
   "types": "./build/ts/index.d.ts",
+  "scripts": {
+    "build-docs": "sh ./docs/build-docs.sh"
+  },
   "exports": {
     ".": {
       "types": "./build/ts/index.d.ts",
@@ -25,6 +28,7 @@
     "@remote-ui/core": "2.1.x"
   },
   "devDependencies": {
-    "@shopify/generate-docs": "^0.8.3"
+    "@shopify/generate-docs": "^0.8.11",
+    "typescript": "^4.9.0"
   }
 }

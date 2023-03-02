@@ -11,6 +11,7 @@ packages/*/*.js
 packages/*/bin
 !packages/*/.eslintrc.js
 *.log
+packages/checkout-ui-extensions/docs/generated
 
 # IntelliJ IDE ignore
 .idea
