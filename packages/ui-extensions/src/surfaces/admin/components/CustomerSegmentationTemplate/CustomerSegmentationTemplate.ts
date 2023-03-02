@@ -32,14 +32,16 @@ export interface CustomerSegmentationTemplateProps {
   title: string;
   /* Localized description of the template. */
   description: string;
-  /* Icon identifier for the template. This property is ignored for non-1P Segmentation templates as we fallback to the app icon */
+  /* Icon identifier for the template. This property is ignored for non-1P Segmentation templates as we fallback to the app icon. */
   icon?: Source;
-  /* ShopifyQL code snippet to render in the template with syntax highlighting */
+  /* ShopifyQL code snippet to render in the template with syntax highlighting. */
   templateQuery: string;
   /* ShopifyQL code snippet to insert in the segment editor. If missing, `templateQuery` will be used. */
   templateQueryToInsert?: string;
-  /* List of customer standard metafield used in the template's query */
+  /* List of customer standard metafield used in the template's query. */
   standardMetafieldDependencies?: CustomerStandardMetafieldDependency[];
+  /* Date when the template was first introduced. A "New" badge will be rendered for recently introduced templates. */
+  dateAdded?: Date;
 }
 
 /**
