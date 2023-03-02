@@ -27,6 +27,6 @@ export interface BannerProps {
 /**
  * Banners inform merchants about important changes or persistent conditions. Use this component if you need to communicate to merchants in a prominent way.
  *
- * [Learn more about best practices and guidelines on using Banners](https://polaris.shopify.com/components/feedback-indicators/banner#section-best-practices).
+ * [Learn more about best practices and guidelines on using Banners](https://polaris.shopify.com/components/feedback-indicators/banner#best-practices).
  */
 export const Banner = createRemoteComponent<'Banner', BannerProps>('Banner');

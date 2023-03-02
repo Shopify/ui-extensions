@@ -8,4 +8,4 @@
 | Place Banners at the top of the page or section they apply to | Use too many Banners at one time |
 | Use status to provide additional context to the merchant      |                                  |
 
-For more guidelines, refer to Polaris' [Banner best practices](https://polaris.shopify.com/components/feedback-indicators/banner#section-best-practices).
+For more guidelines, refer to Polaris' [Banner best practices](https://polaris.shopify.com/components/feedback-indicators/banner#best-practices).

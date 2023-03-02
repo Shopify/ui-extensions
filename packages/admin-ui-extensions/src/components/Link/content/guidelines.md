@@ -7,4 +7,4 @@
 | 📱 Use `external` to launch URLs with the device browser                  | Inject Javascript into the URL. This will be blocked. |
 | 🖥 Use `external` to launch URLs in a new browser tab. Use HTTPS for URLs. |                                                       |
 
-For more guidelines, refer to Polaris' [Link best practices](https://polaris.shopify.com/components/navigation/link#section-best-practices).
+For more guidelines, refer to Polaris' [Link best practices](https://polaris.shopify.com/components/navigation/link#best-practices).
