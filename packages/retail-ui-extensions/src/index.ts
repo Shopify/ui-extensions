@@ -10,6 +10,8 @@ export type {
   StandardApi,
   SessionApi,
   SessionApiContent,
+  ToastApi,
+  ToastApiContent,
   Session,
   Address,
   Cart,
