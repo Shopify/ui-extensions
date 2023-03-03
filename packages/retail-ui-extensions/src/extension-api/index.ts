@@ -6,6 +6,7 @@ export type {SmartGridApi, SmartGridApiContent} from './smartgrid-api';
 export type {StandardApi} from './standard-api';
 
 export type {SessionApiContent, SessionApi} from './session-api';
+export type {ToastApiContent, ToastApi} from './toast-api';
 
 export type {
   Address,
