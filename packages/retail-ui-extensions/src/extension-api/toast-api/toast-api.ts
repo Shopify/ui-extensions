@@ -1,15 +1,16 @@
+export interface ShowToastOptions {
+  duration?: number;
+}
+
 export interface ToastApiContent {
   /**
    * Show a toast.
    * @param content The text content to display.
-   * @param duration The duration of the toast in ms. Defaults to 5000.
+   * @param options An object containing ShowToastOptions.
    */
-  show: (content: string, duration?: number) => void;
+  show: (content: string, options?: ShowToastOptions) => void;
 }
 
-/**
- * Show a toast.
- */
 export interface ToastApi {
   toast: ToastApiContent;
 }
