@@ -7,4 +7,4 @@
 | Have clear and helpful relationship to the content or task they represent |                                                    |
 | Badges can be stacked horizontally                                        |                                                    |
 
-For more guidelines, refer to Polaris' [Badge best practices](https://polaris.shopify.com/components/images-and-icons/badge#section-best-practices).
+For more guidelines, refer to Polaris' [Badge best practices](https://polaris.shopify.com/components/feedback-indicators/badge#best-practices).

@@ -7,4 +7,4 @@
 | ----------------------------------------------------------------------------- | ------------------------------------- |
 | 📱 Keep Stacks narrow. There is typically more vertical space than horizontal | 📱 Use complex and deep Stack layouts |
 
-For more guidelines, refer to Polaris' [Stack best practices](https://polaris.shopify.com/components/structure/stack#section-best-practices).
+For more guidelines, refer to Polaris' [Stack best practices](https://polaris.shopify.com/components/layout-and-structure/stack#best-practices).

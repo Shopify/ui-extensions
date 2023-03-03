@@ -11,4 +11,4 @@
 | Use only a single primary Button per section       |                                              |
 | Primary buttons should be before secondary buttons |                                              |     |
 
-For more guidelines, refer to Polaris' [Button best practices](https://polaris.shopify.com/components/actions/button#section-best-practices).
+For more guidelines, refer to Polaris' [Button best practices](https://polaris.shopify.com/components/actions/button#best-practices).
