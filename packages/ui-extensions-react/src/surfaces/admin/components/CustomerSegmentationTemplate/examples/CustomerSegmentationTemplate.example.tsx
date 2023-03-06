@@ -21,6 +21,7 @@ function App({i18n, enabledFeatures, category}) {
         icon='productsMajor'
         templateQuery={templateQuery}
         templateQueryToInsert={templateQueryToInsert}
+        dateAdded={new Date('2023-01-15')}
       />
     );
   }
