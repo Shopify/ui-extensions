@@ -1,3 +1,4 @@
+export {Banner} from './Banner';
 export {Button} from './Button';
 export {Dialog} from './Dialog';
 export {FormattedTextField} from './FormattedTextField';

@@ -27,6 +27,7 @@ export {CountryCode} from './extension-api';
 export {
   Text,
   Tile,
+  Banner,
   Button,
   Section,
   Selectable,
@@ -73,6 +74,8 @@ export type {
   ColorType,
   TileProps,
   StepperProps,
+  BannerProps,
+  BannerType,
   ButtonProps,
   ButtonType,
   SelectableProps,
