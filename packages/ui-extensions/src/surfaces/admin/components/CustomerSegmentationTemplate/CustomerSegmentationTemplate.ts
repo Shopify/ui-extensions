@@ -30,9 +30,9 @@ type CustomerStandardMetafieldDependency = 'facts.birth_date';
 export interface CustomerSegmentationTemplateProps {
   /* Localized title of the template. */
   title: string;
-  /* Localized description of the template. */
-  description: string;
-  /* Icon identifier for the template. This property is ignored for non-1P Segmentation templates as we fallback to the app icon. */
+  /* Localized description(s) of the template. */
+  description: string | string[];
+  /* Icon identifier for the template. This property is ignored for non-1P Segmentation templates as we fallback to the app icon */
   icon?: Source;
   /* ShopifyQL code snippet to render in the template with syntax highlighting. */
   templateQuery: string;

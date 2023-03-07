@@ -13,7 +13,7 @@ function App({i18n, enabledFeatures, category}) {
     const templateQueryToInsert = productsPurchasedOnTagsEnabled
       ? 'products_purchased(tag:'
       : 'products_purchased(id:';
-  
+
     return (
       <CustomerSegmentationTemplate
         title={i18n.translate('product.title')}
@@ -25,12 +25,12 @@ function App({i18n, enabledFeatures, category}) {
       />
     );
   }
-  
+
   if (category == 'location') {
     return (
       <CustomerSegmentationTemplate
         title={i18n.translate('location.title')}
-        description={i18n.translate('location.description')}
+        description={[i18n.translate('location.firstParagraph'), i18n.translate('location.secondParagraph')]}
         icon='locationMajor'
         templateQuery="customer_cities CONTAINS 'US-NY-NewYorkCity'"
       />
