@@ -26,7 +26,7 @@ export interface LineItem {
   title?: string;
   variantId?: number;
   productId?: number;
-  discount?: Discount;
+  discounts: Discount[];
   taxable: boolean;
   sku?: string;
   vendor?: string;
