@@ -1,4 +1,5 @@
 import {
+  Banner,
   Button,
   Dialog,
   FormattedTextField,
@@ -21,6 +22,7 @@ import {
 } from '../components';
 
 export type BasicComponents =
+  | typeof Banner
   | typeof Button
   | typeof ScrollView
   | typeof Icon
