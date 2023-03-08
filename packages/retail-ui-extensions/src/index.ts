@@ -75,7 +75,7 @@ export type {
   TileProps,
   StepperProps,
   BannerProps,
-  BannerType,
+  BannerVariant,
   ButtonProps,
   ButtonType,
   SelectableProps,

@@ -5,7 +5,7 @@ export {Tile} from './Tile';
 export type {TileProps} from './Tile';
 
 export {Banner} from './Banner';
-export type {BannerProps, BannerType} from './Banner';
+export type {BannerProps, BannerVariant} from './Banner';
 
 export {Button} from './Button';
 export type {ButtonProps, ButtonType} from './Button';

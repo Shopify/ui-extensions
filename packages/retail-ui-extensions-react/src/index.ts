@@ -17,7 +17,7 @@ export * from './components';
 
 export type {
   AutoCapitalizationType,
-  BannerType,
+  BannerVariant,
   BannerProps,
   ButtonType,
   ButtonProps,
