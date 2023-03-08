@@ -31,7 +31,6 @@ export type {
   ListItem,
   ListProps,
   RadioButtonListProps,
-  SearchBarProps,
   Segment,
   SegmentedControlProps,
   Spacing,
