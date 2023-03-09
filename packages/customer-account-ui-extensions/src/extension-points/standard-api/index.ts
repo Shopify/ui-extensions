@@ -1,5 +1,6 @@
 import {Extension} from './extension';
 import {I18n, Localization} from './localization';
+import {Query} from './query';
 import {Storage} from './storage';
 
 export type RendererVersion = 'unstable';
@@ -24,6 +25,11 @@ export interface StandardApi {
    * @example 'unstable'
    */
   version: RendererVersion;
+
+  /**
+   * Used to query the customer account graphql API with prefetched token
+   */
+  query: Query;
 
   /**
    * Details about the language of the buyer.
