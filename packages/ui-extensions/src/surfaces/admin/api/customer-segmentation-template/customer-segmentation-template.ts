@@ -18,11 +18,27 @@ type TemplateCategory =
   | 'purchaseBehaviour'
   | 'location';
 
+type UnitSystem = 'IMPERIAL_SYSTEM' | 'METRIC_SYSTEM';
+
+interface Location {
+  name: string;
+  latitudeDecimalDegrees?: number;
+  longitudeDecimalDegrees?: number;
+}
+
+interface Shop {
+  b2bEnabled: boolean;
+  unitSystem: UnitSystem;
+  defaultLocation: Location;
+}
+
 export interface CustomerSegmentationTemplateApi<
   ExtensionPoint extends AnyExtensionPoint,
 > extends StandardApi<ExtensionPoint> {
   /* Utilities for translating content according to the current `localization` of the admin. */
   i18n: I18n;
+  /*  */
+  shop: Shop;
   /** @private */
   __category: TemplateCategory;
   /** @private */
