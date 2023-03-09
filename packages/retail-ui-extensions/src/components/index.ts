@@ -51,9 +51,6 @@ export {ScrollView} from './ScrollView';
 export {Dialog} from './Dialog';
 export type {DialogType, DialogProps} from './Dialog';
 
-export {SearchBar} from './SearchBar';
-export type {SearchBarProps} from './SearchBar';
-
 export type {AutoCapitalizationType, BaseTextFieldProps} from './shared';
 
 export {Image} from './Image';

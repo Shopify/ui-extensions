@@ -9,7 +9,6 @@ import {
   Selectable,
   List,
   RadioButtonList,
-  SearchBar,
   SegmentedControl,
   Stack,
   Stepper,
@@ -33,7 +32,6 @@ export type BasicComponents =
   | typeof Image
   | typeof List
   | typeof RadioButtonList
-  | typeof SearchBar
   | typeof SegmentedControl
   | typeof Stack
   | typeof Stepper
