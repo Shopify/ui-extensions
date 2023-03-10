@@ -5,11 +5,7 @@ import {
 } from '@shopify/ui-extensions-react/admin';
 
 function App({i18n, shop, enabledFeatures, category}) {
-  const {
-    name,
-    latitudeDecimalDegrees: latitude,
-    longitudeDecimalDegrees: longitude,
-  } = shop.defaultLocation;
+  const {name, latitude, longitude} = shop.defaultLocation;
 
   if (category == 'reEngageCustomers') {
     const productsPurchasedOnTagsEnabled = enabledFeatures.includes(
