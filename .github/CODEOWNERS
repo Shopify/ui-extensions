@@ -25,6 +25,8 @@
 /packages/customer-account-ui-extensions-react/   @Shopify/checkout-extensibility
 /packages/post-purchase-ui-extensions/            @Shopify/checkout-extensibility
 /packages/post-purchase-ui-extensions-react/      @Shopify/checkout-extensibility
+/packages/retail-ui-extensions/			  @Shopify/retail-succeed-extensibility
+/packages/retail-ui-extensions-react/		  @Shopify/retail-succeed-extensibility
 /packages/ui-extensions/                          @Shopify/app-ui @Shopify/checkout-extensibility
 /packages/ui-extensions-webpack-hot-client        @Shopify/checkout-extensibility
 /packages/web-pixel-extensions                    @Shopify/checkout-extensibility
