@@ -1,10 +1,11 @@
-import type {Modal} from '../types';
+import {Destination} from 'extension-api/types';
 
 export interface SmartGridApiContent {
-  /** Presents a new modal on top of the Smart Grid.
-   * @param modal this interface contains the information about the path and any initial parameters.
+  /** Presents the `pos.home.modal.render` extension point on top of the Smart Grid.
+   * @param destination the `destination` `Screen` or `Modal` to navigate to.
+   * @param params the parameters you want to pass to the destination.
    */
-  presentModal(modal: Modal): void;
+  navigate(destination: Destination, params?: any): void;
 }
 
 /**

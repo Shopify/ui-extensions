@@ -66,3 +66,6 @@ export {Screen} from './Screen';
 export type {ScreenProps} from './Screen';
 
 export {Navigator} from './Navigator';
+
+export {Modal} from './Modal';
+export type {ModalProps} from './Modal';
