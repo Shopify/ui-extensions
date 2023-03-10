@@ -6,4 +6,4 @@
 | ----------------------------------------------------------- | ------------------------------ |
 | Cards should be at the top level of the component hierarchy | Use too many secondary actions |
 
-For more guidelines, refer to Polaris' [Card best practices](https://polaris.shopify.com/components/layout-andstructure/card#best-practices).
+For more guidelines, refer to Polaris' [Card best practices](https://polaris.shopify.com/components/layout-and-structure/card#best-practices).
