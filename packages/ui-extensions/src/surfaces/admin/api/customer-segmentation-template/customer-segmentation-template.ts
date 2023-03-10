@@ -22,8 +22,8 @@ type UnitSystem = 'IMPERIAL_SYSTEM' | 'METRIC_SYSTEM';
 
 interface Location {
   name: string;
-  latitudeDecimalDegrees?: number;
-  longitudeDecimalDegrees?: number;
+  latitude?: number;
+  longitude?: number;
 }
 
 interface Shop {

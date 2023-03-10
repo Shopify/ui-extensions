@@ -6,11 +6,7 @@ import {
 export default extension(
   'admin.customers.segmentation-templates.render',
   (root, {i18n, shop, __category, __enabledFeatures}) => {
-    const {
-      name,
-      latitudeDecimalDegrees: latitude,
-      longitudeDecimalDegrees: longitude,
-    } = shop.defaultLocation;
+    const {name, latitude, longitude} = shop.defaultLocation;
 
     if (__category === 'reEngageCustomers') {
       const productsPurchasedOnTagsEnabled = __enabledFeatures.includes(
