@@ -8,6 +8,8 @@ export type {StandardApi} from './standard-api';
 export type {SessionApiContent, SessionApi} from './session-api';
 export type {ToastApiContent, ToastApi} from './toast-api';
 
+export type {Destination} from './types';
+
 export type {
   Address,
   Cart,
@@ -16,7 +18,6 @@ export type {
   Discount,
   CustomSale,
   Session,
-  Modal,
 } from './types';
 
 export {CountryCode} from './types';

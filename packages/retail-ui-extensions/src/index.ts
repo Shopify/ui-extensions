@@ -17,9 +17,9 @@ export type {
   Cart,
   LineItem,
   CustomSale,
+  Destination,
   Customer,
   Discount,
-  Modal,
 } from './extension-api';
 
 export {CountryCode} from './extension-api';
@@ -44,6 +44,7 @@ export {
   RadioButtonList,
   Icon,
   Screen,
+  Modal,
   Navigator,
 } from './components';
 
@@ -85,6 +86,7 @@ export type {
   RadioButtonListProps,
   IconName,
   IconProps,
+  ModalProps,
   ScreenProps,
 } from './components';
 
