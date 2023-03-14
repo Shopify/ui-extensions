@@ -8,6 +8,8 @@ export type {
   SmartGridApi,
   SmartGridApiContent,
   StandardApi,
+  SmartGridModalApi,
+  SmartGridTileApi,
   SessionApi,
   SessionApiContent,
   ToastApi,

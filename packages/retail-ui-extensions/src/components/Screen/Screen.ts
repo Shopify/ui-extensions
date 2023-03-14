@@ -32,6 +32,7 @@ export interface ScreenSearchBarProps {
  * @property `onReceiveParams` a callback that gets triggered when the navigation event completes and the screen receives the parameters.
  */
 export interface ScreenProps extends Destination {
+  name: string;
   title: string;
   isLoading?: boolean;
   searchBar?: ScreenSearchBarProps;
