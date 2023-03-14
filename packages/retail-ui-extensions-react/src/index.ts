@@ -39,8 +39,6 @@ export type {
   Destination,
   TextProps,
   TextVariant,
-  SmartGridModalApi,
-  SmartGridTileApi,
   TextFieldProps,
   TileProps,
   IconProps,

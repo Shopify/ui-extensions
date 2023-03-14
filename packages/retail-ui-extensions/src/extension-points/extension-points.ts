@@ -1,13 +1,16 @@
 import {BasicComponents, SmartGridComponents} from 'component-sets';
-import {SmartGridModalApi, SmartGridTileApi} from 'extension-api/standard-api';
+import {SmartGridApi, NavigationApi, StandardApi} from '../extension-api';
 import {RenderExtension} from './render-extension';
 
 export interface ExtensionPoints {
   'pos.home.tile.render': RenderExtension<
-    SmartGridTileApi,
+    StandardApi<'pos.home.tile.render'> & SmartGridApi,
     SmartGridComponents
   >;
-  'pos.home.modal.render': RenderExtension<SmartGridModalApi, BasicComponents>;
+  'pos.home.modal.render': RenderExtension<
+    StandardApi<'pos.home.modal.render'> & NavigationApi,
+    BasicComponents
+  >;
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;
