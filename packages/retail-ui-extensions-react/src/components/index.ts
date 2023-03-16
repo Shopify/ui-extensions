@@ -5,6 +5,7 @@ export {FormattedTextField} from './FormattedTextField';
 export {Image} from './Image';
 export {List} from './List';
 export {RadioButtonList} from './RadioButtonList';
+export {SearchBar} from './SearchBar';
 export {SegmentedControl} from './SegmentedControl';
 export {Stack} from './Stack';
 export {Stepper} from './Stepper';

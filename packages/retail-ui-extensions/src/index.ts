@@ -40,6 +40,7 @@ export {
   Stepper,
   ScrollView,
   Dialog,
+  SearchBar,
   Image,
   RadioButtonList,
   Icon,
@@ -49,6 +50,7 @@ export {
 } from './components';
 
 export type {
+  SearchBarProps,
   AutoCapitalizationType,
   BaseTextFieldProps,
   DialogType,
