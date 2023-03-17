@@ -6,7 +6,7 @@ export interface PixelEventsCheckoutCompletedData {
 
 /**
  * The `checkout_completed` event logs when a visitor completes a purchase. This
- * event is available on the Order Status and Checkout pages
+ * event is available on the order status and checkout pages
  */
 export interface PixelEventsCheckoutCompleted {
   clientId: ClientId;
@@ -27,7 +27,7 @@ export interface PixelEventsCheckoutStartedData {
 
 /**
  * The `checkout_started` event logs an instance of a buyer starting the
- * checkout process. This event is available on the Checkout pages
+ * checkout process. This event is available on the checkout page
  */
 export interface PixelEventsCheckoutStarted {
   clientId: ClientId;
@@ -47,9 +47,9 @@ export interface PixelEventsCollectionViewedData {
 }
 
 /**
- * The `collection_viewed` event logs an instance where a buyer visited to a
- * product collection index page. This event is available on the Online Store
- * pages
+ * The `collection_viewed` event logs an instance where a buyer visited a
+ * product collection index page. This event is available on the online store
+ * page
  */
 export interface PixelEventsCollectionViewed {
   clientId: ClientId;
@@ -71,7 +71,7 @@ export interface PixelEventsCollectionViewed {
 export interface PixelEventsCustomEvent {
   clientId: ClientId;
   context: Context;
-  customData: CustomData | null;
+  customData: (CustomData | null);
   id: Id;
 
   /**
@@ -83,7 +83,7 @@ export interface PixelEventsCustomEvent {
 
 /**
  * The `page_viewed` event logs an instance where a buyer visited a page. This
- * event is available on the Online Store, Checkout, and Order Status pages
+ * event is available on the online store, checkout, and order status pages
  */
 export interface PixelEventsPageViewed {
   clientId: ClientId;
@@ -103,7 +103,7 @@ export interface PixelEventsPaymentInfoSubmittedData {
 
 /**
  * The `payment_info_submitted` event logs an instance of a buyer submitting
- * their payment information. This event is available on the Checkout pages
+ * their payment information. This event is available on the checkout page
  */
 export interface PixelEventsPaymentInfoSubmitted {
   clientId: ClientId;
@@ -119,12 +119,12 @@ export interface PixelEventsPaymentInfoSubmitted {
 }
 
 export interface PixelEventsProductAddedToCartData {
-  cartLine: CartLine | null;
+  cartLine: (CartLine | null);
 }
 
 /**
  * The `product_added_to_cart` event logs an instance where a buyer adds a
- * product to their cart. This event is available on the Online Store pages
+ * product to their cart. This event is available on the online store page
  */
 export interface PixelEventsProductAddedToCart {
   clientId: ClientId;
@@ -167,7 +167,7 @@ export interface PixelEventsProductViewedData {
 
 /**
  * The `product_viewed` event logs an instance where a buyer visited a product
- * details page. This event is available on the Product page
+ * details page. This event is available on the product page
  */
 export interface PixelEventsProductViewed {
   clientId: ClientId;
@@ -187,8 +187,8 @@ export interface PixelEventsSearchSubmittedData {
 }
 
 /**
- * The `search_submitted event` logs an instance where a buyer performed a
- * search on the storefront. This event is available on the Online Store pages
+ * The `search_submitted` event logs an instance where a buyer performed a
+ * search on the storefront. This event is available on the online store page
  */
 export interface PixelEventsSearchSubmitted {
   clientId: ClientId;
@@ -206,20 +206,20 @@ export interface PixelEventsSearchSubmitted {
 export interface PixelEvents {
   /**
    * The `checkout_completed` event logs when a visitor completes a purchase.
-   * This event is available on the Order Status and Checkout pages
+   * This event is available on the order status and checkout pages
    */
   checkout_completed: PixelEventsCheckoutCompleted;
 
   /**
    * The `checkout_started` event logs an instance of a buyer starting the
-   * checkout process. This event is available on the Checkout pages
+   * checkout process. This event is available on the checkout page
    */
   checkout_started: PixelEventsCheckoutStarted;
 
   /**
-   * The `collection_viewed` event logs an instance where a buyer visited to a
-   * product collection index page. This event is available on the Online Store
-   * pages
+   * The `collection_viewed` event logs an instance where a buyer visited a
+   * product collection index page. This event is available on the online store
+   * page
    */
   collection_viewed: PixelEventsCollectionViewed;
 
@@ -231,19 +231,19 @@ export interface PixelEvents {
 
   /**
    * The `page_viewed` event logs an instance where a buyer visited a page. This
-   * event is available on the Online Store, Checkout, and Order Status pages
+   * event is available on the online store, checkout, and order status pages
    */
   page_viewed: PixelEventsPageViewed;
 
   /**
    * The `payment_info_submitted` event logs an instance of a buyer submitting
-   * their payment information. This event is available on the Checkout pages
+   * their payment information. This event is available on the checkout page
    */
   payment_info_submitted: PixelEventsPaymentInfoSubmitted;
 
   /**
    * The `product_added_to_cart` event logs an instance where a buyer adds a
-   * product to their cart. This event is available on the Online Store pages
+   * product to their cart. This event is available on the online store page
    */
   product_added_to_cart: PixelEventsProductAddedToCart;
 
@@ -256,15 +256,31 @@ export interface PixelEvents {
 
   /**
    * The `product_viewed` event logs an instance where a buyer visited a product
-   * details page. This event is available on the Product page
+   * details page. This event is available on the product page
    */
   product_viewed: PixelEventsProductViewed;
 
   /**
-   * The `search_submitted event` logs an instance where a buyer performed a
-   * search on the storefront. This event is available on the Online Store pages
+   * The `search_submitted` event logs an instance where a buyer performed a
+   * search on the storefront. This event is available on the online store page
    */
   search_submitted: PixelEventsSearchSubmitted;
+}
+
+/**
+ * Custom attributes left by the customer to the merchant, either in their cart
+ * or during checkout.
+ */
+export interface Attribute {
+  /**
+   * The key for the attribute.
+   */
+  key: string;
+
+  /**
+   * The value for the attribute.
+   */
+  value: string;
 }
 
 /**
@@ -297,17 +313,13 @@ export interface BrowserLocalStorage {
   /**
    * When passed a key name, will return that key's value.
    */
-  getItem: (
-    key: string,
-  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['getItem']>>;
+  getItem: (key: string) => Promise<ReturnType<WindowLocalStorage['localStorage']['getItem']>>;
 
   /**
    * When passed a number n, this method will return the name of the nth key in
    * the storage.
    */
-  key: (
-    index: number,
-  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['key']>>;
+  key: (index: number) => Promise<ReturnType<WindowLocalStorage['localStorage']['key']>>;
 
   /**
    * Returns an integer representing the number of data items stored in the
@@ -318,42 +330,31 @@ export interface BrowserLocalStorage {
   /**
    * When passed a key name, will remove that key from the storage.
    */
-  removeItem: (
-    key: string,
-  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['removeItem']>>;
+  removeItem: (key: string) => Promise<ReturnType<WindowLocalStorage['localStorage']['removeItem']>>;
 
   /**
    * When passed a key name and value, will add that key to the storage, or
    * update that key's value if it already exists.
    */
-  setItem: (
-    key: string,
-    value: any,
-  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['setItem']>>;
+  setItem: (key: string, value: any) => Promise<ReturnType<WindowLocalStorage['localStorage']['setItem']>>;
 }
 
 export interface BrowserSessionStorage {
   /**
    * When invoked, will empty all keys out of the storage.
    */
-  clear: () => Promise<
-    ReturnType<WindowSessionStorage['sessionStorage']['clear']>
-  >;
+  clear: () => Promise<ReturnType<WindowSessionStorage['sessionStorage']['clear']>>;
 
   /**
    * When passed a key name, will return that key's value.
    */
-  getItem: (
-    key: string,
-  ) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['getItem']>>;
+  getItem: (key: string) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['getItem']>>;
 
   /**
    * When passed a number n, this method will return the name of the nth key in
    * the storage.
    */
-  key: (
-    index: number,
-  ) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['key']>>;
+  key: (index: number) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['key']>>;
 
   /**
    * Returns an integer representing the number of data items stored in the
@@ -364,20 +365,13 @@ export interface BrowserSessionStorage {
   /**
    * When passed a key name, will remove that key from the storage.
    */
-  removeItem: (
-    key: string,
-  ) => Promise<
-    ReturnType<WindowSessionStorage['sessionStorage']['removeItem']>
-  >;
+  removeItem: (key: string) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['removeItem']>>;
 
   /**
    * When passed a key name and value, will add that key to the storage, or
    * update that key's value if it already exists.
    */
-  setItem: (
-    key: string,
-    value: any,
-  ) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['setItem']>>;
+  setItem: (key: string, value: any) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['setItem']>>;
 }
 
 export interface Browser {
@@ -397,23 +391,17 @@ export interface Browser {
 }
 
 /**
- * A cart represents the merchandise that a buyer intends to purchase, and the
- * estimated cost associated with the cart. To learn how to interact with a
- * cart during a customer's session, refer to [Manage a cart with the Storefront
- * API](https://shopify.dev/api/examples/cart).
+ * A cart represents the merchandise that a customer intends to purchase, and
+ * the estimated cost associated with the cart.
  */
 export interface Cart {
   /**
-   * The estimated costs that the buyer will pay at checkout. The costs
-   * are subject to change and changes will be reflected at checkout. The
-   * `cost` field uses the `buyerIdentity` field to determine [international
-   * pricing](https://shopify.dev/api/examples/international-pricing#create-
-   * a-cart).
+   * The estimated costs that the buyer will pay at checkout.
    */
   cost: CartCost;
 
   /**
-   * A globally-unique identifier.
+   * A globally unique identifier.
    */
   id: string;
   lines: CartLine[];
@@ -425,12 +413,10 @@ export interface Cart {
 }
 
 /**
- * The costs that the buyer will pay at checkout.
- * It uses
+ * The costs that the customer will pay at checkout. It uses
  * [`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/cartb
- * uyeridentity) to determine
- * [international pricing](https://shopify.dev/api/examples/international-
- * pricing#create-a-cart).
+ * uyeridentity) to determine [international pricing](https://shopify.dev/custom-
+ * storefronts/internationalization/international-pricing#create-a-cart).
  */
 export interface CartCost {
   /**
@@ -440,7 +426,7 @@ export interface CartCost {
 }
 
 /**
- * Represents information about the merchandise in the cart.
+ * Information about the merchandise in the cart.
  */
 export interface CartLine {
   /**
@@ -461,7 +447,7 @@ export interface CartLine {
 }
 
 /**
- * The cost of the merchandise line that the buyer will pay at checkout.
+ * The cost of the merchandise line that the customer will pay at checkout.
  */
 export interface CartLineCost {
   /**
@@ -474,37 +460,42 @@ export interface CartLineCost {
  * A container for all the information required to checkout items and pay.
  */
 export interface Checkout {
+  attributes: Attribute[];
+
   /**
-   * The currency code for the checkout.
+   * The three-letter code that represents the currency, for example, USD.
+   * Supported codes include standard ISO 4217 codes, legacy codes, and non-
+   * standard codes.
    */
-  currencyCode: CurrencyCode;
+  currencyCode: string;
 
   /**
    * The email attached to this checkout.
    */
-  email: string | null;
+  email: (string | null);
   lineItems: CheckoutLineItem[];
 
   /**
    * The resulting order from a paid checkout.
    */
-  order: Order;
+  order: (Order | null);
 
   /**
-   * The phone attached to this checkout.
+   * A unique phone number for the customer. Formatted using E.164 standard. For
+   * example, *+16135551111*.
    */
-  phone: string | null;
+  phone: (string | null);
 
   /**
    * The shipping address to where the line items will be shipped.
    */
-  shippingAddress: MailingAddress;
+  shippingAddress: (MailingAddress | null);
 
   /**
    * Once a shipping rate is selected by the customer it is transitioned to a
    * `shipping_line` object.
    */
-  shippingLine: ShippingRate;
+  shippingLine: (ShippingRate | null);
 
   /**
    * The price at checkout before duties, shipping, and taxes.
@@ -534,7 +525,7 @@ export interface Checkout {
  */
 export interface CheckoutLineItem {
   /**
-   * A globally-unique identifier.
+   * A globally unique identifier.
    */
   id: string;
 
@@ -544,39 +535,40 @@ export interface CheckoutLineItem {
   quantity: number;
 
   /**
-   * Title of the line item. Defaults to the product's title.
+   * The title of the line item. Defaults to the product's title.
    */
-  title: string;
+  title: (string | null);
 
   /**
    * Product variant of the line item.
    */
-  variant: ProductVariant;
+  variant: (ProductVariant | null);
 }
 
 /**
- * The unique client-side cookie identifier (provided by Shopify)
+ * The client-side ID of the customer, provided by Shopify
  */
 export type ClientId = string;
 
 /**
- * A collection represents a grouping of products that a shop owner can create
- * to organize them or make their shops easier to browse.
+ * A collection is a group of products that a shop owner can create to organize
+ * them or make their shops easier to browse.
  */
 export interface Collection {
   /**
-   * A globally-unique identifier.
+   * A globally unique identifier.
    */
   id: string;
 
   /**
-   * The collection's name. Limit of 255 characters.
+   * The collection’s name. Maximum length: 255 characters.
    */
   title: string;
 }
 
 /**
- * Snapshot of various read-only properties of the browser at the time of event
+ * A snapshot of various read-only properties of the browser at the time of
+ * event
  */
 export interface Context {
   /**
@@ -599,433 +591,6 @@ export interface Context {
 }
 
 /**
- * The code designating a country/region, which generally follows ISO 3166-1
- * alpha-2 guidelines.
- * If a territory doesn't have a country code value in the `CountryCode` enum,
- * then it might be considered a subdivision
- * of another country. For example, the territories associated with Spain are
- * represented by the country code `ES`,
- * and the territories associated with the United States of America are
- * represented by the country code `US`.
- */
-export enum CountryCode {
-  Ac = 'AC',
-  Ad = 'AD',
-  Ae = 'AE',
-  Af = 'AF',
-  Ag = 'AG',
-  Ai = 'AI',
-  Al = 'AL',
-  Am = 'AM',
-  An = 'AN',
-  Ao = 'AO',
-  Ar = 'AR',
-  At = 'AT',
-  Au = 'AU',
-  Aw = 'AW',
-  Ax = 'AX',
-  Az = 'AZ',
-  Ba = 'BA',
-  Bb = 'BB',
-  Bd = 'BD',
-  Be = 'BE',
-  Bf = 'BF',
-  Bg = 'BG',
-  Bh = 'BH',
-  Bi = 'BI',
-  Bj = 'BJ',
-  Bl = 'BL',
-  Bm = 'BM',
-  Bn = 'BN',
-  Bo = 'BO',
-  Bq = 'BQ',
-  Br = 'BR',
-  Bs = 'BS',
-  Bt = 'BT',
-  Bv = 'BV',
-  Bw = 'BW',
-  By = 'BY',
-  Bz = 'BZ',
-  Ca = 'CA',
-  Cc = 'CC',
-  Cd = 'CD',
-  Cf = 'CF',
-  Cg = 'CG',
-  Ch = 'CH',
-  Ci = 'CI',
-  Ck = 'CK',
-  Cl = 'CL',
-  Cm = 'CM',
-  Cn = 'CN',
-  Co = 'CO',
-  Cr = 'CR',
-  Cu = 'CU',
-  Cv = 'CV',
-  Cw = 'CW',
-  Cx = 'CX',
-  Cy = 'CY',
-  Cz = 'CZ',
-  De = 'DE',
-  Dj = 'DJ',
-  Dk = 'DK',
-  Dm = 'DM',
-  Do = 'DO',
-  Dz = 'DZ',
-  Ec = 'EC',
-  Ee = 'EE',
-  Eg = 'EG',
-  Eh = 'EH',
-  Er = 'ER',
-  Es = 'ES',
-  Et = 'ET',
-  Fi = 'FI',
-  Fj = 'FJ',
-  Fk = 'FK',
-  Fo = 'FO',
-  Fr = 'FR',
-  Ga = 'GA',
-  Gb = 'GB',
-  Gd = 'GD',
-  Ge = 'GE',
-  Gf = 'GF',
-  Gg = 'GG',
-  Gh = 'GH',
-  Gi = 'GI',
-  Gl = 'GL',
-  Gm = 'GM',
-  Gn = 'GN',
-  Gp = 'GP',
-  Gq = 'GQ',
-  Gr = 'GR',
-  Gs = 'GS',
-  Gt = 'GT',
-  Gw = 'GW',
-  Gy = 'GY',
-  Hk = 'HK',
-  Hm = 'HM',
-  Hn = 'HN',
-  Hr = 'HR',
-  Ht = 'HT',
-  Hu = 'HU',
-  Id = 'ID',
-  Ie = 'IE',
-  Il = 'IL',
-  Im = 'IM',
-  In = 'IN',
-  Io = 'IO',
-  Iq = 'IQ',
-  Ir = 'IR',
-  Is = 'IS',
-  It = 'IT',
-  Je = 'JE',
-  Jm = 'JM',
-  Jo = 'JO',
-  Jp = 'JP',
-  Ke = 'KE',
-  Kg = 'KG',
-  Kh = 'KH',
-  Ki = 'KI',
-  Km = 'KM',
-  Kn = 'KN',
-  Kp = 'KP',
-  Kr = 'KR',
-  Kw = 'KW',
-  Ky = 'KY',
-  Kz = 'KZ',
-  La = 'LA',
-  Lb = 'LB',
-  Lc = 'LC',
-  Li = 'LI',
-  Lk = 'LK',
-  Lr = 'LR',
-  Ls = 'LS',
-  Lt = 'LT',
-  Lu = 'LU',
-  Lv = 'LV',
-  Ly = 'LY',
-  Ma = 'MA',
-  Mc = 'MC',
-  Md = 'MD',
-  Me = 'ME',
-  Mf = 'MF',
-  Mg = 'MG',
-  Mk = 'MK',
-  Ml = 'ML',
-  Mm = 'MM',
-  Mn = 'MN',
-  Mo = 'MO',
-  Mq = 'MQ',
-  Mr = 'MR',
-  Ms = 'MS',
-  Mt = 'MT',
-  Mu = 'MU',
-  Mv = 'MV',
-  Mw = 'MW',
-  Mx = 'MX',
-  My = 'MY',
-  Mz = 'MZ',
-  Na = 'NA',
-  Nc = 'NC',
-  Ne = 'NE',
-  Nf = 'NF',
-  Ng = 'NG',
-  Ni = 'NI',
-  Nl = 'NL',
-  No = 'NO',
-  Np = 'NP',
-  Nr = 'NR',
-  Nu = 'NU',
-  Nz = 'NZ',
-  Om = 'OM',
-  Pa = 'PA',
-  Pe = 'PE',
-  Pf = 'PF',
-  Pg = 'PG',
-  Ph = 'PH',
-  Pk = 'PK',
-  Pl = 'PL',
-  Pm = 'PM',
-  Pn = 'PN',
-  Ps = 'PS',
-  Pt = 'PT',
-  Py = 'PY',
-  Qa = 'QA',
-  Re = 'RE',
-  Ro = 'RO',
-  Rs = 'RS',
-  Ru = 'RU',
-  Rw = 'RW',
-  Sa = 'SA',
-  Sb = 'SB',
-  Sc = 'SC',
-  Sd = 'SD',
-  Se = 'SE',
-  Sg = 'SG',
-  Sh = 'SH',
-  Si = 'SI',
-  Sj = 'SJ',
-  Sk = 'SK',
-  Sl = 'SL',
-  Sm = 'SM',
-  Sn = 'SN',
-  So = 'SO',
-  Sr = 'SR',
-  Ss = 'SS',
-  St = 'ST',
-  Sv = 'SV',
-  Sx = 'SX',
-  Sy = 'SY',
-  Sz = 'SZ',
-  Ta = 'TA',
-  Tc = 'TC',
-  Td = 'TD',
-  Tf = 'TF',
-  Tg = 'TG',
-  Th = 'TH',
-  Tj = 'TJ',
-  Tk = 'TK',
-  Tl = 'TL',
-  Tm = 'TM',
-  Tn = 'TN',
-  To = 'TO',
-  Tr = 'TR',
-  Tt = 'TT',
-  Tv = 'TV',
-  Tw = 'TW',
-  Tz = 'TZ',
-  Ua = 'UA',
-  Ug = 'UG',
-  Um = 'UM',
-  Us = 'US',
-  Uy = 'UY',
-  Uz = 'UZ',
-  Va = 'VA',
-  Vc = 'VC',
-  Ve = 'VE',
-  Vg = 'VG',
-  Vn = 'VN',
-  Vu = 'VU',
-  Wf = 'WF',
-  Ws = 'WS',
-  Xk = 'XK',
-  Ye = 'YE',
-  Yt = 'YT',
-  Za = 'ZA',
-  Zm = 'ZM',
-  Zw = 'ZW',
-  Zz = 'ZZ',
-}
-
-/**
- * The three-letter currency codes that represent the world currencies used in
- * stores. These include standard ISO 4217 codes, legacy codes,
- * and non-standard codes.
- */
-export enum CurrencyCode {
-  Aed = 'AED',
-  Afn = 'AFN',
-  All = 'ALL',
-  Amd = 'AMD',
-  Ang = 'ANG',
-  Aoa = 'AOA',
-  Ars = 'ARS',
-  Aud = 'AUD',
-  Awg = 'AWG',
-  Azn = 'AZN',
-  Bam = 'BAM',
-  Bbd = 'BBD',
-  Bdt = 'BDT',
-  Bgn = 'BGN',
-  Bhd = 'BHD',
-  Bif = 'BIF',
-  Bmd = 'BMD',
-  Bnd = 'BND',
-  Bob = 'BOB',
-  Brl = 'BRL',
-  Bsd = 'BSD',
-  Btn = 'BTN',
-  Bwp = 'BWP',
-  Byn = 'BYN',
-  Byr = 'BYR',
-  Bzd = 'BZD',
-  Cad = 'CAD',
-  Cdf = 'CDF',
-  Chf = 'CHF',
-  Clp = 'CLP',
-  Cny = 'CNY',
-  Cop = 'COP',
-  Crc = 'CRC',
-  Cve = 'CVE',
-  Czk = 'CZK',
-  Djf = 'DJF',
-  Dkk = 'DKK',
-  Dop = 'DOP',
-  Dzd = 'DZD',
-  Egp = 'EGP',
-  Ern = 'ERN',
-  Etb = 'ETB',
-  Eur = 'EUR',
-  Fjd = 'FJD',
-  Fkp = 'FKP',
-  Gbp = 'GBP',
-  Gel = 'GEL',
-  Ghs = 'GHS',
-  Gip = 'GIP',
-  Gmd = 'GMD',
-  Gnf = 'GNF',
-  Gtq = 'GTQ',
-  Gyd = 'GYD',
-  Hkd = 'HKD',
-  Hnl = 'HNL',
-  Hrk = 'HRK',
-  Htg = 'HTG',
-  Huf = 'HUF',
-  Idr = 'IDR',
-  Ils = 'ILS',
-  Inr = 'INR',
-  Iqd = 'IQD',
-  Irr = 'IRR',
-  Isk = 'ISK',
-  Jep = 'JEP',
-  Jmd = 'JMD',
-  Jod = 'JOD',
-  Jpy = 'JPY',
-  Kes = 'KES',
-  Kgs = 'KGS',
-  Khr = 'KHR',
-  Kid = 'KID',
-  Kmf = 'KMF',
-  Krw = 'KRW',
-  Kwd = 'KWD',
-  Kyd = 'KYD',
-  Kzt = 'KZT',
-  Lak = 'LAK',
-  Lbp = 'LBP',
-  Lkr = 'LKR',
-  Lrd = 'LRD',
-  Lsl = 'LSL',
-  Ltl = 'LTL',
-  Lvl = 'LVL',
-  Lyd = 'LYD',
-  Mad = 'MAD',
-  Mdl = 'MDL',
-  Mga = 'MGA',
-  Mkd = 'MKD',
-  Mmk = 'MMK',
-  Mnt = 'MNT',
-  Mop = 'MOP',
-  Mru = 'MRU',
-  Mur = 'MUR',
-  Mvr = 'MVR',
-  Mwk = 'MWK',
-  Mxn = 'MXN',
-  Myr = 'MYR',
-  Mzn = 'MZN',
-  Nad = 'NAD',
-  Ngn = 'NGN',
-  Nio = 'NIO',
-  Nok = 'NOK',
-  Npr = 'NPR',
-  Nzd = 'NZD',
-  Omr = 'OMR',
-  Pab = 'PAB',
-  Pen = 'PEN',
-  Pgk = 'PGK',
-  Php = 'PHP',
-  Pkr = 'PKR',
-  Pln = 'PLN',
-  Pyg = 'PYG',
-  Qar = 'QAR',
-  Ron = 'RON',
-  Rsd = 'RSD',
-  Rub = 'RUB',
-  Rwf = 'RWF',
-  Sar = 'SAR',
-  Sbd = 'SBD',
-  Scr = 'SCR',
-  Sdg = 'SDG',
-  Sek = 'SEK',
-  Sgd = 'SGD',
-  Shp = 'SHP',
-  Sll = 'SLL',
-  Sos = 'SOS',
-  Srd = 'SRD',
-  Ssp = 'SSP',
-  Std = 'STD',
-  Stn = 'STN',
-  Syp = 'SYP',
-  Szl = 'SZL',
-  Thb = 'THB',
-  Tjs = 'TJS',
-  Tmt = 'TMT',
-  Tnd = 'TND',
-  Top = 'TOP',
-  Try = 'TRY',
-  Ttd = 'TTD',
-  Twd = 'TWD',
-  Tzs = 'TZS',
-  Uah = 'UAH',
-  Ugx = 'UGX',
-  Usd = 'USD',
-  Uyu = 'UYU',
-  Uzs = 'UZS',
-  Ved = 'VED',
-  Vef = 'VEF',
-  Ves = 'VES',
-  Vnd = 'VND',
-  Vuv = 'VUV',
-  Wst = 'WST',
-  Xaf = 'XAF',
-  Xcd = 'XCD',
-  Xof = 'XOF',
-  Xpf = 'XPF',
-  Xxx = 'XXX',
-  Yer = 'YER',
-  Zar = 'ZAR',
-  Zmw = 'ZMW',
-}
-
-/**
  * A free-form JSON object representing data specific to a custom event provided
  * by the custom event publisher
  */
@@ -1038,34 +603,35 @@ export type CustomData = Record<string, unknown>;
  */
 export interface Customer {
   /**
-   * The customer's email address.
+   * The customer’s email address.
    */
-  email: string;
+  email: (string | null);
 
   /**
-   * A unique identifier for the customer.
+   * The ID of the customer.
    */
   id: string;
 
   /**
-   * The customer's phone number.
+   * The customer’s phone number.
    */
-  phone: string;
+  phone: (string | null);
 }
 
 /**
  * A free-form JSON object representing data specific to this event provided
- * by Shopify
+ * by Shopify. Refer to [standard events](#standard-events) for details on the
+ * payload available to each event
  */
 export type Data = Record<string, unknown>;
 
 /**
- * The unique identifier for the customer event
+ * The ID of the customer event
  */
 export type Id = string;
 
 /**
- * Represents an image resource.
+ * An image resource.
  */
 export interface Image {
   /**
@@ -1075,15 +641,15 @@ export interface Image {
 }
 
 export interface InitData {
-  cart: Cart | null;
-  checkout: Checkout | null;
-  customer: Customer | null;
-  productVariants: ProductVariant[] | null;
+  cart: (Cart | null);
+  checkout: (Checkout | null);
+  customer: (Customer | null);
+  productVariants: (ProductVariant[] | null);
 }
 
 /**
- * Snapshot of a subset of properties of the `location` object in the top frame
- * of the browser
+ * A snapshot of a subset of properties of the `location` object in the top
+ * frame of the browser
  */
 export interface Location {
   /**
@@ -1145,40 +711,40 @@ export interface Location {
 }
 
 /**
- * Represents a mailing address for customers and shipping.
+ * A mailing address for customers and shipping.
  */
 export interface MailingAddress {
   /**
    * The name of the city, district, village, or town.
    */
-  city: string;
+  city: (string | null);
 
   /**
    * The name of the country.
    */
-  country: string;
+  country: (string | null);
 
   /**
-   * The two-letter code for the country of the address.
-   * For example, US.
+   * The two-letter code that represents the country, for example, US.
+   * The country codes generally follows ISO 3166-1 alpha-2 guidelines.
    */
-  countryCode: CountryCode;
+  countryCode: (string | null);
 
   /**
-   * A unique phone number for the customer.
+   * The phone number for this mailing address as entered by the customer.
    */
-  phone: string;
+  phone: (string | null);
 
   /**
    * The region of the address, such as the province, state, or district.
    */
-  province: string;
+  province: (string | null);
 
   /**
    * The two-letter code for the region.
    * For example, ON.
    */
-  provinceCode: string;
+  provinceCode: (string | null);
 }
 
 /**
@@ -1186,14 +752,16 @@ export interface MailingAddress {
  */
 export interface MoneyV2 {
   /**
-   * Decimal money amount.
+   * The decimal money amount.
    */
   amount: number;
 
   /**
-   * Currency of the money.
+   * The three-letter code that represents the currency, for example, USD.
+   * Supported codes include standard ISO 4217 codes, legacy codes, and non-
+   * standard codes.
    */
-  currencyCode: CurrencyCode;
+  currencyCode: string;
 }
 
 /**
@@ -1202,38 +770,33 @@ export interface MoneyV2 {
 export type Name = string;
 
 /**
- * An order is a customer's completed request to purchase one or more products
+ * An order is a customer’s completed request to purchase one or more products
  * from a shop. An order is created when a customer completes the checkout
- * process, during which time they provides an email address, billing address
- * and payment information.
+ * process.
  */
 export interface Order {
   /**
-   * A globally-unique identifier.
+   * The ID of the order.
    */
   id: string;
 }
 
 /**
- * A product represents an individual item for sale in a Shopify store. Products
- * are often physical, but they don't have to be.
- * For example, a digital download (such as a movie, music or ebook file) also
- * qualifies as a product, as do services (such as equipment rental, work for
- * hire, customization of another product or an extended warranty).
+ * A product is an individual item for sale in a Shopify store.
  */
 export interface Product {
   /**
-   * A globally-unique identifier.
+   * The ID of the product.
    */
   id: string;
 
   /**
-   * The product's title.
+   * The product’s title.
    */
   title: string;
 
   /**
-   * The product's vendor name.
+   * The product’s vendor name.
    */
   vendor: string;
 }
@@ -1244,7 +807,7 @@ export interface Product {
  */
 export interface ProductVariant {
   /**
-   * A globally-unique identifier.
+   * A globally unique identifier.
    */
   id: string;
 
@@ -1252,10 +815,10 @@ export interface ProductVariant {
    * Image associated with the product variant. This field falls back to the
    * product image if no image is available.
    */
-  image: Image;
+  image: (Image | null);
 
   /**
-   * The product variant's price.
+   * The product variant’s price.
    */
   price: MoneyV2;
 
@@ -1267,18 +830,20 @@ export interface ProductVariant {
   /**
    * The SKU (stock keeping unit) associated with the variant.
    */
-  sku: string;
+  sku: (string | null);
 
   /**
-   * The product variant's title.
+   * The product variant’s title.
    */
   title: string;
 }
 
 /**
- * An object containing metadata of when a search has been performed.
+ * An object that contains the metadata of when a search has been performed.
  */
 export interface SearchResult {
+  productVariants: ProductVariant[];
+
   /**
    * The search query that was executed
    */
@@ -1296,13 +861,14 @@ export interface ShippingRate {
 }
 
 /**
- * The timestamp of when the customer event occurred
+ * The timestamp of when the customer event occurred, in [ISO
+ * 8601](https://en.wikipedia.org/wiki/ISO_8601) format
  */
 export type Timestamp = string;
 
 /**
- * Snapshot of a subset of properties of the `document` object in the top frame
- * of the browser
+ * A snapshot of a subset of properties of the `document` object in the top
+ * frame of the browser
  */
 export interface WebPixelsDocument {
   /**
@@ -1331,21 +897,21 @@ export interface WebPixelsDocument {
 }
 
 /**
- * Snapshot of a subset of properties of the `navigator` object in the top frame
- * of the browser
+ * A snapshot of a subset of properties of the `navigator` object in the top
+ * frame of the browser
  */
 export interface WebPixelsNavigator {
   /**
    * Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator),
-   * returns false if setting a cookie will be ignored and true otherwise
+   * returns `false` if setting a cookie will be ignored and true otherwise
    */
   cookieEnabled: boolean;
 
   /**
    * Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator),
    * returns a string representing the preferred language of the user, usually
-   * the language of the browser UI. The null value is returned when this is
-   * unknown
+   * the language of the browser UI. The `null` value is returned when this
+   * is unknown
    */
   language: string;
 
@@ -1364,8 +930,8 @@ export interface WebPixelsNavigator {
 }
 
 /**
- * Snapshot of a subset of properties of the `window` object in the top frame of
- * the browser
+ * A snapshot of a subset of properties of the `window` object in the top frame
+ * of the browser
  */
 export interface WebPixelsWindow {
   /**
