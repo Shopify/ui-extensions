@@ -4,8 +4,7 @@ import {
   CustomerSegmentationTemplate,
 } from '@shopify/ui-extensions-react/admin';
 
-function App({i18n, enabledFeatures, category}) {
-  if (category == 'reEngageCustomers') {
+function App({i18n, enabledFeatures}) {
     const productsPurchasedOnTagsEnabled = enabledFeatures.includes('productsPurchasedByTags');
     const templateQuery = productsPurchasedOnTagsEnabled
       ? 'products_purchased(tag: (product_tag)) = true'
@@ -15,29 +14,25 @@ function App({i18n, enabledFeatures, category}) {
       : 'products_purchased(id:';
 
     return (
-      <CustomerSegmentationTemplate
-        title={i18n.translate('product.title')}
-        description={i18n.translate('product.description')}
-        icon='productsMajor'
-        templateQuery={templateQuery}
-        templateQueryToInsert={templateQueryToInsert}
-        dateAdded={new Date('2023-01-15')}
-      />
+      <>
+        <CustomerSegmentationTemplate
+          title={i18n.translate('product.title')}
+          description={i18n.translate('product.description')}
+          icon='productsMajor'
+          templateQuery={templateQuery}
+          templateQueryToInsert={templateQueryToInsert}
+          dateAdded={new Date('2023-01-15')}
+          category="reEngageCustomers"
+        />
+         <CustomerSegmentationTemplate
+          title={i18n.translate('location.title')}
+          description={[i18n.translate('location.firstParagraph'), i18n.translate('location.secondParagraph')]}
+          icon='locationMajor'
+          templateQuery="customer_cities CONTAINS 'US-NY-NewYorkCity'"
+          category='location'
+        />
+      </>
     );
-  }
-
-  if (category == 'location') {
-    return (
-      <CustomerSegmentationTemplate
-        title={i18n.translate('location.title')}
-        description={[i18n.translate('location.firstParagraph'), i18n.translate('location.secondParagraph')]}
-        icon='locationMajor'
-        templateQuery="customer_cities CONTAINS 'US-NY-NewYorkCity'"
-      />
-    );
-  }
-
-  return null;
 }
 
-reactExtension('admin.customers.segmentation-templates.render', ({i18n, __category, __enabledFeatures}) => <App i18n={i18n} enabledFeatures={__enabledFeatures} category={__category} />);
+reactExtension('admin.customers.segmentation-templates.render', ({i18n, __enabledFeatures}) => <App i18n={i18n} enabledFeatures={__enabledFeatures} />);

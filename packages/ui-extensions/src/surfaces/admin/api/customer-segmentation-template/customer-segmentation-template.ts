@@ -9,22 +9,11 @@ type CustomerSegmentationFeature =
   /* Enables count aggregates on functions. For example: shopify_email.opened(count_at_least: 5) = true */
   | 'aggregateFilters';
 
-type TemplateCategory =
-  | 'all'
-  | 'firstTimeBuyers'
-  | 'highValueCustomers'
-  | 'reEngageCustomers'
-  | 'abandonedCheckout'
-  | 'purchaseBehaviour'
-  | 'location';
-
 export interface CustomerSegmentationTemplateApi<
   ExtensionPoint extends AnyExtensionPoint,
 > extends StandardApi<ExtensionPoint> {
   /* Utilities for translating content according to the current `localization` of the admin. */
   i18n: I18n;
-  /** @private */
-  __category: TemplateCategory;
   /** @private */
   __enabledFeatures: CustomerSegmentationFeature[];
 }
