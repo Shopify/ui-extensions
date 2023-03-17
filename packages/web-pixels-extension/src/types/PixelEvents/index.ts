@@ -71,7 +71,7 @@ export interface PixelEventsCollectionViewed {
 export interface PixelEventsCustomEvent {
   clientId: ClientId;
   context: Context;
-  customData: (CustomData | null);
+  customData: CustomData | null;
   id: Id;
 
   /**
@@ -119,7 +119,7 @@ export interface PixelEventsPaymentInfoSubmitted {
 }
 
 export interface PixelEventsProductAddedToCartData {
-  cartLine: (CartLine | null);
+  cartLine: CartLine | null;
 }
 
 /**
@@ -313,13 +313,17 @@ export interface BrowserLocalStorage {
   /**
    * When passed a key name, will return that key's value.
    */
-  getItem: (key: string) => Promise<ReturnType<WindowLocalStorage['localStorage']['getItem']>>;
+  getItem: (
+    key: string,
+  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['getItem']>>;
 
   /**
    * When passed a number n, this method will return the name of the nth key in
    * the storage.
    */
-  key: (index: number) => Promise<ReturnType<WindowLocalStorage['localStorage']['key']>>;
+  key: (
+    index: number,
+  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['key']>>;
 
   /**
    * Returns an integer representing the number of data items stored in the
@@ -330,31 +334,42 @@ export interface BrowserLocalStorage {
   /**
    * When passed a key name, will remove that key from the storage.
    */
-  removeItem: (key: string) => Promise<ReturnType<WindowLocalStorage['localStorage']['removeItem']>>;
+  removeItem: (
+    key: string,
+  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['removeItem']>>;
 
   /**
    * When passed a key name and value, will add that key to the storage, or
    * update that key's value if it already exists.
    */
-  setItem: (key: string, value: any) => Promise<ReturnType<WindowLocalStorage['localStorage']['setItem']>>;
+  setItem: (
+    key: string,
+    value: any,
+  ) => Promise<ReturnType<WindowLocalStorage['localStorage']['setItem']>>;
 }
 
 export interface BrowserSessionStorage {
   /**
    * When invoked, will empty all keys out of the storage.
    */
-  clear: () => Promise<ReturnType<WindowSessionStorage['sessionStorage']['clear']>>;
+  clear: () => Promise<
+    ReturnType<WindowSessionStorage['sessionStorage']['clear']>
+  >;
 
   /**
    * When passed a key name, will return that key's value.
    */
-  getItem: (key: string) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['getItem']>>;
+  getItem: (
+    key: string,
+  ) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['getItem']>>;
 
   /**
    * When passed a number n, this method will return the name of the nth key in
    * the storage.
    */
-  key: (index: number) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['key']>>;
+  key: (
+    index: number,
+  ) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['key']>>;
 
   /**
    * Returns an integer representing the number of data items stored in the
@@ -365,13 +380,20 @@ export interface BrowserSessionStorage {
   /**
    * When passed a key name, will remove that key from the storage.
    */
-  removeItem: (key: string) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['removeItem']>>;
+  removeItem: (
+    key: string,
+  ) => Promise<
+    ReturnType<WindowSessionStorage['sessionStorage']['removeItem']>
+  >;
 
   /**
    * When passed a key name and value, will add that key to the storage, or
    * update that key's value if it already exists.
    */
-  setItem: (key: string, value: any) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['setItem']>>;
+  setItem: (
+    key: string,
+    value: any,
+  ) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['setItem']>>;
 }
 
 export interface Browser {
@@ -472,30 +494,30 @@ export interface Checkout {
   /**
    * The email attached to this checkout.
    */
-  email: (string | null);
+  email: string | null;
   lineItems: CheckoutLineItem[];
 
   /**
    * The resulting order from a paid checkout.
    */
-  order: (Order | null);
+  order: Order | null;
 
   /**
    * A unique phone number for the customer. Formatted using E.164 standard. For
    * example, *+16135551111*.
    */
-  phone: (string | null);
+  phone: string | null;
 
   /**
    * The shipping address to where the line items will be shipped.
    */
-  shippingAddress: (MailingAddress | null);
+  shippingAddress: MailingAddress | null;
 
   /**
    * Once a shipping rate is selected by the customer it is transitioned to a
    * `shipping_line` object.
    */
-  shippingLine: (ShippingRate | null);
+  shippingLine: ShippingRate | null;
 
   /**
    * The price at checkout before duties, shipping, and taxes.
@@ -537,12 +559,12 @@ export interface CheckoutLineItem {
   /**
    * The title of the line item. Defaults to the product's title.
    */
-  title: (string | null);
+  title: string | null;
 
   /**
    * Product variant of the line item.
    */
-  variant: (ProductVariant | null);
+  variant: ProductVariant | null;
 }
 
 /**
@@ -605,7 +627,7 @@ export interface Customer {
   /**
    * The customer’s email address.
    */
-  email: (string | null);
+  email: string | null;
 
   /**
    * The ID of the customer.
@@ -615,7 +637,7 @@ export interface Customer {
   /**
    * The customer’s phone number.
    */
-  phone: (string | null);
+  phone: string | null;
 }
 
 /**
@@ -641,10 +663,10 @@ export interface Image {
 }
 
 export interface InitData {
-  cart: (Cart | null);
-  checkout: (Checkout | null);
-  customer: (Customer | null);
-  productVariants: (ProductVariant[] | null);
+  cart: Cart | null;
+  checkout: Checkout | null;
+  customer: Customer | null;
+  productVariants: ProductVariant[] | null;
 }
 
 /**
@@ -717,34 +739,34 @@ export interface MailingAddress {
   /**
    * The name of the city, district, village, or town.
    */
-  city: (string | null);
+  city: string | null;
 
   /**
    * The name of the country.
    */
-  country: (string | null);
+  country: string | null;
 
   /**
    * The two-letter code that represents the country, for example, US.
    * The country codes generally follows ISO 3166-1 alpha-2 guidelines.
    */
-  countryCode: (string | null);
+  countryCode: string | null;
 
   /**
    * The phone number for this mailing address as entered by the customer.
    */
-  phone: (string | null);
+  phone: string | null;
 
   /**
    * The region of the address, such as the province, state, or district.
    */
-  province: (string | null);
+  province: string | null;
 
   /**
    * The two-letter code for the region.
    * For example, ON.
    */
-  provinceCode: (string | null);
+  provinceCode: string | null;
 }
 
 /**
@@ -815,7 +837,7 @@ export interface ProductVariant {
    * Image associated with the product variant. This field falls back to the
    * product image if no image is available.
    */
-  image: (Image | null);
+  image: Image | null;
 
   /**
    * The product variant’s price.
@@ -830,7 +852,7 @@ export interface ProductVariant {
   /**
    * The SKU (stock keeping unit) associated with the variant.
    */
-  sku: (string | null);
+  sku: string | null;
 
   /**
    * The product variant’s title.
