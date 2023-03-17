@@ -1,6 +1,6 @@
 {
   "name": "@shopify/retail-ui-extensions-react",
-  "version": "0.45.2",
+  "version": "0.45.3",
   "description": "React bindings for @shopify/retail-ui-extensions",
   "publishConfig": {
     "access": "public",
@@ -23,7 +23,7 @@
   },
   "dependencies": {
     "@remote-ui/react": "4.5.x",
-    "@shopify/retail-ui-extensions": "^0.45.2",
+    "@shopify/retail-ui-extensions": "^0.45.3",
     "@types/react": ">=17.0.0 <18.0.0"
   },
   "peerDependencies": {
