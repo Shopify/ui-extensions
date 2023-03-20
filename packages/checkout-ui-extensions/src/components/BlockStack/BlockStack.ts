@@ -45,6 +45,10 @@ export interface BlockStackProps
    * provide them with more context.
    */
   accessibilityLabel?: string;
+  /**
+   * A unique identifier for the component.
+   */
+  id?: string;
 }
 
 /**

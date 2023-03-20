@@ -38,8 +38,8 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'ux-guidelines',
-      title: 'UX Guidelines',
+      anchorLink: 'best-practices',
+      title: 'Best Practices',
       sectionContent:
         'Use popovers if:\n\n- The intent is to ask the customer for information.\n\n- It’s possible to use at most two rows of input fields to get the information.',
     },

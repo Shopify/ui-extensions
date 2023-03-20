@@ -1,9 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {Size} from '../shared';
-import {TextProps} from '../Text';
+import type {Size, TextSize} from '../shared';
 
-export interface SkeletonTextProps extends Pick<TextProps, 'size'> {
+export interface SkeletonTextProps {
   /**
    * @private
    * Use to emphasize a word or a group of words.
@@ -13,6 +12,10 @@ export interface SkeletonTextProps extends Pick<TextProps, 'size'> {
    * Adjust the length of the text when no children are passed.
    */
   inlineSize?: Extract<Size, 'small' | 'base' | 'large'>;
+  /**
+   * Size of the text
+   */
+  size?: TextSize;
 }
 
 /**

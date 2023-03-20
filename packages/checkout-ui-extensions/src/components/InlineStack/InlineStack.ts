@@ -58,6 +58,10 @@ export interface InlineStackProps
    * @defaultValue 'base'
    **/
   spacing?: MaybeResponsiveConditionalStyle<Spacing | [Spacing, Spacing]>;
+  /**
+   * A unique identifier for the component.
+   */
+  id?: string;
 }
 
 /**

@@ -14,15 +14,17 @@ type AllComponents = Components[keyof Components];
  */
 export interface ExtensionPoints {
   /**
-   * A [dynamic extension point](https://shopify.dev/api/checkout-extensions/checkout#extension-points) that isn't tied to a specific checkout section or feature.
-   * Unlike static extension points, dynamic extension points render where the merchant
-   * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
-   *
-   * The [supported locations](https://shopify.dev/api/checkout-extensions/checkout#supported-locations) for dynamic extension points can be previewed during development
-   * by [using a URL parameter](https://shopify.dev/apps/checkout/test-ui-extensions#dynamic-extension-points).
+   * A static extension point that is rendered immediately before any actions within each step.
    */
-  'Checkout::Dynamic::Render': RenderExtension<
-    StandardApi<'Checkout::Dynamic::Render'>,
+  'Checkout::Actions::RenderBefore': RenderExtension<
+    StandardApi<'Checkout::Actions::RenderBefore'>,
+    AllComponents
+  >;
+  /**
+   * A static extension point that is rendered after all line items.
+   */
+  'Checkout::CartLines::RenderAfter': RenderExtension<
+    StandardApi<'Checkout::CartLines::RenderAfter'>,
     AllComponents
   >;
   /**
@@ -34,10 +36,17 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after all line items.
+   * A static extension point that is rendered immediately after the contact form element.
    */
-  'Checkout::CartLines::RenderAfter': RenderExtension<
-    StandardApi<'Checkout::CartLines::RenderAfter'>,
+  'Checkout::Contact::RenderAfter': RenderExtension<
+    StandardApi<'Checkout::Contact::RenderAfter'>,
+    AllComponents
+  >;
+  /**
+   * A static extension point that is rendered after a purchase below the customer information.
+   */
+  'Checkout::CustomerInformation::RenderAfter': RenderExtension<
+    StandardApi<'Checkout::CustomerInformation::RenderAfter'>,
     AllComponents
   >;
   /**
@@ -49,19 +58,15 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered between the shipping method
-   * header and shipping method options.
+   * A [dynamic extension point](https://shopify.dev/api/checkout-extensions/checkout#extension-points) that isn't tied to a specific checkout section or feature.
+   * Unlike static extension points, dynamic extension points render where the merchant
+   * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
+   *
+   * The [supported locations](https://shopify.dev/api/checkout-extensions/checkout#supported-locations) for dynamic extension points can be previewed during development
+   * by [using a URL parameter](https://shopify.dev/apps/checkout/test-ui-extensions#dynamic-extension-points).
    */
-  'Checkout::ShippingMethods::RenderBefore': RenderExtension<
-    StandardApi<'Checkout::ShippingMethods::RenderBefore'>,
-    AllComponents
-  >;
-  /**
-   * A static extension point that is rendered after the shipping method
-   * options.
-   */
-  'Checkout::ShippingMethods::RenderAfter': RenderExtension<
-    StandardApi<'Checkout::ShippingMethods::RenderAfter'>,
+  'Checkout::Dynamic::Render': RenderExtension<
+    StandardApi<'Checkout::Dynamic::Render'>,
     AllComponents
   >;
   /**
@@ -91,24 +96,19 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered immediately before any actions within each step.
+   * A static extension point that is rendered between the shipping method
+   * header and shipping method options.
    */
-  'Checkout::Actions::RenderBefore': RenderExtension<
-    StandardApi<'Checkout::Actions::RenderBefore'>,
+  'Checkout::ShippingMethods::RenderBefore': RenderExtension<
+    StandardApi<'Checkout::ShippingMethods::RenderBefore'>,
     AllComponents
   >;
   /**
-   * A static extension point that is rendered immediately after the contact form element.
+   * A static extension point that is rendered after the shipping method
+   * options.
    */
-  'Checkout::Contact::RenderAfter': RenderExtension<
-    StandardApi<'Checkout::Contact::RenderAfter'>,
-    AllComponents
-  >;
-  /**
-   * A static extension point that is rendered after a purchase below the customer information.
-   */
-  'Checkout::CustomerInformation::RenderAfter': RenderExtension<
-    StandardApi<'Checkout::CustomerInformation::RenderAfter'>,
+  'Checkout::ShippingMethods::RenderAfter': RenderExtension<
+    StandardApi<'Checkout::ShippingMethods::RenderAfter'>,
     AllComponents
   >;
 }

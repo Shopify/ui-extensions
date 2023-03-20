@@ -35,6 +35,10 @@ export interface GridItemProps
    * - In an HTML host a `listItem` string will render: `<li>`
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
+  /**
+   * A unique identifier for the component.
+   */
+  id?: string;
 }
 
 /**

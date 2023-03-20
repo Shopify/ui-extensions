@@ -829,3 +829,8 @@ export interface GraphQLError {
     code: string;
   };
 }
+
+export interface ValidationError {
+  message: string;
+  target?: string;
+}

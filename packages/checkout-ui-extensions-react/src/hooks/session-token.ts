@@ -1,4 +1,7 @@
-import {RenderExtensionPoint} from '@shopify/checkout-ui-extensions';
+import {
+  SessionToken,
+  RenderExtensionPoint,
+} from '@shopify/checkout-ui-extensions';
 
 import {useExtensionApi} from './api';
 
@@ -8,6 +11,6 @@ import {useExtensionApi} from './api';
  */
 export function useSessionToken<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): SessionToken {
   return useExtensionApi<ID>().sessionToken;
 }

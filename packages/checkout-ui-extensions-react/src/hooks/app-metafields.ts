@@ -2,6 +2,7 @@ import type {
   RenderExtensionPoint,
   AppMetafieldEntryTarget,
   Metafield,
+  AppMetafieldEntry,
 } from '@shopify/checkout-ui-extensions';
 import {useMemo} from 'react';
 
@@ -25,7 +26,7 @@ type AppMetafieldFilterKeys = keyof AppMetafieldFilters;
  */
 export function useAppMetafields<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(filters: AppMetafieldFilters = {}) {
+>(filters: AppMetafieldFilters = {}): AppMetafieldEntry[] {
   const appMetafields = useSubscription(useExtensionApi<ID>().appMetafields);
 
   return useMemo(() => {

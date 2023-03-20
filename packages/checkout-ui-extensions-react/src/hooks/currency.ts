@@ -1,7 +1,4 @@
-import {
-  ApiForRenderExtension,
-  RenderExtensionPoint,
-} from '@shopify/checkout-ui-extensions';
+import {Currency, RenderExtensionPoint} from '@shopify/checkout-ui-extensions';
 
 import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
@@ -12,7 +9,7 @@ import {useSubscription} from './subscription';
  */
 export function useCurrency<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): ApiForRenderExtension<ID>['localization']['currency']['current'] {
+>(): Currency {
   const {localization} = useExtensionApi<ID>();
 
   return useSubscription(localization.currency);

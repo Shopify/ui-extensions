@@ -37,33 +37,39 @@ const data: LandingTemplateSchema = {
     {
       type: 'Generic',
       anchorLink: 'api-access',
-      title: 'API access',
+      title: 'Storefront API access',
       sectionContent:
         'The following section describes the use cases of the `api_access` capability and the Storefront API access scopes.',
       codeblock: {
-        title: 'Retrieve products using the API',
+        title: 'Enable Storefront API access',
         tabs: [
           {
-            title: 'with query()',
-            code: './examples/configure-api-access-query-react.tsx',
-            language: 'tsx',
-          },
-          {
-            title: 'with fetch()',
-            code: './examples/configure-api-access-fetch-react.tsx',
-            language: 'tsx',
+            title: 'shopify.ui.extension.toml',
+            code: './examples/configure-api-access.toml',
+            language: 'toml',
           },
         ],
       },
       sectionSubContent: [
         {
-          title: 'When to use API access',
-          sectionContent: `
-API access is used when your extension needs to retrieve data from the [Storefront API](/api/storefront). For example, you may need to check the product tags on an item in the cart, or convert a product's price to another currency.
+          title: 'When to use Storefront API access',
+          sectionContent: `API access is used when your extension needs to retrieve data from the [Storefront API](/api/storefront). For example, you may need to [fetch product data](/apps/checkout/product-offers/add-product-offer), check the product tags on an item in the cart, or convert a product's price to another currency.
 
 > Tip:
 > Shopify handles the authentication for all API calls from an extension.
 `,
+        },
+        {
+          title: 'Methods for accessing the Storefront API',
+          sectionContent: `Enabling the \`api_access\` capability allows you to use the Standard API [\`query\`](/api/checkout-ui-extensions/extension-points-api#standardapi) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
+
+\`query\` lets you request a single GraphQL response from the Storefront API.
+
+If you prefer to construct GraphQL requests yourself or you would like to use a full-featured GraphQL client such as Apollo or urql, our custom \`fetch\` global automatically appends the required access tokens.
+
+The GraphQL client of your choice shouldn’t use any DOM APIs, as they aren’t available in a checkout UI extension's Web Worker.
+
+> Note: Both \`query\` and \`fetch\` will work for calling the Storefront API with the \`api_access\` capability enabled. If you are using \`fetch\` to get data external to Shopify, refer to the [\`network_access\` capability](/api/checkout-ui-extensions/configuration#network-access)`,
         },
         {
           title: 'Storefront API access scopes',
@@ -100,7 +106,7 @@ Your extensions will have the following unauthenticated access scopes to the Sto
         {
           title: 'When to request network access',
           sectionContent:
-            "If you need to get data into checkout that you can't currently get from Shopify, then you should request network access. For example, you might need to [retrieve products data from an external HTTP call](/apps/checkout/product-offers/add-product-offer) or fetch additional data to render loyalty points.",
+            "If you need to get data into checkout that you can't currently get from Shopify, then you should request network access. For example, you might need to fetch additional data to render loyalty points.",
         },
         {
           title: 'Alternatives to requesting network access',

@@ -1,0 +1,287 @@
+import {resolve, relative} from 'path';
+import {cwd} from 'process';
+
+import type {
+  CodeTabType,
+  ExampleGroupType,
+  ExampleType,
+  LinkType,
+} from '@shopify/generate-docs';
+
+export const REQUIRES_PROTECTED_CUSTOMER_DATA =
+  'access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) for some properties.';
+
+type Language = 'js' | 'react';
+
+/**
+ * Returns ExampleGroups for the base StandardApi which can be re-used across multiple entities such as the `CartLineRenderAfterApi` and `StandardApi`.
+ * You must provide the current directory (___dirname) your `*.doc.ts` is in so relative links to examples can be resolved.
+ */
+export function getStandardApiExampleGroups(
+  languages: Language[],
+  dirname: string,
+): ExampleGroupType[] {
+  const {
+    api,
+    'api-subscribable': apiSubscribable,
+    translate,
+    'translate-pluralization': translatePluralization,
+    settings,
+    'settings-access': settingAccess,
+  } = getExamples(languages, dirname);
+
+  // Define new example groups here that you want to show on the API pages
+  return [
+    {
+      title: 'Using the API',
+      examples: [api, apiSubscribable],
+    },
+    {
+      title: 'Localization',
+      examples: [translate, translatePluralization],
+    },
+    {
+      title: 'Settings',
+      examples: [settings, settingAccess],
+    },
+  ];
+}
+
+/**
+ * Returns all examples available, specified with a key for reference.
+ */
+function getExamples(
+  languages: Language[],
+  dirname: string,
+): {
+  [key: string]: ExampleType;
+} {
+  const jsExamplePath = relative(
+    dirname,
+    resolve(process.cwd(), 'src/extension-points/api/examples'),
+  );
+
+  const reactExamplePath = relative(
+    dirname,
+    resolve(cwd(), '../checkout-ui-extensions-react/src/hooks/examples'),
+  );
+  function getExtensionCodeTabs(exampleName: string): CodeTabType[] {
+    const codeTabs = [];
+    if (languages.includes('react')) {
+      codeTabs.push({
+        code: `${reactExamplePath}/${exampleName}.example.tsx`,
+        language: 'jsx',
+        title: 'react',
+      });
+    }
+    if (languages.includes('js')) {
+      codeTabs.push({
+        code: `${jsExamplePath}/${exampleName}.example.ts`,
+        language: 'js',
+        title: 'js',
+      });
+    }
+    return codeTabs;
+  }
+
+  // Add new examples here that can be shared across multiples pages
+  return {
+    default: {
+      description:
+        "The extension API allows you to access information about the merchant's store, the customer's cart, and make changes.",
+      codeblock: {
+        title: 'How extensions work',
+        tabs: getExtensionCodeTabs('default'),
+      },
+    },
+    api: {
+      codeblock: {
+        title: 'Accessing Properties',
+        tabs: getExtensionCodeTabs('api'),
+      },
+      description:
+        'The extension API is passed as parameter to the extension point function. If you are using React, you can make use of the `useExtensionApi()` hook.',
+    },
+    'api-subscribable': {
+      description:
+        "Some API property values may change after the extension is rendered. `StatefulRemoteSubscribable` properties allow you to subscribe to changes and perform a function or re-render your extension. If you are using React, you can utilize the property's corresponding hook to subscribe to changes and automatically re-render your extension.",
+      codeblock: {
+        title: 'Subscribing to changes',
+        tabs: getExtensionCodeTabs('api-subscribable'),
+      },
+    },
+    translate: {
+      description:
+        'Use keys for pre-defined translations in your extension to support multiple locales. See [localizing UI extensions](/docs/apps/checkout/best-practices/localizing-ui-extensions) for more information.',
+      codeblock: {
+        title: 'Translating strings',
+        tabs: [
+          ...getExtensionCodeTabs('translate'),
+          ...[
+            {
+              code: `${jsExamplePath}/translate.locale.example.json`,
+              language: 'json',
+              title: 'locales/en.default.json',
+            },
+          ],
+        ],
+      },
+    },
+    'translate-pluralization': {
+      description:
+        'You can use the `count` option to support pluralization. This will resolve to pluralization keys such as "many", "one" or "other". See [localizing UI extensions](/docs/apps/checkout/best-practices/localizing-ui-extensions) for more information.',
+      codeblock: {
+        title: 'Translating strings with pluralization',
+        tabs: [
+          ...getExtensionCodeTabs('translate-pluralization'),
+          ...[
+            {
+              code: `${jsExamplePath}/translate-pluralization.locale.example.json`,
+              language: 'json',
+              title: 'locales/en.default.json',
+            },
+          ],
+        ],
+      },
+    },
+    'cart-line-render-after': {
+      description: '',
+      codeblock: {
+        title: '',
+        tabs: getExtensionCodeTabs('cart-line-render-after'),
+      },
+    },
+    'extension-points': {
+      description: '',
+      codeblock: {
+        title: '',
+        tabs: getExtensionCodeTabs('extension-points'),
+      },
+    },
+    settings: {
+      description:
+        'You define settings that your merchant can configure from within the checkout editor. See [settings](/docs/api/checkout-ui-extensions/configuration#settings-definition) for more information on how to define these.',
+      codeblock: {
+        title: 'Enable merchant customization',
+        tabs: [
+          {
+            code: `${jsExamplePath}/settings.example.toml`,
+            language: 'toml',
+            title: 'shopify.ui.extension.toml',
+          },
+        ],
+      },
+    },
+    'settings-access': {
+      description:
+        'You can retrieve the settings values within your extension. As the merchant sets these values, your extension should re-render to reflect the changes. If you are using React, you can utilize the `useSettings()` hook to subscribe to changes and automatically re-render your extension. When using JavaScript, you should subscribe to changes to the settings and update your components appropriately.',
+      codeblock: {
+        title: 'Using customizations in your extension',
+        tabs: getExtensionCodeTabs('settings-access'),
+      },
+    },
+  };
+}
+
+const defaultLink = {
+  name: 'StandardApi',
+  subtitle: 'APIs',
+  url: '/docs/api/checkout-ui-extensions/apis/standardapi',
+  type: 'StandardApi',
+};
+
+const links: {[key: string]: LinkType[]} = {
+  apis: [
+    {
+      ...defaultLink,
+    },
+    {
+      name: 'CartLineRenderAfterApi',
+      subtitle: 'APIs',
+      url: '/docs/api/checkout-ui-extensions/apis/cartlinerenderafterapi',
+      type: 'CartLineRenderAfterApi',
+    },
+    {
+      name: 'ExtensionPoints',
+      subtitle: 'APIs',
+      url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
+      type: 'ExtensionPoints',
+    },
+  ],
+  configuration: [
+    {
+      name: 'Configuration',
+      subtitle: 'Overview',
+      url: '/docs/api/checkout-ui-extensions/configuration',
+      type: 'Configuration',
+    },
+    {
+      name: 'Settings Definition',
+      subtitle: 'Configuration',
+      url: '/docs/api/checkout-ui-extensions/configuration#settings-definition',
+      type: 'SettingsDefinition',
+    },
+    {
+      name: 'Settings Examples',
+      subtitle: 'APIs',
+      url: '/docs/api/checkout-ui-extensions/apis/standardapi#example-settings',
+      type: 'SettingsExamples',
+    },
+  ],
+};
+
+/**
+ * Returns a specific Link that can be used as a related link on an entity.
+ */
+export function getLinkByType(type: string): LinkType {
+  const link = Object.keys(links)
+    .flatMap((key) => links[key])
+    .find((link) => link.type === type);
+
+  if (!link) {
+    return defaultLink;
+  }
+
+  return link;
+}
+
+/**
+ * Returns an array of Links that can be used as related links on an entity.
+ * This uses a tag structure to allow you to group links together.
+ * You can optinally exclude a specific type of link from the results.
+ *
+ * (Default): If the tag doesn't exist, it will return some default links.
+ */
+export function getLinksByTag(name: string, excludeType?: string): LinkType[] {
+  const linksByTag = links[name];
+  if (!linksByTag) {
+    // Default to returning the api links, when you can't find a matching tag
+    return getLinksByTag('apis');
+  }
+  if (excludeType) {
+    return linksByTag.filter((link) => link.type !== excludeType);
+  }
+
+  return linksByTag;
+}
+
+/**
+ * Returns a specific Example by name, as specified in `getExamples()`.
+ * You can specify whether you want to include both `react` and `js` examples or just one.
+ * You must provide the current directory (___dirname) your `*.doc.ts` is in so relative links to examples can be resolved.
+ */
+export function getExample(
+  exampleName: string,
+  languages: Language[],
+  dirname: string,
+): ExampleType | null {
+  return getExamples(languages, dirname)[exampleName];
+}
+
+/**
+ * Returns a specific react hook Example by name, as specified in `getExamples()`.
+ * You must provide the current directory (___dirname) your `*.doc.ts` is in so relative links to examples can be resolved.
+ */
+export function getHookExample(exampleName: string, dirname: string) {
+  return getExample(exampleName, ['react'], dirname);
+}

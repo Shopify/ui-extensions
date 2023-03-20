@@ -25,6 +25,14 @@ const data: LandingTemplateSchema = {
       \n\nWhen a core checkout feature isn't rendered, neither are the static extension points tied to it. For example, shipping methods aren't shown when customers select the option for store pickup and the UI extensions that load before or after the shipping method aren't rendered.
       \n\nChoose static extension points when your content and functionality is closely related to a core checkout feature. An example is a shipping delay notice.
       `,
+      sectionCard: [
+        {
+          name: 'Extension points reference',
+          subtitle: 'Navigate to',
+          url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
+          type: 'blocks',
+        },
+      ],
     },
     {
       type: 'Generic',
@@ -33,14 +41,62 @@ const data: LandingTemplateSchema = {
       sectionContent: `Dynamic extension points aren't tied to specific checkout features. They can render between core features on any checkout step. Merchants can use the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor) to place the extension in any one of the [supported locations](/api/checkout-ui-extensions/extension-points-api#supported-locations) for the dynamic extension point.
       \n\nWhen a checkout feature for that location is hidden, dynamic extensions are still rendered. For example, an extension placed above the shipping address will still render even for digital products which do not require a shipping address.\n\nChoose dynamic extension points when your content and functionality is self-contained and can display at any step in the checkout process. An example is a field to capture order notes from the customer.`,
       image: 'dynamic-extension-points.png',
+      sectionCard: [
+        {
+          name: 'Extension points reference',
+          subtitle: 'Navigate to',
+          url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
+          type: 'blocks',
+        },
+      ],
+    },
+    {
+      type: 'GenericAccordion',
+      title: 'Supported locations',
+      anchorLink: 'supported-locations',
+      accordionContent: [
+        {
+          title: 'Information',
+          description:
+            'This is the first step in the checkout process where the buyer enters contact information and a delivery address.',
+          image: 'supported-locations-information.png',
+        },
+        {
+          title: 'Shipping',
+          description:
+            'Point in checkout where the buyer selects a shipping method.',
+          image: 'supported-locations-shipping.png',
+        },
+        {
+          title: 'Payment',
+          description:
+            'Point in checkout where the buyer enters their payment information.',
+          image: 'supported-locations-payment.png',
+        },
+        {
+          title: 'Order summary',
+          description:
+            'Summary of the cart contents, discounts, and order totals.',
+          image: 'supported-locations-order-summary.png',
+        },
+        {
+          title: 'Shop Pay',
+          description:
+            'Accelerated checkout where Shopify pre-fills buyer information using their Shop Pay account.',
+          image: 'supported-locations-shop-pay.png',
+        },
+        {
+          title: 'Order Status',
+          description:
+            'After submitting their order, the buyer is taken to an order status page.',
+          image: 'supported-locations-order-status.png',
+        },
+      ],
     },
     {
       type: 'Generic',
-      // Anchor link for the section.
       anchorLink: 'globals',
-      // The title of the section.
       title: 'Globals',
-      // Content for the section.
       sectionContent:
         "This library provides an alias for `shopify.extend` in the form of the `extend()` export. This function is also strongly-typed. If you’re working in an editor that supports TypeScript’s language server (we recommend [VSCode](https://code.visualstudio.com)), then you get feedback about the input arguments to that extension point. \n\n For extensions that render UI, such as [`Checkout::Dynamic::Render`](#extension-points), the first argument is always a [`@remote-ui` `RemoteRoot` object](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoteroot) that enables you to render UI components into your extension point in checkout. You don't need to explicitly call [`mount()`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootmount) on this object. After the callback that you registered for the extension point ends, or if it returns a `Promise` that resolves, your initial UI is rendered. \n\n That’s really all the global API you need to know to start writing a UI extension. You’ll find the documentation for additional APIs that are provided when an extension point is run in the [extension points API documentation](/api/checkout-ui-extensions/extension-points-api).",
       sectionSubContent: [

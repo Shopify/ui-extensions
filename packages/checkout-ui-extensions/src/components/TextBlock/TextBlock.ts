@@ -1,14 +1,12 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {InlineAlignment, Emphasis, Size, Appearance} from '../shared';
+import type {InlineAlignment, Emphasis, Appearance, TextSize} from '../shared';
 
 export interface TextBlockProps {
   /**
    * Size of the text
    */
-  size?:
-    | Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'extraLarge'>
-    | 'medium';
+  size?: TextSize;
   /**
    * Use to emphasize a word or a group of words.
    */

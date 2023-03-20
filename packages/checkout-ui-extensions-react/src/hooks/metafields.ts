@@ -1,5 +1,7 @@
 import type {
-  StandardApi,
+  Metafield,
+  MetafieldChange,
+  MetafieldChangeResult,
   RenderExtensionPoint,
 } from '@shopify/checkout-ui-extensions';
 import {useMemo} from 'react';
@@ -21,7 +23,7 @@ interface MetafieldsFilters {
  */
 export function useMetafields<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(filters?: MetafieldsFilters) {
+>(filters?: MetafieldsFilters): Metafield[] {
   const metaFields = useSubscription(useExtensionApi<ID>().metafields);
 
   return useMemo(() => {
@@ -51,6 +53,6 @@ export function useMetafields<
  */
 export function useApplyMetafieldsChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): StandardApi<ID>['applyMetafieldChange'] {
+>(): (change: MetafieldChange) => Promise<MetafieldChangeResult> {
   return useExtensionApi<ID>().applyMetafieldChange;
 }

@@ -11,16 +11,15 @@ import type {
   ButtonAccessibilityRole,
   OverlayActivatorProps,
   CornerProps,
+  Opacity,
 } from '../shared';
-import type {ViewProps} from '../View';
 
 export interface PressableProps
   extends BorderProps,
     CornerProps,
     SizingProps,
     SpacingProps,
-    OverlayActivatorProps,
-    Pick<ViewProps, 'opacity'> {
+    OverlayActivatorProps {
   /**
    * Changes the display of the Pressable.
    *
@@ -118,6 +117,12 @@ export interface PressableProps
    * Position children along the main axis
    */
   inlineAlignment?: MaybeResponsiveConditionalStyle<InlineAlignment>;
+  /**
+   * Sets the opacity of the View. The opacity will be applied to the background as well as all
+   * the children of the View. Use carefully as this could decrease the contrast ratio between
+   * the background and foreground elements, resulting in unreadable and inaccessible text.
+   */
+  opacity?: Opacity;
 }
 
 /**

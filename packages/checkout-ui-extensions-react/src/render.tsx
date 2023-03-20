@@ -1,4 +1,5 @@
-import type {ReactElement} from 'react';
+import type {ReactElement, PropsWithChildren} from 'react';
+import {Component} from 'react';
 import {render as remoteRender} from '@remote-ui/react';
 import {extend} from '@shopify/checkout-ui-extensions';
 import type {
@@ -39,7 +40,9 @@ export function render<ExtensionPoint extends RenderExtensionPoint>(
         try {
           remoteRender(
             <ExtensionApiContext.Provider value={api}>
-              {render(api as ApiForRenderExtension<ExtensionPoint>)}
+              <ErrorBoundary>
+                {render(api as ApiForRenderExtension<ExtensionPoint>)}
+              </ErrorBoundary>
             </ExtensionApiContext.Provider>,
             root,
             () => {
@@ -55,4 +58,51 @@ export function render<ExtensionPoint extends RenderExtensionPoint>(
       });
     },
   );
+}
+
+interface ErrorState {
+  hasError: boolean;
+}
+
+// Using ErrorBoundary allows us to relay the errors coming from React reconcilation
+// to the global object using reportError.
+class ErrorBoundary extends Component<PropsWithChildren<{}>, ErrorState> {
+  static getDerivedStateFromError() {
+    // Update state so the next render will show the fallback UI.
+    return {hasError: true};
+  }
+
+  state: ErrorState = {hasError: false};
+
+  componentDidCatch(error: Error, errorInfo: {componentStack: string}) {
+    // in development, these errors are logged by React itself so we don’t need to re-log them
+    if (process.env.NODE_ENV !== 'development') {
+      // eslint-disable-next-line no-console
+      console.error(
+        `The above error occurred in the <${extractComponentName(
+          errorInfo.componentStack,
+        )}> component:\n${errorInfo.componentStack}`,
+      );
+    }
+    reportError(error);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return null;
+    }
+
+    return this.props.children;
+  }
+}
+
+// This is an example of component stack:
+//
+// at Hello (webpack:///./src/index.tsx_+_220_modules?:1082:9)
+// at Banner
+// at Extension (webpack:///./src/index.tsx_+_220_modules?:1075:7)
+// at render_esnext_ErrorBoundary (webpack:///./src/index.tsx_+_220_modules?:1052:124)
+export function extractComponentName(componentStack: string) {
+  const match = componentStack.match(/^\s+at\s(\w+)\s/);
+  return (match && match[1]) ?? 'Unknown';
 }

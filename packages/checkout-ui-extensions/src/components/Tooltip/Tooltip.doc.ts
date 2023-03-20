@@ -38,8 +38,8 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'ux-guidelines',
-      title: 'UX Guidelines',
+      anchorLink: 'best-practices',
+      title: 'Best Practices',
       sectionContent:
         'Use tooltips if:\n\n- It’s used for showing information only.\n\n- The information contained in it is not needed by someone to complete their checkout.\n\n- The information can be written in a sentence.',
     },
