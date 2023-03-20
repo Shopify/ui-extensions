@@ -468,7 +468,10 @@ export type Size =
 export type Spacing =
   | 'none'
   | 'base'
-  | 'extraTight' | 'tight' | 'loose' | 'extraLoose';
+  | 'extraTight'
+  | 'tight'
+  | 'loose'
+  | 'extraLoose';
 
 export type Alignment = 'start' | 'center' | 'end';
 export type InlineAlignment = 'start' | 'center' | 'end';
