@@ -17,8 +17,6 @@ export type {
   Order,
   MailingAddress,
   ProductVariant,
-  CountryCode,
-  CurrencyCode,
 } from './PixelEvents';
 export type {
   PublisherData,
@@ -27,6 +25,8 @@ export type {
   SubscriberCallback,
   SubscriberOptions,
   KeyOfEvent,
+  StandardEvents,
+  CustomEvents,
   Events,
   EventBus,
   SchemaVersion,
