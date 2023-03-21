@@ -21,6 +21,14 @@ type Source =
   | 'buyButtonMajor'
   | 'followUpEmailMajor';
 
+type TemplateCategory =
+  | 'firstTimeBuyers'
+  | 'highValueCustomers'
+  | 'reEngageCustomers'
+  | 'abandonedCheckout'
+  | 'purchaseBehaviour'
+  | 'location';
+
 /**
  * Reserved namespace and key for the customer standard metafield used in the template's query.
  * More info - https://shopify.dev/docs/apps/custom-data/metafields/definitions/standard
@@ -42,6 +50,10 @@ export interface CustomerSegmentationTemplateProps {
   standardMetafieldDependencies?: CustomerStandardMetafieldDependency[];
   /* Date when the template was first introduced. A "New" badge will be rendered for recently introduced templates. */
   dateAdded?: Date;
+  /* The category in which the template will be visible.
+     When provided, the template will show in its respective category and aggregate sections.
+     When missing, the template will show in the aggregate sections only */
+  category?: TemplateCategory;
 }
 
 /**
