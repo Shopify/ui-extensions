@@ -1,5 +1,6 @@
 export {Banner} from './Banner';
 export {Button} from './Button';
+export {CameraScanner} from './CameraScanner'
 export {Dialog} from './Dialog';
 export {FormattedTextField} from './FormattedTextField';
 export {Image} from './Image';

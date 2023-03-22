@@ -21,6 +21,7 @@ export type {
   BannerProps,
   ButtonType,
   ButtonProps,
+  CameraScannerProps,
   ColorType,
   DialogProps,
   DialogType,
