@@ -630,9 +630,19 @@ export interface Customer {
   email: string | null;
 
   /**
+   * The customer’s first name.
+   */
+  firstName: string | null;
+
+  /**
    * The ID of the customer.
    */
   id: string;
+
+  /**
+   * The customer’s last name.
+   */
+  lastName: string | null;
 
   /**
    * The customer’s phone number.
