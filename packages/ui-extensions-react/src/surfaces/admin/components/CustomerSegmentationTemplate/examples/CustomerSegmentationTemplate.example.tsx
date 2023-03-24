@@ -21,7 +21,7 @@ function App({i18n, enabledFeatures}) {
           icon='productsMajor'
           templateQuery={templateQuery}
           templateQueryToInsert={templateQueryToInsert}
-          dateAdded={new Date('2023-01-15')}
+          dateAdded={new Date('2023-01-15').toISOString()}
           category="reEngageCustomers"
         />
          <CustomerSegmentationTemplate

@@ -48,8 +48,8 @@ export interface CustomerSegmentationTemplateProps {
   templateQueryToInsert?: string;
   /* List of customer standard metafield used in the template's query. */
   standardMetafieldDependencies?: CustomerStandardMetafieldDependency[];
-  /* Date when the template was first introduced. A "New" badge will be rendered for recently introduced templates. */
-  dateAdded?: Date;
+  /* ISO 8601-encoded date and time string. A "New" badge will be rendered for recently introduced templates. */
+  dateAdded?: string;
   /* The category in which the template will be visible.
      When provided, the template will show in its respective category and aggregate sections.
      When missing, the template will show in the aggregate sections only */
