@@ -17,7 +17,7 @@ export default extension(
       templateQueryToInsert: productsPurchasedOnTagsEnabled
       ? 'products_purchased(tag:'
       : 'products_purchased(id:',
-      dateAdded: new Date('2023-01-15'),
+      dateAdded: new Date('2023-01-15').toISOString(),
       category: 'reEngageCustomers'
     });
 
