@@ -1,5 +1,6 @@
 import type {CartApi} from './cart-api';
 import type {LocaleApi} from './locale-api';
+import type {ScannerApi} from './scanner-api';
 import type {SessionApi} from './session-api';
 import type {ToastApi} from './toast-api';
 
@@ -8,4 +9,5 @@ export type StandardApi<T> = {[key: string]: any} & {
 } & LocaleApi &
   CartApi &
   ToastApi &
+  ScannerApi &
   SessionApi;

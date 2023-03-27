@@ -5,6 +5,8 @@ export type {
   CartApi,
   NavigationApi,
   NavigationApiContent,
+  ScannerApi,
+  ScannerApiContent,
   SmartGridApi,
   SmartGridApiContent,
   StandardApi,

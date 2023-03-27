@@ -12,6 +12,9 @@ export {
   useLocaleSubscription,
   useStatefulSubscribableLocale,
   destroyStatefulSubscribableLocale,
+  useScannerSubscription,
+  useStatefulSubscribableScanner,
+  destroyStatefulSubscribableScanner,
 } from './extension-api';
 export * from './components';
 
