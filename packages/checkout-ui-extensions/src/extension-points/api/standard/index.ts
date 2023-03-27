@@ -48,8 +48,9 @@ export interface Storage {
  *
  * * `api_access` allows an extension to make API calls via `fetch()` or `query`.
  *    This is always granted to an extension when present in the
- *    `shopify.ui.extension.toml` file. This is declared upfront so that API
- *     access tokens can be generated only for extensions that need them.
+ *    [shopify.ui.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
+ *    This is declared upfront so that API access tokens can be generated only
+ *    for extensions that need them.
  *
  * * `network_access` allows an extension to make network calls via fetch() and
  *    is requested by a partner
@@ -99,7 +100,7 @@ export interface Extension {
 
   /**
    * The allowed capabilities of the extension, defined
-   * in your `shopify.ui.extension.toml` file .
+   * in your [shopify.ui.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
    *
    * `network_access`:
    * You must [request access](https://shopify.dev/api/checkout-extensions/checkout/configuration#complete-a-request-for-network-access)
@@ -519,7 +520,7 @@ export interface StandardApi<
   ExtensionPoint extends import('../../extension-points').ExtensionPoint,
 > {
   /**
-   * Exposes an `analytics.publish` method to publish analytics events.
+   * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
    */
   analytics: Analytics;
 
@@ -529,8 +530,10 @@ export interface StandardApi<
   appliedGiftCards: StatefulRemoteSubscribable<AppliedGiftCard[]>;
 
   /**
-   * The metafields requested in the `shopify.ui.extension.toml` file. These metafields are
-   * updated when there's a change in the merchandise items being purchased by the customer.
+   * The metafields requested in the
+   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration)
+   * file. These metafields are updated when there's a change in the merchandise items
+   * being purchased by the customer.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
@@ -539,21 +542,23 @@ export interface StandardApi<
   /**
    * Performs an update on an attribute attached to the cart and checkout. If
    * successful, this mutation results in an update to the value retrieved
-   * through the `attributes` property.
+   * through the [`attributes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-applyattributechange) property.
    */
   applyAttributeChange(change: AttributeChange): Promise<AttributeChangeResult>;
 
   /**
    * Performs an update on the merchandise line items. It resolves when the new
    * line items have been negotiated and results in an update to the value
-   * retrieved through the `lines` property.
+   * retrieved through the
+   * [`lines`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-lines)
+   * property.
    */
   applyCartLinesChange(change: CartLineChange): Promise<CartLineChangeResult>;
 
   /**
    * Performs an update on the discount codes.
    * It resolves when the new discount codes have been negotiated and results in an update
-   * to the value retrieved through the `discountCodes` property.
+   * to the value retrieved through the [`discountCodes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-discountcodes) property.
    */
   applyDiscountCodeChange(
     change: DiscountCodeChange,
@@ -562,21 +567,21 @@ export interface StandardApi<
   /**
    * Performs an update on the gift cards.
    * It resolves when gift card change have been negotiated and results in an update
-   * to the value retrieved through the `appliedGiftCards` property.
+   * to the value retrieved through the [`appliedGiftCards`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-appliedgiftcards) property.
    */
   applyGiftCardChange(change: GiftCardChange): Promise<GiftCardChangeResult>;
 
   /**
    * Performs an update on a piece of metadata attached to the checkout. If
    * successful, this mutation results in an update to the value retrieved
-   * through the `metafields` property.
+   * through the [`metafields`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-metafields) property.
    */
   applyMetafieldChange(change: MetafieldChange): Promise<MetafieldChangeResult>;
 
   /**
    * Performs an update on the note attached to the cart and checkout. If
    * successful, this mutation results in an update to the value retrieved
-   * through the `note` property.
+   * through the [`note`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-note) property.
    */
   applyNoteChange(change: NoteChange): Promise<NoteChangeResult>;
 
@@ -624,8 +629,12 @@ export interface StandardApi<
   extensionPoint: ExtensionPoint;
 
   /**
-   * Utilities for translating content and formatting values according to the current `localization`
+   * Utilities for translating content and formatting values according to the current
+   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-localization)
    * of the checkout.
+   *
+   * See [localization examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-localization)
+   * for more information.
    */
   i18n: I18n;
 
@@ -636,7 +645,9 @@ export interface StandardApi<
 
   /**
    * Details about the location, language, and currency of the buyer. For utilities to easily
-   * format and translate content based on these details, you can use the `i18n` object instead.
+   * format and translate content based on these details, you can use the
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-i18n)
+   * object instead.
    */
   localization: Localization;
 
@@ -676,7 +687,9 @@ export interface StandardApi<
   presentmentLines: StatefulRemoteSubscribable<PresentmentCartLine[]>;
 
   /**
-   * Used to query the storefront graphql API with prefetched token
+   * Used to query the Storefront GraphQL API with a prefetched token.
+   *
+   * See [storefront api access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-storefront-api-access) for more information.
    */
   query: <Data = unknown, Variables = {[key: string]: unknown}>(
     query: string,
@@ -690,9 +703,12 @@ export interface StandardApi<
   sessionToken: SessionToken;
 
   /**
-   * The settings matching the settings definition written in the `shopify.ui.extension.toml` file.
+   * The settings matching the settings definition written in the
+   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
    *
-   * **Note:** When an extension is being installed in the editor, the settings will be empty until
+   *  See [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-settings) for more information.
+   *
+   * > Note: When an extension is being installed in the editor, the settings will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
    */
   settings: StatefulRemoteSubscribable<ExtensionSettings>;
@@ -1569,10 +1585,10 @@ export interface ExtensionSettings {
   [key: string]: string | number | boolean | undefined;
 }
 
-/**
- * Publish method to emit analytics events to Web Pixels.
- */
 export interface Analytics {
+  /**
+   * Publish method to emit analytics events to [Web Pixels](https://shopify.dev/docs/apps/marketing).
+   */
   publish(name: string, data: {[key: string]: unknown}): Promise<boolean>;
 }
 

@@ -1,0 +1,23 @@
+import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
+import {getLinksByTag} from '../helper.docs';
+
+const data: ReferenceEntityTemplateSchema = {
+  name: 'useCartLines',
+  description:
+    'Returns the current line items for the checkout, and automatically re-renders your component if line items are added, removed, or updated.',
+  isVisualComponent: false,
+  type: 'hook',
+  category: 'React Hooks',
+  subCategory: 'Cart',
+  definitions: [
+    {
+      title: '',
+      description: '',
+      type: 'UseCartLinesGeneratedType',
+    },
+  ],
+  related: getLinksByTag('apis'),
+};
+
+export default data;

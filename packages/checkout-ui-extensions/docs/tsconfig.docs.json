@@ -2,9 +2,6 @@
   "compilerOptions": {
     "rootDir": "/"
   },
-  "include": [
-    "../src/**/*.doc.ts",
-    "../../checkout-ui-extensions-react/src/**/*.doc.ts"
-  ],
+  "include": ["../src/**/*.doc.ts"],
   "exclude": []
 }
