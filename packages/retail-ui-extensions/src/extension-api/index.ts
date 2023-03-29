@@ -8,8 +8,6 @@ export type {StandardApi} from './standard-api';
 export type {SessionApiContent, SessionApi} from './session-api';
 export type {ToastApiContent, ToastApi} from './toast-api';
 
-export type {Destination} from './types';
-
 export type {
   Address,
   Cart,

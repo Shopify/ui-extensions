@@ -39,13 +39,11 @@ export type {
   Spacing,
   StackProps,
   StepperProps,
-  Destination,
   TextProps,
   TextVariant,
   TextFieldProps,
   TileProps,
   IconProps,
   IconName,
-  ModalProps,
   VerticalSpacing,
 } from '@shopify/retail-ui-extensions';

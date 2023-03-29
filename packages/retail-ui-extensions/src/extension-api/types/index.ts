@@ -10,5 +10,3 @@ export type {
 export {CountryCode} from './country-code';
 
 export type {Session} from './session';
-
-export type {Destination} from './destination';
