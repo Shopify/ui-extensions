@@ -18,5 +18,4 @@ export {Tile} from './Tile';
 export {Selectable} from './Selectable';
 export {Section} from './Section';
 export {Screen} from './Screen';
-export {Modal} from './Modal';
 export {Navigator} from './Navigator';
