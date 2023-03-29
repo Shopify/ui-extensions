@@ -54,7 +54,7 @@ export interface ListProps {
    */
   title?: string;
   /**
-   * The array of `ListItem` which will be converted into rows for this list.
+   * The array of `ListRow` which will be converted into rows for this list.
    */
   data: ListRow[];
   /**
