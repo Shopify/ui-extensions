@@ -185,6 +185,14 @@ Ensure your extension can access the Storefront API via the [\`api_access\` capa
         tabs: getExtensionCodeTabs('query-fetch'),
       },
     },
+    'buyer-journey-intercept': {
+      description:
+        "Intercept and prevent a buyer's progress through checkout. See the [validation tutorial](/docs/apps/checkout/validation) for more examples and best practices.",
+      codeblock: {
+        title: "Block a buyer's progress",
+        tabs: getExtensionCodeTabs('buyer-journey-intercept'),
+      },
+    },
   };
 }
 

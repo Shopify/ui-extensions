@@ -13,7 +13,7 @@ export interface SkeletonTextProps {
    */
   inlineSize?: Extract<Size, 'small' | 'base' | 'large'>;
   /**
-   * Size of the text
+   * Size of the text the skeleton replaces.
    */
   size?: TextSize;
 }

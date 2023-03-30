@@ -1,6 +1,8 @@
 export {useExtensionApi} from './api';
 export {useCurrency} from './currency';
 export {useLanguage} from './language';
+export {useLocalizationCountry} from './country';
+export {useLocalizationMarket} from './market';
 export {useTimezone} from './timezone';
 export {useExtensionCapabilities, useExtensionCapability} from './capabilities';
 export {useExtensionLanguage} from './extension-language';

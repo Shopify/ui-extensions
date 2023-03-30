@@ -15,7 +15,7 @@ export interface SkeletonTextBlockProps {
    */
   lines?: number;
   /**
-   * Size of the text
+   * Size of the text the skeleton replaces.
    */
   size?: TextSize;
 }

@@ -16,6 +16,7 @@ const {
   'settings-access': settingAccess,
   'storefront-query-api': storeFrontApiQuery,
   'storefront-query-with-fetch': storeFrontApiFetch,
+  'buyer-journey-intercept': buyerJourneyIntercept,
 } = getExamples(['jsx', 'js']);
 
 const data: ReferenceEntityTemplateSchema = {
@@ -53,6 +54,10 @@ const data: ReferenceEntityTemplateSchema = {
       {
         title: 'Storefront API access',
         examples: [storeFrontApiQuery, storeFrontApiFetch],
+      },
+      {
+        title: 'Buyer journey',
+        examples: [buyerJourneyIntercept],
       },
     ],
   },

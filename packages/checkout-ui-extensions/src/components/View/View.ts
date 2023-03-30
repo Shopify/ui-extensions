@@ -15,8 +15,6 @@ import type {
   Opacity,
 } from '../shared';
 
-type AccessibilityVisibility = 'hidden';
-
 export type PositionType = 'absolute' | 'relative' | 'sticky';
 export type Coordinate = number | `${number}%`;
 interface BaseCoordinates {
@@ -109,14 +107,6 @@ export interface ViewProps
     SpacingProps,
     VisibilityProps {
   /**
-   * Changes the visibility of the element to assistive technologies.
-   *
-   * `hidden` hides the component from assistive technology (for example,
-   * a screen reader) but remains visually visible.
-   */
-  accessibilityVisibility?: AccessibilityVisibility;
-
-  /**
    * Changes the display of the View.
    *
    *
@@ -183,6 +173,18 @@ export interface ViewProps
    * `fill`: takes all the available space.
    */
   inlineSize?: MaybeResponsiveConditionalStyle<'fill'>;
+  /**
+   * Sets the overflow behavior of the element.
+   *
+   * `hidden`: clips the content when it is larger than the element’s container.
+   * The element will not be scrollable and the users will not be able
+   * to access the clipped content by dragging or using a scroll wheel.
+   *
+   * `visible`: the content that extends beyond the element’s container is visible.
+   *
+   * @default 'visible'
+   */
+  overflow?: 'hidden' | 'visible';
 }
 
 /**

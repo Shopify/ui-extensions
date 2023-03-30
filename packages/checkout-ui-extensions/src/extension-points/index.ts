@@ -74,6 +74,8 @@ export type {
   I18n,
   I18nTranslate,
   Currency,
+  Country,
+  Market,
   Language,
   Localization,
   Order,

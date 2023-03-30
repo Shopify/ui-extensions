@@ -465,6 +465,26 @@ export interface Currency {
   isoCode: CurrencyCode;
 }
 
+export interface Country {
+  /**
+   * The ISO-3166-1 code for this country.
+   * @see https://www.iso.org/iso-3166-country-codes.html
+   */
+  isoCode: CountryCode;
+}
+
+export interface Market {
+  /**
+   * A globally-unique identifier for a market.
+   */
+  id: string;
+
+  /**
+   * The human-readable, shop-scoped identifier for the market.
+   */
+  handle: string;
+}
+
 export interface Localization {
   /**
    * The currency that the buyer sees for money amounts in the checkout.
@@ -493,6 +513,23 @@ export interface Localization {
    * extension (that is, the one matching your .default.json file).
    */
   extensionLanguage: StatefulRemoteSubscribable<Language>;
+
+  /**
+   * The country context of the checkout. This value carries over from the
+   * context of the cart, where it was used to contextualize the storefront
+   * experience. It will update if the buyer changes the country of their
+   * shipping address. The value is undefined if unknown.
+   */
+  country: StatefulRemoteSubscribable<Country | undefined>;
+
+  /**
+   * The [market](https://shopify.dev/docs/apps/markets) context of the
+   * checkout. This value carries over from the context of the cart, where it
+   * was used to contextualize the storefront experience. It will update if the
+   * buyer changes the country of their shipping address. The value is undefined
+   * if unknown.
+   */
+  market: StatefulRemoteSubscribable<Market | undefined>;
 }
 
 /**
@@ -502,9 +539,11 @@ export interface BuyerJourney {
   /**
    * Installs a function for intercepting and preventing progress on checkout.
    *
-   * This returns a promise that resolves to a teardown function. Calling the teardown function will remove the interceptor.
+   * This returns a promise that resolves to a teardown function. Calling the
+   * teardown function will remove the interceptor.
    *
-   * To block checkout progress, you must set the [block_progress](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress) capability in your extension's configuration.
+   * To block checkout progress, you must set the [block_progress](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress)
+   * capability in your extension's configuration.
    */
   intercept(interceptor: Interceptor): Promise<() => void>;
 
@@ -599,6 +638,9 @@ export interface StandardApi<
 
   /**
    * Provides details on the buyer's progression through the checkout.
+   *
+   * See [buyer journey](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-buyer-journey)
+   * examples for more information.
    */
   buyerJourney: BuyerJourney;
 
@@ -1499,7 +1541,7 @@ interface InterceptorRequestBlock {
    * the UI show up at once.
    * @param result InterceptorResult with behavior as either 'allow' or 'block'
    */
-  perform(result: InterceptorResult): void | Promise<void>;
+  perform?(result: InterceptorResult): void | Promise<void>;
 }
 
 export interface InterceptorProps {
@@ -1576,6 +1618,27 @@ export interface Customer {
    * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   acceptsMarketing: boolean;
+  /**
+   * The Store Credit Accounts owned by the customer and usable during the checkout process.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  storeCreditAccounts: StoreCreditAccount[];
+}
+
+/**
+ * Information about a Store Credit Account.
+ */
+export interface StoreCreditAccount {
+  /**
+   * A globally-unique identifier.
+   * @example 'gid://shopify/StoreCreditAccount/1'
+   */
+  id: string;
+  /**
+   * The current balance of the Store Credit Account.
+   */
+  balance: Money;
 }
 
 /**

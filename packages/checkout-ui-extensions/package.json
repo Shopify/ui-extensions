@@ -28,7 +28,7 @@
     "@remote-ui/core": "2.1.x"
   },
   "devDependencies": {
-    "@shopify/generate-docs": "^0.10.3",
+    "@shopify/generate-docs": "0.10.5",
     "typescript": "^4.9.0"
   }
 }
