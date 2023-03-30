@@ -31,7 +31,7 @@ export interface ListRowRightSide {
    * Show a chevron. Set this to true if pressing on the row navigates to another screen.
    * @defaultValue `false`
    */
-  showDisclosureIndicator?: boolean;
+  showChevron?: boolean;
 }
 
 export interface ListRow {
