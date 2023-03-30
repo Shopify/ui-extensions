@@ -27,6 +27,11 @@ export interface ListRowRightSide {
    * The main label that will be displayed on the right side of the row.
    */
   label?: string;
+  /**
+   * Show a chevron. Set this to true if pressing on the row navigates to another screen.
+   * @defaultValue `false`
+   */
+  showDisclosureIndicator?: boolean;
 }
 
 export interface ListRow {
