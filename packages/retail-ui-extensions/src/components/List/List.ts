@@ -13,7 +13,7 @@ export interface ListRowLeftSide {
   /**
    * A colored badge that is displayed underneath the `title` and `subtitles`.
    */
-  badge: TagProps;
+  badge?: TagProps;
   image?: {
     /**
      * A link to an image to be displayed on the far left side of the row.
