@@ -33,6 +33,7 @@ export {
   TextField,
   View,
   Modal,
+  Popover,
 } from '@shopify/checkout-ui-extensions-react';
 
 export type {
@@ -60,6 +61,7 @@ export type {
   ListProps,
   ListItemProps,
   ModalProps,
+  PopoverProps,
   SelectProps,
   SkeletonImageProps,
   SkeletonTextProps,
