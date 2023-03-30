@@ -33,6 +33,7 @@ export {
   TextField,
   View,
   Modal,
+  Popover,
 } from '@shopify/checkout-ui-extensions';
 
 export type {
@@ -62,6 +63,7 @@ export type {
   MaybeConditionalStyle,
   MaybeShorthandProperty,
   ModalProps,
+  PopoverProps,
   SelectProps,
   SkeletonImageProps,
   SkeletonTextProps,
