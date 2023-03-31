@@ -18,6 +18,7 @@ export type {
   Order,
   MailingAddress,
   ProductVariant,
+  PixelEventsProductAddedToCartData,
 } from './PixelEvents';
 export type {
   PublisherData,
