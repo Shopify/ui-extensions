@@ -10,7 +10,7 @@ import {useEffect, useRef, useState} from 'react';
 let statefulSubscribable: StatefulRemoteSubscribable<string> | undefined;
 
 /**
- * Verifies that the API has a Locale in it.
+ * Verifies that the API has a Scanner in it.
  */
 const isScannerApi = (api: any): boolean => {
   return 'scanner' in api;
@@ -57,7 +57,7 @@ export function useStatefulSubscribableScanner() {
   return statefulSubscribable;
 }
 /**
- * A function destroying the subscriptions `useStatefulSubscribableCart` has.
+ * A function destroying the subscriptions `useStatefulSubscribableScanner` has.
  */
 export function destroyStatefulSubscribableScanner() {
   statefulSubscribable?.destroy();
