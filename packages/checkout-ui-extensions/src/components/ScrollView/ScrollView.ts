@@ -66,6 +66,10 @@ export interface ScrollViewProps
    * Callback function that is called when the scroll position reaches one of the edges.
    */
   onScrolledToEdge?: (args: ScrollViewEvent) => void;
+  /**
+   * A unique identifier for the component.
+   */
+  id?: string;
 }
 
 /**

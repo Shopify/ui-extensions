@@ -1,6 +1,7 @@
 import type {
+  NoteChange,
+  NoteChangeResult,
   RenderExtensionPoint,
-  StandardApi,
 } from '@shopify/checkout-ui-extensions';
 
 import {useExtensionApi} from './api';
@@ -11,7 +12,7 @@ import {useSubscription} from './subscription';
  */
 export function useNote<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): string | undefined {
   return useSubscription(useExtensionApi<ID>().note);
 }
 
@@ -20,6 +21,6 @@ export function useNote<
  */
 export function useApplyNoteChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): StandardApi<ID>['applyNoteChange'] {
+>(): (change: NoteChange) => Promise<NoteChangeResult> {
   return useExtensionApi<ID>().applyNoteChange;
 }

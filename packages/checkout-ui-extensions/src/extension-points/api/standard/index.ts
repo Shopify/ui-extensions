@@ -6,6 +6,7 @@ import type {
   Timezone,
   GraphQLError,
   StorefrontApiVersion,
+  ValidationError,
 } from '../shared';
 
 /**
@@ -47,8 +48,9 @@ export interface Storage {
  *
  * * `api_access` allows an extension to make API calls via `fetch()` or `query`.
  *    This is always granted to an extension when present in the
- *    `shopify.ui.extension.toml` file. This is declared upfront so that API
- *     access tokens can be generated only for extensions that need them.
+ *    [shopify.ui.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
+ *    This is declared upfront so that API access tokens can be generated only
+ *    for extensions that need them.
  *
  * * `network_access` allows an extension to make network calls via fetch() and
  *    is requested by a partner
@@ -98,7 +100,7 @@ export interface Extension {
 
   /**
    * The allowed capabilities of the extension, defined
-   * in your `shopify.ui.extension.toml` file .
+   * in your [shopify.ui.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
    *
    * `network_access`:
    * You must [request access](https://shopify.dev/api/checkout-extensions/checkout/configuration#complete-a-request-for-network-access)
@@ -346,7 +348,11 @@ export interface AppMetafield {
  * The metafield owner.
  */
 export interface AppMetafieldEntryTarget {
-  /** The type of the metafield owner. */
+  /**
+   * The type of the metafield owner.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`.
+   */
   type: 'customer' | 'product' | 'shop' | 'variant';
 
   /** The numeric owner ID that is associated with the metafield. */
@@ -357,7 +363,11 @@ export interface AppMetafieldEntryTarget {
  * A metafield associated with the shop or a resource on the checkout.
  */
 export interface AppMetafieldEntry {
-  /** The target that is associated to the metadata. */
+  /**
+   * The target that is associated to the metadata.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`.
+   */
   target: AppMetafieldEntryTarget;
 
   /** The metadata information. */
@@ -455,6 +465,26 @@ export interface Currency {
   isoCode: CurrencyCode;
 }
 
+export interface Country {
+  /**
+   * The ISO-3166-1 code for this country.
+   * @see https://www.iso.org/iso-3166-country-codes.html
+   */
+  isoCode: CountryCode;
+}
+
+export interface Market {
+  /**
+   * A globally-unique identifier for a market.
+   */
+  id: string;
+
+  /**
+   * The human-readable, shop-scoped identifier for the market.
+   */
+  handle: string;
+}
+
 export interface Localization {
   /**
    * The currency that the buyer sees for money amounts in the checkout.
@@ -483,88 +513,114 @@ export interface Localization {
    * extension (that is, the one matching your .default.json file).
    */
   extensionLanguage: StatefulRemoteSubscribable<Language>;
+
+  /**
+   * The country context of the checkout. This value carries over from the
+   * context of the cart, where it was used to contextualize the storefront
+   * experience. It will update if the buyer changes the country of their
+   * shipping address. The value is undefined if unknown.
+   */
+  country: StatefulRemoteSubscribable<Country | undefined>;
+
+  /**
+   * The [market](https://shopify.dev/docs/apps/markets) context of the
+   * checkout. This value carries over from the context of the cart, where it
+   * was used to contextualize the storefront experience. It will update if the
+   * buyer changes the country of their shipping address. The value is undefined
+   * if unknown.
+   */
+  market: StatefulRemoteSubscribable<Market | undefined>;
 }
 
 /**
- * The following APIs are provided to all extension points.
+ * Provides details on the buyer's progression through the checkout.
  */
+export interface BuyerJourney {
+  /**
+   * Installs a function for intercepting and preventing progress on checkout.
+   *
+   * This returns a promise that resolves to a teardown function. Calling the
+   * teardown function will remove the interceptor.
+   *
+   * To block checkout progress, you must set the [block_progress](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress)
+   * capability in your extension's configuration.
+   */
+  intercept(interceptor: Interceptor): Promise<() => void>;
+
+  /**
+   * This subscribable value will be true if the buyer completed submitting their order.
+   *
+   * For example, when viewing the order status page after submitting payment, the buyer will have completed their order.
+   */
+  completed: StatefulRemoteSubscribable<boolean>;
+}
+
 export interface StandardApi<
   ExtensionPoint extends import('../../extension-points').ExtensionPoint,
 > {
   /**
-   * The renderer version being used for the extension.
+   * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
+   */
+  analytics: Analytics;
+
+  /**
+   * Gift Cards that have been applied to the checkout.
+   */
+  appliedGiftCards: StatefulRemoteSubscribable<AppliedGiftCard[]>;
+
+  /**
+   * The metafields requested in the
+   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration)
+   * file. These metafields are updated when there's a change in the merchandise items
+   * being purchased by the customer.
    *
-   * @example 'unstable'
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  version: Version;
+  appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 
   /**
-   * Provides details on buyer progression through the steps of the checkout.
+   * Performs an update on an attribute attached to the cart and checkout. If
+   * successful, this mutation results in an update to the value retrieved
+   * through the [`attributes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-applyattributechange) property.
    */
-  buyerJourney: {
-    /**
-     * Installs a function for intercepting and preventing progress on checkout.
-     *
-     * This returns a promise that resolves to a teardown function. Calling the teardown function will remove the interceptor.
-     *
-     * To block checkout progress, you must set the [block_progress](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress) capability in your extension's configuration.
-     */
-    intercept(interceptor: Interceptor): Promise<() => void>;
-
-    /**
-     * This subscribable value will be true if the buyer completed submitting their order.
-     *
-     * For example, when viewing the order status page after submitting payment, the buyer will have completed their order.
-     */
-    completed: StatefulRemoteSubscribable<boolean>;
-  };
+  applyAttributeChange(change: AttributeChange): Promise<AttributeChangeResult>;
 
   /**
-   * The identifier of the running extension point.
-   * @example 'Checkout::PostPurchase::Render'
+   * Performs an update on the merchandise line items. It resolves when the new
+   * line items have been negotiated and results in an update to the value
+   * retrieved through the
+   * [`lines`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-lines)
+   * property.
    */
-  extensionPoint: ExtensionPoint;
+  applyCartLinesChange(change: CartLineChange): Promise<CartLineChangeResult>;
 
   /**
-   * Meta information about the extension.
+   * Performs an update on the discount codes.
+   * It resolves when the new discount codes have been negotiated and results in an update
+   * to the value retrieved through the [`discountCodes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-discountcodes) property.
    */
-  extension: Extension;
+  applyDiscountCodeChange(
+    change: DiscountCodeChange,
+  ): Promise<DiscountCodeChangeResult>;
 
   /**
-   * Key-value storage for the extension point.
+   * Performs an update on the gift cards.
+   * It resolves when gift card change have been negotiated and results in an update
+   * to the value retrieved through the [`appliedGiftCards`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-appliedgiftcards) property.
    */
-  storage: Storage;
+  applyGiftCardChange(change: GiftCardChange): Promise<GiftCardChangeResult>;
 
   /**
-   * The proposed buyer shipping address. During the information step, the address
-   * updates when the field is committed (on change) rather than every keystroke.
-   * An address value is only present if delivery is required. Otherwise, the
-   * subscribable value is undefined.
+   * Performs an update on a piece of metadata attached to the checkout. If
+   * successful, this mutation results in an update to the value retrieved
+   * through the [`metafields`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-metafields) property.
    */
-  shippingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
-
-  /**
-   * Information about the buyer that is interacting with the checkout.
-   */
-  buyerIdentity?: BuyerIdentity;
-
-  /** Shop where the checkout is taking place. */
-  shop: Shop;
-
-  /**
-   * Details on the costs the buyer will pay for this checkout.
-   */
-  cost: CartCost;
-
-  /**
-   * A note left by the customer to the merchant, either in their cart or during checkout.
-   */
-  note: StatefulRemoteSubscribable<string | undefined>;
+  applyMetafieldChange(change: MetafieldChange): Promise<MetafieldChangeResult>;
 
   /**
    * Performs an update on the note attached to the cart and checkout. If
    * successful, this mutation results in an update to the value retrieved
-   * through the `note` property.
+   * through the [`note`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-note) property.
    */
   applyNoteChange(change: NoteChange): Promise<NoteChangeResult>;
 
@@ -574,11 +630,68 @@ export interface StandardApi<
   attributes: StatefulRemoteSubscribable<Attribute[] | undefined>;
 
   /**
-   * Performs an update on an attribute attached to the cart and checkout. If
-   * successful, this mutation results in an update to the value retrieved
-   * through the `attributes` property.
+   * Information about the buyer that is interacting with the checkout.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  applyAttributeChange(change: AttributeChange): Promise<AttributeChangeResult>;
+  buyerIdentity?: BuyerIdentity;
+
+  /**
+   * Provides details on the buyer's progression through the checkout.
+   *
+   * See [buyer journey](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-buyer-journey)
+   * examples for more information.
+   */
+  buyerJourney: BuyerJourney;
+
+  /**
+   * Details on the costs the buyer will pay for this checkout.
+   */
+  cost: CartCost;
+
+  /**
+   * A list of discount codes currently applied to the checkout.
+   */
+  discountCodes: StatefulRemoteSubscribable<CartDiscountCode[]>;
+
+  /**
+   * Discounts that have been applied to the entire cart.
+   */
+  discountAllocations: StatefulRemoteSubscribable<CartDiscountAllocation[]>;
+
+  /**
+   * Meta information about the extension.
+   */
+  extension: Extension;
+
+  /**
+   * The identifier of the running extension point.
+   * @example 'Checkout::PostPurchase::Render'
+   */
+  extensionPoint: ExtensionPoint;
+
+  /**
+   * Utilities for translating content and formatting values according to the current
+   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-localization)
+   * of the checkout.
+   *
+   * See [localization examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-localization)
+   * for more information.
+   */
+  i18n: I18n;
+
+  /**
+   * A list of lines containing information about the items the customer intends to purchase.
+   */
+  lines: StatefulRemoteSubscribable<CartLine[]>;
+
+  /**
+   * Details about the location, language, and currency of the buyer. For utilities to easily
+   * format and translate content based on these details, you can use the
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-i18n)
+   * object instead.
+   */
+  localization: Localization;
 
   /**
    * The metafields that apply to the current checkout. The actual resource
@@ -601,16 +714,14 @@ export interface StandardApi<
   metafields: StatefulRemoteSubscribable<Metafield[]>;
 
   /**
-   * Performs an update on a piece of metadata attached to the checkout. If
-   * successful, this mutation results in an update to the value retrieved
-   * through the `metafields` property.
+   * A note left by the customer to the merchant, either in their cart or during checkout.
    */
-  applyMetafieldChange(change: MetafieldChange): Promise<MetafieldChangeResult>;
+  note: StatefulRemoteSubscribable<string | undefined>;
 
   /**
-   * A list of lines containing information about the items the customer intends to purchase.
+   * Order information that's available post-checkout.
    */
-  lines: StatefulRemoteSubscribable<CartLine[]>;
+  order: StatefulRemoteSubscribable<Order | undefined>;
 
   /**
    * A list of the line items displayed in the checkout. These may be the same as lines, or may be a subset.
@@ -618,78 +729,14 @@ export interface StandardApi<
   presentmentLines: StatefulRemoteSubscribable<PresentmentCartLine[]>;
 
   /**
-   * Performs an update on the merchandise line items. It resolves when the new
-   * line items have been negotiated and results in an update to the value
-   * retrieved through the `lines` property.
-   */
-  applyCartLinesChange(change: CartLineChange): Promise<CartLineChangeResult>;
-
-  /**
-   * A list of discount codes currently applied to the checkout.
-   */
-  discountCodes: StatefulRemoteSubscribable<CartDiscountCode[]>;
-
-  /**
-   * Discounts that have been applied to the entire cart.
-   */
-  discountAllocations: StatefulRemoteSubscribable<CartDiscountAllocation[]>;
-
-  /**
-   * Performs an update on the discount codes.
-   * It resolves when the new discount codes have been negotiated and results in an update
-   * to the value retrieved through the `discountCodes` property.
-   */
-  applyDiscountCodeChange(
-    change: DiscountCodeChange,
-  ): Promise<DiscountCodeChangeResult>;
-
-  /**
-   * Gift Cards that have been applied to the checkout.
-   */
-  appliedGiftCards: StatefulRemoteSubscribable<AppliedGiftCard[]>;
-
-  /**
-   * Performs an update on the gift cards.
-   * It resolves when gift card change have been negotiated and results in an update
-   * to the value retrieved through the `appliedGiftCards` property.
-   */
-  applyGiftCardChange(change: GiftCardChange): Promise<GiftCardChangeResult>;
-
-  /**
-   * The metafields requested in the `shopify.ui.extension.toml` file. These metafields are
-   * updated when there's a change in the merchandise items being purchased by the customer.
-   */
-  appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
-
-  /**
-   * Details about the location, language, and currency of the buyer. For utilities to easily
-   * format and translate content based on these details, you can use the `i18n` object instead.
-   */
-  localization: Localization;
-
-  /**
-   * Utilities for translating content and formatting values according to the current `localization`
-   * of the checkout.
-   */
-  i18n: I18n;
-
-  /**
-   * The settings matching the settings definition written in the `shopify.ui.extension.toml` file.
+   * Used to query the Storefront GraphQL API with a prefetched token.
    *
-   * **Note:** When an extension is being installed in the editor, the settings will be empty until
-   * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
+   * See [storefront api access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-storefront-api-access) for more information.
    */
-  settings: StatefulRemoteSubscribable<ExtensionSettings>;
-
-  /**
-   * Exposes a `analytics.publish` method to publish analytics events.
-   */
-  analytics: Analytics;
-
-  /**
-   * Order information that's available post-checkout.
-   */
-  order: StatefulRemoteSubscribable<Order | undefined>;
+  query: <Data = unknown, Variables = {[key: string]: unknown}>(
+    query: string,
+    options?: {variables?: Variables; version?: StorefrontApiVersion},
+  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
 
   /**
    * Provides access to session tokens, which can be used to validate requests made to your backend or properly
@@ -698,12 +745,40 @@ export interface StandardApi<
   sessionToken: SessionToken;
 
   /**
-   * Used to query the storefront graphql API with prefetched token
+   * The settings matching the settings definition written in the
+   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
+   *
+   *  See [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-settings) for more information.
+   *
+   * > Note: When an extension is being installed in the editor, the settings will be empty until
+   * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
    */
-  query: <Data = unknown, Variables = {[key: string]: unknown}>(
-    query: string,
-    options?: {variables?: Variables; version?: StorefrontApiVersion},
-  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
+  settings: StatefulRemoteSubscribable<ExtensionSettings>;
+
+  /**
+   * The proposed buyer shipping address. During the information step, the address
+   * updates when the field is committed (on change) rather than every keystroke.
+   * An address value is only present if delivery is required. Otherwise, the
+   * subscribable value is undefined.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  shippingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
+
+  /** Shop where the checkout is taking place. */
+  shop: Shop;
+
+  /**
+   * Key-value storage for the extension point.
+   */
+  storage: Storage;
+
+  /**
+   * The renderer version being used for the extension.
+   *
+   * @example 'unstable'
+   */
+  version: Version;
 }
 
 export interface SessionToken {
@@ -722,8 +797,7 @@ export interface BuyerIdentity {
    * change in the account. The value is undefined if the buyer isn’t a known customer
    * for this shop.
    *
-   * Protected resource: Requires approval to access protected customer data.
-   * More info - https://shopify.dev/apps/store/data-protection/protected-customer-data
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   customer: StatefulRemoteSubscribable<Customer | undefined>;
 
@@ -731,8 +805,7 @@ export interface BuyerIdentity {
    * The email address of the buyer that is interacting with the cart. This value will update when there's a
    * change in the checkout formulary. The value is undefined if no permission given.
    *
-   * Protected resource: Requires approval to access protected customer data (Level 2).
-   * More info - https://shopify.dev/apps/store/data-protection/protected-customer-data
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   email: StatefulRemoteSubscribable<string | undefined>;
 
@@ -740,8 +813,7 @@ export interface BuyerIdentity {
    * The phone number of the buyer that is interacting with the cart. This value will update when there's a
    * change in the checkout formulary. The value is undefined if no permission given.
    *
-   * Protected resource: Requires approval to access protected customer data (Level 2).
-   * More info - https://shopify.dev/apps/store/data-protection/protected-customer-data
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   phone: StatefulRemoteSubscribable<string | undefined>;
 }
@@ -786,66 +858,99 @@ export interface Shop {
 export interface MailingAddress {
   /**
    * The buyer's full name.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example 'John Doe'
    */
   name?: string;
 
   /**
    * The buyer's first name.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example 'John'
    */
   firstName?: string;
 
   /**
    * The buyer's last name.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example 'Doe'
    */
   lastName?: string;
 
   /**
    * The buyer's company name.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example 'Shopify'
    */
   company?: string;
 
   /**
    * The first line of the buyer's address, including street name and number.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example '151 O'Connor Street'
    */
   address1?: string;
 
   /**
    * The second line of the buyer's address, like apartment number, suite, etc.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example 'Ground floor'
    */
   address2?: string;
 
   /**
    * The buyer's city.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example 'Ottawa'
    */
   city?: string;
 
   /**
    * The buyer's postal or ZIP code.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example 'K2P 2L8'
    */
   zip?: string;
 
   /**
    * The ISO 3166 Alpha-2 format for the buyer's country. Refer to https://www.iso.org/iso-3166-country-codes.html.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example 'CA' for Canada.
    */
   countryCode?: CountryCode;
 
   /**
    * The buyer's zone code, such as state, province, prefecture, or region.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example 'ON' for Ontario.
    */
   provinceCode?: string;
 
   /**
    * The buyer's phone number.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example '+1 613 111 2222'.
    */
   phone?: string;
@@ -1426,12 +1531,17 @@ interface InterceptorRequestBlock {
   reason: string;
 
   /**
+   * The errors that will be displayed to the buyer.
+   */
+  errors?: ValidationError[];
+
+  /**
    * This callback is called when all interceptors finish. We recommend
    * setting errors or reasons for blocking at this stage, so that all the errors in
    * the UI show up at once.
    * @param result InterceptorResult with behavior as either 'allow' or 'block'
    */
-  perform(result: InterceptorResult): void | Promise<void>;
+  perform?(result: InterceptorResult): void | Promise<void>;
 }
 
 export interface InterceptorProps {
@@ -1454,41 +1564,81 @@ export type Interceptor = (
 
 /**
  * Information about a customer who has previously purchased from this shop.
+ *
+ * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
  */
 export interface Customer {
   /**
    * Customer ID.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
    * @example 'gid://shopify/Customer/123'
    */
   id: string;
   /**
    * The email of the customer.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   email?: string;
   /**
    * The phone number of the customer.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   phone?: string;
   /**
    * The full name of the customer.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   fullName?: string;
   /**
    * The first name of the customer.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   firstName?: string;
   /**
    * The last name of the customer.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   lastName?: string;
   /**
    * The image associated with the customer.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   image: ImageDetails;
   /**
    * Defines if the customer accepts marketing activities.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   acceptsMarketing: boolean;
+  /**
+   * The Store Credit Accounts owned by the customer and usable during the checkout process.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  storeCreditAccounts: StoreCreditAccount[];
+}
+
+/**
+ * Information about a Store Credit Account.
+ */
+export interface StoreCreditAccount {
+  /**
+   * A globally-unique identifier.
+   * @example 'gid://shopify/StoreCreditAccount/1'
+   */
+  id: string;
+  /**
+   * The current balance of the Store Credit Account.
+   */
+  balance: Money;
 }
 
 /**
@@ -1498,10 +1648,10 @@ export interface ExtensionSettings {
   [key: string]: string | number | boolean | undefined;
 }
 
-/**
- * Publish method to emit analytics events to Web Pixels.
- */
 export interface Analytics {
+  /**
+   * Publish method to emit analytics events to [Web Pixels](https://shopify.dev/docs/apps/marketing).
+   */
   publish(name: string, data: {[key: string]: unknown}): Promise<boolean>;
 }
 

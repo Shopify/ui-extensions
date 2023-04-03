@@ -1,4 +1,7 @@
-import type {RenderExtensionPoint} from '@shopify/checkout-ui-extensions';
+import type {
+  Customer,
+  RenderExtensionPoint,
+} from '@shopify/checkout-ui-extensions';
 
 import {ScopeNotGrantedError} from '../errors';
 
@@ -13,7 +16,7 @@ import {useSubscription} from './subscription';
  */
 export function useCustomer<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): Customer | undefined {
   const buyerIdentity = useExtensionApi<ID>().buyerIdentity;
 
   if (!buyerIdentity) {
@@ -27,7 +30,7 @@ export function useCustomer<
 
 export function useEmail<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): string | undefined {
   const buyerIdentity = useExtensionApi<ID>().buyerIdentity;
 
   if (!buyerIdentity) {
@@ -41,7 +44,7 @@ export function useEmail<
 
 export function usePhone<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): string | undefined {
   const buyerIdentity = useExtensionApi<ID>().buyerIdentity;
 
   if (!buyerIdentity) {

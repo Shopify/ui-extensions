@@ -1,6 +1,7 @@
 import type {
   AppliedGiftCard,
-  StandardApi,
+  GiftCardChange,
+  GiftCardChangeResult,
   RenderExtensionPoint,
 } from '@shopify/checkout-ui-extensions';
 
@@ -24,6 +25,6 @@ export function useAppliedGiftCards<
  */
 export function useApplyGiftCardChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): StandardApi<ID>['applyGiftCardChange'] {
+>(): (change: GiftCardChange) => Promise<GiftCardChangeResult> {
   return useExtensionApi<ID>().applyGiftCardChange;
 }

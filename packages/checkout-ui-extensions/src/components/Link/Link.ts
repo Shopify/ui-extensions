@@ -27,8 +27,7 @@ export interface LinkProps extends OverlayActivatorProps {
   language?: string;
   /**
    * A label used for buyers using assistive technologies. When set, any
-   * 'children' supplied to this component are hidden from being seen for
-   * accessibility purposes to prevent duplicate content from being read.
+   * `children` supplied to this component will not be announced to screen reader users.
    */
   accessibilityLabel?: string;
   /**

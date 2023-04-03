@@ -1,8 +1,9 @@
 import type {
   CartDiscountAllocation,
   CartDiscountCode,
-  StandardApi,
   RenderExtensionPoint,
+  DiscountCodeChange,
+  DiscountCodeChangeResult,
 } from '@shopify/checkout-ui-extensions';
 
 import {useExtensionApi} from './api';
@@ -37,6 +38,6 @@ export function useDiscountAllocations<
  */
 export function useApplyDiscountCodeChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): StandardApi<ID>['applyDiscountCodeChange'] {
+>(): (change: DiscountCodeChange) => Promise<DiscountCodeChangeResult> {
   return useExtensionApi<ID>().applyDiscountCodeChange;
 }

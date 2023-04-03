@@ -1,4 +1,7 @@
-import type {RenderExtensionPoint} from '@shopify/checkout-ui-extensions';
+import type {
+  MailingAddress,
+  RenderExtensionPoint,
+} from '@shopify/checkout-ui-extensions';
 
 import {ScopeNotGrantedError} from '../errors';
 
@@ -10,7 +13,7 @@ import {useSubscription} from './subscription';
  */
 export function useShippingAddress<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): MailingAddress | undefined {
   const shippingAddress = useExtensionApi<ID>().shippingAddress;
 
   if (!shippingAddress) {

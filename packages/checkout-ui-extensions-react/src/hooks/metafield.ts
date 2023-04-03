@@ -1,3 +1,5 @@
+import {Metafield} from '@shopify/checkout-ui-extensions';
+
 import {CheckoutUIExtensionError} from '../errors';
 
 import {useMetafields} from './metafields';
@@ -11,7 +13,7 @@ interface MetafieldFilter {
  * Returns a single filtered `Metafield` or `undefined`.
  * @arg {MetafieldFilter} - filter the list of returned metafields to a single metafield
  */
-export function useMetafield(filters: MetafieldFilter) {
+export function useMetafield(filters: MetafieldFilter): Metafield | undefined {
   const {namespace, key} = filters;
 
   if (!namespace || !key) {

@@ -10,15 +10,15 @@ type Subscriber<T> = Parameters<StatefulRemoteSubscribable<T>['subscribe']>[0];
  * generally shouldn’t need to use this directly, as there are dedicated hooks
  * for accessing the current value of each individual resource in the checkout.
  */
-export function useSubscription<T>(
-  subscription: StatefulRemoteSubscribable<T>,
-): T {
+export function useSubscription<Value>(
+  subscription: StatefulRemoteSubscribable<Value>,
+): Value {
   const [, setValue] = useState(subscription.current);
 
   useEffect(() => {
     let didUnsubscribe = false;
 
-    const checkForUpdates: Subscriber<T> = (newValue) => {
+    const checkForUpdates: Subscriber<Value> = (newValue) => {
       if (didUnsubscribe) {
         return;
       }

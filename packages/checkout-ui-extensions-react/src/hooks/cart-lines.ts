@@ -1,7 +1,8 @@
 import type {
   CartLine,
-  StandardApi,
   RenderExtensionPoint,
+  CartLineChangeResult,
+  CartLineChange,
 } from '@shopify/checkout-ui-extensions';
 
 import {useExtensionApi} from './api';
@@ -24,6 +25,6 @@ export function useCartLines<
  */
 export function useApplyCartLinesChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): StandardApi<ID>['applyCartLinesChange'] {
+>(): (change: CartLineChange) => Promise<CartLineChangeResult> {
   return useExtensionApi<ID>().applyCartLinesChange;
 }

@@ -335,7 +335,7 @@ export interface SpacingProps {
    *
    * - [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`
    *
-   * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
+   * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and blockStart padding is `tight`
    */
   padding?: MaybeResponsiveConditionalStyle<MaybeShorthandProperty<Spacing>>;
 }
@@ -587,6 +587,7 @@ export type MultiPick<Base, AcceptedCombinations extends (keyof Base)[]> = {
 }[number];
 
 export type Visibility = 'hidden';
+export type AccessibilityVisibility = 'hidden';
 export interface VisibilityProps {
   /**
    * Changes the visibility of the element.
@@ -596,6 +597,13 @@ export interface VisibilityProps {
    * Hidden elements don't take any visual space contrary to CSS visibility: hidden;
    */
   visibility?: Visibility;
+  /**
+   * Changes the visibility of the element to assistive technologies.
+   *
+   * `hidden` hides the component from assistive technology (for example,
+   * a screen reader) but remains visually visible.
+   */
+  accessibilityVisibility?: AccessibilityVisibility;
 }
 
 export interface OverlayActivatorProps {
@@ -604,3 +612,9 @@ export interface OverlayActivatorProps {
    */
   overlay?: RemoteFragment;
 }
+
+export type Opacity = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
+
+export type TextSize =
+  | Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'extraLarge'>
+  | 'medium';

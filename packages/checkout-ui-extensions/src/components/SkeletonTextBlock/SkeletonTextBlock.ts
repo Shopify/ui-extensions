@@ -1,8 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {TextBlockProps} from '../TextBlock';
+import type {TextSize} from '../shared';
 
-export interface SkeletonTextBlockProps extends Pick<TextBlockProps, 'size'> {
+export interface SkeletonTextBlockProps {
   /**
    * @private
    * Use to emphasize a word or a group of words.
@@ -14,6 +14,10 @@ export interface SkeletonTextBlockProps extends Pick<TextBlockProps, 'size'> {
    * @defaultValue 1
    */
   lines?: number;
+  /**
+   * Size of the text the skeleton replaces.
+   */
+  size?: TextSize;
 }
 
 /**

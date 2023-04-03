@@ -1,6 +1,8 @@
 import type {
+  Attribute,
+  AttributeChange,
+  AttributeChangeResult,
   RenderExtensionPoint,
-  StandardApi,
 } from '@shopify/checkout-ui-extensions';
 
 import {useExtensionApi} from './api';
@@ -11,7 +13,7 @@ import {useSubscription} from './subscription';
  */
 export function useAttributes<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): Attribute[] | undefined {
   return useSubscription(useExtensionApi<ID>().attributes);
 }
 
@@ -20,6 +22,6 @@ export function useAttributes<
  */
 export function useApplyAttributeChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): StandardApi<ID>['applyAttributeChange'] {
+>(): (change: AttributeChange) => Promise<AttributeChangeResult> {
   return useExtensionApi<ID>().applyAttributeChange;
 }

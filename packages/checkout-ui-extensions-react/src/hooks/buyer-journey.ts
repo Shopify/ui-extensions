@@ -2,6 +2,7 @@ import {useEffect, useRef} from 'react';
 import type {
   RenderExtensionPoint,
   Interceptor,
+  BuyerJourney,
 } from '@shopify/checkout-ui-extensions';
 
 import {useExtensionApi} from './api';
@@ -12,7 +13,7 @@ import {useSubscription} from './subscription';
  */
 export function useBuyerJourney<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): BuyerJourney {
   return useExtensionApi<ID>().buyerJourney;
 }
 
@@ -23,7 +24,7 @@ export function useBuyerJourney<
  */
 export function useBuyerJourneyCompleted<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): boolean {
   const buyerJourney = useExtensionApi<ID>().buyerJourney;
   const buyerJourneyCompleted = useSubscription(buyerJourney.completed);
 
@@ -31,11 +32,17 @@ export function useBuyerJourneyCompleted<
 }
 
 /**
- * Returns a function to intercept and block navigation in checkout.
+ * Installs a function for intercepting and preventing progress on checkout.
+ *
+ * This returns a promise that resolves to a teardown function. Calling the
+ * teardown function will remove the interceptor.
+ *
+ * To block checkout progress, you must set the [block_progress](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress)
+ * capability in your extension's configuration.
  */
 export function useBuyerJourneyIntercept<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(interceptor: Interceptor) {
+>(interceptor: Interceptor): void {
   const buyerJourney = useExtensionApi<ID>().buyerJourney;
   const interceptorRef = useRef(interceptor);
   interceptorRef.current = interceptor;
