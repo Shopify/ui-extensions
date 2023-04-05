@@ -1,5 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {TagProps} from 'components/Tag';
+import {TagProps} from '../Tag';
 
 export interface ListRowLeftSide {
   /**
