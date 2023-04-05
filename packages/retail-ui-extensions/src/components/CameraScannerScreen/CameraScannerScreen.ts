@@ -3,7 +3,7 @@ import {ScreenProps} from '../Screen';
 
 export interface CameraScannerScreenProps extends ScreenProps {
   onBarcodeScanned: (data: string) => void;
-  halfScreen: boolean;
+  halfScreen?: boolean;
 }
 
 export const CameraScannerScreen = createRemoteComponent<
