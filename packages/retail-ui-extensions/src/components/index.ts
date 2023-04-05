@@ -10,8 +10,8 @@ export type {BannerProps, BannerVariant} from './Banner';
 export {Button} from './Button';
 export type {ButtonProps, ButtonType} from './Button';
 
-export {CameraScanner} from './CameraScanner';
-export type {CameraScannerProps} from './CameraScanner';
+export {CameraScannerScreen} from './CameraScannerScreen';
+export type {CameraScannerScreenProps} from './CameraScannerScreen';
 
 export type {SelectableProps} from './Selectable';
 export {Selectable} from './Selectable';
