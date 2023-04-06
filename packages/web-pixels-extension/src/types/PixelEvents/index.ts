@@ -845,6 +845,11 @@ export interface Product {
   title: string;
 
   /**
+   * The product type specified by the merchant.
+   */
+  type: string | null;
+
+  /**
    * The product’s vendor name.
    */
   vendor: string;
