@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {ScreenProps} from '../Screen';
 
-export interface CameraScannerScreenProps extends Omit<ScreenProps, 'name'> {
+export interface CameraScannerScreenProps extends ScreenProps {
   onBarcodeScanned: (data: string) => void;
   halfScreen?: boolean;
 }
