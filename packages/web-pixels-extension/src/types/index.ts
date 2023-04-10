@@ -2,6 +2,7 @@ export type {ExtensionApi} from './ExtensionApi';
 export type {RegisterInit, InitData} from './RegisterInit';
 export type {PublicApi} from './PublicApi';
 export type {
+  Attribute,
   PixelEvents,
   Browser,
   Context,
