@@ -747,14 +747,14 @@ export interface Location {
  */
 export interface MailingAddress {
   /**
-   * The first line of the address. This is usually the street address or a 
-   * P.O. Box number.
+   * The first line of the address. This is usually the street address or a P.O.
+   * Box number.
    */
   address1: string | null;
 
   /**
-   * The second line of the address. This is usually an apartment, suite, 
-   * or unit number.
+   * The second line of the address. This is usually an apartment, suite, or
+   * unit number.
    */
   address2: string | null;
 
