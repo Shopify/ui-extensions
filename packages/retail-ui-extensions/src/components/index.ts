@@ -45,8 +45,8 @@ export type {
 export {SegmentedControl} from './SegmentedControl';
 export type {Segment, SegmentedControlProps} from './SegmentedControl';
 
-export {Tag} from './Tag';
-export type {TagVariant, TagProps} from './Tag';
+export {Badge} from './Badge';
+export type {BadgeVariant, BadgeProps} from './Badge';
 
 export {Stepper} from './Stepper';
 export type {StepperProps} from './Stepper';

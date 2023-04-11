@@ -13,7 +13,7 @@ import {
   SegmentedControl,
   Stack,
   Stepper,
-  Tag,
+  Badge,
   Text,
   Section,
   TextField,
@@ -37,7 +37,7 @@ export type BasicComponents =
   | typeof SegmentedControl
   | typeof Stack
   | typeof Stepper
-  | typeof Tag
+  | typeof Badge
   | typeof Text
   | typeof TextField
   | typeof Screen

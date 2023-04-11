@@ -17,6 +17,8 @@ export * from './components';
 
 export type {
   AutoCapitalizationType,
+  BadgeProps,
+  BadgeVariant,
   BannerVariant,
   BannerProps,
   ButtonType,

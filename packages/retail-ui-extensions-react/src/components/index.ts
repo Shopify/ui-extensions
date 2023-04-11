@@ -10,7 +10,7 @@ export {SegmentedControl} from './SegmentedControl';
 export {Stack} from './Stack';
 export {Stepper} from './Stepper';
 export {ScrollView} from './ScrollView';
-export {Tag} from './Tag';
+export {Badge} from './Badge';
 export {Text} from './Text';
 export {TextField} from './TextField';
 export {Icon} from './Icon';
