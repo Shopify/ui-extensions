@@ -1,5 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {TagProps} from '../Tag';
+import {BadgeProps} from '../Badge';
 
 export interface ListRowLeftSide {
   /**
@@ -13,7 +13,7 @@ export interface ListRowLeftSide {
   /**
    * A colored badge that is displayed underneath the `title` and `subtitles`.
    */
-  badge?: TagProps;
+  badge?: BadgeProps;
   image?: {
     /**
      * A link to an image to be displayed on the far left side of the row.
