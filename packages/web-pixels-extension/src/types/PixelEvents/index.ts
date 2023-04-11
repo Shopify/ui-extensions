@@ -747,14 +747,14 @@ export interface Location {
  */
 export interface MailingAddress {
   /**
-   * The first line of the address. Typically the street address or PO Box
-   * number.
+   * The first line of the address. This is usually the street address or a P.O.
+   * Box number.
    */
   address1: string | null;
 
   /**
-   * The second line of the address. Typically the number of the apartment,
-   * suite, or unit.
+   * The second line of the address. This is usually an apartment, suite, or
+   * unit number.
    */
   address2: string | null;
 
@@ -791,7 +791,7 @@ export interface MailingAddress {
   provinceCode: string | null;
 
   /**
-   * The zip or postal code of the address.
+   * The ZIP or postal code of the address.
    */
   zip: string | null;
 }
