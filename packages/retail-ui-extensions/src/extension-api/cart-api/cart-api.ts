@@ -1,5 +1,5 @@
-import type {Address, Cart, Customer, CustomSale} from '../types';
 import type {RemoteSubscribable} from '@remote-ui/async-subscription';
+import type {Address, Cart, Customer, CustomSale} from '../types';
 
 /**
  * Access and modify the merchant’s current cart.

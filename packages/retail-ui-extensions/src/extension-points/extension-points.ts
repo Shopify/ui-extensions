@@ -1,4 +1,4 @@
-import {BasicComponents, SmartGridComponents} from 'component-sets';
+import {BasicComponents, SmartGridComponents} from '../component-sets';
 import {SmartGridApi, NavigationApi, StandardApi} from '../extension-api';
 import {RenderExtension} from './render-extension';
 
