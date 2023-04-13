@@ -31,7 +31,6 @@
     "version-bump:customer-account": "lerna version --no-push --ignore-changes 'packages/!(customer-account*)/**' --include-merged-tags",
     "version-bump:post-purchase": "lerna version --no-push --ignore-changes 'packages/!(post-purchase*)/**' --include-merged-tags",
     "version-bump:retail": "lerna version --no-push --ignore-changes 'packages/!(retail*)/**' --include-merged-tags",
-    "version-bump:pos": "lerna version --no-push --ignore-changes 'packages/!(pos*)/**' --include-merged-tags",
     "version-bump:web-pixels": "lerna version --no-push --ignore-changes 'packages/!(web-pixels*)/**' --include-merged-tags"
   },
   "devDependencies": {
