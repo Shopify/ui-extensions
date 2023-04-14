@@ -72,28 +72,6 @@ export interface PixelEventsCheckoutContactInfoSubmitted {
   timestamp: Timestamp;
 }
 
-export interface PixelEventsCheckoutPaymentInfoSubmittedData {
-  checkout: Checkout;
-}
-
-/**
- * The `checkout_payment_info_submitted` event logs an instance of a buyer
- * submitting their payment information. This event is available on the checkout
- * page
- */
-export interface PixelEventsCheckoutPaymentInfoSubmitted {
-  clientId: ClientId;
-  context: Context;
-  data: PixelEventsCheckoutPaymentInfoSubmittedData;
-  id: Id;
-
-  /**
-   * The name of the customer event
-   */
-  name: 'checkout_payment_info_submitted';
-  timestamp: Timestamp;
-}
-
 export interface PixelEventsCheckoutShippingInfoSubmittedData {
   shippingLine: ShippingRate;
 }
@@ -316,13 +294,6 @@ export interface PixelEvents {
    * submits a checkout form. This event is available on checkout.
    */
   checkout_contact_info_submitted: PixelEventsCheckoutContactInfoSubmitted;
-
-  /**
-   * The `checkout_payment_info_submitted` event logs an instance of a buyer
-   * submitting their payment information. This event is available on the
-   * checkout page
-   */
-  checkout_payment_info_submitted: PixelEventsCheckoutPaymentInfoSubmitted;
 
   /**
    * The `checkout_shipping_info_submitted` event logs an instance where the
