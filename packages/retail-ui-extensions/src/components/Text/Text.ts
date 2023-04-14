@@ -21,7 +21,6 @@ export type ColorType =
   | 'TextHighlight';
 
 export interface TextProps {
-  children?: any;
   variant?: TextVariant;
   color?: ColorType;
 }
