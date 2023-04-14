@@ -7,23 +7,28 @@ export interface BannerProps {
    * The title of the banner.
    */
   title: string;
+
   /**
    * Banners have multiple variants that can be used to
    * change the color and style of the banner.
    */
   variant: BannerVariant;
+
   /**
    * @defaultValue 'dismiss'
    */
   action?: string;
+
   /**
    * Dismisses the banner by default.
    */
   onPress?: () => void;
+
   /**
    * Use this parameter to hide the action button.
    */
   hideAction?: boolean;
+
   /**
    * Whether or not the banner is visible.
    * @defaultValue true
