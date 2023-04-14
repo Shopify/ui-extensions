@@ -1,9 +1,28 @@
-export {render} from './render';
 export {
   extend,
   makeStatefulSubscribable,
   CountryCode,
 } from '@shopify/retail-ui-extensions';
+export type {
+  AutoCapitalizationType,
+  BadgeVariant,
+  BannerVariant,
+  ButtonType,
+  ColorType,
+  DialogType,
+  HorizontalSpacing,
+  InputType,
+  ListRow,
+  ListRowLeftSide,
+  ListRowRightSide,
+  Segment,
+  Spacing,
+  TextVariant,
+  IconName,
+  VerticalSpacing,
+} from '@shopify/retail-ui-extensions';
+
+export * from './components';
 export {
   useExtensionApi,
   useCartSubscription,
@@ -13,39 +32,4 @@ export {
   useStatefulSubscribableLocale,
   destroyStatefulSubscribableLocale,
 } from './extension-api';
-export * from './components';
-
-export type {
-  AutoCapitalizationType,
-  BadgeProps,
-  BadgeVariant,
-  BannerVariant,
-  BannerProps,
-  ButtonType,
-  ButtonProps,
-  ColorType,
-  DialogProps,
-  DialogType,
-  FormattedTextFieldProps,
-  HorizontalSpacing,
-  ImageProps,
-  InputType,
-  ListRow,
-  ListRowLeftSide,
-  ListRowRightSide,
-  ListProps,
-  RadioButtonListProps,
-  SearchBarProps,
-  Segment,
-  SegmentedControlProps,
-  Spacing,
-  StackProps,
-  StepperProps,
-  TextProps,
-  TextVariant,
-  TextFieldProps,
-  TileProps,
-  IconProps,
-  IconName,
-  VerticalSpacing,
-} from '@shopify/retail-ui-extensions';
+export {render} from './render';
