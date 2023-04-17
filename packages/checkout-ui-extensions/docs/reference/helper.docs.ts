@@ -219,6 +219,34 @@ Ensure your extension can access the Storefront API via the [\`api_access\` capa
         tabs: getExtensionCodeTabs('subscription'),
       },
     },
+    'session-token': {
+      description: `
+You can request a session token from Shopify to use with your third party API calls.  The contents of the token claims are signed using your shared app secret so you can trust any information contained in the claims came from Shopify unaltered.
+
+> Note: You will need to [enable the network_access capability](docs/api/checkout-ui-extensions/configuration#network-access) to use \`fetch()\`.
+`,
+      codeblock: {
+        title: 'Using a session token with fetch()',
+        tabs: getExtensionCodeTabs('session-token'),
+      },
+    },
+    'session-token-jwt': {
+      description: `
+The contents of the token are signed using your shared app secret.  The optional \`sub\` claim contains the customer's \`gid\` if they are logged in and your app has permission to read customer accounts. For example, a loyalty app that needs to check a customer's point balance can use the \`sub\` claim to verify the customer's account.
+
+> Caution: Session tokens are _not_ authorization tokens and do not guarantee the request originated from Shopify.
+`,
+      codeblock: {
+        title: 'Session token claims',
+        tabs: [
+          {
+            code: `${examplePath}/session-token-jwt.example.json`,
+            language: 'json',
+            title: 'session-token.jwt',
+          },
+        ],
+      },
+    },
   };
 }
 

@@ -22,6 +22,8 @@ const {
     buyerJourneyInterceptPageLevelError,
   'buyer-journey-intercept/target-native-field':
     buyerJourneyInterceptTargetNativeField,
+  'session-token': sessionToken,
+  'session-token-jwt': sessionTokenJwt,
 } = getExamples(['jsx', 'js']);
 
 const data: ReferenceEntityTemplateSchema = {
@@ -67,6 +69,10 @@ const data: ReferenceEntityTemplateSchema = {
           buyerJourneyInterceptPageLevelError,
           buyerJourneyInterceptExtensionBanner,
         ],
+      },
+      {
+        title: 'Session Token',
+        examples: [sessionToken, sessionTokenJwt],
       },
     ],
   },
