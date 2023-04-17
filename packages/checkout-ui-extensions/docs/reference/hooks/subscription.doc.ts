@@ -1,6 +1,6 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
-import {getLinksByTag} from '../helper.docs';
+import {getHookExample, getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useSubscription',
@@ -17,6 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseSubscriptionGeneratedType',
     },
   ],
+  defaultExample: getHookExample('subscription'),
   related: getLinksByTag('apis'),
 };
 

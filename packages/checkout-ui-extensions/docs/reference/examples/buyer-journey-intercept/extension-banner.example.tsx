@@ -3,26 +3,25 @@ import {
   render,
   Banner,
   useBuyerJourneyIntercept,
-  useShippingAddress,
+  useTarget,
 } from '@shopify/checkout-ui-extensions-react';
 
 render(
-  'Checkout::DeliveryAddress::RenderBefore',
+  'Checkout::CartLineDetails::RenderAfter',
   () => <Extension />,
 );
 
 function Extension() {
   const [showError, setShowError] =
     useState(false);
-  const address = useShippingAddress();
+  const {quantity} = useTarget();
 
   useBuyerJourneyIntercept(
     ({canBlockProgress}) => {
-      return canBlockProgress &&
-        address?.countryCode !== 'CA'
+      return canBlockProgress && quantity > 1
         ? {
             behavior: 'block',
-            reason: 'can only ship to canada',
+            reason: 'limited stock',
             perform: (result) => {
               if (result.behavior === 'block') {
                 setShowError(true);
@@ -40,7 +39,7 @@ function Extension() {
 
   return showError ? (
     <Banner>
-      Sorry, we can only ship to Canada
+      This item has a limit of one per customer.
     </Banner>
   ) : null;
 }

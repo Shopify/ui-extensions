@@ -82,5 +82,6 @@ export type {
   Timezone,
   GraphQLError,
   StorefrontApiVersion,
+  ValidationError,
 } from './shared';
 export type {CartLineRenderAfterApi} from './cart-line-render-after';
