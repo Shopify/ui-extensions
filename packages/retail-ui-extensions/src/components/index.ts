@@ -45,6 +45,9 @@ export type {
 export {SegmentedControl} from './SegmentedControl';
 export type {Segment, SegmentedControlProps} from './SegmentedControl';
 
+export {CameraScanner} from './CameraScanner';
+export type {CameraScannerProps} from './CameraScanner';
+
 export {Badge} from './Badge';
 export type {BadgeVariant, BadgeProps} from './Badge';
 
