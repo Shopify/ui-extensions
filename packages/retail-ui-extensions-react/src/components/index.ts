@@ -2,6 +2,8 @@ export {Banner} from './Banner';
 export type {BannerProps} from './Banner';
 export {Button} from './Button';
 export type {ButtonProps} from './Button';
+export {CameraScanner} from './CameraScanner';
+export type {CameraScannerProps} from './CameraScanner';
 export {Dialog} from './Dialog';
 export type {DialogProps} from './Dialog';
 export {FormattedTextField} from './FormattedTextField';

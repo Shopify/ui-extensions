@@ -19,11 +19,13 @@ import {
   TextField,
   Screen,
   Navigator,
+  CameraScanner,
 } from '../components';
 
 export type BasicComponents =
   | typeof Banner
   | typeof Button
+  | typeof CameraScanner
   | typeof ScrollView
   | typeof Icon
   | typeof Section
