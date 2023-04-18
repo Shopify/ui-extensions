@@ -34,9 +34,6 @@ export function useBuyerJourneyCompleted<
 /**
  * Installs a function for intercepting and preventing progress on checkout.
  *
- * This returns a promise that resolves to a teardown function. Calling the
- * teardown function will remove the interceptor.
- *
  * To block checkout progress, you must set the [block_progress](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress)
  * capability in your extension's configuration.
  */

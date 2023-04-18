@@ -4,28 +4,26 @@ import {
 } from '@shopify/checkout-ui-extensions';
 
 extend(
-  'Checkout::DeliveryAddress::RenderBefore',
-  (root, {buyerJourney, shippingAddress}) => {
+  'Checkout::CartLineDetails::RenderAfter',
+  (root, {buyerJourney, target}) => {
     const banner = root.createComponent(Banner);
 
-    let currentShippingCountry =
-      shippingAddress?.current?.countryCode;
-    shippingAddress?.subscribe((newAddress) => {
-      currentShippingCountry =
-        newAddress?.countryCode;
+    let quantity = target.current.quantity;
+
+    target?.subscribe((newTarget) => {
+      quantity = newTarget.quantity;
     });
 
     buyerJourney.intercept(
       ({canBlockProgress}) => {
-        return canBlockProgress &&
-          currentShippingCountry !== 'CA'
+        return canBlockProgress && quantity > 1
           ? {
               behavior: 'block',
-              reason: 'Can only ship to canada',
+              reason: 'limited stock',
               perform: (result) => {
                 if (result.behavior === 'block') {
                   banner.appendChild(
-                    'Sorry, we can only ship to Canada',
+                    'This item has a limit of one per customer.',
                   );
                   root.appendChild(banner);
                 }

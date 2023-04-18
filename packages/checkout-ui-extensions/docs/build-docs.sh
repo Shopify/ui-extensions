@@ -14,6 +14,9 @@ if [ $build_exit -ne 0 ]; then
   exit $build_exit
 fi
 
+# Make sure https://shopify.dev URLs are relative so they work in Spin.
+# See https://github.com/Shopify/generate-docs/issues/181
+sed -i 's/https:\/\/shopify.dev//gi' ./docs/generated/generated_docs_data.json
 
 if [ -n "$SPIN" ]; then
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then

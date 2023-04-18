@@ -87,7 +87,8 @@ In React, you can access it from any component through the \`useExtensionApi()\`
       description: `
 Some API property values may change after the extension is rendered.
 \`StatefulRemoteSubscribable\` properties allow you to subscribe to changes and perform a function or re-render your extension.
-If you are using React, you can utilize the property's corresponding hook to subscribe to changes and automatically re-render your extension.
+
+If you are using React, you can utilize the property's corresponding hook, or the [\`useSubscription()\`](/docs/api/checkout-ui-extensions/react-hooks/utilities/usesubscription) hook to subscribe to changes and automatically re-render your extension.
       `,
       codeblock: {
         title: 'Subscribing to changes',
@@ -185,12 +186,65 @@ Ensure your extension can access the Storefront API via the [\`api_access\` capa
         tabs: getExtensionCodeTabs('query-fetch'),
       },
     },
-    'buyer-journey-intercept': {
-      description:
-        "Intercept and prevent a buyer's progress through checkout. See the [validation tutorial](/docs/apps/checkout/validation) for more examples and best practices.",
+    'buyer-journey-intercept/page-level-error': {
+      description: `Intercept and prevent a buyer's progress through checkout while displaying an error message at the page level.
+        See the [validation tutorial](/docs/apps/checkout/validation) for more examples and best practices.`,
       codeblock: {
-        title: "Block a buyer's progress",
-        tabs: getExtensionCodeTabs('buyer-journey-intercept'),
+        title: 'Block progress and show error at page level',
+        tabs: getExtensionCodeTabs('buyer-journey-intercept/page-level-error'),
+      },
+    },
+    'buyer-journey-intercept/target-native-field': {
+      description: `Intercept and prevent a buyer's progress through checkout while targeting a specific checkout UI field.
+        See the [validation tutorial](/docs/apps/checkout/validation) for more examples and best practices.`,
+      codeblock: {
+        title: 'Block progress and show error for a checkout UI field',
+        tabs: getExtensionCodeTabs(
+          'buyer-journey-intercept/target-native-field',
+        ),
+      },
+    },
+    'buyer-journey-intercept/extension-banner': {
+      description: `Intercept and prevent a buyer's progress through checkout while displaying an error message in your extension.
+        See the [validation tutorial](/docs/apps/checkout/validation) for more examples and best practices.`,
+      codeblock: {
+        title: 'Block progress and show error in your extension',
+        tabs: getExtensionCodeTabs('buyer-journey-intercept/extension-banner'),
+      },
+    },
+    subscription: {
+      description: '',
+      codeblock: {
+        title: 'Subscribing to changes',
+        tabs: getExtensionCodeTabs('subscription'),
+      },
+    },
+    'session-token': {
+      description: `
+You can request a session token from Shopify to use with your third party API calls.  The contents of the token claims are signed using your shared app secret so you can trust any information contained in the claims came from Shopify unaltered.
+
+> Note: You will need to [enable the network_access capability](docs/api/checkout-ui-extensions/configuration#network-access) to use \`fetch()\`.
+`,
+      codeblock: {
+        title: 'Using a session token with fetch()',
+        tabs: getExtensionCodeTabs('session-token'),
+      },
+    },
+    'session-token-jwt': {
+      description: `
+The contents of the token are signed using your shared app secret.  The optional \`sub\` claim contains the customer's \`gid\` if they are logged in and your app has permission to read customer accounts. For example, a loyalty app that needs to check a customer's point balance can use the \`sub\` claim to verify the customer's account.
+
+> Caution: Session tokens are _not_ authorization tokens and do not guarantee the request originated from Shopify.
+`,
+      codeblock: {
+        title: 'Session token claims',
+        tabs: [
+          {
+            code: `${examplePath}/session-token-jwt.example.json`,
+            language: 'json',
+            title: 'session-token.jwt',
+          },
+        ],
       },
     },
   };

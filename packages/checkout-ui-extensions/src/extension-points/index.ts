@@ -81,6 +81,7 @@ export type {
   Order,
   GraphQLError,
   StorefrontApiVersion,
+  ValidationError,
 } from './api';
 export type {RenderExtension} from './render-extension';
 export type {

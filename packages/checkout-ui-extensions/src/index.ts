@@ -89,6 +89,7 @@ export type {
   GiftCardRemoveChange,
   GraphQLError,
   StorefrontApiVersion,
+  ValidationError,
 } from './extension-points';
 
 export * from './components';

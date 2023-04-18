@@ -831,6 +831,13 @@ export interface GraphQLError {
 }
 
 export interface ValidationError {
+  /**
+   * Error message to be displayed to the buyer.
+   */
   message: string;
+  /**
+   * The field that the error is associated with.
+   * Example: `$.cart.deliveryGroups[0].deliveryAddress.countryCode`
+   */
   target?: string;
 }

@@ -739,8 +739,10 @@ export interface StandardApi<
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
 
   /**
-   * Provides access to session tokens, which can be used to validate requests made to your backend or properly
-   * configured third party APIs.
+   * Provides access to session tokens, which can be used to validate requests to your app server or supported third-party APIs
+   * using the token claims.
+   *
+   * See [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-session-token) for more information.
    */
   sessionToken: SessionToken;
 
@@ -1554,9 +1556,10 @@ export interface InterceptorProps {
 
 /**
  * A function for intercepting and preventing navigation on checkout. You can block
- * navigation by returning an object with `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState}`.
+ * navigation by returning an object with
+ * `{behavior: 'block', reason: InvalidResultReason.InvalidExtensionState, errors?: ValidationErrors[]}`.
  * If you do, then you're expected to also update some part of your UI to reflect the reason why navigation
- * was blocked.
+ * was blocked, either by targeting checkout UI fields, passing errors to the page level or rendering the errors in your extension.
  */
 export type Interceptor = (
   interceptorProps: InterceptorProps,
@@ -1622,6 +1625,8 @@ export interface Customer {
    * The Store Credit Accounts owned by the customer and usable during the checkout process.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @private
    */
   storeCreditAccounts: StoreCreditAccount[];
 }

@@ -16,7 +16,14 @@ const {
   'settings-access': settingAccess,
   'storefront-query-api': storeFrontApiQuery,
   'storefront-query-with-fetch': storeFrontApiFetch,
-  'buyer-journey-intercept': buyerJourneyIntercept,
+  'buyer-journey-intercept/extension-banner':
+    buyerJourneyInterceptExtensionBanner,
+  'buyer-journey-intercept/page-level-error':
+    buyerJourneyInterceptPageLevelError,
+  'buyer-journey-intercept/target-native-field':
+    buyerJourneyInterceptTargetNativeField,
+  'session-token': sessionToken,
+  'session-token-jwt': sessionTokenJwt,
 } = getExamples(['jsx', 'js']);
 
 const data: ReferenceEntityTemplateSchema = {
@@ -57,7 +64,15 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         title: 'Buyer journey',
-        examples: [buyerJourneyIntercept],
+        examples: [
+          buyerJourneyInterceptTargetNativeField,
+          buyerJourneyInterceptPageLevelError,
+          buyerJourneyInterceptExtensionBanner,
+        ],
+      },
+      {
+        title: 'Session Token',
+        examples: [sessionToken, sessionTokenJwt],
       },
     ],
   },
