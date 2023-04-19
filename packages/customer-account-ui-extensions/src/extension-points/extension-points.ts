@@ -30,6 +30,10 @@ export interface ExtensionPoints {
     StandardApi & {name: string},
     string
   >;
+  'customer-account.dynamic.render': RenderExtension<
+    StandardApi,
+    AllComponents
+  >;
 }
 
 export interface FullPageApi {
