@@ -25,22 +25,31 @@ type RenderFunction<T> = RenderExtension<T, any>;
  */
 export function render<ExtensionPoint extends RenderExtensionPoint>(
   extensionPoint: ExtensionPoint,
-  render: (api: ApiForRenderExtension<ExtensionPoint>) => ReactElement<any>,
+  render: (
+    api: ApiForRenderExtension<ExtensionPoint>,
+  ) => ReactElement<any> | Promise<ReactElement<any>>,
 ) {
   const extendCallback: RenderFunction<any> = (root, api) => {
     return new Promise<void>((resolve, reject) => {
       try {
-        remoteRender(
-          <ExtensionApiContext.Provider value={api}>
-            {render(api as ApiForRenderExtension<ExtensionPoint>)}
-          </ExtensionApiContext.Provider>,
-          root,
-          () => {
-            resolve();
-          },
-        );
+        Promise.resolve(render(api as ApiForRenderExtension<ExtensionPoint>))
+          .then((element) => {
+            remoteRender(
+              <ExtensionApiContext.Provider value={api}>
+                {element}
+              </ExtensionApiContext.Provider>,
+              root,
+              () => {
+                resolve();
+              },
+            );
+          })
+          .catch((error) => {
+            // eslint-disable-next-line no-console
+            console.error(error);
+            reject(error);
+          });
       } catch (error) {
-        // Workaround for https://github.com/Shopify/ui-extensions/issues/325
         // eslint-disable-next-line no-console
         console.error(error);
         reject(error);
