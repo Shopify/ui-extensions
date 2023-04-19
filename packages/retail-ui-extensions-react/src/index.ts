@@ -31,5 +31,15 @@ export {
   useLocaleSubscription,
   useStatefulSubscribableLocale,
   destroyStatefulSubscribableLocale,
+  useScannerSubscription,
+  useStatefulSubscribableScanner,
+  destroyStatefulSubscribableScanner,
 } from './extension-api';
+export type {
+  SupportedSource,
+  ScannerSubscriptionResult,
+  ScannerApiContent,
+  ScannerApi,
+} from './extension-api';
+
 export {render} from './render';
