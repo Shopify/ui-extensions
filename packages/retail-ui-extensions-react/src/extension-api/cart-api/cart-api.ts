@@ -1,7 +1,7 @@
 import type {
   Cart,
   StatefulRemoteSubscribable,
-} from '@shopify/retail-ui-extensions/src';
+} from '@shopify/retail-ui-extensions';
 import {makeStatefulSubscribable} from '@shopify/retail-ui-extensions';
 import {useExtensionApi} from '../utils';
 import {useEffect, useRef, useState} from 'react';

@@ -1,5 +1,10 @@
 import {BasicComponents, SmartGridComponents} from '../component-sets';
-import {SmartGridApi, NavigationApi, StandardApi} from '../extension-api';
+import {
+  SmartGridApi,
+  NavigationApi,
+  StandardApi,
+  ScannerApi,
+} from '../extension-api';
 import {RenderExtension} from './render-extension';
 
 export interface ExtensionPoints {
@@ -8,7 +13,7 @@ export interface ExtensionPoints {
     SmartGridComponents
   >;
   'pos.home.modal.render': RenderExtension<
-    StandardApi<'pos.home.modal.render'> & NavigationApi,
+    StandardApi<'pos.home.modal.render'> & NavigationApi & ScannerApi,
     BasicComponents
   >;
 }
