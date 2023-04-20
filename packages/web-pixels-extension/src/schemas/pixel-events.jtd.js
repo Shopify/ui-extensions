@@ -1,4 +1,4 @@
-{
+const pixelEvents = {
   "definitions": {
     "Browser": {
       "properties": {
@@ -1349,4 +1349,6 @@
       }
     }
   }
-}
+};
+
+export default pixelEvents;
