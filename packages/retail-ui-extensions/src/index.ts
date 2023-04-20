@@ -13,7 +13,7 @@ export type {
   ToastApi,
   ToastApiContent,
   Session,
-  SupportedSource,
+  ScannerSource,
   ScannerSubscriptionResult,
   ScannerApiContent,
   ScannerApi,

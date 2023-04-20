@@ -4,7 +4,7 @@ export type {CartApi} from './cart-api';
 export type {NavigationApi, NavigationApiContent} from './navigation-api';
 export type {SmartGridApi, SmartGridApiContent} from './smartgrid-api';
 export type {
-  SupportedSource,
+  ScannerSource,
   ScannerSubscriptionResult,
   ScannerApiContent,
   ScannerApi,

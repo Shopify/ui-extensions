@@ -1,5 +1,5 @@
 export type {
-  SupportedSource,
+  ScannerSource,
   ScannerSubscriptionResult,
   ScannerApiContent,
   ScannerApi,

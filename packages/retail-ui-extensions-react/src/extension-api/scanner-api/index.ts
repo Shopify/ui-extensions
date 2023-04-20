@@ -1,11 +1,14 @@
 export {
-  useScannerSubscription,
-  useStatefulSubscribableScanner,
-  destroyStatefulSubscribableScanner,
+  useScannerDataSubscription,
+  useStatefulSubscribableScannerData,
+  destroyStatefulSubscribableScannerData,
+  useScannerSourcesSubscription,
+  useStatefulSubscribableScannerSources,
+  destroyStatefulSubscribableScannerSources,
 } from './scanner-api';
 
 export type {
-  SupportedSource,
+  ScannerSource,
   ScannerSubscriptionResult,
   ScannerApiContent,
   ScannerApi,
