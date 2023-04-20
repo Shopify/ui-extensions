@@ -1,0 +1,1476 @@
+const pixelEvents = {
+  definitions: {
+    Browser: {
+      properties: {
+        cookie: {
+          metadata: {
+            description:
+              'This object replaces the native document.cookie API and provides a setter/getter to set cookies on the top frame.',
+          },
+          properties: {
+            get: {
+              metadata: {
+                description:
+                  'An asynchronous method to get a specific cookie by name. Takes a cookie name of type `string` and returns the cookie value as a `string`',
+                typescriptType: '(name?: string) => Promise<string>',
+              },
+            },
+            set: {
+              metadata: {
+                description:
+                  'An asynchronous method to set a cookie by name. It takes two arguments, a string of form `key=value` as [decribed here](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie#write_a_new_cookie) or the name of the cookie as the first argument and the value as the second argument.',
+                typescriptType:
+                  '(cookieOrName: string, value?: string) => Promise<string>',
+              },
+            },
+          },
+        },
+        sendBeacon: {
+          metadata: {
+            description:
+              'The navigator.sendBeacon() method asynchronously sends an HTTP POST request containing a small amount of data to a web server.',
+            typescriptType: '(url: string, body?: string) => Promise<boolean>',
+          },
+        },
+        localStorage: {
+          properties: {
+            length: {
+              metadata: {
+                description:
+                  'Returns an integer representing the number of data items stored in the Storage object.',
+                typescriptType:
+                  "() => Promise<WindowLocalStorage['localStorage']['length']>",
+              },
+            },
+            key: {
+              metadata: {
+                description:
+                  'When passed a number n, this method will return the name of the nth key in the storage.',
+                typescriptType:
+                  "(index: number) => Promise<ReturnType<WindowLocalStorage['localStorage']['key']>>",
+              },
+            },
+            getItem: {
+              metadata: {
+                description:
+                  "When passed a key name, will return that key's value.",
+                typescriptType:
+                  "(key: string) => Promise<ReturnType<WindowLocalStorage['localStorage']['getItem']>>",
+              },
+            },
+            setItem: {
+              metadata: {
+                description:
+                  "When passed a key name and value, will add that key to the storage, or update that key's value if it already exists.",
+                typescriptType:
+                  "(key: string, value: any) => Promise<ReturnType<WindowLocalStorage['localStorage']['setItem']>>",
+              },
+            },
+            removeItem: {
+              metadata: {
+                description:
+                  'When passed a key name, will remove that key from the storage.',
+                typescriptType:
+                  "(key: string) => Promise<ReturnType<WindowLocalStorage['localStorage']['removeItem']>>",
+              },
+            },
+            clear: {
+              metadata: {
+                description:
+                  'When invoked, will empty all keys out of the storage.',
+                typescriptType:
+                  "() => Promise<ReturnType<WindowLocalStorage['localStorage']['clear']>>",
+              },
+            },
+          },
+        },
+        sessionStorage: {
+          properties: {
+            length: {
+              metadata: {
+                description:
+                  'Returns an integer representing the number of data items stored in the Storage object.',
+                typescriptType:
+                  "() => Promise<WindowSessionStorage['sessionStorage']['length']>",
+              },
+            },
+            key: {
+              metadata: {
+                description:
+                  'When passed a number n, this method will return the name of the nth key in the storage.',
+                typescriptType:
+                  "(index: number) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['key']>>",
+              },
+            },
+            getItem: {
+              metadata: {
+                description:
+                  "When passed a key name, will return that key's value.",
+                typescriptType:
+                  "(key: string) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['getItem']>>",
+              },
+            },
+            setItem: {
+              metadata: {
+                description:
+                  "When passed a key name and value, will add that key to the storage, or update that key's value if it already exists.",
+                typescriptType:
+                  "(key: string, value: any) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['setItem']>>",
+              },
+            },
+            removeItem: {
+              metadata: {
+                description:
+                  'When passed a key name, will remove that key from the storage.',
+                typescriptType:
+                  "(key: string) => Promise<ReturnType<WindowSessionStorage['sessionStorage']['removeItem']>>",
+              },
+            },
+            clear: {
+              metadata: {
+                description:
+                  'When invoked, will empty all keys out of the storage.',
+                typescriptType:
+                  "() => Promise<ReturnType<WindowSessionStorage['sessionStorage']['clear']>>",
+              },
+            },
+          },
+        },
+      },
+    },
+    Context: {
+      metadata: {
+        description:
+          'A snapshot of various read-only properties of the browser at the time of event',
+      },
+      properties: {
+        window: {
+          ref: 'WebPixelsWindow',
+          metadata: {
+            description:
+              'Snapshot of a subset of properties of the `window` object in the top frame of the browser',
+          },
+        },
+        document: {
+          ref: 'WebPixelsDocument',
+          metadata: {
+            description:
+              'Snapshot of a subset of properties of the `document` object in the top frame of the browser',
+          },
+        },
+        navigator: {
+          ref: 'WebPixelsNavigator',
+          metadata: {
+            description:
+              'Snapshot of a subset of properties of the `navigator` object in the top frame of the browser',
+          },
+        },
+      },
+    },
+    InitData: {
+      properties: {
+        customer: {
+          nullable: true,
+          ref: 'Customer',
+        },
+        cart: {
+          nullable: true,
+          ref: 'Cart',
+        },
+        checkout: {
+          nullable: true,
+          ref: 'Checkout',
+        },
+        productVariants: {
+          nullable: true,
+          elements: {
+            ref: 'ProductVariant',
+          },
+        },
+      },
+    },
+    WebPixelsWindow: {
+      metadata: {
+        description:
+          'A snapshot of a subset of properties of the `window` object in the top frame of the browser',
+      },
+      properties: {
+        innerHeight: {
+          type: 'uint32',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), gets the height of the content area of the browser window including, if rendered, the horizontal scrollbar',
+          },
+        },
+        innerWidth: {
+          type: 'uint32',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), gets the width of the content area of the browser window including, if rendered, the vertical scrollbar',
+          },
+        },
+        outerHeight: {
+          type: 'uint32',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), gets the height of the outside of the browser window',
+          },
+        },
+        outerWidth: {
+          type: 'uint32',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), gets the width of the outside of the browser window',
+          },
+        },
+        pageXOffset: {
+          type: 'uint32',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), an alias for window.scrollX',
+          },
+        },
+        pageYOffset: {
+          type: 'uint32',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), an alias for window.scrollY',
+          },
+        },
+        screenX: {
+          type: 'uint32',
+          metadata: {
+            description:
+              "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the horizontal distance from the left border of the user's browser viewport to the left side of the screen",
+          },
+        },
+        screenY: {
+          type: 'uint32',
+          metadata: {
+            description:
+              "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the vertical distance from the top border of the user's browser viewport to the top side of the screen",
+          },
+        },
+        scrollX: {
+          type: 'uint32',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the number of pixels that the document has already been scrolled horizontally',
+          },
+        },
+        scrollY: {
+          type: 'uint32',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the number of pixels that the document has already been scrolled vertically',
+          },
+        },
+        origin: {
+          type: 'string',
+          metadata: {
+            description:
+              "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the global object's origin, serialized as a string",
+          },
+        },
+        location: {
+          ref: 'Location',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the location, or current URL, of the window object',
+          },
+        },
+      },
+    },
+    Location: {
+      metadata: {
+        description:
+          'A snapshot of a subset of properties of the `location` object in the top frame of the browser',
+      },
+      properties: {
+        href: {
+          type: 'string',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the entire URL',
+          },
+        },
+        protocol: {
+          type: 'string',
+          metadata: {
+            description:
+              "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the protocol scheme of the URL, including the final `':'`",
+          },
+        },
+        host: {
+          type: 'string',
+          metadata: {
+            description:
+              "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the host, that is the hostname, a `':'`, and the port of the URL",
+          },
+        },
+        hostname: {
+          type: 'string',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the domain of the URL',
+          },
+        },
+        port: {
+          type: 'string',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the port number of the URL',
+          },
+        },
+        pathname: {
+          type: 'string',
+          metadata: {
+            description:
+              "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing an initial `'/'` followed by the path of the URL, not including the query string or fragment",
+          },
+        },
+        search: {
+          type: 'string',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing a `\'?\'` followed by the parameters or "querystring" of the URL',
+          },
+        },
+        hash: {
+          type: 'string',
+          metadata: {
+            description:
+              "Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing a `'#'` followed by the fragment identifier of the URL",
+          },
+        },
+        origin: {
+          type: 'string',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the canonical form of the origin of the specific location',
+          },
+        },
+      },
+    },
+    WebPixelsDocument: {
+      metadata: {
+        description:
+          'A snapshot of a subset of properties of the `document` object in the top frame of the browser',
+      },
+      properties: {
+        characterSet: {
+          type: 'string',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document), returns the character set being used by the document',
+          },
+        },
+        location: {
+          ref: 'Location',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document), returns the URI of the current document',
+          },
+        },
+        referrer: {
+          type: 'string',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document), returns the URI of the page that linked to this page',
+          },
+        },
+        title: {
+          type: 'string',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Document), returns the title of the current document',
+          },
+        },
+      },
+    },
+    WebPixelsNavigator: {
+      metadata: {
+        description:
+          'A snapshot of a subset of properties of the `navigator` object in the top frame of the browser',
+      },
+      properties: {
+        cookieEnabled: {
+          type: 'boolean',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator), returns `false` if setting a cookie will be ignored and true otherwise',
+          },
+        },
+        language: {
+          type: 'string',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator), returns a string representing the preferred language of the user, usually the language of the browser UI. The `null` value is returned when this is unknown',
+          },
+        },
+        languages: {
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator), returns an array of strings representing the languages known to the user, by order of preference',
+            typescriptType: 'ReadonlyArray<string>',
+          },
+        },
+        userAgent: {
+          type: 'string',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Navigator), returns the user agent string for the current browser',
+          },
+        },
+      },
+    },
+    Attribute: {
+      metadata: {
+        description:
+          'Custom attributes left by the customer to the merchant, either in their cart or during checkout.',
+      },
+      properties: {
+        key: {
+          type: 'string',
+          metadata: {
+            description: 'The key for the attribute.',
+          },
+        },
+        value: {
+          type: 'string',
+          metadata: {
+            description: 'The value for the attribute.',
+          },
+        },
+      },
+    },
+    Checkout: {
+      metadata: {
+        description:
+          'A container for all the information required to checkout items and pay.',
+      },
+      properties: {
+        attributes: {
+          elements: {
+            ref: 'Attribute',
+            metadata: {
+              description:
+                'A list of attributes accumulated throughout the checkout process.',
+            },
+          },
+        },
+        currencyCode: {
+          type: 'string',
+          metadata: {
+            description:
+              'The three-letter code that represents the currency, for example, USD. Supported codes include standard ISO 4217 codes, legacy codes, and non-standard codes.',
+          },
+        },
+        email: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The email attached to this checkout.',
+          },
+        },
+        lineItems: {
+          elements: {
+            ref: 'CheckoutLineItem',
+            metadata: {
+              description:
+                'A list of line item objects, each one containing information about an item in the checkout.',
+            },
+          },
+        },
+        order: {
+          ref: 'Order',
+          nullable: true,
+          metadata: {
+            description: 'The resulting order from a paid checkout.',
+          },
+        },
+        phone: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'A unique phone number for the customer. Formatted using E.164 standard. For example, *+16135551111*.',
+          },
+        },
+        shippingAddress: {
+          ref: 'MailingAddress',
+          nullable: true,
+          metadata: {
+            description:
+              'The shipping address to where the line items will be shipped.',
+          },
+        },
+        shippingLine: {
+          ref: 'ShippingRate',
+          nullable: true,
+          metadata: {
+            description:
+              'Once a shipping rate is selected by the customer it is transitioned to a `shipping_line` object.',
+          },
+        },
+        subtotalPrice: {
+          ref: 'MoneyV2',
+          metadata: {
+            description:
+              'The price at checkout before duties, shipping, and taxes.',
+          },
+        },
+        token: {
+          type: 'string',
+          metadata: {
+            description: 'A unique identifier for a particular checkout.',
+          },
+        },
+        totalPrice: {
+          ref: 'MoneyV2',
+          metadata: {
+            description:
+              'The sum of all the prices of all the items in the checkout, including duties, taxes, and discounts.',
+          },
+        },
+        totalTax: {
+          ref: 'MoneyV2',
+          metadata: {
+            description:
+              'The sum of all the taxes applied to the line items and shipping lines in the checkout.',
+          },
+        },
+      },
+    },
+    CheckoutLineItem: {
+      metadata: {
+        description:
+          'A single line item in the checkout, grouped by variant and attributes.',
+      },
+      properties: {
+        id: {
+          type: 'string',
+          metadata: {
+            description: 'A globally unique identifier.',
+          },
+        },
+        quantity: {
+          type: 'uint32',
+          metadata: {
+            description: 'The quantity of the line item.',
+          },
+        },
+        title: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              "The title of the line item. Defaults to the product's title.",
+          },
+        },
+        variant: {
+          ref: 'ProductVariant',
+          nullable: true,
+          metadata: {
+            description: 'Product variant of the line item.',
+          },
+        },
+      },
+    },
+    ProductVariant: {
+      metadata: {
+        description:
+          'A product variant represents a different version of a product, such as differing sizes or differing colors.',
+      },
+      properties: {
+        id: {
+          type: 'string',
+          metadata: {
+            description: 'A globally unique identifier.',
+          },
+        },
+        image: {
+          ref: 'Image',
+          nullable: true,
+          metadata: {
+            description:
+              'Image associated with the product variant. This field falls back to the product image if no image is available.',
+          },
+        },
+        price: {
+          ref: 'MoneyV2',
+          metadata: {
+            description: 'The product variant’s price.',
+          },
+        },
+        product: {
+          ref: 'Product',
+          metadata: {
+            description:
+              'The product object that the product variant belongs to.',
+          },
+        },
+        sku: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The SKU (stock keeping unit) associated with the variant.',
+          },
+        },
+        title: {
+          type: 'string',
+          metadata: {
+            description: 'The product variant’s title.',
+          },
+        },
+      },
+    },
+    Image: {
+      metadata: {
+        description: 'An image resource.',
+      },
+      properties: {
+        src: {
+          type: 'string',
+          metadata: {
+            description: 'The location of the image as a URL.',
+          },
+        },
+      },
+    },
+    MoneyV2: {
+      metadata: {
+        description: 'A monetary value with currency.',
+      },
+      properties: {
+        amount: {
+          type: 'float64',
+          metadata: {
+            description: 'The decimal money amount.',
+          },
+        },
+        currencyCode: {
+          type: 'string',
+          metadata: {
+            description:
+              'The three-letter code that represents the currency, for example, USD. Supported codes include standard ISO 4217 codes, legacy codes, and non-standard codes.',
+          },
+        },
+      },
+    },
+    Product: {
+      metadata: {
+        description:
+          'A product is an individual item for sale in a Shopify store.',
+      },
+      properties: {
+        id: {
+          type: 'string',
+          metadata: {
+            description: 'The ID of the product.',
+          },
+        },
+        title: {
+          type: 'string',
+          metadata: {
+            description: 'The product’s title.',
+          },
+        },
+        vendor: {
+          type: 'string',
+          metadata: {
+            description: 'The product’s vendor name.',
+          },
+        },
+        type: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The [product type](https://help.shopify.com/en/manual/products/details/product-type) specified by the merchant.',
+          },
+        },
+      },
+    },
+    Order: {
+      metadata: {
+        description:
+          'An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process.',
+      },
+      properties: {
+        id: {
+          type: 'string',
+          metadata: {
+            description: 'The ID of the order.',
+          },
+        },
+      },
+    },
+    MailingAddress: {
+      metadata: {
+        description: 'A mailing address for customers and shipping.',
+      },
+      properties: {
+        address1: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The first line of the address. This is usually the street address or a P.O. Box number.',
+          },
+        },
+        address2: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The second line of the address. This is usually an apartment, suite, or unit number.',
+          },
+        },
+        city: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The name of the city, district, village, or town.',
+          },
+        },
+        country: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The name of the country.',
+          },
+        },
+        countryCode: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The two-letter code that represents the country, for example, US.\nThe country codes generally follows ISO 3166-1 alpha-2 guidelines.\n',
+          },
+        },
+        firstName: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The customer’s first name.',
+          },
+        },
+        lastName: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The customer’s last name.',
+          },
+        },
+        phone: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The phone number for this mailing address as entered by the customer.',
+          },
+        },
+        province: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The region of the address, such as the province, state, or district.',
+          },
+        },
+        provinceCode: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The two-letter code for the region.\nFor example, ON.\n',
+          },
+        },
+        zip: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The ZIP or postal code of the address.',
+          },
+        },
+      },
+    },
+    ShippingRate: {
+      metadata: {
+        description: 'A shipping rate to be applied to a checkout.',
+      },
+      properties: {
+        price: {
+          ref: 'MoneyV2',
+          metadata: {
+            description: 'Price of this shipping rate.',
+          },
+        },
+      },
+    },
+    Cart: {
+      metadata: {
+        description:
+          'A cart represents the merchandise that a customer intends to purchase, and the estimated cost associated with the cart.',
+      },
+      properties: {
+        cost: {
+          ref: 'CartCost',
+          metadata: {
+            description:
+              'The estimated costs that the buyer will pay at checkout.',
+          },
+        },
+        id: {
+          type: 'string',
+          metadata: {
+            description: 'A globally unique identifier.',
+          },
+        },
+        lines: {
+          elements: {
+            ref: 'CartLine',
+            metadata: {
+              description:
+                'A list of lines containing information about the items the customer intends to purchase.',
+            },
+          },
+        },
+        totalQuantity: {
+          type: 'uint32',
+          metadata: {
+            description: 'The total number of items in the cart.',
+          },
+        },
+      },
+    },
+    CartCost: {
+      metadata: {
+        description:
+          'The costs that the customer will pay at checkout. It uses [`CartBuyerIdentity`](https://shopify.dev/api/storefront/reference/cart/cartbuyeridentity) to determine [international pricing](https://shopify.dev/custom-storefronts/internationalization/international-pricing#create-a-cart).\n',
+      },
+      properties: {
+        totalAmount: {
+          ref: 'MoneyV2',
+          metadata: {
+            description: 'The total amount for the customer to pay.',
+          },
+        },
+      },
+    },
+    CartLine: {
+      metadata: {
+        description: 'Information about the merchandise in the cart.',
+      },
+      properties: {
+        cost: {
+          ref: 'CartLineCost',
+          metadata: {
+            description:
+              'The cost of the merchandise that the buyer will pay for at checkout. The costs are subject to change and changes will be reflected at checkout.',
+          },
+        },
+        merchandise: {
+          ref: 'ProductVariant',
+          metadata: {
+            description: 'The merchandise that the buyer intends to purchase.',
+          },
+        },
+        quantity: {
+          type: 'uint32',
+          metadata: {
+            description:
+              'The quantity of the merchandise that the customer intends to purchase.',
+          },
+        },
+      },
+    },
+    CartLineCost: {
+      metadata: {
+        description:
+          'The cost of the merchandise line that the customer will pay at checkout.',
+      },
+      properties: {
+        totalAmount: {
+          ref: 'MoneyV2',
+          metadata: {
+            description: 'The total cost of the merchandise line.',
+          },
+        },
+      },
+    },
+    Customer: {
+      metadata: {
+        description:
+          'A customer represents a customer account with the shop. Customer accounts store contact information for the customer, saving logged-in customers the trouble of having to provide it at every checkout.',
+      },
+      properties: {
+        email: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The customer’s email address.',
+          },
+        },
+        firstName: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The customer’s first name.',
+          },
+        },
+        id: {
+          type: 'string',
+          metadata: {
+            description: 'The ID of the customer.',
+          },
+        },
+        lastName: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The customer’s last name.',
+          },
+        },
+        phone: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The customer’s phone number.',
+          },
+        },
+      },
+    },
+    Collection: {
+      metadata: {
+        description:
+          'A collection is a group of products that a shop owner can create to organize them or make their shops easier to browse.',
+      },
+      properties: {
+        id: {
+          type: 'string',
+          metadata: {
+            description: 'A globally unique identifier.',
+          },
+        },
+        title: {
+          type: 'string',
+          metadata: {
+            description:
+              'The collection’s name. Maximum length: 255 characters.',
+          },
+        },
+        productVariants: {
+          elements: {
+            ref: 'ProductVariant',
+            metadata: {
+              description:
+                'A list of products in the collection. The first product variant for each product is returned.',
+            },
+          },
+        },
+      },
+    },
+    Id: {
+      type: 'string',
+      metadata: {
+        description: 'The ID of the customer event',
+      },
+    },
+    ClientId: {
+      type: 'string',
+      metadata: {
+        description: 'The client-side ID of the customer, provided by Shopify',
+      },
+    },
+    Name: {
+      type: 'string',
+      metadata: {
+        description: 'The name of the customer event',
+      },
+    },
+    Timestamp: {
+      type: 'string',
+      metadata: {
+        description:
+          'The timestamp of when the customer event occurred, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format',
+      },
+    },
+    Data: {
+      metadata: {
+        description:
+          'A free-form JSON object representing data specific to this event provided by Shopify. Refer to [standard events](#standard-events) for details on the payload available to each event',
+        typescriptType: 'Record<string, unknown>',
+      },
+    },
+    CustomData: {
+      metadata: {
+        description:
+          'A free-form JSON object representing data specific to a custom event provided by the custom event publisher',
+        typescriptType: 'Record<string, unknown>',
+      },
+    },
+    SearchResult: {
+      metadata: {
+        description:
+          'An object that contains the metadata of when a search has been performed.',
+      },
+      properties: {
+        query: {
+          type: 'string',
+          metadata: {
+            description: 'The search query that was executed',
+          },
+        },
+        productVariants: {
+          elements: {
+            ref: 'ProductVariant',
+            metadata: {
+              description:
+                'A list of products returned by the search query. The first product variant for each product is returned',
+            },
+          },
+        },
+      },
+    },
+  },
+  properties: {
+    checkout_address_info_submitted: {
+      metadata: {
+        description:
+          'The `checkout_address_info_submitted` event logs an instance of a buyer submitting their mailing address. This event is only available in Checkouts where Checkout Extensibility for customizations is enabled.',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'checkout_address_info_submitted'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            checkout: {
+              ref: 'Checkout',
+            },
+          },
+        },
+      },
+    },
+    custom_event: {
+      metadata: {
+        description:
+          'This event represents any custom events emitted by partners or merchants via the `publish` method',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'custom_event'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        customData: {
+          nullable: true,
+          ref: 'CustomData',
+        },
+      },
+    },
+    checkout_completed: {
+      metadata: {
+        description:
+          'The `checkout_completed` event logs when a visitor completes a purchase. This event is available on the order status and checkout pages',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'checkout_completed'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            checkout: {
+              ref: 'Checkout',
+            },
+          },
+        },
+      },
+    },
+    checkout_started: {
+      metadata: {
+        description:
+          'The `checkout_started` event logs an instance of a buyer starting the checkout process. This event is available on the checkout page',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'checkout_started'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            checkout: {
+              ref: 'Checkout',
+            },
+          },
+        },
+      },
+    },
+    payment_info_submitted: {
+      metadata: {
+        description:
+          'The `payment_info_submitted` event logs an instance of a buyer submitting their payment information. This event is available on the checkout page',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'payment_info_submitted'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            checkout: {
+              ref: 'Checkout',
+            },
+          },
+        },
+      },
+    },
+    collection_viewed: {
+      metadata: {
+        description:
+          'The `collection_viewed` event logs an instance where a buyer visited a product collection index page. This event is available on the online store page',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'collection_viewed'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            collection: {
+              ref: 'Collection',
+            },
+          },
+        },
+      },
+    },
+    checkout_contact_info_submitted: {
+      metadata: {
+        description:
+          'The `checkout_contact_info_submitted` event logs an instance where a buyer submits a checkout form. This event is only available in Checkouts where Checkout Extensibility for customizations is enabled.',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'checkout_contact_info_submitted'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            checkout: {
+              ref: 'Checkout',
+            },
+          },
+        },
+      },
+    },
+    page_viewed: {
+      metadata: {
+        description:
+          'The `page_viewed` event logs an instance where a buyer visited a page. This event is available on the online store, checkout, and order status pages',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'page_viewed'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+      },
+    },
+    product_added_to_cart: {
+      metadata: {
+        description:
+          'The `product_added_to_cart` event logs an instance where a buyer adds a product to their cart. This event is available on the online store page',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'product_added_to_cart'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            cartLine: {
+              nullable: true,
+              ref: 'CartLine',
+            },
+          },
+        },
+      },
+    },
+    product_viewed: {
+      metadata: {
+        description:
+          'The `product_viewed` event logs an instance where a buyer visited a product details page. This event is available on the product page',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'product_viewed'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            productVariant: {
+              ref: 'ProductVariant',
+            },
+          },
+        },
+      },
+    },
+    product_variant_viewed: {
+      metadata: {
+        description:
+          'The `product_variant_viewed` event logs an instance where a buyer interacts with the product page and views a different variant than the initial `product_viewed` impression. This event is available on the Product page',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'product_variant_viewed'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            productVariant: {
+              ref: 'ProductVariant',
+            },
+          },
+        },
+      },
+    },
+    search_submitted: {
+      metadata: {
+        description:
+          'The `search_submitted` event logs an instance where a buyer performed a search on the storefront. This event is available on the online store page',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'search_submitted'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            searchResult: {
+              ref: 'SearchResult',
+            },
+          },
+        },
+      },
+    },
+    checkout_shipping_info_submitted: {
+      metadata: {
+        description:
+          'The `checkout_shipping_info_submitted` event logs an instance where the buyer chooses a shipping rate. This event is only available in Checkouts where Checkout Extensibility for customizations is enabled.',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'checkout_shipping_info_submitted'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            checkout: {
+              ref: 'Checkout',
+            },
+          },
+        },
+      },
+    },
+  },
+};
+
+export default pixelEvents;
