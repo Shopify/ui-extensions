@@ -10,7 +10,7 @@ find ./ -name '*.doc*.js' -exec rm -r {} \;
 
 if [ $build_exit -ne 0 ]; then
   echo "** Failed to generate docs"
-  echo "See https://checkout.docs.shopify.io/docs/referencedocs/web/extensions/docs"
+  echo "See https://vault.shopify.io/page/Extension-Docs~SkgE.md"
   exit $build_exit
 fi
 
