@@ -19,7 +19,8 @@ type Source =
   | 'flagMajor'
   | 'uploadMajor'
   | 'buyButtonMajor'
-  | 'followUpEmailMajor';
+  | 'followUpEmailMajor'
+  | 'confettiMajor';
 
 type TemplateCategory =
   | 'firstTimeBuyers'
