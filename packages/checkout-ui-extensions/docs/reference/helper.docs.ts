@@ -223,7 +223,7 @@ Ensure your extension can access the Storefront API via the [\`api_access\` capa
       description: `
 You can request a session token from Shopify to use with your third party API calls.  The contents of the token claims are signed using your shared app secret so you can trust any information contained in the claims came from Shopify unaltered.
 
-> Note: You will need to [enable the network_access capability](docs/api/checkout-ui-extensions/configuration#network-access) to use \`fetch()\`.
+> Note: You will need to [enable the network_access capability](/docs/api/checkout-ui-extensions/configuration#network-access) to use \`fetch()\`.
 `,
       codeblock: {
         title: 'Using a session token with fetch()',

@@ -2,12 +2,13 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {
   Appearance,
-  InlineAlignment,
   ButtonAccessibilityRole,
+  InlineAlignment,
+  IdProps,
   OverlayActivatorProps,
 } from '../shared';
 
-export interface ButtonProps extends OverlayActivatorProps {
+export interface ButtonProps extends OverlayActivatorProps, IdProps {
   /**
    * The type of button that will be rendered. The visual presentation of the button type
    * is controlled by merchants through the Branding API.
