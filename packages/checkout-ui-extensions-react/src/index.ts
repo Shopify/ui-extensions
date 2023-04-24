@@ -32,6 +32,8 @@ export type {
   Conditions,
   ConditionalStyle,
   ConditionalValue,
+  DisclosureActivatorProps,
+  DisclosureOpen,
   ExtensionPoint,
   ExtensionPoints,
   Fit,

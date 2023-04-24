@@ -335,7 +335,7 @@ export interface SpacingProps {
    *
    * - [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`
    *
-   * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and blockStart padding is `tight`
+   * - [`base`, `none`, `large200`, `small200`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `large200` and  blockStart padding is `small200`
    */
   padding?: MaybeResponsiveConditionalStyle<MaybeShorthandProperty<Spacing>>;
 }
@@ -465,13 +465,31 @@ export type Size =
   | 'extraLarge'
   | 'fill';
 
+/* @todo: remove the type override on docs/typeOverride.json once we align with other libraries */
 export type Spacing =
   | 'none'
+  | 'small500'
+  | 'small400'
+  | 'small300'
+  | 'small200'
+  | 'small100'
   | 'base'
-  | 'extraTight'
-  | 'tight'
-  | 'loose'
-  | 'extraLoose';
+  | 'large100'
+  | 'large200'
+  | 'large300'
+  | 'large400'
+  | 'large500'
+  | SpacingDeprecated;
+
+/** @deprecated These values are deprecated and will eventually be removed.
+ * Use the new values.
+ *
+ * `extraTight`: `small400`
+ * `tight`: `small200`
+ * `loose`: `large200`
+ * `extraLoose`: `large500`
+ */
+export type SpacingDeprecated = 'extraTight' | 'tight' | 'loose' | 'extraLoose';
 
 export type Alignment = 'start' | 'center' | 'end';
 export type InlineAlignment = 'start' | 'center' | 'end';
@@ -612,6 +630,15 @@ export interface OverlayActivatorProps {
    */
   overlay?: RemoteFragment;
 }
+
+export interface DisclosureActivatorProps {
+  /**
+   * The component's identifier whose visibility will be toggled when this component is actioned.
+   */
+  toggles?: string;
+}
+
+export type DisclosureOpen = boolean | string | string[];
 
 export type Opacity = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 

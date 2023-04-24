@@ -66,7 +66,6 @@ interface ErrorState {
 
 // Using ErrorBoundary allows us to relay the errors coming from React reconcilation
 // to the global object using reportError.
-// eslint-disable-next-line @typescript-eslint/ban-types
 class ErrorBoundary extends Component<PropsWithChildren<{}>, ErrorState> {
   static getDerivedStateFromError() {
     // Update state so the next render will show the fallback UI.
@@ -77,7 +76,6 @@ class ErrorBoundary extends Component<PropsWithChildren<{}>, ErrorState> {
 
   componentDidCatch(error: Error, errorInfo: {componentStack: string}) {
     // in development, these errors are logged by React itself so we don’t need to re-log them
-    // eslint-disable-next-line no-process-env
     if (process.env.NODE_ENV !== 'development') {
       // eslint-disable-next-line no-console
       console.error(

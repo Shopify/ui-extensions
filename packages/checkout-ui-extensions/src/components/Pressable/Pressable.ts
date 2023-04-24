@@ -10,6 +10,7 @@ import type {
   Display,
   ButtonAccessibilityRole,
   OverlayActivatorProps,
+  DisclosureActivatorProps,
   CornerProps,
   Opacity,
 } from '../shared';
@@ -19,7 +20,8 @@ export interface PressableProps
     CornerProps,
     SizingProps,
     SpacingProps,
-    OverlayActivatorProps {
+    OverlayActivatorProps,
+    DisclosureActivatorProps {
   /**
    * Changes the display of the Pressable.
    *

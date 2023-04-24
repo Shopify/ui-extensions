@@ -6,9 +6,13 @@ import type {
   InlineAlignment,
   IdProps,
   OverlayActivatorProps,
+  DisclosureActivatorProps,
 } from '../shared';
 
-export interface ButtonProps extends OverlayActivatorProps, IdProps {
+export interface ButtonProps
+  extends OverlayActivatorProps,
+    DisclosureActivatorProps,
+    IdProps {
   /**
    * The type of button that will be rendered. The visual presentation of the button type
    * is controlled by merchants through the Branding API.
