@@ -1,4 +1,3 @@
-# no plans to merge this into main, as it's only being used for the testing
 #!/bin/bash
 
 . "$PWD/scripts/consumer-helper.sh"

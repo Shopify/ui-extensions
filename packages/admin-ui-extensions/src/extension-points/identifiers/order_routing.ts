@@ -9,11 +9,22 @@ export interface OrderRoutingLocation {
   id: string;
   name: string;
 }
+
+export interface OrderRoutingLocationMetafield {
+  id?: string | null;
+  key: string;
+  value?: string | null;
+  namespace: string;
+  type: string;
+}
 export interface OrderRoutingExtensionApi {
   'admin.order-routing.rule.action': StandardApi<OrderRoutingExtensionPoint> & {
     data: {
       locations: OrderRoutingLocation[];
     };
+    saveLocationMetafields: (
+      metafields: OrderRoutingLocationMetafield[],
+    ) => Promise<void>;
   };
 }
 
