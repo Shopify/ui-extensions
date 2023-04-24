@@ -8,8 +8,16 @@ export type OrderRoutingExtensionPoint =
   | 'admin.order-routing.rule.action'
   | 'admin.order-routing.rule.render';
 
+export interface OrderRoutingLocation {
+  id: string;
+  name: string;
+}
 export interface OrderRoutingExtensionApi {
-  'admin.order-routing.rule.action': StandardApi<OrderRoutingExtensionPoint>;
+  'admin.order-routing.rule.action': StandardApi<OrderRoutingExtensionPoint> & {
+    data: {
+      locations: OrderRoutingLocation[];
+    };
+  };
   'admin.order-routing.rule.render': StandardApi<OrderRoutingExtensionPoint>;
 }
 

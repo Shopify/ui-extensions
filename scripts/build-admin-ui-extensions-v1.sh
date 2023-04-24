@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+
 . "$PWD/scripts/consumer-helper.sh"
 yarnpkg build
 projectName="web"
