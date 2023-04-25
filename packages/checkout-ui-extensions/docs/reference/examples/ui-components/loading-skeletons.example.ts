@@ -25,7 +25,6 @@ extend('Checkout::Dynamic::Render', (root) => {
       price: '$248.00',
     },
   ];
-
   const thumbnail = root.createComponent(
     View,
     {
@@ -85,7 +84,6 @@ extend('Checkout::Dynamic::Render', (root) => {
             )),
       ],
     );
-
   const order = (item) =>
     root.createComponent(
       InlineLayout,
@@ -115,7 +113,6 @@ extend('Checkout::Dynamic::Render', (root) => {
             ),
       ],
     );
-
   const view = root.createComponent(
     View,
     {
@@ -128,6 +125,5 @@ extend('Checkout::Dynamic::Render', (root) => {
       ]),
     ],
   );
-
   root.appendChild(view);
 });

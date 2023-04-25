@@ -39,7 +39,6 @@ export const Thumbnail = ({
     )}
   </View>
 );
-
 export const LoadingStateSkeletons = () => {
   const loading = true;
   const [item1, item2] = [
@@ -54,7 +53,6 @@ export const LoadingStateSkeletons = () => {
       price: '$248.00',
     },
   ];
-
   const itemInfo = ({title, variantTitle}) =>
     loading ? (
       <>
@@ -71,8 +69,7 @@ export const LoadingStateSkeletons = () => {
         </Text>
       </>
     );
-
-  const order = (item) => {
+  const order = (item) => (
     <InlineLayout
       columns={['auto', 'fill', 'auto']}
       spacing="base"
@@ -94,9 +91,8 @@ export const LoadingStateSkeletons = () => {
       ) : (
         <Text emphasis="bold">{item.price}</Text>
       )}
-    </InlineLayout>;
-  };
-
+    </InlineLayout>
+  );
   return (
     <View maxInlineSize={400}>
       <BlockStack>
