@@ -35,7 +35,6 @@ export {
   View,
   Modal,
   Popover,
-  Pressable,
   ScrollView,
   Tooltip,
 } from '@shopify/checkout-ui-extensions-react';
@@ -93,7 +92,6 @@ export type {
   Spacing,
   Alignment,
   Appearance,
-  PressableProps,
   ScrollViewProps,
   TooltipProps,
 } from '@shopify/checkout-ui-extensions-react';
