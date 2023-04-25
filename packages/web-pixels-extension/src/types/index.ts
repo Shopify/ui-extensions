@@ -19,6 +19,10 @@ export type {
   MailingAddress,
   ProductVariant,
   PixelEventsProductAddedToCartData,
+  PixelEventsCheckoutStarted,
+  PixelEventsCheckoutCompleted,
+  PixelEventsCheckoutStartedData,
+  PixelEventsCheckoutCompletedData,
 } from './PixelEvents';
 export type {
   PublisherData,
