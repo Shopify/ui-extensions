@@ -1,4 +1,4 @@
-const pixelEvents = {
+export const pixelEvents = {
   definitions: {
     Browser: {
       properties: {
@@ -1472,5 +1472,3 @@ const pixelEvents = {
     },
   },
 };
-
-export default pixelEvents;
