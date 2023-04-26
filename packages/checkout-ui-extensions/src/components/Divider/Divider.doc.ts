@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'DividerProps',
-      description: 'Propsss',
+      description: '',
       type: 'DividerProps',
     },
   ],
