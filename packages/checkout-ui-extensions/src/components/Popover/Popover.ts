@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {Alignment} from '../shared';
+import type {Alignment, IdProps} from '../shared';
 
 export type PopoverPosition =
   | 'inlineStart'
@@ -8,7 +8,7 @@ export type PopoverPosition =
   | 'blockStart'
   | 'blockEnd';
 
-export interface PopoverProps {
+export interface PopoverProps extends IdProps {
   /**
    * Position the Popover relative to the activator.
    * @defaultValue 'blockStart'

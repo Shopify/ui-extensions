@@ -335,7 +335,7 @@ export interface SpacingProps {
    *
    * - [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`
    *
-   * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and blockStart padding is `tight`
+   * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
    */
   padding?: MaybeResponsiveConditionalStyle<MaybeShorthandProperty<Spacing>>;
 }
@@ -613,8 +613,24 @@ export interface OverlayActivatorProps {
   overlay?: RemoteFragment;
 }
 
+export interface DisclosureActivatorProps {
+  /**
+   * The component's identifier whose visibility will be toggled when this component is actioned.
+   */
+  toggles?: string;
+}
+
+export type DisclosureOpen = boolean | string | string[];
+
 export type Opacity = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 
 export type TextSize =
   | Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'extraLarge'>
   | 'medium';
+
+export interface IdProps {
+  /**
+   * A unique identifier for the component.
+   */
+  id?: string;
+}

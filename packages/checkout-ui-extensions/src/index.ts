@@ -107,6 +107,7 @@ export type {
   ChoiceListProps,
   ChoiceProps,
   DividerProps,
+  DisclosureProps,
   FormProps,
   GridProps,
   GridItemProps,

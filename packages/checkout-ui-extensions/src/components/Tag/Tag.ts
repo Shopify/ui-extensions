@@ -1,8 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 import {IconSource} from '../Icon';
+import type {IdProps} from '../shared';
 
-export interface TagProps {
+export interface TagProps extends IdProps {
   children?: string;
   /**
    * Icon source

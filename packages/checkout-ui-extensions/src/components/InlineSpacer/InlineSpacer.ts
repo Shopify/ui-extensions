@@ -1,9 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 import type {MaybeResponsiveConditionalStyle} from '../../style';
-import type {Spacing} from '../shared';
+import type {IdProps, Spacing} from '../shared';
 
-export interface InlineSpacerProps {
+export interface InlineSpacerProps extends IdProps {
   /**
    * Adjust size of the spacer
    *

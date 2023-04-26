@@ -1,6 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export interface CheckboxProps {
+import {DisclosureActivatorProps} from '../shared';
+
+export interface CheckboxProps extends DisclosureActivatorProps {
   /**
    * A unique identifier for the field. When no `id` is set,
    * a globally unique value will be used instead.

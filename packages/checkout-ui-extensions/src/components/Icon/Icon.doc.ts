@@ -38,6 +38,13 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
+      anchorLink: 'icons',
+      title: 'Icons',
+      sectionContent:
+        '<img src="/assets/templated-apis-screenshots/checkout-ui-extensions/icon-all.png" />',
+    },
+    {
+      type: 'Generic',
       anchorLink: 'appearance',
       title: 'Appearance',
       sectionContent:

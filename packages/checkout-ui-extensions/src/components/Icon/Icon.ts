@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {Appearance, Size} from '../shared';
+import type {Appearance, IdProps, Size} from '../shared';
 
 export type IconSource =
   | 'arrowLeft'
@@ -64,7 +64,7 @@ export type IconSource =
   | 'warning'
   | 'warningFill';
 
-export interface IconProps {
+export interface IconProps extends IdProps {
   /**
    * A label that describes the purpose or contents of the icon. When set,
    * it will be announced to buyers using assistive technologies and will
@@ -90,6 +90,8 @@ export interface IconProps {
 
   /**
    * Specifies which icon to display
+   *
+   * Check the list of available icons [here](/docs/api/checkout-ui-extensions/components/media/icon#icons)
    */
   source: IconSource;
 }

@@ -1,8 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {Size, TextSize} from '../shared';
+import type {IdProps, TextSize, Size} from '../shared';
 
-export interface SkeletonTextProps {
+export interface SkeletonTextProps extends IdProps {
   /**
    * @private
    * Use to emphasize a word or a group of words.

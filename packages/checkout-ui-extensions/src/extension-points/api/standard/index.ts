@@ -374,7 +374,7 @@ export interface AppMetafieldEntry {
   metafield: AppMetafield;
 }
 
-export type ApiVersion = '2022-10' | '2023-01' | 'unstable';
+export type ApiVersion = '2022-10' | '2023-01' | '2023-04' | 'unstable';
 
 export type Version = string;
 

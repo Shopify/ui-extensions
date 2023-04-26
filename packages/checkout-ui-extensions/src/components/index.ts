@@ -14,6 +14,18 @@ export {Choice} from './Choice';
 export type {ChoiceProps} from './Choice';
 export {ChoiceList} from './ChoiceList';
 export type {ChoiceListProps} from './ChoiceList';
+export {DatePicker} from './DatePicker';
+export type {
+  DatePickerProps,
+  DayString,
+  DateString,
+  DisabledDate,
+  DateRange,
+  SelectedDate,
+  YearMonth,
+} from './DatePicker';
+export {Disclosure} from './Disclosure';
+export type {DisclosureProps} from './Disclosure';
 export {Divider} from './Divider';
 export type {DividerProps} from './Divider';
 export {Form} from './Form';
@@ -103,6 +115,8 @@ export type {
   Columns,
   CornerRadius,
   CornerProps,
+  DisclosureActivatorProps,
+  DisclosureOpen,
   Fit,
   GridItemSize,
   InlineAlignment,
