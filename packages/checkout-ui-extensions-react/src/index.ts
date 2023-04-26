@@ -32,8 +32,12 @@ export type {
   Conditions,
   ConditionalStyle,
   ConditionalValue,
+  DayString,
+  DateString,
+  DateRange,
   DisclosureActivatorProps,
   DisclosureOpen,
+  DisabledDate,
   ExtensionPoint,
   ExtensionPoints,
   Fit,
@@ -55,6 +59,7 @@ export type {
   ScrollViewEvent,
   ShopifyGlobal,
   ShorthandProperty,
+  SelectedDate,
   Size,
   SizingProps,
   Spacing,
@@ -67,6 +72,7 @@ export type {
   ViewPosition,
   ViewPositionType,
   ViewLikeAccessibilityRole,
+  YearMonth,
 } from '@shopify/checkout-ui-extensions';
 
 export * from './components';
