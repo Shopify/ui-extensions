@@ -14,6 +14,10 @@ export interface ExtensionPoints {
     CustomerSegmentationTemplateApi<'admin.customers.segmentation-templates.render'>,
     CustomerSegmentationTemplateComponent
   >;
+  'admin.order-routing.rule.action': RenderExtension<
+    StandardApi<'admin.order-routing.rule.action'>,
+    AnyComponent
+  >;
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;
