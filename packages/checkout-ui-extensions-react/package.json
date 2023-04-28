@@ -1,6 +1,6 @@
 {
   "name": "@shopify/checkout-ui-extensions-react",
-  "version": "2022.10.0",
+  "version": "2023.1.0",
   "description": "React bindings for @shopify/checkout-ui-extensions",
   "publishConfig": {
     "access": "public",
