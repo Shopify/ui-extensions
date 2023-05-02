@@ -30,7 +30,7 @@
     "version-bump:checkout": "lerna version --no-push --ignore-changes 'packages/!(checkout*)/**' --include-merged-tags",
     "version-bump:customer-account": "lerna version --no-push --ignore-changes 'packages/!(customer-account*)/**' --include-merged-tags",
     "version-bump:post-purchase": "lerna version --no-push --ignore-changes 'packages/!(post-purchase*)/**' --include-merged-tags",
-    "version-bump:retail": "lerna version --no-push --ignore-changes 'packages/!(retail*)/**' --include-merged-tags",
+    "version-bump:retail": "lerna version --no-push --exact --ignore-changes 'packages/!(retail*)/**' --include-merged-tags",
     "version-bump:web-pixels": "lerna version --no-push --ignore-changes 'packages/!(web-pixels*)/**' --include-merged-tags"
   },
   "devDependencies": {
