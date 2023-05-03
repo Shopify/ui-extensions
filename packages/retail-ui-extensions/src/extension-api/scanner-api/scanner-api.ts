@@ -26,5 +26,5 @@ export interface ScannerApiContent {
 }
 
 export interface ScannerApi {
-  api: ScannerApiContent;
+  scanner: ScannerApiContent;
 }
