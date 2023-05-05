@@ -44,19 +44,13 @@ export interface Storage {
 }
 
 /**
- * The high-level capabilities an extension is allowed to have access to.
+ * The capabilities an extension has access to.
  *
- * * `api_access` allows an extension to make API calls via `fetch()` or `query`.
- *    This is always granted to an extension when present in the
- *    [shopify.ui.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
- *    This is declared upfront so that API access tokens can be generated only
- *    for extensions that need them.
+ * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
  *
- * * `network_access` allows an extension to make network calls via fetch() and
- *    is requested by a partner
+ * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
  *
- * * `block_progress` allows an extension to block a buyer's progress through
- *    checkout and may be granted by a merchant in differing checkout contexts
+ * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
  */
 export type Capability = 'api_access' | 'network_access' | 'block_progress';
 
@@ -102,12 +96,11 @@ export interface Extension {
    * The allowed capabilities of the extension, defined
    * in your [shopify.ui.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
    *
-   * `network_access`:
-   * You must [request access](https://shopify.dev/api/checkout-extensions/checkout/configuration#complete-a-request-for-network-access)
-   * to make network calls.
+   * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
    *
-   * `block_progress`:
-   * Merchants control whether your extension [can block checkout progress](https://shopify.dev/api/checkout-extensions/checkout/configuration#block-progress)
+   * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
+   *
+   * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 
@@ -598,6 +591,9 @@ export interface StandardApi<
    * Performs an update on the discount codes.
    * It resolves when the new discount codes have been negotiated and results in an update
    * to the value retrieved through the [`discountCodes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-discountcodes) property.
+   *
+   * > Caution:
+   * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves discount codes through a network call.
    */
   applyDiscountCodeChange(
     change: DiscountCodeChange,
@@ -607,6 +603,9 @@ export interface StandardApi<
    * Performs an update on the gift cards.
    * It resolves when gift card change have been negotiated and results in an update
    * to the value retrieved through the [`appliedGiftCards`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-appliedgiftcards) property.
+   *
+   * > Caution:
+   * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves gift card codes through a network call.
    */
   applyGiftCardChange(change: GiftCardChange): Promise<GiftCardChangeResult>;
 
@@ -739,8 +738,7 @@ export interface StandardApi<
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
 
   /**
-   * Provides access to session tokens, which can be used to validate requests to your app server or supported third-party APIs
-   * using the token claims.
+   * Provides access to session tokens, which can be used to verify token claims on your app's server.
    *
    * See [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-session-token) for more information.
    */
@@ -787,7 +785,7 @@ export interface SessionToken {
   /**
    * Requests a session token that hasn't expired. You should call this method every
    * time you need to make a request to your backend in order to get a valid token.
-   * This method will cache tokens until their expiry itself, so you don’t need to worry
+   * This method will return cached tokens when possible, so you don’t need to worry
    * about storing these tokens yourself.
    */
   get(): Promise<string>;
@@ -1273,6 +1271,12 @@ export interface CartLineAddChange {
    * The attributes associated with the line item.
    */
   attributes?: Attribute[];
+
+  /**
+   * The identifier of the selling plan that the merchandise is being purchased
+   * with.
+   */
+  sellingPlanId?: SellingPlan['id'];
 }
 
 export interface CartLineRemoveChange {
@@ -1320,6 +1324,12 @@ export interface CartLineUpdateChange {
    * The new attributes for the line item.
    */
   attributes?: Attribute[];
+
+  /**
+   * The identifier of the selling plan that the merchandise is being purchased
+   * with or `null` to remove the the product from the selling plan.
+   */
+  sellingPlanId?: SellingPlan['id'] | null;
 }
 
 export interface CartDiscountCode {
@@ -1533,7 +1543,7 @@ interface InterceptorRequestBlock {
   reason: string;
 
   /**
-   * The errors that will be displayed to the buyer.
+   * Used to pass errors to the checkout UI, outside your extension's UI boundaries.
    */
   errors?: ValidationError[];
 
