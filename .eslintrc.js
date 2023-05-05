@@ -24,6 +24,7 @@ module.exports = {
 
     // This rule is just bad
     '@typescript-eslint/consistent-indexed-object-style': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
   overrides: [
     {
