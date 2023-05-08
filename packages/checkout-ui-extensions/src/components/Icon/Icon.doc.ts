@@ -41,7 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'icons',
       title: 'Icons',
       sectionContent:
-        '<img src="/assets/templated-apis-screenshots/checkout-ui-extensions/icon-all.png" />',
+        '<img src="/assets/landing-pages/templated-apis/checkout-ui-extensions/ui-components/icon-all.png" />',
     },
     {
       type: 'Generic',
