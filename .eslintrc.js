@@ -3,6 +3,7 @@ module.exports = {
     'plugin:@shopify/typescript',
     'plugin:@shopify/jest',
     'plugin:@shopify/prettier',
+    'plugin:@shopify/react',
   ],
   ignorePatterns: [
     'build/',
@@ -23,6 +24,7 @@ module.exports = {
 
     // This rule is just bad
     '@typescript-eslint/consistent-indexed-object-style': 'off',
+    'react/react-in-jsx-scope': 'off',
   },
   overrides: [
     {
@@ -35,6 +37,12 @@ module.exports = {
     {
       files: ['**/.eslintrc.js'],
       env: {node: true},
+    },
+    {
+      files: ['*.stories.*', '*.test.*', '*.example.*'],
+      rules: {
+        '@shopify/jsx-no-hardcoded-content': 'off',
+      },
     },
   ],
 };
