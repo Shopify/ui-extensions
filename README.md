@@ -9,6 +9,7 @@ If you’re ready to start building, you’ll want to refer to the documentation
 - Building an extension for the post-purchase page of the Shopify Checkout? You should read the documentation for [`@shopify/post-purchase-ui-extensions`](./packages/post-purchase-ui-extensions) (and [`@shopify/post-purchase-ui-extensions-react`](./packages/post-purchase-ui-extensions-react), if you use React)
 - Building an extension for other parts of the Shopify Checkout? You should read the documentation for [`@shopify/checkout-ui-extensions`](./packages/checkout-ui-extensions) (and [`@shopify/checkout-ui-extensions-react`](./packages/checkout-ui-extensions-react), if you use React)
 - Building an extension for the Shopify Admin? You should read the documentation for [`@shopify/admin-ui-extensions`](./packages/admin-ui-extensions) (and [`@shopify/admin-ui-extensions-react`](./packages/admin-ui-extensions-react), if you use React)
+- Building a UI extension for the Shopify POS? You should read the documentation on [Shopify.dev](https://shopify.dev/docs/apps/pos/ui-extensions)
 
 If you want to learn a little more about the patterns found throughout these libraries, and the way that they are rendered into the applications they extend, read on!
 
