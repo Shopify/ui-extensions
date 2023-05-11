@@ -73,6 +73,11 @@ export interface CartApiContent {
    */
   removeCartProperties(keys: string[]): Promise<void>;
 
+  /** Adds or modifies a cart note.
+   * @param note the note to set on the cart. This will override the existing note.
+   */
+  setCartNote(note: string): Promise<void>;
+
   /** Adds custom properties to the specified line item
    * @param uuid the uuid of the line item to which the properties should be stringd
    * @param properties the custom key to value object to attribute to the line item
