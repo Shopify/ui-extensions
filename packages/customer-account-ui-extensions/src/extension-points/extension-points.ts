@@ -5,6 +5,7 @@ import type {StandardApi} from './standard-api';
 type Components = typeof import('../components');
 
 type AllComponents = Components[keyof Components];
+
 /**
  * A UI extension will register for one or more extension points using `shopify.extend()`.
  * An extension point in a UI extension is a plain JavaScript function.
@@ -19,7 +20,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   'CustomerAccount::Returns::Initiate': RunExtension<
-    StandardApi & {orderId: string},
+    StandardApi & {orderId: string; signal: AbortSignal},
     void
   >;
   'CustomerAccount::KitchenSink': RenderExtension<
