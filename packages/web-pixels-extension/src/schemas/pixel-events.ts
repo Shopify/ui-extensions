@@ -447,7 +447,7 @@ export const pixelEvents = {
     Checkout: {
       metadata: {
         description:
-          'A container for all the information required to checkout items and pay.',
+          'A container for all the information required to add items to checkout and pay.',
       },
       properties: {
         attributes: {
@@ -624,6 +624,12 @@ export const pixelEvents = {
             description: 'The product variant’s title.',
           },
         },
+        untranslatedTitle: {
+          type: 'string',
+          metadata: {
+            description: 'The product variant’s untranslated title.',
+          },
+        },
       },
     },
     Image: {
@@ -675,6 +681,12 @@ export const pixelEvents = {
           type: 'string',
           metadata: {
             description: 'The product’s title.',
+          },
+        },
+        untranslatedTitle: {
+          type: 'string',
+          metadata: {
+            description: 'The product’s untranslated title.',
           },
         },
         vendor: {
@@ -1040,7 +1052,7 @@ export const pixelEvents = {
     checkout_address_info_submitted: {
       metadata: {
         description:
-          'The `checkout_address_info_submitted` event logs an instance of a buyer submitting their mailing address. This event is only available in Checkouts where Checkout Extensibility for customizations is enabled.',
+          'The `checkout_address_info_submitted` event logs an instance of a buyer submitting their mailing address. This event is only available in checkouts where checkout extensibility for customizations is enabled.',
       },
       properties: {
         id: {
@@ -1241,7 +1253,7 @@ export const pixelEvents = {
     checkout_contact_info_submitted: {
       metadata: {
         description:
-          'The `checkout_contact_info_submitted` event logs an instance where a buyer submits a checkout form. This event is only available in Checkouts where Checkout Extensibility for customizations is enabled.',
+          'The `checkout_contact_info_submitted` event logs an instance where a buyer submits a checkout form. This event is only available in checkouts where checkout extensibility for customizations is enabled.',
       },
       properties: {
         id: {
@@ -1439,7 +1451,7 @@ export const pixelEvents = {
     checkout_shipping_info_submitted: {
       metadata: {
         description:
-          'The `checkout_shipping_info_submitted` event logs an instance where the buyer chooses a shipping rate. This event is only available in Checkouts where Checkout Extensibility for customizations is enabled.',
+          'The `checkout_shipping_info_submitted` event logs an instance where the buyer chooses a shipping rate. This event is only available in checkouts where checkout extensibility for customizations is enabled.',
       },
       properties: {
         id: {
