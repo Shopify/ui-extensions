@@ -4,7 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useNote',
-  description: 'Returns the proposed `note` applied to the checkout.',
+  description: '',
+  descriptionType: 'UseNoteGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

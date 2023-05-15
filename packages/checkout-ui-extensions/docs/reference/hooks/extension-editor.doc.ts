@@ -4,8 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useExtensionEditor',
-  description:
-    'Returns information about the editor where the extension is being rendered.',
+  description: '',
+  descriptionType: 'UseExtensionEditorGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

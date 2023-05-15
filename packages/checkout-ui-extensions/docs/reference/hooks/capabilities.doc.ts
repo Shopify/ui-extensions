@@ -5,6 +5,7 @@ import {getLinksByTag} from '../helper.docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'useExtensionCapabilities',
   description: "Returns a list of an extension's granted capabilities.",
+  descriptionType: 'UseExtensionCapabilitiesGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

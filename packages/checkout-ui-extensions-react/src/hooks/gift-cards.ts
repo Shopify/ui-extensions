@@ -22,6 +22,9 @@ export function useAppliedGiftCards<
 
 /**
  * Returns a function to add or remove gift cards.
+ *
+ * > Caution:
+ * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves gift card codes through a network call.
  */
 export function useApplyGiftCardChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,

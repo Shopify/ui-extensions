@@ -1,12 +1,15 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
-import {getLinksByTag, REQUIRES_PROTECTED_CUSTOMER_DATA} from '../helper.docs';
+import {
+  getLinksByTag,
+  REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2,
+} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useEmail',
-  description:
-    "Returns the customer's email address if they are logged in, otherwise `undefined`.",
-  requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
+  description: '',
+  descriptionType: 'UseEmailGeneratedType',
+  requires: REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2,
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

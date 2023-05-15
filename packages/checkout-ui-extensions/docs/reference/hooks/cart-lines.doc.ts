@@ -4,8 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useCartLines',
-  description:
-    'Returns the current line items for the checkout, and automatically re-renders your component if line items are added, removed, or updated.',
+  description: '',
+  descriptionType: 'UseCartLinesGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

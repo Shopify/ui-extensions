@@ -31,15 +31,23 @@ const data: LandingTemplateSchema = {
       type: 'Markdown',
       anchorLink: 'configuration-properties',
       title: 'Configuration properties',
-      sectionContent:
-        "| Property  | Required? | Description  | \n|---|---|---|\n| `type` | Yes | The type of extension. For checkout UI extensions, this value is `checkout_ui_extension`. |\n| `name`  | Yes | The name of the checkout UI extension. |\n| `extension_points`  | Yes | The [API endpoints](/api/checkout-ui-extensions/extension-points-overview) that let you add custom workflows and functionality at defined points of the checkout process. |\n| `metafields`  | Yes | The [metafields](/api/admin-graphql/latest/objects/metafield) that your extension needs to read. <br></br>You can specify up to five `key` and `namespace` pairs in the settings file. When the extension is executed, Shopify looks for the metafields in each resource and returns their contents. |\n| `capabilities`  | No | Defines the capabilities associated with the checkout UI extension. <br></br><ul><li>[`api_access`](#api-access): Allows you to query [Storefront API](/api/storefront) from your extension.</li><li>[`network_access`](#network-access): Allows you to use the [JavaScript fetch() API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) in your extension to make external network calls. If you add this property, then you need to [complete the request for network access](#network-access) in your [Partner Dashboard](https://partners.shopify.com/current/apps).</li><li>[`block_progress`](#block-progress): States that your extension might block checkout progress using the [buyerJourney](/api/checkout-extensions/checkout/extension-points/api#standardapi) intercept to enforce validation. [This capability isn't guaranteed](#block-progress), and requires the merchant to allow it when configuring the extension within the checkout editor. </li></ul> |\n| `settings` | No | Defines settings for the checkout UI extension that a merchant can set values for in the checkout editor. For more information, refer to [settings definition](#settings-definition). |",
+      sectionContent: `
+| Property  | Required? | Description  |
+|---|---|---|
+| \`type\` | Yes | The type of extension. For checkout UI extensions, this value is \`checkout_ui_extension\`. |
+| \`name\`  | Yes | The name of the checkout UI extension. |
+| \`extension_points\`  | Yes | The [pre-defined points](/docs/api/checkout-ui-extensions/extension-points-overview) within checkout that your extension will render to. These values must match how your extension calls \`extend()\` or \`render()\`.<br /><br />For example, if your extension calls \`extend('Checkout::Dynamic::Render', () => {})\` then your config must specify \`Checkout::Dynamic::Render\`. |
+| \`metafields\`  | Yes | The metafields that your extension [needs to read](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-appmetafields). <br></br>You can specify up to five \`key\` and \`namespace\` pairs in the settings file. When the extension is executed, Shopify looks for the metafields in each resource and returns their contents. |
+| \`capabilities\`  | No | Defines the [capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-extension) associated with the UI extension. <br></br><ul><li>[\`api_access\`](#api-access): Allows your extension to query the Storefront API.</li><li>[\`network_access\`](#network-access): Allows your extension make external network calls.</li><li>[\`block_progress\`](#block-progress): States that your extension might block the buyer's progress.</li></ul> |
+| \`settings\` | No | Defines [settings](#settings-definition) that a merchant can set values for in the checkout editor. |
+`,
     },
     {
       type: 'Generic',
       anchorLink: 'api-access',
       title: 'Storefront API access',
       sectionContent:
-        'The following section describes the use cases of the `api_access` capability and the Storefront API access scopes.',
+        'The following section describes the use cases of the `api_access` capability and the [Storefront API](/api/storefront) access scopes.',
       codeblock: {
         title: 'Enable Storefront API access',
         tabs: [
@@ -50,6 +58,14 @@ const data: LandingTemplateSchema = {
           },
         ],
       },
+      sectionCard: [
+        {
+          name: 'API access examples',
+          subtitle: 'See',
+          url: '/docs/api/checkout-ui-extensions/apis/standardapi#example-storefront-api-access',
+          type: 'blocks',
+        },
+      ],
       sectionSubContent: [
         {
           title: 'When to use Storefront API access',
@@ -109,9 +125,12 @@ Your extensions will have the following unauthenticated access scopes to the Sto
             "If you need to get data into checkout that you can't currently get from Shopify, then you should request network access. For example, you might need to fetch additional data to render loyalty points.",
         },
         {
-          title: 'Alternatives to requesting network access',
-          sectionContent:
-            'If you need to make an external call for data, then consider storing the data in a metafield instead of requesting network access. Storing data in a metafield enables you to rely on Shopify for the uptime, scaling, and durability of the data storage.',
+          title: 'Alternatives to network access',
+          sectionContent: `
+Instead of fetching data with an external network call, consider retrieving the data from a metafield. Your app may be able to use the [Admin API](/docs/api/admin) to write [metafields](/api/admin-graphql/latest/objects/metafield) on the shop, product, or customer ahead of checkout.
+
+Retrieving data from [metafields](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-appmetafields) during checkout is faster since it won't introduce an external network call. This allows you to rely on Shopify for the uptime, scaling, and durability of the data storage.
+`,
         },
         {
           title: 'Complete a request for network access',
@@ -125,6 +144,24 @@ Your extensions will have the following unauthenticated access scopes to the Sto
 
 5. Add <code>network_access = true</code> to the <code>settings</code> section of your extension's configuration file.`,
         },
+        {
+          title: 'Required CORS headers',
+          sectionContent: `
+Since UI extensions run in a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API), they have a null origin. They do not share the storefront or checkout's origin. For network calls to succeed, your server must support [cross-origin resource sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) for null origins by including this response header:
+
+<code>Access-Control-Allow-Origin: *</code>
+`,
+        },
+        {
+          title: 'Security considerations',
+          sectionContent: `
+When processing HTTP requests on your API server, you cannot guarantee that your own extension will have made every request. When responding with sensitive data, keep in mind that requests could originate from anywhere on the Internet.
+
+Your extension can pass a [session token](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-sessiontoken) to your API server but this only guarantees the integrity of its claims. It does not guarantee the request itself originated from Shopify. For example, your API server could trust the session token's \`sub\` claim (the customer ID) but it could not trust a \`?customer_id=\` query parameter.
+
+Consider a scenario where your extension retrieves a discount code from your API server and [applies it to the checkout](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-applydiscountcodechange). It would not be safe to expose an API endpoint named \`/get-discount-code\` if any buyer could make a direct HTTP request and obtain a discount code.
+`,
+        },
       ],
     },
     {
@@ -132,7 +169,15 @@ Your extensions will have the following unauthenticated access scopes to the Sto
       anchorLink: 'block-progress',
       title: 'Block progress',
       sectionContent:
-        'The following section describes use cases for blocking checkout progress, and how you can detect whether the merchant has allowed it.',
+        "The following section describes blocking the buyer's progress through checkout, and how you can detect whether the merchant has allowed it.",
+      sectionCard: [
+        {
+          name: 'Blocking examples',
+          subtitle: 'See',
+          url: '/docs/api/checkout-ui-extensions/apis/standardapi#example-buyer-journey',
+          type: 'blocks',
+        },
+      ],
       codeblock: {
         title: 'Enable progress blocking',
         tabs: [
@@ -145,19 +190,35 @@ Your extensions will have the following unauthenticated access scopes to the Sto
       },
       sectionSubContent: [
         {
-          title: 'When to request blocking checkout progress',
-          sectionContent:
-            "If your extension relies on required input or validating order information, then you might need to block checkout progress if the order isn't valid. You can do this with the [buyerJourney](/api/checkout-ui-extensions/extension-points-api#standardapi) intercept, by returning `behavior: block`. \n\n For example, for some purchases you need to collect and verify a customer's age. For the order to be valid, you need to verify that an age is set and that it's greater than or equal to a minimum value. \n\n In order to block checkout progress, your extension must have the `block_progress` capability.",
+          title: 'When to request blocking progress',
+          sectionContent: `
+If your extension relies on specific input then you might need to block the buyer's progress until they've provided all required information. You can do this with a [buyer journey](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-buyerjourney) intercept, by returning \`behavior: 'block'\`.
+
+For example, for some purchases you need to collect and verify a customer's age. For the order to be valid, you need to verify that an age is set and that it's greater than or equal to a minimum value.
+
+In order to block checkout progress, your extension must have the \`block_progress\` capability.
+`,
         },
         {
-          title: 'Granting the capability to block checkout progress',
-          sectionContent:
-            'Setting `block_progress` in the `shopify.ui.extension.toml` file informs merchants that your extension blocks checkout progress for invalid orders.  Merchants can allow or disallow this capability in the checkout editor. \n\n > Note: \n > When running a local extension with the `block_progress` capability, it will be automatically granted. This simulates a scenario where the merchant has allowed this capability. ',
+          title: 'Granting the capability to block progress',
+          sectionContent: `
+Setting \`block_progress\` in the \`shopify.ui.extension.toml\` file informs merchants that your extension blocks the buyer's progress for invalid orders. Merchants can allow or disallow this capability in the checkout editor.
+
+> Note:
+> When running a local extension with the \`block_progress\` capability, it will be automatically granted. This simulates a scenario where the merchant has allowed the capability.
+`,
         },
         {
-          title: 'Detecting the ability to block checkout progress',
-          sectionContent:
-            "In your extension code, you can use [capabilities](/api/checkout-ui-extensions/extension-points-api#standardapi) to see if the merchant has granted this capability. \n\n If your extension can't block checkout progress, then a `behavior: block` return in the [buyerJourney](/api/checkout-ui-extensions/extension-points-api#standardapi) intercept is treated as `behavior: allow`. \n\n When developing a local extension, you can remove the `block_progress` capability from your `shopify.ui.extension.toml` file to simulate a merchant disallowing the capability. \n\n > Tip: \n > We recommend having some UI to cover cases where you can't block checkout progress. For example, you might want to show a warning rather than block checkout progress when an order doesn't pass validation.",
+          title: 'Detecting the ability to block progress',
+          sectionContent: `
+In your extension, look for \`block_progress\` in [extension.capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-extension) to see if the merchant has granted the blocking capability.
+
+If the merchant declined the permission for your app to block progress, the \`behavior: 'block'\` option in the [buyer journey](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-buyerjourney) intercept will be treated as \`behavior: 'allow'\`, and checkout will proceed as normal.
+
+When developing a local extension, you can remove the \`block_progress\` capability from your \`shopify.ui.extension.toml\` file to simulate a merchant disallowing the capability.
+
+> Tip:
+> We recommend having some UI to cover cases where you can't block checkout progress. For example, you might want to show a warning rather than block checkout progress when an order doesn't pass validation.`,
         },
       ],
     },
@@ -191,6 +252,14 @@ Your extensions will have the following unauthenticated access scopes to the Sto
       title: 'Example settings definition',
       sectionContent:
         'The following example shows a settings definition that defines a setting named `banner_title` of type `single_line_text_field`. When the merchant sets a value for this setting from the checkout editor, Shopify validates that the provided value is between 5 and 20 characters in length \n\n Learn more about the settings api by completing our [custom banners example](/apps/checkout/custom-banners/add-custom-banner).',
+      sectionCard: [
+        {
+          name: 'Settings example code',
+          subtitle: 'See',
+          url: '/docs/api/checkout-ui-extensions/apis/standardapi#example-settings',
+          type: 'blocks',
+        },
+      ],
       codeblock: {
         title: 'Example settings',
         tabs: [

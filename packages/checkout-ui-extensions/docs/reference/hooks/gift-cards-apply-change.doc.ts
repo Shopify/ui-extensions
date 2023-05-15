@@ -4,7 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useApplyGiftCardChange',
-  description: 'Returns a function to add or remove gift cards.',
+  description: '',
+  descriptionType: 'UseApplyGiftCardChangeGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

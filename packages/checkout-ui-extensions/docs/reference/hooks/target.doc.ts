@@ -4,8 +4,8 @@ import {getHookExample, getLinkByType} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useTarget',
-  description:
-    'Returns the cart line the extension is attached to. This is only applicable to the `Checkout::CartLineDetails::RenderAfter` extension point.',
+  description: '',
+  descriptionType: 'UseTargetGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

@@ -4,8 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useTimezone',
-  description:
-    'Returns the time zone of the checkout, and automatically re-renders your component if the time zone changes.',
+  description: '',
+  descriptionType: 'UseTimezoneGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

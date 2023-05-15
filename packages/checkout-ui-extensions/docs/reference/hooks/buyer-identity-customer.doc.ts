@@ -4,11 +4,8 @@ import {getLinksByTag, REQUIRES_PROTECTED_CUSTOMER_DATA} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useCustomer',
-  description: `
-Returns the account belonging to the customer.
-
-The value is a \`Customer\` if the customer has an account and is logged in, \`undefined\` otherwise.
-`,
+  description: '',
+  descriptionType: 'UseCustomerGeneratedType',
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
   isVisualComponent: false,
   type: 'hook',

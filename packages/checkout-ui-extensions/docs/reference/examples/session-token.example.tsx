@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   render,
   Banner,
@@ -12,35 +12,35 @@ render('Checkout::Dynamic::Render', () => (
 function Extension() {
   const {sessionToken} = useExtensionApi();
 
-  async function queryApi() {
-    // Request a new (or cached) session token from Shopify
-    const token = await sessionToken.get();
-    console.log(token);
+  useEffect(() => {
+    async function queryApi() {
+      // Request a new (or cached) session token from Shopify
+      const token = await sessionToken.get();
+      console.log('sessionToken.get()', token);
 
-    if (token) {
       const apiResponse = await fetchWithToken(
         token,
       );
       // Use your response
-      console.log(apiResponse);
+      console.log('API response', apiResponse);
     }
-  }
 
-  function fetchWithToken(token) {
-    const result = fetch(
-      'https://myapp.com/api/session-token',
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
+    function fetchWithToken(token) {
+      const result = fetch(
+        'https://myapp.com/api/session-token',
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
-      },
-    );
-    return result;
-  }
+      );
+      return result;
+    }
 
-  queryApi();
+    queryApi();
+  }, [sessionToken]);
 
   return (
-    <Banner title="Session token Extension" />
+    <Banner>See console for API response</Banner>
   );
 }

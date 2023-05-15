@@ -4,8 +4,8 @@ import {getExample, getHookExample, getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useSessionToken',
-  description:
-    'Provides access to session tokens, which can be used to validate requests to your app server or supported third-party APIs using the token claims.',
+  description: '',
+  descriptionType: 'UseSessionTokenGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

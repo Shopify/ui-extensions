@@ -1,12 +1,15 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
-import {getLinksByTag, REQUIRES_PROTECTED_CUSTOMER_DATA} from '../helper.docs';
+import {
+  getLinksByTag,
+  REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2,
+} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useShippingAddress',
-  description:
-    'Returns the proposed `shippingAddress` applied to the checkout.',
-  requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
+  description: '',
+  descriptionType: 'UseShippingAddressGeneratedType',
+  requires: REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2,
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

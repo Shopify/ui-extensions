@@ -4,8 +4,8 @@ import {getHookExample, getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useSettings',
-  description:
-    'Returns the setting values defined by the merchant for the extension.',
+  description: '',
+  descriptionType: 'UseSettingsGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

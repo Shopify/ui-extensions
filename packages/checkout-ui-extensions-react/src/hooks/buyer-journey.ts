@@ -36,6 +36,9 @@ export function useBuyerJourneyCompleted<
  *
  * To block checkout progress, you must set the [block_progress](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress)
  * capability in your extension's configuration.
+ *
+ * If you do, then you're expected to inform the buyer why navigation was blocked,
+ * either by passing validation errors to the checkout UI or rendering the errors in your extension.
  */
 export function useBuyerJourneyIntercept<
   ID extends RenderExtensionPoint = RenderExtensionPoint,

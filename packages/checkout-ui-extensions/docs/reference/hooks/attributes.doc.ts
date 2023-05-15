@@ -4,7 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useAttributes',
-  description: 'Returns the proposed `attributes` applied to the checkout.',
+  description: '',
+  descriptionType: 'UseAttributesGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

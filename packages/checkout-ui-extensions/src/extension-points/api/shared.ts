@@ -836,8 +836,12 @@ export interface ValidationError {
    */
   message: string;
   /**
-   * The field that the error is associated with.
+   * The checkout UI field that the error is associated with.
+   *
    * Example: `$.cart.deliveryGroups[0].deliveryAddress.countryCode`
+   *
+   * See the [supported targets](https://shopify.dev/docs/api/functions/reference/cart-checkout-validation/graphql#supported-targets)
+   * for more information.
    */
   target?: string;
 }

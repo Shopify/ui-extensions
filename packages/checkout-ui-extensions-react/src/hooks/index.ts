@@ -29,6 +29,8 @@ export {useTranslate} from './translate';
 export {useSessionToken} from './session-token';
 export {useSettings} from './settings';
 export {useExtensionEditor} from './extension-editor';
+export {useAvailablePaymentOptions} from './payment-options';
+export {useSelectedPaymentOptions} from './payment-options';
 export {
   useDiscountAllocations,
   useApplyDiscountCodeChange,
