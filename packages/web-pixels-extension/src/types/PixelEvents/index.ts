@@ -6,8 +6,8 @@ export interface PixelEventsCheckoutAddressInfoSubmittedData {
 
 /**
  * The `checkout_address_info_submitted` event logs an instance of a buyer
- * submitting their mailing address. This event is only available in Checkouts
- * where Checkout Extensibility for customizations is enabled.
+ * submitting their mailing address. This event is only available in checkouts
+ * where checkout extensibility for customizations is enabled.
  */
 export interface PixelEventsCheckoutAddressInfoSubmitted {
   clientId: ClientId;
@@ -49,8 +49,8 @@ export interface PixelEventsCheckoutContactInfoSubmittedData {
 
 /**
  * The `checkout_contact_info_submitted` event logs an instance where a buyer
- * submits a checkout form. This event is only available in Checkouts where
- * Checkout Extensibility for customizations is enabled.
+ * submits a checkout form. This event is only available in checkouts where
+ * checkout extensibility for customizations is enabled.
  */
 export interface PixelEventsCheckoutContactInfoSubmitted {
   clientId: ClientId;
@@ -71,8 +71,8 @@ export interface PixelEventsCheckoutShippingInfoSubmittedData {
 
 /**
  * The `checkout_shipping_info_submitted` event logs an instance where the buyer
- * chooses a shipping rate. This event is only available in Checkouts where
- * Checkout Extensibility for customizations is enabled.
+ * chooses a shipping rate. This event is only available in checkouts where
+ * checkout extensibility for customizations is enabled.
  */
 export interface PixelEventsCheckoutShippingInfoSubmitted {
   clientId: ClientId;
@@ -272,8 +272,8 @@ export interface PixelEventsSearchSubmitted {
 export interface PixelEvents {
   /**
    * The `checkout_address_info_submitted` event logs an instance of a buyer
-   * submitting their mailing address. This event is only available in Checkouts
-   * where Checkout Extensibility for customizations is enabled.
+   * submitting their mailing address. This event is only available in checkouts
+   * where checkout extensibility for customizations is enabled.
    */
   checkout_address_info_submitted: PixelEventsCheckoutAddressInfoSubmitted;
 
@@ -285,15 +285,15 @@ export interface PixelEvents {
 
   /**
    * The `checkout_contact_info_submitted` event logs an instance where a buyer
-   * submits a checkout form. This event is only available in Checkouts where
-   * Checkout Extensibility for customizations is enabled.
+   * submits a checkout form. This event is only available in checkouts where
+   * checkout extensibility for customizations is enabled.
    */
   checkout_contact_info_submitted: PixelEventsCheckoutContactInfoSubmitted;
 
   /**
    * The `checkout_shipping_info_submitted` event logs an instance where the
-   * buyer chooses a shipping rate. This event is only available in Checkouts
-   * where Checkout Extensibility for customizations is enabled.
+   * buyer chooses a shipping rate. This event is only available in checkouts
+   * where checkout extensibility for customizations is enabled.
    */
   checkout_shipping_info_submitted: PixelEventsCheckoutShippingInfoSubmitted;
 
@@ -566,7 +566,8 @@ export interface CartLineCost {
 }
 
 /**
- * A container for all the information required to checkout items and pay.
+ * A container for all the information required to add items to checkout and
+ * pay.
  */
 export interface Checkout {
   attributes: Attribute[];
@@ -950,6 +951,11 @@ export interface Product {
   type: string | null;
 
   /**
+   * The product’s untranslated title.
+   */
+  untranslatedTitle: string;
+
+  /**
    * The product’s vendor name.
    */
   vendor: string;
@@ -990,6 +996,11 @@ export interface ProductVariant {
    * The product variant’s title.
    */
   title: string;
+
+  /**
+   * The product variant’s untranslated title.
+   */
+  untranslatedTitle: string;
 }
 
 /**
