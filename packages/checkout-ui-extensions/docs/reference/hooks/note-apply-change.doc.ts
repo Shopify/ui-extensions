@@ -4,8 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useApplyNoteChange',
-  description:
-    'Returns a function to mutate the `note` property of the checkout.',
+  description: '',
+  descriptionType: 'UseApplyNoteChangeGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

@@ -4,8 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useStorage',
-  description:
-    'Returns the key-value `Storage` interface for the extension point.',
+  description: '',
+  descriptionType: 'UseStorageGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

@@ -4,11 +4,8 @@ import {getHookExample, getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useBuyerJourneyIntercept',
-  description: `Installs a function for intercepting and preventing progress on checkout.
-
-  To block checkout progress, you must set the [block_progress](/docs/api/checkout-ui-extensions/configuration#block-progress) capability in your extension's configuration.
-  If you do, then you're expected to inform the buyer why navigation was blocked, either by passing validation errors to the checkout UI or rendering the errors in your extension.
-  `,
+  description: '',
+  descriptionType: 'UseBuyerJourneyInterceptGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

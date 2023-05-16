@@ -49,6 +49,8 @@ export type {
   CartLineUpdateChange,
   CartLineRemoveChange,
   PresentmentCartLine,
+  PaymentOption,
+  SelectedPaymentOption,
   CartDiscountCode,
   CartDiscountAllocation,
   CartCodeDiscountAllocation,
@@ -75,6 +77,13 @@ export type {
   Language,
   Localization,
   Order,
+  DeliveryGroup,
+  DeliveryGroupType,
+  CartLineReference,
+  DeliveryOptionReference,
+  DeliveryOption,
+  ShippingOption,
+  NumberRange,
 } from './standard';
 export type {
   CurrencyCode,

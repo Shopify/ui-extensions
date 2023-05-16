@@ -1,9 +1,12 @@
-import type {CodeTabType, ExampleType, LinkType} from '@shopify/generate-docs';
+import {CodeTabType, ExampleType, LinkType} from '@shopify/generate-docs';
 
 const examplePath = '../examples';
 
 export const REQUIRES_PROTECTED_CUSTOMER_DATA =
   'access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) for some properties.';
+
+export const REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2 =
+  'level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).';
 
 type NonEmptyArray<T> = [T, ...T[]];
 type ExtensionExampleLanguage = 'js' | 'jsx';
@@ -137,7 +140,14 @@ See [localizing UI extensions](/docs/apps/checkout/best-practices/localizing-ui-
       description: '',
       codeblock: {
         title: '',
-        tabs: getExtensionCodeTabs('extension-points'),
+        tabs: [
+          ...getExtensionCodeTabs('extension-points'),
+          {
+            code: `${examplePath}/extension-points.example.toml`,
+            language: 'toml',
+            title: 'shopify.ui.extension.toml',
+          },
+        ],
       },
     },
     settings: {
@@ -212,6 +222,20 @@ Ensure your extension can access the Storefront API via the [\`api_access\` capa
         tabs: getExtensionCodeTabs('buyer-journey-intercept/extension-banner'),
       },
     },
+    'payments/use-available-payment-options': {
+      description: '',
+      codeblock: {
+        title: 'Available payment options',
+        tabs: getExtensionCodeTabs('payments/use-available-payment-options'),
+      },
+    },
+    'payments/use-selected-payment-options': {
+      description: '',
+      codeblock: {
+        title: 'Selected payment options',
+        tabs: getExtensionCodeTabs('payments/use-selected-payment-options'),
+      },
+    },
     subscription: {
       description: '',
       codeblock: {
@@ -221,9 +245,9 @@ Ensure your extension can access the Storefront API via the [\`api_access\` capa
     },
     'session-token': {
       description: `
-You can request a session token from Shopify to use with your third party API calls.  The contents of the token claims are signed using your shared app secret so you can trust any information contained in the claims came from Shopify unaltered.
+You can request a session token from Shopify to use on your application server.  The contents of the token claims are signed using your shared app secret so you can trust the claims came from Shopify unaltered.
 
-> Note: You will need to [enable the network_access capability](/docs/api/checkout-ui-extensions/configuration#network-access) to use \`fetch()\`.
+> Note: You will need to [enable the \`network_access\` capability](/docs/api/checkout-ui-extensions/configuration#network-access) to use \`fetch()\`.
 `,
       codeblock: {
         title: 'Using a session token with fetch()',
@@ -234,7 +258,8 @@ You can request a session token from Shopify to use with your third party API ca
       description: `
 The contents of the token are signed using your shared app secret.  The optional \`sub\` claim contains the customer's \`gid\` if they are logged in and your app has permission to read customer accounts. For example, a loyalty app that needs to check a customer's point balance can use the \`sub\` claim to verify the customer's account.
 
-> Caution: Session tokens are _not_ authorization tokens and do not guarantee the request originated from Shopify.
+> Caution:
+> Your app server can only trust the claims within the session token. It cannot use the token to trust the entire HTTP request. See [security considerations](/docs/api/checkout-ui-extensions/configuration#network-access) for details.
 `,
       codeblock: {
         title: 'Session token claims',
@@ -303,7 +328,7 @@ export function getLinkByType(type: string): LinkType {
 
   if (!link) {
     throw new HelperDocsError(
-      `Could not find a matching link of the type "${type}". Does it exist within the file "src/docs/helper.docs.ts"?`,
+      `Could not find a matching link of the type "${type}". Does it exist within the file "docs/reference/helper.docs.ts"?`,
     );
   }
 
@@ -319,7 +344,7 @@ export function getLinksByTag(name: string, excludeType?: string): LinkType[] {
   const linksByTag = links[name];
   if (!linksByTag) {
     throw new HelperDocsError(
-      `Could not find a matching tag with the name "${name}". Does it exist within the file "src/docs/helper.docs.ts"?`,
+      `Could not find a matching tag with the name "${name}". Does it exist within the file "docs/reference/helper.docs.ts"?`,
     );
   }
   if (excludeType) {
@@ -340,7 +365,7 @@ export function getExample(
   const example = getExamples(languages)[name];
   if (!example) {
     throw new HelperDocsError(
-      `Could not find a matching example with the name "${name}". Does it exist within the file "src/docs/helper.docs.ts?`,
+      `Could not find a matching example with the name "${name}". Does it exist within the file "docs/reference/helper.docs.ts" in getExamples()?`,
     );
   }
   return example;

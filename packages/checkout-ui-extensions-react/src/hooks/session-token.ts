@@ -6,8 +6,7 @@ import {
 import {useExtensionApi} from './api';
 
 /**
- * Returns a 'sessionToken' object, which contains a get() method that
- * can be used to obtain a checkout extension session token.
+ * Provides access to session tokens, which can be used to verify token claims on your app's server.
  */
 export function useSessionToken<
   ID extends RenderExtensionPoint = RenderExtensionPoint,

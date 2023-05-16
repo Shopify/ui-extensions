@@ -4,9 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useAppMetafields',
-  description: `
-Returns the metafields configured with \`shopify.ui.extension.toml\`.
-`,
+  description: '',
+  descriptionType: 'UseAppMetafieldsGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

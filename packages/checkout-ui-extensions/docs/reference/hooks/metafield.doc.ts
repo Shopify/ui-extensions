@@ -4,7 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useMetafield',
-  description: 'Returns a single filtered `Metafield` or `undefined`',
+  description: '',
+  descriptionType: 'UseMetafieldGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

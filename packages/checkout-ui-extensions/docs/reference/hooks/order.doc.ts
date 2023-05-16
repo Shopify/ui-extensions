@@ -4,7 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useOrder',
-  description: "Returns the order information that's available post-checkout.",
+  description: '',
+  descriptionType: 'UseOrderGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

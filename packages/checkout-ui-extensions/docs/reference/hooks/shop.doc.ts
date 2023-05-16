@@ -4,7 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useShop',
-  description: 'Returns the `Shop` where the checkout is taking place.',
+  description: '',
+  descriptionType: 'UseShopGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

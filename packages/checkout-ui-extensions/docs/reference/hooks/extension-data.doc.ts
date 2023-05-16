@@ -4,7 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useExtensionData',
-  description: 'Returns the metadata about the extension.',
+  description: '',
+  descriptionType: 'UseExtensionDataGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

@@ -4,8 +4,8 @@ import {getHookExample, getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useTranslate',
-  description:
-    'Returns the `I18nTranslate` interface used to translate strings.',
+  description: '',
+  descriptionType: 'UseTranslateGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

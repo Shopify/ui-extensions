@@ -35,6 +35,9 @@ export function useDiscountAllocations<
 
 /**
  * Returns a function to add or remove discount codes.
+ *
+ * > Caution:
+ * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves discount codes through a network call.
  */
 export function useApplyDiscountCodeChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,

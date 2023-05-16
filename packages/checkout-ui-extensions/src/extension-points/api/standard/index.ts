@@ -629,6 +629,11 @@ export interface StandardApi<
   attributes: StatefulRemoteSubscribable<Attribute[] | undefined>;
 
   /**
+   * All available payment options.
+   */
+  availablePaymentOptions: StatefulRemoteSubscribable<PaymentOption[]>;
+
+  /**
    * Information about the buyer that is interacting with the checkout.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
@@ -647,6 +652,11 @@ export interface StandardApi<
    * Details on the costs the buyer will pay for this checkout.
    */
   cost: CartCost;
+
+  /**
+   * A list of delivery groups containing information about the delivery of the items the customer intends to purchase.
+   */
+  deliveryGroups: StatefulRemoteSubscribable<DeliveryGroup[]>;
 
   /**
    * A list of discount codes currently applied to the checkout.
@@ -738,6 +748,11 @@ export interface StandardApi<
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
 
   /**
+   * Payment options selected by the buyer.
+   */
+  selectedPaymentOptions: StatefulRemoteSubscribable<SelectedPaymentOption[]>;
+
+  /**
    * Provides access to session tokens, which can be used to verify token claims on your app's server.
    *
    * See [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-session-token) for more information.
@@ -793,27 +808,26 @@ export interface SessionToken {
 
 export interface BuyerIdentity {
   /**
-   * The customer account from the buyer. This value will update when there's a
-   * change in the account. The value is undefined if the buyer isn’t a known customer
-   * for this shop.
+   * The buyer's customer account. The value is undefined if the buyer isn’t a
+   * known customer for this shop or if they haven't logged in yet.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   customer: StatefulRemoteSubscribable<Customer | undefined>;
 
   /**
-   * The email address of the buyer that is interacting with the cart. This value will update when there's a
-   * change in the checkout formulary. The value is undefined if no permission given.
+   * The email address of the buyer that is interacting with the cart.
+   * The value is `undefined` if the app does not have access to customer data.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   email: StatefulRemoteSubscribable<string | undefined>;
 
   /**
-   * The phone number of the buyer that is interacting with the cart. This value will update when there's a
-   * change in the checkout formulary. The value is undefined if no permission given.
+   * The phone number of the buyer that is interacting with the cart.
+   * The value is `undefined` if the app does not have access to customer data.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   phone: StatefulRemoteSubscribable<string | undefined>;
 }
@@ -859,7 +873,7 @@ export interface MailingAddress {
   /**
    * The buyer's full name.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'John Doe'
    */
@@ -868,7 +882,7 @@ export interface MailingAddress {
   /**
    * The buyer's first name.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'John'
    */
@@ -877,7 +891,7 @@ export interface MailingAddress {
   /**
    * The buyer's last name.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'Doe'
    */
@@ -886,7 +900,7 @@ export interface MailingAddress {
   /**
    * The buyer's company name.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'Shopify'
    */
@@ -895,7 +909,7 @@ export interface MailingAddress {
   /**
    * The first line of the buyer's address, including street name and number.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example '151 O'Connor Street'
    */
@@ -904,7 +918,7 @@ export interface MailingAddress {
   /**
    * The second line of the buyer's address, like apartment number, suite, etc.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'Ground floor'
    */
@@ -913,7 +927,7 @@ export interface MailingAddress {
   /**
    * The buyer's city.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'Ottawa'
    */
@@ -922,7 +936,7 @@ export interface MailingAddress {
   /**
    * The buyer's postal or ZIP code.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'K2P 2L8'
    */
@@ -931,7 +945,7 @@ export interface MailingAddress {
   /**
    * The ISO 3166 Alpha-2 format for the buyer's country. Refer to https://www.iso.org/iso-3166-country-codes.html.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'CA' for Canada.
    */
@@ -940,7 +954,7 @@ export interface MailingAddress {
   /**
    * The buyer's zone code, such as state, province, prefecture, or region.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'ON' for Ontario.
    */
@@ -949,7 +963,7 @@ export interface MailingAddress {
   /**
    * The buyer's phone number.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example '+1 613 111 2222'.
    */
@@ -1106,6 +1120,11 @@ export interface ProductVariant extends BaseMerchandise {
    * The product object that the product variant belongs to.
    */
   product: Product;
+
+  /**
+   * Whether or not the product requires shipping.
+   */
+  requiresShipping: boolean;
 
   /**
    * The selling plan associated with the merchandise.
@@ -1330,6 +1349,58 @@ export interface CartLineUpdateChange {
    * with or `null` to remove the the product from the selling plan.
    */
   sellingPlanId?: SellingPlan['id'] | null;
+}
+
+/**
+ * A payment option presented to the buyer.
+ */
+export interface PaymentOption {
+  /**
+   * The type of the payment option.
+   *
+   * Shops can be configured to support many different payment options. Some options are only available to buyers in specific regions.
+   *
+   * | Type  | Description  |
+   * |---|---|
+   * | `creditCard`  |  A vaulted or manually entered credit card.  |
+   * | `deferred`  |  A [deferred payment](https://help.shopify.com/en/manual/orders/deferred-payments), such as invoicing the buyer and collecting payment at a later time.  |
+   * | `local`  |  A [local payment option](https://help.shopify.com/en/manual/payments/shopify-payments/local-payment-methods) specific to the current region or market  |
+   * | `manualPayment`  |  A manual payment option such as an in-person retail transaction.  |
+   * | `offsite`  |  A payment processed outside of Shopify's checkout, excluding integrated wallets.  |
+   * | `other`  |  Another type of payment not defined here.  |
+   * | `paymentOnDelivery`  |  A payment that will be collected on delivery.  |
+   * | `redeemable`  |  A redeemable payment option such as a gift card or store credit.  |
+   * | `wallet`  |  An integrated wallet such as PayPal, Google Pay, Apple Pay, etc.  |
+   */
+  type:
+    | 'creditCard'
+    | 'deferred'
+    | 'local'
+    | 'manualPayment'
+    | 'offsite'
+    | 'other'
+    | 'paymentOnDelivery'
+    | 'redeemable'
+    | 'wallet';
+
+  /**
+   * The unique handle for the payment option.
+   *
+   * This is not a globally unique identifier. It may be an identifier specific to the given checkout session or the current shop.
+   */
+  handle: string;
+}
+
+/**
+ * A payment option selected by the buyer.
+ */
+export interface SelectedPaymentOption {
+  /**
+   * The unique handle referencing `PaymentOption.handle`.
+   *
+   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/apis/standardapi#properties-propertydetail-availablepaymentoptions).
+   */
+  handle: string;
 }
 
 export interface CartDiscountCode {
@@ -1584,7 +1655,7 @@ export interface Customer {
   /**
    * Customer ID.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @example 'gid://shopify/Customer/123'
    */
@@ -1592,49 +1663,49 @@ export interface Customer {
   /**
    * The email of the customer.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   email?: string;
   /**
    * The phone number of the customer.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   phone?: string;
   /**
    * The full name of the customer.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   fullName?: string;
   /**
    * The first name of the customer.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   firstName?: string;
   /**
    * The last name of the customer.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   lastName?: string;
   /**
    * The image associated with the customer.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   image: ImageDetails;
   /**
    * Defines if the customer accepts marketing activities.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   acceptsMarketing: boolean;
   /**
    * The Store Credit Accounts owned by the customer and usable during the checkout process.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires Level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * @private
    */
@@ -1688,4 +1759,129 @@ export interface Order {
    * If cancelled, the time at which the order was cancelled.
    */
   cancelledAt?: string;
+}
+
+/**
+ * Represents the delivery information and options available for one or
+ * more cart lines.
+ */
+export interface DeliveryGroup {
+  /**
+   * The cart line references associated to the delivery group.
+   */
+  targetedCartLines: CartLineReference[];
+
+  /**
+   * The delivery options available for the delivery group.
+   */
+  deliveryOptions: DeliveryOption[];
+
+  /**
+   * The selected delivery option for the delivery group.
+   */
+  selectedDeliveryOption?: DeliveryOptionReference;
+
+  /**
+   * The type of the delivery group.
+   */
+  groupType: DeliveryGroupType;
+
+  /**
+   * Whether delivery is required for the delivery group.
+   */
+  deliveryRequired: boolean;
+}
+
+/**
+ * The possible types of a delivery group.
+ */
+export type DeliveryGroupType = 'oneTimePurchase' | 'subscription';
+
+/**
+ * Represents a reference to a cart line.
+ */
+export interface CartLineReference {
+  /**
+   * The unique identifier of the referenced cart line.
+   */
+  id: string;
+}
+
+/**
+ * Represents a reference to a delivery option.
+ */
+export interface DeliveryOptionReference {
+  /**
+   * The unique identifier of the referenced delivery option.
+   */
+  handle: string;
+}
+
+/**
+ * Represents a base interface for a single delivery option
+ */
+export interface DeliveryOption {
+  /**
+   * The unique identifier of the delivery option.
+   */
+  handle: string;
+
+  /**
+   * The title of the delivery option.
+   */
+  title?: string;
+
+  /**
+   * The description of the delivery option.
+   */
+  description?: string;
+}
+
+/**
+ * Represents a delivery option that is a shipping option.
+ */
+export interface ShippingOption extends DeliveryOption {
+  /**
+   * The type of this delivery option.
+   */
+  type: 'shipping' | 'local';
+
+  /**
+   * The name of the carrier.
+   */
+  carrierName?: string;
+
+  /**
+   * The cost of the delivery.
+   */
+  cost: Money;
+
+  /**
+   * The cost of the delivery including discounts.
+   */
+  costAfterDiscounts: Money;
+
+  /**
+   * Information about the estimated delivery time.
+   */
+  deliveryEstimate: DeliveryEstimate;
+}
+
+export interface DeliveryEstimate {
+  /**
+   * The estimated time in transit for the delivery in seconds.
+   */
+  timeInTransit?: NumberRange;
+}
+
+export interface NumberRange {
+  /**
+   * The lower bound of the number range.
+   */
+  lower?: number;
+
+  /**
+   * The upper bound of the number range.
+   */
+  upper?: number;
 }

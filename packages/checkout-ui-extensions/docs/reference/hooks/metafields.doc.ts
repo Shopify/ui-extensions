@@ -4,8 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useMetafields',
-  description:
-    'Returns the current array of `metafields` applied to the checkout. You can optionally filter the list.',
+  description: '',
+  descriptionType: 'UseMetafieldsGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

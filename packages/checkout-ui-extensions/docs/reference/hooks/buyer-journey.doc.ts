@@ -4,8 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useBuyerJourney',
-  description:
-    'Returns the `buyerJourney` details on buyer progression in checkout.',
+  description: '',
+  descriptionType: 'UseBuyerJourneyGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

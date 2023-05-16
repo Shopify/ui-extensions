@@ -4,7 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useApplyCartLinesChange',
-  description: 'Returns a function to mutate the `lines` property of checkout.',
+  description: '',
+  descriptionType: 'UseApplyCartLinesChangeGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

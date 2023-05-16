@@ -4,8 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useApplyMetafieldsChange',
-  description:
-    'Returns a function to mutate the `metafields` property of the checkout.',
+  description: '',
+  descriptionType: 'UseApplyMetafieldsChangeGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

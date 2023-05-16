@@ -90,6 +90,15 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
+   * A static extension point that renders a form modal when a buyer selects the custom onsite payment method.
+   *
+   * @private
+   */
+  'Checkout::PaymentMethod::RenderModal': RenderExtension<
+    StandardApi<'Checkout::PaymentMethod::RenderModal'>,
+    AllComponents
+  >;
+  /**
    * A static extension point that is rendered in the order summary, before the discount form element.
    */
   'Checkout::Reductions::RenderBefore': RenderExtension<

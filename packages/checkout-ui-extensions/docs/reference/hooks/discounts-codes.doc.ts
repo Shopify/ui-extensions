@@ -4,8 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useDiscountCodes',
-  description:
-    'Returns the current discount codes applied to the cart, and automatically re-renders your component if discount codes are added or removed.',
+  description: '',
+  descriptionType: 'UseDiscountCodesGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

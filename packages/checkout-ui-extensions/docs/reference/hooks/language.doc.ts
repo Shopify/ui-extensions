@@ -4,8 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useLanguage',
-  description:
-    'Returns the current language of the checkout, and automatically re-renders your component if the language changes.',
+  description: '',
+  descriptionType: 'UseLanguageGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

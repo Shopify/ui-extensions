@@ -4,7 +4,8 @@ import {getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'useExtensionLanguage',
-  description: "Returns the buyer's language, as supported by the extension.",
+  description: '',
+  descriptionType: 'UseExtensionLanguageGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',

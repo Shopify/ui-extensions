@@ -27,8 +27,8 @@ const data: LandingTemplateSchema = {
       `,
       sectionCard: [
         {
-          name: 'Extension points reference',
-          subtitle: 'Navigate to',
+          name: 'Extension points',
+          subtitle: 'API reference',
           url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
           type: 'blocks',
         },
@@ -43,8 +43,8 @@ const data: LandingTemplateSchema = {
       image: 'dynamic-extension-points.png',
       sectionCard: [
         {
-          name: 'Extension points reference',
-          subtitle: 'Navigate to',
+          name: 'Extension points',
+          subtitle: 'API reference',
           url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
           type: 'blocks',
         },
@@ -57,38 +57,56 @@ const data: LandingTemplateSchema = {
       accordionContent: [
         {
           title: 'Information',
-          description:
-            'This is the first step in the checkout process where the buyer enters contact information and a delivery address.',
+          description: `
+This is the first step in the checkout process where the buyer enters contact information and a delivery address.
+
+See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+`,
           image: 'supported-locations-information.png',
         },
         {
           title: 'Shipping',
-          description:
-            'Point in checkout where the buyer selects a shipping method.',
+          description: `
+Point in checkout where the buyer selects a shipping method.
+
+See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+`,
           image: 'supported-locations-shipping.png',
         },
         {
           title: 'Payment',
-          description:
-            'Point in checkout where the buyer enters their payment information.',
+          description: `
+Point in checkout where the buyer enters their payment information.
+
+See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+`,
           image: 'supported-locations-payment.png',
         },
         {
           title: 'Order summary',
-          description:
-            'Summary of the cart contents, discounts, and order totals.',
+          description: `
+Summary of the cart contents, discounts, and order totals.
+
+See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+`,
           image: 'supported-locations-order-summary.png',
         },
         {
           title: 'Shop Pay',
-          description:
-            'Accelerated checkout where Shopify pre-fills buyer information using their Shop Pay account.',
+          description: `
+Accelerated checkout where Shopify pre-fills buyer information using their Shop Pay account.
+
+See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+`,
           image: 'supported-locations-shop-pay.png',
         },
         {
           title: 'Order Status',
-          description:
-            'After submitting their order, the buyer is taken to an order status page.',
+          description: `
+After submitting their order, the buyer is taken to an order status page.
+
+See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+`,
           image: 'supported-locations-order-status.png',
         },
       ],
@@ -98,7 +116,21 @@ const data: LandingTemplateSchema = {
       anchorLink: 'globals',
       title: 'Globals',
       sectionContent:
-        "This library provides an alias for `shopify.extend` in the form of the `extend()` export. This function is also strongly-typed. If you’re working in an editor that supports TypeScript’s language server (we recommend [VSCode](https://code.visualstudio.com)), then you get feedback about the input arguments to that extension point. \n\n For extensions that render UI, such as [`Checkout::Dynamic::Render`](#extension-points), the first argument is always a [`@remote-ui` `RemoteRoot` object](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoteroot) that enables you to render UI components into your extension point in checkout. You don't need to explicitly call [`mount()`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootmount) on this object. After the callback that you registered for the extension point ends, or if it returns a `Promise` that resolves, your initial UI is rendered. \n\n That’s really all the global API you need to know to start writing a UI extension. You’ll find the documentation for additional APIs that are provided when an extension point is run in the [extension points API documentation](/api/checkout-ui-extensions/extension-points-api).",
+        "The `checkout-ui-extensions` library provides an alias for `shopify.extend` in the form of the `extend()` export. This function is also strongly-typed. If you’re working in an editor that supports TypeScript’s language server (we recommend [VSCode](https://code.visualstudio.com)), then you get feedback about the input arguments to that extension point. \n\n For extensions that render UI, such as [`Checkout::Dynamic::Render`](#extension-points), the first argument is always a [`@remote-ui` `RemoteRoot` object](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoteroot) that enables you to render UI components into your extension point in checkout. You don't need to explicitly call [`mount()`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootmount) on this object. After the callback that you registered for the extension point ends, or if it returns a `Promise` that resolves, your initial UI is rendered.",
+      sectionCard: [
+        {
+          name: 'Extension points',
+          subtitle: 'API reference',
+          url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
+          type: 'blocks',
+        },
+        {
+          name: 'Standard API',
+          subtitle: 'API reference',
+          url: '/docs/api/checkout-ui-extensions/apis/standardapi',
+          type: 'blocks',
+        },
+      ],
       sectionSubContent: [
         {
           title: 'Web platform globals',
