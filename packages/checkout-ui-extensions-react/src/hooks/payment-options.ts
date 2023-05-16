@@ -6,8 +6,9 @@ import {useMemo} from 'react';
 
 import {useExtensionApi} from './api';
 import {useSubscription} from './subscription';
+
 /**
- * Returns the current payment options available
+ * Returns all available payment options.
  */
 export function useAvailablePaymentOptions<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
@@ -18,8 +19,7 @@ export function useAvailablePaymentOptions<
 }
 
 /**
- * Returns the selected payment options, and automatically re-renders
- * your component if the selected payment options change.
+ * Returns payment options selected by the buyer.
  */
 export function useSelectedPaymentOptions<
   ID extends RenderExtensionPoint = RenderExtensionPoint,

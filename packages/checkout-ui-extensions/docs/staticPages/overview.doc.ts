@@ -24,7 +24,8 @@ const data: LandingTemplateSchema = {
         'Use Shopify CLI to [generate a new extension](/apps/tools/cli/commands#generate-extension) in the directory of your app.',
       sectionCard: [
         {
-          name: 'Watch the getting started video',
+          name: 'Getting started video',
+          subtitle: 'Watch',
           url: 'https://www.youtube.com/watch?v=jr_AIUDUSMw',
           type: 'youtube',
         },
@@ -63,8 +64,8 @@ const data: LandingTemplateSchema = {
         a fast and secure environment for custom [(non-DOM)](#constraints) UIs.`,
       sectionCard: [
         {
-          name: 'Extension points reference',
-          subtitle: 'Navigate to',
+          name: 'Extension points',
+          subtitle: 'Overview',
           url: '/api/checkout-ui-extensions/extension-points-overview',
           type: 'blocks',
         },
@@ -96,7 +97,7 @@ const data: LandingTemplateSchema = {
       sectionCard: [
         {
           name: 'Configuration guide',
-          subtitle: 'Navigate to',
+          subtitle: 'Learn more',
           url: '/api/checkout-ui-extensions/configuration',
           type: 'gear',
         },
@@ -122,7 +123,7 @@ const data: LandingTemplateSchema = {
       sectionCard: [
         {
           name: 'Checkout extensions API',
-          subtitle: 'Navigate to',
+          subtitle: 'API reference',
           url: '/api/checkout-ui-extensions/extension-points-api',
           type: 'blocks',
         },
@@ -154,13 +155,13 @@ const data: LandingTemplateSchema = {
       sectionCard: [
         {
           name: 'Component library',
-          subtitle: 'Navigate to',
+          subtitle: 'API reference',
           url: '/api/checkout-ui-extensions/components',
           type: 'blocks',
         },
         {
           name: 'Figma UI kit',
-          subtitle: 'Navigate to',
+          subtitle: 'UI Reference',
           url: 'https://www.figma.com/community/file/1121180079120732846',
           type: 'setting',
         },
@@ -184,6 +185,44 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
+      anchorLink: 'security',
+      title: 'Security',
+      sectionContent: `
+Checkout UI extensions are a safe and secure way to customize the appearance and functionality of the checkout page without compromising the security of checkout or customer data.
+- They run in an isolated sandbox, separate from the checkout page and other UI extensions.
+- They don't have access to sensitive payment information or the checkout page itself (HTML or other assets).
+- They are limited to specific UI components and APIs that are exposed by the platform.
+- They have limited access to global web APIs.
+- Apps that wish to access [protected customer data](/docs/apps/store/data-protection/protected-customer-data), must submit an application and are subject to strict security guidelines and review proccesses by Shopify.
+`,
+      sectionNotice: [
+        {
+          title: 'Constraints',
+          sectionContent: `
+You can't override the CSS for UI components. The checkout UI will always render the merchant's own branding as shown in the image in the UI components section above.
+
+Checkout UI extensions don't have access to the DOM and can't return DOM nodes. They can't return \`<div>\` elements, for example. Building an arbitrary tree of HTML and loading additional scripts using script tags are also not supported.
+`,
+          type: 'info',
+        },
+      ],
+      sectionCard: [
+        {
+          name: 'Rendering extensions',
+          subtitle: 'Learn more',
+          url: 'https://shopify.engineering/remote-rendering-ui-extensibility',
+          type: 'tutorial',
+        },
+        {
+          name: 'Checkout branding',
+          subtitle: 'Learn more',
+          url: '/docs/apps/checkout/advanced-checkout-branding',
+          type: 'tutorial',
+        },
+      ],
+    },
+    {
+      type: 'Generic',
       anchorLink: 'troubleshooting',
       title: 'Troubleshooting',
       sectionContent:
@@ -191,18 +230,11 @@ const data: LandingTemplateSchema = {
       sectionCard: [
         {
           name: 'Troubleshooting guide',
-          subtitle: 'Navigate to',
+          subtitle: 'Learn more',
           url: '/apps/checkout/delivery-instructions/getting-started#troubleshooting',
           type: 'apps',
         },
       ],
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'constraints',
-      title: 'Constraints',
-      sectionContent:
-        "You can't override the CSS for UI components. The checkout UI will always render the merchant's own branding as shown in the image in the UI components section above. \n\nCheckout UI extensions don't have access to the DOM and can't return DOM nodes. They can't return `<div>` elements, for example. Building an arbitrary tree of HTML and loading additional scripts using script tags are also not supported.",
     },
     {
       type: 'Resource',

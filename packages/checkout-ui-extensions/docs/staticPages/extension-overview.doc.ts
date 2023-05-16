@@ -27,8 +27,8 @@ const data: LandingTemplateSchema = {
       `,
       sectionCard: [
         {
-          name: 'Extension points reference',
-          subtitle: 'Navigate to',
+          name: 'Extension points',
+          subtitle: 'API reference',
           url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
           type: 'blocks',
         },
@@ -43,8 +43,8 @@ const data: LandingTemplateSchema = {
       image: 'dynamic-extension-points.png',
       sectionCard: [
         {
-          name: 'Extension points reference',
-          subtitle: 'Navigate to',
+          name: 'Extension points',
+          subtitle: 'API reference',
           url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
           type: 'blocks',
         },
@@ -119,14 +119,14 @@ See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoint
         "The `checkout-ui-extensions` library provides an alias for `shopify.extend` in the form of the `extend()` export. This function is also strongly-typed. If you’re working in an editor that supports TypeScript’s language server (we recommend [VSCode](https://code.visualstudio.com)), then you get feedback about the input arguments to that extension point. \n\n For extensions that render UI, such as [`Checkout::Dynamic::Render`](#extension-points), the first argument is always a [`@remote-ui` `RemoteRoot` object](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoteroot) that enables you to render UI components into your extension point in checkout. You don't need to explicitly call [`mount()`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootmount) on this object. After the callback that you registered for the extension point ends, or if it returns a `Promise` that resolves, your initial UI is rendered.",
       sectionCard: [
         {
-          name: 'Extension points reference',
-          subtitle: 'See',
+          name: 'Extension points',
+          subtitle: 'API reference',
           url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
           type: 'blocks',
         },
         {
           name: 'Standard API',
-          subtitle: 'See',
+          subtitle: 'API reference',
           url: '/docs/api/checkout-ui-extensions/apis/standardapi',
           type: 'blocks',
         },

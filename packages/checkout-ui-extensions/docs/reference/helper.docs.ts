@@ -222,6 +222,20 @@ Ensure your extension can access the Storefront API via the [\`api_access\` capa
         tabs: getExtensionCodeTabs('buyer-journey-intercept/extension-banner'),
       },
     },
+    'payments/use-available-payment-options': {
+      description: '',
+      codeblock: {
+        title: 'Available payment options',
+        tabs: getExtensionCodeTabs('payments/use-available-payment-options'),
+      },
+    },
+    'payments/use-selected-payment-options': {
+      description: '',
+      codeblock: {
+        title: 'Selected payment options',
+        tabs: getExtensionCodeTabs('payments/use-selected-payment-options'),
+      },
+    },
     subscription: {
       description: '',
       codeblock: {
@@ -351,7 +365,7 @@ export function getExample(
   const example = getExamples(languages)[name];
   if (!example) {
     throw new HelperDocsError(
-      `Could not find a matching example with the name "${name}". Does it exist within the file "docs/reference/helper.docs.ts?`,
+      `Could not find a matching example with the name "${name}". Does it exist within the file "docs/reference/helper.docs.ts" in getExamples()?`,
     );
   }
   return example;

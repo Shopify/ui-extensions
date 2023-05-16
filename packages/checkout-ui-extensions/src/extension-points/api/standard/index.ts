@@ -629,11 +629,10 @@ export interface StandardApi<
   attributes: StatefulRemoteSubscribable<Attribute[] | undefined>;
 
   /**
-   * A list of payment methods displayed in the checkout.
-   *
-   * @private
+   * All available payment options.
    */
   availablePaymentOptions: StatefulRemoteSubscribable<PaymentOption[]>;
+
   /**
    * Information about the buyer that is interacting with the checkout.
    *
@@ -749,9 +748,7 @@ export interface StandardApi<
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
 
   /**
-   * A list of payment methods selected by the buyer in checkout.
-   *
-   * @private
+   * Payment options selected by the buyer.
    */
   selectedPaymentOptions: StatefulRemoteSubscribable<SelectedPaymentOption[]>;
 
@@ -1354,14 +1351,30 @@ export interface CartLineUpdateChange {
   sellingPlanId?: SellingPlan['id'] | null;
 }
 
+/**
+ * A payment option presented to the buyer.
+ */
 export interface PaymentOption {
   /**
    * The type of the payment option.
+   *
+   * Shops can be configured to support many different payment options. Some options are only available to buyers in specific regions.
+   *
+   * | Type  | Description  |
+   * |---|---|
+   * | `creditCard`  |  A vaulted or manually entered credit card.  |
+   * | `deferred`  |  A [deferred payment](https://help.shopify.com/en/manual/orders/deferred-payments), such as invoicing the buyer and collecting payment at a later time.  |
+   * | `local`  |  A [local payment option](https://help.shopify.com/en/manual/payments/shopify-payments/local-payment-methods) specific to the current region or market  |
+   * | `manualPayment`  |  A manual payment option such as an in-person retail transaction.  |
+   * | `offsite`  |  A payment processed outside of Shopify's checkout, excluding integrated wallets.  |
+   * | `other`  |  Another type of payment not defined here.  |
+   * | `paymentOnDelivery`  |  A payment that will be collected on delivery.  |
+   * | `redeemable`  |  A redeemable payment option such as a gift card or store credit.  |
+   * | `wallet`  |  An integrated wallet such as PayPal, Google Pay, Apple Pay, etc.  |
    */
   type:
     | 'creditCard'
     | 'deferred'
-    | 'giftCard'
     | 'local'
     | 'manualPayment'
     | 'offsite'
@@ -1372,13 +1385,20 @@ export interface PaymentOption {
 
   /**
    * The unique handle for the payment option.
+   *
+   * This is not a globally unique identifier. It may be an identifier specific to the given checkout session or the current shop.
    */
   handle: string;
 }
 
+/**
+ * A payment option selected by the buyer.
+ */
 export interface SelectedPaymentOption {
   /**
-   * The unique handle relating to the payment option.
+   * The unique handle referencing `PaymentOption.handle`.
+   *
+   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/apis/standardapi#properties-propertydetail-availablepaymentoptions).
    */
   handle: string;
 }
