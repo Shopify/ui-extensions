@@ -25,12 +25,12 @@ export interface CartApiContent {
   /** Apply a cart level discount
    * @param type the type of discount applied (example: 'Percentage')
    * @param title the title attributed with the discount
-   * @param amount the percentage or fixed monetary amount deducted with the discout
+   * @param amount the percentage or fixed monetary amount deducted with the discount. Pass in `undefined` if using discount codes.
    */
   applyCartDiscount(
     type: DiscountType,
     title: string,
-    amount: string,
+    amount?: string,
   ): Promise<void>;
 
   /** Remove the cart discount */
@@ -72,11 +72,6 @@ export interface CartApiContent {
    * @param keys the collection of keys to be removed from the cart properties
    */
   removeCartProperties(keys: string[]): Promise<void>;
-
-  /** Adds or modifies a cart note.
-   * @param note the note to set on the cart. This will override the existing note.
-   */
-  setCartNote(note: string): Promise<void>;
 
   /** Adds custom properties to the specified line item
    * @param uuid the uuid of the line item to which the properties should be stringd
