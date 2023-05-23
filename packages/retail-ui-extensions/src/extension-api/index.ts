@@ -13,6 +13,11 @@ export type {StandardApi} from './standard-api';
 
 export type {SessionApiContent, SessionApi} from './session-api';
 export type {ToastApiContent, ToastApi} from './toast-api';
+export type {
+  ProductSearchApi,
+  ProductSearchApiContent,
+  ProductSortType,
+} from './product-search-api';
 
 export type {
   Address,
@@ -22,6 +27,13 @@ export type {
   Discount,
   CustomSale,
   Session,
+  MultipleResourceResult,
+  PaginatedResult,
+  Product,
+  ProductOption,
+  ProductVariant,
+  ProductVariantInventoryPolicy,
+  ProductVariantOption,
 } from './types';
 
 export {CountryCode} from './types';
