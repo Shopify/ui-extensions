@@ -1,5 +1,28 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {BadgeProps} from '../Badge';
+import type {
+  AccessibilityProps as RNAccessibilityProps,
+  AccessibilityPropsAndroid,
+  AccessibilityPropsIOS,
+} from 'react-native';
+
+export interface AccessibilityProps
+  extends RNAccessibilityProps,
+    AccessibilityPropsAndroid,
+    AccessibilityPropsIOS {
+  accessibilityAutoFocus?: boolean;
+  accessibilityLabelPrefix?: string;
+}
+
+export interface TestProps<T extends string = string> {
+  testID?: T;
+}
+
+export interface ToggleSwitch extends TestProps {
+  value?: boolean;
+  disabled?: boolean;
+  accessibilityDetails?: AccessibilityProps;
+}
 
 export interface ListRowLeftSide {
   /**
@@ -19,6 +42,10 @@ export interface ListRowLeftSide {
      * A link to an image to be displayed on the far left side of the row.
      */
     source: string;
+    /**
+     * A number that is displayed on the top right of the image.
+     */
+    badge?: number;
   };
 }
 
@@ -32,6 +59,10 @@ export interface ListRowRightSide {
    * @defaultValue `false`
    */
   showChevron?: boolean;
+  /**
+   * A toggle switch that is be displayed on the right side of the row.
+   */
+  toggleSwitch?: ToggleSwitch;
 }
 
 export interface ListRow {
