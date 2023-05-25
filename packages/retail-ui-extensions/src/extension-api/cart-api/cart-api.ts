@@ -101,6 +101,20 @@ export interface CartApiContent {
     amount: string,
   ): Promise<void>;
 
+  /** Sets an attributed staff to all line items in the cart.
+   * @param staffId the ID of the staff.
+   */
+  setAttributedStaff(staffId: number): Promise<void>;
+
+  /** Sets an attributed staff to a specific line items in the cart.
+   * @param staffId the ID of the staff.
+   * @param lineItemUuid the UUID of the line item.
+   */
+  setAttributedStaffToLineItem(
+    staffId: number,
+    lineItemUuid: string,
+  ): Promise<void>;
+
   /** Remove all discounts from a line item
    * @param uuid the uuid of the line item whose discounts should be removed
    */
