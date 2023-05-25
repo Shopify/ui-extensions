@@ -5,12 +5,11 @@ import type {
   ProductVariant,
 } from '../types';
 
-export enum ProductSortType {
-  RecentlyAdded = 'RECENTLY_ADDED',
-  RecentlyAddedAscending = 'RECENTLY_ADDED_ASCENDING',
-  AlphabeticalAtoZ = 'ALPHABETICAL_A_TO_Z',
-  AlphabeticalZtoA = 'ALPHABETICAL_Z_TO_A',
-}
+export type ProductSortType =
+  | 'RECENTLY_ADDED'
+  | 'RECENTLY_ADDED_ASCENDING'
+  | 'ALPHABETICAL_A_TO_Z'
+  | 'ALPHABETICAL_Z_TO_A';
 
 export interface ProductSearchApiContent {
   /** Search for products on the POS device.
