@@ -23,6 +23,16 @@ export type {
   CustomSale,
   Customer,
   Discount,
+  MultipleResourceResult,
+  PaginatedResult,
+  Product,
+  ProductOption,
+  ProductVariant,
+  ProductVariantInventoryPolicy,
+  ProductVariantOption,
+  ProductSearchApi,
+  ProductSearchApiContent,
+  ProductSortType,
 } from './extension-api';
 
 export {CountryCode} from './extension-api';

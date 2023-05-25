@@ -4,6 +4,7 @@ import {
   NavigationApi,
   StandardApi,
   ScannerApi,
+  ProductSearchApi,
 } from '../extension-api';
 import {RenderExtension} from './render-extension';
 
@@ -13,7 +14,10 @@ export interface ExtensionPoints {
     SmartGridComponents
   >;
   'pos.home.modal.render': RenderExtension<
-    StandardApi<'pos.home.modal.render'> & NavigationApi & ScannerApi,
+    StandardApi<'pos.home.modal.render'> &
+      NavigationApi &
+      ScannerApi &
+      ProductSearchApi,
     BasicComponents
   >;
 }

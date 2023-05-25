@@ -20,6 +20,14 @@ export type {
   TextVariant,
   IconName,
   VerticalSpacing,
+  Product,
+  ProductOption,
+  ProductVariant,
+  ProductVariantInventoryPolicy,
+  ProductVariantOption,
+  ProductSearchApi,
+  ProductSearchApiContent,
+  ProductSortType,
 } from '@shopify/retail-ui-extensions';
 
 export * from './components';
