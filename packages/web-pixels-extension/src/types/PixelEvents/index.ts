@@ -734,6 +734,11 @@ export interface Customer {
   lastName: string | null;
 
   /**
+   * The total number of orders that the customer has placed.
+   */
+  ordersCount: number | null;
+
+  /**
    * The customer’s phone number.
    */
   phone: string | null;
