@@ -59,3 +59,17 @@ jobs:
 
       - name: Lint
         run: yarn lint
+
+  yarn-lockfile-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/prepare
+
+      - name: yarn.lock check
+        run: |
+          yarn
+          if [ -n "$(git status --porcelain yarn.lock)" ]; then
+            echo "yarn.lock has changed"
+            exit 1
+          fi
