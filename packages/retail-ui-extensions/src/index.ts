@@ -2,6 +2,7 @@ export type {
   LocaleApi,
   CartApiContent,
   DiscountType,
+  DeviceApi,
   CartApi,
   NavigationApi,
   NavigationApiContent,
