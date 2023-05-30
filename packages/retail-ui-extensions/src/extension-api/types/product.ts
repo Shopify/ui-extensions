@@ -52,10 +52,7 @@ export interface ProductVariantOption {
   value: string;
 }
 
-export enum ProductVariantInventoryPolicy {
-  Deny = 'DENY',
-  Continue = 'CONTINUE',
-}
+export type ProductVariantInventoryPolicy = 'DENY' | 'CONTINUE';
 
 export interface ProductOption {
   id: number;
