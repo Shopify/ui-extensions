@@ -23,7 +23,6 @@
   },
   "dependencies": {
     "@remote-ui/async-subscription": "2.1.x",
-    "@remote-ui/core": "2.1.x",
-    "react-native": "0.71.8"
+    "@remote-ui/core": "2.1.x"
   }
 }
