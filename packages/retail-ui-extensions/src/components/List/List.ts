@@ -1,27 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {BadgeProps} from '../Badge';
-import type {
-  AccessibilityProps as RNAccessibilityProps,
-  AccessibilityPropsAndroid,
-  AccessibilityPropsIOS,
-} from 'react-native';
 
-export interface AccessibilityProps
-  extends RNAccessibilityProps,
-    AccessibilityPropsAndroid,
-    AccessibilityPropsIOS {
-  accessibilityAutoFocus?: boolean;
-  accessibilityLabelPrefix?: string;
-}
-
-export interface TestProps<T extends string = string> {
-  testID?: T;
-}
-
-export interface ToggleSwitch extends TestProps {
+export interface ToggleSwitch {
   value?: boolean;
   disabled?: boolean;
-  accessibilityDetails?: AccessibilityProps;
 }
 
 export interface ListRowLeftSide {
