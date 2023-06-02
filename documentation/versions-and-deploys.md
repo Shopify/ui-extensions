@@ -9,6 +9,8 @@ The following versions are currently supported:
 
 There is also an `unstable` API version published from the [`unstable` branch](https://github.com/Shopify/ui-extensions/tree/unstable). This version is meant to allow third parties to try out new, upcoming extension APIs, before they are released for use in production environments. This branch publishes UI extension packages using a special `0.0.0-unstable-{{TIMESTAMP}}` version number, which allows us to release it continuously as changes are made.
 
+> **Note:** Shopify also released a set of UI extension packages that had NPM versions, but did not follow a formal API versioning system. These packages, like `@shopify/checkout-ui-extensions` and `@shopify/admin-ui-extensions`, are still available, but are on a [“legacy” branch](https://github.com/Shopify/ui-extensions/tree/main). If you are trying to deploy new versions of those packages, the instructions in this document **do not apply**.
+
 ## Adding code to an existing version
 
 Most code added to this repo will be added to the `unstable` branch, which captures the latest public APIs Shopify has made available. Stable version branches should only be getting bugfixes — no new features should be added to them.
