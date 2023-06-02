@@ -1,5 +1,32 @@
 # @shopify/ui-extensions-react
 
+## 2022.11.0
+
+### Minor Changes
+
+- [#774](https://github.com/Shopify/ui-extensions/pull/774) [`feaab61b`](https://github.com/Shopify/ui-extensions/commit/feaab61bfd0fb1c472133418ac7946d5dcdfc155) Thanks [@carolopolo](https://github.com/carolopolo)! - Changes typing of `description` prop of `<CustomerSegmentationTemplate/>` from `string` to `string | string[]`
+
+### Patch Changes
+
+- [#806](https://github.com/Shopify/ui-extensions/pull/806) [`d0e44415`](https://github.com/Shopify/ui-extensions/commit/d0e44415e6913b005d35ff75209bf712e7930f79) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Moving the Segmentation TemplateCategory from the api to the CustomerSegmentationTemplate component props.
+
+- [#703](https://github.com/Shopify/ui-extensions/pull/703) [`100cfeda`](https://github.com/Shopify/ui-extensions/commit/100cfeda331247d284add99284b244d7a5cb7d0b) Thanks [@vividviolet](https://github.com/vividviolet)! - Add Admin surface to packages
+
+- [#892](https://github.com/Shopify/ui-extensions/pull/892) [`0d68e3d1`](https://github.com/Shopify/ui-extensions/commit/0d68e3d163abba8fc48030ec3b2ac287fed4340c) Thanks [@LTiger14](https://github.com/LTiger14)! - Add confettiMajor to source in CustomerSegmentationTemplate
+
+- [#771](https://github.com/Shopify/ui-extensions/pull/771) [`2a3b4bd0`](https://github.com/Shopify/ui-extensions/commit/2a3b4bd0f8dbdf0e36530f2308ef794c71e2daf4) Thanks [@loic-d](https://github.com/loic-d)! - Introduce dateAdded on CustomerSegmentationTemplate
+
+- [#759](https://github.com/Shopify/ui-extensions/pull/759) [`4e71987f`](https://github.com/Shopify/ui-extensions/commit/4e71987f1cd701e049ebfb9e4c726f2a841ce8be) Thanks [@loic-d](https://github.com/loic-d)! - Introduces CustomerSegmentationTemplate component
+
+- [#766](https://github.com/Shopify/ui-extensions/pull/766) [`0c5b0d5b`](https://github.com/Shopify/ui-extensions/commit/0c5b0d5b623e4d6a7e8c33e821991f9bdc5c8b20) Thanks [@loic-d](https://github.com/loic-d)! - Introduces standardMetafieldDependencies prop on CustomerSegmentationTemplate
+
+- [#722](https://github.com/Shopify/ui-extensions/pull/722) [`c4d3ef8e`](https://github.com/Shopify/ui-extensions/commit/c4d3ef8ea10b8b9bc3a688b9ed7550d717870a22) Thanks [@vividviolet](https://github.com/vividviolet)! - Call root.mount for a rendering extension point
+
+- [#822](https://github.com/Shopify/ui-extensions/pull/822) [`a49cfe5d`](https://github.com/Shopify/ui-extensions/commit/a49cfe5dc9609791af46f9f6170250fec30212b8) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Changing the dateAdded type from Date to ISO 8601 string
+
+- Updated dependencies [[`d0e44415`](https://github.com/Shopify/ui-extensions/commit/d0e44415e6913b005d35ff75209bf712e7930f79), [`100cfeda`](https://github.com/Shopify/ui-extensions/commit/100cfeda331247d284add99284b244d7a5cb7d0b), [`0095a792`](https://github.com/Shopify/ui-extensions/commit/0095a792f4392b242aceccdcc0c8f1741ea22782), [`0d68e3d1`](https://github.com/Shopify/ui-extensions/commit/0d68e3d163abba8fc48030ec3b2ac287fed4340c), [`2a3b4bd0`](https://github.com/Shopify/ui-extensions/commit/2a3b4bd0f8dbdf0e36530f2308ef794c71e2daf4), [`4e71987f`](https://github.com/Shopify/ui-extensions/commit/4e71987f1cd701e049ebfb9e4c726f2a841ce8be), [`0c5b0d5b`](https://github.com/Shopify/ui-extensions/commit/0c5b0d5b623e4d6a7e8c33e821991f9bdc5c8b20), [`c4d3ef8e`](https://github.com/Shopify/ui-extensions/commit/c4d3ef8ea10b8b9bc3a688b9ed7550d717870a22), [`feaab61b`](https://github.com/Shopify/ui-extensions/commit/feaab61bfd0fb1c472133418ac7946d5dcdfc155), [`a49cfe5d`](https://github.com/Shopify/ui-extensions/commit/a49cfe5dc9609791af46f9f6170250fec30212b8)]:
+  - @shopify/ui-extensions@2022.11.0
+
 ## 2022.10.6
 
 ### Patch Changes
