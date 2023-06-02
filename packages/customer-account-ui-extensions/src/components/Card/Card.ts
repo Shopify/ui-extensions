@@ -1,15 +1,11 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {Background, SpacingProps} from 'components/shared';
+import {Background, SpacingProps} from '../shared';
 
-export interface CardProps {
+export interface CardProps extends SpacingProps {
   /**
    * Adjust the background.
    */
   background?: Background;
-  /**
-   * The padding within the Card. Default is "loose"
-   */
-  padding?: SpacingProps;
 }
 
 export const Card = createRemoteComponent<'Card', CardProps>('Card');
