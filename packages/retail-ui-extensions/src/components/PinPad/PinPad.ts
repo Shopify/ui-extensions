@@ -1,0 +1,51 @@
+import {createRemoteComponent} from '@remote-ui/core';
+
+/**
+ * Represents the result of PIN validation.
+ * @typedef {('accept'|'reject')} PinValidationResult
+ */
+export type PinValidationResult = 'accept' | 'reject';
+
+/**
+ * Represents the allowed lengths of a PIN.
+ * @typedef {(4|5|6|7|8|9|10)} PinLength
+ */
+export type PinLength = 4 | 5 | 6 | 7 | 8 | 9 | 10;
+
+/**
+ * Represents an action type for the PinPad component.
+ * @typedef {Object} PinPadActionType
+ * @property {string} label - The label for the action button.
+ * @property {function(): number[]} onPress - The function to be called when the action button is pressed.
+ */
+export interface PinPadActionType {
+  label: string;
+  onPress: () => number[];
+}
+
+/**
+ * Represents the properties for the PinPad component.
+ * @typedef {Object} PinPadProps
+ * @property {boolean} [masked] - Whether the entered PIN should be masked.
+ * @property {PinLength} [minPinLength] - The minimum length of the PIN.
+ * @property {PinLength} [maxPinLength] - The maximum length of the PIN.
+ * @property {string} [label] - The label for the PinPad component.
+ * @property {number[]} [initialPin] - The initial PIN to be displayed.
+ * @property {boolean} [autoSubmit] - Whether the PIN should be submitted automatically when the max length is reached.
+ * @property {PinPadActionType} [pinPadAction] - The action type for the PinPad component.
+ * @property {function(pin: number[]): Promise<PinValidationResult>} onSubmit - The function to be called when the PIN is submitted.
+ * @property {function(pin: number[]): void} [onPinEntry] - The function to be called when a PIN is entered.
+ */
+export interface PinPadProps {
+  masked?: boolean;
+  minPinLength?: PinLength;
+  maxPinLength?: PinLength;
+  label?: string;
+  initialPin?: number[];
+  autoSubmit?: boolean;
+  pinPadAction?: PinPadActionType;
+  onSubmit: (pin: number[]) => Promise<PinValidationResult>;
+  onPinEntry?: (pin: number[]) => void;
+}
+
+export const PinPad = createRemoteComponent<'PinPad', PinPadProps>('PinPad');

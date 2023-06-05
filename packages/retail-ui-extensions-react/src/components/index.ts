@@ -12,6 +12,8 @@ export {Image} from './Image';
 export type {ImageProps} from './Image';
 export {List} from './List';
 export type {ListProps} from './List';
+export {PinPad} from './PinPad';
+export type {PinPadProps} from './PinPad';
 export {RadioButtonList} from './RadioButtonList';
 export type {RadioButtonListProps} from './RadioButtonList';
 export {SearchBar} from './SearchBar';
