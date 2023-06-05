@@ -14,7 +14,7 @@ export type ProductSortType =
 export interface ProductSearchApiContent {
   /** Search for products on the POS device.
    * @param queryString The search term to be used to search for POS products.
-   * @param first Specifies the number of results to be returned in this page of products.
+   * @param first Specifies the number of results to be returned in this page of products. The maximum number of products that will be returned is 50.
    * @param afterCursor Specifies the page cursor. Products after this cursor will be returned.
    * @param sortType Specifies the order in which products should be sorted. When a `queryString` is provided, sortType will not have any effect, as the results will be returned in order by relevance to the `queryString`.
    */
@@ -31,7 +31,7 @@ export interface ProductSearchApiContent {
   fetchProductWithId(productId: number): Promise<Product | undefined>;
 
   /** Fetches multiple products' details.
-   * @param productIds Specifies the array of product IDs to lookup.
+   * @param productIds Specifies the array of product IDs to lookup. This is limited to 50 products. All excess requested IDs will be removed from the array.
    */
   fetchProductsWithIds(
     productIds: number[],
@@ -45,7 +45,7 @@ export interface ProductSearchApiContent {
   ): Promise<ProductVariant | undefined>;
 
   /** Fetches multiple product variants' details.
-   * @param productVariantIds Specifies the array of product variant IDs to lookup.
+   * @param productVariantIds Specifies the array of product variant IDs to lookup. This is limited to 50 product variants. All excess requested IDs will be removed from the array.
    */
   fetchProductVariantsWithIds(
     productVariantIds: number[],
