@@ -102,16 +102,16 @@ export interface CartApiContent {
   ): Promise<void>;
 
   /** Sets an attributed staff to all line items in the cart.
-   * @param staffId the ID of the staff.
+   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff from all line items.
    */
-  setAttributedStaff(staffId: number): Promise<void>;
+  setAttributedStaff(staffId: number | undefined): Promise<void>;
 
   /** Sets an attributed staff to a specific line items in the cart.
-   * @param staffId the ID of the staff.
+   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff on the line item.
    * @param lineItemUuid the UUID of the line item.
    */
   setAttributedStaffToLineItem(
-    staffId: number,
+    staffId: number | undefined,
     lineItemUuid: string,
   ): Promise<void>;
 
