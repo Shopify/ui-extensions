@@ -3,6 +3,7 @@ export type {
   CartApiContent,
   DiscountType,
   DeviceApi,
+  DeviceApiContent,
   CartApi,
   NavigationApi,
   NavigationApiContent,
