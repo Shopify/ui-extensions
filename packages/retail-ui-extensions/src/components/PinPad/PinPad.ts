@@ -30,7 +30,6 @@ export interface PinPadActionType {
  * @property {PinLength} [minPinLength] - The minimum length of the PIN.
  * @property {PinLength} [maxPinLength] - The maximum length of the PIN.
  * @property {string} [label] - The content for the prompt on the pin pad.
- * @property {number[]} [initialPin] - Used to set the initial state of the pin pad with pre-populated pin values.
  * @property {PinPadActionType} [pinPadAction] - The call to action between the entry view and the keypad, consisting of a label and function that returns the pin.
  * @property {function(pin: number[]): Promise<PinValidationResult>} onSubmit - The function to be called when the PIN is submitted.
  * @property {function(pin: number[]): void} [onPinEntry] - The function to be called when a PIN is entered.
@@ -40,7 +39,6 @@ export interface PinPadProps {
   minPinLength?: PinLength;
   maxPinLength?: PinLength;
   label?: string;
-  initialPin?: number[];
   pinPadAction?: PinPadActionType;
   onSubmit: (pin: number[]) => Promise<PinValidationResult>;
   onPinEntry?: (pin: number[]) => void;
