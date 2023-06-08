@@ -32,6 +32,14 @@ export type {
   ListProps,
 } from './List';
 
+export {PinPad} from './PinPad';
+export type {
+  PinValidationResult,
+  PinLength,
+  PinPadActionType,
+  PinPadProps,
+} from './PinPad';
+
 export {TextField} from './TextField';
 export type {
   ActionProps,
