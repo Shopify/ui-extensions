@@ -30,9 +30,9 @@ export interface ProductVariant {
   updatedAt: string;
   title: string;
   price: string;
-  compareAtPrice: string;
+  compareAtPrice?: string;
   taxable: boolean;
-  sku: string;
+  sku?: string;
   barcode?: string;
   displayName: string;
   image?: string;
