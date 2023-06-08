@@ -9,6 +9,7 @@ export type {
   Cart,
   CartLine,
   Customer,
+  DiscountApplication,
   Product,
   Collection,
   Checkout,
