@@ -17,6 +17,7 @@ export type {
   ProductSearchApi,
   ProductSearchApiContent,
   ProductSortType,
+  ProductSearchParams,
 } from './product-search-api';
 export type {DeviceApiContent, DeviceApi} from './device-api';
 

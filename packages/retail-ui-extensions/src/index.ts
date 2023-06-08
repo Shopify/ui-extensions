@@ -35,6 +35,7 @@ export type {
   ProductSearchApi,
   ProductSearchApiContent,
   ProductSortType,
+  ProductSearchParams,
 } from './extension-api';
 
 export {CountryCode} from './extension-api';

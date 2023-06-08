@@ -11,18 +11,34 @@ export type ProductSortType =
   | 'ALPHABETICAL_A_TO_Z'
   | 'ALPHABETICAL_Z_TO_A';
 
+/**
+ * Parameters for using the searchProducts function.
+ */
+export interface ProductSearchParams {
+  /**
+   * The search term to be used to search for POS products.
+   */
+  queryString?: string;
+  /**
+   * Specifies the number of results to be returned in this page of products. The maximum number of products that will be returned is 50.
+   */
+  first?: number;
+  /**
+   * Specifies the page cursor. Products after this cursor will be returned.
+   */
+  afterCursor?: string;
+  /**
+   * Specifies the order in which products should be sorted. When a `queryString` is provided, sortType will not have any effect, as the results will be returned in order by relevance to the `queryString`.
+   */
+  sortType?: ProductSortType;
+}
+
 export interface ProductSearchApiContent {
   /** Search for products on the POS device.
-   * @param queryString The search term to be used to search for POS products.
-   * @param first Specifies the number of results to be returned in this page of products. The maximum number of products that will be returned is 50.
-   * @param afterCursor Specifies the page cursor. Products after this cursor will be returned.
-   * @param sortType Specifies the order in which products should be sorted. When a `queryString` is provided, sortType will not have any effect, as the results will be returned in order by relevance to the `queryString`.
+   * @param searchParams The parameters for the product search.
    */
   searchProducts(
-    queryString?: string,
-    first?: number,
-    afterCursor?: string,
-    sortType?: ProductSortType,
+    searchParams: ProductSearchParams,
   ): Promise<PaginatedResult<Product>>;
 
   /** Fetches a single product's details.
