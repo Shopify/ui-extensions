@@ -20,7 +20,7 @@ export type PinLength = 4 | 5 | 6 | 7 | 8 | 9 | 10;
  */
 export interface PinPadActionType {
   label: string;
-  onPress: () => number[];
+  onPress: () => Promise<number[]>;
 }
 
 /**
