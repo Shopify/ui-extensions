@@ -578,6 +578,7 @@ export interface Checkout {
    * standard codes.
    */
   currencyCode: string;
+  discountApplications: DiscountApplication[];
 
   /**
    * The email attached to this checkout.
@@ -750,6 +751,42 @@ export interface Customer {
  * payload available to each event
  */
 export type Data = Record<string, unknown>;
+
+/**
+ * Information about the intent of a discount.
+ */
+export interface DiscountApplication {
+  /**
+   * The method by which the discount's value is applied to its entitled items.
+   */
+  allocationMethod: string;
+
+  /**
+   * How the discount amount is distributed on the discounted lines.
+   */
+  targetSelection: string;
+
+  /**
+   * The type of line (i.e. line item or shipping line) on an order that the
+   * discount is applicable towards.
+   */
+  targetType: string;
+
+  /**
+   * The customer-facing name of the discount.
+   */
+  title: string;
+
+  /**
+   * The type of the discount.
+   */
+  type: string;
+
+  /**
+   * The value of the discount.
+   */
+  value: MoneyV2 | PricingPercentageValue;
+}
 
 /**
  * The ID of the customer event
@@ -932,6 +969,16 @@ export interface Order {
    * The ID of the order.
    */
   id: string;
+}
+
+/**
+ * The value of the percentage pricing object.
+ */
+export interface PricingPercentageValue {
+  /**
+   * The percentage value of the object.
+   */
+  percentage: number;
 }
 
 /**
