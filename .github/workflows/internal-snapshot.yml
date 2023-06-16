@@ -1,16 +1,16 @@
-name: Internal Admin Snapshot
+name: Internal Snapshot
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - internal-admin
+      - internal
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  internal-admin-snapshot:
-    name: Internal Admin Snapshot
+  internal-snapshot:
+    name: Internal Snapshot
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -28,6 +28,6 @@ jobs:
           EOF
 
       - name: Deploy snapshot versions
-        run: yarn run deploy:internal-admin
+        run: yarn run deploy:internal
         env:
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
