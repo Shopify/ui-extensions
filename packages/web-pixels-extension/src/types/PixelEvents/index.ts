@@ -783,7 +783,8 @@ export interface DiscountApplication {
   type: string;
 
   /**
-   * The value of the discount.
+   * The value of the discount. Fixed discounts return a `Money` Object, while
+   * Percentage discounts return a `PricingPercentageValue` object.
    */
   value: MoneyV2 | PricingPercentageValue;
 }
