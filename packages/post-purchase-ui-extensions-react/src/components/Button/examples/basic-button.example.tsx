@@ -12,7 +12,7 @@ function App() {
         console.log(`Extension point: ${extensionPoint}`);
       }}
     >
-      Log extension point to console
+      Log target to console
     </Button>
   );
 }
