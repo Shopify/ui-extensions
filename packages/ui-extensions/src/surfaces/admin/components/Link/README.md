@@ -7,5 +7,5 @@ Link makes text interactive so users can perform an action, such as navigating t
 When `href` is set the expected HTML element is an anchor element
 `<a href="#">View email settings</a>`
 
-When `onClick` is set, the expected HTML element is a button element
+When `onPress` or `onClick` are set, the expected HTML element is a button element
 `<button type="button">Edit</button>`
