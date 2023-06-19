@@ -6,9 +6,14 @@ import {
 export default extension(
   'Playground',
   (root) => {
+    let value = '2';
     const select = root.createComponent(Select, {
+      value,
       label: 'Country',
-      value: '2',
+      onChange(nextValue) {
+        value = nextValue;
+        select.updateProps({value});
+      },
       options: [
         {
           value: '1',

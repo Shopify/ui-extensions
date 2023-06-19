@@ -7,10 +7,13 @@ import {
 render('Playground', () => <App />);
 
 function App() {
+  const [value, setValue] = React.useState('2');
+
   return (
     <Select
       label="Country"
-      value="2"
+      value={value}
+      onChange={setValue}
       options={[
         {
           value: '1',
