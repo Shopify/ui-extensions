@@ -1931,22 +1931,22 @@
   dependencies:
     "@remote-ui/rpc" "^1.3.4"
 
-"@remote-ui/core@2.1.x", "@remote-ui/core@^2.1.16":
-  version "2.1.16"
-  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.1.16.tgz#8b5fbfdc22a5619334d29a4cb7d4fd20bf67c5f3"
-  integrity sha512-PcaljPmv0Ra8PeRT+M/vKPTYSkU1KssjwB2gjcE+TK2zM2SBbJwB5K18MjJhNlb9n6LTFE99fDqYxc5DbCyMIg==
+"@remote-ui/core@2.2.x", "@remote-ui/core@^2.2.0":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.2.3.tgz#5d53666d8bce9874d4976c21e88dd202e6080cd0"
+  integrity sha512-LWwAlDJw9c+b61dViU6v8ivU0AalgGikvqidVoBLt+CLjTAXMwIkzIeYdjyRyp7JgGxnTYxnmVHUdJdxX144jg==
   dependencies:
-    "@remote-ui/rpc" "^1.3.4"
-    "@remote-ui/types" "^1.1.2"
+    "@remote-ui/rpc" "^1.4.3"
+    "@remote-ui/types" "^1.1.3"
 
-"@remote-ui/react@4.5.x":
-  version "4.5.13"
-  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.5.13.tgz#5107c0f5687948cc68eb4e8e4efee6818c4c0152"
-  integrity sha512-T3AhJClw5clZ2QO4ay02ACtUEaCuGIGwJI0glxA2CXsqOZUpy5LWWnK5OEek/G0XWplN3Mzcx8O+5hnl3x6IvA==
+"@remote-ui/react@4.6.x":
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/@remote-ui/react/-/react-4.6.0.tgz#1e62d5e22b85d57943520510bb924e6d8509a510"
+  integrity sha512-68hXreM9cMT5XhDTNcfTSsgYnjkdaK2/l9RPwTskWnaH/wgF5sjpInXsJFNLkJ2hTcWKspl3UKODWV4C68eq4A==
   dependencies:
     "@remote-ui/async-subscription" "^2.1.13"
-    "@remote-ui/core" "^2.1.16"
-    "@remote-ui/rpc" "^1.3.4"
+    "@remote-ui/core" "^2.2.0"
+    "@remote-ui/rpc" "^1.4.0"
     "@types/react" ">=17.0.0 <18.0.0"
     "@types/react-reconciler" "^0.26.0"
     react-reconciler ">=0.26.0 <0.27.0"
@@ -1961,10 +1961,15 @@
   resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.3.4.tgz#99568362349c630c42c6b60d6a04a3b8c11e704e"
   integrity sha512-KwZ2egbGQqO+DjgwoZlQ4QedMZHeFuGY/2FiGUrqvyhp4bGheSLr5bm3jF23+2tQVywUHB2gDPqzUgR/47Lb2g==
 
-"@remote-ui/types@^1.1.2":
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/@remote-ui/types/-/types-1.1.2.tgz#ae9219a56bb4bb6ff5aabfacb29a1e71adbd97d4"
-  integrity sha512-F2u6McqvHj2c89FHeozQ0O8qbqhOFMMNYR2HqF33mHCMNTEXzUVheCj7laNO1/dGNXwcJHpoWIBNwfChbEfVyA==
+"@remote-ui/rpc@^1.4.0", "@remote-ui/rpc@^1.4.3":
+  version "1.4.3"
+  resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.4.3.tgz#6dde33831c3d98e43e170f3e3c82a43f35475d09"
+  integrity sha512-+XyELrHLIJVQEuidHoqZ32+drbphY/x697vykHCinTPhhuUiZpag1DnKSxoE4UlnwBzz336UtFHZIiDGtOL2Kg==
+
+"@remote-ui/types@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@remote-ui/types/-/types-1.1.3.tgz#b2a790d5be50fb82d89d4abea9883f87f83a5a25"
+  integrity sha512-P1kN1F3p0oMgnLN8Of1Ie9am3sLvJ7nhqHH1pvzkrxqjVwhhyPVZNcwOHyUNZPKp62izhDavdrcnqrdXzVJqGA==
 
 "@rollup/plugin-babel@^5.3.0":
   version "5.3.1"
@@ -2379,6 +2384,15 @@
   version "17.0.11"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.11.tgz#67fcd0ddbf5a0b083a0f94e926c7d63f3b836451"
   integrity sha512-yFRQbD+whVonItSk7ZzP/L+gPTJVBkL/7shLEF+i9GC/1cV3JmUxEQz6+9ylhUpWSDuqo1N9qEvqS6vTj4USUA==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@>=18.0.0 <19.0.0":
+  version "18.2.13"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.13.tgz#a98c09bde8b18f80021935b11d2d29ef5f4dcb2f"
+  integrity sha512-vJ+zElvi/Zn9cVXB5slX2xL8PZodPCwPRDpittQdw43JR2AJ5k3vKdgJJyneV/cYgIbLQUwXa9JVDvUZXGba+Q==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -6442,7 +6456,14 @@ react-test-renderer@^17.0.0:
     react-shallow-renderer "^16.13.1"
     scheduler "^0.20.2"
 
-"react@>=17.0.0 <18.0.0", react@^17.0.0:
+"react@>=18.0.0 <19.0.0":
+  version "18.2.0"
+  resolved "https://registry.yarnpkg.com/react/-/react-18.2.0.tgz#555bd98592883255fa00de14f1151a917b5d77d5"
+  integrity sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==
+  dependencies:
+    loose-envify "^1.1.0"
+
+react@^17.0.0:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
   integrity sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
