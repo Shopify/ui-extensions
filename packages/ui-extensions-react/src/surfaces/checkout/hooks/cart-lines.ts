@@ -1,8 +1,11 @@
 import type {
   CartLine,
-  StandardApi,
   RenderExtensionPoint,
+  CartLineChangeResult,
+  CartLineChange,
 } from '@shopify/ui-extensions/checkout';
+
+import {ExtensionHasNoMethodError} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -24,6 +27,15 @@ export function useCartLines<
  */
 export function useApplyCartLinesChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): StandardApi<ID>['applyCartLinesChange'] {
-  return useApi<ID>().applyCartLinesChange;
+>(): (change: CartLineChange) => Promise<CartLineChangeResult> {
+  const api = useApi<ID>();
+
+  if ('applyCartLinesChange' in api) {
+    return api.applyCartLinesChange;
+  }
+
+  throw new ExtensionHasNoMethodError(
+    'applyCartLinesChange',
+    api.extensionPoint,
+  );
 }

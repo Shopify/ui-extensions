@@ -1,0 +1,103 @@
+import {CodeTabType, ExampleType} from '@shopify/generate-docs';
+
+const examplePath = '../../../../../docs/surfaces/checkout/reference/examples';
+
+type NonEmptyArray<T> = [T, ...T[]];
+type ExtensionExampleLanguage = 'js' | 'jsx';
+type ExtensionCodeTabConfig = {
+  [key in ExtensionExampleLanguage]: {
+    title: string;
+    fileExtension: 'ts' | 'tsx';
+  };
+};
+const codeExampleTabConfig: ExtensionCodeTabConfig = {
+  js: {
+    title: 'JavaScript',
+    fileExtension: 'ts',
+  },
+  jsx: {
+    title: 'React',
+    fileExtension: 'tsx',
+  },
+};
+
+/**
+ * Returns all examples available, specified with a key for reference.
+ */
+export function getExamples(
+  languages: NonEmptyArray<ExtensionExampleLanguage>,
+): {
+  [key: string]: ExampleType;
+} {
+  if (!languages || languages.length === 0) {
+    throw new HelperDocsError(
+      'You must define at least one extension code language context you wish to retrieve the example(s) for.',
+    );
+  }
+  /**
+   * Provides the code tab for the requested languages in "JavaScript" and "React".
+   */
+  function getExtensionCodeTabs(name: string): CodeTabType[] {
+    return languages.map((language) => {
+      return {
+        code: `${examplePath}/${name}.example.${codeExampleTabConfig[language].fileExtension}`,
+        language,
+        title: codeExampleTabConfig[language].title,
+      };
+    });
+  }
+
+  // Add new examples here that can be shared across multiples pages.
+  return {
+    'ui-components/checkbox-links': {
+      description:
+        'To provide buyers with additional information or references, couple it with link components seamlessly within checkbox components. This can be done by including links as part of the checkbox label in the checkbox. This will provide an easy way to access relevant content that buyers may need.',
+      image: 'checkbox-links.png',
+      codeblock: {
+        title: 'Embedding links in checkbox components',
+        tabs: getExtensionCodeTabs('ui-components/checkbox-links'),
+      },
+    },
+    'ui-components/disclosure-and-alignment': {
+      description:
+        'Use the Disclosure component to simplify the user experience and reveal interfaces only when the customer requests it. It also demonstrates how a combination of inline and block layout components can improve the readability of information. By employing these strategies, users can easily scan and comprehend the content, making for a better user experience overall.',
+      image: 'disclosure-and-alignment.gif',
+      codeblock: {
+        title:
+          'Strategies for simplifying layout and aligning content using Disclosure and Inline/Block Layout components.',
+        tabs: getExtensionCodeTabs('ui-components/disclosure-and-alignment'),
+      },
+    },
+    'ui-components/loading-skeletons': {
+      description:
+        'When adding content to a layout, incorporate a skeleton loader that renders the approximate size and position of the content during loading. This will provide a seamless transition from skeleton loaders to the content, and prevent any layout shift when the resulting content loads.',
+      image: 'loading-skeletons.gif',
+      codeblock: {
+        title:
+          'Using skeleton loaders to prevent layout shifts on content load.',
+        tabs: getExtensionCodeTabs('ui-components/loading-skeletons'),
+      },
+    },
+  };
+}
+
+/**
+ * Returns a specific `Example` by name, as specified in `getExamples()`.
+ * Specify whether you want to include both `js` and `jsx`examples or just one.
+ */
+export function getExample(
+  name: string,
+  languages: NonEmptyArray<ExtensionExampleLanguage> = ['js'],
+): ExampleType {
+  const example = getExamples(languages)[name];
+  if (!example) {
+    throw new HelperDocsError(
+      `Could not find a matching example with the name "${name}". Does it exist within the file "docs/reference/helper.docs.ts" in getExamples()?`,
+    );
+  }
+  return example;
+}
+
+class HelperDocsError extends Error {
+  name = 'HelperDocsError';
+}

@@ -1,8 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {IconSource} from '../Icon/Icon';
+import {IconSource} from '../Icon/Icon';
+import type {IdProps} from '../shared';
 
-export interface TagProps {
+export interface TagProps extends IdProps {
   children?: string;
   /**
    * Icon source
@@ -10,8 +11,7 @@ export interface TagProps {
   icon?: IconSource;
   /**
    * A label used for buyers using assistive technologies. When set, any
-   * `children` supplied to this component are hidden from being seen for
-   * accessibility purposes to prevent duplicate content from being read.
+   * `children` supplied to this component will not be announced to screen reader users.
    */
   accessibilityLabel?: string;
   /**

@@ -1,0 +1,12 @@
+[settings]
+  [[settings.fields]]
+  key = "banner_title"
+  type = "single_line_text_field"
+  name = "Banner title"
+  description = "Enter a title for the banner."
+    [[settings.fields.validations]]
+    name = "min"
+    value = "5"
+    [[settings.fields.validations]]
+    name = "max"
+    value = "20"

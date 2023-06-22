@@ -1,26 +1,94 @@
-import {createRemoteComponent} from '@remote-ui/core';
+import {createRemoteComponent, RemoteFragment} from '@remote-ui/core';
 
-import type {TextFieldProps} from '../TextField/TextField';
+import {Autocomplete} from '../shared';
+import {IconSource} from '../Icon/Icon';
 
-export interface PhoneFieldProps
-  extends Pick<
-    TextFieldProps<string>,
-    | 'autocomplete'
-    | 'id'
-    | 'icon'
-    | 'accessory'
-    | 'name'
-    | 'label'
-    | 'accessibilityDescription'
-    | 'value'
-    | 'required'
-    | 'error'
-    | 'disabled'
-    | 'readonly'
-    | 'onFocus'
-    | 'onBlur'
-    | 'maxLength'
-  > {
+export interface PhoneFieldProps {
+  /**
+   * Any content to render at the end of the text field. Commonly used
+   * to display an icon that opens a tooltip providing more information about the field.
+   */
+  accessory?: string | RemoteFragment;
+
+  /**
+   * A detailed description for screen readers.
+   */
+  accessibilityDescription?: string;
+
+  /**
+   * A hint as to the intended content of the field.
+   *
+   * When set to `true`, this property indicates that the field should support
+   * autofill, but you do not have any more semantic information on the intended
+   * contents.
+   *
+   * When set to `false`, you are indicating that this field contains sensitive
+   * information, or contents that are never saved, like one-time codes.
+   *
+   * Alternatively, you can provide an `Autocomplete` object, which describes the
+   * specific data you would like to be entered into this field during autofill.
+   */
+  autocomplete?: Autocomplete | boolean;
+
+  /**
+   * Whether the field can be modified.
+   */
+  disabled?: boolean;
+
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string;
+
+  /**
+   * An icon to render at the start or end of the field.
+   * It will render at the start by default.
+   */
+  icon?: IconSource | {source: IconSource; position?: 'start' | 'end'};
+
+  /**
+   * A unique identifier for the field. When no `id` is set,
+   * a globally unique value will be used instead.
+   */
+  id?: string;
+
+  /**
+   * Content to use as the field label. This value is also used as the placeholder
+   * when the field is empty.
+   */
+  label: string;
+
+  /**
+   * Specifies the maximum number of characters allowed.
+   */
+  maxLength?: number;
+
+  /**
+   * An identifier for the field that is unique within the nearest
+   * containing `Form` component.
+   */
+  name?: string;
+
+  /**
+   * Whether the field is read-only.
+   */
+  readonly?: boolean;
+
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` prop.
+   */
+  required?: boolean;
+
+  /**
+   * The current value for the field. If omitted, the field will be empty. You should
+   * update this value in response to the `onChange` callback.
+   */
+  value?: string;
+
   /**
    * Callback when the buyer has **finished editing** a field or pressed the country dropdown.
    * Unlike `onChange` callbacks you may be familiar with from Polaris or other React component libraries,
@@ -62,6 +130,14 @@ export interface PhoneFieldProps
    * This callback is called with the current formatted value.
    */
   onInput?(value: string): void;
+  /**
+   * Callback when input is focused.
+   */
+  onFocus?(): void;
+  /**
+   * Callback when focus is removed.
+   */
+  onBlur?(): void;
 }
 
 /**

@@ -1,5 +1,5 @@
 import {
-  render,
+  reactExtension,
   BlockSpacer,
   Button,
   Form,
@@ -9,9 +9,9 @@ import {
   View,
 } from '@shopify/ui-extensions-react/checkout';
 
-render('Checkout::Dynamic::Render', () => <App />);
+reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return (
     <Form onSubmit={() => console.log('onSubmit event')}>
       <Grid columns={['50%', '50%']} spacing="base">

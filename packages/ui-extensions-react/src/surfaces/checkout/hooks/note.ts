@@ -1,7 +1,10 @@
 import type {
+  NoteChange,
+  NoteChangeResult,
   RenderExtensionPoint,
-  StandardApi,
 } from '@shopify/ui-extensions/checkout';
+
+import {ExtensionHasNoMethodError} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -11,7 +14,7 @@ import {useSubscription} from './subscription';
  */
 export function useNote<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): string | undefined {
   return useSubscription(useApi<ID>().note);
 }
 
@@ -20,6 +23,12 @@ export function useNote<
  */
 export function useApplyNoteChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): StandardApi<ID>['applyNoteChange'] {
-  return useApi<ID>().applyNoteChange;
+>(): (change: NoteChange) => Promise<NoteChangeResult> {
+  const api = useApi<ID>();
+
+  if ('applyNoteChange' in api) {
+    return api.applyNoteChange;
+  }
+
+  throw new ExtensionHasNoMethodError('applyNoteChange', api.extensionPoint);
 }

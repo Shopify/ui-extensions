@@ -10,15 +10,18 @@ import type {
   Display,
   ButtonAccessibilityRole,
   OverlayActivatorProps,
+  DisclosureActivatorProps,
+  CornerProps,
+  Opacity,
 } from '../shared';
-import type {ViewProps} from '../View/View';
 
 export interface PressableProps
   extends BorderProps,
+    CornerProps,
     SizingProps,
     SpacingProps,
     OverlayActivatorProps,
-    Pick<ViewProps, 'opacity'> {
+    DisclosureActivatorProps {
   /**
    * Changes the display of the Pressable.
    *
@@ -116,6 +119,26 @@ export interface PressableProps
    * Position children along the main axis
    */
   inlineAlignment?: MaybeResponsiveConditionalStyle<InlineAlignment>;
+
+  /**
+   * Sets the opacity of the View. The opacity will be applied to the background as well as all
+   * the children of the View. Use carefully as this could decrease the contrast ratio between
+   * the background and foreground elements, resulting in unreadable and inaccessible text.
+   */
+  opacity?: Opacity;
+
+  /**
+   * Sets the overflow behavior of the element.
+   *
+   * `hidden`: clips the content when it is larger than the element’s container.
+   * The element will not be scrollable and the users will not be able
+   * to access the clipped content by dragging or using a scroll wheel.
+   *
+   * `visible`: the content that extends beyond the element’s container is visible.
+   *
+   * @default 'visible'
+   */
+  overflow?: 'hidden' | 'visible';
 }
 
 /**

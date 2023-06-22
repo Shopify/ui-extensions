@@ -1,11 +1,11 @@
 import {
-  extend,
+  extension,
   HeadingGroup,
   Heading,
   View,
 } from '@shopify/ui-extensions/checkout';
 
-extend('Checkout::Dynamic::Render', (root) => {
+extension('Checkout::Dynamic::Render', (root) => {
   const headingGroup = root.createComponent(View, undefined, [
     root.createComponent(Heading, undefined, 'Heading <h1>'),
     root.createComponent(HeadingGroup, undefined, [

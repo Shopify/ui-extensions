@@ -1,4 +1,7 @@
-import type {RenderExtensionPoint} from '@shopify/ui-extensions/checkout';
+import type {
+  Customer,
+  RenderExtensionPoint,
+} from '@shopify/ui-extensions/checkout';
 
 import {ScopeNotGrantedError} from '../errors';
 
@@ -6,14 +9,13 @@ import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
- * Returns the account belonging to the customer.
+ * Returns the current `Customer`.
  *
- * The value is a `Customer` if the customer has an account and is logged in,
- * `undefined` otherwise.
+ * The value is `undefined` if the buyer isn't a known customer for this shop or if they haven't logged in yet.
  */
 export function useCustomer<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): Customer | undefined {
   const buyerIdentity = useApi<ID>().buyerIdentity;
 
   if (!buyerIdentity) {
@@ -25,9 +27,13 @@ export function useCustomer<
   return useSubscription(buyerIdentity.customer);
 }
 
+/**
+ * Returns the email address of the buyer that is interacting with the cart.
+ * The value is `undefined` if the app does not have access to customer data.
+ */
 export function useEmail<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): string | undefined {
   const buyerIdentity = useApi<ID>().buyerIdentity;
 
   if (!buyerIdentity) {
@@ -39,9 +45,13 @@ export function useEmail<
   return useSubscription(buyerIdentity.email);
 }
 
+/**
+ * Returns the phone number of the buyer that is interacting with the cart.
+ * The value is `undefined` if the app does not have access to customer data.
+ */
 export function usePhone<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): string | undefined {
   const buyerIdentity = useApi<ID>().buyerIdentity;
 
   if (!buyerIdentity) {

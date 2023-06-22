@@ -22,6 +22,23 @@ export type {ChoiceProps} from './components/Choice/Choice';
 export {ChoiceList} from './components/ChoiceList/ChoiceList';
 export type {ChoiceListProps} from './components/ChoiceList/ChoiceList';
 
+export {DatePicker} from './components/DatePicker/DatePicker';
+export type {
+  DatePickerProps,
+  DayString,
+  DateString,
+  DisabledDate,
+  DateRange,
+  SelectedDate,
+  YearMonth,
+} from './components/DatePicker/DatePicker';
+
+export {DateField} from './components/DateField/DateField';
+export type {DateFieldProps} from './components/DateField/DateField';
+
+export {Disclosure} from './components/Disclosure/Disclosure';
+export type {DisclosureProps} from './components/Disclosure/Disclosure';
+
 export {Divider} from './components/Divider/Divider';
 export type {DividerProps} from './components/Divider/Divider';
 
@@ -41,7 +58,7 @@ export {HeadingGroup} from './components/HeadingGroup/HeadingGroup';
 export type {HeadingGroupProps} from './components/HeadingGroup/HeadingGroup';
 
 export {Icon} from './components/Icon/Icon';
-export type {IconProps} from './components/Icon/Icon';
+export type {IconProps, IconSource} from './components/Icon/Icon';
 
 export {Image} from './components/Image/Image';
 export type {ImageProps} from './components/Image/Image';
@@ -64,11 +81,17 @@ export type {ListProps} from './components/List/List';
 export {ListItem} from './components/ListItem/ListItem';
 export type {ListItemProps} from './components/ListItem/ListItem';
 
+export {Modal} from './components/Modal/Modal';
+export type {ModalProps} from './components/Modal/Modal';
+
 export {PhoneField} from './components/PhoneField/PhoneField';
 export type {PhoneFieldProps} from './components/PhoneField/PhoneField';
 
 export {Pressable} from './components/Pressable/Pressable';
 export type {PressableProps} from './components/Pressable/Pressable';
+
+export {Popover} from './components/Popover/Popover';
+export type {PopoverProps, PopoverPosition} from './components/Popover/Popover';
 
 export {ScrollView} from './components/ScrollView/ScrollView';
 export type {
@@ -77,7 +100,7 @@ export type {
 } from './components/ScrollView/ScrollView';
 
 export {Select} from './components/Select/Select';
-export type {SelectProps} from './components/Select/Select';
+export type {SelectProps, SelectOptionProps} from './components/Select/Select';
 
 export {SkeletonImage} from './components/SkeletonImage/SkeletonImage';
 export type {SkeletonImageProps} from './components/SkeletonImage/SkeletonImage';
@@ -120,38 +143,40 @@ export type {
 
 export type {
   AccessibilityRole,
-  ViewLikeAccessibilityRole,
-  NonPresentationalAccessibilityRole,
+  Alignment,
+  Appearance,
   Autocomplete,
   AutocompleteField,
   AutocompleteGroup,
   Background,
   BackgroundFit,
   BackgroundPosition,
+  BackgroundProps,
   BackgroundRepeat,
   BlockAlignment,
-  InlineAlignment,
+  BorderProps,
   BorderRadius,
   BorderStyle,
   BorderWidth,
   Breakpoint,
+  Columns,
   CornerRadius,
-  ShorthandProperty,
-  MaybeShorthandProperty,
+  CornerProps,
+  DisclosureActivatorProps,
+  DisclosureOpen,
   Fit,
+  GridItemSize,
+  InlineAlignment,
+  MaybeShorthandProperty,
+  NonPresentationalAccessibilityRole,
+  OverlayActivatorProps,
+  Rows,
+  ShorthandProperty,
   Status,
   Size,
   Spacing,
-  Alignment,
-  Appearance,
-  GridItemSize,
-  Columns,
-  Rows,
-  BackgroundProps,
-  BorderProps,
-  CornerProps,
   SizingProps,
   SpacingProps,
+  ViewLikeAccessibilityRole,
   VisibilityProps,
-  OverlayActivatorProps,
 } from './components/shared';

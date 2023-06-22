@@ -1,10 +1,12 @@
 import type {
-  StandardApi,
+  Metafield,
+  MetafieldChange,
+  MetafieldChangeResult,
   RenderExtensionPoint,
 } from '@shopify/ui-extensions/checkout';
 import {useMemo} from 'react';
 
-import {CheckoutUIExtensionError} from '../errors';
+import {CheckoutUIExtensionError, ExtensionHasNoMethodError} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -21,7 +23,7 @@ interface MetafieldsFilters {
  */
 export function useMetafields<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(filters?: MetafieldsFilters) {
+>(filters?: MetafieldsFilters): Metafield[] {
   const metaFields = useSubscription(useApi<ID>().metafields);
 
   return useMemo(() => {
@@ -51,6 +53,15 @@ export function useMetafields<
  */
 export function useApplyMetafieldsChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): StandardApi<ID>['applyMetafieldChange'] {
-  return useApi<ID>().applyMetafieldChange;
+>(): (change: MetafieldChange) => Promise<MetafieldChangeResult> {
+  const api = useApi<ID>();
+
+  if ('applyMetafieldChange' in api) {
+    return api.applyMetafieldChange;
+  }
+
+  throw new ExtensionHasNoMethodError(
+    'applyMetafieldChange',
+    api.extensionPoint,
+  );
 }

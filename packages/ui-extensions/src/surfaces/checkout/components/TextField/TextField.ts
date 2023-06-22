@@ -1,7 +1,7 @@
 import {createRemoteComponent, RemoteFragment} from '@remote-ui/core';
 
-import type {Autocomplete} from '../shared';
-import type {IconSource} from '../Icon/Icon';
+import {Autocomplete} from '../shared';
+import {IconSource} from '../Icon/Icon';
 
 type Type = 'text' | 'email' | 'number' | 'telephone';
 
