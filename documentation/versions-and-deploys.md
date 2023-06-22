@@ -33,6 +33,8 @@ When changeset files are detected on any of the stable version branches, a GitHu
 
 The `unstable` branch does not have the additional step of creating a PR to merge changesets “on-demand”. Instead, _every_ merge into `unstable` causes a new set of versions to be published to NPM. A GitHub action watches this branch and, when any changes are detected, it will create a [“snapshot release”](https://github.com/changesets/changesets/blob/main/docs/snapshot-releases.md) that publishes the changed packages as they exist at that point in time. Snapshot versions have the format `0.0.0-unstable-{{TIMESTAMP}}`, and are published to NPM with the `unstable` tag. This allows developers to get the latest `unstable` version of a package by running an install command referencing the `unstable` tag, like `yarn add @shopify/ui-extensions@unstable`.
 
+Like the `unstable` branch, the `internal` branch also publishes snapshot releases to NPM. These releases are identified by the format `0.0.0-internal-{{TIMESTAMP}}` and are published with the `internal` tag. It's important to note that these releases are intended for use by Shopify developers only and **are not intended for external use**, as breaking changes may be introduced without prior notice.
+
 ## Creating new stable versions
 
 > **Note:** only members of the [UI Extension Stewards GitHub team](https://github.com/orgs/Shopify/teams/ui-extension-stewards) should create new stable versions.
