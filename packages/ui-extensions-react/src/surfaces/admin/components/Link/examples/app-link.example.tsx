@@ -9,7 +9,7 @@ render('Playground', () => <App />);
 
 function App() {
   return (
-    <Link href="app://bar">
+    <Link href="app:bar">
       Link to app path
     </Link>
   );
