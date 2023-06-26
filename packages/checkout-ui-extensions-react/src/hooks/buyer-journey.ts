@@ -5,7 +5,7 @@ import type {
   BuyerJourney,
 } from '@shopify/checkout-ui-extensions';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -14,7 +14,7 @@ import {useSubscription} from './subscription';
 export function useBuyerJourney<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): BuyerJourney {
-  return useExtensionApi<ID>().buyerJourney;
+  return useApi<ID>().buyerJourney;
 }
 
 /**
@@ -25,7 +25,7 @@ export function useBuyerJourney<
 export function useBuyerJourneyCompleted<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): boolean {
-  const buyerJourney = useExtensionApi<ID>().buyerJourney;
+  const buyerJourney = useApi<ID>().buyerJourney;
   const buyerJourneyCompleted = useSubscription(buyerJourney.completed);
 
   return buyerJourneyCompleted;
@@ -43,7 +43,7 @@ export function useBuyerJourneyCompleted<
 export function useBuyerJourneyIntercept<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(interceptor: Interceptor): void {
-  const buyerJourney = useExtensionApi<ID>().buyerJourney;
+  const buyerJourney = useApi<ID>().buyerJourney;
   const interceptorRef = useRef(interceptor);
   interceptorRef.current = interceptor;
 

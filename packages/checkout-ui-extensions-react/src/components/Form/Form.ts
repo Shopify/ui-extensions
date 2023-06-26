@@ -1,8 +1,6 @@
 import {Form as BaseForm} from '@shopify/checkout-ui-extensions';
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@remote-ui/react';
+import {createRemoteReactComponent} from '@remote-ui/react';
+import type {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
 
 export type FormProps = ReactPropsFromRemoteComponentType<typeof BaseForm>;
 

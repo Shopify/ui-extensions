@@ -3,9 +3,9 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {getHookExample, getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'useExtensionApi',
+  name: 'useApi',
   description: '',
-  descriptionType: 'UseExtensionApiGeneratedType',
+  descriptionType: 'UseApiGeneratedType',
   isVisualComponent: false,
   type: 'hook',
   category: 'React Hooks',
@@ -14,11 +14,11 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: '',
       description: '',
-      type: 'UseExtensionApiGeneratedType',
+      type: 'UseApiGeneratedType',
     },
   ],
   defaultExample: getHookExample('api'),
-  related: getLinksByTag('apis', 'UseExtensionApiGeneratedType'),
+  related: getLinksByTag('apis', 'UseApiGeneratedType'),
 };
 
 export default data;

@@ -3,7 +3,7 @@ import type {
   Storage,
 } from '@shopify/checkout-ui-extensions';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 
 /**
  * Returns the key-value `Storage` interface for the extension point.
@@ -11,5 +11,5 @@ import {useExtensionApi} from './api';
 export function useStorage<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): Storage {
-  return useExtensionApi<ID>().storage;
+  return useApi<ID>().storage;
 }

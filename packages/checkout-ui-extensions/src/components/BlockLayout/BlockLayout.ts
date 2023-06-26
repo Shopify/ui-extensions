@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import {MaybeResponsiveConditionalStyle} from '../../style';
 import type {Rows} from '../shared';
-import type {GridProps} from '../Grid';
+import type {GridProps} from '../Grid/Grid';
 
 export interface BlockLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
   /**

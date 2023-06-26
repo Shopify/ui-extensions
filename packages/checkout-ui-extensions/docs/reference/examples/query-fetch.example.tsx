@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
-  useExtensionApi,
+  useApi,
   render,
   List,
   ListItem,
@@ -11,7 +11,7 @@ render('Checkout::Dynamic::Render', () => (
 ));
 
 function Extension() {
-  const {shop} = useExtensionApi();
+  const {shop} = useApi();
   const [data, setData] = useState();
 
   useEffect(() => {

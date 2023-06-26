@@ -1,7 +1,7 @@
 ## Best practices
 
 - Use larger text to emphasize content that’s not a heading, such as a price total.
-- Create contrast between more and less important text with properties such as `size`, `emphasized`, and `subdued`.
+- Create contrast between more and less important text with properties such as `size` and `subdued`.
 
 ## Related components
 

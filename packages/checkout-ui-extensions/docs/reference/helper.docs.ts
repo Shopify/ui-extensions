@@ -69,17 +69,52 @@ export function getExamples(
       },
     },
     // For examples specific to extension points that differ from the StandardApi, organize them into folders (<extension-point-name>/<example>).
-    'cart-line-render-after/default': {
+    'cart-line-details/default': {
       description: '',
       codeblock: {
         title: '',
-        tabs: getExtensionCodeTabs('cart-line-render-after/default'),
+        tabs: getExtensionCodeTabs('cart-line-details/default'),
+      },
+    },
+    'pickup-points/default': {
+      description: '',
+      codeblock: {
+        title: '',
+        tabs: getExtensionCodeTabs('pickup-points/default'),
+      },
+    },
+    'shipping-method-details/default': {
+      description: '',
+      codeblock: {
+        title: '',
+        tabs: getExtensionCodeTabs('shipping-method-details/default'),
+      },
+    },
+    'pickup-locations/default': {
+      description: '',
+      codeblock: {
+        title: '',
+        tabs: getExtensionCodeTabs('pickup-locations/default'),
+      },
+    },
+    'order-status/default': {
+      description: '',
+      codeblock: {
+        title: '',
+        tabs: getExtensionCodeTabs('order-status/default'),
+      },
+    },
+    'checkout/default': {
+      description: '',
+      codeblock: {
+        title: '',
+        tabs: getExtensionCodeTabs('checkout/default'),
       },
     },
     api: {
       description: `
 The extension API is passed as a parameter to the extension point function.
-In React, you can access it from any component through the \`useExtensionApi()\` hook.
+In React, you can access it from any component through the \`useApi()\` hook.
       `,
       codeblock: {
         title: 'Accessing Properties',
@@ -272,6 +307,13 @@ The contents of the token are signed using your shared app secret.  The optional
         ],
       },
     },
+    'delivery-groups': {
+      description: '',
+      codeblock: {
+        title: 'Delivery groups',
+        tabs: getExtensionCodeTabs('delivery-groups'),
+      },
+    },
   };
 }
 
@@ -284,10 +326,40 @@ const links: {[key: string]: LinkType[]} = {
       type: 'StandardApi',
     },
     {
-      name: 'CartLineRenderAfterApi',
+      name: 'CheckoutApi',
       subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/cartlinerenderafterapi',
-      type: 'CartLineRenderAfterApi',
+      url: '/docs/api/checkout-ui-extensions/apis/checkoutapi',
+      type: 'CheckoutApi',
+    },
+    {
+      name: 'OrderStatusApi',
+      subtitle: 'APIs',
+      url: '/docs/api/checkout-ui-extensions/apis/orderstatusapi',
+      type: 'OrderStatusApi',
+    },
+    {
+      name: 'CartLineDetailsApi',
+      subtitle: 'APIs',
+      url: '/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi',
+      type: 'CartLineDetailsApi',
+    },
+    {
+      name: 'PickupPointsApi',
+      subtitle: 'APIs',
+      url: '/docs/api/checkout-ui-extensions/apis/pickuppointsapi',
+      type: 'PickupPointsApi',
+    },
+    {
+      name: 'PickupLocationsApi',
+      subtitle: 'APIs',
+      url: '/docs/api/checkout-ui-extensions/apis/pickuplocationsapi',
+      type: 'PickupLocationsApi',
+    },
+    {
+      name: 'ShippingMethodDetailsApi',
+      subtitle: 'APIs',
+      url: '/docs/api/checkout-ui-extensions/apis/shippingmethoddetailsapi',
+      type: 'ShippingMethodDetailsApi',
     },
     {
       name: 'ExtensionPoints',

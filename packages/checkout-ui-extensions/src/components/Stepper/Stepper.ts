@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {IconSource} from '../Icon';
+import {IconSource} from '../Icon/Icon';
 
 export interface StepperProps {
   /**

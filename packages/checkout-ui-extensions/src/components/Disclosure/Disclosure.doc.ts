@@ -1,10 +1,17 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
+import {getExample} from '../../helper.docs';
+
+const disclosureAndAlignment = getExample(
+  'ui-components/disclosure-and-alignment',
+  ['jsx', 'js'],
+);
+
 const data: ReferenceEntityTemplateSchema = {
   name: 'Disclosure',
   description:
     'Disclosure is an optionally controlled component used to put long sections of information under content blocks that users can expand or collapse by pressing an activator. The activator can be specified as children using an action component (`Button`, `Link` or `Pressable`) or `Checkbox` component. The content blocks can be specified as children inside a structure component (`View`, `InlineLayout`, `BlockStack`, `Grid`, etc.).\n\nThe library takes care of applying the WAI-ARIA Accordion pattern automatically for the activator and the toggled content.',
-  thumbnail: 'Disclosure-thumbnail.png',
+  thumbnail: 'disclosure-thumbnail.png',
   requires: '',
   isVisualComponent: true,
   type: '',
@@ -37,29 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
   },
   examples: {
     description: '',
-    examples: [
-      {
-        description:
-          'Use the Disclosure component to simplify the user experience and reveal interfaces only when the customer requests it. It also demonstrates how a combination of inline and block layout components can improve the readability of information. By employing these strategies, users can easily scan and comprehend the content, making for a better user experience overall.',
-        image: 'disclosure-and-alignment.gif',
-        codeblock: {
-          tabs: [
-            {
-              title: 'React',
-              code: '../../../docs/reference/examples/ui-components/disclosure-and-alignment.example.tsx',
-              language: 'typescript',
-            },
-            {
-              title: 'JS',
-              code: '../../../docs/reference/examples/ui-components/disclosure-and-alignment.example.ts',
-              language: 'javascript',
-            },
-          ],
-          title:
-            'Strategies for simplifying layout and aligning content using Disclosure and Inline/Block Layout components.',
-        },
-      },
-    ],
+    examples: [disclosureAndAlignment],
   },
   subSections: [
     {

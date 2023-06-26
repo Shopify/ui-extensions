@@ -2,7 +2,7 @@ import React, {useEffect} from 'react';
 import {
   render,
   Banner,
-  useExtensionApi,
+  useApi,
 } from '@shopify/checkout-ui-extensions-react';
 
 render('Checkout::Dynamic::Render', () => (
@@ -10,7 +10,7 @@ render('Checkout::Dynamic::Render', () => (
 ));
 
 function Extension() {
-  const {sessionToken} = useExtensionApi();
+  const {sessionToken} = useApi();
 
   useEffect(() => {
     async function queryApi() {

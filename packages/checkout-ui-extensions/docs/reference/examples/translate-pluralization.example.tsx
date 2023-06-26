@@ -3,16 +3,16 @@ import React from 'react';
 import {
   render,
   Banner,
-  useExtensionApi,
+  useApi,
   useTranslate,
 } from '@shopify/checkout-ui-extensions-react';
 
 render('Checkout::Dynamic::Render', () => (
-  <App />
+  <Extension />
 ));
 
-function App() {
-  const {i18n} = useExtensionApi();
+function Extension() {
+  const {i18n} = useApi();
   const translate = useTranslate();
 
   const points = 10000;

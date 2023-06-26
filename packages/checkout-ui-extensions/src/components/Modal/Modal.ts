@@ -12,6 +12,11 @@ export interface ModalProps {
    */
   onClose?: () => void;
   /**
+   * Callback when the modal is opened. This is called at the beginning of the transition
+   * that opens the modal.
+   */
+  onOpen?: () => void;
+  /**
    * A title rendered at the top of the modal.
    */
   title?: string;

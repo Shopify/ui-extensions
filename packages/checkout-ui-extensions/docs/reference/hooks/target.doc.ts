@@ -17,8 +17,8 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseTargetGeneratedType',
     },
   ],
-  defaultExample: getHookExample('cart-line-render-after/default'),
-  related: [getLinkByType('CartLineRenderAfterApi')],
+  defaultExample: getHookExample('cart-line-details/default'),
+  related: [getLinkByType('CartLineDetailsApi')],
 };
 
 export default data;

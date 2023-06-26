@@ -5,7 +5,7 @@ import type {
 
 import {ScopeNotGrantedError} from '../errors';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -14,7 +14,7 @@ import {useSubscription} from './subscription';
 export function useShippingAddress<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): MailingAddress | undefined {
-  const shippingAddress = useExtensionApi<ID>().shippingAddress;
+  const shippingAddress = useApi<ID>().shippingAddress;
 
   if (!shippingAddress) {
     throw new ScopeNotGrantedError(

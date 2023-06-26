@@ -1,6 +1,6 @@
 import {RenderExtensionPoint, Timezone} from '@shopify/checkout-ui-extensions';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -10,7 +10,7 @@ import {useSubscription} from './subscription';
 export function useTimezone<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): Timezone {
-  const {localization} = useExtensionApi<ID>();
+  const {localization} = useApi<ID>();
 
   return useSubscription(localization.timezone);
 }

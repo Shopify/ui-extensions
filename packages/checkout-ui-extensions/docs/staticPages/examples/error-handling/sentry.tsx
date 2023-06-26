@@ -26,9 +26,9 @@ self.addEventListener('error', (error) => {
 
 // Your normal extension code.
 render('Checkout::Dynamic::Render', () => (
-  <App />
+  <Extension />
 ));
 
-function App() {
+function Extension() {
   return <Banner>Your extension</Banner>;
 }

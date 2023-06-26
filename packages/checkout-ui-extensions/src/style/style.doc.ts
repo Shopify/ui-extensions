@@ -72,7 +72,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'conditions',
       title: 'Conditions',
       sectionContent:
-        'The following conditions are supported for conditional styles.\n\nMultiple conditions can be set on the same `when` method.\n\n \n\n| Name | Type | Description |\n| --- | --- | --- |\n| <code>"hover"</code> | <code>true</code> | This condition is met when an element is hovered on with the cursor (mouse pointer). |\n| <code>"focus"</code> | <code>true</code> | This condition is met when an element is clicked, tapped on or selected using the Tab key.|\n| <code>viewportInlineSize</code> | <code>{min: "small" | "medium" | "large"}</code> | This condition is met when the device matches the minimum width.|',
+        'The following conditions are supported for conditional styles.\n\nMultiple conditions can be set on the same `when` method.\n\n \n\n| Name | Type | Description |\n| --- | --- | --- |\n| <code>"hover"</code> | <code>true</code> | This condition is met when an element is hovered on with the cursor (mouse pointer). |\n| <code>"focus"</code> | <code>true</code> | This condition is met when an element is clicked, tapped on or selected using the Tab key.|\n| <code>viewportInlineSize</code> | <code>{min: "small" &#124; "medium" &#124; "large"}</code> | This condition is met when the device matches the minimum width.|',
     },
   ],
   related: [

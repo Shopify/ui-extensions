@@ -6,10 +6,10 @@ import {
 } from '@shopify/checkout-ui-extensions-react';
 
 render('Checkout::Dynamic::Render', () => (
-  <App />
+  <Extension />
 ));
 
-function App() {
+function Extension() {
   const options = useSelectedPaymentOptions();
 
   if (

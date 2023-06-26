@@ -1,13 +1,13 @@
 import type {Capability} from '@shopify/checkout-ui-extensions';
 
 import {useSubscription} from './subscription';
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 
 /**
  * Returns a list of an extension's granted capabilities.
  */
 export function useExtensionCapabilities(): Capability[] {
-  return useSubscription(useExtensionApi().extension.capabilities);
+  return useSubscription(useApi().extension.capabilities);
 }
 
 /**

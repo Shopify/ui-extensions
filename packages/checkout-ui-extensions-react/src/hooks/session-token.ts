@@ -3,7 +3,7 @@ import {
   RenderExtensionPoint,
 } from '@shopify/checkout-ui-extensions';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 
 /**
  * Provides access to session tokens, which can be used to verify token claims on your app's server.
@@ -11,5 +11,5 @@ import {useExtensionApi} from './api';
 export function useSessionToken<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): SessionToken {
-  return useExtensionApi<ID>().sessionToken;
+  return useApi<ID>().sessionToken;
 }

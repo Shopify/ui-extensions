@@ -11,12 +11,12 @@ import {ExtensionApiContext} from '../context';
  * Returns the full API object that was passed in to your extension when it was created.
  * Depending on the extension point, this object can contain different properties.
  *
- * For example, the `Checkout::CartLineDetails::RenderAfter` extension point will return the [CartLineRenderAfterApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cartlinerenderafterapi) object.
+ * For example, the `Checkout::CartLineDetails::RenderAfter` extension point will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi) object.
  * Whereas others return the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object.
  *
  * For reference, see [ExtensionPoints](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensionpoints) to determine what API object will be returned by your extension point.
  */
-export function useExtensionApi<
+export function useApi<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): ApiForRenderExtension<ID> {
   const api = useContext(ExtensionApiContext);
@@ -28,4 +28,19 @@ export function useExtensionApi<
   }
 
   return api as ApiForRenderExtension<ID>;
+}
+
+/**
+ * Returns the full API object that was passed in to your extension when it was created.
+ * Depending on the extension point, this object can contain different properties.
+ *
+ * For example, the `Checkout::CartLineDetails::RenderAfter` extension point will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi) object.
+ * Whereas others return the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object.
+ *
+ * For reference, see [ExtensionPoints](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensionpoints) to determine what API object will be returned by your extension point.
+ */
+export function useExtensionApi<
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
+>(): ApiForRenderExtension<ID> {
+  return useApi();
 }

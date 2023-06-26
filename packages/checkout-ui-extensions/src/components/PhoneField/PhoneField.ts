@@ -1,7 +1,7 @@
 import {createRemoteComponent, RemoteFragment} from '@remote-ui/core';
 
 import {Autocomplete} from '../shared';
-import {IconSource} from '../Icon';
+import {IconSource} from '../Icon/Icon';
 
 export interface PhoneFieldProps {
   /**

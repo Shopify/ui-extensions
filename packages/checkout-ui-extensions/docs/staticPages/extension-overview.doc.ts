@@ -52,8 +52,10 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'GenericAccordion',
-      title: 'Supported locations',
+      title: 'Checkout locations',
       anchorLink: 'supported-locations',
+      sectionContent:
+        'Checkout is where buyers go to purchase goods. Checkout consists of the information, shipping, and payment steps in addition to the order summary and Shop Pay. Learn more about building [custom functionality for checkout](/docs/api/checkout-ui-extensions).',
       accordionContent: [
         {
           title: 'Information',
@@ -101,13 +103,76 @@ See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoint
           image: 'supported-locations-shop-pay.png',
         },
         {
-          title: 'Order Status',
+          title: 'Local Pickup',
           description: `
-After submitting their order, the buyer is taken to an order status page.
+Point in checkout where the buyer can select a store location to pick up their purchase.
 
 See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
 `,
+          image: 'supported-locations-local-pickup.png',
+        },
+        {
+          title: 'Pickup Points',
+          description: `
+Point in checkout where the buyer can select a pickup point to have their purchase delivered to.
+
+See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+`,
+          image: 'supported-locations-pickup-points.png',
+        },
+      ],
+    },
+    {
+      type: 'GenericAccordion',
+      title: 'Thank you locations',
+      anchorLink: 'supported-typ-locations',
+      sectionContent:
+        'The thank you page is shown to buyers immediately after a checkout is successfully submitted. Learn more about building for [the thank you page](/docs/apps/checkout/thank-you-order-status).',
+      accordionContent: [
+        {
+          title: 'Order details',
+          description: `
+Displays all order information to buyers.
+
+See [all thank you page extension points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+`,
+          image: 'supported-locations-thank-you.png',
+        },
+        {
+          title: 'Order summary',
+          description: `
+Summary of the cart contents, discounts, and order totals.
+
+See [all thank you page extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+`,
+          image: 'supported-locations-order-summary-thank-you.png',
+        },
+      ],
+    },
+    {
+      type: 'GenericAccordion',
+      title: 'Order status locations',
+      anchorLink: 'supported-osp-locations',
+      sectionContent:
+        'The order status page is shown to buyers when they return to a completed checkout for order updates. Learn more about building for [the order status page](/docs/apps/checkout/thank-you-order-status).',
+      accordionContent: [
+        {
+          title: 'Order details',
+          description: `
+Displays all order information to buyers.
+
+See [all order status page extension points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+`,
           image: 'supported-locations-order-status.png',
+        },
+        {
+          title: 'Order summary',
+          description: `
+Summary of the cart contents, discounts, and order totals.
+
+See [all order status page extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+`,
+          image: 'supported-locations-order-summary-order-status.png',
         },
       ],
     },

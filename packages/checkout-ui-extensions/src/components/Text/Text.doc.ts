@@ -48,7 +48,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent:
-        '- Use larger text to emphasize content that’s not a heading, such as a price total.\n\n- Create contrast between more and less important text with properties such as `size`, `emphasized`, and `subdued`.',
+        '- Use larger text to emphasize content that’s not a heading, such as a price total.\n\n- Create contrast between more and less important text with properties such as `size` and `subdued`.',
     },
   ],
   related: [
