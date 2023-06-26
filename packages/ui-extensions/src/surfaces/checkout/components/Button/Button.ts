@@ -2,12 +2,17 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {
   Appearance,
-  InlineAlignment,
   ButtonAccessibilityRole,
+  InlineAlignment,
+  IdProps,
   OverlayActivatorProps,
+  DisclosureActivatorProps,
 } from '../shared';
 
-export interface ButtonProps extends OverlayActivatorProps {
+export interface ButtonProps
+  extends OverlayActivatorProps,
+    DisclosureActivatorProps,
+    IdProps {
   /**
    * The type of button that will be rendered. The visual presentation of the button type
    * is controlled by merchants through the Branding API.
@@ -55,8 +60,7 @@ export interface ButtonProps extends OverlayActivatorProps {
   loadingLabel?: string;
   /**
    * A label used for buyers using assistive technologies. When set, any
-   * `children` supplied to this component are hidden from being seen for
-   * accessibility purposes to prevent duplicate content from being read.
+   * `children` supplied to this component will not be announced to screen reader users.
    */
   accessibilityLabel?: string;
   /**

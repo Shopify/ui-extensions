@@ -1,8 +1,12 @@
-import {render, List, ListItem} from '@shopify/ui-extensions-react/checkout';
+import {
+  reactExtension,
+  List,
+  ListItem,
+} from '@shopify/ui-extensions-react/checkout';
 
-render('Checkout::Dynamic::Render', () => <App />);
+reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return (
     <List>
       <ListItem>100% organic cotton</ListItem>

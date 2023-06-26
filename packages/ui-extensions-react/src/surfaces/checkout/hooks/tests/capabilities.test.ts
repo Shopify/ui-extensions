@@ -1,4 +1,4 @@
-import type {ExtensionInstance} from '@shopify/ui-extensions/checkout';
+import type {Extension} from '@shopify/ui-extensions/checkout';
 
 import {
   useExtensionCapabilities,
@@ -13,7 +13,7 @@ describe('useExtensionCapabilities', () => {
 
     const capabilitiesSubscribable = createMockStatefulRemoteSubscribable(
       capabilities,
-    ) as ExtensionInstance['capabilities'];
+    ) as Extension['capabilities'];
 
     const {value} = mount.hook(useExtensionCapabilities, {
       extensionApi: {
@@ -31,7 +31,7 @@ describe('useExtensionCapability', () => {
   it('returns the status of a capabilities', () => {
     const capabilities = createMockStatefulRemoteSubscribable([
       'network_access',
-    ]) as ExtensionInstance['capabilities'];
+    ]) as Extension['capabilities'];
 
     const {value: activatedCapability} = mount.hook(
       () => useExtensionCapability('network_access'),

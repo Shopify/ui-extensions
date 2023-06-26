@@ -1,6 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export interface ListItemProps {}
+import type {IdProps} from '../shared';
+
+export interface ListItemProps extends IdProps {}
 
 /**
  * List items are used as children of the `List` component.

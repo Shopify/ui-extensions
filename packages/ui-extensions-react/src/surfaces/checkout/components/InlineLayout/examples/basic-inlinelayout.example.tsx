@@ -1,12 +1,12 @@
 import {
-  render,
+  reactExtension,
   InlineLayout,
   View,
 } from '@shopify/ui-extensions-react/checkout';
 
-render('Checkout::Dynamic::Render', () => <App />);
+reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return (
     <InlineLayout columns={['20%', 'fill']}>
       <View border="base" padding="base">

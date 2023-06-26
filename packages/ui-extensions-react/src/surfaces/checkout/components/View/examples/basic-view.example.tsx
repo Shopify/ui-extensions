@@ -1,8 +1,8 @@
-import {render, View} from '@shopify/ui-extensions-react/checkout';
+import {reactExtension, View} from '@shopify/ui-extensions-react/checkout';
 
-render('Checkout::Dynamic::Render', () => <App />);
+reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return (
     <View padding="base" border="base">
       View

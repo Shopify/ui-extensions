@@ -1,7 +1,10 @@
-import {render, PhoneField} from '@shopify/ui-extensions-react/checkout';
+import {
+  reactExtension,
+  PhoneField,
+} from '@shopify/ui-extensions-react/checkout';
 
-render('Checkout::Dynamic::Render', () => <App />);
+reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return <PhoneField label="Phone" value="1 (555) 555-5555" />;
 }

@@ -1,16 +1,16 @@
 import {
-  render,
+  reactExtension,
   Icon,
   InlineLayout,
   Pressable,
   Text,
 } from '@shopify/ui-extensions-react/checkout';
 
-render('Checkout::Dynamic::Render', () => <App />);
+reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return (
-    <Pressable border="base" borderRadius="base" padding="base">
+    <Pressable border="base" cornerRadius="base" padding="base">
       <InlineLayout columns={['fill', 'auto']}>
         <Text>Details</Text>
         <Icon source="chevronDown" size="small" />

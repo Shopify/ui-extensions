@@ -1,6 +1,6 @@
-import {extend, View} from '@shopify/ui-extensions/checkout';
+import {extension, View} from '@shopify/ui-extensions/checkout';
 
-extend('Checkout::Dynamic::Render', (root) => {
+extension('Checkout::Dynamic::Render', (root) => {
   const view = root.createComponent(
     View,
     {border: 'base', padding: 'base'},

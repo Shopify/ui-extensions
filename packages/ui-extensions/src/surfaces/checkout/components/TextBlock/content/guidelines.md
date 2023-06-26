@@ -1,6 +1,6 @@
 ## Best practices
 
-- Create contrast between more and less important text with properties such as `size`, `emphasized`, and `subdued`.
+- Create contrast between more and less important text with properties such as `size` and `subdued`.
 
 ## Related components
 

@@ -1,7 +1,7 @@
-import {render, Divider} from '@shopify/ui-extensions-react/checkout';
+import {reactExtension, Divider} from '@shopify/ui-extensions-react/checkout';
 
-render('Checkout::Dynamic::Render', () => <App />);
+reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return <Divider />;
 }

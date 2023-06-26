@@ -3,7 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {
   TextAccessibilityRole,
   Emphasis,
-  Size,
+  TextSize,
   Appearance,
   VisibilityProps,
 } from '../shared';
@@ -12,9 +12,7 @@ export interface TextProps extends VisibilityProps {
   /**
    * Size of the text
    */
-  size?:
-    | Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'extraLarge'>
-    | 'medium';
+  size?: TextSize;
   /**
    * Use to emphasize a word or a group of words.
    */

@@ -1,13 +1,13 @@
 import {
-  render,
+  reactExtension,
   InlineSpacer,
   InlineStack,
   View,
 } from '@shopify/ui-extensions-react/checkout';
 
-render('Checkout::Dynamic::Render', () => <App />);
+reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return (
     <InlineStack spacing="none">
       <View border="base" padding="base">

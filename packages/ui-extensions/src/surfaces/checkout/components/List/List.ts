@@ -1,11 +1,11 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {Spacing} from '../shared';
+import type {IdProps, Spacing} from '../shared';
 import type {MaybeResponsiveConditionalStyle} from '../../style';
 
 export type Marker = 'none' | 'bullet' | 'number';
 
-export interface ListProps {
+export interface ListProps extends IdProps {
   /**
    * Adjust spacing between list items
    *
