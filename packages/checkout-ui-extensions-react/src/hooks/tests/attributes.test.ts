@@ -4,7 +4,7 @@ import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
 describe('Attributes API hooks', () => {
   describe('useAttributes', () => {
-    it('should return an empty array if no attributes are available', () => {
+    it('returns an empty array if no attributes are available', () => {
       const {value} = mount.hook(() => useAttributes(), {
         extensionApi: {
           attributes: createMockStatefulRemoteSubscribable([]),
@@ -14,7 +14,7 @@ describe('Attributes API hooks', () => {
       expect(value).toStrictEqual([]);
     });
 
-    it('should return an array of attributes if available', () => {
+    it('returns an array of attributes if available', () => {
       const {value} = mount.hook(() => useAttributes(), {
         extensionApi: {
           attributes: createMockStatefulRemoteSubscribable([
@@ -28,7 +28,7 @@ describe('Attributes API hooks', () => {
   });
 
   describe('useAttributeValues', () => {
-    it('should return an array of attribute values if available', () => {
+    it('returns an array of attribute values if available', () => {
       const {value} = mount.hook(() => useAttributeValues(['foo']), {
         extensionApi: {
           attributes: createMockStatefulRemoteSubscribable([
@@ -40,7 +40,7 @@ describe('Attributes API hooks', () => {
       expect(value).toStrictEqual(['bar']);
     });
 
-    it('should return an array with undefined values if a non-existent attribute is requested', () => {
+    it('returns an array with undefined values if a non-existent attribute is requested', () => {
       const {value} = mount.hook(() => useAttributeValues(['foo', 'bar']), {
         extensionApi: {
           attributes: createMockStatefulRemoteSubscribable([
