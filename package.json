@@ -21,6 +21,8 @@
     "restore-consumer-spin": "./scripts/restore-consumer-spin.sh",
     "run:ts": "babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "run:ts:watch": "nodemon --ext .ts,.tsx,.mjs,.json,.graphql node_modules/.bin/babel-node --extensions .ts,.tsx,.mjs,.js,.json",
+    "scaffold-docs:admin": "./scripts/create-doc-files.sh \"admin\"",
+    "scaffold-docs:checkout": "./scripts/create-doc-files.sh \"checkout\"",
     "test": "loom test",
     "type-check": "loom type-check"
   },
@@ -42,5 +44,8 @@
     "prettier": "^2.8.0",
     "react": ">=17.0.0 <18.0.0",
     "typescript": "^4.9.0"
+  },
+  "dependencies": {
+    "@shopify/generate-docs": "^0.10.9"
   }
 }
