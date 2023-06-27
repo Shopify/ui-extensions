@@ -15,6 +15,11 @@ export interface Order {
    */
   name: string;
   /**
+   * Order confirmation number that appears on the receipt.
+   * @example 'ABCD1234'
+   */
+  confirmationNumber: string;
+  /**
    * If cancelled, the time at which the order was cancelled.
    */
   cancelledAt?: string;
