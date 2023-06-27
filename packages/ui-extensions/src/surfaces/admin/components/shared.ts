@@ -364,43 +364,193 @@ export type MaybeTwoBoxEdgesShorthandProperty<
   T extends SpacingKeyword | boolean,
 > = T | `${T} ${T}`;
 
-export interface GapProps {
+export interface AutocompleteProps<
+  AutocompleteField extends AnyAutocompleteField,
+> {
   /**
-   * Adjust spacing between children
+   * A hint as to the intended content of the field.
+   *
+   * When set to `true`, this property indicates that the field should support
+   * autofill, but you do not have any more semantic information on the intended
+   * contents.
+   *
+   * When set to `false`, you are indicating that this field contains sensitive
+   * information, or contents that are never saved, like one-time codes.
+   *
+   * Alternatively, you can provide value which describes the
+   * specific data you would like to be entered into this field during autofill.
+   *
+   * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
    */
-  gap?: MaybeTwoBoxEdgesShorthandProperty<SpacingKeyword | boolean>;
-
-  /**
-   * Adjust spacing between children in the block axis
-   */
-  rowGap?: SpacingKeyword | boolean;
-
-  /**
-   * Adjust spacing between children in the inline axis
-   */
-  columnGap?: SpacingKeyword | boolean;
+  autocomplete?:
+    | AutocompleteField
+    | `${AutocompleteSection} ${AutocompleteField}`
+    | `${AutocompleteGroup} ${AutocompleteField}`
+    | `${AutocompleteSection} ${AutocompleteGroup} ${AutocompleteField}`
+    | boolean;
 }
 
-export type CrossAxisAlignment =
-  /** Items are positioned at the beginning of the container's cross axis */
-  | 'start'
-  /** Items are positioned at the center of the container’s cross axis */
-  | 'center'
-  /**	Items are positioned at the end of the container's cross axis */
-  | 'end'
-  /** Items are positioned at the baseline of the container's cross axis */
-  | 'baseline';
+/**
+ * The “section” scopes the autocomplete data that should be inserted
+ * to a specific area of the page.
+ *
+ * Commonly used when there are multiple fields with the same autocomplete needs
+ * in the same page. For example: 2 shipping address forms in the same page.
+ */
+export type AutocompleteSection = `section-${string}`;
 
-export type MainAxisAlignment =
-  /** Align items at the start of the container's main axis */
-  | 'start'
-  /** Align items to the center of the container's main axis */
-  | 'center'
-  /** Align items at the end of the container's main axis */
-  | 'end'
-  /** Distribute items evenly across the container's main axis, where the first item is flush with the start, the last is flush with the end */
-  | 'space-between'
-  /** Distribute items evenly across the container's main axis, with a half-size space on either end of the items */
-  | 'space-around'
-  /** Distribute items evenly across the container's main axis, with items having equal space around them */
-  | 'space-evenly';
+/**
+ * The contact information group the autocomplete data should be sourced from.
+ */
+export type AutocompleteGroup = 'shipping' | 'billing';
+
+/**
+ * The contact information subgroup the autocomplete data should be sourced from.
+ */
+export type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
+
+export type AutocompleteFieldTelephoneAlias = 'tel' | 'telephone';
+export type AutocompleteFieldBirthdayAlias = 'bday' | 'birthday';
+export type AutocompleteFieldCreditCardAlias = 'cc' | 'credit-card';
+export type AutocompleteFieldInstantMessageAlias = 'impp' | 'instant-message';
+export type AutocompleteFieldSecurityCodeAlias = 'csc' | 'security-code';
+
+export type AnyAutocompleteField =
+  | 'additional-name'
+  | 'address-level1'
+  | 'address-level2'
+  | 'address-level3'
+  | 'address-level4'
+  | 'address-line1'
+  | 'address-line2'
+  | 'address-line3'
+  | 'country-name'
+  | 'country'
+  | 'current-password'
+  | 'email'
+  | 'family-name'
+  | 'given-name'
+  | 'honorific-prefix'
+  | 'honorific-suffix'
+  | 'language'
+  | 'name'
+  | 'new-password'
+  | 'nickname'
+  | 'one-time-code'
+  | 'organization-title'
+  | 'organization'
+  | 'photo'
+  | 'postal-code'
+  | 'sex'
+  | 'street-address'
+  | 'transaction-amount'
+  | 'transaction-currency'
+  | 'url'
+  | 'username'
+  | `${AutocompleteFieldBirthdayAlias}-day`
+  | `${AutocompleteFieldBirthdayAlias}-month`
+  | `${AutocompleteFieldBirthdayAlias}-year`
+  | `${AutocompleteFieldBirthdayAlias}`
+  | `${AutocompleteFieldCreditCardAlias}-additional-name`
+  | `${AutocompleteFieldCreditCardAlias}-expiry-month`
+  | `${AutocompleteFieldCreditCardAlias}-expiry-year`
+  | `${AutocompleteFieldCreditCardAlias}-expiry`
+  | `${AutocompleteFieldCreditCardAlias}-family-name`
+  | `${AutocompleteFieldCreditCardAlias}-given-name`
+  | `${AutocompleteFieldCreditCardAlias}-name`
+  | `${AutocompleteFieldCreditCardAlias}-number`
+  | `${AutocompleteFieldCreditCardAlias}-${AutocompleteFieldSecurityCodeAlias}`
+  | `${AutocompleteFieldCreditCardAlias}-type`
+  | `${AutocompleteAddressGroup} email`
+  | `${AutocompleteFieldInstantMessageAlias}`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldInstantMessageAlias}`
+  | `${AutocompleteFieldTelephoneAlias}`
+  | `${AutocompleteFieldTelephoneAlias}-area-code`
+  | `${AutocompleteFieldTelephoneAlias}-country-code`
+  | `${AutocompleteFieldTelephoneAlias}-extension`
+  | `${AutocompleteFieldTelephoneAlias}-local-prefix`
+  | `${AutocompleteFieldTelephoneAlias}-local-suffix`
+  | `${AutocompleteFieldTelephoneAlias}-local`
+  | `${AutocompleteFieldTelephoneAlias}-national`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-area-code`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-country-code`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-extension`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local-prefix`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local-suffix`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-national`;
+
+export type TextAutocompleteField = Extract<
+  AnyAutocompleteField,
+  | 'additional-name'
+  | 'address-level1'
+  | 'address-level2'
+  | 'address-level3'
+  | 'address-level4'
+  | 'address-line1'
+  | 'address-line2'
+  | 'address-line3'
+  | 'country-name'
+  | 'country'
+  | 'family-name'
+  | 'given-name'
+  | 'honorific-prefix'
+  | 'honorific-suffix'
+  | 'language'
+  | 'name'
+  | 'nickname'
+  | 'one-time-code'
+  | 'organization-title'
+  | 'organization'
+  | 'postal-code'
+  | 'sex'
+  | 'street-address'
+  | 'transaction-currency'
+  | 'username'
+  | `${AutocompleteFieldCreditCardAlias}-name`
+  | `${AutocompleteFieldCreditCardAlias}-given-name`
+  | `${AutocompleteFieldCreditCardAlias}-additional-name`
+  | `${AutocompleteFieldCreditCardAlias}-family-name`
+  | `${AutocompleteFieldCreditCardAlias}-type`
+>;
+
+/**
+ * TODO:
+ * Move these to their respective fields when they are implemented.
+ */
+export type MoneyAutocomplete = Extract<
+  AnyAutocompleteField,
+  'transaction-amount'
+>;
+
+export type DateAutocomplete = Extract<
+  AnyAutocompleteField,
+  | `${AutocompleteFieldBirthdayAlias}`
+  | `${AutocompleteFieldBirthdayAlias}-day`
+  | `${AutocompleteFieldBirthdayAlias}-month`
+  | `${AutocompleteFieldBirthdayAlias}-year`
+  | `${AutocompleteFieldCreditCardAlias}-expiry`
+  | `${AutocompleteFieldCreditCardAlias}-expiry-month`
+  | `${AutocompleteFieldCreditCardAlias}-expiry-year`
+>;
+
+export type PhoneAutocompleteField = Extract<
+  AnyAutocompleteField,
+  | `${AutocompleteFieldTelephoneAlias}`
+  | `${AutocompleteFieldTelephoneAlias}-area-code`
+  | `${AutocompleteFieldTelephoneAlias}-country-code`
+  | `${AutocompleteFieldTelephoneAlias}-extension`
+  | `${AutocompleteFieldTelephoneAlias}-local-prefix`
+  | `${AutocompleteFieldTelephoneAlias}-local-suffix`
+  | `${AutocompleteFieldTelephoneAlias}-local`
+  | `${AutocompleteFieldTelephoneAlias}-national`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-area-code`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-country-code`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-extension`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local-prefix`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local-suffix`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-national`
+>;
