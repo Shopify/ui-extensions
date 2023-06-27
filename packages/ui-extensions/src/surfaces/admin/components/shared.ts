@@ -554,3 +554,44 @@ export type PhoneAutocompleteField = Extract<
   | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local`
   | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-national`
 >;
+
+export interface GapProps {
+  /**
+   * Adjust spacing between children
+   */
+  gap?: MaybeTwoBoxEdgesShorthandProperty<SpacingKeyword | boolean>;
+
+  /**
+   * Adjust spacing between children in the block axis
+   */
+  rowGap?: SpacingKeyword | boolean;
+
+  /**
+   * Adjust spacing between children in the inline axis
+   */
+  columnGap?: SpacingKeyword | boolean;
+}
+
+export type CrossAxisAlignment =
+  /** Items are positioned at the beginning of the container's cross axis */
+  | 'start'
+  /** Items are positioned at the center of the container’s cross axis */
+  | 'center'
+  /**	Items are positioned at the end of the container's cross axis */
+  | 'end'
+  /** Items are positioned at the baseline of the container's cross axis */
+  | 'baseline';
+
+export type MainAxisAlignment =
+  /** Align items at the start of the container's main axis */
+  | 'start'
+  /** Align items to the center of the container's main axis */
+  | 'center'
+  /** Align items at the end of the container's main axis */
+  | 'end'
+  /** Distribute items evenly across the container's main axis, where the first item is flush with the start, the last is flush with the end */
+  | 'space-between'
+  /** Distribute items evenly across the container's main axis, with a half-size space on either end of the items */
+  | 'space-around'
+  /** Distribute items evenly across the container's main axis, with items having equal space around them */
+  | 'space-evenly';
