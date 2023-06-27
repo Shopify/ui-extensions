@@ -46,6 +46,7 @@ export {
   Banner,
   Button,
   CameraScanner,
+  DatePicker,
   Section,
   Selectable,
   Stack,
@@ -63,6 +64,7 @@ export {
   RadioButtonList,
   Icon,
   Screen,
+  TimePicker,
   Navigator,
 } from './components';
 
@@ -71,6 +73,7 @@ export type {
   AutoCapitalizationType,
   BaseTextFieldProps,
   CameraScannerProps,
+  DatePickerProps,
   DialogType,
   DialogProps,
   BadgeVariant,
@@ -106,6 +109,7 @@ export type {
   SelectableProps,
   Spacing,
   StackProps,
+  TimePickerProps,
   VerticalSpacing,
   HorizontalSpacing,
   ImageProps,
