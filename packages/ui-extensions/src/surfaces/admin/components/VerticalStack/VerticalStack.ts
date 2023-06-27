@@ -15,7 +15,7 @@ export interface VerticalStackProps
     SizingProps {
   /**
    * A label that describes the purpose or contents of the element. When set,
-   * it will be announced to buyers using assistive technologies and will
+   * it will be announced to users using assistive technologies and will
    * provide them with more context.
    */
   accessibilityLabel?: string;
