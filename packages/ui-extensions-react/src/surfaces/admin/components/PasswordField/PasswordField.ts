@@ -1,22 +1,5 @@
-import {createRemoteComponent} from '@remote-ui/core';
-import {
-  AutocompleteProps,
-  AnyAutocompleteField,
-  InputProps,
-  MinMaxLengthProps,
-} from '../shared';
+import {PasswordField as BasePasswordField} from '@shopify/ui-extensions/admin';
+import {createRemoteReactComponent} from '@remote-ui/react';
 
-export interface PasswordFieldProps
-  extends InputProps<string>,
-    MinMaxLengthProps,
-    AutocompleteProps<PasswordAutocompleteField> {}
-
-export type PasswordAutocompleteField = Extract<
-  AnyAutocompleteField,
-  'new-password' | 'current-password'
->;
-
-export const PasswordField = createRemoteComponent<
-  'PasswordField',
-  PasswordFieldProps
->('PasswordField');
+export const PasswordField = createRemoteReactComponent(BasePasswordField);
+export type {PasswordFieldProps} from '@shopify/ui-extensions/admin';
