@@ -346,7 +346,13 @@ export interface AppMetafieldEntryTarget {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`.
    */
-  type: 'customer' | 'product' | 'shop' | 'variant';
+  type:
+    | 'customer'
+    | 'product'
+    | 'shop'
+    | 'variant'
+    | 'company'
+    | 'companyLocation';
 
   /** The numeric owner ID that is associated with the metafield. */
   id: string;
