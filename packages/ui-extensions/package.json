@@ -41,6 +41,9 @@
     "@remote-ui/async-subscription": "^2.1.12",
     "@remote-ui/core": "2.1.x"
   },
+  "devDependencies": {
+    "@shopify/generate-docs": "0.10.7"
+  },
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org/"
