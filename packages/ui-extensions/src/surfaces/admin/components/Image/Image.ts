@@ -51,7 +51,7 @@ interface ImageAccessibilityLabelProp {
    * consuming non-text content. When a screen readers encounters an `Image`,
    * the description is read and announced aloud. If an image fails to load,
    * potentially due to a poor connection, the `description` is displayed on
-   * screen instead. This has the benefit of letting a sighted buyer know an
+   * screen instead. This has the benefit of letting a sighted user know an
    * image was meant to load here, but as an alternative, they’re still able to
    * consume the text content. Read
    * [considerations when writing alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204)
