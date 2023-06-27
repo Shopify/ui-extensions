@@ -2,7 +2,7 @@ import React from 'react';
 import {
   render,
   Banner,
-  useApi,
+  useExtensionApi,
   useSubscription,
 } from '@shopify/checkout-ui-extensions-react';
 
@@ -11,7 +11,7 @@ render('Checkout::Dynamic::Render', () => (
 ));
 
 function Extension() {
-  const {cost} = useApi();
+  const {cost} = useExtensionApi();
 
   // Equivalent to the useTotalAmount() hook to subscribe and re-render your extension on changes
   const totalAmount = useSubscription(

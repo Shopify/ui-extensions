@@ -2,7 +2,7 @@ import React from 'react';
 import {
   render,
   Text,
-  useApi,
+  useExtensionApi,
 } from '@shopify/checkout-ui-extensions-react';
 
 render('Checkout::Dynamic::Render', () => (
@@ -10,6 +10,6 @@ render('Checkout::Dynamic::Render', () => (
 ));
 
 function Extension() {
-  const {shop} = useApi();
+  const {shop} = useExtensionApi();
   return <Text>Shop name: {shop.name}</Text>;
 }

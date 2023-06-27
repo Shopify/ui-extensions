@@ -61,23 +61,23 @@ function Extension({extensionPoint}: Props) {
 
 ## Other React-specific APIs
 
-### `useApi()`
+### `useExtensionApi()`
 
-`useApi` is a [custom React hook](https://reactjs.org/docs/hooks-intro.html) that gives you access to the full input argument provided to your extension point (this is the value that, if you were registering an extension point directly with [`shopify.extend`](../checkout-ui-extensions/documentation/globals.md), would be passed as the second argument to your callback). This allows you to access and call the main APIs between your extension and Shopify anywhere in your React component.
+`useExtensionApi` is a [custom React hook](https://reactjs.org/docs/hooks-intro.html) that gives you access to the full input argument provided to your extension point (this is the value that, if you were registering an extension point directly with [`shopify.extend`](../checkout-ui-extensions/documentation/globals.md), would be passed as the second argument to your callback). This allows you to access and call the main APIs between your extension and Shopify anywhere in your React component.
 
 If you are using TypeScript, you can supply the name of the extension point as a type parameter to this function. Doing so will refine the return type to be exactly the input type for that extension point, so make sure you pass the name of the extension you are actually rendering.
 
 ```tsx
 import {
   render,
-  useApi,
+  useExtensionApi,
   Button,
 } from '@shopify/checkout-ui-extensions-react';
 
 render('Checkout::PostPurchase::Render', () => <Extension />);
 
 function Extension() {
-  const {extensionPoint} = useApi<'Checkout::PostPurchase::Render'>();
+  const {extensionPoint} = useExtensionApi<'Checkout::PostPurchase::Render'>();
 
   return (
     <Button

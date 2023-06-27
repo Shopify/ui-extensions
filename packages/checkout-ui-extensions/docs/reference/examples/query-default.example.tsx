@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {
-  useApi,
+  useExtensionApi,
   render,
   List,
   ListItem,
@@ -12,7 +12,7 @@ render('Checkout::Dynamic::Render', () => (
 
 function Extension() {
   const [data, setData] = useState();
-  const {query} = useApi();
+  const {query} = useExtensionApi();
 
   useEffect(() => {
     query(

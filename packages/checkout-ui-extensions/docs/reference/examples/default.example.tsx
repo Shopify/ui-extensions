@@ -3,7 +3,7 @@ import {
   BlockStack,
   render,
   Text,
-  useApi,
+  useExtensionApi,
 } from '@shopify/checkout-ui-extensions-react';
 
 // 1. Choose an extension point
@@ -13,7 +13,7 @@ render('Checkout::Dynamic::Render', () => (
 
 function Extension() {
   // 2. Use the extension API to gather context from the checkout and shop
-  const {cost, shop} = useApi();
+  const {cost, shop} = useExtensionApi();
 
   // 3. Render a UI
   return (

@@ -114,7 +114,7 @@ export function getExamples(
     api: {
       description: `
 The extension API is passed as a parameter to the extension point function.
-In React, you can access it from any component through the \`useApi()\` hook.
+In React, you can access it from any component through the \`useExtensionApi()\` hook.
       `,
       codeblock: {
         title: 'Accessing Properties',

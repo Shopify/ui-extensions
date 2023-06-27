@@ -2,7 +2,7 @@ import React from 'react';
 import {
   render,
   Banner,
-  useApi,
+  useExtensionApi,
 } from '@shopify/checkout-ui-extensions-react';
 
 // You can support multiple static extension points
@@ -24,7 +24,7 @@ render('Checkout::Dynamic::Render', () => (
 ));
 
 function Extension() {
-  const {extensionPoint} = useApi();
+  const {extensionPoint} = useExtensionApi();
   return (
     <Banner>
       This extension is rendering in the{' '}
