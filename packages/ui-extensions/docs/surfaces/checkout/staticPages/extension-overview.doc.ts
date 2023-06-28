@@ -38,8 +38,8 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       anchorLink: 'dynamic-extension-points',
       title: 'Dynamic extension points',
-      sectionContent: `Dynamic extension points aren't tied to specific checkout features. They can render between core features on any checkout step. Merchants can use the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor) to place the extension in any one of the [supported locations](/docs/api/checkout-ui-extensions/extension-points-overview#supported-locations) for the dynamic extension point.
-      \n\nWhen a checkout feature for that location is hidden, dynamic extensions are still rendered. For example, an extension placed above the shipping address will still render even for digital products which do not require a shipping address.\n\nChoose dynamic extension points when your content and functionality is self-contained and can display at any step in the checkout process. An example is a field to capture order notes from the customer.`,
+      sectionContent: `Dynamic extension points render between core checkout features. Merchants can use the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor) to place the extension in any one of the [supported locations](/docs/api/checkout-ui-extensions/extension-points-overview#supported-locations) for the dynamic extension point.
+      \n\nWhen a checkout feature for that location is hidden, dynamic extensions are still rendered. For example, an extension placed above the shipping address will still render even for digital products which do not require a shipping address.\n\nChoose dynamic extension points when your content and functionality works independently of a core checkout feature. An example is a field to capture order notes from the customer.`,
       image: 'dynamic-extension-points.png',
       sectionCard: [
         {
@@ -119,6 +119,15 @@ Point in checkout where the buyer can select a pickup point to have their purcha
 See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
 `,
           image: 'supported-locations-pickup-points.png',
+        },
+        {
+          title: 'One-page checkout',
+          description: `
+\`DEV PREVIEW\`
+All checkout pages (information, shipping, and payment) are combined into a single page with the order summary.
+Get started testing extensions on [one-page checkout](/docs/apps/checkout/best-practices/testing-ui-extensions#one-page-checkout).
+`,
+          image: 'supported-locations-one-page-checkout.png',
         },
       ],
     },

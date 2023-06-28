@@ -20,6 +20,26 @@ export function useAttributes<
 }
 
 /**
+ * Returns the values for the specified `attributes` applied to the checkout.
+ *
+ * @param keys - An array of attribute keys.
+ */
+export function useAttributeValues<
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
+>(keys: string[]): (string | undefined)[] {
+  const attributes = useAttributes<ID>();
+
+  if (!attributes?.length) {
+    return [];
+  }
+
+  return keys.map((key) => {
+    const attribute = attributes.find((attribute) => attribute.key === key);
+    return attribute?.value;
+  });
+}
+
+/**
  * Returns a function to mutate the `attributes` property of the checkout.
  */
 export function useApplyAttributeChange<

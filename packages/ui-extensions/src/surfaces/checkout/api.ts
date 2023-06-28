@@ -66,6 +66,14 @@ export type {
 } from './api/shared';
 
 export type {
+  RedeemableAttribute,
+  RedeemableChange,
+  RedeemableChangeResult,
+  RedeemableChangeResultError,
+  RedeemableChangeResultSuccess,
+  RedeemableRenderApi,
+} from './api/redeemable/render';
+export type {
   AttributeChange,
   AttributeChangeResult,
   CartLineChange,

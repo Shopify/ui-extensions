@@ -14,7 +14,11 @@ export {
 export {useMetafield} from './metafield';
 export {useMetafields, useApplyMetafieldsChange} from './metafields';
 export {useNote, useApplyNoteChange} from './note';
-export {useAttributes, useApplyAttributeChange} from './attributes';
+export {
+  useAttributes,
+  useApplyAttributeChange,
+  useAttributeValues,
+} from './attributes';
 export {useShippingAddress} from './shipping-address';
 export {useTotalAmount} from './cost';
 export {useCartLines, useApplyCartLinesChange} from './cart-lines';
@@ -39,4 +43,5 @@ export {
 export {useOrder} from './order';
 export {useAppliedGiftCards, useApplyGiftCardChange} from './gift-cards';
 export {useApplyPaymentMethodAttributesChange} from './payment-method';
+export {useApplyRedeemableChange} from './redeemable';
 export {useDeliveryGroups} from './delivery-groups';

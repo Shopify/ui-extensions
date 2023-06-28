@@ -1,8 +1,9 @@
-import type {RenderExtension} from './extension';
+import {RenderExtension} from './extension';
 import type {
   CartLineDetailsApi,
   PaymentMethodRenderApi,
   PickupLocationsApi,
+  RedeemableRenderApi,
   ShippingMethodDetailsApi,
   PickupPointsApi,
   StandardApi,
@@ -176,7 +177,9 @@ export interface ExtensionPoints {
    * @private
    */
   'Checkout::GiftCard::Render': RenderExtension<
-    CheckoutApi & StandardApi<'Checkout::GiftCard::Render'>,
+    RedeemableRenderApi &
+      CheckoutApi &
+      StandardApi<'Checkout::GiftCard::Render'>,
     AllComponents
   >;
   /**
@@ -272,14 +275,18 @@ export interface ExtensionPoints {
    * A static extension point that is rendered immediately before the pickup points.
    */
   'Checkout::PickupPoints::RenderBefore': RenderExtension<
-    PickupPointsApi<'Checkout::PickupPoints::RenderBefore'>,
+    PickupPointsApi &
+      CheckoutApi &
+      StandardApi<'Checkout::PickupPoints::RenderBefore'>,
     AllComponents
   >;
   /**
    * A static extension point that is rendered immediately after the pickup points.
    */
   'Checkout::PickupPoints::RenderAfter': RenderExtension<
-    PickupPointsApi<'Checkout::PickupPoints::RenderAfter'>,
+    PickupPointsApi &
+      CheckoutApi &
+      StandardApi<'Checkout::PickupPoints::RenderAfter'>,
     AllComponents
   >;
 }

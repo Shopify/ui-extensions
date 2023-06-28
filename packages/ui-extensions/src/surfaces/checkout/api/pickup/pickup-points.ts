@@ -1,14 +1,8 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
-import {StandardApi} from '../standard/standard';
-
-export interface PickupPointsApi<
-  T extends
-    | 'Checkout::PickupPoints::RenderBefore'
-    | 'Checkout::PickupPoints::RenderAfter',
-> extends StandardApi<T> {
+export interface PickupPointsApi {
   /**
-   * Whether the customer location input form is visible to the buyer.
+   * Whether the customer location input form is shown to the buyer.
    */
   locationFormVisible: StatefulRemoteSubscribable<boolean>;
 }
