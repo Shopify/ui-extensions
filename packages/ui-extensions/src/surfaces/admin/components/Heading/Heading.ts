@@ -7,7 +7,7 @@ export interface HeadingProps {
   id?: string;
 
   /** The visual level of the heading. */
-  level?: Level;
+  size?: Level;
 }
 
 export const Heading = createRemoteComponent<'Heading', HeadingProps>(
