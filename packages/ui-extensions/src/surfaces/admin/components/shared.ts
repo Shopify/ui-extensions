@@ -614,3 +614,30 @@ export type SpaceScale =
   | '24'
   | '28'
   | '32';
+
+export interface AnchorProps {
+  /**
+   * The URL to link to.
+   * If set, it will navigate to the location specified by `href` after executing the `onClick` callback.
+   */
+  href?: string;
+
+  /**
+   * Alias for `href`
+   * If set, it will navigate to the location specified by `to` after executing the `onClick` callback.
+   */
+  to?: string;
+
+  /**
+   * Callback when a link is pressed. If `href` is set,
+   * it will execute the callback and then navigate to the location specified by `href`.
+   */
+  onClick?(): void;
+
+  /**
+   * Alias for `onClick`
+   * Callback when a link is pressed. If `href` is set,
+   * it will execute the callback and then navigate to the location specified by `href`.
+   */
+  onPress?(): void;
+}
