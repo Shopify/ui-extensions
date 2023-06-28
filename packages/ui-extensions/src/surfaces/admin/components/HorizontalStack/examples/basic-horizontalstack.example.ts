@@ -9,7 +9,7 @@ export default extension(
     const horizontalStack = root.createComponent(
       HorizontalStack,
       {
-        gap: 'base',
+        gap: '4',
       },
       [
         root.createText('Child 1'),

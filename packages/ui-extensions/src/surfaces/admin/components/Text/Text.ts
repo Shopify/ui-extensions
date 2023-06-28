@@ -2,6 +2,8 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 type TextOverflow = 'ellipsis';
 
+type FontStyle = 'italic' | 'normal';
+
 type TextAccessibilityRole =
   /**
    * Indicate the text is contact information. Typically used for addresses.
@@ -105,6 +107,12 @@ export interface TextProps {
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant
    */
   fontVariant?: FontVariantOptions | FontVariantOptions[];
+
+  /**
+   *  Use to emphasize a word or a group of words.
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-style
+   */
+  fontStyle?: FontStyle;
 
   /**
    * Provide semantic meaning to content and improve support for assistive technologies.
