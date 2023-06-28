@@ -1,3 +1,3 @@
 export class AdminUIExtensionError extends Error {
-  name = 'CheckoutUIExtensionError';
+  name = 'AdminUIExtensionError';
 }
