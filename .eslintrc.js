@@ -44,5 +44,11 @@ module.exports = {
         '@shopify/jsx-no-hardcoded-content': 'off',
       },
     },
+    {
+      files: ['packages/checkout-ui-extensions/src/components/**/*.ts'],
+      rules: {
+        '@shopify/strict-component-boundaries': 'off',
+      },
+    },
   ],
 };

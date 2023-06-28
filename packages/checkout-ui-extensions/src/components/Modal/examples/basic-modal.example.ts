@@ -1,10 +1,16 @@
-import {extend, Link, Modal, TextBlock} from '@shopify/checkout-ui-extensions';
+import {
+  extend,
+  Button,
+  Link,
+  Modal,
+  TextBlock,
+} from '@shopify/checkout-ui-extensions';
 
-extend('Checkout::Dynamic::Render', (root) => {
+extend('Checkout::Dynamic::Render', (root, {ui}) => {
   const modalFragment = root.createFragment();
   const modal = root.createComponent(
     Modal,
-    {title: 'Return policy', padding: true},
+    {id: 'my-modal', title: 'Return policy', padding: true},
     [
       root.createComponent(
         TextBlock,
@@ -15,6 +21,15 @@ extend('Checkout::Dynamic::Render', (root) => {
         TextBlock,
         undefined,
         'To be eligible for a return, your item must be in the same condition that you received it, unworn or unused, with tags, and in its original packaging. You’ll also need the receipt or proof of purchase.',
+      ),
+      root.createComponent(
+        Button,
+        {
+          onPress() {
+            ui.overlay.close('my-modal');
+          },
+        },
+        'Close',
       ),
     ],
   );

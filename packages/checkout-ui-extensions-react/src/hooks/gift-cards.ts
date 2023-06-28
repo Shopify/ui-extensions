@@ -5,7 +5,9 @@ import type {
   RenderExtensionPoint,
 } from '@shopify/checkout-ui-extensions';
 
-import {useExtensionApi} from './api';
+import {ExtensionHasNoMethodError} from '../errors';
+
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -15,7 +17,7 @@ import {useSubscription} from './subscription';
 export function useAppliedGiftCards<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): AppliedGiftCard[] {
-  const {appliedGiftCards} = useExtensionApi<ID>();
+  const {appliedGiftCards} = useApi<ID>();
 
   return useSubscription(appliedGiftCards);
 }
@@ -29,5 +31,14 @@ export function useAppliedGiftCards<
 export function useApplyGiftCardChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): (change: GiftCardChange) => Promise<GiftCardChangeResult> {
-  return useExtensionApi<ID>().applyGiftCardChange;
+  const api = useApi<ID>();
+
+  if ('applyGiftCardChange' in api) {
+    return api.applyGiftCardChange;
+  }
+
+  throw new ExtensionHasNoMethodError(
+    'applyGiftCardChange',
+    api.extensionPoint,
+  );
 }

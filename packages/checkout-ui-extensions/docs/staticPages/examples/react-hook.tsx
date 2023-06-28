@@ -6,12 +6,12 @@ import {
 } from '@shopify/checkout-ui-extensions-react';
 
 render('Checkout::Dynamic::Render', () => (
-  <App />
+  <Extension />
 ));
 
-function App() {
+function Extension() {
   // Access and subscribe to the shipping address.
-  // Your <App /> will automatically re-render
+  // Your <Extension /> will automatically re-render
   // when the address changes.
   const address = useShippingAddress();
   const firstName = address?.firstName ?? 'guest';

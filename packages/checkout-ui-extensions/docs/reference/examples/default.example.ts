@@ -1,35 +1,29 @@
 import {
+  BlockStack,
+  Text,
   extend,
-  Checkbox,
 } from '@shopify/checkout-ui-extensions';
 
-// 1. Choose an extension point
 extend(
   'Checkout::Dynamic::Render',
-  (root, api) => {
-    // 2. Render a UI
+  (root, {shop, cost}) => {
     root.appendChild(
       root.createComponent(
-        Checkbox,
-        {
-          onChange: onCheckboxChange,
-        },
-        'I would like to receive a free gift with my order',
+        BlockStack,
+        undefined,
+        [
+          root.createComponent(
+            Text,
+            undefined,
+            `Shop name: ${shop.name}`,
+          ),
+          root.createComponent(
+            Text,
+            undefined,
+            `Cost: ${cost.totalAmount}`,
+          ),
+        ],
       ),
     );
-
-    // 3. Call API methods to modify the checkout
-    async function onCheckboxChange(isChecked) {
-      const result =
-        await api.applyAttributeChange({
-          key: 'requestedFreeGift',
-          type: 'updateAttribute',
-          value: isChecked ? 'yes' : 'no',
-        });
-      console.log(
-        'applyAttributeChange result',
-        result,
-      );
-    }
   },
 );

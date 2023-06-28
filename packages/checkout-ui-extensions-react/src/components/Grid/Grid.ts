@@ -1,8 +1,6 @@
 import {Grid as BaseGrid} from '@shopify/checkout-ui-extensions';
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@remote-ui/react';
+import {createRemoteReactComponent} from '@remote-ui/react';
+import type {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
 
 export type GridProps = ReactPropsFromRemoteComponentType<typeof BaseGrid>;
 

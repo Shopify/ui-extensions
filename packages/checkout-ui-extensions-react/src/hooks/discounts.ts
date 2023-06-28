@@ -6,7 +6,9 @@ import type {
   DiscountCodeChangeResult,
 } from '@shopify/checkout-ui-extensions';
 
-import {useExtensionApi} from './api';
+import {ExtensionHasNoMethodError} from '../errors';
+
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -16,7 +18,7 @@ import {useSubscription} from './subscription';
 export function useDiscountCodes<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): CartDiscountCode[] {
-  const {discountCodes} = useExtensionApi<ID>();
+  const {discountCodes} = useApi<ID>();
 
   return useSubscription(discountCodes);
 }
@@ -28,7 +30,7 @@ export function useDiscountCodes<
 export function useDiscountAllocations<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): CartDiscountAllocation[] {
-  const {discountAllocations} = useExtensionApi<ID>();
+  const {discountAllocations} = useApi<ID>();
 
   return useSubscription(discountAllocations);
 }
@@ -42,5 +44,14 @@ export function useDiscountAllocations<
 export function useApplyDiscountCodeChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): (change: DiscountCodeChange) => Promise<DiscountCodeChangeResult> {
-  return useExtensionApi<ID>().applyDiscountCodeChange;
+  const api = useApi<ID>();
+
+  if ('applyDiscountCodeChange' in api) {
+    return api.applyDiscountCodeChange;
+  }
+
+  throw new ExtensionHasNoMethodError(
+    'applyDiscountCodeChange',
+    api.extensionPoint,
+  );
 }

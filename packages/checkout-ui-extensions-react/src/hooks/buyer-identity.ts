@@ -5,7 +5,7 @@ import type {
 
 import {ScopeNotGrantedError} from '../errors';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
@@ -16,7 +16,7 @@ import {useSubscription} from './subscription';
 export function useCustomer<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): Customer | undefined {
-  const buyerIdentity = useExtensionApi<ID>().buyerIdentity;
+  const buyerIdentity = useApi<ID>().buyerIdentity;
 
   if (!buyerIdentity) {
     throw new ScopeNotGrantedError(
@@ -34,7 +34,7 @@ export function useCustomer<
 export function useEmail<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): string | undefined {
-  const buyerIdentity = useExtensionApi<ID>().buyerIdentity;
+  const buyerIdentity = useApi<ID>().buyerIdentity;
 
   if (!buyerIdentity) {
     throw new ScopeNotGrantedError(
@@ -52,7 +52,7 @@ export function useEmail<
 export function usePhone<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): string | undefined {
-  const buyerIdentity = useExtensionApi<ID>().buyerIdentity;
+  const buyerIdentity = useApi<ID>().buyerIdentity;
 
   if (!buyerIdentity) {
     throw new ScopeNotGrantedError(

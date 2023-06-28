@@ -5,7 +5,7 @@ import type {
 } from '@shopify/checkout-ui-extensions';
 import type {RemoteComponentType} from '@remote-ui/types';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 
 /**
  * Returns the `I18nTranslate` interface used to translate strings.
@@ -13,7 +13,7 @@ import {useExtensionApi} from './api';
 export function useTranslate<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): I18nTranslate {
-  const {i18n} = useExtensionApi<ID>();
+  const {i18n} = useApi<ID>();
 
   const translate = useCallback<I18nTranslate>(
     (...args) => {

@@ -1,5 +1,6 @@
 export {
   extend,
+  extension,
   isConditionalStyle,
   isConditionalStyleWithDefault,
   Style,
@@ -77,4 +78,4 @@ export type {
 
 export * from './components';
 export * from './hooks';
-export {render} from './render';
+export {render, reactExtension} from './render';

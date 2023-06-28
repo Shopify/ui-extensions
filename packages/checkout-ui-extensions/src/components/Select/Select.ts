@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import {Autocomplete} from '../shared';
 
-interface Option {
+export interface SelectOptionProps {
   /**
    * The value that will be passed to the select’s `onChange` callback
    * when this option is selected.
@@ -43,7 +43,7 @@ export interface SelectProps {
   /**
    * The options a buyer can select from.
    */
-  options: Option[];
+  options: SelectOptionProps[];
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.

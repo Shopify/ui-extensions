@@ -1,8 +1,8 @@
 import {Style, View} from '@shopify/checkout-ui-extensions-react';
 
-render('Checkout::Dynamic::Render', () => <App />);
+render('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return (
     <View
       maxInlineSize={Style.default(200)

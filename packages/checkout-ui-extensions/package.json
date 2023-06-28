@@ -24,7 +24,7 @@
     }
   },
   "dependencies": {
-    "@remote-ui/async-subscription": "^2.1.12",
+    "@remote-ui/async-subscription": "^2.1.14",
     "@remote-ui/core": "2.1.x"
   },
   "devDependencies": {

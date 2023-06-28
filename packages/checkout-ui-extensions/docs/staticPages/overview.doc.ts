@@ -5,7 +5,7 @@ const data: LandingTemplateSchema = {
   description: `Checkout UI extensions let app developers build custom functionality that merchants can install
     at defined points in the checkout flow, including product information, shipping, payment,
     order summary, and Shop Pay.
-    \n\n > Shopify Plus: \n>Checkout UI extensions are available only to [Shopify Plus](https://www.shopify.com/plus) merchants.`,
+    \n\n > Shopify Plus: \n>Checkout UI extensions for the information, shipping and payment step are available only to stores on a [Shopify Plus](https://www.shopify.com/plus) plan.`,
   id: 'checkout-ui-extensions',
   image:
     '/assets/landing-pages/templated-apis/checkout-ui-extensions/checkout-ui.png',

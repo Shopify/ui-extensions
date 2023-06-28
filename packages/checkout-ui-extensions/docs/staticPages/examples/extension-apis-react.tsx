@@ -6,10 +6,10 @@ import {
 
 render(
   'Checkout::DeliveryAddress::RenderBefore',
-  () => <App />,
+  () => <Extension />,
 );
 
-function App() {
+function Extension() {
   const {countryCode} = useShippingAddress();
 
   if (countryCode !== 'CA') {

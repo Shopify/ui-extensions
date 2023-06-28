@@ -1,5 +1,12 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
+import {getExample} from '../../helper.docs';
+
+const disclosureAndAlignment = getExample(
+  'ui-components/disclosure-and-alignment',
+  ['jsx', 'js'],
+);
+
 const data: ReferenceEntityTemplateSchema = {
   name: 'InlineLayout',
   description:
@@ -37,29 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
   },
   examples: {
     description: '',
-    examples: [
-      {
-        description:
-          'Use the Disclosure component to simplify the user experience and reveal interfaces only when the customer requests it. It also demonstrates how a combination of inline and block layout components can improve the readability of information. By employing these strategies, users can easily scan and comprehend the content, making for a better user experience overall.',
-        image: 'disclosure-and-alignment.gif',
-        codeblock: {
-          tabs: [
-            {
-              title: 'React',
-              code: '../../../docs/reference/examples/ui-components/disclosure-and-alignment.example.tsx',
-              language: 'typescript',
-            },
-            {
-              title: 'JS',
-              code: '../../../docs/reference/examples/ui-components/disclosure-and-alignment.example.ts',
-              language: 'javascript',
-            },
-          ],
-          title:
-            'Strategies for simplifying layout and aligning content using Disclosure and Inline/Block Layout components.',
-        },
-      },
-    ],
+    examples: [disclosureAndAlignment],
   },
   subSections: [
     {

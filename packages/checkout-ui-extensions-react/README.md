@@ -16,21 +16,21 @@ All [UI rendering capabilities](../checkout-ui-extensions/documentation/renderin
 
 To use the React bindings in a UI extension, start by importing `React` as you normally would. All of the [core features of React](https://reactjs.org/docs/getting-started.html) are available, including hooks, context, and more.
 
-You’ll then import `render` from `@shopify/checkout-ui-extensions-react`. This function is a [thing wrapper](./src/render.ts) around [`shopify.extend`](../checkout-ui-extensions/documentation/globals.md) and [`@remote-ui/react`’s `render()`](https://github.com/Shopify/remote-ui/tree/main/packages/react#render). You’ll pass this function the name of an extension that can render UI, and a function that should return the JSX to render when that extension point is run. This function receives the input argument for the extension point.
+You’ll then import `render` from `@shopify/checkout-ui-extensions-react`. This function is a [thin wrapper](./src/render.ts) around [`shopify.extend`](../checkout-ui-extensions/documentation/globals.md) and [`@remote-ui/react`’s `render()`](https://github.com/Shopify/remote-ui/tree/main/packages/react#render). You’ll pass this function the name of an extension that can render UI, and a function that should return the JSX to render when that extension point is run. This function receives the input argument for the extension point.
 
 ```tsx
 import {render} from '@shopify/checkout-ui-extensions-react';
 
 // `extensionPoint` is part of the [standard API](../checkout-ui-extensions/src/extension-points/api/standard)
 render('Checkout::PostPurchase::Render', ({extensionPoint}) => (
-  <App extensionPoint={extensionPoint} />
+  <Extension extensionPoint={extensionPoint} />
 ));
 
 interface Props {
   extensionPoint: string;
 }
 
-function App({extensionPoint}: Props) {
+function Extension({extensionPoint}: Props) {
   return <>Extension point: {extensionPoint}</>;
 }
 ```
@@ -40,13 +40,13 @@ If you’ve ever used React on the web, you’re probably used to returning DOM 
 ```tsx
 import {render, Button} from '@shopify/checkout-ui-extensions-react';
 
-render('Checkout::PostPurchase::Render', (props) => <App {...props} />);
+render('Checkout::PostPurchase::Render', (props) => <Extension {...props} />);
 
 interface Props {
   extensionPoint: string;
 }
 
-function App({extensionPoint}: Props) {
+function Extension({extensionPoint}: Props) {
   return (
     <Button
       onPress={() => {
@@ -74,9 +74,9 @@ import {
   Button,
 } from '@shopify/checkout-ui-extensions-react';
 
-render('Checkout::PostPurchase::Render', () => <App />);
+render('Checkout::PostPurchase::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   const {extensionPoint} = useExtensionApi<'Checkout::PostPurchase::Render'>();
 
   return (

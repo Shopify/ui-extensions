@@ -1,17 +1,21 @@
 import {
   render,
+  useExtensionApi,
+  Button,
   Link,
   Modal,
   TextBlock,
 } from '@shopify/checkout-ui-extensions-react';
 
-render('Checkout::Dynamic::Render', () => <App />);
+render('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
+  const {ui} = useExtensionApi();
+
   return (
     <Link
       overlay={
-        <Modal padding title="Return policy">
+        <Modal id="my-modal" padding title="Return policy">
           <TextBlock>
             We have a 30-day return policy, which means you have 30 days after
             receiving your item to request a return.
@@ -22,6 +26,7 @@ function App() {
             original packaging. You’ll also need the receipt or proof of
             purchase.
           </TextBlock>
+          <Button onPress={() => ui.overlay.close('my-modal')}>Close</Button>
         </Modal>
       }
     >

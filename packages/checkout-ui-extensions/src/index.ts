@@ -1,14 +1,15 @@
 export type {
-  Extension,
   ExtensionPoints,
   ExtensionPoint,
-  ExtensionSettings,
   RenderExtensions,
-  RenderExtension,
   RenderExtensionPoint,
   AllowedComponentsForRenderExtension,
   ArgumentsForExtension,
   ApiForRenderExtension,
+  ReturnTypeForExtension,
+} from './extension-points';
+
+export type {
   BuyerIdentity,
   BuyerJourney,
   Capability,
@@ -21,7 +22,8 @@ export type {
   Timezone,
   Interceptor,
   InterceptorRequest,
-  ReturnTypeForExtension,
+  Extension,
+  ExtensionSettings,
   SessionToken,
   StandardApi,
   Storage,
@@ -83,6 +85,8 @@ export type {
   DeliveryOptionReference,
   DeliveryOption,
   ShippingOption,
+  PickupLocationOption,
+  PickupPointOption,
   NumberRange,
   DiscountCodeAddChange,
   DiscountCodeRemoveChange,
@@ -96,10 +100,30 @@ export type {
   GiftCardChangeResultError,
   GiftCardChangeResultSuccess,
   GiftCardRemoveChange,
+  PaymentMethodAttributesResult,
+  PaymentMethodAttributesResultSuccess,
+  PaymentMethodAttributesResultError,
+  PaymentMethodAttribute,
+  PaymentMethodAttributesChange,
+  PaymentMethodAttributesUpdateChange,
+  PaymentMethodRenderApi,
   GraphQLError,
+  RedeemableAttribute,
+  RedeemableChange,
+  RedeemableChangeResult,
+  RedeemableChangeResultError,
+  RedeemableChangeResultSuccess,
+  RedeemableRenderApi,
   StorefrontApiVersion,
   ValidationError,
-} from './extension-points';
+  CheckoutApi,
+  OrderStatusApi,
+  CartLineDetailsApi,
+  PickupPointsApi,
+  PickupLocationsApi,
+  ShippingMethodDetailsApi,
+} from './api';
+export type {RenderExtension} from './render-extension';
 
 export * from './components';
 export type {
@@ -172,5 +196,5 @@ export {
   isConditionalStyleWithDefault,
 } from './style';
 
-export {extend} from './extend';
+export {extend, extension} from './extension';
 export type {ShopifyGlobal} from './globals';

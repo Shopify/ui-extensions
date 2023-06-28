@@ -98,6 +98,7 @@ Your extensions will have the following unauthenticated access scopes to the Sto
 - <code>unauthenticated_read_product_tags</code>
 - <code>unauthenticated_read_selling_plans</code>
 - <code>unauthenticated_read_collection_listings</code>
+- <code>unauthenticated_read_metaobjects</code>
 `,
         },
       ],

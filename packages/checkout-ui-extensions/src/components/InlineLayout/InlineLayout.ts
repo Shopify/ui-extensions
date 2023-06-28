@@ -8,7 +8,7 @@ import type {
   SizingProps,
   SpacingProps,
 } from '../shared';
-import type {GridProps} from '../Grid';
+import type {GridProps} from '../Grid/Grid';
 
 export interface InlineLayoutProps
   extends Omit<GridProps, 'columns' | 'rows'>,

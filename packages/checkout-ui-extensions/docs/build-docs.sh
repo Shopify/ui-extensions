@@ -1,5 +1,11 @@
 API_VERSION=$1
 
+fail_and_exit() {
+  echo "** Failed to generate docs"
+  echo "See https://vault.shopify.io/page/Extension-Docs~SkgE.md"
+  exit $1
+}
+
 if [ -z $API_VERSION ]
 then
   echo "Building docs for 'unstable' checkout UI extensions API. You can add a calver version argument (e.g. 'yarn docs:checkout 2023-04') to generate the docs for a specific version in addition to 'unstable'."
@@ -18,14 +24,16 @@ build_exit=$?
 find ./ -name '*.doc*.js' -exec rm -r {} \;
 
 if [ $build_exit -ne 0 ]; then
-  echo "** Failed to generate docs"
-  echo "See https://vault.shopify.io/page/Extension-Docs~SkgE.md"
-  exit $build_exit
+  fail_and_exit $build_exit
 fi
 
 # Make sure https://shopify.dev URLs are relative so they work in Spin.
 # See https://github.com/Shopify/generate-docs/issues/181
 sed -i 's/https:\/\/shopify.dev//gi' ./docs/generated/generated_docs_data.json
+sed_exit=$?
+if [ $sed_exit -ne 0 ]; then
+  fail_and_exit $sed_exit
+fi
 
 if [ -n "$SPIN" ]; then
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
@@ -37,6 +45,14 @@ if [ -n "$SPIN" ]; then
     then
       mkdir -p ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
       cp ./docs/generated/* ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+      # Replace 'unstable' with the exact API version in relative doc links
+      sed -i \
+        "s/\/docs\/api\/checkout-ui-extensions\/unstable/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
+        ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
+      sed_exit=$?
+      if [ $sed_exit -ne 0 ]; then
+        fail_and_exit $sed_exit
+      fi
       rsync -a --delete ./docs/screenshots/ ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
     fi
 

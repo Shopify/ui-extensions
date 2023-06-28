@@ -1,5 +1,5 @@
 import {createContext} from 'react';
-import {
+import type {
   ApiForRenderExtension,
   RenderExtensionPoint,
 } from '@shopify/checkout-ui-extensions';

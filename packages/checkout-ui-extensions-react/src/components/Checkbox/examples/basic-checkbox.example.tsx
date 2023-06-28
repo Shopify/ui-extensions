@@ -1,8 +1,8 @@
 import {render, Checkbox} from '@shopify/checkout-ui-extensions-react';
 
-render('Checkout::Dynamic::Render', () => <App />);
+render('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return (
     <Checkbox id="checkbox" name="checkbox">
       Save this information for next time

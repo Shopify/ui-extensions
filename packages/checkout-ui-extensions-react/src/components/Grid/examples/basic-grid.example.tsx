@@ -1,8 +1,8 @@
 import {render, Grid, View} from '@shopify/checkout-ui-extensions-react';
 
-render('Checkout::Dynamic::Render', () => <App />);
+render('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return (
     <Grid
       columns={['20%', 'fill', 'auto']}

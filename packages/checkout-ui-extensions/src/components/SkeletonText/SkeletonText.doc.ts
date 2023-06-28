@@ -1,5 +1,12 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
+import {getExample} from '../../helper.docs';
+
+const loadingSkeletons = getExample('ui-components/loading-skeletons', [
+  'jsx',
+  'js',
+]);
+
 const data: ReferenceEntityTemplateSchema = {
   name: 'SkeletonText',
   description:
@@ -17,32 +24,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   subCategory: 'Feedback',
-  examples: {
-    description: '',
-    examples: [
-      {
-        description:
-          'When adding content to a layout, incorporate a skeleton loader that renders the approximate size and position of the content during loading. This will provide a seamless transition from skeleton loaders to the content, and prevent any layout shift when the resulting content loads.',
-        image: 'loading-skeletons.gif',
-        codeblock: {
-          tabs: [
-            {
-              title: 'React',
-              code: '../../../docs/reference/examples/ui-components/loading-skeletons.example.tsx',
-              language: 'typescript',
-            },
-            {
-              title: 'JS',
-              code: '../../../docs/reference/examples/ui-components/loading-skeletons.example.ts',
-              language: 'javascript',
-            },
-          ],
-          title:
-            'Using skeleton loaders to prevent layout shifts on content load.',
-        },
-      },
-    ],
-  },
   defaultExample: {
     image: 'skeletontext-default.png',
     codeblock: {
@@ -60,6 +41,10 @@ const data: ReferenceEntityTemplateSchema = {
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [loadingSkeletons],
   },
   related: [],
 };

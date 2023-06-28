@@ -4,9 +4,9 @@ import {
 } from '@shopify/checkout-ui-extensions-react';
 
 render('Checkout::Dynamic::Render', () => (
-  <App />
+  <Extension />
 ));
 
-function App() {
+function Extension() {
   return <Banner>Your extension</Banner>;
 }

@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: getHookExample('api'),
-  related: getLinksByTag('apis', 'UseExtensionApiGeneratedType'),
+  related: getLinksByTag('apis'),
 };
 
 export default data;
