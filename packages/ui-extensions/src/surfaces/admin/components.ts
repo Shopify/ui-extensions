@@ -24,6 +24,8 @@ export type {
   OptionProps,
   SelectProps,
 } from './components/Select/Select';
+export {Text} from './components/Text/Text';
+export type {TextProps} from './components/Text/Text';
 export {TextField} from './components/TextField/TextField';
 export type {TextFieldProps} from './components/TextField/TextField';
 export {URLField} from './components/URLField/URLField';
