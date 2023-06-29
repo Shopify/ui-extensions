@@ -1,3 +1,5 @@
+export {AppBlock} from './components/AppBlock/AppBlock';
+export type {AppBlockProps} from './components/AppBlock/AppBlock';
 export {Button} from './components/Button/Button';
 export type {ButtonProps} from './components/Button/Button';
 export {CustomerSegmentationTemplate} from './components/CustomerSegmentationTemplate/CustomerSegmentationTemplate';
