@@ -39,7 +39,7 @@
   "sideEffects": false,
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.12",
-    "@remote-ui/core": "2.1.x"
+    "@remote-ui/core": "2.2.x"
   },
   "publishConfig": {
     "access": "public",
