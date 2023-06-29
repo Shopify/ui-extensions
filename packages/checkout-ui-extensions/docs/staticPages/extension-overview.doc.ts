@@ -124,7 +124,9 @@ See [all extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoint
           title: 'One-page checkout',
           description: `
 \`DEV PREVIEW\`
+
 All checkout pages (information, shipping, and payment) are combined into a single page with the order summary.
+
 Get started testing extensions on [one-page checkout](/docs/apps/checkout/best-practices/testing-ui-extensions#one-page-checkout).
 `,
           image: 'supported-locations-one-page-checkout.png',
