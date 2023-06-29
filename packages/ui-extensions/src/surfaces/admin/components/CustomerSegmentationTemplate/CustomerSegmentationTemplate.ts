@@ -20,7 +20,8 @@ type Source =
   | 'uploadMajor'
   | 'buyButtonMajor'
   | 'followUpEmailMajor'
-  | 'confettiMajor';
+  | 'confettiMajor'
+  | 'viewMajor';
 
 type TemplateCategory =
   | 'firstTimeBuyers'
