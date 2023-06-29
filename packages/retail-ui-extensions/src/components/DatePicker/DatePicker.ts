@@ -3,10 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 export interface DatePickerProps {
   selected?: string;
   onChange?(selected: string): void;
-  visibleState: [
-    boolean,
-    (setVisibleState: boolean | ((prevState: boolean) => boolean)) => void,
-  ];
+  visibleState: [boolean, (visible: boolean) => void];
   inputMode?: 'inline' | 'spinner';
 }
 
