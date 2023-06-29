@@ -124,7 +124,7 @@ export interface TextFieldProps {
   onChange?(value: string): void;
   /**
    * Callback when the user makes any changes in the field. As noted in the documentation
-   * for `onChange`, you **must not** use this to update `state` — use the `onChange`
+   * for `onChange`, you must not use this to update `state` — use the `onChange`
    * callback for that purpose. Use the `onInput` prop when you need to do something
    * as soon as the buyer makes a change, like clearing validation errors that apply to
    * the field as soon as the user begins making the necessary adjustments.

@@ -60,7 +60,7 @@ interface InputData {
   locale: string;
   /** Shop where the checkout/order is from. */
   shop: Shop;
-  /** JWT representing the input_data payload. For more information, refer to [JWT specification](/api/checkout-extensions/jwt-specification). */
+  /** JWT representing the input_data payload. For more information, refer to [JWT specification](/docs/api/checkout-extensions/post-purchase/jwt-specification). */
   token: string;
   /** Post Purchase API version. */
   version: string;
@@ -126,7 +126,7 @@ interface Variant {
 }
 /**
  * The metafields associated with a resource.
- * You'll need to individually request which metafields you need in the [configuration file](/api/checkout-extensions/extension-points#configuration-file).
+ * You'll need to individually request which metafields you need in the [configuration file](/docs/api/checkout-extensions/post-purchase#configuration-file).
  */
 interface Metafield {
   /** The metafield key. */
@@ -193,7 +193,7 @@ interface AddSubscriptionChange {
   quantity: number;
   /** Additional information concerning shipping. */
   shippingOption: ShippingOption;
-  /** Refer to [ExplicitDiscount](/api/checkout-extensions/extension-points/api#explicitdiscount). */
+  /** Refer to [ExplicitDiscount](/docs/api/checkout-extensions/post-purchase/api#explicitdiscount). */
   discount?: ExplicitDiscount;
 }
 

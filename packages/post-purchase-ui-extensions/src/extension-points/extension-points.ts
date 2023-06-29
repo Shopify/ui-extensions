@@ -12,7 +12,7 @@ type AllComponents = Components[keyof Components];
 
 /** Post-purchase checkout extensions allow developers and Plus merchants to add a post-purchase page directly into the Shopify checkout.
  * The page appears after the order is confirmed, but before the thank you page.
- * Post-purchase checkout extensions can use the `ShouldRender` and `Render` extension points.
+ * Post-purchase checkout extensions can use the `ShouldRender` and `Render` targets.
  * For more information, refer to the [post-purchase checkout extensions overview](/docs/apps/checkout/product-offers/post-purchase).
  */
 export interface ExtensionPoints {
@@ -20,13 +20,13 @@ export interface ExtensionPoints {
     StandardApi<'Checkout::KitchenSink'>,
     AllComponents
   >;
-  /** The `Render` extension point is used to render the section in the post-purchase page.
+  /** The `Render` target is used to render the section in the post-purchase page.
   Also, it provides additional functionality, such as communicating with Shopify to add items to the initial purchase. */
   'Checkout::PostPurchase::Render': RenderExtension<
     PostPurchaseRenderApi,
     AllComponents
   >;
-  /** The `ShouldRender` extension point is used to determine whether a post-purchase page should be shown to the customer.
+  /** The `ShouldRender` target is used to determine whether a post-purchase page should be shown to the customer.
   It also allows data to be pre-cached and used when the page renders. */
   'Checkout::PostPurchase::ShouldRender': (
     api: PostPurchaseShouldRenderApi,
