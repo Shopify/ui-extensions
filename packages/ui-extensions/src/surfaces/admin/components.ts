@@ -1,3 +1,5 @@
+export {Button} from './components/Button/Button';
+export type {ButtonProps} from './components/Button/Button';
 export {CustomerSegmentationTemplate} from './components/CustomerSegmentationTemplate/CustomerSegmentationTemplate';
 export type {CustomerSegmentationTemplateProps} from './components/CustomerSegmentationTemplate/CustomerSegmentationTemplate';
 export {Divider} from './components/Divider/Divider';
