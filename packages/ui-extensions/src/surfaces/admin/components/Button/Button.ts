@@ -1,68 +1,99 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import type {AccessibilityRole, AnchorProps} from '../shared';
 
-import {IconProps} from '../Icon/Icon';
+export type ButtonProps = ButtonBaseProps | ButtonAnchorProps;
 
-type RequiredTitleOrIcon =
-  | {
-      /** Button label text */
-      title: string;
-      icon?: IconProps;
-    }
-  | {
-      /** Button label text */
-      title?: string;
-      icon: IconProps;
-    };
+interface CommonProps {
+  /**
+   * A unique identifier for the button.
+   */
+  id?: string;
 
-export interface BaseButtonProps {
   /**
-   * The type of button that will be rendered.
-   *
-   * `primary`: button used for main actions or green-path. Ex: Continue to next step, Discount field
-   * `secondary`: button used for secondary actions not blocking user progress. Ex: Download Shop app
-   * `plain`: Renders a button that visually looks like a Link
-   *  @default 'secondary'
-   */
-  kind?: 'primary' | 'secondary' | 'plain';
-  /**
-   *  Specifies the color of the Button. The button will keep the style of the chosen `kind`,
-   *  but replace its color according to the appearance.
-   *
-   * `monochrome`: button will inherit the color of its parent
-   * `critical`: button will take inherit the color of the Critical color group (in Checkout)
-   *  		 and map to 'destructive' (in Admin/Polaris). Typically used for destructive actions.
-   *
-   */
-  appearance?: 'critical';
-  /** Changes the size of the button
-   * @default 'base'
-   */
-  size?: 'base' | 'large';
-  /**
-   * Whether the button should fill all available inline space.
-   * */
-  inlineSize?: 'fill';
-  /**
-   * Replaces content with a loading indicator
-   */
-  loading?: boolean;
-  /**
-   * A label that will be announced to buyers using assistive technologies
-   */
-  accessibilityLabel?: string;
-  /**
-   * Disables the button, disallowing any interaction
+   * Disables the button, disallowing any interaction.
    */
   disabled?: boolean;
+
   /**
-   * Callback when pressed
+   * Changes the visual appearance of the Button.
+   */
+  variant?: 'primary' | 'secondary' | 'tertiary';
+
+  /**
+   * Sets the color treatment of the Button.
+   */
+  tone?: 'default' | 'critical';
+
+  /**
+   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+   */
+  language?: string;
+
+  /**
+   * Alias for `language`
+   */
+  lang?: string;
+
+  /**
+   * Callback when a link is pressed. If `href` is set,
+   * it will execute the callback and then navigate to the location specified by `href`.
+   */
+  onClick?(): void;
+
+  /**
+   * Alias for `onClick`
+   * Callback when a button is pressed. If `href` is set,
+   * it will execute the callback and then navigate to the location specified by `href`.
    */
   onPress?(): void;
+
+  /**
+   * Callback when focus is removed.
+   */
+  onBlur?(): void;
+
+  /**
+   * Callback when input is focused.
+   */
+  onFocus?(): void;
 }
 
-export type ButtonProps = RequiredTitleOrIcon & BaseButtonProps;
+interface ButtonBaseProps extends CommonProps {
+  /**
+   * Sets the semantic meaning of the component’s content. When set,
+   * the role will be used by assistive technologies to help users
+   * navigate the page.
+   */
+  accessibilityRole?: Extract<AccessibilityRole, 'submit' | 'button' | 'reset'>;
+}
 
-/**
- * Buttons are used primarily for actions, such as “Add”, “Close”, “Cancel”, or “Save”.
- */
+interface ButtonAnchorProps extends CommonProps {
+  /**
+   * The URL to link to.
+   * If set, it will navigate to the location specified by `href` after executing the `onClick` callback.
+   */
+  href: AnchorProps['href'];
+
+  /**
+   * Alias for `href`
+   * If set, it will navigate to the location specified by `to` after executing the `onClick` callback.
+   */
+  to?: AnchorProps['href'];
+
+  /**
+   * Callback when a link is pressed. If `href` is set,
+   * it will execute the callback and then navigate to the location specified by `href`.
+   */
+  onClick?: AnchorProps['onClick'];
+
+  /**
+   * Alias for `onClick`
+   * Callback when a link is pressed. If `href` is set,
+   * it will execute the callback and then navigate to the location specified by `href`.
+   */
+  onPress?: AnchorProps['onClick'];
+}
+
 export const Button = createRemoteComponent<'Button', ButtonProps>('Button');
