@@ -9,6 +9,7 @@ import {
   ScrollView,
   Selectable,
   List,
+  PinPad,
   RadioButtonList,
   SearchBar,
   SegmentedControl,
@@ -37,6 +38,7 @@ export type BasicComponents =
   | typeof FormattedTextField
   | typeof Image
   | typeof List
+  | typeof PinPad
   | typeof RadioButtonList
   | typeof SearchBar
   | typeof SegmentedControl
