@@ -1,4 +1,4 @@
-import { createRemoteComponent } from '@remote-ui/core';
+import {createRemoteComponent} from '@remote-ui/core';
 
 export interface AppBlockProps {
   title?: string;
