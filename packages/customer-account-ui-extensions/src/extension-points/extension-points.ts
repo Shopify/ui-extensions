@@ -34,6 +34,10 @@ export interface ExtensionPoints {
     StandardApi,
     AllComponents
   >;
+  'Checkout::Lunch::Render': RenderExtension<
+    StandardApi & {meal: string},
+    AllComponents
+  >;
 }
 
 export interface FullPageApi {
