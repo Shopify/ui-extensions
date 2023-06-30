@@ -34,6 +34,10 @@ export interface ExtensionPoints {
     StandardApi,
     AllComponents
   >;
+  'customer-account.nav.render': RenderExtension<
+    StandardApi,
+    Components['MenuItem']
+  >;
 }
 
 export interface FullPageApi {
