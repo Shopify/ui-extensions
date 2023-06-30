@@ -1,3 +1,5 @@
+export {AppAction} from './components/AppAction/AppAction';
+export type {AppActionProps} from './components/AppAction/AppAction';
 export {AppBlock} from './components/AppBlock/AppBlock';
 export type {AppBlockProps} from './components/AppBlock/AppBlock';
 export {Button} from './components/Button/Button';
