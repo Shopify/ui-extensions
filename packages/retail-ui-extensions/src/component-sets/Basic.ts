@@ -1,6 +1,7 @@
 import {
   Banner,
   Button,
+  DatePicker,
   Dialog,
   FormattedTextField,
   Image,
@@ -8,6 +9,7 @@ import {
   ScrollView,
   Selectable,
   List,
+  PinPad,
   RadioButtonList,
   SearchBar,
   SegmentedControl,
@@ -17,6 +19,7 @@ import {
   Text,
   Section,
   TextField,
+  TimePicker,
   Screen,
   Navigator,
   CameraScanner,
@@ -26,6 +29,7 @@ export type BasicComponents =
   | typeof Banner
   | typeof Button
   | typeof CameraScanner
+  | typeof DatePicker
   | typeof ScrollView
   | typeof Icon
   | typeof Section
@@ -34,6 +38,7 @@ export type BasicComponents =
   | typeof FormattedTextField
   | typeof Image
   | typeof List
+  | typeof PinPad
   | typeof RadioButtonList
   | typeof SearchBar
   | typeof SegmentedControl
@@ -42,5 +47,6 @@ export type BasicComponents =
   | typeof Badge
   | typeof Text
   | typeof TextField
+  | typeof TimePicker
   | typeof Screen
   | typeof Navigator;
