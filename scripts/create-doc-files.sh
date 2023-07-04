@@ -59,8 +59,11 @@ constructed_string="examples: {
 
 for folder in "$components_dir"/*; do
     if [ -d "$folder" ]; then
+        if [[ $folder == shared ]]; then
+          continue
+        fi
         componentName=$(basename "$folder")
-        docs_file="${folder}/${componentName}.docs.ts"
+        docs_file="${folder}/${componentName}.doc.ts"
 
         if [ ! -f "$docs_file" ]; then
           lowercaseComponentName=$(echo "$componentName" | tr '[:upper:]' '[:lower:]')
