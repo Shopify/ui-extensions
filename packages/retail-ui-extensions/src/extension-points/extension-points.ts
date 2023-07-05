@@ -20,6 +20,14 @@ export interface ExtensionPoints {
       ProductSearchApi,
     BasicComponents
   >;
+  'pos.order.fulfillment-task.button.render': RenderExtension<
+    StandardApi<'pos.order.fulfillment-task.button.render'>,
+    BasicComponents
+  >;
+  'pos.order.fulfillment-task.modal.render': RenderExtension<
+    StandardApi<'pos.order.fulfillment-task.modal.render'>,
+    BasicComponents
+  >;
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;
