@@ -1,0 +1,41 @@
+import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
+const data: ReferenceEntityTemplateSchema = {
+  name: 'NumberField',
+  description: 'NumberField is used to ...',
+  requires: '',
+  thumbnail: 'numberfield-thumbnail.png',
+  isVisualComponent: true,
+  type: '',
+  definitions: [
+    {
+      title: 'NumberFieldProps',
+      description: '',
+      type: 'NumberFieldProps',
+    },
+  ],
+  category: 'Components',
+  subCategory: 'Feedback',
+  defaultExample: {
+    image: 'numberfield-default.png',
+    codeblock: {
+      title: 'TODO: add example title',
+      tabs: [
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/NumberField/examples/basic-NumberField.example.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'JS',
+          code: './examples/basic-NumberField.example.ts',
+          language: 'js',
+        },
+      ],
+    },
+  },
+  
+  related: [],
+};
+
+export default data;

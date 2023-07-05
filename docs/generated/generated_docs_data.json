@@ -1,528 +1,5 @@
 [
-  {
-    "name": "HorizontalStack",
-    "description": "HorizontalStack is used to ...",
-    "requires": "",
-    "thumbnail": "horizontalstack-thumbnail.png",
-    "isVisualComponent": true,
-    "type": "",
-    "definitions": [
-      {
-        "title": "HorizontalStackProps",
-        "description": "",
-        "type": "HorizontalStackProps",
-        "typeDefinitions": {
-          "HorizontalStackProps": {
-            "filePath": "/HorizontalStack.ts",
-            "name": "HorizontalStackProps",
-            "description": "",
-            "members": [
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "accessibilityLabel",
-                "value": "string",
-                "description": "A label that describes the purpose or contents of the element. When set,\nit will be announced to buyers using assistive technologies and will\nprovide them with more context.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "horizontalAlignment",
-                "value": "MainAxisAlignment",
-                "description": "Position children along the main axis",
-                "isOptional": true,
-                "defaultValue": "'start'"
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "verticalAlignment",
-                "value": "CrossAxisAlignment",
-                "description": "Position children along the cross axis",
-                "isOptional": true,
-                "defaultValue": "'start'"
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "accessibilityRole",
-                "value": "AccessibilityRole",
-                "description": "Sets the semantic meaning of the component’s content. When set,\nthe role will be used by assistive technologies to help users\nnavigate the page.",
-                "isOptional": true,
-                "defaultValue": "'generic'"
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "gap",
-                "value": "MaybeTwoBoxEdgesShorthandProperty<SpacingKeyword | boolean>",
-                "description": "Adjust spacing between children",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "rowGap",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust spacing between children in the block axis",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "columnGap",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust spacing between children in the inline axis",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "padding",
-                "value": "MaybeAllBoxEdgesShorthandProperty<SpacingKeyword | boolean>",
-                "description": "Adjust the padding.\n\nTo shorten the code, it is possible to specify all the padding for all edges of the box in one property.\n\n- `base` means block-start, inline-end, block-end and inline-start paddings are `base`.\n- `base none` means block-start and block-end paddings are `base`, inline-start and inline-end paddings are `none`.\n- `base none large` means block-start padding is `base`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.\n- `base none large small` means block-start padding is `base`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.\n- `true` applies a default padding that is appropriate for the component.\n\nLearn more about the 1-to-4-value syntax at https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingBlock",
-                "value": "MaybeTwoBoxEdgesShorthandProperty<SpacingKeyword | boolean>",
-                "description": "Adjust the block-padding.\n\n- `base none` means block-start padding is `base`, block-end padding is `none`.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingBlockStart",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust the block-start padding.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingBlockEnd",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust the block-end padding.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingInline",
-                "value": "MaybeTwoBoxEdgesShorthandProperty<SpacingKeyword | boolean>",
-                "description": "Adjust the inline padding.\n\n- `base none` means inline-start padding is `base`, inline-end padding is `none`.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingInlineStart",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust the inline-start padding.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingInlineEnd",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust the inline-end padding.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "blockSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the block size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "minBlockSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the minimum block size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "maxBlockSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the maximum block size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "inlineSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the inline size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "minInlineSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the minimum inline size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/HorizontalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "maxInlineSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the maximum inline size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
-              }
-            ],
-            "value": "export interface HorizontalStackProps\n  extends AccessibilityRoleProps,\n    GapProps,\n    PaddingProps,\n    SizingProps {\n  /**\n   * A label that describes the purpose or contents of the element. When set,\n   * it will be announced to buyers using assistive technologies and will\n   * provide them with more context.\n   */\n  accessibilityLabel?: string;\n\n  /**\n   * Position children along the main axis\n   *\n   * @defaultValue 'start'\n   */\n  horizontalAlignment?: MainAxisAlignment;\n\n  /**\n   * Position children along the cross axis\n   *\n   * @defaultValue 'start'\n   */\n  verticalAlignment?: CrossAxisAlignment;\n}"
-          },
-          "MainAxisAlignment": {
-            "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
-            "syntaxKind": "TypeAliasDeclaration",
-            "name": "MainAxisAlignment",
-            "value": "'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly'",
-            "description": ""
-          },
-          "CrossAxisAlignment": {
-            "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
-            "syntaxKind": "TypeAliasDeclaration",
-            "name": "CrossAxisAlignment",
-            "value": "'start' | 'center' | 'end' | 'baseline'",
-            "description": ""
-          },
-          "AccessibilityRole": {
-            "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
-            "syntaxKind": "TypeAliasDeclaration",
-            "name": "AccessibilityRole",
-            "value": "'main' | 'header' | 'footer' | 'section' | 'aside' | 'navigation' | 'ordered-list' | 'list-item' | 'list-item-separator' | 'unordered-list' | 'separator' | 'status' | 'alert' | 'generic'",
-            "description": ""
-          },
-          "MaybeTwoBoxEdgesShorthandProperty": {
-            "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
-            "syntaxKind": "TypeAliasDeclaration",
-            "name": "MaybeTwoBoxEdgesShorthandProperty",
-            "value": "T | `${T} ${T}`",
-            "description": ""
-          },
-          "SpacingKeyword": {
-            "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
-            "syntaxKind": "TypeAliasDeclaration",
-            "name": "SpacingKeyword",
-            "value": "'none' | 'small' | 'base' | 'large'",
-            "description": ""
-          },
-          "MaybeAllBoxEdgesShorthandProperty": {
-            "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
-            "syntaxKind": "TypeAliasDeclaration",
-            "name": "MaybeAllBoxEdgesShorthandProperty",
-            "value": "T | `${T} ${T}` | `${T} ${T} ${T}` | `${T} ${T} ${T} ${T}`",
-            "description": ""
-          }
-        }
-      }
-    ],
-    "category": "Components",
-    "subCategory": "Feedback",
-    "related": []
-  },
-  {
-    "name": "Link",
-    "description": "Link is used to ...",
-    "requires": "",
-    "thumbnail": "link-thumbnail.png",
-    "isVisualComponent": true,
-    "type": "",
-    "definitions": [
-      {
-        "title": "LinkProps",
-        "description": "",
-        "type": "LinkProps",
-        "typeDefinitions": {
-          "LinkProps": {
-            "filePath": "/Link.ts",
-            "name": "LinkProps",
-            "description": "",
-            "members": [
-              {
-                "filePath": "/Link.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "id",
-                "value": "string",
-                "description": "A unique identifier for the link.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Link.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "href",
-                "value": "string",
-                "description": "The URL to link to.\nIf set, it will navigate to the location specified by `href` after executing the `onClick` callback.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Link.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "to",
-                "value": "string",
-                "description": "Alias for `href`\nIf set, it will navigate to the location specified by `to` after executing the `onClick` callback.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Link.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "tone",
-                "value": "\"default\" | \"inherit\" | \"critical\"",
-                "description": "Sets the link color.\n\n- `inherit` will take the color value from its parent,\ngiving the link a monochrome appearance. In some cases,\nits important to pair this property with another stylistic treatment,\nlike an underline, to differentiate the link from a normal text.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Link.ts",
-                "syntaxKind": "MethodSignature",
-                "name": "onClick",
-                "value": "() => void",
-                "description": "Callback when a link is pressed. If `href` is set,\nit will execute the callback and then navigate to the location specified by `href`.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Link.ts",
-                "syntaxKind": "MethodSignature",
-                "name": "onPress",
-                "value": "() => void",
-                "description": "Alias for `onClick`\nCallback when a link is pressed. If `href` is set,\nit will execute the callback and then navigate to the location specified by `href`.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Link.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "accessibilityLabel",
-                "value": "string",
-                "description": "A label used for users using assistive technologies. When set, any\n`children` supplied to this component will not be announced to screen reader users.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Link.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "language",
-                "value": "string",
-                "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page.\nIt will allow assistive technologies such as screen readers to invoke the correct pronunciation.\n[Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Link.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "lang",
-                "value": "string",
-                "description": "Alias for `language`",
-                "isOptional": true
-              }
-            ],
-            "value": "export interface LinkProps {\n  /**\n   * A unique identifier for the link.\n   */\n  id?: string;\n\n  /**\n   * The URL to link to.\n   * If set, it will navigate to the location specified by `href` after executing the `onClick` callback.\n   */\n  href?: string;\n\n  /**\n   * Alias for `href`\n   * If set, it will navigate to the location specified by `to` after executing the `onClick` callback.\n   */\n  to?: string;\n\n  /**\n   * Sets the link color.\n   *\n   * - `inherit` will take the color value from its parent,\n   * giving the link a monochrome appearance. In some cases,\n   * its important to pair this property with another stylistic treatment,\n   * like an underline, to differentiate the link from a normal text.\n   */\n  tone?: 'default' | 'inherit' | 'critical';\n\n  /**\n   * Callback when a link is pressed. If `href` is set,\n   * it will execute the callback and then navigate to the location specified by `href`.\n   */\n  onClick?(): void;\n\n  /**\n   * Alias for `onClick`\n   * Callback when a link is pressed. If `href` is set,\n   * it will execute the callback and then navigate to the location specified by `href`.\n   */\n  onPress?(): void;\n\n  /**\n   * A label used for users using assistive technologies. When set, any\n   * `children` supplied to this component will not be announced to screen reader users.\n   */\n  accessibilityLabel?: string;\n\n  /**\n   * Indicate the text language. Useful when the text is in a different language than the rest of the page.\n   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.\n   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)\n   */\n  language?: string;\n\n  /**\n   * Alias for `language`\n   */\n  lang?: string;\n}"
-          }
-        }
-      }
-    ],
-    "category": "Components",
-    "subCategory": "Feedback",
-    "related": []
-  },
-  {
-    "name": "Select",
-    "description": "Select is used to ...",
-    "requires": "",
-    "thumbnail": "select-thumbnail.png",
-    "isVisualComponent": true,
-    "type": "",
-    "definitions": [
-      {
-        "title": "SelectProps",
-        "description": "",
-        "type": "SelectProps",
-        "typeDefinitions": {
-          "SelectProps": {
-            "filePath": "/Select.ts",
-            "name": "SelectProps",
-            "description": "",
-            "members": [
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "disabled",
-                "value": "boolean",
-                "description": "Whether the select can be changed.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "error",
-                "value": "string",
-                "description": "Indicate an error to the user. The field will be given a specific stylistic treatment\nto communicate problems that have to be resolved immediately.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "id",
-                "value": "string",
-                "description": "A unique identifier for the field. When no `id` is set,\na globally unique value will be used instead.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "label",
-                "value": "string",
-                "description": "Content to use as the field label."
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "name",
-                "value": "string",
-                "description": "An identifier for the field that is unique within the nearest\ncontaining `Form` component.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "MethodSignature",
-                "name": "onBlur",
-                "value": "() => void",
-                "description": "Callback when focus is removed.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "MethodSignature",
-                "name": "onChange",
-                "value": "(value: string) => void",
-                "description": "A callback that is run whenever the selected option changes. This callback\nis called with the string `value` of the selected `option`. This component\nis [controlled](https://reactjs.org/docs/forms.html#controlled-components),\nso you must store this value in state and reflect it back in the `value`\nprop of the select.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "MethodSignature",
-                "name": "onFocus",
-                "value": "() => void",
-                "description": "Callback when input is focused.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "options",
-                "value": "(OptionDescription | OptionGroupDescription)[]",
-                "description": "The options a user can select from.\n\nWhen both `options` and children `Option` or `OptionGroup` are provided,\nthe options will be merged together, with the `options` property\ntaking precedence."
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "placeholder",
-                "value": "string",
-                "description": "A short hint that describes the expected value of the field.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "readOnly",
-                "value": "boolean",
-                "description": "Whether the field is read-only.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "required",
-                "value": "boolean",
-                "description": "Whether the field needs a value. This requirement adds semantic value\nto the field, but it will not cause an error to appear automatically.\nIf you want to present an error when this field is empty, you can do\nso with the `error` prop.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "value",
-                "value": "string",
-                "description": "The active option for the select. This should match to one of the\n`value` properties in the `options` property or one of the `<Option>`.\nWhen not set, the value will default to an empty string,\nwhich will show the `placeholder` text as the \"selected value\".",
-                "isOptional": true
-              }
-            ],
-            "value": "export interface SelectProps {\n  /**\n   * Whether the select can be changed.\n   */\n  disabled?: boolean;\n\n  /**\n   * Indicate an error to the user. The field will be given a specific stylistic treatment\n   * to communicate problems that have to be resolved immediately.\n   */\n  error?: string;\n\n  /**\n   * A unique identifier for the field. When no `id` is set,\n   * a globally unique value will be used instead.\n   */\n  id?: string;\n\n  /**\n   * Content to use as the field label.\n   */\n  label: string;\n\n  /**\n   * An identifier for the field that is unique within the nearest\n   * containing `Form` component.\n   */\n  name?: string;\n\n  /**\n   * Callback when focus is removed.\n   */\n  onBlur?(): void;\n\n  /**\n   * A callback that is run whenever the selected option changes. This callback\n   * is called with the string `value` of the selected `option`. This component\n   * is [controlled](https://reactjs.org/docs/forms.html#controlled-components),\n   * so you must store this value in state and reflect it back in the `value`\n   * prop of the select.\n   */\n  onChange?(value: string): void;\n\n  /**\n   * Callback when input is focused.\n   */\n  onFocus?(): void;\n\n  /**\n   * The options a user can select from.\n   *\n   * When both `options` and children `Option` or `OptionGroup` are provided,\n   * the options will be merged together, with the `options` property\n   * taking precedence.\n   */\n  options: (OptionDescription | OptionGroupDescription)[];\n\n  /**\n   * A short hint that describes the expected value of the field.\n   */\n  placeholder?: string;\n\n  /**\n   * Whether the field is read-only.\n   */\n  readOnly?: boolean;\n\n  /**\n   * Whether the field needs a value. This requirement adds semantic value\n   * to the field, but it will not cause an error to appear automatically.\n   * If you want to present an error when this field is empty, you can do\n   * so with the `error` prop.\n   */\n  required?: boolean;\n\n  /**\n   * The active option for the select. This should match to one of the\n   * `value` properties in the `options` property or one of the `<Option>`.\n   * When not set, the value will default to an empty string,\n   * which will show the `placeholder` text as the \"selected value\".\n   */\n  value?: string;\n}"
-          },
-          "OptionDescription": {
-            "filePath": "/Select.ts",
-            "name": "OptionDescription",
-            "description": "",
-            "members": [
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "disabled",
-                "value": "boolean",
-                "description": "Whether this option can be selected or not.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "label",
-                "value": "string",
-                "description": "The user-facing label for this option."
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "value",
-                "value": "string",
-                "description": "The value that will be passed to the select’s `onChange` callback\nwhen this option is selected."
-              }
-            ],
-            "value": "export interface OptionDescription {\n  /**\n   * Whether this option can be selected or not.\n   */\n  disabled?: boolean;\n\n  /**\n   * The user-facing label for this option.\n   */\n  label: string;\n\n  /**\n   * The value that will be passed to the select’s `onChange` callback\n   * when this option is selected.\n   */\n  value: string;\n}"
-          },
-          "OptionGroupDescription": {
-            "filePath": "/Select.ts",
-            "name": "OptionGroupDescription",
-            "description": "",
-            "members": [
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "disabled",
-                "value": "boolean",
-                "description": "Whether the options within this group can be selected or not.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "label",
-                "value": "string",
-                "description": "The user-facing label for this group of options."
-              },
-              {
-                "filePath": "/Select.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "options",
-                "value": "OptionDescription[]",
-                "description": "The options a user can select from.",
-                "isOptional": true
-              }
-            ],
-            "value": "export interface OptionGroupDescription {\n  /**\n   * Whether the options within this group can be selected or not.\n   */\n  disabled?: boolean;\n\n  /**\n   * The user-facing label for this group of options.\n   */\n  label: string;\n\n  /**\n   * The options a user can select from.\n   */\n  options?: OptionDescription[];\n}"
-          }
-        }
-      }
-    ],
-    "category": "Components",
-    "subCategory": "Feedback",
-    "related": []
-  },
+  null,
   {
     "name": "VerticalStack",
     "description": "VerticalStack is used to ...",
@@ -544,209 +21,58 @@
               {
                 "filePath": "/VerticalStack.ts",
                 "syntaxKind": "PropertySignature",
-                "name": "accessibilityLabel",
-                "value": "string",
-                "description": "A label that describes the purpose or contents of the element. When set,\nit will be announced to buyers using assistive technologies and will\nprovide them with more context.",
+                "name": "blockAlign",
+                "value": "MainAxisAlignment",
+                "description": "Vertical alignment of children",
                 "isOptional": true
               },
               {
                 "filePath": "/VerticalStack.ts",
                 "syntaxKind": "PropertySignature",
-                "name": "horizontalAlignment",
+                "name": "inlineAlign",
                 "value": "CrossAxisAlignment",
-                "description": "Position children along the cross axis",
-                "isOptional": true,
-                "defaultValue": "'start'"
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "verticalAlignment",
-                "value": "MainAxisAlignment",
-                "description": "Position children along the main axis",
-                "isOptional": true,
-                "defaultValue": "'start'"
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "accessibilityRole",
-                "value": "AccessibilityRole",
-                "description": "Sets the semantic meaning of the component’s content. When set,\nthe role will be used by assistive technologies to help users\nnavigate the page.",
-                "isOptional": true,
-                "defaultValue": "'generic'"
+                "description": "Horizontal alignment of children",
+                "isOptional": true
               },
               {
                 "filePath": "/VerticalStack.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "gap",
-                "value": "MaybeTwoBoxEdgesShorthandProperty<SpacingKeyword | boolean>",
-                "description": "Adjust spacing between children",
+                "value": "SpaceScale",
+                "description": "The spacing between children",
                 "isOptional": true
               },
               {
                 "filePath": "/VerticalStack.ts",
                 "syntaxKind": "PropertySignature",
-                "name": "rowGap",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust spacing between children in the block axis",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "columnGap",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust spacing between children in the inline axis",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "padding",
-                "value": "MaybeAllBoxEdgesShorthandProperty<SpacingKeyword | boolean>",
-                "description": "Adjust the padding.\n\nTo shorten the code, it is possible to specify all the padding for all edges of the box in one property.\n\n- `base` means block-start, inline-end, block-end and inline-start paddings are `base`.\n- `base none` means block-start and block-end paddings are `base`, inline-start and inline-end paddings are `none`.\n- `base none large` means block-start padding is `base`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.\n- `base none large small` means block-start padding is `base`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.\n- `true` applies a default padding that is appropriate for the component.\n\nLearn more about the 1-to-4-value syntax at https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingBlock",
-                "value": "MaybeTwoBoxEdgesShorthandProperty<SpacingKeyword | boolean>",
-                "description": "Adjust the block-padding.\n\n- `base none` means block-start padding is `base`, block-end padding is `none`.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingBlockStart",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust the block-start padding.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingBlockEnd",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust the block-end padding.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingInline",
-                "value": "MaybeTwoBoxEdgesShorthandProperty<SpacingKeyword | boolean>",
-                "description": "Adjust the inline padding.\n\n- `base none` means inline-start padding is `base`, inline-end padding is `none`.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingInlineStart",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust the inline-start padding.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "paddingInlineEnd",
-                "value": "boolean | SpacingKeyword",
-                "description": "Adjust the inline-end padding.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "blockSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the block size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "minBlockSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the minimum block size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "maxBlockSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the maximum block size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "inlineSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the inline size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "minInlineSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the minimum inline size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
-              },
-              {
-                "filePath": "/VerticalStack.ts",
-                "syntaxKind": "PropertySignature",
-                "name": "maxInlineSize",
-                "value": "number | `${number}%`",
-                "description": "Adjust the maximum inline size.\n\n- `number`: size in pixels.\n- `` `${number}%` ``: size in percentages of the available space.",
-                "isOptional": true
+                "name": "reverseOrder",
+                "value": "boolean",
+                "description": "Reverse the render order of child items",
+                "isOptional": true,
+                "defaultValue": "false"
               }
             ],
-            "value": "export interface VerticalStackProps\n  extends AccessibilityRoleProps,\n    GapProps,\n    PaddingProps,\n    SizingProps {\n  /**\n   * A label that describes the purpose or contents of the element. When set,\n   * it will be announced to buyers using assistive technologies and will\n   * provide them with more context.\n   */\n  accessibilityLabel?: string;\n\n  /**\n   * Position children along the cross axis\n   *\n   * @defaultValue 'start'\n   */\n  horizontalAlignment?: CrossAxisAlignment;\n\n  /**\n   * Position children along the main axis\n   *\n   * @defaultValue 'start'\n   */\n  verticalAlignment?: MainAxisAlignment;\n}"
-          },
-          "CrossAxisAlignment": {
-            "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
-            "syntaxKind": "TypeAliasDeclaration",
-            "name": "CrossAxisAlignment",
-            "value": "'start' | 'center' | 'end' | 'baseline'",
-            "description": ""
+            "value": "export interface VerticalStackProps {\n  /** Vertical alignment of children */\n  blockAlign?: MainAxisAlignment;\n  /** Horizontal alignment of children */\n  inlineAlign?: CrossAxisAlignment;\n  /** The spacing between children */\n  gap?: SpaceScale;\n  /** Reverse the render order of child items\n   * @default false\n   */\n  reverseOrder?: boolean;\n}"
           },
           "MainAxisAlignment": {
             "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
             "syntaxKind": "TypeAliasDeclaration",
             "name": "MainAxisAlignment",
-            "value": "'start' | 'center' | 'end' | 'space-between' | 'space-around' | 'space-evenly'",
+            "value": "'flex-start' | 'flex-center' | 'end' | 'space-between' | 'space-around' | 'space-evenly'",
             "description": ""
           },
-          "AccessibilityRole": {
+          "CrossAxisAlignment": {
             "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
             "syntaxKind": "TypeAliasDeclaration",
-            "name": "AccessibilityRole",
-            "value": "'main' | 'header' | 'footer' | 'section' | 'aside' | 'navigation' | 'ordered-list' | 'list-item' | 'list-item-separator' | 'unordered-list' | 'separator' | 'status' | 'alert' | 'generic'",
+            "name": "CrossAxisAlignment",
+            "value": "'flex-start' | 'center' | 'flex-end' | 'baseline'",
             "description": ""
           },
-          "MaybeTwoBoxEdgesShorthandProperty": {
+          "SpaceScale": {
             "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
             "syntaxKind": "TypeAliasDeclaration",
-            "name": "MaybeTwoBoxEdgesShorthandProperty",
-            "value": "T | `${T} ${T}`",
-            "description": ""
-          },
-          "SpacingKeyword": {
-            "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
-            "syntaxKind": "TypeAliasDeclaration",
-            "name": "SpacingKeyword",
-            "value": "'none' | 'small' | 'base' | 'large'",
-            "description": ""
-          },
-          "MaybeAllBoxEdgesShorthandProperty": {
-            "filePath": "Users/fio/src/github.com/Shopify/ui-extensions/packages/ui-extensions/src/surfaces/admin/components/shared/index.ts",
-            "syntaxKind": "TypeAliasDeclaration",
-            "name": "MaybeAllBoxEdgesShorthandProperty",
-            "value": "T | `${T} ${T}` | `${T} ${T} ${T}` | `${T} ${T} ${T} ${T}`",
+            "name": "SpaceScale",
+            "value": "'0' | '025' | '05' | '1' | '2' | '3' | '4' | '5' | '6' | '8' | '10' | '12' | '16' | '20' | '24' | '28' | '32'",
             "description": ""
           }
         }
@@ -754,6 +80,24 @@
     ],
     "category": "Components",
     "subCategory": "Feedback",
+    "defaultExample": {
+      "image": "verticalstack-default.png",
+      "codeblock": {
+        "title": "TODO: add example title",
+        "tabs": [
+          {
+            "title": "React",
+            "code": "import React from 'react';\nimport {\n  render,\n  VerticalStack,\n} from '@shopify/ui-extensions-react/admin';\n\nrender('Playground', () => <App />);\n\nfunction App() {\n  return (\n    <VerticalStack gap=\"4\">\n      <>Child 1</>\n      <>Child 2</>\n      <>Child 3</>\n      <>Child 4</>\n    </VerticalStack>\n  );\n}\n",
+            "language": "tsx"
+          },
+          {
+            "title": "JS",
+            "code": "import {\n  extension,\n  VerticalStack,\n} from '@shopify/ui-extensions/admin';\n\nexport default extension(\n  'Playground',\n  (root) => {\n    const verticalStack = root.createComponent(\n      VerticalStack,\n      {\n        gap: '4',\n      },\n      [\n        root.createText('Child 1'),\n        root.createText('Child 2'),\n        root.createText('Child 3'),\n        root.createText('Child 4'),\n      ],\n    );\n\n    root.appendChild(verticalStack);\n  },\n);\n",
+            "language": "js"
+          }
+        ]
+      }
+    },
     "related": []
   }
 ]
