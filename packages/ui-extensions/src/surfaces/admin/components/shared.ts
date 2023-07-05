@@ -586,9 +586,9 @@ export type MainAxisAlignment =
   /** Align items at the start of the container's main axis */
   | 'flex-start'
   /** Align items to the center of the container's main axis */
-  | 'flex-center'
+  | 'center'
   /** Align items at the end of the container's main axis */
-  | 'end'
+  | 'flex-end'
   /** Distribute items evenly across the container's main axis, where the first item is flush with the start, the last is flush with the end */
   | 'space-between'
   /** Distribute items evenly across the container's main axis, with a half-size space on either end of the items */

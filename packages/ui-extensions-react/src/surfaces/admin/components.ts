@@ -1,5 +1,7 @@
 export {AppAction} from './components/AppAction/AppAction';
 export type {AppActionProps} from './components/AppAction/AppAction';
+export {Box} from './components/Box/Box';
+export type {BoxProps} from './components/Box/Box';
 export {Button} from './components/Button/Button';
 export type {ButtonProps} from './components/Button/Button';
 export {CustomerSegmentationTemplate} from './components/CustomerSegmentationTemplate/CustomerSegmentationTemplate';
