@@ -60,4 +60,13 @@ export interface StandardApi {
    * Key-value storage for the extension point.
    */
   storage: Storage;
+
+  /**
+   * Methods to interact with the extension's UI.
+   */
+  ui: {
+    overlay: {
+      close(overlayId: string): void;
+    };
+  };
 }
