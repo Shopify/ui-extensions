@@ -20,6 +20,7 @@ export type {
   ProductSearchParams,
 } from './product-search-api';
 export type {DeviceApiContent, DeviceApi} from './device-api';
+export type {FulfillmentApiContent, FulfillmentApi} from './fulfillment-api';
 
 export type {
   Address,

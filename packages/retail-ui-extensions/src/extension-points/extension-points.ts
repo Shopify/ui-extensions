@@ -5,6 +5,7 @@ import {
   StandardApi,
   ScannerApi,
   ProductSearchApi,
+  FulfillmentApi,
 } from '../extension-api';
 import {RenderExtension} from './render-extension';
 
@@ -21,11 +22,13 @@ export interface ExtensionPoints {
     BasicComponents
   >;
   'pos.order.fulfillment-task.button.render': RenderExtension<
-    StandardApi<'pos.order.fulfillment-task.button.render'>,
+    StandardApi<'pos.order.fulfillment-task.button.render'> &
+      FulfillmentApi,
     BasicComponents
   >;
   'pos.order.fulfillment-task.modal.render': RenderExtension<
-    StandardApi<'pos.order.fulfillment-task.modal.render'>,
+    StandardApi<'pos.order.fulfillment-task.modal.render'> &
+      FulfillmentApi,
     BasicComponents
   >;
 }
