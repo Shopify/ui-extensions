@@ -21,7 +21,8 @@ type Source =
   | 'buyButtonMajor'
   | 'followUpEmailMajor'
   | 'confettiMajor'
-  | 'viewMajor';
+  | 'viewMajor'
+  | 'buyButtonMajor';
 
 type TemplateCategory =
   | 'firstTimeBuyers'
