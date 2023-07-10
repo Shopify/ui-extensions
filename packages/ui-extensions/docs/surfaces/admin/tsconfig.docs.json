@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "rootDir": "/"
+  },
+  "include": ["./**/*.doc.ts", "../../../src/surfaces/admin/**/*.doc.ts"],
+  "exclude": []
+}

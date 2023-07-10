@@ -1,0 +1,41 @@
+import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
+const data: ReferenceEntityTemplateSchema = {
+  name: 'AdminAction',
+  description:
+    'AdminAction is a component used by Admin Action extensions to configure a primary and secondary action and title.',
+  requires: '',
+  thumbnail: 'appaction-thumbnail.png',
+  isVisualComponent: true,
+  type: '',
+  definitions: [
+    {
+      title: 'AdminActionProps',
+      description: '',
+      type: 'AdminActionProps',
+    },
+  ],
+  category: 'Components',
+  subCategory: 'Other',
+  defaultExample: {
+    image: 'appaction-default.png',
+    codeblock: {
+      title: 'Set the primary and secondary action of the Action modal.',
+      tabs: [
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminAction/examples/basic-adminaction.example.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'JS',
+          code: './examples/basic-adminaction.example.ts',
+          language: 'js',
+        },
+      ],
+    },
+  },
+  related: [],
+};
+
+export default data;

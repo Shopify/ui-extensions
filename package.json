@@ -14,6 +14,7 @@
     "predeploy": "yarn build",
     "deploy": "changeset publish",
     "predeploy:unstable": "yarn build",
+    "docs:admin": "yarn workspace @shopify/ui-extensions docs:admin",
     "docs:checkout": "yarn workspace @shopify/ui-extensions docs:checkout",
     "deploy:unstable": "changeset version --snapshot unstable && changeset publish --tag unstable --no-git-tag",
     "lint": "loom lint",
@@ -22,8 +23,7 @@
     "restore-consumer-spin": "./scripts/restore-consumer-spin.sh",
     "run:ts": "babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "run:ts:watch": "nodemon --ext .ts,.tsx,.mjs,.json,.graphql node_modules/.bin/babel-node --extensions .ts,.tsx,.mjs,.js,.json",
-    "scaffold-docs:admin": "./scripts/create-doc-files.sh \"admin\"",
-    "generate-docs:admin": "./docs/build-docs.sh \"admin\"",
+    "scaffold-docs:admin": "./packages/ui-extensions/docs/surfaces/admin/create-doc-files.sh \"admin\"",
     "test": "loom test",
     "type-check": "loom type-check"
   },

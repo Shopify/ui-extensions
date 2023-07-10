@@ -1,7 +1,0 @@
-{
-    "compilerOptions": {
-      "rootDir": "/"
-    },
-    "include": ["../packages/ui-extensions/**/*.doc.ts"],
-    "exclude": []
-  }
