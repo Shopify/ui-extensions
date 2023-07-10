@@ -1,15 +1,15 @@
 import {
   extension,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/ui-extensions/admin';
 
 export default extension(
   'Playground',
   (root) => {
-    const verticalStack = root.createComponent(
-      VerticalStack,
+    const blockStack = root.createComponent(
+      BlockStack,
       {
-        gap: '4',
+        gap: 'base',
       },
       [
         root.createText('Child 1'),
@@ -19,6 +19,6 @@ export default extension(
       ],
     );
 
-    root.appendChild(verticalStack);
+    root.appendChild(blockStack);
   },
 );

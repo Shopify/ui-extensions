@@ -1,3 +1,10 @@
+export interface GlobalProps {
+  /**
+   * A unique identifier for the element.
+   */
+  id?: string;
+}
+
 export interface InputProps<T> {
   /**
    * Whether the field can be modified.
@@ -560,6 +567,20 @@ export interface GapProps {
    * Adjust spacing between children
    */
   gap?: MaybeTwoBoxEdgesShorthandProperty<SpacingKeyword | boolean>;
+
+  /**
+   * Adjust spacing between elements in the block axis.
+   *
+   * Alias for `rowGap`
+   */
+  blockGap?: SpacingKeyword | boolean;
+
+  /**
+   * Adjust spacing between elements in the inline axis.
+   *
+   * Alias for `columnGap`
+   */
+  inlineGap?: SpacingKeyword | boolean;
 
   /**
    * Adjust spacing between children in the block axis
