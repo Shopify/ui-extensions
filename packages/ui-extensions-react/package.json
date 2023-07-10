@@ -45,7 +45,7 @@
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.12",
     "@remote-ui/react": "4.6.x",
-    "@shopify/ui-extensions": "2022.10.6",
+    "@shopify/ui-extensions": "internal",
     "@types/react": ">=18.0.0 <19.0.0"
   },
   "peerDependencies": {
