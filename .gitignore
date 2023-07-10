@@ -17,3 +17,6 @@ packages/ui-extensions/docs/**/generated
 .idea
 
 tsconfig.tsbuildinfo
+
+# Generated doc files
+docs/*/generated/*
