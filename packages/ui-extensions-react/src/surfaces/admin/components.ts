@@ -1,7 +1,7 @@
-export {AppAction} from './components/AppAction/AppAction';
-export type {AppActionProps} from './components/AppAction/AppAction';
-export {AppBlock} from './components/AppBlock/AppBlock';
-export type {AppBlockProps} from './components/AppBlock/AppBlock';
+export {AdminAction} from './components/AdminAction/AdminAction';
+export type {AdminActionProps} from './components/AdminAction/AdminAction';
+export {AdminBlock} from './components/AdminBlock/AdminBlock';
+export type {AdminBlockProps} from './components/AdminBlock/AdminBlock';
 export {BlockStack} from './components/BlockStack/BlockStack';
 export type {BlockStackProps} from './components/BlockStack/BlockStack';
 export {Box} from './components/Box/Box';
