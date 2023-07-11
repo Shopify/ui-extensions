@@ -7,9 +7,9 @@ export interface AppBlockProps {
   title?: string;
 
   /**
-   * The subtitle to display when the app block is collapsed. If not provided, no subtitle will be displayed. No subtitle is shown when the app block is expanded.
+   * The summary to display when the app block is collapsed. If not provided, no summary will be displayed. No summary is shown when the app block is expanded.
    */
-  subtitle?: string;
+  summary?: string;
 
   children: any;
 }
