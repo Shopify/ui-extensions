@@ -17,6 +17,9 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget>
   extension: {
     target: ExtensionTarget;
   };
+  /**
+   * Utilities for translating content according to the current localization of the admin.
+   */
   i18n: I18n;
   /**
    * Provides information to the receiver the of an intent.

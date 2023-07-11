@@ -5,11 +5,29 @@ import type {
   StandardApi,
   CustomerSegmentationTemplateApi,
   ActionExtensionApi,
+  ProductDetailsConfigurationApi,
+  ProductVariantDetailsConfigurationApi,
 } from './api';
 import {AnyComponentBuilder} from '../../shared';
 
 type CustomerSegmentationTemplateComponent = AnyComponentBuilder<
   Pick<Components, 'CustomerSegmentationTemplate'>
+>;
+
+type ProductConfigurationComponents = AnyComponentBuilder<
+  Pick<
+    Components,
+    | 'Box'
+    | 'InlineStack'
+    | 'BlockStack'
+    | 'Divider'
+    | 'HeadingGroup'
+    | 'Heading'
+    | 'Text'
+    | 'Link'
+    | 'Image'
+    | 'Icon'
+  >
 >;
 
 export interface ExtensionTargets {
@@ -124,6 +142,19 @@ export interface ExtensionTargets {
   'admin.customer-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-index.selection-action.render'>,
     AnyComponent
+  >;
+
+  /**
+   * Renders Product Configuration on product details and product variant details
+   */
+
+  'admin.product-details.configuration.render': RenderExtension<
+    ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>,
+    ProductConfigurationComponents
+  >;
+  'admin.product-variant-details.configuration.render': RenderExtension<
+    ProductVariantDetailsConfigurationApi<'admin.product-variant-details.configuration.render'>,
+    ProductConfigurationComponents
   >;
 }
 
