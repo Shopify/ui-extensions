@@ -19,6 +19,7 @@ export type {
   Order,
   MailingAddress,
   ProductVariant,
+  DiscountAllocation,
   PixelEventsProductAddedToCartData,
   PixelEventsCheckoutStarted,
   PixelEventsCheckoutCompleted,
