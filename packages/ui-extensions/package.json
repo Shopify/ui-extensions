@@ -1,6 +1,9 @@
 {
   "name": "@shopify/ui-extensions",
   "version": "2022.10.6",
+  "scripts": {
+    "docs:checkout": "sh ./docs/surfaces/checkout/build-docs.sh"
+  },
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
@@ -42,7 +45,8 @@
     "@remote-ui/core": "2.1.x"
   },
   "devDependencies": {
-    "@shopify/generate-docs": "0.10.7"
+    "@shopify/generate-docs": "0.10.7",
+    "typescript": "^4.9.0"
   },
   "publishConfig": {
     "access": "public",
