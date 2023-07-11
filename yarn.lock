@@ -2065,6 +2065,15 @@
     pkg-dir "^5.0.0"
     pluralize "^8.0.0"
 
+"@shopify/generate-docs@0.10.7":
+  version "0.10.7"
+  resolved "https://registry.yarnpkg.com/@shopify/generate-docs/-/generate-docs-0.10.7.tgz#f497d99cc516da9fc9f62f07a1671d87c3017c7a"
+  integrity sha512-f67jGukjeXkZnajdSwMTtdcHsjMRmzbbWF64SaBvgKJ0FQfOGkLcnNnJmebvJ9X8Tz7uKGdIVoRTmsNBsUiuKA==
+  dependencies:
+    "@types/react" "^18.0.21"
+    globby "^11.1.0"
+    typescript "^4.8.3"
+
 "@shopify/loom-cli@^1.0.0":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@shopify/loom-cli/-/loom-cli-1.0.2.tgz#69919b87e5ad5b7625addf52c6e5534a7981d9ee"
@@ -2379,6 +2388,15 @@
   version "17.0.11"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.11.tgz#67fcd0ddbf5a0b083a0f94e926c7d63f3b836451"
   integrity sha512-yFRQbD+whVonItSk7ZzP/L+gPTJVBkL/7shLEF+i9GC/1cV3JmUxEQz6+9ylhUpWSDuqo1N9qEvqS6vTj4USUA==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@^18.0.21":
+  version "18.2.14"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.14.tgz#fa7a6fecf1ce35ca94e74874f70c56ce88f7a127"
+  integrity sha512-A0zjq+QN/O0Kpe30hA1GidzyFjatVvrpIvWLxD+xv67Vt91TWWgco9IvrJBkeyHm1trGaFS/FSGqPlhyeZRm0g==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -7343,6 +7361,11 @@ typescript@^4.3.5:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.2.tgz#1f9aa2ceb9af87cca227813b4310fff0b51593c4"
   integrity sha512-Mamb1iX2FDUpcTRzltPxgWMKy3fhg0TN378ylbktPGPK/99KbDtMQ4W1hwgsbPAsG3a0xKa1vmw4VKZQbkvz5A==
+
+typescript@^4.8.3:
+  version "4.9.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
+  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 typescript@^4.9.0:
   version "4.9.3"
