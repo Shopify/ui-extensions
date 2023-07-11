@@ -396,6 +396,8 @@ export interface CheckoutApi {
    * Performs an update on an attribute attached to the cart and checkout. If
    * successful, this mutation results in an update to the value retrieved
    * through the [`attributes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-applyattributechange) property.
+   *
+   * > Note: This update will be ignored if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyAttributeChange(change: AttributeChange): Promise<AttributeChangeResult>;
 
@@ -405,6 +407,8 @@ export interface CheckoutApi {
    * retrieved through the
    * [`lines`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-lines)
    * property.
+   *
+   * > Note: This update will be ignored if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyCartLinesChange(change: CartLineChange): Promise<CartLineChangeResult>;
 
@@ -427,6 +431,8 @@ export interface CheckoutApi {
    *
    * > Caution:
    * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves gift card codes through a network call.
+   *
+   * > Note: This update will be ignored if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyGiftCardChange(change: GiftCardChange): Promise<GiftCardChangeResult>;
 
@@ -441,6 +447,8 @@ export interface CheckoutApi {
    * Performs an update on the note attached to the cart and checkout. If
    * successful, this mutation results in an update to the value retrieved
    * through the [`note`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-note) property.
+   *
+   * > Note: This update will be ignored if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyNoteChange(change: NoteChange): Promise<NoteChangeResult>;
 }

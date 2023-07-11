@@ -1,7 +1,7 @@
 import {reactExtension, DateField} from '@shopify/ui-extensions-react/checkout';
 
-reactExtension('Checkout::Dynamic::Render', () => <App />);
+reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return <DateField label="Select a date" />;
 }
