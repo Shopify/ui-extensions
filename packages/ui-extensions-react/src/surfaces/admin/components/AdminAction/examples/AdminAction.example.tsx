@@ -1,15 +1,15 @@
 import React from 'react';
-import {reactExtension, AppAction, Button} from '@shopify/ui-extensions-react/admin';
+import {reactExtension, AdminAction, Button} from '@shopify/ui-extensions-react/admin';
 
 function App() {
   return (
-    <AppAction
+    <AdminAction
         title="My App Action"
         primaryAction={<Button onPress={() => {}}>Action</Button>}
         secondaryAction={<Button onPress={() => {}}>Secondary</Button>}
     >
         Modal content
-    </AppAction>
+    </AdminAction>
   );
 }
 

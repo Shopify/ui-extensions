@@ -1,7 +1,7 @@
-import {extension, AppAction, Button} from '@shopify/ui-extensions/admin';
+import {extension, AdminAction, Button} from '@shopify/ui-extensions/admin';
 
 export default extension('Playground', (root) => {
-  const appAction = root.createComponent(AppAction, {
+  const adminAction = root.createComponent(AdminAction, {
     title: 'My App Action',
     primaryAction: root.createFragment(
       root.createComponent(Button, {onPress: () => {}}, 'Action')
@@ -11,6 +11,6 @@ export default extension('Playground', (root) => {
     )
   }, 'Modal content');
 
-  root.appendChild(appAction);
+  root.appendChild(adminAction);
   root.mount();
 });

@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export interface AppBlockProps {
+export interface AdminBlockProps {
   /**
    * The title to display at the top of the app block. If not provided, the name of the extension will be used.
    */
@@ -14,6 +14,6 @@ export interface AppBlockProps {
   children: any;
 }
 
-export const AppBlock = createRemoteComponent<'AppBlock', AppBlockProps>(
-  'AppBlock',
+export const AdminBlock = createRemoteComponent<'AdminBlock', AdminBlockProps>(
+  'AdminBlock',
 );
