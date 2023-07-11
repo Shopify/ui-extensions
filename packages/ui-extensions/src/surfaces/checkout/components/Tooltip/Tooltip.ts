@@ -1,6 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export interface TooltipProps {}
+import type {IdProps} from '../shared';
+
+export interface TooltipProps extends IdProps {}
 
 /**
  * Tooltips are floating labels that briefly explain the function of a user interface element.

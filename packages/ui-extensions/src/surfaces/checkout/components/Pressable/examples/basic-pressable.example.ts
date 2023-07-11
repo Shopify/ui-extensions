@@ -1,23 +1,23 @@
 import {
-  extend,
+  extension,
   Icon,
   InlineLayout,
   Pressable,
   Text,
 } from '@shopify/ui-extensions/checkout';
 
-extend('Checkout::Dynamic::Render', (root) => {
+extension('Checkout::Dynamic::Render', (root) => {
   const pressable = root.createComponent(
     Pressable,
     {
       border: 'base',
-      borderRadius: 'base',
+      cornerRadius: 'base',
       padding: 'base',
       onPress: () => console.log('onPress event'),
     },
     [
       root.createComponent(InlineLayout, {columns: ['fill', 'auto']}, [
-        root.createComponent(Text, {}, 'Pressable'),
+        root.createComponent(Text, {}, 'Details'),
         root.createComponent(Icon, {source: 'chevronDown', size: 'small'}),
       ]),
     ],

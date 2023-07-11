@@ -1,4 +1,4 @@
-import type {RenderExtensionPoint} from '@shopify/ui-extensions/checkout';
+import type {RenderExtensionPoint, Shop} from '@shopify/ui-extensions/checkout';
 
 import {useApi} from './api';
 
@@ -7,6 +7,6 @@ import {useApi} from './api';
  */
 export function useShop<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): Shop {
   return useApi<ID>().shop;
 }

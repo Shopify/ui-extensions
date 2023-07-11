@@ -1,7 +1,11 @@
 import type {
+  Attribute,
+  AttributeChange,
+  AttributeChangeResult,
   RenderExtensionPoint,
-  StandardApi,
 } from '@shopify/ui-extensions/checkout';
+
+import {ExtensionHasNoMethodError} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -11,8 +15,28 @@ import {useSubscription} from './subscription';
  */
 export function useAttributes<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->() {
+>(): Attribute[] | undefined {
   return useSubscription(useApi<ID>().attributes);
+}
+
+/**
+ * Returns the values for the specified `attributes` applied to the checkout.
+ *
+ * @param keys - An array of attribute keys.
+ */
+export function useAttributeValues<
+  ID extends RenderExtensionPoint = RenderExtensionPoint,
+>(keys: string[]): (string | undefined)[] {
+  const attributes = useAttributes<ID>();
+
+  if (!attributes?.length) {
+    return [];
+  }
+
+  return keys.map((key) => {
+    const attribute = attributes.find((attribute) => attribute.key === key);
+    return attribute?.value;
+  });
 }
 
 /**
@@ -20,6 +44,15 @@ export function useAttributes<
  */
 export function useApplyAttributeChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): StandardApi<ID>['applyAttributeChange'] {
-  return useApi<ID>().applyAttributeChange;
+>(): (change: AttributeChange) => Promise<AttributeChangeResult> {
+  const api = useApi<ID>();
+
+  if ('applyAttributeChange' in api) {
+    return api.applyAttributeChange;
+  }
+
+  throw new ExtensionHasNoMethodError(
+    'applyAttributeChange',
+    api.extensionPoint,
+  );
 }

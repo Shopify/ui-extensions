@@ -808,3 +808,60 @@ export type CountryCode =
   | 'ZM'
   | 'ZW'
   | 'ZZ';
+
+/**
+ * Union of supported storefront API versions
+ */
+export type StorefrontApiVersion =
+  | '2022-04'
+  | '2022-07'
+  | '2022-10'
+  | '2023-01'
+  | 'unstable';
+
+/**
+ * GraphQL error returned by the Shopify Storefront APIs.
+ */
+export interface GraphQLError {
+  message: string;
+  extensions: {
+    requestId: string;
+    code: string;
+  };
+}
+
+export interface ValidationError {
+  /**
+   * Error message to be displayed to the buyer.
+   */
+  message: string;
+  /**
+   * The checkout UI field that the error is associated with.
+   *
+   * Example: `$.cart.deliveryGroups[0].deliveryAddress.countryCode`
+   *
+   * See the [supported targets](https://shopify.dev/docs/api/functions/reference/cart-checkout-validation/graphql#supported-targets)
+   * for more information.
+   */
+  target?: string;
+}
+
+export interface SellingPlan {
+  /**
+   * A globally-unique identifier.
+   * @example 'gid://shopify/SellingPlan/1'
+   */
+  id: string;
+}
+
+export interface Attribute {
+  /**
+   * The key for the attribute.
+   */
+  key: string;
+
+  /**
+   * The value for the attribute.
+   */
+  value: string;
+}

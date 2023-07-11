@@ -1,12 +1,12 @@
 import {
-  render,
+  reactExtension,
   TextBlock,
   BlockStack,
 } from '@shopify/ui-extensions-react/checkout';
 
-render('Checkout::Dynamic::Render', () => <App />);
+reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return (
     <BlockStack>
       <TextBlock>

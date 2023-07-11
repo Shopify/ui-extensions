@@ -11,14 +11,11 @@ import type {
   Display,
   MultiPick,
   ViewLikeAccessibilityRole,
+  CornerProps,
+  Opacity,
 } from '../shared';
 
-type AccessibilityVisibility = 'hidden';
-
-type Opacity = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
-
 export type PositionType = 'absolute' | 'relative' | 'sticky';
-
 export type Coordinate = number | `${number}%`;
 interface BaseCoordinates {
   /**
@@ -105,17 +102,10 @@ export interface Translate {
 
 export interface ViewProps
   extends BorderProps,
+    CornerProps,
     SizingProps,
     SpacingProps,
     VisibilityProps {
-  /**
-   * Changes the visibility of the element to assistive technologies.
-   *
-   * `hidden` hides the component from assistive technology (for example,
-   * a screen reader) but remains visually visible.
-   */
-  accessibilityVisibility?: AccessibilityVisibility;
-
   /**
    * Changes the display of the View.
    *
@@ -154,9 +144,9 @@ export interface ViewProps
    *
    * For example:
    *
-   * - In an HTML host a `['listItem', 'separator']` tuple will render: <li role='separator'>
+   * - In an HTML host a `['listItem', 'separator']` tuple will render: `<li role='separator'>`
    *
-   * - In an HTML host a `listItem` string will render: <li>
+   * - In an HTML host a `listItem` string will render: `<li>`
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
   /**
@@ -183,14 +173,23 @@ export interface ViewProps
    * `fill`: takes all the available space.
    */
   inlineSize?: MaybeResponsiveConditionalStyle<'fill'>;
+  /**
+   * Sets the overflow behavior of the element.
+   *
+   * `hidden`: clips the content when it is larger than the element’s container.
+   * The element will not be scrollable and the users will not be able
+   * to access the clipped content by dragging or using a scroll wheel.
+   *
+   * `visible`: the content that extends beyond the element’s container is visible.
+   *
+   * @default 'visible'
+   */
+  overflow?: 'hidden' | 'visible';
 }
 
 /**
  *  View is a generic container component. Its contents will always be their
  * “natural” size, so this component can be useful in layout components (like `Grid`,
  * `BlockStack`, `InlineStack`) that would otherwise stretch their children to fit.
- *
- * Note: View’s box model related properties like `padding`, `border`, `borderRadius`, and `borderColor` are implemented as
- * [CSS Logical Properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Logical_Properties/Basic_concepts).
  */
 export const View = createRemoteComponent<'View', ViewProps>('View');

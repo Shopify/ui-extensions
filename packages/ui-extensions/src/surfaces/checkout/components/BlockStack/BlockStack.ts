@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {
   BorderProps,
+  CornerProps,
   InlineAlignment,
   SizingProps,
   Spacing,
@@ -12,6 +13,7 @@ import {MaybeResponsiveConditionalStyle} from '../../style';
 
 export interface BlockStackProps
   extends BorderProps,
+    CornerProps,
     SizingProps,
     SpacingProps {
   /**
@@ -32,9 +34,9 @@ export interface BlockStackProps
    *
    * For example:
    *
-   * - In an HTML host a `['listItem', 'separator']` tuple will render: <li role='separator'>
+   * - In an HTML host a `['listItem', 'separator']` tuple will render: `<li role='separator'>`
    *
-   * - In an HTML host a `listItem` string will render: <li>
+   * - In an HTML host a `listItem` string will render: `<li>`
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
   /**
@@ -43,6 +45,22 @@ export interface BlockStackProps
    * provide them with more context.
    */
   accessibilityLabel?: string;
+  /**
+   * A unique identifier for the component.
+   */
+  id?: string;
+  /**
+   * Sets the overflow behavior of the element.
+   *
+   * `hidden`: clips the content when it is larger than the element’s container.
+   * The element will not be scrollable and the users will not be able
+   * to access the clipped content by dragging or using a scroll wheel.
+   *
+   * `visible`: the content that extends beyond the element’s container is visible.
+   *
+   * @default 'visible'
+   */
+  overflow?: 'hidden' | 'visible';
 }
 
 /**

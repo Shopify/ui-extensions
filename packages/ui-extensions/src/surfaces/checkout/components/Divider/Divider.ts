@@ -1,8 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {Size, Alignment, Direction} from '../shared';
+import type {Alignment, Direction, IdProps, Size} from '../shared';
 
-export interface DividerProps {
+export interface DividerProps extends IdProps {
   /**
    * Use to create dividers with varying widths.
    *

@@ -1,0 +1,9 @@
+type = "checkout_ui_extension"
+name = "my-checkout-extension"
+
+extension_points = [
+  'Checkout::Actions::RenderBefore',
+  'Checkout::DeliveryAddress::RenderBefore',
+  'Checkout::ShippingMethods::RenderAfter',
+  'Checkout::Dynamic::Render'
+]

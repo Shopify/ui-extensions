@@ -80,6 +80,11 @@ const when: WhenFunction = function when<
   ) as WhenReturnType<T, TContext, AcceptedConditions>;
 };
 
+export interface DocsStyle {
+  default: <T>(defaultValue: T) => ConditionalStyle<T>;
+  when: <T>(conditions: Conditions, value: T) => ConditionalStyle<T>;
+}
+
 /**
  * Style is a helper for authoring conditional values for prop styles.
  * Write complex conditional styles based on one or more conditions (viewport

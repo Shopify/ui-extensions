@@ -1,9 +1,12 @@
 import type {
   CartDiscountAllocation,
   CartDiscountCode,
-  StandardApi,
   RenderExtensionPoint,
+  DiscountCodeChange,
+  DiscountCodeChangeResult,
 } from '@shopify/ui-extensions/checkout';
+
+import {ExtensionHasNoMethodError} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -34,9 +37,21 @@ export function useDiscountAllocations<
 
 /**
  * Returns a function to add or remove discount codes.
+ *
+ * > Caution:
+ * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves discount codes through a network call.
  */
 export function useApplyDiscountCodeChange<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): StandardApi<ID>['applyDiscountCodeChange'] {
-  return useApi<ID>().applyDiscountCodeChange;
+>(): (change: DiscountCodeChange) => Promise<DiscountCodeChangeResult> {
+  const api = useApi<ID>();
+
+  if ('applyDiscountCodeChange' in api) {
+    return api.applyDiscountCodeChange;
+  }
+
+  throw new ExtensionHasNoMethodError(
+    'applyDiscountCodeChange',
+    api.extensionPoint,
+  );
 }

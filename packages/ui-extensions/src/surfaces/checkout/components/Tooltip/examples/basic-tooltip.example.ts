@@ -1,11 +1,11 @@
 import {
-  extend,
+  extension,
   Icon,
   Pressable,
   Tooltip,
 } from '@shopify/ui-extensions/checkout';
 
-extend('Checkout::Dynamic::Render', (root) => {
+extension('Checkout::Dynamic::Render', (root) => {
   const tooltipFragment = root.createFragment();
   const tooltip = root.createComponent(
     Tooltip,

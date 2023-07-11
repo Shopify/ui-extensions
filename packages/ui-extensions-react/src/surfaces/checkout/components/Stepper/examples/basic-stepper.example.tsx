@@ -1,7 +1,7 @@
-import {render, Stepper} from '@shopify/ui-extensions-react/checkout';
+import {reactExtension, Stepper} from '@shopify/ui-extensions-react/checkout';
 
-render('Checkout::Dynamic::Render', () => <App />);
+reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
-function App() {
+function Extension() {
   return <Stepper label="Quantity" value={1} />;
 }

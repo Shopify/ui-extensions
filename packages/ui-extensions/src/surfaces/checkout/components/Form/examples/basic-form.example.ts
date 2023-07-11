@@ -1,5 +1,5 @@
 import {
-  extend,
+  extension,
   BlockSpacer,
   Button,
   Form,
@@ -9,7 +9,7 @@ import {
   View,
 } from '@shopify/ui-extensions/checkout';
 
-extend('Checkout::Dynamic::Render', (root) => {
+extension('Checkout::Dynamic::Render', (root) => {
   const fields = root.createComponent(
     Grid,
     {columns: ['50%', '50%'], spacing: 'base'},

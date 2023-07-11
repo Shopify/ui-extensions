@@ -1,12 +1,12 @@
 import {
-  extend,
+  extension,
   ChoiceList,
   Choice,
   BlockStack,
   InlineStack,
 } from '@shopify/ui-extensions/checkout';
 
-extend('Checkout::Dynamic::Render', (root) => {
+extension('Checkout::Dynamic::Render', (root) => {
   const choiceList = root.createComponent(
     ChoiceList,
     {

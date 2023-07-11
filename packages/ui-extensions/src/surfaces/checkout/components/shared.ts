@@ -136,11 +136,28 @@ export type ShorthandProperty<T> = [T, T] | [T, T, T, T];
 
 export type MaybeShorthandProperty<T> = T | ShorthandProperty<T>;
 
+/** @deprecated These values are deprecated and will eventually be removed.
+ * Use CornerRadius instead
+ */
 export type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
 export type BorderStyle = 'base' | 'dotted' | 'none';
 export type BorderWidth = 'base' | 'medium';
 
-export type CornerRadius = 'base' | 'small' | 'large' | 'fullyRounded' | 'none';
+export type CornerRadius =
+  | 'base'
+  | 'small'
+  | 'large'
+  | 'fullyRounded'
+  | 'none'
+  | CornerRadiusDeprecated;
+
+/** @deprecated These values are deprecated and will eventually be removed.
+ * Use the new values.
+ *
+ * `tight`: `small`
+ * `loose`: `large`
+ */
+export type CornerRadiusDeprecated = 'tight' | 'loose';
 
 export interface BackgroundProps {
   /**
@@ -205,28 +222,34 @@ export interface BorderProps {
   borderWidth?: MaybeResponsiveConditionalStyle<
     MaybeShorthandProperty<BorderWidth>
   >;
-
-  /**
-   * Adjust the border radius.
-   *
-   * To shorten the code, it is possible to specify all the border width properties in one property.
-   *
-   * For example:
-   *
-   * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border radii are `base`
-   *
-   * - `['base', 'none']` means blockStart and blockEnd border radii are `base`, inlineStart and inlineEnd border radii are `none`
-   *
-   * - `['base', 'none', 'tight', 'base']` means blockStart border radius is `base`, inlineEnd border radius is `none`, blockEnd border radius is `tight` and  blockStart border radius is `base`
-   */
-  borderRadius?: MaybeConditionalStyle<MaybeShorthandProperty<BorderRadius>>;
 }
 
 export interface CornerProps {
   /**
+   * @private
+   *
+   * Adjust the border radius.
+   *
+   * Provide a single value to apply the same border radius to all four corners, two values to apply different border radii to opposing corners, or four values to apply different border radii to each individual corner.
+   *
+   * For example:
+   *
+   * - `base` means all 4 border radii are `base`
+   *
+   * - `['base', 'none']` means the StartStart and EndEnd border radii are `base`, StartEnd and EndStart border radii are `none`.
+   *    When the context’s language direction is left to right, StartStart and EndEnd borders are the top left and bottom right borders
+   *    while StartEnd and EndStart borders are the top right and bottom left borders.
+   *
+   * - `['base', 'none', 'small', 'base']` means StartStart border radius is `base`, StartEnd border radius is `none`, EndEnd border radius is `small` and  EndStart border radius is `base`
+   */
+  borderRadius?: MaybeResponsiveConditionalStyle<
+    MaybeShorthandProperty<CornerRadius>
+  >;
+
+  /**
    * Adjust the corner radius.
    *
-   * To shorten the code, it is possible to specify all the corner radii in one property.
+   * Provide a single value to apply the same corner radius to all four corners, two values to apply different corner radii to opposing corners, or four values to apply different corner radii to each individual corner.
    *
    * For example:
    *
@@ -237,6 +260,8 @@ export interface CornerProps {
    *    while StartEnd and EndStart corners are the top right and bottom left corners.
    *
    * - `['base', 'none', 'small', 'base']` means StartStart corner radius is `base`, StartEnd corner radius is `none`, EndEnd corner radius is `small` and  EndStart corner radius is `base`
+   *
+   * A `borderRadius` alias is available for this property. When both are specified, `cornerRadius` takes precedence.
    */
   cornerRadius?: MaybeResponsiveConditionalStyle<
     MaybeShorthandProperty<CornerRadius>
@@ -442,9 +467,9 @@ export type Size =
 
 export type Spacing =
   | 'none'
+  | 'base'
   | 'extraTight'
   | 'tight'
-  | 'base'
   | 'loose'
   | 'extraLoose';
 
@@ -458,21 +483,21 @@ export type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
 export type BackgroundRepeat = 'repeat' | 'noRepeat';
 
 export type Appearance =
-  /** Use to convey emphasis and draw attention to the icon.*/
+  /** Conveys emphasis and draws attention to the element.*/
   | 'accent'
-  /** Use to convey that the icon is pressable, hoverable or otherwise interactive.*/
+  /** Conveys that the element is pressable, hoverable or otherwise interactive.*/
   | 'interactive'
-  /** Use to convey a subdued or disabled state for the icon.*/
+  /** Conveys a subdued or disabled state for the element.*/
   | 'subdued'
-  /** Use to convey icon is informative or has information.*/
+  /** Conveys that the element is informative or has information.*/
   | 'info'
-  /** Use to convey a successful interaction.*/
+  /** Convey a successful interaction.*/
   | 'success'
-  /** Use to convey something needs attention or an action needs to be taken.*/
+  /** Convey something needs attention or an action needs to be taken.*/
   | 'warning'
-  /** Use to convey a problem has arisen.*/
+  /** Conveys a problem has arisen.*/
   | 'critical'
-  /** Will take the color of its parent*/
+  /** Takes the color of its parent.*/
   | 'monochrome';
 
 export type Direction = 'inline' | 'block';
@@ -562,6 +587,7 @@ export type MultiPick<Base, AcceptedCombinations extends (keyof Base)[]> = {
 }[number];
 
 export type Visibility = 'hidden';
+export type AccessibilityVisibility = 'hidden';
 export interface VisibilityProps {
   /**
    * Changes the visibility of the element.
@@ -571,6 +597,13 @@ export interface VisibilityProps {
    * Hidden elements don't take any visual space contrary to CSS visibility: hidden;
    */
   visibility?: Visibility;
+  /**
+   * Changes the visibility of the element to assistive technologies.
+   *
+   * `hidden` hides the component from assistive technology (for example,
+   * a screen reader) but remains visually visible.
+   */
+  accessibilityVisibility?: AccessibilityVisibility;
 }
 
 export interface OverlayActivatorProps {
@@ -578,4 +611,26 @@ export interface OverlayActivatorProps {
    * An overlay component to render when the user interacts with the component.
    */
   overlay?: RemoteFragment;
+}
+
+export interface DisclosureActivatorProps {
+  /**
+   * The component's identifier whose visibility will be toggled when this component is actioned.
+   */
+  toggles?: string;
+}
+
+export type DisclosureOpen = boolean | string | string[];
+
+export type Opacity = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
+
+export type TextSize =
+  | Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'extraLarge'>
+  | 'medium';
+
+export interface IdProps {
+  /**
+   * A unique identifier for the component.
+   */
+  id?: string;
 }

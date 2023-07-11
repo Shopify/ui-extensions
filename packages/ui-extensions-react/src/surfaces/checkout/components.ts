@@ -22,6 +22,15 @@ export type {ChoiceProps} from './components/Choice/Choice';
 export {ChoiceList} from './components/ChoiceList/ChoiceList';
 export type {ChoiceListProps} from './components/ChoiceList/ChoiceList';
 
+export {DateField} from './components/DateField/DateField';
+export type {DateFieldProps} from './components/DateField/DateField';
+
+export {DatePicker} from './components/DatePicker/DatePicker';
+export type {DatePickerProps} from './components/DatePicker/DatePicker';
+
+export {Disclosure} from './components/Disclosure/Disclosure';
+export type {DisclosureProps} from './components/Disclosure/Disclosure';
+
 export {Divider} from './components/Divider/Divider';
 export type {DividerProps} from './components/Divider/Divider';
 
@@ -40,8 +49,8 @@ export type {HeadingProps} from './components/Heading/Heading';
 export {HeadingGroup} from './components/HeadingGroup/HeadingGroup';
 export type {HeadingGroupProps} from './components/HeadingGroup/HeadingGroup';
 
-export {Icon} from './components/Icon/Icon';
 export type {IconProps} from './components/Icon/Icon';
+export {Icon} from './components/Icon/Icon';
 
 export {Image} from './components/Image/Image';
 export type {ImageProps} from './components/Image/Image';
@@ -64,17 +73,23 @@ export type {ListProps} from './components/List/List';
 export {ListItem} from './components/ListItem/ListItem';
 export type {ListItemProps} from './components/ListItem/ListItem';
 
+export {Modal} from './components/Modal/Modal';
+export type {ModalProps} from './components/Modal/Modal';
+
 export {PhoneField} from './components/PhoneField/PhoneField';
 export type {PhoneFieldProps} from './components/PhoneField/PhoneField';
 
 export {Pressable} from './components/Pressable/Pressable';
 export type {PressableProps} from './components/Pressable/Pressable';
 
+export {Popover} from './components/Popover/Popover';
+export type {PopoverProps} from './components/Popover/Popover';
+
 export {ScrollView} from './components/ScrollView/ScrollView';
 export type {ScrollViewProps} from './components/ScrollView/ScrollView';
 
 export {Select} from './components/Select/Select';
-export type {SelectProps} from './components/Select/Select';
+export type {SelectProps, SelectOptionProps} from './components/Select/Select';
 
 export {SkeletonImage} from './components/SkeletonImage/SkeletonImage';
 export type {SkeletonImageProps} from './components/SkeletonImage/SkeletonImage';

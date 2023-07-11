@@ -3,6 +3,7 @@ module.exports = {
     'plugin:@shopify/typescript',
     'plugin:@shopify/jest',
     'plugin:@shopify/prettier',
+    'plugin:@shopify/react',
   ],
   ignorePatterns: [
     'build/',
@@ -35,6 +36,12 @@ module.exports = {
     {
       files: ['**/.eslintrc.js'],
       env: {node: true},
+    },
+    {
+      files: ['*.stories.*', '*.test.*', '*.example.*'],
+      rules: {
+        '@shopify/jsx-no-hardcoded-content': 'off',
+      },
     },
   ],
 };

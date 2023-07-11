@@ -7,3 +7,9 @@ export interface ShopifyGlobal {
   ): void;
   reload(): void;
 }
+
+declare global {
+  interface WorkerGlobalScope {
+    readonly le_shopify: ShopifyGlobal;
+  }
+}

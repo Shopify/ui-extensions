@@ -1,12 +1,19 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 import type {MaybeResponsiveConditionalStyle} from '../../style';
-import type {BorderProps, Columns, SizingProps, SpacingProps} from '../shared';
+import type {
+  BorderProps,
+  Columns,
+  CornerProps,
+  SizingProps,
+  SpacingProps,
+} from '../shared';
 import type {GridProps} from '../Grid/Grid';
 
 export interface InlineLayoutProps
   extends Omit<GridProps, 'columns' | 'rows'>,
     BorderProps,
+    CornerProps,
     SizingProps,
     SpacingProps {
   /**

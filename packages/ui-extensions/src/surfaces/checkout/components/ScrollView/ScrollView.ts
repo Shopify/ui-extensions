@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {BorderProps, SizingProps, SpacingProps} from '../shared';
+import {BorderProps, CornerProps, SizingProps, SpacingProps} from '../shared';
 
 export interface ScrollViewEvent {
   /**
@@ -25,6 +25,7 @@ export interface ScrollViewEvent {
 
 export interface ScrollViewProps
   extends BorderProps,
+    CornerProps,
     SizingProps,
     SpacingProps {
   /**
@@ -65,6 +66,10 @@ export interface ScrollViewProps
    * Callback function that is called when the scroll position reaches one of the edges.
    */
   onScrolledToEdge?: (args: ScrollViewEvent) => void;
+  /**
+   * A unique identifier for the component.
+   */
+  id?: string;
 }
 
 /**
