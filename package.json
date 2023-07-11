@@ -14,7 +14,7 @@
     "predeploy": "yarn build",
     "deploy": "changeset publish",
     "predeploy:unstable": "yarn build",
-    "docs:checkout": "yarn workspace @shopify/ui-extensions build-docs",
+    "docs:checkout": "yarn workspace @shopify/ui-extensions docs:checkout",
     "deploy:unstable": "changeset version --snapshot unstable && changeset publish --tag unstable --no-git-tag",
     "lint": "loom lint",
     "nuke": "rm -rf node_modules && yarn cache clean && rm -rf .loom && git clean -xdf ./packages; rm -rf ./build",
