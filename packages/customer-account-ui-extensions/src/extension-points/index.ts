@@ -10,6 +10,7 @@ export type {
   I18n,
 } from './standard-api/localization';
 export type {Capability} from './standard-api/extension';
+export type {Storage} from './standard-api/storage';
 
 export type {StandardApi} from './standard-api';
 
