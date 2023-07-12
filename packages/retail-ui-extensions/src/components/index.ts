@@ -70,7 +70,13 @@ export type {DialogType, DialogProps} from './Dialog';
 export {SearchBar} from './SearchBar';
 export type {SearchBarProps} from './SearchBar';
 
-export type {AutoCapitalizationType, BaseTextFieldProps} from './shared';
+export type {
+  AutoCapitalizationType,
+  BaseTextFieldProps,
+  InputProps,
+  InputAction,
+  MinMaxLengthProps,
+} from './shared';
 
 export {Image} from './Image';
 export type {ImageProps} from './Image';
@@ -91,3 +97,6 @@ export type {DatePickerProps} from './DatePicker';
 
 export {TimePicker} from './TimePicker';
 export type {TimePickerProps} from './TimePicker';
+
+export {TextArea} from './TextArea';
+export type {TextAreaProps} from './TextArea';

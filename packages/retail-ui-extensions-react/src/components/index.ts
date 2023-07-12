@@ -32,6 +32,8 @@ export {Badge} from './Badge';
 export type {BadgeProps} from './Badge';
 export {Text} from './Text';
 export type {TextProps} from './Text';
+export {TextArea} from './TextArea';
+export type {TextAreaProps} from './TextArea';
 export {TextField} from './TextField';
 export type {TextFieldProps} from './TextField';
 export {Icon} from './Icon';
