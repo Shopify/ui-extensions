@@ -2,30 +2,30 @@
 
 ### Shopify-specific globals
 
-The most important API to an App Bridge Checkout extension is `shopify`, an object that is globally available. This object has a single method, `extend` that takes two arguments. One is the name of an [available target](#extension-points), and the other is a function to call when Shopify is ready to run the target. The function you pass is called with at least one input argument, depending on the target. Refer to the documentation for the target you are targeting to see what you have access to.
+The most important API to an App Bridge Checkout extension is `shopify`, an object that is globally available. This object has a single method, `extend`. `extend` takes two arguments: the name of an [available extension point](./extension-points.md), and a function to call when Shopify is ready to run the extension point. The function you pass is called with at least one input argument, depending on the extension point — please refer to the documentation for the extension point you are targeting to see what you have access to.
 
 ```ts
 shopify.extend('Checkout::PostPurchase::ShouldRender', (...args) => {
-  // Implement your Checkout::PostPurchase::ShouldRender target logic here
+  // Implement your Checkout::PostPurchase::ShouldRender extension point logic here
 });
 ```
 
-This library provides an alias for `shopify.extend` in the form of the `extend()` export. This function is also strongly-typed. If you’re working in an editor that supports TypeScript’s language server (we recommend [VSCode](https://code.visualstudio.com)), then you get feedback about the input arguments to that target.
+This library provides an alias for `shopify.extend` in the form of the `extend()` export. This function is also strongly-typed, so you will get feedback about the input arguments to that extension point if you are working in an editor that supports TypeScript’s language server (we recommend [VSCode](https://code.visualstudio.com)).
 
 ```ts
 import {extend} from '@shopify/post-purchase-ui-extensions';
 
 extend('Checkout::PostPurchase::ShouldRender', (api) => {
-  // Implement your Checkout::PostPurchase::ShouldRender target logic here
+  // Implement your Checkout::PostPurchase::ShouldRender extension point logic here
   // If you hover over `api` in an editor that supports TypeScript, you’ll see
-  // the properties and methods available for this target, even if you
+  // the properties and methods available for this extension point, even if you
   // are writing your extension in "vanilla" JavaScript.
 });
 ```
 
-For extensions that render UI, like [`Checkout::PostPurchase::ShouldRender`](#extension-points), the first argument is always a [`@remote-ui` `RemoteRoot` object](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoteroot) that allows you to render UI components into your target in checkout. You do not need to explicitly call [`mount()`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootmount) on this object; once the callback you registered for this target ends (or, if it returns a `Promise`, once that promise resolves), your initial UI will be rendered.
+For extensions that render UI, like [`Checkout::PostPurchase::ShouldRender`](./extension-points.md), the first argument is always a [`@remote-ui` `RemoteRoot` object](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoteroot) that allows you to render UI components into your extension point in checkout. You do not need to explicitly call [`mount()`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootmount) on this object; once the callback you registered for this extension point ends (or, if it returns a `Promise`, once that promise resolves), your initial UI will be rendered.
 
-That’s really all the global API you need to know to start writing a UI extension. You’ll find the documentation for additional APIs that are provided when an target is run in the [targets documentation](#targets).
+That’s really all the global API you need to know to start writing a UI extension. You’ll find the documentation for additional APIs that are provided when an extension point is run in the [extension points documentation](./extension-points.md).
 
 ### Web platform globals
 
