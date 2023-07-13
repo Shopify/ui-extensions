@@ -11,6 +11,5 @@ export function useStorage<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): Storage {
   const api = useApi<ID>();
-
   return api.storage;
 }
