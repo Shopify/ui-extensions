@@ -1,7 +1,7 @@
 import type {
   RedeemableChangeResult,
   RedeemableChange,
-} from '@shopify/ui-extensions/checkout';
+} from '@shopify/checkout-ui-extensions';
 
 import {ExtensionHasNoMethodError} from '../errors';
 
