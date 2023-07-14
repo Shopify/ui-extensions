@@ -314,6 +314,13 @@ The contents of the token are signed using your shared app secret.  The optional
         tabs: getExtensionCodeTabs('delivery-groups'),
       },
     },
+    'attribute-values': {
+      description: '',
+      codeblock: {
+        title: 'Attribute values',
+        tabs: getExtensionCodeTabs('attribute-values'),
+      },
+    },
   };
 }
 

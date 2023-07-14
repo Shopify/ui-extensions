@@ -72,7 +72,7 @@ export interface Extension {
   /**
    * The API version that was set in the extension config file.
    *
-   * @example '2023-01', '2022-10'
+   * @example '2023-04'
    */
   apiVersion: ApiVersion;
 
@@ -162,6 +162,9 @@ export interface AppMetafield {
 
   /** The metafield’s information type. */
   valueType: 'boolean' | 'float' | 'integer' | 'json_string' | 'string';
+
+  /** The metafield's type name. */
+  type: string;
 }
 
 /**
@@ -173,7 +176,14 @@ export interface AppMetafieldEntryTarget {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`.
    */
-  type: 'customer' | 'product' | 'shop' | 'variant';
+  type:
+    | 'customer'
+    | 'product'
+    | 'shop'
+    | 'variant'
+    | 'company'
+    | 'companyLocation'
+    | 'cart';
 
   /** The numeric owner ID that is associated with the metafield. */
   id: string;
@@ -194,7 +204,7 @@ export interface AppMetafieldEntry {
   metafield: AppMetafield;
 }
 
-export type ApiVersion = '2022-10' | '2023-01' | '2023-04' | 'unstable';
+export type ApiVersion = '2023-04' | 'unstable';
 
 export type Version = string;
 

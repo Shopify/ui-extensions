@@ -1,4 +1,4 @@
-import faker from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 import {Metafield} from '@shopify/checkout-ui-extensions';
 
 import {useMetafields} from '..';
