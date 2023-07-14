@@ -15,23 +15,23 @@ type AllComponents = Components[keyof Components];
  */
 export interface ExtensionPoints {
   'CustomerAccount::FullPage::RenderWithin': RenderExtension<
-    StandardApi & FullPageApi,
+    StandardApi<'CustomerAccount::FullPage::RenderWithin'> & FullPageApi,
     AllComponents
   >;
   'CustomerAccount::Returns::Initiate': RunExtension<
-    StandardApi & {orderId: string},
+    StandardApi<'CustomerAccount::Returns::Initiate'> & {orderId: string},
     void
   >;
   'CustomerAccount::KitchenSink': RenderExtension<
-    StandardApi & {name: string},
+    StandardApi<'CustomerAccount::KitchenSink'> & {name: string},
     AllComponents
   >;
   'CustomerAccount::KitchenSinkRun': RunExtension<
-    StandardApi & {name: string},
+    StandardApi<'CustomerAccount::KitchenSinkRun'> & {name: string},
     string
   >;
   'customer-account.dynamic.render': RenderExtension<
-    StandardApi,
+    StandardApi<'customer-account.dynamic.render'>,
     AllComponents
   >;
   'customer-account.order-status.action.menu-item.render': RenderExtension<
