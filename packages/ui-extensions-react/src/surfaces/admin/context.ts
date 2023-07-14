@@ -1,8 +1,8 @@
 import {createContext} from 'react';
 import type {
   ApiForRenderExtension,
-  RenderExtensionPoint,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/admin';
 
 export const ExtensionApiContext =
-  createContext<ApiForRenderExtension<RenderExtensionPoint> | null>(null);
+  createContext<ApiForRenderExtension<RenderExtensionTarget> | null>(null);
