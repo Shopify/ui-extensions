@@ -2074,6 +2074,15 @@
     globby "^11.1.0"
     typescript "^4.8.3"
 
+"@shopify/generate-docs@^0.10.9":
+  version "0.10.9"
+  resolved "https://registry.yarnpkg.com/@shopify/generate-docs/-/generate-docs-0.10.9.tgz#8a65f4cc5bf1d8f58017fff9c989325db1bfc55f"
+  integrity sha512-KCZycNLOVmywJ9mVtJBI9O2WfYeu2cZIfPJgY+yB4E8xlrzNSf5h/qUCOQS0AECuatoRdplefLKO8oRUBFTMkg==
+  dependencies:
+    "@types/react" "^18.0.21"
+    globby "^11.1.0"
+    typescript "^4.8.3"
+
 "@shopify/loom-cli@^1.0.0":
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/@shopify/loom-cli/-/loom-cli-1.0.2.tgz#69919b87e5ad5b7625addf52c6e5534a7981d9ee"

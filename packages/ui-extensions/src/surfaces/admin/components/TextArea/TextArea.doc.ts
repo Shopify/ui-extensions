@@ -1,0 +1,42 @@
+import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
+const data: ReferenceEntityTemplateSchema = {
+  name: 'TextArea',
+  description:
+    'This component is perfect when you need to allow users to input larger amounts of text, such as for comments, feedback, or any other multi-line input.',
+  requires: '',
+  thumbnail: 'textarea-thumbnail.png',
+  isVisualComponent: true,
+  type: '',
+  definitions: [
+    {
+      title: 'TextAreaProps',
+      description: '',
+      type: 'TextAreaProps',
+    },
+  ],
+  category: 'Components',
+  subCategory: 'Forms',
+  defaultExample: {
+    image: 'textarea-default.png',
+    codeblock: {
+      title: 'TODO: add example title',
+      tabs: [
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/TextArea/examples/basic-TextArea.example.tsx',
+          language: 'tsx',
+        },
+        {
+          title: 'JS',
+          code: './examples/basic-TextArea.example.ts',
+          language: 'js',
+        },
+      ],
+    },
+  },
+
+  related: [],
+};
+
+export default data;

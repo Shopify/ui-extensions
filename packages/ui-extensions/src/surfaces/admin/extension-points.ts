@@ -1,7 +1,11 @@
 import type {RenderExtension} from '../../extension';
 
 import type {AnyComponent, Components} from './shared';
-import type {StandardApi, CustomerSegmentationTemplateApi} from './api';
+import type {
+  StandardApi,
+  CustomerSegmentationTemplateApi,
+  ActionExtensionApi,
+} from './api';
 import {AnyComponentBuilder} from '../../shared';
 
 type CustomerSegmentationTemplateComponent = AnyComponentBuilder<
@@ -13,6 +17,60 @@ export interface ExtensionPoints {
   'admin.customers.segmentation-templates.render': RenderExtension<
     CustomerSegmentationTemplateApi<'admin.customers.segmentation-templates.render'>,
     CustomerSegmentationTemplateComponent
+  >;
+
+  // Blocks
+  'admin.product-details.block.render': RenderExtension<
+    StandardApi<'admin.product-details.block.render'>,
+    AnyComponent
+  >;
+  'admin.order-details.block.render': RenderExtension<
+    StandardApi<'admin.order-details.block.render'>,
+    AnyComponent
+  >;
+  'admin.customer-details.block.render': RenderExtension<
+    StandardApi<'admin.customer-details.block.render'>,
+    AnyComponent
+  >;
+
+  // Actions
+  'admin.product-details.action.render': RenderExtension<
+    ActionExtensionApi<'admin.product-details.action.render'>,
+    AnyComponent
+  >;
+  'admin.order-details.action.render': RenderExtension<
+    ActionExtensionApi<'admin.order-details.action.render'>,
+    AnyComponent
+  >;
+  'admin.customer-details.action.render': RenderExtension<
+    ActionExtensionApi<'admin.customer-details.action.render'>,
+    AnyComponent
+  >;
+  'admin.product-index.action.render': RenderExtension<
+    ActionExtensionApi<'admin.product-index.action.render'>,
+    AnyComponent
+  >;
+  'admin.order-index.action.render': RenderExtension<
+    ActionExtensionApi<'admin.order-index.action.render'>,
+    AnyComponent
+  >;
+  'admin.customer-index.action.render': RenderExtension<
+    ActionExtensionApi<'admin.customer-index.action.render'>,
+    AnyComponent
+  >;
+
+  // Bulk Actions
+  'admin.product-index.selection-action.render': RenderExtension<
+    ActionExtensionApi<'admin.product-index.selection-action.render'>,
+    AnyComponent
+  >;
+  'admin.order-index.selection-action.render': RenderExtension<
+    ActionExtensionApi<'admin.order-index.selection-action.render'>,
+    AnyComponent
+  >;
+  'admin.customer-index.selection-action.render': RenderExtension<
+    ActionExtensionApi<'admin.customer-index.selection-action.render'>,
+    AnyComponent
   >;
 }
 
