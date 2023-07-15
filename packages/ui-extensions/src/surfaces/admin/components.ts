@@ -10,6 +10,10 @@ export {Button} from './components/Button/Button';
 export type {ButtonProps} from './components/Button/Button';
 export {Checkbox} from './components/Checkbox/Checkbox';
 export type {CheckboxProps} from './components/Checkbox/Checkbox';
+export {Choice} from './components/Choice/Choice';
+export type {ChoiceProps} from './components/Choice/Choice';
+export {ChoiceList} from './components/ChoiceList/ChoiceList';
+export type {ChoiceListProps} from './components/ChoiceList/ChoiceList';
 export {CustomerSegmentationTemplate} from './components/CustomerSegmentationTemplate/CustomerSegmentationTemplate';
 export type {CustomerSegmentationTemplateProps} from './components/CustomerSegmentationTemplate/CustomerSegmentationTemplate';
 export {Divider} from './components/Divider/Divider';
@@ -34,6 +38,8 @@ export {NumberField} from './components/NumberField/NumberField';
 export type {NumberFieldProps} from './components/NumberField/NumberField';
 export {PasswordField} from './components/PasswordField/PasswordField';
 export type {PasswordFieldProps} from './components/PasswordField/PasswordField';
+export {Pressable} from './components/Pressable/Pressable';
+export type {PressableProps} from './components/Pressable/Pressable';
 export {Select} from './components/Select/Select';
 export type {
   OptionDescription,

@@ -35,7 +35,33 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'TextField',
+      subtitle: 'Use this when you need users to provide text input',
+      url: '/docs/api/admin-extensions/components/forms/textfield',
+    },
+    {
+      type: 'component',
+      name: 'NumberField',
+      subtitle: 'Use this when you need users to provide numeric input',
+      url: '/docs/api/admin-extensions/components/forms/numberfield',
+    },
+    {
+      type: 'component',
+      name: 'EmailField',
+      subtitle:
+        'Use this when you need users to provide their email addresses.',
+      url: '/docs/api/admin-extensions/components/forms/emailfield',
+    },
+    {
+      type: 'component',
+      name: 'ChoiceList',
+      subtitle: 'Use this when you need users to select from a list of options',
+      url: '/docs/api/admin-extensions/components/forms/choicelist',
+    },
+  ],
 };
 
 export default data;

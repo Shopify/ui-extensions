@@ -35,7 +35,13 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Adminaction',
+      url: '/docs/api/admin-extensions/components/other/adminaction',
+    },
+  ],
 };
 
 export default data;

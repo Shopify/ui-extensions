@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'textfield-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple TextField example',
       tabs: [
         {
           title: 'React',
@@ -36,7 +36,23 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'EmailField',
+      url: '/docs/api/admin-extensions/components/forms/emailfield',
+    },
+    {
+      type: 'component',
+      name: 'NumberField',
+      url: '/docs/api/admin-extensions/components/forms/numberfield',
+    },
+    {
+      type: 'component',
+      name: 'Form',
+      url: '/docs/api/admin-extensions/components/forms/form',
+    },
+  ],
 };
 
 export default data;

@@ -35,7 +35,18 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Pressable',
+      url: '/docs/api/admin-extensions/components/actions/pressable',
+    },
+    {
+      type: 'component',
+      name: 'Link',
+      url: '/docs/api/admin-extensions/components/actions/link',
+    },
+  ],
 };
 
 export default data;

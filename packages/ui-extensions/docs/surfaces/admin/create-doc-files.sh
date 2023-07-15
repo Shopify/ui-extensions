@@ -13,7 +13,9 @@ else
 fi
 
 # Make this an input to the script
-components_dir="./packages/ui-extensions/src/surfaces/${surface}/components"
+components_dir="src/surfaces/${surface}/components"
+# components_dir="./packages/ui-extensions/src/surfaces/${surface}/components"
+
 # components_dir="./packages/ui-extensions/src/surfaces/${surface}/api"
 
 addExamples() {

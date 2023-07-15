@@ -35,7 +35,13 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'BlockStack',
+      url: '/docs/api/admin-extensions/components/structure/BlockStack',
+    },
+  ],
 };
 
 export default data;

@@ -19,7 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'urlfield-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple URLField example',
       tabs: [
         {
           title: 'React',
@@ -34,8 +34,13 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'EmailField',
+      url: '/docs/api/admin-extensions/components/forms/emailfield',
+    },
+  ],
 };
 
 export default data;

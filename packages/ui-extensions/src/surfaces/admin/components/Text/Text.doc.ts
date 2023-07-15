@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'text-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple Text example',
       tabs: [
         {
           title: 'React',
@@ -36,7 +36,13 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Heading',
+      url: '/docs/api/admin-extensions/components/titles-and-text/heading',
+    },
+  ],
 };
 
 export default data;

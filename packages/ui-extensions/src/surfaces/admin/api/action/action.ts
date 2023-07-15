@@ -8,7 +8,7 @@ export interface ActionExtensionApi<ExtensionTarget extends AnyExtensionTarget>
   i18n: I18n;
 
   /**
-   * Closes the extension. This is only available for action extensions.
+   * Closes the extension. Calling this method is equivalent to the merchant clicking the "x" in the corner of the overlay.
    */
   close: () => void;
 }
