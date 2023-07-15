@@ -2,9 +2,9 @@
 import {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
-  title: 'Admin App Extensions',
+  title: 'Admin UI Extensions',
   description:
-    'Admin App Extensions are a way to extend the Shopify Admin experience. The extensions can be used to add new functionality to the Shopify Admin. It allows you to integrate your app into the Shopify Admin in a more meaningful way.',
+    'Admin UI Extensions are a way to extend the Shopify Admin experience. The extensions can be used to add new functionality to the Shopify Admin. It allows you to integrate your app into the Shopify Admin in a more meaningful way.',
   image: '/assets/landing-pages/templated-apis/hero.png',
   darkImage: '/assets/landing-pages/templated-apis/hero-dark.png',
   tabletImage: '/assets/landing-pages/templated-apis/hero.png',
@@ -18,7 +18,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'actionExtensions',
       title: 'Overview',
       image: 'action-extension-example.gif',
-      sectionContent: 'Extend the Shopify Admin with App Extensions.',
+      sectionContent: 'Extend the Shopify Admin with UI Extensions.',
       sectionNotice: [
         {
           title: 'Developer Preview',
