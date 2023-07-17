@@ -2,6 +2,7 @@ import {
   Banner,
   Button,
   CameraScanner,
+  DateField,
   DatePicker,
   Dialog,
   FormattedTextField,
@@ -21,6 +22,7 @@ import {
   TextArea,
   Section,
   TextField,
+  TimeField,
   TimePicker,
   Screen,
   Navigator,
@@ -30,6 +32,7 @@ export type BasicComponents =
   | typeof Banner
   | typeof Button
   | typeof CameraScanner
+  | typeof DateField
   | typeof DatePicker
   | typeof ScrollView
   | typeof Icon
@@ -49,6 +52,7 @@ export type BasicComponents =
   | typeof Text
   | typeof TextArea
   | typeof TextField
+  | typeof TimeField
   | typeof TimePicker
   | typeof Screen
   | typeof Navigator;
