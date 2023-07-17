@@ -5,6 +5,7 @@ on:
     branches:
       - 2022-10
       - 2023-01
+      - 2023-04
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
