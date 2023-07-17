@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'This component is similar to the AdminBlock, providing a deeper integration with the container your UI is rendered into. However, this only applies to Block Extensions which render inline on a resource page.',
   requires: '',
-  thumbnail: 'appblock-thumbnail.png',
+  thumbnail: 'adminblock-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   subCategory: 'Other',
   defaultExample: {
-    image: 'appblock-default.png',
+    image: 'adminblock-default.png',
     codeblock: {
       title: 'Simple AdminBlock implementation',
       tabs: [
