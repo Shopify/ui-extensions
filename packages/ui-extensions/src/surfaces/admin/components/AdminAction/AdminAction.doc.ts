@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'AdminAction is a component used by Admin Action extensions to configure a primary and secondary action and title.',
   requires: '',
-  thumbnail: 'appaction-thumbnail.png',
+  thumbnail: 'adminaction-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   subCategory: 'Other',
   defaultExample: {
-    image: 'appaction-default.png',
+    image: 'adminaction-default.png',
     codeblock: {
       title: 'Set the primary and secondary action of the Action modal.',
       tabs: [
