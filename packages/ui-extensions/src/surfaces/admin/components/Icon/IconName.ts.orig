@@ -1,0 +1,1138 @@
+<<<<<<< HEAD
+export type IconName =
+  | 'AbandonedCartFilledMajor'
+  | 'AbandonedCartMajor'
+  | 'AccessibilityMajor'
+  | 'ActivitiesMajor'
+  | 'AddCodeMajor'
+  | 'AddImageMajor'
+  | 'AddMajor'
+  | 'AddNoteMajor'
+  | 'AddProductMajor'
+  | 'AdjustMinor'
+  | 'AffiliateMajor'
+  | 'AlertMinor'
+  | 'AnalyticsBarHorizontalMinor'
+  | 'AnalyticsBarStackedMinor'
+  | 'AnalyticsCohortMinor'
+  | 'AnalyticsDonutMinor'
+  | 'AnalyticsFilledMinor'
+  | 'AnalyticsFunnelMinor'
+  | 'AnalyticsLineMinor'
+  | 'AnalyticsMajor'
+  | 'AnalyticsMinor'
+  | 'AnalyticsTableMinor'
+  | 'AnyClickModelMinor'
+  | 'AppExtensionMinor'
+  | 'AppsFilledMajor'
+  | 'AppsMajor'
+  | 'AppsMinor'
+  | 'ArchiveMajor'
+  | 'ArchiveMinor'
+  | 'ArrowDownMinor'
+  | 'ArrowLeftMinor'
+  | 'ArrowRightMinor'
+  | 'ArrowUpMinor'
+  | 'AttachmentFilledMajor'
+  | 'AttachmentMajor'
+  | 'AutomationFilledMajor'
+  | 'AutomationMajor'
+  | 'BackspaceMajor'
+  | 'BalanceFilledMajor'
+  | 'BalanceMajor'
+  | 'BankFilledMajor'
+  | 'BankMajor'
+  | 'BarcodeMajor'
+  | 'BehaviorFilledMajor'
+  | 'BehaviorMajor'
+  | 'BehaviorMinor'
+  | 'BillingStatementDollarFilledMajor'
+  | 'BillingStatementDollarMajor'
+  | 'BillingStatementEuroFilledMajor'
+  | 'BillingStatementEuroMajor'
+  | 'BillingStatementPoundFilledMajor'
+  | 'BillingStatementPoundMajor'
+  | 'BillingStatementRupeeFilledMajor'
+  | 'BillingStatementRupeeMajor'
+  | 'BillingStatementYenFilledMajor'
+  | 'BillingStatementYenMajor'
+  | 'BlockMinor'
+  | 'BlockquoteMajor'
+  | 'BlogMajor'
+  | 'BoldMajor'
+  | 'BoldMinor'
+  | 'BugMajor'
+  | 'ButtonCornerPillMajor'
+  | 'ButtonCornerRoundedMajor'
+  | 'ButtonCornerSquareMajor'
+  | 'ButtonMinor'
+  | 'BuyButtonButtonLayoutMajor'
+  | 'BuyButtonHorizontalLayoutMajor'
+  | 'BuyButtonMajor'
+  | 'BuyButtonVerticalLayoutMajor'
+  | 'CalendarMajor'
+  | 'CalendarMinor'
+  | 'CalendarTickMajor'
+  | 'CalendarTimeMinor'
+  | 'CameraMajor'
+  | 'CancelMajor'
+  | 'CancelMinor'
+  | 'CancelSmallMinor'
+  | 'CapitalFilledMajor'
+  | 'CapitalMajor'
+  | 'CapturePaymentMinor'
+  | 'CardReaderChipMajor'
+  | 'CardReaderMajor'
+  | 'CardReaderTapMajor'
+  | 'CaretDownMinor'
+  | 'CaretUpMinor'
+  | 'CartDownFilledMajor'
+  | 'CartDownMajor'
+  | 'CartFilledMajor'
+  | 'CartMajor'
+  | 'CartUpMajor'
+  | 'CashDollarFilledMajor'
+  | 'CashDollarMajor'
+  | 'CashDollarMinor'
+  | 'CashEuroMajor'
+  | 'CashPoundMajor'
+  | 'CashRupeeMajor'
+  | 'CashYenMajor'
+  | 'CategoriesMajor'
+  | 'ChannelsMajor'
+  | 'ChatMajor'
+  | 'ChecklistAlternateMajor'
+  | 'ChecklistMajor'
+  | 'CheckoutMajor'
+  | 'ChevronDownMinor'
+  | 'ChevronLeftMinor'
+  | 'ChevronRightMinor'
+  | 'ChevronUpMinor'
+  | 'CircleAlertMajor'
+  | 'CircleCancelMajor'
+  | 'CircleCancelMinor'
+  | 'CircleChevronDownMinor'
+  | 'CircleChevronLeftMinor'
+  | 'CircleChevronRightMinor'
+  | 'CircleChevronUpMinor'
+  | 'CircleDisableMinor'
+  | 'CircleDisabledMajor'
+  | 'CircleDotsMajor'
+  | 'CircleDownMajor'
+  | 'CircleInformationMajor'
+  | 'CircleLeftMajor'
+  | 'CircleMinusMajor'
+  | 'CircleMinusMinor'
+  | 'CircleMinusOutlineMinor'
+  | 'CirclePlusMajor'
+  | 'CirclePlusMinor'
+  | 'CirclePlusOutlineMinor'
+  | 'CircleRightMajor'
+  | 'CircleTickMajor'
+  | 'CircleTickMinor'
+  | 'CircleTickOutlineMinor'
+  | 'CircleUpMajor'
+  | 'ClipboardMinor'
+  | 'ClockMajor'
+  | 'ClockMinor'
+  | 'CodeMajor'
+  | 'CodeMinor'
+  | 'CollectionReferenceMinor'
+  | 'CollectionsFilledMajor'
+  | 'CollectionsMajor'
+  | 'ColorNoneMinor'
+  | 'ColorsMajor'
+  | 'Column1Major'
+  | 'ColumnWithTextMajor'
+  | 'Columns2Major'
+  | 'Columns3Major'
+  | 'Columns3Minor'
+  | 'ComposeMajor'
+  | 'ConfettiMajor'
+  | 'ConnectMinor'
+  | 'ContentFilledMinor'
+  | 'ContentMinor'
+  | 'ConversationMinor'
+  | 'CreditCardCancelMajor'
+  | 'CreditCardMajor'
+  | 'CreditCardPercentMajor'
+  | 'CreditCardSecureMajor'
+  | 'CurrencyConvertMinor'
+  | 'CustomerMinusMajor'
+  | 'CustomerPlusMajor'
+  | 'CustomersFilledMinor'
+  | 'CustomersMajor'
+  | 'CustomersMinor'
+  | 'DataDrivenModelMinor'
+  | 'DataVisualizationMajor'
+  | 'DecimalMinor'
+  | 'DeleteMajor'
+  | 'DeleteMinor'
+  | 'DesktopMajor'
+  | 'DetailedPopUpMajor'
+  | 'DiamondAlertMajor'
+  | 'DiamondAlertMinor'
+  | 'DigitalMediaReceiverMajor'
+  | 'DiscountAutomaticMajor'
+  | 'DiscountCodeMajor'
+  | 'DiscountsFilledMinor'
+  | 'DiscountsMajor'
+  | 'DiscountsMinor'
+  | 'DisputeMinor'
+  | 'DnsSettingsMajor'
+  | 'DockFloatingMajor'
+  | 'DockSideMajor'
+  | 'DomainNewMajor'
+  | 'DomainRedirectMinor'
+  | 'DomainsFilledMajor'
+  | 'DomainsMajor'
+  | 'DraftOrdersFilledMajor'
+  | 'DraftOrdersMajor'
+  | 'DragDropMajor'
+  | 'DragHandleMinor'
+  | 'DropdownMinor'
+  | 'DuplicateMinor'
+  | 'DynamicSourceMajor'
+  | 'DynamicSourceMinor'
+  | 'EditMajor'
+  | 'EditMinor'
+  | 'EmailMajor'
+  | 'EmailNewsletterMajor'
+  | 'EmbedMinor'
+  | 'EnableSelectionMinor'
+  | 'EnterMajor'
+  | 'EnvelopeMajor'
+  | 'ExchangeMajor'
+  | 'ExistingInventoryMajor'
+  | 'ExitMajor'
+  | 'ExploreImagesMajor'
+  | 'ExportMinor'
+  | 'ExtendMajor'
+  | 'ExtendMinor'
+  | 'ExternalMinor'
+  | 'ExternalSmallMinor'
+  | 'EyeDropperMinor'
+  | 'FaviconMajor'
+  | 'FavoriteMajor'
+  | 'FeaturedCollectionMajor'
+  | 'FeaturedContentMajor'
+  | 'FileFilledMinor'
+  | 'FileMinor'
+  | 'FilterMajor'
+  | 'FilterMinor'
+  | 'FinancesMajor'
+  | 'FinancesMinor'
+  | 'FirstClickModelMinor'
+  | 'FirstOrderMajor'
+  | 'FirstVisitMajor'
+  | 'FlagMajor'
+  | 'FlipCameraMajor'
+  | 'FolderDownMajor'
+  | 'FolderMajor'
+  | 'FolderMinusMajor'
+  | 'FolderPlusMajor'
+  | 'FolderUpMajor'
+  | 'FollowUpEmailMajor'
+  | 'FoodMajor'
+  | 'FooterMajor'
+  | 'FormsMajor'
+  | 'FraudProtectMajor'
+  | 'FraudProtectMinor'
+  | 'FraudProtectPendingMajor'
+  | 'FraudProtectPendingMinor'
+  | 'FraudProtectUnprotectedMajor'
+  | 'FraudProtectUnprotectedMinor'
+  | 'FulfillmentFulfilledMajor'
+  | 'FulfillmentOnHoldMajor'
+  | 'GamesConsoleMajor'
+  | 'GaugeMajor'
+  | 'GaugeMinor'
+  | 'GiftCardFilledMinor'
+  | 'GiftCardMajor'
+  | 'GiftCardMinor'
+  | 'GlobeMajor'
+  | 'GlobeMinor'
+  | 'GrammarMajor'
+  | 'HashtagMajor'
+  | 'HashtagMinor'
+  | 'HeaderMajor'
+  | 'HeartMajor'
+  | 'HideKeyboardMajor'
+  | 'HideMinor'
+  | 'HintMajor'
+  | 'HomeFilledMinor'
+  | 'HomeMajor'
+  | 'HomeMinor'
+  | 'HorizontalDotsMinor'
+  | 'IconNameSet'
+  | 'IconsFilledMajor'
+  | 'IconsMajor'
+  | 'IdentityCardFilledMajor'
+  | 'IdentityCardMajor'
+  | 'IllustrationMajor'
+  | 'ImageAltMajor'
+  | 'ImageAltMinor'
+  | 'ImageMajor'
+  | 'ImageWithTextMajor'
+  | 'ImageWithTextOverlayMajor'
+  | 'ImagesMajor'
+  | 'ImportMinor'
+  | 'ImportStoreMajor'
+  | 'InactiveLocationMajor'
+  | 'InactiveLocationMinor'
+  | 'IncomingMajor'
+  | 'IndentMajor'
+  | 'IndentMinor'
+  | 'InfoMinor'
+  | 'InsertDynamicSourceMajor'
+  | 'InsertDynamicSourceMinor'
+  | 'InstallMinor'
+  | 'InventoryFilledMajor'
+  | 'InventoryMajor'
+  | 'InviteMinor'
+  | 'IqMajor'
+  | 'ItalicMajor'
+  | 'ItalicMinor'
+  | 'JobsFilledMajor'
+  | 'JobsMajor'
+  | 'KeyMajor'
+  | 'KeyboardMajor'
+  | 'KeyboardMinor'
+  | 'LabelPrinterMajor'
+  | 'LandingPageMajor'
+  | 'LanguageFilledMinor'
+  | 'LanguageMinor'
+  | 'LastClickModelMinor'
+  | 'LastNonDirectClickModelMinor'
+  | 'LegalFilledMajor'
+  | 'LegalMajor'
+  | 'LinearModelMinor'
+  | 'LinkMinor'
+  | 'ListFilledMajor'
+  | 'ListMajor'
+  | 'ListMinor'
+  | 'LiveViewFilledMajor'
+  | 'LiveViewMajor'
+  | 'LocationFilledMajor'
+  | 'LocationMajor'
+  | 'LocationsMinor'
+  | 'LockFilledMajor'
+  | 'LockMajor'
+  | 'LockMinor'
+  | 'LogOutMinor'
+  | 'LogoBlockMajor'
+  | 'MagicMajor'
+  | 'MagicMinor'
+  | 'ManagedStoreMajor'
+  | 'MarkFulfilledMinor'
+  | 'MarkPaidMinor'
+  | 'MarketingFilledMinor'
+  | 'MarketingMajor'
+  | 'MarketingMinor'
+  | 'MarketsFilledMajor'
+  | 'MarketsMajor'
+  | 'MaximizeMajor'
+  | 'MaximizeMinor'
+  | 'MeasurementMinor'
+  | 'MentionMajor'
+  | 'MergeMinor'
+  | 'MetafieldsFilledMinor'
+  | 'MetafieldsMajor'
+  | 'MetafieldsMinor'
+  | 'MetaobjectMinor'
+  | 'MetaobjectReferenceMinor'
+  | 'MicrophoneMajor'
+  | 'MinimizeMajor'
+  | 'MinimizeMinor'
+  | 'MinusMajor'
+  | 'MinusMinor'
+  | 'MobileAcceptMajor'
+  | 'MobileBackArrowMajor'
+  | 'MobileCancelMajor'
+  | 'MobileChevronMajor'
+  | 'MobileHamburgerMajor'
+  | 'MobileHorizontalDotsMajor'
+  | 'MobileMajor'
+  | 'MobilePlusMajor'
+  | 'MobileVerticalDotsMajor'
+  | 'MonerisMajor'
+  | 'MoneyFilledMinor'
+  | 'MoneyMinor'
+  | 'NatureMajor'
+  | 'NavigationMajor'
+  | 'NoteMajor'
+  | 'NoteMinor'
+  | 'NotificationFilledMajor'
+  | 'NotificationMajor'
+  | 'OnlineStoreMajor'
+  | 'OnlineStoreMinor'
+  | 'OrderStatusMinor'
+  | 'OrderedListMajor'
+  | 'OrderedListMinor'
+  | 'OrdersFilledMinor'
+  | 'OrdersMajor'
+  | 'OrdersMinor'
+  | 'OrganizationMajor'
+  | 'OutdentMajor'
+  | 'OutdentMinor'
+  | 'OutgoingMajor'
+  | 'PackageFilledMajor'
+  | 'PackageMajor'
+  | 'PageDownMajor'
+  | 'PageMajor'
+  | 'PageMinusMajor'
+  | 'PagePlusMajor'
+  | 'PageReferenceMinor'
+  | 'PageUpMajor'
+  | 'PaginationEndMinor'
+  | 'PaginationStartMinor'
+  | 'PaintBrushMajor'
+  | 'PaperCheckMajor'
+  | 'PaperCheckMinor'
+  | 'PasskeyFilledMinor'
+  | 'PasskeyMajor'
+  | 'PasskeyMinor'
+  | 'PauseCircleMajor'
+  | 'PauseMajor'
+  | 'PauseMinor'
+  | 'PaymentsFilledMajor'
+  | 'PaymentsMajor'
+  | 'PersonalizedTextMajor'
+  | 'PhoneInMajor'
+  | 'PhoneMajor'
+  | 'PhoneOutMajor'
+  | 'PinMajor'
+  | 'PinMinor'
+  | 'PinUnfilledMajor'
+  | 'PinUnfilledMinor'
+  | 'PlanFilledMinor'
+  | 'PlanMajor'
+  | 'PlanMinor'
+  | 'PlayCircleMajor'
+  | 'PlayMajor'
+  | 'PlayMinor'
+  | 'PlusMinor'
+  | 'PointOfSaleMajor'
+  | 'PopularMajor'
+  | 'PositionBasedModelMinor'
+  | 'PriceLookupMinor'
+  | 'PrintMajor'
+  | 'PrintMinor'
+  | 'ProductCostMajor'
+  | 'ProductReferenceMinor'
+  | 'ProductReturnsMinor'
+  | 'ProductsFilledMinor'
+  | 'ProductsMajor'
+  | 'ProductsMinor'
+  | 'ProfileMajor'
+  | 'ProfileMinor'
+  | 'PromoteFilledMinor'
+  | 'PromoteMinor'
+  | 'QuestionMarkInverseMajor'
+  | 'QuestionMarkInverseMinor'
+  | 'QuestionMarkMajor'
+  | 'QuestionMarkMinor'
+  | 'QuickSaleMajor'
+  | 'ReadTimeMinor'
+  | 'ReceiptMajor'
+  | 'RecentSearchesMajor'
+  | 'RedoMajor'
+  | 'ReferralCodeMajor'
+  | 'ReferralMajor'
+  | 'RefreshMajor'
+  | 'RefreshMinor'
+  | 'RefundMajor'
+  | 'RefundMinor'
+  | 'RemoveProductMajor'
+  | 'RepeatOrderMajor'
+  | 'ReplaceMajor'
+  | 'ReplayMinor'
+  | 'ReportFilledMinor'
+  | 'ReportMinor'
+  | 'ReportsMajor'
+  | 'ResetMinor'
+  | 'ResourcesMajor'
+  | 'ReturnMinor'
+  | 'ReturnsMajor'
+  | 'RichTextMinor'
+  | 'RiskMajor'
+  | 'RiskMinor'
+  | 'Rows2Major'
+  | 'SandboxMajor'
+  | 'SaveMinor'
+  | 'SearchMajor'
+  | 'SearchMinor'
+  | 'SectionMajor'
+  | 'SecureMajor'
+  | 'SelectMinor'
+  | 'SendMajor'
+  | 'SettingsFilledMinor'
+  | 'SettingsMajor'
+  | 'SettingsMinor'
+  | 'ShareIosMinor'
+  | 'ShareMinor'
+  | 'ShipmentFilledMajor'
+  | 'ShipmentMajor'
+  | 'ShopcodesMajor'
+  | 'SidebarLeftMajor'
+  | 'SidebarRightMajor'
+  | 'SimplifyMajor'
+  | 'SimplifyMinor'
+  | 'SlideshowMajor'
+  | 'SmileyHappyMajor'
+  | 'SmileyJoyMajor'
+  | 'SmileyNeutralMajor'
+  | 'SmileySadMajor'
+  | 'SocialAdMajor'
+  | 'SocialPostMajor'
+  | 'SoftPackMajor'
+  | 'SortAscendingMajor'
+  | 'SortDescendingMajor'
+  | 'SortMinor'
+  | 'SoundMajor'
+  | 'StarFilledMinor'
+  | 'StarOutlineMinor'
+  | 'StatusActiveMajor'
+  | 'StopMajor'
+  | 'StoreDetailsFilledMinor'
+  | 'StoreDetailsMinor'
+  | 'StoreFilledMinor'
+  | 'StoreMajor'
+  | 'StoreMinor'
+  | 'StoreStatusMajor'
+  | 'TabletMajor'
+  | 'TapChipMajor'
+  | 'TaxFilledMajor'
+  | 'TaxMajor'
+  | 'TeamMajor'
+  | 'TemplateMajor'
+  | 'TemplateMinor'
+  | 'TextAlignmentCenterMajor'
+  | 'TextAlignmentLeftMajor'
+  | 'TextAlignmentRightMajor'
+  | 'TextBlockMajor'
+  | 'TextColorMajor'
+  | 'TextColorMinor'
+  | 'TextMajor'
+  | 'ThemeEditMajor'
+  | 'ThemeStoreMajor'
+  | 'ThemesMajor'
+  | 'ThumbsDownMajor'
+  | 'ThumbsDownMinor'
+  | 'ThumbsUpMajor'
+  | 'ThumbsUpMinor'
+  | 'TickMinor'
+  | 'TickSmallMinor'
+  | 'TimeDecayModelMinor'
+  | 'TimelineAttachmentMajor'
+  | 'TipsMajor'
+  | 'TitleMinor'
+  | 'ToggleMinor'
+  | 'ToolsMajor'
+  | 'TransactionFeeDollarMajor'
+  | 'TransactionFeeEuroMajor'
+  | 'TransactionFeePoundMajor'
+  | 'TransactionFeeRupeeMajor'
+  | 'TransactionFeeYenMajor'
+  | 'TransactionMajor'
+  | 'TransferFilledMajor'
+  | 'TransferInMajor'
+  | 'TransferMajor'
+  | 'TransferOutMajor'
+  | 'TransferWithinShopifyMajor'
+  | 'TransportMajor'
+  | 'TroubleshootMajor'
+  | 'TypeMajor'
+  | 'TypeMinor'
+  | 'UnderlineMajor'
+  | 'UnderlineMinor'
+  | 'UndoMajor'
+  | 'UnfulfilledMajor'
+  | 'UnknownDeviceMajor'
+  | 'UpdateInventoryMajor'
+  | 'UploadMajor'
+  | 'VariantMajor'
+  | 'ViewMajor'
+  | 'ViewMinor'
+  | 'ViewportNarrowMajor'
+  | 'ViewportShortMajor'
+  | 'ViewportTallMajor'
+  | 'ViewportWideMajor'
+  | 'VocabularyMajor'
+  | 'VolumeMinor'
+  | 'WandMajor'
+  | 'WandMinor'
+  | 'WearableMajor'
+  | 'WeightMinor'
+  | 'WholesaleMajor'
+  | 'WifiMajor';
+=======
+export enum IconName {
+  AbandonedCartFilledMajor = 'AbandonedCartFilledMajor',
+  AbandonedCartMajor = 'AbandonedCartMajor',
+  AccessibilityMajor = 'AccessibilityMajor',
+  ActivitiesMajor = 'ActivitiesMajor',
+  AddCodeMajor = 'AddCodeMajor',
+  AddImageMajor = 'AddImageMajor',
+  AddMajor = 'AddMajor',
+  AddNoteMajor = 'AddNoteMajor',
+  AddProductMajor = 'AddProductMajor',
+  AdjustMinor = 'AdjustMinor',
+  AffiliateMajor = 'AffiliateMajor',
+  AlertMinor = 'AlertMinor',
+  AnalyticsBarHorizontalMinor = 'AnalyticsBarHorizontalMinor',
+  AnalyticsBarStackedMinor = 'AnalyticsBarStackedMinor',
+  AnalyticsCohortMinor = 'AnalyticsCohortMinor',
+  AnalyticsDonutMinor = 'AnalyticsDonutMinor',
+  AnalyticsFilledMinor = 'AnalyticsFilledMinor',
+  AnalyticsFunnelMinor = 'AnalyticsFunnelMinor',
+  AnalyticsLineMinor = 'AnalyticsLineMinor',
+  AnalyticsMajor = 'AnalyticsMajor',
+  AnalyticsMinor = 'AnalyticsMinor',
+  AnalyticsTableMinor = 'AnalyticsTableMinor',
+  AnyClickModelMinor = 'AnyClickModelMinor',
+  AppExtensionMinor = 'AppExtensionMinor',
+  AppsFilledMajor = 'AppsFilledMajor',
+  AppsMajor = 'AppsMajor',
+  AppsMinor = 'AppsMinor',
+  ArchiveMajor = 'ArchiveMajor',
+  ArchiveMinor = 'ArchiveMinor',
+  ArrowDownMinor = 'ArrowDownMinor',
+  ArrowLeftMinor = 'ArrowLeftMinor',
+  ArrowRightMinor = 'ArrowRightMinor',
+  ArrowUpMinor = 'ArrowUpMinor',
+  AttachmentFilledMajor = 'AttachmentFilledMajor',
+  AttachmentMajor = 'AttachmentMajor',
+  AutomationFilledMajor = 'AutomationFilledMajor',
+  AutomationMajor = 'AutomationMajor',
+  BackspaceMajor = 'BackspaceMajor',
+  BalanceFilledMajor = 'BalanceFilledMajor',
+  BalanceMajor = 'BalanceMajor',
+  BankFilledMajor = 'BankFilledMajor',
+  BankMajor = 'BankMajor',
+  BarcodeMajor = 'BarcodeMajor',
+  BehaviorFilledMajor = 'BehaviorFilledMajor',
+  BehaviorMajor = 'BehaviorMajor',
+  BehaviorMinor = 'BehaviorMinor',
+  BillingStatementDollarFilledMajor = 'BillingStatementDollarFilledMajor',
+  BillingStatementDollarMajor = 'BillingStatementDollarMajor',
+  BillingStatementEuroFilledMajor = 'BillingStatementEuroFilledMajor',
+  BillingStatementEuroMajor = 'BillingStatementEuroMajor',
+  BillingStatementPoundFilledMajor = 'BillingStatementPoundFilledMajor',
+  BillingStatementPoundMajor = 'BillingStatementPoundMajor',
+  BillingStatementRupeeFilledMajor = 'BillingStatementRupeeFilledMajor',
+  BillingStatementRupeeMajor = 'BillingStatementRupeeMajor',
+  BillingStatementYenFilledMajor = 'BillingStatementYenFilledMajor',
+  BillingStatementYenMajor = 'BillingStatementYenMajor',
+  BlockMinor = 'BlockMinor',
+  BlockquoteMajor = 'BlockquoteMajor',
+  BlogMajor = 'BlogMajor',
+  BoldMajor = 'BoldMajor',
+  BoldMinor = 'BoldMinor',
+  BugMajor = 'BugMajor',
+  ButtonCornerPillMajor = 'ButtonCornerPillMajor',
+  ButtonCornerRoundedMajor = 'ButtonCornerRoundedMajor',
+  ButtonCornerSquareMajor = 'ButtonCornerSquareMajor',
+  ButtonMinor = 'ButtonMinor',
+  BuyButtonButtonLayoutMajor = 'BuyButtonButtonLayoutMajor',
+  BuyButtonHorizontalLayoutMajor = 'BuyButtonHorizontalLayoutMajor',
+  BuyButtonMajor = 'BuyButtonMajor',
+  BuyButtonVerticalLayoutMajor = 'BuyButtonVerticalLayoutMajor',
+  CalendarMajor = 'CalendarMajor',
+  CalendarMinor = 'CalendarMinor',
+  CalendarTickMajor = 'CalendarTickMajor',
+  CalendarTimeMinor = 'CalendarTimeMinor',
+  CameraMajor = 'CameraMajor',
+  CancelMajor = 'CancelMajor',
+  CancelMinor = 'CancelMinor',
+  CancelSmallMinor = 'CancelSmallMinor',
+  CapitalFilledMajor = 'CapitalFilledMajor',
+  CapitalMajor = 'CapitalMajor',
+  CapturePaymentMinor = 'CapturePaymentMinor',
+  CardReaderChipMajor = 'CardReaderChipMajor',
+  CardReaderMajor = 'CardReaderMajor',
+  CardReaderTapMajor = 'CardReaderTapMajor',
+  CaretDownMinor = 'CaretDownMinor',
+  CaretUpMinor = 'CaretUpMinor',
+  CartDownFilledMajor = 'CartDownFilledMajor',
+  CartDownMajor = 'CartDownMajor',
+  CartFilledMajor = 'CartFilledMajor',
+  CartMajor = 'CartMajor',
+  CartUpMajor = 'CartUpMajor',
+  CashDollarFilledMajor = 'CashDollarFilledMajor',
+  CashDollarMajor = 'CashDollarMajor',
+  CashDollarMinor = 'CashDollarMinor',
+  CashEuroMajor = 'CashEuroMajor',
+  CashPoundMajor = 'CashPoundMajor',
+  CashRupeeMajor = 'CashRupeeMajor',
+  CashYenMajor = 'CashYenMajor',
+  CategoriesMajor = 'CategoriesMajor',
+  ChannelsMajor = 'ChannelsMajor',
+  ChatMajor = 'ChatMajor',
+  ChecklistAlternateMajor = 'ChecklistAlternateMajor',
+  ChecklistMajor = 'ChecklistMajor',
+  CheckoutMajor = 'CheckoutMajor',
+  ChevronDownMinor = 'ChevronDownMinor',
+  ChevronLeftMinor = 'ChevronLeftMinor',
+  ChevronRightMinor = 'ChevronRightMinor',
+  ChevronUpMinor = 'ChevronUpMinor',
+  CircleAlertMajor = 'CircleAlertMajor',
+  CircleCancelMajor = 'CircleCancelMajor',
+  CircleCancelMinor = 'CircleCancelMinor',
+  CircleChevronDownMinor = 'CircleChevronDownMinor',
+  CircleChevronLeftMinor = 'CircleChevronLeftMinor',
+  CircleChevronRightMinor = 'CircleChevronRightMinor',
+  CircleChevronUpMinor = 'CircleChevronUpMinor',
+  CircleDisableMinor = 'CircleDisableMinor',
+  CircleDisabledMajor = 'CircleDisabledMajor',
+  CircleDotsMajor = 'CircleDotsMajor',
+  CircleDownMajor = 'CircleDownMajor',
+  CircleInformationMajor = 'CircleInformationMajor',
+  CircleLeftMajor = 'CircleLeftMajor',
+  CircleMinusMajor = 'CircleMinusMajor',
+  CircleMinusMinor = 'CircleMinusMinor',
+  CircleMinusOutlineMinor = 'CircleMinusOutlineMinor',
+  CirclePlusMajor = 'CirclePlusMajor',
+  CirclePlusMinor = 'CirclePlusMinor',
+  CirclePlusOutlineMinor = 'CirclePlusOutlineMinor',
+  CircleRightMajor = 'CircleRightMajor',
+  CircleTickMajor = 'CircleTickMajor',
+  CircleTickMinor = 'CircleTickMinor',
+  CircleTickOutlineMinor = 'CircleTickOutlineMinor',
+  CircleUpMajor = 'CircleUpMajor',
+  ClipboardMinor = 'ClipboardMinor',
+  ClockMajor = 'ClockMajor',
+  ClockMinor = 'ClockMinor',
+  CodeMajor = 'CodeMajor',
+  CodeMinor = 'CodeMinor',
+  CollectionReferenceMinor = 'CollectionReferenceMinor',
+  CollectionsFilledMajor = 'CollectionsFilledMajor',
+  CollectionsMajor = 'CollectionsMajor',
+  ColorNoneMinor = 'ColorNoneMinor',
+  ColorsMajor = 'ColorsMajor',
+  Column1Major = 'Column1Major',
+  ColumnWithTextMajor = 'ColumnWithTextMajor',
+  Columns2Major = 'Columns2Major',
+  Columns3Major = 'Columns3Major',
+  Columns3Minor = 'Columns3Minor',
+  ComposeMajor = 'ComposeMajor',
+  ConfettiMajor = 'ConfettiMajor',
+  ConnectMinor = 'ConnectMinor',
+  ContentFilledMinor = 'ContentFilledMinor',
+  ContentMinor = 'ContentMinor',
+  ConversationMinor = 'ConversationMinor',
+  CreditCardCancelMajor = 'CreditCardCancelMajor',
+  CreditCardMajor = 'CreditCardMajor',
+  CreditCardPercentMajor = 'CreditCardPercentMajor',
+  CreditCardSecureMajor = 'CreditCardSecureMajor',
+  CurrencyConvertMinor = 'CurrencyConvertMinor',
+  CustomerMinusMajor = 'CustomerMinusMajor',
+  CustomerPlusMajor = 'CustomerPlusMajor',
+  CustomersFilledMinor = 'CustomersFilledMinor',
+  CustomersMajor = 'CustomersMajor',
+  CustomersMinor = 'CustomersMinor',
+  DataDrivenModelMinor = 'DataDrivenModelMinor',
+  DataVisualizationMajor = 'DataVisualizationMajor',
+  DecimalMinor = 'DecimalMinor',
+  DeleteMajor = 'DeleteMajor',
+  DeleteMinor = 'DeleteMinor',
+  DesktopMajor = 'DesktopMajor',
+  DetailedPopUpMajor = 'DetailedPopUpMajor',
+  DiamondAlertMajor = 'DiamondAlertMajor',
+  DiamondAlertMinor = 'DiamondAlertMinor',
+  DigitalMediaReceiverMajor = 'DigitalMediaReceiverMajor',
+  DiscountAutomaticMajor = 'DiscountAutomaticMajor',
+  DiscountCodeMajor = 'DiscountCodeMajor',
+  DiscountsFilledMinor = 'DiscountsFilledMinor',
+  DiscountsMajor = 'DiscountsMajor',
+  DiscountsMinor = 'DiscountsMinor',
+  DisputeMinor = 'DisputeMinor',
+  DnsSettingsMajor = 'DnsSettingsMajor',
+  DockFloatingMajor = 'DockFloatingMajor',
+  DockSideMajor = 'DockSideMajor',
+  DomainNewMajor = 'DomainNewMajor',
+  DomainRedirectMinor = 'DomainRedirectMinor',
+  DomainsFilledMajor = 'DomainsFilledMajor',
+  DomainsMajor = 'DomainsMajor',
+  DraftOrdersFilledMajor = 'DraftOrdersFilledMajor',
+  DraftOrdersMajor = 'DraftOrdersMajor',
+  DragDropMajor = 'DragDropMajor',
+  DragHandleMinor = 'DragHandleMinor',
+  DropdownMinor = 'DropdownMinor',
+  DuplicateMinor = 'DuplicateMinor',
+  DynamicSourceMajor = 'DynamicSourceMajor',
+  DynamicSourceMinor = 'DynamicSourceMinor',
+  EditMajor = 'EditMajor',
+  EditMinor = 'EditMinor',
+  EmailMajor = 'EmailMajor',
+  EmailNewsletterMajor = 'EmailNewsletterMajor',
+  EmbedMinor = 'EmbedMinor',
+  EnableSelectionMinor = 'EnableSelectionMinor',
+  EnterMajor = 'EnterMajor',
+  EnvelopeMajor = 'EnvelopeMajor',
+  ExchangeMajor = 'ExchangeMajor',
+  ExistingInventoryMajor = 'ExistingInventoryMajor',
+  ExitMajor = 'ExitMajor',
+  ExploreImagesMajor = 'ExploreImagesMajor',
+  ExportMinor = 'ExportMinor',
+  ExtendMajor = 'ExtendMajor',
+  ExtendMinor = 'ExtendMinor',
+  ExternalMinor = 'ExternalMinor',
+  ExternalSmallMinor = 'ExternalSmallMinor',
+  EyeDropperMinor = 'EyeDropperMinor',
+  FaviconMajor = 'FaviconMajor',
+  FavoriteMajor = 'FavoriteMajor',
+  FeaturedCollectionMajor = 'FeaturedCollectionMajor',
+  FeaturedContentMajor = 'FeaturedContentMajor',
+  FileFilledMinor = 'FileFilledMinor',
+  FileMinor = 'FileMinor',
+  FilterMajor = 'FilterMajor',
+  FilterMinor = 'FilterMinor',
+  FinancesMajor = 'FinancesMajor',
+  FinancesMinor = 'FinancesMinor',
+  FirstClickModelMinor = 'FirstClickModelMinor',
+  FirstOrderMajor = 'FirstOrderMajor',
+  FirstVisitMajor = 'FirstVisitMajor',
+  FlagMajor = 'FlagMajor',
+  FlipCameraMajor = 'FlipCameraMajor',
+  FolderDownMajor = 'FolderDownMajor',
+  FolderMajor = 'FolderMajor',
+  FolderMinusMajor = 'FolderMinusMajor',
+  FolderPlusMajor = 'FolderPlusMajor',
+  FolderUpMajor = 'FolderUpMajor',
+  FollowUpEmailMajor = 'FollowUpEmailMajor',
+  FoodMajor = 'FoodMajor',
+  FooterMajor = 'FooterMajor',
+  FormsMajor = 'FormsMajor',
+  FraudProtectMajor = 'FraudProtectMajor',
+  FraudProtectMinor = 'FraudProtectMinor',
+  FraudProtectPendingMajor = 'FraudProtectPendingMajor',
+  FraudProtectPendingMinor = 'FraudProtectPendingMinor',
+  FraudProtectUnprotectedMajor = 'FraudProtectUnprotectedMajor',
+  FraudProtectUnprotectedMinor = 'FraudProtectUnprotectedMinor',
+  FulfillmentFulfilledMajor = 'FulfillmentFulfilledMajor',
+  FulfillmentOnHoldMajor = 'FulfillmentOnHoldMajor',
+  GamesConsoleMajor = 'GamesConsoleMajor',
+  GaugeMajor = 'GaugeMajor',
+  GaugeMinor = 'GaugeMinor',
+  GiftCardFilledMinor = 'GiftCardFilledMinor',
+  GiftCardMajor = 'GiftCardMajor',
+  GiftCardMinor = 'GiftCardMinor',
+  GlobeMajor = 'GlobeMajor',
+  GlobeMinor = 'GlobeMinor',
+  GrammarMajor = 'GrammarMajor',
+  HashtagMajor = 'HashtagMajor',
+  HashtagMinor = 'HashtagMinor',
+  HeaderMajor = 'HeaderMajor',
+  HeartMajor = 'HeartMajor',
+  HideKeyboardMajor = 'HideKeyboardMajor',
+  HideMinor = 'HideMinor',
+  HintMajor = 'HintMajor',
+  HomeFilledMinor = 'HomeFilledMinor',
+  HomeMajor = 'HomeMajor',
+  HomeMinor = 'HomeMinor',
+  HorizontalDotsMinor = 'HorizontalDotsMinor',
+  IconNameSet = 'IconNameSet',
+  IconsFilledMajor = 'IconsFilledMajor',
+  IconsMajor = 'IconsMajor',
+  IdentityCardFilledMajor = 'IdentityCardFilledMajor',
+  IdentityCardMajor = 'IdentityCardMajor',
+  IllustrationMajor = 'IllustrationMajor',
+  ImageAltMajor = 'ImageAltMajor',
+  ImageAltMinor = 'ImageAltMinor',
+  ImageMajor = 'ImageMajor',
+  ImageWithTextMajor = 'ImageWithTextMajor',
+  ImageWithTextOverlayMajor = 'ImageWithTextOverlayMajor',
+  ImagesMajor = 'ImagesMajor',
+  ImportMinor = 'ImportMinor',
+  ImportStoreMajor = 'ImportStoreMajor',
+  InactiveLocationMajor = 'InactiveLocationMajor',
+  InactiveLocationMinor = 'InactiveLocationMinor',
+  IncomingMajor = 'IncomingMajor',
+  IndentMajor = 'IndentMajor',
+  IndentMinor = 'IndentMinor',
+  InfoMinor = 'InfoMinor',
+  InsertDynamicSourceMajor = 'InsertDynamicSourceMajor',
+  InsertDynamicSourceMinor = 'InsertDynamicSourceMinor',
+  InstallMinor = 'InstallMinor',
+  InventoryFilledMajor = 'InventoryFilledMajor',
+  InventoryMajor = 'InventoryMajor',
+  InviteMinor = 'InviteMinor',
+  IqMajor = 'IqMajor',
+  ItalicMajor = 'ItalicMajor',
+  ItalicMinor = 'ItalicMinor',
+  JobsFilledMajor = 'JobsFilledMajor',
+  JobsMajor = 'JobsMajor',
+  KeyMajor = 'KeyMajor',
+  KeyboardMajor = 'KeyboardMajor',
+  KeyboardMinor = 'KeyboardMinor',
+  LabelPrinterMajor = 'LabelPrinterMajor',
+  LandingPageMajor = 'LandingPageMajor',
+  LanguageFilledMinor = 'LanguageFilledMinor',
+  LanguageMinor = 'LanguageMinor',
+  LastClickModelMinor = 'LastClickModelMinor',
+  LastNonDirectClickModelMinor = 'LastNonDirectClickModelMinor',
+  LegalFilledMajor = 'LegalFilledMajor',
+  LegalMajor = 'LegalMajor',
+  LinearModelMinor = 'LinearModelMinor',
+  LinkMinor = 'LinkMinor',
+  ListFilledMajor = 'ListFilledMajor',
+  ListMajor = 'ListMajor',
+  ListMinor = 'ListMinor',
+  LiveViewFilledMajor = 'LiveViewFilledMajor',
+  LiveViewMajor = 'LiveViewMajor',
+  LocationFilledMajor = 'LocationFilledMajor',
+  LocationMajor = 'LocationMajor',
+  LocationsMinor = 'LocationsMinor',
+  LockFilledMajor = 'LockFilledMajor',
+  LockMajor = 'LockMajor',
+  LockMinor = 'LockMinor',
+  LogOutMinor = 'LogOutMinor',
+  LogoBlockMajor = 'LogoBlockMajor',
+  MagicMajor = 'MagicMajor',
+  MagicMinor = 'MagicMinor',
+  ManagedStoreMajor = 'ManagedStoreMajor',
+  MarkFulfilledMinor = 'MarkFulfilledMinor',
+  MarkPaidMinor = 'MarkPaidMinor',
+  MarketingFilledMinor = 'MarketingFilledMinor',
+  MarketingMajor = 'MarketingMajor',
+  MarketingMinor = 'MarketingMinor',
+  MarketsFilledMajor = 'MarketsFilledMajor',
+  MarketsMajor = 'MarketsMajor',
+  MaximizeMajor = 'MaximizeMajor',
+  MaximizeMinor = 'MaximizeMinor',
+  MeasurementMinor = 'MeasurementMinor',
+  MentionMajor = 'MentionMajor',
+  MergeMinor = 'MergeMinor',
+  MetafieldsFilledMinor = 'MetafieldsFilledMinor',
+  MetafieldsMajor = 'MetafieldsMajor',
+  MetafieldsMinor = 'MetafieldsMinor',
+  MetaobjectMinor = 'MetaobjectMinor',
+  MetaobjectReferenceMinor = 'MetaobjectReferenceMinor',
+  MicrophoneMajor = 'MicrophoneMajor',
+  MinimizeMajor = 'MinimizeMajor',
+  MinimizeMinor = 'MinimizeMinor',
+  MinusMajor = 'MinusMajor',
+  MinusMinor = 'MinusMinor',
+  MobileAcceptMajor = 'MobileAcceptMajor',
+  MobileBackArrowMajor = 'MobileBackArrowMajor',
+  MobileCancelMajor = 'MobileCancelMajor',
+  MobileChevronMajor = 'MobileChevronMajor',
+  MobileHamburgerMajor = 'MobileHamburgerMajor',
+  MobileHorizontalDotsMajor = 'MobileHorizontalDotsMajor',
+  MobileMajor = 'MobileMajor',
+  MobilePlusMajor = 'MobilePlusMajor',
+  MobileVerticalDotsMajor = 'MobileVerticalDotsMajor',
+  MonerisMajor = 'MonerisMajor',
+  MoneyFilledMinor = 'MoneyFilledMinor',
+  MoneyMinor = 'MoneyMinor',
+  NatureMajor = 'NatureMajor',
+  NavigationMajor = 'NavigationMajor',
+  NoteMajor = 'NoteMajor',
+  NoteMinor = 'NoteMinor',
+  NotificationFilledMajor = 'NotificationFilledMajor',
+  NotificationMajor = 'NotificationMajor',
+  OnlineStoreMajor = 'OnlineStoreMajor',
+  OnlineStoreMinor = 'OnlineStoreMinor',
+  OrderStatusMinor = 'OrderStatusMinor',
+  OrderedListMajor = 'OrderedListMajor',
+  OrderedListMinor = 'OrderedListMinor',
+  OrdersFilledMinor = 'OrdersFilledMinor',
+  OrdersMajor = 'OrdersMajor',
+  OrdersMinor = 'OrdersMinor',
+  OrganizationMajor = 'OrganizationMajor',
+  OutdentMajor = 'OutdentMajor',
+  OutdentMinor = 'OutdentMinor',
+  OutgoingMajor = 'OutgoingMajor',
+  PackageFilledMajor = 'PackageFilledMajor',
+  PackageMajor = 'PackageMajor',
+  PageDownMajor = 'PageDownMajor',
+  PageMajor = 'PageMajor',
+  PageMinusMajor = 'PageMinusMajor',
+  PagePlusMajor = 'PagePlusMajor',
+  PageReferenceMinor = 'PageReferenceMinor',
+  PageUpMajor = 'PageUpMajor',
+  PaginationEndMinor = 'PaginationEndMinor',
+  PaginationStartMinor = 'PaginationStartMinor',
+  PaintBrushMajor = 'PaintBrushMajor',
+  PaperCheckMajor = 'PaperCheckMajor',
+  PaperCheckMinor = 'PaperCheckMinor',
+  PasskeyFilledMinor = 'PasskeyFilledMinor',
+  PasskeyMajor = 'PasskeyMajor',
+  PasskeyMinor = 'PasskeyMinor',
+  PauseCircleMajor = 'PauseCircleMajor',
+  PauseMajor = 'PauseMajor',
+  PauseMinor = 'PauseMinor',
+  PaymentsFilledMajor = 'PaymentsFilledMajor',
+  PaymentsMajor = 'PaymentsMajor',
+  PersonalizedTextMajor = 'PersonalizedTextMajor',
+  PhoneInMajor = 'PhoneInMajor',
+  PhoneMajor = 'PhoneMajor',
+  PhoneOutMajor = 'PhoneOutMajor',
+  PinMajor = 'PinMajor',
+  PinMinor = 'PinMinor',
+  PinUnfilledMajor = 'PinUnfilledMajor',
+  PinUnfilledMinor = 'PinUnfilledMinor',
+  PlanFilledMinor = 'PlanFilledMinor',
+  PlanMajor = 'PlanMajor',
+  PlanMinor = 'PlanMinor',
+  PlayCircleMajor = 'PlayCircleMajor',
+  PlayMajor = 'PlayMajor',
+  PlayMinor = 'PlayMinor',
+  PlusMinor = 'PlusMinor',
+  PointOfSaleMajor = 'PointOfSaleMajor',
+  PopularMajor = 'PopularMajor',
+  PositionBasedModelMinor = 'PositionBasedModelMinor',
+  PriceLookupMinor = 'PriceLookupMinor',
+  PrintMajor = 'PrintMajor',
+  PrintMinor = 'PrintMinor',
+  ProductCostMajor = 'ProductCostMajor',
+  ProductReferenceMinor = 'ProductReferenceMinor',
+  ProductReturnsMinor = 'ProductReturnsMinor',
+  ProductsFilledMinor = 'ProductsFilledMinor',
+  ProductsMajor = 'ProductsMajor',
+  ProductsMinor = 'ProductsMinor',
+  ProfileMajor = 'ProfileMajor',
+  ProfileMinor = 'ProfileMinor',
+  PromoteFilledMinor = 'PromoteFilledMinor',
+  PromoteMinor = 'PromoteMinor',
+  QuestionMarkInverseMajor = 'QuestionMarkInverseMajor',
+  QuestionMarkInverseMinor = 'QuestionMarkInverseMinor',
+  QuestionMarkMajor = 'QuestionMarkMajor',
+  QuestionMarkMinor = 'QuestionMarkMinor',
+  QuickSaleMajor = 'QuickSaleMajor',
+  ReadTimeMinor = 'ReadTimeMinor',
+  ReceiptMajor = 'ReceiptMajor',
+  RecentSearchesMajor = 'RecentSearchesMajor',
+  RedoMajor = 'RedoMajor',
+  ReferralCodeMajor = 'ReferralCodeMajor',
+  ReferralMajor = 'ReferralMajor',
+  RefreshMajor = 'RefreshMajor',
+  RefreshMinor = 'RefreshMinor',
+  RefundMajor = 'RefundMajor',
+  RefundMinor = 'RefundMinor',
+  RemoveProductMajor = 'RemoveProductMajor',
+  RepeatOrderMajor = 'RepeatOrderMajor',
+  ReplaceMajor = 'ReplaceMajor',
+  ReplayMinor = 'ReplayMinor',
+  ReportFilledMinor = 'ReportFilledMinor',
+  ReportMinor = 'ReportMinor',
+  ReportsMajor = 'ReportsMajor',
+  ResetMinor = 'ResetMinor',
+  ResourcesMajor = 'ResourcesMajor',
+  ReturnMinor = 'ReturnMinor',
+  ReturnsMajor = 'ReturnsMajor',
+  RichTextMinor = 'RichTextMinor',
+  RiskMajor = 'RiskMajor',
+  RiskMinor = 'RiskMinor',
+  Rows2Major = 'Rows2Major',
+  SandboxMajor = 'SandboxMajor',
+  SaveMinor = 'SaveMinor',
+  SearchMajor = 'SearchMajor',
+  SearchMinor = 'SearchMinor',
+  SectionMajor = 'SectionMajor',
+  SecureMajor = 'SecureMajor',
+  SelectMinor = 'SelectMinor',
+  SendMajor = 'SendMajor',
+  SettingsFilledMinor = 'SettingsFilledMinor',
+  SettingsMajor = 'SettingsMajor',
+  SettingsMinor = 'SettingsMinor',
+  ShareIosMinor = 'ShareIosMinor',
+  ShareMinor = 'ShareMinor',
+  ShipmentFilledMajor = 'ShipmentFilledMajor',
+  ShipmentMajor = 'ShipmentMajor',
+  ShopcodesMajor = 'ShopcodesMajor',
+  SidebarLeftMajor = 'SidebarLeftMajor',
+  SidebarRightMajor = 'SidebarRightMajor',
+  SimplifyMajor = 'SimplifyMajor',
+  SimplifyMinor = 'SimplifyMinor',
+  SlideshowMajor = 'SlideshowMajor',
+  SmileyHappyMajor = 'SmileyHappyMajor',
+  SmileyJoyMajor = 'SmileyJoyMajor',
+  SmileyNeutralMajor = 'SmileyNeutralMajor',
+  SmileySadMajor = 'SmileySadMajor',
+  SocialAdMajor = 'SocialAdMajor',
+  SocialPostMajor = 'SocialPostMajor',
+  SoftPackMajor = 'SoftPackMajor',
+  SortAscendingMajor = 'SortAscendingMajor',
+  SortDescendingMajor = 'SortDescendingMajor',
+  SortMinor = 'SortMinor',
+  SoundMajor = 'SoundMajor',
+  StarFilledMinor = 'StarFilledMinor',
+  StarOutlineMinor = 'StarOutlineMinor',
+  StatusActiveMajor = 'StatusActiveMajor',
+  StopMajor = 'StopMajor',
+  StoreDetailsFilledMinor = 'StoreDetailsFilledMinor',
+  StoreDetailsMinor = 'StoreDetailsMinor',
+  StoreFilledMinor = 'StoreFilledMinor',
+  StoreMajor = 'StoreMajor',
+  StoreMinor = 'StoreMinor',
+  StoreStatusMajor = 'StoreStatusMajor',
+  TabletMajor = 'TabletMajor',
+  TapChipMajor = 'TapChipMajor',
+  TaxFilledMajor = 'TaxFilledMajor',
+  TaxMajor = 'TaxMajor',
+  TeamMajor = 'TeamMajor',
+  TemplateMajor = 'TemplateMajor',
+  TemplateMinor = 'TemplateMinor',
+  TextAlignmentCenterMajor = 'TextAlignmentCenterMajor',
+  TextAlignmentLeftMajor = 'TextAlignmentLeftMajor',
+  TextAlignmentRightMajor = 'TextAlignmentRightMajor',
+  TextBlockMajor = 'TextBlockMajor',
+  TextColorMajor = 'TextColorMajor',
+  TextColorMinor = 'TextColorMinor',
+  TextMajor = 'TextMajor',
+  ThemeEditMajor = 'ThemeEditMajor',
+  ThemeStoreMajor = 'ThemeStoreMajor',
+  ThemesMajor = 'ThemesMajor',
+  ThumbsDownMajor = 'ThumbsDownMajor',
+  ThumbsDownMinor = 'ThumbsDownMinor',
+  ThumbsUpMajor = 'ThumbsUpMajor',
+  ThumbsUpMinor = 'ThumbsUpMinor',
+  TickMinor = 'TickMinor',
+  TickSmallMinor = 'TickSmallMinor',
+  TimeDecayModelMinor = 'TimeDecayModelMinor',
+  TimelineAttachmentMajor = 'TimelineAttachmentMajor',
+  TipsMajor = 'TipsMajor',
+  TitleMinor = 'TitleMinor',
+  ToggleMinor = 'ToggleMinor',
+  ToolsMajor = 'ToolsMajor',
+  TransactionFeeDollarMajor = 'TransactionFeeDollarMajor',
+  TransactionFeeEuroMajor = 'TransactionFeeEuroMajor',
+  TransactionFeePoundMajor = 'TransactionFeePoundMajor',
+  TransactionFeeRupeeMajor = 'TransactionFeeRupeeMajor',
+  TransactionFeeYenMajor = 'TransactionFeeYenMajor',
+  TransactionMajor = 'TransactionMajor',
+  TransferFilledMajor = 'TransferFilledMajor',
+  TransferInMajor = 'TransferInMajor',
+  TransferMajor = 'TransferMajor',
+  TransferOutMajor = 'TransferOutMajor',
+  TransferWithinShopifyMajor = 'TransferWithinShopifyMajor',
+  TransportMajor = 'TransportMajor',
+  TroubleshootMajor = 'TroubleshootMajor',
+  TypeMajor = 'TypeMajor',
+  TypeMinor = 'TypeMinor',
+  UnderlineMajor = 'UnderlineMajor',
+  UnderlineMinor = 'UnderlineMinor',
+  UndoMajor = 'UndoMajor',
+  UnfulfilledMajor = 'UnfulfilledMajor',
+  UnknownDeviceMajor = 'UnknownDeviceMajor',
+  UpdateInventoryMajor = 'UpdateInventoryMajor',
+  UploadMajor = 'UploadMajor',
+  VariantMajor = 'VariantMajor',
+  ViewMajor = 'ViewMajor',
+  ViewMinor = 'ViewMinor',
+  ViewportNarrowMajor = 'ViewportNarrowMajor',
+  ViewportShortMajor = 'ViewportShortMajor',
+  ViewportTallMajor = 'ViewportTallMajor',
+  ViewportWideMajor = 'ViewportWideMajor',
+  VocabularyMajor = 'VocabularyMajor',
+  VolumeMinor = 'VolumeMinor',
+  WandMajor = 'WandMajor',
+  WandMinor = 'WandMinor',
+  WearableMajor = 'WearableMajor',
+  WeightMinor = 'WeightMinor',
+  WholesaleMajor = 'WholesaleMajor',
+  WifiMajor = 'WifiMajor',
+}
+>>>>>>> 184f64a3 (Add IconName values for Admin Icon component)
