@@ -1,6 +1,7 @@
 import {
   Banner,
   Button,
+  CameraScanner,
   DatePicker,
   Dialog,
   FormattedTextField,
@@ -17,12 +18,12 @@ import {
   Stepper,
   Badge,
   Text,
+  TextArea,
   Section,
   TextField,
   TimePicker,
   Screen,
   Navigator,
-  CameraScanner,
 } from '../components';
 
 export type BasicComponents =
@@ -46,6 +47,7 @@ export type BasicComponents =
   | typeof Stepper
   | typeof Badge
   | typeof Text
+  | typeof TextArea
   | typeof TextField
   | typeof TimePicker
   | typeof Screen
