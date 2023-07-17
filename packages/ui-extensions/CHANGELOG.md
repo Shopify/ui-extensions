@@ -1,6 +1,6 @@
 # @shopify/ui-extensions
 
-## 2022.11.0
+## 2023.4.0
 
 ### Minor Changes
 

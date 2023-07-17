@@ -1,6 +1,6 @@
 # @shopify/ui-extensions-react
 
-## 2022.11.0
+## 2023.4.0
 
 ### Minor Changes
 
@@ -47,7 +47,7 @@
 - [#1043](https://github.com/Shopify/ui-extensions/pull/1043) [`1db18001`](https://github.com/Shopify/ui-extensions/commit/1db18001ee1e3cdcc421b9078db72f498bd4991f) Thanks [@olavoasantos](https://github.com/olavoasantos)! - Add Text component to the Admin surface
 
 - Updated dependencies [[`df9ff575`](https://github.com/Shopify/ui-extensions/commit/df9ff5753e7072ba2b6b8acd0427f7f331506ba6), [`ca55a50c`](https://github.com/Shopify/ui-extensions/commit/ca55a50cc111f679c4fb4e308db257e4c22b0330), [`faaacfe3`](https://github.com/Shopify/ui-extensions/commit/faaacfe3942b9a25c45f523ab396330221f54564), [`266c13c0`](https://github.com/Shopify/ui-extensions/commit/266c13c0ab971d7c88c485c2747b753c2e05a4d1), [`d0e44415`](https://github.com/Shopify/ui-extensions/commit/d0e44415e6913b005d35ff75209bf712e7930f79), [`100cfeda`](https://github.com/Shopify/ui-extensions/commit/100cfeda331247d284add99284b244d7a5cb7d0b), [`0095a792`](https://github.com/Shopify/ui-extensions/commit/0095a792f4392b242aceccdcc0c8f1741ea22782), [`0d68e3d1`](https://github.com/Shopify/ui-extensions/commit/0d68e3d163abba8fc48030ec3b2ac287fed4340c), [`d250d7df`](https://github.com/Shopify/ui-extensions/commit/d250d7df500378b496f079292d33b6433053098c), [`2a3b4bd0`](https://github.com/Shopify/ui-extensions/commit/2a3b4bd0f8dbdf0e36530f2308ef794c71e2daf4), [`de735136`](https://github.com/Shopify/ui-extensions/commit/de735136e204b068f3654272261fb68b1943ad6e), [`35a34867`](https://github.com/Shopify/ui-extensions/commit/35a34867922fde91f84644c06d094ede0ceb0415), [`3e60fb40`](https://github.com/Shopify/ui-extensions/commit/3e60fb402fdec6c624e85d925cffa955faadf6c8), [`4e71987f`](https://github.com/Shopify/ui-extensions/commit/4e71987f1cd701e049ebfb9e4c726f2a841ce8be), [`ad9d0f75`](https://github.com/Shopify/ui-extensions/commit/ad9d0f75078c2b2f915a14789f1bc2eec2ca2885), [`3dff93ac`](https://github.com/Shopify/ui-extensions/commit/3dff93acc1eb10fa524d5985fec2ca9df49fdcdd), [`0c5b0d5b`](https://github.com/Shopify/ui-extensions/commit/0c5b0d5b623e4d6a7e8c33e821991f9bdc5c8b20), [`c4d3ef8e`](https://github.com/Shopify/ui-extensions/commit/c4d3ef8ea10b8b9bc3a688b9ed7550d717870a22), [`feaab61b`](https://github.com/Shopify/ui-extensions/commit/feaab61bfd0fb1c472133418ac7946d5dcdfc155), [`a49cfe5d`](https://github.com/Shopify/ui-extensions/commit/a49cfe5dc9609791af46f9f6170250fec30212b8), [`aad2fb79`](https://github.com/Shopify/ui-extensions/commit/aad2fb797ef8d9da4c729cdae78f67019520cecf), [`1db18001`](https://github.com/Shopify/ui-extensions/commit/1db18001ee1e3cdcc421b9078db72f498bd4991f)]:
-  - @shopify/ui-extensions@2022.11.0
+  - @shopify/ui-extensions@2023.4.0
 
 ## 2022.10.6
 
