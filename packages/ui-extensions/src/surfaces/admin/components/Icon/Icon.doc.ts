@@ -14,6 +14,11 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'IconProps',
     },
+    {
+      title: 'IconName',
+      description: 'List of available Icons for the Icon component',
+      type: 'IconName',
+    },
   ],
   category: 'Components',
   subCategory: 'Media',
