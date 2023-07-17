@@ -1,6 +1,6 @@
 import {useContext} from 'react';
 import {
-  RenderExtensionPoint,
+  RenderExtensionTarget,
   ApiForRenderExtension,
 } from '@shopify/ui-extensions/admin';
 
@@ -12,7 +12,7 @@ import {AdminUIExtensionError} from '../errors';
  * extension when it was created.
  */
 export function useApi<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionTarget = RenderExtensionTarget,
 >(): ApiForRenderExtension<ID> {
   const api = useContext(ExtensionApiContext);
 
@@ -29,7 +29,7 @@ export function useApi<
  * @deprecated you shoud be importing useApi instead
  */
 export function useExtensionApi<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  ID extends RenderExtensionTarget = RenderExtensionTarget,
 >(): ApiForRenderExtension<ID> {
   return useApi();
 }
