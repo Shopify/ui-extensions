@@ -36,7 +36,13 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'InlineStack',
+      url: '/docs/api/admin-extensions/components/structure/Stack',
+    },
+  ],
 };
 
 export default data;

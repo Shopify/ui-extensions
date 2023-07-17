@@ -17,6 +17,7 @@
     "docs:admin": "yarn workspace @shopify/ui-extensions docs:admin",
     "docs:checkout": "yarn workspace @shopify/ui-extensions docs:checkout",
     "deploy:unstable": "changeset version --snapshot unstable && changeset publish --tag unstable --no-git-tag",
+    "gen-docs:admin": "yarn workspace @shopify/ui-extensions gen-docs:admin",
     "lint": "loom lint",
     "nuke": "rm -rf node_modules && yarn cache clean && rm -rf .loom && git clean -xdf ./packages; rm -rf ./build",
     "restore-consumer": "./scripts/restore-consumer.sh",

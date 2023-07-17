@@ -35,7 +35,28 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'TextField',
+      url: '/docs/api/admin-extensions/components/forms/textfield',
+    },
+    {
+      type: 'component',
+      name: 'NumberField',
+      url: '/docs/api/admin-extensions/components/forms/numberfield',
+    },
+    {
+      type: 'component',
+      name: 'EmailField',
+      url: '/docs/api/admin-extensions/components/forms/emailfield',
+    },
+    {
+      type: 'component',
+      name: 'ChoiceList',
+      url: '/docs/api/admin-extensions/components/forms/choicelist',
+    },
+  ],
 };
 
 export default data;

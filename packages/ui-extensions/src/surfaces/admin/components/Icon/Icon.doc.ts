@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'icon-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple Icon example',
       tabs: [
         {
           title: 'React',
@@ -36,7 +36,13 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Image',
+      url: '/docs/api/admin-extensions/components/media/image',
+    },
+  ],
 };
 
 export default data;

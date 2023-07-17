@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'textarea-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple TextArea example',
       tabs: [
         {
           title: 'React',
@@ -36,7 +36,13 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'TextField',
+      url: '/docs/api/admin-extensions/components/forms/textfield',
+    },
+  ],
 };
 
 export default data;

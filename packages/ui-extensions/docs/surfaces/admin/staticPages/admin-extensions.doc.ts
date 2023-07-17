@@ -2,9 +2,9 @@
 import {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
-  title: 'Admin App Extensions',
+  title: 'Admin UI Extensions',
   description:
-    'Admin App Extensions are a way to extend the Shopify Admin experience. The extensions can be used to add new functionality to the Shopify Admin. It allows you to integrate your app into the Shopify Admin in a more meaningful way.',
+    'Admin UI Extensions are a way to extend the Shopify Admin experience. The extensions can be used to add new functionality to the Shopify Admin. It allows you to integrate your app into the Shopify Admin in a more meaningful way.',
   image: '/assets/landing-pages/templated-apis/hero.png',
   darkImage: '/assets/landing-pages/templated-apis/hero-dark.png',
   tabletImage: '/assets/landing-pages/templated-apis/hero.png',
@@ -18,7 +18,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'actionExtensions',
       title: 'Overview',
       image: 'action-extension-example.gif',
-      sectionContent: 'Extend the Shopify Admin with App Extensions.',
+      sectionContent: 'Extend the Shopify Admin with UI Extensions.',
       sectionNotice: [
         {
           title: 'Developer Preview',
@@ -108,7 +108,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'customProtocols',
       accordionContent: [
         {
-          title: 'shopify:admin',
+          title: '"shopify:admin"',
           description:
             'Use the shopify protocol when you want to construct a URL with a root of the Shopify Admin.',
           codeblock: {
@@ -131,7 +131,7 @@ const data: LandingTemplateSchema = {
           },
         },
         {
-          title: 'app:',
+          title: '"app:"',
           description:
             'Use the app protocol to construct a URL for your app. Shopify will handle constructing the base URL for your app. This works for both embedded and non-embedded apps.',
           codeblock: {
@@ -146,7 +146,7 @@ const data: LandingTemplateSchema = {
           },
         },
         {
-          title: 'extension:',
+          title: '"extension:"',
           description: 'Triggers an action extension from a block extension.',
           codeblock: {
             title: 'extension:',
@@ -160,7 +160,7 @@ const data: LandingTemplateSchema = {
           },
         },
         {
-          title: '/relative/urls',
+          title: '"/relative/urls"',
           description:
             'Relative urls are relative to the extension you are creating. This is useful when you want to link to a route within your extension.',
           codeblock: {

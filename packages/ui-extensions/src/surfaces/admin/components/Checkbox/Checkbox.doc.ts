@@ -36,7 +36,13 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'ChoiceList',
+      url: '/docs/api/admin-extensions/components/forms/choicelist',
+    },
+  ],
 };
 
 export default data;
