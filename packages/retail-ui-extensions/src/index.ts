@@ -94,6 +94,7 @@ export type {
   SectionProps,
   InputType,
   TextFieldProps,
+  NewTextFieldProps,
   ActionProps,
   InfoProps,
   SuccessProps,

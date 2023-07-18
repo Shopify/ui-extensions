@@ -47,6 +47,7 @@ export type {
   SuccessProps,
   PasswordProps,
   EmbeddedElementProps,
+  NewTextFieldProps,
   TextFieldProps,
 } from './TextField';
 

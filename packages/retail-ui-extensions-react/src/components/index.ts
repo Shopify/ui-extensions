@@ -39,7 +39,7 @@ export type {TextProps} from './Text';
 export {TextArea} from './TextArea';
 export type {TextAreaProps} from './TextArea';
 export {TextField} from './TextField';
-export type {TextFieldProps} from './TextField';
+export type {TextFieldProps, NewTextFieldProps} from './TextField';
 export {Icon} from './Icon';
 export type {IconProps} from './Icon';
 export {Tile} from './Tile';
