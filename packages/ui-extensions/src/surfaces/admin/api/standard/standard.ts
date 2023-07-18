@@ -1,4 +1,9 @@
-import type {StandardApi as BaseStandardApi, I18n} from '../../../../api';
+import type {
+  StandardApi as BaseStandardApi,
+  I18n,
+  Intents,
+  Navigation,
+} from '../../../../api';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 
 /**
@@ -13,4 +18,12 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget>
     target: ExtensionTarget;
   };
   i18n: I18n;
+  /**
+   * Provides information to the receiver the of an intent.
+   */
+  intents: Intents;
+  /**
+   * Provides methods to navigate to other features in the Admin.
+   */
+  navigation: Navigation;
 }
