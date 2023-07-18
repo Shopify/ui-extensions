@@ -13,7 +13,7 @@ import {
   Button,
   Disclosure,
   Divider,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/ui-extensions/checkout';
 
 extension('Checkout::Dynamic::Render', (root) => {
   const openIds = ['one'];

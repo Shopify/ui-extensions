@@ -1,4 +1,4 @@
-import {extension} from '@shopify/checkout-ui-extensions';
+import {extension} from '@shopify/ui-extensions/checkout';
 
 extension(
   'Checkout::PickupPoints::RenderBefore',

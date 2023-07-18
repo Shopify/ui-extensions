@@ -3,7 +3,7 @@ import {
   reactExtension,
   Banner,
   useApi,
-} from '@shopify/checkout-ui-extensions-react';
+} from '@shopify/ui-extensions-react/checkout';
 
 // You can support multiple static extension points
 reactExtension(

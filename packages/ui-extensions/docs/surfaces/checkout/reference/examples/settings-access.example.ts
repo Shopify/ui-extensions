@@ -1,7 +1,7 @@
 import {
   extension,
   Banner,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/ui-extensions/checkout';
 
 extension(
   'Checkout::Dynamic::Render',

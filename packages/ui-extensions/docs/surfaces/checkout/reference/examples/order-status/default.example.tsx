@@ -2,7 +2,7 @@ import {
   reactExtension,
   Banner,
   useOrder,
-} from '@shopify/checkout-ui-extensions-react';
+} from '@shopify/ui-extensions-react/checkout';
 
 reactExtension(
   'Checkout::OrderStatus::CustomerInformation::RenderAfter',
