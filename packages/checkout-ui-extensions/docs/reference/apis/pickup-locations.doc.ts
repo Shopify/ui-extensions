@@ -11,6 +11,8 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'The API provided to extensions rendering before and after local pickup locations.',
   description: `
+> Caution: This feature is in developer preview and is subject to change.
+
 This API object is provided to extensions registered for the \`Checkout::PickupLocations::RenderBefore\` or \`Checkout::PickupLocations::RenderAfter\` extension points.
 
 

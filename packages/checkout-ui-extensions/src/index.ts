@@ -48,6 +48,8 @@ export type {
   Attribute,
   AttributeChange,
   AttributeChangeResult,
+  AttributeChangeResultSuccess,
+  AttributeChangeResultError,
   Merchandise,
   ImageDetails,
   Product,

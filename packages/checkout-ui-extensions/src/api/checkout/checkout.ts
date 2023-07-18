@@ -339,6 +339,24 @@ export interface MetafieldRemoveChange {
   namespace: string;
 }
 
+/** Removes a cart metafield. */
+export interface MetafieldRemoveCartChange {
+  /**
+   * The type of the `MetafieldRemoveChange` API.
+   */
+  type: 'removeCartMetafield';
+
+  /**
+   * The name of the metafield to remove.
+   */
+  key: string;
+
+  /**
+   * The namespace of the metafield to remove.
+   */
+  namespace: string;
+}
+
 /**
  * Updates a metafield. If a metafield with the
  * provided key and namespace does not already exist, it gets created.
@@ -364,7 +382,39 @@ export interface MetafieldUpdateChange {
   valueType: 'integer' | 'string' | 'json_string';
 }
 
-export type MetafieldChange = MetafieldRemoveChange | MetafieldUpdateChange;
+/**
+ * Updates a cart metafield. If a metafield with the
+ * provided key and namespace does not already exist, it gets created.
+ */
+export interface MetafieldUpdateCartChange {
+  /**
+   * The type of the `MetafieldUpdateChange` API.
+   */
+  type: 'updateCartMetafield';
+
+  metafield: {
+    /** The name of the metafield to update. */
+    key: string;
+
+    /** The namespace of the metafield to add. */
+    namespace: string;
+
+    /** The new information to store in the metafield. */
+    value: string;
+
+    /**
+     * The metafield’s information type.
+     * See the [`metafields documentation`](https://shopify.dev/docs/apps/custom-data/metafields/types) for a list of supported types.
+     */
+    type: string;
+  };
+}
+
+export type MetafieldChange =
+  | MetafieldRemoveChange
+  | MetafieldUpdateChange
+  | MetafieldRemoveCartChange
+  | MetafieldUpdateCartChange;
 
 export interface MetafieldChangeResultSuccess {
   /**
@@ -397,7 +447,7 @@ export interface CheckoutApi {
    * successful, this mutation results in an update to the value retrieved
    * through the [`attributes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-applyattributechange) property.
    *
-   * > Note: This update will be ignored if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
+   * > Note: This method will return an error if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyAttributeChange(change: AttributeChange): Promise<AttributeChangeResult>;
 
@@ -408,7 +458,7 @@ export interface CheckoutApi {
    * [`lines`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-lines)
    * property.
    *
-   * > Note: This update will be ignored if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
+   * > Note: This method will return an error if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyCartLinesChange(change: CartLineChange): Promise<CartLineChangeResult>;
 
@@ -419,6 +469,8 @@ export interface CheckoutApi {
    *
    * > Caution:
    * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves discount codes through a network call.
+   *
+   * > Note: This method will return an error if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyDiscountCodeChange(
     change: DiscountCodeChange,
@@ -432,7 +484,7 @@ export interface CheckoutApi {
    * > Caution:
    * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves gift card codes through a network call.
    *
-   * > Note: This update will be ignored if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
+   * > Note: This method will return an error if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyGiftCardChange(change: GiftCardChange): Promise<GiftCardChangeResult>;
 
@@ -448,7 +500,7 @@ export interface CheckoutApi {
    * successful, this mutation results in an update to the value retrieved
    * through the [`note`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-note) property.
    *
-   * > Note: This update will be ignored if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
+   * > Note: This method will return an error if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyNoteChange(change: NoteChange): Promise<NoteChangeResult>;
 }
