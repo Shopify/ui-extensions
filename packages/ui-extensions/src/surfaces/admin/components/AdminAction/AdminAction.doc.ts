@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'AdminAction',
+  featureFlag: 'admin_extensibility',
   description:
     'AdminAction is a component used by Admin Action extensions to configure a primary and secondary action and title.',
   requires: '',

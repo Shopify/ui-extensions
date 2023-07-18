@@ -2,9 +2,10 @@
 import {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
-  title: 'Admin UI Extensions',
+  title: 'Admin UI extensions',
+  featureFlag: 'admin_extensibility',
   description:
-    'Admin UI Extensions are a way to extend the Shopify Admin experience. The extensions can be used to add new functionality to the Shopify Admin. It allows you to integrate your app into the Shopify Admin in a more meaningful way.',
+    "Admin UI extensions enable you to add your app's functionality to the Shopify Admin. It allows you to integrate your app into the Shopify Admin in a more meaningful way.",
   image: '/assets/landing-pages/templated-apis/hero.png',
   darkImage: '/assets/landing-pages/templated-apis/hero-dark.png',
   tabletImage: '/assets/landing-pages/templated-apis/hero.png',
@@ -21,10 +22,10 @@ const data: LandingTemplateSchema = {
       sectionContent: 'Extend the Shopify Admin with UI Extensions.',
       sectionNotice: [
         {
-          title: 'Developer Preview',
+          title: 'Developer preview',
           sectionContent:
-            'Please note that Admin Action Extensions and Admin Block Extensions are currently in developer preview. You can only render them while developing locally on a development store.',
-          type: 'warning',
+            'Admin UI action and block extensions are currently in developer preview. You can only render them while developing locally on a development store.',
+          type: 'beta',
         },
       ],
       sectionCard: [
@@ -37,13 +38,13 @@ const data: LandingTemplateSchema = {
         {
           subtitle: 'Component APIs',
           name: 'See all available components',
-          url: 'admin-extensions/components',
+          url: '/docs/api/admin-extensions/components',
           type: 'blocks',
         },
         {
           subtitle: 'Reference',
           name: 'View a list of available extension targets',
-          url: 'apis/extension-points',
+          url: '/docs/api/admin-extensions/apis/extension-points',
           type: 'app',
         },
         {
@@ -53,13 +54,13 @@ const data: LandingTemplateSchema = {
           type: 'tool',
         },
         {
-          subtitle: 'Custom Protocols',
-          name: 'Easily construct URLs to navigate to common localtions',
+          subtitle: 'Custom protocols',
+          name: 'Easily construct URLs to navigate to common locations',
           url: '#directAPIAccess',
           type: 'gear',
         },
         {
-          subtitle: 'UI Reference',
+          subtitle: 'UI reference',
           name: 'Figma UI Kit (coming soon)',
           url: '#',
           type: 'figma',
@@ -70,7 +71,7 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       anchorLink: 'gettingStarted',
       sectionContent:
-        'To get started, create a new app and cd into the app directory. Then generate an extension.',
+        'Scaffolding an extension for the title and Use Shopify CLI to [generate a new extension](https://shopify.dev/apps/tools/cli/commands#generate-extension) in the directory of your app.',
       title: 'Getting Started',
       codeblock: {
         title: 'Generate an extension',
@@ -99,6 +100,14 @@ const data: LandingTemplateSchema = {
           },
         ],
       },
+      sectionCard: [
+        {
+          name: 'Learn more about access scopes',
+          subtitle: 'Developer guide',
+          url: '/docs/api/usage/access-scopes',
+          type: 'information',
+        },
+      ],
     },
     {
       type: 'GenericAccordion',
@@ -108,9 +117,9 @@ const data: LandingTemplateSchema = {
       anchorLink: 'customProtocols',
       accordionContent: [
         {
-          title: '"shopify:admin"',
+          title: 'Shopify Protocol',
           description:
-            'Use the shopify protocol when you want to construct a URL with a root of the Shopify Admin.',
+            'Use the `shopify:admin` protocol when you want to construct a URL with a root of the Shopify Admin.',
           codeblock: {
             title: 'shopify:admin',
             tabs: [
@@ -131,9 +140,9 @@ const data: LandingTemplateSchema = {
           },
         },
         {
-          title: '"app:"',
+          title: 'App Protocol',
           description:
-            'Use the app protocol to construct a URL for your app. Shopify will handle constructing the base URL for your app. This works for both embedded and non-embedded apps.',
+            'Use the `app:` protocol to construct a URL for your app. Shopify will handle constructing the base URL for your app. This works for both embedded and non-embedded apps.',
           codeblock: {
             title: 'app:',
             tabs: [
@@ -146,8 +155,9 @@ const data: LandingTemplateSchema = {
           },
         },
         {
-          title: '"extension:"',
-          description: 'Triggers an action extension from a block extension.',
+          title: 'Extension Protocol',
+          description:
+            'Triggers an action extension from a block extension using the `extension:` protocol. The `extensionTarget` is the target of the action extension. The handle is the handle of the action extension that will be opened.',
           codeblock: {
             title: 'extension:',
             tabs: [
@@ -160,7 +170,7 @@ const data: LandingTemplateSchema = {
           },
         },
         {
-          title: '"/relative/urls"',
+          title: 'Relative Urls',
           description:
             'Relative urls are relative to the extension you are creating. This is useful when you want to link to a route within your extension.',
           codeblock: {

@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Pressable',
+  featureFlag: 'admin_extensibility',
   description:
     'Use this component when you need to capture click or press events on its child elements without adding any additional visual styling. It subtly enhances user interaction by changing the cursor when hovering over the child elements, providing a clear indication of interactivity.',
   requires: '',

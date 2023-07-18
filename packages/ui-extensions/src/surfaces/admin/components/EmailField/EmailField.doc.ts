@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'EmailField',
+  featureFlag: 'admin_extensibility',
   description: 'Use this when you need users to provide their email addresses.',
   requires: '',
   thumbnail: 'emailfield-thumbnail.png',

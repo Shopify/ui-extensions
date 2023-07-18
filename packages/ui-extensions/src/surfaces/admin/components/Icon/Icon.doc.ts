@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Icon',
+  featureFlag: 'admin_extensibility',
   description:
     'This component renders an icon from a predefined list. Choose the one that suits your needs.',
   requires: '',
@@ -40,8 +41,28 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-
+  subSections: [
+    {
+      type: 'Generic',
+      title: 'Available Icons',
+      anchorLink: 'availableIcons',
+      sectionContent:
+        'The available Icons are a 1:1 map of what Icons are available in Polaris. You can find the full list of Icons in the [Polaris Icons documentation](https://polaris.shopify.com/icons).',
+      sectionCard: [
+        {
+          type: 'information',
+          name: 'Polaris Icons',
+          url: 'https://polaris.shopify.com/icons',
+        },
+      ],
+    },
+  ],
   related: [
+    {
+      type: 'component',
+      name: 'Image',
+      url: '/docs/api/admin-extensions/components/media/image',
+    },
     {
       type: 'component',
       name: 'Image',

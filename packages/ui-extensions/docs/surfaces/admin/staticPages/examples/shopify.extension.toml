@@ -1,9 +1,0 @@
-name = "t:label"
-api_version = "unstable"
-
-[[extensions]]
-handle = "my-extension"
-type = "ui_extension"
-[[extensions.targeting]]
-module = "./src/BlockExtension.tsx"
-target = "admin.product-details.block.render"

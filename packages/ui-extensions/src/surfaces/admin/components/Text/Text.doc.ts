@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Text',
+  featureFlag: 'admin_extensibility',
   description:
     'This component renders text. Remember, you can also add your own styling.',
   requires: '',

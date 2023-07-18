@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'InlineStack',
+  featureFlag: 'admin_extensibility',
   description:
     "Use this to organize layout elements along the horizontal axis of the page. It's great for horizontal alignment.",
   requires: '',

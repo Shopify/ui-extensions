@@ -2,45 +2,48 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {AccessibilityRole} from '../shared';
 
 export type ImageProps = (ImageAccessibilityLabelProp | ImageAltProp) &
-  (ImageSourceProp | ImageSrcProp) & {
-    /**
-     * Sets the semantic meaning of the component’s content. When set,
-     * the role will be used by assistive technologies to help users
-     * navigate the page.
-     */
-    accessibilityRole?: Extract<AccessibilityRole, 'decorative'>;
+  (ImageSourceProp | ImageSrcProp) &
+  ImageBaseProps;
 
-    /**
-     * Defines a unique identifier which must be unique in the whole document.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
-     */
-    id?: string;
+interface ImageBaseProps {
+  /**
+   * Sets the semantic meaning of the component’s content. When set,
+   * the role will be used by assistive technologies to help users
+   * navigate the page.
+   */
+  accessibilityRole?: Extract<AccessibilityRole, 'decorative'>;
 
-    /**
-     * Determines the loading behavior of the image:
-     * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
-     * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
-     *
-     * @defaultValue `eager`
-     * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading
-     */
-    loading?: 'eager' | 'lazy';
+  /**
+   * Defines a unique identifier which must be unique in the whole document.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/id
+   */
+  id?: string;
 
-    /**
-     * Invoked when load completes successfully.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
-     */
-    onLoad?(): void;
+  /**
+   * Determines the loading behavior of the image:
+   * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
+   * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
+   *
+   * @defaultValue `eager`
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading
+   */
+  loading?: 'eager' | 'lazy';
 
-    /**
-     * Invoked on load error.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
-     */
-    onError?(): void;
-  };
+  /**
+   * Invoked when load completes successfully.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+   */
+  onLoad?(): void;
+
+  /**
+   * Invoked on load error.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+   */
+  onError?(): void;
+}
 
 interface ImageAccessibilityLabelProp {
   /**
