@@ -26,6 +26,7 @@ import {
   TimePicker,
   Screen,
   Navigator,
+  EmailField,
 } from '../components';
 
 export type BasicComponents =
@@ -34,6 +35,7 @@ export type BasicComponents =
   | typeof CameraScanner
   | typeof DateField
   | typeof DatePicker
+  | typeof EmailField
   | typeof ScrollView
   | typeof Icon
   | typeof Section

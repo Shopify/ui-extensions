@@ -106,3 +106,6 @@ export type {DateFieldProps} from './DateField';
 
 export {TimeField} from './TimeField';
 export type {TimeFieldProps} from './TimeField';
+
+export {EmailField} from './EmailField';
+export type {EmailFieldProps} from './EmailField';
