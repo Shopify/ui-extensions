@@ -1,6 +1,6 @@
 {
   "name": "@shopify/ui-extensions-react",
-  "version": "2022.10.6",
+  "version": "2023.4.0",
   "description": "React bindings for @shopify/ui-extensions",
   "publishConfig": {
     "access": "public",
@@ -45,7 +45,7 @@
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.12",
     "@remote-ui/react": "4.5.x",
-    "@shopify/ui-extensions": "2022.10.6",
+    "@shopify/ui-extensions": "2023.4.0",
     "@types/react": ">=17.0.0 <18.0.0"
   },
   "peerDependencies": {
