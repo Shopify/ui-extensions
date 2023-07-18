@@ -100,3 +100,9 @@ export type {TimePickerProps} from './TimePicker';
 
 export {TextArea} from './TextArea';
 export type {TextAreaProps} from './TextArea';
+
+export {DateField} from './DateField';
+export type {DateFieldProps} from './DateField';
+
+export {TimeField} from './TimeField';
+export type {TimeFieldProps} from './TimeField';
