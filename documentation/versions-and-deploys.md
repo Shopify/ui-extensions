@@ -29,7 +29,7 @@ The `changeset` command will then ask you for a short description of your change
 
 Commit your changeset file alongside the rest of the changes you are making — the code and changeset should be reviewed as part of the same PR.
 
-> **Note**: If your PR changes several things, consider separete changesets for each commit.
+> **Note**: If your PR changes several things, consider separate changesets for each commit.
 
 ## Deploying new versions to NPM
 
