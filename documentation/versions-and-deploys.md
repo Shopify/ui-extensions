@@ -4,8 +4,7 @@ Shopify’s UI extensions are a [versioned API](https://shopify.dev/api/usage/ve
 
 The following versions are currently supported:
 
-- `2022-10` ([branch](https://github.com/Shopify/ui-extensions/tree/2022-10), publishes versions `2022.10.x`)
-- `2023-01` ([branch](https://github.com/Shopify/ui-extensions/tree/2023-01), publishes versions `2023.1.x`)
+- `2023-04` ([branch](https://github.com/Shopify/ui-extensions/tree/2023-04), publishes versions `2023.4.x`)
 
 There is also an `unstable` API version published from the [`unstable` branch](https://github.com/Shopify/ui-extensions/tree/unstable). This version is meant to allow third parties to try out new, upcoming extension APIs, before they are released for use in production environments. This branch publishes UI extension packages using a special `0.0.0-unstable-{{TIMESTAMP}}` version number, which allows us to release it continuously as changes are made.
 
@@ -22,6 +21,7 @@ yarn changeset
 ```
 
 This command will ask you what packages you have updated, and what kind of changes you have made. Select the appropriate packages, and determine if your changes are `minor` or a `patch`.
+
 - `minor`: new features
 - `patch`: bug fixes, documentation updates, and other small changes to existing features
 
