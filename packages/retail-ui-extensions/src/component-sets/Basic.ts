@@ -27,6 +27,7 @@ import {
   Screen,
   Navigator,
   EmailField,
+  NumberField,
 } from '../components';
 
 export type BasicComponents =
@@ -44,6 +45,7 @@ export type BasicComponents =
   | typeof FormattedTextField
   | typeof Image
   | typeof List
+  | typeof NumberField
   | typeof PinPad
   | typeof RadioButtonList
   | typeof SearchBar
