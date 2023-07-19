@@ -6,6 +6,8 @@ import {
   SizingProps,
   PaddingProps,
   GapProps,
+  CrossAxisAlignment,
+  MainAxisAlignment,
 } from '../shared';
 
 export interface BlockStackProps
@@ -20,6 +22,20 @@ export interface BlockStackProps
    * provide them with more context.
    */
   accessibilityLabel?: string;
+
+  /**
+   * Position children along the main axis
+   *
+   * @defaultValue 'start'
+   */
+  inlineAlignment?: CrossAxisAlignment;
+
+  /**
+   * Position children along the cross axis
+   *
+   * @defaultValue 'start'
+   */
+  blockAlignment?: MainAxisAlignment;
 }
 
 export const BlockStack = createRemoteComponent<'BlockStack', BlockStackProps>(

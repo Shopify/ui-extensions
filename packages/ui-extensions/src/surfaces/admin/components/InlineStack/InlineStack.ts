@@ -6,6 +6,8 @@ import {
   SizingProps,
   PaddingProps,
   GapProps,
+  CrossAxisAlignment,
+  MainAxisAlignment,
 } from '../shared';
 
 export interface InlineStackProps
@@ -20,6 +22,20 @@ export interface InlineStackProps
    * provide them with more context.
    */
   accessibilityLabel?: string;
+
+  /**
+   * Position children along the main axis
+   *
+   * @defaultValue 'start'
+   */
+  inlineAlignment?: MainAxisAlignment;
+
+  /**
+   * Position children along the cross axis
+   *
+   * @defaultValue 'start'
+   */
+  blockAlignment?: CrossAxisAlignment;
 }
 
 export const InlineStack = createRemoteComponent<
