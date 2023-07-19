@@ -595,19 +595,19 @@ export interface GapProps {
 
 export type CrossAxisAlignment =
   /** Items are positioned at the beginning of the container's cross axis */
-  | 'flex-start'
+  | 'start'
   /** Items are positioned at the center of the container’s cross axis */
   | 'center'
   /**	Items are positioned at the end of the container's cross axis */
-  | 'flex-end'
+  | 'end'
   /** Items are positioned at the baseline of the container's cross axis */
   | 'baseline';
 
 export type MainAxisAlignment =
   /** Align items at the start of the container's main axis */
-  | 'flex-start'
+  | 'start'
   /** Align items to the center of the container's main axis */
-  | 'flex-center'
+  | 'center'
   /** Align items at the end of the container's main axis */
   | 'end'
   /** Distribute items evenly across the container's main axis, where the first item is flush with the start, the last is flush with the end */

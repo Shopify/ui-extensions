@@ -34,6 +34,8 @@ export {NumberField} from './components/NumberField/NumberField';
 export type {NumberFieldProps} from './components/NumberField/NumberField';
 export {PasswordField} from './components/PasswordField/PasswordField';
 export type {PasswordFieldProps} from './components/PasswordField/PasswordField';
+export {Pressable} from './components/Pressable/Pressable';
+export type {PressableProps} from './components/Pressable/Pressable';
 export {Select} from './components/Select/Select';
 export type {
   OptionDescription,
