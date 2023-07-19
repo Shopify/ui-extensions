@@ -2,8 +2,7 @@ import {extend, Image} from '@shopify/ui-extensions/admin';
 
 extend('Playground', (root) => {
   const image = root.createComponent(Image, {
-    source:
-      'https://shopify.dev/assets/api/ui-extensions/admin/components/image-example-code.png',
+    source: 'https://shopify.dev/assets/icons/64/pickaxe-1.png',
   });
 
   root.appendChild(image);

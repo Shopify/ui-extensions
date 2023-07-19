@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Button',
+  featureFlag: 'admin_extensibility',
   description:
     'Use this component when you want to provide users the ability to perform specific actions, like saving data.',
   requires: '',

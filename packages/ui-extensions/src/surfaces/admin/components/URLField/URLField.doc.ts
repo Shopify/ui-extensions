@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'URLField',
+  featureFlag: 'admin_extensibility',
   description: 'This is the right component for letting users enter a URL.',
   requires: '',
   thumbnail: 'urlfield-thumbnail.png',

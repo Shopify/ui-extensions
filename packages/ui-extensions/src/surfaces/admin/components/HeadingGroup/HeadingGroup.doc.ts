@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'HeadingGroup',
+  featureFlag: 'admin_extensibility',
   description:
     'This groups headings together, much like the hgroup element in HTML.',
   requires: '',

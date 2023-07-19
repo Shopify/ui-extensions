@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextArea',
+  featureFlag: 'admin_extensibility',
   description:
     'This component is perfect when you need to allow users to input larger amounts of text, such as for comments, feedback, or any other multi-line input.',
   requires: '',
