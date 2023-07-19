@@ -4,7 +4,7 @@ export interface DividerProps {
   /**
    * Specify the direction of the divider.
    *
-   * @defaultValue 'block'
+   * @defaultValue 'inline'
    */
   direction?: 'block' | 'inline';
 }
