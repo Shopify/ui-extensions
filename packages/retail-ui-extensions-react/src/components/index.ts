@@ -10,6 +10,8 @@ export {DatePicker} from './DatePicker';
 export type {DatePickerProps} from './DatePicker';
 export {Dialog} from './Dialog';
 export type {DialogProps} from './Dialog';
+export {EmailField} from './EmailField';
+export type {EmailFieldProps} from './EmailField';
 export {FormattedTextField} from './FormattedTextField';
 export type {FormattedTextFieldProps} from './FormattedTextField';
 export {Image} from './Image';
