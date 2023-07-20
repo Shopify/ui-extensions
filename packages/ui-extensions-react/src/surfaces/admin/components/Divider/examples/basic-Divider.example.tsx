@@ -2,17 +2,17 @@ import React from 'react';
 import {
   render,
   Divider,
-  VerticalStack,
+  BlockStack,
 } from '@shopify/ui-extensions-react/admin';
 
 render('Playground', () => <App />);
 
 function App() {
   return (
-    <VerticalStack gap="3">
+    <BlockStack gap>
       <>First text</>
       <Divider />
       <>Second Text</>
-    </VerticalStack>
+    </BlockStack>
   );
 }
