@@ -10,6 +10,7 @@ extend('admin.product-details.block.render', (root) => {
   const textField = root.createComponent(
     TextField,
     {
+      label: 'name',
       value: name,
       onChange = (value) => {
         textField.updateProps({value});
