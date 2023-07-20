@@ -5,7 +5,7 @@ import {
     BlockStack,
   } from '@shopify/ui-extensions/admin';
 
-  extend('Checkout::Dynamic::Render', (root) => {
+  extend('Playground', (root) => {
     const headingGroup = root.createComponent(BlockStack, undefined, [
       root.createComponent(Heading, undefined, 'Heading <h1>'),
       root.createComponent(HeadingGroup, undefined, [
