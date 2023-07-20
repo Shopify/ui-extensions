@@ -27,6 +27,9 @@ type ProductConfigurationComponents = AnyComponentBuilder<
     | 'Link'
     | 'Image'
     | 'Icon'
+    | 'ResourceList'
+    | 'ResourceItem'
+    | 'Thumbnail'
   >
 >;
 
