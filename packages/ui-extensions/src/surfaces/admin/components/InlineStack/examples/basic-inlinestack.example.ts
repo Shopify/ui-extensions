@@ -4,7 +4,7 @@ export default extension('Playground', (root) => {
   const inlineStack = root.createComponent(
     InlineStack,
     {
-      gap: 'base',
+      gap: true,
     },
     [
       root.createText('Child 1'),

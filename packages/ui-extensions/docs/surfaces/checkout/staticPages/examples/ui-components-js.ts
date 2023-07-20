@@ -5,7 +5,7 @@ import {
   Image,
   InlineStack,
   Text,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/ui-extensions/checkout';
 
 extension(
   'Checkout::Dynamic::Render',

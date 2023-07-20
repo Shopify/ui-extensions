@@ -9,7 +9,7 @@ export default extension(
     const blockStack = root.createComponent(
       BlockStack,
       {
-        gap: 'base',
+        gap: true,
       },
       [
         root.createText('Child 1'),

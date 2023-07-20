@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Text',
+  featureFlag: 'admin_extensibility',
   description:
     'This component renders text. Remember, you can also add your own styling.',
   requires: '',
@@ -20,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'text-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple Text example',
       tabs: [
         {
           title: 'React',
@@ -36,7 +37,13 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Heading',
+      url: '/docs/api/admin-extensions/components/titles-and-text/heading',
+    },
+  ],
 };
 
 export default data;

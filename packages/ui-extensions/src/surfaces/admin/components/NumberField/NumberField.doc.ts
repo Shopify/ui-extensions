@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'NumberField',
+  featureFlag: 'admin_extensibility',
   description:
     'This component is specifically designed for numeric data entry.',
   requires: '',
@@ -20,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'numberfield-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple NumberField example',
       tabs: [
         {
           title: 'React',
@@ -36,7 +37,13 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'TextField',
+      url: '/docs/api/admin-extensions/components/forms/textfield',
+    },
+  ],
 };
 
 export default data;

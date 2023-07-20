@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Link',
+  featureFlag: 'admin_extensibility',
   description:
     'This is an interactive component that directs users to a specified URL. It even supports custom protocols.',
   requires: '',
@@ -20,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'link-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Link to an app page',
       tabs: [
         {
           title: 'React',
@@ -39,7 +40,7 @@ const data: ReferenceEntityTemplateSchema = {
     description: '',
     examples: [
       {
-        description: 'TODO: add description',
+        description: 'Link to an external URL',
         image: 'external-link.png',
         codeblock: {
           tabs: [
@@ -54,11 +55,11 @@ const data: ReferenceEntityTemplateSchema = {
               language: 'typescript',
             },
           ],
-          title: 'TODO: add example title',
+          title: 'External Link',
         },
       },
       {
-        description: 'TODO: add description',
+        description: 'Link to a relative URL',
         image: 'relative-link.png',
         codeblock: {
           tabs: [
@@ -73,11 +74,11 @@ const data: ReferenceEntityTemplateSchema = {
               language: 'typescript',
             },
           ],
-          title: 'TODO: add example title',
+          title: 'Relative Link',
         },
       },
       {
-        description: 'TODO: add description',
+        description: 'Link to a Shopify admin page',
         image: 'shopify-section-link.png',
         codeblock: {
           tabs: [
@@ -92,12 +93,18 @@ const data: ReferenceEntityTemplateSchema = {
               language: 'typescript',
             },
           ],
-          title: 'TODO: add example title',
+          title: 'Shopify Section Link',
         },
       },
     ],
   },
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Button',
+      url: '/docs/api/admin-extensions/components/actions/button',
+    },
+  ],
 };
 
 export default data;

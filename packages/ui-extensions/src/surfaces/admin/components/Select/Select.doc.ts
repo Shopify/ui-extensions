@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Select',
+  featureFlag: 'admin_extensibility',
   description:
     'Use this when you want to give users a predefined list of options to choose from.',
   requires: '',
@@ -20,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'select-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple Select example',
       tabs: [
         {
           title: 'React',
@@ -36,7 +37,13 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'ChoiceList',
+      url: '/docs/api/admin-extensions/components/forms/choicelist',
+    },
+  ],
 };
 
 export default data;

@@ -1,4 +1,4 @@
-import {extend} from '@shopify/checkout-ui-extensions';
+import {extend} from '@shopify/ui-extensions/checkout';
 
 extend(
   'Checkout::Dynamic::Render',

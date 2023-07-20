@@ -2,10 +2,11 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'AdminAction',
+  featureFlag: 'admin_extensibility',
   description:
     'AdminAction is a component used by Admin Action extensions to configure a primary and secondary action and title.',
   requires: '',
-  thumbnail: 'appaction-thumbnail.png',
+  thumbnail: 'adminaction-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -18,7 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   subCategory: 'Other',
   defaultExample: {
-    image: 'appaction-default.png',
+    image: 'adminaction-default.png',
     codeblock: {
       title: 'Set the primary and secondary action of the Action modal.',
       tabs: [
@@ -35,7 +36,13 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'AdminBlock',
+      url: '/docs/api/admin-extensions/components/other/adminblock',
+    },
+  ],
 };
 
 export default data;

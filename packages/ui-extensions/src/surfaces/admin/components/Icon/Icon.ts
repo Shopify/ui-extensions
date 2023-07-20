@@ -1,4 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import {IconName} from './IconName';
 
 export interface IconProps {
   /*
@@ -36,7 +37,8 @@ export interface IconProps {
   /*
    * Specifies the name of the icon that will be displayed.
    */
-  name: string;
+  name: IconName;
 }
+export type {IconName};
 
 export const Icon = createRemoteComponent<'Icon', IconProps>('Icon');

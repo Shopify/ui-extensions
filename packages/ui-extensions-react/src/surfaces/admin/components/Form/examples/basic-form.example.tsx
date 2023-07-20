@@ -9,26 +9,26 @@ export default reactExtension("admin.product-details.block.render", () => <App /
 
 function App() {
   const [value, setValue] = useState("");
-  const [error, setError] = useState();
+  const [error, setError] = useState('');
 
   const onSubmit = useCallback(
     async () => {
       // API call to save the values
       const res = await fetch('/save', {method:'POST', body: JSON.stringify({name: value})});
       if (!res.ok) {
-        // The Host can catch these errors and do something with them.
-        throw Error(`There were errors: ${res.errors.join(',')}`);
+        const json = await res.json();
+        const errors = json.errors.join(',');
+        setError(errors);
       }
-      setError();
     },
     [value]
   );
 
   const onReset = useCallback(async () => {
      // Reset to initial value
-     setValue("")
+     setValue('')
      // Clear errors
-     setError()
+     setError('')
   }, []);
 
   const onInput = useCallback((nameValue) => {

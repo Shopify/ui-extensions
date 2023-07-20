@@ -4,7 +4,7 @@ import {
   reactExtension,
   Text,
   useTranslate,
-} from '@shopify/checkout-ui-extensions-react';
+} from '@shopify/ui-extensions-react/checkout';
 
 reactExtension(
   'Checkout::Dynamic::Render',

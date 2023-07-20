@@ -4,9 +4,10 @@ export interface DividerProps {
   /**
    * Specify the direction of the divider.
    *
-   * @defaultValue 'horizontal'
+   * @defaultValue 'inline'
+   * @defaultValue 'inline'
    */
-  direction?: 'horizontal' | 'vertical';
+  direction?: 'inline' | 'block';
 }
 
 export const Divider = createRemoteComponent<'Divider', DividerProps>(

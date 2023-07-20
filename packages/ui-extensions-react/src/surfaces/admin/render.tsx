@@ -3,8 +3,8 @@ import {render as remoteRender} from '@remote-ui/react';
 
 import {extension} from '@shopify/ui-extensions/admin';
 import type {
-  ExtensionPoints,
-  RenderExtensionPoint,
+  ExtensionTargets,
+  RenderExtensionTarget,
   ApiForRenderExtension,
 } from '@shopify/ui-extensions/admin';
 
@@ -23,10 +23,10 @@ import {ExtensionApiContext} from './context';
  * extension, and must return a React element that will be rendered into the extension
  * point you specified.
  */
-export function reactExtension<ExtensionPoint extends RenderExtensionPoint>(
+export function reactExtension<ExtensionPoint extends RenderExtensionTarget>(
   target: ExtensionPoint,
   render: (api: ApiForRenderExtension<ExtensionPoint>) => ReactElement<any>,
-): ExtensionPoints[ExtensionPoint] {
+): ExtensionTargets[ExtensionPoint] {
   // TypeScript can’t infer the type of the callback because it’s a big union
   // type. To get around it, we’ll just fake like we are rendering the
   // Playground extension, since all render extensions have the same general

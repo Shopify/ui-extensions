@@ -21,12 +21,12 @@ export interface FormProps {
   /**
    * A callback that is run when the form is submitted.
    */
-  onSubmit?(values: Record<string, string | string[]>): void | Promise<void>;
+  onSubmit(): void | Promise<void>;
 
   /**
-   * A callback that is run when the form is resetted.
+   * A callback that is run when the form is reset.
    */
-  onReset?(): void | Promise<void>;
+  onReset(): void | Promise<void>;
 }
 
 export const Form = createRemoteComponent<'Form', FormProps>('Form');

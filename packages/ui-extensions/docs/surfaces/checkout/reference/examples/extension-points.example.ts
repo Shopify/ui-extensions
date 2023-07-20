@@ -1,7 +1,7 @@
 import {
   extension,
   Banner,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/ui-extensions/checkout';
 
 // You can support multiple static extension points
 extension(

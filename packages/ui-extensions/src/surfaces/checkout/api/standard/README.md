@@ -15,7 +15,7 @@ The UI extension renderer version being used for the extension. Currently, there
 The extension point that was run. This can be useful if you register a single function to handle more than one extension point:
 
 ```ts
-import {extend} from '@shopify/checkout-ui-extensions';
+import {extend} from '@shopify/ui-extensions/checkout';
 
 extend('FirstExtensionPoint', handleExtensionPoint);
 extend('SecondExtensionPoint', handleExtensionPoint);
@@ -39,7 +39,7 @@ function handleExtensionPoint(input) {
 The `lineItems` property gives you access to the merchandise the buyer is purchasing through checkout. Like other resources in checkout, this value is wrapped in a `StatefulRemoteSubscribable` in order to give your extension a way to subscribe to changes to the line items. These changes can happen when there are stock problems that require the buyer to change the contents of their cart, or when other extensions change the line items through the `applyLineItemChange()` APIs documented below.
 
 ```ts
-import {extend} from '@shopify/checkout-ui-extensions';
+import {extend} from '@shopify/ui-extensions/checkout';
 
 extend('ExtensionPoint', (root, {lineItems}) => {
   const text = root.createText(
@@ -64,7 +64,7 @@ import {
   Link,
   Modal,
   TextBlock,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/ui-extensions/checkout';
 
 extend('ExtensionPoint', (root, {ui}) => {
   const modalFragment = root.createFragment();

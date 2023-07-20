@@ -4,7 +4,7 @@ import {
   reactExtension,
   Text,
   useApi,
-} from '@shopify/checkout-ui-extensions-react';
+} from '@shopify/ui-extensions-react/checkout';
 
 // 1. Choose an extension point
 reactExtension(

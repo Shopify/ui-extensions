@@ -8,7 +8,7 @@ import {
   Text,
   SkeletonImage,
   SkeletonText,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/ui-extensions/checkout';
 
 extension('Checkout::Dynamic::Render', (root) => {
   const source = 'https://yourawesomeimage.com';

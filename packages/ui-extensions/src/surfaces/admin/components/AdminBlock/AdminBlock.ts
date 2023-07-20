@@ -10,8 +10,6 @@ export interface AdminBlockProps {
    * The summary to display when the app block is collapsed. If not provided, no summary will be displayed. No summary is shown when the app block is expanded.
    */
   summary?: string;
-
-  children: any;
 }
 
 export const AdminBlock = createRemoteComponent<'AdminBlock', AdminBlockProps>(

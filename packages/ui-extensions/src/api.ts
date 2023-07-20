@@ -74,3 +74,17 @@ export interface I18n {
    */
   translate: I18nTranslate;
 }
+
+export interface Intents {
+  /**
+   * The URL that was used to launch the intent.
+   */
+  launchUrl?: string | URL;
+}
+
+export interface Navigation {
+  /**
+   * A method to navigate to a specific route.
+   */
+  navigate: (url: string | URL) => void;
+}

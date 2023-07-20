@@ -4,13 +4,9 @@ render('Playground', () => <App />);
 
 function App() {
   return (
-    <BlockStack inlineAlignment="center">
-      <Text size="extraSmall">Extra Small</Text>
-      <Text size="small">Small</Text>
-      <Text size="base">Base</Text>
-      <Text size="medium">Medium</Text>
-      <Text size="large">Large</Text>
-      <Text size="extraLarge">Extra Large</Text>
+    <BlockStack inlineAlignment="center" gap>
+      <Text fontWeight="bold">Name:</Text>
+      <Text>Jane Doe</Text>
     </BlockStack>
   );
 }

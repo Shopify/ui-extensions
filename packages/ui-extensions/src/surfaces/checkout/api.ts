@@ -76,6 +76,8 @@ export type {
 export type {
   AttributeChange,
   AttributeChangeResult,
+  AttributeChangeResultError,
+  AttributeChangeResultSuccess,
   CartLineChange,
   CartLineChangeResult,
   CartLineChangeResultError,

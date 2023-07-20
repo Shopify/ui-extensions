@@ -1,7 +1,7 @@
 import {
   Banner,
   extension,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/ui-extensions/checkout';
 
 extension(
   'Checkout::OrderStatus::CustomerInformation::RenderAfter',

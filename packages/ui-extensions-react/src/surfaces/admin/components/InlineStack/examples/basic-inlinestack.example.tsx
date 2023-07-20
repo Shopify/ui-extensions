@@ -8,7 +8,7 @@ render('Playground', () => <App />);
 
 function App() {
   return (
-    <InlineStack gap="4">
+    <InlineStack gap>
       <>Child 1</>
       <>Child 2</>
       <>Child 3</>

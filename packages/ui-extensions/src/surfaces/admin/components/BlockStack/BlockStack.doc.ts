@@ -2,6 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'BlockStack',
+  featureFlag: 'admin_extensibility',
   description:
     "This structures layout elements along the vertical axis of the page. It's useful for vertical alignment.",
   requires: '',
@@ -36,7 +37,13 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'InlineStack',
+      url: '/docs/api/admin-extensions/components/structure/Stack',
+    },
+  ],
 };
 
 export default data;

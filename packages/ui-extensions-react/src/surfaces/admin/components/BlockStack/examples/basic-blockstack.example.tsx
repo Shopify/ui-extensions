@@ -8,7 +8,7 @@ render('Playground', () => <App />);
 
 function App() {
   return (
-    <BlockStack gap="4">
+    <BlockStack gap>
       <>Child 1</>
       <>Child 2</>
       <>Child 3</>
