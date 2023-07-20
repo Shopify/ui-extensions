@@ -10,10 +10,10 @@ reactExtension('Playground', () => <Extension />);
 
 function Extension() {
   return (
-    <Pressable border="base" cornerRadius="base" padding="base">
+    <Pressable padding="base">
       <InlineStack>
         <Text>Go to Apps Dashboard</Text>
-        <Icon name="AppsMajor" size="small" />
+        <Icon name="AppsMajor" />
       </InlineStack>
     </Pressable>
   );
