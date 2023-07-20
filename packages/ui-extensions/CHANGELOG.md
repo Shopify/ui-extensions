@@ -1,5 +1,19 @@
 # @shopify/ui-extensions
 
+## 2023.5.0
+
+### Minor Changes
+
+- [#1100](https://github.com/Shopify/ui-extensions/pull/1100) [`c7dba7ad`](https://github.com/Shopify/ui-extensions/commit/c7dba7adbd1349031d52b3ab6bbb4880fbd572d1) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Add support for reading and writing cart metafields.
+
+### Patch Changes
+
+- [#1117](https://github.com/Shopify/ui-extensions/pull/1117) [`8e11ad23`](https://github.com/Shopify/ui-extensions/commit/8e11ad230991479b9d944b3811aafb0a1f4a0b2c) Thanks [@olavoasantos](https://github.com/olavoasantos)! - Clean up on Admin examples and types
+
+- [#1100](https://github.com/Shopify/ui-extensions/pull/1100) [`c7dba7ad`](https://github.com/Shopify/ui-extensions/commit/c7dba7adbd1349031d52b3ab6bbb4880fbd572d1) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Updated faker dependancies for ui-extensions-react.
+
+- [#1100](https://github.com/Shopify/ui-extensions/pull/1100) [`c7dba7ad`](https://github.com/Shopify/ui-extensions/commit/c7dba7adbd1349031d52b3ab6bbb4880fbd572d1) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Updated the documented examples to import from the ui-extensions package.
+
 ## 2023.4.0
 
 ### Minor Changes
