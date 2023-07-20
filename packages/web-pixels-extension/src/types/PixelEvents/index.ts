@@ -151,22 +151,7 @@ export interface PixelEventsCollectionViewed {
   timestamp: Timestamp;
 }
 
-/**
- * This event represents any custom events emitted by partners or merchants via
- * the `publish` method
- */
-export interface PixelEventsCustomEvent {
-  clientId: ClientId;
-  context: Context;
-  customData: CustomData | null;
-  id: Id;
-
-  /**
-   * The name of the customer event
-   */
-  name: 'custom_event';
-  timestamp: Timestamp;
-}
+export interface PixelEventsPageViewedData {}
 
 /**
  * The `page_viewed` event logs an instance where a customer visited a page.
@@ -175,6 +160,7 @@ export interface PixelEventsCustomEvent {
 export interface PixelEventsPageViewed {
   clientId: ClientId;
   context: Context;
+  data: PixelEventsPageViewedData;
   id: Id;
 
   /**
@@ -223,6 +209,28 @@ export interface PixelEventsProductAddedToCart {
    * The name of the customer event
    */
   name: 'product_added_to_cart';
+  timestamp: Timestamp;
+}
+
+export interface PixelEventsProductRemovedFromCartData {
+  cartLine: CartLine | null;
+}
+
+/**
+ * The `product_removed_from_cart` event logs an instance where a customer
+ * removes a product from their cart. This event is available on the online
+ * store page
+ */
+export interface PixelEventsProductRemovedFromCart {
+  clientId: ClientId;
+  context: Context;
+  data: PixelEventsProductRemovedFromCartData;
+  id: Id;
+
+  /**
+   * The name of the customer event
+   */
+  name: 'product_removed_from_cart';
   timestamp: Timestamp;
 }
 
@@ -339,12 +347,6 @@ export interface PixelEvents {
   collection_viewed: PixelEventsCollectionViewed;
 
   /**
-   * This event represents any custom events emitted by partners or merchants
-   * via the `publish` method
-   */
-  custom_event: PixelEventsCustomEvent;
-
-  /**
    * The `page_viewed` event logs an instance where a customer visited a page.
    * This event is available on the online store, checkout, and order status
    * pages
@@ -363,6 +365,13 @@ export interface PixelEvents {
    * product to their cart. This event is available on the online store page
    */
   product_added_to_cart: PixelEventsProductAddedToCart;
+
+  /**
+   * The `product_removed_from_cart` event logs an instance where a customer
+   * removes a product from their cart. This event is available on the online
+   * store page
+   */
+  product_removed_from_cart: PixelEventsProductRemovedFromCart;
 
   /**
    * The `product_variant_viewed` event logs an instance where a customer
@@ -736,10 +745,27 @@ export interface Context {
 }
 
 /**
- * A free-form JSON object representing data specific to a custom event provided
- * by the custom event publisher
+ * A free-form object representing data specific to a custom event provided by
+ * the custom event publisher
  */
 export type CustomData = Record<string, unknown>;
+
+/**
+ * This event represents any custom events emitted by partners or merchants via
+ * the `publish` method
+ */
+export interface CustomEvent {
+  clientId: ClientId;
+  context: Context;
+  customData: CustomData | null;
+  id: Id;
+
+  /**
+   * Arbitrary name of the custom event
+   */
+  name: string;
+  timestamp: Timestamp;
+}
 
 /**
  * A customer represents a customer account with the shop. Customer accounts
@@ -779,29 +805,29 @@ export interface Customer {
 }
 
 /**
- * A free-form JSON object representing data specific to this event provided
- * by Shopify. Refer to [standard events](#standard-events) for details on the
+ * A free-form object representing data specific to this event provided by
+ * Shopify. Refer to [standard events](#standard-events) for details on the
  * payload available to each event
  */
 export type Data = Record<string, unknown>;
 
 /**
- * An amount discounting the line that has been allocated by a discount.
+ * The discount that has been applied to the checkout line item.
  */
 export interface DiscountAllocation {
   /**
-   * Amount of discount allocated.
+   * The monetary value with currency allocated to the discount.
    */
   amount: MoneyV2;
 
   /**
-   * Information about the intent of a discount.
+   * The information about the intent of the discount.
    */
   discountApplication: DiscountApplication;
 }
 
 /**
- * Information about the intent of a discount.
+ * The information about the intent of the discount.
  */
 export interface DiscountApplication {
   /**
