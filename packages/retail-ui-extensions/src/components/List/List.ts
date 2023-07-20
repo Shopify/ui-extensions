@@ -23,7 +23,7 @@ export interface ListRowLeftSide {
     /**
      * A link to an image to be displayed on the far left side of the row.
      */
-    source: string;
+    source?: string;
     /**
      * A number that is displayed on the top right of the image.
      */
