@@ -36,6 +36,10 @@ export {PasswordField} from './components/PasswordField/PasswordField';
 export type {PasswordFieldProps} from './components/PasswordField/PasswordField';
 export {Pressable} from './components/Pressable/Pressable';
 export type {PressableProps} from './components/Pressable/Pressable';
+export {ResourceItem} from './components/ResourceItem';
+export type {ResourceItemProps} from './components/ResourceItem/ResourceItem';
+export {ResourceList} from './components/ResourceList';
+export type {ResourceListProps} from './components/ResourceList/ResourceList';
 export {Select} from './components/Select/Select';
 export type {
   OptionDescription,
@@ -50,5 +54,7 @@ export {TextArea} from './components/TextArea/TextArea';
 export type {TextAreaProps} from './components/TextArea/TextArea';
 export {TextField} from './components/TextField/TextField';
 export type {TextFieldProps} from './components/TextField/TextField';
+export {Thumbnail} from './components/Thumbnail/Thumbnail';
+export type {ThumbnailProps} from './components/Thumbnail/Thumbnail';
 export {URLField} from './components/URLField/URLField';
 export type {URLFieldProps} from './components/URLField/URLField';
