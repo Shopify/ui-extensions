@@ -1,5 +1,5 @@
 import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
-import faker from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 
 import {ScopeNotGrantedError} from '../../errors';
 import {useCustomer, useEmail, usePhone} from '../buyer-identity';

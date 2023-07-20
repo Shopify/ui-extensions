@@ -1,7 +1,7 @@
 import {
   reactExtension,
   Banner,
-} from '@shopify/checkout-ui-extensions-react';
+} from '@shopify/ui-extensions-react/checkout';
 import * as Sentry from '@sentry/browser';
 
 Sentry.init({

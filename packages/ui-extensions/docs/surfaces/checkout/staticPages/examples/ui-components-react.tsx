@@ -5,7 +5,7 @@ import {
   Button,
   Image,
   Text,
-} from '@shopify/checkout-ui-extensions-react';
+} from '@shopify/ui-extensions-react/checkout';
 
 reactExtension(
   'Checkout::Dynamic::Render',

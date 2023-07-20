@@ -1,7 +1,7 @@
 import {
   extension,
   Checkbox,
-} from '@shopify/checkout-ui-extensions';
+} from '@shopify/ui-extensions/checkout';
 
 // 1. Choose an extension point
 extension(

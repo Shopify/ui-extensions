@@ -3,7 +3,7 @@ import {
   reactExtension,
   Text,
   useShippingAddress,
-} from '@shopify/checkout-ui-extensions-react';
+} from '@shopify/ui-extensions-react/checkout';
 
 reactExtension(
   'Checkout::Dynamic::Render',

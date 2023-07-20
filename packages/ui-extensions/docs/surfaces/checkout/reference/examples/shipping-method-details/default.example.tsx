@@ -4,7 +4,7 @@ import {
   Text,
   useExtensionApi,
   useSubscription,
-} from '@shopify/checkout-ui-extensions-react';
+} from '@shopify/ui-extensions-react/checkout';
 
 render(
   'Checkout::ShippingMethodDetails::RenderAfter',

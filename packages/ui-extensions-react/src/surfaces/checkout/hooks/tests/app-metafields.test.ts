@@ -1,5 +1,5 @@
 import {Metafield} from '@shopify/ui-extensions/checkout';
-import faker from '@faker-js/faker';
+import {faker} from '@faker-js/faker';
 
 import {useAppMetafields} from '../app-metafields';
 
