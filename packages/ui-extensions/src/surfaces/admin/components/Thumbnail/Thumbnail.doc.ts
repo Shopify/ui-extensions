@@ -24,7 +24,7 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Thumbnail/examples/basic-Thumbnail.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Thumbnail/examples/basic-thumbnail.example.tsx',
           language: 'tsx',
         },
         {
