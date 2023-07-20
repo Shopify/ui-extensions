@@ -10,15 +10,13 @@ extension('Playground', (root) => {
   const pressable = root.createComponent(
     Pressable,
     {
-      border: 'base',
-      cornerRadius: 'base',
       padding: 'base',
       onPress: () => console.log('onPress event'),
     },
     [
       root.createComponent(InlineStack, {}, [
         root.createComponent(Text, {}, 'Go to App Dashboard'),
-        root.createComponent(Icon, {name: 'AppsMajor', size: 'small'}),
+        root.createComponent(Icon, {name: 'AppsMajor'}),
       ]),
     ],
   );

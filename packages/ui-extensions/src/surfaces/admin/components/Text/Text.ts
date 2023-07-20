@@ -70,7 +70,6 @@ type FontVariantOptions =
   | 'none';
 
 type FontWeight =
-  | 'light-400'
   | 'light-300'
   | 'light-200'
   | 'light-100'
@@ -83,8 +82,7 @@ type FontWeight =
   | 'bold'
   | 'bold-100'
   | 'bold-200'
-  | 'bold-300'
-  | 'bold-400';
+  | 'bold-300';
 
 export interface TextProps {
   /** A unique identifier for the field. */
