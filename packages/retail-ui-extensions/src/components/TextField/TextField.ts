@@ -1,5 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import type {BaseTextFieldProps} from '../shared';
+import type {BaseTextFieldProps, InputProps} from '../shared';
 
 export interface ActionProps {
   type: 'action';
@@ -29,10 +29,17 @@ export type EmbeddedElementProps =
   | SuccessProps
   | PasswordProps;
 
+export interface NewTextFieldProps extends InputProps {}
 export interface TextFieldProps extends BaseTextFieldProps {
   rightElementStyle?: EmbeddedElementProps;
 }
 
-export const TextField = createRemoteComponent<'TextField', TextFieldProps>(
+/**
+ * @deprecated
+ * This TextField component will be replaced by NewTextField in version 2.0.0.
+ * Please migrate to using NewTextField as soon as possible.
+ */
+export const TextField = createRemoteComponent<
   'TextField',
-);
+  TextFieldProps | NewTextFieldProps
+>('TextField');
