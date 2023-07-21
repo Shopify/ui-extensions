@@ -2,7 +2,6 @@
   "extends": "../../config/typescript/tsconfig.base.json",
   "compilerOptions": {
     "outDir": "build/ts",
-    "baseUrl": "src",
     "rootDir": "src",
     "jsx": "react-jsx",
     "isolatedModules": true
