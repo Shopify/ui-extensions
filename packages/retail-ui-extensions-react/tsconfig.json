@@ -15,7 +15,7 @@
       "WebWorker"
     ]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["src/**/*.example.tsx"],
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["./src/**/*.example.*"],
   "references": [{"path": "../retail-ui-extensions"}]
 }

@@ -14,7 +14,7 @@
       "esnext.asynciterable"
     ]
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["src/**/*.example.ts"],
+  "include": ["./src/**/*.ts"],
+  "exclude": ["./src/**/*.example.*"],
   "references": []
 }
