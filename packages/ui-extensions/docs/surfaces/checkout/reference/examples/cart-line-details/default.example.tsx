@@ -5,12 +5,14 @@ import {
   useTarget,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension(
+export default reactExtension(
   'Checkout::CartLineDetails::RenderAfter',
   () => <Extension />,
 );
 
 function Extension() {
-  const {title} = useTarget();
+  const {
+    merchandise: {title},
+  } = useTarget();
   return <Text>Line item title: {title}</Text>;
 }

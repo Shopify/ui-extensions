@@ -121,7 +121,7 @@ export interface PhoneFieldProps {
   onChange?(value: string): void;
   /**
    * Callback when the user makes any changes in the field including selecting a country
-   * in the dropdown. As noted in the documentation for `onChange`, you **must not** use
+   * in the dropdown. As noted in the documentation for `onChange`, you must not use
    * this to update `state` — use the `onChange` callback for that purpose.
    * Use the `onInput` prop when you need to do something as soon as the buyer makes a change,
    * like clearing validation errors that apply to the field as soon as the user begins

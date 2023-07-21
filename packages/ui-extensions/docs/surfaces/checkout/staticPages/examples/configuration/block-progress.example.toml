@@ -1,0 +1,7 @@
+# ...
+
+[extensions.capabilities]
+block_progress = true
+
+# ...
+

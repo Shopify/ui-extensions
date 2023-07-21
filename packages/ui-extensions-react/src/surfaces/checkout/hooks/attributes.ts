@@ -2,7 +2,7 @@ import type {
   Attribute,
   AttributeChange,
   AttributeChangeResult,
-  RenderExtensionPoint,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/checkout';
 
 import {ExtensionHasNoMethodError} from '../errors';
@@ -14,9 +14,9 @@ import {useSubscription} from './subscription';
  * Returns the proposed `attributes` applied to the checkout.
  */
 export function useAttributes<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Attribute[] | undefined {
-  return useSubscription(useApi<ID>().attributes);
+  return useSubscription(useApi<Target>().attributes);
 }
 
 /**
@@ -25,9 +25,9 @@ export function useAttributes<
  * @param keys - An array of attribute keys.
  */
 export function useAttributeValues<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(keys: string[]): (string | undefined)[] {
-  const attributes = useAttributes<ID>();
+  const attributes = useAttributes<Target>();
 
   if (!attributes?.length) {
     return [];
@@ -43,9 +43,9 @@ export function useAttributeValues<
  * Returns a function to mutate the `attributes` property of the checkout.
  */
 export function useApplyAttributeChange<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): (change: AttributeChange) => Promise<AttributeChangeResult> {
-  const api = useApi<ID>();
+  const api = useApi<Target>();
 
   if ('applyAttributeChange' in api) {
     return api.applyAttributeChange;
@@ -53,6 +53,6 @@ export function useApplyAttributeChange<
 
   throw new ExtensionHasNoMethodError(
     'applyAttributeChange',
-    api.extensionPoint,
+    api.extension.target,
   );
 }

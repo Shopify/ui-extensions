@@ -17,7 +17,7 @@ describe('Delivery Groups API hooks', () => {
             handle: 'shipping_method_1',
           },
           groupType: 'oneTimePurchase',
-          deliveryRequired: true,
+          isDeliveryRequired: true,
           targetedCartLines: [
             {
               id: 'gid://shopify/CartLine/stable_id',

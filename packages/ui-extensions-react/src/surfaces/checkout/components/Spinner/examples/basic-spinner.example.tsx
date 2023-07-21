@@ -1,6 +1,12 @@
-import {reactExtension, Spinner} from '@shopify/ui-extensions-react/checkout';
+import {
+  reactExtension,
+  Spinner,
+} from '@shopify/ui-extensions-react/checkout';
 
-reactExtension('Checkout::Dynamic::Render', () => <Extension />);
+export default reactExtension(
+  'Checkout::Dynamic::Render',
+  () => <Extension />,
+);
 
 function Extension() {
   return <Spinner />;

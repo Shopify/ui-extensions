@@ -1,10 +1,10 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
-import {PresentmentCartLine} from '../standard/standard';
+import {CartLine} from '../standard/standard';
 
 export interface CartLineDetailsApi {
   /**
-   * The cart line the extension is attached to.
+   * The cart line the extension is attached to. Until version `2023-04`, this property was a `StatefulRemoteSubscribable<PresentmentCartLine>`.
    */
-  target: StatefulRemoteSubscribable<PresentmentCartLine>;
+  target: StatefulRemoteSubscribable<CartLine>;
 }

@@ -4,24 +4,47 @@ import {
   View,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension('Checkout::Dynamic::Render', () => <Extension />);
+export default reactExtension(
+  'Checkout::Dynamic::Render',
+  () => <Extension />,
+);
 
 function Extension() {
   return (
     <ScrollView maxBlockSize={300}>
-      <View border="base" padding="base" minBlockSize={50}>
+      <View
+        border="base"
+        padding="base"
+        minBlockSize={50}
+      >
         View
       </View>
-      <View border="base" padding="base" minBlockSize={50}>
+      <View
+        border="base"
+        padding="base"
+        minBlockSize={50}
+      >
         View
       </View>
-      <View border="base" padding="base" minBlockSize={50}>
+      <View
+        border="base"
+        padding="base"
+        minBlockSize={50}
+      >
         View
       </View>
-      <View border="base" padding="base" minBlockSize={50}>
+      <View
+        border="base"
+        padding="base"
+        minBlockSize={50}
+      >
         View
       </View>
-      <View border="base" padding="base" minBlockSize={50}>
+      <View
+        border="base"
+        padding="base"
+        minBlockSize={50}
+      >
         View
       </View>
     </ScrollView>

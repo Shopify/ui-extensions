@@ -3,8 +3,8 @@ import {
   Checkbox,
 } from '@shopify/ui-extensions/checkout';
 
-// 1. Choose an extension point
-extension(
+// 1. Choose an extension target
+export default extension(
   'Checkout::Dynamic::Render',
   (root, api) => {
     // 2. Render a UI

@@ -5,7 +5,7 @@ import {
   View,
 } from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('Checkout::Dynamic::Render', (root) => {
   const inlineSpacer = root.createComponent(InlineStack, {spacing: 'none'}, [
     root.createComponent(View, {border: 'base', padding: 'base'}, 'View'),
     root.createComponent(InlineSpacer, {spacing: 'loose'}),

@@ -3,7 +3,7 @@ import {
   Banner,
 } from '@shopify/ui-extensions/checkout';
 
-extension(
+export default extension(
   'Checkout::DeliveryAddress::RenderBefore',
   (root, api) => {
     renderApp(root, api);

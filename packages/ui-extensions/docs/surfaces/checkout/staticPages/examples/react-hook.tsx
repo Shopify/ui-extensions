@@ -5,7 +5,7 @@ import {
   useShippingAddress,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension(
+export default reactExtension(
   'Checkout::Dynamic::Render',
   () => <Extension />,
 );

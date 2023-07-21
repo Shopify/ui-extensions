@@ -1,20 +1,21 @@
 import React from 'react';
 import {
   reactExtension,
-  useExtensionApi,
+  useApi,
   useSubscription,
   Text,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension(
+export default reactExtension(
   'Checkout::PickupLocations::RenderBefore',
   () => <Extension />,
 );
 
 function Extension() {
-  const {locationFormVisible} = useExtensionApi();
+  const {isLocationFormVisible} =
+    useApi<'Checkout::PickupLocations::RenderBefore'>();
   const locationFormShown = useSubscription(
-    locationFormVisible,
+    isLocationFormVisible,
   );
 
   if (locationFormShown) {

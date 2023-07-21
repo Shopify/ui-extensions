@@ -1,7 +1,7 @@
 /* See the locales/en.default.json tab for the translation keys and values for this example */
-import {extend} from '@shopify/ui-extensions/checkout';
+import {extension} from '@shopify/ui-extensions/checkout';
 
-extend(
+export default extension(
   'Checkout::Dynamic::Render',
   (root, {i18n}) => {
     const welcomeMsg = i18n.translate(

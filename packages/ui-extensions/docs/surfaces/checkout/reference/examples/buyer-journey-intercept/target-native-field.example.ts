@@ -1,6 +1,6 @@
-import {extend} from '@shopify/ui-extensions/checkout';
+import {extension} from '@shopify/ui-extensions/checkout';
 
-extend(
+export default extension(
   'Checkout::DeliveryAddress::RenderBefore',
   (root, {buyerJourney, shippingAddress}) => {
     let address = shippingAddress?.current;

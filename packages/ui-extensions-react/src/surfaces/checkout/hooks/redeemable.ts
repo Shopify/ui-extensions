@@ -1,11 +1,11 @@
-import type {
+import {
   RedeemableChangeResult,
   RedeemableChange,
 } from '@shopify/ui-extensions/checkout';
 
 import {ExtensionHasNoMethodError} from '../errors';
 
-import {useExtensionApi} from './api';
+import {useApi} from './api';
 
 /**
  * Returns a function to apply a change to add a redeemable.
@@ -13,11 +13,11 @@ import {useExtensionApi} from './api';
 export function useApplyRedeemableChange(): (
   change: RedeemableChange,
 ) => Promise<RedeemableChangeResult> {
-  const api = useExtensionApi<'Checkout::GiftCard::Render'>();
+  const api = useApi<'Checkout::GiftCard::Render'>();
   if (!api.applyRedeemableChange) {
     throw new ExtensionHasNoMethodError(
       'useApplyRedeemableChange',
-      api.extensionPoint,
+      api.extension.target,
     );
   }
   return api.applyRedeemableChange;

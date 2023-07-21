@@ -6,8 +6,8 @@ import {
   useApi,
 } from '@shopify/ui-extensions-react/checkout';
 
-// 1. Choose an extension point
-reactExtension(
+// 1. Choose an extension target
+export default reactExtension(
   'Checkout::Dynamic::Render',
   () => <Extension />,
 );

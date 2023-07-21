@@ -1,5 +1,5 @@
 import type {
-  RenderExtensionPoint,
+  RenderExtensionTarget,
   PaymentOption,
 } from '@shopify/ui-extensions/checkout';
 import {useMemo} from 'react';
@@ -11,9 +11,9 @@ import {useSubscription} from './subscription';
  * Returns all available payment options.
  */
 export function useAvailablePaymentOptions<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): PaymentOption[] {
-  const {availablePaymentOptions} = useApi<ID>();
+  const {availablePaymentOptions} = useApi<Target>();
 
   return useSubscription(availablePaymentOptions);
 }
@@ -22,13 +22,13 @@ export function useAvailablePaymentOptions<
  * Returns payment options selected by the buyer.
  */
 export function useSelectedPaymentOptions<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): PaymentOption[] {
   const selectedPaymentOptions = useSubscription(
-    useApi<ID>().selectedPaymentOptions,
+    useApi<Target>().selectedPaymentOptions,
   );
   const availablePaymentOptions = useSubscription(
-    useApi<ID>().availablePaymentOptions,
+    useApi<Target>().availablePaymentOptions,
   );
 
   return useMemo(() => {

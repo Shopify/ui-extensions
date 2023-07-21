@@ -4,7 +4,7 @@ import {
   Banner,
 } from '@shopify/ui-extensions/checkout';
 
-extension(
+export default extension(
   'Checkout::Dynamic::Render',
   (root, {i18n}) => {
     const points = 10000;

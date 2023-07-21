@@ -9,13 +9,14 @@ import type {
   ValidationError,
   SellingPlan,
   Attribute,
+  MailingAddress,
 } from '../shared';
 
 /**
- * A key-value storage object for extension points.
+ * A key-value storage object for extension targets.
  *
  * Stored data is only available to this specific app
- * at this specific extension point.
+ * at this specific extension target.
  *
  * The storage backend is implemented with `localStorage` and
  * should persist across the buyer's checkout session.
@@ -57,42 +58,15 @@ export interface Storage {
 export type Capability = 'api_access' | 'network_access' | 'block_progress';
 
 /**
- * Meta information about an extension point.
+ * Meta information about an extension target.
  */
 export interface Extension {
   /**
-   * The published version of the running extension point.
-   *
-   * For unpublished extensions, the value is `undefined`.
-   *
-   * @example 3.0.10
-   */
-  version?: string;
-
-  /**
    * The API version that was set in the extension config file.
    *
-   * @example '2023-04'
+   * @example '2023-04', '2023-07'
    */
   apiVersion: ApiVersion;
-
-  /**
-   * The URL to the script that started the extension point.
-   */
-  scriptUrl: string;
-
-  /**
-   * Whether your extension is currently rendered to the screen.
-   *
-   * Shopify might render your extension before it's visible in the UI,
-   * typically to pre-render extensions that will appear on a later step of the
-   * checkout.
-   *
-   * Your extension might also continue to run after the buyer has navigated away
-   * from where it was rendered. The extension continues running so that
-   * your extension is immediately available to render if the buyer navigates back.
-   */
-  rendered: StatefulRemoteSubscribable<boolean>;
 
   /**
    * The allowed capabilities of the extension, defined
@@ -112,6 +86,39 @@ export interface Extension {
    * The value is undefined if the extension is not rendering in an editor.
    */
   editor?: Editor;
+
+  /**
+   * Whether your extension is currently rendered to the screen.
+   *
+   * Shopify might render your extension before it's visible in the UI,
+   * typically to pre-render extensions that will appear on a later step of the
+   * checkout.
+   *
+   * Your extension might also continue to run after the buyer has navigated away
+   * from where it was rendered. The extension continues running so that
+   * your extension is immediately available to render if the buyer navigates back.
+   */
+  rendered: StatefulRemoteSubscribable<boolean>;
+
+  /**
+   * The URL to the script that started the extension target.
+   */
+  scriptUrl: string;
+
+  /**
+   * The identifier of the running extension target.
+   * @example 'Checkout::PostPurchase::Render'
+   */
+  target: import('../../targets').ExtensionTarget;
+
+  /**
+   * The published version of the running extension target.
+   *
+   * For unpublished extensions, the value is `undefined`.
+   *
+   * @example 3.0.10
+   */
+  version?: string;
 }
 
 export interface Editor {
@@ -168,13 +175,30 @@ export interface AppMetafield {
 }
 
 /**
+ * Represents a custom metadata attached to a resource.
+ */
+export interface CartMetafield {
+  /** The key name of a metafield. */
+  key: string;
+
+  /** The namespace for a metafield. */
+  namespace: string;
+
+  /** The value of a metafield. */
+  value: string;
+
+  /** The metafield's type name. */
+  type: string;
+}
+
+/**
  * The metafield owner.
  */
 export interface AppMetafieldEntryTarget {
   /**
    * The type of the metafield owner.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`.
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.
    */
   type:
     | 'customer'
@@ -196,7 +220,7 @@ export interface AppMetafieldEntry {
   /**
    * The target that is associated to the metadata.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`.
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.
    */
   target: AppMetafieldEntryTarget;
 
@@ -204,7 +228,7 @@ export interface AppMetafieldEntry {
   metafield: AppMetafield;
 }
 
-export type ApiVersion = '2023-04' | 'unstable';
+export type ApiVersion = '2023-04' | '2023-07' | 'unstable';
 
 export type Version = string;
 
@@ -386,7 +410,7 @@ export interface BuyerJourney {
 }
 
 export interface StandardApi<
-  ExtensionPoint extends import('../../extension-points').ExtensionPoint,
+  ExtensionTarget extends import('../../targets').ExtensionTarget,
 > {
   /**
    * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
@@ -434,6 +458,11 @@ export interface StandardApi<
   buyerJourney: BuyerJourney;
 
   /**
+   * Settings applied to the buyer's checkout.
+   */
+  checkoutSettings: StatefulRemoteSubscribable<CheckoutSettings>;
+
+  /**
    * Details on the costs the buyer will pay for this checkout.
    */
   cost: CartCost;
@@ -459,10 +488,11 @@ export interface StandardApi<
   extension: Extension;
 
   /**
-   * The identifier of the running extension point.
+   * The identifier of the running extension target.
    * @example 'Checkout::PostPurchase::Render'
+   * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
    */
-  extensionPoint: ExtensionPoint;
+  extensionPoint: ExtensionTarget;
 
   /**
    * Utilities for translating content and formatting values according to the current
@@ -513,11 +543,6 @@ export interface StandardApi<
   note: StatefulRemoteSubscribable<string | undefined>;
 
   /**
-   * A list of the line items displayed in the checkout. These may be the same as lines, or may be a subset.
-   */
-  presentmentLines: StatefulRemoteSubscribable<PresentmentCartLine[]>;
-
-  /**
    * Used to query the Storefront GraphQL API with a prefetched token.
    *
    * See [storefront api access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-storefront-api-access) for more information.
@@ -564,7 +589,7 @@ export interface StandardApi<
   shop: Shop;
 
   /**
-   * Key-value storage for the extension point.
+   * Key-value storage for the extension target.
    */
   storage: Storage;
 
@@ -621,6 +646,75 @@ export interface BuyerIdentity {
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   phone: StatefulRemoteSubscribable<string | undefined>;
+
+  /**
+   * Provides details of the company and the company location that the business customer is purchasing on behalf of.
+   * This includes information that can be used to identify the company and the company location that the business
+   * customer belongs to.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  purchasingCompany: StatefulRemoteSubscribable<PurchasingCompany | undefined>;
+}
+
+/**
+ * Information about a company that the business customer is purchasing on behalf of.
+ */
+export interface PurchasingCompany {
+  /**
+   * Includes information of the company that the business customer is purchasing on behalf of.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  company: Company;
+  /**
+   * Includes information of the company location that the business customer is purchasing on behalf of.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  location: CompanyLocation;
+}
+
+export interface Company {
+  /**
+   * The company ID.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  id: string;
+  /**
+   * The name of the company.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  name: string;
+  /**
+   * The external ID of the company that can be set by the merchant.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  externalId?: string;
+}
+
+export interface CompanyLocation {
+  /**
+   * The company location ID.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  id: string;
+  /**
+   * The name of the company location.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  name: string;
+  /**
+   * The external ID of the company location that can be set by the merchant.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  externalId?: string;
 }
 
 export interface AppliedGiftCard {
@@ -658,107 +752,6 @@ export interface Shop {
    * The shop's myshopify.com domain.
    */
   myshopifyDomain: string;
-}
-
-export interface MailingAddress {
-  /**
-   * The buyer's full name.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * @example 'John Doe'
-   */
-  name?: string;
-
-  /**
-   * The buyer's first name.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * @example 'John'
-   */
-  firstName?: string;
-
-  /**
-   * The buyer's last name.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * @example 'Doe'
-   */
-  lastName?: string;
-
-  /**
-   * The buyer's company name.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * @example 'Shopify'
-   */
-  company?: string;
-
-  /**
-   * The first line of the buyer's address, including street name and number.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * @example '151 O'Connor Street'
-   */
-  address1?: string;
-
-  /**
-   * The second line of the buyer's address, like apartment number, suite, etc.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * @example 'Ground floor'
-   */
-  address2?: string;
-
-  /**
-   * The buyer's city.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * @example 'Ottawa'
-   */
-  city?: string;
-
-  /**
-   * The buyer's postal or ZIP code.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * @example 'K2P 2L8'
-   */
-  zip?: string;
-
-  /**
-   * The ISO 3166 Alpha-2 format for the buyer's country. Refer to https://www.iso.org/iso-3166-country-codes.html.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * @example 'CA' for Canada.
-   */
-  countryCode?: CountryCode;
-
-  /**
-   * The buyer's zone code, such as state, province, prefecture, or region.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * @example 'ON' for Ontario.
-   */
-  provinceCode?: string;
-
-  /**
-   * The buyer's phone number.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * @example '+1 613 111 2222'.
-   */
-  phone?: string;
 }
 
 export interface CartCost {
@@ -964,52 +957,6 @@ export interface SelectedOption {
   value: string;
 }
 
-export interface PresentmentCartLine {
-  /**
-   * The ID of the present cart line. This ID isn't stable and might change after
-   * any operations on the line items.
-   * @example 'gid://shopify/PresentmentCartLine/123'
-   */
-  id: string;
-
-  /**
-   * The quantity of the merchandise being purchased.
-   */
-  quantity: number;
-
-  /**
-   * The details about the cost components attributed to the presentment cart line.
-   */
-  cost: PresentmentCartLineCost;
-
-  /**
-   * The title of the line item.
-   */
-  title: string;
-
-  /**
-   * The subtitle of the line item.
-   */
-  subtitle?: string;
-
-  /**
-   * The image associated with the line item.
-   */
-  image?: ImageDetails;
-
-  /**
-   * The merchandise lines being purchased.
-   */
-  lines: CartLine[];
-}
-
-export interface PresentmentCartLineCost {
-  /**
-   * The total cost of the merchandise line.
-   */
-  totalAmount: Money;
-}
-
 /**
  * A payment option presented to the buyer.
  */
@@ -1059,7 +1006,7 @@ export interface SelectedPaymentOption {
   /**
    * The unique handle referencing `PaymentOption.handle`.
    *
-   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/apis/standardapi#properties-propertydetail-availablepaymentoptions).
+   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-availablepaymentoptions).
    */
   handle: string;
 }
@@ -1270,6 +1217,57 @@ export interface Customer {
 }
 
 /**
+ * Settings describing the behavior of the buyer's checkout.
+ */
+export interface CheckoutSettings {
+  /**
+   * The type of order that will be created once the buyer completes checkout.
+   */
+  orderSubmission: 'DRAFT_ORDER' | 'ORDER';
+  /**
+   * Represents the merchant configured payment terms.
+   */
+  paymentTermsTemplate?: PaymentTermsTemplate;
+  /**
+   * Settings describing the behavior of the shipping address.
+   */
+  shippingAddress: ShippingAddressSettings;
+}
+
+/**
+ * Settings describing the behavior of the shipping address.
+ */
+export interface ShippingAddressSettings {
+  /**
+   * Describes whether the buyer can ship to any address during checkout.
+   */
+  isEditable: boolean;
+}
+
+/**
+ * Represents the payment terms template object.
+ */
+export interface PaymentTermsTemplate {
+  /**
+   * A globally-unique ID.
+   * @example 'gid://shopify/PaymentTermsTemplate/1'
+   */
+  id: string;
+  /**
+   * The name of the payment terms translated to the buyer's current language. See [localization.language](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-localization).
+   */
+  name: string;
+  /**
+   * The due date for net payment terms as a ISO 8601 formatted string `YYYY-MM-DDTHH:mm:ss.sssZ`.
+   */
+  dueDate?: string;
+  /**
+   * The number of days between the issued date and due date if using net payment terms.
+   */
+  dueInDays?: number;
+}
+
+/**
  * Information about a Store Credit Account.
  */
 export interface StoreCreditAccount {
@@ -1326,7 +1324,7 @@ export interface DeliveryGroup {
   /**
    * Whether delivery is required for the delivery group.
    */
-  deliveryRequired: boolean;
+  isDeliveryRequired: boolean;
 }
 
 /**

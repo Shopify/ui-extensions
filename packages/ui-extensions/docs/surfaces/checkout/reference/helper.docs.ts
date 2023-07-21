@@ -68,7 +68,7 @@ export function getExamples(
         tabs: getExtensionCodeTabs('default'),
       },
     },
-    // For examples specific to extension points that differ from the StandardApi, organize them into folders (<extension-point-name>/<example>).
+    // For examples specific to extension targets that differ from the StandardApi, organize them into folders (<extension-point-name>/<example>).
     'cart-line-details/default': {
       description: '',
       codeblock: {
@@ -113,12 +113,22 @@ export function getExamples(
     },
     api: {
       description: `
-The extension API is passed as a parameter to the extension point function.
+The extension API is passed as a parameter to the extension target function.
 In React, you can access it from any component through the \`useApi()\` hook.
       `,
       codeblock: {
         title: 'Accessing Properties',
         tabs: getExtensionCodeTabs('api'),
+      },
+    },
+    'extension-api': {
+      description: `
+The extension API is passed as a parameter to the extension target function.
+In React, you can access it from any component through the \`useExtensionApi()\` hook.
+      `,
+      codeblock: {
+        title: 'Accessing Properties',
+        tabs: getExtensionCodeTabs('extension-api'),
       },
     },
     'api-subscribable': {
@@ -171,16 +181,16 @@ See [localizing UI extensions](/docs/apps/checkout/best-practices/localizing-ui-
         ],
       },
     },
-    'extension-points': {
+    'extension-targets': {
       description: '',
       codeblock: {
         title: '',
         tabs: [
-          ...getExtensionCodeTabs('extension-points'),
+          ...getExtensionCodeTabs('extension-targets'),
           {
-            code: `${examplePath}/extension-points.example.toml`,
+            code: `${examplePath}/extension-targets.example.toml`,
             language: 'toml',
-            title: 'shopify.ui.extension.toml',
+            title: 'shopify.extension.toml',
           },
         ],
       },
@@ -196,7 +206,7 @@ See [settings](/docs/api/checkout-ui-extensions/configuration#settings-definitio
           {
             code: `${examplePath}/settings.example.toml`,
             language: 'toml',
-            title: 'shopify.ui.extension.toml',
+            title: 'shopify.extension.toml',
           },
         ],
       },
@@ -369,10 +379,10 @@ const links: {[key: string]: LinkType[]} = {
       type: 'ShippingMethodDetailsApi',
     },
     {
-      name: 'ExtensionPoints',
+      name: 'ExtensionTargets',
       subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
-      type: 'ExtensionPoints',
+      url: '/docs/api/checkout-ui-extensions/apis/extensiontargets',
+      type: 'ExtensionTargets',
     },
   ],
   configuration: [

@@ -1,6 +1,6 @@
 import type {
   CartLine,
-  RenderExtensionPoint,
+  RenderExtensionTarget,
   CartLineChangeResult,
   CartLineChange,
 } from '@shopify/ui-extensions/checkout';
@@ -15,9 +15,9 @@ import {useSubscription} from './subscription';
  * your component if line items are added, removed, or updated.
  */
 export function useCartLines<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): CartLine[] {
-  const {lines} = useApi<ID>();
+  const {lines} = useApi<Target>();
 
   return useSubscription(lines);
 }
@@ -26,9 +26,9 @@ export function useCartLines<
  * Returns a function to mutate the `lines` property of checkout.
  */
 export function useApplyCartLinesChange<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): (change: CartLineChange) => Promise<CartLineChangeResult> {
-  const api = useApi<ID>();
+  const api = useApi<Target>();
 
   if ('applyCartLinesChange' in api) {
     return api.applyCartLinesChange;
@@ -36,6 +36,6 @@ export function useApplyCartLinesChange<
 
   throw new ExtensionHasNoMethodError(
     'applyCartLinesChange',
-    api.extensionPoint,
+    api.extension.target,
   );
 }

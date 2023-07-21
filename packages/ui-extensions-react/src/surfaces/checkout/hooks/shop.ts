@@ -1,4 +1,7 @@
-import type {RenderExtensionPoint, Shop} from '@shopify/ui-extensions/checkout';
+import type {
+  RenderExtensionTarget,
+  Shop,
+} from '@shopify/ui-extensions/checkout';
 
 import {useApi} from './api';
 
@@ -6,7 +9,7 @@ import {useApi} from './api';
  * Returns the `Shop` where the checkout is taking place.
  */
 export function useShop<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Shop {
-  return useApi<ID>().shop;
+  return useApi<Target>().shop;
 }

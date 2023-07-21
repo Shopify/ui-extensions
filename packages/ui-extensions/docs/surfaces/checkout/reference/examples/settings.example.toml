@@ -1,20 +1,23 @@
-type = "checkout_ui_extension"
-name = "my-checkout-extension"
+api_version = "2023-07"
 
-extension_points = [
-  'Checkout::Dynamic::Render'
-]
+[[extensions]]
+name = "My checkout extension"
+handle = "checkout-ui"
+type = "ui_extension"
 
-[settings]
-  [[settings.fields]]
-  key = "banner_title"
-  type = "single_line_text_field"
-  name = "Banner title"
-  description = "Enter a title for the banner."
-    [[settings.fields.validations]]
+  [[extensions.targeting]]
+  target = "Checkout::Dynamic::Render"
+  module = "./CheckoutDynamicRender.jsx"
+
+  [extensions.settings]
+    [[extensions.settings.fields]]
+    key = "banner_title"
+    type = "single_line_text_field"
+    name = "Banner title"
+    description = "Enter a title for the banner."
+    [[extensions.settings.fields.validations]]
     name = "min"
     value = "5"
-    [[settings.fields.validations]]
+    [[extensions.settings.fields.validations]]
     name = "max"
     value = "20"
-

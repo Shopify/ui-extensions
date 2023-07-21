@@ -817,6 +817,8 @@ export type StorefrontApiVersion =
   | '2022-07'
   | '2022-10'
   | '2023-01'
+  | '2023-04'
+  | '2023-07'
   | 'unstable';
 
 /**
@@ -864,4 +866,105 @@ export interface Attribute {
    * The value for the attribute.
    */
   value: string;
+}
+
+export interface MailingAddress {
+  /**
+   * The buyer's full name.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'John Doe'
+   */
+  name?: string;
+
+  /**
+   * The buyer's first name.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'John'
+   */
+  firstName?: string;
+
+  /**
+   * The buyer's last name.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'Doe'
+   */
+  lastName?: string;
+
+  /**
+   * The buyer's company name.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'Shopify'
+   */
+  company?: string;
+
+  /**
+   * The first line of the buyer's address, including street name and number.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example '151 O'Connor Street'
+   */
+  address1?: string;
+
+  /**
+   * The second line of the buyer's address, like apartment number, suite, etc.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'Ground floor'
+   */
+  address2?: string;
+
+  /**
+   * The buyer's city.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'Ottawa'
+   */
+  city?: string;
+
+  /**
+   * The buyer's postal or ZIP code.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'K2P 2L8'
+   */
+  zip?: string;
+
+  /**
+   * The ISO 3166 Alpha-2 format for the buyer's country. Refer to https://www.iso.org/iso-3166-country-codes.html.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'CA' for Canada.
+   */
+  countryCode?: CountryCode;
+
+  /**
+   * The buyer's province code, such as state, province, prefecture, or region.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'ON' for Ontario.
+   */
+  provinceCode?: string;
+
+  /**
+   * The buyer's phone number.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example '+1 613 111 2222'.
+   */
+  phone?: string;
 }

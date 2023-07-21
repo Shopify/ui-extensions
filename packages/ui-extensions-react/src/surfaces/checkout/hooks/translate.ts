@@ -1,6 +1,6 @@
 import {isValidElement, cloneElement, useCallback} from 'react';
 import type {
-  RenderExtensionPoint,
+  RenderExtensionTarget,
   I18nTranslate,
 } from '@shopify/ui-extensions/checkout';
 import type {RemoteComponentType} from '@remote-ui/types';
@@ -11,9 +11,9 @@ import {useApi} from './api';
  * Returns the `I18nTranslate` interface used to translate strings.
  */
 export function useTranslate<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): I18nTranslate {
-  const {i18n} = useApi<ID>();
+  const {i18n} = useApi<Target>();
 
   const translate = useCallback<I18nTranslate>(
     (...args) => {

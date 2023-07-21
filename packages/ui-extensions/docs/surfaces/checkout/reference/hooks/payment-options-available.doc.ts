@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       name: 'useSelectedPaymentOptions',
       subtitle: 'Hook',
-      url: '/docs/api/checkout-ui-extensions/unstable/react-hooks/payments/useselectedpaymentoptions',
+      url: '/docs/api/checkout-ui-extensions/react-hooks/payments/useselectedpaymentoptions',
       type: 'UseSelectedPaymentOptionsGeneratedType',
     },
     ...getLinksByTag('apis'),

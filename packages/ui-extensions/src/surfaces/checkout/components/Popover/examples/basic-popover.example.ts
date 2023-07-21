@@ -6,7 +6,7 @@ import {
   TextBlock,
 } from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('Checkout::Dynamic::Render', (root) => {
   const popoverFragment = root.createFragment();
   const popover = root.createComponent(Popover, {}, [
     root.createComponent(View, {maxInlineSize: 200, padding: 'base'}, [

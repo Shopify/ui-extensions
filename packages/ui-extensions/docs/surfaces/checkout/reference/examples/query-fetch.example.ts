@@ -4,7 +4,7 @@ import {
   ListItem,
 } from '@shopify/ui-extensions/checkout';
 
-extension(
+export default extension(
   'Checkout::Dynamic::Render',
   (root, {shop}) => {
     const apiVersion = 'unstable';

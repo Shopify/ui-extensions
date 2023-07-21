@@ -1,6 +1,6 @@
 import {extension, BlockLayout, View} from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('Checkout::Dynamic::Render', (root) => {
   const blockLayout = root.createComponent(
     BlockLayout,
     {

@@ -1,6 +1,6 @@
 import {useEffect, useRef} from 'react';
 import type {
-  RenderExtensionPoint,
+  RenderExtensionTarget,
   Interceptor,
   BuyerJourney,
 } from '@shopify/ui-extensions/checkout';
@@ -12,9 +12,9 @@ import {useSubscription} from './subscription';
  * Returns the `buyerJourney` details on buyer progression in checkout.
  */
 export function useBuyerJourney<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): BuyerJourney {
-  return useApi<ID>().buyerJourney;
+  return useApi<Target>().buyerJourney;
 }
 
 /**
@@ -23,9 +23,9 @@ export function useBuyerJourney<
  * For example, when viewing the order status page after submitting payment, the buyer will have completed their order.
  */
 export function useBuyerJourneyCompleted<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): boolean {
-  const buyerJourney = useApi<ID>().buyerJourney;
+  const buyerJourney = useApi<Target>().buyerJourney;
   const buyerJourneyCompleted = useSubscription(buyerJourney.completed);
 
   return buyerJourneyCompleted;
@@ -41,9 +41,9 @@ export function useBuyerJourneyCompleted<
  * either by passing validation errors to the checkout UI or rendering the errors in your extension.
  */
 export function useBuyerJourneyIntercept<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(interceptor: Interceptor): void {
-  const buyerJourney = useApi<ID>().buyerJourney;
+  const buyerJourney = useApi<Target>().buyerJourney;
   const interceptorRef = useRef(interceptor);
   interceptorRef.current = interceptor;
 

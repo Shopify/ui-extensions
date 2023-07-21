@@ -1,5 +1,5 @@
 import type {
-  RenderExtensionPoint,
+  RenderExtensionTarget,
   AppMetafieldEntryTarget,
   Metafield,
   AppMetafieldEntry,
@@ -25,9 +25,9 @@ type AppMetafieldFilterKeys = keyof AppMetafieldFilters;
  * @arg {AppMetafieldFilters} - filter the list of returned metafields
  */
 export function useAppMetafields<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(filters: AppMetafieldFilters = {}): AppMetafieldEntry[] {
-  const appMetafields = useSubscription(useApi<ID>().appMetafields);
+  const appMetafields = useSubscription(useApi<Target>().appMetafields);
 
   return useMemo(() => {
     if (filters.key && !filters.namespace) {
