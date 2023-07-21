@@ -5,6 +5,7 @@ import type {
   StandardApi,
   CustomerSegmentationTemplateApi,
   ActionExtensionApi,
+  BlockExtensionApi,
   ProductDetailsConfigurationApi,
   ProductVariantDetailsConfigurationApi,
 } from './api';
@@ -52,7 +53,7 @@ export interface ExtensionTargets {
    * Renders an Admin Block in the product details page.
    */
   'admin.product-details.block.render': RenderExtension<
-    StandardApi<'admin.product-details.block.render'>,
+    BlockExtensionApi<'admin.product-details.block.render'>,
     AnyComponent
   >;
 
@@ -60,7 +61,7 @@ export interface ExtensionTargets {
    * Renders an Admin Block in the order details page.
    */
   'admin.order-details.block.render': RenderExtension<
-    StandardApi<'admin.order-details.block.render'>,
+    BlockExtensionApi<'admin.order-details.block.render'>,
     AnyComponent
   >;
 
@@ -68,7 +69,7 @@ export interface ExtensionTargets {
    * Renders an Admin Block in the customer details page.
    */
   'admin.customer-details.block.render': RenderExtension<
-    StandardApi<'admin.customer-details.block.render'>,
+    BlockExtensionApi<'admin.customer-details.block.render'>,
     AnyComponent
   >;
 
