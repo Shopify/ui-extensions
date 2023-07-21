@@ -17,7 +17,7 @@ export function useApplyPaymentMethodAttributesChange(): (
   if (!api.applyPaymentMethodAttributesChange) {
     throw new ExtensionHasNoMethodError(
       'useApplyPaymentMethodAttributesChange',
-      api.extensionPoint,
+      api.extension.target,
     );
   }
   return api.applyPaymentMethodAttributesChange;

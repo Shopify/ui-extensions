@@ -1,4 +1,4 @@
-import {Currency, RenderExtensionPoint} from '@shopify/ui-extensions/checkout';
+import {Currency, RenderExtensionTarget} from '@shopify/ui-extensions/checkout';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -8,9 +8,9 @@ import {useSubscription} from './subscription';
  * your component if the currency changes.
  */
 export function useCurrency<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Currency {
-  const {localization} = useApi<ID>();
+  const {localization} = useApi<Target>();
 
   return useSubscription(localization.currency);
 }

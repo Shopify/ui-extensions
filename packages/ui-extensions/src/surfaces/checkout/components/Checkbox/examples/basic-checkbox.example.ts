@@ -1,6 +1,6 @@
 import {extension, Checkbox} from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('Checkout::Dynamic::Render', (root) => {
   const checkbox = root.createComponent(
     Checkbox,
     {id: 'checkbox', name: 'checkbox'},

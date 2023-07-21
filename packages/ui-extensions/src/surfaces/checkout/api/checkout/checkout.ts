@@ -1,4 +1,4 @@
-import {Attribute, SellingPlan} from '../shared';
+import {Attribute, SellingPlan, MailingAddress} from '../shared';
 
 /**
  * Removes a note
@@ -441,6 +441,71 @@ export type MetafieldChangeResult =
   | MetafieldChangeResultSuccess
   | MetafieldChangeResultError;
 
+export interface ShippingAddressUpdateChange {
+  /**
+   * The type of the `ShippingAddressUpdateChange` API.
+   */
+  type: 'updateShippingAddress';
+
+  /**
+   * Fields to update in the shipping address. You only need to provide
+   * values for the fields you want to update — any fields you do not list
+   * will keep their current values.
+   */
+  address: Partial<MailingAddress>;
+}
+
+export type ShippingAddressChange = ShippingAddressUpdateChange;
+
+/**
+ * The returned result of a successful update to the shipping address.
+ */
+export interface ShippingAddressChangeResultSuccess {
+  /**
+   * The type of the `ShippingAddressChangeResultSuccess` API.
+   */
+  type: 'success';
+
+  errors: null;
+}
+
+/**
+ * An error corresponding to a particular field from a given change
+ */
+export interface ShippingAddressChangeFieldError {
+  /**
+   * field key from MailingAddress where the error occurred
+   */
+  field?: keyof MailingAddress;
+
+  /**
+   * A message that explains the error. This message is useful for debugging.
+   * It is **not** localized, and therefore should not be presented directly
+   * to the buyer.
+   */
+  message: string;
+}
+
+/**
+ * The returned result of an update to the shipping address
+ * with a messages detailing the type of errors that occurred.
+ */
+export interface ShippingAddressChangeResultError {
+  /**
+   * The type of the `ShippingAddressChangeResultError` API.
+   */
+  type: 'error';
+
+  /**
+   * The errors corresponding to particular fields from a given change
+   */
+  errors: ShippingAddressChangeFieldError[];
+}
+
+export type ShippingAddressChangeResult =
+  | ShippingAddressChangeResultSuccess
+  | ShippingAddressChangeResultError;
+
 export interface CheckoutApi {
   /**
    * Performs an update on an attribute attached to the cart and checkout. If
@@ -503,4 +568,21 @@ export interface CheckoutApi {
    * > Note: This method will return an error if the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyNoteChange(change: NoteChange): Promise<NoteChangeResult>;
+
+  /**
+   * @private
+   */
+  experimentalIsShopAppStyle?: boolean;
+
+  /**
+   * Performs an update of the shipping address. Shipping address changes will
+   * completely overwrite the existing shipping address added by the user without
+   * any prompts. If successful, this mutation results in an update to the value
+   * retrieved through the `shippingAddress` property.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  applyShippingAddressChange?(
+    change: ShippingAddressChange,
+  ): Promise<ShippingAddressChangeResult>;
 }

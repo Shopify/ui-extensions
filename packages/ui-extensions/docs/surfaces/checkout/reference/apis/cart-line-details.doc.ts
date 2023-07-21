@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'The API provided to extensions which target cart line details.',
   description: `
-This API object is provided to extensions registered for the \`Checkout::CartLineDetails::RenderAfter\` extension point.
+This API object is provided to extensions registered for the \`Checkout::CartLineDetails::RenderAfter\` extension target.
 
 It extends the [StandardApi](/docs/api/checkout-ui-extensions/apis/standardapi) and provides the [target](#properties-propertydetail-target) cart line item associated with the extension.
 `,

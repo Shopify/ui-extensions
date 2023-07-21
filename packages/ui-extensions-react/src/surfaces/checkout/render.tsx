@@ -3,33 +3,33 @@ import {Component} from 'react';
 import {render as remoteRender} from '@remote-ui/react';
 import {extension} from '@shopify/ui-extensions/checkout';
 import type {
-  ExtensionPoints,
-  RenderExtensionPoint,
+  ExtensionTargets,
+  RenderExtensionTarget,
   ApiForRenderExtension,
 } from '@shopify/ui-extensions/checkout';
 
 import {ExtensionApiContext} from './context';
 
 /**
- * Registers your React-based UI Extension to run for the selected extension point.
+ * Registers your React-based UI Extension to run for the selected extension target.
  * Additionally, this function will automatically provide the extension API as React
  * context, which you can access anywhere in your extension by using the `useApi()`
  * hook.
  *
- * @param target The extension point you are registering for. This extension
- * point must be a `RenderExtensionPoint`; if you are trying to register for a non-
- * rendering extension point, like `Checkout::PostPurchase::ShouldRender`, use the
+ * @param target The extension target you are registering for. This extension
+ * target must be a `RenderExtensionTarget`; if you are trying to register for a non-
+ * rendering extension target, like `Checkout::PostPurchase::ShouldRender`, use the
  * `extension()` function provided by this library instead.
  *
  * @param render The function that will be called when Checkout begins rendering
  * your extension. This function is called with the API checkout provided to your
  * extension, and must return a React element that will be rendered into the extension
- * point you specified.
+ * target you specified.
  */
-export function reactExtension<ExtensionPoint extends RenderExtensionPoint>(
-  target: ExtensionPoint,
-  render: (api: ApiForRenderExtension<ExtensionPoint>) => ReactElement<any>,
-): ExtensionPoints[ExtensionPoint] {
+export function reactExtension<Target extends RenderExtensionTarget>(
+  target: Target,
+  render: (api: ApiForRenderExtension<Target>) => ReactElement<any>,
+): ExtensionTargets[Target] {
   // TypeScript can’t infer the type of the callback because it’s a big union
   // type. To get around it, we’ll just fake like we are rendering the
   // Checkout::Dynamic::Render extension, since all render extensions have the same general
@@ -40,7 +40,7 @@ export function reactExtension<ExtensionPoint extends RenderExtensionPoint>(
         remoteRender(
           <ExtensionApiContext.Provider value={api}>
             <ErrorBoundary>
-              {render(api as ApiForRenderExtension<ExtensionPoint>)}
+              {render(api as ApiForRenderExtension<Target>)}
             </ErrorBoundary>
           </ExtensionApiContext.Provider>,
           root,
@@ -59,25 +59,27 @@ export function reactExtension<ExtensionPoint extends RenderExtensionPoint>(
 }
 
 /**
- * Registers your React-based UI Extension to run for the selected extension point.
+ * Registers your React-based UI Extension to run for the selected extension target.
  * Additionally, this function will automatically provide the extension API as React
  * context, which you can access anywhere in your extension by using the `useApi()`
  * hook.
  *
- * @param target The extension point you are registering for. This extension
- * point must be a `RenderExtensionPoint`; if you are trying to register for a non-
- * rendering extension point, like `Checkout::PostPurchase::ShouldRender`, use the
+ * @param target The extension target you are registering for. This extension
+ * target must be a `RenderExtensionTarget`; if you are trying to register for a non-
+ * rendering extension target, like `Checkout::PostPurchase::ShouldRender`, use the
  * `extension()` function provided by this library instead.
  *
  * @param render The function that will be called when Checkout begins rendering
  * your extension. This function is called with the API checkout provided to your
  * extension, and must return a React element that will be rendered into the extension
- * point you specified.
+ * target you specified.
+ *
+ * @deprecated This is deprecated. Use `reactExtension` instead.
  */
-export function render<ExtensionPoint extends RenderExtensionPoint>(
-  target: ExtensionPoint,
-  render: (api: ApiForRenderExtension<ExtensionPoint>) => ReactElement<any>,
-): ExtensionPoints[ExtensionPoint] {
+export function render<Target extends RenderExtensionTarget>(
+  target: Target,
+  render: (api: ApiForRenderExtension<Target>) => ReactElement<any>,
+): ExtensionTargets[Target] {
   return reactExtension(target, render);
 }
 

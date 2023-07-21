@@ -9,12 +9,22 @@ import {
   View,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension('Checkout::Dynamic::Render', () => <Extension />);
+export default reactExtension(
+  'Checkout::Dynamic::Render',
+  () => <Extension />,
+);
 
 function Extension() {
   return (
-    <Form onSubmit={() => console.log('onSubmit event')}>
-      <Grid columns={['50%', '50%']} spacing="base">
+    <Form
+      onSubmit={() =>
+        console.log('onSubmit event')
+      }
+    >
+      <Grid
+        columns={['50%', '50%']}
+        spacing="base"
+      >
         <View>
           <TextField label="First name" />
         </View>
@@ -26,7 +36,9 @@ function Extension() {
         </GridItem>
       </Grid>
       <BlockSpacer spacing="base" />
-      <Button accessibilityRole="submit">Submit</Button>
+      <Button accessibilityRole="submit">
+        Submit
+      </Button>
     </Form>
   );
 }

@@ -19,7 +19,7 @@ function createMockCustomer(customer = {}) {
     firstName,
     lastName,
     email: faker.internet.email(),
-    phone: faker.phone.phoneNumber(),
+    phone: faker.phone.number(),
     ...customer,
   };
 }
@@ -151,7 +151,7 @@ describe('buyerIdentity Hooks', () => {
     });
 
     it('returns phone with CustomerPersonalData and CustomerEmail ApprovalScopes', () => {
-      const phone = faker.phone.phoneNumber();
+      const phone = faker.phone.number();
       const hook = mount.hook(() => usePhone(), createUsePhoneContext(phone));
       expect(hook?.current).toBe(phone);
     });

@@ -5,6 +5,7 @@ export type {
   Capability,
   CartCost,
   CartLineCost,
+  CheckoutSettings,
   Customer,
   Editor,
   Extension,
@@ -15,6 +16,7 @@ export type {
   ImageDetails,
   Product,
   ProductVariant,
+  PurchasingCompany,
   SelectedOption,
   SessionToken,
   Money,
@@ -22,13 +24,11 @@ export type {
   Storage,
   Shop,
   Version,
-  MailingAddress,
   Metafield,
   AppMetafield,
   AppMetafieldEntryTarget,
   AppMetafieldEntry,
   CartLine,
-  PresentmentCartLine,
   PaymentOption,
   SelectedPaymentOption,
   CartDiscountCode,
@@ -63,6 +63,7 @@ export type {
   SellingPlan,
   StorefrontApiVersion,
   ValidationError,
+  MailingAddress,
 } from './api/shared';
 
 export type {
@@ -73,6 +74,7 @@ export type {
   RedeemableChangeResultSuccess,
   RedeemableRenderApi,
 } from './api/redeemable/render';
+
 export type {
   AttributeChange,
   AttributeChangeResult,
@@ -107,6 +109,11 @@ export type {
   NoteChangeResult,
   NoteChangeResultSuccess,
   NoteChangeResultError,
+  ShippingAddressChange,
+  ShippingAddressChangeFieldError,
+  ShippingAddressChangeResult,
+  ShippingAddressChangeResultError,
+  ShippingAddressChangeResultSuccess,
   CheckoutApi,
 } from './api/checkout/checkout';
 export type {Order, OrderStatusApi} from './api/order-status/order-status';

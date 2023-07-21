@@ -1,6 +1,6 @@
 import type {
   DeliveryGroup,
-  RenderExtensionPoint,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/checkout';
 
 import {useApi} from './api';
@@ -11,9 +11,9 @@ import {useSubscription} from './subscription';
  * your component when delivery address or delivery option selection changes.
  */
 export function useDeliveryGroups<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): DeliveryGroup[] {
-  const {deliveryGroups} = useApi<ID>();
+  const {deliveryGroups} = useApi<Target>();
 
   return useSubscription(deliveryGroups);
 }

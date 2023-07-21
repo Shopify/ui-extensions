@@ -1,4 +1,4 @@
-import {Market, RenderExtensionPoint} from '@shopify/ui-extensions/checkout';
+import {Market, RenderExtensionTarget} from '@shopify/ui-extensions/checkout';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -8,9 +8,9 @@ import {useSubscription} from './subscription';
  * your component if it changes.
  */
 export function useLocalizationMarket<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Market | undefined {
-  const {localization} = useApi<ID>();
+  const {localization} = useApi<Target>();
 
   return useSubscription(localization.market);
 }

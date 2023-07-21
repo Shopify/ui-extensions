@@ -3,7 +3,7 @@ import {
   Banner,
 } from '@shopify/ui-extensions/checkout';
 
-extension(
+export default extension(
   'Checkout::Dynamic::Render',
   (root, {settings}) => {
     const banner = root.createComponent(Banner, {

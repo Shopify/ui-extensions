@@ -1,0 +1,29 @@
+api_version = "2023-07"
+
+[[extensions]]
+name = "My checkout extension"
+handle = "checkout-ui"
+type = "ui_extension"
+
+  [[extensions.targeting]]
+  target = "Checkout::Actions::RenderBefore"
+  module = "./index.jsx"
+  export = "checkoutActions"
+
+  [[extensions.targeting]]
+  target = "Checkout::DeliveryAddress::RenderBefore"
+  module = "./index.jsx"
+  export = "deliveryAddress"
+
+  [[extensions.targeting]]
+  target = "Checkout::ShippingMethods::RenderAfter"
+  module = "./index.jsx"
+  export = "shippingMethods"
+
+  [[extensions.targeting]]
+  target = "Checkout::Dynamic::Render"
+  module = "./index.jsx"
+  export = "dynamic"
+
+
+

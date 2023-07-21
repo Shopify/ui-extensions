@@ -1,6 +1,10 @@
-import {Style, View} from '@shopify/ui-extensions-react/checkout';
+import {
+  reactExtension,
+  Style,
+  View,
+} from '@shopify/ui-extensions-react/checkout';
 
-reactExtension('Checkout::Dynamic::Render', () => <Extension />);
+export default reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
 function Extension() {
   return (

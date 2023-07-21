@@ -6,7 +6,10 @@ import {
   InlineStack,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension('Checkout::Dynamic::Render', () => <Extension />);
+export default reactExtension(
+  'Checkout::Dynamic::Render',
+  () => <Extension />,
+);
 
 function Extension() {
   return (
@@ -15,7 +18,9 @@ function Extension() {
         name="choice"
         value="first"
         onChange={(value) => {
-          console.log(`onChange event with value: ${value}`);
+          console.log(
+            `onChange event with value: ${value}`,
+          );
         }}
       >
         <BlockStack>
@@ -28,12 +33,18 @@ function Extension() {
         name="choiceMultiple"
         value={['multipleFirst']}
         onChange={(value) => {
-          console.log(`onChange event with value: ${value}`);
+          console.log(
+            `onChange event with value: ${value}`,
+          );
         }}
       >
         <BlockStack>
-          <Choice id="multipleFirst">Gift message</Choice>
-          <Choice id="multipleSecond">Gift wrapping</Choice>
+          <Choice id="multipleFirst">
+            Gift message
+          </Choice>
+          <Choice id="multipleSecond">
+            Gift wrapping
+          </Choice>
         </BlockStack>
       </ChoiceList>
     </InlineStack>

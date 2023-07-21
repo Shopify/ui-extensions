@@ -3,8 +3,16 @@ import {
   SkeletonImage,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension('Checkout::Dynamic::Render', () => <Extension />);
+export default reactExtension(
+  'Checkout::Dynamic::Render',
+  () => <Extension />,
+);
 
 function Extension() {
-  return <SkeletonImage inlineSize={300} blockSize={300} />;
+  return (
+    <SkeletonImage
+      inlineSize={300}
+      blockSize={300}
+    />
+  );
 }

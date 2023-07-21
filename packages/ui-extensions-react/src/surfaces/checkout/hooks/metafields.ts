@@ -2,7 +2,7 @@ import type {
   Metafield,
   MetafieldChange,
   MetafieldChangeResult,
-  RenderExtensionPoint,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/checkout';
 import {useMemo} from 'react';
 
@@ -22,9 +22,9 @@ interface MetafieldsFilters {
  * @arg {MetafieldsFilters} - filter the list of returned metafields
  */
 export function useMetafields<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(filters?: MetafieldsFilters): Metafield[] {
-  const metaFields = useSubscription(useApi<ID>().metafields);
+  const metaFields = useSubscription(useApi<Target>().metafields);
 
   return useMemo(() => {
     if (filters) {
@@ -52,9 +52,9 @@ export function useMetafields<
  * Returns a function to mutate the `metafields` property of the checkout.
  */
 export function useApplyMetafieldsChange<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): (change: MetafieldChange) => Promise<MetafieldChangeResult> {
-  const api = useApi<ID>();
+  const api = useApi<Target>();
 
   if ('applyMetafieldChange' in api) {
     return api.applyMetafieldChange;
@@ -62,6 +62,6 @@ export function useApplyMetafieldsChange<
 
   throw new ExtensionHasNoMethodError(
     'applyMetafieldChange',
-    api.extensionPoint,
+    api.extension.target,
   );
 }

@@ -1,6 +1,6 @@
-# Standard extension point API
+# Standard extension target API
 
-This document outlines the API that is provided to every extension point. When the extension point renders UI (like `Checkout::PostPurchase::Render`), these properties are part of the second argument to an extension point. When the extension point does not render UI (like `Checkout::PostPurchase::ShouldRender`), these properties are part of the first argument.
+This document outlines the API that is provided to every extension target. When the extension target renders UI (like `Checkout::PostPurchase::Render`), these properties are part of the second argument to an extension target. When the extension target does not render UI (like `Checkout::PostPurchase::ShouldRender`), these properties are part of the first argument.
 
 ## `locale`
 
@@ -12,13 +12,15 @@ The UI extension renderer version being used for the extension. Currently, there
 
 ## `extensionPoint`
 
-The extension point that was run. This can be useful if you register a single function to handle more than one extension point:
+The extension target that was run. This can be useful if you register a single function to handle more than one extension target:
 
 ```ts
-import {extend} from '@shopify/ui-extensions/checkout';
+import {extension} from '@shopify/ui-extensions/checkout';
 
-extend('FirstExtensionPoint', handleExtensionPoint);
-extend('SecondExtensionPoint', handleExtensionPoint);
+const first = extension('FirstExtensionPoint', handleExtensionPoint);
+const second = extension('SecondExtensionPoint', handleExtensionPoint);
+
+export {first, second};
 
 function handleExtensionPoint(input) {
   switch (input.extensionPoint) {
@@ -39,9 +41,9 @@ function handleExtensionPoint(input) {
 The `lineItems` property gives you access to the merchandise the buyer is purchasing through checkout. Like other resources in checkout, this value is wrapped in a `StatefulRemoteSubscribable` in order to give your extension a way to subscribe to changes to the line items. These changes can happen when there are stock problems that require the buyer to change the contents of their cart, or when other extensions change the line items through the `applyLineItemChange()` APIs documented below.
 
 ```ts
-import {extend} from '@shopify/ui-extensions/checkout';
+import {extension} from '@shopify/ui-extensions/checkout';
 
-extend('ExtensionPoint', (root, {lineItems}) => {
+export default extension('ExtensionPoint', (root, {lineItems}) => {
   const text = root.createText(
     `Your line items are: ${JSON.stringify(lineItems.current)}`,
   );
@@ -59,14 +61,14 @@ The `ui` property offers a set of methods to interact with the extension's UI.
 
 ```ts
 import {
-  extend,
+  extension,
   Button,
   Link,
   Modal,
   TextBlock,
 } from '@shopify/ui-extensions/checkout';
 
-extend('ExtensionPoint', (root, {ui}) => {
+export default extension('ExtensionPoint', (root, {ui}) => {
   const modalFragment = root.createFragment();
   const modal = root.createComponent(
     Modal,

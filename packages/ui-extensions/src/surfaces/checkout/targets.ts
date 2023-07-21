@@ -15,23 +15,23 @@ type Components = typeof import('./components');
 
 type AllComponents = Components[keyof Components];
 /**
- * A UI extension will register for one or more extension points using `shopify.extend()`.
- * An extension point in a UI extension is a plain JavaScript function.
+ * A UI extension will register for one or more extension targets using `shopify.extend()`.
+ * An extension target in a UI extension is a plain JavaScript function.
  * This function receives some API for interacting with the application,
  * and is expected to return a value in a specific shape.
  * The input arguments and the output type are different
- * for each extension point.
+ * for each extension target.
  */
-export interface ExtensionPoints {
+export interface ExtensionTargets {
   /**
-   * A static extension point that is rendered immediately before any actions within each step.
+   * A static extension target that is rendered immediately before any actions within each step.
    */
   'Checkout::Actions::RenderBefore': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Actions::RenderBefore'>,
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after all line items.
+   * A static extension target that is rendered after all line items.
    */
   'Checkout::CartLines::RenderAfter': RenderExtension<
     CheckoutApi &
@@ -40,7 +40,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that renders on every line item, inside the details
+   * A static extension target that renders on every line item, inside the details
    * under the line item properties element.
    */
   'Checkout::CartLineDetails::RenderAfter': RenderExtension<
@@ -51,14 +51,23 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered immediately after the contact form element.
+   * A static extension target that renders on every line item, inside the details
+   * under the line item properties element. It replaces the default component rendering.
+   */
+  'Checkout::CartLineDetails::RenderLineComponents': RenderExtension<
+    CartLineDetailsApi &
+      StandardApi<'Checkout::CartLineDetails::RenderLineComponents'>,
+    AllComponents
+  >;
+  /**
+   * A static extension target that is rendered immediately after the contact form element.
    */
   'Checkout::Contact::RenderAfter': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Contact::RenderAfter'>,
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after a purchase below the customer information.
+   * A static extension target that is rendered after a purchase below the customer information.
    */
   'Checkout::CustomerInformation::RenderAfter': RenderExtension<
     OrderStatusApi &
@@ -67,7 +76,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered between the shipping address header
+   * A static extension target that is rendered between the shipping address header
    * and shipping address form elements.
    */
   'Checkout::DeliveryAddress::RenderBefore': RenderExtension<
@@ -75,24 +84,24 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A [dynamic extension point](https://shopify.dev/docs/api/checkout-ui-extensions/extension-points-overview#dynamic-extension-points) that isn't tied to a specific checkout section or feature.
-   * Unlike static extension points, dynamic extension points render where the merchant
+   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that isn't tied to a specific checkout section or feature.
+   * Unlike static extension targets, dynamic extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-points-overview#supported-locations) for dynamic extension points can be previewed during development
-   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-points).
+   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
+   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
    */
   'Checkout::Dynamic::Render': RenderExtension<
     CheckoutApi & OrderStatusApi & StandardApi<'Checkout::Dynamic::Render'>,
     AllComponents
   >;
   /**
-   * A [dynamic extension point](https://shopify.dev/docs/api/checkout-ui-extensions/extension-points-overview#dynamic-extension-points) that renders exclusively on the Thank You Page.
-   * Unlike static extension points, dynamic extension points render where the merchant
+   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the Thank You Page.
+   * Unlike static extension targets, dynamic extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-points-overview#supported-locations) for dynamic extension points can be previewed during development
-   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-points).
+   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
+   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
    *
    */
   'Checkout::ThankYou::Dynamic::Render': RenderExtension<
@@ -101,7 +110,7 @@ export interface ExtensionPoints {
   >;
 
   /**
-   * A static extension point that renders on every line item, inside the details
+   * A static extension target that renders on every line item, inside the details
    * under the line item properties element on the Thank You Page.
    *
    */
@@ -111,7 +120,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after all line items on the Thank You page.
+   * A static extension target that is rendered after all line items on the Thank You page.
    *
    */
   'Checkout::ThankYou::CartLines::RenderAfter': RenderExtension<
@@ -119,7 +128,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after a purchase below the customer information on the Thank You page.
+   * A static extension target that is rendered after a purchase below the customer information on the Thank You page.
    *
    */
   'Checkout::ThankYou::CustomerInformation::RenderAfter': RenderExtension<
@@ -128,12 +137,12 @@ export interface ExtensionPoints {
   >;
 
   /**
-   * A [dynamic extension point](https://shopify.dev/docs/api/checkout-ui-extensions/extension-points-overview#dynamic-extension-points) that renders exclusively on the Order Status Page.
-   * Unlike static extension points, dynamic extension points render where the merchant
+   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the Order Status Page.
+   * Unlike static extension targets, dynamic extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-points-overview#supported-locations) for dynamic extension points can be previewed during development
-   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-points).
+   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
+   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
    *
    */
   'Checkout::OrderStatus::Dynamic::Render': RenderExtension<
@@ -141,7 +150,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that renders on every line item, inside the details
+   * A static extension target that renders on every line item, inside the details
    * under the line item properties element on the Order Status Page.
    *
    */
@@ -152,7 +161,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after all line items on the Order Status page.
+   * A static extension target that is rendered after all line items on the Order Status page.
    *
    */
   'Checkout::OrderStatus::CartLines::RenderAfter': RenderExtension<
@@ -161,7 +170,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after a purchase below the customer information on the Order Status page.
+   * A static extension target that is rendered after a purchase below the customer information on the Order Status page.
    *
    */
   'Checkout::OrderStatus::CustomerInformation::RenderAfter': RenderExtension<
@@ -170,7 +179,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that renders the gift card entry form fields after
+   * A static extension target that renders the gift card entry form fields after
    * the buyer ticks a box to use a gift card. This does not replace the
    * native gift card entry form which is rendered in a separate part of checkout.
    *
@@ -183,7 +192,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that renders the form fields for a payment method when selected by the buyer.
+   * A static extension target that renders the form fields for a payment method when selected by the buyer.
    *
    * @private
    */
@@ -194,7 +203,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that renders a form modal when a buyer selects the custom onsite payment method.
+   * A static extension target that renders a form modal when a buyer selects the custom onsite payment method.
    *
    * @private
    */
@@ -203,14 +212,14 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered in the order summary, before the discount form element.
+   * A static extension target that is rendered in the order summary, before the discount form element.
    */
   'Checkout::Reductions::RenderBefore': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Reductions::RenderBefore'>,
     AllComponents
   >;
   /**
-   * A static extension point that is rendered in the order summary, after the discount form
+   * A static extension target that is rendered in the order summary, after the discount form
    * and discount tag elements.
    */
   'Checkout::Reductions::RenderAfter': RenderExtension<
@@ -218,7 +227,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered between the shipping method
+   * A static extension target that is rendered between the shipping method
    * header and shipping method options.
    */
   'Checkout::ShippingMethods::RenderBefore': RenderExtension<
@@ -226,7 +235,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after the shipping method
+   * A static extension target that is rendered after the shipping method
    * options.
    */
   'Checkout::ShippingMethods::RenderAfter': RenderExtension<
@@ -236,7 +245,7 @@ export interface ExtensionPoints {
   /**
    * > Caution: This feature is in developer preview and is subject to change.
    *
-   * A static extension point that is rendered before pickup location options.
+   * A static extension target that is rendered before pickup location options.
    */
   'Checkout::PickupLocations::RenderBefore': RenderExtension<
     PickupLocationsApi &
@@ -247,7 +256,7 @@ export interface ExtensionPoints {
   /**
    * > Caution: This feature is in developer preview and is subject to change.
    *
-   * A static extension point that is rendered after pickup location options.
+   * A static extension target that is rendered after pickup location options.
    */
   'Checkout::PickupLocations::RenderAfter': RenderExtension<
     PickupLocationsApi &
@@ -258,7 +267,7 @@ export interface ExtensionPoints {
   /**
    * > Caution: This feature is in developer preview and is subject to change.
    *
-   * A static extension point that is rendered after the shipping method
+   * A static extension target that is rendered after the shipping method
    * details within the shipping method option list, for each option.
    */
   'Checkout::ShippingMethodDetails::RenderAfter': RenderExtension<
@@ -270,7 +279,7 @@ export interface ExtensionPoints {
   /**
    * > Caution: This feature is in developer preview and is subject to change.
    *
-   * A static extension point that is rendered under the shipping method
+   * A static extension target that is rendered under the shipping method
    * within the shipping method option list, for each option.
    */
   'Checkout::ShippingMethodDetails::RenderExpanded': RenderExtension<
@@ -282,7 +291,7 @@ export interface ExtensionPoints {
   /**
    * > Caution: This feature is in developer preview and is subject to change.
    *
-   * A static extension point that is rendered immediately before the pickup points.
+   * A static extension target that is rendered immediately before the pickup points.
    */
   'Checkout::PickupPoints::RenderBefore': RenderExtension<
     PickupPointsApi &
@@ -293,7 +302,7 @@ export interface ExtensionPoints {
   /**
    * > Caution: This feature is in developer preview and is subject to change.
    *
-   * A static extension point that is rendered immediately after the pickup points.
+   * A static extension target that is rendered immediately after the pickup points.
    */
   'Checkout::PickupPoints::RenderAfter': RenderExtension<
     PickupPointsApi &
@@ -303,42 +312,42 @@ export interface ExtensionPoints {
   >;
 }
 
-export type ExtensionPoint = keyof ExtensionPoints;
+export type ExtensionTarget = keyof ExtensionTargets;
 
 /**
- * For a given extension point, returns the value that is expected to be
- * returned by that extension point’s callback type.
+ * For a given extension target, returns the value that is expected to be
+ * returned by that extension target’s callback type.
  */
-export type ReturnTypeForExtension<ID extends keyof ExtensionPoints> =
-  ReturnType<ExtensionPoints[ID]>;
+export type ReturnTypeForExtension<Target extends keyof ExtensionTargets> =
+  ReturnType<ExtensionTargets[Target]>;
 
 /**
- * For a given extension point, returns the tuple of arguments that would
- * be provided to that extension point’s callback type.
+ * For a given extension target, returns the tuple of arguments that would
+ * be provided to that extension target’s callback type.
  */
-export type ArgumentsForExtension<ID extends keyof ExtensionPoints> =
-  Parameters<ExtensionPoints[ID]>;
+export type ArgumentsForExtension<Target extends keyof ExtensionTargets> =
+  Parameters<ExtensionTargets[Target]>;
 
 /**
- * A union type containing all of the extension points that follow the pattern of
+ * A union type containing all of the extension targets that follow the pattern of
  * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
  */
-export type RenderExtensionPoint = {
-  [ID in keyof ExtensionPoints]: ExtensionPoints[ID] extends RenderExtension<
+export type RenderExtensionTarget = {
+  [Target in keyof ExtensionTargets]: ExtensionTargets[Target] extends RenderExtension<
     any,
     any
   >
-    ? ID
+    ? Target
     : never;
-}[keyof ExtensionPoints];
+}[keyof ExtensionTargets];
 
 /**
  * A mapping of each “render extension” name to its callback type.
  */
 export type RenderExtensions = {
-  [ID in RenderExtensionPoint]: ExtensionPoints[ID];
+  [Target in RenderExtensionTarget]: ExtensionTargets[Target];
 };
 
 type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
@@ -352,18 +361,18 @@ type ExtractedAllowedComponentsFromRenderExtension<T> =
   T extends RenderExtension<any, infer Components> ? Components : never;
 
 /**
- * For a given rendering extension point, returns the type of the API that the
+ * For a given rendering extension target, returns the type of the API that the
  * extension will receive at runtime. This API type is the second argument to
- * the callback for that extension point. The first callback for all of the rendering
- * extension points each receive a `RemoteRoot` object.
+ * the callback for that extension target. The first callback for all of the rendering
+ * extension targets each receive a `RemoteRoot` object.
  */
-export type ApiForRenderExtension<ID extends keyof RenderExtensions> =
-  ExtractedApiFromRenderExtension<RenderExtensions[ID]>;
+export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
+  ExtractedApiFromRenderExtension<RenderExtensions[Target]>;
 
 /**
- * For a given rendering extension point, returns the UI components that the
- * extension point supports.
+ * For a given rendering extension target, returns the UI components that the
+ * extension target supports.
  */
 export type AllowedComponentsForRenderExtension<
-  ID extends keyof RenderExtensions,
-> = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[ID]>;
+  Target extends keyof RenderExtensions,
+> = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[Target]>;

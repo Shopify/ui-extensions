@@ -1,14 +1,16 @@
 import {extension} from '@shopify/ui-extensions/checkout';
 
-extension(
+export default extension(
   'Checkout::PickupLocations::RenderBefore',
-  (root, {locationFormVisible}) => {
+  (root, {isLocationFormVisible}) => {
     const content = root.createText(
-      getTextContent(locationFormVisible.current),
+      getTextContent(
+        isLocationFormVisible.current,
+      ),
     );
     root.appendChild(content);
 
-    locationFormVisible.subscribe(
+    isLocationFormVisible.subscribe(
       (updatedLocationFormVisible) => {
         content.updateText(
           getTextContent(
@@ -18,8 +20,10 @@ extension(
       },
     );
 
-    function getTextContent(locationFormVisible) {
-      if (locationFormVisible) {
+    function getTextContent(
+      isLocationFormVisible,
+    ) {
+      if (isLocationFormVisible) {
         return 'The customer is being asked to provide their location.';
       } else {
         return 'Pickup locations are being shown.';

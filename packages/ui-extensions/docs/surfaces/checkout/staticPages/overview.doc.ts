@@ -54,34 +54,34 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
-      anchorLink: 'extension-points',
-      title: 'Extension points',
-      sectionContent: `Extension points provide locations where merchants can insert custom content.
-        Static extension points are tied to core checkout features like contact information, shipping methods, and order summary line items.
-        Dynamic extension points can be displayed at any point in the checkout process and will always render regardless of which checkout features are available.
+      anchorLink: 'extension-targets',
+      title: 'Extension Targets',
+      sectionContent: `Extension targets provide locations where merchants can insert custom content.
+        Static extension targets are tied to core checkout features like contact information, shipping methods, and order summary line items.
+        Dynamic extension targets can be displayed at any point in the checkout process and will always render regardless of which checkout features are available.
         An example is a field to capture order notes from the customer.
         \n\nExtension UIs are rendered using [remote UI](https://github.com/Shopify/remote-ui),
         a fast and secure environment for custom [(non-DOM)](#constraints) UIs.`,
       sectionCard: [
         {
-          name: 'Extension points',
+          name: 'Extension targets',
           subtitle: 'Overview',
-          url: '/api/checkout-ui-extensions/extension-points-overview',
+          url: '/api/checkout-ui-extensions/extension-targets-overview',
           type: 'blocks',
         },
       ],
-      image: 'extension-points.png',
+      image: 'extension-targets.png',
       codeblock: {
-        title: 'Extension points',
+        title: 'Extension targets',
         tabs: [
           {
             title: 'React',
-            code: './examples/extension-points-react.tsx',
+            code: './examples/extension-targets-react.tsx',
             language: 'tsx',
           },
           {
             title: 'JS',
-            code: './examples/extension-points-js.ts',
+            code: './examples/extension-targets-js.ts',
             language: 'js',
           },
         ],
@@ -93,7 +93,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'configuration-file',
       title: 'Configuration file',
       sectionContent:
-        "When you create a checkout UI extension, the `shopify.ui.extension.toml` file is automatically generated in your checkout UI extension directory.  It contains the extension's configuration, which includes the extension name, extension points, metafields, capabilities, and settings definition.",
+        "When you create a checkout UI extension, the `shopify.ui.extension.toml` file is automatically generated in your checkout UI extension directory.  It contains the extension's configuration, which includes the extension name, extension targets, metafields, capabilities, and settings definition.",
       sectionCard: [
         {
           name: 'Configuration guide',
@@ -107,7 +107,7 @@ const data: LandingTemplateSchema = {
         tabs: [
           {
             title: 'toml',
-            code: './examples/configure-example.toml',
+            code: './examples/configuration/default.example.toml',
             language: 'toml',
           },
         ],
@@ -124,7 +124,7 @@ const data: LandingTemplateSchema = {
         {
           name: 'Checkout extensions API',
           subtitle: 'API reference',
-          url: '/api/checkout-ui-extensions/extension-points-api',
+          url: '/api/checkout-ui-extensions/extension-targets-api',
           type: 'blocks',
         },
       ],
@@ -151,7 +151,7 @@ const data: LandingTemplateSchema = {
       title: 'UI components',
       image: 'ui-components.gif',
       sectionContent:
-        "Checkout UI extensions provide UI components that a [rendering extension](/api/checkout-ui-extensions/extension-points-api#renderextension) can use to build an interface. Shopify renders the UI natively, so it's performant, accessible, and works in all of checkout's supported browsers. \n\nCheckout components are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the checkout experience. All components inherit a merchant's brand settings and the CSS cannot be altered or overridden.",
+        "Checkout UI extensions provide UI components that a [rendering extension](/api/checkout-ui-extensions/extension-targets-api#renderextension) can use to build an interface. Shopify renders the UI natively, so it's performant, accessible, and works in all of checkout's supported browsers. \n\nCheckout components are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the checkout experience. All components inherit a merchant's brand settings and the CSS cannot be altered or overridden.",
       sectionCard: [
         {
           name: 'Component library',

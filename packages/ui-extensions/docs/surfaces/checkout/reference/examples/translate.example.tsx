@@ -6,7 +6,7 @@ import {
   useTranslate,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension(
+export default reactExtension(
   'Checkout::Dynamic::Render',
   () => <Extension />,
 );

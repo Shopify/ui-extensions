@@ -6,7 +6,7 @@ import {
   Text,
 } from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('Checkout::Dynamic::Render', (root) => {
   const pressable = root.createComponent(
     Pressable,
     {

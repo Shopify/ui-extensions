@@ -1,20 +1,21 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
-  render,
+  reactExtension,
   Text,
-  useExtensionApi,
+  useApi,
   useSubscription,
 } from '@shopify/ui-extensions-react/checkout';
 
-render(
+export default reactExtension(
   'Checkout::ShippingMethodDetails::RenderAfter',
   () => <Extension />,
 );
 
 function Extension() {
   const {target, targetSelected} =
-    useExtensionApi();
-  const {title} = useSubscription(target);
+    useApi<'Checkout::ShippingMethodDetails::RenderAfter'>();
+  const shippingOption = useSubscription(target);
+  const title = shippingOption?.title;
 
   const selected = useSubscription(
     targetSelected,

@@ -54,7 +54,7 @@ describe('render()', () => {
     console.error = consoleError;
   });
 
-  it('calls extension() with the extension point', () => {
+  it('calls extension() with the extension target', () => {
     reactExtension('Checkout::Dynamic::Render', () => <></>);
     expect(extension).toHaveBeenCalledWith(
       'Checkout::Dynamic::Render',

@@ -3,9 +3,9 @@ import {
   reactExtension,
   Text,
   useApi,
-} from '@shopify/checkout-ui-extensions-react';
+} from '@shopify/ui-extensions-react/checkout';
 
-reactExtension(
+export default reactExtension(
   'Checkout::Dynamic::Render',
   () => <Extension />,
 );

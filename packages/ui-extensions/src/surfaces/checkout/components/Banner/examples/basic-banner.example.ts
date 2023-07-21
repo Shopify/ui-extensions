@@ -1,6 +1,6 @@
 import {extension, Banner} from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('Checkout::Dynamic::Render', (root) => {
   const banner = root.createComponent(Banner, {
     status: 'critical',
     title:
