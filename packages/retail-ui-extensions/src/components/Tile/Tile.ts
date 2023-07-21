@@ -3,9 +3,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 export interface TileProps {
   title: string;
   subtitle?: string;
-  enabled: boolean;
+  enabled?: boolean;
   destructive?: boolean;
-  onPress: () => void;
+  badgeValue?: number;
+  onPress?: () => void;
 }
 
 export const Tile = createRemoteComponent<'Tile', TileProps>('Tile');
