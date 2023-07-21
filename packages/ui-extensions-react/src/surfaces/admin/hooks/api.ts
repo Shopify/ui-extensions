@@ -13,7 +13,7 @@ import {AdminUIExtensionError} from '../errors';
  */
 export function useApi<
   ID extends RenderExtensionTarget = RenderExtensionTarget,
->(): ApiForRenderExtension<ID> {
+>(target?: ID): ApiForRenderExtension<ID> {
   const api = useContext(ExtensionApiContext);
 
   if (api == null) {
