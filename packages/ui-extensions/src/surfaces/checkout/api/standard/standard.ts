@@ -61,6 +61,17 @@ export type Capability = 'api_access' | 'network_access' | 'block_progress';
  */
 export interface Extension {
   /**
+   * The identifier that specifies where in Shopify’s UI your code is being
+   * injected. This will be one of the targets you have included in your
+   * extension’s configuration file.
+   *
+   * @example 'Checkout::Dynamic::Render'
+   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
+   */
+  target: import('../../extension-points').ExtensionPoint;
+
+  /**
    * The published version of the running extension point.
    *
    * For unpublished extensions, the value is `undefined`.
@@ -459,8 +470,13 @@ export interface StandardApi<
   extension: Extension;
 
   /**
-   * The identifier of the running extension point.
-   * @example 'Checkout::PostPurchase::Render'
+   * The identifier that specifies where in Shopify’s UI your code is being
+   * injected. This will be one of the targets you have included in your
+   * extension’s configuration file.
+   *
+   * @example 'Checkout::Dynamic::Render'
+   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    */
   extensionPoint: ExtensionPoint;
 
