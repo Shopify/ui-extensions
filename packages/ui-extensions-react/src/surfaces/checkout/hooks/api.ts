@@ -16,9 +16,9 @@ import {ExtensionApiContext} from '../context';
  *
  * For reference, see [ExtensionPoints](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensionpoints) to determine what API object will be returned by your extension point.
  */
-export function useApi<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): ApiForRenderExtension<ID> {
+export function useApi<ID extends RenderExtensionPoint = RenderExtensionPoint>(
+  _id?: ID,
+): ApiForRenderExtension<ID> {
   const api = useContext(ExtensionApiContext);
 
   if (api == null) {

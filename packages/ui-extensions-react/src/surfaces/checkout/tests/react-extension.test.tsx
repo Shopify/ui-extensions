@@ -54,16 +54,17 @@ describe('render()', () => {
     console.error = consoleError;
   });
 
-  it('calls extension() with the extension point', () => {
-    reactExtension('Checkout::Dynamic::Render', () => <></>);
+  it('calls extension() with the extension point', async () => {
+    await reactExtension('Checkout::Dynamic::Render', () => <></>);
+
     expect(extension).toHaveBeenCalledWith(
       'Checkout::Dynamic::Render',
       expect.any(Function),
     );
   });
 
-  it('reports errors thrown during reconcilation onto global this', () => {
-    reactExtension('Checkout::Dynamic::Render', () => {
+  it('reports errors thrown during reconcilation onto global this', async () => {
+    await reactExtension('Checkout::Dynamic::Render', () => {
       return <Thrown />;
     });
 
