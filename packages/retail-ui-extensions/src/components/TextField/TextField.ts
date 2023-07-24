@@ -30,15 +30,16 @@ export type EmbeddedElementProps =
   | PasswordProps;
 
 export interface NewTextFieldProps extends InputProps {}
+
+/**
+ * @deprecated
+ * This TextField component will only support NewTextFieldProps in version 2.0.0.
+ * Please migrate to using NewTextFieldProps as soon as possible.
+ */
 export interface TextFieldProps extends BaseTextFieldProps {
   rightElementStyle?: EmbeddedElementProps;
 }
 
-/**
- * @deprecated
- * This TextField component will be replaced by NewTextField in version 2.0.0.
- * Please migrate to using NewTextField as soon as possible.
- */
 export const TextField = createRemoteComponent<
   'TextField',
   TextFieldProps | NewTextFieldProps
