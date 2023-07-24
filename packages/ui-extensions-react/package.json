@@ -45,13 +45,16 @@
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.12",
     "@remote-ui/react": "4.5.x",
-    "@shopify/ui-extensions": "2022.10.6",
     "@types/react": ">=17.0.0 <18.0.0"
   },
   "peerDependencies": {
+    "@shopify/ui-extensions": "2022.10.x",
     "react": ">=17.0.0 <18.0.0"
   },
   "peerDependenciesMeta": {
+    "@shopify/ui-extensions": {
+      "optional": false
+    },
     "react": {
       "optional": false
     }
@@ -59,10 +62,8 @@
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
     "@quilted/react-testing": "^0.4.10",
+    "@shopify/ui-extensions": "2022.10.x",
     "react": "^17.0.0"
-  },
-  "resolutions": {
-    "@remote-ui/core": "2.1.x"
   },
   "files": [
     "build",
