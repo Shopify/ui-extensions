@@ -213,4 +213,6 @@ The following table shows the mapping of legacy target names to the new target n
 | Checkout::ThankYou::CustomerInformation::RenderAfter    | purchase.thank-you.customer-information.render-after            |
 | Checkout::ThankYou::Dynamic::Render                     | purchase.thank-you.block.render                                 |
 
+> **Note:** the targets starting with `customer-account.order-status.` are the new names for Order Status page extensions, and should be imported from `@shopify/ui-extensions/customer-account` instead of `@shopify/ui-extensions/checkout`.
+
 Make sure you update the target name both in your extension configuration file (with the `extensions.targeting.target` field) and in your extension’s source code.
