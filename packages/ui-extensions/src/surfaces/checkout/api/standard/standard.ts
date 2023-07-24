@@ -225,12 +225,14 @@ export type Version = string;
  *
  * @example translate("banner.title")
  */
-export type I18nTranslate<ReplacementType = string> = (
-  key: string,
-  options?: {[placeholderKey: string]: ReplacementType | string | number},
-) => ReplacementType extends string | number
-  ? string
-  : (string | ReplacementType)[];
+export interface I18nTranslate {
+  <ReplacementType = string>(
+    key: string,
+    options?: {[placeholderKey: string]: ReplacementType | string | number},
+  ): ReplacementType extends string | number
+    ? string
+    : (string | ReplacementType)[];
+}
 
 export interface I18n {
   /**
