@@ -172,12 +172,12 @@ const data: LandingTemplateSchema = {
         {
           title: 'Relative Urls',
           description:
-            'Relative urls are relative to the extension you are creating. This is useful when you want to link to a route within your extension.',
+            'Relative urls are relative to your app and are useful when you want to link to a route within your app. This works for both embedded and non-embedded apps.',
           codeblock: {
             title: '/relative/urls',
             tabs: [
               {
-                title: 'Link to route in your extension',
+                title: 'Link to route in your app',
                 language: 'tsx',
                 code: '<Link to={`/reviews/${product.id}`} />',
               },
