@@ -28,34 +28,41 @@ import {ExtensionApiContext} from './context';
  */
 export function reactExtension<ExtensionPoint extends RenderExtensionPoint>(
   target: ExtensionPoint,
-  render: (api: ApiForRenderExtension<ExtensionPoint>) => ReactElement<any>,
+  render: (
+    api: ApiForRenderExtension<ExtensionPoint>,
+  ) => ReactElement<any> | Promise<ReactElement<any>>,
 ): ExtensionPoints[ExtensionPoint] {
   // TypeScript can’t infer the type of the callback because it’s a big union
   // type. To get around it, we’ll just fake like we are rendering the
   // Checkout::Dynamic::Render extension, since all render extensions have the same general
   // shape (`RenderExtension`).
-  return extension<'Checkout::Dynamic::Render'>(target as any, (root, api) => {
-    return new Promise((resolve, reject) => {
-      try {
-        remoteRender(
-          <ExtensionApiContext.Provider value={api}>
-            <ErrorBoundary>
-              {render(api as ApiForRenderExtension<ExtensionPoint>)}
-            </ErrorBoundary>
-          </ExtensionApiContext.Provider>,
-          root,
-          () => {
-            resolve();
-          },
-        );
-      } catch (error) {
-        // Workaround for https://github.com/Shopify/ui-extensions/issues/325
-        // eslint-disable-next-line no-console
-        console.error(error);
-        reject(error);
-      }
-    });
-  }) as any;
+  return extension<'Checkout::Dynamic::Render'>(
+    target as any,
+    async (root, api) => {
+      const element = await render(
+        api as ApiForRenderExtension<ExtensionPoint>,
+      );
+
+      await new Promise<void>((resolve, reject) => {
+        try {
+          remoteRender(
+            <ExtensionApiContext.Provider value={api}>
+              <ErrorBoundary>{element}</ErrorBoundary>
+            </ExtensionApiContext.Provider>,
+            root,
+            () => {
+              resolve();
+            },
+          );
+        } catch (error) {
+          // Workaround for https://github.com/Shopify/ui-extensions/issues/325
+          // eslint-disable-next-line no-console
+          console.error(error);
+          reject(error);
+        }
+      });
+    },
+  ) as any;
 }
 
 /**
