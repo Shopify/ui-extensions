@@ -1,5 +1,20 @@
 # @shopify/ui-extensions-react
 
+## 2023.4.2
+
+### Patch Changes
+
+- [#1135](https://github.com/Shopify/ui-extensions/pull/1135) [`b6df631c`](https://github.com/Shopify/ui-extensions/commit/b6df631cc4dd145d80555c05cfa79e02092210dc) Thanks [@lemonmade](https://github.com/lemonmade)! - Rename `useExtensionData()` to `useExtension()`
+
+- [#1135](https://github.com/Shopify/ui-extensions/pull/1135) [`b6df631c`](https://github.com/Shopify/ui-extensions/commit/b6df631cc4dd145d80555c05cfa79e02092210dc) Thanks [@lemonmade](https://github.com/lemonmade)! - Allow passing target name to `useApi()` for type inference
+
+- [#1135](https://github.com/Shopify/ui-extensions/pull/1135) [`b6df631c`](https://github.com/Shopify/ui-extensions/commit/b6df631cc4dd145d80555c05cfa79e02092210dc) Thanks [@lemonmade](https://github.com/lemonmade)! - Make @shopify/ui-extensions a peer dependency for React library
+
+- [#1135](https://github.com/Shopify/ui-extensions/pull/1135) [`b6df631c`](https://github.com/Shopify/ui-extensions/commit/b6df631cc4dd145d80555c05cfa79e02092210dc) Thanks [@lemonmade](https://github.com/lemonmade)! - Allow React extensions to return asynchronous results
+
+- Updated dependencies [[`b6df631c`](https://github.com/Shopify/ui-extensions/commit/b6df631cc4dd145d80555c05cfa79e02092210dc), [`b6df631c`](https://github.com/Shopify/ui-extensions/commit/b6df631cc4dd145d80555c05cfa79e02092210dc)]:
+  - @shopify/ui-extensions@2023.4.2
+
 ## 2023.4.1
 
 ### Minor Changes
