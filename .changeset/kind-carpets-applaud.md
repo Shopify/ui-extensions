@@ -1,5 +1,5 @@
 ---
-'@shopify/ui-extensions-react': minor
+'@shopify/ui-extensions-react': patch
 ---
 
 Rename `useExtensionData()` to `useExtension()`
