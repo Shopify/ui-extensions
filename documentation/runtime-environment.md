@@ -1,6 +1,6 @@
 # Runtime environment
 
-Checkout UI extensions always run in a [web worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API). This environment has access to many of the same globals as you’d get with JavaScript running in a browser. However, we only guarantee the presence of the following globals:
+UI extensions run in a [web worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API). This environment has access to many of the same globals as you’d get with JavaScript running in a browser. However, we only guarantee the presence of the following globals:
 
 - [`self`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/self), a reference back to the global object.
 - [`console`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/console), which is the same `console` available in the browser and can be used for printing to the browser’s console (**Note**: your app **should not** log any content when running in production)
