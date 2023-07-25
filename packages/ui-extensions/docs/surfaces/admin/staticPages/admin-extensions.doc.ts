@@ -44,7 +44,7 @@ const data: LandingTemplateSchema = {
         {
           subtitle: 'Reference',
           name: 'View a list of available extension targets',
-          url: '/docs/api/admin-extensions/apis/extension-points',
+          url: '/docs/api/admin-extensions/api/extension-targets',
           type: 'app',
         },
         {
