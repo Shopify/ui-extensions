@@ -9,13 +9,6 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail: 'headinggroup-thumbnail.png',
   isVisualComponent: true,
   type: '',
-  definitions: [
-    {
-      title: 'HeadingGroupProps',
-      description: '',
-      type: 'HeadingGroupProps',
-    },
-  ],
   category: 'Components',
   subCategory: 'Titles and text',
   defaultExample: {

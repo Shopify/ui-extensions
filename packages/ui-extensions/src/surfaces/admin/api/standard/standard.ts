@@ -27,6 +27,7 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
   };
   /**
    * Utilities for translating content according to the current localization of the admin.
+   * More info - https://shopify.dev/docs/apps/checkout/best-practices/localizing-ui-extensions
    */
   i18n: I18n;
   /**
