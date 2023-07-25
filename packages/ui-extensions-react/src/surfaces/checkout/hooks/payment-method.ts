@@ -13,12 +13,14 @@ import {useApi} from './api';
 export function useApplyPaymentMethodAttributesChange(): (
   change: PaymentMethodAttributesChange,
 ) => Promise<PaymentMethodAttributesResult> {
-  const api = useApi<'Checkout::PaymentMethod::Render'>();
+  const api = useApi<'purchase.checkout.payment-option-item.details.render'>();
+
   if (!api.applyPaymentMethodAttributesChange) {
     throw new ExtensionHasNoMethodError(
       'useApplyPaymentMethodAttributesChange',
-      api.extensionPoint,
+      api.extension.target,
     );
   }
+
   return api.applyPaymentMethodAttributesChange;
 }

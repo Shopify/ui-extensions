@@ -6,7 +6,7 @@ import {
   InlineStack,
 } from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('purchase.checkout.block.render', (root) => {
   const choiceList = root.createComponent(
     ChoiceList,
     {

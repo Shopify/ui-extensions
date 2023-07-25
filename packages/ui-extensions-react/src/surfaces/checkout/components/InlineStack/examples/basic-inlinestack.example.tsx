@@ -4,7 +4,10 @@ import {
   View,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension('Checkout::Dynamic::Render', () => <Extension />);
+export default reactExtension(
+  'purchase.checkout.block.render',
+  () => <Extension />,
+);
 
 function Extension() {
   return (

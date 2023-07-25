@@ -1,6 +1,6 @@
 import {extension, Select} from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('purchase.checkout.block.render', (root) => {
   const select = root.createComponent(Select, {
     label: 'Country',
     value: '2',

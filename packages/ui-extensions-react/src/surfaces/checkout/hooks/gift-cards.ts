@@ -2,7 +2,7 @@ import type {
   AppliedGiftCard,
   GiftCardChange,
   GiftCardChangeResult,
-  RenderExtensionPoint,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/checkout';
 
 import {ExtensionHasNoMethodError} from '../errors';
@@ -15,9 +15,9 @@ import {useSubscription} from './subscription';
  * your component if gift cards are added or removed.
  */
 export function useAppliedGiftCards<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): AppliedGiftCard[] {
-  const {appliedGiftCards} = useApi<ID>();
+  const {appliedGiftCards} = useApi<Target>();
 
   return useSubscription(appliedGiftCards);
 }
@@ -29,9 +29,9 @@ export function useAppliedGiftCards<
  * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves gift card codes through a network call.
  */
 export function useApplyGiftCardChange<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): (change: GiftCardChange) => Promise<GiftCardChangeResult> {
-  const api = useApi<ID>();
+  const api = useApi<Target>();
 
   if ('applyGiftCardChange' in api) {
     return api.applyGiftCardChange;
@@ -39,6 +39,6 @@ export function useApplyGiftCardChange<
 
   throw new ExtensionHasNoMethodError(
     'applyGiftCardChange',
-    api.extensionPoint,
+    api.extension.target,
   );
 }

@@ -1,5 +1,5 @@
 import type {
-  RenderExtensionPoint,
+  RenderExtensionTarget,
   AppMetafieldEntryTarget,
   Metafield,
   AppMetafieldEntry,
@@ -21,13 +21,13 @@ interface AppMetafieldFilters {
 type AppMetafieldFilterKeys = keyof AppMetafieldFilters;
 
 /**
- * Returns the metafields configured with `shopify.ui.extension.toml`.
+ * Returns the metafields configured with `shopify.extension.toml`.
  * @arg {AppMetafieldFilters} - filter the list of returned metafields
  */
 export function useAppMetafields<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(filters: AppMetafieldFilters = {}): AppMetafieldEntry[] {
-  const appMetafields = useSubscription(useApi<ID>().appMetafields);
+  const appMetafields = useSubscription(useApi<Target>().appMetafields);
 
   return useMemo(() => {
     if (filters.key && !filters.namespace) {

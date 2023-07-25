@@ -1,0 +1,11 @@
+api_version = "2023-07"
+
+[[extensions]]
+type = "ui_extension"
+name = "My checkout extension"
+handle = "checkout-ui"
+
+  [[extensions.targeting]]
+  target = "purchase.checkout.block.render"
+  module = "./Checkout.jsx"
+

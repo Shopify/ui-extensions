@@ -1,0 +1,22 @@
+api_version = "2023-07"
+
+[[extensions]]
+name = "My checkout extension"
+handle = "checkout-ui"
+type = "ui_extension"
+
+[[extensions.targeting]]
+target = "purchase.checkout.actions.render-before"
+module = "./Actions.jsx"
+
+[[extensions.targeting]]
+target = "purchase.checkout.delivery-address.render-before"
+module = "./Delivery.jsx"
+
+[[extensions.targeting]]
+target = "purchase.checkout.shipping-option-list.render-after"
+module = "./ShippingOptions.jsx"
+
+[[extensions.targeting]]
+target = "purchase.checkout.block.render"
+module = "./Block.jsx"

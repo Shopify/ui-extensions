@@ -1,9 +1,11 @@
 import type {
   MailingAddress,
-  RenderExtensionPoint,
+  RenderExtensionTarget,
+  ShippingAddressChange,
+  ShippingAddressChangeResult,
 } from '@shopify/ui-extensions/checkout';
 
-import {ScopeNotGrantedError} from '../errors';
+import {ScopeNotGrantedError, ExtensionHasNoMethodError} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -12,9 +14,9 @@ import {useSubscription} from './subscription';
  * Returns the proposed `shippingAddress` applied to the checkout.
  */
 export function useShippingAddress<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): MailingAddress | undefined {
-  const shippingAddress = useApi<ID>().shippingAddress;
+  const shippingAddress = useApi<Target>().shippingAddress;
 
   if (!shippingAddress) {
     throw new ScopeNotGrantedError(
@@ -23,4 +25,24 @@ export function useShippingAddress<
   }
 
   return useSubscription(shippingAddress);
+}
+
+/**
+ * Returns a function to mutate the `shippingAddress` property of checkout.
+ */
+export function useApplyShippingAddressChange<
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
+>():
+  | ((change: ShippingAddressChange) => Promise<ShippingAddressChangeResult>)
+  | undefined {
+  const api = useApi<Target>();
+
+  if ('applyShippingAddressChange' in api) {
+    return api.applyShippingAddressChange;
+  }
+
+  throw new ExtensionHasNoMethodError(
+    'applyCartLinesChange',
+    api.extension.target,
+  );
 }

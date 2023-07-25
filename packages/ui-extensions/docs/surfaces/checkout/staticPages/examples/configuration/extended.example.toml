@@ -1,0 +1,32 @@
+api_version = "2023-07"
+
+[[extensions]]
+type = "ui_extension"
+name = "My checkout extension"
+handle = "checkout-ui"
+
+[[extensions.targeting]]
+target = "purchase.checkout.block.render"
+module = "./Checkout.jsx"
+
+[extensions.capabilities]
+network_access = true
+block_progress = true
+api_access = true
+
+[[extensions.metafields]]
+namespace = "my-namespace"
+key = "my-key"
+[[extensions.metafields]]
+namespace = "my-namespace"
+key = "my-other-key"
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "field_key"
+type = "boolean"
+name = "field-name"
+[[settings.fields]]
+key = "field_key_2"
+type = "number_integer"
+name = "field-name-2"

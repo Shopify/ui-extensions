@@ -4,9 +4,9 @@ import {
   useApplyAttributeChange,
 } from '@shopify/ui-extensions-react/checkout';
 
-// 1. Choose an extension point
-reactExtension(
-  'Checkout::Dynamic::Render',
+// 1. Choose an extension target
+export default reactExtension(
+  'purchase.checkout.block.render',
   () => <Extension />,
 );
 

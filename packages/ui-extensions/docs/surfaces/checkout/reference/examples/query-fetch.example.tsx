@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import {useEffect, useState} from 'react';
 import {
   useApi,
   reactExtension,
@@ -6,8 +6,8 @@ import {
   ListItem,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension(
-  'Checkout::Dynamic::Render',
+export default reactExtension(
+  'purchase.checkout.block.render',
   () => <Extension />,
 );
 

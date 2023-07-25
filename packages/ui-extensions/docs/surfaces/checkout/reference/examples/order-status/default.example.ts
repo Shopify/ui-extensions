@@ -3,8 +3,8 @@ import {
   extension,
 } from '@shopify/ui-extensions/checkout';
 
-extension(
-  'Checkout::OrderStatus::CustomerInformation::RenderAfter',
+export default extension(
+  'customer-account.order-details.customer-information.render-after',
   (root, {order}) => {
     let bannerShown = false;
 

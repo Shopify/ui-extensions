@@ -4,8 +4,8 @@ import {
   ListItem,
 } from '@shopify/ui-extensions/checkout';
 
-extension(
-  'Checkout::Dynamic::Render',
+export default extension(
+  'purchase.checkout.block.render',
   (root, {shop}) => {
     const apiVersion = 'unstable';
     const getProductsQuery = {

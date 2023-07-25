@@ -14,7 +14,7 @@ A checkout extension using “vanilla” JavaScript would be written as follows
 import {extension, TextField} from '@shopify/ui-extensions/checkout';
 
 export default extension(
-  'Checkout::Dynamic::Render',
+  'purchase.checkout.block.render',
   (root, {i18n, metafields, applyMetafieldChange}) => {
     const metafield = metafields.current.find(
       (metafield) =>

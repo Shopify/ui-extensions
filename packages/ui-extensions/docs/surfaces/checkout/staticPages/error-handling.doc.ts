@@ -16,7 +16,7 @@ const data: LandingTemplateSchema = {
         title: 'Handling any error',
         tabs: [
           {
-            code: './examples/error-handling/handling-any-error.ts',
+            code: './examples/error-handling/handling-any-error.example.ts',
             language: 'ts',
           },
         ],
@@ -45,7 +45,7 @@ If you are writing your UI extension in React, you can follow Sentry's [React in
         title: 'Sentry',
         tabs: [
           {
-            code: './examples/error-handling/sentry.tsx',
+            code: './examples/error-handling/sentry.example.tsx',
             language: 'ts',
           },
         ],
@@ -65,7 +65,7 @@ If you are writing your UI extension in React, you can follow Bugsnag's [React i
         title: 'Bugsnag',
         tabs: [
           {
-            code: './examples/error-handling/bugsnag.ts',
+            code: './examples/error-handling/bugsnag.example.ts',
             language: 'ts',
           },
         ],

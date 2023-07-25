@@ -1,6 +1,12 @@
-import {reactExtension, Tag} from '@shopify/ui-extensions-react/checkout';
+import {
+  reactExtension,
+  Tag,
+} from '@shopify/ui-extensions-react/checkout';
 
-reactExtension('Checkout::Dynamic::Render', () => <Extension />);
+export default reactExtension(
+  'purchase.checkout.block.render',
+  () => <Extension />,
+);
 
 function Extension() {
   return <Tag icon="discount">SPRING</Tag>;

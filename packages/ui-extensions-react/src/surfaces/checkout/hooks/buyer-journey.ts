@@ -1,9 +1,11 @@
 import {useEffect, useRef} from 'react';
 import type {
-  RenderExtensionPoint,
+  RenderExtensionTarget,
   Interceptor,
   BuyerJourney,
 } from '@shopify/ui-extensions/checkout';
+
+import {ExtensionHasNoMethodError} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -12,9 +14,18 @@ import {useSubscription} from './subscription';
  * Returns the `buyerJourney` details on buyer progression in checkout.
  */
 export function useBuyerJourney<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): BuyerJourney {
-  return useApi<ID>().buyerJourney;
+  const api = useApi<Target>();
+
+  if ('buyerJourney' in api) {
+    return api.buyerJourney;
+  }
+
+  throw new ExtensionHasNoMethodError(
+    'applyAttributeChange',
+    api.extension.target,
+  );
 }
 
 /**
@@ -23,12 +34,15 @@ export function useBuyerJourney<
  * For example, when viewing the order status page after submitting payment, the buyer will have completed their order.
  */
 export function useBuyerJourneyCompleted<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): boolean {
-  const buyerJourney = useApi<ID>().buyerJourney;
-  const buyerJourneyCompleted = useSubscription(buyerJourney.completed);
+  const api = useApi<Target>();
 
-  return buyerJourneyCompleted;
+  if ('buyerJourney' in api) {
+    return useSubscription(api.buyerJourney.completed);
+  }
+
+  throw new ExtensionHasNoMethodError('buyerJourney', api.extension.target);
 }
 
 /**
@@ -41,19 +55,24 @@ export function useBuyerJourneyCompleted<
  * either by passing validation errors to the checkout UI or rendering the errors in your extension.
  */
 export function useBuyerJourneyIntercept<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(interceptor: Interceptor): void {
-  const buyerJourney = useApi<ID>().buyerJourney;
-  const interceptorRef = useRef(interceptor);
-  interceptorRef.current = interceptor;
+  const api = useApi<Target>();
 
-  useEffect(() => {
-    const teardownPromise = buyerJourney.intercept((interceptorProps) =>
-      interceptorRef.current(interceptorProps),
-    );
+  if ('buyerJourney' in api) {
+    const interceptorRef = useRef(interceptor);
+    interceptorRef.current = interceptor;
 
-    return () => {
-      teardownPromise.then((teardown) => teardown()).catch(() => {});
-    };
-  }, [buyerJourney]);
+    useEffect(() => {
+      const teardownPromise = api.buyerJourney.intercept((interceptorProps) =>
+        interceptorRef.current(interceptorProps),
+      );
+
+      return () => {
+        teardownPromise.then((teardown) => teardown()).catch(() => {});
+      };
+    }, [api.buyerJourney]);
+  }
+
+  throw new ExtensionHasNoMethodError('buyerJourney', api.extension.target);
 }
