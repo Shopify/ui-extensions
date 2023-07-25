@@ -1,4 +1,4 @@
-# Introducing: API versioning and the unified extension configuration file
+# Unified UI extensions
 
 We’re introducing some important changes to the way you write UI extensions. As of Summer Editions 2023, we will be introducing a [new `shopify.extension.toml` file](https://shopify.dev/docs/apps/app-extensions/configuration). This file will be used to define the basic configuration for your UI extension, and it is the same format that you will use to define [Shopify Functions](https://shopify.dev/docs/apps/functions) and other types of extensions. In the future, we’ll use this new "unified" configuration file to give you more flexibility in combining extensions of different types to solve merchant problems.
 
