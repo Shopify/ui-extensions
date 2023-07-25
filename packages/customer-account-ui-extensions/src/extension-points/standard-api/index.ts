@@ -52,11 +52,6 @@ export interface StandardApi {
   };
 
   /**
-   * A list of feature names for features enabled on a shop
-   */
-  features: string[];
-
-  /**
    * Key-value storage for the extension point.
    */
   storage: Storage;
