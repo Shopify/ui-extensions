@@ -3,9 +3,8 @@ name: Deploy
 on:
   push:
     branches:
-      - 2022-10
-      - 2023-01
       - 2023-04
+      - 2023-07
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
