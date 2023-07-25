@@ -5,7 +5,7 @@ import {mount} from './mount';
 describe('useApi', () => {
   it('returns api', async () => {
     const extensionApi = {
-      extensionPoint: 'Playground' as const,
+      extension: {target: 'Playground' as const},
     };
     const {value} = mount.hook(() => useApi<'Playground'>(), {
       extensionApi,

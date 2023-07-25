@@ -2,7 +2,7 @@ import React from 'react';
 import {createMount} from '@quilted/react-testing';
 import {
   ApiForRenderExtension,
-  RenderExtensionPoint,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/admin';
 
 import {ExtensionApiContext} from '../../context';
@@ -26,7 +26,7 @@ type DeepPartial<T> = {
 };
 
 export type PartialExtensionApi = DeepPartial<
-  ApiForRenderExtension<RenderExtensionPoint>
+  ApiForRenderExtension<RenderExtensionTarget>
 >;
 
 interface Options {
