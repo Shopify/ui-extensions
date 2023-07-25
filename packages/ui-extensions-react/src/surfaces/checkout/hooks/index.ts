@@ -11,6 +11,7 @@ export {
   useBuyerJourneyIntercept,
   useBuyerJourneyCompleted,
 } from './buyer-journey';
+export {useCheckoutSettings} from './checkout-settings';
 export {useMetafield} from './metafield';
 export {useMetafields, useApplyMetafieldsChange} from './metafields';
 export {useNote, useApplyNoteChange} from './note';
@@ -19,16 +20,24 @@ export {
   useApplyAttributeChange,
   useAttributeValues,
 } from './attributes';
-export {useShippingAddress} from './shipping-address';
+export {
+  useShippingAddress,
+  useApplyShippingAddressChange,
+} from './shipping-address';
 export {useTotalAmount} from './cost';
 export {useCartLines, useApplyCartLinesChange} from './cart-lines';
 export {useTarget} from './target';
 export {useAppMetafields} from './app-metafields';
 export {useShop} from './shop';
 export {useStorage} from './storage';
-export {useExtensionData} from './extension-data';
+export {useExtension, useExtensionData} from './extension';
 export {useSubscription} from './subscription';
-export {useCustomer, useEmail, usePhone} from './buyer-identity';
+export {
+  useCustomer,
+  useEmail,
+  usePhone,
+  usePurchasingCompany,
+} from './buyer-identity';
 export {useTranslate} from './translate';
 export {useSessionToken} from './session-token';
 export {useSettings} from './settings';

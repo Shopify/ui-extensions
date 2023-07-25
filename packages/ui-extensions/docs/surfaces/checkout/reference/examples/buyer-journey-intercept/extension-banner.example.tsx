@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import {useState} from 'react';
 import {
   reactExtension,
   Banner,
@@ -6,8 +6,8 @@ import {
   useTarget,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension(
-  'Checkout::CartLineDetails::RenderAfter',
+export default reactExtension(
+  'purchase.checkout.cart-line-item.render-after',
   () => <Extension />,
 );
 

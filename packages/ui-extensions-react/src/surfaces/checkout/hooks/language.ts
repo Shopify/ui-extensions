@@ -1,4 +1,4 @@
-import {Language, RenderExtensionPoint} from '@shopify/ui-extensions/checkout';
+import {Language, RenderExtensionTarget} from '@shopify/ui-extensions/checkout';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -8,9 +8,9 @@ import {useSubscription} from './subscription';
  * your component if the language changes.
  */
 export function useLanguage<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Language {
-  const {localization} = useApi<ID>();
+  const {localization} = useApi<Target>();
 
   return useSubscription(localization.language);
 }

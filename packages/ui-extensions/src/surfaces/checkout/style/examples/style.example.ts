@@ -1,6 +1,6 @@
 import {Style, View, extension} from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('purchase.checkout.block.render', (root) => {
   const view = root.createComponent(
     View,
     {

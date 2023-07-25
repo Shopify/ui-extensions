@@ -3,8 +3,8 @@ import {
   Banner,
 } from '@shopify/ui-extensions/checkout';
 
-extension(
-  'Checkout::CartLineDetails::RenderAfter',
+export default extension(
+  'purchase.checkout.cart-line-item.render-after',
   (root, {buyerJourney, target}) => {
     const banner = root.createComponent(Banner);
 

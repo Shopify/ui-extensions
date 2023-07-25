@@ -1,7 +1,7 @@
-import {extend} from '@shopify/ui-extensions/checkout';
+import {extension} from '@shopify/ui-extensions/checkout';
 
-extend(
-  'Checkout::Dynamic::Render',
+export default extension(
+  'purchase.checkout.block.render',
   (root, {shop}) => {
     root.appendChild(
       root.createText(`Shop name: ${shop.name}`),

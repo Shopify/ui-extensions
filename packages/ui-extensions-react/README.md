@@ -18,7 +18,9 @@ import {
   TextField,
 } from '@shopify/ui-extensions-react/checkout';
 
-export default reactExtension('Checkout::Dynamic::Render', () => <GiftNote />);
+export default reactExtension('purchase.checkout.block.render', () => (
+  <GiftNote />
+));
 
 function GiftNote() {
   const {i18n, metafields, applyMetafieldChange} = useApi();

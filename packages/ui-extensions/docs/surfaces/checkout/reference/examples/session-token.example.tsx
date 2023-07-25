@@ -1,12 +1,12 @@
-import React, {useEffect} from 'react';
+import {useEffect} from 'react';
 import {
   reactExtension,
   Banner,
   useApi,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension(
-  'Checkout::Dynamic::Render',
+export default reactExtension(
+  'purchase.checkout.block.render',
   () => <Extension />,
 );
 

@@ -4,8 +4,8 @@ import {
   extension,
 } from '@shopify/ui-extensions/checkout';
 
-extension(
-  'Checkout::Dynamic::Render',
+export default extension(
+  'purchase.checkout.block.render',
   (root, {shop, cost}) => {
     root.appendChild(
       root.createComponent(

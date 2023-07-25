@@ -4,10 +4,6 @@ import type {
   RemoteComponentType,
 } from '@remote-ui/core';
 
-export interface Extension<Api, Result> {
-  (api: Api): Result;
-}
-
 export interface RenderExtensionConnection<
   AllowedComponents extends RemoteComponentType<
     string,

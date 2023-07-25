@@ -1,12 +1,11 @@
-import React from 'react';
 import {
   reactExtension,
   useBuyerJourneyIntercept,
   useShippingAddress,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension(
-  'Checkout::DeliveryAddress::RenderBefore',
+export default reactExtension(
+  'purchase.checkout.delivery-address.render-before',
   () => <Extension />,
 );
 

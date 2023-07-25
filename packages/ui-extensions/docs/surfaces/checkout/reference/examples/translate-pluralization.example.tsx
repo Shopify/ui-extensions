@@ -1,5 +1,4 @@
 /* See the locales/en.default.json tab for the translation keys and values for this example */
-import React from 'react';
 import {
   reactExtension,
   Banner,
@@ -7,8 +6,8 @@ import {
   useTranslate,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension(
-  'Checkout::Dynamic::Render',
+export default reactExtension(
+  'purchase.checkout.block.render',
   () => <Extension />,
 );
 

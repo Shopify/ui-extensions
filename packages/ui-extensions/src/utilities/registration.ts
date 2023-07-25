@@ -1,27 +1,28 @@
 import {createRemoteRoot} from '@remote-ui/core';
+
 import type {
   RenderExtensionConnection,
   RenderExtension,
   RenderExtensionWithRemoteRoot,
 } from '../extension';
 
-export interface ExtensionRegistrationFunction<ExtensionPoints> {
-  <Target extends keyof ExtensionPoints>(
+export interface ExtensionRegistrationFunction<ExtensionTargets> {
+  <Target extends keyof ExtensionTargets>(
     target: Target,
-    implementation: ExtensionPoints[Target],
-  ): ExtensionPoints[Target];
+    implementation: ExtensionTargets[Target],
+  ): ExtensionTargets[Target];
 }
 
-export interface ExtensionRegistrationFunctionWithRoot<ExtensionPoints> {
-  <Target extends keyof ExtensionPoints>(
+export interface ExtensionRegistrationFunctionWithRoot<ExtensionTargets> {
+  <Target extends keyof ExtensionTargets>(
     target: Target,
-    implementation: ExtensionPoints[Target] extends RenderExtension<
+    implementation: ExtensionTargets[Target] extends RenderExtension<
       infer Api,
       infer Components
     >
       ? RenderExtensionWithRemoteRoot<Api, Components>
-      : ExtensionPoints[Target],
-  ): ExtensionPoints[Target];
+      : ExtensionTargets[Target],
+  ): ExtensionTargets[Target];
 }
 
 /**
@@ -32,10 +33,10 @@ export interface ExtensionRegistrationFunctionWithRoot<ExtensionPoints> {
  * provided by a version of `@remote-ui/core` that the extension controls.
  */
 export function createExtensionRegistrationFunction<
-  ExtensionPoints,
->(): ExtensionRegistrationFunctionWithRoot<ExtensionPoints> {
+  ExtensionTargets,
+>(): ExtensionRegistrationFunctionWithRoot<ExtensionTargets> {
   const extensionWrapper: ExtensionRegistrationFunctionWithRoot<
-    ExtensionPoints
+    ExtensionTargets
   > = (target, implementation) => {
     async function extension(...args: any[]) {
       // Rendering extensions have two arguments. Non-rendering extensions don’t have

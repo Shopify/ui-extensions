@@ -9,7 +9,7 @@ import {
   View,
 } from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('purchase.checkout.block.render', (root) => {
   const fields = root.createComponent(
     Grid,
     {columns: ['50%', '50%'], spacing: 'base'},

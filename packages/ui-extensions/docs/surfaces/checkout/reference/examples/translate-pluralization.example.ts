@@ -4,8 +4,8 @@ import {
   Banner,
 } from '@shopify/ui-extensions/checkout';
 
-extension(
-  'Checkout::Dynamic::Render',
+export default extension(
+  'purchase.checkout.block.render',
   (root, {i18n}) => {
     const points = 10000;
     const formattedPoints =

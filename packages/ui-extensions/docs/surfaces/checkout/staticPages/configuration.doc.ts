@@ -5,42 +5,176 @@ import {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
   title: 'Configuration',
-  description:
-    'When you create a [checkout UI extension](/api/checkout-ui-extensions/), the `shopify.ui.extension.toml` file is automatically generated in your checkout UI extension directory. This guide describes the properties that you can configure in `shopify.ui.extension.toml`.',
-  // The id for the page that is used for routing. If this documentation is for a primary landing page, confirm id matches the reference name.
+  description: `
+When you create a [checkout UI extension](/api/checkout-ui-extensions/), an [app extension configuration](/docs/apps/app-extensions/configuration) \`shopify.extension.toml\` file is automatically generated in your extension's directory.
+
+This guide describes [extension targeting](#targets), [capabilities](#capabilities) and the [settings](#settings-definition) you can configure in the app extension configuration.
+`,
+  // The id for the page that is used for routing. If this documentation is for a primary landing page, confirm the id matches the reference name.
   id: 'configuration',
   sections: [
     {
       type: 'Generic',
       anchorLink: 'how-it-works',
       title: 'How it works',
-      sectionContent:
-        "You define properties for your checkout UI extension in the extension configuration file. The `shopify.ui.extension.toml` file contains the extension's configuration, which include the extension name, extension points, metafields, capabilities, and settings definition. \n\n When an extension is published to Shopify, the contents of the settings file are pushed alongside the extension.",
+      sectionContent: `
+You define properties for your checkout UI extension in the extension configuration file. The \`shopify.extension.toml\` file contains the extension's configuration, which includes the extension name, targets, metafields, capabilities, and settings.
+
+When an extension is published to Shopify, the contents of the settings file are pushed alongside the extension.
+`,
       codeblock: {
-        title: 'Shopify Checkout UI scaffolding',
+        title: 'shopify.extension.toml',
         tabs: [
           {
-            title: 'shopify.ui.extension.toml',
-            code: './examples/configure-example-extended.toml',
+            title: 'shopify.extension.toml',
+            code: './examples/configuration/extended.example.toml',
             language: 'toml',
           },
         ],
       },
+      sectionNotice: [
+        {
+          title: 'Tip',
+          sectionContent: `
+You can configure more than one type of extension within a configuration file.
+`,
+          type: 'info',
+        },
+      ],
+      sectionCard: [
+        {
+          name: 'App extension configuration',
+          subtitle: 'Learn more',
+          url: '/docs/apps/app-extensions/configuration',
+          type: 'gear',
+        },
+      ],
     },
     {
-      type: 'Markdown',
-      anchorLink: 'configuration-properties',
-      title: 'Configuration properties',
+      type: 'GenericAccordion',
+      anchorLink: 'targets',
+      title: 'Targets',
       sectionContent: `
-| Property  | Required? | Description  |
-|---|---|---|
-| \`type\` | Yes | The type of extension. For checkout UI extensions, this value is \`checkout_ui_extension\`. |
-| \`name\`  | Yes | The name of the checkout UI extension. |
-| \`extension_points\`  | Yes | The [pre-defined points](/docs/api/checkout-ui-extensions/extension-points-overview) within checkout that your extension will render to. These values must match how your extension calls \`extension()\` or \`reactExtension()\`.<br /><br />For example, if your extension calls \`extension('Checkout::Dynamic::Render', () => {})\` then your config must specify \`Checkout::Dynamic::Render\`. |
-| \`metafields\`  | Yes | The metafields that your extension [needs to read](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-appmetafields). <br></br>You can specify up to five \`key\` and \`namespace\` pairs in the settings file. When the extension is executed, Shopify looks for the metafields in each resource and returns their contents. |
-| \`capabilities\`  | No | Defines the [capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-extension) associated with the UI extension. <br></br><ul><li>[\`api_access\`](#api-access): Allows your extension to query the Storefront API.</li><li>[\`network_access\`](#network-access): Allows your extension make external network calls.</li><li>[\`block_progress\`](#block-progress): States that your extension might block the buyer's progress.</li></ul> |
-| \`settings\` | No | Defines [settings](#settings-definition) that a merchant can set values for in the checkout editor. |
-`,
+Targets represent where your checkout UI extension will be injected. You may have one or many targets defined in your app extension configuration.
+
+Along with the \`target\`, Shopify needs to know which code to execute for it. You specify the path to your code file by using the  \`module\` property.
+
+
+      `,
+      accordionContent: [
+        {
+          title: 'Supporting a single extension target',
+          description: `
+          Your code should have a default export if it only supports a single extension target.
+          `,
+          codeblock: {
+            title: 'Single extension target',
+            tabs: [
+              {
+                title: 'shopify.extension.toml',
+                code: `
+# ...
+
+  [[extensions.targeting]]
+  target = "purchase.checkout.block.render"
+  module = "./CheckoutDynamicRender.jsx"
+
+# ...
+                `,
+                language: 'toml',
+              },
+              {
+                title: 'CheckoutDynamicRender.jsx',
+                code: `
+//...
+
+export default reactExtension(
+  'purchase.checkout.block.render',
+  <Extension />,
+);
+
+//...
+                `,
+                language: 'jsx',
+              },
+            ],
+          },
+        },
+        {
+          title: 'Supporting multiple extension targets',
+          description: `
+          You can support multiple extension targets within the same code file. However, you must provide named exports for each target using the \`export\` property.
+          `,
+          codeblock: {
+            title: 'Multiple extension targets',
+            tabs: [
+              {
+                title: 'shopify.extension.toml',
+                code: `
+# ...
+
+  [[extensions.targeting]]
+  target = "purchase.checkout.actions.render-before"
+  module = "./index.jsx"
+  export = "actions"
+
+  [[extensions.targeting]]
+  target = "purchase.checkout.shipping-option-item.render-after"
+  module = "./index.jsx"
+  export = "shippingMethodDetails"
+
+# ...
+                `,
+                language: 'toml',
+              },
+              {
+                title: 'index.jsx',
+                code: `
+//...
+
+const actions = reactExtension(
+  'purchase.checkout.actions.render-before',
+  <Extension />,
+);
+
+const shippingMethodDetails = reactExtension(
+  'purchase.checkout.shipping-option-item.render-after',
+  <Extension />,
+);
+
+export { actions, shippingMethodDetails };
+
+//...
+                `,
+                language: 'jsx',
+              },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'capabilities',
+      title: 'Capabilities',
+      sectionContent: `
+Defines the [capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-extension) associated with your extension.
+| Property | Description  |
+|---|---|
+| [\`api_access\`](#api-access) | Allows your extension to query the Storefront API.
+| [\`network_access\`](#network-access) | Allows your extension make external network calls.
+| [\`block_progress\`](#block-progress) | States that your extension might block the buyer's progress.
+    `,
+      codeblock: {
+        title: 'Capabilities',
+        tabs: [
+          {
+            title: 'shopify.extension.toml',
+            code: './examples/configuration/capabilities.example.toml',
+            language: 'toml',
+          },
+        ],
+      },
     },
     {
       type: 'Generic',
@@ -52,8 +186,8 @@ const data: LandingTemplateSchema = {
         title: 'Enable Storefront API access',
         tabs: [
           {
-            title: 'shopify.ui.extension.toml',
-            code: './examples/configure-api-access.toml',
+            title: 'shopify.extension.toml',
+            code: './examples/configuration/api-access.example.toml',
             language: 'toml',
           },
         ],
@@ -77,7 +211,7 @@ const data: LandingTemplateSchema = {
         },
         {
           title: 'Methods for accessing the Storefront API',
-          sectionContent: `Enabling the \`api_access\` capability allows you to use the Standard API [\`query\`](/api/checkout-ui-extensions/extension-points-api#standardapi) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
+          sectionContent: `Enabling the \`api_access\` capability allows you to use the Standard API [\`query\`](/api/checkout-ui-extensions/extension-targets-api#standardapi) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
 
 \`query\` lets you request a single GraphQL response from the Storefront API.
 
@@ -85,7 +219,7 @@ If you prefer to construct GraphQL requests yourself or you would like to use a 
 
 The GraphQL client of your choice shouldn’t use any DOM APIs, as they aren’t available in a checkout UI extension's Web Worker.
 
-> Note: Both \`query\` and \`fetch\` will work for calling the Storefront API with the \`api_access\` capability enabled. If you are using \`fetch\` to get data external to Shopify, refer to the [\`network_access\` capability](/api/checkout-ui-extensions/configuration#network-access)`,
+> Note: Both \`query\` and \`fetch\` will work for calling the Storefront API with the \`api_access\` capability enabled. If you are using \`fetch\` to get data external to Shopify, refer to the [\`network_access\`](/api/checkout-ui-extensions/configuration#network-access) capability.`,
         },
         {
           title: 'Storefront API access scopes',
@@ -107,14 +241,17 @@ Your extensions will have the following unauthenticated access scopes to the Sto
       type: 'Generic',
       anchorLink: 'network-access',
       title: 'Network access',
-      sectionContent:
-        'The following section describes use cases for requesting network access, alternatives to requesting network access, and steps for completing a request for network access.',
+      sectionContent: `
+The following section describes use cases for requesting network access, alternatives to requesting network access, and steps for completing a request for network access.
+> Caution:
+> If your extension specifies the \`network_access\` capability, you must request access in order to publish your extension.
+`,
       codeblock: {
         title: 'Enable network access',
         tabs: [
           {
-            title: 'shopify.ui.extension.toml',
-            code: './examples/configure-network-access.toml',
+            title: 'shopify.extension.toml',
+            code: './examples/configuration/network-access.example.toml',
             language: 'toml',
           },
         ],
@@ -154,6 +291,20 @@ Since UI extensions run in a [Web Worker](https://developer.mozilla.org/en-US/do
 `,
         },
         {
+          title: 'App Proxy',
+          sectionContent: `
+UI extensions can make fetch requests to [App Proxy](/docs/apps/online-store/app-proxies) URLs, but there are some differences and limitations related to the security context within which UI extensions run.
+
+UI extension requests made to the App Proxy will execute as CORS requests. See _Required CORS headers_ above for information about requirements related to CORS.
+
+UI extension requests made to the App Proxy will not assign the <code>logged_in_customer_id</code> query parameter. Instead use a [session token](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-sessiontoken) which provides the <code>sub</code> claim for the logged in customer.
+
+UI extension requests made to the App Proxy of password protected shops is not supported. Extension requests come from a web worker which does not share the same session as the parent window.
+
+The App Proxy doesn't handle all [HTTP request methods](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods). Specifically, <code>CONNECT</code> and <code>TRACE</code> are unsupported.
+`,
+        },
+        {
           title: 'Security considerations',
           sectionContent: `
 When processing HTTP requests on your API server, you cannot guarantee that your own extension will have made every request. When responding with sensitive data, keep in mind that requests could originate from anywhere on the Internet.
@@ -183,8 +334,8 @@ Consider a scenario where your extension retrieves a discount code from your API
         title: 'Enable progress blocking',
         tabs: [
           {
-            title: 'shopify.ui.extension.toml',
-            code: './examples/configure-block-progress.toml',
+            title: 'shopify.extension.toml',
+            code: './examples/configuration/block-progress.example.toml',
             language: 'toml',
           },
         ],
@@ -203,7 +354,7 @@ In order to block checkout progress, your extension must have the \`block_progre
         {
           title: 'Granting the capability to block progress',
           sectionContent: `
-Setting \`block_progress\` in the \`shopify.ui.extension.toml\` file informs merchants that your extension blocks the buyer's progress for invalid orders. Merchants can allow or disallow this capability in the checkout editor.
+Setting \`block_progress\` in the \`shopify.extension.toml\` file informs merchants that your extension blocks the buyer's progress for invalid orders. Merchants can allow or disallow this capability in the checkout editor.
 
 > Note:
 > When running a local extension with the \`block_progress\` capability, it will be automatically granted. This simulates a scenario where the merchant has allowed the capability.
@@ -216,7 +367,7 @@ In your extension, look for \`block_progress\` in [extension.capabilities](/docs
 
 If the merchant declined the permission for your app to block progress, the \`behavior: 'block'\` option in the [buyer journey](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-buyerjourney) intercept will be treated as \`behavior: 'allow'\`, and checkout will proceed as normal.
 
-When developing a local extension, you can remove the \`block_progress\` capability from your \`shopify.ui.extension.toml\` file to simulate a merchant disallowing the capability.
+When developing a local extension, you can remove the \`block_progress\` capability from your \`shopify.extension.toml\` file to simulate a merchant disallowing the capability.
 
 > Tip:
 > We recommend having some UI to cover cases where you can't block checkout progress. For example, you might want to show a warning rather than block checkout progress when an order doesn't pass validation.`,
@@ -265,8 +416,8 @@ When developing a local extension, you can remove the \`block_progress\` capabil
         title: 'Example settings',
         tabs: [
           {
-            title: 'shopify.ui.extension.toml',
-            code: './examples/settings-example.toml',
+            title: 'shopify.extension.toml',
+            code: './examples/configuration/settings.example.toml',
             language: 'toml',
           },
         ],

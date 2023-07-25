@@ -4,8 +4,8 @@ import {
   useOrder,
 } from '@shopify/ui-extensions-react/checkout';
 
-reactExtension(
-  'Checkout::OrderStatus::CustomerInformation::RenderAfter',
+export default reactExtension(
+  'customer-account.order-details.customer-information.render-after',
   () => <Extension />,
 );
 

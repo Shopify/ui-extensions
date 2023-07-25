@@ -28,8 +28,8 @@ const {
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'StandardApi',
-  overviewPreviewDescription: 'The base API for all extension points.',
-  description: 'This base API object is provided to all extension points.',
+  overviewPreviewDescription: 'The base API for all extension targets.',
+  description: 'This base API object is provided to all extension targets.',
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
   isVisualComponent: false,
   category: 'APIs',

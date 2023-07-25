@@ -1,6 +1,6 @@
 import {useContext} from 'react';
 import {
-  RenderExtensionPoint,
+  RenderExtensionTarget,
   ApiForRenderExtension,
 } from '@shopify/ui-extensions/checkout';
 
@@ -9,16 +9,17 @@ import {ExtensionApiContext} from '../context';
 
 /**
  * Returns the full API object that was passed in to your extension when it was created.
- * Depending on the extension point, this object can contain different properties.
+ * Depending on the extension target, this object can contain different properties.
  *
- * For example, the `Checkout::CartLineDetails::RenderAfter` extension point will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi) object.
- * Whereas others return the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object.
+ * For example, the `purchase.checkout.cart-line-item.render-after` extension target will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi) object.
+ * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object,
+ * which contains a basic set of properties about the checkout.
  *
- * For reference, see [ExtensionPoints](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensionpoints) to determine what API object will be returned by your extension point.
+ * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensiontargets).
  */
 export function useApi<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): ApiForRenderExtension<ID> {
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
+>(_target?: Target): ApiForRenderExtension<Target> {
   const api = useContext(ExtensionApiContext);
 
   if (api == null) {
@@ -27,20 +28,25 @@ export function useApi<
     );
   }
 
-  return api as ApiForRenderExtension<ID>;
+  return api as ApiForRenderExtension<Target>;
 }
 
 /**
  * Returns the full API object that was passed in to your extension when it was created.
- * Depending on the extension point, this object can contain different properties.
+ * Depending on the extension target, this object can contain different properties.
  *
- * For example, the `Checkout::CartLineDetails::RenderAfter` extension point will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi) object.
- * Whereas others return the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object.
+ * For example, the `purchase.checkout.cart-line-item.render-after` extension target will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi) object.
+ * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object,
+ * which contains a basic set of properties about the checkout.
  *
- * For reference, see [ExtensionPoints](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensionpoints) to determine what API object will be returned by your extension point.
+ * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensiontargets).
+ *
+ * > Caution: This is deprecated, use `useApi` instead.
+ *
+ * @deprecated This is deprecated, use `useApi` instead.
  */
 export function useExtensionApi<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
->(): ApiForRenderExtension<ID> {
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
+>(): ApiForRenderExtension<Target> {
   return useApi();
 }

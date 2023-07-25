@@ -1,7 +1,9 @@
 import type {
   DeliveryGroup,
-  RenderExtensionPoint,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/checkout';
+
+import {ExtensionHasNoMethodError} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -11,9 +13,13 @@ import {useSubscription} from './subscription';
  * your component when delivery address or delivery option selection changes.
  */
 export function useDeliveryGroups<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): DeliveryGroup[] {
-  const {deliveryGroups} = useApi<ID>();
+  const api = useApi<Target>();
 
-  return useSubscription(deliveryGroups);
+  if (!('deliveryGroups' in api)) {
+    throw new ExtensionHasNoMethodError('deliveryGroups', api.extension.target);
+  }
+
+  return useSubscription(api.deliveryGroups);
 }

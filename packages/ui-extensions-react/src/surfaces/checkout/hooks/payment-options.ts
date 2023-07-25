@@ -1,8 +1,10 @@
 import type {
-  RenderExtensionPoint,
+  RenderExtensionTarget,
   PaymentOption,
 } from '@shopify/ui-extensions/checkout';
 import {useMemo} from 'react';
+
+import {ExtensionHasNoMethodError} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -11,25 +13,40 @@ import {useSubscription} from './subscription';
  * Returns all available payment options.
  */
 export function useAvailablePaymentOptions<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): PaymentOption[] {
-  const {availablePaymentOptions} = useApi<ID>();
+  const api = useApi<Target>();
 
-  return useSubscription(availablePaymentOptions);
+  if ('availablePaymentOptions' in api) {
+    return useSubscription(api.availablePaymentOptions);
+  }
+
+  throw new ExtensionHasNoMethodError(
+    'availablePaymentOptions',
+    api.extension.target,
+  );
 }
 
 /**
  * Returns payment options selected by the buyer.
  */
 export function useSelectedPaymentOptions<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): PaymentOption[] {
-  const selectedPaymentOptions = useSubscription(
-    useApi<ID>().selectedPaymentOptions,
-  );
-  const availablePaymentOptions = useSubscription(
-    useApi<ID>().availablePaymentOptions,
-  );
+  const api = useApi<Target>();
+
+  if (
+    !('selectedPaymentOptions' in api) ||
+    !('availablePaymentOptions' in api)
+  ) {
+    throw new ExtensionHasNoMethodError(
+      'selectedPaymentOptions',
+      api.extension.target,
+    );
+  }
+
+  const selectedPaymentOptions = useSubscription(api.selectedPaymentOptions);
+  const availablePaymentOptions = useSubscription(api.availablePaymentOptions);
 
   return useMemo(() => {
     const availablePaymentOptionsMap: {[key: string]: PaymentOption} = {};

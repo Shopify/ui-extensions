@@ -1,6 +1,6 @@
 import {extension, SkeletonImage} from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('purchase.checkout.block.render', (root) => {
   const skeletonImage = root.createComponent(SkeletonImage, {
     inlineSize: 300,
     blockSize: 300,

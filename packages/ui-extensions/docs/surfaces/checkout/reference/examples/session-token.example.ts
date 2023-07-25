@@ -4,8 +4,8 @@ import {
   BlockStack,
 } from '@shopify/ui-extensions/checkout';
 
-extension(
-  'Checkout::Dynamic::Render',
+export default extension(
+  'purchase.checkout.block.render',
   (root, {sessionToken}) => {
     async function queryApi() {
       // Request a new (or cached) session token from Shopify

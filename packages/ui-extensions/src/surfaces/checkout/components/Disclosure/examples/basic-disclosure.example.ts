@@ -5,7 +5,7 @@ import {
   Disclosure,
 } from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('purchase.checkout.block.render', (root) => {
   const disclosure = root.createComponent(Disclosure, {}, [
     root.createComponent(Button, {toggles: 'one'}, 'Toggle'),
     root.createComponent(

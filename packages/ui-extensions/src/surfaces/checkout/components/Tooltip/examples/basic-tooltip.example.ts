@@ -5,7 +5,7 @@ import {
   Tooltip,
 } from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('purchase.checkout.block.render', (root) => {
   const tooltipFragment = root.createFragment();
   const tooltip = root.createComponent(
     Tooltip,

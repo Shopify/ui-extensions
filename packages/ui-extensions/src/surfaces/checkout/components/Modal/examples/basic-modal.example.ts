@@ -6,7 +6,7 @@ import {
   TextBlock,
 } from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root, {ui}) => {
+export default extension('purchase.checkout.block.render', (root, {ui}) => {
   const modalFragment = root.createFragment();
   const modal = root.createComponent(
     Modal,

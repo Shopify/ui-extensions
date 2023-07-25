@@ -5,6 +5,7 @@ export type {
   Capability,
   CartCost,
   CartLineCost,
+  CheckoutSettings,
   Customer,
   Editor,
   Extension,
@@ -15,6 +16,7 @@ export type {
   ImageDetails,
   Product,
   ProductVariant,
+  PurchasingCompany,
   SelectedOption,
   SessionToken,
   Money,
@@ -22,13 +24,11 @@ export type {
   Storage,
   Shop,
   Version,
-  MailingAddress,
   Metafield,
   AppMetafield,
   AppMetafieldEntryTarget,
   AppMetafieldEntry,
   CartLine,
-  PresentmentCartLine,
   PaymentOption,
   SelectedPaymentOption,
   CartDiscountCode,
@@ -63,16 +63,19 @@ export type {
   SellingPlan,
   StorefrontApiVersion,
   ValidationError,
+  MailingAddress,
 } from './api/shared';
 
 export type {
   RedeemableAttribute,
   RedeemableChange,
+  RedeemableAddChange,
   RedeemableChangeResult,
   RedeemableChangeResultError,
   RedeemableChangeResultSuccess,
-  RedeemableRenderApi,
-} from './api/redeemable/render';
+  RedeemableApi,
+} from './api/redeemable/redeemable';
+
 export type {
   AttributeChange,
   AttributeChangeResult,
@@ -107,14 +110,19 @@ export type {
   NoteChangeResult,
   NoteChangeResultSuccess,
   NoteChangeResultError,
+  ShippingAddressChange,
+  ShippingAddressChangeFieldError,
+  ShippingAddressChangeResult,
+  ShippingAddressChangeResultError,
+  ShippingAddressChangeResultSuccess,
   CheckoutApi,
 } from './api/checkout/checkout';
 export type {Order, OrderStatusApi} from './api/order-status/order-status';
 
-export type {CartLineDetailsApi} from './api/cart-line/cart-line-details';
-export type {PickupLocationsApi} from './api/pickup/pickup-locations';
-export type {PickupPointsApi} from './api/pickup/pickup-points';
-export type {ShippingMethodDetailsApi} from './api/shipping/shipping-method-details';
+export type {CartLineItemApi} from './api/cart-line/cart-line-item';
+export type {PickupLocationListApi} from './api/pickup/pickup-location-list';
+export type {PickupPointListApi} from './api/pickup/pickup-point-list';
+export type {ShippingOptionItemApi} from './api/shipping/shipping-option-item';
 
 export type {
   PaymentMethodAttributesResult,
@@ -123,5 +131,5 @@ export type {
   PaymentMethodAttribute,
   PaymentMethodAttributesChange,
   PaymentMethodAttributesUpdateChange,
-  PaymentMethodRenderApi,
-} from './api/payment-method/render';
+  PaymentOptionItemApi,
+} from './api/payment/payment-option-item';

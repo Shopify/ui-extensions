@@ -1,7 +1,7 @@
 import type {
   CartDiscountAllocation,
   CartDiscountCode,
-  RenderExtensionPoint,
+  RenderExtensionTarget,
   DiscountCodeChange,
   DiscountCodeChangeResult,
 } from '@shopify/ui-extensions/checkout';
@@ -16,9 +16,9 @@ import {useSubscription} from './subscription';
  * your component if discount codes are added or removed.
  */
 export function useDiscountCodes<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): CartDiscountCode[] {
-  const {discountCodes} = useApi<ID>();
+  const {discountCodes} = useApi<Target>();
 
   return useSubscription(discountCodes);
 }
@@ -28,9 +28,9 @@ export function useDiscountCodes<
  * your component if discount allocations changed.
  */
 export function useDiscountAllocations<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): CartDiscountAllocation[] {
-  const {discountAllocations} = useApi<ID>();
+  const {discountAllocations} = useApi<Target>();
 
   return useSubscription(discountAllocations);
 }
@@ -42,9 +42,9 @@ export function useDiscountAllocations<
  * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves discount codes through a network call.
  */
 export function useApplyDiscountCodeChange<
-  ID extends RenderExtensionPoint = RenderExtensionPoint,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): (change: DiscountCodeChange) => Promise<DiscountCodeChangeResult> {
-  const api = useApi<ID>();
+  const api = useApi<Target>();
 
   if ('applyDiscountCodeChange' in api) {
     return api.applyDiscountCodeChange;
@@ -52,6 +52,6 @@ export function useApplyDiscountCodeChange<
 
   throw new ExtensionHasNoMethodError(
     'applyDiscountCodeChange',
-    api.extensionPoint,
+    api.extension.target,
   );
 }

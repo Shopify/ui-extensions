@@ -68,33 +68,33 @@ export function getExamples(
         tabs: getExtensionCodeTabs('default'),
       },
     },
-    // For examples specific to extension points that differ from the StandardApi, organize them into folders (<extension-point-name>/<example>).
-    'cart-line-details/default': {
+    // For examples specific to extension targets that differ from the StandardApi, organize them into folders (<extension-point-name>/<example>).
+    'cart-line-item/default': {
       description: '',
       codeblock: {
         title: '',
-        tabs: getExtensionCodeTabs('cart-line-details/default'),
+        tabs: getExtensionCodeTabs('cart-line-item/default'),
       },
     },
-    'pickup-points/default': {
+    'pickup-point-list/default': {
       description: '',
       codeblock: {
         title: '',
-        tabs: getExtensionCodeTabs('pickup-points/default'),
+        tabs: getExtensionCodeTabs('pickup-point-list/default'),
       },
     },
-    'shipping-method-details/default': {
+    'shipping-option-item/default': {
       description: '',
       codeblock: {
         title: '',
-        tabs: getExtensionCodeTabs('shipping-method-details/default'),
+        tabs: getExtensionCodeTabs('shipping-option-item/default'),
       },
     },
-    'pickup-locations/default': {
+    'pickup-location-list/default': {
       description: '',
       codeblock: {
         title: '',
-        tabs: getExtensionCodeTabs('pickup-locations/default'),
+        tabs: getExtensionCodeTabs('pickup-location-list/default'),
       },
     },
     'order-status/default': {
@@ -113,12 +113,22 @@ export function getExamples(
     },
     api: {
       description: `
-The extension API is passed as a parameter to the extension point function.
+The extension API is passed as a parameter to the extension target function.
 In React, you can access it from any component through the \`useApi()\` hook.
       `,
       codeblock: {
         title: 'Accessing Properties',
         tabs: getExtensionCodeTabs('api'),
+      },
+    },
+    'extension-api': {
+      description: `
+The extension API is passed as a parameter to the extension target function.
+In React, you can access it from any component through the \`useExtensionApi()\` hook.
+      `,
+      codeblock: {
+        title: 'Accessing Properties',
+        tabs: getExtensionCodeTabs('extension-api'),
       },
     },
     'api-subscribable': {
@@ -171,16 +181,16 @@ See [localizing UI extensions](/docs/apps/checkout/best-practices/localizing-ui-
         ],
       },
     },
-    'extension-points': {
+    'extension-targets': {
       description: '',
       codeblock: {
         title: '',
         tabs: [
-          ...getExtensionCodeTabs('extension-points'),
+          ...getExtensionCodeTabs('extension-targets'),
           {
-            code: `${examplePath}/extension-points.example.toml`,
+            code: `${examplePath}/extension-targets.example.toml`,
             language: 'toml',
-            title: 'shopify.ui.extension.toml',
+            title: 'shopify.extension.toml',
           },
         ],
       },
@@ -196,7 +206,7 @@ See [settings](/docs/api/checkout-ui-extensions/configuration#settings-definitio
           {
             code: `${examplePath}/settings.example.toml`,
             language: 'toml',
-            title: 'shopify.ui.extension.toml',
+            title: 'shopify.extension.toml',
           },
         ],
       },
@@ -345,34 +355,34 @@ const links: {[key: string]: LinkType[]} = {
       type: 'OrderStatusApi',
     },
     {
-      name: 'CartLineDetailsApi',
+      name: 'CartLineItemApi',
       subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi',
-      type: 'CartLineDetailsApi',
+      url: '/docs/api/checkout-ui-extensions/apis/cartlineitemapi',
+      type: 'CartLineItemApi',
     },
     {
-      name: 'PickupPointsApi',
+      name: 'PickupPointItemApi',
       subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/pickuppointsapi',
-      type: 'PickupPointsApi',
+      url: '/docs/api/checkout-ui-extensions/apis/pickuppointitemapi',
+      type: 'PickupPointItemApi',
     },
     {
-      name: 'PickupLocationsApi',
+      name: 'PickupLocationItemApi',
       subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/pickuplocationsapi',
-      type: 'PickupLocationsApi',
+      url: '/docs/api/checkout-ui-extensions/apis/pickuplocationitemapi',
+      type: 'PickupLocationItemApi',
     },
     {
-      name: 'ShippingMethodDetailsApi',
+      name: 'ShippingOptionItemApi',
       subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/shippingmethoddetailsapi',
-      type: 'ShippingMethodDetailsApi',
+      url: '/docs/api/checkout-ui-extensions/apis/shippingoptionitemapi',
+      type: 'ShippingOptionItemApi',
     },
     {
-      name: 'ExtensionPoints',
+      name: 'ExtensionTargets',
       subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
-      type: 'ExtensionPoints',
+      url: '/docs/api/checkout-ui-extensions/apis/extensiontargets',
+      type: 'ExtensionTargets',
     },
   ],
   configuration: [

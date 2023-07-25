@@ -1,6 +1,6 @@
 import {extension, Spinner} from '@shopify/ui-extensions/checkout';
 
-extension('Checkout::Dynamic::Render', (root) => {
+export default extension('purchase.checkout.block.render', (root) => {
   const spinner = root.createComponent(Spinner);
 
   root.appendChild(spinner);
