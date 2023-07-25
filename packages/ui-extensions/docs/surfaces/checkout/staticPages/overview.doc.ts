@@ -192,7 +192,7 @@ Checkout UI extensions are a safe and secure way to customize the appearance and
 - They run in an isolated sandbox, separate from the checkout page and other UI extensions.
 - They don't have access to sensitive payment information or the checkout page itself (HTML or other assets).
 - They are limited to specific UI components and APIs that are exposed by the platform.
-- They have limited access to global web APIs.
+- They have limited access to [global web APIs](https://github.com/Shopify/ui-extensions/blob/unstable/documentation/runtime-environment.md).
 - Apps that wish to access [protected customer data](/docs/apps/store/data-protection/protected-customer-data), must submit an application and are subject to strict security guidelines and review proccesses by Shopify.
 `,
       sectionNotice: [

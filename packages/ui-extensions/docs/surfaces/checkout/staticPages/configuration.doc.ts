@@ -55,7 +55,7 @@ You can configure more than one type of extension within a configuration file.
       anchorLink: 'targets',
       title: 'Targets',
       sectionContent: `
-Targets represent where your checkout UI extension will be injected. You may have one or many targets defined in your app extension configuration.
+[Targets](/docs/api/checkout-ui-extensions/extension-targets-overview) represent where your checkout UI extension will be injected. You may have one or many targets defined in your app extension configuration using the \`targeting\` field.
 
 Along with the \`target\`, Shopify needs to know which code to execute for it. You specify the path to your code file by using the  \`module\` property.
 
@@ -75,16 +75,16 @@ Along with the \`target\`, Shopify needs to know which code to execute for it. Y
                 code: `
 # ...
 
-  [[extensions.targeting]]
-  target = "purchase.checkout.block.render"
-  module = "./CheckoutDynamicRender.jsx"
+[[extensions.targeting]]
+target = "purchase.checkout.block.render"
+module = "./Checkout.jsx"
 
 # ...
                 `,
                 language: 'toml',
               },
               {
-                title: 'CheckoutDynamicRender.jsx',
+                title: 'Block.jsx',
                 code: `
 //...
 
@@ -103,7 +103,7 @@ export default reactExtension(
         {
           title: 'Supporting multiple extension targets',
           description: `
-          You can support multiple extension targets within the same code file. However, you must provide named exports for each target using the \`export\` property.
+          You can support multiple extension targets within a single configuration file. However, you must provide a separate file per extension target using the \`export default\` declaration.
           `,
           codeblock: {
             title: 'Multiple extension targets',
@@ -113,15 +113,13 @@ export default reactExtension(
                 code: `
 # ...
 
-  [[extensions.targeting]]
-  target = "purchase.checkout.actions.render-before"
-  module = "./index.jsx"
-  export = "actions"
+[[extensions.targeting]]
+target = "purchase.checkout.actions.render-before"
+module = "./Actions.jsx"
 
-  [[extensions.targeting]]
-  target = "purchase.checkout.shipping-option-item.render-after"
-  module = "./index.jsx"
-  export = "shippingMethodDetails"
+[[extensions.targeting]]
+target = "purchase.checkout.shipping-option-item.render-after"
+module = "./ShippingOptions.jsx"
 
 # ...
                 `,
@@ -132,17 +130,17 @@ export default reactExtension(
                 code: `
 //...
 
-const actions = reactExtension(
+// ./Actions.jsx
+export default reactExtension(
   'purchase.checkout.actions.render-before',
   <Extension />,
 );
 
-const shippingMethodDetails = reactExtension(
+// ./ShippingOptions.jsx
+export default reactExtension(
   'purchase.checkout.shipping-option-item.render-after',
   <Extension />,
 );
-
-export { actions, shippingMethodDetails };
 
 //...
                 `,

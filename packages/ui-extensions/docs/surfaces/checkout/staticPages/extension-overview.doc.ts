@@ -8,9 +8,9 @@ const data: LandingTemplateSchema = {
   title: 'Extension Targets',
   // A short description of the page. Appears in the hero section below the title.
   description: `
-A target represents where your checkout UI extension will appear.
+A [target](/docs/apps/app-extensions/configuration#targets) represents where your checkout UI extension will appear.
 
-You register your targets within your [configuration](/docs/api/checkout-ui-extensions/configuration) and register a JavaScript function to execute the code for the corresponding target.
+You register for targets in your [configuration file](/docs/api/checkout-ui-extensions/configuration), and you include a JavaScript function that will run at that location in checkout.
   `,
   // The id for the page that is used for routing. If this documentation is for a primary landing page, confirm id matches the reference name.
   id: 'extension-targets-overview',
@@ -41,8 +41,8 @@ You register your targets within your [configuration](/docs/api/checkout-ui-exte
       type: 'Generic',
       anchorLink: 'dynamic-extension-targets',
       title: 'Dynamic extension targets',
-      sectionContent: `Dynamic extension targets render between core checkout features. Merchants can use the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor) to place the extension in any one of the [supported locations](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for the dynamic extension target.
-      \n\nWhen a checkout feature for that location is hidden, dynamic extensions are still rendered. For example, an extension placed above the shipping address will still render even for digital products which do not require a shipping address.\n\nChoose dynamic extension targets when your content and functionality works independently of a core checkout feature. An example is a field to capture order notes from the customer.`,
+      sectionContent: `Dynamic extension targets render between core checkout features. Merchants can use the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor) to place the extension in the [checkout](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations), [thank you](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-typ-locations), or [order status](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-osp-locations) pages.
+      \n\nDynamic extensions are always rendered, regardless of what other elements of the checkout are present. For example, an extension placed above the shipping address will still render even for digital products which do not require a shipping address.\n\nChoose dynamic extension targets when your content and functionality works independently of a core checkout feature. This is useful for custom content, like a field to capture order notes from the customer.`,
       image: 'dynamic-extension-targets.png',
       sectionCard: [
         {
@@ -189,48 +189,6 @@ See [all order status page extensions targets](/docs/api/checkout-ui-extensions/
           image: 'supported-locations-order-summary-order-status.png',
         },
       ],
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'globals',
-      title: 'Globals',
-      sectionContent:
-        "The `checkout-ui-extensions` library provides an alias for `shopify.extend` in the form of the `extend()` export. This function is also strongly-typed. If you’re working in an editor that supports TypeScript’s language server (we recommend [VSCode](https://code.visualstudio.com)), then you get feedback about the input arguments to that extension target. \n\n For extensions that render UI, such as [`purchase.checkout.block.render`](#extension-targets), the first argument is always a [`@remote-ui` `RemoteRoot` object](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoteroot) that enables you to render UI components into your extension target in checkout. You don't need to explicitly call [`mount()`](https://github.com/Shopify/remote-ui/tree/main/packages/core#remoterootmount) on this object. After the callback that you registered for the extension target ends, or if it returns a `Promise` that resolves, your initial UI is rendered.",
-      sectionCard: [
-        {
-          name: 'Extension targets',
-          subtitle: 'API reference',
-          url: '/docs/api/checkout-ui-extensions/apis/extensiontargets',
-          type: 'blocks',
-        },
-        {
-          name: 'Standard API',
-          subtitle: 'API reference',
-          url: '/docs/api/checkout-ui-extensions/apis/standardapi',
-          type: 'blocks',
-        },
-      ],
-      sectionSubContent: [
-        {
-          title: 'Web platform globals',
-          sectionContent:
-            'Checkout UI extensions always run in a [web worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API). This environment has access to many of the same globals as you’d get with JavaScript running in a browser. However, we only guarantee the presence of the following globals: \n\n - [`self`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/self), a reference back to the global object. \n - [`console`](https://developer.mozilla.org/en-US/docs/Web/API/WorkerGlobalScope/console), which is the same `console` available in the browser and can be used for printing to the browser’s console (**Note**: your app **should not** log any content when running in production) \n - [`setTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setTimeout), [`clearTimeout`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearTimeout), [`setInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/setInterval), and [`clearInterval`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/clearInterval), which behave the same as they do outside a web worker \n - [`fetch`](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch) and related globals ([`Headers`](https://developer.mozilla.org/en-US/docs/Web/API/Headers), [`Request`](https://developer.mozilla.org/en-US/docs/Web/API/Request), and [`Response`](https://developer.mozilla.org/en-US/docs/Web/API/Response)), which can be used to make HTTPS requests to arbitrary endpoints (**Note**: any requests you make must explicitly support [cross-origin resource sharing (CORS)](https://developer.mozilla.org/en-US/docs/Glossary/CORS), just as they would if the request were coming from `fetch()` outside of a web worker) \n\n > Caution: \n > You **must not** rely on any other globals being available. Many will be explicitly overwritten to be `undefined` in the sandbox, and non-language globals that aren’t hidden and aren’t in the list above may also be overwritten at any time.',
-        },
-        {
-          title: 'JavaScript environment',
-          sectionContent:
-            "The sandbox that loads your extension guarantees all of the globals available in [ECMAScript 2015 (ES2015)](http://www.ecma-international.org/ecma-262/6.0/). This includes `Set`, `Map`, `Promise`, `Symbol`, and more. You should rely on these globals directly when you need them, and you shouldn't use your own polyfill for any of these features. If you use globals added after ES2015, or new static methods on globals added after ES2015 (like `Object.entries`), then you must polyfill your usage of these features. \n\n Your UI extension shouldn't ship any ES2015 (or newer) syntax, like [`class`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/class), [`const/let`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const), or [`for..of` loops](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of). This syntax isn't understood by some of the browsers that checkout supports. If you use these features in your source code, then make sure that they're compiled to ES5 syntax in your final JavaScript file. \n\n The UI extension sandbox makes a `regeneratorRuntime` instance available globally. This object is provided by [regenerator-runtime](https://github.com/facebook/regenerator/tree/main/packages/runtime), and is used by many compilers to provide an ES5-compatible compilation target for [generator functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function*) and [async/ await](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Asynchronous/Async_await). If you use generators or async/ await, then make sure you compile it down to code that uses regenerator-runtime, and make sure you don't import your own version of that polyfill.",
-        },
-      ],
-      codeblock: {
-        title: 'extension()',
-        tabs: [
-          {
-            code: './examples/extension.example.ts',
-            language: 'ts',
-          },
-        ],
-      },
     },
   ],
 };

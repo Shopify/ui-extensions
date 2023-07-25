@@ -3,11 +3,13 @@ import {
   Banner,
 } from '@shopify/ui-extensions/checkout';
 
-function extension(root, {extension: {target}}) {
+function renderExtension(root, {extension}) {
   root.appendChild(
-    root.createComponent(Banner, {
-      title: `This extension is rendering in the ${target} extension target.`,
-    }),
+    root.createComponent(
+      Banner,
+      {},
+      `This extension is rendering in the ${extension.target} extension target.`,
+    ),
   );
 }
 

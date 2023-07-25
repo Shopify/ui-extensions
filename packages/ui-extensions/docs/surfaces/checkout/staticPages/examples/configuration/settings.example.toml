@@ -5,17 +5,17 @@ type = "ui_extension"
 name = "My checkout extension"
 handle = "checkout-ui"
 
-  [extensions.settings]
-    [[extensions.settings.fields]]
-    key = "banner_title"
-    type = "single_line_text_field"
-    name = "Banner title"
-    description = "Enter a title for the banner."
-    [[extensions.settings.fields.validations]]
-    name = "min"
-    value = "5"
-    [[extensions.settings.fields.validations]]
-    name = "max"
-    value = "20"
+[extensions.settings]
 
-  # ...
+[[extensions.settings.fields]]
+key = "banner_title"
+type = "single_line_text_field"
+name = "Banner title"
+description = "Enter a title for the banner."
+
+[[extensions.settings.fields.validations]]
+name = "min"
+value = "5"
+[[extensions.settings.fields.validations]]
+name = "max"
+value = "20"

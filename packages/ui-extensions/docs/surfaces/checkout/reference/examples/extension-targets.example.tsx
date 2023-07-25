@@ -5,12 +5,11 @@ import {
 } from '@shopify/ui-extensions-react/checkout';
 
 function Extension() {
-  const {
-    extension: {target},
-  } = useApi();
+  const {extension} = useApi();
+
   return (
     <Banner>
-      This extension is rendering in the {target}
+      This extension is rendering in the {extension.target}
       extension target.
     </Banner>
   );

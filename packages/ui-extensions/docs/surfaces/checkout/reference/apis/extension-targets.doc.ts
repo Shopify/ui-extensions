@@ -7,13 +7,13 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'The extension targets and the APIs they provide.',
   description: `
-A target represents where your checkout UI extension will appear.
+A [target](/docs/apps/app-extensions/configuration#targets) represents where your checkout UI extension will appear.
 
-You register your [targets](/docs/api/checkout-ui-extensions/extension-targets-overview) within your [configuration](/docs/api/checkout-ui-extensions/configuration) and register a JavaScript function to execute the code for the corresponding target.
+You register for [targets](/docs/api/checkout-ui-extensions/extension-targets-overview) in your [configuration file](/docs/api/checkout-ui-extensions/configuration), and you include a JavaScript function that will run at that location in checkout.
 
-The API for each extension target is passed as an argument to your function. While all targets inherit the [StandardApi](/docs/api/checkout-ui-extensions/apis/standardapi), not all of them share the same properties and methods.
+The API for each extension target is passed as an argument to your function. While all targets inherit the [\`StandardApi\`](/docs/api/checkout-ui-extensions/apis/standardapi), not all of them share the same properties and methods.
 
-For example, the [\`purchase.checkout.cart-line-item.render-after\`) target has access to the [\`CheckoutApi\`](/docs/api/checkout-ui-extensions/apis/checkoutapi) to modify a checkout, but the [\`purchase.thank-you.cart-line-item.render-after\`](#typesofextensiontargets-propertydetail-checkoutthankyoucartlinedetailsrenderafter) does not.
+For example, the [\`purchase.checkout.cart-line-item.render-after\`](typesofextensiontargets-propertydetail-purchasecheckoutcartlineitemrenderafter) target has access to the [\`CheckoutApi\`](/docs/api/checkout-ui-extensions/apis/checkoutapi) to modify a checkout, but the [\`purchase.thank-you.cart-line-item.render-after\`](#typesofextensiontargets-propertydetail-purchasethankyoucartlineitemrenderafter) target does not.
   `,
   isVisualComponent: false,
   category: 'APIs',
