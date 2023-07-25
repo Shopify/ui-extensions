@@ -1,6 +1,6 @@
 import type {StandardApi} from '../standard/standard';
-import type {Data} from '../../../../api';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
+import type {Data} from '../shared';
 
 export interface ActionExtensionApi<ExtensionTarget extends AnyExtensionTarget>
   extends StandardApi<ExtensionTarget> {
