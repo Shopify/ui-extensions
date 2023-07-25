@@ -16,17 +16,17 @@ import {ExtensionApiContext} from './context';
  * context, which you can access anywhere in your extension by using the `useApi()`
  * hook.
  *
- * @param target The extension point you are registering for. This extension
- * point must be a `RenderExtensionPoint`;
+ * @param target The extension target you are registering for. This extension
+ * target must be a `RenderExtensionTarget`;
  * @param render The function that will be called when Admin begins rendering
  * your extension. This function is called with the API Admin provided to your
  * extension, and must return a React element that will be rendered into the extension
  * point you specified.
  */
-export function reactExtension<ExtensionPoint extends RenderExtensionTarget>(
-  target: ExtensionPoint,
-  render: (api: ApiForRenderExtension<ExtensionPoint>) => ReactElement<any>,
-): ExtensionTargets[ExtensionPoint] {
+export function reactExtension<ExtensionTarget extends RenderExtensionTarget>(
+  target: ExtensionTarget,
+  render: (api: ApiForRenderExtension<ExtensionTarget>) => ReactElement<any>,
+): ExtensionTargets[ExtensionTarget] {
   // TypeScript can’t infer the type of the callback because it’s a big union
   // type. To get around it, we’ll just fake like we are rendering the
   // Playground extension, since all render extensions have the same general
@@ -36,7 +36,7 @@ export function reactExtension<ExtensionPoint extends RenderExtensionTarget>(
       try {
         remoteRender(
           <ExtensionApiContext.Provider value={api}>
-            {render(api as ApiForRenderExtension<ExtensionPoint>)}
+            {render(api as ApiForRenderExtension<ExtensionTarget>)}
           </ExtensionApiContext.Provider>,
           root,
           () => {

@@ -1,7 +1,3 @@
-export interface StandardApi {
-  readonly extensionPoint: string;
-}
-
 /**
  * This defines the i18n.translate() signature.
  */
