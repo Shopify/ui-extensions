@@ -1,10 +1,19 @@
-import type {
-  StandardApi as BaseStandardApi,
-  I18n,
-  Intents,
-  Navigation,
-} from '../../../../api';
+import type {StandardApi as BaseStandardApi, I18n} from '../../../../api';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
+
+export interface Intents {
+  /**
+   * The URL that was used to launch the intent.
+   */
+  launchUrl?: string | URL;
+}
+
+export interface Navigation {
+  /**
+   * A method to navigate to a specific route.
+   */
+  navigate: (url: string | URL) => void;
+}
 
 /**
  * The following APIs are provided to all extension targets.
