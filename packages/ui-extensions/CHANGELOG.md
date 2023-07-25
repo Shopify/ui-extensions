@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2023.4.2
+
+### Patch Changes
+
+- [#1135](https://github.com/Shopify/ui-extensions/pull/1135) [`b6df631c`](https://github.com/Shopify/ui-extensions/commit/b6df631cc4dd145d80555c05cfa79e02092210dc) Thanks [@lemonmade](https://github.com/lemonmade)! - Backported `Extension.target` field for checkout UI extensions
+
+- [#1135](https://github.com/Shopify/ui-extensions/pull/1135) [`b6df631c`](https://github.com/Shopify/ui-extensions/commit/b6df631cc4dd145d80555c05cfa79e02092210dc) Thanks [@lemonmade](https://github.com/lemonmade)! - Preserve generic type argument for `I18nTranslate` function
+
 ## 2023.4.1
 
 ### Minor Changes
