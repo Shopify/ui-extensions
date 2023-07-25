@@ -52,11 +52,6 @@ const data: ReferenceEntityTemplateSchema = {
       name: 'EmailField',
       url: '/docs/api/admin-extensions/components/forms/emailfield',
     },
-    {
-      type: 'component',
-      name: 'ChoiceList',
-      url: '/docs/api/admin-extensions/components/forms/choicelist',
-    },
   ],
 };
 
