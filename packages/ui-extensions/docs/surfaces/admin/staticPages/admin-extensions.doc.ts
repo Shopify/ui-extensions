@@ -16,7 +16,7 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
-      anchorLink: 'actionExtensions',
+      anchorLink: 'overview',
       title: 'Overview',
       image: 'action-extension-example.gif',
       sectionContent: 'Extend the Shopify Admin with UI Extensions.',
@@ -32,7 +32,7 @@ const data: LandingTemplateSchema = {
         {
           name: 'Get started building your first admin extension',
           subtitle: 'Tutorial',
-          url: '#gettingStarted',
+          url: '#getting-started',
           type: 'tutorial',
         },
         {
@@ -50,13 +50,13 @@ const data: LandingTemplateSchema = {
         {
           subtitle: 'Direct API access',
           name: 'Access the Shopify GraphQL API directly',
-          url: '#directAPIAccess',
+          url: '#direct-api-access',
           type: 'tool',
         },
         {
           subtitle: 'Custom protocols',
           name: 'Easily construct URLs to navigate to common locations',
-          url: '#directAPIAccess',
+          url: '#custom-protocols',
           type: 'gear',
         },
         {
@@ -69,7 +69,7 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
-      anchorLink: 'gettingStarted',
+      anchorLink: 'getting-started',
       sectionContent:
         'Use the Shopify CLI to [generate a new extension](https://shopify.dev/apps/tools/cli/commands#generate-extension) within your app.\n\nIf you already have a Shopify app, you can skip right to the last command shown here.',
       title: 'Getting Started',
@@ -89,7 +89,7 @@ const data: LandingTemplateSchema = {
       title: 'Direct API access',
       sectionContent:
         "You can make Shopify Admin API requests directly from your extension using the standard [web fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)!\n\nAny `fetch()` calls to Shopify's Admin GraphQL API from your extension are automatically authenticated by default. They're fast too, since requests are handled directly by Shopify.\n\nThe access scopes you have in your extension are the same as the access scopes you have in your app. If you need to make a request to a resource that requires a different access scope, update your app's access scopes.",
-      anchorLink: 'directAPIAccess',
+      anchorLink: 'direct-api-access',
       codeblock: {
         title: 'Query Shopify data',
         tabs: [
@@ -114,7 +114,7 @@ const data: LandingTemplateSchema = {
       title: 'Custom Protocols',
       sectionContent:
         'Custom protocols make it easier to navigate to common locations, and construct URLs.',
-      anchorLink: 'customProtocols',
+      anchorLink: 'custom-protocols',
       accordionContent: [
         {
           title: 'Shopify Protocol',

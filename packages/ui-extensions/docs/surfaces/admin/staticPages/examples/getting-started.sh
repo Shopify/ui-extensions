@@ -5,6 +5,6 @@ npm init @shopify/app@latest --name my-app
 cd my-app
 
 # generate a new extension:
-npm run shopify app generate extension
-# after following the steps, you'll see a new
-# extension in the /extensions directory
+npm run generate extension
+# follow the steps to create a new
+# extension in ./extensions.
