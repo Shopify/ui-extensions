@@ -88,7 +88,7 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       title: 'Direct API access',
       sectionContent:
-        "You can make Shopify API requests directly from your extension using the standard [web fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)!\n\nAny `fetch()` calls to Shopify's GraphQL API from your extension are automatically authenticated by default. They're fast too, since requests are handled directly by Shopify.\n\nThe access scopes you have in your extension are the same as the access scopes you have in your app. If you need to make a request to a resource that requires a different access scope, update your app's access scopes.",
+        "You can make Shopify Admin API requests directly from your extension using the standard [web fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)!\n\nAny `fetch()` calls to Shopify's Admin GraphQL API from your extension are automatically authenticated by default. They're fast too, since requests are handled directly by Shopify.\n\nThe access scopes you have in your extension are the same as the access scopes you have in your app. If you need to make a request to a resource that requires a different access scope, update your app's access scopes.",
       anchorLink: 'directAPIAccess',
       codeblock: {
         title: 'Query Shopify data',
