@@ -34,11 +34,16 @@ type ProductConfigurationComponents = AnyComponentBuilder<
   >
 >;
 
+/**
+ * See the [list of available components](/docs/api/admin-extensions/components).
+ */
+type AllComponents = AnyComponent;
+
 export interface ExtensionTargets {
   /**
    * @private
    */
-  Playground: RenderExtension<StandardApi<'Playground'>, AnyComponent>;
+  Playground: RenderExtension<StandardApi<'Playground'>, AllComponents>;
 
   /**
    * @private
@@ -51,101 +56,125 @@ export interface ExtensionTargets {
   // Blocks
   /**
    * Renders an Admin Block in the product details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.product-details.block.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   /**
    * Renders an Admin Block in the order details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.order-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.order-details.block.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   /**
    * Renders an Admin Block in the customer details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.customer-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.customer-details.block.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   // Actions
   /**
    * Renders an Admin Action in the product details page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.product-details.action.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   /**
    * Renders an Admin Action in the order details page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.order-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.order-details.action.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   /**
    * Renders an Admin Action in the customer details page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.customer-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-details.action.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   /**
    * Renders an Admin Action in the product index page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.product-index.action.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   /**
    * Renders an Admin Action in the order index page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.order-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.order-index.action.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   /**
    * Renders an Admin Action in the customer index page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.customer-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-index.action.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   // Bulk Actions
 
   /**
    * Renders an Admin Action in the product index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.product-index.selection-action.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   /**
    * Renders an Admin Action in the order index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.order-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.order-index.selection-action.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   /**
    * Renders an Admin Action in the customer index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.customer-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-index.selection-action.render'>,
-    AnyComponent
+    AllComponents
   >;
 
   /**
