@@ -1,6 +1,6 @@
 # @shopify/ui-extensions
 
-## 2023.0.0
+## 2023.7.0
 
 ### Major Changes
 
