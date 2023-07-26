@@ -94,12 +94,12 @@ handle = "my-extension"
 module =  "./src/index.ts"
 target = "purchase.checkout.block.render"
 
-[[extension_points.metafields]]
+[[extensions.metafields]]
 namespace = "my_namespace"
 key = "my_key"
 
-[settings]
-[[settings.fields]]
+[extensions.settings]
+[[extensions.settings.fields]]
 key = "banner_title"
 type = "single_line_text_field"
 name = "Banner title"
