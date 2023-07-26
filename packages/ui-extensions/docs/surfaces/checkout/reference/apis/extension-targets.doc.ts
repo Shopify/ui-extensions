@@ -13,7 +13,7 @@ You register for [targets](/docs/api/checkout-ui-extensions/extension-targets-ov
 
 The API for each extension target is passed as an argument to your function. While all targets inherit the [\`StandardApi\`](/docs/api/checkout-ui-extensions/apis/standardapi), not all of them share the same properties and methods.
 
-For example, the [\`purchase.checkout.cart-line-item.render-after\`](typesofextensiontargets-propertydetail-purchasecheckoutcartlineitemrenderafter) target has access to the [\`CheckoutApi\`](/docs/api/checkout-ui-extensions/apis/checkoutapi) to modify a checkout, but the [\`purchase.thank-you.cart-line-item.render-after\`](#typesofextensiontargets-propertydetail-purchasethankyoucartlineitemrenderafter) target does not.
+For example, the [\`purchase.checkout.cart-line-item.render-after\`](#typesofextensiontargets-propertydetail-purchasecheckoutcartlineitemrenderafter) target has access to the [\`CheckoutApi\`](/docs/api/checkout-ui-extensions/apis/checkoutapi) to modify a checkout, but the [\`purchase.thank-you.cart-line-item.render-after\`](#typesofextensiontargets-propertydetail-purchasethankyoucartlineitemrenderafter) target does not.
   `,
   isVisualComponent: false,
   category: 'APIs',

@@ -6,10 +6,11 @@ import {
 
 function Extension() {
   const {extension} = useApi();
+  const {target} = extension;
 
   return (
     <Banner>
-      This extension is rendering in the {extension.target}
+      This extension is rendering in the {target}
       extension target.
     </Banner>
   );

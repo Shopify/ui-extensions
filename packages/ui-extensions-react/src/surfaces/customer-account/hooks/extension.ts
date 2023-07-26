@@ -1,4 +1,4 @@
-import type {Extension} from '@shopify/ui-extensions/checkout';
+import type {Extension} from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
 
@@ -6,7 +6,7 @@ import {useApi} from './api';
  * Returns the metadata about the extension.
  */
 export function useExtension(): Extension {
-  return useApi().extension as Extension;
+  return useApi().extension;
 }
 
 /**

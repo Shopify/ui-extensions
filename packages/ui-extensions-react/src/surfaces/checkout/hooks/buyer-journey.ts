@@ -59,20 +59,20 @@ export function useBuyerJourneyIntercept<
 >(interceptor: Interceptor): void {
   const api = useApi<Target>();
 
-  if ('buyerJourney' in api) {
-    const interceptorRef = useRef(interceptor);
-    interceptorRef.current = interceptor;
-
-    useEffect(() => {
-      const teardownPromise = api.buyerJourney.intercept((interceptorProps) =>
-        interceptorRef.current(interceptorProps),
-      );
-
-      return () => {
-        teardownPromise.then((teardown) => teardown()).catch(() => {});
-      };
-    }, [api.buyerJourney]);
+  if (!('buyerJourney' in api)) {
+    throw new ExtensionHasNoMethodError('buyerJourney', api.extension.target);
   }
 
-  throw new ExtensionHasNoMethodError('buyerJourney', api.extension.target);
+  const interceptorRef = useRef(interceptor);
+  interceptorRef.current = interceptor;
+
+  return useEffect(() => {
+    const teardownPromise = api.buyerJourney.intercept((interceptorProps) =>
+      interceptorRef.current(interceptorProps),
+    );
+
+    return () => {
+      teardownPromise.then((teardown) => teardown()).catch(() => {});
+    };
+  }, [api.buyerJourney]);
 }

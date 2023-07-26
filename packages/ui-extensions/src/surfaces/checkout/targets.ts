@@ -1,8 +1,3 @@
-import type {
-  OrderStatusApi as CustomerAccountOrderStatusApi,
-  CartLineItemApi as CustomerAccountCartLineItemApi,
-} from '../customer-account';
-
 import type {RenderExtension} from './extension';
 import type {
   CartLineItemApi,
@@ -264,7 +259,8 @@ export interface ExtensionTargets {
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
    */
   'customer-account.order-status.block.render': RenderExtension<
-    CustomerAccountOrderStatusApi<'customer-account.order-status.block.render'>,
+    OrderStatusApi &
+      CustomerAccountStandardApi<'customer-account.order-status.block.render'>,
     AnyComponent
   >;
   /**
@@ -278,7 +274,8 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.block.render` instead.
    */
   'Checkout::OrderStatus::Dynamic::Render': RenderExtension<
-    CustomerAccountOrderStatusApi<'customer-account.order-status.block.render'>,
+    OrderStatusApi &
+      CustomerAccountStandardApi<'Checkout::OrderStatus::Dynamic::Render'>,
     AnyComponent
   >;
   /**
@@ -286,8 +283,9 @@ export interface ExtensionTargets {
    * under the line item properties element on the Order Status Page.
    */
   'customer-account.order-status.cart-line-item.render-after': RenderExtension<
-    CustomerAccountCartLineItemApi &
-      CustomerAccountOrderStatusApi<'customer-account.order-status.cart-line-item.render-after'>,
+    CartLineItemApi &
+      OrderStatusApi &
+      CustomerAccountStandardApi<'customer-account.order-status.cart-line-item.render-after'>,
     AnyComponent
   >;
   /**
@@ -297,15 +295,17 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.cart-line-item.render-after` instead.
    */
   'Checkout::OrderStatus::CartLineDetails::RenderAfter': RenderExtension<
-    CustomerAccountCartLineItemApi &
-      CustomerAccountOrderStatusApi<'customer-account.order-status.cart-line-item.render-after'>,
+    CartLineItemApi &
+      OrderStatusApi &
+      CustomerAccountStandardApi<'Checkout::OrderStatus::CartLineDetails::RenderAfter'>,
     AnyComponent
   >;
   /**
    * A static extension target that is rendered after all line items on the Order Status page.
    */
   'customer-account.order-status.cart-line-list.render-after': RenderExtension<
-    CustomerAccountOrderStatusApi<'customer-account.order-status.cart-line-item.render-after'>,
+    OrderStatusApi &
+      CustomerAccountStandardApi<'customer-account.order-status.cart-line-list.render-after'>,
     AnyComponent
   >;
   /**
@@ -314,14 +314,16 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.cart-line-list.render-after` instead.
    */
   'Checkout::OrderStatus::CartLines::RenderAfter': RenderExtension<
-    CustomerAccountOrderStatusApi<'customer-account.order-status.cart-line-item.render-after'>,
+    OrderStatusApi &
+      CustomerAccountStandardApi<'Checkout::OrderStatus::CartLines::RenderAfter'>,
     AnyComponent
   >;
   /**
    * A static extension target that is rendered after a purchase below the customer information on the Order Status page.
    */
   'customer-account.order-status.customer-information.render-after': RenderExtension<
-    CustomerAccountOrderStatusApi<'customer-account.order-status.customer-information.render-after'>,
+    OrderStatusApi &
+      CustomerAccountStandardApi<'customer-account.order-status.customer-information.render-after'>,
     AnyComponent
   >;
   /**
@@ -330,7 +332,8 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.customer-information.render-after` instead.
    */
   'Checkout::OrderStatus::CustomerInformation::RenderAfter': RenderExtension<
-    CustomerAccountOrderStatusApi<'customer-account.order-status.customer-information.render-after'>,
+    OrderStatusApi &
+      CustomerAccountStandardApi<'Checkout::OrderStatus::CustomerInformation::RenderAfter'>,
     AnyComponent
   >;
   /**
@@ -663,3 +666,36 @@ export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
 export type AllowedComponentsForRenderExtension<
   Target extends keyof RenderExtensions,
 > = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[Target]>;
+
+/**
+ * The part of the standard API implemented for customer-account targets. Must
+ * match the types defined in the `surfaces/customer-account` section of this package.
+ */
+export type CustomerAccountStandardApi<Target extends keyof ExtensionTargets> =
+  Pick<
+    StandardApi<Target>,
+    | 'analytics'
+    | 'appliedGiftCards'
+    | 'appMetafields'
+    | 'attributes'
+    | 'buyerIdentity'
+    | 'checkoutSettings'
+    | 'cost'
+    | 'discountCodes'
+    | 'discountAllocations'
+    | 'extension'
+    | 'extensionPoint'
+    | 'i18n'
+    | 'lines'
+    | 'localization'
+    | 'metafields'
+    | 'note'
+    | 'query'
+    | 'sessionToken'
+    | 'settings'
+    | 'shippingAddress'
+    | 'shop'
+    | 'storage'
+    | 'ui'
+    | 'version'
+  >;

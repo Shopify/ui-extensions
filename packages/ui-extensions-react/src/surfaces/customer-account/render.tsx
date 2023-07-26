@@ -44,6 +44,8 @@ export function reactExtension<Target extends RenderExtensionTarget>(
       await new Promise<void>((resolve, reject) => {
         try {
           remoteRender(
+            // @ts-expect-error This is a hack around some type conflicts between the
+            // customer-account version of this target’s API and the checkout version.
             <ExtensionApiContext.Provider value={api}>
               <ErrorBoundary>{element}</ErrorBoundary>
             </ExtensionApiContext.Provider>,

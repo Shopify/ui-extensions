@@ -17,8 +17,6 @@ export function useTranslate<
 
   const translate = useCallback<I18nTranslate>(
     (...args) => {
-      // @ts-expect-error TypeScript loses track of the generic type argument
-      // here for some reason...
       const translation = i18n.translate(...args);
 
       if (!Array.isArray(translation)) {
