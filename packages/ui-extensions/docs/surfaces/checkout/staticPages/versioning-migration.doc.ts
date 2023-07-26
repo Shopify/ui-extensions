@@ -94,7 +94,7 @@ handle = "my-extension"
 module =  "./src/index.ts"
 target = "purchase.checkout.block.render"
 
-[[extension_points.metafields]]
+[[extensions.metafields]]
 namespace = "my_namespace"
 key = "my_key"
 
