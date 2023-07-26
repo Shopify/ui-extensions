@@ -361,16 +361,16 @@ const links: {[key: string]: LinkType[]} = {
       type: 'CartLineItemApi',
     },
     {
-      name: 'PickupPointItemApi',
+      name: 'PickupPointListApi',
       subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/pickuppointitemapi',
-      type: 'PickupPointItemApi',
+      url: '/docs/api/checkout-ui-extensions/apis/pickuppointlistapi',
+      type: 'PickupPointListApi',
     },
     {
-      name: 'PickupLocationItemApi',
+      name: 'PickupLocationListApi',
       subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/pickuplocationitemapi',
-      type: 'PickupLocationItemApi',
+      url: '/docs/api/checkout-ui-extensions/apis/pickuplocationlistapi',
+      type: 'PickupLocationListApi',
     },
     {
       name: 'ShippingOptionItemApi',
