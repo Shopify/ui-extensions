@@ -5,7 +5,7 @@ const data: LandingTemplateSchema = {
   title: 'Admin UI extensions',
   featureFlag: 'admin_extensibility',
   description:
-    "Admin UI extensions enable you to add your app's functionality to the Shopify Admin. It allows you to integrate your app into the Shopify Admin in a more meaningful way.",
+    'Admin UI extensions make it possible to surface contextual app functionality within the Shopify Admin interface.',
   image: '/assets/landing-pages/templated-apis/hero.png',
   darkImage: '/assets/landing-pages/templated-apis/hero-dark.png',
   tabletImage: '/assets/landing-pages/templated-apis/hero.png',
@@ -16,7 +16,7 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
-      anchorLink: 'actionExtensions',
+      anchorLink: 'overview',
       title: 'Overview',
       image: 'action-extension-example.gif',
       sectionContent: 'Extend the Shopify Admin with UI Extensions.',
@@ -32,7 +32,7 @@ const data: LandingTemplateSchema = {
         {
           name: 'Get started building your first admin extension',
           subtitle: 'Tutorial',
-          url: '#gettingStarted',
+          url: '#getting-started',
           type: 'tutorial',
         },
         {
@@ -50,13 +50,13 @@ const data: LandingTemplateSchema = {
         {
           subtitle: 'Direct API access',
           name: 'Access the Shopify GraphQL API directly',
-          url: '#directAPIAccess',
+          url: '#direct-api-access',
           type: 'tool',
         },
         {
           subtitle: 'Custom protocols',
           name: 'Easily construct URLs to navigate to common locations',
-          url: '#directAPIAccess',
+          url: '#custom-protocols',
           type: 'gear',
         },
         {
@@ -69,15 +69,15 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
-      anchorLink: 'gettingStarted',
+      anchorLink: 'getting-started',
       sectionContent:
-        'Scaffolding an extension for the title and Use Shopify CLI to [generate a new extension](https://shopify.dev/apps/tools/cli/commands#generate-extension) in the directory of your app.',
+        'Use the Shopify CLI to [generate a new extension](https://shopify.dev/apps/tools/cli/commands#generate-extension) within your app.\n\nIf you already have a Shopify app, you can skip right to the last command shown here.',
       title: 'Getting Started',
       codeblock: {
         title: 'Generate an extension',
         tabs: [
           {
-            code: './examples/getting-started.ts',
+            code: './examples/getting-started.sh',
             language: 'bash',
             title: 'CLI',
           },
@@ -88,13 +88,13 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       title: 'Direct API access',
       sectionContent:
-        "Make requests to Shopify directly from your extension, simply use `fetch`! The access scopes you have in your extension are the same as the access scopes you have in your app. If you need to make a request to a resource that requires a different access scope, update your app's access scopes.",
-      anchorLink: 'directAPIAccess',
+        "You can make Shopify Admin API requests directly from your extension using the standard [web fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)!\n\nAny `fetch()` calls to Shopify's Admin GraphQL API from your extension are automatically authenticated by default. They're fast too, since requests are handled directly by Shopify.\n\nThe access scopes you have in your extension are the same as the access scopes you have in your app. If you need to make a request to a resource that requires a different access scope, update your app's access scopes.",
+      anchorLink: 'direct-api-access',
       codeblock: {
         title: 'Query Shopify data',
         tabs: [
           {
-            code: './examples/direct-api.tsx',
+            code: './examples/direct-api.jsx',
             language: 'tsx',
             title: 'Get Product Data',
           },
@@ -114,7 +114,7 @@ const data: LandingTemplateSchema = {
       title: 'Custom Protocols',
       sectionContent:
         'Custom protocols make it easier to navigate to common locations, and construct URLs.',
-      anchorLink: 'customProtocols',
+      anchorLink: 'custom-protocols',
       accordionContent: [
         {
           title: 'Shopify Protocol',
