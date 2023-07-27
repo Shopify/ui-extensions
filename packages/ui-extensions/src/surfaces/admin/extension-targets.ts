@@ -64,6 +64,11 @@ export interface ExtensionTargets {
     AllComponents
   >;
 
+  'admin.product-publications.block.render': RenderExtension<
+    BlockExtensionApi<'admin.product-publications.block.render'>,
+    AllComponents
+  >;
+
   /**
    * Renders an Admin Block in the order details page.
    *
