@@ -64,4 +64,5 @@ export interface StandardApi {
       close(overlayId: string): void;
     };
   };
+  navigation: StandardExtensionNavigation;
 }

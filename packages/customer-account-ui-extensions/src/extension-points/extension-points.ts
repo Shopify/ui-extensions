@@ -49,6 +49,7 @@ export interface FullPageApi {
     pathname: string;
     search: string;
   }>;
+  navigation: FullExtensionNavigation;
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;
