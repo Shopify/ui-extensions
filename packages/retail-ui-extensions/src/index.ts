@@ -14,6 +14,7 @@ export type {
   SessionApiContent,
   ToastApi,
   ToastApiContent,
+  ShowToastOptions,
   Session,
   ScannerSource,
   ScannerSubscriptionResult,
@@ -91,6 +92,7 @@ export type {
   NumberFieldProps,
   Segment,
   SegmentedControlProps,
+  SectionHeaderAction,
   SectionProps,
   InputType,
   TextFieldProps,
@@ -105,6 +107,7 @@ export type {
   ListRow,
   ListRowLeftSide,
   ListRowRightSide,
+  ToggleSwitch,
   PinValidationResult,
   PinLength,
   PinPadActionType,
@@ -131,6 +134,7 @@ export type {
   IconName,
   IconProps,
   ScreenProps,
+  ScreenPresentationProps,
 } from './components';
 
 export type {

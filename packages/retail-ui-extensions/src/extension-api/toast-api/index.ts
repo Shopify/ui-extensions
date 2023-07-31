@@ -1,1 +1,1 @@
-export type {ToastApiContent, ToastApi} from './toast-api';
+export type {ShowToastOptions, ToastApiContent, ToastApi} from './toast-api';
