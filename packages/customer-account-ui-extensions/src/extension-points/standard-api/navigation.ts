@@ -1,26 +1,26 @@
-type NavigationType = 'push' | 'replace' | 'traverse';
+export type NavigationType = 'push' | 'replace' | 'traverse';
 
-interface NavigationOptions {
+export interface NavigationOptions {
   state?: Record<string, any>;
   type: 'auto' | 'push' | 'replace';
 }
 
-interface NavigationHistoryEntry {
+export interface NavigationHistoryEntry {
   key: string;
   url: string;
   getState(): Record<string, any>;
 }
 
-interface NavigationCurrentEntryChangeEvent {
+export interface NavigationCurrentEntryChangeEvent {
   type: NavigationType;
   from: NavigationHistoryEntry;
 }
 
-interface StandardExtensionNavigation {
+export interface StandardExtensionNavigation {
   navigate: NavigateFunction;
 }
 
-type FullExtensionNavigation = StandardExtensionNavigation & {
+export type FullExtensionNavigation = StandardExtensionNavigation & {
   addEventListener(
     type: 'currententrychange',
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
@@ -33,6 +33,6 @@ type FullExtensionNavigation = StandardExtensionNavigation & {
   updateCurrentEntry(options: {state: Record<string, any>}): void;
 };
 
-interface NavigateFunction {
+export interface NavigateFunction {
   (url: string, options?: NavigationOptions): void;
 }

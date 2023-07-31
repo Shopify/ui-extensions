@@ -1,5 +1,6 @@
 import {Extension} from './extension';
 import {I18n, Localization} from './localization';
+import {StandardExtensionNavigation} from './navigation';
 import {Storage} from './storage';
 
 export type RendererVersion = 'unstable';

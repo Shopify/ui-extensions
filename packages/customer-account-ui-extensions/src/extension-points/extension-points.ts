@@ -1,6 +1,7 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 import type {RenderExtension, RunExtension} from './extension-signature';
 import type {StandardApi} from './standard-api';
+import {FullExtensionNavigation} from './standard-api/navigation';
 
 type Components = typeof import('../components');
 
