@@ -2,7 +2,7 @@ type NavigationType = 'push' | 'replace' | 'traverse';
 
 interface NavigationOptions {
   state?: Record<string, any>;
-  type: NavigationType;
+  type: 'auto' | 'push' | 'replace';
 }
 
 interface NavigationHistoryEntry {
