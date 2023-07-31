@@ -23,6 +23,14 @@ export interface StandardExtensionNavigation {
 export type FullExtensionNavigation = StandardExtensionNavigation & {
   currentEntry: NavigationHistoryEntry;
   updateCurrentEntry(options: {state: Record<string, any>}): void;
+  addEventListener(
+    type: 'currententrychange',
+    cb: (event: NavigationCurrentEntryChangeEvent) => void,
+  ): void;
+  removeEventListener(
+    type: 'currententrychange',
+    cb: (event: NavigationCurrentEntryChangeEvent) => void,
+  ): void;
 };
 
 export interface NavigateFunction {
