@@ -1,17 +1,22 @@
 import {Extension} from './extension';
 import {I18n, Localization} from './localization';
 import {Storage} from './storage';
+import type {ExtensionPoint} from '../extension-points';
 
 export type RendererVersion = 'unstable';
 
 /**
  * The following APIs are provided to all extension points.
  */
-export interface StandardApi {
+export interface StandardApi<
+  TExtensionPoint extends ExtensionPoint = ExtensionPoint,
+> {
   customerApi: {
     getEndpoint(version: 'unstable'): Promise<string>;
     getAccessToken(): Promise<string>;
   };
+
+  extensionPoint: TExtensionPoint;
 
   /**
    * Meta information about the extension.
