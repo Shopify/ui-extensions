@@ -19,7 +19,7 @@ export type {Spacing, StackProps} from './Stack';
 export type {VerticalSpacing, HorizontalSpacing} from './Spacing';
 
 export {Section} from './Section';
-export type {SectionProps} from './Section';
+export type {SectionHeaderAction, SectionProps} from './Section';
 
 export {FormattedTextField} from './FormattedTextField';
 export type {InputType, FormattedTextFieldProps} from './FormattedTextField';
@@ -30,6 +30,7 @@ export type {
   ListRowLeftSide,
   ListRowRightSide,
   ListProps,
+  ToggleSwitch,
 } from './List';
 
 export {PinPad} from './PinPad';
@@ -89,7 +90,7 @@ export {Icon} from './Icon';
 export type {IconName, IconProps} from './Icon';
 
 export {Screen} from './Screen';
-export type {ScreenProps} from './Screen';
+export type {ScreenPresentationProps, ScreenProps} from './Screen';
 
 export {Navigator} from './Navigator';
 
