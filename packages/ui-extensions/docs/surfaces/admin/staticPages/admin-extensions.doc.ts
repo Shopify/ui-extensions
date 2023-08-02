@@ -100,7 +100,7 @@ const data: LandingTemplateSchema = {
         title: "Make requests to your app's backend",
         tabs: [
           {
-            code: './examples/direct-api.jsx',
+            code: './examples/authenticated-fetch.jsx',
             language: 'tsx',
             title: 'Get Product Data',
           },
