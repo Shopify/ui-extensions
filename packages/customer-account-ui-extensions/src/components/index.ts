@@ -1,4 +1,3 @@
-export * from './Card';
 export * from './CustomerAccountCard';
 export * from './PaymentIcon';
 export * from './PolicyModal';
