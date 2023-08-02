@@ -9,7 +9,7 @@ export type {
   I18nTranslate,
   I18n,
 } from './standard-api/localization';
-export type {Capability, Extension} from './standard-api/extension';
+export type {Capability, Extension, Editor} from './standard-api/extension';
 export type {Storage} from './standard-api/storage';
 
 export type {StandardApi} from './standard-api';

@@ -2,6 +2,12 @@ import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 export type Capability = 'network_access';
 
+export interface Editor {
+  /**
+   * Indicates whether the extension is rendering in the checkout editor.
+   */
+  type: 'checkout';
+}
 export interface Extension {
   /**
    * The published version of the running extension point.
@@ -40,4 +46,11 @@ export interface Extension {
    * to make network calls.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
+
+  /**
+   * Information about the editor where the extension is being rendered.
+   *
+   * The value is undefined if the extension is not rendering in an editor.
+   */
+  editor?: Editor;
 }
