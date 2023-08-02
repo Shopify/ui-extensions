@@ -66,12 +66,12 @@ import {
 render("CustomerAccount::FullPage::RenderWithin", () => <App />);
 
 function App() {
-  const {customerApi, extension, features, i18n} = useExtensionApi();
+  const {extension, features, i18n} = useExtensionApi();
 
   return (
     <Button
       onPress={() => {
-        console.log({customerApi, extension, features, i18n});
+        console.log({extension, features, i18n});
       }}
     >
       Log extension API to console

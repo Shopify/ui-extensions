@@ -11,11 +11,6 @@ export type RendererVersion = 'unstable';
 export interface StandardApi<
   TExtensionPoint extends ExtensionPoint = ExtensionPoint,
 > {
-  customerApi: {
-    getEndpoint(version: 'unstable'): Promise<string>;
-    getAccessToken(): Promise<string>;
-  };
-
   extensionPoint: TExtensionPoint;
 
   /**
