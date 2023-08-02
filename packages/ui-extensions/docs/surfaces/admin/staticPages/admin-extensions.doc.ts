@@ -48,6 +48,12 @@ const data: LandingTemplateSchema = {
           type: 'app',
         },
         {
+          subtitle: 'App authentication',
+          name: "Make authenticated requests to your app's backend",
+          url: '#app-authentication',
+          type: 'tool',
+        },
+        {
           subtitle: 'Direct API access',
           name: 'Access the Shopify GraphQL API directly',
           url: '#direct-api-access',
@@ -80,6 +86,23 @@ const data: LandingTemplateSchema = {
             code: './examples/getting-started.sh',
             language: 'bash',
             title: 'CLI',
+          },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
+      title: 'App Authentication',
+      sectionContent:
+        "Admin UI extensions can also make authenticated calls to your app's backend. When you make a `fetch()` request to your app's backend, an authorization token will be automatically added to the call's headers. There's no need to manually manage your app's session tokens.",
+      anchorLink: 'app-authentication',
+      codeblock: {
+        title: "Make requests to your app's backend",
+        tabs: [
+          {
+            code: './examples/direct-api.jsx',
+            language: 'tsx',
+            title: 'Get Product Data',
           },
         ],
       },
