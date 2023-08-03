@@ -94,7 +94,7 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       title: 'App Authentication',
       sectionContent:
-        "Admin UI extensions can also make authenticated calls to your app's backend. When you make a `fetch()` request to your app's backend, an authorization token will be automatically added to the call's headers. There's no need to manually manage your app's session tokens.",
+        "Admin UI extensions can also make authenticated calls to your app's backend. When you make a `fetch()` request to your app's backend, an authorization token will be automatically added to the request headers. There's no need to manually manage your app's session tokens.",
       anchorLink: 'app-authentication',
       codeblock: {
         title: "Make requests to your app's backend",
