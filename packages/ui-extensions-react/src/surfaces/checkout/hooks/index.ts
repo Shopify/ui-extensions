@@ -24,7 +24,12 @@ export {
   useShippingAddress,
   useApplyShippingAddressChange,
 } from './shipping-address';
-export {useTotalAmount} from './cost';
+export {
+  useSubtotalAmount,
+  useTotalShippingAmount,
+  useTotalTaxAmount,
+  useTotalAmount,
+} from './cost';
 export {useCartLines, useApplyCartLinesChange} from './cart-lines';
 export {useTarget} from './target';
 export {useAppMetafields} from './app-metafields';
