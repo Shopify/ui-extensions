@@ -1,6 +1,6 @@
 import {Extension} from './extension';
 import {I18n, Localization} from './localization';
-import {StandardExtensionNavigation} from './navigation';
+import {NavigationCurrentEntryChangeEvent, StandardExtensionNavigation} from './navigation';
 import {Storage} from './storage';
 import {BuyerIdentity} from './buyer-identity';
 import type {ExtensionPoint} from '../extension-points';
@@ -72,4 +72,10 @@ export interface StandardApi<
     };
   };
   navigation: StandardExtensionNavigation;
+  navigationEvents: {
+    addEventListener(
+      type: 'currententrychange',
+      cb: (event: NavigationCurrentEntryChangeEvent) => void,
+    ): void;
+  }
 }
