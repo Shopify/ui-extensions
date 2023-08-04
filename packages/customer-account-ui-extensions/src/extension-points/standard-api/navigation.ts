@@ -2,7 +2,7 @@ export type NavigationType = 'push' | 'replace' | 'traverse';
 
 export interface NavigationOptions {
   state?: Record<string, any>;
-  type: 'auto' | 'push' | 'replace';
+  type: 'push' | 'replace';
 }
 
 export interface NavigationHistoryEntry {
