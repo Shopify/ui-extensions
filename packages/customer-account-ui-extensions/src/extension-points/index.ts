@@ -9,6 +9,11 @@ export type {
   I18nTranslate,
   I18n,
 } from './standard-api/localization';
+export type {
+  BuyerIdentity,
+  PurchasingCompany,
+  Company,
+} from './standard-api/buyer-identity';
 export type {Capability, Extension, Editor} from './standard-api/extension';
 export type {Storage} from './standard-api/storage';
 
