@@ -53,7 +53,7 @@ function Extension({extensionPoint}: Props) {
         console.log(`Extension point: ${extensionPoint}`);
       }}
     >
-      Log target to console
+      Log extension point to console
     </Button>
   );
 }
@@ -85,7 +85,7 @@ function Extension() {
         console.log(`Extension point: ${extensionPoint}`);
       }}
     >
-      Log target to console
+      Log extension point to console
     </Button>
   );
 }
