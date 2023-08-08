@@ -6,7 +6,7 @@ export interface ShippingMethodDetailsApi {
   /**
    * The shipping option the extension is attached to.
    */
-  target: StatefulRemoteSubscribable<ShippingOption | undefined>;
+  target: StatefulRemoteSubscribable<ShippingOption>;
 
   /**
    * Whether the shipping option the extension is attached to is currently selected in the UI.
