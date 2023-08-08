@@ -8,7 +8,7 @@ export interface NavigationOptions {
 export interface NavigationHistoryEntry {
   key: string;
   url: string;
-  getState(): Record<string, any>;
+  state: Record<string, any>;
 }
 
 export interface NavigationCurrentEntryChangeEvent {
