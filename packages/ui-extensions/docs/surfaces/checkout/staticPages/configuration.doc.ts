@@ -273,12 +273,12 @@ Retrieving data from [metafields](/docs/api/checkout-ui-extensions/apis/standard
           sectionContent: `
 1. Go to your [Partner Dashboard](https://partners.shopify.com/current/apps).
 2. Click the name of the app that you want to change.
-3. Click **App setup**.
-4. In the **Checkout UI extensions** section, on the **Enable network access in checkout UI extensions** card, click **Request access**.
+3. Click **API access**.
+4. Under **Allow network access in checkout UI extensions**, click **Allow network access**
 
    Your request is automatically approved and your app is immediately granted the approval scope that's required for your checkout UI extension to make external network calls.
 
-5. Add <code>network_access = true</code> to the <code>settings</code> section of your extension's configuration file.`,
+5. Add <code>network_access = true</code> to the <code>[extensions.capabilities]</code> section of your extension's configuration file.`,
         },
         {
           title: 'Required CORS headers',
