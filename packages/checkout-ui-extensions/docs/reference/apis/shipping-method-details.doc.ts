@@ -11,8 +11,6 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'The API provided to extensions rendering after shipping method details and the expanded section of a selected shipping method.',
   description: `
-> Caution: This feature is in developer preview and is subject to change.
-
 This API object is provided to extensions registered for the \`Checkout::ShippingMethodDetails::RenderAfter\` or \`Checkout::ShippingMethodDetails::RenderExpanded\` extension points.
 
 It extends the [StandardApi](/docs/api/checkout-ui-extensions/apis/standardapi), provides a [target](#properties-propertydetail-target) object with information about the shipping method the extension is attached to, \

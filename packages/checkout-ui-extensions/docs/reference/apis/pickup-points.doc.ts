@@ -11,11 +11,9 @@ const data: ReferenceEntityTemplateSchema = {
   overviewPreviewDescription:
     'The API provided to extensions rendering before and after pickup points.',
   description: `
-> Caution: This feature is in developer preview and is subject to change.
-
 This API object is provided to extensions registered for the \`Checkout::PickupPoints::RenderBefore\` or \`Checkout::PickupPoints::RenderAfter\` extension points.
 
-It extends the [StandardApi](/docs/api/checkout-ui-extensions/apis/standardapi) and provides a [locationFormVisible](#properties-propertydetail-locationformvisible) boolean to indicate whether the customer location input form is currently rendered and shown to the buyer.
+It extends the [StandardApi](/docs/api/checkout-ui-extensions/apis/standardapi) and provides a [isLocationFormVisible](#properties-propertydetail-islocationformvisible) boolean to indicate whether the customer location input form is currently rendered and shown to the buyer.
 `,
   requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
   isVisualComponent: false,

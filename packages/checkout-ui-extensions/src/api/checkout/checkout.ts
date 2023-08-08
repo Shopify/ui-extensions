@@ -342,7 +342,7 @@ export interface MetafieldRemoveChange {
 /** Removes a cart metafield. */
 export interface MetafieldRemoveCartChange {
   /**
-   * The type of the `MetafieldRemoveChange` API.
+   * The type of the `MetafieldRemoveCartChange` API.
    */
   type: 'removeCartMetafield';
 
@@ -388,7 +388,7 @@ export interface MetafieldUpdateChange {
  */
 export interface MetafieldUpdateCartChange {
   /**
-   * The type of the `MetafieldUpdateChange` API.
+   * The type of the `MetafieldUpdateCartChange` API.
    */
   type: 'updateCartMetafield';
 
@@ -489,9 +489,12 @@ export interface CheckoutApi {
   applyGiftCardChange(change: GiftCardChange): Promise<GiftCardChangeResult>;
 
   /**
-   * Performs an update on a piece of metadata attached to the checkout. If
-   * successful, this mutation results in an update to the value retrieved
-   * through the [`metafields`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-metafields) property.
+   * Performs an update on a piece of metadata attached to the cart or checkout:
+   * - If `type` is `updateMetafield` or `removeMetafield`, this mutation results in an update to the value retrieved through the [`metafields`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-metafields) property. Metafields written by `updateMetafield` are carried over to the order.
+   * - If `type` is `updateCartMetafield` or `removeCartMetafield`, this mutation updates the metafield attached to the cart and results in an update to the value retrieved through the [`appMetafields`](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/apis/standardapi#properties-propertydetail-appmetafields) property. Metafields written by `updateCartMetafields` are updated on the cart object only and are **not** carried over to the order.
+   *
+   * > Tip:
+   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.
    */
   applyMetafieldChange(change: MetafieldChange): Promise<MetafieldChangeResult>;
 
