@@ -69,32 +69,32 @@ export function getExamples(
       },
     },
     // For examples specific to extension points that differ from the StandardApi, organize them into folders (<extension-point-name>/<example>).
-    'cart-line-item/default': {
+    'cart-line-details/default': {
       description: '',
       codeblock: {
         title: '',
-        tabs: getExtensionCodeTabs('cart-line-item/default'),
+        tabs: getExtensionCodeTabs('cart-line-details/default'),
       },
     },
-    'pickup-point-list/default': {
+    'pickup-points/default': {
       description: '',
       codeblock: {
         title: '',
-        tabs: getExtensionCodeTabs('pickup-point-list/default'),
+        tabs: getExtensionCodeTabs('pickup-points/default'),
       },
     },
-    'shipping-option-item/default': {
+    'shipping-method-details/default': {
       description: '',
       codeblock: {
         title: '',
-        tabs: getExtensionCodeTabs('shipping-option-item/default'),
+        tabs: getExtensionCodeTabs('shipping-method-details/default'),
       },
     },
-    'pickup-location-list/default': {
+    'pickup-locations/default': {
       description: '',
       codeblock: {
         title: '',
-        tabs: getExtensionCodeTabs('pickup-location-list/default'),
+        tabs: getExtensionCodeTabs('pickup-locations/default'),
       },
     },
     'order-status/default': {
