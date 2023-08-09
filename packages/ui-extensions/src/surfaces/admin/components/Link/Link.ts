@@ -58,6 +58,11 @@ export interface LinkProps {
    * Alias for `language`
    */
   lang?: string;
+  /**
+   * Specifies where to display the linked URL
+   * @default '_self'
+   */
+  target?: '_blank' | '_self';
 }
 
 export const Link = createRemoteComponent<'Link', LinkProps>('Link');
