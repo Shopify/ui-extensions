@@ -435,6 +435,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * being purchased by the customer.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * > Tip:
+   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.*
    */
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 
@@ -767,6 +770,26 @@ export interface Shop {
 }
 
 export interface CartCost {
+  /**
+   * A `Money` value representing the subtotal value of the items in the cart at the current
+   * step of checkout.
+   */
+  subtotalAmount: StatefulRemoteSubscribable<Money>;
+
+  /**
+   * A `Money` value representing the total shipping a buyer can expect to pay at the current
+   * step of checkout. This value includes shipping discounts. Returns undefined if shipping
+   * has not been negotiated yet, such as on the information step.
+   */
+  totalShippingAmount: StatefulRemoteSubscribable<Money | undefined>;
+
+  /**
+   * A `Money` value representing the total tax a buyer can expect to pay at the current
+   * step of checkout or the total tax included in product and shipping prices. Returns
+   * undefined if taxes are unavailable.
+   */
+  totalTaxAmount: StatefulRemoteSubscribable<Money | undefined>;
+
   /**
    * A `Money` value representing the minimum a buyer can expect to pay at the current
    * step of checkout. This value excludes amounts yet to be negotiated. For example,

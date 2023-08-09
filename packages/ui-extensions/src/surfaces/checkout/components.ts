@@ -81,6 +81,9 @@ export type {ListProps} from './components/List/List';
 export {ListItem} from './components/ListItem/ListItem';
 export type {ListItemProps} from './components/ListItem/ListItem';
 
+export {LoginWithShop} from './components/LoginWithShop/LoginWithShop';
+export type {LoginWithShopProps} from './components/LoginWithShop/LoginWithShop';
+
 export {Modal} from './components/Modal/Modal';
 export type {ModalProps} from './components/Modal/Modal';
 
