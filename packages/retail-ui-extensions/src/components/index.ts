@@ -59,7 +59,7 @@ export {CameraScanner} from './CameraScanner';
 export type {CameraScannerProps} from './CameraScanner';
 
 export {Badge} from './Badge';
-export type {BadgeVariant, BadgeProps} from './Badge';
+export type {BadgeStatus, BadgeVariant, BadgeProps} from './Badge';
 
 export {Stepper} from './Stepper';
 export type {StepperProps} from './Stepper';

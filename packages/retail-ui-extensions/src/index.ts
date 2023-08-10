@@ -87,6 +87,7 @@ export type {
   DialogType,
   DialogProps,
   EmailFieldProps,
+  BadgeStatus,
   BadgeVariant,
   BadgeProps,
   NumberFieldProps,

@@ -5,6 +5,7 @@ export {
 } from '@shopify/retail-ui-extensions';
 export type {
   AutoCapitalizationType,
+  BadgeStatus,
   BadgeVariant,
   BannerVariant,
   ButtonType,
