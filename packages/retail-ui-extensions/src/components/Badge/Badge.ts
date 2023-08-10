@@ -7,9 +7,12 @@ export type BadgeVariant =
   | 'success'
   | 'highlight';
 
+export type BadgeStatus = 'empty' | 'partial' | 'complete';
+
 export interface BadgeProps {
   text: string;
   variant: BadgeVariant;
+  status?: BadgeStatus;
 }
 
 export const Badge = createRemoteComponent<'Badge', BadgeProps>('Badge');
