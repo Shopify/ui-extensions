@@ -234,8 +234,6 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * > Caution: This feature is in developer preview and is subject to change.
-   *
    * A static extension point that is rendered before pickup location options.
    */
   'Checkout::PickupLocations::RenderBefore': RenderExtension<
@@ -245,8 +243,6 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * > Caution: This feature is in developer preview and is subject to change.
-   *
    * A static extension point that is rendered after pickup location options.
    */
   'Checkout::PickupLocations::RenderAfter': RenderExtension<
@@ -256,8 +252,6 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * > Caution: This feature is in developer preview and is subject to change.
-   *
    * A static extension point that is rendered after the shipping method
    * details within the shipping method option list, for each option.
    */
@@ -268,8 +262,6 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * > Caution: This feature is in developer preview and is subject to change.
-   *
    * A static extension point that is rendered under the shipping method
    * within the shipping method option list, for each option.
    */
@@ -280,8 +272,6 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * > Caution: This feature is in developer preview and is subject to change.
-   *
    * A static extension point that is rendered immediately before the pickup points.
    */
   'Checkout::PickupPoints::RenderBefore': RenderExtension<
@@ -291,8 +281,6 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * > Caution: This feature is in developer preview and is subject to change.
-   *
    * A static extension point that is rendered immediately after the pickup points.
    */
   'Checkout::PickupPoints::RenderAfter': RenderExtension<

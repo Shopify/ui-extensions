@@ -417,6 +417,9 @@ export interface StandardApi<Target extends ExtensionPoint = ExtensionPoint> {
    * being purchased by the customer.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * > Tip:
+   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.
    */
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 
@@ -505,16 +508,9 @@ export interface StandardApi<Target extends ExtensionPoint = ExtensionPoint> {
   localization: Localization;
 
   /**
-   * The metafields that apply to the current checkout. The actual resource
-   * on which these metafields exist depends on the source of the checkout:
+   * The metafields that apply to the current checkout.
    *
-   * - If the source is an order, then the metafields are on the order.
-   * - If the source is a draft order, then the initial value of metafields are
-   *   from the draft order, and any new metafields you write are applied
-   *   to the order created by this checkout.
-   * - For all other sources, the metafields are only stored locally on the
-   *   client creating the checkout, and are applied to the order that
-   *   results from checkout.
+   * Metafields are stored locally on the client and are applied to the order object after the checkout completes.
    *
    * These metafields are shared by all extensions running on checkout, and
    * persist for as long as the customer is working on this checkout.
@@ -1076,7 +1072,7 @@ export interface SelectedPaymentOption {
   /**
    * The unique handle referencing `PaymentOption.handle`.
    *
-   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/apis/standardapi#properties-propertydetail-availablepaymentoptions).
+   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-availablepaymentoptions).
    */
   handle: string;
 }
@@ -1343,7 +1339,7 @@ export interface DeliveryGroup {
   /**
    * Whether delivery is required for the delivery group.
    */
-  deliveryRequired: boolean;
+  isDeliveryRequired: boolean;
 }
 
 /**
