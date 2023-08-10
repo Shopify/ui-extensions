@@ -7,6 +7,10 @@ export interface DeviceApiContent {
    * The string ID of the device
    */
   getDeviceId(): Promise<string>;
+  /**
+   * Whether the device is a tablet
+   */
+  isTablet(): Promise<boolean>;
 }
 
 /**
