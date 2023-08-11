@@ -1,6 +1,7 @@
 import {Extension} from './extension';
 import {I18n, Localization} from './localization';
 import {Storage} from './storage';
+import {BuyerIdentity} from './buyer-identity';
 import type {ExtensionPoint} from '../extension-points';
 
 export type RendererVersion = 'unstable';
@@ -17,6 +18,11 @@ export interface StandardApi<
    * Meta information about the extension.
    */
   extension: Extension;
+
+  /**
+   * Information about the buyer.
+   */
+  buyerIdentity: BuyerIdentity;
 
   /**
    * The renderer version being used for the extension.
