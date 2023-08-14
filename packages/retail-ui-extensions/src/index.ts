@@ -133,6 +133,7 @@ export type {
   ImageProps,
   RadioButtonListProps,
   IconName,
+  IconSize,
   IconProps,
   ScreenProps,
   ScreenPresentationProps,

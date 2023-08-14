@@ -83,8 +83,11 @@ export type IconName =
   | 'delivery'
   | 'shop-pay';
 
+export type IconSize = 'minor' | 'major' | 'spot' | 'caption' | 'badge';
+
 export interface IconProps {
   name: IconName;
+  size?: IconSize;
 }
 
 export const Icon = createRemoteComponent<'Icon', IconProps>('Icon');

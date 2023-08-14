@@ -87,7 +87,7 @@ export {RadioButtonList} from './RadioButtonList';
 export type {RadioButtonListProps} from './RadioButtonList';
 
 export {Icon} from './Icon';
-export type {IconName, IconProps} from './Icon';
+export type {IconName, IconSize, IconProps} from './Icon';
 
 export {Screen} from './Screen';
 export type {ScreenPresentationProps, ScreenProps} from './Screen';
