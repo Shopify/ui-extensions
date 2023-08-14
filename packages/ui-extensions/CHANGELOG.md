@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2023.4.3
+
+### Patch Changes
+
+- [#1216](https://github.com/Shopify/ui-extensions/pull/1216) [`9052b155`](https://github.com/Shopify/ui-extensions/commit/9052b1550f38d21563bcb36530f6b2bc580363eb) Thanks [@jamesvidler](https://github.com/jamesvidler)! - PickupLocationsApi and PickupPointsApi now return a `isLocationFormVisible` property as opposed to `locationFormVisible`. ShippingMethodDetailsApi now gurantees a target (`ShippingOption`) will be returned.
+
 ## 2023.4.2
 
 ### Patch Changes
