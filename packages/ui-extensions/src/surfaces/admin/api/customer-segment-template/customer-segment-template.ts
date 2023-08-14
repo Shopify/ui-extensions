@@ -9,7 +9,7 @@ type CustomerSegmentationFeature =
   /* Enables count aggregates on functions. For example: shopify_email.opened(count_at_least: 5) = true */
   | 'aggregateFilters';
 
-export interface CustomerSegmentationTemplateApi<
+export interface CustomerSegmentTemplateApi<
   ExtensionTarget extends AnyExtensionTarget,
 > extends StandardApi<ExtensionTarget> {
   /* Utilities for translating content according to the current `localization` of the admin. */

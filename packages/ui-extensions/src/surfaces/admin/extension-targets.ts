@@ -3,7 +3,7 @@ import type {RenderExtension} from '../../extension';
 import type {AnyComponent, Components} from './shared';
 import type {
   StandardApi,
-  CustomerSegmentationTemplateApi,
+  CustomerSegmentTemplateApi,
   ActionExtensionApi,
   BlockExtensionApi,
   ProductDetailsConfigurationApi,
@@ -12,7 +12,7 @@ import type {
 import {AnyComponentBuilder} from '../../shared';
 
 type CustomerSegmentationTemplateComponent = AnyComponentBuilder<
-  Pick<Components, 'CustomerSegmentationTemplate'>
+  Pick<Components, 'CustomerSegmentationTemplate' | 'CustomerSegmentTemplate'>
 >;
 
 type ProductConfigurationComponents = AnyComponentBuilder<
@@ -49,7 +49,7 @@ export interface ExtensionTargets {
    * @private
    */
   'admin.customers.segmentation-templates.render': RenderExtension<
-    CustomerSegmentationTemplateApi<'admin.customers.segmentation-templates.render'>,
+    CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.render'>,
     CustomerSegmentationTemplateComponent
   >;
 
