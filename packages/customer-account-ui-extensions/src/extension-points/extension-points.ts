@@ -59,7 +59,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   'customer-account.order-status.action.render': RenderExtension<
-    StandardApi & {orderId: string},
+    StandardApi & ActionExtensionApi & {orderId: string},
     AllComponents
   >;
 }
@@ -69,6 +69,10 @@ export interface FullPageApi {
     pathname: string;
     search: string;
   }>;
+}
+
+export interface ActionExtensionApi {
+  close(): void;
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;

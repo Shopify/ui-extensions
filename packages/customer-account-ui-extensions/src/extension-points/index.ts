@@ -2,6 +2,7 @@ export type {
   ExtensionPoints,
   ExtensionPoint,
   FullPageApi,
+  ActionExtensionApi,
 } from './extension-points';
 export type {
   Language,
