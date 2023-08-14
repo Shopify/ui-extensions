@@ -11,3 +11,8 @@ export type ComponentsBuilder<ComponentTypes> = {
 
 export type AnyComponentBuilder<ComponentTypes> =
   ComponentsBuilder<ComponentTypes>[keyof ComponentsBuilder<ComponentTypes>];
+
+/**
+ * Union of supported API versions
+ */
+export type ApiVersion = '2023-04' | '2023-07' | 'unstable';
