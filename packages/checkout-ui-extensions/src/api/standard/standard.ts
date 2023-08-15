@@ -10,6 +10,7 @@ import type {
   SellingPlan,
   Attribute,
 } from '../shared';
+import type {ExtensionPoint} from '../../extension-points';
 
 /**
  * A key-value storage object for extension points.
@@ -59,7 +60,18 @@ export type Capability = 'api_access' | 'network_access' | 'block_progress';
 /**
  * Meta information about an extension point.
  */
-export interface Extension {
+export interface Extension<Target extends ExtensionPoint = ExtensionPoint> {
+  /**
+   * The identifier that specifies where in Shopify’s UI your code is being
+   * injected. This will be one of the targets you have included in your
+   * extension’s configuration file.
+   *
+   * @example 'Checkout::Dynamic::Render'
+   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
+   */
+  target: Target;
+
   /**
    * The published version of the running extension point.
    *
@@ -213,12 +225,14 @@ export type Version = string;
  *
  * @example translate("banner.title")
  */
-export type I18nTranslate<ReplacementType = string> = (
-  key: string,
-  options?: {[placeholderKey: string]: ReplacementType | string | number},
-) => ReplacementType extends string | number
-  ? string
-  : (string | ReplacementType)[];
+export interface I18nTranslate {
+  <ReplacementType = string>(
+    key: string,
+    options?: {[placeholderKey: string]: ReplacementType | string | number},
+  ): ReplacementType extends string | number
+    ? string
+    : (string | ReplacementType)[];
+}
 
 export interface I18n {
   /**
@@ -385,9 +399,7 @@ export interface BuyerJourney {
   completed: StatefulRemoteSubscribable<boolean>;
 }
 
-export interface StandardApi<
-  ExtensionPoint extends import('../../extension-points').ExtensionPoint,
-> {
+export interface StandardApi<Target extends ExtensionPoint = ExtensionPoint> {
   /**
    * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
    */
@@ -459,11 +471,16 @@ export interface StandardApi<
   /**
    * Meta information about the extension.
    */
-  extension: Extension;
+  extension: Extension<Target>;
 
   /**
-   * The identifier of the running extension point.
-   * @example 'Checkout::PostPurchase::Render'
+   * The identifier that specifies where in Shopify’s UI your code is being
+   * injected. This will be one of the targets you have included in your
+   * extension’s configuration file.
+   *
+   * @example 'Checkout::Dynamic::Render'
+   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    */
   extensionPoint: ExtensionPoint;
 

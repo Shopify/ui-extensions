@@ -26,7 +26,7 @@ export {useTarget} from './target';
 export {useAppMetafields} from './app-metafields';
 export {useShop} from './shop';
 export {useStorage} from './storage';
-export {useExtensionData} from './extension-data';
+export {useExtension, useExtensionData} from './extension';
 export {useSubscription} from './subscription';
 export {useCustomer, useEmail, usePhone} from './buyer-identity';
 export {useTranslate} from './translate';
