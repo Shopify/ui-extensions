@@ -23,6 +23,7 @@ export type {
   Spacing,
   TextVariant,
   IconName,
+  IconSize,
   VerticalSpacing,
 } from '@shopify/retail-ui-extensions';
 
