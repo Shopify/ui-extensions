@@ -30,3 +30,13 @@ export type {
 } from './types';
 
 export type {RenderExtension, RunExtension} from './extension-signature';
+
+export type {
+  FullExtensionNavigation,
+  StandardExtensionNavigation,
+  NavigationCurrentEntryChangeEvent,
+  NavigationHistoryEntry,
+  NavigationOptions,
+  NavigationType,
+  NavigateFunction,
+} from './standard-api/navigation';
