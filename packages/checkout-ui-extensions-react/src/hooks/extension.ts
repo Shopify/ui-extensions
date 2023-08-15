@@ -8,7 +8,7 @@ import {useApi} from './api';
 /**
  * Returns the metadata about the extension.
  */
-export function useExtension<
+export function useExtensionData<
   ID extends RenderExtensionPoint = RenderExtensionPoint,
 >(): Extension {
   return useApi<ID>().extension;
@@ -17,4 +17,4 @@ export function useExtension<
 /**
  * Returns the metadata about the extension.
  */
-export const useExtensionData = useExtension;
+export const useExtension = useExtensionData;
