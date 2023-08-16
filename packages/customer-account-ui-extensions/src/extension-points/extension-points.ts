@@ -1,6 +1,7 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 import type {RenderExtension, RunExtension} from './extension-signature';
 import type {StandardApi} from './standard-api';
+import {FullExtensionNavigation} from './standard-api/navigation';
 
 type Components = typeof import('../components');
 
@@ -38,6 +39,22 @@ export interface ExtensionPoints {
     StandardApi<'customer-account.account-information.block.render'>,
     AllComponents
   >;
+  'customer-account.account-information.company-details.render-after': RenderExtension<
+    StandardApi<'customer-account.account-information.company-details.render-after'>,
+    AllComponents
+  >;
+  'customer-account.account-information.addresses.render-after': RenderExtension<
+    StandardApi<'customer-account.account-information.addresses.render-after'>,
+    AllComponents
+  >;
+  'customer-account.account-information.payment.render-after': RenderExtension<
+    StandardApi<'customer-account.account-information.payment.render-after'>,
+    AllComponents
+  >;
+  'customer-account.account-information.location.render-after': RenderExtension<
+    StandardApi<'customer-account.account-information.location.render-after'>,
+    AllComponents
+  >;
   'customer-account.order-status.action.menu-item.render': RenderExtension<
     StandardApi & {orderId: string},
     AllComponents
@@ -53,6 +70,7 @@ export interface FullPageApi {
     pathname: string;
     search: string;
   }>;
+  navigation: FullExtensionNavigation;
 }
 
 export type ExtensionPoint = keyof ExtensionPoints;

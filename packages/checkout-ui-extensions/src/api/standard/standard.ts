@@ -10,6 +10,7 @@ import type {
   SellingPlan,
   Attribute,
 } from '../shared';
+import type {ExtensionPoint} from '../../extension-points';
 
 /**
  * A key-value storage object for extension points.
@@ -59,7 +60,18 @@ export type Capability = 'api_access' | 'network_access' | 'block_progress';
 /**
  * Meta information about an extension point.
  */
-export interface Extension {
+export interface Extension<Target extends ExtensionPoint = ExtensionPoint> {
+  /**
+   * The identifier that specifies where in Shopify’s UI your code is being
+   * injected. This will be one of the targets you have included in your
+   * extension’s configuration file.
+   *
+   * @example 'Checkout::Dynamic::Render'
+   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
+   */
+  target: Target;
+
   /**
    * The published version of the running extension point.
    *
@@ -213,12 +225,14 @@ export type Version = string;
  *
  * @example translate("banner.title")
  */
-export type I18nTranslate<ReplacementType = string> = (
-  key: string,
-  options?: {[placeholderKey: string]: ReplacementType | string | number},
-) => ReplacementType extends string | number
-  ? string
-  : (string | ReplacementType)[];
+export interface I18nTranslate {
+  <ReplacementType = string>(
+    key: string,
+    options?: {[placeholderKey: string]: ReplacementType | string | number},
+  ): ReplacementType extends string | number
+    ? string
+    : (string | ReplacementType)[];
+}
 
 export interface I18n {
   /**
@@ -385,9 +399,7 @@ export interface BuyerJourney {
   completed: StatefulRemoteSubscribable<boolean>;
 }
 
-export interface StandardApi<
-  ExtensionPoint extends import('../../extension-points').ExtensionPoint,
-> {
+export interface StandardApi<Target extends ExtensionPoint = ExtensionPoint> {
   /**
    * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
    */
@@ -405,6 +417,9 @@ export interface StandardApi<
    * being purchased by the customer.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * > Tip:
+   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.
    */
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 
@@ -456,11 +471,16 @@ export interface StandardApi<
   /**
    * Meta information about the extension.
    */
-  extension: Extension;
+  extension: Extension<Target>;
 
   /**
-   * The identifier of the running extension point.
-   * @example 'Checkout::PostPurchase::Render'
+   * The identifier that specifies where in Shopify’s UI your code is being
+   * injected. This will be one of the targets you have included in your
+   * extension’s configuration file.
+   *
+   * @example 'Checkout::Dynamic::Render'
+   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
+   * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    */
   extensionPoint: ExtensionPoint;
 
@@ -488,16 +508,9 @@ export interface StandardApi<
   localization: Localization;
 
   /**
-   * The metafields that apply to the current checkout. The actual resource
-   * on which these metafields exist depends on the source of the checkout:
+   * The metafields that apply to the current checkout.
    *
-   * - If the source is an order, then the metafields are on the order.
-   * - If the source is a draft order, then the initial value of metafields are
-   *   from the draft order, and any new metafields you write are applied
-   *   to the order created by this checkout.
-   * - For all other sources, the metafields are only stored locally on the
-   *   client creating the checkout, and are applied to the order that
-   *   results from checkout.
+   * Metafields are stored locally on the client and are applied to the order object after the checkout completes.
    *
    * These metafields are shared by all extensions running on checkout, and
    * persist for as long as the customer is working on this checkout.
@@ -1059,7 +1072,7 @@ export interface SelectedPaymentOption {
   /**
    * The unique handle referencing `PaymentOption.handle`.
    *
-   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/apis/standardapi#properties-propertydetail-availablepaymentoptions).
+   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-availablepaymentoptions).
    */
   handle: string;
 }
@@ -1326,7 +1339,7 @@ export interface DeliveryGroup {
   /**
    * Whether delivery is required for the delivery group.
    */
-  deliveryRequired: boolean;
+  isDeliveryRequired: boolean;
 }
 
 /**

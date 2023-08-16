@@ -5,6 +5,7 @@ export {
 } from '@shopify/retail-ui-extensions';
 export type {
   AutoCapitalizationType,
+  BadgeStatus,
   BadgeVariant,
   BannerVariant,
   ButtonType,
@@ -22,6 +23,7 @@ export type {
   Spacing,
   TextVariant,
   IconName,
+  IconSize,
   VerticalSpacing,
 } from '@shopify/retail-ui-extensions';
 

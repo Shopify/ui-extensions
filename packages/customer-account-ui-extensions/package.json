@@ -1,7 +1,7 @@
 {
   "name": "@shopify/customer-account-ui-extensions",
   "description": "The API for UI Extensions that run in Shopify's Customer Account",
-  "version": "0.0.53",
+  "version": "0.0.56",
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
@@ -24,6 +24,6 @@
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.12",
     "@remote-ui/core": "2.1.x",
-    "@shopify/checkout-ui-extensions": "^0.27.1"
+    "@shopify/checkout-ui-extensions": "^0.27.3"
   }
 }

@@ -12,10 +12,11 @@ render(
 );
 
 function Extension() {
-  const {locationFormVisible} = useExtensionApi();
+  const {isLocationFormVisible} =
+    useExtensionApi();
 
   const locationFormShown = useSubscription(
-    locationFormVisible,
+    isLocationFormVisible,
   );
 
   if (locationFormShown) {

@@ -4,5 +4,5 @@ export interface PickupLocationsApi {
   /**
    * Whether the customer location input form is shown to the buyer.
    */
-  locationFormVisible: StatefulRemoteSubscribable<boolean>;
+  isLocationFormVisible: StatefulRemoteSubscribable<boolean>;
 }

@@ -16,9 +16,15 @@ export interface ListRowLeftSide {
    */
   subtitle?: readonly [string, string?, string?];
   /**
-   * A colored badge that is displayed underneath the `title` and `subtitles`.
+   * @deprecated
+   * badge will be removed in version 2.0.0 in favor of badges.
+   * Please migrate to using badges as soon as possible.
    */
   badge?: BadgeProps;
+  /**
+   * Colored badges that are displayed underneath the `title` and `subtitles`.
+   */
+  badges?: BadgeProps[];
   image?: {
     /**
      * A link to an image to be displayed on the far left side of the row.

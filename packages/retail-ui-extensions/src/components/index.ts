@@ -59,7 +59,7 @@ export {CameraScanner} from './CameraScanner';
 export type {CameraScannerProps} from './CameraScanner';
 
 export {Badge} from './Badge';
-export type {BadgeVariant, BadgeProps} from './Badge';
+export type {BadgeStatus, BadgeVariant, BadgeProps} from './Badge';
 
 export {Stepper} from './Stepper';
 export type {StepperProps} from './Stepper';
@@ -87,7 +87,7 @@ export {RadioButtonList} from './RadioButtonList';
 export type {RadioButtonListProps} from './RadioButtonList';
 
 export {Icon} from './Icon';
-export type {IconName, IconProps} from './Icon';
+export type {IconName, IconSize, IconProps} from './Icon';
 
 export {Screen} from './Screen';
 export type {ScreenPresentationProps, ScreenProps} from './Screen';
