@@ -1,0 +1,11 @@
+# ...
+
+[[extensions.targeting]]
+target = "purchase.checkout.actions.render-before"
+module = "./Actions.jsx"
+
+[[extensions.targeting]]
+target = "purchase.checkout.shipping-option-item.render-after"
+module = "./ShippingOptions.jsx"
+
+# ...

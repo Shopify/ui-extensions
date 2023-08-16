@@ -151,7 +151,7 @@ const data: LandingTemplateSchema = {
       title: 'UI components',
       image: 'ui-components.gif',
       sectionContent:
-        "Checkout UI extensions provide UI components that a [rendering extension](/api/checkout-ui-extensions/extension-targets-api#renderextension) can use to build an interface. Shopify renders the UI natively, so it's performant, accessible, and works in all of checkout's supported browsers. \n\nCheckout components are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the checkout experience. All components inherit a merchant's brand settings and the CSS cannot be altered or overridden.",
+        "Checkout UI extensions declare their interface using supported UI components. Shopify renders the UI natively, so it's performant, accessible, and works in all of checkout's supported browsers. \n\nCheckout components are designed to be flexible, enabling you to layer and mix them to create highly-customized app extensions that feel seamless within the checkout experience. All components inherit a merchant's brand settings and the CSS cannot be altered or overridden.",
       sectionCard: [
         {
           name: 'Component library',

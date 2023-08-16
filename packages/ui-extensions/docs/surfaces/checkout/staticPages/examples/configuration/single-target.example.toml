@@ -1,0 +1,7 @@
+# ...
+
+[[extensions.targeting]]
+target = "purchase.checkout.block.render"
+module = "./Block.jsx"
+
+# ...

@@ -1,0 +1,24 @@
+# ...
+
+# The metafields for the extension
+[[extensions.metafields]]
+namespace = "my-namespace"
+key = "my-key"
+[[extensions.metafields]]
+namespace = "my-namespace"
+key = "my-other-key"
+
+[[extensions.targeting]]
+target = "purchase.checkout.actions.render-before"
+module = "./Actions.jsx"
+
+  # For the above target, use these metafields
+  [[extensions.targeting.metafields]]
+  namespace = "my-namespace"
+  key = "my-target-key"
+
+[[extensions.targeting]]
+target = "purchase.checkout.shipping-option-item.render-after"
+module = "./ShippingOptions.jsx"
+
+
