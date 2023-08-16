@@ -42,33 +42,14 @@ Next, update the extension configuration file to the new format. To make it easi
 `,
       accordionContent: [
         {
-          title: 'Old shopify.extension.toml',
+          title: 'Previous shopify.ui.extension.toml',
           description: '',
           codeblock: {
-            title: 'shopify.extension.toml',
+            title: 'Previous shopify.ui.extension.toml',
             tabs: [
               {
-                title: 'shopify.extension.toml',
-                code: `
-type = "checkout_ui_extension"
-name = "My Extension"
-
-extension_points = [
-  'Checkout::Dynamic::Render'
-]
-
-[[metafields]]
-namespace = "my_namespace"
-key = "my_key"
-
-[settings]
-[[settings.fields]]
-key = "banner_title"
-type = "single_line_text_field"
-name = "Banner title"
-description = "Enter a title for the banner"
-
-`,
+                title: 'shopify.ui.extension.toml',
+                code: './examples/migration/previous.example.toml',
                 language: 'toml',
               },
             ],
@@ -78,34 +59,11 @@ description = "Enter a title for the banner"
           title: 'New shopify.extension.toml',
           description: '',
           codeblock: {
-            title: 'shopify.extension.toml',
+            title: 'New shopify.extension.toml',
             tabs: [
               {
                 title: 'shopify.extension.toml',
-                code: `
-api_version = "2023-07"
-
-[[extensions]]
-type = "ui_extension"
-name = "My Extension"
-handle = "my-extension"
-
-[[extensions.targeting]]
-module =  "./src/index.ts"
-target = "purchase.checkout.block.render"
-
-[[extensions.metafields]]
-namespace = "my_namespace"
-key = "my_key"
-
-[settings]
-[[settings.fields]]
-key = "banner_title"
-type = "single_line_text_field"
-name = "Banner title"
-description = "Enter a title for the banner"
-
-`,
+                code: './examples/migration/new.example.toml',
                 language: 'toml',
               },
             ],
@@ -129,21 +87,14 @@ You will notice that the UI extension packages have a new versioning system. In 
 `,
       accordionContent: [
         {
-          title: 'Old package.json',
+          title: 'Previous package.json',
           description: '',
           codeblock: {
-            title: 'package.json',
+            title: 'Previous package.json',
             tabs: [
               {
                 title: 'package.json',
-                code: `
-{
-  "dependencies": {
-    "@shopify/checkout-ui-extensions": "^0.27.0",
-    "@shopify/checkout-ui-extensions-react": "^0.27.0",
-  }
-}
-`,
+                code: './examples/migration/previous.package.example.json',
                 language: 'json',
               },
             ],
@@ -153,18 +104,11 @@ You will notice that the UI extension packages have a new versioning system. In 
           title: 'New package.json',
           description: '',
           codeblock: {
-            title: 'package.json',
+            title: 'New package.json',
             tabs: [
               {
                 title: 'package.json',
-                code: `
-{
-  "dependencies": {
-    "@shopify/ui-extensions": "2023.7.x",
-    "@shopify/ui-extensions-react": "2023.7.x",
-  }
-}
-`,
+                code: './examples/migration/new.package.example.json',
                 language: 'json',
               },
             ],
@@ -177,131 +121,59 @@ You will notice that the UI extension packages have a new versioning system. In 
       anchorLink: 'extension-points',
       title: 'Update the extension points',
       sectionContent: `
-Finally, the new format has a slightly different system for registering your extension point code. The file you list as the \`module\` for a given extension point **must** export your extension point code as the default export from the module.`,
+Finally, the new format has a slightly different system for registering your extension target code. The file you list as the \`module\` for a given extension target **must** export your extension target code as the default export from the module.`,
       accordionContent: [
         {
-          title: 'Old extension code (plain)',
+          title: 'Previous code (JavaScript)',
           description: '',
           codeblock: {
-            title: 'index.ts',
+            title: 'Previous index.ts',
             tabs: [
               {
                 title: 'index.ts',
-                code: `
-import {extend, Banner} from '@shopify/checkout-ui-extensions';
-
-extend('Checkout::Dynamic::Render', (root, {extensionPoint, i18n}) => {
-  root.appendChild(
-    root.createComponent(
-      Banner,
-      {title: 'My extension'},
-      i18n.translate('welcome', {extensionPoint}),
-    ),
-  );
-});
-`,
+                code: './examples/migration/previous.extension.example.ts',
                 language: 'ts',
               },
             ],
           },
         },
         {
-          title: 'New extension code (plain)',
+          title: 'New code (JavaScript)',
           description: '',
           codeblock: {
-            title: 'index.ts',
+            title: 'New index.ts',
             tabs: [
               {
                 title: 'index.ts',
-                code: `
-import {extension, Banner} from '@shopify/ui-extensions/checkout';
-
-export default extension(
-  'purchase.checkout.block.render',
-  (root, {extension:{target}, i18n}) => {
-    root.appendChild(
-      root.createComponent(
-        Banner,
-        {title: 'My extension'},
-        i18n.translate('welcome', {target}),
-      ),
-    );
-  },
-);
-`,
+                code: './examples/migration/new.extension.example.ts',
                 language: 'ts',
               },
             ],
           },
         },
         {
-          title: 'Old extension code (React)',
+          title: 'Previous code (React)',
           description: '',
           codeblock: {
-            title: 'index.tsx',
+            title: 'Previous index.tsx',
             tabs: [
               {
                 title: 'index.tsx',
-                code: `
-import {
-  useApi,
-  render,
-  Banner,
-  useTranslate,
-} from '@shopify/checkout-ui-extensions-react';
-
-render('Checkout::Dynamic::Render', () => (
-  <App />
-));
-
-function App() {
-  const {extensionPoint} = useApi();
-  const translate = useTranslate();
-
-  return (
-    <Banner title="luxury-trade-ext">
-      {translate('welcome', {extensionPoint})}
-    </Banner>
-  );
-}
-`,
+                code: './examples/migration/previous.extension.example.tsx',
                 language: 'tsx',
               },
             ],
           },
         },
         {
-          title: 'New extension code (React)',
+          title: 'New code (React)',
           description: '',
           codeblock: {
-            title: 'index.tsx',
+            title: 'New index.tsx',
             tabs: [
               {
                 title: 'index.tsx',
-                code: `
-import {
-  reactExtension,
-  useApi,
-  Banner,
-  useTranslate,
-} from '@shopify/ui-extensions-react/checkout';
-
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <App />,
-);
-
-function App() {
-  const {extension:{target}} = useApi();
-  const translate = useTranslate();
-
-  return (
-    <Banner title="luxury-trade-ext">
-      {translate('welcome', {target})}
-    </Banner>
-  );
-}
-`,
+                code: './examples/migration/new.extension.example.tsx',
                 language: 'tsx',
               },
             ],
@@ -323,7 +195,7 @@ Deploy after applying the above changes to get your extensions migrated.
         tabs: [
           {
             title: 'Deploy',
-            code: './examples/migration/migration-output.txt',
+            code: './examples/migration/migration-output.example.txt',
             language: 'plaintext',
           },
         ],

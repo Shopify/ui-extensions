@@ -533,16 +533,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   localization: Localization;
 
   /**
-   * The metafields that apply to the current checkout. The actual resource
-   * on which these metafields exist depends on the source of the checkout:
+   * The metafields that apply to the current checkout.
    *
-   * - If the source is an order, then the metafields are on the order.
-   * - If the source is a draft order, then the initial value of metafields are
-   *   from the draft order, and any new metafields you write are applied
-   *   to the order created by this checkout.
-   * - For all other sources, the metafields are only stored locally on the
-   *   client creating the checkout, and are applied to the order that
-   *   results from checkout.
+   * Metafields are stored locally on the client and are applied to the order object after the checkout completes.
    *
    * These metafields are shared by all extensions running on checkout, and
    * persist for as long as the customer is working on this checkout.
@@ -1236,11 +1229,27 @@ export interface Customer {
    */
   image: ImageDetails;
   /**
-   * Defines if the customer accepts marketing activities.
+   * Defines if the customer email accepts marketing activities.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * > Caution: This field is deprecated and will be removed in a future version. Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
+   *
+   * @deprecated Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
+   */
+  acceptsMarketing: boolean;
+  /**
+   * Defines if the customer accepts email marketing activities.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  acceptsMarketing: boolean;
+  acceptsEmailMarketing: boolean;
+  /**
+   * Defines if the customer accepts sms marketing activities.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  acceptsSmsMarketing: boolean;
   /**
    * The Store Credit Accounts owned by the customer and usable during the checkout process.
    *
@@ -1541,4 +1550,19 @@ export interface NumberRange {
    * The upper bound of the number range.
    */
   upper?: number;
+}
+
+/**
+ * Represents a DeliveryGroup with expanded reference fields and full details.
+ */
+export interface DeliveryGroupDetails extends DeliveryGroup {
+  /**
+   * The selected delivery option for the delivery group.
+   */
+  selectedDeliveryOption?: DeliveryOption;
+
+  /**
+   * The cart lines associated to the delivery group.
+   */
+  targetedCartLines: CartLine[];
 }
