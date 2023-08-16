@@ -29,7 +29,9 @@ describe('Delivery Groups API hooks', () => {
               title: 'Shipping method 1',
               description: undefined,
               type: 'shipping',
-              carrierName: 'test carrier',
+              carrier: {
+                name: 'test carrier',
+              },
               cost: {
                 amount: 10,
                 currencyCode: 'USD',

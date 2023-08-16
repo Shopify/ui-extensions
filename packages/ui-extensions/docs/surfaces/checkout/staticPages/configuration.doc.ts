@@ -8,7 +8,7 @@ const data: LandingTemplateSchema = {
   description: `
 When you create a [checkout UI extension](/api/checkout-ui-extensions/), an [app extension configuration](/docs/apps/app-extensions/configuration) \`shopify.extension.toml\` file is automatically generated in your extension's directory.
 
-This guide describes [extension targeting](#targets), [capabilities](#capabilities) and the [settings](#settings-definition) you can configure in the app extension configuration.
+This guide describes [extension targeting](#targets), [capabilities](#capabilities), [metafields](#metafields), and the [settings](#settings-definition) you can configure in the app extension configuration.
 `,
   // The id for the page that is used for routing. If this documentation is for a primary landing page, confirm the id matches the reference name.
   id: 'configuration',
@@ -72,29 +72,12 @@ Along with the \`target\`, Shopify needs to know which code to execute for it. Y
             tabs: [
               {
                 title: 'shopify.extension.toml',
-                code: `
-# ...
-
-[[extensions.targeting]]
-target = "purchase.checkout.block.render"
-module = "./Checkout.jsx"
-
-# ...
-                `,
+                code: './examples/configuration/single-target.example.toml',
                 language: 'toml',
               },
               {
                 title: 'Block.jsx',
-                code: `
-//...
-
-export default reactExtension(
-  'purchase.checkout.block.render',
-  <Extension />,
-);
-
-//...
-                `,
+                code: './examples/configuration/single-target.example.tsx',
                 language: 'jsx',
               },
             ],
@@ -110,40 +93,17 @@ export default reactExtension(
             tabs: [
               {
                 title: 'shopify.extension.toml',
-                code: `
-# ...
-
-[[extensions.targeting]]
-target = "purchase.checkout.actions.render-before"
-module = "./Actions.jsx"
-
-[[extensions.targeting]]
-target = "purchase.checkout.shipping-option-item.render-after"
-module = "./ShippingOptions.jsx"
-
-# ...
-                `,
+                code: './examples/configuration/multiple-targets.example.toml',
                 language: 'toml',
               },
               {
-                title: 'index.jsx',
-                code: `
-//...
-
-// ./Actions.jsx
-export default reactExtension(
-  'purchase.checkout.actions.render-before',
-  <Extension />,
-);
-
-// ./ShippingOptions.jsx
-export default reactExtension(
-  'purchase.checkout.shipping-option-item.render-after',
-  <Extension />,
-);
-
-//...
-                `,
+                title: 'Actions.jsx',
+                code: './examples/configuration/multiple-targets-actions.example.tsx',
+                language: 'jsx',
+              },
+              {
+                title: 'ShippingOptions.jsx',
+                code: './examples/configuration/multiple-targets-shipping.example.tsx',
                 language: 'jsx',
               },
             ],
@@ -209,7 +169,7 @@ Defines the [capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#pro
         },
         {
           title: 'Methods for accessing the Storefront API',
-          sectionContent: `Enabling the \`api_access\` capability allows you to use the Standard API [\`query\`](/api/checkout-ui-extensions/extension-targets-api#standardapi) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
+          sectionContent: `Enabling the \`api_access\` capability allows you to use the Standard API [\`query\`](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-query) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
 
 \`query\` lets you request a single GraphQL response from the Storefront API.
 
@@ -273,12 +233,12 @@ Retrieving data from [metafields](/docs/api/checkout-ui-extensions/apis/standard
           sectionContent: `
 1. Go to your [Partner Dashboard](https://partners.shopify.com/current/apps).
 2. Click the name of the app that you want to change.
-3. Click **App setup**.
-4. In the **Checkout UI extensions** section, on the **Enable network access in checkout UI extensions** card, click **Request access**.
+3. Click **API access**.
+4. Under **Allow network access in checkout UI extensions**, click **Allow network access**
 
    Your request is automatically approved and your app is immediately granted the approval scope that's required for your checkout UI extension to make external network calls.
 
-5. Add <code>network_access = true</code> to the <code>settings</code> section of your extension's configuration file.`,
+5. Add <code>network_access = true</code> to the <code>[extensions.capabilities]</code> section of your extension's configuration file.`,
         },
         {
           title: 'Required CORS headers',
@@ -369,6 +329,57 @@ When developing a local extension, you can remove the \`block_progress\` capabil
 
 > Tip:
 > We recommend having some UI to cover cases where you can't block checkout progress. For example, you might want to show a warning rather than block checkout progress when an order doesn't pass validation.`,
+        },
+      ],
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'metafields',
+      title: 'Metafields',
+      sectionContent: `
+Defines the [metafields](/docs/apps/custom-data/metafields) that are available to your extension.
+
+Each extension target uses the metafields defined in \`[[extensions.metafields]]\` unless they specify their own \`[[extensions.targeting.metafields]]\`.
+
+Supported resource metafield types include:
+
+| Resource | Description |
+|---| --- |
+| \`cart\` | The cart associated with the current checkout. |
+| \`company\` | The company for B2B checkouts. |
+| \`companyLocation\` | The company's location for B2B checkouts. |
+| \`customer\` | The customer account that is interacting with the current checkout. |
+| \`product\` | The products that the customer intends to purchase. |
+| \`shop\` | The shop that is associated with the current checkout. |
+| \`variant\` | The product variants that the customer intends to purchase. |
+
+You retrieve these metafields in your extension by reading [\`appMetafields\`](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-appmetafields).
+
+> Tip:
+> You may write to \`cart\` metafields by using [\`applyMetafieldsChange\`](/docs/api/checkout-ui-extensions/apis/checkoutapi#properties-propertydetail-applymetafieldchange) with \`type: "updateCartMetafield"\`.
+      `,
+      codeblock: {
+        title: 'Metafields',
+        tabs: [
+          {
+            title: 'Metafields',
+            code: './examples/configuration/metafields.example.toml',
+            language: 'toml',
+          },
+        ],
+      },
+      sectionCard: [
+        {
+          name: 'useAppMetafields',
+          subtitle: 'Hook',
+          url: '/docs/api/checkout-ui-extensions/react-hooks/metafields/useappmetafields',
+          type: 'blocks',
+        },
+        {
+          name: 'useApplyMetafieldsChange',
+          subtitle: 'Hook',
+          url: '/docs/api/checkout-ui-extensions/react-hooks/metafields/useapplymetafieldschange',
+          type: 'blocks',
         },
       ],
     },
