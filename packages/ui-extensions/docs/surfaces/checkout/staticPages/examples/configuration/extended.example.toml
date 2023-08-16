@@ -26,7 +26,7 @@ key = "my-other-key"
 key = "field_key"
 type = "boolean"
 name = "field-name"
-[[settings.fields]]
+[[extensions.settings.fields]]
 key = "field_key_2"
 type = "number_integer"
 name = "field-name-2"

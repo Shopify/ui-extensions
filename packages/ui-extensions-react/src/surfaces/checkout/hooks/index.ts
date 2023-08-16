@@ -54,3 +54,4 @@ export {useAppliedGiftCards, useApplyGiftCardChange} from './gift-cards';
 export {useApplyPaymentMethodAttributesChange} from './payment-method';
 export {useApplyRedeemableChange} from './redeemable';
 export {useDeliveryGroups} from './delivery-groups';
+export {useDeliveryGroup} from './delivery-group';
