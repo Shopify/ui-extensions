@@ -16,6 +16,11 @@ export interface AdminActionProps {
    * Sets the Secondary action button of the container. This component must a button component.
    */
   secondaryAction?: RemoteFragment;
+
+  /**
+   * Sets the loading state of the action modal
+   */
+  loading?: boolean;
 }
 /**
  * AdminAction is a component used by Admin Action extensions to configure a primary and secondary action and title.
