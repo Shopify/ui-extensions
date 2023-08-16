@@ -3,4 +3,4 @@
 '@shopify/ui-extensions-react': minor
 ---
 
-Added `useDeliveryGroup()` hook and updated logic for targeted cart lines.
+New `useDeliveryGroup()` hook and improved documentation.

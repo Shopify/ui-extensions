@@ -764,26 +764,6 @@ export interface Shop {
 
 export interface CartCost {
   /**
-   * A `Money` value representing the subtotal value of the items in the cart at the current
-   * step of checkout.
-   */
-  subtotalAmount: StatefulRemoteSubscribable<Money>;
-
-  /**
-   * A `Money` value representing the total shipping a buyer can expect to pay at the current
-   * step of checkout. This value includes shipping discounts. Returns undefined if shipping
-   * has not been negotiated yet, such as on the information step.
-   */
-  totalShippingAmount: StatefulRemoteSubscribable<Money | undefined>;
-
-  /**
-   * A `Money` value representing the total tax a buyer can expect to pay at the current
-   * step of checkout or the total tax included in product and shipping prices. Returns
-   * undefined if taxes are unavailable.
-   */
-  totalTaxAmount: StatefulRemoteSubscribable<Money | undefined>;
-
-  /**
    * A `Money` value representing the minimum a buyer can expect to pay at the current
    * step of checkout. This value excludes amounts yet to be negotiated. For example,
    * the information step might not have delivery costs calculated.
@@ -1229,27 +1209,9 @@ export interface Customer {
    */
   image: ImageDetails;
   /**
-   * Defines if the customer email accepts marketing activities.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * > Caution: This field is deprecated and will be removed in a future version. Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
-   *
-   * @deprecated Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
+   * Defines if the customer accepts marketing activities.
    */
   acceptsMarketing: boolean;
-  /**
-   * Defines if the customer accepts email marketing activities.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   */
-  acceptsEmailMarketing: boolean;
-  /**
-   * Defines if the customer accepts sms marketing activities.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   */
-  acceptsSmsMarketing: boolean;
   /**
    * The Store Credit Accounts owned by the customer and usable during the checkout process.
    *
