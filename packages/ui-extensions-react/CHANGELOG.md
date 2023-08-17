@@ -1,5 +1,16 @@
 # @shopify/ui-extensions-react
 
+## 2023.7.1
+
+### Patch Changes
+
+- [#1249](https://github.com/Shopify/ui-extensions/pull/1249) [`fc0186ef`](https://github.com/Shopify/ui-extensions/commit/fc0186ef27b46aac7676d4b254626cf5c01e4239) Thanks [@mleandres](https://github.com/mleandres)! - New `useDeliveryGroup()` hook and improved documentation.
+
+- [#1210](https://github.com/Shopify/ui-extensions/pull/1210) [`1faf52a5`](https://github.com/Shopify/ui-extensions/commit/1faf52a53aac15eae0b37738fe5871d6ee2ef8d4) Thanks [@vividviolet](https://github.com/vividviolet)! - Expose query API for Admin UI extensions
+
+- Updated dependencies [[`fc0186ef`](https://github.com/Shopify/ui-extensions/commit/fc0186ef27b46aac7676d4b254626cf5c01e4239), [`1faf52a5`](https://github.com/Shopify/ui-extensions/commit/1faf52a53aac15eae0b37738fe5871d6ee2ef8d4)]:
+  - @shopify/ui-extensions@2023.7.1
+
 ## 2023.7.0
 
 ### Minor Changes
