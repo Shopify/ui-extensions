@@ -613,6 +613,11 @@ export interface Checkout {
   attributes: Attribute[];
 
   /**
+   * The billing address to where the order will be charged.
+   */
+  billingAddress: MailingAddress | null;
+
+  /**
    * The three-letter code that represents the currency, for example, USD.
    * Supported codes include standard ISO 4217 codes, legacy codes, and non-
    * standard codes.
