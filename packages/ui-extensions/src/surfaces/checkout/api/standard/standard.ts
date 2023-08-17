@@ -12,6 +12,7 @@ import type {
   MailingAddress,
 } from '../shared';
 import type {ExtensionTarget} from '../../targets';
+import {ApiVersion} from '../../../../shared';
 
 /**
  * A key-value storage object for extension targets.
@@ -234,7 +235,7 @@ export interface AppMetafieldEntry {
   metafield: AppMetafield;
 }
 
-export type ApiVersion = '2023-04' | '2023-07' | 'unstable';
+export type {ApiVersion} from '../../../../shared';
 
 export type Version = string;
 
