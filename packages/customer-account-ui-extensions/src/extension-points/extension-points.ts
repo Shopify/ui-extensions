@@ -35,6 +35,10 @@ export interface ExtensionPoints {
     StandardApi<'customer-account.dynamic.render'>,
     AllComponents
   >;
+  'customer-account.order-index.block.render': RenderExtension<
+    StandardApi<'customer-account.order-index.block.render'>,
+    AllComponents
+  >;
   'customer-account.account-information.block.render': RenderExtension<
     StandardApi<'customer-account.account-information.block.render'>,
     AllComponents
