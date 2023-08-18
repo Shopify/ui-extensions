@@ -16,7 +16,8 @@ type AllComponents = Components[keyof Components];
  */
 export interface ExtensionPoints {
   'CustomerAccount::FullPage::RenderWithin': RenderExtension<
-    StandardApi<'CustomerAccount::FullPage::RenderWithin'> & FullPageApi,
+    Omit<StandardApi<'CustomerAccount::FullPage::RenderWithin'>, 'navigation'> &
+      FullPageApi,
     AllComponents
   >;
   'CustomerAccount::Returns::Initiate': RunExtension<
