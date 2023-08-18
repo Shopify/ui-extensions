@@ -119,12 +119,12 @@ const data: LandingTemplateSchema = {
           {
             code: './examples/direct-api-fetch.jsx',
             language: 'tsx',
-            title: 'Get Product Data with fetch',
+            title: 'Fetch Product data',
           },
           {
             code: './examples/direct-api-query.jsx',
             language: 'tsx',
-            title: 'Get Product Data with query',
+            title: 'Query Product data',
           },
         ],
       },
