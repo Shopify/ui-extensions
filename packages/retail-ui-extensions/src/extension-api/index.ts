@@ -20,6 +20,11 @@ export type {
   ProductSearchParams,
 } from './product-search-api';
 export type {DeviceApiContent, DeviceApi} from './device-api';
+export type {
+  ConnectivityState,
+  ConnectivityApiContent,
+  ConnectivityApi,
+} from './connectivity-api';
 
 export type {
   Address,

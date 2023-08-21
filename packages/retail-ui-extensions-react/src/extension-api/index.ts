@@ -5,6 +5,11 @@ export {
   destroyStatefulSubscribableCart,
 } from './cart-api';
 export {
+  useConnectivitySubscription,
+  useStatefulSubscribableConnectivity,
+  destroyStatefulSubscribableConnectivity,
+} from './connectivity-api';
+export {
   useLocaleSubscription,
   useStatefulSubscribableLocale,
   destroyStatefulSubscribableLocale,
