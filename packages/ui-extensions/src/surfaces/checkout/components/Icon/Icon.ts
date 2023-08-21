@@ -75,9 +75,7 @@ export interface IconProps extends IdProps {
   /**
    * Sets the appearance (color) of the icon.
    *
-   * By default the icon will inherit the color of its parent.
-   *
-   * @defaultValue 'monochrome'
+   * @defaultValue 'base'
    */
   appearance?: Appearance;
 

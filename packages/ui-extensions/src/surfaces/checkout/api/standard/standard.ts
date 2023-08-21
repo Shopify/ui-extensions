@@ -594,6 +594,14 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    */
   shippingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
 
+  /**
+   * The proposed buyer billing address. The address updates when the field is
+   * committed (on change) rather than every keystroke.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  billingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
+
   /** Shop where the checkout is taking place. */
   shop: Shop;
 
