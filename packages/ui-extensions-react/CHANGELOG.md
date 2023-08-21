@@ -1,5 +1,14 @@
 # @shopify/ui-extensions-react
 
+## 2023.7.2
+
+### Patch Changes
+
+- [#1267](https://github.com/Shopify/ui-extensions/pull/1267) [`dc7f7395`](https://github.com/Shopify/ui-extensions/commit/dc7f739538dd648c135768c2e71c5873e6a672e0) Thanks [@robin-drexler](https://github.com/robin-drexler)! - fix customer-account surface build and context
+
+- Updated dependencies [[`dc7f7395`](https://github.com/Shopify/ui-extensions/commit/dc7f739538dd648c135768c2e71c5873e6a672e0)]:
+  - @shopify/ui-extensions@2023.7.2
+
 ## 2023.7.1
 
 ### Patch Changes
