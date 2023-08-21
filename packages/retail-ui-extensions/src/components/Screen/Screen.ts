@@ -12,7 +12,8 @@ export interface ScreenPresentationProps {
  * @property `title` the title of the screen which will be displayed on the UI.
  * @property `isLoading` displays a loading indicator when `true`. Set this to `true` when performing an asynchronous task, and then to false when the data becomes available to the UI.
  * @property `onNavigate` triggered when the screen is navigated to.
- * @property `onNavigateBack` triggered when the user navigates back from this screen.
+ * @property `onNavigateBack` triggered when the user navigates back from this screen. Runs after screen is unmounted.
+ * @property `overrideNavigateBack` is a callback that allows you to override the secondary navigation action. Runs when screen is mounted.
  * @property `onReceiveParams` a callback that gets triggered when the navigation event completes and the screen receives the parameters.
  */
 export interface ScreenProps {
@@ -22,6 +23,7 @@ export interface ScreenProps {
   presentation?: ScreenPresentationProps;
   onNavigate?: () => void;
   onNavigateBack?: () => void;
+  overrideNavigateBack?: () => void;
   onReceiveParams?: (params: any) => void;
 }
 
