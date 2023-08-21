@@ -8,7 +8,7 @@ import type {
   ApiForRenderExtension,
 } from '@shopify/ui-extensions/customer-account';
 
-import {ExtensionApiContext} from '../checkout/context';
+import {ExtensionApiContext} from './context';
 
 /**
  * Registers your React-based UI Extension to run for the selected extension target.
@@ -44,8 +44,6 @@ export function reactExtension<Target extends RenderExtensionTarget>(
       await new Promise<void>((resolve, reject) => {
         try {
           remoteRender(
-            // @ts-expect-error This is a hack around some type conflicts between the
-            // customer-account version of this target’s API and the checkout version.
             <ExtensionApiContext.Provider value={api}>
               <ErrorBoundary>{element}</ErrorBoundary>
             </ExtensionApiContext.Provider>,
