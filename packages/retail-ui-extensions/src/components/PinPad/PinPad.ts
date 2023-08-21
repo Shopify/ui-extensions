@@ -1,4 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import type {TestableComponentProps} from '../shared';
 
 /**
  * Represents the result of the pin pad onSubmit function.
@@ -34,7 +35,7 @@ export interface PinPadActionType {
  * @property {function(pin: number[]): Promise<PinValidationResult>} onSubmit - The function to be called when the PIN is submitted.
  * @property {function(pin: number[]): void} [onPinEntry] - The function to be called when a PIN is entered.
  */
-export interface PinPadProps {
+export interface PinPadProps extends TestableComponentProps {
   masked?: boolean;
   minPinLength?: PinLength;
   maxPinLength?: PinLength;

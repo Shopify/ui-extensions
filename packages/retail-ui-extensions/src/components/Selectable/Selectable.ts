@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import type {TestableComponentProps} from '../shared';
 
-export interface SelectableProps {
+export interface SelectableProps extends TestableComponentProps {
   onPress: () => void;
   disabled?: boolean;
 }

@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import type {HorizontalSpacing, VerticalSpacing} from '../Spacing';
+import type {TestableComponentProps} from '../shared';
 
 export type Spacing =
   | 0.5
@@ -17,7 +18,7 @@ export type Spacing =
   | 13
   | 16;
 
-export interface StackProps {
+export interface StackProps extends TestableComponentProps {
   direction: 'vertical' | 'horizontal';
   alignment?:
     | 'flex-end'

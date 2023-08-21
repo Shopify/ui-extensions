@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {BadgeProps} from '../Badge';
+import type {TestableComponentProps} from '../shared';
 
 export interface ToggleSwitch {
   value?: boolean;
@@ -53,7 +54,7 @@ export interface ListRowRightSide {
   toggleSwitch?: ToggleSwitch;
 }
 
-export interface ListRow {
+export interface ListRow extends TestableComponentProps {
   /**
    * The unique identifier for this list item.
    */
@@ -72,7 +73,7 @@ export interface ListRow {
   onPress?: () => void;
 }
 
-export interface ListProps {
+export interface ListProps extends TestableComponentProps {
   /**
    * A large display title at the top of the `List`.
    */

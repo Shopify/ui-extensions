@@ -1,4 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import type {TestableComponentProps} from '../shared';
 
 /** Represents the presentation of a screen in the navigation stack.
  * @property `sheet` displays the screen from the bottom on `navigate` when `true`.
@@ -15,7 +16,7 @@ export interface ScreenPresentationProps {
  * @property `onNavigateBack` triggered when the user navigates back from this screen.
  * @property `onReceiveParams` a callback that gets triggered when the navigation event completes and the screen receives the parameters.
  */
-export interface ScreenProps {
+export interface ScreenProps extends TestableComponentProps {
   name: string;
   title: string;
   isLoading?: boolean;

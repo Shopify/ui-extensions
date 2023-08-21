@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import type {TestableComponentProps} from '../shared';
 
-export interface StepperProps {
+export interface StepperProps extends TestableComponentProps {
   /**
    * The initial value of the stepper.
    */

@@ -80,6 +80,7 @@ export type {
   BaseTextFieldProps,
   InputProps,
   InputAction,
+  TestableComponentProps,
   MinMaxLengthProps,
   CameraScannerProps,
   DateFieldProps,

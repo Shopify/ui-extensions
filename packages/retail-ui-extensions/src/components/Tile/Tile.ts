@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import type {TestableComponentProps} from '../shared';
 
-export interface TileProps {
+export interface TileProps extends TestableComponentProps {
   title: string;
   subtitle?: string;
   enabled?: boolean;

@@ -1,5 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import type {BaseTextFieldProps, InputProps} from '../shared';
+import type {
+  BaseTextFieldProps,
+  InputProps,
+  TestableComponentProps,
+} from '../shared';
 
 export interface ActionProps {
   type: 'action';
@@ -36,7 +40,9 @@ export interface NewTextFieldProps extends InputProps {}
  * This TextField component will only support NewTextFieldProps in version 2.0.0.
  * Please migrate to using NewTextFieldProps as soon as possible.
  */
-export interface TextFieldProps extends BaseTextFieldProps {
+export interface TextFieldProps
+  extends BaseTextFieldProps,
+    TestableComponentProps {
   rightElementStyle?: EmbeddedElementProps;
 }
 

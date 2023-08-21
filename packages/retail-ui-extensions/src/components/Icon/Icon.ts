@@ -1,4 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import type {TestableComponentProps} from '../shared';
 
 export type IconName =
   | 'add-customer'
@@ -85,7 +86,7 @@ export type IconName =
 
 export type IconSize = 'minor' | 'major' | 'spot' | 'caption' | 'badge';
 
-export interface IconProps {
+export interface IconProps extends TestableComponentProps {
   name: IconName;
   size?: IconSize;
 }

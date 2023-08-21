@@ -78,6 +78,7 @@ export type {
   InputProps,
   InputAction,
   MinMaxLengthProps,
+  TestableComponentProps,
 } from './shared';
 
 export {Image} from './Image';

@@ -1,8 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import type {TestableComponentProps} from '../shared';
 
 export type BannerVariant = 'confirmation' | 'alert' | 'error' | 'information';
 
-export interface BannerProps {
+export interface BannerProps extends TestableComponentProps {
   /**
    * The title of the banner.
    */

@@ -1,11 +1,12 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import type {TestableComponentProps} from '../shared';
 
-export interface SectionHeaderAction {
+export interface SectionHeaderAction extends TestableComponentProps {
   title: string;
   onPress: () => void;
 }
 
-export interface SectionProps {
+export interface SectionProps extends TestableComponentProps {
   title?: string;
   action?: SectionHeaderAction;
 }

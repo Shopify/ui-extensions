@@ -1,4 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import type {TestableComponentProps} from '../shared';
 
 export type TextVariant =
   | 'sectionHeader'
@@ -20,7 +21,7 @@ export type ColorType =
   | 'TextInteractive'
   | 'TextHighlight';
 
-export interface TextProps {
+export interface TextProps extends TestableComponentProps {
   variant?: TextVariant;
   color?: ColorType;
 }

@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import type {TestableComponentProps} from '../shared';
 
-export interface SearchBarProps {
+export interface SearchBarProps extends TestableComponentProps {
   initialValue?: string;
   onTextChange?: (value: string) => void;
   onSearch: (value: string) => void;
