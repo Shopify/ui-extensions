@@ -500,6 +500,8 @@ export type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
 export type BackgroundRepeat = 'repeat' | 'noRepeat';
 
 export type Appearance =
+  /** Takes the default color for the element set within the theme */
+  | 'base'
   /** Conveys emphasis and draws attention to the element.*/
   | 'accent'
   /** Conveys that the element is pressable, hoverable or otherwise interactive.*/

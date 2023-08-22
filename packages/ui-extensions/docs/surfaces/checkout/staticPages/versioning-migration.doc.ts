@@ -218,9 +218,9 @@ Extension targets are more flexible and powerful than extension points and they 
 | Checkout::DeliveryAddress::RenderBefore | purchase.checkout.delivery-address.render-before |
 | Checkout::Dynamic::Render | purchase.checkout.block.render |
 | Checkout::GiftCard::Render | purchase.checkout.gift-card.render |
-| Checkout::OrderStatus::CartLineDetails::RenderAfter | customer-account.order-details.cart-line-item.render-after |
-| Checkout::OrderStatus::CartLines::RenderAfter | customer-account.order-index.action.render |
-| Checkout::OrderStatus::Dynamic::Render | customer-account.order-details.block.render |
+| Checkout::OrderStatus::CartLineDetails::RenderAfter | customer-account.order-status.cart-line-item.render-after |
+| Checkout::OrderStatus::CartLines::RenderAfter | customer-account.order-status.cart-line-list.render-after |
+| Checkout::OrderStatus::Dynamic::Render | customer-account.order-status.block.render |
 | Checkout::PickupLocations::RenderAfter | purchase.checkout.pickup-location-list.render-after |
 | Checkout::PickupLocations::RenderBefore | purchase.checkout.pickup-location-list.render-before |
 | Checkout::PickupPoints::RenderAfter | purchase.checkout.pickup-point-list.render-after |
@@ -233,7 +233,7 @@ Extension targets are more flexible and powerful than extension points and they 
 | Checkout::ShippingMethods::RenderBefore | purchase.checkout.shipping-option-list.render-before |
 | Checkout::ThankYou::CartLineDetails::RenderAfter | purchase.thank-you.cart-line-item.render-after |
 | Checkout::ThankYou::CartLines::RenderAfter | purchase.thank-you.cart-line-list.render-after |
-| Checkout::ThankYou::CustomerInformation::RenderAfter | purchase.thank-you.contact-information.render-after |
+| Checkout::ThankYou::CustomerInformation::RenderAfter | purchase.thank-you.customer-information.render-after |
 | Checkout::ThankYou::Dynamic::Render | purchase.thank-you.block.render |
 `,
     },

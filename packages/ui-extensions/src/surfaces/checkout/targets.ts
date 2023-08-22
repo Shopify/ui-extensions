@@ -694,6 +694,7 @@ export type CustomerAccountStandardApi<Target extends keyof ExtensionTargets> =
     | 'sessionToken'
     | 'settings'
     | 'shippingAddress'
+    | 'billingAddress'
     | 'shop'
     | 'storage'
     | 'ui'

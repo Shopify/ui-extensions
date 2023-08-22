@@ -20,6 +20,7 @@ export {
   useApplyAttributeChange,
   useAttributeValues,
 } from './attributes';
+export {useBillingAddress} from './billing-address';
 export {
   useShippingAddress,
   useApplyShippingAddressChange,
