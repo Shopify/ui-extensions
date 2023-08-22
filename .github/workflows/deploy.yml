@@ -3,7 +3,8 @@ name: Deploy
 on:
   push:
     branches:
-      - jkv/apply-latest-dist-tag-2023-07
+      - 2023-04
+      - 2023-07
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -18,21 +19,21 @@ jobs:
 
       - uses: ./.github/workflows/actions/prepare
 
-      # - id: changesets
-      #   name: Create release Pull Request or publish to NPM
-      #   uses: changesets/action@v1
-      #   with:
-      #     title: Version Packages (${{ github.ref_name }})
-      #     publish: yarn run deploy --tag ${{ github.ref_name }}
-      #   env:
-      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      #     GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
-
-      - name: Set 'latest' NPM dist tag
-        # if: steps.changesets.outputs.published == 'true' && github.ref_name == vars.LATEST_STABLE_VERSION
+      - id: changesets
+        name: Create release Pull Request or publish to NPM
+        uses: changesets/action@v1
+        with:
+          title: Version Packages (${{ github.ref_name }})
+          publish: yarn run deploy --tag ${{ github.ref_name }}
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          PUBLISHED_PACKAGES: '[{"name": "@shopify/ui-extensions", "version": "2023.7.2"}, {"name": "@shopify/ui-extensions-react", "version": "2023.7.2"}]'
+          GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+
+      - name: Set 'latest' NPM dist tag
+        if: steps.changesets.outputs.published == 'true' && github.ref_name == vars.LATEST_STABLE_VERSION
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
         run: |
           cat << EOF > "$HOME/.npmrc"
             //registry.npmjs.org/:_authToken=$NPM_TOKEN
