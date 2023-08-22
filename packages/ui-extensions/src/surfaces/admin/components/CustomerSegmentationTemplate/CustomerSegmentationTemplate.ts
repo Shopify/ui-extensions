@@ -1,36 +1,44 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-type Source =
-  | 'categoriesMajor'
-  | 'firstVisitMajor'
-  | 'heartMajor'
-  | 'marketingMajor'
-  | 'checkoutMajor'
-  | 'ordersMajor'
-  | 'locationMajor'
-  | 'emailNewsletterMajor'
-  | 'firstOrderMajor'
-  | 'billingStatementDollarMajor'
-  | 'diamondAlertMajor'
-  | 'abandonedCartMajor'
-  | 'calendarMajor'
-  | 'productsMajor'
-  | 'globeMajor'
-  | 'flagMajor'
-  | 'uploadMajor'
-  | 'buyButtonMajor'
-  | 'followUpEmailMajor'
-  | 'confettiMajor'
-  | 'viewMajor'
-  | 'buyButtonMajor';
+export const customerSegmentTemplateIcons = [
+  'categoriesMajor',
+  'firstVisitMajor',
+  'heartMajor',
+  'marketingMajor',
+  'checkoutMajor',
+  'ordersMajor',
+  'locationMajor',
+  'emailNewsletterMajor',
+  'firstOrderMajor',
+  'billingStatementDollarMajor',
+  'diamondAlertMajor',
+  'abandonedCartMajor',
+  'calendarMajor',
+  'productsMajor',
+  'globeMajor',
+  'flagMajor',
+  'uploadMajor',
+  'buyButtonMajor',
+  'followUpEmailMajor',
+  'confettiMajor',
+  'viewMajor',
+  'buyButtonMajor',
+] as const;
 
-type TemplateCategory =
-  | 'firstTimeBuyers'
-  | 'highValueCustomers'
-  | 'reEngageCustomers'
-  | 'abandonedCheckout'
-  | 'purchaseBehaviour'
-  | 'location';
+export type CustomerSegmentTemplateIcon =
+  typeof customerSegmentTemplateIcons[number];
+
+export const customerSegmentTemplateCategories = [
+  'firstTimeBuyers',
+  'highValueCustomers',
+  'reEngageCustomers',
+  'abandonedCheckout',
+  'purchaseBehaviour',
+  'location',
+] as const;
+
+export type CustomerSegmentTemplateCategory =
+  typeof customerSegmentTemplateCategories[number];
 
 /**
  * Reserved namespace and key for the customer standard metafield used in the template's query.
@@ -44,7 +52,7 @@ export interface CustomerSegmentationTemplateProps {
   /* Localized description(s) of the template. */
   description: string | string[];
   /* Icon identifier for the template. This property is ignored for non-1P Segmentation templates as we fallback to the app icon */
-  icon?: Source;
+  icon?: CustomerSegmentTemplateIcon;
   /* Code snippet to render in the template with syntax highlighting. */
   templateQuery: string;
   /* Code snippet to insert in the segment editor. If missing, `templateQuery` will be used. */
@@ -61,7 +69,7 @@ export interface CustomerSegmentationTemplateProps {
   /* The category in which the template will be visible.
      When provided, the template will show in its respective category and aggregate sections.
      When missing, the template will show in the aggregate sections only */
-  category?: TemplateCategory;
+  category?: CustomerSegmentTemplateCategory;
 }
 
 /**
