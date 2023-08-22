@@ -48,4 +48,5 @@ To create a new stable version, you will need to follow these steps:
 - Push your new branch to GitHub. This will trigger the GitHub action that creates a new PR to consume all the changesets you copied over from `unstable` into your new version.
 - Pull down the branch that that was created by the GitHub action (it should have the name `changeset-release/{{BRANCH_NAME}}`). Instead of the patch version changes that were made by the action, update the version of all packages manually to be the first patch release of a new version range. For example, if you are creating a `2025-01` API version, you will set the package versions of all packages to `2025.1.0`. Make sure you apply this change both to all `package.json` files, and all `CHANGELOG.md` files.
 - Push your new changes, and make sure you get the PR reviewed by one other member of the [UI Extension Stewards GitHub team](https://github.com/orgs/Shopify/teams/ui-extension-stewards).
-- Merge the PR, and let robots release the new versions to NPM.
+- Update the [`LATEST_STABLE_VERSION`](https://github.com/Shopify/ui-extensions/settings/variables/actions) repository variable to your stable version (i.e. `2025-01`). This ensures means it will be marked with a `latest` npm dist-tag on NPM.
+- Merge the PR, and let robots release the new versions to NPM and tag it appropriately.
