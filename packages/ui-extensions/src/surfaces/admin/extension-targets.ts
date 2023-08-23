@@ -12,7 +12,12 @@ import type {
 import {AnyComponentBuilder} from '../../shared';
 
 type CustomerSegmentationTemplateComponent = AnyComponentBuilder<
-  Pick<Components, 'CustomerSegmentationTemplate' | 'CustomerSegmentTemplate'>
+  Pick<
+    Components,
+    | 'CustomerSegmentationTemplate'
+    | 'CustomerSegmentTemplate'
+    | 'InternalCustomerSegmentTemplate'
+  >
 >;
 
 type ProductConfigurationComponents = AnyComponentBuilder<

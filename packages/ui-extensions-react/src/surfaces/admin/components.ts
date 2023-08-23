@@ -28,6 +28,8 @@ export {Image} from './components/Image/Image';
 export type {ImageProps} from './components/Image/Image';
 export {InlineStack} from './components/InlineStack/InlineStack';
 export type {InlineStackProps} from './components/InlineStack/InlineStack';
+export {InternalCustomerSegmentTemplate} from './components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate';
+export type {InternalCustomerSegmentTemplateProps} from './components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate';
 export {Link} from './components/Link/Link';
 export type {LinkProps} from './components/Link/Link';
 export {NumberField} from './components/NumberField/NumberField';

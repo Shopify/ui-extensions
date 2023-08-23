@@ -12,7 +12,7 @@ export interface CustomerSegmentTemplateProps {
   /* Localized description(s) of the template. */
   description: string | string[];
   /* DEPRECATED - Code snippet to render in the template with syntax highlighting. */
-  templateQuery: string;
+  templateQuery?: string;
   /* Code snippet to render in the template with syntax highlighting. */
   query: string;
   /* DEPRECATED - Code snippet to insert in the segment editor. If missing, `templateQuery` will be used. */
