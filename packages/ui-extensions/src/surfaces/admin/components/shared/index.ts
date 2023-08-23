@@ -650,12 +650,6 @@ export interface AnchorProps {
   to?: string;
 
   /**
-   * Tells browsers to download the linked resource instead of navigating to it.
-   * Optionally accepts filename value to rename file.
-   */
-  download?: boolean | string;
-
-  /**
    * Callback when a link is pressed. If `href` is set,
    * it will execute the callback and then navigate to the location specified by `href`.
    */
