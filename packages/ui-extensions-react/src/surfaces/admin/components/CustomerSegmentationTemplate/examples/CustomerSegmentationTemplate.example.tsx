@@ -6,10 +6,10 @@ import {
 
 function App({i18n, enabledFeatures}) {
     const productsPurchasedOnTagsEnabled = enabledFeatures.includes('productsPurchasedByTags');
-    const templateQuery = productsPurchasedOnTagsEnabled
+    const query = productsPurchasedOnTagsEnabled
       ? 'products_purchased(tag: (product_tag)) = true'
       : 'products_purchased(id: (product_id)) = true';
-    const templateQueryToInsert = productsPurchasedOnTagsEnabled
+    const queryToInsert = productsPurchasedOnTagsEnabled
       ? 'products_purchased(tag:'
       : 'products_purchased(id:';
 
@@ -19,16 +19,16 @@ function App({i18n, enabledFeatures}) {
           title={i18n.translate('product.title')}
           description={i18n.translate('product.description')}
           icon='productsMajor'
-          templateQuery={templateQuery}
-          templateQueryToInsert={templateQueryToInsert}
-          dateAdded={new Date('2023-01-15').toISOString()}
+          query={query}
+          queryToInsert={queryToInsert}
+          createdOn={new Date('2023-01-15').toISOString()}
           category="reEngageCustomers"
         />
          <CustomerSegmentationTemplate
           title={i18n.translate('location.title')}
           description={[i18n.translate('location.firstParagraph'), i18n.translate('location.secondParagraph')]}
           icon='locationMajor'
-          templateQuery="customer_cities CONTAINS 'US-NY-NewYorkCity'"
+          query="customer_cities CONTAINS 'US-NY-NewYorkCity'"
           category='location'
         />
       </>

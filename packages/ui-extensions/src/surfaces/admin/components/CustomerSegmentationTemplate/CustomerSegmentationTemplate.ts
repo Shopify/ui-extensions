@@ -53,19 +53,25 @@ export interface CustomerSegmentationTemplateProps {
   description: string | string[];
   /* Icon identifier for the template. This property is ignored for non-1P Segmentation templates as we fallback to the app icon */
   icon?: CustomerSegmentTemplateIcon;
-  /* Code snippet to render in the template with syntax highlighting. */
+  /* DEPRECATED - Code snippet to render in the template with syntax highlighting. */
   templateQuery: string;
-  /* Code snippet to insert in the segment editor. If missing, `templateQuery` will be used. */
+  /* Code snippet to render in the template with syntax highlighting. */
+  query: string;
+  /* DEPRECATED - Code snippet to insert in the segment editor. If missing, `templateQuery` will be used. */
   templateQueryToInsert?: string;
-  /* List of customer standard metafield used in the template's query. */
+  /* Code snippet to insert in the segment editor. If missing, `templateQuery` will be used. */
+  queryToInsert?: string;
+  /* DEPRECATED - List of customer standard metafield used in the template's query. */
   standardMetafieldDependencies?: CustomerStandardMetafieldDependency[];
   /* List of customer standard metafields or custom metafields used in the template's query. */
   dependencies?: {
     standardMetafields?: CustomerStandardMetafieldDependency[];
     customMetafields?: string[];
   };
-  /* ISO 8601-encoded date and time string. A "New" badge will be rendered for recently introduced templates. */
+  /* DEPRECATED - ISO 8601-encoded date and time string. A "New" badge will be rendered for recently introduced templates. */
   dateAdded?: string;
+  /* ISO 8601-encoded date and time string. A "New" badge will be rendered for recently introduced templates. */
+  createdOn?: string;
   /* The category in which the template will be visible.
      When provided, the template will show in its respective category and aggregate sections.
      When missing, the template will show in the aggregate sections only */
