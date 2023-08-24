@@ -28,3 +28,19 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+
+      - name: Set 'latest' NPM dist tag
+        if: steps.changesets.outputs.published == 'true' && github.ref_name == vars.LATEST_STABLE_VERSION
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          PUBLISHED_PACKAGES: ${{ steps.changesets.outputs.publishedPackages }}
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+          for pkg in $(echo "$PUBLISHED_PACKAGES" | jq -r '.[] | @base64'); do
+            _jq() {
+              echo ${pkg} | base64 --decode | jq -r ${1}
+            }
+            npm dist-tag add $(_jq '.name')@$(_jq '.version') latest
+          done
