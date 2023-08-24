@@ -46,7 +46,7 @@ export type CustomerSegmentTemplateCategory =
  */
 type CustomerStandardMetafieldDependency = 'facts.birth_date';
 
-export interface CustomerSegmentationTemplateProps {
+export interface InternalCustomerSegmentTemplateProps {
   /* Localized title of the template. */
   title: string;
   /* Localized description(s) of the template. */
@@ -79,9 +79,9 @@ export interface CustomerSegmentationTemplateProps {
 }
 
 /**
- * Customer segmentation templates are used to give merchants a starting point to create segments.
+ * Customer segment templates are used to give merchants a starting point to create segments.
  */
-export const CustomerSegmentationTemplate = createRemoteComponent<
-  'CustomerSegmentationTemplate',
-  CustomerSegmentationTemplateProps
->('CustomerSegmentationTemplate');
+export const InternalCustomerSegmentTemplate = createRemoteComponent<
+  'InternalCustomerSegmentTemplate',
+  InternalCustomerSegmentTemplateProps
+>('InternalCustomerSegmentTemplate');
