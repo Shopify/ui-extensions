@@ -19,3 +19,7 @@ export const extension =
  * @deprecated This is deprecated, use `extension` instead.
  */
 export const extend = extension;
+
+export interface RunExtension<Api, Return> {
+  (api: Api): Promise<Return>;
+}

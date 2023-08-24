@@ -1,7 +1,9 @@
 import type {
   Customer,
-  PurchasingCompany,
+  OrderStatusPurchasingCompany,
+  PurchasingCompany as CustomerAccountPurchasingCompany,
   RenderExtensionTarget,
+  RenderOrderStatusExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {ScopeNotGrantedError} from '../errors';
@@ -15,7 +17,7 @@ import {useSubscription} from './subscription';
  * The value is `undefined` if the buyer isn't a known customer for this shop or if they haven't logged in yet.
  */
 export function useCustomer<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(): Customer | undefined {
   const buyerIdentity = useApi<Target>().buyerIdentity;
 
@@ -33,7 +35,7 @@ export function useCustomer<
  * The value is `undefined` if the app does not have access to customer data.
  */
 export function useEmail<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(): string | undefined {
   const buyerIdentity = useApi<Target>().buyerIdentity;
 
@@ -51,7 +53,7 @@ export function useEmail<
  * The value is `undefined` if the app does not have access to customer data.
  */
 export function usePhone<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(): string | undefined {
   const buyerIdentity = useApi<Target>().buyerIdentity;
 
@@ -64,6 +66,10 @@ export function usePhone<
   return useSubscription(buyerIdentity.phone);
 }
 
+type PurchasingCompany<Target> = Target extends RenderOrderStatusExtensionTarget
+  ? OrderStatusPurchasingCompany | undefined
+  : CustomerAccountPurchasingCompany | undefined;
+
 /**
  * Provides information about the company and its location that the business customer
  * is purchasing on behalf of during a B2B checkout. It includes details that can be utilized to
@@ -73,7 +79,7 @@ export function usePhone<
  */
 export function usePurchasingCompany<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
->(): PurchasingCompany | undefined {
+>(): PurchasingCompany<Target> {
   const buyerIdentity = useApi<Target>().buyerIdentity;
 
   if (!buyerIdentity) {
@@ -82,5 +88,7 @@ export function usePurchasingCompany<
     );
   }
 
-  return useSubscription(buyerIdentity.purchasingCompany);
+  return useSubscription(
+    buyerIdentity.purchasingCompany,
+  ) as PurchasingCompany<Target>;
 }

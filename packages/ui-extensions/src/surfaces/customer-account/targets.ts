@@ -1,8 +1,17 @@
+import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 import {AnyComponent} from '../checkout';
 
 import {CartLineItemApi} from './api/cart-line/cart-line-item';
 import type {OrderStatusApi} from './api/order-status/order-status';
-import type {RenderExtension} from './extension';
+import type {RenderExtension, RunExtension} from './extension';
+import {
+  StandardApi,
+  FullExtensionNavigation,
+} from './api/standard-api/standard-api';
+
+type Components = typeof import('./components');
+
+type AllComponents = Components[keyof Components];
 
 /**
  * A UI extension will register for one or more extension targets using `shopify.extend()`.
@@ -12,7 +21,11 @@ import type {RenderExtension} from './extension';
  * The input arguments and the output type are different
  * for each extension target.
  */
-export interface ExtensionTargets {
+export type ExtensionTargets = OrderStatusExtensionTargets &
+  CustomerAccountExtensionTargets;
+export type ExtensionTarget = keyof ExtensionTargets;
+
+export interface OrderStatusExtensionTargets {
   /**
    * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the Order Status Page.
    * Unlike static extension targets, dynamic extension targets render where the merchant
@@ -49,8 +62,69 @@ export interface ExtensionTargets {
     AnyComponent
   >;
 }
+export type OrderStatusExtensionTarget = keyof OrderStatusExtensionTargets;
 
-export type ExtensionTarget = keyof ExtensionTargets;
+export interface CustomerAccountExtensionTargets {
+  'CustomerAccount::FullPage::RenderWithin': RenderExtension<
+    StandardApi<'CustomerAccount::FullPage::RenderWithin'> & FullPageApi,
+    AllComponents
+  >;
+  'CustomerAccount::Returns::Initiate': RunExtension<
+    StandardApi<'CustomerAccount::Returns::Initiate'> & {orderId: string},
+    void
+  >;
+  'CustomerAccount::KitchenSink': RenderExtension<
+    StandardApi<'CustomerAccount::KitchenSink'> & {name: string},
+    AllComponents
+  >;
+  'CustomerAccount::KitchenSinkRun': RunExtension<
+    StandardApi<'CustomerAccount::KitchenSinkRun'> & {name: string},
+    string
+  >;
+  'customer-account.dynamic.render': RenderExtension<
+    StandardApi<'customer-account.dynamic.render'>,
+    AllComponents
+  >;
+  'customer-account.order-index.block.render': RenderExtension<
+    StandardApi<'customer-account.order-index.block.render'>,
+    AllComponents
+  >;
+  'customer-account.account-information.block.render': RenderExtension<
+    StandardApi<'customer-account.account-information.block.render'>,
+    AllComponents
+  >;
+  'customer-account.account-information.company-details.render-after': RenderExtension<
+    StandardApi<'customer-account.account-information.company-details.render-after'>,
+    AllComponents
+  >;
+  'customer-account.account-information.addresses.render-after': RenderExtension<
+    StandardApi<'customer-account.account-information.addresses.render-after'>,
+    AllComponents
+  >;
+  'customer-account.account-information.payment.render-after': RenderExtension<
+    StandardApi<'customer-account.account-information.payment.render-after'>,
+    AllComponents
+  >;
+  'customer-account.account-information.location.render-after': RenderExtension<
+    StandardApi<'customer-account.account-information.location.render-after'>,
+    AllComponents
+  >;
+  'customer-account.order-status.action.menu-item.render': RenderExtension<
+    StandardApi & {orderId: string},
+    AllComponents
+  >;
+  'customer-account.order-status.action.render': RenderExtension<
+    StandardApi & ActionExtensionApi & {orderId: string},
+    AllComponents
+  >;
+  'customer-account.navigation.menu-item.render': RenderExtension<
+    StandardApi<'customer-account.navigation.menu-item.render'>,
+    AllComponents
+  >;
+}
+
+export type CustomerAccountExtensionTarget =
+  keyof CustomerAccountExtensionTargets;
 
 /**
  * For a given extension target, returns the value that is expected to be
@@ -80,6 +154,36 @@ export type RenderExtensionTarget = {
     ? Target
     : never;
 }[keyof ExtensionTargets];
+
+/**
+ * A union type containing the extension targets on order status page that follow the pattern of
+ * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
+ * and an additional `api` argument, and using those arguments to render
+ * UI.
+ */
+export type RenderOrderStatusExtensionTarget = {
+  [Target in keyof OrderStatusExtensionTargets]: OrderStatusExtensionTargets[Target] extends RenderExtension<
+    any,
+    any
+  >
+    ? Target
+    : never;
+}[keyof OrderStatusExtensionTargets];
+
+/**
+ * A union type containing the extension targets on customer account except order status page that follow the pattern of
+ * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
+ * and an additional `api` argument, and using those arguments to render
+ * UI.
+ */
+export type RenderCustomerAccountExtensionTarget = {
+  [Target in keyof CustomerAccountExtensionTargets]: CustomerAccountExtensionTargets[Target] extends RenderExtension<
+    any,
+    any
+  >
+    ? Target
+    : never;
+}[keyof CustomerAccountExtensionTargets];
 
 /**
  * A mapping of each “render extension” name to its callback type.
@@ -114,3 +218,15 @@ export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
 export type AllowedComponentsForRenderExtension<
   Target extends keyof RenderExtensions,
 > = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[Target]>;
+
+export interface FullPageApi {
+  location: StatefulRemoteSubscribable<{
+    pathname: string;
+    search: string;
+  }>;
+  navigation: FullExtensionNavigation;
+}
+
+export interface ActionExtensionApi {
+  close(): void;
+}

@@ -1,6 +1,6 @@
 import {
   Country,
-  RenderExtensionTarget,
+  RenderOrderStatusExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
@@ -11,7 +11,7 @@ import {useSubscription} from './subscription';
  * your component if the country changes.
  */
 export function useLocalizationCountry<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(): Country | undefined {
   const {localization} = useApi<Target>();
 

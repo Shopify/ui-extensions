@@ -1,5 +1,5 @@
 import {
-  RenderExtensionTarget,
+  RenderOrderStatusExtensionTarget,
   Timezone,
 } from '@shopify/ui-extensions/customer-account';
 
@@ -11,7 +11,7 @@ import {useSubscription} from './subscription';
  * your component if the time zone changes.
  */
 export function useTimezone<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(): Timezone {
   const {localization} = useApi<Target>();
 
