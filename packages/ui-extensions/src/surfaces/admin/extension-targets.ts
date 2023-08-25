@@ -121,6 +121,16 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * Renders an Admin Action in the customer segment details page. Open this extension from the "Use segment" button.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.customer-segment-details.action.render': RenderExtension<
+    ActionExtensionApi<'admin.customer-segment-details.action.render'>,
+    AllComponents
+  >;
+
+  /**
    * Renders an Admin Action in the product index page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
