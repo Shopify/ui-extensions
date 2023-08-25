@@ -29,7 +29,11 @@ export type {IconProps} from './components/Icon/Icon';
 export {InlineStack} from './components/InlineStack/InlineStack';
 export type {InlineStackProps} from './components/InlineStack/InlineStack';
 export {InternalCustomerSegmentTemplate} from './components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate';
-export type {InternalCustomerSegmentTemplateProps} from './components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate';
+export type {
+  InternalCustomerSegmentTemplateProps,
+  CustomerSegmentTemplateIcon,
+  CustomerSegmentTemplateCategory,
+} from './components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate';
 export {Image} from './components/Image/Image';
 export type {ImageProps} from './components/Image/Image';
 export {Link} from './components/Link/Link';
