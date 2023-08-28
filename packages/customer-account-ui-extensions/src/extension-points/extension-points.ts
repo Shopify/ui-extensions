@@ -67,6 +67,10 @@ export interface ExtensionPoints {
     StandardApi & ActionExtensionApi & {orderId: string},
     AllComponents
   >;
+  'customer-account.navigation.menu-item.render': RenderExtension<
+    StandardApi<'customer-account.navigation.menu-item.render'>,
+    AllComponents
+  >;
 }
 
 export interface FullPageApi {
