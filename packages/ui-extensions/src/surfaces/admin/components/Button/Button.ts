@@ -83,6 +83,18 @@ interface ButtonAnchorProps extends CommonProps {
   to?: AnchorProps['href'];
 
   /**
+   * Tells browsers to download the linked resource instead of navigating to it.
+   * Optionally accepts filename value to rename file.
+   */
+  download?: boolean | string;
+
+  /**
+   * Specifies where to display the linked URL
+   * @default '_self'
+   */
+  target?: '_blank' | '_self';
+
+  /**
    * Callback when a link is pressed. If `href` is set,
    * it will execute the callback and then navigate to the location specified by `href`.
    */
