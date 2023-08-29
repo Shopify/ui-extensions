@@ -11,12 +11,8 @@ export interface CustomerSegmentTemplateProps {
   title: string;
   /* Localized description(s) of the template. */
   description: string | string[];
-  /* DEPRECATED - Code snippet to render in the template with syntax highlighting. */
-  templateQuery?: string;
   /* Code snippet to render in the template with syntax highlighting. */
   query: string;
-  /* DEPRECATED - Code snippet to insert in the segment editor. If missing, `templateQuery` will be used. */
-  templateQueryToInsert?: string;
   /* Code snippet to insert in the segment editor. If missing, `templateQuery` will be used. */
   queryToInsert?: string;
   /* List of customer standard metafields or custom metafields used in the template's query. */
@@ -24,8 +20,6 @@ export interface CustomerSegmentTemplateProps {
     standardMetafields?: CustomerStandardMetafieldDependency[];
     customMetafields?: string[];
   };
-  /* DEPRECATED - ISO 8601-encoded date and time string. A "New" badge will be rendered for recently introduced templates. */
-  dateAdded?: string;
   /* ISO 8601-encoded date and time string. A "New" badge will be rendered for recently introduced templates. */
   createdOn?: string;
 }

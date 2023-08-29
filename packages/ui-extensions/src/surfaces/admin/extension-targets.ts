@@ -14,9 +14,7 @@ import {AnyComponentBuilder} from '../../shared';
 type CustomerSegmentationTemplateComponent = AnyComponentBuilder<
   Pick<
     Components,
-    | 'CustomerSegmentationTemplate'
-    | 'CustomerSegmentTemplate'
-    | 'InternalCustomerSegmentTemplate'
+    'CustomerSegmentTemplate' | 'InternalCustomerSegmentTemplate'
   >
 >;
 
