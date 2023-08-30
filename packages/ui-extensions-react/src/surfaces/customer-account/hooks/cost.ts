@@ -1,6 +1,6 @@
 import type {
   Money,
-  RenderExtensionTarget,
+  RenderOrderStatusExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
@@ -12,7 +12,7 @@ import {useSubscription} from './subscription';
  * the information step might not have delivery costs calculated.
  */
 export function useTotalAmount<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(): Money {
   return useSubscription(useApi<Target>().cost.totalAmount);
 }

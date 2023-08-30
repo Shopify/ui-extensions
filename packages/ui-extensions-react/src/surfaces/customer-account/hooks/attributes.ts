@@ -1,6 +1,6 @@
 import type {
   Attribute,
-  RenderExtensionTarget,
+  RenderOrderStatusExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
@@ -10,7 +10,7 @@ import {useSubscription} from './subscription';
  * Returns the proposed `attributes` applied to the checkout.
  */
 export function useAttributes<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(): Attribute[] | undefined {
   return useSubscription(useApi<Target>().attributes);
 }
@@ -21,7 +21,7 @@ export function useAttributes<
  * @param keys - An array of attribute keys.
  */
 export function useAttributeValues<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(keys: string[]): (string | undefined)[] {
   const attributes = useAttributes<Target>();
 
