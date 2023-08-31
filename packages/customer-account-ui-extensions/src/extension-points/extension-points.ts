@@ -6,6 +6,7 @@ import {FullExtensionNavigation} from './standard-api/navigation';
 type Components = typeof import('../components');
 
 type AllComponents = Components[keyof Components];
+
 /**
  * A UI extension will register for one or more extension points using `shopify.extend()`.
  * An extension point in a UI extension is a plain JavaScript function.
@@ -40,24 +41,24 @@ export interface ExtensionPoints {
     StandardApi<'customer-account.order-index.block.render'>,
     AllComponents
   >;
-  'customer-account.account-information.block.render': RenderExtension<
-    StandardApi<'customer-account.account-information.block.render'>,
+  'customer-account.profile.block.render': RenderExtension<
+    StandardApi<'customer-account.profile.block.render'>,
     AllComponents
   >;
-  'customer-account.account-information.company-details.render-after': RenderExtension<
-    StandardApi<'customer-account.account-information.company-details.render-after'>,
+  'customer-account.profile.company-details.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.company-details.render-after'>,
     AllComponents
   >;
-  'customer-account.account-information.addresses.render-after': RenderExtension<
-    StandardApi<'customer-account.account-information.addresses.render-after'>,
+  'customer-account.profile.addresses.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.addresses.render-after'>,
     AllComponents
   >;
-  'customer-account.account-information.payment.render-after': RenderExtension<
-    StandardApi<'customer-account.account-information.payment.render-after'>,
+  'customer-account.profile.payment.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.payment.render-after'>,
     AllComponents
   >;
-  'customer-account.account-information.location.render-after': RenderExtension<
-    StandardApi<'customer-account.account-information.location.render-after'>,
+  'customer-account.profile.staff-and-permission.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.staff-and-permission.render-after'>,
     AllComponents
   >;
   'customer-account.order-status.action.menu-item.render': RenderExtension<
