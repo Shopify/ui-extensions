@@ -15,8 +15,7 @@ async function getProduct(id) {
       variables: {id},
     }),
   });
-  const {data} = await res.json();
-  return data;
+  return res.json();
 }
 
 const TARGET = 'admin.product-details.block.render';
@@ -30,7 +29,7 @@ function App() {
   const [product, setProduct] = useState();
   useEffect(() => {
     const productId = data.selected?.[0]?.id;
-    getProduct(productId).then(setProduct);
+    getProduct(productId).then(({data}) => setProduct(data.product));
   }, [data]);
 
   return <Text strong>The selected product title is {product?.title}</Text>;
