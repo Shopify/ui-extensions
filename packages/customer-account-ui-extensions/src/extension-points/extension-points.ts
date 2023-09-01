@@ -57,8 +57,8 @@ export interface ExtensionPoints {
     StandardApi<'customer-account.profile.payment.render-after'>,
     AllComponents
   >;
-  'customer-account.profile.staff-and-permission.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.staff-and-permission.render-after'>,
+  'customer-account.profile.staff-and-permissions.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.staff-and-permissions.render-after'>,
     AllComponents
   >;
   'customer-account.order-status.action.menu-item.render': RenderExtension<
