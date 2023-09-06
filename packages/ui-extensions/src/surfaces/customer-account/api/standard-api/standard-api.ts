@@ -4,7 +4,7 @@ import type {ExtensionTarget} from '../../targets';
 import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 /**
- * The following APIs are provided to all extension points.
+ * The following APIs are provided to all extension targets.
  */
 export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -64,7 +64,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   };
 
   /**
-   * Key-value storage for the extension point.
+   * Key-value storage for the extension target.
    */
   storage: Storage;
 
