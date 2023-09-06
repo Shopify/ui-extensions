@@ -140,6 +140,7 @@ export type {
   IconProps,
   ScreenProps,
   ScreenPresentationProps,
+  SecondaryActionProps,
 } from './components';
 
 export type {
