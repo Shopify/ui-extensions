@@ -3,10 +3,10 @@ import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 import {ApiVersion} from '../../../shared';
 
 /**
- * A key-value storage object for extension points.
+ * A key-value storage object for extension targets.
  *
  * Stored data is only available to this specific app
- * but can be shared across multiple extension points.
+ * but can be shared across multiple extension targets.
  *
  * The storage backend is implemented with `localStorage` and
  * should persist for ... days

@@ -89,24 +89,24 @@ export interface CustomerAccountExtensionTargets {
     StandardApi<'customer-account.order-index.block.render'>,
     AllComponents
   >;
-  'customer-account.account-information.block.render': RenderExtension<
-    StandardApi<'customer-account.account-information.block.render'>,
+  'customer-account.profile.block.render': RenderExtension<
+    StandardApi<'customer-account.profile.block.render'>,
     AllComponents
   >;
-  'customer-account.account-information.company-details.render-after': RenderExtension<
-    StandardApi<'customer-account.account-information.company-details.render-after'>,
+  'customer-account.profile.company-details.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.company-details.render-after'>,
     AllComponents
   >;
-  'customer-account.account-information.addresses.render-after': RenderExtension<
-    StandardApi<'customer-account.account-information.addresses.render-after'>,
+  'customer-account.profile.addresses.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.addresses.render-after'>,
     AllComponents
   >;
-  'customer-account.account-information.payment.render-after': RenderExtension<
-    StandardApi<'customer-account.account-information.payment.render-after'>,
+  'customer-account.profile.payment.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.payment.render-after'>,
     AllComponents
   >;
-  'customer-account.account-information.location.render-after': RenderExtension<
-    StandardApi<'customer-account.account-information.location.render-after'>,
+  'customer-account.profile.staff-and-permissions.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.staff-and-permissions.render-after'>,
     AllComponents
   >;
   'customer-account.order-status.action.menu-item.render': RenderExtension<
@@ -230,3 +230,37 @@ export interface FullPageApi {
 export interface ActionExtensionApi {
   close(): void;
 }
+
+/**
+ * For a given extension target, returns the type of the API that the
+ * extension will receive at runtime.
+ */
+export type ApiForExtension<Target extends keyof ExtensionTargets> =
+  ExtractedApiFromExtension<ExtensionTargets[Target]>;
+
+type ExtractedApiFromRunExtension<T> = T extends RunExtension<
+  infer Api,
+  unknown
+>
+  ? Api
+  : never;
+
+type ExtractedApiFromExtension<T> = T extends RenderExtension<any, any>
+  ? ExtractedApiFromRenderExtension<T>
+  : T extends RunExtension<any, any>
+  ? ExtractedApiFromRunExtension<T>
+  : never;
+
+/**
+ * A union type containing all extension targets that follow the pattern of
+ * accepting an `api` argument, and using those arguments to run code that does not render anything, but instead return
+ * a value or execute a side effect.
+ */
+export type RunExtensionTarget = {
+  [Target in keyof ExtensionTargets]: ExtensionTargets[Target] extends RunExtension<
+    any,
+    any
+  >
+    ? Target
+    : never;
+}[keyof ExtensionTargets];
