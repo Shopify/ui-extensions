@@ -238,6 +238,7 @@ export interface AppMetafieldEntry {
 export type {ApiVersion} from '../../../../shared';
 
 export type Version = string;
+export type CheckoutToken = string;
 
 /**
  * This returns a translated string matching a key in a locale file.
@@ -471,6 +472,14 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * Settings applied to the buyer's checkout.
    */
   checkoutSettings: StatefulRemoteSubscribable<CheckoutSettings>;
+
+  /**
+   * A semi-stable id that represents the current checkout.
+   *
+   * Will match `token` field in [WebPixel](https://shopify.dev/docs/api/pixels/customer-events#checkout) checkout payloads.
+   * Will match the `checkout_token` in the [Admin REST API Order resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
+   */
+  checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
 
   /**
    * Details on the costs the buyer will pay for this checkout.

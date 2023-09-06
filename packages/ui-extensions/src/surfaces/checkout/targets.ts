@@ -680,6 +680,7 @@ export type CustomerAccountStandardApi<Target extends keyof ExtensionTargets> =
     | 'attributes'
     | 'buyerIdentity'
     | 'checkoutSettings'
+    | 'checkoutToken'
     | 'cost'
     | 'discountCodes'
     | 'discountAllocations'

@@ -55,6 +55,7 @@ export type {
   PickupLocationOption,
   PickupPointOption,
   NumberRange,
+  CheckoutToken,
 } from './api/standard/standard';
 export type {
   Attribute,
