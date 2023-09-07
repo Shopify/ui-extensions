@@ -7,7 +7,6 @@ export interface DateFieldProps
     | 'value'
     | 'error'
     | 'label'
-    | 'placeholder'
     | 'disabled'
     | 'onFocus'
     | 'onBlur'

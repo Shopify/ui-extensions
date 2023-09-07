@@ -7,7 +7,6 @@ export interface TimeFieldProps
     | 'value'
     | 'error'
     | 'label'
-    | 'placeholder'
     | 'disabled'
     | 'onFocus'
     | 'onBlur'
