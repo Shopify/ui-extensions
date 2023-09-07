@@ -90,7 +90,11 @@ export {Icon} from './Icon';
 export type {IconName, IconSize, IconProps} from './Icon';
 
 export {Screen} from './Screen';
-export type {ScreenPresentationProps, ScreenProps} from './Screen';
+export type {
+  ScreenPresentationProps,
+  ScreenProps,
+  SecondaryActionProps,
+} from './Screen';
 
 export {Navigator} from './Navigator';
 
