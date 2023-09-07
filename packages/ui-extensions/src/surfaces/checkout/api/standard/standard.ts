@@ -474,10 +474,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   checkoutSettings: StatefulRemoteSubscribable<CheckoutSettings>;
 
   /**
-   * A semi-stable id that represents the current checkout.
+   * A stable id that represents the current checkout.
    *
-   * Will match `token` field in [WebPixel](https://shopify.dev/docs/api/pixels/customer-events#checkout) checkout payloads.
-   * Will match the `checkout_token` in the [Admin REST API Order resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
+   * Matches the `token` field in the [WebPixel checkout payload](https://shopify.dev/docs/api/pixels/customer-events#checkout)
+   * and the `checkout_token` field in the [Admin REST API Order resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
    */
   checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
 
