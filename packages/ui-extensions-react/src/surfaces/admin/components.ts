@@ -10,6 +10,8 @@ export {Button} from './components/Button/Button';
 export type {ButtonProps} from './components/Button/Button';
 export {Checkbox} from './components/Checkbox/Checkbox';
 export type {CheckboxProps} from './components/Checkbox/Checkbox';
+export {CustomerSegmentTemplate} from './components/CustomerSegmentTemplate/CustomerSegmentTemplate';
+export type {CustomerSegmentTemplateProps} from './components/CustomerSegmentTemplate/CustomerSegmentTemplate';
 export {Divider} from './components/Divider/Divider';
 export type {DividerProps} from './components/Divider/Divider';
 export {EmailField} from './components/EmailField/EmailField';
