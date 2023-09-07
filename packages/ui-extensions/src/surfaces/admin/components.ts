@@ -10,8 +10,6 @@ export {Button} from './components/Button/Button';
 export type {ButtonProps} from './components/Button/Button';
 export {Checkbox} from './components/Checkbox/Checkbox';
 export type {CheckboxProps} from './components/Checkbox/Checkbox';
-export {CustomerSegmentationTemplate} from './components/CustomerSegmentationTemplate/CustomerSegmentationTemplate';
-export type {CustomerSegmentationTemplateProps} from './components/CustomerSegmentationTemplate/CustomerSegmentationTemplate';
 export {CustomerSegmentTemplate} from './components/CustomerSegmentTemplate/CustomerSegmentTemplate';
 export type {CustomerSegmentTemplateProps} from './components/CustomerSegmentTemplate/CustomerSegmentTemplate';
 export {Divider} from './components/Divider/Divider';
