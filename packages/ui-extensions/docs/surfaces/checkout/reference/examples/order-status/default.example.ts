@@ -4,7 +4,7 @@ import {
 } from '@shopify/ui-extensions/checkout';
 
 export default extension(
-  'customer-account.order-details.customer-information.render-after',
+  'customer-account.order-status.customer-information.render-after',
   (root, {order}) => {
     let bannerShown = false;
 
