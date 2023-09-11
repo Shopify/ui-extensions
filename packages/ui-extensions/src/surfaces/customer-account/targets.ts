@@ -66,7 +66,8 @@ export type OrderStatusExtensionTarget = keyof OrderStatusExtensionTargets;
 
 export interface CustomerAccountExtensionTargets {
   'CustomerAccount::FullPage::RenderWithin': RenderExtension<
-    StandardApi<'CustomerAccount::FullPage::RenderWithin'> & FullPageApi,
+    Omit<StandardApi<'CustomerAccount::FullPage::RenderWithin'>, 'navigation'> &
+      FullPageApi,
     AllComponents
   >;
   'CustomerAccount::Returns::Initiate': RunExtension<
