@@ -121,30 +121,67 @@ export interface Localization {
   extensionLanguage: StatefulRemoteSubscribable<Language>;
 }
 
+/**
+ * An enumerated value representing the type of navigation.
+ */
 export type NavigationType = 'push' | 'replace' | 'traverse';
 
 export interface NavigationOptions {
+  /**
+   * Developer-defined information to be stored in the associated NavigationHistoryEntry once the navigation is complete, retrievable via getState().
+   */
   state?: Record<string, any>;
+  /**
+   * An enumerated value that sets the history behavior of this navigation.
+   */
   history: 'auto' | 'push' | 'replace';
 }
 
+/**
+ * The NavigationHistoryEntry interface of the Navigation API represents a single navigation history entry.
+ */
 export interface NavigationHistoryEntry {
+  /** Returns the key of the history entry. This is a unique, UA-generated value that represents the history entry's slot in the entries list rather than the entry itself. */
   key: string;
+  /**
+   * Returns the URL of this history entry.
+   */
   url: string;
+  /**
+   * Returns a clone of the available state associated with this history entry.
+   */
   getState(): Record<string, any>;
 }
 
+/**
+ * The NavigationCurrentEntryChangeEvent interface of the Navigation API is the event object for the currententrychange event, which fires when the Navigation.currentEntry has changed.
+ */
 export interface NavigationCurrentEntryChangeEvent {
+  /**
+   * Returns the type of the navigation that resulted in the change.
+   */
   navigationType: NavigationType;
+  /**
+   * Returns the NavigationHistoryEntry that was navigated from.
+   */
   from: NavigationHistoryEntry;
 }
 
 export interface StandardExtensionNavigation {
+  /**
+   * The navigate() method navigates to a specific URL, updating any provided state in the history entries list.
+   */
   navigate: NavigateFunction;
 }
 
-export type FullExtensionNavigation = StandardExtensionNavigation & {
+export interface FullExtensionNavigation extends StandardExtensionNavigation {
+  /**
+   * The currentEntry read-only property of the Navigation interface returns a NavigationHistoryEntry object representing the location the user is currently navigated to right now.
+   */
   currentEntry: NavigationHistoryEntry;
+  /**
+   * The updateCurrentEntry() method of the Navigation interface updates the state of the currentEntry; used in cases where the state change will be independent of a navigation or reload.
+   */
   updateCurrentEntry(options: {state: Record<string, any>}): void;
   addEventListener(
     type: 'currententrychange',
@@ -154,9 +191,13 @@ export type FullExtensionNavigation = StandardExtensionNavigation & {
     type: 'currententrychange',
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
   ): void;
-};
+}
 
 export interface NavigateFunction {
+  /**
+   * Navigates to a specific URL, updating any provided state in the history entries list.
+   * @param url The destination URL to navigate to.
+   */
   (url: string, options?: NavigationOptions): void;
 }
 
