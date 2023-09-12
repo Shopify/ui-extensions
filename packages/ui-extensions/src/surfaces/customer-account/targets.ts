@@ -112,16 +112,22 @@ export interface CustomerAccountExtensionTargets {
     AllComponents
   >;
   'customer-account.profile.company-location-addresses.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.company-location-addresses.render-after'>,
-    AllComponents & {locationId: string}
+    StandardApi<'customer-account.profile.company-location-addresses.render-after'> & {
+      locationId: string;
+    },
+    AllComponents
   >;
   'customer-account.profile.company-location-payment.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.company-location-payment.render-after'>,
-    AllComponents & {locationId: string}
+    StandardApi<'customer-account.profile.company-location-payment.render-after'> & {
+      locationId: string;
+    },
+    AllComponents
   >;
   'customer-account.profile.company-location-staff.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.company-location-staff.render-after'>,
-    AllComponents & {locationId: string}
+    StandardApi<'customer-account.profile.company-location-staff.render-after'> & {
+      locationId: string;
+    },
+    AllComponents
   >;
   'customer-account.order-status.action.menu-item.render': RenderExtension<
     StandardApi & {orderId: string},
