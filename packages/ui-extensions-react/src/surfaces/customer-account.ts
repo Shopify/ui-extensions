@@ -6,9 +6,14 @@ export {
   Style,
 } from '@shopify/ui-extensions/customer-account';
 export type {
+  ApiForExtension,
   ArgumentsForExtension,
+  ExtensionTarget,
+  ExtensionTargets,
   RenderExtension,
+  RenderExtensionTarget,
   RunExtension,
+  RunExtensionTarget,
   ReturnTypeForExtension,
   StandardApi,
   Language,
