@@ -70,6 +70,11 @@ export interface CustomerAccountExtensionTargets {
       FullPageApi,
     AllComponents
   >;
+  'customer-account.page.render': RenderExtension<
+    Omit<StandardApi<'customer-account.page.render'>, 'navigation'> &
+      FullPageApi,
+    AllComponents
+  >;
   'CustomerAccount::Returns::Initiate': RunExtension<
     StandardApi<'CustomerAccount::Returns::Initiate'> & {orderId: string},
     void
@@ -94,10 +99,6 @@ export interface CustomerAccountExtensionTargets {
     StandardApi<'customer-account.profile.block.render'>,
     AllComponents
   >;
-  'customer-account.profile.company-details.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.company-details.render-after'>,
-    AllComponents
-  >;
   'customer-account.profile.addresses.render-after': RenderExtension<
     StandardApi<'customer-account.profile.addresses.render-after'>,
     AllComponents
@@ -106,9 +107,21 @@ export interface CustomerAccountExtensionTargets {
     StandardApi<'customer-account.profile.payment.render-after'>,
     AllComponents
   >;
-  'customer-account.profile.staff-and-permissions.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.staff-and-permissions.render-after'>,
+  'customer-account.profile.company-details.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.company-details.render-after'>,
     AllComponents
+  >;
+  'customer-account.profile.company-location-addresses.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.company-location-addresses.render-after'>,
+    AllComponents & {locationId: string}
+  >;
+  'customer-account.profile.company-location-payment.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.company-location-payment.render-after'>,
+    AllComponents & {locationId: string}
+  >;
+  'customer-account.profile.company-location-staff.render-after': RenderExtension<
+    StandardApi<'customer-account.profile.company-location-staff.render-after'>,
+    AllComponents & {locationId: string}
   >;
   'customer-account.order-status.action.menu-item.render': RenderExtension<
     StandardApi & {orderId: string},
