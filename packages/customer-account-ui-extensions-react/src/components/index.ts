@@ -1,4 +1,4 @@
-export * from './CustomerAccountCard';
+export * from './Card';
 export * from './CustomerAccountAction';
 export * from './PaymentIcon';
 export * from './PolicyModal';

@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export interface CustomerAccountCardProps {
+export interface CardProps {
   /**
    * Adjust the padding of all edges.
    *
@@ -9,7 +9,4 @@ export interface CustomerAccountCardProps {
   padding?: boolean;
 }
 
-export const CustomerAccountCard = createRemoteComponent<
-  'CustomerAccountCard',
-  CustomerAccountCardProps
->('CustomerAccountCard');
+export const Card = createRemoteComponent<'Card', CardProps>('Card');
