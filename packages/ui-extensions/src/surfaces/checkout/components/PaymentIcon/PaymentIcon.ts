@@ -450,8 +450,6 @@ export type PaymentMethod =
 export interface PaymentIconProps {
   /**
    * The name of the payment method.
-   *
-   * Check the list of available payment methods [here](https://github.com/activemerchant/payment_icons/tree/master/app/assets/images/payment_icons).
    */
   name: PaymentMethod | string;
 
