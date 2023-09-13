@@ -87,6 +87,12 @@ export type {LoginWithShopProps} from './components/LoginWithShop/LoginWithShop'
 export {Modal} from './components/Modal/Modal';
 export type {ModalProps} from './components/Modal/Modal';
 
+export {PaymentIcon} from './components/PaymentIcon/PaymentIcon';
+export type {
+  PaymentIconProps,
+  PaymentMethod,
+} from './components/PaymentIcon/PaymentIcon';
+
 export {PhoneField} from './components/PhoneField/PhoneField';
 export type {PhoneFieldProps} from './components/PhoneField/PhoneField';
 
