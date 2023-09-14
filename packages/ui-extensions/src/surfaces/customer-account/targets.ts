@@ -54,6 +54,14 @@ export interface OrderStatusExtensionTargets {
     OrderStatusApi<'customer-account.order-status.cart-line-list.render-after'>,
     AnyComponent
   >;
+  'customer-account.order-status.delivery-details.render-after': RenderExtension<
+    OrderStatusApi<'customer-account.order-status.delivery-details.render-after'>,
+    AnyComponent
+  >;
+  'customer-account.order-status.payment-details.render-after': RenderExtension<
+    OrderStatusApi<'customer-account.order-status.payment-details.render-after'>,
+    AnyComponent
+  >;
   /**
    * A static extension target that is rendered after a purchase below the customer information on the Order Status page.
    */
