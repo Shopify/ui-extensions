@@ -17,7 +17,8 @@ import type {
 
 export interface ImageProps extends BorderProps, CornerProps, IdProps {
   /**
-   * The URL or path to the image. Supports the `resolution` and `viewportInlineSize` conditional styles only.
+   * The remote URL or path to the image on the Shopify store. Supports the
+   * `resolution` and `viewportInlineSize` conditional styles only.
    */
   source: Required<
     MaybeConditionalStyle<
