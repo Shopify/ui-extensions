@@ -14,6 +14,11 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'PaymentIconProps',
     },
+    {
+      title: 'PaymentMethod',
+      description: '',
+      type: 'PaymentMethod',
+    },
   ],
   category: 'Components',
   subCategory: 'Media',

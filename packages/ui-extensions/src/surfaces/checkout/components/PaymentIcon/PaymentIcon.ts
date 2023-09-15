@@ -450,6 +450,8 @@ export type PaymentMethod =
 export interface PaymentIconProps {
   /**
    * The name of the payment method.
+   *
+   * Check the list of available payment methods [here](/docs/api/checkout-ui-extensions/components/media/paymenticon#paymentmethod).
    */
   name: PaymentMethod | string;
 
