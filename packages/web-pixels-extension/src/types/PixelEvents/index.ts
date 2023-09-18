@@ -114,7 +114,10 @@ export interface PixelEventsCheckoutStartedData {
 
 /**
  * The `checkout_started` event logs an instance of a customer starting the
- * checkout process. This event is available on the checkout page
+ * checkout process. This event is available on the checkout page. For checkout
+ * extensibility, this event is triggered every time a customer enters checkout.
+ * For non-checkout extensible shops, this event is only triggered the first
+ * time a customer enters checkout.
  */
 export interface PixelEventsCheckoutStarted {
   clientId: ClientId;
@@ -334,8 +337,11 @@ export interface PixelEvents {
   checkout_shipping_info_submitted: PixelEventsCheckoutShippingInfoSubmitted;
 
   /**
-   * The `checkout_started` event logs an instance of a customer starting the
-   * checkout process. This event is available on the checkout page
+   * The `checkout_started` event logs an instance of a customer starting
+   * the checkout process. This event is available on the checkout page. For
+   * checkout extensibility, this event is triggered every time a customer
+   * enters checkout. For non-checkout extensible shops, this event is only
+   * triggered the first time a customer enters checkout.
    */
   checkout_started: PixelEventsCheckoutStarted;
 
@@ -423,8 +429,8 @@ export interface BrowserCookie {
 
   /**
    * An asynchronous method to set a cookie by name. It
-   * takes two arguments, a string of form `key=value`
-   * as [decribed here](https://developer.mozilla.org/en-
+   * takes two arguments, a string of form `key=value` as
+   * [described here](https://developer.mozilla.org/en-
    * US/docs/Web/API/Document/cookie#write_a_new_cookie) or the name of the
    * cookie as the first argument and the value as the second argument.
    */
@@ -532,8 +538,10 @@ export interface Browser {
   localStorage: BrowserLocalStorage;
 
   /**
-   * The navigator.sendBeacon() method asynchronously sends an HTTP POST request
-   * containing a small amount of data to a web server.
+   * @deprecated The navigator.sendBeacon() method asynchronously sends an HTTP
+   * POST request containing a small amount of data to a web server. Please use
+   * the standard web `fetch` api with the option `keepalive: true` to achieve
+   * this functionality.
    */
   sendBeacon: (url: string, body?: string) => Promise<boolean>;
   sessionStorage: BrowserSessionStorage;
@@ -610,6 +618,9 @@ export interface CartLineCost {
  * pay.
  */
 export interface Checkout {
+  /**
+   * A list of attributes accumulated throughout the checkout process.
+   */
   attributes: Attribute[];
 
   /**
@@ -623,12 +634,21 @@ export interface Checkout {
    * standard codes.
    */
   currencyCode: string;
+
+  /**
+   * A list of discount applications.
+   */
   discountApplications: DiscountApplication[];
 
   /**
    * The email attached to this checkout.
    */
   email: string | null;
+
+  /**
+   * A list of line item objects, each one containing information about an item
+   * in the checkout.
+   */
   lineItems: CheckoutLineItem[];
 
   /**
@@ -680,6 +700,10 @@ export interface Checkout {
  * A single line item in the checkout, grouped by variant and attributes.
  */
 export interface CheckoutLineItem {
+  /**
+   * The discounts that have been applied to the checkout line item by a
+   * discount application.
+   */
   discountAllocations: DiscountAllocation[];
 
   /**
@@ -832,32 +856,54 @@ export interface DiscountAllocation {
 }
 
 /**
- * The information about the intent of the discount.
+ * A list of discount applications.
  */
 export interface DiscountApplication {
   /**
    * The method by which the discount's value is applied to its entitled items.
+   *
+   * - `ACROSS`: The value is spread across all entitled lines.
+   * - `EACH`: The value is applied onto every entitled line.
    */
   allocationMethod: string;
 
   /**
    * How the discount amount is distributed on the discounted lines.
+   *
+   * - `ALL`: The discount is allocated onto all the lines.
+   * - `ENTITLED`: The discount is allocated onto only the lines that it's
+   * entitled for.
+   * - `EXPLICIT`: The discount is allocated onto explicitly chosen lines.
    */
   targetSelection: string;
 
   /**
    * The type of line (i.e. line item or shipping line) on an order that the
    * discount is applicable towards.
+   *
+   * - `LINE_ITEM`: The discount applies onto line items.
+   * - `SHIPPING_LINE`: The discount applies onto shipping lines.
    */
   targetType: string;
 
   /**
-   * The customer-facing name of the discount.
+   * The customer-facing name of the discount. If the type of discount is
+   * a `DISCOUNT_CODE`, this `title` attribute represents the code of the
+   * discount.
    */
   title: string;
 
   /**
    * The type of the discount.
+   *
+   * - `AUTOMATIC`: A discount automatically at checkout or in the cart without
+   * the need for a code.
+   * - `DISCOUNT_CODE`: A discount applied onto checkouts through the use of
+   * a code.
+   * - `MANUAL`: A discount that is applied to an order by a merchant or store
+   * owner manually, rather than being automatically applied by the system or
+   * through a script.
+   * - `SCRIPT`: A discount applied to a customer's order using a script
    */
   type: string;
 
