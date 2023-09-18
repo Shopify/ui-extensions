@@ -38,6 +38,13 @@ export interface PageProps {
    * When there are 3 or more, the first one is displayed and the rest will be displayed in a dropdown.
    */
   actions?: RemoteFragment;
+
+  /**
+   * The label to be used in the dropdown that contains the actions when ther are 3 or more actions.
+   * Optional.
+   * Defaults to "More actions".
+   */
+  actionsLabel?: string;
 }
 
 export const Page = createRemoteComponent<'Page', PageProps>('Page');
