@@ -4,5 +4,7 @@ export type {
   ListRowLeftSide,
   ListRowRightSide,
   ListProps,
+  ListRowSubtitle,
+  SubtitleType,
   ToggleSwitch,
 } from './List';

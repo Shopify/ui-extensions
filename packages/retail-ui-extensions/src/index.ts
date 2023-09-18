@@ -111,6 +111,8 @@ export type {
   ListRow,
   ListRowLeftSide,
   ListRowRightSide,
+  ListRowSubtitle,
+  SubtitleType,
   ToggleSwitch,
   PinValidationResult,
   PinLength,
