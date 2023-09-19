@@ -39,6 +39,7 @@ export type IconSource =
   | 'hamburger'
   | 'hollowCircle'
   | 'horizontalDots'
+  | 'image'
   | 'info'
   | 'infoFill'
   | 'list'

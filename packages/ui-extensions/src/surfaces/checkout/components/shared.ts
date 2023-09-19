@@ -500,11 +500,16 @@ export type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
 export type BackgroundRepeat = 'repeat' | 'noRepeat';
 
 export type Appearance =
-  /** Takes the default color for the element set within the theme */
+  /** Takes the default color for the element set within the theme*/
   | 'base'
   /** Conveys emphasis and draws attention to the element.*/
   | 'accent'
-  /** Conveys that the element is pressable, hoverable or otherwise interactive.*/
+  /** Conveys that the element is decorative. It takes the `decorative` color set within the theme.*/
+  | 'decorative'
+  /**
+   * Conveys that the element is pressable, hoverable or otherwise interactive.
+   * @deprecated Use `accent` instead.
+   */
   | 'interactive'
   /** Conveys a subdued or disabled state for the element.*/
   | 'subdued'

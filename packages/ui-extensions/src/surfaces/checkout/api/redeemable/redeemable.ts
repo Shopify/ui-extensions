@@ -40,9 +40,14 @@ export interface RedeemableAddChange {
   type: 'redeemableAddChange';
 
   /**
-   * The redeemable attributes
+   * The redeemable attributes.
    */
   attributes: RedeemableAttribute[];
+
+  /**
+   * The identifier used to represent the redeemable (e.g. the gift card code).
+   */
+  identifier: string;
 }
 
 export interface RedeemableApi {

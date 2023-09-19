@@ -22,7 +22,13 @@ export interface TextBlockProps extends IdProps {
    */
   appearance?: Extract<
     Appearance,
-    'accent' | 'subdued' | 'info' | 'success' | 'warning' | 'critical'
+    | 'accent'
+    | 'subdued'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'critical'
+    | 'decorative'
   >;
   /**
    * Align text along the main axis.

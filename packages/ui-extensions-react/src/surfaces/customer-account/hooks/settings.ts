@@ -1,7 +1,4 @@
-import type {
-  ExtensionSettings,
-  RenderOrderStatusExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {ExtensionSettings} from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -11,9 +8,8 @@ import {useSubscription} from './subscription';
  */
 export function useSettings<
   Settings extends ExtensionSettings,
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(): Partial<Settings> {
-  const settings = useSubscription(useApi<Target>().settings);
+  const settings = useSubscription(useApi().settings);
 
   return settings as Settings;
 }

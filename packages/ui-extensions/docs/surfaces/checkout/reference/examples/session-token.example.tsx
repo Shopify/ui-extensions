@@ -19,9 +19,8 @@ function Extension() {
       const token = await sessionToken.get();
       console.log('sessionToken.get()', token);
 
-      const apiResponse = await fetchWithToken(
-        token,
-      );
+      const apiResponse =
+        await fetchWithToken(token);
       // Use your response
       console.log('API response', apiResponse);
     }

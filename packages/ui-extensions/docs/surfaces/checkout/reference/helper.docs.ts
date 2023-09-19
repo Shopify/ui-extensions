@@ -68,6 +68,22 @@ export function getExamples(
         tabs: getExtensionCodeTabs('default'),
       },
     },
+    'analytics-publish': {
+      description:
+        'You can publish analytics events to the Shopify analytics frameworks and they will be propagated to all web pixels on the page.',
+      codeblock: {
+        title: 'Publish',
+        tabs: getExtensionCodeTabs('analytics-publish'),
+      },
+    },
+    'analytics-visitor': {
+      description:
+        'You can submit visitor information to Shopify, these will be sent to the shop backend and not be propagated to web pixels on the page.',
+      codeblock: {
+        title: 'Visitor',
+        tabs: getExtensionCodeTabs('analytics-visitor'),
+      },
+    },
     // For examples specific to extension targets that differ from the StandardApi, organize them into folders (<extension-point-name>/<example>).
     'cart-line-item/default': {
       description: '',

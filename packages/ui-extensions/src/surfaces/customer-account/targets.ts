@@ -1,17 +1,8 @@
-import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 import {AnyComponent} from '../checkout';
 
 import {CartLineItemApi} from './api/cart-line/cart-line-item';
 import type {OrderStatusApi} from './api/order-status/order-status';
-import type {RenderExtension, RunExtension} from './extension';
-import {
-  StandardApi,
-  FullExtensionNavigation,
-} from './api/standard-api/standard-api';
-
-type Components = typeof import('./components');
-
-type AllComponents = Components[keyof Components];
+import type {RenderExtension} from './extension';
 
 /**
  * A UI extension will register for one or more extension targets using `shopify.extend()`.
@@ -21,11 +12,7 @@ type AllComponents = Components[keyof Components];
  * The input arguments and the output type are different
  * for each extension target.
  */
-export type ExtensionTargets = OrderStatusExtensionTargets &
-  CustomerAccountExtensionTargets;
-export type ExtensionTarget = keyof ExtensionTargets;
-
-export interface OrderStatusExtensionTargets {
+export interface ExtensionTargets {
   /**
    * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the Order Status Page.
    * Unlike static extension targets, dynamic extension targets render where the merchant
@@ -54,14 +41,6 @@ export interface OrderStatusExtensionTargets {
     OrderStatusApi<'customer-account.order-status.cart-line-list.render-after'>,
     AnyComponent
   >;
-  'customer-account.order-status.delivery-details.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-status.delivery-details.render-after'>,
-    AnyComponent
-  >;
-  'customer-account.order-status.payment-details.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-status.payment-details.render-after'>,
-    AnyComponent
-  >;
   /**
    * A static extension target that is rendered after a purchase below the customer information on the Order Status page.
    */
@@ -70,89 +49,8 @@ export interface OrderStatusExtensionTargets {
     AnyComponent
   >;
 }
-export type OrderStatusExtensionTarget = keyof OrderStatusExtensionTargets;
 
-export interface CustomerAccountExtensionTargets {
-  'CustomerAccount::FullPage::RenderWithin': RenderExtension<
-    Omit<StandardApi<'CustomerAccount::FullPage::RenderWithin'>, 'navigation'> &
-      FullPageApi,
-    AllComponents
-  >;
-  'customer-account.page.render': RenderExtension<
-    Omit<StandardApi<'customer-account.page.render'>, 'navigation'> &
-      FullPageApi,
-    AllComponents
-  >;
-  'CustomerAccount::Returns::Initiate': RunExtension<
-    StandardApi<'CustomerAccount::Returns::Initiate'> & {orderId: string},
-    void
-  >;
-  'CustomerAccount::KitchenSink': RenderExtension<
-    StandardApi<'CustomerAccount::KitchenSink'> & {name: string},
-    AllComponents
-  >;
-  'CustomerAccount::KitchenSinkRun': RunExtension<
-    StandardApi<'CustomerAccount::KitchenSinkRun'> & {name: string},
-    string
-  >;
-  'customer-account.dynamic.render': RenderExtension<
-    StandardApi<'customer-account.dynamic.render'>,
-    AllComponents
-  >;
-  'customer-account.order-index.block.render': RenderExtension<
-    StandardApi<'customer-account.order-index.block.render'>,
-    AllComponents
-  >;
-  'customer-account.profile.block.render': RenderExtension<
-    StandardApi<'customer-account.profile.block.render'>,
-    AllComponents
-  >;
-  'customer-account.profile.addresses.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.addresses.render-after'>,
-    AllComponents
-  >;
-  'customer-account.profile.payment.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.payment.render-after'>,
-    AllComponents
-  >;
-  'customer-account.profile.company-details.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.company-details.render-after'>,
-    AllComponents
-  >;
-  'customer-account.profile.company-location-addresses.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.company-location-addresses.render-after'> & {
-      locationId: string;
-    },
-    AllComponents
-  >;
-  'customer-account.profile.company-location-payment.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.company-location-payment.render-after'> & {
-      locationId: string;
-    },
-    AllComponents
-  >;
-  'customer-account.profile.company-location-staff.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.company-location-staff.render-after'> & {
-      locationId: string;
-    },
-    AllComponents
-  >;
-  'customer-account.order-status.action.menu-item.render': RenderExtension<
-    StandardApi & {orderId: string},
-    AllComponents
-  >;
-  'customer-account.order-status.action.render': RenderExtension<
-    StandardApi & ActionExtensionApi & {orderId: string},
-    AllComponents
-  >;
-  'customer-account.navigation.menu-item.render': RenderExtension<
-    StandardApi<'customer-account.navigation.menu-item.render'>,
-    AllComponents
-  >;
-}
-
-export type CustomerAccountExtensionTarget =
-  keyof CustomerAccountExtensionTargets;
+export type ExtensionTarget = keyof ExtensionTargets;
 
 /**
  * For a given extension target, returns the value that is expected to be
@@ -182,36 +80,6 @@ export type RenderExtensionTarget = {
     ? Target
     : never;
 }[keyof ExtensionTargets];
-
-/**
- * A union type containing the extension targets on order status page that follow the pattern of
- * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
- * and an additional `api` argument, and using those arguments to render
- * UI.
- */
-export type RenderOrderStatusExtensionTarget = {
-  [Target in keyof OrderStatusExtensionTargets]: OrderStatusExtensionTargets[Target] extends RenderExtension<
-    any,
-    any
-  >
-    ? Target
-    : never;
-}[keyof OrderStatusExtensionTargets];
-
-/**
- * A union type containing the extension targets on customer account except order status page that follow the pattern of
- * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
- * and an additional `api` argument, and using those arguments to render
- * UI.
- */
-export type RenderCustomerAccountExtensionTarget = {
-  [Target in keyof CustomerAccountExtensionTargets]: CustomerAccountExtensionTargets[Target] extends RenderExtension<
-    any,
-    any
-  >
-    ? Target
-    : never;
-}[keyof CustomerAccountExtensionTargets];
 
 /**
  * A mapping of each “render extension” name to its callback type.
@@ -246,49 +114,3 @@ export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
 export type AllowedComponentsForRenderExtension<
   Target extends keyof RenderExtensions,
 > = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[Target]>;
-
-export interface FullPageApi {
-  location: StatefulRemoteSubscribable<{
-    pathname: string;
-    search: string;
-  }>;
-  navigation: FullExtensionNavigation;
-}
-
-export interface ActionExtensionApi {
-  close(): void;
-}
-
-/**
- * For a given extension target, returns the type of the API that the
- * extension will receive at runtime.
- */
-export type ApiForExtension<Target extends keyof ExtensionTargets> =
-  ExtractedApiFromExtension<ExtensionTargets[Target]>;
-
-type ExtractedApiFromRunExtension<T> = T extends RunExtension<
-  infer Api,
-  unknown
->
-  ? Api
-  : never;
-
-type ExtractedApiFromExtension<T> = T extends RenderExtension<any, any>
-  ? ExtractedApiFromRenderExtension<T>
-  : T extends RunExtension<any, any>
-  ? ExtractedApiFromRunExtension<T>
-  : never;
-
-/**
- * A union type containing all extension targets that follow the pattern of
- * accepting an `api` argument, and using those arguments to run code that does not render anything, but instead return
- * a value or execute a side effect.
- */
-export type RunExtensionTarget = {
-  [Target in keyof ExtensionTargets]: ExtensionTargets[Target] extends RunExtension<
-    any,
-    any
-  >
-    ? Target
-    : never;
-}[keyof ExtensionTargets];

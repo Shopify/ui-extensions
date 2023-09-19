@@ -1,6 +1,6 @@
 import type {
   AppliedGiftCard,
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
@@ -11,7 +11,7 @@ import {useSubscription} from './subscription';
  * your component if gift cards are added or removed.
  */
 export function useAppliedGiftCards<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): AppliedGiftCard[] {
   const {appliedGiftCards} = useApi<Target>();
 
