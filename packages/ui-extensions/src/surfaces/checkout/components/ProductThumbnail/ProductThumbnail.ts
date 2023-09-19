@@ -5,19 +5,45 @@ import {Size} from '../shared';
 
 export interface ProductThumbnailProps {
   /**
-   * A label that describes the purpose or contents of the icon.
+   * An alternative text description that describe the image for the reader to
+   * understand what it is about. It is extremely useful for both users using
+   * assistive technology and sighted users. A well written description
+   * provides people with visual impairments the ability to participate in
+   * consuming non-text content. When a screen readers encounters an `Image`,
+   * the description is read and announced aloud. If an image fails to load,
+   * potentially due to a poor connection, the description is displayed on
+   * screen instead. This has the benefit of letting a sighted buyer know an
+   * image was meant to load here, but as an alternative, they’re still able to
+   * consume the text content. Read
+   * [considerations when writing alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204)
+   * to learn more.
    *
    * This property is an alias for `accessibilityLabel` for compatibility with the HTML
    * specification. When both are specified `accessibilityLabel` takes precedence.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
    */
   alt?: string;
 
   /**
-   * A label that describes the purpose or contents of the icon.
+   * An alternative text description that describe the image for the reader to
+   * understand what it is about. It is extremely useful for both users using
+   * assistive technology and sighted users. A well written description
+   * provides people with visual impairments the ability to participate in
+   * consuming non-text content. When a screen readers encounters an `Image`,
+   * the description is read and announced aloud. If an image fails to load,
+   * potentially due to a poor connection, the description is displayed on
+   * screen instead. This has the benefit of letting a sighted buyer know an
+   * image was meant to load here, but as an alternative, they’re still able to
+   * consume the text content. Read
+   * [considerations when writing alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204)
+   * to learn more.
    *
-   * When set, it will be announced to users using assistive technologies and will provide them with more context.
-   * This should only be used if the icon requires an alternative internationalised label
-   * or if it is otherwise inappropriate to make use of the default label included with the icon.
+   * An `alt` property is available as an alias for this for compatibility with the HTML
+   * specification. When both are specified, `accessibilityLabel` takes precedence.
+   *
+   * @defaultValue `''`
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
    */
   accessibilityLabel?: string;
 
