@@ -1,10 +1,18 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {BadgeProps} from '../Badge';
+import {ColorType} from '../Text';
 
 export interface ToggleSwitch {
   value?: boolean;
   disabled?: boolean;
 }
+
+export interface SubtitleType {
+  content: string;
+  color?: ColorType;
+}
+
+export type ListRowSubtitle = string | SubtitleType;
 
 export interface ListRowLeftSide {
   /**
@@ -13,8 +21,9 @@ export interface ListRowLeftSide {
   label: string;
   /**
    * The subtitles to display beneath the main label. Up to 3 subtitles can be displayed.
+   * Subtitles can optionally be configured with colors by passing an object with a `content` and `color` properties.
    */
-  subtitle?: readonly [string, string?, string?];
+  subtitle?: readonly [ListRowSubtitle, ListRowSubtitle?, ListRowSubtitle?];
   /**
    * @deprecated
    * badge will be removed in version 2.0.0 in favor of badges.
