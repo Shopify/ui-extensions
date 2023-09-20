@@ -3,4 +3,4 @@
 '@shopify/ui-extensions-react': minor
 ---
 
-Bump remote-ui versions. Note that consumers of this package will now need to use react-reconciler.
+Bump remote-ui versions. Note: apps that depend on this package will now need to use react-reconciler.
