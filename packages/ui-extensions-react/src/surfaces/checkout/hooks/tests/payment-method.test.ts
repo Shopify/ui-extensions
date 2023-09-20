@@ -1,11 +1,89 @@
 import {ExtensionTarget} from '@shopify/ui-extensions/checkout';
 
-import {useApplyPaymentMethodAttributesChange} from '../payment-method';
-import {ExtensionHasNoMethodError} from '../../errors';
+import {
+  useApplyPaymentMethodAttributesChange,
+  usePaymentAttributeValues,
+  usePaymentMethodAttributes,
+} from '../payment-method';
+import {ExtensionHasNoMethodError, ScopeNotGrantedError} from '../../errors';
 
-import {mount} from './mount';
+import {createMockStatefulRemoteSubscribable, mount} from './mount';
 
 describe('Payment Method API hooks', () => {
+  describe('usePaymentMethodAttributes', () => {
+    const paymentMethodAttributes = [{key: 'test_key', value: 'test_value'}];
+
+    it('returns the paymentMethodAttributes value', async () => {
+      const {value} = mount.hook(() => usePaymentMethodAttributes(), {
+        extensionApi: {
+          paymentMethodAttributes: createMockStatefulRemoteSubscribable(
+            paymentMethodAttributes,
+          ),
+        },
+      });
+      expect(value).toBe(paymentMethodAttributes);
+    });
+
+    it('raises when paymentMethodAttributes is not available', async () => {
+      const runner = async () => {
+        return mount.hook(() => usePaymentMethodAttributes(), {
+          extensionApi: {},
+        });
+      };
+      await expect(runner).rejects.toThrow(ScopeNotGrantedError);
+    });
+  });
+
+  describe('usePaymentAttributeValues', () => {
+    const paymentMethodAttributes = [{key: 'test_key', value: 'test_value'}];
+    const extensionApi = {
+      paymentMethodAttributes: createMockStatefulRemoteSubscribable(
+        paymentMethodAttributes,
+      ),
+    };
+
+    it('returns the paymentMethodAttributes values', async () => {
+      const {value} = mount.hook(
+        () => usePaymentAttributeValues(['test_key']),
+        {extensionApi},
+      );
+      expect(value).toStrictEqual(['test_value']);
+    });
+
+    it('returns undefined for not found keys', async () => {
+      const {value} = mount.hook(
+        () => usePaymentAttributeValues(['test_key', 'test_key3']),
+        {extensionApi},
+      );
+      expect(value).toStrictEqual(['test_value', undefined]);
+    });
+
+    it('returns an empty array if payment attributes object is undefined', async () => {
+      const {value} = mount.hook(
+        () => usePaymentAttributeValues(['test_key', 'test_key3']),
+        {
+          extensionApi: {
+            paymentMethodAttributes:
+              createMockStatefulRemoteSubscribable(undefined),
+          },
+        },
+      );
+      expect(value).toStrictEqual([]);
+    });
+
+    it('returns an empty array if payment attributes object is an empty array', async () => {
+      const {value} = mount.hook(
+        () => usePaymentAttributeValues(['test_key', 'test_key3']),
+        {
+          extensionApi: {
+            paymentMethodAttributes: createMockStatefulRemoteSubscribable([]),
+          },
+        },
+      );
+      expect(value).toStrictEqual([]);
+    });
+  });
+
   describe('useApplyPaymentMethodAttributesChange()', () => {
     it('returns the applyPaymentMethodAttributesChange function', async () => {
       const target: ExtensionTarget =

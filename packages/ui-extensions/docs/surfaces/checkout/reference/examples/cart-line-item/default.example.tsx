@@ -1,7 +1,7 @@
 import {
   reactExtension,
   Text,
-  useTarget,
+  useCartLineTarget,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
@@ -12,6 +12,6 @@ export default reactExtension(
 function Extension() {
   const {
     merchandise: {title},
-  } = useTarget();
+  } = useCartLineTarget();
   return <Text>Line item title: {title}</Text>;
 }

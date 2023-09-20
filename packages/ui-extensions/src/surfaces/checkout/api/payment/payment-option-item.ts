@@ -1,3 +1,5 @@
+import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
+
 export type PaymentMethodAttributesResult =
   | PaymentMethodAttributesResultSuccess
   | PaymentMethodAttributesResultError;
@@ -52,4 +54,7 @@ export interface PaymentOptionItemApi {
   applyPaymentMethodAttributesChange(
     change: PaymentMethodAttributesChange,
   ): Promise<PaymentMethodAttributesResult>;
+  paymentMethodAttributes?: StatefulRemoteSubscribable<
+    PaymentMethodAttribute[] | undefined
+  >;
 }

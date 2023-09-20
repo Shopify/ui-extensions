@@ -24,6 +24,8 @@ const {
     buyerJourneyInterceptTargetNativeField,
   'session-token': sessionToken,
   'session-token-jwt': sessionTokenJwt,
+  'analytics-publish': analyticsPublish,
+  'analytics-visitor': analyticsVisitor,
 } = getExamples(['jsx', 'js']);
 
 const data: ReferenceEntityTemplateSchema = {
@@ -73,6 +75,10 @@ const data: ReferenceEntityTemplateSchema = {
       {
         title: 'Session Token',
         examples: [sessionToken, sessionTokenJwt],
+      },
+      {
+        title: 'Analytics',
+        examples: [analyticsPublish, analyticsVisitor],
       },
     ],
   },

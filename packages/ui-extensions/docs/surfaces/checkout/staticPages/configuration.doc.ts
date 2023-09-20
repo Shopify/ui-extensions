@@ -351,6 +351,7 @@ Supported resource metafield types include:
 | \`customer\` | The customer account that is interacting with the current checkout. |
 | \`product\` | The products that the customer intends to purchase. |
 | \`shop\` | The shop that is associated with the current checkout. |
+| \`shopUser\` | The Shop App user that is associated with the current checkout if there is one. |
 | \`variant\` | The product variants that the customer intends to purchase. |
 
 You retrieve these metafields in your extension by reading [\`appMetafields\`](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-appmetafields).
