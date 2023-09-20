@@ -18,7 +18,7 @@ export const pixelEvents = {
             set: {
               metadata: {
                 description:
-                  'An asynchronous method to set a cookie by name. It takes two arguments, a string of form `key=value` as [decribed here](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie#write_a_new_cookie) or the name of the cookie as the first argument and the value as the second argument.',
+                  'An asynchronous method to set a cookie by name. It takes two arguments, a string of form `key=value` as [described here](https://developer.mozilla.org/en-US/docs/Web/API/Document/cookie#write_a_new_cookie) or the name of the cookie as the first argument and the value as the second argument.',
                 typescriptType:
                   '(cookieOrName: string, value?: string) => Promise<string>',
               },
@@ -28,7 +28,7 @@ export const pixelEvents = {
         sendBeacon: {
           metadata: {
             description:
-              'The navigator.sendBeacon() method asynchronously sends an HTTP POST request containing a small amount of data to a web server.',
+              '@deprecated The navigator.sendBeacon() method asynchronously sends an HTTP POST request containing a small amount of data to a web server. Please use the standard web `fetch` api with the option `keepalive: true` to achieve this functionality.',
             typescriptType: '(url: string, body?: string) => Promise<boolean>',
           },
         },
@@ -451,12 +451,20 @@ export const pixelEvents = {
       },
       properties: {
         attributes: {
+          metadata: {
+            description:
+              'A list of attributes accumulated throughout the checkout process.',
+          },
           elements: {
             ref: 'Attribute',
-            metadata: {
-              description:
-                'A list of attributes accumulated throughout the checkout process.',
-            },
+          },
+        },
+        billingAddress: {
+          ref: 'MailingAddress',
+          nullable: true,
+          metadata: {
+            description:
+              'The billing address to where the order will be charged.',
           },
         },
         currencyCode: {
@@ -464,6 +472,14 @@ export const pixelEvents = {
           metadata: {
             description:
               'The three-letter code that represents the currency, for example, USD. Supported codes include standard ISO 4217 codes, legacy codes, and non-standard codes.',
+          },
+        },
+        discountApplications: {
+          metadata: {
+            description: 'A list of discount applications.',
+          },
+          elements: {
+            ref: 'DiscountApplication',
           },
         },
         email: {
@@ -474,12 +490,12 @@ export const pixelEvents = {
           },
         },
         lineItems: {
+          metadata: {
+            description:
+              'A list of line item objects, each one containing information about an item in the checkout.',
+          },
           elements: {
             ref: 'CheckoutLineItem',
-            metadata: {
-              description:
-                'A list of line item objects, each one containing information about an item in the checkout.',
-            },
           },
         },
         order: {
@@ -548,6 +564,15 @@ export const pixelEvents = {
           'A single line item in the checkout, grouped by variant and attributes.',
       },
       properties: {
+        discountAllocations: {
+          metadata: {
+            description:
+              'The discounts that have been applied to the checkout line item by a discount application.',
+          },
+          elements: {
+            ref: 'DiscountAllocation',
+          },
+        },
         id: {
           type: 'string',
           metadata: {
@@ -573,6 +598,81 @@ export const pixelEvents = {
           nullable: true,
           metadata: {
             description: 'Product variant of the line item.',
+          },
+        },
+      },
+    },
+    DiscountAllocation: {
+      metadata: {
+        description:
+          'The discount that has been applied to the checkout line item.',
+      },
+      properties: {
+        amount: {
+          ref: 'MoneyV2',
+          metadata: {
+            description:
+              'The monetary value with currency allocated to the discount.',
+          },
+        },
+        discountApplication: {
+          ref: 'DiscountApplication',
+          metadata: {
+            description: 'The information about the intent of the discount.',
+          },
+        },
+      },
+    },
+    DiscountApplication: {
+      metadata: {
+        description: 'The information about the intent of the discount.',
+      },
+      properties: {
+        allocationMethod: {
+          type: 'string',
+          metadata: {
+            description:
+              "The method by which the discount's value is applied to its entitled items.\n\n- `ACROSS`: The value is spread across all entitled lines.\n- `EACH`: The value is applied onto every entitled line.\n",
+            enum: ['ACROSS', 'EACH'],
+          },
+        },
+        targetSelection: {
+          type: 'string',
+          metadata: {
+            description:
+              "How the discount amount is distributed on the discounted lines.\n\n- `ALL`: The discount is allocated onto all the lines.\n- `ENTITLED`: The discount is allocated onto only the lines that it's entitled for.\n- `EXPLICIT`: The discount is allocated onto explicitly chosen lines.\n",
+            enum: ['ALL', 'ENTITLED', 'EXPLICIT'],
+          },
+        },
+        targetType: {
+          type: 'string',
+          metadata: {
+            description:
+              'The type of line (i.e. line item or shipping line) on an order that the discount is applicable towards.\n\n- `LINE_ITEM`: The discount applies onto line items.\n- `SHIPPING_LINE`: The discount applies onto shipping lines.\n',
+            enum: ['LINE_ITEM', 'SHIPPING_LINE'],
+          },
+        },
+        title: {
+          type: 'string',
+          metadata: {
+            description:
+              'The customer-facing name of the discount. If the type of discount is a `DISCOUNT_CODE`, this `title` attribute represents the code of the discount.',
+          },
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            description:
+              "The type of the discount.\n\n- `AUTOMATIC`: A discount automatically at checkout or in the cart without the need for a code.\n- `DISCOUNT_CODE`: A discount applied onto checkouts through the use of a code.\n- `MANUAL`: A discount that is applied to an order by a merchant or store owner manually, rather than being automatically applied by the system or through a script.\n- `SCRIPT`: A discount applied to a customer's order using a script\n",
+            enum: ['AUTOMATIC', 'DISCOUNT_CODE', 'MANUAL', 'SCRIPT'],
+          },
+        },
+        value: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'MoneyV2 | PricingPercentageValue',
+            description:
+              'The value of the discount. Fixed discounts return a `Money` Object, while Percentage discounts return a `PricingPercentageValue` object.',
           },
         },
       },
@@ -832,7 +932,7 @@ export const pixelEvents = {
           ref: 'CartCost',
           metadata: {
             description:
-              'The estimated costs that the buyer will pay at checkout.',
+              'The estimated costs that the customer will pay at checkout.',
           },
         },
         id: {
@@ -881,7 +981,7 @@ export const pixelEvents = {
           ref: 'CartLineCost',
           metadata: {
             description:
-              'The cost of the merchandise that the buyer will pay for at checkout. The costs are subject to change and changes will be reflected at checkout.',
+              'The cost of the merchandise that the customer will pay for at checkout. The costs are subject to change and changes will be reflected at checkout.',
           },
         },
         merchandise: {
@@ -946,6 +1046,14 @@ export const pixelEvents = {
             description: 'The customer’s last name.',
           },
         },
+        ordersCount: {
+          type: 'uint32',
+          nullable: true,
+          metadata: {
+            description:
+              'The total number of orders that the customer has placed.',
+          },
+        },
         phone: {
           type: 'string',
           nullable: true,
@@ -985,6 +1093,43 @@ export const pixelEvents = {
         },
       },
     },
+    PricingPercentageValue: {
+      metadata: {
+        description:
+          'A value given to a customer when a discount is applied to an order. The application of a discount with this value gives the customer the specified percentage off a specified item.',
+      },
+      properties: {
+        percentage: {
+          type: 'float64',
+          metadata: {
+            description: 'The percentage value of the object.',
+          },
+        },
+      },
+    },
+    SearchResult: {
+      metadata: {
+        description:
+          'An object that contains the metadata of when a search has been performed.',
+      },
+      properties: {
+        query: {
+          type: 'string',
+          metadata: {
+            description: 'The search query that was executed',
+          },
+        },
+        productVariants: {
+          elements: {
+            ref: 'ProductVariant',
+            metadata: {
+              description:
+                'A list of products returned by the search query. The first product variant for each product is returned',
+            },
+          },
+        },
+      },
+    },
     Id: {
       type: 'string',
       metadata: {
@@ -1013,37 +1158,44 @@ export const pixelEvents = {
     Data: {
       metadata: {
         description:
-          'A free-form JSON object representing data specific to this event provided by Shopify. Refer to [standard events](#standard-events) for details on the payload available to each event',
+          'A free-form object representing data specific to this event provided by Shopify. Refer to [standard events](#standard-events) for details on the payload available to each event',
         typescriptType: 'Record<string, unknown>',
       },
     },
     CustomData: {
       metadata: {
         description:
-          'A free-form JSON object representing data specific to a custom event provided by the custom event publisher',
+          'A free-form object representing data specific to a custom event provided by the custom event publisher',
         typescriptType: 'Record<string, unknown>',
       },
     },
-    SearchResult: {
+    CustomEvent: {
       metadata: {
         description:
-          'An object that contains the metadata of when a search has been performed.',
+          'This event represents any custom events emitted by partners or merchants via the `publish` method',
       },
       properties: {
-        query: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
           type: 'string',
           metadata: {
-            description: 'The search query that was executed',
+            description: 'Arbitrary name of the custom event',
           },
         },
-        productVariants: {
-          elements: {
-            ref: 'ProductVariant',
-            metadata: {
-              description:
-                'A list of products returned by the search query. The first product variant for each product is returned',
-            },
-          },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        customData: {
+          nullable: true,
+          ref: 'CustomData',
         },
       },
     },
@@ -1052,7 +1204,7 @@ export const pixelEvents = {
     checkout_address_info_submitted: {
       metadata: {
         description:
-          'The `checkout_address_info_submitted` event logs an instance of a buyer submitting their mailing address. This event is only available in checkouts where checkout extensibility for customizations is enabled.',
+          'The `checkout_address_info_submitted` event logs an instance of a customer submitting their mailing address. This event is only available in checkouts where checkout extensibility for customizations is enabled',
       },
       properties: {
         id: {
@@ -1080,37 +1232,6 @@ export const pixelEvents = {
               ref: 'Checkout',
             },
           },
-        },
-      },
-    },
-    custom_event: {
-      metadata: {
-        description:
-          'This event represents any custom events emitted by partners or merchants via the `publish` method',
-      },
-      properties: {
-        id: {
-          ref: 'Id',
-        },
-        clientId: {
-          ref: 'ClientId',
-        },
-        name: {
-          type: 'string',
-          metadata: {
-            description: 'The name of the customer event',
-            typescriptType: "'custom_event'",
-          },
-        },
-        timestamp: {
-          ref: 'Timestamp',
-        },
-        context: {
-          ref: 'Context',
-        },
-        customData: {
-          nullable: true,
-          ref: 'CustomData',
         },
       },
     },
@@ -1151,7 +1272,7 @@ export const pixelEvents = {
     checkout_started: {
       metadata: {
         description:
-          'The `checkout_started` event logs an instance of a buyer starting the checkout process. This event is available on the checkout page',
+          'The `checkout_started` event logs an instance of a customer starting the checkout process. This event is available on the checkout page. For checkout extensibility, this event is triggered every time a customer enters checkout. For non-checkout extensible shops, this event is only triggered the first time a customer enters checkout.',
       },
       properties: {
         id: {
@@ -1185,7 +1306,7 @@ export const pixelEvents = {
     payment_info_submitted: {
       metadata: {
         description:
-          'The `payment_info_submitted` event logs an instance of a buyer submitting their payment information. This event is available on the checkout page',
+          'The `payment_info_submitted` event logs an instance of a customer submitting their payment information. This event is available on the checkout page',
       },
       properties: {
         id: {
@@ -1219,7 +1340,7 @@ export const pixelEvents = {
     collection_viewed: {
       metadata: {
         description:
-          'The `collection_viewed` event logs an instance where a buyer visited a product collection index page. This event is available on the online store page',
+          'The `collection_viewed` event logs an instance where a customer visited a product collection index page. This event is available on the online store page',
       },
       properties: {
         id: {
@@ -1253,7 +1374,7 @@ export const pixelEvents = {
     checkout_contact_info_submitted: {
       metadata: {
         description:
-          'The `checkout_contact_info_submitted` event logs an instance where a buyer submits a checkout form. This event is only available in checkouts where checkout extensibility for customizations is enabled.',
+          'The `checkout_contact_info_submitted` event logs an instance where a customer submits a checkout form. This event is only available in checkouts where checkout extensibility for customizations is enabled',
       },
       properties: {
         id: {
@@ -1287,7 +1408,7 @@ export const pixelEvents = {
     page_viewed: {
       metadata: {
         description:
-          'The `page_viewed` event logs an instance where a buyer visited a page. This event is available on the online store, checkout, and order status pages',
+          'The `page_viewed` event logs an instance where a customer visited a page. This event is available on the online store, checkout, and order status pages',
       },
       properties: {
         id: {
@@ -1309,12 +1430,15 @@ export const pixelEvents = {
         context: {
           ref: 'Context',
         },
+        data: {
+          properties: {},
+        },
       },
     },
     product_added_to_cart: {
       metadata: {
         description:
-          'The `product_added_to_cart` event logs an instance where a buyer adds a product to their cart. This event is available on the online store page',
+          'The `product_added_to_cart` event logs an instance where a customer adds a product to their cart. This event is available on the online store page',
       },
       properties: {
         id: {
@@ -1346,10 +1470,45 @@ export const pixelEvents = {
         },
       },
     },
+    product_removed_from_cart: {
+      metadata: {
+        description:
+          'The `product_removed_from_cart` event logs an instance where a customer removes a product from their cart. This event is available on the online store page',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'product_removed_from_cart'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            cartLine: {
+              nullable: true,
+              ref: 'CartLine',
+            },
+          },
+        },
+      },
+    },
     product_viewed: {
       metadata: {
         description:
-          'The `product_viewed` event logs an instance where a buyer visited a product details page. This event is available on the product page',
+          'The `product_viewed` event logs an instance where a customer visited a product details page. This event is available on the product page',
       },
       properties: {
         id: {
@@ -1383,7 +1542,7 @@ export const pixelEvents = {
     product_variant_viewed: {
       metadata: {
         description:
-          'The `product_variant_viewed` event logs an instance where a buyer interacts with the product page and views a different variant than the initial `product_viewed` impression. This event is available on the Product page',
+          'The `product_variant_viewed` event logs an instance where a customer interacts with the product page and views a different variant than the initial `product_viewed` impression. This event is available on the Product page',
       },
       properties: {
         id: {
@@ -1417,7 +1576,7 @@ export const pixelEvents = {
     search_submitted: {
       metadata: {
         description:
-          'The `search_submitted` event logs an instance where a buyer performed a search on the storefront. This event is available on the online store page',
+          'The `search_submitted` event logs an instance where a customer performed a search on the storefront. This event is available on the online store page',
       },
       properties: {
         id: {
@@ -1448,10 +1607,45 @@ export const pixelEvents = {
         },
       },
     },
+    cart_viewed: {
+      metadata: {
+        description:
+          'The `cart_viewed` event logs an instance where a customer visited the cart page',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'cart_viewed'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            cart: {
+              nullable: true,
+              ref: 'Cart',
+            },
+          },
+        },
+      },
+    },
     checkout_shipping_info_submitted: {
       metadata: {
         description:
-          'The `checkout_shipping_info_submitted` event logs an instance where the buyer chooses a shipping rate. This event is only available in checkouts where checkout extensibility for customizations is enabled.',
+          'The `checkout_shipping_info_submitted` event logs an instance where the customer chooses a shipping rate. This event is only available in checkouts where checkout extensibility for customizations is enabled',
       },
       properties: {
         id: {
