@@ -1,5 +1,5 @@
 import type {
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
   AppMetafieldEntryTarget,
   Metafield,
   AppMetafieldEntry,
@@ -25,7 +25,7 @@ type AppMetafieldFilterKeys = keyof AppMetafieldFilters;
  * @arg {AppMetafieldFilters} - filter the list of returned metafields
  */
 export function useAppMetafields<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(filters: AppMetafieldFilters = {}): AppMetafieldEntry[] {
   const appMetafields = useSubscription(useApi<Target>().appMetafields);
 
