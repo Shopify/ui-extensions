@@ -41,7 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent:
-        '**High-quality images and consistent aspect ratio**\n\n- Use optimized product images that ensure visual clarity and loading speed. Maintain a consistent aspect ratio for product thumbnails to avoid distortion or stretching of the images.\n\n**Consistent visual style and appropriate sizes**\n\n- Keep a consistent visual style for product thumbnails throughout your store. Use appropriate size for product thumbnails depending on the layout and use case. This consistency helps buyers recognize and associate the thumbnails with your product offerings.\n\n**Accessibility considerations**\n\n- Ensure that product thumbnails are accessible to users with disabilities. Provide alternative text (alt text) for screen readers and ensure that the thumbnails can be navigated using keyboard controls.',
+        '**High-quality images and consistent aspect ratio**\n\n- Use optimized product images that ensure visual clarity and loading speed. Maintain a consistent aspect ratio for product thumbnails to avoid distortion or stretching of the images.\n\n**Consistent visual style and appropriate sizes**\n\n- Keep a consistent visual style for product thumbnails throughout your store. Use appropriate size for product thumbnails depending on the layout and use case. This consistency helps buyers recognize and associate the thumbnails with your product offerings.\n\n**Accessibility considerations**\n\n- Ensure product thumbnails are accessible with descriptive alternative text (alt text).',
     },
   ],
   related: [],

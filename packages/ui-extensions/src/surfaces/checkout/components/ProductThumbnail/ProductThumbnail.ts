@@ -7,11 +7,11 @@ export interface ProductThumbnailProps {
   /**
    * An alternative text description that describe the image for the reader to
    * understand what it is about. It is extremely useful for both users using
-   * assistive technology and sighted users. A well written `description`
+   * assistive technology and sighted users. A well written description
    * provides people with visual impairments the ability to participate in
    * consuming non-text content. When a screen readers encounters an `Image`,
    * the description is read and announced aloud. If an image fails to load,
-   * potentially due to a poor connection, the `description` is displayed on
+   * potentially due to a poor connection, the description is displayed on
    * screen instead. This has the benefit of letting a sighted buyer know an
    * image was meant to load here, but as an alternative, they’re still able to
    * consume the text content. Read
@@ -28,11 +28,11 @@ export interface ProductThumbnailProps {
   /**
    * An alternative text description that describe the image for the reader to
    * understand what it is about. It is extremely useful for both users using
-   * assistive technology and sighted users. A well written `description`
+   * assistive technology and sighted users. A well written description
    * provides people with visual impairments the ability to participate in
    * consuming non-text content. When a screen readers encounters an `Image`,
    * the description is read and announced aloud. If an image fails to load,
-   * potentially due to a poor connection, the `description` is displayed on
+   * potentially due to a poor connection, the description is displayed on
    * screen instead. This has the benefit of letting a sighted buyer know an
    * image was meant to load here, but as an alternative, they’re still able to
    * consume the text content. Read
