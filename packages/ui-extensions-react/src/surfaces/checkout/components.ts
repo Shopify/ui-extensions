@@ -88,6 +88,9 @@ export type {PhoneFieldProps} from './components/PhoneField/PhoneField';
 export {Pressable} from './components/Pressable/Pressable';
 export type {PressableProps} from './components/Pressable/Pressable';
 
+export {ProductThumbnail} from './components/ProductThumbnail/ProductThumbnail';
+export type {ProductThumbnailProps} from './components/ProductThumbnail/ProductThumbnail';
+
 export {Popover} from './components/Popover/Popover';
 export type {PopoverProps} from './components/Popover/Popover';
 
