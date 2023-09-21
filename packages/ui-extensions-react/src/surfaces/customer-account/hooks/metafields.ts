@@ -1,6 +1,6 @@
 import type {
   Metafield,
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 import {useMemo} from 'react';
 
@@ -20,7 +20,7 @@ interface MetafieldsFilters {
  * @arg {MetafieldsFilters} - filter the list of returned metafields
  */
 export function useMetafields<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(filters?: MetafieldsFilters): Metafield[] {
   const metaFields = useSubscription(useApi<Target>().metafields);
 

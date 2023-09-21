@@ -1,7 +1,7 @@
 import type {
   CartDiscountAllocation,
   CartDiscountCode,
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
@@ -12,7 +12,7 @@ import {useSubscription} from './subscription';
  * your component if discount codes are added or removed.
  */
 export function useDiscountCodes<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): CartDiscountCode[] {
   const {discountCodes} = useApi<Target>();
 
@@ -24,7 +24,7 @@ export function useDiscountCodes<
  * your component if discount allocations changed.
  */
 export function useDiscountAllocations<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): CartDiscountAllocation[] {
   const {discountAllocations} = useApi<Target>();
 

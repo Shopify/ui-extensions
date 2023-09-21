@@ -1,6 +1,6 @@
 import {
   Market,
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
@@ -11,7 +11,7 @@ import {useSubscription} from './subscription';
  * your component if it changes.
  */
 export function useLocalizationMarket<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Market | undefined {
   const {localization} = useApi<Target>();
 

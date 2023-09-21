@@ -33,6 +33,3 @@ export {useExtensionEditor} from './extension-editor';
 export {useDiscountAllocations, useDiscountCodes} from './discounts';
 export {useOrder} from './order';
 export {useAppliedGiftCards} from './gift-cards';
-export {useI18n} from './i18n';
-export {useRouter} from './router';
-export {useNavigate} from './router';
