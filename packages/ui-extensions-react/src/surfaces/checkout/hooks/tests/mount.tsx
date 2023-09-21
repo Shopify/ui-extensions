@@ -1,5 +1,5 @@
 import React from 'react';
-import {createMount} from '@quilted/react-testing';
+import {createRender} from '@quilted/react-testing';
 import {
   ApiForRenderExtension,
   RenderExtensionTarget,
@@ -8,7 +8,7 @@ import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 import {ExtensionApiContext} from '../../context';
 
-export const mount = createMount<Options, Options>({
+export const mount = createRender<Options, Options>({
   context(options) {
     return options;
   },
