@@ -3,48 +3,47 @@ import type {RemoteFragment} from '@remote-ui/core';
 
 export interface PageProps {
   /**
-   * The text to be used as title, in large type
+   * The text to be used as title.
    */
   title: string;
 
   /**
-   * The content of the page.
-   * We will adopt what is decided as type in this discussion:
-   * https://github.com/Shopify/ui-api-design/issues/139
-   */
-  children: RemoteFragment;
-
-  /**
-   * Flag that indicates if the page skeleton should be displayed. Optional.
-   * Defaults to false. When true, a Skeleton component will be rendered as header.
-   */
-  loading?: boolean;
-
-  /**
-   * The text to be used as subtitle, in regular type. Optional
+   * The text to be used as subtitle.
    */
   subtitle?: string;
 
   /**
-   * The action to be used as the back button. Optional. Expected to be a Button.
-   * When provided, only `to`, `onPress` and `accessibilityLabel` will be used. The rest will be ignored by the Customer Account.
+   * The action grouping, provided as button(s), that is placed in the primary position of the page.
    */
-  backAction?: RemoteFragment;
+  primaryAction?: RemoteFragment;
 
   /**
-   * The list of actions. Optional. Expected to be a fragment with a list of Buttons.
-   * Customer Account implementation details:
-   * When provided, the first 2 actions will always be displayed.
-   * When there are 3 or more, the first one is displayed and the rest will be displayed in a dropdown.
+   * Label for the primary action grouping.
+   *
+   * @defaultValue "More actions"
    */
-  actions?: RemoteFragment;
+  primaryActionLabel?: string;
 
   /**
-   * The label to be used in the dropdown that contains the actions when ther are 3 or more actions.
-   * Optional.
-   * Defaults to "More actions".
+   * Accessibility label for the primary action grouping.
+   *
+   * @defaultValue "More actions"
    */
-  actionsLabel?: string;
+  primaryActionAccessibilityLabel?: string;
+
+  /**
+   * The secondary action provided as a button, that is placed in the secondary position of the page.
+   */
+  secondaryAction?: RemoteFragment;
+
+  /**
+   * Indicates that the page is in a loading state.
+   *
+   * When `true`, the page will be replaced by loading indicators (for example: skeletons or spinners).
+   *
+   * @defaultValue false
+   */
+  loading?: boolean;
 }
 
 export const Page = createRemoteComponent<'Page', PageProps>('Page');
