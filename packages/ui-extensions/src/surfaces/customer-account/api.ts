@@ -51,6 +51,7 @@ export type {
   NumberRange,
   Order,
   OrderStatusApi,
+  CheckoutToken,
 } from './api/order-status/order-status';
 export type {
   Attribute,
