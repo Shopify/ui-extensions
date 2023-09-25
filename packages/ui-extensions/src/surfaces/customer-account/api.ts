@@ -44,6 +44,7 @@ export type {
   OrderStatusLocalization,
   OrderStatusPurchasingCompany,
   OrderStatusBuyerIdentity,
+  CheckoutToken,
 } from './api/order-status/order-status';
 export type {
   Attribute,

@@ -337,6 +337,14 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   sessionToken: SessionToken;
 
   /**
+   * id that represents the checkout used to create the order.
+   *
+   * Matches the `token` field in the [WebPixel checkout payload](https://shopify.dev/docs/api/pixels/customer-events#checkout)
+   * and the `checkout_token` field in the [Admin REST API Order resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
+   */
+  checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
+
+  /**
    * The settings matching the settings definition written in the
    * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
    *
@@ -348,14 +356,18 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   settings: StatefulRemoteSubscribable<ExtensionSettings>;
 
   /**
-   * The proposed buyer shipping address. During the information step, the address
-   * updates when the field is committed (on change) rather than every keystroke.
-   * An address value is only present if delivery is required. Otherwise, the
-   * subscribable value is undefined.
+   * The buyer shipping address used for the order.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   shippingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
+
+  /**
+   * The buyer billing address used for the order.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  billingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
 
   /** Shop where the purchase took place. */
   shop: Shop;
@@ -926,6 +938,8 @@ export interface Customer {
    */
   storeCreditAccounts: StoreCreditAccount[];
 }
+
+export type CheckoutToken = string;
 
 /**
  * Settings describing the behavior of the buyer's checkout.
