@@ -1,5 +1,4 @@
 export * from './Card';
 export * from './CustomerAccountAction';
 export * from './PolicyModal';
-export * from './Thumbnail';
 export * from './shared-checkout-components';
