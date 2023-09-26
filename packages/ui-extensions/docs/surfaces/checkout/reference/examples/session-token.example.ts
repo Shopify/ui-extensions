@@ -12,9 +12,8 @@ export default extension(
       const token = await sessionToken.get();
       console.log(token);
 
-      const apiResponse = await fetchWithToken(
-        token,
-      );
+      const apiResponse =
+        await fetchWithToken(token);
 
       // Use your response
       console.log(apiResponse);

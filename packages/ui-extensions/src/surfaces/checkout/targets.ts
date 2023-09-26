@@ -79,8 +79,8 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that renders on every line item, inside the details
-   * under the line item properties element. It replaces the default component rendering.
+   * A static extension target that renders on every bundle line item, inside the details
+   * under the line item properties element. It replaces the default bundle products rendering.
    */
   'purchase.cart-line-item.line-components.render': RenderExtension<
     CartLineItemApi &
@@ -88,8 +88,8 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that renders on every line item, inside the details
-   * under the line item properties element. It replaces the default component rendering.
+   * A static extension target that renders on every bundle line item, inside the details
+   * under the line item properties element. It replaces the default bundle products rendering.
    *
    * @deprecated Use `purchase.cart-line-item.line-components.render` instead.
    */
@@ -143,6 +143,14 @@ export interface ExtensionTargets {
    */
   'Checkout::DeliveryAddress::RenderBefore': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::DeliveryAddress::RenderBefore'>,
+    AnyComponent
+  >;
+  /**
+   * A static extension target that is rendered after the shipping address form elements.
+   */
+  'purchase.checkout.delivery-address.render-after': RenderExtension<
+    CheckoutApi &
+      StandardApi<'purchase.checkout.delivery-address.render-after'>,
     AnyComponent
   >;
   /**
@@ -385,6 +393,30 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
+   * A static extension target that renders after the hosted fields of a credit card payment method.
+   *
+   * @private
+   */
+  'purchase.checkout.payment-option-item.hosted-fields.render-after': RenderExtension<
+    PaymentOptionItemApi &
+      CheckoutApi &
+      StandardApi<'purchase.checkout.payment-option-item.hosted-fields.render-after'>,
+    AnyComponent
+  >;
+  /**
+   * A static extension target that renders after the hosted fields of a credit card payment method.
+   * for a credit card payment method when selected by the buyer.
+   *
+   * @private
+   * @deprecated Use `purchase.checkout.payment-option-item.hosted-fields.render-after` instead.
+   */
+  'Checkout::PaymentMethod::HostedFields::RenderAfter': RenderExtension<
+    PaymentOptionItemApi &
+      CheckoutApi &
+      StandardApi<'Checkout::PaymentMethod::HostedFields::RenderAfter'>,
+    AnyComponent
+  >;
+  /**
    * A static extension target that renders a form modal when a buyer selects the custom onsite payment method.
    *
    * @private
@@ -402,6 +434,24 @@ export interface ExtensionTargets {
    */
   'Checkout::PaymentMethod::RenderRequiredAction': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::PaymentMethod::RenderRequiredAction'>,
+    AnyComponent
+  >;
+  /**
+   * A static extension target that renders between the payment heading and payment method list.
+   *
+   */
+  'purchase.checkout.payment-method-list.render-before': RenderExtension<
+    CheckoutApi &
+      StandardApi<'purchase.checkout.payment-method-list.render-before'>,
+    AnyComponent
+  >;
+  /**
+   * A static extension target that renders below the list of payment methods.
+   *
+   */
+  'purchase.checkout.payment-method-list.render-after': RenderExtension<
+    CheckoutApi &
+      StandardApi<'purchase.checkout.payment-method-list.render-after'>,
     AnyComponent
   >;
   /**

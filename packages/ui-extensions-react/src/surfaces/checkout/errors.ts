@@ -17,3 +17,13 @@ export class ExtensionHasNoMethodError extends Error {
     );
   }
 }
+
+export class ExtensionHasNoTargetError extends Error {
+  name = 'ExtensionHasNoTargetError';
+
+  constructor(method: string, target: ExtensionTarget) {
+    super(
+      `Cannot call '${method}()' on target '${target}'. Property 'target' is not found on api.`,
+    );
+  }
+}

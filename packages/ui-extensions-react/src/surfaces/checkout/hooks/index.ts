@@ -32,6 +32,7 @@ export {
   useTotalAmount,
 } from './cost';
 export {useCartLines, useApplyCartLinesChange} from './cart-lines';
+export {useCartLineTarget} from './cart-line-target';
 export {useTarget} from './target';
 export {useAppMetafields} from './app-metafields';
 export {useShop} from './shop';

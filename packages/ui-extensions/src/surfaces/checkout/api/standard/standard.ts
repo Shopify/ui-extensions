@@ -15,10 +15,10 @@ import type {ExtensionTarget} from '../../targets';
 import {ApiVersion} from '../../../../shared';
 
 /**
- * A key-value storage object for extension targets.
+ * A key-value storage object for the extension.
  *
- * Stored data is only available to this specific app
- * at this specific extension target.
+ * Stored data is only available to this specific extension
+ * and any of its instances.
  *
  * The storage backend is implemented with `localStorage` and
  * should persist across the buyer's checkout session.
@@ -211,6 +211,7 @@ export interface AppMetafieldEntryTarget {
     | 'customer'
     | 'product'
     | 'shop'
+    | 'shopUser'
     | 'variant'
     | 'company'
     | 'companyLocation'
@@ -615,7 +616,12 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   shop: Shop;
 
   /**
-   * Key-value storage for the extension target.
+   * Key-value storage for the extension.
+   * Uses `localStorage` and should persist across the buyer's current checkout session.
+   * However, data persistence isn't guaranteed and storage is reset when the buyer starts a new checkout.
+   *
+   * Data is shared across all activated extension targets of this extension. In versions `<=2023-07`,
+   * each activated extension target had its own storage.
    */
   storage: Storage;
 
@@ -1356,6 +1362,43 @@ export interface Analytics {
    * Publish method to emit analytics events to [Web Pixels](https://shopify.dev/docs/apps/marketing).
    */
   publish(name: string, data: {[key: string]: unknown}): Promise<boolean>;
+
+  /**
+   * A method for capturing details about a visitor on the online store.
+   */
+  visitor(data: {email?: string; phone?: string}): Promise<VisitorResult>;
+}
+/**
+ * Represents a visitor result.
+ */
+export type VisitorResult = VisitorSuccess | VisitorError;
+
+/**
+ * Represents a successful visitor result.
+ */
+export interface VisitorSuccess {
+  /**
+   * Indicates that the visitor information was validated and submitted.
+   */
+  type: 'success';
+}
+
+/**
+ * Represents an unsuccessful visitor result.
+ */
+export interface VisitorError {
+  /**
+   * Indicates that the visitor information is invalid and wasn't submitted.
+   * Examples are using the wrong data type or missing a required property.
+   */
+  type: 'error';
+
+  /**
+   * A message that explains the error. This message is useful for debugging.
+   * It's **not** localized, and therefore should not be presented directly
+   * to the buyer.
+   */
+  message: string;
 }
 
 /**
@@ -1414,10 +1457,15 @@ export interface DeliveryOptionReference {
   handle: string;
 }
 
+export type DeliveryOption =
+  | ShippingOption
+  | PickupPointOption
+  | PickupLocationOption;
+
 /**
  * Represents a base interface for a single delivery option.
  */
-export interface DeliveryOption {
+export interface DeliveryOptionBase {
   /**
    * The unique identifier of the delivery option.
    */
@@ -1437,7 +1485,7 @@ export interface DeliveryOption {
 /**
  * Represents a delivery option that is a shipping option.
  */
-export interface ShippingOption extends DeliveryOption {
+export interface ShippingOption extends DeliveryOptionBase {
   /**
    * The type of this delivery option.
    */
@@ -1478,7 +1526,7 @@ export interface ShippingOptionCarrier {
   name?: string;
 }
 
-export interface PickupPointOption extends DeliveryOption {
+export interface PickupPointOption extends DeliveryOptionBase {
   /**
    * The type of this delivery option.
    */
@@ -1505,7 +1553,7 @@ export interface PickupPointOption extends DeliveryOption {
   location: PickupPointLocation;
 }
 
-export interface PickupLocationOption extends DeliveryOption {
+export interface PickupLocationOption extends DeliveryOptionBase {
   /**
    * The type of this delivery option.
    */

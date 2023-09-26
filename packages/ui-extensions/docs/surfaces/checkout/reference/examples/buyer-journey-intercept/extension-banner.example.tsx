@@ -3,7 +3,7 @@ import {
   reactExtension,
   Banner,
   useBuyerJourneyIntercept,
-  useTarget,
+  useCartLineTarget,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
@@ -14,7 +14,7 @@ export default reactExtension(
 function Extension() {
   const [showError, setShowError] =
     useState(false);
-  const {quantity} = useTarget();
+  const {quantity} = useCartLineTarget();
 
   useBuyerJourneyIntercept(
     ({canBlockProgress}) => {

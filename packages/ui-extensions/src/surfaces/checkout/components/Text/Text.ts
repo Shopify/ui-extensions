@@ -31,7 +31,13 @@ export interface TextProps extends VisibilityProps {
    */
   appearance?: Extract<
     Appearance,
-    'accent' | 'subdued' | 'info' | 'success' | 'warning' | 'critical'
+    | 'accent'
+    | 'subdued'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'critical'
+    | 'decorative'
   >;
 }
 
