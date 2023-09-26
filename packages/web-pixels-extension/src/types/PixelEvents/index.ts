@@ -1136,6 +1136,11 @@ export interface Product {
   untranslatedTitle: string;
 
   /**
+   * The relative URL of the product.
+   */
+  url: string;
+
+  /**
    * The product’s vendor name.
    */
   vendor: string;

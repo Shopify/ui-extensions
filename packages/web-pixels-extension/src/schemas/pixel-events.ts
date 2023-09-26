@@ -789,6 +789,12 @@ export const pixelEvents = {
             description: 'The product’s untranslated title.',
           },
         },
+        url: {
+          type: 'string',
+          metadata: {
+            description: 'The relative URL of the product.',
+          },
+        },
         vendor: {
           type: 'string',
           metadata: {
