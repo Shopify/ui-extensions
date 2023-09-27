@@ -141,7 +141,7 @@ export interface CustomerAccountExtensionTargets {
     StandardApi & {orderId: string},
     AllComponents
   >;
-  'customer-account.order-status.action.render': RenderExtension<
+  'customer-account.order.action.render': RenderExtension<
     StandardApi & ActionExtensionApi & {orderId: string},
     AllComponents
   >;
