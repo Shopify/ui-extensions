@@ -53,12 +53,12 @@
   },
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.12",
-    "@remote-ui/react": "4.5.x",
-    "@types/react": ">=17.0.0 <18.0.0"
+    "@remote-ui/react": "^5.0.2",
+    "@types/react": ">=18.0.0"
   },
   "peerDependencies": {
     "@shopify/ui-extensions": "0.0.0-unstable",
-    "react": ">=17.0.0 <18.0.0"
+    "react": ">=18.0.0"
   },
   "peerDependenciesMeta": {
     "@shopify/ui-extensions": {
@@ -70,9 +70,11 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@quilted/react-testing": "^0.4.10",
+    "@quilted/react-testing": "^0.5.31",
     "@shopify/ui-extensions": "0.0.0-unstable",
-    "react": "^17.0.0"
+    "react": "^18.0.0",
+    "react-reconciler": "0.29.0",
+    "react-test-renderer": "^18.2.0"
   },
   "files": [
     "build",
