@@ -46,7 +46,7 @@ export interface InternalCustomerSegmentTemplateProps {
   icon: CustomerSegmentTemplateIcon;
   /* Code snippet to render in the template with syntax highlighting. */
   query: string;
-  /* Code snippet to insert in the segment editor. If missing, `templateQuery` will be used. */
+  /* Code snippet to insert in the segment editor. If missing, `query` will be used. */
   queryToInsert?: string;
   /* List of customer standard metafields or custom metafields used in the template's query. */
   dependencies?: {

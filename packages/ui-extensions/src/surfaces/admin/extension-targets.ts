@@ -1,6 +1,6 @@
 import type {RenderExtension} from '../../extension';
 
-import type {AnyComponent, Components} from './shared';
+import type {Components} from './shared';
 import type {
   StandardApi,
   CustomerSegmentTemplateApi,
@@ -11,7 +11,7 @@ import type {
 } from './api';
 import {AnyComponentBuilder} from '../../shared';
 
-type CustomerSegmentationTemplateComponent = AnyComponentBuilder<
+type CustomerSegmentTemplateComponent = AnyComponentBuilder<
   Pick<
     Components,
     'CustomerSegmentTemplate' | 'InternalCustomerSegmentTemplate'
@@ -40,7 +40,12 @@ type ProductConfigurationComponents = AnyComponentBuilder<
 /**
  * See the [list of available components](/docs/api/admin-extensions/components).
  */
-type AllComponents = AnyComponent;
+type AllComponents = AnyComponentBuilder<
+  Omit<
+    Components,
+    'CustomerSegmentTemplate' | 'InternalCustomerSegmentTemplate'
+  >
+>;
 
 export interface ExtensionTargets {
   /**
@@ -49,11 +54,11 @@ export interface ExtensionTargets {
   Playground: RenderExtension<StandardApi<'Playground'>, AllComponents>;
 
   /**
-   * @private
+   * Renders a [`CustomerSegmentTemplate`](/docs/api/admin-extensions/components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
    */
   'admin.customers.segmentation-templates.render': RenderExtension<
     CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.render'>,
-    CustomerSegmentationTemplateComponent
+    CustomerSegmentTemplateComponent
   >;
 
   // Blocks
