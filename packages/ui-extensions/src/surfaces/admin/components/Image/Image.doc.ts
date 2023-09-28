@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Image',
-  featureFlag: 'admin_extensibility',
   description: 'Use this when you want to display an image.',
   requires: '',
   thumbnail: 'image-thumbnail.png',

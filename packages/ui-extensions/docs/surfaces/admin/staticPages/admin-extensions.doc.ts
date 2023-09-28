@@ -3,7 +3,6 @@ import {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
   title: 'Admin UI extensions',
-  featureFlag: 'admin_extensibility',
   description:
     'Admin UI extensions make it possible to surface contextual app functionality within the Shopify Admin interface.',
   image: '/assets/landing-pages/templated-apis/hero.png',

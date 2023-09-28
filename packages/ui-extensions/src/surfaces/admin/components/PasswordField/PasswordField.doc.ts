@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'PasswordField',
-  featureFlag: 'admin_extensibility',
   description:
     'This component is for secure input, it obfuscates any text that users enter.',
   requires: '',

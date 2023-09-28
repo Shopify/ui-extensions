@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'NumberField',
-  featureFlag: 'admin_extensibility',
   description:
     'This component is specifically designed for numeric data entry.',
   requires: '',

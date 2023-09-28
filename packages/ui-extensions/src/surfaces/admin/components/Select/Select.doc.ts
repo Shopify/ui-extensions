@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Select',
-  featureFlag: 'admin_extensibility',
   description:
     'Use this when you want to give users a predefined list of options to choose from.',
   requires: '',

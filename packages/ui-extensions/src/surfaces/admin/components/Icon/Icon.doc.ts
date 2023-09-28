@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Icon',
-  featureFlag: 'admin_extensibility',
   description:
     'This component renders an icon from a predefined list. Choose the one that suits your needs.',
   requires: '',
