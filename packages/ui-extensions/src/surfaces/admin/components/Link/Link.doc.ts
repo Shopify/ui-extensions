@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Link',
-  featureFlag: 'admin_extensibility',
   description:
     'This is an interactive component that directs users to a specified URL. It even supports custom protocols.',
   requires: '',

@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Action Extension API',
-  featureFlag: 'admin_extensibility',
   description: 'This API is available to all action extension types.',
   isVisualComponent: false,
   type: 'API',

@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextField',
-  featureFlag: 'admin_extensibility',
   description:
     'This is your go-to component when you need to let users input textual information.',
   requires: '',

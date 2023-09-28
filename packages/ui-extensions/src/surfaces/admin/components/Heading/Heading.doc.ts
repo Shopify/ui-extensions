@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Heading',
-  featureFlag: 'admin_extensibility',
   description:
     "Use this to display a title. It's similar to the h1-h6 tags in HTML",
   requires: '',

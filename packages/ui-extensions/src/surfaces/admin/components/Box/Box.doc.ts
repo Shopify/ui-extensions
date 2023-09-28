@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Box',
-  featureFlag: 'admin_extensibility',
   description:
     'This is your foundational structural element for composing UI. It can be styled using predefined tokens. Use it to build your layout.',
   requires: '',
