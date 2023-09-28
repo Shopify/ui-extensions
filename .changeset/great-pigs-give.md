@@ -1,6 +1,8 @@
 ---
-'@shopify/ui-extensions': minor
-'@shopify/ui-extensions-react': minor
+'@shopify/ui-extensions': major
+'@shopify/ui-extensions-react': major
 ---
 
-Bump remote-ui versions. Note: extensions that depend on this package will now need to use react-reconciler.
+BREAKING CHANGE: React 18 is now required.
+
+Bump remote-ui versions.
