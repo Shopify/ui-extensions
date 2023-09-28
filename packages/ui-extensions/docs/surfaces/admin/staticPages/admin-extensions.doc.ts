@@ -1,4 +1,3 @@
-/* eslint-disable no-template-curly-in-string */
 import {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
@@ -153,15 +152,12 @@ const data: LandingTemplateSchema = {
               {
                 title: 'Link to Product Page',
                 language: 'tsx',
-                code: '<Link to="shopify:admin/products/1234567890" />',
+                code: './examples/link-to-product-page.jsx',
               },
               {
                 title: 'Fetch data',
                 language: 'ts',
-                code: `fetch("shopify:admin/api/graphql.json", {
-  method: "POST",
-  body: JSON.stringify(simpleProductQuery),
-});`,
+                code: './examples/fetch-data.js',
               },
             ],
           },
@@ -174,9 +170,9 @@ const data: LandingTemplateSchema = {
             title: 'app:',
             tabs: [
               {
-                title: 'Link to Product Page',
+                title: 'Link to Settings',
                 language: 'tsx',
-                code: '<Link to="app:settings/advanced" />',
+                code: './examples/link-to-settings.jsx',
               },
             ],
           },
@@ -191,7 +187,7 @@ const data: LandingTemplateSchema = {
               {
                 title: 'Trigger Action Extension from a Block extension',
                 language: 'tsx',
-                code: '<Link to={`extension:${extension.handle}/${extensionTarget}`} />',
+                code: './examples/link-to-action.jsx',
               },
             ],
           },
@@ -206,7 +202,7 @@ const data: LandingTemplateSchema = {
               {
                 title: 'Link to route in your app',
                 language: 'tsx',
-                code: '<Link to={`/reviews/${product.id}`} />',
+                code: './examples/link-to-route.jsx',
               },
             ],
           },
@@ -223,7 +219,7 @@ const data: LandingTemplateSchema = {
         title: 'Deploy an extension',
         tabs: [
           {
-            code: "# navigate to your app's root directory:\ncd my-app\n\n# deploy your app and its extensions:\nnpm run deploy\n# follow the steps to deploy\n",
+            code: './examples/deploy.sh',
             language: 'bash',
             title: 'CLI',
           },
