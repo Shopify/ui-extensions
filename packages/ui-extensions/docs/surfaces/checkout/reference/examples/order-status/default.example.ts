@@ -1,7 +1,7 @@
 import {
   Banner,
   extension,
-} from '@shopify/ui-extensions/checkout';
+} from '@shopify/ui-extensions/customer-account';
 
 export default extension(
   'customer-account.order-status.customer-information.render-after',

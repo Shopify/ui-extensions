@@ -13,6 +13,12 @@ export type {BlockStackProps} from './components/BlockStack/BlockStack';
 export {Button} from './components/Button/Button';
 export type {ButtonProps} from './components/Button/Button';
 
+export {ConsentCheckbox} from './components/ConsentCheckbox/ConsentCheckbox';
+export type {ConsentCheckboxProps} from './components/ConsentCheckbox/ConsentCheckbox';
+
+export {ConsentPhoneField} from './components/ConsentPhoneField/ConsentPhoneField';
+export type {ConsentPhoneFieldProps} from './components/ConsentPhoneField/ConsentPhoneField';
+
 export {Checkbox} from './components/Checkbox/Checkbox';
 export type {CheckboxProps} from './components/Checkbox/Checkbox';
 

@@ -54,7 +54,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       name: 'Checkbox',
       subtitle: 'Component',
-      url: 'checkox',
+      url: 'checkbox',
       type: 'Component',
     },
   ],

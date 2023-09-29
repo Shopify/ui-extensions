@@ -14,6 +14,9 @@ network_access = true
 block_progress = true
 api_access = true
 
+[extensions.capabilities.collect_buyer_consent]
+sms_marketing = true
+
 [[extensions.metafields]]
 namespace = "my-namespace"
 key = "my-key"
