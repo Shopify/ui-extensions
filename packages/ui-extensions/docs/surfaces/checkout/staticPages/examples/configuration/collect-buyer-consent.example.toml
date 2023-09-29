@@ -1,0 +1,7 @@
+# ...
+
+[extensions.capabilities.collect_buyer_consent]
+sms_marketing = true
+
+# ...
+

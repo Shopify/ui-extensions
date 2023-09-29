@@ -118,7 +118,7 @@ export interface ExtensionTargets {
    * A static extension target that is rendered after a purchase below the customer information.
    *
    * @deprecated Use `purchase.thank-you.customer-information.render-after` or
-   * `customer-account.order-status.customer-information.render-after` instead.
+   * `customer-account.order-status.customer-information.render-after` from `@shopify/ui-extension/customer-account` instead.
    */
   'Checkout::CustomerInformation::RenderAfter': RenderExtension<
     OrderStatusApi &
@@ -265,6 +265,8 @@ export interface ExtensionTargets {
    *
    * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
+   *
+   * @deprecated Use `customer-account.order-status.block.render` from `@shopify/ui-extension/customer-account` instead.
    */
   'customer-account.order-status.block.render': RenderExtension<
     OrderStatusApi &
@@ -279,7 +281,7 @@ export interface ExtensionTargets {
    * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
    *
-   * @deprecated Use `customer-account.order-status.block.render` instead.
+   * @deprecated Use `customer-account.order-status.block.render` from `@shopify/ui-extension/customer-account` instead.
    */
   'Checkout::OrderStatus::Dynamic::Render': RenderExtension<
     OrderStatusApi &
@@ -289,6 +291,8 @@ export interface ExtensionTargets {
   /**
    * A static extension target that renders on every line item, inside the details
    * under the line item properties element on the Order Status Page.
+   *
+   * @deprecated Use `customer-account.order-status.cart-line-item.render-after` from `@shopify/ui-extension/customer-account` instead.
    */
   'customer-account.order-status.cart-line-item.render-after': RenderExtension<
     CartLineItemApi &
@@ -310,6 +314,8 @@ export interface ExtensionTargets {
   >;
   /**
    * A static extension target that is rendered after all line items on the Order Status page.
+   *
+   * @deprecated Use `customer-account.order-status.cart-line-list.render-after` from `@shopify/ui-extension/customer-account` instead.
    */
   'customer-account.order-status.cart-line-list.render-after': RenderExtension<
     OrderStatusApi &
@@ -319,7 +325,7 @@ export interface ExtensionTargets {
   /**
    * A static extension target that is rendered after all line items on the Order Status page.
    *
-   * @deprecated Use `customer-account.order-status.cart-line-list.render-after` instead.
+   * @deprecated Use `customer-account.order-status.cart-line-list.render-after` from `@shopify/ui-extension/customer-account` instead.
    */
   'Checkout::OrderStatus::CartLines::RenderAfter': RenderExtension<
     OrderStatusApi &
@@ -328,6 +334,8 @@ export interface ExtensionTargets {
   >;
   /**
    * A static extension target that is rendered after a purchase below the customer information on the Order Status page.
+   *
+   * @deprecated Use `customer-account.order-status.customer-information.render-after` from `@shopify/ui-extension/customer-account` instead.
    */
   'customer-account.order-status.customer-information.render-after': RenderExtension<
     OrderStatusApi &
@@ -337,7 +345,7 @@ export interface ExtensionTargets {
   /**
    * A static extension target that is rendered after a purchase below the customer information on the Order Status page.
    *
-   * @deprecated Use `customer-account.order-status.customer-information.render-after` instead.
+   * @deprecated Use `customer-account.order-status.customer-information.render-after` from `@shopify/ui-extension/customer-account` instead.
    */
   'Checkout::OrderStatus::CustomerInformation::RenderAfter': RenderExtension<
     OrderStatusApi &

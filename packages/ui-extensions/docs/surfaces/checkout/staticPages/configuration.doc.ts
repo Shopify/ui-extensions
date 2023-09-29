@@ -122,7 +122,8 @@ Defines the [capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#pro
 | [\`api_access\`](#api-access) | Allows your extension to query the Storefront API.
 | [\`network_access\`](#network-access) | Allows your extension make external network calls.
 | [\`block_progress\`](#block-progress) | States that your extension might block the buyer's progress.
-    `,
+| [\`collect_buyer_consent\`](#collect-buyer-consent) | Allows your extension to collect buyer consent for specific policies such as SMS marketing.
+`,
       codeblock: {
         title: 'Capabilities',
         tabs: [
@@ -331,6 +332,30 @@ When developing a local extension, you can remove the \`block_progress\` capabil
 > We recommend having some UI to cover cases where you can't block checkout progress. For example, you might want to show a warning rather than block checkout progress when an order doesn't pass validation.`,
         },
       ],
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'collect-buyer-consent',
+      title: 'Collect buyer consent',
+      sectionContent:
+        'If your extension utilizes the [ConsentCheckbox](/docs/api/checkout-ui-extensions/components/forms/consentcheckbox) or [ConsentPhoneField](/docs/api/checkout-ui-extensions/components/forms/consentphonefield) components to render a customized UI for collecting buyer consent, you must first declare that capability in your configuration file.',
+      sectionSubContent: [
+        {
+          title: 'SMS Marketing',
+          sectionContent:
+            "In order to collect buyer consent for SMS marketing, you'll need to specifically declare this intent using `sms_marketing = true` in your toml configuration. This corresponds to the `policy` prop for the `Consent` components.",
+        },
+      ],
+      codeblock: {
+        title: 'Collect buyer consent',
+        tabs: [
+          {
+            title: 'shopify.extension.toml',
+            code: './examples/configuration/collect-buyer-consent.example.toml',
+            language: 'toml',
+          },
+        ],
+      },
     },
     {
       type: 'Generic',

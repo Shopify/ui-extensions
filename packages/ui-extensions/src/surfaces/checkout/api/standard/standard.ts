@@ -56,8 +56,15 @@ export interface Storage {
  * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
  *
  * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
+ *
+ * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
  */
-export type Capability = 'api_access' | 'network_access' | 'block_progress';
+
+export type Capability =
+  | 'api_access'
+  | 'network_access'
+  | 'block_progress'
+  | 'collect_buyer_consent.sms_marketing';
 
 /**
  * Meta information about an extension target.
@@ -79,6 +86,8 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
    *
    * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
+   *
+   * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 
@@ -1269,7 +1278,7 @@ export interface Customer {
    */
   acceptsEmailMarketing: boolean;
   /**
-   * Defines if the customer accepts sms marketing activities.
+   * Defines if the customer accepts SMS marketing activities.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */

@@ -5,5 +5,8 @@ api_access = true
 network_access = true
 block_progress = true
 
+[extensions.capabilities.collect_buyer_consent]
+sms_marketing = true
+
 # ...
 
