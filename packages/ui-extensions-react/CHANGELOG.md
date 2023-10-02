@@ -1,6 +1,6 @@
 # @shopify/ui-extensions-react
 
-## 0.0.0
+## 2023.10.0
 
 ### Major Changes
 
@@ -78,21 +78,3 @@
 
 - Updated dependencies [[`a7ea6cb0`](https://github.com/Shopify/ui-extensions/commit/a7ea6cb06c3838228bfeefa94d4826b747720ad3), [`8df8429b`](https://github.com/Shopify/ui-extensions/commit/8df8429b69c3bdec736d0885c922be1db2c4c5fe), [`198d0848`](https://github.com/Shopify/ui-extensions/commit/198d08481470776f547e26f70fbc8b9836da3e6d), [`82ba4be1`](https://github.com/Shopify/ui-extensions/commit/82ba4be1efd0745ebd14ef10db4c54badba8c9f6), [`d0bd64d2`](https://github.com/Shopify/ui-extensions/commit/d0bd64d27f4cb41c31ef174393029d841a744ce3), [`e198e10a`](https://github.com/Shopify/ui-extensions/commit/e198e10a99fc3da52d37822959db94105f04987f), [`a8e16322`](https://github.com/Shopify/ui-extensions/commit/a8e16322b367c4efd079d8e69331bd234bedb0c8), [`3437fc05`](https://github.com/Shopify/ui-extensions/commit/3437fc050df2d7ee1d95a75084804ad0f47a70e3), [`0905d719`](https://github.com/Shopify/ui-extensions/commit/0905d7193344c28fc9d346c2f7df873f23856671), [`d539b687`](https://github.com/Shopify/ui-extensions/commit/d539b68792ab3068c2ddd89ae8a2077cc1ddcc56), [`39553479`](https://github.com/Shopify/ui-extensions/commit/39553479c51dbdba24b33669bb7ed697eccba090), [`1de5d9cf`](https://github.com/Shopify/ui-extensions/commit/1de5d9cf7c14f1f7220be4af8c8b35561ee862b8), [`1dd9abf0`](https://github.com/Shopify/ui-extensions/commit/1dd9abf0faf5b63c9b6c341608fc53a8207f485d), [`39553479`](https://github.com/Shopify/ui-extensions/commit/39553479c51dbdba24b33669bb7ed697eccba090), [`f4d0ea17`](https://github.com/Shopify/ui-extensions/commit/f4d0ea1754f132337536e1154a4ea4ed7d1fefde), [`39553479`](https://github.com/Shopify/ui-extensions/commit/39553479c51dbdba24b33669bb7ed697eccba090), [`3e60fb40`](https://github.com/Shopify/ui-extensions/commit/3e60fb402fdec6c624e85d925cffa955faadf6c8), [`fa561eed`](https://github.com/Shopify/ui-extensions/commit/fa561eed6071fc7e8308e7fecf589b60093cafe4), [`1dd7a197`](https://github.com/Shopify/ui-extensions/commit/1dd7a1975cf23522f667fe19d1261b761726a252), [`8a9917b2`](https://github.com/Shopify/ui-extensions/commit/8a9917b247068178dba339bfa4fbfb91efc2fe0c), [`1be8d871`](https://github.com/Shopify/ui-extensions/commit/1be8d871a284967c7f9860a2321666b6f416c57f), [`39553479`](https://github.com/Shopify/ui-extensions/commit/39553479c51dbdba24b33669bb7ed697eccba090), [`898ac175`](https://github.com/Shopify/ui-extensions/commit/898ac175661e02e7f09089672dfb652cdf6b6089), [`7a65c283`](https://github.com/Shopify/ui-extensions/commit/7a65c2836aa91ac3e6e225d8476b2c44baae87fb), [`22f71433`](https://github.com/Shopify/ui-extensions/commit/22f71433069b4cc1d4a322dad8dc6ecb70959ea8), [`f537b081`](https://github.com/Shopify/ui-extensions/commit/f537b0814d3fcf0605396e9453a95ad4b58fcd2a)]:
   - @shopify/ui-extensions@0.0.0
-
-## 2022.10.6
-
-### Patch Changes
-
-- [#717](https://github.com/Shopify/ui-extensions/pull/717) [`5c2f511b`](https://github.com/Shopify/ui-extensions/commit/5c2f511bbea3b4f36fc9c63f79089a79a90ccf26) Thanks [@vividviolet](https://github.com/vividviolet)! - Fix exports for Checkout's surface
-
-- Updated dependencies [[`5c2f511b`](https://github.com/Shopify/ui-extensions/commit/5c2f511bbea3b4f36fc9c63f79089a79a90ccf26)]:
-  - @shopify/ui-extensions@2022.10.6
-
-## 2022.10.5
-
-### Patch Changes
-
-- [#661](https://github.com/Shopify/ui-extensions/pull/661) [`2bef7a10`](https://github.com/Shopify/ui-extensions/commit/2bef7a10d32f80651d2cfa5ac528f551e4ab8b24) Thanks [@lemonmade](https://github.com/lemonmade)! - Bring in @shopify/checkout-ui-extensions@0.22.0
-
-- Updated dependencies [[`2bef7a10`](https://github.com/Shopify/ui-extensions/commit/2bef7a10d32f80651d2cfa5ac528f551e4ab8b24)]:
-  - @shopify/ui-extensions@2022.10.5
