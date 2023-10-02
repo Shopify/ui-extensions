@@ -58,7 +58,7 @@ const data: LandingTemplateSchema = {
       title: 'Extension Targets',
       sectionContent: `Extension targets provide locations where merchants can insert custom content.
         Static extension targets are tied to core checkout features like contact information, shipping methods, and order summary line items.
-        Dynamic extension targets can be displayed at any point in the checkout process and will always render regardless of which checkout features are available.
+        Block extension targets can be displayed at any point in the checkout process and will always render regardless of which checkout features are available.
         An example is a field to capture order notes from the customer.
         \n\nExtension UIs are rendered using [remote UI](https://github.com/Shopify/remote-ui),
         a fast and secure environment for custom [(non-DOM)](#constraints) UIs.`,

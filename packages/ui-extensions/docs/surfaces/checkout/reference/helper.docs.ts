@@ -27,14 +27,18 @@ const codeExampleTabConfig: ExtensionCodeTabConfig = {
   },
 };
 
+interface OptionalCodeMetadata {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+
 /**
  * Returns all examples available, specified with a key for reference.
  */
 export function getExamples(
   languages: NonEmptyArray<ExtensionExampleLanguage>,
-): {
-  [key: string]: ExampleType;
-} {
+): {[key: string]: ExampleType} {
   if (!languages || languages.length === 0) {
     throw new HelperDocsError(
       'You must define at least one extension code language context you wish to retrieve the example(s) for.',
@@ -53,6 +57,22 @@ export function getExamples(
     });
   }
 
+  function createExample(
+    id: string,
+    metadata?: OptionalCodeMetadata,
+  ): {[key: string]: ExampleType} {
+    return {
+      [id]: {
+        description: metadata?.description ?? '',
+        image: metadata?.image ?? undefined,
+        codeblock: {
+          title: metadata?.title ?? id.replace('/default', ''),
+          tabs: getExtensionCodeTabs(id),
+        },
+      },
+    };
+  }
+
   // Add new examples here that can be shared across multiples pages.
   return {
     // The `name` of the example, used to reference this example with `getExample(name)` or `getHookExample(name)`.
@@ -68,6 +88,64 @@ export function getExamples(
         tabs: getExtensionCodeTabs('default'),
       },
     },
+    ...createExample('customer-account.order-status.block.render/default'),
+    ...createExample(
+      'customer-account.order-status.cart-line-item.render-after/default',
+    ),
+    ...createExample(
+      'customer-account.order-status.cart-line-list.render-after/default',
+    ),
+    ...createExample(
+      'customer-account.order-status.customer-information.render-after/default',
+    ),
+    ...createExample('purchase.cart-line-item.line-components.render/default'),
+    ...createExample('purchase.checkout.actions.render-before/default'),
+    ...createExample('purchase.checkout.block.render/default'),
+    ...createExample('purchase.checkout.cart-line-item.render-after/default'),
+    ...createExample('purchase.checkout.cart-line-list.render-after/default'),
+    ...createExample('purchase.checkout.contact.render-after/default'),
+    ...createExample('purchase.checkout.delivery-address.render-after/default'),
+    ...createExample(
+      'purchase.checkout.delivery-address.render-before/default',
+    ),
+    ...createExample(
+      'purchase.checkout.payment-method-list.render-after/default',
+    ),
+    ...createExample(
+      'purchase.checkout.payment-method-list.render-before/default',
+    ),
+    ...createExample(
+      'purchase.checkout.pickup-location-list.render-after/default',
+    ),
+    ...createExample(
+      'purchase.checkout.pickup-location-list.render-before/default',
+    ),
+    ...createExample(
+      'purchase.checkout.pickup-point-list.render-after/default',
+    ),
+    ...createExample(
+      'purchase.checkout.pickup-point-list.render-before/default',
+    ),
+    ...createExample('purchase.checkout.reductions.render-after/default'),
+    ...createExample('purchase.checkout.reductions.render-before/default'),
+    ...createExample(
+      'purchase.checkout.shipping-option-item.details.render/default',
+    ),
+    ...createExample(
+      'purchase.checkout.shipping-option-item.render-after/default',
+    ),
+    ...createExample(
+      'purchase.checkout.shipping-option-list.render-after/default',
+    ),
+    ...createExample(
+      'purchase.checkout.shipping-option-list.render-before/default',
+    ),
+    ...createExample('purchase.thank-you.block.render/default'),
+    ...createExample('purchase.thank-you.cart-line-item.render-after/default'),
+    ...createExample('purchase.thank-you.cart-line-list.render-after/default'),
+    ...createExample(
+      'purchase.thank-you.customer-information.render-after/default',
+    ),
     'analytics-publish': {
       description:
         'You can publish analytics events to the Shopify analytics frameworks and they will be propagated to all web pixels on the page.',
@@ -95,14 +173,14 @@ export function getExamples(
     'pickup-point-list/default': {
       description: '',
       codeblock: {
-        title: '',
+        title: 'Determine if the location input form is shown',
         tabs: getExtensionCodeTabs('pickup-point-list/default'),
       },
     },
     'shipping-option-item/default': {
       description: '',
       codeblock: {
-        title: '',
+        title: 'Reading the selected shipping option',
         tabs: getExtensionCodeTabs('shipping-option-item/default'),
       },
     },
@@ -360,52 +438,28 @@ The contents of the token are signed using your shared app secret.  The optional
 const links: {[key: string]: LinkType[]} = {
   apis: [
     {
-      name: 'StandardApi',
-      subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/standardapi',
-      type: 'StandardApi',
+      name: 'Targets',
+      subtitle: 'Reference',
+      url: '/docs/api/checkout-ui-extensions/targets',
+      type: 'blocks',
     },
     {
-      name: 'CheckoutApi',
-      subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/checkoutapi',
-      type: 'CheckoutApi',
+      name: 'Components',
+      subtitle: 'Reference',
+      url: '/docs/api/checkout-ui-extensions/components',
+      type: 'apps',
     },
     {
-      name: 'OrderStatusApi',
-      subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/orderstatusapi',
-      type: 'OrderStatusApi',
+      name: 'Configuration',
+      subtitle: 'Reference',
+      url: '/docs/api/checkout-ui-extensions/configuration',
+      type: 'gear',
     },
     {
-      name: 'CartLineItemApi',
-      subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/cartlineitemapi',
-      type: 'CartLineItemApi',
-    },
-    {
-      name: 'PickupPointListApi',
-      subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/pickuppointlistapi',
-      type: 'PickupPointListApi',
-    },
-    {
-      name: 'PickupLocationListApi',
-      subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/pickuplocationlistapi',
-      type: 'PickupLocationListApi',
-    },
-    {
-      name: 'ShippingOptionItemApi',
-      subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/shippingoptionitemapi',
-      type: 'ShippingOptionItemApi',
-    },
-    {
-      name: 'ExtensionTargets',
-      subtitle: 'APIs',
-      url: '/docs/api/checkout-ui-extensions/apis/extensiontargets',
-      type: 'ExtensionTargets',
+      name: 'Tutorials',
+      subtitle: 'Learn',
+      url: '/apps/checkout',
+      type: 'tutorial',
     },
   ],
   configuration: [
@@ -413,54 +467,66 @@ const links: {[key: string]: LinkType[]} = {
       name: 'Configuration',
       subtitle: 'Overview',
       url: '/docs/api/checkout-ui-extensions/configuration',
-      type: 'Configuration',
+      type: 'gear',
     },
     {
       name: 'Settings Definition',
       subtitle: 'Configuration',
       url: '/docs/api/checkout-ui-extensions/configuration#settings-definition',
-      type: 'SettingsDefinition',
+      type: 'gear',
     },
     {
       name: 'Settings Examples',
       subtitle: 'APIs',
       url: '/docs/api/checkout-ui-extensions/apis/standardapi#example-settings',
-      type: 'SettingsExamples',
+      type: 'gear',
+    },
+  ],
+  targets: [
+    {
+      name: 'APIs',
+      subtitle: 'Reference',
+      url: '/docs/api/checkout-ui-extensions/targets',
+      type: 'blocks',
+    },
+    {
+      name: 'Components',
+      subtitle: 'Reference',
+      url: '/docs/api/checkout-ui-extensions/components',
+      type: 'apps',
+    },
+    {
+      name: 'Configuration',
+      subtitle: 'Reference',
+      url: '/docs/api/checkout-ui-extensions/configuration',
+      type: 'gear',
+    },
+    {
+      name: 'Tutorials',
+      subtitle: 'Learn',
+      url: '/apps/checkout',
+      type: 'tutorial',
     },
   ],
 };
-
-/**
- * Returns a specific Link that can be used as a related link on an entity.
- */
-export function getLinkByType(type: string): LinkType {
-  const link = Object.keys(links)
-    .flatMap((key) => links[key])
-    .find((link) => link.type === type);
-
-  if (!link) {
-    throw new HelperDocsError(
-      `Could not find a matching link of the type "${type}". Does it exist within the file "docs/reference/helper.docs.ts"?`,
-    );
-  }
-
-  return link;
-}
 
 /**
  * Returns an array of `LinkType` that can be used as related links on an entity.
  * This uses a tag structure to allow you to group links together.
  * You can optinally exclude a specific type of link from the results
  */
-export function getLinksByTag(name: string, excludeType?: string): LinkType[] {
+export function getLinksByTag(
+  name: string,
+  excludeLinkName?: string,
+): LinkType[] {
   const linksByTag = links[name];
   if (!linksByTag) {
     throw new HelperDocsError(
       `Could not find a matching tag with the name "${name}". Does it exist within the file "docs/reference/helper.docs.ts"?`,
     );
   }
-  if (excludeType) {
-    return linksByTag.filter((link) => link.type !== excludeType);
+  if (excludeLinkName) {
+    return linksByTag.filter((link) => link.name !== excludeLinkName);
   }
 
   return linksByTag;
@@ -493,3 +559,153 @@ export function getHookExample(name: string) {
 class HelperDocsError extends Error {
   name = 'HelperDocsError';
 }
+
+const CHECKOUT_API_DEFINITION = {
+  title: 'CheckoutApi',
+  description:
+    'The API object provided to this and other `purchase.checkout` extension targets.',
+  type: 'CheckoutApi',
+};
+
+const STANDARD_API_DEFINITION = {
+  title: 'StandardApi',
+  description:
+    'The base API object provided to this and other `purchase.checkout` and `purchase.thank-you` extension targets.',
+  type: 'StandardApi',
+};
+
+const CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION = {
+  title: 'CustomerAccountStandardApi',
+  description:
+    'The base API object provided to this and other `customer-account` extension targets.',
+  type: 'CustomerAccountStandardApi',
+};
+
+const CART_LINE_ITEM_API_DEFINITION = {
+  title: 'CartLineItemApi',
+  description:
+    'The API object provided to this and other `cart-line-item` extension targets.',
+  type: 'CartLineItemApi',
+};
+
+const ORDER_STATUS_API_DEFINITION = {
+  title: 'OrderStatusApi',
+  description:
+    'The API object provided to this and other `customer-account.order-status` extension targets.',
+  type: 'OrderStatusApi',
+};
+
+const PICKUP_LOCATION_LIST_API_DEFINITION = {
+  title: 'PickupLocationListApi',
+  description:
+    'The API object provided to this and other `pickup-location-list` extension targets.',
+  type: 'PickupLocationListApi',
+};
+
+const PICKUP_POINT_LIST_API_DEFINITION = {
+  title: 'PickupPointListApi',
+  description:
+    'The API object provided to this and other `pickup-point-list` extension targets.',
+  type: 'PickupPointListApi',
+};
+
+const SHIPPING_OPTION_ITEM_API_DEFINITION = {
+  title: 'ShippingOptionItemApi',
+  description:
+    'The API object provided to this and other `shipping-option-item` extension targets.',
+  type: 'ShippingOptionItemApi',
+};
+
+const COMMON_API = {
+  category: 'Targets',
+  isVisualComponent: false,
+  requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
+  type: 'Target',
+};
+
+export const STANDARD_API = {
+  definitions: [STANDARD_API_DEFINITION],
+  ...COMMON_API,
+};
+
+export const CHECKOUT_API = {
+  definitions: [CHECKOUT_API_DEFINITION, STANDARD_API_DEFINITION],
+  ...COMMON_API,
+};
+
+export const CART_LINE_ITEM_API = {
+  subCategory: 'Order Summary',
+  definitions: [CART_LINE_ITEM_API_DEFINITION, STANDARD_API_DEFINITION],
+  ...COMMON_API,
+};
+
+export const CHECKOUT_CART_LINE_ITEM_API = {
+  subCategory: CART_LINE_ITEM_API.subCategory,
+  definitions: [
+    CART_LINE_ITEM_API_DEFINITION,
+    CHECKOUT_API_DEFINITION,
+    STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
+export const ORDER_STATUS_API = {
+  definitions: [
+    ORDER_STATUS_API_DEFINITION,
+    CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
+export const ORDER_STATUS_CART_LINE_ITEM_API = {
+  subCategory: CART_LINE_ITEM_API.subCategory,
+  definitions: [
+    CART_LINE_ITEM_API_DEFINITION,
+    ORDER_STATUS_API_DEFINITION,
+    CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
+export const PICKUP_LOCATION_LIST_API = {
+  subCategory: 'Local Pickup',
+  definitions: [
+    PICKUP_LOCATION_LIST_API_DEFINITION,
+    CHECKOUT_API_DEFINITION,
+    STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
+export const PICKUP_POINT_LIST_API = {
+  subCategory: 'Pickup Points',
+  definitions: [
+    PICKUP_POINT_LIST_API_DEFINITION,
+    CHECKOUT_API_DEFINITION,
+    STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
+export const SHIPPING_OPTION_ITEM_API = {
+  subCategory: 'Shipping',
+  definitions: [
+    SHIPPING_OPTION_ITEM_API_DEFINITION,
+    CHECKOUT_API_DEFINITION,
+    STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
+export const STANDARD_API_PROPERTIES_DESCRIPTION =
+  'The base API object provided to `purchase`, and `customer-account.order-status` extension targets.';
+
+export const CHECKOUT_API_PROPERTIES_DESCRIPTION =
+  'The API object provided to `purchase.checkout` extension targets.';
+
+export const ORDER_STATUS_API_PROPERTIES_DESCRIPTION =
+  'The API object provided to `customer-account.order-status` extension targets.';
+
+export const ORDER_STATUS_SURFACE_NOTE = `
+> Caution: Use the \`@shopify/ui-extensions/customer-account\` or \`@shopify/ui-extensions-react/customer-account\` surfaces when targeting order status targets. Importing from the \`checkout\` surface is deprecated as of version \`2023-10\`.
+`;

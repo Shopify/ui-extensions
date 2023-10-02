@@ -1,4 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
+
 import {CheckboxProps} from '../Checkbox/Checkbox';
 
 export interface ConsentCheckboxProps extends Omit<CheckboxProps, 'value'> {
