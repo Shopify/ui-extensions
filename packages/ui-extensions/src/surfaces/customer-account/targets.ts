@@ -55,15 +55,15 @@ export interface OrderStatusExtensionTargets {
     AnyComponent
   >;
   'customer-account.order-status.return-details.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-details.return-details.render-after'>,
+    OrderStatusApi<'customer-account.order-status.return-details.render-after'>,
     AnyComponent
   >;
   'customer-account.order-status.fulfillment-details.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-details.fulfillment-details.render-after'>,
+    OrderStatusApi<'customer-account.order-status.fulfillment-details.render-after'>,
     AnyComponent
   >;
   'customer-account.order-status.unfulfilled-items.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-details.unfulfilled-items.render-after'>,
+    OrderStatusApi<'customer-account.order-status.unfulfilled-items.render-after'>,
     AnyComponent
   >;
   'customer-account.order-status.payment-details.render-after': RenderExtension<
