@@ -3,7 +3,7 @@ import type {RemoteFragment} from '@remote-ui/core';
 
 export interface AdminActionProps {
   /**
-   * Sets the title of the Action container.
+   * Sets the title of the Action container. If not provided, the name of the extension will be used. Titles longer than 40 characters will be truncated.
    */
   title?: string;
 
