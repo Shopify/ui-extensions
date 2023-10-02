@@ -24,12 +24,10 @@ COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --m
 # `customer-accounts` has duplicate types that cause issues with documentation generation,
 # so we erase its contents and replace them afterwards
 echo "export {}" > src/surfaces/customer-account.ts
-
 eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
 build_exit=$?
 
 git checkout HEAD -- src/surfaces/customer-account.ts
-
 # TODO: get generate-docs to stop requiring JS files:
 # https://github.com/Shopify/generate-docs#important-note
 find ./ -name '*.doc*.js' -exec rm -r {} \;
@@ -62,7 +60,7 @@ if [ -n "$SPIN" ]; then
     rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
 
     cd ~/src/github.com/Shopify/shopify-dev
-    restart
+
     echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/checkout-ui-extensions"
   else
     echo "If you include shopify-dev in your Spin constellation, this will automatically copy ./$DOCS_PATH/generated to shopify-dev"

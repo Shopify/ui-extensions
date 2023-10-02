@@ -473,7 +473,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Provides details on the buyer's progression through the checkout.
    *
-   * See [buyer journey](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-buyer-journey)
+   * See [buyer journey](https://shopify.dev/docs/api/checkout-ui-extensions/apis/buyer-journey#examples)
    * examples for more information.
    */
   buyerJourney: BuyerJourney;
@@ -531,10 +531,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * Utilities for translating content and formatting values according to the current
-   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-localization)
+   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization)
    * of the checkout.
    *
-   * See [localization examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-localization)
+   * See [localization examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#examples)
    * for more information.
    */
   i18n: I18n;
@@ -547,7 +547,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Details about the location, language, and currency of the buyer. For utilities to easily
    * format and translate content based on these details, you can use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-i18n)
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-i18n)
    * object instead.
    */
   localization: Localization;
@@ -573,7 +573,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Used to query the Storefront GraphQL API with a prefetched token.
    *
-   * See [storefront api access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-storefront-api-access) for more information.
+   * See [storefront api access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/storefront-api) for more information.
    */
   query: <Data = unknown, Variables = {[key: string]: unknown}>(
     query: string,
@@ -588,7 +588,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Provides access to session tokens, which can be used to verify token claims on your app's server.
    *
-   * See [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-session-token) for more information.
+   * See [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/session-token) for more information.
    */
   sessionToken: SessionToken;
 
@@ -596,7 +596,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * The settings matching the settings definition written in the
    * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
    *
-   *  See [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-settings) for more information.
+   *  See [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/settings) for more information.
    *
    * > Note: When an extension is being installed in the editor, the settings will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
@@ -1067,7 +1067,7 @@ export interface SelectedPaymentOption {
   /**
    * The unique handle referencing `PaymentOption.handle`.
    *
-   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-availablepaymentoptions).
+   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/payment-options#standardapi-propertydetail-availablepaymentoptions).
    */
   handle: string;
 }
@@ -1331,7 +1331,7 @@ export interface PaymentTermsTemplate {
    */
   id: string;
   /**
-   * The name of the payment terms translated to the buyer's current language. See [localization.language](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-localization).
+   * The name of the payment terms translated to the buyer's current language. See [localization.language](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-localization).
    */
   name: string;
   /**
@@ -1489,6 +1489,11 @@ export interface DeliveryOptionBase {
    * The description of the delivery option.
    */
   description?: string;
+
+  /**
+   * The code of the delivery option.
+   */
+  code: string;
 }
 
 /**

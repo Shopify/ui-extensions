@@ -5,7 +5,7 @@ import {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
   // The title of the page.
-  title: 'Extension Targets',
+  title: 'Targets Overview',
   // A short description of the page. Appears in the hero section below the title.
   description: `
 A [target](/docs/apps/app-extensions/configuration#targets) represents where your checkout UI extension will appear.
@@ -16,43 +16,6 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
   id: 'extension-targets-overview',
   // Basic content for the page and Hero section.
   sections: [
-    {
-      type: 'Generic',
-      // Anchor link for the section.
-      anchorLink: 'static-extension-targets',
-      // The title of the section.
-      title: 'Static extension targets',
-      // Content for the section.
-      image: 'static-extension-targets.png',
-      sectionContent: `Static extension targets render immediately before or after most core checkout features such as contact information, shipping methods, and order summary line items. Merchants use the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor) to activate and place the extension in the checkout experience.
-      \n\nWhen a core checkout feature isn't rendered, neither are the static extension targets tied to it. For example, shipping methods aren't shown when customers select the option for store pickup and the UI extensions that load before or after the shipping method aren't rendered.
-      \n\nChoose static extension targets when your content and functionality is closely related to a core checkout feature. An example is a shipping delay notice.
-      `,
-      sectionCard: [
-        {
-          name: 'Extension targets',
-          subtitle: 'API reference',
-          url: '/docs/api/checkout-ui-extensions/apis/extensiontargets',
-          type: 'blocks',
-        },
-      ],
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'dynamic-extension-targets',
-      title: 'Dynamic extension targets',
-      sectionContent: `Dynamic extension targets render between core checkout features. Merchants can use the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor) to place the extension in the [checkout](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations), [thank you](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-typ-locations), or [order status](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-osp-locations) pages.
-      \n\nDynamic extensions are always rendered, regardless of what other elements of the checkout are present. For example, an extension placed above the shipping address will still render even for digital products which do not require a shipping address.\n\nChoose dynamic extension targets when your content and functionality works independently of a core checkout feature. This is useful for custom content, like a field to capture order notes from the customer.`,
-      image: 'dynamic-extension-targets.png',
-      sectionCard: [
-        {
-          name: 'Extension targets',
-          subtitle: 'API reference',
-          url: '/docs/api/checkout-ui-extensions/apis/extensiontargets',
-          type: 'blocks',
-        },
-      ],
-    },
     {
       type: 'GenericAccordion',
       title: 'Checkout locations',
@@ -65,7 +28,7 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
           description: `
 This is the first step in the checkout process where the buyer enters contact information and a delivery address.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-information.png',
         },
@@ -74,7 +37,7 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontarg
           description: `
 Point in checkout where the buyer selects a shipping method.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-shipping.png',
         },
@@ -83,7 +46,7 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontarg
           description: `
 Point in checkout where the buyer enters their payment information.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-payment.png',
         },
@@ -92,7 +55,7 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontarg
           description: `
 Summary of the cart contents, discounts, and order totals.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-order-summary.png',
         },
@@ -101,7 +64,7 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontarg
           description: `
 Accelerated checkout where Shopify pre-fills buyer information using their Shop Pay account.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-shop-pay.png',
         },
@@ -110,7 +73,7 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontarg
           description: `
 Point in checkout where the buyer can select a store location to pick up their purchase.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-local-pickup.png',
         },
@@ -119,15 +82,13 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontarg
           description: `
 Point in checkout where the buyer can select a pickup point to have their purchase delivered to.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-pickup-points.png',
         },
         {
           title: 'One-page checkout',
           description: `
-\`DEV PREVIEW\`
-
 All checkout pages (information, shipping, and payment) are combined into a single page with the order summary.
 
 Get started testing extensions on [one-page checkout](/docs/apps/checkout/best-practices/testing-ui-extensions#one-page-checkout).
@@ -148,7 +109,7 @@ Get started testing extensions on [one-page checkout](/docs/apps/checkout/best-p
           description: `
 Displays all order information to buyers.
 
-See [all thank you page extension targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+See [all thank you page extension targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-thank-you.png',
         },
@@ -157,7 +118,7 @@ See [all thank you page extension targets](/docs/api/checkout-ui-extensions/apis
           description: `
 Summary of the cart contents, discounts, and order totals.
 
-See [all thank you page extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+See [all thank you page extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-order-summary-thank-you.png',
         },
@@ -175,7 +136,7 @@ See [all thank you page extensions targets](/docs/api/checkout-ui-extensions/api
           description: `
 Displays all order information to buyers.
 
-See [all order status page extension targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+See [all order status page extension targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-order-status.png',
         },
@@ -184,9 +145,46 @@ See [all order status page extension targets](/docs/api/checkout-ui-extensions/a
           description: `
 Summary of the cart contents, discounts, and order totals.
 
-See [all order status page extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+See [all order status page extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-order-summary-order-status.png',
+        },
+      ],
+    },
+    {
+      type: 'Generic',
+      // Anchor link for the section.
+      anchorLink: 'static-extension-targets',
+      // The title of the section.
+      title: 'Static extension targets',
+      // Content for the section.
+      image: 'static-extension-targets.png',
+      sectionContent: `Static extension targets render immediately before or after most core checkout features such as contact information, shipping methods, and order summary line items. Merchants use the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor) to activate and place the extension in the checkout experience.
+      \n\nWhen a core checkout feature isn't rendered, neither are the static extension targets tied to it. For example, shipping methods aren't shown when customers select the option for store pickup and the UI extensions that load before or after the shipping method aren't rendered.
+      \n\nChoose static extension targets when your content and functionality is closely related to a core checkout feature. An example is a shipping delay notice.
+      `,
+      sectionCard: [
+        {
+          name: 'Extension targets',
+          subtitle: 'API reference',
+          url: '/docs/api/checkout-ui-extensions/targets',
+          type: 'blocks',
+        },
+      ],
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'block-extension-targets',
+      title: 'Block extension targets',
+      sectionContent: `Block extension targets render between core checkout features. Merchants can use the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor) to place the extension in the [checkout](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations), [thank you](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-typ-locations), or [order status](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-osp-locations) pages.
+      \n\nBlock extensions are always rendered, regardless of what other elements of the checkout are present. For example, an extension placed above the shipping address will still render even for digital products which do not require a shipping address.\n\nChoose block extension targets when your content and functionality works independently of a core checkout feature. This is useful for custom content, like a field to capture order notes from the customer.`,
+      image: 'block-extension-targets.png',
+      sectionCard: [
+        {
+          name: 'Extension targets',
+          subtitle: 'API reference',
+          url: '/docs/api/checkout-ui-extensions/targets',
+          type: 'blocks',
         },
       ],
     },

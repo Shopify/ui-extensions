@@ -7,5 +7,5 @@ export default extension('purchase.checkout.block.render', (root) => {
     badge: 2,
   });
 
-  root.appendChild(productThumbnail);
+  root.appendChild(paymentIcon);
 });

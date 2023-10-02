@@ -154,24 +154,24 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that isn't tied to a specific checkout section or feature.
-   * Unlike static extension targets, dynamic extension targets render where the merchant
+   * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that isn't tied to a specific checkout section or feature.
+   * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
-   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
+   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    */
   'purchase.checkout.block.render': RenderExtension<
     CheckoutApi & StandardApi<'purchase.checkout.block.render'>,
     AnyComponent
   >;
   /**
-   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that isn't tied to a specific checkout section or feature.
-   * Unlike static extension targets, dynamic extension targets render where the merchant
+   * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that isn't tied to a specific checkout section or feature.
+   * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
-   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
+   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    * @deprecated Use `purchase.checkout.block.render` instead.
    */
@@ -180,12 +180,12 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the Thank You Page.
-   * Unlike static extension targets, dynamic extension targets render where the merchant
+   * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the Thank You Page.
+   * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
-   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
+   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    */
   'purchase.thank-you.block.render': RenderExtension<
@@ -193,12 +193,12 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the Thank You Page.
-   * Unlike static extension targets, dynamic extension targets render where the merchant
+   * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the Thank You Page.
+   * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
-   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
+   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    * @deprecated Use `purchase.thank-you.block.render` instead.
    */
@@ -259,12 +259,12 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the Order Status Page.
-   * Unlike static extension targets, dynamic extension targets render where the merchant
+   * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the Order Status Page.
+   * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
-   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
+   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    * @deprecated Use `customer-account.order-status.block.render` from `@shopify/ui-extension/customer-account` instead.
    */
@@ -274,12 +274,12 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the Order Status Page.
-   * Unlike static extension targets, dynamic extension targets render where the merchant
+   * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the Order Status Page.
+   * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
-   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
+   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    * @deprecated Use `customer-account.order-status.block.render` from `@shopify/ui-extension/customer-account` instead.
    */
@@ -729,8 +729,9 @@ export type AllowedComponentsForRenderExtension<
  * The part of the standard API implemented for customer-account targets. Must
  * match the types defined in the `surfaces/customer-account` section of this package.
  */
-export type CustomerAccountStandardApi<Target extends keyof ExtensionTargets> =
-  Pick<
+export interface CustomerAccountStandardApi<
+  Target extends keyof ExtensionTargets,
+> extends Pick<
     StandardApi<Target>,
     | 'analytics'
     | 'appliedGiftCards'
@@ -758,4 +759,4 @@ export type CustomerAccountStandardApi<Target extends keyof ExtensionTargets> =
     | 'storage'
     | 'ui'
     | 'version'
-  >;
+  > {}
