@@ -1,4 +1,4 @@
-# @shopify/ui-extensions-react
+# @shopify/ui-extensions
 
 ## 2023.10.0
 
@@ -35,9 +35,9 @@
 
 - [#1397](https://github.com/Shopify/ui-extensions/pull/1397) [`198d0848`](https://github.com/Shopify/ui-extensions/commit/198d08481470776f547e26f70fbc8b9836da3e6d) Thanks [@jamesvidler](https://github.com/jamesvidler)! - New `ConsentCheckbox` and `ConsentPhoneField` components which allow extensions to render their own consent UI, supporting the "sms-marketing" policy.
 
-- [#1397](https://github.com/Shopify/ui-extensions/pull/1397) [`198d0848`](https://github.com/Shopify/ui-extensions/commit/198d08481470776f547e26f70fbc8b9836da3e6d) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Adds the `useShippingOptionTarget` react hook to retrieve the target shipping option.
-
 - [#1364](https://github.com/Shopify/ui-extensions/pull/1364) [`3437fc05`](https://github.com/Shopify/ui-extensions/commit/3437fc050df2d7ee1d95a75084804ad0f47a70e3) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Adds `purchase.checkout.payment-method-list.render-before` and `purchase.checkout.payment-method-list.render-after` extension targets, rendered above and below the payment method list.
+
+- [#1281](https://github.com/Shopify/ui-extensions/pull/1281) [`d539b687`](https://github.com/Shopify/ui-extensions/commit/d539b68792ab3068c2ddd89ae8a2077cc1ddcc56) Thanks [@elanalynn](https://github.com/elanalynn)! - Add download and target props to ButtonAnchorProps in admin
 
 - [#1364](https://github.com/Shopify/ui-extensions/pull/1364) [`39553479`](https://github.com/Shopify/ui-extensions/commit/39553479c51dbdba24b33669bb7ed697eccba090) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Adds useCartlineTarget API and deprecates useTarget API.
 
@@ -60,21 +60,28 @@
 
 ### Patch Changes
 
-- [#1324](https://github.com/Shopify/ui-extensions/pull/1324) [`a15fc4ad`](https://github.com/Shopify/ui-extensions/commit/a15fc4ad073ff905d3860e9e21080ee379813c58) Thanks [@LTiger14](https://github.com/LTiger14)! - Export CustomerSegmentTemplate and the props
+- [#1361](https://github.com/Shopify/ui-extensions/pull/1361) [`82ba4be1`](https://github.com/Shopify/ui-extensions/commit/82ba4be1efd0745ebd14ef10db4c54badba8c9f6) Thanks [@lauramann](https://github.com/lauramann)! - Adds b2bEnabled enabledFeature on CustomerSegmentTemplateApi
+
+- [#1286](https://github.com/Shopify/ui-extensions/pull/1286) [`d0bd64d2`](https://github.com/Shopify/ui-extensions/commit/d0bd64d27f4cb41c31ef174393029d841a744ce3) Thanks [@PrescilliaA](https://github.com/PrescilliaA)! - Add exports for InternalCustomerSegmentTemplate categories and icons
 
 - [#1274](https://github.com/Shopify/ui-extensions/pull/1274) [`e198e10a`](https://github.com/Shopify/ui-extensions/commit/e198e10a99fc3da52d37822959db94105f04987f) Thanks [@PrescilliaA](https://github.com/PrescilliaA)! - Update CustomerSegmentTemplate prop names
 
 - [#1316](https://github.com/Shopify/ui-extensions/pull/1316) [`0905d719`](https://github.com/Shopify/ui-extensions/commit/0905d7193344c28fc9d346c2f7df873f23856671) Thanks [@lihaokx](https://github.com/lihaokx)! - 1. Rename point to target; 2. Update extension target names; 3, Add new types
 
+- [#1403](https://github.com/Shopify/ui-extensions/pull/1403) [`1de5d9cf`](https://github.com/Shopify/ui-extensions/commit/1de5d9cf7c14f1f7220be4af8c8b35561ee862b8) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Supports improvements for new checkout extensibility docs IA. Organizes docs by targets, and groups APIs.
+
+- [#1275](https://github.com/Shopify/ui-extensions/pull/1275) [`f4d0ea17`](https://github.com/Shopify/ui-extensions/commit/f4d0ea1754f132337536e1154a4ea4ed7d1fefde) Thanks [@PrescilliaA](https://github.com/PrescilliaA)! - Expose CustomerSegmentTemplate category and icon types
+
 - [#1074](https://github.com/Shopify/ui-extensions/pull/1074) [`3e60fb40`](https://github.com/Shopify/ui-extensions/commit/3e60fb402fdec6c624e85d925cffa955faadf6c8) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Rename components with Admin prefix
+
+- [#1343](https://github.com/Shopify/ui-extensions/pull/1343) [`fa561eed`](https://github.com/Shopify/ui-extensions/commit/fa561eed6071fc7e8308e7fecf589b60093cafe4) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Update docs for action extension GA
 
 - [#1294](https://github.com/Shopify/ui-extensions/pull/1294) [`1dd7a197`](https://github.com/Shopify/ui-extensions/commit/1dd7a1975cf23522f667fe19d1261b761726a252) Thanks [@PrescilliaA](https://github.com/PrescilliaA)! - Remove CustomerSegmentationTemplate and deprecated prop names
 
 - [#1283](https://github.com/Shopify/ui-extensions/pull/1283) [`8a9917b2`](https://github.com/Shopify/ui-extensions/commit/8a9917b247068178dba339bfa4fbfb91efc2fe0c) Thanks [@lihaokx](https://github.com/lihaokx)! - Move customer account ui extension from main to unstable branch.
 
+- [#1289](https://github.com/Shopify/ui-extensions/pull/1289) [`1be8d871`](https://github.com/Shopify/ui-extensions/commit/1be8d871a284967c7f9860a2321666b6f416c57f) Thanks [@lauramann](https://github.com/lauramann)! - Adds extension target for segment details
+
 - [#1304](https://github.com/Shopify/ui-extensions/pull/1304) [`898ac175`](https://github.com/Shopify/ui-extensions/commit/898ac175661e02e7f09089672dfb652cdf6b6089) Thanks [@mikewilson01](https://github.com/mikewilson01)! - Expose additional properties for LoginWithShop component
 
 - [#1279](https://github.com/Shopify/ui-extensions/pull/1279) [`f537b081`](https://github.com/Shopify/ui-extensions/commit/f537b0814d3fcf0605396e9453a95ad4b58fcd2a) Thanks [@PrescilliaA](https://github.com/PrescilliaA)! - Introduces InternalCustomerSegmentTemplate component
-
-- Updated dependencies [[`a7ea6cb0`](https://github.com/Shopify/ui-extensions/commit/a7ea6cb06c3838228bfeefa94d4826b747720ad3), [`8df8429b`](https://github.com/Shopify/ui-extensions/commit/8df8429b69c3bdec736d0885c922be1db2c4c5fe), [`198d0848`](https://github.com/Shopify/ui-extensions/commit/198d08481470776f547e26f70fbc8b9836da3e6d), [`82ba4be1`](https://github.com/Shopify/ui-extensions/commit/82ba4be1efd0745ebd14ef10db4c54badba8c9f6), [`d0bd64d2`](https://github.com/Shopify/ui-extensions/commit/d0bd64d27f4cb41c31ef174393029d841a744ce3), [`e198e10a`](https://github.com/Shopify/ui-extensions/commit/e198e10a99fc3da52d37822959db94105f04987f), [`a8e16322`](https://github.com/Shopify/ui-extensions/commit/a8e16322b367c4efd079d8e69331bd234bedb0c8), [`3437fc05`](https://github.com/Shopify/ui-extensions/commit/3437fc050df2d7ee1d95a75084804ad0f47a70e3), [`0905d719`](https://github.com/Shopify/ui-extensions/commit/0905d7193344c28fc9d346c2f7df873f23856671), [`d539b687`](https://github.com/Shopify/ui-extensions/commit/d539b68792ab3068c2ddd89ae8a2077cc1ddcc56), [`39553479`](https://github.com/Shopify/ui-extensions/commit/39553479c51dbdba24b33669bb7ed697eccba090), [`1de5d9cf`](https://github.com/Shopify/ui-extensions/commit/1de5d9cf7c14f1f7220be4af8c8b35561ee862b8), [`1dd9abf0`](https://github.com/Shopify/ui-extensions/commit/1dd9abf0faf5b63c9b6c341608fc53a8207f485d), [`39553479`](https://github.com/Shopify/ui-extensions/commit/39553479c51dbdba24b33669bb7ed697eccba090), [`f4d0ea17`](https://github.com/Shopify/ui-extensions/commit/f4d0ea1754f132337536e1154a4ea4ed7d1fefde), [`39553479`](https://github.com/Shopify/ui-extensions/commit/39553479c51dbdba24b33669bb7ed697eccba090), [`3e60fb40`](https://github.com/Shopify/ui-extensions/commit/3e60fb402fdec6c624e85d925cffa955faadf6c8), [`fa561eed`](https://github.com/Shopify/ui-extensions/commit/fa561eed6071fc7e8308e7fecf589b60093cafe4), [`1dd7a197`](https://github.com/Shopify/ui-extensions/commit/1dd7a1975cf23522f667fe19d1261b761726a252), [`8a9917b2`](https://github.com/Shopify/ui-extensions/commit/8a9917b247068178dba339bfa4fbfb91efc2fe0c), [`1be8d871`](https://github.com/Shopify/ui-extensions/commit/1be8d871a284967c7f9860a2321666b6f416c57f), [`39553479`](https://github.com/Shopify/ui-extensions/commit/39553479c51dbdba24b33669bb7ed697eccba090), [`898ac175`](https://github.com/Shopify/ui-extensions/commit/898ac175661e02e7f09089672dfb652cdf6b6089), [`7a65c283`](https://github.com/Shopify/ui-extensions/commit/7a65c2836aa91ac3e6e225d8476b2c44baae87fb), [`22f71433`](https://github.com/Shopify/ui-extensions/commit/22f71433069b4cc1d4a322dad8dc6ecb70959ea8), [`f537b081`](https://github.com/Shopify/ui-extensions/commit/f537b0814d3fcf0605396e9453a95ad4b58fcd2a)]:
-  - @shopify/ui-extensions@0.0.0
