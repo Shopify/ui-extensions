@@ -8,6 +8,8 @@ export {Box} from './components/Box/Box';
 export type {BoxProps} from './components/Box/Box';
 export {Button} from './components/Button/Button';
 export type {ButtonProps} from './components/Button/Button';
+export {Card} from './components/Card/Card';
+export type {CardProps} from './components/Card/Card';
 export {Checkbox} from './components/Checkbox/Checkbox';
 export type {CheckboxProps} from './components/Checkbox/Checkbox';
 export {CustomerSegmentTemplate} from './components/CustomerSegmentTemplate/CustomerSegmentTemplate';
