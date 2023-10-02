@@ -83,7 +83,7 @@ In your \`package.json\`, replace any \`@shopify/checkout-ui-extensions\` packag
 You will notice that the UI extension packages have a new versioning system. In the new versions, the "major" version number is the API version year (e.g., \`2023\`), the "minor" version number is the API version month (e.g., \`10\` for \`2023.10\`), and the "patch" version number is reserved by Shopify for making bugfixes on the contents of the package (e.g. \`.1\` for \`2023.10.1\`). You will need to match the version of the package you install to the API version your extension targets, so that you get access to the types and runtime utilities associated with that API version. We recommend using a version that locks in the major and minor version numbers, and allows the patch version to be updated, like the \`2023.10.x\` version range shown above.
 
 > Caution:
-> The \`2023.10.x\` version range has a couple breaking changes compared to the \`0.27.x\` range of the \`@shopify/checkout-ui-extensions(-react)\` packages. If you want to upgrade to the new API versioning system, but continue to use the APIs you were using before without any changes, we also provide a \`2023.4.x\` version range that contains the same APIs as the \`0.27.x\` range of the old packages.
+> Versions \`2023.07.x\` and later have a couple breaking changes compared to the \`0.27.x\` range of the \`@shopify/checkout-ui-extensions(-react)\` packages. If you want to upgrade to the new API versioning system, but continue to use the APIs you were using before without any changes, we also provide a \`2023.4.x\` version range that contains the same APIs as the \`0.27.x\` range of the old packages.
 `,
       accordionContent: [
         {
