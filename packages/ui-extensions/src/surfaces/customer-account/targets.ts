@@ -54,8 +54,16 @@ export interface OrderStatusExtensionTargets {
     OrderStatusApi<'customer-account.order-status.cart-line-list.render-after'>,
     AnyComponent
   >;
-  'customer-account.order-status.delivery-details.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-status.delivery-details.render-after'>,
+  'customer-account.order-status.return-details.render-after': RenderExtension<
+    OrderStatusApi<'customer-account.order-status.return-details.render-after'>,
+    AnyComponent
+  >;
+  'customer-account.order-status.fulfillment-details.render-after': RenderExtension<
+    OrderStatusApi<'customer-account.order-status.fulfillment-details.render-after'>,
+    AnyComponent
+  >;
+  'customer-account.order-status.unfulfilled-items.render-after': RenderExtension<
+    OrderStatusApi<'customer-account.order-status.unfulfilled-items.render-after'>,
     AnyComponent
   >;
   'customer-account.order-status.payment-details.render-after': RenderExtension<
