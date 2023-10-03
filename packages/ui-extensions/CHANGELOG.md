@@ -5,6 +5,7 @@
 ## 2023.10.0
 
 ### Minor Changes
+
 - [#1296](https://github.com/Shopify/ui-extensions/pull/1296) [`a8e16322`](https://github.com/Shopify/ui-extensions/commit/a8e16322b367c4efd079d8e69331bd234bedb0c8) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Bump `@remote-ui/core` version.
 
 - [#1340](https://github.com/Shopify/ui-extensions/pull/1340) [`a7ea6cb0`](https://github.com/Shopify/ui-extensions/commit/a7ea6cb06c3838228bfeefa94d4826b747720ad3) Thanks [@lsit](https://github.com/lsit)! - Add PaymentIcon component to the checkout surface
