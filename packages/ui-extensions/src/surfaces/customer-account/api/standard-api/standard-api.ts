@@ -79,6 +79,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   navigation: StandardExtensionNavigation;
 }
 
+export interface CompanyLocationApi {
+  locationId: string;
+}
+
 export interface BuyerIdentity {
   /**
    * Provides the company info that the business customer is purchasing on behalf of.

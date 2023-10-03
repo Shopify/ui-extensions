@@ -81,4 +81,5 @@ export type {
   PurchasingCompany,
   Company,
   Localization,
+  CompanyLocationApi,
 } from './api/standard-api/standard-api';
