@@ -61,8 +61,6 @@
 
 - [#1289](https://github.com/Shopify/ui-extensions/pull/1289) [`1be8d871`](https://github.com/Shopify/ui-extensions/commit/1be8d871a284967c7f9860a2321666b6f416c57f) Thanks [@lauramann](https://github.com/lauramann)! - Adds extension target for segment details
 
-- [#1304](https://github.com/Shopify/ui-extensions/pull/1304) [`898ac175`](https://github.com/Shopify/ui-extensions/commit/898ac175661e02e7f09089672dfb652cdf6b6089) Thanks [@mikewilson01](https://github.com/mikewilson01)! - Expose additional properties for LoginWithShop component
-
 - [#1279](https://github.com/Shopify/ui-extensions/pull/1279) [`f537b081`](https://github.com/Shopify/ui-extensions/commit/f537b0814d3fcf0605396e9453a95ad4b58fcd2a) Thanks [@PrescilliaA](https://github.com/PrescilliaA)! - Introduces InternalCustomerSegmentTemplate component
 
 ## 2023.7.2
