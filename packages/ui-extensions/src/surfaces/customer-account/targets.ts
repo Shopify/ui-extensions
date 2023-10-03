@@ -7,6 +7,7 @@ import type {RenderExtension, RunExtension} from './extension';
 import {
   StandardApi,
   FullExtensionNavigation,
+  CompanyLocationApi,
 } from './api/standard-api/standard-api';
 
 type Components = typeof import('./components');
@@ -120,21 +121,18 @@ export interface CustomerAccountExtensionTargets {
     AllComponents
   >;
   'customer-account.profile.company-location-addresses.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.company-location-addresses.render-after'> & {
-      locationId: string;
-    },
+    StandardApi<'customer-account.profile.company-location-addresses.render-after'> &
+      CompanyLocationApi,
     AllComponents
   >;
   'customer-account.profile.company-location-payment.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.company-location-payment.render-after'> & {
-      locationId: string;
-    },
+    StandardApi<'customer-account.profile.company-location-payment.render-after'> &
+      CompanyLocationApi,
     AllComponents
   >;
   'customer-account.profile.company-location-staff.render-after': RenderExtension<
-    StandardApi<'customer-account.profile.company-location-staff.render-after'> & {
-      locationId: string;
-    },
+    StandardApi<'customer-account.profile.company-location-staff.render-after'> &
+      CompanyLocationApi,
     AllComponents
   >;
   'customer-account.order.action.menu-item.render': RenderExtension<
