@@ -21,13 +21,9 @@ fi
 COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH ../ui-extensions-react/$SRC_PATH --output ./$DOCS_PATH/generated"
 COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
 
-# `customer-accounts` has duplicate types that cause issues with documentation generation,
-# so we erase its contents and replace them afterwards
-echo "export {}" > src/surfaces/customer-account.ts
 eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
 build_exit=$?
 
-git checkout HEAD -- src/surfaces/customer-account.ts
 # TODO: get generate-docs to stop requiring JS files:
 # https://github.com/Shopify/generate-docs#important-note
 find ./ -name '*.doc*.js' -exec rm -r {} \;
