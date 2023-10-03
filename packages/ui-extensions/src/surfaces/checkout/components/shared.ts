@@ -20,7 +20,7 @@ export interface Autocomplete {
   field: AutocompleteField;
 }
 
-export type AutocompleteGroup = 'shipping' | 'billing';
+export type AutocompleteGroup = 'shipping' | 'billing' | 'location';
 
 export type AutocompleteField =
   | 'name'
