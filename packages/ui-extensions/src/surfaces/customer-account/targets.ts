@@ -8,6 +8,7 @@ import {
   StandardApi,
   FullExtensionNavigation,
   CompanyLocationApi,
+  OrderApi,
 } from './api/standard-api/standard-api';
 
 type Components = typeof import('./components');
@@ -144,11 +145,11 @@ export interface CustomerAccountExtensionTargets {
     AllComponents
   >;
   'customer-account.order.action.menu-item.render': RenderExtension<
-    StandardApi & {orderId: string},
+    StandardApi & OrderApi,
     AllComponents
   >;
   'customer-account.order.action.render': RenderExtension<
-    StandardApi & ActionExtensionApi & {orderId: string},
+    StandardApi & ActionExtensionApi & OrderApi,
     AllComponents
   >;
 }
