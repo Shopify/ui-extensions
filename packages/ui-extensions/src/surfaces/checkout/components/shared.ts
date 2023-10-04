@@ -277,6 +277,8 @@ export interface SizingProps {
    * `` `${number}%` ``: size in percentages.
    *
    * `fill`: takes all the available space.
+   *
+   * See [MDN explanation of maxBlockSize](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
    */
   maxBlockSize?: MaybeResponsiveConditionalStyle<
     number | `${number}%` | 'fill'
@@ -290,6 +292,8 @@ export interface SizingProps {
    * `` `${number}%` ``: size in percentages.
    *
    * `fill`: takes all the available space.
+   *
+   * See [MDN explanation of maxInlineSize](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
    */
   maxInlineSize?: MaybeResponsiveConditionalStyle<
     number | `${number}%` | 'fill'
@@ -302,7 +306,9 @@ export interface SizingProps {
    *
    * `` `${number}%` ``: size in percentages.
    *
-   * `fill`: takes all the available space.
+   * `fill`: takes all the available space.\
+   *
+   * See [MDN explanation of minInlineSize](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
    */
   minInlineSize?: MaybeResponsiveConditionalStyle<
     number | `${number}%` | 'fill'
@@ -316,6 +322,8 @@ export interface SizingProps {
    * `` `${number}%` ``: size in percentages.
    *
    * `fill`: takes all the available space.
+   *
+   * See [MDN explanation of minBlockSize](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
    */
   minBlockSize?: MaybeResponsiveConditionalStyle<
     number | `${number}%` | 'fill'

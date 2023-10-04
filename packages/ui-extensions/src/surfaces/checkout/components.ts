@@ -93,6 +93,20 @@ export type {ListItemProps} from './components/ListItem/ListItem';
 export {LoginWithShop} from './components/LoginWithShop/LoginWithShop';
 export type {LoginWithShopProps} from './components/LoginWithShop/LoginWithShop';
 
+export {Map} from './components/Map/Map';
+export type {
+  MapProps,
+  MapLocation,
+  MapBounds,
+  MapZoom,
+} from './components/Map/Map';
+
+export {MapMarker} from './components/MapMarker/MapMarker';
+export type {MapMarkerProps} from './components/MapMarker/MapMarker';
+
+export {MapPopover} from './components/MapPopover/MapPopover';
+export type {MapPopoverProps} from './components/MapPopover/MapPopover';
+
 export {Modal} from './components/Modal/Modal';
 export type {ModalProps} from './components/Modal/Modal';
 
