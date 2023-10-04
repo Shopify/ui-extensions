@@ -43,5 +43,32 @@ module.exports = {
         '@shopify/jsx-no-hardcoded-content': 'off',
       },
     },
+    {
+      files: ['packages/ui-extensions-react/src/surfaces/*/hooks/**'],
+      rules: {
+        // This is necessary because https://github.com/Shopify/generate-docs
+        // cannot yet infer return types.
+        '@typescript-eslint/explicit-function-return-type': 'error',
+      },
+    },
+    {
+      files: ['packages/ui-extensions-react/src/surfaces/*/hooks/tests/**'],
+      rules: {
+        '@typescript-eslint/explicit-function-return-type': 'off',
+      },
+    },
+    {
+      files: [
+        'packages/ui-extensions/docs/surfaces/**/*.example.*',
+        'packages/ui-extensions/src/surfaces/**/*.example.*',
+      ],
+      rules: {
+        'no-console': 'off',
+        'react/react-in-jsx-scope': 'off',
+        '@shopify/checkout-web/custom-error-subclassing': 'off',
+        'import/no-extraneous-dependencies': 'off',
+        'promise/catch-or-return': 'off',
+      },
+    },
   ],
 };
