@@ -22,7 +22,7 @@ const data: LandingTemplateSchema = {
         {
           title: 'Developer preview',
           sectionContent:
-            'Admin UI action extensions are currently in developer preview. You can only render them while developing locally on a development store.',
+            'Admin UI block extensions are currently in developer preview. You can only render them while developing locally on a development store.',
           type: 'beta',
         },
       ],
