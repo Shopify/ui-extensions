@@ -2,5 +2,16 @@
   "arrowParens": "always",
   "bracketSpacing": false,
   "singleQuote": true,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "overrides": [
+    {
+      "files": [
+        "packages/ui-extensions-react/**/*.example.*",
+        "packages/ui-extensions/docs/**/*.example.*"
+      ],
+      "options": {
+        "printWidth": 50
+      }
+    }
+  ]
 }
