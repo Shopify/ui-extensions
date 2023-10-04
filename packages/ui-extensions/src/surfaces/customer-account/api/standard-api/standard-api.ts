@@ -83,6 +83,10 @@ export interface CompanyLocationApi {
   locationId: string;
 }
 
+export interface OrderApi {
+  orderId: string;
+}
+
 export interface BuyerIdentity {
   /**
    * Provides the company info that the business customer is purchasing on behalf of.
