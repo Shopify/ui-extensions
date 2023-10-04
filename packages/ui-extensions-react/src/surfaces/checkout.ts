@@ -43,6 +43,7 @@ export type {
   ExtensionTargets,
   Fit,
   GridItemSize,
+  IconSource,
   I18nTranslate,
   InlineAlignment,
   MaybeConditionalStyle,
@@ -51,6 +52,7 @@ export type {
   MaybeShorthandProperty,
   NonPresentationalAccessibilityRole,
   OverlayActivatorProps,
+  PaymentMethod,
   PopoverPosition,
   RenderExtension,
   RenderExtensions,
@@ -73,6 +75,7 @@ export type {
   ViewPosition,
   ViewPositionType,
   ViewLikeAccessibilityRole,
+  VisibilityProps,
   YearMonth,
 } from '@shopify/ui-extensions/checkout';
 
