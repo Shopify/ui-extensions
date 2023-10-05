@@ -2,6 +2,8 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 type PolicyType = 'refund';
 
+// The interface is duplicated in the `ui-extensions-react` package because it no longer can be imported
+// More on the PR: https://github.com/Shopify/ui-extensions/pull/1399
 export interface PolicyModalProps {
   /**
    * Whether the modal should be rendered.
