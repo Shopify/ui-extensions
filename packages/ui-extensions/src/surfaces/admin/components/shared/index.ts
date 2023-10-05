@@ -636,6 +636,17 @@ export type SpaceScale =
   | '28'
   | '32';
 
+export type SizeScale =
+  | 'small-300'
+  | 'small-200'
+  | 'small-100'
+  | 'base'
+  | 'large-100'
+  | 'large-200'
+  | 'large-300';
+
+export type Tone = 'info' | 'success' | 'warning' | 'critical' | 'default';
+
 export interface AnchorProps {
   /**
    * The URL to link to.
