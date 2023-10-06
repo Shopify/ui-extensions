@@ -1,5 +1,5 @@
 import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
-import {AnyComponent} from '../checkout';
+import {AnyComponent} from '../checkout/shared';
 
 import {CartLineItemApi} from './api/cart-line/cart-line-item';
 import type {OrderStatusApi} from './api/order-status/order-status';
