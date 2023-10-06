@@ -1,9 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import type {SizeScale, Tone} from '../shared';
+import type {AccessibilityLabelProps, SizeScale, Tone} from '../shared';
 import {IconName} from '../Icon/IconName';
 
-interface BadgeBaseProps {
-  accessibilityLabel?: string;
+interface BadgeBaseProps extends AccessibilityLabelProps {
   tone?: Tone;
   size?: Extract<SizeScale, 'small-100' | 'base'>;
 }

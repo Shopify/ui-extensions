@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import {AccessibilityLabelProps} from '../shared';
 
-export interface LinkProps {
+export interface LinkProps extends AccessibilityLabelProps {
   /**
    * A unique identifier for the link.
    */
@@ -40,12 +41,6 @@ export interface LinkProps {
    * it will execute the callback and then navigate to the location specified by `href`.
    */
   onPress?(): void;
-
-  /**
-   * A label used for users using assistive technologies. When set, any
-   * `children` supplied to this component will not be announced to screen reader users.
-   */
-  accessibilityLabel?: string;
 
   /**
    * Indicate the text language. Useful when the text is in a different language than the rest of the page.

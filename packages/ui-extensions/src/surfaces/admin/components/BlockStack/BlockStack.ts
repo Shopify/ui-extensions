@@ -8,20 +8,17 @@ import {
   GapProps,
   CrossAxisAlignment,
   MainAxisAlignment,
+  AccessibilityLabelProps,
 } from '../shared';
 
 export interface BlockStackProps
   extends AccessibilityRoleProps,
+    AccessibilityLabelProps,
     Pick<GapProps, 'gap' | 'blockGap' | 'rowGap'>,
     GlobalProps,
     SizingProps,
     PaddingProps {
   /**
-   * A label that describes the purpose or contents of the element. When set,
-   * it will be announced to buyers using assistive technologies and will
-   * provide them with more context.
-   */
-  accessibilityLabel?: string;
 
   /**
    * Position children along the main axis

@@ -1,14 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {IconName} from './IconName';
+import {AccessibilityLabelProps} from '../shared';
 
-export interface IconProps {
-  /*
-   * A label that describes the purpose or contents of the icon. When set,
-   * it will be announced to users using assistive technologies and will
-   * provide them with more context.
-   */
-  accessibilityLabel?: string;
-
+export interface IconProps extends AccessibilityLabelProps {
   /*
    * Set the color of the icon.
    *

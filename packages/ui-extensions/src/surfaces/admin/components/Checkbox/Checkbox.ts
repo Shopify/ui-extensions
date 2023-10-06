@@ -1,12 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import {AccessibilityLabelProps} from '../shared';
 
-export interface CheckboxProps {
-  /**
-   * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.
-   * This can also be used to display a Checkbox without a visual label, while still providing context to users using screen readers.
-   */
-  accessibilityLabel?: string;
-
+export interface CheckboxProps extends AccessibilityLabelProps {
   /**
    * Whether the checkbox is active.
    */
