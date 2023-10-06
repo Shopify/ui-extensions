@@ -83,6 +83,14 @@ export interface CompanyLocationApi {
   locationId: string;
 }
 
+export interface FulfillmentApi {
+  fulfillmentId: string;
+}
+
+export interface ReturnApi {
+  returnId: string;
+}
+
 export interface OrderApi {
   orderId: string;
 }

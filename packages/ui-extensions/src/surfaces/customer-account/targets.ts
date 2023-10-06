@@ -9,6 +9,8 @@ import {
   FullExtensionNavigation,
   CompanyLocationApi,
   OrderApi,
+  FulfillmentApi,
+  ReturnApi,
 } from './api/standard-api/standard-api';
 
 type Components = typeof import('./components');
@@ -57,11 +59,13 @@ export interface OrderStatusExtensionTargets {
     AnyComponent
   >;
   'customer-account.order-status.return-details.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-status.return-details.render-after'>,
+    OrderStatusApi<'customer-account.order-status.return-details.render-after'> &
+      ReturnApi,
     AnyComponent
   >;
   'customer-account.order-status.fulfillment-details.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-status.fulfillment-details.render-after'>,
+    OrderStatusApi<'customer-account.order-status.fulfillment-details.render-after'> &
+      FulfillmentApi,
     AnyComponent
   >;
   'customer-account.order-status.unfulfilled-items.render-after': RenderExtension<
