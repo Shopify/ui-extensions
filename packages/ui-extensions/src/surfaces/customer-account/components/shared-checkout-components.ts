@@ -142,4 +142,4 @@ export type {
   SpacingProps,
   ViewLikeAccessibilityRole,
   VisibilityProps,
-} from '../../checkout';
+} from '../../checkout/components';
