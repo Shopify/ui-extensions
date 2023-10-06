@@ -84,10 +84,16 @@ export interface CompanyLocationApi {
 }
 
 export interface FulfillmentApi {
+  /**
+   * Id of a single fulfillment.
+   */
   fulfillmentId: string;
 }
 
 export interface ReturnApi {
+  /**
+   * Id of a single return.
+   */
   returnId: string;
 }
 
