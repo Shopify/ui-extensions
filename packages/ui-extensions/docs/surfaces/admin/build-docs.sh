@@ -1,3 +1,5 @@
+#!/bin/bash
+
 DOCS_PATH=docs/surfaces/admin
 SRC_PATH=src/surfaces/admin
 
