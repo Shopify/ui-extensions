@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'Use this component to inform merchants of the status of an object or of an action that’s been taken.',
   requires: '',
-  thumbnail: 'badge-thumbnail.png', // TODO: add thumbnail
+  thumbnail: 'badge-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
