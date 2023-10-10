@@ -42,6 +42,8 @@ export {PasswordField} from './components/PasswordField/PasswordField';
 export type {PasswordFieldProps} from './components/PasswordField/PasswordField';
 export {Pressable} from './components/Pressable/Pressable';
 export type {PressableProps} from './components/Pressable/Pressable';
+export {ProgressIndicator} from './components/ProgressIndicator/ProgressIndicator';
+export type {ProgressIndicatorProps} from './components/ProgressIndicator/ProgressIndicator';
 export {ResourceItem} from './components/ResourceItem/ResourceItem';
 export type {ResourceItemProps} from './components/ResourceItem/ResourceItem';
 export {ResourceList} from './components/ResourceList/ResourceList';
