@@ -1,5 +1,3 @@
-import {RemoteFragment} from '@remote-ui/core';
-
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
@@ -683,16 +681,4 @@ export interface AnchorProps {
    * it will execute the callback and then navigate to the location specified by `href`.
    */
   onPress?(): void;
-}
-
-export interface ActionProps {
-  /**
-   * Sets the Primary action button of the container. This component must a button component.
-   */
-  primaryAction?: RemoteFragment;
-
-  /**
-   * Sets the Secondary action button of the container. This component must a button component.
-   */
-  secondaryAction?: RemoteFragment;
 }

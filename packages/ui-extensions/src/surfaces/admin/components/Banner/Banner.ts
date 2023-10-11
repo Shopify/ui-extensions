@@ -1,7 +1,7 @@
-import {createRemoteComponent} from '@remote-ui/core';
-import {ActionProps, GlobalProps, Tone} from '../shared';
+import {RemoteFragment, createRemoteComponent} from '@remote-ui/core';
+import {GlobalProps, Tone} from '../shared';
 
-export interface BannerProps extends GlobalProps, ActionProps {
+export interface BannerProps extends GlobalProps {
   /**
    * Message to display inside the banner
    */
@@ -18,6 +18,16 @@ export interface BannerProps extends GlobalProps, ActionProps {
    * Function invoked when the banner is dismissed
    */
   onDismiss?: () => void;
+
+  /**
+   * Sets the Primary action button of the container. This component must a button component.
+   */
+  primaryAction?: RemoteFragment;
+
+  /**
+   * Sets the Secondary action button of the container. This component must a button component.
+   */
+  secondaryAction?: RemoteFragment;
 }
 
 export const Banner = createRemoteComponent<'Banner', BannerProps>('Banner');

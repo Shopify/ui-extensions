@@ -1,11 +1,21 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {ActionProps} from '../shared';
+import type {RemoteFragment} from '@remote-ui/core';
 
-export interface AdminActionProps extends ActionProps {
+export interface AdminActionProps {
   /**
    * Sets the title of the Action container. If not provided, the name of the extension will be used. Titles longer than 40 characters will be truncated.
    */
   title?: string;
+
+  /**
+   * Sets the Primary action button of the container. This component must a button component.
+   */
+  primaryAction?: RemoteFragment;
+
+  /**
+   * Sets the Secondary action button of the container. This component must a button component.
+   */
+  secondaryAction?: RemoteFragment;
 
   /**
    * Sets the loading state of the action modal
