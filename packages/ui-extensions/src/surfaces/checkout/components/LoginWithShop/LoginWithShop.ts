@@ -8,6 +8,7 @@ export interface LoginWithShopProps {
   apiKey?: string;
   onComplete?(): void | Promise<void>;
   onClosed?(): void;
+  onStatusChange?(status: 'shop_pay' | 'guest' | 'shop_pay_skipped'): void;
 }
 
 export const LoginWithShop = createRemoteComponent<
