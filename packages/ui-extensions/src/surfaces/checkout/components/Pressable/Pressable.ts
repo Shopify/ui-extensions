@@ -13,10 +13,12 @@ import type {
   DisclosureActivatorProps,
   CornerProps,
   Opacity,
+  BackgroundProps,
 } from '../shared';
 
 export interface PressableProps
-  extends BorderProps,
+  extends Pick<BackgroundProps, 'background'>,
+    BorderProps,
     CornerProps,
     SizingProps,
     SpacingProps,

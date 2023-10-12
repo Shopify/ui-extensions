@@ -59,7 +59,11 @@ export {
 } from './discounts';
 export {useOrder} from './order';
 export {useAppliedGiftCards, useApplyGiftCardChange} from './gift-cards';
-export {useApplyPaymentMethodAttributesChange} from './payment-method';
+export {
+  usePaymentMethodAttributes,
+  usePaymentMethodAttributeValues,
+  useApplyPaymentMethodAttributesChange,
+} from './payment-method';
 export {useApplyRedeemableChange} from './redeemable';
 export {useDeliveryGroups} from './delivery-groups';
 export {useDeliveryGroup} from './delivery-group';

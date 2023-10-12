@@ -34,7 +34,7 @@ export function usePaymentMethodAttributes():
  *
  * @param keys - An array of attribute keys.
  */
-export function usePaymentAttributeValues(
+export function usePaymentMethodAttributeValues(
   keys: string[],
 ): (PaymentMethodAttribute['value'] | undefined)[] {
   const attributes = usePaymentMethodAttributes();

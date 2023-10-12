@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {MaybeResponsiveConditionalStyle} from '../../style';
 import type {
+  BackgroundProps,
   BlockAlignment,
   BorderProps,
   Columns,
@@ -15,7 +16,8 @@ import type {
 } from '../shared';
 
 export interface GridProps
-  extends BorderProps,
+  extends Pick<BackgroundProps, 'background'>,
+    BorderProps,
     CornerProps,
     SizingProps,
     SpacingProps {

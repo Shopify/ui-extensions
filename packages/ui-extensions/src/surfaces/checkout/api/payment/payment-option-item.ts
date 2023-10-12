@@ -57,4 +57,5 @@ export interface PaymentOptionItemApi {
   paymentMethodAttributes?: StatefulRemoteSubscribable<
     PaymentMethodAttribute[] | undefined
   >;
+  bankIdNumber?: StatefulRemoteSubscribable<string | undefined>;
 }

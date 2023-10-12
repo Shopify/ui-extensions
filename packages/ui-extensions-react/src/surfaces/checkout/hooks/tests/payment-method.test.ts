@@ -2,7 +2,7 @@ import {ExtensionTarget} from '@shopify/ui-extensions/checkout';
 
 import {
   useApplyPaymentMethodAttributesChange,
-  usePaymentAttributeValues,
+  usePaymentMethodAttributeValues,
   usePaymentMethodAttributes,
 } from '../payment-method';
 import {ExtensionHasNoMethodError, ScopeNotGrantedError} from '../../errors';
@@ -34,7 +34,7 @@ describe('Payment Method API hooks', () => {
     });
   });
 
-  describe('usePaymentAttributeValues', () => {
+  describe('usePaymentMethodAttributeValues', () => {
     const paymentMethodAttributes = [{key: 'test_key', value: 'test_value'}];
     const extensionApi = {
       paymentMethodAttributes: createMockStatefulRemoteSubscribable(
@@ -44,7 +44,7 @@ describe('Payment Method API hooks', () => {
 
     it('returns the paymentMethodAttributes values', async () => {
       const {value} = mount.hook(
-        () => usePaymentAttributeValues(['test_key']),
+        () => usePaymentMethodAttributeValues(['test_key']),
         {extensionApi},
       );
       expect(value).toStrictEqual(['test_value']);
@@ -52,7 +52,7 @@ describe('Payment Method API hooks', () => {
 
     it('returns undefined for not found keys', async () => {
       const {value} = mount.hook(
-        () => usePaymentAttributeValues(['test_key', 'test_key3']),
+        () => usePaymentMethodAttributeValues(['test_key', 'test_key3']),
         {extensionApi},
       );
       expect(value).toStrictEqual(['test_value', undefined]);
@@ -60,7 +60,7 @@ describe('Payment Method API hooks', () => {
 
     it('returns an empty array if payment attributes object is undefined', async () => {
       const {value} = mount.hook(
-        () => usePaymentAttributeValues(['test_key', 'test_key3']),
+        () => usePaymentMethodAttributeValues(['test_key', 'test_key3']),
         {
           extensionApi: {
             paymentMethodAttributes:
@@ -73,7 +73,7 @@ describe('Payment Method API hooks', () => {
 
     it('returns an empty array if payment attributes object is an empty array', async () => {
       const {value} = mount.hook(
-        () => usePaymentAttributeValues(['test_key', 'test_key3']),
+        () => usePaymentMethodAttributeValues(['test_key', 'test_key3']),
         {
           extensionApi: {
             paymentMethodAttributes: createMockStatefulRemoteSubscribable([]),
