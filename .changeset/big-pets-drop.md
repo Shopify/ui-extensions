@@ -3,4 +3,5 @@
 '@shopify/ui-extensions-react': patch
 ---
 
-Added time picking pattern docs
+Adds the `bankIdNumber` to the `PaymentOptionItemApi`.
+Adds `background` to `View`, `Grid`, `GridItem`, `Pressable`, `ScrollView`, `InlineStack`, and `BlockStack` components.
