@@ -20,7 +20,7 @@ export interface Autocomplete {
   field: AutocompleteField;
 }
 
-export type AutocompleteGroup = 'shipping' | 'billing';
+export type AutocompleteGroup = 'shipping' | 'billing' | 'location';
 
 export type AutocompleteField =
   | 'name'
@@ -162,11 +162,8 @@ export type CornerRadiusDeprecated = 'tight' | 'loose';
 export interface BackgroundProps {
   /**
    * Adjust the background.
-   *
-   * @defaultValue 'transparent'
    */
   background?: MaybeConditionalStyle<Background>;
-
   /**
    * Sets one or multiple responsive background images.
    */
@@ -346,7 +343,7 @@ export interface SpacingProps {
    *
    * - [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`
    *
-   * - [`base`, `none`, `large200`, `small200`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `large200` and  blockStart padding is `small200`
+   * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
    */
   padding?: MaybeResponsiveConditionalStyle<MaybeShorthandProperty<Spacing>>;
 }
@@ -478,34 +475,17 @@ export type Size =
 
 export type Spacing =
   | 'none'
-  | 'small500'
-  | 'small400'
-  | 'small300'
-  | 'small200'
-  | 'small100'
+  | 'extraTight'
+  | 'tight'
   | 'base'
-  | 'large100'
-  | 'large200'
-  | 'large300'
-  | 'large400'
-  | 'large500'
-  | SpacingDeprecated;
-
-/** @deprecated These values are deprecated and will eventually be removed.
- * Use the new values.
- *
- * `extraTight`: `small400`
- * `tight`: `small200`
- * `loose`: `large200`
- * `extraLoose`: `large500`
- */
-export type SpacingDeprecated = 'extraTight' | 'tight' | 'loose' | 'extraLoose';
+  | 'loose'
+  | 'extraLoose';
 
 export type Alignment = 'start' | 'center' | 'end';
 export type InlineAlignment = 'start' | 'center' | 'end';
 export type BlockAlignment = Alignment | 'baseline';
 
-export type Background = 'transparent' | 'base' | 'subdued';
+export type Background = 'transparent' | 'color1' | 'color2' | 'color3';
 export type BackgroundFit = 'cover' | 'contain';
 export type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
 export type BackgroundRepeat = 'repeat' | 'noRepeat';

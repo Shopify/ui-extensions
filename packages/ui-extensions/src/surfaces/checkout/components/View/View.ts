@@ -2,7 +2,6 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import {MaybeResponsiveConditionalStyle} from '../../style';
 import type {
-  BackgroundProps,
   BlockAlignment,
   BorderProps,
   InlineAlignment,
@@ -102,8 +101,7 @@ export interface Translate {
 }
 
 export interface ViewProps
-  extends Pick<BackgroundProps, 'background'>,
-    BorderProps,
+  extends BorderProps,
     CornerProps,
     SizingProps,
     SpacingProps,
