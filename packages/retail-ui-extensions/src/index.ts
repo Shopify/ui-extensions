@@ -21,6 +21,7 @@ export type {
   Session,
   ScannerSource,
   ScannerSubscriptionResult,
+  LineItemDiscountInput,
   ScannerApiContent,
   ScannerApi,
   Address,

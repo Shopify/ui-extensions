@@ -34,6 +34,7 @@ export type {
   Discount,
   CustomSale,
   Session,
+  LineItemDiscountInput,
   MultipleResourceResult,
   PaginatedResult,
   Product,

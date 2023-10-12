@@ -39,6 +39,24 @@ export interface Discount {
   type?: string;
 }
 
+/**
+ * Parameters for adding a line item discount.
+ */
+export interface LineItemDiscountInput {
+  /**
+   * The title of the line item discount.
+   */
+  title: string;
+  /**
+   * The discount type.
+   */
+  type: 'Percentage' | 'FixedAmount';
+  /**
+   * The percentage or fixed amount for the discount.
+   */
+  amount: string;
+}
+
 export interface CustomSale {
   quantity: number;
   title: string;

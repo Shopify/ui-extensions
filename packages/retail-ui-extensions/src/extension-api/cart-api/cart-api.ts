@@ -1,5 +1,11 @@
 import type {RemoteSubscribable} from '@remote-ui/async-subscription';
-import type {Address, Cart, Customer, CustomSale} from '../types';
+import type {
+  Address,
+  Cart,
+  Customer,
+  CustomSale,
+  LineItemDiscountInput,
+} from '../types';
 
 /**
  * Access and modify the merchant’s current cart.
@@ -99,6 +105,13 @@ export interface CartApiContent {
     type: DiscountType,
     title: string,
     amount: string,
+  ): Promise<void>;
+
+  /** Add a line item discounts to multiple line items
+   * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.
+   */
+  setLineItemDiscounts(
+    lineItemDiscounts: Map<string, LineItemDiscountInput>,
   ): Promise<void>;
 
   /** Sets an attributed staff to all line items in the cart.
