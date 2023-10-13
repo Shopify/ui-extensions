@@ -8,7 +8,7 @@ render('Playground', () => <App />);
 
 function App() {
   return (
-    <Banner title="Shipping rates changed" collapsible onDismiss={() => console.log('dismissed banner')}>
+    <Banner title="Shipping rates changed" dismissible onDismiss={() => console.log('dismissed banner')}>
       <p>Your store may be affected</p>
     </Banner>
   );
