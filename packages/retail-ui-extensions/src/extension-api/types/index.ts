@@ -5,7 +5,8 @@ export type {
   Discount,
   LineItem,
   CustomSale,
-  LineItemDiscountInput,
+  LineItemDiscount,
+  SetLineItemDiscountInput,
 } from './cart';
 
 export {CountryCode} from './country-code';

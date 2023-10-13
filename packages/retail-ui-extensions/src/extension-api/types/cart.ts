@@ -42,7 +42,18 @@ export interface Discount {
 /**
  * Parameters for adding a line item discount.
  */
-export interface LineItemDiscountInput {
+export interface SetLineItemDiscountInput {
+  /**
+   * The uuid belonging to the line item which should receive the discount.
+   */
+  lineItemUuid: string;
+  /**
+   * The discount to be applied to the line item.
+   */
+  lineItemDiscount: LineItemDiscount;
+}
+
+export interface LineItemDiscount {
   /**
    * The title of the line item discount.
    */

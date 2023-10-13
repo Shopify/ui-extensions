@@ -4,7 +4,7 @@ import type {
   Cart,
   Customer,
   CustomSale,
-  LineItemDiscountInput,
+  SetLineItemDiscountInput,
 } from '../types';
 
 /**
@@ -107,11 +107,11 @@ export interface CartApiContent {
     amount: string,
   ): Promise<void>;
 
-  /** Add a line item discounts to multiple line items
+  /** Set line item discounts to multiple line items at the same time.
    * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.
    */
-  setLineItemDiscounts(
-    lineItemDiscounts: Map<string, LineItemDiscountInput>,
+  bulkSetLineItemDiscounts(
+    lineItemDiscounts: SetLineItemDiscountInput[],
   ): Promise<void>;
 
   /** Sets an attributed staff to all line items in the cart.
