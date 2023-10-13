@@ -5,6 +5,7 @@ import type {
   Customer,
   CustomSale,
   SetLineItemDiscountInput,
+  SetLineItemPropertiesInput,
 } from '../types';
 
 /**
@@ -86,6 +87,13 @@ export interface CartApiContent {
   addLineItemProperties(
     uuid: string,
     properties: Record<string, string>,
+  ): Promise<void>;
+
+  /** Adds custom properties to multiple line items at the same time.
+   * @param lineItemProperties the collection of custom line item properties to apply to their respective line items.
+   */
+  bulkAddLineItemProperties(
+    lineItemProperties: SetLineItemPropertiesInput[],
   ): Promise<void>;
 
   /** Removes the specified line item properties

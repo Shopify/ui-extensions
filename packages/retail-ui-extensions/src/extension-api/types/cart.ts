@@ -40,6 +40,20 @@ export interface Discount {
 }
 
 /**
+ * Parameters for adding custom properties to a line item.
+ */
+export interface SetLineItemPropertiesInput {
+  /**
+   * The uuid belonging to the line item which should receive the custom properties.
+   */
+  lineItemUuid: string;
+  /**
+   * The custom properties to apply to the line item.
+   */
+  properties: Record<string, string>;
+}
+
+/**
  * Parameters for adding a line item discount.
  */
 export interface SetLineItemDiscountInput {

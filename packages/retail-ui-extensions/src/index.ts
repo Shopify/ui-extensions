@@ -23,6 +23,7 @@ export type {
   ScannerSubscriptionResult,
   LineItemDiscount,
   SetLineItemDiscountInput,
+  SetLineItemPropertiesInput,
   ScannerApiContent,
   ScannerApi,
   Address,
