@@ -1,5 +1,12 @@
 import type {RemoteSubscribable} from '@remote-ui/async-subscription';
-import type {Address, Cart, Customer, CustomSale} from '../types';
+import type {
+  Address,
+  Cart,
+  Customer,
+  CustomSale,
+  SetLineItemDiscountInput,
+  SetLineItemPropertiesInput,
+} from '../types';
 
 /**
  * Access and modify the merchant’s current cart.
@@ -82,6 +89,13 @@ export interface CartApiContent {
     properties: Record<string, string>,
   ): Promise<void>;
 
+  /** Adds custom properties to multiple line items at the same time.
+   * @param lineItemProperties the collection of custom line item properties to apply to their respective line items.
+   */
+  bulkAddLineItemProperties(
+    lineItemProperties: SetLineItemPropertiesInput[],
+  ): Promise<void>;
+
   /** Removes the specified line item properties
    * @param uuid the uuid of the line item to which the properties should be removed
    * @param keys the collection of keys to be removed from the line item properties
@@ -99,6 +113,13 @@ export interface CartApiContent {
     type: DiscountType,
     title: string,
     amount: string,
+  ): Promise<void>;
+
+  /** Set line item discounts to multiple line items at the same time.
+   * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.
+   */
+  bulkSetLineItemDiscounts(
+    lineItemDiscounts: SetLineItemDiscountInput[],
   ): Promise<void>;
 
   /** Sets an attributed staff to all line items in the cart.

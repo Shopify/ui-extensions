@@ -39,6 +39,49 @@ export interface Discount {
   type?: string;
 }
 
+/**
+ * Parameters for adding custom properties to a line item.
+ */
+export interface SetLineItemPropertiesInput {
+  /**
+   * The uuid belonging to the line item which should receive the custom properties.
+   */
+  lineItemUuid: string;
+  /**
+   * The custom properties to apply to the line item.
+   */
+  properties: Record<string, string>;
+}
+
+/**
+ * Parameters for adding a line item discount.
+ */
+export interface SetLineItemDiscountInput {
+  /**
+   * The uuid belonging to the line item which should receive the discount.
+   */
+  lineItemUuid: string;
+  /**
+   * The discount to be applied to the line item.
+   */
+  lineItemDiscount: LineItemDiscount;
+}
+
+export interface LineItemDiscount {
+  /**
+   * The title of the line item discount.
+   */
+  title: string;
+  /**
+   * The discount type.
+   */
+  type: 'Percentage' | 'FixedAmount';
+  /**
+   * The percentage or fixed amount for the discount.
+   */
+  amount: string;
+}
+
 export interface CustomSale {
   quantity: number;
   title: string;
