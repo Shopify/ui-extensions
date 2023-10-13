@@ -13,7 +13,7 @@ export interface BannerProps extends GlobalProps {
   /**
    * Whether or not the banner can be dismissed
    */
-  collapsible?: boolean;
+  dismissible?: boolean;
   /**
    * Function invoked when the banner is dismissed
    */
