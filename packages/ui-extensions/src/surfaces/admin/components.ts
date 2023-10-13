@@ -4,6 +4,8 @@ export {AdminBlock} from './components/AdminBlock/AdminBlock';
 export type {AdminBlockProps} from './components/AdminBlock/AdminBlock';
 export {Badge} from './components/Badge/Badge';
 export type {BadgeProps} from './components/Badge/Badge';
+export {Banner} from './components/Banner/Banner';
+export type {BannerProps} from './components/Banner/Banner';
 export {BlockStack} from './components/BlockStack/BlockStack';
 export type {BlockStackProps} from './components/BlockStack/BlockStack';
 export {Box} from './components/Box/Box';
