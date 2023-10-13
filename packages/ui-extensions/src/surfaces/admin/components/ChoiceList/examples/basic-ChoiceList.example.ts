@@ -9,11 +9,11 @@ export default extension(
     const blockStack = root.createComponent(
       ChoiceList,
       {
-        title: 'Company name',
+        name: 'Company name',
         choices: [
-            {label: 'Hidden', value: 'hidden'},
-            {label: 'Optional', value: 'optional'},
-            {label: 'Required', value: 'required'},
+            {label: 'Hidden', id: '1'},
+            {label: 'Optional', id: '2'},
+            {label: 'Required', id: '3'},
         ]
       },
     );
