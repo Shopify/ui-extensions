@@ -127,6 +127,15 @@ export interface MinMaxLengthProps {
   minLength?: number;
 }
 
+export interface AccessibilityLabelProps {
+  /**
+   * A label that describes the purpose or contents of the element. When set, it will be announced
+   * to users using assistive technologies and will provide them with more context. When set, any
+   * children or `label` supplied will not be announced to screen readers.
+   */
+  accessibilityLabel?: string;
+}
+
 export interface AccessibilityRoleProps {
   /**
    * Sets the semantic meaning of the component’s content. When set,
