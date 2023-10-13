@@ -96,6 +96,11 @@ export interface InputProps<T> {
   readOnly?: boolean;
 
   /**
+   * A default value to populate for uncontrolled components.
+   */
+  defaultValue?: string | string[];
+
+  /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
    * If you want to present an error when this field is empty, you can do
