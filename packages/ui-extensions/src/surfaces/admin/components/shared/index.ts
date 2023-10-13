@@ -122,6 +122,15 @@ export interface MinMaxLengthProps {
   minLength?: number;
 }
 
+export interface AccessibilityLabelProps {
+  /**
+   * A label that describes the purpose or contents of the element. When set, it will be announced
+   * to users using assistive technologies and will provide them with more context. When set, any
+   * children or `label` supplied will not be announced to screen readers.
+   */
+  accessibilityLabel?: string;
+}
+
 export interface AccessibilityRoleProps {
   /**
    * Sets the semantic meaning of the component’s content. When set,
@@ -635,6 +644,17 @@ export type SpaceScale =
   | '24'
   | '28'
   | '32';
+
+export type SizeScale =
+  | 'small-300'
+  | 'small-200'
+  | 'small-100'
+  | 'base'
+  | 'large-100'
+  | 'large-200'
+  | 'large-300';
+
+export type Tone = 'info' | 'success' | 'warning' | 'critical' | 'default';
 
 export interface AnchorProps {
   /**

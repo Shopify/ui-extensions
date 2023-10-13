@@ -2,7 +2,7 @@
   "name": "@shopify/ui-extensions",
   "version": "0.0.0-unstable",
   "scripts": {
-    "docs:admin": "sh ./docs/surfaces/admin/build-docs.sh \"admin\"",
+    "docs:admin": "sh ./docs/surfaces/admin/build-docs.sh",
     "gen-docs:admin": "sh ./docs/surfaces/admin/create-doc-files.sh \"admin\"",
     "docs:checkout": "sh ./docs/surfaces/checkout/build-docs.sh"
   },
