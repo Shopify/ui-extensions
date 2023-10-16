@@ -44,6 +44,32 @@ const data: ReferenceEntityTemplateSchema = {
         '- Use this component when customers need to choose between four or more predefined options.\n\n- Have a default option selected whenever possible. Use Select as placeholder text if there’s no logical default option.',
     },
   ],
+  examples: {
+    description: '',
+    examples: [
+      {
+        image: 'select-time-picking.png',
+        description:
+          'The Select component is a great choice for displaying a long list of time choices, as it helps conserve valuable space. If the number of options is less than or equal to 5, we recommend using the [ChoiceList](/docs/api/checkout-ui-extensions/components/forms/choicelist) component. This allows buyers to see all options immediately without the need for clicking into the select.',
+        codeblock: {
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/checkout/components/Select/examples/time-picking-select.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'JS',
+              code: './examples/time-picking-select.example.ts',
+              language: 'js',
+            },
+          ],
+          title:
+            'Using the Select component to display a long list of time choices',
+        },
+      },
+    ],
+  },
   related: [],
 };
 
