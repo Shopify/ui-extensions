@@ -12,6 +12,7 @@ import type {
   I18n,
   Language,
   Storage,
+  AuthenticatedAccount,
 } from '../shared';
 import type {ExtensionTarget} from '../../targets';
 import {Extension} from '../shared';
@@ -388,6 +389,11 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * @example 'unstable'
    */
   version: Version;
+
+  /**
+   * Information about the authenticated account.
+   */
+  authenticatedAccount: AuthenticatedAccount;
 }
 
 export interface Ui {
@@ -413,7 +419,7 @@ export interface OrderStatusBuyerIdentity {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  customer: StatefulRemoteSubscribable<Customer | undefined>;
+  customer: StatefulRemoteSubscribable<OrderStatusCustomer | undefined>;
 
   /**
    * The email address of the buyer that is interacting with the cart.
@@ -878,7 +884,7 @@ export interface CartCustomDiscountAllocation
  *
  * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
  */
-export interface Customer {
+export interface OrderStatusCustomer {
   /**
    * Customer ID.
    *

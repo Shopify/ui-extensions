@@ -1,8 +1,6 @@
 import type {
-  Customer,
+  OrderStatusCustomer,
   OrderStatusPurchasingCompany,
-  PurchasingCompany as CustomerAccountPurchasingCompany,
-  RenderExtensionTarget,
   RenderOrderStatusExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
@@ -18,7 +16,7 @@ import {useSubscription} from './subscription';
  */
 export function useCustomer<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
->(): Customer | undefined {
+>(): OrderStatusCustomer | undefined {
   const buyerIdentity = useApi<Target>().buyerIdentity;
 
   if (!buyerIdentity) {
@@ -66,10 +64,6 @@ export function usePhone<
   return useSubscription(buyerIdentity.phone);
 }
 
-type PurchasingCompany<Target> = Target extends RenderOrderStatusExtensionTarget
-  ? OrderStatusPurchasingCompany | undefined
-  : CustomerAccountPurchasingCompany | undefined;
-
 /**
  * Provides information about the company and its location that the business customer
  * is purchasing on behalf of during a B2B checkout. It includes details that can be utilized to
@@ -78,8 +72,8 @@ type PurchasingCompany<Target> = Target extends RenderOrderStatusExtensionTarget
  * The value is `undefined` if a business customer isn't logged in. This function throws an error if the app doesn't have access to customer data.
  */
 export function usePurchasingCompany<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
->(): PurchasingCompany<Target> {
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+>(): OrderStatusPurchasingCompany | undefined {
   const buyerIdentity = useApi<Target>().buyerIdentity;
 
   if (!buyerIdentity) {
@@ -88,7 +82,5 @@ export function usePurchasingCompany<
     );
   }
 
-  return useSubscription(
-    buyerIdentity.purchasingCompany,
-  ) as PurchasingCompany<Target>;
+  return useSubscription(buyerIdentity.purchasingCompany);
 }

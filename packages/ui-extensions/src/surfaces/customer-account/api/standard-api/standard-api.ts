@@ -1,4 +1,10 @@
-import {Extension, I18n, Storage, Language} from '../shared';
+import {
+  Extension,
+  I18n,
+  Storage,
+  Language,
+  AuthenticatedAccount,
+} from '../shared';
 
 import type {ExtensionTarget} from '../../targets';
 import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
@@ -26,9 +32,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   extension: Extension;
 
   /**
-   * Information about the buyer.
+   * Information about the authenticated account.
    */
-  buyerIdentity: BuyerIdentity;
+  authenticatedAccount: AuthenticatedAccount;
 
   /**
    * The renderer version being used for the extension.
@@ -99,28 +105,6 @@ export interface ReturnApi {
 
 export interface OrderApi {
   orderId: string;
-}
-
-export interface BuyerIdentity {
-  /**
-   * Provides the company info that the business customer is purchasing on behalf of.
-   * If the buyer is not a business customer, this value is `undefined`.
-   */
-  purchasingCompany: StatefulRemoteSubscribable<PurchasingCompany | undefined>;
-}
-
-export interface PurchasingCompany {
-  /**
-   * Include information of the company that the business customer is purchasing on behalf of.
-   */
-  company: Company;
-}
-
-export interface Company {
-  /**
-   * Company ID.
-   */
-  id: string;
 }
 
 export interface Localization {
