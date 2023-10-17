@@ -65,8 +65,8 @@ const data: LandingTemplateSchema = {
         },
         {
           subtitle: 'UI reference',
-          name: 'Figma UI Kit (coming soon)',
-          url: '#',
+          name: 'Figma UI Kit',
+          url: 'https://www.figma.com/community/file/1265417558571498993',
           type: 'figma',
         },
       ],
