@@ -15,7 +15,7 @@ export default reactExtension(
   () => <LoadingStateSkeletons />,
 );
 
-export const Thumbnail = ({
+export const ProductThumbnail = ({
   source = 'https://yourawesomeimage.com',
 }) => (
   <View
@@ -81,7 +81,7 @@ export const LoadingStateSkeletons = () => {
           inlineSize={64}
         />
       ) : (
-        <Thumbnail />
+        <ProductThumbnail />
       )}
       <BlockStack spacing="extraTight">
         {itemInfo(item)}

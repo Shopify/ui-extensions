@@ -66,7 +66,7 @@ export function getExamples(
         description: metadata?.description ?? '',
         image: metadata?.image ?? undefined,
         codeblock: {
-          title: metadata?.title ?? id.replace('/default', ''),
+          title: metadata?.title ?? ` ${id.replace('/default', '')}`,
           tabs: getExtensionCodeTabs(id),
         },
       },

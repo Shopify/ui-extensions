@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'MapPopover',
   description:
-    '`MapPopover` provides additional information or context about a specific location or point of interest on a map. Map popovers often contain relevant details such as the name, address, description, or other pertinent information related to the location.\n\n**They must be specified inside the `overlay` prop of its activator component (`MapMarker`).**\n\n Currently, the `MapPopover` only supports text content as its children.',
+    'MapPopover provides additional information or context about a specific location or point of interest on a map.',
   requires: '',
   thumbnail: 'mappopover-thumbnail.png',
   isVisualComponent: true,
@@ -35,6 +35,14 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'best-practices',
+      title: 'Best Practices',
+      sectionContent: `- Use to display relevant details such as the name, address, description, or other pertinent information related to the location.\n\n- Ensure that the content displayed in the map popover is brief, relevant, and easy to understand.\n\n- Maintain visual consistency with the overall design of the checkout. `,
+    },
+  ],
   related: [
     {
       name: 'Map',

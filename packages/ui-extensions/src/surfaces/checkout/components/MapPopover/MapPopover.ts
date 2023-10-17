@@ -1,6 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export interface MapPopoverProps {
+import {IdProps} from '../shared';
+
+export interface MapPopoverProps extends IdProps {
   /**
    * Callback to run when the Popover is closed.
    */
