@@ -26,6 +26,10 @@ export {
   usePhone,
   usePurchasingCompany,
 } from './buyer-identity';
+export {
+  useAuthenticatedAccountCustomer,
+  useAuthenticatedAccountPurchasingCompany,
+} from './authenticated-account';
 export {useTranslate} from './translate';
 export {useSessionToken} from './session-token';
 export {useSettings} from './settings';

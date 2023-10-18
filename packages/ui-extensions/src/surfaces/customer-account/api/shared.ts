@@ -1162,3 +1162,43 @@ export interface MailingAddress {
    */
   phone?: string;
 }
+
+export interface AuthenticatedAccount {
+  /**
+   * Provides the company info of the authenticated business customer.
+   * If the customer is not authenticated or is not a business customer, this value is `undefined`.
+   */
+  purchasingCompany: StatefulRemoteSubscribable<PurchasingCompany | undefined>;
+  /**
+   * Provides the customer information of the authenticated customer.
+   */
+  customer: StatefulRemoteSubscribable<Customer | undefined>;
+}
+
+/**
+ * Information about the authenticated customer.
+ *
+ * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+ */
+export interface Customer {
+  /**
+   * Customer ID.
+   *
+   * @example 'gid://shopify/Customer/123'
+   */
+  id: string;
+}
+
+export interface PurchasingCompany {
+  /**
+   * Include information of the company of the logged in business customer.
+   */
+  company: Company;
+}
+
+export interface Company {
+  /**
+   * Company ID.
+   */
+  id: string;
+}

@@ -2,7 +2,7 @@ export type {
   CartCost,
   CartLineCost,
   CheckoutSettings,
-  Customer,
+  OrderStatusCustomer,
   ExtensionSettings,
   Merchandise,
   ImageDetails,
@@ -63,6 +63,10 @@ export type {
   I18n,
   Language,
   Storage,
+  AuthenticatedAccount,
+  PurchasingCompany,
+  Company,
+  Customer,
 } from './api/shared';
 
 export type {CartLineItemApi} from './api/cart-line/cart-line-item';
@@ -77,9 +81,6 @@ export type {
   NavigationOptions,
   NavigationType,
   NavigateFunction,
-  BuyerIdentity,
-  PurchasingCompany,
-  Company,
   Localization,
   CompanyLocationApi,
   OrderApi,
