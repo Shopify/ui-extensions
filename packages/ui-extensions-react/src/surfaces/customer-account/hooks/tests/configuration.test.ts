@@ -8,6 +8,9 @@ describe('useSettings', () => {
 
     const {value} = mount.hook(() => useSettings(), {
       extensionApi: {
+        extension: {
+          target: 'customer-account.order-status.block.render' as const,
+        },
         settings: createMockStatefulRemoteSubscribable(settings),
       },
     });

@@ -1,19 +1,25 @@
 import {
   Country,
-  RenderExtensionTarget,
+  RenderOrderStatusExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
+import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Returns the country of the checkout, and automatically re-renders
  * your component if the country changes.
  */
 export function useLocalizationCountry<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(): Country | undefined {
-  const {localization} = useApi<Target>();
+  const api = useApi<Target>();
+  const extensionTarget = api.extension.target;
 
-  return useSubscription(localization.country);
+  if (!('country' in api.localization)) {
+    throw new ExtensionHasNoFieldError('country', extensionTarget);
+  }
+
+  return useSubscription(api.localization.country);
 }

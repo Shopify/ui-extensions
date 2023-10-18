@@ -27,6 +27,9 @@ function createMockCustomer(customer = {}) {
 function createEmptyContext() {
   return {
     extensionApi: {
+      extension: {
+        target: 'customer-account.order-status.block.render' as const,
+      },
       buyerIdentity: undefined,
     },
   };
@@ -56,6 +59,9 @@ function createMockSuscribable<T>(data: T): StatefulRemoteSubscribable<T> {
 function createMockHookContext(email?: string, phone?: string, customer = {}) {
   return {
     extensionApi: {
+      extension: {
+        target: 'customer-account.order-status.block.render' as const,
+      },
       buyerIdentity: {
         customer: createMockSuscribable(customer),
         email: createMockSuscribable(email),

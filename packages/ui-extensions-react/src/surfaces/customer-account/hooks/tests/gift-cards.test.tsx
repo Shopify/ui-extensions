@@ -22,6 +22,9 @@ describe('Gift cards API hooks', () => {
       ];
 
       const extensionApi: PartialExtensionApi = {
+        extension: {
+          target: 'customer-account.order-status.block.render' as const,
+        },
         appliedGiftCards: createMockStatefulRemoteSubscribable(giftCards),
       };
 
