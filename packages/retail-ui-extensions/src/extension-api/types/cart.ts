@@ -31,6 +31,7 @@ export interface LineItem {
   sku?: string;
   vendor?: string;
   properties: {[key: string]: string};
+  isGiftCard: boolean;
 }
 
 export interface Discount {
