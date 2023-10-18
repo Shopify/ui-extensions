@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'MapMarker',
   description:
-    'MapMarker represents a specific location or point of interest on a map. When a cluster of multiple markers are in close proximity to each other, instead of displaying individual markers for each point of interest, use a cluster marker to indicate the presence of multiple markers within a specific area.',
+    'MapMarker represents a specific location or point of interest on a map.',
   requires: '',
   thumbnail: 'mapmarker-thumbnail.png',
   isVisualComponent: true,
@@ -40,8 +40,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best Practices',
-      sectionContent:
-        '<h3>Markers</h3>\n\n- If your markers are interactive, make sure that the selected marker’s icon is different from the rest of the non-selected markers.\n\n- If there are too many markers concentrated, utilize cluster markers.',
+      sectionContent: `- If your markers are interactive, make sure that the selected marker's icon is different from the rest of the non-selected markers.\n\n- If there are a large number of markers obscuring important features of the map, set the markers to clusterable to help increase the readability of the map.`,
     },
   ],
   related: [
