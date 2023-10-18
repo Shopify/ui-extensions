@@ -694,6 +694,11 @@ export interface Checkout {
    * the checkout.
    */
   totalTax: MoneyV2;
+
+  /**
+   * A list of transactions associated with a checkout or order.
+   */
+  transactions: Transaction[];
 }
 
 /**
@@ -1189,6 +1194,24 @@ export interface ProductVariant {
 }
 
 /**
+ * The interface representing a screen, usually the one on which the current
+ * window is being rendered
+ */
+export interface Screen {
+  /**
+   * Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Screen/height),
+   * the height of the screen
+   */
+  height: number;
+
+  /**
+   * Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Screen/width),
+   * the width of the screen
+   */
+  width: number;
+}
+
+/**
  * An object that contains the metadata of when a search has been performed.
  */
 export interface SearchResult {
@@ -1215,6 +1238,21 @@ export interface ShippingRate {
  * 8601](https://en.wikipedia.org/wiki/ISO_8601) format
  */
 export type Timestamp = string;
+
+/**
+ * A transaction associated with a checkout or order.
+ */
+export interface Transaction {
+  /**
+   * The monetary value with currency allocated to the transaction method.
+   */
+  amount: MoneyV2;
+
+  /**
+   * The name of the payment provider used for the transaction.
+   */
+  gateway: string;
+}
 
 /**
  * A snapshot of a subset of properties of the `document` object in the top
@@ -1333,6 +1371,13 @@ export interface WebPixelsWindow {
    * alias for window.scrollY
    */
   pageYOffset: number;
+
+  /**
+   * Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Screen), the
+   * interface representing a screen, usually the one on which the current
+   * window is being rendered
+   */
+  screen: Screen;
 
   /**
    * Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), the
