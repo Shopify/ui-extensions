@@ -1,5 +1,5 @@
 import type {EventBus} from './EventBus';
-import {VisitorApi} from './VisitorApi';
+import type {VisitorApi} from './VisitorApi';
 
 export interface PublicApi {
   publish: EventBus['publish'];

@@ -237,6 +237,13 @@ export const pixelEvents = {
               'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window), an alias for window.scrollY',
           },
         },
+        screen: {
+          ref: 'Screen',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Screen), the interface representing a screen, usually the one on which the current window is being rendered',
+          },
+        },
         screenX: {
           type: 'uint32',
           metadata: {
@@ -348,6 +355,28 @@ export const pixelEvents = {
           metadata: {
             description:
               'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Location), a string containing the canonical form of the origin of the specific location',
+          },
+        },
+      },
+    },
+    Screen: {
+      metadata: {
+        description:
+          'The interface representing a screen, usually the one on which the current window is being rendered',
+      },
+      properties: {
+        height: {
+          type: 'uint32',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Screen/height), the height of the screen',
+          },
+        },
+        width: {
+          type: 'uint32',
+          metadata: {
+            description:
+              'Per [MDN](https://developer.mozilla.org/en-US/docs/Web/API/Screen/width), the width of the screen',
           },
         },
       },
@@ -554,6 +583,15 @@ export const pixelEvents = {
           metadata: {
             description:
               'The sum of all the taxes applied to the line items and shipping lines in the checkout.',
+          },
+        },
+        transactions: {
+          metadata: {
+            description:
+              'A list of transactions associated with a checkout or order.',
+          },
+          elements: {
+            ref: 'Transaction',
           },
         },
       },
@@ -1132,6 +1170,27 @@ export const pixelEvents = {
               description:
                 'A list of products returned by the search query. The first product variant for each product is returned',
             },
+          },
+        },
+      },
+    },
+    Transaction: {
+      metadata: {
+        description: 'A transaction associated with a checkout or order.',
+      },
+      properties: {
+        amount: {
+          ref: 'MoneyV2',
+          metadata: {
+            description:
+              'The monetary value with currency allocated to the transaction method.',
+          },
+        },
+        gateway: {
+          type: 'string',
+          metadata: {
+            description:
+              'The name of the payment provider used for the transaction.',
           },
         },
       },

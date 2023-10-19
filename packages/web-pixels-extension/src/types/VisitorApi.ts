@@ -4,7 +4,7 @@ export interface VisitorParams {
 }
 
 export interface VisitorOptions {
-  apiClientId?: string;
+  appId?: string;
 }
 export interface VisitorApi {
   visitor(params: VisitorParams, options?: VisitorOptions): boolean;

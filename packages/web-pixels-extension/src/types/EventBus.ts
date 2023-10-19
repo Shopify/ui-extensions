@@ -26,6 +26,7 @@ export interface PublisherOptions extends Record<string, unknown> {
     appId: string;
     type: string;
   };
+  eventId?: string;
 }
 
 export type SubscriberCallback<T> = (event: T) => void;
