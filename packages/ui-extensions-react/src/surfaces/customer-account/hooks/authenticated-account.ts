@@ -10,7 +10,7 @@ import {useSubscription} from './subscription';
 /**
  * Returns the current authenticated `Customer`.
  *
- * The value is `undefined` if the customer hasn't authenticated yet.
+ * The value is `undefined` if the customer isn't authenticated.
  */
 export function useAuthenticatedAccountCustomer<
   Target extends RenderExtensionTarget,
@@ -21,7 +21,7 @@ export function useAuthenticatedAccountCustomer<
 }
 
 /**
- * Provides information about the company and its location the authenticated business customer.
+ * Provides information about the company of the authenticated business customer.
  * The value is `undefined` if a business customer isn't authenticated.
  */
 export function useAuthenticatedAccountPurchasingCompany<
