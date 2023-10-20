@@ -27,4 +27,7 @@ export interface PolicyModalProps {
   type: PolicyType;
 }
 
-export const PolicyModal = createRemoteReactComponent('PolicyModal');
+export const PolicyModal = createRemoteReactComponent<
+  'PolicyModal',
+  PolicyModalProps
+>('PolicyModal');
