@@ -27,8 +27,8 @@ interface BadgeIconProps {
 }
 
 interface BadgeNoIconProps {
-  icon: never;
-  iconPosition: never;
+  icon?: never;
+  iconPosition?: never;
 }
 
 export type BadgeProps = BadgeBaseProps & (BadgeIconProps | BadgeNoIconProps);
