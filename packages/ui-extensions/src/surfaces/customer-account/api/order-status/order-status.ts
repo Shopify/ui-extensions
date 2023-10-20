@@ -293,9 +293,11 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * on which these metafields exist depends on the source of the order:
    *
    * - If the source is an order, then the metafields are on the order.
+   *
    * - If the source is a draft order, then the initial value of metafields are
    *   from the draft order, and any new metafields you write are applied
    *   to the order created by the checkout.
+   *
    * - For all other sources, the metafields are only stored locally on the
    *   client creating the checkout, and are applied to the order that
    *   results from checkout.
@@ -343,6 +345,8 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    */
   checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
 
+  // eslint-disable-next-line no-warning-comments
+  // TODO: update the links
   /**
    * The settings matching the settings definition written in the
    * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
