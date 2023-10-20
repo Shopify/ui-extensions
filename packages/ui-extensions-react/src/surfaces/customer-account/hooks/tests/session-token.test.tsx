@@ -10,6 +10,9 @@ describe('useSessionToken', () => {
 
     const {value} = mount.hook(() => useSessionToken(), {
       extensionApi: {
+        extension: {
+          target: 'customer-account.order-status.block.render' as const,
+        },
         sessionToken: mockGetSessionToken,
       },
     });

@@ -8,6 +8,9 @@ describe('useTimezone', () => {
 
     const {value} = mount.hook(() => useTimezone(), {
       extensionApi: {
+        extension: {
+          target: 'customer-account.order-status.block.render' as const,
+        },
         localization: {
           timezone: createMockStatefulRemoteSubscribable(timezone),
         },

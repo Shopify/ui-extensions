@@ -10,6 +10,9 @@ describe('useLocalizationCountry', () => {
 
     const {value} = mount.hook(() => useLocalizationCountry(), {
       extensionApi: {
+        extension: {
+          target: 'customer-account.order-status.block.render' as const,
+        },
         localization: {
           country: createMockStatefulRemoteSubscribable(country),
         },
