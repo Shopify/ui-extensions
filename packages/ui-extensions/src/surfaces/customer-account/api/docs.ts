@@ -1,4 +1,5 @@
 import {OrderStatusApi} from './order-status/order-status';
+import {StandardApi} from './standard-api/standard-api';
 import {CartLineItemApi} from './cart-line/cart-line-item';
 
 export interface Docs_OrderStatus_MetafieldsApi
@@ -54,3 +55,20 @@ export interface Docs_CartLineItem_CartLinesApi
 
 export interface Docs_OrderStatus_OrderApi
   extends Pick<OrderStatusApi<any>, 'order'> {}
+
+export interface Docs_Standard_ExtensionApi
+  extends Pick<StandardApi<any>, 'extension'> {}
+
+export interface Docs_Standard_AuthenticatedAccountApi
+  extends Pick<StandardApi<any>, 'authenticatedAccount'> {}
+
+export interface Docs_Standard_VersionApi
+  extends Pick<StandardApi<any>, 'version'> {}
+
+export interface Docs_Standard_LocalizationApi
+  extends Pick<StandardApi<any>, 'localization' | 'i18n'> {}
+
+export interface Docs_Standard_StorageApi
+  extends Pick<StandardApi<any>, 'storage'> {}
+
+export interface Docs_Standard_UIApi extends Pick<StandardApi<any>, 'ui'> {}
