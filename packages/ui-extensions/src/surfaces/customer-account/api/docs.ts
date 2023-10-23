@@ -72,3 +72,6 @@ export interface Docs_Standard_StorageApi
   extends Pick<StandardApi<any>, 'storage'> {}
 
 export interface Docs_Standard_UIApi extends Pick<StandardApi<any>, 'ui'> {}
+
+export interface Docs_OrderStatus_QueryApi
+  extends Pick<OrderStatusApi<any>, 'query'> {}
