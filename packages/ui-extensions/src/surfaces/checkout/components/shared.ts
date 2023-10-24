@@ -162,8 +162,11 @@ export type CornerRadiusDeprecated = 'tight' | 'loose';
 export interface BackgroundProps {
   /**
    * Adjust the background.
+   *
+   * @defaultValue 'transparent'
    */
   background?: MaybeConditionalStyle<Background>;
+
   /**
    * Sets one or multiple responsive background images.
    */
@@ -485,7 +488,7 @@ export type Alignment = 'start' | 'center' | 'end';
 export type InlineAlignment = 'start' | 'center' | 'end';
 export type BlockAlignment = Alignment | 'baseline';
 
-export type Background = 'transparent' | 'color1' | 'color2' | 'color3';
+export type Background = 'transparent' | 'base' | 'subdued';
 export type BackgroundFit = 'cover' | 'contain';
 export type BackgroundPosition = 'top' | 'bottom' | 'left' | 'right' | 'center';
 export type BackgroundRepeat = 'repeat' | 'noRepeat';
