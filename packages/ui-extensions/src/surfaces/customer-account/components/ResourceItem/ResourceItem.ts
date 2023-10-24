@@ -10,19 +10,25 @@ export interface ResourceItemProps
   action?: RemoteFragment;
 
   /**
-   * Label for the action grouping
+   * Label for the action grouping. If a label is not provided, default text is used.
+   *
+   * @defaultValue "More actions"
    */
   actionLabel?: string;
 
   /**
-   * Accessibility label for the action grouping
+   * Accessibility label for the action grouping. If an accessibility label is not provided,
+   * default text is used.
+   *
+   * @defaultValue "More actions"
    */
   actionAccessibilityLabel?: string;
 
   /**
    * Indicates that the item is in a loading state.
    *
-   * When `true`, the item will be replaced by loading indicators (for example: skeletons or spinners).
+   * When `true`, the item shows loading indicators for the UI elements that it is owns.
+   * The item is not responsible for the loading indicators of any content that is passed as `children`.
    *
    * @defaultValue false
    */
