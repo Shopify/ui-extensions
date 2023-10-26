@@ -80,3 +80,5 @@ export {Thumbnail} from './components/Thumbnail/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail/Thumbnail';
 export {URLField} from './components/URLField/URLField';
 export type {URLFieldProps} from './components/URLField/URLField';
+export {LocationList} from './components/LocationList/LocationList';
+export type {LocationListProps} from './components/LocationList/LocationList';
