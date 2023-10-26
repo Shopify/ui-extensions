@@ -39,7 +39,8 @@ export interface OrderStatusExtensionTargets {
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
    */
   'customer-account.order-status.block.render': RenderExtension<
-    OrderStatusApi<'customer-account.order-status.block.render'>,
+    OrderStatusApi<'customer-account.order-status.block.render'> &
+      StandardApi<'customer-account.order-status.block.render'>,
     AnyComponent
   >;
   /**
@@ -48,39 +49,46 @@ export interface OrderStatusExtensionTargets {
    */
   'customer-account.order-status.cart-line-item.render-after': RenderExtension<
     CartLineItemApi &
-      OrderStatusApi<'customer-account.order-status.cart-line-item.render-after'>,
+      OrderStatusApi<'customer-account.order-status.cart-line-item.render-after'> &
+      StandardApi<'customer-account.order-status.cart-line-item.render-after'>,
     AnyComponent
   >;
   /**
    * A static extension target that is rendered after all line items on the Order Status page.
    */
   'customer-account.order-status.cart-line-list.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-status.cart-line-list.render-after'>,
+    OrderStatusApi<'customer-account.order-status.cart-line-list.render-after'> &
+      StandardApi<'customer-account.order-status.cart-line-list.render-after'>,
     AnyComponent
   >;
   'customer-account.order-status.return-details.render-after': RenderExtension<
     OrderStatusApi<'customer-account.order-status.return-details.render-after'> &
+      StandardApi<'customer-account.order-status.return-details.render-after'> &
       ReturnApi,
     AnyComponent
   >;
   'customer-account.order-status.fulfillment-details.render-after': RenderExtension<
     OrderStatusApi<'customer-account.order-status.fulfillment-details.render-after'> &
+      StandardApi<'customer-account.order-status.fulfillment-details.render-after'> &
       FulfillmentApi,
     AnyComponent
   >;
   'customer-account.order-status.unfulfilled-items.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-status.unfulfilled-items.render-after'>,
+    OrderStatusApi<'customer-account.order-status.unfulfilled-items.render-after'> &
+      StandardApi<'customer-account.order-status.unfulfilled-items.render-after'>,
     AnyComponent
   >;
   'customer-account.order-status.payment-details.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-status.payment-details.render-after'>,
+    OrderStatusApi<'customer-account.order-status.payment-details.render-after'> &
+      StandardApi<'customer-account.order-status.payment-details.render-after'>,
     AnyComponent
   >;
   /**
    * A static extension target that is rendered after a purchase below the customer information on the Order Status page.
    */
   'customer-account.order-status.customer-information.render-after': RenderExtension<
-    OrderStatusApi<'customer-account.order-status.cart-line-list.render-after'>,
+    OrderStatusApi<'customer-account.order-status.cart-line-list.render-after'> &
+      StandardApi<'customer-account.order-status.cart-line-list.render-after'>,
     AnyComponent
   >;
 }
