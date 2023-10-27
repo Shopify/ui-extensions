@@ -687,3 +687,14 @@ export interface AnchorProps {
    */
   onPress?(): void;
 }
+
+export type BackgroundColorKeyword = 'transparent' | 'base' | 'subdued';
+
+export interface BackgroundProps {
+  /**
+   * Adjust the background of the element.
+   *
+   * @default: 'transparent'
+   */
+  background?: BackgroundColorKeyword;
+}
