@@ -1202,3 +1202,9 @@ export interface Company {
    */
   id: string;
 }
+
+export interface Ui {
+  overlay: {
+    close(overlayId: string): void;
+  };
+}

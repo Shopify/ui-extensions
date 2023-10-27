@@ -18,10 +18,7 @@ export interface Docs_OrderStatus_CostApi
   extends Pick<OrderStatusApi<any>, 'cost'> {}
 
 export interface Docs_OrderStatus_LocalizationApi
-  extends Pick<OrderStatusApi<any>, 'i18n' | 'localization'> {}
-
-export interface Docs_OrderStatus_DiscountsApi
-  extends Pick<OrderStatusApi<any>, 'discountAllocations' | 'discountCodes'> {}
+  extends Pick<OrderStatusApi<any>, 'localization'> {}
 
 export interface Docs_OrderStatus_DiscountsApi
   extends Pick<OrderStatusApi<any>, 'discountAllocations' | 'discountCodes'> {}

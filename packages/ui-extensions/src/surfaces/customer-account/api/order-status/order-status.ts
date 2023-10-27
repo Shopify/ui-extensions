@@ -4,15 +4,10 @@ import type {
   CurrencyCode,
   CountryCode,
   Timezone,
-  GraphQLError,
-  StorefrontApiVersion,
   SellingPlan,
   Attribute,
   MailingAddress,
-  I18n,
   Language,
-  Storage,
-  AuthenticatedAccount,
 } from '../shared';
 import type {ExtensionTarget} from '../../targets';
 import {Extension} from '../shared';
@@ -266,16 +261,6 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   extensionPoint: Target;
 
   /**
-   * Utilities for translating content and formatting values according to the current
-   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-localization)
-   * of the order.
-   *
-   * See [localization examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-localization)
-   * for more information.
-   */
-  i18n: I18n;
-
-  /**
    * A list of lines containing information about the items the customer intends to purchase.
    */
   lines: StatefulRemoteSubscribable<CartLine[]>;
@@ -321,16 +306,6 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   order: StatefulRemoteSubscribable<Order | undefined>;
 
   /**
-   * Used to query the Storefront GraphQL API with a prefetched token.
-   *
-   * See [storefront api access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-storefront-api-access) for more information.
-   */
-  query: <Data = unknown, Variables = {[key: string]: unknown}>(
-    query: string,
-    options?: {variables?: Variables; version?: StorefrontApiVersion},
-  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
-
-  /**
    * Provides access to session tokens, which can be used to verify token claims on your app's server.
    *
    * See [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-session-token) for more information.
@@ -345,13 +320,11 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    */
   checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
 
-  // eslint-disable-next-line no-warning-comments
-  // TODO: update the links
   /**
    * The settings matching the settings definition written in the
-   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
+   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration) file.
    *
-   *  See [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-settings) for more information.
+   *  See [settings examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/standardapi#example-settings) for more information.
    *
    * > Note: When an extension is being installed in the editor, the settings will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
@@ -376,32 +349,11 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   shop: Shop;
 
   /**
-   * Key-value storage for the extension target.
-   */
-  storage: Storage;
-
-  /**
-   * Methods to interact with the extension's UI.
-   */
-  ui: Ui;
-
-  /**
    * The renderer version being used for the extension.
    *
    * @example 'unstable'
    */
   version: Version;
-
-  /**
-   * Information about the authenticated account.
-   */
-  authenticatedAccount: AuthenticatedAccount;
-}
-
-export interface Ui {
-  overlay: {
-    close(overlayId: string): void;
-  };
 }
 
 export interface SessionToken {
