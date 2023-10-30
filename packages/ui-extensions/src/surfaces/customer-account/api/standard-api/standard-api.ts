@@ -6,6 +6,7 @@ import {
   AuthenticatedAccount,
   GraphQLError,
   StorefrontApiVersion,
+  Ui,
 } from '../shared';
 
 import type {ExtensionTarget} from '../../targets';
@@ -79,17 +80,14 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Methods to interact with the extension's UI.
    */
-  ui: {
-    overlay: {
-      close(overlayId: string): void;
-    };
-  };
+  ui: Ui;
+
   navigation: StandardExtensionNavigation;
 
   /**
    * Used to query the Storefront GraphQL API with a prefetched token.
    *
-   * See [storefront api access examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/standard-api/storefront-api#examples) for more information.
+   * See [storefront api access examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/storefront-api#examples) for more information.
    */
   query: <Data = unknown, Variables = {[key: string]: unknown}>(
     query: string,
