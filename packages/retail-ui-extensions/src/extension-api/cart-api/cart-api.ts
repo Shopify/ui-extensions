@@ -62,8 +62,13 @@ export interface CartApiContent {
   /** Add a line item by variant ID to the cart
    * @param variantId the product variant's numeric ID to add to the cart
    * @param quantity the number of this variant to add to the cart
+   * @param quantity the custom key to value object to attribute to the line item
    */
-  addLineItem(variantId: number, quantity: number): Promise<void>;
+  addLineItem(
+    variantId: number,
+    quantity: number,
+    properties: Record<string, string>,
+  ): Promise<void>;
 
   /** Remove the line item at this uuid from the cart
    * @param uuid the uuid of the line item that should be removed
