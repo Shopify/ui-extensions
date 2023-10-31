@@ -17,14 +17,10 @@ export interface CartApi {
 
 /**
  * @deprecated
- * PriceOverride is no longer supported. Code discounts are only supported at the Cart level.
+ * Code discounts are only supported at the Cart level.
  * Please migrate to using CartDiscountType and LineItemDiscountType as soon as possible.
  */
-export type DiscountType =
-  | 'Percentage'
-  | 'FixedAmount'
-  | 'PriceOverride'
-  | 'Code';
+export type DiscountType = 'Percentage' | 'FixedAmount' | 'Code';
 
 export type CartDiscountType = 'Percentage' | 'FixedAmount' | 'Code';
 
