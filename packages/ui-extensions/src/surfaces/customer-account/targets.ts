@@ -117,10 +117,6 @@ export interface CustomerAccountExtensionTargets {
     StandardApi<'CustomerAccount::KitchenSinkRun'> & {name: string},
     string
   >;
-  'customer-account.dynamic.render': RenderExtension<
-    StandardApi<'customer-account.dynamic.render'>,
-    AllComponents
-  >;
   'customer-account.order-index.block.render': RenderExtension<
     StandardApi<'customer-account.order-index.block.render'>,
     AllComponents
