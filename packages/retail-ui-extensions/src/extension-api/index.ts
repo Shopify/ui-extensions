@@ -1,5 +1,10 @@
 export type {LocaleApi} from './locale-api';
-export type {CartApiContent, DiscountType} from './cart-api/cart-api';
+export type {
+  CartApiContent,
+  DiscountType,
+  CartDiscountType,
+  LineItemDiscountType,
+} from './cart-api/cart-api';
 export type {CartApi} from './cart-api';
 export type {NavigationApi, NavigationApiContent} from './navigation-api';
 export type {SmartGridApi, SmartGridApiContent} from './smartgrid-api';
