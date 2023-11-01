@@ -44,7 +44,7 @@ export interface CartApiContent {
    * @param amount the percentage or fixed monetary amount deducted with the discount. Pass in `undefined` if using discount codes.
    */
   applyCartDiscount(
-    type: DiscountType | CartDiscountType,
+    type: CartDiscountType,
     title: string,
     amount?: string,
   ): Promise<void>;
@@ -119,7 +119,7 @@ export interface CartApiContent {
    */
   setLineItemDiscount(
     uuid: string,
-    type: DiscountType | LineItemDiscountType,
+    type: LineItemDiscountType,
     title: string,
     amount: string,
   ): Promise<void>;
