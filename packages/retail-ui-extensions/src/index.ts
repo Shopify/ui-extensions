@@ -2,6 +2,8 @@ export type {
   LocaleApi,
   CartApiContent,
   DiscountType,
+  CartDiscountType,
+  LineItemDiscountType,
   DeviceApi,
   DeviceApiContent,
   CartApi,

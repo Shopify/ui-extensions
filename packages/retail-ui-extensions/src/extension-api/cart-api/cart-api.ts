@@ -15,11 +15,20 @@ export interface CartApi {
   cart: CartApiContent;
 }
 
+/**
+ * @deprecated
+ * PriceOverride is no longer supported. Code discounts are only supported at the Cart level.
+ * Please migrate to using CartDiscountType and LineItemDiscountType as soon as possible.
+ */
 export type DiscountType =
   | 'Percentage'
   | 'FixedAmount'
   | 'PriceOverride'
   | 'Code';
+
+export type CartDiscountType = 'Percentage' | 'FixedAmount' | 'Code';
+
+export type LineItemDiscountType = 'Percentage' | 'FixedAmount';
 
 export interface CartApiContent {
   /** Provides a subscription to POS cart changes.
@@ -35,7 +44,7 @@ export interface CartApiContent {
    * @param amount the percentage or fixed monetary amount deducted with the discount. Pass in `undefined` if using discount codes.
    */
   applyCartDiscount(
-    type: DiscountType,
+    type: CartDiscountType,
     title: string,
     amount?: string,
   ): Promise<void>;
@@ -110,7 +119,7 @@ export interface CartApiContent {
    */
   setLineItemDiscount(
     uuid: string,
-    type: DiscountType,
+    type: LineItemDiscountType,
     title: string,
     amount: string,
   ): Promise<void>;
