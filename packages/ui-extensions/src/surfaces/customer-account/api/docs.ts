@@ -1,6 +1,7 @@
 import {OrderStatusApi} from './order-status/order-status';
 import {StandardApi} from './standard-api/standard-api';
 import {CartLineItemApi} from './cart-line/cart-line-item';
+import {FullPageApi} from '../targets';
 
 export interface Docs_OrderStatus_MetafieldsApi
   extends Pick<OrderStatusApi<any>, 'appMetafields' | 'metafields'> {}
@@ -72,3 +73,7 @@ export interface Docs_Standard_UIApi extends Pick<StandardApi<any>, 'ui'> {}
 
 export interface Docs_Standard_QueryApi
   extends Pick<StandardApi<any>, 'query'> {}
+
+export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
+
+export interface Docs_FullPageApi extends Omit<FullPageApi, 'location'> {}

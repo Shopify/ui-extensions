@@ -259,6 +259,9 @@ export type AllowedComponentsForRenderExtension<
 > = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[Target]>;
 
 export interface FullPageApi {
+  /**
+   * @deprecated This is deprecated. DO NOT USE. This will be removed soon without warning. use `api.navigation.currentEntry` and `api.navigation.addEventListener` instead.
+   */
   location: StatefulRemoteSubscribable<{
     pathname: string;
     search: string;
