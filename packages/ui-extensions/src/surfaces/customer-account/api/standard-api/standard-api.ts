@@ -67,7 +67,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
      */
     getExtensionFullPageUrl(relative: string): Promise<string>;
     /**
-     * @deprecated This is deprecated. DO NOT USE. This will be removed soon without warning. use `api.navigate` instead.
+     * @deprecated This is deprecated. DO NOT USE. This will be removed soon without warning. use `api.navigation.navigate` instead.
      * @param to
      */
     navigate(to: string): Promise<void>;
