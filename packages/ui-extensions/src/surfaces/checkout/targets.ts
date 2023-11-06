@@ -81,6 +81,7 @@ export interface ExtensionTargets {
   /**
    * A static extension target that renders on every line item, inside the details
    * under the line item properties element. It replaces the default component rendering.
+   * @private
    */
   'purchase.cart-line-item.line-components.render': RenderExtension<
     CartLineItemApi &
@@ -92,6 +93,7 @@ export interface ExtensionTargets {
    * under the line item properties element. It replaces the default component rendering.
    *
    * @deprecated Use `purchase.cart-line-item.line-components.render` instead.
+   * @private
    */
   'Checkout::CartLineDetails::RenderLineComponents': RenderExtension<
     CartLineItemApi &
