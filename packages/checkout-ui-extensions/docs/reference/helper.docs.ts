@@ -90,6 +90,13 @@ export function getExamples(
         tabs: getExtensionCodeTabs('shipping-method-details/default'),
       },
     },
+    'shipping-method-list/default': {
+      description: '',
+      codeblock: {
+        title: '',
+        tabs: getExtensionCodeTabs('shipping-method-list/default'),
+      },
+    },
     'pickup-locations/default': {
       description: '',
       codeblock: {
