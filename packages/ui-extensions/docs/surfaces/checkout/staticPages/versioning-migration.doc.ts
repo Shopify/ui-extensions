@@ -212,7 +212,6 @@ Extension targets are more flexible and powerful than extension points and they 
 |---|---|
 | Checkout::Actions::RenderBefore | purchase.checkout.actions.render-before |
 | Checkout::CartLineDetails::RenderAfter | purchase.checkout.cart-line-item.render-after |
-| Checkout::CartLineDetails::RenderLineComponents | purchase.cart-line-item.line-components.render |
 | Checkout::CartLines::RenderAfter | purchase.checkout.cart-line-list.render-after |
 | Checkout::Contact::RenderAfter | purchase.checkout.contact.render-after |
 | Checkout::DeliveryAddress::RenderBefore | purchase.checkout.delivery-address.render-before |
