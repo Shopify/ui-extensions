@@ -124,6 +124,7 @@ export type {
   PickupPointsApi,
   PickupLocationsApi,
   ShippingMethodDetailsApi,
+  ShippingMethodListApi,
 } from './api';
 export type {RenderExtension} from './render-extension';
 

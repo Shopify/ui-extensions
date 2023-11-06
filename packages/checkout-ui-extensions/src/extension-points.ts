@@ -9,6 +9,7 @@ import type {
   StandardApi,
   CheckoutApi,
   OrderStatusApi,
+  ShippingMethodListApi,
 } from './api';
 
 type Components = typeof import('./components');
@@ -222,7 +223,9 @@ export interface ExtensionPoints {
    * header and shipping method options.
    */
   'Checkout::ShippingMethods::RenderBefore': RenderExtension<
-    CheckoutApi & StandardApi<'Checkout::ShippingMethods::RenderBefore'>,
+    ShippingMethodListApi &
+      CheckoutApi &
+      StandardApi<'Checkout::ShippingMethods::RenderBefore'>,
     AllComponents
   >;
   /**
@@ -230,7 +233,9 @@ export interface ExtensionPoints {
    * options.
    */
   'Checkout::ShippingMethods::RenderAfter': RenderExtension<
-    CheckoutApi & StandardApi<'Checkout::ShippingMethods::RenderAfter'>,
+    ShippingMethodListApi &
+      CheckoutApi &
+      StandardApi<'Checkout::ShippingMethods::RenderAfter'>,
     AllComponents
   >;
   /**

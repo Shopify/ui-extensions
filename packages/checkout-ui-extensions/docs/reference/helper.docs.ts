@@ -374,6 +374,12 @@ const links: {[key: string]: LinkType[]} = {
       url: '/docs/api/checkout-ui-extensions/apis/extensionpoints',
       type: 'ExtensionPoints',
     },
+    {
+      name: 'ShippingMethodListApi',
+      subtitle: 'APIs',
+      url: '/docs/api/checkout-ui-extensions/apis/shippingmethodlistapi',
+      type: 'ShippingMethodListApi',
+    },
   ],
   configuration: [
     {
