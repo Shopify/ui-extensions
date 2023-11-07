@@ -44,6 +44,8 @@ export {Image} from './components/Image/Image';
 export type {ImageProps} from './components/Image/Image';
 export {Link} from './components/Link/Link';
 export type {LinkProps} from './components/Link/Link';
+export {MoneyField} from './components/MoneyField/MoneyField';
+export type {MoneyFieldProps} from './components/MoneyField/MoneyField';
 export {NumberField} from './components/NumberField/NumberField';
 export type {NumberFieldProps} from './components/NumberField/NumberField';
 export {PasswordField} from './components/PasswordField/PasswordField';

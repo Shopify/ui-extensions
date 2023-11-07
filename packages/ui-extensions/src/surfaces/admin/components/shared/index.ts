@@ -698,3 +698,210 @@ export interface BackgroundProps {
    */
   background?: BackgroundColorKeyword;
 }
+
+export interface NumberConstraintsProps {
+  /**
+   * The highest decimal or integer to be accepted for the field.
+   * When used with `step` the value will round down to the max number.
+   *
+   * Note: a user will still be able to use the keyboard to input a number higher than
+   * the max. It is up to the developer to add appropriate validation.
+   */
+  max?: number;
+
+  /**
+   * The lowest decimal or integer to be accepted for the field.
+   * When used with `step` the value will round up to the min number.
+   *
+   * Note: a user will still be able to use the keyboard to input a number lower than
+   * the min. It is up to the developer to add appropriate validation.
+   *
+   * @defaultValue 0
+   */
+  min?: number;
+
+  /**
+   * The amount the value can increase or decrease by. This can be an integer or decimal.
+   * If a `max` or `min` is specified with `step` when increasing/decreasing the value
+   * via the buttons, the final value will always round to the `max` or `min`
+   * rather than the closest valid amount.
+   *
+   * @defaultValue 1
+   */
+  step?: number;
+}
+
+export interface Money {
+  /**
+   * A decimal money amount.
+   */
+  amount: number;
+
+  /**
+   * A currency.
+   */
+  currencyCode: CurrencyCode;
+}
+
+export type CurrencyCode =
+  | 'USD'
+  | 'EUR'
+  | 'GBP'
+  | 'CAD'
+  | 'AFN'
+  | 'ALL'
+  | 'DZD'
+  | 'AOA'
+  | 'ARS'
+  | 'AMD'
+  | 'AWG'
+  | 'AUD'
+  | 'BBD'
+  | 'AZN'
+  | 'BDT'
+  | 'BSD'
+  | 'BHD'
+  | 'BIF'
+  | 'BZD'
+  | 'BMD'
+  | 'BTN'
+  | 'BAM'
+  | 'BRL'
+  | 'BOB'
+  | 'BWP'
+  | 'BND'
+  | 'BGN'
+  | 'MMK'
+  | 'KHR'
+  | 'CVE'
+  | 'KYD'
+  | 'XAF'
+  | 'CLP'
+  | 'CNY'
+  | 'COP'
+  | 'KMF'
+  | 'CDF'
+  | 'CRC'
+  | 'HRK'
+  | 'CZK'
+  | 'DKK'
+  | 'DOP'
+  | 'XCD'
+  | 'EGP'
+  | 'ETB'
+  | 'XPF'
+  | 'FJD'
+  | 'GMD'
+  | 'GHS'
+  | 'GTQ'
+  | 'GYD'
+  | 'GEL'
+  | 'HTG'
+  | 'HNL'
+  | 'HKD'
+  | 'HUF'
+  | 'ISK'
+  | 'INR'
+  | 'IDR'
+  | 'ILS'
+  | 'IQD'
+  | 'JMD'
+  | 'JPY'
+  | 'JEP'
+  | 'JOD'
+  | 'KZT'
+  | 'KES'
+  | 'KWD'
+  | 'KGS'
+  | 'LAK'
+  | 'LVL'
+  | 'LBP'
+  | 'LSL'
+  | 'LRD'
+  | 'LTL'
+  | 'MGA'
+  | 'MKD'
+  | 'MOP'
+  | 'MWK'
+  | 'MVR'
+  | 'MXN'
+  | 'MYR'
+  | 'MUR'
+  | 'MDL'
+  | 'MAD'
+  | 'MNT'
+  | 'MZN'
+  | 'NAD'
+  | 'NPR'
+  | 'ANG'
+  | 'NZD'
+  | 'NIO'
+  | 'NGN'
+  | 'NOK'
+  | 'OMR'
+  | 'PAB'
+  | 'PKR'
+  | 'PGK'
+  | 'PYG'
+  | 'PEN'
+  | 'PHP'
+  | 'PLN'
+  | 'QAR'
+  | 'RON'
+  | 'RUB'
+  | 'RWF'
+  | 'WST'
+  | 'SAR'
+  | 'RSD'
+  | 'SCR'
+  | 'SGD'
+  | 'SDG'
+  | 'SYP'
+  | 'ZAR'
+  | 'KRW'
+  | 'SSP'
+  | 'SBD'
+  | 'LKR'
+  | 'SRD'
+  | 'SZL'
+  | 'SEK'
+  | 'CHF'
+  | 'TWD'
+  | 'THB'
+  | 'TZS'
+  | 'TTD'
+  | 'TND'
+  | 'TRY'
+  | 'TMT'
+  | 'UGX'
+  | 'UAH'
+  | 'AED'
+  | 'UYU'
+  | 'UZS'
+  | 'VUV'
+  | 'VND'
+  | 'XOF'
+  | 'YER'
+  | 'ZMW'
+  | 'BYN'
+  | 'BYR'
+  | 'DJF'
+  | 'ERN'
+  | 'FKP'
+  | 'GIP'
+  | 'GNF'
+  | 'IRR'
+  | 'KID'
+  | 'LYD'
+  | 'MRU'
+  | 'SLL'
+  | 'SHP'
+  | 'SOS'
+  | 'STD'
+  | 'STN'
+  | 'TJS'
+  | 'TOP'
+  | 'VED'
+  | 'VEF'
+  | 'VES'
+  | 'XXX';
