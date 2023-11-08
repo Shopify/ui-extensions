@@ -214,7 +214,7 @@ Checkout UI extensions don't have access to the DOM and can't return DOM nodes. 
           type: 'tutorial',
         },
         {
-          name: 'Checkout branding',
+          name: 'Checkout styling',
           subtitle: 'Learn more',
           url: '/docs/apps/checkout/styling',
           type: 'tutorial',
