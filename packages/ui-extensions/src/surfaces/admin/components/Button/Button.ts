@@ -1,9 +1,13 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import type {AccessibilityRole, AnchorProps} from '../shared';
+import type {
+  AccessibilityRole,
+  AnchorProps,
+  OverlayControlProps,
+} from '../shared';
 
 export type ButtonProps = ButtonBaseProps | ButtonAnchorProps;
 
-interface CommonProps {
+interface CommonProps extends OverlayControlProps {
   /**
    * A unique identifier for the button.
    */

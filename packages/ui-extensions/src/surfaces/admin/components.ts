@@ -72,5 +72,7 @@ export {TextField} from './components/TextField/TextField';
 export type {TextFieldProps} from './components/TextField/TextField';
 export {Thumbnail} from './components/Thumbnail/Thumbnail';
 export type {ThumbnailProps} from './components/Thumbnail/Thumbnail';
+export {Tooltip} from './components/Tooltip/Tooltip';
+export type {TooltipProps} from './components/Tooltip/Tooltip';
 export {URLField} from './components/URLField/URLField';
 export type {URLFieldProps} from './components/URLField/URLField';

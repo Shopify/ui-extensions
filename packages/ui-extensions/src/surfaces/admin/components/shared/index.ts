@@ -698,3 +698,35 @@ export interface BackgroundProps {
    */
   background?: BackgroundColorKeyword;
 }
+
+export type OverlaySlots = 'overlay';
+export interface BaseOverlayProps extends GlobalProps {
+  /* Callback fired when the overlay is opened */
+  onShow?(): void;
+
+  /* Callback fired when the overlay is closed */
+  onHide?(): void;
+
+  /* The slot linking an overlay with an activator element */
+  slot?: OverlaySlots;
+
+  /** Visually hidden text for screen readers */
+  accessibilityLabel?: string;
+}
+
+export interface OverlayControlProps {
+  /**
+   * Turns a button into an overlay control button. It takes the ID of the
+   * overlay element that should be opened as its value.
+   * [HTML popoverTarget attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#popovertarget)
+   */
+  overlayTarget?: string;
+
+  /**
+   * Defines the action that should be taken when the button is pressed.
+   * [HTMLButtonElement popoverTargetAction property](https://developer.mozilla.org/en-US/docs/Web/API/HTMLButtonElement/popoverTargetAction)
+   *
+   * @defaultValue 'toggle'
+   */
+  overlayTargetAction?: 'show' | 'hide' | 'toggle';
+}
