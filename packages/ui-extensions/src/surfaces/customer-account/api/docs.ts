@@ -121,3 +121,20 @@ export interface Docs_OrderActionMenu_Button
    */
   to: ButtonProps['to'];
 }
+
+export interface Docs_CustomerAccountAction_Button_PrimaryAction
+  extends Pick<
+    ButtonProps,
+    | 'onPress'
+    | 'loading'
+    | 'loadingLabel'
+    | 'disabled'
+    | 'accessibilityLabel'
+    | 'accessibilityRole'
+  > {}
+
+export interface Docs_CustomerAccountAction_Button_SecondaryAction
+  extends Pick<
+    ButtonProps,
+    'onPress' | 'loading' | 'loadingLabel' | 'disabled' | 'accessibilityLabel'
+  > {}
