@@ -2,27 +2,30 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export interface ImageGroupProps {
   /**
-   * The layout of the images.
-   * When set to "grid", the images will be displayed in a grid layout with max images of 4.
-   * When set to "inline-stack", the images will be displayed in a single row with max images of 3.
+   * Changes the layout of the images.
    *
    * @default "grid"
    */
   variant?: 'grid' | 'inline-stack';
 
   /**
-   * Accessibility label for the image group.
+   * A label that describes the purpose or contents of the image group. When set,
+   * it will be announced to users using assistive technologies and will
+   * provide them with more context.
    */
-  imagesAccessibilityLabel?: string;
+  accessibilityLabel?: string;
 
   /**
-   * Loading state of the component.
-   * @default false
+   * Indicates that the image group is in a loading state.
+   *
+   * When `true`, the image group show a loading indicator.
+   *
+   * @defaultValue false
    */
   loading?: boolean;
 
   /**
-   * Total count of items.  If totalItems is greater than the number of images passed then totalItems will be displayed.
+   * Indicates the total number of items that could be displayed in the image group. It is used to determine the remaining number to show when all the available image slots have been filled.
    */
   totalItems?: number;
 }
