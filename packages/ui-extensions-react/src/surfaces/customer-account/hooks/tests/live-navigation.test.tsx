@@ -3,14 +3,15 @@ import {useLiveFullPageNavigation} from '../live-navigation';
 import {destroyAll} from '@quilted/react-testing';
 
 describe('useLiveFullPageNavigation', () => {
+  const mock = {
+    navigate: jest.fn(),
+    currentEntry: {state: jest.fn(), url: 'extension:/'},
+    addEventListener: jest.fn(),
+    removeEventListener: jest.fn(),
+    updateCurrentEntry: jest.fn(),
+  };
+
   it('returns the entry', () => {
-    const mock = {
-      navigate: jest.fn(),
-      currentEntry: {state: jest.fn(), url: 'extension:/'},
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      updateCurrentEntry: jest.fn(),
-    };
     const {value} = mount.hook(useLiveFullPageNavigation, {
       extensionApi: {
         navigation: mock,
@@ -21,13 +22,6 @@ describe('useLiveFullPageNavigation', () => {
   });
 
   it('calls addEventListener', () => {
-    const mock = {
-      navigate: jest.fn(),
-      currentEntry: {state: jest.fn(), url: 'extension:/'},
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      updateCurrentEntry: jest.fn(),
-    };
     mount.hook(useLiveFullPageNavigation, {
       extensionApi: {
         navigation: mock,
@@ -41,13 +35,6 @@ describe('useLiveFullPageNavigation', () => {
   });
 
   it('calls removeEventListener on destroy', () => {
-    const mock = {
-      navigate: jest.fn(),
-      currentEntry: {state: jest.fn(), url: 'extension:/'},
-      addEventListener: jest.fn(),
-      removeEventListener: jest.fn(),
-      updateCurrentEntry: jest.fn(),
-    };
     mount.hook(useLiveFullPageNavigation, {
       extensionApi: {
         navigation: mock,
