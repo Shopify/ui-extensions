@@ -1,0 +1,28 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - jkv/keep-generated-docs
+    paths:
+      - 'packages/ui-extensions/**'
+      - 'packages/ui-extensions-react/**'
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  changesets:
+    name: Docs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+
+      - uses: ./.github/workflows/actions/prepare
+
+      - name: Build checkout docs
+        run: yarn docs:checkout ${{ github.ref_name }} ./docs/surfaces/checkout/temp
+
+      - name: Compare docs
+        run: yarn compare-docs --output packages/ui-extensions/docs/surfaces/checkout/generated

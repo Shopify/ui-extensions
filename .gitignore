@@ -9,6 +9,7 @@ packages/*/*.mjs
 packages/*/*.d.ts
 packages/*/*.js
 packages/*/bin
+packages/**/temp
 !packages/*/.eslintrc.js
 *.log
 
