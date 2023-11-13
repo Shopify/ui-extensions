@@ -11,24 +11,17 @@ export function useLiveFullPageNavigation<
   const {currentEntry, removeEventListener, addEventListener} =
     useApi<Target>().navigation;
 
-  const [entry, update] = useReducer(() => {
-    if (!currentEntry) {
-      throw new Error(
-        'useLiveFullPageNavigation must be used in a full page extension only',
-      );
-    }
-    return currentEntry;
-  }, currentEntry);
+  const [entry, update] = useReducer(() => currentEntry, currentEntry);
 
   useEffect(() => {
-    if (!removeEventListener || !addEventListener) {
+    if (!currentEntry || !removeEventListener || !addEventListener) {
       throw new Error(
         'useLiveFullPageNavigation must be used in a full page extension only',
       );
     }
     addEventListener('currententrychange', update);
     return () => removeEventListener('currententrychange', update);
-  }, [addEventListener, removeEventListener]);
+  }, [addEventListener, currentEntry, removeEventListener]);
 
   return entry;
 }
