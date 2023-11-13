@@ -2,16 +2,24 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export interface ChoiceListProps<T extends string | string[]> {
   /**
-   * An identifier for the field that is unique within the nearest
-   * containing `Form` component.
+   * A unique identifier for the field in the closest `Form` component.
    */
   name: string;
   /**
-   * A `string` or `string[]` indicating the ids of selected choices. When
+   * A `string` or `string[]` indicating the ids of selected choices. **When
    * a string is set, choices render as radios. When a string array is
-   * set, choices render as checkboxes.
+   * set, choices render as checkboxes**.
    */
   value: T;
+  /**
+   * Toggle between `base` and `group` look.
+   *
+   * Check the [best practices](#best-practices)
+   * to learn more about the variants.
+   *
+   * @defaultValue 'base'
+   */
+  variant?: 'base' | 'group';
   /**
    * A callback that is run whenever the choice list is changed. This callback
    * is called with a string or array of strings indicating the ids of choices
