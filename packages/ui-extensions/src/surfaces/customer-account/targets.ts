@@ -94,6 +94,9 @@ export interface OrderStatusExtensionTargets {
 }
 export type OrderStatusExtensionTarget = keyof OrderStatusExtensionTargets;
 
+export type RenderCustomerAccountFullPageExtensionTarget =
+  'customer-account.page.render';
+
 export interface CustomerAccountExtensionTargets {
   'customer-account.page.render': RenderExtension<
     Omit<StandardApi<'customer-account.page.render'>, 'navigation'> &
