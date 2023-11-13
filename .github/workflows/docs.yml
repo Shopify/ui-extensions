@@ -1,4 +1,4 @@
-name: Deploy
+name: Build Docs
 
 on:
   push:
@@ -24,6 +24,12 @@ jobs:
 
       - name: Build checkout docs
         run: yarn docs:checkout un-versioned ./docs/surfaces/checkout/temp
+
+      - name: Retain built docs
+        uses: actions/upload-artifact@v3
+        with:
+          name: generated docs
+          path: ./docs/surfaces/checkout/temp/*
 
       - name: Compare checkout docs
         run: yarn compare-docs --output packages/ui-extensions/docs/surfaces/checkout/generated
