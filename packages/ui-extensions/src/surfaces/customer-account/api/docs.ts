@@ -83,6 +83,7 @@ export interface Docs_Page_Button_PrimaryAction
   extends Pick<
     ButtonProps,
     | 'onPress'
+    | 'overlay'
     | 'to'
     | 'loading'
     | 'loadingLabel'
@@ -101,6 +102,7 @@ export interface Docs_ResourceItem_Button_Action
   extends Pick<
     ButtonProps,
     | 'onPress'
+    | 'overlay'
     | 'to'
     | 'loading'
     | 'loadingLabel'
