@@ -7,6 +7,7 @@ on:
     paths:
       - 'packages/ui-extensions/**'
       - 'packages/ui-extensions-react/**'
+      - .github/workflows/docs.yml
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
