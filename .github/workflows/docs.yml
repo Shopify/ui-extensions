@@ -12,7 +12,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   changesets:
-    name: Docs
+    name: Build docs
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -22,7 +22,7 @@ jobs:
       - uses: ./.github/workflows/actions/prepare
 
       - name: Build checkout docs
-        run: yarn docs:checkout ${{ github.ref_name }} ./docs/surfaces/checkout/temp
+        run: yarn docs:checkout un-versioned ./docs/surfaces/checkout/temp
 
-      - name: Compare docs
+      - name: Compare checkout docs
         run: yarn compare-docs --output packages/ui-extensions/docs/surfaces/checkout/generated
