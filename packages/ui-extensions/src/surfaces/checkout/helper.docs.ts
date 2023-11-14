@@ -78,6 +78,40 @@ export function getExamples(
         tabs: getExtensionCodeTabs('ui-components/loading-skeletons'),
       },
     },
+    'ui-components/togglebuttongroup-time-picking': {
+      image: 'togglebuttongroup-time-picking.png',
+      description: `The ToggleButtonGroup component is ideal for a small set of options.  It allows for easy scanning of available choices. Also the component’s big tap target makes it a good choice for enhanced mobile experience. However, in a grid layout, having more than 6 ToggleButtons can get overwhelming and take up too much vertical space. When there are more than 6 choices, consider using the [Select](/docs/api/checkout-ui-extensions/components/forms/select) component instead. `,
+      codeblock: {
+        title: 'Displaying a small set of time choices',
+        tabs: getExtensionCodeTabs(
+          'ui-components/togglebuttongroup-time-picking',
+        ),
+      },
+    },
+    'ui-components/choicelist-survey': {
+      description: `The base variant’s flexibility allows for the creation of Likert scales using the ChoiceList component. By utilizing layout components, you can easily structure rows and columns for this purpose.`,
+      image: 'choicelist-survey.png',
+      codeblock: {
+        title: 'Custom survey using the base variant',
+        tabs: getExtensionCodeTabs('ui-components/choicelist-survey'),
+      },
+    },
+    'ui-components/choicelist-details': {
+      description: `The ChoiceList’s group variant, combined with the details property, allows for the conditional display of information when needed.`,
+      image: 'choicelist-details.png',
+      codeblock: {
+        title: 'Collecting additional information',
+        tabs: getExtensionCodeTabs('ui-components/choicelist-details'),
+      },
+    },
+    'ui-components/choicelist-time-picking': {
+      description: `The ChoiceList component is great for presenting a concise list of options, particularly when showcasing time ranges due to its ample horizontal space. However, if there’s more than 5 choices, use the [Select](/docs/api/checkout-ui-extensions/components/forms/select) component instead.`,
+      image: 'choicelist-time-picking.png',
+      codeblock: {
+        title: 'Displaying a short list of time choices',
+        tabs: getExtensionCodeTabs('ui-components/choicelist-time-picking'),
+      },
+    },
   };
 }
 
