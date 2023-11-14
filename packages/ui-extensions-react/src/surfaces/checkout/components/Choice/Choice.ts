@@ -4,4 +4,11 @@ import type {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
 
 export type ChoiceProps = ReactPropsFromRemoteComponentType<typeof BaseChoice>;
 
-export const Choice = createRemoteReactComponent(BaseChoice);
+export const Choice = createRemoteReactComponent(BaseChoice, {
+  fragmentProps: [
+    'details',
+    'primaryContent',
+    'secondaryContent',
+    'tertiaryContent',
+  ],
+});

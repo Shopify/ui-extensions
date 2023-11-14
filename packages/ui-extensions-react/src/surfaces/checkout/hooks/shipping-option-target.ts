@@ -1,4 +1,5 @@
 import {ShippingOption} from '@shopify/ui-extensions/checkout';
+import {useMemo} from 'react';
 
 import {ExtensionHasNoTargetError} from '../errors';
 
@@ -19,15 +20,22 @@ export function useShippingOptionTarget(): {
     | 'purchase.checkout.shipping-option-item.render-after'
     | 'purchase.checkout.shipping-option-item.details.render'
   >();
-  if (!api.target || !api.isTargetSelected) {
+  if (!api.target || api.isTargetSelected === undefined) {
     throw new ExtensionHasNoTargetError(
       'useShippingOptionTarget',
       api.extension.target,
     );
   }
 
-  return {
-    shippingOptionTarget: useSubscription(api.target),
-    isTargetSelected: useSubscription(api.isTargetSelected),
-  };
+  const shippingOptionTarget = useSubscription(api.target);
+  const isTargetSelected = useSubscription(api.isTargetSelected);
+
+  const shippingOption = useMemo(() => {
+    return {
+      shippingOptionTarget,
+      isTargetSelected,
+    };
+  }, [shippingOptionTarget, isTargetSelected]);
+
+  return shippingOption;
 }
