@@ -10,7 +10,7 @@ import {
 const data: ReferenceEntityTemplateSchema = {
   name: 'customer-account.order-status.cart-line-item.render-after',
   description: `
-  A static extension target that renders on every line item, inside the details under the line item properties element on the Order Status Page.
+  A static extension target that renders on every line item, inside the details under the line item properties element on the **Order status** page.
 
   ${ORDER_STATUS_SURFACE_NOTE}
   `,
