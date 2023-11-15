@@ -39,7 +39,7 @@ type ProductConfigurationComponents = AnyComponentBuilder<
 >;
 
 type OrderRoutingComponents = AnyComponentBuilder<
-  Pick<Components, 'LocationList'>
+  Pick<Components, 'InternalLocationList'>
 >;
 
 /**
@@ -50,7 +50,7 @@ type AllComponents = AnyComponentBuilder<
     Components,
     | 'CustomerSegmentTemplate'
     | 'InternalCustomerSegmentTemplate'
-    | 'LocationList'
+    | 'InternalLocationList'
   >
 >;
 

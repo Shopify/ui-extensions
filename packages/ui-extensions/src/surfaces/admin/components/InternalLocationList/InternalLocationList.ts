@@ -29,7 +29,7 @@ export interface LocationGroup {
   id: string;
 }
 
-export interface LocationListProps {
+export interface InternalLocationListProps {
   /**
    * An array of location groups.
    */
@@ -70,7 +70,7 @@ export interface LocationListProps {
   onCreateGroup: (id: string) => void;
 }
 
-export const LocationList = createRemoteComponent<
-  'LocationList',
-  LocationListProps
->('LocationList');
+export const InternalLocationList = createRemoteComponent<
+  'InternalLocationList',
+  InternalLocationListProps
+>('InternalLocationList');
