@@ -9,7 +9,6 @@ export type {
   Product,
   ProductVariant,
   SelectedOption,
-  SessionToken,
   Money,
   Shop,
   Version,
@@ -67,6 +66,7 @@ export type {
   PurchasingCompany,
   Company,
   Customer,
+  SessionToken,
 } from './api/shared';
 
 export type {CartLineItemApi} from './api/cart-line/cart-line-item';
