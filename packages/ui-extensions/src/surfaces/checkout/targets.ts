@@ -182,7 +182,7 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the Thank You Page.
+   * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the **Thank you** page.
    * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
@@ -195,7 +195,7 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the Thank You Page.
+   * A [block extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the **Thank you** page.
    * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
@@ -210,7 +210,7 @@ export interface ExtensionTargets {
   >;
   /**
    * A static extension target that renders on every line item, inside the details
-   * under the line item properties element on the Thank You Page.
+   * under the line item properties element on the **Thank you** page.
    */
   'purchase.thank-you.cart-line-item.render-after': RenderExtension<
     CartLineItemApi &
@@ -219,7 +219,7 @@ export interface ExtensionTargets {
   >;
   /**
    * A static extension target that renders on every line item, inside the details
-   * under the line item properties element on the Thank You Page.
+   * under the line item properties element on the **Thank you** page.
    *
    * @deprecated Use `purchase.thank-you.cart-line-item.render-after` instead.
    */
@@ -229,14 +229,14 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered after all line items on the Thank You page.
+   * A static extension target that is rendered after all line items on the **Thank you** page.
    */
   'purchase.thank-you.cart-line-list.render-after': RenderExtension<
     StandardApi<'purchase.thank-you.cart-line-list.render-after'>,
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered after all line items on the Thank You page.
+   * A static extension target that is rendered after all line items on the **Thank you** page.
    *
    * @deprecated Use `purchase.thank-you.cart-line-list.render-after` instead.
    */
@@ -245,14 +245,14 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered after a purchase below the customer information on the Thank You page.
+   * A static extension target that is rendered after a purchase below the customer information on the **Thank you** page.
    */
   'purchase.thank-you.customer-information.render-after': RenderExtension<
     StandardApi<'purchase.thank-you.customer-information.render-after'>,
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered after a purchase below the customer information on the Thank You page.
+   * A static extension target that is rendered after a purchase below the customer information on the **Thank you** page.
    *
    * @deprecated Use `purchase.thank-you.customer-information.render-after` instead.
    */
