@@ -1439,6 +1439,11 @@ export interface DeliveryGroup {
    * Whether delivery is required for the delivery group.
    */
   isDeliveryRequired: boolean;
+
+  /**
+   * The unique identifier of the referenced delivery group.
+   */
+  id?: string;
 }
 
 /**
