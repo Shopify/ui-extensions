@@ -138,14 +138,14 @@ Get started testing extensions on [one-page checkout](/docs/apps/checkout/best-p
       title: 'Thank you locations',
       anchorLink: 'supported-typ-locations',
       sectionContent:
-        'The thank you page is shown to buyers immediately after a checkout is successfully submitted. Learn more about building for [the thank you page](/docs/apps/checkout/thank-you-order-status).',
+        'The **Thank you** page is shown to buyers immediately after a checkout is successfully submitted. Learn more about building for [the **Thank you** page](/docs/apps/checkout/thank-you-order-status).',
       accordionContent: [
         {
           title: 'Order details',
           description: `
 Displays all order information to buyers.
 
-See [all thank you page extension points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+Review [all **Thank you** page extension points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
 `,
           image: 'supported-locations-thank-you.png',
         },
@@ -154,7 +154,7 @@ See [all thank you page extension points](/docs/api/checkout-ui-extensions/apis/
           description: `
 Summary of the cart contents, discounts, and order totals.
 
-See [all thank you page extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
+Review [all **Thank you** page extensions points](/docs/api/checkout-ui-extensions/apis/extensionpoints).
 `,
           image: 'supported-locations-order-summary-thank-you.png',
         },
