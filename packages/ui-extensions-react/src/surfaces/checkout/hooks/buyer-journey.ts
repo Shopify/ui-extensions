@@ -31,7 +31,7 @@ export function useBuyerJourney<
 /**
  * Returns true if the buyer completed submitting their order.
  *
- * For example, when viewing the order status page after submitting payment, the buyer will have completed their order.
+ * For example, when viewing the **Order status** page after submitting payment, the buyer will have completed their order.
  */
 export function useBuyerJourneyCompleted<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

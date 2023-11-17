@@ -5,9 +5,9 @@ import {getExample, getLinksByTag} from '../helper.docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'OrderStatusApi',
   overviewPreviewDescription:
-    'The API provided to extension targets on the order status page.',
+    'The API provided to extension targets on the **Order status** page.',
   description: `
-This API object is provided to extensions registered for the extension targets that appear exclusively on the order status page.
+This API object is provided to extensions registered for the extension targets that appear exclusively on the **Order status** page.
 
 It extends the [StandardApi](/docs/api/checkout-ui-extensions/apis/standardapi) and provides access to an order object.
 `,

@@ -253,7 +253,7 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the Order Status Page.
+   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the **Order status** page.
    * Unlike static extension targets, dynamic extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
@@ -266,7 +266,7 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the Order Status Page.
+   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the **Order status** page.
    * Unlike static extension targets, dynamic extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
@@ -282,7 +282,7 @@ export interface ExtensionTargets {
   >;
   /**
    * A static extension target that renders on every line item, inside the details
-   * under the line item properties element on the Order Status Page.
+   * under the line item properties element on the **Order status** page.
    */
   'customer-account.order-status.cart-line-item.render-after': RenderExtension<
     CartLineItemApi &
@@ -292,7 +292,7 @@ export interface ExtensionTargets {
   >;
   /**
    * A static extension target that renders on every line item, inside the details
-   * under the line item properties element on the Order Status Page.
+   * under the line item properties element on the **Order status** page.
    *
    * @deprecated Use `customer-account.order-status.cart-line-item.render-after` instead.
    */
@@ -303,7 +303,7 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered after all line items on the Order Status page.
+   * A static extension target that is rendered after all line items on the **Order status** page.
    */
   'customer-account.order-status.cart-line-list.render-after': RenderExtension<
     OrderStatusApi &
@@ -311,7 +311,7 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered after all line items on the Order Status page.
+   * A static extension target that is rendered after all line items on the **Order status** page.
    *
    * @deprecated Use `customer-account.order-status.cart-line-list.render-after` instead.
    */
@@ -321,7 +321,7 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered after a purchase below the customer information on the Order Status page.
+   * A static extension target that is rendered after a purchase below the customer information on the **Order status** page.
    */
   'customer-account.order-status.customer-information.render-after': RenderExtension<
     OrderStatusApi &
@@ -329,7 +329,7 @@ export interface ExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered after a purchase below the customer information on the Order Status page.
+   * A static extension target that is rendered after a purchase below the customer information on the **Order status** page.
    *
    * @deprecated Use `customer-account.order-status.customer-information.render-after` instead.
    */

@@ -168,14 +168,14 @@ Review [all **Thank you** page extensions targets](/docs/api/checkout-ui-extensi
       title: 'Order status locations',
       anchorLink: 'supported-osp-locations',
       sectionContent:
-        'The order status page is shown to buyers when they return to a completed checkout for order updates. Learn more about building for [the order status page](/docs/apps/checkout/thank-you-order-status).',
+        'The **Order status** page is shown to buyers when they return to a completed checkout for order updates. Learn more about building for [the **Order status** page](/docs/apps/checkout/thank-you-order-status).',
       accordionContent: [
         {
           title: 'Order details',
           description: `
 Displays all order information to buyers.
 
-See [all order status page extension targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+Review [all **Order status** page extension targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
 `,
           image: 'supported-locations-order-status.png',
         },
@@ -184,7 +184,7 @@ See [all order status page extension targets](/docs/api/checkout-ui-extensions/a
           description: `
 Summary of the cart contents, discounts, and order totals.
 
-See [all order status page extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
+Review [all **Order status** page extensions targets](/docs/api/checkout-ui-extensions/apis/extensiontargets).
 `,
           image: 'supported-locations-order-summary-order-status.png',
         },
