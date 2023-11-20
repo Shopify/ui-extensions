@@ -59,22 +59,6 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   i18n: I18n;
 
   /**
-   *  @deprecated This is deprecated. DO NOT USE. This will be removed soon without warning.
-   */
-  router: {
-    /**
-     * @deprecated This is deprecated. DO NOT USE. This will be removed soon without warning. use shopify protocol `extension://{{relative_path}} instead.
-     * @param relative
-     */
-    getExtensionFullPageUrl(relative: string): Promise<string>;
-    /**
-     * @deprecated This is deprecated. DO NOT USE. This will be removed soon without warning. use `api.navigation.navigate` instead.
-     * @param to
-     */
-    navigate(to: string): Promise<void>;
-  };
-
-  /**
    * Key-value storage for the extension target.
    */
   storage: Storage;
