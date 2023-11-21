@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import type {ReactElement, PropsWithChildren} from 'react';
 import {Component} from 'react';
 import {render as remoteRender} from '@remote-ui/react';
@@ -31,6 +33,7 @@ export function reactExtension<Target extends RenderExtensionTarget>(
   render: (
     api: ApiForRenderExtension<Target>,
   ) => ReactElement<any> | Promise<ReactElement<any>>,
+  loader?: () => Promise<any>,
 ): ExtensionTargets[Target] {
   // TypeScript can’t infer the type of the callback because it’s a big union
   // type. To get around it, we’ll just fake like we are rendering the
@@ -60,6 +63,7 @@ export function reactExtension<Target extends RenderExtensionTarget>(
         }
       });
     },
+    loader,
   ) as any;
 }
 

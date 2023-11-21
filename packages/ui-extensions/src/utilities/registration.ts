@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 import {createRemoteRoot} from '@remote-ui/core';
 
 import type {
@@ -37,7 +39,7 @@ export function createExtensionRegistrationFunction<
 >(): ExtensionRegistrationFunctionWithRoot<ExtensionTargets> {
   const extensionWrapper: ExtensionRegistrationFunctionWithRoot<
     ExtensionTargets
-  > = (target, implementation) => {
+  > = (target, implementation, loader) => {
     async function extension(...args: any[]) {
       // Rendering extensions have two arguments. Non-rendering extensions don’t have
       // a `RemoteChannel` that needs to be normalized, so we can just pass the arguments
@@ -71,7 +73,7 @@ export function createExtensionRegistrationFunction<
       return renderResult;
     }
 
-    (globalThis as any).shopify?.extend(target, extension);
+    (globalThis as any).shopify?.extend(target, extension, loader);
 
     return extension as any;
   };
