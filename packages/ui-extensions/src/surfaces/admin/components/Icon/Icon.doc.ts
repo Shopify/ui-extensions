@@ -62,11 +62,6 @@ const data: ReferenceEntityTemplateSchema = {
       name: 'Image',
       url: '/docs/api/admin-extensions/components/media/image',
     },
-    {
-      type: 'component',
-      name: 'Image',
-      url: '/docs/api/admin-extensions/components/media/image',
-    },
   ],
 };
 
