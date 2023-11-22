@@ -162,7 +162,7 @@ const data: LandingTemplateSchema = {
         {
           name: 'Figma UI kit',
           subtitle: 'UI Reference',
-          url: 'https://www.figma.com/community/file/1121180079120732846',
+          url: 'https://www.figma.com/community/file/1304881365343613949/checkout-and-account-components',
           type: 'setting',
         },
       ],
