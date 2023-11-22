@@ -1,18 +1,21 @@
 import {mount} from './mount';
-import {useLiveFullPageNavigation} from '../live-navigation';
+import {useNavigationCurrentEntry} from '../live-navigation';
 import {destroyAll} from '@quilted/react-testing';
 
-describe('useLiveFullPageNavigation', () => {
-  const mock = {
-    navigate: jest.fn(),
-    currentEntry: {state: jest.fn(), url: 'extension:/'},
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-    updateCurrentEntry: jest.fn(),
-  };
+describe('useNavigationCurrentEntry', () => {
+  function createMock() {
+    return {
+      navigate: jest.fn(),
+      currentEntry: {state: jest.fn(), url: 'extension:/'},
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      updateCurrentEntry: jest.fn(),
+    };
+  }
 
   it('returns the entry', () => {
-    const {value} = mount.hook(useLiveFullPageNavigation, {
+    const mock = createMock();
+    const {value} = mount.hook(useNavigationCurrentEntry, {
       extensionApi: {
         navigation: mock,
       },
@@ -22,7 +25,8 @@ describe('useLiveFullPageNavigation', () => {
   });
 
   it('calls addEventListener', () => {
-    mount.hook(useLiveFullPageNavigation, {
+    const mock = createMock();
+    mount.hook(useNavigationCurrentEntry, {
       extensionApi: {
         navigation: mock,
       },
@@ -35,7 +39,8 @@ describe('useLiveFullPageNavigation', () => {
   });
 
   it('calls removeEventListener on destroy', () => {
-    mount.hook(useLiveFullPageNavigation, {
+    const mock = createMock();
+    mount.hook(useNavigationCurrentEntry, {
       extensionApi: {
         navigation: mock,
       },
@@ -55,7 +60,7 @@ describe('useLiveFullPageNavigation', () => {
     };
 
     const runner = async () => {
-      return mount.hook(useLiveFullPageNavigation, {
+      return mount.hook(useNavigationCurrentEntry, {
         extensionApi: {
           navigation: mock,
         },
@@ -63,7 +68,7 @@ describe('useLiveFullPageNavigation', () => {
     };
 
     await expect(runner).rejects.toThrow(
-      'useLiveFullPageNavigation must be used in a full page extension only',
+      'useNavigationCurrentEntry must be used in an extension with the customer-account.page.render target only',
     );
   });
 });

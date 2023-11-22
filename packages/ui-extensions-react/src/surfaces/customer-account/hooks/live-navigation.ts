@@ -5,7 +5,7 @@ import {
 import {useApi} from './api';
 import {useEffect, useReducer} from 'react';
 
-export function useLiveFullPageNavigation<
+export function useNavigationCurrentEntry<
   Target extends RenderCustomerAccountFullPageExtensionTarget = RenderCustomerAccountFullPageExtensionTarget,
 >(): NavigationHistoryEntry {
   const {currentEntry, removeEventListener, addEventListener} =
@@ -16,7 +16,7 @@ export function useLiveFullPageNavigation<
   useEffect(() => {
     if (!currentEntry || !removeEventListener || !addEventListener) {
       throw new Error(
-        'useLiveFullPageNavigation must be used in a full page extension only',
+        'useNavigationCurrentEntry must be used in an extension with the customer-account.page.render target only',
       );
     }
     addEventListener('currententrychange', update);

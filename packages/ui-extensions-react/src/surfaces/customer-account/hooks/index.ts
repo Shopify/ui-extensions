@@ -33,4 +33,4 @@ export {useExtensionEditor} from './extension-editor';
 export {useDiscountAllocations, useDiscountCodes} from './discounts';
 export {useOrder} from './order';
 export {useAppliedGiftCards} from './gift-cards';
-export {useLiveFullPageNavigation} from './live-navigation';
+export {useNavigationCurrentEntry} from './live-navigation';
