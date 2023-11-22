@@ -8,12 +8,12 @@ export interface AdminActionProps {
   title?: string;
 
   /**
-   * Sets the Primary action button of the container. This component must a button component.
+   * Sets the Primary action button of the container. This component must be a button component.
    */
   primaryAction?: RemoteFragment;
 
   /**
-   * Sets the Secondary action button of the container. This component must a button component.
+   * Sets the Secondary action button of the container. This component must be a button component.
    */
   secondaryAction?: RemoteFragment;
 
