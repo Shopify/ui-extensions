@@ -18,6 +18,10 @@ export interface Order {
    * If cancelled, the time at which the order was cancelled.
    */
   cancelledAt?: string;
+  /**
+   * A randomly generated alpha-numeric identifier for the order.
+   */
+  confirmationNumber?: string;
 }
 
 export interface OrderStatusApi {
