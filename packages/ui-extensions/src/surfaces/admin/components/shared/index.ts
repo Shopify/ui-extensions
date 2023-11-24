@@ -699,7 +699,6 @@ export interface BackgroundProps {
   background?: BackgroundColorKeyword;
 }
 
-
 export interface NumberConstraintsProps {
   /**
    * The highest decimal or integer to be accepted for the field.
@@ -906,7 +905,6 @@ export type CurrencyCode =
   | 'VEF'
   | 'VES'
   | 'XXX';
-
 
 export type TextOverflow = 'ellipsis';
 
