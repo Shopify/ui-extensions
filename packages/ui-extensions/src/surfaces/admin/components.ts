@@ -48,6 +48,8 @@ export {MoneyField} from './components/MoneyField/MoneyField';
 export type {MoneyFieldProps} from './components/MoneyField/MoneyField';
 export {NumberField} from './components/NumberField/NumberField';
 export type {NumberFieldProps} from './components/NumberField/NumberField';
+export {Paragraph} from './components/Paragraph/Paragraph';
+export type {ParagraphProps} from './components/Paragraph/Paragraph';
 export {PasswordField} from './components/PasswordField/PasswordField';
 export type {PasswordFieldProps} from './components/PasswordField/PasswordField';
 export {Pressable} from './components/Pressable/Pressable';

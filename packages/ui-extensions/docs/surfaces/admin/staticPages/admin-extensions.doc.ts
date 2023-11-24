@@ -226,6 +226,13 @@ const data: LandingTemplateSchema = {
         ],
       },
     },
+    {
+      type: 'Generic',
+      title: 'Security',
+      anchorLink: 'security',
+      sectionContent:
+        'UI Extensions run on a different origin than the Shopify Admin. For network calls to succeed, your server must support [cross-origin resource sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) for the origin `https://extensions.shopifycdn.com`.\n\nIf you have a custom [`Access-Control-Allow-Origin` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) set, you must include `https://extensions.shopifycdn.com` in the list of allowed origins.\n\nIf you are using the [Shopify App Remix Template](https://github.com/Shopify/shopify-app-template-remix), this is done automatically for you.',
+    },
   ],
 };
 

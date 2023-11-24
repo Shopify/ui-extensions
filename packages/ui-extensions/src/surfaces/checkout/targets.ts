@@ -660,6 +660,34 @@ export interface ExtensionTargets {
       StandardApi<'Checkout::PickupPoints::RenderAfter'>,
     AnyComponent
   >;
+  /**
+   * A static extension target that is rendered below the header.
+   */
+  'purchase.checkout.header.render-after': RenderExtension<
+    CheckoutApi & StandardApi<'purchase.checkout.header.render-after'>,
+    AnyComponent
+  >;
+  /**
+   * A static extension target that is rendered below the footer.
+   */
+  'purchase.checkout.footer.render-after': RenderExtension<
+    CheckoutApi & StandardApi<'purchase.checkout.footer.render-after'>,
+    AnyComponent
+  >;
+  /**
+   * A static extension target that is rendered below the header on the Thank You page.
+   */
+  'purchase.thank-you.header.render-after': RenderExtension<
+    StandardApi<'purchase.thank-you.header.render-after'>,
+    AnyComponent
+  >;
+  /**
+   * A static extension target that is rendered below the footer on the Thank You page.
+   */
+  'purchase.thank-you.footer.render-after': RenderExtension<
+    StandardApi<'purchase.thank-you.footer.render-after'>,
+    AnyComponent
+  >;
 }
 
 export type ExtensionTarget = keyof ExtensionTargets;

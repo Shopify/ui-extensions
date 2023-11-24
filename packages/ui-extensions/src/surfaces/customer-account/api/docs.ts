@@ -2,6 +2,7 @@ import {OrderStatusApi} from './order-status/order-status';
 import {StandardApi} from './standard-api/standard-api';
 import {CartLineItemApi} from './cart-line/cart-line-item';
 import {FullPageApi} from '../targets';
+import {ButtonProps} from '../components';
 
 export interface Docs_OrderStatus_MetafieldsApi
   extends Pick<OrderStatusApi<any>, 'appMetafields' | 'metafields'> {}
@@ -77,3 +78,65 @@ export interface Docs_Standard_QueryApi
 export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
 export interface Docs_FullPageApi extends Omit<FullPageApi, 'location'> {}
+
+export interface Docs_Page_Button_PrimaryAction
+  extends Pick<
+    ButtonProps,
+    | 'onPress'
+    | 'overlay'
+    | 'to'
+    | 'loading'
+    | 'loadingLabel'
+    | 'disabled'
+    | 'accessibilityLabel'
+  > {}
+export interface Docs_Page_Button_SecondaryAction
+  extends Pick<ButtonProps, 'onPress' | 'to'> {
+  /**
+   * A label used for buyers using assistive technologies. Needed because `children` passed to this component will be discarded.
+   */
+  accessibilityLabel: ButtonProps['accessibilityLabel'];
+}
+
+export interface Docs_ResourceItem_Button_Action
+  extends Pick<
+    ButtonProps,
+    | 'onPress'
+    | 'overlay'
+    | 'to'
+    | 'loading'
+    | 'loadingLabel'
+    | 'disabled'
+    | 'accessibilityLabel'
+    | 'kind'
+  > {}
+
+export interface Docs_OrderActionMenu_Button
+  extends Pick<
+    ButtonProps,
+    'onPress' | 'loading' | 'loadingLabel' | 'disabled' | 'accessibilityLabel'
+  > {
+  /**
+   * Destination URL to link to.
+   *
+   * E.g. `extension:/` to navigate to the Full-page extension.
+   */
+  to: ButtonProps['to'];
+}
+
+export interface Docs_CustomerAccountAction_Button_PrimaryAction
+  extends Pick<
+    ButtonProps,
+    | 'onPress'
+    | 'loading'
+    | 'loadingLabel'
+    | 'disabled'
+    | 'accessibilityLabel'
+    | 'accessibilityRole'
+  > {}
+
+export interface Docs_CustomerAccountAction_Button_SecondaryAction
+  extends Pick<
+    ButtonProps,
+    'onPress' | 'loading' | 'loadingLabel' | 'disabled' | 'accessibilityLabel'
+  > {}

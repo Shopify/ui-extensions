@@ -35,6 +35,30 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description:
+      "Use buyer consent checkboxes in conjunction with buyer consent phone fields for collecting the buyer's approval for a given policy.\n\nThe consent phone field is not required in order to use the consent checkbox component. This example demonstrates how they can be used together.",
+    examples: [
+      {
+        image: 'consent-combo-example.png',
+        codeblock: {
+          title: 'ConsentCheckbox with ConsentPhoneField',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/checkout/components/ConsentCheckbox/examples/with-consent-phone-field-consent-checkbox.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'JS',
+              code: './examples/with-consent-phone-field-consent-checkbox.example.ts',
+              language: 'js',
+            },
+          ],
+        },
+      },
+    ],
+  },
   related: [
     {
       name: 'ConsentCheckbox',
