@@ -1,10 +1,10 @@
-import {extend, Text, BlockStack} from '@shopify/ui-extensions/admin';
+import {extend, Paragraph, BlockStack} from '@shopify/ui-extensions/admin';
 
 extend('Playground', (root) => {
-  const text = root.createComponent(BlockStack, {inlineAlignment: 'center', gap: true}, [
-    root.createComponent(Text, {fontWeight: 'bold'}, 'Name:'),
-    root.createComponent(Text, {}, 'Jane Doe'),
+  const paragraph = root.createComponent(BlockStack, {inlineAlignment: 'center', gap: true}, [
+    root.createComponent(Paragraph, {fontWeight: 'bold'}, 'Name:'),
+    root.createComponent(Paragraph, {}, 'Jane Doe'),
   ]);
 
-  root.appendChild(text);
+  root.appendChild(paragraph);
 });
