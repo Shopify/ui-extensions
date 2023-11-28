@@ -197,12 +197,19 @@ export interface ExtensionTargets {
 
   /**
    * Renders Product Configuration on product details and product variant details
+   *
+   * See the [tutorial](docs/apps/selling-strategies/bundles/product-config) for more information
    */
-
   'admin.product-details.configuration.render': RenderExtension<
     ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>,
     ProductConfigurationComponents
   >;
+
+  /**
+   * Renders Product Configuration on product details and product variant details
+   *
+   * See the [tutorial](docs/apps/selling-strategies/bundles/product-config) for more information
+   */
   'admin.product-variant-details.configuration.render': RenderExtension<
     ProductVariantDetailsConfigurationApi<'admin.product-variant-details.configuration.render'>,
     ProductConfigurationComponents
