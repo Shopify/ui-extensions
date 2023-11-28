@@ -1,4 +1,3 @@
-import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 import {AnyComponent} from '../checkout/shared';
 
 import {CartLineItemApi} from './api/cart-line/cart-line-item';
