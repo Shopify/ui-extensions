@@ -8,7 +8,7 @@ import {
 const data: ReferenceEntityTemplateSchema = {
   name: 'Order',
   description:
-    'The API for interacting with the order, available on the Order Status Page.',
+    'The API for interacting with the order, available on the **Order status** page.',
   isVisualComponent: false,
   category: 'APIs',
   type: 'API',
@@ -21,7 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'useOrder',
       description:
-        "Returns the order information that's available on the Order Status Page.",
+        "Returns the order information that's available on the **Order status** page.",
       type: 'UseOrderGeneratedType',
     },
   ],

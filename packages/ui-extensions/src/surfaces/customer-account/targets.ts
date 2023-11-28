@@ -31,7 +31,7 @@ export type ExtensionTarget = keyof ExtensionTargets;
 
 export interface OrderStatusExtensionTargets {
   /**
-   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the Order Status Page.
+   * A [dynamic extension target](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#dynamic-extension-targets) that renders exclusively on the **Order status** page.
    * Unlike static extension targets, dynamic extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
@@ -45,7 +45,7 @@ export interface OrderStatusExtensionTargets {
   >;
   /**
    * A static extension target that renders on every line item, inside the details
-   * under the line item properties element on the Order Status Page.
+   * under the line item properties element on the **Order status** page.
    */
   'customer-account.order-status.cart-line-item.render-after': RenderExtension<
     CartLineItemApi &
@@ -54,7 +54,7 @@ export interface OrderStatusExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered after all line items on the Order Status page.
+   * A static extension target that is rendered after all line items on the **Order status** page.
    */
   'customer-account.order-status.cart-line-list.render-after': RenderExtension<
     OrderStatusApi<'customer-account.order-status.cart-line-list.render-after'> &
@@ -84,7 +84,7 @@ export interface OrderStatusExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered after a purchase below the customer information on the Order Status page.
+   * A static extension target that is rendered after a purchase below the customer information on the **Order status** page.
    */
   'customer-account.order-status.customer-information.render-after': RenderExtension<
     OrderStatusApi<'customer-account.order-status.cart-line-list.render-after'> &
@@ -196,7 +196,7 @@ export type RenderExtensionTarget = {
 }[keyof ExtensionTargets];
 
 /**
- * A union type containing the extension targets on order status page that follow the pattern of
+ * A union type containing the extension targets on **Order status** page that follow the pattern of
  * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
@@ -211,7 +211,7 @@ export type RenderOrderStatusExtensionTarget = {
 }[keyof OrderStatusExtensionTargets];
 
 /**
- * A union type containing the extension targets on customer account except order status page that follow the pattern of
+ * A union type containing the extension targets on customer account except **Order status** page that follow the pattern of
  * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.

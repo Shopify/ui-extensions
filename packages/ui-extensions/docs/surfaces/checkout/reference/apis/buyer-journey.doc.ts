@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'useBuyerJourneyCompleted',
       description: `
         Returns \`true\` if the buyer completed submitting their order.
-        For example, when viewing the order status page after submitting payment, the buyer will have completed their order.
+        For example, when viewing the **Order status** page after submitting payment, the buyer will have completed their order.
       `,
       type: 'UseBuyerJourneyCompletedGeneratedType',
     },
