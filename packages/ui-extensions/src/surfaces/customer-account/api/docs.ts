@@ -77,7 +77,7 @@ export interface Docs_Standard_QueryApi
 
 export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
-export interface Docs_FullPageApi extends Omit<FullPageApi, 'location'> {}
+export interface Docs_FullPageApi extends FullPageApi {}
 
 export interface Docs_Page_Button_PrimaryAction
   extends Pick<

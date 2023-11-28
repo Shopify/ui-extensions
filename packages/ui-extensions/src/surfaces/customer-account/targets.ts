@@ -1,4 +1,3 @@
-import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 import {AnyComponent} from '../checkout/shared';
 
 import {CartLineItemApi} from './api/cart-line/cart-line-item';
@@ -260,13 +259,6 @@ export type AllowedComponentsForRenderExtension<
 > = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[Target]>;
 
 export interface FullPageApi {
-  /**
-   * @deprecated This is deprecated. DO NOT USE. This will be removed soon without warning. use `api.navigation.currentEntry` and `api.navigation.addEventListener` instead.
-   */
-  location: StatefulRemoteSubscribable<{
-    pathname: string;
-    search: string;
-  }>;
   navigation: FullExtensionNavigation;
 }
 
