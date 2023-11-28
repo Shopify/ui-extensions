@@ -413,7 +413,7 @@ export interface BuyerJourney {
   /**
    * This subscribable value will be true if the buyer completed submitting their order.
    *
-   * For example, when viewing the order status page after submitting payment, the buyer will have completed their order.
+   * For example, when viewing the **Order status** page after submitting payment, the buyer will have completed their order.
    */
   completed: StatefulRemoteSubscribable<boolean>;
 }
