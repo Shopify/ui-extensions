@@ -1208,3 +1208,13 @@ export interface Ui {
     close(overlayId: string): void;
   };
 }
+
+export interface SessionToken {
+  /**
+   * Requests a session token that hasn't expired. You should call this method every
+   * time you need to make a request to your backend in order to get a valid token.
+   * This method will return cached tokens when possible, so you don’t need to worry
+   * about storing these tokens yourself.
+   */
+  get(): Promise<string>;
+}

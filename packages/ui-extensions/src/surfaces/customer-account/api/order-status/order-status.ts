@@ -306,13 +306,6 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   order: StatefulRemoteSubscribable<Order | undefined>;
 
   /**
-   * Provides access to session tokens, which can be used to verify token claims on your app's server.
-   *
-   * See [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-session-token) for more information.
-   */
-  sessionToken: SessionToken;
-
-  /**
    * id that represents the checkout used to create the order.
    *
    * Matches the `token` field in the [WebPixel checkout payload](https://shopify.dev/docs/api/pixels/customer-events#checkout)
@@ -354,16 +347,6 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * @example 'unstable'
    */
   version: Version;
-}
-
-export interface SessionToken {
-  /**
-   * Requests a session token that hasn't expired. You should call this method every
-   * time you need to make a request to your backend in order to get a valid token.
-   * This method will return cached tokens when possible, so you don’t need to worry
-   * about storing these tokens yourself.
-   */
-  get(): Promise<string>;
 }
 
 export interface OrderStatusBuyerIdentity {

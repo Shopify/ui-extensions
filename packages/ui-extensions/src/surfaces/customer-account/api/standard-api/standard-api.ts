@@ -7,6 +7,7 @@ import {
   GraphQLError,
   StorefrontApiVersion,
   Ui,
+  SessionToken,
 } from '../shared';
 
 import type {ExtensionTarget} from '../../targets';
@@ -77,6 +78,13 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * Key-value storage for the extension target.
    */
   storage: Storage;
+
+  /**
+   * Provides access to session tokens, which can be used to verify token claims on your app's server.
+   *
+   * See [session token examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/session-token#examples) for more information.
+   */
+  sessionToken: SessionToken;
 
   /**
    * Methods to interact with the extension's UI.
