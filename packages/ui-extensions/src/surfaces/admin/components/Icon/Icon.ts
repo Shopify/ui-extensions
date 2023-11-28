@@ -3,7 +3,7 @@ import {IconName} from './IconName';
 import {AccessibilityLabelProps} from '../shared';
 
 export interface IconProps extends AccessibilityLabelProps {
-  /*
+  /**
    * Set the color of the icon.
    *
    * - `inherit` will take the color value from its parent,
@@ -28,7 +28,7 @@ export interface IconProps extends AccessibilityLabelProps {
      */
     | 'fill';
 
-  /*
+  /**
    * Specifies the name of the icon that will be displayed.
    */
   name: IconName;
