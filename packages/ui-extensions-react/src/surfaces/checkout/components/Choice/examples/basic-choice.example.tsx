@@ -1,8 +1,7 @@
 import {
   reactExtension,
-  ChoiceList,
   Choice,
-  BlockStack,
+  ChoiceList,
   InlineStack,
 } from '@shopify/ui-extensions-react/checkout';
 
@@ -15,37 +14,29 @@ function Extension() {
   return (
     <InlineStack>
       <ChoiceList
-        name="choice"
-        value="first"
+        name="ship"
+        value="ship-1"
         onChange={(value) => {
           console.log(
             `onChange event with value: ${value}`,
           );
         }}
       >
-        <BlockStack>
-          <Choice id="first">Ship</Choice>
-          <Choice id="second">Pickup</Choice>
-        </BlockStack>
+        <Choice id="ship-1">Ship</Choice>
       </ChoiceList>
 
       <ChoiceList
-        name="choiceMultiple"
-        value={['multipleFirst']}
+        name="gift"
+        value={['gift-1']}
         onChange={(value) => {
           console.log(
             `onChange event with value: ${value}`,
           );
         }}
       >
-        <BlockStack>
-          <Choice id="multipleFirst">
-            Gift message
-          </Choice>
-          <Choice id="multipleSecond">
-            Gift wrapping
-          </Choice>
-        </BlockStack>
+        <Choice id="multipleFirst">
+          Gift message
+        </Choice>
       </ChoiceList>
     </InlineStack>
   );

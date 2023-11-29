@@ -2,7 +2,6 @@ import {
   extension,
   ChoiceList,
   Choice,
-  BlockStack,
   InlineStack,
 } from '@shopify/ui-extensions/checkout';
 
@@ -10,35 +9,25 @@ export default extension('purchase.checkout.block.render', (root) => {
   const choiceList = root.createComponent(
     ChoiceList,
     {
-      name: 'choice',
-      value: 'first',
+      name: 'ship',
+      value: 'ship-1',
       onChange: (value) => {
         console.log(`onChange event with value: ${value}`);
       },
     },
-    [
-      root.createComponent(BlockStack, undefined, [
-        root.createComponent(Choice, {id: 'first'}, 'Ship'),
-        root.createComponent(Choice, {id: 'second'}, 'Pickup'),
-      ]),
-    ],
+    [root.createComponent(Choice, {id: 'ship-1'}, 'Ship')],
   );
 
   const multipleChoiceList = root.createComponent(
     ChoiceList,
     {
-      name: 'multipleChoice',
-      value: ['multipleFirst'],
+      name: 'gift',
+      value: ['gift-1'],
       onChange: (value) => {
         console.log(`onChange event with value: ${value}`);
       },
     },
-    [
-      root.createComponent(BlockStack, undefined, [
-        root.createComponent(Choice, {id: 'multipleFirst'}, 'Gift message'),
-        root.createComponent(Choice, {id: 'multipleSecond'}, 'Gift wrapping'),
-      ]),
-    ],
+    [root.createComponent(Choice, {id: 'gift-1'}, 'Gift message')],
   );
 
   const layout = root.createComponent(InlineStack, undefined, [

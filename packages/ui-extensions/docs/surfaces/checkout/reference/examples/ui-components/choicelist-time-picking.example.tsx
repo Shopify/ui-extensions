@@ -1,9 +1,8 @@
-import React from 'react';
 import {
   reactExtension,
+  BlockStack,
   ChoiceList,
   Choice,
-  BlockStack,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
@@ -14,8 +13,8 @@ export default reactExtension(
 function Extension() {
   return (
     <ChoiceList
-      name="choice"
-      value="first"
+      name="time"
+      value=""
       onChange={(value) => {
         console.log(
           `onChange event with value: ${value}`,
@@ -23,13 +22,13 @@ function Extension() {
       }}
     >
       <BlockStack>
-        <Choice id="first">
+        <Choice id="morning">
           9:00 AM - 12:00 PM
         </Choice>
-        <Choice id="second">
+        <Choice id="afternoon">
           12:00 PM - 3:00 PM
         </Choice>
-        <Choice id="third">
+        <Choice id="evening">
           3:00 PM - 5:00 PM
         </Choice>
       </BlockStack>

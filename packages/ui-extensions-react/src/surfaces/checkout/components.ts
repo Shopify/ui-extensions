@@ -145,5 +145,11 @@ export type {TextFieldProps} from './components/TextField/TextField';
 export {Tooltip} from './components/Tooltip/Tooltip';
 export type {TooltipProps} from './components/Tooltip/Tooltip';
 
+export {ToggleButton} from './components/ToggleButton/ToggleButton';
+export type {ToggleButtonProps} from './components/ToggleButton/ToggleButton';
+
+export {ToggleButtonGroup} from './components/ToggleButtonGroup/ToggleButtonGroup';
+export type {ToggleButtonGroupProps} from './components/ToggleButtonGroup/ToggleButtonGroup';
+
 export {View} from './components/View/View';
 export type {ViewProps} from './components/View/View';
