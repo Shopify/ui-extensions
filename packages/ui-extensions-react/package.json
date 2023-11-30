@@ -22,6 +22,9 @@
       ],
       "customer-account": [
         "./build/ts/surfaces/customer-account.d.ts"
+      ],
+      "point-of-sale": [
+        "./build/ts/surfaces/point-of-sale.d.ts"
       ]
     }
   },
@@ -49,6 +52,12 @@
       "esnext": "./build/esnext/surfaces/customer-account.esnext",
       "import": "./build/esm/surfaces/customer-account.mjs",
       "require": "./build/cjs/surfaces/customer-account.js"
+    },
+    "./point-of-sale": {
+      "types": "./build/ts/surfaces/point-of-sale.d.ts",
+      "esnext": "./build/esnext/surfaces/point-of-sale.esnext",
+      "import": "./build/esm/surfaces/point-of-sale.mjs",
+      "require": "./build/cjs/surfaces/point-of-sale.js"
     }
   },
   "dependencies": {
