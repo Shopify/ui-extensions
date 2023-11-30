@@ -49,6 +49,17 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseShippingOptionTargetGeneratedType',
     },
     {
+      title: 'ShippingOptionListApi',
+      description:
+        'This API object is provided to extensions registered for the `purchase.checkout.shipping-option-list.render-before` or `purchase.checkout.shipping-option-list.render-after` extension targets.',
+      type: 'ShippingOptionListApi',
+    },
+    {
+      title: 'useDeliveryGroupTarget',
+      description: 'Returns the delivery group the extension is attached to.',
+      type: 'UseDeliveryGroupTargetGeneratedType',
+    },
+    {
       title: 'PickupPointListApi',
       description:
         'This API object is provided to extensions registered for the `purchase.checkout.pickup-point-list.render-after` and `purchase.checkout.pickup-point-list.render-after` extension target.',

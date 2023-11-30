@@ -67,4 +67,5 @@ export {
 export {useApplyRedeemableChange} from './redeemable';
 export {useDeliveryGroups} from './delivery-groups';
 export {useDeliveryGroup} from './delivery-group';
+export {useDeliveryGroupTarget} from './delivery-group-target';
 export {useCheckoutToken} from './checkout-token';
