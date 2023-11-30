@@ -12,6 +12,79 @@ import {
 import type {ExtensionTarget} from '../../targets';
 import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
+export enum ApiVersion {
+  Unstable = 'unstable',
+  V1 = 'v1',
+}
+
+export interface ApiVersionToMockData {
+  [ApiVersion.Unstable]: UnstableMockData;
+  [ApiVersion.V1]: v1MockData;
+}
+
+interface CommonCustomerType {
+  creationDate: string;
+  displayName: string;
+  firstName?: string | null;
+  id: string;
+  lastName?: string | null;
+}
+
+interface ShopType {
+  email: string;
+  id: string;
+  metafield?: any | null;
+  metafields: any[];
+  myShopifyDomain: string;
+  name: string;
+  shopPolicies: any[];
+  url: string;
+}
+
+// TODO: how can we use the type defined in the API schema?
+export interface UnstableMockData {
+  version: string;
+  customer: {
+    defaultAddress: {
+      address1?: string | null;
+      adress2?: string | null;
+      city?: string | null;
+      company?: string | null;
+      country?: string | null;
+      firstName?: string | null;
+      formatted: string[];
+      formattedArea: string[];
+      id: string;
+      lastName?: string | null;
+      name?: string | null;
+      phoneNumber?: string | null;
+      province?: string | null;
+      territoryCode?: string | null;
+      zip?: string | null;
+      zoneCode?: string | null;
+    } | null;
+  } & CommonCustomerType;
+  shop: ShopType;
+}
+
+export interface v1MockData {
+  version: string;
+  customer: {
+    defaultAddress: {
+      address1?: string | null;
+      adress2?: string | null;
+      city?: string | null;
+      company?: string | null;
+      country?: string | null;
+      firstName?: string | null;
+      id: string;
+      lastName?: string | null;
+      zip?: string | null;
+    } | null;
+  } & CommonCustomerType;
+  shop: ShopType;
+}
+
 /**
  * The following APIs are provided to all extension targets.
  */
@@ -82,6 +155,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * Methods to interact with the extension's UI.
    */
   ui: Ui;
+
+  mockData: ApiVersionToMockData;
+
+  inPreviewMode: boolean;
 
   navigation: StandardExtensionNavigation;
 
