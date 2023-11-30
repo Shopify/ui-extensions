@@ -4,8 +4,8 @@ interface Metafield {
   id?: string | null;
   key: string;
   value?: string | null;
-  namespace: string;
-  type: SupportedDefinitionType;
+  namespace?: string;
+  type?: SupportedDefinitionType;
 }
 
 interface OrderRoutingRule {

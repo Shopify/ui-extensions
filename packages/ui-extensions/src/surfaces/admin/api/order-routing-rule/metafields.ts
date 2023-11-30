@@ -43,12 +43,25 @@ const supportedDefinitionTypes = [
   'list.weight',
 ] as const;
 
-interface MetafieldChange {
+interface MetafieldUpdateChange {
+  type: 'updateMetafield';
   key: string;
   namespace?: string;
   value: string | number;
-  type?: SupportedDefinitionType;
+  valueType?: SupportedDefinitionType;
 }
 
+interface MetafieldRemoveChange {
+  type: 'removeMetafield';
+  key: string;
+  namespace: string;
+}
+
+type MetafieldsChange =
+  | MetafieldUpdateChange
+  | MetafieldRemoveChange
+  | MetafieldUpdateChange[]
+  | MetafieldRemoveChange[];
+
 export type SupportedDefinitionType = typeof supportedDefinitionTypes[number];
-export type SaveMetafields = (metafields: MetafieldChange[]) => void;
+export type ApplyMetafieldsChange = (changes: MetafieldsChange[]) => void;
