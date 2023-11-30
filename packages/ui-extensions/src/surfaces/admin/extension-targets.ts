@@ -8,6 +8,7 @@ import type {
   BlockExtensionApi,
   ProductDetailsConfigurationApi,
   ProductVariantDetailsConfigurationApi,
+  OrderRoutingRuleApi,
 } from './api';
 import {AnyComponentBuilder} from '../../shared';
 
@@ -37,13 +38,19 @@ type ProductConfigurationComponents = AnyComponentBuilder<
   >
 >;
 
+type OrderRoutingComponents = AnyComponentBuilder<
+  Pick<Components, 'InternalLocationList'>
+>;
+
 /**
  * See the [list of available components](/docs/api/admin-extensions/components).
  */
 type AllComponents = AnyComponentBuilder<
   Omit<
     Components,
-    'CustomerSegmentTemplate' | 'InternalCustomerSegmentTemplate'
+    | 'CustomerSegmentTemplate'
+    | 'InternalCustomerSegmentTemplate'
+    | 'InternalLocationList'
   >
 >;
 
@@ -206,6 +213,20 @@ export interface ExtensionTargets {
   'admin.product-variant-details.configuration.render': RenderExtension<
     ProductVariantDetailsConfigurationApi<'admin.product-variant-details.configuration.render'>,
     ProductConfigurationComponents
+  >;
+
+  /**
+   * Renders Order Routing Rule Configuration on order routing settings.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.settings.internal-order-routing-rule.render': RenderExtension<
+    OrderRoutingRuleApi<'admin.settings.internal-order-routing-rule.render'>,
+    AllComponents | OrderRoutingComponents
+  >;
+  'admin.settings.order-routing-rule.render': RenderExtension<
+    OrderRoutingRuleApi<'admin.settings.order-routing-rule.render'>,
+    AllComponents
   >;
 }
 
