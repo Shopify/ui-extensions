@@ -1214,5 +1214,5 @@ export interface Order {
   /**
    * A randomly generated alpha-numeric identifier for the order.
    */
-  confirmationNumber?: string;
+  confirmationNumber: string;
 }
