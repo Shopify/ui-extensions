@@ -8,6 +8,8 @@ export {CameraScanner} from './components/CameraScanner/CameraScanner';
 export type {CameraScannerProps} from './components/CameraScanner/CameraScanner';
 export {DateField} from './components/DateField/DateField';
 export type {DateFieldProps} from './components/DateField/DateField';
+export {DatePicker} from './components/DatePicker/DatePicker';
+export type {DatePickerProps} from './components/DatePicker/DatePicker';
 export {Dialog} from './components/Dialog/Dialog';
 export type {DialogProps} from './components/Dialog/Dialog';
 export {EmailField} from './components/EmailField/EmailField';
@@ -58,7 +60,10 @@ export type {TextProps} from './components/Text/Text';
 export {TextArea} from './components/TextArea/TextArea';
 export type {TextAreaProps} from './components/TextArea/TextArea';
 export {TextField} from './components/TextField/TextField';
-export type {TextFieldProps} from './components/TextField/TextField';
+export type {
+  TextFieldProps,
+  NewTextFieldProps,
+} from './components/TextField/TextField';
 export {Tile} from './components/Tile/Tile';
 export type {TileProps} from './components/Tile/Tile';
 export {TimeField} from './components/TimeField/TimeField';
