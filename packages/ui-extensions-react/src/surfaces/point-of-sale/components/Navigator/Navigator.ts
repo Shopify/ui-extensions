@@ -1,11 +1,4 @@
 import {Navigator as BaseNavigator} from '@shopify/ui-extensions/point-of-sale';
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@remote-ui/react';
-
-export type NavigatorProps = ReactPropsFromRemoteComponentType<
-  typeof BaseNavigator
->;
+import {createRemoteReactComponent} from '@remote-ui/react';
 
 export const Navigator = createRemoteReactComponent(BaseNavigator);

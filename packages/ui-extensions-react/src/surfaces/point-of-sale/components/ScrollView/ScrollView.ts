@@ -1,11 +1,4 @@
 import {ScrollView as BaseScrollView} from '@shopify/ui-extensions/point-of-sale';
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@remote-ui/react';
-
-export type ScrollViewProps = ReactPropsFromRemoteComponentType<
-  typeof BaseScrollView
->;
+import {createRemoteReactComponent} from '@remote-ui/react';
 
 export const ScrollView = createRemoteReactComponent(BaseScrollView);

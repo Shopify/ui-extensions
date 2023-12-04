@@ -1,9 +1,4 @@
 import {TextField as BaseTextField} from '@shopify/ui-extensions/point-of-sale';
 import {createRemoteReactComponent} from '@remote-ui/react';
 
-export type {
-  TextFieldProps,
-  NewTextFieldProps,
-} from '@shopify/ui-extensions/point-of-sale';
-
 export const TextField = createRemoteReactComponent(BaseTextField);

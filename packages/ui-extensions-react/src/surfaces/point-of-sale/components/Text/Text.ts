@@ -1,9 +1,4 @@
 import {Text as BaseText} from '@shopify/ui-extensions/point-of-sale';
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@remote-ui/react';
-
-export type TextProps = ReactPropsFromRemoteComponentType<typeof BaseText>;
+import {createRemoteReactComponent} from '@remote-ui/react';
 
 export const Text = createRemoteReactComponent(BaseText);
