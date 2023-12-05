@@ -76,6 +76,7 @@ export type {
   YearMonth,
 } from '@shopify/ui-extensions/customer-account';
 
+export * from './customer-account/components';
 export * from './customer-account/hooks';
 export {render, reactExtension} from './customer-account/render';
 
