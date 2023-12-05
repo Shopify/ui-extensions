@@ -1,35 +1,31 @@
-import {
-  extension,
-  Checkbox,
-} from '@shopify/ui-extensions/checkout';
+import {extension} from '@shopify/ui-extensions/checkout';
 
-// 1. Choose an extension target
 export default extension(
   'purchase.checkout.shipping-option-list.render-after',
-  (root, api) => {
-    // 2. Render a UI
-    root.appendChild(
-      root.createComponent(
-        Checkbox,
-        {
-          onChange: onCheckboxChange,
-        },
-        'I would like to receive a free gift with my order',
-      ),
+  (root, {target}) => {
+    const content = root.createText(
+      getTextContent(target.current),
     );
+    root.appendChild(content);
 
-    // 3. Call API methods to modify the checkout
-    async function onCheckboxChange(isChecked) {
-      const result =
-        await api.applyAttributeChange({
-          key: 'requestedFreeGift',
-          type: 'updateAttribute',
-          value: isChecked ? 'yes' : 'no',
-        });
-      console.log(
-        'applyAttributeChange result',
-        result,
+    target.subscribe((targetedDeliveryGroup) => {
+      content.updateText(
+        getTextContent(targetedDeliveryGroup),
       );
+    });
+
+    function getTextContent(deliveryGroup) {
+      if (!deliveryGroup) {
+        return 'Delivery group not available';
+      }
+
+      if (
+        deliveryGroup.groupType ===
+        'oneTimePurchase'
+      ) {
+        return 'One time purchase shipping group';
+      }
+      return 'Subscription shipping group';
     }
   },
 );

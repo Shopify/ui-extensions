@@ -1,6 +1,6 @@
 # Auto-generated files
 
-The `default.example.tsx` and `default.example.ts` files for _this_ extension target are generated from the template `checkout-target.example.template.tsx` and `checkout-target.example.template.ts` files.
+The `default.example.tsx` and `default.example.ts` files for _this_ extension target are generated from the template `shipping-option-list-target.example.template.tsx` and `shipping-option-list-target.example.template.ts` files.
 
 To update the generated files, run `/bin/bash ./packages/ui-extensions/docs/surfaces/checkout/generate-target-example.sh  purchase.checkout.shipping-option-list.render-after`.
 

@@ -1,37 +1,33 @@
 import {
   reactExtension,
-  Checkbox,
-  useApplyAttributeChange,
+  Text,
+  useDeliveryGroupTarget,
 } from '@shopify/ui-extensions-react/checkout';
 
-// 1. Choose an extension target
 export default reactExtension(
   'purchase.checkout.shipping-option-list.render-before',
   () => <Extension />,
 );
 
 function Extension() {
-  const applyAttributeChange =
-    useApplyAttributeChange();
+  const targetedDeliveryGroup =
+    useDeliveryGroupTarget();
 
-  // 2. Render a UI
-  return (
-    <Checkbox onChange={onCheckboxChange}>
-      I would like to receive a free gift with my
-      order
-    </Checkbox>
-  );
-
-  // 3. Call API methods to modify the checkout
-  async function onCheckboxChange(isChecked) {
-    const result = await applyAttributeChange({
-      key: 'requestedFreeGift',
-      type: 'updateAttribute',
-      value: isChecked ? 'yes' : 'no',
-    });
-    console.log(
-      'applyAttributeChange result',
-      result,
+  if (!targetedDeliveryGroup) {
+    return (
+      <Text>Delivery group not available</Text>
     );
   }
+
+  if (
+    targetedDeliveryGroup.groupType ===
+    'oneTimePurchase'
+  ) {
+    return (
+      <Text>
+        One time purchase shipping group
+      </Text>
+    );
+  }
+  return <Text>Subscription shipping group</Text>;
 }

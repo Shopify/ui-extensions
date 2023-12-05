@@ -1,7 +1,7 @@
 import {extension} from '@shopify/ui-extensions/checkout';
 
 export default extension(
-  'purchase.checkout.shipping-option-list.render-before',
+  '##TARGET##',
   (root, {target}) => {
     const content = root.createText(
       getTextContent(target.current),

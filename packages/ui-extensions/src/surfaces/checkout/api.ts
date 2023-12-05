@@ -128,6 +128,7 @@ export type {CartLineItemApi} from './api/cart-line/cart-line-item';
 export type {PickupLocationListApi} from './api/pickup/pickup-location-list';
 export type {PickupPointListApi} from './api/pickup/pickup-point-list';
 export type {ShippingOptionItemApi} from './api/shipping/shipping-option-item';
+export type {ShippingOptionListApi} from './api/shipping/shipping-option-list';
 
 export type {
   PaymentMethodAttributesResult,

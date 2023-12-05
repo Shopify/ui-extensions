@@ -24,6 +24,10 @@ case $TARGET in
     TEMPLATE="pickup-point-list-target.example.template"
     ;;
 
+  *"purchase.checkout.shipping-option-list."*)
+    TEMPLATE="shipping-option-list-target.example.template"
+    ;;
+
   *"purchase.checkout"*)
     TEMPLATE="checkout-target.example.template"
     ;;

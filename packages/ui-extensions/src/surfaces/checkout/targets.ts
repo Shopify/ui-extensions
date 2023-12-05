@@ -9,6 +9,7 @@ import type {
   StandardApi,
   CheckoutApi,
   OrderStatusApi,
+  ShippingOptionListApi,
 } from './api';
 import type {AnyComponent} from './shared';
 
@@ -503,7 +504,8 @@ export interface ExtensionTargets {
    * header and shipping method options.
    */
   'purchase.checkout.shipping-option-list.render-before': RenderExtension<
-    CheckoutApi &
+    ShippingOptionListApi &
+      CheckoutApi &
       StandardApi<'purchase.checkout.shipping-option-list.render-before'>,
     AnyComponent
   >;
@@ -514,7 +516,9 @@ export interface ExtensionTargets {
    * @deprecated Use `purchase.checkout.shipping-option-list.render-before` instead.
    */
   'Checkout::ShippingMethods::RenderBefore': RenderExtension<
-    CheckoutApi & StandardApi<'Checkout::ShippingMethods::RenderBefore'>,
+    ShippingOptionListApi &
+      CheckoutApi &
+      StandardApi<'Checkout::ShippingMethods::RenderBefore'>,
     AnyComponent
   >;
   /**
@@ -522,7 +526,8 @@ export interface ExtensionTargets {
    * options.
    */
   'purchase.checkout.shipping-option-list.render-after': RenderExtension<
-    CheckoutApi &
+    ShippingOptionListApi &
+      CheckoutApi &
       StandardApi<'purchase.checkout.shipping-option-list.render-after'>,
     AnyComponent
   >;
@@ -533,7 +538,9 @@ export interface ExtensionTargets {
    * @deprecated Use `purchase.checkout.shipping-option-list.render-after` instead.
    */
   'Checkout::ShippingMethods::RenderAfter': RenderExtension<
-    CheckoutApi & StandardApi<'Checkout::ShippingMethods::RenderAfter'>,
+    ShippingOptionListApi &
+      CheckoutApi &
+      StandardApi<'Checkout::ShippingMethods::RenderAfter'>,
     AnyComponent
   >;
   /**

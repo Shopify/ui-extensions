@@ -1416,6 +1416,10 @@ export interface VisitorError {
  */
 export interface DeliveryGroup {
   /**
+   * The unique identifier of the delivery group. On the Thank You page this value is undefined.
+   */
+  id?: string;
+  /**
    * The cart line references associated to the delivery group.
    */
   targetedCartLines: CartLineReference[];

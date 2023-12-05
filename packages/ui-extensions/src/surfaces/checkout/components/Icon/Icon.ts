@@ -58,6 +58,7 @@ export type IconSource =
   | 'questionFill'
   | 'reorder'
   | 'return'
+  | 'savings'
   | 'store'
   | 'success'
   | 'truck'
