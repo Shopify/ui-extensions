@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Block Extension API',
   description:
-    'This API is available to all block extension types. Refer to [the tutorial](/docs/apps/admin/admin-actions-and-blocks/build-an-admin-block) for more information.',
+    'This API is available to all block extension types. Refer to the [tutorial](/docs/apps/admin/admin-actions-and-blocks/build-an-admin-block) for more information.',
   isVisualComponent: false,
   type: 'API',
   definitions: [
