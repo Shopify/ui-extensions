@@ -8,9 +8,6 @@ describe('useLocalizationMarket', () => {
 
     const {value} = mount.hook(() => useLocalizationMarket(), {
       extensionApi: {
-        extension: {
-          target: 'customer-account.order-status.block.render' as const,
-        },
         localization: {
           market: createMockStatefulRemoteSubscribable(market),
         },
