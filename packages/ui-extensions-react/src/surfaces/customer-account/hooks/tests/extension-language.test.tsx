@@ -8,9 +8,6 @@ describe('useExtensionLanguage', () => {
 
     const {value} = mount.hook(() => useExtensionLanguage(), {
       extensionApi: {
-        extension: {
-          target: 'customer-account.order-status.block.render' as const,
-        },
         localization: {
           extensionLanguage:
             createMockStatefulRemoteSubscribable(extensionLanguage),
