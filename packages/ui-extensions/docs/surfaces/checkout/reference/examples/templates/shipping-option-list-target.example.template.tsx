@@ -8,7 +8,7 @@ import {
 
 // 1. Choose an extension target
 export default reactExtension(
-  'purchase.checkout.shipping-option-list.render-after',
+  '##TARGET##',
   () => <Extension />,
 );
 

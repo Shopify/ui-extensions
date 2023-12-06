@@ -620,6 +620,13 @@ const SHIPPING_OPTION_ITEM_API_DEFINITION = {
   type: 'ShippingOptionItemApi',
 };
 
+const SHIPPING_OPTION_LIST_API_DEFINITION = {
+  title: 'ShippingOptionListApi',
+  description:
+    'The API object provided to this and other `shipping-option-list` extension targets.',
+  type: 'ShippingOptionListApi',
+};
+
 const COMMON_API = {
   category: 'Targets',
   isVisualComponent: false,
@@ -695,6 +702,16 @@ export const SHIPPING_OPTION_ITEM_API = {
   subCategory: 'Shipping',
   definitions: [
     SHIPPING_OPTION_ITEM_API_DEFINITION,
+    CHECKOUT_API_DEFINITION,
+    STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
+export const SHIPPING_OPTION_LIST_API = {
+  subCategory: 'Shipping',
+  definitions: [
+    SHIPPING_OPTION_LIST_API_DEFINITION,
     CHECKOUT_API_DEFINITION,
     STANDARD_API_DEFINITION,
   ],

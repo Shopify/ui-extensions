@@ -20,6 +20,7 @@ export interface ChoiceProps {
   details?: string | RemoteFragment;
   /**
    * The primary content for a choice.
+   * Rendered below `<label>`.
    */
   primaryContent?: string | RemoteFragment;
   /**

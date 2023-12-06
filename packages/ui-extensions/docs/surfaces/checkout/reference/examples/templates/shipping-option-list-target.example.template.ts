@@ -5,7 +5,7 @@ import {
 
 // 1. Choose an extension target
 export default extension(
-  'purchase.checkout.shipping-option-list.render-before',
+  '##TARGET##',
   (root, {target, applyAttributeChange}) => {
     let checkboxShown = false;
     const checkbox =
