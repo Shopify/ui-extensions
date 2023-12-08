@@ -1,0 +1,24 @@
+# ...
+
+# The metafields for the extension
+[[extensions.metafields]]
+namespace = "my-namespace"
+key = "my-key"
+[[extensions.metafields]]
+namespace = "my-namespace"
+key = "my-other-key"
+
+[[extensions.targeting]]
+target = "customer-account.order-status.block.render"
+module = "./BlockExtension.jsx"
+
+  # For the above target, use these metafields
+  [[extensions.targeting.metafields]]
+  namespace = "my-namespace"
+  key = "my-target-key"
+
+[[extensions.targeting]]
+target = "customer-account.page.render"
+module = "./FullPageExtension.jsx"
+
+

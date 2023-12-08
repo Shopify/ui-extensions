@@ -1,0 +1,31 @@
+api_version = "unstable"
+
+[[extensions]]
+type = "ui_extension"
+name = "My customer account extension"
+handle = "customer-account-ui"
+
+[[extensions.targeting]]
+target = "customer-account.order-status.block.render"
+module = "./OrderStatusBlockExtension.jsx"
+
+[extensions.capabilities]
+network_access = true
+api_access = true
+
+[[extensions.metafields]]
+namespace = "my-namespace"
+key = "my-key"
+[[extensions.metafields]]
+namespace = "my-namespace"
+key = "my-other-key"
+
+[extensions.settings]
+[[extensions.settings.fields]]
+key = "field_key"
+type = "boolean"
+name = "field-name"
+[[extensions.settings.fields]]
+key = "field_key_2"
+type = "number_integer"
+name = "field-name-2"

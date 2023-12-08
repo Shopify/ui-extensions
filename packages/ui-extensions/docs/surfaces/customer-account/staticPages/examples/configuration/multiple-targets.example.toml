@@ -1,0 +1,11 @@
+# ...
+
+[[extensions.targeting]]
+target = "customer-account.page.render"
+module = "./FullPageExtension.jsx"
+
+[[extensions.targeting]]
+target = "customer-account.order-status.block.render"
+module = "./BlockExtension.jsx"
+
+# ...

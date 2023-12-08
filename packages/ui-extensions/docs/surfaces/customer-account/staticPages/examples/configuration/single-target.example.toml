@@ -1,0 +1,7 @@
+# ...
+
+[[extensions.targeting]]
+target = "customer-account.order-status.block.render"
+module = "./Extension.jsx"
+
+# ...

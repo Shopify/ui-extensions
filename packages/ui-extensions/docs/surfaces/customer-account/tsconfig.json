@@ -1,0 +1,12 @@
+{
+  "extends": "../../../config/typescript/tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "build/ts",
+    "baseUrl": ".",
+    "rootDir": ".",
+    "noImplicitAny": false,
+    "jsx": "react-jsx"
+  },
+  "include": ["./**/*.ts", "./**/*.tsx", ".eslintrc.js"],
+  "exclude": ["./**/*.example.*"]
+}
