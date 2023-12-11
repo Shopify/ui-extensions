@@ -20,6 +20,8 @@ export {ChoiceList} from './components/ChoiceList/ChoiceList';
 export type {ChoiceListProps} from './components/ChoiceList/ChoiceList';
 export {CustomerSegmentTemplate} from './components/CustomerSegmentTemplate/CustomerSegmentTemplate';
 export type {CustomerSegmentTemplateProps} from './components/CustomerSegmentTemplate/CustomerSegmentTemplate';
+export {DateField} from './components/DateField/DateField';
+export type {DateFieldProps} from './components/DateField/DateField';
 export {DatePicker} from './components/DatePicker/DatePicker';
 export type {DatePickerProps} from './components/DatePicker/DatePicker';
 export {Divider} from './components/Divider/Divider';
