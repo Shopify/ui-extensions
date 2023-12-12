@@ -7,7 +7,9 @@ export interface AdminBlockProps {
   title?: string;
 
   /**
-   * The summary to display when the app block is collapsed. If not provided, no summary will be displayed. No summary is shown when the app block is expanded. Summaries longer than 40 characters will be truncated.
+   * The summary to display when the app block is collapsed.
+   *
+   * @deprecated App blocks no longer have a collapsed state, so this prop is no longer supported.
    */
   summary?: string;
 }
