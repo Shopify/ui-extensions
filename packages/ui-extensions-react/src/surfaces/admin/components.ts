@@ -16,6 +16,8 @@ export {Checkbox} from './components/Checkbox/Checkbox';
 export type {CheckboxProps} from './components/Checkbox/Checkbox';
 export {ChoiceList} from './components/ChoiceList/ChoiceList';
 export type {ChoiceListProps} from './components/ChoiceList/ChoiceList';
+export {ColorPicker} from './components/ColorPicker/ColorPicker';
+export type {ColorPickerProps} from './components/ColorPicker/ColorPicker';
 export {CustomerSegmentTemplate} from './components/CustomerSegmentTemplate/CustomerSegmentTemplate';
 export type {CustomerSegmentTemplateProps} from './components/CustomerSegmentTemplate/CustomerSegmentTemplate';
 export {DatePicker} from './components/DatePicker/DatePicker';
