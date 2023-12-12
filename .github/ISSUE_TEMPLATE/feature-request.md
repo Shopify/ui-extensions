@@ -6,7 +6,7 @@ labels: 'enhancement'
 
 ## Please list the related package(s)
 
-<!-- e.g. checkout-ui-extensions, admin-ui-extensions-react -->
+<!-- e.g. @shopify/ui-extensions-react/checkout, @shopify/ui-extensions-react/admin -->
 
 ## If this related to specific APIs or components, please list them here
 

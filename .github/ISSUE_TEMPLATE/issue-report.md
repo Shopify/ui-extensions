@@ -8,7 +8,7 @@ labels: 'bug'
 
 ## Please list the package(s) involved in the issue, and include the version you are using
 
-<!-- e.g. checkout-ui-extensions V0.10.1, admin-ui-extensions-react V0.11.0 -->
+<!-- e.g. @shopify/ui-extensions-react/checkout v2023.10.0, @shopify/ui-extensions-react/admin unstable -->
 
 ## Describe the bug
 
