@@ -36,6 +36,11 @@ export interface TextProps {
   fontStyle?: FontStyle;
 
   /**
+   * The ID of the tooltip that is intended to display as a result of a hover interaction on this element.
+   */
+  interestTarget?: string;
+
+  /**
    * Provide semantic meaning to content and improve support for assistive technologies.
    * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles
    */
