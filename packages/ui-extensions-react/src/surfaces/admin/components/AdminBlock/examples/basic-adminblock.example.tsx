@@ -3,7 +3,7 @@ import {reactExtension, AdminBlock} from '@shopify/ui-extensions-react/admin';
 
 function App() {
   return (
-    <AdminBlock title="My App Block" summary="5 items active">
+    <AdminBlock title="My App Block">
       Block content
     </AdminBlock>
   );
