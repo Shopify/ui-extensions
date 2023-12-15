@@ -1,2 +1,6 @@
-export type {CameraScannerProps} from './CameraScanner';
+export type {
+  CameraScannerProps,
+  Information,
+  BannerType,
+} from './CameraScanner';
 export {CameraScanner} from './CameraScanner';

@@ -148,6 +148,8 @@ export type {
   ScreenProps,
   ScreenPresentationProps,
   SecondaryActionProps,
+  Information,
+  BannerType,
 } from './components';
 
 export type {
