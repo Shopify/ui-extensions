@@ -1,3 +1,4 @@
+import {createRemoteComponent} from '@remote-ui/core';
 import {InputProps} from '../shared';
 
 export interface ColorPickerProps extends InputProps<string> {
@@ -29,3 +30,8 @@ export interface ColorPickerProps extends InputProps<string> {
    */
   value?: string;
 }
+
+export const ColorPicker = createRemoteComponent<
+  'ColorPicker',
+  ColorPickerProps
+>('ColorPicker');
