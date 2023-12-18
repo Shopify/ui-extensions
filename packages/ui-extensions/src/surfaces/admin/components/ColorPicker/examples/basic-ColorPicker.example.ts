@@ -9,7 +9,8 @@ export default extension(
     const blockStack = root.createComponent(
       ColorPicker,
       {
-        value: "rgba(255 0 0 / 0.5)"
+        value: "rgba(255 0 0 / 0.5)",
+        label: ""
       },
     );
 
