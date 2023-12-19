@@ -37,11 +37,6 @@ interface CommonProps {
   lang?: string;
 
   /**
-   * The ID of the tooltip that is intended to display as a result of a hover interaction on this element.
-   */
-  interestTarget?: string;
-
-  /**
    * Callback when a link is pressed. If `href` is set,
    * it will execute the callback and then navigate to the location specified by `href`.
    */
