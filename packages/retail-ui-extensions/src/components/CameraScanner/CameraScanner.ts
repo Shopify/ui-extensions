@@ -8,14 +8,14 @@ export type BannerType =
   | 'Critical'
   | 'Default';
 
-export interface Information {
-  message: string;
-  bannerType?: BannerType;
+export interface CameraScannerBannerProps {
+  title: string;
+  variant?: BannerType;
+  visible?: boolean;
 }
 
 export interface CameraScannerProps {
-  barcodeStatus?: Information;
-  showBanner?: boolean;
+  bannerProps?: CameraScannerBannerProps;
 }
 
 export const CameraScanner = createRemoteComponent<

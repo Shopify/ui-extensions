@@ -1,6 +1,6 @@
 export type {
   CameraScannerProps,
-  Information,
+  CameraScannerBannerProps,
   BannerType,
 } from './CameraScanner';
 export {CameraScanner} from './CameraScanner';

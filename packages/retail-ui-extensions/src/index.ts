@@ -148,8 +148,8 @@ export type {
   ScreenProps,
   ScreenPresentationProps,
   SecondaryActionProps,
-  Information,
   BannerType,
+  CameraScannerBannerProps,
 } from './components';
 
 export type {
