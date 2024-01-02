@@ -60,7 +60,7 @@ export type {Segment, SegmentedControlProps} from './SegmentedControl';
 export {CameraScanner} from './CameraScanner';
 export type {
   CameraScannerProps,
-  Information,
+  CameraScannerBannerProps,
   BannerType,
 } from './CameraScanner';
 
