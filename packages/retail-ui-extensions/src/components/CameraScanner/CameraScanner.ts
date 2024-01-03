@@ -1,18 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
+import {BannerProps} from '../Banner';
 
-export type BannerType =
-  | 'Success'
-  | 'Warning'
-  | 'Error'
-  | 'Info'
-  | 'Critical'
-  | 'Default';
-
-export interface CameraScannerBannerProps {
-  title: string;
-  variant?: BannerType;
-  visible?: boolean;
-}
+export type CameraScannerBannerProps = Pick<
+  BannerProps,
+  'title' | 'variant' | 'visible'
+>;
 
 export interface CameraScannerProps {
   bannerProps?: CameraScannerBannerProps;

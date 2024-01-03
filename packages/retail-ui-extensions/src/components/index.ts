@@ -61,7 +61,6 @@ export {CameraScanner} from './CameraScanner';
 export type {
   CameraScannerProps,
   CameraScannerBannerProps,
-  BannerType,
 } from './CameraScanner';
 
 export {Badge} from './Badge';
