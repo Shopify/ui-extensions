@@ -3689,14 +3689,6 @@
     fs-extra "^9.0.0"
     glob "^7.1.6"
 
-"@shopify/retail-ui-extensions@1.6.0-rc.0":
-  version "1.6.0-rc.0"
-  resolved "https://registry.yarnpkg.com/@shopify/retail-ui-extensions/-/retail-ui-extensions-1.6.0-rc.0.tgz#992d2afa5c61f9570b02a9ac28cafb3c8bd68169"
-  integrity sha512-jfNCBRhjLTpe8YEvWoP8fBNIZPsNCWgHyTvJBQnR3MulCh0gxCGUIPHHJiWjuUfd72fk/LPz0O7iKSscncJh8w==
-  dependencies:
-    "@remote-ui/async-subscription" "2.1.x"
-    "@remote-ui/core" "2.1.x"
-
 "@shopify/typescript-configs@^5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@shopify/typescript-configs/-/typescript-configs-5.1.0.tgz#f6e8fdd3291bf0a406578b2c6eb21f8c542d3c0a"
