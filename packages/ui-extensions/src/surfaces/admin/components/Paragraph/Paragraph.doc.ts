@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Paragraph',
   description:
-    'Use this to display a block of text similar to the <p> tag in HTML.',
+    'Use this to display a block of text similar to the `<p>` tag in HTML.',
   requires: '',
   thumbnail: 'paragraph-thumbnail.png',
   isVisualComponent: true,

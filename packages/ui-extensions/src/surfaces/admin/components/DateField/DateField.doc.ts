@@ -3,7 +3,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'DateField',
   description:
-    'This is a form field that lets merchants select a date. It uses the DatePicker component to let merchants to pick the date.',
+    'This is a form field that lets users select a date using the DatePicker component.',
   requires: '',
   thumbnail: 'datefield-thumbnail.png',
   isVisualComponent: true,
@@ -39,7 +39,7 @@ const data: ReferenceEntityTemplateSchema = {
     description: '',
     examples: [
       {
-        description: 'Use this when merchants need to select multiple dates.',
+        description: 'Use this when users need to select multiple dates.',
         codeblock: {
           title: 'Add a multi-date DateField',
           tabs: [
@@ -57,7 +57,7 @@ const data: ReferenceEntityTemplateSchema = {
         },
       },
       {
-        description: 'Use this when merchants need to select a range of dates.',
+        description: 'Use this when users need to select a range of dates.',
         codeblock: {
           title: 'Add a range DateField',
           tabs: [
