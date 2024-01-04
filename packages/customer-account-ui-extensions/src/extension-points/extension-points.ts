@@ -73,6 +73,18 @@ export interface ExtensionPoints {
     StandardApi<'customer-account.navigation.menu-item.render'>,
     AllComponents
   >;
+  'CustomerAccount::Inline::Render::PaymentMethod': RenderExtension<
+    StandardApi,
+    AllComponents
+  >;
+  'CustomerAccount::Inline::Render::AddressesModal': RenderExtension<
+    StandardApi & {
+      addressInfo: StatefulRemoteSubscribable<{
+        addressId: string;
+      }>;
+    },
+    AllComponents
+  >;
 }
 
 export interface FullPageApi {
