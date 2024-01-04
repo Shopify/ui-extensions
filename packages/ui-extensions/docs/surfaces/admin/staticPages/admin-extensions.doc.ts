@@ -18,14 +18,6 @@ const data: LandingTemplateSchema = {
       title: 'Overview',
       image: 'action-extension-example.gif',
       sectionContent: 'Extend the Shopify Admin with UI Extensions.',
-      sectionNotice: [
-        {
-          title: 'Developer preview',
-          sectionContent:
-            'Admin UI block extensions are currently in developer preview. You can only render them while developing locally on a development store.',
-          type: 'beta',
-        },
-      ],
       sectionCard: [
         {
           name: 'Get started building your first admin extension',
