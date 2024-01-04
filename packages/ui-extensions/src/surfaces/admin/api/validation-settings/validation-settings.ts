@@ -1,0 +1,12 @@
+import type {StandardApi} from '../standard/standard';
+import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
+
+import {ApplyMetafieldsChange} from './metafields';
+import {Data} from './data';
+
+export interface ValidationSettingsApi<
+  ExtensionTarget extends AnyExtensionTarget,
+> extends StandardApi<ExtensionTarget> {
+  applyMetafieldsChange: ApplyMetafieldsChange;
+  data: Data;
+}
