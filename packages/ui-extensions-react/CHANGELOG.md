@@ -2,14 +2,16 @@
 
 ## 2024.1.0
 
+### Major Changes
+
+- [#1585](https://github.com/Shopify/ui-extensions/pull/1585) [`70f9bdc1`](https://github.com/Shopify/ui-extensions/commit/70f9bdc1bd0a4caf3d6b0d7033dcef0a012b3f90) Thanks [@jamesvidler](https://github.com/jamesvidler)! - The `purchase.checkout.shipping-option-list.render-before` and `purchase.checkout.shipping-option-list.render-after` will be duplicated for possible types of delivery groups (One Time Purchase and Subscription).
+  You can use the new `target` or `useDeliveryGroupTarget()` React hook to access the delivery group the extension is attached to.
+
 ### Minor Changes
 
 - [#1515](https://github.com/Shopify/ui-extensions/pull/1515) [`2452a939`](https://github.com/Shopify/ui-extensions/commit/2452a939e84c1a13ef1a107360419edee6c3a1d9) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Adds custom header and footer unified extension targets for checkout and thank you pages
 
 - [#1601](https://github.com/Shopify/ui-extensions/pull/1601) [`ccbb2353`](https://github.com/Shopify/ui-extensions/commit/ccbb235377cb5c725832726abca99b1bc2f52a7b) Thanks [@belalsj](https://github.com/belalsj)! - Add tooltip component and update Button and Text with interestTarget API
-
-- [#1585](https://github.com/Shopify/ui-extensions/pull/1585) [`70f9bdc1`](https://github.com/Shopify/ui-extensions/commit/70f9bdc1bd0a4caf3d6b0d7033dcef0a012b3f90) Thanks [@jamesvidler](https://github.com/jamesvidler)! - The `purchase.checkout.shipping-option-list.render-before` and `purchase.checkout.shipping-option-list.render-after` will be duplicated for possible types of delivery groups (One Time Purchase and Subscription).
-  You can use the new `target` or `useDeliveryGroupTarget()` React hook to access the delivery group the extension is attached to.
 
 - [#1472](https://github.com/Shopify/ui-extensions/pull/1472) [`9c836557`](https://github.com/Shopify/ui-extensions/commit/9c836557d97f08496bb073a11a0fb209eb176f5f) Thanks [@sirgalleto](https://github.com/sirgalleto)! - Add order routing extension targets and API
 
@@ -35,8 +37,6 @@
 - [#1473](https://github.com/Shopify/ui-extensions/pull/1473) [`903a62c7`](https://github.com/Shopify/ui-extensions/commit/903a62c7db9f2bf980c44f358445991864f644e6) Thanks [@mikewilson01](https://github.com/mikewilson01)! - Add additional props to LWS component
 
 - [#1448](https://github.com/Shopify/ui-extensions/pull/1448) [`be9465df`](https://github.com/Shopify/ui-extensions/commit/be9465df3f58c3fd439b6bbb9424c7caf0bafb7e) Thanks [@robin-drexler](https://github.com/robin-drexler)! - add previously internal customer account apis to unstable
-
-- [#1616](https://github.com/Shopify/ui-extensions/pull/1616) [`f68d0d75`](https://github.com/Shopify/ui-extensions/commit/f68d0d7503a0d2509bab5ee1c148901d468cc9cb) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Remove Tooltip
 
 - [#1458](https://github.com/Shopify/ui-extensions/pull/1458) [`1fb524f6`](https://github.com/Shopify/ui-extensions/commit/1fb524f695f65541df0b9dbec93e0b8b5c65386c) Thanks [@robin-drexler](https://github.com/robin-drexler)! - fix policy modal handling
 
