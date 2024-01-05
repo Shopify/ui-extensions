@@ -1,6 +1,54 @@
 # @shopify/ui-extensions
 
-# @shopify/ui-extensions
+## 2024.1.0
+
+### Major Changes
+
+- [#1585](https://github.com/Shopify/ui-extensions/pull/1585) [`70f9bdc1`](https://github.com/Shopify/ui-extensions/commit/70f9bdc1bd0a4caf3d6b0d7033dcef0a012b3f90) Thanks [@jamesvidler](https://github.com/jamesvidler)! - The `purchase.checkout.shipping-option-list.render-before` and `purchase.checkout.shipping-option-list.render-after` will be duplicated for possible types of delivery groups (One Time Purchase and Subscription).
+  You can use the new `target` or `useDeliveryGroupTarget()` React hook to access the delivery group the extension is attached to.
+
+### Minor Changes
+
+- [#1515](https://github.com/Shopify/ui-extensions/pull/1515) [`2452a939`](https://github.com/Shopify/ui-extensions/commit/2452a939e84c1a13ef1a107360419edee6c3a1d9) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Adds custom header and footer unified extension targets for checkout and thank you pages
+
+- [#1472](https://github.com/Shopify/ui-extensions/pull/1472) [`9c836557`](https://github.com/Shopify/ui-extensions/commit/9c836557d97f08496bb073a11a0fb209eb176f5f) Thanks [@sirgalleto](https://github.com/sirgalleto)! - Add order routing extension targets and API
+
+- [#1437](https://github.com/Shopify/ui-extensions/pull/1437) [`6de2fce0`](https://github.com/Shopify/ui-extensions/commit/6de2fce01bc32174089f91aafd870877a878a6eb) Thanks [@shopi-dori](https://github.com/shopi-dori)! - Adds the `bankIdNumber` to the `PaymentOptionItemApi`.
+  Adds `background` to `View`, `Grid`, `GridItem`, `Pressable`, `ScrollView`, `InlineStack`, and `BlockStack` components.
+
+- [#1424](https://github.com/Shopify/ui-extensions/pull/1424) [`9a8dda8c`](https://github.com/Shopify/ui-extensions/commit/9a8dda8c9332d5ed24fa020f6b03106e2da14e9c) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Add Badge component to admin
+
+- [#1428](https://github.com/Shopify/ui-extensions/pull/1428) [`9cd7d6f9`](https://github.com/Shopify/ui-extensions/commit/9cd7d6f9977683456399aed34f730adeecf98443) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Add Banner component to admin
+
+- [#1430](https://github.com/Shopify/ui-extensions/pull/1430) [`0a8b378a`](https://github.com/Shopify/ui-extensions/commit/0a8b378aac8ecc98c9b2d8b4142618aa50082663) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Add ChoiceList to admin
+
+- [#1625](https://github.com/Shopify/ui-extensions/pull/1625) [`29625d18`](https://github.com/Shopify/ui-extensions/commit/29625d18c269b1cb0e9ffe0b890c466d4a6901a8) Thanks [@billfienberg](https://github.com/billfienberg)! - Add ColorPicker remote component
+
+- [#1431](https://github.com/Shopify/ui-extensions/pull/1431) [`8f82c578`](https://github.com/Shopify/ui-extensions/commit/8f82c5784944ed63d20a02859561d6655257edc2) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Add ProgressIndicator to admin
+
+### Patch Changes
+
+- [#1601](https://github.com/Shopify/ui-extensions/pull/1601) [`ccbb2353`](https://github.com/Shopify/ui-extensions/commit/ccbb235377cb5c725832726abca99b1bc2f52a7b) Thanks [@belalsj](https://github.com/belalsj)! - Update Button and Text with interestTarget API
+
+- [#1503](https://github.com/Shopify/ui-extensions/pull/1503) [`f4268b21`](https://github.com/Shopify/ui-extensions/commit/f4268b216c4ba75728c75a239b35354ab467dd6c) Thanks [@anahita-m](https://github.com/anahita-m)! - Removing legacy customer account extension targets
+
+- [#1473](https://github.com/Shopify/ui-extensions/pull/1473) [`903a62c7`](https://github.com/Shopify/ui-extensions/commit/903a62c7db9f2bf980c44f358445991864f644e6) Thanks [@mikewilson01](https://github.com/mikewilson01)! - Add additional props to LWS component
+
+- [#1401](https://github.com/Shopify/ui-extensions/pull/1401) [`0f0e410d`](https://github.com/Shopify/ui-extensions/commit/0f0e410d1b1c8a787a45227c86b256131031a114) Thanks [@JoshuaWhite1](https://github.com/JoshuaWhite1)! - Added details about title/summary truncation to docs
+
+- [#1448](https://github.com/Shopify/ui-extensions/pull/1448) [`be9465df`](https://github.com/Shopify/ui-extensions/commit/be9465df3f58c3fd439b6bbb9424c7caf0bafb7e) Thanks [@robin-drexler](https://github.com/robin-drexler)! - add previously internal customer account apis to unstable
+
+- [#1458](https://github.com/Shopify/ui-extensions/pull/1458) [`1fb524f6`](https://github.com/Shopify/ui-extensions/commit/1fb524f695f65541df0b9dbec93e0b8b5c65386c) Thanks [@robin-drexler](https://github.com/robin-drexler)! - fix policy modal handling
+
+- [#1434](https://github.com/Shopify/ui-extensions/pull/1434) [`b45e1b7f`](https://github.com/Shopify/ui-extensions/commit/b45e1b7f5d1642a0eb8f3d9055d541dc8dda2f13) Thanks [@mikewilson01](https://github.com/mikewilson01)! - Add onStatusChange callback to LoginWithShop component
+
+- [#1466](https://github.com/Shopify/ui-extensions/pull/1466) [`e53621b6`](https://github.com/Shopify/ui-extensions/commit/e53621b6457f68331d7c6b175b078627ef3fa7ea) Thanks [@mikewilson01](https://github.com/mikewilson01)! - Update props for LoginWithShop component
+
+- [#1496](https://github.com/Shopify/ui-extensions/pull/1496) [`bb30cc52`](https://github.com/Shopify/ui-extensions/commit/bb30cc52550b1e973ef8560b3f742c3c5c6c9b3f) Thanks [@brianshen1990](https://github.com/brianshen1990)! - remove deprecated fields from doc in customer account ui extensions
+
+- [#1569](https://github.com/Shopify/ui-extensions/pull/1569) [`cbc51b33`](https://github.com/Shopify/ui-extensions/commit/cbc51b33d376370bff9f4dc980e66b495f5fcfaa) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Remove customer account location api
+
+- [#1598](https://github.com/Shopify/ui-extensions/pull/1598) [`345ed9a0`](https://github.com/Shopify/ui-extensions/commit/345ed9a00d3fb1d9f35be4e92dcf022d29794aba) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Deprecate summary prop for AdminBlock
 
 ## 2023.10.0
 
