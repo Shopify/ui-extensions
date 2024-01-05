@@ -6,7 +6,7 @@
 
 - [#1585](https://github.com/Shopify/ui-extensions/pull/1585) [`70f9bdc1`](https://github.com/Shopify/ui-extensions/commit/70f9bdc1bd0a4caf3d6b0d7033dcef0a012b3f90) Thanks [@jamesvidler](https://github.com/jamesvidler)! - The `purchase.checkout.shipping-option-list.render-before` and `purchase.checkout.shipping-option-list.render-after` will be duplicated for possible types of delivery groups (One Time Purchase and Subscription).
   You can use the new `target` or `useDeliveryGroupTarget()` React hook to access the delivery group the extension is attached to.
-  
+
 ### Minor Changes
 
 - [#1515](https://github.com/Shopify/ui-extensions/pull/1515) [`2452a939`](https://github.com/Shopify/ui-extensions/commit/2452a939e84c1a13ef1a107360419edee6c3a1d9) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Adds custom header and footer unified extension targets for checkout and thank you pages
@@ -25,7 +25,7 @@
 - [#1625](https://github.com/Shopify/ui-extensions/pull/1625) [`29625d18`](https://github.com/Shopify/ui-extensions/commit/29625d18c269b1cb0e9ffe0b890c466d4a6901a8) Thanks [@billfienberg](https://github.com/billfienberg)! - Add ColorPicker remote component
 
 - [#1431](https://github.com/Shopify/ui-extensions/pull/1431) [`8f82c578`](https://github.com/Shopify/ui-extensions/commit/8f82c5784944ed63d20a02859561d6655257edc2) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Add ProgressIndicator to admin
-  
+
 ### Patch Changes
 
 - [#1601](https://github.com/Shopify/ui-extensions/pull/1601) [`ccbb2353`](https://github.com/Shopify/ui-extensions/commit/ccbb235377cb5c725832726abca99b1bc2f52a7b) Thanks [@belalsj](https://github.com/belalsj)! - Update Button and Text with interestTarget API
@@ -49,8 +49,6 @@
 - [#1569](https://github.com/Shopify/ui-extensions/pull/1569) [`cbc51b33`](https://github.com/Shopify/ui-extensions/commit/cbc51b33d376370bff9f4dc980e66b495f5fcfaa) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Remove customer account location api
 
 - [#1598](https://github.com/Shopify/ui-extensions/pull/1598) [`345ed9a0`](https://github.com/Shopify/ui-extensions/commit/345ed9a00d3fb1d9f35be4e92dcf022d29794aba) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Deprecate summary prop for AdminBlock
-
-# @shopify/ui-extensions
 
 ## 2023.10.0
 
