@@ -25,8 +25,6 @@
 
 - [#1625](https://github.com/Shopify/ui-extensions/pull/1625) [`29625d18`](https://github.com/Shopify/ui-extensions/commit/29625d18c269b1cb0e9ffe0b890c466d4a6901a8) Thanks [@billfienberg](https://github.com/billfienberg)! - Add ColorPicker remote component
 
-
-
 ### Patch Changes
 
 - [#1437](https://github.com/Shopify/ui-extensions/pull/1437) [`6de2fce0`](https://github.com/Shopify/ui-extensions/commit/6de2fce01bc32174089f91aafd870877a878a6eb) Thanks [@shopi-dori](https://github.com/shopi-dori)! - Adds the `bankIdNumber` to the `PaymentOptionItemApi`.
