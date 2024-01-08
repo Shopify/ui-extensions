@@ -9,13 +9,6 @@ export interface Intents {
   launchUrl?: string | URL;
 }
 
-export interface Navigation {
-  /**
-   * A method to navigate to a specific route.
-   */
-  navigate: (url: string | URL) => void;
-}
-
 /**
  * GraphQL error returned by the Shopify Admin API.
  */
@@ -48,11 +41,6 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
    * Provides information to the receiver the of an intent.
    */
   intents: Intents;
-
-  /**
-   * Provides methods to navigate to other features in the Admin.
-   */
-  navigation: Navigation;
 
   /**
    * Used to query the Admin GraphQL API
