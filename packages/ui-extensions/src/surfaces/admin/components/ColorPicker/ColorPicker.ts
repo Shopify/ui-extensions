@@ -1,5 +1,4 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {InputProps} from '../shared';
 
 export interface ColorPickerProps {
   /** ID for the element. */
