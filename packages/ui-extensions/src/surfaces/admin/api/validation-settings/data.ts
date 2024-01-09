@@ -1,12 +1,14 @@
 export interface Data {
-  validation: {
+  validation?: {
     /**
-     * the validation's gid when active in a shop
+     * the Validation's gid when active in a shop.
      */
-    id?: string;
+    id: string;
+  };
+  shopifyFunction: {
     /**
-     * the validation's unique identifier
+     * the Validation's unique id.
      */
-    uuid: string;
+    id: string;
   };
 }

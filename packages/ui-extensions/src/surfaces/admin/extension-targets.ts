@@ -238,12 +238,12 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders Validation Settings within a given validation's add and configuration views.
+   * Renders Validation settings within a validation's configuration views.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
-  'admin.checkout-validation.settings.render': RenderExtension<
-    ValidationSettingsApi<'admin.checkout-validation.settings.render'>,
+  'admin.settings.validation.render': RenderExtension<
+    ValidationSettingsApi<'admin.settings.validation.render'>,
     AllComponents
   >;
 }
