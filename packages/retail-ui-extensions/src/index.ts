@@ -36,6 +36,7 @@ export type {
   Discount,
   MultipleResourceResult,
   PaginatedResult,
+  PaginationParams,
   Product,
   ProductOption,
   ProductVariant,
