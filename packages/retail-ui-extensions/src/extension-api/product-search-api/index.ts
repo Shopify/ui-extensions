@@ -1,4 +1,5 @@
 export type {
+  PaginationParams,
   ProductSearchApi,
   ProductSearchApiContent,
   ProductSortType,
