@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import {InputProps} from '../shared';
 
-export interface ColorPickerProps extends InputProps<string> {
+export interface ColorPickerProps {
   /** ID for the element. */
   id?: string;
 
@@ -10,6 +10,13 @@ export interface ColorPickerProps extends InputProps<string> {
    * @default false
    */
   allowAlpha?: boolean;
+
+  /**
+   * The `onChange` handler will emit the value in hex.
+   * If the `allowAlpha` prop is `true`, `onChange` will emit an 8-value hex (#RRGGBBAA).
+   * If the `allowAlpha` prop is `false`, `onChange` will emit a 6-value hex (#RRGGBB).
+   */
+  onChange?(value: string): void;
 
   /**
    * The currently selected color.
@@ -24,9 +31,9 @@ export interface ColorPickerProps extends InputProps<string> {
    *
    * If the value is invalid, the component will select rgb(0, 0, 0).
    *
-   * The `onInput` and `onChange` handlers will emit the value in hex.
-   * If the `allowAlpha` prop is `true`, `onInput` and `onChange` will emit an 8-value hex (#RRGGBBAA).
-   * If the `allowAlpha` prop is `false`, `onInput` and `onChange` will emit a 6-value hex (#RRGGBB).
+   * The `onChange` handler will emit the value in hex.
+   * If the `allowAlpha` prop is `true`, `onChange` will emit an 8-value hex (#RRGGBBAA).
+   * If the `allowAlpha` prop is `false`, `onChange` will emit a 6-value hex (#RRGGBB).
    */
   value?: string;
 }
