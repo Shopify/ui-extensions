@@ -1,6 +1,6 @@
+import type {MultipleResourceResult} from '../types/multiple-resource-result';
+import type {PaginatedResult} from '../types/paginated-result';
 import type {Product, ProductVariant} from '../types/product';
-import {MultipleResourceResult} from '../types/multiple-resource-result';
-import {PaginatedResult} from '../types/paginated-result';
 
 export type ProductSortType =
   | 'RECENTLY_ADDED'
@@ -9,21 +9,27 @@ export type ProductSortType =
   | 'ALPHABETICAL_Z_TO_A';
 
 /**
- * Parameters for using the searchProducts function.
+ * Base interface for pagination.
  */
-export interface ProductSearchParams {
+export interface PaginationParams {
+  /**
+   * Specifies the number of results to be returned in this page. The maximum number of items that will be returned is 50.
+   */
+  first?: number;
+  /**
+   * Specifies the page cursor. Items after this cursor will be returned.
+   */
+  afterCursor?: string;
+}
+
+/**
+ * Interface for product search
+ */
+export interface ProductSearchParams extends PaginationParams {
   /**
    * The search term to be used to search for POS products.
    */
   queryString?: string;
-  /**
-   * Specifies the number of results to be returned in this page of products. The maximum number of products that will be returned is 50.
-   */
-  first?: number;
-  /**
-   * Specifies the page cursor. Products after this cursor will be returned.
-   */
-  afterCursor?: string;
   /**
    * Specifies the order in which products should be sorted. When a `queryString` is provided, sortType will not have any effect, as the results will be returned in order by relevance to the `queryString`.
    */
@@ -70,6 +76,14 @@ export interface ProductSearchApiContent {
   fetchProductVariantsWithProductId(
     productId: number,
   ): Promise<ProductVariant[]>;
+
+  /** Fetches a page of product variants associated with a product.
+   * @param paginationParams The parameters for pagination.
+   */
+  fetchPaginatedProductVariantsWithProductId(
+    productId: number,
+    paginationParams: PaginationParams,
+  ): Promise<PaginatedResult<ProductVariant>>;
 }
 
 /**
