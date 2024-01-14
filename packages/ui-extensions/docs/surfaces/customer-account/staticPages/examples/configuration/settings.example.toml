@@ -1,0 +1,21 @@
+api_version = "unstable"
+
+[[extensions]]
+name = "My customer account ui extension"
+handle = "customer-account-ui"
+type = "ui_extension"
+
+[extensions.settings]
+
+[[extensions.settings.fields]]
+key = "banner_title"
+type = "single_line_text_field"
+name = "Banner title"
+description = "Enter a title for the banner."
+
+[[extensions.settings.fields.validations]]
+name = "min"
+value = "5"
+[[extensions.settings.fields.validations]]
+name = "max"
+value = "20"

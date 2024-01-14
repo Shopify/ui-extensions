@@ -1,25 +1,19 @@
 import {
   Market,
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Returns the market of the checkout, and automatically re-renders
  * your component if it changes.
  */
 export function useLocalizationMarket<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Market | undefined {
-  const api = useApi<Target>();
-  const extensionTarget = api.extension.target;
+  const {localization} = useApi<Target>();
 
-  if (!('market' in api.localization)) {
-    throw new ExtensionHasNoFieldError('market', extensionTarget);
-  }
-
-  return useSubscription(api.localization.market);
+  return useSubscription(localization.market);
 }

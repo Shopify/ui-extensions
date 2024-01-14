@@ -1,25 +1,19 @@
 import {
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
   Timezone,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Returns the time zone of the checkout, and automatically re-renders
  * your component if the time zone changes.
  */
 export function useTimezone<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Timezone {
-  const api = useApi<Target>();
-  const extensionTarget = api.extension.target;
+  const {localization} = useApi<Target>();
 
-  if (!('timezone' in api.localization)) {
-    throw new ExtensionHasNoFieldError('timezone', extensionTarget);
-  }
-
-  return useSubscription(api.localization.timezone);
+  return useSubscription(localization.timezone);
 }

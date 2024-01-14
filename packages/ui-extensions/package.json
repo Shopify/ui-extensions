@@ -4,7 +4,8 @@
   "scripts": {
     "docs:admin": "sh ./docs/surfaces/admin/build-docs.sh",
     "gen-docs:admin": "sh ./docs/surfaces/admin/create-doc-files.sh \"admin\"",
-    "docs:checkout": "sh ./docs/surfaces/checkout/build-docs.sh"
+    "docs:checkout": "sh ./docs/surfaces/checkout/build-docs.sh",
+    "docs:customer-account": "sh ./docs/surfaces/customer-account/build-docs.sh"
   },
   "main": "index.js",
   "module": "index.mjs",
