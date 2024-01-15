@@ -2,7 +2,7 @@ import {AnyComponent} from '../checkout/shared';
 
 import {CartLineItemApi} from './api/cart-line/cart-line-item';
 import type {OrderStatusApi} from './api/order-status/order-status';
-import type {RenderExtension, RunExtension} from './extension';
+import type {RenderExtension} from './extension';
 import {
   StandardApi,
   FullExtensionNavigation,
@@ -102,17 +102,9 @@ export interface CustomerAccountExtensionTargets {
       FullPageApi,
     AllComponents
   >;
-  'CustomerAccount::Returns::Initiate': RunExtension<
-    StandardApi<'CustomerAccount::Returns::Initiate'> & {orderId: string},
-    void
-  >;
   'CustomerAccount::KitchenSink': RenderExtension<
     StandardApi<'CustomerAccount::KitchenSink'> & {name: string},
     AllComponents
-  >;
-  'CustomerAccount::KitchenSinkRun': RunExtension<
-    StandardApi<'CustomerAccount::KitchenSinkRun'> & {name: string},
-    string
   >;
   'customer-account.order-index.block.render': RenderExtension<
     StandardApi<'customer-account.order-index.block.render'>,
@@ -273,29 +265,6 @@ export interface ActionExtensionApi {
 export type ApiForExtension<Target extends keyof ExtensionTargets> =
   ExtractedApiFromExtension<ExtensionTargets[Target]>;
 
-type ExtractedApiFromRunExtension<T> = T extends RunExtension<
-  infer Api,
-  unknown
->
-  ? Api
-  : never;
-
 type ExtractedApiFromExtension<T> = T extends RenderExtension<any, any>
   ? ExtractedApiFromRenderExtension<T>
-  : T extends RunExtension<any, any>
-  ? ExtractedApiFromRunExtension<T>
   : never;
-
-/**
- * A union type containing all extension targets that follow the pattern of
- * accepting an `api` argument, and using those arguments to run code that does not render anything, but instead return
- * a value or execute a side effect.
- */
-export type RunExtensionTarget = {
-  [Target in keyof ExtensionTargets]: ExtensionTargets[Target] extends RunExtension<
-    any,
-    any
-  >
-    ? Target
-    : never;
-}[keyof ExtensionTargets];
