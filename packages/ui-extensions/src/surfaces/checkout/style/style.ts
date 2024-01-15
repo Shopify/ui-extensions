@@ -1,5 +1,11 @@
 import {memoize} from './memoize';
-import {Conditions, ConditionalStyle, BaseConditions} from './types';
+import {
+  Conditions,
+  ConditionalStyle,
+  BaseConditions,
+  StylesConditions,
+  StylesConditionalStyle,
+} from './types';
 import {isEqual} from './isEqual';
 
 const MAX_CACHE_SIZE = 50;
@@ -80,9 +86,30 @@ const when: WhenFunction = function when<
   ) as WhenReturnType<T, TContext, AcceptedConditions>;
 };
 
+// This interface is only used to provide documentation for the Style helper.
+// It is not used in the implementation.
 export interface DocsStyle {
-  default: <T>(defaultValue: T) => ConditionalStyle<T>;
-  when: <T>(conditions: Conditions, value: T) => ConditionalStyle<T>;
+  /**
+   * Sets an optional default value to use when no other condition is met.
+   *
+   * @param defaultValue The default value
+   * @returns The chainable condition style
+   */
+  default: <T>(defaultValue: T) => StylesConditionalStyle<T>;
+  /**
+   * Adjusts the style based on different conditions. All conditions, expressed
+   * as a literal object, must be met for the associated value to be applied.
+   *
+   * The `when` method can be chained together to build more complex styles.
+   *
+   * @param conditions The condition(s)
+   * @param value The conditional value that can be applied if the conditions are met
+   * @returns The chainable condition style
+   */
+  when: <T>(
+    conditions: StylesConditions,
+    value: T,
+  ) => StylesConditionalStyle<T>;
 }
 
 /**
