@@ -26,6 +26,57 @@ export type BaseConditions = AtLeastOne<
   DefaultConditions & ResolutionCondition
 >;
 
+// This interface is only used to provide documentation for the Style helper.
+// It is not used in the implementation.
+export interface StylesBaseConditions {
+  viewportInlineSize?: {min: 'small' | 'medium' | 'large'};
+  hover?: true;
+  focus?: true;
+  resolution?: 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
+}
+
+// This interface is only used to provide documentation for the Style helper.
+// It is not used in the implementation.
+export interface StylesConditions {
+  viewportInlineSize?: {min: 'small' | 'medium' | 'large'};
+  hover?: true;
+  focus?: true;
+}
+
+// This interface is only used to provide documentation for the Style helper.
+// It is not used in the implementation.
+export interface StylesConditionalValue<
+  T,
+  AcceptedConditions extends StylesBaseConditions = StylesBaseConditions,
+> {
+  /**
+   * The conditions that must be met for the value to be applied. At least one
+   * condition must be specified.
+   */
+  conditions: AcceptedConditions;
+  /**
+   * The value that will be applied if the conditions are met.
+   */
+  value: T;
+}
+
+// This interface is only used to provide documentation for the Style helper.
+// It is not used in the implementation.
+export interface StylesConditionalStyle<
+  T,
+  AcceptedConditions extends StylesBaseConditions = StylesBaseConditions,
+> {
+  /**
+   * The default value applied when none of the conditional values
+   * specified in `conditionals` are met.
+   */
+  default?: T;
+  /**
+   * An array of conditional values.
+   */
+  conditionals: StylesConditionalValue<T, AcceptedConditions>[];
+}
+
 export interface ConditionalValue<
   T,
   AcceptedConditions extends BaseConditions = Conditions,
@@ -66,7 +117,6 @@ export type MaybeConditionalStyle<
   AcceptedConditions extends BaseConditions = Conditions,
 > = T | ConditionalStyle<T, AcceptedConditions>;
 
-export type MaybeResponsiveConditionalStyle<T> = MaybeConditionalStyle<
-  T,
-  ViewportSizeCondition
->;
+export type MaybeResponsiveConditionalStyle<T> =
+  | T
+  | ConditionalStyle<T, ViewportSizeCondition>;
