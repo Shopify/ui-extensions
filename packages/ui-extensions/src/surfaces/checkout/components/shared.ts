@@ -370,10 +370,32 @@ export type AccessibilityRole =
   /** Used to strip the semantic meaning of an element, but leave the visual styling intact. */
   | 'presentation';
 
-export type NonPresentationalAccessibilityRole = Exclude<
-  AccessibilityRole,
-  'decorative' | 'presentation'
->;
+export type NonPresentationalAccessibilityRole =
+  /** Used to indicate the primary content. */
+  | 'main'
+  /** Used to indicate the component is a header. */
+  | 'header'
+  /** Used to display information such as copyright information, navigation links, and privacy statements. */
+  | 'footer'
+  /** Used to indicate a generic section. */
+  | 'section'
+  /** Used to designate a supporting section that relates to the main content. */
+  | 'complementary'
+  /** Used to identify major groups of links used for navigating. */
+  | 'navigation'
+  /** Used to identify a list of ordered items. */
+  | 'orderedList'
+  /** Used to identify an item inside a list of items. */
+  | 'listItem'
+  /** Used to identify a list of unordered items. */
+  | 'unorderedList'
+  /** Used to indicates the component acts as a divider that separates and distinguishes sections of content. */
+  | 'separator'
+  /** Used to define a live region containing advisory information for the user that is not important enough to be an alert. */
+  | 'status'
+  /** Used for important, and usually time-sensitive, information. */
+  | 'alert';
+
 export type ViewLikeAccessibilityRole =
   | NonPresentationalAccessibilityRole
   | [NonPresentationalAccessibilityRole, NonPresentationalAccessibilityRole];
