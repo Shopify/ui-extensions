@@ -4,12 +4,12 @@ import {STANDARD_API, getExample, getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'purchase.thank-you.header.render-after',
-  description:
-    'A static extension target that is rendered below the header on the **Thank you** page.',
-  defaultExample: getExample('purchase.thank-you.header.render-after/default', [
-    'jsx',
-    'js',
-  ]),
+  description: `A static extension target that is rendered below the header on the **Thank you** page.
+
+  > Tip:
+  > To prevent layout shifting, avoid dynamic data fetching & rendering in this target. If you need to render dynamic content, consider reserving space for your content while it is loading.
+  > See: [Spinner](https://shopify.dev/docs/api/checkout-ui-extensions/components/feedback/spinner), [SkeletonText](https://shopify.dev/docs/api/checkout-ui-extensions/components/feedback/skeletontext), or [BlockSpacer](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/components/structure/blockspacer).
+  `,
   subCategory: 'Header',
   related: getLinksByTag('targets'),
   ...STANDARD_API,
