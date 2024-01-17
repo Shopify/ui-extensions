@@ -1,4 +1,4 @@
-import {
+import type {
   PaymentOption,
   SelectedPaymentOption,
 } from '@shopify/ui-extensions/checkout';

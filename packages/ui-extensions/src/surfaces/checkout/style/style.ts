@@ -1,5 +1,5 @@
 import {memoize} from './memoize';
-import {
+import type {
   Conditions,
   ConditionalStyle,
   BaseConditions,

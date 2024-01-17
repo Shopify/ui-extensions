@@ -1,4 +1,7 @@
-import {Order, RenderExtensionTarget} from '@shopify/ui-extensions/checkout';
+import type {
+  Order,
+  RenderExtensionTarget,
+} from '@shopify/ui-extensions/checkout';
 
 import {ExtensionHasNoMethodError} from '../errors';
 

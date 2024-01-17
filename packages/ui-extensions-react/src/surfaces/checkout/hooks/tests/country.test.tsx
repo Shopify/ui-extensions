@@ -1,4 +1,4 @@
-import {CountryCode} from '@shopify/ui-extensions/checkout';
+import type {CountryCode} from '@shopify/ui-extensions/checkout';
 
 import {useLocalizationCountry} from '../country';
 

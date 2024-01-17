@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {Autocomplete} from '../shared';
+import type {Autocomplete} from '../shared';
 
 export interface SelectOptionProps {
   /**

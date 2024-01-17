@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {
+import type {
   BackgroundProps,
   BorderProps,
   CornerProps,

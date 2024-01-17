@@ -1,4 +1,7 @@
-import {RenderExtensionTarget, Timezone} from '@shopify/ui-extensions/checkout';
+import type {
+  RenderExtensionTarget,
+  Timezone,
+} from '@shopify/ui-extensions/checkout';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';

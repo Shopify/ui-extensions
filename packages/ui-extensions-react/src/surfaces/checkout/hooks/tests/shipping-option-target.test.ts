@@ -1,4 +1,7 @@
-import {ExtensionTarget, ShippingOption} from '@shopify/ui-extensions/checkout';
+import type {
+  ExtensionTarget,
+  ShippingOption,
+} from '@shopify/ui-extensions/checkout';
 
 import {useShippingOptionTarget} from '../shipping-option-target';
 import {ExtensionHasNoTargetError} from '../../errors';

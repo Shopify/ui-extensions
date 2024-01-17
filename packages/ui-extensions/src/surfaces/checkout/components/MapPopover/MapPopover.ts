@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {IdProps} from '../shared';
+import type {IdProps} from '../shared';
 
 export interface MapPopoverProps extends IdProps {
   /**

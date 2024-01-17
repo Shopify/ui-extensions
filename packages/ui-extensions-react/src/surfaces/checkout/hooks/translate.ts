@@ -3,7 +3,6 @@ import type {
   RenderExtensionTarget,
   I18nTranslate,
 } from '@shopify/ui-extensions/checkout';
-import type {RemoteComponentType} from '@remote-ui/types';
 
 import {useApi} from './api';
 
@@ -26,7 +25,7 @@ export function useTranslate<
       return translation.map((part, index) => {
         if (isValidElement(part)) {
           // eslint-disable-next-line react/no-array-index-key
-          return cloneElement(part as RemoteComponentType<any>, {key: index});
+          return cloneElement(part, {key: index});
         }
         return part;
       });

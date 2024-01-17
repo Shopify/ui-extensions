@@ -1,4 +1,4 @@
-import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
+import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 import {faker} from '@faker-js/faker';
 
 import {ScopeNotGrantedError} from '../../errors';

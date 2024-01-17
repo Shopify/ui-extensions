@@ -1,4 +1,4 @@
-import {
+import type {
   CartDiscountCode,
   CartDiscountAllocation,
 } from '@shopify/ui-extensions/checkout';

@@ -1,4 +1,5 @@
-import {createRemoteComponent, RemoteFragment} from '@remote-ui/core';
+import type {RemoteFragment} from '@remote-ui/core';
+import {createRemoteComponent} from '@remote-ui/core';
 
 export interface ChoiceProps {
   /**

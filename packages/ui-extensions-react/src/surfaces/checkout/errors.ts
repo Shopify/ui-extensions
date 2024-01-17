@@ -1,4 +1,4 @@
-import {ExtensionTarget} from '@shopify/ui-extensions/checkout';
+import type {ExtensionTarget} from '@shopify/ui-extensions/checkout';
 
 export class CheckoutUIExtensionError extends Error {
   name = 'CheckoutUIExtensionError';

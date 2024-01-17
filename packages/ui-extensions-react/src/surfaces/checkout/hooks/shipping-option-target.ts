@@ -1,4 +1,4 @@
-import {ShippingOption} from '@shopify/ui-extensions/checkout';
+import type {ShippingOption} from '@shopify/ui-extensions/checkout';
 import {useMemo} from 'react';
 
 import {ExtensionHasNoTargetError} from '../errors';

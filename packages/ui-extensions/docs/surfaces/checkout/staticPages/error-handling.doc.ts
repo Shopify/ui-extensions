@@ -1,4 +1,4 @@
-import {LandingTemplateSchema} from '@shopify/generate-docs';
+import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
 const data: LandingTemplateSchema = {
   title: 'Error handling',

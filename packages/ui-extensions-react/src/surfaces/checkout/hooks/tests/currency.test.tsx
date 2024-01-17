@@ -1,4 +1,4 @@
-import {CurrencyCode} from '@shopify/ui-extensions/checkout';
+import type {CurrencyCode} from '@shopify/ui-extensions/checkout';
 
 import {useCurrency} from '../currency';
 

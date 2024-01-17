@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {PhoneFieldProps} from '../PhoneField/PhoneField';
+import type {PhoneFieldProps} from '../PhoneField/PhoneField';
 
 export type ConsentPolicy = 'sms-marketing';
 
