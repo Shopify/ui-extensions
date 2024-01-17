@@ -6,7 +6,9 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'purchase.thank-you.footer.render-after',
   description: `A static extension target that is rendered below the footer on the **Thank you** page.
 
-  To prevent layout shifting, avoid dynamic data fetching & rendering in this target. If you need to render dynamic content, consider reserving space for your content while it is loading. See: [Spinner](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/components/feedback/spinner), [SkeletonText](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/components/feedback/skeletontext), or [BlockSpacer](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/components/structure/blockspacer).
+  > Tip:
+  > To prevent layout shifting, avoid dynamic data fetching & rendering in this target. If you need to render dynamic content, consider reserving space for your content while it is loading.
+  > See: [Spinner](https://shopify.dev/docs/api/checkout-ui-extensions/components/feedback/spinner), [SkeletonText](https://shopify.dev/docs/api/checkout-ui-extensions/components/feedback/skeletontext), or [BlockSpacer](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/components/structure/blockspacer).
   `,
   defaultExample: getExample('purchase.thank-you.footer.render-after/default', [
     'jsx',
