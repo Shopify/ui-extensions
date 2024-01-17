@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2023.10.1
+
+### Patch Changes
+
+- [#1657](https://github.com/Shopify/ui-extensions/pull/1657) [`370a9366`](https://github.com/Shopify/ui-extensions/commit/370a936634c4b537885716e30bd50dd8b1d0c7c1) Thanks [@oliverigor](https://github.com/oliverigor)! - Add docs fixes for the conditional style Style type
+
 ## 2023.10.0
 
 ### Major Changes
