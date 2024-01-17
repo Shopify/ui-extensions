@@ -1,5 +1,14 @@
 # @shopify/ui-extensions-react
 
+## 2024.1.1
+
+### Patch Changes
+
+- [#1653](https://github.com/Shopify/ui-extensions/pull/1653) [`6571d446`](https://github.com/Shopify/ui-extensions/commit/6571d446c76a9f5bae2c6b7f0fd1ea505dcd4eaf) Thanks [@oliverigor](https://github.com/oliverigor)! - Add docs fixes for the conditional style Style type
+
+- Updated dependencies [[`6571d446`](https://github.com/Shopify/ui-extensions/commit/6571d446c76a9f5bae2c6b7f0fd1ea505dcd4eaf), [`6cdfdc36`](https://github.com/Shopify/ui-extensions/commit/6cdfdc3645492949cfed9f7ce7bb6899d8899085)]:
+  - @shopify/ui-extensions@2024.1.1
+
 ## 2024.1.0
 
 ### Major Changes
