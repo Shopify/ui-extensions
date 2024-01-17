@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {DisclosureActivatorProps} from '../shared';
+import type {DisclosureActivatorProps} from '../shared';
 
 export interface CheckboxProps extends DisclosureActivatorProps {
   /**

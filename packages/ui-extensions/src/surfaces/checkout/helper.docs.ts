@@ -1,4 +1,4 @@
-import {CodeTabType, ExampleType} from '@shopify/generate-docs';
+import type {CodeTabType, ExampleType} from '@shopify/generate-docs';
 
 const examplePath = '../../../../../docs/surfaces/checkout/reference/examples';
 

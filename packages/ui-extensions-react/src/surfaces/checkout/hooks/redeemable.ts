@@ -1,4 +1,4 @@
-import {
+import type {
   RedeemableChangeResult,
   RedeemableChange,
 } from '@shopify/ui-extensions/checkout';

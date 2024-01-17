@@ -1,4 +1,4 @@
-import {Metafield} from '@shopify/ui-extensions/checkout';
+import type {Metafield} from '@shopify/ui-extensions/checkout';
 
 import {CheckoutUIExtensionError} from '../errors';
 

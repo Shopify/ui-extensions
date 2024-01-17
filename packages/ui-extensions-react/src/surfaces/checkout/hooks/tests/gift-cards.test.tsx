@@ -1,4 +1,4 @@
-import {AppliedGiftCard} from '@shopify/ui-extensions/checkout';
+import type {AppliedGiftCard} from '@shopify/ui-extensions/checkout';
 
 import {useAppliedGiftCards} from '../gift-cards';
 

@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import {MaybeResponsiveConditionalStyle} from '../../style';
+import type {MaybeResponsiveConditionalStyle} from '../../style';
 import type {IdProps} from '../shared';
 
 export interface SkeletonImageProps extends IdProps {

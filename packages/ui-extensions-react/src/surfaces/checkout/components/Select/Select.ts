@@ -1,7 +1,5 @@
-import {
-  Select as BaseSelect,
-  SelectOptionProps as BaseSelectOptionProps,
-} from '@shopify/ui-extensions/checkout';
+import type {SelectOptionProps as BaseSelectOptionProps} from '@shopify/ui-extensions/checkout';
+import {Select as BaseSelect} from '@shopify/ui-extensions/checkout';
 import {createRemoteReactComponent} from '@remote-ui/react';
 import type {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
 

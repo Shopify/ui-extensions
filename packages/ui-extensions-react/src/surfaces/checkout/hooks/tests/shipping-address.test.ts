@@ -1,4 +1,4 @@
-import {MailingAddress} from '@shopify/ui-extensions/checkout';
+import type {MailingAddress} from '@shopify/ui-extensions/checkout';
 
 import {useShippingAddress} from '../shipping-address';
 

@@ -1,4 +1,4 @@
-import {Attribute, SellingPlan, MailingAddress} from '../shared';
+import type {Attribute, SellingPlan, MailingAddress} from '../shared';
 
 /**
  * Removes a note

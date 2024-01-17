@@ -1,6 +1,9 @@
-import {RemoteFragment} from '@remote-ui/core';
+import type {RemoteFragment} from '@remote-ui/core';
 
-import {MaybeConditionalStyle, MaybeResponsiveConditionalStyle} from '../style';
+import type {
+  MaybeConditionalStyle,
+  MaybeResponsiveConditionalStyle,
+} from '../style';
 
 /**
  * A descriptor for selecting the data a field would like to receive during

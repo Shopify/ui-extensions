@@ -10,7 +10,7 @@ import type {
   SpacingProps,
   ViewLikeAccessibilityRole,
 } from '../shared';
-import {MaybeResponsiveConditionalStyle} from '../../style';
+import type {MaybeResponsiveConditionalStyle} from '../../style';
 
 export interface BlockStackProps
   extends Pick<BackgroundProps, 'background'>,

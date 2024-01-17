@@ -1,4 +1,7 @@
-import {Currency, RenderExtensionTarget} from '@shopify/ui-extensions/checkout';
+import type {
+  Currency,
+  RenderExtensionTarget,
+} from '@shopify/ui-extensions/checkout';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';

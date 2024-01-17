@@ -1,4 +1,4 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import {
   STANDARD_API_PROPERTIES_DESCRIPTION,

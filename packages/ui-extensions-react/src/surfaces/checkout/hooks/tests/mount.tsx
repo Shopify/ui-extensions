@@ -1,6 +1,6 @@
 import React from 'react';
 import {createRender} from '@quilted/react-testing';
-import {
+import type {
   ApiForRenderExtension,
   RenderExtensionTarget,
 } from '@shopify/ui-extensions/checkout';

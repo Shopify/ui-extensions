@@ -1,4 +1,7 @@
-import {Language, RenderExtensionTarget} from '@shopify/ui-extensions/checkout';
+import type {
+  Language,
+  RenderExtensionTarget,
+} from '@shopify/ui-extensions/checkout';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';

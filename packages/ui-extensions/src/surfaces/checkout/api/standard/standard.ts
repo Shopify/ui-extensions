@@ -12,7 +12,7 @@ import type {
   MailingAddress,
 } from '../shared';
 import type {ExtensionTarget} from '../../targets';
-import {ApiVersion} from '../../../../shared';
+import type {ApiVersion} from '../../../../shared';
 
 /**
  * A key-value storage object for the extension.
@@ -73,7 +73,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The API version that was set in the extension config file.
    *
-   * @example '2023-04', '2023-07'
+   * @example '2023-04', '2023-07', '2023-10', '2024-01', 'unstable'
    */
   apiVersion: ApiVersion;
 
@@ -787,6 +787,9 @@ export interface Shop {
   name: string;
   /**
    * The primary storefront URL.
+   *
+   * > Caution:
+   * > As of version `2024-04` this value will no longer have a trailing slash.
    */
   storefrontUrl?: string;
   /**

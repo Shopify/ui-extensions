@@ -1,4 +1,4 @@
-import {
+import type {
   CheckoutToken,
   RenderExtensionTarget,
 } from '@shopify/ui-extensions/checkout';

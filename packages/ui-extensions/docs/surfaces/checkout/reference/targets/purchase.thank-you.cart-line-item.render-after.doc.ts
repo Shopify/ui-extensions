@@ -1,4 +1,4 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import {getExample, getLinksByTag, CART_LINE_ITEM_API} from '../helper.docs';
 

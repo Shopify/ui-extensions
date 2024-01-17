@@ -1,6 +1,6 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
-import {ShippingOption} from '../standard/standard';
+import type {ShippingOption} from '../standard/standard';
 
 export interface ShippingOptionItemApi {
   /**

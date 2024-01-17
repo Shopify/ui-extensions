@@ -1,4 +1,4 @@
-import {CheckoutSettings} from '@shopify/ui-extensions/checkout';
+import type {CheckoutSettings} from '@shopify/ui-extensions/checkout';
 
 import {useCheckoutSettings} from '../checkout-settings';
 

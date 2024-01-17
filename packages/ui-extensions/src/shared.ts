@@ -15,4 +15,9 @@ export type AnyComponentBuilder<ComponentTypes> =
 /**
  * Union of supported API versions
  */
-export type ApiVersion = '2023-04' | '2023-07' | '2023-10' | 'unstable';
+export type ApiVersion =
+  | '2023-04'
+  | '2023-07'
+  | '2023-10'
+  | '2024-01'
+  | 'unstable';

@@ -1,4 +1,4 @@
-import {LandingTemplateSchema} from '@shopify/generate-docs';
+import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
 // Order of data shape mimics visual structure of page
 // Anything in an array can have multiple objects

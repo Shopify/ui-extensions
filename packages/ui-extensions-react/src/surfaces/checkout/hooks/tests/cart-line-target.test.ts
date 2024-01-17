@@ -1,4 +1,4 @@
-import {ExtensionTarget, CartLine} from '@shopify/ui-extensions/checkout';
+import type {ExtensionTarget, CartLine} from '@shopify/ui-extensions/checkout';
 
 import {useCartLineTarget} from '../cart-line-target';
 import {ExtensionHasNoTargetError} from '../../errors';
