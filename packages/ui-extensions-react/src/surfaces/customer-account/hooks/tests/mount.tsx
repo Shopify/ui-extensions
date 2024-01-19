@@ -6,7 +6,7 @@ import {
 } from '@shopify/ui-extensions/customer-account';
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
-import {ExtensionApiContext} from '../../context';
+import {ExtensionApiContext} from '../../../checkout/context';
 
 export const mount = createRender<Options, Options>({
   context(options) {

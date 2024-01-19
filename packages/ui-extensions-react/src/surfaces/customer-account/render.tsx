@@ -8,7 +8,7 @@ import type {
   ApiForRenderExtension,
 } from '@shopify/ui-extensions/customer-account';
 
-import {ExtensionApiContext} from './context';
+import {ExtensionApiContext} from '../checkout/context';
 
 /**
  * Registers your React-based UI Extension to run for the selected extension target.

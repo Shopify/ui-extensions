@@ -4,5 +4,13 @@ import type {
   RenderExtensionTarget,
 } from '@shopify/ui-extensions/checkout';
 
-export const ExtensionApiContext =
-  createContext<ApiForRenderExtension<RenderExtensionTarget> | null>(null);
+import type {
+  ApiForRenderExtension as CustomerAccountApiForRenderExtension,
+  RenderExtensionTarget as CustomerAccountRenderExtensionTarget,
+} from '@shopify/ui-extensions/customer-account';
+
+export const ExtensionApiContext = createContext<
+  | ApiForRenderExtension<RenderExtensionTarget>
+  | CustomerAccountApiForRenderExtension<CustomerAccountRenderExtensionTarget>
+  | null
+>(null);

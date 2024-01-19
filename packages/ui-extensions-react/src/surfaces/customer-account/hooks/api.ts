@@ -5,7 +5,7 @@ import {
 } from '@shopify/ui-extensions/customer-account';
 
 import {CustomerAccountUIExtensionError} from '../errors';
-import {ExtensionApiContext} from '../context';
+import {ExtensionApiContext} from '../../checkout/context';
 
 /**
  * Returns the full API object that was passed in to your extension when it was created.
