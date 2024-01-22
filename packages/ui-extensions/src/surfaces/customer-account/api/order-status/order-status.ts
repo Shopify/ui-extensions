@@ -347,6 +347,11 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * @example 'unstable'
    */
   version: Version;
+
+  /**
+   * The requireLogin() method triggers login if the customer is viewing pre-authenticated Order Status Page.
+   */
+  requireLogin: () => Promise<void>;
 }
 
 export interface OrderStatusBuyerIdentity {
