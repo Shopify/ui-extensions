@@ -38,7 +38,7 @@ export interface PostPurchaseRenderApi
   ): Promise<ApplyChangesetResult>;
   /**
    * Indicates that the extension has finished running.
-   * Currently, effectively redirects buyers to the thank you page.
+   * Currently, effectively redirects buyers to the **Thank you** page.
    */
   done(): Promise<void>;
 }

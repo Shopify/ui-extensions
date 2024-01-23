@@ -1303,7 +1303,7 @@ export const pixelEvents = {
     checkout_completed: {
       metadata: {
         description:
-          'The `checkout_completed` event logs when a visitor completes a purchase. This event is available on the order status and checkout pages',
+          'The `checkout_completed` event logs when a visitor completes a purchase. This event is available on the **Order status** and checkout pages',
       },
       properties: {
         id: {
@@ -1473,7 +1473,7 @@ export const pixelEvents = {
     page_viewed: {
       metadata: {
         description:
-          'The `page_viewed` event logs an instance where a customer visited a page. This event is available on the online store, checkout, and order status pages',
+          'The `page_viewed` event logs an instance where a customer visited a page. This event is available on the online store, checkout, and **Order status** pages',
       },
       properties: {
         id: {

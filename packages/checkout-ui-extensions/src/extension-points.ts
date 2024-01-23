@@ -87,7 +87,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A [dynamic extension point](https://shopify.dev/docs/api/checkout-ui-extensions/extension-points-overview#dynamic-extension-points) that renders exclusively on the Thank You Page.
+   * A [dynamic extension point](https://shopify.dev/docs/api/checkout-ui-extensions/extension-points-overview#dynamic-extension-points) that renders exclusively on the **Thank you** page.
    * Unlike static extension points, dynamic extension points render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
@@ -102,7 +102,7 @@ export interface ExtensionPoints {
 
   /**
    * A static extension point that renders on every line item, inside the details
-   * under the line item properties element on the Thank You Page.
+   * under the line item properties element on the **Thank you** page.
    *
    */
   'Checkout::ThankYou::CartLineDetails::RenderAfter': RenderExtension<
@@ -111,7 +111,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after all line items on the Thank You page.
+   * A static extension point that is rendered after all line items on the **Thank you** page.
    *
    */
   'Checkout::ThankYou::CartLines::RenderAfter': RenderExtension<
@@ -119,7 +119,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after a purchase below the customer information on the Thank You page.
+   * A static extension point that is rendered after a purchase below the customer information on the **Thank you** page.
    *
    */
   'Checkout::ThankYou::CustomerInformation::RenderAfter': RenderExtension<
@@ -128,7 +128,7 @@ export interface ExtensionPoints {
   >;
 
   /**
-   * A [dynamic extension point](https://shopify.dev/docs/api/checkout-ui-extensions/extension-points-overview#dynamic-extension-points) that renders exclusively on the Order Status Page.
+   * A [dynamic extension point](https://shopify.dev/docs/api/checkout-ui-extensions/extension-points-overview#dynamic-extension-points) that renders exclusively on the **Order status** page.
    * Unlike static extension points, dynamic extension points render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
@@ -142,7 +142,7 @@ export interface ExtensionPoints {
   >;
   /**
    * A static extension point that renders on every line item, inside the details
-   * under the line item properties element on the Order Status Page.
+   * under the line item properties element on the **Order status** page.
    *
    */
   'Checkout::OrderStatus::CartLineDetails::RenderAfter': RenderExtension<
@@ -152,7 +152,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after all line items on the Order Status page.
+   * A static extension point that is rendered after all line items on the **Order status** page.
    *
    */
   'Checkout::OrderStatus::CartLines::RenderAfter': RenderExtension<
@@ -161,7 +161,7 @@ export interface ExtensionPoints {
     AllComponents
   >;
   /**
-   * A static extension point that is rendered after a purchase below the customer information on the Order Status page.
+   * A static extension point that is rendered after a purchase below the customer information on the **Order status** page.
    *
    */
   'Checkout::OrderStatus::CustomerInformation::RenderAfter': RenderExtension<

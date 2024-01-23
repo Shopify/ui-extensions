@@ -49,7 +49,7 @@ export interface PixelEventsCheckoutCompletedData {
 
 /**
  * The `checkout_completed` event logs when a visitor completes a purchase. This
- * event is available on the order status and checkout pages
+ * event is available on the **Order status** and checkout pages
  */
 export interface PixelEventsCheckoutCompleted {
   clientId: ClientId;
@@ -158,7 +158,7 @@ export interface PixelEventsPageViewedData {}
 
 /**
  * The `page_viewed` event logs an instance where a customer visited a page.
- * This event is available on the online store, checkout, and order status pages
+ * This event is available on the online store, checkout, and **Order status** pages
  */
 export interface PixelEventsPageViewed {
   clientId: ClientId;
@@ -318,7 +318,7 @@ export interface PixelEvents {
 
   /**
    * The `checkout_completed` event logs when a visitor completes a purchase.
-   * This event is available on the order status and checkout pages
+   * This event is available on the **Order status** and checkout pages
    */
   checkout_completed: PixelEventsCheckoutCompleted;
 
@@ -354,7 +354,7 @@ export interface PixelEvents {
 
   /**
    * The `page_viewed` event logs an instance where a customer visited a page.
-   * This event is available on the online store, checkout, and order status
+   * This event is available on the online store, checkout, and **Order status**
    * pages
    */
   page_viewed: PixelEventsPageViewed;
