@@ -33,22 +33,49 @@ export function reactExtension<ExtensionTarget extends RenderExtensionTarget>(
   // shape (`RenderExtension`).
   return extension<'Playground'>(target as any, (root, api) => {
     return new Promise((resolve, reject) => {
-      try {
-        remoteRender(
-          <ExtensionApiContext.Provider value={api}>
-            {render(api as ApiForRenderExtension<ExtensionTarget>)}
-          </ExtensionApiContext.Provider>,
-          root,
-          () => {
-            resolve();
-          },
-        );
-      } catch (error) {
-        // Workaround for https://github.com/Shopify/ui-extensions/issues/325
-        // eslint-disable-next-line no-console
-        console.error(error);
-        reject(error);
+      const renderResult = render(api as ApiForRenderExtension<ExtensionTarget>);
+
+      if (
+        typeof renderResult === 'object' &&
+        renderResult != null &&
+        'then' in renderResult
+      ) {
+        renderResult.then((extensionMarkup) => {
+          remoteRender(
+            <ExtensionApiContext.Provider value={api}>
+              {render(api as ApiForRenderExtension<ExtensionTarget>)}
+            </ExtensionApiContext.Provider>,
+            root,
+            () => {
+              resolve();
+            },
+          );
+        }).catch(error) {
+            // Workaround for https://github.com/Shopify/ui-extensions/issues/325
+            // eslint-disable-next-line no-console
+            console.error(error);
+            reject(error);
+        }
+      } else {
+        try {
+          remoteRender(
+            <ExtensionApiContext.Provider value={api}>
+              {renderResult}
+            </ExtensionApiContext.Provider>,
+            root,
+            () => {
+              resolve();
+            },
+          );
+        } catch(error) {
+          // Workaround for https://github.com/Shopify/ui-extensions/issues/325
+          // eslint-disable-next-line no-console
+          console.error(error);
+          reject(error);
+        }
       }
+
+
     });
   }) as any;
 }
