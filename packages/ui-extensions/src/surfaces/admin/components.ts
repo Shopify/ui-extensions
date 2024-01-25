@@ -32,6 +32,8 @@ export {EmailField} from './components/EmailField/EmailField';
 export type {EmailFieldProps} from './components/EmailField/EmailField';
 export {Form} from './components/Form/Form';
 export type {FormProps} from './components/Form/Form';
+export {FunctionSettings} from './components/FunctionSettings/FunctionSettings';
+export type {FunctionSettingsProps} from './components/FunctionSettings/FunctionSettings';
 export {Heading} from './components/Heading/Heading';
 export type {HeadingProps} from './components/Heading/Heading';
 export {HeadingGroup} from './components/HeadingGroup/HeadingGroup';
