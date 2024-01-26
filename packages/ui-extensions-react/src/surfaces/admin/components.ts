@@ -58,6 +58,8 @@ export {ResourceItem} from './components/ResourceItem/ResourceItem';
 export type {ResourceItemProps} from './components/ResourceItem/ResourceItem';
 export {ResourceList} from './components/ResourceList/ResourceList';
 export type {ResourceListProps} from './components/ResourceList/ResourceList';
+export {Section} from './components/Section/Section';
+export type {SectionProps} from './components/Section/Section';
 export {Select} from './components/Select/Select';
 export type {
   OptionDescription,
