@@ -1194,4 +1194,9 @@ export interface Order {
    * If cancelled, the time at which the order was cancelled.
    */
   cancelledAt?: string;
+  /**
+   * A randomly generated alpha-numeric identifier for the order.
+   * This number should always be present, but 2023 orders predate confirmation numbers and may not have it.
+   */
+  confirmationNumber?: string;
 }
