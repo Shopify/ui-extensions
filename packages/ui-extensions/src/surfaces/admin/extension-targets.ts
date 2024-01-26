@@ -9,6 +9,7 @@ import type {
   ProductDetailsConfigurationApi,
   ProductVariantDetailsConfigurationApi,
   OrderRoutingRuleApi,
+  ValidationSettingsApi,
 } from './api';
 import {AnyComponentBuilder} from '../../shared';
 
@@ -233,6 +234,16 @@ export interface ExtensionTargets {
   >;
   'admin.settings.order-routing-rule.render': RenderExtension<
     OrderRoutingRuleApi<'admin.settings.order-routing-rule.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders Validation Settings within a given validation's add and edit views.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.settings.validation.render': RenderExtension<
+    ValidationSettingsApi<'admin.settings.validation.render'>,
     AllComponents
   >;
 }
