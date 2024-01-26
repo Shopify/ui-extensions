@@ -25,18 +25,22 @@ import {ExtensionApiContext} from './context';
  */
 export function reactExtension<ExtensionTarget extends RenderExtensionTarget>(
   target: ExtensionTarget,
-  render: (api: ApiForRenderExtension<ExtensionTarget>) => ReactElement<any>,
+  render: (
+    api: ApiForRenderExtension<ExtensionTarget>,
+  ) => Promise<ReactElement<any>> | ReactElement<any>,
 ): ExtensionTargets[ExtensionTarget] {
   // TypeScript can’t infer the type of the callback because it’s a big union
   // type. To get around it, we’ll just fake like we are rendering the
   // Playground extension, since all render extensions have the same general
   // shape (`RenderExtension`).
-  return extension<'Playground'>(target as any, (root, api) => {
-    return new Promise((resolve, reject) => {
+  return extension<'Playground'>(target as any, async (root, api) => {
+    const element = await render(api as ApiForRenderExtension<ExtensionTarget>);
+
+    await new Promise<void>((resolve, reject) => {
       try {
         remoteRender(
           <ExtensionApiContext.Provider value={api}>
-            {render(api as ApiForRenderExtension<ExtensionTarget>)}
+            {element}
           </ExtensionApiContext.Provider>,
           root,
           () => {
