@@ -48,7 +48,7 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
-      anchorLink: 'apis',
+      anchorLink: 'extension-points-apis',
       title: 'Extension points and APIs',
       sectionContent:
         "POS UI extensions provide a set of extension points that you can use to build your extension. Every extension point has access to APIs. These APIs are a part of a larger API object that gets passed into the extend() function. You can use these APIs to interact with the POS. Note that if you're using React, you also have access to the useExtensionApi() hook. When using this hook, you can pass in the extension point to get the correct API object type returned from the hook. Not all APIs are available on every extension point. The following table includes all the available APIs, and the extension points that include them. If an API fails to perform an action, then it will throw an error. You can use a try/catch block to handle this scenario.",
