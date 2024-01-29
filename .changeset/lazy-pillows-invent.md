@@ -3,4 +3,4 @@
 '@shopify/ui-extensions-react': patch
 ---
 
-added the Section component to admin surface
+New `Section` component available to admin UI extensions.
