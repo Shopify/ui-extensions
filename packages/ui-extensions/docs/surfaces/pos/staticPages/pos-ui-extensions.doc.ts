@@ -4,6 +4,12 @@ const data: LandingTemplateSchema = {
   title: 'POS UI extensions',
   description: `POS UI Extensions enable app developers to extend the capabilities of the Shopify POS app at defined extension points. You can use the POS UI Extension components and APIs to develop extensions that feel native to Shopify POS with faster performance.`,
   id: 'pos-ui-extensions',
+  image: '/assets/landing-pages/templated-apis/hero.png',
+  darkImage: '/assets/landing-pages/templated-apis/hero-dark.png',
+  tabletImage: '/assets/landing-pages/templated-apis/hero.png',
+  tabletDarkImage: '/assets/landing-pages/templated-apis/hero-dark.png',
+  mobileImage: '/assets/landing-pages/templated-apis/hero.png',
+  mobileDarkImage: '/assets/landing-pages/templated-apis/hero-dark.png',
   sections: [
     {
       type: 'Generic',
