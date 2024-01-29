@@ -23,12 +23,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Image/examples/basic-Image.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Image/examples/basic-image.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-Image.example.ts',
+          code: './examples/basic-image.example.ts',
           language: 'js',
         },
       ],

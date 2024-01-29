@@ -24,12 +24,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/NumberField/examples/basic-NumberField.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/NumberField/examples/basic-numberfield.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-NumberField.example.ts',
+          code: './examples/basic-numberfield.example.ts',
           language: 'js',
         },
       ],
