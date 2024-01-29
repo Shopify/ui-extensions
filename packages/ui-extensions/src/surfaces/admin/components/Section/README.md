@@ -6,7 +6,7 @@
 
 ## Expected HTML in Web host
 
-Note that the rendered heading level in the examples are assuming that the `Section` is the only thing in the document. In this case, the first `Section` would render a level 1 heading element.
+Note that the rendered heading level in the examples are assuming that the `Section` is nested within the root of the HTML document. The document itself is a "section", therefore its children `Heading` will be level 1. Sibling `Section`s will start their heading level at 2.
 
 <table>
 <tr>
@@ -25,7 +25,7 @@ Note that the rendered heading level in the examples are assuming that the `Sect
 
 ```html
 <section>
-  <h1>Provinces of Canada</h1>
+  <h2>Provinces of Canada</h2>
 </section>
 ```
 
@@ -46,7 +46,7 @@ Note that the rendered heading level in the examples are assuming that the `Sect
 
 ```html
 <section>
-  <h1>Provinces of Canada</h1>
+  <h2>Provinces of Canada</h2>
 </section>
 ```
 
@@ -57,17 +57,17 @@ Note that the rendered heading level in the examples are assuming that the `Sect
 <td valign="top">
 
 ```jsx
-<Section heading="Provinces of Canada">
-  <Section>
-    <Heading>Quebec</Heading>
-    <Text>Most of its residents are in eastern time.<Text>
+<Section heading="Some provinces of Canada">
+    <Section>
+        <Heading>Quebec</Heading>
+        <Text>Most of its residents are in eastern time.<Text>
 
-    <Heading>Ontario</Heading>
-    <Text>Most of its residents are in eastern time.</Text>
+        <Heading>Ontario</Heading>
+        <Text>Most of its residents are in eastern time.</Text>
 
-    <Heading>British Columbia</Heading>
-    <Text>Most of its residents are in pacific time.</Text>
-  </Section>
+        <Heading>British Columbia</Heading>
+        <Text>Most of its residents are in pacific time.</Text>
+    </Section>
 </Section>
 ```
 
@@ -76,17 +76,17 @@ Note that the rendered heading level in the examples are assuming that the `Sect
 
 ```html
 <section>
-  <h1>Provinces of Canada</h1>
-  <section>
-    <h2>Quebec</h2>
-    <span>Most of its residents are in eastern time.<span>
+    <h2>Some provinces of Canada</h2>
+    <section>
+        <h3>Quebec</h3>
+        <span>Most of its residents are in eastern time.<span>
 
-    <h2>Ontario</h2>
-    <span>Most of its residents are in eastern time.</span>
+        <h3>Ontario</h3>
+        <span>Most of its residents are in eastern time.</span>
 
-    <h2>British Columbia</h2>
-    <span>Most of its residents are in pacific time.</span>
-  </section>
+        <h3>British Columbia</h3>
+        <span>Most of its residents are in pacific time.</span>
+    </section>
 </section>
 ```
 
