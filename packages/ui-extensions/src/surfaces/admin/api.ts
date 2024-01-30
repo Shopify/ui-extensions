@@ -7,3 +7,4 @@ export type {BlockExtensionApi} from './api/block/block';
 export type {ProductDetailsConfigurationApi} from './api/product-configuration/product-details-configuration';
 export type {ProductVariantDetailsConfigurationApi} from './api/product-configuration/product-variant-details-configuration';
 export type {OrderRoutingRuleApi} from './api/order-routing-rule/order-routing-rule';
+export type {ValidationSettingsApi} from './api/checkout-rules/validation-settings';
