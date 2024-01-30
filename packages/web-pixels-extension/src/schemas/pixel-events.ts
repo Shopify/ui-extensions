@@ -453,6 +453,41 @@ export const pixelEvents = {
         },
       },
     },
+    EventType: {
+      enum: ['standard', 'dom', 'custom', 'meta'],
+    },
+    Id: {
+      type: 'string',
+      metadata: {
+        description: 'The ID of the customer event',
+      },
+    },
+    ClientId: {
+      type: 'string',
+      metadata: {
+        description: 'The client-side ID of the customer, provided by Shopify',
+      },
+    },
+    Name: {
+      type: 'string',
+      metadata: {
+        description: 'The name of the customer event',
+      },
+    },
+    Timestamp: {
+      type: 'string',
+      metadata: {
+        description:
+          'The timestamp of when the customer event occurred, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format',
+      },
+    },
+    Data: {
+      metadata: {
+        description:
+          'A free-form object representing data specific to this event provided by Shopify. Refer to [standard events](#standard-events) for details on the payload available to each event',
+        typescriptType: 'Record<string, unknown>',
+      },
+    },
     Attribute: {
       metadata: {
         description:
@@ -1195,36 +1230,126 @@ export const pixelEvents = {
         },
       },
     },
-    Id: {
-      type: 'string',
+    InputElement: {
       metadata: {
-        description: 'The ID of the customer event',
+        description: 'An object that contains data about an input element type',
+      },
+      properties: {
+        id: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The id attribute of an element',
+          },
+        },
+        name: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The name attribute of an element',
+          },
+        },
+        tagName: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'A string representation of the tag of an element',
+          },
+        },
+        type: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The type attribute of an element. Often relevant for an input or button element.',
+          },
+        },
+        value: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The value attribute of an element. Often relevant for an input element.',
+          },
+        },
       },
     },
-    ClientId: {
-      type: 'string',
+    FormElement: {
       metadata: {
-        description: 'The client-side ID of the customer, provided by Shopify',
+        description: 'An object that contains data about a form element type',
+      },
+      properties: {
+        action: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The action attribute of a form element',
+          },
+        },
+        id: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The id attribute of an element',
+          },
+        },
+        elements: {
+          elements: {
+            ref: 'InputElement',
+          },
+        },
       },
     },
-    Name: {
-      type: 'string',
-      metadata: {
-        description: 'The name of the customer event',
-      },
-    },
-    Timestamp: {
-      type: 'string',
+    GenericElement: {
       metadata: {
         description:
-          'The timestamp of when the customer event occurred, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format',
+          'An object that contains data about a generic element type',
       },
-    },
-    Data: {
-      metadata: {
-        description:
-          'A free-form object representing data specific to this event provided by Shopify. Refer to [standard events](#standard-events) for details on the payload available to each event',
-        typescriptType: 'Record<string, unknown>',
+      properties: {
+        href: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The href attribute of an element',
+          },
+        },
+        id: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The id attribute of an element',
+          },
+        },
+        name: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The name attribute of an element',
+          },
+        },
+        tagName: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'A string representation of the tag of an element',
+          },
+        },
+        type: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The type attribute of an element. Often relevant for an input or button element.',
+          },
+        },
+        value: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The value attribute of an element. Often relevant for an input element.',
+          },
+        },
       },
     },
     CustomData: {
@@ -1245,6 +1370,12 @@ export const pixelEvents = {
         },
         clientId: {
           ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Custom',
+          },
         },
         name: {
           type: 'string',
@@ -1269,7 +1400,7 @@ export const pixelEvents = {
     checkout_address_info_submitted: {
       metadata: {
         description:
-          'The `checkout_address_info_submitted` event logs an instance of a customer submitting their mailing address. This event is only available in checkouts where checkout extensibility for customizations is enabled',
+          'The `checkout_address_info_submitted` event logs an instance of a customer submitting their mailing address. This event is only available in checkouts where Checkout Extensibility for customizations is enabled',
       },
       properties: {
         id: {
@@ -1277,6 +1408,12 @@ export const pixelEvents = {
         },
         clientId: {
           ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
         },
         name: {
           type: 'string',
@@ -1303,7 +1440,7 @@ export const pixelEvents = {
     checkout_completed: {
       metadata: {
         description:
-          'The `checkout_completed` event logs when a visitor completes a purchase. This event is available on the order status and checkout pages',
+          'The `checkout_completed` event logs when a visitor completes a purchase. This event is available on the **Order status** and checkout pages',
       },
       properties: {
         id: {
@@ -1311,6 +1448,12 @@ export const pixelEvents = {
         },
         clientId: {
           ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
         },
         name: {
           type: 'string',
@@ -1337,7 +1480,7 @@ export const pixelEvents = {
     checkout_started: {
       metadata: {
         description:
-          'The `checkout_started` event logs an instance of a customer starting the checkout process. This event is available on the checkout page. For checkout extensibility, this event is triggered every time a customer enters checkout. For non-checkout extensible shops, this event is only triggered the first time a customer enters checkout.',
+          'The `checkout_started` event logs an instance of a customer starting the checkout process. This event is available on the checkout page. For Checkout Extensibility, this event is triggered every time a customer enters checkout. For non-checkout extensible shops, this event is only triggered the first time a customer enters checkout.',
       },
       properties: {
         id: {
@@ -1345,6 +1488,12 @@ export const pixelEvents = {
         },
         clientId: {
           ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
         },
         name: {
           type: 'string',
@@ -1380,6 +1529,12 @@ export const pixelEvents = {
         clientId: {
           ref: 'ClientId',
         },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
+        },
         name: {
           type: 'string',
           metadata: {
@@ -1414,6 +1569,12 @@ export const pixelEvents = {
         clientId: {
           ref: 'ClientId',
         },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
+        },
         name: {
           type: 'string',
           metadata: {
@@ -1439,7 +1600,7 @@ export const pixelEvents = {
     checkout_contact_info_submitted: {
       metadata: {
         description:
-          'The `checkout_contact_info_submitted` event logs an instance where a customer submits a checkout form. This event is only available in checkouts where checkout extensibility for customizations is enabled',
+          'The `checkout_contact_info_submitted` event logs an instance where a customer submits a checkout form. This event is only available in checkouts where Checkout Extensibility for customizations is enabled',
       },
       properties: {
         id: {
@@ -1447,6 +1608,12 @@ export const pixelEvents = {
         },
         clientId: {
           ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
         },
         name: {
           type: 'string',
@@ -1473,7 +1640,7 @@ export const pixelEvents = {
     page_viewed: {
       metadata: {
         description:
-          'The `page_viewed` event logs an instance where a customer visited a page. This event is available on the online store, checkout, and order status pages',
+          'The `page_viewed` event logs an instance where a customer visited a page. This event is available on the online store, checkout, and **Order status** pages',
       },
       properties: {
         id: {
@@ -1481,6 +1648,12 @@ export const pixelEvents = {
         },
         clientId: {
           ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
         },
         name: {
           type: 'string',
@@ -1511,6 +1684,12 @@ export const pixelEvents = {
         },
         clientId: {
           ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
         },
         name: {
           type: 'string',
@@ -1547,6 +1726,12 @@ export const pixelEvents = {
         clientId: {
           ref: 'ClientId',
         },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
+        },
         name: {
           type: 'string',
           metadata: {
@@ -1582,6 +1767,12 @@ export const pixelEvents = {
         clientId: {
           ref: 'ClientId',
         },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
+        },
         name: {
           type: 'string',
           metadata: {
@@ -1615,6 +1806,12 @@ export const pixelEvents = {
         },
         clientId: {
           ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
         },
         name: {
           type: 'string',
@@ -1650,6 +1847,12 @@ export const pixelEvents = {
         clientId: {
           ref: 'ClientId',
         },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
+        },
         name: {
           type: 'string',
           metadata: {
@@ -1684,6 +1887,12 @@ export const pixelEvents = {
         clientId: {
           ref: 'ClientId',
         },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
+        },
         name: {
           type: 'string',
           metadata: {
@@ -1710,7 +1919,7 @@ export const pixelEvents = {
     checkout_shipping_info_submitted: {
       metadata: {
         description:
-          'The `checkout_shipping_info_submitted` event logs an instance where the customer chooses a shipping rate. This event is only available in checkouts where checkout extensibility for customizations is enabled',
+          'The `checkout_shipping_info_submitted` event logs an instance where the customer chooses a shipping rate. This event is only available in checkouts where Checkout Extensibility for customizations is enabled',
       },
       properties: {
         id: {
@@ -1718,6 +1927,12 @@ export const pixelEvents = {
         },
         clientId: {
           ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
         },
         name: {
           type: 'string',
@@ -1736,6 +1951,191 @@ export const pixelEvents = {
           properties: {
             checkout: {
               ref: 'Checkout',
+            },
+          },
+        },
+      },
+    },
+    input_changed: {
+      metadata: {
+        description:
+          'The `input_changed` event logs an instance where an input, textarea, or select element on the page has changed',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Dom',
+          },
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'input_changed'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        data: {
+          properties: {
+            element: {
+              ref: 'InputElement',
+            },
+          },
+        },
+      },
+    },
+    input_blurred: {
+      metadata: {
+        description:
+          'The `input_blurred` event logs an instance where an input, textarea, or select element on the page has lost focus',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Dom',
+          },
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'input_blurred'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        data: {
+          properties: {
+            element: {
+              ref: 'InputElement',
+            },
+          },
+        },
+      },
+    },
+    input_focused: {
+      metadata: {
+        description:
+          'The `input_focused` event logs an instance where an input, textarea, or select element on the page has received focus',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Dom',
+          },
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'input_focused'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        data: {
+          properties: {
+            element: {
+              ref: 'InputElement',
+            },
+          },
+        },
+      },
+    },
+    form_submitted: {
+      metadata: {
+        description:
+          'The `form_submitted` event logs an instance where a form element on the page has been submitted',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Dom',
+          },
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'form_submitted'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        data: {
+          properties: {
+            element: {
+              ref: 'FormElement',
+            },
+          },
+        },
+      },
+    },
+    clicked: {
+      metadata: {
+        description:
+          'The `clicked` event logs an instance where any element on the page has been clicked',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Dom',
+          },
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'clicked'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        data: {
+          properties: {
+            element: {
+              ref: 'GenericElement',
             },
           },
         },
