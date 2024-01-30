@@ -16,6 +16,7 @@ api_access = true
 
 [extensions.capabilities.collect_buyer_consent]
 sms_marketing = true
+customer_privacy = true
 
 [[extensions.metafields]]
 namespace = "my-namespace"

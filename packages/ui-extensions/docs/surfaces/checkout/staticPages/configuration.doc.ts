@@ -345,6 +345,11 @@ When developing a local extension, you can remove the \`block_progress\` capabil
           sectionContent:
             "In order to collect buyer consent for SMS marketing, you'll need to specifically declare this intent using `sms_marketing = true` in your toml configuration. This corresponds to the `policy` prop for the `Consent` components.",
         },
+        {
+          title: 'Customer Privacy',
+          sectionContent:
+            "In order to collect customer privacy consent, you'll need to add `customer_privacy = true` in your toml configuration. This will let you use our [Customer Privacy API](/docs/api/checkout-ui-extensions/unstable/apis/customer-privacy).",
+        },
       ],
       codeblock: {
         title: 'Collect buyer consent',

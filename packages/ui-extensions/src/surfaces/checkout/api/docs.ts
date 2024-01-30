@@ -97,3 +97,6 @@ export interface Docs_Standard_QueryApi extends Pick<StandardApi, 'query'> {}
 
 export interface Docs_Standard_AnalyticsApi
   extends Pick<StandardApi, 'analytics'> {}
+
+export interface Docs_Standard_CustomerPrivacyApi
+  extends Pick<StandardApi, 'customerPrivacy' | 'applyTrackingConsentChange'> {}
