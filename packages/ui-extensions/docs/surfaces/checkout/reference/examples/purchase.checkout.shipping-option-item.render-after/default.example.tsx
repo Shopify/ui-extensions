@@ -1,37 +1,23 @@
 import {
   reactExtension,
-  Checkbox,
-  useApplyAttributeChange,
+  Text,
+  useShippingOptionTarget,
 } from '@shopify/ui-extensions-react/checkout';
 
-// 1. Choose an extension target
 export default reactExtension(
   'purchase.checkout.shipping-option-item.render-after',
   () => <Extension />,
 );
 
 function Extension() {
-  const applyAttributeChange =
-    useApplyAttributeChange();
+  const {shippingOptionTarget, isTargetSelected} =
+    useShippingOptionTarget();
+  const title = shippingOptionTarget.title;
 
-  // 2. Render a UI
   return (
-    <Checkbox onChange={onCheckboxChange}>
-      I would like to receive a free gift with my
-      order
-    </Checkbox>
+    <Text>
+      Shipping method: {title} is{' '}
+      {isTargetSelected ? '' : 'not'} selected.
+    </Text>
   );
-
-  // 3. Call API methods to modify the checkout
-  async function onCheckboxChange(isChecked) {
-    const result = await applyAttributeChange({
-      key: 'requestedFreeGift',
-      type: 'updateAttribute',
-      value: isChecked ? 'yes' : 'no',
-    });
-    console.log(
-      'applyAttributeChange result',
-      result,
-    );
-  }
 }

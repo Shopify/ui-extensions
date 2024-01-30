@@ -10,6 +10,7 @@ import type {
   CheckoutApi,
   OrderStatusApi,
   ShippingOptionListApi,
+  PickupLocationItemApi,
   OrderConfirmationApi,
 } from './api';
 import type {AnyComponent} from './shared';
@@ -680,6 +681,16 @@ export interface ExtensionTargets {
     PickupPointListApi &
       CheckoutApi &
       StandardApi<'Checkout::PickupPoints::RenderAfter'>,
+    AnyComponent
+  >;
+  /**
+   * A static extension target that is rendered after the pickup location
+   * details within the local pickup option list, for each option.
+   */
+  'purchase.checkout.pickup-location-option-item.render-after': RenderExtension<
+    PickupLocationItemApi &
+      CheckoutApi &
+      StandardApi<'purchase.checkout.pickup-location-option-item.render-after'>,
     AnyComponent
   >;
   /**
