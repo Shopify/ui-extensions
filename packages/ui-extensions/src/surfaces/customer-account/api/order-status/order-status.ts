@@ -1196,7 +1196,7 @@ export interface Order {
   cancelledAt?: string;
   /**
    * A randomly generated alpha-numeric identifier for the order.
-   * This number should always be present, but 2023 orders predate confirmation numbers and may not have it.
+   * For orders created in 2024 and onwards, the number will always be present. For orders created before that date, the number might not be present.
    */
   confirmationNumber?: string;
 }

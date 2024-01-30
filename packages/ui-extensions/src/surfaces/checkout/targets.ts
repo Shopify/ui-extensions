@@ -10,9 +10,9 @@ import type {
   CheckoutApi,
   OrderStatusApi,
   ShippingOptionListApi,
+  OrderConfirmationApi,
 } from './api';
 import type {AnyComponent} from './shared';
-import {OrderConfirmationApi} from './api/order-confirmation/order-confirmation';
 
 /**
  * A UI extension will register for one or more extension targets using `shopify.extend()`.
