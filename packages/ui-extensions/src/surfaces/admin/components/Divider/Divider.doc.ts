@@ -24,12 +24,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Divider/examples/basic-Divider.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Divider/examples/basic-divider.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-Divider.example.ts',
+          code: './examples/basic-divider.example.ts',
           language: 'js',
         },
       ],

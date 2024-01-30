@@ -25,12 +25,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: './examples/CustomerSegmentTemplate.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/CustomerSegmentTemplate/examples/customersegmenttemplate.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/CustomerSegmentTemplate.example.ts',
+          code: './examples/customersegmenttemplate.example.ts',
           language: 'js',
         },
       ],

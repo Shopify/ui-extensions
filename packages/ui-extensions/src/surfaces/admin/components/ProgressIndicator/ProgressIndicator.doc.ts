@@ -24,12 +24,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ProgressIndicator/examples/basic-ProgressIndicator.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ProgressIndicator/examples/basic-progressindicator.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-ProgressIndicator.example.ts',
+          code: './examples/basic-progressindicator.example.ts',
           language: 'js',
         },
       ],

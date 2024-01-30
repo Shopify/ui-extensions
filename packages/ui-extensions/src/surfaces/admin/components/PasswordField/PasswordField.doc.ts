@@ -24,12 +24,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/PasswordField/examples/basic-PasswordField.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/PasswordField/examples/basic-passwordfield.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-PasswordField.example.ts',
+          code: './examples/basic-passwordfield.example.ts',
           language: 'js',
         },
       ],

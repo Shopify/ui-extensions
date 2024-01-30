@@ -23,12 +23,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/EmailField/examples/basic-EmailField.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/EmailField/examples/basic-emailfield.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-EmailField.example.ts',
+          code: './examples/basic-emailfield.example.ts',
           language: 'js',
         },
       ],

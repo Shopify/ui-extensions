@@ -24,12 +24,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/MoneyField/examples/basic-MoneyField.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/MoneyField/examples/basic-moneyfield.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-MoneyField.example.ts',
+          code: './examples/basic-moneyfield.example.ts',
           language: 'js',
         },
       ],

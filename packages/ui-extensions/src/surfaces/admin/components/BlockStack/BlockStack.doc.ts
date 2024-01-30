@@ -24,12 +24,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/BlockStack/examples/basic-BlockStack.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/BlockStack/examples/basic-blockstack.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-BlockStack.example.ts',
+          code: './examples/basic-blockstack.example.ts',
           language: 'js',
         },
       ],

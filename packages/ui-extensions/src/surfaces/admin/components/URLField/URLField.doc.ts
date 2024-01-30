@@ -23,12 +23,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/URLField/examples/basic-URLField.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/URLField/examples/basic-urlfield.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-URLField.example.ts',
+          code: './examples/basic-urlfield.example.ts',
           language: 'js',
         },
       ],

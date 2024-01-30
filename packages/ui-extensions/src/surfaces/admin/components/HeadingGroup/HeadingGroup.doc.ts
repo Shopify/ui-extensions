@@ -17,12 +17,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/HeadingGroup/examples/basic-HeadingGroup.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/HeadingGroup/examples/basic-headinggroup.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-HeadingGroup.example.ts',
+          code: './examples/basic-headinggroup.example.ts',
           language: 'js',
         },
       ],

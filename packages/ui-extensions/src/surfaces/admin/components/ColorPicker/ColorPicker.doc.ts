@@ -23,12 +23,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ColorPicker/examples/basic-ColorPicker.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/ColorPicker/examples/basic-colorpicker.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-ColorPicker.example.ts',
+          code: './examples/basic-colorpicker.example.ts',
           language: 'js',
         },
       ],
