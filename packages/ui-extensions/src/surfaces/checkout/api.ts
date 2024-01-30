@@ -56,7 +56,13 @@ export type {
   PickupPointOption,
   NumberRange,
   CheckoutToken,
+  ApplyTrackingConsentChangeType,
+  CustomerPrivacy,
+  TrackingConsentChangeResult,
+  VisitorConsent,
+  VisitorConsentChange,
 } from './api/standard/standard';
+
 export type {
   Attribute,
   CurrencyCode,
@@ -123,14 +129,12 @@ export type {
   CheckoutApi,
 } from './api/checkout/checkout';
 export type {Order, OrderStatusApi} from './api/order-status/order-status';
-export type {
-  OrderConfirmation,
-  OrderConfirmationApi,
-} from './api/order-confirmation/order-confirmation';
+export type {OrderConfirmationApi} from './api/order-confirmation/order-confirmation';
 
 export type {CartLineItemApi} from './api/cart-line/cart-line-item';
 export type {PickupLocationListApi} from './api/pickup/pickup-location-list';
 export type {PickupPointListApi} from './api/pickup/pickup-point-list';
+export type {PickupLocationItemApi} from './api/pickup/pickup-location-item';
 export type {ShippingOptionItemApi} from './api/shipping/shipping-option-item';
 export type {ShippingOptionListApi} from './api/shipping/shipping-option-list';
 

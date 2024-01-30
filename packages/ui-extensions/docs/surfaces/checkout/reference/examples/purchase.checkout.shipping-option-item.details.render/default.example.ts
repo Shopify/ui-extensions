@@ -1,35 +1,36 @@
-import {
-  extension,
-  Checkbox,
-} from '@shopify/ui-extensions/checkout';
+import {extension} from '@shopify/ui-extensions/checkout';
 
-// 1. Choose an extension target
 export default extension(
   'purchase.checkout.shipping-option-item.details.render',
-  (root, api) => {
-    // 2. Render a UI
-    root.appendChild(
-      root.createComponent(
-        Checkbox,
-        {
-          onChange: onCheckboxChange,
-        },
-        'I would like to receive a free gift with my order',
-      ),
+  (root, {target, isTargetSelected}) => {
+    const titleText = root.createText(
+      `Shipping method title: ${target.current.title}`,
+    );
+    root.appendChild(titleText);
+
+    target.subscribe((updatedTarget) => {
+      titleText.updateText(
+        `Shipping method title: ${updatedTarget.title}`,
+      );
+    });
+
+    const selectedText = root.createText(
+      getSelectedText(isTargetSelected),
+    );
+    root.appendChild(selectedText);
+
+    isTargetSelected.subscribe(
+      (updatedSelected) => {
+        selectedText.updateText(
+          getSelectedText(updatedSelected),
+        );
+      },
     );
 
-    // 3. Call API methods to modify the checkout
-    async function onCheckboxChange(isChecked) {
-      const result =
-        await api.applyAttributeChange({
-          key: 'requestedFreeGift',
-          type: 'updateAttribute',
-          value: isChecked ? 'yes' : 'no',
-        });
-      console.log(
-        'applyAttributeChange result',
-        result,
-      );
+    function getSelectedText(selected) {
+      return selected
+        ? 'Selected'
+        : 'Not selected';
     }
   },
 );
