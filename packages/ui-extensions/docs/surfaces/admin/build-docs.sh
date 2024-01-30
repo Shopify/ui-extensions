@@ -13,9 +13,9 @@ fail_and_exit() {
 if [ -z $API_VERSION ]
 then
   API_VERSION="unstable"
-  echo "Building docs for 'unstable' checkout UI extensions API. You can add a calver version argument (e.g. 'yarn docs:checkout 2023-07') to generate the docs for a stable version."
+  echo "Building docs for 'unstable' admin UI extensions API. You can add a calver version argument (e.g. 'yarn docs:admin 2023-07') to generate the docs for a stable version."
 else
-  echo "Building docs for '$API_VERSION' checkout UI extensions API."
+  echo "Building docs for '$API_VERSION' admin UI extensions API."
   echo "When generating docs for a stable version, 'unstable' docs are not regenerated. This avoids overwriting other unstable changes that are not included in this version."
   echo "If you need to update the 'unstable' version, run this command again without the '$API_VERSION' parameter."
 fi
@@ -52,7 +52,7 @@ if [ -n "$SPIN" ]; then
     cp ./$DOCS_PATH/generated/* ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION
     # Replace 'unstable' with the exact API version in relative doc links
     sed -i \
-      "s/\/docs\/api\/admin-ui-extensions\/unstable/\/docs\/api\/admin-ui-extensions\/$API_VERSION/gi" \
+      "s/\/docs\/api\/admin-extensions\/unstable/\/docs\/api\/admin-extensions\/$API_VERSION/gi" \
       ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/admin_extensions/$API_VERSION/generated_docs_data.json
     sed_exit=$?
     if [ $sed_exit -ne 0 ]; then
@@ -62,7 +62,7 @@ if [ -n "$SPIN" ]; then
 
     cd ~/src/github.com/Shopify/shopify-dev
 
-    echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/admin-ui-extensions"
+    echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/admin-extensions"
   else
     echo "If you include shopify-dev in your Spin constellation, this will automatically copy ./$DOCS_PATH/generated to shopify-dev"
   fi
