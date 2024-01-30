@@ -2,4 +2,4 @@
 '@shopify/ui-extensions': minor
 ---
 
-Exposes order-confirmation api and adds confirmationNumber to order
+Adds the `OrderConfirmationApi` to `purchase.thank-you` and `customer-account.order-status` extension targets.
