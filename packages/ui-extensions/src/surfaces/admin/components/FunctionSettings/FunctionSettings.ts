@@ -20,8 +20,8 @@ export interface FunctionSettingsProps {
    * An optional callback function that will be run by the admin when the
    * committing the changes to Shopify’s servers fails. The errors you receive
    * in the `errors` argument will only be those that were caused by data your
-   * extension provided; network errors and user errors that are out of the
-   * extension developer’s control should not be reported here.
+   * extension provided; network errors and user errors that are out of your
+   * control will not be reported here.
    *
    * In the `onError` callback, you should update your extension’s UI to
    * highlight the fields that caused the errors, and display the error messages
