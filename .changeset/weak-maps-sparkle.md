@@ -3,4 +3,4 @@
 '@shopify/ui-extensions-react': minor
 ---
 
-Adds the new `customerPrivacy` and `applyTrackingConsentChange` APIs. 
+Adds the new `customerPrivacy` and `applyTrackingConsentChange` APIs.
