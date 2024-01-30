@@ -8,7 +8,7 @@ export interface FunctionSettingsProps {
 
   /**
    * An optional callback function that will be run by the admin when the user
-   * commits their changes in the host-rendered part of the function settings
+   * commits their changes in the admin-rendered part of the function settings
    * experience. If this function returns a promise, the admin will wait for the
    * promise to resolve before committing any changes to Shopify’s servers. If
    * the promise rejects, the admin will abort the changes and display an error,
