@@ -1,7 +1,6 @@
 import {
   reactExtension,
   Text,
-  useSubscription,
   useShippingOptionTarget,
 } from '@shopify/ui-extensions-react/checkout';
 

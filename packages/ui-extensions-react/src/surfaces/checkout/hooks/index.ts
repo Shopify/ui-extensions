@@ -35,6 +35,7 @@ export {useCartLines, useApplyCartLinesChange} from './cart-lines';
 export {useCartLineTarget} from './cart-line-target';
 export {useTarget} from './target';
 export {useShippingOptionTarget} from './shipping-option-target';
+export {usePickupLocationOptionTarget} from './pickup-location-option-target';
 export {useAppMetafields} from './app-metafields';
 export {useShop} from './shop';
 export {useStorage} from './storage';

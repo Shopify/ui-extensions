@@ -1,16 +1,16 @@
 import {extension} from '@shopify/ui-extensions/checkout';
 
 export default extension(
-  'purchase.checkout.shipping-option-item.render-after',
-  (root, {target, isTargetSelected}) => {
+  'purchase.checkout.pickup-location-option-item.render-after',
+  (root, {isTargetSelected, target}) => {
     const titleText = root.createText(
-      `Shipping method title: ${target.current.title}`,
+      target.current.title,
     );
     root.appendChild(titleText);
 
     target.subscribe((updatedTarget) => {
       titleText.updateText(
-        `Shipping method title: ${updatedTarget.title}`,
+        updatedTarget.title || '',
       );
     });
 

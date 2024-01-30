@@ -46,7 +46,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'useShippingOptionTarget',
       description:
-        'Returns the shipping option for the `purchase.checkout.shipping-option-item.render-after` and `purchase.checkout.shipping-option-item.details.render` attached extensions',
+        'Returns the shipping option for the `purchase.checkout.shipping-option-item.render-after` and `purchase.checkout.shipping-option-item.details.render` attached extensions.',
       type: 'UseShippingOptionTargetGeneratedType',
     },
     {
@@ -73,6 +73,18 @@ const data: ReferenceEntityTemplateSchema = {
         'This API object is provided to extensions registered for the `purchase.checkout.pickup-location-list.render-after` and `purchase.checkout.pickup-location-list.render-after` extension target.',
       type: 'PickupLocationListApi',
     },
+    {
+      title: 'PickupLocationItemApi',
+      description:
+        'The API object provided to the `purchase.checkout.pickup-location-option-item.render-after` extension target.',
+      type: 'PickupLocationItemApi',
+    },
+    {
+      title: 'usePickupLocationOptionTarget',
+      description:
+        'Returns the pickup location option for `purchase.checkout.pickup-location-option-item.render-after` attached extensions.',
+      type: 'UsePickupLocationOptionTargetGeneratedType',
+    },
   ],
   defaultExample: getHookExample('delivery-group'),
   examples: {
@@ -80,6 +92,10 @@ const data: ReferenceEntityTemplateSchema = {
       'Learn how to use the API with JavaScript (JS) and React. See [React Hooks](../react-hooks) for all available hooks.',
     examples: [
       getExample('shipping-option-item/default', ['jsx', 'js']),
+      getExample(
+        'purchase.checkout.pickup-location-option-item.render-after/default',
+        ['jsx', 'js'],
+      ),
       getExample('pickup-point-list/default', ['jsx', 'js']),
       getHookExample('delivery-groups'),
     ],

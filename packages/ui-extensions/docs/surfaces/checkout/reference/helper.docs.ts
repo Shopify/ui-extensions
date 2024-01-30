@@ -121,6 +121,9 @@ export function getExamples(
       'purchase.checkout.pickup-location-list.render-before/default',
     ),
     ...createExample(
+      'purchase.checkout.pickup-location-option-item.render-after/default',
+    ),
+    ...createExample(
       'purchase.checkout.pickup-point-list.render-after/default',
     ),
     ...createExample(
@@ -193,6 +196,15 @@ export function getExamples(
       codeblock: {
         title: '',
         tabs: getExtensionCodeTabs('pickup-location-list/default'),
+      },
+    },
+    'purchase.checkout.pickup-location-option-item.render-after/default': {
+      description: '',
+      codeblock: {
+        title: 'Reading the selected pickup location option',
+        tabs: getExtensionCodeTabs(
+          'purchase.checkout.pickup-location-option-item.render-after/default',
+        ),
       },
     },
     'order-status/default': {
@@ -606,6 +618,13 @@ const PICKUP_LOCATION_LIST_API_DEFINITION = {
   type: 'PickupLocationListApi',
 };
 
+const PICKUP_LOCATION_ITEM_API_DEFINITION = {
+  title: 'PickupLocationItemApi',
+  description:
+    'The API object provided to this and other `pickup-location-option-item` extension targets.',
+  type: 'PickupLocationItemApi',
+};
+
 const PICKUP_POINT_LIST_API_DEFINITION = {
   title: 'PickupPointListApi',
   description:
@@ -682,6 +701,16 @@ export const PICKUP_LOCATION_LIST_API = {
   subCategory: 'Local Pickup',
   definitions: [
     PICKUP_LOCATION_LIST_API_DEFINITION,
+    CHECKOUT_API_DEFINITION,
+    STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
+export const PICKUP_LOCATION_ITEM_API = {
+  subCategory: 'Local Pickup',
+  definitions: [
+    PICKUP_LOCATION_ITEM_API_DEFINITION,
     CHECKOUT_API_DEFINITION,
     STANDARD_API_DEFINITION,
   ],
