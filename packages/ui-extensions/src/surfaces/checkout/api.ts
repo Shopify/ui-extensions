@@ -56,7 +56,13 @@ export type {
   PickupPointOption,
   NumberRange,
   CheckoutToken,
+  ApplyTrackingConsentChangeType,
+  CustomerPrivacy,
+  TrackingConsentChangeResult,
+  VisitorConsent,
+  VisitorConsentChange,
 } from './api/standard/standard';
+
 export type {
   Attribute,
   CurrencyCode,

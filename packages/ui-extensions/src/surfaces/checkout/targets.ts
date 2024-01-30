@@ -811,4 +811,6 @@ export interface CustomerAccountStandardApi<
     | 'storage'
     | 'ui'
     | 'version'
+    | 'customerPrivacy'
+    | 'applyTrackingConsentChange'
   > {}

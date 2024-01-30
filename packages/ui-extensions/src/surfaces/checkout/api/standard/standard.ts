@@ -58,13 +58,16 @@ export interface Storage {
  * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
  *
  * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
+ *
+ * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
  */
 
 export type Capability =
   | 'api_access'
   | 'network_access'
   | 'block_progress'
-  | 'collect_buyer_consent.sms_marketing';
+  | 'collect_buyer_consent.sms_marketing'
+  | 'collect_buyer_consent.customer_privacy';
 
 /**
  * Meta information about an extension target.
@@ -88,6 +91,8 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
    *
    * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
+   *
+   * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 
@@ -645,6 +650,16 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * @example 'unstable'
    */
   version: Version;
+
+  /**
+   * Customer cookie consent settings and a flag denoting if consent has previously been collected.
+   */
+  customerPrivacy: StatefulRemoteSubscribable<CustomerPrivacy>;
+
+  /**
+   * Allows setting and updating customer cookie consent settings.
+   */
+  applyTrackingConsentChange: ApplyTrackingConsentChangeType;
 }
 
 export interface Ui {
@@ -1652,4 +1667,76 @@ export interface DeliveryGroupDetails extends DeliveryGroup {
    * The cart lines associated to the delivery group.
    */
   targetedCartLines: CartLine[];
+}
+
+export interface VisitorConsent {
+  /**
+   * Cookies to understand how customers interact with the site.
+   */
+  analytics?: boolean;
+  /**
+   * Cookies to provide ads and marketing communications based on customer interests.
+   */
+  marketing?: boolean;
+  /**
+   * Cookies that remember customer preferences, such as country or language, to personalize visits to the website.
+   */
+  preferences?: boolean;
+  /**
+   * Opts the customer out of data sharing / sales.
+   */
+  saleOfData?: boolean;
+}
+
+type PartialVisitorConsent = Partial<VisitorConsent>;
+
+export interface VisitorConsentChange extends PartialVisitorConsent {
+  type: 'changeVisitorConsent';
+}
+
+export type ApplyTrackingConsentChangeType = (
+  visitorConsent: VisitorConsentChange,
+) => Promise<TrackingConsentChangeResult>;
+
+export interface CustomerPrivacy {
+  /**
+   * Whether the customer has previously given consent.
+   */
+  hasCollectedConsent: boolean;
+  /**
+   * An object containing the customer's current cookie consent settings.
+   */
+  visitorConsent: VisitorConsent;
+}
+
+export type TrackingConsentChangeResult =
+  | TrackingConsentChangeResultSuccess
+  | TrackingConsentChangeResultError;
+
+/**
+ * The returned result of a successful tracking consent preference update.
+ */
+export interface TrackingConsentChangeResultSuccess {
+  /**
+   * The type of the `TrackingConsentChangeResultSuccess` API.
+   */
+  type: 'success';
+}
+
+/**
+ * The returned result of an unsuccessful tracking consent preference update
+ * with a message detailing the type of error that occurred.
+ */
+export interface TrackingConsentChangeResultError {
+  /**
+   * The type of the `TrackingConsentChangeResultError` API.
+   */
+  type: 'error';
+
+  /**
+   * A message that explains the error. This message is useful for debugging.
+   * It is **not** localized, and therefore should not be presented directly
+   * to the buyer.
+   */
+  message: string;
 }
