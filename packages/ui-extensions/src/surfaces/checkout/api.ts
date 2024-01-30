@@ -123,6 +123,10 @@ export type {
   CheckoutApi,
 } from './api/checkout/checkout';
 export type {Order, OrderStatusApi} from './api/order-status/order-status';
+export type {
+  OrderConfirmation,
+  OrderConfirmationApi,
+} from './api/order-confirmation/order-confirmation';
 
 export type {CartLineItemApi} from './api/cart-line/cart-line-item';
 export type {PickupLocationListApi} from './api/pickup/pickup-location-list';
