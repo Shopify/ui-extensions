@@ -3,4 +3,7 @@ import {createRemoteReactComponent} from '@remote-ui/react';
 
 export const FunctionSettings =
   createRemoteReactComponent(BaseFunctionSettings);
-export type {FunctionSettingsProps} from '@shopify/ui-extensions/admin';
+export type {
+  FunctionSettingsProps,
+  FunctionSettingsError,
+} from '@shopify/ui-extensions/admin';
