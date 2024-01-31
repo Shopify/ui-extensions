@@ -9,7 +9,7 @@ export interface BlockSpacerProps extends IdProps {
    *
    * @defaultValue 'base'
    **/
-  spacing?: MaybeResponsiveConditionalStyle<Exclude<Spacing, 'none'>>;
+  spacing?: MaybeResponsiveConditionalStyle<Spacing>;
 }
 
 /**
