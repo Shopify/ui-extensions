@@ -19,6 +19,7 @@ export interface PixelEventsCartViewed {
    */
   name: 'cart_viewed';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEventsCheckoutAddressInfoSubmittedData {
@@ -28,7 +29,7 @@ export interface PixelEventsCheckoutAddressInfoSubmittedData {
 /**
  * The `checkout_address_info_submitted` event logs an instance of a customer
  * submitting their mailing address. This event is only available in checkouts
- * where checkout extensibility for customizations is enabled
+ * where Checkout Extensibility for customizations is enabled
  */
 export interface PixelEventsCheckoutAddressInfoSubmitted {
   clientId: ClientId;
@@ -41,6 +42,7 @@ export interface PixelEventsCheckoutAddressInfoSubmitted {
    */
   name: 'checkout_address_info_submitted';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEventsCheckoutCompletedData {
@@ -49,7 +51,7 @@ export interface PixelEventsCheckoutCompletedData {
 
 /**
  * The `checkout_completed` event logs when a visitor completes a purchase. This
- * event is available on the order status and checkout pages
+ * event is available on the **Order status** and checkout pages
  */
 export interface PixelEventsCheckoutCompleted {
   clientId: ClientId;
@@ -62,6 +64,7 @@ export interface PixelEventsCheckoutCompleted {
    */
   name: 'checkout_completed';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEventsCheckoutContactInfoSubmittedData {
@@ -71,7 +74,7 @@ export interface PixelEventsCheckoutContactInfoSubmittedData {
 /**
  * The `checkout_contact_info_submitted` event logs an instance where a customer
  * submits a checkout form. This event is only available in checkouts where
- * checkout extensibility for customizations is enabled
+ * Checkout Extensibility for customizations is enabled
  */
 export interface PixelEventsCheckoutContactInfoSubmitted {
   clientId: ClientId;
@@ -84,6 +87,7 @@ export interface PixelEventsCheckoutContactInfoSubmitted {
    */
   name: 'checkout_contact_info_submitted';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEventsCheckoutShippingInfoSubmittedData {
@@ -93,7 +97,7 @@ export interface PixelEventsCheckoutShippingInfoSubmittedData {
 /**
  * The `checkout_shipping_info_submitted` event logs an instance where the
  * customer chooses a shipping rate. This event is only available in checkouts
- * where checkout extensibility for customizations is enabled
+ * where Checkout Extensibility for customizations is enabled
  */
 export interface PixelEventsCheckoutShippingInfoSubmitted {
   clientId: ClientId;
@@ -106,6 +110,7 @@ export interface PixelEventsCheckoutShippingInfoSubmitted {
    */
   name: 'checkout_shipping_info_submitted';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEventsCheckoutStartedData {
@@ -114,8 +119,8 @@ export interface PixelEventsCheckoutStartedData {
 
 /**
  * The `checkout_started` event logs an instance of a customer starting the
- * checkout process. This event is available on the checkout page. For checkout
- * extensibility, this event is triggered every time a customer enters checkout.
+ * checkout process. This event is available on the checkout page. For Checkout
+ * Extensibility, this event is triggered every time a customer enters checkout.
  * For non-checkout extensible shops, this event is only triggered the first
  * time a customer enters checkout.
  */
@@ -130,6 +135,28 @@ export interface PixelEventsCheckoutStarted {
    */
   name: 'checkout_started';
   timestamp: Timestamp;
+  type: EventType.Standard;
+}
+
+export interface PixelEventsClickedData {
+  element: GenericElement;
+}
+
+/**
+ * The `clicked` event logs an instance where any element on the page has been
+ * clicked
+ */
+export interface PixelEventsClicked {
+  clientId: ClientId;
+  data: PixelEventsClickedData;
+  id: Id;
+
+  /**
+   * The name of the customer event
+   */
+  name: 'clicked';
+  timestamp: Timestamp;
+  type: EventType.Dom;
 }
 
 export interface PixelEventsCollectionViewedData {
@@ -152,13 +179,99 @@ export interface PixelEventsCollectionViewed {
    */
   name: 'collection_viewed';
   timestamp: Timestamp;
+  type: EventType.Standard;
+}
+
+export interface PixelEventsFormSubmittedData {
+  element: FormElement;
+}
+
+/**
+ * The `form_submitted` event logs an instance where a form element on the page
+ * has been submitted
+ */
+export interface PixelEventsFormSubmitted {
+  clientId: ClientId;
+  data: PixelEventsFormSubmittedData;
+  id: Id;
+
+  /**
+   * The name of the customer event
+   */
+  name: 'form_submitted';
+  timestamp: Timestamp;
+  type: EventType.Dom;
+}
+
+export interface PixelEventsInputBlurredData {
+  element: InputElement;
+}
+
+/**
+ * The `input_blurred` event logs an instance where an input, textarea, or
+ * select element on the page has lost focus
+ */
+export interface PixelEventsInputBlurred {
+  clientId: ClientId;
+  data: PixelEventsInputBlurredData;
+  id: Id;
+
+  /**
+   * The name of the customer event
+   */
+  name: 'input_blurred';
+  timestamp: Timestamp;
+  type: EventType.Dom;
+}
+
+export interface PixelEventsInputChangedData {
+  element: InputElement;
+}
+
+/**
+ * The `input_changed` event logs an instance where an input, textarea, or
+ * select element on the page has changed
+ */
+export interface PixelEventsInputChanged {
+  clientId: ClientId;
+  data: PixelEventsInputChangedData;
+  id: Id;
+
+  /**
+   * The name of the customer event
+   */
+  name: 'input_changed';
+  timestamp: Timestamp;
+  type: EventType.Dom;
+}
+
+export interface PixelEventsInputFocusedData {
+  element: InputElement;
+}
+
+/**
+ * The `input_focused` event logs an instance where an input, textarea, or
+ * select element on the page has received focus
+ */
+export interface PixelEventsInputFocused {
+  clientId: ClientId;
+  data: PixelEventsInputFocusedData;
+  id: Id;
+
+  /**
+   * The name of the customer event
+   */
+  name: 'input_focused';
+  timestamp: Timestamp;
+  type: EventType.Dom;
 }
 
 export interface PixelEventsPageViewedData {}
 
 /**
  * The `page_viewed` event logs an instance where a customer visited a page.
- * This event is available on the online store, checkout, and order status pages
+ * This event is available on the online store, checkout, and **Order status**
+ * pages
  */
 export interface PixelEventsPageViewed {
   clientId: ClientId;
@@ -171,6 +284,7 @@ export interface PixelEventsPageViewed {
    */
   name: 'page_viewed';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEventsPaymentInfoSubmittedData {
@@ -192,6 +306,7 @@ export interface PixelEventsPaymentInfoSubmitted {
    */
   name: 'payment_info_submitted';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEventsProductAddedToCartData {
@@ -213,6 +328,7 @@ export interface PixelEventsProductAddedToCart {
    */
   name: 'product_added_to_cart';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEventsProductRemovedFromCartData {
@@ -235,6 +351,7 @@ export interface PixelEventsProductRemovedFromCart {
    */
   name: 'product_removed_from_cart';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEventsProductVariantViewedData {
@@ -258,6 +375,7 @@ export interface PixelEventsProductVariantViewed {
    */
   name: 'product_variant_viewed';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEventsProductViewedData {
@@ -279,6 +397,7 @@ export interface PixelEventsProductViewed {
    */
   name: 'product_viewed';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEventsSearchSubmittedData {
@@ -300,6 +419,7 @@ export interface PixelEventsSearchSubmitted {
    */
   name: 'search_submitted';
   timestamp: Timestamp;
+  type: EventType.Standard;
 }
 
 export interface PixelEvents {
@@ -312,38 +432,44 @@ export interface PixelEvents {
   /**
    * The `checkout_address_info_submitted` event logs an instance of a customer
    * submitting their mailing address. This event is only available in checkouts
-   * where checkout extensibility for customizations is enabled
+   * where Checkout Extensibility for customizations is enabled
    */
   checkout_address_info_submitted: PixelEventsCheckoutAddressInfoSubmitted;
 
   /**
    * The `checkout_completed` event logs when a visitor completes a purchase.
-   * This event is available on the order status and checkout pages
+   * This event is available on the **Order status** and checkout pages
    */
   checkout_completed: PixelEventsCheckoutCompleted;
 
   /**
    * The `checkout_contact_info_submitted` event logs an instance where a
    * customer submits a checkout form. This event is only available in checkouts
-   * where checkout extensibility for customizations is enabled
+   * where Checkout Extensibility for customizations is enabled
    */
   checkout_contact_info_submitted: PixelEventsCheckoutContactInfoSubmitted;
 
   /**
    * The `checkout_shipping_info_submitted` event logs an instance where the
    * customer chooses a shipping rate. This event is only available in checkouts
-   * where checkout extensibility for customizations is enabled
+   * where Checkout Extensibility for customizations is enabled
    */
   checkout_shipping_info_submitted: PixelEventsCheckoutShippingInfoSubmitted;
 
   /**
    * The `checkout_started` event logs an instance of a customer starting
    * the checkout process. This event is available on the checkout page. For
-   * checkout extensibility, this event is triggered every time a customer
+   * Checkout Extensibility, this event is triggered every time a customer
    * enters checkout. For non-checkout extensible shops, this event is only
    * triggered the first time a customer enters checkout.
    */
   checkout_started: PixelEventsCheckoutStarted;
+
+  /**
+   * The `clicked` event logs an instance where any element on the page has
+   * been clicked
+   */
+  clicked: PixelEventsClicked;
 
   /**
    * The `collection_viewed` event logs an instance where a customer visited a
@@ -353,8 +479,32 @@ export interface PixelEvents {
   collection_viewed: PixelEventsCollectionViewed;
 
   /**
+   * The `form_submitted` event logs an instance where a form element on the
+   * page has been submitted
+   */
+  form_submitted: PixelEventsFormSubmitted;
+
+  /**
+   * The `input_blurred` event logs an instance where an input, textarea, or
+   * select element on the page has lost focus
+   */
+  input_blurred: PixelEventsInputBlurred;
+
+  /**
+   * The `input_changed` event logs an instance where an input, textarea, or
+   * select element on the page has changed
+   */
+  input_changed: PixelEventsInputChanged;
+
+  /**
+   * The `input_focused` event logs an instance where an input, textarea, or
+   * select element on the page has received focus
+   */
+  input_focused: PixelEventsInputFocused;
+
+  /**
    * The `page_viewed` event logs an instance where a customer visited a page.
-   * This event is available on the online store, checkout, and order status
+   * This event is available on the online store, checkout, and **Order status**
    * pages
    */
   page_viewed: PixelEventsPageViewed;
@@ -799,6 +949,7 @@ export interface CustomEvent {
    */
   name: string;
   timestamp: Timestamp;
+  type: EventType.Custom;
 }
 
 /**
@@ -919,6 +1070,65 @@ export interface DiscountApplication {
   value: MoneyV2 | PricingPercentageValue;
 }
 
+export enum EventType {
+  Custom = 'custom',
+  Dom = 'dom',
+  Meta = 'meta',
+  Standard = 'standard',
+}
+
+/**
+ * An object that contains data about a form element type
+ */
+export interface FormElement {
+  /**
+   * The action attribute of a form element
+   */
+  action: string | null;
+  elements: InputElement[];
+
+  /**
+   * The id attribute of an element
+   */
+  id: string | null;
+}
+
+/**
+ * An object that contains data about a generic element type
+ */
+export interface GenericElement {
+  /**
+   * The href attribute of an element
+   */
+  href: string | null;
+
+  /**
+   * The id attribute of an element
+   */
+  id: string | null;
+
+  /**
+   * The name attribute of an element
+   */
+  name: string | null;
+
+  /**
+   * A string representation of the tag of an element
+   */
+  tagName: string | null;
+
+  /**
+   * The type attribute of an element. Often relevant for an input or button
+   * element.
+   */
+  type: string | null;
+
+  /**
+   * The value attribute of an element. Often relevant for an input element.
+   */
+  value: string | null;
+}
+
 /**
  * The ID of the customer event
  */
@@ -939,6 +1149,37 @@ export interface InitData {
   checkout: Checkout | null;
   customer: Customer | null;
   productVariants: ProductVariant[] | null;
+}
+
+/**
+ * An object that contains data about an input element type
+ */
+export interface InputElement {
+  /**
+   * The id attribute of an element
+   */
+  id: string | null;
+
+  /**
+   * The name attribute of an element
+   */
+  name: string | null;
+
+  /**
+   * A string representation of the tag of an element
+   */
+  tagName: string | null;
+
+  /**
+   * The type attribute of an element. Often relevant for an input or button
+   * element.
+   */
+  type: string | null;
+
+  /**
+   * The value attribute of an element. Often relevant for an input element.
+   */
+  value: string | null;
 }
 
 /**
