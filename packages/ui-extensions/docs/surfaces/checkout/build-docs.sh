@@ -46,27 +46,25 @@ if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
-if [ -n "$SPIN" ]; then
-  if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
-
-    mkdir -p ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
-    cp ./$DOCS_PATH/generated/* ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+# Copy the generated docs to shopify-dev
+if [ -d ../../../shopify-dev ]; then
+    mkdir -p ../../../shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+    cp ./$DOCS_PATH/generated/* ../../../shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
     # Replace 'unstable' with the exact API version in relative doc links
     sed -i \
       "s/\/docs\/api\/checkout-ui-extensions\/unstable/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
-      ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
+      ../../../shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/generated_docs_data.json
     sed_exit=$?
     if [ $sed_exit -ne 0 ]; then
       fail_and_exit $sed_exit
     fi
-    rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
+    rsync -a --delete ./$DOCS_PATH/screenshots/ ../../../shopify-dev/app/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
 
-    cd ~/src/github.com/Shopify/shopify-dev
-    restart
+  if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
     echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/checkout-ui-extensions"
   else
-    echo "If you include shopify-dev in your Spin constellation, this will automatically copy ./$DOCS_PATH/generated to shopify-dev"
+    echo "If you include shopify-dev in your Spin constellation, we can generate a preview link for the docs!"
   fi
 else
-  echo "Not copying docs to shopify-dev because we're not in Spin"
+  echo "Not copying docs to shopify-dev because it was not found at ../../../shopify-dev."
 fi
