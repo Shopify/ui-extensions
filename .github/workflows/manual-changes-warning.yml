@@ -18,16 +18,10 @@ jobs:
     if: ${{ !contains(github.event.pull_request.labels.*.name, 'automation') }}
     steps:
       - uses: actions/checkout@v4
-      - name: Check if comment exists
-        id: check-comment
-        run: |
-          existing_comment=$(gh pr view ${{ github.event.number }} --json comments -q '.[].body' | grep -c '<!-- MARKER -->')
-          echo "::set-output name=comment_exists::$existing_comment"
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
       - name: Add comment
         run: |
+          existing_comment=$(gh pr view ${{ github.event.number }} --json comments -q '.comments.[].body' |  grep -c '<!-- MARKER -->')
+          echo "::set-output name=comment_exists::$existing_comment"
           if [[ "${{ steps.check-comment.outputs.comment_exists }}" -eq 0 ]]; then
             gh pr comment ${{ github.event.number }} -b "<!-- MARKER --> 🔔 This PR appears to be modifying the checkout UI surface for 'unstable'. These are typically done via an automated Github action. Did you add these same changes to the private package? See the [vault docs](https://vault.shopify.io/teams/2083/pages/Extension-Libraries~gkKh.md) for details.  "
           else
