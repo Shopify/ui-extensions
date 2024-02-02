@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Add comment
         run: |
-          gh pr comment 1716 -b "🔔 This PR appears to be modifying the checkout UI surface for **unstable**. These are typically done via an automated Github action. Did you add these same changes to the private package? See the [vault docs](https://vault.shopify.io/teams/2083/pages/Extension-Libraries~gkKh.md) for details.<!-- MARKER -->"
+          gh pr comment ${{ github.event.number }} -b "🔔 This PR appears to be modifying the checkout UI surface for **unstable**. These are typically done via an automated Github action. Did you add these same changes to the private package? See the [vault docs](https://vault.shopify.io/teams/2083/pages/Extension-Libraries~gkKh.md) for details.<!-- MARKER -->"
         shell: bash
         env:
           GH_TOKEN: ${{ github.token }}
