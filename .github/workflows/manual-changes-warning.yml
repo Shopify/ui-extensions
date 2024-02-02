@@ -22,3 +22,5 @@ jobs:
         run: |
           gh pr comment ${{ github.event.number }} -b "🔔 This PR appears to be modifying the checkout UI surface for 'unstable'. These are typically done via an automated Github action. Did you add these same changes to the private package? See the [vault docs](https://vault.shopify.io/teams/2083/pages/Extension-Libraries~gkKh.md) for details.  "
         shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
