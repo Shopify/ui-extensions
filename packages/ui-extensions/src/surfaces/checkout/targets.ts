@@ -1,18 +1,16 @@
+import type {CartLineItemApi} from './api/cart-line/cart-line-item';
+import type {CheckoutApi} from './api/checkout/checkout';
+import type {OrderConfirmationApi} from './api/order-confirmation/order-confirmation';
+import type {OrderStatusApi} from './api/order-status/order-status';
+import type {PaymentOptionItemApi} from './api/payment/payment-option-item';
+import type {PickupPointListApi} from './api/pickup/pickup-point-list';
+import type {PickupLocationItemApi} from './api/pickup/pickup-location-item';
+import type {PickupLocationListApi} from './api/pickup/pickup-location-list';
+import type {RedeemableApi} from './api/redeemable/redeemable';
+import type {StandardApi} from './api/standard/standard';
+import type {ShippingOptionItemApi} from './api/shipping/shipping-option-item';
+import type {ShippingOptionListApi} from './api/shipping/shipping-option-list';
 import type {RenderExtension} from './extension';
-import type {
-  CartLineItemApi,
-  PaymentOptionItemApi,
-  PickupLocationListApi,
-  RedeemableApi,
-  ShippingOptionItemApi,
-  PickupPointListApi,
-  StandardApi,
-  CheckoutApi,
-  OrderStatusApi,
-  ShippingOptionListApi,
-  PickupLocationItemApi,
-  OrderConfirmationApi,
-} from './api';
 import type {AnyComponent} from './shared';
 
 /**
@@ -280,8 +278,7 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.block.render` from `@shopify/ui-extension/customer-account` instead.
    */
   'customer-account.order-status.block.render': RenderExtension<
-    OrderConfirmationApi &
-      OrderStatusApi &
+    OrderStatusApi &
       CustomerAccountStandardApi<'customer-account.order-status.block.render'>,
     AnyComponent
   >;
@@ -296,8 +293,7 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.block.render` from `@shopify/ui-extension/customer-account` instead.
    */
   'Checkout::OrderStatus::Dynamic::Render': RenderExtension<
-    OrderConfirmationApi &
-      OrderStatusApi &
+    OrderStatusApi &
       CustomerAccountStandardApi<'Checkout::OrderStatus::Dynamic::Render'>,
     AnyComponent
   >;
@@ -308,8 +304,7 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.cart-line-item.render-after` from `@shopify/ui-extension/customer-account` instead.
    */
   'customer-account.order-status.cart-line-item.render-after': RenderExtension<
-    OrderConfirmationApi &
-      CartLineItemApi &
+    CartLineItemApi &
       OrderStatusApi &
       CustomerAccountStandardApi<'customer-account.order-status.cart-line-item.render-after'>,
     AnyComponent
@@ -321,8 +316,7 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.cart-line-item.render-after` instead.
    */
   'Checkout::OrderStatus::CartLineDetails::RenderAfter': RenderExtension<
-    OrderConfirmationApi &
-      CartLineItemApi &
+    CartLineItemApi &
       OrderStatusApi &
       CustomerAccountStandardApi<'Checkout::OrderStatus::CartLineDetails::RenderAfter'>,
     AnyComponent
@@ -333,8 +327,7 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.cart-line-list.render-after` from `@shopify/ui-extension/customer-account` instead.
    */
   'customer-account.order-status.cart-line-list.render-after': RenderExtension<
-    OrderConfirmationApi &
-      OrderStatusApi &
+    OrderStatusApi &
       CustomerAccountStandardApi<'customer-account.order-status.cart-line-list.render-after'>,
     AnyComponent
   >;
@@ -344,8 +337,7 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.cart-line-list.render-after` from `@shopify/ui-extension/customer-account` instead.
    */
   'Checkout::OrderStatus::CartLines::RenderAfter': RenderExtension<
-    OrderConfirmationApi &
-      OrderStatusApi &
+    OrderStatusApi &
       CustomerAccountStandardApi<'Checkout::OrderStatus::CartLines::RenderAfter'>,
     AnyComponent
   >;
@@ -355,8 +347,7 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.customer-information.render-after` from `@shopify/ui-extension/customer-account` instead.
    */
   'customer-account.order-status.customer-information.render-after': RenderExtension<
-    OrderConfirmationApi &
-      OrderStatusApi &
+    OrderStatusApi &
       CustomerAccountStandardApi<'customer-account.order-status.customer-information.render-after'>,
     AnyComponent
   >;
@@ -366,8 +357,7 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.customer-information.render-after` from `@shopify/ui-extension/customer-account` instead.
    */
   'Checkout::OrderStatus::CustomerInformation::RenderAfter': RenderExtension<
-    OrderConfirmationApi &
-      OrderStatusApi &
+    OrderStatusApi &
       CustomerAccountStandardApi<'Checkout::OrderStatus::CustomerInformation::RenderAfter'>,
     AnyComponent
   >;
@@ -711,14 +701,16 @@ export interface ExtensionTargets {
    * A static extension target that is rendered below the header on the **Thank you** page.
    */
   'purchase.thank-you.header.render-after': RenderExtension<
-    StandardApi<'purchase.thank-you.header.render-after'>,
+    OrderConfirmationApi &
+      StandardApi<'purchase.thank-you.header.render-after'>,
     AnyComponent
   >;
   /**
    * A static extension target that is rendered below the footer on the **Thank you** page.
    */
   'purchase.thank-you.footer.render-after': RenderExtension<
-    StandardApi<'purchase.thank-you.footer.render-after'>,
+    OrderConfirmationApi &
+      StandardApi<'purchase.thank-you.footer.render-after'>,
     AnyComponent
   >;
 }

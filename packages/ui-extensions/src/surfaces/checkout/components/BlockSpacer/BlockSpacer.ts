@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {MaybeResponsiveConditionalStyle} from '../../style';
+import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 import type {IdProps, Spacing} from '../shared';
 
 export interface BlockSpacerProps extends IdProps {
@@ -9,7 +9,7 @@ export interface BlockSpacerProps extends IdProps {
    *
    * @defaultValue 'base'
    **/
-  spacing?: MaybeResponsiveConditionalStyle<Exclude<Spacing, 'none'>>;
+  spacing?: MaybeResponsiveConditionalStyle<Spacing>;
 }
 
 /**

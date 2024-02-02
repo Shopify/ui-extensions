@@ -1,7 +1,7 @@
 import {faker} from '@faker-js/faker';
 import type {Metafield} from '@shopify/ui-extensions/checkout';
 
-import {useMetafields} from '..';
+import {useMetafields} from '../metafields';
 
 import {createMockStatefulRemoteSubscribable, mount} from './mount';
 
