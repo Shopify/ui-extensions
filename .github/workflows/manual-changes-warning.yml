@@ -15,7 +15,7 @@ jobs:
   comment-on-pr:
     name: Comment on PR
     runs-on: ubuntu-latest
-    if: ${{ github.event.pull_request.base.ref == "unstable" && !contains(github.event.pull_request.labels.*.name, 'automation') }}
+    if: ${{ !contains(github.event.pull_request.labels.*.name, 'automation') }}
     steps:
       - uses: actions/checkout@v4
       - name: Add comment
