@@ -5,11 +5,11 @@ on:
     types: [opened, synchronize, ready_for_review]
     branches:
       - jkv/manual-changes-warning
-    paths:
-      - 'packages/ui-extensions/src/surfaces/checkout/**'
-      - 'packages/ui-extensions/docs/surfaces/checkout/**'
-      - 'packages/ui-extensions-react/src/surfaces/checkout/**'
-      - 'packages/ui-extensions-react/docs/surfaces/checkout/**'
+    # paths:
+    #   - 'packages/ui-extensions/src/surfaces/checkout/**'
+    #   - 'packages/ui-extensions/docs/surfaces/checkout/**'
+    #   - 'packages/ui-extensions-react/src/surfaces/checkout/**'
+    #   - 'packages/ui-extensions-react/docs/surfaces/checkout/**'
 
 jobs:
   comment-on-pr:
