@@ -21,7 +21,7 @@ jobs:
       - name: Check if comment exists
         id: check-comment
         run: |
-          existing_comment=$(gh pr view ${{ github.event.number }} --json comments -q '.[].body' | grep -c "<!-- MARKER -->")
+          existing_comment=$(gh pr view ${{ github.event.number }} --json comments -q '.[].body' | grep -c '<!-- MARKER -->')
           echo "::set-output name=comment_exists::$existing_comment"
         shell: bash
         env:
