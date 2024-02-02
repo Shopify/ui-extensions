@@ -20,9 +20,9 @@ jobs:
       - uses: actions/checkout@v4
       - name: Add comment
         run: |
-          existing_comment=$(gh pr view ${{ github.event.number }} --json comments -q '.comments.[].body' |  grep -c '<!-- MARKER -->')
+          existing_comment=$(gh pr view 1716 --json comments -q '.comments.[].body' |  grep -c '<!-- MARKER -->')
           if [[ "$existing_comment" -eq 0 ]]; then
-            gh pr comment ${{ github.event.number }} -b '<!-- MARKER --> 🔔 This PR appears to be modifying the checkout UI surface for **unstable**. These are typically done via an automated Github action. Did you add these same changes to the private package? See the [vault docs](https://vault.shopify.io/teams/2083/pages/Extension-Libraries~gkKh.md) for details.'
+            gh pr comment 1716 -b '<!-- MARKER --> 🔔 This PR appears to be modifying the checkout UI surface for **unstable**. These are typically done via an automated Github action. Did you add these same changes to the private package? See the [vault docs](https://vault.shopify.io/teams/2083/pages/Extension-Libraries~gkKh.md) for details.'
           else
             echo "Comment already exists on the PR."
           fi
