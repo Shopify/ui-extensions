@@ -2,7 +2,7 @@ name: Manual Changes Warning
 
 on:
   pull_request:
-    types: [opened, synchronized, ready_for_review]
+    types: [opened, synchronize, ready_for_review]
     branches:
       - jkv/manual-changes-warning
     paths:
