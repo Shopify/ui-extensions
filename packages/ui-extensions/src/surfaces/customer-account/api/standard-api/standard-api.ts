@@ -99,6 +99,14 @@ export interface FulfillmentApi {
   fulfillmentId: string;
 }
 
+export interface TimelineEventApi {
+  /**
+   * Optionnal Id of a single fulfillment.
+   * An undefined value represents unfulfilled items.
+   */
+  fulfillmentId?: string;
+}
+
 export interface ReturnApi {
   /**
    * Id of a single return.
