@@ -454,7 +454,7 @@ export const pixelEvents = {
       },
     },
     EventType: {
-      enum: ['standard', 'dom', 'custom', 'meta'],
+      enum: ['standard', 'dom', 'custom'],
     },
     Id: {
       type: 'string',

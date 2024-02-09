@@ -12,6 +12,7 @@ export type {
   DiscountApplication,
   GenericElement,
   InputElement,
+  FormElement,
   Product,
   Collection,
   Checkout,
