@@ -43,6 +43,9 @@ export interface Docs_OrderStatus_AddressApi
 export interface Docs_OrderStatus_ShopApi
   extends Pick<OrderStatusApi<any>, 'shop'> {}
 
+export interface Docs_OrderStatus_RequireLoginApi
+  extends Pick<OrderStatusApi<any>, 'requireLogin'> {}
+
 export interface Docs_OrderStatus_CartLinesApi
   extends Pick<OrderStatusApi<any>, 'lines'> {}
 
