@@ -1,15 +1,18 @@
 import {StandardApi} from './api/standard/standard-api';
+// eslint-disable-next-line import/no-deprecated
 import {SmartGridApi, NavigationApi, ScannerApi} from './api';
 import {RenderExtension} from './extension';
 import type {Components} from './shared';
 import {AnyComponentBuilder} from '../../shared';
+import {ActionApi} from './api/action-api/action-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
 type BasicComponents = AnyComponentBuilder<Omit<Components, 'Tile'>>;
 
 export interface ExtensionTargets {
   'pos.home.tile.render': RenderExtension<
-    StandardApi<'pos.home.tile.render'> & SmartGridApi,
+    // eslint-disable-next-line import/no-deprecated
+    StandardApi<'pos.home.tile.render'> & SmartGridApi & ActionApi,
     SmartGridComponents
   >;
   'pos.home.modal.render': RenderExtension<
