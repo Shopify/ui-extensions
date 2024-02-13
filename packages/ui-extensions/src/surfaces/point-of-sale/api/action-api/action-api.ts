@@ -11,5 +11,5 @@ export interface ActionApiContent {
  * Access the Action API to present your app in a full screen modal.
  */
 export interface ActionApi {
-  Action: ActionApiContent;
+  action: ActionApiContent;
 }
