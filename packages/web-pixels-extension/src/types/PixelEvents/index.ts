@@ -1073,7 +1073,6 @@ export interface DiscountApplication {
 export enum EventType {
   Custom = 'custom',
   Dom = 'dom',
-  Meta = 'meta',
   Standard = 'standard',
 }
 
