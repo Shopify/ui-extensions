@@ -1,5 +1,5 @@
-export {ActionMenuItem} from './components/Actiontem/ActionItem';
-export type {ActionItem} from './components/Actiontem/ActionItem';
+export {ActionItem} from './components/Actiontem/ActionItem';
+export type {ActionItemProps} from './components/Actiontem/ActionItem';
 export {Badge} from './components/Badge/Badge';
 export type {BadgeProps, BadgeVariant} from './components/Badge/Badge';
 export {Banner} from './components/Banner/Banner';
