@@ -349,7 +349,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   version: Version;
 
   /**
-   * The requireLogin() method triggers login if the customer is viewing pre-authenticated Order Status Page.
+   * The requireLogin() method triggers login if the customer is viewing pre-authenticated Order status page.
    */
   requireLogin: () => Promise<void>;
 }
