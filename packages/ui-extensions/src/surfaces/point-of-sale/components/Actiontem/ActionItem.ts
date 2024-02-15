@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export interface ActionItem {
+export interface ActionItemProps {
   title: string;
   subtitle?: string;
   enabled?: boolean;
@@ -9,6 +9,6 @@ export interface ActionItem {
   destructive?: boolean;
 }
 
-export const ActionMenuItem = createRemoteComponent<'ActionItem', ActionItem>(
+export const ActionItem = createRemoteComponent<'ActionItem', ActionItemProps>(
   'ActionItem',
 );

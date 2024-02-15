@@ -7,13 +7,14 @@ import {AnyComponentBuilder} from '../../shared';
 import {ActionApi} from './api/action-api/action-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
+type ActionComponents = AnyComponentBuilder<Pick<Components, 'ActionItem'>>;
 type BasicComponents = AnyComponentBuilder<Omit<Components, 'Tile'>>;
 
 export interface ExtensionTargets {
   'pos.home.tile.render': RenderExtension<
     // eslint-disable-next-line import/no-deprecated
     StandardApi<'pos.home.tile.render'> & SmartGridApi & ActionApi,
-    SmartGridComponents
+    SmartGridComponents | ActionComponents
   >;
   'pos.home.modal.render': RenderExtension<
     StandardApi<'pos.home.modal.render'> & NavigationApi & ScannerApi,
