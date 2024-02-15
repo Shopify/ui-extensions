@@ -1700,13 +1700,17 @@ export type ApplyTrackingConsentChangeType = (
 
 export interface CustomerPrivacy {
   /**
-   * Whether the customer has previously given consent.
-   */
-  hasCollectedConsent: boolean;
-  /**
    * An object containing the customer's current cookie consent settings.
    */
   visitorConsent: VisitorConsent;
+  /**
+   * Whether a consent banner should be displayed.
+   */
+  shouldShowBanner: boolean;
+  /**
+   * Whether the visitor is in a region requiring data sale opt-outs.
+   */
+  saleOfDataRegion: boolean;
 }
 
 export type TrackingConsentChangeResult =
