@@ -1,9 +1,7 @@
-import type {
-  StandardApi,
-  CheckoutApi,
-  CartLineItemApi,
-  OrderStatusApi,
-} from '../api';
+import type {StandardApi} from './standard/standard';
+import type {CheckoutApi} from './checkout/checkout';
+import type {CartLineItemApi} from './cart-line/cart-line-item';
+import type {OrderStatusApi} from './order-status/order-status';
 
 /**
  * These types are used to generate the documentation for the API and decipher which properties are available for which APIs.

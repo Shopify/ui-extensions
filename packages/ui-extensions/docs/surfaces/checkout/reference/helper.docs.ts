@@ -38,7 +38,7 @@ interface OptionalCodeMetadata {
  */
 export function getExamples(
   languages: NonEmptyArray<ExtensionExampleLanguage>,
-): {[key: string]: ExampleType} {
+): Record<string, ExampleType> {
   if (!languages || languages.length === 0) {
     throw new HelperDocsError(
       'You must define at least one extension code language context you wish to retrieve the example(s) for.',
@@ -60,7 +60,7 @@ export function getExamples(
   function createExample(
     id: string,
     metadata?: OptionalCodeMetadata,
-  ): {[key: string]: ExampleType} {
+  ): Record<string, ExampleType> {
     return {
       [id]: {
         description: metadata?.description ?? '',
@@ -451,7 +451,7 @@ The contents of the token are signed using your shared app secret.  The optional
   };
 }
 
-const links: {[key: string]: LinkType[]} = {
+const links: Record<string, LinkType[]> = {
   apis: [
     {
       name: 'Targets',

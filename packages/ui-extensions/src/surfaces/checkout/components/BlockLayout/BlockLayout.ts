@@ -1,6 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {MaybeResponsiveConditionalStyle} from '../../style';
+import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 import type {Rows} from '../shared';
 import type {GridProps} from '../Grid/Grid';
 

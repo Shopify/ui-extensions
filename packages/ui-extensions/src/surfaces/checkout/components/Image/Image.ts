@@ -6,7 +6,7 @@ import type {
   ResolutionCondition,
   ViewportSizeCondition,
   AtLeastOne,
-} from '../../style';
+} from '../../style/types';
 import type {
   AccessibilityRole,
   BorderProps,

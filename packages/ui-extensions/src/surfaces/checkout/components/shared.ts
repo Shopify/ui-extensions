@@ -3,7 +3,7 @@ import type {RemoteFragment} from '@remote-ui/core';
 import type {
   MaybeConditionalStyle,
   MaybeResponsiveConditionalStyle,
-} from '../style';
+} from '../style/types';
 
 /**
  * A descriptor for selecting the data a field would like to receive during
