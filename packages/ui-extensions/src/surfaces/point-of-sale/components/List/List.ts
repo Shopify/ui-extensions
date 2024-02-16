@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '@remote-ui/core';
+import {RemoteFragment, createRemoteComponent} from '@remote-ui/core';
 import {BadgeProps} from '../Badge/Badge';
 import {ColorType} from '../Text/Text';
 
@@ -86,6 +86,10 @@ export interface ListProps {
    * A large display title at the top of the `List`.
    */
   title?: string;
+  /**
+   * A header component for the list
+   */
+  listHeaderComponent?: RemoteFragment;
   /**
    * The array of `ListRow` which will be converted into rows for this list.
    */
