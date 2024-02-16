@@ -263,7 +263,7 @@ export type CheckoutToken = string;
 export interface I18nTranslate {
   <ReplacementType = string>(
     key: string,
-    options?: {[placeholderKey: string]: ReplacementType | string | number},
+    options?: Record<string, ReplacementType | string | number>,
   ): ReplacementType extends string | number
     ? string
     : (string | ReplacementType)[];
@@ -580,7 +580,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * See [storefront api access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/storefront-api) for more information.
    */
-  query: <Data = unknown, Variables = {[key: string]: unknown}>(
+  query: <Data = unknown, Variables = Record<string, unknown>>(
     query: string,
     options?: {variables?: Variables; version?: StorefrontApiVersion},
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
@@ -1380,15 +1380,16 @@ export interface StoreCreditAccount {
 /**
  * The merchant-defined setting values for the extension.
  */
-export interface ExtensionSettings {
-  [key: string]: string | number | boolean | undefined;
-}
+export type ExtensionSettings = Record<
+  string,
+  string | number | boolean | undefined
+>;
 
 export interface Analytics {
   /**
    * Publish method to emit analytics events to [Web Pixels](https://shopify.dev/docs/apps/marketing).
    */
-  publish(name: string, data: {[key: string]: unknown}): Promise<boolean>;
+  publish(name: string, data: Record<string, unknown>): Promise<boolean>;
 
   /**
    * A method for capturing details about a visitor on the online store.
@@ -1700,13 +1701,17 @@ export type ApplyTrackingConsentChangeType = (
 
 export interface CustomerPrivacy {
   /**
-   * Whether the customer has previously given consent.
-   */
-  hasCollectedConsent: boolean;
-  /**
    * An object containing the customer's current cookie consent settings.
    */
   visitorConsent: VisitorConsent;
+  /**
+   * Whether a consent banner should be displayed.
+   */
+  shouldShowBanner: boolean;
+  /**
+   * Whether the visitor is in a region requiring data sale opt-outs.
+   */
+  saleOfDataRegion: boolean;
 }
 
 export type TrackingConsentChangeResult =

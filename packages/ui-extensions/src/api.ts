@@ -9,7 +9,7 @@ export interface I18nTranslate {
    */
   <ReplacementType = string>(
     key: string,
-    options?: {[placeholderKey: string]: ReplacementType | string | number},
+    options?: Record<string, ReplacementType | string | number>,
   ): ReplacementType extends string | number
     ? string
     : (string | ReplacementType)[];

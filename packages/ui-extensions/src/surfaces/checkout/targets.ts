@@ -1,18 +1,16 @@
+import type {CartLineItemApi} from './api/cart-line/cart-line-item';
+import type {CheckoutApi} from './api/checkout/checkout';
+import type {OrderConfirmationApi} from './api/order-confirmation/order-confirmation';
+import type {OrderStatusApi} from './api/order-status/order-status';
+import type {PaymentOptionItemApi} from './api/payment/payment-option-item';
+import type {PickupPointListApi} from './api/pickup/pickup-point-list';
+import type {PickupLocationItemApi} from './api/pickup/pickup-location-item';
+import type {PickupLocationListApi} from './api/pickup/pickup-location-list';
+import type {RedeemableApi} from './api/redeemable/redeemable';
+import type {StandardApi} from './api/standard/standard';
+import type {ShippingOptionItemApi} from './api/shipping/shipping-option-item';
+import type {ShippingOptionListApi} from './api/shipping/shipping-option-list';
 import type {RenderExtension} from './extension';
-import type {
-  CartLineItemApi,
-  PaymentOptionItemApi,
-  PickupLocationListApi,
-  RedeemableApi,
-  ShippingOptionItemApi,
-  PickupPointListApi,
-  StandardApi,
-  CheckoutApi,
-  OrderStatusApi,
-  ShippingOptionListApi,
-  PickupLocationItemApi,
-  OrderConfirmationApi,
-} from './api';
 import type {AnyComponent} from './shared';
 
 /**
@@ -711,14 +709,16 @@ export interface ExtensionTargets {
    * A static extension target that is rendered below the header on the **Thank you** page.
    */
   'purchase.thank-you.header.render-after': RenderExtension<
-    StandardApi<'purchase.thank-you.header.render-after'>,
+    OrderConfirmationApi &
+      StandardApi<'purchase.thank-you.header.render-after'>,
     AnyComponent
   >;
   /**
    * A static extension target that is rendered below the footer on the **Thank you** page.
    */
   'purchase.thank-you.footer.render-after': RenderExtension<
-    StandardApi<'purchase.thank-you.footer.render-after'>,
+    OrderConfirmationApi &
+      StandardApi<'purchase.thank-you.footer.render-after'>,
     AnyComponent
   >;
 }

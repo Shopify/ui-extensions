@@ -1,6 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {MaybeConditionalStyle, ResolutionCondition} from '../../style';
+import type {
+  MaybeConditionalStyle,
+  ResolutionCondition,
+} from '../../style/types';
 import type {Size} from '../shared';
 
 export interface ProductThumbnailProps {
