@@ -1,5 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import type {InputProps, MinMaxLengthProps} from '../shared/InputField';
+import type {InputProps} from '../shared/InputField';
 
 /**
  * Represents the properties for the NumberField component.
@@ -8,7 +8,7 @@ import type {InputProps, MinMaxLengthProps} from '../shared/InputField';
  * @property {number} [max] - The highest decimal or integer to be accepted for the field.
  * @property {number} [min] - The lowest decimal or integer to be accepted for the field.
  */
-export interface NumberFieldProps extends InputProps, MinMaxLengthProps {
+export interface NumberFieldProps extends InputProps {
   inputMode?: 'decimal' | 'numeric';
   max?: number;
   min?: number;

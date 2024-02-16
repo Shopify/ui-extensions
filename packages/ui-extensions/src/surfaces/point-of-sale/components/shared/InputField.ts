@@ -26,6 +26,7 @@ export interface InputAction {
  * @property {string} [value] - The current value for the field. If omitted, the field will be empty. You should update this value in response to the `onChange` callback.
  * @property {string} [helpText] - Label under the text field which provides guidance or instructions that assist users.
  * @property {InputAction} [action] - A button under the text field to provide extra functionality.
+ * @property {number?} [maxLength] - Specifies the maximum number of characters allowed.
  */
 export interface InputProps {
   disabled?: boolean;
@@ -40,22 +41,5 @@ export interface InputProps {
   value?: string;
   helpText?: string;
   action?: InputAction;
-}
-
-/**
- * Represents the properties for minimum and maximum length constraints for text fields.
- * @typedef {Object} MinMaxLengthProps
- * @property {number} [maxLength] - Specifies the maximum number of characters allowed.
- * @property {number} [minLength] - Specifies the minimum number of characters allowed.
- */
-export interface MinMaxLengthProps {
-  /**
-   * Specifies the maximum number of characters allowed.
-   */
   maxLength?: number;
-
-  /**
-   * Specifies the min number of characters allowed.
-   */
-  minLength?: number;
 }
