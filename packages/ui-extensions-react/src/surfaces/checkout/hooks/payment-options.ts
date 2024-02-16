@@ -49,7 +49,7 @@ export function useSelectedPaymentOptions<
   const availablePaymentOptions = useSubscription(api.availablePaymentOptions);
 
   return useMemo(() => {
-    const availablePaymentOptionsMap: {[key: string]: PaymentOption} = {};
+    const availablePaymentOptionsMap: Record<string, PaymentOption> = {};
 
     for (const option of availablePaymentOptions) {
       availablePaymentOptionsMap[option.handle] = option;

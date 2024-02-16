@@ -1,3 +1,7 @@
+/* eslint-disable @shopify/checkout-web/no-barrel-files */
+// We generate a type based off the shape of the exports of this module.
+// Curating that would be annoying, so let's leave this as-is for now.
+
 export {Banner} from './components/Banner/Banner';
 export type {BannerProps} from './components/Banner/Banner';
 
@@ -136,6 +140,9 @@ export type {
 
 export {Select} from './components/Select/Select';
 export type {SelectProps, SelectOptionProps} from './components/Select/Select';
+
+export {Sheet} from './components/Sheet/Sheet';
+export type {SheetProps} from './components/Sheet/Sheet';
 
 export {SkeletonImage} from './components/SkeletonImage/SkeletonImage';
 export type {SkeletonImageProps} from './components/SkeletonImage/SkeletonImage';

@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps, Spacing} from '../shared';
-import type {MaybeResponsiveConditionalStyle} from '../../style';
+import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 
 export type Marker = 'none' | 'bullet' | 'number';
 

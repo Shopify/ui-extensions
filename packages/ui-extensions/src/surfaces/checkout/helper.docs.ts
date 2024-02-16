@@ -26,9 +26,7 @@ const codeExampleTabConfig: ExtensionCodeTabConfig = {
  */
 export function getExamples(
   languages: NonEmptyArray<ExtensionExampleLanguage>,
-): {
-  [key: string]: ExampleType;
-} {
+): Record<string, ExampleType> {
   if (!languages || languages.length === 0) {
     throw new HelperDocsError(
       'You must define at least one extension code language context you wish to retrieve the example(s) for.',
@@ -112,6 +110,15 @@ export function getExamples(
         tabs: getExtensionCodeTabs('ui-components/choicelist-time-picking'),
       },
     },
+    'ui-components/sheet-consent': {
+      description:
+        'The Sheet component can be used to display privacy consent preferences in the Checkout interface. Sheet can be defaulted to open for this use case.\n\n This component requires access to [Customer Privacy API](/docs/api/checkout-ui-extensions/unstable/apis/customer-privacy) to be rendered.',
+      image: 'sheet-default.png',
+      codeblock: {
+        title: 'Using Sheet to display consent preferences',
+        tabs: getExtensionCodeTabs('ui-components/sheet-consent'),
+      },
+    },
   };
 }
 
@@ -135,3 +142,6 @@ export function getExample(
 class HelperDocsError extends Error {
   name = 'HelperDocsError';
 }
+
+export const REQUIRES_PROTECTED_CUSTOMER_DATA =
+  'access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) for some properties.';

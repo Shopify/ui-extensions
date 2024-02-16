@@ -4,7 +4,7 @@
  */
 export function isEqual<
   T =
-    | {[key: string]: any}
+    | Record<string, any>
     | any[]
     | number
     | boolean
@@ -29,8 +29,8 @@ export function isEqual<
       if (firstEntries.length === secondEntries.length) {
         return firstEntries.every(([key]) =>
           isEqual(
-            (first as {[key: string]: any})[key],
-            (second as {[key: string]: any})[key],
+            (first as Record<string, any>)[key],
+            (second as Record<string, any>)[key],
           ),
         );
       }

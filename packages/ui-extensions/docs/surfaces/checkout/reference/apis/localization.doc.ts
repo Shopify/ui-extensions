@@ -42,6 +42,12 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseLocalizationCountryGeneratedType',
     },
     {
+      title: 'useLocalizationMarket',
+      description:
+        'Returns the market of the checkout, and automatically re-renders your component if it changes.',
+      type: 'UseLocalizationMarketGeneratedType',
+    },
+    {
       title: 'useTimezone',
       description:
         'Returns the time zone of the checkout, and automatically re-renders your component if the time zone changes.',
