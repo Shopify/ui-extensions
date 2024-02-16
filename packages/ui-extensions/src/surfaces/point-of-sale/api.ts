@@ -6,6 +6,8 @@ export type {
   LineItemDiscountType,
 } from './api/cart-api/cart-api';
 
+export type {ActionApi, ActionApiContent} from './api/action-api/action-api';
+
 export type {
   ConnectivityStateSeverity,
   ConnectivityState,
