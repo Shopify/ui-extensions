@@ -49,8 +49,18 @@ export interface CartApiContent {
     amount?: string,
   ): Promise<void>;
 
+  /** Add a code discount to the cart
+   * @param code the code for the discount to add to the cart
+   */
+  addCartCodeDiscount(code: string): Promise<void>;
+
   /** Remove the cart discount */
   removeCartDiscount(): Promise<void>;
+
+  /** Remove all cart and line item discounts
+   * @param disableAutomaticDiscounts Whether or not automatic discounts should be enabled after removing the discounts.
+   */
+  removeAllDiscounts(disableAutomaticDiscounts: boolean): Promise<void>;
 
   /** Clear the cart */
   clearCart(): Promise<void>;
