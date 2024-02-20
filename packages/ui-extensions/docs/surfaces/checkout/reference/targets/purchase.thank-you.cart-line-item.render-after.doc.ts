@@ -1,6 +1,10 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
-import {getExample, getLinksByTag, CART_LINE_ITEM_API} from '../helper.docs';
+import {
+  getExample,
+  getLinksByTag,
+  THANK_YOU_CART_LINE_ITEM_API,
+} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'purchase.thank-you.cart-line-item.render-after',
@@ -11,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
     ['jsx', 'js'],
   ),
   related: getLinksByTag('targets'),
-  ...CART_LINE_ITEM_API,
+  ...THANK_YOU_CART_LINE_ITEM_API,
 };
 
 export default data;
