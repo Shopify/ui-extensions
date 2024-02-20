@@ -12,7 +12,7 @@ import type {
   MailingAddress,
 } from '../shared';
 import type {ExtensionTarget} from '../../targets';
-import type {ApiVersion} from '../../../../shared';
+import {ApiVersion} from '../../../../shared';
 
 /**
  * A key-value storage object for the extension.
@@ -58,16 +58,13 @@ export interface Storage {
  * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
  *
  * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
- *
- * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
  */
 
 export type Capability =
   | 'api_access'
   | 'network_access'
   | 'block_progress'
-  | 'collect_buyer_consent.sms_marketing'
-  | 'collect_buyer_consent.customer_privacy';
+  | 'collect_buyer_consent.sms_marketing';
 
 /**
  * Meta information about an extension target.
@@ -91,8 +88,6 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
    *
    * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
-   *
-   * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 
@@ -263,7 +258,7 @@ export type CheckoutToken = string;
 export interface I18nTranslate {
   <ReplacementType = string>(
     key: string,
-    options?: Record<string, ReplacementType | string | number>,
+    options?: {[placeholderKey: string]: ReplacementType | string | number},
   ): ReplacementType extends string | number
     ? string
     : (string | ReplacementType)[];
@@ -580,7 +575,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * See [storefront api access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/storefront-api) for more information.
    */
-  query: <Data = unknown, Variables = Record<string, unknown>>(
+  query: <Data = unknown, Variables = {[key: string]: unknown}>(
     query: string,
     options?: {variables?: Variables; version?: StorefrontApiVersion},
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
@@ -650,16 +645,6 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * @example 'unstable'
    */
   version: Version;
-
-  /**
-   * Customer cookie consent settings and a flag denoting if consent has previously been collected.
-   */
-  customerPrivacy: StatefulRemoteSubscribable<CustomerPrivacy>;
-
-  /**
-   * Allows setting and updating customer cookie consent settings.
-   */
-  applyTrackingConsentChange: ApplyTrackingConsentChangeType;
 }
 
 export interface Ui {
@@ -802,9 +787,6 @@ export interface Shop {
   name: string;
   /**
    * The primary storefront URL.
-   *
-   * > Caution:
-   * > As of version `2024-04` this value will no longer have a trailing slash.
    */
   storefrontUrl?: string;
   /**
@@ -1380,16 +1362,15 @@ export interface StoreCreditAccount {
 /**
  * The merchant-defined setting values for the extension.
  */
-export type ExtensionSettings = Record<
-  string,
-  string | number | boolean | undefined
->;
+export interface ExtensionSettings {
+  [key: string]: string | number | boolean | undefined;
+}
 
 export interface Analytics {
   /**
    * Publish method to emit analytics events to [Web Pixels](https://shopify.dev/docs/apps/marketing).
    */
-  publish(name: string, data: Record<string, unknown>): Promise<boolean>;
+  publish(name: string, data: {[key: string]: unknown}): Promise<boolean>;
 
   /**
    * A method for capturing details about a visitor on the online store.
@@ -1668,80 +1649,4 @@ export interface DeliveryGroupDetails extends DeliveryGroup {
    * The cart lines associated to the delivery group.
    */
   targetedCartLines: CartLine[];
-}
-
-export interface VisitorConsent {
-  /**
-   * Cookies to understand how customers interact with the site.
-   */
-  analytics?: boolean;
-  /**
-   * Cookies to provide ads and marketing communications based on customer interests.
-   */
-  marketing?: boolean;
-  /**
-   * Cookies that remember customer preferences, such as country or language, to personalize visits to the website.
-   */
-  preferences?: boolean;
-  /**
-   * Opts the customer out of data sharing / sales.
-   */
-  saleOfData?: boolean;
-}
-
-type PartialVisitorConsent = Partial<VisitorConsent>;
-
-export interface VisitorConsentChange extends PartialVisitorConsent {
-  type: 'changeVisitorConsent';
-}
-
-export type ApplyTrackingConsentChangeType = (
-  visitorConsent: VisitorConsentChange,
-) => Promise<TrackingConsentChangeResult>;
-
-export interface CustomerPrivacy {
-  /**
-   * An object containing the customer's current cookie consent settings.
-   */
-  visitorConsent: VisitorConsent;
-  /**
-   * Whether a consent banner should be displayed.
-   */
-  shouldShowBanner: boolean;
-  /**
-   * Whether the visitor is in a region requiring data sale opt-outs.
-   */
-  saleOfDataRegion: boolean;
-}
-
-export type TrackingConsentChangeResult =
-  | TrackingConsentChangeResultSuccess
-  | TrackingConsentChangeResultError;
-
-/**
- * The returned result of a successful tracking consent preference update.
- */
-export interface TrackingConsentChangeResultSuccess {
-  /**
-   * The type of the `TrackingConsentChangeResultSuccess` API.
-   */
-  type: 'success';
-}
-
-/**
- * The returned result of an unsuccessful tracking consent preference update
- * with a message detailing the type of error that occurred.
- */
-export interface TrackingConsentChangeResultError {
-  /**
-   * The type of the `TrackingConsentChangeResultError` API.
-   */
-  type: 'error';
-
-  /**
-   * A message that explains the error. This message is useful for debugging.
-   * It is **not** localized, and therefore should not be presented directly
-   * to the buyer.
-   */
-  message: string;
 }
