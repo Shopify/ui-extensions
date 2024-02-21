@@ -1067,7 +1067,7 @@ export interface SelectedPaymentOption {
   /**
    * The unique handle referencing `PaymentOption.handle`.
    *
-   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/payment-options#standardapi-propertydetail-availablepaymentoptions).
+   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/payments#standardapi-propertydetail-availablepaymentoptions).
    */
   handle: string;
 }
