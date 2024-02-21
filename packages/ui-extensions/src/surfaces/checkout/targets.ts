@@ -278,7 +278,8 @@ export interface ExtensionTargets {
    * @deprecated Use `customer-account.order-status.block.render` from `@shopify/ui-extension/customer-account` instead.
    */
   'customer-account.order-status.block.render': RenderExtension<
-    OrderStatusApi &
+    OrderConfirmationApi &
+      OrderStatusApi &
       CustomerAccountStandardApi<'customer-account.order-status.block.render'>,
     AnyComponent
   >;
