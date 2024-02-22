@@ -604,6 +604,13 @@ const CART_LINE_ITEM_API_DEFINITION = {
   type: 'CartLineItemApi',
 };
 
+const ORDER_CONFIRMATION_API_DEFINITION = {
+  title: 'OrderConfirmationApi',
+  description:
+    'The API object provided to this and other `purchase.thank-you` and `customer-account.order-status` extension targets.',
+  type: 'OrderConfirmationApi',
+};
+
 const ORDER_STATUS_API_DEFINITION = {
   title: 'OrderStatusApi',
   description:
@@ -679,8 +686,24 @@ export const CHECKOUT_CART_LINE_ITEM_API = {
   ...COMMON_API,
 };
 
+export const THANK_YOU_API = {
+  definitions: [ORDER_CONFIRMATION_API_DEFINITION, STANDARD_API_DEFINITION],
+  ...COMMON_API,
+};
+
+export const THANK_YOU_CART_LINE_ITEM_API = {
+  subCategory: 'Order Summary',
+  definitions: [
+    ORDER_CONFIRMATION_API_DEFINITION,
+    CART_LINE_ITEM_API_DEFINITION,
+    STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
 export const ORDER_STATUS_API = {
   definitions: [
+    ORDER_CONFIRMATION_API_DEFINITION,
     ORDER_STATUS_API_DEFINITION,
     CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION,
   ],
@@ -755,6 +778,9 @@ export const CHECKOUT_API_PROPERTIES_DESCRIPTION =
 
 export const ORDER_STATUS_API_PROPERTIES_DESCRIPTION =
   'The API object provided to `customer-account.order-status` extension targets.';
+
+export const ORDER_CONFIRMATION_API_PROPERTIES_DESCRIPTION =
+  'The API object provided to `purchase.thank-you` and `customer-account.order-status` extension targets.';
 
 export const ORDER_STATUS_SURFACE_NOTE = `
 > Caution: Use the \`@shopify/ui-extensions/customer-account\` or \`@shopify/ui-extensions-react/customer-account\` surfaces when targeting order status targets. Importing from the \`checkout\` surface is deprecated as of version \`2023-10\`.

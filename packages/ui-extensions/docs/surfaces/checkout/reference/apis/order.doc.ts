@@ -3,6 +3,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {
   getLinksByTag,
   ORDER_STATUS_API_PROPERTIES_DESCRIPTION,
+  ORDER_CONFIRMATION_API_PROPERTIES_DESCRIPTION,
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -13,6 +14,11 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'APIs',
   type: 'API',
   definitions: [
+    {
+      title: 'OrderConfirmationApi',
+      description: ORDER_CONFIRMATION_API_PROPERTIES_DESCRIPTION,
+      type: 'OrderConfirmationApi',
+    },
     {
       title: 'OrderStatusApi',
       description: ORDER_STATUS_API_PROPERTIES_DESCRIPTION,

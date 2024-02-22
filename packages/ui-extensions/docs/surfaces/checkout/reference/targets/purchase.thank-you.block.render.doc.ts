@@ -1,6 +1,6 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
-import {getExample, getLinksByTag, STANDARD_API} from '../helper.docs';
+import {getExample, getLinksByTag, THANK_YOU_API} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'purchase.thank-you.block.render',
@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
     'js',
   ]),
   related: getLinksByTag('targets'),
-  ...STANDARD_API,
+  ...THANK_YOU_API,
 };
 
 export default data;

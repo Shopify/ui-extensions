@@ -1,6 +1,6 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
-import {STANDARD_API, getExample, getLinksByTag} from '../helper.docs';
+import {THANK_YOU_API, getExample, getLinksByTag} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'purchase.thank-you.footer.render-after',
@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
   ]),
   subCategory: 'Footer',
   related: getLinksByTag('targets'),
-  ...STANDARD_API,
+  ...THANK_YOU_API,
 };
 
 export default data;
