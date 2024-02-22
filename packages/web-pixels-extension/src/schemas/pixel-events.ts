@@ -890,6 +890,13 @@ export const pixelEvents = {
           'An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process.',
       },
       properties: {
+        customer: {
+          ref: 'OrderCustomer',
+          nullable: true,
+          metadata: {
+            description: 'The customer that placed the order.',
+          },
+        },
         id: {
           type: 'string',
           metadata: {
@@ -1088,6 +1095,20 @@ export const pixelEvents = {
           ref: 'MoneyV2',
           metadata: {
             description: 'The total cost of the merchandise line.',
+          },
+        },
+      },
+    },
+    OrderCustomer: {
+      metadata: {
+        description: 'The customer that placed the order.',
+      },
+      properties: {
+        id: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The ID of the customer.',
           },
         },
       },

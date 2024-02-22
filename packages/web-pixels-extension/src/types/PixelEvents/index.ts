@@ -1337,9 +1337,24 @@ export type Name = string;
  */
 export interface Order {
   /**
+   * The customer that placed the order.
+   */
+  customer: OrderCustomer | null;
+
+  /**
    * The ID of the order.
    */
   id: string;
+}
+
+/**
+ * The customer that placed the order.
+ */
+export interface OrderCustomer {
+  /**
+   * The ID of the customer.
+   */
+  id: string | null;
 }
 
 /**
