@@ -61,11 +61,11 @@ export interface ExtensionPoints {
     StandardApi<'customer-account.profile.staff-and-permissions.render-after'>,
     AllComponents
   >;
-  'customer-account.order-status.action.menu-item.render': RenderExtension<
+  'customer-account.order.action.menu-item.render': RenderExtension<
     StandardApi & {orderId: string},
     AllComponents
   >;
-  'customer-account.order-status.action.render': RenderExtension<
+  'customer-account.order.action.render': RenderExtension<
     StandardApi & ActionExtensionApi & {orderId: string},
     AllComponents
   >;
