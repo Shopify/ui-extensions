@@ -1,5 +1,6 @@
 schema: v1
 extend: shopify-dev
+isospin_version: 2
 repos:
   - ui-extensions:
       branch: unstable
