@@ -99,8 +99,4 @@ export {TimePicker} from './components/TimePicker/TimePicker';
 export type {TimePickerProps} from './components/TimePicker/TimePicker';
 export type {BaseTextFieldProps} from './components/shared/BaseTextField';
 export type {AutoCapitalizationType} from './components/shared/auto-capitalization-type';
-export type {
-  InputAction,
-  MinMaxLengthProps,
-  InputProps,
-} from './components/shared/InputField';
+export type {InputAction, InputProps} from './components/shared/InputField';

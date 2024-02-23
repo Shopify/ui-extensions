@@ -50,7 +50,6 @@ export type {
   BaseTextFieldProps,
   InputAction,
   InputProps,
-  MinMaxLengthProps,
   VerticalSpacing,
   HorizontalSpacing,
   Spacing,
