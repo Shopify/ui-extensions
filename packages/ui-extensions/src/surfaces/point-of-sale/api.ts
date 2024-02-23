@@ -22,6 +22,8 @@ export type {
   NavigationApi,
 } from './api/navigation-api/navigation-api';
 
+export type {OrderAPIContent, Order} from './api/order-api/order-api';
+
 export type {
   ProductSortType,
   ProductSearchParams,
