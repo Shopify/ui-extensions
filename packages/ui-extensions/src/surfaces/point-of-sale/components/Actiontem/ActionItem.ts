@@ -5,7 +5,7 @@ export interface ActionItemProps {
   subtitle?: string;
   enabled?: boolean;
   onPress: () => void;
-  badgeValue: number;
+  badgeValue?: number;
   destructive?: boolean;
 }
 
