@@ -20,6 +20,14 @@ export interface ExtensionTargets {
     StandardApi<'pos.home.modal.render'> & NavigationApi & ScannerApi,
     BasicComponents
   >;
+  'pos.purchase.post.action.render': RenderExtension<
+    StandardApi<'pos.purchase.post.action.render'> & ActionApi,
+    BasicComponents
+  >;
+  'pos.purchase.post.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.purchase.post.action.menu-item.render'> & ActionApi,
+    ActionComponents
+  >;
 }
 
 export type ExtensionTarget = keyof ExtensionTargets;
