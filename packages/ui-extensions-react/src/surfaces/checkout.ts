@@ -85,6 +85,9 @@ export type {
 export {render, reactExtension} from './checkout/render';
 
 // Components
+export {Badge} from './checkout/components/Badge/Badge';
+export type {BadgeProps} from './checkout/components/Badge/Badge';
+
 export {Banner} from './checkout/components/Banner/Banner';
 export type {BannerProps} from './checkout/components/Banner/Banner';
 
