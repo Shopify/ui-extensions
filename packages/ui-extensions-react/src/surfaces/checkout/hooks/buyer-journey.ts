@@ -3,6 +3,7 @@ import type {
   RenderExtensionTarget,
   Interceptor,
   BuyerJourney,
+  BuyerJourneyStep,
 } from '@shopify/ui-extensions/checkout';
 
 import {ExtensionHasNoMethodError} from '../errors';
@@ -75,4 +76,39 @@ export function useBuyerJourneyIntercept<
       teardownPromise.then((teardown) => teardown()).catch(() => {});
     };
   }, [api.buyerJourney]);
+}
+
+/**
+ * Returns all possible steps a buyer can take to complete the checkout. These steps may vary depending on the type of checkout or the shop's configuration.
+ */
+export function useBuyerJourneySteps<
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
+>(): BuyerJourneyStep[] {
+  const api = useApi<Target>();
+
+  if (!('buyerJourney' in api) || !api.buyerJourney) {
+    throw new ExtensionHasNoMethodError('buyerJourney', api.extension.target);
+  }
+
+  return useSubscription(api.buyerJourney.steps);
+}
+
+/**
+ * Returns the buyer journey step that the buyer is currently on.
+ */
+export function useBuyerJourneyActiveStep<
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
+>(): BuyerJourneyStep | undefined {
+  const api = useApi<Target>();
+
+  if (!('buyerJourney' in api) || !api.buyerJourney) {
+    throw new ExtensionHasNoMethodError('buyerJourney', api.extension.target);
+  }
+
+  const steps = useSubscription(api.buyerJourney.steps);
+  const activeStep = useSubscription(api.buyerJourney.activeStep);
+
+  return activeStep
+    ? steps.find(({handle}) => handle === activeStep.handle)
+    : undefined;
 }

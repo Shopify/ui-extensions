@@ -2,6 +2,7 @@ export type {
   ApiVersion,
   BuyerIdentity,
   BuyerJourney,
+  BuyerJourneyStep,
   Capability,
   CartCost,
   CartMetafield,
