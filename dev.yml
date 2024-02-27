@@ -1,0 +1,5 @@
+name: ui-extensions
+
+up:
+  - node:
+      version: v20.10.0
