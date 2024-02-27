@@ -41,6 +41,20 @@ const data: ReferenceEntityTemplateSchema = {
       `,
       type: 'UseBuyerJourneyInterceptGeneratedType',
     },
+    {
+      title: 'useBuyerJourneySteps',
+      description: `
+        Returns all possible steps a buyer can take to complete the checkout. These steps may vary depending on the type of checkout or the shop's configuration.
+      `,
+      type: 'UseBuyerJourneyStepsGeneratedType',
+    },
+    {
+      title: 'useBuyerJourneyActiveStep',
+      description: `
+        Returns the buyer journey step that the buyer is currently on.
+      `,
+      type: 'UseBuyerJourneyActiveStepGeneratedType',
+    },
   ],
   defaultExample: getExample('buyer-journey-intercept/target-native-field', [
     'jsx',

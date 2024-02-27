@@ -432,6 +432,68 @@ export interface BuyerJourney {
    * For example, when viewing the **Order status** page after submitting payment, the buyer will have completed their order.
    */
   completed: StatefulRemoteSubscribable<boolean>;
+  /**
+   * All possible steps a buyer can take to complete the checkout. These steps may vary depending on the type of checkout or the shop's configuration.
+   */
+  steps: StatefulRemoteSubscribable<BuyerJourneyStep[]>;
+  /**
+   * What step of checkout the buyer is currently on.
+   */
+  activeStep: StatefulRemoteSubscribable<BuyerJourneyStepReference | undefined>;
+}
+
+/**
+ * | handle  | Description  |
+ * |---|---|
+ * | `cart`  |  The cart page.  |
+ * | `checkout`  |  A one-page checkout, including Shop Pay.  |
+ * | `information`  |  The contact information step of a three-page checkout.  |
+ * | `shipping`  |  The shipping step of a three-page checkout.  |
+ * | `payment`  |  The payment step of a three-page checkout.  |
+ * | `review`  |  The step after payment where the buyer confirms the purchase. Not all shops are configured to have a review step.  |
+ * | `thank-you`  |  The page displayed after the purchase, thanking the buyer.  |
+ * | `unknown` |  An unknown step in the buyer journey.  |
+ */
+type BuyerJourneyStepHandle =
+  | 'cart'
+  | 'checkout'
+  | 'information'
+  | 'shipping'
+  | 'payment'
+  | 'review'
+  | 'thank-you'
+  | 'unknown';
+
+/**
+ * What step of checkout the buyer is currently on.
+ */
+interface BuyerJourneyStepReference {
+  /**
+   * The handle that uniquely identifies the buyer journey step.
+   */
+  handle: BuyerJourneyStepHandle;
+}
+
+export interface BuyerJourneyStep {
+  /**
+   * The handle that uniquely identifies the buyer journey step.
+   */
+  handle: BuyerJourneyStepHandle;
+  /**
+   * The localized label of the buyer journey step.
+   */
+  label: string;
+  /**
+   * The url of the buyer journey step. This property leverages the `shopify:` protocol
+   * E.g. `shopify:cart` or `shopify:checkout/information`.
+   */
+  to: string;
+  /**
+   * The disabled state of the buyer journey step. This value will be true if the buyer has not reached the step yet.
+   *
+   * For example, if the buyer has not reached the `shipping` step yet, `shipping` would be disabled.
+   */
+  disabled: boolean;
 }
 
 export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {

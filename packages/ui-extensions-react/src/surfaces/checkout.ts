@@ -263,6 +263,8 @@ export {
   useBuyerJourney,
   useBuyerJourneyIntercept,
   useBuyerJourneyCompleted,
+  useBuyerJourneyActiveStep,
+  useBuyerJourneySteps,
 } from './checkout/hooks/buyer-journey';
 export {useCheckoutSettings} from './checkout/hooks/checkout-settings';
 export {useMetafield} from './checkout/hooks/metafield';
