@@ -25,7 +25,7 @@ export interface ExtensionTargets {
     BasicComponents
   >;
   'pos.purchase.post.action.menu-item.render': RenderExtension<
-    StandardApi<'pos.purchase.post.action.menu-item.render'> & ActionApi,
+    StandardApi<'pos.purchase.post.action.menu-item.render'>,
     ActionComponents
   >;
 }
