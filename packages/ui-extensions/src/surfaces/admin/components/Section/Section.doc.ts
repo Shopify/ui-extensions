@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Components',
-  subCategory: 'Actions',
+  subCategory: 'Structure',
   defaultExample: {
     image: 'section-default.png',
     codeblock: {
