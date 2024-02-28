@@ -19,6 +19,7 @@ export type {
   CheckoutLineItem,
   CartCost,
   CartLineCost,
+  OrderCustomer,
   Order,
   MailingAddress,
   ProductVariant,
