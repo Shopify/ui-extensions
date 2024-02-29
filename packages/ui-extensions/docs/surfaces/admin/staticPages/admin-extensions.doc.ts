@@ -120,6 +120,11 @@ const data: LandingTemplateSchema = {
       },
       sectionCard: [
         {
+          name: "Direct API can't be used to manage storefront access tokens.",
+          subtitle: 'Note',
+          type: 'information',
+        },
+        {
           name: 'Learn more about access scopes',
           subtitle: 'Developer guide',
           url: '/docs/api/usage/access-scopes',
