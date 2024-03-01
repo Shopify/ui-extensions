@@ -1,3 +1,4 @@
+export {ActionItem} from './components/ActionItem/ActionItem';
 export {Badge} from './components/Badge/Badge';
 export {Banner} from './components/Banner/Banner';
 export {Button} from './components/Button/Button';
