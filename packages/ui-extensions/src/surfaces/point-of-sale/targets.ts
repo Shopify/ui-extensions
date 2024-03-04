@@ -51,7 +51,7 @@ export type ArgumentsForExtension<ID extends keyof ExtensionTargets> =
 
 /**
  * A union type containing all of the extension targets that follow the pattern of
- * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
+ * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
  */

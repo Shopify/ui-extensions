@@ -173,7 +173,7 @@ export type ArgumentsForExtension<Target extends keyof ExtensionTargets> =
 
 /**
  * A union type containing all of the extension targets that follow the pattern of
- * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
+ * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
  */
@@ -188,7 +188,7 @@ export type RenderExtensionTarget = {
 
 /**
  * A union type containing the extension targets on **Order status** page that follow the pattern of
- * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
+ * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
  */
@@ -203,7 +203,7 @@ export type RenderOrderStatusExtensionTarget = {
 
 /**
  * A union type containing the extension targets on customer account except **Order status** page that follow the pattern of
- * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
+ * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
  */
