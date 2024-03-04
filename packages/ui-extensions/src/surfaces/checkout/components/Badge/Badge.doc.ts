@@ -36,6 +36,29 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        image: 'badge-status.png',
+        codeblock: {
+          title: 'Using the Badge component as a status indicator',
+          tabs: [
+            {
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/checkout/components/Badge/examples/status-badge.example.tsx',
+              language: 'tsx',
+            },
+            {
+              title: 'JS',
+              code: './examples/status-badge.example.ts',
+              language: 'js',
+            },
+          ],
+        },
+      },
+    ],
+  },
 
   subSections: [
     {
