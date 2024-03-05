@@ -1,8 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/*
- * @deprecated This is deprecated, use `ActionItem` instead.
- */
 export interface TileProps {
   title: string;
   subtitle?: string;

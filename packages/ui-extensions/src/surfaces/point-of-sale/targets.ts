@@ -14,7 +14,7 @@ export interface ExtensionTargets {
   'pos.home.tile.render': RenderExtension<
     // eslint-disable-next-line import/no-deprecated
     StandardApi<'pos.home.tile.render'> & SmartGridApi & ActionApi,
-    SmartGridComponents | ActionComponents
+    SmartGridComponents
   >;
   'pos.home.modal.render': RenderExtension<
     StandardApi<'pos.home.modal.render'> & NavigationApi & ScannerApi,
