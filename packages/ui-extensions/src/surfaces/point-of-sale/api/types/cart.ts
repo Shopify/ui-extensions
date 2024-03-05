@@ -6,6 +6,7 @@ export interface Cart {
   grandTotal: string;
   note?: string;
   cartDiscount?: Discount;
+  cartDiscounts: Discount[];
   customer?: Customer;
   lineItems: LineItem[];
   properties: Record<string, string>;
