@@ -11,6 +11,9 @@ export type {
   ReturnTypeForExtension,
   StandardApi,
   Version,
+  PostPurchaseRenderApi,
+  PostPurchaseShouldRenderApi,
+  PostPurchaseShouldRenderResult,
 } from './extension-points';
 
 export * from './components';
