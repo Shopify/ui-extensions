@@ -1,6 +1,6 @@
 import {StandardApi} from './api/standard/standard-api';
 // eslint-disable-next-line import/no-deprecated
-import {SmartGridApi, NavigationApi, ScannerApi} from './api';
+import {SmartGridApi, NavigationApi, ScannerApi, OrderApi} from './api';
 import {RenderExtension} from './extension';
 import type {Components} from './shared';
 import {AnyComponentBuilder} from '../../shared';
@@ -21,11 +21,13 @@ export interface ExtensionTargets {
     BasicComponents
   >;
   'pos.purchase.post.action.render': RenderExtension<
-    StandardApi<'pos.purchase.post.action.render'> & ActionApi,
+    StandardApi<'pos.purchase.post.action.render'> & OrderApi,
     BasicComponents
   >;
   'pos.purchase.post.action.menu-item.render': RenderExtension<
-    StandardApi<'pos.purchase.post.action.menu-item.render'>,
+    StandardApi<'pos.purchase.post.action.menu-item.render'> &
+      ActionApi &
+      OrderApi,
     ActionComponents
   >;
 }
