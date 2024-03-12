@@ -116,6 +116,11 @@ const data: LandingTemplateSchema = {
             language: 'tsx',
             title: 'Query Product data',
           },
+          {
+            code: './examples/direct-api-remix.jsx',
+            language: 'tsx',
+            title: 'Remix clientLoader data',
+          },
         ],
       },
       sectionCard: [
