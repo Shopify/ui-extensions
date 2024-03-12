@@ -123,6 +123,7 @@ const data: LandingTemplateSchema = {
           name: "Direct API can't be used to manage storefront access tokens.",
           subtitle: 'Note',
           type: 'information',
+          url: '/docs/api/admin-graphql/2024-01/objects/StorefrontAccessToken',
         },
         {
           name: 'Learn more about access scopes',
