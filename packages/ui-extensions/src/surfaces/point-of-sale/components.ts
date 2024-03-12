@@ -100,3 +100,5 @@ export type {TimePickerProps} from './components/TimePicker/TimePicker';
 export type {BaseTextFieldProps} from './components/shared/BaseTextField';
 export type {AutoCapitalizationType} from './components/shared/auto-capitalization-type';
 export type {InputAction, InputProps} from './components/shared/InputField';
+export {SectionHeader} from './components/SectionHeader/SectionHeader';
+export type {SectionHeaderProps} from './components/SectionHeader/SectionHeader';
