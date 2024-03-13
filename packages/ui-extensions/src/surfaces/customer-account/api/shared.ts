@@ -1,6 +1,6 @@
 import type {ExtensionTarget} from '../targets';
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
-import {ApiVersion} from '../../../shared';
+// import {ApiVersion} from '../../../shared';
 
 /**
  * A key-value storage object for extension targets.
@@ -140,7 +140,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * @example '2023-04', '2023-07'
    */
-  apiVersion: ApiVersion;
+  // apiVersion: ApiVersion;
 
   /**
    * The allowed capabilities of the extension, defined
