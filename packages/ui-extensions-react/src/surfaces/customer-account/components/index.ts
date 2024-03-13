@@ -1,6 +1,7 @@
 export * from './Card';
 export * from './CustomerAccountAction';
 export * from './Page';
+export * from './TimelineEvent';
 /* @internal */
 export * from './PolicyModal';
 export * from './ResourceItem';

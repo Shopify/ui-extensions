@@ -9,6 +9,7 @@ import {
   CompanyLocationApi,
   OrderApi,
   FulfillmentApi,
+  TimelineEventApi,
   ReturnApi,
 } from './api/standard-api/standard-api';
 
@@ -75,6 +76,13 @@ export interface OrderStatusExtensionTargets {
   'customer-account.order-status.unfulfilled-items.render-after': RenderExtension<
     OrderStatusApi<'customer-account.order-status.unfulfilled-items.render-after'> &
       StandardApi<'customer-account.order-status.unfulfilled-items.render-after'>,
+    AnyComponent
+  >;
+
+  'customer-account.order-status.timeline-event.render': RenderExtension<
+    OrderStatusApi<'customer-account.order-status.timeline-event.render'> &
+      StandardApi<'customer-account.order-status.timeline-event.render'> &
+      TimelineEventApi,
     AnyComponent
   >;
   'customer-account.order-status.payment-details.render-after': RenderExtension<
