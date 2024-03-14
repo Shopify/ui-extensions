@@ -1,3 +1,6 @@
+export {Badge} from './components/Badge/Badge';
+export type {BadgeProps} from './components/Badge/Badge';
+
 export {Banner} from './components/Banner/Banner';
 export type {BannerProps} from './components/Banner/Banner';
 
