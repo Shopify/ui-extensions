@@ -2,4 +2,4 @@
 '@shopify/ui-extensions': patch
 ---
 
-Fix type of shopifyFunction in launch options for Checkout rules
+Updates the `shopifyFunction` type to use `id` rather than `uuid` for Checkout rules.
