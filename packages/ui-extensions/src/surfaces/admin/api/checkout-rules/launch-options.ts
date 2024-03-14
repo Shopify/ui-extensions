@@ -7,8 +7,8 @@ export interface ValidationData {
   };
   shopifyFunction: {
     /**
-     * the validation's unique identifier
+     * the validation function's unique identifier
      */
-    uuid: string;
+    id: string;
   };
 }
