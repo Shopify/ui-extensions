@@ -1,4 +1,6 @@
 export {
+  Badge,
+  type BadgeProps,
   Banner,
   type BannerProps,
   BlockLayout,
