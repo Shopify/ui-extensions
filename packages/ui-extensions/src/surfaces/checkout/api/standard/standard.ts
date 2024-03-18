@@ -1761,6 +1761,27 @@ export type ApplyTrackingConsentChangeType = (
   visitorConsent: VisitorConsentChange,
 ) => Promise<TrackingConsentChangeResult>;
 
+export interface CustomerPrivacyRegion {
+  /**
+   * The [ISO 3166 Alpha-2 format](https://www.iso.org/iso-3166-country-codes.html) for the buyer's country.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'CA' for Canada, 'US' for United States, 'GB' for Great Britain, or undefined if geolocation failed.
+   */
+  countryCode?: CountryCode;
+  /**
+   * The buyer's province code, such as state, province, prefecture, or region.
+   *
+   * Province codes can be found by clicking on the `Subdivisions assigned codes` column for countries listed [here](https://en.wikipedia.org/wiki/ISO_3166-2).
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'ON' for Ontario, 'ENG' for England, 'CA' for California, or undefined if geolocation failed or only the country was detected.
+   */
+  provinceCode?: string;
+}
+
 export interface CustomerPrivacy {
   /**
    * An object containing the customer's current cookie consent settings.
@@ -1774,6 +1795,14 @@ export interface CustomerPrivacy {
    * Whether the visitor is in a region requiring data sale opt-outs.
    */
   saleOfDataRegion: boolean;
+  /**
+   * Details about the visitor's current location for use in evaluating if more granular consent controls should render.
+   *
+   * @example `{countryCode: 'CA', provinceCode: 'ON'}` for a visitor in Ontario, Canada; `{countryCode: 'US', provinceCode: undefined}` for a visitor in the United States if geolocation fails to detect the state; or `undefined` if neither country nor province is detected or geolocation fails.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  region?: CustomerPrivacyRegion;
 }
 
 export type TrackingConsentChangeResult =
