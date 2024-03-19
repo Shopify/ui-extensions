@@ -1,4 +1,6 @@
 export {
+  Badge,
+  type BadgeProps,
   Banner,
   type BannerProps,
   BlockLayout,
@@ -85,6 +87,8 @@ export {
   Select,
   type SelectProps,
   type SelectOptionProps,
+  Badge,
+  type BadgeProps,
   SkeletonImage,
   type SkeletonImageProps,
   SkeletonText,
