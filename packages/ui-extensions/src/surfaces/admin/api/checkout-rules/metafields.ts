@@ -45,6 +45,15 @@ const supportedDefinitionTypes = [
 
 export type SupportedDefinitionType = typeof supportedDefinitionTypes[number];
 
+export interface Metafield {
+  description?: string;
+  id: string;
+  namespace: string;
+  key: string;
+  value: string;
+  type: string;
+}
+
 interface MetafieldUpdateChange {
   type: 'updateMetafield';
   key: string;
