@@ -18,6 +18,11 @@ export interface Order {
    * If cancelled, the time at which the order was cancelled.
    */
   cancelledAt?: string;
+  /**
+   * A randomly generated alpha-numeric identifier for the order.
+   * For orders created in 2024 and onwards, the number will always be present. For orders created before that date, the number might not be present.
+   */
+  confirmationNumber?: string;
 }
 
 export interface OrderStatusApi {
