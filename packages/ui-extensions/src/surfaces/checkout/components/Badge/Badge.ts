@@ -1,6 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 import type {Size, VisibilityProps} from '../shared';
+import {IconSource} from '../Icon/Icon';
 
 type Tone = 'default' | 'critical' | 'subdued';
 
@@ -23,6 +24,16 @@ export interface BadgeProps extends VisibilityProps {
    * it will be passed as `aria-label` to underlying element and announced to buyers using assistive technologies.
    */
   accessibilityLabel?: string;
+  /**
+   * The name of the icon to be displayed in the badge.
+   */
+  icon?: IconSource;
+  /**
+   * The position of the icon in relation to the text.
+   *
+   * @default 'start'
+   */
+  iconPosition?: 'start' | 'end';
 }
 
 /**
