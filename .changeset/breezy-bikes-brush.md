@@ -2,4 +2,4 @@
 '@shopify/ui-extensions': patch
 ---
 
-Update ValidationData to include metafields
+Update the `ValidationData` type to include `metafields`.
