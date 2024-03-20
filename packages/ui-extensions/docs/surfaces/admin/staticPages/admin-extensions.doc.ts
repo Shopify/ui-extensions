@@ -122,6 +122,7 @@ const data: LandingTemplateSchema = {
         {
           name: "Direct API can't be used to manage storefront access tokens.",
           subtitle: 'Note',
+          url: '/docs/api/admin-extensions#direct-api-access',
           type: 'information',
         },
         {
