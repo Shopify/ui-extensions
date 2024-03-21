@@ -242,6 +242,16 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * Renders an Admin Action in the discount details page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.discount-details.action.render': RenderExtension<
+    ActionExtensionApi<'admin.discount-details.action.render'>,
+    AllComponents
+  >;
+
+  /**
    * Renders an Admin Action in the order fulfilled card. Open this extension from the "3-dot" menu inside the order fulfilled card.
    * Note: This extension will only be visible in orders which were fulfilled by the same app as the extension.
    *
