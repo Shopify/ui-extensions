@@ -45,15 +45,6 @@ const supportedDefinitionTypes = [
 
 export type SupportedDefinitionType = typeof supportedDefinitionTypes[number];
 
-export interface Metafield {
-  description?: string;
-  id: string;
-  namespace: string;
-  key: string;
-  value: string;
-  type: string;
-}
-
 interface MetafieldUpdateChange {
   type: 'updateMetafield';
   key: string;
@@ -80,6 +71,6 @@ type MetafieldChangeResult =
   | MetafieldChangeSuccess
   | MetafieldChangeResultError;
 
-export interface ApplyMetafieldChange {
-  (change: MetafieldChange): Promise<MetafieldChangeResult>;
-}
+export type ApplyMetafieldChange = (
+  change: MetafieldChange,
+) => Promise<MetafieldChangeResult>;

@@ -7,6 +7,9 @@ import {ValidationData} from './launch-options';
 export interface ValidationSettingsApi<
   ExtensionTarget extends AnyExtensionTarget,
 > extends StandardApi<ExtensionTarget> {
+  /**
+   * Applies a change to the validation settings.
+   */
   applyMetafieldChange: ApplyMetafieldChange;
   data: ValidationData;
 }
