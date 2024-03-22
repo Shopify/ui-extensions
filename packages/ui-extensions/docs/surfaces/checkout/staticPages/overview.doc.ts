@@ -245,7 +245,7 @@ Checkout UI extensions don't have access to the DOM and can't return DOM nodes. 
           name: 'remote-ui',
           subtitle:
             'Learn more about the underlying technology that powers checkout UI extensions.',
-          url: 'https://github.com/Shopify/remote-ui',
+          url: 'https://github.com/Shopify/remote-dom/tree/remote-ui',
           type: 'gitHub',
         },
         {
