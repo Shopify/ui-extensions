@@ -2,9 +2,9 @@
 
 ## Open-source core
 
-The underlying technology for UI Extensions is [remote-ui](https://github.com/Shopify/remote-ui), an open source technology built by Shopify. remote-ui provides the basic [message passing](https://github.com/Shopify/remote-ui/tree/main/packages/rpc) system that is used by UI Extensions to communicate with the “host” application they are extending. remote-ui also provides the [component model](https://github.com/Shopify/remote-ui/tree/main/packages/core) extensions use to describe their UI. If you are familiar with building for the web, remote-ui is very similar to the DOM — it gives you a programmatic model for defining UI components and attaching UI to the screen.
+The underlying technology for UI Extensions is [remote-ui](https://github.com/Shopify/remote-dom/tree/remote-ui), an open source technology built by Shopify. remote-ui provides the basic [message passing](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/rpc) system that is used by UI Extensions to communicate with the “host” application they are extending. remote-ui also provides the [component model](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core) extensions use to describe their UI. If you are familiar with building for the web, remote-ui is very similar to the DOM — it gives you a programmatic model for defining UI components and attaching UI to the screen.
 
-In addition to the basic message passing and component model, remote-ui offers integrations for frameworks like [React](https://github.com/Shopify/remote-ui/tree/main/packages/react) and [Vue](https://github.com/Shopify/remote-ui/tree/main/packages/vue). These integrations are used by UI Extensions to provide framework-specific bindings, allowing developers to use UI frameworks they are already familiar with.
+In addition to the basic message passing and component model, remote-ui offers integrations for frameworks like [React](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/react) and [Vue](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/vue). These integrations are used by UI Extensions to provide framework-specific bindings, allowing developers to use UI frameworks they are already familiar with.
 
 ## Components
 
