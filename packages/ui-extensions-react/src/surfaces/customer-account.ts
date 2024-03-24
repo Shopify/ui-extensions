@@ -83,7 +83,10 @@ export type {
   ViewPositionType,
   ViewLikeAccessibilityRole,
   YearMonth,
+  v1MockData,
+  UnstableMockData,
 } from '@shopify/ui-extensions/customer-account';
+export {CustomerAccountApiVersion} from '@shopify/ui-extensions/customer-account';
 
 export * from './customer-account/components';
 export * from './customer-account/hooks';

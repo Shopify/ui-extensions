@@ -84,4 +84,8 @@ export type {
   Localization,
   CompanyLocationApi,
   OrderApi,
+  UnstableMockData,
+  v1MockData,
+  ApiVersionToMockData,
 } from './api/standard-api/standard-api';
+export {ApiVersion as CustomerAccountApiVersion} from './api/standard-api/standard-api';
