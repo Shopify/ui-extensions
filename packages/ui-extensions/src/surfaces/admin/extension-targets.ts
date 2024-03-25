@@ -102,7 +102,7 @@ export interface ExtensionTargets {
 
   // Actions
   /**
-   * Renders an admin action in the product details page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the product details page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -112,7 +112,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the order details page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the order details page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -122,7 +122,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the customer details page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the customer details page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -132,7 +132,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the customer segment details page. Open this extension from the "Use segment" button.
+   * Renders an admin action extension in the customer segment details page. Open this extension from the "Use segment" button.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -142,7 +142,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the product index page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the product index page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -152,7 +152,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the order index page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the order index page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -162,7 +162,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the customer index page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the customer index page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -172,7 +172,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the discount index page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the discount index page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -182,7 +182,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the collection details page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the collection details page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -192,7 +192,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the collection index page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the collection index page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -202,7 +202,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the abandonded checkout page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the abandonded checkout page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -212,7 +212,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the product variant details page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the product variant details page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -222,7 +222,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the draft order details page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the draft order details page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -232,7 +232,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the draft orders page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the draft orders page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -242,7 +242,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the discount details page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the discount details page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -252,7 +252,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the order fulfilled card. Open this extension from the "3-dot" menu inside the order fulfilled card.
+   * Renders an admin action extension in the order fulfilled card. Open this extension from the "3-dot" menu inside the order fulfilled card.
    * Note: This extension will only be visible on orders which were fulfilled by your app.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
@@ -265,7 +265,7 @@ export interface ExtensionTargets {
   // Bulk Actions
 
   /**
-   * Renders an admin action in the product index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
+   * Renders an admin action extension in the product index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -275,7 +275,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the order index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
+   * Renders an admin action extension in the order index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -285,7 +285,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the customer index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
+   * Renders an admin action extension in the customer index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -295,7 +295,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action in the draft order page when multiple resources are selected. Open this extension from the "3-dot" menu.
+   * Renders an admin action extension in the draft order page when multiple resources are selected. Open this extension from the "3-dot" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
