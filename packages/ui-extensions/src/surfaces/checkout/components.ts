@@ -1,7 +1,3 @@
-/* eslint-disable @shopify/checkout-web/no-barrel-files */
-// We generate a type based off the shape of the exports of this module.
-// Curating that would be annoying, so let's leave this as-is for now.
-
 export {Badge} from './components/Badge/Badge';
 export type {BadgeProps} from './components/Badge/Badge';
 
