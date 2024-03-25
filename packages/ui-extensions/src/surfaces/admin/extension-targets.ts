@@ -216,8 +216,8 @@ export interface ExtensionTargets {
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
-  'admin.variant-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.variant-details.action.render'>,
+  'admin.product-variant-details.action.render': RenderExtension<
+    ActionExtensionApi<'admin.product-variant-details.action.render'>,
     AllComponents
   >;
 
