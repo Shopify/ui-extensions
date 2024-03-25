@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 import type {Size, VisibilityProps} from '../shared';
-import {IconSource} from '../Icon/Icon';
+import type {IconSource} from '../Icon/Icon';
 
 type Tone = 'default' | 'critical' | 'subdued';
 

@@ -7,14 +7,11 @@ import {useCustomer, useEmail, usePhone} from '../buyer-identity';
 import {mount} from './mount';
 
 function createMockCustomer(customer = {}) {
-  const firstName = faker.name.firstName();
-  const lastName = faker.name.lastName();
+  const firstName = faker.person.firstName();
+  const lastName = faker.person.lastName();
 
   return {
-    id: `gid://shopify/Customer/${faker.datatype.number({
-      min: 1,
-      precision: 1,
-    })}`,
+    id: `gid://shopify/Customer/${faker.number.int({min: 1})}`,
     fullName: `${firstName} ${lastName}`,
     firstName,
     lastName,

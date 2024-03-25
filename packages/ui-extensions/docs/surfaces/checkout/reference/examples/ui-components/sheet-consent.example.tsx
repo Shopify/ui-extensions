@@ -12,21 +12,54 @@ import {
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
-  'purchase.checkout.block.render',
+  'purchase.checkout.footer.render-after',
   () => <Extension />,
 );
 
 function Extension() {
-  const {customerPrivacy} = useApi();
+  const {
+    applyTrackingConsentChange,
+    customerPrivacy,
+    ui,
+  } = useApi();
 
   const {shouldShowBanner} = useSubscription(
     customerPrivacy,
   );
 
+  const sheetId = 'sheet-consent';
+
+  const handleConsentChange = async ({
+    analytics,
+    marketing,
+    preferences,
+    saleOfData,
+  }) => {
+    try {
+      const result =
+        await applyTrackingConsentChange({
+          type: 'changeVisitorConsent',
+          analytics,
+          marketing,
+          preferences,
+          saleOfData,
+        });
+
+      // Check if operation was successful
+      if (result) {
+        ui.overlay.close(sheetId);
+      } else {
+        // Handle failure case here
+      }
+    } catch (error) {
+      // Handle error case here
+    }
+  };
+
   return (
     <Sheet
-      id="sheet-consent"
-      title="We value your privacy"
+      id={sheetId}
+      heading="We value your privacy"
       accessibilityLabel="A sheet that collects privacy consent preferences"
       defaultOpen={shouldShowBanner}
     >
@@ -59,17 +92,24 @@ function Extension() {
             <Button
               kind="secondary"
               onPress={() =>
-                console.log(
-                  'Decline all and save',
-                )
+                handleConsentChange({
+                  analytics: false,
+                  marketing: false,
+                  preferences: false,
+                  saleOfData: false,
+                })
               }
             >
               Decline
             </Button>
             <Button
-              kind="secondary"
               onPress={() =>
-                console.log('Accept all and save')
+                handleConsentChange({
+                  analytics: true,
+                  marketing: true,
+                  preferences: true,
+                  saleOfData: true,
+                })
               }
             >
               Accept

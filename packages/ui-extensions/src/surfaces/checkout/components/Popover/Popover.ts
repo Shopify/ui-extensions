@@ -37,8 +37,7 @@ export interface PopoverProps
  * The difference is that the popover can contain more content, without cluttering the page.
  * They must be specified inside the `overlay` prop of an activator component (`Button`, `Link` or `Pressable`).
  *
- * The library takes care of applying the WAI-ARIA Popover Widget pattern automatically for the activator
- * and the popover content.
+ * The library automatically applies the WAI-ARIA Popover Widget pattern to both the activator and the popover content.
  */
 export const Popover = createRemoteComponent<'Popover', PopoverProps>(
   'Popover',

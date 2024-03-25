@@ -38,8 +38,7 @@ export interface DisclosureProps {
  * The content blocks can be specified as children inside a structure component (`View`, `InlineLayout`,
  * `BlockStack`, `Grid`, etc.).
  *
- * The library takes care of applying the WAI-ARIA Accordion pattern automatically for the activator
- * and the toggled content.
+ * The library automatically applies the [WAI-ARIA Accordion pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) to both the activator and the toggled content.
  */
 export const Disclosure = createRemoteComponent<'Disclosure', DisclosureProps>(
   'Disclosure',
