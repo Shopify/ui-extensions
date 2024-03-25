@@ -253,7 +253,7 @@ export interface ExtensionTargets {
 
   /**
    * Renders an admin action in the order fulfilled card. Open this extension from the "3-dot" menu inside the order fulfilled card.
-   * Note: This extension will only be visible in orders which were fulfilled by the same app as the extension.
+   * Note: This extension will only be visible on orders which were fulfilled by your app.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
