@@ -1546,10 +1546,10 @@
     minimatch "^3.1.2"
     strip-json-comments "^3.1.1"
 
-"@faker-js/faker@^7.6.0":
-  version "7.6.0"
-  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-7.6.0.tgz#9ea331766084288634a9247fcd8b84f16ff4ba07"
-  integrity sha512-XK6BTq1NDMo9Xqw/YkYyGjSsg44fbNwYRx7QK2CuoQgyy+f1rrTDHoExVM5PsyXCtfl2vs2vVJ0MN0yN6LppRw==
+"@faker-js/faker@^8.4.1":
+  version "8.4.1"
+  resolved "https://registry.yarnpkg.com/@faker-js/faker/-/faker-8.4.1.tgz#5d5e8aee8fce48f5e189bf730ebd1f758f491451"
+  integrity sha512-XQ3cU+Q8Uqmrbf2e0cIC/QN43sTBSC8KF12u29Mb47tWrt2hAgBXSgpZMj4Ao8Uk0iJcU99QsOCaIL8934obCg==
 
 "@humanwhocodes/config-array@^0.11.6":
   version "0.11.7"
@@ -1928,12 +1928,20 @@
   dependencies:
     "@remote-ui/rpc" "^1.4.3"
 
-"@remote-ui/core@^2.2.2", "@remote-ui/core@^2.2.3":
+"@remote-ui/core@^2.2.2":
   version "2.2.3"
   resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.2.3.tgz#5d53666d8bce9874d4976c21e88dd202e6080cd0"
   integrity sha512-LWwAlDJw9c+b61dViU6v8ivU0AalgGikvqidVoBLt+CLjTAXMwIkzIeYdjyRyp7JgGxnTYxnmVHUdJdxX144jg==
   dependencies:
     "@remote-ui/rpc" "^1.4.3"
+    "@remote-ui/types" "^1.1.3"
+
+"@remote-ui/core@^2.2.4":
+  version "2.2.4"
+  resolved "https://registry.yarnpkg.com/@remote-ui/core/-/core-2.2.4.tgz#56b174b6f041c57d5950811e6f93cfcffb0fbc1a"
+  integrity sha512-7ahrsI5GqYvAGcWTcysbKFKbzbhB/mDgIJr9VurF34gor2IqRCrmrPYemLQuOCQhWqPb3AOEUxWFYNLiB5i6kA==
+  dependencies:
+    "@remote-ui/rpc" "^1.4.5"
     "@remote-ui/types" "^1.1.3"
 
 "@remote-ui/react@^5.0.2":
@@ -1956,6 +1964,11 @@
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.4.3.tgz#6dde33831c3d98e43e170f3e3c82a43f35475d09"
   integrity sha512-+XyELrHLIJVQEuidHoqZ32+drbphY/x697vykHCinTPhhuUiZpag1DnKSxoE4UlnwBzz336UtFHZIiDGtOL2Kg==
+
+"@remote-ui/rpc@^1.4.5":
+  version "1.4.5"
+  resolved "https://registry.yarnpkg.com/@remote-ui/rpc/-/rpc-1.4.5.tgz#20328970c314374d96fdaae1cf93aca4b47fefee"
+  integrity sha512-Cr+06niG/vmE4A9YsmaKngRuuVSWKMY42NMwtZfy+gctRWGu6Wj9BWuMJg5CEp+JTkRBPToqT5rqnrg1G/Wvow==
 
 "@remote-ui/types@^1.1.3":
   version "1.1.3"
@@ -2377,10 +2390,19 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/react@>=17.0.0 <19.0.0", "@types/react@>=18.0.0":
+"@types/react@>=17.0.0 <19.0.0":
   version "18.2.21"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.21.tgz#774c37fd01b522d0b91aed04811b58e4e0514ed9"
   integrity sha512-neFKG/sBAwGxHgXiIxnbm3/AAVQ/cMRS93hvBpg8xYRbeQSPVABp9U2bRnPf0iI4+Ucdv3plSxKK+3CW2ENJxA==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@>=18.2.67":
+  version "18.2.70"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.2.70.tgz#89a37f9e0a6a4931f4259c598f40fd44dd6abf71"
+  integrity sha512-hjlM2hho2vqklPhopNkXkdkeq6Lv8WSZTpr7956zY+3WS5cfYUewtCzsJLsbW5dEv3lfSeQ4W14ZFeKC437JRQ==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
