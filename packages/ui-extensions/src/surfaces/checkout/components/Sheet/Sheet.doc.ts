@@ -43,7 +43,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent:
-        '- Ensure that the padding provides enough empty space around the content and between UI elements. Sufficient padding helps with readability and visual hierarchy.\n\n- Aim for an optimal line length to ensure readability of the text. Generally a line length of around 50-75 characters is considered ideal.\n\n- Ideally, the sheet should not take up more than 40% of the screen, allowing buyers to easily access and interact with the main content. In addition, when the sheet is expanded, it is recommended that it does not exceed 90% of the screen. This ensures that there is enough visual indication that the content behind the sheet is still accessible.',
+        '- Ensure that the padding provides enough empty space around the content and between UI elements. Sufficient padding helps with readability and visual hierarchy.\n\n- Aim for an optimal line length to ensure readability of the text. Generally a line length of around 50-75 characters is considered ideal.',
       sectionSubContent: [
         {
           title: 'Content',
