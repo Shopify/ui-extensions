@@ -1,12 +1,13 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
-import {getExample, REQUIRES_PROTECTED_CUSTOMER_DATA} from '../../helper.docs';
+import {getExample} from '../../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Sheet',
   description:
-    'Sheet serves as a container that can display various types of content such as forms, tables, or informational messages. It can be specified inside the `overlay` prop of an activator component (`Button`, `Link` or `Pressable`).\n\nThe library takes care of applying the WAI-ARIA Dialog pattern automatically for the activator and the sheet content.',
-  requires: REQUIRES_PROTECTED_CUSTOMER_DATA,
+    'Sheet is designed to be used on top of other elements in a user interface and is typically bound to the bottom of a page. Sheet can contain and display various types of content such as forms, or informational messages.\n\nThe library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the sheet content.',
+  requires:
+    'configuration of the [Customer Privacy](/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) capability to be rendered.',
   thumbnail: 'sheet-thumbnail.png',
   isVisualComponent: true,
   type: '',

@@ -36,7 +36,6 @@ export interface ModalProps {
  * before the main flow can proceed.
  * They must be specified inside the `overlay` prop of an activator component (`Button`, `Link` or `Pressable`).
  *
- * The library takes care of applying the WAI-ARIA Dialog pattern automatically for the activator
- * and the modal content.
+ * The library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the modal content.
  */
 export const Modal = createRemoteComponent<'Modal', ModalProps>('Modal');

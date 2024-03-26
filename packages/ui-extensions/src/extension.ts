@@ -42,3 +42,7 @@ export interface RenderExtensionWithRemoteRoot<
     api: Api,
   ): void | Promise<void>;
 }
+
+export interface RunnableExtension<Api, Output> {
+  (api: Api): Output | Promise<Output>;
+}

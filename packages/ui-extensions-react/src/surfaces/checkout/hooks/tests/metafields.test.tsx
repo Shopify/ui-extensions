@@ -12,9 +12,9 @@ describe('useMetafields', () => {
 
   function createMetafield(props: Partial<Metafield> = {}): Metafield {
     return {
-      key: `key-${faker.datatype.uuid()}`,
-      namespace: `namespace-${faker.random.word}`,
-      value: `value-${faker.random.word}`,
+      key: `key-${faker.string.uuid()}`,
+      namespace: `namespace-${faker.word.sample()}`,
+      value: `value-${faker.word.sample()}`,
       valueType: 'string',
       ...props,
     };

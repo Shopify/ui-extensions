@@ -22,16 +22,16 @@ export interface SheetProps extends IdProps {
   /**
    * Adjust the padding of all edges.
    *
-   * `base`: applies padding that is appropriate for the element. Note that it may result in no padding if Shopify
+   * `base` and `true`: applies padding that is appropriate for the element. Note that it may result in no padding if Shopify
    * believes this is the right design decision in a particular context.
    *
-   * `none`: removes all padding from the element. This can be useful when elements inside the Sheet need to span
-   * to the edge of the Sheet. For example, a full-width image. In this case, rely on `View` or any other layout
+   * `none` and `false`: removes all padding from the element. This can be useful when elements inside the Sheet need to span
+   * to the edge of the Sheet. For example, a full-width image. In this case, rely on `Box` or any other layout
    * element to bring back the desired padding for the rest of the content.
    *
-   * @default 'base'
+   * @default true
    */
-  padding?: 'base' | 'none';
+  padding?: 'base' | 'none' | boolean;
 
   /** Callback fired when the sheet is opened. */
   onShow?(): void;
@@ -41,10 +41,10 @@ export interface SheetProps extends IdProps {
 }
 
 /**
- * Sheet serves as a container that can display various types of content
- * such as forms, tables, or informational messages. It can be specified inside the `overlay` prop of an activator component (`Button`, `Link` or `Pressable`).
+ * Sheet is designed to be used on top of other elements in a user interface and is typically bound to the bottom of a page.
+ * Sheet can contain and display various types of content such as forms, or informational messages.
+ * Unlike a Modal, which interrupts user flow, a Sheet offers a less intrusive, fluid experience.
  *
- * The library takes care of applying the WAI-ARIA Dialog pattern automatically for the activator
- * and the sheet content.
+ * The library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the sheet content.
  */
 export const Sheet = createRemoteComponent<'Sheet', SheetProps>('Sheet');

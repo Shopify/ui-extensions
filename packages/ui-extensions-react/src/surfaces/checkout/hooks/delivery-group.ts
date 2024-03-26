@@ -10,25 +10,19 @@ import type {
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 
-class DeliveryGroupHookError extends Error {
-  name = 'DeliveryGroupHookError';
-}
-
 /**
  * Returns the full expanded details of a delivery group and automatically re-renders
  * your component when that delivery group changes.
  */
 export function useDeliveryGroup<
   ID extends RenderExtensionTarget = RenderExtensionTarget,
->(deliveryGroup: DeliveryGroup): DeliveryGroupDetails {
+>(deliveryGroup: DeliveryGroup | undefined): DeliveryGroupDetails | undefined {
   const {lines} = useApi<ID>();
   const cartLines = useSubscription(lines);
 
   return useMemo(() => {
     if (!deliveryGroup) {
-      throw new DeliveryGroupHookError(
-        'useDeliveryGroup must be called with a delivery group from the useDeliveryGroups hook',
-      );
+      return undefined;
     }
 
     const deliveryGroupDetails = {

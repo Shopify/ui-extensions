@@ -9,7 +9,7 @@ export interface ResolutionCondition {
   resolution: Resolution;
 }
 
-type ViewportInlineSize = 'small' | 'medium' | 'large';
+type ViewportInlineSize = 'extraSmall' | 'small' | 'medium' | 'large';
 
 export interface ViewportSizeCondition {
   viewportInlineSize: {min: ViewportInlineSize};
@@ -29,7 +29,7 @@ export type BaseConditions = AtLeastOne<
 // This interface is only used to provide documentation for the Style helper.
 // It is not used in the implementation.
 export interface StylesBaseConditions {
-  viewportInlineSize?: {min: 'small' | 'medium' | 'large'};
+  viewportInlineSize?: {min: ViewportInlineSize};
   hover?: true;
   focus?: true;
   resolution?: 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
@@ -38,7 +38,7 @@ export interface StylesBaseConditions {
 // This interface is only used to provide documentation for the Style helper.
 // It is not used in the implementation.
 export interface StylesConditions {
-  viewportInlineSize?: {min: 'small' | 'medium' | 'large'};
+  viewportInlineSize?: {min: ViewportInlineSize};
   hover?: true;
   focus?: true;
 }

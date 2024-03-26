@@ -10,14 +10,22 @@ import {
 } from '@shopify/ui-extensions/checkout';
 
 export default extension(
-  'purchase.checkout.block.render',
-  (root, {customerPrivacy}) => {
+  'purchase.checkout.footer.render-after',
+  (
+    root,
+    {
+      applyTrackingConsentChange,
+      customerPrivacy,
+      ui,
+    },
+  ) => {
     customerPrivacy.subscribe(
       ({shouldShowBanner}) => {
+        const sheetId = 'sheet-consent';
         const sheet = root.createComponent(
           Sheet,
           {
-            id: 'sheet-consent',
+            id: sheetId,
             heading: 'We value your privacy',
             accessibilityLabel:
               'A sheet that collects privacy consent preferences',
@@ -25,6 +33,32 @@ export default extension(
           },
         );
 
+        const handleConsentChange = async ({
+          analytics,
+          marketing,
+          preferences,
+          saleOfData,
+        }) => {
+          try {
+            const result =
+              await applyTrackingConsentChange({
+                type: 'changeVisitorConsent',
+                analytics,
+                marketing,
+                preferences,
+                saleOfData,
+              });
+
+            // Check if operation was successful
+            if (result) {
+              ui.overlay.close(sheetId);
+            } else {
+              // Handle failure case here
+            }
+          } catch (error) {
+            // Handle error case here
+          }
+        };
         const blockStack = root.createComponent(
           BlockStack,
           {},
@@ -74,20 +108,25 @@ export default extension(
                       {
                         kind: 'secondary',
                         onPress: () =>
-                          console.log(
-                            'Decline all and save',
-                          ),
+                          handleConsentChange({
+                            analytics: false,
+                            marketing: false,
+                            preferences: false,
+                            saleOfData: false,
+                          }),
                       },
                       'Decline',
                     ),
                     root.createComponent(
                       Button,
                       {
-                        kind: 'secondary',
                         onPress: () =>
-                          console.log(
-                            'Accept all and save',
-                          ),
+                          handleConsentChange({
+                            analytics: true,
+                            marketing: true,
+                            preferences: true,
+                            saleOfData: true,
+                          }),
                       },
                       'Accept',
                     ),

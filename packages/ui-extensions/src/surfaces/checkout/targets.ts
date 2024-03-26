@@ -10,7 +10,7 @@ import type {RedeemableApi} from './api/redeemable/redeemable';
 import type {StandardApi} from './api/standard/standard';
 import type {ShippingOptionItemApi} from './api/shipping/shipping-option-item';
 import type {ShippingOptionListApi} from './api/shipping/shipping-option-list';
-import type {RenderExtension} from './extension';
+import type {RenderExtension, RunnableExtension} from './extension';
 import type {AnyComponent} from './shared';
 
 /**
@@ -21,7 +21,7 @@ import type {AnyComponent} from './shared';
  * The input arguments and the output type are different
  * for each extension target.
  */
-export interface ExtensionTargets {
+export interface RenderExtensionTargets {
   /**
    * A static extension target that is rendered immediately before any actions within each step.
    */
@@ -715,6 +715,18 @@ export interface ExtensionTargets {
   >;
 }
 
+export interface RunnableExtensionTargets {
+  /**
+   * An extension target used to provide address autocomplete suggestions. It does not support rendering UI components.
+   * @private
+   * @experimental
+   */
+  'purchase.address-autocomplete.suggest': RunnableExtension<any, any>;
+}
+
+export type ExtensionTargets = RenderExtensionTargets &
+  RunnableExtensionTargets;
+
 export type ExtensionTarget = keyof ExtensionTargets;
 
 /**
@@ -733,24 +745,16 @@ export type ArgumentsForExtension<Target extends keyof ExtensionTargets> =
 
 /**
  * A union type containing all of the extension targets that follow the pattern of
- * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-ui/tree/main/packages/core)
+ * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
  */
-export type RenderExtensionTarget = {
-  [Target in keyof ExtensionTargets]: ExtensionTargets[Target] extends RenderExtension<
-    any,
-    any
-  >
-    ? Target
-    : never;
-}[keyof ExtensionTargets];
-
+export type RenderExtensionTarget = keyof RenderExtensionTargets;
 /**
  * A mapping of each “render extension” name to its callback type.
  */
 export type RenderExtensions = {
-  [Target in RenderExtensionTarget]: ExtensionTargets[Target];
+  [Target in RenderExtensionTarget]: RenderExtensionTargets[Target];
 };
 
 type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
@@ -779,6 +783,12 @@ export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
 export type AllowedComponentsForRenderExtension<
   Target extends keyof RenderExtensions,
 > = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[Target]>;
+
+export type RunnableExtensionTarget = keyof RunnableExtensionTargets;
+
+export type RunnableExtensions = {
+  [Target in RunnableExtensionTarget]: RunnableExtensionTargets[Target];
+};
 
 /**
  * The part of the standard API implemented for customer-account targets. Must

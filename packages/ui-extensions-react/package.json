@@ -63,7 +63,7 @@
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.12",
     "@remote-ui/react": "^5.0.2",
-    "@types/react": ">=18.0.0"
+    "@types/react": ">=18.2.67"
   },
   "peerDependencies": {
     "@shopify/ui-extensions": "0.0.0-unstable",
@@ -78,7 +78,7 @@
     }
   },
   "devDependencies": {
-    "@faker-js/faker": "^7.6.0",
+    "@faker-js/faker": "^8.4.1",
     "@quilted/react-testing": "^0.5.31",
     "@shopify/ui-extensions": "0.0.0-unstable",
     "react": "^18.0.0",

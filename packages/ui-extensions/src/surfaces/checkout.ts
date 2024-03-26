@@ -62,6 +62,9 @@ export type {
   TrackingConsentChangeResult,
   VisitorConsent,
   VisitorConsentChange,
+  VisitorError,
+  VisitorSuccess,
+  VisitorResult,
 } from './checkout/api/standard/standard';
 
 export type {

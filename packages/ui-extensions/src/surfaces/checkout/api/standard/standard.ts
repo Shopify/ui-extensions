@@ -76,7 +76,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The API version that was set in the extension config file.
    *
-   * @example '2023-04', '2023-07', '2023-10', '2024-01', 'unstable'
+   * @example '2023-07', '2023-10', '2024-01', '2024-04', 'unstable'
    */
   apiVersion: ApiVersion;
 

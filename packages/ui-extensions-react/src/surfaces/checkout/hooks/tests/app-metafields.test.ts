@@ -12,7 +12,7 @@ describe('useAppMetafields', () => {
 
   function createMetafield(props: Partial<Metafield> = {}): Metafield {
     return {
-      key: `key-${faker.datatype.uuid()}`,
+      key: `key-${faker.string.uuid()}`,
       namespace: 'example-namespace',
       value: 'example-value',
       valueType: 'string',
@@ -21,12 +21,12 @@ describe('useAppMetafields', () => {
   }
 
   const productEntry = {
-    target: {id: faker.datatype.uuid(), type: 'product' as const},
+    target: {id: faker.string.uuid(), type: 'product' as const},
     metafield: createMetafield(),
   };
 
   const variantEntry = {
-    target: {id: faker.datatype.uuid(), type: 'variant' as const},
+    target: {id: faker.string.uuid(), type: 'variant' as const},
     metafield: createMetafield(),
   };
 
@@ -55,7 +55,7 @@ describe('useAppMetafields', () => {
   });
 
   it('returns filtered app metafield entry based on id', () => {
-    const testId = faker.datatype.uuid();
+    const testId = faker.string.uuid();
     const newEntry = {
       target: {id: testId, type: 'product' as const},
       metafield: createMetafield(),
@@ -76,7 +76,7 @@ describe('useAppMetafields', () => {
   it('returns filtered app metafield entries based on namespace', () => {
     const testNamespace = 'test_namespace';
     const newEntry = {
-      target: {id: faker.datatype.uuid(), type: 'product' as const},
+      target: {id: faker.string.uuid(), type: 'product' as const},
       metafield: createMetafield({namespace: testNamespace}),
     };
 
@@ -97,7 +97,7 @@ describe('useAppMetafields', () => {
     const testNamespace = 'test_namespace';
     const testKey = 'test_key';
     const newEntry = {
-      target: {id: faker.datatype.uuid(), type: 'product' as const},
+      target: {id: faker.string.uuid(), type: 'product' as const},
       metafield: createMetafield({namespace: testNamespace, key: testKey}),
     };
 
@@ -132,7 +132,7 @@ describe('useAppMetafields', () => {
   it('returns filtered app metafield entries based on all searchable fields', () => {
     const testNamespace = 'test_namespace';
     const testKey = 'test_key';
-    const testId = faker.datatype.uuid();
+    const testId = faker.string.uuid();
 
     const newEntry = {
       target: {id: testId, type: 'product' as const},

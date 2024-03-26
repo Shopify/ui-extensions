@@ -23,7 +23,7 @@ export interface Autocomplete {
   field: AutocompleteField;
 }
 
-export type AutocompleteGroup = 'shipping' | 'billing' | 'location';
+export type AutocompleteGroup = 'shipping' | 'billing';
 
 export type AutocompleteField =
   | 'name'
@@ -131,7 +131,7 @@ export type AutocompleteField =
   | 'pager email'
   | 'pager instant-message';
 
-export type Breakpoint = 'base' | 'small' | 'medium' | 'large';
+export type Breakpoint = 'base' | 'extraSmall' | 'small' | 'medium' | 'large';
 
 export type Display = 'block' | 'inline';
 
@@ -143,8 +143,8 @@ export type MaybeShorthandProperty<T> = T | ShorthandProperty<T>;
  * Use CornerRadius instead
  */
 export type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
-export type BorderStyle = 'base' | 'dotted' | 'none';
-export type BorderWidth = 'base' | 'medium';
+export type BorderStyle = 'base' | 'dashed' | 'dotted' | 'none';
+export type BorderWidth = 'base' | 'medium' | 'thick';
 
 export type CornerRadius =
   | 'base'
@@ -349,7 +349,7 @@ export interface SpacingProps {
    *
    * - [`base`, `none`] means blockStart and blockEnd paddings are `base`, inlineStart and inlineEnd paddings are `none`
    *
-   * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and  blockStart padding is `tight`
+   * - [`base`, `none`, `loose`, `tight`] means blockStart padding is `base`, inlineEnd padding is `none`, blockEnd padding is `loose` and blockStart padding is `tight`
    */
   padding?: MaybeResponsiveConditionalStyle<MaybeShorthandProperty<Spacing>>;
 }

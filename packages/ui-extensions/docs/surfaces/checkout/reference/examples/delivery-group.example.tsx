@@ -12,10 +12,16 @@ export default reactExtension(
 
 function Extension() {
   const deliveryGroups = useDeliveryGroups();
-  const {
-    selectedDeliveryOption,
-    targetedCartLines,
-  } = useDeliveryGroup(deliveryGroups[0]);
+  const firstDeliveryGroup = useDeliveryGroup(
+    deliveryGroups[0],
+  );
+
+  if (!firstDeliveryGroup) {
+    return null;
+  }
+
+  const selectedDeliveryOption =
+    firstDeliveryGroup?.selectedDeliveryOption;
 
   return (
     <Banner>

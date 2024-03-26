@@ -3,7 +3,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Modal',
   description:
-    'Modals are a special type of overlay that shift focus towards a specific action/set of information before the main flow can proceed. They must be specified inside the `overlay` prop of an activator component (`Button`, `Link` or `Pressable`).\n\nThe library takes care of applying the WAI-ARIA Dialog pattern automatically for the activator and the modal content.',
+    'Modals are a special type of overlay that shift focus towards a specific action/set of information before the main flow can proceed. They must be specified inside the `overlay` prop of an activator component (`Button`, `Link` or `Pressable`).\n\nThe library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the modal content.',
   requires: '',
   thumbnail: 'modal-thumbnail.png',
   isVisualComponent: true,
