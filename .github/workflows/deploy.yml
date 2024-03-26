@@ -6,6 +6,8 @@ on:
       - 2023-04
       - 2023-07
       - 2023-10
+      - 2024-01
+      - 2024-04
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
