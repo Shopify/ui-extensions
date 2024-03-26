@@ -12,7 +12,14 @@ export interface SheetProps extends IdProps {
   /**
    * Indicates whether the sheet should be open by default.
    *
-   * When used in conjunction with the `overlay` prop of an activator component (`Button`, `Link` or `Pressable`), the sheet will only be opened when the activator is pressed.
+   * This property is necessary in some cases, but its usage is generally discouraged due to potential negative impacts on user experience.
+   *
+   * Developers should:
+   * - Only set this property to true when there are vitally important behaviors of the application that depend on the user interacting with the sheet.
+   * - Make every effort to conditionally hide the sheet based on the state of checkout. An explicit example is custom privacy consent, where the sheet should only be displayed when consent is necessary and has not yet been explicitly given by the user.
+   *
+   * This property is useful for when the Sheet needs to be rendered on the page load and not triggered by a user action.
+   * The property should only take effect when the `Sheet` is rendered for the first time.
    */
   defaultOpen?: boolean;
 
