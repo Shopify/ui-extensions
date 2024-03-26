@@ -509,7 +509,6 @@ export type Spacing =
   | 'loose'
   | 'extraLoose';
 
-
 export type Alignment = 'start' | 'center' | 'end';
 export type InlineAlignment = 'start' | 'center' | 'end';
 export type BlockAlignment = Alignment | 'baseline';
