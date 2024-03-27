@@ -8,9 +8,6 @@ describe('useShippingAddress', () => {
   it('returns latest shipping address', async () => {
     const address: MailingAddress = {countryCode: 'CA'};
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       shippingAddress: createMockStatefulRemoteSubscribable(address),
     };
 

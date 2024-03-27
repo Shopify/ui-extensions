@@ -17,13 +17,3 @@ export class ExtensionHasNoMethodError extends Error {
     );
   }
 }
-
-export class ExtensionHasNoFieldError extends Error {
-  name = 'ExtensionHasNoFieldrror';
-
-  constructor(field: string, target: ExtensionTarget) {
-    super(
-      `Cannot access '${field}' on target '${target}'. The corresponding property was not found on the API.`,
-    );
-  }
-}

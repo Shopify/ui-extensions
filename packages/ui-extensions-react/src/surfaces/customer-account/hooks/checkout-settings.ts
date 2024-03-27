@@ -1,24 +1,16 @@
 import type {
   CheckoutSettings,
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Returns the `checkoutSettings` applied to the checkout.
  */
 export function useCheckoutSettings<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): CheckoutSettings {
-  const api = useApi<Target>();
-  const extensionTarget = api.extension.target;
-
-  if (!('checkoutSettings' in api)) {
-    throw new ExtensionHasNoFieldError('checkoutSettings', extensionTarget);
-  }
-
-  return useSubscription(api.checkoutSettings);
+  return useSubscription(useApi<Target>().checkoutSettings);
 }

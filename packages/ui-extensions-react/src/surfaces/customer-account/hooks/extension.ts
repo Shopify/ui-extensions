@@ -3,7 +3,7 @@ import type {Extension} from '@shopify/ui-extensions/customer-account';
 import {useApi} from './api';
 
 /**
- * Returns the metadata of the extension.
+ * Returns the metadata about the extension.
  */
 export function useExtension(): Extension {
   return useApi().extension;

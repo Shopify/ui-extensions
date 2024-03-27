@@ -33,9 +33,6 @@ describe('useAppMetafields', () => {
   it('returns all app metafield entries', () => {
     const appMetaFieldEntries = [productEntry, variantEntry];
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
     };
 
@@ -47,9 +44,6 @@ describe('useAppMetafields', () => {
   it('returns filtered app metafield entries based on type', () => {
     const appMetaFieldEntries = [productEntry, variantEntry];
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
     };
 
@@ -69,9 +63,6 @@ describe('useAppMetafields', () => {
 
     const appMetaFieldEntries = [newEntry, variantEntry];
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
     };
 
@@ -91,9 +82,6 @@ describe('useAppMetafields', () => {
 
     const appMetaFieldEntries = [newEntry, productEntry, variantEntry];
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
     };
 
@@ -115,9 +103,6 @@ describe('useAppMetafields', () => {
 
     const appMetaFieldEntries = [newEntry, productEntry, variantEntry];
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
     };
 
@@ -134,9 +119,6 @@ describe('useAppMetafields', () => {
 
     const appMetaFieldEntries = [productEntry, variantEntry];
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
     };
 
@@ -159,9 +141,6 @@ describe('useAppMetafields', () => {
 
     const appMetaFieldEntries = [newEntry, productEntry, variantEntry];
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       appMetafields: createMockStatefulRemoteSubscribable(appMetaFieldEntries),
     };
 
