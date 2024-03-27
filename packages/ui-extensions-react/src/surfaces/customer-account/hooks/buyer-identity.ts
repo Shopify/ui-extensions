@@ -1,11 +1,10 @@
 import type {
   Customer,
-  OrderStatusBuyerIdentity,
   PurchasingCompany,
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
-import {ExtensionHasNoFieldError, ScopeNotGrantedError} from '../errors';
+import {ScopeNotGrantedError} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -16,9 +15,15 @@ import {useSubscription} from './subscription';
  * The value is `undefined` if the buyer isn't a known customer for this shop or if they haven't logged in yet.
  */
 export function useCustomer<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Customer | undefined {
-  const buyerIdentity = useInternalBuyerIdentity<Target>();
+  const buyerIdentity = useApi<Target>().buyerIdentity;
+
+  if (!buyerIdentity) {
+    throw new ScopeNotGrantedError(
+      'Using buyer identity requires having personal customer data permissions granted to your app.',
+    );
+  }
 
   return useSubscription(buyerIdentity.customer);
 }
@@ -28,9 +33,15 @@ export function useCustomer<
  * The value is `undefined` if the app does not have access to customer data.
  */
 export function useEmail<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): string | undefined {
-  const buyerIdentity = useInternalBuyerIdentity<Target>();
+  const buyerIdentity = useApi<Target>().buyerIdentity;
+
+  if (!buyerIdentity) {
+    throw new ScopeNotGrantedError(
+      'Using buyer identity requires having personal customer data permissions granted to your app.',
+    );
+  }
 
   return useSubscription(buyerIdentity.email);
 }
@@ -40,9 +51,15 @@ export function useEmail<
  * The value is `undefined` if the app does not have access to customer data.
  */
 export function usePhone<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): string | undefined {
-  const buyerIdentity = useInternalBuyerIdentity<Target>();
+  const buyerIdentity = useApi<Target>().buyerIdentity;
+
+  if (!buyerIdentity) {
+    throw new ScopeNotGrantedError(
+      'Using buyer identity requires having personal customer data permissions granted to your app.',
+    );
+  }
 
   return useSubscription(buyerIdentity.phone);
 }
@@ -55,28 +72,15 @@ export function usePhone<
  * The value is `undefined` if a business customer isn't logged in. This function throws an error if the app doesn't have access to customer data.
  */
 export function usePurchasingCompany<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): PurchasingCompany | undefined {
-  const buyerIdentity = useInternalBuyerIdentity<Target>();
+  const buyerIdentity = useApi<Target>().buyerIdentity;
 
-  return useSubscription(buyerIdentity.purchasingCompany);
-}
-
-function useInternalBuyerIdentity<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
->(): OrderStatusBuyerIdentity {
-  const api = useApi<Target>();
-  const extensionTarget = api.extension.target;
-
-  if (!('buyerIdentity' in api)) {
-    throw new ExtensionHasNoFieldError('buyerIdentity', extensionTarget);
-  }
-
-  if (!api.buyerIdentity) {
+  if (!buyerIdentity) {
     throw new ScopeNotGrantedError(
       'Using buyer identity requires having personal customer data permissions granted to your app.',
     );
   }
 
-  return api.buyerIdentity;
+  return useSubscription(buyerIdentity.purchasingCompany);
 }
