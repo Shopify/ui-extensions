@@ -17,7 +17,7 @@ import type {
 
 export interface ImageProps extends BorderProps, CornerProps, IdProps {
   /**
-   * The URL or path to the image. Supports the `resolution` and `viewportInlineSize` conditional styles only.
+   * The URL of the image. Supports the `resolution` and `viewportInlineSize` conditional styles only.
    */
   source: Required<
     MaybeConditionalStyle<

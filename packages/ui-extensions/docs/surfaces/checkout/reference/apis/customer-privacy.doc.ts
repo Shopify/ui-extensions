@@ -17,7 +17,9 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'StandardApi',
-      description: STANDARD_API_PROPERTIES_DESCRIPTION,
+      // replace with STANDARD_API_PROPERTIES_DESCRIPTION after Customer Privacy API has been added to customer accounts
+      description:
+        'The base API object provided to `purchase` extension targets.',
       type: 'Docs_Standard_CustomerPrivacyApi',
     },
   ],

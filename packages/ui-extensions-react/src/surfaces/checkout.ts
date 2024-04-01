@@ -9,6 +9,7 @@ export type {
   AccessibilityRole,
   Alignment,
   AllowedComponentsForRenderExtension,
+  ApiForExtension,
   ApiForRenderExtension,
   Appearance,
   AtLeastOne,
