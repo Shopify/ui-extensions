@@ -140,9 +140,6 @@ export type {
 export {Select} from './components/Select/Select';
 export type {SelectProps, SelectOptionProps} from './components/Select/Select';
 
-export {Sheet} from './components/Sheet/Sheet';
-export type {SheetProps} from './components/Sheet/Sheet';
-
 export {SkeletonImage} from './components/SkeletonImage/SkeletonImage';
 export type {SkeletonImageProps} from './components/SkeletonImage/SkeletonImage';
 
