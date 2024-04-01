@@ -69,12 +69,7 @@ export type {
 
 export type {
   Attribute,
-  CurrencyCode,
-  CountryCode,
-  Timezone,
-  GraphQLError,
   SellingPlan,
-  StorefrontApiVersion,
   ValidationError,
   MailingAddress,
 } from './checkout/api/shared';
@@ -144,6 +139,10 @@ export type {PickupPointListApi} from './checkout/api/pickup/pickup-point-list';
 export type {PickupLocationItemApi} from './checkout/api/pickup/pickup-location-item';
 export type {ShippingOptionItemApi} from './checkout/api/shipping/shipping-option-item';
 export type {ShippingOptionListApi} from './checkout/api/shipping/shipping-option-list';
+export type {
+  AddressAutocompleteSuggestion,
+  AddressAutocompleteSuggestApi,
+} from './checkout/api/address-autocomplete/address-autocomplete';
 
 export type {
   PaymentMethodAttributesResult,
@@ -177,3 +176,4 @@ export type {
 } from './checkout/style/types';
 
 export * from './checkout/globals';
+export * from '../shared';
