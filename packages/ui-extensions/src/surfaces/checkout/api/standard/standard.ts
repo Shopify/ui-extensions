@@ -1,18 +1,20 @@
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 import type {
-  CurrencyCode,
-  CountryCode,
-  Timezone,
-  GraphQLError,
-  StorefrontApiVersion,
   ValidationError,
   SellingPlan,
   Attribute,
   MailingAddress,
 } from '../shared';
 import type {ExtensionTarget} from '../../targets';
-import type {ApiVersion} from '../../../../shared';
+import type {
+  ApiVersion,
+  CurrencyCode,
+  CountryCode,
+  Timezone,
+  GraphQLError,
+  StorefrontApiVersion,
+} from '../../../../shared';
 
 /**
  * A key-value storage object for the extension.
