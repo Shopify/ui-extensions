@@ -208,9 +208,6 @@ export type {
   SelectOptionProps,
 } from './checkout/components/Select/Select';
 
-export {Sheet} from './checkout/components/Sheet/Sheet';
-export type {SheetProps} from './checkout/components/Sheet/Sheet';
-
 export {SkeletonImage} from './checkout/components/SkeletonImage/SkeletonImage';
 export type {SkeletonImageProps} from './checkout/components/SkeletonImage/SkeletonImage';
 
