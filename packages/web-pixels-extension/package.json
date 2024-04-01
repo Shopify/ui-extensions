@@ -19,5 +19,8 @@
       "import": "./index.mjs",
       "require": "./index.js"
     }
+  },
+  "dependencies": {
+    "@shopify/consent-tracking-api": "0.1.67"
   }
 }
