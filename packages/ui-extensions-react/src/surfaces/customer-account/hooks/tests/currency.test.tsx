@@ -10,9 +10,6 @@ describe('useCurrency', () => {
 
     const {value} = mount.hook(() => useCurrency(), {
       extensionApi: {
-        extension: {
-          target: 'customer-account.order-status.block.render' as const,
-        },
         localization: {
           currency: createMockStatefulRemoteSubscribable(currency),
         },

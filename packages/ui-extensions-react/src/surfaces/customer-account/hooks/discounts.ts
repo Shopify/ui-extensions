@@ -1,28 +1,22 @@
 import type {
   CartDiscountAllocation,
   CartDiscountCode,
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Returns the current discount codes applied to the cart, and automatically re-renders
  * your component if discount codes are added or removed.
  */
 export function useDiscountCodes<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): CartDiscountCode[] {
-  const api = useApi<Target>();
-  const extensionTarget = api.extension.target;
+  const {discountCodes} = useApi<Target>();
 
-  if (!('discountCodes' in api)) {
-    throw new ExtensionHasNoFieldError('discountCodes', extensionTarget);
-  }
-
-  return useSubscription(api.discountCodes);
+  return useSubscription(discountCodes);
 }
 
 /**
@@ -30,14 +24,9 @@ export function useDiscountCodes<
  * your component if discount allocations changed.
  */
 export function useDiscountAllocations<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): CartDiscountAllocation[] {
-  const api = useApi<Target>();
-  const extensionTarget = api.extension.target;
+  const {discountAllocations} = useApi<Target>();
 
-  if (!('discountAllocations' in api)) {
-    throw new ExtensionHasNoFieldError('discountAllocations', extensionTarget);
-  }
-
-  return useSubscription(api.discountAllocations);
+  return useSubscription(discountAllocations);
 }

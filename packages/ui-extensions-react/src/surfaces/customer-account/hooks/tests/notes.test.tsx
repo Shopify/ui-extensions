@@ -6,9 +6,6 @@ describe('useNote', () => {
   it('returns the current order note', async () => {
     const note = 'the note';
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       note: createMockStatefulRemoteSubscribable(note),
     };
 
