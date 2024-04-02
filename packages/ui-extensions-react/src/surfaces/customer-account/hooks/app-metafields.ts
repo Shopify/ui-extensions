@@ -1,12 +1,15 @@
 import type {
-  RenderExtensionTarget,
   AppMetafieldEntryTarget,
   Metafield,
   AppMetafieldEntry,
+  RenderOrderStatusExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 import {useMemo} from 'react';
 
-import {CustomerAccountUIExtensionError} from '../errors';
+import {
+  CustomerAccountUIExtensionError,
+  ExtensionHasNoFieldError,
+} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -25,9 +28,16 @@ type AppMetafieldFilterKeys = keyof AppMetafieldFilters;
  * @arg {AppMetafieldFilters} - filter the list of returned metafields
  */
 export function useAppMetafields<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(filters: AppMetafieldFilters = {}): AppMetafieldEntry[] {
-  const appMetafields = useSubscription(useApi<Target>().appMetafields);
+  const api = useApi<Target>();
+  const extensionTarget = api.extension.target;
+
+  if (!('appMetafields' in api)) {
+    throw new ExtensionHasNoFieldError('appMetafields', extensionTarget);
+  }
+
+  const appMetafields = useSubscription(api.appMetafields);
 
   return useMemo(() => {
     if (filters.key && !filters.namespace) {

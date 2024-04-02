@@ -5,8 +5,11 @@ export {
   isConditionalStyleWithDefault,
   Style,
 } from '@shopify/ui-extensions/customer-account';
+export {render, reactExtension} from './customer-account/render';
+
 export type {
   AccessibilityRole,
+  ActionExtensionApi,
   Alignment,
   AllowedComponentsForRenderExtension,
   ApiForRenderExtension,
@@ -42,12 +45,17 @@ export type {
   ExtensionTarget,
   ExtensionTargets,
   Fit,
+  FullExtensionNavigation,
+  FullPageApi,
   GridItemSize,
+  I18n,
   I18nTranslate,
   InlineAlignment,
   MaybeConditionalStyle,
   MaybeResponsiveConditionalStyle,
   InteractiveConditions,
+  Language,
+  Localization,
   MaybeShorthandProperty,
   NonPresentationalAccessibilityRole,
   OverlayActivatorProps,
@@ -67,6 +75,7 @@ export type {
   SpacingProps,
   Status,
   Version,
+  VisibilityProps,
   ViewCoordinate,
   ViewTranslate,
   ViewportSizeCondition,
@@ -76,7 +85,5 @@ export type {
   YearMonth,
 } from '@shopify/ui-extensions/customer-account';
 
-export * from './customer-account/hooks';
-export {render, reactExtension} from './customer-account/render';
-
 export * from './customer-account/components';
+export * from './customer-account/hooks';

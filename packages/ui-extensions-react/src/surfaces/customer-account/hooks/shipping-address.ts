@@ -1,9 +1,9 @@
 import type {
   MailingAddress,
-  RenderExtensionTarget,
+  RenderOrderStatusExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
-import {ScopeNotGrantedError} from '../errors';
+import {ExtensionHasNoFieldError, ScopeNotGrantedError} from '../errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
@@ -12,9 +12,16 @@ import {useSubscription} from './subscription';
  * Returns the proposed `shippingAddress` applied to the checkout.
  */
 export function useShippingAddress<
-  Target extends RenderExtensionTarget = RenderExtensionTarget,
+  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
 >(): MailingAddress | undefined {
-  const shippingAddress = useApi<Target>().shippingAddress;
+  const api = useApi<Target>();
+  const extensionTarget = api.extension.target;
+
+  if (!('shippingAddress' in api)) {
+    throw new ExtensionHasNoFieldError('shippingAddress', extensionTarget);
+  }
+
+  const shippingAddress = api.shippingAddress;
 
   if (!shippingAddress) {
     throw new ScopeNotGrantedError(

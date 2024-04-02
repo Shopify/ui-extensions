@@ -18,6 +18,9 @@ describe('usePurchasingCompany', () => {
     };
 
     const extensionApi = {
+      extension: {
+        target: 'customer-account.order-status.block.render' as const,
+      },
       buyerIdentity: {
         purchasingCompany:
           createMockStatefulRemoteSubscribable(purchasingCompany),

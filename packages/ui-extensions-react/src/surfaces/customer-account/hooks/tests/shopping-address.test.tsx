@@ -8,6 +8,9 @@ describe('useShippingAddress', () => {
     expect(() =>
       mount.hook(() => useShippingAddress(), {
         extensionApi: {
+          extension: {
+            target: 'customer-account.order-status.block.render' as const,
+          },
           shippingAddress: undefined,
         },
       }),
