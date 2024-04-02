@@ -1,9 +1,10 @@
 import {
-  SessionToken,
   RenderExtensionTarget,
+  SessionToken,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
+import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Provides access to session tokens, which can be used to verify token claims on your app's server.
@@ -11,5 +12,12 @@ import {useApi} from './api';
 export function useSessionToken<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): SessionToken {
-  return useApi<Target>().sessionToken;
+  const api = useApi<Target>();
+  const extensionTarget = api.extension.target;
+
+  if (!('sessionToken' in api)) {
+    throw new ExtensionHasNoFieldError('sessionToken', extensionTarget);
+  }
+
+  return api.sessionToken;
 }

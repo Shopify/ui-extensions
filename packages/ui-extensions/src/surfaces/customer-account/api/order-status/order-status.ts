@@ -4,135 +4,13 @@ import type {
   CurrencyCode,
   CountryCode,
   Timezone,
-  GraphQLError,
-  StorefrontApiVersion,
   SellingPlan,
   Attribute,
   MailingAddress,
+  Language,
 } from '../shared';
 import type {ExtensionTarget} from '../../targets';
-import {ApiVersion} from '../../../../shared';
-
-/**
- * A key-value storage object for extension targets.
- *
- * Stored data is only available to this specific app
- * at this specific extension target.
- *
- * The storage backend is implemented with `localStorage` and
- * should persist across the buyer's checkout session.
- * However, data persistence isn't guaranteed.
- */
-export interface Storage {
-  /**
-   * Read and return a stored value by key.
-   *
-   * The stored data is deserialized from JSON and returned as
-   * its original primitive.
-   *
-   * Returns `null` if no stored data exists.
-   */
-  read<T = unknown>(key: string): Promise<T | null>;
-
-  /**
-   * Write stored data for this key.
-   *
-   * The data must be serializable to JSON.
-   */
-  write(key: string, data: any): Promise<void>;
-
-  /**
-   * Delete stored data by key.
-   */
-  delete(key: string): Promise<void>;
-}
-
-/**
- * The capabilities an extension has access to.
- *
- * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
- *
- * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
- *
- * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
- */
-export type Capability = 'api_access' | 'network_access' | 'block_progress';
-
-/**
- * Meta information about an extension target.
- */
-export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
-  /**
-   * The API version that was set in the extension config file.
-   *
-   * @example '2023-04', '2023-07'
-   */
-  apiVersion: ApiVersion;
-
-  /**
-   * The allowed capabilities of the extension, defined
-   * in your [shopify.ui.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
-   *
-   * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
-   *
-   * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
-   *
-   * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
-   */
-  capabilities: StatefulRemoteSubscribable<Capability[]>;
-
-  /**
-   * Information about the editor where the extension is being rendered.
-   *
-   * The value is undefined if the extension is not rendering in an editor.
-   */
-  editor?: Editor;
-
-  /**
-   * Whether your extension is currently rendered to the screen.
-   *
-   * Shopify might render your extension before it's visible in the UI,
-   * typically to pre-render extensions that will appear on a later step of the
-   * checkout.
-   *
-   * Your extension might also continue to run after the buyer has navigated away
-   * from where it was rendered. The extension continues running so that
-   * your extension is immediately available to render if the buyer navigates back.
-   */
-  rendered: StatefulRemoteSubscribable<boolean>;
-
-  /**
-   * The URL to the script that started the extension target.
-   */
-  scriptUrl: string;
-
-  /**
-   * The identifier that specifies where in Shopify’s UI your code is being
-   * injected. This will be one of the targets you have included in your
-   * extension’s configuration file.
-   *
-   * @example 'customer-account.order-status.block.render'
-   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
-   * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
-   */
-  target: Target;
-
-  /**
-   * The published version of the running extension target.
-   *
-   * For unpublished extensions, the value is `undefined`.
-   *
-   * @example 3.0.10
-   */
-  version?: string;
-}
-
-export interface Editor {
-  /**
-   * Indicates whether the extension is rendering in the checkout editor.
-   */
-  type: 'checkout';
-}
+import {Extension} from '../shared';
 
 /**
  * Metadata associated with the checkout.
@@ -234,88 +112,7 @@ export interface AppMetafieldEntry {
   metafield: AppMetafield;
 }
 
-export type {ApiVersion} from '../../../../shared';
-
 export type Version = string;
-
-/**
- * This returns a translated string matching a key in a locale file.
- *
- * @example translate("banner.title")
- */
-export type I18nTranslate<ReplacementType = string> = (
-  key: string,
-  options?: {[placeholderKey: string]: ReplacementType | string | number},
-) => ReplacementType extends string | number
-  ? string
-  : (string | ReplacementType)[];
-
-export interface I18n {
-  /**
-   * Returns a localized number.
-   *
-   * This function behaves like the standard `Intl.NumberFormat()`
-   * with a style of `decimal` applied. It uses the buyer's locale by default.
-   *
-   * @param options.inExtensionLocale - if true, use the extension's locale
-   */
-  formatNumber: (
-    number: number | bigint,
-    options?: {inExtensionLocale?: boolean} & Intl.NumberFormatOptions,
-  ) => string;
-
-  /**
-   * Returns a localized currency value.
-   *
-   * This function behaves like the standard `Intl.NumberFormat()`
-   * with a style of `currency` applied. It uses the buyer's locale by default.
-   *
-   * @param options.inExtensionLocale - if true, use the extension's locale
-   */
-  formatCurrency: (
-    number: number | bigint,
-    options?: {inExtensionLocale?: boolean} & Intl.NumberFormatOptions,
-  ) => string;
-
-  /**
-   * Returns a localized date value.
-   *
-   * This function behaves like the standard `Intl.DateTimeFormatOptions()` and uses
-   * the buyer's locale by default. Formatting options can be passed in as
-   * options.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat0
-   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options
-   *
-   * @param options.inExtensionLocale - if true, use the extension's locale
-   */
-  formatDate: (
-    date: Date,
-    options?: {inExtensionLocale?: boolean} & Intl.DateTimeFormatOptions,
-  ) => string;
-
-  /**
-   * Returns translated content in the buyer's locale,
-   * as supported by the extension.
-   *
-   * - `options.count` is a special numeric value used in pluralization.
-   * - The other option keys and values are treated as replacements for interpolation.
-   * - If the replacements are all primitives, then `translate()` returns a single string.
-   * - If replacements contain UI components, then `translate()` returns an array of elements.
-   */
-  translate: I18nTranslate;
-}
-
-export interface Language {
-  /**
-   * The BCP-47 language tag. It may contain a dash followed by an ISO 3166-1 alpha-2 region code.
-   *
-   * @example 'en' for English, or 'en-US' for English local to United States.
-   * @see https://en.wikipedia.org/wiki/IETF_language_tag
-   * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-   */
-  isoCode: string;
-}
 
 export interface Currency {
   /**
@@ -345,7 +142,7 @@ export interface Market {
   handle: string;
 }
 
-export interface Localization {
+export interface OrderStatusLocalization {
   /**
    * The currency that the buyer sees for money amounts in the checkout.
    */
@@ -423,20 +220,12 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  buyerIdentity?: BuyerIdentity;
+  buyerIdentity?: OrderStatusBuyerIdentity;
 
   /**
    * Settings applied to the buyer's checkout.
    */
   checkoutSettings: StatefulRemoteSubscribable<CheckoutSettings>;
-
-  /**
-   * id that represents the checkout used to create the order.
-   *
-   * Matches the `token` field in the [WebPixel checkout payload](https://shopify.dev/docs/api/pixels/customer-events#checkout)
-   * and the `checkout_token` field in the [Admin REST API Order resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
-   */
-  checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
 
   /**
    * Details on the costs of the purchase for the buyer.
@@ -472,16 +261,6 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   extensionPoint: Target;
 
   /**
-   * Utilities for translating content and formatting values according to the current
-   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-localization)
-   * of the order.
-   *
-   * See [localization examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-localization)
-   * for more information.
-   */
-  i18n: I18n;
-
-  /**
    * A list of lines containing information about the items the customer intends to purchase.
    */
   lines: StatefulRemoteSubscribable<CartLine[]>;
@@ -492,16 +271,18 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-i18n)
    * object instead.
    */
-  localization: Localization;
+  localization: OrderStatusLocalization;
 
   /**
    * The metafields that apply to the current order. The actual resource
    * on which these metafields exist depends on the source of the order:
    *
    * - If the source is an order, then the metafields are on the order.
+   *
    * - If the source is a draft order, then the initial value of metafields are
    *   from the draft order, and any new metafields you write are applied
    *   to the order created by the checkout.
+   *
    * - For all other sources, the metafields are only stored locally on the
    *   client creating the checkout, and are applied to the order that
    *   results from checkout.
@@ -525,27 +306,18 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   order: StatefulRemoteSubscribable<Order | undefined>;
 
   /**
-   * Used to query the Storefront GraphQL API with a prefetched token.
+   * id that represents the checkout used to create the order.
    *
-   * See [storefront api access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-storefront-api-access) for more information.
+   * Matches the `token` field in the [WebPixel checkout payload](https://shopify.dev/docs/api/pixels/customer-events#checkout)
+   * and the `checkout_token` field in the [Admin REST API Order resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
    */
-  query: <Data = unknown, Variables = {[key: string]: unknown}>(
-    query: string,
-    options?: {variables?: Variables; version?: StorefrontApiVersion},
-  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
-
-  /**
-   * Provides access to session tokens, which can be used to verify token claims on your app's server.
-   *
-   * See [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-session-token) for more information.
-   */
-  sessionToken: SessionToken;
+  checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
 
   /**
    * The settings matching the settings definition written in the
-   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
+   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration) file.
    *
-   *  See [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#example-settings) for more information.
+   *  See [settings examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/standardapi#example-settings) for more information.
    *
    * > Note: When an extension is being installed in the editor, the settings will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
@@ -570,47 +342,26 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   shop: Shop;
 
   /**
-   * Key-value storage for the extension target.
-   */
-  storage: Storage;
-
-  /**
-   * Methods to interact with the extension's UI.
-   */
-  ui: Ui;
-
-  /**
    * The renderer version being used for the extension.
    *
    * @example 'unstable'
    */
   version: Version;
-}
 
-export interface Ui {
-  overlay: {
-    close(overlayId: string): void;
-  };
-}
-
-export interface SessionToken {
   /**
-   * Requests a session token that hasn't expired. You should call this method every
-   * time you need to make a request to your backend in order to get a valid token.
-   * This method will return cached tokens when possible, so you don’t need to worry
-   * about storing these tokens yourself.
+   * The requireLogin() method triggers login if the customer is viewing pre-authenticated Order status page.
    */
-  get(): Promise<string>;
+  requireLogin: () => Promise<void>;
 }
 
-export interface BuyerIdentity {
+export interface OrderStatusBuyerIdentity {
   /**
    * The buyer's customer account. The value is undefined if the buyer isn’t a
    * known customer for this shop or if they haven't logged in yet.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  customer: StatefulRemoteSubscribable<Customer | undefined>;
+  customer: StatefulRemoteSubscribable<OrderStatusCustomer | undefined>;
 
   /**
    * The email address of the buyer that is interacting with the cart.
@@ -635,28 +386,30 @@ export interface BuyerIdentity {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  purchasingCompany: StatefulRemoteSubscribable<PurchasingCompany | undefined>;
+  purchasingCompany: StatefulRemoteSubscribable<
+    OrderStatusPurchasingCompany | undefined
+  >;
 }
 
 /**
  * Information about a company that the business customer is purchasing on behalf of.
  */
-export interface PurchasingCompany {
+export interface OrderStatusPurchasingCompany {
   /**
    * Includes information of the company that the business customer is purchasing on behalf of.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  company: Company;
+  company: OrderStatusCompany;
   /**
    * Includes information of the company location that the business customer is purchasing on behalf of.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  location: CompanyLocation;
+  location: OrderStatusCompanyLocation;
 }
 
-export interface Company {
+export interface OrderStatusCompany {
   /**
    * The company ID.
    *
@@ -677,7 +430,7 @@ export interface Company {
   externalId?: string;
 }
 
-export interface CompanyLocation {
+export interface OrderStatusCompanyLocation {
   /**
    * The company location ID.
    *
@@ -1073,7 +826,7 @@ export interface CartCustomDiscountAllocation
  *
  * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
  */
-export interface Customer {
+export interface OrderStatusCustomer {
   /**
    * Customer ID.
    *

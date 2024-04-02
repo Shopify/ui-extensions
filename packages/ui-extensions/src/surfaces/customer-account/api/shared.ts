@@ -346,3 +346,59 @@ export interface MailingAddress {
    */
   phone?: string;
 }
+
+export interface AuthenticatedAccount {
+  /**
+   * Provides the company info of the authenticated business customer.
+   * If the customer is not authenticated or is not a business customer, this value is `undefined`.
+   */
+  purchasingCompany: StatefulRemoteSubscribable<PurchasingCompany | undefined>;
+  /**
+   * Provides the customer information of the authenticated customer.
+   */
+  customer: StatefulRemoteSubscribable<Customer | undefined>;
+}
+
+/**
+ * Information about the authenticated customer.
+ *
+ * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+ */
+export interface Customer {
+  /**
+   * Customer ID.
+   *
+   * @example 'gid://shopify/Customer/123'
+   */
+  id: string;
+}
+
+export interface PurchasingCompany {
+  /**
+   * Include information of the company of the logged in business customer.
+   */
+  company: Company;
+}
+
+export interface Company {
+  /**
+   * Company ID.
+   */
+  id: string;
+}
+
+export interface Ui {
+  overlay: {
+    close(overlayId: string): void;
+  };
+}
+
+export interface SessionToken {
+  /**
+   * Requests a session token that hasn't expired. You should call this method every
+   * time you need to make a request to your backend in order to get a valid token.
+   * This method will return cached tokens when possible, so you don’t need to worry
+   * about storing these tokens yourself.
+   */
+  get(): Promise<string>;
+}
