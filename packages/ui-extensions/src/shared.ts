@@ -1,5 +1,7 @@
 import type {RemoteComponentType} from '@remote-ui/core';
 
+export type {Capability} from './surfaces/checkout/api/standard/standard';
+
 export type ComponentsBuilder<ComponentTypes> = {
   [K in keyof ComponentTypes]: ComponentTypes[K] extends RemoteComponentType<
     any,

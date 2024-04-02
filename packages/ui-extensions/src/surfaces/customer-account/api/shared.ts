@@ -3,6 +3,7 @@ import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 import type {
   ApiVersion,
+  Capability,
   CurrencyCode,
   Timezone,
   CountryCode,
@@ -12,6 +13,7 @@ import type {
 
 export {
   ApiVersion,
+  Capability,
   CurrencyCode,
   Timezone,
   CountryCode,
@@ -138,17 +140,6 @@ export interface I18n {
 }
 
 /**
- * The capabilities an extension has access to.
- *
- * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
- *
- * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
- *
- * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
- */
-export type Capability = 'api_access' | 'network_access' | 'block_progress';
-
-/**
  * Meta information about an extension target.
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
@@ -160,14 +151,17 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   apiVersion: ApiVersion;
 
   /**
-   * The allowed capabilities of the extension, defined
-   * in your [shopify.ui.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
+   * The capabilities an extension has access to.
    *
    * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
    *
    * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
    *
    * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
+   *
+   * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
+   *
+   * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 
