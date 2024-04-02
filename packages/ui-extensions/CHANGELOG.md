@@ -1,5 +1,49 @@
 # @shopify/ui-extensions
 
+## 0.0.0
+
+### Minor Changes
+
+- [#1693](https://github.com/Shopify/ui-extensions/pull/1693) [`5d2905b1`](https://github.com/Shopify/ui-extensions/commit/5d2905b15f6dda6e311022fd1d93c7865db0d157) Thanks [@elskhn](https://github.com/elskhn)! - Adds new `purchase.checkout.pickup-location-option-item.render-after` extension target, rendered inside each local pickup option item.
+
+- [#1781](https://github.com/Shopify/ui-extensions/pull/1781) [`0772c011`](https://github.com/Shopify/ui-extensions/commit/0772c011f27ace1c51242ed1b116511076c00bff) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Adds `buyerJourney.steps`, `buyerJourney.activeStep`, and their associated react hooks to the checkout surface API.
+
+- [#1673](https://github.com/Shopify/ui-extensions/pull/1673) [`21cb3205`](https://github.com/Shopify/ui-extensions/commit/21cb32055f97060a75a1f28af8721208d09544ca) Thanks [@brianshen1990](https://github.com/brianshen1990)! - add requireLogin for CA order status api
+
+- [#1832](https://github.com/Shopify/ui-extensions/pull/1832) [`43390b05`](https://github.com/Shopify/ui-extensions/commit/43390b05cd0685dd62c226ab5f1c2f9294974bf7) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Adds `region` to Customer Privacy API.
+
+- [#1682](https://github.com/Shopify/ui-extensions/pull/1682) [`02ca0b9a`](https://github.com/Shopify/ui-extensions/commit/02ca0b9a56206d14ec742c062ca6b66c46f67c30) Thanks [@thitemple](https://github.com/thitemple)! - Adds the `OrderConfirmationApi` to `purchase.thank-you` and `customer-account.order-status` extension targets.
+
+- [#1837](https://github.com/Shopify/ui-extensions/pull/1837) [`947b4433`](https://github.com/Shopify/ui-extensions/commit/947b4433a494c05a197aab6460ecff405df27163) Thanks [@JoshuaWhite1](https://github.com/JoshuaWhite1)! - add new targets for action extensions
+
+- [#1689](https://github.com/Shopify/ui-extensions/pull/1689) [`dd256672`](https://github.com/Shopify/ui-extensions/commit/dd256672a055363064029b417c1659c38efbd907) Thanks [@klenotiw](https://github.com/klenotiw)! - Adds the new `customerPrivacy` and `applyTrackingConsentChange` APIs.
+
+### Patch Changes
+
+- [#1695](https://github.com/Shopify/ui-extensions/pull/1695) [`c6c4a60d`](https://github.com/Shopify/ui-extensions/commit/c6c4a60deff13f066689827a8523a5a03e260d76) Thanks [@cpeddecord](https://github.com/cpeddecord)! - exporting FunctionSettingsError
+
+- [#1838](https://github.com/Shopify/ui-extensions/pull/1838) [`57ab9d90`](https://github.com/Shopify/ui-extensions/commit/57ab9d9097f0ec725a4e543fb927d9f326f5aca4) Thanks [@aledalgrande](https://github.com/aledalgrande)! - Update the `ValidationData` type to include `metafields`.
+
+- [#1684](https://github.com/Shopify/ui-extensions/pull/1684) [`48a5f605`](https://github.com/Shopify/ui-extensions/commit/48a5f605163deec6d1d01f1fcecd32eee4259493) Thanks [@cpeddecord](https://github.com/cpeddecord)! - New `Section` component available to admin UI extensions.
+
+- [#1648](https://github.com/Shopify/ui-extensions/pull/1648) [`8476dfee`](https://github.com/Shopify/ui-extensions/commit/8476dfeeb6142a3c01f8af3c869bf4d1cd430d0f) Thanks [@NathanJolly](https://github.com/NathanJolly)! - Updates to the point-of-sale directories to catch them up to main branch
+
+- [#1840](https://github.com/Shopify/ui-extensions/pull/1840) [`e5b82886`](https://github.com/Shopify/ui-extensions/commit/e5b828867ba9f0aa41e74e9439ec47517d463dc7) Thanks [@aledalgrande](https://github.com/aledalgrande)! - Redefine types for validations in a way that works for doc generation
+
+- [#1663](https://github.com/Shopify/ui-extensions/pull/1663) [`7d2fdcb5`](https://github.com/Shopify/ui-extensions/commit/7d2fdcb5550e235ed001f7111a8d8d2d28088789) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Adds 2024-01 as a valid `ApiVersion` type value.
+
+- [#1658](https://github.com/Shopify/ui-extensions/pull/1658) [`58026776`](https://github.com/Shopify/ui-extensions/commit/58026776a7e86f5fb2b1fd086ceec903d7577615) Thanks [@brianshen1990](https://github.com/brianshen1990)! - Drop runExtension support for customer account ui extension
+
+- [#1824](https://github.com/Shopify/ui-extensions/pull/1824) [`6211f9a5`](https://github.com/Shopify/ui-extensions/commit/6211f9a5fa0cc6e806d69e507d5e4a99c72de5f4) Thanks [@aledalgrande](https://github.com/aledalgrande)! - Updates the `shopifyFunction` type to use `id` rather than `uuid` for Checkout rules.
+
+- [#1685](https://github.com/Shopify/ui-extensions/pull/1685) [`a1b884ed`](https://github.com/Shopify/ui-extensions/commit/a1b884ed64c39954a6cd9d6db0dbf42b93395628) Thanks [@brianshen1990](https://github.com/brianshen1990)! - expose authenticated account related hooks
+
+- [#1654](https://github.com/Shopify/ui-extensions/pull/1654) [`e096e9a2`](https://github.com/Shopify/ui-extensions/commit/e096e9a248dd95c5c0aad44d514b87ba2dab7661) Thanks [@oliverigor](https://github.com/oliverigor)! - Add docs fixes for the conditional style Style type
+
+- [#1679](https://github.com/Shopify/ui-extensions/pull/1679) [`45687187`](https://github.com/Shopify/ui-extensions/commit/4568718724d88b7a6ca48d7481a8086f32b8dda4) Thanks [@cpeddecord](https://github.com/cpeddecord)! - Adds a top-level <FunctionSettings /> component to admin surface
+
+- [#1681](https://github.com/Shopify/ui-extensions/pull/1681) [`9d21ef30`](https://github.com/Shopify/ui-extensions/commit/9d21ef3052269f7fa568329960ebc1cd35422aea) Thanks [@cpeddecord](https://github.com/cpeddecord)! - adds definitions for validation settings admin extension target
+
 ## 2024.1.0
 
 ### Major Changes
