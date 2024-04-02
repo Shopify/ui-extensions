@@ -110,14 +110,6 @@ export function getExamples(
         tabs: getExtensionCodeTabs('ui-components/choicelist-time-picking'),
       },
     },
-    'ui-components/sheet-consent': {
-      description:
-        'The Sheet component can be used to display privacy consent preferences in the Checkout interface. Sheet can be defaulted to open for this use case.\n\n This component requires access to [Customer Privacy API](/docs/api/checkout-ui-extensions/unstable/apis/customer-privacy) to be rendered.',
-      codeblock: {
-        title: 'Using Sheet to display consent preferences',
-        tabs: getExtensionCodeTabs('ui-components/sheet-consent'),
-      },
-    },
   };
 }
 

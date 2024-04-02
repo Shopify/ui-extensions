@@ -87,8 +87,6 @@ export {
   Select,
   type SelectProps,
   type SelectOptionProps,
-  Sheet,
-  type SheetProps,
   SkeletonImage,
   type SkeletonImageProps,
   SkeletonText,
