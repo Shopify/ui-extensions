@@ -27,7 +27,7 @@ if echo "$PWD" | grep -q '\checkout-web'; then
   eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
   build_exit=$?
 else
-  # Other surfaces mave have duplicate types that cause issues with documentation generation,
+  # Other surfaces may have duplicate types that cause issues with documentation generation,
   # so we erase their contents and replace them afterwards
   echo "export {}" > src/surfaces/customer-account.ts
   echo "export {}" > src/surfaces/admin.ts

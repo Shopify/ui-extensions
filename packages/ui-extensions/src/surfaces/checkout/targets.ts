@@ -1,3 +1,8 @@
+import type {
+  AddressAutocompleteSuggestion,
+  AddressAutocompleteSuggestApi,
+} from '../checkout';
+
 import type {CartLineItemApi} from './api/cart-line/cart-line-item';
 import type {CheckoutApi} from './api/checkout/checkout';
 import type {OrderConfirmationApi} from './api/order-confirmation/order-confirmation';
@@ -721,13 +726,20 @@ export interface RunnableExtensionTargets {
    * @private
    * @experimental
    */
-  'purchase.address-autocomplete.suggest': RunnableExtension<any, any>;
+  'purchase.address-autocomplete.suggest': RunnableExtension<
+    AddressAutocompleteSuggestApi,
+    AddressAutocompleteSuggestion[]
+  >;
 }
 
 export type ExtensionTargets = RenderExtensionTargets &
   RunnableExtensionTargets;
 
 export type ExtensionTarget = keyof ExtensionTargets;
+
+export type AvailableExtensionDefinitions<Api> =
+  | RenderExtension<Api, any>
+  | RunnableExtension<Api, any>;
 
 /**
  * For a given extension target, returns the value that is expected to be
@@ -744,12 +756,29 @@ export type ArgumentsForExtension<Target extends keyof ExtensionTargets> =
   Parameters<ExtensionTargets[Target]>;
 
 /**
+ * For a given extension target, returns the type of the API that the
+ * extension will receive at runtime.
+ *
+ * For RenderExtensionTargets, this API type is the second argument to
+ * the callback for that extension target.
+ *
+ * For RunnableExtensionTargets, this API type if the only argument to
+ * the callback for that extension target.
+ */
+export type ApiForExtension<Target extends ExtensionTarget> =
+  ExtractedApiFromExtensionDefinition<ExtensionTargets[Target]>;
+
+type ExtractedApiFromExtensionDefinition<T> =
+  T extends AvailableExtensionDefinitions<infer Api> ? Api : never;
+
+/**
  * A union type containing all of the extension targets that follow the pattern of
  * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
  */
 export type RenderExtensionTarget = keyof RenderExtensionTargets;
+
 /**
  * A mapping of each “render extension” name to its callback type.
  */
@@ -757,6 +786,12 @@ export type RenderExtensions = {
   [Target in RenderExtensionTarget]: RenderExtensionTargets[Target];
 };
 
+type ExtractedAllowedComponentsFromRenderExtension<T> =
+  T extends RenderExtension<any, infer Components> ? Components : never;
+
+/**
+ * @deprecated Use `ExtractedApiFromExtensionDefinition` instead.
+ */
 type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
   infer Api,
   any
@@ -764,14 +799,15 @@ type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
   ? Api
   : never;
 
-type ExtractedAllowedComponentsFromRenderExtension<T> =
-  T extends RenderExtension<any, infer Components> ? Components : never;
-
 /**
+ * Deprecated. Use `ApiForExtensionTarget` instead.
+ *
  * For a given rendering extension target, returns the type of the API that the
  * extension will receive at runtime. This API type is the second argument to
  * the callback for that extension target. The first callback for all of the rendering
  * extension targets each receive a `RemoteRoot` object.
+ *
+ * @deprecated  Use `ApiForExtensionTarget` instead.
  */
 export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
   ExtractedApiFromRenderExtension<RenderExtensions[Target]>;

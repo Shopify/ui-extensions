@@ -607,7 +607,7 @@ const CART_LINE_ITEM_API_DEFINITION = {
 const ORDER_CONFIRMATION_API_DEFINITION = {
   title: 'OrderConfirmationApi',
   description:
-    'The API object provided to this and other `purchase.thank-you` and `customer-account.order-status` extension targets.',
+    'The API object provided to this and other `purchase.thank-you` extension targets.',
   type: 'OrderConfirmationApi',
 };
 
