@@ -1,6 +1,6 @@
 # @shopify/ui-extensions-react
 
-## 2024.4.0
+## 2024.4.1
 
 ### Minor Changes
 
@@ -33,7 +33,7 @@
 - [#1678](https://github.com/Shopify/ui-extensions/pull/1678) [`cf51fb00`](https://github.com/Shopify/ui-extensions/commit/cf51fb001d032a488e39cb352e0cc67905e60232) Thanks [@thomas-marcucci](https://github.com/thomas-marcucci)! - Adds support for async render functions for Admin extensions
 
 - Updated dependencies [[`c6c4a60d`](https://github.com/Shopify/ui-extensions/commit/c6c4a60deff13f066689827a8523a5a03e260d76), [`57ab9d90`](https://github.com/Shopify/ui-extensions/commit/57ab9d9097f0ec725a4e543fb927d9f326f5aca4), [`48a5f605`](https://github.com/Shopify/ui-extensions/commit/48a5f605163deec6d1d01f1fcecd32eee4259493), [`8476dfee`](https://github.com/Shopify/ui-extensions/commit/8476dfeeb6142a3c01f8af3c869bf4d1cd430d0f), [`e5b82886`](https://github.com/Shopify/ui-extensions/commit/e5b828867ba9f0aa41e74e9439ec47517d463dc7), [`7d2fdcb5`](https://github.com/Shopify/ui-extensions/commit/7d2fdcb5550e235ed001f7111a8d8d2d28088789), [`58026776`](https://github.com/Shopify/ui-extensions/commit/58026776a7e86f5fb2b1fd086ceec903d7577615), [`5d2905b1`](https://github.com/Shopify/ui-extensions/commit/5d2905b15f6dda6e311022fd1d93c7865db0d157), [`6211f9a5`](https://github.com/Shopify/ui-extensions/commit/6211f9a5fa0cc6e806d69e507d5e4a99c72de5f4), [`0772c011`](https://github.com/Shopify/ui-extensions/commit/0772c011f27ace1c51242ed1b116511076c00bff), [`21cb3205`](https://github.com/Shopify/ui-extensions/commit/21cb32055f97060a75a1f28af8721208d09544ca), [`a1b884ed`](https://github.com/Shopify/ui-extensions/commit/a1b884ed64c39954a6cd9d6db0dbf42b93395628), [`e096e9a2`](https://github.com/Shopify/ui-extensions/commit/e096e9a248dd95c5c0aad44d514b87ba2dab7661), [`43390b05`](https://github.com/Shopify/ui-extensions/commit/43390b05cd0685dd62c226ab5f1c2f9294974bf7), [`45687187`](https://github.com/Shopify/ui-extensions/commit/4568718724d88b7a6ca48d7481a8086f32b8dda4), [`02ca0b9a`](https://github.com/Shopify/ui-extensions/commit/02ca0b9a56206d14ec742c062ca6b66c46f67c30), [`9d21ef30`](https://github.com/Shopify/ui-extensions/commit/9d21ef3052269f7fa568329960ebc1cd35422aea), [`947b4433`](https://github.com/Shopify/ui-extensions/commit/947b4433a494c05a197aab6460ecff405df27163), [`dd256672`](https://github.com/Shopify/ui-extensions/commit/dd256672a055363064029b417c1659c38efbd907)]:
-  - @shopify/ui-extensions@2024.4.0
+  - @shopify/ui-extensions@2024.4.1
 
 ## 2024.1.0
 
