@@ -16,7 +16,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
       title: 'Admin action locations',
       anchorLink: 'action-locations',
       sectionContent:
-        'Admin action extensions appear on resource pages throughout the admin. Build your first admin action extension by following [the tutorial](/docs/apps/admin/admin-actions-and-blocks/build-an-admin-action). ![An example action extension.](/assets/admin/admin-actions-and-block/action-extension-example.gif)',
+        'Admin action extensions appear on resource pages throughout the admin. Learn more about [admin actions](/docs/apps/admin/admin-actions-and-blocks#admin-actions).',
       sectionSubContent: [
         {
           title: 'Product details',
@@ -120,7 +120,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
       title: 'Admin block locations',
       anchorLink: 'block-locations',
       sectionContent:
-        'Admin block extensions appear on resource detail pages throughout the admin. Build your first admin block extension by following [the tutorial](/docs/apps/admin/admin-actions-and-blocks/build-an-admin-block). ![An example block extension.](/assets/admin/admin-actions-and-block/block-extension-example.gif)',
+        'Admin block extensions appear on resource detail pages throughout the admin. Learn more about [admin blocks](/docs/apps/admin/admin-actions-and-blocks#admin-blocks).',
       sectionSubContent: [
         {
           title: 'Product details',
@@ -144,7 +144,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
       title: 'Customer segmentation locations',
       anchorLink: 'customer-segmentation-locations',
       sectionContent:
-        'Customer segmentation extensions appear in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/create-customer-segments).',
+        'Customer segmentation extensions appear in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/create-customer-segments). Learn more about [customer segmentation](/docs/apps/marketing/customer-segments).',
       sectionSubContent: [
         {
           title: 'Customer segment editor',
@@ -158,7 +158,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
       title: 'Product configuration locations',
       anchorLink: 'product-config-locations',
       sectionContent:
-        'Product configuration extensions appear on the product details and product variant details pages, and allow configuration of product bundles.',
+        'Product configuration extensions appear on the product details and product variant details pages, and allow configuration of product bundles. Learn more about [product configuration](/docs/apps/selling-strategies/bundles/product-config).',
       sectionSubContent: [
         {
           title: 'Product details configuration',
@@ -177,7 +177,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
       title: 'Validation settings locations',
       anchorLink: 'validation-settings-locations',
       sectionContent:
-        'Validation settings extensions appear in the checkout rules section of the settings page. They allow merchants to configure validation rules for their checkout.',
+        'Validation settings extensions appear in the checkout rules section of the settings page. They allow merchants to configure validation rules for their checkout. Learn more about [validation settings](/docs/apps/checkout/validation).',
       sectionSubContent: [
         {
           title: 'Checkout rules',
