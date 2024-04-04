@@ -22,7 +22,7 @@ const data: LandingTemplateSchema = {
         {
           name: 'Get started building your first admin extension',
           subtitle: 'Tutorial',
-          url: '#getting-started',
+          url: '/docs/apps/admin/admin-actions-and-blocks/build-an-admin-action',
           type: 'tutorial',
         },
         {
