@@ -96,7 +96,7 @@ interface ImageAltProp {
 
 interface ImageSrcProp {
   /**
-   * The image source (either a remote URL or a local file resource).
+   * The image source (either a remote URL or a local file resource; blob URLs are not currently supported).
    *
    * This property is available as an alias for `source` for compatibility with the HTML
    * specification. When both are specified, `source` takes precedence.
@@ -109,7 +109,7 @@ interface ImageSrcProp {
 
 interface ImageSourceProp {
   /**
-   * The image source (either a remote URL or a local file resource).
+   * The image source (either a remote URL or a local file resource; blob URLs are not currently supported).
    *
    * A `src` property is available as an alias for this for compatibility with the HTML
    * specification. When both are specified, `source` takes precedence.
