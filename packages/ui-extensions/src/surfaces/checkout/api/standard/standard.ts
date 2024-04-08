@@ -9,12 +9,15 @@ import type {
 import type {ExtensionTarget} from '../../targets';
 import type {
   ApiVersion,
+  Capability,
   CurrencyCode,
   CountryCode,
   Timezone,
   GraphQLError,
   StorefrontApiVersion,
 } from '../../../../shared';
+
+export type {ApiVersion, Capability} from '../../../../shared';
 
 /**
  * A key-value storage object for the extension.
@@ -49,27 +52,6 @@ export interface Storage {
    */
   delete(key: string): Promise<void>;
 }
-
-/**
- * The capabilities an extension has access to.
- *
- * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
- *
- * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
- *
- * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
- *
- * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
- *
- * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
- */
-
-export type Capability =
-  | 'api_access'
-  | 'network_access'
-  | 'block_progress'
-  | 'collect_buyer_consent.sms_marketing'
-  | 'collect_buyer_consent.customer_privacy';
 
 /**
  * Meta information about an extension target.
@@ -251,8 +233,6 @@ export interface AppMetafieldEntry {
   /** The metadata information. */
   metafield: AppMetafield;
 }
-
-export type {ApiVersion} from '../../../../shared';
 
 export type Version = string;
 export type CheckoutToken = string;
