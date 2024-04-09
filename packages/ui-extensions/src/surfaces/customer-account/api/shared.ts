@@ -3,6 +3,7 @@ import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 import type {
   ApiVersion,
+  Capability,
   CurrencyCode,
   Timezone,
   CountryCode,
@@ -12,6 +13,7 @@ import type {
 
 export {
   ApiVersion,
+  Capability,
   CurrencyCode,
   Timezone,
   CountryCode,
@@ -136,17 +138,6 @@ export interface I18n {
    */
   translate: I18nTranslate;
 }
-
-/**
- * The capabilities an extension has access to.
- *
- * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
- *
- * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
- *
- * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
- */
-export type Capability = 'api_access' | 'network_access' | 'block_progress';
 
 /**
  * Meta information about an extension target.
