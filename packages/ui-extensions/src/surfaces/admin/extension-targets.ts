@@ -71,7 +71,7 @@ export interface ExtensionTargets {
 
   // Blocks
   /**
-   * Renders an Admin Block in the product details page.
+   * Renders an admin block in the product details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -81,7 +81,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an Admin Block in the order details page.
+   * Renders an admin block in the order details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -91,7 +91,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an Admin Block in the customer details page.
+   * Renders an admin block in the customer details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -101,7 +101,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an Admin Block in the collection details page.
+   * Renders an admin block in the collection details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -111,7 +111,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an Admin Block in the draft order details page.
+   * Renders an admin block in the draft order details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -121,7 +121,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an Admin Block in the abandoned checkout details page.
+   * Renders an admin block in the abandoned checkout details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -131,7 +131,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an Admin Block in the product variant details page.
+   * Renders an admin block in the product variant details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
