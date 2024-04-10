@@ -100,6 +100,46 @@ export interface ExtensionTargets {
     AllComponents
   >;
 
+  /**
+   * Renders an Admin Block in the collection details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.collection-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.collection-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an Admin Block in the draft order details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.draft-order-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.draft-order-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an Admin Block in the abandoned checkout details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.abandoned-checkout-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.abandoned-checkout-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an Admin Block in the product variant details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.product-variant-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.product-variant-details.block.render'>,
+    AllComponents
+  >;
+
   // Actions
   /**
    * Renders an admin action extension in the product details page. Open this extension from the "More Actions" menu.
