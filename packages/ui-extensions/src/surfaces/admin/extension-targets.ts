@@ -71,7 +71,7 @@ export interface ExtensionTargets {
 
   // Blocks
   /**
-   * Renders an Admin Block in the product details page.
+   * Renders an admin block in the product details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -81,7 +81,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an Admin Block in the order details page.
+   * Renders an admin block in the order details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -91,12 +91,52 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an Admin Block in the customer details page.
+   * Renders an admin block in the customer details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.customer-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.customer-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin block in the collection details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.collection-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.collection-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin block in the draft order details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.draft-order-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.draft-order-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin block in the abandoned checkout details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.abandoned-checkout-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.abandoned-checkout-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin block in the product variant details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.product-variant-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.product-variant-details.block.render'>,
     AllComponents
   >;
 
