@@ -123,9 +123,24 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
         'Admin block extensions appear on resource detail pages throughout the admin. Learn more about [admin blocks](/docs/apps/admin/admin-actions-and-blocks#admin-blocks).',
       sectionSubContent: [
         {
+          title: 'Abandoned checkout details',
+          sectionContent:
+            'This page shows information about a single abandoned checkout. The `admin.abandoned-checkout-details.block.render` target is available on this page.',
+        },
+        {
+          title: 'Collection details',
+          sectionContent:
+            'This page shows information about a single collection. The `admin.collection-details.block.render` target is available on this page.',
+        },
+        {
           title: 'Customer details',
           sectionContent:
             'This page shows information about a single customer. The `admin.customer-details.block.render` target is available on this page.',
+        },
+        {
+          title: 'Draft order details',
+          sectionContent:
+            'This page shows information about a single draft order. The `admin.draft-order-details.block.render` target is available on this page.',
         },
         {
           title: 'Order details',
@@ -136,6 +151,11 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Product details',
           sectionContent:
             'This page shows information about a single product. The `admin.product-details.block.render` target is available on this page.',
+        },
+        {
+          title: 'Product variant details',
+          sectionContent:
+            'This page shows information about a single product variant. The `admin.product-variant-details.block.render` target is available on this page.',
         },
       ],
     },
