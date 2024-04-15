@@ -716,12 +716,16 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   version: Version;
 
   /**
-   * Customer cookie consent settings and a flag denoting if consent has previously been collected.
+   * Customer privacy consent settings and a flag denoting if consent has previously been collected.
    */
   customerPrivacy: StatefulRemoteSubscribable<CustomerPrivacy>;
 
   /**
-   * Allows setting and updating customer cookie consent settings.
+   * Allows setting and updating customer privacy consent settings.
+   *
+   * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) to be set to `true`.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   applyTrackingConsentChange: ApplyTrackingConsentChangeType;
 }
@@ -1736,26 +1740,24 @@ export interface DeliveryGroupDetails extends DeliveryGroup {
 
 export interface VisitorConsent {
   /**
-   * Cookies to understand how customers interact with the site.
+   * Visitor consents to recording data to understand how customers interact with the site.
    */
   analytics?: boolean;
   /**
-   * Cookies to provide ads and marketing communications based on customer interests.
+   * Visitor consents to ads and marketing communications based on customer interests.
    */
   marketing?: boolean;
   /**
-   * Cookies that remember customer preferences, such as country or language, to personalize visits to the website.
+   * Visitor consent to remembering customer preferences, such as country or language, to personalize visits to the website.
    */
   preferences?: boolean;
   /**
-   * Opts the customer out of data sharing / sales.
+   * Opts the visitor out of data sharing / sales.
    */
   saleOfData?: boolean;
 }
 
-type PartialVisitorConsent = Partial<VisitorConsent>;
-
-export interface VisitorConsentChange extends PartialVisitorConsent {
+export interface VisitorConsentChange extends VisitorConsent {
   type: 'changeVisitorConsent';
 }
 
@@ -1786,11 +1788,15 @@ export interface CustomerPrivacyRegion {
 
 export interface CustomerPrivacy {
   /**
-   * An object containing the customer's current cookie consent settings.
+   * An object containing the customer's current privacy consent settings.
+   *
+   * @example `true` — the customer has actively granted consent, `false` — the customer has actively denied consent, or `undefined` — the customer has not yet made a decision.
    */
   visitorConsent: VisitorConsent;
   /**
-   * Whether a consent banner should be displayed.
+   * Whether a consent banner should be displayed by default when the page loads. Use this as the initial open/expanded state of the consent banner.
+   *
+   * This is determined by the visitor's current privacy consent, the shop's [region visibility configuration](https://help.shopify.com/en/manual/privacy-and-security/privacy/customer-privacy-settings/privacy-settings#add-a-cookie-banner) settings, and the region in which the visitor is located.
    */
   shouldShowBanner: boolean;
   /**
