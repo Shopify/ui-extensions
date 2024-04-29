@@ -13,6 +13,7 @@ export type IconSource =
   | 'camera'
   | 'caretDown'
   | 'cart'
+  | 'categories'
   | 'checkmark'
   | 'chevronLeft'
   | 'chevronRight'

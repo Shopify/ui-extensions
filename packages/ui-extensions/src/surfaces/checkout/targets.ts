@@ -1,6 +1,9 @@
 import type {
-  AddressAutocompleteSuggestion,
   AddressAutocompleteSuggestApi,
+  AddressAutocompleteSuggestApiOutput,
+  AddressAutocompleteFormatSuggestionApi,
+  AddressAutocompleteFormatSuggestionApiOutput,
+  AddressAutocompleteStandardApi,
 } from '../checkout';
 
 import type {CartLineItemApi} from './api/cart-line/cart-line-item';
@@ -727,8 +730,19 @@ export interface RunnableExtensionTargets {
    * @experimental
    */
   'purchase.address-autocomplete.suggest': RunnableExtension<
-    AddressAutocompleteSuggestApi,
-    AddressAutocompleteSuggestion[]
+    AddressAutocompleteStandardApi<'purchase.address-autocomplete.suggest'> &
+      AddressAutocompleteSuggestApi,
+    AddressAutocompleteSuggestApiOutput
+  >;
+  /**
+   * An extension target used to provide address autocomplete format suggestions. It does not support rendering UI components.
+   * @private
+   * @experimental
+   */
+  'purchase.address-autocomplete.format-suggestion': RunnableExtension<
+    AddressAutocompleteStandardApi<'purchase.address-autocomplete.format-suggestion'> &
+      AddressAutocompleteFormatSuggestionApi,
+    AddressAutocompleteFormatSuggestionApiOutput
   >;
 }
 
@@ -762,7 +776,7 @@ export type ArgumentsForExtension<Target extends keyof ExtensionTargets> =
  * For RenderExtensionTargets, this API type is the second argument to
  * the callback for that extension target.
  *
- * For RunnableExtensionTargets, this API type if the only argument to
+ * For RunnableExtensionTargets, this API type is the only argument to
  * the callback for that extension target.
  */
 export type ApiForExtension<Target extends ExtensionTarget> =

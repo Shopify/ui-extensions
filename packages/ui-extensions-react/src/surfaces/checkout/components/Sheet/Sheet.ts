@@ -4,4 +4,6 @@ import type {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
 
 export type SheetProps = ReactPropsFromRemoteComponentType<typeof BaseSheet>;
 
-export const Sheet = createRemoteReactComponent(BaseSheet);
+export const Sheet = createRemoteReactComponent(BaseSheet, {
+  fragmentProps: ['primaryAction', 'secondaryAction'],
+});

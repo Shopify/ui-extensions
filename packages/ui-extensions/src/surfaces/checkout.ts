@@ -140,9 +140,14 @@ export type {PickupLocationItemApi} from './checkout/api/pickup/pickup-location-
 export type {ShippingOptionItemApi} from './checkout/api/shipping/shipping-option-item';
 export type {ShippingOptionListApi} from './checkout/api/shipping/shipping-option-list';
 export type {
-  AddressAutocompleteSuggestion,
   AddressAutocompleteSuggestApi,
+  AddressAutocompleteSuggestApiOutput,
+  AddressAutocompleteFormatSuggestionApi,
+  AddressAutocompleteFormatSuggestionApiOutput,
+  AddressAutocompleteSuggestion,
 } from './checkout/api/address-autocomplete/address-autocomplete';
+
+export type {AddressAutocompleteStandardApi} from './checkout/api/address-autocomplete/standard';
 
 export type {
   PaymentMethodAttributesResult,

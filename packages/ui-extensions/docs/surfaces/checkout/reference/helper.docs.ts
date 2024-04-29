@@ -597,6 +597,13 @@ const CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION = {
   type: 'CustomerAccountStandardApi',
 };
 
+const ADDRESS_AUTOCOMPLETE_STANDARD_API_DEFINITION = {
+  title: 'AddressAutocompleteStandardApi',
+  description:
+    'The base API object provided to this and other `purchase.address-autocomplete` extension targets.',
+  type: 'AddressAutocompleteStandardApi',
+};
+
 const CART_LINE_ITEM_API_DEFINITION = {
   title: 'CartLineItemApi',
   description:
