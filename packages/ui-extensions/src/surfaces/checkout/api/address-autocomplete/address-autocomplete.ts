@@ -13,21 +13,28 @@ export interface AddressAutocompleteSuggestApi {
    */
   signal: AbortSignal;
 
-  target: {
-    /**
-     * The input that the user has typed so far into the address field.
-     *
-     * @example "123 M"
-     */
-    value: string;
+  /**
+   * The current state of the address field that the buyer is interacting with.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  target: Target;
+}
 
-    /**
-     * The address field that the buyer is interacting with.
-     *
-     * @example "address1"
-     */
-    field: Extract<keyof MailingAddress, 'address1' | 'zip'>;
-  };
+interface Target {
+  /**
+   * The current value of the `field` the buyer is interacting with.
+   *
+   * @example "123 M"
+   */
+  value: string;
+
+  /**
+   * The `MailingAddress` field that the buyer is interacting with.
+   *
+   * @example "address1"
+   */
+  field: 'address1' | 'zip';
 }
 
 export interface AddressAutocompleteSuggestion {
@@ -93,13 +100,11 @@ export interface AddressAutocompleteSuggestApiOutput {
  * A partial mailing address with only fields relevant to address autocomplete.
  * All fields are optional
  */
-type AutocompleteAddress = Partial<
-  Pick<
+interface AutocompleteAddress
+  extends Pick<
     MailingAddress,
     'address1' | 'address2' | 'city' | 'provinceCode' | 'zip' | 'countryCode'
-  >
->;
-
+  > {}
 export interface AddressAutocompleteFormatSuggestionApi {
   /**
    * The selected autocomplete suggestion that the buyer selected during checkout.

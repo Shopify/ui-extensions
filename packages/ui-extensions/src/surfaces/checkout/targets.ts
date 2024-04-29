@@ -726,8 +726,6 @@ export interface RenderExtensionTargets {
 export interface RunnableExtensionTargets {
   /**
    * An extension target used to provide address autocomplete suggestions. It does not support rendering UI components.
-   * @private
-   * @experimental
    */
   'purchase.address-autocomplete.suggest': RunnableExtension<
     AddressAutocompleteStandardApi<'purchase.address-autocomplete.suggest'> &
