@@ -44,5 +44,5 @@ export interface RenderExtensionWithRemoteRoot<
 }
 
 export interface RunnableExtension<Api, Output> {
-  (api: Api): Output | Promise<Output>;
+  (api: Api): Output;
 }

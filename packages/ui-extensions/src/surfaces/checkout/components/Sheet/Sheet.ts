@@ -1,3 +1,4 @@
+import type {RemoteFragment} from '@remote-ui/core';
 import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
@@ -45,6 +46,15 @@ export interface SheetProps extends IdProps {
 
   /** Callback fired when the sheet is closed. */
   onHide?(): void;
+
+  /**
+   * The primary action to perform, provided as a `Button` component.
+   */
+  primaryAction?: RemoteFragment;
+  /**
+   * The secondary action to perform, provided as a `Button` component.
+   */
+  secondaryAction?: RemoteFragment;
 }
 
 /**

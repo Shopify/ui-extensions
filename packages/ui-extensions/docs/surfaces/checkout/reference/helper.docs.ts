@@ -98,6 +98,7 @@ export function getExamples(
     ...createExample(
       'customer-account.order-status.customer-information.render-after/default',
     ),
+    ...createExample('purchase.address-autocomplete.suggest/default'),
     ...createExample('purchase.cart-line-item.line-components.render/default'),
     ...createExample('purchase.checkout.actions.render-before/default'),
     ...createExample('purchase.checkout.block.render/default'),
@@ -597,6 +598,27 @@ const CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION = {
   type: 'CustomerAccountStandardApi',
 };
 
+const ADDRESS_AUTOCOMPLETE_STANDARD_API_DEFINITION = {
+  title: 'AddressAutocompleteStandardApi',
+  description:
+    'The base API object provided to this and other `purchase.address-autocomplete` extension targets.',
+  type: 'AddressAutocompleteStandardApi',
+};
+
+const ADDRESS_AUTOCOMPLETE_SUGGEST_API_DEFINITION = {
+  title: 'AddressAutocompleteSuggestApi',
+  description:
+    'The API object provided to the `purchase.address-autocomplete.suggest` extension target.',
+  type: 'AddressAutocompleteSuggestApi',
+};
+
+const ADDRESS_AUTOCOMPLETE_SUGGEST_API_OUTPUT_DEFINITION = {
+  title: 'AddressAutocompleteSuggestApiOutput',
+  description:
+    'The API object returned by the `purchase.address-autocomplete.suggest` extension target.',
+  type: 'AddressAutocompleteSuggestApiOutput',
+};
+
 const CART_LINE_ITEM_API_DEFINITION = {
   title: 'CartLineItemApi',
   description:
@@ -667,6 +689,15 @@ export const STANDARD_API = {
 
 export const CHECKOUT_API = {
   definitions: [CHECKOUT_API_DEFINITION, STANDARD_API_DEFINITION],
+  ...COMMON_API,
+};
+
+export const ADDRESS_AUTOCOMPLETE_SUGGEST_API = {
+  definitions: [
+    ADDRESS_AUTOCOMPLETE_SUGGEST_API_DEFINITION,
+    ADDRESS_AUTOCOMPLETE_SUGGEST_API_OUTPUT_DEFINITION,
+    ADDRESS_AUTOCOMPLETE_STANDARD_API_DEFINITION,
+  ],
   ...COMMON_API,
 };
 

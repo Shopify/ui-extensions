@@ -1,28 +1,42 @@
 import type {MailingAddress} from '../shared';
 
 export interface AddressAutocompleteSuggestApi {
-  target: {
-    /**
-     * The input that the user has typed so far into the address field.
-     *
-     * @example "123 M"
-     */
-    value: string;
+  /**
+   * The signal that the extension should listen to for cancellation requests.
+   *
+   * If the signal is aborted, the extension should cancel any ongoing requests.
+   * The signal will be aborted either when the buyer navigates away from the
+   * address field or when the debounced query value changes.
+   *
+   * Pass this signal to any asynchronous operations that need to be cancelled,
+   * like `fetch`.
+   */
+  signal: AbortSignal;
 
-    /**
-     * The address field that the buyer is interacting with.
-     *
-     * @example "address1"
-     */
-    field: AutocompleteAddress;
-
-    /**
-     * An AbortSignal that may be used to cancel in-flight network requests.
-     * This signal is sent when the buyer has stopped interacting with the address field.
-     */
-    signal: AbortSignal;
-  };
+  /**
+   * The current state of the address field that the buyer is interacting with.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  target: Target;
 }
+
+interface Target {
+  /**
+   * The current value of the `field` the buyer is interacting with.
+   *
+   * @example "123 M"
+   */
+  value: string;
+
+  /**
+   * The `MailingAddress` field that the buyer is interacting with.
+   *
+   * @example "address1"
+   */
+  field: 'address1' | 'zip';
+}
+
 export interface AddressAutocompleteSuggestion {
   /**
    * The human-readable autocomplete suggestion text. This text is
@@ -30,7 +44,7 @@ export interface AddressAutocompleteSuggestion {
    *
    * @example "123 Main St, Toronto, ON, CA"
    */
-  description: string;
+  label: string;
 
   /**
    * Optional.
@@ -66,22 +80,43 @@ export interface AddressAutocompleteSuggestion {
 
 interface MatchedSubstring {
   /**
-   * The start location of the matched substring in the suggestion description text.
+   * The start location of the matched substring in the suggestion label text.
    */
   offset: number;
   /**
-   * The length of the matched substring in the suggestion description text.
+   * The length of the matched substring in the suggestion label text.
    */
   length: number;
+}
+
+export interface AddressAutocompleteSuggestApiOutput {
+  /**
+   * An array of address autocomplete suggestions to show to the buyer.
+   */
+  suggestions: AddressAutocompleteSuggestion[];
 }
 
 /**
  * A partial mailing address with only fields relevant to address autocomplete.
  * All fields are optional
  */
-type AutocompleteAddress = Partial<
-  Pick<
+interface AutocompleteAddress
+  extends Pick<
     MailingAddress,
     'address1' | 'address2' | 'city' | 'provinceCode' | 'zip' | 'countryCode'
-  >
->;
+  > {}
+export interface AddressAutocompleteFormatSuggestionApi {
+  /**
+   * The selected autocomplete suggestion that the buyer selected during checkout.
+   */
+  target: {
+    selectedSuggestion: AddressAutocompleteSuggestion;
+  };
+}
+
+export interface AddressAutocompleteFormatSuggestionApiOutput {
+  /**
+   * The formatted address that will be used to populate the native address fields.
+   */
+  formattedAddress: AutocompleteAddress;
+}
