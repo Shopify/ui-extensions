@@ -143,6 +143,11 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
             'This page shows information about a single draft order. The `admin.draft-order-details.block.render` target is available on this page.',
         },
         {
+          title: 'Discount details',
+          sectionContent:
+            'This page shows information about a single discount. The `admin.discount-details.block.render` target is available on this page.',
+        },
+        {
           title: 'Order details',
           sectionContent:
             'This page shows information about a single order. The `admin.order-details.block.render` target is available on this page.',
