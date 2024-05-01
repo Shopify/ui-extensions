@@ -862,6 +862,15 @@ export interface CheckoutLineItem {
   discountAllocations: DiscountAllocation[];
 
   /**
+   * The combined price of all of the items in the line
+   * item after line-level discounts have been applied. This
+   * property is only available if you've [upgraded to Checkout
+   * Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-
+   * extensibility/checkout-upgrade).
+   */
+  finalLinePrice: MoneyV2;
+
+  /**
    * A globally unique identifier.
    */
   id: string;
