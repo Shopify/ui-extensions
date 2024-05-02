@@ -60,6 +60,8 @@ export type {
   ApplyTrackingConsentChangeType,
   CustomerPrivacy,
   TrackingConsentChangeResult,
+  TrackingConsentChangeResultError,
+  TrackingConsentMetafield,
   VisitorConsent,
   VisitorConsentChange,
   VisitorError,
