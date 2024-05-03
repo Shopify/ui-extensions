@@ -701,7 +701,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   customerPrivacy: StatefulRemoteSubscribable<CustomerPrivacy>;
 
   /**
-   * Allows setting and updating customer privacy consent settings.
+   * Allows setting and updating customer privacy consent settings and tracking consent metafields.
    *
    * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) to be set to `true`.
    *
@@ -1756,7 +1756,29 @@ export interface VisitorConsent {
   saleOfData?: boolean;
 }
 
+export interface TrackingConsentMetafield {
+  /**
+   * The name of the metafield. It must be between 3 and 30 characters in
+   * length (inclusive).
+   */
+  key: string;
+  /**
+   * The information to be stored as metadata. If the value is `null`, the metafield will be deleted.
+   *
+   * @example 'any string', `null`, or a stringified JSON object
+   */
+  value: string | null;
+}
+
 export interface VisitorConsentChange extends VisitorConsent {
+  /**
+   * Tracking consent metafield data to be saved.
+   *
+   * If the value is `null`, the metafield will be deleted.
+   *
+   * @example `[{key: 'granularAnalytics', value: 'true'}, {key: 'granularMarketing', value: 'false'}]`
+   */
+  metafields?: TrackingConsentMetafield[];
   type: 'changeVisitorConsent';
 }
 
@@ -1790,6 +1812,12 @@ export interface CustomerPrivacy {
    * An object containing flags for each consent property denoting whether they can be processed based on visitor consent, merchant configuration, and user location.
    */
   allowedProcessing: AllowedProcessing;
+  /**
+   * Stored tracking consent metafield data.
+   *
+   * @example `[{key: 'analyticsType', value: 'granular'}, {key: 'marketingType', value: 'granular'}]`, `[]`, or `undefined`
+   */
+  metafields?: TrackingConsentMetafield[];
   /**
    * An object containing the customer's current privacy consent settings.
    * *

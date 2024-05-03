@@ -4,63 +4,25 @@ import {
   Button,
   Link,
   TextBlock,
+  Icon,
 } from '@shopify/ui-extensions/checkout';
 
 export default extension(
   'purchase.checkout.footer.render-after',
-  (
-    root,
-    {
-      applyTrackingConsentChange,
-      customerPrivacy,
-      ui,
-    },
-  ) => {
+  (root, {customerPrivacy}) => {
     customerPrivacy.subscribe(
       ({shouldShowBanner}) => {
         const primaryFragment =
           root.createFragment();
         const secondaryFragment =
           root.createFragment();
-        const handleConsentChange = async ({
-          analytics,
-          marketing,
-          preferences,
-          saleOfData,
-        }) => {
-          try {
-            const result =
-              await applyTrackingConsentChange({
-                type: 'changeVisitorConsent',
-                analytics,
-                marketing,
-                preferences,
-                saleOfData,
-              });
-
-            // Check if operation was successful
-            if (result) {
-              ui.overlay.close(sheetId);
-            } else {
-              // Handle failure case here
-            }
-          } catch (error) {
-            // Handle error case here
-          }
-        };
 
         const declineButton =
           root.createComponent(
             Button,
             {
               kind: 'secondary',
-              onPress: () =>
-                handleConsentChange({
-                  analytics: false,
-                  marketing: false,
-                  preferences: false,
-                  saleOfData: false,
-                }),
+              onPress: () => {},
             },
             'I decline',
           );
@@ -69,24 +31,20 @@ export default extension(
           Button,
           {
             kind: 'secondary',
-            onPress: () =>
-              handleConsentChange({
-                analytics: true,
-                marketing: true,
-                preferences: true,
-                saleOfData: true,
-              }),
+            onPress: () => {},
           },
           'I agree',
         );
 
-        const settingsButton =
+        const preferencesButton =
           root.createComponent(
             Button,
             {
               kind: 'secondary',
             },
-            'Settings',
+            root.createComponent(Icon, {
+              source: 'settings',
+            }),
           );
 
         primaryFragment.appendChild(
@@ -94,15 +52,12 @@ export default extension(
         );
         primaryFragment.appendChild(agreeButton);
         secondaryFragment.appendChild(
-          settingsButton,
+          preferencesButton,
         );
 
-        const sheetId = 'sheet-consent';
         const sheet = root.createComponent(
           Sheet,
           {
-            id: sheetId,
-            heading: 'We value your privacy',
             accessibilityLabel:
               'A sheet that collects privacy consent preferences',
             defaultOpen: shouldShowBanner,
@@ -115,7 +70,7 @@ export default extension(
           TextBlock,
           null,
           [
-            'We and our partners use cookies and other technologies to improve your experience, measure performance, and tailor marketing. Details in our ',
+            'This website uses cookies to ensure you get the best experience on our website. ',
             root.createComponent(
               Link,
               null,
