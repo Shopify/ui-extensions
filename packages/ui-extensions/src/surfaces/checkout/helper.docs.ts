@@ -118,6 +118,37 @@ export function getExamples(
         tabs: getExtensionCodeTabs('ui-components/sheet-consent'),
       },
     },
+    'ui-components/sheet-description-preferences': {
+      description:
+        'In order to save space in the action slot, secondary actions can be placed in the content area.',
+      image: 'sheet-description-preferences.png',
+      codeblock: {
+        title: 'Preferences button is in the description as a link',
+        tabs: getExtensionCodeTabs(
+          'ui-components/sheet-description-preferences',
+        ),
+      },
+    },
+    'ui-components/sheet-layout-content': {
+      description:
+        'The description can take in layout components to allow for different types of content to be structured in specific ways.',
+      image: 'sheet-layout-content.png',
+      codeblock: {
+        title: 'Using layout component in the description ',
+        tabs: getExtensionCodeTabs('ui-components/sheet-layout-content'),
+      },
+    },
+    'ui-components/sheet-icon-button-preferences': {
+      description:
+        'An icon button can be used in the secondary actions area to allow for more space for the primary actions.',
+      image: 'sheet-icon-button-preferences.png',
+      codeblock: {
+        title: 'Icon button used for preferences',
+        tabs: getExtensionCodeTabs(
+          'ui-components/sheet-icon-button-preferences',
+        ),
+      },
+    },
   };
 }
 
