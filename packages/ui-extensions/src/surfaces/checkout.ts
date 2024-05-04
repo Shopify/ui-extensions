@@ -62,6 +62,7 @@ export type {
   TrackingConsentChangeResult,
   TrackingConsentChangeResultError,
   TrackingConsentMetafield,
+  TrackingConsentMetafieldChange,
   VisitorConsent,
   VisitorConsentChange,
   VisitorError,

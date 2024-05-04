@@ -1765,6 +1765,20 @@ export interface TrackingConsentMetafield {
   /**
    * The information to be stored as metadata. If the value is `null`, the metafield will be deleted.
    *
+   * @example 'any string', '', or a stringified JSON object
+   */
+  value: string;
+}
+
+export interface TrackingConsentMetafieldChange {
+  /**
+   * The name of the metafield. It must be between 3 and 30 characters in
+   * length (inclusive).
+   */
+  key: string;
+  /**
+   * The information to be stored as metadata. If the value is `null`, the metafield will be deleted.
+   *
    * @example 'any string', `null`, or a stringified JSON object
    */
   value: string | null;
@@ -1778,7 +1792,7 @@ export interface VisitorConsentChange extends VisitorConsent {
    *
    * @example `[{key: 'granularAnalytics', value: 'true'}, {key: 'granularMarketing', value: 'false'}]`
    */
-  metafields?: TrackingConsentMetafield[];
+  metafields?: TrackingConsentMetafieldChange[];
   type: 'changeVisitorConsent';
 }
 
@@ -1815,9 +1829,9 @@ export interface CustomerPrivacy {
   /**
    * Stored tracking consent metafield data.
    *
-   * @example `[{key: 'analyticsType', value: 'granular'}, {key: 'marketingType', value: 'granular'}]`, `[]`, or `undefined`
+   * @example `[{key: 'analyticsType', value: 'granular'}, {key: 'marketingType', value: 'granular'}]`, or `[]`
    */
-  metafields?: TrackingConsentMetafield[];
+  metafields: TrackingConsentMetafield[];
   /**
    * An object containing the customer's current privacy consent settings.
    * *
