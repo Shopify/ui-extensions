@@ -5,7 +5,6 @@ import {
   Sheet,
   TextBlock,
   useApi,
-  useSubscription,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
@@ -19,10 +18,6 @@ function Extension() {
     customerPrivacy,
     ui,
   } = useApi();
-
-  const {shouldShowBanner} = useSubscription(
-    customerPrivacy,
-  );
 
   const sheetId = 'sheet-consent';
 
@@ -58,7 +53,7 @@ function Extension() {
       id={sheetId}
       heading="We value your privacy"
       accessibilityLabel="A sheet that collects privacy consent preferences"
-      defaultOpen={shouldShowBanner}
+      defaultOpen={customerPrivacy.current.shouldShowBanner}
       primaryAction={
         <>
           <Button
