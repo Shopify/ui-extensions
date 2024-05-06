@@ -27,20 +27,6 @@ export interface SheetProps extends IdProps {
   /** A heading rendered at the top of the sheet. */
   heading?: string;
 
-  /**
-   * Adjust the padding of all edges.
-   *
-   * `base` and `true`: applies padding that is appropriate for the element. Note that it may result in no padding if Shopify
-   * believes this is the right design decision in a particular context.
-   *
-   * `none` and `false`: removes all padding from the element. This can be useful when elements inside the Sheet need to span
-   * to the edge of the Sheet. For example, a full-width image. In this case, rely on `Box` or any other layout
-   * element to bring back the desired padding for the rest of the content.
-   *
-   * @default true
-   */
-  padding?: 'base' | 'none' | boolean;
-
   /** Callback fired when the sheet is opened. */
   onShow?(): void;
 
@@ -49,10 +35,13 @@ export interface SheetProps extends IdProps {
 
   /**
    * The primary action to perform, provided as a `Button` component.
+   * The property allows up to two buttons to be rendered.
    */
   primaryAction?: RemoteFragment;
+
   /**
    * The secondary action to perform, provided as a `Button` component.
+   * The property allows only one button to be rendered.
    */
   secondaryAction?: RemoteFragment;
 }

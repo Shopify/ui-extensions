@@ -4,11 +4,7 @@ import {
   Link,
   Sheet,
   TextBlock,
-  BlockStack,
-  InlineLayout,
-  InlineStack,
   useApi,
-  useSubscription,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
@@ -22,10 +18,6 @@ function Extension() {
     customerPrivacy,
     ui,
   } = useApi();
-
-  const {shouldShowBanner} = useSubscription(
-    customerPrivacy,
-  );
 
   const sheetId = 'sheet-consent';
 
@@ -61,62 +53,53 @@ function Extension() {
       id={sheetId}
       heading="We value your privacy"
       accessibilityLabel="A sheet that collects privacy consent preferences"
-      defaultOpen={shouldShowBanner}
-    >
-      <BlockStack>
-        <TextBlock>
-          We and our partners use cookies and
-          other technologies to improve your
-          experience, measure performance, and
-          tailor marketing. Details in our{' '}
-          <Link>Privacy Policy</Link>
-        </TextBlock>
-        <InlineLayout
-          columns={['fill', 'auto']}
-          blockAlignment="baseline"
-          minBlockSize="fill"
+      defaultOpen={customerPrivacy.current.shouldShowBanner}
+      primaryAction={
+        <>
+          <Button
+            kind="secondary"
+            onPress={() =>
+              handleConsentChange({
+                analytics: false,
+                marketing: false,
+                preferences: false,
+                saleOfData: false,
+              })
+            }
+          >
+            I decline
+          </Button>
+          <Button
+            kind="secondary"
+            onPress={() =>
+              handleConsentChange({
+                analytics: true,
+                marketing: true,
+                preferences: true,
+                saleOfData: true,
+              })
+            }
+          >
+            I agree
+          </Button>
+        </>
+      }
+      secondaryAction={
+        <Button
+          kind="plain"
+          overlay={
+            // Open a settings modal
+          }
         >
-          <InlineStack inlineAlignment="start">
-            <Link
-              onPress={() =>
-                console.log(
-                  'Open another overlay to manage preferences',
-                )
-              }
-            >
-              Manage preferences
-            </Link>
-          </InlineStack>
-
-          <InlineStack inlineAlignment="end">
-            <Button
-              kind="secondary"
-              onPress={() =>
-                handleConsentChange({
-                  analytics: false,
-                  marketing: false,
-                  preferences: false,
-                  saleOfData: false,
-                })
-              }
-            >
-              Decline
-            </Button>
-            <Button
-              onPress={() =>
-                handleConsentChange({
-                  analytics: true,
-                  marketing: true,
-                  preferences: true,
-                  saleOfData: true,
-                })
-              }
-            >
-              Accept
-            </Button>
-          </InlineStack>
-        </InlineLayout>
-      </BlockStack>
+          Settings
+        </Button>
+      }
+    >
+      <TextBlock>
+        This website uses cookies to ensure you
+        get the best experience on our website.
+        <Link>Privacy Policy</Link>
+      </TextBlock>
     </Sheet>
   );
 }
