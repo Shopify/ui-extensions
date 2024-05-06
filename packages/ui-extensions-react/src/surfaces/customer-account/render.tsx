@@ -44,9 +44,13 @@ export function reactExtension<Target extends RenderExtensionTarget>(
       await new Promise<void>((resolve, reject) => {
         try {
           remoteRender(
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             <ExtensionApiContext.Provider value={api}>
               <ErrorBoundary>{element}</ErrorBoundary>
             </ExtensionApiContext.Provider>,
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             root,
             () => {
               resolve();
@@ -122,7 +126,7 @@ class ErrorBoundary extends Component<PropsWithChildren<{}>, ErrorState> {
       return null;
     }
 
-    return this.props.children;
+    return <>{this.props.children}</>;
   }
 }
 
