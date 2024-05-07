@@ -140,15 +140,26 @@ export type {CartLineItemApi} from './checkout/api/cart-line/cart-line-item';
 export type {PickupLocationListApi} from './checkout/api/pickup/pickup-location-list';
 export type {PickupPointListApi} from './checkout/api/pickup/pickup-point-list';
 export type {PickupLocationItemApi} from './checkout/api/pickup/pickup-location-item';
-export type {ShippingOptionItemApi} from './checkout/api/shipping/shipping-option-item';
+export type {
+  ShippingOptionItemApi,
+  ShippingOptionItemRenderMode,
+} from './checkout/api/shipping/shipping-option-item';
 export type {ShippingOptionListApi} from './checkout/api/shipping/shipping-option-list';
 export type {
-  AddressAutocompleteSuggestApi,
-  AddressAutocompleteSuggestApiOutput,
   AddressAutocompleteFormatSuggestionApi,
-  AddressAutocompleteFormatSuggestionApiOutput,
+  AddressAutocompleteFormatSuggestionOutput,
+} from './checkout/api/address-autocomplete/format-suggestion';
+
+export type {
+  AddressAutocompleteSuggestApi,
+  AddressAutocompleteSuggestOutput,
+} from './checkout/api/address-autocomplete/suggest';
+
+export type {
   AddressAutocompleteSuggestion,
-} from './checkout/api/address-autocomplete/address-autocomplete';
+  MatchedSubstring,
+  AutocompleteAddress,
+} from './checkout/api/address-autocomplete/shared';
 
 export type {AddressAutocompleteStandardApi} from './checkout/api/address-autocomplete/standard';
 

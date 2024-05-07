@@ -60,6 +60,7 @@ export type IconSource =
   | 'reorder'
   | 'return'
   | 'savings'
+  | 'settings'
   | 'star'
   | 'starFill'
   | 'starHalf'
