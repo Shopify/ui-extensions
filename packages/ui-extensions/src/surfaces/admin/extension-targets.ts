@@ -140,6 +140,16 @@ export interface ExtensionTargets {
     AllComponents
   >;
 
+  /**
+   * Renders an admin block in the product details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.product-details.reorder.render': RenderExtension<
+    BlockExtensionApi<'admin.product-details.reorder.render'>,
+    AllComponents
+  >;
+
   // Actions
   /**
    * Renders an admin action extension in the product details page. Open this extension from the "More Actions" menu.
