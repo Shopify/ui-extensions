@@ -11,8 +11,8 @@ export interface ResolutionCondition {
 
 type ViewportInlineSize = 'extraSmall' | 'small' | 'medium' | 'large';
 
-export interface ViewportSizeCondition {
-  viewportInlineSize: {min: ViewportInlineSize};
+export interface ViewportSizeCondition<T = ViewportInlineSize> {
+  viewportInlineSize: {min: T};
 }
 
 export type AtLeastOne<T, U = {[K in keyof T]: Pick<T, K>}> = Partial<T> &

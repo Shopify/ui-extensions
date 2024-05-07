@@ -99,6 +99,7 @@ export function getExamples(
       'customer-account.order-status.customer-information.render-after/default',
     ),
     ...createExample('purchase.address-autocomplete.suggest/default'),
+    ...createExample('purchase.address-autocomplete.format-suggestion/default'),
     ...createExample('purchase.cart-line-item.line-components.render/default'),
     ...createExample('purchase.checkout.actions.render-before/default'),
     ...createExample('purchase.checkout.block.render/default'),
@@ -612,11 +613,25 @@ const ADDRESS_AUTOCOMPLETE_SUGGEST_API_DEFINITION = {
   type: 'AddressAutocompleteSuggestApi',
 };
 
-const ADDRESS_AUTOCOMPLETE_SUGGEST_API_OUTPUT_DEFINITION = {
-  title: 'AddressAutocompleteSuggestApiOutput',
+const ADDRESS_AUTOCOMPLETE_SUGGEST_OUTPUT_DEFINITION = {
+  title: 'AddressAutocompleteSuggestOutput',
   description:
-    'The API object returned by the `purchase.address-autocomplete.suggest` extension target.',
-  type: 'AddressAutocompleteSuggestApiOutput',
+    'The object expected to be returned by the `purchase.address-autocomplete.suggest` extension target.',
+  type: 'AddressAutocompleteSuggestOutput',
+};
+
+const ADDRESS_AUTOCOMPLETE_FORMAT_SUGGESTION_API_DEFINITION = {
+  title: 'AddressAutocompleteFormatSuggestionApi',
+  description:
+    'The API object provided to the `purchase.address-autocomplete.format-suggestion` extension target.',
+  type: 'AddressAutocompleteFormatSuggestionApi',
+};
+
+const ADDRESS_AUTOCOMPLETE_FORMAT_SUGGESTION_OUTPUT_DEFINITION = {
+  title: 'AddressAutocompleteFormatSuggestionOutput',
+  description:
+    'The object expected to be returned by the `purchase.address-autocomplete.format-suggestion` extension target.',
+  type: 'AddressAutocompleteFormatSuggestionOutput',
 };
 
 const CART_LINE_ITEM_API_DEFINITION = {
@@ -695,7 +710,16 @@ export const CHECKOUT_API = {
 export const ADDRESS_AUTOCOMPLETE_SUGGEST_API = {
   definitions: [
     ADDRESS_AUTOCOMPLETE_SUGGEST_API_DEFINITION,
-    ADDRESS_AUTOCOMPLETE_SUGGEST_API_OUTPUT_DEFINITION,
+    ADDRESS_AUTOCOMPLETE_SUGGEST_OUTPUT_DEFINITION,
+    ADDRESS_AUTOCOMPLETE_STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
+export const ADDRESS_AUTOCOMPLETE_FORMAT_SUGGESTION_API = {
+  definitions: [
+    ADDRESS_AUTOCOMPLETE_FORMAT_SUGGESTION_API_DEFINITION,
+    ADDRESS_AUTOCOMPLETE_FORMAT_SUGGESTION_OUTPUT_DEFINITION,
     ADDRESS_AUTOCOMPLETE_STANDARD_API_DEFINITION,
   ],
   ...COMMON_API,

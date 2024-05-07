@@ -1,8 +1,8 @@
 import type {
   AddressAutocompleteSuggestApi,
-  AddressAutocompleteSuggestApiOutput,
+  AddressAutocompleteSuggestOutput,
   AddressAutocompleteFormatSuggestionApi,
-  AddressAutocompleteFormatSuggestionApiOutput,
+  AddressAutocompleteFormatSuggestionOutput,
   AddressAutocompleteStandardApi,
 } from '../checkout';
 
@@ -725,22 +725,32 @@ export interface RenderExtensionTargets {
 
 export interface RunnableExtensionTargets {
   /**
-   * An extension target used to provide address autocomplete suggestions. It does not support rendering UI components.
+   * An extension target that provides address autocomplete suggestions. These suggestions are shown to buyers as they
+   * interact with address forms during checkout.
+   *
+   * It must return a list of address suggestions. If a formatted address is provided with each suggestion, it will be
+   * used to auto-populate the fields in the address form when the buyer selects a suggestion.
+   *
+   * This target does not support rendering UI components.
    */
   'purchase.address-autocomplete.suggest': RunnableExtension<
     AddressAutocompleteStandardApi<'purchase.address-autocomplete.suggest'> &
       AddressAutocompleteSuggestApi,
-    AddressAutocompleteSuggestApiOutput
+    AddressAutocompleteSuggestOutput
   >;
   /**
-   * An extension target used to provide address autocomplete format suggestions. It does not support rendering UI components.
-   * @private
-   * @experimental
+   * An extension target that formats the selected address suggestion provided by a
+   * `purchase.address-autocomplete.suggest` target. This address is used to auto-populate the fields in the address
+   * form.
+   *
+   * It must return a formatted address.
+   *
+   * This target does not support rendering UI components.
    */
   'purchase.address-autocomplete.format-suggestion': RunnableExtension<
     AddressAutocompleteStandardApi<'purchase.address-autocomplete.format-suggestion'> &
       AddressAutocompleteFormatSuggestionApi,
-    AddressAutocompleteFormatSuggestionApiOutput
+    AddressAutocompleteFormatSuggestionOutput
   >;
 }
 
