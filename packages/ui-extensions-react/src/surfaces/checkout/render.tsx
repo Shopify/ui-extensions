@@ -44,8 +44,6 @@ export function reactExtension<Target extends RenderExtensionTarget>(
       await new Promise<void>((resolve, reject) => {
         try {
           remoteRender(
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             <ExtensionApiContext.Provider value={api}>
               <ErrorBoundary>{element}</ErrorBoundary>
             </ExtensionApiContext.Provider>,

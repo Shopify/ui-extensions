@@ -35,8 +35,6 @@ export function reactExtension<ExtensionTarget extends RenderExtensionTarget>(
     return new Promise((resolve, reject) => {
       try {
         remoteRender(
-          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-          // @ts-ignore
           <ExtensionApiContext.Provider value={api}>
             {render(api as ApiForRenderExtension<ExtensionTarget>)}
           </ExtensionApiContext.Provider>,
