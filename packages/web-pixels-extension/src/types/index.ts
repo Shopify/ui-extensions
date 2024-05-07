@@ -50,3 +50,9 @@ export type {
   SchemaVersion,
   WebPixelsManager,
 } from './WebPixelsManager';
+export type {
+  CustomerPrivacyEventBus,
+  ConsentEvents,
+  ConsentTrackingEventName,
+  CustomerPrivacyPayload,
+} from './PrivacyApi';

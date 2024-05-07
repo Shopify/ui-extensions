@@ -13,6 +13,12 @@ export interface RegisterInit {
     customer: Partial<Customer> | null;
     cart: Partial<Cart> | null;
   };
+  customerPrivacy: {
+    analyticsProcessingAllowed: boolean;
+    marketingAllowed: boolean;
+    preferencesProcessingAllowed: boolean;
+    saleOfDataAllowed: boolean;
+  };
 }
 
 // This is received by the web-pixels-manager from the backend
