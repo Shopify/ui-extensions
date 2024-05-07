@@ -12,106 +12,130 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
   // Basic content for the page and Hero section.
   sections: [
     {
-      type: 'Markdown',
+      type: 'GenericAccordion',
       title: 'Admin action locations',
       anchorLink: 'action-locations',
       sectionContent:
         'Admin action extensions appear on resource pages throughout the admin. Learn more about [admin actions](/docs/apps/admin/admin-actions-and-blocks#admin-actions).',
-      sectionSubContent: [
+      accordionContent: [
         {
           title: 'Abandoned checkout details',
-          sectionContent:
+          description:
             'This page shows information about a single abandoned checkout. The `admin.abandoned-checkout-details.action.render` target is available on this page.',
+          image: 'admin.abandoned-checkout-details.action.render.png',
         },
         {
           title: 'Collection details',
-          sectionContent:
+          description:
             'This page shows information about a single collection. The `admin.collection-details.action.render` target is available on this page.',
+          image: 'admin.collection-details.action.render.png',
         },
         {
           title: 'Collection index',
-          sectionContent:
+          description:
             'This page shows a table of multiple collections. The `admin.collection-index.action.render` target is available on this page.',
+          image: 'admin.collection-index.action.render.png',
         },
         {
           title: 'Customer details',
-          sectionContent:
+          description:
             'This page shows information about a single customer. The `admin.customer-details.action.render` target is available on this page.',
+          image: 'admin.customer-details.action.render.png',
         },
         {
           title: 'Customer index',
-          sectionContent:
-            'This page shows a table of multiple customers. The `admin.customer-index.action.render` and `admin.customer-index.selection-action.render` targets are available on this page.',
+          description:
+            'This page shows a table of multiple customers. The `admin.customer-index.action.render` target is available on this page.',
+          image: 'admin.customer-index.action.render.png',
+        },
+        {
+          title: 'Customer index selection',
+          description:
+            'This page shows a table of multiple customers. The `admin.customer-index.selection-action.render` target is available on this page when multiple customers are selected.',
+          image: 'admin.customer-index.selection-action.render',
         },
         {
           title: 'Customer segment details',
-          sectionContent:
+          description:
             'This page shows information about a single customer segment. The `admin.customer-segment-details.action.render` target is available on this page.',
+          image: 'admin.customer-segment-details.action.render.png',
         },
         {
           title: 'Discount details',
-          sectionContent:
+          description:
             'This page shows information about a single discount. The `admin.discount-details.action.render` target is available on this page.',
+          image: 'admin.discount-details.action.render.png',
         },
         {
           title: 'Discount index',
-          sectionContent:
+          description:
             'This page shows a table of multiple discounts. The `admin.discount-index.action.render` target is available on this page.',
+          image: 'admin.discount-index.action.render.png',
         },
         {
           title: 'Draft order details',
-          sectionContent:
+          description:
             'This page shows information about a single draft order. The `admin.draft-order-details.action.render` target is available on this page.',
+          image: 'admin.draft-order-details.action.render.png',
         },
         {
           title: 'Draft order index',
-          sectionContent:
+          description:
             'This page shows a table of multiple draft orders. The `admin.draft-order-index.action.render` target is available on this page.',
+          image: 'admin.draft-order-index.action.render.png',
         },
         {
           title: 'Draft order index selection',
-          sectionContent:
-            'This page shows a table of multiple draft orders. The `admin.draft-order-index.selection-action.render` target is available on this page.',
+          description:
+            'This page shows a table of multiple draft orders. The `admin.draft-order-index.selection-action.render` target is available on this page when multiple draft orders are selected.',
+          image: 'admin.draft-order-index.selection-action.render.png',
         },
         {
           title: 'Order details',
-          sectionContent:
+          description:
             'This page shows information about a single order. The `admin.order-details.action.render` target is available on this page.',
+          image: 'admin.order-details.action.render.png',
         },
         {
           title: 'Order details fulfilled card',
-          sectionContent:
+          description:
             'This page shows information about a single order, including a card showing the fulfillment details. The `admin.order-fulfilled-card.action.render` target is available on this page, but only if your app is selected as the fulfillment app for that order.',
         },
         {
           title: 'Order index',
-          sectionContent:
+          description:
             'This page shows a table of multiple orders. The `admin.order-index.action.render` target is available on this page.',
+          image: 'admin.order-index.action.render.png',
         },
         {
           title: 'Order index selection',
-          sectionContent:
-            'This page shows a table of multiple orders. The `admin.order-index.selection-action.render` target is available on this page.',
+          description:
+            'This page shows a table of multiple orders. The `admin.order-index.selection-action.render` target is available on this page when multiple orders are selected.',
+          image: 'admin.order-index.selection-action.render.png',
         },
         {
           title: 'Product details',
-          sectionContent:
+          description:
             'This page shows information about a single product. The `admin.product-details.action.render` target is available on this page.',
+          image: 'admin.product-details.action.render.png',
         },
         {
           title: 'Product index',
-          sectionContent:
+          description:
             'This page shows a table of multiple products. The `admin.product-index.action.render` target is available on this page.',
+          image: 'admin.product-index.action.render.png',
         },
         {
           title: 'Product index selection',
-          sectionContent:
-            'This page shows a table of multiple products. The `admin.product-index.selection-action.render` target is available on this page.',
+          description:
+            'This page shows a table of multiple products. The `admin.product-index.selection-action.render` target is available on this page when multiple products are selected.',
+          image: 'admin.product-index.selection-action.render.png',
         },
         {
           title: 'Product variant details',
-          sectionContent:
+          description:
             'This page shows information about a single product variant. The `admin.product-variant-details.action.render` target is available on this page.',
+          image: 'admin.product-variant-details.action.render.png',
         },
       ],
     },
