@@ -126,7 +126,7 @@ class ErrorBoundary extends Component<PropsWithChildren<{}>, ErrorState> {
       return null;
     }
 
-    return <>{this.props.children}</>;
+    return this.props.children;
   }
 }
 
