@@ -38,6 +38,8 @@ export function reactExtension<ExtensionTarget extends RenderExtensionTarget>(
           <ExtensionApiContext.Provider value={api}>
             {render(api as ApiForRenderExtension<ExtensionTarget>)}
           </ExtensionApiContext.Provider>,
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           root,
           () => {
             resolve();
