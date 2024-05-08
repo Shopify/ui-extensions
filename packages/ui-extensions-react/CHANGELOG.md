@@ -1,5 +1,14 @@
 # @shopify/ui-extensions-react
 
+## 2023.10.2
+
+### Patch Changes
+
+- [#1943](https://github.com/Shopify/ui-extensions/pull/1943) [`ffffc132`](https://github.com/Shopify/ui-extensions/commit/ffffc132bedece35dda551e6bea39f1d6be6e42b) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Improve error messaging when a React hook is used from a different API surface than the extension calling it.
+
+- Updated dependencies [[`ffffc132`](https://github.com/Shopify/ui-extensions/commit/ffffc132bedece35dda551e6bea39f1d6be6e42b)]:
+  - @shopify/ui-extensions@2023.10.2
+
 ## 2023.10.1
 
 ### Patch Changes
