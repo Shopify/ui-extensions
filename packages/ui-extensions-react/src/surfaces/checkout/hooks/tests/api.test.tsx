@@ -23,7 +23,7 @@ describe('useApi', () => {
     };
 
     await expect(runner).rejects.toThrow(
-      'You can only call this hook when running as a UI extension.',
+      'You can only call this hook when running as a checkout UI extension.',
     );
   });
 });
