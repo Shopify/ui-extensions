@@ -100,6 +100,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Order details fulfilled card',
           description:
             'This page shows information about a single order, including a card showing the fulfillment details. The `admin.order-fulfilled-card.action.render` target is available on this page, but only if your app is selected as the fulfillment app for that order.',
+          image: 'admin.order-fulfilled-card.action.render.png',
         },
         {
           title: 'Order index',
