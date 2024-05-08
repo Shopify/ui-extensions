@@ -24,7 +24,7 @@ export function useApi<
 
   if (api == null) {
     throw new PosUIExtensionError(
-      'You can only call this hook when running as a UI extension.',
+      'You can only call this hook when running as a point of sale UI extension.',
     );
   }
 
