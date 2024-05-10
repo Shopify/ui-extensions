@@ -3,7 +3,7 @@ import type {LandingTemplateSchema} from '@shopify/generate-docs';
 const data: LandingTemplateSchema = {
   title: 'POS UI extensions',
   description: `The UI Extensions library enables individuals to build extensions that use interface elements and behaviors that mirror the look and feel of the POS retail experience. These elements render natively, providing the performance and accessibility inherent to a native app. POS UI extensions are available for the smart grid.
-  > Tip: 
+  > Tip:
   > Shopify constantly works on adding new features to POS UI extensions. You can visit the [changelog](/docs/api/pos-extensions/ui-extensions-reference/versions) to make sure you're using the latest version of POS UI extensions.
   `,
   id: 'pos-ui-extensions',
@@ -55,7 +55,7 @@ const data: LandingTemplateSchema = {
         {
           name: 'Getting started guide',
           subtitle: 'Set up your development environment',
-          url: '/docs/apps/pos/ui-extensions/getting-started',
+          url: '/docs/api/pos-ui-extensions/getting-started',
           type: 'blocks',
         },
       ],
