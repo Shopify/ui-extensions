@@ -1,5 +1,6 @@
 import type {
   Analytics,
+  AppMetafieldEntry,
   Capability,
   CheckoutToken,
   Country,
@@ -28,6 +29,19 @@ export interface AddressAutocompleteStandardApi<
     | 'purchase.address-autocomplete.suggest'
     | 'purchase.address-autocomplete.format-suggestion',
 > {
+  /**
+   * The metafields requested in the
+   * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration)
+   * file. These metafields are updated when there's a change in the merchandise items
+   * being purchased by the customer.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * > Tip:
+   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.*
+   */
+  appMetafields: AppMetafieldEntry[];
+
   /**
    * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
    */
