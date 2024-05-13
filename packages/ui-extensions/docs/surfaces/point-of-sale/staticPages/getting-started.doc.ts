@@ -105,12 +105,9 @@ You can install your app and preview your extension in Shopify POS from the deve
 
 1. With your server running, press \`p\` to open the developer console.
 
-2. In the developer console page, complete the following tasks:
+2. To preview your extension, select the **View mobile** button. This generates a deep link or QR code.
 
-  - To install your app, click on the preview link for the POS UI extension.
-  - To preview your extension, select the **View mobile** button. This generates a deep link or QR code.
-
-3. Using a mobile device with the Shopify POS app installed, scan the QR code that was generated from your developer console. This opens Shopify POS on your device, and installs the extension. If your extension's URL changes, then you need to re-add the smart grid extension tile.
+3. Using a mobile device with the Shopify POS app installed, scan the QR code. This opens Shopify POS on your device and installs the extension in preview mode. If your extension's URL changes, you will need to re-add the smart grid extension tile.
 
 > Tip:
 > If you're using Android and your extension isn't loading, then refer to the [troubleshooting guide](/docs/apps/pos/ui-extensions/troubleshooting).
