@@ -12,7 +12,7 @@ const SmartGridTile = () => {
 
   return (
     <Tile 
-      title="My App" 
+      title='My App' 
       subtitle={`${cart.lineItems.length} line items in cart`} 
       enabled
     />

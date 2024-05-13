@@ -1,4 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Locale API',
@@ -15,6 +16,18 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
+  examples: {
+    description: 'Examples of using the Locale API',
+    examples: [
+      {
+        codeblock: generateCodeBlock(
+          'Subscribe to locale changes.',
+          'locale-api',
+          'subscribable',
+        ),
+      },
+    ],
+  },
 };
 
 export default data;
