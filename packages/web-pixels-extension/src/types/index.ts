@@ -38,7 +38,8 @@ export type {
   PublisherOptions,
   SubscriberCallback,
   SubscriberOptions,
-  KeyOfEvent,
+} from './EventBus';
+export type {
   StandardEvents,
   CustomEvents,
   DomEvents,
@@ -46,6 +47,6 @@ export type {
   PixelEventName,
   StandardEventName,
   Events,
-  EventBus,
   SchemaVersion,
-} from './EventBus';
+  WebPixelsManager,
+} from './WebPixelsManager';
