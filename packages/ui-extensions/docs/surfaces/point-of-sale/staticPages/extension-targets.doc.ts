@@ -1,0 +1,68 @@
+import type {LandingTemplateSchema} from '@shopify/generate-docs';
+
+const data: LandingTemplateSchema = {
+  title: 'Targets overview',
+  description: `
+A [target](/docs/apps/app-extensions/configuration#targets) represents where your POS UI extension will appear.
+`,
+  id: 'extension-targets-overview',
+  image: '/assets/landing-pages/templated-apis/hero.png',
+  darkImage: '/assets/landing-pages/templated-apis/hero-dark.png',
+  tabletImage: '/assets/landing-pages/templated-apis/hero.png',
+  tabletDarkImage: '/assets/landing-pages/templated-apis/hero-dark.png',
+  mobileImage: '/assets/landing-pages/templated-apis/hero.png',
+  mobileDarkImage: '/assets/landing-pages/templated-apis/hero-dark.png',
+  sections: [
+    {
+      type: 'GenericAccordion',
+      title: 'Smart grid',
+      anchorLink: 'smart-grid',
+      sectionContent:
+        'The smart grid. Learn more about [the smart grid](/docs/apps/pos#home-screen).',
+      accordionContent: [
+        {
+          title: 'Tile',
+          description: `
+Displays a tile on the smart grid.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
+        {
+          title: 'Modal',
+          description: `
+Displays a modal when a tile is tapped.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
+      ],
+    },
+    {
+      type: 'GenericAccordion',
+      title: 'Post-purchase',
+      anchorLink: 'post-purchase',
+      sectionContent: 'The post-purchase screen',
+      accordionContent: [
+        {
+          title: 'Menu item',
+          description: `
+Displays a menu item on the post-purchase screen.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
+        {
+          title: 'Action',
+          description: `
+Displays a modal when a menu item is tapped.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
+      ],
+    },
+  ],
+};
+
+export default data;

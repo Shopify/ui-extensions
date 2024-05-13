@@ -23,7 +23,7 @@ const data: LandingTemplateSchema = {
         {
           subtitle: 'Extension targets',
           name: 'View all available extension targets',
-          url: '/docs/api/admin-extensions/components',
+          url: '/docs/api/pos-ui-extensions/targets',
           type: 'pickaxe-1',
         },
         {
