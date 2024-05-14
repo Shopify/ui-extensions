@@ -5,7 +5,7 @@ import { Text, Screen, ScrollView, Navigator, reactExtension } from '@shopify/ui
 const Modal = () => {
   return (
     <Navigator>
-      <Screen name="HelloWorld" title="Hello World!">
+      <Screen name='HelloWorld' title='Hello World!'>
         <ScrollView>
           <Text>Welcome to the extension!</Text>
         </ScrollView>
