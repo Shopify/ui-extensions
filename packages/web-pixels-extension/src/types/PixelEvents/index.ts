@@ -1165,6 +1165,7 @@ export interface InitData {
   checkout: Checkout | null;
   customer: Customer | null;
   productVariants: ProductVariant[] | null;
+  shop: Shop;
 }
 
 /**
@@ -1503,6 +1504,47 @@ export interface ShippingRate {
    * Price of this shipping rate.
    */
   price: MoneyV2;
+}
+
+/**
+ * Settings related to payments.
+ */
+export interface ShopPaymentSettings {
+  /**
+   * The three-letter code for the shop’s primary currency.
+   */
+  currencyCode: string;
+}
+
+/**
+ * The shop represents information about the store, such as the store name and
+ * currency.
+ */
+export interface Shop {
+  /**
+   * The shop’s country code.
+   */
+  countryCode: string;
+
+  /**
+   * The shop’s myshopify.com domain.
+   */
+  myshopifyDomain: string;
+
+  /**
+   * The shop’s name.
+   */
+  name: string;
+
+  /**
+   * Settings related to payments.
+   */
+  paymentSettings: ShopPaymentSettings;
+
+  /**
+   * The shop’s primary storefront URL.
+   */
+  storefrontUrl: string | null;
 }
 
 /**

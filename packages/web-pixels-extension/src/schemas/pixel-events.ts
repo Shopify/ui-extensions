@@ -177,6 +177,9 @@ export const pixelEvents = {
           nullable: true,
           ref: 'Cart',
         },
+        shop: {
+          ref: 'Shop',
+        },
         checkout: {
           nullable: true,
           ref: 'Checkout',
@@ -1261,6 +1264,53 @@ export const pixelEvents = {
           metadata: {
             description:
               'The name of the payment provider used for the transaction.',
+          },
+        },
+      },
+    },
+    Shop: {
+      metadata: {
+        description:
+          'The shop represents information about the store, such as the store name and currency.',
+      },
+      properties: {
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The shop’s name.',
+          },
+        },
+        paymentSettings: {
+          metadata: {
+            description: 'Settings related to payments.',
+          },
+          properties: {
+            currencyCode: {
+              type: 'string',
+              metadata: {
+                description:
+                  'The three-letter code for the shop’s primary currency.',
+              },
+            },
+          },
+        },
+        myshopifyDomain: {
+          type: 'string',
+          metadata: {
+            description: 'The shop’s myshopify.com domain.',
+          },
+        },
+        storefrontUrl: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description: 'The shop’s primary storefront URL.',
+          },
+        },
+        countryCode: {
+          type: 'string',
+          metadata: {
+            description: 'The shop’s country code.',
           },
         },
       },

@@ -7,6 +7,7 @@ export type {
   Browser,
   Context,
   Cart,
+  Shop,
   CartLine,
   Customer,
   DiscountApplication,

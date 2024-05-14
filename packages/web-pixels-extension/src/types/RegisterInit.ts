@@ -1,6 +1,7 @@
 import type {
   Context,
   Cart,
+  Shop,
   Checkout,
   Customer,
   ProductVariant,
@@ -12,6 +13,7 @@ export interface RegisterInit {
   data: {
     customer: Partial<Customer> | null;
     cart: Partial<Cart> | null;
+    shop: Shop;
   };
 }
 
@@ -19,6 +21,7 @@ export interface RegisterInit {
 export interface InitData {
   customer?: Customer;
   cart?: Cart;
+  shop: Shop;
   checkout?: Checkout;
   productVariants?: ProductVariant[];
 }
