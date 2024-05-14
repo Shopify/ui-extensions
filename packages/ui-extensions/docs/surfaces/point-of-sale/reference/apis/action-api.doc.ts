@@ -1,4 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Action API',
@@ -19,21 +20,18 @@ const data: ReferenceEntityTemplateSchema = {
     description: 'Examples of using the Action API.',
     examples: [
       {
-        codeblock: {
-          title: 'Present a modal screen',
-          tabs: [
-            {
-              title: 'React',
-              code: '../examples/action-api/present-modal.tsx',
-              language: 'tsx',
-            },
-            {
-              title: 'JS',
-              code: '../examples/action-api/present-modal.ts',
-              language: 'ts',
-            },
-          ],
-        },
+        codeblock: generateCodeBlock(
+          'Present a modal from post purchase.',
+          'action-api',
+          'present-modal',
+        ),
+      },
+      {
+        codeblock: generateCodeBlock(
+          'Present a modal from smart grid.',
+          'action-api',
+          'present-modal-tile',
+        ),
       },
     ],
   },

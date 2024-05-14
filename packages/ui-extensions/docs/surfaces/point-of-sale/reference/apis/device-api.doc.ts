@@ -1,4 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Device API',
@@ -15,6 +16,32 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
+  examples: {
+    description: 'Examples of using the Device API.',
+    examples: [
+      {
+        codeblock: generateCodeBlock(
+          'Retrieve name of the device.',
+          'device-api',
+          'name',
+        ),
+      },
+      {
+        codeblock: generateCodeBlock(
+          'Retrieve the ID of the device.',
+          'device-api',
+          'device-id',
+        ),
+      },
+      {
+        codeblock: generateCodeBlock(
+          'Check if device is a tablet.',
+          'device-api',
+          'tablet',
+        ),
+      },
+    ],
+  },
 };
 
 export default data;

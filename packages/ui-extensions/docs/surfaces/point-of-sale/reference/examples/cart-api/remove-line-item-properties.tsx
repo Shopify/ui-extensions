@@ -11,7 +11,7 @@ const SmartGridTile = () => {
 
   return (
     <Tile 
-      title="My App" 
+      title='My App' 
       subtitle='Call cart function' 
       enabled 
       onPress={() => api.cart.removeLineItemProperties('aa-1234567', ['Engraving'])}

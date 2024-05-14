@@ -5,22 +5,19 @@ import {
   ActionItem,
 } from '@shopify/ui-extensions-react/point-of-sale';
 
-const ModalTriggerActionItem = () => {
-  const api = useApi();
-
-  const handlePress = () => {
-    api.action.presentModal();
-  };
+const PostPurchaseActionItem = () => {
+  const api = useApi<'pos.purchase.post.action.menu-item.render'>();
 
   return (
     <ActionItem
+      title='My App'
+      onPress={() => api.action.presentModal()}
       enabled
-      onPress={handlePress}
     />
   );
 };
 
 export default reactExtension(
   'pos.purchase.post.action.menu-item.render',
-  () => <ModalTriggerActionItem />
+  () => <PostPurchaseActionItem />
 );
