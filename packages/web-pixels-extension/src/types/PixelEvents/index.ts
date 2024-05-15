@@ -779,6 +779,14 @@ export interface Checkout {
   billingAddress: MailingAddress | null;
 
   /**
+   * Indicates whether the customer has consented to be sent marketing
+   * material via email. This property is only available if you've [upgraded
+   * to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-
+   * settings/checkout-extensibility/checkout-upgrade).
+   */
+  buyerAcceptsEmailMarketing: boolean;
+
+  /**
    * The three-letter code that represents the currency, for example, USD.
    * Supported codes include standard ISO 4217 codes, legacy codes, and non-
    * standard codes.
