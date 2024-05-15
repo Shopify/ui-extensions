@@ -541,6 +541,13 @@ export const pixelEvents = {
               "Indicates whether the customer has consented to be sent marketing material via email. This property is only available if you've [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).",
           },
         },
+        buyerAcceptsSMSMarketing: {
+          type: 'boolean',
+          metadata: {
+            description:
+              "Indicates whether the customer has consented to be sent marketing material via SMS. This property is only available if you've [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).",
+          },
+        },
         currencyCode: {
           type: 'string',
           metadata: {
