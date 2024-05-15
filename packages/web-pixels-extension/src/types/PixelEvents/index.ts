@@ -792,7 +792,7 @@ export interface Checkout {
    * to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-
    * settings/checkout-extensibility/checkout-upgrade).
    */
-  buyerAcceptsSMSMarketing: boolean;
+  buyerAcceptsSmsMarketing: boolean;
 
   /**
    * The three-letter code that represents the currency, for example, USD.
