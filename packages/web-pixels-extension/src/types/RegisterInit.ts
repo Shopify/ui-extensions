@@ -15,6 +15,12 @@ export interface RegisterInit {
     cart: Partial<Cart> | null;
     shop: Shop;
   };
+  customerPrivacy: {
+    analyticsProcessingAllowed: boolean;
+    marketingAllowed: boolean;
+    preferencesProcessingAllowed: boolean;
+    saleOfDataAllowed: boolean;
+  };
 }
 
 // This is received by the web-pixels-manager from the backend
