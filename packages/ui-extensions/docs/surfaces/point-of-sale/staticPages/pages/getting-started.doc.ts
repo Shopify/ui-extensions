@@ -1,6 +1,6 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
-const examplePath = './examples/getting-started';
+const examplePath = '../examples/getting-started';
 
 const data: LandingTemplateSchema = {
   title: 'Getting started with POS UI extensions',
@@ -123,11 +123,15 @@ You can install your app and preview your extension in Shopify POS from the deve
 You can refer to the [list of the available POS UI Extension versions](/docs/api/pos-extensions/ui-extensions-reference/versions) to see if you are using the latest one.
 
 Merchants can manage their POS UI extensions across locations from the POS channel. You can direct merchants to this capability in your merchant facing communication: \`https://admin.shopify.com/store/{shop}/apps/point-of-sale-channel/settings/pos-ui-extensions\`
-
-## Next steps
-
-- Follow along with an [example discount extension](/docs/apps/pos/ui-extensions/discount-extension).
-- Explore the full [reference of Shopify retail APIs and components](/docs/api/pos-extensions/ui-extensions-reference) that you can use for your POS UI extension.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'next-steps',
+      title: 'Next steps',
+      sectionContent: `
+- Follow along with an [example discount extension](/docs/api/pos-ui-extensions/example-discount-extension).
+- Explore the full [reference of Shopify retail APIs and components](/docs/api/pos-ui-extensions) that you can use for your POS UI extension.
 - Learn how to [deploy and release an app extension](/docs/apps/deployment/app-versions).
         `,
     },
