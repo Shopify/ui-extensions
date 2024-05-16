@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'OrderApi',
       description: '',
-      type: 'OrderApiContent',
+      type: 'OrderAPIContent',
     },
   ],
   category: 'APIs',
