@@ -12,13 +12,13 @@ export interface ScannerSubscriptionResult {
 
 export interface ScannerApiContent {
   /** Creates a subscription to scan events
-   * Provides an initial value and a callback to subsribe to value changes. Currently supports only one subscription.
+   * Provides an initial value and a callback to subscribe to value changes. Currently supports only one subscription.
    * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
    * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
    */
   scannerDataSubscribable: RemoteSubscribable<ScannerSubscriptionResult>;
   /** Creates a subscription to the scanning sources available on the POS device.
-   * Provides an initial value and a callback to subsribe to value changes. Currently supports only one subscription.
+   * Provides an initial value and a callback to subscribe to value changes. Currently supports only one subscription.
    * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
    * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
    */
