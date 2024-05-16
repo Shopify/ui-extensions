@@ -32,7 +32,7 @@ export type LineItemDiscountType = 'Percentage' | 'FixedAmount';
 
 export interface CartApiContent {
   /** Provides a subscription to POS cart changes.
-   * Provides an initial value and a callback to subsribe to value changes. Currently supports only one subscription.
+   * Provides an initial value and a callback to subscribe to value changes. Currently supports only one subscription.
    * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
    * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
    */
