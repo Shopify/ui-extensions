@@ -1,0 +1,1 @@
+You're attempting to use the `[ScannerAPI](/docs/api/pos-extensions/ui-extensions-reference/api/scanner)`, but it doesn't work. You've done everything according to the documentation.

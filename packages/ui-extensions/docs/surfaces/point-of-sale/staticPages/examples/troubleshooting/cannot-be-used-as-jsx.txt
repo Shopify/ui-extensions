@@ -1,0 +1,7 @@
+'Tile' cannot be used as a JSX component.
+  Its element type 'ReactElement<any, any> | Component<ReactPropsFromRemoteComponentType<RemoteComponentType<"Tile", TileProps, true>>, any, any> | null' is not a valid JSX element.
+    Type 'Component<ReactPropsFromRemoteComponentType<RemoteComponentType<"Tile", TileProps, true>>, any, any>' is not assignable to type 'Element | ElementClass | null'.
+      Type 'Component<ReactPropsFromRemoteComponentType<RemoteComponentType<"Tile", TileProps, true>>, any, any>' is not assignable to type 'ElementClass'.
+        The types returned by 'render()' are incompatible between these types.
+          Type 'React.ReactNode' is not assignable to type 'import("/Users/heltisace/app-store-app/node_modules/@types/react-reconciler/node_modules/@types/react/index").ReactNode'.
+            Type '{}' is not assignable to type 'ReactNode'.
