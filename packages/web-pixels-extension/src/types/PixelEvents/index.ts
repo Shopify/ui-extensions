@@ -897,6 +897,15 @@ export interface CheckoutLineItem {
   quantity: number;
 
   /**
+   * The selling plan associated with the line item and the effect
+   * that each selling plan has on variants when they're purchased.
+   * This property is only available if you've [upgraded to Checkout
+   * Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-
+   * extensibility/checkout-upgrade).
+   */
+  sellingPlanAllocation: SellingPlanAllocation | null;
+
+  /**
    * The title of the line item. Defaults to the product's title.
    */
   title: string | null;
@@ -1502,6 +1511,34 @@ export interface SearchResult {
    * The search query that was executed
    */
   query: string;
+}
+
+/**
+ * Represents how products and variants can be sold and purchased.
+ */
+export interface SellingPlan {
+  /**
+   * A globally unique identifier.
+   */
+  id: string;
+
+  /**
+   * The name of the selling plan. For example, '6 weeks of prepaid granola,
+   * delivered weekly'.
+   */
+  name: string;
+}
+
+/**
+ * Represents an association between a variant and a selling plan.
+ */
+export interface SellingPlanAllocation {
+  /**
+   * A representation of how products and variants can be sold and purchased.
+   * For example, an individual selling plan could be '6 weeks of prepaid
+   * granola, delivered weekly'.
+   */
+  sellingPlan: SellingPlan;
 }
 
 /**

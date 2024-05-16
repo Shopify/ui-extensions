@@ -697,6 +697,14 @@ export const pixelEvents = {
               "The combined price of all of the items in the line item after line-level discounts have been applied. This property is only available if you've [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).",
           },
         },
+        sellingPlanAllocation: {
+          ref: 'SellingPlanAllocation',
+          nullable: true,
+          metadata: {
+            description:
+              "The selling plan associated with the line item and the effect that each selling plan has on variants when they're purchased. This property is only available if you've [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).",
+          },
+        },
       },
     },
     DiscountAllocation: {
@@ -770,6 +778,42 @@ export const pixelEvents = {
             typescriptType: 'MoneyV2 | PricingPercentageValue',
             description:
               'The value of the discount. Fixed discounts return a `Money` Object, while Percentage discounts return a `PricingPercentageValue` object.',
+          },
+        },
+      },
+    },
+    SellingPlanAllocation: {
+      metadata: {
+        description:
+          'Represents an association between a variant and a selling plan.',
+      },
+      properties: {
+        sellingPlan: {
+          ref: 'SellingPlan',
+          metadata: {
+            description:
+              "A representation of how products and variants can be sold and purchased. For example, an individual selling plan could be '6 weeks of prepaid granola, delivered weekly'.",
+          },
+        },
+      },
+    },
+    SellingPlan: {
+      metadata: {
+        description:
+          'Represents how products and variants can be sold and purchased.',
+      },
+      properties: {
+        id: {
+          type: 'string',
+          metadata: {
+            description: 'A globally unique identifier.',
+          },
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description:
+              "The name of the selling plan. For example, '6 weeks of prepaid granola, delivered weekly'.",
           },
         },
       },
