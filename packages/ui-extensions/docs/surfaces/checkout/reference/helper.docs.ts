@@ -210,10 +210,18 @@ export function getExamples(
       },
     },
     'order-status/default': {
+      description:
+        'Use the `order` API on the **Order status** page. This is applicable to the `customer-account.orders-status` extension targets only.',
+      codeblock: {
+        title: 'Order status',
+        tabs: getExtensionCodeTabs('order-status/default'),
+      },
+    },
+    'order-confirmation/default': {
       description: '',
       codeblock: {
-        title: '',
-        tabs: getExtensionCodeTabs('order-status/default'),
+        title: 'Order confirmation',
+        tabs: getExtensionCodeTabs('order-confirmation/default'),
       },
     },
     'checkout/default': {
@@ -531,7 +539,7 @@ const links: Record<string, LinkType[]> = {
 /**
  * Returns an array of `LinkType` that can be used as related links on an entity.
  * This uses a tag structure to allow you to group links together.
- * You can optinally exclude a specific type of link from the results
+ * You can optionally exclude a specific type of link from the results
  */
 export function getLinksByTag(
   name: string,
@@ -835,7 +843,7 @@ export const ORDER_STATUS_API_PROPERTIES_DESCRIPTION =
   'The API object provided to `customer-account.order-status` extension targets.';
 
 export const ORDER_CONFIRMATION_API_PROPERTIES_DESCRIPTION =
-  'The API object provided to `purchase.thank-you` and `customer-account.order-status` extension targets.';
+  'The API object provided to `purchase.thank-you` extension targets.';
 
 export const ORDER_STATUS_SURFACE_NOTE = `
 > Caution: Use the \`@shopify/ui-extensions/customer-account\` or \`@shopify/ui-extensions-react/customer-account\` surfaces when targeting order status targets. Importing from the \`checkout\` surface is deprecated as of version \`2023-10\`.

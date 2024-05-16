@@ -19,6 +19,11 @@ export interface Order {
    */
   cancelledAt?: string;
   /**
+   * The date and time when the order was processed.
+   * Processing happens after the checkout has completed, and indicates that the order is available in the admin.
+   */
+  processedAt?: string;
+  /**
    * A randomly generated alpha-numeric identifier for the order.
    * For orders created in 2024 and onwards, the number will always be present. For orders created before that date, the number might not be present.
    */

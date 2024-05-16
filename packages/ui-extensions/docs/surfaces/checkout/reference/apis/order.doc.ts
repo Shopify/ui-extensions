@@ -4,6 +4,7 @@ import {
   getLinksByTag,
   ORDER_STATUS_API_PROPERTIES_DESCRIPTION,
   ORDER_CONFIRMATION_API_PROPERTIES_DESCRIPTION,
+  getExample,
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -13,6 +14,11 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   category: 'APIs',
   type: 'API',
+  defaultExample: getExample('order-confirmation/default', ['jsx', 'js']),
+  examples: {
+    description: '',
+    examples: [getExample('order-status/default', ['jsx', 'js'])],
+  },
   definitions: [
     {
       title: 'OrderConfirmationApi',
