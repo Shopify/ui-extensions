@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   Navigator,
   Screen,
@@ -8,14 +8,13 @@ import {
   reactExtension,
 } from '@shopify/ui-extensions-react/point-of-sale';
 
-
 const SmartGridModal = () => {
   const scannerSources = useScannerSourcesSubscription();
 
   return (
-      <Navigator>
+    <Navigator>
       <Screen name="Home" title="Home">
-        <Stack direction="horizontal" flexChildren flex={1}>
+        <Stack direction="horizontal">
           <Text>{`Available scanner sources: ${scannerSources}`}</Text>
         </Stack>
       </Screen>
@@ -23,4 +22,6 @@ const SmartGridModal = () => {
   );
 };
 
-export default reactExtension('pos.home.modal.render', () => <SmartGridModal />);
+export default reactExtension('pos.home.modal.render', () => (
+  <SmartGridModal />
+));

@@ -1,18 +1,17 @@
 import React from 'react';
 import {
-  reactExtension,
-  useLocaleSubscription,
-  useApi,
   Tile,
+  useApi,
+  reactExtension,
 } from '@shopify/ui-extensions-react/point-of-sale';
 
 const SmartGridTile = () => {
-  const locale = useLocaleSubscription();
+  const api = useApi<'pos.home.tile.render'>();
 
   return (
     <Tile
-      title='My App'
-      subtitle={locale}
+      title="My App"
+      onPress={() => api.toast.show('Toast content', 5000)}
       enabled
     />
   );

@@ -1,5 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {ExtensionTargetType} from '../types/ExtensionTargetType';
+
+const generateCodeBlockForActionApi = (title: string, fileName: string) =>
+  generateCodeBlock(title, 'action-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Action API',
@@ -16,20 +20,21 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
+  requires:
+    ExtensionTargetType.PosHomeTileRender ||
+    ExtensionTargetType.PosPurchasePostActionMenuItemRender,
   examples: {
     description: 'Examples of using the Action API.',
     examples: [
       {
-        codeblock: generateCodeBlock(
+        codeblock: generateCodeBlockForActionApi(
           'Present a modal from post purchase.',
-          'action-api',
           'present-modal',
         ),
       },
       {
-        codeblock: generateCodeBlock(
+        codeblock: generateCodeBlockForActionApi(
           'Present a modal from smart grid.',
-          'action-api',
           'present-modal-tile',
         ),
       },

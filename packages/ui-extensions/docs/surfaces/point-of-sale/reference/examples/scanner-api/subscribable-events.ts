@@ -7,15 +7,6 @@ import {
 } from '@shopify/ui-extensions/point-of-sale';
 
 export default extension('pos.home.modal.render', (root, api) => {
-  api.scanner.scannerDataSubscribable.subscribe((data, source) => {
-    dataText.updateProps({
-      text: `Scanned data: ${data || ''}`,
-    });
-    sourceText.updateProps({
-      text: `Scanned data source: ${source || ''}`,
-    });
-  });
-
   const dataText = root.createComponent('Text', {
     text: 'Scanned data: ',
   });
@@ -26,8 +17,6 @@ export default extension('pos.home.modal.render', (root, api) => {
 
   const stack1 = root.createComponent(Stack, {
     direction: 'horizontal',
-    flexChildren: true,
-    flex: 1,
   });
 
   const screen = root.createComponent(Screen, {
@@ -42,4 +31,13 @@ export default extension('pos.home.modal.render', (root, api) => {
   screen.append(stack1);
   navigator.append(screen);
   root.append(navigator);
+
+  api.scanner.scannerDataSubscribable.subscribe((data, source) => {
+    dataText.updateProps({
+      text: `Scanned data: ${data || ''}`,
+    });
+    sourceText.updateProps({
+      text: `Scanned data source: ${source || ''}`,
+    });
+  });
 });
