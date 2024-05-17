@@ -23,7 +23,23 @@ const data: ReferenceEntityTemplateSchema = {
         'The base API object provided to `purchase` extension targets.',
       type: 'Docs_Standard_CustomerPrivacyApi',
     },
+    {
+      title: 'useCustomerPrivacy',
+      description:
+        'Returns the current customer privacy settings and metadata and re-renders your component if the customer privacy settings change.',
+      type: 'UseCustomerPrivacyGeneratedType',
+    },
   ],
+  defaultExample: getExample('customer-privacy/default', ['jsx', 'js']),
+  examples: {
+    description: '',
+    examples: [
+      getExample('customer-privacy/sheet-consent-banner-with-form', [
+        'jsx',
+        'js',
+      ]),
+    ],
+  },
   related: getLinksByTag('apis'),
 };
 
