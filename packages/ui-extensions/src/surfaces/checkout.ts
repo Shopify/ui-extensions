@@ -191,5 +191,7 @@ export type {
   ViewportSizeCondition,
 } from './checkout/style/types';
 
+export type {IdProps} from './checkout/components/shared';
+
 export * from './checkout/globals';
 export * from '../shared';

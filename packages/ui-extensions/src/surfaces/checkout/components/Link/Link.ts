@@ -15,7 +15,7 @@ export interface LinkProps
    */
   to?: string;
   /**
-   * Open the link in a new window or tab
+   * Open the link in a new window or tab. If the link points to a domain other than your Storefront, it will always open in a new tab.
    */
   external?: boolean;
   /**

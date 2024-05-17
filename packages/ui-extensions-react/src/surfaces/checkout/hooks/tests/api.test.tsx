@@ -17,7 +17,7 @@ describe('useApi', () => {
     expect(value).toMatchObject(extensionApi);
   });
 
-  it('throws when not run inside a UI extension', async () => {
+  it('throws when not run inside a checkout UI extension', async () => {
     const runner = async () => {
       return mount.hook(() => useApi());
     };

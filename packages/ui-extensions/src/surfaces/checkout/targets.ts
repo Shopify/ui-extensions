@@ -822,14 +822,14 @@ type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
   : never;
 
 /**
- * Deprecated. Use `ApiForExtensionTarget` instead.
+ * Deprecated. Use `ApiForExtension` instead.
  *
  * For a given rendering extension target, returns the type of the API that the
  * extension will receive at runtime. This API type is the second argument to
  * the callback for that extension target. The first callback for all of the rendering
  * extension targets each receive a `RemoteRoot` object.
  *
- * @deprecated  Use `ApiForExtensionTarget` instead.
+ * @deprecated  Use `ApiForExtension` instead.
  */
 export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
   ExtractedApiFromRenderExtension<RenderExtensions[Target]>;
