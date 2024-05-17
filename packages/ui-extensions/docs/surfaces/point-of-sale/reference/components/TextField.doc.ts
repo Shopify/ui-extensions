@@ -1,4 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'TextField',
@@ -41,6 +42,14 @@ const data: ReferenceEntityTemplateSchema = {
     `,
     },
   ],
+  examples: {
+    description: 'Examples of using the TextField component',
+    examples: [
+      {
+        codeblock: generateCodeBlock('Name Input', 'text-field', 'name'),
+      },
+    ],
+  },
 };
 
 export default data;

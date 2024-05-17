@@ -27,7 +27,7 @@ build_exit=$?
 # Remove .doc.js files
 find ./ -name '*.doc*.js' -exec rm -r {} \;
 find ./ -wholename '*/point-of-sale/reference/helpers/*.js' -exec rm -r {} \;
-
+find ./ -wholename '*/point-of-sale/reference/types/*.js' -exec rm -r {} \;
 if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit
 fi
