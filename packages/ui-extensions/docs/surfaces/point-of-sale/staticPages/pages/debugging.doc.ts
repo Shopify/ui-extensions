@@ -13,8 +13,8 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
-      anchorLink: `overview`,
-      title: `Overview`,
+      anchorLink: 'overview',
+      title: 'Overview',
       sectionContent: `
 APIs and components will report if they receive parameters of an unexpected type. For further debugging, you can use \`console.log\` to print any additional information in the console.
 
