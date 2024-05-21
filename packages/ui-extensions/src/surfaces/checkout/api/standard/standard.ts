@@ -1763,7 +1763,7 @@ export interface TrackingConsentMetafield {
    */
   key: string;
   /**
-   * The information to be stored as metadata. If the value is `null`, the metafield will be deleted.
+   * The information to be stored as metadata.
    *
    * @example 'any string', '', or a stringified JSON object
    */

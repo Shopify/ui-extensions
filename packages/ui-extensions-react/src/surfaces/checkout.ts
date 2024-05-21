@@ -338,3 +338,4 @@ export {useDeliveryGroups} from './checkout/hooks/delivery-groups';
 export {useDeliveryGroup} from './checkout/hooks/delivery-group';
 export {useDeliveryGroupTarget} from './checkout/hooks/delivery-group-target';
 export {useCheckoutToken} from './checkout/hooks/checkout-token';
+export {useCustomerPrivacy} from './checkout/hooks/customer-privacy';

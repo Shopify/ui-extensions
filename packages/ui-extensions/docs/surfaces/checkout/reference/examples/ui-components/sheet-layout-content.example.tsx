@@ -6,7 +6,7 @@ import {
   InlineLayout,
   Sheet,
   TextBlock,
-  useApi,
+  useCustomerPrivacy,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
@@ -15,12 +15,12 @@ export default reactExtension(
 );
 
 function Extension() {
-  const {customerPrivacy} = useApi();
+  const {shouldShowBanner} = useCustomerPrivacy();
 
   return (
     <Sheet
       accessibilityLabel="A sheet that collects privacy consent preferences"
-      defaultOpen={customerPrivacy.current.shouldShowBanner}
+      defaultOpen={shouldShowBanner}
       primaryAction={
         <>
           <Button
