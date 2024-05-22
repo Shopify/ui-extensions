@@ -2,36 +2,45 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export type BannerVariant = 'confirmation' | 'alert' | 'error' | 'information';
 
+/**
+ * @property title - The title text displayed on the banner.
+ * @property variant - The variant type of the banner.
+ * @property action - The text for the action button.
+ * @property onPress - The callback function executed when the banner is pressed.
+ * @property hideAction - Whether to hide the action button.
+ * @property visible - The visibility state of the banner.
+ */
 export interface BannerProps {
   /**
-   * The title of the banner.
+   * The title text displayed on the banner.
    */
   title: string;
 
   /**
-   * Banners have multiple variants that can be used to
-   * change the color and style of the banner.
+   * The variant type of the banner.
    */
   variant: BannerVariant;
 
   /**
-   * @defaultValue 'dismiss'
+   * The text for the action button.
+   * @defaultValue 'Dismiss'
    */
   action?: string;
 
   /**
-   * Dismisses the banner by default.
+   * The callback function executed when the banner is pressed.
+   * @defaultValue Callback which dismisses the banner
    */
   onPress?: () => void;
 
   /**
-   * Use this parameter to hide the action button.
+   * Whether to hide the action button.
+   * @defaultValue true
    */
   hideAction?: boolean;
 
   /**
-   * Whether or not the banner is visible.
-   * @defaultValue true
+   * The visibility state of the banner.
    */
   visible: boolean;
 }

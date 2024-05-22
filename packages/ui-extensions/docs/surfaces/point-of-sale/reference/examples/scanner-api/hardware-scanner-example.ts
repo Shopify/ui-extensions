@@ -8,9 +8,7 @@ import {
 } from '@shopify/ui-extensions/point-of-sale';
 
 export default extension('pos.home.modal.render', (root, api) => {
-  const text = root.createComponent('Text', {
-    text: 'Scanned data: ',
-  });
+  const text = root.createComponent('Text', null, 'Scanned data: ');
 
   const stack = root.createComponent(Stack, {
     direction: 'horizontal',
@@ -29,8 +27,6 @@ export default extension('pos.home.modal.render', (root, api) => {
   root.append(navigator);
 
   api.scanner.scannerDataSubscribable.subscribe((data) => {
-    text.updateProps({
-      text: `Scanned data: ${data || ''}`,
-    });
+    text.replaceChildren(`Scanned data: ${data || ''}`);
   });
 });
