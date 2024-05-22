@@ -1,0 +1,15 @@
+api_version = "2024-04"
+
+[[extensions]]
+type = "ui_extension"
+name = "my-tutorial-extension"
+handle = "my-tutorial-extension"
+description = "Tutorial extension!"
+
+[[extensions.targeting]]
+module = "./src/Tile.tsx"
+target = "pos.home.tile.render"
+
+[[extensions.targeting]]
+module = "./src/Modal.tsx"
+target = "pos.home.modal.render"
