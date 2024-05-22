@@ -209,6 +209,9 @@ export type {
   SelectOptionProps,
 } from './checkout/components/Select/Select';
 
+export {Sheet} from './checkout/components/Sheet/Sheet';
+export type {SheetProps} from './checkout/components/Sheet/Sheet';
+
 export {SkeletonImage} from './checkout/components/SkeletonImage/SkeletonImage';
 export type {SkeletonImageProps} from './checkout/components/SkeletonImage/SkeletonImage';
 
@@ -335,3 +338,4 @@ export {useDeliveryGroups} from './checkout/hooks/delivery-groups';
 export {useDeliveryGroup} from './checkout/hooks/delivery-group';
 export {useDeliveryGroupTarget} from './checkout/hooks/delivery-group-target';
 export {useCheckoutToken} from './checkout/hooks/checkout-token';
+export {useCustomerPrivacy} from './checkout/hooks/customer-privacy';
