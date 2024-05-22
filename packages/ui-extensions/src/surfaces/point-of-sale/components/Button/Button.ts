@@ -4,7 +4,7 @@ export type ButtonType = 'primary' | 'basic' | 'destructive' | 'plain';
 
 /**
  * @property `title` the text set on the `Button`.
- * @property `type` the type of `Button` to render. This will affect the styling.
+ * @property `type` the type of `Button` to render. Determines the appearance of the button.
  * @property `onPress` the callback that is executed when the user taps the button.
  * @property `isDisabled` sets whether the `Button` can be tapped.
  * @property `isLoading` sets whether the `Button` is displaying an animated loading state.
@@ -15,7 +15,7 @@ export interface ButtonProps {
    */
   title: string;
   /**
-   * The type of `Button` to render. This will affect the styling.
+   * The type of `Button` to render. Determines the appearance of the button.
    */
   type?: ButtonType;
   /**
