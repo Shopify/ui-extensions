@@ -18,7 +18,7 @@ const data: LandingTemplateSchema = {
       title: '1.7.0',
       sectionNotice: [
         {
-          sectionContent: `This is the final version using the \`retail-ui-extensions(-react)\` package. Please see the migration guide for more information.`,
+          sectionContent: `This is the final version using the \`retail-ui-extensions(-react)\` package. Please see the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.`,
           title: 'Note',
           type: 'Info',
         },
