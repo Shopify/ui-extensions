@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Screen, reactExtension, Text, ScrollView } from '@shopify/ui-extensions-react/point-of-sale';
 
