@@ -1,4 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
+
+const generateCodeBlockForButton = (title: string, fileName: string) =>
+  generateCodeBlock(title, 'button', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Button',
@@ -15,6 +19,12 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  defaultExample: {
+    codeblock: generateCodeBlockForButton(
+      'Render a button that presents a toast',
+      'default.example',
+    ),
+  },
 };
 
 export default data;
