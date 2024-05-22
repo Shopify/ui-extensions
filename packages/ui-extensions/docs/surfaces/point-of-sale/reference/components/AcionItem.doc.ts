@@ -7,7 +7,7 @@ const generateCodeBlockForActionItem = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'ActionItem',
   description:
-    'The action item provides a tappable surface on the specified extension target as an entry point to an extension. Note that the text displayed on this `ActionItem` is dependent on the description of the extension.',
+    'The `ActionItem` provides a tappable surface on the specified extension target as an entry point to an extension. Note that the text displayed on this `ActionItem` is dependent on the description of the extension.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
