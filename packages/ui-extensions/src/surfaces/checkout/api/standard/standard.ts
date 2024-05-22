@@ -1648,6 +1648,11 @@ export interface PickupLocationOption extends DeliveryOptionBase {
    * The location details of the pickup location.
    */
   location: PickupLocation;
+
+  /**
+   * The metafields associated with this delivery option.
+   */
+  metafields?: Metafield[];
 }
 
 interface PickupLocation {
