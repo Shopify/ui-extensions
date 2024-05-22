@@ -7,13 +7,13 @@ export interface StepperProps {
   initialValue: number;
 
   /**
-   * A callback that is called when the value of the stepper changes.
+   * A callback when the value of the stepper changes.
    */
   onValueChanged: (value: number) => void;
 
   /**
-   * @defaultValue 1
    * Use to set the minimum value of the stepper.
+   * @defaultValue 1
    */
   minimumValue?: number;
 
@@ -28,8 +28,8 @@ export interface StepperProps {
   value?: number;
 
   /**
-   * @defaultValue false
    * Whether the field can be modified.
+   * @defaultValue false
    */
   disabled?: boolean;
 }
