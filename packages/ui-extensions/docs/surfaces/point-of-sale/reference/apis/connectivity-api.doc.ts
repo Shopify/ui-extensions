@@ -1,6 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
+const generateCodeBlockForConnectivityApi = (title: string, fileName: string) =>
+  generateCodeBlock(title, 'connectivity-api', fileName);
+
 const data: ReferenceEntityTemplateSchema = {
   name: 'Connectivity API',
   description:
@@ -20,9 +23,8 @@ const data: ReferenceEntityTemplateSchema = {
     description: 'Examples of using the Connectivity API',
     examples: [
       {
-        codeblock: generateCodeBlock(
+        codeblock: generateCodeBlockForConnectivityApi(
           'Subscribe to connectivity changes.',
-          'connectivity-api',
           'subscribable',
         ),
       },

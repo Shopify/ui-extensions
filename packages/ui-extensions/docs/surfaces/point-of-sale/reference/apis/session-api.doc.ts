@@ -1,4 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
+
+const generateCodeBlockForSessionApi = (title: string, fileName: string) =>
+  generateCodeBlock(title, 'session-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Session API',
@@ -15,6 +19,17 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
+  examples: {
+    description: 'Examples of using the Session API',
+    examples: [
+      {
+        codeblock: generateCodeBlockForSessionApi(
+          'Retrieve the current session data',
+          'token',
+        ),
+      },
+    ],
+  },
 };
 
 export default data;

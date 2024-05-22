@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Tile,
   useApi,
@@ -10,8 +10,8 @@ const SmartGridTile = () => {
 
   return (
     <Tile
-      title='My App'
-      subtitle={api.device.getDeviceId()}
+      title="My App"
+      onPress={() => api.toast.show('Toast content', 5000)}
       enabled
     />
   );
