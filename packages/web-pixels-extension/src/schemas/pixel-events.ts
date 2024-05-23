@@ -1488,6 +1488,40 @@ export const pixelEvents = {
         },
       },
     },
+    MouseEventData: {
+      metadata: {
+        description: 'An object that contains data about a mouse event',
+      },
+      properties: {
+        element: {
+          ref: 'GenericElement',
+        },
+        screenX: {
+          type: 'int32',
+        },
+        screenY: {
+          type: 'int32',
+        },
+        pageX: {
+          type: 'int32',
+        },
+        pageY: {
+          type: 'int32',
+        },
+        offsetX: {
+          type: 'int32',
+        },
+        offsetY: {
+          type: 'int32',
+        },
+        movementX: {
+          type: 'int32',
+        },
+        movementY: {
+          type: 'int32',
+        },
+      },
+    },
     CustomData: {
       metadata: {
         description:
@@ -2269,11 +2303,7 @@ export const pixelEvents = {
           ref: 'Timestamp',
         },
         data: {
-          properties: {
-            element: {
-              ref: 'GenericElement',
-            },
-          },
+          ref: 'MouseEventData',
         },
       },
     },

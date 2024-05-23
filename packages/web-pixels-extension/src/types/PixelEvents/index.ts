@@ -138,17 +138,13 @@ export interface PixelEventsCheckoutStarted {
   type: EventType.Standard;
 }
 
-export interface PixelEventsClickedData {
-  element: GenericElement;
-}
-
 /**
  * The `clicked` event logs an instance where any element on the page has been
  * clicked
  */
 export interface PixelEventsClicked {
   clientId: ClientId;
-  data: PixelEventsClickedData;
+  data: MouseEventData;
   id: Id;
 
   /**
@@ -1358,6 +1354,21 @@ export interface MoneyV2 {
    * standard codes.
    */
   currencyCode: string;
+}
+
+/**
+ * An object that contains data about a mouse event
+ */
+export interface MouseEventData {
+  element: GenericElement;
+  movementX: number;
+  movementY: number;
+  offsetX: number;
+  offsetY: number;
+  pageX: number;
+  pageY: number;
+  screenX: number;
+  screenY: number;
 }
 
 /**
