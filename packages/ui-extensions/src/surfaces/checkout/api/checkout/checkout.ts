@@ -295,7 +295,7 @@ export interface GiftCardRemoveChange {
   type: 'removeGiftCard';
 
   /**
-   * Gift card code.
+   * The full gift card code, or the last four digits of the code.
    */
   code: string;
 }

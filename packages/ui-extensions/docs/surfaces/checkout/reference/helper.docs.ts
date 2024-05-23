@@ -98,6 +98,8 @@ export function getExamples(
     ...createExample(
       'customer-account.order-status.customer-information.render-after/default',
     ),
+    ...createExample('purchase.address-autocomplete.suggest/default'),
+    ...createExample('purchase.address-autocomplete.format-suggestion/default'),
     ...createExample('purchase.cart-line-item.line-components.render/default'),
     ...createExample('purchase.checkout.actions.render-before/default'),
     ...createExample('purchase.checkout.block.render/default'),
@@ -548,7 +550,7 @@ const links: Record<string, LinkType[]> = {
 /**
  * Returns an array of `LinkType` that can be used as related links on an entity.
  * This uses a tag structure to allow you to group links together.
- * You can optinally exclude a specific type of link from the results
+ * You can optionally exclude a specific type of link from the results
  */
 export function getLinksByTag(
   name: string,
@@ -614,6 +616,41 @@ const CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION = {
   description:
     'The base API object provided to this and other `customer-account` extension targets.',
   type: 'CustomerAccountStandardApi',
+};
+
+const ADDRESS_AUTOCOMPLETE_STANDARD_API_DEFINITION = {
+  title: 'AddressAutocompleteStandardApi',
+  description:
+    'The base API object provided to this and other `purchase.address-autocomplete` extension targets.',
+  type: 'AddressAutocompleteStandardApi',
+};
+
+const ADDRESS_AUTOCOMPLETE_SUGGEST_API_DEFINITION = {
+  title: 'AddressAutocompleteSuggestApi',
+  description:
+    'The API object provided to the `purchase.address-autocomplete.suggest` extension target.',
+  type: 'AddressAutocompleteSuggestApi',
+};
+
+const ADDRESS_AUTOCOMPLETE_SUGGEST_OUTPUT_DEFINITION = {
+  title: 'AddressAutocompleteSuggestOutput',
+  description:
+    'The object expected to be returned by the `purchase.address-autocomplete.suggest` extension target.',
+  type: 'AddressAutocompleteSuggestOutput',
+};
+
+const ADDRESS_AUTOCOMPLETE_FORMAT_SUGGESTION_API_DEFINITION = {
+  title: 'AddressAutocompleteFormatSuggestionApi',
+  description:
+    'The API object provided to the `purchase.address-autocomplete.format-suggestion` extension target.',
+  type: 'AddressAutocompleteFormatSuggestionApi',
+};
+
+const ADDRESS_AUTOCOMPLETE_FORMAT_SUGGESTION_OUTPUT_DEFINITION = {
+  title: 'AddressAutocompleteFormatSuggestionOutput',
+  description:
+    'The object expected to be returned by the `purchase.address-autocomplete.format-suggestion` extension target.',
+  type: 'AddressAutocompleteFormatSuggestionOutput',
 };
 
 const CART_LINE_ITEM_API_DEFINITION = {
@@ -686,6 +723,24 @@ export const STANDARD_API = {
 
 export const CHECKOUT_API = {
   definitions: [CHECKOUT_API_DEFINITION, STANDARD_API_DEFINITION],
+  ...COMMON_API,
+};
+
+export const ADDRESS_AUTOCOMPLETE_SUGGEST_API = {
+  definitions: [
+    ADDRESS_AUTOCOMPLETE_SUGGEST_API_DEFINITION,
+    ADDRESS_AUTOCOMPLETE_SUGGEST_OUTPUT_DEFINITION,
+    ADDRESS_AUTOCOMPLETE_STANDARD_API_DEFINITION,
+  ],
+  ...COMMON_API,
+};
+
+export const ADDRESS_AUTOCOMPLETE_FORMAT_SUGGESTION_API = {
+  definitions: [
+    ADDRESS_AUTOCOMPLETE_FORMAT_SUGGESTION_API_DEFINITION,
+    ADDRESS_AUTOCOMPLETE_FORMAT_SUGGESTION_OUTPUT_DEFINITION,
+    ADDRESS_AUTOCOMPLETE_STANDARD_API_DEFINITION,
+  ],
   ...COMMON_API,
 };
 

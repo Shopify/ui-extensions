@@ -72,7 +72,7 @@ export type Capability =
   | 'collect_buyer_consent.customer_privacy';
 
 /**
- * Meta information about an extension target.
+ * The meta information about an extension target.
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -90,31 +90,31 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
    *
-   * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
+   * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a customer's progress and the merchant has allowed this blocking behavior.
    *
-   * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
+   * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect customer consent for SMS marketing.
    *
-   * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
+   * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register customer consent decisions that will be honored on Shopify-managed services.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 
   /**
    * Information about the editor where the extension is being rendered.
    *
-   * The value is undefined if the extension is not rendering in an editor.
+   * If the value is undefined, then the extension is not running in an editor.
    */
   editor?: Editor;
 
   /**
-   * Whether your extension is currently rendered to the screen.
+   * A Boolean to show whether your extension is currently rendered to the screen.
    *
    * Shopify might render your extension before it's visible in the UI,
    * typically to pre-render extensions that will appear on a later step of the
    * checkout.
    *
-   * Your extension might also continue to run after the buyer has navigated away
+   * Your extension might also continue to run after the customer has navigated away
    * from where it was rendered. The extension continues running so that
-   * your extension is immediately available to render if the buyer navigates back.
+   * your extension is immediately available to render if the customer navigates back.
    */
   rendered: StatefulRemoteSubscribable<boolean>;
 
@@ -368,7 +368,7 @@ export interface Market {
 
 export interface Localization {
   /**
-   * The currency that the buyer sees for money amounts in the checkout.
+   * The currency that the customer sees for money amounts in the checkout.
    */
   currency: StatefulRemoteSubscribable<Currency>;
 
@@ -378,19 +378,19 @@ export interface Localization {
   timezone: StatefulRemoteSubscribable<Timezone>;
 
   /**
-   * The language the buyer sees in the checkout.
+   * The language the customer sees in the checkout.
    */
   language: StatefulRemoteSubscribable<Language>;
 
   /**
-   * This is the buyer's language, as supported by the extension.
-   * If the buyer's actual language is not supported by the extension,
-   * this is the fallback locale used for translations.
+   * This is the customer's language, as supported by the extension.
+   * If the customer's actual language is not supported by the extension,
+   * then this is the language that is used for translations.
    *
-   * For example, if the buyer's language is 'fr-CA' but your extension
+   * For example, if the customer's language is 'fr-CA' but your extension
    * only supports translations for 'fr', then the `isoCode` for this
    * language is 'fr'. If your extension does not provide french
-   * translations at all, this value is the default locale for your
+   * translations at all, then this value is the default locale for your
    * extension (that is, the one matching your .default.json file).
    */
   extensionLanguage: StatefulRemoteSubscribable<Language>;
@@ -399,7 +399,7 @@ export interface Localization {
    * The country context of the checkout. This value carries over from the
    * context of the cart, where it was used to contextualize the storefront
    * experience. It will update if the buyer changes the country of their
-   * shipping address. The value is undefined if unknown.
+   * shipping address. If the country is unknown, then the value is undefined.
    */
   country: StatefulRemoteSubscribable<Country | undefined>;
 
@@ -407,8 +407,8 @@ export interface Localization {
    * The [market](https://shopify.dev/docs/apps/markets) context of the
    * checkout. This value carries over from the context of the cart, where it
    * was used to contextualize the storefront experience. It will update if the
-   * buyer changes the country of their shipping address. The value is undefined
-   * if unknown.
+   * buyer changes the country of their shipping address.  If the market is unknown,
+   * then the value is undefined.
    */
   market: StatefulRemoteSubscribable<Market | undefined>;
 }
@@ -500,7 +500,7 @@ export interface BuyerJourneyStep {
 
 export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
-   * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
+   * The methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
    */
   analytics: Analytics;
 
@@ -523,7 +523,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 
   /**
-   * Custom attributes left by the customer to the merchant, either in their cart or during checkout.
+   * The custom attributes left by the customer to the merchant, either in their cart or during checkout.
    */
   attributes: StatefulRemoteSubscribable<Attribute[] | undefined>;
 
@@ -542,7 +542,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Provides details on the buyer's progression through the checkout.
    *
-   * See [buyer journey](https://shopify.dev/docs/api/checkout-ui-extensions/apis/buyer-journey#examples)
+   * Refer to [buyer journey](https://shopify.dev/docs/api/checkout-ui-extensions/apis/buyer-journey#examples)
    * examples for more information.
    */
   buyerJourney: BuyerJourney;
@@ -553,10 +553,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   checkoutSettings: StatefulRemoteSubscribable<CheckoutSettings>;
 
   /**
-   * A stable id that represents the current checkout.
+   * A stable ID that represents the current checkout.
    *
    * Matches the `token` field in the [WebPixel checkout payload](https://shopify.dev/docs/api/pixels/customer-events#checkout)
-   * and the `checkout_token` field in the [Admin REST API Order resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
+   * and the `checkout_token` field in the [REST Admin API `Order` resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
    */
   checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
 
@@ -581,7 +581,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   discountAllocations: StatefulRemoteSubscribable<CartDiscountAllocation[]>;
 
   /**
-   * Meta information about the extension.
+   * The meta information about the extension.
    */
   extension: Extension<Target>;
 
@@ -603,7 +603,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization)
    * of the checkout.
    *
-   * See [localization examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#examples)
+   * Refer to [`localization` examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#examples)
    * for more information.
    */
   i18n: I18n;
@@ -614,7 +614,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   lines: StatefulRemoteSubscribable<CartLine[]>;
 
   /**
-   * Details about the location, language, and currency of the buyer. For utilities to easily
+   * The details about the location, language, and currency of the customer. For utilities to easily
    * format and translate content based on these details, you can use the
    * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-i18n)
    * object instead.
@@ -640,9 +640,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   note: StatefulRemoteSubscribable<string | undefined>;
 
   /**
-   * Used to query the Storefront GraphQL API with a prefetched token.
+   * The method used to query the Storefront GraphQL API with a prefetched token.
    *
-   * See [storefront api access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/storefront-api) for more information.
+   * Refer to [Storefront API access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/storefront-api) for more information.
    */
   query: <Data = unknown, Variables = Record<string, unknown>>(
     query: string,
@@ -655,9 +655,13 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   selectedPaymentOptions: StatefulRemoteSubscribable<SelectedPaymentOption[]>;
 
   /**
-   * Provides access to session tokens, which can be used to verify token claims on your app's server.
+   * The session token providing a set of claims as a signed JSON Web Token (JWT).
    *
-   * See [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/session-token) for more information.
+   * The token has a TTL of 5 minutes.
+   *
+   * If the previous token expires, this value will reflect a new session token with a new signature and expiry.
+   *
+   * Refer to [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/session-token) for more information.
    */
   sessionToken: SessionToken;
 
@@ -665,7 +669,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * The settings matching the settings definition written in the
    * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
    *
-   *  See [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/settings) for more information.
+   *  Refer to [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/settings#examples) for more information.
    *
    * > Note: When an extension is being installed in the editor, the settings will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
@@ -673,7 +677,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   settings: StatefulRemoteSubscribable<ExtensionSettings>;
 
   /**
-   * The proposed buyer shipping address. During the information step, the address
+   * The proposed customer shipping address. During the information step, the address
    * updates when the field is committed (on change) rather than every keystroke.
    * An address value is only present if delivery is required. Otherwise, the
    * subscribable value is undefined.
@@ -683,22 +687,24 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   shippingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
 
   /**
-   * The proposed buyer billing address. The address updates when the field is
+   * The proposed customer billing address. The address updates when the field is
    * committed (on change) rather than every keystroke.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   billingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
 
-  /** Shop where the checkout is taking place. */
+  /** The shop where the checkout is taking place. */
   shop: Shop;
 
   /**
-   * Key-value storage for the extension.
-   * Uses `localStorage` and should persist across the buyer's current checkout session.
-   * However, data persistence isn't guaranteed and storage is reset when the buyer starts a new checkout.
+   * The key-value storage for the extension.
    *
-   * Data is shared across all activated extension targets of this extension. In versions `<=2023-07`,
+   * It uses `localStorage` and should persist across the customer's current checkout session.
+   *
+   * > Caution: Data persistence isn't guaranteed and storage is reset when the customer starts a new checkout.
+   *
+   * Data is shared across all activated extension targets of this extension. In versions 2023-07 and earlier,
    * each activated extension target had its own storage.
    */
   storage: Storage;
@@ -782,7 +788,7 @@ export interface BuyerIdentity {
 }
 
 /**
- * Information about a company that the business customer is purchasing on behalf of.
+ * The information about a company that the business customer is purchasing on behalf of.
  */
 export interface PurchasingCompany {
   /**
@@ -1153,7 +1159,7 @@ export interface SelectedPaymentOption {
   /**
    * The unique handle referencing `PaymentOption.handle`.
    *
-   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/payments#standardapi-propertydetail-availablepaymentoptions).
+   * Refer to [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/payments#standardapi-propertydetail-availablepaymentoptions).
    */
   handle: string;
 }
@@ -1417,7 +1423,7 @@ export interface PaymentTermsTemplate {
    */
   id: string;
   /**
-   * The name of the payment terms translated to the buyer's current language. See [localization.language](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-localization).
+   * The name of the payment terms translated to the buyer's current language. Refer to [localization.language](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-localization).
    */
   name: string;
   /**
