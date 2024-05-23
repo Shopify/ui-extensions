@@ -6,7 +6,6 @@
 
 - [#1995](https://github.com/Shopify/ui-extensions/pull/1995) [`9ff6a2c2`](https://github.com/Shopify/ui-extensions/commit/9ff6a2c2b0681e5a60d519974f77b789301a5c64) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - - Adds the `Sheet` component.
 
-  - Adds `useCustomerPrivacy` hook.
   - Adds `allowedProcessing` and `metafields` to Customer Privacy API.
 
 - [#2009](https://github.com/Shopify/ui-extensions/pull/2009) [`505f64e6`](https://github.com/Shopify/ui-extensions/commit/505f64e67e16969ca5a3a90ccb7761a92243982d) Thanks [@mleandres](https://github.com/mleandres)! - Adds support for the following extension targets:
