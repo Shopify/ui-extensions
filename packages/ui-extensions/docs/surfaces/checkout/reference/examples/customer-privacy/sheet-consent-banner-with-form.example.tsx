@@ -84,7 +84,7 @@ function Extension() {
   };
 
   const consentFormMarkup = (
-    <Form onSubmit={handleConsentChange}>
+    <Form onSubmit={() => handleConsentChange()}>
       <BlockStack>
         <Grid spacing="base">
           <Checkbox
