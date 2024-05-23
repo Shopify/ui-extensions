@@ -227,6 +227,9 @@ export type {SpinnerProps} from './checkout/components/Spinner/Spinner';
 export {Stepper} from './checkout/components/Stepper/Stepper';
 export type {StepperProps} from './checkout/components/Stepper/Stepper';
 
+export {Switch} from './checkout/components/Switch/Switch';
+export type {SwitchProps} from './checkout/components/Switch/Switch';
+
 export {Tag} from './checkout/components/Tag/Tag';
 export type {TagProps} from './checkout/components/Tag/Tag';
 

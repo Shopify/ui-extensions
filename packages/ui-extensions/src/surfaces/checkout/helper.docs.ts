@@ -149,6 +149,15 @@ export function getExamples(
         ),
       },
     },
+    'ui-components/switch-custom-label': {
+      description:
+        'This example demonstrates pairing the switch with a custom label and layout while keeping it accessible to screen readers.',
+      image: 'switch-custom-label.png',
+      codeblock: {
+        title: 'Custom label',
+        tabs: getExtensionCodeTabs('ui-components/switch-custom-label'),
+      },
+    },
   };
 }
 
