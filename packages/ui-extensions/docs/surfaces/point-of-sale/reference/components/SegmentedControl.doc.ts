@@ -1,5 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
+
 const data: ReferenceEntityTemplateSchema = {
   name: 'SegmentedControl',
   description:
@@ -15,6 +17,13 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  defaultExample: {
+    codeblock: generateCodeBlock(
+      'SegmentedControl',
+      'segmentedcontrol',
+      'default.example',
+    ),
+  },
 };
 
 export default data;
