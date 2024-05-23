@@ -1,6 +1,9 @@
 import type {
-  AddressAutocompleteSuggestion,
   AddressAutocompleteSuggestApi,
+  AddressAutocompleteSuggestOutput,
+  AddressAutocompleteFormatSuggestionApi,
+  AddressAutocompleteFormatSuggestionOutput,
+  AddressAutocompleteStandardApi,
 } from '../checkout';
 
 import type {CartLineItemApi} from './api/cart-line/cart-line-item';
@@ -722,13 +725,32 @@ export interface RenderExtensionTargets {
 
 export interface RunnableExtensionTargets {
   /**
-   * An extension target used to provide address autocomplete suggestions. It does not support rendering UI components.
-   * @private
-   * @experimental
+   * An extension target that provides address autocomplete suggestions. These suggestions are shown to buyers as they
+   * interact with address forms during checkout.
+   *
+   * It must return a list of address suggestions. If a formatted address is provided with each suggestion, it will be
+   * used to auto-populate the fields in the address form when the buyer selects a suggestion.
+   *
+   * This target does not support rendering UI components.
    */
   'purchase.address-autocomplete.suggest': RunnableExtension<
-    AddressAutocompleteSuggestApi,
-    AddressAutocompleteSuggestion[]
+    AddressAutocompleteStandardApi<'purchase.address-autocomplete.suggest'> &
+      AddressAutocompleteSuggestApi,
+    AddressAutocompleteSuggestOutput
+  >;
+  /**
+   * An extension target that formats the selected address suggestion provided by a
+   * `purchase.address-autocomplete.suggest` target. This address is used to auto-populate the fields in the address
+   * form.
+   *
+   * It must return a formatted address.
+   *
+   * This target does not support rendering UI components.
+   */
+  'purchase.address-autocomplete.format-suggestion': RunnableExtension<
+    AddressAutocompleteStandardApi<'purchase.address-autocomplete.format-suggestion'> &
+      AddressAutocompleteFormatSuggestionApi,
+    AddressAutocompleteFormatSuggestionOutput
   >;
 }
 
@@ -762,7 +784,7 @@ export type ArgumentsForExtension<Target extends keyof ExtensionTargets> =
  * For RenderExtensionTargets, this API type is the second argument to
  * the callback for that extension target.
  *
- * For RunnableExtensionTargets, this API type if the only argument to
+ * For RunnableExtensionTargets, this API type is the only argument to
  * the callback for that extension target.
  */
 export type ApiForExtension<Target extends ExtensionTarget> =
@@ -800,14 +822,14 @@ type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
   : never;
 
 /**
- * Deprecated. Use `ApiForExtensionTarget` instead.
+ * Deprecated. Use `ApiForExtension` instead.
  *
  * For a given rendering extension target, returns the type of the API that the
  * extension will receive at runtime. This API type is the second argument to
  * the callback for that extension target. The first callback for all of the rendering
  * extension targets each receive a `RemoteRoot` object.
  *
- * @deprecated  Use `ApiForExtensionTarget` instead.
+ * @deprecated  Use `ApiForExtension` instead.
  */
 export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
   ExtractedApiFromRenderExtension<RenderExtensions[Target]>;
