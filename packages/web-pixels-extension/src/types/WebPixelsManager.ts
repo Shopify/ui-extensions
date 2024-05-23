@@ -11,7 +11,7 @@ export type SchemaVersion = 'v1';
 
 export type PixelEventName = keyof PixelEvents;
 
-type EventNameOfType<T extends EventType> = {
+export type EventNameOfType<T extends EventType> = {
   [K in PixelEventName]: PixelEvents[K] extends {type: T} ? K : never;
 }[PixelEventName];
 
