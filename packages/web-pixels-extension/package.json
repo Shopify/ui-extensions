@@ -1,7 +1,7 @@
 {
   "name": "@shopify/web-pixels-extension",
   "description": "Provides tools to author Web Pixels extension",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
