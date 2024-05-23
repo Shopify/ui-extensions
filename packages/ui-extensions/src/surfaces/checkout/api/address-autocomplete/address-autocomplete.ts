@@ -43,9 +43,9 @@ export interface AddressAutocompleteSuggestion {
   id?: string;
 
   /**
-   * Optional.
+   * A list of substrings that matched the original search query.
    *
-   * If provided, this will be used to highlight the substrings
+   * If `matchedSubstrings` are provided, then they will be used to highlight the substrings
    * of the suggestions that matched the original search query.
    *
    * @example [{offset: 0, length: 4}]
@@ -53,13 +53,10 @@ export interface AddressAutocompleteSuggestion {
   matchedSubstrings?: MatchedSubstring[];
 
   /**
-   * Optional.
+   * The formatted address that will auto-fill the remaining address fields.
    *
-   * If an extension returns this along with a suggestion, the autocomplete
-   * field will use this value to auto-fill the remaining address fields.
-   *
-   * If this value is returned for every suggestion, there is no need to implement
-   * the `purchase.address-autocomplete.format-suggestion` extension target.
+   * If this value is returned for every suggestion, then the
+   * `purchase.address-autocomplete.format-suggestion` extension target is not needed.
    */
   formattedAddress?: AutocompleteAddress;
 }
