@@ -1,4 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
+
+const generateCodeBlockForComponent = (title: string, fileName: string) =>
+  generateCodeBlock(title, 'scroll-view', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'ScrollView',
@@ -9,6 +13,9 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [],
   category: 'Components',
   related: [],
+  defaultExample: {
+    codeblock: generateCodeBlockForComponent('ScrollView', 'default.example'),
+  },
 };
 
 export default data;

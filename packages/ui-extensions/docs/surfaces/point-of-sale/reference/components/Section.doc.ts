@@ -1,4 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
+
+const generateCodeBlockForComponent = (title: string, fileName: string) =>
+  generateCodeBlock(title, 'section', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Section',
@@ -12,9 +16,17 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'SectionProps',
     },
+    {
+      title: 'SectionHeaderAction',
+      description: '',
+      type: 'SectionHeaderAction',
+    },
   ],
   category: 'Components',
   related: [],
+  defaultExample: {
+    codeblock: generateCodeBlockForComponent('Section', 'default.example'),
+  },
 };
 
 export default data;
