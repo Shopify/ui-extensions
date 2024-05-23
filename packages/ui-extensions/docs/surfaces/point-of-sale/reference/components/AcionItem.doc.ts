@@ -1,9 +1,13 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
+
+const generateCodeBlockForActionItem = (title: string, fileName: string) =>
+  generateCodeBlock(title, 'action-item', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'ActionItem',
   description:
-    'The action item provides a tappable surface on the specified extension target as an entry point to an extension.',
+    'The `ActionItem` provides a tappable surface on the specified extension target as an entry point to an extension. Note that the text displayed on this `ActionItem` is dependent on the description of the extension.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
@@ -15,6 +19,12 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  defaultExample: {
+    codeblock: generateCodeBlockForActionItem(
+      'Render an ActionItem in post purchase',
+      'default.example',
+    ),
+  },
 };
 
 export default data;
