@@ -16,7 +16,14 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Components',
-  related: [],
+  related: [
+    {
+      name: 'ProductSearch API',
+      subtitle:
+        'See how to use the ProductSearch API with a SearchBar to search for products.',
+      url: '/api/pos-ui-extensions/apis/productsearch-api#example-search-for-products-with-a-search-bar',
+    },
+  ],
   defaultExample: {
     codeblock: generateCodeBlock('SearchBar', 'searchbar', 'default.example'),
   },
