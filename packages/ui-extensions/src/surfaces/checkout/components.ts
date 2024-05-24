@@ -158,6 +158,9 @@ export type {SpinnerProps} from './components/Spinner/Spinner';
 export {Stepper} from './components/Stepper/Stepper';
 export type {StepperProps} from './components/Stepper/Stepper';
 
+export {Switch} from './components/Switch/Switch';
+export type {SwitchProps} from './components/Switch/Switch';
+
 export {Tag} from './components/Tag/Tag';
 export type {TagProps} from './components/Tag/Tag';
 

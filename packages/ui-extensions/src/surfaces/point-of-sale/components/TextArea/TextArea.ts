@@ -7,6 +7,9 @@ import type {InputProps} from '../shared/InputField';
  * @property {number} [rows] - The initial number of lines to be displayed. Maximum of 8 lines.
  */
 export interface TextAreaProps extends InputProps {
+  /**
+   * The initial number of lines to be displayed. Maximum of 8 lines.
+   */
   rows?: number;
 }
 

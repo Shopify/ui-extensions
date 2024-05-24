@@ -1,3 +1,5 @@
+import type {CountryCode} from '../../../checkout';
+
 import type {AddressAutocompleteSuggestion} from './shared';
 
 export interface AddressAutocompleteSuggestApi {
@@ -14,7 +16,7 @@ export interface AddressAutocompleteSuggestApi {
   signal: AbortSignal;
 
   /**
-   * The current state of the address field that the buyer is interacting with.
+   * The current state of the address form that the buyer is interacting with.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
@@ -38,6 +40,15 @@ interface Target {
    * @example "address1"
    */
   field: 'address1' | 'zip';
+
+  /**
+   * The `countryCode` selected in the address form that the buyer is interacting with.
+   *
+   * This code is in ISO 3166 Alpha-2 format representing the buyer's country. Refer to https://www.iso.org/iso-3166-country-codes.html.
+   *
+   * @example 'CA' for Canada.
+   */
+  selectedCountryCode?: CountryCode;
 }
 
 export interface AddressAutocompleteSuggestOutput {

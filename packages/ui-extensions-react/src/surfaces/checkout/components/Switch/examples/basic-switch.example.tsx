@@ -1,8 +1,6 @@
-import React from 'react';
-
 import {
   reactExtension,
-  ConsentPhoneField,
+  Switch,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
@@ -12,9 +10,6 @@ export default reactExtension(
 
 function Extension() {
   return (
-    <ConsentPhoneField
-      label="Phone"
-      policy="sms-marketing"
-    />
+    <Switch accessibilityLabel="my-switch" />
   );
 }
