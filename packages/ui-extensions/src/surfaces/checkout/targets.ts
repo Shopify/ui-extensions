@@ -169,7 +169,7 @@ export interface RenderExtensionTargets {
    * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * The [placements](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#placements) for block extension targets can be previewed during development
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    */
   'purchase.checkout.block.render': RenderExtension<
@@ -181,7 +181,7 @@ export interface RenderExtensionTargets {
    * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * The [placements](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#placements) for block extension targets can be previewed during development
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    * @deprecated Use `purchase.checkout.block.render` instead.
@@ -195,7 +195,7 @@ export interface RenderExtensionTargets {
    * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * The [placements](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#placements) for block extension targets can be previewed during development
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    */
@@ -208,7 +208,7 @@ export interface RenderExtensionTargets {
    * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * The [placements](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#placements) for block extension targets can be previewed during development
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    * @deprecated Use `purchase.thank-you.block.render` instead.
@@ -280,7 +280,7 @@ export interface RenderExtensionTargets {
    * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * The [placements](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#placements) for block extension targets can be previewed during development
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    * @deprecated Use `customer-account.order-status.block.render` from `@shopify/ui-extension/customer-account` instead.
@@ -295,7 +295,7 @@ export interface RenderExtensionTargets {
    * Unlike static extension targets, block extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development
+   * The [placements](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#placements) for block extension targets can be previewed during development
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    * @deprecated Use `customer-account.order-status.block.render` from `@shopify/ui-extension/customer-account` instead.
