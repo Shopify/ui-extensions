@@ -9,6 +9,11 @@ export type BadgeVariant =
 
 export type BadgeStatus = 'empty' | 'partial' | 'complete';
 
+/**
+ * @property text - The text displayed inside the badge.
+ * @property variant - The appearance and function of the badge.
+ * @property status - A circle icon displaying the status of the badge.
+ */
 export interface BadgeProps {
   /**
    * The text displayed inside the badge.
@@ -21,7 +26,7 @@ export interface BadgeProps {
   variant: BadgeVariant;
 
   /**
-   * A circle icon on the badge.
+   * A circle icon displaying the status of the badge.
    */
   status?: BadgeStatus;
 }
