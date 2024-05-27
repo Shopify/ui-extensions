@@ -1,4 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'List',
@@ -14,7 +15,23 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Components',
-  related: [],
+  related: [
+    {
+      name: 'ProductSearch API',
+      subtitle:
+        'See how to use the ProductSearch API with a SearchBar to search for products.',
+      url: '/api/pos-ui-extensions/apis/productsearch-api#example-search-for-products-with-a-search-bar',
+    },
+  ],
+  examples: {
+    description: 'Examples of using the TextField component',
+    examples: [
+      {
+        codeblock: generateCodeBlock('Product List', 'list', 'products'),
+      },
+    ],
+  },
+
   subSections: [
     {
       type: 'Generic',
