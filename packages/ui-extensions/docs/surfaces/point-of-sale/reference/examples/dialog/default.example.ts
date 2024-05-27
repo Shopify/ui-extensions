@@ -24,10 +24,12 @@ export default extension(
 
     const handlePrimaryAction = () => {
       dialog.updateProps({visible: false});
+      console.log('Primary action pressed');
     };
 
     const handleSecondaryAction = () => {
       dialog.updateProps({visible: false});
+      console.log('Secondary action pressed');
     };
 
     const dialog = root.createComponent(Dialog, {
