@@ -7,13 +7,13 @@ import {
 } from '@shopify/ui-extensions/point-of-sale';
 
 export default extension('pos.home.modal.render', (root, api) => {
-  const dataText = root.createComponent('Text', {
-    text: 'Scanned data: ',
-  });
+  const dataText = root.createComponent('Text', null, 'Scanned data: ');
 
-  const sourceText = root.createComponent('Text', {
-    text: 'Scanned data source: ',
-  });
+  const sourceText = root.createComponent(
+    'Text',
+    null,
+    'Scanned data source: ',
+  );
 
   const stack1 = root.createComponent(Stack, {
     direction: 'horizontal',
@@ -33,11 +33,7 @@ export default extension('pos.home.modal.render', (root, api) => {
   root.append(navigator);
 
   api.scanner.scannerDataSubscribable.subscribe((data, source) => {
-    dataText.updateProps({
-      text: `Scanned data: ${data || ''}`,
-    });
-    sourceText.updateProps({
-      text: `Scanned data source: ${source || ''}`,
-    });
+    dataText.replaceChildren(`Scanned data: ${data || ''}`);
+    sourceText.updateProps(`Scanned data source: ${source || ''}`);
   });
 });

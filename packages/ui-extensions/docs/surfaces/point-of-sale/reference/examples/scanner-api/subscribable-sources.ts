@@ -7,9 +7,11 @@ import {
 } from '@shopify/ui-extensions/point-of-sale';
 
 export default extension('pos.home.modal.render', (root, api) => {
-  const scannerSourcesText = root.createComponent('Text', {
-    text: 'Available scanner sources: ',
-  });
+  const scannerSourcesText = root.createComponent(
+    'Text',
+    null,
+    'Available scanner sources: ',
+  );
 
   const stack1 = root.createComponent(Stack, {
     direction: 'horizontal',
@@ -28,8 +30,6 @@ export default extension('pos.home.modal.render', (root, api) => {
   root.append(navigator);
 
   api.scanner.scannerSourcesSubscribable.subscribe((sources) => {
-    scannerSourcesText.updateProps({
-      text: `Available scanner sources: ${sources}`,
-    });
+    scannerSourcesText.replaceChildren(`Available scanner sources: ${sources}`);
   });
 });
