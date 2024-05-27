@@ -75,7 +75,7 @@ export interface InputProps {
    */
   required?: boolean;
   /**
-   * The current value for the field. You should update this value in response to the `onChange` callback.
+   * The current value for the field. Defaults to now. You should update this value in response to the `onChange` callback.
    */
   value?: string;
   /**

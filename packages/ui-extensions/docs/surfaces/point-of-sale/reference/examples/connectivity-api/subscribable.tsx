@@ -16,4 +16,4 @@ const SmartGridTile = () => {
   );
 };
 
-reactExtension('pos.home.tile.render', () => <SmartGridTile />);
+export default reactExtension('pos.home.tile.render', () => <SmartGridTile />);

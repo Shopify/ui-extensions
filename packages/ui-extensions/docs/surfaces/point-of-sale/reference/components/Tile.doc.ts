@@ -1,4 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
+
+const generateCodeBlockForTile = (title: string, fileName: string) =>
+  generateCodeBlock(title, 'tile', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Tile',
@@ -15,6 +19,12 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  defaultExample: {
+    codeblock: generateCodeBlockForTile(
+      'Render a tile on smart grid',
+      'default.example',
+    ),
+  },
 };
 
 export default data;

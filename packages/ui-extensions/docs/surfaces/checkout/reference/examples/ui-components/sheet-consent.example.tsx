@@ -5,6 +5,7 @@ import {
   Sheet,
   TextBlock,
   useApi,
+  useCustomerPrivacy,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
@@ -13,11 +14,10 @@ export default reactExtension(
 );
 
 function Extension() {
-  const {
-    applyTrackingConsentChange,
-    customerPrivacy,
-    ui,
-  } = useApi();
+  const {applyTrackingConsentChange, ui} =
+    useApi();
+
+  const {shouldShowBanner} = useCustomerPrivacy();
 
   const sheetId = 'sheet-consent';
 
@@ -38,7 +38,7 @@ function Extension() {
         });
 
       // Check if operation was successful
-      if (result) {
+      if (result.type === 'success') {
         ui.overlay.close(sheetId);
       } else {
         // Handle failure case here
@@ -53,13 +53,14 @@ function Extension() {
       id={sheetId}
       heading="We value your privacy"
       accessibilityLabel="A sheet that collects privacy consent preferences"
-      defaultOpen={customerPrivacy.current.shouldShowBanner}
+      defaultOpen={shouldShowBanner}
       primaryAction={
         <>
           <Button
             kind="secondary"
             onPress={() =>
               handleConsentChange({
+                // values derived from local form state
                 analytics: false,
                 marketing: false,
                 preferences: false,

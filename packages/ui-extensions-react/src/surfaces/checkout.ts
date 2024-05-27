@@ -227,6 +227,9 @@ export type {SpinnerProps} from './checkout/components/Spinner/Spinner';
 export {Stepper} from './checkout/components/Stepper/Stepper';
 export type {StepperProps} from './checkout/components/Stepper/Stepper';
 
+export {Switch} from './checkout/components/Switch/Switch';
+export type {SwitchProps} from './checkout/components/Switch/Switch';
+
 export {Tag} from './checkout/components/Tag/Tag';
 export type {TagProps} from './checkout/components/Tag/Tag';
 
@@ -338,3 +341,4 @@ export {useDeliveryGroups} from './checkout/hooks/delivery-groups';
 export {useDeliveryGroup} from './checkout/hooks/delivery-group';
 export {useDeliveryGroupTarget} from './checkout/hooks/delivery-group-target';
 export {useCheckoutToken} from './checkout/hooks/checkout-token';
+export {useCustomerPrivacy} from './checkout/hooks/customer-privacy';

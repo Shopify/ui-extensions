@@ -7,7 +7,7 @@ import {
 } from '@shopify/ui-extensions-react/point-of-sale';
 
 const SmartGridTile = () => {
-const locale = useLocaleSubscription();
+  const locale = useLocaleSubscription();
 
   return (
     <Tile

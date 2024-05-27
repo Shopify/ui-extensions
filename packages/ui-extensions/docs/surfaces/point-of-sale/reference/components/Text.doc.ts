@@ -1,4 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Text',
@@ -12,9 +13,22 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'TextProps',
     },
+    {
+      title: 'TextVariant',
+      description: '',
+      type: 'TextVariant',
+    },
+    {
+      title: 'ColorType',
+      description: '',
+      type: 'ColorType',
+    },
   ],
   category: 'Components',
   related: [],
+  defaultExample: {
+    codeblock: generateCodeBlock('Text', 'text', 'default.example'),
+  },
 };
 
 export default data;

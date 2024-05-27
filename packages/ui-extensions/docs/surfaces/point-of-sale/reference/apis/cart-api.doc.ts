@@ -1,9 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
-const functionality = 'cart-api';
 const generateCodeBlockForCartApi = (title: string, fileName: string) =>
-  generateCodeBlock(title, functionality, fileName);
+  generateCodeBlock(title, 'cart-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Cart API',
@@ -20,6 +20,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
+  requires:
+    ExtensionTargetType.PosHomeTileRender ||
+    ExtensionTargetType.PosHomeModalRender,
   examples: {
     description: 'Examples of using the Cart API',
     examples: [

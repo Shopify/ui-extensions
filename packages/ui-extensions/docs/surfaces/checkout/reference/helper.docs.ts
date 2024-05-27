@@ -401,6 +401,25 @@ Ensure your extension can access the Storefront API via the [\`api_access\` capa
         tabs: getExtensionCodeTabs('payments/use-selected-payment-options'),
       },
     },
+    'customer-privacy/default': {
+      description: '',
+      codeblock: {
+        title: 'Read Customer Privacy',
+        tabs: getExtensionCodeTabs('customer-privacy/default'),
+      },
+    },
+    'customer-privacy/sheet-consent-banner-with-form': {
+      description: `
+You can apply changes to customer consent by using the \`applyTrackingConsentChanges\` API.
+
+> Note: Requires the [\`customer_privacy\` capability](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) to be set to \`true\`.`,
+      codeblock: {
+        title: 'Use a Sheet to manage customer privacy consent',
+        tabs: getExtensionCodeTabs(
+          'customer-privacy/sheet-consent-banner-with-form',
+        ),
+      },
+    },
     subscription: {
       description: '',
       codeblock: {

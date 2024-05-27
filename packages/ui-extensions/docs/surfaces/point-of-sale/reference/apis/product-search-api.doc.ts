@@ -1,16 +1,15 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
-const functionality = 'product-search-api';
 const generateCodeBlockForProductSearchApi = (
   title: string,
   fileName: string,
-) => generateCodeBlock(title, functionality, fileName);
+) => generateCodeBlock(title, 'product-search-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'ProductSearch API',
   description:
-    'The ProductSearch API gives extensions  access to the native product search and fetching functionality of Shopify POS. The interface provides numerous functions to search for products by query, or to fetch the details of one or more products or product variants.',
+    'The ProductSearch API gives extensions access to the native product search and fetching functionality of Shopify POS. The interface provides numerous functions to search for products by query, or to fetch the details of one or more products or product variants.',
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
