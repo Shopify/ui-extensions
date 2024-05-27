@@ -1,4 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'EmailField',
@@ -13,6 +14,9 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'EmailFieldProps',
     },
   ],
+  defaultExample: {
+    codeblock: generateCodeBlock('Email Input', 'email-field', 'email-input'),
+  },
   category: 'Components',
   related: [],
 };

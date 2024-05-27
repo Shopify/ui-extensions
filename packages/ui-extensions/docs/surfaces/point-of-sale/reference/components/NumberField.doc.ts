@@ -1,4 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'NumberField',
@@ -15,6 +16,13 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  defaultExample: {
+    codeblock: generateCodeBlock(
+      'Number Field',
+      'number-field',
+      'number-input',
+    ),
+  },
 };
 
 export default data;
