@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'customer-account.order-status.block.render',
   description: `A [block extension target](/docs/api/checkout-ui-extensions/extension-targets-overview#block-extension-targets) that renders exclusively on the **Order status** page. Unlike static extension targets, block extension targets render where the merchant sets them using the [checkout editor](/docs/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
 
-  The [supported locations](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development by [using a URL parameter](/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
+  The [placements](/docs/api/checkout-ui-extensions/extension-targets-overview#placements) for block extension targets can be previewed during development by [using a URL parameter](/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
 
   ${ORDER_STATUS_SURFACE_NOTE}
   `,

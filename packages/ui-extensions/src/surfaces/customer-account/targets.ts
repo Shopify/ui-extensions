@@ -34,7 +34,7 @@ export interface OrderStatusExtensionTargets {
    * Unlike static extension targets, dynamic extension targets render where the merchant
    * sets them using the [checkout editor](https://shopify.dev/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).
    *
-   * The [supported locations](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for dynamic extension targets can be previewed during development
+   * The [placements](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#placements) for dynamic extension targets can be previewed during development
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
    */
   'customer-account.order-status.block.render': RenderExtension<
