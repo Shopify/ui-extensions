@@ -1,4 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'RadioButtonList',
@@ -15,6 +16,15 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'radioButtonList-thumbnail.png',
+  defaultExample: {
+    image: 'radioButtonList-default.png',
+    codeblock: generateCodeBlock(
+      'RadioButtonList',
+      'radiobuttonlist',
+      'default.example',
+    ),
+  },
 };
 
 export default data;
