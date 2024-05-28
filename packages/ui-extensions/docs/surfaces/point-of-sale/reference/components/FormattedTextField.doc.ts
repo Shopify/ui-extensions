@@ -1,4 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
+
+const generateCodeBlockForComponent = (title: string, fileName: string) =>
+  generateCodeBlock(title, 'formatted-text-field', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'FormattedTextField',
@@ -12,9 +16,27 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'FormattedTextFieldProps',
     },
+    {
+      title: 'InputType',
+      description: '',
+      type: 'InputType',
+    },
+    {
+      title: 'AutoCapitalizationType',
+      description: '',
+      type: 'AutoCapitalizationType',
+    },
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'formatted-text-field-thumbnail.png',
+  defaultExample: {
+    image: 'formatted-text-field-default.png',
+    codeblock: generateCodeBlockForComponent(
+      'Render a FormattedTextField that validates email addresses',
+      'default.example',
+    ),
+  },
 };
 
 export default data;
