@@ -25,7 +25,9 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/api/pos-ui-extensions/apis/scanner-api#examples',
     },
   ],
+  thumbnail: 'camera-scanner-thumbnail.png',
   defaultExample: {
+    image: 'camera-scanner-default.png',
     codeblock: generateCodeBlockForCameraScanner(
       'Camera scanner and data text example',
       'default.example',

@@ -17,12 +17,14 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   related: [],
   defaultExample: {
+    image: 'number-field-default.png',
     codeblock: generateCodeBlock(
       'Number input',
       'number-field',
       'number-input',
     ),
   },
+  thumbnail: 'number-field-thumbnail.png',
 };
 
 export default data;

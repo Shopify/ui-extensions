@@ -17,8 +17,10 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   related: [],
   defaultExample: {
+    image: 'image-default.png',
     codeblock: generateCodeBlock('Example image', 'image', 'default-example'),
   },
+  thumbnail: 'image-thumbnail.png',
 };
 
 export default data;

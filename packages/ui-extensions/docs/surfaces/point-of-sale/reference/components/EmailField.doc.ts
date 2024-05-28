@@ -19,6 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   },
   category: 'Components',
   related: [],
+  thumbnail: 'email-field-thumbnail.png',
 };
 
 export default data;

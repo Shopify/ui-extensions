@@ -16,7 +16,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'selectable-thumbnail.png',
   defaultExample: {
+    image: 'selectable-default.png',
     codeblock: generateCodeBlock('Selectable', 'selectable', 'default.example'),
   },
 };

@@ -15,15 +15,11 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Components',
-  thumbnail: 'textarea-thumbnail.png',
   related: [],
-  examples: {
-    description: 'Examples using the TextArea component',
-    examples: [
-      {
-        codeblock: generateCodeBlock('Comment Input', 'text-area', 'comment'),
-      },
-    ],
+  thumbnail: 'text-area-thumbnail.png',
+  defaultExample: {
+    image: 'text-area-default.png',
+    codeblock: generateCodeBlock('Thumbnail', 'text-area', 'default.example'),
   },
 };
 

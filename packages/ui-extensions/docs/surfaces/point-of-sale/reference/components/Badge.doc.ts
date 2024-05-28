@@ -19,7 +19,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'badge-thumbnail.png',
   defaultExample: {
+    image: 'badge-default.png',
     codeblock: generateCodeBlockForBadge('Badge', 'default.example'),
   },
   subSections: [

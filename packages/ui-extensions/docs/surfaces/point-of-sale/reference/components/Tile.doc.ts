@@ -19,7 +19,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'tile-thumbnail.png',
   defaultExample: {
+    image: 'tile-default.png',
     codeblock: generateCodeBlockForTile(
       'Render a tile on smart grid',
       'default.example',

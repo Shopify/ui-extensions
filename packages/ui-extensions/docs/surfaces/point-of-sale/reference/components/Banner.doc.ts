@@ -19,7 +19,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'banner-thumbnail.png',
   defaultExample: {
+    image: 'banner-default.png',
     codeblock: generateCodeBlockForBanner('Banner', 'default.example'),
   },
   subSections: [

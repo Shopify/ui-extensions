@@ -15,9 +15,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
-  thumbnail: 'pinPad-thumbnail.png',
+  thumbnail: 'pin-pad-thumbnail.png',
   defaultExample: {
-    image: 'pinPad-default.png',
+    image: 'pin-pad-default.png',
     codeblock: {
       title: 'Validation',
       tabs: [

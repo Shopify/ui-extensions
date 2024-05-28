@@ -19,7 +19,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'dialog-thumbnail.png',
   defaultExample: {
+    image: 'dialog-default.png',
     codeblock: generateCodeBlockForDialog('Dialog example', 'default.example'),
   },
   subSections: [

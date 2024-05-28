@@ -18,15 +18,17 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'navigator-thumbnail.png',
+  defaultExample: {
+    image: 'navigator-default.png',
+    codeblock: generateCodeBlockForComponent(
+      'Navigate to another screen',
+      'navigate',
+    ),
+  },
   examples: {
     description: 'Using a Navigator to navigate between Screens',
     examples: [
-      {
-        codeblock: generateCodeBlockForComponent(
-          'Navigate to another screen',
-          'navigate',
-        ),
-      },
       {
         codeblock: generateCodeBlockForComponent(
           'Navigate to another screen with parameters',

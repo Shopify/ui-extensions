@@ -17,6 +17,11 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'text-field-thumbnail.png',
+  defaultExample: {
+    image: 'text-field-default.png',
+    codeblock: generateCodeBlock('Name Input', 'text-field', 'name'),
+  },
   subSections: [
     {
       type: 'Generic',
@@ -42,14 +47,6 @@ const data: ReferenceEntityTemplateSchema = {
     `,
     },
   ],
-  examples: {
-    description: 'Examples of using the TextField component',
-    examples: [
-      {
-        codeblock: generateCodeBlock('Name Input', 'text-field', 'name'),
-      },
-    ],
-  },
 };
 
 export default data;
