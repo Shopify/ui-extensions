@@ -1,4 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Image',
@@ -15,6 +16,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  defaultExample: {
+    codeblock: generateCodeBlock('Example image', 'image', 'default-example'),
+  },
 };
 
 export default data;
