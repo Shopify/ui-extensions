@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    codeblock: generateCodeBlock('Email Input', 'email-field', 'email-input'),
+    codeblock: generateCodeBlock('Email input', 'email-field', 'email-input'),
   },
   category: 'Components',
   related: [],
