@@ -197,6 +197,9 @@ export type {PressableProps} from './checkout/components/Pressable/Pressable';
 export {ProductThumbnail} from './checkout/components/ProductThumbnail/ProductThumbnail';
 export type {ProductThumbnailProps} from './checkout/components/ProductThumbnail/ProductThumbnail';
 
+export {Progress} from './checkout/components/Progress/Progress';
+export type {ProgressProps} from './checkout/components/Progress/Progress';
+
 export {Popover} from './checkout/components/Popover/Popover';
 export type {PopoverProps} from './checkout/components/Popover/Popover';
 

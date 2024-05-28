@@ -128,6 +128,9 @@ export type {PressableProps} from './components/Pressable/Pressable';
 export {ProductThumbnail} from './components/ProductThumbnail/ProductThumbnail';
 export type {ProductThumbnailProps} from './components/ProductThumbnail/ProductThumbnail';
 
+export {Progress} from './components/Progress/Progress';
+export type {ProgressProps} from './components/Progress/Progress';
+
 export {Popover} from './components/Popover/Popover';
 export type {PopoverProps, PopoverPosition} from './components/Popover/Popover';
 
