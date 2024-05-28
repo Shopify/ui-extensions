@@ -14,6 +14,21 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
+      anchorLink: '202408',
+      title: '2024.08',
+      sectionContent: `
+- Added in POS version: N/A
+- Removed in POS version: N/A
+- Release day: TBD.
+
+### Features
+
+- Removed \`subtitle\` property to the [FormattedTextField](/docs/api/pos-ui-extensions/apis/formatted-text-field) component.
+- Removed \`subtitle\` property to the [TextField](/docs/api/pos-ui-extensions/apis/text-field) component.
+      `,
+    },
+    {
+      type: 'Generic',
       anchorLink: '170',
       title: '1.7.0',
       sectionNotice: [
