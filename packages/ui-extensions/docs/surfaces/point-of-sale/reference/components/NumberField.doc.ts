@@ -18,7 +18,7 @@ const data: ReferenceEntityTemplateSchema = {
   related: [],
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Number Input',
+      'Number input',
       'number-field',
       'number-input',
     ),
