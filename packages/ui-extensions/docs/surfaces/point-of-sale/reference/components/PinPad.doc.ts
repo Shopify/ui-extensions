@@ -15,20 +15,24 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'pinPad-thumbnail.png',
+  defaultExample: {
+    image: 'pinPad-default.png',
+    codeblock: {
+      title: 'Validation',
+      tabs: [
+        {
+          code: '../examples/pinpad/validation.ts',
+          language: 'ts',
+        },
+      ],
+    },
+  },
   subSections: [
     {
       type: 'Generic',
       anchorLink: 'example',
       title: 'Validating a PIN Example',
-      codeblock: {
-        title: 'Validation',
-        tabs: [
-          {
-            code: '../examples/pinpad/validation.ts',
-            language: 'ts',
-          },
-        ],
-      },
       sectionContent: `
 This code defines a function onPinSubmit that simulates the validation of a Personal Identification Number (PIN). The function takes an array of numbers as input, representing the PIN entered by a user.
 

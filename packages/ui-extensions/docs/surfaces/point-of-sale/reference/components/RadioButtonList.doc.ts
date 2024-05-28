@@ -16,7 +16,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'radioButtonList-thumbnail.png',
   defaultExample: {
+    image: 'radioButtonList-default.png',
     codeblock: generateCodeBlock(
       'RadioButtonList',
       'radiobuttonlist',
