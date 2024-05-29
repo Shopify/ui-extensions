@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   related: [],
   defaultExample: {
-    codeblock: generateCodeBlock('Time Input', 'time-field', 'time-input'),
+    codeblock: generateCodeBlock('Time input', 'time-field', 'time-input'),
   },
   subSections: [
     {
