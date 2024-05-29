@@ -86,7 +86,14 @@ export type IconName =
 export type IconSize = 'minor' | 'major' | 'spot' | 'caption' | 'badge';
 
 export interface IconProps {
+  /**
+   * A name used to render the icon.
+   */
   name: IconName;
+  /**
+   * Size of the icon.
+   * @defaultValue 'major'
+   */
   size?: IconSize;
 }
 
