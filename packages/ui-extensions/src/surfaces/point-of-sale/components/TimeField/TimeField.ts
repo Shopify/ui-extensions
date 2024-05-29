@@ -15,7 +15,7 @@ export interface TimeFieldProps
     | 'helpText'
   > {
   /**
-   * (Android only) Whether the clock displays in 24 hour time instead of 12 hour time. 
+   * (Android only) Whether the clock displays in 24 hour time instead of 12 hour time.
    * @defaultValue false
    */
   is24Hour?: boolean;
