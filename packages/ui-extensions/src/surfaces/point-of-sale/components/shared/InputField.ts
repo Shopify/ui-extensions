@@ -87,7 +87,7 @@ export interface InputProps {
    */
   action?: InputAction;
   /**
-   * The maximum number of characters  allowed in the input field.
+   * The maximum number of characters allowed in the input field.
    */
   maxLength?: number;
 }

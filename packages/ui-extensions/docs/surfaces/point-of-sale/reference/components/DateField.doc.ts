@@ -1,4 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'DateField',
@@ -15,6 +16,19 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  defaultExample: {
+    codeblock: generateCodeBlock('Date input', 'date-field', 'date-input'),
+  },
+  subSections: [
+    {
+      type: 'Generic',
+      anchorLink: 'guidelines',
+      title: 'Guidelines',
+      sectionContent: `
+- Use a smart default date for common selections.
+      `,
+    },
+  ],
 };
 
 export default data;
