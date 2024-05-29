@@ -189,6 +189,8 @@ export interface OrderStatusLocalization {
   market: StatefulRemoteSubscribable<Market | undefined>;
 }
 
+export type AuthenticationState = 'fully_authenticated' | 'pre_authenticated';
+
 export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
@@ -352,6 +354,11 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * The requireLogin() method triggers login if the customer is viewing pre-authenticated Order status page.
    */
   requireLogin: () => Promise<void>;
+
+  /**
+   * The authentication state of Order status page.
+   */
+  authenticationState: StatefulRemoteSubscribable<AuthenticationState>;
 }
 
 export interface OrderStatusBuyerIdentity {
