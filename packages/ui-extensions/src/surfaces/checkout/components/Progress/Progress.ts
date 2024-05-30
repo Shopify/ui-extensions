@@ -14,7 +14,7 @@ export interface ProgressProps extends IdProps {
   value?: number;
 
   /**
-   * Describe how much work the task indicated by the progress element requires.
+   * Define the maximum limit of the progress element.
    * It must have a value greater than 0 and be a valid floating point number.
    *
    * @defaultValue 1
