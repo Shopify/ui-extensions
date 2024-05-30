@@ -16,12 +16,12 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
-  thumbnail: 'radioButtonList-thumbnail.png',
+  thumbnail: 'radio-button-list-thumbnail.png',
   defaultExample: {
-    image: 'radioButtonList-default.png',
+    image: 'radio-button-list-default.png',
     codeblock: generateCodeBlock(
       'RadioButtonList',
-      'radiobuttonlist',
+      'radio-button-list',
       'default.example',
     ),
   },

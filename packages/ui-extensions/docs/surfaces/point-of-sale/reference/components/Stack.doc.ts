@@ -146,6 +146,11 @@ Finally, we can return to the \`Selectable\`. You'll notice that we've wrapped t
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'stack-thumbnail.png',
+  defaultExample: {
+    image: 'stack-default.png',
+    codeblock: generateCodeBlockForStack('Stack', 'horizontal-default'),
+  },
 };
 
 export default data;

@@ -33,8 +33,10 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
+    image: 'icon-default.png',
     codeblock: generateCodeBlock('Example icons', 'icon', 'default-example'),
   },
+  thumbnail: 'icon-thumbnail.png',
 };
 
 export default data;

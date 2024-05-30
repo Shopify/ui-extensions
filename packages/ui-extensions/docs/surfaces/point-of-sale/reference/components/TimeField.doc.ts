@@ -17,6 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   related: [],
   defaultExample: {
+    image: 'time-field-default.png',
     codeblock: generateCodeBlock('Time input', 'time-field', 'time-input'),
   },
   subSections: [
@@ -29,6 +30,7 @@ const data: ReferenceEntityTemplateSchema = {
       `,
     },
   ],
+  thumbnail: 'time-field-thumbnail.png',
 };
 
 export default data;

@@ -23,15 +23,11 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/api/pos-ui-extensions/apis/productsearch-api#example-search-for-products-with-a-search-bar',
     },
   ],
-  examples: {
-    description: 'Examples of using the TextField component',
-    examples: [
-      {
-        codeblock: generateCodeBlock('Product List', 'list', 'products'),
-      },
-    ],
+  thumbnail: 'list-thumbnail.png',
+  defaultExample: {
+    image: 'list-default.png',
+    codeblock: generateCodeBlock('Product List', 'list', 'products'),
   },
-
   subSections: [
     {
       type: 'Generic',

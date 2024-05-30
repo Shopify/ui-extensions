@@ -24,8 +24,10 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/api/pos-ui-extensions/apis/productsearch-api#example-search-for-products-with-a-search-bar',
     },
   ],
+  thumbnail: 'search-bar-thumbnail.png',
   defaultExample: {
-    codeblock: generateCodeBlock('SearchBar', 'searchbar', 'default.example'),
+    image: 'search-bar-default.png',
+    codeblock: generateCodeBlock('SearchBar', 'search-bar', 'default.example'),
   },
   subSections: [
     {

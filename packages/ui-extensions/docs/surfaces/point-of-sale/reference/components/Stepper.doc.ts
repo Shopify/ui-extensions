@@ -15,7 +15,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'stepper-thumbnail.png',
   defaultExample: {
+    image: 'stepper-default.png',
     codeblock: generateCodeBlock('Stepper', 'stepper', 'default.example'),
   },
 };

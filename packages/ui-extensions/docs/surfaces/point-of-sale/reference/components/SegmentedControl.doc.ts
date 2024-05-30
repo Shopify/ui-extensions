@@ -17,10 +17,12 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'segmented-control-thumbnail.png',
   defaultExample: {
+    image: 'segmented-control-default.png',
     codeblock: generateCodeBlock(
       'SegmentedControl',
-      'segmentedcontrol',
+      'segmented-control',
       'default.example',
     ),
   },

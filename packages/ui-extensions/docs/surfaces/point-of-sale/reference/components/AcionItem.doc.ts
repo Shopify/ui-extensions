@@ -19,7 +19,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'action-item-thumbnail.png',
   defaultExample: {
+    image: 'action-item-default.png',
     codeblock: generateCodeBlockForActionItem(
       'Render an ActionItem in post purchase',
       'default.example',

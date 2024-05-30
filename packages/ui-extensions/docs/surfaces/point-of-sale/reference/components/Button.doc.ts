@@ -24,7 +24,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
+  thumbnail: 'button-thumbnail.png',
   defaultExample: {
+    image: 'button-default.png',
     codeblock: generateCodeBlockForButton(
       'Render a button that presents a toast',
       'default.example',

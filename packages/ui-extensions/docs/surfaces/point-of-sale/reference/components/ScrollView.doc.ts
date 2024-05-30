@@ -13,7 +13,9 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [],
   category: 'Components',
   related: [],
+  thumbnail: 'scroll-view-thumbnail.png',
   defaultExample: {
+    image: 'scroll-view-default.png',
     codeblock: generateCodeBlockForComponent('ScrollView', 'default.example'),
   },
 };
