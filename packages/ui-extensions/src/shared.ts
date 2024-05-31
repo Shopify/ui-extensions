@@ -877,3 +877,14 @@ export interface GraphQLError {
     code: string;
   };
 }
+
+/**
+ * intl.formatCurrency `number` input type
+ */
+
+// Taken from https://github.com/microsoft/TypeScript/blob/main/src/lib/es2023.intl.d.ts#L30
+export type StringNumericLiteral =
+  | `${number}`
+  | 'Infinity'
+  | '-Infinity'
+  | '+Infinity';

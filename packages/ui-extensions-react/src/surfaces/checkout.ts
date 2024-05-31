@@ -40,6 +40,7 @@ export type {
   DisclosureActivatorProps,
   DisclosureOpen,
   DisabledDate,
+  Display,
   ExtensionTarget,
   ExtensionTargets,
   Fit,
@@ -340,5 +341,7 @@ export {useApplyRedeemableChange} from './checkout/hooks/redeemable';
 export {useDeliveryGroups} from './checkout/hooks/delivery-groups';
 export {useDeliveryGroup} from './checkout/hooks/delivery-group';
 export {useDeliveryGroupTarget} from './checkout/hooks/delivery-group-target';
+export {useDeliveryGroupListTarget} from './checkout/hooks/delivery-group-list-target';
+export {useDeliverySelectionGroups} from './checkout/hooks/delivery-selection-groups';
 export {useCheckoutToken} from './checkout/hooks/checkout-token';
 export {useCustomerPrivacy} from './checkout/hooks/customer-privacy';
