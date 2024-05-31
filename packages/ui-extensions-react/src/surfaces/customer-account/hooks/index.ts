@@ -39,3 +39,5 @@ export {
   useAuthenticatedAccountCustomer,
   useAuthenticatedAccountPurchasingCompany,
 } from './authenticated-account';
+
+export {useAuthenticationState} from './authentication-state';
