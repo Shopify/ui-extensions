@@ -20,7 +20,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
-  requires: ExtensionTargetType.PosHomeModalRender,
+  requires:
+    ExtensionTargetType.PosHomeModalRender ||
+    ExtensionTargetType.PosPurchasePostActionRender,
   examples: {
     description: 'Examples of using the Navigation API',
     examples: [
