@@ -1,7 +1,6 @@
 import type {
   ExtensionTarget,
   ShippingOption,
-  ShippingOptionItemRenderMode,
 } from '@shopify/ui-extensions/checkout';
 
 import {useShippingOptionTarget} from '../shipping-option-target';
@@ -32,10 +31,6 @@ describe('useShippingOptionTarget', () => {
     },
   } as ShippingOption;
 
-  const renderMode: ShippingOptionItemRenderMode = {
-    overlay: false,
-  };
-
   it('throws if extension target has no api.target', async () => {
     const runner = async () => {
       const target: ExtensionTarget = 'purchase.checkout.block.render';
@@ -44,7 +39,6 @@ describe('useShippingOptionTarget', () => {
           extension: {target},
           target: undefined,
           isTargetSelected: createMockStatefulRemoteSubscribable(true),
-          renderMode,
         },
       });
     };
@@ -60,7 +54,6 @@ describe('useShippingOptionTarget', () => {
           extension: {target},
           target: createMockStatefulRemoteSubscribable(shippingOption),
           isTargetSelected: undefined,
-          renderMode,
         },
       });
     };
@@ -76,14 +69,12 @@ describe('useShippingOptionTarget', () => {
         extension: {target},
         target: createMockStatefulRemoteSubscribable(shippingOption),
         isTargetSelected: createMockStatefulRemoteSubscribable(true),
-        renderMode,
       },
     });
 
     expect(value).toStrictEqual({
       shippingOptionTarget: shippingOption,
       isTargetSelected: true,
-      renderMode,
     });
   });
 });

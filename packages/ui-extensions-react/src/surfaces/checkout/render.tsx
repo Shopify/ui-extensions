@@ -83,7 +83,6 @@ export function reactExtension<Target extends RenderExtensionTarget>(
  */
 export function render<Target extends RenderExtensionTarget>(
   target: Target,
-
   render: (api: ApiForRenderExtension<Target>) => ReactElement<any>,
 ): ExtensionTargets[Target] {
   return reactExtension(target, render);

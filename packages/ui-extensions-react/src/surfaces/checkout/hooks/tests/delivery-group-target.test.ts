@@ -4,7 +4,6 @@ import type {
   ShippingOption,
 } from '@shopify/ui-extensions/checkout';
 
-// eslint-disable-next-line import/no-deprecated
 import {useDeliveryGroupTarget} from '../delivery-group-target';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
@@ -49,29 +48,15 @@ describe('useDeliveryGroupTarget', () => {
       ],
     };
 
-    const deliveryGroup2: DeliveryGroup = {
-      ...deliveryGroup,
-      targetedCartLines: [
-        {
-          id: 'gid://shopify/CartLine/stable_id_2',
-        },
-      ],
-    };
-
     const target: ExtensionTarget =
       'purchase.checkout.shipping-option-list.render-before';
-
-    // eslint-disable-next-line import/no-deprecated
     const {value} = mount.hook(() => useDeliveryGroupTarget(), {
       extensionApi: {
         extension: {target},
-        target: createMockStatefulRemoteSubscribable({
-          groupType: 'oneTimePurchase',
-          deliveryGroups: [deliveryGroup, deliveryGroup2],
-        }) as any,
+        target: createMockStatefulRemoteSubscribable(deliveryGroup),
       },
     });
 
-    expect(value).toStrictEqual(deliveryGroup);
+    expect(value).toBe(deliveryGroup);
   });
 });

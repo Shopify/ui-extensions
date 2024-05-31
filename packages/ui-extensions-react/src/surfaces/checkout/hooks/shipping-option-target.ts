@@ -1,7 +1,4 @@
-import type {
-  ShippingOption,
-  ShippingOptionItemRenderMode,
-} from '@shopify/ui-extensions/checkout';
+import type {ShippingOption} from '@shopify/ui-extensions/checkout';
 import {useMemo} from 'react';
 
 import {ExtensionHasNoTargetError} from '../errors';
@@ -18,7 +15,6 @@ import {useSubscription} from './subscription';
 export function useShippingOptionTarget(): {
   shippingOptionTarget: ShippingOption;
   isTargetSelected: boolean;
-  renderMode: ShippingOptionItemRenderMode;
 } {
   const api = useApi<
     | 'purchase.checkout.shipping-option-item.render-after'
@@ -33,15 +29,13 @@ export function useShippingOptionTarget(): {
 
   const shippingOptionTarget = useSubscription(api.target);
   const isTargetSelected = useSubscription(api.isTargetSelected);
-  const renderMode = api.renderMode;
 
   const shippingOption = useMemo(() => {
     return {
       shippingOptionTarget,
       isTargetSelected,
-      renderMode,
     };
-  }, [shippingOptionTarget, isTargetSelected, renderMode]);
+  }, [shippingOptionTarget, isTargetSelected]);
 
   return shippingOption;
 }

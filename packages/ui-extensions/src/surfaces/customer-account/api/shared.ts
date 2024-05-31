@@ -9,6 +9,7 @@ import type {
   CountryCode,
   GraphQLError,
   StorefrontApiVersion,
+  StringNumericLiteral,
 } from '../../../shared';
 
 export {
@@ -93,7 +94,7 @@ export interface I18n {
    * @param options.inExtensionLocale - if true, use the extension's locale
    */
   formatNumber: (
-    number: number | bigint,
+    number: number | bigint | StringNumericLiteral,
     options?: {inExtensionLocale?: boolean} & Intl.NumberFormatOptions,
   ) => string;
 
@@ -106,7 +107,7 @@ export interface I18n {
    * @param options.inExtensionLocale - if true, use the extension's locale
    */
   formatCurrency: (
-    number: number | bigint,
+    number: number | bigint | StringNumericLiteral,
     options?: {inExtensionLocale?: boolean} & Intl.NumberFormatOptions,
   ) => string;
 
