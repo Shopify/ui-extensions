@@ -1,6 +1,8 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-import type {Appearance, IdProps} from '../shared';
+import type {IdProps} from '../shared';
+
+type Tone = 'auto' | 'critical';
 
 export interface ProgressProps extends IdProps {
   /**
@@ -25,9 +27,9 @@ export interface ProgressProps extends IdProps {
   /**
    * Set the color of the progress bar.
    *
-   * @defaultValue 'accent'
+   * @defaultValue 'auto'
    */
-  appearance?: Extract<Appearance, 'accent' | 'critical'>;
+  tone?: Tone;
 
   /**
    * A label to use for the Progress that will be used for buyers using assistive technologies like screen readers.

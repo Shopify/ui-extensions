@@ -52,7 +52,7 @@ For loading states, add text to reassure the user that the progress bar is not f
 
 ### Error states
 
-For error states, add text or a [Banner](./banner) to describe the error and next steps. Use the \`critical\` appearance property to convey urgency.
+For error states, add text or a [Banner](./banner) to describe the error and next steps. Use the \`critical\` tone property to convey urgency.
 
 ![A progress bar with error text that says "There was a problem with the file upload. Please try again."](/assets/templated-apis-screenshots/checkout-ui-extensions/unstable/progress-error.png)
 
