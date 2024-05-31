@@ -1,6 +1,11 @@
-import React, { useEffect, useState } from 'react';
-
-import { Screen, useApi, reactExtension, Text } from '@shopify/ui-extensions-react/point-of-sale';
+import React, {useEffect, useState} from 'react';
+import {
+  Screen,
+  useApi,
+  reactExtension,
+  Text,
+} from '@shopify/ui-extensions-react/point-of-sale';
+import BASE_URL from '../config.js';
 
 const SmartGridModal = () => {
   const api = useApi<'pos.home.modal.render'>();
@@ -12,7 +17,7 @@ const SmartGridModal = () => {
   useEffect(() => {
     api.session.getSessionToken().then((token) => {
       setSessionToken(token);
-      fetch('https://YOUR_DEVELOPMENT_SERVER/api/extensions/test', {
+      fetch(`https://${BASE_URL}/api/get_customers`, {
         method: 'GET',
         mode: 'cors',
         credentials: 'include',
@@ -27,14 +32,14 @@ const SmartGridModal = () => {
   }, []);
 
   return (
-    <Screen name='Home' title='Authentication example'>
+    <Screen name="Home" title="Authentication example">
       <Text>Token: {sessionToken}</Text>
       <Text>Authenticated: {authenticated}</Text>
       <Text>Error: {error}</Text>
     </Screen>
   );
-}
+};
 
 export default reactExtension('pos.home.modal.render', () => {
-  return <SmartGridModal />
-})
+  return <SmartGridModal />;
+});
