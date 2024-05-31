@@ -30,8 +30,9 @@ export interface ProgressProps extends IdProps {
   appearance?: Extract<Appearance, 'accent' | 'critical'>;
 
   /**
-   * A label used for users using assistive technologies. When set, any
-   * `children` supplied to this component will not be announced to screen reader users.
+   * A label to use for the Progress that will be used for buyers using assistive technologies like screen readers.
+   * It will also be used to replace the animated loading indicator when buyers prefer reduced motion.
+   *
    */
   accessibilityLabel?: string;
 }

@@ -19,7 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   subCategory: 'Feedback',
   defaultExample: {
-    image: 'progress-indeterminate-state.gif',
+    image: 'progress-indeterminate.gif',
     codeblock: {
       title: 'Indeterminate state',
       tabs: [
@@ -42,17 +42,31 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-Use appearance property like "critical" to convey urgency accompanied by an error message or a banner if further action is required.
+Use components like [TextBlock](../titles-and-text/textblock) or [Text](../titles-and-text/text), along with the Progress component, to display text indicating the status of the progress bar.
 
-For users who may have turned on the "reduced motion settings", it's important to convey the function of the progress. This can be achieved by incorporating a helperText and setting a bar to a specific value, which signifies that loading is underway.
+### Loading states
 
-Use components like TextBlock or Text, along with the Progress component, to display text indicating the status of the progress bar, especially during a loading state, to prevent confusion about the bar appearing frozen.
+For loading states, add text to reassure the user that the progress bar is not frozen.
 
-Here are some examples of how to use this component:
-Use a progress bar to show the customer's progress toward the next rewards tier.
-Use a progress to show the progress for a buyer reward status
+![A progress bar with "Loading" text](/assets/templated-apis-screenshots/checkout-ui-extensions/unstable/progress-loading.png)
 
-Use a progress to show how much a buyer needs to reach free shipping
+### Error states
+
+For error states, add text or a [Banner](./banner) to describe the error and next steps. Use the \`critical\` appearance property to convey urgency.
+
+![A progress bar with error text that says "There was a problem with the file upload. Please try again."](/assets/templated-apis-screenshots/checkout-ui-extensions/unstable/progress-error.png)
+
+### Visualize a goal
+
+Use the Progress component to visualize a goal that's valuable to the customer.
+
+Here's an example of using a progress bar to show a customer's progress toward the next rewards tier:
+
+![A progress bar in customer accounts, showing that the customer is on their way to reaching the Botanical maven rewards tier.](/assets/templated-apis-screenshots/checkout-ui-extensions/unstable/progress-goal.png)
+
+Here's an example of using a progress bar to show how much more a customer needs to spend to get free shipping:
+
+![A progress bar at checkout, showing that the customer is $43 away from free shipping.](/assets/templated-apis-screenshots/checkout-ui-extensions/unstable/progress-free-shipping.png)
       `,
     },
   ],

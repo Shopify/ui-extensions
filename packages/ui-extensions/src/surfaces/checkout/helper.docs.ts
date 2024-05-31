@@ -160,8 +160,8 @@ export function getExamples(
     },
     'ui-components/progress-determinate-state': {
       description:
-        "Use components like TextBlock or Text, along with the Progress component, to add text that communicates what the progress bar is tracking, and to set clear expectations about the customer's current progress.",
-      image: 'progress-determinate-state.png',
+        'In a determinate state, TextBlock and Text components can be used to communicate what the progress bar is tracking, and to set clear expectations about the current progress.',
+      image: 'progress-determinate.png',
       codeblock: {
         title: 'Determinate state',
         tabs: getExtensionCodeTabs('ui-components/progress-determinate-state'),
