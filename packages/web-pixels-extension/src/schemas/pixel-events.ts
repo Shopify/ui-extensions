@@ -555,6 +555,13 @@ export const pixelEvents = {
               'The three-letter code that represents the currency, for example, USD. Supported codes include standard ISO 4217 codes, legacy codes, and non-standard codes.',
           },
         },
+        localization: {
+          ref: 'Localization',
+          metadata: {
+            description:
+              'Information about the active localized experience. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+          },
+        },
         discountApplications: {
           metadata: {
             description: 'A list of discount applications.',
@@ -902,6 +909,80 @@ export const pixelEvents = {
           metadata: {
             description:
               'The three-letter code that represents the currency, for example, USD. Supported codes include standard ISO 4217 codes, legacy codes, and non-standard codes.',
+          },
+        },
+      },
+    },
+    Localization: {
+      metadata: {
+        description: 'Information about the active localized experience.',
+      },
+      properties: {
+        country: {
+          ref: 'Country',
+          metadata: {
+            description: 'The country of the active localized experience.',
+          },
+        },
+        language: {
+          ref: 'Language',
+          metadata: {
+            description: 'The language of the active localized experience.',
+          },
+        },
+        market: {
+          ref: 'Market',
+          metadata: {
+            description:
+              'The market including the country of the active localized experience.',
+          },
+        },
+      },
+    },
+    Country: {
+      metadata: {
+        description: 'A country.',
+      },
+      properties: {
+        isoCode: {
+          type: 'string',
+          metadata: {
+            description:
+              'The ISO-3166-1 code for this country, for example, "US".',
+          },
+        },
+      },
+    },
+    Language: {
+      metadata: {
+        description: 'A language.',
+      },
+      properties: {
+        isoCode: {
+          type: 'string',
+          metadata: {
+            description:
+              'The BCP-47 language tag. It may contain a dash followed by an ISO 3166-1 alpha-2 region code, for example, "en-US".',
+          },
+        },
+      },
+    },
+    Market: {
+      metadata: {
+        description:
+          'A group of one or more regions of the world that a merchant is targeting for sales. To learn more about markets, refer to [this](https://shopify.dev/docs/apps/markets) conceptual overview.',
+      },
+      properties: {
+        id: {
+          type: 'string',
+          metadata: {
+            description: 'A globally unique identifier.',
+          },
+        },
+        handle: {
+          type: 'string',
+          metadata: {
+            description: 'A human-readable, shop-scoped identifier.',
           },
         },
       },

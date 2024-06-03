@@ -814,6 +814,14 @@ export interface Checkout {
   lineItems: CheckoutLineItem[];
 
   /**
+   * Information about the active localized experience. This
+   * property is only available if the shop has [upgraded to Checkout
+   * Extensibility](https://help.shopify.com/en/manual/checkout-
+   * settings/checkout-extensibility/checkout-upgrade).
+   */
+  localization: Localization;
+
+  /**
    * The resulting order from a paid checkout.
    */
   order: Order | null;
@@ -956,6 +964,16 @@ export interface Context {
    * of the browser
    */
   window: WebPixelsWindow;
+}
+
+/**
+ * A country.
+ */
+export interface Country {
+  /**
+   * The ISO-3166-1 code for this country, for example, "US".
+   */
+  isoCode: string;
 }
 
 /**
@@ -1213,6 +1231,37 @@ export interface InputElement {
 }
 
 /**
+ * A language.
+ */
+export interface Language {
+  /**
+   * The BCP-47 language tag. It may contain a dash followed by an ISO 3166-1
+   * alpha-2 region code, for example, "en-US".
+   */
+  isoCode: string;
+}
+
+/**
+ * Information about the active localized experience.
+ */
+export interface Localization {
+  /**
+   * The country of the active localized experience.
+   */
+  country: Country;
+
+  /**
+   * The language of the active localized experience.
+   */
+  language: Language;
+
+  /**
+   * The market including the country of the active localized experience.
+   */
+  market: Market;
+}
+
+/**
  * A snapshot of a subset of properties of the `location` object in the top
  * frame of the browser
  */
@@ -1337,6 +1386,23 @@ export interface MailingAddress {
    * The ZIP or postal code of the address.
    */
   zip: string | null;
+}
+
+/**
+ * A group of one or more regions of the world that a merchant
+ * is targeting for sales. To learn more about markets, refer to
+ * [this](https://shopify.dev/docs/apps/markets) conceptual overview.
+ */
+export interface Market {
+  /**
+   * A human-readable, shop-scoped identifier.
+   */
+  handle: string;
+
+  /**
+   * A globally unique identifier.
+   */
+  id: string;
 }
 
 /**
