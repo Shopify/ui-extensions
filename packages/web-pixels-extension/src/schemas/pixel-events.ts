@@ -538,14 +538,14 @@ export const pixelEvents = {
           type: 'boolean',
           metadata: {
             description:
-              "Indicates whether the customer has consented to be sent marketing material via email. This property is only available if you've [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).",
+              'Indicates whether the customer has consented to be sent marketing material via email. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
           },
         },
         buyerAcceptsSmsMarketing: {
           type: 'boolean',
           metadata: {
             description:
-              "Indicates whether the customer has consented to be sent marketing material via SMS. This property is only available if you've [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).",
+              'Indicates whether the customer has consented to be sent marketing material via SMS. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
           },
         },
         currencyCode: {
@@ -701,7 +701,7 @@ export const pixelEvents = {
           ref: 'MoneyV2',
           metadata: {
             description:
-              "The combined price of all of the items in the line item after line-level discounts have been applied. This property is only available if you've [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).",
+              'The combined price of all of the items in the line item after line-level discounts have been applied. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
           },
         },
         sellingPlanAllocation: {
@@ -709,7 +709,7 @@ export const pixelEvents = {
           nullable: true,
           metadata: {
             description:
-              "The selling plan associated with the line item and the effect that each selling plan has on variants when they're purchased. This property is only available if you've [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).",
+              "The selling plan associated with the line item and the effect that each selling plan has on variants when they're purchased. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).",
           },
         },
       },
@@ -1258,6 +1258,14 @@ export const pixelEvents = {
           nullable: true,
           metadata: {
             description: 'The ID of the customer.',
+          },
+        },
+        ordersCount: {
+          type: 'uint32',
+          nullable: true,
+          metadata: {
+            description:
+              'The total number of orders that the customer has placed. During periods of high order volume, the value of this property may not include the current order. This property is only available for the checkout_completed event if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
           },
         },
       },

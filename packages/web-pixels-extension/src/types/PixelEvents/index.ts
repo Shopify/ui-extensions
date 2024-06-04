@@ -775,17 +775,17 @@ export interface Checkout {
   billingAddress: MailingAddress | null;
 
   /**
-   * Indicates whether the customer has consented to be sent marketing
-   * material via email. This property is only available if you've [upgraded
+   * Indicates whether the customer has consented to be sent marketing material
+   * via email. This property is only available if the shop has [upgraded
    * to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-
    * settings/checkout-extensibility/checkout-upgrade).
    */
   buyerAcceptsEmailMarketing: boolean;
 
   /**
-   * Indicates whether the customer has consented to be sent marketing
-   * material via SMS. This property is only available if you've [upgraded
-   * to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-
+   * Indicates whether the customer has consented to be sent marketing material
+   * via SMS. This property is only available if the shop has [upgraded to
+   * Checkout Extensibility](https://help.shopify.com/en/manual/checkout-
    * settings/checkout-extensibility/checkout-upgrade).
    */
   buyerAcceptsSmsMarketing: boolean;
@@ -882,9 +882,9 @@ export interface CheckoutLineItem {
   discountAllocations: DiscountAllocation[];
 
   /**
-   * The combined price of all of the items in the line
-   * item after line-level discounts have been applied. This
-   * property is only available if you've [upgraded to Checkout
+   * The combined price of all of the items in the line item
+   * after line-level discounts have been applied. This property
+   * is only available if the shop has [upgraded to Checkout
    * Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-
    * extensibility/checkout-upgrade).
    */
@@ -901,9 +901,9 @@ export interface CheckoutLineItem {
   quantity: number;
 
   /**
-   * The selling plan associated with the line item and the effect
-   * that each selling plan has on variants when they're purchased.
-   * This property is only available if you've [upgraded to Checkout
+   * The selling plan associated with the line item and the effect that
+   * each selling plan has on variants when they're purchased. This
+   * property is only available if the shop has [upgraded to Checkout
    * Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-
    * extensibility/checkout-upgrade).
    */
@@ -1467,6 +1467,16 @@ export interface OrderCustomer {
    * The ID of the customer.
    */
   id: string | null;
+
+  /**
+   * The total number of orders that the customer has placed. During
+   * periods of high order volume, the value of this property may not
+   * include the current order. This property is only available for
+   * the checkout_completed event if the shop has [upgraded to Checkout
+   * Extensibility](https://help.shopify.com/en/manual/checkout-
+   * settings/checkout-extensibility/checkout-upgrade).
+   */
+  ordersCount: number | null;
 }
 
 /**
