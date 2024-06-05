@@ -44,7 +44,14 @@ const data: ReferenceEntityTemplateSchema = {
         '| Value | Description |\n| --- | --- |\n| <code>"accent"</code> | Conveys emphasis and draws attention to the element. |\n| <code>"monochrome"</code> | Takes the color of its parent.|',
     },
   ],
-  related: [],
+  related: [
+    {
+      name: 'Progress',
+      subtitle: 'Component',
+      url: 'progress',
+      type: 'Component',
+    },
+  ],
 };
 
 export default data;

@@ -78,6 +78,8 @@ export {
   type PressableProps,
   ProductThumbnail,
   type ProductThumbnailProps,
+  Progress,
+  type ProgressProps,
   Popover,
   type PopoverProps,
   type PopoverPosition,

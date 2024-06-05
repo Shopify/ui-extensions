@@ -158,6 +158,15 @@ export function getExamples(
         tabs: getExtensionCodeTabs('ui-components/switch-custom-label'),
       },
     },
+    'ui-components/progress-determinate-state': {
+      description:
+        'In a determinate state, [TextBlock](../titles-and-text/textblock) or [Text](../titles-and-text/text) components can be used to communicate what the progress bar is tracking, and to set clear expectations about the current progress.',
+      image: 'progress-determinate.png',
+      codeblock: {
+        title: 'Determinate state',
+        tabs: getExtensionCodeTabs('ui-components/progress-determinate-state'),
+      },
+    },
   };
 }
 
