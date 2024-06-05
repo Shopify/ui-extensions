@@ -17,6 +17,7 @@
     "docs:admin": "yarn workspace @shopify/ui-extensions docs:admin",
     "docs:checkout": "yarn workspace @shopify/ui-extensions docs:checkout",
     "docs:point-of-sale": "yarn workspace @shopify/ui-extensions docs:point-of-sale",
+    "docs:customer-account": "yarn workspace @shopify/ui-extensions docs:customer-account",
     "deploy:unstable": "changeset version --snapshot unstable && changeset publish --tag unstable --no-git-tag",
     "predeploy:internal": "yarn build",
     "deploy:internal": "changeset version --snapshot internal && changeset publish --tag internal --no-git-tag",
@@ -49,6 +50,6 @@
     "prettier": "^2.8.0",
     "react": ">=18.0.0",
     "typescript": "^4.9.0",
-    "@shopify/generate-docs": "0.10.13"
+    "@shopify/generate-docs": "0.15.0"
   }
 }

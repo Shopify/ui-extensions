@@ -1,0 +1,6 @@
+{
+  "loyaltyPoints": {
+    "one": "You have {{formattedPoints}} loyalty point",
+    "other": "You have {{formattedPoints}} loyalty points"
+  }
+}
