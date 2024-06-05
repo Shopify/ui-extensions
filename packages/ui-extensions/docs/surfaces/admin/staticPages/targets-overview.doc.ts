@@ -141,46 +141,53 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
       ],
     },
     {
-      type: 'Markdown',
+      type: 'GenericAccordion',
       title: 'Admin block locations',
       anchorLink: 'block-locations',
       sectionContent:
         'Admin block extensions appear on resource detail pages throughout the admin. Learn more about [admin blocks](/docs/apps/admin/admin-actions-and-blocks#admin-blocks).',
-      sectionSubContent: [
+      accordionContent: [
         {
           title: 'Abandoned checkout details',
-          sectionContent:
+          description:
             'This page shows information about a single abandoned checkout. The `admin.abandoned-checkout-details.block.render` target is available on this page.',
+          image: 'admin.abandoned-checkout-details.block.render.png',
         },
         {
           title: 'Collection details',
-          sectionContent:
+          description:
             'This page shows information about a single collection. The `admin.collection-details.block.render` target is available on this page.',
+          image: 'admin.collection-details.block.render.png',
         },
         {
           title: 'Customer details',
-          sectionContent:
+          description:
             'This page shows information about a single customer. The `admin.customer-details.block.render` target is available on this page.',
+          image: 'admin.customer-details.block.render.png',
         },
         {
           title: 'Draft order details',
-          sectionContent:
+          description:
             'This page shows information about a single draft order. The `admin.draft-order-details.block.render` target is available on this page.',
+          image: 'admin.draft-order-details.block.render.png',
         },
         {
           title: 'Order details',
-          sectionContent:
+          description:
             'This page shows information about a single order. The `admin.order-details.block.render` target is available on this page.',
+          image: 'admin.order-details.block.render.png',
         },
         {
           title: 'Product details',
-          sectionContent:
+          description:
             'This page shows information about a single product. The `admin.product-details.block.render` target is available on this page.',
+          image: 'admin.product-details.block.render.png',
         },
         {
           title: 'Product variant details',
-          sectionContent:
+          description:
             'This page shows information about a single product variant. The `admin.product-variant-details.block.render` target is available on this page.',
+          image: 'admin.product-variant-details.block.render.png',
         },
       ],
     },
