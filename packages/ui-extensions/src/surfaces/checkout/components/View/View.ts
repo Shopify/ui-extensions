@@ -14,6 +14,7 @@ import type {
   ViewLikeAccessibilityRole,
   CornerProps,
   Opacity,
+  IdProps,
 } from '../shared';
 
 export type PositionType = 'absolute' | 'relative' | 'sticky';
@@ -105,27 +106,27 @@ export interface ViewProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,
     CornerProps,
+    IdProps,
     SizingProps,
     SpacingProps,
     VisibilityProps {
   /**
-   * Changes the display of the View.
+   * Changes the display of the component.
    *
    *
-   * `inline` follows the direction of words in a sentence based on the document’s writing mode.
+   * `inline` the component starts on the same line as preceding inline content and allows subsequent content to continue on the same line.
    *
-   * `block` follows the direction of paragraphs based on the document’s writing mode.
+   * `block` the component starts on its own new line and fills its parent.
    *
+   * `auto` resets the component to its initial value. The actual value depends on the component and context.
    *
-   * @defaultValue 'block'
+   * `none` hides the component and removes it from the accessibility tree, making it invisible to screen readers.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
+   *
+   * @defaultValue 'auto'
    */
-  display?: Display;
-
-  /**
-   * A unique identifier for the View.
-   */
-  id?: string;
-
+  display?: MaybeResponsiveConditionalStyle<Display>;
   /**
    * Sets the opacity of the View. The opacity will be applied to the background as well as all
    * the children of the View. Use carefully as this could decrease the contrast ratio between

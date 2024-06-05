@@ -64,6 +64,20 @@ const data: ReferenceEntityTemplateSchema = {
           ],
         },
       },
+      {
+        description:
+          'Using the `display` property with conditional styles enables you to hide content for certain viewport sizes. In this example, the View will be hidden on small and above screen sizes.',
+        codeblock: {
+          title: 'Conditionally hiding content',
+          tabs: [
+            {
+              title: 'React',
+              code: './examples/hiding.example.tsx',
+              language: 'tsx',
+            },
+          ],
+        },
+      },
     ],
   },
   subSections: [

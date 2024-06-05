@@ -40,6 +40,7 @@ export type {
   DisclosureActivatorProps,
   DisclosureOpen,
   DisabledDate,
+  Display,
   ExtensionTarget,
   ExtensionTargets,
   Fit,

@@ -14,29 +14,35 @@ import type {
   CornerProps,
   Opacity,
   BackgroundProps,
+  IdProps,
 } from '../shared';
 
 export interface PressableProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,
     CornerProps,
+    IdProps,
     SizingProps,
     SpacingProps,
     OverlayActivatorProps,
     DisclosureActivatorProps {
   /**
-   * Changes the display of the Pressable.
+   * Changes the display of the component.
    *
    *
-   * `inline` follows the direction of words in a sentence based on the document’s writing mode.
+   * `inline` the component starts on the same line as preceding inline content and allows subsequent content to continue on the same line.
    *
-   * `block` follows the direction of paragraphs based on the document’s writing mode.
+   * `block` the component starts on its own new line and fills its parent.
    *
+   * `auto` resets the component to its initial value. The actual value depends on the component and context.
    *
-   * @defaultValue 'block'
+   * `none` hides the component and removes it from the accessibility tree, making it invisible to screen readers.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
+   *
+   * @defaultValue 'auto'
    */
-  display?: Display;
-
+  display?: MaybeResponsiveConditionalStyle<Display>;
   /**
    * A label that describes the purpose or contents of the element. When set,
    * it will be announced to buyers using assistive technologies and will
@@ -59,11 +65,6 @@ export interface PressableProps
    * Disables the button, disallowing any interaction
    */
   disabled?: boolean;
-
-  /**
-   * A unique identifier for the Pressable.
-   */
-  id?: string;
 
   /**
    * Disables the button while loading. Unlike `Button`, no indicator is rendered while loading.

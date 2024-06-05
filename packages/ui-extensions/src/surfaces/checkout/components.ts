@@ -217,6 +217,7 @@ export type {
   CornerProps,
   DisclosureActivatorProps,
   DisclosureOpen,
+  Display,
   Fit,
   GridItemSize,
   InlineAlignment,
