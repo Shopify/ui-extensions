@@ -11,6 +11,7 @@ export type {
   CartLine,
   Customer,
   DiscountApplication,
+  FormError,
   GenericElement,
   InputElement,
   FormElement,
@@ -30,6 +31,7 @@ export type {
   PixelEventsCheckoutCompleted,
   PixelEventsCheckoutStartedData,
   PixelEventsCheckoutCompletedData,
+  PixelEventsFormError,
   PricingPercentageValue,
   Transaction,
 } from './PixelEvents';

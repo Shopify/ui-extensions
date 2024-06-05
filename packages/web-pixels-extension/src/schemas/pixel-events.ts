@@ -511,6 +511,34 @@ export const pixelEvents = {
         },
       },
     },
+    FormError: {
+      metadata: {
+        description: 'A container for information related to a form error.',
+      },
+      properties: {
+        field: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The name of the field that the error is associated with.',
+          },
+        },
+        section: {
+          type: 'string',
+          metadata: {
+            description:
+              'The section of the of the form where the error ocurred. (e.g. checkout-shipping-address)',
+          },
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            description: "The type of error that occurred, (e.g. 'too long').",
+          },
+        },
+      },
+    },
     Checkout: {
       metadata: {
         description:
@@ -833,6 +861,7 @@ export const pixelEvents = {
       properties: {
         id: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'A globally unique identifier.',
           },
@@ -868,12 +897,14 @@ export const pixelEvents = {
         },
         title: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'The product variant’s title.',
           },
         },
         untranslatedTitle: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'The product variant’s untranslated title.',
           },
@@ -995,6 +1026,7 @@ export const pixelEvents = {
       properties: {
         id: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'The ID of the product.',
           },
@@ -1007,12 +1039,14 @@ export const pixelEvents = {
         },
         untranslatedTitle: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'The product’s untranslated title.',
           },
         },
         url: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'The relative URL of the product.',
           },
@@ -1172,6 +1206,7 @@ export const pixelEvents = {
         },
         id: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'A globally unique identifier.',
           },
@@ -1656,6 +1691,46 @@ export const pixelEvents = {
     },
   },
   properties: {
+    form_error: {
+      metadata: {
+        description:
+          'The `form_error` event logs an instance of a customer encountering an error while interacting with a form.',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'form_error'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            formError: {
+              ref: 'FormError',
+            },
+          },
+        },
+      },
+    },
     checkout_address_info_submitted: {
       metadata: {
         description:

@@ -178,6 +178,28 @@ export interface PixelEventsCollectionViewed {
   type: EventType.Standard;
 }
 
+export interface PixelEventsFormErrorData {
+  formError: FormError;
+}
+
+/**
+ * The `form_error` event logs an instance of a customer encountering an error
+ * while interacting with a form.
+ */
+export interface PixelEventsFormError {
+  clientId: ClientId;
+  context: Context;
+  data: PixelEventsFormErrorData;
+  id: Id;
+
+  /**
+   * The name of the customer event
+   */
+  name: 'form_error';
+  timestamp: Timestamp;
+  type: EventType.Standard;
+}
+
 export interface PixelEventsFormSubmittedData {
   element: FormElement;
 }
@@ -475,6 +497,12 @@ export interface PixelEvents {
   collection_viewed: PixelEventsCollectionViewed;
 
   /**
+   * The `form_error` event logs an instance of a customer encountering an error
+   * while interacting with a form.
+   */
+  form_error: PixelEventsFormError;
+
+  /**
    * The `form_submitted` event logs an instance where a form element on the
    * page has been submitted
    */
@@ -706,7 +734,7 @@ export interface Cart {
   /**
    * A globally unique identifier.
    */
-  id: string;
+  id: string | null;
   lines: CartLine[];
 
   /**
@@ -1141,6 +1169,27 @@ export interface FormElement {
 }
 
 /**
+ * A container for information related to a form error.
+ */
+export interface FormError {
+  /**
+   * The name of the field that the error is associated with.
+   */
+  field: string | null;
+
+  /**
+   * The section of the of the form where the error ocurred. (e.g. checkout-
+   * shipping-address)
+   */
+  section: string;
+
+  /**
+   * The type of error that occurred, (e.g. 'too long').
+   */
+  type: string;
+}
+
+/**
  * An object that contains data about a generic element type
  */
 export interface GenericElement {
@@ -1498,7 +1547,7 @@ export interface Product {
   /**
    * The ID of the product.
    */
-  id: string;
+  id: string | null;
 
   /**
    * The product’s title.
@@ -1515,12 +1564,12 @@ export interface Product {
   /**
    * The product’s untranslated title.
    */
-  untranslatedTitle: string;
+  untranslatedTitle: string | null;
 
   /**
    * The relative URL of the product.
    */
-  url: string;
+  url: string | null;
 
   /**
    * The product’s vendor name.
@@ -1536,7 +1585,7 @@ export interface ProductVariant {
   /**
    * A globally unique identifier.
    */
-  id: string;
+  id: string | null;
 
   /**
    * Image associated with the product variant. This field falls back to the
@@ -1562,12 +1611,12 @@ export interface ProductVariant {
   /**
    * The product variant’s title.
    */
-  title: string;
+  title: string | null;
 
   /**
    * The product variant’s untranslated title.
    */
-  untranslatedTitle: string;
+  untranslatedTitle: string | null;
 }
 
 /**
