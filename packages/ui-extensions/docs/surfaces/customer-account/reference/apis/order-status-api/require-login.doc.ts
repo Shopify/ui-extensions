@@ -28,9 +28,9 @@ const data: ReferenceEntityTemplateSchema = {
     description: '',
     examples: [
       {
-        description: 'Call requireLogin before trigging an action',
+        description: 'Call requireLogin before triggering an action',
         codeblock: {
-          title: 'Call requireLogin before trigging an action',
+          title: 'Call requireLogin before triggering an action',
           tabs: [
             {
               code: '../../examples/apis/require-login.example.tsx',
