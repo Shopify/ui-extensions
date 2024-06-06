@@ -218,9 +218,11 @@ The following section describes use cases for requesting network access, alterna
         {
           title: 'Alternatives to network access',
           sectionContent: `
-Instead of fetching data with an external network call, consider retrieving the data from a metafield. Your app may be able to use the [Admin API](/docs/api/admin) to write [metafields](/api/admin-graphql/latest/objects/metafield) on the shop, product, or customer.
+Instead of fetching data with an external network call, consider retrieving the data from a metafield. Your app can use the [Customer Account API](/docs/api/customer) to write to [metafields](/docs/api/customer/latest/objects/Metafield) on the customer, order, company, or company location.
 
-Retrieving data from [metafields](/docs/api/customer-account-ui-extensions/apis/standardapi#properties-propertydetail-appmetafields) in new customer accounts is faster since it won't introduce an external network call. This allows you to rely on Shopify for the uptime, scaling, and durability of the data storage.
+An app with the ability to query the Admin API can also write to [metafields](/api/admin-graphql/latest/objects/metafield) on the shop or product.
+
+Retrieving data from metafields is faster because it doesn't require an external network call. Instead, you can rely on Shopify for the uptime, scaling, and durability of the data storage.
 `,
         },
         {
@@ -272,46 +274,10 @@ Your extension can pass a [session token](/docs/api/customer-account-ui-extensio
       anchorLink: 'metafields',
       title: 'Metafields',
       sectionContent: `
-Defines the [metafields](/docs/apps/custom-data/metafields) that are available to your extension.
+All customer account UI extension [targets](/api/customer-account-ui-extensions/targets) can read and write to metafields using the [Customer Account API](/docs/api/customer-account-ui-extensions/apis/customer-account-api). Learn more about [writing to metafields](#link-TBD).
 
-> Note:
-> [Metafields](/docs/api/customer-account-ui-extensions/apis/order-status-api/metafields) are only available to order status [targets](/api/customer-account-ui-extensions/targets).
-
-Each extension target uses the metafields defined in \`[[extensions.metafields]]\` unless they specify their own \`[[extensions.targeting.metafields]]\`.
-
-Supported resource metafield types include:
-
-| Resource | Description |
-|---| --- |
-| \`cart\` | The cart associated with the current checkout. |
-| \`company\` | The company for B2B checkouts. |
-| \`companyLocation\` | The company's location for B2B checkouts. |
-| \`customer\` | The customer account that is interacting with the current checkout. |
-| \`product\` | The products that the customer intends to purchase. |
-| \`shop\` | The shop that is associated with the current checkout. |
-| \`shopUser\` | The Shop App user that is associated with the current checkout if there is one. |
-| \`variant\` | The product variants that the customer intends to purchase. |
-
-You retrieve these metafields in your extension by reading [\`appMetafields\`](/docs/api/customer-account-ui-extensions/apis/order-status-api/metafields).
+Access to metafields on a read-only basis through the [Order Status API](/docs/api/customer-account-ui-extensions/apis/order-status-api/metafields) is available to order status [targets](/api/customer-account-ui-extensions/targets) and is defined in your configuration. Customer account UI extensions are configured for metafields similarly to checkout UI extensions. [Learn more](/docs/api/checkout-ui-extensions/configuration#metafields).
 `,
-      codeblock: {
-        title: 'Metafields',
-        tabs: [
-          {
-            title: 'Metafields',
-            code: './examples/configuration/metafields.example.toml',
-            language: 'toml',
-          },
-        ],
-      },
-      sectionCard: [
-        {
-          name: 'useAppMetafields',
-          subtitle: 'Hook',
-          url: '/docs/api/customer-account-ui-extensions/apis/order-status-api/metafields#useAppMetafields',
-          type: 'blocks',
-        },
-      ],
     },
     {
       type: 'Markdown',
