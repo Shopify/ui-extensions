@@ -5,7 +5,8 @@
     "docs:admin": "sh ./docs/surfaces/admin/build-docs.sh",
     "gen-docs:admin": "sh ./docs/surfaces/admin/create-doc-files.sh \"admin\"",
     "docs:checkout": "sh ./docs/surfaces/checkout/build-docs.sh",
-    "docs:point-of-sale": "sh ./docs/surfaces/point-of-sale/build-docs.sh"
+    "docs:point-of-sale": "sh ./docs/surfaces/point-of-sale/build-docs.sh",
+    "docs:customer-account": "sh ./docs/surfaces/customer-account/build-docs.sh"
   },
   "main": "index.js",
   "module": "index.mjs",
@@ -66,7 +67,7 @@
     "@remote-ui/core": "^2.2.4"
   },
   "devDependencies": {
-    "@shopify/generate-docs": "0.10.13",
+    "@shopify/generate-docs": "0.15.0",
     "typescript": "^4.9.0"
   },
   "publishConfig": {

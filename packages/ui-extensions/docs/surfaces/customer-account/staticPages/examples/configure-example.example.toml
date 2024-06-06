@@ -1,0 +1,10 @@
+api_version = "unstable"
+
+[[extensions]]
+name = "My customer account ui extension"
+handle = "customer-account-ui"
+type = "ui_extension"
+
+[[extensions.targeting]]
+target = "customer-account.order-status.block.render"
+module = "./Extension.jsx"

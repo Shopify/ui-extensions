@@ -1,0 +1,16 @@
+{
+  // Shopify URL
+  "dest": "store-name.myshopify.com",
+  // The Client ID of your app
+  "aud": "<clientId>",
+  // When the token expires.  Set at 5 minutes.
+  "exp": 1679954053,
+  // When the token was actived
+  "nbf": 1679953753,
+  // When the token was issued
+  "iat": 1679953753,
+  // A unique identifier (a nonce) to prevent replay attacks
+  "jti": "6c992878-dbaf-48d1-bb9d-6d9b59814fd1",
+  // Optional claim present when a customer is logged in and your app has permissions to read customer data
+  "sub": "gid://shopify/Customer/<customerId>"
+}
