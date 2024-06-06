@@ -54,6 +54,12 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/docs/apps/customer-accounts/order-status-page#pre-authenticated-order-status-page',
       type: 'tutorial',
     },
+    {
+      name: 'Order actions',
+      subtitle: 'UX guidelines',
+      url: '/docs/apps/customer-accounts/order-action-extensions/ux-for-order-actions#triggered-actions',
+      type: 'star',
+    },
   ],
   definitions: [
     ORDER_API,
