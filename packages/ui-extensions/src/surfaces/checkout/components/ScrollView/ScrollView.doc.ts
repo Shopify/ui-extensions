@@ -35,7 +35,14 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [],
+  related: [
+    {
+      subtitle: 'Utility',
+      name: 'StyleHelper',
+      url: '/docs/api/checkout-ui-extensions/unstable/components/utilities/stylehelper',
+      type: 'utility',
+    },
+  ],
 };
 
 export default data;

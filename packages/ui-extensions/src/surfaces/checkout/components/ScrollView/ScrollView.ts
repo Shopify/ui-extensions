@@ -4,9 +4,11 @@ import type {
   BackgroundProps,
   BorderProps,
   CornerProps,
+  IdProps,
   SizingProps,
   SpacingProps,
 } from '../shared';
+import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 
 export interface ScrollViewEvent {
   /**
@@ -33,6 +35,7 @@ export interface ScrollViewProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,
     CornerProps,
+    IdProps,
     SizingProps,
     SpacingProps {
   /**
@@ -74,9 +77,18 @@ export interface ScrollViewProps
    */
   onScrolledToEdge?: (args: ScrollViewEvent) => void;
   /**
-   * A unique identifier for the component.
+   * Changes the display of the component.
+   *
+   *
+   * `auto` the component's initial value. The actual value depends on the component and context.
+   *
+   * `none` hides the component and removes it from the accessibility tree, making it invisible to screen readers.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
+   *
+   * @defaultValue 'auto'
    */
-  id?: string;
+  display?: MaybeResponsiveConditionalStyle<'auto' | 'none'>;
 }
 
 /**

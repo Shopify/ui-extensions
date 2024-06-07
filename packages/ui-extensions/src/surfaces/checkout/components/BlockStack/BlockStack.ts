@@ -4,6 +4,7 @@ import type {
   BackgroundProps,
   BorderProps,
   CornerProps,
+  IdProps,
   InlineAlignment,
   SizingProps,
   Spacing,
@@ -16,6 +17,7 @@ export interface BlockStackProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,
     CornerProps,
+    IdProps,
     SizingProps,
     SpacingProps {
   /**
@@ -48,10 +50,6 @@ export interface BlockStackProps
    */
   accessibilityLabel?: string;
   /**
-   * A unique identifier for the component.
-   */
-  id?: string;
-  /**
    * Sets the overflow behavior of the element.
    *
    * `hidden`: clips the content when it is larger than the element’s container.
@@ -63,6 +61,18 @@ export interface BlockStackProps
    * @default 'visible'
    */
   overflow?: 'hidden' | 'visible';
+  /**
+   * Changes the display of the component.
+   *
+   * `auto` the component's initial value. The actual value depends on the component and context.
+   *
+   * `none` hides the component and removes it from the accessibility tree, making it invisible to screen readers.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
+   *
+   * @defaultValue 'auto'
+   */
+  display?: MaybeResponsiveConditionalStyle<'auto' | 'none'>;
 }
 
 /**

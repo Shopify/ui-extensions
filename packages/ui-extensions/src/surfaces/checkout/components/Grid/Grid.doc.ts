@@ -51,6 +51,12 @@ const data: ReferenceEntityTemplateSchema = {
       url: 'grid',
       type: 'Component',
     },
+    {
+      subtitle: 'Utility',
+      name: 'StyleHelper',
+      url: '/docs/api/checkout-ui-extensions/unstable/components/utilities/stylehelper',
+      type: 'utility',
+    },
   ],
 };
 

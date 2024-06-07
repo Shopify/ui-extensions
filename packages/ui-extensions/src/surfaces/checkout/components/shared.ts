@@ -133,7 +133,7 @@ export type AutocompleteField =
 
 export type Breakpoint = 'base' | 'extraSmall' | 'small' | 'medium' | 'large';
 
-export type Display = 'block' | 'inline';
+export type Display = 'none' | 'auto' | 'inline' | 'block';
 
 export type ShorthandProperty<T> = [T, T] | [T, T, T, T];
 
