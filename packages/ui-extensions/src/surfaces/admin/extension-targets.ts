@@ -9,6 +9,7 @@ import type {
   ProductDetailsConfigurationApi,
   ProductVariantDetailsConfigurationApi,
   OrderRoutingRuleApi,
+  InStorePickUpApi,
   ValidationSettingsApi,
 } from './api';
 import {AnyComponentBuilder} from '../../shared';
@@ -385,6 +386,28 @@ export interface ExtensionTargets {
   >;
   'admin.settings.order-routing-rule.render': RenderExtension<
     OrderRoutingRuleApi<'admin.settings.order-routing-rule.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders In Store Pickup Configuration on in store pick up settings (general and per location).
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.settings.in-store-pickup.render': RenderExtension<
+    InStorePickUpApi<'admin.settings.in-store-pickup.render'>,
+    AllComponents
+  >;
+  'admin.settings.internal-in-store-pickup.render': RenderExtension<
+    InStorePickUpApi<'admin.settings.internal-in-store-pickup.render'>,
+    AllComponents
+  >;
+  'admin.settings.in-store-pickup-location.render': RenderExtension<
+    InStorePickUpApi<'admin.settings.in-store-pickup-location.render'>,
+    AllComponents
+  >;
+  'admin.settings.internal-in-store-pickup-location.render': RenderExtension<
+    InStorePickUpApi<'admin.settings.internal-in-store-pickup-location.render'>,
     AllComponents
   >;
 

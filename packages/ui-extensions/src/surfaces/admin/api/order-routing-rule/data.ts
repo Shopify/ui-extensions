@@ -1,12 +1,4 @@
-import type {SupportedDefinitionType} from './metafields';
-
-interface Metafield {
-  id?: string | null;
-  key: string;
-  value?: string | null;
-  namespace?: string;
-  type?: SupportedDefinitionType;
-}
+import type {Metafield} from '../shared';
 
 interface OrderRoutingRule {
   label: string;

@@ -4,7 +4,7 @@ import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-target
 import {ApplyMetafieldsChange} from '../shared';
 import {Data} from './data';
 
-export interface OrderRoutingRuleApi<ExtensionTarget extends AnyExtensionTarget>
+export interface InStorePickUpApi<ExtensionTarget extends AnyExtensionTarget>
   extends StandardApi<ExtensionTarget> {
   applyMetafieldsChange: ApplyMetafieldsChange;
   data: Data;
