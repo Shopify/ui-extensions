@@ -26,7 +26,7 @@ export interface BlockExtensionApi<ExtensionTarget extends AnyExtensionTarget>
   navigation: Navigation;
 
   /**
-   * Renders the [Resource Picker](/docs/api/app-bridge-library/apis/resource-picker), allowing users to select a resource for the extension to use as part of it's flow.
+   * Renders the [Resource Picker](/docs/api/app-bridge-library/apis/resource-picker), allowing users to select a resource for the extension to use as part of its flow.
    */
   resourcePicker: ResourcePickerApi;
 }
