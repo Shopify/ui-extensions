@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'AdminPrintAction is a component used by admin print action extensions to denote a URL to print. Admin print action extensions require the use of this component.',
   requires: '',
-  thumbnail: 'AdminPrintAction-thumbnail.png',
+  thumbnail: 'adminprintaction-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -18,18 +18,18 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   subCategory: 'Other',
   defaultExample: {
-    image: 'AdminPrintAction-default.png',
+    image: 'adminprintaction-default.png',
     codeblock: {
       title: 'Set the source URL of the print action extension.',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminPrintAction/examples/basic-AdminPrintAction.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminPrintAction/examples/basic-adminprintaction.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-AdminPrintAction.example.ts',
+          code: './examples/basic-adminprintaction.example.ts',
           language: 'js',
         },
       ],
