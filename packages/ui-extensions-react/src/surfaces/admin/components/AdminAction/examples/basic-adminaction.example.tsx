@@ -1,16 +1,30 @@
 import React from 'react';
-import {reactExtension, AdminAction, Button} from '@shopify/ui-extensions-react/admin';
+import {
+  reactExtension,
+  AdminAction,
+  Button,
+  Text,
+} from '@shopify/ui-extensions-react/admin';
 
 function App() {
   return (
     <AdminAction
-        title="My App Action"
-        primaryAction={<Button onPress={() => {}}>Action</Button>}
-        secondaryAction={<Button onPress={() => {}}>Secondary</Button>}
+      title="My App Action"
+      primaryAction={
+        <Button onPress={() => {}}>Action</Button>
+      }
+      secondaryAction={
+        <Button onPress={() => {}}>
+          Secondary
+        </Button>
+      }
     >
-        Modal content
+      <Text>Modal content</Text>
     </AdminAction>
   );
 }
 
-export default reactExtension('Playground', () => <App />);
+export default reactExtension(
+  'Playground',
+  () => <App />,
+);
