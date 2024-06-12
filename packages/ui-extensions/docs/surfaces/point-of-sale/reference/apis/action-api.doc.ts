@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'Action',
+      title: 'ActionApi',
       description: '',
       type: 'ActionApiContent',
     },

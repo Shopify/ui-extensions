@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
     ExtensionTargetType.PosProductDetailsActionRender,
   definitions: [
     {
-      title: 'Product API',
+      title: 'ProductApi',
       description: '',
       type: 'ProductApiContent',
     },
@@ -26,7 +26,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         codeblock: generateCodeBlockForProductApi(
-          'Retreive the ID of the product.',
+          'Retrieve the ID of the product.',
           'id',
         ),
       },

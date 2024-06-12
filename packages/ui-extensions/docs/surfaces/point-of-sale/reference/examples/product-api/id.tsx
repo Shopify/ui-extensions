@@ -15,7 +15,7 @@ const Modal = () => {
     <Navigator>
       <Screen name="ProductApi" title="Product Api">
         <ScrollView>
-          <Text>{`Product ID: ${api.product.id}`}/Text>
+          <Text>{`Product ID: ${api.product.id}`}</Text>
         </ScrollView>
       </Screen>
     </Navigator>

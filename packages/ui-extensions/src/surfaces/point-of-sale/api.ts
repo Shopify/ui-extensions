@@ -18,6 +18,11 @@ export type {
   ConnectivityApi,
 } from './api/connectivity-api/connectivity-api';
 
+export type {
+  CustomerApi,
+  CustomerApiContent,
+} from './api/customer-api/customer-api';
+
 export type {LocaleApi, LocaleApiContent} from './api/locale-api/locale-api';
 
 export type {
