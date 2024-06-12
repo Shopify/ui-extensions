@@ -25,6 +25,11 @@ export type {
 export type {OrderAPIContent, OrderApi} from './api/order-api/order-api';
 
 export type {
+  ProductApi,
+  ProductApiContent,
+} from './api/product-api/product-api';
+
+export type {
   PaginationParams,
   ProductSortType,
   ProductSearchParams,
