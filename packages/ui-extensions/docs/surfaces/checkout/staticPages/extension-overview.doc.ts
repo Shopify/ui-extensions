@@ -18,8 +18,8 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
   sections: [
     {
       type: 'GenericAccordion',
-      title: 'Checkout placements',
-      anchorLink: 'placements',
+      title: 'Checkout locations',
+      anchorLink: 'supported-locations',
       sectionContent:
         'Checkout is where buyers go to purchase goods. Checkout consists of the information, shipping, and payment steps in addition to the order summary and Shop Pay. Learn more about building [custom functionality for checkout](/docs/api/checkout-ui-extensions).',
       accordionContent: [
@@ -69,6 +69,15 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
           image: 'supported-locations-shop-pay.png',
         },
         {
+          title: 'Split shipping',
+          description: `
+When multiple shipments are expected, a checkout will render split shipping options.
+
+See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
+`,
+          image: 'supported-locations-split-shipping.png',
+        },
+        {
           title: 'Local Pickup',
           description: `
 Point in checkout where the buyer can select a store location to pick up their purchase.
@@ -99,8 +108,8 @@ Get started testing extensions on [one-page checkout](/docs/apps/checkout/best-p
     },
     {
       type: 'GenericAccordion',
-      title: 'Thank you placements',
-      anchorLink: 'typ-placements',
+      title: 'Thank you locations',
+      anchorLink: 'supported-typ-locations',
       sectionContent:
         'The **Thank you** page is shown to buyers immediately after a checkout is successfully submitted. Learn more about building for [the **Thank you** page](/docs/apps/checkout/thank-you-order-status).',
       accordionContent: [
@@ -126,8 +135,8 @@ Review [all **Thank you** page extensions targets](/docs/api/checkout-ui-extensi
     },
     {
       type: 'GenericAccordion',
-      title: 'Order status placements',
-      anchorLink: 'osp-placements',
+      title: 'Order status locations',
+      anchorLink: 'supported-osp-locations',
       sectionContent:
         'The **Order status** page is shown to buyers when they return to a completed checkout for order updates. Learn more about building for [the **Order status** page](/docs/apps/checkout/thank-you-order-status).',
       accordionContent: [
@@ -176,7 +185,7 @@ Review [all **Order status** page extensions targets](/docs/api/checkout-ui-exte
       type: 'Generic',
       anchorLink: 'block-extension-targets',
       title: 'Block extension targets',
-      sectionContent: `Block extension targets render between core checkout features. Merchants can use the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor) to place the extension in the [checkout](/docs/api/checkout-ui-extensions/extension-targets-overview#placements), [**Thank you**](/docs/api/checkout-ui-extensions/extension-targets-overview#typ-placements), or [**Order status**](/docs/api/checkout-ui-extensions/extension-targets-overview#osp-placements) pages.
+      sectionContent: `Block extension targets render between core checkout features. Merchants can use the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor) to place the extension in the [checkout](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations), [**Thank you**](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-typ-locations), or [**Order status**](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-osp-locations) pages.
       \n\nBlock extensions are always rendered, regardless of what other elements of the checkout are present. For example, an extension placed above the shipping address will still render even for digital products which do not require a shipping address.\n\nChoose block extension targets when your content and functionality works independently of a core checkout feature. This is useful for custom content, like a field to capture order notes from the customer.`,
       image: 'block-extension-targets.png',
       sectionCard: [

@@ -39,7 +39,7 @@ export interface AddressAutocompleteSuggestion {
   matchedSubstrings?: MatchedSubstring[];
 
   /**
-   * The formatted address that will auto-fill the remaining address fields.
+   * The address object used to auto-populate the remaining address fields.
    *
    * If this value is returned for every suggestion, then the
    * `purchase.address-autocomplete.format-suggestion` extension target is not needed.
