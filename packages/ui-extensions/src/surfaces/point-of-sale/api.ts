@@ -8,6 +8,8 @@ export type {
 
 export type {ActionApi, ActionApiContent} from './api/action-api/action-api';
 
+export type {StandardApi} from './api/standard/standard-api';
+
 export type {
   ConnectivityStateSeverity,
   ConnectivityState,
