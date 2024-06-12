@@ -140,8 +140,15 @@ export type {CartLineItemApi} from './checkout/api/cart-line/cart-line-item';
 export type {PickupLocationListApi} from './checkout/api/pickup/pickup-location-list';
 export type {PickupPointListApi} from './checkout/api/pickup/pickup-point-list';
 export type {PickupLocationItemApi} from './checkout/api/pickup/pickup-location-item';
-export type {ShippingOptionItemApi} from './checkout/api/shipping/shipping-option-item';
-export type {ShippingOptionListApi} from './checkout/api/shipping/shipping-option-list';
+export type {
+  ShippingOptionItemApi,
+  ShippingOptionItemRenderMode,
+} from './checkout/api/shipping/shipping-option-item';
+export type {
+  ShippingOptionListApi,
+  DeliveryGroupList,
+  DeliverySelectionGroup,
+} from './checkout/api/shipping/shipping-option-list';
 export type {
   AddressAutocompleteFormatSuggestionApi,
   AddressAutocompleteFormatSuggestionOutput,

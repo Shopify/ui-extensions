@@ -56,7 +56,7 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       anchorLink: 'extension-targets',
       title: 'Extension Targets',
-      sectionContent: `Extension targets provide placements where merchants can insert custom content.
+      sectionContent: `Extension targets provide locations where merchants can insert custom content.
         Static extension targets are tied to core checkout features like contact information, shipping methods, and order summary line items.
         Block extension targets can be displayed at any point in the checkout process and will always render regardless of which checkout features are available.
         An example is a field to capture order notes from the customer.

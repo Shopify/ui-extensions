@@ -8,6 +8,10 @@ import {useSubscription} from './subscription';
  * extension targets:
  * - purchase.checkout.shipping-option-list.render-before
  * - purchase.checkout.shipping-option-list.render-after
+ *
+ * > Caution: Deprecated as of version `2024-07`, use `useDeliveryGroupListTarget()` instead.
+ *
+ * @deprecated Deprecated as of version `2024-07`, use `useDeliveryGroupListTarget()` instead.
  */
 export function useDeliveryGroupTarget(): DeliveryGroup | undefined {
   const api = useApi<
@@ -15,5 +19,6 @@ export function useDeliveryGroupTarget(): DeliveryGroup | undefined {
     | 'purchase.checkout.shipping-option-list.render-after'
   >();
 
-  return useSubscription(api.target);
+  const target = useSubscription(api.target);
+  return target?.deliveryGroups[0];
 }

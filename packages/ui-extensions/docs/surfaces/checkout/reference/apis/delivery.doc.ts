@@ -58,8 +58,20 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'useDeliveryGroupTarget',
       description:
-        'Returns the delivery group for the `purchase.checkout.shipping-option-list.render-before` and `purchase.checkout.shipping-option-list.render-after` attached extensions.',
+        'Returns the delivery group for the `purchase.checkout.shipping-option-list.render-before` and `purchase.checkout.shipping-option-list.render-after` attached extensions. This is deprecated, use `useDeliveryGroupListTarget()` instead.',
       type: 'UseDeliveryGroupTargetGeneratedType',
+    },
+    {
+      title: 'useDeliveryGroupListTarget',
+      description:
+        'Returns the delivery group list for the `purchase.checkout.shipping-option-list.render-before` and `purchase.checkout.shipping-option-list.render-after` attached extensions.',
+      type: 'UseDeliveryGroupListTargetGeneratedType',
+    },
+    {
+      title: 'useDeliverySelectionGroups',
+      description:
+        'Returns the delivery selection groups for the `purchase.checkout.shipping-option-list.render-before` and `purchase.checkout.shipping-option-list.render-after` attached extensions.',
+      type: 'UseDeliverySelectionGroupsGeneratedType',
     },
     {
       title: 'PickupPointListApi',

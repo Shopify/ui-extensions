@@ -35,7 +35,7 @@ export function useSubscription<Value>(
     // Check for this and schedule an update if work has occurred.
     checkForUpdates(subscription.current);
 
-    return () => {
+    return (): void => {
       didUnsubscribe = true;
       unsubscribe();
     };

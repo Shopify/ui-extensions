@@ -4,13 +4,12 @@ import type {
   ShippingOption,
 } from '@shopify/ui-extensions/checkout';
 
-// eslint-disable-next-line import/no-deprecated
-import {useDeliveryGroupTarget} from '../delivery-group-target';
+import {useDeliveryGroupListTarget} from '../delivery-group-list-target';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useDeliveryGroupTarget', () => {
-  it('returns the DeliveryGroup target if it exists', async () => {
+describe('useDeliveryGroupListTarget', () => {
+  it('returns the DeliveryGroupList target if it exists', async () => {
     const deliveryGroup: DeliveryGroup = {
       selectedDeliveryOption: {
         handle: 'shipping_method_1',
@@ -61,8 +60,7 @@ describe('useDeliveryGroupTarget', () => {
     const target: ExtensionTarget =
       'purchase.checkout.shipping-option-list.render-before';
 
-    // eslint-disable-next-line import/no-deprecated
-    const {value} = mount.hook(() => useDeliveryGroupTarget(), {
+    const {value} = mount.hook(() => useDeliveryGroupListTarget(), {
       extensionApi: {
         extension: {target},
         target: createMockStatefulRemoteSubscribable({
@@ -72,6 +70,9 @@ describe('useDeliveryGroupTarget', () => {
       },
     });
 
-    expect(value).toStrictEqual(deliveryGroup);
+    expect(value).toStrictEqual({
+      groupType: 'oneTimePurchase',
+      deliveryGroups: [deliveryGroup, deliveryGroup2],
+    });
   });
 });
