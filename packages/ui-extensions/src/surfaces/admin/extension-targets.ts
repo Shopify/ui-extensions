@@ -6,6 +6,7 @@ import type {
   CustomerSegmentTemplateApi,
   ActionExtensionApi,
   BlockExtensionApi,
+  PrintActionExtensionApi,
   ProductDetailsConfigurationApi,
   ProductVariantDetailsConfigurationApi,
   OrderRoutingRuleApi,
@@ -252,7 +253,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the abandonded checkout page. Open this extension from the "More Actions" menu.
+   * Renders an admin action extension in the abandoned checkout page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -335,7 +336,7 @@ export interface ExtensionTargets {
   >;
 
   /**
-   * Renders an admin action extension in the customer index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
+   * Renders an admin action extension in the customer index page when multiple resources are selected. Open this extension from the "More Actions" menu of the resource list. The resource ids are available to this extension at runtime.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
@@ -353,6 +354,50 @@ export interface ExtensionTargets {
     ActionExtensionApi<'admin.draft-order-index.selection-action.render'>,
     AllComponents
   >;
+
+  // Print actions and bulk print actions
+
+  /**
+   * Renders an admin print action extension in the order index page when multiple resources are selected. Open this extension from the "Print" menu of the resource list. The resource ids are available to this extension at runtime.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.order-details.print-action.render': RenderExtension<
+    PrintActionExtensionApi<'admin.order-details.print-action.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin print action extension in the product index page when multiple resources are selected. Open this extension from the "Print" menu of the resource list. The resource ids are available to this extension at runtime.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.product-details.print-action.render': RenderExtension<
+    PrintActionExtensionApi<'admin.product-details.print-action.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin print action extension in the order index page when multiple resources are selected. Open this extension from the "Print" menu of the resource list. The resource ids are available to this extension at runtime.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.order-index.selection-print-action.render': RenderExtension<
+    PrintActionExtensionApi<'admin.order-index.selection-print-action.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin print action extension in the product index page when multiple resources are selected. Open this extension from the "Print" menu of the resource list. The resource ids are available to this extension at runtime.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.product-index.selection-print-action.render': RenderExtension<
+    PrintActionExtensionApi<'admin.product-index.selection-print-action.render'>,
+    AllComponents
+  >;
+
+  // Other
 
   /**
    * Renders Product Configuration on product details and product variant details
