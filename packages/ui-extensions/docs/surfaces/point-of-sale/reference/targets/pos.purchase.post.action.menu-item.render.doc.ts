@@ -1,8 +1,9 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'pos.purchase.post.action.menu-item.render',
+  name: ExtensionTargetType.PosPurchasePostActionMenuItemRender,
   description:
     'A static extension target that renders as a menu item on the post-purchase screen',
   defaultExample: {
@@ -13,7 +14,7 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   related: [
     {
-      name: 'pos.purchase.post.action.render',
+      name: ExtensionTargetType.PosPurchasePostActionRender,
       url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-action-render',
     },
   ],

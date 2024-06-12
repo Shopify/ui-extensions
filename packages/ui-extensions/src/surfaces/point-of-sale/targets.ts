@@ -11,6 +11,7 @@ import {RenderExtension} from './extension';
 import type {Components} from './shared';
 import {AnyComponentBuilder} from '../../shared';
 import {ActionApi} from './api/action-api/action-api';
+import {ProductApi} from './api/product-api/product-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
 type ActionComponents = AnyComponentBuilder<Pick<Components, 'ActionItem'>>;
@@ -26,6 +27,12 @@ export interface ExtensionTargets {
     StandardApi<'pos.home.modal.render'> & NavigationApi & ScannerApi & CartApi,
     BasicComponents
   >;
+  'pos.purchase.post.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.purchase.post.action.menu-item.render'> &
+      ActionApi &
+      OrderApi,
+    ActionComponents
+  >;
   'pos.purchase.post.action.render': RenderExtension<
     StandardApi<'pos.purchase.post.action.render'> &
       OrderApi &
@@ -33,11 +40,20 @@ export interface ExtensionTargets {
       ScannerApi,
     BasicComponents
   >;
-  'pos.purchase.post.action.menu-item.render': RenderExtension<
-    StandardApi<'pos.purchase.post.action.menu-item.render'> &
+  'pos.product-details.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.product-details.action.menu-item.render'> &
       ActionApi &
-      OrderApi,
+      CartApi &
+      ProductApi,
     ActionComponents
+  >;
+  'pos.product-details.action.render': RenderExtension<
+    StandardApi<'pos.product-details.action.render'> &
+      CartApi &
+      NavigationApi &
+      ScannerApi &
+      ProductApi,
+    BasicComponents
   >;
 }
 
