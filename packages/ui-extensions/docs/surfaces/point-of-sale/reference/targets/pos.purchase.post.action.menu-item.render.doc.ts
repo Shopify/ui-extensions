@@ -7,7 +7,11 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A static extension target that renders as a menu item on the post-purchase screen',
   defaultExample: {
-    codeblock: generateCodeBlock('Menu item', 'targets', 'menu-item'),
+    codeblock: generateCodeBlock(
+      'Menu item',
+      'targets',
+      'pos-purchase-post-action-menu-item-render',
+    ),
   },
   category: 'Targets',
   subCategory: 'Post-purchase',

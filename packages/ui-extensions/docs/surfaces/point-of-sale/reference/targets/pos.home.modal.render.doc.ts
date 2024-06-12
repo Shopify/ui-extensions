@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A full-screen extension target that renders when a `pos.home.tile.render` target calls for it',
   defaultExample: {
-    codeblock: generateCodeBlock('Modal', 'targets', 'modal'),
+    codeblock: generateCodeBlock('Modal', 'targets', 'pos-home-modal-render'),
   },
   category: 'Targets',
   subCategory: 'Smart grid',

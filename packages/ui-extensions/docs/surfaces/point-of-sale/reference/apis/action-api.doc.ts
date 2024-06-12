@@ -22,7 +22,8 @@ const data: ReferenceEntityTemplateSchema = {
   related: [],
   requires:
     ExtensionTargetType.PosHomeTileRender ||
-    ExtensionTargetType.PosPurchasePostActionMenuItemRender,
+    ExtensionTargetType.PosPurchasePostActionMenuItemRender ||
+    ExtensionTargetType.PosOrderDetailsActionMenuItemRender,
   examples: {
     description: 'Examples of using the Action API.',
     examples: [
