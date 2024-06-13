@@ -9,6 +9,7 @@ export type {
 export type {ActionApi, ActionApiContent} from './api/action-api/action-api';
 
 export type {StandardApi} from './api/standard/standard-api';
+export type {ActionTargetApi} from './api/action-target-api/action-target-api';
 
 export type {
   ConnectivityStateSeverity,
@@ -24,7 +25,7 @@ export type {
   NavigationApi,
 } from './api/navigation-api/navigation-api';
 
-export type {OrderAPIContent, OrderApi} from './api/order-api/order-api';
+export type {OrderApiContent, OrderApi} from './api/order-api/order-api';
 
 export type {
   ProductApi,

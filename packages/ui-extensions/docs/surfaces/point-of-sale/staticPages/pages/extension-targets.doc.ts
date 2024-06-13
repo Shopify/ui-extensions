@@ -62,6 +62,30 @@ Review [all extension targets](/docs/api/pos-ui-extensions/targets).
         },
       ],
     },
+    {
+      type: 'GenericAccordion',
+      title: 'Order details',
+      anchorLink: 'order-details',
+      sectionContent: 'The order details screen',
+      accordionContent: [
+        {
+          title: 'Menu item',
+          description: `
+Displays a menu item on the order details screen.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
+        {
+          title: 'Action',
+          description: `
+Displays an action target modally when a menu item is tapped.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
+      ],
+    },
   ],
 };
 

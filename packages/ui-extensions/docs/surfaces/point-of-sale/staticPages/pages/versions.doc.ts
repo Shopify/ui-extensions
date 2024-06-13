@@ -25,6 +25,7 @@ const data: LandingTemplateSchema = {
 
 - Removed \`subtitle\` property to the [FormattedTextField](/docs/api/pos-ui-extensions/apis/formatted-text-field) component.
 - Removed \`subtitle\` property to the [TextField](/docs/api/pos-ui-extensions/apis/text-field) component.
+- Renamed the \`OrderAPIContent\` interface to \`OrderApiContent\`.
       `,
     },
     {

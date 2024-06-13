@@ -3,23 +3,23 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosPurchasePostActionRender,
+  name: ExtensionTargetType.PosOrderDetailsActionMenuItemRender,
   description:
-    'A full-screen extension target that renders when a `pos.purchase.post.action.menu-item.render` target calls for it',
+    'A static extension target that renders as a menu item on the order details screen',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Action',
+      'Order details action menu item',
       'targets',
-      'pos-purchase-post-action-render',
+      'pos-order-details-action-menu-item-render',
     ),
   },
   category: 'Targets',
-  subCategory: 'Post-purchase',
+  subCategory: 'Order details',
   isVisualComponent: false,
   related: [
     {
-      name: ExtensionTargetType.PosPurchasePostActionMenuItemRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-action-menu-item-render',
+      name: 'pos.order-details.action.render',
+      url: '/docs/api/pos-ui-extensions/targets/pos-order-details-action-render',
     },
   ],
   type: 'Target',
