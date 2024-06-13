@@ -1467,16 +1467,6 @@ export interface OrderCustomer {
    * The ID of the customer.
    */
   id: string | null;
-
-  /**
-   * The total number of orders that the customer has placed. During
-   * periods of high order volume, the value of this property may not
-   * include the current order. This property is only available for
-   * the checkout_completed event if the shop has [upgraded to Checkout
-   * Extensibility](https://help.shopify.com/en/manual/checkout-
-   * settings/checkout-extensibility/checkout-upgrade).
-   */
-  ordersCount: number | null;
 }
 
 /**
