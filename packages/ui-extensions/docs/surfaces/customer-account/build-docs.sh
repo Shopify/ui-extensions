@@ -24,12 +24,13 @@ fi
 # For the time being we will get the component types from the checkout packages, which means this command will only work when the correct checkout-ui-extension version is present in your top level node_modules
 COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH  --typesInput ./$SRC_PATH ../ui-extensions-react/$SRC_PATH --output ./$DOCS_PATH/generated"
 COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
+COMPILE_CATEGORY_PAGES="yarn tsc $DOCS_PATH/categories/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && generate-docs --isCategoryPage --input ./$DOCS_PATH/categories --output ./$DOCS_PATH/generated"
 
 
 
 if echo "$PWD" | grep -q '\customer-account'; then
   # We are generating docs from the private package, which does not have other surfaces aside from customer-account
-  eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
+  eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES && eval $COMPILE_CATEGORY_PAGES
   build_exit=$?
 else
   # Other surfaces may have duplicate types that cause issues with documentation generation,
@@ -37,7 +38,7 @@ else
   echo "export {}" > src/surfaces/checkout.ts
   echo "export {}" > src/surfaces/admin.ts
   echo "export {}" > src/surfaces/point-of-sale.ts
-  eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
+  eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES && eval $COMPILE_CATEGORY_PAGES
   build_exit=$?
   git checkout HEAD -- src/surfaces/checkout.ts
   git checkout HEAD -- src/surfaces/admin.ts
