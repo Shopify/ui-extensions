@@ -38,6 +38,11 @@ export type {
 } from './api/product-api/product-api';
 
 export type {
+  DraftOrderApi,
+  DraftOrderApiContent,
+} from './api/draft-order-api/draft-order-api';
+
+export type {
   PaginationParams,
   ProductSortType,
   ProductSearchParams,
