@@ -12,7 +12,7 @@ function App() {
     <Page
       title="Order #1411"
       subtitle="Confirmed Oct 5"
-      secondaryAction={<Button onPress={() => {}}>Button</Button>}
+      secondaryAction={<Button accessibilityLabel="Button" onPress={() => {}}/>}
       primaryActionLabel="Manage"
       primaryAction={
         <>
