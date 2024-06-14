@@ -10,18 +10,18 @@ import {
 } from '@shopify/ui-extensions-react/point-of-sale';
 
 const Modal = () => {
-  const api = useApi<'pos.product-details.action.render'>();
+  const api = useApi<'pos.customer-details.action.render'>();
   return (
     <Navigator>
-      <Screen name="ProductDetails" title="Product Details">
+      <Screen name="CustomerApi" title="Customer Api">
         <ScrollView>
-          <Text>{`Product ID: ${api.product.id}`}</Text>
+          <Text>{`Customer ID: ${api.customer.id}`}</Text>
         </ScrollView>
       </Screen>
     </Navigator>
   );
 };
 
-export default reactExtension('pos.product-details.action.render', () => (
+export default reactExtension('pos.customer-details.action.render', () => (
   <Modal />
 ));

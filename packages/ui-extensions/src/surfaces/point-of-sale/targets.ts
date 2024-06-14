@@ -2,10 +2,9 @@ import {StandardApi} from './api/standard/standard-api';
 import {
   // eslint-disable-next-line import/no-deprecated
   SmartGridApi,
-  NavigationApi,
-  ScannerApi,
   OrderApi,
   CartApi,
+  CustomerApi,
 } from './api';
 import {RenderExtension} from './extension';
 import type {Components} from './shared';
@@ -25,7 +24,7 @@ export interface ExtensionTargets {
     SmartGridComponents
   >;
   'pos.home.modal.render': RenderExtension<
-    StandardApi<'pos.home.modal.render'> & NavigationApi & ScannerApi & CartApi,
+    ActionTargetApi<'pos.home.modal.render'> & CartApi,
     BasicComponents
   >;
   'pos.purchase.post.action.menu-item.render': RenderExtension<
@@ -46,22 +45,32 @@ export interface ExtensionTargets {
     ActionComponents
   >;
   'pos.product-details.action.render': RenderExtension<
-    StandardApi<'pos.product-details.action.render'> &
-      CartApi &
-      NavigationApi &
-      ScannerApi &
-      ProductApi,
-    BasicComponents
-  >;
-  'pos.order-details.action.render': RenderExtension<
-    ActionTargetApi<'pos.order-details.action.render'> & OrderApi,
+    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,
     BasicComponents
   >;
   'pos.order-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.order-details.action.menu-item.render'> &
       ActionApi &
+      CartApi &
       OrderApi,
     ActionComponents
+  >;
+  'pos.order-details.action.render': RenderExtension<
+    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,
+    BasicComponents
+  >;
+  'pos.customer-details.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.customer-details.action.menu-item.render'> &
+      ActionApi &
+      CartApi &
+      CustomerApi,
+    ActionComponents
+  >;
+  'pos.customer-details.action.render': RenderExtension<
+    ActionTargetApi<'pos.customer-details.action.render'> &
+      CartApi &
+      CustomerApi,
+    BasicComponents
   >;
 }
 
