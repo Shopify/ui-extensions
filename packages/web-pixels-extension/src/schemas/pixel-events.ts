@@ -1260,14 +1260,6 @@ export const pixelEvents = {
             description: 'The ID of the customer.',
           },
         },
-        ordersCount: {
-          type: 'uint32',
-          nullable: true,
-          metadata: {
-            description:
-              'The total number of orders that the customer has placed. During periods of high order volume, the value of this property may not include the current order. This property is only available for the checkout_completed event if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
-          },
-        },
       },
     },
     Customer: {
