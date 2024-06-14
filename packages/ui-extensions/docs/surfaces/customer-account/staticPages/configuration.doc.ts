@@ -274,7 +274,7 @@ Your extension can pass a [session token](/docs/api/customer-account-ui-extensio
       anchorLink: 'metafields',
       title: 'Metafields',
       sectionContent: `
-All customer account UI extension [targets](/api/customer-account-ui-extensions/targets) can read and write to metafields using the [Customer Account API](/docs/api/customer-account-ui-extensions/apis/customer-account-api). Learn more about [writing to metafields](#link-TBD).
+All customer account UI extension [targets](/docs/api/customer-account-ui-extensions/targets) can read and write to metafields using the [Customer Account API](/docs/api/customer-account-ui-extensions/apis/customer-account-api). Learn more about [writing to metafields](/docs/apps/build/customer-accounts/metafields).
 
 Access to metafields on a read-only basis through the [Order Status API](/docs/api/customer-account-ui-extensions/apis/order-status-api/metafields) is available to order status [targets](/api/customer-account-ui-extensions/targets) and is defined in your configuration. Customer account UI extensions are configured for metafields similarly to checkout UI extensions. [Learn more](/docs/api/checkout-ui-extensions/configuration#metafields).
 `,
