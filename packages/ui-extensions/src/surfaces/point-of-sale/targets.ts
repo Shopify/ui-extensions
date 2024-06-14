@@ -35,9 +35,8 @@ export interface ExtensionTargets {
     ActionComponents
   >;
   'pos.purchase.post.action.render': RenderExtension<
-    ActionTargetApi<'pos.purchase.post.action.render'> &
-      OrderApi &
-      BasicComponents
+    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,
+    BasicComponents
   >;
   'pos.product-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.product-details.action.menu-item.render'> &
@@ -55,9 +54,8 @@ export interface ExtensionTargets {
     BasicComponents
   >;
   'pos.order-details.action.render': RenderExtension<
-    ActionTargetApi<'pos.order-details.action.render'> &
-      OrderApi &
-      BasicComponents
+    ActionTargetApi<'pos.order-details.action.render'> & OrderApi,
+    BasicComponents
   >;
   'pos.order-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.order-details.action.menu-item.render'> &
