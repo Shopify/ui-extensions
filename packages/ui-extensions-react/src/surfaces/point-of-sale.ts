@@ -43,6 +43,7 @@ export type {
   SearchBarProps,
   SectionHeaderAction,
   SectionProps,
+  SectionHeaderProps,
   Segment,
   SegmentedControlProps,
   SelectableProps,
