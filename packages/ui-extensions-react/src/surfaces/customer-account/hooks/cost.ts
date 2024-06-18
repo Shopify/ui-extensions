@@ -1,11 +1,10 @@
 import type {
   Money,
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Returns a `Money` value representing the minimum a buyer can expect to pay at the current
@@ -13,14 +12,7 @@ import {ExtensionHasNoFieldError} from '../errors';
  * the information step might not have delivery costs calculated.
  */
 export function useTotalAmount<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Money {
-  const api = useApi<Target>();
-  const extensionTarget = api.extension.target;
-
-  if (!('cost' in api)) {
-    throw new ExtensionHasNoFieldError('cost', extensionTarget);
-  }
-
-  return useSubscription(api.cost.totalAmount);
+  return useSubscription(useApi<Target>().cost.totalAmount);
 }

@@ -1,26 +1,18 @@
 import type {
   Attribute,
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Returns the proposed `attributes` applied to the checkout.
  */
 export function useAttributes<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Attribute[] | undefined {
-  const api = useApi<Target>();
-  const extensionTarget = api.extension.target;
-
-  if (!('attributes' in api)) {
-    throw new ExtensionHasNoFieldError('attributes', extensionTarget);
-  }
-
-  return useSubscription(api.attributes);
+  return useSubscription(useApi<Target>().attributes);
 }
 
 /**
@@ -29,7 +21,7 @@ export function useAttributes<
  * @param keys - An array of attribute keys.
  */
 export function useAttributeValues<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(keys: string[]): (string | undefined)[] {
   const attributes = useAttributes<Target>();
 

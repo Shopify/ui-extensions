@@ -28,9 +28,6 @@ describe('useMetafields', () => {
     const metafieldCount = 10;
 
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       metafields: createMockStatefulRemoteSubscribable(
         createMetafields(metafieldCount),
       ),
@@ -55,9 +52,6 @@ describe('useMetafields', () => {
 
     const {value} = mount.hook(() => useMetafield({namespace, key}), {
       extensionApi: {
-        extension: {
-          target: 'customer-account.order-status.block.render' as const,
-        },
         metafields: createMockStatefulRemoteSubscribable(metafields),
       },
     });
@@ -70,9 +64,6 @@ describe('useMetafields', () => {
     jest.spyOn(console, 'error').mockImplementation();
 
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       metafields: createMockStatefulRemoteSubscribable(createMetafields()),
     };
 
@@ -95,9 +86,6 @@ describe('useMetafields', () => {
     jest.spyOn(console, 'error').mockImplementation();
 
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       metafields: createMockStatefulRemoteSubscribable(createMetafields()),
     };
 
