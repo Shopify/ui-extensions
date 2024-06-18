@@ -1,0 +1,768 @@
+[
+  {
+    "title": "Debugging",
+    "description": "Discover how you can debug your POS UI Extensions.",
+    "id": "debugging",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "overview",
+        "title": "Overview",
+        "sectionContent": "\nAPIs and components will report if they receive parameters of an unexpected type. For further debugging, you can use `console.log` to print any additional information in the console.\n\n### APIs\nIf an API receives an incorrect parameter, it won't attempt to perform the action and it will `throw` an error instead. This error can be viewed either by implementing a `try/catch` block or by using the Chrome console.\n\n### Components\n\nIf a component is given an incorrect parameter, the extension will be replaced with a non-descriptive user interface that indicates an issue has occurred. In case the extension is running locally, the developer will also see the exact error displayed as a toast message.\n\n**In the future we plan to modify this behavior to display the error in the Chrome console instead, aligning with the API approach.**"
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "using-chrome-console",
+        "title": "Using Chrome console",
+        "sectionContent": "\nThis section covers how to view POS UI Extension logs and errors.\n\n> Note:\n> Due to certain iOS security limitations, debugging is currently only possible with an Android device or an Android studio emulator.\n\n### Requirements\n\n- The extension needs to be running on a [development store](/docs/apps/tools/development-stores) in the POS app. Debugging is only available on development stores. You can create a development store from the Partner Portal, or you can use an existing development store for debugging purposes.\n![Development store](/assets/api/pos/debug-development-store.png)\n- You've set up an Android Studio emulator, or you have an Android device available with the POS app installed. If you use an Android device, you can follow the [Chrome developer documentation](https://developer.chrome.com/docs/devtools/remote-debugging/) to set up a device for debugging purposes.\n\n### Steps\n\nYou can debug your POS UI Extension by following these steps:\n\n1. Connect the Android device to your computer or launch the Android emulator.\n2. Make sure the POS UI Extension is running on the POS app.\n3. Using Google Chrome, navigate to <a href=chrome://inspect>chrome://inspect</a>.\n4. The UI Extension sandbox should appear on the list as \"Shopify UI Extensions Internal\"\n5. Click the inspect button. This should open a DevTools window, where you will be able to interact with the console, and view `console.log` statements in your code along with inspecting the network activity.\n\n### Demo\n\nThe following demo shows ow to debug a POS UI Extension by leveraging tools such as the Console and Network available in Google Chrome. The example extension code has `console.log` statements when the SmartGrid tile is pressed to open modal and also to log the remote fetch response.\n\n![Debugging demo](/assets/api/pos/debug-ui-extension.gif)\n"
+      }
+    ]
+  },
+  {
+    "title": "Build a discount extension",
+    "description": "Learn how to develop a scaffolded POS UI extension into a simple discount extension.",
+    "id": "example-discount-extension",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "intro",
+        "title": "Intro",
+        "sectionContent": "\nThis tutorial shows you how to use the `pos.home.tile.render` and `pos.home.modal.render` [extension targets](/docs/api/pos-ui-extensions/targets) to build a simple POS UI extension that quickly applies discounts to items in the cart.\n\nYou'll develop the scaffolded extension into a smart grid tile that becomes enabled when the cart reaches a total value. When tapped, the tile opens a modal that presents buttons representing available discounts. When tapped, these buttons apply a discount to the cart and present a toast for notification of success.\n\n![POS UI Extensions Discount Example App](/assets/api/pos/pos-ui-extensions-discount-example.gif)\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "what-youll-learn",
+        "title": "What you'll learn",
+        "sectionContent": "\nIn this tutorial, you'll learn how to do the following tasks:\n\n- Enable or disable the tile based on cart contents.\n- Add buttons to the modal that apply a discount and show a toast when tapped.\n- Give your extension a useful description.\n- Deploy your extension to Shopify, create a version, and publish.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "requirements",
+        "title": "Requirements",
+        "sectionContent": "\n- You've completed the [Getting started with POS UI extensions](/docs/api/pos-ui-extensions/getting-started) guide.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "sample-code",
+        "title": "Sample code",
+        "sectionContent": "\nThe sample code imports some extension components to build the UI. The tile contains the logic to control its enablement based on the cart subtotal. The modal contains the logic to apply discounts based on button tap.\n\nYou can copy and paste the following code into your index file. You can also update your extension's configuration file following the `shopify.extension.toml` example.\n\nThe rest of the tutorial walks through this sample code step-by-step.\n      ",
+        "codeblock": {
+          "title": "Discount extension",
+          "tabs": [
+            {
+              "title": "Tile (React)",
+              "code": "import React, { useState } from 'react';\n\nimport { Tile, useApi, reactExtension } from '@shopify/ui-extensions-react/point-of-sale';\n\nconst SmartGridTile = () =&gt; {\n  const api = useApi&lt;'pos.home.tile.render'&gt;();\n\n  const shouldEnable = (subtotal: string): boolean =&gt; {\n    return Number(subtotal) &gt; 100\n  }\n\n  // You can use the initial cart value to set up state\n  const [enabled, setEnabled] = useState(shouldEnable(api.cart.subscribable.initial.subtotal));\n\n  // You can subscribe to changes in the cart to mutate state\n  api.cart.subscribable.subscribe((cart) =&gt; {\n    setEnabled(shouldEnable(cart.subtotal));\n  });\n\n  return (\n    &lt;Tile\n      title='Discount Example App'\n      subtitle='React'\n      onPress={api.action.presentModal}\n      enabled={enabled}\n    /&gt;\n  );\n};\n\nexport default reactExtension('pos.home.tile.render', () =&gt; {\n  return &lt;SmartGridTile /&gt;\n})\n",
+              "language": "tsx"
+            },
+            {
+              "title": "Modal (React)",
+              "code": "import React from 'react';\n\nimport { CartDiscountType } from '@shopify/ui-extensions/point-of-sale'\nimport { ScrollView, Button, Navigator, Screen, useApi, reactExtension } from '@shopify/ui-extensions-react/point-of-sale';\n\nconst SmartGridModal = () =&gt; {\n  const api = useApi&lt;'pos.home.modal.render'&gt;();\n\n  const onButtonPress = (type: CartDiscountType, title: string, amount: string) =&gt; {\n    // You can apply a discount through the cart API\n    api.cart.applyCartDiscount(type, title, amount);\n\n    // You can show a toast to notify the user of something\n    api.toast.show('Discount applied');\n  }\n\n  return (\n    &lt;Navigator&gt;\n      &lt;Screen name='Discounts' title='Available Discounts'&gt;\n        &lt;ScrollView&gt;\n          &lt;Button title='25%' onPress={() =&gt; onButtonPress('Percentage', '25% off', '25')} /&gt;\n          &lt;Button title='$10' onPress={() =&gt; onButtonPress('FixedAmount', '$10 off', '10')} /&gt;\n        &lt;/ScrollView&gt;\n      &lt;/Screen&gt;\n    &lt;/Navigator&gt;\n  )\n}\n\nexport default reactExtension('pos.home.modal.render', () =&gt; {\n  return &lt;SmartGridModal /&gt;\n})\n",
+              "language": "tsx"
+            },
+            {
+              "title": "Tile (TS)",
+              "code": "import {extension, Tile} from '@shopify/ui-extensions/point-of-sale';\n\nexport default extension('pos.home.tile.render', (root, api) =&gt; {\n  const shouldEnable = (subtotal: string): boolean =&gt; {\n    return Number(subtotal) &gt; 100;\n  };\n  // You can use the initial cart value to set up state\n  const tile = root.createComponent(Tile, {\n    title: 'Discount Example App',\n    subtitle: 'Javascript',\n    enabled: shouldEnable(api.cart.subscribable.initial.subtotal),\n    onPress: api.action.presentModal,\n  });\n\n  // You can subscribe to changes in the cart to mutate state\n  api.cart.subscribable.subscribe((cart) =&gt; {\n    tile.updateProps({enabled: shouldEnable(cart.subtotal)});\n  });\n\n  root.append(tile);\n});\n",
+              "language": "ts"
+            },
+            {
+              "title": "Modal (TS)",
+              "code": "import {\n  extension,\n  Screen,\n  Button,\n  CartDiscountType,\n  ScrollView,\n} from '@shopify/ui-extensions/point-of-sale';\n\nexport default extension('pos.home.modal.render', (root, api) =&gt; {\n  const onButtonPress = (\n    type: CartDiscountType,\n    title: string,\n    amount: string,\n  ) =&gt; {\n    // You can apply a discount through the cart API\n    api.cart.applyCartDiscount(type, title, amount);\n\n    // You can show a toast to notify the user of something\n    api.toast.show('Discount applied');\n  };\n\n  let mainScreen = root.createComponent(Screen, {\n    name: 'Discounts',\n    title: 'Available Discounts',\n  });\n  let scrollView = root.createComponent(ScrollView);\n\n  const percentageDiscountButton = root.createComponent(Button, {\n    title: '25%',\n    onPress: () =&gt; {\n      onButtonPress('Percentage', '25% off', '25');\n    },\n  });\n\n  const fixedAmountDiscountButton = root.createComponent(Button, {\n    title: '$10',\n    onPress: () =&gt; {\n      onButtonPress('FixedAmount', '$10 off', '10');\n    },\n  });\n\n  scrollView.append(percentageDiscountButton);\n  scrollView.append(fixedAmountDiscountButton);\n  mainScreen.append(scrollView);\n  root.append(mainScreen);\n});\n",
+              "language": "ts"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "step-1-enable-the-tile",
+        "title": "Step 1: Enable or disable the tile based on cart contents",
+        "sectionContent": "\nYou can enable or disable the tile based on cart contents by accessing its `subscribable`. In the tile code, initialize state based on the `initial` value of the `subscribable`.\n      ",
+        "codeblock": {
+          "title": "Enable the tile based on cart contents",
+          "tabs": [
+            {
+              "title": "React",
+              "code": "const [enabled, setEnabled] = useState(shouldEnable(api.cart.subscribable.initial.subtotal));\n",
+              "language": "tsx"
+            },
+            {
+              "title": "TS",
+              "code": "const tile = root.createComponent(Tile, {\n  title: 'Discount Example App',\n  subtitle: 'Javascript',\n  enabled: shouldEnable(api.cart.subscribable.initial.subtotal),\n  onPress: api.action.presentModal\n});\n",
+              "language": "ts"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "step-2-subscribe-to-cart",
+        "title": "Step 2: Subscribe to cart changes",
+        "sectionContent": "In the tile code, subscribe to cart changes and mutate state based on the updated cart.",
+        "codeblock": {
+          "title": "Subscribe to cart changes",
+          "tabs": [
+            {
+              "title": "React",
+              "code": "api.cart.subscribable.subscribe((cart) =&gt; {\n  setEnabled(shouldEnable(cart.subtotal));\n});\n",
+              "language": "tsx"
+            },
+            {
+              "title": "TS",
+              "code": "api.cart.subscribable.subscribe((cart) =&gt; {\n  tile.updateProps({ enabled: shouldEnable(cart.subtotal) });\n})\n",
+              "language": "ts"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "step-3-add-buttons",
+        "title": "Step 3: Add buttons to the modal that apply a discount and display a toast when tapped",
+        "sectionContent": "\nYou can add buttons to the modal that trigger some action on press.\n\nCreate the buttons on the modal. Note that most components belong in a ScrollView.\n      ",
+        "codeblock": {
+          "title": "Add buttons to the modal",
+          "tabs": [
+            {
+              "title": "React",
+              "code": "&lt;ScrollView&gt;\n  &lt;Button title='25%' onPress={() =&gt; onButtonPress('Percentage', '25% off', '25')} /&gt;\n  &lt;Button title='$10' onPress={() =&gt; onButtonPress('FixedAmount', '$10 off', '10')} /&gt;\n&lt;/ScrollView&gt;\n",
+              "language": "tsx"
+            },
+            {
+              "title": "TS",
+              "code": "const percentageDiscountButton = root.createComponent(Button, {\n  title: '25%',\n  onPress: () =&gt; { onButtonPress('Percentage', '25% off', '25') }\n});\n\nconst fixedAmountDiscountButton = root.createComponent(Button, {\n  title: '$10',\n  onPress: () =&gt; { onButtonPress('FixedAmount', '$10 off', '10') }\n});\n\nscrollView.appendChild(percentageDiscountButton);\nscrollView.appendChild(fixedAmountDiscountButton);\n",
+              "language": "ts"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "step-4-define-onpress",
+        "title": "Step 4: Define onPress",
+        "sectionContent": "\nDefine an `onPress` function to apply the discount and show the toast.\n      ",
+        "codeblock": {
+          "title": "Define onPress",
+          "tabs": [
+            {
+              "title": "React",
+              "code": "onPress={() =&gt; onButtonPress('FixedAmount', '$10 off', '10')}\n",
+              "language": "tsx"
+            },
+            {
+              "title": "TS",
+              "code": "const onButtonPress = (type: DiscountType, title: string, amount: string) =&gt; {\n  api.cart.applyCartDiscount(type, title, amount);\n  api.toast.show('Discount applied');\n};\n",
+              "language": "ts"
+            }
+          ]
+        }
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "step-5-give-description",
+        "title": "Step 5: Give your extension a useful description",
+        "sectionContent": "\nYour extension's description will be visible to the merchant when they discover and add it to their POS.\n![Extension description](/assets/apps/pos/ui-ext-description.png)\nWhen you generate a POS UI Extension from Shopify CLI, the extension description defaults to the name of the extension. You can update the description in the generated `toml` file (`shopify.extension.toml`).\n      ",
+        "codeblock": {
+          "title": "Description configuration",
+          "tabs": [
+            {
+              "title": "shopify.extension.toml",
+              "code": "...\nname = \"Loyalty discount\"\nhandle = \"Loyalty discount\"\ndescription = \"Add loyalty discount\"\n...\n",
+              "language": "toml"
+            }
+          ]
+        },
+        "sectionNotice": [
+          {
+            "title": "Note",
+            "type": "note",
+            "sectionContent": "`name` is an internal value that is visible in the Partner Dashboard as the title of an extension on the page that displays the extensions list."
+          }
+        ]
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "step-6-deploy-release",
+        "title": "Step 6: Deploy and release",
+        "sectionContent": "\nRefer to [Deploy app extensions](/docs/apps/deployment/app-versions) for more information.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "next-steps",
+        "title": "Next steps",
+        "sectionContent": "\n- [Debug](/docs/apps/pos/ui-extensions/debugging) POS UI Extension.\n\n- Learn more about building with POS UI extensions by exploring the [POS UI extension reference](/docs/api/pos-ui-extensions).\n      "
+      }
+    ]
+  },
+  {
+    "title": "Targets overview",
+    "description": "\nA [target](/docs/apps/app-extensions/configuration#targets) represents where your POS UI extension will appear.\n",
+    "id": "extension-targets-overview",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "GenericAccordion",
+        "title": "Smart grid",
+        "anchorLink": "smart-grid",
+        "sectionContent": "The smart grid. Learn more about [the smart grid](/docs/apps/pos#home-screen).",
+        "accordionContent": [
+          {
+            "title": "Tile",
+            "description": "\nDisplays a tile on the smart grid.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Modal",
+            "description": "\nDisplays a modal when a tile is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Post-purchase",
+        "anchorLink": "post-purchase",
+        "sectionContent": "The post-purchase screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the post-purchase screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays a modal when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Customer details",
+        "anchorLink": "customer-details",
+        "sectionContent": "The customer details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the customer details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Product details",
+        "anchorLink": "product-details",
+        "sectionContent": "The product details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the product details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Order details",
+        "anchorLink": "order-details",
+        "sectionContent": "The order details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      },
+      {
+        "type": "GenericAccordion",
+        "title": "Draft Order details",
+        "anchorLink": "draft-order-details",
+        "sectionContent": "The draft order details screen",
+        "accordionContent": [
+          {
+            "title": "Menu item",
+            "description": "\nDisplays a menu item on the draft order details screen.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          },
+          {
+            "title": "Action",
+            "description": "\nDisplays an action target modally when a menu item is tapped.\n\nReview [all extension targets](/docs/api/pos-ui-extensions/targets).\n"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Getting started with POS UI extensions",
+    "description": "Learn how to prepare your development environment to start building POS UI extensions.",
+    "id": "getting-started",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "what-youll-learn",
+        "title": "What you'll learn",
+        "sectionContent": "\nIn this tutorial, you'll learn how to do the following tasks:\n\n- Generate a POS UI extension using Shopify CLI.\n- Run the local extension in your development store.\n- Test your app in Shopify POS.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "requirements",
+        "title": "Requirements",
+        "sectionContent": "\n- Create a [development store](/docs/apps/tools/development-stores).\n- Install or migrate to [Shopify CLI version 3.0 or higher](/docs/apps/tools/cli).\n- Create an [app](/docs/apps/getting-started/create).\n- Embed [your app in Shopify POS](/docs/apps/pos/getting-started#embed-your-in-app-in-shopify-pos).\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "step-1-generate-a-pos-ui-extension",
+        "title": "Step 1: Generate a POS UI Extension",
+        "codeblock": {
+          "title": "Generate a POS UI Extension",
+          "tabs": [
+            {
+              "code": "shopify upgrade\nshopify app generate extension\n",
+              "language": "bash"
+            }
+          ]
+        },
+        "sectionContent": "\n1. Navigate to your app directory.\n\n2. Ensure Shopify CLI is using the most up to date versions.\n\n3. Generate your POS UI extension template.\n\n4. Select `POS UI` under the Point-of-Sale menu.\n\n5. Give your extension a working name.\n\n6. Select the programming language that you want to work in.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "step-2-run-the-local-extension-in-your-development-store",
+        "title": "Step 2: Run the local extension in your development store",
+        "codeblock": {
+          "title": "Install dependencies and start a local development server",
+          "tabs": [
+            {
+              "title": "npm",
+              "code": "npm i\nshopify app dev\n",
+              "language": "bash"
+            },
+            {
+              "title": "yarn",
+              "code": "yarn\nshopify app dev\n",
+              "language": "bash"
+            }
+          ]
+        },
+        "sectionContent": "\nAfter you create your extension, you can [start a local development server](/docs/apps/getting-started/create#step-2-start-a-local-development-server) so that you can run your extension in your development store.\n\nWhen you start the server, Shopify CLI uses [Cloudflare](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/) to create a secure tunnel. Cloudflare gives your app extension a unique URL.\n\n1. Install your project's dependencies using the command from your package manager of choice.\n\n2. Start your local server for your extension in the app directory.\n\n3. Follow the prompts to associate your extension with your app and development store. Your development server should now be running.\n\n![Local Development Server Example](/assets/apps/pos/ui-ext-dev-server-console.png)\n\nTo learn more about the processes that execute when you run `dev`, refer to the list of [Shopify CLI commands](/docs/api/shopify-cli/app/app-dev).\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "step-3-install-your-app-and-preview-your-extension",
+        "title": "Step 3: Install your app and preview your extension",
+        "sectionContent": "\nYou can install your app and preview your extension in Shopify POS from the developer console.\n\n1. With your server running, press `p` to open the developer console.\n\n2. To preview your extension, select the **View mobile** button. This generates a deep link or QR code.\n\n3. Using a mobile device with the Shopify POS app installed, scan the QR code. This opens Shopify POS on your device and installs the extension in preview mode. If your extension's URL changes, you will need to re-add the smart grid extension tile.\n\n> Tip:\n> If you're using Android and your extension isn't loading, then refer to the [troubleshooting guide](/docs/apps/pos/ui-extensions/troubleshooting).\n\n![The developer console showing a POS UI extension](/assets/apps/pos/ui-ext-dev-console.png)\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "updating",
+        "title": "Updating",
+        "sectionContent": "\nYou can refer to the [list of the available POS UI Extension versions](/docs/api/pos-extensions/ui-extensions-reference/versions) to see if you are using the latest one.\n\nMerchants can manage their POS UI extensions across locations from the POS channel. You can direct merchants to this capability in your merchant facing communication: `https://admin.shopify.com/store/{shop}/apps/point-of-sale-channel/settings/pos-ui-extensions`\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "next-steps",
+        "title": "Next steps",
+        "sectionContent": "\n- Follow along with an [example discount extension](/docs/api/pos-ui-extensions/example-discount-extension).\n- Explore the full [reference of Shopify retail APIs and components](/docs/api/pos-ui-extensions) that you can use for your POS UI extension.\n- Learn how to [deploy and release an app extension](/docs/apps/deployment/app-versions).\n        "
+      }
+    ]
+  },
+  {
+    "title": "Migrating",
+    "description": "Migrate your POS UI Extension to use the latest unified ui-extension package.",
+    "id": "migrating",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "overview",
+        "title": "Overview",
+        "sectionContent": "\nPOS UI Extensions are moving to the newer `@shopify/ui-extensions` package, shared with [Checkout UI Extensions](https://shopify.dev/docs/api/checkout-ui-extensions) and [Admin UI Extensions](https://shopify.dev/docs/api/admin-extensions). This will allow your extensions to use the same package regardless of the surface they extend, and for a single extension to implement multiple targets across different surfaces of Shopify more easily.\n\n`@shopify/retail-ui-extensions` and `@shopify/retail-ui-extensions-react` are deprecated. They are now maintained as part of `@shopify/ui-extensions` and `@shopify/ui-extensions-react`. This guide explains how to migrate from the old packages to the new ones.\n\nAside from these migration steps, `@shopify/ui-extensions@2024.4` is backwards compatible with `@shopify/retail-ui-extensions@1.7.0`.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "setup",
+        "title": "Setup",
+        "codeblock": {
+          "title": "Setup",
+          "tabs": [
+            {
+              "title": "yarn",
+              "code": "# 1. Remove the old packages\nyarn remove @shopify/retail-ui-extensions*\n\n# 2. Upgrade React\nyarn upgrade react@^18.2.0\nyarn upgrade @types/react@^18.2.0\n\n# 3. Install the new packages\nyarn add @shopify/ui-extensions@2024.4\nyarn add @shopify/ui-extensions-react@2024.4\n",
+              "language": "bash"
+            },
+            {
+              "title": "npm",
+              "code": "# 1. Remove the old packages\nnpm uninstall @shopify/retail-ui-extensions*\n\n# 2. Upgrade React\nnpm update react@^18.2.0\nnpm update @types/react@^18.2.0\n\n# 3. Install the new packages\nnpm install @shopify/ui-extensions@2024.4\nnpm install @shopify/ui-extensions-react@2024.4\n",
+              "language": "bash"
+            }
+          ]
+        },
+        "sectionContent": "\n1. Navigate to your `package.json` in the directory of your UI Extension. You'll need to remove `@shopify/retail-ui-extensions` or `@shopify/retail-ui-extensions-react` (whichever you're using).\n2. If you use React, replace your version of `react` and `@types/react` (if you use typescript) with version 18 and up. `@shopify/ui-extensions-react` does not support any version prior to React 18.\n3. Next you'll need to add the new dependencies, `@shopify/ui-extensions` or `@shopify/ui-extensions-react`. Currently we support `2024.4`. If you are using the `@shopify/ui-extensions-react` package, you will also need to install `@shopify/ui-extensions`.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "code-changes",
+        "title": "Code changes",
+        "codeblock": {
+          "title": "Code changes",
+          "tabs": [
+            {
+              "title": "React",
+              "code": "// Before\nimport React from 'react'\nimport { Tile, useApi, render } from '@shopify/retail-ui-extensions-react'\n\nconst SmartGridTile = () =&gt; {\n  const api = useApi&lt;'pos.home.tile.render'&gt;()\n  return (\n    &lt;Tile\n      title=\"My app\"\n      subtitle=\"SmartGrid Extension\"\n      onPress={() =&gt; {\n        api.smartGrid.presentModal()\n      }}\n      enabled\n    /&gt;\n  )\n}\n\nrender('pos.home.tile.render', () =&gt; &lt;SmartGridTile /&gt;)\n\n// After\nimport React from 'react'\nimport { Tile, useApi, reactExtension } from '@shopify/ui-extensions-react/point-of-sale'\n\nconst SmartGridTile = () =&gt; {\n  const api = useApi&lt;'pos.home.tile.render'&gt;()\n  return (\n    &lt;Tile\n      title=\"My app\"\n      subtitle=\"SmartGrid Extension\"\n      onPress={() =&gt; {\n        api.action.presentModal()\n      }}\n      enabled\n    /&gt;\n  )\n}\n\nexport default reactExtension('pos.home.tile.render', () =&gt; &lt;SmartGridTile /&gt;)\n",
+              "language": "tsx"
+            },
+            {
+              "title": "TS",
+              "code": "// Before\nimport {extend, Tile} from '@shopify/retail-ui-extensions';\n\nextend('pos.home.tile.render', (root, api) =&gt; {\n  const tile = root.createComponent(Tile, {\n    title: 'My app',\n    subtitle: 'SmartGrid Extension',\n    onPress: () =&gt; api.smartGrid.presentModal(),\n    enabled: true,\n  });\n\n  root.append(tile);\n  root.mount();\n});\n\n// After\nimport {extension, Tile} from '@shopify/ui-extensions/point-of-sale';\n\nexport default extension('pos.home.tile.render', (root, api) =&gt; {\n  const tile = root.createComponent(Tile, {\n    title: 'My app',\n    subtitle: 'SmartGrid Extension',\n    onPress: () =&gt; api.action.presentModal(),\n    enabled: true,\n  });\n\n  root.append(tile);\n});\n",
+              "language": "ts"
+            }
+          ]
+        },
+        "sectionContent": "\n1. Replace imports from `@shopify/retail-ui-extensions` with `@shopify/ui-extensions/point-of-sale`. Replace imports from `@shopify/retail-ui-extensions-react` with `@shopify/ui-extensions-react/point-of-sale`.\n2. Replace calls to `extend` with `extension` and replace calls to `render` with `reactExtension`. Move each call to `extension` and `reactExtension` to individual files, and export them with an `export default` statement.\n     "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "configuration",
+        "title": "Configuration",
+        "codeblock": {
+          "tabs": [
+            {
+              "title": "shopify.extension.toml",
+              "code": "api_version = \"2024-04\"\n\n[[extensions]]\ntype = \"ui_extension\"\nname = \"my-tutorial-extension\"\nhandle = \"my-tutorial-extension\"\ndescription = \"Tutorial extension!\"\n\n[[extensions.targeting]]\nmodule = \"./src/Tile.tsx\"\ntarget = \"pos.home.tile.render\"\n\n[[extensions.targeting]]\nmodule = \"./src/Modal.tsx\"\ntarget = \"pos.home.modal.render\"\n",
+              "language": "toml"
+            }
+          ],
+          "title": "Configuration"
+        },
+        "sectionContent": "\nMigrate your `shopify.extension.toml` file to reflect the [new syntax](https://shopify.dev/docs/apps/structure/app-extensions/configuration#how-it-works).\n- Specify which `api_version` you are using at the top of the file (above `[[extensions]]`). This will let POS know which version of the `ui-extensions` package you're using.\n\n> Note:\n> `api_version` needs to be declared in a `yyyy-mm` format. If you are using `@shopify/ui-extensions` version `2024.4` for example, you must declare your `api_version` as 2024-04. The patch is irrelevant to `api_version`.\n\n- Declare each extension target and file path in `shopify.extension.toml`\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "validation",
+        "title": "Validation",
+        "sectionContent": "\nValidate your migration by running `yarn dev` or `npm run dev`\n"
+      }
+    ]
+  },
+  {
+    "title": "POS UI extensions",
+    "description": "The UI Extensions library enables individuals to build extensions that use interface elements and behaviors that mirror the look and feel of the POS retail experience. These elements render natively, providing the performance and accessibility inherent to a native app. POS UI extensions are available for the smart grid.\n  > Tip:\n  > Shopify constantly works on adding new features to POS UI extensions. You can visit the [changelog](/docs/api/pos-ui-extensions/versions) to make sure you're using the latest version of POS UI extensions.\n  ",
+    "id": "pos-ui-extensions",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "overview",
+        "title": "Overview",
+        "sectionContent": "Extend the Shopify POS with UI Extensions.",
+        "sectionCard": [
+          {
+            "subtitle": "Extension targets",
+            "name": "See all available extension targets",
+            "url": "/docs/api/pos-ui-extensions/targets",
+            "type": "pickaxe-1"
+          },
+          {
+            "subtitle": "APIs",
+            "name": "See all available APIs",
+            "url": "/docs/api/pos-ui-extensions/apis",
+            "type": "pickaxe-2"
+          },
+          {
+            "subtitle": "Components",
+            "name": "See all available components",
+            "url": "/docs/api/pos-ui-extensions/components",
+            "type": "blocks"
+          }
+        ]
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "getting-started",
+        "title": "Getting Started",
+        "sectionContent": "Get started with POS UI Extensions with Shopify CLI.",
+        "sectionCard": [
+          {
+            "name": "Getting started guide",
+            "subtitle": "Set up your development environment",
+            "url": "/docs/api/pos-ui-extensions/getting-started",
+            "type": "blocks"
+          },
+          {
+            "subtitle": "Figma UI Kit",
+            "name": "Use the Figma UI kit to design your extension.",
+            "url": "https://www.figma.com/community/file/1255225508400961281",
+            "type": "star"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Communicate with a server",
+    "description": "Learn how to fetch data from your development server to your POS UI extension.",
+    "id": "server-communication",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "authenticating",
+        "title": "Authenticating with a development server",
+        "sectionContent": "\nOften, an extension running on a simulator or a device will need to communicate with a development server running on a local machine. One solution is to use the [session API](/docs/api/pos-ui-extensions/apis/session-api) to get session tokens, and to pass these tokens to your development servers for [authentication](/docs/apps/auth/session-tokens/getting-started) using the [shopify_app gem](https://github.com/Shopify/shopify-api-ruby).\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "cors",
+        "title": "CORS considerations",
+        "sectionContent": "Requests originating from an extension will be of origin **cdn.shopify.com**. Your server needs to allow requests from this origin."
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "https",
+        "title": "HTTPS requirement",
+        "sectionContent": "\nShopify POS will refuse to fetch any non-HTTPS requests. Therefore, you must find a way to host your development server where it serves HTTPS requests. For example, a standard rails server will run on `localhost:3000`. Attempting to access this server from an Android emulator using `10.0.2.2:3000` will fail. One strategy is to use [Cloudflare Quick Tunnels](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/do-more-with-tunnels/trycloudflare/), which provide an HTTPS URL to connect.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "example-extension",
+        "title": "Example extension",
+        "codeblock": {
+          "title": "Example extension",
+          "tabs": [
+            {
+              "title": "Tile",
+              "code": "import React from 'react';\n\nimport { Tile, useApi, reactExtension } from '@shopify/ui-extensions-react/point-of-sale';\n\nconst SmartGridTile = () =&gt; {\n  const api = useApi&lt;'pos.home.tile.render'&gt;();\n\n  return (\n    &lt;Tile\n      title='Example extension'\n      enabled\n      onPress={api.action.presentModal}\n    /&gt;\n  );\n};\n\nexport default reactExtension('pos.home.tile.render', () =&gt; {\n  return &lt;SmartGridTile /&gt;\n})\n",
+              "language": "tsx"
+            },
+            {
+              "title": "Modal",
+              "code": "import React, { useEffect, useState } from 'react';\n\nimport { Screen, useApi, reactExtension, Text } from '@shopify/ui-extensions-react/point-of-sale';\n\nconst SmartGridModal = () =&gt; {\n  const api = useApi&lt;'pos.home.modal.render'&gt;();\n\n  const [authenticated, setAuthenticated] = useState&lt;number&gt;();\n  const [error, setError] = useState&lt;string&gt;();\n  const [sessionToken, setSessionToken] = useState&lt;string&gt;();\n\n  useEffect(() =&gt; {\n    api.session.getSessionToken().then((token) =&gt; {\n      setSessionToken(token);\n      fetch('https://YOUR_DEVELOPMENT_SERVER/api/extensions/test', {\n        method: 'GET',\n        mode: 'cors',\n        credentials: 'include',\n        headers: {\n          'Content-Type': 'application/json',\n          Authorization: `Bearer ${token}`,\n        },\n      })\n        .then((response) =&gt; setAuthenticated(response.status))\n        .catch(setError);\n    });\n  }, []);\n\n  return (\n    &lt;Screen name='Home' title='Authentication example'&gt;\n      &lt;Text&gt;Token: {sessionToken}&lt;/Text&gt;\n      &lt;Text&gt;Authenticated: {authenticated}&lt;/Text&gt;\n      &lt;Text&gt;Error: {error}&lt;/Text&gt;\n    &lt;/Screen&gt;\n  );\n}\n\nexport default reactExtension('pos.home.modal.render', () =&gt; {\n  return &lt;SmartGridModal /&gt;\n})\n",
+              "language": "tsx"
+            }
+          ]
+        },
+        "sectionContent": "\nHere is an example extension that presents a Smart Grid tile. When tapped, the tile will present a modal that uses the Session API to get a session token, and then fetches a test endpoint on the development server.\n      "
+      }
+    ]
+  },
+  {
+    "title": "Troubleshooting",
+    "description": "Troubleshooting log for the POS UI Extensions library. Listed are some possible errors and resolutions to help aid in the event of unexpected error messages.",
+    "id": "troubleshooting",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "api-or-component-not-working",
+        "title": "An API or a component doesn't work despite following the documentation",
+        "codeblock": {
+          "title": "Example",
+          "tabs": [
+            {
+              "code": "You're attempting to use the `[ScannerAPI](/docs/api/pos-extensions/ui-extensions-reference/api/scanner)`, but it doesn't work. You've done everything according to the documentation.",
+              "language": "text"
+            }
+          ]
+        },
+        "sectionContent": "\n### Resolution\n\nThe POS UI extensions documentation represents the latest version of our components and APIs. If you're using an older version of the POS UI extensions library, then some features mentioned in the documentation might not be available to you.\n\nVisit the [changelog](/docs/api/pos-extensions/ui-extensions-reference/versions) to make sure you're using the latest version of POS UI extensions. Additionally, if your app has multiple extensions, please ensure that all extensions have the same version of the POS UI extensions library installed. Failure to do so may cause unexpected behavior when loading extensions from the development server. This will be fixed in a future release of the CLI.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "extension-qr-not-working-on-android",
+        "title": "Extension QR code does not work on Android",
+        "codeblock": {
+          "title": "Examples",
+          "tabs": [
+            {
+              "title": "Example 1",
+              "code": "Unable to access \"...\"\n\nIt looks like you don't have access to this store. Contact the store administrator for access.\n",
+              "language": "text"
+            },
+            {
+              "title": "Example 2",
+              "code": "This site can't be reached\n\nCheck if there is a typo in com.shopify.pos.",
+              "language": "text"
+            }
+          ]
+        },
+        "sectionContent": "\n### Resolution\nAndroid devices can have a restriction on how deep links are handled. To resolve this issue, you can use one of the following options:\n\n1. Connect the device to your computer. Use Android Studio to open your deep link by running the following command: adb shell am start \"com.shopify.pos://pos-ui-extensions?url=<EXTENSION_URL>\". Replace <EXTENSION_URL> with the URL that you want to test.\n\n2. Download and use a deep link opener app from Play Store.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "could-not-resolve",
+        "title": "Could not resolve...",
+        "codeblock": {
+          "title": "Example",
+          "tabs": [
+            {
+              "code": "✘ [ERROR] Could not resolve \"react-dom\"\n\n  node_modules/react-redux/es/utils/reactBatchedUpdates.js:1:40:\n    1 │ export { unstable_batchedUpdates } from 'react-dom';\n\nYou can mark the path \"react-dom\" as external to exclude it from the bundle, which will remove this error.",
+              "language": "text"
+            }
+          ]
+        },
+        "sectionContent": "\n### Resolution\n\nThis error is most likely from missing a dependency in package.json in the app root. Try re-installing your dependencies and running the app again.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "cannot-be-used-as-jsx",
+        "title": "... cannot be used as a JSX component",
+        "codeblock": {
+          "title": "Example",
+          "tabs": [
+            {
+              "code": "'Tile' cannot be used as a JSX component.\n  Its element type 'ReactElement&lt;any, any&gt; | Component&lt;ReactPropsFromRemoteComponentType&lt;RemoteComponentType&lt;\"Tile\", TileProps, true&gt;&gt;, any, any&gt; | null' is not a valid JSX element.\n    Type 'Component&lt;ReactPropsFromRemoteComponentType&lt;RemoteComponentType&lt;\"Tile\", TileProps, true&gt;&gt;, any, any&gt;' is not assignable to type 'Element | ElementClass | null'.\n      Type 'Component&lt;ReactPropsFromRemoteComponentType&lt;RemoteComponentType&lt;\"Tile\", TileProps, true&gt;&gt;, any, any&gt;' is not assignable to type 'ElementClass'.\n        The types returned by 'render()' are incompatible between these types.\n          Type 'React.ReactNode' is not assignable to type 'import(\"/Users/heltisace/app-store-app/node_modules/@types/react-reconciler/node_modules/@types/react/index\").ReactNode'.\n            Type '{}' is not assignable to type 'ReactNode'.",
+              "language": "text"
+            }
+          ]
+        },
+        "sectionContent": "### Resolution\n\nThis issue commonly happens when `Yarn` is used for dependency management. The package's version was updated but `npm` conflicts with `Yarn`. In the root of your application run `npm install` to get it up to date as well. Restart your IDE if necessary."
+      }
+    ]
+  },
+  {
+    "title": "Versions",
+    "description": "POS UI Extensions versions. Contains the changelog for each version as well as the information on which versions are currently supported.",
+    "id": "versions",
+    "image": "/assets/landing-pages/templated-apis/hero.png",
+    "darkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "tabletImage": "/assets/landing-pages/templated-apis/hero.png",
+    "tabletDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "mobileImage": "/assets/landing-pages/templated-apis/hero.png",
+    "mobileDarkImage": "/assets/landing-pages/templated-apis/hero-dark.png",
+    "sections": [
+      {
+        "type": "Generic",
+        "anchorLink": "202408",
+        "title": "2024.08",
+        "sectionContent": "\n- Added in POS version: N/A\n- Removed in POS version: N/A\n- Release day: TBD.\n\n### Features\n\n- Removed `subtitle` property to the [FormattedTextField](/docs/api/pos-ui-extensions/apis/formatted-text-field) component.\n- Removed `subtitle` property to the [TextField](/docs/api/pos-ui-extensions/apis/text-field) component.\n- Renamed the `OrderAPIContent` interface to `OrderApiContent`.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "202404",
+        "title": "2024.04",
+        "sectionNotice": [
+          {
+            "sectionContent": "This is the first version using the `ui-extensions(-react)` package. Please see the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.",
+            "title": "Note",
+            "type": "Info"
+          }
+        ],
+        "sectionContent": "\n- Added in POS version: 9.11\n- Removed in POS version: N/A\n- Release day: 06/10/2024.\n\n### Features\n\n- Added support for the [pos.purchase.post.action.menu-item.render](/docs/api/pos-ui-extensions/targets/post-purchase/pos-purchase-post-action-menu-item-render) and [pos.purchase.post.action.render](/docs/api/pos-ui-extensions/targets/post-purchase/pos-purchase-post-action-render) targets.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "170",
+        "title": "1.7.0",
+        "sectionNotice": [
+          {
+            "sectionContent": "This is the final version using the `retail-ui-extensions(-react)` package. Please see the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.",
+            "title": "Note",
+            "type": "Info"
+          }
+        ],
+        "sectionContent": "\n- Added in POS version: 9.4.0\n- Removed in POS version: N/A\n- Release day: 03/13/2024.\n\n### Features\n\n- Added `discounts` property to the [Cart](/docs/api/pos-ui-extensions/apis/cart-api) object in the Cart API.\n- Added `addCartCodeDiscount` function to the [Cart API](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-addcartcodediscount).\n- Added `removeAllDiscounts` function to the [Cart API](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-removealldiscounts).\n- Added `listHeaderComponent` property to the [List](/docs/api/pos-ui-extensions/components/list#list-propertydetail-listheadercomponent) component.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "160",
+        "title": "1.6.0",
+        "sectionContent": "\n- Added in POS version: 9.2.0\n- Removed in POS version: N/A\n- Release day: 02/15/2024.\n\n### Features\n\n- Added `bannerProps` prop to [CameraScanner](/docs/api/pos-ui-extensions/components/camerascanner#camerascanner-propertydetail-bannerprops).\n- Added `fetchPaginatedProductVariantsWithProductId` to [ProductSearch](/docs/api/pos-ui-extensions/api/productsearch-api#productsearchapi-propertydetail-fetchpaginatedproductvariantswithproductid).\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "151",
+        "title": "1.5.1",
+        "sectionContent": "\n- Added in POS version: 8.22.0\n- Removed in POS version: N/A\n- Release day: 11/13/2023.\n\n### Features\n\n- Added `isGiftCard` prop to [lineItem](/docs/api/pos-ui-extensions/apis/cart-api) in the Cart API.\n- Deprecated `DiscountType` and introduced `CartDiscountType` and `LineItemDiscountType` in the Cart API.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "150",
+        "title": "1.5.0",
+        "sectionContent": "\n- Added in POS version: 8.21.0\n- Removed in POS version: N/A\n- Release day: 10/30/2023.\n\n### Features\n\n- Added `bulkAddLineItemProperties` to the [Cart API](/docs/api/pos-ui-extensions/apis/cart-api), which allows updating multiple line item properties in one call.\n- Added `bulkSetLineItemDiscounts` to the [Cart API](/docs/api/pos-ui-extensions/apis/cart-api), which allows updating multiple line item discounts in one call.\n      "
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "140",
+        "title": "1.4.0",
+        "sectionContent": "\n- Added in POS version: 8.18.0\n- Removed in POS version: N/A\n- Release day: 9/27/2023.\n\n### Features\n\n- Added optional `BadgeStatus` prop to the [Badge component](/docs/api/pos-ui-extensions/components/badge).\n- Added `isDevice` function to the [Device API](/docs/api/pos-ui-extensions/apis/device-api).\n- Introduced a [`Connectivity API`](/docs/api/pos-ui-extensions/apis/connectivity-api). The Connectivity API gives the UI extension access to the information about the device connectivity.\n- Added optional `overrideNavigateBack` prop to the [Screen component](/docs/api/pos-ui-extensions/components/screen)."
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "130",
+        "title": "1.3.0",
+        "sectionContent": "\n- Added in POS version: 8.15.0\n- Removed in POS version: N/A\n- Release day: 8/16/2023.\n\n### Features\n\nIntroduced the following components:\n\n- [`DatePicker`](/docs/api/pos-ui-extensions/components/datepicker): Used to select dates.\n- [`TimePicker`](/docs/api/pos-ui-extensions/components/timepicker): Used to select times.\n- [`DateField`](/docs/api/pos-ui-extensions/components/datefield): Used to select dates using a text input.\n- [`TimeField`](/docs/api/pos-ui-extensions/components/timefield): Used to select times using a text input.\n- [`TextArea`](/docs/api/pos-ui-extensions/components/textarea): A text field to allow merchants to input or modify multiline text.\n- [`NumberField`](/docs/api/pos-ui-extensions/components/numberfield): A text field to capture numerical values.\n- [`EmailField`](/docs/api/pos-ui-extensions/components/emailfield): A text field to capture email addresses.\n- [`TextField`](/docs/api/pos-ui-extensions/components/textfield): A updated text field supporting text input.\n- [`Tile component`](/docs/api/pos-ui-extensions/components/tile): Updated to support `badgeValue`. The `enabled` and `onPress` properties are now optional.\n"
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "120",
+        "title": "1.2.0",
+        "sectionContent": "\n- Added in POS version: 8.12.0\n- Removed in POS version: N/A\n- Release day: 6/26/2023.\n\n### Features\n\n- Introduced a [PinPad component](/docs/api/pos-ui-extensions/components/pinpad). It can be used to authenticate or identify individuals through a standardized number pad.\n- Introduced [Product Search API](/docs/api/pos-ui-extensions/apis/productsearch-api). The Product Search API gives the UI Extension access to the native product search and fetching functionality of Shopify POS.\n- Added a function for setting an attributed staff to the cart and line items to [Cart API](/docs/api/pos-ui-extensions/api/cart-api).\n- The [Navigator component](/docs/api/pos-ui-extensions/components/navigator) now supports a new prop called `initialScreenName`. It can be used to set the name of the `Screen` to initialize to.\n- Introduced a [Device API](/docs/api/pos-ui-extensions/apis/device-api). The Device API gives the UI Extension access to the information about the device that the extension is running on.\n- The [List component](/docs/api/pos-ui-extensions/components/list) was updated to support `badge` property for `leftSide` image, and `toggleSwitch` property for `rightSide`.\n"
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "112",
+        "title": "1.1.2",
+        "sectionContent": "\n- Added in POS version: 8.9.0\n- Removed in POS version: N/A\n- Release day: 5/15/2023.\n\n### Features\n\n- Introduces new `CameraScanner` component.\n- Introduces new `Scanner` API.\n"
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "101",
+        "title": "1.0.1",
+        "sectionContent": "\n- Added in POS version: 8.8.1\n- Removed in POS version: N/A\n- Release day: 5/3/2023.\n\n### Fixes\n\n- Addresses a problem where certain published extensions could not be launched on POS.\n"
+      },
+      {
+        "type": "Generic",
+        "anchorLink": "100",
+        "title": "1.0.0",
+        "sectionContent": "\n- Added in POS version: 8.8.0\n- Removed in POS version: N/A\n- Release day: 5/1/2023.\n\n### Features\n\n- The `Banner` component now can hide the action button.\n- The `Stepper` component now has `minimumValue`, `maximumValue`, and `value` props.\n\n### Fixes\n\n- An unremovable scanning icon was removed from `SearchBar`.\n- Icon sizes were adjusted for `SearchBar` to avoid cropping.\n- `FormattedTextField` now doesn't crash on `currency` value for `inputType`.\n- Removed multiple broken `inputType` values for `FormattedTextField`.\n- Resolved multiple path issues with the package.\n"
+      }
+    ]
+  }
+]
