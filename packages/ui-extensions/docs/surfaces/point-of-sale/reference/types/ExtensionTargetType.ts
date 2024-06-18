@@ -9,4 +9,6 @@ export enum ExtensionTargetType {
   PosOrderDetailsActionMenuItemRender = 'pos.order-details.action.menu-item.render',
   PosCustomerDetailsActionMenuItemRender = 'pos.customer-details.action.menu-item.render',
   PosCustomerDetailsActionRender = 'pos.customer-details.action.render',
+  PosDraftOrderDetailsActionMenuItemRender = 'pos.draft-order-details.action.menu-item.render',
+  PosDraftOrderDetailsActionRender = 'pos.draft-order-details.action.render',
 }
