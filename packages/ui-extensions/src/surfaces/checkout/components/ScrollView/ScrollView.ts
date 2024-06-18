@@ -59,7 +59,23 @@ export interface ScrollViewProps
    */
   direction?: 'block' | 'inline';
   /**
-   * Scroll to a specific position or to an element.
+   * Scroll to a specific position or to an element when the component is first rendered.
+   *
+   * This property allows you to set an initial scroll position or scroll to a specific element
+   * when the `ScrollView` component mounts. Note that this action will only be performed once,
+   * during the initial render of the component.
+   *
+   * @example
+   * // Scroll to 100 pixels from the top on initial render
+   * <ScrollView scrollTo={100} />
+   *
+   * // Scroll to a specific element on initial render
+   * const elementRef = useRef(null);
+   * <ScrollView scrollTo={elementRef.current} />
+   *
+   * @note
+   * This property will only take effect on the first render. Subsequent updates to this property
+   * will not trigger additional scroll actions.
    */
   scrollTo?: number | HTMLElement;
   /**
