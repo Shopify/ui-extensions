@@ -1,14 +1,23 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
-import {ExtensionTargetType} from '../types/ExtensionTargetType';
+import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
 
 const generateCodeBlockForNavigationApi = (title: string, fileName: string) =>
   generateCodeBlock(title, 'navigation-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Navigation API',
-  description:
-    'The Navigation API enables POS UI extension to navigate between screens.',
+  description: `
+The Navigation API enables POS UI extension to navigate between screens.
+
+### Supporting targets
+- ${TargetLink.PosHomeModalRender}
+- ${TargetLink.PosPurchasePostActionRender}
+- ${TargetLink.PosProductDetailsActionRender}
+- ${TargetLink.PosOrderDetailsActionRender}
+- ${TargetLink.PosDraftOrderDetailsActionRender}
+- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
+`,
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
@@ -20,9 +29,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
-  requires:
-    ExtensionTargetType.PosHomeModalRender ||
-    ExtensionTargetType.PosPurchasePostActionRender,
   examples: {
     description: 'Examples of using the Navigation API',
     examples: [

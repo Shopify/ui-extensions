@@ -1,16 +1,19 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {ExtensionTargetType} from '../types/ExtensionTargetType';
+import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Draft Order API',
-  description:
-    'The Draft Order API provides an extension with data about the current draft order.',
+  description: `
+The Draft Order API provides an extension with data about the current draft order.
+
+
+### Supporting targets
+- ${TargetLink.PosDraftOrderDetailsActionMenuItemRender}
+- ${TargetLink.PosDraftOrderDetailsActionRender}
+`,
   isVisualComponent: false,
   type: 'APIs',
-  requires:
-    ExtensionTargetType.PosDraftOrderDetailsActionMenuItemRender ||
-    ExtensionTargetType.PosDraftOrderDetailsActionRender,
   definitions: [
     {
       title: 'DraftOrderApi',

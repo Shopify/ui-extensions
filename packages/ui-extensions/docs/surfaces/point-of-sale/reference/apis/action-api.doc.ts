@@ -1,14 +1,23 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
-import {ExtensionTargetType} from '../types/ExtensionTargetType';
+import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
 
 const generateCodeBlockForActionApi = (title: string, fileName: string) =>
   generateCodeBlock(title, 'action-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Action API',
-  description:
-    'The Action API allows an action extension to modally present its corresponding modal target.',
+  description: `
+The Action API allows an action extension to modally present its corresponding modal target.
+
+### Supporting targets
+- ${TargetLink.PosHomeTileRender}
+- ${TargetLink.PosPurchasePostActionMenuItemRender}
+- ${TargetLink.PosOrderDetailsActionMenuItemRender}
+- ${TargetLink.PosProductDetailsActionMenuItemRender}
+- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
+- ${TargetLink.PosDraftOrderDetailsActionMenuItemRender}
+`,
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
@@ -20,10 +29,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
-  requires:
-    ExtensionTargetType.PosHomeTileRender ||
-    ExtensionTargetType.PosPurchasePostActionMenuItemRender ||
-    ExtensionTargetType.PosOrderDetailsActionMenuItemRender,
   examples: {
     description: 'Examples of using the Action API.',
     examples: [

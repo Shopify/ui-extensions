@@ -1,4 +1,5 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
+import {TargetLink} from '../../reference/types/ExtensionTargetType';
 
 const data: LandingTemplateSchema = {
   title: 'Versions',
@@ -14,8 +15,8 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
-      anchorLink: '202408',
-      title: '2024.08',
+      anchorLink: '202407',
+      title: '2024.07',
       sectionContent: `
 - Added in POS version: N/A
 - Removed in POS version: N/A
@@ -26,6 +27,10 @@ const data: LandingTemplateSchema = {
 - Removed \`subtitle\` property to the [FormattedTextField](/docs/api/pos-ui-extensions/apis/formatted-text-field) component.
 - Removed \`subtitle\` property to the [TextField](/docs/api/pos-ui-extensions/apis/text-field) component.
 - Renamed the \`OrderAPIContent\` interface to \`OrderApiContent\`.
+- Added support for the ${TargetLink.PosProductDetailsActionMenuItemRender} and ${TargetLink.PosProductDetailsActionRender} targets.
+- Added support for the ${TargetLink.PosOrderDetailsActionMenuItemRender} and ${TargetLink.PosOrderDetailsActionRender} targets.
+- Added support for the ${TargetLink.PosDraftOrderDetailsActionMenuItemRender} and ${TargetLink.PosDraftOrderDetailsActionRender} targets.
+- Added support for the ${TargetLink.PosCustomerDetailsActionMenuItemRender} and ${TargetLink.PosCustomerDetailsActionRender} targets.
       `,
     },
     {
@@ -46,7 +51,7 @@ const data: LandingTemplateSchema = {
 
 ### Features
 
-- Added support for the [pos.purchase.post.action.menu-item.render](/docs/api/pos-ui-extensions/targets/post-purchase/pos-purchase-post-action-menu-item-render) and [pos.purchase.post.action.render](/docs/api/pos-ui-extensions/targets/post-purchase/pos-purchase-post-action-render) targets.
+- Added support for the ${TargetLink.PosPurchasePostActionMenuItemRender} and ${TargetLink.PosPurchasePostActionRender} targets.
       `,
     },
     {
