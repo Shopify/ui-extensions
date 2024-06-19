@@ -647,7 +647,7 @@ export const pixelEvents = {
         transactions: {
           metadata: {
             description:
-              'A list of transactions associated with a checkout or order.',
+              'A list of transactions associated with a checkout or order. Certain transactions, such as credit card transactions, may only be present in the checkout_completed event.',
           },
           elements: {
             ref: 'Transaction',
@@ -1396,6 +1396,40 @@ export const pixelEvents = {
           metadata: {
             description:
               'The name of the payment provider used for the transaction.',
+          },
+        },
+        paymentMethod: {
+          metadata: {
+            description:
+              'The payment method used for the transaction. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+          },
+          properties: {
+            type: {
+              type: 'string',
+              metadata: {
+                description:
+                  "The type of payment method used for the transaction.\n\n- `creditCard`: A vaulted or manually entered credit card.\n- `redeemable`: A redeemable payment method, such as a gift card or store credit.\n- `deferred`: A [deferred payment](https://help.shopify.com/en/manual/orders/deferred-payments), such as invoicing the buyer and collecing payment later.\n- `local`: A [local payment method](https://help.shopify.com/en/manual/payments/shopify-payments/local-payment-methods) specific to the current region or market.\n- `manualPayment`: A manual payment method, such as an in-person retail transaction.\n- `paymentOnDelivery`: A payment that will be collected on delivery.\n- `wallet`: An integrated wallet, such as PayPal, Google Pay, Apple Pay, etc.\n- `offsite`: A payment processed outside of Shopify's checkout, excluding integrated wallets.\n- `customOnSite`: A custom payment method that is processed through a checkout extension with a payments app.\n- `other`: Another type of payment not defined here.\n",
+                enum: [
+                  'creditCard',
+                  'redeemable',
+                  'deferred',
+                  'local',
+                  'manualPayment',
+                  'paymentOnDelivery',
+                  'wallet',
+                  'offsite',
+                  'customOnSite',
+                  'other',
+                ],
+              },
+            },
+            name: {
+              type: 'string',
+              metadata: {
+                description:
+                  'The name of the payment method used for the transaction. This may further specify the payment method used.',
+              },
+            },
           },
         },
       },

@@ -866,7 +866,9 @@ export interface Checkout {
   totalTax: MoneyV2;
 
   /**
-   * A list of transactions associated with a checkout or order.
+   * A list of transactions associated with a checkout or order. Certain
+   * transactions, such as credit card transactions, may only be present in the
+   * checkout_completed event.
    */
   transactions: Transaction[];
 }
@@ -1676,6 +1678,45 @@ export interface Shop {
 export type Timestamp = string;
 
 /**
+ * The payment method used for the transaction. This property
+ * is only available if the shop has [upgraded to Checkout
+ * Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-
+ * extensibility/checkout-upgrade).
+ */
+export interface TransactionPaymentMethod {
+  /**
+   * The name of the payment method used for the transaction. This may further
+   * specify the payment method used.
+   */
+  name: string;
+
+  /**
+   * The type of payment method used for the transaction.
+   *
+   * - `creditCard`: A vaulted or manually entered credit card.
+   * - `redeemable`: A redeemable payment method, such as a gift card or store
+   * credit.
+   * - `deferred`: A [deferred
+   * payment](https://help.shopify.com/en/manual/orders/deferred-payments), such
+   * as invoicing the buyer and collecing payment later.
+   * - `local`: A [local payment
+   * method](https://help.shopify.com/en/manual/payments/shopify-payments/local-
+   * payment-methods) specific to the current region or market.
+   * - `manualPayment`: A manual payment method, such as an in-person retail
+   * transaction.
+   * - `paymentOnDelivery`: A payment that will be collected on delivery.
+   * - `wallet`: An integrated wallet, such as PayPal, Google Pay, Apple Pay,
+   * etc.
+   * - `offsite`: A payment processed outside of Shopify's checkout, excluding
+   * integrated wallets.
+   * - `customOnSite`: A custom payment method that is processed through a
+   * checkout extension with a payments app.
+   * - `other`: Another type of payment not defined here.
+   */
+  type: string;
+}
+
+/**
  * A transaction associated with a checkout or order.
  */
 export interface Transaction {
@@ -1688,6 +1729,14 @@ export interface Transaction {
    * The name of the payment provider used for the transaction.
    */
   gateway: string;
+
+  /**
+   * The payment method used for the transaction. This property
+   * is only available if the shop has [upgraded to Checkout
+   * Extensibility](https://help.shopify.com/en/manual/checkout-
+   * settings/checkout-extensibility/checkout-upgrade).
+   */
+  paymentMethod: TransactionPaymentMethod;
 }
 
 /**
