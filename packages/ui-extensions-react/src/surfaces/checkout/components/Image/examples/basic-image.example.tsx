@@ -4,6 +4,6 @@ reactExtension('Checkout::Dynamic::Render', () => <Extension />);
 
 function Extension() {
   return (
-    <Image source="https://shopify.dev/assets/api/checkout-extensions/checkout/components/image-example-code.png" />
+    <Image source="https://cdn.shopify.com/YOUR_IMAGE_HERE" />
   );
 }
