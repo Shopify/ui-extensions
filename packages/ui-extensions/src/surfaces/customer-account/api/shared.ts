@@ -382,6 +382,9 @@ export interface Ui {
   overlay: {
     close(overlayId: string): void;
   };
+  toast: {
+    show(content: string): void;
+  };
 }
 
 export interface SessionToken {
