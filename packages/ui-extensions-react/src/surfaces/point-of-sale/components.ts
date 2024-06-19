@@ -19,6 +19,7 @@ export {Screen} from './components/Screen/Screen';
 export {ScrollView} from './components/ScrollView/ScrollView';
 export {SearchBar} from './components/SearchBar/SearchBar';
 export {Section} from './components/Section/Section';
+export {SectionHeader} from './components/SectionHeader/SectionHeader';
 export {SegmentedControl} from './components/SegmentedControl/SegmentedControl';
 export {Selectable} from './components/Selectable/Selectable';
 export {Stack} from './components/Stack/Stack';

@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
       filePath: 'components/Avatar/Avatar.ts',
     },
   ],
-  category: 'Components',
+  category: 'components',
   defaultExample: {
     image: 'avatar-preview.png',
     altText:

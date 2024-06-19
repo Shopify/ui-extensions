@@ -18,7 +18,7 @@ async function renderApp(root, api) {
   await primaryAction.append(root.createComponent(Button, {onPress: () => {console.log("primary action 3")}}, 'Buy again primary 3'));
 
   const secondaryAction = root.createFragment();
-  await secondaryAction.append(root.createComponent(Button, {onPress: () => {}}, 'Button'))
+  await secondaryAction.append(root.createComponent(Button, {accessibilityLabel: 'Button', onPress: () => {}}))
 
   const page = root.createComponent(
     Page,

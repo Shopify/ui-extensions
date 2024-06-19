@@ -8,12 +8,20 @@ export type {
 
 export type {ActionApi, ActionApiContent} from './api/action-api/action-api';
 
+export type {StandardApi} from './api/standard/standard-api';
+export type {ActionTargetApi} from './api/action-target-api/action-target-api';
+
 export type {
   ConnectivityStateSeverity,
   ConnectivityState,
   ConnectivityApiContent,
   ConnectivityApi,
 } from './api/connectivity-api/connectivity-api';
+
+export type {
+  CustomerApi,
+  CustomerApiContent,
+} from './api/customer-api/customer-api';
 
 export type {LocaleApi, LocaleApiContent} from './api/locale-api/locale-api';
 
@@ -22,7 +30,17 @@ export type {
   NavigationApi,
 } from './api/navigation-api/navigation-api';
 
-export type {OrderAPIContent, OrderApi} from './api/order-api/order-api';
+export type {OrderApiContent, OrderApi} from './api/order-api/order-api';
+
+export type {
+  ProductApi,
+  ProductApiContent,
+} from './api/product-api/product-api';
+
+export type {
+  DraftOrderApi,
+  DraftOrderApiContent,
+} from './api/draft-order-api/draft-order-api';
 
 export type {
   PaginationParams,

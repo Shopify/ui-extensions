@@ -385,7 +385,6 @@ export interface Ui {
   overlay: {
     close(overlayId: string): void;
   };
-
   /**
    * The Toast API displays a non-disruptive message that displays at the bottom
    * of the interface to provide quick, at-a-glance feedback on the outcome

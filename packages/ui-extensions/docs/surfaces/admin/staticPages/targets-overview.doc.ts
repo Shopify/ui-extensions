@@ -192,6 +192,39 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
       ],
     },
     {
+      type: 'GenericAccordion',
+      title: 'Admin print action locations',
+      anchorLink: 'print-locations',
+      sectionContent:
+        'Admin print action extensions appear on order and product pages in the admin.',
+      accordionContent: [
+        {
+          title: 'Order details',
+          description:
+            'This page shows information about a single order. The `admin.order-details.print-action.render` target is available on this page.',
+          image: 'admin.order-details.print-action.render.png',
+        },
+        {
+          title: 'Product details',
+          description:
+            'This page shows information about a single product. The `admin.product-details.print-action.render` target is available on this page.',
+          image: 'admin.product-details.print-action.render.png',
+        },
+        {
+          title: 'Order index selection',
+          description:
+            'This page shows a table of multiple orders. The `admin.order-index.selection-print-action.render` target is available on this page when multiple orders are selected.',
+          image: 'admin.order-index.selection-print-action.render.png',
+        },
+        {
+          title: 'Product index selection',
+          description:
+            'This page shows a table of multiple products. The `admin.product-index.selection-print-action.render` target is available on this page when multiple products are selected.',
+          image: 'admin.product-index.selection-print-action.render.png',
+        },
+      ],
+    },
+    {
       type: 'Markdown',
       title: 'Customer segmentation locations',
       anchorLink: 'customer-segmentation-locations',

@@ -63,5 +63,5 @@ type MetafieldsChange =
   | MetafieldUpdateChange[]
   | MetafieldRemoveChange[];
 
-export type SupportedDefinitionType = typeof supportedDefinitionTypes[number];
+export type SupportedDefinitionType = (typeof supportedDefinitionTypes)[number];
 export type ApplyMetafieldsChange = (changes: MetafieldsChange[]) => void;

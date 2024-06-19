@@ -2,13 +2,13 @@
  * Interface to access the order
  */
 export interface OrderApi {
-  order: OrderAPIContent;
+  order: OrderApiContent;
 }
 
 /**
  * Interface for Order details
  */
-export interface OrderAPIContent {
+export interface OrderApiContent {
   /**
    * The unique identifier for the order
    */

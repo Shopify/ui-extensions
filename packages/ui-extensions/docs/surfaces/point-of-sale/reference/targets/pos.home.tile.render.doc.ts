@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'pos.home.tile.render',
   description: 'A static extension target that renders as a smart grid tile',
   defaultExample: {
-    codeblock: generateCodeBlock('Tile', 'targets', 'tile'),
+    codeblock: generateCodeBlock('Tile', 'targets', 'pos-home-tile-render'),
   },
   category: 'Targets',
   subCategory: 'Smart grid',

@@ -1,5 +1,7 @@
 export {AdminAction} from './components/AdminAction/AdminAction';
 export type {AdminActionProps} from './components/AdminAction/AdminAction';
+export {AdminPrintAction} from './components/AdminPrintAction/AdminPrintAction';
+export type {AdminPrintActionProps} from './components/AdminPrintAction/AdminPrintAction';
 export {AdminBlock} from './components/AdminBlock/AdminBlock';
 export type {AdminBlockProps} from './components/AdminBlock/AdminBlock';
 export {Badge} from './components/Badge/Badge';

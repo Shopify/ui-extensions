@@ -2,15 +2,17 @@ import {StandardApi} from './api/standard/standard-api';
 import {
   // eslint-disable-next-line import/no-deprecated
   SmartGridApi,
-  NavigationApi,
-  ScannerApi,
   OrderApi,
   CartApi,
+  CustomerApi,
 } from './api';
 import {RenderExtension} from './extension';
 import type {Components} from './shared';
 import {AnyComponentBuilder} from '../../shared';
 import {ActionApi} from './api/action-api/action-api';
+import {ProductApi} from './api/product-api/product-api';
+import {ActionTargetApi} from './api/action-target-api/action-target-api';
+import {DraftOrderApi} from './api/draft-order-api/draft-order-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
 type ActionComponents = AnyComponentBuilder<Pick<Components, 'ActionItem'>>;
@@ -23,14 +25,7 @@ export interface ExtensionTargets {
     SmartGridComponents
   >;
   'pos.home.modal.render': RenderExtension<
-    StandardApi<'pos.home.modal.render'> & NavigationApi & ScannerApi & CartApi,
-    BasicComponents
-  >;
-  'pos.purchase.post.action.render': RenderExtension<
-    StandardApi<'pos.purchase.post.action.render'> &
-      OrderApi &
-      NavigationApi &
-      ScannerApi,
+    ActionTargetApi<'pos.home.modal.render'> & CartApi,
     BasicComponents
   >;
   'pos.purchase.post.action.menu-item.render': RenderExtension<
@@ -38,6 +33,58 @@ export interface ExtensionTargets {
       ActionApi &
       OrderApi,
     ActionComponents
+  >;
+  'pos.purchase.post.action.render': RenderExtension<
+    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,
+    BasicComponents
+  >;
+  'pos.product-details.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.product-details.action.menu-item.render'> &
+      ActionApi &
+      CartApi &
+      ProductApi,
+    ActionComponents
+  >;
+  'pos.product-details.action.render': RenderExtension<
+    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,
+    BasicComponents
+  >;
+  'pos.order-details.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.order-details.action.menu-item.render'> &
+      ActionApi &
+      CartApi &
+      OrderApi,
+    ActionComponents
+  >;
+  'pos.order-details.action.render': RenderExtension<
+    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,
+    BasicComponents
+  >;
+  'pos.draft-order-details.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.draft-order-details.action.menu-item.render'> &
+      ActionApi &
+      CartApi &
+      DraftOrderApi,
+    ActionComponents
+  >;
+  'pos.draft-order-details.action.render': RenderExtension<
+    ActionTargetApi<'pos.draft-order-details.action.render'> &
+      DraftOrderApi &
+      CartApi,
+    BasicComponents
+  >;
+  'pos.customer-details.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.customer-details.action.menu-item.render'> &
+      ActionApi &
+      CartApi &
+      CustomerApi,
+    ActionComponents
+  >;
+  'pos.customer-details.action.render': RenderExtension<
+    ActionTargetApi<'pos.customer-details.action.render'> &
+      CartApi &
+      CustomerApi,
+    BasicComponents
   >;
 }
 

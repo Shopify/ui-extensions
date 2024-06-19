@@ -9,12 +9,14 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   requires:
     ExtensionTargetType.PosPurchasePostActionMenuItemRender ||
-    ExtensionTargetType.PosPurchasePostActionRender,
+    ExtensionTargetType.PosPurchasePostActionRender ||
+    ExtensionTargetType.PosOrderDetailsActionMenuItemRender ||
+    ExtensionTargetType.PosOrderDetailsActionRender,
   definitions: [
     {
       title: 'OrderApi',
       description: '',
-      type: 'OrderAPIContent',
+      type: 'OrderApiContent',
     },
   ],
   category: 'APIs',

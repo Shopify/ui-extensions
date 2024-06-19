@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'APIs',
   definitions: [
     {
-      title: 'Action',
+      title: 'ActionApi',
       description: '',
       type: 'ActionApiContent',
     },
@@ -22,7 +22,8 @@ const data: ReferenceEntityTemplateSchema = {
   related: [],
   requires:
     ExtensionTargetType.PosHomeTileRender ||
-    ExtensionTargetType.PosPurchasePostActionMenuItemRender,
+    ExtensionTargetType.PosPurchasePostActionMenuItemRender ||
+    ExtensionTargetType.PosOrderDetailsActionMenuItemRender,
   examples: {
     description: 'Examples of using the Action API.',
     examples: [

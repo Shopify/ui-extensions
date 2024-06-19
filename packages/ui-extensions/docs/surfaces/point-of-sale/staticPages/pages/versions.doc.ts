@@ -25,6 +25,28 @@ const data: LandingTemplateSchema = {
 
 - Removed \`subtitle\` property to the [FormattedTextField](/docs/api/pos-ui-extensions/apis/formatted-text-field) component.
 - Removed \`subtitle\` property to the [TextField](/docs/api/pos-ui-extensions/apis/text-field) component.
+- Renamed the \`OrderAPIContent\` interface to \`OrderApiContent\`.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: '202404',
+      title: '2024.04',
+      sectionNotice: [
+        {
+          sectionContent: `This is the first version using the \`ui-extensions(-react)\` package. Please see the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.`,
+          title: 'Note',
+          type: 'Info',
+        },
+      ],
+      sectionContent: `
+- Added in POS version: 9.11
+- Removed in POS version: N/A
+- Release day: 06/10/2024.
+
+### Features
+
+- Added support for the [pos.purchase.post.action.menu-item.render](/docs/api/pos-ui-extensions/targets/post-purchase/pos-purchase-post-action-menu-item-render) and [pos.purchase.post.action.render](/docs/api/pos-ui-extensions/targets/post-purchase/pos-purchase-post-action-render) targets.
       `,
     },
     {

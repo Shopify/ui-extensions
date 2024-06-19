@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CardProps',
     },
   ],
-  category: 'Components',
+  category: 'components',
   defaultExample: {
     image: 'card-preview.png',
     altText:
