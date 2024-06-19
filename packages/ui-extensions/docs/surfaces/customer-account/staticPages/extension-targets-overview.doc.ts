@@ -43,9 +43,7 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
       type: 'Generic',
       anchorLink: 'block-extension-targets',
       title: 'Block extension targets',
-      sectionContent: `Block extension targets render between core customer account features.
-      \n\nBlock extensions are always rendered, regardless of what other elements of the customer account are present. `,
-      image: 'target-overview-block-extension-targets.png',
+      sectionContent: `Block extension targets render between core customer account features. Block extensions are always rendered, regardless of what other elements of the customer account are present.\n\nBlock extension targets always support multiple placements. Each placement has an associated placement reference that represents its location on the page. For example, the block extension target \`customer-account.order-status.block.render\` supports seven placements. The placement references include \`PAGE_TITLE\`, \`ORDER_SUMMARY1\`, and more.\n\nYou can use placement references as URL parameters to [test block extensions](/docs/apps/build/customer-accounts/test#block-targets) in all supported placements on a page. You can also use placement references to [define the default placement](/docs/apps/build/app-extensions/configure-app-extensions#customer-account-ui-extensions) of an extension for merchants.`,
       altText:
         'The background of the entire diagram is a light purple, which is the color that represents block extension targets. In the center is a solid-line box that says Core Feature. Above and below it, not connected to the Core Feature, there are two purple dotted-line boxes that contain example names of block extension targets, indicating that they render between core features, regardless of whether that core feature is rendered or not.',
       sectionCard: [
@@ -54,6 +52,12 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
           subtitle: 'API reference',
           url: '/docs/api/customer-account-ui-extensions/targets',
           type: 'blocks',
+        },
+        {
+          name: 'Placement references',
+          subtitle: 'Learn more',
+          url: '/docs/apps/build/customer-accounts/extension-placement#placement-references',
+          type: 'resource',
         },
       ],
     },
