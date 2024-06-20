@@ -898,6 +898,13 @@ export interface CheckoutLineItem {
   id: string;
 
   /**
+   * The properties of the line item. Add or allow customers to add custom
+   * information to a line item with line item properties. Line item properties
+   * consist of a name and value pair.
+   */
+  properties: Property[];
+
+  /**
    * The quantity of the line item.
    */
   quantity: number;
@@ -1560,6 +1567,21 @@ export interface ProductVariant {
    * The product variant’s untranslated title.
    */
   untranslatedTitle: string;
+}
+
+/**
+ * The line item additional custom properties.
+ */
+export interface Property {
+  /**
+   * The key for the property.
+   */
+  key: string;
+
+  /**
+   * The value for the property.
+   */
+  value: string;
 }
 
 /**

@@ -712,6 +712,15 @@ export const pixelEvents = {
               "The selling plan associated with the line item and the effect that each selling plan has on variants when they're purchased. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).",
           },
         },
+        properties: {
+          metadata: {
+            description:
+              'The properties of the line item. Add or allow customers to add custom information to a line item with line item properties. Line item properties consist of a name and value pair.',
+          },
+          elements: {
+            ref: 'Property',
+          },
+        },
       },
     },
     DiscountAllocation: {
@@ -876,6 +885,25 @@ export const pixelEvents = {
           type: 'string',
           metadata: {
             description: 'The product variant’s untranslated title.',
+          },
+        },
+      },
+    },
+    Property: {
+      metadata: {
+        description: 'The line item additional custom properties.',
+      },
+      properties: {
+        key: {
+          type: 'string',
+          metadata: {
+            description: 'The key for the property.',
+          },
+        },
+        value: {
+          type: 'string',
+          metadata: {
+            description: 'The value for the property.',
           },
         },
       },
