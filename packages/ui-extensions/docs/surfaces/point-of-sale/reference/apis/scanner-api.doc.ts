@@ -1,14 +1,23 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
-import {ExtensionTargetType} from '../types/ExtensionTargetType';
+import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
 
 const generateCodeBlockForScannerApi = (title: string, fileName: string) =>
   generateCodeBlock(title, 'scanner-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Scanner API',
-  description:
-    'The Scanner API enables an extension to access scanner data and available scanning sources supported by the device.',
+  description: `
+The Scanner API enables an extension to access scanner data and available scanning sources supported by the device.
+
+### Supporting targets
+- ${TargetLink.PosHomeModalRender}
+- ${TargetLink.PosPurchasePostActionRender}
+- ${TargetLink.PosProductDetailsActionRender}
+- ${TargetLink.PosOrderDetailsActionRender}
+- ${TargetLink.PosDraftOrderDetailsActionRender}
+- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
+`,
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
@@ -20,9 +29,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
-  requires:
-    ExtensionTargetType.PosHomeModalRender ||
-    ExtensionTargetType.PosPurchasePostActionRender,
   examples: {
     description: 'Examples of receiving updates from the Scanner API',
     examples: [

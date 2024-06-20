@@ -1,17 +1,19 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {ExtensionTargetType} from '../types/ExtensionTargetType';
+import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Order API',
-  description:
-    'The Order API provides an extension with data about the current order.',
+  description: `
+The Order API provides an extension with data about the current order.
+
+### Supporting targets
+- ${TargetLink.PosPurchasePostActionMenuItemRender}
+- ${TargetLink.PosPurchasePostActionRender}
+- ${TargetLink.PosOrderDetailsActionMenuItemRender}
+- ${TargetLink.PosOrderDetailsActionRender}
+`,
   isVisualComponent: false,
   type: 'APIs',
-  requires:
-    ExtensionTargetType.PosPurchasePostActionMenuItemRender ||
-    ExtensionTargetType.PosPurchasePostActionRender ||
-    ExtensionTargetType.PosOrderDetailsActionMenuItemRender ||
-    ExtensionTargetType.PosOrderDetailsActionRender,
   definitions: [
     {
       title: 'OrderApi',

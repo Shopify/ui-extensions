@@ -1,14 +1,27 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
-import {ExtensionTargetType} from '../types/ExtensionTargetType';
+import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
 
 const generateCodeBlockForCartApi = (title: string, fileName: string) =>
   generateCodeBlock(title, 'cart-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Cart API',
-  description:
-    'The Cart API enables UI Extensions to manage and interact with POS cart contents, such as discounts, line items, and customer details. It provides a comprehensive set of functions for adding and removing items, alongside a subscribable object that keeps the UI Extension updated with real-time changes to the cart.',
+  description: `
+The Cart API enables UI Extensions to manage and interact with POS cart contents, such as discounts, line items, and customer details. It provides a comprehensive set of functions for adding and removing items, alongside a subscribable object that keeps the UI Extension updated with real-time changes to the cart.
+
+### Supporting targets
+- ${TargetLink.PosHomeTileRender}
+- ${TargetLink.PosHomeModalRender}
+- ${TargetLink.PosProductDetailsActionMenuItemRender}
+- ${TargetLink.PosProductDetailsActionRender}
+- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
+- ${TargetLink.PosCustomerDetailsActionRender}
+- ${TargetLink.PosOrderDetailsActionMenuItemRender}
+- ${TargetLink.PosOrderDetailsActionRender}
+- ${TargetLink.PosDraftOrderDetailsActionMenuItemRender}
+- ${TargetLink.PosDraftOrderDetailsActionRender}
+`,
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
@@ -20,9 +33,6 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'APIs',
   related: [],
-  requires:
-    ExtensionTargetType.PosHomeTileRender ||
-    ExtensionTargetType.PosHomeModalRender,
   examples: {
     description: 'Examples of using the Cart API',
     examples: [

@@ -1,5 +1,5 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import {ExtensionTargetType} from '../types/ExtensionTargetType';
+import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const generateCodeBlockForProductApi = (title: string, fileName: string) =>
@@ -7,13 +7,15 @@ const generateCodeBlockForProductApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Product API',
-  description:
-    'The Product API provides an extension with data about the current Product.',
+  description: `
+The Product API provides an extension with data about the current Product.
+
+### Supporting targets
+- ${TargetLink.PosProductDetailsActionMenuItemRender}
+- ${TargetLink.PosProductDetailsActionRender}
+`,
   isVisualComponent: false,
   type: 'APIs',
-  requires:
-    ExtensionTargetType.PosProductDetailsActionMenuItemRender ||
-    ExtensionTargetType.PosProductDetailsActionRender,
   definitions: [
     {
       title: 'ProductApi',
