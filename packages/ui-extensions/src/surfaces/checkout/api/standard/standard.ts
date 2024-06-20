@@ -5,6 +5,7 @@ import type {
   SellingPlan,
   Attribute,
   MailingAddress,
+  ShippingAddress,
 } from '../shared';
 import type {ExtensionTarget} from '../../targets';
 import type {
@@ -664,7 +665,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
-  shippingAddress?: StatefulRemoteSubscribable<MailingAddress | undefined>;
+  shippingAddress?: StatefulRemoteSubscribable<ShippingAddress | undefined>;
 
   /**
    * The proposed customer billing address. The address updates when the field is
@@ -1047,6 +1048,11 @@ export interface ProductVariant extends BaseMerchandise {
    * The selling plan associated with the merchandise.
    */
   sellingPlan?: SellingPlan;
+
+  /**
+   * The product variant's sku.
+   */
+  sku?: string;
 }
 
 export interface Product {

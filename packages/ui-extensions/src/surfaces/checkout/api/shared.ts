@@ -136,3 +136,7 @@ export interface MailingAddress {
    */
   phone?: string;
 }
+
+export interface ShippingAddress extends MailingAddress {
+  oneTimeUse?: boolean;
+}

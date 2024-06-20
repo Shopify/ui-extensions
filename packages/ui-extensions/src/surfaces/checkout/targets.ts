@@ -780,12 +780,6 @@ export type ArgumentsForExtension<Target extends keyof ExtensionTargets> =
 /**
  * For a given extension target, returns the type of the API that the
  * extension will receive at runtime.
- *
- * For RenderExtensionTargets, this API type is the second argument to
- * the callback for that extension target.
- *
- * For RunnableExtensionTargets, this API type is the only argument to
- * the callback for that extension target.
  */
 export type ApiForExtension<Target extends ExtensionTarget> =
   ExtractedApiFromExtensionDefinition<ExtensionTargets[Target]>;

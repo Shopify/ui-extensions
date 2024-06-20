@@ -1,7 +1,7 @@
 import React from 'react';
 import {createRender} from '@quilted/react-testing';
 import type {
-  ApiForRenderExtension,
+  ApiForExtension,
   RenderExtensionTarget,
 } from '@shopify/ui-extensions/checkout';
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
@@ -27,7 +27,7 @@ type DeepPartial<T> = {
 };
 
 export type PartialExtensionApi = DeepPartial<
-  ApiForRenderExtension<RenderExtensionTarget>
+  ApiForExtension<RenderExtensionTarget>
 >;
 
 interface Options {

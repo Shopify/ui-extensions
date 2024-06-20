@@ -1,4 +1,9 @@
-import type {Attribute, SellingPlan, MailingAddress} from '../shared';
+import type {
+  Attribute,
+  SellingPlan,
+  MailingAddress,
+  ShippingAddress,
+} from '../shared';
 
 /**
  * Removes a note
@@ -452,7 +457,7 @@ export interface ShippingAddressUpdateChange {
    * values for the fields you want to update — any fields you do not list
    * will keep their current values.
    */
-  address: Partial<MailingAddress>;
+  address: Partial<ShippingAddress>;
 }
 
 export type ShippingAddressChange = ShippingAddressUpdateChange;

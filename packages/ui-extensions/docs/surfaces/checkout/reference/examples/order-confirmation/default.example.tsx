@@ -2,6 +2,7 @@ import {
   reactExtension,
   Banner,
   useApi,
+  useSubscription,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension(
@@ -11,13 +12,13 @@ export default reactExtension(
 
 function Extension() {
   const {orderConfirmation} = useApi();
+  const {id} = useSubscription(orderConfirmation);
 
-  if (orderConfirmation) {
+  if (id) {
     return (
       <Banner>
         Please include your order confirmation ID
-        ({orderConfirmation.id}) in support
-        requests
+        ({id}) in support requests
       </Banner>
     );
   }
