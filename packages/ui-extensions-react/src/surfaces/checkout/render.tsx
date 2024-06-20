@@ -5,7 +5,7 @@ import {extension} from '@shopify/ui-extensions/checkout';
 import type {
   ExtensionTargets,
   RenderExtensionTarget,
-  ApiForRenderExtension,
+  ApiForExtension,
 } from '@shopify/ui-extensions/checkout';
 
 import {ExtensionApiContext} from './context';
@@ -29,7 +29,7 @@ import {ExtensionApiContext} from './context';
 export function reactExtension<Target extends RenderExtensionTarget>(
   target: Target,
   render: (
-    api: ApiForRenderExtension<Target>,
+    api: ApiForExtension<Target>,
   ) => ReactElement<any> | Promise<ReactElement<any>>,
 ): ExtensionTargets[Target] {
   // TypeScript can’t infer the type of the callback because it’s a big union
@@ -39,7 +39,7 @@ export function reactExtension<Target extends RenderExtensionTarget>(
   return extension<'purchase.checkout.block.render'>(
     target as any,
     async (root, api) => {
-      const element = await render(api as ApiForRenderExtension<Target>);
+      const element = await render(api as ApiForExtension<Target>);
 
       await new Promise<void>((resolve, reject) => {
         try {
@@ -84,7 +84,7 @@ export function reactExtension<Target extends RenderExtensionTarget>(
 export function render<Target extends RenderExtensionTarget>(
   target: Target,
 
-  render: (api: ApiForRenderExtension<Target>) => ReactElement<any>,
+  render: (api: ApiForExtension<Target>) => ReactElement<any>,
 ): ExtensionTargets[Target] {
   return reactExtension(target, render);
 }

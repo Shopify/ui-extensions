@@ -9,6 +9,7 @@ export type IconSource =
   | 'arrowUpRight'
   | 'arrowDown'
   | 'bag'
+  | 'bullet'
   | 'calendar'
   | 'camera'
   | 'caretDown'

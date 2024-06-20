@@ -1,7 +1,7 @@
 import {useContext} from 'react';
 import type {
   RenderExtensionTarget,
-  ApiForRenderExtension,
+  ApiForExtension,
 } from '@shopify/ui-extensions/checkout';
 
 import {CheckoutUIExtensionError} from '../errors';
@@ -19,7 +19,7 @@ import {ExtensionApiContext} from '../context';
  */
 export function useApi<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
->(_target?: Target): ApiForRenderExtension<Target> {
+>(_target?: Target): ApiForExtension<Target> {
   const api = useContext(ExtensionApiContext);
 
   if (api == null) {
@@ -27,8 +27,7 @@ export function useApi<
       'You can only call this hook when running as a checkout UI extension.',
     );
   }
-
-  return api as ApiForRenderExtension<Target>;
+  return api as ApiForExtension<Target>;
 }
 
 /**
@@ -47,6 +46,6 @@ export function useApi<
  */
 export function useExtensionApi<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
->(): ApiForRenderExtension<Target> {
+>(): ApiForExtension<Target> {
   return useApi();
 }

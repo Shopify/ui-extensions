@@ -75,6 +75,7 @@ export type {
   SellingPlan,
   ValidationError,
   MailingAddress,
+  ShippingAddress,
 } from './checkout/api/shared';
 
 export type {

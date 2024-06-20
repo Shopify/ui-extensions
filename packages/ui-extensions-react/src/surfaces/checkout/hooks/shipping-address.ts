@@ -1,5 +1,5 @@
 import type {
-  MailingAddress,
+  ShippingAddress,
   RenderExtensionTarget,
   ShippingAddressChange,
   ShippingAddressChangeResult,
@@ -15,7 +15,7 @@ import {useSubscription} from './subscription';
  */
 export function useShippingAddress<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
->(): MailingAddress | undefined {
+>(): ShippingAddress | undefined {
   const shippingAddress = useApi<Target>().shippingAddress;
 
   if (!shippingAddress) {
