@@ -1,12 +1,17 @@
 import type {Browser} from './PixelEvents';
-import type {WebPixelsManager} from './WebPixelsManager';
+import type {Events} from './WebPixelsManager';
 import type {RegisterInit} from './RegisterInit';
 import type {CustomerPrivacyEventBus} from './PrivacyApi';
+import type {SubscriberCallback, SubscriberOptions} from './EventBus';
 
 export interface ExtensionApi {
   readonly settings: Record<string, any>;
   readonly analytics: {
-    readonly subscribe: WebPixelsManager['subscribe'];
+    subscribe<K extends string>(
+      name: K,
+      callback: SubscriberCallback<Events[K]>,
+      options?: SubscriberOptions,
+    ): () => boolean;
   };
   readonly browser: Browser;
   readonly init: RegisterInit;

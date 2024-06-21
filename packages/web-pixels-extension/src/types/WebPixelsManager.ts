@@ -56,7 +56,7 @@ export interface WebPixelsManager {
   ): boolean;
   subscribe<K extends string>(
     name: K,
-    callback: SubscriberCallback<Events[K], Promise<void>>,
+    callback: SubscriberCallback<Events[K]>,
     options?: SubscriberOptions,
   ): () => boolean;
 }
