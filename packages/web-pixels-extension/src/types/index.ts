@@ -32,6 +32,12 @@ export type {
   PixelEventsCheckoutCompletedData,
   PricingPercentageValue,
   Transaction,
+  TransactionPaymentMethod,
+  Delivery,
+  DeliveryOption,
+  SellingPlanAllocation,
+  Property,
+  Localization,
 } from './PixelEvents';
 export type {
   PublisherData,
