@@ -17,9 +17,6 @@ describe('Discounts API hooks', () => {
       ];
 
       const extensionApi: PartialExtensionApi = {
-        extension: {
-          target: 'customer-account.order-status.block.render' as const,
-        },
         discountCodes: createMockStatefulRemoteSubscribable(discountCodes),
       };
 
@@ -59,9 +56,6 @@ describe('Discounts API hooks', () => {
       ];
 
       const extensionApi: PartialExtensionApi = {
-        extension: {
-          target: 'customer-account.order-status.block.render' as const,
-        },
         discountAllocations:
           createMockStatefulRemoteSubscribable(discountAllocations),
       };

@@ -17,7 +17,7 @@ import {ExtensionApiContext} from './context';
  * hook.
  *
  * @param target The extension target you are registering for. You can see a full list
- * of the available targets in our [developer documentation](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#placements).
+ * of the available targets in our [developer documentation](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations).
  *
  * @param render The function that will be called when Checkout begins rendering
  * your extension. This function is called with the API checkout provided to your
@@ -70,7 +70,7 @@ export function reactExtension<Target extends RenderExtensionTarget>(
  * hook.
  *
  * @param target The extension target you are registering for. You can see a full list
- * of the available targets in our [developer documentation](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#placements).
+ * of the available targets in our [developer documentation](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations).
  *
  * @param render The function that will be called when Checkout begins rendering
  * your extension. This function is called with the API checkout provided to your

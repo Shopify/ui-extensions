@@ -15,9 +15,6 @@ describe('useCheckoutSettings', () => {
     } as CheckoutSettings;
 
     const extensionApi = {
-      extension: {
-        target: 'customer-account.order-status.block.render' as const,
-      },
       checkoutSettings: createMockStatefulRemoteSubscribable(checkoutSettings),
     };
 

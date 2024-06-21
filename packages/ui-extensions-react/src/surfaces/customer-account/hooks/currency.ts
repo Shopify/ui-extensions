@@ -1,25 +1,19 @@
 import {
   Currency,
-  RenderOrderStatusExtensionTarget,
+  RenderExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Returns the currency of the checkout, and automatically re-renders
  * your component if the currency changes.
  */
 export function useCurrency<
-  Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): Currency {
-  const api = useApi<Target>();
-  const extensionTarget = api.extension.target;
+  const {localization} = useApi<Target>();
 
-  if (!('currency' in api.localization)) {
-    throw new ExtensionHasNoFieldError('currency', extensionTarget);
-  }
-
-  return useSubscription(api.localization.currency);
+  return useSubscription(localization.currency);
 }
