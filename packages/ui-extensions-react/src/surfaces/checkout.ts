@@ -348,3 +348,4 @@ export {useDeliveryGroupListTarget} from './checkout/hooks/delivery-group-list-t
 export {useDeliverySelectionGroups} from './checkout/hooks/delivery-selection-groups';
 export {useCheckoutToken} from './checkout/hooks/checkout-token';
 export {useCustomerPrivacy} from './checkout/hooks/customer-privacy';
+export {useInstructions} from './checkout/hooks/instructions';
