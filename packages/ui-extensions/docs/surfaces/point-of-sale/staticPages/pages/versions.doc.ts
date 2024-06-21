@@ -24,6 +24,7 @@ const data: LandingTemplateSchema = {
 
 ### Features
 
+- Introduced a [SectionHeader component](/docs/api/pos-ui-extensions/components/sectionheader). It can be used to title sections and structure content.
 - Removed \`subtitle\` property to the [FormattedTextField](/docs/api/pos-ui-extensions/apis/formatted-text-field) component.
 - Removed \`subtitle\` property to the [TextField](/docs/api/pos-ui-extensions/apis/text-field) component.
 - Renamed the \`OrderAPIContent\` interface to \`OrderApiContent\`.

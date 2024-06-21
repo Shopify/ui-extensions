@@ -24,9 +24,9 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   category: 'Components',
   related: [],
-  thumbnail: 'section-header-thumbnail.png',
+  thumbnail: 'section-thumbnail.png',
   defaultExample: {
-    image: 'section-header-default.png',
+    image: 'section-default.png',
     codeblock: generateCodeBlockForComponent('Section', 'default.example'),
   },
 };
