@@ -10,7 +10,6 @@ import type {
   SpacingProps,
   VisibilityProps,
   Display,
-  MultiPick,
   ViewLikeAccessibilityRole,
   CornerProps,
   Opacity,
@@ -19,7 +18,8 @@ import type {
 
 export type PositionType = 'absolute' | 'relative' | 'sticky';
 export type Coordinate = number | `${number}%`;
-interface BaseCoordinates {
+
+interface PositionBlockStart {
   /**
    * Adjust the block start offset.
    *
@@ -27,7 +27,10 @@ interface BaseCoordinates {
    *
    * `` `${number}%` ``: size in percentages. It refers to the block size of the parent component.
    */
-  blockStart: Coordinate;
+  blockStart?: Coordinate;
+}
+
+interface PositionInlineStart {
   /**
    * Adjust the inline start offset.
    *
@@ -35,7 +38,10 @@ interface BaseCoordinates {
    *
    * `` `${number}%` ``: size in percentages. It refers to the block size of the parent component.
    */
-  inlineStart: Coordinate;
+  inlineStart?: Coordinate;
+}
+
+interface PositionBlockEnd {
   /**
    * Adjust the block end offset.
    *
@@ -43,7 +49,10 @@ interface BaseCoordinates {
    *
    * `` `${number}%` ``: size in percentages. It refers to the block size of the parent component.
    */
-  blockEnd: Coordinate;
+  blockEnd?: Coordinate;
+}
+
+interface PositionInlineEnd {
   /**
    * Adjust the inline end offset.
    *
@@ -51,41 +60,55 @@ interface BaseCoordinates {
    *
    * `` `${number}%` ``: size in percentages. It refers to the block size of the parent component.
    */
-  inlineEnd: Coordinate;
+  inlineEnd?: Coordinate;
 }
 
-type PositionCoordinates = MultiPick<
-  BaseCoordinates,
-  [
-    'blockStart' | 'inlineStart',
-    'blockStart' | 'inlineEnd',
-    'blockEnd' | 'inlineStart',
-    'blockEnd' | 'inlineEnd',
-    'blockStart',
-    'blockEnd',
-    'inlineStart',
-    'inlineEnd',
-  ]
->;
-
-export type Position = {
+interface PositionTypeProperty {
   /**
-   * Changes how the View is positioned. For setting the position, only properties
-   * that set the offset on a different axis can be set simultaneously. This means
-   * that these combinations are not allowed:
-   *
-   * ```
-   * { blockStart, blockEnd }
-   * ```
-   *
-   * ```
-   * { inlineStart, inlineEnd }
-   * ```
+   * Changes how the `View` is positioned.
    *
    * @defaultValue 'relative'
    */
   type?: PositionType;
-} & PositionCoordinates;
+}
+
+interface PositionBlockStartInlineStart
+  extends PositionBlockStart,
+    PositionInlineStart,
+    PositionTypeProperty {
+  blockEnd?: undefined;
+  inlineEnd?: undefined;
+}
+
+interface PositionBlockStartInlineEnd
+  extends PositionBlockStart,
+    PositionInlineEnd,
+    PositionTypeProperty {
+  blockEnd?: undefined;
+  inlineStart?: undefined;
+}
+
+interface PositionBlockEndInlineStart
+  extends PositionBlockEnd,
+    PositionInlineStart,
+    PositionTypeProperty {
+  blockStart?: undefined;
+  inlineEnd?: undefined;
+}
+
+interface PositionBlockEndInlineEnd
+  extends PositionBlockEnd,
+    PositionInlineEnd,
+    PositionTypeProperty {
+  blockStart?: undefined;
+  inlineStart?: undefined;
+}
+
+export type Position =
+  | PositionBlockStartInlineStart
+  | PositionBlockStartInlineEnd
+  | PositionBlockEndInlineStart
+  | PositionBlockEndInlineEnd;
 
 export interface Translate {
   /**
@@ -153,7 +176,17 @@ export interface ViewProps
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
   /**
-   * Changes how the View is positioned.
+   * Changes how the `View` is positioned. For setting the position, only properties
+   * that set the offset on a different axis can be set simultaneously. This means
+   * that these combinations are not allowed:
+   *
+   * ```
+   * { blockStart, blockEnd } // Not allowed
+   * ```
+   *
+   * ```
+   * { inlineStart, inlineEnd } // Not allowed
+   * ```
    */
   position?: MaybeResponsiveConditionalStyle<Position>;
   /**
