@@ -68,6 +68,13 @@ export type {
   VisitorError,
   VisitorSuccess,
   VisitorResult,
+  CartInstructions,
+  AttributesCartInstructions,
+  DeliveryCartInstructions,
+  DiscountsCartInstructions,
+  CartLinesCartInstructions,
+  MetafieldsCartInstructions,
+  NotesCartInstructions,
 } from './checkout/api/standard/standard';
 
 export type {
