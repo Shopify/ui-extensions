@@ -706,7 +706,7 @@ export interface Cart {
   /**
    * A globally unique identifier.
    */
-  id: string;
+  id: string | null;
   lines: CartLine[];
 
   /**
@@ -798,9 +798,25 @@ export interface Checkout {
   currencyCode: string;
 
   /**
+   * Represents the selected delivery options for a checkout. This
+   * property is only available if the shop has [upgraded to Checkout
+   * Extensibility](https://help.shopify.com/en/manual/checkout-
+   * settings/checkout-extensibility/checkout-upgrade).
+   */
+  delivery: Delivery | null;
+
+  /**
    * A list of discount applications.
    */
   discountApplications: DiscountApplication[];
+
+  /**
+   * The total amount of the discounts applied to the price of the checkout.
+   * This property is only available if the shop has [upgraded to Checkout
+   * Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-
+   * extensibility/checkout-upgrade).
+   */
+  discountsAmount: MoneyV2 | null;
 
   /**
    * The email attached to this checkout.
@@ -1052,6 +1068,51 @@ export interface Customer {
  * payload available to each event
  */
 export type Data = Record<string, unknown>;
+
+/**
+ * The delivery information for the event.
+ */
+export interface Delivery {
+  /**
+   * The selected delivery options for the event.
+   */
+  selectedDeliveryOptions: DeliveryOption[];
+}
+
+/**
+ * Represents a delivery option that the customer can choose from.
+ */
+export interface DeliveryOption {
+  /**
+   * The cost of the delivery option.
+   */
+  cost: MoneyV2 | null;
+
+  /**
+   * The cost of the delivery option after discounts have been applied.
+   */
+  costAfterDiscounts: MoneyV2 | null;
+
+  /**
+   * The description of the delivery option.
+   */
+  description: string | null;
+
+  /**
+   * The unique identifier of the delivery option.
+   */
+  handle: string;
+
+  /**
+   * The title of the delivery option.
+   */
+  title: string | null;
+
+  /**
+   * The type of delivery option.
+   */
+  type: string;
+}
 
 /**
  * The discount that has been applied to the checkout line item.
@@ -1497,7 +1558,7 @@ export interface Product {
   /**
    * The ID of the product.
    */
-  id: string;
+  id: string | null;
 
   /**
    * The product’s title.
@@ -1514,12 +1575,12 @@ export interface Product {
   /**
    * The product’s untranslated title.
    */
-  untranslatedTitle: string;
+  untranslatedTitle: string | null;
 
   /**
    * The relative URL of the product.
    */
-  url: string;
+  url: string | null;
 
   /**
    * The product’s vendor name.
@@ -1535,7 +1596,7 @@ export interface ProductVariant {
   /**
    * A globally unique identifier.
    */
-  id: string;
+  id: string | null;
 
   /**
    * Image associated with the product variant. This field falls back to the
@@ -1561,12 +1622,12 @@ export interface ProductVariant {
   /**
    * The product variant’s title.
    */
-  title: string;
+  title: string | null;
 
   /**
    * The product variant’s untranslated title.
    */
-  untranslatedTitle: string;
+  untranslatedTitle: string | null;
 }
 
 /**

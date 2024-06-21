@@ -511,6 +511,71 @@ export const pixelEvents = {
         },
       },
     },
+    Delivery: {
+      metadata: {
+        description: 'The delivery information for the event.',
+      },
+      properties: {
+        selectedDeliveryOptions: {
+          metadata: {
+            typescriptType: 'DeliveryOption[]',
+            description: 'The selected delivery options for the event.',
+          },
+          elements: {
+            ref: 'DeliveryOption',
+          },
+        },
+      },
+    },
+    DeliveryOption: {
+      metadata: {
+        description:
+          'Represents a delivery option that the customer can choose from.',
+      },
+      properties: {
+        type: {
+          type: 'string',
+          metadata: {
+            description: 'The type of delivery option.',
+          },
+        },
+        cost: {
+          nullable: true,
+          ref: 'MoneyV2',
+          metadata: {
+            description: 'The cost of the delivery option.',
+          },
+        },
+        costAfterDiscounts: {
+          nullable: true,
+          ref: 'MoneyV2',
+          metadata: {
+            description:
+              'The cost of the delivery option after discounts have been applied.',
+          },
+        },
+        handle: {
+          type: 'string',
+          metadata: {
+            description: 'The unique identifier of the delivery option.',
+          },
+        },
+        title: {
+          nullable: true,
+          type: 'string',
+          metadata: {
+            description: 'The title of the delivery option.',
+          },
+        },
+        description: {
+          nullable: true,
+          type: 'string',
+          metadata: {
+            description: 'The description of the delivery option.',
+          },
+        },
+      },
+    },
     Checkout: {
       metadata: {
         description:
@@ -599,6 +664,22 @@ export const pixelEvents = {
           metadata: {
             description:
               'A unique phone number for the customer. Formatted using E.164 standard. For example, *+16135551111*.',
+          },
+        },
+        delivery: {
+          nullable: true,
+          metadata: {
+            description:
+              'Represents the selected delivery options for a checkout. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+          },
+          ref: 'Delivery',
+        },
+        discountsAmount: {
+          nullable: true,
+          ref: 'MoneyV2',
+          metadata: {
+            description:
+              'The total amount of the discounts applied to the price of the checkout. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
           },
         },
         shippingAddress: {
@@ -842,6 +923,7 @@ export const pixelEvents = {
       properties: {
         id: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'A globally unique identifier.',
           },
@@ -877,12 +959,14 @@ export const pixelEvents = {
         },
         title: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'The product variant’s title.',
           },
         },
         untranslatedTitle: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'The product variant’s untranslated title.',
           },
@@ -1023,6 +1107,7 @@ export const pixelEvents = {
       properties: {
         id: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'The ID of the product.',
           },
@@ -1035,12 +1120,14 @@ export const pixelEvents = {
         },
         untranslatedTitle: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'The product’s untranslated title.',
           },
         },
         url: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'The relative URL of the product.',
           },
@@ -1200,6 +1287,7 @@ export const pixelEvents = {
         },
         id: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'A globally unique identifier.',
           },

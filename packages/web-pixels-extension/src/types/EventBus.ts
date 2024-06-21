@@ -11,5 +11,5 @@ export interface PublisherOptions extends Record<string, unknown> {
   eventId?: string;
 }
 
-export type SubscriberCallback<T> = (event: T) => void;
+export type SubscriberCallback<T, U = void> = (event: T) => U;
 export type SubscriberOptions = Record<string, any>;
