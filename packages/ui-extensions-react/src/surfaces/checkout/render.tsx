@@ -1,3 +1,6 @@
+import '@remote-dom/core/polyfill';
+import '@remote-dom/react/polyfill';
+
 import type {ReactElement, PropsWithChildren} from 'react';
 import {Component} from 'react';
 import {createRoot} from 'react-dom/client';
