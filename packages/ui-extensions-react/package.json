@@ -81,6 +81,8 @@
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
     "@quilted/react-testing": "^0.5.31",
+    "@remote-dom/core": "^1.0.0",
+    "@remote-dom/react": "^1.0.0",
     "@shopify/ui-extensions": "0.0.0-unstable",
     "@types/react-dom": "^18.3.0",
     "react": "^18.0.0",

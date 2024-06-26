@@ -1790,6 +1790,15 @@
   resolved "https://registry.yarnpkg.com/@remote-dom/polyfill/-/polyfill-1.0.1.tgz#30d52977e42f55bb284eea0a28961a0c69f07d9e"
   integrity sha512-zSRlmyPWCK7SJw94japtg9+N5SeQbkW/wP/0XZ9dex8faUy3R9nCTyL9xSL2VomkyY/mQDPXMIWpoUb0ftcSHQ==
 
+"@remote-dom/react@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@remote-dom/react/-/react-1.0.0.tgz#345d90d079b451c6fdb4a9314cb0f3c32a57f650"
+  integrity sha512-8luJ9oWBkdVBCrvhvAHegIC2RtFqYcZlU9a3i0n16Gl6/fJqx4ytAbKbdv4+/gXJHkfGFT5HU1qqi5HLTow54A==
+  dependencies:
+    "@remote-dom/core" "^1.0.0"
+    "@types/react" "^18.0.0"
+    htm "^3.1.1"
+
 "@remote-ui/async-subscription@^2.1.12", "@remote-ui/async-subscription@^2.1.15":
   version "2.1.15"
   resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.1.15.tgz#ab8753770630baa2bc2224e0b5c0ee15c09f5026"
@@ -2211,7 +2220,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@>=17.0.0 <19.0.0", "@types/react@>=18.2.67", "@types/react@^18.0.21":
+"@types/react@*", "@types/react@>=17.0.0 <19.0.0", "@types/react@>=18.2.67", "@types/react@^18.0.0", "@types/react@^18.0.21":
   version "18.3.3"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.3.tgz#9679020895318b0915d7a3ab004d92d33375c45f"
   integrity sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==

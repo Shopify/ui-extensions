@@ -1,7 +1,10 @@
+import '@remote-dom/core/polyfill';
+import '@remote-dom/react/polyfill';
+
 import type {ReactElement} from 'react';
 import {createRoot} from 'react-dom/client';
-
 import {extension} from '@shopify/ui-extensions/admin';
+
 import type {
   ExtensionTargets,
   RenderExtensionTarget,
