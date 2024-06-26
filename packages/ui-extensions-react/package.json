@@ -67,7 +67,8 @@
   },
   "peerDependencies": {
     "@shopify/ui-extensions": "0.0.0-unstable",
-    "react": ">=18.0.0"
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
   },
   "peerDependenciesMeta": {
     "@shopify/ui-extensions": {
@@ -81,7 +82,9 @@
     "@faker-js/faker": "^8.4.1",
     "@quilted/react-testing": "^0.5.31",
     "@shopify/ui-extensions": "0.0.0-unstable",
+    "@types/react-dom": "^18.3.0",
     "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-reconciler": "0.29.0",
     "react-test-renderer": "^18.2.0"
   },

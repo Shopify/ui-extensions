@@ -1,8 +1,4 @@
-import type {
-  RemoteRoot,
-  RemoteChannel,
-  RemoteComponentType,
-} from '@remote-ui/core';
+import type {RemoteChannel, RemoteComponentType} from '@remote-ui/core';
 
 export interface RenderExtensionConnection<
   AllowedComponents extends RemoteComponentType<
@@ -15,32 +11,12 @@ export interface RenderExtensionConnection<
   readonly components: AllowedComponents;
 }
 
-export interface RenderExtension<
-  Api,
-  AllowedComponents extends RemoteComponentType<
-    string,
-    any,
-    any
-  > = RemoteComponentType<any, any, any>,
-> {
-  (
-    connection: RenderExtensionConnection<AllowedComponents>,
-    api: Api,
-  ): void | Promise<void>;
+export interface RenderExtension<Api, _AllowedComponents = any> {
+  (connection: RenderExtensionConnection<any>, api: Api): void | Promise<void>;
 }
 
-export interface RenderExtensionWithRemoteRoot<
-  Api,
-  AllowedComponents extends RemoteComponentType<
-    string,
-    any,
-    any
-  > = RemoteComponentType<any, any, any>,
-> {
-  (
-    root: RemoteRoot<AllowedComponents, AllowedComponents>,
-    api: Api,
-  ): void | Promise<void>;
+export interface RenderExtensionWithElement<Api> {
+  (root: HTMLElement, api: Api): void | Promise<void>;
 }
 
 export interface RunnableExtension<Api, Output> {

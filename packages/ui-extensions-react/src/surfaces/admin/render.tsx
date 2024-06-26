@@ -1,5 +1,5 @@
 import type {ReactElement} from 'react';
-import {render as remoteRender} from '@remote-ui/react';
+import {createRoot} from 'react-dom/client';
 
 import {extension} from '@shopify/ui-extensions/admin';
 import type {
@@ -38,15 +38,12 @@ export function reactExtension<ExtensionTarget extends RenderExtensionTarget>(
 
     await new Promise<void>((resolve, reject) => {
       try {
-        remoteRender(
+        createRoot(root).render(
           <ExtensionApiContext.Provider value={api}>
             {element}
           </ExtensionApiContext.Provider>,
-          root,
-          () => {
-            resolve();
-          },
         );
+        resolve();
       } catch (error) {
         // Workaround for https://github.com/Shopify/ui-extensions/issues/325
         // eslint-disable-next-line no-console

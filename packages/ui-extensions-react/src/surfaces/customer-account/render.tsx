@@ -1,6 +1,6 @@
 import type {ReactElement, PropsWithChildren} from 'react';
 import {Component} from 'react';
-import {render as remoteRender} from '@remote-ui/react';
+import {createRoot} from 'react-dom/client';
 import {extension} from '@shopify/ui-extensions/customer-account';
 import type {
   ExtensionTargets,
@@ -43,15 +43,12 @@ export function reactExtension<Target extends RenderExtensionTarget>(
 
       await new Promise<void>((resolve, reject) => {
         try {
-          remoteRender(
+          createRoot(root).render(
             <ExtensionApiContext.Provider value={api}>
               <ErrorBoundary>{element}</ErrorBoundary>
             </ExtensionApiContext.Provider>,
-            root,
-            () => {
-              resolve();
-            },
           );
+          resolve();
         } catch (error) {
           // Workaround for https://github.com/Shopify/ui-extensions/issues/325
           // eslint-disable-next-line no-console

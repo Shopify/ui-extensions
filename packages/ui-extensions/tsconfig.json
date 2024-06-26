@@ -3,6 +3,7 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "build/ts",
+    "lib": ["dom", "ESNext"],
     "stripInternal": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
