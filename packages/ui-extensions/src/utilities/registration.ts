@@ -41,6 +41,9 @@ declare global {
     'remote-root': InstanceType<typeof RemoteRootElement>;
     'remote-fragment': InstanceType<typeof RemoteFragmentElement>;
   }
+
+  // eslint-disable-next-line no-var, @shopify/prefer-module-scope-constants
+  var REMOTE_DOM_ELEMENT_MAPPING: Map<string, string>;
 }
 
 /**
