@@ -34,6 +34,8 @@ const ELEMENT_MAPPING = new Map<string, string>([['ui-banner', 'Banner']]);
 customElements.define('remote-root', RemoteRootElement);
 customElements.define('remote-fragment', RemoteFragmentElement);
 
+globalThis.REMOTE_DOM_ELEMENT_MAPPING = ELEMENT_MAPPING;
+
 declare global {
   interface HTMLElementTagNameMap {
     'remote-root': InstanceType<typeof RemoteRootElement>;
