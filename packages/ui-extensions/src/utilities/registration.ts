@@ -29,7 +29,7 @@ export interface ExtensionRegistrationFunctionWithRoot<ExtensionTargets> {
   ): ExtensionTargets[Target];
 }
 
-const ELEMENT_MAPPING = new Map<string, string>([['Button', 'ui-button']]);
+const ELEMENT_MAPPING = new Map<string, string>([['ui-banner', 'Banner']]);
 
 customElements.define('remote-root', RemoteRootElement);
 customElements.define('remote-fragment', RemoteFragmentElement);
