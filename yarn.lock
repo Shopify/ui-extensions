@@ -1777,6 +1777,19 @@
   dependencies:
     jest-matcher-utils "^27.0.0"
 
+"@remote-dom/core@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@remote-dom/core/-/core-1.0.0.tgz#42f467a5739ccc24732fd44d258c99bea0572194"
+  integrity sha512-W2mqJ8z6gL+GzZPATkBHv/ztHl4Kc9OuvEt6935F0J1ic8lfwIsyZLb5n43ctRxOFjRVdJdKTIEC2v1DOKoEwg==
+  dependencies:
+    "@remote-dom/polyfill" "^1.0.0"
+    htm "^3.1.1"
+
+"@remote-dom/polyfill@^1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@remote-dom/polyfill/-/polyfill-1.0.1.tgz#30d52977e42f55bb284eea0a28961a0c69f07d9e"
+  integrity sha512-zSRlmyPWCK7SJw94japtg9+N5SeQbkW/wP/0XZ9dex8faUy3R9nCTyL9xSL2VomkyY/mQDPXMIWpoUb0ftcSHQ==
+
 "@remote-ui/async-subscription@^2.1.12", "@remote-ui/async-subscription@^2.1.15":
   version "2.1.15"
   resolved "https://registry.yarnpkg.com/@remote-ui/async-subscription/-/async-subscription-2.1.15.tgz#ab8753770630baa2bc2224e0b5c0ee15c09f5026"
@@ -4229,6 +4242,11 @@ hosted-git-info@^2.1.4:
   version "2.8.9"
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.9.tgz#dffc0bf9a21c02209090f2aa69429e1414daf3f9"
   integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
+
+htm@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/htm/-/htm-3.1.1.tgz#49266582be0dc66ed2235d5ea892307cc0c24b78"
+  integrity sha512-983Vyg8NwUE7JkZ6NmOqpCZ+sh1bKv2iYTlUkzlWmA5JD2acKoxd4KVxbMmxX/85mtfdnDmTFoNKcg5DGAvxNQ==
 
 html-encoding-sniffer@^2.0.1:
   version "2.0.1"
