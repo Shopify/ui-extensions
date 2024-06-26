@@ -1,16 +1,16 @@
-name: Unstable Snapshot
+name: Remote DOM Unstable Snapshot
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - unstable
+      - remote-dom
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   unstable-snapshot:
-    name: Unstable Snapshot
+    name: Remote DOM Unstable Snapshot
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3

@@ -18,7 +18,7 @@
     "docs:checkout": "yarn workspace @shopify/ui-extensions docs:checkout",
     "docs:point-of-sale": "yarn workspace @shopify/ui-extensions docs:point-of-sale",
     "docs:customer-account": "yarn workspace @shopify/ui-extensions docs:customer-account",
-    "deploy:unstable": "changeset version --snapshot unstable && changeset publish --tag unstable --no-git-tag",
+    "deploy:unstable": "changeset version --snapshot unstable && changeset publish --tag remote-dom --no-git-tag",
     "predeploy:internal": "yarn build",
     "deploy:internal": "changeset version --snapshot internal && changeset publish --tag internal --no-git-tag",
     "gen-docs:admin": "yarn workspace @shopify/ui-extensions gen-docs:admin",
