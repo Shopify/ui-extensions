@@ -5,6 +5,7 @@ import type {RemoteNodeSerialization} from '@remote-dom/core';
 import {
   RemoteRootElement,
   RemoteFragmentElement,
+  createRemoteElement,
 } from '@remote-dom/core/elements';
 
 import type {
@@ -14,6 +15,70 @@ import type {
 } from '../extension';
 
 type OverrideMapping = Map<string, string>;
+
+const BlockStack = createRemoteElement({
+  properties: {
+    accessibilityLabel: {},
+    accessibilityRole: {},
+    background: {},
+    border: {},
+    borderRadius: {},
+    borderWidth: {},
+    cornerRadius: {},
+    display: {},
+    id: {},
+    inlineAlignment: {},
+    maxBlockSize: {},
+    maxInlineSize: {},
+    minBlockSize: {},
+    minInlineSize: {},
+    overflow: {},
+    padding: {},
+    spacing: {},
+  },
+});
+
+const Checkbox = createRemoteElement({
+  properties: {
+    accessibilityLabel: {type: String},
+    checked: {type: Boolean},
+    disabled: {type: Boolean},
+    error: {type: String},
+    id: {type: String},
+    name: {type: String},
+    onChange: {event: true},
+    toggles: {type: String},
+    value: {type: Boolean},
+  },
+});
+
+const TextField = createRemoteElement({
+  properties: {
+    accessibilityDescription: {type: String},
+    accessory: {type: String}, // TO-DO: add a slot
+    autocomplete: {type: Boolean}, // simplification from original type
+    controlledValue: {type: String},
+    disabled: {type: Boolean},
+    error: {type: String},
+    icon: {type: String}, // simplification from original type
+    id: {type: String},
+    label: {type: String},
+    maxLength: {type: Number},
+    multiline: {type: Number}, // simplification from original type
+    name: {type: String},
+    onBlur: {event: true},
+    onChange: {event: true},
+    onFocus: {event: true},
+    onInput: {event: true},
+    prefix: {type: String},
+    readonly: {type: Boolean},
+    required: {type: Boolean},
+    suffix: {type: String},
+    type: {type: String},
+    value: {type: String}, // simplified because generics aren't supported, and values are treated as string
+  },
+});
+
 export interface ExtensionRegistrationFunction<ExtensionTargets> {
   <Target extends keyof ExtensionTargets>(
     target: Target,
@@ -33,7 +98,15 @@ export interface ExtensionRegistrationFunctionWithRoot<ExtensionTargets> {
 const ELEMENT_MAPPING = new Map<string, string>([
   ['ui-banner', 'Banner'],
   ['ui-box', 'Box'],
+  ['ui-block-stack', 'BlockStack'],
+  ['ui-checkbox', 'Checkbox'],
+  ['ui-text-field', 'TextField'],
 ]);
+
+// Registering the custom components
+customElements.define('ui-block-stack', BlockStack);
+customElements.define('ui-checkbox', Checkbox);
+customElements.define('ui-textfield', TextField);
 
 customElements.define('remote-root', RemoteRootElement);
 customElements.define('remote-fragment', RemoteFragmentElement);
