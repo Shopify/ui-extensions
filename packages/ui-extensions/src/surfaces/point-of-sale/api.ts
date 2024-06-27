@@ -100,3 +100,19 @@ export type {
 export type {CountryCode} from './api/types/country-code';
 
 export type {Session} from './api/types/session';
+
+export type {
+  ComplianceExtensionApi,
+  ComplianceExtensionApiContent,
+  ComplianceEventDataTransactionEnd,
+  ComplianceEventDataTransactionStart,
+  ComplianceEventDataTransactionSummary,
+  ComplianceEvent,
+  ComplianceLine,
+  ProductAddAction,
+} from './api/compliance-extension-api/compliance-extension-api';
+
+export {
+  ComplianceLineKind,
+  ComplianceEventType,
+} from './api/compliance-extension-api/compliance-extension-api';

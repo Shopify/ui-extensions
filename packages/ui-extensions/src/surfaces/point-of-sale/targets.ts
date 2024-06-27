@@ -5,6 +5,7 @@ import {
   OrderApi,
   CartApi,
   CustomerApi,
+  ComplianceExtensionApi,
 } from './api';
 import {RenderExtension} from './extension';
 import type {Components} from './shared';
@@ -84,6 +85,12 @@ export interface ExtensionTargets {
     ActionTargetApi<'pos.customer-details.action.render'> &
       CartApi &
       CustomerApi,
+    BasicComponents
+  >;
+  'pos.global.compliance.checkout': RenderExtension<
+    StandardApi<'pos.global.compliance.checkout'> &
+      OrderApi &
+      ComplianceExtensionApi,
     BasicComponents
   >;
 }

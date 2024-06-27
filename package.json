@@ -1,6 +1,6 @@
 {
   "name": "ui-extensions",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": true,
   "repository": "https://github.com/Shopify/ui-extensions.git",
   "workspaces": [

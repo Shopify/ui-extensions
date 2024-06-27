@@ -80,7 +80,7 @@
   "devDependencies": {
     "@faker-js/faker": "^8.4.1",
     "@quilted/react-testing": "^0.5.31",
-    "@shopify/ui-extensions": "0.0.0-unstable",
+    "@shopify/ui-extensions": "file:/Users/alex/src/github.com/Shopify/ui-extensions/packages/ui-extensions",
     "react": "^18.0.0",
     "react-reconciler": "0.29.0",
     "react-test-renderer": "^18.2.0"
