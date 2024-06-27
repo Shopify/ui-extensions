@@ -13,6 +13,7 @@ export enum ExtensionTargetType {
   PosCustomerDetailsActionMenuItemRender = 'pos.customer-details.action.menu-item.render',
   PosCustomerDetailsActionRender = 'pos.customer-details.action.render',
   PosCustomerDetailsBlockRender = 'pos.customer-details.block.render',
+  PosGlobalComplianceCheckout = 'pos.global.compliance.checkout',
   PosDraftOrderDetailsActionMenuItemRender = 'pos.draft-order-details.action.menu-item.render',
   PosDraftOrderDetailsActionRender = 'pos.draft-order-details.action.render',
   PosDraftOrderDetailsBlockRender = 'pos.draft-order-details.block.render',

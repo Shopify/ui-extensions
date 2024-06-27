@@ -5,8 +5,9 @@ import {
   OrderApi,
   CartApi,
   CustomerApi,
+  ComplianceExtensionApi,
 } from './api';
-import {RenderExtension} from './extension';
+import {HeadlessExtension, RenderExtension} from './extension';
 import type {Components} from './shared';
 import {AnyComponentBuilder} from '../../shared';
 import {ActionApi} from './api/action-api/action-api';
@@ -52,6 +53,7 @@ export interface ExtensionTargets {
       OrderApi,
     ActionComponents
   >;
+  'pos.headless.compliance.checkout.start': HeadlessExtension<OrderApi>;
   'pos.purchase.post.action.render': RenderExtension<
     ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,
     BasicComponents
@@ -127,6 +129,12 @@ export interface ExtensionTargets {
     ActionTargetApi<'pos.customer-details.action.render'> &
       CartApi &
       CustomerApi,
+    BasicComponents
+  >;
+  'pos.global.compliance.checkout': RenderExtension<
+    StandardApi<'pos.global.compliance.checkout'> &
+      OrderApi &
+      ComplianceExtensionApi,
     BasicComponents
   >;
   'pos.customer-details.block.render': RenderExtension<
