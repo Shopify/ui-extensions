@@ -13,6 +13,7 @@ import type {
   RenderExtensionWithElement,
 } from '../extension';
 
+type OverrideMapping = Map<string, string>;
 export interface ExtensionRegistrationFunction<ExtensionTargets> {
   <Target extends keyof ExtensionTargets>(
     target: Target,
@@ -29,7 +30,10 @@ export interface ExtensionRegistrationFunctionWithRoot<ExtensionTargets> {
   ): ExtensionTargets[Target];
 }
 
-const ELEMENT_MAPPING = new Map<string, string>([['ui-banner', 'Banner']]);
+const ELEMENT_MAPPING = new Map<string, string>([
+  ['ui-banner', 'Banner'],
+  ['ui-box', 'Box'],
+]);
 
 customElements.define('remote-root', RemoteRootElement);
 customElements.define('remote-fragment', RemoteFragmentElement);
@@ -55,10 +59,34 @@ declare global {
  */
 export function createExtensionRegistrationFunction<
   ExtensionTargets,
->(): ExtensionRegistrationFunctionWithRoot<ExtensionTargets> {
+>(options?: {
+  overrideMapping?: OverrideMapping;
+}): ExtensionRegistrationFunctionWithRoot<ExtensionTargets> {
   const extensionWrapper: ExtensionRegistrationFunctionWithRoot<
     ExtensionTargets
   > = (target, implementation) => {
+    function normalizeNode(child: RemoteNodeSerialization): any {
+      switch (child.type) {
+        case 1: {
+          return {
+            id: child.id,
+            kind: 1,
+            type:
+              options?.overrideMapping?.get(child.element) ??
+              ELEMENT_MAPPING.get(child.element),
+            props: child.properties ?? {},
+            children: child.children.map(normalizeNode),
+          };
+        }
+        case 3: {
+          return {id: child.id, kind: 2, text: child.data};
+        }
+        default: {
+          throw new Error(`Unsupported child: ${child.type}`);
+        }
+      }
+    }
+
     async function extension(...args: any[]) {
       // Rendering extensions have two arguments. Non-rendering extensions don’t have
       // a `RemoteChannel` that needs to be normalized, so we can just pass the arguments
@@ -157,24 +185,4 @@ export function createExtensionRegistrationFunction<
 
 function normalizeId(id: string, root: any) {
   return id === root[REMOTE_ID] ? undefined : id;
-}
-
-function normalizeNode(child: RemoteNodeSerialization): any {
-  switch (child.type) {
-    case 1: {
-      return {
-        id: child.id,
-        kind: 1,
-        type: ELEMENT_MAPPING.get(child.element),
-        props: child.properties ?? {},
-        children: child.children.map(normalizeNode),
-      };
-    }
-    case 3: {
-      return {id: child.id, kind: 2, text: child.data};
-    }
-    default: {
-      throw new Error(`Unsupported child: ${child.type}`);
-    }
-  }
 }

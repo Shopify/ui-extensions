@@ -4,8 +4,11 @@ import type {ExtensionTargets} from './targets';
 
 export * from '../../extension';
 
-export const extension =
-  createExtensionRegistrationFunction<ExtensionTargets>();
+const overrideMapping = new Map<string, string>([['ui-box', 'View']]);
+
+export const extension = createExtensionRegistrationFunction<ExtensionTargets>({
+  overrideMapping,
+});
 
 /**
  * Registers your UI Extension to run for the selected extension target.
