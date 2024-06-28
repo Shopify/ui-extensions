@@ -63,7 +63,7 @@
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@remote-dom/core": "^1.0.0",
+    "@remote-dom/core": "^1.0.1",
     "@remote-ui/async-subscription": "^2.1.12",
     "@remote-ui/core": "^2.2.4"
   },

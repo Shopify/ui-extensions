@@ -1785,15 +1785,28 @@
     "@remote-dom/polyfill" "^1.0.0"
     htm "^3.1.1"
 
+"@remote-dom/core@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@remote-dom/core/-/core-1.0.1.tgz#29f3b851f19a60fdc1538e38826301b837770fe6"
+  integrity sha512-eaI2cP2TXSRwRyo13fGsATM9REy7R42yGyi88Z5KQq9HV/UCYqWHxV0rzaA9KFtKcAbtkn0TfAv/yzPJ0M3zcw==
+  dependencies:
+    "@remote-dom/polyfill" "^1.0.3"
+    htm "^3.1.1"
+
 "@remote-dom/polyfill@^1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@remote-dom/polyfill/-/polyfill-1.0.1.tgz#30d52977e42f55bb284eea0a28961a0c69f07d9e"
   integrity sha512-zSRlmyPWCK7SJw94japtg9+N5SeQbkW/wP/0XZ9dex8faUy3R9nCTyL9xSL2VomkyY/mQDPXMIWpoUb0ftcSHQ==
 
-"@remote-dom/react@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@remote-dom/react/-/react-1.0.0.tgz#345d90d079b451c6fdb4a9314cb0f3c32a57f650"
-  integrity sha512-8luJ9oWBkdVBCrvhvAHegIC2RtFqYcZlU9a3i0n16Gl6/fJqx4ytAbKbdv4+/gXJHkfGFT5HU1qqi5HLTow54A==
+"@remote-dom/polyfill@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@remote-dom/polyfill/-/polyfill-1.0.3.tgz#769db4dcd4505628cccda9833d5e4baaabae3fd3"
+  integrity sha512-MUT7ecbOjGNPXzoUWzdY57/s6NdAh2vdTVuc0bBEN+ZAkdmDCKum2gNCk/2g1YpApKkUeNCHze2WoDWixzVT7A==
+
+"@remote-dom/react@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@remote-dom/react/-/react-1.0.1.tgz#075394b02523491be35d664175acb516c2587598"
+  integrity sha512-EY4sFoIo2/j+7Wj6D0LM3s7IDCUZf1R+dPHpQiK7DlPiiYCvzsnENKFUa11IfEg337haKkzYg4Zd8BsLeSttGg==
   dependencies:
     "@remote-dom/core" "^1.0.0"
     "@types/react" "^18.0.0"

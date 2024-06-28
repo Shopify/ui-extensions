@@ -120,7 +120,7 @@ const ELEMENT_MAPPING = new Map<string, string>([
 
 // Registering the custom components
 customElements.define('ui-block-stack', BlockStack);
-customElements.define('ui-block-stack', Box);
+customElements.define('ui-box', Box);
 customElements.define('ui-button', Button);
 customElements.define('ui-checkbox', Checkbox);
 customElements.define('ui-text', Text);
@@ -166,12 +166,18 @@ export function createExtensionRegistrationFunction<
     function normalizeNode(child: RemoteNodeSerialization): any {
       switch (child.type) {
         case 1: {
+          const type =
+            options?.overrideMapping?.get(child.element) ??
+            ELEMENT_MAPPING.get(child.element);
+
+          if (type == null) {
+            throw new Error(`Unknown element type: ${child}`);
+          }
+
           return {
             id: child.id,
             kind: 1,
-            type:
-              options?.overrideMapping?.get(child.element) ??
-              ELEMENT_MAPPING.get(child.element),
+            type,
             props: child.properties ?? {},
             children: child.children.map(normalizeNode),
           };
@@ -241,6 +247,8 @@ export function createExtensionRegistrationFunction<
               // update property
               case 3: {
                 const [, id, property, value] = record;
+                // setting a property on the root node, does not exist in remote-ui
+                if (id == null) break;
                 send(4, normalizeId(id, root)!, {[property]: value});
                 break;
               }
