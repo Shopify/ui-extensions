@@ -100,3 +100,12 @@ export type {
 export type {CountryCode} from './api/types/country-code';
 
 export type {Session} from './api/types/session';
+
+export type {
+  StorageApi,
+  StorageApiContent,
+} from './api/storage-api/storage-api';
+export {
+  StorageApiError,
+  StorageApiErrorCode,
+} from './api/storage-api/storage-api';
