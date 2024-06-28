@@ -5,6 +5,7 @@ import type {
   RenderExtension,
   RenderExtensionWithRemoteRoot,
 } from '../extension';
+import {decode} from './signal';
 
 export interface ExtensionRegistrationFunction<ExtensionTargets> {
   <Target extends keyof ExtensionTargets>(
@@ -46,10 +47,11 @@ export function createExtensionRegistrationFunction<
         return (implementation as any)(...args);
       }
 
-      const [{channel, components}, api] = args as [
+      const [{channel, components}, rawApi] = args as [
         RenderExtensionConnection,
         any,
       ];
+      const api = decode(rawApi);
 
       const root = createRemoteRoot(channel, {
         components,
