@@ -44,7 +44,8 @@ export function createExtensionRegistrationFunction<
       // a `RemoteChannel` that needs to be normalized, so we can just pass the arguments
       // through.
       if (args.length === 1) {
-        return (implementation as any)(...args);
+        const [api, ...others] = args;
+        return (implementation as any)(decode(api), ...others);
       }
 
       const [{channel, components}, rawApi] = args as [
