@@ -14,7 +14,7 @@ DIM=$'\e[2m'
 BOLD=$(tput bold)
 NORMAL=$(tput sgr0)
 
-spinUrl=`spin show --output=fqdn`
+spinUrl=``
 projectDirectoryOrWorkspace=$1
 packageName=$2
 packages=()
@@ -25,6 +25,7 @@ function set_globals() {
     targetRoot=$(resolve "$ROOT/../$projectDirectoryOrWorkspace")
     noTargetError="A target project directory is required: "
   else
+    spinUrl=`spin show --output=fqdn`
     echo "🌀 Running command on spin: $spinUrl"
     projectName="$(cut -d'.' -f1 <<<"$projectDirectoryOrWorkspace")"
     targetRoot="src/github.com/Shopify/$projectName"
