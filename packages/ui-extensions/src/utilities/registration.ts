@@ -16,6 +16,20 @@ import type {
 
 type OverrideMapping = Map<string, string>;
 
+const Box = createRemoteElement({
+  properties: {},
+});
+
+const Text = createRemoteElement({
+  properties: {},
+});
+
+const Button = createRemoteElement({
+  properties: {
+    onPress: {event: true},
+  },
+});
+
 const BlockStack = createRemoteElement({
   properties: {
     accessibilityLabel: {},
@@ -96,17 +110,21 @@ export interface ExtensionRegistrationFunctionWithRoot<ExtensionTargets> {
 }
 
 const ELEMENT_MAPPING = new Map<string, string>([
-  ['ui-banner', 'Banner'],
-  ['ui-box', 'Box'],
   ['ui-block-stack', 'BlockStack'],
+  ['ui-box', 'Box'],
+  ['ui-button', 'Button'],
   ['ui-checkbox', 'Checkbox'],
+  ['ui-text', 'Text'],
   ['ui-text-field', 'TextField'],
 ]);
 
 // Registering the custom components
 customElements.define('ui-block-stack', BlockStack);
+customElements.define('ui-block-stack', Box);
+customElements.define('ui-button', Button);
 customElements.define('ui-checkbox', Checkbox);
-customElements.define('ui-textfield', TextField);
+customElements.define('ui-text', Text);
+customElements.define('ui-text-field', TextField);
 
 customElements.define('remote-root', RemoteRootElement);
 customElements.define('remote-fragment', RemoteFragmentElement);
@@ -117,6 +135,13 @@ declare global {
   interface HTMLElementTagNameMap {
     'remote-root': InstanceType<typeof RemoteRootElement>;
     'remote-fragment': InstanceType<typeof RemoteFragmentElement>;
+
+    'ui-block-stack': InstanceType<typeof BlockStack>;
+    'ui-box': InstanceType<typeof Box>;
+    'ui-button': InstanceType<typeof Button>;
+    'ui-checkbox': InstanceType<typeof Checkbox>;
+    'ui-text': InstanceType<typeof Text>;
+    'ui-text-field': InstanceType<typeof TextField>;
   }
 
   // eslint-disable-next-line no-var, @shopify/prefer-module-scope-constants
