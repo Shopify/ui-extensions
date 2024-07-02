@@ -61,7 +61,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The API version that was set in the extension config file.
    *
-   * @example '2023-07', '2023-10', '2024-01', '2024-04', 'unstable'
+   * @example '2023-07', '2023-10', '2024-01', '2024-04', '2024-07', 'unstable'
    */
   apiVersion: ApiVersion;
 
@@ -489,6 +489,16 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * Gift Cards that have been applied to the checkout.
    */
   appliedGiftCards: StatefulRemoteSubscribable<AppliedGiftCard[]>;
+
+  /**
+   * The cart instructions used to create the checkout and possibly limit extension capabilities.
+   *
+   * These instructions should be checked prior to performing any actions that may be affected by them.
+   *
+   * For example, if you intend to add a discount code via the `applyDiscountCodeChange` method,
+   * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
+   */
+  instructions: StatefulRemoteSubscribable<CartInstructions>;
 
   /**
    * The metafields requested in the
@@ -1905,4 +1915,95 @@ export interface TrackingConsentChangeResultError {
    * to the buyer.
    */
   message: string;
+}
+
+export interface CartInstructions {
+  /**
+   * Cart instructions related to cart attributes.
+   */
+  attributes: AttributesCartInstructions;
+
+  /**
+   * Cart instructions related to delivery.
+   */
+  delivery: DeliveryCartInstructions;
+
+  /**
+   * Cart instructions related to discounts.
+   */
+  discounts: DiscountsCartInstructions;
+
+  /**
+   * Cart instructions related to cart lines.
+   */
+  lines: CartLinesCartInstructions;
+
+  /**
+   * Cart instructions related to metafields.
+   */
+  metafields: MetafieldsCartInstructions;
+
+  /**
+   * Cart instructions related to notes.
+   */
+  notes: NotesCartInstructions;
+}
+
+export interface AttributesCartInstructions {
+  /**
+   * Indicates whether or not cart attributes can be updated.
+   */
+  canUpdateAttributes: boolean;
+}
+
+export interface DeliveryCartInstructions {
+  /**
+   * Indicates whether a buyer can select a custom address.
+   *
+   * When true, this implies extensions can update the delivery address.
+   */
+  canSelectCustomAddress: boolean;
+}
+
+export interface DiscountsCartInstructions {
+  /**
+   * Indicates whether or not discount codes can be updated.
+   */
+  canUpdateDiscountCodes: boolean;
+}
+
+export interface CartLinesCartInstructions {
+  /**
+   * Indicates whether or not new cart lines can be added.
+   */
+  canAddCartLine: boolean;
+
+  /**
+   * Indicates whether or not cart lines can be removed.
+   */
+  canRemoveCartLine: boolean;
+
+  /**
+   * Indicates whether or not cart lines can be updated.
+   */
+  canUpdateCartLine: boolean;
+}
+
+export interface MetafieldsCartInstructions {
+  /**
+   * Indicates whether or not cart metafields can be added or updated.
+   */
+  canSetCartMetafields: boolean;
+
+  /**
+   * Indicates whether or not cart metafields can be deleted.
+   */
+  canDeleteCartMetafield: boolean;
+}
+
+export interface NotesCartInstructions {
+  /**
+   * Indicates whether or not notes can be updated.
+   */
+  canUpdateNote: boolean;
 }

@@ -138,5 +138,8 @@ export interface MailingAddress {
 }
 
 export interface ShippingAddress extends MailingAddress {
+  /**
+   * Specifies whether the address should be saved to the buyer's account.
+   */
   oneTimeUse?: boolean;
 }

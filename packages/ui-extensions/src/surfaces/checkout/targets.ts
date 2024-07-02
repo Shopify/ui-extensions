@@ -863,6 +863,7 @@ export interface CustomerAccountStandardApi<
     | 'extension'
     | 'extensionPoint'
     | 'i18n'
+    | 'instructions'
     | 'lines'
     | 'localization'
     | 'metafields'
