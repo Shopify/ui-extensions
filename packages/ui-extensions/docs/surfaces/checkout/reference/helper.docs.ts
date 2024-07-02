@@ -477,6 +477,42 @@ The contents of the token are signed using your shared app secret.  The optional
         tabs: getExtensionCodeTabs('attribute-values'),
       },
     },
+    ...createExample('cart-instructions/attributes', {
+      title: 'Attributes',
+      description: `
+      Check \`instructions.attributes.canUpdateAttributes\` before calling \`applyAttributeChange()\`.
+      `,
+    }),
+    ...createExample('cart-instructions/cart-lines-add', {
+      title: 'Lines',
+      description: `
+      Check \`instructions.lines.canAddCartLine\` or \`instructions.lines.canRemoveCartLine\` or \`instructions.lines.canUpdateCartLine\` before calling \`applyCartLinesChange()\`.
+      `,
+    }),
+    ...createExample('cart-instructions/delivery', {
+      title: 'Delivery',
+      description: `
+      Check \`instructions.delivery.canSelectCustomAddress\` before calling \`applyShippingAddressChange()\`. When \`true\`, this instruction implies that extensions can change the shipping address.
+      `,
+    }),
+    ...createExample('cart-instructions/discounts', {
+      title: 'Discounts',
+      description: `
+      Check \`instructions.discounts.canUpdateDiscountCodes\` before calling \`applyDiscountCodeChange()\`.
+      `,
+    }),
+    ...createExample('cart-instructions/metafields', {
+      title: 'Metafields',
+      description: `
+      Check \`instructions.metafields.canSetCartMetafields\` or \`instructions.metafields.canDeleteCartMetafields\` before calling \`applyMetafieldChange()\` if you are working with cart metafields.
+      `,
+    }),
+    ...createExample('cart-instructions/notes', {
+      title: 'Notes',
+      description: `
+      Check \`instructions.notes.canUpdateNote\` before calling \`applyNoteChange()\`.
+      `,
+    }),
   };
 }
 
@@ -853,7 +889,7 @@ export const SHIPPING_OPTION_LIST_API = {
 };
 
 export const STANDARD_API_PROPERTIES_DESCRIPTION =
-  'The base API object provided to `purchase`, and `customer-account.order-status` extension targets.';
+  'The base API object provided to `purchase` extension targets.';
 
 export const CHECKOUT_API_PROPERTIES_DESCRIPTION =
   'The API object provided to `purchase.checkout` extension targets.';

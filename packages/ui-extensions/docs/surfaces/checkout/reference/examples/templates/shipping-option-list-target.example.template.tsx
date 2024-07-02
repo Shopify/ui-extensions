@@ -4,6 +4,7 @@ import {
   Checkbox,
   useDeliveryGroupTarget,
   useApplyAttributeChange,
+  useInstructions,
 } from '@shopify/ui-extensions-react/checkout';
 
 // 1. Choose an extension target
@@ -17,6 +18,7 @@ function Extension() {
     useDeliveryGroupTarget();
   const applyAttributeChange =
     useApplyAttributeChange();
+  const instructions = useInstructions();
   const [checked, setChecked] = useState(false);
 
   // 2. Render a UI
@@ -39,9 +41,18 @@ function Extension() {
     </Checkbox>
   );
 
-  // 3. Call API methods to modify the checkout
   async function onCheckboxChange(isChecked) {
     setChecked(isChecked);
+    // 3. Check if the API is available
+    if (
+      !instructions.attributes.canUpdateAttributes
+    ) {
+      console.error(
+        'Attributes cannot be updated in this checkout',
+      );
+      return;
+    }
+    // 4. Call the API to modify checkout
     const result = await applyAttributeChange({
       key: `isGift-${targetedDeliveryGroup?.groupType}`,
       type: 'updateAttribute',

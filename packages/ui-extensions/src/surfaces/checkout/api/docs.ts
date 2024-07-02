@@ -26,6 +26,9 @@ export interface Docs_Standard_BuyerIdentityApi
 export interface Docs_Standard_BuyerJourneyApi
   extends Pick<StandardApi, 'buyerJourney'> {}
 
+export interface Docs_Standard_CartInstructionsApi
+  extends Pick<StandardApi, 'instructions'> {}
+
 export interface Docs_Standard_CartLinesApi
   extends Pick<StandardApi, 'lines'> {}
 export interface Docs_Checkout_CartLinesApi
