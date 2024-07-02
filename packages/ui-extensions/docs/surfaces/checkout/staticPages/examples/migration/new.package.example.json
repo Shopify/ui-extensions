@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@shopify/ui-extensions": "2023.10.x",
-    "@shopify/ui-extensions-react": "2023.10.x"
-  }
-}

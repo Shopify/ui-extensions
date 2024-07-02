@@ -42,7 +42,7 @@ export function useApplyShippingAddressChange<
   }
 
   throw new ExtensionHasNoMethodError(
-    'applyCartLinesChange',
+    'applyShippingAddressChange',
     api.extension.target,
   );
 }
