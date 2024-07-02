@@ -2,6 +2,7 @@ import {
   reactExtension,
   Checkbox,
   useApplyAttributeChange,
+  useInstructions,
 } from '@shopify/ui-extensions-react/checkout';
 
 // 1. Choose an extension target
@@ -13,6 +14,7 @@ export default reactExtension(
 function Extension() {
   const applyAttributeChange =
     useApplyAttributeChange();
+  const instructions = useInstructions();
 
   // 2. Render a UI
   return (
@@ -22,8 +24,17 @@ function Extension() {
     </Checkbox>
   );
 
-  // 3. Call API methods to modify the checkout
   async function onCheckboxChange(isChecked) {
+    // 3. Check if the API is available
+    if (
+      !instructions.attributes.canUpdateAttributes
+    ) {
+      console.error(
+        'Attributes cannot be updated in this checkout',
+      );
+      return;
+    }
+    // 4. Call the API to modify checkout
     const result = await applyAttributeChange({
       key: 'requestedFreeGift',
       type: 'updateAttribute',

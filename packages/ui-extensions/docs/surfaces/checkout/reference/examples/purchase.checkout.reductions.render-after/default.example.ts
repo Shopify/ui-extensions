@@ -18,8 +18,18 @@ export default extension(
       ),
     );
 
-    // 3. Call API methods to modify the checkout
     async function onCheckboxChange(isChecked) {
+      // 3. Check if the API is available
+      if (
+        !api.instructions.current.attributes
+          .canUpdateAttributes
+      ) {
+        console.error(
+          'Attributes cannot be updated in this checkout',
+        );
+        return;
+      }
+      // 4. Call the API to modify checkout
       const result =
         await api.applyAttributeChange({
           key: 'requestedFreeGift',
