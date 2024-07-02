@@ -1,5 +1,65 @@
 # @shopify/ui-extensions
 
+## 2024.7.0
+
+### Minor Changes
+
+- [#1888](https://github.com/Shopify/ui-extensions/pull/1888) [`199a90fef0f4ce90a8f6ae6a8298c9d9c437f2f4`](https://github.com/Shopify/ui-extensions/commit/199a90fef0f4ce90a8f6ae6a8298c9d9c437f2f4) Thanks [@elanalynn](https://github.com/elanalynn)! - Add new block extension targets: collection, draft-order, abandoned-checkout, and product-variant
+
+- [#1981](https://github.com/Shopify/ui-extensions/pull/1981) [`ba2510f0f4737a56abe4171a08b8adea4488f8b4`](https://github.com/Shopify/ui-extensions/commit/ba2510f0f4737a56abe4171a08b8adea4488f8b4) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Updates Order Status API with `processedAt` attribute
+
+- [#1987](https://github.com/Shopify/ui-extensions/pull/1987) [`952489d3c27a2f5c8bcdad29e516480fe71e94e8`](https://github.com/Shopify/ui-extensions/commit/952489d3c27a2f5c8bcdad29e516480fe71e94e8) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - - Adds `useCustomerPrivacy` hook.
+
+- [#2144](https://github.com/Shopify/ui-extensions/pull/2144) [`321749e68edf6d64a82ffe2c4c99d0f19ac4e63c`](https://github.com/Shopify/ui-extensions/commit/321749e68edf6d64a82ffe2c4c99d0f19ac4e63c) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Added `CartInstructions` (accessed using `api.instructions`) to checkout. These represent the cart instructions used to create the checkout and possibly limit extension capabilities. These instructions should be checked prior to performing any actions that may be affected by them.
+
+  For example, if you intend to add a discount code via the `applyDiscountCodeChange` method, check `api.instructions.discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
+
+- [#2005](https://github.com/Shopify/ui-extensions/pull/2005) [`47512e33ddfb3d99a48fbcebdd20647cbc149fd7`](https://github.com/Shopify/ui-extensions/commit/47512e33ddfb3d99a48fbcebdd20647cbc149fd7) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Adds `selectedCountryCode` to `AddressAutocompleteSuggestionApi`.
+
+- [#2067](https://github.com/Shopify/ui-extensions/pull/2067) [`3c3505c16c1deb6f202cbecf6747c0fdc6b79228`](https://github.com/Shopify/ui-extensions/commit/3c3505c16c1deb6f202cbecf6747c0fdc6b79228) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Support split shipping in Shipping option list and item targets.
+
+- [#1924](https://github.com/Shopify/ui-extensions/pull/1924) [`a4f275abcb0c0166e0383fc5c1ed544b938def29`](https://github.com/Shopify/ui-extensions/commit/a4f275abcb0c0166e0383fc5c1ed544b938def29) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - - Adds the ability to read and write tracking consent metafield data to the Customer Privacy API.
+
+  - Updates the `Sheet` component and examples.
+
+- [#1807](https://github.com/Shopify/ui-extensions/pull/1807) [`08067cbba140d72f115e38f218dd0caead13f0d5`](https://github.com/Shopify/ui-extensions/commit/08067cbba140d72f115e38f218dd0caead13f0d5) Thanks [@nataliejeong](https://github.com/nataliejeong)! - Add Extension Target for Reorder Flow
+
+- [#2059](https://github.com/Shopify/ui-extensions/pull/2059) [`bf839358269255bb6a86fd9a64295b4ea89d6004`](https://github.com/Shopify/ui-extensions/commit/bf839358269255bb6a86fd9a64295b4ea89d6004) Thanks [@Fionoble](https://github.com/Fionoble)! - Add resource picker to admin block extension
+
+- [#2040](https://github.com/Shopify/ui-extensions/pull/2040) [`c8d876e83f3144361e09c375c3dc89af2029655b`](https://github.com/Shopify/ui-extensions/commit/c8d876e83f3144361e09c375c3dc89af2029655b) Thanks [@elanalynn](https://github.com/elanalynn)! - Add AdminPrintAction component
+
+- [#2065](https://github.com/Shopify/ui-extensions/pull/2065) [`c2c51b82135fadf9dd4a2b1ad95dc59cabd9064c`](https://github.com/Shopify/ui-extensions/commit/c2c51b82135fadf9dd4a2b1ad95dc59cabd9064c) Thanks [@elanalynn](https://github.com/elanalynn)! - Add admin print action targets
+
+- [#2118](https://github.com/Shopify/ui-extensions/pull/2118) [`0016e7e5031934e21b26398958d69b97a20ccebd`](https://github.com/Shopify/ui-extensions/commit/0016e7e5031934e21b26398958d69b97a20ccebd) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - - Adds `oneTimeUse` to `ShippingAddress` to denote whether the address can be saved in checkout.
+
+  - Adds `sku` to `ProductVariant` in checkout.
+  - Adds `bullet` icon in checkout.
+
+- [#1916](https://github.com/Shopify/ui-extensions/pull/1916) [`f9a593edd7bc6ea9f46f3927efd3b9fa6ebc5b5a`](https://github.com/Shopify/ui-extensions/commit/f9a593edd7bc6ea9f46f3927efd3b9fa6ebc5b5a) Thanks [@mleandres](https://github.com/mleandres)! - - Adds `purchase.address-autocomplete.suggest` extension target
+  - Adds the `primaryAction` and `secondaryAction` to the `Sheet` component
+
+### Patch Changes
+
+- [#2015](https://github.com/Shopify/ui-extensions/pull/2015) [`5ded8d2cb5d9ae502aa75183714f84dc92b820ea`](https://github.com/Shopify/ui-extensions/commit/5ded8d2cb5d9ae502aa75183714f84dc92b820ea) Thanks [@PSalmers](https://github.com/PSalmers)! - Homogenizes terminology to use the term "placement" in place of "supported location", "placement reference", and others.
+
+- [#1883](https://github.com/Shopify/ui-extensions/pull/1883) [`a87b8f3ac19ba9db78ed5933c2e0099195dc8c5b`](https://github.com/Shopify/ui-extensions/commit/a87b8f3ac19ba9db78ed5933c2e0099195dc8c5b) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Moves `Capability` type to shared types file
+
+- [#1996](https://github.com/Shopify/ui-extensions/pull/1996) [`0c05f0d17d91a9cb7ad61f1806d7d0a20bd09912`](https://github.com/Shopify/ui-extensions/commit/0c05f0d17d91a9cb7ad61f1806d7d0a20bd09912) Thanks [@aledalgrande](https://github.com/aledalgrande)! - Add metafields to PickupLocationOption
+
+- [#1960](https://github.com/Shopify/ui-extensions/pull/1960) [`c30a9639a5209862f4177f26ef3bc26e299c3c7b`](https://github.com/Shopify/ui-extensions/commit/c30a9639a5209862f4177f26ef3bc26e299c3c7b) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Added `appMetafields` field to `AddressAutocompleteStandardApi`
+
+- [#2037](https://github.com/Shopify/ui-extensions/pull/2037) [`0fd33b35c651b89d24c4fc560f376e91658d70a6`](https://github.com/Shopify/ui-extensions/commit/0fd33b35c651b89d24c4fc560f376e91658d70a6) Thanks [@brianshen1990](https://github.com/brianshen1990)! - add authenticationState api to customer account ui extension
+
+- [#2053](https://github.com/Shopify/ui-extensions/pull/2053) [`9c1777d48e0d81fea811cfbcd9764e98cf65778d`](https://github.com/Shopify/ui-extensions/commit/9c1777d48e0d81fea811cfbcd9764e98cf65778d) Thanks [@ncardeli](https://github.com/ncardeli)! - Publish display property
+
+- [#2014](https://github.com/Shopify/ui-extensions/pull/2014) [`ac077c8becee6f02fbb4fd9f04d029dbf9b838f2`](https://github.com/Shopify/ui-extensions/commit/ac077c8becee6f02fbb4fd9f04d029dbf9b838f2) Thanks [@oliverigor](https://github.com/oliverigor)! - Add Switch component
+
+- [#1942](https://github.com/Shopify/ui-extensions/pull/1942) [`b086046068ccb984b37c92a4e17378ada1774524`](https://github.com/Shopify/ui-extensions/commit/b086046068ccb984b37c92a4e17378ada1774524) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Improve error messaging when a React hook is used from a different API surface than the extension calling it.
+
+- [#1931](https://github.com/Shopify/ui-extensions/pull/1931) [`a744908ee0cedbc627a7bfac18294f34cad8746d`](https://github.com/Shopify/ui-extensions/commit/a744908ee0cedbc627a7bfac18294f34cad8746d) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - - Add code examples for custom address autocomplete extensions
+  - Update documentation for custom address autocomplete extensions
+  - Misc. type updates and documentation updates
+
 ## 2024.4.0
 
 ### Minor Changes
