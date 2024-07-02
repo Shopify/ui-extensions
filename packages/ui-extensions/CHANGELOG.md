@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2024.4.3
+
+### Patch Changes
+
+- [#2112](https://github.com/Shopify/ui-extensions/pull/2112) [`8e249f0d`](https://github.com/Shopify/ui-extensions/commit/8e249f0d4201f48be81f5a8290bb3c23207db29e) Thanks [@oliverigor](https://github.com/oliverigor)! - ScrollView scrollTo docs changes
+
 ## 2024.4.2
 
 ### Patch Changes
