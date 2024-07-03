@@ -38,11 +38,17 @@ else
   echo "export {}" > src/surfaces/checkout.ts
   echo "export {}" > src/surfaces/admin.ts
   echo "export {}" > src/surfaces/point-of-sale.ts
+  echo "export {}" > ../ui-extensions-react/src/surfaces/checkout.ts
+  echo "export {}" > ../ui-extensions-react/src/surfaces/admin.ts
+  echo "export {}" > ../ui-extensions-react/src/surfaces/point-of-sale.ts
   eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES && eval $COMPILE_CATEGORY_PAGES
   build_exit=$?
   git checkout HEAD -- src/surfaces/checkout.ts
   git checkout HEAD -- src/surfaces/admin.ts
   git checkout HEAD -- src/surfaces/point-of-sale.ts
+  git checkout HEAD -- ../ui-extensions-react/src/surfaces/checkout.ts
+  git checkout HEAD -- ../ui-extensions-react/src/surfaces/admin.ts
+  git checkout HEAD -- ../ui-extensions-react/src/surfaces/point-of-sale.ts
 fi
 
 
