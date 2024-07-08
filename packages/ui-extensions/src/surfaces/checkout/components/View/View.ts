@@ -176,16 +176,22 @@ export interface ViewProps
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
   /**
-   * Changes how the `View` is positioned. For setting the position, only properties
-   * that set the offset on a different axis can be set simultaneously. This means
-   * that these combinations are not allowed:
+   * Changes how the `View` is positioned. When setting `position`, set each axis only once.
    *
    * ```
-   * { blockStart, blockEnd } // Not allowed
+   * <View position={{blockStart, inlineEnd}} /> // Allowed; sets the `block` and `inline` axes once each
    * ```
    *
    * ```
-   * { inlineStart, inlineEnd } // Not allowed
+   * <View position={{inlineStart, blockEnd}} /> // Allowed; sets the `inline` and `block` axes once each
+   * ```
+   *
+   * ```
+   * <View position={{blockStart, blockEnd}} /> // Not allowed; sets the `block` axis twice
+   * ```
+   *
+   * ```
+   * <View position={{inlineStart, inlineEnd}} /> // Not allowed; sets the `inline` axis twice
    * ```
    */
   position?: MaybeResponsiveConditionalStyle<Position>;
