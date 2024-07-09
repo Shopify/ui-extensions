@@ -27,6 +27,7 @@ export {
   usePurchasingCompany,
 } from './buyer-identity';
 export {useTranslate} from './translate';
+export {useI18n} from './i18n';
 export {useSessionToken} from './session-token';
 export {useSettings} from './settings';
 export {useExtensionEditor} from './extension-editor';
