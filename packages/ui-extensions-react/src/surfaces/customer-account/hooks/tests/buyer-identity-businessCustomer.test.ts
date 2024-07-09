@@ -1,4 +1,4 @@
-import {usePurchasingCompany} from '../buyer-identity';
+import {usePurchasingCompany} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

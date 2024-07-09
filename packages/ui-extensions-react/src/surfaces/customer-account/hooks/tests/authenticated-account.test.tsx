@@ -3,7 +3,7 @@ import {faker} from '@faker-js/faker';
 import {
   useAuthenticatedAccountCustomer,
   useAuthenticatedAccountPurchasingCompany,
-} from '../authenticated-account';
+} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

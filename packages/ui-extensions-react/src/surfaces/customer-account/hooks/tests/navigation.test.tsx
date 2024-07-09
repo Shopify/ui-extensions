@@ -1,5 +1,5 @@
 import {mount} from './mount';
-import {useNavigation} from '../navigation';
+import {useNavigation} from '..';
 
 describe('useNavigation', () => {
   it('returns the navigation', () => {

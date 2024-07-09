@@ -1,4 +1,4 @@
-import {useNote} from '../note';
+import {useNote} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

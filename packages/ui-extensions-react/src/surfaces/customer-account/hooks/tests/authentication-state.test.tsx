@@ -1,4 +1,4 @@
-import {useAuthenticationState} from '../authentication-state';
+import {useAuthenticationState} from '..';
 import type {Extension} from '@shopify/ui-extensions/customer-account';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';

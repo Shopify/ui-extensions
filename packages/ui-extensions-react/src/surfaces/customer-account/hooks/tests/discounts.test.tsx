@@ -3,7 +3,7 @@ import {
   CartDiscountAllocation,
 } from '@shopify/ui-extensions/customer-account';
 
-import {useDiscountAllocations, useDiscountCodes} from '../discounts';
+import {useDiscountAllocations, useDiscountCodes} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 import type {PartialExtensionApi} from './mount';

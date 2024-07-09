@@ -1,6 +1,6 @@
 import {CurrencyCode} from '@shopify/ui-extensions/customer-account';
 
-import {useCurrency} from '../currency';
+import {useCurrency} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

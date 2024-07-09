@@ -1,6 +1,6 @@
 import {AppliedGiftCard} from '@shopify/ui-extensions/customer-account';
 
-import {useAppliedGiftCards} from '../gift-cards';
+import {useAppliedGiftCards} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 import type {PartialExtensionApi} from './mount';

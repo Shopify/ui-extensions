@@ -1,4 +1,4 @@
-import {useExtensionLanguage} from '../extension-language';
+import {useExtensionLanguage} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

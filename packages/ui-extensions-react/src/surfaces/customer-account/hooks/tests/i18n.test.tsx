@@ -1,5 +1,5 @@
 import {mount} from './mount';
-import {useI18n} from '../i18n';
+import {useI18n} from '..';
 
 describe('useI18n', () => {
   it('returns the i18n utilities', () => {

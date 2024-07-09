@@ -1,5 +1,5 @@
 import {ScopeNotGrantedError} from '../../errors';
-import {useShippingAddress} from '../shipping-address';
+import {useShippingAddress} from '..';
 
 import {mount} from './mount';
 
