@@ -536,7 +536,8 @@ export const pixelEvents = {
         type: {
           type: 'string',
           metadata: {
-            description: 'The type of delivery option.',
+            description:
+              'The type of delivery option.\n\n- `pickup`\n- `pickupPoint`\n- `shipping`\n- `local`',
           },
         },
         cost: {
@@ -664,6 +665,14 @@ export const pixelEvents = {
           metadata: {
             description:
               'A unique phone number for the customer. Formatted using E.164 standard. For example, *+16135551111*.',
+          },
+        },
+        smsMarketingPhone: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The phone number provided by the buyer after opting in to SMS marketing. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
           },
         },
         delivery: {
@@ -796,7 +805,7 @@ export const pixelEvents = {
         properties: {
           metadata: {
             description:
-              'The properties of the line item. Add or allow customers to add custom information to a line item with line item properties. Line item properties consist of a name and value pair.',
+              'The properties of the line item. A shop may add, or enable customers to add custom information to a line item. Line item properties consist of a key and value pair. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
           },
           elements: {
             ref: 'Property',
