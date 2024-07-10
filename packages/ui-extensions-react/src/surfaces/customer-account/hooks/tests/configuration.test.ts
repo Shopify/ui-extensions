@@ -1,4 +1,4 @@
-import {useSettings} from '../settings';
+import {useSettings} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

@@ -1,6 +1,6 @@
 import {CheckoutSettings} from '@shopify/ui-extensions/customer-account';
 
-import {useCheckoutSettings} from '../checkout-settings';
+import {useCheckoutSettings} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

@@ -1,4 +1,4 @@
-import {useApi} from '../api';
+import {useApi} from '..';
 
 import {mount} from './mount';
 

@@ -1,4 +1,4 @@
-import {useLocalizationMarket} from '../market';
+import {useLocalizationMarket} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

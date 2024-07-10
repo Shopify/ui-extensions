@@ -1,6 +1,6 @@
 import {MailingAddress} from '@shopify/ui-extensions/customer-account';
 
-import {useShippingAddress} from '../shipping-address';
+import {useShippingAddress} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

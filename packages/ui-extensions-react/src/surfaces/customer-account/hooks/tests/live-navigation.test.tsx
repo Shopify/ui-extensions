@@ -1,5 +1,5 @@
 import {mount} from './mount';
-import {useNavigationCurrentEntry} from '../live-navigation';
+import {useNavigationCurrentEntry} from '..';
 import {destroyAll} from '@quilted/react-testing';
 
 describe('useNavigationCurrentEntry', () => {

@@ -1,4 +1,4 @@
-import {useTimezone} from '../timezone';
+import {useTimezone} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

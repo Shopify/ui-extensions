@@ -1,6 +1,6 @@
 import {CountryCode} from '@shopify/ui-extensions/customer-account';
 
-import {useLocalizationCountry} from '../country';
+import {useLocalizationCountry} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

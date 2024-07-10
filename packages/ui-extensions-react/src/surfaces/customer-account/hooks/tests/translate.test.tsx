@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {useTranslate} from '../translate';
+import {useTranslate} from '..';
 
 import {mount} from './mount';
 

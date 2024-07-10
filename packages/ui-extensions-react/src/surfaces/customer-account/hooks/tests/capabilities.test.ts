@@ -1,9 +1,6 @@
 import type {Extension} from '@shopify/ui-extensions/customer-account';
 
-import {
-  useExtensionCapabilities,
-  useExtensionCapability,
-} from '../capabilities';
+import {useExtensionCapabilities, useExtensionCapability} from '..';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 

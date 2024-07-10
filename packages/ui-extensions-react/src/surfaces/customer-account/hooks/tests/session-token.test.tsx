@@ -1,4 +1,4 @@
-import {useSessionToken} from '../session-token';
+import {useSessionToken} from '..';
 
 import {mount} from './mount';
 
