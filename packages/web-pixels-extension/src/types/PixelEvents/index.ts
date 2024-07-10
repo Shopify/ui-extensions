@@ -860,6 +860,14 @@ export interface Checkout {
   shippingLine: ShippingRate | null;
 
   /**
+   * The phone number provided by the buyer after opting in to SMS
+   * marketing. This property is only available if the shop has [upgraded
+   * to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-
+   * settings/checkout-extensibility/checkout-upgrade).
+   */
+  smsMarketingPhone: string | null;
+
+  /**
    * The price at checkout before duties, shipping, and taxes.
    */
   subtotalPrice: MoneyV2;
@@ -914,9 +922,11 @@ export interface CheckoutLineItem {
   id: string;
 
   /**
-   * The properties of the line item. Add or allow customers to add custom
-   * information to a line item with line item properties. Line item properties
-   * consist of a name and value pair.
+   * The properties of the line item. A shop may add, or enable customers to add
+   * custom information to a line item. Line item properties consist of a key
+   * and value pair. This property is only available if the shop has [upgraded
+   * to Checkout Extensibility](https://help.shopify.com/manual/checkout-
+   * settings/checkout-extensibility/checkout-upgrade).
    */
   properties: Property[];
 
@@ -1110,6 +1120,11 @@ export interface DeliveryOption {
 
   /**
    * The type of delivery option.
+   *
+   * - `pickup`
+   * - `pickupPoint`
+   * - `shipping`
+   * - `local`
    */
   type: string;
 }
