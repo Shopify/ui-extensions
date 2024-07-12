@@ -39,6 +39,12 @@ export interface ScrollViewProps
     SizingProps,
     SpacingProps {
   /**
+   * A label that describes the purpose or contents of the element. When set,
+   * it will be announced to buyers using assistive technologies and will
+   * provide them with more context.
+   */
+  accessibilityLabel?: string;
+  /**
    * Provides a hint to the user that the area is scrollable.
    *
    * `pill`: renders a pill with a message at the end of the the scrollable area. It disappear as soon as the user starts scrolling.

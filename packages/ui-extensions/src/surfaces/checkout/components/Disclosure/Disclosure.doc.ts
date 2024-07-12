@@ -10,7 +10,7 @@ const disclosureAndAlignment = getExample(
 const data: ReferenceEntityTemplateSchema = {
   name: 'Disclosure',
   description:
-    'Disclosure is an optionally controlled component used to put long sections of information under content blocks that users can expand or collapse by pressing an activator. The activator can be specified as children using an action component (`Button`, `Link` or `Pressable`) or `Checkbox` component. The content blocks can be specified as children inside a structure component (`View`, `InlineLayout`, `BlockStack`, `Grid`, etc.).\n\nThe library automatically applies the [WAI-ARIA Accordion pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) to both the activator and the toggled content.',
+    'Disclosure is an optionally controlled component used to put long sections of information under content blocks that users can expand or collapse by pressing an activator. The activator can be specified as children using an action component (`Button`, `Link` or `Pressable`) or a form control (`Checkbox` or `Switch`) component. The content blocks can be specified as children inside a structure component (`View`, `InlineLayout`, `BlockStack`, `Grid`, etc.).\n\nThe library automatically applies the [WAI-ARIA Accordion pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) to both the activator and the toggled content.',
   thumbnail: 'disclosure-thumbnail.png',
   requires: '',
   isVisualComponent: true,

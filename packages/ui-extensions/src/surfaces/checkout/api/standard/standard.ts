@@ -705,7 +705,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   storage: Storage;
 
   /**
-   * Methods to interact with the extension's UI.
+   * Methods to interact with the extension’s UI.
    */
   ui: Ui;
 
@@ -732,9 +732,19 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 }
 
 export interface Ui {
-  overlay: {
-    close(overlayId: string): void;
-  };
+  /**
+   * Allows the extension to close an overlay programmatically.
+   *
+   * Supported overlay components are [Modal](/docs/api/checkout-ui-extensions/unstable/components/overlays/modal), [Sheet](/docs/api/checkout-ui-extensions/unstable/components/overlays/sheet) and [Popover](/docs/api/checkout-ui-extensions/unstable/components/overlays/popover).
+   */
+  overlay: Overlay;
+}
+
+interface Overlay {
+  /**
+   * Closes the overlay with the given ID.
+   */
+  close(overlayId: string): void;
 }
 
 export interface SessionToken {

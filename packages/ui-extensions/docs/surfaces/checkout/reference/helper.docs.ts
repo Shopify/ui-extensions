@@ -477,6 +477,13 @@ The contents of the token are signed using your shared app secret.  The optional
         tabs: getExtensionCodeTabs('attribute-values'),
       },
     },
+    'ui-close-overlay': {
+      description: 'Close an overlay in a UI extension using the `ui` API.',
+      codeblock: {
+        title: '',
+        tabs: getExtensionCodeTabs('ui-components/overlay-close'),
+      },
+    },
     ...createExample('cart-instructions/attributes', {
       title: 'Attributes',
       description: `

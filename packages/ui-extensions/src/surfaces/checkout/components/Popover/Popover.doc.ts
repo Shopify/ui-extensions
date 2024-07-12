@@ -44,7 +44,14 @@ const data: ReferenceEntityTemplateSchema = {
         'Use popovers if:\n\n- The intent is to ask the customer for information.\n\n- It’s possible to use at most two rows of input fields to get the information.',
     },
   ],
-  related: [],
+  related: [
+    {
+      name: 'Ui',
+      subtitle: 'API',
+      url: 'ui',
+      type: 'API',
+    },
+  ],
 };
 
 export default data;
