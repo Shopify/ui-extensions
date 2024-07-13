@@ -547,8 +547,7 @@ export interface PixelEvents {
 }
 
 /**
- * Custom attributes left by the customer to the merchant, either in their cart
- * or during checkout.
+ * Custom attributes associated with the cart or checkout.
  */
 export interface Attribute {
   /**
@@ -699,6 +698,14 @@ export interface Browser {
  */
 export interface Cart {
   /**
+   * The attributes associated with the cart. This property
+   * is only available if the shop has [upgraded to Checkout
+   * Extensibility](https://help.shopify.com/en/manual/checkout-
+   * settings/checkout-extensibility/checkout-upgrade).
+   */
+  attributes: Attribute[];
+
+  /**
    * The estimated costs that the customer will pay at checkout.
    */
   cost: CartCost;
@@ -707,6 +714,11 @@ export interface Cart {
    * A globally unique identifier.
    */
   id: string | null;
+
+  /**
+   * A list of lines containing information about the items the customer intends
+   * to purchase.
+   */
   lines: CartLine[];
 
   /**
