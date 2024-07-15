@@ -63,7 +63,14 @@ const data: ReferenceEntityTemplateSchema = {
       getExample('ui-components/sheet-layout-content', ['jsx', 'js']),
     ],
   },
-  related: [],
+  related: [
+    {
+      name: 'Ui',
+      subtitle: 'API',
+      url: 'ui',
+      type: 'API',
+    },
+  ],
 };
 
 export default data;

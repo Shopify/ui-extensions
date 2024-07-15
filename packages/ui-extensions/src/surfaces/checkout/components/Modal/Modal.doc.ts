@@ -44,7 +44,14 @@ const data: ReferenceEntityTemplateSchema = {
         'Use modals if:\n\n- The information needed to be shown is not critical in completing the checkout process and information cannot be condensed into one sentence.\n\n- The information the buyer is entering requires less than two rows of input fields.\n\n- The information the buyer is entering is not reliant on information on the page (which is underneath the modal and not visible to them).',
     },
   ],
-  related: [],
+  related: [
+    {
+      name: 'Ui',
+      subtitle: 'API',
+      url: 'ui',
+      type: 'API',
+    },
+  ],
 };
 
 export default data;
