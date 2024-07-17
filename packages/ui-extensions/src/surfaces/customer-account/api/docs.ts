@@ -117,6 +117,12 @@ export interface Docs_ResourceItem_Button_Action
     | 'kind'
   > {}
 
+export interface Docs_Menu_Button_Action
+  extends Omit<
+    ButtonProps,
+    'kind' | 'textDecoration' | 'inlineAlignment' | 'inlineSize' | 'size'
+  > {}
+
 export interface Docs_OrderActionMenu_Button
   extends Pick<
     ButtonProps,
