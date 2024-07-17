@@ -23,6 +23,8 @@ export type {
   CustomerApiContent,
 } from './api/customer-api/customer-api';
 
+export type {DeviceApi, DeviceApiContent} from './api/device-api/device-api';
+
 export type {LocaleApi, LocaleApiContent} from './api/locale-api/locale-api';
 
 export type {
