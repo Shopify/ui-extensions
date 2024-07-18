@@ -5,14 +5,14 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosDraftOrderDetailsActionRender,
   description:
-    'A full-screen extension target that renders when a `pos.draft-order-details.action.render` target calls for it',
-  defaultExample: {
-    codeblock: generateCodeBlock(
-      'Draft order details action',
-      'targets',
-      'pos-draft-order-details-action',
-    ),
-  },
+    'An inline block extension target that renders when a `pos.draft-order-details.block.render` target calls for it',
+  // defaultExample: {
+  //   codeblock: generateCodeBlock(
+  //     'Draft order details action',
+  //     'targets',
+  //     'pos-draft-order-details-action',
+  //   ),
+  // },
   category: 'Targets',
   subCategory: 'Draft order details',
   isVisualComponent: false,
@@ -22,8 +22,8 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-action-menu-item-render',
     },
     {
-      name: ExtensionTargetType.PosDraftOrderDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-block-render',
+      name: ExtensionTargetType.PosDraftOrderDetailsActionRender,
+      url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-action-render',
     },
     {
       name: 'Draft order details API',

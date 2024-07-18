@@ -21,6 +21,14 @@ const data: ReferenceEntityTemplateSchema = {
       name: ExtensionTargetType.PosDraftOrderDetailsActionRender,
       url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-action-render',
     },
+    {
+      name: ExtensionTargetType.PosDraftOrderDetailsBlockRender,
+      url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-block-render',
+    },
+    {
+      name: 'Draft order details API',
+      url: '/docs/api/pos-ui-extensions/apis/draft-order-api',
+    },
   ],
   type: 'Target',
 };

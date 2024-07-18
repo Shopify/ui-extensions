@@ -157,6 +157,14 @@ Displays an action target modally when a menu item is tapped.
 Review [all extension targets](/docs/api/pos-ui-extensions/targets).
 `,
         },
+        {
+          title: 'Block',
+          description: `
+Displays an inline extension block on the draft order details screen.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
       ],
     },
   ],
