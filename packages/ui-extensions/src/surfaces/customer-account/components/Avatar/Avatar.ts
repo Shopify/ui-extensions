@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {IdProps, Size} from '../../../checkout';
+import {Size} from '../../../checkout';
+import type {IdProps} from '../shared';
 
 export interface AvatarProps extends IdProps {
   /**

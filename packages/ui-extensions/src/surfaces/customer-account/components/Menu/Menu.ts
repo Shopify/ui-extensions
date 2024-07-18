@@ -1,5 +1,5 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {IdProps} from '../../../checkout';
+import type {IdProps} from '../shared';
 
 export interface MenuProps extends IdProps {
   /**
