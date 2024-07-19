@@ -513,7 +513,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * > Tip:
-   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.*
+   * > Metafields on an [app reserved namespace](/docs/apps/build/custom-data/reserved-prefixes) cannot be accessed by Checkout UI extensions.
    */
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 
@@ -626,6 +626,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * Once the order is created, you can query these metafields using the
    * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
+   *
+   * > Tip:
+   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.
    */
   metafields: StatefulRemoteSubscribable<Metafield[]>;
 
