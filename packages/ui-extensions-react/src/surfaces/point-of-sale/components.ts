@@ -14,6 +14,8 @@ export {List} from './components/List/List';
 export {Navigator} from './components/Navigator/Navigator';
 export {NumberField} from './components/NumberField/NumberField';
 export {PinPad} from './components/PinPad/PinPad';
+export {POSBlock} from './components/POSBlock/POSBlock';
+export {POSBlockRow} from './components/POSBlock/POSBlockRow';
 export {RadioButtonList} from './components/RadioButtonList/RadioButtonList';
 export {Screen} from './components/Screen/Screen';
 export {ScrollView} from './components/ScrollView/ScrollView';
