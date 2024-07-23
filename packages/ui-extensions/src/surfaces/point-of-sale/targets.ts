@@ -17,6 +17,23 @@ import {DraftOrderApi} from './api/draft-order-api/draft-order-api';
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
 type ActionComponents = AnyComponentBuilder<Pick<Components, 'ActionItem'>>;
 type BasicComponents = AnyComponentBuilder<Omit<Components, 'Tile'>>;
+type BlockComponents = AnyComponentBuilder<
+  Pick<
+    Components,
+    | 'Badge'
+    | 'Button'
+    | 'DatePicker'
+    | 'Dialog'
+    | 'Icon'
+    | 'Image'
+    | 'POSBlock'
+    | 'POSBlockRow'
+    | 'Selectable'
+    | 'Stack'
+    | 'Text'
+    | 'TimePicker'
+  >
+>;
 
 export interface ExtensionTargets {
   'pos.home.tile.render': RenderExtension<
@@ -37,6 +54,10 @@ export interface ExtensionTargets {
   'pos.purchase.post.action.render': RenderExtension<
     ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,
     BasicComponents
+  >;
+  'pos.purchase.post.block.render': RenderExtension<
+    StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,
+    BlockComponents
   >;
   'pos.product-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.product-details.action.menu-item.render'> &
