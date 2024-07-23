@@ -1,14 +1,39 @@
 import type {MailingAddress} from '../../../checkout';
 
 /**
- * A partial mailing address with only fields relevant to address autocomplete.
+ * An address object used to auto-populate the address form fields.
+ *
  * All fields are optional
  */
 export interface AutocompleteAddress
   extends Pick<
     MailingAddress,
-    'address1' | 'address2' | 'city' | 'provinceCode' | 'zip' | 'countryCode'
-  > {}
+    | 'address1'
+    | 'address2'
+    | 'city'
+    | 'company'
+    | 'countryCode'
+    | 'provinceCode'
+    | 'zip'
+  > {
+  /**
+   * The latitude coordinates of the buyer.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 43.6556377
+   */
+  latitude?: number;
+
+  /**
+   * The longitude coordinates of the buyer.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example -79.38681079999999
+   */
+  longitude?: number;
+}
 
 export interface AddressAutocompleteSuggestion {
   /**
