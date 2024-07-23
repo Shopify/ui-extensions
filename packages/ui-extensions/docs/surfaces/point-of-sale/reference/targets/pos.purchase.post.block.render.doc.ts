@@ -3,14 +3,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosPurchasePostActionRender,
+  name: ExtensionTargetType.PosPurchasePostBlockRender,
   description:
-    'A full-screen extension target that renders when a `pos.purchase.post.action.menu-item.render` target calls for it',
+    'A Containerized section that can render custom UI within the native post-purchase screen on POS',
   defaultExample: {
     codeblock: generateCodeBlock(
       'Action',
       'targets',
-      'pos-purchase-post-action-render',
+      'pos-purchase-post-block-render',
     ),
   },
   category: 'Targets',
@@ -22,8 +22,8 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-action-menu-item-render',
     },
     {
-      name: ExtensionTargetType.PosPurchasePostBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-block-render',
+      name: ExtensionTargetType.PosPurchasePostActionRender,
+      url: '/docs/api/pos-ui-extensions/targets/pos-purchase-post-action-render',
     },
   ],
   type: 'Target',

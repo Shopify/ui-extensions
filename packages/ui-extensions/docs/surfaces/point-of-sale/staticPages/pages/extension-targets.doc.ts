@@ -60,6 +60,14 @@ Displays a modal when a menu item is tapped.
 Review [all extension targets](/docs/api/pos-ui-extensions/targets).
 `,
         },
+        {
+          title: 'Block',
+          description: `
+A Containerized section that can render custom UI within the native post-purchase screen on POS.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
       ],
     },
 
