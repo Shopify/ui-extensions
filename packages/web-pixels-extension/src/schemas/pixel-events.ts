@@ -493,8 +493,7 @@ export const pixelEvents = {
     },
     Attribute: {
       metadata: {
-        description:
-          'Custom attributes left by the customer to the merchant, either in their cart or during checkout.',
+        description: 'Custom attributes associated with the cart or checkout.',
       },
       properties: {
         key: {
@@ -1304,16 +1303,25 @@ export const pixelEvents = {
         lines: {
           elements: {
             ref: 'CartLine',
-            metadata: {
-              description:
-                'A list of lines containing information about the items the customer intends to purchase.',
-            },
+          },
+          metadata: {
+            description:
+              'A list of lines containing information about the items the customer intends to purchase.',
           },
         },
         totalQuantity: {
           type: 'uint32',
           metadata: {
             description: 'The total number of items in the cart.',
+          },
+        },
+        attributes: {
+          metadata: {
+            description:
+              'The attributes associated with the cart. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+          },
+          elements: {
+            ref: 'Attribute',
           },
         },
       },
