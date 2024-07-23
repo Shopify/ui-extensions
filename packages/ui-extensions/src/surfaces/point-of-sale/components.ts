@@ -1,5 +1,5 @@
-export {ActionItem} from './components/Actiontem/ActionItem';
-export type {ActionItemProps} from './components/Actiontem/ActionItem';
+export {ActionItem} from './components/ActionItem/ActionItem';
+export type {ActionItemProps} from './components/ActionItem/ActionItem';
 export {Badge} from './components/Badge/Badge';
 export type {BadgeProps, BadgeVariant} from './components/Badge/Badge';
 export {Banner} from './components/Banner/Banner';
@@ -46,6 +46,10 @@ export type {
   PinPadActionType,
   PinValidationResult,
 } from './components/PinPad/PinPad';
+export {POSBlock} from './components/POSBlock/POSBlock';
+export type {POSBlockProps} from './components/POSBlock/POSBlock';
+export {POSBlockRow} from './components/POSBlock/POSBlockRow';
+export type {POSBlockRowProps} from './components/POSBlock/POSBlockRow';
 export {RadioButtonList} from './components/RadioButtonList/RadioButtonList';
 export type {RadioButtonListProps} from './components/RadioButtonList/RadioButtonList';
 export {Screen} from './components/Screen/Screen';
