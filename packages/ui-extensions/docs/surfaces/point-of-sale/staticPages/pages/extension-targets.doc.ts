@@ -63,7 +63,7 @@ Review [all extension targets](/docs/api/pos-ui-extensions/targets).
         {
           title: 'Block',
           description: `
-A Containerized section that can render custom UI within the native post-purchase screen on POS.
+Renders a custom section within the native post purchase screen.
 
 Review [all extension targets](/docs/api/pos-ui-extensions/targets).
 `,

@@ -5,7 +5,7 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosPurchasePostBlockRender,
   description:
-    'A Containerized section that can render custom UI within the native post-purchase screen on POS',
+    'Renders a custom section within the native post purchase screen',
   defaultExample: {
     codeblock: generateCodeBlock(
       'Action',
