@@ -204,6 +204,9 @@ export type {ProgressProps} from './checkout/components/Progress/Progress';
 export {Popover} from './checkout/components/Popover/Popover';
 export type {PopoverProps} from './checkout/components/Popover/Popover';
 
+export {QRCode} from './checkout/components/QRCode/QRCode';
+export type {QRCodeProps} from './checkout/components/QRCode/QRCode';
+
 export {ScrollView} from './checkout/components/ScrollView/ScrollView';
 export type {ScrollViewProps} from './checkout/components/ScrollView/ScrollView';
 

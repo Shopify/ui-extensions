@@ -131,6 +131,9 @@ export type {ProductThumbnailProps} from './components/ProductThumbnail/ProductT
 export {Progress} from './components/Progress/Progress';
 export type {ProgressProps} from './components/Progress/Progress';
 
+export {QRCode} from './components/QRCode/QRCode';
+export type {QRCodeProps} from './components/QRCode/QRCode';
+
 export {Popover} from './components/Popover/Popover';
 export type {PopoverProps, PopoverPosition} from './components/Popover/Popover';
 

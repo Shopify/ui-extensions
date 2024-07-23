@@ -68,6 +68,7 @@ export type IconSource =
   | 'store'
   | 'success'
   | 'truck'
+  | 'upload'
   | 'verticalDots'
   | 'warning'
   | 'warningFill';

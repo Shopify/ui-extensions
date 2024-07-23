@@ -11,15 +11,15 @@ fail_and_exit() {
 if [ -z $API_VERSION ]
 then
   API_VERSION="unstable"
-  echo "Building docs for 'unstable' checkout UI extensions API. You can add a calver version argument (e.g. 'yarn docs:checkout 2023-07') to generate the docs for a stable version."
+  echo "Building docs for 'unstable' checkout UI extensions API. You can add a calver version argument (e.g. 'pnpm docs:checkout 2023-07') to generate the docs for a stable version."
 else
   echo "Building docs for '$API_VERSION' checkout UI extensions API."
   echo "When generating docs for a stable version, 'unstable' docs are not regenerated. This avoids overwriting other unstable changes that are not included in this version."
   echo "If you need to update the 'unstable' version, run this command again without the '$API_VERSION' parameter."
 fi
 
-COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH ../ui-extensions-react/$SRC_PATH --output ./$DOCS_PATH/generated"
-COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
+COMPILE_DOCS="pnpm tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && pnpm generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH ../ui-extensions-react/$SRC_PATH --output ./$DOCS_PATH/generated"
+COMPILE_STATIC_PAGES="pnpm tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && pnpm generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
 
 
 if echo "$PWD" | grep -q '\checkout-web'; then
@@ -32,17 +32,11 @@ else
   echo "export {}" > src/surfaces/customer-account.ts
   echo "export {}" > src/surfaces/admin.ts
   echo "export {}" > src/surfaces/point-of-sale.ts
-  echo "export {}" > ../ui-extensions-react/src/surfaces/customer-account.ts
-  echo "export {}" > ../ui-extensions-react/src/surfaces/admin.ts
-  echo "export {}" > ../ui-extensions-react/src/surfaces/point-of-sale.ts
   eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
   build_exit=$?
   git checkout HEAD -- src/surfaces/customer-account.ts
   git checkout HEAD -- src/surfaces/admin.ts
   git checkout HEAD -- src/surfaces/point-of-sale.ts
-  git checkout HEAD -- ../ui-extensions-react/src/surfaces/customer-account.ts
-  git checkout HEAD -- ../ui-extensions-react/src/surfaces/admin.ts
-  git checkout HEAD -- ../ui-extensions-react/src/surfaces/point-of-sale.ts
 fi
 
 # TODO: get generate-docs to stop requiring JS files:
