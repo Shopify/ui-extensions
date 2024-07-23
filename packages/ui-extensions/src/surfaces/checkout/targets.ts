@@ -721,6 +721,13 @@ export interface RenderExtensionTargets {
       StandardApi<'purchase.thank-you.footer.render-after'>,
     AnyComponent
   >;
+  /**
+   * A static extension target that is rendered on top of the Checkout page as an overlay.
+   */
+  'purchase.checkout.overlay.render': RenderExtension<
+    CheckoutApi & StandardApi<'purchase.checkout.overlay.render'>,
+    AnyComponent
+  >;
 }
 
 export interface RunnableExtensionTargets {

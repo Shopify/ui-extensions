@@ -7,7 +7,13 @@ import type {MailingAddress} from '../../../checkout';
 export interface AutocompleteAddress
   extends Pick<
     MailingAddress,
-    'address1' | 'address2' | 'city' | 'provinceCode' | 'zip' | 'countryCode'
+    | 'address1'
+    | 'address2'
+    | 'city'
+    | 'company'
+    | 'countryCode'
+    | 'provinceCode'
+    | 'zip'
   > {}
 
 export interface AddressAutocompleteSuggestion {
