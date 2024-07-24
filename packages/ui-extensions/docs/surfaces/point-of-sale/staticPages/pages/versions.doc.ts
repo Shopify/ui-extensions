@@ -29,6 +29,7 @@ const data: LandingTemplateSchema = {
 - Added support for the ${TargetLink.PosProductDetailsBlockRender} target.
 - Added support for the ${TargetLink.PosPurchasePostBlockRender} target.
 - Added support for the ${TargetLink.PosOrderDetailsBlockRender} target.
+- Added support for the ${TargetLink.PosCustomerDetailsBlockRender} target.
       `,
     },
     {

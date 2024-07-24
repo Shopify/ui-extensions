@@ -93,6 +93,14 @@ Displays an action target modally when a menu item is tapped.
 Review [all extension targets](/docs/api/pos-ui-extensions/targets).
 `,
         },
+        {
+          title: 'Block',
+          description: `
+Renders a custom section within the customer details screen.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
       ],
     },
     {

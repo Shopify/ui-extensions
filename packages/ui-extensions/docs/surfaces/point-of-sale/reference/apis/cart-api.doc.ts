@@ -17,6 +17,7 @@ The Cart API enables UI Extensions to manage and interact with POS cart contents
 - ${TargetLink.PosProductDetailsActionRender}
 - ${TargetLink.PosCustomerDetailsActionMenuItemRender}
 - ${TargetLink.PosCustomerDetailsActionRender}
+- ${TargetLink.PosCustomerDetailsBlockRender}
 - ${TargetLink.PosOrderDetailsActionMenuItemRender}
 - ${TargetLink.PosOrderDetailsActionRender}
 - ${TargetLink.PosOrderDetailsBlockRender}

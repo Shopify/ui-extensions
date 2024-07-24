@@ -12,6 +12,7 @@ export enum ExtensionTargetType {
   PosOrderDetailsBlockRender = 'pos.order-details.block.render',
   PosCustomerDetailsActionMenuItemRender = 'pos.customer-details.action.menu-item.render',
   PosCustomerDetailsActionRender = 'pos.customer-details.action.render',
+  PosCustomerDetailsBlockRender = 'pos.customer-details.block.render',
   PosDraftOrderDetailsActionMenuItemRender = 'pos.draft-order-details.action.menu-item.render',
   PosDraftOrderDetailsActionRender = 'pos.draft-order-details.action.render',
 }
@@ -30,6 +31,7 @@ export enum TargetLink {
   PosOrderDetailsBlockRender = '[pos.order-details.block.render](/docs/api/pos-ui-extensions/targets/order-details/pos-order-details-block-render)',
   PosCustomerDetailsActionMenuItemRender = '[pos.customer-details.action.menu-item.render](/docs/api/pos-ui-extensions/targets/customer-details/pos-customer-details-action-menu-item-render)',
   PosCustomerDetailsActionRender = '[pos.customer-details.action.render](/docs/api/pos-ui-extensions/targets/customer-details/pos-customer-details-action-render)',
+  PosCustomerDetailsBlockRender = '[pos.customer-details.block.render](/docs/api/pos-ui-extensions/targets/customer-details/pos-customer-details-block-render)',
   PosDraftOrderDetailsActionMenuItemRender = '[pos.draft-order-details.action.menu-item.render](/docs/api/pos-ui-extensions/targets/draft-order-details/pos-draft-order-details-action-menu-item-render)',
   PosDraftOrderDetailsActionRender = '[pos.draft-order-details.action.render](/docs/api/pos-ui-extensions/targets/draft-order-details/pos-draft-order-details-action-render)',
 }
