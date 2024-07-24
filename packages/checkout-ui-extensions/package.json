@@ -1,7 +1,7 @@
 {
   "name": "@shopify/checkout-ui-extensions",
   "description": "The API for UI Extensions that run in Shopify’s Checkout",
-  "version": "0.27.3",
+  "version": "0.27.4",
   "publishConfig": {
     "access": "public",
     "@shopify:registry": "https://registry.npmjs.org"
