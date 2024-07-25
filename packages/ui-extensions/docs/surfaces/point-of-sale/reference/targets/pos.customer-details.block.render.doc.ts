@@ -22,7 +22,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       name: ExtensionTargetType.PosCustomerDetailsActionRender,
-      url: '/docs/api/pos-ui-extensions/targets/customer-details-action-render',
+      url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-action-render',
     },
   ],
   type: 'Target',
