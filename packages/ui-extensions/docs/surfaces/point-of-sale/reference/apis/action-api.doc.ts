@@ -10,10 +10,12 @@ const data: ReferenceEntityTemplateSchema = {
   description: `
 The Action API allows an action extension to modally present its corresponding modal target.
 
-### Supporting targets
+#### Supporting targets
 - ${TargetLink.PosHomeTileRender}
 - ${TargetLink.PosPurchasePostActionMenuItemRender}
+- ${TargetLink.PosPurchasePostBlockRender}
 - ${TargetLink.PosOrderDetailsActionMenuItemRender}
+- ${TargetLink.PosOrderDetailsBlockRender}
 - ${TargetLink.PosProductDetailsActionMenuItemRender}
 - ${TargetLink.PosCustomerDetailsActionMenuItemRender}
 - ${TargetLink.PosDraftOrderDetailsActionMenuItemRender}

@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: `
 The Cart API enables UI Extensions to manage and interact with POS cart contents, such as discounts, line items, and customer details. It provides a comprehensive set of functions for adding and removing items, alongside a subscribable object that keeps the UI Extension updated with real-time changes to the cart.
 
-### Supporting targets
+#### Supporting targets
 - ${TargetLink.PosHomeTileRender}
 - ${TargetLink.PosHomeModalRender}
 - ${TargetLink.PosProductDetailsActionMenuItemRender}
@@ -19,6 +19,7 @@ The Cart API enables UI Extensions to manage and interact with POS cart contents
 - ${TargetLink.PosCustomerDetailsActionRender}
 - ${TargetLink.PosOrderDetailsActionMenuItemRender}
 - ${TargetLink.PosOrderDetailsActionRender}
+- ${TargetLink.PosOrderDetailsBlockRender}
 - ${TargetLink.PosDraftOrderDetailsActionMenuItemRender}
 - ${TargetLink.PosDraftOrderDetailsActionRender}
 `,

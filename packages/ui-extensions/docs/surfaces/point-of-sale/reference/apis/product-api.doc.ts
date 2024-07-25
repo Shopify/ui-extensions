@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: `
 The Product API provides an extension with data about the current Product.
 
-### Supporting targets
+#### Supporting targets
 - ${TargetLink.PosProductDetailsActionMenuItemRender}
 - ${TargetLink.PosProductDetailsActionRender}
 `,

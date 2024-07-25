@@ -88,6 +88,13 @@ export interface ExtensionTargets {
     ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,
     BasicComponents
   >;
+  'pos.order-details.block.render': RenderExtension<
+    StandardApi<'pos.order-details.block.render'> &
+      CartApi &
+      ProductApi &
+      ActionApi,
+    BlockComponents
+  >;
   'pos.draft-order-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.draft-order-details.action.menu-item.render'> &
       ActionApi &

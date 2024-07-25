@@ -8,7 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
 The Draft Order API provides an extension with data about the current draft order.
 
 
-### Supporting targets
+#### Supporting targets
 - ${TargetLink.PosDraftOrderDetailsActionMenuItemRender}
 - ${TargetLink.PosDraftOrderDetailsActionRender}
 `,

@@ -3,14 +3,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosOrderDetailsActionRender,
+  name: ExtensionTargetType.PosOrderDetailsBlockRender,
   description:
-    'A full-screen extension target that renders when a `pos.order-details.action.menu-item.render` target calls for it',
+    'Renders a custom section within the native order details screen',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Order details action',
+      'Block',
       'targets',
-      'pos-order-details-action-render',
+      'pos-order-details-block-render',
     ),
   },
   category: 'Targets',
@@ -22,8 +22,8 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/docs/api/pos-ui-extensions/targets/pos-order-details-action-menu-item-render',
     },
     {
-      name: ExtensionTargetType.PosOrderDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-order-details-block-render',
+      name: ExtensionTargetType.PosOrderDetailsActionRender,
+      url: '/docs/api/pos-ui-extensions/targets/pos-order-details-action-render',
     },
   ],
   type: 'Target',

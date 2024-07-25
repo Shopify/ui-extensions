@@ -28,6 +28,7 @@ const data: LandingTemplateSchema = {
 - Introduced a [POSBlockRow component](/docs/api/pos-ui-extensions/components/POSBlockRow). It's the required child component for POSBlock, and can be used to wrap other components.
 - Added support for the ${TargetLink.PosProductDetailsBlockRender} target.
 - Added support for the ${TargetLink.PosPurchasePostBlockRender} target.
+- Added support for the ${TargetLink.PosOrderDetailsBlockRender} target.
       `,
     },
     {
