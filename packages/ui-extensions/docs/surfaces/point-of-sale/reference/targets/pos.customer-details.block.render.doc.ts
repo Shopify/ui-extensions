@@ -3,14 +3,13 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosCustomerDetailsActionRender,
-  description:
-    'A full-screen extension target that renders when a `pos.customer-details.action.menu-item.render` target calls for it',
+  name: ExtensionTargetType.PosCustomerDetailsBlockRender,
+  description: 'Renders a custom section within customer details screen',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Action',
+      'Block',
       'targets',
-      'customer-details-action',
+      'pos-customer-details-block-render',
     ),
   },
   category: 'Targets',
@@ -22,12 +21,8 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-action-menu-item-render',
     },
     {
-      name: ExtensionTargetType.PosCustomerDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-block-render',
-    },
-    {
-      name: 'Customer API',
-      url: '/docs/api/pos-ui-extensions/apis/customer-api',
+      name: ExtensionTargetType.PosCustomerDetailsActionRender,
+      url: '/docs/api/pos-ui-extensions/targets/pos-customer-details-action-render',
     },
   ],
   type: 'Target',

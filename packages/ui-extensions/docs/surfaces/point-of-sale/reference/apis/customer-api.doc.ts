@@ -13,6 +13,7 @@ The customer API provides an extension with data about the current customer.
 #### Supporting targets
 - ${TargetLink.PosCustomerDetailsActionMenuItemRender}
 - ${TargetLink.PosCustomerDetailsActionRender}
+- ${TargetLink.PosCustomerDetailsBlockRender}
 `,
   isVisualComponent: false,
   type: 'APIs',

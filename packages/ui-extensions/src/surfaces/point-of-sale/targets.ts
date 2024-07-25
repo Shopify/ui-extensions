@@ -121,6 +121,13 @@ export interface ExtensionTargets {
       CustomerApi,
     BasicComponents
   >;
+  'pos.customer-details.block.render': RenderExtension<
+    StandardApi<'pos.customer-details.block.render'> &
+      CartApi &
+      CustomerApi &
+      ActionApi,
+    BlockComponents
+  >;
 }
 
 export type ExtensionTarget = keyof ExtensionTargets;
