@@ -15,7 +15,7 @@ const Modal = () => {
     <Navigator>
       <Screen name="DraftOrderDetailsAction" title="Draft Order Details Action">
         <ScrollView>
-          <Text>{`Order ID: ${api.product.id}`}</Text>
+          <Text>{`Order ID: ${api.order.id}`}</Text>
         </ScrollView>
       </Screen>
     </Navigator>

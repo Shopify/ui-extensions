@@ -160,7 +160,7 @@ Review [all extension targets](/docs/api/pos-ui-extensions/targets).
         {
           title: 'Block',
           description: `
-Displays an inline extension block on the draft order details screen.
+Renders a custom section within the native draft order details screen.
 
 Review [all extension targets](/docs/api/pos-ui-extensions/targets).
 `,

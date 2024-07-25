@@ -26,7 +26,7 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/docs/api/pos-ui-extensions/targets/pos-draft-order-details-block-render',
     },
     {
-      name: 'Draft order details API',
+      name: 'DraftOrderDetailsAPI',
       url: '/docs/api/pos-ui-extensions/apis/draft-order-api',
     },
   ],
