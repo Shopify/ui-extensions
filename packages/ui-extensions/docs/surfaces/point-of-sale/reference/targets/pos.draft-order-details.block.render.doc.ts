@@ -5,14 +5,14 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosDraftOrderDetailsActionRender,
   description:
-    'An inline block extension target that renders when a `pos.draft-order-details.block.render` target calls for it',
-  // defaultExample: {
-  //   codeblock: generateCodeBlock(
-  //     'Draft order details action',
-  //     'targets',
-  //     'pos-draft-order-details-action',
-  //   ),
-  // },
+    'Renders a custom section within the native draft order details screen',
+  defaultExample: {
+    codeblock: generateCodeBlock(
+      'Draft order details action',
+      'targets',
+      'pos-draft-order-details-action',
+    ),
+  },
   category: 'Targets',
   subCategory: 'Draft order details',
   isVisualComponent: false,
