@@ -173,6 +173,14 @@ Displays an action target modally when a menu item is tapped.
 Review [all extension targets](/docs/api/pos-ui-extensions/targets).
 `,
         },
+        {
+          title: 'Block',
+          description: `
+Renders a custom section within the native post purchase screen.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
       ],
     },
   ],
