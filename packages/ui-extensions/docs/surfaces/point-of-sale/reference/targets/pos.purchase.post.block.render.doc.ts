@@ -8,7 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
     'Renders a custom section within the native post purchase screen',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Action',
+      'Block',
       'targets',
       'pos-purchase-post-block-render',
     ),

@@ -15,6 +15,23 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
+      anchorLink: '202410',
+      title: '2024.10',
+      sectionContent: `
+- Added in POS version: N/A
+- Removed in POS version: N/A
+- Release day: TBD.
+
+### Features
+
+- Introduced a [POSBlock component](/docs/api/pos-ui-extensions/components/POSBlock). It's the required parent component for block extension targets.
+- Introduced a [POSBlockRow component](/docs/api/pos-ui-extensions/components/POSBlockRow). It's the required child component for POSBlock, and can be used to wrap other components.
+- Added support for the ${TargetLink.PosProductDetailsBlockRender} target.
+- Added support for the ${TargetLink.PosPurchasePostBlockRender} target.
+      `,
+    },
+    {
+      type: 'Generic',
       anchorLink: '202407',
       title: '2024.07',
       sectionContent: `

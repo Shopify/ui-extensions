@@ -3,11 +3,14 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosProductDetailsActionRender,
-  description:
-    'A full-screen extension target that renders when a `pos.product-details.action.menu-item.render` target calls for it',
+  name: ExtensionTargetType.PosProductDetailsBlockRender,
+  description: 'Renders a custom section within the product details screen',
   defaultExample: {
-    codeblock: generateCodeBlock('Action', 'targets', 'product-details-action'),
+    codeblock: generateCodeBlock(
+      'Block',
+      'targets',
+      'pos-product-details-block-render',
+    ),
   },
   category: 'Targets',
   subCategory: 'Product details',
@@ -18,8 +21,8 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/docs/api/pos-ui-extensions/targets/pos-product-details-action-menu-item-render',
     },
     {
-      name: ExtensionTargetType.PosProductDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-product-details-block-render',
+      name: ExtensionTargetType.PosProductDetailsActionRender,
+      url: '/docs/api/pos-ui-extensions/targets/pos-product-details-action-render',
     },
     {
       name: 'ProductAPI',
