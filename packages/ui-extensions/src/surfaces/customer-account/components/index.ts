@@ -1,5 +1,6 @@
 export * from './Card';
 export * from './CustomerAccountAction';
+export * from './DropZone';
 export * from './Page';
 export * from './Avatar';
 export * from './Menu';
