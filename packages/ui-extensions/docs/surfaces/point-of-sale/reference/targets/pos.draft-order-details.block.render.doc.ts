@@ -3,7 +3,7 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosDraftOrderDetailsActionRender,
+  name: ExtensionTargetType.PosDraftOrderDetailsBlockRender,
   description:
     'Renders a custom section within the native draft order details screen',
   defaultExample: {
