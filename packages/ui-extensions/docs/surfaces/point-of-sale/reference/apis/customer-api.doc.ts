@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: `
 The customer API provides an extension with data about the current customer.
 
-### Supporting targets
+#### Supporting targets
 - ${TargetLink.PosCustomerDetailsActionMenuItemRender}
 - ${TargetLink.PosCustomerDetailsActionRender}
 `,

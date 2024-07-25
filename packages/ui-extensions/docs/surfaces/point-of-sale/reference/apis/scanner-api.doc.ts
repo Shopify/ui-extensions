@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: `
 The Scanner API enables an extension to access scanner data and available scanning sources supported by the device.
 
-### Supporting targets
+#### Supporting targets
 - ${TargetLink.PosHomeModalRender}
 - ${TargetLink.PosPurchasePostActionRender}
 - ${TargetLink.PosProductDetailsActionRender}

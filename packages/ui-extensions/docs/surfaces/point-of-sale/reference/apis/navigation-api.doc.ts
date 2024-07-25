@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: `
 The Navigation API enables POS UI extension to navigate between screens.
 
-### Supporting targets
+#### Supporting targets
 - ${TargetLink.PosHomeModalRender}
 - ${TargetLink.PosPurchasePostActionRender}
 - ${TargetLink.PosProductDetailsActionRender}

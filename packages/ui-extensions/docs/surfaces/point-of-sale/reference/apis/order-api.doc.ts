@@ -6,11 +6,13 @@ const data: ReferenceEntityTemplateSchema = {
   description: `
 The Order API provides an extension with data about the current order.
 
-### Supporting targets
+#### Supporting targets
 - ${TargetLink.PosPurchasePostActionMenuItemRender}
 - ${TargetLink.PosPurchasePostActionRender}
+- ${TargetLink.PosPurchasePostBlockRender}
 - ${TargetLink.PosOrderDetailsActionMenuItemRender}
 - ${TargetLink.PosOrderDetailsActionRender}
+- ${TargetLink.PosOrderDetailsBlockRender}
 `,
   isVisualComponent: false,
   type: 'APIs',
