@@ -7,7 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: 'Renders a custom section within the product details screen',
   defaultExample: {
     codeblock: generateCodeBlock(
-      'Action',
+      'Block',
       'targets',
       'pos-product-details-block-render',
     ),
