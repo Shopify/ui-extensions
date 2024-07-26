@@ -16,7 +16,7 @@ The Navigation API enables POS UI extension to navigate between screens.
 - ${TargetLink.PosProductDetailsActionRender}
 - ${TargetLink.PosOrderDetailsActionRender}
 - ${TargetLink.PosDraftOrderDetailsActionRender}
-- ${TargetLink.PosCustomerDetailsActionMenuItemRender}
+- ${TargetLink.PosCustomerDetailsActionRender}
 `,
   isVisualComponent: false,
   type: 'APIs',

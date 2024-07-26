@@ -20,6 +20,7 @@ The Action API allows an action extension to modally present its corresponding m
 - ${TargetLink.PosCustomerDetailsActionMenuItemRender}
 - ${TargetLink.PosCustomerDetailsBlockRender}
 - ${TargetLink.PosDraftOrderDetailsActionMenuItemRender}
+- ${TargetLink.PosDraftOrderDetailsBlockRender}
 `,
   isVisualComponent: false,
   type: 'APIs',
