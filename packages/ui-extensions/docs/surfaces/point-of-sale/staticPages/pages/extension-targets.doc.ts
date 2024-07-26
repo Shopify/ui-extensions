@@ -176,7 +176,7 @@ Review [all extension targets](/docs/api/pos-ui-extensions/targets).
         {
           title: 'Block',
           description: `
-Renders a custom section within the native post purchase screen.
+Renders a custom section within the native draft order details screen.
 
 Review [all extension targets](/docs/api/pos-ui-extensions/targets).
 `,

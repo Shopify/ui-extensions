@@ -5,7 +5,7 @@ import {
   extension,
 } from '@shopify/ui-extensions/point-of-sale';
 
-export default extension('pos.product-details.block.render', (root, api) => {
+export default extension('pos.draft-order-details.block.render', (root, api) => {
   const block = root.createComponent(POSBlock, {
     action: {title: 'Open action', onPress: api.action.presentModal},
   });
@@ -14,7 +14,7 @@ export default extension('pos.product-details.block.render', (root, api) => {
   mainText.append('This is a block extension');
 
   const subtitleText = root.createComponent(Text);
-  subtitleText.append(`Order ID for this product: ${api.order.id}`);
+  subtitleText.append(`Order ID for this product: ${api.draftOrder.id}`);
 
   const blockMainRow = root.createComponent(POSBlockRow);
   blockMainRow.append(mainText);
