@@ -11,6 +11,7 @@ The Draft Order API provides an extension with data about the current draft orde
 ### Supporting targets
 - ${TargetLink.PosDraftOrderDetailsActionMenuItemRender}
 - ${TargetLink.PosDraftOrderDetailsActionRender}
+- ${TargetLink.PosDraftOrderDetailsBlockRender}
 `,
   isVisualComponent: false,
   type: 'APIs',
