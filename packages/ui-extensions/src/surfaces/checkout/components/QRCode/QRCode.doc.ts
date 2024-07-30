@@ -55,14 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
       getExample('ui-components/qrcode-fill-size', ['jsx', 'js']),
     ],
   },
-  related: [
-    {
-      name: 'Image',
-      subtitle: 'Component',
-      url: 'image',
-      type: 'Component',
-    },
-  ],
+  related: [],
 };
 
 export default data;
