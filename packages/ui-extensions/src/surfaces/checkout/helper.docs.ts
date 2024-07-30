@@ -167,6 +167,24 @@ export function getExamples(
         tabs: getExtensionCodeTabs('ui-components/progress-determinate-state'),
       },
     },
+    'ui-components/qrcode-image': {
+      description:
+        'The QRCode component can display an image in the center. Adding a logo can increase brand trust and set expectations for the action when scanning.',
+      image: 'qrcode-image.png',
+      codeblock: {
+        title: 'With logo',
+        tabs: getExtensionCodeTabs('ui-components/qrcode-image'),
+      },
+    },
+    'ui-components/qrcode-fill-size': {
+      description:
+        'In most cases the default size should work well. If you need a different size, use `fill` to make it grow to the size of its parent container.',
+      image: 'qrcode-fill-size.png',
+      codeblock: {
+        title: 'Fill size',
+        tabs: getExtensionCodeTabs('ui-components/qrcode-fill-size'),
+      },
+    },
   };
 }
 
