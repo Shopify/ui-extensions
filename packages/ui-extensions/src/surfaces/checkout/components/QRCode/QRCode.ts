@@ -5,7 +5,7 @@ import type {IdProps, BorderStyle} from '../shared';
 export interface QRCodeProps extends IdProps {
   /**
    * The content to be encoded in the QR code, which can be any string such as a URL, email address, plain text, etc.
-   * Specific string formatting can trigger actions on the user's device when scanned, like opening geolocation
+   * Specific string formatting can trigger actions on the user’s device when scanned, like opening geolocation
    * coordinates on a map, opening a preferred app or app store entry, preparing an email, text message, and more.
    */
   content?: string;
@@ -40,7 +40,7 @@ export interface QRCodeProps extends IdProps {
    * it will be announced to users using assistive technologies and will
    * provide more context about what the QR code may do when scanned.
    *
-   * @default 'QR code' (translated to the user's locale)
+   * @default 'QR code' (translated to the user’s locale)
    */
   accessibilityLabel?: string;
 

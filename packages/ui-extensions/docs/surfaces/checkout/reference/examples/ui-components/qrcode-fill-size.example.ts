@@ -13,6 +13,7 @@ export default extension(
 
     const qrCode = root.createComponent(QRCode, {
       content: 'https://shopify.com',
+      size: 'fill',
     });
 
     view.appendChild(qrCode);
