@@ -154,10 +154,22 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           image: 'admin.abandoned-checkout-details.block.render.png',
         },
         {
+          title: 'Catalog details',
+          description:
+            'This page shows information about a single catalog. The `admin.catalog-details.block.render` target is available on this page.',
+          image: 'admin.catalog-details.block.render.png',
+        },
+        {
           title: 'Collection details',
           description:
             'This page shows information about a single collection. The `admin.collection-details.block.render` target is available on this page.',
           image: 'admin.collection-details.block.render.png',
+        },
+        {
+          title: 'Company details',
+          description:
+            'This page shows information about a single company. The `admin.company-details.block.render` target is available on this page.',
+          image: 'admin.company-details.block.render.png',
         },
         {
           title: 'Customer details',
@@ -170,6 +182,12 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           description:
             'This page shows information about a single draft order. The `admin.draft-order-details.block.render` target is available on this page.',
           image: 'admin.draft-order-details.block.render.png',
+        },
+        {
+          title: 'Gift card details',
+          description:
+            'This page shows information about a single gift card. The `admin.gift-card-details.block.render` target is available on this page.',
+          image: 'admin.gift-card-details.block.render.png',
         },
         {
           title: 'Order details',

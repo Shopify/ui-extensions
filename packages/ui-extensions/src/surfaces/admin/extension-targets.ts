@@ -129,6 +129,36 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * Renders an admin block in the catalog details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.catalog-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.catalog-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin block in the company details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.company-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.company-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin block in the gift card details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.gift-card-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.gift-card-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
    * Renders an admin block in the product variant details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
