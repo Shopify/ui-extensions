@@ -1,6 +1,6 @@
 ---
-'@shopify/ui-extensions-react': patch
-'@shopify/ui-extensions': patch
+'@shopify/ui-extensions-react': minor
+'@shopify/ui-extensions': minor
 ---
 
 Add QRCode component
