@@ -41,11 +41,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best Practices',
-      sectionContent: `
-        - Always test that the QR code is scannable from a smartphone.
-        - Include a square logo if that’s what your customers are familiar with.
-        - Increase usability by adding a text description of what the QR code does and provide alternate methods to get to the same destination, like a text input containing the value.
-      `,
+      sectionContent: `- Always test that the QR code is scannable from a smartphone.\n\n- Include a square logo if that’s what your customers are familiar with.\n\n- Increase usability by adding a text description of what the QR code does and provide alternate methods to get to the same destination, like a text input containing the value.`,
     },
   ],
   examples: {
