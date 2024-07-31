@@ -6,6 +6,7 @@ import {
   CartApi,
   CustomerApi,
   ComplianceExtensionApi,
+  PrinterExtensionApi,
 } from './api';
 import {RenderExtension} from './extension';
 import type {Components} from './shared';
@@ -31,8 +32,8 @@ export interface ExtensionTargets {
   >;
   'pos.purchase.post.action.menu-item.render': RenderExtension<
     StandardApi<'pos.purchase.post.action.menu-item.render'> &
-      ActionApi &
-      OrderApi,
+    ActionApi &
+    OrderApi,
     ActionComponents
   >;
   'pos.purchase.post.action.render': RenderExtension<
@@ -41,9 +42,9 @@ export interface ExtensionTargets {
   >;
   'pos.product-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.product-details.action.menu-item.render'> &
-      ActionApi &
-      CartApi &
-      ProductApi,
+    ActionApi &
+    CartApi &
+    ProductApi,
     ActionComponents
   >;
   'pos.product-details.action.render': RenderExtension<
@@ -52,9 +53,9 @@ export interface ExtensionTargets {
   >;
   'pos.order-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.order-details.action.menu-item.render'> &
-      ActionApi &
-      CartApi &
-      OrderApi,
+    ActionApi &
+    CartApi &
+    OrderApi,
     ActionComponents
   >;
   'pos.order-details.action.render': RenderExtension<
@@ -63,35 +64,39 @@ export interface ExtensionTargets {
   >;
   'pos.draft-order-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.draft-order-details.action.menu-item.render'> &
-      ActionApi &
-      CartApi &
-      DraftOrderApi,
+    ActionApi &
+    CartApi &
+    DraftOrderApi,
     ActionComponents
   >;
   'pos.draft-order-details.action.render': RenderExtension<
     ActionTargetApi<'pos.draft-order-details.action.render'> &
-      DraftOrderApi &
-      CartApi,
+    DraftOrderApi &
+    CartApi,
     BasicComponents
   >;
   'pos.customer-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.customer-details.action.menu-item.render'> &
-      ActionApi &
-      CartApi &
-      CustomerApi,
+    ActionApi &
+    CartApi &
+    CustomerApi,
     ActionComponents
   >;
   'pos.customer-details.action.render': RenderExtension<
     ActionTargetApi<'pos.customer-details.action.render'> &
-      CartApi &
-      CustomerApi,
+    CartApi &
+    CustomerApi,
     BasicComponents
   >;
   'pos.global.compliance.checkout': RenderExtension<
     StandardApi<'pos.global.compliance.checkout'> &
-      OrderApi &
-      ComplianceExtensionApi,
+    OrderApi &
+    ComplianceExtensionApi,
     BasicComponents
+  >;
+  'pos.global.compliance.printer': RenderExtension<
+    StandardApi<'pos.global.compliance.printer'> &
+    PrinterExtensionApi
   >;
 }
 
@@ -125,8 +130,8 @@ export type RenderExtensionTarget = {
     any,
     any
   >
-    ? ID
-    : never;
+  ? ID
+  : never;
 }[keyof ExtensionTargets];
 
 /**

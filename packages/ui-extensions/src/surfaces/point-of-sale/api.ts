@@ -117,6 +117,13 @@ export type {
   ProductAddAction,
 } from './api/compliance-extension-api/compliance-extension-api';
 
+export type {
+  PrinterExtensionApi,
+  PrinterExtensionApiContent,
+  PrinterComplianceEvent,
+  PrinterComplianceEventDataPrintReceipt,
+} from './api/printer-extension-api/printer-extension-api';
+
 export {
   ComplianceLineKind,
   ComplianceEventType,
