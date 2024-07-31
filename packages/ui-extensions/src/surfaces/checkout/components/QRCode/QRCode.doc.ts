@@ -44,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `
 - Always test that the QR code is scannable from a smartphone.
 - Include a square logo if that’s what your customers are familiar with.
-- Increase usability by adding a text description of what the QR code does and provide alternate methods to get to the same destination, like a text input containing the value.      `,
+- Increase usability by adding a text description of what the QR code does and provide alternate methods to get to the same destination, like a text input containing the value.`,
     },
   ],
   examples: {
