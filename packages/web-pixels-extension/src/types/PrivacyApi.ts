@@ -17,7 +17,7 @@ export const TrackingEvents = {
   CONSENT_COLLECTED: 'visitorConsentCollected',
 } as const;
 export type TrackingEventsType =
-  typeof TrackingEvents[keyof typeof TrackingEvents];
+  (typeof TrackingEvents)[keyof typeof TrackingEvents];
 
 export type ConsentTrackingEventName = `${TrackingEventsType}`;
 export type ConsentEvents = {
