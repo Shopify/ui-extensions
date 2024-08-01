@@ -174,7 +174,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
         {
           title: 'Discount details',
           sectionContent:
-            'This page shows information about a single discount. The `admin.discount-details.block.render` target is available on this page.',
+            'This page shows information about a single discount. The `admin.discount-details.function-metafields.render` target is available on this page.',
         },
         {
           title: 'Order details',

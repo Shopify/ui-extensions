@@ -93,8 +93,8 @@ export interface ExtensionTargets {
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
-  'admin.discount-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.discount-details.block.render'>,
+  'admin.discount-details.function-metafields-render': RenderExtension<
+    BlockExtensionApi<'admin.discount-details.function-metafields-render'>,
     AllComponents
   >;
 
