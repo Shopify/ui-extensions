@@ -16,7 +16,8 @@ export enum PrinterComplianceEventType {
 }
 
 export type PrinterComplianceEvent =
-  | PrinterComplianceEventDataPrintReceipt;
+  | PrinterComplianceEventDataPrintReceipt
+  | null;
 
 export interface PrinterComplianceEventDataPrintReceipt {
   type: PrinterComplianceEventType.PrintReceipt;
