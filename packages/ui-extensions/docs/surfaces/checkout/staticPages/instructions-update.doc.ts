@@ -9,7 +9,7 @@ Some checkouts may be created with [cart instructions](/docs/api/checkout-ui-ext
 
 As of version \`2024-07\`, UI extensions must check for instructions before calling select APIs, to properly handle checkouts where those APIs are not available.
 
-> Caution: As of **July 19th, 2024**, all UI extensions on this version will render in **draft order** invoice checkouts. As draft order invoice checkouts have restrictions on what buyers can edit, UI extensions in draft order invoice checkouts will be subject to cart instructions.
+> Caution: As of **July 22nd, 2024**, all UI extensions on this version will render in **draft order** invoice checkouts. As draft order invoice checkouts have restrictions on what buyers can edit, UI extensions in draft order invoice checkouts will be subject to cart instructions.
 
 `,
   id: 'instructions-update',
@@ -38,12 +38,14 @@ As of version \`2024-07\`, UI extensions must check for instructions before call
       sectionContent: `
     You will need to check for cart instructions before calling the following APIs:
 
-  - \`applyAttributeChange()\`
-  - \`applyShippingAddressChange()\`
-  - \`applyDiscountCodeChange()\`
-  - \`applyCartLinesChange()\`
-  - \`applyMetafieldChange()\`
-  - \`applyNoteChange()\`
+| Extension API | As of July 2024 |
+|  ----  |  ----- |
+| applyAttributeChange() | Attributes cannot be modified on draft order checkouts. |
+| applyShippingAddressChange() | Buyers cannot change the address on a draft order checkout if it has fixed shipping rates. |
+| applyDiscountCodeChange() | By default, discounts cannot be modified in draft order checkouts. Merchants must allow it via a setting on the draft order. |
+| applyCartLinesChange() | Cart lines cannot be modified on draft order checkouts. |
+| applyMetafieldChange() | Cart metafields cannot be modified on draft order checkouts. Metafields can still be modified. |
+| applyNoteChange() | Notes cannot be modified on draft order checkouts. |
   `,
     },
     {
