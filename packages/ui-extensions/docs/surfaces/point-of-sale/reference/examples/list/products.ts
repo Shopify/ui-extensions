@@ -1,9 +1,9 @@
 import {
   Navigator,
   Screen,
-  ScrollView,
   List,
   Text,
+  ScrollView,
   Section,
   ListRowSubtitle,
   extension,
@@ -11,10 +11,11 @@ import {
 
 export default extension('pos.home.modal.render', (root, api) => {
   let showDetails = false;
-  const scrollView = root.createComponent(ScrollView);
   const section = root.createComponent(Section, {
     title: 'Our T-shirts',
   });
+
+  const scrollView = root.createComponent(ScrollView);
 
   const triggerShowDetails = () => {
     showDetails = !showDetails;
@@ -52,6 +53,7 @@ export default extension('pos.home.modal.render', (root, api) => {
       },
     },
   ];
+
   const list = root.createComponent(List, {
     title: 'Products',
     data: listData,
@@ -65,14 +67,17 @@ export default extension('pos.home.modal.render', (root, api) => {
 
   section.append(textBlock);
 
-  scrollView.append(list);
+  const screen = root.createComponent(Screen, {
+    name: 'ProductList',
+    title: 'Product List',
+  });
+
+  screen.append(list);
+
   if (showDetails) {
     scrollView.append(section);
   }
-  const screen = root.createComponent(Screen, {
-    name: 'TextArea',
-    title: 'Text Area Example',
-  });
+
   screen.append(scrollView);
 
   const navigator = root.createComponent(Navigator);
