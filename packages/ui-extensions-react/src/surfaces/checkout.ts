@@ -111,9 +111,6 @@ export type {ConsentCheckboxProps} from './checkout/components/ConsentCheckbox/C
 export {ConsentPhoneField} from './checkout/components/ConsentPhoneField/ConsentPhoneField';
 export type {ConsentPhoneFieldProps} from './checkout/components/ConsentPhoneField/ConsentPhoneField';
 
-export {Chat} from './checkout/components/Chat/Chat';
-export type {ChatProps} from './checkout/components/Chat/Chat';
-
 export {Checkbox} from './checkout/components/Checkbox/Checkbox';
 export type {CheckboxProps} from './checkout/components/Checkbox/Checkbox';
 
