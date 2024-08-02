@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import {
   Navigator,
   Screen,
-  ScrollView,
   List,
   Text,
+  ScrollView,
   Section,
   ListRowSubtitle,
   reactExtension,
@@ -41,15 +41,15 @@ const SmartGridModal = () => {
   ];
   return (
     <Navigator>
-      <Screen name="TextArea" title="Text Area Example">
-        <ScrollView>
-          <List title="Products" data={listData} />
-          {seeDetails && (
+      <Screen name="ProductList" title="Product List">
+        <List title="Products" data={listData} />
+        {seeDetails && (
+          <ScrollView>
             <Section title="Our T-shirts">
               <Text>Our shirts are made with 100% organic cotton!</Text>
             </Section>
-          )}
-        </ScrollView>
+          </ScrollView>
+        )}
       </Screen>
     </Navigator>
   );
