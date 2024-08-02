@@ -36,6 +36,8 @@ export type ApiVersion =
  * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
  *
  * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
+ *
+ * * [`iframe.sources`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#iframe): the extension can embed an external URL in an iframe.
  */
 
 export type Capability =
@@ -43,7 +45,8 @@ export type Capability =
   | 'network_access'
   | 'block_progress'
   | 'collect_buyer_consent.sms_marketing'
-  | 'collect_buyer_consent.customer_privacy';
+  | 'collect_buyer_consent.customer_privacy'
+  | 'iframe.sources';
 
 // To update these type values, see https://github.com/Shopify/checkout-web/pull/8984
 export type CurrencyCode =
