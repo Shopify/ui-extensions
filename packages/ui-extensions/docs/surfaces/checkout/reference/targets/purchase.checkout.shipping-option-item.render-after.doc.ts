@@ -8,8 +8,12 @@ import {
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'purchase.checkout.shipping-option-item.render-after',
-  description:
-    'A static extension target that is rendered after the shipping method details within the shipping method option list, for each option.',
+  description: `
+A static extension target that is rendered after the shipping method details within the shipping method option list, for each option.
+
+> Note:
+> In split shipping scenarios, this target will render within a Modal when \`renderMode.overlay\` is true. In this case, it is recommended to avoid using components that render an overlay such as Modals.
+`,
   defaultExample: getExample(
     'purchase.checkout.shipping-option-item.render-after/default',
     ['jsx', 'js'],
