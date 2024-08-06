@@ -615,6 +615,7 @@ export const pixelEvents = {
         },
         currencyCode: {
           type: 'string',
+          nullable: true,
           metadata: {
             description:
               'The three-letter code that represents the currency, for example, USD. Supported codes include standard ISO 4217 codes, legacy codes, and non-standard codes.',
@@ -708,6 +709,7 @@ export const pixelEvents = {
         },
         subtotalPrice: {
           ref: 'MoneyV2',
+          nullable: true,
           metadata: {
             description:
               'The price at checkout before duties, shipping, and taxes.',
@@ -715,12 +717,14 @@ export const pixelEvents = {
         },
         token: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'A unique identifier for a particular checkout.',
           },
         },
         totalPrice: {
           ref: 'MoneyV2',
+          nullable: true,
           metadata: {
             description:
               'The sum of all the prices of all the items in the checkout, including duties, taxes, and discounts.',
@@ -761,6 +765,7 @@ export const pixelEvents = {
         },
         id: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'A globally unique identifier.',
           },
@@ -1007,6 +1012,7 @@ export const pixelEvents = {
       properties: {
         src: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'The location of the image as a URL.',
           },
@@ -1066,6 +1072,7 @@ export const pixelEvents = {
       properties: {
         isoCode: {
           type: 'string',
+          nullable: true,
           metadata: {
             description:
               'The ISO-3166-1 code for this country, for example, "US".',
@@ -1095,12 +1102,14 @@ export const pixelEvents = {
       properties: {
         id: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'A globally unique identifier.',
           },
         },
         handle: {
           type: 'string',
+          nullable: true,
           metadata: {
             description: 'A human-readable, shop-scoped identifier.',
           },
@@ -1171,8 +1180,10 @@ export const pixelEvents = {
         },
         id: {
           type: 'string',
+          nullable: true,
           metadata: {
-            description: 'The ID of the order.',
+            description:
+              'The ID of the order. ID will be null for all events except checkout_completed.',
           },
         },
       },
@@ -1541,7 +1552,7 @@ export const pixelEvents = {
               type: 'string',
               metadata: {
                 description:
-                  "The type of payment method used for the transaction.\n\n- `creditCard`: A vaulted or manually entered credit card.\n- `redeemable`: A redeemable payment method, such as a gift card or store credit.\n- `deferred`: A [deferred payment](https://help.shopify.com/en/manual/orders/deferred-payments), such as invoicing the buyer and collecing payment later.\n- `local`: A [local payment method](https://help.shopify.com/en/manual/payments/shopify-payments/local-payment-methods) specific to the current region or market.\n- `manualPayment`: A manual payment method, such as an in-person retail transaction.\n- `paymentOnDelivery`: A payment that will be collected on delivery.\n- `wallet`: An integrated wallet, such as PayPal, Google Pay, Apple Pay, etc.\n- `offsite`: A payment processed outside of Shopify's checkout, excluding integrated wallets.\n- `customOnSite`: A custom payment method that is processed through a checkout extension with a payments app.\n- `other`: Another type of payment not defined here.\n",
+                  "The type of payment method used for the transaction.\n\n- `creditCard`: A vaulted or manually entered credit card.\n- `redeemable`: A redeemable payment method, such as a gift card or store credit.\n- `deferred`: A [deferred payment](https://help.shopify.com/en/manual/orders/deferred-payments), such as invoicing the buyer and collecting payment later.\n- `local`: A [local payment method](https://help.shopify.com/en/manual/payments/shopify-payments/local-payment-methods) specific to the current region or market.\n- `manualPayment`: A manual payment method, such as an in-person retail transaction.\n- `paymentOnDelivery`: A payment that will be collected on delivery.\n- `wallet`: An integrated wallet, such as PayPal, Google Pay, Apple Pay, etc.\n- `offsite`: A payment processed outside of Shopify's checkout, excluding integrated wallets.\n- `customOnSite`: A custom payment method that is processed through a checkout extension with a payments app.\n- `other`: Another type of payment not defined here.\n",
                 enum: [
                   'creditCard',
                   'redeemable',
