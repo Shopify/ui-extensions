@@ -6,6 +6,14 @@ export interface MenuProps extends IdProps {
    * A label to describe the purpose of the menu that is announced by screen readers.
    */
   accessibilityLabel?: string;
+  /**
+   * Callback to run when the Menu is opened
+   */
+  onOpen?: () => void;
+  /**
+   * Callback to run when the Menu is closed
+   */
+  onClose?: () => void;
 }
 
 export const Menu = createRemoteComponent<'Menu', MenuProps>('Menu');
