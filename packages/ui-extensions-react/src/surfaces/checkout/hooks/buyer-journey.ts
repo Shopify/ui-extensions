@@ -1,4 +1,4 @@
-import {useEffect, useRef} from 'react';
+import {useMemo, useRef} from 'react';
 import type {
   RenderExtensionTarget,
   Interceptor,
@@ -67,7 +67,7 @@ export function useBuyerJourneyIntercept<
   const interceptorRef = useRef(interceptor);
   interceptorRef.current = interceptor;
 
-  return useEffect(() => {
+  useMemo(() => {
     const teardownPromise = api.buyerJourney.intercept((interceptorProps) =>
       interceptorRef.current(interceptorProps),
     );
