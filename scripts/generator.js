@@ -33,33 +33,17 @@ function generate(file, outputRootFolder) {
 
       console.log(`${componentName} ->>>`);
 
-      if (symbol.members) {
-        all = Array.from(symbol.members.entries()).reduce(
-          (acc, [name, sym]) => {
-            return {
-              ...acc,
-              [name]: getDefinition(sym, checker),
-            };
-          },
-          {},
-        );
-      } else if (nodeType.types) {
-        all = nodeType.types.reduce((acc, type) => {
-          const props = checker.getPropertiesOfType(type);
-          return {
-            ...acc,
-            ...props.reduce((acc2, prop) => {
-              const propName = checker.symbolToString(prop);
-              return { ...acc2, [propName]: getDefinition(prop, checker) };
-            }, {}),
-          };
-        }, {});
-      }
+      all = { ...all, ...getChildDefinition(symbol, nodeType, checker) };
     });
   });
 
   const definition = Object.keys(all).reduce((acc, key) => {
     if (!all[key]) {
+      return acc;
+    }
+
+    if (all[key].generic) {
+      acc.generic = true;
       return acc;
     }
 
@@ -81,6 +65,7 @@ function generate(file, outputRootFolder) {
     if (!Object.prototype.hasOwnProperty.call(acc, 'properties')) {
       acc.properties = {};
     }
+
     acc.properties[key] = all[key];
 
     return acc;
@@ -102,6 +87,27 @@ function generate(file, outputRootFolder) {
   );
 
   // @todo: run prettier
+}
+
+function getChildDefinition(symbol, nodeType, checker) {
+  if (symbol.members) {
+    return Array.from(symbol.members.entries()).reduce((acc, [name, sym]) => {
+      return {
+        ...acc,
+        [name]: name === 'children' ? undefined : getDefinition(sym, checker),
+      };
+    }, {});
+  } else if (nodeType.types) {
+    return nodeType.types.reduce((acc, type) => {
+      const props = checker.getPropertiesOfType(type);
+      return {
+        ...acc,
+        ...props.reduce((acc2, prop) => {
+          const propName = checker.symbolToString(prop);
+          return {...acc2, [propName]: getDefinition(prop, checker)};
+        }, {}),
+      };
+    }, {});
 }
 
 function getDefinition(symbol, checker) {
@@ -136,19 +142,63 @@ function getDefinition(symbol, checker) {
   }
 
   if (isFunction) {
-    return { event: true };
+      return {event: true};
   }
 
-  const type =
-    kind === ts.SyntaxKind.Identifier || ts.SyntaxKind.UnionType
-      ? baseLiteralType
-      : propType;
+  if (kind === ts.SyntaxKind.ArrayType) {
+      return {type: "'array'"};
+    }
 
-  return { type: `'${type}'` };
+    if (kind === ts.SyntaxKind.TypeLiteral) {
+      return {type: "'object'"};
+    }
+
+    if (
+      kind === ts.SyntaxKind.TypeReference ||
+      kind === ts.SyntaxKind.Identifier ||
+      kind === ts.SyntaxKind.LiteralType
+    ) {
+      return {type: `'${baseLiteralType}'`};
+    }
+
+    if (kind === ts.SyntaxKind.UnionType) {
+      const unionTypes = symbolType.types.map((type) => {
+        const typeKind = checker.typeToTypeNode(type).kind;
+
+        if (
+          typeKind === ts.SyntaxKind.TypeReference ||
+          typeKind === ts.SyntaxKind.TypeLiteral ||
+          typeKind === ts.SyntaxKind.LiteralType
+        ) {
+          // Objects or Array
+          return 'object';
+        }
+
+        if (typeKind === ts.SyntaxKind.ArrayType) {
+          // Objects or Array
+          return 'array';
+        }
+        // Simple types
+        return checker.typeToString(checker.getBaseTypeOfLiteralType(type));
+      });
+
+      const uniqueTypes = [...new Set(unionTypes)];
+
+      return {type: `'parsableObject:${uniqueTypes.join('|')}'`};
+    }
+
+    return {type: `'${propType}'`};
+}
 }
 
 function construct(componentName, definition) {
-  return `import type {${componentName}Props} from '@shopify/ui-extensions/admin';\n\nimport type {PropsToComponentConstructor} from '../types';\n\nexport const ${componentName}: PropsToComponentConstructor<${componentName}Props> = ${JSON.stringify(
+  const PropType = definition.generic
+    ? `${componentName}Props<any>`
+    : `${componentName}Props`;
+
+  delete definition.generic;
+
+  return `import type {${componentName}Props} from '@shopify/ui-extensions/admin';\n\nimport type {PropsToComponentConstructor} from '../types';\n\nexport const ${componentName}: PropsToComponentConstructor<${PropType}> = ${JSON.stringify(
     definition,
     null,
     2,
