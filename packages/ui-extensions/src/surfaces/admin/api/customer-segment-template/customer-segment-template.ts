@@ -5,7 +5,7 @@ import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-target
 /* List of enabled query language features during a progressive rollout */
 type CustomerSegmentationFeature =
   /* Enables templates using filters only available when B2B is enabled. For example: companies IS NOT NULL */
-  'b2bEnabled';
+  'b2bEnabled' | 'segmentByDistance';
 
 export interface CustomerSegmentTemplateApi<
   ExtensionTarget extends AnyExtensionTarget,
