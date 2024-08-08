@@ -172,6 +172,12 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           image: 'admin.company-details.block.render.png',
         },
         {
+          title: 'Company location details',
+          description:
+            'This page shows information about a location for a company. The `admin.company-location-details.block.render` target is available on this page.',
+          image: 'admin.company-location-details.block.render.png',
+        },
+        {
           title: 'Customer details',
           description:
             'This page shows information about a single customer. The `admin.customer-details.block.render` target is available on this page.',
