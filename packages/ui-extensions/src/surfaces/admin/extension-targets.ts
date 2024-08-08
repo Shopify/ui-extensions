@@ -149,6 +149,16 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * Renders an admin block in the company location details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.company-location-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.company-location-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
    * Renders an admin block in the gift card details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
