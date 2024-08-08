@@ -105,7 +105,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
         {
           title: 'Gift card details',
           description:
-            'This page shows information about a single gift-card. The `admin.gift-card-details.action.render` target is available on this page.',
+            'This page shows information about a single gift card. The `admin.gift-card-details.action.render` target is available on this page.',
           image: 'admin.gift-card-details.action.render.png',
         },
         {
