@@ -807,7 +807,7 @@ export interface Checkout {
    * Supported codes include standard ISO 4217 codes, legacy codes, and non-
    * standard codes.
    */
-  currencyCode: string;
+  currencyCode: string | null;
 
   /**
    * Represents the selected delivery options for a checkout. This
@@ -882,18 +882,18 @@ export interface Checkout {
   /**
    * The price at checkout before duties, shipping, and taxes.
    */
-  subtotalPrice: MoneyV2;
+  subtotalPrice: MoneyV2 | null;
 
   /**
    * A unique identifier for a particular checkout.
    */
-  token: string;
+  token: string | null;
 
   /**
    * The sum of all the prices of all the items in the checkout, including
    * duties, taxes, and discounts.
    */
-  totalPrice: MoneyV2;
+  totalPrice: MoneyV2 | null;
 
   /**
    * The sum of all the taxes applied to the line items and shipping lines in
@@ -931,7 +931,7 @@ export interface CheckoutLineItem {
   /**
    * A globally unique identifier.
    */
-  id: string;
+  id: string | null;
 
   /**
    * The properties of the line item. A shop may add, or enable customers to add
@@ -1020,7 +1020,7 @@ export interface Country {
   /**
    * The ISO-3166-1 code for this country, for example, "US".
    */
-  isoCode: string;
+  isoCode: string | null;
 }
 
 /**
@@ -1285,7 +1285,7 @@ export interface Image {
   /**
    * The location of the image as a URL.
    */
-  src: string;
+  src: string | null;
 }
 
 export interface InitData {
@@ -1494,12 +1494,12 @@ export interface Market {
   /**
    * A human-readable, shop-scoped identifier.
    */
-  handle: string;
+  handle: string | null;
 
   /**
    * A globally unique identifier.
    */
-  id: string;
+  id: string | null;
 }
 
 /**
@@ -1551,9 +1551,10 @@ export interface Order {
   customer: OrderCustomer | null;
 
   /**
-   * The ID of the order.
+   * The ID of the order. ID will be null for all events except
+   * checkout_completed.
    */
-  id: string;
+  id: string | null;
 }
 
 /**
@@ -1808,7 +1809,7 @@ export interface TransactionPaymentMethod {
    * credit.
    * - `deferred`: A [deferred
    * payment](https://help.shopify.com/en/manual/orders/deferred-payments), such
-   * as invoicing the buyer and collecing payment later.
+   * as invoicing the buyer and collecting payment later.
    * - `local`: A [local payment
    * method](https://help.shopify.com/en/manual/payments/shopify-payments/local-
    * payment-methods) specific to the current region or market.
