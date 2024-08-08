@@ -190,6 +190,36 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * Renders an admin action extension in the catalog details page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.catalog-details.action.render': RenderExtension<
+    ActionExtensionApi<'admin.catalog-details.action.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin action extension in the company details page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.company-details.action.render': RenderExtension<
+    ActionExtensionApi<'admin.company-details.action.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin action extension in the gift card details page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.gift-card-details.action.render': RenderExtension<
+    ActionExtensionApi<'admin.gift-card-details.action.render'>,
+    AllComponents
+  >;
+
+  /**
    * Renders an admin action extension in the order details page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
