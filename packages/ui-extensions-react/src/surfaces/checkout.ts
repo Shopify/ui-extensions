@@ -105,6 +105,9 @@ export type {BlockStackProps} from './checkout/components/BlockStack/BlockStack'
 export {Button} from './checkout/components/Button/Button';
 export type {ButtonProps} from './checkout/components/Button/Button';
 
+export {Chat} from './checkout/components/Chat/Chat';
+export type {ChatProps} from './checkout/components/Chat/Chat';
+
 export {ConsentCheckbox} from './checkout/components/ConsentCheckbox/ConsentCheckbox';
 export type {ConsentCheckboxProps} from './checkout/components/ConsentCheckbox/ConsentCheckbox';
 
