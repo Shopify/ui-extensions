@@ -9,3 +9,5 @@ export * from './PolicyModal';
 export * from './ResourceItem';
 export * from './ImageGroup';
 export * from './shared-checkout-components';
+
+export default {};

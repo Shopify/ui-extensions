@@ -1775,6 +1775,28 @@
   dependencies:
     jest-matcher-utils "^27.0.0"
 
+"@remote-dom/core@^1.0.0", "@remote-dom/core@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@remote-dom/core/-/core-1.2.1.tgz#e72fa623844acdf40dbded501f775fd56784e81e"
+  integrity sha512-y0g5f6x+Gnge8G34yByGoQ85LlHWcbNLjAk4iold+HJ/HioY2aeRGjQWb44wNVqwm+rUt8CYk+SwGHY3dZZO1Q==
+  dependencies:
+    "@remote-dom/polyfill" "^1.0.3"
+    htm "^3.1.1"
+
+"@remote-dom/polyfill@^1.0.3":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@remote-dom/polyfill/-/polyfill-1.0.6.tgz#8b047fc2163e6046b751647c858c3f9208f81f13"
+  integrity sha512-dnIY+EHdcxrpFLOsiDZB2ZrDQCLLm0DU3s2zCo0s/WiPynvjTAi7eExN02ohNlkcPC2pTjFJsN9YiOmzPp+MaA==
+
+"@remote-dom/react@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@remote-dom/react/-/react-1.0.1.tgz#075394b02523491be35d664175acb516c2587598"
+  integrity sha512-EY4sFoIo2/j+7Wj6D0LM3s7IDCUZf1R+dPHpQiK7DlPiiYCvzsnENKFUa11IfEg337haKkzYg4Zd8BsLeSttGg==
+  dependencies:
+    "@remote-dom/core" "^1.0.0"
+    "@types/react" "^18.0.0"
+    htm "^3.1.1"
+
 "@remote-ui/async-subscription@^2.1.12", "@remote-ui/async-subscription@^2.1.15":
   version "2.1.15"
   resolved "https://registry.npmjs.org/@remote-ui/async-subscription/-/async-subscription-2.1.15.tgz"
@@ -2170,6 +2192,13 @@
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.12.tgz"
   integrity sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==
 
+"@types/react-dom@^18.3.0":
+  version "18.3.0"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-18.3.0.tgz#0cbc818755d87066ab6ca74fbedb2547d74a82b0"
+  integrity sha512-EhwApuTmMBmXuFOikhQLIBUn6uFg81SwLMOAUgodJF14SOBOCMdU04gDoYi0WOJJHD144TL32z4yDqCW3dnkQg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-reconciler@>=0.26.0 <0.30.0":
   version "0.28.8"
   resolved "https://registry.npmjs.org/@types/react-reconciler/-/react-reconciler-0.28.8.tgz"
@@ -2177,7 +2206,7 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react@*", "@types/react@>=17.0.0 <19.0.0", "@types/react@>=18.2.67", "@types/react@^18.0.21":
+"@types/react@*", "@types/react@>=17.0.0 <19.0.0", "@types/react@>=18.2.67", "@types/react@^18.0.0", "@types/react@^18.0.21":
   version "18.3.3"
   resolved "https://registry.npmjs.org/@types/react/-/react-18.3.3.tgz"
   integrity sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==
@@ -4216,6 +4245,11 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-2.8.9.tgz"
   integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
 
+htm@^3.1.1:
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/htm/-/htm-3.1.1.tgz#49266582be0dc66ed2235d5ea892307cc0c24b78"
+  integrity sha512-983Vyg8NwUE7JkZ6NmOqpCZ+sh1bKv2iYTlUkzlWmA5JD2acKoxd4KVxbMmxX/85mtfdnDmTFoNKcg5DGAvxNQ==
+
 html-encoding-sniffer@^2.0.1:
   version "2.0.1"
   resolved "https://registry.npmjs.org/html-encoding-sniffer/-/html-encoding-sniffer-2.0.1.tgz"
@@ -5983,6 +6017,14 @@ quick-lru@^4.0.1:
   version "4.0.1"
   resolved "https://registry.npmjs.org/quick-lru/-/quick-lru-4.0.1.tgz"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
+
+react-dom@^18.3.1:
+  version "18.3.1"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.3.1.tgz#c2265d79511b57d479b3dd3fdfa51536494c5cb4"
+  integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
+  dependencies:
+    loose-envify "^1.1.0"
+    scheduler "^0.23.2"
 
 "react-is@^16.12.0 || ^17.0.0 || ^18.0.0", react-is@^17.0.1:
   version "17.0.2"
