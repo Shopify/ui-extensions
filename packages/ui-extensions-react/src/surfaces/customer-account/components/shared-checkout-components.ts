@@ -116,7 +116,6 @@ export {
   Tooltip,
   type TooltipProps,
   View,
-  type ViewProps,
   ToggleButton,
   type ToggleButtonProps,
   ToggleButtonGroup,

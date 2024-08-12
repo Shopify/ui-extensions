@@ -1,10 +1,25 @@
-import {createRemoteRoot} from '@remote-ui/core';
+import '@remote-dom/core/polyfill';
 
 import type {
   RenderExtensionConnection,
   RenderExtension,
   RenderExtensionWithRemoteRoot,
 } from '../extension';
+
+import {
+  // @ts-ignore
+  BatchingRemoteConnection,
+  RemoteFragmentElement,
+  // @ts-ignore
+  RemoteMutationObserver,
+  RemoteRootElement,
+} from '@remote-dom/core/elements';
+
+console.log('### RemoteRootElement', RemoteRootElement);
+// @ts-ignore
+customElements.define('remote-root', RemoteRootElement);
+// @ts-ignore
+customElements.define('remote-fragment', RemoteFragmentElement);
 
 export interface ExtensionRegistrationFunction<ExtensionTargets> {
   <Target extends keyof ExtensionTargets>(
@@ -46,17 +61,21 @@ export function createExtensionRegistrationFunction<
         return (implementation as any)(...args);
       }
 
-      const [{channel, components}, api] = args as [
-        RenderExtensionConnection,
-        any,
-      ];
+      const [{channel}, api] = args as [RenderExtensionConnection, any];
 
-      const root = createRemoteRoot(channel, {
-        components,
-        strict: true,
-      });
+      // @ts-ignore
+      const root = document.createElement('remote-root');
+      root.connect(channel);
+
+      // try {
+      //   const observer = new RemoteMutationObserver(channel);
+      //   observer.observe(root);
+      // } catch {
+      // }
 
       let renderResult = (implementation as any)(root, api);
+
+      console.log('### renderResult test', renderResult);
 
       if (
         typeof renderResult === 'object' &&
@@ -64,9 +83,8 @@ export function createExtensionRegistrationFunction<
         'then' in renderResult
       ) {
         renderResult = await renderResult;
+        console.log('### renderResult promise', renderResult);
       }
-
-      root.mount();
 
       return renderResult;
     }
@@ -75,6 +93,5 @@ export function createExtensionRegistrationFunction<
 
     return extension as any;
   };
-
   return extensionWrapper;
 }

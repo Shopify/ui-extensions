@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '@remote-ui/core';
+import {createRemoteElement} from '@remote-dom/core/elements';
 
 import type {
   Appearance,
@@ -85,7 +85,11 @@ export interface ButtonProps
   onPress?(): void;
 }
 
-/**
- * Buttons are used for actions, such as “Add”, “Continue”, “Pay now”, or “Save”.
- */
-export const Button = createRemoteComponent<'Button', ButtonProps>('Button');
+export const Button = createRemoteElement<{}>({
+  properties: {to: String, foo: String},
+  events: {press: {bubbles: true}},
+  slots: ['overlay'],
+});
+
+// @ts-ignore
+customElements.define('ui-button', Button);

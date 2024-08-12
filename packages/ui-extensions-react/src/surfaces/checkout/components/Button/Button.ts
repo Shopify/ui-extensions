@@ -1,9 +1,13 @@
 import {Button as BaseButton} from '@shopify/ui-extensions/checkout';
-import {createRemoteReactComponent} from '@remote-ui/react';
 import type {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
+import {createRemoteComponent} from '@remote-dom/react';
 
+// @ts-ignore
 export type ButtonProps = ReactPropsFromRemoteComponentType<typeof BaseButton>;
 
-export const Button = createRemoteReactComponent(BaseButton, {
-  fragmentProps: ['overlay'],
+export const Button = createRemoteComponent('ui-button', BaseButton, {
+  eventProps: {
+    onPress: {event: 'press'},
+  },
+  slots: ['overlay'],
 });

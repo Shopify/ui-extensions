@@ -1,7 +1,8 @@
 import {View as BaseView} from '@shopify/ui-extensions/checkout';
-import {createRemoteReactComponent} from '@remote-ui/react';
+//@ts-ignore
+import {createRemoteComponent} from '@remote-dom/react';
 import type {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
 
 export type ViewProps = ReactPropsFromRemoteComponentType<typeof BaseView>;
 
-export const View = createRemoteReactComponent(BaseView);
+export const View = createRemoteComponent('ui-view', BaseView);

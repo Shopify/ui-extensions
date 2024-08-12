@@ -1,4 +1,4 @@
-import {createRemoteComponent} from '@remote-ui/core';
+import {createRemoteElement} from '@remote-dom/core/elements';
 
 import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 import type {
@@ -234,4 +234,9 @@ export interface ViewProps
  * “natural” size, so this component can be useful in layout components (like `Grid`,
  * `BlockStack`, `InlineStack`) that would otherwise stretch their children to fit.
  */
-export const View = createRemoteComponent<'View', ViewProps>('View');
+export const View = createRemoteElement<{}>({
+  properties: {padding: String, border: String},
+});
+
+// @ts-ignore
+customElements.define('ui-view', View);

@@ -1,5 +1,5 @@
+import {createRemoteElement} from '@remote-dom/core/elements';
 import type {RemoteFragment} from '@remote-ui/core';
-import {createRemoteComponent} from '@remote-ui/core';
 
 export interface ModalProps {
   /**
@@ -57,4 +57,11 @@ export interface ModalProps {
  *
  * The library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the modal content.
  */
-export const Modal = createRemoteComponent<'Modal', ModalProps>('Modal');
+// export const Modal = createRemoteComponent<'Modal', ModalProps>('Modal');
+
+export const Modal = createRemoteElement<{}>({
+  properties: {id: String},
+});
+
+// @ts-ignore
+customElements.define('ui-modal', Modal);

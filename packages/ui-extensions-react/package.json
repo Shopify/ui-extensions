@@ -63,6 +63,8 @@
   "dependencies": {
     "@remote-ui/async-subscription": "^2.1.12",
     "@remote-ui/react": "^5.0.2",
+    "@remote-dom/react": "^1.2.1",
+    "react-dom": "^18.3.1",
     "@types/react": ">=18.2.67"
   },
   "peerDependencies": {
@@ -81,6 +83,7 @@
     "@faker-js/faker": "^8.4.1",
     "@quilted/react-testing": "^0.5.31",
     "@shopify/ui-extensions": "0.0.0-unstable",
+    "@types/react-dom": "^18.3.0",
     "react": "^18.0.0",
     "react-reconciler": "0.29.0",
     "react-test-renderer": "^18.2.0"
