@@ -25,6 +25,12 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           image: 'admin.abandoned-checkout-details.action.render.png',
         },
         {
+          title: 'Catalog details',
+          description:
+            'This page shows information about a single catalog. The `admin.catalog-details.action.render` target is available on this page.',
+          image: 'admin.catalog-details.action.render.png',
+        },
+        {
           title: 'Collection details',
           description:
             'This page shows information about a single collection. The `admin.collection-details.action.render` target is available on this page.',
@@ -35,6 +41,12 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           description:
             'This page shows a table of multiple collections. The `admin.collection-index.action.render` target is available on this page.',
           image: 'admin.collection-index.action.render.png',
+        },
+        {
+          title: 'Company details',
+          description:
+            'This page shows information about a single company. The `admin.company-details.action.render` target is available on this page.',
+          image: 'admin.company-details.action.render.png',
         },
         {
           title: 'Customer details',
@@ -89,6 +101,12 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           description:
             'This page shows a table of multiple draft orders. The `admin.draft-order-index.selection-action.render` target is available on this page when multiple draft orders are selected.',
           image: 'admin.draft-order-index.selection-action.render.png',
+        },
+        {
+          title: 'Gift card details',
+          description:
+            'This page shows information about a single gift card. The `admin.gift-card-details.action.render` target is available on this page.',
+          image: 'admin.gift-card-details.action.render.png',
         },
         {
           title: 'Order details',
