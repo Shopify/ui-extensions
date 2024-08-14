@@ -1,7 +1,11 @@
 export {ActionItem} from './components/ActionItem/ActionItem';
 export type {ActionItemProps} from './components/ActionItem/ActionItem';
 export {Badge} from './components/Badge/Badge';
-export type {BadgeProps, BadgeVariant} from './components/Badge/Badge';
+export type {
+  BadgeProps,
+  BadgeStatus,
+  BadgeVariant,
+} from './components/Badge/Badge';
 export {Banner} from './components/Banner/Banner';
 export type {BannerProps, BannerVariant} from './components/Banner/Banner';
 export {Button} from './components/Button/Button';
