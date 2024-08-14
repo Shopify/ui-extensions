@@ -5,6 +5,7 @@ export * from './point-of-sale/hooks';
 export {render, reactExtension} from './point-of-sale/render';
 
 export type {
+  BadgeStatus,
   BadgeVariant,
   BadgeProps,
   BannerProps,
