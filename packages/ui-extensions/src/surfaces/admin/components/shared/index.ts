@@ -115,6 +115,22 @@ export interface InputProps<T> {
   value?: T;
 }
 
+export interface FieldDecorationProps {
+  /**
+   * A value to be displayed immediately after the editable portion of the field.
+   *
+   * This is useful for displaying an implied part of the value, such as "@shopify.com", or "%".
+   *
+   * This cannot be edited by the user, and it isn't included in the value of the field.
+   *
+   * It may not be displayed until the user has interacted with the input.
+   * For example, an inline label may take the place of the suffix until the user focuses the input.
+   *
+   * @default ''
+   */
+  suffix?: string;
+}
+
 export interface MinMaxLengthProps {
   /**
    * Specifies the maximum number of characters allowed.

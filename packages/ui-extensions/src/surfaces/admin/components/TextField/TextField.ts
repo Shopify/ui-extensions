@@ -4,12 +4,14 @@ import {
   TextAutocompleteField,
   InputProps,
   MinMaxLengthProps,
+  FieldDecorationProps,
 } from '../shared';
 
 export interface TextFieldProps
   extends InputProps<string>,
     MinMaxLengthProps,
-    AutocompleteProps<TextAutocompleteField> {}
+    AutocompleteProps<TextAutocompleteField>,
+    FieldDecorationProps {}
 
 export const TextField = createRemoteComponent<'TextField', TextFieldProps>(
   'TextField',
