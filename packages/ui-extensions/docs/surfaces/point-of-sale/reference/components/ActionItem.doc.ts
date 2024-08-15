@@ -6,8 +6,11 @@ const generateCodeBlockForActionItem = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'ActionItem',
-  description:
-    'The `ActionItem` provides a tappable surface on the specified extension target as an entry point to an extension. Note that the text displayed on this `ActionItem` is dependent on the description of the extension.',
+  description: `
+  <p><b>ActionItem has been deprecated.</b> Please use the <em>Button Component</em> instead.</p>
+
+  <p>The ActionItem provides a tappable surface on the specified extension target as an entry point to an extension. Note that the text displayed on this 'ActionItem' is dependent on the description of the extension.</p>
+  `,
   isVisualComponent: true,
   type: 'component',
   definitions: [
