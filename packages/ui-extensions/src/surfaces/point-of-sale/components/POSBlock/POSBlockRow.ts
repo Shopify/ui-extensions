@@ -5,10 +5,9 @@ import {createRemoteComponent} from '@remote-ui/core';
  */
 export interface POSBlockRowProps {
   /**
-   * Whether to remove the default padding from the `POSBlockRow`.
-   * @defaultValue false
+   * A callback for when the row is tapped.
    */
-  removeInsets?: boolean;
+  onPress?: () => void;
 }
 
 export const POSBlockRow = createRemoteComponent<
