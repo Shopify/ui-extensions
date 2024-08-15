@@ -9,6 +9,12 @@ export interface POSBlockRowProps {
    * @defaultValue false
    */
   removeInsets?: boolean;
+
+  /**
+   * A callback for when the row is tapped.
+   * @defaultValue undefined
+   */
+  onPress?: () => void;
 }
 
 export const POSBlockRow = createRemoteComponent<
