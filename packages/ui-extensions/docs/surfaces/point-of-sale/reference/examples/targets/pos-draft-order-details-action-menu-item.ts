@@ -1,13 +1,14 @@
-import {ActionItem, extension} from '@shopify/ui-extensions/point-of-sale';
+import {Button, extension} from '@shopify/ui-extensions/point-of-sale';
 
 export default extension(
   'pos.draft-order-details.action.menu-item.render',
   (root, api) => {
-    const actionItem = root.createComponent(ActionItem, {
-      onPress: () => api.action.presentModal(),
-      enabled: true,
+    const button = root.createComponent(Button, {
+      onPress: () => {
+        api.action.presentModal();
+      },
     });
 
-    root.append(actionItem);
+    root.append(button);
   },
 );

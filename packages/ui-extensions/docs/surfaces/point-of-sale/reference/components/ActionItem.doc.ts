@@ -6,8 +6,11 @@ const generateCodeBlockForActionItem = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'ActionItem',
-  description:
-    'The `ActionItem` provides a tappable surface on the specified extension target as an entry point to an extension. Note that the text displayed on this `ActionItem` is dependent on the description of the extension.',
+  description: `
+  ActionItem has been deprecated. Please use the [Button Component](/docs/api/pos-ui-extensions/components/) instead.
+
+  The ActionItem provides a tappable surface on the specified extension target as an entry point to an extension. Note that the text displayed on this 'ActionItem' is dependent on the description of the extension.
+  `,
   isVisualComponent: true,
   type: 'component',
   definitions: [

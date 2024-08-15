@@ -9,10 +9,12 @@ import {createRemoteComponent} from '@remote-ui/core';
 export interface ActionItemProps {
   /**
    * Sets whether or not the `ActionItem` can be tapped.
+   * @deprecated ActionItem has been deprecated. Use the Button component instead.
    */
   enabled?: boolean;
   /**
    * The callback that is executed when the user taps the `ActionItem`.
+   * @deprecated ActionItem has been deprecated. Use the Button component instead.
    */
   onPress: () => void;
 }

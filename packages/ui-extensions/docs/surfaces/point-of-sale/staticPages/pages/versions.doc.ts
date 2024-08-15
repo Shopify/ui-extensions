@@ -30,6 +30,7 @@ const data: LandingTemplateSchema = {
 - Added support for the ${TargetLink.PosPurchasePostBlockRender} target.
 - Added support for the ${TargetLink.PosOrderDetailsBlockRender} target.
 - Added support for the ${TargetLink.PosCustomerDetailsBlockRender} target.
+- Deprecated the [ActionItem component](/docs/api/pos-ui-extensions/components/ActionItem). Please use the [Button component](/docs/api/pos-ui-extensions/components/Button) instead.
       `,
     },
     {

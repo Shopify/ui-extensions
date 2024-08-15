@@ -15,7 +15,9 @@ import {ActionTargetApi} from './api/action-target-api/action-target-api';
 import {DraftOrderApi} from './api/draft-order-api/draft-order-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
-type ActionComponents = AnyComponentBuilder<Pick<Components, 'ActionItem'>>;
+type ActionComponents = AnyComponentBuilder<
+  Pick<Components, 'ActionItem' | 'Button'>
+>;
 type BasicComponents = AnyComponentBuilder<Omit<Components, 'Tile'>>;
 type BlockComponents = AnyComponentBuilder<
   Pick<

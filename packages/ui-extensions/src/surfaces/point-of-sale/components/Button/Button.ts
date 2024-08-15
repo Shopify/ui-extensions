@@ -12,8 +12,10 @@ export type ButtonType = 'primary' | 'basic' | 'destructive' | 'plain';
 export interface ButtonProps {
   /**
    * The text set on the `Button`.
+   *
+   * Note: In the case of using a button menu-item targets, the title will be ignored.
    */
-  title: string;
+  title?: string;
   /**
    * The type of `Button` to render. Determines the appearance of the button.
    */
