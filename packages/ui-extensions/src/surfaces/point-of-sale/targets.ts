@@ -28,7 +28,6 @@ type BlockComponents = AnyComponentBuilder<
     | 'Image'
     | 'POSBlock'
     | 'POSBlockRow'
-    | 'Selectable'
     | 'Stack'
     | 'Text'
     | 'TimePicker'
