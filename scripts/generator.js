@@ -263,8 +263,13 @@ function getDefinition({symbol, checker, skipGeneric}) {
   }
 
   if (kind === ts.SyntaxKind.UnionType) {
-    const unionTypes = symbolType.types.map((type) => {
-      const typeKind = checker.typeToTypeNode(type).kind;
+    const types = symbol.declarations.flatMap(
+      (declarations) => declarations.type.types,
+    );
+
+    const uniqueTypes = [...new Set(types)].map((type) => {
+      const declarationType = checker.getTypeAtLocation(type);
+      const typeKind = type.kind;
       if (
         typeKind === ts.SyntaxKind.TypeReference ||
         typeKind === ts.SyntaxKind.TypeLiteral
@@ -278,10 +283,11 @@ function getDefinition({symbol, checker, skipGeneric}) {
         return 'array';
       }
       // Simple types
-      return checker.typeToString(checker.getBaseTypeOfLiteralType(type));
+      return checker.typeToString(
+        checker.getBaseTypeOfLiteralType(declarationType),
+      );
     });
 
-    const uniqueTypes = [...new Set(unionTypes)];
     if (uniqueTypes.length > 1) {
       return {type: `'parse:${uniqueTypes.join('|')}'`};
     }
