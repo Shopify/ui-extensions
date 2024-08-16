@@ -14,7 +14,7 @@ const path = require('path');
  * NOTE: You will need to run prettier on the generated definitions.
  */
 
-function generate({ file, outputRootFolder, templatePath, components }) {
+function generate({file, outputRootFolder, templatePath, components}) {
   const componentName = file.match(/\/([^/.]+)\.ts/)?.[1];
 
   if (
@@ -26,7 +26,7 @@ function generate({ file, outputRootFolder, templatePath, components }) {
 
   const rootFolder = file.replace(/\/([^/.]+)\.ts/, '');
 
-  const program = ts.createProgram([file], { allowJs: true });
+  const program = ts.createProgram([file], {allowJs: true});
   const sourceFile = program.getSourceFile(file);
   const checker = program.getTypeChecker();
 
@@ -158,7 +158,7 @@ function generate({ file, outputRootFolder, templatePath, components }) {
   );
 }
 
-function getChildDefinition({ symbol, nodeType, checker, skipGeneric = false }) {
+function getChildDefinition({symbol, nodeType, checker, skipGeneric = false}) {
   if (symbol.members) {
     return Array.from(symbol.members.entries()).reduce(
       (acc, [name, subSymbols]) => {
@@ -207,7 +207,7 @@ function getChildDefinition({ symbol, nodeType, checker, skipGeneric = false }) 
   }
 }
 
-function getDefinition({ symbol, checker, skipGeneric }) {
+function getDefinition({symbol, checker, skipGeneric}) {
   const symbolType = checker.getTypeOfSymbolAtLocation(
     symbol,
     symbol.valueDeclaration,
@@ -229,7 +229,7 @@ function getDefinition({ symbol, checker, skipGeneric }) {
   }
 
   if (kind === ts.SyntaxKind.AnyKeyword) {
-    return skipGeneric ? undefined : { generic: true };
+    return skipGeneric ? undefined : {generic: true};
   }
 
   const isSlot =
@@ -239,19 +239,19 @@ function getDefinition({ symbol, checker, skipGeneric }) {
   const isFunction = kind === ts.SyntaxKind.FunctionType;
 
   if (isSlot) {
-    return { slot: true };
+    return {slot: true};
   }
 
   if (isFunction) {
-    return { event: true };
+    return {event: true};
   }
 
   if (kind === ts.SyntaxKind.ArrayType) {
-    return { type: "'array'" };
+    return {type: "'array'"};
   }
 
   if (kind === ts.SyntaxKind.TypeLiteral) {
-    return { type: "'object'" };
+    return {type: "'object'"};
   }
 
   if (
@@ -259,7 +259,7 @@ function getDefinition({ symbol, checker, skipGeneric }) {
     kind === ts.SyntaxKind.Identifier ||
     kind === ts.SyntaxKind.LiteralType
   ) {
-    return { type: `'${baseLiteralType}'` };
+    return {type: `'${baseLiteralType}'`};
   }
 
   if (kind === ts.SyntaxKind.UnionType) {
@@ -283,12 +283,12 @@ function getDefinition({ symbol, checker, skipGeneric }) {
 
     const uniqueTypes = [...new Set(unionTypes)];
     if (uniqueTypes.length > 1) {
-      return { type: `'parse:${uniqueTypes.join('|')}'` };
+      return {type: `'parse:${uniqueTypes.join('|')}'`};
     }
-    return { type: `'${uniqueTypes[0]}'` };
+    return {type: `'${uniqueTypes[0]}'`};
   }
 
-  return { type: `'${propType}'` };
+  return {type: `'${propType}'`};
 }
 
 function construct(parts, templatePath) {
