@@ -18,9 +18,9 @@ const data: LandingTemplateSchema = {
       anchorLink: '202410',
       title: '2024.10',
       sectionContent: `
-- Added in POS version: N/A
+- Added in POS version: 9.21
 - Removed in POS version: N/A
-- Release day: TBD.
+- Release day: 10/28/2024.
 
 ### Features
 

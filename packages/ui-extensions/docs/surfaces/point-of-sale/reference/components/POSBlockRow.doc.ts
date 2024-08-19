@@ -9,6 +9,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: 'Renders a `POSBlockRow` in a `POSBlock`.',
   isVisualComponent: true,
   type: 'component',
+  thumbnail: 'pos-block-row-thumbnail.png',
   definitions: [
     {
       title: 'POSBlockRow',
@@ -19,6 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   related: [],
   defaultExample: {
+    image: 'pos-block-row-default.png',
     codeblock: generateCodeBlockForPOSBlockRow(
       'Render a POSBlockRow in a POSBlock',
       'default.example',
