@@ -320,6 +320,18 @@ Customer account UI extensions don't have access to the DOM and can't return DOM
           url: '/docs/apps/customer-accounts/full-page-extensions/build-full-page-extensions',
           type: 'blocks',
         },
+        {
+          name: 'Building metafield writes into extensions',
+          subtitle: 'Tutorial',
+          url: '/docs/apps/build/customer-accounts/metafields',
+          type: 'blocks',
+        },
+        {
+          name: 'Build Pre-auth Order Status page extensions',
+          subtitle: 'Tutorial',
+          url: '/docs/apps/build/customer-accounts/pre-auth-order-status-page-extensions/build-pre-auth-order-status-page-extensions',
+          type: 'blocks',
+        },
       ],
     },
     {
