@@ -47,6 +47,8 @@ function generate({file, outputRootFolder, templatePath, components}) {
 
   // console.log(`${componentName} ->>>`);
 
+  const localSymbols = fileSymbol.valueDeclaration.locals;
+
   const nodeType = checker.getDeclaredTypeOfSymbol(componentPropsSymbol);
   let all = getChildDefinition({
     symbol: componentPropsSymbol,
@@ -61,8 +63,6 @@ function generate({file, outputRootFolder, templatePath, components}) {
       .flatMap((node) => node.heritageClauses)
       .flatMap((clause) => clause?.types)
       .filter(Boolean);
-
-    const localSymbols = fileSymbol.valueDeclaration.locals;
 
     all = {
       ...all,
@@ -82,6 +82,7 @@ function generate({file, outputRootFolder, templatePath, components}) {
           symbol: localNodeType.symbol,
           nodeType: localNodeType,
           checker,
+          fileSymbol,
           skipGeneric: true,
         });
 
@@ -187,6 +188,7 @@ function getChildDefinition({symbol, nodeType, checker, skipGeneric = false}) {
         ...acc,
         ...symbols.reduce((subTypes, subSymbol) => {
           const name = checker.symbolToString(subSymbol);
+          // console.log('name --->', name);
           const definition = getDefinition({
             symbol: subSymbol,
             checker,
@@ -196,7 +198,7 @@ function getChildDefinition({symbol, nodeType, checker, skipGeneric = false}) {
           if (!definition || name === 'children') {
             return subTypes;
           }
-          // console.log('name --->', name);
+
           return {
             ...subTypes,
             [name]: definition,
@@ -263,34 +265,58 @@ function getDefinition({symbol, checker, skipGeneric}) {
   }
 
   if (kind === ts.SyntaxKind.UnionType) {
-    const types = symbol.declarations.flatMap(
-      (declarations) => declarations.type.types,
-    );
+    const types = symbol.declarations
+      .flatMap((declarations) => declarations.type.types)
+      .filter(Boolean);
 
-    const uniqueTypes = [...new Set(types)].map((type) => {
+    // This is a simple union type, likely a union string
+    if (!types.length) {
+      return {type: `'${baseLiteralType}'`};
+    }
+
+    let unionTypes = [];
+    types.forEach((type) => {
       const declarationType = checker.getTypeAtLocation(type);
       const typeKind = type.kind;
-      if (
-        typeKind === ts.SyntaxKind.TypeReference ||
-        typeKind === ts.SyntaxKind.TypeLiteral
-      ) {
-        // Objects or Array
-        return 'object';
+
+      if (typeKind === ts.SyntaxKind.TypeReference) {
+        const symbolTypes = getUnionTypesFromTypeReference({
+          type,
+          checker,
+        });
+        // console.log(checker.typeToString(type));
+
+        if (symbolTypes) {
+          unionTypes = unionTypes.concat(symbolTypes);
+          return;
+        }
+      }
+
+      if (typeKind === ts.SyntaxKind.TypeLiteral) {
+        unionTypes.push('object');
+        return;
       }
 
       if (typeKind === ts.SyntaxKind.ArrayType) {
-        // Objects or Array
-        return 'array';
+        unionTypes.push('array');
+        return;
       }
-      // Simple types
-      return checker.typeToString(
-        checker.getBaseTypeOfLiteralType(declarationType),
+
+      // Simple types or fallback
+      unionTypes.push(
+        checker.typeToString(checker.getBaseTypeOfLiteralType(declarationType)),
       );
     });
 
+    const uniqueTypes = [...new Set(unionTypes)];
+
     if (uniqueTypes.length > 1) {
-      return {type: `'parse:${uniqueTypes.join('|')}'`};
+      return {
+        type: "'union'",
+        options: uniqueTypes.map((type) => ({type: `'${type}'`})),
+      };
     }
+
     return {type: `'${uniqueTypes[0]}'`};
   }
 
@@ -312,6 +338,52 @@ function construct(parts, templatePath) {
     return typeof value === 'object'
       ? JSON.stringify(value, null, 2).replace(/"/g, '').replace(/\n/g, '')
       : value;
+  });
+}
+
+function getUnionTypesFromTypeReference({type, checker}) {
+  if (
+    !type ||
+    !type.typeName ||
+    type.typeName.kind !== ts.SyntaxKind.Identifier ||
+    !type.typeName.escapedText
+  ) {
+    return;
+  }
+
+  const symbol = checker.getSymbolAtLocation(type.typeName);
+
+  if (!symbol) {
+    return;
+  }
+
+  // Attempt to get the constraints of a generic type
+  const constrainTypes = symbol
+    .getDeclarations()
+    .flatMap(
+      (declaration) =>
+        declaration.constraint &&
+        getUnionTypesFromTypeReference({
+          type: declaration.constraint,
+          checker,
+        }),
+    )
+    .filter(Boolean);
+
+  if (constrainTypes.length) {
+    return constrainTypes;
+  }
+
+  const symbolType = checker.getDeclaredTypeOfSymbol(symbol);
+  if (!symbolType || !symbolType.types) {
+    return;
+  }
+
+  return symbolType.types.map((literalType) => {
+    if (literalType.symbol) {
+      return 'object';
+    }
+    return checker.typeToString(checker.getBaseTypeOfLiteralType(literalType));
   });
 }
 
