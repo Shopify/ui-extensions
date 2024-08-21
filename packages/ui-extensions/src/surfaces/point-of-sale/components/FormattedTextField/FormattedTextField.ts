@@ -22,6 +22,8 @@ export interface FormattedTextFieldProps extends BaseTextFieldProps {
   autoCapitalize?: AutoCapitalizationType;
   /**
    * Applies a custom validator that can dictate whether or not an entered value is valid.
+   * @deprecated: This callback will be removed in version 2025-01.
+   * Please update your code to avoid using this feature.
    */
   customValidator?: (text: string) => boolean;
 }
