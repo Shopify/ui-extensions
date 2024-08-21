@@ -101,6 +101,8 @@ export {
   type SpinnerProps,
   Stepper,
   type StepperProps,
+  Switch,
+  type SwitchProps,
   Tag,
   type TagProps,
   Text,
