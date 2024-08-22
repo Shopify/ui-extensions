@@ -8,6 +8,14 @@ fail_and_exit() {
   exit $1
 }
 
+run_sed() {
+  if [ -n "$SPIN" ]
+  then
+    sed -i "$1" $2
+  else
+    sed -i '' "$1" $2
+  fi
+}
 
 API_VERSION=$1
 
@@ -56,34 +64,30 @@ find ./ -name '*.doc*.js' -exec rm -r {} \;
 
 # Make sure https://shopify.dev URLs are relative so they work in Spin.
 # See https://github.com/Shopify/generate-docs/issues/181
-sed -i 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
+run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
 sed_exit=$?
 if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
+if [ -d ~/src/github.com/Shopify/shopify-dev ]; then
+  mkdir -p ../../../shopify-dev/db/data/docs/templated_apis/customer_account_ui_extensions/$API_VERSION
+  cp ./$DOCS_PATH/generated/* ../../../shopify-dev/db/data/docs/templated_apis/customer_account_ui_extensions/$API_VERSION
+  # Replace 'unstable' with the exact API version in relative doc links
+  run_sed \
+    "s/\/docs\/api\/customer-account-ui-extensions\/unstable/\/docs\/api\/customer-account-ui-extensions\/$API_VERSION/gi" \
+    ../../../shopify-dev/db/data/docs/templated_apis/customer_account_ui_extensions/$API_VERSION/generated_docs_data.json
+  sed_exit=$?
+  if [ $sed_exit -ne 0 ]; then
+    fail_and_exit $sed_exit
+  fi
+  rsync -a --delete ./$DOCS_PATH/screenshots/ ../../../shopify-dev/app/assets/images/templated-apis-screenshots/customer-account-ui-extensions/$API_VERSION
 
-if [ -n "$SPIN" ]; then
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
-    mkdir -p ../../../shopify-dev/db/data/docs/templated_apis/customer_account_ui_extensions/$API_VERSION
-    cp ./$DOCS_PATH/generated/* ../../../shopify-dev/db/data/docs/templated_apis/customer_account_ui_extensions/$API_VERSION
-    # Replace 'unstable' with the exact API version in relative doc links
-    sed -i \
-      "s/\/docs\/api\/customer-account-ui-extensions\/unstable/\/docs\/api\/customer-account-ui-extensions\/$API_VERSION/gi" \
-      ../../../shopify-dev/db/data/docs/templated_apis/customer_account_ui_extensions/$API_VERSION/generated_docs_data.json
-    sed_exit=$?
-    if [ $sed_exit -ne 0 ]; then
-      fail_and_exit $sed_exit
-    fi
-    rsync -a --delete ./$DOCS_PATH/screenshots/ ../../../shopify-dev/app/assets/images/templated-apis-screenshots/customer-account-ui-extensions/$API_VERSION
-
-    cd ~/src/github.com/Shopify/shopify-dev
-
     echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/customer-account-ui-extensions"
-
   else
-    echo "If you include shopify-dev in your Spin constellation, this will automatically copy ./$DOCS_PATH/generated to shopify-dev"
+    echo "Docs: https://shopify-dev.myshopify.io/docs/api/customer-account-ui-extensions"
   fi
 else
-  echo "Not copying docs to shopify-dev because we're not in Spin"
+  echo "Not copying docs to shopify-dev because it was not found at ~/src/github.com/Shopify/shopify-dev."
 fi

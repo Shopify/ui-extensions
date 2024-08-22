@@ -11,11 +11,11 @@ fail_and_exit() {
 }
 
 run_sed() {
-  if [ -z $SPIN ]
+  if [ -n "$SPIN" ]
   then
-    sed -i '' "$1" $2
-  else
     sed -i "$1" $2
+  else
+    sed -i '' "$1" $2
   fi
 }
 
@@ -67,17 +67,11 @@ if [ -d ~/src/github.com/Shopify/shopify-dev ]; then
   fi
   rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION
 
-  cd ~/src/github.com/Shopify/shopify-dev
-
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
     echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/admin-extensions"
   else
     echo "Docs: https://shopify-dev.myshopify.io/docs/api/admin-extensions"
   fi
 else
-  if [ -n $SPIN ]; then
-    echo "If you include shopify-dev in your Spin constellation, this will automatically copy ./$DOCS_PATH/generated to shopify-dev"
-  else
-    echo "If you have shopify-dev cloned to ~/src/github.com/Shopify/shopify-dev, this will automatically copy ./$DOCS_PATH/generated to shopify-dev"
-  fi
+  echo "Not copying docs to shopify-dev because it was not found at ~/src/github.com/Shopify/shopify-dev."
 fi
