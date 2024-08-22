@@ -6,12 +6,14 @@ import {
   AutocompleteFieldSecurityCodeAlias,
   InputProps,
   NumberConstraintsProps,
+  FieldDecorationProps,
 } from '../shared';
 
 export interface NumberFieldProps
   extends InputProps<number>,
     NumberConstraintsProps,
-    AutocompleteProps<NumberAutocompleteField> {
+    AutocompleteProps<NumberAutocompleteField>,
+    FieldDecorationProps {
   /**
    * Sets the virtual keyboard.
    *
