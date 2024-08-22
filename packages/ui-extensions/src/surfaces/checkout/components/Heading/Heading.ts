@@ -2,7 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {InlineAlignment, AccessibilityRole} from '../shared';
 
-type Level = 1 | 2 | 3;
+type Level = 1 | 2 | 3 | 4;
 
 export interface HeadingProps {
   /**

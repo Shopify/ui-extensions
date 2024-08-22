@@ -14,6 +14,7 @@ export type IconSource =
   | 'camera'
   | 'caretDown'
   | 'cart'
+  | 'cashDollar'
   | 'categories'
   | 'checkmark'
   | 'chevronLeft'
@@ -22,6 +23,7 @@ export type IconSource =
   | 'chevronDown'
   | 'clock'
   | 'close'
+  | 'creditCard'
   | 'critical'
   | 'delete'
   | 'delivered'
@@ -68,6 +70,7 @@ export type IconSource =
   | 'store'
   | 'success'
   | 'truck'
+  | 'upload'
   | 'verticalDots'
   | 'warning'
   | 'warningFill';

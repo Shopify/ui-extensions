@@ -19,7 +19,11 @@ import type {StandardApi} from './api/standard/standard';
 import type {ShippingOptionItemApi} from './api/shipping/shipping-option-item';
 import type {ShippingOptionListApi} from './api/shipping/shipping-option-list';
 import type {RenderExtension, RunnableExtension} from './extension';
-import type {AnyComponent} from './shared';
+import type {
+  AnyComponent,
+  AllowedComponents,
+  AnyComponentExcept,
+} from './shared';
 
 /**
  * A UI extension will register for one or more extension targets using `shopify.extend()`.
@@ -380,7 +384,7 @@ export interface RenderExtensionTargets {
     RedeemableApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.gift-card.render'>,
-    AnyComponent
+    AnyComponentExcept<'Image' | 'Banner'>
   >;
   /**
    * A static extension target that renders the gift card entry form fields after
@@ -392,7 +396,7 @@ export interface RenderExtensionTargets {
    */
   'Checkout::GiftCard::Render': RenderExtension<
     RedeemableApi & CheckoutApi & StandardApi<'Checkout::GiftCard::Render'>,
-    AnyComponent
+    AnyComponentExcept<'Image' | 'Banner'>
   >;
   /**
    * A static extension target that renders the form fields for a payment method when selected by the buyer.
@@ -403,7 +407,7 @@ export interface RenderExtensionTargets {
     PaymentOptionItemApi &
       CheckoutApi &
       StandardApi<'purchase.checkout.payment-option-item.details.render'>,
-    AnyComponent
+    AnyComponentExcept<'Image' | 'Banner'>
   >;
   /**
    * A static extension target that renders the form fields for a payment method when selected by the buyer.
@@ -415,7 +419,7 @@ export interface RenderExtensionTargets {
     PaymentOptionItemApi &
       CheckoutApi &
       StandardApi<'Checkout::PaymentMethod::Render'>,
-    AnyComponent
+    AnyComponentExcept<'Image' | 'Banner'>
   >;
   /**
    * A static extension target that renders after the hosted fields of a credit card payment method.
@@ -439,7 +443,7 @@ export interface RenderExtensionTargets {
     PaymentOptionItemApi &
       CheckoutApi &
       StandardApi<'Checkout::PaymentMethod::HostedFields::RenderAfter'>,
-    AnyComponent
+    AnyComponentExcept<'Image' | 'Banner'>
   >;
   /**
    * A static extension target that renders a form modal when a buyer selects the custom onsite payment method.
@@ -720,6 +724,13 @@ export interface RenderExtensionTargets {
     OrderConfirmationApi &
       StandardApi<'purchase.thank-you.footer.render-after'>,
     AnyComponent
+  >;
+  /**
+   * A static extension target that is rendered on top of the Checkout page as an overlay.
+   */
+  'purchase.checkout.overlay.render': RenderExtension<
+    CheckoutApi & StandardApi<'purchase.checkout.overlay.render'>,
+    AllowedComponents<'Chat'>
   >;
 }
 

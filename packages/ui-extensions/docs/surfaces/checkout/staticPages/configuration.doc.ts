@@ -285,7 +285,7 @@ The App Proxy doesn't handle all [HTTP request methods](https://developer.mozill
         {
           name: 'Blocking examples',
           subtitle: 'See',
-          url: '/docs/api/checkout-ui-extensions/apis/standardapi#example-buyer-journey',
+          url: '/docs/api/checkout-ui-extensions/apis/buyer-journey#examples',
           type: 'blocks',
         },
       ],
