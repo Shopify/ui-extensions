@@ -10,6 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
     'The `POSBlock` provides a surface on the specified extension target as an entry point to an extension. Note that the title displayed on this `POSBlock` is dependent on the description of the extension.',
   isVisualComponent: true,
   type: 'component',
+  thumbnail: 'pos-block-thumbnail.png',
   definitions: [
     {
       title: 'POSBlock',
@@ -20,6 +21,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   related: [],
   defaultExample: {
+    image: 'pos-block-default.png',
     codeblock: generateCodeBlockForPOSBlock(
       'Render a POSBlock in post purchase',
       'default.example',
