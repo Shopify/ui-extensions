@@ -171,7 +171,6 @@ export type {
   AddressAutocompleteSuggestion,
   MatchedSubstring,
   AutocompleteAddress,
-  AddressFormField,
 } from './checkout/api/address-autocomplete/shared';
 
 export type {AddressAutocompleteStandardApi} from './checkout/api/address-autocomplete/standard';

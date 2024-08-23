@@ -1,6 +1,6 @@
 import type {CountryCode} from '../../../checkout';
 
-import type {AddressAutocompleteSuggestion, AddressFormField} from './shared';
+import type {AddressAutocompleteSuggestion} from './shared';
 
 export interface AddressAutocompleteSuggestApi {
   /**
@@ -32,25 +32,14 @@ interface Target {
   value: string;
 
   /**
-   * The field of the address form that the buyer is interacting with.
+   * The `MailingAddress` field that the buyer is interacting with.
    *
-   * This field can be one of `address1`, `zip`, or `streetName` depending on the country
+   * This field can either be `address1` or `zip` depending on the country
    * selected by the buyer during checkout.
    *
    * @example "address1"
    */
-  field: Extract<AddressFormField, 'address1' | 'zip' | 'streetName'>;
-
-  /**
-   * The fields of the address form that are visible to the buyer.
-   *
-   * @example ['address1', 'address2', 'city', 'company', 'countryCode', 'provinceCode', 'zip']
-   *
-   * TODO('nabeel.ahsen@shopify.com): Remove this once this feature is supported by checkout-web.
-   * - DO NOT SHIP TO `shopify/ui-extensions`!!
-   * - Make this a required field once the feature is supported by checkout-web.
-   */
-  fields?: AddressFormField[];
+  field: 'address1' | 'zip';
 
   /**
    * The `countryCode` selected in the address form that the buyer is interacting with.
