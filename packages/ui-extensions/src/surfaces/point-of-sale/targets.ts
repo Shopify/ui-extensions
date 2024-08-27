@@ -214,6 +214,18 @@ export interface ExtensionTargets {
     StandardApi<'pos.headless.cashTracking.completed'>,
     BasicComponents
   >;
+  'pos.headless.cashTracking.adjustment.started': RenderExtension<
+    StandardApi<'pos.headless.cashTracking.adjustment.started'>,
+    BasicComponents
+  >;
+  'pos.headless.cashTracking.adjustment.end': RenderExtension<
+    StandardApi<'pos.headless.cashTracking.adjustment.end'>,
+    BasicComponents
+  >;
+  'pos.headless.receipt.send': RenderExtension<
+    StandardApi<'pos.headless.receipt.send'>,
+    BasicComponents
+  >;
   // #endregion
 }
 
