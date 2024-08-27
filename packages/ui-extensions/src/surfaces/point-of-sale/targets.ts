@@ -134,6 +134,7 @@ export interface ExtensionTargets {
       ActionApi,
     BlockComponents
   >;
+  // #region Connectivity
   'pos.connectivity.action.menu-item.render': RenderExtension<
     StandardApi<'pos.connectivity.action.menu-item.render'> & ActionApi,
     ActionComponents
@@ -146,6 +147,7 @@ export interface ExtensionTargets {
     StandardApi<'pos.connectivity.block.render'> & ActionApi,
     BlockComponents
   >;
+  // #region Compliance
   'pos.global.compliance.all': RenderExtension<
     StandardApi<'pos.global.compliance.all'> & ActionApi,
     ActionComponents
@@ -166,6 +168,53 @@ export interface ExtensionTargets {
     StandardApi<'pos.global.compliance.debug'> & ActionApi,
     ActionComponents
   >;
+  // #region Headless
+  'pos.headless.product.add': RenderExtension<
+    StandardApi<'pos.headless.product.add'>,
+    BasicComponents
+  >;
+  'pos.headless.product.remove': RenderExtension<
+    StandardApi<'pos.headless.product.remove'>,
+    BasicComponents
+  >;
+  'pos.headless.product.updated': RenderExtension<
+    StandardApi<'pos.headless.product.updated'>,
+    BasicComponents
+  >;
+  'pos.headless.checkout.start': RenderExtension<
+    StandardApi<'pos.headless.checkout.start'>,
+    BasicComponents
+  >;
+  '': RenderExtension<StandardApi<''>, BasicComponents>;
+  'pos.headless.checkout.success': RenderExtension<
+    StandardApi<'pos.headless.checkout.success'>,
+    BasicComponents
+  >;
+  'pos.headless.checkout.failure': RenderExtension<
+    StandardApi<'pos.headless.checkout.failure'>,
+    BasicComponents
+  >;
+  'pos.headless.checkout.cancel': RenderExtension<
+    StandardApi<'pos.headless.checkout.cancel'>,
+    BasicComponents
+  >;
+  'pos.headless.order.created': RenderExtension<
+    StandardApi<'pos.headless.order.created'>,
+    BasicComponents
+  >;
+  'pos.headless.cashTracking.started': RenderExtension<
+    StandardApi<'pos.headless.cashTracking.started'>,
+    BasicComponents
+  >;
+  'pos.headless.cashTracking.cancel': RenderExtension<
+    StandardApi<'pos.headless.cashTracking.cancel'>,
+    BasicComponents
+  >;
+  'pos.headless.cashTracking.completed': RenderExtension<
+    StandardApi<'pos.headless.cashTracking.completed'>,
+    BasicComponents
+  >;
+  // #endregion
 }
 
 export type ExtensionTarget = keyof ExtensionTargets;
