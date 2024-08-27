@@ -33,6 +33,7 @@ type BlockComponents = AnyComponentBuilder<
     | 'TimePicker'
   >
 >;
+type HeadlessComponents = AnyComponentBuilder<null>;
 
 export interface ExtensionTargets {
   'pos.home.tile.render': RenderExtension<
@@ -171,60 +172,59 @@ export interface ExtensionTargets {
   // #region Headless
   'pos.headless.product.add': RenderExtension<
     StandardApi<'pos.headless.product.add'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.product.remove': RenderExtension<
     StandardApi<'pos.headless.product.remove'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.product.updated': RenderExtension<
     StandardApi<'pos.headless.product.updated'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.checkout.start': RenderExtension<
     StandardApi<'pos.headless.checkout.start'>,
-    BasicComponents
+    HeadlessComponents
   >;
-  '': RenderExtension<StandardApi<''>, BasicComponents>;
   'pos.headless.checkout.success': RenderExtension<
     StandardApi<'pos.headless.checkout.success'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.checkout.failure': RenderExtension<
     StandardApi<'pos.headless.checkout.failure'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.checkout.cancel': RenderExtension<
     StandardApi<'pos.headless.checkout.cancel'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.order.created': RenderExtension<
     StandardApi<'pos.headless.order.created'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.cashTracking.started': RenderExtension<
     StandardApi<'pos.headless.cashTracking.started'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.cashTracking.cancel': RenderExtension<
     StandardApi<'pos.headless.cashTracking.cancel'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.cashTracking.completed': RenderExtension<
     StandardApi<'pos.headless.cashTracking.completed'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.cashTracking.adjustment.started': RenderExtension<
     StandardApi<'pos.headless.cashTracking.adjustment.started'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.cashTracking.adjustment.end': RenderExtension<
     StandardApi<'pos.headless.cashTracking.adjustment.end'>,
-    BasicComponents
+    HeadlessComponents
   >;
   'pos.headless.receipt.send': RenderExtension<
     StandardApi<'pos.headless.receipt.send'>,
-    BasicComponents
+    HeadlessComponents
   >;
   // #endregion
 }
