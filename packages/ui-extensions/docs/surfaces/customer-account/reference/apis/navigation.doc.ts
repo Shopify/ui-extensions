@@ -18,7 +18,8 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Navigation',
-      description: 'Navigation API for all extensions',
+      description:
+        'Navigation API for all extensions. [View supported protocols](/docs/api/customer-account-ui-extensions/unstable#custom-protocols)',
       type: 'StandardExtensionNavigation',
     },
     {
