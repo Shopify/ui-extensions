@@ -134,6 +134,38 @@ export interface ExtensionTargets {
       ActionApi,
     BlockComponents
   >;
+  'pos.connectivity.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.connectivity.action.menu-item.render'> & ActionApi,
+    ActionComponents
+  >;
+  'pos.connectivity.action.render': RenderExtension<
+    ActionTargetApi<'pos.connectivity.action.render'>,
+    BasicComponents
+  >;
+  'pos.connectivity.block.render': RenderExtension<
+    StandardApi<'pos.connectivity.block.render'> & ActionApi,
+    BlockComponents
+  >;
+  'pos.global.compliance.all': RenderExtension<
+    StandardApi<'pos.global.compliance.all'> & ActionApi,
+    ActionComponents
+  >;
+  'pos.global.compliance.checkout': RenderExtension<
+    StandardApi<'pos.global.compliance.checkout'> & ActionApi,
+    ActionComponents
+  >;
+  'pos.global.compliance.cash_tracking': RenderExtension<
+    StandardApi<'pos.global.compliance.cash_tracking'> & ActionApi,
+    ActionComponents
+  >;
+  'pos.global.compliance.receipt': RenderExtension<
+    StandardApi<'pos.global.compliance.receipt'> & ActionApi,
+    ActionComponents
+  >;
+  'pos.global.compliance.debug': RenderExtension<
+    StandardApi<'pos.global.compliance.debug'> & ActionApi,
+    ActionComponents
+  >;
 }
 
 export type ExtensionTarget = keyof ExtensionTargets;
