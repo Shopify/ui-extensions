@@ -190,6 +190,10 @@ export const pixelEvents = {
             ref: 'ProductVariant',
           },
         },
+        purchasingCompany: {
+          nullable: true,
+          ref: 'PurchasingCompany',
+        },
       },
     },
     WebPixelsWindow: {
@@ -457,7 +461,7 @@ export const pixelEvents = {
       },
     },
     EventType: {
-      enum: ['standard', 'dom', 'custom'],
+      enum: ['standard', 'dom', 'custom', 'error'],
     },
     Id: {
       type: 'string',
@@ -489,6 +493,7 @@ export const pixelEvents = {
         description:
           'A free-form object representing data specific to this event provided by Shopify. Refer to [standard events](#standard-events) for details on the payload available to each event',
         typescriptType: 'Record<string, unknown>',
+        sorbetType: 'T::Hash[String, T.untyped]',
       },
     },
     Attribute: {
@@ -604,6 +609,7 @@ export const pixelEvents = {
           metadata: {
             description:
               'Indicates whether the customer has consented to be sent marketing material via email. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+            exclude_from_ruby_schema: true,
           },
         },
         buyerAcceptsSmsMarketing: {
@@ -611,6 +617,7 @@ export const pixelEvents = {
           metadata: {
             description:
               'Indicates whether the customer has consented to be sent marketing material via SMS. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+            exclude_from_ruby_schema: true,
           },
         },
         currencyCode: {
@@ -626,6 +633,7 @@ export const pixelEvents = {
           metadata: {
             description:
               'Information about the active localized experience. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+            exclude_from_ruby_schema: true,
           },
         },
         discountApplications: {
@@ -673,6 +681,7 @@ export const pixelEvents = {
           metadata: {
             description:
               'The phone number provided by the buyer after opting in to SMS marketing. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+            exclude_from_ruby_schema: true,
           },
         },
         delivery: {
@@ -680,6 +689,7 @@ export const pixelEvents = {
           metadata: {
             description:
               'Represents the selected delivery options for a checkout. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+            exclude_from_ruby_schema: true,
           },
           ref: 'Delivery',
         },
@@ -689,6 +699,7 @@ export const pixelEvents = {
           metadata: {
             description:
               'The total amount of the discounts applied to the price of the checkout. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+            exclude_from_ruby_schema: true,
           },
         },
         shippingAddress: {
@@ -796,6 +807,7 @@ export const pixelEvents = {
           metadata: {
             description:
               'The combined price of all of the items in the line item after line-level discounts have been applied. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+            exclude_from_ruby_schema: true,
           },
         },
         sellingPlanAllocation: {
@@ -804,12 +816,14 @@ export const pixelEvents = {
           metadata: {
             description:
               "The selling plan associated with the line item and the effect that each selling plan has on variants when they're purchased. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).",
+            exclude_from_ruby_schema: true,
           },
         },
         properties: {
           metadata: {
             description:
               'The properties of the line item. A shop may add, or enable customers to add custom information to a line item. Line item properties consist of a key and value pair. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+            exclude_from_ruby_schema: true,
           },
           elements: {
             ref: 'Property',
@@ -885,7 +899,9 @@ export const pixelEvents = {
         value: {
           type: 'string',
           metadata: {
+            sorbetType: 'T.any(MoneyV2, PricingPercentageValue)',
             typescriptType: 'MoneyV2 | PricingPercentageValue',
+            objectRefs: 'MoneyV2,PricingPercentageValue',
             description:
               'The value of the discount. Fixed discounts return a `Money` Object, while Percentage discounts return a `PricingPercentageValue` object.',
           },
@@ -1546,6 +1562,7 @@ export const pixelEvents = {
           metadata: {
             description:
               'The payment method used for the transaction. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+            exclude_from_ruby_schema: true,
           },
           properties: {
             type: {
@@ -1621,6 +1638,70 @@ export const pixelEvents = {
           type: 'string',
           metadata: {
             description: 'The shop’s country code.',
+          },
+        },
+      },
+    },
+    PurchasingCompany: {
+      metadata: {
+        description:
+          'Provides details of the company and the company location that the business customer is purchasing on behalf of.',
+      },
+      properties: {
+        company: {
+          metadata: {
+            description:
+              'Includes information of the company that the business customer is purchasing on behalf of.',
+          },
+          properties: {
+            id: {
+              type: 'string',
+              metadata: {
+                description: 'The company ID.',
+              },
+            },
+            name: {
+              type: 'string',
+              metadata: {
+                description: 'The name of the company.',
+              },
+            },
+            externalId: {
+              type: 'string',
+              nullable: true,
+              metadata: {
+                description:
+                  'The external ID of the company that can be set by the merchant.',
+              },
+            },
+          },
+        },
+        location: {
+          metadata: {
+            description:
+              'Includes information of the company location that the business customer is purchasing on behalf of.',
+          },
+          properties: {
+            id: {
+              type: 'string',
+              metadata: {
+                description: 'The company location ID.',
+              },
+            },
+            name: {
+              type: 'string',
+              metadata: {
+                description: 'The name of the company location.',
+              },
+            },
+            externalId: {
+              type: 'string',
+              nullable: true,
+              metadata: {
+                description:
+                  'The external ID of the company location that can be set by the merchant.',
+              },
+            },
           },
         },
       },
@@ -1830,6 +1911,7 @@ export const pixelEvents = {
       metadata: {
         description:
           'The `checkout_address_info_submitted` event logs an instance of a customer submitting their mailing address. This event is only available in checkouts where Checkout Extensibility for customizations is enabled',
+        exclude_from_ruby_schema: true,
       },
       properties: {
         id: {
@@ -1870,6 +1952,7 @@ export const pixelEvents = {
       metadata: {
         description:
           'The `checkout_completed` event logs when a visitor completes a purchase. This event is available on the **Order status** and checkout pages',
+        server_event_supported: true,
       },
       properties: {
         id: {
@@ -1950,6 +2033,7 @@ export const pixelEvents = {
       metadata: {
         description:
           'The `payment_info_submitted` event logs an instance of a customer submitting their payment information. This event is available on the checkout page',
+        exclude_from_ruby_schema: true,
       },
       properties: {
         id: {
@@ -2030,6 +2114,7 @@ export const pixelEvents = {
       metadata: {
         description:
           'The `checkout_contact_info_submitted` event logs an instance where a customer submits a checkout form. This event is only available in checkouts where Checkout Extensibility for customizations is enabled',
+        exclude_from_ruby_schema: true,
       },
       properties: {
         id: {
@@ -2106,6 +2191,7 @@ export const pixelEvents = {
       metadata: {
         description:
           'The `product_added_to_cart` event logs an instance where a customer adds a product to their cart. This event is available on the online store page',
+        exclude_from_ruby_schema: true,
       },
       properties: {
         id: {
@@ -2147,6 +2233,7 @@ export const pixelEvents = {
       metadata: {
         description:
           'The `product_removed_from_cart` event logs an instance where a customer removes a product from their cart. This event is available on the online store page',
+        exclude_from_ruby_schema: true,
       },
       properties: {
         id: {
@@ -2228,6 +2315,7 @@ export const pixelEvents = {
       metadata: {
         description:
           'The `product_variant_viewed` event logs an instance where a customer interacts with the product page and views a different variant than the initial `product_viewed` impression. This event is available on the Product page',
+        exclude_from_ruby_schema: true,
       },
       properties: {
         id: {
@@ -2349,6 +2437,7 @@ export const pixelEvents = {
       metadata: {
         description:
           'The `checkout_shipping_info_submitted` event logs an instance where the customer chooses a shipping rate. This event is only available in checkouts where Checkout Extensibility for customizations is enabled',
+        exclude_from_ruby_schema: true,
       },
       properties: {
         id: {

@@ -5,6 +5,7 @@ import type {
   Checkout,
   Customer,
   ProductVariant,
+  PurchasingCompany,
 } from './PixelEvents';
 
 // This is passed to the register function init object
@@ -14,6 +15,7 @@ export interface RegisterInit {
     customer: Partial<Customer> | null;
     cart: Partial<Cart> | null;
     shop: Shop;
+    purchasingCompany: PurchasingCompany | null;
   };
   customerPrivacy: {
     analyticsProcessingAllowed: boolean;
@@ -30,4 +32,5 @@ export interface InitData {
   shop: Shop;
   checkout?: Checkout;
   productVariants?: ProductVariant[];
+  purchasingCompany?: PurchasingCompany;
 }

@@ -1218,6 +1218,7 @@ export interface DiscountApplication {
 export enum EventType {
   Custom = 'custom',
   Dom = 'dom',
+  Error = 'error',
   Standard = 'standard',
 }
 
@@ -1293,6 +1294,7 @@ export interface InitData {
   checkout: Checkout | null;
   customer: Customer | null;
   productVariants: ProductVariant[] | null;
+  purchasingCompany: PurchasingCompany | null;
   shop: Shop;
 }
 
@@ -1671,6 +1673,66 @@ export interface Property {
    * The value for the property.
    */
   value: string;
+}
+
+/**
+ * Includes information of the company that the business customer is purchasing
+ * on behalf of.
+ */
+export interface PurchasingCompanyCompany {
+  /**
+   * The external ID of the company that can be set by the merchant.
+   */
+  externalId: string | null;
+
+  /**
+   * The company ID.
+   */
+  id: string;
+
+  /**
+   * The name of the company.
+   */
+  name: string;
+}
+
+/**
+ * Includes information of the company location that the business customer is
+ * purchasing on behalf of.
+ */
+export interface PurchasingCompanyLocation {
+  /**
+   * The external ID of the company location that can be set by the merchant.
+   */
+  externalId: string | null;
+
+  /**
+   * The company location ID.
+   */
+  id: string;
+
+  /**
+   * The name of the company location.
+   */
+  name: string;
+}
+
+/**
+ * Provides details of the company and the company location that the business
+ * customer is purchasing on behalf of.
+ */
+export interface PurchasingCompany {
+  /**
+   * Includes information of the company that the business customer is
+   * purchasing on behalf of.
+   */
+  company: PurchasingCompanyCompany;
+
+  /**
+   * Includes information of the company location that the business customer is
+   * purchasing on behalf of.
+   */
+  location: PurchasingCompanyLocation;
 }
 
 /**
