@@ -78,6 +78,8 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect customer consent for SMS marketing.
    *
    * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register customer consent decisions that will be honored on Shopify-managed services.
+   *
+   * * `iframe.sources`: the extension can embed an external URL in an iframe.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 
@@ -513,7 +515,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * > Tip:
-   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.*
+   * > Metafields on an [app reserved namespace](https://shopify.dev/docs/apps/build/custom-data/reserved-prefixes) cannot be accessed by Checkout UI extensions.
    */
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 
@@ -626,6 +628,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * Once the order is created, you can query these metafields using the
    * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
+   *
+   * > Tip:
+   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.
    */
   metafields: StatefulRemoteSubscribable<Metafield[]>;
 

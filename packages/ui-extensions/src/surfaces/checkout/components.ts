@@ -16,6 +16,9 @@ export type {BlockStackProps} from './components/BlockStack/BlockStack';
 export {Button} from './components/Button/Button';
 export type {ButtonProps} from './components/Button/Button';
 
+export {Chat} from './components/Chat/Chat';
+export type {ChatProps} from './components/Chat/Chat';
+
 export {ConsentCheckbox} from './components/ConsentCheckbox/ConsentCheckbox';
 export type {ConsentCheckboxProps} from './components/ConsentCheckbox/ConsentCheckbox';
 
