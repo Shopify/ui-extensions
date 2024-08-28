@@ -29,14 +29,6 @@ export interface ModalProps {
    * Adds a default spacing around both header (which holds the `title`) and content of the modal.
    */
   padding?: boolean;
-  /**
-   * Adjust the size of the Modal.
-   *
-   * `max`: expands the Modal to its maximum size, on both the horizontal and vertical axes.
-   *
-   * @default 'auto'
-   */
-  size?: 'small' | 'auto' | 'large' | 'max';
 }
 
 /**

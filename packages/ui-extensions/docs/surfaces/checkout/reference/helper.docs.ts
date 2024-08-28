@@ -456,13 +456,6 @@ The contents of the token are signed using your shared app secret.  The optional
         ],
       },
     },
-    storage: {
-      description: '',
-      codeblock: {
-        title: 'Storage',
-        tabs: getExtensionCodeTabs('storage'),
-      },
-    },
     'delivery-groups': {
       description: '',
       codeblock: {

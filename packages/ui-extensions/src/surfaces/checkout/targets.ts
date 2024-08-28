@@ -732,13 +732,6 @@ export interface RenderExtensionTargets {
     CheckoutApi & StandardApi<'purchase.checkout.overlay.render'>,
     AllowedComponents<'Chat'>
   >;
-  /**
-   * A static extension target that is rendered on top of the **Thank you page** as an overlay.
-   */
-  'purchase.thank-you.overlay.render': RenderExtension<
-    CheckoutApi & StandardApi<'purchase.thank-you.overlay.render'>,
-    AllowedComponents<'Chat'>
-  >;
 }
 
 export interface RunnableExtensionTargets {

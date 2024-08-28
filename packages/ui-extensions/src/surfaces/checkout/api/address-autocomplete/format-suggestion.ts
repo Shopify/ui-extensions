@@ -1,6 +1,5 @@
 import type {
   AddressAutocompleteSuggestion,
-  AddressFormField,
   AutocompleteAddress,
 } from './shared';
 
@@ -14,17 +13,6 @@ export interface AddressAutocompleteFormatSuggestionApi {
 }
 
 interface Target {
-  /**
-   * The fields of the address form that are visible to the buyer.
-   *
-   * @example ['address1', 'address2', 'city', 'company', 'countryCode', 'provinceCode', 'zip']
-   *
-   * TODO('nabeel.ahsen@shopify.com): Remove this once this feature is supported by checkout-web.
-   * - DO NOT SHIP TO `shopify/ui-extensions`!!
-   * - Make this a required field once the feature is supported by checkout-web.
-   */
-  fields?: AddressFormField[];
-
   selectedSuggestion: AddressAutocompleteSuggestion;
 }
 
