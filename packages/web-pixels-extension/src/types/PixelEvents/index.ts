@@ -1218,7 +1218,6 @@ export interface DiscountApplication {
 export enum EventType {
   Custom = 'custom',
   Dom = 'dom',
-  Error = 'error',
   Standard = 'standard',
 }
 
