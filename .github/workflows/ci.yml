@@ -59,3 +59,14 @@ jobs:
 
       - name: Lint
         run: yarn lint
+
+  test-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/prepare
+
+      - id: test-build
+        name: Build docs locally to ensure they can be built in CI
+        run: yarn docs:admin
