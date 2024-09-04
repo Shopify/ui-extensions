@@ -12,8 +12,10 @@ export type ButtonType = 'primary' | 'basic' | 'destructive' | 'plain';
 export interface ButtonProps {
   /**
    * The text set on the `Button`.
+   *
+   * Note: When using a Button for menu-item targets, the title will be ignored. The text on the menu-item will be the extension's description.
    */
-  title: string;
+  title?: string;
   /**
    * The type of `Button` to render. Determines the appearance of the button.
    */
