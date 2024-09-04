@@ -1,6 +1,7 @@
 API_VERSION=$1
 DOCS_PATH=docs/surfaces/point-of-sale
 SRC_PATH=src/surfaces/point-of-sale
+SHOPIFY_DEV_PATH="../../../shopify-dev"
 
 fail_and_exit() {
   echo "** Failed to generate docs"
@@ -9,11 +10,12 @@ fail_and_exit() {
 }
 
 run_sed() {
-  if [ -n "$SPIN" ]
-  then
-    sed -i "$1" $2
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS
+    sed -i '' "$1" "$2"
   else
-    sed -i '' "$1" $2
+    # Linux and other Unix-like systems
+    sed -i "$1" "$2"
   fi
 }
 
@@ -51,18 +53,18 @@ if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
-if [ -d ~/src/github.com/Shopify/shopify-dev ]; then
-  mkdir -p ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION
-  cp ./$DOCS_PATH/generated/* ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION
+if [ -d $SHOPIFY_DEV_PATH ]; then
+  mkdir -p $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION
+  cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION
   # Replace 'unstable' with the exact API version in relative doc links
   run_sed \
     "s/\/docs\/api\/pos-ui-extensions\/unstable/\/docs\/api\/pos-ui-extensions\/$API_VERSION/gi" \
-    ~/src/github.com/Shopify/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION/generated_docs_data.json
+    $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION/generated_docs_data.json
   sed_exit=$?
   if [ $sed_exit -ne 0 ]; then
     fail_and_exit $sed_exit
   fi
-  rsync -a --delete ./$DOCS_PATH/screenshots/ ~/src/github.com/Shopify/shopify-dev/app/assets/images/templated-apis-screenshots/pos-ui-extensions/$API_VERSION
+  rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/app/assets/images/templated-apis-screenshots/pos-ui-extensions/$API_VERSION
 
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
     echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/pos-ui-extensions"
@@ -70,5 +72,5 @@ if [ -d ~/src/github.com/Shopify/shopify-dev ]; then
     echo "Docs: https://shopify-dev.myshopify.io/docs/api/pos-ui-extensions"
   fi
 else
-  echo "Not copying docs to shopify-dev because it was not found at ~/src/github.com/Shopify/shopify-dev."
+  echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
 fi
