@@ -26,7 +26,7 @@ Often, an extension running on a simulator or a device will need to communicate 
       type: 'Generic',
       anchorLink: 'cors',
       title: 'CORS considerations',
-      sectionContent: `Requests originating from an extension will be of origin **cdn.shopify.com**. Your server needs to allow requests from this origin.`,
+      sectionContent: `Requests originating from an extension will be of origin **cdn.shopify.com** and **extensions.shopifycdn.com**. Your server needs to allow requests from both origins.`,
     },
     {
       type: 'Generic',
