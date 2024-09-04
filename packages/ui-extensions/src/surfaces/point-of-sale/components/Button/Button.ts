@@ -13,7 +13,7 @@ export interface ButtonProps {
   /**
    * The text set on the `Button`.
    *
-   * Note: In the case of using a button menu-item targets, the title will be ignored.
+   * Note: When using a Button for menu-item targets, the title will be ignored. The text on the menu-item will be the extension's description.
    */
   title?: string;
   /**
