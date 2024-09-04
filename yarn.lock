@@ -2074,14 +2074,14 @@
     pkg-dir "^5.0.0"
     pluralize "^8.0.0"
 
-"@shopify/generate-docs@0.10.13":
-  version "0.10.13"
-  resolved "https://registry.yarnpkg.com/@shopify/generate-docs/-/generate-docs-0.10.13.tgz#b10270cef66f6ecd2b2c2f6ad2d9b8152532ff35"
-  integrity sha512-WGID9ANhlGjJZocMPvVC4HpkYvgTV+wi2CgB6c/ZEgq9ZOWCzwCrC08+Q+n3H4JW8dF9R3aGtlmFAHbw8zEw5A==
+"@shopify/generate-docs@0.16.4":
+  version "0.16.4"
+  resolved "https://registry.yarnpkg.com/@shopify/generate-docs/-/generate-docs-0.16.4.tgz#4e9c6348f080217e59be34ca6fbde850769eccef"
+  integrity sha512-lYtnB2gPPSBf73YvbrNM9u6p1cm/qbg1uEqkMW9sG4/dORb5tBPDDC/KkckaCaMF7soHg9PsinNXHAa0/Hlf4g==
   dependencies:
     "@types/react" "^18.0.21"
     globby "^11.1.0"
-    typescript "^4.8.3"
+    typescript "^4.8.3 || ^5.0.0"
 
 "@shopify/loom-cli@^1.0.0":
   version "1.0.2"
@@ -7368,10 +7368,10 @@ typescript@^4.3.5:
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.7.2.tgz#1f9aa2ceb9af87cca227813b4310fff0b51593c4"
   integrity sha512-Mamb1iX2FDUpcTRzltPxgWMKy3fhg0TN378ylbktPGPK/99KbDtMQ4W1hwgsbPAsG3a0xKa1vmw4VKZQbkvz5A==
 
-typescript@^4.8.3:
-  version "4.9.5"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
-  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
+"typescript@^4.8.3 || ^5.0.0":
+  version "5.5.4"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.5.4.tgz#d9852d6c82bad2d2eda4fd74a5762a8f5909e9ba"
+  integrity sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==
 
 typescript@^4.9.0:
   version "4.9.3"
