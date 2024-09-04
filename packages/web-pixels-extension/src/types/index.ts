@@ -31,6 +31,7 @@ export type {
   PixelEventsCheckoutStartedData,
   PixelEventsCheckoutCompletedData,
   PricingPercentageValue,
+  PurchasingCompany,
   Transaction,
   TransactionPaymentMethod,
   Delivery,

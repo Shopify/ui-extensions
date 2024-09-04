@@ -190,6 +190,10 @@ export const pixelEvents = {
             ref: 'ProductVariant',
           },
         },
+        purchasingCompany: {
+          nullable: true,
+          ref: 'PurchasingCompany',
+        },
       },
     },
     WebPixelsWindow: {
@@ -1621,6 +1625,70 @@ export const pixelEvents = {
           type: 'string',
           metadata: {
             description: 'The shop’s country code.',
+          },
+        },
+      },
+    },
+    PurchasingCompany: {
+      metadata: {
+        description:
+          'Provides details of the company and the company location that the business customer is purchasing on behalf of.',
+      },
+      properties: {
+        company: {
+          metadata: {
+            description:
+              'Includes information of the company that the business customer is purchasing on behalf of.',
+          },
+          properties: {
+            id: {
+              type: 'string',
+              metadata: {
+                description: 'The company ID.',
+              },
+            },
+            name: {
+              type: 'string',
+              metadata: {
+                description: 'The name of the company.',
+              },
+            },
+            externalId: {
+              type: 'string',
+              nullable: true,
+              metadata: {
+                description:
+                  'The external ID of the company that can be set by the merchant.',
+              },
+            },
+          },
+        },
+        location: {
+          metadata: {
+            description:
+              'Includes information of the company location that the business customer is purchasing on behalf of.',
+          },
+          properties: {
+            id: {
+              type: 'string',
+              metadata: {
+                description: 'The company location ID.',
+              },
+            },
+            name: {
+              type: 'string',
+              metadata: {
+                description: 'The name of the company location.',
+              },
+            },
+            externalId: {
+              type: 'string',
+              nullable: true,
+              metadata: {
+                description:
+                  'The external ID of the company location that can be set by the merchant.',
+              },
+            },
           },
         },
       },
