@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   related: [
     {
-      name: 'Figma UI Kit Icons',
+      name: 'Figma UI Kit',
       subtitle:
         'See the Figma UI Kit to get a full list of icons to design your extension',
       url: 'https://www.figma.com/community/file/1255225508400961281/shopify-pos-ui-kit',
