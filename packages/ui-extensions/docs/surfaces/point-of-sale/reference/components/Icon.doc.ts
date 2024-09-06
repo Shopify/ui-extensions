@@ -16,10 +16,10 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Components',
   related: [
     {
-      name: 'Figma UI Kit Icons',
+      name: 'Figma UI Kit',
       subtitle:
         'See the Figma UI Kit to get a full list of icons to design your extension',
-      url: 'https://www.figma.com/design/0UcHY7C4hqrhvA5tjynunA/Shopify-POS-UI-Kit-(Community)?node-id=15-15&t=Ygce7CbfazMNpKsA-0',
+      url: 'https://www.figma.com/community/file/1255225508400961281/shopify-pos-ui-kit',
       type: 'star',
     },
   ],
