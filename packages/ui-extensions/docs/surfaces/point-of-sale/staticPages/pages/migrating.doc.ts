@@ -19,6 +19,13 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       anchorLink: 'overview',
       title: 'Overview',
+      sectionNotice: [
+        {
+          type: 'warning',
+          title: 'Minimum CLI Version',
+          sectionContent: 'Migration requires a minimum CLI version of 3.64.0.',
+        },
+      ],
       sectionContent: `
 POS UI Extensions are moving to the newer \`@shopify/ui-extensions\` package, shared with [Checkout UI Extensions](https://shopify.dev/docs/api/checkout-ui-extensions) and [Admin UI Extensions](https://shopify.dev/docs/api/admin-extensions). This will allow your extensions to use the same package regardless of the surface they extend, and for a single extension to implement multiple targets across different surfaces of Shopify more easily.
 
@@ -100,7 +107,7 @@ Validate your migration by running \`yarn dev\` or \`npm run dev\`
       anchorLink: 'finalize',
       title: 'Finalize the migration',
       sectionContent: `
-1. Deploy your app by running \`npm run deploy\`. 
+1. Deploy your app by running \`npm run deploy\`.
 2. When prompted to migrate your extension from \`pos_ui_extension\` to \`ui_extension\`, select "Yes, confirm migration from pos_ui_extension".
 3. Your extension should now deploy as the new ui_extension type.
 `,
