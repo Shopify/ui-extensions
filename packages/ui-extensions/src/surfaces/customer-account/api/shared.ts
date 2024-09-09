@@ -403,6 +403,7 @@ export interface Ui {
   toast: {
     show(content: string): void;
   };
+  forceDataRefresh(content: string): Promise<void>;
 }
 
 export interface SessionToken {
