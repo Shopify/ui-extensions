@@ -2,11 +2,11 @@
   "name": "@shopify/ui-extensions",
   "version": "2024.7.0",
   "scripts": {
-    "docs:admin": "sh ./docs/surfaces/admin/build-docs.sh",
-    "gen-docs:admin": "sh ./docs/surfaces/admin/create-doc-files.sh \"admin\"",
-    "docs:checkout": "sh ./docs/surfaces/checkout/build-docs.sh",
-    "docs:point-of-sale": "sh ./docs/surfaces/point-of-sale/build-docs.sh",
-    "docs:customer-account": "sh ./docs/surfaces/customer-account/build-docs.sh"
+    "docs:admin": "bash ./docs/surfaces/admin/build-docs.sh",
+    "gen-docs:admin": "bash ./docs/surfaces/admin/create-doc-files.sh \"admin\"",
+    "docs:checkout": "bash ./docs/surfaces/checkout/build-docs.sh",
+    "docs:point-of-sale": "bash ./docs/surfaces/point-of-sale/build-docs.sh",
+    "docs:customer-account": "bash ./docs/surfaces/customer-account/build-docs.sh"
   },
   "main": "index.js",
   "module": "index.mjs",
