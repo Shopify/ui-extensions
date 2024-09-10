@@ -31,6 +31,8 @@ const data: LandingTemplateSchema = {
 - Added support for the ${TargetLink.PosOrderDetailsBlockRender} target.
 - Added support for the ${TargetLink.PosCustomerDetailsBlockRender} target.
 - Deprecated the [ActionItem component](/docs/api/pos-ui-extensions/components/ActionItem). Please use the [Button component](/docs/api/pos-ui-extensions/components/Button) instead.
+- Deprecated the [CameraScanner component](/docs/api/pos-ui-extensions/components/CameraScanner)'s prop bannerProps. Pass in the [Banner component](/docs/api/pos-ui-extensions/components/Banner) as a child instead. Please use overlayText prop instead.
+- Added  \`CameraScannerActions\` to the [Scanner API](/docs/api/pos-ui-extensions/apis/scanner-api). This provides scanning actions used in the [CameraScanner](/docs/api/pos-ui-extensions/components/CameraScanner) component.
       `,
     },
     {

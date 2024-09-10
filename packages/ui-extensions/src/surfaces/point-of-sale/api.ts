@@ -57,6 +57,7 @@ export type {
   ScannerSubscriptionResult,
   ScannerApi,
   ScannerApiContent,
+  CameraScannerActions,
 } from './api/scanner-api/scanner-api';
 
 export type {

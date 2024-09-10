@@ -16,14 +16,27 @@ export interface CameraScannerBannerProps {
    * The appearance of the banner.
    */
   variant: BannerVariant;
+
   /**
    * The visibility state of the banner.
    */
   visible: boolean;
 }
 
+/**
+ * @property overlayText - the scanner overlay default text on top of the scanner window.
+ */
+
 export interface CameraScannerProps {
+  /**
+   * @deprecated `bannerProps` has been deprecated. Use `overlayText` prop instead.
+   */
   bannerProps?: CameraScannerBannerProps;
+
+  /**
+   * overlayText - the text to display on the scanner.
+   */
+  overlayText?: string;
 }
 
 export const CameraScanner = createRemoteComponent<
