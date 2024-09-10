@@ -22,7 +22,6 @@ export interface CameraBarcodeScannerNextStateProps {
   bannerMessage?: string;
 }
 
-
 export interface CameraScannerNextProps {
   cameraBarcodeScannerNextStateProp: CameraBarcodeScannerNextStateProps;
 }
