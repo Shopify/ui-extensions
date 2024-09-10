@@ -1408,6 +1408,14 @@ export const pixelEvents = {
             description: 'The ID of the customer.',
           },
         },
+        isFirstOrder: {
+          type: 'boolean',
+          nullable: true,
+          metadata: {
+            description:
+              'Indicates if the order is the customer’s first order. This property is only available if the shop has [upgraded to Checkout Extensibility](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-upgrade).',
+          },
+        },
       },
     },
     Customer: {
