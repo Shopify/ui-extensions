@@ -5,20 +5,16 @@ const generateCodeBlockForCameraScanner = (title: string, fileName: string) =>
   generateCodeBlock(title, 'camera-scanner', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'CameraScanner',
+  name: 'CameraScannerNext',
   description:
-    `
-    CameraScanner has been deprecated. Please use the [CameraScannerNext](/docs/api/pos-ui-extensions/components/) instead.
-
-    The camera scanner uses the devices camera to scan and decode barcodes or QR codes. It displays a live feed with guidance markers for alignment and triggers actions within the app upon successful recognition.
-    `,
+    'The camera scanner uses the devices camera to scan and decode barcodes or QR codes. It displays a live feed with guidance markers for alignment and triggers actions within the app upon successful recognition.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
     {
-      title: 'CameraScanner',
+      title: 'CameraScannerNext',
       description: '',
-      type: 'CameraScannerProps',
+      type: 'CameraScannerNextProps',
     },
   ],
   category: 'Components',

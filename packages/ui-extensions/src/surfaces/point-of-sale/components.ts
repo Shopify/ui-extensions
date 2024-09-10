@@ -12,6 +12,8 @@ export {Button} from './components/Button/Button';
 export type {ButtonProps, ButtonType} from './components/Button/Button';
 export {CameraScanner} from './components/CameraScanner/CameraScanner';
 export type {CameraScannerProps} from './components/CameraScanner/CameraScanner';
+export {CameraScannerNext} from './components/CameraScanner/CameraScannerNext';
+export type {CameraScannerNextProps} from './components/CameraScanner/CameraScannerNext';
 export {DateField} from './components/DateField/DateField';
 export type {DateFieldProps} from './components/DateField/DateField';
 export {DatePicker} from './components/DatePicker/DatePicker';

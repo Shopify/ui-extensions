@@ -9,15 +9,18 @@ import {BannerVariant} from '../Banner/Banner';
 export interface CameraScannerBannerProps {
   /**
    * The title of the banner.
+   * @deprecated CameraScanner has been deprecated. Use the CameraScannerNext component instead.
    */
   title: string;
 
   /**
    * The appearance of the banner.
+   * @deprecated CameraScanner has been deprecated. Use the CameraScannerNext component instead.
    */
   variant: BannerVariant;
   /**
    * The visibility state of the banner.
+   * @deprecated CameraScanner has been deprecated. Use the CameraScannerNext component instead.
    */
   visible: boolean;
 }
