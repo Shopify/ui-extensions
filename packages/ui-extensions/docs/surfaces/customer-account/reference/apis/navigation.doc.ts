@@ -81,18 +81,6 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         codeblock: {
-          title: 'Using react router in a full-page extension (Experimental)',
-          tabs: [
-            {
-              code: '../examples/navigation/react-router.example.tsx',
-              language: 'jsx',
-              title: 'React',
-            },
-          ],
-        },
-      },
-      {
-        codeblock: {
           title: 'Navigating to customer account native order index page',
           tabs: [
             {
