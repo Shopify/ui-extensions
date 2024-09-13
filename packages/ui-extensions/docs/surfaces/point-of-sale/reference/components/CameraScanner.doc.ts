@@ -6,11 +6,8 @@ const generateCodeBlockForCameraScanner = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'CameraScanner',
-  description: `
-    bannerProps has been deprecated. it is optional to pass in a [Banner component](/docs/api/pos-ui-extensions/components/banner) as a child instead.
-
-    The camera scanner uses the device's camera to scan and decode barcodes or QR codes. It displays a live feed with guidance markers for alignment and triggers actions within the app upon successful recognition.
-    `,
+  description:
+    'The camera scanner uses the devices camera to scan and decode barcodes or QR codes. It displays a live feed with guidance markers for alignment and triggers actions within the app upon successful recognition.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
@@ -30,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   thumbnail: 'camera-scanner-thumbnail.png',
   defaultExample: {
-    image: 'camera-scanner-next-default.png',
+    image: 'camera-scanner-default.png',
     codeblock: generateCodeBlockForCameraScanner(
       'Camera scanner and data text example',
       'default.example',
@@ -49,7 +46,7 @@ const data: ReferenceEntityTemplateSchema = {
 - Use the error banner at the top of the screen to denote errors while scanning or when encountering an unrecognized barcode.
 - Upon successful scanning of an item, display a ‘Toast’ component with a message such as "Item scanned" to indicate the outcome. Additionally, altering the screen contents can also be used to signal a successful scan.
 `,
-      image: 'camera-scanner-next-best-practice.png',
+      image: 'camera-scanner-best-practice.png',
     },
     {
       type: 'Generic',
