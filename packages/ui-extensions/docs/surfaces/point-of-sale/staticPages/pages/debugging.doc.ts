@@ -29,13 +29,10 @@ If a component is given an incorrect parameter, the extension will be replaced w
     },
     {
       type: 'Generic',
-      anchorLink: `using-chrome-console`,
-      title: `Using Chrome console`,
+      anchorLink: `debugging-on-android`,
+      title: `Debugging on Android`,
       sectionContent: `
-This section covers how to view POS UI Extension logs and errors.
-
-> Note:
-> Due to certain iOS security limitations, debugging is currently only possible with an Android device or an Android studio emulator.
+This section covers how to view POS UI Extension logs and errors on Android devices.
 
 ### Requirements
 
@@ -43,9 +40,7 @@ This section covers how to view POS UI Extension logs and errors.
 ![Development store](/assets/api/pos/debug-development-store.png)
 - You've set up an Android Studio emulator, or you have an Android device available with the POS app installed. If you use an Android device, you can follow the [Chrome developer documentation](https://developer.chrome.com/docs/devtools/remote-debugging/) to set up a device for debugging purposes.
 
-### Steps
-
-You can debug your POS UI Extension by following these steps:
+### Android
 
 1. Connect the Android device to your computer or launch the Android emulator.
 2. Make sure the POS UI Extension is running on the POS app.
@@ -55,9 +50,37 @@ You can debug your POS UI Extension by following these steps:
 
 ### Demo
 
-The following demo shows ow to debug a POS UI Extension by leveraging tools such as the Console and Network available in Google Chrome. The example extension code has \`console.log\` statements when the SmartGrid tile is pressed to open modal and also to log the remote fetch response.
+The following demo shows how to debug a POS UI Extension on Android by using the Chrome dev tools. The example extension code has \`console.log\` statements when the SmartGrid tile is pressed to open modal.
 
 ![Debugging demo](/assets/api/pos/debug-ui-extension.gif)
+`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: `debugging-on-ios`,
+      title: `Debugging on iOS`,
+      sectionContent: `
+This section covers how to view POS UI Extension logs and errors on iOS devices.
+
+### Requirements
+
+- The extension needs to be running on a [development store](/docs/apps/tools/development-stores) in the POS app. Debugging is only available on development stores. You can create a development store from the Partner Portal, or you can use an existing development store for debugging purposes.
+![Development store](/assets/api/pos/debug-development-store.png)
+- You have an iOS device available with the POS app installed. Please follow the [Safari documentation](https://support.apple.com/en-ca/guide/safari/sfri20948/mac) to set up dev tooling.
+
+### iOS
+
+1. Connect the iOS device to your computer.
+2. Make sure the POS UI Extension is running on the POS app.
+3. Using Safari on your computer, click the 'Develop' menu in the top toolbar.
+4. You should see your iOS device appear there. Select it. A new menu will appear, and you can then select the load.html context.
+5. This should open a new window, where you will be able to interact with the console, and view \`console.log\` statements in your code along with inspecting the network activity.
+
+### Demo
+
+The following demo shows ow to debug a POS UI Extension on iOS by using the Safari dev tools. The example extension code has \`console.log\` statements that appear when we open the Safari dev tools.
+
+![Debugging demo](/assets/api/pos/debug-ui-extension-ios.gif)
 `,
     },
   ],
