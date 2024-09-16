@@ -90,6 +90,11 @@ export interface OrderStatusExtensionTargets {
       StandardApi<'customer-account.order-status.cart-line-list.render-after'>,
     AnyComponent
   >;
+  'customer-account.order.page.render': RenderExtension<
+    OrderStatusApi<'customer-account.order.page.render'> &
+      StandardApi<'customer-account.order.page.render'>,
+    AllComponents
+  >;
 }
 export type OrderStatusExtensionTarget = keyof OrderStatusExtensionTargets;
 
