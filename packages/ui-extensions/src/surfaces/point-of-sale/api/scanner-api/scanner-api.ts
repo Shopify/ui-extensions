@@ -10,15 +10,6 @@ export interface ScannerSubscriptionResult {
   source?: ScannerSource;
 }
 
-export interface CameraScannerActions {
-  /** Triggers a success animation. */
-  setSuccess: () => void;
-  /** Triggers an error animation and shows an error message. */
-  setError: (errorMessage?: string) => void;
-  /** Resets the scanner to default state. */
-  reset: () => void;
-}
-
 export interface ScannerApiContent {
   /** Creates a subscription to scan events
    * Provides an initial value and a callback to subscribe to value changes. Currently supports only one subscription.
@@ -32,10 +23,6 @@ export interface ScannerApiContent {
    * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
    */
   scannerSourcesSubscribable: RemoteSubscribable<ScannerSource[]>;
-  /** Creates a subscription to the camera scanning actions available on the POS device.
-   * Provides available actions for the CameraScanner component.
-   */
-  cameraScannerActions: CameraScannerActions;
 }
 
 export interface ScannerApi {
