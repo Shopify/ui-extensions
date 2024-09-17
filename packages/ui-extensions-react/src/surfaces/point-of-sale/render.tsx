@@ -1,6 +1,6 @@
 import type {ReactElement, PropsWithChildren} from 'react';
 import {Component} from 'react';
-import {render as remoteRender} from '@remote-ui/react';
+import {createRoot} from '@remote-ui/react';
 import {extension} from '@shopify/ui-extensions/point-of-sale';
 import type {
   ExtensionTargets,
@@ -39,17 +39,16 @@ export function reactExtension<Target extends RenderExtensionTarget>(
   return extension<'pos.home.tile.render'>(target as any, async (root, api) => {
     const element = await render(api as ApiForRenderExtension<Target>);
 
-    await new Promise<void>((resolve, reject) => {
+    return new Promise<() => void>((resolve, reject) => {
       try {
-        remoteRender(
+        const remoteRoot = createRoot(root);
+        remoteRoot.render(
           <ExtensionApiContext.Provider value={api}>
             <ErrorBoundary>{element}</ErrorBoundary>
           </ExtensionApiContext.Provider>,
-          root,
-          () => {
-            resolve();
-          },
         );
+
+        resolve(remoteRoot.unmount);
       } catch (error) {
         // Workaround for https://github.com/Shopify/ui-extensions/issues/325
         // eslint-disable-next-line no-console
