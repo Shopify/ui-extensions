@@ -44,6 +44,12 @@ const data: LandingTemplateSchema = {
           type: 'tool',
         },
         {
+          subtitle: 'Using Forms',
+          name: 'Use the Form component to integrate with the contextual save bar of the resource page',
+          url: '#using-forms',
+          type: 'tool',
+        },
+        {
           subtitle: 'Direct API access',
           name: 'Access the Shopify GraphQL API directly',
           url: '#direct-api-access',
@@ -93,6 +99,28 @@ const data: LandingTemplateSchema = {
             code: './examples/authenticated-fetch.jsx',
             language: 'tsx',
             title: 'Get Product Data',
+          },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
+      title: 'Using Forms',
+      sectionContent:
+        "When building a Block extension you may use the [Form component](https://shopify.dev/docs/api/admin-extensions/latest/components/forms/form) to integrate with the contextual save bar of the resource page. The Form component provides a way to manage form state and submit data to your app's backend or directly to Shopify using Direct API access.\n\nWhenever an input field is changed, the Form component will automatically update the dirty state of the resource page. When the form is submitted or reset the relevant callback in the form component will get triggered.\n\nUsing you can control what defines a component to be dirty by utilizing the Input's defaultValue property.\n\nRules:\n\n- When the defaultValue is set, the component will be considered dirty if the value of the input is different from the defaultValue.You may update the defaultValue when the form is submitted to reset the dirty state of the form.\n\n- When the defaultValue is not set, the component will be considered dirty if the value of the input is different from the initial value or from the last dynamic update to the input's value that wasn't triggered by user input.",
+      anchorLink: 'using-forms',
+      codeblock: {
+        title: "Trigger the Form's dirty state",
+        tabs: [
+          {
+            code: './examples/form-default-value.jsx',
+            language: 'tsx',
+            title: 'Using `defaultValue`',
+          },
+          {
+            code: './examples/form-implicit-default.jsx',
+            language: 'tsx',
+            title: 'Using implicit default',
           },
         ],
       },
