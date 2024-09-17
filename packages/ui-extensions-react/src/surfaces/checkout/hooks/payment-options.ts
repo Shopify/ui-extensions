@@ -35,6 +35,8 @@ export function useSelectedPaymentOptions<
 >(): PaymentOption[] {
   const api = useApi<Target>();
 
+  console.log('using test version');
+
   if (
     !('selectedPaymentOptions' in api) ||
     !('availablePaymentOptions' in api)
@@ -58,7 +60,7 @@ export function useSelectedPaymentOptions<
     return selectedPaymentOptions.map((paymentOption) => {
       return {
         handle: paymentOption.handle,
-        type: availablePaymentOptionsMap[paymentOption.handle]?.type,
+        type: paymentOption.type,
       };
     });
   }, [availablePaymentOptions, selectedPaymentOptions]);

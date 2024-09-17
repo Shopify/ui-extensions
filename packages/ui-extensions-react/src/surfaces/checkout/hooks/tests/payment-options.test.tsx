@@ -1,7 +1,4 @@
-import type {
-  PaymentOption,
-  SelectedPaymentOption,
-} from '@shopify/ui-extensions/checkout';
+import type {PaymentOption} from '@shopify/ui-extensions/checkout';
 
 import {
   useAvailablePaymentOptions,
@@ -39,8 +36,8 @@ describe('Payment Methods API hooks', () => {
         {handle: 'direct', type: 'creditCard'},
       ];
 
-      const selectedPaymentOptionHandles: SelectedPaymentOption[] = [
-        {handle: 'bogus'},
+      const selectedPaymentOptionHandles: PaymentOption[] = [
+        {handle: 'bogus', type: 'other'},
       ];
 
       const selectedPaymentOptions: PaymentOption[] = [
@@ -69,9 +66,9 @@ describe('Payment Methods API hooks', () => {
         {handle: 'direct', type: 'creditCard'},
       ];
 
-      const selectedPaymentOptionHandles: SelectedPaymentOption[] = [
-        {handle: 'bogus'},
-        {handle: 'direct'},
+      const selectedPaymentOptionHandles: PaymentOption[] = [
+        {handle: 'bogus', type: 'other'},
+        {handle: 'direct', type: 'creditCard'},
       ];
 
       const selectedPaymentOptions: PaymentOption[] = [

@@ -652,7 +652,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Payment options selected by the buyer.
    */
-  selectedPaymentOptions: StatefulRemoteSubscribable<SelectedPaymentOption[]>;
+  selectedPaymentOptions: StatefulRemoteSubscribable<PaymentOption[]>;
 
   /**
    * The session token providing a set of claims as a signed JSON Web Token (JWT).
