@@ -92,14 +92,16 @@ export interface OrderStatusExtensionTargets {
   >;
   'customer-account.order.page.render': RenderExtension<
     OrderStatusApi<'customer-account.order.page.render'> &
-      StandardApi<'customer-account.order.page.render'>,
+      Omit<StandardApi<'customer-account.order.page.render'>, 'navigation'> &
+      FullPageApi,
     AllComponents
   >;
 }
 export type OrderStatusExtensionTarget = keyof OrderStatusExtensionTargets;
 
 export type RenderCustomerAccountFullPageExtensionTarget =
-  'customer-account.page.render';
+  | 'customer-account.page.render'
+  | 'customer-account.order.page.render';
 
 export interface CustomerAccountExtensionTargets {
   'customer-account.page.render': RenderExtension<
