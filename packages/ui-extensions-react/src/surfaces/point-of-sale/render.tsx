@@ -1,6 +1,5 @@
 import type {ReactElement, PropsWithChildren} from 'react';
 import {Component} from 'react';
-import {createRoot} from '@remote-ui/react';
 import {extension} from '@shopify/ui-extensions/point-of-sale';
 import type {
   ExtensionTargets,
@@ -9,6 +8,7 @@ import type {
 } from '@shopify/ui-extensions/point-of-sale';
 
 import {ExtensionApiContext} from './context';
+import {remoteRootRender} from '../../utilities/remoteRootRender';
 
 /**
  * Registers your React-based UI Extension to run for the selected extension target.
@@ -38,24 +38,12 @@ export function reactExtension<Target extends RenderExtensionTarget>(
   // shape (`RenderExtension`).
   return extension<'pos.home.tile.render'>(target as any, async (root, api) => {
     const element = await render(api as ApiForRenderExtension<Target>);
-
-    return new Promise<() => void>((resolve, reject) => {
-      try {
-        const remoteRoot = createRoot(root);
-        remoteRoot.render(
-          <ExtensionApiContext.Provider value={api}>
-            <ErrorBoundary>{element}</ErrorBoundary>
-          </ExtensionApiContext.Provider>,
-        );
-
-        resolve(remoteRoot.unmount);
-      } catch (error) {
-        // Workaround for https://github.com/Shopify/ui-extensions/issues/325
-        // eslint-disable-next-line no-console
-        console.error(error);
-        reject(error);
-      }
-    });
+    return remoteRootRender(
+      <ExtensionApiContext.Provider value={api}>
+        <ErrorBoundary>{element}</ErrorBoundary>
+      </ExtensionApiContext.Provider>,
+      root,
+    );
   }) as any;
 }
 
