@@ -118,11 +118,13 @@ function generate({file, outputRootFolder, templatePath, components}) {
       return acc;
     }
 
-    if (all[key].event) {
-      if (!Object.prototype.hasOwnProperty.call(acc, 'methods')) {
-        acc.methods = [];
+    // If this is an event, push to the events array and skip adding it to prop
+    if (typeof all[key].event === 'string') {
+      if (!Object.prototype.hasOwnProperty.call(acc, 'events')) {
+        acc.events = [];
       }
-      acc.methods.push(`'${key}'`);
+      acc.events.push(`'${all[key].event}'`);
+      return acc;
     }
 
     if (!Object.prototype.hasOwnProperty.call(acc, 'properties')) {
@@ -168,6 +170,7 @@ function getChildDefinition({symbol, nodeType, checker, skipGeneric = false}) {
           symbol: subSymbols,
           checker,
           skipGeneric,
+          name,
         });
 
         if (!definition || name === 'children') {
@@ -193,6 +196,7 @@ function getChildDefinition({symbol, nodeType, checker, skipGeneric = false}) {
             symbol: subSymbol,
             checker,
             skipGeneric,
+            name,
           });
 
           if (!definition || name === 'children') {
@@ -209,7 +213,7 @@ function getChildDefinition({symbol, nodeType, checker, skipGeneric = false}) {
   }
 }
 
-function getDefinition({symbol, checker, skipGeneric}) {
+function getDefinition({symbol, checker, skipGeneric, name}) {
   const symbolType = checker.getTypeOfSymbolAtLocation(
     symbol,
     symbol.valueDeclaration,
@@ -245,7 +249,10 @@ function getDefinition({symbol, checker, skipGeneric}) {
   }
 
   if (isFunction) {
-    return {event: true};
+    const matchHandler = name.match(/^on([A-Z][a-zA-Z]+$)/);
+    if (matchHandler && typeof matchHandler[1] === 'string') {
+      return {event: matchHandler[1].toLowerCase()};
+    }
   }
 
   if (kind === ts.SyntaxKind.ArrayType) {
