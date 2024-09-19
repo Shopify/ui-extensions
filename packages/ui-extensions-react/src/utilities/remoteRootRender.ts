@@ -7,7 +7,7 @@ export const remoteRootRender = (node: ReactNode, root: RemoteRoot) => {
       const remoteRoot = createRoot(root);
       remoteRoot.render(node);
 
-      resolve(remoteRoot.unmount);
+      resolve(() => remoteRoot.unmount());
     } catch (error) {
       // Workaround for https://github.com/Shopify/ui-extensions/issues/325
       // eslint-disable-next-line no-console

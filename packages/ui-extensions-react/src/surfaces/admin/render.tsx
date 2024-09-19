@@ -1,5 +1,4 @@
 import type {ReactElement} from 'react';
-import {render as remoteRender} from '@remote-ui/react';
 
 import {extension} from '@shopify/ui-extensions/admin';
 import type {
@@ -9,6 +8,7 @@ import type {
 } from '@shopify/ui-extensions/admin';
 
 import {ExtensionApiContext} from './context';
+import {remoteRootRender} from '../../utilities/remoteRootRender';
 
 /**
  * Registers your React-based UI Extension to run for the selected extension point.
@@ -36,24 +36,12 @@ export function reactExtension<ExtensionTarget extends RenderExtensionTarget>(
   return extension<'Playground'>(target as any, async (root, api) => {
     const element = await render(api as ApiForRenderExtension<ExtensionTarget>);
 
-    await new Promise<void>((resolve, reject) => {
-      try {
-        remoteRender(
-          <ExtensionApiContext.Provider value={api}>
-            {element}
-          </ExtensionApiContext.Provider>,
-          root,
-          () => {
-            resolve();
-          },
-        );
-      } catch (error) {
-        // Workaround for https://github.com/Shopify/ui-extensions/issues/325
-        // eslint-disable-next-line no-console
-        console.error(error);
-        reject(error);
-      }
-    });
+    return remoteRootRender(
+      <ExtensionApiContext.Provider value={api}>
+        {element}
+      </ExtensionApiContext.Provider>,
+      root,
+    );
   }) as any;
 }
 
