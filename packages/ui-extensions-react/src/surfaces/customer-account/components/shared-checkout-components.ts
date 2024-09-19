@@ -83,6 +83,8 @@ export {
   Popover,
   type PopoverProps,
   type PopoverPosition,
+  QRCode,
+  type QRCodeProps,
   ScrollView,
   type ScrollViewProps,
   type ScrollViewEvent,
