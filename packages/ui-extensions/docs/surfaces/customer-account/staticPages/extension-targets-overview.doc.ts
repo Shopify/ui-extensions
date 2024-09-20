@@ -242,14 +242,29 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
       ],
     },
     {
-      type: 'Generic',
+      type: 'GenericAccordion',
       anchorLink: 'full-page-extension-target',
       title: 'Full-page extension',
       sectionContent:
-        'This full-page extension allows you to create a new page in customer accounts. It renders in the main content area, below the header, and above the footer.',
-      image: 'target-overview-full-page-extension.png',
-      altText:
-        'A desktop view of the header and footer of customer accounts. The entire main content area between the header and footer is occupied by a large blue dotted-line box that says Full-page extension, indicating that this area can be populated by a full-page customer account UI extension.',
+        'Build new pages for customer accounts. Full-page extensions render in the main content area—below the header, and above the footer.',
+      accordionContent: [
+        {
+          title: 'Full-page extension',
+          description: `This full-page extension target is for building pages that are **not** tied to a specific order. For example, a Wishlist page.
+          \nSee all [extension targets](/docs/api/customer-account-ui-extensions/targets).`,
+          image: 'target-overview-full-page-extension.png',
+          altText:
+            'A desktop view of the header and footer of customer accounts. The entire main content area between the header and footer is occupied by a large blue dotted-line box that says Full-page extension, indicating that this area can be populated by a full-page customer account UI extension.',
+        },
+        {
+          title: 'Full-page extension (order-specific)',
+          description: `This full-page extension target is for building pages that are tied to a specific order. For example, a Request Return page. 
+          \nSee all [extension targets](/docs/api/customer-account-ui-extensions/targets).`,
+          image: 'target-overview-full-page-extension.png',
+          altText:
+            'A desktop view of the header and footer of customer accounts. The entire main content area between the header and footer is occupied by a large blue dotted-line box that says Full-page extension, indicating that this area can be populated by a full-page customer account UI extension.',
+        },
+      ],
     },
   ],
 };

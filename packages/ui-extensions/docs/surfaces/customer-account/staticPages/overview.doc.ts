@@ -242,7 +242,10 @@ const data: LandingTemplateSchema = {
         {
           title: 'Extension Protocol',
           description:
-            'Triggers a navigation to an extension using the `extension:` protocol. The handle is the handle of the extension that will be navigated to in the same application. Add a [full-page extension](/apps/customer-accounts/full-page-extensions) to create a separate page and handle the navigation.',
+            'Triggers a navigation to an extension using the `extension:` protocol. \
+The handle is the handle of the extension that will be navigated to in \
+the same application. Build a [full-page extension](/apps/customer-accounts/full-page-extension) to create a new page in \
+customer accounts and handle the navigation.',
           codeblock: {
             title: 'extension:handle',
             tabs: [
