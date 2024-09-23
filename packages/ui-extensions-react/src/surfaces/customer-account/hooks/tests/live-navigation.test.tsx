@@ -54,7 +54,7 @@ describe('useNavigationCurrentEntry', () => {
     );
   });
 
-  it('throws an error when its not a full page extension', async () => {
+  it('throws an error when its not a full page extension or order full page extension', async () => {
     const mock = {
       navigate: jest.fn(),
     };
@@ -68,7 +68,7 @@ describe('useNavigationCurrentEntry', () => {
     };
 
     await expect(runner).rejects.toThrow(
-      'useNavigationCurrentEntry must be used in an extension with the customer-account.page.render target only',
+      'useNavigationCurrentEntry must be used in an extension with the customer-account.page.render or customer-account.order.page.render target only',
     );
   });
 });

@@ -16,7 +16,7 @@ export function useNavigationCurrentEntry<
   useEffect(() => {
     if (!currentEntry || !removeEventListener || !addEventListener) {
       throw new Error(
-        'useNavigationCurrentEntry must be used in an extension with the customer-account.page.render target only',
+        'useNavigationCurrentEntry must be used in an extension with the customer-account.page.render or customer-account.order.page.render target only',
       );
     }
     addEventListener('currententrychange', update);
