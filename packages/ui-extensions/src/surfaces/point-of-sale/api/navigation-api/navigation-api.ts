@@ -9,7 +9,7 @@ export interface NavigationApiContent {
   /** Pops the currently shown screen */
   pop(): void;
 
-  /** Dismisses the modal highest on the stack */
+  /** Dismisses the extension. */
   dismiss(): void;
 }
 
