@@ -3,7 +3,6 @@ export type {
   CartLineCost,
   CheckoutSettings,
   OrderStatusCustomer,
-  ExtensionSettings,
   Merchandise,
   ImageDetails,
   Product,
@@ -85,4 +84,5 @@ export type {
   Localization,
   CompanyLocationApi,
   OrderApi,
+  ExtensionSettings,
 } from './api/standard-api/standard-api';

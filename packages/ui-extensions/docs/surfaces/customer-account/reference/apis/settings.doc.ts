@@ -1,19 +1,18 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
-import {ORDER_STATUS_API_DEFINITION} from '../../helper.docs';
+import {CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Settings',
   description: 'The API for interacting with merchant settings.',
   isVisualComponent: false,
   category: 'APIs',
-  subCategory: 'Order Status API',
   type: 'API',
   definitions: [
     {
-      title: ORDER_STATUS_API_DEFINITION.title,
-      description: ORDER_STATUS_API_DEFINITION.description,
-      type: 'Docs_OrderStatus_SettingsApi',
+      title: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.title,
+      description: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.description,
+      type: 'Docs_Standard_SettingsApi',
     },
     {
       title: 'useSettings',
@@ -27,12 +26,12 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Accessing merchant settings',
       tabs: [
         {
-          code: '../../examples/apis/settings-access.example.tsx',
+          code: '../examples/apis/settings-access.example.tsx',
           language: 'jsx',
           title: 'React',
         },
         {
-          code: '../../examples/apis/settings-access.example.ts',
+          code: '../examples/apis/settings-access.example.ts',
           language: 'js',
           title: 'JavaScript',
         },
@@ -49,7 +48,7 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Define merchant settings',
           tabs: [
             {
-              code: '../../examples/apis/settings.example.toml',
+              code: '../examples/apis/settings.example.toml',
               language: 'toml',
               title: 'shopify.extension.toml',
             },
