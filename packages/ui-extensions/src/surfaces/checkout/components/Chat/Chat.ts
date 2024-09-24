@@ -19,7 +19,7 @@ export interface ChatProps extends IdProps {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
    */
-  inlineSize?: number | `${number}%`;
+  inlineSize?: number;
 
   /**
    * Adjust the block size.
