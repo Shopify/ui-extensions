@@ -40,10 +40,10 @@ describe('Payment Methods API hooks', () => {
       ];
 
       const selectedPaymentOptionHandles: SelectedPaymentOption[] = [
-        {handle: 'bogus'},
+        {handle: 'bogus', type: 'other'},
       ];
 
-      const selectedPaymentOptions: PaymentOption[] = [
+      const selectedPaymentOptions: SelectedPaymentOption[] = [
         {handle: 'bogus', type: 'other'},
       ];
 
@@ -70,11 +70,11 @@ describe('Payment Methods API hooks', () => {
       ];
 
       const selectedPaymentOptionHandles: SelectedPaymentOption[] = [
-        {handle: 'bogus'},
-        {handle: 'direct'},
+        {handle: 'bogus', type: 'other'},
+        {handle: 'direct', type: 'creditCard'},
       ];
 
-      const selectedPaymentOptions: PaymentOption[] = [
+      const selectedPaymentOptions: SelectedPaymentOption[] = [
         {handle: 'bogus', type: 'other'},
         {handle: 'direct', type: 'creditCard'},
       ];

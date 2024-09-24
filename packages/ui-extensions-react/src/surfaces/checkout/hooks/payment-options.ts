@@ -1,8 +1,8 @@
 import type {
   RenderExtensionTarget,
   PaymentOption,
+  SelectedPaymentOption,
 } from '@shopify/ui-extensions/checkout';
-import {useMemo} from 'react';
 
 import {ExtensionHasNoMethodError} from '../errors';
 
@@ -32,34 +32,15 @@ export function useAvailablePaymentOptions<
  */
 export function useSelectedPaymentOptions<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
->(): PaymentOption[] {
+>(): SelectedPaymentOption[] {
   const api = useApi<Target>();
 
-  if (
-    !('selectedPaymentOptions' in api) ||
-    !('availablePaymentOptions' in api)
-  ) {
-    throw new ExtensionHasNoMethodError(
-      'selectedPaymentOptions',
-      api.extension.target,
-    );
+  if ('selectedPaymentOptions' in api) {
+    return useSubscription(api.selectedPaymentOptions);
   }
 
-  const selectedPaymentOptions = useSubscription(api.selectedPaymentOptions);
-  const availablePaymentOptions = useSubscription(api.availablePaymentOptions);
-
-  return useMemo(() => {
-    const availablePaymentOptionsMap: Record<string, PaymentOption> = {};
-
-    for (const option of availablePaymentOptions) {
-      availablePaymentOptionsMap[option.handle] = option;
-    }
-
-    return selectedPaymentOptions.map((paymentOption) => {
-      return {
-        handle: paymentOption.handle,
-        type: availablePaymentOptionsMap[paymentOption.handle]?.type,
-      };
-    });
-  }, [availablePaymentOptions, selectedPaymentOptions]);
+  throw new ExtensionHasNoMethodError(
+    'selectedPaymentOptions',
+    api.extension.target,
+  );
 }
