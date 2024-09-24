@@ -1,3 +1,4 @@
+import type {RemoteFragment} from '@remote-ui/core';
 import {createRemoteComponent} from '@remote-ui/core';
 
 export interface ModalProps {
@@ -37,6 +38,16 @@ export interface ModalProps {
    * @default 'auto'
    */
   size?: 'small' | 'auto' | 'large' | 'max';
+  /**
+   * The primary action to perform, provided as a `Button` component.
+   * The property allows only one button to be rendered.
+   */
+  primaryAction?: RemoteFragment;
+  /**
+   * The secondary action to perform, provided as a `Button` component.
+   * The property allows only one button to be rendered.
+   */
+  secondaryActions?: RemoteFragment;
 }
 
 /**
