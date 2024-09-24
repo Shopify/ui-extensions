@@ -316,17 +316,6 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
 
   /**
-   * The settings matching the settings definition written in the
-   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration) file.
-   *
-   *  See [settings examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/standardapi#example-settings) for more information.
-   *
-   * > Note: When an extension is being installed in the editor, the settings will be empty until
-   * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
-   */
-  settings: StatefulRemoteSubscribable<ExtensionSettings>;
-
-  /**
    * The buyer shipping address used for the order.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
@@ -960,13 +949,6 @@ export interface StoreCreditAccount {
    * The current balance of the Store Credit Account.
    */
   balance: Money;
-}
-
-/**
- * The merchant-defined setting values for the extension.
- */
-export interface ExtensionSettings {
-  [key: string]: string | number | boolean | undefined;
 }
 
 export interface Analytics {

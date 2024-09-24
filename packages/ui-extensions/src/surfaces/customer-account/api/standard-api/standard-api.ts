@@ -14,6 +14,12 @@ import type {ExtensionTarget} from '../../targets';
 import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 /**
+ * The merchant-defined setting values for the extension.
+ */
+export interface ExtensionSettings {
+  [key: string]: string | number | boolean | undefined;
+}
+/**
  * The following APIs are provided to all extension targets.
  */
 export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
@@ -69,6 +75,17 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * See [session token examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/session-token#examples) for more information.
    */
   sessionToken: SessionToken;
+
+  /**
+   * The settings matching the settings definition written in the
+   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration) file.
+   *
+   *  See [settings examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/standardapi#example-settings) for more information.
+   *
+   * > Note: When an extension is being installed in the editor, the settings will be empty until
+   * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
+   */
+  settings: StatefulRemoteSubscribable<ExtensionSettings>;
 
   /**
    * Methods to interact with the extension's UI.

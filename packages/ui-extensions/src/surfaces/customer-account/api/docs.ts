@@ -31,12 +31,6 @@ export interface Docs_OrderStatus_GiftCardsApi
 export interface Docs_OrderStatus_NoteApi
   extends Pick<OrderStatusApi<any>, 'note'> {}
 
-export interface Docs_OrderStatus_SettingsApi
-  extends Pick<OrderStatusApi<any>, 'settings'> {}
-
-export interface Docs_OrderStatus_SettingsApi
-  extends Pick<OrderStatusApi<any>, 'settings'> {}
-
 export interface Docs_OrderStatus_AddressApi
   extends Pick<OrderStatusApi<any>, 'shippingAddress' | 'billingAddress'> {}
 
@@ -72,6 +66,9 @@ export interface Docs_Standard_LocalizationApi
 
 export interface Docs_Standard_SessionTokenApi
   extends Pick<StandardApi<any>, 'sessionToken'> {}
+
+export interface Docs_Standard_SettingsApi
+  extends Pick<StandardApi, 'settings'> {}
 
 export interface Docs_Standard_StorageApi
   extends Pick<StandardApi<any>, 'storage'> {}
