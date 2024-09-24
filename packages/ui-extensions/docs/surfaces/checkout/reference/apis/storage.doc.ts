@@ -1,6 +1,7 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 import {
+  getExample,
   getLinksByTag,
   STANDARD_API_PROPERTIES_DESCRIPTION,
 } from '../helper.docs';
@@ -24,6 +25,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseStorageGeneratedType',
     },
   ],
+  defaultExample: getExample('storage', ['jsx']),
   related: getLinksByTag('apis'),
 };
 
