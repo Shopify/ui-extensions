@@ -403,6 +403,19 @@ export interface Ui {
   toast: {
     show(content: string): void;
   };
+  /**
+   * Refresh data so the surrounding information on the page is updated. The `content` string will appear in a toast message after refresh, to confirm the action was successful.
+   *
+   * To request access to this API:
+   *
+   * 1. Go to your partner dashboard and click **Apps**.
+   *
+   * 2. Select the app you need to request access for.
+   *
+   * 3. Click **API access**.
+   *
+   * 4. Under **Access force data refresh**, click **Request access**.
+   */
   forceDataRefresh(content: string): Promise<void>;
 }
 
