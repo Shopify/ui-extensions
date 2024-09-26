@@ -5,6 +5,14 @@ export type ButtonProps = ButtonBaseProps | ButtonAnchorProps;
 
 interface CommonProps {
   /**
+   * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
+   *
+   * Use this when using only an icon or the button text is not enough context
+   * for users using assistive technologies.
+   */
+  accessibilityLabel?: string;
+
+  /**
    * A unique identifier for the button.
    */
   id?: string;
