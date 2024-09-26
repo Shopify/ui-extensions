@@ -474,8 +474,12 @@ export interface Shop {
    * The name of the shop.
    */
   name: string;
+
   /**
    * The primary storefront URL.
+   *
+   * > Caution:
+   * As of version `2024-10` this value will no longer have a trailing slash.
    */
   storefrontUrl?: string;
   /**
