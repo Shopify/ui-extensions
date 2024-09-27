@@ -710,14 +710,6 @@ export interface RenderExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered on top of the Checkout page as an overlay.
-   * It is positioned in the bottom right corner of the screen.
-   */
-  'purchase.checkout.chat.render': RenderExtension<
-    CheckoutApi & StandardApi<'purchase.checkout.chat.render'>,
-    AllowedComponents<'Chat'>
-  >;
-  /**
    * A static extension target that is rendered below the header on the **Thank you** page.
    */
   'purchase.thank-you.header.render-after': RenderExtension<
@@ -734,11 +726,19 @@ export interface RenderExtensionTargets {
     AnyComponent
   >;
   /**
-   * A static extension target that is rendered on top of the **Thank you** page as an overlay.
+   * A static extension target that is rendered on top of the Checkout page as an overlay.
+   * It is positioned in the bottom right corner of the screen.
+   */
+  'purchase.checkout.chat.render': RenderExtension<
+    CheckoutApi & StandardApi<'purchase.checkout.chat.render'>,
+    AllowedComponents<'Chat'>
+  >;
+  /**
+   * A static extension target that is rendered on top of the **Thank you page** as an overlay.
    * It is positioned in the bottom right corner of the screen.
    */
   'purchase.thank-you.chat.render': RenderExtension<
-    CheckoutApi & StandardApi<'purchase.checkout.chat.render'>,
+    CheckoutApi & StandardApi<'purchase.thank-you.chat.render'>,
     AllowedComponents<'Chat'>
   >;
 }

@@ -88,16 +88,6 @@ export function getExamples(
         tabs: getExtensionCodeTabs('default'),
       },
     },
-    ...createExample('customer-account.order-status.block.render/default'),
-    ...createExample(
-      'customer-account.order-status.cart-line-item.render-after/default',
-    ),
-    ...createExample(
-      'customer-account.order-status.cart-line-list.render-after/default',
-    ),
-    ...createExample(
-      'customer-account.order-status.customer-information.render-after/default',
-    ),
     ...createExample('purchase.address-autocomplete.suggest/default'),
     ...createExample('purchase.address-autocomplete.format-suggestion/default'),
     ...createExample('purchase.cart-line-item.line-components.render/default'),
@@ -207,14 +197,6 @@ export function getExamples(
         tabs: getExtensionCodeTabs(
           'purchase.checkout.pickup-location-option-item.render-after/default',
         ),
-      },
-    },
-    'order-status/default': {
-      description:
-        'Use the `order` API on the **Order status** page. This is applicable to the `customer-account.orders-status` extension targets only.',
-      codeblock: {
-        title: 'Order status',
-        tabs: getExtensionCodeTabs('order-status/default'),
       },
     },
     'order-confirmation/default': {
@@ -669,13 +651,6 @@ const STANDARD_API_DEFINITION = {
   type: 'StandardApi',
 };
 
-const CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION = {
-  title: 'CustomerAccountStandardApi',
-  description:
-    'The base API object provided to this and other `customer-account` extension targets.',
-  type: 'CustomerAccountStandardApi',
-};
-
 const ADDRESS_AUTOCOMPLETE_STANDARD_API_DEFINITION = {
   title: 'AddressAutocompleteStandardApi',
   description:
@@ -723,13 +698,6 @@ const ORDER_CONFIRMATION_API_DEFINITION = {
   description:
     'The API object provided to this and other `purchase.thank-you` extension targets.',
   type: 'OrderConfirmationApi',
-};
-
-const ORDER_STATUS_API_DEFINITION = {
-  title: 'OrderStatusApi',
-  description:
-    'The API object provided to this and other `customer-account.order-status` extension targets.',
-  type: 'OrderStatusApi',
 };
 
 const PICKUP_LOCATION_LIST_API_DEFINITION = {
@@ -833,25 +801,6 @@ export const THANK_YOU_CART_LINE_ITEM_API = {
   ...COMMON_API,
 };
 
-export const ORDER_STATUS_API = {
-  definitions: [
-    ORDER_CONFIRMATION_API_DEFINITION,
-    ORDER_STATUS_API_DEFINITION,
-    CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION,
-  ],
-  ...COMMON_API,
-};
-
-export const ORDER_STATUS_CART_LINE_ITEM_API = {
-  subCategory: CART_LINE_ITEM_API.subCategory,
-  definitions: [
-    CART_LINE_ITEM_API_DEFINITION,
-    ORDER_STATUS_API_DEFINITION,
-    CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION,
-  ],
-  ...COMMON_API,
-};
-
 export const PICKUP_LOCATION_LIST_API = {
   subCategory: 'Local Pickup',
   definitions: [
@@ -908,12 +857,8 @@ export const STANDARD_API_PROPERTIES_DESCRIPTION =
 export const CHECKOUT_API_PROPERTIES_DESCRIPTION =
   'The API object provided to `purchase.checkout` extension targets.';
 
-export const ORDER_STATUS_API_PROPERTIES_DESCRIPTION =
-  'The API object provided to `customer-account.order-status` extension targets.';
-
 export const ORDER_CONFIRMATION_API_PROPERTIES_DESCRIPTION =
   'The API object provided to `purchase.thank-you` extension targets.';
 
-export const ORDER_STATUS_SURFACE_NOTE = `
-> Caution: Use the \`@shopify/ui-extensions/customer-account\` or \`@shopify/ui-extensions-react/customer-account\` surfaces when targeting order status targets. Importing from the \`checkout\` surface is deprecated as of version \`2023-10\`.
-`;
+export const ORDER_STATUS_API_PROPERTIES_DESCRIPTION =
+  '> Note: This documentation has moved to customer accounts. Refer to [Order API](/docs/api/customer-account-ui-extensions/apis/order)';

@@ -15,11 +15,10 @@ export interface ChatProps extends IdProps {
    * may not be the actual size rendered.
    *
    * - `number`: size in pixels.
-   * - `` `${number}%` ``: size in percentages of the available space.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
    */
-  inlineSize?: number | `${number}%`;
+  inlineSize?: number;
 
   /**
    * Adjust the block size.
@@ -28,11 +27,10 @@ export interface ChatProps extends IdProps {
    * may not be the actual size rendered.
    *
    * - `number`: size in pixels.
-   * - `` `${number}%` ``: size in percentages of the available space.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
    */
-  blockSize?: number | `${number}%`;
+  blockSize?: number;
 
   /**
    * A label that describes the purpose or contents of the component. When set,

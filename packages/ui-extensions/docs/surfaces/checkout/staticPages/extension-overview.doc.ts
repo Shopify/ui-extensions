@@ -134,33 +134,6 @@ Review [all **Thank you** page extensions targets](/docs/api/checkout-ui-extensi
       ],
     },
     {
-      type: 'GenericAccordion',
-      title: 'Order status locations',
-      anchorLink: 'supported-osp-locations',
-      sectionContent:
-        'The **Order status** page is shown to buyers when they return to a completed checkout for order updates. Learn more about building for [the **Order status** page](/docs/apps/checkout/thank-you-order-status).',
-      accordionContent: [
-        {
-          title: 'Order details',
-          description: `
-Displays all order information to buyers.
-
-Review [all **Order status** page extension targets](/docs/api/checkout-ui-extensions/targets).
-`,
-          image: 'supported-locations-order-status.png',
-        },
-        {
-          title: 'Order summary',
-          description: `
-Summary of the cart contents, discounts, and order totals.
-
-Review [all **Order status** page extensions targets](/docs/api/checkout-ui-extensions/targets).
-`,
-          image: 'supported-locations-order-summary-order-status.png',
-        },
-      ],
-    },
-    {
       type: 'Generic',
       // Anchor link for the section.
       anchorLink: 'static-extension-targets',
@@ -185,7 +158,7 @@ Review [all **Order status** page extensions targets](/docs/api/checkout-ui-exte
       type: 'Generic',
       anchorLink: 'block-extension-targets',
       title: 'Block extension targets',
-      sectionContent: `Block extension targets render between core checkout features. Merchants can use the [checkout and accounts editor](/docs/apps/build/checkout/test-checkout-ui-extensions#test-the-extension-in-the-checkout-editor) to place the extension in the [**checkout**](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations), [**Thank you**](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-typ-locations), or [**Order status**](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-osp-locations) pages.
+      sectionContent: `Block extension targets render between core checkout features. Merchants can use the [checkout and accounts editor](/docs/apps/build/checkout/test-checkout-ui-extensions#test-the-extension-in-the-checkout-editor) to place the extension in the [**checkout**](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations), [**Thank you**](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-typ-locations) pages.
       \n\nBlock extensions are always rendered, regardless of what other checkout elements are present. For example, an extension placed above the shipping address will still render even for digital products which don't require a shipping address.\n\nChoose block extension targets when your content and functionality works independently of a core checkout feature. This is useful for custom content, like a field to capture order notes from the customer.
       \n\nBlock extension targets always support multiple placements. Each placement has an associated placement reference that represents its location on the page. For example, the block extension target \`purchase.checkout.block.render\` supports fourteen placements. The placement references include \`INFORMATION1\`, \`DELIVERY1\`, \`PAYMENT1\`, and more.
       \n\nYou can use placement references as URL parameters to [test block extensions](/docs/apps/build/checkout/test-checkout-ui-extensions#block-targets) in all supported placements on a page. You can also use placement references to [define the default placement](/docs/apps/build/app-extensions/configure-app-extensions#checkout-ui-extensions) of an extension for merchants.`,
