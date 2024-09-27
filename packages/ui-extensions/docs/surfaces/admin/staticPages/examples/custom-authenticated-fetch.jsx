@@ -3,7 +3,7 @@ import {useEffect, useState} from 'react';
 
 // Get product info from a different app backend
 async function getProductInfo(id, auth) {
-  const token = await auth.idToken.get();
+  const token = await auth.idToken();
   const res = await fetch(`https://app.example.com/api/products/${id}`, {
     headers: {
       Authorization: `Bearer ${token}`,

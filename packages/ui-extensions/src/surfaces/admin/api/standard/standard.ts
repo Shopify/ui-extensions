@@ -24,9 +24,7 @@ interface Auth {
   /**
    * Retrieves a Shopify OpenID Connect ID token for the current user.
    */
-  idToken: {
-    get: () => Promise<string | null>;
-  };
+  idToken: Promise<string | null>;
 }
 
 /**
