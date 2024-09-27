@@ -51,7 +51,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * @example 'unstable'
    */
-  version: RendererVersion;
+  version: Version;
 
   /**
    * Details about the language of the buyer.
@@ -227,4 +227,4 @@ export interface NavigateFunction {
   (url: string, options?: NavigationOptions): void;
 }
 
-export type RendererVersion = 'unstable';
+export type Version = string;
