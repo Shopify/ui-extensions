@@ -1,4 +1,3 @@
-import React from 'react';
 import {createRender} from '@quilted/react-testing';
 import type {
   ApiForExtension,

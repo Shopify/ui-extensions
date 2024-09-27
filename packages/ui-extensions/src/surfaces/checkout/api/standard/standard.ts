@@ -1167,17 +1167,7 @@ export interface PaymentOption {
   handle: string;
 }
 
-/**
- * A payment option selected by the buyer.
- */
-export interface SelectedPaymentOption {
-  /**
-   * The unique handle referencing `PaymentOption.handle`.
-   *
-   * Refer to [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/payments#standardapi-propertydetail-availablepaymentoptions).
-   */
-  handle: string;
-}
+export type SelectedPaymentOption = PaymentOption;
 
 export interface CartDiscountCode {
   /**

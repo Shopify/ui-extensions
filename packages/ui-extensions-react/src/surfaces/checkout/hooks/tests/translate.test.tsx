@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {useTranslate} from '../translate';
 
 import {mount} from './mount';
