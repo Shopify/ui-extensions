@@ -20,6 +20,15 @@ export interface GraphQLError {
   };
 }
 
+interface Auth {
+  /**
+   * Retrieves a Shopify OpenID Connect ID token for the current user.
+   */
+  idToken: {
+    get: () => Promise<string | null>;
+  };
+}
+
 /**
  * The following APIs are provided to all extension targets.
  */
@@ -30,6 +39,11 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
   extension: {
     target: ExtensionTarget;
   };
+
+  /**
+   * Provides methods for authenticating calls to an app backend.
+   */
+  auth: Auth;
 
   /**
    * Utilities for translating content according to the current localization of the admin.

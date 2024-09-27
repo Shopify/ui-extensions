@@ -90,7 +90,7 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       title: 'App Authentication',
       sectionContent:
-        "Admin UI extensions can also make authenticated calls to your app's backend. When you use `fetch()` to make a request to your app's configured auth domain or any of its subdomains, an `Authorization` header is automatically added with a Shopify [OpenID Connect ID Token](https://shopify.dev/docs/api/app-bridge-library/reference/id-token). There's no need to manually manage session tokens.\n\nRelative URLs passed to `fetch()` are resolved against your app's `app_url`. This means if your app's backend is on the same domain as your `app_url`, you can make requests to it using `fetch('/path')`.",
+        "Admin UI extensions can also make authenticated calls to your app's backend. When you use `fetch()` to make a request to your app's configured auth domain or any of its subdomains, an `Authorization` header is automatically added with a Shopify [OpenID Connect ID Token](https://shopify.dev/docs/api/app-bridge-library/reference/id-token). There's no need to manually manage ID tokens.\n\nRelative URLs passed to `fetch()` are resolved against your app's `app_url`. This means if your app's backend is on the same domain as your `app_url`, you can make requests to it using `fetch('/path')`.\n\nIf you need to make requests to a different domain, you can use the [`auth.idToken.get()` method](/docs/api/admin-extensions/api/standard-api#standardapi-propertydetail-auth) to retrieve the ID token and manually add it to your request headers.",
       anchorLink: 'app-authentication',
       codeblock: {
         title: "Make requests to your app's backend",
@@ -99,6 +99,11 @@ const data: LandingTemplateSchema = {
             code: './examples/authenticated-fetch.jsx',
             language: 'tsx',
             title: 'Get Product Data',
+          },
+          {
+            code: './examples/custom-authenticated-fetch.jsx',
+            language: 'tsx',
+            title: 'Get Data from a different domain',
           },
         ],
       },
