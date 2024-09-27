@@ -10,7 +10,6 @@ export type {
   SelectedOption,
   Money,
   Shop,
-  Version,
   Metafield,
   AppMetafield,
   AppMetafieldEntryTarget,
@@ -72,7 +71,7 @@ export type {
 export type {CartLineItemApi} from './api/cart-line/cart-line-item';
 
 export type {
-  RendererVersion,
+  Version,
   StandardApi,
   FullExtensionNavigation,
   StandardExtensionNavigation,
