@@ -13,6 +13,7 @@ import type {
   ValidationSettingsApi,
 } from './api';
 import {AnyComponentBuilder} from '../../shared';
+import {PurchaseOptionsCardConfigurationApi} from './api/purchase-options-card-action/purchase-options-card-action';
 
 type CustomerSegmentTemplateComponent = AnyComponentBuilder<
   Pick<
@@ -428,7 +429,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-purchase-option.action.render': RenderExtension<
-    ActionExtensionApi<'admin.product-purchase-option.action.render'>,
+    PurchaseOptionsCardConfigurationApi<'admin.product-purchase-option.action.render'>,
     AllComponents
   >;
 
@@ -438,7 +439,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-variant-purchase-option.action.render': RenderExtension<
-    ActionExtensionApi<'admin.product-variant-purchase-option.action.render'>,
+    PurchaseOptionsCardConfigurationApi<'admin.product-variant-purchase-option.action.render'>,
     AllComponents
   >;
 
