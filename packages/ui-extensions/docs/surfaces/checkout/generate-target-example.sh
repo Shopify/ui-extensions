@@ -36,10 +36,6 @@ case $TARGET in
     TEMPLATE="standard-target.example.template"
     ;;
 
-  *"customer-account.order-status"*)
-    TEMPLATE="order-status-target.example.template"
-    ;;
-
   *)
     echo "No template found for '$TARGET'."
     exit 1;
