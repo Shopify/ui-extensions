@@ -14,7 +14,7 @@ const data: CategoryTemplateSchema = {
           type: 'blocks',
           name: 'Checkout components',
           subtitle: 'More components',
-          url: 'https://shopify.dev/docs/api/checkout-ui-extensions/unstable/components',
+          url: '/docs/api/checkout-ui-extensions/components',
         },
       ],
     },
