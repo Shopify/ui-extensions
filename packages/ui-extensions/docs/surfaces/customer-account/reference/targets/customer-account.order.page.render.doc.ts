@@ -13,8 +13,8 @@ const data: ReferenceEntityTemplateSchema = {
 If the page you're building is not tied to a specific order, use [customer-account.page.render](/docs/api/customer-account-ui-extensions/targets/full-page/customer-account-page-render) instead.
 
 For example:
-- A Return Request page that requires the context of a specific order should use customer-account.order.page.render
-- A Wishlist page that does **not** require the context of a specific order should use customer-account.page.render
+- A Return Request page that requires the context of a specific order should use \`customer-account.order.page.render\`
+- A Wishlist page that does **not** require the context of a specific order should use \`customer-account.page.render\`
 `,
   category: 'Targets',
   isVisualComponent: false,
