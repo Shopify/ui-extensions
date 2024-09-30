@@ -414,6 +414,26 @@ export interface ExtensionTargets {
     ActionExtensionComponents
   >;
 
+  /**
+   * Renders an admin action extension in the product details page when a selling plan group is present. Open this extension from the "Purchase Options card".
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.product-purchase-option.action.render': RenderExtension<
+    ActionExtensionApi<'admin.product-purchase-option.action.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin action extension in the product variant details page when a selling plan group is present. Open this extension from the "Purchase Options card".
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.product-variant-purchase-option.action.render': RenderExtension<
+    ActionExtensionApi<'admin.product-variant-purchase-option.action.render'>,
+    AllComponents
+  >;
+
   // Print actions and bulk print actions
 
   /**
