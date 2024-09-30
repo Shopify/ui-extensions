@@ -1359,16 +1359,6 @@ export interface Customer {
    */
   image: ImageDetails;
   /**
-   * Defines if the customer email accepts marketing activities.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * > Caution: This field is deprecated and will be removed in a future version. Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
-   *
-   * @deprecated Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
-   */
-  acceptsMarketing: boolean;
-  /**
    * Defines if the customer accepts email marketing activities.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
