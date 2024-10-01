@@ -1,5 +1,79 @@
 # @shopify/ui-extensions-react
 
+## 2024.10.0
+
+### Minor Changes
+
+- [#2371](https://github.com/Shopify/ui-extensions/pull/2371) [`28edde440ceee584c71c5ac983252ca71a7f853a`](https://github.com/Shopify/ui-extensions/commit/28edde440ceee584c71c5ac983252ca71a7f853a) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Adds `type` property to `selectedPaymentOption`
+
+- [#2361](https://github.com/Shopify/ui-extensions/pull/2361) [`89438897001dce9058030e6ee1655747a66ec71a`](https://github.com/Shopify/ui-extensions/commit/89438897001dce9058030e6ee1655747a66ec71a) Thanks [@oliverigor](https://github.com/oliverigor)! - Add primary and secondary actions to Modal component
+
+- [#2297](https://github.com/Shopify/ui-extensions/pull/2297) [`7ab538090e8bcef052bfc782b31639efe89ff262`](https://github.com/Shopify/ui-extensions/commit/7ab538090e8bcef052bfc782b31639efe89ff262) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - update generate-doc version, add attributes to Icon
+
+- [#2220](https://github.com/Shopify/ui-extensions/pull/2220) [`9e619fca6ea4f816148c90158b46bc1db5bfbad7`](https://github.com/Shopify/ui-extensions/commit/9e619fca6ea4f816148c90158b46bc1db5bfbad7) Thanks [@LucasLacerdaUX](https://github.com/LucasLacerdaUX)! - Add QRCode component
+
+### Patch Changes
+
+- [#2284](https://github.com/Shopify/ui-extensions/pull/2284) [`f84592931962537d345dfd68bf2a2f2396373740`](https://github.com/Shopify/ui-extensions/commit/f84592931962537d345dfd68bf2a2f2396373740) Thanks [@brianshen1990](https://github.com/brianshen1990)! - expose Switch component to customer account unstable surface
+
+- [#2356](https://github.com/Shopify/ui-extensions/pull/2356) [`a2d458be51a708aeac6a1879554051f98371f908`](https://github.com/Shopify/ui-extensions/commit/a2d458be51a708aeac6a1879554051f98371f908) Thanks [@brianshen1990](https://github.com/brianshen1990)! - add full page navigation api to order full page extension target
+
+- [#2347](https://github.com/Shopify/ui-extensions/pull/2347) [`dd8a861caba591c1087e8349e8a9bbfdc2681cb8`](https://github.com/Shopify/ui-extensions/commit/dd8a861caba591c1087e8349e8a9bbfdc2681cb8) Thanks [@brianshen1990](https://github.com/brianshen1990)! - Add customer-account.order.page.render target
+
+- [#2369](https://github.com/Shopify/ui-extensions/pull/2369) [`7ef1d9cdd37c42277e240eb660e08de54967461c`](https://github.com/Shopify/ui-extensions/commit/7ef1d9cdd37c42277e240eb660e08de54967461c) Thanks [@brianshen1990](https://github.com/brianshen1990)! - update error message for useNavigationCurrentEntry api
+
+- Updated dependencies [[`21234eea51b50dfc53d3fc4962512728b4a19446`](https://github.com/Shopify/ui-extensions/commit/21234eea51b50dfc53d3fc4962512728b4a19446), [`28edde440ceee584c71c5ac983252ca71a7f853a`](https://github.com/Shopify/ui-extensions/commit/28edde440ceee584c71c5ac983252ca71a7f853a), [`89438897001dce9058030e6ee1655747a66ec71a`](https://github.com/Shopify/ui-extensions/commit/89438897001dce9058030e6ee1655747a66ec71a), [`f84592931962537d345dfd68bf2a2f2396373740`](https://github.com/Shopify/ui-extensions/commit/f84592931962537d345dfd68bf2a2f2396373740), [`9347443b76210c2f9f3ce45bb488c38ec08efb6f`](https://github.com/Shopify/ui-extensions/commit/9347443b76210c2f9f3ce45bb488c38ec08efb6f), [`fd4ecf2aef0414e790a4a78ae6a9fa013acbafda`](https://github.com/Shopify/ui-extensions/commit/fd4ecf2aef0414e790a4a78ae6a9fa013acbafda), [`118654e61e393c2885198ab5dafddb4cf4d62669`](https://github.com/Shopify/ui-extensions/commit/118654e61e393c2885198ab5dafddb4cf4d62669), [`4dec3851bf53f6cf289ca8c265cd13f8c123ab06`](https://github.com/Shopify/ui-extensions/commit/4dec3851bf53f6cf289ca8c265cd13f8c123ab06), [`9fe9d56d190fee5ee444ed980a5ef60106dfda12`](https://github.com/Shopify/ui-extensions/commit/9fe9d56d190fee5ee444ed980a5ef60106dfda12), [`7ab538090e8bcef052bfc782b31639efe89ff262`](https://github.com/Shopify/ui-extensions/commit/7ab538090e8bcef052bfc782b31639efe89ff262), [`a2d458be51a708aeac6a1879554051f98371f908`](https://github.com/Shopify/ui-extensions/commit/a2d458be51a708aeac6a1879554051f98371f908), [`8bca1a1710431083b7e98966ec76f3fe17720d5c`](https://github.com/Shopify/ui-extensions/commit/8bca1a1710431083b7e98966ec76f3fe17720d5c), [`a8de80b0e252ebd0c529bfe88d02d2e35e2a0461`](https://github.com/Shopify/ui-extensions/commit/a8de80b0e252ebd0c529bfe88d02d2e35e2a0461), [`dd8a861caba591c1087e8349e8a9bbfdc2681cb8`](https://github.com/Shopify/ui-extensions/commit/dd8a861caba591c1087e8349e8a9bbfdc2681cb8), [`f81712b643430dd1cbdce54b3edf0c80bc0dafe5`](https://github.com/Shopify/ui-extensions/commit/f81712b643430dd1cbdce54b3edf0c80bc0dafe5), [`7ef1d9cdd37c42277e240eb660e08de54967461c`](https://github.com/Shopify/ui-extensions/commit/7ef1d9cdd37c42277e240eb660e08de54967461c), [`37620b9d47f38586c843a9c11a6de2e0461bc0dd`](https://github.com/Shopify/ui-extensions/commit/37620b9d47f38586c843a9c11a6de2e0461bc0dd), [`9e619fca6ea4f816148c90158b46bc1db5bfbad7`](https://github.com/Shopify/ui-extensions/commit/9e619fca6ea4f816148c90158b46bc1db5bfbad7), [`9f7ee640e434bb175b90248c29bb194f321e871a`](https://github.com/Shopify/ui-extensions/commit/9f7ee640e434bb175b90248c29bb194f321e871a), [`d6ac8d4e4180eef5242719bfaffe998441be1aa9`](https://github.com/Shopify/ui-extensions/commit/d6ac8d4e4180eef5242719bfaffe998441be1aa9)]:
+  - @shopify/ui-extensions@2024.10.0
+
+## 2024.7.0
+
+### Minor Changes
+
+- [#1888](https://github.com/Shopify/ui-extensions/pull/1888) [`199a90fef0f4ce90a8f6ae6a8298c9d9c437f2f4`](https://github.com/Shopify/ui-extensions/commit/199a90fef0f4ce90a8f6ae6a8298c9d9c437f2f4) Thanks [@elanalynn](https://github.com/elanalynn)! - Add new block extension targets: collection, draft-order, abandoned-checkout, and product-variant
+
+- [#1981](https://github.com/Shopify/ui-extensions/pull/1981) [`ba2510f0f4737a56abe4171a08b8adea4488f8b4`](https://github.com/Shopify/ui-extensions/commit/ba2510f0f4737a56abe4171a08b8adea4488f8b4) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Updates Order Status API with `processedAt` attribute
+
+- [#1987](https://github.com/Shopify/ui-extensions/pull/1987) [`952489d3c27a2f5c8bcdad29e516480fe71e94e8`](https://github.com/Shopify/ui-extensions/commit/952489d3c27a2f5c8bcdad29e516480fe71e94e8) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - - Adds `useCustomerPrivacy` hook.
+
+- [#2144](https://github.com/Shopify/ui-extensions/pull/2144) [`321749e68edf6d64a82ffe2c4c99d0f19ac4e63c`](https://github.com/Shopify/ui-extensions/commit/321749e68edf6d64a82ffe2c4c99d0f19ac4e63c) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Added `CartInstructions` (accessed using `api.instructions`) to checkout. These represent the cart instructions used to create the checkout and possibly limit extension capabilities. These instructions should be checked prior to performing any actions that may be affected by them.
+
+  For example, if you intend to add a discount code via the `applyDiscountCodeChange` method, check `api.instructions.discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
+
+- [#2067](https://github.com/Shopify/ui-extensions/pull/2067) [`3c3505c16c1deb6f202cbecf6747c0fdc6b79228`](https://github.com/Shopify/ui-extensions/commit/3c3505c16c1deb6f202cbecf6747c0fdc6b79228) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Support split shipping in Shipping option list and item targets.
+
+- [#1924](https://github.com/Shopify/ui-extensions/pull/1924) [`a4f275abcb0c0166e0383fc5c1ed544b938def29`](https://github.com/Shopify/ui-extensions/commit/a4f275abcb0c0166e0383fc5c1ed544b938def29) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - - Adds the ability to read and write tracking consent metafield data to the Customer Privacy API.
+
+  - Updates the `Sheet` component and examples.
+
+- [#1807](https://github.com/Shopify/ui-extensions/pull/1807) [`08067cbba140d72f115e38f218dd0caead13f0d5`](https://github.com/Shopify/ui-extensions/commit/08067cbba140d72f115e38f218dd0caead13f0d5) Thanks [@nataliejeong](https://github.com/nataliejeong)! - Add Extension Target for Reorder Flow
+
+- [#2040](https://github.com/Shopify/ui-extensions/pull/2040) [`c8d876e83f3144361e09c375c3dc89af2029655b`](https://github.com/Shopify/ui-extensions/commit/c8d876e83f3144361e09c375c3dc89af2029655b) Thanks [@elanalynn](https://github.com/elanalynn)! - Add AdminPrintAction component
+
+- [#2065](https://github.com/Shopify/ui-extensions/pull/2065) [`c2c51b82135fadf9dd4a2b1ad95dc59cabd9064c`](https://github.com/Shopify/ui-extensions/commit/c2c51b82135fadf9dd4a2b1ad95dc59cabd9064c) Thanks [@elanalynn](https://github.com/elanalynn)! - Add admin print action targets
+
+- [#2118](https://github.com/Shopify/ui-extensions/pull/2118) [`0016e7e5031934e21b26398958d69b97a20ccebd`](https://github.com/Shopify/ui-extensions/commit/0016e7e5031934e21b26398958d69b97a20ccebd) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - - Adds `oneTimeUse` to `ShippingAddress` to denote whether the address can be saved in checkout.
+
+  - Adds `sku` to `ProductVariant` in checkout.
+  - Adds `bullet` icon in checkout.
+
+- [#1916](https://github.com/Shopify/ui-extensions/pull/1916) [`f9a593edd7bc6ea9f46f3927efd3b9fa6ebc5b5a`](https://github.com/Shopify/ui-extensions/commit/f9a593edd7bc6ea9f46f3927efd3b9fa6ebc5b5a) Thanks [@mleandres](https://github.com/mleandres)! - - Adds `purchase.address-autocomplete.suggest` extension target
+  - Adds the `primaryAction` and `secondaryAction` to the `Sheet` component
+
+### Patch Changes
+
+- [#2015](https://github.com/Shopify/ui-extensions/pull/2015) [`5ded8d2cb5d9ae502aa75183714f84dc92b820ea`](https://github.com/Shopify/ui-extensions/commit/5ded8d2cb5d9ae502aa75183714f84dc92b820ea) Thanks [@PSalmers](https://github.com/PSalmers)! - Homogenizes terminology to use the term "placement" in place of "supported location", "placement reference", and others.
+
+- [#2037](https://github.com/Shopify/ui-extensions/pull/2037) [`0fd33b35c651b89d24c4fc560f376e91658d70a6`](https://github.com/Shopify/ui-extensions/commit/0fd33b35c651b89d24c4fc560f376e91658d70a6) Thanks [@brianshen1990](https://github.com/brianshen1990)! - add authenticationState api to customer account ui extension
+
+- [#2053](https://github.com/Shopify/ui-extensions/pull/2053) [`9c1777d48e0d81fea811cfbcd9764e98cf65778d`](https://github.com/Shopify/ui-extensions/commit/9c1777d48e0d81fea811cfbcd9764e98cf65778d) Thanks [@ncardeli](https://github.com/ncardeli)! - Publish display property
+
+- [#2014](https://github.com/Shopify/ui-extensions/pull/2014) [`ac077c8becee6f02fbb4fd9f04d029dbf9b838f2`](https://github.com/Shopify/ui-extensions/commit/ac077c8becee6f02fbb4fd9f04d029dbf9b838f2) Thanks [@oliverigor](https://github.com/oliverigor)! - Add Switch component
+
+- [#1942](https://github.com/Shopify/ui-extensions/pull/1942) [`b086046068ccb984b37c92a4e17378ada1774524`](https://github.com/Shopify/ui-extensions/commit/b086046068ccb984b37c92a4e17378ada1774524) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Improve error messaging when a React hook is used from a different API surface than the extension calling it.
+
+- Updated dependencies [[`5ded8d2cb5d9ae502aa75183714f84dc92b820ea`](https://github.com/Shopify/ui-extensions/commit/5ded8d2cb5d9ae502aa75183714f84dc92b820ea), [`199a90fef0f4ce90a8f6ae6a8298c9d9c437f2f4`](https://github.com/Shopify/ui-extensions/commit/199a90fef0f4ce90a8f6ae6a8298c9d9c437f2f4), [`ba2510f0f4737a56abe4171a08b8adea4488f8b4`](https://github.com/Shopify/ui-extensions/commit/ba2510f0f4737a56abe4171a08b8adea4488f8b4), [`952489d3c27a2f5c8bcdad29e516480fe71e94e8`](https://github.com/Shopify/ui-extensions/commit/952489d3c27a2f5c8bcdad29e516480fe71e94e8), [`321749e68edf6d64a82ffe2c4c99d0f19ac4e63c`](https://github.com/Shopify/ui-extensions/commit/321749e68edf6d64a82ffe2c4c99d0f19ac4e63c), [`a87b8f3ac19ba9db78ed5933c2e0099195dc8c5b`](https://github.com/Shopify/ui-extensions/commit/a87b8f3ac19ba9db78ed5933c2e0099195dc8c5b), [`47512e33ddfb3d99a48fbcebdd20647cbc149fd7`](https://github.com/Shopify/ui-extensions/commit/47512e33ddfb3d99a48fbcebdd20647cbc149fd7), [`3c3505c16c1deb6f202cbecf6747c0fdc6b79228`](https://github.com/Shopify/ui-extensions/commit/3c3505c16c1deb6f202cbecf6747c0fdc6b79228), [`0c05f0d17d91a9cb7ad61f1806d7d0a20bd09912`](https://github.com/Shopify/ui-extensions/commit/0c05f0d17d91a9cb7ad61f1806d7d0a20bd09912), [`c30a9639a5209862f4177f26ef3bc26e299c3c7b`](https://github.com/Shopify/ui-extensions/commit/c30a9639a5209862f4177f26ef3bc26e299c3c7b), [`0fd33b35c651b89d24c4fc560f376e91658d70a6`](https://github.com/Shopify/ui-extensions/commit/0fd33b35c651b89d24c4fc560f376e91658d70a6), [`a4f275abcb0c0166e0383fc5c1ed544b938def29`](https://github.com/Shopify/ui-extensions/commit/a4f275abcb0c0166e0383fc5c1ed544b938def29), [`9c1777d48e0d81fea811cfbcd9764e98cf65778d`](https://github.com/Shopify/ui-extensions/commit/9c1777d48e0d81fea811cfbcd9764e98cf65778d), [`08067cbba140d72f115e38f218dd0caead13f0d5`](https://github.com/Shopify/ui-extensions/commit/08067cbba140d72f115e38f218dd0caead13f0d5), [`ac077c8becee6f02fbb4fd9f04d029dbf9b838f2`](https://github.com/Shopify/ui-extensions/commit/ac077c8becee6f02fbb4fd9f04d029dbf9b838f2), [`bf839358269255bb6a86fd9a64295b4ea89d6004`](https://github.com/Shopify/ui-extensions/commit/bf839358269255bb6a86fd9a64295b4ea89d6004), [`c8d876e83f3144361e09c375c3dc89af2029655b`](https://github.com/Shopify/ui-extensions/commit/c8d876e83f3144361e09c375c3dc89af2029655b), [`c2c51b82135fadf9dd4a2b1ad95dc59cabd9064c`](https://github.com/Shopify/ui-extensions/commit/c2c51b82135fadf9dd4a2b1ad95dc59cabd9064c), [`b086046068ccb984b37c92a4e17378ada1774524`](https://github.com/Shopify/ui-extensions/commit/b086046068ccb984b37c92a4e17378ada1774524), [`0016e7e5031934e21b26398958d69b97a20ccebd`](https://github.com/Shopify/ui-extensions/commit/0016e7e5031934e21b26398958d69b97a20ccebd), [`a744908ee0cedbc627a7bfac18294f34cad8746d`](https://github.com/Shopify/ui-extensions/commit/a744908ee0cedbc627a7bfac18294f34cad8746d), [`f9a593edd7bc6ea9f46f3927efd3b9fa6ebc5b5a`](https://github.com/Shopify/ui-extensions/commit/f9a593edd7bc6ea9f46f3927efd3b9fa6ebc5b5a)]:
+  - @shopify/ui-extensions@2024.7.0
+
 ## 2024.4.0
 
 ### Minor Changes
