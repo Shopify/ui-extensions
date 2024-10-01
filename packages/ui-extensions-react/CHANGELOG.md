@@ -1,6 +1,6 @@
 # @shopify/ui-extensions-react
 
-## 0.0.0
+## 2024.10.0
 
 ### Minor Changes
 
@@ -23,7 +23,7 @@
 - [#2369](https://github.com/Shopify/ui-extensions/pull/2369) [`7ef1d9cdd37c42277e240eb660e08de54967461c`](https://github.com/Shopify/ui-extensions/commit/7ef1d9cdd37c42277e240eb660e08de54967461c) Thanks [@brianshen1990](https://github.com/brianshen1990)! - update error message for useNavigationCurrentEntry api
 
 - Updated dependencies [[`21234eea51b50dfc53d3fc4962512728b4a19446`](https://github.com/Shopify/ui-extensions/commit/21234eea51b50dfc53d3fc4962512728b4a19446), [`28edde440ceee584c71c5ac983252ca71a7f853a`](https://github.com/Shopify/ui-extensions/commit/28edde440ceee584c71c5ac983252ca71a7f853a), [`89438897001dce9058030e6ee1655747a66ec71a`](https://github.com/Shopify/ui-extensions/commit/89438897001dce9058030e6ee1655747a66ec71a), [`f84592931962537d345dfd68bf2a2f2396373740`](https://github.com/Shopify/ui-extensions/commit/f84592931962537d345dfd68bf2a2f2396373740), [`9347443b76210c2f9f3ce45bb488c38ec08efb6f`](https://github.com/Shopify/ui-extensions/commit/9347443b76210c2f9f3ce45bb488c38ec08efb6f), [`fd4ecf2aef0414e790a4a78ae6a9fa013acbafda`](https://github.com/Shopify/ui-extensions/commit/fd4ecf2aef0414e790a4a78ae6a9fa013acbafda), [`118654e61e393c2885198ab5dafddb4cf4d62669`](https://github.com/Shopify/ui-extensions/commit/118654e61e393c2885198ab5dafddb4cf4d62669), [`4dec3851bf53f6cf289ca8c265cd13f8c123ab06`](https://github.com/Shopify/ui-extensions/commit/4dec3851bf53f6cf289ca8c265cd13f8c123ab06), [`9fe9d56d190fee5ee444ed980a5ef60106dfda12`](https://github.com/Shopify/ui-extensions/commit/9fe9d56d190fee5ee444ed980a5ef60106dfda12), [`7ab538090e8bcef052bfc782b31639efe89ff262`](https://github.com/Shopify/ui-extensions/commit/7ab538090e8bcef052bfc782b31639efe89ff262), [`a2d458be51a708aeac6a1879554051f98371f908`](https://github.com/Shopify/ui-extensions/commit/a2d458be51a708aeac6a1879554051f98371f908), [`8bca1a1710431083b7e98966ec76f3fe17720d5c`](https://github.com/Shopify/ui-extensions/commit/8bca1a1710431083b7e98966ec76f3fe17720d5c), [`a8de80b0e252ebd0c529bfe88d02d2e35e2a0461`](https://github.com/Shopify/ui-extensions/commit/a8de80b0e252ebd0c529bfe88d02d2e35e2a0461), [`dd8a861caba591c1087e8349e8a9bbfdc2681cb8`](https://github.com/Shopify/ui-extensions/commit/dd8a861caba591c1087e8349e8a9bbfdc2681cb8), [`f81712b643430dd1cbdce54b3edf0c80bc0dafe5`](https://github.com/Shopify/ui-extensions/commit/f81712b643430dd1cbdce54b3edf0c80bc0dafe5), [`7ef1d9cdd37c42277e240eb660e08de54967461c`](https://github.com/Shopify/ui-extensions/commit/7ef1d9cdd37c42277e240eb660e08de54967461c), [`37620b9d47f38586c843a9c11a6de2e0461bc0dd`](https://github.com/Shopify/ui-extensions/commit/37620b9d47f38586c843a9c11a6de2e0461bc0dd), [`9e619fca6ea4f816148c90158b46bc1db5bfbad7`](https://github.com/Shopify/ui-extensions/commit/9e619fca6ea4f816148c90158b46bc1db5bfbad7), [`9f7ee640e434bb175b90248c29bb194f321e871a`](https://github.com/Shopify/ui-extensions/commit/9f7ee640e434bb175b90248c29bb194f321e871a), [`d6ac8d4e4180eef5242719bfaffe998441be1aa9`](https://github.com/Shopify/ui-extensions/commit/d6ac8d4e4180eef5242719bfaffe998441be1aa9)]:
-  - @shopify/ui-extensions@0.0.0
+  - @shopify/ui-extensions@2024.10.0
 
 ## 2024.4.0
 
