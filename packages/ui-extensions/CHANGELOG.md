@@ -1,5 +1,53 @@
 # @shopify/ui-extensions
 
+## 0.0.0
+
+### Major Changes
+
+- [#2374](https://github.com/Shopify/ui-extensions/pull/2374) [`4dec3851bf53f6cf289ca8c265cd13f8c123ab06`](https://github.com/Shopify/ui-extensions/commit/4dec3851bf53f6cf289ca8c265cd13f8c123ab06) Thanks [@robin-drexler](https://github.com/robin-drexler)! - customer account ui extensions order status `shop.storefrontUrl` does not contain a trailing slash anymore
+
+### Minor Changes
+
+- [#2307](https://github.com/Shopify/ui-extensions/pull/2307) [`21234eea51b50dfc53d3fc4962512728b4a19446`](https://github.com/Shopify/ui-extensions/commit/21234eea51b50dfc53d3fc4962512728b4a19446) Thanks [@oliverigor](https://github.com/oliverigor)! - Add size property to Modal
+
+- [#2371](https://github.com/Shopify/ui-extensions/pull/2371) [`28edde440ceee584c71c5ac983252ca71a7f853a`](https://github.com/Shopify/ui-extensions/commit/28edde440ceee584c71c5ac983252ca71a7f853a) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Adds `type` property to `selectedPaymentOption`
+
+- [#2361](https://github.com/Shopify/ui-extensions/pull/2361) [`89438897001dce9058030e6ee1655747a66ec71a`](https://github.com/Shopify/ui-extensions/commit/89438897001dce9058030e6ee1655747a66ec71a) Thanks [@oliverigor](https://github.com/oliverigor)! - Add primary and secondary actions to Modal component
+
+- [#2294](https://github.com/Shopify/ui-extensions/pull/2294) [`fd4ecf2aef0414e790a4a78ae6a9fa013acbafda`](https://github.com/Shopify/ui-extensions/commit/fd4ecf2aef0414e790a4a78ae6a9fa013acbafda) Thanks [@Fionoble](https://github.com/Fionoble)! - Add currencyCode to admin MoneyField component
+
+- [#2285](https://github.com/Shopify/ui-extensions/pull/2285) [`118654e61e393c2885198ab5dafddb4cf4d62669`](https://github.com/Shopify/ui-extensions/commit/118654e61e393c2885198ab5dafddb4cf4d62669) Thanks [@Fionoble](https://github.com/Fionoble)! - Add suffix to NumberField and TextField
+
+- [#2362](https://github.com/Shopify/ui-extensions/pull/2362) [`9fe9d56d190fee5ee444ed980a5ef60106dfda12`](https://github.com/Shopify/ui-extensions/commit/9fe9d56d190fee5ee444ed980a5ef60106dfda12) Thanks [@billfienberg](https://github.com/billfienberg)! - add accessibilityLabel to admin's Button
+
+- [#2297](https://github.com/Shopify/ui-extensions/pull/2297) [`7ab538090e8bcef052bfc782b31639efe89ff262`](https://github.com/Shopify/ui-extensions/commit/7ab538090e8bcef052bfc782b31639efe89ff262) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - update generate-doc version, add attributes to Icon
+
+- [#2247](https://github.com/Shopify/ui-extensions/pull/2247) [`8bca1a1710431083b7e98966ec76f3fe17720d5c`](https://github.com/Shopify/ui-extensions/commit/8bca1a1710431083b7e98966ec76f3fe17720d5c) Thanks [@belalsj](https://github.com/belalsj)! - New Action Extension targets: Catalog, Company, Gift Card
+
+- [#2197](https://github.com/Shopify/ui-extensions/pull/2197) [`a8de80b0e252ebd0c529bfe88d02d2e35e2a0461`](https://github.com/Shopify/ui-extensions/commit/a8de80b0e252ebd0c529bfe88d02d2e35e2a0461) Thanks [@klenotiw](https://github.com/klenotiw)! - Add metafields to PickupPointOption
+
+- [#2211](https://github.com/Shopify/ui-extensions/pull/2211) [`f81712b643430dd1cbdce54b3edf0c80bc0dafe5`](https://github.com/Shopify/ui-extensions/commit/f81712b643430dd1cbdce54b3edf0c80bc0dafe5) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Address autocomplete extensions now support 'company', 'latitude', and 'longitude' values
+
+- [#2358](https://github.com/Shopify/ui-extensions/pull/2358) [`37620b9d47f38586c843a9c11a6de2e0461bc0dd`](https://github.com/Shopify/ui-extensions/commit/37620b9d47f38586c843a9c11a6de2e0461bc0dd) Thanks [@Fionoble](https://github.com/Fionoble)! - Add display:none to Box
+
+- [#2220](https://github.com/Shopify/ui-extensions/pull/2220) [`9e619fca6ea4f816148c90158b46bc1db5bfbad7`](https://github.com/Shopify/ui-extensions/commit/9e619fca6ea4f816148c90158b46bc1db5bfbad7) Thanks [@LucasLacerdaUX](https://github.com/LucasLacerdaUX)! - Add QRCode component
+
+### Patch Changes
+
+- [#2284](https://github.com/Shopify/ui-extensions/pull/2284) [`f84592931962537d345dfd68bf2a2f2396373740`](https://github.com/Shopify/ui-extensions/commit/f84592931962537d345dfd68bf2a2f2396373740) Thanks [@brianshen1990](https://github.com/brianshen1990)! - expose Switch component to customer account unstable surface
+
+- [#2385](https://github.com/Shopify/ui-extensions/pull/2385) [`9347443b76210c2f9f3ce45bb488c38ec08efb6f`](https://github.com/Shopify/ui-extensions/commit/9347443b76210c2f9f3ce45bb488c38ec08efb6f) Thanks [@jplhomer](https://github.com/jplhomer)! - Add missing documentation for `auth.idToken()` API
+
+- [#2356](https://github.com/Shopify/ui-extensions/pull/2356) [`a2d458be51a708aeac6a1879554051f98371f908`](https://github.com/Shopify/ui-extensions/commit/a2d458be51a708aeac6a1879554051f98371f908) Thanks [@brianshen1990](https://github.com/brianshen1990)! - add full page navigation api to order full page extension target
+
+- [#2347](https://github.com/Shopify/ui-extensions/pull/2347) [`dd8a861caba591c1087e8349e8a9bbfdc2681cb8`](https://github.com/Shopify/ui-extensions/commit/dd8a861caba591c1087e8349e8a9bbfdc2681cb8) Thanks [@brianshen1990](https://github.com/brianshen1990)! - Add customer-account.order.page.render target
+
+- [#2369](https://github.com/Shopify/ui-extensions/pull/2369) [`7ef1d9cdd37c42277e240eb660e08de54967461c`](https://github.com/Shopify/ui-extensions/commit/7ef1d9cdd37c42277e240eb660e08de54967461c) Thanks [@brianshen1990](https://github.com/brianshen1990)! - update error message for useNavigationCurrentEntry api
+
+- [#2132](https://github.com/Shopify/ui-extensions/pull/2132) [`9f7ee640e434bb175b90248c29bb194f321e871a`](https://github.com/Shopify/ui-extensions/commit/9f7ee640e434bb175b90248c29bb194f321e871a) Thanks [@ncardeli](https://github.com/ncardeli)! - Improve TypeScript definition for the Position type used by the position property
+
+- [#2252](https://github.com/Shopify/ui-extensions/pull/2252) [`d6ac8d4e4180eef5242719bfaffe998441be1aa9`](https://github.com/Shopify/ui-extensions/commit/d6ac8d4e4180eef5242719bfaffe998441be1aa9) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Add admin company location block
+
 ## 2024.4.0
 
 ### Minor Changes
