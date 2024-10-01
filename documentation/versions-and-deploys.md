@@ -54,4 +54,4 @@ To create a new stable version, you will need to follow these steps:
 1. Update the [`LATEST_STABLE_VERSION`](https://github.com/Shopify/ui-extensions/settings/variables/actions) repository variable to your stable version (i.e. `2025-01`). This ensures means it will be marked with a `latest` npm dist-tag on NPM.
 1. Merge the PR, and let robots release the new versions to NPM and tag it appropriately.
 1. For any changes from `unstable` that have been incorporated into the new version, delete their changeset files on the `unstable` branch and replace the existing `CHANGELOG.md` files in `unstable` with what was just shipped.
-1. Send a message to the [#ui-extensions-api-releases](https://shopify.enterprise.slack.com/archives/C0683EBQ55M) channel announcing the release. Let teams know that now is the time to update their section's docs and update the CLI templates.
+1. Send a message announcing the release. Let teams know that now is the time to update their section's docs and CLI templates.
