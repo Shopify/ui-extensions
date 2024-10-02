@@ -3,7 +3,7 @@ import type {LandingTemplateSchema} from '@shopify/generate-docs';
 const exampleCodePath = '../reference/examples/cart-instructions';
 
 const data: LandingTemplateSchema = {
-  title: 'Updating to 2024-07',
+  title: 'Updating to 2024-10',
   description: `
 Some checkouts may be created with [cart instructions](/docs/api/checkout-ui-extensions/apis/cart-instructions) that prevent buyers from making certain changes to their checkout.
 
