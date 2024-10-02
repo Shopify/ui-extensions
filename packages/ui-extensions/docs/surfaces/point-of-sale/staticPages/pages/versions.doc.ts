@@ -25,7 +25,7 @@ const data: LandingTemplateSchema = {
 ### Features
 
 - Added support for iOS debugging with the Safari dev tools.
-- Added support for windowed modals.
+- On iOS, modals now appear in windowed mode.
 - Introduced a [POSBlock component](/docs/api/pos-ui-extensions/components/POSBlock). It's the required parent component for block extension targets.
 - Introduced a [POSBlockRow component](/docs/api/pos-ui-extensions/components/POSBlockRow). It's the required child component for POSBlock, and can be used to wrap other components.
 - Added support for the ${TargetLink.PosProductDetailsBlockRender} target.
