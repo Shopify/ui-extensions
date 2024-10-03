@@ -254,15 +254,15 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
           \nSee all [extension targets](/docs/api/customer-account-ui-extensions/targets).`,
           image: 'target-overview-full-page-extension.png',
           altText:
-            'A desktop view of the header and footer of customer accounts. The entire main content area between the header and footer is occupied by a large blue dotted-line box that says Full-page extension, indicating that this area can be populated by a full-page customer account UI extension.',
+            'A desktop view of the customer-account.page.render full-page extension target that renders between the header and footer.',
         },
         {
           title: 'Full-page extension (order-specific)',
           description: `This full-page extension target is for building pages that are tied to a specific order. For example, a Request Return page. 
           \nSee all [extension targets](/docs/api/customer-account-ui-extensions/targets).`,
-          image: 'target-overview-full-page-extension.png',
+          image: 'target-overview-full-page-order-specific-extension.png',
           altText:
-            'A desktop view of the header and footer of customer accounts. The entire main content area between the header and footer is occupied by a large blue dotted-line box that says Full-page extension, indicating that this area can be populated by a full-page customer account UI extension.',
+            'A desktop view of the customer-account.order.page.render full-page extension target that renders between the header and footer.',
         },
       ],
     },
