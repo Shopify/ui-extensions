@@ -45,6 +45,11 @@ export type {
 } from './api/draft-order-api/draft-order-api';
 
 export type {
+  PrinterApi,
+  PrinterApiContent,
+} from './api/printer-api/printer-api';
+
+export type {
   PaginationParams,
   ProductSortType,
   ProductSearchParams,

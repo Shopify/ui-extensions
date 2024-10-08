@@ -54,6 +54,8 @@ export {POSBlock} from './components/POSBlock/POSBlock';
 export type {POSBlockProps} from './components/POSBlock/POSBlock';
 export {POSBlockRow} from './components/POSBlock/POSBlockRow';
 export type {POSBlockRowProps} from './components/POSBlock/POSBlockRow';
+export {PrintPreview} from './components/PrintPreview/PrintPreview';
+export type {PrintPreviewProps} from './components/PrintPreview/PrintPreview';
 export {RadioButtonList} from './components/RadioButtonList/RadioButtonList';
 export type {RadioButtonListProps} from './components/RadioButtonList/RadioButtonList';
 export {Screen} from './components/Screen/Screen';
