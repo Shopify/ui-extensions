@@ -89,6 +89,16 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * Renders an admin block in the discount details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.discount-details.function-settings.render': RenderExtension<
+    BlockExtensionApi<'admin.discount-details.function-settings.render'>,
+    AllComponents
+  >;
+
+  /**
    * Renders an admin block in the customer details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
