@@ -6,7 +6,7 @@ import {
   CartApi,
   CustomerApi,
 } from './api';
-import {RenderExtension} from './extension';
+import {CodeExtension, RenderExtension} from './extension';
 import type {Components} from './shared';
 import {AnyComponentBuilder} from '../../shared';
 import {ActionApi} from './api/action-api/action-api';
@@ -136,6 +136,7 @@ export interface ExtensionTargets {
       ActionApi,
     BlockComponents
   >;
+  'pos.data.code.cart.updated.run': CodeExtension<CartApi>;
 }
 
 export type ExtensionTarget = keyof ExtensionTargets;
