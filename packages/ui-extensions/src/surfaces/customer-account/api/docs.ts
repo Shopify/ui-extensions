@@ -111,7 +111,7 @@ export interface Docs_ResourceItem_Button_Action
     | 'loadingLabel'
     | 'disabled'
     | 'accessibilityLabel'
-    | 'kind'
+    | 'appearance'
   > {}
 
 export interface Docs_Menu_Button_Action
