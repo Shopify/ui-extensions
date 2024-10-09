@@ -29,6 +29,10 @@ export interface RenderExtension<
   ): void | Promise<void>;
 }
 
+export interface CodeExtension<Api> {
+  (api: Api): void | Promise<void>;
+}
+
 export interface RenderExtensionWithRemoteRoot<
   Api,
   AllowedComponents extends RemoteComponentType<

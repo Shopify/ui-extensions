@@ -16,6 +16,7 @@ export enum ExtensionTargetType {
   PosDraftOrderDetailsActionMenuItemRender = 'pos.draft-order-details.action.menu-item.render',
   PosDraftOrderDetailsActionRender = 'pos.draft-order-details.action.render',
   PosDraftOrderDetailsBlockRender = 'pos.draft-order-details.block.render',
+  PosDataCodeCheckoutUpdatedRun = 'pos.data.code.cart.updated.run',
 }
 
 export enum TargetLink {
