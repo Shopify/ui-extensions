@@ -39,6 +39,20 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
     },
     {
       type: 'Generic',
+      anchorLink: '202501',
+      title: '2025.01',
+      sectionContent: `
+- Added in POS version: N/A
+- Removed in POS version: N/A
+- Release day: 1/1/2025
+
+### Features
+
+- Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/apis/formatted-text-field) component.
+      `,
+    },
+    {
+      type: 'Generic',
       anchorLink: '202410',
       title: '2024.10',
       sectionContent: `
