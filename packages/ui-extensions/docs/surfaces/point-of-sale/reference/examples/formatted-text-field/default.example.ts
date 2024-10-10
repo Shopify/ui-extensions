@@ -13,8 +13,8 @@ export default extension(
     const homeScreen = root.createComponent(
       Screen,
       {
-        name: 'Home',
-        title: 'Home',
+        name: 'FormattedTextField',
+        title: 'FormattedTextField Example',
       },
     );
 

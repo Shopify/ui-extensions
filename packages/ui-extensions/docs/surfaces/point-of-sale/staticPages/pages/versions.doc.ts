@@ -15,6 +15,44 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
+      anchorLink: 'support-policy',
+      title: 'Support Policy',
+      sectionContent: '',
+      sectionNotice: [
+        {
+          title: 'End of Support Plan',
+          type: 'Warning',
+          sectionContent: `
+          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end support for versions on a one-year rolling basis. This table details the end of support schedule.
+
+|released version|removed versions|
+|---:|---|
+|2025-04|1.0.0, 1.0.1, 1.1.2, 1.2.0, 1.3.0, 1.4.0, 1.5.1, 1.6.0, 1.7.0, 2024-04|
+|2025-07|2024-07|
+|2025-10|2024-10|
+|2026-01|2025-01|
+|2026-04|2025-04|
+
+Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.`,
+        },
+      ],
+    },
+    {
+      type: 'Generic',
+      anchorLink: '202501',
+      title: '2025.01',
+      sectionContent: `
+- Added in POS version: N/A
+- Removed in POS version: N/A
+- Release day: 1/1/2025
+
+### Features
+
+- Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/apis/formatted-text-field) component.
+      `,
+    },
+    {
+      type: 'Generic',
       anchorLink: '202410',
       title: '2024.10',
       sectionContent: `

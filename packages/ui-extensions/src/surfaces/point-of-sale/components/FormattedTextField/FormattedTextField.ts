@@ -20,15 +20,6 @@ export interface FormattedTextFieldProps extends BaseTextFieldProps {
    * Dictates when the text should be auto-capitalized.
    */
   autoCapitalize?: AutoCapitalizationType;
-  /**
-   * **Warning:** This callback is currently broken and will not work as intended.
-   *
-   * Custom validator function to determine the validity of an entered value.
-   *
-   * @deprecated This callback will be removed in version 2025-01.
-   * Please update your code to avoid using this feature.
-   */
-  customValidator?: (text: string) => boolean;
 }
 
 export const FormattedTextField = createRemoteComponent<

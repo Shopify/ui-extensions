@@ -15,8 +15,8 @@ const SmartGridModal = () => {
   return (
     <Navigator>
       <Screen
-        name="TextArea"
-        title="Text Area Example"
+        name="FormattedTextField"
+        title="FormattedTextField Example"
       >
         <ScrollView>
           <FormattedTextField
