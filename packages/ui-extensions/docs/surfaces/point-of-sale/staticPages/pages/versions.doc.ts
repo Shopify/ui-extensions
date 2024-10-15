@@ -49,6 +49,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 ### Features
 
 - Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/apis/formatted-text-field) component.
+- Added [PrintApi](/docs/api/pos-ui-extensions/apis/print-api) and a [PrintPreview](/docs/api/pos-ui-extensions/components/printpreview) component.
       `,
     },
     {
