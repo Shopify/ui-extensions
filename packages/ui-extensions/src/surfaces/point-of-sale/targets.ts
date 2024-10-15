@@ -154,20 +154,20 @@ export interface ExtensionTargets {
     ActionComponents
   >;
   'pos.global.compliance.checkout': RenderExtension<
-    StandardApi<'pos.global.compliance.checkout'> & ActionApi,
-    ActionComponents
+    StandardApi<'pos.global.compliance.checkout'> & CartApi,
+    BasicComponents
   >;
   'pos.global.compliance.cash_tracking': RenderExtension<
-    StandardApi<'pos.global.compliance.cash_tracking'> & ActionApi,
-    ActionComponents
+    StandardApi<'pos.global.compliance.cash_tracking'> & CartApi,
+    BasicComponents
   >;
   'pos.global.compliance.receipt': RenderExtension<
-    StandardApi<'pos.global.compliance.receipt'> & ActionApi,
-    ActionComponents
+    StandardApi<'pos.global.compliance.receipt'> & CartApi,
+    BasicComponents
   >;
   'pos.global.compliance.debug': RenderExtension<
-    StandardApi<'pos.global.compliance.debug'> & ActionApi,
-    ActionComponents
+    StandardApi<'pos.global.compliance.debug'> & CartApi,
+    BasicComponents
   >;
   // #region Headless
   'pos.headless.product.add': RenderExtension<
