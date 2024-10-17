@@ -1,5 +1,5 @@
-import {HeadingGroup as BaseHeadingGroup} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const HeadingGroup = createRemoteReactComponent(BaseHeadingGroup);
 export type {HeadingGroupProps} from '@shopify/ui-extensions/admin';
+
+export const HeadingGroup = createRemoteComponent('ui-heading-group');

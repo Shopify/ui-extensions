@@ -1,13 +1,5 @@
-import {AdminAction as BaseAdminAction} from '@shopify/ui-extensions/admin';
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const AdminAction = createRemoteReactComponent(BaseAdminAction, {
-  fragmentProps: ['primaryAction', 'secondaryAction'],
-});
+export type {AdminActionProps} from '@shopify/ui-extensions/admin';
 
-export type AdminActionProps = ReactPropsFromRemoteComponentType<
-  typeof BaseAdminAction
->;
+export const AdminAction = createRemoteComponent('ui-admin-action');

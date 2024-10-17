@@ -1,11 +1,11 @@
-import {Select as BaseSelect} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const Select = createRemoteReactComponent(BaseSelect);
 export type {
   SelectProps,
-  OptionProps,
-  OptionGroupProps,
   OptionDescription,
   OptionGroupDescription,
+  OptionGroupProps,
+  OptionProps,
 } from '@shopify/ui-extensions/admin';
+
+export const Select = createRemoteComponent('ui-select');

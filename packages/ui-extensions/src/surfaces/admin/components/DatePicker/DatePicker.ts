@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 export interface DatePickerProps<T extends Selected> {
   /**
    * [Controlled](https://reactjs.org/docs/forms.html#controlled-components) year and month to display.
@@ -93,8 +91,3 @@ export interface Range {
    */
   end?: DateString;
 }
-
-export const DatePicker = createRemoteComponent<
-  'DatePicker',
-  DatePickerProps<Selected>
->('DatePicker');

@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import type {AccessibilityRole, AnchorProps} from '../shared';
 
 export type ButtonProps = ButtonBaseProps | ButtonAnchorProps;
@@ -115,5 +114,3 @@ interface ButtonAnchorProps extends CommonProps {
    */
   onPress?: AnchorProps['onClick'];
 }
-
-export const Button = createRemoteComponent<'Button', ButtonProps>('Button');

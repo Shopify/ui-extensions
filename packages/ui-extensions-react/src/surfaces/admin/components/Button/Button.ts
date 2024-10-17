@@ -1,8 +1,5 @@
-import {Button as BaseButton} from '@shopify/ui-extensions/admin';
-import type {ButtonProps} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const Button = createRemoteReactComponent<'Button', ButtonProps>(
-  BaseButton,
-);
 export type {ButtonProps} from '@shopify/ui-extensions/admin';
+
+export const Button = createRemoteComponent('ui-button');

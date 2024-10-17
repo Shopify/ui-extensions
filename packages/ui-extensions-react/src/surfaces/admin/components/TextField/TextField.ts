@@ -1,5 +1,5 @@
-import {TextField as BaseTextField} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const TextField = createRemoteReactComponent(BaseTextField);
 export type {TextFieldProps} from '@shopify/ui-extensions/admin';
+
+export const TextField = createRemoteComponent('ui-text-field');

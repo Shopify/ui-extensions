@@ -1,5 +1,5 @@
-import {Heading as BaseHeading} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const Heading = createRemoteReactComponent(BaseHeading);
 export type {HeadingProps} from '@shopify/ui-extensions/admin';
+
+export const Heading = createRemoteComponent('ui-heading');

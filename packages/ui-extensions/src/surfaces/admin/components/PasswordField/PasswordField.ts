@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import {
   AutocompleteProps,
   AnyAutocompleteField,
@@ -15,8 +14,3 @@ export type PasswordAutocompleteField = Extract<
   AnyAutocompleteField,
   'new-password' | 'current-password'
 >;
-
-export const PasswordField = createRemoteComponent<
-  'PasswordField',
-  PasswordFieldProps
->('PasswordField');

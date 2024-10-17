@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import type {
   AccessibilityRoleProps,
   PaddingProps,
@@ -11,5 +10,3 @@ export interface BoxProps
     SizingProps,
     PaddingProps,
     DisplayProps {}
-
-export const Box = createRemoteComponent<'Box', BoxProps>('Box');

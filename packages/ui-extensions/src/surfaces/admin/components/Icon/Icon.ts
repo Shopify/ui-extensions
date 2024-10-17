@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import {IconName} from './IconName';
 import {AccessibilityLabelProps} from '../shared';
 
@@ -34,5 +33,3 @@ export interface IconProps extends AccessibilityLabelProps {
   name: IconName;
 }
 export type {IconName};
-
-export const Icon = createRemoteComponent<'Icon', IconProps>('Icon');

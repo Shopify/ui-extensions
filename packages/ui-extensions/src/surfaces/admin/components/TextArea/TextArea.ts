@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 import {
   AutocompleteProps,
   TextAutocompleteField,
@@ -18,7 +16,3 @@ export interface TextAreaProps
    */
   rows?: number;
 }
-
-export const TextArea = createRemoteComponent<'TextArea', TextAreaProps>(
-  'TextArea',
-);
