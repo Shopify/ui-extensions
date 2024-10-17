@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import {AccessibilityLabelProps} from '../shared';
 
 export interface LinkProps extends AccessibilityLabelProps {
@@ -59,5 +58,3 @@ export interface LinkProps extends AccessibilityLabelProps {
    */
   target?: '_blank' | '_self';
 }
-
-export const Link = createRemoteComponent<'Link', LinkProps>('Link');

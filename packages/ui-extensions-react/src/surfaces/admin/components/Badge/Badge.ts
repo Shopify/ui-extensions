@@ -1,6 +1,5 @@
-import {Badge as BaseBadge} from '@shopify/ui-extensions/admin';
-import type {BadgeProps} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const Badge = createRemoteReactComponent<'Badge', BadgeProps>(BaseBadge);
 export type {BadgeProps} from '@shopify/ui-extensions/admin';
+
+export const Badge = createRemoteComponent('ui-badge');

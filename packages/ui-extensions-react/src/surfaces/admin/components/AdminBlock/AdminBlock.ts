@@ -1,11 +1,5 @@
-import {AdminBlock as BaseAdminBlock} from '@shopify/ui-extensions/admin';
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const AdminBlock = createRemoteReactComponent(BaseAdminBlock);
+export type {AdminBlockProps} from '@shopify/ui-extensions/admin';
 
-export type AdminBlockProps = ReactPropsFromRemoteComponentType<
-  typeof BaseAdminBlock
->;
+export const AdminBlock = createRemoteComponent('ui-admin-block');

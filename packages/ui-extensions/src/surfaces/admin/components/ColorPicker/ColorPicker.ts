@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 export interface ColorPickerProps {
   /** ID for the element. */
   id?: string;
@@ -36,8 +34,3 @@ export interface ColorPickerProps {
    */
   value?: string;
 }
-
-export const ColorPicker = createRemoteComponent<
-  'ColorPicker',
-  ColorPickerProps
->('ColorPicker');

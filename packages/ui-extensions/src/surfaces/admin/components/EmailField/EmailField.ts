@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import {
   AutocompleteProps,
   AnyAutocompleteField,
@@ -16,7 +15,3 @@ export type EmailAutocompleteField = Extract<
   AnyAutocompleteField,
   'email' | `${AutocompleteAddressGroup} email`
 >;
-
-export const EmailField = createRemoteComponent<'EmailField', EmailFieldProps>(
-  'EmailField',
-);

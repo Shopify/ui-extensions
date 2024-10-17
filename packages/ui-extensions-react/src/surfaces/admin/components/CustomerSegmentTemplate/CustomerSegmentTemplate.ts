@@ -1,7 +1,7 @@
-import {CustomerSegmentTemplate as BaseCustomerSegmentTemplate} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const CustomerSegmentTemplate = createRemoteReactComponent(
-  BaseCustomerSegmentTemplate,
-);
 export type {CustomerSegmentTemplateProps} from '@shopify/ui-extensions/admin';
+
+export const CustomerSegmentTemplate = createRemoteComponent(
+  'ui-customer-segment-template',
+);

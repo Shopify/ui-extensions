@@ -8,8 +8,7 @@ import type {
 } from '@shopify/ui-extensions/admin';
 
 import {ExtensionApiContext} from './context';
-import {remoteRootRender} from '../../utilities/remoteRootRender';
-
+import {remoteDomRender} from '../../utilities/remoteDomRender';
 /**
  * Registers your React-based UI Extension to run for the selected extension point.
  * Additionally, this function will automatically provide the extension API as React
@@ -42,7 +41,7 @@ export function reactExtension<ExtensionTarget extends RenderExtensionTarget>(
 
     const element = await render(api as ApiForRenderExtension<ExtensionTarget>);
 
-    return remoteRootRender(
+    return remoteDomRender(
       <ExtensionApiContext.Provider value={api}>
         {element}
       </ExtensionApiContext.Provider>,

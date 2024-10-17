@@ -1,5 +1,5 @@
-import {Divider as BaseDivider} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const Divider = createRemoteReactComponent(BaseDivider);
 export type {DividerProps} from '@shopify/ui-extensions/admin';
+
+export const Divider = createRemoteComponent('ui-divider');

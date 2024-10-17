@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 export type CustomerSegmentTemplateIcon =
   | 'categoriesMajor'
   | 'firstVisitMajor'
@@ -59,11 +57,3 @@ export interface InternalCustomerSegmentTemplateProps {
   /* The category in which the template will be visible. The template will show in its respective category and aggregate sections. */
   category: CustomerSegmentTemplateCategory;
 }
-
-/**
- * Customer segment templates are used to give merchants a starting point to create segments.
- */
-export const InternalCustomerSegmentTemplate = createRemoteComponent<
-  'InternalCustomerSegmentTemplate',
-  InternalCustomerSegmentTemplateProps
->('InternalCustomerSegmentTemplate');

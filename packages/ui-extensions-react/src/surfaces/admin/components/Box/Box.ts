@@ -1,6 +1,5 @@
-import {Box as BaseBox} from '@shopify/ui-extensions/admin';
-import type {BoxProps} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const Box = createRemoteReactComponent<'Box', BoxProps>(BaseBox);
 export type {BoxProps} from '@shopify/ui-extensions/admin';
+
+export const Box = createRemoteComponent('ui-box');

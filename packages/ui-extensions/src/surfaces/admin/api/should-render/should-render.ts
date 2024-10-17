@@ -2,6 +2,10 @@ import type {StandardApi} from '../standard/standard';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 import type {Data} from '../shared';
 
+export interface ShouldRenderOutput {
+  display: boolean;
+}
+
 export interface ShouldRenderApi<ExtensionTarget extends AnyExtensionTarget>
   extends StandardApi<ExtensionTarget> {
   /**

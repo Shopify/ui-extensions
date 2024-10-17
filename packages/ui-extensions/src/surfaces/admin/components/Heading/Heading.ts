@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 type Level = 1 | 2 | 3 | 4 | 5 | 6;
 
 export interface HeadingProps {
@@ -14,7 +12,3 @@ export interface HeadingProps {
    */
   size?: Level;
 }
-
-export const Heading = createRemoteComponent<'Heading', HeadingProps>(
-  'Heading',
-);
