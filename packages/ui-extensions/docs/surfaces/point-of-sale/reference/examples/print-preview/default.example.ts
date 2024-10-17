@@ -20,7 +20,7 @@ export default extension(
       Button,
       {
         title: 'Print',
-        onPress: api.print.print,
+        onPress: () => api.print.print(),
       },
     );
 
