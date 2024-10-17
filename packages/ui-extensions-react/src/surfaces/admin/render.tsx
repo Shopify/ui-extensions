@@ -36,7 +36,7 @@ export function reactExtension<ExtensionTarget extends RenderExtensionTarget>(
   return extension<'Playground'>(target as any, async (root, api) => {
     const element = await render(api as ApiForRenderExtension<ExtensionTarget>);
 
-    await new Promise<() => void>((resolve, reject) => {
+    return new Promise<() => void>((resolve, reject) => {
       try {
         const reactRoot = createRoot(root);
         reactRoot.render(

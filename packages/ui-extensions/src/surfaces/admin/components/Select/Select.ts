@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 export interface SelectProps {
   /**
    * Whether the select can be changed.
@@ -143,5 +141,3 @@ export interface OptionGroupDescription {
    */
   options?: OptionDescription[];
 }
-
-export const Select = createRemoteComponent<'Select', SelectProps>('Select');

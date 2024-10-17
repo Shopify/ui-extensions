@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import {GlobalProps, SizeScale, AccessibilityLabelProps} from '../shared';
 
 export interface ProgressIndicatorProps
@@ -25,8 +24,3 @@ export interface ProgressIndicatorProps
    */
   variant?: 'spinner';
 }
-
-export const ProgressIndicator = createRemoteComponent<
-  'ProgressIndicator',
-  ProgressIndicatorProps
->('ProgressIndicator');

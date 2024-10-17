@@ -1,9 +1,5 @@
-import {ProgressIndicator as BaseProgressIndicator} from '@shopify/ui-extensions/admin';
-import type {ProgressIndicatorProps} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const ProgressIndicator = createRemoteReactComponent<
-  'ProgressIndicator',
-  ProgressIndicatorProps
->(BaseProgressIndicator);
 export type {ProgressIndicatorProps} from '@shopify/ui-extensions/admin';
+
+export const ProgressIndicator = createRemoteComponent('ui-progress-indicator');

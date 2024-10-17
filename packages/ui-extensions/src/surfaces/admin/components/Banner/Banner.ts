@@ -1,4 +1,4 @@
-import {RemoteFragment, createRemoteComponent} from '@remote-ui/core';
+import {RemoteFragment} from '@remote-ui/core';
 import {GlobalProps, Tone} from '../shared';
 
 export interface BannerProps extends GlobalProps {
@@ -29,5 +29,3 @@ export interface BannerProps extends GlobalProps {
    */
   secondaryAction?: RemoteFragment;
 }
-
-export const Banner = createRemoteComponent<'Banner', BannerProps>('Banner');

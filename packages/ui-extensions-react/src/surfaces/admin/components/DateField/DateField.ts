@@ -1,5 +1,5 @@
-import {DateField as BaseDateField} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const DateField = createRemoteReactComponent(BaseDateField);
 export type {DateFieldProps} from '@shopify/ui-extensions/admin';
+
+export const DateField = createRemoteComponent('ui-date-field');

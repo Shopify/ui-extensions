@@ -1,9 +1,5 @@
 export interface RenderExtension<Api> {
-  (root: HTMLElement, api: Api): void | Promise<void>;
-}
-
-export interface RenderExtensionWithRoot<Api> {
-  (root: HTMLElement, api: Api): () => void | Promise<() => void>;
+  (root: HTMLElement, api: Api): Promise<() => void>;
 }
 
 export interface RunnableExtension<Api, Output> {
@@ -20,9 +16,7 @@ export interface ExtensionRegistrationFunction<ExtensionTargets> {
 export interface ExtensionRegistrationFunctionWithRoot<ExtensionTargets> {
   <Target extends keyof ExtensionTargets>(
     target: Target,
-    implementation: ExtensionTargets[Target] extends RenderExtension<infer Api>
-      ? RenderExtensionWithRoot<Api>
-      : ExtensionTargets[Target],
+    implementation: ExtensionTargets[Target],
   ): ExtensionTargets[Target];
 }
 

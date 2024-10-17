@@ -1,9 +1,8 @@
-import {FunctionSettings as BaseFunctionSettings} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const FunctionSettings =
-  createRemoteReactComponent(BaseFunctionSettings);
 export type {
   FunctionSettingsProps,
   FunctionSettingsError,
 } from '@shopify/ui-extensions/admin';
+
+export const FunctionSettings = createRemoteComponent('ui-functipo');

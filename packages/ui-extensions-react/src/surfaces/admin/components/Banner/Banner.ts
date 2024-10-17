@@ -1,11 +1,5 @@
-import {Banner as BaseBanner} from '@shopify/ui-extensions/admin';
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const Banner = createRemoteReactComponent(BaseBanner, {
-  fragmentProps: ['primaryAction', 'secondaryAction'],
-});
+export type {BannerProps} from '@shopify/ui-extensions/admin';
 
-export type BannerProps = ReactPropsFromRemoteComponentType<typeof BaseBanner>;
+export const Banner = createRemoteComponent('ui-banner');

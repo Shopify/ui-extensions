@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 /**
  * Reserved namespace and key for the customer standard metafield used in the template's query.
  * More info - https://shopify.dev/docs/apps/custom-data/metafields/definitions/standard
@@ -35,11 +33,3 @@ export interface CustomerSegmentTemplateProps {
    */
   createdOn?: string;
 }
-
-/**
- * Customer segmentation templates are used to give merchants a starting point to create segments.
- */
-export const CustomerSegmentTemplate = createRemoteComponent<
-  'CustomerSegmentTemplate',
-  CustomerSegmentTemplateProps
->('CustomerSegmentTemplate');

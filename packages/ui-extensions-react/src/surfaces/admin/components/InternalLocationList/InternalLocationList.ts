@@ -1,7 +1,7 @@
-import {InternalLocationList as BaseInternalLocationList} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const InternalLocationList = createRemoteReactComponent(
-  BaseInternalLocationList,
-);
 export type {InternalLocationListProps} from '@shopify/ui-extensions/admin';
+
+export const InternalLocationList = createRemoteComponent(
+  'ui-internal-location-list',
+);

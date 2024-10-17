@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import type {
   FontWeight,
   TextOverflow,
@@ -41,5 +40,3 @@ export interface TextProps {
    */
   accessibilityRole?: TextAccessibilityRole;
 }
-
-export const Text = createRemoteComponent<'Text', TextProps>('Text');

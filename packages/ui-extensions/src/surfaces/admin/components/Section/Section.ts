@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 export interface SectionProps {
   /**
    * A label used to describe the section that will be announced by assistive technologies.
@@ -29,7 +27,3 @@ export interface SectionProps {
    */
   padding?: 'base' | 'none';
 }
-
-export const Section = createRemoteComponent<'Section', SectionProps>(
-  'Section',
-);

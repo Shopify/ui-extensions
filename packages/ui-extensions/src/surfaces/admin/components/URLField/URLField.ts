@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import {
   AnyAutocompleteField,
   AutocompleteProps,
@@ -20,7 +19,3 @@ export type URLAutocompleteField = Extract<
   | `${AutocompleteFieldInstantMessageAlias}`
   | `${AutocompleteAddressGroup} ${AutocompleteFieldInstantMessageAlias}`
 >;
-
-export const URLField = createRemoteComponent<'URLField', URLFieldProps>(
-  'URLField',
-);

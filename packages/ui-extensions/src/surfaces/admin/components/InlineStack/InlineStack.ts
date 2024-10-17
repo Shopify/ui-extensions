@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 import {
   AccessibilityRoleProps,
   GlobalProps,
@@ -32,8 +30,3 @@ export interface InlineStackProps
    */
   blockAlignment?: CrossAxisAlignment;
 }
-
-export const InlineStack = createRemoteComponent<
-  'InlineStack',
-  InlineStackProps
->('InlineStack');

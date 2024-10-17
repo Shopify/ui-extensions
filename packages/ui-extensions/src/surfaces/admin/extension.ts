@@ -4,7 +4,6 @@ import type {ExtensionTargets} from './extension-targets';
 
 export type {
   RenderExtension,
-  RenderExtensionWithRoot,
   ExtensionRegistrationFunctionWithRoot,
 } from './registration';
 

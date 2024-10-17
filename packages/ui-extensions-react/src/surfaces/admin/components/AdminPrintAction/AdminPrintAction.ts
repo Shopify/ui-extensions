@@ -1,12 +1,5 @@
-import {AdminPrintAction as BaseAdminPrintAction} from '@shopify/ui-extensions/admin';
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const AdminPrintAction =
-  createRemoteReactComponent(BaseAdminPrintAction);
+export type {AdminPrintActionProps} from '@shopify/ui-extensions/admin';
 
-export type AdminPrintActionProps = ReactPropsFromRemoteComponentType<
-  typeof BaseAdminPrintAction
->;
+export const AdminPrintAction = createRemoteComponent('ui-admin-print-action');

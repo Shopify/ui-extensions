@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import {AccessibilityLabelProps, InputProps} from '../shared';
 
 export interface ChoiceProps
@@ -30,7 +29,3 @@ export interface ChoiceListProps
    */
   multiple?: boolean;
 }
-
-export const ChoiceList = createRemoteComponent<'ChoiceList', ChoiceListProps>(
-  'ChoiceList',
-);
