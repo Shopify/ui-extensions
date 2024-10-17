@@ -4,6 +4,7 @@ import {
   Screen,
   reactExtension,
   Button,
+  PrintPreview,
   useApi,
 } from '@shopify/ui-extensions-react/point-of-sale';
 
@@ -14,7 +15,7 @@ const Modal = () => {
     <Screen name="Home" title="Home">
       <Button
         title="Print"
-        onPress={api.print.print}
+        onPress={() => api.print.print()}
       />
       <PrintPreview src="/documents/test-print" />
     </Screen>
