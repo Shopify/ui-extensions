@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import type {AccessibilityRole} from '../shared';
 
 export type ImageProps = (ImageAccessibilityLabelProp | ImageAltProp) &
@@ -119,5 +118,3 @@ interface ImageSourceProp {
   source: string;
   src?: never;
 }
-
-export const Image = createRemoteComponent<'Image', ImageProps>('Image');

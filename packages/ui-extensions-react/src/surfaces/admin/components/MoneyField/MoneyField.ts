@@ -1,5 +1,5 @@
-import {MoneyField as BaseMoneyField} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const MoneyField = createRemoteReactComponent(BaseMoneyField);
 export type {MoneyFieldProps} from '@shopify/ui-extensions/admin';
+
+export const MoneyField = createRemoteComponent('ui-money-field');

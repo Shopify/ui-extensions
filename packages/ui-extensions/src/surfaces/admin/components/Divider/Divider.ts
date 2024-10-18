@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 export interface DividerProps {
   /**
    * Specify the direction of the divider.
@@ -9,7 +7,3 @@ export interface DividerProps {
    */
   direction?: 'inline' | 'block';
 }
-
-export const Divider = createRemoteComponent<'Divider', DividerProps>(
-  'Divider',
-);

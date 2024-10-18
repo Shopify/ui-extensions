@@ -1,6 +1,5 @@
-import type {RenderExtension} from '../../extension';
+import type {RenderExtension} from './extension';
 
-import type {Components} from './shared';
 import type {
   StandardApi,
   CustomerSegmentTemplateApi,
@@ -12,59 +11,18 @@ import type {
   OrderRoutingRuleApi,
   ValidationSettingsApi,
 } from './api';
-import {AnyComponentBuilder} from '../../shared';
-
-type CustomerSegmentTemplateComponent = AnyComponentBuilder<
-  Pick<
-    Components,
-    'CustomerSegmentTemplate' | 'InternalCustomerSegmentTemplate'
-  >
->;
-
-type ProductConfigurationComponents = AnyComponentBuilder<
-  Pick<
-    Components,
-    | 'Box'
-    | 'InlineStack'
-    | 'BlockStack'
-    | 'Divider'
-    | 'HeadingGroup'
-    | 'Heading'
-    | 'Text'
-    | 'Link'
-    | 'Image'
-    | 'Icon'
-  >
->;
-
-type OrderRoutingComponents = AnyComponentBuilder<
-  Pick<Components, 'InternalLocationList'>
->;
-
-/**
- * See the [list of available components](/docs/api/admin-extensions/components).
- */
-type AllComponents = AnyComponentBuilder<
-  Omit<
-    Components,
-    | 'CustomerSegmentTemplate'
-    | 'InternalCustomerSegmentTemplate'
-    | 'InternalLocationList'
-  >
->;
 
 export interface ExtensionTargets {
   /**
    * @private
    */
-  Playground: RenderExtension<StandardApi<'Playground'>, AllComponents>;
+  Playground: RenderExtension<StandardApi<'Playground'>>;
 
   /**
    * Renders a [`CustomerSegmentTemplate`](/docs/api/admin-extensions/components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
    */
   'admin.customers.segmentation-templates.render': RenderExtension<
-    CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.render'>,
-    CustomerSegmentTemplateComponent
+    CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.render'>
   >;
 
   // Blocks
@@ -74,8 +32,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.product-details.block.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.product-details.block.render'>
   >;
 
   /**
@@ -84,8 +41,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.order-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.order-details.block.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.order-details.block.render'>
   >;
 
   /**
@@ -94,8 +50,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.discount-details.function-settings.render': RenderExtension<
-    BlockExtensionApi<'admin.discount-details.function-settings.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.discount-details.function-settings.render'>
   >;
 
   /**
@@ -104,8 +59,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.customer-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.customer-details.block.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.customer-details.block.render'>
   >;
 
   /**
@@ -114,8 +68,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.collection-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.collection-details.block.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.collection-details.block.render'>
   >;
 
   /**
@@ -124,8 +77,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.draft-order-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.draft-order-details.block.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.draft-order-details.block.render'>
   >;
 
   /**
@@ -134,8 +86,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.abandoned-checkout-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.abandoned-checkout-details.block.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.abandoned-checkout-details.block.render'>
   >;
 
   /**
@@ -144,8 +95,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.catalog-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.catalog-details.block.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.catalog-details.block.render'>
   >;
 
   /**
@@ -154,8 +104,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.company-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.company-details.block.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.company-details.block.render'>
   >;
 
   /**
@@ -164,8 +113,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.company-location-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.company-location-details.block.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.company-location-details.block.render'>
   >;
 
   /**
@@ -174,8 +122,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.gift-card-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.gift-card-details.block.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.gift-card-details.block.render'>
   >;
 
   /**
@@ -184,8 +131,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-variant-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.product-variant-details.block.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.product-variant-details.block.render'>
   >;
 
   /**
@@ -194,8 +140,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-details.reorder.render': RenderExtension<
-    BlockExtensionApi<'admin.product-details.reorder.render'>,
-    AllComponents
+    BlockExtensionApi<'admin.product-details.reorder.render'>
   >;
 
   // Actions
@@ -205,8 +150,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.product-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.product-details.action.render'>
   >;
 
   /**
@@ -215,8 +159,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.catalog-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.catalog-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.catalog-details.action.render'>
   >;
 
   /**
@@ -225,8 +168,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.company-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.company-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.company-details.action.render'>
   >;
 
   /**
@@ -235,8 +177,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.gift-card-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.gift-card-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.gift-card-details.action.render'>
   >;
 
   /**
@@ -245,8 +186,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.order-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.order-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.order-details.action.render'>
   >;
 
   /**
@@ -255,8 +195,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.customer-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.customer-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.customer-details.action.render'>
   >;
 
   /**
@@ -265,8 +204,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.customer-segment-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.customer-segment-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.customer-segment-details.action.render'>
   >;
 
   /**
@@ -275,8 +213,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-index.action.render': RenderExtension<
-    ActionExtensionApi<'admin.product-index.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.product-index.action.render'>
   >;
 
   /**
@@ -285,8 +222,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.order-index.action.render': RenderExtension<
-    ActionExtensionApi<'admin.order-index.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.order-index.action.render'>
   >;
 
   /**
@@ -295,8 +231,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.customer-index.action.render': RenderExtension<
-    ActionExtensionApi<'admin.customer-index.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.customer-index.action.render'>
   >;
 
   /**
@@ -305,8 +240,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.discount-index.action.render': RenderExtension<
-    ActionExtensionApi<'admin.discount-index.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.discount-index.action.render'>
   >;
 
   /**
@@ -315,8 +249,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.collection-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.collection-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.collection-details.action.render'>
   >;
 
   /**
@@ -325,8 +258,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.collection-index.action.render': RenderExtension<
-    ActionExtensionApi<'admin.collection-index.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.collection-index.action.render'>
   >;
 
   /**
@@ -335,8 +267,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.abandoned-checkout-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.abandoned-checkout-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.abandoned-checkout-details.action.render'>
   >;
 
   /**
@@ -345,8 +276,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-variant-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.product-variant-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.product-variant-details.action.render'>
   >;
 
   /**
@@ -355,8 +285,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.draft-order-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.draft-order-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.draft-order-details.action.render'>
   >;
 
   /**
@@ -365,8 +294,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.draft-order-index.action.render': RenderExtension<
-    ActionExtensionApi<'admin.draft-order-index.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.draft-order-index.action.render'>
   >;
 
   /**
@@ -375,8 +303,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.discount-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.discount-details.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.discount-details.action.render'>
   >;
 
   /**
@@ -386,8 +313,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.order-fulfilled-card.action.render': RenderExtension<
-    ActionExtensionApi<'admin.order-fulfilled-card.action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.order-fulfilled-card.action.render'>
   >;
 
   // Bulk Actions
@@ -398,8 +324,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-index.selection-action.render': RenderExtension<
-    ActionExtensionApi<'admin.product-index.selection-action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.product-index.selection-action.render'>
   >;
 
   /**
@@ -408,8 +333,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.order-index.selection-action.render': RenderExtension<
-    ActionExtensionApi<'admin.order-index.selection-action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.order-index.selection-action.render'>
   >;
 
   /**
@@ -418,8 +342,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.customer-index.selection-action.render': RenderExtension<
-    ActionExtensionApi<'admin.customer-index.selection-action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.customer-index.selection-action.render'>
   >;
 
   /**
@@ -428,8 +351,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.draft-order-index.selection-action.render': RenderExtension<
-    ActionExtensionApi<'admin.draft-order-index.selection-action.render'>,
-    AllComponents
+    ActionExtensionApi<'admin.draft-order-index.selection-action.render'>
   >;
 
   // Print actions and bulk print actions
@@ -440,8 +362,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.order-details.print-action.render': RenderExtension<
-    PrintActionExtensionApi<'admin.order-details.print-action.render'>,
-    AllComponents
+    PrintActionExtensionApi<'admin.order-details.print-action.render'>
   >;
 
   /**
@@ -450,8 +371,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-details.print-action.render': RenderExtension<
-    PrintActionExtensionApi<'admin.product-details.print-action.render'>,
-    AllComponents
+    PrintActionExtensionApi<'admin.product-details.print-action.render'>
   >;
 
   /**
@@ -460,8 +380,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.order-index.selection-print-action.render': RenderExtension<
-    PrintActionExtensionApi<'admin.order-index.selection-print-action.render'>,
-    AllComponents
+    PrintActionExtensionApi<'admin.order-index.selection-print-action.render'>
   >;
 
   /**
@@ -470,8 +389,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-index.selection-print-action.render': RenderExtension<
-    PrintActionExtensionApi<'admin.product-index.selection-print-action.render'>,
-    AllComponents
+    PrintActionExtensionApi<'admin.product-index.selection-print-action.render'>
   >;
 
   // Other
@@ -482,8 +400,7 @@ export interface ExtensionTargets {
    * See the [tutorial](/docs/apps/selling-strategies/bundles/product-config) for more information
    */
   'admin.product-details.configuration.render': RenderExtension<
-    ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>,
-    ProductConfigurationComponents
+    ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>
   >;
 
   /**
@@ -492,8 +409,7 @@ export interface ExtensionTargets {
    * See the [tutorial](/docs/apps/selling-strategies/bundles/product-config) for more information
    */
   'admin.product-variant-details.configuration.render': RenderExtension<
-    ProductVariantDetailsConfigurationApi<'admin.product-variant-details.configuration.render'>,
-    ProductConfigurationComponents
+    ProductVariantDetailsConfigurationApi<'admin.product-variant-details.configuration.render'>
   >;
 
   /**
@@ -502,12 +418,10 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.settings.internal-order-routing-rule.render': RenderExtension<
-    OrderRoutingRuleApi<'admin.settings.internal-order-routing-rule.render'>,
-    AllComponents | OrderRoutingComponents
+    OrderRoutingRuleApi<'admin.settings.internal-order-routing-rule.render'>
   >;
   'admin.settings.order-routing-rule.render': RenderExtension<
-    OrderRoutingRuleApi<'admin.settings.order-routing-rule.render'>,
-    AllComponents
+    OrderRoutingRuleApi<'admin.settings.order-routing-rule.render'>
   >;
 
   /**
@@ -516,8 +430,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.settings.validation.render': RenderExtension<
-    ValidationSettingsApi<'admin.settings.validation.render'>,
-    AllComponents
+    ValidationSettingsApi<'admin.settings.validation.render'>
   >;
 }
 
@@ -547,10 +460,7 @@ export type ArgumentsForExtension<ID extends keyof ExtensionTargets> =
  * UI.
  */
 export type RenderExtensionTarget = {
-  [ID in keyof ExtensionTargets]: ExtensionTargets[ID] extends RenderExtension<
-    any,
-    any
-  >
+  [ID in keyof ExtensionTargets]: ExtensionTargets[ID] extends RenderExtension<any>
     ? ID
     : never;
 }[keyof ExtensionTargets];
@@ -562,15 +472,9 @@ export type RenderExtensions = {
   [ID in RenderExtensionTarget]: ExtensionTargets[ID];
 };
 
-type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
-  infer Api,
-  any
->
+type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<infer Api>
   ? Api
   : never;
-
-type ExtractedAllowedComponentsFromRenderExtension<T> =
-  T extends RenderExtension<any, infer Components> ? Components : never;
 
 /**
  * For a given rendering extension target, returns the type of the API that the
@@ -580,11 +484,3 @@ type ExtractedAllowedComponentsFromRenderExtension<T> =
  */
 export type ApiForRenderExtension<ID extends keyof RenderExtensions> =
   ExtractedApiFromRenderExtension<RenderExtensions[ID]>;
-
-/**
- * For a given rendering extension target, returns the UI components that the
- * extension target supports.
- */
-export type AllowedComponentsForRenderExtension<
-  ID extends keyof RenderExtensions,
-> = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[ID]>;

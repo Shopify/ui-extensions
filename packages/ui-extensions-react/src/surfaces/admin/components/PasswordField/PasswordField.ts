@@ -1,5 +1,5 @@
-import {PasswordField as BasePasswordField} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const PasswordField = createRemoteReactComponent(BasePasswordField);
 export type {PasswordFieldProps} from '@shopify/ui-extensions/admin';
+
+export const PasswordField = createRemoteComponent('ui-password-field');

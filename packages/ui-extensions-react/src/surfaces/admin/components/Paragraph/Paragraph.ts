@@ -1,5 +1,5 @@
-import {Paragraph as BaseParagraph} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const Paragraph = createRemoteReactComponent(BaseParagraph);
 export type {ParagraphProps} from '@shopify/ui-extensions/admin';
+
+export const Paragraph = createRemoteComponent('ui-paragraph');

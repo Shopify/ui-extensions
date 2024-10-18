@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 export interface FunctionSettingsProps {
   /**
    * A unique identifier for the form.
@@ -45,8 +43,3 @@ export interface FunctionSettingsError {
    */
   message: string;
 }
-
-export const FunctionSettings = createRemoteComponent<
-  'FunctionSettings',
-  FunctionSettingsProps
->('FunctionSettings');

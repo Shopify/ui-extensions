@@ -47,6 +47,7 @@
     "@shopify/loom-plugin-eslint": "^2.0.0",
     "@shopify/loom-plugin-prettier": "^2.0.0",
     "@shopify/typescript-configs": "^5.1.0",
+    "@rollup/plugin-replace": "^6.0.1",
     "eslint": "^8.28.0",
     "nodemon": "^2.0.4",
     "prettier": "^2.8.0",

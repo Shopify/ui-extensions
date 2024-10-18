@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import {
   AutocompleteProps,
   AnyAutocompleteField,
@@ -28,8 +27,3 @@ export type NumberAutocompleteField = Extract<
   | `${AutocompleteFieldCreditCardAlias}-number`
   | `${AutocompleteFieldCreditCardAlias}-${AutocompleteFieldSecurityCodeAlias}`
 >;
-
-export const NumberField = createRemoteComponent<
-  'NumberField',
-  NumberFieldProps
->('NumberField');

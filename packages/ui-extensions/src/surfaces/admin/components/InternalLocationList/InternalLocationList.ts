@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 export interface Location {
   /**
    * A unique identifier for the location.
@@ -69,8 +67,3 @@ export interface InternalLocationListProps {
    */
   onCreateGroup: (id: string) => void;
 }
-
-export const InternalLocationList = createRemoteComponent<
-  'InternalLocationList',
-  InternalLocationListProps
->('InternalLocationList');

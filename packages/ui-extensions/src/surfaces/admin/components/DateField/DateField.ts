@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import type {DatePickerProps} from '../DatePicker/DatePicker';
 import type {TextFieldProps} from '../TextField/TextField';
 
@@ -20,7 +19,3 @@ export interface DateFieldProps
       DatePickerProps<string>,
       'yearMonth' | 'defaultYearMonth' | 'disabled' | 'onYearMonthChange'
     > {}
-
-export const DateField = createRemoteComponent<'DateField', DateFieldProps>(
-  'DateField',
-);

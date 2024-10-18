@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import type {AccessibilityLabelProps, SizeScale, Tone} from '../shared';
 import {IconName} from '../Icon/IconName';
 
@@ -32,5 +31,3 @@ interface BadgeNoIconProps {
 }
 
 export type BadgeProps = BadgeBaseProps & (BadgeIconProps | BadgeNoIconProps);
-
-export const Badge = createRemoteComponent<'Badge', BadgeProps>('Badge');
