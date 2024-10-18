@@ -33,16 +33,6 @@ jobs:
           git checkout -b ${{ github.event.inputs.version }} origin/unstable
           git push -u origin ${{ github.event.inputs.version }}
 
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
-          commit-message: 'Add ${{ github.event.inputs.version }} to watched branches'
-          title: 'Add ${{ github.event.inputs.version }} to watched branches'
-          body: 'This PR adds the new stable version ${{ github.event.inputs.version }} to the list of watched branches in the changesets-reminder and deploy GitHub actions.'
-          branch: 'update-watched-branches-${{ github.event.inputs.version }}'
-          base: '${{ github.event.inputs.version }}'
-
       - name: Create branch protection rule
         uses: octokit/request-action@v2.x
         with:
