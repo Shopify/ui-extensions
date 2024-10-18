@@ -1,0 +1,44 @@
+{
+  "name": "@shopify/data-extensions",
+  "version": "0.0.0-unstable",
+  "main": "index.js",
+  "module": "index.mjs",
+  "esnext": "index.esnext",
+  "types": "./build/ts/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "admin": [
+        "./build/ts/surfaces/admin.d.ts"
+      ]
+    }
+  },
+  "exports": {
+    ".": {
+      "types": "./build/ts/index.d.ts",
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
+    "./admin": {
+      "types": "./build/ts/surfaces/admin.d.ts",
+      "esnext": "./build/esnext/surfaces/admin.esnext",
+      "import": "./build/esm/surfaces/admin.mjs",
+      "require": "./build/cjs/surfaces/admin.js"
+    }
+  },
+  "license": "MIT",
+  "sideEffects": false,
+  "devDependencies": {
+    "typescript": "^4.9.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "@shopify:registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "build",
+    "src",
+    "index.*",
+    "README.md"
+  ]
+}
