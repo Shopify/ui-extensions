@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 import {
   AccessibilityRoleProps,
   GlobalProps,
@@ -34,7 +32,3 @@ export interface BlockStackProps
    */
   blockAlignment?: MainAxisAlignment;
 }
-
-export const BlockStack = createRemoteComponent<'BlockStack', BlockStackProps>(
-  'BlockStack',
-);

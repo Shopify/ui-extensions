@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 export interface AdminBlockProps {
   /**
    * The title to display at the top of the app block. If not provided, the name of the extension will be used. Titles longer than 40 characters will be truncated.
@@ -13,7 +11,3 @@ export interface AdminBlockProps {
    */
   summary?: string;
 }
-
-export const AdminBlock = createRemoteComponent<'AdminBlock', AdminBlockProps>(
-  'AdminBlock',
-);

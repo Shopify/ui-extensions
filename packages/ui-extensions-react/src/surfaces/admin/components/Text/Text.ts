@@ -1,5 +1,5 @@
-import {Text as BaseText} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const Text = createRemoteReactComponent(BaseText);
 export type {TextProps} from '@shopify/ui-extensions/admin';
+
+export const Text = createRemoteComponent('ui-text');

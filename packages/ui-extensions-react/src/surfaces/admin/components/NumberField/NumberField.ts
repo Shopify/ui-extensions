@@ -1,5 +1,5 @@
-import {NumberField as BaseNumberField} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const NumberField = createRemoteReactComponent(BaseNumberField);
 export type {NumberFieldProps} from '@shopify/ui-extensions/admin';
+
+export const NumberField = createRemoteComponent('ui-number-field');

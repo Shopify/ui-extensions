@@ -1,5 +1,5 @@
-import {URLField as BaseURLField} from '@shopify/ui-extensions/admin';
-import {createRemoteReactComponent} from '@remote-ui/react';
+import {createRemoteComponent} from '../util';
 
-export const URLField = createRemoteReactComponent(BaseURLField);
 export type {URLFieldProps} from '@shopify/ui-extensions/admin';
+
+export const URLField = createRemoteComponent('ui-url-field');

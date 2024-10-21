@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import type {
   AutocompleteProps,
   AnyAutocompleteField,
@@ -18,10 +17,6 @@ export type MoneyAutocompleteField = Extract<
   AnyAutocompleteField,
   'transaction-amount'
 >;
-
-export const MoneyField = createRemoteComponent<'MoneyField', MoneyFieldProps>(
-  'MoneyField',
-);
 
 /**
  * Supported monetary currencies from ISO 4217.

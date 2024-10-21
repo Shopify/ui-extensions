@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import {AccessibilityLabelProps} from '../shared';
 
 export interface CheckboxProps extends AccessibilityLabelProps {
@@ -52,7 +51,3 @@ export interface CheckboxProps extends AccessibilityLabelProps {
    */
   value?: boolean;
 }
-
-export const Checkbox = createRemoteComponent<'Checkbox', CheckboxProps>(
-  'Checkbox',
-);

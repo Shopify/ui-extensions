@@ -1,8 +1,11 @@
-import {createExtensionRegistrationFunction} from '../../utilities/registration';
+import {createExtensionRegistrationFunction} from './registration';
 
 import type {ExtensionTargets} from './extension-targets';
 
-export * from '../../extension';
+export type {
+  RenderExtension,
+  ExtensionRegistrationFunctionWithRoot,
+} from './registration';
 
 export const extension =
   createExtensionRegistrationFunction<ExtensionTargets>();

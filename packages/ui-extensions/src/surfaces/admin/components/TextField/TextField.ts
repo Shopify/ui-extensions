@@ -1,4 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
 import {
   AutocompleteProps,
   TextAutocompleteField,
@@ -12,7 +11,3 @@ export interface TextFieldProps
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
-
-export const TextField = createRemoteComponent<'TextField', TextFieldProps>(
-  'TextField',
-);
