@@ -73,10 +73,10 @@ export interface CartApiContent {
   /** Remove the current customer from the cart */
   removeCustomer(): Promise<void>;
 
-  /** Add a custom sale to the cart
+  /** Add a custom sale to the cart. Returns the UUID of the newly added line item.
    * @param customSale the custom sale object to add to the cart
    */
-  addCustomSale(customSale: CustomSale): Promise<void>;
+  addCustomSale(customSale: CustomSale): Promise<string>;
 
   /** Add a line item by variant ID to the cart. Returns the UUID of the newly added line item.
    * @param variantId the product variant's numeric ID to add to the cart
