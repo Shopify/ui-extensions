@@ -1,36 +1,38 @@
 import {Tone} from '../../components/shared';
 
 interface Picker {
-  update: (options: PickerOptions) => Promise<void>;
-  selectedItems: Item[];
+  selected: Promise<string[]>;
+}
+
+interface Header {
+  title?: string;
+  type?: 'string' | 'number';
 }
 
 interface PickerOptions {
   heading?: string;
   description?: string;
   multiple?: boolean | number;
-  loading?: boolean;
   items: Item[];
-  onSelect?(event: any): void;
-  onCancel?(): void;
+  headers?: Header[];
+  searchPlaceholder?: string;
+}
+
+export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
+type DataPoint = string | number;
+interface Badge {
+  content: string;
+  tone?: Tone;
+  progress?: Progress;
 }
 
 interface Item {
+  id: string;
+  heading: string;
+  data?: [] | [DataPoint] | [DataPoint, DataPoint];
+  disabled?: boolean;
+  badges?: [] | [Badge] | [Badge, Badge];
   thumbnail?: {url: string};
-  heading?: string;
-  subheading?: string;
-  action?: {
-    content: string;
-    tone?: Tone;
-  };
-  tags?: {
-    content: string;
-  }[];
-  data?: [string] | [string, string] | [string, string, string];
-  items?: NestedItem[];
 }
-
-interface NestedItem
-  extends Pick<Item, 'thumbnail' | 'heading' | 'data' | 'items'> {}
 
 export type PickerApi = (options: PickerOptions) => Promise<Picker>;
