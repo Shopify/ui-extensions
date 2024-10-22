@@ -6,16 +6,21 @@ import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-target
  */
 export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
   /**
+   * Provides methods for authenticating calls to an app backend.
+   */
+  auth: Auth;
+
+  /**
+   * Information about the currently viewed or selected items.
+   */
+  data: {selected: [{id: string}]};
+
+  /**
    * The identifier of the running extension target.
    */
   extension: {
     target: ExtensionTarget;
   };
-
-  /**
-   * Provides methods for authenticating calls to an app backend.
-   */
-  auth: Auth;
 
   /**
    * Utilities for translating content according to the current localization of the admin.
