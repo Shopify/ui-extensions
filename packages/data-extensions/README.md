@@ -4,7 +4,7 @@ This package contains the public type definitions and utilities needed to create
 
 ## What is a data extension?
 
-A data extension is a JavaScript-based module that can hook in to client-side behaviors on Shopify’s first party UI surface areas. It differs from a UI extension in that it does not establish a long-lived channel or render any UI on the surface. It runs once and returns data.
+A data extension is a JavaScript-based module that can hook in to client-side behaviors on Shopify’s first party UI surface areas. It differs from a UI extension in that it does not establish a long-lived channel or render any UI on the surface. It is a stateless function that executes and returns data.
 
 Currently, this package contains the API for one surface.
 
