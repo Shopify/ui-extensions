@@ -1701,6 +1701,156 @@ export const pixelEvents = {
         },
       },
     },
+    AlertDisplayedType: {
+      enum: [
+        'INPUT_REQUIRED',
+        'INPUT_INVALID',
+        'CONTACT_ERROR',
+        'DELIVERY_ERROR',
+        'PAYMENT_ERROR',
+        'DISCOUNT_ERROR',
+        'INVENTORY_ERROR',
+        'MERCHANDISE_ERROR',
+        'CHECKOUT_ERROR',
+      ],
+      metadata: {
+        enumDescription: {
+          INPUT_REQUIRED: 'A required field is empty.',
+          INPUT_INVALID:
+            'The input provided is incorrect or improperly formatted.',
+          CONTACT_ERROR:
+            'An alert related to a contact information issue was displayed.',
+          DELIVERY_ERROR: 'An alert related to a delivery issue was displayed.',
+          PAYMENT_ERROR: 'An alert related to a payment issue was displayed.',
+          DISCOUNT_ERROR:
+            'An alert related to a discount code or gift card issue was displayed.',
+          INVENTORY_ERROR:
+            'An alert related to an inventory issue was displayed.',
+          MERCHANDISE_ERROR:
+            'An alert related to a merchandise issue was displayed.',
+          CHECKOUT_ERROR:
+            'An alert related to general checkout issue was displayed.',
+        },
+      },
+    },
+    UiExtensionErrorType: {
+      enum: ['EXTENSION_USAGE_ERROR'],
+      metadata: {
+        enumDescription: {
+          EXTENSION_USAGE_ERROR:
+            'An error caused by incorrect usage of extension APIs or UI components.',
+        },
+      },
+    },
+    UiExtensionError: {
+      metadata: {
+        description:
+          'An object that contains data about a UI Extension error that occurred.',
+      },
+      properties: {
+        type: {
+          ref: 'UiExtensionErrorType',
+          metadata: {
+            description: 'The type of error that occurred.',
+          },
+        },
+        appId: {
+          type: 'string',
+          metadata: {
+            description:
+              'The unique identifier of the app that the extension belongs to.',
+          },
+        },
+        appName: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the app that the extension belongs to.',
+          },
+        },
+        apiVersion: {
+          type: 'string',
+          metadata: {
+            description: 'The API version used by the extension.',
+          },
+        },
+        appVersion: {
+          type: 'string',
+          metadata: {
+            description: 'The version of the app that encountered the error.',
+          },
+        },
+        extensionName: {
+          type: 'string',
+          metadata: {
+            description:
+              'The name of the extension that encountered the error.',
+          },
+        },
+        extensionTarget: {
+          type: 'string',
+          metadata: {
+            description:
+              'The [target](https://shopify.dev/docs/api/checkout-ui-extensions/latest/targets) of the extension, for example "purchase.checkout.delivery-address.render-after".',
+          },
+        },
+        placementReference: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The [placement reference](https://shopify.dev/docs/apps/build/checkout/test-checkout-ui-extensions#dynamic-targets) of the extension, only populated for dynamic targets.',
+          },
+        },
+        message: {
+          type: 'string',
+          metadata: {
+            description: 'The message associated with the error that occurred.',
+          },
+        },
+        trace: {
+          type: 'string',
+          metadata: {
+            description:
+              'The stack trace associated with the error that occurred.',
+          },
+        },
+      },
+    },
+    AlertDisplayed: {
+      metadata: {
+        description:
+          'An object that contains information about an alert that was displayed to a buyer.',
+      },
+      properties: {
+        target: {
+          type: 'string',
+          metadata: {
+            description:
+              'The part of the page the alert relates to.\nFollows the [Shopify Functions target format](https://shopify.dev/docs/api/functions/reference/cart-checkout-validation/graphql#supported-checkout-field-targets), for example `cart.deliveryGroups[0].deliveryAddress.address1`.\n',
+          },
+        },
+        type: {
+          ref: 'AlertDisplayedType',
+          metadata: {
+            description: 'The type of alert that was displayed.',
+          },
+        },
+        value: {
+          type: 'string',
+          nullable: true,
+          metadata: {
+            description:
+              'The value of the field at the time the alert was displayed or null if the alert did not relate to an individual field.',
+          },
+        },
+        message: {
+          type: 'string',
+          metadata: {
+            description: 'The message that was displayed to the user.',
+          },
+        },
+      },
+    },
     InputElement: {
       metadata: {
         description: 'An object that contains data about an input element type',
@@ -2456,6 +2606,86 @@ export const pixelEvents = {
           properties: {
             checkout: {
               ref: 'Checkout',
+            },
+          },
+        },
+      },
+    },
+    alert_displayed: {
+      metadata: {
+        description:
+          'The `alert_displayed` event logs an instance of an alert being displayed to a buyer.',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'alert_displayed'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            alert: {
+              ref: 'AlertDisplayed',
+            },
+          },
+        },
+      },
+    },
+    ui_extension_errored: {
+      metadata: {
+        description:
+          'The `ui_extension_errored` event logs an instance of a UI extension encountering an error.',
+      },
+      properties: {
+        id: {
+          ref: 'Id',
+        },
+        clientId: {
+          ref: 'ClientId',
+        },
+        type: {
+          type: 'string',
+          metadata: {
+            typescriptType: 'EventType.Standard',
+          },
+        },
+        name: {
+          type: 'string',
+          metadata: {
+            description: 'The name of the customer event',
+            typescriptType: "'ui_extension_errored'",
+          },
+        },
+        timestamp: {
+          ref: 'Timestamp',
+        },
+        context: {
+          ref: 'Context',
+        },
+        data: {
+          properties: {
+            error: {
+              ref: 'UiExtensionError',
             },
           },
         },
