@@ -1586,6 +1586,11 @@ export interface DeliveryOptionBase {
    * The code of the delivery option.
    */
   code: string;
+
+  /**
+   * The metafields associated with this delivery option.
+   */
+  metafields: Metafield[];
 }
 
 /**
@@ -1657,11 +1662,6 @@ export interface PickupPointOption extends DeliveryOptionBase {
    * The location details of the pickup point.
    */
   location: PickupPointLocation;
-
-  /**
-   * The metafields associated with this delivery option.
-   */
-  metafields: Metafield[];
 }
 
 export interface PickupLocationOption extends DeliveryOptionBase {
@@ -1674,11 +1674,6 @@ export interface PickupLocationOption extends DeliveryOptionBase {
    * The location details of the pickup location.
    */
   location: PickupLocation;
-
-  /**
-   * The metafields associated with this delivery option.
-   */
-  metafields: Metafield[];
 }
 
 interface PickupLocation {
