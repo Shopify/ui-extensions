@@ -45,6 +45,7 @@ Like the `unstable` branch, the `internal` branch also publishes snapshot releas
 
 To create a new stable version, you will need to follow these steps:
 
+1. Add the new stable calver version `YYYY-MM` to the list of watched branches in the [`changesets-reminder`](https://github.com/Shopify/ui-extensions/blob/unstable/.github/workflows/changesets-reminder.yml) and [`deploy`](https://github.com/Shopify/ui-extensions/blob/unstable/.github/workflows/deploy.yml) GitHub actions.
 1. Run the "create stable version" action.
 1. Pull down the branch that that was created by the GitHub action (it should have the name `changeset-release/{{BRANCH_NAME}}`). Instead of the patch version changes that were made by the action, update the version of all packages manually to be the first patch release of a new version range. For example, if you are creating a `2025-01` API version, you will set the package versions of all packages to `2025.1.0`. Apply this change to `packages/ui-extensions/package.json`, `packages/ui-extensions/CHANGELOG.md`, `packages/ui-extensions-react/package.json`, and `packages/ui-extensions-react/CHANGELOG.md`.
    > Note: do not update the root-level `package.json`.
