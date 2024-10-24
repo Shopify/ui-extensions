@@ -1,66 +1,8 @@
 export type {ExtensionApi} from './ExtensionApi';
 export type {RegisterInit, InitData} from './RegisterInit';
 export type {PublicApi} from './PublicApi';
-export type {
-  Attribute,
-  PixelEvents,
-  Browser,
-  Context,
-  Cart,
-  Shop,
-  CartLine,
-  Customer,
-  DiscountApplication,
-  GenericElement,
-  InputElement,
-  FormElement,
-  Product,
-  Collection,
-  Checkout,
-  CheckoutLineItem,
-  CartCost,
-  CartLineCost,
-  OrderCustomer,
-  Order,
-  MailingAddress,
-  ProductVariant,
-  DiscountAllocation,
-  PixelEventsProductAddedToCartData,
-  PixelEventsCheckoutStarted,
-  PixelEventsCheckoutCompleted,
-  PixelEventsCheckoutStartedData,
-  PixelEventsCheckoutCompletedData,
-  PricingPercentageValue,
-  PurchasingCompany,
-  Transaction,
-  TransactionPaymentMethod,
-  Delivery,
-  DeliveryOption,
-  SellingPlanAllocation,
-  Property,
-  Localization,
-} from './PixelEvents';
-export type {
-  PublisherData,
-  PublisherCustomData,
-  PublisherOptions,
-  SubscriberCallback,
-  SubscriberOptions,
-} from './EventBus';
-export type {
-  StandardEvents,
-  CustomEvents,
-  DomEvents,
-  DomEventName,
-  PixelEventName,
-  StandardEventName,
-  Events,
-  SchemaVersion,
-  WebPixelsManager,
-} from './WebPixelsManager';
-export type {
-  CustomerPrivacyEventBus,
-  ConsentEvents,
-  ConsentTrackingEventName,
-  CustomerPrivacyPayload,
-} from './PrivacyApi';
+export type * from './PixelEvents';
+export type * from './EventBus';
+export type * from './WebPixelsManager';
+export type * from './PrivacyApi';
+export type * from './VisitorApi';
