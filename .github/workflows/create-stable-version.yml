@@ -21,12 +21,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
-
-      - name: Update GitHub Actions files
-        run: |
-          sed -i '/branches:/a\      - ${{ github.event.inputs.version }}' .github/workflows/changesets-reminder.yml
-          sed -i '/branches:/a\      - ${{ github.event.inputs.version }}' .github/workflows/deploy.yml
+          node-version: "16"
 
       - name: Create new branch
         run: |
