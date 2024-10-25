@@ -54,6 +54,20 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
     },
     {
       type: 'Generic',
+      anchorLink: '2024101',
+      title: '2024.10.1',
+      sectionContent: `
+- Added in POS version: 9.22
+- Removed in POS version: N/A
+- Release day: 11/11/2024.
+
+### Features
+
+- Fixes long standing issue where \`useEffect\` teardown functions are not working in React',
+      `,
+    },
+    {
+      type: 'Generic',
       anchorLink: '202410',
       title: '2024.10',
       sectionContent: `
