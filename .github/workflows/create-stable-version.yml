@@ -28,6 +28,8 @@ jobs:
           git checkout -b ${{ github.event.inputs.version }} origin/unstable
           git push -u origin ${{ github.event.inputs.version }}
 
+      # Note: The following steps currently fail. I am working with the infra team to see if we can
+      # get a token with the requisite permissions.
       - name: Create branch protection rule
         uses: octokit/request-action@v2.x
         with:
