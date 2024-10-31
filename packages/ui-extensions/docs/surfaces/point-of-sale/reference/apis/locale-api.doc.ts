@@ -7,7 +7,7 @@ const generateCodeBlockForLocaleApi = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Locale API',
   description:
-    'The Locale API allows the extension to retreive the merchants locale.',
+    "The Locale API allows the extension to retrieve the merchant's locale.",
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
