@@ -15,7 +15,9 @@ const Modal = () => {
     <Screen name="Home" title="Home">
       <Button
         title="Print"
-        onPress={() => api.print.print()}
+        onPress={() =>
+          api.print.print('/documents/test-print')
+        }
       />
       <PrintPreview src="/documents/test-print" />
     </Screen>

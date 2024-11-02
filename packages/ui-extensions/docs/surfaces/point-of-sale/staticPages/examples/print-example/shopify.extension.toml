@@ -1,0 +1,16 @@
+api_version = "unstable"
+
+[[extensions]]
+type = "ui_extension"
+name = "Print Tutorial"
+handle = "print-tutorial"
+description = "POS UI extension print tutorial"
+
+[[extensions.targeting]]
+module = "./src/HomeTile.tsx"
+target = "pos.home.tile.render"
+
+[[extensions.targeting]]
+module = "./src/HomeModal.tsx"
+target = "pos.home.modal.render"
+
