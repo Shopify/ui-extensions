@@ -251,7 +251,21 @@ function getDefinition({symbol, checker, skipGeneric, name}) {
   if (isFunction) {
     const matchHandler = name.match(/^on([A-Z][a-zA-Z]+$)/);
     if (matchHandler && typeof matchHandler[1] === 'string') {
-      return {event: matchHandler[1].toLowerCase()};
+      const updateProperties = [];
+      const handlerArguments = [];
+      // @todo: Do something better, this is just a quick workaround
+      if (name === 'onChange' || name === 'onInput') {
+        if (componentName === 'Checkbox') {
+          updateProperties.push(`'checked'`);
+          updateProperties.push(`'indeterminate'`);
+          handlerArguments.push(`'checked'`);
+        } else {
+          updateProperties.push(`'value'`);
+          handlerArguments.push(`'value'`);
+        }
+      }
+
+      return {event: {name, updateProperties, handlerArguments}};
     }
   }
 
