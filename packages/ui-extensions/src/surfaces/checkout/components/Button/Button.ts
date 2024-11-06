@@ -38,7 +38,7 @@ export interface ButtonProps
    */
   submit?: boolean;
   /**
-   * Destination URL to link to. If this value is set, the button will render as a Link.
+   * Destination URL to link to.
    */
   to?: string;
   /**

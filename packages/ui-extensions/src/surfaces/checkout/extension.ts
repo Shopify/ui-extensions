@@ -2,7 +2,12 @@ import {createExtensionRegistrationFunction} from '../../utilities/registration'
 
 import type {ExtensionTargets} from './targets';
 
-export * from '../../extension';
+export type {
+  RenderExtension,
+  RenderExtensionConnection,
+  RenderExtensionWithRemoteRoot,
+  RunnableExtension,
+} from '../../extension';
 
 export const extension =
   createExtensionRegistrationFunction<ExtensionTargets>();

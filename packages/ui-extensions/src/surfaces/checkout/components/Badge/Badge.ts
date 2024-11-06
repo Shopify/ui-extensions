@@ -3,7 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {Size, VisibilityProps} from '../shared';
 import type {IconSource} from '../Icon/Icon';
 
-type Tone = 'default' | 'critical' | 'subdued';
+type Tone = 'default' | 'accent' | 'critical' | 'subdued';
 
 export interface BadgeProps extends VisibilityProps {
   /**
