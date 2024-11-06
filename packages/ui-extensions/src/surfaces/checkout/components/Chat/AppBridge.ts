@@ -21,7 +21,7 @@ interface AppBridge {
   /**
    * The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C)
    * with a TTL of 5 minutes. It can be used can be used to ensure that requests came from a Shopify authenticated user.
-   * See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) from more information.
+   * See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) for more information.
    *
    * @see https://shopify.dev/docs/api/checkout-ui-extensions/latest/apis/session-token
    * @see https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens
