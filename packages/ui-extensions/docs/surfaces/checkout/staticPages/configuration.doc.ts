@@ -155,7 +155,7 @@ Defines the [capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#pro
         {
           name: 'API access examples',
           subtitle: 'See',
-          url: '/docs/api/checkout-ui-extensions/apis/storefront-api#examples',
+          url: '/docs/api/checkout-ui-extensions/apis/standardapi#example-storefront-api-access',
           type: 'blocks',
         },
       ],
@@ -170,7 +170,7 @@ Defines the [capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#pro
         },
         {
           title: 'Methods for accessing the Storefront API',
-          sectionContent: `Enabling the \`api_access\` capability allows you to use the Standard API [\`query\`](/docs/api/checkout-ui-extensions/apis/storefront-api) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
+          sectionContent: `Enabling the \`api_access\` capability allows you to use the Standard API [\`query\`](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-query) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
 
 \`query\` lets you request a single GraphQL response from the Storefront API.
 
@@ -193,12 +193,6 @@ Your extensions will have the following unauthenticated access scopes to the Sto
 - <code>unauthenticated_read_collection_listings</code>
 - <code>unauthenticated_read_metaobjects</code>
 `,
-        },
-        {
-          title: 'Protocol Links',
-          sectionContent: `
-Protocol links are an easy way for Shopify to infer the type of request you are trying to make. If you would like to make a request to the [Storefront GraphQL API](/docs/api/storefront), you can use our [Storefront Protocol](/docs/api/checkout-ui-extensions/unstable/apis/storefront-api#examples) to infer your Storefront URL and API version.
-          `,
         },
       ],
     },
@@ -475,13 +469,9 @@ You retrieve these metafields in your extension by reading [\`appMetafields\`](/
       title: 'Preloads definition',
       sectionContent: `
 For specific targets, you must provide the URL of assets or pages loaded by UI components within its extension. This allows Shopify to preload them as early as possible and ensure a performant experience for buyers.
-
 Currently, the only supported component is \`chat\`.
-
 The URL for the iframe used in this extension target. The URL can be absolute or relative. Relative URLs are resolved against the app URL.
-
 For example,
-
 * if the app URL is \`https://example.com\` and \`chat = "/my-chat-application"\`, the resolved URL will be \`https://example.com/my-chat-application\`.
 * if \`chat = "https://my-chat-application.com"\`, the resolved URL will be \`https://my-chat-application.com\`.
       `,

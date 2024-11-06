@@ -19,7 +19,14 @@ export function useBuyerJourney<
 >(): BuyerJourney {
   const api = useApi<Target>();
 
-  return api.buyerJourney;
+  if ('buyerJourney' in api) {
+    return api.buyerJourney;
+  }
+
+  throw new ExtensionHasNoMethodError(
+    'applyAttributeChange',
+    api.extension.target,
+  );
 }
 
 /**
@@ -31,7 +38,12 @@ export function useBuyerJourneyCompleted<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): boolean {
   const api = useApi<Target>();
-  return useSubscription(api.buyerJourney.completed);
+
+  if ('buyerJourney' in api) {
+    return useSubscription(api.buyerJourney.completed);
+  }
+
+  throw new ExtensionHasNoMethodError('buyerJourney', api.extension.target);
 }
 
 /**
@@ -47,6 +59,10 @@ export function useBuyerJourneyIntercept<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(interceptor: Interceptor): void {
   const api = useApi<Target>();
+
+  if (!('buyerJourney' in api)) {
+    throw new ExtensionHasNoMethodError('buyerJourney', api.extension.target);
+  }
 
   const interceptorRef = useRef(interceptor);
   interceptorRef.current = interceptor;

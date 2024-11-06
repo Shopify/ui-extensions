@@ -3,6 +3,8 @@ import type {
   RenderExtensionTarget,
 } from '@shopify/ui-extensions/checkout';
 
+import {ExtensionHasNoMethodError} from '../errors';
+
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 
@@ -14,5 +16,10 @@ export function useDeliveryGroups<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): DeliveryGroup[] {
   const api = useApi<Target>();
+
+  if (!('deliveryGroups' in api)) {
+    throw new ExtensionHasNoMethodError('deliveryGroups', api.extension.target);
+  }
+
   return useSubscription(api.deliveryGroups);
 }
