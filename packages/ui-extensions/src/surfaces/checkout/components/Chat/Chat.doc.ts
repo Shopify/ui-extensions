@@ -201,7 +201,7 @@ Information can be passed between the hosted application and the UI extension th
             {
               title: 'Hosted chat application',
               code: './examples/app-bridge-communication.example.js',
-              language: 'html',
+              language: 'js',
             },
           ],
         },
