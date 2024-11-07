@@ -6,4 +6,4 @@
 >
   <View>Content</View>
   <View>Content</View>
-</Grid>;
+</Grid>
