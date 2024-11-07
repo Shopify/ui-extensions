@@ -38,7 +38,7 @@ export type ApiVersion =
  *
  * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
  *
- * * [`iframe.sources`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#iframe): the extension can embed an external URL in an iframe.
+ * * `iframe.sources`: the extension can embed an external URL in an iframe.
  */
 
 export type Capability =

@@ -79,7 +79,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register customer consent decisions that will be honored on Shopify-managed services.
    *
-   * * [`iframe.sources`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#iframe): the extension can embed an external URL in an iframe.
+   * * `iframe.sources`: the extension can embed an external URL in an iframe.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 
@@ -1358,16 +1358,6 @@ export interface Customer {
    * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   image: ImageDetails;
-  /**
-   * Defines if the customer email accepts marketing activities.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * > Caution: This field is deprecated and will be removed in a future version. Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
-   *
-   * @deprecated Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
-   */
-  acceptsMarketing: boolean;
   /**
    * Defines if the customer accepts email marketing activities.
    *
