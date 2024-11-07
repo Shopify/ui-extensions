@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: 'Use Chat to create live chat applications.',
   thumbnail: 'chat-thumbnail.png',
   requires:
-    'configuration of the [preloads](/docs/api/checkout-ui-extensions/latest/configuration#preloads) value in the extensions configuration file.',
+    'configuration of the [preloads](/docs/api/checkout-ui-extensions/unstable/configuration#preloads) value in the extensions configuration file.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
@@ -96,7 +96,7 @@ Alternatively, to explore all the functionality available on the \`shopify\` glo
 The \`src\` of the iframe rendered by Chat is provided by the \`preloads\` \`chat\` key in the extension configuration file. Shopify automatically appends query parameters to the URL which allows developers to verify the authenticity of the request and the identity of the merchant. We guarantee these tokens are valid and signed by Shopify.
 
 #### id_token
-The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C) with a TTL of 5 minutes. It can be used can be used to retrieve merchants information on the backend as well as ensure that requests came from a Shopify authenticated source. See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) from more information.
+The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C) with a TTL of 5 minutes. It can be used can be used to retrieve merchants information on the backend as well as ensure that requests came from a Shopify authenticated source. See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) for more information.
 
 #### locale
 The locale of the shop that’s embedding the app, i.e. \`en-CA\`. This information is also available in the \`shopify\` global variable under \`config\`.
