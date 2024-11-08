@@ -5,7 +5,7 @@ const data: ReferenceEntityTemplateSchema = {
   description: 'Use Chat to create live chat applications.',
   thumbnail: 'chat-thumbnail.png',
   requires:
-    'configuration of the [preloads](/docs/api/checkout-ui-extensions/unstable/configuration#preloads) value in the extensions configuration file.',
+    'configuration of the [preloads](/docs/api/checkout-ui-extensions/unstable/configuration#preloads-definition) value in the extensions configuration file.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
@@ -119,6 +119,7 @@ The unique handle name of the UI extension as defined by the developer. This inf
       type: 'Generic',
       anchorLink: 'chat-dimensions',
       title: 'Chat dimensions',
+      image: 'chat-component-iframe-clipping.png',
       sectionContent: `
 To provide developers with the most flexibility when it comes to responsive changes, the iframe rendered in the page by \`Chat\` takes the full width and height of the browser window. Only a specific part of the iframe is visible, the rest is clipped.
 
@@ -126,16 +127,6 @@ The \`inlineSize\` and \`blockSize\` values set on Chat or changed through the A
 
 With this in place, your application can now rely on the window’s dimension to change styles or apply specific behaviors to different window sizes. This allow developers to style their app as if as if the widget would be outside an iframe. For example, CSS media queries can now work within the iframe.
 `,
-      codeblock: {
-        title: 'Hosted chat application',
-        tabs: [
-          {
-            title: 'style.css',
-            code: './examples/chat-media-query.example.css',
-            language: 'css',
-          },
-        ],
-      },
     },
     {
       type: 'Generic',
