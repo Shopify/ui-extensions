@@ -21,6 +21,7 @@ export type CustomerSegmentTemplateIcon =
   | 'buyButtonMajor'
   | 'followUpEmailMajor'
   | 'confettiMajor'
+  | 'walletMajor'
   | 'viewMajor';
 
 export type CustomerSegmentTemplateCategory =
