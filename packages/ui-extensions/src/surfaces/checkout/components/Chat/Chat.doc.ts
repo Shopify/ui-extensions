@@ -47,6 +47,46 @@ After App Bridge is set up in your app, you have access to the \`shopify\` globa
   subSections: [
     {
       type: 'Generic',
+      anchorLink: 'src-and-query-parameters',
+      title: 'Chat source and query parameters',
+      sectionContent: `
+The \`src\` of the iframe rendered by Chat is provided by the \`preloads\` \`chat\` key in the extension configuration file. Shopify automatically appends query parameters to the URL which allows developers to verify the authenticity of the request and the identity of the merchant. We guarantee these tokens are valid and signed by Shopify.
+
+#### id_token
+The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C) with a TTL of 5 minutes. It can be used can be used to retrieve merchants information on the backend as well as ensure that requests came from a Shopify authenticated source. See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) for more information.
+
+#### locale
+The locale of the shop that’s embedding the app, i.e. \`en-CA\`. This information is also available in the \`shopify\` global variable under \`config\`.
+
+#### handle
+The unique handle name of the UI extension as defined by the developer. This information is also available in the \`shopify\` global variable under \`extension\`.
+`,
+      codeblock: {
+        title: 'Chat source',
+        tabs: [
+          {
+            title: 'shopify.extension.toml',
+            code: './examples/shopify-extension-toml.example.toml',
+            language: 'toml',
+          },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'chat-dimensions',
+      title: 'Chat dimensions',
+      image: 'chat-component-iframe-clipping.png',
+      sectionContent: `
+To provide developers with the most flexibility when it comes to responsive changes, the iframe rendered in the page by \`Chat\` takes the full width and height of the browser window. Only a specific part of the iframe is visible, the rest is clipped.
+
+The \`inlineSize\` and \`blockSize\` values set on Chat or changed through the App Bridge \`resizeTo()\` method dictates the bounding box of the visible part. That box is fixed and positioned in the bottom right corner of the iframe.
+
+With this in place, your application can now rely on the window’s dimension to change styles or apply specific behaviors to different window sizes. This allow developers to style their app as if as if the application would be outside an iframe. For example, CSS media queries can now work within the iframe.
+`,
+    },
+    {
+      type: 'Generic',
       anchorLink: 'about-app-bridge',
       title: 'Getting started with App Bridge for checkout',
       sectionContent: `
@@ -87,46 +127,6 @@ Alternatively, to explore all the functionality available on the \`shopify\` glo
           },
         ],
       },
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'src-and-query-parameters',
-      title: 'Chat source and query parameters',
-      sectionContent: `
-The \`src\` of the iframe rendered by Chat is provided by the \`preloads\` \`chat\` key in the extension configuration file. Shopify automatically appends query parameters to the URL which allows developers to verify the authenticity of the request and the identity of the merchant. We guarantee these tokens are valid and signed by Shopify.
-
-#### id_token
-The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C) with a TTL of 5 minutes. It can be used can be used to retrieve merchants information on the backend as well as ensure that requests came from a Shopify authenticated source. See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) for more information.
-
-#### locale
-The locale of the shop that’s embedding the app, i.e. \`en-CA\`. This information is also available in the \`shopify\` global variable under \`config\`.
-
-#### handle
-The unique handle name of the UI extension as defined by the developer. This information is also available in the \`shopify\` global variable under \`extension\`.
-`,
-      codeblock: {
-        title: 'Chat source',
-        tabs: [
-          {
-            title: 'shopify.extension.toml',
-            code: './examples/shopify-extension-toml.example.toml',
-            language: 'toml',
-          },
-        ],
-      },
-    },
-    {
-      type: 'Generic',
-      anchorLink: 'chat-dimensions',
-      title: 'Chat dimensions',
-      image: 'chat-component-iframe-clipping.png',
-      sectionContent: `
-To provide developers with the most flexibility when it comes to responsive changes, the iframe rendered in the page by \`Chat\` takes the full width and height of the browser window. Only a specific part of the iframe is visible, the rest is clipped.
-
-The \`inlineSize\` and \`blockSize\` values set on Chat or changed through the App Bridge \`resizeTo()\` method dictates the bounding box of the visible part. That box is fixed and positioned in the bottom right corner of the iframe.
-
-With this in place, your application can now rely on the window’s dimension to change styles or apply specific behaviors to different window sizes. This allow developers to style their app as if as if the widget would be outside an iframe. For example, CSS media queries can now work within the iframe.
-`,
     },
     {
       type: 'Generic',
