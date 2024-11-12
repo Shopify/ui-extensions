@@ -13,3 +13,6 @@ shopify.extension.port.onMessage = async (event) => {
     });
   }
 };
+
+// Ensure the messagePort is ready to start sending and receiving messages.
+shopify.extension.port.start();

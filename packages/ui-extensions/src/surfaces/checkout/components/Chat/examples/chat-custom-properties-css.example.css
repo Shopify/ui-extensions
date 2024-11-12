@@ -4,8 +4,6 @@
 }
 
 .dialog {
-  inline-size: min(
-    100%,
-    var(--shopify-checkout-chat-maximized-max-inline-size)
-  );
+  inline-size: 100%;
+  max-inline-size: var(--shopify-checkout-chat-maximized-max-inline-size);
 }
