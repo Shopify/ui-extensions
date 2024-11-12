@@ -20,7 +20,10 @@ export default extension(
       Button,
       {
         title: 'Print',
-        onPress: () => api.print.print(),
+        onPress: () =>
+          api.print.print(
+            '/documents/test-print',
+          ),
       },
     );
 
@@ -32,6 +35,7 @@ export default extension(
     );
 
     homeScreen.append(printPreview);
+    homeScreen.append(printButton);
 
     root.append(homeScreen);
   },
