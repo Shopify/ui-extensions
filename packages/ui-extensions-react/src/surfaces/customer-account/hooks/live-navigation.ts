@@ -1,7 +1,7 @@
-import {
+import type {
   NavigationHistoryEntry,
   RenderCustomerAccountFullPageExtensionTarget,
-} from '@shopify/ui-extensions/src/surfaces/customer-account';
+} from '@shopify/ui-extensions/customer-account';
 import {useApi} from './api';
 import {useEffect, useReducer} from 'react';
 

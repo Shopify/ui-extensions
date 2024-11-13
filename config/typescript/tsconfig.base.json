@@ -1,6 +1,7 @@
 {
   "extends": "@shopify/typescript-configs/library.json",
   "compilerOptions": {
+    "moduleResolution": "Bundler",
     "strict": true,
     "composite": true,
     "isolatedModules": true,

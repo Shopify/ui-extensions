@@ -3,7 +3,9 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "build/ts",
-    "stripInternal": true
+    "stripInternal": true,
+    "lib": ["DOM"],
+    "importsNotUsedAsValues": "remove"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["src/**/*.example.*", "src/**/tests/**"]
