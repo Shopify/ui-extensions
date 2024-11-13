@@ -7,7 +7,7 @@ import {
 export default extension(
   'purchase.thank-you.chat.render',
   (root) => {
-    // 2. Render a Chat UI. This target only accepts the Chat component. Any other components will not render.
+    // 2. Render a Chat application. This target only accepts the Chat component. Any other components will not render.
     root.appendChild(
       root.createComponent(Chat, {
         inlineSize: 100,
