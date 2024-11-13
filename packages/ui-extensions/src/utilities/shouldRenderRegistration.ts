@@ -12,7 +12,7 @@ export function createShouldRenderRegistrationFunction<
     target,
     callback,
   ) => {
-    (globalThis as any).shopify?.run(target, callback);
+    (globalThis as any).shopify?.dataExtension(target, callback);
     return callback;
   };
 
