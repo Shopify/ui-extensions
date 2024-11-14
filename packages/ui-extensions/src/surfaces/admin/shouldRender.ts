@@ -1,6 +1,5 @@
-import {createShouldRenderRegistrationFunction} from '../../utilities/shouldRenderRegistration';
+import {createDataRegistrationFunction} from '../../utilities/dataRegistration';
 
 import type {ExtensionTargets} from './should-render-targets';
 
-export const shouldRender =
-  createShouldRenderRegistrationFunction<ExtensionTargets>();
+export const shouldRender = createDataRegistrationFunction<ExtensionTargets>();

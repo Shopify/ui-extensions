@@ -4,4 +4,3 @@ export * from './admin/extension-targets';
 export * from './admin/extension';
 export * from './admin/shouldRender';
 export * from './admin/shared';
-export * from './admin/globals';

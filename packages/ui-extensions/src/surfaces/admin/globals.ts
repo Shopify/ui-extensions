@@ -5,8 +5,4 @@ export interface ShopifyGlobal {
     extension: ExtensionTarget,
     extend: ExtensionTargets[ExtensionTarget],
   ): void;
-  dataExtension<ExtensionTarget extends keyof ExtensionTargets>(
-    target: ExtensionTarget,
-    callback: ExtensionTargets[ExtensionTarget],
-  ): void;
 }

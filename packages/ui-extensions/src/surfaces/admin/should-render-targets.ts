@@ -263,37 +263,3 @@ export type RenderExtensionTarget = {
     ? ID
     : never;
 }[keyof ExtensionTargets];
-
-/**
- * A mapping of each “render extension” name to its callback type.
- */
-export type RenderExtensions = {
-  [ID in RenderExtensionTarget]: ExtensionTargets[ID];
-};
-
-type ExtractedApiFromRenderExtension<T> = T extends RunnableExtension<
-  infer Api,
-  any
->
-  ? Api
-  : never;
-
-type ExtractedAllowedComponentsFromRenderExtension<T> =
-  T extends RunnableExtension<any, infer Components> ? Components : never;
-
-/**
- * For a given rendering extension target, returns the type of the API that the
- * extension will receive at runtime. This API type is the second argument to
- * the callback for that extension target. The first callback for all of the rendering
- * extension targets each receive a `RemoteRoot` object.
- */
-export type ApiForRenderExtension<ID extends keyof RenderExtensions> =
-  ExtractedApiFromRenderExtension<RenderExtensions[ID]>;
-
-/**
- * For a given rendering extension target, returns the UI components that the
- * extension target supports.
- */
-export type AllowedComponentsForRenderExtension<
-  ID extends keyof RenderExtensions,
-> = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[ID]>;

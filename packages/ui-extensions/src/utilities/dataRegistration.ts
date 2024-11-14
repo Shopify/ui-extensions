@@ -1,14 +1,14 @@
-export interface ShouldRenderRegistrationFunction<ExtensionPoints> {
+export interface DataRegistrationFunctionFunction<ExtensionPoints> {
   <Target extends keyof ExtensionPoints>(
     target: Target,
     callback: ExtensionPoints[Target],
   ): ExtensionPoints[Target];
 }
 
-export function createShouldRenderRegistrationFunction<
+export function createDataRegistrationFunction<
   ExtensionPoints,
->(): ShouldRenderRegistrationFunction<ExtensionPoints> {
-  const extensionWrapper: ShouldRenderRegistrationFunction<ExtensionPoints> = (
+>(): DataRegistrationFunctionFunction<ExtensionPoints> {
+  const extensionWrapper: DataRegistrationFunctionFunction<ExtensionPoints> = (
     target,
     callback,
   ) => {
