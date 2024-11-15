@@ -12,7 +12,7 @@ import type {
 import type {MaybeAllValuesShorthandProperty} from '@shopify/ui-api-design/dist/shared/utils';
 
 export interface IconProps {
-  // type: IconType;
+  type: string;
   tone: Extract<
     IconProps$1['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
