@@ -1,5 +1,7 @@
 export interface RenderExtension<Api> {
-  (root: HTMLElement, api: Api): Promise<void | (() => void)>;
+  (root: HTMLElement, api: Api):
+    | (void | (() => void))
+    | Promise<void | (() => void)>;
 }
 
 export interface ExtensionRegistrationFunction<ExtensionTargets> {
