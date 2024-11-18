@@ -6,4 +6,4 @@
   )}
 >
   Content
-</Pressable>;
+</Pressable>
