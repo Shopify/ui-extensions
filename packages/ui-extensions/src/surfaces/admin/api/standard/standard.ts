@@ -1,7 +1,6 @@
 import type {I18n} from '../../../../api';
 import {ApiVersion} from '../../../../shared';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
-import {PickerApi} from '../picker/picker';
 
 export interface Intents {
   /**
@@ -62,9 +61,4 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
     query: string,
     options?: {variables?: Variables; version?: Omit<ApiVersion, '2023-04'>},
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
-
-  /**
-   * Renders the [Picker](/docs/api/app-bridge-library/apis/picker), allowing users to select a resource for the extension to use as part of its flow.
-   */
-  picker: PickerApi;
 }

@@ -38,10 +38,34 @@ const data: LandingTemplateSchema = {
           type: 'app',
         },
         {
-          subtitle: 'Network Features',
-          name: 'Learn about the network features available to admin extensions',
-          url: '/docs/api/admin-extensions/api/network-features',
-          type: 'globe',
+          subtitle: 'App authentication',
+          name: "Make authenticated requests to your app's backend",
+          url: '#app-authentication',
+          type: 'tool',
+        },
+        {
+          subtitle: 'Using Forms',
+          name: 'Use the Form component to integrate with the contextual save bar of the resource page',
+          url: '#using-forms',
+          type: 'tool',
+        },
+        {
+          subtitle: 'Direct API access',
+          name: 'Access the Shopify GraphQL API directly',
+          url: '#direct-api-access',
+          type: 'tool',
+        },
+        {
+          subtitle: 'Picking resources',
+          name: 'Display resource pickers to select resources',
+          url: '#picking-resources',
+          type: 'tool',
+        },
+        {
+          subtitle: 'Custom protocols',
+          name: 'Easily construct URLs to navigate to common locations',
+          url: '#custom-protocols',
+          type: 'gear',
         },
       ],
     },
@@ -119,6 +143,157 @@ const data: LandingTemplateSchema = {
           },
         ],
       },
+    },
+    {
+      type: 'Generic',
+      title: 'Direct API access',
+      sectionContent:
+        "You can make Shopify Admin API requests directly from your extension using the [query API](/docs/api/admin-extensions/api/standard-api#standardapi-propertydetail-query) or the standard [web fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)!\n\nAny `fetch()` calls from your extension to Shopify's Admin GraphQL API are automatically authenticated by default. These calls are fast too, because Shopify handles requests directly.\n\nDirect API requests use [online access](https://shopify.dev/docs/apps/build/authentication-authorization/access-token-types/online-access-tokens) mode by default. If you want to use [offline access](https://shopify.dev/docs/apps/build/authentication-authorization/access-token-types/offline-access-tokens) mode, you can set the `direct_api_mode` property to `offline` in your [app TOML file](/docs/apps/tools/cli/configuration#admin).\n\nNote: Direct API can't be used to manage storefront access tokens.",
+      anchorLink: 'direct-api-access',
+      codeblock: {
+        title: 'Query Shopify data',
+        tabs: [
+          {
+            code: './examples/direct-api-fetch.jsx',
+            language: 'tsx',
+            title: 'Fetch Product data',
+          },
+          {
+            code: './examples/direct-api-query.jsx',
+            language: 'tsx',
+            title: 'Query Product data',
+          },
+        ],
+      },
+      sectionCard: [
+        {
+          name: "Direct API can't be used to manage storefront access tokens.",
+          subtitle: 'Note',
+          url: '/docs/api/admin-extensions#direct-api-access',
+          type: 'information',
+        },
+        {
+          name: 'Learn more about access scopes',
+          subtitle: 'Developer guide',
+          url: '/docs/api/usage/access-scopes',
+          type: 'information',
+        },
+      ],
+    },
+    {
+      type: 'GenericAccordion',
+      title: 'Picking Resources',
+      sectionContent:
+        "Use the Resource Picker and Picker API's to allow users to select resources for your extension to use.",
+      anchorLink: 'picking-resources',
+      accordionContent: [
+        {
+          title: 'Resource Picker',
+          description:
+            'Use the `resourcePicker` API to display a search-based interface to help users find and select one or more products, collections, or product variants, and then return the selected resources to your extension. Both the app and the user must have the necessary permissions to access the resources selected.',
+          image: 'resource-picker.png',
+          codeblock: {
+            title: 'resourcePicker',
+            tabs: [
+              {
+                title: 'Selecting a product',
+                language: 'tsx',
+                code: './examples/resource-picker-product.jsx',
+              },
+            ],
+          },
+        },
+        {
+          title: 'Picker',
+          description:
+            'Use the `picker` API to display a search-based interface to help users find and select one or more custom data types that you provide, such as product reviews, email templates, or subscription options.',
+          image: 'picker.png',
+          codeblock: {
+            title: 'picker',
+            tabs: [
+              {
+                title: 'Selecting an email template',
+                language: 'tsx',
+                code: './examples/picker-email-template.jsx',
+              },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      type: 'GenericAccordion',
+      title: 'Custom Protocols',
+      sectionContent:
+        'Custom protocols make it easier to navigate to common locations, and construct URLs.',
+      anchorLink: 'custom-protocols',
+      accordionContent: [
+        {
+          title: 'Shopify Protocol',
+          description:
+            'Use the `shopify:admin` protocol when you want to construct a URL with a root of the Shopify Admin.',
+          codeblock: {
+            title: 'shopify:admin',
+            tabs: [
+              {
+                title: 'Link to Product Page',
+                language: 'tsx',
+                code: './examples/link-to-product-page.jsx',
+              },
+              {
+                title: 'Fetch data',
+                language: 'ts',
+                code: './examples/fetch-data.js',
+              },
+            ],
+          },
+        },
+        {
+          title: 'App Protocol',
+          description:
+            'Use the `app:` protocol to construct a URL for your app. Shopify will handle constructing the base URL for your app. This works for both embedded and non-embedded apps.',
+          codeblock: {
+            title: 'app:',
+            tabs: [
+              {
+                title: 'Link to Settings',
+                language: 'tsx',
+                code: './examples/link-to-settings.jsx',
+              },
+            ],
+          },
+        },
+        {
+          title: 'Extension Protocol',
+          description:
+            'Triggers an action extension from a block extension using the `extension:` protocol. The `extensionTarget` is the target of the action extension. The handle is the handle of the action extension that will be opened.',
+          codeblock: {
+            title: 'extension:',
+            tabs: [
+              {
+                title: 'Trigger Action Extension from a Block extension',
+                language: 'tsx',
+                code: './examples/link-to-action.jsx',
+              },
+            ],
+          },
+        },
+        {
+          title: 'Relative Urls',
+          description:
+            'Relative urls are relative to your app and are useful when you want to link to a route within your app. This works for both embedded and non-embedded apps.',
+          codeblock: {
+            title: '/relative/urls',
+            tabs: [
+              {
+                title: 'Link to route in your app',
+                language: 'tsx',
+                code: './examples/link-to-route.jsx',
+              },
+            ],
+          },
+        },
+      ],
     },
     {
       type: 'Generic',
