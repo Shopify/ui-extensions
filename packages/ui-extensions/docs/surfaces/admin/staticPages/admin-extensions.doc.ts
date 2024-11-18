@@ -176,7 +176,7 @@ const data: LandingTemplateSchema = {
       type: 'GenericAccordion',
       title: 'Picking Resources',
       sectionContent:
-        "Use the Resource Picker and Picker API's to allow users to select resources for your extension to use.",
+        'Use the Resource Picker and Picker APIs to allow users to select resources for your extension to use. These APIs are available for use in [Block Extensions](/docs/api/admin-extensions/unstable/api/block-extension-api).',
       anchorLink: 'picking-resources',
       accordionContent: [
         {
