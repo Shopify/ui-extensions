@@ -2,6 +2,7 @@ import type {StandardApi} from '../standard/standard';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 import type {Data} from '../shared';
 import type {ResourcePickerApi} from '../resource-picker/resource-picker';
+import type {PickerApi} from '../picker/picker';
 
 export interface Navigation {
   /**
@@ -29,4 +30,9 @@ export interface BlockExtensionApi<ExtensionTarget extends AnyExtensionTarget>
    * Renders the [Resource Picker](/docs/api/app-bridge-library/apis/resource-picker), allowing users to select a resource for the extension to use as part of its flow.
    */
   resourcePicker: ResourcePickerApi;
+
+  /**
+   * Renders the [Picker](/docs/api/app-bridge-library/apis/picker), allowing users to select a resource for the extension to use as part of its flow.
+   */
+  picker: PickerApi;
 }
