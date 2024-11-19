@@ -8,11 +8,456 @@ import type {
   StackProps as StackProps$1,
   TextProps as TextProps$1,
 } from '@shopify/ui-api-design';
-// import type {IconType} from '@shopify/admin-ui-icons';
 import type {MaybeAllValuesShorthandProperty} from '@shopify/ui-api-design/dist/shared/utils';
 
+type IconType =
+  | 'wrench'
+  | 'viewport-tall'
+  | 'viewport-short'
+  | 'viewport-narrow'
+  | 'wifi'
+  | 'work'
+  | 'watch'
+  | 'wallet'
+  | 'wand'
+  | 'upload'
+  | 'undo'
+  | 'viewport-wide'
+  | 'unknown-device'
+  | 'transaction'
+  | 'transfer-internal'
+  | 'transfer-in'
+  | 'transfer-out'
+  | 'transaction-fee-euro'
+  | 'transaction-fee-yen'
+  | 'transaction-fee-rupee'
+  | 'transaction-fee-dollar'
+  | 'transaction-fee-pound'
+  | 'thumbs-up'
+  | 'transfer'
+  | 'tip-jar'
+  | 'theme-template'
+  | 'thumbs-down'
+  | 'theme-store'
+  | 'theme'
+  | 'theme-edit'
+  | 'text-with-image'
+  | 'text'
+  | 'toggle-off'
+  | 'text-underline'
+  | 'text-title'
+  | 'text-in-columns'
+  | 'text-indent'
+  | 'text-italic'
+  | 'text-font'
+  | 'text-font-list'
+  | 'text-grammar'
+  | 'text-color'
+  | 'text-block'
+  | 'text-bold'
+  | 'toggle-on'
+  | 'text-align-right'
+  | 'text-align-center'
+  | 'text-align-left'
+  | 'tablet'
+  | 'team'
+  | 'store'
+  | 'tax'
+  | 'sun'
+  | 'store-online'
+  | 'store-import'
+  | 'stop-circle'
+  | 'target'
+  | 'store-managed'
+  | 'star-filled'
+  | 'status'
+  | 'sort-descending'
+  | 'text-in-rows'
+  | 'sort-ascending'
+  | 'sound'
+  | 'social-ad'
+  | 'smiley-neutral'
+  | 'status-active'
+  | 'sports'
+  | 'social-post'
+  | 'smiley-joy'
+  | 'smiley-happy'
+  | 'slideshow'
+  | 'shipping-label'
+  | 'shield-none'
+  | 'shield-person'
+  | 'smiley-sad'
+  | 'shield-check-mark'
+  | 'shopcodes'
+  | 'settings'
+  | 'share'
+  | 'send'
+  | 'search-resource'
+  | 'search-list'
+  | 'search'
+  | 'save'
+  | 'rotate-left'
+  | 'text-quote'
+  | 'search-recent'
+  | 'sandbox'
+  | 'replay'
+  | 'shield-pending'
+  | 'reward'
+  | 'remove-background'
+  | 'replace'
+  | 'return'
+  | 'receipt'
+  | 'receipt-yen'
+  | 'receipt-refund'
+  | 'receipt-rupee'
+  | 'reset'
+  | 'receipt-euro'
+  | 'refresh'
+  | 'redo'
+  | 'receipt-paid'
+  | 'question-circle'
+  | 'receipt-dollar'
+  | 'product-unavailable'
+  | 'receipt-pound'
+  | 'profile'
+  | 'product-return'
+  | 'product-add'
+  | 'print'
+  | 'product-list'
+  | 'product-reference'
+  | 'product-remove'
+  | 'price-list'
+  | 'product-cost'
+  | 'play'
+  | 'play-circle'
+  | 'point-of-sale'
+  | 'phone-out'
+  | 'pin'
+  | 'plan'
+  | 'phone-in'
+  | 'person-segment'
+  | 'personalized-text'
+  | 'payout-yen'
+  | 'person-remove'
+  | 'person-exit'
+  | 'payout'
+  | 'payout-pound'
+  | 'payout-dollar'
+  | 'person-lock'
+  | 'passkey'
+  | 'payout-euro'
+  | 'paint-brush-round'
+  | 'payout-rupee'
+  | 'payment-capture'
+  | 'paper-check'
+  | 'pagination-end'
+  | 'pause-circle'
+  | 'paint-brush-flat'
+  | 'page-reference'
+  | 'page-up'
+  | 'person-add'
+  | 'page-attachment'
+  | 'page-clock'
+  | 'page-down'
+  | 'package-returned'
+  | 'page-add'
+  | 'package'
+  | 'pagination-start'
+  | 'package-fulfilled'
+  | 'organization'
+  | 'page-heart'
+  | 'outdent'
+  | 'outgoing'
+  | 'order-repeat'
+  | 'package-on-hold'
+  | 'page-remove'
+  | 'order-draft'
+  | 'note'
+  | 'order-first'
+  | 'note-add'
+  | 'notification'
+  | 'moon'
+  | 'money'
+  | 'minimize'
+  | 'nature'
+  | 'metaobject-reference'
+  | 'menu'
+  | 'metaobject'
+  | 'metafields'
+  | 'metaobject-list'
+  | 'menu-vertical'
+  | 'mention'
+  | 'money-none'
+  | 'megaphone'
+  | 'orders-status'
+  | 'referral-code'
+  | 'measurement-volume'
+  | 'markets'
+  | 'markets-yen'
+  | 'measurement-size'
+  | 'markets-rupee'
+  | 'maximize'
+  | 'markets-euro'
+  | 'lock'
+  | 'location-none'
+  | 'live'
+  | 'list-numbered'
+  | 'link'
+  | 'layout-sidebar-right'
+  | 'list-bulleted'
+  | 'measurement-weight'
+  | 'layout-sidebar-left'
+  | 'media-receiver'
+  | 'layout-popup'
+  | 'layout-section'
+  | 'layout-footer'
+  | 'layout-rows-2'
+  | 'layout-columns-2'
+  | 'layout-column-1'
+  | 'layout-columns-3'
+  | 'layout-buy-button'
+  | 'layout-buy-button-vertical'
+  | 'layout-block'
+  | 'layout-buy-button-horizontal'
+  | 'language-translate'
+  | 'label-printer'
+  | 'keyboard-hide'
+  | 'keyboard'
+  | 'iq'
+  | 'inventory'
+  | 'key'
+  | 'layout-header'
+  | 'layout-logo-block'
+  | 'incentive'
+  | 'images'
+  | 'image'
+  | 'incoming'
+  | 'image-explore'
+  | 'image-with-text-overlay'
+  | 'image-none'
+  | 'image-add'
+  | 'import'
+  | 'image-alt'
+  | 'icons'
+  | 'identity-card'
+  | 'hashtag'
+  | 'globe-europe'
+  | 'heart'
+  | 'inventory-updated'
+  | 'hashtag-decimal'
+  | 'gift-card'
+  | 'gauge'
+  | 'globe-asia'
+  | 'games'
+  | 'forms'
+  | 'image-magic'
+  | 'food'
+  | 'forklift'
+  | 'folder'
+  | 'folder-up'
+  | 'folder-down'
+  | 'folder-remove'
+  | 'home'
+  | 'flip-vertical'
+  | 'folder-add'
+  | 'flag'
+  | 'file'
+  | 'flower'
+  | 'flip-horizontal'
+  | 'favicon'
+  | 'eyeglasses'
+  | 'eye-check-mark'
+  | 'filter'
+  | 'eye-first'
+  | 'export'
+  | 'exchange'
+  | 'eye-dropper'
+  | 'envelope-soft-pack'
+  | 'envelope'
+  | 'exit'
+  | 'enter'
+  | 'email-newsletter'
+  | 'email-follow-up'
+  | 'duplicate'
+  | 'drag-drop'
+  | 'domain-new'
+  | 'drag-handle'
+  | 'domain'
+  | 'dock-floating'
+  | 'discount-code'
+  | 'discount'
+  | 'dock-side'
+  | 'domain-redirect'
+  | 'dns-settings'
+  | 'delete'
+  | 'desktop'
+  | 'database-add'
+  | 'data-table'
+  | 'database-connect'
+  | 'domain-landing-page'
+  | 'cursor-option'
+  | 'cursor'
+  | 'data-presentation'
+  | 'crop'
+  | 'currency-convert'
+  | 'cursor-banner'
+  | 'credit-card-tap-chip'
+  | 'credit-card-reader-tap'
+  | 'credit-card'
+  | 'credit-card-secure'
+  | 'credit-card-reader-chip'
+  | 'credit-card-cancel'
+  | 'credit-card-reader'
+  | 'database'
+  | 'credit-card-percent'
+  | 'corner-pill'
+  | 'corner-round'
+  | 'content'
+  | 'connect'
+  | 'contract'
+  | 'confetti'
+  | 'rotate-right'
+  | 'menu-horizontal'
+  | 'color-none'
+  | 'collection-list'
+  | 'code'
+  | 'collection-featured'
+  | 'compass'
+  | 'compose'
+  | 'corner-square'
+  | 'code-add'
+  | 'clipboard'
+  | 'color'
+  | 'clipboard-check'
+  | 'chevron-right'
+  | 'chevron-up-circle'
+  | 'chevron-right-circle'
+  | 'chevron-down-circle'
+  | 'circle'
+  | 'clipboard-checklist'
+  | 'chevron-left'
+  | 'checkbox'
+  | 'chat'
+  | 'collection-reference'
+  | 'chevron-left-circle'
+  | 'chart-vertical'
+  | 'chat-referral'
+  | 'chart-stacked'
+  | 'chart-line'
+  | 'chart-horizontal'
+  | 'chart-popular'
+  | 'chart-histogram-second-last'
+  | 'chart-histogram-last'
+  | 'chart-histogram-flat'
+  | 'chart-funnel'
+  | 'chart-histogram-full'
+  | 'chart-histogram-first'
+  | 'chart-cohort'
+  | 'chart-histogram-growth'
+  | 'categories'
+  | 'chart-histogram-first-last'
+  | 'channels'
+  | 'cash-pound'
+  | 'chart-donut'
+  | 'cash-yen'
+  | 'cash-dollar'
+  | 'catalog-product'
+  | 'cart-up'
+  | 'cart-discount'
+  | 'cart-sale'
+  | 'cash-rupee'
+  | 'cart'
+  | 'cart-down'
+  | 'cart-abandoned'
+  | 'caret-down'
+  | 'camera'
+  | 'camera-flip'
+  | 'caret-up'
+  | 'calendar-time'
+  | 'calculator'
+  | 'button'
+  | 'bullet'
+  | 'button-press'
+  | 'bug'
+  | 'book'
+  | 'book-open'
+  | 'cash-euro'
+  | 'blog'
+  | 'bank'
+  | 'automation'
+  | 'arrows-out-horizontal'
+  | 'backspace'
+  | 'bill'
+  | 'arrow-up'
+  | 'arrow-right'
+  | 'arrow-right-circle'
+  | 'barcode'
+  | 'arrow-up-circle'
+  | 'arrow-left'
+  | 'arrow-left-circle'
+  | 'arrow-down-circle'
+  | 'app-extension'
+  | 'alert-diamond'
+  | 'arrow-down'
+  | 'alert-location'
+  | 'airplane'
+  | 'affiliate'
+  | 'adjust'
+  | 'arrows-in-horizontal'
+  | 'x'
+  | 'x-circle'
+  | 'variant'
+  | 'view'
+  | 'star'
+  | 'sort'
+  | 'select'
+  | 'product'
+  | 'plus-circle'
+  | 'plus'
+  | 'phone'
+  | 'person'
+  | 'payment'
+  | 'page'
+  | 'order'
+  | 'order-unfulfilled'
+  | 'order-fulfilled'
+  | 'mobile'
+  | 'microphone'
+  | 'minus'
+  | 'minus-circle'
+  | 'location'
+  | 'lightbulb'
+  | 'language'
+  | 'incomplete'
+  | 'info'
+  | 'in-progress'
+  | 'hide'
+  | 'globe'
+  | 'external'
+  | 'email'
+  | 'edit'
+  | 'enabled'
+  | 'disabled'
+  | 'delivery'
+  | 'collection'
+  | 'clock'
+  | 'chevron-up'
+  | 'check'
+  | 'check-circle'
+  | 'chevron-down'
+  | 'calendar-check'
+  | 'calendar'
+  | 'blank'
+  | 'archive'
+  | 'alert-triangle'
+  | 'alert-circle'
+  | 'alert-bubble'
+  | 'attachment'
+  | 'merge'
+  | 'arrow-up-right'
+  | 'apps';
 export interface IconProps {
-  type: string;
+  type: IconType;
   tone: Extract<
     IconProps$1['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
@@ -24,7 +469,7 @@ export interface IconProps {
 export interface BadgeProps {
   accessibilityLabel: NonNullable<BadgeProps$1['accessibilityLabel']>;
   color: Extract<BadgeProps$1['color'], 'base' | 'strong'>;
-  // icon: IconProps['type'] | '';
+  icon: IconProps['type'] | '';
   size: Extract<BadgeProps$1['size'], 'base' | 'large' | 'large-100'>;
   tone: Extract<
     BadgeProps$1['tone'],
@@ -34,55 +479,28 @@ export interface BadgeProps {
 
 declare const tagName$7 = 'shopify-badge';
 
-export interface ActivationEventEsque {
-  shiftKey: boolean;
-  metaKey: boolean;
-  ctrlKey: boolean;
-  button: number;
-}
-export interface ClickOptions {
-  /**
-   * The event you want to influence the synthetic click.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
 /**
  * Base class for creating custom elements with Preact.
  * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  #private;
-  static get observedAttributes(): string[];
-  attributeChangedCallback(name: string): void;
-  connectedCallback(): void;
-  disconnectedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   */
-  queueRender(): void;
-  /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   *
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
-}
 
-declare class Badge extends PreactCustomElement implements BadgeProps {
+declare abstract class CustomElement extends BaseClass {}
+
+interface CustomElement
+  extends Pick<
+    globalThis.HTMLElement,
+    | 'addEventListener'
+    | 'removeEventListener'
+    | 'onclick'
+    | 'onfocus'
+    | 'onblur'
+  > {}
+
+declare class Badge extends CustomElement implements BadgeProps {
   accessor accessibilityLabel: BadgeProps['accessibilityLabel'];
   accessor color: BadgeProps['color'];
-  // accessor icon: BadgeProps['icon'];
+  accessor icon: BadgeProps['icon'];
   accessor size: BadgeProps['size'];
   accessor tone: BadgeProps['tone'];
 }
@@ -147,7 +565,7 @@ export interface BoxProps {
 
 declare const tagName$6 = 'shopify-box';
 
-declare class BoxElement extends PreactCustomElement implements BoxProps {
+declare class BoxElement extends CustomElement implements BoxProps {
   accessor accessibilityRole: BoxProps['accessibilityRole'];
   accessor background: BoxProps['background'];
   accessor blockSize: BoxProps['blockSize'];
@@ -186,7 +604,7 @@ export interface DividerProps {
 
 declare const tagName$5 = 'shopify-divider';
 
-declare class Divider extends PreactCustomElement implements DividerProps {
+declare class Divider extends CustomElement implements DividerProps {
   direction: DividerProps['direction'];
   color: DividerProps['color'];
 }
@@ -205,7 +623,7 @@ export interface HeadingProps {
 
 declare const tagName$4 = 'shopify-heading';
 
-declare class Heading extends PreactCustomElement implements HeadingProps {
+declare class Heading extends CustomElement implements HeadingProps {
   accessor accessibilityRole: HeadingProps['accessibilityRole'];
   accessor lineClamp: HeadingProps['lineClamp'];
   accessor accessibilityVisibility: HeadingProps['accessibilityVisibility'];
@@ -218,7 +636,7 @@ declare global {
 
 declare const tagName$3 = 'shopify-icon';
 
-declare class Icon extends PreactCustomElement implements IconProps {
+declare class Icon extends CustomElement implements IconProps {
   accessor color: IconProps['color'];
   accessor tone: IconProps['tone'];
   accessor type: IconProps['type'];
@@ -240,7 +658,7 @@ export interface LinkProps {
 
 declare const tagName$2 = 'shopify-link';
 
-declare class Link extends PreactCustomElement implements LinkProps {
+declare class Link extends CustomElement implements LinkProps {
   accessor tone: LinkProps['tone'];
   accessor accessibilityLabel: LinkProps['accessibilityLabel'];
   accessor href: LinkProps['href'];
@@ -299,7 +717,7 @@ export interface TextProps
 
 declare const tagName = 'shopify-text';
 
-declare class Text extends PreactCustomElement implements TextProps {
+declare class Text extends CustomElement implements TextProps {
   display: TextProps['display'];
   fontVariantNumeric: TextProps['fontVariantNumeric'];
   color: TextProps['color'];
