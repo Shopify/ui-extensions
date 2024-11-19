@@ -2,15 +2,26 @@ import type {
   IconProps as IconProps$1,
   BadgeProps as BadgeProps$1,
   BoxProps as BoxProps$1,
+  ButtonProps as ButtonProps$1,
+  TextFieldProps,
+  CheckboxProps as CheckboxProps$1,
   DividerProps as DividerProps$1,
   HeadingProps as HeadingProps$1,
+  ImageProps as ImageProps$1,
   LinkProps as LinkProps$1,
+  OptionProps,
+  OptionGroupProps,
+  ParagraphProps as ParagraphProps$1,
+  SectionProps as SectionProps$1,
+  SelectProps,
+  SpinnerProps as SpinnerProps$1,
   StackProps as StackProps$1,
   TextProps as TextProps$1,
 } from '@shopify/ui-api-design';
 import type {MaybeAllValuesShorthandProperty} from '@shopify/ui-api-design/dist/shared/utils';
+import type {InteractionProps} from '@shopify/ui-api-design/dist/shared/pressable';
 
-type IconType =
+export type IconType =
   | 'wrench'
   | 'viewport-tall'
   | 'viewport-short'
@@ -456,8 +467,17 @@ type IconType =
   | 'merge'
   | 'arrow-up-right'
   | 'apps';
+
+/**
+ * Base class for creating custom elements with Preact.
+ * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
+ * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
+ */
+declare const BaseClass: typeof globalThis.HTMLElement;
+declare abstract class PreactCustomElement extends BaseClass {}
+
 export interface IconProps {
-  type: IconType;
+  type: '' | IconType;
   tone: Extract<
     IconProps$1['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
@@ -477,27 +497,9 @@ export interface BadgeProps {
   >;
 }
 
-declare const tagName$7 = 'shopify-badge';
+declare const tagName$g = 'shopify-badge';
 
-/**
- * Base class for creating custom elements with Preact.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-
-declare abstract class CustomElement extends BaseClass {}
-
-interface CustomElement
-  extends Pick<
-    globalThis.HTMLElement,
-    | 'addEventListener'
-    | 'removeEventListener'
-    | 'onclick'
-    | 'onfocus'
-    | 'onblur'
-  > {}
-
-declare class Badge extends CustomElement implements BadgeProps {
+declare class Badge extends PreactCustomElement implements BadgeProps {
   accessor accessibilityLabel: BadgeProps['accessibilityLabel'];
   accessor color: BadgeProps['color'];
   accessor icon: BadgeProps['icon'];
@@ -505,14 +507,14 @@ declare class Badge extends CustomElement implements BadgeProps {
   accessor tone: BadgeProps['tone'];
 }
 declare global {
-  export interface HTMLElementTagNameMap {
-    [tagName$7]: Badge;
+  interface HTMLElementTagNameMap {
+    [tagName$g]: Badge;
   }
 }
 
-export type MakeResponsive<T> = T | `@media${string}`;
+type MakeResponsive<T> = T | `@media${string}`;
 
-export type AlignedBox = Required<BoxProps$1>;
+type AlignedBox = Required<BoxProps$1>;
 export interface BoxProps {
   accessibilityRole: AlignedBox['accessibilityRole'];
   background: Extract<
@@ -563,9 +565,7 @@ export interface BoxProps {
   display: AlignedBox['display'];
 }
 
-declare const tagName$6 = 'shopify-box';
-
-declare class BoxElement extends CustomElement implements BoxProps {
+declare class BoxElement extends PreactCustomElement implements BoxProps {
   accessor accessibilityRole: BoxProps['accessibilityRole'];
   accessor background: BoxProps['background'];
   accessor blockSize: BoxProps['blockSize'];
@@ -590,10 +590,167 @@ declare class BoxElement extends CustomElement implements BoxProps {
   accessor display: BoxProps['display'];
 }
 
+declare const tagName$f = 'shopify-box';
+
 declare class Box extends BoxElement implements BoxProps {}
 declare global {
-  export interface HTMLElementTagNameMap {
-    [tagName$6]: Box;
+  interface HTMLElementTagNameMap {
+    [tagName$f]: Box;
+  }
+}
+
+type ButtonOnlyProps = Extract<
+  ButtonProps$1,
+  {
+    type?: unknown;
+  }
+>;
+type ButtonBaseProps = Required<
+  Pick<
+    ButtonOnlyProps,
+    | 'accessibilityLabel'
+    | 'disabled'
+    | 'activateAction'
+    | 'activateTarget'
+    | 'lang'
+    | 'loading'
+    | 'type'
+    | 'variant'
+    | 'target'
+    | 'href'
+    | 'download'
+  >
+>;
+export interface ButtonProps extends ButtonBaseProps {
+  tone: Extract<ButtonProps$1['tone'], 'neutral' | 'critical' | 'auto'>;
+  icon: IconProps['type'];
+}
+
+declare const tagName$e = 'shopify-button';
+
+export interface SharedProps$3
+  extends Required<Pick<InteractionProps, 'activateTarget'>> {
+  activateAction: Extract<
+    InteractionProps['activateAction'],
+    'show' | 'hide' | 'toggle' | 'auto'
+  >;
+}
+declare class PreactOverlayControl
+  extends PreactCustomElement
+  implements SharedProps$3
+{
+  accessor activateTarget: SharedProps$3['activateTarget'];
+  accessor activateAction: SharedProps$3['activateAction'];
+}
+
+declare class Button extends PreactOverlayControl implements ButtonProps {
+  accessor disabled: ButtonProps['disabled'];
+  accessor icon: ButtonProps['icon'];
+  accessor loading: ButtonProps['loading'];
+  accessor variant: ButtonProps['variant'];
+  accessor tone: ButtonProps['tone'];
+  accessor lang: ButtonProps['lang'];
+  accessor target: ButtonProps['target'];
+  accessor href: ButtonProps['href'];
+  accessor download: ButtonProps['download'];
+  accessor onclick: EventListener | null;
+  accessor onblur: EventListener | null;
+  accessor onfocus: EventListener | null;
+  accessor type: ButtonProps['type'];
+  accessor accessibilityLabel: ButtonProps['accessibilityLabel'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$e]: Button;
+  }
+}
+
+type InputBaseProps = Required<
+  Pick<
+    TextFieldProps,
+    | 'disabled'
+    | 'error'
+    | 'label'
+    | 'name'
+    | 'placeholder'
+    | 'readOnly'
+    | 'required'
+    | 'value'
+    | 'id'
+  >
+> & {
+  defaultValue: string;
+};
+type InputReactProps = Pick<
+  TextFieldProps,
+  'onChange' | 'onFocus' | 'onInput' | 'onBlur'
+>;
+
+declare const internals: unique symbol;
+declare class PreactInputElement
+  extends PreactCustomElement
+  implements
+    Pick<
+      InputBaseProps,
+      | 'defaultValue'
+      | 'disabled'
+      | 'error'
+      | 'label'
+      | 'name'
+      | 'required'
+      | 'value'
+    >
+{
+  #private;
+  static formAssociated: boolean;
+  [internals]: ElementInternals;
+  accessor onchange: EventListener | null;
+  accessor oninput: EventListener | null;
+  accessor onfocus: EventListener | null;
+  accessor onblur: EventListener | null;
+  accessor name: InputBaseProps['name'];
+  accessor label: InputBaseProps['label'];
+  accessor error: InputBaseProps['error'];
+  accessor defaultValue: InputBaseProps['defaultValue'];
+  get value(): InputBaseProps['value'];
+  set value(value: InputBaseProps['value']);
+  accessor disabled: InputBaseProps['disabled'];
+  accessor required: InputBaseProps['required'];
+}
+
+export interface CheckboxProps
+  extends Required<
+    Pick<
+      CheckboxProps$1,
+      | 'accessibilityLabel'
+      | 'checked'
+      | 'details'
+      | 'disabled'
+      | 'error'
+      | 'id'
+      | 'indeterminate'
+      | 'label'
+      | 'name'
+      | 'required'
+      | 'value'
+    >
+  > {}
+
+declare const tagName$d = 'shopify-checkbox';
+
+declare class Checkbox extends PreactInputElement implements CheckboxProps {
+  #private;
+  accessor indeterminate: CheckboxProps['indeterminate'];
+  get checked(): boolean;
+  set checked(checked: CheckboxProps['checked']);
+  accessor details: CheckboxProps['details'];
+  accessor accessibilityLabel: CheckboxProps['accessibilityLabel'];
+  get value(): string;
+  set value(value: string);
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$d]: Checkbox;
   }
 }
 
@@ -602,15 +759,15 @@ export interface DividerProps {
   color: Extract<DividerProps$1['color'], 'subdued' | 'base' | 'strong'>;
 }
 
-declare const tagName$5 = 'shopify-divider';
+declare const tagName$c = 'shopify-divider';
 
-declare class Divider extends CustomElement implements DividerProps {
-  direction: DividerProps['direction'];
-  color: DividerProps['color'];
+declare class Divider extends PreactCustomElement implements DividerProps {
+  accessor direction: DividerProps['direction'];
+  accessor color: DividerProps['color'];
 }
 declare global {
-  export interface HTMLElementTagNameMap {
-    [tagName$5]: Divider;
+  interface HTMLElementTagNameMap {
+    [tagName$c]: Divider;
   }
 }
 
@@ -621,34 +778,58 @@ export interface HeadingProps {
   lineClamp: RequiredHeadingProps['lineClamp'];
 }
 
-declare const tagName$4 = 'shopify-heading';
+declare const tagName$b = 'shopify-heading';
 
-declare class Heading extends CustomElement implements HeadingProps {
+declare class Heading extends PreactCustomElement implements HeadingProps {
   accessor accessibilityRole: HeadingProps['accessibilityRole'];
   accessor lineClamp: HeadingProps['lineClamp'];
   accessor accessibilityVisibility: HeadingProps['accessibilityVisibility'];
 }
 declare global {
-  export interface HTMLElementTagNameMap {
-    [tagName$4]: Heading;
+  interface HTMLElementTagNameMap {
+    [tagName$b]: Heading;
   }
 }
 
-declare const tagName$3 = 'shopify-icon';
+declare const tagName$a = 'shopify-icon';
 
-declare class Icon extends CustomElement implements IconProps {
+declare class Icon extends PreactCustomElement implements IconProps {
   accessor color: IconProps['color'];
   accessor tone: IconProps['tone'];
   accessor type: IconProps['type'];
   accessor size: IconProps['size'];
 }
 declare global {
-  export interface HTMLElementTagNameMap {
-    [tagName$3]: Icon;
+  interface HTMLElementTagNameMap {
+    [tagName$a]: Icon;
   }
 }
 
-export type RequiredLinkProps = Required<LinkProps$1>;
+export interface ImageProps {
+  accessibilityRole: Extract<
+    ImageProps$1['accessibilityRole'],
+    'img' | 'presentation' | 'none'
+  >;
+  alt: NonNullable<ImageProps$1['alt']>;
+  loading: Extract<ImageProps$1['loading'], 'eager' | 'lazy'>;
+  src: NonNullable<ImageProps$1['src']>;
+}
+
+declare const tagName$9 = 'shopify-image';
+
+declare class Image extends PreactCustomElement implements ImageProps {
+  accessor src: ImageProps['src'];
+  accessor alt: ImageProps['alt'];
+  accessor loading: ImageProps['loading'];
+  accessor accessibilityRole: ImageProps['accessibilityRole'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$9]: Image;
+  }
+}
+
+type RequiredLinkProps = Required<LinkProps$1>;
 export interface LinkProps {
   tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
   accessibilityLabel: RequiredLinkProps['accessibilityLabel'];
@@ -656,21 +837,150 @@ export interface LinkProps {
   target: RequiredLinkProps['target'];
 }
 
-declare const tagName$2 = 'shopify-link';
+declare const tagName$8 = 'shopify-link';
 
-declare class Link extends CustomElement implements LinkProps {
+declare class Link extends PreactCustomElement implements LinkProps {
   accessor tone: LinkProps['tone'];
   accessor accessibilityLabel: LinkProps['accessibilityLabel'];
   accessor href: LinkProps['href'];
   accessor target: LinkProps['target'];
 }
 declare global {
-  export interface HTMLElementTagNameMap {
-    [tagName$2]: Link;
+  interface HTMLElementTagNameMap {
+    [tagName$8]: Link;
   }
 }
 
-export type AlignedStackProps = Required<StackProps$1>;
+declare const tagName$7 = 'shopify-option';
+
+export interface SharedProps$2
+  extends Required<Pick<OptionProps, 'disabled' | 'value'>> {}
+declare class Option extends PreactCustomElement implements SharedProps$2 {
+  accessor value: SharedProps$2['value'];
+  accessor disabled: SharedProps$2['disabled'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$7]: Option;
+  }
+}
+
+declare const tagName$6 = 'shopify-option-group';
+
+interface SharedProps$1
+  extends Required<Pick<OptionGroupProps, 'disabled' | 'label'>> {}
+declare class OptionGroup extends PreactCustomElement implements SharedProps$1 {
+  accessor disabled: SharedProps$1['disabled'];
+  accessor label: SharedProps$1['label'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$6]: OptionGroup;
+  }
+}
+
+interface ParagraphProps
+  extends Required<
+    Pick<
+      ParagraphProps$1,
+      'lineClamp' | 'accessibilityVisibility' | 'fontVariantNumeric' | 'tone'
+    >
+  > {
+  color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
+}
+
+declare const tagName$5 = 'shopify-paragraph';
+
+declare class Paragraph extends PreactCustomElement implements ParagraphProps {
+  accessor fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
+  accessor lineClamp: ParagraphProps['lineClamp'];
+  accessor tone: ParagraphProps['tone'];
+  accessor color: ParagraphProps['color'];
+  accessor accessibilityVisibility: ParagraphProps['accessibilityVisibility'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$5]: Paragraph;
+  }
+}
+
+type RequiredSectionProps = Required<SectionProps$1>;
+export interface SectionProps {
+  accessibilityLabel: RequiredSectionProps['accessibilityLabel'];
+  heading: RequiredSectionProps['heading'];
+  padding: RequiredSectionProps['padding'];
+}
+
+declare const tagName$4 = 'shopify-section';
+
+declare class Section extends PreactCustomElement implements SectionProps {
+  #private;
+  connectedCallback(): void;
+  accessor accessibilityLabel: SectionProps['accessibilityLabel'];
+  accessor heading: SectionProps['heading'];
+  accessor padding: SectionProps['padding'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$4]: Section;
+  }
+}
+
+declare const tagName$3 = 'shopify-select';
+
+declare class PreactInputFieldElement
+  extends PreactInputElement
+  implements InputBaseProps
+{
+  accessor placeholder: InputBaseProps['placeholder'];
+  accessor readOnly: InputBaseProps['readOnly'];
+}
+
+export interface SharedProps
+  extends Pick<
+    SelectProps,
+    | 'disabled'
+    | 'error'
+    | 'label'
+    | 'name'
+    | 'placeholder'
+    | 'required'
+    | 'value'
+  > {}
+declare class Select extends PreactInputFieldElement implements SharedProps {
+  #private;
+  connectedCallback(): void;
+  disconnectedCallback(): void;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$3]: Select;
+  }
+}
+
+interface SpinnerProps
+  extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
+  /**
+   * The size of the component.
+   *
+   * @default 'base'
+   */
+  size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
+}
+
+declare const tagName$2 = 'shopify-spinner';
+
+declare class Spinner extends PreactCustomElement implements SpinnerProps {
+  accessor accessibilityLabel: string;
+  accessor size: SpinnerProps['size'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$2]: Spinner;
+  }
+}
+
+type AlignedStackProps = Required<StackProps$1>;
 export interface StackProps extends BoxProps {
   justifyContent: AlignedStackProps['justifyContent'];
   alignItems: AlignedStackProps['alignItems'];
@@ -693,12 +1003,12 @@ declare class Stack extends BoxElement implements StackProps {
   accessor columnGap: StackProps['columnGap'];
 }
 declare global {
-  export interface HTMLElementTagNameMap {
+  interface HTMLElementTagNameMap {
     [tagName$1]: Stack;
   }
 }
 
-export interface TextProps
+interface TextProps
   extends Required<Pick<TextProps$1, 'display' | 'accessibilityVisibility'>> {
   color: Extract<TextProps$1['color'], 'base' | 'subdued'>;
   type: Extract<
@@ -717,18 +1027,36 @@ export interface TextProps
 
 declare const tagName = 'shopify-text';
 
-declare class Text extends CustomElement implements TextProps {
-  display: TextProps['display'];
-  fontVariantNumeric: TextProps['fontVariantNumeric'];
-  color: TextProps['color'];
-  tone: TextProps['tone'];
-  type: TextProps['type'];
-  accessibilityVisibility: TextProps['accessibilityVisibility'];
+declare class Text extends PreactCustomElement implements TextProps {
+  accessor display: TextProps['display'];
+  accessor fontVariantNumeric: TextProps['fontVariantNumeric'];
+  accessor color: TextProps['color'];
+  accessor tone: TextProps['tone'];
+  accessor type: TextProps['type'];
+  accessor accessibilityVisibility: TextProps['accessibilityVisibility'];
 }
 declare global {
-  export interface HTMLElementTagNameMap {
+  interface HTMLElementTagNameMap {
     [tagName]: Text;
   }
 }
 
-export {Badge, Box, Divider, Heading, Icon, Link, Stack, Text};
+export {
+  Badge,
+  Box,
+  Button,
+  Checkbox,
+  Divider,
+  Heading,
+  Icon,
+  Image,
+  Link,
+  Option,
+  OptionGroup,
+  Paragraph,
+  Section,
+  Select,
+  Spinner,
+  Stack,
+  Text,
+};
