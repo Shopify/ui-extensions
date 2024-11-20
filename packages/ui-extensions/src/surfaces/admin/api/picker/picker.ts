@@ -1,7 +1,7 @@
 import {BadgeProps} from '../../components/Badge';
 
 interface Picker {
-  selected: Promise<string[]>;
+  selected: Promise<string[] | undefined>;
 }
 
 interface Header {
