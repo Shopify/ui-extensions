@@ -1,7 +1,7 @@
 import {Tone} from '../../components/shared';
 
 interface Picker {
-  selected: Promise<string[]>;
+  selected: Promise<string[] | undefined>;
 }
 
 interface Header {
