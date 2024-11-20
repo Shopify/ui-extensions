@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2024.10.1
+
+### Patch Changes
+
+- [#2482](https://github.com/Shopify/ui-extensions/pull/2482) [`5e847761d9e0ce2d03fb2971e132810f9696c10f`](https://github.com/Shopify/ui-extensions/commit/5e847761d9e0ce2d03fb2971e132810f9696c10f) Thanks [@js-goupil](https://github.com/js-goupil)! - Added support for Host to unmount UI Extensions
+
 ## 2024.10.0
 
 ### Major Changes
