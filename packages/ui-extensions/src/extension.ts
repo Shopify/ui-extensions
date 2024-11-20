@@ -37,10 +37,10 @@ export interface RenderExtensionWithRemoteRoot<
     any
   > = RemoteComponentType<any, any, any>,
 > {
-  (
-    root: RemoteRoot<AllowedComponents, AllowedComponents>,
-    api: Api,
-  ): void | Promise<void>;
+  (root: RemoteRoot<AllowedComponents, AllowedComponents>, api: Api):
+    | void
+    | Promise<void>
+    | Promise<() => void>;
 }
 
 export interface RunnableExtension<Api, Output> {
