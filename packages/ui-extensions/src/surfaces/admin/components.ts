@@ -681,10 +681,6 @@ type InputBaseProps = Required<
 > & {
   defaultValue: string;
 };
-type InputReactProps = Pick<
-  TextFieldProps,
-  'onChange' | 'onFocus' | 'onInput' | 'onBlur'
->;
 
 declare const internals: unique symbol;
 declare class PreactInputElement

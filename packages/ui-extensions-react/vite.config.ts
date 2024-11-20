@@ -10,6 +10,12 @@ export default defineConfig(({mode}) => ({
 
   build: {
     rollupOptions: {
+      external: [
+        'react',
+        'react-dom',
+        /react-dom\/.*/,
+        /@shopify\/ui-extensions\/.*/,
+      ],
       output: [
         {
           dir: './dist',

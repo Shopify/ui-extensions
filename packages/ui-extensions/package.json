@@ -29,11 +29,11 @@
   "exports": {
     "./admin": {
       "types": "./dist/surfaces/admin.d.ts",
-      "default": "./build/admin.mjs"
+      "default": "./dist/admin.mjs"
     },
     "./checkout": {
       "types": "./dist/surfaces/checkout.d.ts",
-      "default": "./build/checkout.mjs"
+      "default": "./dist/checkout.mjs"
     },
     "./customer-account": {
       "types": "./dist/surfaces/customer-account.d.ts",

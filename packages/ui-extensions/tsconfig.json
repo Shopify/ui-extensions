@@ -2,9 +2,7 @@
   "extends": "../../config/typescript/tsconfig.base.json",
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "build/ts",
     "stripInternal": true,
-    "lib": ["DOM"],
     "importsNotUsedAsValues": "remove"
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],

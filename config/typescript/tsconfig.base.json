@@ -1,11 +1,10 @@
 {
   "extends": "@shopify/typescript-configs/library.json",
   "compilerOptions": {
-    "moduleResolution": "Bundler",
     "strict": true,
     "composite": true,
     "isolatedModules": true,
-    "emitDeclarationOnly": true,
+    "emitDeclarationOnly": false,
     "lib": [
       "es2015",
       "es2016",
@@ -13,7 +12,7 @@
       "es2018",
       "esnext",
       "esnext.asynciterable",
-      "WebWorker"
+      "DOM"
     ]
   }
 }
