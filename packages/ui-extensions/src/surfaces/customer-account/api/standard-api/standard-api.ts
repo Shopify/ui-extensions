@@ -80,7 +80,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * The settings matching the settings definition written in the
    * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration) file.
    *
-   *  See [settings examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/standardapi#example-settings) for more information.
+   *  See [settings examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/order-status-api/settings#examples) for more information.
    *
    * > Note: When an extension is being installed in the editor, the settings will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
