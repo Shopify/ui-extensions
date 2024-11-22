@@ -12,6 +12,7 @@ on:
       - 2024-07
       - 2024-10
       - unstable
+      - 20[0-9][0-9]-[01][1470]
     paths:
       - 'packages/*/src/**'
       - 'packages/*/package.json'
