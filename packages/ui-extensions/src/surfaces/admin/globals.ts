@@ -6,3 +6,10 @@ export interface ShopifyGlobal {
     extend: ExtensionTargets[ExtensionTarget],
   ): void;
 }
+
+declare global {
+  // conflicts with build/ts/globals.d.ts
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const shopify: ShopifyGlobal;
+}

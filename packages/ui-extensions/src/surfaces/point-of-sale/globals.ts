@@ -9,10 +9,8 @@ export interface ShopifyGlobal {
 }
 
 declare global {
-  interface WorkerGlobalScope {
-    // conflicts with build/ts/globals.d.ts
-    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-    // @ts-ignore
-    readonly shopify: ShopifyGlobal;
-  }
+  // conflicts with build/ts/globals.d.ts
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
+  const shopify: ShopifyGlobal;
 }
