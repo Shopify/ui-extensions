@@ -1,10 +1,11 @@
 {
   "extends": "../../config/typescript/tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "build/ts",
     "rootDir": "src",
     "jsx": "react-jsx",
-    "stripInternal": true
+    "stripInternal": true,
+    "experimentalDecorators": true,
+    "importsNotUsedAsValues": "remove"
   },
   "include": ["config/typescript/faker.d.ts", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["src/**/*.example.tsx", "src/**/tests/**"],

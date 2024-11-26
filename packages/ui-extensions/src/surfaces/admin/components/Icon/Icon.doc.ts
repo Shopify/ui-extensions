@@ -10,22 +10,17 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'IconProps',
+      title: 'Icon',
       description: '',
-      type: 'IconProps',
-    },
-    {
-      title: 'IconName',
-      description: 'List of available Icons for the Icon component',
-      type: 'IconName',
+      type: 'Icon',
     },
   ],
   category: 'Components',
-  subCategory: 'Media',
+  subCategory: 'Feedback',
   defaultExample: {
     image: 'icon-default.png',
     codeblock: {
-      title: 'Simple Icon example',
+      title: 'TODO: add example title',
       tabs: [
         {
           title: 'React',
@@ -40,29 +35,8 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  subSections: [
-    {
-      type: 'Generic',
-      title: 'Available Icons',
-      anchorLink: 'availableIcons',
-      sectionContent:
-        'The available Icons are a 1:1 map of what Icons are available in Polaris. You can find the full list of Icons in the [Polaris Icons documentation](https://polaris.shopify.com/icons).',
-      sectionCard: [
-        {
-          type: 'information',
-          name: 'Polaris Icons',
-          url: 'https://polaris.shopify.com/icons',
-        },
-      ],
-    },
-  ],
-  related: [
-    {
-      type: 'component',
-      name: 'Image',
-      url: '/docs/api/admin-extensions/components/media/image',
-    },
-  ],
+
+  related: [],
 };
 
 export default data;

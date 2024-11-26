@@ -1,13 +1,10 @@
-import {render, Badge} from '@shopify/ui-extensions-react/admin';
+import {
+  reactExtension,
+  Badge,
+} from '@shopify/ui-extensions-react/admin';
 
-render('Playground', () => <App />);
+reactExtension('Playground', () => <App />);
 
 function App() {
-  return (
-    <Badge
-      tone="info"
-    >
-      Fulfilled
-    </Badge>
-  );
+  return <Badge tone="info">Fulfilled</Badge>;
 }

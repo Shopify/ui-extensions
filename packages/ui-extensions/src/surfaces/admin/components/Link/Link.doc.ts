@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'LinkProps',
+      title: 'Link',
       description: '',
-      type: 'LinkProps',
+      type: 'Link',
     },
   ],
   category: 'Components',

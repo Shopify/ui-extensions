@@ -10,17 +10,17 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'BoxProps',
+      title: 'Box',
       description: '',
-      type: 'BoxProps',
+      type: 'Box',
     },
   ],
   category: 'Components',
-  subCategory: 'Structure',
+  subCategory: 'Feedback',
   defaultExample: {
     image: 'box-default.png',
     codeblock: {
-      title: 'Use Box to build your layout',
+      title: 'TODO: add example title',
       tabs: [
         {
           title: 'React',

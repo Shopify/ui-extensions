@@ -10,17 +10,17 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'TextProps',
+      title: 'Text',
       description: '',
-      type: 'TextProps',
+      type: 'Text',
     },
   ],
   category: 'Components',
-  subCategory: 'Titles and text',
+  subCategory: 'Feedback',
   defaultExample: {
     image: 'text-default.png',
     codeblock: {
-      title: 'Simple Text example',
+      title: 'TODO: add example title',
       tabs: [
         {
           title: 'React',
@@ -36,13 +36,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [
-    {
-      type: 'component',
-      name: 'Heading',
-      url: '/docs/api/admin-extensions/components/titles-and-text/heading',
-    },
-  ],
+  related: [],
 };
 
 export default data;

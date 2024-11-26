@@ -1,7 +1,9 @@
-import {extend, Icon} from '@shopify/ui-extensions/admin';
+import {extension} from '@shopify/ui-extensions/admin';
 
-extend('Playground', (root) => {
-  const icon = root.createComponent(Icon, {name: 'AppsMajor'});
+extension('Playground', (root) => {
+  const icon = document.createElement('shopify-icon');
+
+  icon.type = 'apps';
 
   root.appendChild(icon);
 });

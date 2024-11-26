@@ -1,7 +1,5 @@
-import {extend, Heading} from '@shopify/ui-extensions/admin';
+import {extension} from '@shopify/ui-extensions/admin';
 
-extend('Playground', (root) => {
-  const heading = root.createComponent(Heading, undefined, 'Headings are cool');
-
-  root.appendChild(heading);
+extension('Playground', (root) => {
+  root.innerHTML = '<shopify-heading>Headings are cool</shopify-heading>';
 });

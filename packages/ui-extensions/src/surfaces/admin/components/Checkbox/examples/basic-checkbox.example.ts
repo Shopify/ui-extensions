@@ -1,11 +1,13 @@
-import {extend, Checkbox} from '@shopify/ui-extensions/admin';
+import {extension} from '@shopify/ui-extensions/admin';
 
-extend('Playground', (root) => {
-  const checkbox = root.createComponent(
-    Checkbox,
-    {id: 'checkbox', name: 'checkbox'},
-    'Save this information for next time',
-  );
+extension('Playground', (root) => {
+  const checkbox = document.createElement('shopify-checkbox');
+  checkbox.id = 'checkbox';
+  checkbox.name = 'checkbox';
+  checkbox.onchange = (event) => {
+    console.log('checked: ', event.target.checked);
+  };
 
-  root.appendChild(checkbox);
+  root.innerHTML =
+    '<shopify-checkbox id="checkbox" name="checkbox">Save this information for next time</shopify-checkbox>';
 });

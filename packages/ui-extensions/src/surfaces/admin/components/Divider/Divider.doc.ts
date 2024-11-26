@@ -10,17 +10,17 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'DividerProps',
+      title: 'Divider',
       description: '',
-      type: 'DividerProps',
+      type: 'Divider',
     },
   ],
   category: 'Components',
-  subCategory: 'Structure',
+  subCategory: 'Feedback',
   defaultExample: {
     image: 'divider-default.png',
     codeblock: {
-      title: 'Simple Divider example',
+      title: 'TODO: add example title',
       tabs: [
         {
           title: 'React',
