@@ -36,9 +36,7 @@ export default createPackage((pkg) => {
             __dirname,
             'src/surfaces/admin/components.d.ts',
           );
-          console.log('combine --->', {mainTypesPath, componentsTypes});
           if (existsSync(mainTypesPath) && existsSync(componentsTypes)) {
-            console.log('exists');
             const mainTypesContent = readFileSync(mainTypesPath).toString();
             const componentsTypesContent =
               readFileSync(componentsTypes).toString();
