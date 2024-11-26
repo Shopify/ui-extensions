@@ -2172,11 +2172,6 @@
     argparse "~1.0.9"
     string-argv "~0.3.1"
 
-"@shopify/admin-ui-icons@^0.12.0":
-  version "0.12.0"
-  resolved "https://npm.shopify.io/node/@shopify/admin-ui-icons/-/0.12.0/admin-ui-icons-0.12.0.tgz#5d61899904b3a68056b048df419f9355056d832c"
-  integrity sha512-78s4H1BICz0W53U0ChH1l7woiXUUYbnPrJbasCJUsw7FoUvct9e9/kdUVC1q+qIf42bfYzccSRX+Oz581leBzw==
-
 "@shopify/babel-preset@^24.1.0", "@shopify/babel-preset@^24.1.4":
   version "24.1.5"
   resolved "https://registry.npmjs.org/@shopify/babel-preset/-/babel-preset-24.1.5.tgz"
