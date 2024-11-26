@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-namespace */
+/* eslint-disable import/first */
 /* eslint-disable @typescript-eslint/member-ordering */
 export type MaybeAllValuesShorthandProperty<T extends string> =
   | T
@@ -546,6 +548,7 @@ declare abstract class PreactCustomElement extends BaseClass {
     delegatesFocus,
     ...options
   }: RenderImpl);
+  // eslint-disable-next-line lines-between-class-members
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
