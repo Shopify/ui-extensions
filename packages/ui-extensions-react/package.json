@@ -1,9 +1,6 @@
 {
   "name": "@shopify/ui-extensions-react",
   "version": "0.0.0-unstable",
-  "scripts": {
-    "build": "vite build"
-  },
   "description": "React bindings for @shopify/ui-extensions",
   "publishConfig": {
     "access": "public",
@@ -14,39 +11,53 @@
   "main": "index.js",
   "module": "index.mjs",
   "esnext": "index.esnext",
-  "types": "./dist/index.d.ts",
+  "types": "./build/ts/index.d.ts",
   "typesVersions": {
     "*": {
       "admin": [
-        "./dist/surfaces/admin.d.ts"
+        "./build/ts/surfaces/admin.d.ts"
       ],
       "checkout": [
-        "./dist/surfaces/checkout.d.ts"
+        "./build/ts/surfaces/checkout.d.ts"
       ],
       "customer-account": [
-        "./dist/surfaces/customer-account.d.ts"
+        "./build/ts/surfaces/customer-account.d.ts"
       ],
       "point-of-sale": [
-        "./dist/surfaces/point-of-sale.d.ts"
+        "./build/ts/surfaces/point-of-sale.d.ts"
       ]
     }
   },
   "exports": {
+    ".": {
+      "types": "./build/ts/index.d.ts",
+      "esnext": "./index.esnext",
+      "import": "./index.mjs",
+      "require": "./index.js"
+    },
     "./admin": {
-      "types": "./dist/surfaces/admin.d.ts",
-      "default": "./dist/admin.mjs"
+      "types": "./build/ts/surfaces/admin.d.ts",
+      "esnext": "./build/esnext/surfaces/admin.esnext",
+      "import": "./build/esm/surfaces/admin.mjs",
+      "require": "./build/cjs/surfaces/admin.js"
     },
     "./checkout": {
-      "types": "./dist/surfaces/checkout.d.ts",
-      "default": "./dist/checkout.mjs"
+      "types": "./build/ts/surfaces/checkout.d.ts",
+      "esnext": "./build/esnext/surfaces/checkout.esnext",
+      "import": "./build/esm/surfaces/checkout.mjs",
+      "require": "./build/cjs/surfaces/checkout.js"
     },
     "./customer-account": {
-      "types": "./dist/surfaces/customer-account.d.ts",
-      "default": "./dist/customer-account.mjs"
+      "types": "./build/ts/surfaces/customer-account.d.ts",
+      "esnext": "./build/esnext/surfaces/customer-account.esnext",
+      "import": "./build/esm/surfaces/customer-account.mjs",
+      "require": "./build/cjs/surfaces/customer-account.js"
     },
     "./point-of-sale": {
-      "types": "./dist/surfaces/point-of-sale.d.ts",
-      "default": "./dist/point-of-sale.mjs"
+      "types": "./build/ts/surfaces/point-of-sale.d.ts",
+      "esnext": "./build/esnext/surfaces/point-of-sale.esnext",
+      "import": "./build/esm/surfaces/point-of-sale.mjs",
+      "require": "./build/cjs/surfaces/point-of-sale.js"
     }
   },
   "dependencies": {

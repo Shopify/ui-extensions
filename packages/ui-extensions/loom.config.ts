@@ -1,6 +1,6 @@
 import {createPackage} from '@shopify/loom';
-import {readFileSync} from 'fs';
-import {resolve} from 'path';
+import {existsSync, readFileSync, writeFileSync} from 'fs';
+import {join, resolve} from 'path';
 
 import {defaultProjectPlugin} from '../../config/loom';
 import {rollupPlugins} from '@shopify/loom-plugin-build-library';
@@ -28,6 +28,28 @@ export default createPackage((pkg) => {
         },
         preventAssignment: true,
       }),
+      {
+        name: 'combine-types',
+        closeBundle: async () => {
+          const mainTypesPath = join(__dirname, 'dist/surfaces/admin.d.ts');
+          const componentsTypes = join(
+            __dirname,
+            'src/surfaces/admin/components.d.ts',
+          );
+          console.log('combine --->', {mainTypesPath, componentsTypes});
+          if (existsSync(mainTypesPath) && existsSync(componentsTypes)) {
+            console.log('exists');
+            const mainTypesContent = readFileSync(mainTypesPath).toString();
+            const componentsTypesContent =
+              readFileSync(componentsTypes).toString();
+
+            writeFileSync(
+              mainTypesPath,
+              componentsTypesContent.concat(mainTypesContent),
+            );
+          }
+        },
+      },
     ]),
   );
 });

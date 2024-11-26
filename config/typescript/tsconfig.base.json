@@ -4,7 +4,7 @@
     "strict": true,
     "composite": true,
     "isolatedModules": true,
-    "emitDeclarationOnly": false,
+    "emitDeclarationOnly": true,
     "lib": [
       "es2015",
       "es2016",
@@ -12,7 +12,7 @@
       "es2018",
       "esnext",
       "esnext.asynciterable",
-      "DOM"
+      "WebWorker"
     ]
   }
 }
