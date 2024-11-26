@@ -1,6 +1,9 @@
 import {Tone} from '../../components/shared';
 
 interface Picker {
+  /**
+   * A Promise that resolves with the selected item IDs when the user presses the "Select" button in the picker.
+   */
   selected: Promise<string[] | undefined>;
 }
 
