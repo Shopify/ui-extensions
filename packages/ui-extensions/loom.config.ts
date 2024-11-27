@@ -29,7 +29,7 @@ export default createPackage((pkg) => {
         preventAssignment: true,
       }),
       {
-        name: 'combine-types',
+        name: 'add-components-types',
         closeBundle: async () => {
           const mainTypesPath = join(__dirname, 'build/ts/surfaces/admin.d.ts');
           const componentsTypes = join(
@@ -38,8 +38,9 @@ export default createPackage((pkg) => {
           );
           if (existsSync(mainTypesPath) && existsSync(componentsTypes)) {
             const mainTypesContent = readFileSync(mainTypesPath).toString();
-            const componentsTypesContent =
-              readFileSync(componentsTypes).toString();
+            const componentsTypesContent = readFileSync(componentsTypes)
+              .toString()
+              .replaceAll(/\/\*.*$/, '');
 
             writeFileSync(
               mainTypesPath,

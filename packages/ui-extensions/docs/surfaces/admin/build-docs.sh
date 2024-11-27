@@ -40,12 +40,17 @@ fi
 COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH ../ui-extensions-react/$SRC_PATH --output ./$DOCS_PATH/generated"
 COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
 
+# Rename components.d.ts to components.ts so it can be picked up be the compiler
 cp $COMPONENTS_DEFINITIONS $COMPONENTS_TS
+# Remove references to HTMLElement
+run_sed "s/typeof globalThis.HTMLElement/any/" $COMPONENTS_TS
+
 eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
 build_exit=$?
 
 # Remove .doc.js files
 find ./ -name '*.doc*.js' -exec rm -r {} \;
+# Remove components.ts as it's no longer needed
 rm $COMPONENTS_TS
 
 if [ $build_exit -ne 0 ]; then
