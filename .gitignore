@@ -12,7 +12,7 @@ packages/*/bin
 !packages/*/.eslintrc.js
 *.log
 packages/ui-extensions/docs/**/generated
-dist
+
 # IntelliJ IDE ignore
 .idea
 
