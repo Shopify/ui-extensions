@@ -22,19 +22,19 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'TODO: add example title',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Paragraph/examples/basic-paragraph.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/basic-paragraph.example.ts',
           language: 'js',
         },
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Paragraph/examples/basic-paragraph.example.tsx',
+          language: 'tsx',
+        },
       ],
     },
   },
-  
+
   related: [],
 };
 

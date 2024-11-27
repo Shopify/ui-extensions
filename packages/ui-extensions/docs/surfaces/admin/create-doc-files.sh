@@ -95,14 +95,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'TODO: add example title',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/${componentName}/examples/basic-${lowercaseComponentName}.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/basic-${lowercaseComponentName}.example.ts',
           language: 'js',
+        },
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/${componentName}/examples/basic-${lowercaseComponentName}.example.tsx',
+          language: 'tsx',
         },
       ],
     },

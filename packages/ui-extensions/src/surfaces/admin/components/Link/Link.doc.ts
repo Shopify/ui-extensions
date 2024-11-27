@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Link to an app page',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/app-link.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/app-link.example.ts',
           language: 'js',
+        },
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/app-link.example.tsx',
+          language: 'tsx',
         },
       ],
     },
@@ -44,13 +44,13 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           tabs: [
             {
-              title: 'React',
-              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/external-link.example.tsx',
+              title: 'JS',
+              code: './examples/external-link.example.ts',
               language: 'typescript',
             },
             {
-              title: 'JS',
-              code: './examples/external-link.example.ts',
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/external-link.example.tsx',
               language: 'typescript',
             },
           ],
@@ -63,13 +63,13 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           tabs: [
             {
-              title: 'React',
-              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/relative-link.example.tsx',
+              title: 'JS',
+              code: './examples/relative-link.example.ts',
               language: 'typescript',
             },
             {
-              title: 'JS',
-              code: './examples/relative-link.example.ts',
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/relative-link.example.tsx',
               language: 'typescript',
             },
           ],
@@ -82,13 +82,13 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           tabs: [
             {
-              title: 'React',
-              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/shopify-section-link.example.tsx',
+              title: 'JS',
+              code: './examples/shopify-section-link.example.ts',
               language: 'typescript',
             },
             {
-              title: 'JS',
-              code: './examples/shopify-section-link.example.ts',
+              title: 'React',
+              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/shopify-section-link.example.tsx',
               language: 'typescript',
             },
           ],
