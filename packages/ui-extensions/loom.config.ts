@@ -31,7 +31,7 @@ export default createPackage((pkg) => {
       {
         name: 'combine-types',
         closeBundle: async () => {
-          const mainTypesPath = join(__dirname, 'dist/surfaces/admin.d.ts');
+          const mainTypesPath = join(__dirname, 'build/ts/surfaces/admin.d.ts');
           const componentsTypes = join(
             __dirname,
             'src/surfaces/admin/components.d.ts',

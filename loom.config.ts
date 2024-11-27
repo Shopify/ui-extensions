@@ -6,7 +6,7 @@ import {buildLibraryWorkspace} from '@shopify/loom-plugin-build-library';
 export default createWorkspace((workspace) => {
   workspace.use(
     buildLibraryWorkspace(),
-    eslint(),
+    eslint({files: '**/*.ts'}),
     prettier({files: '**/*.{md,json,yaml,yml}'}),
   );
 });

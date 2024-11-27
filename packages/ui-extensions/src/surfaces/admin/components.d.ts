@@ -1,6 +1,27 @@
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable import/first */
 /* eslint-disable @typescript-eslint/member-ordering */
+import {
+  IconProps as IconProps$1,
+  BadgeProps as BadgeProps$1,
+  BoxProps as BoxProps$1,
+  ButtonProps as ButtonProps$1,
+  CheckboxProps as CheckboxProps$1,
+  TextFieldProps,
+  DividerProps as DividerProps$1,
+  HeadingProps as HeadingProps$1,
+  ImageProps as ImageProps$1,
+  LinkProps as LinkProps$1,
+  OptionProps,
+  OptionGroupProps,
+  ParagraphProps as ParagraphProps$1,
+  SectionProps as SectionProps$1,
+  SelectProps,
+  SpinnerProps as SpinnerProps$1,
+  StackProps as StackProps$1,
+  TextProps as TextProps$1,
+} from '@shopify/ui-api-design';
+import {ComponentChild} from 'preact';
+
 export type MaybeAllValuesShorthandProperty<T extends string> =
   | T
   | `${T} ${T}`
@@ -469,28 +490,6 @@ export type IconType =
   | 'apps'
   | 'alert-triangle';
 
-import {
-  IconProps as IconProps$1,
-  BadgeProps as BadgeProps$1,
-  BoxProps as BoxProps$1,
-  ButtonProps as ButtonProps$1,
-  CheckboxProps as CheckboxProps$1,
-  TextFieldProps,
-  DividerProps as DividerProps$1,
-  HeadingProps as HeadingProps$1,
-  ImageProps as ImageProps$1,
-  LinkProps as LinkProps$1,
-  OptionProps,
-  OptionGroupProps,
-  ParagraphProps as ParagraphProps$1,
-  SectionProps as SectionProps$1,
-  SelectProps,
-  SpinnerProps as SpinnerProps$1,
-  StackProps as StackProps$1,
-  TextProps as TextProps$1,
-} from '@shopify/ui-api-design';
-import {ComponentChild} from 'preact';
-
 interface IconProps {
   type: '' | IconType;
   tone: Extract<
@@ -548,7 +547,7 @@ declare abstract class PreactCustomElement extends BaseClass {
     delegatesFocus,
     ...options
   }: RenderImpl);
-  // eslint-disable-next-line lines-between-class-members
+
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
