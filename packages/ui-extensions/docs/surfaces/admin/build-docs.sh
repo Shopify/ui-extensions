@@ -3,6 +3,8 @@
 API_VERSION=$1
 DOCS_PATH=docs/surfaces/admin
 SRC_PATH=src/surfaces/admin
+COMPONENTS_DEFINITIONS=src/surfaces/admin/components.d.ts
+COMPONENTS_TS=src/surfaces/admin/components.ts
 SHOPIFY_DEV_PATH="../../../shopify-dev"
 
 fail_and_exit() {
@@ -38,11 +40,13 @@ fi
 COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH ../ui-extensions-react/$SRC_PATH --output ./$DOCS_PATH/generated"
 COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
 
+cp $COMPONENTS_DEFINITIONS $COMPONENTS_TS
 eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
 build_exit=$?
 
 # Remove .doc.js files
 find ./ -name '*.doc*.js' -exec rm -r {} \;
+rm $COMPONENTS_TS
 
 if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit

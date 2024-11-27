@@ -6,5 +6,9 @@
     "stripInternal": true
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"],
-  "exclude": ["src/**/*.example.*", "src/**/tests/**"]
+  "exclude": [
+    "src/**/*.example.*",
+    "src/**/tests/**",
+    "src/surfaces/admin/components.ts"
+  ]
 }
