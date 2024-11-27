@@ -51,7 +51,7 @@ build_exit=$?
 # Remove .doc.js files
 find ./ -name '*.doc*.js' -exec rm -r {} \;
 # Remove components.ts as it's no longer needed
-# rm $COMPONENTS_TS
+rm $COMPONENTS_TS
 
 if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit

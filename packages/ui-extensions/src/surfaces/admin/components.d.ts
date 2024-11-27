@@ -1,8 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-import {ComponentChild} from 'preact';
-
 type SizeKeyword =
   | 'small-500'
   | 'small-400'
@@ -505,7 +503,7 @@ type IconType =
   | 'wrench'
   | 'x-circle'
   | 'x';
-export interface BadgeProps$1 extends GlobalProps {
+interface BadgeProps$1 extends GlobalProps {
   /**
    * The content of the Badge.
    */
@@ -947,7 +945,7 @@ interface BaseBoxProps$1
 interface BaseBoxProps$1WithRole
   extends BaseBoxProps$1,
     AccessibilityRoleProps {}
-export interface BoxProps$1 extends BaseBoxProps$1WithRole {}
+interface BoxProps$1 extends BaseBoxProps$1WithRole {}
 interface FocusEventProps {
   /**
    * Callback when the element loses focus.
@@ -1026,7 +1024,7 @@ export interface InteractionProps {
   activateAction?: 'auto' | 'show' | 'hide' | 'toggle' | 'copy';
 }
 interface BasePressableProps extends ButtonBehaviorProps, LinkBehaviorProps {}
-export interface ButtonProps$1 extends GlobalProps, BasePressableProps {
+interface ButtonProps$1 extends GlobalProps, BasePressableProps {
   /**
    * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
    *
@@ -1239,7 +1237,7 @@ interface BaseCheckableProps extends BaseSelectableProps {
    */
   onInput?: (checked: boolean) => void;
 }
-export interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps {
+interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps {
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
@@ -1396,7 +1394,7 @@ type TextAutocompleteField = ExtractStrict<
   | `${AutocompleteFieldCreditCardAlias}-family-name`
   | `${AutocompleteFieldCreditCardAlias}-type`
 >;
-export interface DividerProps$1 extends GlobalProps {
+interface DividerProps$1 extends GlobalProps {
   /**
    * Specify the direction of the divider.
    *
@@ -1469,9 +1467,7 @@ type AlignContentKeyword =
   | ContentDistribution
   | OverflowPosition
   | ContentPosition;
-export interface HeadingProps$1
-  extends GlobalProps,
-    AccessibilityVisibilityProps {
+interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps {
   /** A unique identifier for the field. */
   id?: string;
   /**
@@ -1503,7 +1499,7 @@ export interface HeadingProps$1
    */
   lineClamp?: number | 'none';
 }
-export interface IconProps extends GlobalProps {
+interface IconProps extends GlobalProps {
   /**
    * Sets the tone of the Icon, based on the intention of the information being conveyed.
    *
@@ -1565,7 +1561,7 @@ interface BaseImageProps$1 {
   srcSet?: string;
 }
 type optionalSpace = '' | ' ';
-export interface ImageProps$1 extends GlobalProps, BaseImageProps$1 {
+interface ImageProps$1 extends GlobalProps, BaseImageProps$1 {
   /**
    * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help users
@@ -1620,7 +1616,7 @@ export interface ImageProps$1 extends GlobalProps, BaseImageProps$1 {
    */
   onError?: () => void;
 }
-export interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
+interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
   /**
    * The content of the Link.
    */
@@ -1666,7 +1662,7 @@ interface BaseTypographyProps {
    */
   fontVariantNumeric?: 'auto' | 'normal' | 'tabular-nums';
 }
-export interface ParagraphProps$1
+interface ParagraphProps$1
   extends GlobalProps,
     BaseTypographyProps,
     AccessibilityVisibilityProps {
@@ -1679,7 +1675,7 @@ export interface ParagraphProps$1
    */
   lineClamp?: number | 'none';
 }
-export interface SectionProps$1 extends GlobalProps {
+interface SectionProps$1 extends GlobalProps {
   /**
    * The content of the Section.
    */
@@ -1739,7 +1735,7 @@ export interface OptionGroupProps extends GlobalProps {
    */
   children?: ComponentChildren;
 }
-export interface SpinnerProps$1 extends GlobalProps {
+interface SpinnerProps$1 extends GlobalProps {
   /**
    * Adjusts the size of the spinner icon.
    *
@@ -1762,7 +1758,7 @@ export interface SpinnerProps$1 extends GlobalProps {
    */
   accessibilityLabel?: string;
 }
-export interface StackProps$1 extends BaseBoxProps$1WithRole, GapProps {
+interface StackProps$1 extends BaseBoxProps$1WithRole, GapProps {
   /**
    * The content of the Stack.
    */
@@ -1795,7 +1791,7 @@ export interface StackProps$1 extends BaseBoxProps$1WithRole, GapProps {
    */
   alignContent: AlignContentKeyword;
 }
-export interface TextProps$1
+interface TextProps$1
   extends GlobalProps,
     AccessibilityVisibilityProps,
     BaseTypographyProps,
@@ -2336,6 +2332,156 @@ type IconType$1 =
   | 'calendar-check'
   | 'apps'
   | 'alert-triangle';
+interface VNode<P = {}> {
+  type: ComponentType<P> | string;
+  props: P & {
+    children: ComponentChildren$1;
+  };
+  key: Key;
+  /**
+   * ref is not guaranteed by React.ReactElement, for compatibility reasons
+   * with popular react libs we define it as optional too
+   */
+  ref?: Ref<any> | null;
+  /**
+   * The time this `vnode` started rendering. Will only be set when
+   * the devtools are attached.
+   * Default value: `0`
+   */
+  startTime?: number;
+  /**
+   * The time that the rendering of this `vnode` was completed. Will only be
+   * set when the devtools are attached.
+   * Default value: `-1`
+   */
+  endTime?: number;
+}
+type Key = string | number | any;
+interface RefObject<T> {
+  current: T | null;
+}
+type RefCallback<T> = (instance: T | null) => void;
+type Ref<T> = RefObject<T> | RefCallback<T> | null;
+export type ComponentChild =
+  | VNode<any>
+  | object
+  | string
+  | number
+  | bigint
+  | boolean
+  | null
+  | undefined;
+type ComponentChildren$1 = ComponentChild[] | ComponentChild;
+interface Attributes {
+  key?: Key | undefined;
+  jsx?: boolean | undefined;
+}
+interface ErrorInfo {
+  componentStack?: string;
+}
+type RenderableProps<P, RefType = any> = P &
+  Readonly<
+    Attributes & {
+      children?: ComponentChildren$1;
+      ref?: Ref<RefType>;
+    }
+  >;
+type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
+interface FunctionComponent<P = {}> {
+  (props: RenderableProps<P>, context?: any): VNode<any> | null;
+  displayName?: string;
+  defaultProps?: Partial<P> | undefined;
+}
+interface ComponentClass<P = {}, S = {}> {
+  new (props: P, context?: any): Component<P, S>;
+  displayName?: string;
+  defaultProps?: Partial<P>;
+  contextType?: Context<any>;
+  getDerivedStateFromProps?(
+    props: Readonly<P>,
+    state: Readonly<S>,
+  ): Partial<S> | null;
+  getDerivedStateFromError?(error: any): Partial<S> | null;
+}
+interface Component<P = {}, S = {}> {
+  componentWillMount?(): void;
+  componentDidMount?(): void;
+  componentWillUnmount?(): void;
+  getChildContext?(): object;
+  componentWillReceiveProps?(nextProps: Readonly<P>, nextContext: any): void;
+  shouldComponentUpdate?(
+    nextProps: Readonly<P>,
+    nextState: Readonly<S>,
+    nextContext: any,
+  ): boolean;
+  componentWillUpdate?(
+    nextProps: Readonly<P>,
+    nextState: Readonly<S>,
+    nextContext: any,
+  ): void;
+  getSnapshotBeforeUpdate?(oldProps: Readonly<P>, oldState: Readonly<S>): any;
+  componentDidUpdate?(
+    previousProps: Readonly<P>,
+    previousState: Readonly<S>,
+    snapshot: any,
+  ): void;
+  componentDidCatch?(error: any, errorInfo: ErrorInfo): void;
+}
+declare abstract class Component<P, S> {
+  constructor(props?: P, context?: any);
+  static displayName?: string;
+  static defaultProps?: any;
+  static contextType?: Context<any>;
+  // Static members cannot reference class type parameters. This is not
+  // supported in TypeScript. Reusing the same type arguments from `Component`
+  // will lead to an impossible state where one cannot satisfy the type
+  // constraint under no circumstances, see #1356.In general type arguments
+  // seem to be a bit buggy and not supported well at the time of this
+  // writing with TS 3.3.3333.
+  static getDerivedStateFromProps?(
+    props: Readonly<object>,
+    state: Readonly<object>,
+  ): object | null;
+
+  static getDerivedStateFromError?(error: any): object | null;
+  state: Readonly<S>;
+  props: RenderableProps<P>;
+  context: any;
+  base?: Element | Text;
+  // From https://github.com/DefinitelyTyped/DefinitelyTyped/blob/e836acc75a78cf0655b5dfdbe81d69fdd4d8a252/types/react/index.d.ts#L402
+  // // We MUST keep setState() as a unified signature because it allows proper checking of the method return type.
+  // // See: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18365#issuecomment-351013257
+  setState<K extends keyof S>(
+    state:
+      | ((
+          prevState: Readonly<S>,
+          props: Readonly<P>,
+        ) => Pick<S, K> | Partial<S> | null)
+      | (Pick<S, K> | Partial<S> | null),
+    callback?: () => void,
+  ): void;
+
+  forceUpdate(callback?: () => void): void;
+  abstract render(
+    props?: RenderableProps<P>,
+    state?: Readonly<S>,
+    context?: any,
+  ): ComponentChild;
+}
+interface Consumer<T>
+  extends FunctionComponent<{
+    children: (value: T) => ComponentChildren$1;
+  }> {}
+interface Provider<T>
+  extends FunctionComponent<{
+    value: T;
+    children?: ComponentChildren$1;
+  }> {}
+interface Context<T> {
+  Consumer: Consumer<T>;
+  Provider: Provider<T>;
+  displayName?: string;
+}
 
 interface IconProps {
   type: '' | IconType;
