@@ -34,6 +34,12 @@ export function reactExtension<ExtensionTarget extends RenderExtensionTarget>(
   // Playground extension, since all render extensions have the same general
   // shape (`RenderExtension`).
   return extension<'Playground'>(target as any, async (root, api) => {
+    if (!target.match(/\.render$/)) {
+      throw new Error(
+        `reactExtension can only be used for .render extension targets, got: ${target}`,
+      );
+    }
+
     const element = await render(api as ApiForRenderExtension<ExtensionTarget>);
 
     return remoteRootRender(
