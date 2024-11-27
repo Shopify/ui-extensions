@@ -15,6 +15,59 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
+      anchorLink: 'support-policy',
+      title: 'Support Policy',
+      sectionContent: '',
+      sectionNotice: [
+        {
+          title: 'End of Support Plan',
+          type: 'Warning',
+          sectionContent: `
+          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end support for versions on a one-year rolling basis. This table details the end of support schedule.
+
+|released version|removed versions|
+|---:|---|
+|2025-04|1.0.0, 1.0.1, 1.1.2, 1.2.0, 1.3.0, 1.4.0, 1.5.1, 1.6.0, 1.7.0, 2024-04|
+|2025-07|2024-07|
+|2025-10|2024-10|
+|2026-01|2025-01|
+|2026-04|2025-04|
+
+Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.`,
+        },
+      ],
+    },
+    {
+      type: 'Generic',
+      anchorLink: '202501',
+      title: '2025.01',
+      sectionContent: `
+- Added in POS version: N/A
+- Removed in POS version: N/A
+- Release day: 1/1/2025
+
+### Features
+
+- Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/apis/formatted-text-field) component.
+- Added [PrintApi](/docs/api/pos-ui-extensions/apis/print-api) and a [PrintPreview](/docs/api/pos-ui-extensions/components/printpreview) component.
+      `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: '2024101',
+      title: '2024.10.1',
+      sectionContent: `
+- Added in POS version: 9.22
+- Removed in POS version: N/A
+- Release day: 11/11/2024.
+
+### Features
+
+- Fixes long standing issue where \`useEffect\` teardown functions are not working in React',
+      `,
+    },
+    {
+      type: 'Generic',
       anchorLink: '202410',
       title: '2024.10',
       sectionContent: `
@@ -25,6 +78,7 @@ const data: LandingTemplateSchema = {
 ### Features
 
 - Added support for iOS debugging with the Safari dev tools.
+- On iOS, modals now appear in windowed mode.
 - Introduced a [POSBlock component](/docs/api/pos-ui-extensions/components/POSBlock). It's the required parent component for block extension targets.
 - Introduced a [POSBlockRow component](/docs/api/pos-ui-extensions/components/POSBlockRow). It's the required child component for POSBlock, and can be used to wrap other components.
 - Added support for the ${TargetLink.PosProductDetailsBlockRender} target.

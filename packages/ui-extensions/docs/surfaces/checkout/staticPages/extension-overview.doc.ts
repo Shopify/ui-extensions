@@ -28,7 +28,7 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
           description: `
 This is the first step in the checkout process where the buyer enters contact information and a delivery address.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
+Review [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-information.png',
         },
@@ -37,7 +37,7 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
           description: `
 Point in checkout where the buyer selects a shipping method.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
+Review [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-shipping.png',
         },
@@ -46,7 +46,7 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
           description: `
 Point in checkout where the buyer enters their payment information.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
+Review [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-payment.png',
         },
@@ -55,7 +55,7 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
           description: `
 Summary of the cart contents, discounts, and order totals.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
+Review [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-order-summary.png',
         },
@@ -64,7 +64,7 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
           description: `
 Accelerated checkout where Shopify pre-fills buyer information using their Shop Pay account.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
+Review [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-shop-pay.png',
         },
@@ -73,7 +73,7 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
           description: `
 When multiple shipments are expected, a checkout will render split shipping options.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
+Review [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-split-shipping.png',
         },
@@ -82,7 +82,7 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
           description: `
 Point in checkout where the buyer can select a store location to pick up their purchase.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
+Review [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-local-pickup.png',
         },
@@ -91,9 +91,18 @@ See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
           description: `
 Point in checkout where the buyer can select a pickup point to have their purchase delivered to.
 
-See [all extensions targets](/docs/api/checkout-ui-extensions/targets).
+Review [all extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-pickup-points.png',
+        },
+        {
+          title: 'Overlays',
+          description: `
+Static extension targets that floats above the checkout.
+
+Review [all extensions targets](/docs/api/checkout-ui-extensions/targets).
+`,
+          image: 'supported-locations-chat.png',
         },
         {
           title: 'One-page checkout',
@@ -130,6 +139,15 @@ Summary of the cart contents, discounts, and order totals.
 Review [all **Thank you** page extensions targets](/docs/api/checkout-ui-extensions/targets).
 `,
           image: 'supported-locations-order-summary-thank-you.png',
+        },
+        {
+          title: 'Overlays',
+          description: `
+Static extension targets that floats above the Thank you page.
+
+Review [all **Thank you** page extensions targets](/docs/api/checkout-ui-extensions/targets).
+`,
+          image: 'supported-locations-chat-thank-you.png',
         },
       ],
     },

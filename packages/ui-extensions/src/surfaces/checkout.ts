@@ -186,8 +186,11 @@ export type {
 } from './checkout/api/payment/payment-option-item';
 
 export * from './checkout/components';
+
 export * from './checkout/targets';
+
 export * from './checkout/extension';
+
 export * from './checkout/shared';
 export {
   Style,
@@ -209,4 +212,5 @@ export type {
 export type {IdProps} from './checkout/components/shared';
 
 export * from './checkout/globals';
+
 export * from '../shared';

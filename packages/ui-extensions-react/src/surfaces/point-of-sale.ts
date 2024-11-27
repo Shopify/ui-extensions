@@ -37,6 +37,7 @@ export type {
   PinLength,
   PinPadActionType,
   PinPadProps,
+  PrintPreviewProps,
   RadioButtonListProps,
   ScreenPresentationProps,
   SecondaryActionProps,

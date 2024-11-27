@@ -61,7 +61,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The API version that was set in the extension config file.
    *
-   * @example '2023-07', '2023-10', '2024-01', '2024-04', '2024-07', 'unstable'
+   * @example '2023-10', '2024-01', '2024-04', '2024-07', '2024-10', 'unstable'
    */
   apiVersion: ApiVersion;
 
@@ -1359,16 +1359,6 @@ export interface Customer {
    */
   image: ImageDetails;
   /**
-   * Defines if the customer email accepts marketing activities.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
-   *
-   * > Caution: This field is deprecated and will be removed in a future version. Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
-   *
-   * @deprecated Use `acceptsEmailMarketing` or `acceptsSmsMarketing` instead.
-   */
-  acceptsMarketing: boolean;
-  /**
    * Defines if the customer accepts email marketing activities.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
@@ -1596,6 +1586,11 @@ export interface DeliveryOptionBase {
    * The code of the delivery option.
    */
   code: string;
+
+  /**
+   * The metafields associated with this delivery option.
+   */
+  metafields: Metafield[];
 }
 
 /**
@@ -1667,11 +1662,6 @@ export interface PickupPointOption extends DeliveryOptionBase {
    * The location details of the pickup point.
    */
   location: PickupPointLocation;
-
-  /**
-   * The metafields associated with this delivery option.
-   */
-  metafields: Metafield[];
 }
 
 export interface PickupLocationOption extends DeliveryOptionBase {
@@ -1684,11 +1674,6 @@ export interface PickupLocationOption extends DeliveryOptionBase {
    * The location details of the pickup location.
    */
   location: PickupLocation;
-
-  /**
-   * The metafields associated with this delivery option.
-   */
-  metafields: Metafield[];
 }
 
 interface PickupLocation {

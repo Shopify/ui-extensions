@@ -226,6 +226,12 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           image: 'admin.gift-card-details.block.render.png',
         },
         {
+          title: 'Discount details function settings',
+          image: 'admin.discount-details.function-settings-render.png',
+          description:
+            'This page shows information about a single discount. The `admin.discount-details.function-settings.render` target is available on this page.',
+        },
+        {
           title: 'Order details',
           description:
             'This page shows information about a single order. The `admin.order-details.block.render` target is available on this page.',

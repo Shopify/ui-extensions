@@ -3,7 +3,7 @@ import React, {
   useState,
 } from 'react';
 import {
-  render,
+  reactExtension,
   BlockStack,
   Heading,
   Image,
@@ -13,11 +13,12 @@ import {
 } from '@shopify/ui-extensions-react/customer-account';
 import type {NavigationCurrentEntryChangeEvent} from '@shopify/ui-extensions/customer-account';
 
-render('customer-account.page.render', (api) => (
-  <App api={api} />
-));
+export default reactExtension(
+  'customer-account.page.render',
+  () => <App />,
+);
 
-function App({api: {navigation}}) {
+function App() {
   const currentEntry = useNavigationCurrentEntry();
 
   function getWishlistId(_url: string): string {

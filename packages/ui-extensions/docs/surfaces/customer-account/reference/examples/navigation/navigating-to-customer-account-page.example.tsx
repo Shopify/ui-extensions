@@ -1,14 +1,18 @@
 import {
-  render,
+  reactExtension,
+  useApi,
   Page,
   Button,
 } from '@shopify/customer-account-ui-extensions-react';
 
-render('customer-account.page.render', (api) => (
-  <App api={api} />
-));
+export default reactExtension(
+  'customer-account.page.render',
+  () => <App />,
+);
 
-function App({api: {navigation}}) {
+function App() {
+  const { navigation } = useApi();
+
   return (
     <Page
       title="Wishlist"

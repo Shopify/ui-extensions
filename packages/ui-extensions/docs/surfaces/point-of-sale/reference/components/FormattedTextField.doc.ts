@@ -33,7 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'formatted-text-field-default.png',
     codeblock: generateCodeBlockForComponent(
-      'Render a FormattedTextField that validates email addresses',
+      'Render a FormattedTextField for an email addresses',
       'default.example',
     ),
   },

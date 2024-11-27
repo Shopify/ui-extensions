@@ -5,4 +5,4 @@
   )}
 >
   Content
-</View>;
+</View>

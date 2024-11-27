@@ -1,14 +1,17 @@
 import {
-  render,
+  reactExtension,
+  useApi,
   Button,
-} from '@shopify/customer-account-ui-extensions-react';
+} from '@shopify/ui-extensions-react/customer-account';
 
-render(
+export default reactExtension(
   'customer-account.page.render',
-  (api) => <App api={api} />,
+  () => <App />,
 );
 
-function App({api: {navigation}}) {
+function App() {
+  const {navigation} = useApi();
+
   return (
     <Button
       onPress={() => {
