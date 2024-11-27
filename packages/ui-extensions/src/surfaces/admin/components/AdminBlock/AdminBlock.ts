@@ -7,11 +7,9 @@ export interface AdminBlockProps {
   title?: string;
 
   /**
-   * The summary to display when the app block is collapsed.
-   *
-   * @deprecated App blocks no longer have a collapsed state, so this prop is no longer supported.
+   * The summary to display when the app block is collapsed. Summary longer than 30 characters will be truncated.
    */
-  summary?: string;
+  collapsedSummary?: string;
 }
 
 export const AdminBlock = createRemoteComponent<'AdminBlock', AdminBlockProps>(
