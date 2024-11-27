@@ -1,7 +1,7 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Select',
+  name: 'Option',
   description:
     'Use this when you want to give users a predefined list of options to choose from.',
   requires: '',
@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'Select',
+      title: 'Option',
       description: '',
-      type: 'Select',
+      type: 'Option',
     },
   ],
   category: 'Components',
@@ -20,16 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'select-default.png',
     codeblock: {
-      title: 'Simple Select example',
+      title: 'Simple Option example',
       tabs: [
         {
           title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Select/examples/basic-select.example.tsx',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Option/examples/basic-option.example.tsx',
           language: 'tsx',
         },
         {
           title: 'JS',
-          code: './examples/basic-select.example.ts',
+          code: './examples/basic-option.example.ts',
           language: 'js',
         },
       ],

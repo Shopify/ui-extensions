@@ -2384,7 +2384,7 @@ interface ClickOptions {
  * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
  * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
  */
-declare const BaseClass: typeof globalThis.HTMLElement;
+declare const BaseClass: any;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
