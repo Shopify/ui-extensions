@@ -19,6 +19,9 @@ import type {
   SpinnerProps,
   StackProps,
   TextProps,
+  AdminActionProps,
+  AdminBlockProps,
+  AdminPrintActionProps,
 } from './props';
 
 export const Badge = createRemoteComponent<
@@ -75,6 +78,7 @@ export const Section = createRemoteComponent<
   SectionProps,
   HTMLElementTagNameMap['shopify-section']
 >('shopify-section');
+
 export const Select = createRemoteComponent<
   SelectProps,
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -93,3 +97,15 @@ export const Text = createRemoteComponent<
   TextProps,
   HTMLElementTagNameMap['shopify-text']
 >('shopify-text');
+export const AdminAction = createRemoteComponent<
+  AdminActionProps,
+  HTMLElementTagNameMap['shopify-admin-action']
+>('shopify-admin-action');
+export const AdminBlock = createRemoteComponent<
+  AdminBlockProps,
+  HTMLElementTagNameMap['shopify-admin-block']
+>('shopify-admin-block');
+export const AdminPrintAction = createRemoteComponent<
+  AdminPrintActionProps,
+  HTMLElementTagNameMap['shopify-admin-print-action']
+>('shopify-admin-print-action');

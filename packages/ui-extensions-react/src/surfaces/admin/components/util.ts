@@ -25,16 +25,19 @@ declare global {
     ) => ComponentType;
   }
 }
+// Add `children` prop, but only if it wasn't already defined:
+type PropsWithChildren<T> = T extends {children: React.ReactNode}
+  ? T
+  : React.PropsWithChildren<T>;
 
 export function createRemoteComponent<
   Props extends object,
-  CustomElement extends HTMLElement,
+  ElementType extends HTMLElement,
 >(
   tagName: string,
 ): React.ForwardRefExoticComponent<
-  Props & {
-    children?: React.ReactNode | undefined;
-  } & React.RefAttributes<CustomElement>
+  React.PropsWithoutRef<PropsWithChildren<Props>> &
+    React.RefAttributes<ElementType>
 > {
   return shopify._createReactRemoteComponent(
     {
