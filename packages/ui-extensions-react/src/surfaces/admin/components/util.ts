@@ -5,7 +5,6 @@ import {
   useCallback,
   forwardRef,
   type ComponentType,
-  type PropsWithChildren,
 } from 'react';
 
 // These are the pieces of the passed-in copy of `react` we use:
@@ -27,9 +26,16 @@ declare global {
   }
 }
 
-export function createRemoteComponent<Props extends object>(
+export function createRemoteComponent<
+  Props extends object,
+  CustomElement extends HTMLElement,
+>(
   tagName: string,
-): ComponentType<PropsWithChildren<Props>> {
+): React.ForwardRefExoticComponent<
+  Props & {
+    children?: React.ReactNode | undefined;
+  } & React.RefAttributes<CustomElement>
+> {
   return shopify._createReactRemoteComponent(
     {
       createElement,

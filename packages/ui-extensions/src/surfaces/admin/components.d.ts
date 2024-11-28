@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
 type SizeKeyword =
   | 'small-500'
   | 'small-400'
@@ -2661,6 +2663,11 @@ declare module 'preact' {
     }
   }
 }
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$g]: React.HTMLAttributes<HTMLElement> & ReactProps$g;
+  }
+}
 
 export type MakeResponsive<T> = T | `@media${string}`;
 
@@ -2770,6 +2777,11 @@ declare module 'preact' {
     }
   }
 }
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$f]: React.HTMLAttributes<HTMLElement> & ReactProps$f;
+  }
+}
 
 export type ButtonOnlyProps = Extract<
   ButtonProps$1,
@@ -2848,6 +2860,11 @@ declare module 'preact' {
     }
   }
 }
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$e]: React.HTMLAttributes<HTMLElement> & ReactProps$e;
+  }
+}
 
 declare const internals: unique symbol;
 export type PreactInputProps = Required<
@@ -2915,6 +2932,11 @@ declare module 'preact' {
     }
   }
 }
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$d]: React.HTMLAttributes<HTMLElement> & ReactProps$d;
+  }
+}
 
 export interface DividerProps {
   direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
@@ -2941,6 +2963,11 @@ declare module 'preact' {
     interface IntrinsicElements {
       [tagName$c]: HTMLAttributes<HTMLElement> & ReactProps$c;
     }
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$c]: React.HTMLAttributes<HTMLElement> & ReactProps$c;
   }
 }
 
@@ -2974,6 +3001,11 @@ declare module 'preact' {
     }
   }
 }
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$b]: React.HTMLAttributes<HTMLElement> & ReactProps$b;
+  }
+}
 
 declare const tagName$a = 'shopify-icon';
 export interface ReactProps$a
@@ -2997,6 +3029,11 @@ declare module 'preact' {
     interface IntrinsicElements {
       [tagName$a]: Omit<HTMLAttributes<HTMLElement>, 'size'> & ReactProps$a;
     }
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$a]: React.HTMLAttributes<HTMLElement> & ReactProps$a;
   }
 }
 
@@ -3044,6 +3081,11 @@ declare module 'preact' {
     }
   }
 }
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$9]: React.HTMLAttributes<HTMLElement> & ReactProps$9;
+  }
+}
 
 export type RequiredLinkProps = Required<LinkProps$1>;
 export interface LinkProps {
@@ -3077,6 +3119,11 @@ declare module 'preact' {
     }
   }
 }
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$8]: React.HTMLAttributes<HTMLElement> & ReactProps$8;
+  }
+}
 
 declare const tagName$7 = 'shopify-option';
 export interface ReactProps$7 extends Partial<SharedProps$2> {}
@@ -3100,6 +3147,11 @@ declare module 'preact' {
     }
   }
 }
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$7]: React.HTMLAttributes<HTMLElement> & ReactProps$7;
+  }
+}
 
 declare const tagName$6 = 'shopify-option-group';
 export interface ReactProps$6 extends Partial<SharedProps$1> {}
@@ -3121,6 +3173,11 @@ declare module 'preact' {
     interface IntrinsicElements {
       [tagName$6]: HTMLAttributes<HTMLElement> & ReactProps$6;
     }
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$6]: React.HTMLAttributes<HTMLElement> & ReactProps$6;
   }
 }
 
@@ -3159,6 +3216,11 @@ declare module 'preact' {
     }
   }
 }
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$5]: React.HTMLAttributes<HTMLElement> & ReactProps$5;
+  }
+}
 
 export type RequiredSectionProps = Required<SectionProps$1>;
 export interface SectionProps {
@@ -3190,6 +3252,11 @@ declare module 'preact' {
     interface IntrinsicElements {
       [tagName$4]: HTMLAttributes<HTMLElement> & ReactProps$4;
     }
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$4]: React.HTMLAttributes<HTMLElement> & ReactProps$4;
   }
 }
 
@@ -3265,6 +3332,11 @@ declare module 'preact' {
     }
   }
 }
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$3]: React.HTMLAttributes<HTMLElement> & ReactProps$3;
+  }
+}
 
 export interface SpinnerProps
   extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
@@ -3296,6 +3368,11 @@ declare module 'preact' {
     interface IntrinsicElements {
       [tagName$2]: HTMLAttributes<HTMLElement> & ReactProps$2;
     }
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$2]: React.HTMLAttributes<HTMLElement> & ReactProps$2;
   }
 }
 
@@ -3335,6 +3412,11 @@ declare module 'preact' {
     interface IntrinsicElements {
       [tagName$1]: HTMLAttributes<HTMLElement> & ReactProps$1;
     }
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$1]: React.HTMLAttributes<HTMLElement> & ReactProps$1;
   }
 }
 
@@ -3379,6 +3461,11 @@ declare module 'preact' {
     interface IntrinsicElements {
       [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName]: React.HTMLAttributes<HTMLElement> & ReactProps;
   }
 }
 

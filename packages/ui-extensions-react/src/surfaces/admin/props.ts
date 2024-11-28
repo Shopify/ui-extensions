@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
-
+/* eslint-disable @typescript-eslint/member-ordering */
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
 type SizeKeyword =
   | 'small-500'
   | 'small-400'
@@ -513,7 +515,7 @@ type IconType =
   | 'wrench'
   | 'x-circle'
   | 'x';
-interface BadgeProps$1 extends GlobalProps {
+interface BadgeProps$2 extends GlobalProps {
   /**
    * The content of the Badge.
    */
@@ -949,7 +951,7 @@ interface OverflowProps {
    */
   overflow?: 'hidden' | 'visible';
 }
-interface BaseBoxProps$1
+interface BaseBoxProps$2
   extends GlobalProps,
     AccessibilityVisibilityProps,
     BackgroundProps,
@@ -970,10 +972,10 @@ interface BaseBoxProps$1
    */
   accessibilityLabel?: string;
 }
-interface BaseBoxProps$1WithRole
-  extends BaseBoxProps$1,
+interface BaseBoxProps$2WithRole
+  extends BaseBoxProps$2,
     AccessibilityRoleProps {}
-interface BoxProps$1 extends BaseBoxProps$1WithRole {}
+interface BoxProps$2 extends BaseBoxProps$2WithRole {}
 interface FocusEventProps {
   /**
    * Callback when the element loses focus.
@@ -1041,7 +1043,7 @@ interface LinkBehaviorProps extends FocusEventProps {
    */
   onClick?: () => void;
 }
-interface InteractionProps {
+export interface InteractionProps {
   /**
    * ID of a component that should respond to activations (e.g. clicks) on this pressable.
    *
@@ -1058,7 +1060,7 @@ interface InteractionProps {
   activateAction?: 'auto' | 'show' | 'hide' | 'toggle' | 'copy';
 }
 interface BasePressableProps extends ButtonBehaviorProps, LinkBehaviorProps {}
-interface ButtonProps$1 extends GlobalProps, BasePressableProps {
+interface ButtonProps$2 extends GlobalProps, BasePressableProps {
   /**
    * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
    *
@@ -1234,7 +1236,7 @@ interface BaseSelectableProps {
    */
   value?: string;
 }
-interface BaseOptionProps extends BaseSelectableProps {
+interface BaseOptionProps$1 extends BaseSelectableProps {
   /**
    * Whether the control is active.
    */
@@ -1275,7 +1277,7 @@ interface BaseCheckableProps extends BaseSelectableProps {
    */
   onInput?: (checked: boolean) => void;
 }
-interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps {
+interface CheckboxProps$2 extends GlobalProps, BaseCheckableProps {
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
@@ -1435,7 +1437,7 @@ type TextAutocompleteField = ExtractStrict<
   | `${AutocompleteFieldCreditCardAlias}-family-name`
   | `${AutocompleteFieldCreditCardAlias}-type`
 >;
-interface DividerProps$1 extends GlobalProps {
+interface DividerProps$2 extends GlobalProps {
   /**
    * Specify the direction of the divider.
    *
@@ -1508,7 +1510,7 @@ type AlignContentKeyword =
   | ContentDistribution
   | OverflowPosition
   | ContentPosition;
-interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps {
+interface HeadingProps$2 extends GlobalProps, AccessibilityVisibilityProps {
   /** A unique identifier for the field. */
   id?: string;
   /**
@@ -1540,7 +1542,7 @@ interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps {
    */
   lineClamp?: number | 'none';
 }
-interface IconProps$1 extends GlobalProps {
+interface IconProps$2 extends GlobalProps {
   /**
    * Sets the tone of the Icon, based on the intention of the information being conveyed.
    *
@@ -1561,7 +1563,7 @@ interface IconProps$1 extends GlobalProps {
   size?: SizeKeyword | 'fill';
   type?: IconType | AnyString;
 }
-interface BaseImageProps$1 {
+interface BaseImageProps$2 {
   /**
    * An alternative text description that describe the image for the reader to
    * understand what it is about. It is extremely useful for both users using
@@ -1602,7 +1604,7 @@ interface BaseImageProps$1 {
   srcSet?: string;
 }
 type optionalSpace = '' | ' ';
-interface ImageProps$1 extends GlobalProps, BaseImageProps$1 {
+interface ImageProps$2 extends GlobalProps, BaseImageProps$2 {
   /**
    * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help users
@@ -1664,7 +1666,7 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps$1 {
    */
   onError?: () => void;
 }
-interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
+interface LinkProps$2 extends GlobalProps, LinkBehaviorProps {
   /**
    * The content of the Link.
    */
@@ -1689,8 +1691,8 @@ interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
    */
   lang?: string;
 }
-export interface OptionProps extends GlobalProps, BaseOptionProps {}
-export interface OptionGroupProps extends GlobalProps {
+interface OptionProps$1 extends GlobalProps, BaseOptionProps$1 {}
+interface OptionGroupProps$1 extends GlobalProps {
   /**
    * Whether the options within this group can be selected or not.
    */
@@ -1735,7 +1737,7 @@ interface BaseTypographyProps {
    */
   lang?: string;
 }
-interface ParagraphProps$1
+interface ParagraphProps$2
   extends GlobalProps,
     BaseTypographyProps,
     AccessibilityVisibilityProps {
@@ -1748,7 +1750,7 @@ interface ParagraphProps$1
    */
   lineClamp?: number | 'none';
 }
-interface SectionProps$1 extends GlobalProps {
+interface SectionProps$2 extends GlobalProps {
   /**
    * The content of the Section.
    */
@@ -1779,7 +1781,7 @@ interface SectionProps$1 extends GlobalProps {
    */
   padding?: 'auto' | 'none';
 }
-export interface SelectProps
+interface SelectProps$1
   extends GlobalProps,
     FieldProps,
     AutocompleteProps<AnyAutocompleteField>,
@@ -1791,7 +1793,7 @@ export interface SelectProps
    */
   children?: ComponentChildren;
 }
-interface SpinnerProps$1 extends GlobalProps {
+interface SpinnerProps$2 extends GlobalProps {
   /**
    * Adjusts the size of the spinner icon.
    *
@@ -1814,7 +1816,7 @@ interface SpinnerProps$1 extends GlobalProps {
    */
   accessibilityLabel?: string;
 }
-interface StackProps$1 extends BaseBoxProps$1WithRole, GapProps {
+interface StackProps$2 extends BaseBoxProps$2WithRole, GapProps {
   /**
    * The content of the Stack.
    */
@@ -1847,7 +1849,7 @@ interface StackProps$1 extends BaseBoxProps$1WithRole, GapProps {
    */
   alignContent: AlignContentKeyword;
 }
-interface TextProps$1
+interface TextProps$2
   extends GlobalProps,
     AccessibilityVisibilityProps,
     BaseTypographyProps,
@@ -1942,32 +1944,266 @@ export interface TextFieldProps
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
+interface VNode<P = {}> {
+  type: ComponentType<P> | string;
+  props: P & {
+    children: ComponentChildren$1;
+  };
+  key: Key;
+  /**
+   * ref is not guaranteed by React.ReactElement, for compatibility reasons
+   * with popular react libs we define it as optional too
+   */
+  ref?: Ref<any> | null;
+  /**
+   * The time this `vnode` started rendering. Will only be set when
+   * the devtools are attached.
+   * Default value: `0`
+   */
+  startTime?: number;
+  /**
+   * The time that the rendering of this `vnode` was completed. Will only be
+   * set when the devtools are attached.
+   * Default value: `-1`
+   */
+  endTime?: number;
+}
+type Key = string | number | any;
+interface RefObject<T> {
+  current: T | null;
+}
+type RefCallback<T> = (instance: T | null) => void;
+type Ref<T> = RefObject<T> | RefCallback<T> | null;
+export type ComponentChild =
+  | VNode<any>
+  | object
+  | string
+  | number
+  | bigint
+  | boolean
+  | null
+  | undefined;
+type ComponentChildren$1 = ComponentChild[] | ComponentChild;
+interface Attributes {
+  key?: Key | undefined;
+  jsx?: boolean | undefined;
+}
+interface ErrorInfo {
+  componentStack?: string;
+}
+type RenderableProps<P, RefType = any> = P &
+  Readonly<
+    Attributes & {
+      children?: ComponentChildren$1;
+      ref?: Ref<RefType>;
+    }
+  >;
+type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
+interface FunctionComponent<P = {}> {
+  (props: RenderableProps<P>, context?: any): VNode<any> | null;
+  displayName?: string;
+  defaultProps?: Partial<P> | undefined;
+}
+interface ComponentClass<P = {}, S = {}> {
+  new (props: P, context?: any): Component<P, S>;
+  displayName?: string;
+  defaultProps?: Partial<P>;
+  contextType?: Context<any>;
+  getDerivedStateFromProps?(
+    props: Readonly<P>,
+    state: Readonly<S>,
+  ): Partial<S> | null;
+  getDerivedStateFromError?(error: any): Partial<S> | null;
+}
+interface Component<P = {}, S = {}> {
+  componentWillMount?(): void;
+  componentDidMount?(): void;
+  componentWillUnmount?(): void;
+  getChildContext?(): object;
+  componentWillReceiveProps?(nextProps: Readonly<P>, nextContext: any): void;
+  shouldComponentUpdate?(
+    nextProps: Readonly<P>,
+    nextState: Readonly<S>,
+    nextContext: any,
+  ): boolean;
+  componentWillUpdate?(
+    nextProps: Readonly<P>,
+    nextState: Readonly<S>,
+    nextContext: any,
+  ): void;
+  getSnapshotBeforeUpdate?(oldProps: Readonly<P>, oldState: Readonly<S>): any;
+  componentDidUpdate?(
+    previousProps: Readonly<P>,
+    previousState: Readonly<S>,
+    snapshot: any,
+  ): void;
+  componentDidCatch?(error: any, errorInfo: ErrorInfo): void;
+}
+declare abstract class Component<P, S> {
+  constructor(props?: P, context?: any);
+  static displayName?: string;
+  static defaultProps?: any;
+  static contextType?: Context<any>;
+  // Static members cannot reference class type parameters. This is not
+  // supported in TypeScript. Reusing the same type arguments from `Component`
+  // will lead to an impossible state where one cannot satisfy the type
+  // constraint under no circumstances, see #1356.In general type arguments
+  // seem to be a bit buggy and not supported well at the time of this
+  // writing with TS 3.3.3333.
+  static getDerivedStateFromProps?(
+    props: Readonly<object>,
+    state: Readonly<object>,
+  ): object | null;
 
-export interface IconProps {
+  static getDerivedStateFromError?(error: any): object | null;
+  state: Readonly<S>;
+  props: RenderableProps<P>;
+  context: any;
+  base?: Element | Text;
+  // From https://github.com/DefinitelyTyped/DefinitelyTyped/blob/e836acc75a78cf0655b5dfdbe81d69fdd4d8a252/types/react/index.d.ts#L402
+  // // We MUST keep setState() as a unified signature because it allows proper checking of the method return type.
+  // // See: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18365#issuecomment-351013257
+  setState<K extends keyof S>(
+    state:
+      | ((
+          prevState: Readonly<S>,
+          props: Readonly<P>,
+        ) => Pick<S, K> | Partial<S> | null)
+      | (Pick<S, K> | Partial<S> | null),
+    callback?: () => void,
+  ): void;
+
+  forceUpdate(callback?: () => void): void;
+  abstract render(
+    props?: RenderableProps<P>,
+    state?: Readonly<S>,
+    context?: any,
+  ): ComponentChild;
+}
+interface Consumer<T>
+  extends FunctionComponent<{
+    children: (value: T) => ComponentChildren$1;
+  }> {}
+interface Provider<T>
+  extends FunctionComponent<{
+    value: T;
+    children?: ComponentChildren$1;
+  }> {}
+interface Context<T> {
+  Consumer: Consumer<T>;
+  Provider: Provider<T>;
+  displayName?: string;
+}
+
+export interface IconProps$1 {
   type: '' | IconType;
   tone: Extract<
-    IconProps$1['tone'],
+    IconProps$2['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
   >;
-  color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
-  size: Extract<IconProps$1['size'], 'small' | 'base'>;
+  color: Extract<IconProps$2['color'], 'base' | 'subdued'>;
+  size: Extract<IconProps$2['size'], 'small' | 'base'>;
 }
 
-export interface BadgeProps {
-  accessibilityLabel: NonNullable<BadgeProps$1['accessibilityLabel']>;
-  color: Extract<BadgeProps$1['color'], 'base' | 'strong'>;
-  icon: IconProps['type'] | '';
-  size: Extract<BadgeProps$1['size'], 'base' | 'large' | 'large-100'>;
+export interface BadgeProps$1 {
+  accessibilityLabel: NonNullable<BadgeProps$2['accessibilityLabel']>;
+  color: Extract<BadgeProps$2['color'], 'base' | 'strong'>;
+  icon: IconProps$1['type'] | '';
+  size: Extract<BadgeProps$2['size'], 'base' | 'large' | 'large-100'>;
   tone: Extract<
-    BadgeProps$1['tone'],
+    BadgeProps$2['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
   >;
 }
+
+declare const tagName$g = 'shopify-badge';
+export interface ReactProps$g
+  extends Partial<BadgeProps$1>,
+    Pick<BadgeProps$2, 'id'> {}
+
+export type Style = string | CSSStyleSheet;
+export type Styles = Style[] | Style;
+export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  ShadowRoot: (element: any) => ComponentChild;
+  styles?: Styles;
+};
+export interface ActivationEventEsque {
+  shiftKey: boolean;
+  metaKey: boolean;
+  ctrlKey: boolean;
+  button: number;
+}
+export interface ClickOptions {
+  /**
+   * The event you want to influence the synthetic click.
+   */
+  sourceEvent?: ActivationEventEsque;
+}
+/**
+ * Base class for creating custom elements with Preact.
+ * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
+ * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
+ */
+declare const BaseClass: typeof globalThis.HTMLElement;
+declare abstract class PreactCustomElement extends BaseClass {
+  /** @private */
+  static get observedAttributes(): string[];
+  constructor();
+
+  /** @private */
+  attributeChangedCallback(name: string): void;
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
+  /**
+   * Queue a run of the render function.
+   * You shouldn't need to call this manually - it should be handled by changes to @property values.
+   * @private
+   */
+  queueRender(): void;
+  /**
+   * Internal function to add styles for legacy browsers.
+   *
+   * @private
+   */
+  _addLegacyStyleComponent(style: string): void;
+  /**
+   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+   *
+   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
+   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
+   * @private
+   * @param options
+   */
+  click({sourceEvent}?: ClickOptions): void;
+}
+
+declare class Badge extends PreactCustomElement implements BadgeProps$1 {
+  accessor accessibilityLabel: BadgeProps$1['accessibilityLabel'];
+  accessor color: BadgeProps$1['color'];
+  accessor icon: BadgeProps$1['icon'];
+  accessor size: BadgeProps$1['size'];
+  accessor tone: BadgeProps$1['tone'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$g]: Badge;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$g]: React.HTMLAttributes<HTMLElement> & ReactProps$g;
+  }
+}
+
+export type BadgeProps = ReactProps$g;
 
 export type MakeResponsive<T> = T | `@media${string}`;
 
-export type AlignedBox = Required<BoxProps$1>;
-export interface BoxProps {
+export type AlignedBox = Required<BoxProps$2>;
+export interface BoxProps$1 {
   accessibilityRole: AlignedBox['accessibilityRole'];
   background: Extract<
     AlignedBox['background'],
@@ -2025,8 +2261,56 @@ export interface BoxProps {
   display: AlignedBox['display'];
 }
 
+declare const tagName$f = 'shopify-box';
+export interface ReactProps$f
+  extends Partial<BoxProps$1>,
+    Pick<BoxProps$2, 'id'> {}
+
+declare class BoxElement extends PreactCustomElement implements BoxProps$1 {
+  constructor(renderImpl: RenderImpl);
+  accessor accessibilityRole: BoxProps$1['accessibilityRole'];
+  accessor background: BoxProps$1['background'];
+  accessor blockSize: BoxProps$1['blockSize'];
+  accessor minBlockSize: BoxProps$1['minBlockSize'];
+  accessor maxBlockSize: BoxProps$1['maxBlockSize'];
+  accessor inlineSize: BoxProps$1['inlineSize'];
+  accessor minInlineSize: BoxProps$1['minInlineSize'];
+  accessor maxInlineSize: BoxProps$1['maxInlineSize'];
+  accessor padding: BoxProps$1['padding'];
+  accessor paddingBlock: BoxProps$1['paddingBlock'];
+  accessor paddingBlockStart: BoxProps$1['paddingBlockStart'];
+  accessor paddingBlockEnd: BoxProps$1['paddingBlockEnd'];
+  accessor paddingInline: BoxProps$1['paddingInline'];
+  accessor paddingInlineStart: BoxProps$1['paddingInlineStart'];
+  accessor paddingInlineEnd: BoxProps$1['paddingInlineEnd'];
+  accessor border: BoxProps$1['border'];
+  accessor borderWidth: BoxProps$1['borderWidth'];
+  accessor borderStyle: BoxProps$1['borderStyle'];
+  accessor borderColor: BoxProps$1['borderColor'];
+  accessor borderRadius: BoxProps$1['borderRadius'];
+  accessor accessibilityLabel: BoxProps$1['accessibilityLabel'];
+  accessor accessibilityVisibility: BoxProps$1['accessibilityVisibility'];
+  accessor display: BoxProps$1['display'];
+}
+
+declare class Box extends BoxElement implements BoxProps$1 {
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$f]: Box;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$f]: React.HTMLAttributes<HTMLElement> & ReactProps$f;
+  }
+}
+
+export type BoxProps = ReactProps$f;
+
 export type ButtonOnlyProps = Extract<
-  ButtonProps$1,
+  ButtonProps$2,
   {
     type?: unknown;
   }
@@ -2047,19 +2331,88 @@ export type ButtonBaseProps = Required<
     | 'download'
   >
 >;
-export interface ButtonProps extends ButtonBaseProps {
-  tone: Extract<ButtonProps$1['tone'], 'neutral' | 'critical' | 'auto'>;
-  icon: IconProps['type'];
+export interface ButtonProps$1 extends ButtonBaseProps {
+  tone: Extract<ButtonProps$2['tone'], 'neutral' | 'critical' | 'auto'>;
+  icon: IconProps$1['type'];
 }
 
+declare const tagName$e = 'shopify-button';
+export interface ReactProps$e
+  extends Partial<ButtonProps$1>,
+    Pick<ButtonProps$2, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
+
+export interface SharedProps$3
+  extends Required<Pick<InteractionProps, 'activateTarget'>> {
+  activateAction: Extract<
+    InteractionProps['activateAction'],
+    'show' | 'hide' | 'toggle' | 'auto'
+  >;
+}
+declare class PreactOverlayControl
+  extends PreactCustomElement
+  implements SharedProps$3
+{
+  accessor activateTarget: SharedProps$3['activateTarget'];
+  accessor activateAction: SharedProps$3['activateAction'];
+  constructor(renderImpl: RenderImpl);
+}
+
+declare class Button extends PreactOverlayControl implements ButtonProps$1 {
+  accessor disabled: ButtonProps$1['disabled'];
+  accessor icon: ButtonProps$1['icon'];
+  accessor loading: ButtonProps$1['loading'];
+  accessor variant: ButtonProps$1['variant'];
+  accessor tone: ButtonProps$1['tone'];
+  accessor lang: ButtonProps$1['lang'];
+  accessor target: ButtonProps$1['target'];
+  accessor href: ButtonProps$1['href'];
+  accessor download: ButtonProps$1['download'];
+  accessor onclick: EventListener | null;
+  accessor onblur: EventListener | null;
+  accessor onfocus: EventListener | null;
+  accessor type: ButtonProps$1['type'];
+  accessor accessibilityLabel: ButtonProps$1['accessibilityLabel'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$e]: Button;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$e]: React.HTMLAttributes<HTMLElement> & ReactProps$e;
+  }
+}
+
+export type ButtonProps = ReactProps$e;
+
+declare const internals: unique symbol;
 export type PreactInputProps = Required<
   Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
 >;
+declare class PreactInputElement
+  extends PreactCustomElement
+  implements PreactInputProps
+{
+  static formAssociated: boolean;
+  /** @private */
+  [internals]: ElementInternals;
+  protected getDefaultValue(): string;
+  accessor onchange: EventListener | null;
+  accessor oninput: EventListener | null;
+  accessor disabled: PreactInputProps['disabled'];
+  accessor id: PreactInputProps['id'];
+  accessor name: PreactInputProps['name'];
+  get value(): PreactInputProps['value'];
+  set value(value: PreactInputProps['value']);
+  constructor(renderImpl: RenderImpl);
+}
 
-export type CheckboxProps = PreactInputProps &
+export type CheckboxProps$1 = PreactInputProps &
   Required<
     Pick<
-      CheckboxProps$1,
+      CheckboxProps$2,
       | 'accessibilityLabel'
       | 'checked'
       | 'details'
@@ -2070,69 +2423,428 @@ export type CheckboxProps = PreactInputProps &
     >
   >;
 
-export interface DividerProps {
-  direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
-  color: Extract<DividerProps$1['color'], 'subdued' | 'base' | 'strong'>;
+declare const tagName$d = 'shopify-checkbox';
+export interface ReactProps$d
+  extends Partial<CheckboxProps$1>,
+    Pick<CheckboxProps$2, 'onChange' | 'onInput'> {}
+
+declare class Checkbox extends PreactInputElement implements CheckboxProps$1 {
+  get checked(): boolean;
+  set checked(checked: CheckboxProps$1['checked']);
+  get value(): string;
+  set value(value: string);
+  accessor accessibilityLabel: CheckboxProps$1['accessibilityLabel'];
+  accessor details: CheckboxProps$1['details'];
+  accessor error: CheckboxProps$1['error'];
+  accessor indeterminate: CheckboxProps$1['indeterminate'];
+  accessor label: CheckboxProps$1['label'];
+  accessor required: CheckboxProps$1['required'];
+  constructor();
 }
 
-export type RequiredHeadingProps = Required<HeadingProps$1>;
-export interface HeadingProps {
+// declare global {
+//   interface HTMLElementTagNameMap {
+//     [tagName$d]: Checkbox;
+//   }
+// }
+
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$d]: React.HTMLAttributes<HTMLElement> & ReactProps$d;
+  }
+}
+
+export type CheckboxProps = ReactProps$d;
+
+export interface DividerProps$1 {
+  direction: Extract<DividerProps$2['direction'], 'inline' | 'block'>;
+  color: Extract<DividerProps$2['color'], 'subdued' | 'base' | 'strong'>;
+}
+
+declare const tagName$c = 'shopify-divider';
+export interface ReactProps$c
+  extends Partial<DividerProps$1>,
+    Pick<DividerProps$2, 'id'> {}
+
+declare class Divider extends PreactCustomElement implements DividerProps$1 {
+  accessor direction: DividerProps$1['direction'];
+  accessor color: DividerProps$1['color'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$c]: Divider;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$c]: React.HTMLAttributes<HTMLElement> & ReactProps$c;
+  }
+}
+
+export type DividerProps = ReactProps$c;
+
+export type RequiredHeadingProps = Required<HeadingProps$2>;
+export interface HeadingProps$1 {
   accessibilityRole: RequiredHeadingProps['accessibilityRole'];
   accessibilityVisibility: RequiredHeadingProps['accessibilityVisibility'];
   lineClamp: RequiredHeadingProps['lineClamp'];
 }
 
-export interface ImageProps {
+declare const tagName$b = 'shopify-heading';
+export interface ReactProps$b
+  extends Partial<HeadingProps$1>,
+    Pick<HeadingProps$2, 'id'> {}
+
+declare class Heading extends PreactCustomElement implements HeadingProps$1 {
+  accessor accessibilityRole: HeadingProps$1['accessibilityRole'];
+  accessor lineClamp: HeadingProps$1['lineClamp'];
+  accessor accessibilityVisibility: HeadingProps$1['accessibilityVisibility'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$b]: Heading;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$b]: React.HTMLAttributes<HTMLElement> & ReactProps$b;
+  }
+}
+
+export type HeadingProps = ReactProps$b;
+
+declare const tagName$a = 'shopify-icon';
+export interface ReactProps$a
+  extends Partial<IconProps$1>,
+    Pick<IconProps$2, 'id'> {}
+
+declare class Icon extends PreactCustomElement implements IconProps$1 {
+  accessor color: IconProps$1['color'];
+  accessor tone: IconProps$1['tone'];
+  accessor type: IconProps$1['type'];
+  accessor size: IconProps$1['size'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$a]: Icon;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$a]: React.HTMLAttributes<HTMLElement> & ReactProps$a;
+  }
+}
+
+export type IconProps = ReactProps$a;
+
+export interface ImageProps$1 {
   accessibilityRole: Extract<
-    ImageProps$1['accessibilityRole'],
+    ImageProps$2['accessibilityRole'],
     'img' | 'presentation' | 'none'
   >;
-  alt: NonNullable<ImageProps$1['alt']>;
-  loading: Extract<ImageProps$1['loading'], 'eager' | 'lazy'>;
-  src: NonNullable<ImageProps$1['src']>;
-  srcSet: NonNullable<ImageProps$1['srcSet']>;
-  sizes: NonNullable<ImageProps$1['sizes']>;
-  inlineSize: NonNullable<ImageProps$1['inlineSize']>;
+  alt: NonNullable<ImageProps$2['alt']>;
+  loading: Extract<ImageProps$2['loading'], 'eager' | 'lazy'>;
+  src: NonNullable<ImageProps$2['src']>;
+  srcSet: NonNullable<ImageProps$2['srcSet']>;
+  sizes: NonNullable<ImageProps$2['sizes']>;
+  inlineSize: NonNullable<ImageProps$2['inlineSize']>;
   aspectRatio: string;
 }
 
-export type RequiredLinkProps = Required<LinkProps$1>;
-export interface LinkProps {
+declare const tagName$9 = 'shopify-image';
+export interface ReactProps$9
+  extends Partial<ImageProps$1>,
+    Pick<ImageProps$2, 'onError' | 'onLoad' | 'id'> {}
+
+declare class Image extends PreactCustomElement implements ImageProps$1 {
+  accessor src: ImageProps$1['src'];
+  accessor srcSet: ImageProps$1['srcSet'];
+  accessor sizes: ImageProps$1['sizes'];
+  accessor alt: ImageProps$1['alt'];
+  accessor aspectRatio: ImageProps$1['aspectRatio'];
+  accessor loading: ImageProps$1['loading'];
+  accessor accessibilityRole: ImageProps$1['accessibilityRole'];
+  accessor inlineSize: ImageProps$1['inlineSize'];
+  accessor onload: EventListener | null;
+  accessor onerror: OnErrorEventHandler;
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$9]: Image;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$9]: React.HTMLAttributes<HTMLElement> & ReactProps$9;
+  }
+}
+
+export type ImageProps = ReactProps$9;
+
+export type RequiredLinkProps = Required<LinkProps$2>;
+export interface LinkProps$1 {
   tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
   accessibilityLabel: RequiredLinkProps['accessibilityLabel'];
   href: RequiredLinkProps['href'];
   target: RequiredLinkProps['target'];
 }
 
-export interface ParagraphProps
+declare const tagName$8 = 'shopify-link';
+export interface ReactProps$8
+  extends Partial<LinkProps$1>,
+    Pick<LinkProps$2, 'onClick' | 'id' | 'lang'> {}
+
+declare class Link extends PreactCustomElement implements LinkProps$1 {
+  accessor tone: LinkProps$1['tone'];
+  accessor accessibilityLabel: LinkProps$1['accessibilityLabel'];
+  accessor href: LinkProps$1['href'];
+  accessor target: LinkProps$1['target'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$8]: Link;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$8]: React.HTMLAttributes<HTMLElement> & ReactProps$8;
+  }
+}
+
+export type LinkProps = ReactProps$8;
+
+declare const tagName$7 = 'shopify-option';
+export interface ReactProps$7 extends Partial<SharedProps$2> {}
+
+export interface SharedProps$2
+  extends Required<Pick<OptionProps$1, 'disabled' | 'value'>> {}
+declare class Option extends PreactCustomElement implements SharedProps$2 {
+  accessor value: SharedProps$2['value'];
+  accessor disabled: SharedProps$2['disabled'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$7]: Option;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$7]: React.HTMLAttributes<HTMLElement> & ReactProps$7;
+  }
+}
+
+export type OptionProps = ReactProps$7;
+
+declare const tagName$6 = 'shopify-option-group';
+export interface ReactProps$6 extends Partial<SharedProps$1> {}
+
+export interface SharedProps$1
+  extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
+declare class OptionGroup extends PreactCustomElement implements SharedProps$1 {
+  accessor disabled: SharedProps$1['disabled'];
+  accessor label: SharedProps$1['label'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$6]: OptionGroup;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$6]: React.HTMLAttributes<HTMLElement> & ReactProps$6;
+  }
+}
+
+export type OptionGroupProps = ReactProps$6;
+
+export interface ParagraphProps$1
   extends Required<
     Pick<
-      ParagraphProps$1,
+      ParagraphProps$2,
       'lineClamp' | 'accessibilityVisibility' | 'fontVariantNumeric' | 'tone'
     >
   > {
-  color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
+  color: Extract<ParagraphProps$2['color'], 'base' | 'subdued'>;
 }
 
-export type RequiredSectionProps = Required<SectionProps$1>;
-export interface SectionProps {
+declare const tagName$5 = 'shopify-paragraph';
+export interface ReactProps$5
+  extends Partial<ParagraphProps$1>,
+    Pick<ParagraphProps$2, 'id'> {}
+
+declare class Paragraph
+  extends PreactCustomElement
+  implements ParagraphProps$1
+{
+  accessor fontVariantNumeric: ParagraphProps$1['fontVariantNumeric'];
+  accessor lineClamp: ParagraphProps$1['lineClamp'];
+  accessor tone: ParagraphProps$1['tone'];
+  accessor color: ParagraphProps$1['color'];
+  accessor accessibilityVisibility: ParagraphProps$1['accessibilityVisibility'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$5]: Paragraph;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$5]: React.HTMLAttributes<HTMLElement> & ReactProps$5;
+  }
+}
+
+export type ParagraphProps = ReactProps$5;
+
+export type RequiredSectionProps = Required<SectionProps$2>;
+export interface SectionProps$1 {
   accessibilityLabel: RequiredSectionProps['accessibilityLabel'];
   heading: RequiredSectionProps['heading'];
   padding: RequiredSectionProps['padding'];
 }
 
-export interface SpinnerProps
-  extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
+declare const tagName$4 = 'shopify-section';
+export interface ReactProps$4
+  extends Partial<SectionProps$1>,
+    Pick<SectionProps$2, 'id'> {}
+
+declare class Section extends PreactCustomElement implements SectionProps$1 {
+  constructor();
+  /** @private */
+  connectedCallback(): void;
+  accessor accessibilityLabel: SectionProps$1['accessibilityLabel'];
+  accessor heading: SectionProps$1['heading'];
+  accessor padding: SectionProps$1['padding'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$4]: Section;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$4]: React.HTMLAttributes<HTMLElement> & ReactProps$4;
+  }
+}
+
+export type SectionProps = ReactProps$4;
+
+export type FieldReactProps = Pick<
+  TextFieldProps,
+  'onChange' | 'onFocus' | 'onInput' | 'onBlur'
+>;
+
+declare const tagName$3 = 'shopify-select';
+export interface ReactProps$3 extends Partial<SharedProps & FieldReactProps> {}
+
+export type PreactFieldProps<Autocomplete extends string = string> =
+  PreactInputProps &
+    Required<
+      Pick<
+        TextFieldProps,
+        | 'defaultValue'
+        | 'details'
+        | 'error'
+        | 'label'
+        | 'placeholder'
+        | 'readOnly'
+        | 'required'
+      >
+    > & {
+      autocomplete: Autocomplete;
+    };
+declare class PreactFieldElement<Autocomplete extends string = string>
+  extends PreactInputElement
+  implements PreactFieldProps<Autocomplete>
+{
+  accessor onblur: EventListener | null;
+  accessor onfocus: EventListener | null;
+  accessor autocomplete: PreactFieldProps<Autocomplete>['autocomplete'];
+  accessor defaultValue: PreactFieldProps['defaultValue'];
+  accessor details: PreactFieldProps['details'];
+  accessor error: PreactFieldProps['error'];
+  accessor label: PreactFieldProps['label'];
+  accessor placeholder: PreactFieldProps['placeholder'];
+  accessor readOnly: PreactFieldProps['readOnly'];
+  accessor required: PreactFieldProps['required'];
+  protected getDefaultValue(): string;
+  constructor(renderImpl: RenderImpl);
+}
+
+export interface SharedProps
+  extends Pick<
+    SelectProps$1,
+    | 'disabled'
+    | 'error'
+    | 'label'
+    | 'name'
+    | 'placeholder'
+    | 'required'
+    | 'value'
+  > {}
+declare class Select extends PreactFieldElement implements SharedProps {
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
+  constructor();
+}
+
+// declare global {
+//   interface HTMLElementTagNameMap {
+//     [tagName$3]: Select;
+//   }
+// }
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$3]: React.HTMLAttributes<HTMLElement> & ReactProps$3;
+  }
+}
+
+export type SelectProps = ReactProps$3;
+
+export interface SpinnerProps$1
+  extends Required<Pick<SpinnerProps$2, 'accessibilityLabel'>> {
   /**
    * The size of the component.
    *
    * @default 'base'
    */
-  size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
+  size: Extract<SpinnerProps$2['size'], 'large' | 'large-100' | 'base'>;
 }
 
-export type AlignedStackProps = Required<StackProps$1>;
-export interface StackProps extends BoxProps {
+declare const tagName$2 = 'shopify-spinner';
+export interface ReactProps$2
+  extends Partial<SpinnerProps$1>,
+    Pick<SpinnerProps$2, 'id'> {}
+
+declare class Spinner extends PreactCustomElement implements SpinnerProps$1 {
+  accessor accessibilityLabel: string;
+  accessor size: SpinnerProps$1['size'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$2]: Spinner;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$2]: React.HTMLAttributes<HTMLElement> & ReactProps$2;
+  }
+}
+
+export type SpinnerProps = ReactProps$2;
+
+export type AlignedStackProps = Required<StackProps$2>;
+export interface StackProps$1 extends BoxProps$1 {
   justifyContent: AlignedStackProps['justifyContent'];
   alignItems: AlignedStackProps['alignItems'];
   alignContent: AlignedStackProps['alignContent'];
@@ -2142,19 +2854,74 @@ export interface StackProps extends BoxProps {
   direction: MakeResponsive<AlignedStackProps['direction']>;
 }
 
-export interface TextProps
-  extends Required<Pick<TextProps$1, 'display' | 'accessibilityVisibility'>> {
-  color: Extract<TextProps$1['color'], 'base' | 'subdued'>;
+declare const tagName$1 = 'shopify-stack';
+export interface ReactProps$1
+  extends Partial<StackProps$1>,
+    Pick<StackProps$2, 'id'> {}
+
+declare class Stack extends BoxElement implements StackProps$1 {
+  constructor();
+  accessor direction: StackProps$1['direction'];
+  accessor justifyContent: StackProps$1['justifyContent'];
+  accessor alignItems: StackProps$1['alignItems'];
+  accessor alignContent: StackProps$1['alignContent'];
+  accessor gap: StackProps$1['gap'];
+  accessor rowGap: StackProps$1['rowGap'];
+  accessor columnGap: StackProps$1['columnGap'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$1]: Stack;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$1]: React.HTMLAttributes<HTMLElement> & ReactProps$1;
+  }
+}
+
+export type StackProps = ReactProps$1;
+
+export interface TextProps$1
+  extends Required<Pick<TextProps$2, 'display' | 'accessibilityVisibility'>> {
+  color: Extract<TextProps$2['color'], 'base' | 'subdued'>;
   type: Extract<
-    TextProps$1['type'],
+    TextProps$2['type'],
     'address' | 'redundant' | 'strong' | 'generic'
   >;
   tone: Extract<
-    TextProps$1['tone'],
+    TextProps$2['tone'],
     'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'caution'
   >;
   fontVariantNumeric: Extract<
-    TextProps$1['fontVariantNumeric'],
+    TextProps$2['fontVariantNumeric'],
     'auto' | 'normal' | 'tabular-nums'
   >;
 }
+
+declare const tagName = 'shopify-text';
+export interface ReactProps
+  extends Partial<TextProps$1>,
+    Pick<TextProps$2, 'id'> {}
+
+declare class Text extends PreactCustomElement implements TextProps$1 {
+  accessor display: TextProps$1['display'];
+  accessor fontVariantNumeric: TextProps$1['fontVariantNumeric'];
+  accessor color: TextProps$1['color'];
+  accessor tone: TextProps$1['tone'];
+  accessor type: TextProps$1['type'];
+  accessor accessibilityVisibility: TextProps$1['accessibilityVisibility'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName]: Text;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName]: React.HTMLAttributes<HTMLElement> & ReactProps;
+  }
+}
+
+export type TextProps = ReactProps;
