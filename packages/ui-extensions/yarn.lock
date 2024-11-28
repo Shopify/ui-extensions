@@ -62,11 +62,6 @@
     globby "^11.1.0"
     typescript "^4.8.3 || ^5.0.0"
 
-"@shopify/ui-api-design@^0.18.0":
-  version "0.18.0"
-  resolved "https://registry.yarnpkg.com/@shopify/ui-api-design/-/ui-api-design-0.18.0.tgz#af3affb7b12f0f3debd747c6ed0ab1c1712abcef"
-  integrity sha512-5GxssVe7s2W+p+yPHLImDGZnGdSLS9G5vhvAM0zswOW+6sWKCe7gKvIF/GWJvyjlTTSbDxiuYsexMPUxnsSRVg==
-
 "@types/prop-types@*":
   version "15.7.13"
   resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.13.tgz#2af91918ee12d9d32914feb13f5326658461b451"

@@ -4,7 +4,8 @@ import {
   useLayoutEffect,
   useCallback,
   forwardRef,
-  ComponentType,
+  type ComponentType,
+  type PropsWithChildren,
 } from 'react';
 
 // These are the pieces of the passed-in copy of `react` we use:
@@ -21,13 +22,15 @@ declare global {
   namespace shopify {
     const _createReactRemoteComponent: (
       methods: InjectedReact,
-      name: string,
+      tagName: string,
     ) => ComponentType;
   }
 }
 
-export const createRemoteComponent = (name: string) =>
-  shopify._createReactRemoteComponent(
+export function createRemoteComponent<Props extends object>(
+  tagName: string,
+): ComponentType<PropsWithChildren<Props>> {
+  return shopify._createReactRemoteComponent(
     {
       createElement,
       useRef,
@@ -35,5 +38,6 @@ export const createRemoteComponent = (name: string) =>
       useCallback,
       forwardRef,
     },
-    name,
-  );
+    tagName,
+  ) as any;
+}

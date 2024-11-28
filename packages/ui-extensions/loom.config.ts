@@ -40,7 +40,7 @@ export default createPackage((pkg) => {
             const mainTypesContent = readFileSync(mainTypesPath).toString();
             const componentsTypesContent = readFileSync(componentsTypes)
               .toString()
-              .replaceAll(/\/\*.*$/, '');
+              .replaceAll(/\/\*.*$/g, '');
 
             writeFileSync(
               mainTypesPath,
