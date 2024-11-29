@@ -2664,8 +2664,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$l]: React.HTMLAttributes<HTMLElement> & ReactProps$g;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$l]: React.HTMLAttributes<HTMLElement> & ReactProps$g;
+    }
   }
 }
 
@@ -2778,8 +2780,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$k]: React.HTMLAttributes<HTMLElement> & ReactProps$f;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$k]: React.HTMLAttributes<HTMLElement> & ReactProps$f;
+    }
   }
 }
 
@@ -2861,8 +2865,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$j]: React.HTMLAttributes<HTMLElement> & ReactProps$e;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$j]: React.HTMLAttributes<HTMLElement> & ReactProps$e;
+    }
   }
 }
 
@@ -2933,8 +2939,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$i]: React.HTMLAttributes<HTMLElement> & ReactProps$d;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$i]: React.HTMLAttributes<HTMLElement> & ReactProps$d;
+    }
   }
 }
 
@@ -2966,8 +2974,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$h]: React.HTMLAttributes<HTMLElement> & ReactProps$c;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$h]: React.HTMLAttributes<HTMLElement> & ReactProps$c;
+    }
   }
 }
 
@@ -3002,8 +3012,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$g]: React.HTMLAttributes<HTMLElement> & ReactProps$b;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$g]: React.HTMLAttributes<HTMLElement> & ReactProps$b;
+    }
   }
 }
 
@@ -3032,8 +3044,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$f]: React.HTMLAttributes<HTMLElement> & ReactProps$a;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$f]: React.HTMLAttributes<HTMLElement> & ReactProps$a;
+    }
   }
 }
 
@@ -3082,8 +3096,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$e]: React.HTMLAttributes<HTMLElement> & ReactProps$9;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$e]: React.HTMLAttributes<HTMLElement> & ReactProps$9;
+    }
   }
 }
 
@@ -3120,8 +3136,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$d]: React.HTMLAttributes<HTMLElement> & ReactProps$8;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$d]: React.HTMLAttributes<HTMLElement> & ReactProps$8;
+    }
   }
 }
 
@@ -3148,8 +3166,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$c]: React.HTMLAttributes<HTMLElement> & ReactProps$7;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$c]: React.HTMLAttributes<HTMLElement> & ReactProps$7;
+    }
   }
 }
 
@@ -3176,8 +3196,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$b]: React.HTMLAttributes<HTMLElement> & ReactProps$6;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$b]: React.HTMLAttributes<HTMLElement> & ReactProps$6;
+    }
   }
 }
 
@@ -3217,8 +3239,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$a]: React.HTMLAttributes<HTMLElement> & ReactProps$5;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$a]: React.HTMLAttributes<HTMLElement> & ReactProps$5;
+    }
   }
 }
 
@@ -3255,8 +3279,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$9]: React.HTMLAttributes<HTMLElement> & ReactProps$4;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$9]: React.HTMLAttributes<HTMLElement> & ReactProps$4;
+    }
   }
 }
 
@@ -3333,8 +3359,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$8]: React.HTMLAttributes<HTMLElement> & ReactProps$3;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$8]: React.HTMLAttributes<HTMLElement> & ReactProps$3;
+    }
   }
 }
 
@@ -3371,8 +3399,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$7]: React.HTMLAttributes<HTMLElement> & ReactProps$2;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$7]: React.HTMLAttributes<HTMLElement> & ReactProps$2;
+    }
   }
 }
 
@@ -3415,8 +3445,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$6]: React.HTMLAttributes<HTMLElement> & ReactProps$1;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$6]: React.HTMLAttributes<HTMLElement> & ReactProps$1;
+    }
   }
 }
 
@@ -3464,8 +3496,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$5]: React.HTMLAttributes<HTMLElement> & ReactProps;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$5]: React.HTMLAttributes<HTMLElement> & ReactProps;
+    }
   }
 }
 
@@ -3507,8 +3541,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$4]: React.HTMLAttributes<HTMLElement> & AdminActionProps;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$4]: React.HTMLAttributes<HTMLElement> & AdminActionProps;
+    }
   }
 }
 
@@ -3542,8 +3578,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$3]: React.HTMLAttributes<HTMLElement> & AdminBlockProps;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$3]: React.HTMLAttributes<HTMLElement> & AdminBlockProps;
+    }
   }
 }
 
@@ -3576,8 +3614,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$2]: React.HTMLAttributes<HTMLElement> & AdminPrintActionProps;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$2]: React.HTMLAttributes<HTMLElement> & AdminPrintActionProps;
+    }
   }
 }
 
@@ -3646,9 +3686,11 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$1]: React.HTMLAttributes<HTMLElement> &
-      CustomerSegmentTemplateProps;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$1]: React.HTMLAttributes<HTMLElement> &
+        CustomerSegmentTemplateProps;
+    }
   }
 }
 
@@ -3713,8 +3755,10 @@ declare module 'preact' {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName]: React.HTMLAttributes<HTMLElement> & FunctionSettingsProps;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName]: React.HTMLAttributes<HTMLElement> & FunctionSettingsProps;
+    }
   }
 }
 

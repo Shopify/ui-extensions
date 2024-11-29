@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-
+/* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
@@ -2194,8 +2194,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$l]: React.HTMLAttributes<HTMLElement> & ReactProps$g;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$l]: React.HTMLAttributes<HTMLElement> & ReactProps$g;
+    }
   }
 }
 
@@ -2303,8 +2305,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$k]: React.HTMLAttributes<HTMLElement> & ReactProps$f;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$k]: React.HTMLAttributes<HTMLElement> & ReactProps$f;
+    }
   }
 }
 
@@ -2381,8 +2385,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$j]: React.HTMLAttributes<HTMLElement> & ReactProps$e;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$j]: React.HTMLAttributes<HTMLElement> & ReactProps$e;
+    }
   }
 }
 
@@ -2429,9 +2435,24 @@ export interface ReactProps$d
   extends Partial<CheckboxProps$1>,
     Pick<CheckboxProps$2, 'onChange' | 'onInput'> {}
 
+declare class Checkbox extends PreactInputElement implements CheckboxProps$1 {
+  get checked(): boolean;
+  set checked(checked: CheckboxProps$1['checked']);
+  get value(): string;
+  set value(value: string);
+  accessor accessibilityLabel: CheckboxProps$1['accessibilityLabel'];
+  accessor details: CheckboxProps$1['details'];
+  accessor error: CheckboxProps$1['error'];
+  accessor indeterminate: CheckboxProps$1['indeterminate'];
+  accessor label: CheckboxProps$1['label'];
+  accessor required: CheckboxProps$1['required'];
+  constructor();
+}
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$i]: React.HTMLAttributes<HTMLElement> & ReactProps$d;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$i]: React.HTMLAttributes<HTMLElement> & ReactProps$d;
+    }
   }
 }
 
@@ -2458,8 +2479,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$h]: React.HTMLAttributes<HTMLElement> & ReactProps$c;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$h]: React.HTMLAttributes<HTMLElement> & ReactProps$c;
+    }
   }
 }
 
@@ -2489,8 +2512,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$g]: React.HTMLAttributes<HTMLElement> & ReactProps$b;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$g]: React.HTMLAttributes<HTMLElement> & ReactProps$b;
+    }
   }
 }
 
@@ -2514,8 +2539,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$f]: React.HTMLAttributes<HTMLElement> & ReactProps$a;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$f]: React.HTMLAttributes<HTMLElement> & ReactProps$a;
+    }
   }
 }
 
@@ -2559,8 +2586,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$e]: React.HTMLAttributes<HTMLElement> & ReactProps$9;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$e]: React.HTMLAttributes<HTMLElement> & ReactProps$9;
+    }
   }
 }
 
@@ -2592,8 +2621,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$d]: React.HTMLAttributes<HTMLElement> & ReactProps$8;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$d]: React.HTMLAttributes<HTMLElement> & ReactProps$8;
+    }
   }
 }
 
@@ -2615,8 +2646,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$c]: React.HTMLAttributes<HTMLElement> & ReactProps$7;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$c]: React.HTMLAttributes<HTMLElement> & ReactProps$7;
+    }
   }
 }
 
@@ -2638,8 +2671,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$b]: React.HTMLAttributes<HTMLElement> & ReactProps$6;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$b]: React.HTMLAttributes<HTMLElement> & ReactProps$6;
+    }
   }
 }
 
@@ -2677,8 +2712,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$a]: React.HTMLAttributes<HTMLElement> & ReactProps$5;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$a]: React.HTMLAttributes<HTMLElement> & ReactProps$5;
+    }
   }
 }
 
@@ -2710,8 +2747,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$9]: React.HTMLAttributes<HTMLElement> & ReactProps$4;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$9]: React.HTMLAttributes<HTMLElement> & ReactProps$4;
+    }
   }
 }
 
@@ -2770,9 +2809,19 @@ export interface SharedProps
     | 'required'
     | 'value'
   > {}
+declare class Select extends PreactFieldElement implements SharedProps {
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
+  constructor();
+}
+
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$8]: React.HTMLAttributes<HTMLElement> & ReactProps$3;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$8]: React.HTMLAttributes<HTMLElement> & ReactProps$3;
+    }
   }
 }
 
@@ -2804,8 +2853,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$7]: React.HTMLAttributes<HTMLElement> & ReactProps$2;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$7]: React.HTMLAttributes<HTMLElement> & ReactProps$2;
+    }
   }
 }
 
@@ -2843,8 +2894,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$6]: React.HTMLAttributes<HTMLElement> & ReactProps$1;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$6]: React.HTMLAttributes<HTMLElement> & ReactProps$1;
+    }
   }
 }
 
@@ -2887,8 +2940,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$5]: React.HTMLAttributes<HTMLElement> & ReactProps;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$5]: React.HTMLAttributes<HTMLElement> & ReactProps;
+    }
   }
 }
 
@@ -2925,8 +2980,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$4]: React.HTMLAttributes<HTMLElement> & AdminActionProps$1;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$4]: React.HTMLAttributes<HTMLElement> & AdminActionProps$1;
+    }
   }
 }
 
@@ -2955,8 +3012,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$3]: React.HTMLAttributes<HTMLElement> & AdminBlockProps$1;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$3]: React.HTMLAttributes<HTMLElement> & AdminBlockProps$1;
+    }
   }
 }
 
@@ -2984,8 +3043,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$2]: React.HTMLAttributes<HTMLElement> & AdminPrintActionProps$1;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$2]: React.HTMLAttributes<HTMLElement> & AdminPrintActionProps$1;
+    }
   }
 }
 
@@ -3051,9 +3112,11 @@ declare global {
 }
 
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName$1]: React.HTMLAttributes<HTMLElement> &
-      CustomerSegmentTemplateProps$1;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$1]: React.HTMLAttributes<HTMLElement> &
+        CustomerSegmentTemplateProps$1;
+    }
   }
 }
 
@@ -3114,8 +3177,10 @@ declare global {
   }
 }
 declare module 'react' {
-  interface IntrinsicElements {
-    [tagName]: React.HTMLAttributes<HTMLElement> & FunctionSettingsProps$1;
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName]: React.HTMLAttributes<HTMLElement> & FunctionSettingsProps$1;
+    }
   }
 }
 
