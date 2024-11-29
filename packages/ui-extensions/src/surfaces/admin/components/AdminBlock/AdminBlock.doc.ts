@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Simple AdminBlock implementation',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminBlock/examples/basic-adminblock.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/basic-adminblock.example.ts',
           language: 'js',
+        },
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminBlock/examples/basic-adminblock.example.tsx',
+          language: 'tsx',
         },
       ],
     },

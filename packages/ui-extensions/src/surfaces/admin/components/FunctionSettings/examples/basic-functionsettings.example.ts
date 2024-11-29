@@ -1,9 +1,4 @@
-import {
-  extension,
-  FunctionSettings,
-  TextField,
-  Section,
-} from '@shopify/ui-extensions/admin';
+import {extension} from '@shopify/ui-extensions/admin';
 
 export default extension(
   'admin.settings.validation.render',
@@ -15,33 +10,30 @@ export default extension(
       ? await fetchSettings(api.data.validation.id)
       : {};
 
-    const textField = root.createComponent(TextField, {
-      value: initialSettings.name,
-      label: 'Name',
-      name: 'name',
-      onChange(value) {
-        textField.updateProps({value, error: undefined});
-        api.applyMetafieldsChange({
-          type: 'updateMetafield',
-          namespace: '$app:my_namespace',
-          key: 'name',
-          value,
-          valueType: 'single_line_text_field',
-        });
-      },
-    });
+    const textField = document.createElement('shopify-text-field');
+    textField.value = initialSettings.name;
+    textField.label = 'Name';
+    textField.name = 'name';
+    textField.onchange = (value) => {
+      textField.updateProps({value, error: undefined});
+      api.applyMetafieldsChange({
+        type: 'updateMetafield',
+        namespace: '$app:my_namespace',
+        key: 'name',
+        value,
+        valueType: 'single_line_text_field',
+      });
+    };
 
-    const section = root.createComponent(Section, {
-      heading: 'Settings',
-    });
-
-    const settings = root.createComponent(FunctionSettings, {
-      onError(errors) {
-        textField.updateProps({error: errors[0]?.message});
-      },
-    });
-
+    const section = document.createElement('shopify-section');
+    section.heading = 'Settings';
     section.append(textField);
+
+    const settings = document.createElement('shopify-function-settings');
+    settings.onerror = (errors) => {
+      textField.error = errors[0]?.message;
+    };
     settings.append(section);
+    root.append(settings);
   },
 );

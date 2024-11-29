@@ -2117,7 +2117,7 @@ export interface BadgeProps$1 {
   >;
 }
 
-declare const tagName$j = 'shopify-badge';
+declare const tagName$l = 'shopify-badge';
 export interface ReactProps$g
   extends Partial<BadgeProps$1>,
     Pick<BadgeProps$2, 'id'> {}
@@ -2190,12 +2190,12 @@ declare class Badge extends PreactCustomElement implements BadgeProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$j]: Badge;
+    [tagName$l]: Badge;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$j]: React.HTMLAttributes<HTMLElement> & ReactProps$g;
+    [tagName$l]: React.HTMLAttributes<HTMLElement> & ReactProps$g;
   }
 }
 
@@ -2262,7 +2262,7 @@ export interface BoxProps$1 {
   display: AlignedBox['display'];
 }
 
-declare const tagName$i = 'shopify-box';
+declare const tagName$k = 'shopify-box';
 export interface ReactProps$f
   extends Partial<BoxProps$1>,
     Pick<BoxProps$2, 'id'> {}
@@ -2299,12 +2299,12 @@ declare class Box extends BoxElement implements BoxProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$i]: Box;
+    [tagName$k]: Box;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$i]: React.HTMLAttributes<HTMLElement> & ReactProps$f;
+    [tagName$k]: React.HTMLAttributes<HTMLElement> & ReactProps$f;
   }
 }
 
@@ -2337,7 +2337,7 @@ export interface ButtonProps$1 extends ButtonBaseProps {
   icon: IconProps$1['type'];
 }
 
-declare const tagName$h = 'shopify-button';
+declare const tagName$j = 'shopify-button';
 export interface ReactProps$e
   extends Partial<ButtonProps$1>,
     Pick<ButtonProps$2, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
@@ -2377,12 +2377,12 @@ declare class Button extends PreactOverlayControl implements ButtonProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$h]: Button;
+    [tagName$j]: Button;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$h]: React.HTMLAttributes<HTMLElement> & ReactProps$e;
+    [tagName$j]: React.HTMLAttributes<HTMLElement> & ReactProps$e;
   }
 }
 
@@ -2424,19 +2424,14 @@ export type CheckboxProps$1 = PreactInputProps &
     >
   >;
 
-declare const tagName$g = 'shopify-checkbox';
+declare const tagName$i = 'shopify-checkbox';
 export interface ReactProps$d
   extends Partial<CheckboxProps$1>,
     Pick<CheckboxProps$2, 'onChange' | 'onInput'> {}
 
-// declare global {
-//   interface HTMLElementTagNameMap {
-//     [tagName$g]: Checkbox;
-//   }
-// }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$g]: React.HTMLAttributes<HTMLElement> & ReactProps$d;
+    [tagName$i]: React.HTMLAttributes<HTMLElement> & ReactProps$d;
   }
 }
 
@@ -2447,7 +2442,7 @@ export interface DividerProps$1 {
   color: Extract<DividerProps$2['color'], 'subdued' | 'base' | 'strong'>;
 }
 
-declare const tagName$f = 'shopify-divider';
+declare const tagName$h = 'shopify-divider';
 export interface ReactProps$c
   extends Partial<DividerProps$1>,
     Pick<DividerProps$2, 'id'> {}
@@ -2459,12 +2454,12 @@ declare class Divider extends PreactCustomElement implements DividerProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: Divider;
+    [tagName$h]: Divider;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$f]: React.HTMLAttributes<HTMLElement> & ReactProps$c;
+    [tagName$h]: React.HTMLAttributes<HTMLElement> & ReactProps$c;
   }
 }
 
@@ -2477,7 +2472,7 @@ export interface HeadingProps$1 {
   lineClamp: RequiredHeadingProps['lineClamp'];
 }
 
-declare const tagName$e = 'shopify-heading';
+declare const tagName$g = 'shopify-heading';
 export interface ReactProps$b
   extends Partial<HeadingProps$1>,
     Pick<HeadingProps$2, 'id'> {}
@@ -2490,18 +2485,18 @@ declare class Heading extends PreactCustomElement implements HeadingProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: Heading;
+    [tagName$g]: Heading;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$e]: React.HTMLAttributes<HTMLElement> & ReactProps$b;
+    [tagName$g]: React.HTMLAttributes<HTMLElement> & ReactProps$b;
   }
 }
 
 export type HeadingProps = ReactProps$b;
 
-declare const tagName$d = 'shopify-icon';
+declare const tagName$f = 'shopify-icon';
 export interface ReactProps$a
   extends Partial<IconProps$1>,
     Pick<IconProps$2, 'id'> {}
@@ -2515,12 +2510,12 @@ declare class Icon extends PreactCustomElement implements IconProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: Icon;
+    [tagName$f]: Icon;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$d]: React.HTMLAttributes<HTMLElement> & ReactProps$a;
+    [tagName$f]: React.HTMLAttributes<HTMLElement> & ReactProps$a;
   }
 }
 
@@ -2540,7 +2535,7 @@ export interface ImageProps$1 {
   aspectRatio: string;
 }
 
-declare const tagName$c = 'shopify-image';
+declare const tagName$e = 'shopify-image';
 export interface ReactProps$9
   extends Partial<ImageProps$1>,
     Pick<ImageProps$2, 'onError' | 'onLoad' | 'id'> {}
@@ -2560,12 +2555,12 @@ declare class Image extends PreactCustomElement implements ImageProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: Image;
+    [tagName$e]: Image;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$c]: React.HTMLAttributes<HTMLElement> & ReactProps$9;
+    [tagName$e]: React.HTMLAttributes<HTMLElement> & ReactProps$9;
   }
 }
 
@@ -2579,7 +2574,7 @@ export interface LinkProps$1 {
   target: RequiredLinkProps['target'];
 }
 
-declare const tagName$b = 'shopify-link';
+declare const tagName$d = 'shopify-link';
 export interface ReactProps$8
   extends Partial<LinkProps$1>,
     Pick<LinkProps$2, 'onClick' | 'id' | 'lang'> {}
@@ -2593,18 +2588,18 @@ declare class Link extends PreactCustomElement implements LinkProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: Link;
+    [tagName$d]: Link;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$b]: React.HTMLAttributes<HTMLElement> & ReactProps$8;
+    [tagName$d]: React.HTMLAttributes<HTMLElement> & ReactProps$8;
   }
 }
 
 export type LinkProps = ReactProps$8;
 
-declare const tagName$a = 'shopify-option';
+declare const tagName$c = 'shopify-option';
 export interface ReactProps$7 extends Partial<SharedProps$2> {}
 
 export interface SharedProps$2
@@ -2616,18 +2611,18 @@ declare class Option extends PreactCustomElement implements SharedProps$2 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: Option;
+    [tagName$c]: Option;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$a]: React.HTMLAttributes<HTMLElement> & ReactProps$7;
+    [tagName$c]: React.HTMLAttributes<HTMLElement> & ReactProps$7;
   }
 }
 
 export type OptionProps = ReactProps$7;
 
-declare const tagName$9 = 'shopify-option-group';
+declare const tagName$b = 'shopify-option-group';
 export interface ReactProps$6 extends Partial<SharedProps$1> {}
 
 export interface SharedProps$1
@@ -2639,12 +2634,12 @@ declare class OptionGroup extends PreactCustomElement implements SharedProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: OptionGroup;
+    [tagName$b]: OptionGroup;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$9]: React.HTMLAttributes<HTMLElement> & ReactProps$6;
+    [tagName$b]: React.HTMLAttributes<HTMLElement> & ReactProps$6;
   }
 }
 
@@ -2660,7 +2655,7 @@ export interface ParagraphProps$1
   color: Extract<ParagraphProps$2['color'], 'base' | 'subdued'>;
 }
 
-declare const tagName$8 = 'shopify-paragraph';
+declare const tagName$a = 'shopify-paragraph';
 export interface ReactProps$5
   extends Partial<ParagraphProps$1>,
     Pick<ParagraphProps$2, 'id'> {}
@@ -2678,12 +2673,12 @@ declare class Paragraph
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: Paragraph;
+    [tagName$a]: Paragraph;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$8]: React.HTMLAttributes<HTMLElement> & ReactProps$5;
+    [tagName$a]: React.HTMLAttributes<HTMLElement> & ReactProps$5;
   }
 }
 
@@ -2696,7 +2691,7 @@ export interface SectionProps$1 {
   padding: RequiredSectionProps['padding'];
 }
 
-declare const tagName$7 = 'shopify-section';
+declare const tagName$9 = 'shopify-section';
 export interface ReactProps$4
   extends Partial<SectionProps$1>,
     Pick<SectionProps$2, 'id'> {}
@@ -2711,12 +2706,12 @@ declare class Section extends PreactCustomElement implements SectionProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$7]: Section;
+    [tagName$9]: Section;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$7]: React.HTMLAttributes<HTMLElement> & ReactProps$4;
+    [tagName$9]: React.HTMLAttributes<HTMLElement> & ReactProps$4;
   }
 }
 
@@ -2727,7 +2722,7 @@ export type FieldReactProps = Pick<
   'onChange' | 'onFocus' | 'onInput' | 'onBlur'
 >;
 
-declare const tagName$6 = 'shopify-select';
+declare const tagName$8 = 'shopify-select';
 export interface ReactProps$3 extends Partial<SharedProps & FieldReactProps> {}
 
 export type PreactFieldProps<Autocomplete extends string = string> =
@@ -2775,14 +2770,9 @@ export interface SharedProps
     | 'required'
     | 'value'
   > {}
-// declare global {
-//   interface HTMLElementTagNameMap {
-//     [tagName$6]: Select;
-//   }
-// }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$6]: React.HTMLAttributes<HTMLElement> & ReactProps$3;
+    [tagName$8]: React.HTMLAttributes<HTMLElement> & ReactProps$3;
   }
 }
 
@@ -2798,7 +2788,7 @@ export interface SpinnerProps$1
   size: Extract<SpinnerProps$2['size'], 'large' | 'large-100' | 'base'>;
 }
 
-declare const tagName$5 = 'shopify-spinner';
+declare const tagName$7 = 'shopify-spinner';
 export interface ReactProps$2
   extends Partial<SpinnerProps$1>,
     Pick<SpinnerProps$2, 'id'> {}
@@ -2810,12 +2800,12 @@ declare class Spinner extends PreactCustomElement implements SpinnerProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$5]: Spinner;
+    [tagName$7]: Spinner;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$5]: React.HTMLAttributes<HTMLElement> & ReactProps$2;
+    [tagName$7]: React.HTMLAttributes<HTMLElement> & ReactProps$2;
   }
 }
 
@@ -2832,7 +2822,7 @@ export interface StackProps$1 extends BoxProps$1 {
   direction: MakeResponsive<AlignedStackProps['direction']>;
 }
 
-declare const tagName$4 = 'shopify-stack';
+declare const tagName$6 = 'shopify-stack';
 export interface ReactProps$1
   extends Partial<StackProps$1>,
     Pick<StackProps$2, 'id'> {}
@@ -2849,12 +2839,12 @@ declare class Stack extends BoxElement implements StackProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$4]: Stack;
+    [tagName$6]: Stack;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$4]: React.HTMLAttributes<HTMLElement> & ReactProps$1;
+    [tagName$6]: React.HTMLAttributes<HTMLElement> & ReactProps$1;
   }
 }
 
@@ -2877,7 +2867,7 @@ export interface TextProps$1
   >;
 }
 
-declare const tagName$3 = 'shopify-text';
+declare const tagName$5 = 'shopify-text';
 export interface ReactProps
   extends Partial<TextProps$1>,
     Pick<TextProps$2, 'id'> {}
@@ -2893,18 +2883,18 @@ declare class Text extends PreactCustomElement implements TextProps$1 {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$3]: Text;
+    [tagName$5]: Text;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$3]: React.HTMLAttributes<HTMLElement> & ReactProps;
+    [tagName$5]: React.HTMLAttributes<HTMLElement> & ReactProps;
   }
 }
 
 export type TextProps = ReactProps;
 
-declare const tagName$2 = 'shopify-admin-action';
+declare const tagName$4 = 'shopify-admin-action';
 export interface AdminActionProps$1 {
   /**
    * Sets the title of the Action container. If not provided, the name of the extension will be used. Titles longer than 40 characters will be truncated.
@@ -2931,18 +2921,18 @@ declare class AdminAction
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$2]: AdminAction;
+    [tagName$4]: AdminAction;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$2]: React.HTMLAttributes<HTMLElement> & AdminActionProps$1;
+    [tagName$4]: React.HTMLAttributes<HTMLElement> & AdminActionProps$1;
   }
 }
 
 export interface AdminActionProps extends Partial<AdminActionProps$1> {}
 
-declare const tagName$1 = 'shopify-admin-block';
+declare const tagName$3 = 'shopify-admin-block';
 export interface AdminBlockProps$1 {
   /**
    * The title to display at the top of the app block. If not provided, the name of the extension will be used. Titles longer than 40 characters will be truncated.
@@ -2961,18 +2951,18 @@ declare class AdminBlock
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$1]: AdminBlock;
+    [tagName$3]: AdminBlock;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName$1]: React.HTMLAttributes<HTMLElement> & AdminBlockProps$1;
+    [tagName$3]: React.HTMLAttributes<HTMLElement> & AdminBlockProps$1;
   }
 }
 
 export interface AdminBlockProps extends Partial<AdminBlockProps$1> {}
 
-declare const tagName = 'shopify-admin-print-action';
+declare const tagName$2 = 'shopify-admin-print-action';
 export interface AdminPrintActionProps$1 {
   /**
    * Sets the src URL of the preview and the document to print.
@@ -2990,14 +2980,144 @@ declare class AdminPrintAction
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: AdminPrintAction;
+    [tagName$2]: AdminPrintAction;
   }
 }
 declare module 'react' {
   interface IntrinsicElements {
-    [tagName]: React.HTMLAttributes<HTMLElement> & AdminPrintActionProps$1;
+    [tagName$2]: React.HTMLAttributes<HTMLElement> & AdminPrintActionProps$1;
   }
 }
 
 export interface AdminPrintActionProps
   extends Partial<AdminPrintActionProps$1> {}
+
+declare const tagName$1 = 'shopify-customer-segment-template';
+/**
+ * Reserved namespace and key for the customer standard metafield used in the template's query.
+ * More info - https://shopify.dev/docs/apps/custom-data/metafields/definitions/standard
+ */
+export type CustomerStandardMetafieldDependency = 'facts.birth_date';
+export interface CustomerSegmentTemplateProps$1 {
+  /**
+   * The localized title of the template.
+   */
+  title: string;
+  /**
+   * The localized description of the template. An array can be used for multiple paragraphs.
+   */
+  description: string | string[];
+  /**
+   * The code snippet to render in the template with syntax highlighting. The `query` is not validated in the template.
+   */
+  query: string;
+  /**
+   * The code snippet to insert in the segment editor. If missing, `query` will be used. The `queryToInsert` is not validated in the template.
+   */
+  queryToInsert?: string;
+  /**
+   * The list of customer standard metafields or custom metafields used in the template's query.
+   */
+  dependencies?: {
+    standardMetafields?: CustomerStandardMetafieldDependency[];
+    customMetafields?: string[];
+  };
+  /**
+   * ISO 8601-encoded date and time string. A "New" badge will be rendered for templates introduced in the last month.
+   */
+  createdOn?: string;
+}
+declare class CustomerSegmentTemplate
+  extends PreactCustomElement
+  implements CustomerSegmentTemplateProps$1
+{
+  constructor();
+  description: string | string[];
+  query: string;
+  queryToInsert?: string | undefined;
+  dependencies?:
+    | {
+        standardMetafields?: CustomerStandardMetafieldDependency[];
+        customMetafields?: string[];
+      }
+    | undefined;
+
+  createdOn?: string | undefined;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$1]: CustomerSegmentTemplate;
+  }
+}
+
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName$1]: React.HTMLAttributes<HTMLElement> &
+      CustomerSegmentTemplateProps$1;
+  }
+}
+
+export interface CustomerSegmentTemplateProps
+  extends Partial<CustomerSegmentTemplateProps$1> {}
+
+declare const tagName = 'shopify-function-settings';
+export interface FunctionSettingsProps$1 {
+  /**
+   * A unique identifier for the form.
+   */
+  id?: string;
+  /**
+   * An optional callback function that will be run by the admin when the user
+   * commits their changes in the admin-rendered part of the function settings
+   * experience. If this function returns a promise, the admin will wait for the
+   * promise to resolve before committing any changes to Shopify’s servers. If
+   * the promise rejects, the admin will abort the changes and display an error,
+   * using the `message` property of the error you reject with.
+   */
+  onSave?(): void | Promise<void>;
+  /**
+   * An optional callback function that will be run by the admin when the
+   * committing the changes to Shopify’s servers fails. The errors you receive
+   * in the `errors` argument will only be those that were caused by data your
+   * extension provided; network errors and user errors that are out of your
+   * control will not be reported here.
+   *
+   * In the `onError` callback, you should update your extension’s UI to
+   * highlight the fields that caused the errors, and display the error messages
+   * to the user.
+   */
+  onError?(errors: FunctionSettingsError[]): void;
+}
+export interface FunctionSettingsError {
+  /**
+   * A unique identifier describing the “class” of error. These will match
+   * the GraphQL error codes as closely as possible. For example the enums
+   * returned by the `metafieldsSet` mutation
+   *
+   * @see https://shopify.dev/docs/api/admin-graphql/latest/enums/MetafieldsSetUserErrorCode
+   */
+  code: string;
+  /**
+   * A translated message describing the error.
+   */
+  message: string;
+}
+declare class FunctionSettings
+  extends PreactCustomElement
+  implements FunctionSettingsProps$1
+{
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName]: FunctionSettings;
+  }
+}
+declare module 'react' {
+  interface IntrinsicElements {
+    [tagName]: React.HTMLAttributes<HTMLElement> & FunctionSettingsProps$1;
+  }
+}
+
+export interface FunctionSettingsProps
+  extends Partial<FunctionSettingsProps$1> {}

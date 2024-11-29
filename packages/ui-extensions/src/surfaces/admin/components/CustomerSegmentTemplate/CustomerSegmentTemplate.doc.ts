@@ -24,14 +24,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Simple CustomerSegmentTemplate implementation',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/CustomerSegmentTemplate/examples/customersegmenttemplate.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/customersegmenttemplate.example.ts',
           language: 'js',
+        },
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/CustomerSegmentTemplate/examples/customersegmenttemplate.example.tsx',
+          language: 'tsx',
         },
       ],
     },

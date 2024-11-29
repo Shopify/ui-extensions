@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Simple function settings form implementation',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/FunctionSettings/examples/basic-functionsettings.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/basic-functionsettings.example.ts',
           language: 'js',
+        },
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/FunctionSettings/examples/basic-functionsettings.example.tsx',
+          language: 'tsx',
         },
       ],
     },

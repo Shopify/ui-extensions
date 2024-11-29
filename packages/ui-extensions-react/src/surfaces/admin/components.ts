@@ -22,6 +22,8 @@ import type {
   AdminActionProps,
   AdminBlockProps,
   AdminPrintActionProps,
+  CustomerSegmentTemplateProps,
+  FunctionSettingsProps,
 } from './props';
 
 export const Badge = createRemoteComponent<
@@ -109,3 +111,11 @@ export const AdminPrintAction = createRemoteComponent<
   AdminPrintActionProps,
   HTMLElementTagNameMap['shopify-admin-print-action']
 >('shopify-admin-print-action');
+export const CustomerSegmentTemplate = createRemoteComponent<
+  CustomerSegmentTemplateProps,
+  HTMLElementTagNameMap['shopify-customer-segment-template']
+>('shopify-customer-segment-template');
+export const FunctionSettings = createRemoteComponent<
+  FunctionSettingsProps,
+  HTMLElementTagNameMap['shopify-function-settings']
+>('shopify-function-settings');
