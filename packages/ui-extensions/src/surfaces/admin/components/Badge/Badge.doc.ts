@@ -2,7 +2,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Badge',
-  description: 'Badge is used to ...',
+  description:
+    'Use this component to inform merchants of the status of an object or of an action that’s been taken.',
   requires: '',
   thumbnail: 'badge-thumbnail.png',
   isVisualComponent: true,
@@ -10,17 +11,16 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'Badge',
-      description:
-        'Use this component to inform merchants of the status of an object or of an action that’s been taken.',
+      description: '',
       type: 'Badge',
     },
   ],
   category: 'Components',
-  subCategory: 'Feedback',
+  subCategory: 'Titles and text',
   defaultExample: {
     image: 'badge-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple Badge example',
       tabs: [
         {
           title: 'JS',

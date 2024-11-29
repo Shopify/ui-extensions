@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Components',
-  subCategory: 'Feedback',
+  subCategory: 'Structure',
   defaultExample: {
     image: 'divider-default.png',
     codeblock: {

@@ -1,5 +1,7 @@
 import {extension} from '@shopify/ui-extensions/admin';
 
-extension('Playground', (root) => {
-  root.innerHTML = '<shopify-heading>Headings are cool</shopify-heading>';
+export default extension('Playground', (root) => {
+  const heading = document.createElement('shopify-heading');
+  heading.textContent = 'Headings are cool';
+  root.appendChild(heading);
 });

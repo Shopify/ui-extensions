@@ -1,11 +1,10 @@
 import React from 'react';
 import {
-  render,
+  reactExtension,
   Divider,
   Stack,
+  reactExtension,
 } from '@shopify/ui-extensions-react/admin';
-
-render('Playground', () => <App />);
 
 function App() {
   return (
@@ -16,3 +15,8 @@ function App() {
     </Stack>
   );
 }
+
+export default reactExtension(
+  'Playground',
+  () => <App />,
+);

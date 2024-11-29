@@ -16,11 +16,11 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Components',
-  subCategory: 'Feedback',
+  subCategory: 'Structure',
   defaultExample: {
     image: 'box-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Use Box to build your layout',
       tabs: [
         {
           title: 'JS',

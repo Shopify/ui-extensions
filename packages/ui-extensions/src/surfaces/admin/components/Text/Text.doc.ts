@@ -16,11 +16,11 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Components',
-  subCategory: 'Feedback',
+  subCategory: 'Titles and text',
   defaultExample: {
     image: 'text-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple Text example',
       tabs: [
         {
           title: 'JS',
@@ -36,7 +36,13 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Heading',
+      url: '/docs/api/admin-extensions/components/titles-and-text/heading',
+    },
+  ],
 };
 
 export default data;

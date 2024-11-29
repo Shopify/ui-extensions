@@ -2,7 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Image',
-  description: 'Image is used to ...',
+  description: 'Use this when you want to display an image.',
   requires: '',
   thumbnail: 'image-thumbnail.png',
   isVisualComponent: true,
@@ -15,11 +15,11 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Components',
-  subCategory: 'Feedback',
+  subCategory: 'Media',
   defaultExample: {
     image: 'image-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple Image example',
       tabs: [
         {
           title: 'JS',
@@ -35,7 +35,13 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Icon',
+      url: '/docs/api/admin-extensions/components/media/icon',
+    },
+  ],
 };
 
 export default data;

@@ -1,6 +1,9 @@
 import {extension} from '@shopify/ui-extensions/admin';
 
 export default extension('Playground', (root) => {
-  root.innerHTML =
-    '<shopify-link href="shopify://admin/orders">Shop\'s orders</shopify-link>';
+  const link = document.createElement('shopify-link');
+  link.href = 'shopify://admin/orders';
+  link.textContent = "Shop's orders";
+
+  root.appendChild(link);
 });

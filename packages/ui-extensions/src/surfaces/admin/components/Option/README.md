@@ -1,7 +1,6 @@
-# Select
+# Option
 
-Selects let users choose one option from an options menu. Consider select
-when you have 4 or more options, to avoid cluttering the interface.
+Option provides the choices users can choose from in a Select menu.
 
 ## Examples
 

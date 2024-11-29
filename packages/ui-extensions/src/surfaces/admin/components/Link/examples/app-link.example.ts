@@ -1,6 +1,9 @@
 import {extension} from '@shopify/ui-extensions/admin';
 
 export default extension('Playground', (root) => {
-  root.innerHTML =
-    '<shopify-link href="app://baz">Link to app path</shopify-link>';
+  const link = document.createElement('shopify-link');
+  link.href = 'app://baz';
+  link.textContent = 'Link to app path';
+
+  root.appendChild(link);
 });

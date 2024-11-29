@@ -45,5 +45,12 @@ export default extension('Playground', (root) => {
     optionElem.textContent = opt.label;
     return optionElem;
   });
-  select.append(...options);
+  select.append(
+    selectOptions.map((opt) => {
+      const optionElem = document.createElement('shopify-option');
+      optionElem.value = opt.value;
+      optionElem.textContent = opt.label;
+      return optionElem;
+    }),
+  );
 });

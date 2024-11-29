@@ -1,11 +1,9 @@
 import React from 'react';
 import {
-  render,
+  reactExtension,
   Option,
   Select,
 } from '@shopify/ui-extensions-react/admin';
-
-render('Playground', () => <App />);
 
 const options = [
   {
@@ -44,6 +42,7 @@ function App() {
     >
       {options.map((option) => (
         <Option
+          key={option.value}
           value={option.value}
           label={option.label}
         />
@@ -51,3 +50,8 @@ function App() {
     </Select>
   );
 }
+
+export default reactExtension(
+  'Playground',
+  () => <App />,
+);

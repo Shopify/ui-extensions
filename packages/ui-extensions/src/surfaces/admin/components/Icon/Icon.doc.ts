@@ -16,11 +16,11 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Components',
-  subCategory: 'Feedback',
+  subCategory: 'Media',
   defaultExample: {
     image: 'icon-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Simple Icon example',
       tabs: [
         {
           title: 'JS',
@@ -35,8 +35,13 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Image',
+      url: '/docs/api/admin-extensions/components/media/image',
+    },
+  ],
 };
 
 export default data;

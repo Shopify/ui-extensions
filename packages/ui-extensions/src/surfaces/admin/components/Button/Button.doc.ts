@@ -2,7 +2,8 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Button',
-  description: 'Button is used to ...',
+  description:
+    'Use this component when you want to provide users the ability to perform specific actions, like saving data.',
   requires: '',
   thumbnail: 'button-thumbnail.png',
   isVisualComponent: true,
@@ -15,11 +16,11 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'Components',
-  subCategory: 'Feedback',
+  subCategory: 'Actions',
   defaultExample: {
     image: 'button-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Add a simple button to your app.',
       tabs: [
         {
           title: 'JS',
@@ -34,8 +35,18 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Pressable',
+      url: '/docs/api/admin-extensions/components/actions/pressable',
+    },
+    {
+      type: 'component',
+      name: 'Link',
+      url: '/docs/api/admin-extensions/components/actions/link',
+    },
+  ],
 };
 
 export default data;
