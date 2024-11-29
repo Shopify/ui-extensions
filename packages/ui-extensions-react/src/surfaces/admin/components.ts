@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference types="@shopify/ui-extensions/admin" />
 import {createRemoteComponent} from './components/util';
@@ -40,8 +42,6 @@ export const Button = createRemoteComponent<
 >('shopify-button');
 export const Checkbox = createRemoteComponent<
   CheckboxProps,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   HTMLElementTagNameMap['shopify-checkbox']
 >('shopify-checkbox');
 export const Divider = createRemoteComponent<
@@ -80,11 +80,8 @@ export const Section = createRemoteComponent<
   SectionProps,
   HTMLElementTagNameMap['shopify-section']
 >('shopify-section');
-
 export const Select = createRemoteComponent<
   SelectProps,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   HTMLElementTagNameMap['shopify-select']
 >('shopify-select');
 export const Spinner = createRemoteComponent<
