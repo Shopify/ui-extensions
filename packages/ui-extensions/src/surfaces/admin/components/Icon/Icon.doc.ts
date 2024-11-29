@@ -10,14 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'IconProps',
+      title: 'Icon',
       description: '',
-      type: 'IconProps',
-    },
-    {
-      title: 'IconName',
-      description: 'List of available Icons for the Icon component',
-      type: 'IconName',
+      type: 'Icon',
     },
   ],
   category: 'Components',
@@ -28,34 +23,18 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Simple Icon example',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Icon/examples/basic-icon.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/basic-icon.example.ts',
           language: 'js',
         },
-      ],
-    },
-  },
-  subSections: [
-    {
-      type: 'Generic',
-      title: 'Available Icons',
-      anchorLink: 'availableIcons',
-      sectionContent:
-        'The available Icons are a 1:1 map of what Icons are available in Polaris. You can find the full list of Icons in the [Polaris Icons documentation](https://polaris.shopify.com/icons).',
-      sectionCard: [
         {
-          type: 'information',
-          name: 'Polaris Icons',
-          url: 'https://polaris.shopify.com/icons',
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Icon/examples/basic-icon.example.tsx',
+          language: 'tsx',
         },
       ],
     },
-  ],
+  },
   related: [
     {
       type: 'component',

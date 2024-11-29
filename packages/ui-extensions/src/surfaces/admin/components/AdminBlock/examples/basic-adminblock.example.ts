@@ -1,10 +1,8 @@
-import {extension, AdminBlock, Button} from '@shopify/ui-extensions/admin';
+import {extension} from '@shopify/ui-extensions/admin';
 
 export default extension('Playground', (root) => {
-  const adminBlock = root.createComponent(AdminBlock, {
-    title: 'My App Block',
-  }, '5 items active');
-
+  const adminBlock = document.createElement('shopify-admin-block');
+  adminBlock.title = 'My App Block';
+  adminBlock.textContent = '5 items active';
   root.appendChild(adminBlock);
-  root.mount();
 });

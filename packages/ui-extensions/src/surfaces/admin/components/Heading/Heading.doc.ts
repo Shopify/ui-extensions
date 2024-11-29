@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'HeadingProps',
+      title: 'Heading',
       description: '',
-      type: 'HeadingProps',
+      type: 'Heading',
     },
   ],
   category: 'Components',
@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Simple Heading example',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Heading/examples/basic-heading.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/basic-heading.example.ts',
           language: 'js',
+        },
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Heading/examples/basic-heading.example.tsx',
+          language: 'tsx',
         },
       ],
     },
@@ -41,11 +41,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'component',
       name: 'Text',
       url: '/docs/api/admin-extensions/components/titles-and-text/text',
-    },
-    {
-      type: 'component',
-      name: 'HeadingGroup',
-      url: '/docs/api/admin-extensions/components/titles-and-text/headinggroup',
     },
   ],
 };

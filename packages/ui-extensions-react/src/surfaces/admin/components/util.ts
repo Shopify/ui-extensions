@@ -6,8 +6,21 @@ import {
   forwardRef,
 } from 'react';
 
-export const createRemoteComponent = (name: string) =>
-  (shopify as any)._createReactRemoteComponent(
+// Add `children` prop, but only if it wasn't already defined:
+type PropsWithChildren<T> = T extends {children: React.ReactNode}
+  ? T
+  : React.PropsWithChildren<T>;
+
+export function createRemoteComponent<
+  Props extends object,
+  ElementType extends HTMLElement,
+>(
+  tagName: string,
+): React.ForwardRefExoticComponent<
+  React.PropsWithoutRef<PropsWithChildren<Props>> &
+    React.RefAttributes<ElementType>
+> {
+  return (shopify as any)._createReactRemoteComponent(
     {
       createElement,
       useRef,
@@ -15,5 +28,6 @@ export const createRemoteComponent = (name: string) =>
       useCallback,
       forwardRef,
     },
-    name,
-  );
+    tagName,
+  ) as any;
+}

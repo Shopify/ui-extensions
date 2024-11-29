@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'ButtonProps',
+      title: 'Button',
       description: '',
-      type: 'ButtonProps',
+      type: 'Button',
     },
   ],
   category: 'Components',
@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Add a simple button to your app.',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Button/examples/basic-button.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/basic-button.example.ts',
           language: 'js',
+        },
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Button/examples/basic-button.example.tsx',
+          language: 'tsx',
         },
       ],
     },

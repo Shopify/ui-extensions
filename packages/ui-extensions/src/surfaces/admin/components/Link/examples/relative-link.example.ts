@@ -1,17 +1,9 @@
-import {
-  extension,
-  Link,
-} from '@shopify/ui-extensions/admin';
+import {extension} from '@shopify/ui-extensions/admin';
 
-export default extension(
-  'Playground',
-  (root) => {
-    const link = root.createComponent(
-      Link,
-      {href: '/baz'},
-      'Link relative to current path',
-    );
+export default extension('Playground', (root) => {
+  const link = document.createElement('shopify-link');
+  link.href = '/baz';
+  link.textContent = 'Link relative to current path';
 
-    root.appendChild(link);
-  },
-);
+  root.appendChild(link);
+});

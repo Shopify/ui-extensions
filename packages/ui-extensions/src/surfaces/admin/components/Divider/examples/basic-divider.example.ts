@@ -1,17 +1,7 @@
-import {
-    extension,
-    Divider,
-  } from '@shopify/ui-extensions/admin';
+import {extension} from '@shopify/ui-extensions/admin';
 
-  export default extension(
-    'Playground',
-    (root) => {
-      const divier = root.createComponent(Divider);
-      const firstText = root.createText('First Text');
-      const secondText = root.createText('Second Text');
+export default extension('Playground', (root) => {
+  const divider = document.createElement('shopify-divider');
 
-      root.appendChild(firstText);
-      root.appendChild(divier);
-      root.appendChild(secondText);
-    },
-  );
+  root.append('First Text', divider, 'Second Text');
+});

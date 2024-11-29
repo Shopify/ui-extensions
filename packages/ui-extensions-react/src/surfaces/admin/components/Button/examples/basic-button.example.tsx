@@ -1,6 +1,7 @@
-import {render, Button} from '@shopify/ui-extensions-react/admin';
-
-render('Playground', () => <App />);
+import {
+  reactExtension,
+  Button,
+} from '@shopify/ui-extensions-react/admin';
 
 function App() {
   return (
@@ -13,3 +14,8 @@ function App() {
     </Button>
   );
 }
+
+export default reactExtension(
+  'Playground',
+  () => <App />,
+);

@@ -1,16 +1,16 @@
 import React from 'react';
 import {
-  render,
+  reactExtension,
   Link,
 } from '@shopify/ui-extensions-react/admin';
 
-
-render('Playground', () => <App />);
-
 function App() {
   return (
-    <Link href="app:bar">
-      Link to app path
-    </Link>
+    <Link href="app:bar">Link to app path</Link>
   );
 }
+
+export default reactExtension(
+  'Playground',
+  () => <App />,
+);

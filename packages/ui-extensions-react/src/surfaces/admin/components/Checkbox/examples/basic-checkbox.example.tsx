@@ -1,6 +1,9 @@
-import {render, Checkbox} from '@shopify/ui-extensions-react/admin';
+import {
+  reactExtension,
+  Checkbox,
+} from '@shopify/ui-extensions-react/admin';
 
-render('Playground', () => <App />);
+reactExtension('Playground', () => <App />);
 
 function App() {
   return (
