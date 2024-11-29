@@ -2647,11 +2647,6 @@ declare class Badge extends PreactCustomElement implements BadgeProps$1 {
   accessor tone: BadgeProps$1['tone'];
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$l]: Badge;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -2758,11 +2753,6 @@ declare class BoxElement extends PreactCustomElement implements BoxProps$1 {
 declare class Box extends BoxElement implements BoxProps$1 {
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$k]: Box;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -2838,11 +2828,6 @@ declare class Button extends PreactOverlayControl implements ButtonProps$1 {
   accessor accessibilityLabel: ButtonProps$1['accessibilityLabel'];
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$j]: Button;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -2907,11 +2892,6 @@ declare class Checkbox extends PreactInputElement implements CheckboxProps$1 {
   accessor required: CheckboxProps$1['required'];
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$i]: Checkbox;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -2936,11 +2916,6 @@ declare class Divider extends PreactCustomElement implements DividerProps$1 {
   accessor direction: DividerProps$1['direction'];
   accessor color: DividerProps$1['color'];
   constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$h]: Divider;
-  }
 }
 declare module 'react' {
   namespace JSX {
@@ -2970,11 +2945,6 @@ declare class Heading extends PreactCustomElement implements HeadingProps$1 {
   accessor accessibilityVisibility: HeadingProps$1['accessibilityVisibility'];
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$g]: Heading;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -2996,11 +2966,6 @@ declare class Icon extends PreactCustomElement implements IconProps$1 {
   accessor type: IconProps$1['type'];
   accessor size: IconProps$1['size'];
   constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$f]: Icon;
-  }
 }
 declare module 'react' {
   namespace JSX {
@@ -3044,11 +3009,6 @@ declare class Image extends PreactCustomElement implements ImageProps$1 {
   accessor onerror: OnErrorEventHandler;
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$e]: Image;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -3079,11 +3039,6 @@ declare class Link extends PreactCustomElement implements LinkProps$1 {
   accessor target: LinkProps$1['target'];
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$d]: Link;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -3104,11 +3059,6 @@ declare class Option extends PreactCustomElement implements SharedProps$2 {
   accessor disabled: SharedProps$2['disabled'];
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$c]: Option;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -3128,11 +3078,6 @@ declare class OptionGroup extends PreactCustomElement implements SharedProps$1 {
   accessor disabled: SharedProps$1['disabled'];
   accessor label: SharedProps$1['label'];
   constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$b]: OptionGroup;
-  }
 }
 declare module 'react' {
   namespace JSX {
@@ -3170,11 +3115,6 @@ declare class Paragraph
   accessor accessibilityVisibility: ParagraphProps$1['accessibilityVisibility'];
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$a]: Paragraph;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -3204,11 +3144,6 @@ declare class Section extends PreactCustomElement implements SectionProps$1 {
   accessor accessibilityLabel: SectionProps$1['accessibilityLabel'];
   accessor heading: SectionProps$1['heading'];
   accessor padding: SectionProps$1['padding'];
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$9]: Section;
-  }
 }
 declare module 'react' {
   namespace JSX {
@@ -3280,11 +3215,6 @@ declare class Select extends PreactFieldElement implements SharedProps {
   disconnectedCallback(): void;
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$8]: Select;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -3314,11 +3244,6 @@ declare class Spinner extends PreactCustomElement implements SpinnerProps$1 {
   accessor accessibilityLabel: string;
   accessor size: SpinnerProps$1['size'];
   constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$7]: Spinner;
-  }
 }
 declare module 'react' {
   namespace JSX {
@@ -3355,11 +3280,6 @@ declare class Stack extends BoxElement implements StackProps$1 {
   accessor gap: StackProps$1['gap'];
   accessor rowGap: StackProps$1['rowGap'];
   accessor columnGap: StackProps$1['columnGap'];
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$6]: Stack;
-  }
 }
 declare module 'react' {
   namespace JSX {
@@ -3402,11 +3322,6 @@ declare class Text extends PreactCustomElement implements TextProps$1 {
   accessor accessibilityVisibility: TextProps$1['accessibilityVisibility'];
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$5]: Text;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -3442,11 +3357,6 @@ declare class AdminAction
 {
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$4]: AdminAction;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -3474,11 +3384,6 @@ declare class AdminBlock
 {
   constructor();
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$3]: AdminBlock;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -3504,11 +3409,6 @@ declare class AdminPrintAction
 {
   src: string;
   constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$2]: AdminPrintAction;
-  }
 }
 declare module 'react' {
   namespace JSX {
@@ -3573,11 +3473,6 @@ declare class CustomerSegmentTemplate
 
   createdOn?: string | undefined;
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$1]: CustomerSegmentTemplate;
-  }
-}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -3637,11 +3532,6 @@ declare class FunctionSettings
   implements FunctionSettingsProps$1
 {
   constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName]: FunctionSettings;
-  }
 }
 declare module 'react' {
   namespace JSX {
