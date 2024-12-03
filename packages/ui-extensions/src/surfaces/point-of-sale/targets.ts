@@ -1,4 +1,4 @@
-import {StandardApi} from './api/standard/standard-api';
+import {StandardApi} from './render/api/standard/standard-api';
 import {
   // eslint-disable-next-line import/no-deprecated
   SmartGridApi,
@@ -9,10 +9,10 @@ import {
 import {RenderExtension} from './extension';
 import type {Components} from './shared';
 import {AnyComponentBuilder} from '../../shared';
-import {ActionApi} from './api/action-api/action-api';
-import {ProductApi} from './api/product-api/product-api';
-import {ActionTargetApi} from './api/action-target-api/action-target-api';
-import {DraftOrderApi} from './api/draft-order-api/draft-order-api';
+import {ActionApi} from './render/api/action-api/action-api';
+import {ProductApi} from './render/api/product-api/product-api';
+import {ActionTargetApi} from './render/api/action-target-api/action-target-api';
+import {DraftOrderApi} from './render/api/draft-order-api/draft-order-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
 type ActionComponents = AnyComponentBuilder<

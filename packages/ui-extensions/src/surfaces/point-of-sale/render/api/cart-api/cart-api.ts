@@ -6,7 +6,7 @@ import type {
   CustomSale,
   SetLineItemDiscountInput,
   SetLineItemPropertiesInput,
-} from '../types/cart';
+} from '../../../types/cart';
 
 /**
  * Access and modify the merchant’s current cart.

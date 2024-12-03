@@ -1,4 +1,4 @@
-import type {Session} from '../types/session';
+import type {Session} from '../../../types/session';
 
 export interface SessionApiContent {
   /**

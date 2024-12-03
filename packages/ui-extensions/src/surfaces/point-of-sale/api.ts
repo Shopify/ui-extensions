@@ -4,47 +4,56 @@ export type {
   CartDiscountType,
   CartApiContent,
   LineItemDiscountType,
-} from './api/cart-api/cart-api';
+} from './render/api/cart-api/cart-api';
 
-export type {ActionApi, ActionApiContent} from './api/action-api/action-api';
+export type {
+  ActionApi,
+  ActionApiContent,
+} from './render/api/action-api/action-api';
 
-export type {StandardApi} from './api/standard/standard-api';
-export type {ActionTargetApi} from './api/action-target-api/action-target-api';
+export type {StandardApi} from './render/api/standard/standard-api';
+export type {ActionTargetApi} from './render/api/action-target-api/action-target-api';
 
 export type {
   ConnectivityStateSeverity,
   ConnectivityState,
   ConnectivityApiContent,
   ConnectivityApi,
-} from './api/connectivity-api/connectivity-api';
+} from './render/api/connectivity-api/connectivity-api';
 
 export type {
   CustomerApi,
   CustomerApiContent,
-} from './api/customer-api/customer-api';
+} from './render/api/customer-api/customer-api';
 
-export type {DeviceApi, DeviceApiContent} from './api/device-api/device-api';
+export type {
+  DeviceApi,
+  DeviceApiContent,
+} from './render/api/device-api/device-api';
 
-export type {LocaleApi, LocaleApiContent} from './api/locale-api/locale-api';
+export type {
+  LocaleApi,
+  LocaleApiContent,
+} from './render/api/locale-api/locale-api';
 
 export type {
   NavigationApiContent,
   NavigationApi,
-} from './api/navigation-api/navigation-api';
+} from './render/api/navigation-api/navigation-api';
 
-export type {OrderApiContent, OrderApi} from './api/order-api/order-api';
+export type {OrderApiContent, OrderApi} from './render/api/order-api/order-api';
 
 export type {
   ProductApi,
   ProductApiContent,
-} from './api/product-api/product-api';
+} from './render/api/product-api/product-api';
 
 export type {
   DraftOrderApi,
   DraftOrderApiContent,
-} from './api/draft-order-api/draft-order-api';
+} from './render/api/draft-order-api/draft-order-api';
 
-export type {PrintApi, PrintApiContent} from './api/print-api/print-api';
+export type {PrintApi, PrintApiContent} from './render/api/print-api/print-api';
 
 export type {
   PaginationParams,
@@ -52,30 +61,30 @@ export type {
   ProductSearchParams,
   ProductSearchApi,
   ProductSearchApiContent,
-} from './api/product-search-api/product-search-api';
+} from './render/api/product-search-api/product-search-api';
 
 export type {
   ScannerSource,
   ScannerSubscriptionResult,
   ScannerApi,
   ScannerApiContent,
-} from './api/scanner-api/scanner-api';
+} from './render/api/scanner-api/scanner-api';
 
 export type {
   SessionApiContent,
   SessionApi,
-} from './api/session-api/session-api';
+} from './render/api/session-api/session-api';
 
 export type {
   SmartGridApi,
   SmartGridApiContent,
-} from './api/smartgrid-api/smartgrid-api';
+} from './render/api/smartgrid-api/smartgrid-api';
 
 export type {
   ShowToastOptions,
   ToastApiContent,
   ToastApi,
-} from './api/toast-api/toast-api';
+} from './render/api/toast-api/toast-api';
 
 export type {
   Cart,
@@ -87,11 +96,11 @@ export type {
   LineItemDiscount,
   CustomSale,
   Address,
-} from './api/types/cart';
+} from './types/cart';
 
-export type {MultipleResourceResult} from './api/types/multiple-resource-result';
+export type {MultipleResourceResult} from './types/multiple-resource-result';
 
-export type {PaginatedResult} from './api/types/paginated-result';
+export type {PaginatedResult} from './types/paginated-result';
 
 export type {
   Product,
@@ -99,8 +108,8 @@ export type {
   ProductVariantOption,
   ProductVariantInventoryPolicy,
   ProductOption,
-} from './api/types/product';
+} from './types/product';
 
-export type {CountryCode} from './api/types/country-code';
+export type {CountryCode} from './types/country-code';
 
-export type {Session} from './api/types/session';
+export type {Session} from './types/session';

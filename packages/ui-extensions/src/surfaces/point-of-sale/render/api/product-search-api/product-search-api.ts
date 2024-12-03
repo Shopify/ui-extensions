@@ -1,6 +1,6 @@
-import type {MultipleResourceResult} from '../types/multiple-resource-result';
-import type {PaginatedResult} from '../types/paginated-result';
-import type {Product, ProductVariant} from '../types/product';
+import type {MultipleResourceResult} from '../../../types/multiple-resource-result';
+import type {PaginatedResult} from '../../../types/paginated-result';
+import type {Product, ProductVariant} from '../../../types/product';
 
 export type ProductSortType =
   | 'RECENTLY_ADDED'
