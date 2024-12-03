@@ -174,47 +174,6 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'GenericAccordion',
-      title: 'Picking Resources',
-      sectionContent:
-        'Use the Resource Picker and Picker APIs to allow users to select resources for your extension to use. These APIs are available for use in [Block Extensions](/docs/api/admin-extensions/unstable/api/block-extension-api).',
-      anchorLink: 'picking-resources',
-      accordionContent: [
-        {
-          title: 'Resource Picker',
-          description:
-            'Use the `resourcePicker` API to display a search-based interface to help users find and select one or more products, collections, or product variants, and then return the selected resources to your extension. Both the app and the user must have the necessary permissions to access the resources selected.',
-          image: 'resource-picker.png',
-          codeblock: {
-            title: 'resourcePicker',
-            tabs: [
-              {
-                title: 'Selecting a product',
-                language: 'tsx',
-                code: './examples/resource-picker-product.jsx',
-              },
-            ],
-          },
-        },
-        {
-          title: 'Picker',
-          description:
-            'Use the `picker` API to display a search-based interface to help users find and select one or more custom data types that you provide, such as product reviews, email templates, or subscription options.',
-          image: 'picker.png',
-          codeblock: {
-            title: 'picker',
-            tabs: [
-              {
-                title: 'Selecting an email template',
-                language: 'tsx',
-                code: './examples/picker-email-template.jsx',
-              },
-            ],
-          },
-        },
-      ],
-    },
-    {
-      type: 'GenericAccordion',
       title: 'Custom Protocols',
       sectionContent:
         'Custom protocols make it easier to navigate to common locations, and construct URLs.',
