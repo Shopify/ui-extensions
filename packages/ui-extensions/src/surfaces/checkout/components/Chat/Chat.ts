@@ -4,22 +4,16 @@ import type {IdProps} from '../shared';
 
 export interface ChatProps extends IdProps {
   /**
-   * The URL to embed within the Chat component iframe.
-   */
-  src?: string;
-
-  /**
    * Adjust the inline size.
    *
    * Checkout imposes sizing restrictions for the component, therefore the size set
    * may not be the actual size rendered.
    *
-   * - `number`: size in pixels.
-   * - `` `${number}%` ``: size in percentages of the available space.
+   * `number`: size in pixels.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+   * Learn more about [inline size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
    */
-  inlineSize?: number | `${number}%`;
+  inlineSize?: number;
 
   /**
    * Adjust the block size.
@@ -27,12 +21,11 @@ export interface ChatProps extends IdProps {
    * Checkout imposes sizing restrictions for the component, therefore the size set
    * may not be the actual size rendered.
    *
-   * - `number`: size in pixels.
-   * - `` `${number}%` ``: size in percentages of the available space.
+   * `number`: size in pixels.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+   * Learn more about [block size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
    */
-  blockSize?: number | `${number}%`;
+  blockSize?: number;
 
   /**
    * A label that describes the purpose or contents of the component. When set,
@@ -57,29 +50,32 @@ interface MessageEvent {
   /**
    * The data sent by the message emitter (the embedded page).
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/data
+   * Learn more about [MessageEvent data on MDN](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/data).
    */
   data?: any;
 
   /**
    * A string representing the origin of the message emitter (the embedded page).
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/origin
+   * Learn more about [MessageEvent origin on MDN](https://developer.mozilla.org/en-US/docs/Web/API/MessageEvent/origin).
    */
   origin: string;
 }
 
-interface ReadyEvent {
+export interface ReadyEvent {
   /**
    * A function to send messages to the embedded page.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/postMessage
+   * Learn more about [postMessage on MDN](https://developer.mozilla.org/en-US/docs/Web/API/MessagePort/postMessage).
    */
-  // eslint-disable-next-line no-warning-comments
-  postMessage: (message: any /* TODO , transfer?: Transferable[] */) => void;
+  postMessage: (message: any) => void;
 }
 
 /**
+<<<<<<< HEAD
  * Use the Chat component to create real-time chat applications.
+=======
+ * Use Chat to create live chat applications.
+>>>>>>> cc96bc544 ([checkout] Update to 8a702e0c1ea83ccac07e2f79c060d23fd68038f9)
  */
 export const Chat = createRemoteComponent<'Chat', ChatProps>('Chat');

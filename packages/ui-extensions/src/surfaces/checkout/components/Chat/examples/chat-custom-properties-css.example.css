@@ -1,0 +1,11 @@
+.activator {
+  inline-size: 100%;
+  max-inline-size: var(--shopify-checkout-chat-minimized-max-inline-size);
+}
+
+.dialog {
+  inline-size: min(
+    100%,
+    var(--shopify-checkout-chat-maximized-max-inline-size)
+  );
+}

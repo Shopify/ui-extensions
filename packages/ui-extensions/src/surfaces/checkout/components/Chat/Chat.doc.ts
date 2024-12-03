@@ -2,6 +2,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Chat',
+<<<<<<< HEAD
   description: `
 Use the Chat component to create real-time chat applications.
 
@@ -10,6 +11,12 @@ Use the Chat component to create real-time chat applications.
   thumbnail: 'chat-thumbnail.png',
   requires:
     'access to the **Chat in checkout extensions** scope. Request access in the Partner Dashboard.',
+=======
+  description: 'Use Chat to create live chat applications.',
+  thumbnail: 'chat-thumbnail.png',
+  requires:
+    'configuration of the [preloads](/docs/api/checkout-ui-extensions/latest/configuration#preloads) value in the extensions configuration file.',
+>>>>>>> cc96bc544 ([checkout] Update to 8a702e0c1ea83ccac07e2f79c060d23fd68038f9)
   isVisualComponent: true,
   type: 'component',
   definitions: [
@@ -21,7 +28,11 @@ Use the Chat component to create real-time chat applications.
     {
       title: 'App Bridge for checkout',
       description: `
+<<<<<<< HEAD
 The App Bridge script for checkout provides APIs that enables a secure communication channel between the Shopify checkout and the embedded application within the Chat iframe. It also offers convenient methods to perform common actions like resizing the iframe from within the application.
+=======
+The App Bridge script for Checkout provides APIs that enables a secure communication channel between the Shopify Checkout and the embedded application within the Chat iframe. It also offers convenient methods to perform common actions like resizing the iframe from within the application.
+>>>>>>> cc96bc544 ([checkout] Update to 8a702e0c1ea83ccac07e2f79c060d23fd68038f9)
 
 After App Bridge is set up in your app, you have access to the \`shopify\` global variable. This variable exposes the following App Bridge functionalities and configuration information:
           `,
@@ -51,6 +62,7 @@ After App Bridge is set up in your app, you have access to the \`shopify\` globa
   subSections: [
     {
       type: 'Generic',
+<<<<<<< HEAD
       anchorLink: 'src-and-query-parameters',
       title: 'Chat source and query parameters',
       sectionContent: `
@@ -91,6 +103,8 @@ Your application can rely on the window’s dimension to change styles or apply 
     },
     {
       type: 'Generic',
+=======
+>>>>>>> cc96bc544 ([checkout] Update to 8a702e0c1ea83ccac07e2f79c060d23fd68038f9)
       anchorLink: 'about-app-bridge',
       title: 'Getting started with App Bridge for checkout',
       sectionContent: `
@@ -111,7 +125,11 @@ You must add App Bridge to your hosted chat application by including the script 
       anchorLink: 'global-variable',
       title: 'App Bridge’s global variable',
       sectionContent: `
+<<<<<<< HEAD
 After App Bridge is set up in your app, you have access to the \`shopify\` global variable. This variable exposes various App Bridge functionalities, such as resizing the iframe or retrieving details of the shop.
+=======
+After App Bridge is set up in your app, you have access to the \`shopify\` global variable. This variable exposes various App Bridge functionalities, such as resizing the parent iframe or retrieving shop's details.
+>>>>>>> cc96bc544 ([checkout] Update to 8a702e0c1ea83ccac07e2f79c060d23fd68038f9)
 
 The [reference](#app%20bridge%20for%20checkout) above list all the available methods and properties.
 
@@ -134,12 +152,68 @@ Alternatively, to explore all the functionality available on the \`shopify\` glo
     },
     {
       type: 'Generic',
+<<<<<<< HEAD
+=======
+      anchorLink: 'src-and-query-parameters',
+      title: 'Chat source and query parameters',
+      sectionContent: `
+The \`src\` of the iframe rendered by Chat is provided by the \`preloads\` \`chat\` key in the extension configuration file. Shopify automatically appends query parameters to the URL which allows developers to verify the authenticity of the request and the identity of the merchant. We guarantee these tokens are valid and signed by Shopify.
+
+#### id_token
+The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C) with a TTL of 5 minutes. It can be used can be used to retrieve merchants information on the backend as well as ensure that requests came from a Shopify authenticated source. See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) from more information.
+
+#### locale
+The locale of the shop that’s embedding the app, i.e. \`en-CA\`. This information is also available in the \`shopify\` global variable under \`config\`.
+
+#### handle
+The unique handle name of the UI extension as defined by the developer. This information is also available in the \`shopify\` global variable under \`extension\`.
+`,
+      codeblock: {
+        title: 'Chat source',
+        tabs: [
+          {
+            title: 'shopify.extension.toml',
+            code: './examples/shopify-extension-toml.example.toml',
+            language: 'toml',
+          },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'chat-dimensions',
+      title: 'Chat dimensions',
+      sectionContent: `
+To provide developers with the most flexibility when it comes to responsive changes, the iframe rendered in the page by \`Chat\` takes the full width and height of the browser window. Only a specific part of the iframe is visible, the rest is clipped.
+
+The \`inlineSize\` and \`blockSize\` values set on Chat or changed through the App Bridge \`resizeTo()\` method dictates the bounding box of the visible part. That box is fixed and positioned in the bottom right corner of the iframe.
+
+With this in place, your application can now rely on the window’s dimension to change styles or apply specific behaviors to different window sizes. This allow developers to style their app as if as if the widget would be outside an iframe. For example, CSS media queries can now work within the iframe.
+`,
+      codeblock: {
+        title: 'Hosted chat application',
+        tabs: [
+          {
+            title: 'style.css',
+            code: './examples/chat-media-query.example.css',
+            language: 'css',
+          },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
+>>>>>>> cc96bc544 ([checkout] Update to 8a702e0c1ea83ccac07e2f79c060d23fd68038f9)
       anchorLink: 'app-bridge-css-api',
       title: 'App Bridge’s CSS API',
       sectionContent: `
 Since the Chat iframe is clipped and fills the whole window as seen in the previous section, using percentage based sizes for its UI elements will most likely resolves in clipped content. As mentioned in the UX guidelines, Chat is constraint to specific [maximum sizes on large and small screens](/docs/apps/build/checkout/chat/ux-for-chat#build-within-the-chat-component-dimensions) set by Shopify. Setting a 100% width on an element will not be constraint to the visible size of the iframe, but to the whole window.
 
+<<<<<<< HEAD
 To remediate this issue, through App Bridge we offer a set of [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) with all the maximum dimensions defined in our UX guidelines. You can use these custom properties whether in Javascript or in the CSS of you application to set protections against overflowing content while using percentage based sizes. Using these properties will also reduce regressions if Shopify ever changes the maximum dimensions.
+=======
+To remediate this issue, through App Bridge we offer a set of [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/--*) will all the maximum dimensions defined in our UX guidelines. You can use these custom properties wether in Javascript or in the CSS of you application to set protections against overflowing contain while using percentage based sizes. Doing this, will also reduce regressions if Shopify ever changes the maximum dimensions.
+>>>>>>> cc96bc544 ([checkout] Update to 8a702e0c1ea83ccac07e2f79c060d23fd68038f9)
 `,
       codeblock: {
         title: 'App Bridge CSS API',
@@ -196,7 +270,11 @@ Information can be passed between the hosted application and the UI extension th
             {
               title: 'Hosted chat application',
               code: './examples/app-bridge-communication.example.js',
+<<<<<<< HEAD
               language: 'js',
+=======
+              language: 'html',
+>>>>>>> cc96bc544 ([checkout] Update to 8a702e0c1ea83ccac07e2f79c060d23fd68038f9)
             },
           ],
         },
