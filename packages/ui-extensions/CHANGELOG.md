@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2024.11.0
+
+### Minor Changes
+
+- [`a2a5f3e3b95337783a08350bbbf3f59cd74da752`](https://github.com/Shopify/ui-extensions/commit/a2a5f3e3b95337783a08350bbbf3f59cd74da752) Thanks [@cpeddecord](https://github.com/cpeddecord)! - Adding Chat component and supporting documentation
+
 ## 2024.10.1
 
 ### Patch Changes
