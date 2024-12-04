@@ -4,6 +4,8 @@ import {
   ReactPropsFromRemoteComponentType,
 } from '@remote-ui/react';
 import {CustomElement} from '../types';
+import {forwardRef, PropsWithChildren} from 'react';
+import {useCustomElementProperties} from '../shared';
 
 export type CardProps = ReactPropsFromRemoteComponentType<typeof BaseCard>;
 
@@ -16,4 +18,13 @@ declare module 'react' {
   }
 }
 
-export const Card = createRemoteReactComponent(BaseCard);
+export const Card = forwardRef<any, PropsWithChildren<CardProps>>(function Card(
+  props,
+  ref,
+) {
+  const {children, ...rest} = props;
+
+  const wrapperRef = useCustomElementProperties(rest, ref);
+
+  return <shopify-card ref={wrapperRef}>{children}</shopify-card>;
+});
