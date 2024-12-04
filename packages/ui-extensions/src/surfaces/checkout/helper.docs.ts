@@ -56,6 +56,24 @@ export function getExamples(
         tabs: getExtensionCodeTabs('ui-components/checkbox-links'),
       },
     },
+    'ui-components/clipboarditem-qrcode': {
+      description:
+        'When displaying a QR code, include an alternative way for the user to get the content',
+      image: 'clipboard-qrcode.png',
+      codeblock: {
+        title: "Copying content of a QR code to the user's clipboard",
+        tabs: getExtensionCodeTabs('ui-components/clipboarditem-qrcode'),
+      },
+    },
+    'ui-components/clipboarditem-oncopy': {
+      description:
+        'Use the onCopy property to display an icon that swaps to a checkmark when the text is copied.',
+      image: 'clipboard-oncopy.png',
+      codeblock: {
+        title: 'Swapping an icon when the text is copied',
+        tabs: getExtensionCodeTabs('ui-components/clipboarditem-oncopy'),
+      },
+    },
     'ui-components/disclosure-and-alignment': {
       description:
         'Use the Disclosure component to simplify the user experience and reveal interfaces only when the customer requests it. It also demonstrates how a combination of inline and block layout components can improve the readability of information. By employing these strategies, users can easily scan and comprehend the content, making for a better user experience overall.',

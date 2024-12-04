@@ -9,8 +9,10 @@ export interface ShopifyGlobal {
 }
 
 declare global {
-  // conflicts with build/ts/globals.d.ts
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  const shopify: ShopifyGlobal;
+  interface WorkerGlobalScope {
+    // conflicts with packages/checkout-ui-extensions/build/ts/globals.d.ts
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    readonly le_shopify: ShopifyGlobal;
+  }
 }

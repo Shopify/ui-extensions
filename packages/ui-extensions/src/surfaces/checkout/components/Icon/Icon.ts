@@ -21,6 +21,7 @@ export type IconSource =
   | 'chevronRight'
   | 'chevronUp'
   | 'chevronDown'
+  | 'clipboard'
   | 'clock'
   | 'close'
   | 'creditCard'

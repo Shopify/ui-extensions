@@ -209,7 +209,7 @@ export type {
   ViewportSizeCondition,
 } from './checkout/style/types';
 
-export type {IdProps} from './checkout/components/shared';
+export type {IdProps, InteractionProps} from './checkout/components/shared';
 
 export * from './checkout/globals';
 

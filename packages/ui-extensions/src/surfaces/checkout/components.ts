@@ -37,6 +37,9 @@ export type {ChoiceProps} from './components/Choice/Choice';
 export {ChoiceList} from './components/ChoiceList/ChoiceList';
 export type {ChoiceListProps} from './components/ChoiceList/ChoiceList';
 
+export {ClipboardItem} from './components/ClipboardItem/ClipboardItem';
+export type {ClipboardItemProps} from './components/ClipboardItem/ClipboardItem';
+
 export {DatePicker} from './components/DatePicker/DatePicker';
 export type {
   DatePickerProps,

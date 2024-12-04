@@ -1,7 +1,3 @@
-export {};
-
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 interface AppBridge {
   /**
    * The static configuration values that will not change during runtime.
@@ -21,7 +17,7 @@ interface AppBridge {
   /**
    * The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C)
    * with a TTL of 5 minutes. It can be used can be used to ensure that requests came from a Shopify authenticated user.
-   * See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) for more information.
+   * See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) from more information.
    *
    * @see https://shopify.dev/docs/api/checkout-ui-extensions/latest/apis/session-token
    * @see https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens
@@ -78,8 +74,6 @@ interface Extension {
    *
    * Learn more about [resizeTo() on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/resizeTo).
    */
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   resizeTo?: Window['resizeTo'];
 }
 
