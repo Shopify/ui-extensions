@@ -20,7 +20,7 @@ interface DocumentOption {
 }
 
 const Modal = () => {
-  // Step 1: Create state for managing document selection and loading
+  // [START modal.api]
   const api = useApi();
   const [isLoading, setIsLoading] = useState(false);
   const [src, setSrc] = useState<string | null>(null);
@@ -57,8 +57,9 @@ const Modal = () => {
       selected: false,
     },
   ]);
+  // [END modal.api]
 
-  // Step 2: Set up document selection with List component
+  // [START modal.document-list]
   const listData: ListRow[] = documents.map((doc) => ({
     id: doc.id,
     onPress: () => handleSelection(doc.id),
@@ -73,8 +74,9 @@ const Modal = () => {
       },
     },
   }));
+  // [END modal.document-list]
 
-  // Step 3: Handle document selection and URL updates
+  // [START modal.handle-selection]
   const handleSelection = (selectedId: string) => {
     setDocuments((prevDocs) =>
       prevDocs.map((doc) => ({
@@ -96,8 +98,9 @@ const Modal = () => {
       setSrc(null);
     }
   }, [documents]);
+  // [END modal.handle-selection]
 
-  // Step 4: Implement print functionality with error handling
+  // [START modal.print]
   const handlePrint = async () => {
     if (!src) return;
     setIsLoading(true);
@@ -109,6 +112,7 @@ const Modal = () => {
       setIsLoading(false);
     }
   };
+  // [END modal.print]
 
   // Return Navigator component with document selection and preview screens
   return (
