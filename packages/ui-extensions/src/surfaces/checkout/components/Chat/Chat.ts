@@ -80,6 +80,6 @@ interface ReadyEvent {
 }
 
 /**
- * Use the Chat component to create real-time chat applications.
+ * Use Chat to embed another HTML page within the page.
  */
 export const Chat = createRemoteComponent<'Chat', ChatProps>('Chat');
