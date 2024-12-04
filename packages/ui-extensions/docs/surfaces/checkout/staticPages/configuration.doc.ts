@@ -468,22 +468,10 @@ You retrieve these metafields in your extension by reading [\`appMetafields\`](/
       anchorLink: 'preloads-definition',
       title: 'Preloads definition',
       sectionContent: `
-<<<<<<< HEAD
-For specific targets, you must provide the URL of assets or pages loaded by UI components within its extension. This allows Shopify to preload them as early as possible and ensure a performant experience for buyers. Currently, the only supported property is \`chat\` for the [\`Chat\` component](/docs/api/checkout-ui-extensions/latest/components/overlays/chat).
-
-The \`chat\` property specifies the URL for the iframe used in this extension target. The URL can be absolute or relative. Relative URLs are resolved against the app URL defined in the app configuration.
-
-For example,
-=======
 For specific targets, you must provide the URL of assets or pages loaded by UI components within its extension. This allows Shopify to preload them as early as possible and ensure a performant experience for buyers.
-
 Currently, the only supported component is \`chat\`.
-
 The URL for the iframe used in this extension target. The URL can be absolute or relative. Relative URLs are resolved against the app URL.
-
 For example,
-
->>>>>>> cc96bc544 ([checkout] Update to 8a702e0c1ea83ccac07e2f79c060d23fd68038f9)
 * if the app URL is \`https://example.com\` and \`chat = "/my-chat-application"\`, the resolved URL will be \`https://example.com/my-chat-application\`.
 * if \`chat = "https://my-chat-application.com"\`, the resolved URL will be \`https://my-chat-application.com\`.
       `,

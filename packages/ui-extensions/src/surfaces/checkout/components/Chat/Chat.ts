@@ -72,10 +72,6 @@ export interface ReadyEvent {
 }
 
 /**
-<<<<<<< HEAD
  * Use the Chat component to create real-time chat applications.
-=======
- * Use Chat to create live chat applications.
->>>>>>> cc96bc544 ([checkout] Update to 8a702e0c1ea83ccac07e2f79c060d23fd68038f9)
  */
 export const Chat = createRemoteComponent<'Chat', ChatProps>('Chat');

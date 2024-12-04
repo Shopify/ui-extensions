@@ -1,3 +1,7 @@
+export {};
+
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore
 interface AppBridge {
   /**
    * The static configuration values that will not change during runtime.
@@ -74,6 +78,8 @@ interface Extension {
    *
    * Learn more about [resizeTo() on MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window/resizeTo).
    */
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   resizeTo?: Window['resizeTo'];
 }
 
