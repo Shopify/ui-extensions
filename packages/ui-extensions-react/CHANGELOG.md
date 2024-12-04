@@ -1,5 +1,18 @@
 # @shopify/ui-extensions-react
 
+## 2025.0.0
+
+### Minor Changes
+
+- [#2511](https://github.com/Shopify/ui-extensions/pull/2511) [`a2a5f3e3b95337783a08350bbbf3f59cd74da752`](https://github.com/Shopify/ui-extensions/commit/a2a5f3e3b95337783a08350bbbf3f59cd74da752) Thanks [@cpeddecord](https://github.com/cpeddecord)! - Adding Chat component and supporting documentation
+
+### Patch Changes
+
+- [#2514](https://github.com/Shopify/ui-extensions/pull/2514) [`45f4980788fe94ba58ad9c44bbfb80294bb3ad20`](https://github.com/Shopify/ui-extensions/commit/45f4980788fe94ba58ad9c44bbfb80294bb3ad20) Thanks [@cpeddecord](https://github.com/cpeddecord)! - Releasing Chat into the wild, for real this time
+
+- Updated dependencies [[`45f4980788fe94ba58ad9c44bbfb80294bb3ad20`](https://github.com/Shopify/ui-extensions/commit/45f4980788fe94ba58ad9c44bbfb80294bb3ad20), [`a2a5f3e3b95337783a08350bbbf3f59cd74da752`](https://github.com/Shopify/ui-extensions/commit/a2a5f3e3b95337783a08350bbbf3f59cd74da752)]:
+  - @shopify/ui-extensions@2024.11.0
+
 ## 2024.10.1
 
 ### Patch Changes
