@@ -34,7 +34,7 @@ constructed_string="examples: {
     examples: [
 "
       for example_file in "${examples[@]}"; do
-        example_name=$(basename "$example_file" ".example.ts")
+        example_name=$(basename "$example_file" ".example.tsx")
         # Skip files starting with "basic-"
         if [[ $example_name == basic-* ]]; then
           continue
@@ -68,7 +68,7 @@ for folder in "$components_dir"/*; do
         componentName=$(basename "$folder")
         docs_file="${folder}/${componentName}.doc.ts"
 
-        if [ ! -f "$docs_file" ]; then
+                if [ ! -f "$docs_file" ]; then
           lowercaseComponentName=$(echo "$componentName" | tr '[:upper:]' '[:lower:]')
           cat > "$docs_file" << EOF
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
@@ -82,9 +82,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: '${componentName}Props',
+      title: '${componentName}',
       description: '',
-      type: '${componentName}Props',
+      type: '${componentName}',
     },
   ],
   category: 'Components',
@@ -95,14 +95,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'TODO: add example title',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/${componentName}/examples/basic-${componentName}.example.tsx',
-          language: 'tsx',
+          title: 'JS',
+          code: './examples/basic-${lowercaseComponentName}.example.ts',
+          language: 'js',
         },
         {
-          title: 'JS',
-          code: './examples/basic-${componentName}.example.ts',
-          language: 'js',
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/${componentName}/examples/basic-${lowercaseComponentName}.example.tsx',
+          language: 'tsx',
         },
       ],
     },

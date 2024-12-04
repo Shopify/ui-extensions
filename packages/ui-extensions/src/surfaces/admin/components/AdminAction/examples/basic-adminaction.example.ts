@@ -1,22 +1,21 @@
-import {extension, AdminAction, Button} from '@shopify/ui-extensions/admin';
+import {extension} from '@shopify/ui-extensions/admin';
 
 export default extension('Playground', (root) => {
-  const primaryAction = root.createFragment();
-  const secondaryAction = root.createFragment();
-
-  primaryAction.appendChild(
-    root.createComponent(Button, {onPress: () => {}}, 'Action')
-  );
-  secondaryAction.appendChild(
-    root.createComponent(Button, {onPress: () => {}}, 'Secondary')
-  );
-
-  const adminAction = root.createComponent(AdminAction, {
-    title: 'My App Action',
-    primaryAction,
-    secondaryAction,
-  }, 'Modal content');
-
+  const adminAction = document.createElement('shopify-admin-action');
+  adminAction.title = 'My App Action';
+  adminAction.textContent = 'Modal content';
   root.appendChild(adminAction);
-  root.mount();
+
+  const primaryAction = document.createElement('shopify-button');
+
+  primaryAction.slot = 'primaryAction';
+  primaryAction.onpress = () => console.log('pressed primary action');
+  primaryAction.textContent = 'Primary';
+  adminAction.appendChild(primaryAction);
+
+  const secondaryAction = document.createElement('shopify-button');
+  secondaryAction.slot = 'secondaryAction';
+  secondaryAction.onpress = () => console.log('pressed secondary action');
+  secondaryAction.textContent = 'Secondary';
+  adminAction.appendChild(secondaryAction);
 });

@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'ParagraphProps',
+      title: 'Paragraph',
       description: '',
-      type: 'ParagraphProps',
+      type: 'Paragraph',
     },
   ],
   category: 'Components',
@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Simple Paragraph example',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Paragraph/examples/basic-paragraph.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/basic-paragraph.example.ts',
           language: 'js',
+        },
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Paragraph/examples/basic-paragraph.example.tsx',
+          language: 'tsx',
         },
       ],
     },

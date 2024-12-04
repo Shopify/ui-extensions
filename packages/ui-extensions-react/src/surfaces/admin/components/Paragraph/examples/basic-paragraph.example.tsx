@@ -1,16 +1,26 @@
 import {
-    render,
-    BlockStack,
-    Paragraph,
+  reactExtension,
+  Paragraph,
+  Stack,
+  Text,
 } from '@shopify/ui-extensions-react/admin';
 
-render('Playground', () => <App />);
-
 function App() {
-    return (
-        <BlockStack inlineAlignment='center' gap>
-            <Paragraph fontWeight='bold'>Name:</Paragraph>
-            <Paragraph>Jane Doe</Paragraph>
-        </BlockStack>
-    )
+  return (
+    <Stack
+      direction="block"
+      alignment="center"
+      gap
+    >
+      <Paragraph>
+        <Text type="strong">Name:</Text>
+        <Text>Jane Doe</Text>
+      </Paragraph>
+    </Stack>
+  );
 }
+
+export default reactExtension(
+  'Playground',
+  () => <App />,
+);

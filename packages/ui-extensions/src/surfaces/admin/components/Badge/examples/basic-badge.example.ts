@@ -1,11 +1,10 @@
-import {extend, Badge} from '@shopify/ui-extensions/admin';
+import {extension} from '@shopify/ui-extensions/admin';
 
-extend('Playground', (root) => {
-  const badge = root.createComponent(
-    Badge,
-    {tone: 'info'},
-    'Fulfilled',
-  );
+extension('Playground', (root) => {
+  const badge = document.createElement('shopify-badge');
+
+  badge.tone = 'info';
+  badge.textContent = 'Fulfilled';
 
   root.appendChild(badge);
 });

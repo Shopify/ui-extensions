@@ -1,12 +1,20 @@
-import {render, Text, BlockStack} from '@shopify/ui-extensions-react/admin';
+import {
+  reactExtension,
+  Text,
+  Stack,
+} from '@shopify/ui-extensions-react/admin';
 
-render('Playground', () => <App />);
+reactExtension('Playground', () => <App />);
 
 function App() {
   return (
-    <BlockStack inlineAlignment="center" gap>
+    <Stack
+      direction="block"
+      alignment="center"
+      gap
+    >
       <Text fontWeight="bold">Name:</Text>
       <Text>Jane Doe</Text>
-    </BlockStack>
+    </Stack>
   );
 }

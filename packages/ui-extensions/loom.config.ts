@@ -1,6 +1,6 @@
 import {createPackage} from '@shopify/loom';
-import {readFileSync} from 'fs';
-import {resolve} from 'path';
+import {existsSync, readFileSync, writeFileSync} from 'fs';
+import {join, resolve} from 'path';
 
 import {defaultProjectPlugin} from '../../config/loom';
 import {rollupPlugins} from '@shopify/loom-plugin-build-library';
@@ -28,6 +28,27 @@ export default createPackage((pkg) => {
         },
         preventAssignment: true,
       }),
+      {
+        name: 'add-components-types',
+        closeBundle: async () => {
+          const mainTypesPath = join(__dirname, 'build/ts/surfaces/admin.d.ts');
+          const componentsTypes = join(
+            __dirname,
+            'src/surfaces/admin/components.d.ts',
+          );
+          if (existsSync(mainTypesPath) && existsSync(componentsTypes)) {
+            const mainTypesContent = readFileSync(mainTypesPath).toString();
+            const componentsTypesContent = readFileSync(componentsTypes)
+              .toString()
+              .replaceAll(/\/\*.*$/g, '');
+
+            writeFileSync(
+              mainTypesPath,
+              componentsTypesContent.concat(mainTypesContent),
+            );
+          }
+        },
+      },
     ]),
   );
 });

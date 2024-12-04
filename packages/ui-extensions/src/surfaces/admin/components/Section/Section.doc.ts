@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'SectionProps',
+      title: 'Section',
       description: '',
-      type: 'SectionProps',
+      type: 'Section',
     },
   ],
   category: 'Components',
@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Section to an app page',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Section/examples/basic-Section.example.tsx',
-          language: 'tsx',
+          title: 'JS',
+          code: './examples/basic-section.example.ts',
+          language: 'js',
         },
         {
-          title: 'JS',
-          code: './examples/basic-Section.example.ts',
-          language: 'js',
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Section/examples/basic-section.example.tsx',
+          language: 'tsx',
         },
       ],
     },

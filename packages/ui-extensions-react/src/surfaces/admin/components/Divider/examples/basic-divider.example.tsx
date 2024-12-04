@@ -1,18 +1,22 @@
 import React from 'react';
 import {
-  render,
+  reactExtension,
   Divider,
-  BlockStack,
+  Stack,
+  reactExtension,
 } from '@shopify/ui-extensions-react/admin';
-
-render('Playground', () => <App />);
 
 function App() {
   return (
-    <BlockStack gap>
+    <Stack direction="block" gap>
       <>First text</>
       <Divider />
       <>Second Text</>
-    </BlockStack>
+    </Stack>
   );
 }
+
+export default reactExtension(
+  'Playground',
+  () => <App />,
+);

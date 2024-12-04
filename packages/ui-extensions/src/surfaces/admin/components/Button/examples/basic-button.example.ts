@@ -1,11 +1,8 @@
-import {extend, Button} from '@shopify/ui-extensions/admin';
+import {extension} from '@shopify/ui-extensions/admin';
 
-extend('Playground', (root) => {
-  const button = root.createComponent(
-    Button,
-    {onPress: () => console.log('onPress event')},
-    'Click here',
-  );
-
+extension('Playground', (root) => {
+  const button = document.createElement('shopify-button');
+  button.onpress = () => console.log('onPress event');
+  button.textContent = 'Click here';
   root.appendChild(button);
 });

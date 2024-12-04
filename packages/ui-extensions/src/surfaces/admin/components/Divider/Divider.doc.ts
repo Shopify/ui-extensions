@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'DividerProps',
+      title: 'Divider',
       description: '',
-      type: 'DividerProps',
+      type: 'Divider',
     },
   ],
   category: 'Components',
@@ -20,17 +20,17 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'divider-default.png',
     codeblock: {
-      title: 'Simple Divider example',
+      title: 'TODO: add example title',
       tabs: [
-        {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Divider/examples/basic-divider.example.tsx',
-          language: 'tsx',
-        },
         {
           title: 'JS',
           code: './examples/basic-divider.example.ts',
           language: 'js',
+        },
+        {
+          title: 'React',
+          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Divider/examples/basic-divider.example.tsx',
+          language: 'tsx',
         },
       ],
     },
