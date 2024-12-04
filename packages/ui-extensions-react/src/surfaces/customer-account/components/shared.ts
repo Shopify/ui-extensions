@@ -25,6 +25,9 @@ export function useCustomElementProperties<T extends HTMLElement>(
 
     const element = internals.ref.current;
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore;
+
     for (const name of newNames) {
       const newValue = props[name];
       const oldValue = internals.values[name];
@@ -36,13 +39,18 @@ export function useCustomElementProperties<T extends HTMLElement>(
         if (name in element) {
           (element as any)[name] = newValue;
         } else if (newValue) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           element.setAttribute(name, newValue);
         } else {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           element.removeAttribute(name);
         }
       }
     }
-
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     for (const name of oldNames) {
       const oldValue = internals.values[name];
       delete internals.values[name];
@@ -51,6 +59,8 @@ export function useCustomElementProperties<T extends HTMLElement>(
         if (name in element) {
           (element as any)[name] = undefined;
         } else {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
           element.removeAttribute(name);
         }
       }
@@ -63,7 +73,11 @@ export function useCustomElementProperties<T extends HTMLElement>(
 }
 
 class WrapperRef<T> implements RefObject<T> {
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   #wrapped: ForwardedRef<T>;
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-ignore
   #current: T | null = null;
 
   constructor(wrapped: ForwardedRef<T>) {
