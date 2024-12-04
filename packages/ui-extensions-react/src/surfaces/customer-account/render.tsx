@@ -1,6 +1,6 @@
+import '@remote-dom/react/polyfill';
 import type {ReactElement, PropsWithChildren} from 'react';
 import {Component} from 'react';
-import {render as remoteRender} from '@remote-ui/react';
 import {extension} from '@shopify/ui-extensions/customer-account';
 import type {
   ExtensionTargets,
@@ -9,6 +9,8 @@ import type {
 } from '@shopify/ui-extensions/customer-account';
 
 import {ExtensionApiContext} from './context';
+
+import {createRoot} from 'react-dom/client';
 
 /**
  * Registers your React-based UI Extension to run for the selected extension target.
@@ -26,6 +28,7 @@ import {ExtensionApiContext} from './context';
  * which allows you to perform initial asynchronous work like fetching data from your
  * own backend.
  */
+
 export function reactExtension<Target extends RenderExtensionTarget>(
   target: Target,
   render: (
@@ -41,24 +44,11 @@ export function reactExtension<Target extends RenderExtensionTarget>(
     async (root, api) => {
       const element = await render(api as ApiForRenderExtension<Target>);
 
-      await new Promise<void>((resolve, reject) => {
-        try {
-          remoteRender(
-            <ExtensionApiContext.Provider value={api}>
-              <ErrorBoundary>{element}</ErrorBoundary>
-            </ExtensionApiContext.Provider>,
-            root,
-            () => {
-              resolve();
-            },
-          );
-        } catch (error) {
-          // Workaround for https://github.com/Shopify/ui-extensions/issues/325
-          // eslint-disable-next-line no-console
-          console.error(error);
-          reject(error);
-        }
-      });
+      createRoot(root).render(
+        <ExtensionApiContext.Provider value={api}>
+          <ErrorBoundary>{element}</ErrorBoundary>
+        </ExtensionApiContext.Provider>,
+      );
     },
   ) as any;
 }
@@ -85,6 +75,7 @@ export function render<Target extends RenderExtensionTarget>(
   target: Target,
   render: (api: ApiForRenderExtension<Target>) => ReactElement<any>,
 ): ExtensionTargets[Target] {
+  // @ts-ignore
   return reactExtension(target, render);
 }
 
