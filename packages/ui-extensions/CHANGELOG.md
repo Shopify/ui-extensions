@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2024.10.2
+
+### Patch Changes
+
+- [#2514](https://github.com/Shopify/ui-extensions/pull/2514) [`45f4980788fe94ba58ad9c44bbfb80294bb3ad20`](https://github.com/Shopify/ui-extensions/commit/45f4980788fe94ba58ad9c44bbfb80294bb3ad20) Thanks [@cpeddecord](https://github.com/cpeddecord)! - Releasing Chat into the wild, for real this time
+
 ## 2024.10.1
 
 ### Patch Changes
