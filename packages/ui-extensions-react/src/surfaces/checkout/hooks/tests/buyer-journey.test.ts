@@ -151,6 +151,18 @@ describe('buyerJourney Hooks', () => {
   });
 
   describe('useBuyerJourney()', () => {
+    it('raises an exception when buyerJourney api is not available', () => {
+      expect(() => {
+        mount.hook(() => useBuyerJourney(), {
+          extensionApi: {
+            extension: {
+              target: 'purchase.checkout.header.render-after',
+            },
+          },
+        });
+      }).toThrow(ExtensionHasNoMethodError);
+    });
+
     it('returns the buyer journey when the api is available', () => {
       const hook = mount.hook(() => useBuyerJourney(), {
         extensionApi: {
@@ -166,6 +178,18 @@ describe('buyerJourney Hooks', () => {
   });
 
   describe('useBuyerJourneyCompleted()', () => {
+    it('raises an exception when buyerJourney api is not available', () => {
+      expect(() => {
+        mount.hook(() => useBuyerJourneyCompleted(), {
+          extensionApi: {
+            extension: {
+              target: 'purchase.checkout.header.render-after',
+            },
+          },
+        });
+      }).toThrow(ExtensionHasNoMethodError);
+    });
+
     it.each([true, false])(
       'returns the buyer journey completed value: %s',
       (completed) => {
@@ -186,6 +210,24 @@ describe('buyerJourney Hooks', () => {
   });
 
   describe('useBuyerJourneyIntercept()', () => {
+    it('raises an exception when buyerJourney api is not available', () => {
+      expect(() => {
+        mount.hook(
+          () =>
+            useBuyerJourneyIntercept(() => ({
+              behavior: 'allow',
+            })),
+          {
+            extensionApi: {
+              extension: {
+                target: 'purchase.checkout.header.render-after',
+              },
+            },
+          },
+        );
+      }).toThrow(ExtensionHasNoMethodError);
+    });
+
     it('calls the interceptor function', () => {
       const mockIntercept = jest.fn(() =>
         Promise.resolve({behavior: 'allow'} as const),

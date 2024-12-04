@@ -28,17 +28,22 @@ function Extension() {
       variables: {first: 5},
     };
 
-    fetch('shopify:storefront/api/graphql.json', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
+    const apiVersion = 'unstable';
+
+    fetch(
+      `${shop.storefrontUrl}api/${apiVersion}/graphql.json`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(getProductsQuery),
       },
-      body: JSON.stringify(getProductsQuery),
-    })
+    )
       .then((response) => response.json())
       .then(({data, errors}) => setData(data))
       .catch(console.error);
-  });
+  }, [shop]);
 
   return (
     <List>
