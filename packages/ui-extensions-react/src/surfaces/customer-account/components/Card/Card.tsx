@@ -1,8 +1,5 @@
 import {Card as BaseCard} from '@shopify/ui-extensions/customer-account';
-import {
-  createRemoteReactComponent,
-  ReactPropsFromRemoteComponentType,
-} from '@remote-ui/react';
+import {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
 import {CustomElement} from '../types';
 import {forwardRef, PropsWithChildren} from 'react';
 import {useCustomElementProperties} from '../shared';
