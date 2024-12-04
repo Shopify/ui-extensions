@@ -14,8 +14,6 @@ export type IconName =
   | 'cash'
   | 'checkmark'
   | 'caret-down'
-  | 'checkmark-active'
-  | 'checkmark-inactive'
   | 'chevron-up'
   | 'chevron-right'
   | 'chevron-down'
@@ -52,7 +50,7 @@ export type IconName =
   | 'menu'
   | 'minus'
   | 'mobile'
-  | 'note-report'
+  | 'note'
   | 'drawer'
   | 'orders'
   | 'shopify-payments'
@@ -78,12 +76,11 @@ export type IconName =
   | 'staff'
   | 'star'
   | 'unordered-list'
-  | 'connectivity-warning'
   | 'internet'
   | 'delivery'
   | 'shop-pay';
 
-export type IconSize = 'minor' | 'major' | 'spot' | 'caption' | 'badge';
+export type IconSize = 'xxs' | 'xs' | 'l' | 'm' | 's' | 'xs' | 'xxs';
 
 export interface IconProps {
   /**
@@ -92,7 +89,7 @@ export interface IconProps {
   name: IconName;
   /**
    * Size of the icon.
-   * @defaultValue 'major'
+   * @defaultValue 'xl'
    */
   size?: IconSize;
 }
