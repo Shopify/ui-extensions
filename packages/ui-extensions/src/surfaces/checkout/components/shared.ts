@@ -677,3 +677,25 @@ export interface IdProps {
    */
   id?: string;
 }
+
+export interface InteractionProps {
+  /**
+   * ID of a component that should respond to activations (e.g. clicks) on this pressable.
+   *
+   * See `activateAction` for how to control the behavior of the target.
+   *
+   */
+  activateTarget?: string;
+  /**
+   * Sets the action the `activateTarget` should take when this pressable is activated.
+   *
+   * Supported actions by component:
+   *
+   * | Component     | Supported Actions | Default ('auto')  |
+   * |---------------|-------------------|-------------------|
+   * | [`ClipboardItem`](https://shopify.dev/docs/api/checkout-ui-extensions/latest/clipboarditem) | 'copy'            | 'copy'            |
+   *
+   * @default 'auto' - a default action for the target component.
+   */
+  activateAction?: 'auto' | 'copy';
+}

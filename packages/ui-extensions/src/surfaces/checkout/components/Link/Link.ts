@@ -4,11 +4,13 @@ import type {
   Appearance,
   OverlayActivatorProps,
   DisclosureActivatorProps,
+  InteractionProps,
 } from '../shared';
 
 export interface LinkProps
   extends OverlayActivatorProps,
-    DisclosureActivatorProps {
+    DisclosureActivatorProps,
+    InteractionProps {
   /**
    * Destination to navigate to. You must provide either this property, `onPress`,
    * or both.

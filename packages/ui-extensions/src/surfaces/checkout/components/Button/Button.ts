@@ -7,11 +7,13 @@ import type {
   IdProps,
   OverlayActivatorProps,
   DisclosureActivatorProps,
+  InteractionProps,
 } from '../shared';
 
 export interface ButtonProps
   extends OverlayActivatorProps,
     DisclosureActivatorProps,
+    InteractionProps,
     IdProps {
   /**
    * The type of button that will be rendered. The visual presentation of the button type

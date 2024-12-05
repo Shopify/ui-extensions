@@ -1,6 +1,8 @@
 import {
   extension,
   QRCode,
+  TextBlock,
+  Link,
 } from '@shopify/ui-extensions/checkout';
 
 export default extension(
@@ -11,6 +13,20 @@ export default extension(
       logo: 'https://cdn.shopify.com/YOUR_IMAGE_HERE',
     });
 
+    const textBlock = root.createComponent(
+      TextBlock,
+      null,
+      [
+        'Scan to visit ',
+        root.createComponent(
+          Link,
+          {to: 'https://shopify.com'},
+          'Shopify.com',
+        ),
+      ],
+    );
+
     root.appendChild(qrCode);
+    root.appendChild(textBlock);
   },
 );

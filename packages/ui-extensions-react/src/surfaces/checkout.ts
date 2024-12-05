@@ -123,6 +123,9 @@ export type {ChoiceProps} from './checkout/components/Choice/Choice';
 export {ChoiceList} from './checkout/components/ChoiceList/ChoiceList';
 export type {ChoiceListProps} from './checkout/components/ChoiceList/ChoiceList';
 
+export {ClipboardItem} from './checkout/components/ClipboardItem/ClipboardItem';
+export type {ClipboardItemProps} from './checkout/components/ClipboardItem/ClipboardItem';
+
 export {DateField} from './checkout/components/DateField/DateField';
 export type {DateFieldProps} from './checkout/components/DateField/DateField';
 
