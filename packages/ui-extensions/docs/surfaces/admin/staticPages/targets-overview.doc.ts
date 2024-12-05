@@ -340,13 +340,13 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Order details',
           description:
             'This page shows information about a single order. The `admin.order-details.action.link` target is available in the "More actions" on the page.',
-          image: 'admin.order.detail.link.png',
+          image: 'admin.order.details.link.png',
         },
         {
           title: 'Order index',
           description:
             'This page shows a table of multiple orders. The `admin.order-index.action.link` target is available in the "More actions" on the page.',
-          image: 'admin.order.index.link.png',
+          image: 'admin.orders.index.link.png',
         },
         {
           title: 'Order index selection',
@@ -363,7 +363,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Product index',
           description:
             'This page shows a table of multiple products. The `admin.product-index.action.link` target is available in the "More actions" on the page.',
-          image: 'admin.product.index.link.png',
+          image: 'admin.products.index.link.png',
         },
         {
           title: 'Product index selection',
