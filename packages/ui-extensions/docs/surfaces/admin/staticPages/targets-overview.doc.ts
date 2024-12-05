@@ -355,7 +355,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Order index selection',
           description:
             'This page shows a table of multiple orders. The `admin.order-index.selection-action.link` target is available on this page when multiple orders are selected.',
-          image: 'admin.order-index.selection.link.png',
+          image: 'admin.order-index.selection-action.link.png',
         },
         {
           title: 'Product details',
