@@ -56,12 +56,6 @@ const data: LandingTemplateSchema = {
           type: 'tool',
         },
         {
-          subtitle: 'Picking resources',
-          name: 'Prompt the user to select resources',
-          url: '#picking-resources',
-          type: 'tool',
-        },
-        {
           subtitle: 'Custom protocols',
           name: 'Easily construct URLs to navigate to common locations',
           url: '#custom-protocols',
