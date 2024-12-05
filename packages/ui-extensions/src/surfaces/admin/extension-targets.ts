@@ -13,6 +13,7 @@ import type {
   ValidationSettingsApi,
 } from './api';
 import {AnyComponentBuilder} from '../../shared';
+import {PurchaseOptionsCardConfigurationApi} from './api/purchase-options-card-action/purchase-options-card-action';
 import {ShouldRenderApi} from './api/should-render/should-render';
 
 interface ShouldRenderOutput {
@@ -434,6 +435,26 @@ export interface ExtensionTargets {
    */
   'admin.draft-order-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.draft-order-index.selection-action.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin action extension in the product details page when a selling plan group is present. Open this extension from the "Purchase Options card".
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.product-purchase-option.action.render': RenderExtension<
+    PurchaseOptionsCardConfigurationApi<'admin.product-purchase-option.action.render'>,
+    AllComponents
+  >;
+
+  /**
+   * Renders an admin action extension in the product variant details page when a selling plan group is present. Open this extension from the "Purchase Options card".
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.product-variant-purchase-option.action.render': RenderExtension<
+    PurchaseOptionsCardConfigurationApi<'admin.product-variant-purchase-option.action.render'>,
     AllComponents
   >;
 

@@ -156,6 +156,18 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
             'This page shows information about a single product variant. The `admin.product-variant-details.action.render` target is available on this page.',
           image: 'admin.product-variant-details.action.render.png',
         },
+        {
+          title: 'Product detail purchase options card',
+          description:
+            'This page shows information about a single product, including a card showing purchase options. The `admin.product-purchase-option.action.render` target is available on this page when selling plans exists.',
+          image: 'admin.product-purchase-option.action.render.png',
+        },
+        {
+          title: 'Product variant detail purchase options card',
+          description:
+            'This page shows information about a single product variant, including a card showing purchase options. The `admin.product-variant-purchase-option.action.render` target is available on this page when selling plans exists.',
+          image: 'admin.product-variant-purchase-option.action.render.png',
+        },
       ],
     },
     {
