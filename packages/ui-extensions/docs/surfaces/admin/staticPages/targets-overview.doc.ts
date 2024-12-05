@@ -288,26 +288,25 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Collection details',
           description:
             'This page shows information about a single collection. The `admin.collection-details.action.link` target is available in the "More actions" on the page.',
+          image: 'admin.collection.details.link.png',
         },
         {
           title: 'Collection index',
           description:
             'This page shows a table of multiple collections. The `admin.collection-index.action.link` target is available in the "More actions" on the page.',
-        },
-        {
-          title: 'Company details',
-          description:
-            'This page shows information about a single company. The `admin.company-details.action.link` target is available in the "More actions" on the page.',
+          image: 'admin.collection.index.link.png',
         },
         {
           title: 'Customer details',
           description:
             'This page shows information about a single customer. The `admin.customer-details.action.link` target is available in the "More actions" on the page.',
+          image: 'admin.customer.details.link.png',
         },
         {
           title: 'Customer index',
           description:
             'This page shows a table of multiple customers. The `admin.customer-index.action.link` target is available in the "More actions" on the page.',
+          image: 'admin.customer.index.link.png',
         },
         {
           title: 'Customer index selection',
@@ -315,29 +314,22 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
             'This page shows a table of multiple customers. The `admin.customer-index.selection-action.link` target is available on this page when multiple customers are selected.',
         },
         {
-          title: 'Customer segment details',
-          description:
-            'This page shows information about a single customer segment. The `admin.customer-segment-details.action.link` target is available in the "More actions" on the page.',
-        },
-        {
-          title: 'Discount details',
-          description:
-            'This page shows information about a single discount. The `admin.discount-details.action.link` target is available in the "More actions" on the page.',
-        },
-        {
           title: 'Discount index',
           description:
             'This page shows a table of multiple discounts. The `admin.discount-index.action.link` target is available in the "More actions" on the page.',
+          image: 'admin.discounts.index.link.png',
         },
         {
           title: 'Draft order details',
           description:
             'This page shows information about a single draft order. The `admin.draft-order-details.action.link` target is available in the "More actions" on the page.',
+          image: 'admin.draft-order.details.link.png',
         },
         {
           title: 'Draft order index',
           description:
             'This page shows a table of multiple draft orders. The `admin.draft-order-index.action.link` target is available in the "More actions" on the page.',
+          image: 'admin.draft-orders.index.link.png',
         },
         {
           title: 'Draft order index selection',
@@ -345,24 +337,16 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
             'This page shows a table of multiple draft orders. The `admin.draft-order-index.selection-action.link` target is available on this page when multiple draft orders are selected.',
         },
         {
-          title: 'Gift card details',
-          description:
-            'This page shows information about a single gift card. The `admin.gift-card-details.action.link` target is available in the "More actions" on the page.',
-        },
-        {
           title: 'Order details',
           description:
             'This page shows information about a single order. The `admin.order-details.action.link` target is available in the "More actions" on the page.',
-        },
-        {
-          title: 'Order details fulfilled card',
-          description:
-            'This page shows information about a single order, including a card showing the fulfillment details. The `admin.order-fulfilled-card.action.link` target is available on this page, but only if your app is selected as the fulfillment app for that order.',
+          image: 'admin.order.detail.link.png',
         },
         {
           title: 'Order index',
           description:
             'This page shows a table of multiple orders. The `admin.order-index.action.link` target is available in the "More actions" on the page.',
+          image: 'admin.order.index.link.png',
         },
         {
           title: 'Order index selection',
@@ -373,12 +357,13 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Product details',
           description:
             'This page shows information about a single product. The `admin.product-details.action.link` target is available in the "More actions" on the page.',
-          image: 'admin.product-details.action.render.png',
+          image: 'admin.product.details.link.png',
         },
         {
           title: 'Product index',
           description:
             'This page shows a table of multiple products. The `admin.product-index.action.link` target is available in the "More actions" on the page.',
+          image: 'admin.product.index.link.png',
         },
         {
           title: 'Product index selection',
@@ -389,6 +374,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Product variant details',
           description:
             'This page shows information about a single product variant. The `admin.product-variant-details.action.link` target is available in the "More actions" on the page.',
+          image: 'admin.product-variant.details.link.png',
         },
       ],
     },
