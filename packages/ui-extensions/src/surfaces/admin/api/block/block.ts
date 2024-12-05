@@ -32,7 +32,7 @@ export interface BlockExtensionApi<ExtensionTarget extends AnyExtensionTarget>
   resourcePicker: ResourcePickerApi;
 
   /**
-   * Renders the [Picker](picker), allowing users to select a resource for the extension to use as part of its flow.
+   * Renders a custom [Picker](picker) dialog allowing users to select values from a list.
    */
   picker: PickerApi;
 }

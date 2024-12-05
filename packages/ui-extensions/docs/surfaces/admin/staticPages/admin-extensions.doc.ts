@@ -57,7 +57,7 @@ const data: LandingTemplateSchema = {
         },
         {
           subtitle: 'Picking resources',
-          name: 'Display resource pickers to select resources',
+          name: 'Prompt the user to select resources',
           url: '#picking-resources',
           type: 'tool',
         },

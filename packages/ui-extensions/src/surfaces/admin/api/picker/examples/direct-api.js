@@ -54,7 +54,7 @@ const selected = await picker({
       data: [customer.displayName, `$${shopMoney.amount}`],
       badges: [
         {
-          content: toTitleCase(displayFulfillmentStatus),
+          content: displayFulfillmentStatus,
           tone: displayFulfillmentStatus === 'FULFILLED' ? '' : 'attention',
           progress:
             displayFulfillmentStatus === 'FULFILLED'
@@ -62,7 +62,7 @@ const selected = await picker({
               : 'incomplete',
         },
         {
-          content: toTitleCase(displayFinancialStatus),
+          content: displayFinancialStatus,
           tone: displayFinancialStatus === 'PENDING' ? 'warning' : '',
           progress:
             displayFinancialStatus === 'PENDING' ? 'incomplete' : 'complete',
