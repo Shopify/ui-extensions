@@ -307,13 +307,13 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Customer index',
           description:
             'This page shows a table of multiple customers. The `admin.customer-index.action.link` target is available in the "More actions" on the page.',
-          image: 'admin.customer.index.link.png',
+          image: 'admin.customers.index.link.png',
         },
         {
           title: 'Customer index selection',
           description:
             'This page shows a table of multiple customers. The `admin.customer-index.selection-action.link` target is available on this page when multiple customers are selected.',
-          image: 'admin.customer-index.selection.link.png',
+          image: 'admin.customer-index-selection.link.png',
         },
         {
           title: 'Discount index',
