@@ -283,6 +283,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Abandoned checkout details',
           description:
             'This page shows information about a single abandoned checkout. The `admin.abandoned-checkout-details.action.link` target is available in the "More actions" on the page.',
+          image: 'admin.abandoned-checkout-details.link.png',
         },
         {
           title: 'Collection details',
@@ -312,6 +313,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Customer index selection',
           description:
             'This page shows a table of multiple customers. The `admin.customer-index.selection-action.link` target is available on this page when multiple customers are selected.',
+          image: 'admin.customer-index.selection.link.png',
         },
         {
           title: 'Discount index',
@@ -335,6 +337,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Draft order index selection',
           description:
             'This page shows a table of multiple draft orders. The `admin.draft-order-index.selection-action.link` target is available on this page when multiple draft orders are selected.',
+          image: 'admin.draft-order-index.selection.link.png',
         },
         {
           title: 'Order details',
@@ -352,6 +355,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Order index selection',
           description:
             'This page shows a table of multiple orders. The `admin.order-index.selection-action.link` target is available on this page when multiple orders are selected.',
+          image: 'admin.order-index.selection.link.png',
         },
         {
           title: 'Product details',
@@ -369,6 +373,7 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           title: 'Product index selection',
           description:
             'This page shows a table of multiple products. The `admin.product-index.selection-action.link` target is available on this page when multiple products are selected.',
+          image: 'admin.product-index.selection.link.png',
         },
         {
           title: 'Product variant details',
