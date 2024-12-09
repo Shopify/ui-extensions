@@ -675,7 +675,7 @@ export type SizeScale =
   | 'large-200'
   | 'large-300';
 
-export type Tone = 'info' | 'success' | 'warning' | 'critical' | 'default';
+export type Tone = 'info' | 'success' | 'warning' | 'critical';
 
 export interface AnchorProps {
   /**

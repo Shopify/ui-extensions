@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   category: 'API',
-  // subCategory: 'Standard API',
+  subCategory: 'Target APIs',
   related: [],
 };
 
