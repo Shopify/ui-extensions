@@ -7,6 +7,7 @@ import {
 } from '@shopify/ui-extensions/point-of-sale';
 
 export default extension('pos.home.modal.render', (root, api) => {
+  // [START modal.define-onpress]
   const onButtonPress = (
     type: CartDiscountType,
     title: string,
@@ -18,13 +19,13 @@ export default extension('pos.home.modal.render', (root, api) => {
     // You can show a toast to notify the user of something
     api.toast.show('Discount applied');
   };
-
+  // [END modal.define-onpress]
   let mainScreen = root.createComponent(Screen, {
     name: 'Discounts',
     title: 'Available Discounts',
   });
   let scrollView = root.createComponent(ScrollView);
-
+  // [START modal.create-buttons]
   const percentageDiscountButton = root.createComponent(Button, {
     title: '25%',
     onPress: () => {
@@ -41,6 +42,8 @@ export default extension('pos.home.modal.render', (root, api) => {
 
   scrollView.append(percentageDiscountButton);
   scrollView.append(fixedAmountDiscountButton);
+  // [END modal.create-buttons]
+
   mainScreen.append(scrollView);
   root.append(mainScreen);
 });
