@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'API',
   thumbnail: 'picker.png',
   requires:
-    'an [Admin block extension](/docs/api/admin-extensions/unstable/extension-targets#block-locations)',
+    'an Admin [block](/docs/api/admin-extensions/unstable/extension-targets#block-locations), [action](/docs/api/admin-extensions/unstable/extension-targets#action-locations), or [print](/docs/api/admin-extensions/unstable/extension-targets#print-locations) extension.',
   defaultExample: {
     image: 'picker.png',
     codeblock: {
