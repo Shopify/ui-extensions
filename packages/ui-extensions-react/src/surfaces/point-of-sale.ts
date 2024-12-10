@@ -71,4 +71,11 @@ export type {
   TileProps,
   TimeFieldProps,
   TimePickerProps,
+  PaddingProps,
+  SizingProps,
+  SizeUnits,
+  SizeUnitsOrAuto,
+  SizeUnitsOrNone,
+  BoxProps,
+  SizeKeyword,
 } from '@shopify/ui-extensions/point-of-sale';
