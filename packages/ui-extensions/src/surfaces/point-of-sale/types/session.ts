@@ -1,3 +1,5 @@
+import type {CurrencyCode} from '../../../shared';
+
 export interface Session {
   /**
    * The shop ID associated with the shop currently logged into POS.
@@ -24,4 +26,9 @@ export interface Session {
    * Note that this staff member ID may be different to the User ID, as the staff member who enters their PIN may be different to the User who logged onto POS.
    */
   staffMemberId?: number;
+
+  /**
+   * The currency code associated with the location currently in on POS.
+   */
+  currency: CurrencyCode;
 }
