@@ -1,9 +1,0 @@
-.dialog {
-  border-radius: 1em;
-  inline-size: 200px;
-
-  @media screen and (max-width: 569px) {
-    border-radius: 0;
-    inline-size: 100%;
-  }
-}

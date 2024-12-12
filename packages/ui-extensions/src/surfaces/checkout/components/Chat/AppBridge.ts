@@ -20,7 +20,7 @@ interface AppBridge {
 
   /**
    * The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C)
-   * with a TTL of 5 minutes. It can be used can be used to ensure that requests came from a Shopify authenticated user.
+   * with a TTL of 5 minutes. It can be used to ensure that requests came from a Shopify authenticated user.
    * See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) from more information.
    *
    * @see https://shopify.dev/docs/api/checkout-ui-extensions/latest/apis/session-token
@@ -85,8 +85,8 @@ interface Extension {
 
 interface Visitor {
   /**
-   * The unique token of a given user across all surfaces in a shop, present
-   * if a user has opted-in to tracking.
+   * The unique token of a given user across all surfaces in a shop,
+   * present if processing permission is provided.
    *
    * @ignore this maps to the _shopify_y cookie which Trekkie refers to as a
    * uniqToken.

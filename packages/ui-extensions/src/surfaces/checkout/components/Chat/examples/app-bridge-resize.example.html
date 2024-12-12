@@ -33,13 +33,13 @@
         // -  resize the iframe to the button's size
         if (dialog.classList.contains('visible')) {
           dialog.classList.remove('visible');
-          shopify !== undefined && window.shopify.resizeTo(150, 50);
+          shopify !== undefined && window.resizeTo(150, 50);
 
           // if the dialog is not visible,
           // - resize the iframe to the desired dialog's size
           // - then show the dialog
         } else {
-          shopify !== undefined && window.shopify.resizeTo(415, 700);
+          shopify !== undefined && window.resizeTo(415, 700);
           dialog.classList.add('visible');
         }
       }

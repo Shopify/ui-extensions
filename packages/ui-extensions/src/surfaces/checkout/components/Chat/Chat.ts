@@ -6,7 +6,7 @@ export interface ChatProps extends IdProps {
   /**
    * Adjust the inline size.
    *
-   * Checkout imposes sizing restrictions for the component, therefore the size set
+   * Checkout imposes [sizing restrictions](https://shopify.dev/docs/apps/build/checkout/chat#component-states) for the component, therefore the size set
    * may not be the actual size rendered.
    *
    * `number`: size in pixels.
@@ -18,7 +18,7 @@ export interface ChatProps extends IdProps {
   /**
    * Adjust the block size.
    *
-   * Checkout imposes sizing restrictions for the component, therefore the size set
+   * Checkout imposes [sizing restrictions](https://shopify.dev/docs/apps/build/checkout/chat#component-states) for the component, therefore the size set
    * may not be the actual size rendered.
    *
    * `number`: size in pixels.
