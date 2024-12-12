@@ -13,6 +13,8 @@ export {
   type ButtonProps,
   Checkbox,
   type CheckboxProps,
+  ClipboardItem,
+  type ClipboardItemProps,
   Choice,
   type ChoiceProps,
   ChoiceList,
