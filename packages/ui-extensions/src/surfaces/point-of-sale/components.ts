@@ -1,5 +1,3 @@
-export {ActionItem} from './render/components/ActionItem/ActionItem';
-export type {ActionItemProps} from './render/components/ActionItem/ActionItem';
 export {Badge} from './render/components/Badge/Badge';
 export type {
   BadgeProps,
@@ -104,7 +102,6 @@ export {TextArea} from './render/components/TextArea/TextArea';
 export type {TextAreaProps} from './render/components/TextArea/TextArea';
 export {TextField} from './render/components/TextField/TextField';
 export type {
-  TextFieldProps,
   NewTextFieldProps,
   ActionProps,
   InfoProps,
