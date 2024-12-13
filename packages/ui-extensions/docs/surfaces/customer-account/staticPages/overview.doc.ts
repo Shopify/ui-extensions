@@ -3,12 +3,7 @@ import type {LandingTemplateSchema} from '@shopify/generate-docs';
 const data: LandingTemplateSchema = {
   title: 'Customer account UI extensions',
   description: `
-  <aside class="note">
-    <h4>Developer preview</h4>
-    <p>Customer account UI extensions are included in the <a target="_blank" href="/docs/api/release-notes/developer-previews">Checkout and Customer Accounts Extensibility developer preview</a>.</p>
-  </aside>
-
-  \nCustomer account UI extensions let app developers build custom functionality that merchants can install at defined points on the **Order index**, **Order status**, and **Profile** pages in customer accounts.
+  Customer account UI extensions let app developers build custom functionality that merchants can install at defined points on the **Order index**, **Order status**, and **Profile** pages in customer accounts.
 
   \n\n > Shopify Plus: \n>Some static extensions on the Profile page only render for B2B customers. B2B on Shopify is only available on the [Shopify Plus](https://www.shopify.com/plus) plan. [See B2B Profile targets](/api/customer-account-ui-extensions/unstable/extension-targets-overview#profile-b2b)
   `,
