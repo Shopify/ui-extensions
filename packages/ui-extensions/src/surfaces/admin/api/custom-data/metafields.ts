@@ -65,3 +65,11 @@ type MetafieldsChange =
 
 export type SupportedDefinitionType = (typeof supportedDefinitionTypes)[number];
 export type ApplyMetafieldsChange = (changes: MetafieldsChange[]) => void;
+
+export interface Metafield {
+  id?: string | null;
+  key: string;
+  value?: string | null;
+  namespace?: string;
+  type?: SupportedDefinitionType;
+}

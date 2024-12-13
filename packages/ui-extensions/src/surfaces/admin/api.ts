@@ -9,3 +9,5 @@ export type {ProductDetailsConfigurationApi} from './api/product-configuration/p
 export type {ProductVariantDetailsConfigurationApi} from './api/product-configuration/product-variant-details-configuration';
 export type {OrderRoutingRuleApi} from './api/order-routing-rule/order-routing-rule';
 export type {ValidationSettingsApi} from './api/checkout-rules/validation-settings';
+export type {MetaobjectDetailsBlockApi} from './api/custom-data/metaobject-details';
+export type {MetaobjectDetailsActionApi} from './api/custom-data/metaobject-details';

@@ -11,6 +11,8 @@ import type {
   ProductVariantDetailsConfigurationApi,
   OrderRoutingRuleApi,
   ValidationSettingsApi,
+  MetaobjectDetailsBlockApi,
+  MetaobjectDetailsActionApi,
 } from './api';
 import {AnyComponentBuilder} from '../../shared';
 import {PurchaseOptionsCardConfigurationApi} from './api/purchase-options-card-action/purchase-options-card-action';
@@ -185,7 +187,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.metaobject-details.block.render': RenderExtension<
-    BlockExtensionApi<'admin.metaobject-details.block.render'>,
+    MetaobjectDetailsBlockApi<'admin.metaobject-details.block.render'>,
     AllComponents | CustomDataComponents
   >;
 
@@ -296,7 +298,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.metaobject-details.action.render': RenderExtension<
-    ActionExtensionApi<'admin.metaobject-details.action.render'>,
+    MetaobjectDetailsActionApi<'admin.metaobject-details.action.render'>,
     AllComponents | CustomDataComponents
   >;
 
