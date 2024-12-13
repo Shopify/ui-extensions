@@ -39,12 +39,6 @@ export interface ListRowLeftSide {
    */
   subtitle?: [ListRowSubtitle, ListRowSubtitle?, ListRowSubtitle?];
   /**
-   * @deprecated
-   * badge will be removed in version 2.0.0 in favor of badges.
-   * Please migrate to using badges as soon as possible.
-   */
-  badge?: BadgeProps;
-  /**
    * Colored badges that are displayed underneath the `title` and `subtitles`.
    */
   badges?: BadgeProps[];

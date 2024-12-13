@@ -42,13 +42,20 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '202501',
       title: '2025.01',
       sectionContent: `
-- Added in POS version: N/A
+- Added in POS version: 9.26
 - Removed in POS version: N/A
-- Release day: 1/1/2025
+- Release day: 1/6/2025
+
+### Breaking Changes
+- Removed the deprecated ActionItem component. Use a [Button](/docs/api/pos-ui-extensions/components/button) instead.
+- Removed the deprecated SmartGridApi. Use the [ActionApi](/docs/api/pos-ui-extensions/apis/action-api) instead.
+- Removed the deprecated DiscountType. Use [CartDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-applycartdiscount) and [LineItemDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-setlineitemdiscount) instead.
+- Removed the deprecated \`badge\` prop from the [List](/docs/api/pos-ui-extensions/components/list) component. Use \`badges\` instead.
+- Removed the deprecated \`TextFieldProps\` type from the [TextField](/docs/api/pos-ui-extensions/components/textfield) component.
+- Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/components/formattedtextfield) component.
 
 ### Features
 
-- Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/apis/formatted-text-field) component.
 - Added [PrintApi](/docs/api/pos-ui-extensions/apis/print-api) and a [PrintPreview](/docs/api/pos-ui-extensions/components/printpreview) component.
       `,
     },

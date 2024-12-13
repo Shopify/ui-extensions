@@ -1,6 +1,5 @@
 export type {
   CartApi,
-  DiscountType,
   CartDiscountType,
   CartApiContent,
   LineItemDiscountType,
@@ -74,11 +73,6 @@ export type {
   SessionApiContent,
   SessionApi,
 } from './render/api/session-api/session-api';
-
-export type {
-  SmartGridApi,
-  SmartGridApiContent,
-} from './render/api/smartgrid-api/smartgrid-api';
 
 export type {
   ShowToastOptions,

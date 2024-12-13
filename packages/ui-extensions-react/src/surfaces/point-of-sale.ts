@@ -68,7 +68,6 @@ export type {
   PasswordProps,
   EmbeddedElementProps,
   NewTextFieldProps,
-  TextFieldProps,
   TileProps,
   TimeFieldProps,
   TimePickerProps,

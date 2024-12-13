@@ -1,11 +1,5 @@
 import {StandardApi} from './render/api/standard/standard-api';
-import {
-  // eslint-disable-next-line import/no-deprecated
-  SmartGridApi,
-  OrderApi,
-  CartApi,
-  CustomerApi,
-} from './api';
+import {OrderApi, CartApi, CustomerApi} from './api';
 import {RenderExtension} from './extension';
 import type {Components} from './shared';
 import {AnyComponentBuilder} from '../../shared';
@@ -15,9 +9,7 @@ import {ActionTargetApi} from './render/api/action-target-api/action-target-api'
 import {DraftOrderApi} from './render/api/draft-order-api/draft-order-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
-type ActionComponents = AnyComponentBuilder<
-  Pick<Components, 'ActionItem' | 'Button'>
->;
+type ActionComponents = AnyComponentBuilder<Pick<Components, 'Button'>>;
 type BasicComponents = AnyComponentBuilder<Omit<Components, 'Tile'>>;
 type BlockComponents = AnyComponentBuilder<
   Pick<
@@ -38,8 +30,7 @@ type BlockComponents = AnyComponentBuilder<
 
 export interface ExtensionTargets {
   'pos.home.tile.render': RenderExtension<
-    // eslint-disable-next-line import/no-deprecated
-    StandardApi<'pos.home.tile.render'> & SmartGridApi & ActionApi & CartApi,
+    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi,
     SmartGridComponents
   >;
   'pos.home.modal.render': RenderExtension<
