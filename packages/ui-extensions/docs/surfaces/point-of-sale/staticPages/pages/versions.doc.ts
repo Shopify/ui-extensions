@@ -57,6 +57,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 ### Features
 
 - Added [PrintApi](/docs/api/pos-ui-extensions/apis/print-api) and a [PrintPreview](/docs/api/pos-ui-extensions/components/printpreview) component.
+- Added \`currency\` prop to the [SessionApi](/docs/api/pos-ui-extensions/apis/session-api).
       `,
     },
     {
