@@ -83,3 +83,5 @@ export {URLField} from './components/URLField/URLField';
 export type {URLFieldProps} from './components/URLField/URLField';
 export {InternalLocationList} from './components/InternalLocationList/InternalLocationList';
 export type {InternalLocationListProps} from './components/InternalLocationList/InternalLocationList';
+export {InternalMetaobjectField} from './components/InternalMetaobjectField/InternalMetaobjectField';
+export type {InternalMetaobjectFieldProps} from './components/InternalMetaobjectField/InternalMetaobjectField';

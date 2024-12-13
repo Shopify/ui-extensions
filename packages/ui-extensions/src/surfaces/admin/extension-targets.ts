@@ -47,6 +47,10 @@ type OrderRoutingComponents = AnyComponentBuilder<
   Pick<Components, 'InternalLocationList'>
 >;
 
+type CustomDataComponents = AnyComponentBuilder<
+  Pick<Components, 'InternalMetaobjectField'>
+>;
+
 /**
  * See the [list of available components](/docs/api/admin-extensions/components).
  */
@@ -56,6 +60,7 @@ type AllComponents = AnyComponentBuilder<
     | 'CustomerSegmentTemplate'
     | 'InternalCustomerSegmentTemplate'
     | 'InternalLocationList'
+    | 'InternalMetaobjectField'
   >
 >;
 
@@ -181,7 +186,7 @@ export interface ExtensionTargets {
    */
   'admin.metaobject-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.metaobject-details.block.render'>,
-    AllComponents
+    AllComponents | CustomDataComponents
   >;
 
   /**
@@ -292,7 +297,7 @@ export interface ExtensionTargets {
    */
   'admin.metaobject-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.metaobject-details.action.render'>,
-    AllComponents
+    AllComponents | CustomDataComponents
   >;
 
   /**
