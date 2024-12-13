@@ -11,6 +11,8 @@ import type {
   ProductVariantDetailsConfigurationApi,
   OrderRoutingRuleApi,
   ValidationSettingsApi,
+  MetaobjectDetailsBlockApi,
+  MetaobjectDetailsActionApi,
 } from './api';
 import {AnyComponentBuilder} from '../../shared';
 import {PurchaseOptionsCardConfigurationApi} from './api/purchase-options-card-action/purchase-options-card-action';
@@ -47,6 +49,10 @@ type OrderRoutingComponents = AnyComponentBuilder<
   Pick<Components, 'InternalLocationList'>
 >;
 
+type CustomDataComponents = AnyComponentBuilder<
+  Pick<Components, 'InternalMetaobjectField'>
+>;
+
 /**
  * See the [list of available components](/docs/api/admin-extensions/components).
  */
@@ -56,6 +62,7 @@ type AllComponents = AnyComponentBuilder<
     | 'CustomerSegmentTemplate'
     | 'InternalCustomerSegmentTemplate'
     | 'InternalLocationList'
+    | 'InternalMetaobjectField'
   >
 >;
 
@@ -175,6 +182,16 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * Renders an admin block in the metaobject details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.metaobject-details.block.render': RenderExtension<
+    MetaobjectDetailsBlockApi<'admin.metaobject-details.block.render'>,
+    AllComponents | CustomDataComponents
+  >;
+
+  /**
    * Renders an admin block in the gift card details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
@@ -273,6 +290,16 @@ export interface ExtensionTargets {
   'admin.customer-segment-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-segment-details.action.render'>,
     AllComponents
+  >;
+
+  /**
+   * Renders an admin action extension in the metaobject details page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.metaobject-details.action.render': RenderExtension<
+    MetaobjectDetailsActionApi<'admin.metaobject-details.action.render'>,
+    AllComponents | CustomDataComponents
   >;
 
   /**
