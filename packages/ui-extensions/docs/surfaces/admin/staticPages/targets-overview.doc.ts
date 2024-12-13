@@ -109,6 +109,12 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
           image: 'admin.gift-card-details.action.render.png',
         },
         {
+          title: 'Metaobject details',
+          description:
+            'This page shows information about a metaobject. The `admin.metaobject-details.action.render` target is available on this page. You can control the visibility of the action by using the `admin.metaobject-details.action.should-render` target.',
+          image: 'admin.metaobject-details.action.render.png',
+        },
+        {
           title: 'Order details',
           description:
             'This page shows information about a single order. The `admin.order-details.action.render` target is available on this page. You can control the visibility of the action by using the `admin.order-details.action.should-render` target.',

@@ -286,6 +286,16 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * Renders an admin action extension in the metaobject details page. Open this extension from the "More Actions" menu.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.metaobject-details.action.render': RenderExtension<
+    ActionExtensionApi<'admin.metaobject-details.action.render'>,
+    AllComponents
+  >;
+
+  /**
    * Renders an admin action extension in the product index page. Open this extension from the "More Actions" menu.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
