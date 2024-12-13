@@ -232,6 +232,12 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
             'This page shows information about a single discount. The `admin.discount-details.function-settings.render` target is available on this page.',
         },
         {
+          title: 'Metaobject details',
+          description:
+            'This page shows information about a metaobject. The `admin.metaobject-details.block.render` target is available on this page.',
+          image: 'admin.metaobject-details.block.render.png',
+        },
+        {
           title: 'Order details',
           description:
             'This page shows information about a single order. The `admin.order-details.block.render` target is available on this page.',

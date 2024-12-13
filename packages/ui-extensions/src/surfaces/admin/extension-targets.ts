@@ -175,6 +175,16 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * Renders an admin block in the metaobject details page.
+   *
+   * See the [list of available components](/docs/api/admin-extensions/components).
+   */
+  'admin.metaobject-details.block.render': RenderExtension<
+    BlockExtensionApi<'admin.metaobject-details.block.render'>,
+    AllComponents
+  >;
+
+  /**
    * Renders an admin block in the gift card details page.
    *
    * See the [list of available components](/docs/api/admin-extensions/components).
