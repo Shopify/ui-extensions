@@ -2,6 +2,7 @@ import type {RemoteSubscribable} from '@remote-ui/async-subscription';
 import type {
   Address,
   Cart,
+  CartUpdateInput,
   Customer,
   CustomSale,
   SetLineItemDiscountInput,
@@ -26,6 +27,12 @@ export interface CartApiContent {
    * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
    */
   subscribable: RemoteSubscribable<Cart>;
+
+  /** Bulk update the cart
+   * @param cartState the cart state to set
+   * @returns the updated cart
+   */
+  bulkCartUpdate(cartState: CartUpdateInput): Promise<Cart>;
 
   /** Apply a cart level discount
    * @param type the type of discount applied (example: 'Percentage')
