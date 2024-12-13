@@ -18,6 +18,9 @@ export type EventNameOfType<T extends EventType> = {
 export type StandardEventName = EventNameOfType<EventType.Standard>;
 export type StandardEvent = PixelEvents[StandardEventName];
 
+export type AdvancedDomEventName = EventNameOfType<EventType.AdvancedDom>;
+export type AdvancedDomEvent = PixelEvents[AdvancedDomEventName];
+
 export type DomEventName = EventNameOfType<EventType.Dom>;
 export type DomEvent = PixelEvents[DomEventName];
 
@@ -30,6 +33,10 @@ export interface StandardEvents extends PixelEvents {
 
 export type DomEvents = {
   [key in DomEventName]: PixelEvents[key];
+};
+
+export type AdvancedDomEvents = {
+  [key in AdvancedDomEventName]: PixelEvents[key];
 };
 
 export interface CustomEvents {
