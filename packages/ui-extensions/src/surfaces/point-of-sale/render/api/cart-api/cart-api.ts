@@ -64,14 +64,16 @@ export interface CartApiContent {
 
   /** Add a custom sale to the cart
    * @param customSale the custom sale object to add to the cart
+   * @returns {string} the uuid of the line item added
    */
-  addCustomSale(customSale: CustomSale): Promise<void>;
+  addCustomSale(customSale: CustomSale): Promise<string>;
 
   /** Add a line item by variant ID to the cart
    * @param variantId the product variant's numeric ID to add to the cart
    * @param quantity the number of this variant to add to the cart
+   * @returns {string} the uuid of the line item added
    */
-  addLineItem(variantId: number, quantity: number): Promise<void>;
+  addLineItem(variantId: number, quantity: number): Promise<string>;
 
   /** Remove the line item at this uuid from the cart
    * @param uuid the uuid of the line item that should be removed
