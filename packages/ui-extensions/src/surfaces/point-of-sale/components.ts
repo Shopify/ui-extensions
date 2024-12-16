@@ -35,7 +35,11 @@ export type {
   IconSize,
 } from './render/components/Icon/Icon';
 export {Image} from './render/components/Image/Image';
-export type {ImageProps} from './render/components/Image/Image';
+export type {
+  ImageProps,
+  ImageSize,
+  FillResizeMode,
+} from './render/components/Image/Image';
 export {List} from './render/components/List/List';
 export type {
   ListProps,

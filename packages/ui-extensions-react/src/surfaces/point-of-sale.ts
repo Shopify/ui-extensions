@@ -24,6 +24,8 @@ export type {
   IconSize,
   IconProps,
   ImageProps,
+  ImageSize,
+  FillResizeMode,
   ToggleSwitch,
   SubtitleType,
   ListRowSubtitle,
