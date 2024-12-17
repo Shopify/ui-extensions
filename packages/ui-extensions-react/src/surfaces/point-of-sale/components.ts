@@ -1,5 +1,6 @@
 export {Badge} from './components/Badge/Badge';
 export {Banner} from './components/Banner/Banner';
+export {Box} from './components/Box/Box';
 export {Button} from './components/Button/Button';
 export {CameraScanner} from './components/CameraScanner/CameraScanner';
 export {DateField} from './components/DateField/DateField';

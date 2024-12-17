@@ -9,6 +9,8 @@ export type {
   BannerProps,
   BannerVariant,
 } from './render/components/Banner/Banner';
+export {Box} from './render/components/Box/Box';
+export type {BoxProps} from './render/components/Box/Box';
 export {Button} from './render/components/Button/Button';
 export type {ButtonProps, ButtonType} from './render/components/Button/Button';
 export {CameraScanner} from './render/components/CameraScanner/CameraScanner';
@@ -33,7 +35,11 @@ export type {
   IconSize,
 } from './render/components/Icon/Icon';
 export {Image} from './render/components/Image/Image';
-export type {ImageProps} from './render/components/Image/Image';
+export type {
+  ImageProps,
+  ImageSize,
+  FillResizeMode,
+} from './render/components/Image/Image';
 export {List} from './render/components/List/List';
 export type {
   ListProps,
@@ -123,3 +129,12 @@ export type {
 } from './render/components/shared/InputField';
 export {SectionHeader} from './render/components/SectionHeader/SectionHeader';
 export type {SectionHeaderProps} from './render/components/SectionHeader/SectionHeader';
+
+export type {
+  PaddingProps,
+  SizingProps,
+  SizeUnits,
+  SizeUnitsOrAuto,
+  SizeUnitsOrNone,
+} from './render/components/shared/box';
+export type {SizeKeyword} from './render/components/shared/sizes';

@@ -60,6 +60,8 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added \`currency\` prop to the [SessionApi](/docs/api/pos-ui-extensions/apis/session-api).
 - [Cart API](/docs/api/pos-ui-extensions/apis/cart-api) updates:
   - \`addLineItem\` and \`addCustomSale\` now return a UUID for the created item.
+- Added [Box](/docs/api/pos-ui-extensions/components/box) component.
+- Added Sizing and fill options to the[Image](/docs/api/pos-ui-extensions/components/image) component.
       `,
     },
     {
