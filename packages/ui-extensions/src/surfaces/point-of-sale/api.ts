@@ -82,6 +82,7 @@ export type {
 
 export type {
   Cart,
+  CartUpdateInput,
   Customer,
   LineItem,
   Discount,

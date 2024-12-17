@@ -12,12 +12,13 @@ export interface Cart {
   properties: Record<string, string>;
 }
 
+export type CartUpdateInput = Omit<
+  Cart,
+  'subtotal' | 'taxTotal' | 'grandTotal'
+>;
+
 export interface Customer {
   id: number;
-  email?: string;
-  firstName?: string;
-  lastName?: string;
-  note?: string;
 }
 
 export interface LineItem {

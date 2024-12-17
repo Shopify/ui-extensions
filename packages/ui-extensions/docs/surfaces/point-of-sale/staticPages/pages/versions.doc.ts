@@ -53,13 +53,15 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Removed the deprecated \`badge\` prop from the [List](/docs/api/pos-ui-extensions/components/list) component. Use \`badges\` instead.
 - Removed the deprecated \`TextFieldProps\` type from the [TextField](/docs/api/pos-ui-extensions/components/textfield) component.
 - Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/components/formattedtextfield) component.
+- Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
 
 ### Features
 
 - Added [PrintApi](/docs/api/pos-ui-extensions/apis/print-api) and a [PrintPreview](/docs/api/pos-ui-extensions/components/printpreview) component.
 - Added \`currency\` prop to the [SessionApi](/docs/api/pos-ui-extensions/apis/session-api).
 - [Cart API](/docs/api/pos-ui-extensions/apis/cart-api) updates:
-  - \`addLineItem\` and \`addCustomSale\` now return a UUID for the created item.
+  - Added \`bulkUpdateCart\` function for single-operation cart updates.
+  - The \`addLineItem\` and \`addCustomSale\` functions now return a UUID for the added line item.
 - Added [Box](/docs/api/pos-ui-extensions/components/box) component.
 - Added Sizing and fill options to the[Image](/docs/api/pos-ui-extensions/components/image) component.
       `,
