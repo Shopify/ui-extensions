@@ -84,6 +84,24 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
   gap?: SpacingKeyword;
 
   /**
+   * Adjust spacing between elements in the block axis.
+   *
+   * This overrides the row value of `gap`.
+   *
+   * @default '' - meaning no override
+   */
+  rowGap?: SpacingKeyword | '';
+
+  /**
+   * Adjust spacing between elements in the inline axis.
+   *
+   * This overrides the column value of `gap`.
+   *
+   * @default '' - meaning no override
+   */
+  columnGap?: SpacingKeyword | '';
+
+  /**
    * Whether the children should be stretched to fill the cross axis.
    * @deprecated Has no effect.
    */
