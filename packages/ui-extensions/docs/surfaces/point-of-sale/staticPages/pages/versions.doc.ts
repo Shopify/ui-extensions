@@ -52,6 +52,11 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Removed the deprecated DiscountType. Use [CartDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-applycartdiscount) and [LineItemDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-setlineitemdiscount) instead.
 - Removed the deprecated \`badge\` prop from the [List](/docs/api/pos-ui-extensions/components/list) component. Use \`badges\` instead.
 - Removed the deprecated \`TextFieldProps\` type from the [TextField](/docs/api/pos-ui-extensions/components/textfield) component.
+- Deprecated \`'vertical'\` and \`'horizontal'\` as values for the \`direction\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
+- Deprecated the \`flexChildren'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
+- Deprecated the \`flex'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
+- Deprecated the \`flexWrap'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
+- Deprecated the \`paddingHorizontal'\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
 - Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/components/formattedtextfield) component.
 - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
 
@@ -63,6 +68,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
   - Added \`bulkUpdateCart\` function for single-operation cart updates.
   - The \`addLineItem\` and \`addCustomSale\` functions now return a UUID for the added line item.
 - Added [Box](/docs/api/pos-ui-extensions/components/box) component.
+- Ehanced the [Stack](/docs/api/pos-ui-extensions/components/box) component. New fields include \`justifyContent\`, \`alignItems\`, and \`alignContent\`, as well as numerous new sizing and spacing options.
 - Added Sizing and fill options to the[Image](/docs/api/pos-ui-extensions/components/image) component.
       `,
     },

@@ -93,9 +93,15 @@ export type {SelectableProps} from './render/components/Selectable/Selectable';
 export type {
   VerticalSpacing,
   HorizontalSpacing,
-} from './render/components/Spacing/Spacing';
+  Spacing,
+} from './render/components/shared/deprecated-types';
 export {Stack} from './render/components/Stack/Stack';
-export type {StackProps, Spacing} from './render/components/Stack/Stack';
+export type {StackProps} from './render/components/Stack/Stack';
+export type {
+  SpacingKeyword,
+  ContentPosition,
+  ContentDistribution,
+} from './render/components/shared/inner-layouts';
 export {Stepper} from './render/components/Stepper/Stepper';
 export type {StepperProps} from './render/components/Stepper/Stepper';
 export {Text} from './render/components/Text/Text';
