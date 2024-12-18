@@ -1,1 +1,1 @@
-export type {BaseIntent} from './run/intent/BaseIntent';
+export type {BaseIntent} from './event/intent/BaseIntent';

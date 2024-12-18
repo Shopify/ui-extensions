@@ -64,6 +64,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 - Added [PrintApi](/docs/api/pos-ui-extensions/apis/print-api) and a [PrintPreview](/docs/api/pos-ui-extensions/components/printpreview) component.
 - Added \`currency\` prop to the [SessionApi](/docs/api/pos-ui-extensions/apis/session-api).
+- Added the 'pos.purchase-complete.observe' target.
 - [Cart API](/docs/api/pos-ui-extensions/apis/cart-api) updates:
   - Added \`bulkUpdateCart\` function for single-operation cart updates.
   - The \`addLineItem\` and \`addCustomSale\` functions now return a UUID for the added line item.
