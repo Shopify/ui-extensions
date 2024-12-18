@@ -8,6 +8,24 @@ export interface GapProps {
    * @default 'none'
    */
   gap?: SpacingKeyword;
+
+  /**
+   * Adjust spacing between elements in the block axis.
+   *
+   * This overrides the row value of `gap`.
+   *
+   * @default '' - meaning no override
+   */
+  rowGap?: SpacingKeyword | '';
+
+  /**
+   * Adjust spacing between elements in the inline axis.
+   *
+   * This overrides the column value of `gap`.
+   *
+   * @default '' - meaning no override
+   */
+  columnGap?: SpacingKeyword | '';
 }
 
 export type ContentPosition = 'center' | 'start' | 'end';
