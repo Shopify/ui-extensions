@@ -1,3 +1,6 @@
+/**
+ * SizeKeyword maps to predetermined values in POS.
+ */
 export type SizeKeyword =
   | '0'
   | '025'
