@@ -2,13 +2,17 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 export type ImageSize = 's' | 'm' | 'l' | 'xl';
 
+/**
+ * FillResizeMode will apply formatting to the image to fill the container.
+ *
+ * https://reactnative.dev/docs/image#resizemode
+ */
 export type FillResizeMode =
-  /**
-   * FillResizeMode will apply formatting to the image to fill the container.
-   *
-   * https://reactnative.dev/docs/image#resizemode
-   */
-  'cover' | 'contain' | 'stretch' | 'repeat' | 'center';
+  | 'cover'
+  | 'contain'
+  | 'stretch'
+  | 'repeat'
+  | 'center';
 
 export interface ImageProps {
   /**
