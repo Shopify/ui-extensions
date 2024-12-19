@@ -7,34 +7,40 @@ import {
   Image,
 } from '@shopify/ui-extensions/point-of-sale';
 
-export default extend('pos.home.modal.render', (root) => {
-  const navigator = root.createComponent(Navigator);
+export default extend(
+  'pos.home.modal.render',
+  (root) => {
+    const navigator =
+      root.createComponent(Navigator);
 
-  const imageBoxScreen = navigator.createComponent(Screen, {
-    name: 'ImageBox',
-    title: 'ImageBox',
-  });
+    const imageBoxScreen =
+      navigator.createComponent(Screen, {
+        name: 'ImageBox',
+        title: 'ImageBox',
+      });
 
-  const scrollView = imageBoxScreen.createComponent(ScrollView);
+    const scrollView =
+      imageBoxScreen.createComponent(ScrollView);
 
-  const box = scrollView.createComponent(Box, {
-    blockSize: '100px',
-    inlineSize: '100px',
-    paddingInlineStart: '100px',
-    paddingInlineEnd: '100px',
-    paddingBlockStart: '100px',
-    paddingBlockEnd: '100px',
-  });
+    const box = scrollView.createComponent(Box, {
+      blockSize: '100px',
+      inlineSize: '100px',
+      paddingInlineStart: '100',
+      paddingInlineEnd: '100',
+      paddingBlockStart: '100',
+      paddingBlockEnd: '100',
+    });
 
-  const image = box.createComponent(Image, {
-    src: 'example.png',
-    size: 'contain',
-  });
+    const image = box.createComponent(Image, {
+      src: 'example.png',
+      size: 'contain',
+    });
 
-  box.appendChild(image);
-  scrollView.appendChild(box);
-  imageBoxScreen.appendChild(scrollView);
-  navigator.appendChild(imageBoxScreen);
+    box.appendChild(image);
+    scrollView.appendChild(box);
+    imageBoxScreen.appendChild(scrollView);
+    navigator.appendChild(imageBoxScreen);
 
-  root.appendChild(navigator);
-});
+    root.appendChild(navigator);
+  },
+);
