@@ -68,7 +68,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
   - Added \`bulkUpdateCart\` function for single-operation cart updates.
   - The \`addLineItem\` and \`addCustomSale\` functions now return a UUID for the added line item.
 - Added [Box](/docs/api/pos-ui-extensions/components/box) component.
-- Ehanced the [Stack](/docs/api/pos-ui-extensions/components/box) component. New fields include \`justifyContent\`, \`alignItems\`, and \`alignContent\`, as well as numerous new sizing and spacing options.
+- Enhanced the [Stack](/docs/api/pos-ui-extensions/components/box) component. New fields include \`justifyContent\`, \`alignItems\`, and \`alignContent\`, as well as numerous new sizing and spacing options.
 - Added Sizing and fill options to the[Image](/docs/api/pos-ui-extensions/components/image) component.
       `,
     },
