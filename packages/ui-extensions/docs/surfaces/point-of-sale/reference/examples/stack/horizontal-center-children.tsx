@@ -1,10 +1,8 @@
 <Screen name="Home">
-  <Stack
-    direction="horizontal"
-    alignment="center"
-    paddingHorizontal={'ExtraExtraLarge'}
-  >
-    <Button title="Hello" />
-    <Button title="Hello" />
-  </Stack>
+  <ScrollView>
+    <Stack direction="inline" justifyContent="center" gap="200">
+      <Button title="Hello" />
+      <Button title="Hello" />
+    </Stack>
+  </ScrollView>
 </Screen>;

@@ -53,8 +53,6 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Removed the deprecated \`badge\` prop from the [List](/docs/api/pos-ui-extensions/components/list) component. Use \`badges\` instead.
 - Removed the deprecated \`TextFieldProps\` type from the [TextField](/docs/api/pos-ui-extensions/components/textfield) component.
 - Deprecated \`'vertical'\` and \`'horizontal'\` as values for the \`direction\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
-- Deprecated the \`flexChildren'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
-- Deprecated the \`flex'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
 - Deprecated the \`flexWrap'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
 - Deprecated the \`paddingHorizontal'\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
 - Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/components/formattedtextfield) component.

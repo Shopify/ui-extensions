@@ -37,21 +37,21 @@ The following examples will demonstrate some, but not all of the abilities of th
     },
     {
       type: 'Generic',
-      anchorLink: 'horizontal-default',
-      title: 'Horizontal Stack with default values',
+      anchorLink: 'inline-default',
+      title: 'Inline stack with default values and gap',
       sectionContent: `
-In this example, we specify \`horizontal\` for the \`direction\`. We don't specify the \`flex\`, which means it's 0 by default. However, \`horizontal\` stacks will always stretch to fill from the left to the right of the screen. As you can see, we have two small buttons occupying just the amount of space that they need, at the left side of the \`Stack\`. This is because \`alignment\` is set to \`flex-end\` by default.
+In this example, we specify \`inline\` for the \`direction\`. We don't specify the \`flex\`, which means it's 0 by default. However, \`inline\` stacks will always stretch to fill from the left to the right of the screen. As you can see, we have two small buttons occupying just the amount of space that they need, at the left side of the \`Stack\`. This is because \`justifyContent\` is set to \`start\` by default. We apploy a gap of \`200\` to the \`Stack\` to space the buttons apart.
 `,
       codeblock: generateCodeBlockForStack(
-        'Horizontal Stack with default values',
+        'Inline stack with default values',
         'horizontal-default',
       ),
       image: 'extension-stack-horizontal.png',
     },
     {
       type: 'Generic',
-      anchorLink: 'horizontal-flex-children',
-      title: 'Horizontal Stack with flexChildren',
+      anchorLink: 'inline-flex-children',
+      title: 'Inline stack with flexChildren',
       sectionContent: `
 Similar to the example above, but this time we are specifying \`flexChildren\` to be \`true\`. This means that the two buttons will take up the max amount of space that they can within the \`horizontal\` stack.
       `,

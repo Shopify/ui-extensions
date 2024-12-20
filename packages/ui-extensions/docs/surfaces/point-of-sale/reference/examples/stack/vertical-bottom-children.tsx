@@ -1,9 +1,10 @@
 <Screen name="Home">
   <Stack
-    direction="vertical"
     flex={1}
-    alignment="flex-end"
-    paddingHorizontal={'ExtraExtraLarge'}
+    direction="block"
+    justifyContent="end"
+    gap="200"
+    paddingInline="200"
   >
     <Button title="Hello" />
     <Button title="Hello" />

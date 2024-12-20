@@ -1,6 +1,8 @@
-<Screen name="Home">
-  <Stack direction="horizontal" paddingHorizontal={'ExtraExtraLarge'}>
-    <Button title="Hello" />
-    <Button title="Hello" />
-  </Stack>
+<Screen name="Stack" title="Stack">
+  <ScrollView>
+    <Stack direction="inline" gap="200">
+      <Button title="Hello" />
+      <Button title="Hello" />
+    </Stack>
+  </ScrollView>
 </Screen>;
