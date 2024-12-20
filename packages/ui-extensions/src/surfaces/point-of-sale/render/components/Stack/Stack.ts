@@ -21,6 +21,7 @@ type DeprecatedStackDirection = 'vertical' | 'horizontal';
 export interface StackProps extends PaddingProps, SizingProps, GapProps {
   /**
    * Sets how the Stack's children are placed within the Stack.
+   * 'vertical' and 'horizontal' are deprecated. Using these values will use the Stack implementation from 2024-10.
    *
    * @default 'inline'
    */
@@ -43,20 +44,20 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
   justifyContent?: ContentPosition | ContentDistribution;
 
   /**
-   * Aligns the Stack's children along the cross axis.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
-   * @default 'start'
-   */
-  alignItems?: 'stretch' | ContentPosition;
-
-  /**
    * Aligns the Stack along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
    * @default 'start'
    */
   alignContent?: 'stretch' | ContentPosition | ContentDistribution;
+
+  /**
+   * Aligns the Stack's children along the cross axis.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+   * @default 'stretch'
+   */
+  alignItems?: 'stretch' | 'baseline' | ContentPosition;
 
   /**
    * The vertical padding around the stack.
@@ -103,13 +104,11 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
 
   /**
    * Whether the children should be stretched to fill the cross axis.
-   * @deprecated Has no effect.
    */
   flexChildren?: boolean;
 
   /**
-   * The flex value for the stack.
-   * @deprecated All stacks use flex 1. Use `blockSize` and `inlineSize` to customize the size of your stack.
+   * The flex value for the stack. Flex 1 will stretch the stack to fill the parent.
    */
   flex?: number;
 
