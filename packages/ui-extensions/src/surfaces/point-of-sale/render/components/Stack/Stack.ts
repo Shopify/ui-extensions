@@ -57,7 +57,7 @@ export interface StackProps extends PaddingProps, SizingProps, GapProps {
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
    * @default 'stretch'
    */
-  alignItems?: 'stretch' | ContentPosition;
+  alignItems?: 'stretch' | 'baseline' | ContentPosition;
 
   /**
    * The vertical padding around the stack.
