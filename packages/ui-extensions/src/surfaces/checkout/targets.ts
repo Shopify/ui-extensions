@@ -899,4 +899,5 @@ export interface CustomerAccountStandardApi<
     | 'version'
     | 'customerPrivacy'
     | 'applyTrackingConsentChange'
+    | 'localizedFields'
   > {}
