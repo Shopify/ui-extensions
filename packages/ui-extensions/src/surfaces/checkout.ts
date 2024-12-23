@@ -46,6 +46,7 @@ export type {
   Market,
   Language,
   Localization,
+  LocalizedField,
   DeliveryGroup,
   DeliveryGroupType,
   DeliveryGroupDetails,

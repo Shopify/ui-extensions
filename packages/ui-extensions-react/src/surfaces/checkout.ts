@@ -358,3 +358,4 @@ export {useDeliverySelectionGroups} from './checkout/hooks/delivery-selection-gr
 export {useCheckoutToken} from './checkout/hooks/checkout-token';
 export {useCustomerPrivacy} from './checkout/hooks/customer-privacy';
 export {useInstructions} from './checkout/hooks/instructions';
+export {useLocalizedFields} from './checkout/hooks/localized-fields';
