@@ -41,6 +41,9 @@ export interface Docs_Standard_CostApi extends Pick<StandardApi, 'cost'> {}
 export interface Docs_Standard_LocalizationApi
   extends Pick<StandardApi, 'i18n' | 'localization'> {}
 
+export interface Docs_Standard_LocalizedFieldsApi
+  extends Pick<StandardApi, 'localizedFields'> {}
+
 export interface Docs_Standard_MetafieldsApi
   extends Pick<StandardApi, 'appMetafields' | 'metafields'> {}
 export interface Docs_Checkout_MetafieldsApi
