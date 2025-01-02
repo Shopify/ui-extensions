@@ -32,8 +32,7 @@ function Extension() {
               {
                 message: `${taxIdField.title} is required and
                 cannot exceed 10 characters in length`,
-                // Show an error under the localized field or
-                // exclude target to show at the top of the page
+                // Show an error under the field
                 target: `$.cart.localizedField.${taxIdField.key}`,
               },
             ],
