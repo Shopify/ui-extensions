@@ -411,6 +411,13 @@ You can apply changes to customer consent by using the \`applyTrackingConsentCha
         tabs: getExtensionCodeTabs('subscription'),
       },
     },
+    'localized-fields/default': {
+      description: '',
+      codeblock: {
+        title: 'Read localized fields',
+        tabs: getExtensionCodeTabs('localized-fields/default'),
+      },
+    },
     'session-token': {
       description: `
 You can request a session token from Shopify to use on your application server.  The contents of the token claims are signed using your shared app secret so you can trust the claims came from Shopify unaltered.

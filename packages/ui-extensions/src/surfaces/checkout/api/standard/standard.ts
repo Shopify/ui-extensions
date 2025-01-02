@@ -16,6 +16,7 @@ import type {
   Timezone,
   GraphQLError,
   StorefrontApiVersion,
+  LocalizedFieldKey,
 } from '../../../../shared';
 
 export type {ApiVersion, Capability} from '../../../../shared';
@@ -396,6 +397,12 @@ export interface Localization {
   market: StatefulRemoteSubscribable<Market | undefined>;
 }
 
+export interface LocalizedField {
+  key: LocalizedFieldKey;
+  title: string;
+  value: string;
+}
+
 /**
  * Provides details on the buyer's progression through the checkout.
  */
@@ -734,6 +741,12 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   applyTrackingConsentChange: ApplyTrackingConsentChangeType;
+
+  /**
+   * The API for reading additional fields that are required in checkout under certain circumstances.
+   * For example, some countries require additional fields for customs information or tax identification numbers.
+   */
+  localizedFields?: StatefulRemoteSubscribable<LocalizedField[] | undefined>;
 }
 
 export interface Ui {

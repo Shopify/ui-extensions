@@ -858,6 +858,49 @@ export type CountryCode =
   | 'ZW'
   | 'ZZ';
 
+// For instructions on how to update this list see: https://github.com/Shopify/checkout-web/pull/39534
+/**
+ * A union of keys for the localized fields that are required by certain countries.
+ */
+export type LocalizedFieldKey =
+  | 'SHIPPING_CREDENTIAL_BR'
+  | 'SHIPPING_CREDENTIAL_CL'
+  | 'SHIPPING_CREDENTIAL_CN'
+  | 'SHIPPING_CREDENTIAL_CO'
+  | 'SHIPPING_CREDENTIAL_CR'
+  | 'SHIPPING_CREDENTIAL_EC'
+  | 'SHIPPING_CREDENTIAL_ES'
+  | 'SHIPPING_CREDENTIAL_GT'
+  | 'SHIPPING_CREDENTIAL_ID'
+  | 'SHIPPING_CREDENTIAL_KR'
+  | 'SHIPPING_CREDENTIAL_MY'
+  | 'SHIPPING_CREDENTIAL_MX'
+  | 'SHIPPING_CREDENTIAL_PE'
+  | 'SHIPPING_CREDENTIAL_PT'
+  | 'SHIPPING_CREDENTIAL_PY'
+  | 'SHIPPING_CREDENTIAL_TR'
+  | 'SHIPPING_CREDENTIAL_TW'
+  | 'SHIPPING_CREDENTIAL_TYPE_CO'
+  | 'TAX_CREDENTIAL_BR'
+  | 'TAX_CREDENTIAL_CL'
+  | 'TAX_CREDENTIAL_CO'
+  | 'TAX_CREDENTIAL_CR'
+  | 'TAX_CREDENTIAL_EC'
+  | 'TAX_CREDENTIAL_ES'
+  | 'TAX_CREDENTIAL_GT'
+  | 'TAX_CREDENTIAL_ID'
+  | 'TAX_CREDENTIAL_IT'
+  | 'TAX_CREDENTIAL_MX'
+  | 'TAX_CREDENTIAL_MY'
+  | 'TAX_CREDENTIAL_PE'
+  | 'TAX_CREDENTIAL_PT'
+  | 'TAX_CREDENTIAL_PY'
+  | 'TAX_CREDENTIAL_TR'
+  | 'TAX_CREDENTIAL_TYPE_CO'
+  | 'TAX_CREDENTIAL_TYPE_MX'
+  | 'TAX_CREDENTIAL_USE_MX'
+  | 'TAX_EMAIL_IT';
+
 /**
  * Union of supported storefront API versions
  */
