@@ -858,6 +858,7 @@ export type CountryCode =
   | 'ZW'
   | 'ZZ';
 
+// For instructions on how to update this list see: https://github.com/Shopify/checkout-web/pull/39534
 /**
  * A union of keys for the localized fields that are required by certain countries.
  */
