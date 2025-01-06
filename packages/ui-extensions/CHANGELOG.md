@@ -12,7 +12,7 @@
 
 - [#2487](https://github.com/Shopify/ui-extensions/pull/2487) [`48eb7c31c115d2ff0e3d82cd9cdbe888059d1e7e`](https://github.com/Shopify/ui-extensions/commit/48eb7c31c115d2ff0e3d82cd9cdbe888059d1e7e) Thanks [@aeperea](https://github.com/aeperea)! - Defaulting to string type for enabled features passed to the templates
 
-- [`436df118e4e24eb694f250585dfe439b19d6f190`](https://github.com/Shopify/ui-extensions/commit/436df118e4e24eb694f250585dfe439b19d6f190) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Adds the Localized Fields API and `useLocalizedFields` hook.
+- [`436df118e4e24eb694f250585dfe439b19d6f190`](https://github.com/Shopify/ui-extensions/commit/436df118e4e24eb694f250585dfe439b19d6f190) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Adds the Localized Fields API.
 
 - [#2457](https://github.com/Shopify/ui-extensions/pull/2457) [`4a8c5140266a17a796a8abccb63fa89f54eb9b7e`](https://github.com/Shopify/ui-extensions/commit/4a8c5140266a17a796a8abccb63fa89f54eb9b7e) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Release a new Chat component, chat.render targets and preloads.chat configuration
 
