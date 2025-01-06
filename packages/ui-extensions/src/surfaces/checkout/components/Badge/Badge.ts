@@ -21,7 +21,7 @@ export interface BadgeProps extends VisibilityProps {
   size?: Extract<Size, 'base' | 'small'>;
   /**
    * A label that describes the purpose or contents of the element. When set,
-   * it will be passed as `aria-label` to underlying element and announced to buyers using assistive technologies.
+   * it will announced to buyers using assistive technologies.
    */
   accessibilityLabel?: string;
   /**

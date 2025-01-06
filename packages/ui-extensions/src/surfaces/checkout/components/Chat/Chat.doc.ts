@@ -23,7 +23,7 @@ Use the Chat component to create real-time chat applications.
       description: `
 The App Bridge script for checkout provides APIs that enables a secure communication channel between the Shopify checkout and the embedded application within the Chat iframe. It also offers convenient methods to perform common actions like resizing the iframe from within the application.
 
-After App Bridge is set up in your app, you have access to the \`shopify\` global variable. This variable exposes the following App Bridge functionalities and configuration information:
+After App Bridge is [set up](#about-app-bridge) in your app, you have access to the \`shopify\` global variable. This variable exposes the following App Bridge functionalities and configuration information:
           `,
       type: 'AppBridge',
     },
@@ -57,7 +57,7 @@ After App Bridge is set up in your app, you have access to the \`shopify\` globa
 The \`src\` of the iframe rendered by Chat is provided by the \`preloads\` \`chat\` key in the extension configuration file. Shopify automatically appends query parameters to the URL which allows developers to verify the authenticity of the request and the identity of the merchant. We guarantee these tokens are valid and signed by Shopify.
 
 #### id_token
-The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C) with a TTL of 5 minutes. It can be used can be used to retrieve merchants information on the backend as well as ensure that requests came from a Shopify authenticated source. See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) for more information.
+The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C) with a TTL of 5 minutes. It can be used to retrieve merchants information on the backend as well as ensure that requests came from a Shopify authenticated source. See the [ID Token documentation](https://shopify.dev/docs/apps/build/authentication-authorization/session-tokens) for more information.
 
 #### locale
 The locale of the shop that’s embedding the app, i.e. \`en-CA\`. This information is also available in the \`shopify\` global variable under \`config\`.

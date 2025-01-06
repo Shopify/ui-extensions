@@ -339,6 +339,12 @@ Ensure your extension can use this API by [enabling the \`api_access\` capabilit
       description: `
 You can access the [Storefront GraphQL API](/docs/api/storefront) using global \`fetch()\`.
 Ensure your extension can access the Storefront API via the [\`api_access\` capability](/docs/api/checkout-ui-extensions/configuration#api-access).
+
+The \`shopify:storefront\` protocol will automatically infer your Storefront URL and API version declared in your extension config.
+
+By omitting the API version (recommended), Shopify will use your API version configured in \`shopify.extension.toml\`. To change the API version, simply add it to the URL like \`shopify:storefront/api/2024-04/graphql.json\`.
+
+See [Storefront GraphQL API endpoints](/docs/api/storefront#endpoints) for more information.
       `,
       codeblock: {
         title: 'Accessing the Storefront API with fetch()',

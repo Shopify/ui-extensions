@@ -15,8 +15,8 @@ class ExtensionHasNoTargetError extends Error {
 
 /**
  * Returns the cart line the extension is attached to. This hook can only be used by extensions in the
- * `purchase.cart-line-item.line-components.render`, `purchase.checkout.cart-line-item.render-after`,
- * `purchase.thank-you.cart-line-item.render-after`, and `customer-account.order-status.cart-line-item.render-after`
+ * `purchase.cart-line-item.line-components.render`, `purchase.checkout.cart-line-item.render-after`, and
+ * `purchase.thank-you.cart-line-item.render-after`
  * extension targets. Until version `2023-04`, this hook returned a `PresentmentCartLine` object.
  *
  * > Caution: Deprecated as of version `2023-10`, use `useCartLineTarget()` instead.
@@ -28,7 +28,6 @@ export function useTarget(): CartLine {
     | 'purchase.cart-line-item.line-components.render'
     | 'purchase.checkout.cart-line-item.render-after'
     | 'purchase.thank-you.cart-line-item.render-after'
-    | 'customer-account.order-status.cart-line-item.render-after'
   >();
   if (!api.target) {
     throw new ExtensionHasNoTargetError(api.extension.target);
