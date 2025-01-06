@@ -3,7 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {Size, VisibilityProps} from '../shared';
 import type {IconSource} from '../Icon/Icon';
 
-type Tone = 'default' | 'critical' | 'subdued';
+type Tone = 'default' | 'accent' | 'critical' | 'subdued';
 
 export interface BadgeProps extends VisibilityProps {
   /**
@@ -21,7 +21,7 @@ export interface BadgeProps extends VisibilityProps {
   size?: Extract<Size, 'base' | 'small'>;
   /**
    * A label that describes the purpose or contents of the element. When set,
-   * it will be passed as `aria-label` to underlying element and announced to buyers using assistive technologies.
+   * it will announced to buyers using assistive technologies.
    */
   accessibilityLabel?: string;
   /**
