@@ -1,5 +1,59 @@
 # @shopify/ui-extensions
 
+## 0.0.0
+
+### Minor Changes
+
+- [#2515](https://github.com/Shopify/ui-extensions/pull/2515) [`76f0c1c4f23432ae34750eabc33d051a380c1d60`](https://github.com/Shopify/ui-extensions/commit/76f0c1c4f23432ae34750eabc33d051a380c1d60) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - New UI component `ClipboardItem`. `activateTarget` and `activateAction` properties added to action components.
+
+- [#2470](https://github.com/Shopify/ui-extensions/pull/2470) [`8cec076417bf2d5195eb095efb761e7b0d4ec6e8`](https://github.com/Shopify/ui-extensions/commit/8cec076417bf2d5195eb095efb761e7b0d4ec6e8) Thanks [@aeperea](https://github.com/aeperea)! - Passing a new icon type to the segment templates
+
+- [#2537](https://github.com/Shopify/ui-extensions/pull/2537) [`7297c37f77e55f4e1c0fb7761940dcde64c5822e`](https://github.com/Shopify/ui-extensions/commit/7297c37f77e55f4e1c0fb7761940dcde64c5822e) Thanks [@merkoyep](https://github.com/merkoyep)! - Image and Box component updates
+
+- [#2487](https://github.com/Shopify/ui-extensions/pull/2487) [`48eb7c31c115d2ff0e3d82cd9cdbe888059d1e7e`](https://github.com/Shopify/ui-extensions/commit/48eb7c31c115d2ff0e3d82cd9cdbe888059d1e7e) Thanks [@aeperea](https://github.com/aeperea)! - Defaulting to string type for enabled features passed to the templates
+
+- [`436df118e4e24eb694f250585dfe439b19d6f190`](https://github.com/Shopify/ui-extensions/commit/436df118e4e24eb694f250585dfe439b19d6f190) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Adds the Localized Fields API and `useLocalizedFields` hook.
+
+- [#2457](https://github.com/Shopify/ui-extensions/pull/2457) [`4a8c5140266a17a796a8abccb63fa89f54eb9b7e`](https://github.com/Shopify/ui-extensions/commit/4a8c5140266a17a796a8abccb63fa89f54eb9b7e) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Release a new Chat component, chat.render targets and preloads.chat configuration
+
+- [#2527](https://github.com/Shopify/ui-extensions/pull/2527) [`a0ee371b5000d865d0c9ecaac285a063c3a8256e`](https://github.com/Shopify/ui-extensions/commit/a0ee371b5000d865d0c9ecaac285a063c3a8256e) Thanks [@robin-drexler](https://github.com/robin-drexler)! - expose ClipboardItem to customer accounts extensions
+
+- [#2458](https://github.com/Shopify/ui-extensions/pull/2458) [`e1e195c66f5153def3aa9ef3121b4ed6f1d4d251`](https://github.com/Shopify/ui-extensions/commit/e1e195c66f5153def3aa9ef3121b4ed6f1d4d251) Thanks [@elanalynn](https://github.com/elanalynn)! - Add shouldRender method to admin ui-extensions
+
+- [#2528](https://github.com/Shopify/ui-extensions/pull/2528) [`85a6c8cb425fe85301b78a73b11ba2d3bbb8095e`](https://github.com/Shopify/ui-extensions/commit/85a6c8cb425fe85301b78a73b11ba2d3bbb8095e) Thanks [@NathanJolly](https://github.com/NathanJolly)! - Removed deprecated props, components, and APIs
+
+- [#2416](https://github.com/Shopify/ui-extensions/pull/2416) [`9ab3a8b4dda750ffb76dabd63eab70be7bcf27a9`](https://github.com/Shopify/ui-extensions/commit/9ab3a8b4dda750ffb76dabd63eab70be7bcf27a9) Thanks [@NathanJolly](https://github.com/NathanJolly)! - (POS) Add PrintApi and PrintPreview
+
+- [#2379](https://github.com/Shopify/ui-extensions/pull/2379) [`d37623a29ffd145ecccd81d8d6f9344b37d8ff41`](https://github.com/Shopify/ui-extensions/commit/d37623a29ffd145ecccd81d8d6f9344b37d8ff41) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Add Picker
+
+- [#2545](https://github.com/Shopify/ui-extensions/pull/2545) [`9bbc772ec246e1bae1ea75bc851fdb3bb8489e4d`](https://github.com/Shopify/ui-extensions/commit/9bbc772ec246e1bae1ea75bc851fdb3bb8489e4d) Thanks [@NathanJolly](https://github.com/NathanJolly)! - Added support for Image sizes. Added Box.
+
+- [#2535](https://github.com/Shopify/ui-extensions/pull/2535) [`0b39f30b8f5b89e4d32bf1ffa98a8daac7a94184`](https://github.com/Shopify/ui-extensions/commit/0b39f30b8f5b89e4d32bf1ffa98a8daac7a94184) Thanks [@js-goupil](https://github.com/js-goupil)! - Updated the POS Stack component to spec
+
+- [#2426](https://github.com/Shopify/ui-extensions/pull/2426) [`317f49a5271b8241c995ed53714164a01a2bcca6`](https://github.com/Shopify/ui-extensions/commit/317f49a5271b8241c995ed53714164a01a2bcca6) Thanks [@stevenpslade](https://github.com/stevenpslade)! - Add metafields to ShippingOption
+
+- [#2551](https://github.com/Shopify/ui-extensions/pull/2551) [`cae2ae9b9a818bc3821c498be796e8d68051328e`](https://github.com/Shopify/ui-extensions/commit/cae2ae9b9a818bc3821c498be796e8d68051328e) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Removed customer account targets as valid targets for checkout UI extensions. Use [customer account UI extensions](https://shopify.dev/docs/api/customer-account-ui-extensions) instead.
+
+- [#2534](https://github.com/Shopify/ui-extensions/pull/2534) [`12486707b5fb9d5c9c3b471434297aeb55936b39`](https://github.com/Shopify/ui-extensions/commit/12486707b5fb9d5c9c3b471434297aeb55936b39) Thanks [@devisscher](https://github.com/devisscher)! - Add discount function settings api
+
+- [#2531](https://github.com/Shopify/ui-extensions/pull/2531) [`74b06c4a3010a3e270c64332f3afd1b17c16d3a5`](https://github.com/Shopify/ui-extensions/commit/74b06c4a3010a3e270c64332f3afd1b17c16d3a5) Thanks [@vctrchu](https://github.com/vctrchu)! - Add bulkUpdateCart function to POS useCartApi
+
+### Patch Changes
+
+- [#2441](https://github.com/Shopify/ui-extensions/pull/2441) [`9ac908787a77f7914386ed9918777ef3dbacf9fa`](https://github.com/Shopify/ui-extensions/commit/9ac908787a77f7914386ed9918777ef3dbacf9fa) Thanks [@vctrchu](https://github.com/vctrchu)! - Make POS UI Ext PrintAPI async
+
+- [#2428](https://github.com/Shopify/ui-extensions/pull/2428) [`ad25544dcb9813a321dd105bc7c07304357a0dd7`](https://github.com/Shopify/ui-extensions/commit/ad25544dcb9813a321dd105bc7c07304357a0dd7) Thanks [@vctrchu](https://github.com/vctrchu)! - POS UI Ext PrintAPI src non-optional
+
+- [#2485](https://github.com/Shopify/ui-extensions/pull/2485) [`b7d0232144f0145f3220f1490bddd8e5fa3d9d54`](https://github.com/Shopify/ui-extensions/commit/b7d0232144f0145f3220f1490bddd8e5fa3d9d54) Thanks [@elanalynn](https://github.com/elanalynn)! - Remove shouldRender method
+
+- [#2491](https://github.com/Shopify/ui-extensions/pull/2491) [`1e1f82e4f05af62246421851638db5dff4c79046`](https://github.com/Shopify/ui-extensions/commit/1e1f82e4f05af62246421851638db5dff4c79046) Thanks [@belalsj](https://github.com/belalsj)! - AdminBlock remove summary prop and add collapsedSummary
+
+- [#2493](https://github.com/Shopify/ui-extensions/pull/2493) [`4f8ebb54dea1a1b93d4c8e515b1e0f8f32651caa`](https://github.com/Shopify/ui-extensions/commit/4f8ebb54dea1a1b93d4c8e515b1e0f8f32651caa) Thanks [@vividviolet](https://github.com/vividviolet)! - Fix shopify global declaration
+
+- [#2496](https://github.com/Shopify/ui-extensions/pull/2496) [`c40904b88fccd4ce1023c0d986ceb7e0b3b21f26`](https://github.com/Shopify/ui-extensions/commit/c40904b88fccd4ce1023c0d986ceb7e0b3b21f26) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Sync picker and resourcePicker docs with app-bridge
+
+- [#2501](https://github.com/Shopify/ui-extensions/pull/2501) [`97a7f5255e7928bde649ce26735d7a6a74e9a8ef`](https://github.com/Shopify/ui-extensions/commit/97a7f5255e7928bde649ce26735d7a6a74e9a8ef) Thanks [@belalsj](https://github.com/belalsj)! - Remove shouldRender method as it will not be used.
+
 ## 2024.10.0
 
 ### Major Changes
