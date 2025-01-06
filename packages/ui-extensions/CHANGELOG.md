@@ -1,6 +1,6 @@
 # @shopify/ui-extensions
 
-## 0.0.0
+## 2025.1.0
 
 ### Minor Changes
 
