@@ -3,7 +3,7 @@ import type {LandingTemplateSchema} from '@shopify/generate-docs';
 const exampleCodePath = '../reference/examples/cart-instructions';
 
 const data: LandingTemplateSchema = {
-  title: 'Updating to 2024-10',
+  title: 'Updating to 2025-01',
   description: `
 Some checkouts may be created with [cart instructions](/docs/api/checkout-ui-extensions/apis/cart-instructions) that prevent buyers from making certain changes to their checkout.
 
@@ -38,7 +38,7 @@ As of version \`2024-07\`, UI extensions must check for instructions before call
       sectionContent: `
     You will need to check for cart instructions before calling the following APIs:
 
-| Extension API | As of July 2024 |
+| Extension API | As of January 2025 |
 |  ----  |  ----- |
 | applyAttributeChange() | Attributes cannot be modified on draft order checkouts. |
 | applyShippingAddressChange() | Buyers cannot change the address on a draft order checkout if it has fixed shipping rates. |

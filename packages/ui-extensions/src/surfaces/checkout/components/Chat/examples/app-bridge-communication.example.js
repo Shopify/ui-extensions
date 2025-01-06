@@ -8,7 +8,7 @@ shopify.extension.port.onMessage = async (event) => {
   if (event.data.action === 'ping') {
     buyerFirstName = event.data.buyer.firstName;
 
-    await shopify.extension.messagePort.postMessage({
+    await shopify.extension.port.postMessage({
       action: 'pong',
     });
   }

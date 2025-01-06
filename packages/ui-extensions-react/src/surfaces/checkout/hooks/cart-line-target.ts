@@ -11,14 +11,12 @@ import {useSubscription} from './subscription';
  * - `purchase.cart-line-item.line-components.render`
  * - `purchase.checkout.cart-line-item.render-after`
  * - `purchase.thank-you.cart-line-item.render-after`
- * - 'customer-account.order-status.cart-line-item.render-after'
  */
 export function useCartLineTarget(): CartLine {
   const api = useApi<
     | 'purchase.cart-line-item.line-components.render'
     | 'purchase.checkout.cart-line-item.render-after'
     | 'purchase.thank-you.cart-line-item.render-after'
-    | 'customer-account.order-status.cart-line-item.render-after'
   >();
   if (!api.target) {
     throw new ExtensionHasNoTargetError(
