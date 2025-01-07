@@ -72,6 +72,7 @@ if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
+copy_generated_docs_to_shopify_dev() {
 # Copy the generated docs to shopify-dev
 if [ -d $SHOPIFY_DEV_PATH ]; then
   mkdir -p $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
@@ -92,5 +93,14 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
     echo "Docs: https://shopify-dev.myshopify.io/docs/api/checkout-ui-extensions"
   fi
 else
-  echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
+    echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
+  fi
+}
+
+if [ -d $SHOPIFY_DEV_PATH ]; then
+  copy_generated_docs_to_shopify_dev
+else
+  # We could be in the monorepo and need to go up several more directories to find shopify-dev
+  SHOPIFY_DEV_PATH="../../../../../../shopify-dev"
+  copy_generated_docs_to_shopify_dev
 fi
