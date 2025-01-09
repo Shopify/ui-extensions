@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'examples',
       title: 'Examples',
       sectionContent: `
-The following examples will demonstrate some, but not all of the abilities of the \`Stack\` component. For simplicity, these examples use the React version of the \`Stack\` component, but the same results will be achieved by using the same props with the regular JS library.
+The following examples will demonstrate some, but not all of the abilities of the \`Stack\` component. For simplicity, these examples use the React version of the \`Stack\` component, but the same results will be achieved by using the same properties with the regular JS library.
 `,
     },
     {
@@ -78,7 +78,7 @@ You can also center elements in your \`inline\` stack. For this, you can specify
       type: 'Generic',
       anchorLink: 'inline-align-items-center',
       title: 'Inline Stack centered vertical axis centering',
-      sectionContent: `Here we have an \`inline\` stack with two children. The first is a block stack with two buttons, and the second is a single button. Since the first element has a greater intrinsic height, our main inline stack's intrinsic height is also increased. We can center both children component along the main axis (x-axis) by setting the \`alignItems\` prop to \`center\`.`,
+      sectionContent: `Here we have an \`inline\` stack with two children. The first is a block stack with two buttons, and the second is a single button. Since the first element has a greater intrinsic height, our main inline stack's intrinsic height is also increased. We can center both children component along the main axis (x-axis) by setting the \`alignItems\` property to \`center\`.`,
       codeblock: generateCodeBlockForStack(
         'Inline Stack with children at the end',
         'inline-align-items-center',
@@ -90,7 +90,7 @@ You can also center elements in your \`inline\` stack. For this, you can specify
       anchorLink: 'block',
       title: 'Block Stack',
       sectionContent: `
-You can specify your \`Stack\` to layout its children vertically by setting the \`direction\` prop to \`block\`.
+You can specify your \`Stack\` to layout its children vertically by setting the \`direction\` property to \`block\`.
   `,
       codeblock: generateCodeBlockForStack('Block Stack', 'block'),
       image: 'extension-stack-block.png',
@@ -132,9 +132,9 @@ Let's put the \`Selectable\` aside for now; we'll get to that later. The first s
 
 The first child stack (the block stack) simply has a gap of 100 to space out the two \`Text\` components.
 
-The second child stack (the inline stack) has a gap of 600 to space out the \`Text\` and the \`Icon\`. We also set the \`alignItems\` and \`alignContent\` props to \`center\` to center the \`Text\` and \`Icon\` within their stack.
+The second child stack (the inline stack) has a gap of 600 to space out the \`Text\` and the \`Icon\`. We also set the \`alignItems\` and \`alignContent\` properties to \`center\` to center the \`Text\` and \`Icon\` within their stack.
 
-However, we also need to the \`alignItems\` and \`alignContent\` props to \`center\` on the parent inline stack to center the two children stacks along the vertical axis.
+However, we also need to the \`alignItems\` and \`alignContent\` properties to \`center\` on the parent inline stack to center the two children stacks along the vertical axis.
 
 Finally, we can return to the \`Selectable\`. You'll notice that we've wrapped the entire stack in a \`Selectable\`. This makes the entire stack within the \`Selectable\` become a tappable surface, with an \`onPress\` handler, which is part of the \`Selectable\` component. It also gives a nice highlight effect when you tap, as you can see in the screenshot.
 `,
