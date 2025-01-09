@@ -5,7 +5,7 @@
     alignContent="center"
     alignItems="center"
     inlineSize="100%"
-    paddingInline="400"
+    paddingInline="450"
     blockSize="50%"
     gap="200"
   >

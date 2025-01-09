@@ -2,7 +2,7 @@
   <Stack
     direction="block"
     justifyContent="space-between"
-    paddingInline="400"
+    paddingInline="450"
     blockSize="50%"
     gap="200"
   >
