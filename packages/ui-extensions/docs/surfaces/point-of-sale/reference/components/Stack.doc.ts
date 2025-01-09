@@ -77,10 +77,10 @@ You can also center elements in your \`inline\` stack. For this, you can specify
     {
       type: 'Generic',
       anchorLink: 'inline-align-items-center',
-      title: 'Inline Stack centered vertical axis centering',
+      title: 'Inline Stack with vertical axis centering',
       sectionContent: `Here we have an \`inline\` stack with two children. The first is a block stack with two buttons, and the second is a single button. Since the first element has a greater intrinsic height, our main inline stack's intrinsic height is also increased. We can center both children component along the main axis (x-axis) by setting the \`alignItems\` property to \`center\`.`,
       codeblock: generateCodeBlockForStack(
-        'Inline Stack with children at the end',
+        'Inline Stack with vertical axis centering',
         'inline-align-items-center',
       ),
       image: 'extension-stack-inline-align-items-center.png',
