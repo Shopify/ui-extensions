@@ -37,91 +37,92 @@ The following examples will demonstrate some, but not all of the abilities of th
     },
     {
       type: 'Generic',
-      anchorLink: 'horizontal-default',
-      title: 'Horizontal Stack with default values',
+      anchorLink: 'inline-default',
+      title: 'Inline Stack with default values',
       sectionContent: `
-In this example, we specify \`horizontal\` for the \`direction\`. We don't specify the \`flex\`, which means it's 0 by default. However, \`horizontal\` stacks will always stretch to fill from the left to the right of the screen. As you can see, we have two small buttons occupying just the amount of space that they need, at the left side of the \`Stack\`. This is because \`alignment\` is set to \`flex-end\` by default.
+In this example, we specify \`inline\` for the \`direction\`. We don't specify the \`flex\`, which means it's 0 by default. However, \`horizontal\` stacks will always stretch to fill from the left to the right of the screen. As you can see, we have two small buttons occupying just the amount of space that they need, at the left side of the \`Stack\`. This is because \`alignment\` is set to \`flex-end\` by default.
 `,
       codeblock: generateCodeBlockForStack(
-        'Horizontal Stack with default values',
-        'horizontal-default',
+        'Inline Stack with default values',
+        'inline-default',
       ),
-      image: 'extension-stack-horizontal.png',
+      image: 'extension-stack-inline.png',
     },
     {
       type: 'Generic',
-      anchorLink: 'horizontal-flex-children',
-      title: 'Horizontal Stack with flexChildren',
+      anchorLink: 'inline-flex-children',
+      title: 'Inline Stack with flexChildren',
       sectionContent: `
-Similar to the example above, but this time we are specifying \`flexChildren\` to be \`true\`. This means that the two buttons will take up the max amount of space that they can within the \`horizontal\` stack.
+Similar to the example above, but this time we are specifying \`flexChildren\` to be \`true\`. This means that the two buttons will take up the max amount of space that they can within the \`inline\` stack.
       `,
       codeblock: generateCodeBlockForStack(
-        'Horizontal Stack with flexChildren',
-        'horizontal-flex-children',
+        'Inline Stack with flexChildren',
+        'inline-flex-children',
       ),
-      image: 'extension-stack-horizontal-flexChildren.png',
+      image: 'extension-stack-inline-flexChildren.png',
     },
     {
       type: 'Generic',
-      anchorLink: 'horizontal-center-children',
-      title: 'Horizontal Stack with centered children',
+      anchorLink: 'inline-center-children',
+      title: 'Inline Stack with centered children',
       sectionContent: `
-You can also center elements in your \`horizontal\` stack. For this, you can specify the \`alignment\` to be \`center\`. However, in this case you also want \`flexChildren\` to be \`false\` (which is the default), so that the children can take up the minimal amount of space that they need, and be centered.
+You can also center elements in your \`inline\` stack. For this, you can specify the \`alignment\` to be \`center\`. However, in this case you also want \`flexChildren\` to be \`false\` (which is the default), so that the children can take up the minimal amount of space that they need, and be centered.
 `,
       codeblock: generateCodeBlockForStack(
-        'Horizontal Stack with centered children',
-        'horizontal-center-children',
+        'Inline Stack with centered children',
+        'inline-center-children',
       ),
-      image: 'extension-stack-horizontal-centered.png',
+      image: 'extension-stack-inline-centered.png',
     },
     {
       type: 'Generic',
-      anchorLink: 'horizontal-end-children',
-      title: 'Horizontal Stack with children at the end',
+      anchorLink: 'inline-align-items-center',
+      title:
+        'Inline Stack with nested block stack and single child that are center aligned on the main axis',
       sectionContent: `
-To make the children be aligned to the end of your \`horizontal\` container, you just need to specify \`alignment\` to be \`flex-end\`. Note that in the first example, the children were at the start of the container. This is because the default value is \`flex-start\`.
+To make the children be aligned to the end of your \`inline\` container, you just need to specify \`alignment\` to be \`flex-end\`. Note that in the first example, the children were at the start of the container. This is because the default value is \`flex-start\`.
 `,
       codeblock: generateCodeBlockForStack(
-        'Horizontal Stack with children at the end',
-        'horizontal-end-children',
+        'Inline Stack with children at the end',
+        'inline-align-items-center',
       ),
-      image: 'extension-stack-horizontal-flex-end.png',
+      image: 'inline-align-items-center.png',
     },
     {
       type: 'Generic',
-      anchorLink: 'vertical',
-      title: 'Vertical Stack',
+      anchorLink: 'block',
+      title: 'Block Stack',
       sectionContent: `
-You can specify your \`Stack\` to layout its children vertically by setting \`direction\` to \`vertical\`.
+You can specify your \`Stack\` to layout its children vertically by setting the \`direction\` prop to \`block\`.
   `,
-      codeblock: generateCodeBlockForStack('Vertical Stack', 'vertical'),
+      codeblock: generateCodeBlockForStack('Block Stack', 'block'),
       image: 'extension-stack-vertical.png',
     },
     {
       type: 'Generic',
-      anchorLink: 'vertical-center-children',
-      title: 'Vertical Stack with centered children',
+      anchorLink: 'block-space-between',
+      title: 'Block Stack with space between children',
       sectionContent: `
 You can center your stack's children along the \`vertical\` axis by setting the \`alignment\` to \`center\`. However, because \`vertical\` stacks only take up the minimal amount of \`vertical\` space required when \`flex\` is set to \`0\` (which is by default), you will need to set \`flex\` to \`1\`
 `,
       codeblock: generateCodeBlockForStack(
-        'Vertical Stack with centered children',
-        'vertical-center-children',
+        'Block Stack with space between children',
+        'block-space-between',
       ),
-      image: 'extension-stack-vertical-center.png',
+      image: 'block-space-between.png',
     },
     {
       type: 'Generic',
-      anchorLink: 'vertical-bottom-children',
-      title: 'Vertical Stack with children at the bottom',
+      anchorLink: 'block-center-all',
+      title: 'Block Stack centered on both axes',
       sectionContent: `
-You can set your children to the bottom of your \`vertical\` stack by setting \`alignment\` to \`flex-end\`. As explained in the previous example, you also need to set \`flex\` to \`1\`, since the default is \`0\`, which will make your container only take up the minimum amount of space it needs.
+You can set your children to the bottom of your \`block\` stack by setting \`alignment\` to \`flex-end\`. As explained in the previous example, you also need to set \`flex\` to \`1\`, since the default is \`0\`, which will make your container only take up the minimum amount of space it needs.
 `,
       codeblock: generateCodeBlockForStack(
-        'Vertical Stack with children at the bottom',
-        'vertical-bottom-children',
+        'Block Stack centered on both axes',
+        'block-center-all',
       ),
-      image: 'extension-stack-vertical-flex-end.png',
+      image: 'block-center-all.png',
     },
     {
       type: 'Generic',
@@ -149,7 +150,7 @@ Finally, we can return to the \`Selectable\`. You'll notice that we've wrapped t
   thumbnail: 'stack-thumbnail.png',
   defaultExample: {
     image: 'stack-default.png',
-    codeblock: generateCodeBlockForStack('Stack', 'horizontal-default'),
+    codeblock: generateCodeBlockForStack('Stack', 'inline-default'),
   },
 };
 
