@@ -16,7 +16,7 @@ const generateCodeBlockForStack = (title: string, fileName: string) => {
 const data: ReferenceEntityTemplateSchema = {
   name: 'Stack',
   description:
-    'A container for other components that allows them to be stacked horizontally or vertically. When building complex UIs, this will be your primary building block.',
+    'A container for other components that allows them to be stacked horizontally or vertically. When building complex UIs, this will be your primary building block. Stacks always wrap the content to the next column or row.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
