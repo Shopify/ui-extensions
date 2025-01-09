@@ -39,6 +39,20 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
     },
     {
       type: 'Generic',
+      anchorLink: '202504',
+      title: '2025.04',
+      sectionContent: `
+- Added in POS version: N/A
+- Removed in POS version: N/A
+- Release day: N/A
+
+### Features
+
+- Added support for the ${TargetLink.PosTransactionCompletedObserve} target.
+      `,
+    },
+    {
+      type: 'Generic',
       anchorLink: '202501',
       title: '2025.01',
       sectionContent: `
@@ -47,6 +61,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Release day: 1/6/2025
 
 ### Breaking Changes
+
 - Removed the deprecated ActionItem component. Use a [Button](/docs/api/pos-ui-extensions/components/button) instead.
 - Removed the deprecated SmartGridApi. Use the [ActionApi](/docs/api/pos-ui-extensions/apis/action-api) instead.
 - Removed the deprecated DiscountType. Use [CartDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-applycartdiscount) and [LineItemDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-setlineitemdiscount) instead.
@@ -64,7 +79,6 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 - Added [PrintApi](/docs/api/pos-ui-extensions/apis/print-api) and a [PrintPreview](/docs/api/pos-ui-extensions/components/printpreview) component.
 - Added \`currency\` prop to the [SessionApi](/docs/api/pos-ui-extensions/apis/session-api).
-- Added the 'pos.purchase-complete.observe' target.
 - [Cart API](/docs/api/pos-ui-extensions/apis/cart-api) updates:
   - Added \`bulkUpdateCart\` function for single-operation cart updates.
   - The \`addLineItem\` and \`addCustomSale\` functions now return a UUID for the added line item.
