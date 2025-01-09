@@ -119,7 +119,7 @@ You can center your block stack on the vertical axis by setting \`justifyContent
         'Block Stack centered on both axes',
         'block-center-all',
       ),
-      image: 'block-center-all.png',
+      image: 'extension-stack-block-center-all.png',
     },
     {
       type: 'Generic',
