@@ -15,7 +15,6 @@ import {
 type Components = typeof import('./components');
 
 type AllComponents = Components[keyof Components];
-
 /**
  * A UI extension will register for one or more extension targets using `shopify.extend()`.
  * An extension target in a UI extension is a plain JavaScript function.
@@ -37,6 +36,12 @@ export interface OrderStatusExtensionTargets {
    * The [placements](https://shopify.dev/docs/api/checkout-ui-extensions/extension-targets-overview#placements) for dynamic extension targets can be previewed during development
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#dynamic-extension-targets).
    */
+  /** Overlay Modal extension for Order Status*/
+  'customer-account.order-status.overlay.render': RenderExtension<
+  OrderStatusApi<'customer-account.order-status.overlay.render'> &
+    StandardApi<'customer-account.order-status.overlay.render'>,
+  AnyComponent
+>;
   'customer-account.order-status.block.render': RenderExtension<
     OrderStatusApi<'customer-account.order-status.block.render'> &
       StandardApi<'customer-account.order-status.block.render'>,
@@ -151,6 +156,11 @@ export interface CustomerAccountExtensionTargets {
       CompanyLocationApi,
     AllComponents
   >;
+  /** Overlay Modal extension for Profiles */
+  'customer-account.profile.overlay.render': RenderExtension<
+  StandardApi<'customer-account.profile.overlay.render'>,
+  AllComponents
+>;
   'customer-account.order.action.menu-item.render': RenderExtension<
     StandardApi & OrderApi,
     AllComponents
@@ -159,6 +169,11 @@ export interface CustomerAccountExtensionTargets {
     StandardApi & ActionExtensionApi & OrderApi,
     AllComponents
   >;
+  /** Overlay Modal extension for Order Index */
+  'customer-account.order.overlay.render': RenderExtension<
+  StandardApi & OrderApi,
+  AllComponents
+>;
 }
 
 export type CustomerAccountExtensionTarget =
