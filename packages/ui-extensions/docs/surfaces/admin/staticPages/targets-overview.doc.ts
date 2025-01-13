@@ -249,25 +249,25 @@ You register targets in your \`shopify.extension.toml\` and inside the Javascrip
         {
           title: 'Order details',
           description:
-            'This page shows information about a single order. The `admin.order-details.print-action.render` target is available on this page.',
+            'This page shows information about a single order. The `admin.order-details.print-action.render` target is available on this page. You can control the visibility of the print action by using the admin.order-details.print-action.should-render target',
           image: 'admin.order-details.print-action.render.png',
         },
         {
           title: 'Product details',
           description:
-            'This page shows information about a single product. The `admin.product-details.print-action.render` target is available on this page.',
+            'This page shows information about a single product. The `admin.product-details.print-action.render` target is available on this page. You can control the visibility of the print action by using the admin.product-details.print-action.should-render target',
           image: 'admin.product-details.print-action.render.png',
         },
         {
           title: 'Order index selection',
           description:
-            'This page shows a table of multiple orders. The `admin.order-index.selection-print-action.render` target is available on this page when multiple orders are selected.',
+            'This page shows a table of multiple orders. The `admin.order-index.selection-print-action.render` target is available on this page when multiple orders are selected. You can control the visibility of the print action by using the admin.order-index.selection-print-action.should-render target',
           image: 'admin.order-index.selection-print-action.render.png',
         },
         {
           title: 'Product index selection',
           description:
-            'This page shows a table of multiple products. The `admin.product-index.selection-print-action.render` target is available on this page when multiple products are selected.',
+            'This page shows a table of multiple products. The `admin.product-index.selection-print-action.render` target is available on this page when multiple products are selected. You can control the visibility of the print action by using the admin.product-index.selection-print-action.should-render target',
           image: 'admin.product-index.selection-print-action.render.png',
         },
       ],
