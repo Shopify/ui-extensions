@@ -30,7 +30,7 @@ interface BackgroundProps {
   /**
    * Adjust the background of the element.
    *
-   * @default: 'transparent'
+   * @default 'transparent'
    */
   background?: BackgroundColorKeyword;
 }
@@ -1779,7 +1779,7 @@ interface SectionProps$1 extends GlobalProps {
    * to the edge of the Section. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
-   * @default: "auto"
+   * @default "auto"
    */
   padding?: 'auto' | 'none';
 }
@@ -2794,6 +2794,9 @@ export type ButtonBaseProps = Required<
     | 'target'
     | 'href'
     | 'download'
+    | 'onBlur'
+    | 'onClick'
+    | 'onFocus'
   >
 >;
 export interface ButtonProps extends ButtonBaseProps {
