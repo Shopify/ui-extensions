@@ -6,4 +6,4 @@
 
 ## Related components
 
-- [`ChoiceList`](https://github.com/Shopify/checkout-web/tree/main/packages/checkout-ui-extensions/src/components/ChoiceList): Creates a group of related options for customers to choose from. `ChoiceList` can be made up of radio buttons or checkboxes.
+- [`ChoiceList`](https://github.com/Shopify/ui-extensions/tree/main/packages/checkout-ui-extensions/src/components/ChoiceList): Creates a group of related options for customers to choose from. `ChoiceList` can be made up of radio buttons or checkboxes.

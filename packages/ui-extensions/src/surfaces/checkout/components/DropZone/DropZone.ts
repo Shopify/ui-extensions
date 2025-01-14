@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import {IdProps} from '../shared';
+
+import type {IdProps} from '../shared';
 
 export interface DropZoneProps extends IdProps {
   /**
@@ -19,7 +20,7 @@ export interface DropZoneProps extends IdProps {
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    */
-  error?: string | boolean;
+  error?: string;
 
   /**
    * Content to use as the field label.
@@ -66,7 +67,6 @@ export interface DropZoneProps extends IdProps {
 
   /**
    * Callback when rejected files are dropped. Files are rejected based on the `accept` prop.
-   *
    */
   onDropRejected?(files: File[]): void;
 }

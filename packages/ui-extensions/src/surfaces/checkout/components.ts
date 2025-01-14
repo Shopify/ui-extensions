@@ -60,6 +60,9 @@ export type {DisclosureProps} from './components/Disclosure/Disclosure';
 export {Divider} from './components/Divider/Divider';
 export type {DividerProps} from './components/Divider/Divider';
 
+export {DropZone} from './components/DropZone/DropZone';
+export type {DropZoneProps} from './components/DropZone/DropZone';
+
 export {Form} from './components/Form/Form';
 export type {FormProps} from './components/Form/Form';
 

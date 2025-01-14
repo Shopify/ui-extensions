@@ -138,6 +138,9 @@ export type {DisclosureProps} from './checkout/components/Disclosure/Disclosure'
 export {Divider} from './checkout/components/Divider/Divider';
 export type {DividerProps} from './checkout/components/Divider/Divider';
 
+export {DropZone} from './checkout/components/DropZone/DropZone';
+export type {DropZoneProps} from './checkout/components/DropZone/DropZone';
+
 export {Form} from './checkout/components/Form/Form';
 export type {FormProps} from './checkout/components/Form/Form';
 

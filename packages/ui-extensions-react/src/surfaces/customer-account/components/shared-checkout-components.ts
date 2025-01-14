@@ -33,6 +33,8 @@ export {
   type DisclosureProps,
   Divider,
   type DividerProps,
+  DropZone,
+  type DropZoneProps,
   Form,
   type FormProps,
   Grid,

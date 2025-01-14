@@ -6,5 +6,5 @@
 
 ## Related components
 
-- [`Choice`](https://github.com/Shopify/checkout-web/tree/main/packages/checkout-ui-extensions/src/components/Choice): The options inside the `ChoiceList` component.
-- [`Checkbox`](https://github.com/Shopify/checkout-web/tree/main/packages/checkout-ui-extensions/src/components/Checkbox): Gives customers a single binary option, such as signed up for marketing, or agreeing to terms and conditions.
+- [`Choice`](https://github.com/Shopify/ui-extensions/tree/main/packages/checkout-ui-extensions/src/components/Choice): The options inside the `ChoiceList` component.
+- [`Checkbox`](https://github.com/Shopify/ui-extensions/tree/main/packages/checkout-ui-extensions/src/components/Checkbox): Gives customers a single binary option, such as signed up for marketing, or agreeing to terms and conditions.
