@@ -9,17 +9,7 @@ const generateCodeBlockForPrintApi = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Print API',
-  description: `The Print API enables document printing functionality in your point of sale extension. Use this API to trigger the native print dialog for your documents.
-
-The \`print()\` method accepts either:
-- A relative path that will be appended to your app's [application_url](/docs/apps/build/cli-for-apps/app-configuration#application_url)
-- A full URL to your app's backend that will be used to return the document to print
-
-Supported document types:
-- HTML documents (recommended for best printing experience)
-- Text files
-- Image files (PNG, JPEG, etc.)
-- PDF files (Note: On Android devices, PDFs will be downloaded and must be printed using an external application)`,
+  description: `The Print API enables document printing through the device's native print dialog (such as AirPrint on iOS or the system print dialog on Android). This API is designed for printing documents to standard printers, and does not support direct printing to receipt printers.`,
   isVisualComponent: false,
   type: 'APIs',
   definitions: [
