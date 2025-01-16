@@ -48,7 +48,8 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 ### Features
 
-- Added support for the ${TargetLink.PosTransactionCompletedObserve} target.
+- Added support for the ${TargetLink.PosTransactionCompleteObserve} target.
+- Added support for cash tracking session. ${TargetLink.PosCashTrackingSessionStartObserve}, ${TargetLink.PosCashTrackingSessionCancelObserve}, ${TargetLink.PosCashTrackingSessionCompleteObserve} targets.
       `,
     },
     {

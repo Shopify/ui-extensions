@@ -16,7 +16,10 @@ export enum ExtensionTargetType {
   PosDraftOrderDetailsActionMenuItemRender = 'pos.draft-order-details.action.menu-item.render',
   PosDraftOrderDetailsActionRender = 'pos.draft-order-details.action.render',
   PosDraftOrderDetailsBlockRender = 'pos.draft-order-details.block.render',
-  PosTransactionCompletedObserve = 'pos.transaction-completed.observe',
+  PosTransactionCompleteObserve = 'pos.transaction-complete.event.observe',
+  PosCashTrackingSessionStartObserve = 'pos.cash-tracking-session-start.event.observe',
+  PosCashTrackingSessionCancelObserve = 'pos.cash-tracking-session-cancel.event.observe',
+  PosCashTrackingSessionCompleteObserve = 'pos.cash-tracking-session-complete.event.observe',
 }
 
 export enum TargetLink {
@@ -37,5 +40,8 @@ export enum TargetLink {
   PosDraftOrderDetailsActionMenuItemRender = '[pos.draft-order-details.action.menu-item.render](/docs/api/pos-ui-extensions/targets/draft-order-details/pos-draft-order-details-action-menu-item-render)',
   PosDraftOrderDetailsActionRender = '[pos.draft-order-details.action.render](/docs/api/pos-ui-extensions/targets/draft-order-details/pos-draft-order-details-action-render)',
   PosDraftOrderDetailsBlockRender = '[pos.draft-order-details.block.render](/docs/api/pos-ui-extensions/targets/draft-order-details/pos-draft-order-details-block-render)',
-  PosTransactionCompletedObserve = '[pos.transaction-completed.observe](/docs/api/pos-ui-extensions/targets/post-purchase/pos-transaction-completed-observe)',
+  PosTransactionCompleteObserve = '[pos.transaction-complete.event.observe](/docs/api/pos-ui-extensions/targets/post-purchase/pos-transaction-complete-observe)',
+  PosCashTrackingSessionStartObserve = '[pos.cash-tracking-session-start.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-start-observe)',
+  PosCashTrackingSessionCancelObserve = '[pos.cash-tracking-session-cancel.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-cancel-observe)',
+  PosCashTrackingSessionCompleteObserve = '[pos.cash-tracking-session-complete.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-complete-observe)',
 }

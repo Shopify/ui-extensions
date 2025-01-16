@@ -2,7 +2,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosTransactionCompletedObserve,
+  name: ExtensionTargetType.PosTransactionCompleteObserve,
   description: 'An event extension target that observes completed transactions',
   category: 'Targets',
   subCategory: 'Post-purchase',
