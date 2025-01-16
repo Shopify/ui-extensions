@@ -37,7 +37,7 @@ function generate({ componentName, checker, outputRootFolder, templatePath }) {
     return;
   }
 
-  // TEMPORARY - Fix for missing id until we add it to the interface for components
+  // Manually add `id` property
   definition.properties.id = { type: "'string'" };
   // Strip out empty events
   if (!Object.keys(definition.events).length) {
@@ -69,21 +69,28 @@ function generate({ componentName, checker, outputRootFolder, templatePath }) {
   );
 }
 
-function parseComplexType({ type, checker }) {
+function parseComplexType({ type, requestSymbol, checker }) {
   if (type.kind === ts.SyntaxKind.ExpressionWithTypeArguments) {
     if (type.expression.escapedText === REQUIRED_TYPE) {
       const parsedExpression = getParsedExpression({
         type: type.typeArguments[0],
+        requestSymbol,
         checker,
       });
 
       return parsedExpression;
     } else {
-      const fullDefininition = constructFullDefinitionFromSymbol({
+      const referenceDefinition = constructFullDefinitionFromSymbol({
         symbolName: type.expression.escapedText,
+        requestSymbol,
         checker,
       });
-      return fullDefininition;
+
+      if (referenceDefinition === 'pending') {
+        return;
+      }
+
+      return referenceDefinition;
     }
   } else if (type.kind === ts.SyntaxKind.TypeReference) {
     if (type.typeName.escapedText === REQUIRED_TYPE) {
@@ -92,19 +99,27 @@ function parseComplexType({ type, checker }) {
       if (referenceType.typeArguments) {
         const parsedExpression = getParsedExpression({
           type: referenceType,
+          requestSymbol,
           checker,
         });
         return parsedExpression;
       } else {
-        const definition = constructFullDefinitionFromSymbol({
+        const referenceDefinition = constructFullDefinitionFromSymbol({
           symbolName: referenceType.typeName.escapedText,
+          requestSymbol,
           checker,
         });
-        return definition;
+
+        if (referenceDefinition === 'pending') {
+          return;
+        }
+
+        return referenceDefinition;
       }
     } else if (type.typeName.escapedText === EXTRACT_TYPE) {
       const parsedExpression = getParsedExpression({
         type,
+        requestSymbol,
         checker,
       });
       return parsedExpression;
@@ -112,7 +127,7 @@ function parseComplexType({ type, checker }) {
   }
 }
 
-function parseDeclarations({ declarations, checker }) {
+function parseDeclarations({ requestSymbol, declarations, checker }) {
   return declarations.reduce((acc, declaration) => {
     if (!declaration) {
       return acc;
@@ -122,6 +137,7 @@ function parseDeclarations({ declarations, checker }) {
 
     if (declaration.heritageClauses) {
       const heritageDeclations = parseDeclarations({
+        requestSymbol,
         declarations: declaration.heritageClauses,
         checker,
       });
@@ -140,6 +156,7 @@ function parseDeclarations({ declarations, checker }) {
         // Parse expression
         const parsedDefinition = parseComplexType({
           type,
+          requestSymbol,
           checker,
         });
 
@@ -155,6 +172,7 @@ function parseDeclarations({ declarations, checker }) {
     ) {
       const parsedExpression = parseComplexType({
         type: declaration.type,
+        requestSymbol,
         checker,
       });
       return deepMergeDefinition(combinedDeclarations, parsedExpression);
@@ -164,23 +182,7 @@ function parseDeclarations({ declarations, checker }) {
   }, {});
 }
 
-function constructFullDefinitionFromSymbol({ symbolName, checker }) {
-  const cache = allSymbolNodes.get(symbolName);
-  if (cache?.definition) {
-    return cache.definition;
-  }
-
-  // console.log('START constructFullDefinitionFromSymbol -->', symbolName);
-  const node = cache?.node;
-  if (!node) {
-    return;
-  }
-
-  const symbol = node.symbol;
-  if (!symbol) {
-    return;
-  }
-
+function getSymbolDefinition({ symbol, checker }) {
   const nodeType = checker.getDeclaredTypeOfSymbol(symbol);
   let events = {};
   const symbolProperties =
@@ -197,6 +199,7 @@ function constructFullDefinitionFromSymbol({ symbolName, checker }) {
     const declarationsDefinitions = parseDeclarations({
       declarations,
       checker,
+      requestSymbol: symbol.name,
     });
 
     all = {
@@ -206,7 +209,7 @@ function constructFullDefinitionFromSymbol({ symbolName, checker }) {
     events = declarationsDefinitions.events || {};
   }
 
-  const definition = Object.keys(all).reduce(
+  return Object.keys(all).reduce(
     (acc, key) => {
       if (!all[key]) {
         return acc;
@@ -239,12 +242,105 @@ function constructFullDefinitionFromSymbol({ symbolName, checker }) {
     },
     { properties: {}, events },
   );
+}
+
+function getIntersectionTypesDefinition({ symbolName, types, checker }) {
+  return types.reduce((acc, type) => {
+    const parsedDefinition = parseComplexType({
+      type,
+      checker,
+    });
+
+    if (parsedDefinition) {
+      return deepMergeDefinition(acc, parsedDefinition);
+    }
+    const parsedExpression = getParsedExpression({
+      type,
+      requestSymbol: symbolName,
+      checker,
+    });
+    return deepMergeDefinition(acc, parsedExpression);
+    // return acc;
+  }, {});
+}
+
+function constructFullDefinitionFromSymbol({
+  symbolName,
+  requestSymbol,
+  checker,
+}) {
+  const cache = allSymbolNodes.get(symbolName);
+  if (cache?.definition) {
+    return cache.definition;
+  }
+
+  if (requestSymbol && requestSymbol !== symbolName) {
+    cache.pending.add(requestSymbol);
+  }
+
+  if (cache?.pending.size > 1) {
+    return 'pending';
+  }
+
+  // console.log('START constructFullDefinitionFromSymbol -->', symbolName);
+
+  const node = cache?.node;
+  if (!node) {
+    return;
+  }
+  const isIntersectionType =
+    node.kind === ts.SyntaxKind.TypeAliasDeclaration &&
+    node.type?.kind === ts.SyntaxKind.IntersectionType &&
+    node.type.types;
+
+  // This is a special intersection type so we need to resolve the expression
+  const definition = isIntersectionType
+    ? getIntersectionTypesDefinition({ types: node.type.types, checker })
+    : getSymbolDefinition({ symbol: node.symbol, checker });
 
   // Save definition for reuse
-  allSymbolNodes.set(symbolName, { node, definition });
+  cache.definition = definition;
+
+  // Resolve pending requests for symbol definitions
+  const requestsToResolve = Array.from(cache.pending.keys());
+  requestsToResolve.forEach((rSymbol) => {
+    const symbolCache = allSymbolNodes.get(rSymbol);
+    if (symbolCache) {
+      const result = constructFullDefinitionFromSymbol({
+        symbolName: rSymbol,
+        checker,
+      });
+      if (result !== 'pending') {
+        symbolCache.definition = result;
+        cache.pending.delete(rSymbol);
+      }
+    }
+  });
+
   // console.log('JSON -->', JSON.stringify(definition));
   // console.log('END constructFullDefinitionFromSymbol -->', symbolName);
   return definition;
+}
+
+function expandTemplate({ template, symbols, expandedValues }) {
+  if (symbols.length === 0) {
+    expandedValues.push(template.replace(/`/g, "'"));
+    return;
+  }
+
+  const symbol = symbols[0];
+  const expansionRegex = new RegExp(`\\\${${symbol}}`);
+  const cache = allSymbolNodes.get(symbol);
+  const available = [...(cache?.literalValues || [])];
+
+  available.forEach((value) => {
+    const newTemplate = template.replace(expansionRegex, value);
+    expandTemplate({
+      template: newTemplate,
+      symbols: symbols.slice(1),
+      expandedValues,
+    });
+  });
 }
 
 function getChildDefinition({ symbol, checker, skipGeneric = false }) {
@@ -266,11 +362,53 @@ function getChildDefinition({ symbol, checker, skipGeneric = false }) {
       const interpolationRules = [];
       if (childType.isUnion()) {
         for (const type of childType.types) {
-          const childValue = checker.typeToString(type, child);
-          if (/`\${.*}.*`$/.test(childValue)) {
-            interpolationRules.push(childValue.replace(/`/g, "'"));
+          // We can really only interpret symbols that resolve to a string so we ignore others
+          if (type.symbol) {
+            const constraint = type.symbol.getDeclarations()[0].constraint;
+            const constraintName = constraint.typeName.escapedText;
+            const cache = allSymbolNodes.get(constraintName);
+            const symbolType = cache?.node?.type;
+            if (symbolType) {
+              const literalValues = [];
+              symbolType.types.forEach((st) => {
+                if (st.kind !== ts.SyntaxKind.LiteralType) {
+                  return;
+                }
+                values.push(`'${st.literal.text}'`);
+                literalValues.push(st.literal.text);
+              });
+              cache.literalValues = literalValues;
+              allSymbolNodes.set(type.symbol.name, cache);
+            }
           } else {
-            values.push(checker.typeToString(type, child).replace(/"/g, "'"));
+            const childValue = checker.typeToString(type, child);
+            const templateToken = new RegExp(/\${[a-zA-Z]*}/);
+
+            if (templateToken.test(childValue)) {
+              const templateSymbols = type.types
+                .filter((t) => t.symbol)
+                .map((t) => t.symbol.name);
+
+              const template = childValue;
+              const expandedValues = [];
+
+              // Start the expansion process with all symbols
+              expandTemplate({
+                template,
+                symbols: templateSymbols,
+                expandedValues,
+              });
+
+              expandedValues.forEach((expandedValue) => {
+                if (templateToken.test(expandedValue)) {
+                  interpolationRules.push(expandedValue);
+                } else {
+                  values.push(expandedValue);
+                }
+              });
+            } else {
+              values.push(childValue.replace(/"/g, "'").trim());
+            }
           }
         }
       }
@@ -301,11 +439,14 @@ function getChildDefinition({ symbol, checker, skipGeneric = false }) {
 
           const referenceDefinition = constructFullDefinitionFromSymbol({
             symbolName: referenceSymbolName,
+            requestSymbol: symbol.name,
             checker,
           });
-          if (!referenceDefinition.properties) {
-            console.warn('missing --->', referenceSymbolName);
+
+          if (referenceDefinition === 'pending') {
+            return acc;
           }
+
           if (propName && referenceDefinition.properties?.[propName]) {
             return {
               ...acc,
@@ -566,7 +707,7 @@ function getUnionTypesFromTypeReference({ type, checker }) {
   });
 }
 
-function getParsedExpression({ type, checker }) {
+function getParsedExpression({ type, requestSymbol, checker }) {
   const typeReference = type.typeArguments?.[0];
   const expressionType = type.typeArguments?.[1];
   if (!typeReference || !expressionType) {
@@ -579,8 +720,13 @@ function getParsedExpression({ type, checker }) {
       const events = {};
       const referenceDefinition = constructFullDefinitionFromSymbol({
         symbolName: typeReference.typeName.escapedText,
+        requestSymbol,
         checker,
       });
+
+      if (referenceDefinition === 'pending') {
+        return;
+      }
 
       if (
         !referenceDefinition.properties ||
@@ -606,13 +752,18 @@ function getParsedExpression({ type, checker }) {
         typeReference.objectType &&
         expressionType.kind === ts.SyntaxKind.UnionType
       ) {
-        // Handles union strings like `Extract<T, 'a' | 'b' | 'c'>`
+        // Handles union strings like `Extract < T, 'a' | 'b' | 'c' > `
         const referenceDefinition = constructFullDefinitionFromSymbol({
           symbolName: typeReference.objectType.typeName.escapedText,
+          requestSymbol,
           checker,
         });
-        const propIndex = typeReference.indexType.literal.text;
 
+        if (referenceDefinition === 'pending') {
+          return;
+        }
+
+        const propIndex = typeReference.indexType.literal.text;
         if (!referenceDefinition.properties) {
           return;
         }
@@ -626,12 +777,18 @@ function getParsedExpression({ type, checker }) {
         };
         return { properties, events: {} };
       } else if (expressionType.kind === ts.SyntaxKind.TypeLiteral) {
-        // Handles inline declarations like `Extract<T, {type?: string}>`
+        // Handles inline declarations like `Extract < T, { type?: string } > `
         // In this case the typeReference we passed in already has the correct interface
         const referenceDefinition = constructFullDefinitionFromSymbol({
           symbolName: typeReference.typeName.escapedText,
+          requestSymbol,
           checker,
         });
+
+        if (referenceDefinition === 'pending') {
+          return;
+        }
+
         return referenceDefinition;
       }
     }
@@ -642,11 +799,26 @@ function deepMergeDefinition(org = {}, addition = {}) {
   if (!addition) {
     return org;
   }
-  const { properties = {}, events = {} } = org;
-  const merged = {
-    properties: { ...properties, ...(addition.properties || {}) },
-    events: { ...events, ...(addition.events || {}) },
-  };
+
+  const merged = {};
+  // eslint-disable-next-line guard-for-in
+  for (const key in org) {
+    const value = addition[key];
+    if (typeof value === 'object') {
+      merged[key] = Array.isArray(org[key])
+        ? org[key].concat(value)
+        : { ...org[key], ...value };
+    } else {
+      merged[key] = org[key];
+    }
+  }
+
+  for (const key in addition) {
+    if (!Object.prototype.hasOwnProperty.call(merged, key)) {
+      merged[key] = addition[key];
+    }
+  }
+
   return merged;
 }
 
@@ -670,9 +842,13 @@ fs.readFile(filePath, () => {
   }
 
   ts.forEachChild(sourceFile, (node) => {
-    const symbol = checker.getSymbolAtLocation(node.name);
-    if (symbol) {
-      allSymbolNodes.set(symbol.name, { node });
+    // const symbol = checker.getSymbolAtLocation(node.name);
+    if (node.symbol) {
+      // console.log(node.symbol.name);
+      allSymbolNodes.set(node.symbol.name, {
+        node,
+        pending: new Set(),
+      });
     }
   });
 
@@ -690,7 +866,7 @@ fs.readFile(filePath, () => {
       return !components.length || components.includes(componentName);
     })
     .forEach((componentName) => {
-      // console.log(`${componentName} ->>>`);
+      // console.log(`${ componentName } ->>> `);
       generate({
         checker,
         componentName,

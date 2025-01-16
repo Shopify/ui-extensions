@@ -2794,11 +2794,9 @@ export type ButtonBaseProps = Required<
     | 'target'
     | 'href'
     | 'download'
-    | 'onBlur'
-    | 'onClick'
-    | 'onFocus'
   >
->;
+> &
+  Pick<ButtonOnlyProps, 'onBlur' | 'onClick' | 'onFocus'>;
 export interface ButtonProps extends ButtonBaseProps {
   tone: Extract<ButtonProps$1['tone'], 'neutral' | 'critical' | 'auto'>;
   icon: IconProps['type'];
@@ -2856,12 +2854,12 @@ declare module 'preact' {
 }
 
 declare const internals: unique symbol;
-export type InputProps = Required<
+export type InputElementInputProps = Required<
   Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
 >;
 declare class PreactInputElement
   extends PreactCustomElement
-  implements InputProps
+  implements InputElementInputProps
 {
   static formAssociated: boolean;
   /** @private */
@@ -2869,11 +2867,11 @@ declare class PreactInputElement
   protected getDefaultValue(): string;
   accessor onchange: EventListener | null;
   accessor oninput: EventListener | null;
-  accessor disabled: InputProps['disabled'];
-  accessor id: InputProps['id'];
-  accessor name: InputProps['name'];
-  get value(): InputProps['value'];
-  set value(value: InputProps['value']);
+  accessor disabled: InputElementInputProps['disabled'];
+  accessor id: InputElementInputProps['id'];
+  accessor name: InputElementInputProps['name'];
+  get value(): InputElementInputProps['value'];
+  set value(value: InputElementInputProps['value']);
   constructor(renderImpl: RenderImpl);
 }
 
@@ -2889,7 +2887,8 @@ export type CheckboxProps = InputProps &
       | 'label'
       | 'required'
     >
-  >;
+  > &
+  Pick<CheckboxProps$1, 'onChange' | 'onInput'>;
 
 declare const tagName$i = 'shopify-checkbox';
 export interface ReactProps$i
@@ -3207,28 +3206,29 @@ export type FieldReactProps = Pick<
 declare const tagName$8 = 'shopify-select';
 export interface ReactProps$8 extends Partial<SharedProps & FieldReactProps> {}
 
-export type FieldProps<Autocomplete extends string = string> = InputProps &
-  Required<
-    Pick<
-      TextFieldProps,
-      | 'defaultValue'
-      | 'details'
-      | 'error'
-      | 'label'
-      | 'placeholder'
-      | 'readOnly'
-      | 'required'
-    >
-  > & {
-    autocomplete: Autocomplete;
-  };
+export type FieldPropsAutocomplete<Autocomplete extends string = string> =
+  InputProps &
+    Required<
+      Pick<
+        TextFieldProps,
+        | 'defaultValue'
+        | 'details'
+        | 'error'
+        | 'label'
+        | 'placeholder'
+        | 'readOnly'
+        | 'required'
+      >
+    > & {
+      autocomplete: Autocomplete;
+    };
 declare class PreactFieldElement<Autocomplete extends string = string>
   extends PreactInputElement
-  implements FieldProps<Autocomplete>
+  implements FieldPropsAutocomplete<Autocomplete>
 {
   accessor onblur: EventListener | null;
   accessor onfocus: EventListener | null;
-  accessor autocomplete: FieldProps<Autocomplete>['autocomplete'];
+  accessor autocomplete: FieldPropsAutocomplete<Autocomplete>['autocomplete'];
   accessor defaultValue: FieldProps['defaultValue'];
   accessor details: FieldProps['details'];
   accessor error: FieldProps['error'];
