@@ -746,7 +746,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * The API for reading additional fields that are required in checkout under certain circumstances.
    * For example, some countries require additional fields for customs information or tax identification numbers.
    */
-  localizedFields?: StatefulRemoteSubscribable<LocalizedField[] | undefined>;
+  localizedFields?: StatefulRemoteSubscribable<LocalizedField[]>;
 }
 
 export interface Ui {
