@@ -6,14 +6,18 @@ const generateCodeBlockForPrintPreview = (title: string, fileName: string) =>
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'PrintPreview',
-  description: `A component that displays a preview of a printable document. Use this component to let users review documents before printing.`,
+  description: `
+  A component that displays a preview of a printable document. 
+  > Note:
+  > This component must be a direct child of the Screen component and cannot be nested inside any other component.`,
   isVisualComponent: true,
   type: 'component',
   thumbnail: 'print-preview-thumbnail.png',
   definitions: [
     {
       title: 'PrintPreview',
-      description: 'Renders a preview of a printable document',
+      description:
+        'Renders a preview of a printable document. This component must a direct child of the Screen component.',
       type: 'PrintPreviewProps',
     },
   ],
