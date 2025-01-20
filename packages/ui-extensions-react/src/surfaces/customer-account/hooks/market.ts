@@ -21,5 +21,7 @@ export function useLocalizationMarket<
     throw new ExtensionHasNoFieldError('market', extensionTarget);
   }
 
+  console.log('API.LOCALIZATION.MARKET', api.localization.market);
+
   return useSubscription(api.localization.market);
 }
