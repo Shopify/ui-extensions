@@ -10,7 +10,6 @@
     "build": "loom build",
     "build-consumer": "loom build && ./scripts/build-consumer.sh",
     "build-consumer-spin": "loom build && ./scripts/build-consumer-spin.sh",
-    "generate-definition": "node ./scripts/generator.js",
     "clean": "git clean -xdf ./packages; rm -rf ./build",
     "predeploy": "yarn build",
     "deploy": "changeset publish",

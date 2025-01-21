@@ -1,9 +1,10 @@
-/** VERSION: 0.25.0 **/
+/** VERSION: 0.28.0 **/
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
+type ComponentChildren = any;
 type SizeKeyword =
   | 'small-500'
   | 'small-400'
@@ -42,7 +43,6 @@ type ToneKeyword =
   | 'caution'
   | 'warning'
   | 'critical';
-type ComponentChildren = any;
 type IconType =
   | '3d-environment'
   | 'adjust'
@@ -52,6 +52,8 @@ type IconType =
   | 'alert-circle'
   | 'alert-diamond'
   | 'alert-location'
+  | 'alert-octagon'
+  | 'alert-octagon-filled'
   | 'alert-triangle'
   | 'app-extension'
   | 'apps'
@@ -77,6 +79,8 @@ type IconType =
   | 'bill'
   | 'blank'
   | 'blog'
+  | 'bolt'
+  | 'bolt-filled'
   | 'book-open'
   | 'book'
   | 'bug'
@@ -85,6 +89,7 @@ type IconType =
   | 'button'
   | 'calculator'
   | 'calendar-check'
+  | 'calendar-compare'
   | 'calendar-time'
   | 'calendar'
   | 'camera-flip'
@@ -120,9 +125,11 @@ type IconType =
   | 'chart-popular'
   | 'chart-stacked'
   | 'chart-vertical'
+  | 'chat-new'
   | 'chat-referral'
   | 'chat'
   | 'check-circle'
+  | 'check-circle-filled'
   | 'check'
   | 'checkbox'
   | 'chevron-down-circle'
@@ -134,6 +141,7 @@ type IconType =
   | 'chevron-up-circle'
   | 'chevron-up'
   | 'circle'
+  | 'circle-dashed'
   | 'clipboard-check'
   | 'clipboard-checklist'
   | 'clipboard'
@@ -170,7 +178,6 @@ type IconType =
   | 'cursor-banner'
   | 'cursor-option'
   | 'cursor'
-  | 'dashed-circle'
   | 'data-presentation'
   | 'data-table'
   | 'database-add'
@@ -238,13 +245,14 @@ type IconType =
   | 'git-repository'
   | 'globe-asia'
   | 'globe-europe'
+  | 'globe-lines'
   | 'globe'
   | 'grid'
   | 'hashtag-decimal'
   | 'hashtag'
   | 'heart'
   | 'hide'
-  | 'hollow-circle'
+  | 'hide-filled'
   | 'home'
   | 'icons'
   | 'identity-card'
@@ -266,6 +274,7 @@ type IconType =
   | 'inventory'
   | 'iq'
   | 'key'
+  | 'keyboard-filled'
   | 'keyboard-hide'
   | 'keyboard'
   | 'label-printer'
@@ -393,7 +402,9 @@ type IconType =
   | 'product-unavailable'
   | 'product'
   | 'profile'
+  | 'profile-filled'
   | 'question-circle'
+  | 'question-circle-filled'
   | 'receipt-dollar'
   | 'receipt-euro'
   | 'receipt-folded'
@@ -456,6 +467,8 @@ type IconType =
   | 'store-online'
   | 'store'
   | 'sun'
+  | 'table'
+  | 'table-masonry'
   | 'tablet'
   | 'target'
   | 'tax'
@@ -545,19 +558,63 @@ interface BadgeProps$1 extends GlobalProps {
    */
   iconPosition?: 'start' | 'end';
   /**
-   * A label that describes the purpose or contents of the Badge. When set,
-   * it will be announced to users using assistive technologies and will
-   * provide them with more context.
-   *
-   * Use this when the badge text is not enough context for users using assistive technologies.
-   */
-  accessibilityLabel?: string;
-  /**
    * Adjusts the size.
    *
    * @default 'base'
    */
   size?: SizeKeyword;
+}
+interface ActionSlots {
+  /**
+   * The primary action to perform, provided as a button or link type element.
+   */
+  primaryAction?: ComponentChildren;
+  /**
+   * The secondary actions to perform, provided as button or link type elements.
+   */
+  secondaryActions?: ComponentChildren;
+}
+interface BannerProps$1 extends GlobalProps, ActionSlots {
+  /**
+   * The title of the banner.
+   */
+  heading?: string;
+  /**
+   * The content of the Banner.
+   */
+  children?: ComponentChildren;
+  /**
+   * Sets the tone of the Banner, based on the intention of the information being conveyed.
+   *
+   * In an HTML host, the Banner is a live region and the type of status will be dictated by the Tone selected.
+   *
+   * - `critical` and `warning` creates an assertive live region (`role="alert"`) that is announced by screen readers immediately.
+   * - `neutral`, `info`, `success`, and `caution` creates an informative live region (`role="status"`) that is announced by screen readers after the current message.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role
+   *
+   * @default 'auto'
+   */
+  tone?: ToneKeyword;
+  /**
+   * Makes the content collapsible.
+   * A collapsible banner will conceal child elements initially, but allow the user to expand the banner to see them.
+   */
+  collapsible?: boolean;
+  /**
+	 * Determines whether the close button of the banner is visible.
+
+	 * This component is controlled, so you must manage the visibility of the banner in state by using the `onDismiss` callback,
+	 * or by listening to the `dismiss` event.
+	 */
+  dismissible?: boolean;
+  /**
+   * Callback when banner is dismissed.
+   * This component is controlled, so you must manage the visibility of the banner in state by using the `onDismiss` callback.
+   */
+  onDismiss?: () => void;
 }
 type ExtractStrict<T, U extends T> = Extract<T, U>;
 export type MaybeAllValuesShorthandProperty<T extends string> =
@@ -718,6 +775,20 @@ interface AccessibilityVisibilityProps {
    * @default 'visible'
    */
   accessibilityVisibility?: 'visible' | 'hidden' | 'exclusive';
+}
+interface LabelAccessibilityVisibilityProps {
+  /**
+   * Changes the visibility of the component's label.
+   *
+   * - `visible`: the label is visible to all users.
+   * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
+   *
+   * @default 'visible'
+   */
+  labelAccessibilityVisibility?: ExtractStrict<
+    AccessibilityVisibilityProps['accessibilityVisibility'],
+    'visible' | 'exclusive'
+  >;
 }
 type PaddingKeyword = SizeKeyword | 'none';
 interface PaddingProps {
@@ -953,7 +1024,7 @@ interface OverflowProps {
    */
   overflow?: 'hidden' | 'visible';
 }
-interface BaseBoxProps$1
+interface BaseBoxProps
   extends GlobalProps,
     AccessibilityVisibilityProps,
     BackgroundProps,
@@ -974,10 +1045,8 @@ interface BaseBoxProps$1
    */
   accessibilityLabel?: string;
 }
-interface BaseBoxProps$1WithRole
-  extends BaseBoxProps$1,
-    AccessibilityRoleProps {}
-interface BoxProps$1 extends BaseBoxProps$1WithRole {}
+interface BaseBoxPropsWithRole extends BaseBoxProps, AccessibilityRoleProps {}
+interface BoxProps$1 extends BaseBoxPropsWithRole {}
 interface FocusEventProps {
   /**
    * Callback when the element loses focus.
@@ -996,7 +1065,7 @@ interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    * 'button' - Used to indicate the component acts as a button, meaning it has no default action.
    * 'reset' - Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
    *
-   * This property is ignored if the component supports `href` and it's set.
+   * This property is ignored if the component supports `href` or `activateTarget`/`activateAction` and one of them is set.
    *
    * @default 'button'
    */
@@ -1017,10 +1086,12 @@ interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   loading?: boolean;
 }
-interface LinkBehaviorProps extends FocusEventProps {
+interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The URL to link to.
-   * If set, it will navigate to the location specified by `href` after executing the `onClick` callback.
+   *
+   * - If set, it will navigate to the location specified by `href` after executing the `onClick` callback.
+   * - If an `activateTarget` is set, the `activateAction` will be executed instead of the navigation.
    */
   href?: string;
   /**
@@ -1033,7 +1104,7 @@ interface LinkBehaviorProps extends FocusEventProps {
    *
    * @default 'auto'
    */
-  target?: 'auto' | '_blank' | '_self' | '_parent' | '_top' | string;
+  target?: 'auto' | '_blank' | '_self' | '_parent' | '_top' | AnyString;
   /**
    * Causes the browser to treat the linked URL as a download. Download only works for same-origin URLs, or the blob: and data: schemes.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download
@@ -1135,7 +1206,9 @@ interface FieldErrorProps {
    */
   error?: string;
 }
-interface BasicFieldProps extends FieldErrorProps {
+interface BasicFieldProps
+  extends FieldErrorProps,
+    LabelAccessibilityVisibilityProps {
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -1216,10 +1289,14 @@ interface FieldDecorationProps {
 interface MinMaxLengthProps {
   /**
    * Specifies the maximum number of characters allowed.
+   *
+   * @default Infinity
    */
   maxLength?: number;
   /**
    * Specifies the min number of characters allowed.
+   *
+   * @default 0
    */
   minLength?: number;
 }
@@ -1297,8 +1374,18 @@ interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps {
    * In terms of appearance, this takes priority over the `checked` prop.
    * But this is purely a visual change.
    * Whether the value is submitted along with a form is still down to the `checked` prop.
+   *
+   * In custom element implementations, this must not reflect to an attribute (similar to `.checked`).
    */
   indeterminate?: boolean;
+  /**
+   * Whether the checkbox is in an `indeterminate` state by default.
+   *
+   * Similar to `defaultValue` and `defaultChecked`, this value applies until `indeterminate` is set, or user changes the state of the checkbox.
+   *
+   * In custom element implementations, this must reflect to the `indeterminate` attribute (similar to how `.defaultChecked` reflects to the `checked` attribute).
+   */
+  defaultIndeterminate?: boolean;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -1540,9 +1627,9 @@ interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
    *
-   * @default 'none'
+   * @default Infinity - no truncation is applied
    */
-  lineClamp?: number | 'none';
+  lineClamp?: number;
 }
 interface IconProps$1 extends GlobalProps {
   /**
@@ -1565,7 +1652,7 @@ interface IconProps$1 extends GlobalProps {
   size?: SizeKeyword | 'fill';
   type?: IconType | AnyString;
 }
-interface BaseImageProps$1 {
+interface BaseImageProps {
   /**
    * An alternative text description that describe the image for the reader to
    * understand what it is about. It is extremely useful for both users using
@@ -1606,21 +1693,20 @@ interface BaseImageProps$1 {
   srcSet?: string;
 }
 type optionalSpace = '' | ' ';
-interface ImageProps$1 extends GlobalProps, BaseImageProps$1 {
+interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
   /**
    * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help users
    * navigate the page.
    *
-   * @default 'img'. Note that the 'img' role doesn't need to be applied if
+   * @default 'img'. Note that the `img` role doesn't need to be applied if
    * the host applies it for you; for example, an HTML host rendering
-   * an <img> element should NOT apply the `img` role.
+   * an `<img>` element should NOT apply the `img` role.
    */
   accessibilityRole?:
     | 'img'
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
   /**
-   *
    * The displayed inline width of the image.
    *
    * `fill`: the image will takes up 100% of the available inline-size.
@@ -1632,11 +1718,10 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps$1 {
    */
   inlineSize?: 'fill' | 'auto';
   /**
-   *
    * The aspect ratio of the image.
    * This will be respected even if the image hasn’t loaded yet.
    *
-   * Getters for this value should return `auto` or the ratio in `number / number` form. Input fractions should not be 'simplified'.
+   * Getters for this value should return `auto` or the ratio in `number / number` form. Input fractions should not be ‘simplified’.
    * For example, if the value is set as `50 /    100`, the getter returns `50 / 100`.
    * If the value is set as `0.5`, the getter returns `0.5 / 1`.
    *
@@ -1646,6 +1731,15 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps$1 {
     | `${number}${optionalSpace}/${optionalSpace}${number}`
     | `${number}`
     | 'auto';
+  /**
+   * Determines how the content of the image is resized to fit its container.
+   * The image is positioned in the center of the container.
+   *
+   * @default 'contain'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
+   */
+  objectFit?: 'contain' | 'cover';
   /**
    * Determines the loading behavior of the image:
    * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
@@ -1735,9 +1829,23 @@ interface BaseTypographyProps {
    * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
    * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
    *
+   * It is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.
+   *
    * @default ''
    */
   lang?: string;
+  /**
+   * Indicates the directionality of the element’s text.
+   *
+   * - `ltr`: languages written from left to right (e.g. English)
+   * - `rtl`: languages written from right to left (e.g. Arabic)
+   * - `auto`: the user agent determines the direction based on the content
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir
+   *
+   * @default ''
+   */
+  dir?: 'ltr' | 'rtl' | 'auto' | '';
 }
 interface ParagraphProps$1
   extends GlobalProps,
@@ -1748,9 +1856,9 @@ interface ParagraphProps$1
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
    *
-   * @default 'none' - no truncation is applied
+   * @default Infinity - no truncation is applied
    */
-  lineClamp?: number | 'none';
+  lineClamp?: number;
 }
 interface SectionProps$1 extends GlobalProps {
   /**
@@ -1785,8 +1893,9 @@ interface SectionProps$1 extends GlobalProps {
 }
 export interface SelectProps
   extends GlobalProps,
-    FieldProps,
     AutocompleteProps<AnyAutocompleteField>,
+    Pick<FieldDecorationProps, 'icon'>,
+    FieldProps,
     FocusEventProps {
   /**
    * The options a user can select from.
@@ -1818,7 +1927,7 @@ interface SpinnerProps$1 extends GlobalProps {
    */
   accessibilityLabel?: string;
 }
-interface StackProps$1 extends BaseBoxProps$1WithRole, GapProps {
+interface StackProps$1 extends BaseBoxPropsWithRole, GapProps {
   /**
    * The content of the Stack.
    */
@@ -1947,463 +2056,469 @@ export interface TextFieldProps
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
 type IconType$1 =
+  | 'wand'
+  | 'wifi'
+  | 'work'
+  | 'viewport-tall'
+  | 'viewport-wide'
+  | 'wallet'
   | 'watch'
   | 'wrench'
-  | 'wallet'
-  | 'wand'
   | 'viewport-short'
-  | 'work'
-  | 'upload'
-  | 'viewport-tall'
-  | 'transfer'
-  | 'unlock'
+  | 'viewport-narrow'
   | 'unknown-device'
-  | 'transfer-out'
-  | 'transfer-in'
+  | 'upload'
   | 'undo'
-  | 'wifi'
-  | 'transaction-fee-rupee'
+  | 'transfer'
+  | 'transfer-in'
+  | 'transfer-out'
+  | 'transaction'
+  | 'transaction-fee-yen'
   | 'transaction-fee-pound'
   | 'transaction-fee-euro'
-  | 'transaction'
   | 'transfer-internal'
-  | 'transaction-fee-yen'
-  | 'toggle-off'
+  | 'unlock'
+  | 'transaction-fee-rupee'
   | 'toggle-on'
-  | 'viewport-wide'
+  | 'toggle-off'
+  | 'transaction-fee-dollar'
   | 'tip-jar'
-  | 'thumbs-down'
-  | 'theme'
-  | 'theme-template'
   | 'thumbs-up'
-  | 'theme-edit'
-  | 'text-title'
-  | 'text-quote'
-  | 'theme-store'
-  | 'text'
-  | 'viewport-narrow'
+  | 'theme'
+  | 'thumbs-down'
   | 'text-with-image'
-  | 'text-in-rows'
-  | 'text-italic'
+  | 'theme-edit'
+  | 'text-quote'
+  | 'text'
+  | 'text-title'
   | 'text-underline'
+  | 'text-italic'
+  | 'theme-template'
+  | 'text-indent'
+  | 'text-in-rows'
+  | 'text-font'
   | 'text-color'
   | 'text-in-columns'
-  | 'text-indent'
-  | 'text-font-list'
-  | 'text-block'
-  | 'text-grammar'
-  | 'text-align-center'
-  | 'text-align-right'
   | 'text-align-left'
+  | 'text-bold'
+  | 'text-block'
+  | 'text-align-right'
   | 'team'
-  | 'target'
-  | 'transaction-fee-dollar'
+  | 'text-align-center'
+  | 'text-font-list'
   | 'tax'
-  | 'tablet'
+  | 'target'
+  | 'table'
+  | 'table-masonry'
   | 'sun'
-  | 'store'
-  | 'stop-circle'
-  | 'store-import'
-  | 'store-online'
   | 'store-managed'
+  | 'store-online'
+  | 'tablet'
+  | 'store-import'
+  | 'store'
   | 'status'
   | 'status-active'
-  | 'text-font'
   | 'star-filled'
+  | 'stop-circle'
   | 'sports'
-  | 'sound'
-  | 'sort-descending'
-  | 'sort-ascending'
+  | 'theme-store'
   | 'social-ad'
-  | 'social-post'
   | 'smiley-sad'
+  | 'social-post'
+  | 'sort-ascending'
   | 'smiley-happy'
-  | 'slideshow'
-  | 'smiley-joy'
-  | 'shipping-label'
-  | 'shield-pending'
-  | 'shopcodes'
-  | 'shield-none'
   | 'smiley-neutral'
+  | 'smiley-joy'
+  | 'sound'
+  | 'shield-pending'
+  | 'shipping-label'
+  | 'slideshow'
+  | 'shopcodes'
   | 'shield-person'
-  | 'share'
   | 'shield-check-mark'
+  | 'sort-descending'
+  | 'share'
   | 'search'
-  | 'settings'
   | 'send'
+  | 'search-resource'
+  | 'settings'
   | 'search-recent'
-  | 'text-bold'
   | 'search-list'
+  | 'reward'
   | 'save'
-  | 'rocket'
   | 'rotate-right'
-  | 'rotate-left'
   | 'sandbox'
-  | 'return'
   | 'reset'
   | 'replace'
-  | 'reward'
   | 'replay'
-  | 'search-resource'
-  | 'receivables'
-  | 'remove-background'
-  | 'receipt-yen'
+  | 'return'
+  | 'rocket'
   | 'referral-code'
-  | 'receipt-rupee'
-  | 'receipt-refund'
-  | 'receipt-paid'
+  | 'rotate-left'
+  | 'remove-background'
   | 'receipt'
-  | 'receipt-euro'
-  | 'receipt-dollar'
-  | 'question-circle'
+  | 'refresh'
+  | 'receipt-yen'
+  | 'receivables'
+  | 'receipt-rupee'
   | 'receipt-pound'
-  | 'product-remove'
+  | 'receipt-refund'
+  | 'receipt-dollar'
+  | 'profile'
+  | 'redo'
+  | 'receipt-paid'
   | 'product-list'
+  | 'question-circle'
+  | 'receipt-euro'
+  | 'product-remove'
   | 'product-add'
   | 'product-cost'
-  | 'refresh'
-  | 'print'
-  | 'redo'
-  | 'point-of-sale'
-  | 'price-list'
-  | 'play'
   | 'product-return'
-  | 'plan'
-  | 'profile'
+  | 'print'
+  | 'price-list'
+  | 'product-unavailable'
+  | 'point-of-sale'
+  | 'play'
+  | 'product-reference'
   | 'pin'
+  | 'plan'
   | 'phone-in'
-  | 'personalized-text'
   | 'phone-out'
-  | 'payout'
-  | 'play-circle'
+  | 'personalized-text'
   | 'person-exit'
-  | 'payout-rupee'
   | 'person-remove'
   | 'person-lock'
-  | 'person-segment'
-  | 'payout-yen'
-  | 'payment-capture'
-  | 'passkey'
-  | 'pause-circle'
-  | 'payout-pound'
-  | 'paper-check'
-  | 'paint-brush-round'
-  | 'product-reference'
-  | 'product-unavailable'
-  | 'payout-dollar'
-  | 'pagination-end'
-  | 'page-reference'
-  | 'page-up'
-  | 'page-down'
-  | 'page-attachment'
-  | 'pagination-start'
-  | 'page-heart'
-  | 'package'
+  | 'play-circle'
   | 'person-add'
-  | 'package-on-hold'
-  | 'organization'
-  | 'outdent'
-  | 'orders-status'
-  | 'page-clock'
-  | 'package-returned'
-  | 'note'
-  | 'order-repeat'
-  | 'notification'
-  | 'note-add'
-  | 'page-add'
-  | 'order-first'
-  | 'moon'
-  | 'nature'
+  | 'payout-rupee'
+  | 'person-segment'
+  | 'payout'
+  | 'payout-dollar'
+  | 'payout-pound'
+  | 'payout-yen'
+  | 'payout-euro'
+  | 'payment-capture'
+  | 'pause-circle'
+  | 'paper-check'
+  | 'pagination-start'
+  | 'passkey'
+  | 'paint-brush-flat'
+  | 'pagination-end'
+  | 'page-up'
+  | 'paint-brush-round'
   | 'page-remove'
+  | 'page-down'
+  | 'page-heart'
+  | 'page-clock'
+  | 'page-reference'
+  | 'package'
+  | 'package-returned'
+  | 'outgoing'
+  | 'page-add'
+  | 'outdent'
+  | 'package-on-hold'
+  | 'page-attachment'
+  | 'organization'
+  | 'package-fulfilled'
+  | 'orders-status'
+  | 'order-first'
   | 'order-draft'
-  | 'minimize'
+  | 'order-repeat'
+  | 'note'
+  | 'notification'
+  | 'nature'
+  | 'moon'
   | 'money-none'
+  | 'money'
+  | 'minimize'
+  | 'note-add'
   | 'metaobject'
   | 'metaobject-list'
-  | 'metaobject-reference'
-  | 'metafields'
-  | 'package-fulfilled'
-  | 'megaphone'
-  | 'menu-horizontal'
-  | 'menu'
   | 'menu-vertical'
+  | 'metafields'
+  | 'menu-horizontal'
+  | 'mention'
+  | 'menu'
+  | 'megaphone'
   | 'media-receiver'
-  | 'measurement-size'
   | 'measurement-weight'
+  | 'metaobject-reference'
   | 'maximize'
   | 'markets-yen'
   | 'markets-rupee'
-  | 'markets'
-  | 'lock'
+  | 'measurement-size'
   | 'measurement-volume'
-  | 'live'
-  | 'list-bulleted'
+  | 'markets-euro'
+  | 'lock'
+  | 'location-none'
   | 'link'
+  | 'list-bulleted'
   | 'list-numbered'
-  | 'layout-sidebar-right'
+  | 'live'
   | 'layout-sidebar-left'
-  | 'layout-popup'
-  | 'layout-rows-2'
+  | 'markets'
+  | 'map'
+  | 'layout-sidebar-right'
   | 'layout-section'
   | 'layout-logo-block'
-  | 'layout-columns-2'
-  | 'layout-footer'
+  | 'layout-rows-2'
+  | 'layout-popup'
   | 'layout-columns-3'
   | 'layout-header'
-  | 'layout-buy-button-horizontal'
+  | 'layout-columns-2'
   | 'layout-buy-button'
+  | 'layout-buy-button-horizontal'
   | 'layout-column-1'
   | 'layout-buy-button-vertical'
-  | 'label-printer'
+  | 'key'
   | 'layout-block'
   | 'language-translate'
-  | 'location-none'
-  | 'keyboard-hide'
-  | 'key'
+  | 'label-printer'
   | 'inventory-updated'
-  | 'iq'
-  | 'incoming'
   | 'inventory'
+  | 'keyboard-hide'
+  | 'keyboard'
+  | 'iq'
   | 'incentive'
-  | 'paint-brush-flat'
-  | 'import'
-  | 'image-none'
-  | 'image-with-text-overlay'
-  | 'images'
   | 'image'
-  | 'image-explore'
-  | 'outgoing'
-  | 'image-magic'
-  | 'home'
+  | 'image-with-text-overlay'
+  | 'import'
+  | 'incoming'
+  | 'image-none'
   | 'image-add'
-  | 'image-alt'
-  | 'hashtag'
+  | 'image-explore'
+  | 'image-magic'
   | 'identity-card'
-  | 'heart'
-  | 'hashtag-decimal'
+  | 'home'
   | 'icons'
+  | 'image-alt'
+  | 'heart'
+  | 'hashtag'
+  | 'hashtag-decimal'
   | 'globe-europe'
-  | 'git-commit'
   | 'globe-asia'
-  | 'games'
-  | 'git-branch'
+  | 'git-repository'
+  | 'globe-lines'
   | 'gift-card'
   | 'gauge'
   | 'forms'
+  | 'games'
   | 'forklift'
-  | 'folder'
-  | 'mention'
-  | 'foreground'
-  | 'folder-down'
-  | 'git-repository'
+  | 'git-branch'
+  | 'git-commit'
   | 'food'
-  | 'folder-add'
+  | 'folder'
+  | 'foreground'
+  | 'folder-up'
   | 'folder-remove'
+  | 'folder-down'
   | 'flower'
-  | 'payout-euro'
-  | 'flip-vertical'
   | 'flag'
   | 'flip-horizontal'
-  | 'eyeglasses'
-  | 'file'
-  | 'folder-up'
-  | 'money'
-  | 'eye-dropper'
-  | 'export'
-  | 'eye-check-mark'
-  | 'exit'
-  | 'exchange'
-  | 'enter'
-  | 'envelope'
+  | 'flip-vertical'
+  | 'folder-add'
   | 'filter'
-  | 'email-newsletter'
-  | 'email-follow-up'
+  | 'file'
+  | 'eye-dropper'
   | 'eye-first'
+  | 'eyeglasses'
+  | 'favicon'
+  | 'export'
+  | 'exchange'
+  | 'exit'
+  | 'envelope'
+  | 'enter'
+  | 'email-newsletter'
+  | 'envelope-soft-pack'
+  | 'duplicate'
+  | 'download'
   | 'drag-drop'
   | 'drag-handle'
+  | 'email-follow-up'
+  | 'eye-check-mark'
+  | 'text-grammar'
+  | 'domain-new'
+  | 'images'
   | 'domain'
-  | 'duplicate'
-  | 'domain-redirect'
-  | 'download'
-  | 'domain-landing-page'
-  | 'dns-settings'
-  | 'discount'
-  | 'discount-code'
-  | 'dock-floating'
   | 'dock-side'
-  | 'keyboard'
+  | 'discount'
+  | 'domain-redirect'
+  | 'dock-floating'
+  | 'dns-settings'
+  | 'domain-landing-page'
   | 'desktop'
+  | 'discount-code'
   | 'database-connect'
   | 'delete'
-  | 'favicon'
-  | 'dashed-circle'
+  | 'database'
   | 'data-table'
-  | 'data-presentation'
   | 'database-add'
-  | 'currency-convert'
-  | 'cursor-option'
-  | 'cursor'
   | 'cursor-banner'
-  | 'credit-card'
-  | 'envelope-soft-pack'
-  | 'credit-card-reader-tap'
-  | 'credit-card-tap-chip'
+  | 'cursor'
   | 'crop'
+  | 'cursor-option'
+  | 'data-presentation'
+  | 'credit-card'
   | 'credit-card-reader-chip'
-  | 'markets-euro'
-  | 'domain-new'
   | 'credit-card-secure'
+  | 'credit-card-cancel'
+  | 'credit-card-reader-tap'
+  | 'corner-square'
   | 'corner-round'
   | 'credit-card-percent'
-  | 'credit-card-reader'
-  | 'database'
-  | 'corner-pill'
-  | 'credit-card-cancel'
-  | 'contract'
-  | 'compass'
   | 'content'
-  | 'connect'
-  | 'color'
+  | 'currency-convert'
+  | 'contract'
+  | 'credit-card-reader'
+  | 'compass'
+  | 'credit-card-tap-chip'
+  | 'corner-pill'
   | 'compose'
-  | 'code'
-  | 'code-add'
-  | 'collection-reference'
-  | 'color-none'
-  | 'collection-featured'
-  | 'corner-square'
-  | 'clipboard'
   | 'confetti'
+  | 'color'
+  | 'color-none'
+  | 'connect'
+  | 'collection-list'
+  | 'collection-featured'
+  | 'code'
+  | 'clock-revert'
+  | 'code-add'
+  | 'clipboard'
   | 'clipboard-checklist'
   | 'circle'
+  | 'shield-none'
   | 'clipboard-check'
   | 'chevron-up-circle'
-  | 'clock-revert'
+  | 'circle-dashed'
+  | 'chevron-left-circle'
+  | 'collection-reference'
   | 'chevron-right-circle'
   | 'chevron-left'
-  | 'chevron-left-circle'
-  | 'chevron-right'
+  | 'chevron-down-circle'
   | 'checkbox'
   | 'chat-referral'
-  | 'chart-vertical'
   | 'chat'
+  | 'chart-vertical'
+  | 'chat-new'
+  | 'chevron-right'
   | 'chart-stacked'
-  | 'chart-popular'
   | 'chart-horizontal'
-  | 'chevron-down-circle'
-  | 'chart-histogram-last'
-  | 'chart-histogram-flat'
-  | 'chart-histogram-first'
   | 'chart-histogram-second-last'
   | 'chart-histogram-full'
-  | 'chart-donut'
+  | 'chart-histogram-growth'
+  | 'chart-histogram-flat'
+  | 'chart-histogram-first'
+  | 'chart-histogram-last'
+  | 'layout-footer'
   | 'chart-funnel'
   | 'chart-line'
-  | 'chart-cohort'
   | 'channels'
-  | 'cash-yen'
-  | 'categories'
-  | 'collection-list'
+  | 'chart-donut'
   | 'chart-histogram-first-last'
+  | 'categories'
   | 'catalog-product'
-  | 'chart-histogram-growth'
-  | 'cash-pound'
-  | 'cash-dollar'
-  | 'cash-euro'
   | 'cash-rupee'
-  | 'cart-up'
-  | 'cart-sale'
+  | 'cash-pound'
+  | 'cash-yen'
+  | 'cart'
+  | 'chart-cohort'
+  | 'cash-dollar'
+  | 'chart-popular'
   | 'cart-down'
-  | 'caret-down'
+  | 'cart-up'
   | 'cart-abandoned'
-  | 'camera-flip'
   | 'cart-discount'
-  | 'button-press'
-  | 'calendar-time'
-  | 'calculator'
-  | 'bullet'
   | 'caret-up'
-  | 'bug'
+  | 'cash-euro'
+  | 'caret-down'
+  | 'camera'
+  | 'camera-flip'
+  | 'cart-sale'
+  | 'calculator'
+  | 'calendar-time'
+  | 'calendar-compare'
   | 'button'
+  | 'button-press'
+  | 'bug'
+  | 'bullet'
+  | 'bill'
   | 'blog'
   | 'book'
-  | 'book-open'
-  | 'barcode'
   | 'bank'
-  | 'bill'
-  | 'backspace'
-  | 'automation'
-  | 'arrow-up'
-  | 'arrows-out-horizontal'
-  | 'camera'
-  | 'arrow-down'
-  | 'arrow-left'
-  | 'arrow-up-circle'
-  | 'arrow-right-circle'
-  | 'arrow-down-circle'
-  | 'app-extension'
-  | 'alert-location'
+  | 'barcode'
   | 'bag'
-  | 'airplane'
-  | 'alert-diamond'
+  | 'book-open'
+  | 'automation'
   | 'arrows-in-horizontal'
-  | 'adjust'
+  | 'arrows-out-horizontal'
+  | 'arrow-up'
   | 'arrow-right'
-  | 'affiliate'
-  | '3d-environment'
-  | 'cart'
+  | 'arrow-up-circle'
   | 'arrow-left-circle'
+  | 'arrow-down-circle'
+  | 'arrow-down'
+  | 'alert-diamond'
+  | 'alert-location'
+  | 'arrow-right-circle'
+  | 'arrow-left'
+  | 'airplane'
+  | 'affiliate'
+  | 'backspace'
+  | '3d-environment'
+  | 'adjust'
+  | 'app-extension'
   | 'x-circle'
   | 'x'
-  | 'variant'
   | 'view'
+  | 'variant'
   | 'star'
+  | 'select'
+  | 'product'
   | 'sort'
   | 'plus'
   | 'phone'
   | 'plus-circle'
   | 'person'
-  | 'select'
-  | 'payment'
   | 'page'
-  | 'order'
   | 'order-unfulfilled'
+  | 'order'
   | 'order-fulfilled'
+  | 'payment'
   | 'mobile'
-  | 'microphone'
-  | 'merge'
-  | 'location'
+  | 'minus-circle'
   | 'minus'
+  | 'microphone'
+  | 'location'
+  | 'merge'
   | 'lightbulb'
-  | 'info'
   | 'language'
-  | 'in-progress'
   | 'incomplete'
+  | 'info'
+  | 'in-progress'
   | 'hide'
   | 'globe'
   | 'external'
-  | 'enabled'
-  | 'edit'
   | 'email'
-  | 'disabled'
-  | 'delivery'
-  | 'minus-circle'
+  | 'enabled'
   | 'collection'
-  | 'chevron-down'
+  | 'disabled'
+  | 'edit'
+  | 'clock'
   | 'chevron-up'
   | 'check'
+  | 'delivery'
+  | 'chevron-down'
+  | 'check-circle'
   | 'calendar'
   | 'calendar-check'
-  | 'blank'
+  | 'attachment'
   | 'arrow-up-right'
-  | 'check-circle'
+  | 'blank'
   | 'alert-triangle'
-  | 'alert-bubble'
   | 'archive'
-  | 'product'
-  | 'clock'
+  | 'alert-bubble'
   | 'apps'
-  | 'alert-circle'
-  | 'attachment';
+  | 'alert-circle';
 interface VNode<P = {}> {
   type: ComponentType<P> | string;
   props: P & {
@@ -2556,7 +2671,7 @@ interface Context<T> {
 }
 
 export interface IconProps {
-  type: '' | IconType;
+  type: '' | IconType | 'empty';
   tone: Extract<
     IconProps$1['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
@@ -2566,7 +2681,6 @@ export interface IconProps {
 }
 
 export interface BadgeProps {
-  accessibilityLabel: NonNullable<BadgeProps$1['accessibilityLabel']>;
   color: Extract<BadgeProps$1['color'], 'base' | 'strong'>;
   icon: IconProps['type'] | '';
   size: Extract<BadgeProps$1['size'], 'base' | 'large' | 'large-100'>;
@@ -2575,11 +2689,6 @@ export interface BadgeProps {
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
   >;
 }
-
-declare const tagName$l = 'shopify-badge';
-export interface ReactProps$l
-  extends Partial<BadgeProps>,
-    Pick<BadgeProps$1, 'id'> {}
 
 export type Style = string | CSSStyleSheet;
 export type Styles = Style[] | Style;
@@ -2608,6 +2717,7 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
+  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -2645,7 +2755,6 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 declare class Badge extends PreactCustomElement implements BadgeProps {
-  accessor accessibilityLabel: BadgeProps['accessibilityLabel'];
   accessor color: BadgeProps['color'];
   accessor icon: BadgeProps['icon'];
   accessor size: BadgeProps['size'];
@@ -2654,16 +2763,58 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$l]: Badge;
+    [tagName$m]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$l]: HTMLAttributes<HTMLElement> & ReactProps$l;
+      [tagName$m]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
     }
   }
 }
+
+declare const tagName$m = 'shopify-badge';
+export interface BadgeJSXProps
+  extends Partial<BadgeProps>,
+    Pick<BadgeProps$1, 'id'> {}
+
+export type RequiredBannerProps = Required<BannerProps$1>;
+export interface BannerProps
+  extends Pick<RequiredBannerProps, 'heading' | 'dismissible'> {
+  tone: Extract<
+    RequiredBannerProps['tone'],
+    'critical' | 'warning' | 'success' | 'info'
+  >;
+}
+
+declare class Banner extends PreactCustomElement implements BannerProps {
+  accessor heading: BannerProps['heading'];
+  accessor tone: BannerProps['tone'];
+  accessor dismissible: BannerProps['dismissible'];
+  accessor ondismiss: EventListener | null;
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$l]: Banner;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$l]: HTMLAttributes<HTMLElement> & BannerJSXProps;
+    }
+  }
+}
+
+declare const tagName$l = 'shopify-banner';
+export interface BannerJSXProps
+  extends Partial<BannerProps>,
+    Pick<
+      BannerProps$1,
+      'id' | 'onDismiss' | 'primaryAction' | 'secondaryActions'
+    > {}
 
 export type MakeResponsive<T> = T | `@media${string}`;
 
@@ -2726,11 +2877,6 @@ export interface BoxProps {
   display: AlignedBox['display'];
 }
 
-declare const tagName$k = 'shopify-box';
-export interface ReactProps$k
-  extends Partial<BoxProps>,
-    Pick<BoxProps$1, 'id'> {}
-
 declare class BoxElement extends PreactCustomElement implements BoxProps {
   constructor(renderImpl: RenderImpl);
   accessor accessibilityRole: BoxProps['accessibilityRole'];
@@ -2769,10 +2915,15 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$k]: HTMLAttributes<HTMLElement> & ReactProps$k;
+      [tagName$k]: HTMLAttributes<HTMLElement> & BoxJSXProps;
     }
   }
 }
+
+declare const tagName$k = 'shopify-box';
+export interface BoxJSXProps
+  extends Partial<BoxProps>,
+    Pick<BoxProps$1, 'id'> {}
 
 export type ButtonOnlyProps = Extract<
   ButtonProps$1,
@@ -2801,11 +2952,6 @@ export interface ButtonProps extends ButtonBaseProps {
   icon: IconProps['type'];
 }
 
-declare const tagName$j = 'shopify-button';
-export interface ReactProps$j
-  extends Partial<ButtonProps>,
-    Pick<ButtonProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
-
 export interface SharedProps$3
   extends Required<Pick<InteractionProps, 'activateTarget'>> {
   activateAction: Extract<
@@ -2828,7 +2974,6 @@ declare class Button extends PreactOverlayControl implements ButtonProps {
   accessor loading: ButtonProps['loading'];
   accessor variant: ButtonProps['variant'];
   accessor tone: ButtonProps['tone'];
-  accessor lang: ButtonProps['lang'];
   accessor target: ButtonProps['target'];
   accessor href: ButtonProps['href'];
   accessor download: ButtonProps['download'];
@@ -2847,18 +2992,23 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$j]: HTMLAttributes<HTMLElement> & ReactProps$j;
+      [tagName$j]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
     }
   }
 }
 
+declare const tagName$j = 'shopify-button';
+export interface ButtonJSXProps
+  extends Partial<ButtonProps>,
+    Pick<ButtonProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
+
 declare const internals: unique symbol;
-export type InputProps = Required<
+export type PreactInputProps = Required<
   Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
 >;
 declare class PreactInputElement
   extends PreactCustomElement
-  implements InputProps
+  implements PreactInputProps
 {
   static formAssociated: boolean;
   /** @private */
@@ -2866,15 +3016,15 @@ declare class PreactInputElement
   protected getDefaultValue(): string;
   accessor onchange: EventListener | null;
   accessor oninput: EventListener | null;
-  accessor disabled: InputProps['disabled'];
-  accessor id: InputProps['id'];
-  accessor name: InputProps['name'];
-  get value(): InputProps['value'];
-  set value(value: InputProps['value']);
+  accessor disabled: PreactInputProps['disabled'];
+  accessor id: PreactInputProps['id'];
+  accessor name: PreactInputProps['name'];
+  get value(): PreactInputProps['value'];
+  set value(value: PreactInputProps['value']);
   constructor(renderImpl: RenderImpl);
 }
 
-export type CheckboxProps = InputProps &
+export type CheckboxProps = PreactInputProps &
   Required<
     Pick<
       CheckboxProps$1,
@@ -2885,25 +3035,23 @@ export type CheckboxProps = InputProps &
       | 'indeterminate'
       | 'label'
       | 'required'
+      | 'defaultChecked'
     >
   >;
-
-declare const tagName$i = 'shopify-checkbox';
-export interface ReactProps$i
-  extends Partial<CheckboxProps>,
-    Pick<CheckboxProps$1, 'onChange' | 'onInput'> {}
 
 declare class Checkbox extends PreactInputElement implements CheckboxProps {
   get checked(): boolean;
   set checked(checked: CheckboxProps['checked']);
   get value(): string;
   set value(value: string);
+  accessor defaultChecked: CheckboxProps['defaultChecked'];
   accessor accessibilityLabel: CheckboxProps['accessibilityLabel'];
   accessor details: CheckboxProps['details'];
   accessor error: CheckboxProps['error'];
   accessor indeterminate: CheckboxProps['indeterminate'];
   accessor label: CheckboxProps['label'];
   accessor required: CheckboxProps['required'];
+  formResetCallback(): void;
   constructor();
 }
 declare global {
@@ -2914,20 +3062,20 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$i]: HTMLAttributes<HTMLElement> & ReactProps$i;
+      [tagName$i]: HTMLAttributes<HTMLElement> & CheckboxJSXProps;
     }
   }
 }
+
+declare const tagName$i = 'shopify-checkbox';
+export interface CheckboxJSXProps
+  extends Partial<CheckboxProps>,
+    Pick<CheckboxProps$1, 'onChange' | 'onInput'> {}
 
 export interface DividerProps {
   direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
   color: Extract<DividerProps$1['color'], 'subdued' | 'base' | 'strong'>;
 }
-
-declare const tagName$h = 'shopify-divider';
-export interface ReactProps$h
-  extends Partial<DividerProps>,
-    Pick<DividerProps$1, 'id'> {}
 
 declare class Divider extends PreactCustomElement implements DividerProps {
   accessor direction: DividerProps['direction'];
@@ -2942,10 +3090,15 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: HTMLAttributes<HTMLElement> & ReactProps$h;
+      [tagName$h]: HTMLAttributes<HTMLElement> & DividerJSXProps;
     }
   }
 }
+
+declare const tagName$h = 'shopify-divider';
+export interface DividerJSXProps
+  extends Partial<DividerProps>,
+    Pick<DividerProps$1, 'id'> {}
 
 export type RequiredHeadingProps = Required<HeadingProps$1>;
 export interface HeadingProps {
@@ -2953,11 +3106,6 @@ export interface HeadingProps {
   accessibilityVisibility: RequiredHeadingProps['accessibilityVisibility'];
   lineClamp: RequiredHeadingProps['lineClamp'];
 }
-
-declare const tagName$g = 'shopify-heading';
-export interface ReactProps$g
-  extends Partial<HeadingProps>,
-    Pick<HeadingProps$1, 'id'> {}
 
 declare class Heading extends PreactCustomElement implements HeadingProps {
   accessor accessibilityRole: HeadingProps['accessibilityRole'];
@@ -2973,15 +3121,15 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: HTMLAttributes<HTMLElement> & ReactProps$g;
+      [tagName$g]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
     }
   }
 }
 
-declare const tagName$f = 'shopify-icon';
-export interface ReactProps$f
-  extends Partial<IconProps>,
-    Pick<IconProps$1, 'id'> {}
+declare const tagName$g = 'shopify-heading';
+export interface HeadingJSXProps
+  extends Partial<HeadingProps>,
+    Pick<HeadingProps$1, 'id'> {}
 
 declare class Icon extends PreactCustomElement implements IconProps {
   accessor color: IconProps['color'];
@@ -2998,10 +3146,15 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: Omit<HTMLAttributes<HTMLElement>, 'size'> & ReactProps$f;
+      [tagName$f]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
     }
   }
 }
+
+declare const tagName$f = 'shopify-icon';
+export interface IconJSXProps
+  extends Partial<IconProps>,
+    Pick<IconProps$1, 'id'> {}
 
 export interface ImageProps
   extends Required<
@@ -3017,11 +3170,6 @@ export interface ImageProps
       | 'aspectRatio'
     >
   > {}
-
-declare const tagName$e = 'shopify-image';
-export interface ReactProps$e
-  extends Partial<ImageProps>,
-    Pick<ImageProps$1, 'onError' | 'onLoad' | 'id'> {}
 
 declare class Image extends PreactCustomElement implements ImageProps {
   accessor src: ImageProps['src'];
@@ -3044,10 +3192,15 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: HTMLAttributes<HTMLElement> & ReactProps$e;
+      [tagName$e]: HTMLAttributes<HTMLElement> & ImageJSXProps;
     }
   }
 }
+
+declare const tagName$e = 'shopify-image';
+export interface ImageJSXProps
+  extends Partial<ImageProps>,
+    Pick<ImageProps$1, 'onError' | 'onLoad' | 'id'> {}
 
 export type RequiredLinkProps = Required<LinkProps$1>;
 export interface LinkProps {
@@ -3056,11 +3209,6 @@ export interface LinkProps {
   href: RequiredLinkProps['href'];
   target: RequiredLinkProps['target'];
 }
-
-declare const tagName$d = 'shopify-link';
-export interface ReactProps$d
-  extends Partial<LinkProps>,
-    Pick<LinkProps$1, 'onClick' | 'id' | 'lang'> {}
 
 declare class Link extends PreactCustomElement implements LinkProps {
   accessor tone: LinkProps['tone'];
@@ -3077,13 +3225,15 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: HTMLAttributes<HTMLElement> & ReactProps$d;
+      [tagName$d]: HTMLAttributes<HTMLElement> & LinkJSXProps;
     }
   }
 }
 
-declare const tagName$c = 'shopify-option';
-export interface ReactProps$c extends Partial<SharedProps$2> {}
+declare const tagName$d = 'shopify-link';
+export interface LinkJSXProps
+  extends Partial<LinkProps>,
+    Pick<LinkProps$1, 'onClick' | 'id' | 'lang'> {}
 
 export interface SharedProps$2
   extends Required<Pick<OptionProps, 'disabled' | 'value'>> {}
@@ -3100,13 +3250,13 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: HTMLAttributes<HTMLElement> & ReactProps$c;
+      [tagName$c]: HTMLAttributes<HTMLElement> & OptionJSXProps;
     }
   }
 }
 
-declare const tagName$b = 'shopify-option-group';
-export interface ReactProps$b extends Partial<SharedProps$1> {}
+declare const tagName$c = 'shopify-option';
+export interface OptionJSXProps extends Partial<SharedProps$2> {}
 
 export interface SharedProps$1
   extends Required<Pick<OptionGroupProps, 'disabled' | 'label'>> {}
@@ -3123,31 +3273,31 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: HTMLAttributes<HTMLElement> & ReactProps$b;
+      [tagName$b]: HTMLAttributes<HTMLElement> & OptionGroupJSXProps;
     }
   }
 }
+
+declare const tagName$b = 'shopify-option-group';
+export interface OptionGroupJSXProps extends Partial<SharedProps$1> {}
 
 export interface ParagraphProps
   extends Required<
     Pick<
       ParagraphProps$1,
-      'lineClamp' | 'accessibilityVisibility' | 'fontVariantNumeric' | 'tone'
+      'accessibilityVisibility' | 'fontVariantNumeric' | 'tone' | 'dir'
     >
   > {
   color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
+  lineClamp: Extract<ParagraphProps$1['lineClamp'], number>;
 }
-
-declare const tagName$a = 'shopify-paragraph';
-export interface ReactProps$a
-  extends Partial<ParagraphProps>,
-    Pick<ParagraphProps$1, 'id'> {}
 
 declare class Paragraph extends PreactCustomElement implements ParagraphProps {
   accessor fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
   accessor lineClamp: ParagraphProps['lineClamp'];
   accessor tone: ParagraphProps['tone'];
   accessor color: ParagraphProps['color'];
+  accessor dir: ParagraphProps['dir'];
   accessor accessibilityVisibility: ParagraphProps['accessibilityVisibility'];
   constructor();
 }
@@ -3159,10 +3309,15 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: HTMLAttributes<HTMLElement> & ReactProps$a;
+      [tagName$a]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
     }
   }
 }
+
+declare const tagName$a = 'shopify-paragraph';
+export interface ParagraphJSXProps
+  extends Partial<ParagraphProps>,
+    Pick<ParagraphProps$1, 'id'> {}
 
 export type RequiredSectionProps = Required<SectionProps$1>;
 export interface SectionProps {
@@ -3170,11 +3325,6 @@ export interface SectionProps {
   heading: RequiredSectionProps['heading'];
   padding: RequiredSectionProps['padding'];
 }
-
-declare const tagName$9 = 'shopify-section';
-export interface ReactProps$9
-  extends Partial<SectionProps>,
-    Pick<SectionProps$1, 'id'> {}
 
 declare class Section extends PreactCustomElement implements SectionProps {
   constructor();
@@ -3191,67 +3341,93 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: HTMLAttributes<HTMLElement> & ReactProps$9;
+      [tagName$9]: HTMLAttributes<HTMLElement> & SectionJSXProps;
     }
   }
 }
+
+declare const tagName$9 = 'shopify-section';
+export interface SectionJSXProps
+  extends Partial<SectionProps>,
+    Pick<SectionProps$1, 'id'> {}
+
+export interface SharedProps
+  extends Required<
+    Pick<
+      SelectProps,
+      | 'details'
+      | 'disabled'
+      | 'error'
+      | 'label'
+      | 'name'
+      | 'placeholder'
+      | 'required'
+      | 'value'
+      | 'defaultValue'
+      | 'icon'
+      | 'labelAccessibilityVisibility'
+    >
+  > {}
 
 export type FieldReactProps = Pick<
   TextFieldProps,
   'onChange' | 'onFocus' | 'onInput' | 'onBlur'
 >;
 
-declare const tagName$8 = 'shopify-select';
-export interface ReactProps$8 extends Partial<SharedProps & FieldReactProps> {}
-
-export type FieldProps<Autocomplete extends string = string> = InputProps &
-  Required<
-    Pick<
-      TextFieldProps,
-      | 'defaultValue'
-      | 'details'
-      | 'error'
-      | 'label'
-      | 'placeholder'
-      | 'readOnly'
-      | 'required'
-    >
-  > & {
-    autocomplete: Autocomplete;
-  };
+export type PreactFieldProps<Autocomplete extends string = string> =
+  PreactInputProps &
+    Required<
+      Pick<
+        TextFieldProps,
+        | 'defaultValue'
+        | 'details'
+        | 'error'
+        | 'label'
+        | 'labelAccessibilityVisibility'
+        | 'placeholder'
+        | 'readOnly'
+        | 'required'
+      >
+    > & {
+      autocomplete: Autocomplete;
+    };
 declare class PreactFieldElement<Autocomplete extends string = string>
   extends PreactInputElement
-  implements FieldProps<Autocomplete>
+  implements PreactFieldProps<Autocomplete>
 {
   accessor onblur: EventListener | null;
   accessor onfocus: EventListener | null;
-  accessor autocomplete: FieldProps<Autocomplete>['autocomplete'];
-  accessor defaultValue: FieldProps['defaultValue'];
-  accessor details: FieldProps['details'];
-  accessor error: FieldProps['error'];
-  accessor label: FieldProps['label'];
-  accessor placeholder: FieldProps['placeholder'];
-  accessor readOnly: FieldProps['readOnly'];
-  accessor required: FieldProps['required'];
+  accessor autocomplete: PreactFieldProps<Autocomplete>['autocomplete'];
+  accessor defaultValue: PreactFieldProps['defaultValue'];
+  accessor details: PreactFieldProps['details'];
+  accessor error: PreactFieldProps['error'];
+  accessor label: PreactFieldProps['label'];
+  accessor labelAccessibilityVisibility: PreactFieldProps['labelAccessibilityVisibility'];
+  accessor placeholder: PreactFieldProps['placeholder'];
+  accessor readOnly: PreactFieldProps['readOnly'];
+  accessor required: PreactFieldProps['required'];
   protected getDefaultValue(): string;
+  formResetCallback(): void;
+  connectedCallback(): void;
   constructor(renderImpl: RenderImpl);
 }
 
-export interface SharedProps
-  extends Pick<
-    SelectProps,
-    | 'disabled'
-    | 'error'
-    | 'label'
-    | 'name'
-    | 'placeholder'
-    | 'required'
-    | 'value'
-  > {}
+declare const usedFirstOptionSymbol: unique symbol;
+
 declare class Select extends PreactFieldElement implements SharedProps {
+  accessor icon: SharedProps['icon'];
   connectedCallback(): void;
   disconnectedCallback(): void;
   constructor();
+  /**
+   * used to determine if no value or defaultValue was set, in which case the first non-disabled option was used
+   *
+   * this is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form
+   */
+  [usedFirstOptionSymbol]: boolean;
+  get value(): string;
+  set value(value: string);
+  formResetCallback(): void;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -3261,10 +3437,14 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: HTMLAttributes<HTMLElement> & ReactProps$8;
+      [tagName$8]: HTMLAttributes<HTMLElement> & SelectJSXProps;
     }
   }
 }
+
+declare const tagName$8 = 'shopify-select';
+export interface SelectJSXProps
+  extends Partial<SharedProps & FieldReactProps> {}
 
 export interface SpinnerProps
   extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
@@ -3275,11 +3455,6 @@ export interface SpinnerProps
    */
   size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
 }
-
-declare const tagName$7 = 'shopify-spinner';
-export interface ReactProps$7
-  extends Partial<SpinnerProps>,
-    Pick<SpinnerProps$1, 'id'> {}
 
 declare class Spinner extends PreactCustomElement implements SpinnerProps {
   accessor accessibilityLabel: string;
@@ -3294,10 +3469,15 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: HTMLAttributes<HTMLElement> & ReactProps$7;
+      [tagName$7]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
     }
   }
 }
+
+declare const tagName$7 = 'shopify-spinner';
+export interface SpinnerJSXProps
+  extends Partial<SpinnerProps>,
+    Pick<SpinnerProps$1, 'id'> {}
 
 export type AlignedStackProps = Required<StackProps$1>;
 export interface StackProps extends BoxProps {
@@ -3309,11 +3489,6 @@ export interface StackProps extends BoxProps {
   columnGap: MakeResponsive<AlignedStackProps['columnGap']>;
   direction: MakeResponsive<AlignedStackProps['direction']>;
 }
-
-declare const tagName$6 = 'shopify-stack';
-export interface ReactProps$6
-  extends Partial<StackProps>,
-    Pick<StackProps$1, 'id'> {}
 
 declare class Stack extends BoxElement implements StackProps {
   constructor();
@@ -3333,13 +3508,20 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: HTMLAttributes<HTMLElement> & ReactProps$6;
+      [tagName$6]: HTMLAttributes<HTMLElement> & StackJSXProps;
     }
   }
 }
 
+declare const tagName$6 = 'shopify-stack';
+export interface StackJSXProps
+  extends Partial<StackProps>,
+    Pick<StackProps$1, 'id'> {}
+
 export interface TextProps
-  extends Required<Pick<TextProps$1, 'display' | 'accessibilityVisibility'>> {
+  extends Required<
+    Pick<TextProps$1, 'display' | 'accessibilityVisibility' | 'dir'>
+  > {
   color: Extract<TextProps$1['color'], 'base' | 'subdued'>;
   type: Extract<
     TextProps$1['type'],
@@ -3355,17 +3537,13 @@ export interface TextProps
   >;
 }
 
-declare const tagName$5 = 'shopify-text';
-export interface ReactProps$5
-  extends Partial<TextProps>,
-    Pick<TextProps$1, 'id'> {}
-
 declare class Text extends PreactCustomElement implements TextProps {
   accessor display: TextProps['display'];
   accessor fontVariantNumeric: TextProps['fontVariantNumeric'];
   accessor color: TextProps['color'];
   accessor tone: TextProps['tone'];
   accessor type: TextProps['type'];
+  accessor dir: TextProps['dir'];
   accessor accessibilityVisibility: TextProps['accessibilityVisibility'];
   constructor();
 }
@@ -3377,10 +3555,15 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$5]: HTMLAttributes<HTMLElement> & ReactProps$5;
+      [tagName$5]: HTMLAttributes<HTMLElement> & TextJSXProps;
     }
   }
 }
+
+declare const tagName$5 = 'shopify-text';
+export interface TextJSXProps
+  extends Partial<TextProps>,
+    Pick<TextProps$1, 'id'> {}
 
 declare const tagName$4 = 'shopify-admin-action';
 export interface AdminActionProps {
@@ -3405,13 +3588,16 @@ declare global {
     [tagName$4]: AdminAction;
   }
 }
-export interface ReactProps$4 extends Partial<AdminActionProps> {}
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$4]: HTMLAttributes<HTMLElement> & ReactProps$4;
+      [tagName$4]: HTMLAttributes<HTMLElement> & AdminActionJSXProps;
     }
   }
+}
+
+export interface AdminActionJSXProps extends Partial<AdminActionProps> {
+  id?: string;
 }
 
 declare const tagName$3 = 'shopify-admin-block';
@@ -3438,13 +3624,16 @@ declare global {
     [tagName$3]: AdminBlock;
   }
 }
-export interface ReactProps$3 extends Partial<AdminBlockProps> {}
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$3]: HTMLAttributes<HTMLElement> & ReactProps$3;
+      [tagName$3]: HTMLAttributes<HTMLElement> & AdminBlockJSXProps;
     }
   }
+}
+
+export interface AdminBlockJSXProps extends Partial<AdminBlockProps> {
+  id?: string;
 }
 
 declare const tagName$2 = 'shopify-admin-print-action';
@@ -3468,13 +3657,17 @@ declare global {
     [tagName$2]: AdminPrintAction;
   }
 }
-export interface ReactProps$2 extends Partial<AdminPrintActionProps> {}
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$2]: HTMLAttributes<HTMLElement> & ReactProps$2;
+      [tagName$2]: HTMLAttributes<HTMLElement> & AdminPrintActionJSXProps;
     }
   }
+}
+
+export interface AdminPrintActionJSXProps
+  extends Partial<AdminPrintActionProps> {
+  id?: string;
 }
 
 declare const tagName$1 = 'shopify-customer-segment-template';
@@ -3527,13 +3720,18 @@ declare global {
     [tagName$1]: CustomerSegmentTemplate;
   }
 }
-export interface ReactProps$1 extends Partial<CustomerSegmentTemplateProps> {}
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$1]: HTMLAttributes<HTMLElement> & ReactProps$1;
+      [tagName$1]: HTMLAttributes<HTMLElement> &
+        CustomerSegmentTemplateJSXProps;
     }
   }
+}
+
+export interface CustomerSegmentTemplateJSXProps
+  extends Partial<CustomerSegmentTemplateProps> {
+  id?: string;
 }
 
 declare const tagName = 'shopify-function-settings';
@@ -3556,36 +3754,64 @@ declare global {
     [tagName]: FunctionSettings;
   }
 }
-export interface ReactProps extends Partial<FunctionSettingsProps> {}
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
+      [tagName]: HTMLAttributes<HTMLElement> & FunctionSettingsJSXProps;
     }
   }
 }
 
+export interface FunctionSettingsJSXProps
+  extends Partial<FunctionSettingsProps> {
+  id?: string;
+}
+
 export {
   AdminAction,
+  type AdminActionJSXProps,
   AdminBlock,
+  type AdminBlockJSXProps,
   AdminPrintAction,
+  type AdminPrintActionJSXProps,
   Badge,
+  type BadgeJSXProps,
+  Banner,
+  type BannerJSXProps,
   Box,
+  type BoxJSXProps,
   Button,
+  type ButtonJSXProps,
   Checkbox,
+  type CheckboxJSXProps,
   CustomerSegmentTemplate,
+  type CustomerSegmentTemplateJSXProps,
   Divider,
+  type DividerJSXProps,
   FunctionSettings,
+  type FunctionSettingsJSXProps,
   Heading,
+  type HeadingJSXProps,
   Icon,
+  type IconJSXProps,
   Image,
+  type ImageJSXProps,
   Link,
+  type LinkJSXProps,
   Option,
   OptionGroup,
+  type OptionGroupJSXProps,
+  type OptionJSXProps,
   Paragraph,
+  type ParagraphJSXProps,
   Section,
+  type SectionJSXProps,
   Select,
+  type SelectJSXProps,
   Spinner,
+  type SpinnerJSXProps,
   Stack,
+  type StackJSXProps,
   Text,
+  type TextJSXProps,
 };
