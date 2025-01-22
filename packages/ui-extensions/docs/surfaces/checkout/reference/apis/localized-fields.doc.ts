@@ -26,6 +26,12 @@ const data: ReferenceEntityTemplateSchema = {
         'Returns the current localized fields and re-renders your component if the values change.',
       type: 'UseLocalizedFieldsGeneratedType',
     },
+    {
+      title: 'useLocalizedField',
+      description:
+        'Returns the requested localized field and re-renders your component if the value changes.',
+      type: 'UseLocalizedFieldGeneratedType',
+    },
   ],
   defaultExample: getExample('localized-fields/default', ['jsx', 'js']),
   related: getLinksByTag('apis'),
