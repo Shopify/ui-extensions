@@ -1,8 +1,8 @@
 # @shopify/ui-extensions-react
 
-## 2025.2.0
+## 2025.1.1
 
-### Minor Changes
+### Patch Changes
 
 - [#2572](https://github.com/Shopify/ui-extensions/pull/2572) [`b06c16a63a80eedd208ae62c983e61b69985d89d`](https://github.com/Shopify/ui-extensions/commit/b06c16a63a80eedd208ae62c983e61b69985d89d) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Adds `useLocalizedField` hook.
 
