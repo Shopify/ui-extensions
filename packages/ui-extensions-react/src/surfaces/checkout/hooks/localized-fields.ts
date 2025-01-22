@@ -15,7 +15,7 @@ import {useSubscription} from './subscription';
  */
 export function useLocalizedFields<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
->(keys: LocalizedFieldKey[]): LocalizedField[] | undefined {
+>(keys?: LocalizedFieldKey[]): LocalizedField[] {
   const {localizedFields} = useApi<Target>();
 
   if (!localizedFields) {
@@ -24,7 +24,26 @@ export function useLocalizedFields<
     );
   }
 
-  return useSubscription(localizedFields)?.filter(({key}) =>
-    keys.includes(key),
-  );
+  const localizedFieldsData = useSubscription(localizedFields);
+
+  if (!keys) {
+    return localizedFieldsData;
+  }
+
+  if (!keys.length) {
+    return [];
+  }
+
+  return localizedFieldsData.filter(({key}) => keys.includes(key));
+}
+
+/**
+ * Returns the current localized field or undefined for the specified
+ * localized field key and re-renders your component if the value changes.
+ */
+export function useLocalizedField<
+  Target extends RenderExtensionTarget = RenderExtensionTarget,
+>(key: LocalizedFieldKey): LocalizedField | undefined {
+  const fields = useLocalizedFields<Target>([key]);
+  return fields[0];
 }
