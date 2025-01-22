@@ -4,11 +4,11 @@ import {
   CashTrackingSessionCompleteInput,
   CashTrackingSessionCancelInput,
 } from './input/CashTrackingSessionInput';
-import {PurchaseCompleteInput} from './input/PurchaseCompleteInput';
+import {TransactionCompleteInput} from './input/TransactionCompleteInput';
 
 export interface EventExtensionTargets {
   'pos.transaction-complete.event.observe': (
-    input: PurchaseCompleteInput,
+    input: TransactionCompleteInput,
   ) => BaseIntent;
   'pos.cash-tracking-session-start.event.observe': (
     input: CashTrackingSessionStartInput,

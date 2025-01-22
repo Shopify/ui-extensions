@@ -91,7 +91,11 @@ export type {
   LineItemDiscount,
   CustomSale,
   Address,
+  ShippingLine,
+  TaxLine,
 } from './types/cart';
+
+export type {PaymentMethod} from './types/payment';
 
 export type {MultipleResourceResult} from './types/multiple-resource-result';
 
