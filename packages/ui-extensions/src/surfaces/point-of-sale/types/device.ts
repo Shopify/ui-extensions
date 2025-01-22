@@ -4,9 +4,9 @@ export interface Device {
    */
   name: string;
   /**
-   * The string ID of the device
+   * The ID of the device
    */
-  deviceId: string;
+  deviceId: number;
   /**
    * Whether the device is a tablet
    */
