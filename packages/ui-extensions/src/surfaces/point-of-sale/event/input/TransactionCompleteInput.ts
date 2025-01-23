@@ -14,7 +14,7 @@ export interface TransactionCompleteInput extends BaseInput {
     lineItems: LineItem[];
     orderId?: number;
     paymentMethods: PaymentMethod[];
-    shippingLines?: ShippingLine;
+    shippingLine?: ShippingLine;
     taxLines?: TaxLine[];
   };
 }
