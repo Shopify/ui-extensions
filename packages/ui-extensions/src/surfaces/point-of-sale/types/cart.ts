@@ -108,29 +108,3 @@ export interface Address {
   provinceCode?: string;
   countryCode?: CountryCode;
 }
-
-export type ShippingLine = CalculatedShippingLine | CustomShippingLine;
-
-export interface CalculatedShippingLine {
-  uuid: string;
-  price: string;
-  title: string;
-  methodType: 'SHIPPING' | 'RETAIL';
-  type: 'Calculated';
-}
-
-export interface CustomShippingLine {
-  uuid: string;
-  price: string;
-  title: string;
-  type: 'Custom';
-}
-
-export interface TaxLine {
-  uuid: string;
-  price: string;
-  rate: number;
-  rateRange?: {min: number; max: number};
-  title: string;
-  enabled: boolean;
-}

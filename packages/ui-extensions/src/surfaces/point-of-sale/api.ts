@@ -91,9 +91,15 @@ export type {
   LineItemDiscount,
   CustomSale,
   Address,
-  ShippingLine,
-  TaxLine,
 } from './types/cart';
+
+export type {
+  ShippingLine,
+  CalculatedShippingLine,
+  CustomShippingLine,
+} from './types/shipping-line';
+
+export type {TaxLine} from './types/tax-line';
 
 export type {PaymentMethod} from './types/payment';
 
