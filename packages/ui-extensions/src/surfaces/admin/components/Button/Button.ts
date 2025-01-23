@@ -93,6 +93,8 @@ interface ButtonAnchorProps extends CommonProps {
   /**
    * Tells browsers to download the linked resource instead of navigating to it.
    * Optionally accepts filename value to rename file.
+   * Use `attachment` query param in URL to force download behavior.
+   * eg. `to="filename.jpg?attachment"`
    */
   download?: boolean | string;
 
