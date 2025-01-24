@@ -639,6 +639,11 @@ export interface ProductVariant extends BaseMerchandise {
   title: string;
 
   /**
+   * The product variant's sku.
+   */
+  sku?: string;
+
+  /**
    * The product variant's subtitle.
    */
   subtitle?: string;
