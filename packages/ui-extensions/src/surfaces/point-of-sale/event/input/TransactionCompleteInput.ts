@@ -10,7 +10,7 @@ import {BaseInput} from './BaseInput';
 export interface TransactionCompleteInput extends BaseInput {
   transactionComplete: {
     discounts: Discount[];
-    draftCheckoutId: number;
+    draftCheckoutUuid: string;
     lineItems: LineItem[];
     orderId?: number;
     paymentMethods: PaymentMethod[];
