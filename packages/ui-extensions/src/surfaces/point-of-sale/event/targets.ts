@@ -5,6 +5,8 @@ import {
   CashTrackingSessionCancelInput,
 } from './input/CashTrackingSessionInput';
 import {TransactionCompleteInput} from './input/TransactionCompleteInput';
+import {PrepareReceiptInput} from './input/PrepareReceiptInput';
+import {PrepareReceiptIntent} from './intent/PrepareReceiptIntent';
 
 export interface EventExtensionTargets {
   'pos.transaction-complete.event.observe': (
@@ -19,6 +21,9 @@ export interface EventExtensionTargets {
   'pos.cash-tracking-session-complete.event.observe': (
     input: CashTrackingSessionCompleteInput,
   ) => BaseIntent;
+  'pos.prepare-receipt.event.inject': (
+    input: PrepareReceiptInput,
+  ) => PrepareReceiptIntent;
 }
 
 export type EventExtensionTarget = keyof EventExtensionTargets;

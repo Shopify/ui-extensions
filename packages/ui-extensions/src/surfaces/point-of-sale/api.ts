@@ -101,7 +101,7 @@ export type {
 
 export type {TaxLine} from './types/tax-line';
 
-export type {PaymentMethod} from './types/payment';
+export type {PaymentMethod, CardSource} from './types/payment';
 
 export type {MultipleResourceResult} from './types/multiple-resource-result';
 
