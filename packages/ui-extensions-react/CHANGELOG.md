@@ -1,5 +1,14 @@
 # @shopify/ui-extensions-react
 
+## 2023.10.3
+
+### Patch Changes
+
+- [#2110](https://github.com/Shopify/ui-extensions/pull/2110) [`c4641e99b`](https://github.com/Shopify/ui-extensions/commit/c4641e99b26dbe66b33852b679142fd51bd54d96) Thanks [@oliverigor](https://github.com/oliverigor)! - ScrollView scrollTo docs changes, image source docs changes
+
+- Updated dependencies [[`c4641e99b`](https://github.com/Shopify/ui-extensions/commit/c4641e99b26dbe66b33852b679142fd51bd54d96)]:
+  - @shopify/ui-extensions@2023.10.3
+
 ## 2023.10.2
 
 ### Patch Changes

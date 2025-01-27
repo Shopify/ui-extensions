@@ -1,6 +1,6 @@
 {
   "name": "@shopify/ui-extensions-react",
-  "version": "2023.10.2",
+  "version": "2023.10.3",
   "description": "React bindings for @shopify/ui-extensions",
   "publishConfig": {
     "access": "public",
@@ -57,7 +57,7 @@
     "@types/react": ">=18.0.0"
   },
   "peerDependencies": {
-    "@shopify/ui-extensions": "2023.10.2",
+    "@shopify/ui-extensions": "2023.10.3",
     "react": ">=18.0.0"
   },
   "peerDependenciesMeta": {
@@ -71,7 +71,7 @@
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
     "@quilted/react-testing": "^0.5.31",
-    "@shopify/ui-extensions": "2023.10.2",
+    "@shopify/ui-extensions": "2023.10.3",
     "react": "^18.0.0",
     "react-reconciler": "0.29.0",
     "react-test-renderer": "^18.2.0"
