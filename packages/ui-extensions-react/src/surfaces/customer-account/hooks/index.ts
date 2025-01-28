@@ -1,3 +1,4 @@
+export {useBillingAddress} from './billing-address';
 export {useExtensionApi, useApi} from './api';
 export {useCurrency} from './currency';
 export {useLanguage} from './language';
