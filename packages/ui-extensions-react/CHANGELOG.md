@@ -1,5 +1,14 @@
 # @shopify/ui-extensions-react
 
+## 2025.1.2
+
+### Patch Changes
+
+- [#2600](https://github.com/Shopify/ui-extensions/pull/2600) [`c3bf65b2829d9ccfa7b8badf29ba1ad7c0435400`](https://github.com/Shopify/ui-extensions/commit/c3bf65b2829d9ccfa7b8badf29ba1ad7c0435400) Thanks [@lihaokx](https://github.com/lihaokx)! - Add `useBillingAddress` hook for customer account UI extensions.
+
+- Updated dependencies [[`c3bf65b2829d9ccfa7b8badf29ba1ad7c0435400`](https://github.com/Shopify/ui-extensions/commit/c3bf65b2829d9ccfa7b8badf29ba1ad7c0435400)]:
+  - @shopify/ui-extensions@2025.1.1
+
 ## 2025.1.1
 
 ### Patch Changes
