@@ -5,8 +5,8 @@ import type {
 } from '../extension';
 
 import {
-  BatchingRemoteConnection,
   RemoteConnection,
+  BatchingRemoteConnection,
 } from '@remote-dom/core/elements';
 
 export interface ExtensionRegistrationFunction<ExtensionTargets> {

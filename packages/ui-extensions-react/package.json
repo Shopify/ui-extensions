@@ -64,6 +64,7 @@
     "@remote-ui/async-subscription": "^2.1.12",
     "@remote-ui/react": "^5.0.2",
     "@types/react": ">=18.2.67",
+    "@remote-dom/core": "^1.6.0",
     "@remote-dom/react": "^1.2.1",
     "react-dom": "^18.3.1"
   },
