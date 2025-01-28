@@ -1,4 +1,4 @@
-import {RemoteConnection} from '@remote-dom/core/elements';
+import {RemoteConnection, RemoteRootElement} from '@remote-dom/core/elements';
 import type {
   RemoteRoot,
   RemoteChannel,
@@ -30,15 +30,8 @@ export interface RenderExtension<
   ): void | Promise<void>;
 }
 
-export interface RenderExtensionWithRemoteRoot<
-  Api,
-  AllowedComponents extends RemoteComponentType<
-    string,
-    any,
-    any
-  > = RemoteComponentType<any, any, any>,
-> {
-  (root: RemoteRoot<AllowedComponents, AllowedComponents>, api: Api):
+export interface RenderExtensionWithRemoteRoot<Api> {
+  (root: RemoteRootElement, api: Api):
     | void
     | Promise<void>
     | Promise<() => void>;
