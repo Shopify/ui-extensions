@@ -1,4 +1,4 @@
-import {RemoteConnection} from '@remote-dom/core';
+import {RemoteConnection} from '@remote-dom/core/elements';
 import type {
   RemoteRoot,
   RemoteChannel,
