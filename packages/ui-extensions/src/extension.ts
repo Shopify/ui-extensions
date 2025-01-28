@@ -1,9 +1,5 @@
 import {RemoteConnection, RemoteRootElement} from '@remote-dom/core/elements';
-import type {
-  RemoteRoot,
-  RemoteChannel,
-  RemoteComponentType,
-} from '@remote-ui/core';
+import type {RemoteChannel, RemoteComponentType} from '@remote-ui/core';
 
 export interface RenderExtensionConnection<
   AllowedComponents extends RemoteComponentType<
