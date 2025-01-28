@@ -1,3 +1,4 @@
+import {RemoteConnection} from '@remote-dom/core';
 import type {
   RemoteRoot,
   RemoteChannel,
@@ -11,7 +12,7 @@ export interface RenderExtensionConnection<
     any
   > = RemoteComponentType<any, any, any>,
 > {
-  readonly channel: RemoteChannel;
+  readonly channel: RemoteChannel | RemoteConnection;
   readonly components: AllowedComponents;
 }
 

@@ -54,6 +54,7 @@ export function reactExtension<Target extends RenderExtensionTarget>(
             resolve(null);
           }, 0);
         } catch (error) {
+          // Workaround for https://github.com/Shopify/ui-extensions/issues/325
           // eslint-disable-next-line no-console
           console.error(error);
           reject(error);

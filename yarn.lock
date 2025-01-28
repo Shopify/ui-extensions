@@ -1775,10 +1775,18 @@
   dependencies:
     jest-matcher-utils "^27.0.0"
 
-"@remote-dom/core@^1.5.0", "@remote-dom/core@^1.5.1":
+"@remote-dom/core@^1.5.0":
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/@remote-dom/core/-/core-1.5.1.tgz#38d9b6a141b0e01779d03ad8088422bdbbf6bc65"
   integrity sha512-W+24z1hyhICanCAptXwEvBMEdf+egvQaj/VM7+D3nQEQlllaQYrbcmKLw2O8ydECG2KA0nPwIVYHfq/jGgcdbQ==
+  dependencies:
+    "@remote-dom/polyfill" "^1.4.2"
+    htm "^3.1.1"
+
+"@remote-dom/core@^1.6.0":
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/@remote-dom/core/-/core-1.6.0.tgz#d2821084815139e2c0bf28065e067aef784500be"
+  integrity sha512-Auq7FNEakQng34xa8SEx21JHb0llj4nUHo4rWzaq33yJMxML2WNLVp3eUMvW70MzBcyIpbz1OB7/yZBcWxuf0Q==
   dependencies:
     "@remote-dom/polyfill" "^1.4.2"
     htm "^3.1.1"

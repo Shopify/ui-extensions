@@ -4,6 +4,11 @@ import type {
   RenderExtensionWithRemoteRoot,
 } from '../extension';
 
+import {
+  BatchingRemoteConnection,
+  RemoteConnection,
+} from '@remote-dom/core/elements';
+
 export interface ExtensionRegistrationFunction<ExtensionTargets> {
   <Target extends keyof ExtensionTargets>(
     target: Target,
@@ -46,10 +51,13 @@ export function createExtensionRegistrationFunction<
 
       const [{channel}, api] = args as [RenderExtensionConnection, any];
 
+      const batchingConnection = new BatchingRemoteConnection(
+        channel as RemoteConnection,
+      );
+
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const root = document.createElement('remote-root');
-      root.connect(channel);
 
       let renderResult = (implementation as any)(root, api);
 
@@ -60,6 +68,9 @@ export function createExtensionRegistrationFunction<
       ) {
         renderResult = await renderResult;
       }
+
+      root.connect(batchingConnection);
+      batchingConnection.flush();
 
       return renderResult;
     }
