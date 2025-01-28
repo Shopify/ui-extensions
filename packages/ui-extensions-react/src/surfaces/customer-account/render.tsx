@@ -43,12 +43,22 @@ export function reactExtension<Target extends RenderExtensionTarget>(
     target as any,
     async (root, api) => {
       const element = await render(api as ApiForRenderExtension<Target>);
-
-      createRoot(root).render(
-        <ExtensionApiContext.Provider value={api}>
-          <ErrorBoundary>{element}</ErrorBoundary>
-        </ExtensionApiContext.Provider>,
-      );
+      await new Promise((resolve, reject) => {
+        try {
+          createRoot(root).render(
+            <ExtensionApiContext.Provider value={api}>
+              <ErrorBoundary>{element}</ErrorBoundary>
+            </ExtensionApiContext.Provider>,
+          );
+          setTimeout(() => {
+            resolve(null);
+          }, 0);
+        } catch (error) {
+          // eslint-disable-next-line no-console
+          console.error(error);
+          reject(error);
+        }
+      });
     },
   ) as any;
 }

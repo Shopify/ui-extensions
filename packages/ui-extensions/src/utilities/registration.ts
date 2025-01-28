@@ -46,19 +46,12 @@ export function createExtensionRegistrationFunction<
 
       const [{channel}, api] = args as [RenderExtensionConnection, any];
 
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       const root = document.createElement('remote-root');
       root.connect(channel);
 
-      // try {
-      //   const observer = new RemoteMutationObserver(channel);
-      //   observer.observe(root);
-      // } catch {
-      // }
-
       let renderResult = (implementation as any)(root, api);
-
-      console.log('### renderResult test', renderResult);
 
       if (
         typeof renderResult === 'object' &&
@@ -66,7 +59,6 @@ export function createExtensionRegistrationFunction<
         'then' in renderResult
       ) {
         renderResult = await renderResult;
-        console.log('### renderResult promise', renderResult);
       }
 
       return renderResult;
