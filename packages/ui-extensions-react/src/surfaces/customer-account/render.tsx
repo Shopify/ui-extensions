@@ -85,7 +85,6 @@ export function render<Target extends RenderExtensionTarget>(
   target: Target,
   render: (api: ApiForRenderExtension<Target>) => ReactElement<any>,
 ): ExtensionTargets[Target] {
-  // @ts-ignore
   return reactExtension(target, render);
 }
 
