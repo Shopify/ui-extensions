@@ -25,6 +25,11 @@ const data: ReferenceEntityTemplateSchema = {
         'Returns the proposed `shippingAddress` applied to the checkout.',
       type: 'UseShippingAddressGeneratedType',
     },
+    {
+      title: 'useBillingAddress',
+      description: 'Returns `billingAddress` specified in the order.',
+      type: 'UseBillingAddressGeneratedType',
+    },
   ],
   related: [],
 };
