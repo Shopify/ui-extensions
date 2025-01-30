@@ -25,9 +25,11 @@ export type PrepareReceiptAdditionalLineType =
  *  - value: "Custom description"
  */
 export interface PrepareReceiptAdditionalLine {
-  type: PrepareReceiptAdditionalLineType;
-  title: string;
-  value: string;
+  data: {
+    type: PrepareReceiptAdditionalLineType;
+    title: string;
+    value: string;
+  };
 }
 
 export interface PrepareReceiptIntent extends BaseIntent {
