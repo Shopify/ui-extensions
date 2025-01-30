@@ -65,16 +65,15 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 ### Breaking Changes
 
-- Removed the deprecated ActionItem component. Use a [Button](/docs/api/pos-ui-extensions/components/button) instead.
-- Removed the deprecated SmartGridApi. Use the [ActionApi](/docs/api/pos-ui-extensions/apis/action-api) instead.
+- Removed the deprecated \`ActionItem\` component. Use a [Button](/docs/api/pos-ui-extensions/components/button) instead.
+- Removed the deprecated \`SmartGridApi\`. Use the [ActionApi](/docs/api/pos-ui-extensions/apis/action-api) instead.
 - Removed the deprecated DiscountType. Use [CartDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-applycartdiscount) and [LineItemDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-setlineitemdiscount) instead.
 - Removed the deprecated \`badge\` prop from the [List](/docs/api/pos-ui-extensions/components/list) component. Use \`badges\` instead.
 - Removed the deprecated \`TextFieldProps\` type from the [TextField](/docs/api/pos-ui-extensions/components/textfield) component.
-- Deprecated \`'vertical'\` and \`'horizontal'\` as values for the \`direction\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
-- Deprecated the \`flexChildren'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
-- Deprecated the \`flex'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
-- Deprecated the \`flexWrap'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
-- Deprecated the \`paddingHorizontal'\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
+- Deprecated \`'vertical'\` and \`'horizontal'\` as values for the \`direction\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`'block'\` and \`'inline'\` instead.
+- Deprecated the \`flex'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Set \`blockSize\` or \`inlineSize\` to a value other than \`'auto'\` to create the desired size for your \`Stack\`.
+- Deprecated the \`flexWrap'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Content will now wrap automatically.
+- Deprecated the \`paddingHorizontal'\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`paddingInline\` and \`paddingBlock\` instead.
 - Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/components/formattedtextfield) component.
 - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
 
@@ -84,10 +83,10 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added \`currency\` prop to the [SessionApi](/docs/api/pos-ui-extensions/apis/session-api).
 - [Cart API](/docs/api/pos-ui-extensions/apis/cart-api) updates:
   - Added \`bulkUpdateCart\` function for single-operation cart updates.
-  - The \`addLineItem\` and \`addCustomSale\` functions now return a UUID for the added line item.
+  - The \`addLineItem\` and \`addCustomSale\` functions now return a \`UUID\` for the added line item.
 - Added [Box](/docs/api/pos-ui-extensions/components/box) component.
 - Enhanced the [Stack](/docs/api/pos-ui-extensions/components/box) component. New fields include \`justifyContent\`, \`alignItems\`, and \`alignContent\`, as well as numerous new sizing and spacing options.
-- Added Sizing and fill options to the[Image](/docs/api/pos-ui-extensions/components/image) component.
+- Added sizing and fill options to the[Image](/docs/api/pos-ui-extensions/components/image) component.
       `,
     },
     {
