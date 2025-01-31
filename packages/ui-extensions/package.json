@@ -63,8 +63,8 @@
   "license": "MIT",
   "sideEffects": false,
   "dependencies": {
-    "@remote-ui/async-subscription": "^2.1.12",
-    "@remote-ui/core": "^2.2.4"
+    "@remote-ui/async-subscription": "^2.1.16",
+    "@remote-ui/core": "^2.2.5"
   },
   "devDependencies": {
     "@shopify/generate-docs": "0.16.4",
