@@ -1,6 +1,6 @@
 import {BaseInput} from './BaseInput';
 import {Cart} from '../../api';
 
-export interface CartUpdateInput extends BaseInput {
+export interface CartUpdateEventInput extends BaseInput {
   cart: Cart;
 }
