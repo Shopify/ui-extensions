@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.1.3
+
+### Patch Changes
+
+- [#2603](https://github.com/Shopify/ui-extensions/pull/2603) [`5ea710ff52a5bba4a283c80026cdedef65049cb9`](https://github.com/Shopify/ui-extensions/commit/5ea710ff52a5bba4a283c80026cdedef65049cb9) Thanks [@lihaokx](https://github.com/lihaokx)! - Bump `@shopify/ui-extensions` to `2025.1.3`
+
 ## 2025.1.1
 
 ### Patch Changes
