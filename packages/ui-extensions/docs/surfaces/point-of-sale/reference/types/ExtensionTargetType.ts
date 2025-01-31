@@ -21,6 +21,7 @@ export enum ExtensionTargetType {
   PosCashTrackingSessionCancelObserve = 'pos.cash-tracking-session-cancel.event.observe',
   PosCashTrackingSessionCompleteObserve = 'pos.cash-tracking-session-complete.event.observe',
   PosPrepareReceiptInject = 'pos.prepare-receipt.event.inject',
+  PosCartUpdateObserve = 'pos.cart-update.event.observe',
 }
 
 export enum TargetLink {
@@ -46,4 +47,5 @@ export enum TargetLink {
   PosCashTrackingSessionCancelObserve = '[pos.cash-tracking-session-cancel.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-cancel-observe)',
   PosCashTrackingSessionCompleteObserve = '[pos.cash-tracking-session-complete.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-complete-observe)',
   PosPrepareReceiptInject = '[pos.prepare-receipt.event.inject](/docs/api/pos-ui-extensions/targets/prepare-receipt-inject)',
+  PosCartUpdateObserve = '[pos.cart-update.event.observe](/docs/api/pos-ui-extensions/targets/cart-update-observe)',
 }
