@@ -52,7 +52,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added support for cash tracking session. ${TargetLink.PosCashTrackingSessionStartObserve}, ${TargetLink.PosCashTrackingSessionCancelObserve}, ${TargetLink.PosCashTrackingSessionCompleteObserve} targets.
 - Added support for the ${TargetLink.PosPrepareReceiptInject} target.
 - Added support for adding custom lines to receipts. ${TargetLink.PosPrepareReceiptInject} target.
-- Added support for adding custom lines to receipts. ${TargetLink.PosCartUpdateObserve} target.
+- Added support for the ${TargetLink.PosCartUpdateObserve} target.
       `,
     },
     {
