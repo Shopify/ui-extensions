@@ -9,11 +9,11 @@ export const REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2 =
   'level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).';
 
 type NonEmptyArray<T> = [T, ...T[]];
-type ExtensionExampleLanguage = 'js' | 'jsx';
+type ExtensionExampleLanguage = 'js' | 'jsx' | 'toml';
 type ExtensionCodeTabConfig = {
   [key in ExtensionExampleLanguage]: {
     title: string;
-    fileExtension: 'ts' | 'tsx';
+    fileExtension: 'ts' | 'tsx' | 'toml';
   };
 };
 const codeExampleTabConfig: ExtensionCodeTabConfig = {
@@ -24,6 +24,10 @@ const codeExampleTabConfig: ExtensionCodeTabConfig = {
   jsx: {
     title: 'React',
     fileExtension: 'tsx',
+  },
+  toml: {
+    title: 'TOML',
+    fileExtension: 'toml',
   },
 };
 
@@ -523,6 +527,11 @@ The contents of the token are signed using your shared app secret.  The optional
       description: `
       Check \`instructions.notes.canUpdateNote\` before calling \`applyNoteChange()\`.
       `,
+    }),
+    ...createExample('metafields/default', {
+      title: 'Use app owned metafields',
+      description:
+        'Use the `$app` format to request metafields that are owned by your app in your extension configuration file. Your app exclusively controls structure, data, permissions and optional features for this type of metafield. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.',
     }),
   };
 }

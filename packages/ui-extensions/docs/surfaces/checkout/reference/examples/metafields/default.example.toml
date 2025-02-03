@@ -1,0 +1,6 @@
+# other configs omitted
+
+[[extensions.metafields]]
+# tip: you can use $app:some-namespace to further segment your data
+namespace = "$app"
+key = "energy-rating"

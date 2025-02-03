@@ -35,6 +35,8 @@ export interface AddressAutocompleteStandardApi<
    * file. These metafields are updated when there's a change in the merchandise items
    * being purchased by the customer.
    *
+   * App owned metafields are supported and are returned using the `$app` format. The fully qualified reserved namespace format such as `app--{your-app-id}[--{optional-namespace}]` is not supported. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.
+   *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    *
    * > Tip:
