@@ -7,4 +7,6 @@ export type {
   CashTrackingSessionStartInput,
 } from './event/input/CashTrackingSessionInput';
 
+export type {CartUpdateEventInput} from './event/input/CartUpdateEventInput';
+
 export type {Device} from './types/device';

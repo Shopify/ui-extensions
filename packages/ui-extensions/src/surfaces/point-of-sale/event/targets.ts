@@ -7,6 +7,7 @@ import {
 import {TransactionCompleteInput} from './input/TransactionCompleteInput';
 import {PrepareReceiptInput} from './input/PrepareReceiptInput';
 import {PrepareReceiptIntent} from './intent/PrepareReceiptIntent';
+import {CartUpdateEventInput} from './input/CartUpdateEventInput';
 
 export interface EventExtensionTargets {
   'pos.transaction-complete.event.observe': (
@@ -24,6 +25,7 @@ export interface EventExtensionTargets {
   'pos.prepare-receipt.event.inject': (
     input: PrepareReceiptInput,
   ) => PrepareReceiptIntent;
+  'pos.cart-update.event.observe': (input: CartUpdateEventInput) => BaseIntent;
 }
 
 export type EventExtensionTarget = keyof EventExtensionTargets;
