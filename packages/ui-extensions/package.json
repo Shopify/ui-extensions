@@ -1,6 +1,6 @@
 {
   "name": "@shopify/ui-extensions",
-  "version": "2025.4.0-rc",
+  "version": "2025.4.0",
   "scripts": {
     "docs:admin": "bash ./docs/surfaces/admin/build-docs.sh",
     "gen-docs:admin": "bash ./docs/surfaces/admin/create-doc-files.sh \"admin\"",
