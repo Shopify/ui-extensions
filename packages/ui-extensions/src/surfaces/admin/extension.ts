@@ -1,11 +1,6 @@
-import {createExtensionRegistrationFunction} from '../../utilities/remoteDomRegistration';
+import {createExtensionRegistrationFunction} from '../../extension';
 
 import type {ExtensionTargets} from './extension-targets';
-
-export type {
-  RenderExtension,
-  ExtensionRegistrationFunctionWithRoot,
-} from '../../utilities/remoteDomRegistration';
 
 export const extension =
   createExtensionRegistrationFunction<ExtensionTargets>();

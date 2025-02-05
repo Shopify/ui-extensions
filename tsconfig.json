@@ -2,9 +2,11 @@
   "files": [],
   "include": [],
   "references": [
-    {"path": "./tsconfig.repo.json"},
-    {"path": "./packages/ui-extensions"},
-    {"path": "./packages/ui-extensions-react"},
-    {"path": "./packages/data-extensions"}
+    {
+      "path": "./tsconfig.repo.json"
+    },
+    {
+      "path": "./packages/ui-extensions"
+    }
   ]
 }

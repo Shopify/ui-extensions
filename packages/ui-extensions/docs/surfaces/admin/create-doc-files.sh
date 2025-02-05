@@ -45,7 +45,7 @@ constructed_string="examples: {
         codeblock: {
           tabs: [
             {
-              title: 'React',
+              title: 'Preact',
               code: '${example_file}',
               language: 'typescript',
             },
@@ -98,11 +98,6 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'JS',
           code: './examples/basic-${lowercaseComponentName}.example.ts',
           language: 'js',
-        },
-        {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/${componentName}/examples/basic-${lowercaseComponentName}.example.tsx',
-          language: 'tsx',
         },
       ],
     },

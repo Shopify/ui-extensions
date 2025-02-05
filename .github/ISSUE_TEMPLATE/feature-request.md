@@ -4,9 +4,9 @@ about: Suggest an idea for this project
 labels: 'enhancement'
 ---
 
-## Please list the related package(s)
+## Please list the related surfaces(s)
 
-<!-- e.g. checkout-ui-extensions, admin-ui-extensions-react -->
+<!-- e.g. @shopify/ui-extensions/checkout -->
 
 ## If this related to specific APIs or components, please list them here
 

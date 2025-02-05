@@ -1,5 +1,4 @@
-import type {RenderExtension} from './extension';
-import type {RunnableExtension} from '../../extension';
+import type {RunnableExtension, RenderExtension} from '../../extension';
 
 import type {
   StandardApi,
@@ -682,9 +681,8 @@ export type ArgumentsForExtension<ID extends keyof ExtensionTargets> =
 
 /**
  * A union type containing all of the extension targets that follow the pattern of
- * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
- * and an additional `api` argument, and using those arguments to render
- * UI.
+ * accepting a root HTML element and an additional `api` argument,
+ * and using those arguments to render UI.
  */
 export type RenderExtensionTarget = {
   [ID in keyof ExtensionTargets]: ExtensionTargets[ID] extends RenderExtension<any>

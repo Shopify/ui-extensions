@@ -6,7 +6,6 @@
   "overrides": [
     {
       "files": [
-        "packages/ui-extensions-react/**/*.example.*",
         "packages/ui-extensions/docs/**/*.example.*"
       ],
       "options": {

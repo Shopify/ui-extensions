@@ -1,0 +1,38 @@
+name: RC Snapshot
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 20[0-9][0-9]-[01][1470]-rc
+
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+
+jobs:
+  rc-snapshot:
+    name: RC Snapshot
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
+
+      - uses: ./.github/workflows/actions/prepare
+
+      - name: Create an .npmrc
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          cat << EOF > "$HOME/.npmrc"
+            //registry.npmjs.org/:_authToken=$NPM_TOKEN
+          EOF
+
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
+      - name: Deploy snapshot versions
+        run: changeset version --snapshot ${{ steps.extract_branch.outputs.branch }} && changeset publish --tag rc --no-git-tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}

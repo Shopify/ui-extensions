@@ -3,7 +3,7 @@ import {buildLibrary, babel} from '@shopify/loom-plugin-build-library';
 
 const PLUGIN = 'UiExtensions.DefaultProject';
 
-export function defaultProjectPlugin({react = false} = {}) {
+export function defaultProjectPlugin() {
   return createComposedProjectPlugin<Package>(PLUGIN, [
     buildLibrary({
       commonjs: true,
@@ -19,13 +19,6 @@ export function defaultProjectPlugin({react = false} = {}) {
             '@shopify/babel-preset',
             {
               typescript: true,
-              react,
-              reactOptions: react
-                ? {
-                    runtime: 'automatic',
-                    importSource: 'react',
-                  }
-                : undefined,
             },
           ],
         ],

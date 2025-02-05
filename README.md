@@ -22,4 +22,4 @@ The types in this package allow us to represent additional details about the tar
 - What **UI Components** are available to be rendered, and what properties those UI components accept
 - What **imperative APIs** are provided by the host application, for reading and writing data relevant to the extension
 
-UI extensions are built on an open source project called, [remote-ui](https://github.com/Shopify/remote-dom/tree/remote-ui), which allows them to render native UI elements while being safely sandboxed. If you want to learn more, we’ve written a [technical explanation of how extensions work under the hood](./documentation/how-extensions-work.md).
+UI extensions are built on an open source project called, [remote-dom](https://github.com/Shopify/remote-dom), which allows them to render native UI elements while being safely sandboxed.
