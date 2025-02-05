@@ -14,6 +14,11 @@ import {useSubscription} from './subscription';
 interface AppMetafieldFilters {
   id?: AppMetafieldEntryTarget['id'];
   type?: AppMetafieldEntryTarget['type'];
+  /**
+   * To filter for app owned metafields, use the `$app` format. The fully qualified reserved namespace format such as `app--{your-app-id}[--{optional-namespace}]` is not supported.
+   *
+   * See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.
+   */
   namespace?: Metafield['namespace'];
   key?: Metafield['key'];
 }

@@ -62,7 +62,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The API version that was set in the extension config file.
    *
-   * @example '2024-04', '2024-07', '2024-10', '2025-01', 'unstable'
+   * @example '2024-07', '2024-10', '2025-01', '2025-04', 'unstable'
    */
   apiVersion: ApiVersion;
 
@@ -170,7 +170,11 @@ export interface AppMetafield {
   /** The key name of a metafield. */
   key: string;
 
-  /** The namespace for a metafield. */
+  /**
+   * The namespace for a metafield.
+   *
+   * App owned metafield namespaces are returned using the `$app` format. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.
+   */
   namespace: string;
 
   /** The value of a metafield. */
@@ -415,6 +419,9 @@ export interface BuyerJourney {
    *
    * To block checkout progress, you must set the [block_progress](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress)
    * capability in your extension's configuration.
+   *
+   * If you do, then you're expected to inform the buyer why navigation was blocked,
+   * either by passing validation errors to the checkout UI or rendering the errors in your extension.
    */
   intercept(interceptor: Interceptor): Promise<() => void>;
 
@@ -519,10 +526,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * file. These metafields are updated when there's a change in the merchandise items
    * being purchased by the customer.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * App owned metafields are supported and are returned using the `$app` format. The fully qualified reserved namespace format such as `app--{your-app-id}[--{optional-namespace}]` is not supported. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.
    *
-   * > Tip:
-   * > Metafields on an [app reserved namespace](https://shopify.dev/docs/apps/build/custom-data/reserved-prefixes) cannot be accessed by Checkout UI extensions.
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   appMetafields: StatefulRemoteSubscribable<AppMetafieldEntry[]>;
 

@@ -3,10 +3,16 @@
 # The metafields for the extension
 [[extensions.metafields]]
 namespace = "my-namespace"
-key = "my-key"
+key = "my-key-1"
+
 [[extensions.metafields]]
 namespace = "my-namespace"
-key = "my-other-key"
+key = "my-key-2"
+
+# app owned metafield
+[[extensions.metafields]]
+namespace = "$app:my-app-owned-namespace"
+key = "my-key-3"
 
 [[extensions.targeting]]
 target = "purchase.checkout.actions.render-before"

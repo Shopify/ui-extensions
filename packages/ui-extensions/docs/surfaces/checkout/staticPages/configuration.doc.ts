@@ -373,10 +373,38 @@ When developing a local extension, you can remove the \`block_progress\` capabil
       anchorLink: 'metafields',
       title: 'Metafields',
       sectionContent: `
-Defines the [metafields](/docs/apps/custom-data/metafields) that are available to your extension.
+Defines the [metafields](/docs/apps/custom-data/metafields) that are available to your extension. You retrieve these metafields in your extension by reading [\`appMetafields\`](/docs/api/checkout-ui-extensions/unstable/apis/metafields#standardapi-propertydetail-appmetafields).
 
-Each extension target uses the metafields defined in \`[[extensions.metafields]]\` unless they specify their own \`[[extensions.targeting.metafields]]\`.
+Define the metafields your extension needs using \`[[extensions.metafields]]\` and \`[[extensions.targeting.metafields]]\`.
 
+You can use \`[[extensions.metafields]]\` for metafields that your extension always needs, while you can use \`[[extensions.targeting.metafields]]\` if you only want to fetch metafields when your extension is placed in a specific extension target.
+
+> Tip:
+> You may write to \`cart\` metafields by using [\`applyMetafieldsChange\`](/docs/api/checkout-ui-extensions/apis/checkoutapi#properties-propertydetail-applymetafieldchange) with \`type: "updateCartMetafield"\`.
+      `,
+      sectionSubContent: [
+        {
+          title: 'App owned metafields',
+          sectionContent: `
+[App owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) are supported. You can use app owned metafields when your app needs to control the data and visibility of the metafield.
+
+Your extension can access app owned metafields that are requested in its toml using the \`$app\` format. Your extension can only access app owned metafields that belong to its parent app.
+
+> Caution:
+> When accessing app owned metafields, you must use the \`$app\` format. The fully qualified reserved namespace format such as \`app--{your-app-id}[--{optional-namespace}]\` is not supported.
+          `,
+          sectionCard: [
+            {
+              name: 'App owned metafields',
+              subtitle: 'Learn more',
+              url: '/docs/apps/build/custom-data/ownership#reserved-prefixes',
+              type: 'tutorial',
+            },
+          ],
+        },
+        {
+          title: 'Supported resource metafield types',
+          sectionContent: `
 Supported resource metafield types include:
 
 | Resource | Description |
@@ -390,11 +418,10 @@ Supported resource metafield types include:
 | \`shopUser\` | The Shop App user that is associated with the current checkout if there is one. |
 | \`variant\` | The product variants that the customer intends to purchase. |
 
-You retrieve these metafields in your extension by reading [\`appMetafields\`](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-appmetafields).
-
-> Tip:
-> You may write to \`cart\` metafields by using [\`applyMetafieldsChange\`](/docs/api/checkout-ui-extensions/apis/checkoutapi#properties-propertydetail-applymetafieldchange) with \`type: "updateCartMetafield"\`.
-      `,
+Other resource metafield types outside of the above list are not supported.
+          `,
+        },
+      ],
       codeblock: {
         title: 'Metafields',
         tabs: [
