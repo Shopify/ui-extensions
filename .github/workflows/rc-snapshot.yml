@@ -33,6 +33,6 @@ jobs:
         id: extract_branch
 
       - name: Deploy snapshot versions
-        run: yarn changeset version --snapshot && yarn changeset publish --tag ${{ steps.extract_branch.outputs.branch }} --no-git-tag
+        run: yarn changeset version --snapshot rc && yarn changeset publish --tag ${{ steps.extract_branch.outputs.branch }} --no-git-tag
         env:
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
