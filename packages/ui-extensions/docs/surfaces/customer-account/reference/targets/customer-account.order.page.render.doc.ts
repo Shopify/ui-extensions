@@ -15,6 +15,8 @@ If the page you're building is not tied to a specific order, use [customer-accou
 For example:
 - A Return Request page that requires the context of a specific order should use \`customer-account.order.page.render\`
 - A Wishlist page that does **not** require the context of a specific order should use \`customer-account.page.render\`
+
+A full-page extension target cannot coexist with any other targets in the same extension.
 `,
   category: 'Targets',
   isVisualComponent: false,
