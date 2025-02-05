@@ -1,9 +1,11 @@
-/** VERSION: 0.28.0 **/
+/** VERSION: 0.29.0 **/
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
+import * as preact from 'preact';
+
 type ComponentChildren = any;
 type SizeKeyword =
   | 'small-500'
@@ -31,7 +33,7 @@ interface BackgroundProps {
   /**
    * Adjust the background of the element.
    *
-   * @default: 'transparent'
+   * @default 'transparent'
    */
   background?: BackgroundColorKeyword;
 }
@@ -605,7 +607,7 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
   collapsible?: boolean;
   /**
 	 * Determines whether the close button of the banner is visible.
-
+  
 	 * This component is controlled, so you must manage the visibility of the banner in state by using the `onDismiss` callback,
 	 * or by listening to the `dismiss` event.
 	 */
@@ -775,20 +777,6 @@ interface AccessibilityVisibilityProps {
    * @default 'visible'
    */
   accessibilityVisibility?: 'visible' | 'hidden' | 'exclusive';
-}
-interface LabelAccessibilityVisibilityProps {
-  /**
-   * Changes the visibility of the component's label.
-   *
-   * - `visible`: the label is visible to all users.
-   * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
-   *
-   * @default 'visible'
-   */
-  labelAccessibilityVisibility?: ExtractStrict<
-    AccessibilityVisibilityProps['accessibilityVisibility'],
-    'visible' | 'exclusive'
-  >;
 }
 type PaddingKeyword = SizeKeyword | 'none';
 interface PaddingProps {
@@ -1106,10 +1094,11 @@ interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
    */
   target?: 'auto' | '_blank' | '_self' | '_parent' | '_top' | AnyString;
   /**
-   * Causes the browser to treat the linked URL as a download. Download only works for same-origin URLs, or the blob: and data: schemes.
+   * Causes the browser to treat the linked URL as a download with the string being the file name.
+   * Download only works for same-origin URLs, or the blob: and data: schemes.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download
    */
-  download?: boolean;
+  download?: string;
   /**
    * Callback when the link is activated.
    * This will be called before navigating to the location specified by `href`.
@@ -1170,362 +1159,6 @@ interface ButtonProps$1 extends GlobalProps, BasePressableProps {
    */
   lang?: string;
 }
-interface BaseInputProps {
-  /**
-   * An identifier for the field that is unique within the nearest
-   * containing `Form` component.
-   */
-  name?: string;
-  /**
-   * Disables the field, disallowing any interaction.
-   */
-  disabled?: boolean;
-}
-interface InputProps extends BaseInputProps {
-  /**
-   * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
-   */
-  onChange?: (newValue: string) => void;
-  /**
-   * Callback when the user makes any changes in the field.
-   */
-  onInput?: (newValue: string) => void;
-  /**
-   * The current value for the field. If omitted, the field will be empty.
-   */
-  value?: string;
-  /**
-   * The default value for the field.
-   */
-  defaultValue?: string;
-}
-interface FieldErrorProps {
-  /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
-   */
-  error?: string;
-}
-interface BasicFieldProps
-  extends FieldErrorProps,
-    LabelAccessibilityVisibilityProps {
-  /**
-   * Whether the field needs a value. This requirement adds semantic value
-   * to the field, but it will not cause an error to appear automatically.
-   * If you want to present an error when this field is empty, you can do
-   * so with the `error` prop.
-   */
-  required?: boolean;
-  /**
-   * Content to use as the field label.
-   */
-  label?: string;
-}
-interface FieldDetailsProps {
-  /**
-   * Additional text to provide context or guidance for the field.
-   * This text is displayed along with the field and its label
-   * to offer more information or instructions to the user.
-   *
-   * This will also be exposed to screen reader users.
-   */
-  details?: string;
-}
-interface FieldProps
-  extends BasicFieldProps,
-    InputProps,
-    FocusEventProps,
-    FieldDetailsProps {
-  /**
-   * A short hint that describes the expected value of the field.
-   */
-  placeholder?: string;
-}
-interface BaseTextFieldProps extends FieldProps {
-  /**
-   * The field cannot be edited by the user. It is focusable will be announced by screen readers.
-   */
-  readOnly?: boolean;
-}
-interface FieldDecorationProps {
-  /**
-   * A value to be displayed immediately after the editable portion of the field.
-   *
-   * This is useful for displaying an implied part of the value, such as "@shopify.com", or "%".
-   *
-   * This cannot be edited by the user, and it isn't included in the value of the field.
-   *
-   * It may not be displayed until the user has interacted with the input.
-   * For example, an inline label may take the place of the suffix until the user focuses the input.
-   *
-   * @default ''
-   */
-  suffix?: string;
-  /**
-   * A value to be displayed immediately before the editable portion of the field.
-   *
-   * This is useful for displaying an implied part of the value, such as "https://" or "+353".
-   *
-   * This cannot be edited by the user, and it isn't included in the value of the field.
-   *
-   * It may not be displayed until the user has interacted with the input.
-   * For example, an inline label may take the place of the prefix until the user focuses the input.
-   *
-   * @default ''
-   */
-  prefix?: string;
-  /**
-   * The type of icon to be displayed in the field.
-   *
-   * @default ''
-   */
-  icon?: IconType;
-  /**
-   * Additional content to be displayed in the field.
-   * Commonly used to display an icon that activates a tooltip providing more information.
-   */
-  accessory?: ComponentChildren;
-}
-interface MinMaxLengthProps {
-  /**
-   * Specifies the maximum number of characters allowed.
-   *
-   * @default Infinity
-   */
-  maxLength?: number;
-  /**
-   * Specifies the min number of characters allowed.
-   *
-   * @default 0
-   */
-  minLength?: number;
-}
-interface BaseSelectableProps {
-  /**
-   * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.
-   * This can also be used to display a control without a visual label, while still providing context to users using screen readers.
-   */
-  accessibilityLabel?: string;
-  /**
-   * Disables the control, disallowing any interaction.
-   */
-  disabled?: boolean;
-  /**
-   * The value used in form data when the control is checked.
-   */
-  value?: string;
-}
-interface BaseOptionProps extends BaseSelectableProps {
-  /**
-   * Whether the control is active.
-   */
-  selected?: boolean;
-  /**
-   * Whether the control is active by default.
-   */
-  defaultSelected?: boolean;
-  /**
-   * The content to use as the label.
-   */
-  children?: ComponentChildren;
-}
-interface BaseCheckableProps extends BaseSelectableProps {
-  /**
-   * Visual content to use as the control label.
-   */
-  label?: string;
-  /**
-   * Whether the control is active.
-   */
-  checked?: boolean;
-  /**
-   * Whether the control is active by default.
-   */
-  defaultChecked?: boolean;
-  /**
-   * An identifier for the control that is unique within the nearest
-   * containing `Form` component.
-   */
-  name?: string;
-  /**
-   * A callback that is run whenever the control is changed.
-   */
-  onChange?: (checked: boolean) => void;
-  /**
-   * A callback that is run whenever the control is changed.
-   */
-  onInput?: (checked: boolean) => void;
-}
-interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps {
-  /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
-   */
-  error?: string;
-  /**
-   * Additional text to provide context or guidance for the input.
-   * This text is displayed along with the input and its label
-   * to offer more information or instructions to the user.
-   */
-  details?: string;
-  /**
-   * Whether to display the checkbox in an indeterminate state (neither checked or unchecked).
-   *
-   * In terms of appearance, this takes priority over the `checked` prop.
-   * But this is purely a visual change.
-   * Whether the value is submitted along with a form is still down to the `checked` prop.
-   *
-   * In custom element implementations, this must not reflect to an attribute (similar to `.checked`).
-   */
-  indeterminate?: boolean;
-  /**
-   * Whether the checkbox is in an `indeterminate` state by default.
-   *
-   * Similar to `defaultValue` and `defaultChecked`, this value applies until `indeterminate` is set, or user changes the state of the checkbox.
-   *
-   * In custom element implementations, this must reflect to the `indeterminate` attribute (similar to how `.defaultChecked` reflects to the `checked` attribute).
-   */
-  defaultIndeterminate?: boolean;
-  /**
-   * Whether the field needs a value. This requirement adds semantic value
-   * to the field, but it will not cause an error to appear automatically.
-   * If you want to present an error when this field is empty, you can do
-   * so with the `error` prop.
-   */
-  required?: boolean;
-}
-interface AutocompleteProps<AutocompleteField extends AnyAutocompleteField> {
-  /**
-   * A hint as to the intended content of the field.
-   *
-   * When set to `on` (the default), this property indicates that the field should support
-   * autofill, but you do not have any more semantic information on the intended
-   * contents.
-   *
-   * When set to `off`, you are indicating that this field contains sensitive
-   * information, or contents that are never saved, like one-time codes.
-   *
-   * Alternatively, you can provide value which describes the
-   * specific data you would like to be entered into this field during autofill.
-   *
-   * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
-   *
-   * @default 'on'
-   */
-  autocomplete?:
-    | AutocompleteField
-    | `${AutocompleteSection} ${AutocompleteField}`
-    | `${AutocompleteGroup} ${AutocompleteField}`
-    | `${AutocompleteSection} ${AutocompleteGroup} ${AutocompleteField}`
-    | 'on'
-    | 'off';
-}
-type AutocompleteSection = `section-${string}`;
-type AutocompleteGroup = 'shipping' | 'billing';
-type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
-type AutocompleteFieldTelephoneAlias = 'tel' | 'telephone';
-type AutocompleteFieldBirthdayAlias = 'bday' | 'birthday';
-type AutocompleteFieldCreditCardAlias = 'cc' | 'credit-card';
-type AutocompleteFieldInstantMessageAlias = 'impp' | 'instant-message';
-type AutocompleteFieldSecurityCodeAlias = 'csc' | 'security-code';
-type AnyAutocompleteField =
-  | 'additional-name'
-  | 'address-level1'
-  | 'address-level2'
-  | 'address-level3'
-  | 'address-level4'
-  | 'address-line1'
-  | 'address-line2'
-  | 'address-line3'
-  | 'country-name'
-  | 'country'
-  | 'current-password'
-  | 'email'
-  | 'family-name'
-  | 'given-name'
-  | 'honorific-prefix'
-  | 'honorific-suffix'
-  | 'language'
-  | 'name'
-  | 'new-password'
-  | 'nickname'
-  | 'one-time-code'
-  | 'organization-title'
-  | 'organization'
-  | 'photo'
-  | 'postal-code'
-  | 'sex'
-  | 'street-address'
-  | 'transaction-amount'
-  | 'transaction-currency'
-  | 'url'
-  | 'username'
-  | `${AutocompleteFieldBirthdayAlias}-day`
-  | `${AutocompleteFieldBirthdayAlias}-month`
-  | `${AutocompleteFieldBirthdayAlias}-year`
-  | `${AutocompleteFieldBirthdayAlias}`
-  | `${AutocompleteFieldCreditCardAlias}-additional-name`
-  | `${AutocompleteFieldCreditCardAlias}-expiry-month`
-  | `${AutocompleteFieldCreditCardAlias}-expiry-year`
-  | `${AutocompleteFieldCreditCardAlias}-expiry`
-  | `${AutocompleteFieldCreditCardAlias}-family-name`
-  | `${AutocompleteFieldCreditCardAlias}-given-name`
-  | `${AutocompleteFieldCreditCardAlias}-name`
-  | `${AutocompleteFieldCreditCardAlias}-number`
-  | `${AutocompleteFieldCreditCardAlias}-${AutocompleteFieldSecurityCodeAlias}`
-  | `${AutocompleteFieldCreditCardAlias}-type`
-  | `${AutocompleteAddressGroup} email`
-  | `${AutocompleteFieldInstantMessageAlias}`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldInstantMessageAlias}`
-  | `${AutocompleteFieldTelephoneAlias}`
-  | `${AutocompleteFieldTelephoneAlias}-area-code`
-  | `${AutocompleteFieldTelephoneAlias}-country-code`
-  | `${AutocompleteFieldTelephoneAlias}-extension`
-  | `${AutocompleteFieldTelephoneAlias}-local-prefix`
-  | `${AutocompleteFieldTelephoneAlias}-local-suffix`
-  | `${AutocompleteFieldTelephoneAlias}-local`
-  | `${AutocompleteFieldTelephoneAlias}-national`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-area-code`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-country-code`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-extension`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local-prefix`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local-suffix`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-national`;
-type TextAutocompleteField = ExtractStrict<
-  AnyAutocompleteField,
-  | 'additional-name'
-  | 'address-level1'
-  | 'address-level2'
-  | 'address-level3'
-  | 'address-level4'
-  | 'address-line1'
-  | 'address-line2'
-  | 'address-line3'
-  | 'country-name'
-  | 'country'
-  | 'family-name'
-  | 'given-name'
-  | 'honorific-prefix'
-  | 'honorific-suffix'
-  | 'language'
-  | 'name'
-  | 'nickname'
-  | 'one-time-code'
-  | 'organization-title'
-  | 'organization'
-  | 'postal-code'
-  | 'sex'
-  | 'street-address'
-  | 'transaction-currency'
-  | 'username'
-  | `${AutocompleteFieldCreditCardAlias}-name`
-  | `${AutocompleteFieldCreditCardAlias}-given-name`
-  | `${AutocompleteFieldCreditCardAlias}-additional-name`
-  | `${AutocompleteFieldCreditCardAlias}-family-name`
-  | `${AutocompleteFieldCreditCardAlias}-type`
->;
 interface DividerProps$1 extends GlobalProps {
   /**
    * Specify the direction of the divider.
@@ -1787,23 +1420,6 @@ interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
    */
   lang?: string;
 }
-export interface OptionProps extends GlobalProps, BaseOptionProps {}
-export interface OptionGroupProps extends GlobalProps {
-  /**
-   * Whether the options within this group can be selected or not.
-   */
-  disabled?: boolean;
-  /**
-   * The user-facing label for this group of options.
-   */
-  label?: string;
-  /**
-   * The options a user can select from.
-   *
-   * Accepts `Option` components.
-   */
-  children?: ComponentChildren;
-}
 interface BaseTypographyProps {
   /**
    * Sets the color of the Typography component, based on the intention of the information being conveyed.
@@ -1887,22 +1503,9 @@ interface SectionProps$1 extends GlobalProps {
    * to the edge of the Section. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
-   * @default: "auto"
+   * @default "auto"
    */
   padding?: 'auto' | 'none';
-}
-export interface SelectProps
-  extends GlobalProps,
-    AutocompleteProps<AnyAutocompleteField>,
-    Pick<FieldDecorationProps, 'icon'>,
-    FieldProps,
-    FocusEventProps {
-  /**
-   * The options a user can select from.
-   *
-   * Accepts `Option` and `OptionGroup` components.
-   */
-  children?: ComponentChildren;
 }
 interface SpinnerProps$1 extends GlobalProps {
   /**
@@ -2049,424 +1652,428 @@ type TextType =
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
    */
   | 'generic';
-export interface TextFieldProps
-  extends GlobalProps,
-    BaseTextFieldProps,
-    MinMaxLengthProps,
-    AutocompleteProps<TextAutocompleteField>,
-    FieldDecorationProps {}
 type IconType$1 =
-  | 'wand'
   | 'wifi'
-  | 'work'
-  | 'viewport-tall'
-  | 'viewport-wide'
-  | 'wallet'
-  | 'watch'
   | 'wrench'
-  | 'viewport-short'
+  | 'watch'
+  | 'wallet'
+  | 'viewport-tall'
+  | 'wand'
+  | 'viewport-wide'
   | 'viewport-narrow'
-  | 'unknown-device'
+  | 'viewport-short'
   | 'upload'
+  | 'work'
+  | 'unknown-device'
+  | 'unlock'
   | 'undo'
   | 'transfer'
-  | 'transfer-in'
   | 'transfer-out'
-  | 'transaction'
-  | 'transaction-fee-yen'
-  | 'transaction-fee-pound'
-  | 'transaction-fee-euro'
   | 'transfer-internal'
-  | 'unlock'
+  | 'transfer-in'
+  | 'transaction'
+  | 'transaction-fee-dollar'
+  | 'transaction-fee-euro'
   | 'transaction-fee-rupee'
   | 'toggle-on'
   | 'toggle-off'
-  | 'transaction-fee-dollar'
+  | 'transaction-fee-pound'
   | 'tip-jar'
+  | 'transaction-fee-yen'
   | 'thumbs-up'
-  | 'theme'
   | 'thumbs-down'
-  | 'text-with-image'
+  | 'theme'
+  | 'theme-store'
   | 'theme-edit'
-  | 'text-quote'
-  | 'text'
-  | 'text-title'
   | 'text-underline'
+  | 'text-with-image'
+  | 'text-title'
+  | 'text-quote'
   | 'text-italic'
+  | 'text-in-rows'
+  | 'text'
   | 'theme-template'
   | 'text-indent'
-  | 'text-in-rows'
+  | 'text-grammar'
+  | 'text-in-columns'
   | 'text-font'
   | 'text-color'
-  | 'text-in-columns'
-  | 'text-align-left'
-  | 'text-bold'
-  | 'text-block'
   | 'text-align-right'
-  | 'team'
   | 'text-align-center'
+  | 'text-align-left'
   | 'text-font-list'
-  | 'tax'
-  | 'target'
+  | 'team'
   | 'table'
-  | 'table-masonry'
-  | 'sun'
-  | 'store-managed'
-  | 'store-online'
   | 'tablet'
-  | 'store-import'
+  | 'target'
+  | 'table-masonry'
+  | 'tax'
+  | 'sun'
+  | 'store-online'
+  | 'text-block'
   | 'store'
+  | 'store-managed'
+  | 'store-import'
   | 'status'
   | 'status-active'
-  | 'star-filled'
-  | 'stop-circle'
   | 'sports'
-  | 'theme-store'
-  | 'social-ad'
-  | 'smiley-sad'
-  | 'social-post'
-  | 'sort-ascending'
-  | 'smiley-happy'
-  | 'smiley-neutral'
-  | 'smiley-joy'
+  | 'stop-circle'
   | 'sound'
-  | 'shield-pending'
-  | 'shipping-label'
+  | 'sort-descending'
+  | 'text-bold'
+  | 'star-filled'
+  | 'sort-ascending'
+  | 'social-ad'
+  | 'social-post'
+  | 'smiley-neutral'
+  | 'smiley-happy'
+  | 'smiley-joy'
+  | 'smiley-sad'
   | 'slideshow'
   | 'shopcodes'
   | 'shield-person'
-  | 'shield-check-mark'
-  | 'sort-descending'
+  | 'shield-pending'
+  | 'shield-none'
   | 'share'
-  | 'search'
   | 'send'
-  | 'search-resource'
+  | 'shield-check-mark'
   | 'settings'
+  | 'search'
   | 'search-recent'
-  | 'search-list'
-  | 'reward'
   | 'save'
+  | 'search-resource'
   | 'rotate-right'
-  | 'sandbox'
-  | 'reset'
-  | 'replace'
-  | 'replay'
-  | 'return'
-  | 'rocket'
-  | 'referral-code'
   | 'rotate-left'
-  | 'remove-background'
-  | 'receipt'
+  | 'rocket'
+  | 'sandbox'
+  | 'return'
+  | 'shipping-label'
+  | 'search-list'
+  | 'reset'
   | 'refresh'
-  | 'receipt-yen'
+  | 'reward'
+  | 'remove-background'
   | 'receivables'
-  | 'receipt-rupee'
-  | 'receipt-pound'
-  | 'receipt-refund'
-  | 'receipt-dollar'
-  | 'profile'
   | 'redo'
+  | 'replay'
+  | 'receipt'
+  | 'receipt-yen'
+  | 'receipt-refund'
   | 'receipt-paid'
-  | 'product-list'
+  | 'receipt-pound'
+  | 'receipt-rupee'
+  | 'replace'
+  | 'referral-code'
+  | 'receipt-dollar'
   | 'question-circle'
-  | 'receipt-euro'
+  | 'question-circle-filled'
+  | 'profile-filled'
+  | 'product-reference'
+  | 'product-unavailable'
+  | 'profile'
   | 'product-remove'
   | 'product-add'
-  | 'product-cost'
   | 'product-return'
-  | 'print'
+  | 'receipt-euro'
+  | 'product-cost'
   | 'price-list'
-  | 'product-unavailable'
-  | 'point-of-sale'
   | 'play'
-  | 'product-reference'
-  | 'pin'
+  | 'point-of-sale'
   | 'plan'
-  | 'phone-in'
-  | 'phone-out'
-  | 'personalized-text'
-  | 'person-exit'
-  | 'person-remove'
-  | 'person-lock'
   | 'play-circle'
+  | 'pin'
+  | 'personalized-text'
+  | 'product-list'
+  | 'phone-in'
+  | 'print'
+  | 'person-lock'
+  | 'person-remove'
+  | 'phone-out'
+  | 'person-exit'
   | 'person-add'
   | 'payout-rupee'
+  | 'payout-yen'
   | 'person-segment'
-  | 'payout'
   | 'payout-dollar'
   | 'payout-pound'
-  | 'payout-yen'
   | 'payout-euro'
+  | 'payout'
   | 'payment-capture'
   | 'pause-circle'
   | 'paper-check'
-  | 'pagination-start'
-  | 'passkey'
   | 'paint-brush-flat'
+  | 'paint-brush-round'
+  | 'passkey'
+  | 'pagination-start'
   | 'pagination-end'
   | 'page-up'
-  | 'paint-brush-round'
   | 'page-remove'
+  | 'page-reference'
   | 'page-down'
   | 'page-heart'
   | 'page-clock'
-  | 'page-reference'
+  | 'page-add'
   | 'package'
   | 'package-returned'
-  | 'outgoing'
-  | 'page-add'
-  | 'outdent'
-  | 'package-on-hold'
-  | 'page-attachment'
-  | 'organization'
   | 'package-fulfilled'
+  | 'page-attachment'
+  | 'outdent'
+  | 'organization'
+  | 'package-on-hold'
   | 'orders-status'
-  | 'order-first'
-  | 'order-draft'
+  | 'outgoing'
   | 'order-repeat'
-  | 'note'
   | 'notification'
+  | 'order-first'
+  | 'note-add'
+  | 'order-draft'
+  | 'note'
   | 'nature'
   | 'moon'
-  | 'money-none'
   | 'money'
+  | 'money-none'
   | 'minimize'
-  | 'note-add'
-  | 'metaobject'
-  | 'metaobject-list'
-  | 'menu-vertical'
   | 'metafields'
-  | 'menu-horizontal'
-  | 'mention'
+  | 'metaobject-list'
   | 'menu'
+  | 'menu-vertical'
+  | 'mention'
   | 'megaphone'
+  | 'metaobject'
+  | 'menu-horizontal'
   | 'media-receiver'
-  | 'measurement-weight'
-  | 'metaobject-reference'
-  | 'maximize'
-  | 'markets-yen'
-  | 'markets-rupee'
-  | 'measurement-size'
   | 'measurement-volume'
+  | 'measurement-size'
+  | 'markets'
+  | 'maximize'
+  | 'metaobject-reference'
   | 'markets-euro'
+  | 'map'
+  | 'markets-rupee'
+  | 'measurement-weight'
   | 'lock'
+  | 'markets-yen'
   | 'location-none'
-  | 'link'
-  | 'list-bulleted'
   | 'list-numbered'
   | 'live'
+  | 'list-bulleted'
   | 'layout-sidebar-left'
-  | 'markets'
-  | 'map'
-  | 'layout-sidebar-right'
+  | 'link'
   | 'layout-section'
-  | 'layout-logo-block'
   | 'layout-rows-2'
+  | 'layout-sidebar-right'
   | 'layout-popup'
-  | 'layout-columns-3'
+  | 'layout-logo-block'
   | 'layout-header'
+  | 'layout-footer'
+  | 'layout-columns-3'
   | 'layout-columns-2'
+  | 'layout-buy-button-vertical'
+  | 'layout-column-1'
   | 'layout-buy-button'
   | 'layout-buy-button-horizontal'
-  | 'layout-column-1'
-  | 'layout-buy-button-vertical'
-  | 'key'
-  | 'layout-block'
   | 'language-translate'
+  | 'layout-block'
   | 'label-printer'
-  | 'inventory-updated'
-  | 'inventory'
-  | 'keyboard-hide'
   | 'keyboard'
+  | 'keyboard-filled'
+  | 'key'
+  | 'inventory'
+  | 'inventory-updated'
+  | 'keyboard-hide'
   | 'iq'
-  | 'incentive'
+  | 'incoming'
+  | 'import'
+  | 'images'
+  | 'image-none'
   | 'image'
   | 'image-with-text-overlay'
-  | 'import'
-  | 'incoming'
-  | 'image-none'
-  | 'image-add'
+  | 'identity-card'
   | 'image-explore'
   | 'image-magic'
-  | 'identity-card'
+  | 'image-alt'
+  | 'image-add'
   | 'home'
   | 'icons'
-  | 'image-alt'
-  | 'heart'
-  | 'hashtag'
-  | 'hashtag-decimal'
-  | 'globe-europe'
-  | 'globe-asia'
-  | 'git-repository'
+  | 'hide-filled'
+  | 'grid'
+  | 'incentive'
   | 'globe-lines'
-  | 'gift-card'
-  | 'gauge'
-  | 'forms'
-  | 'games'
-  | 'forklift'
+  | 'globe-asia'
+  | 'heart'
+  | 'globe-europe'
+  | 'hashtag'
   | 'git-branch'
+  | 'gift-card'
   | 'git-commit'
-  | 'food'
-  | 'folder'
+  | 'gauge'
+  | 'forklift'
   | 'foreground'
   | 'folder-up'
+  | 'forms'
+  | 'git-repository'
   | 'folder-remove'
+  | 'hashtag-decimal'
+  | 'games'
   | 'folder-down'
-  | 'flower'
-  | 'flag'
-  | 'flip-horizontal'
-  | 'flip-vertical'
+  | 'folder'
   | 'folder-add'
-  | 'filter'
+  | 'food'
+  | 'flower'
+  | 'flip-vertical'
+  | 'flip-horizontal'
   | 'file'
-  | 'eye-dropper'
-  | 'eye-first'
-  | 'eyeglasses'
   | 'favicon'
+  | 'eyeglasses'
+  | 'eye-dropper'
+  | 'filter'
+  | 'eye-check-mark'
+  | 'flag'
   | 'export'
   | 'exchange'
   | 'exit'
   | 'envelope'
   | 'enter'
-  | 'email-newsletter'
   | 'envelope-soft-pack'
-  | 'duplicate'
-  | 'download'
-  | 'drag-drop'
-  | 'drag-handle'
+  | 'email-newsletter'
   | 'email-follow-up'
-  | 'eye-check-mark'
-  | 'text-grammar'
-  | 'domain-new'
-  | 'images'
+  | 'duplicate'
   | 'domain'
-  | 'dock-side'
-  | 'discount'
+  | 'download'
+  | 'drag-handle'
+  | 'drag-drop'
   | 'domain-redirect'
-  | 'dock-floating'
-  | 'dns-settings'
   | 'domain-landing-page'
-  | 'desktop'
+  | 'domain-new'
+  | 'dock-side'
   | 'discount-code'
-  | 'database-connect'
+  | 'dock-floating'
+  | 'discount'
+  | 'eye-first'
+  | 'dns-settings'
+  | 'desktop'
   | 'delete'
-  | 'database'
-  | 'data-table'
   | 'database-add'
-  | 'cursor-banner'
-  | 'cursor'
-  | 'crop'
-  | 'cursor-option'
+  | 'database-connect'
+  | 'data-table'
   | 'data-presentation'
+  | 'cursor'
+  | 'cursor-banner'
+  | 'cursor-option'
+  | 'crop'
+  | 'currency-convert'
   | 'credit-card'
-  | 'credit-card-reader-chip'
+  | 'credit-card-reader'
+  | 'credit-card-tap-chip'
   | 'credit-card-secure'
-  | 'credit-card-cancel'
   | 'credit-card-reader-tap'
+  | 'credit-card-percent'
+  | 'credit-card-reader-chip'
   | 'corner-square'
   | 'corner-round'
-  | 'credit-card-percent'
-  | 'content'
-  | 'currency-convert'
-  | 'contract'
-  | 'credit-card-reader'
-  | 'compass'
-  | 'credit-card-tap-chip'
+  | 'credit-card-cancel'
   | 'corner-pill'
-  | 'compose'
-  | 'confetti'
-  | 'color'
-  | 'color-none'
+  | 'content'
+  | 'contract'
   | 'connect'
-  | 'collection-list'
+  | 'confetti'
+  | 'compose'
+  | 'compass'
+  | 'color'
   | 'collection-featured'
+  | 'color-none'
   | 'code'
-  | 'clock-revert'
-  | 'code-add'
-  | 'clipboard'
-  | 'clipboard-checklist'
-  | 'circle'
-  | 'shield-none'
-  | 'clipboard-check'
-  | 'chevron-up-circle'
-  | 'circle-dashed'
-  | 'chevron-left-circle'
+  | 'database'
   | 'collection-reference'
+  | 'collection-list'
+  | 'code-add'
+  | 'clock-revert'
+  | 'clipboard-checklist'
+  | 'clipboard'
+  | 'circle-dashed'
+  | 'circle'
+  | 'clipboard-check'
   | 'chevron-right-circle'
+  | 'chevron-left-circle'
   | 'chevron-left'
-  | 'chevron-down-circle'
+  | 'chevron-up-circle'
   | 'checkbox'
+  | 'chevron-down-circle'
   | 'chat-referral'
-  | 'chat'
-  | 'chart-vertical'
-  | 'chat-new'
   | 'chevron-right'
+  | 'chat'
+  | 'chat-new'
+  | 'chart-vertical'
   | 'chart-stacked'
+  | 'chart-popular'
   | 'chart-horizontal'
-  | 'chart-histogram-second-last'
-  | 'chart-histogram-full'
-  | 'chart-histogram-growth'
-  | 'chart-histogram-flat'
-  | 'chart-histogram-first'
-  | 'chart-histogram-last'
-  | 'layout-footer'
-  | 'chart-funnel'
   | 'chart-line'
+  | 'chart-histogram-second-last'
+  | 'chart-histogram-flat'
+  | 'check-circle-filled'
+  | 'chart-histogram-last'
+  | 'chart-histogram-growth'
+  | 'chart-histogram-full'
+  | 'chart-histogram-first-last'
+  | 'chart-histogram-first'
+  | 'chart-funnel'
   | 'channels'
   | 'chart-donut'
-  | 'chart-histogram-first-last'
   | 'categories'
   | 'catalog-product'
   | 'cash-rupee'
-  | 'cash-pound'
   | 'cash-yen'
-  | 'cart'
-  | 'chart-cohort'
-  | 'cash-dollar'
-  | 'chart-popular'
-  | 'cart-down'
-  | 'cart-up'
-  | 'cart-abandoned'
-  | 'cart-discount'
-  | 'caret-up'
+  | 'cash-pound'
   | 'cash-euro'
-  | 'caret-down'
-  | 'camera'
-  | 'camera-flip'
+  | 'cash-dollar'
+  | 'cart'
   | 'cart-sale'
-  | 'calculator'
+  | 'cart-up'
+  | 'cart-down'
+  | 'cart-discount'
+  | 'caret-down'
+  | 'camera-flip'
+  | 'cart-abandoned'
+  | 'caret-up'
+  | 'camera'
+  | 'chart-cohort'
   | 'calendar-time'
   | 'calendar-compare'
-  | 'button'
+  | 'calculator'
   | 'button-press'
+  | 'button'
   | 'bug'
-  | 'bullet'
-  | 'bill'
-  | 'blog'
+  | 'bolt'
   | 'book'
-  | 'bank'
-  | 'barcode'
-  | 'bag'
+  | 'bullet'
   | 'book-open'
+  | 'blog'
+  | 'bank'
+  | 'bill'
+  | 'barcode'
+  | 'backspace'
+  | 'bolt-filled'
   | 'automation'
   | 'arrows-in-horizontal'
+  | 'bag'
   | 'arrows-out-horizontal'
-  | 'arrow-up'
   | 'arrow-right'
+  | 'arrow-up'
   | 'arrow-up-circle'
-  | 'arrow-left-circle'
-  | 'arrow-down-circle'
+  | 'arrow-left'
   | 'arrow-down'
+  | 'arrow-right-circle'
+  | 'arrow-down-circle'
+  | 'app-extension'
+  | 'alert-octagon'
+  | 'arrow-left-circle'
+  | 'alert-octagon-filled'
   | 'alert-diamond'
   | 'alert-location'
-  | 'arrow-right-circle'
-  | 'arrow-left'
   | 'airplane'
   | 'affiliate'
-  | 'backspace'
-  | '3d-environment'
   | 'adjust'
-  | 'app-extension'
+  | '3d-environment'
   | 'x-circle'
   | 'x'
   | 'view'
@@ -2475,21 +2082,21 @@ type IconType$1 =
   | 'select'
   | 'product'
   | 'sort'
+  | 'plus-circle'
   | 'plus'
   | 'phone'
-  | 'plus-circle'
+  | 'payment'
   | 'person'
-  | 'page'
   | 'order-unfulfilled'
+  | 'page'
   | 'order'
   | 'order-fulfilled'
-  | 'payment'
-  | 'mobile'
-  | 'minus-circle'
   | 'minus'
+  | 'minus-circle'
+  | 'mobile'
+  | 'merge'
   | 'microphone'
   | 'location'
-  | 'merge'
   | 'lightbulb'
   | 'language'
   | 'incomplete'
@@ -2498,26 +2105,26 @@ type IconType$1 =
   | 'hide'
   | 'globe'
   | 'external'
-  | 'email'
   | 'enabled'
-  | 'collection'
-  | 'disabled'
+  | 'email'
   | 'edit'
-  | 'clock'
-  | 'chevron-up'
-  | 'check'
+  | 'disabled'
   | 'delivery'
+  | 'clock'
+  | 'collection'
+  | 'chevron-up'
   | 'chevron-down'
   | 'check-circle'
+  | 'check'
   | 'calendar'
   | 'calendar-check'
-  | 'attachment'
-  | 'arrow-up-right'
   | 'blank'
-  | 'alert-triangle'
+  | 'attachment'
   | 'archive'
-  | 'alert-bubble'
   | 'apps'
+  | 'alert-triangle'
+  | 'arrow-up-right'
+  | 'alert-bubble'
   | 'alert-circle';
 interface VNode<P = {}> {
   type: ComponentType<P> | string;
@@ -2763,18 +2370,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$m]: Badge;
+    [tagName$f]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$m]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
+      [tagName$f]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
     }
   }
 }
 
-declare const tagName$m = 'shopify-badge';
+declare const tagName$f = 'shopify-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -2797,26 +2404,1272 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$l]: Banner;
+    [tagName$e]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$l]: HTMLAttributes<HTMLElement> & BannerJSXProps;
+      [tagName$e]: HTMLAttributes<HTMLElement> & BannerJSXProps;
     }
   }
 }
 
-declare const tagName$l = 'shopify-banner';
+declare const tagName$e = 'shopify-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
-    Pick<
-      BannerProps$1,
-      'id' | 'onDismiss' | 'primaryAction' | 'secondaryActions'
-    > {}
+    Pick<BannerProps$1, 'id' | 'onDismiss'> {
+  primaryAction?: ComponentChild;
+  secondaryActions?: ComponentChild;
+}
 
-export type MakeResponsive<T> = T | `@media${string}`;
+export type ButtonOnlyProps = Extract<
+  ButtonProps$1,
+  {
+    type?: unknown;
+  }
+>;
+export type ButtonBaseProps = Required<
+  Pick<
+    ButtonOnlyProps,
+    | 'accessibilityLabel'
+    | 'disabled'
+    | 'activateAction'
+    | 'activateTarget'
+    | 'lang'
+    | 'loading'
+    | 'type'
+    | 'variant'
+    | 'target'
+    | 'href'
+    | 'download'
+  >
+>;
+export interface ButtonProps extends ButtonBaseProps {
+  tone: Extract<ButtonProps$1['tone'], 'neutral' | 'critical' | 'auto'>;
+  icon: IconProps['type'];
+}
+
+export interface PreactOverlayControlProps
+  extends Required<Pick<InteractionProps, 'activateTarget'>> {
+  activateAction: Extract<
+    InteractionProps['activateAction'],
+    'show' | 'hide' | 'toggle' | 'auto'
+  >;
+}
+
+declare const Button_base: (abstract new (...args: any) => {
+  activateTarget: PreactOverlayControlProps['activateTarget'];
+  activateAction: PreactOverlayControlProps['activateAction'];
+  '__#24463@#queueRender': (() => void) | undefined;
+  '__#24463@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  attributeChangedCallback(name: string): void;
+  connectedCallback(): void;
+  disconnectedCallback(): void;
+  queueRender(): void;
+  _addLegacyStyleComponent(style: string): void;
+  click({sourceEvent}?: ClickOptions): void;
+  accessKey: string;
+  readonly accessKeyLabel: string;
+  autocapitalize: string;
+  dir: string;
+  draggable: boolean;
+  hidden: boolean;
+  inert: boolean;
+  innerText: string;
+  lang: string;
+  readonly offsetHeight: number;
+  readonly offsetLeft: number;
+  readonly offsetParent: Element | null;
+  readonly offsetTop: number;
+  readonly offsetWidth: number;
+  outerText: string;
+  popover: string | null;
+  spellcheck: boolean;
+  title: string;
+  translate: boolean;
+  attachInternals(): ElementInternals;
+  hidePopover(): void;
+  showPopover(): void;
+  togglePopover(force?: boolean): boolean;
+  addEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  removeEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  readonly attributes: NamedNodeMap;
+  readonly classList: DOMTokenList;
+  className: string;
+  readonly clientHeight: number;
+  readonly clientLeft: number;
+  readonly clientTop: number;
+  readonly clientWidth: number;
+  id: string;
+  innerHTML: string;
+  readonly localName: string;
+  readonly namespaceURI: string | null;
+  onfullscreenchange: ((this: Element, ev: Event) => any) | null;
+  onfullscreenerror: ((this: Element, ev: Event) => any) | null;
+  outerHTML: string;
+  readonly ownerDocument: Document;
+  readonly part: DOMTokenList;
+  readonly prefix: string | null;
+  readonly scrollHeight: number;
+  scrollLeft: number;
+  scrollTop: number;
+  readonly scrollWidth: number;
+  readonly shadowRoot: ShadowRoot | null;
+  slot: string;
+  readonly tagName: string;
+  attachShadow(init: ShadowRootInit): ShadowRoot;
+  checkVisibility(options?: CheckVisibilityOptions): boolean;
+  closest<K extends keyof HTMLElementTagNameMap>(
+    selector: K,
+  ): HTMLElementTagNameMap[K] | null;
+  closest<K extends keyof SVGElementTagNameMap>(
+    selector: K,
+  ): SVGElementTagNameMap[K] | null;
+  closest<K extends keyof MathMLElementTagNameMap>(
+    selector: K,
+  ): MathMLElementTagNameMap[K] | null;
+  closest<E extends Element = Element>(selectors: string): E | null;
+  computedStyleMap(): StylePropertyMapReadOnly;
+  getAttribute(qualifiedName: string): string | null;
+  getAttributeNS(namespace: string | null, localName: string): string | null;
+  getAttributeNames(): string[];
+  getAttributeNode(qualifiedName: string): Attr | null;
+  getAttributeNodeNS(namespace: string | null, localName: string): Attr | null;
+  getBoundingClientRect(): DOMRect;
+  getClientRects(): DOMRectList;
+  getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
+  getElementsByTagName<K extends keyof HTMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof SVGElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<SVGElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof MathMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<MathMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;
+  getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1999/xhtml',
+    localName: string,
+  ): HTMLCollectionOf<HTMLElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/2000/svg',
+    localName: string,
+  ): HTMLCollectionOf<SVGElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1998/Math/MathML',
+    localName: string,
+  ): HTMLCollectionOf<MathMLElement>;
+  getElementsByTagNameNS(
+    namespace: string | null,
+    localName: string,
+  ): HTMLCollectionOf<Element>;
+  getHTML(options?: GetHTMLOptions): string;
+  hasAttribute(qualifiedName: string): boolean;
+  hasAttributeNS(namespace: string | null, localName: string): boolean;
+  hasAttributes(): boolean;
+  hasPointerCapture(pointerId: number): boolean;
+  insertAdjacentElement(
+    where: InsertPosition,
+    element: Element,
+  ): Element | null;
+  insertAdjacentHTML(position: InsertPosition, string: string): void;
+  insertAdjacentText(where: InsertPosition, data: string): void;
+  matches(selectors: string): boolean;
+  releasePointerCapture(pointerId: number): void;
+  removeAttribute(qualifiedName: string): void;
+  removeAttributeNS(namespace: string | null, localName: string): void;
+  removeAttributeNode(attr: Attr): Attr;
+  requestFullscreen(options?: FullscreenOptions): Promise<void>;
+  requestPointerLock(options?: PointerLockOptions): Promise<void>;
+  scroll(options?: ScrollToOptions): void;
+  scroll(x: number, y: number): void;
+  scrollBy(options?: ScrollToOptions): void;
+  scrollBy(x: number, y: number): void;
+  scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void;
+  scrollTo(options?: ScrollToOptions): void;
+  scrollTo(x: number, y: number): void;
+  setAttribute(qualifiedName: string, value: string): void;
+  setAttributeNS(
+    namespace: string | null,
+    qualifiedName: string,
+    value: string,
+  ): void;
+  setAttributeNode(attr: Attr): Attr | null;
+  setAttributeNodeNS(attr: Attr): Attr | null;
+  setHTMLUnsafe(html: string): void;
+  setPointerCapture(pointerId: number): void;
+  toggleAttribute(qualifiedName: string, force?: boolean): boolean;
+  webkitMatchesSelector(selectors: string): boolean;
+  readonly baseURI: string;
+  readonly childNodes: NodeListOf<ChildNode>;
+  readonly firstChild: ChildNode | null;
+  readonly isConnected: boolean;
+  readonly lastChild: ChildNode | null;
+  readonly nextSibling: ChildNode | null;
+  readonly nodeName: string;
+  readonly nodeType: number;
+  nodeValue: string | null;
+  readonly parentElement: HTMLElement | null;
+  readonly parentNode: ParentNode | null;
+  readonly previousSibling: ChildNode | null;
+  textContent: string | null;
+  appendChild<T extends Node>(node: T): T;
+  cloneNode(deep?: boolean): Node;
+  compareDocumentPosition(other: Node): number;
+  contains(other: Node | null): boolean;
+  getRootNode(options?: GetRootNodeOptions): Node;
+  hasChildNodes(): boolean;
+  insertBefore<T extends Node>(node: T, child: Node | null): T;
+  isDefaultNamespace(namespace: string | null): boolean;
+  isEqualNode(otherNode: Node | null): boolean;
+  isSameNode(otherNode: Node | null): boolean;
+  lookupNamespaceURI(prefix: string | null): string | null;
+  lookupPrefix(namespace: string | null): string | null;
+  normalize(): void;
+  removeChild<T extends Node>(child: T): T;
+  replaceChild<T extends Node>(node: Node, child: T): T;
+  readonly ELEMENT_NODE: 1;
+  readonly ATTRIBUTE_NODE: 2;
+  readonly TEXT_NODE: 3;
+  readonly CDATA_SECTION_NODE: 4;
+  readonly ENTITY_REFERENCE_NODE: 5;
+  readonly ENTITY_NODE: 6;
+  readonly PROCESSING_INSTRUCTION_NODE: 7;
+  readonly COMMENT_NODE: 8;
+  readonly DOCUMENT_NODE: 9;
+  readonly DOCUMENT_TYPE_NODE: 10;
+  readonly DOCUMENT_FRAGMENT_NODE: 11;
+  readonly NOTATION_NODE: 12;
+  readonly DOCUMENT_POSITION_DISCONNECTED: 1;
+  readonly DOCUMENT_POSITION_PRECEDING: 2;
+  readonly DOCUMENT_POSITION_FOLLOWING: 4;
+  readonly DOCUMENT_POSITION_CONTAINS: 8;
+  readonly DOCUMENT_POSITION_CONTAINED_BY: 16;
+  readonly DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32;
+  dispatchEvent(event: Event): boolean;
+  ariaAtomic: string | null;
+  ariaAutoComplete: string | null;
+  ariaBrailleLabel: string | null;
+  ariaBrailleRoleDescription: string | null;
+  ariaBusy: string | null;
+  ariaChecked: string | null;
+  ariaColCount: string | null;
+  ariaColIndex: string | null;
+  ariaColSpan: string | null;
+  ariaCurrent: string | null;
+  ariaDescription: string | null;
+  ariaDisabled: string | null;
+  ariaExpanded: string | null;
+  ariaHasPopup: string | null;
+  ariaHidden: string | null;
+  ariaInvalid: string | null;
+  ariaKeyShortcuts: string | null;
+  ariaLabel: string | null;
+  ariaLevel: string | null;
+  ariaLive: string | null;
+  ariaModal: string | null;
+  ariaMultiLine: string | null;
+  ariaMultiSelectable: string | null;
+  ariaOrientation: string | null;
+  ariaPlaceholder: string | null;
+  ariaPosInSet: string | null;
+  ariaPressed: string | null;
+  ariaReadOnly: string | null;
+  ariaRequired: string | null;
+  ariaRoleDescription: string | null;
+  ariaRowCount: string | null;
+  ariaRowIndex: string | null;
+  ariaRowSpan: string | null;
+  ariaSelected: string | null;
+  ariaSetSize: string | null;
+  ariaSort: string | null;
+  ariaValueMax: string | null;
+  ariaValueMin: string | null;
+  ariaValueNow: string | null;
+  ariaValueText: string | null;
+  role: string | null;
+  animate(
+    keyframes: Keyframe[] | PropertyIndexedKeyframes | null,
+    options?: number | KeyframeAnimationOptions,
+  ): Animation;
+  getAnimations(options?: GetAnimationsOptions): Animation[];
+  after(...nodes: (Node | string)[]): void;
+  before(...nodes: (Node | string)[]): void;
+  remove(): void;
+  replaceWith(...nodes: (Node | string)[]): void;
+  readonly nextElementSibling: Element | null;
+  readonly previousElementSibling: Element | null;
+  readonly childElementCount: number;
+  readonly children: HTMLCollection;
+  readonly firstElementChild: Element | null;
+  readonly lastElementChild: Element | null;
+  append(...nodes: (Node | string)[]): void;
+  prepend(...nodes: (Node | string)[]): void;
+  querySelector<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): HTMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): SVGElementTagNameMap[K] | null;
+  querySelector<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): MathMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): HTMLElementDeprecatedTagNameMap[K] | null;
+  querySelector<E extends Element = Element>(selectors: string): E | null;
+  querySelectorAll<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<SVGElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<MathMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>;
+  querySelectorAll<E extends Element = Element>(
+    selectors: string,
+  ): NodeListOf<E>;
+  replaceChildren(...nodes: (Node | string)[]): void;
+  readonly assignedSlot: HTMLSlotElement | null;
+  readonly attributeStyleMap: StylePropertyMap;
+  readonly style: CSSStyleDeclaration;
+  contentEditable: string;
+  enterKeyHint: string;
+  inputMode: string;
+  readonly isContentEditable: boolean;
+  onabort: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onanimationcancel:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationend:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationiteration:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationstart:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onauxclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onbeforeinput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
+  onbeforetoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onblur: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  oncancel: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplaythrough: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextlost: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextmenu: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  oncontextrestored: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncopy: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  oncuechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncut: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  ondblclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  ondrag: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragend: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragenter: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragleave: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragover: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragstart: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondrop: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondurationchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onemptied: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onended: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onerror: OnErrorEventHandler;
+  onfocus: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  onformdata: ((this: GlobalEventHandlers, ev: FormDataEvent) => any) | null;
+  ongotpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  oninput: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oninvalid: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onkeydown: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeypress: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeyup: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onload: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadeddata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadedmetadata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onlostpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onmousedown: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseenter: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseleave: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmousemove: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseout: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseover: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseup: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onpaste: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  onpause: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplaying: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onpointercancel:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onpointerdown: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerenter: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerleave: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointermove: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerout: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerover: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerup: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onprogress: ((this: GlobalEventHandlers, ev: ProgressEvent) => any) | null;
+  onratechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onreset: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onresize: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onscroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onscrollend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsecuritypolicyviolation:
+    | ((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any)
+    | null;
+  onseeked: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onseeking: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselect: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectionchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onslotchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onstalled: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsubmit: ((this: GlobalEventHandlers, ev: SubmitEvent) => any) | null;
+  onsuspend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontimeupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontouchcancel?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchend?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchmove?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchstart?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontransitioncancel:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionend:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionrun:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionstart:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  onvolumechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwaiting: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationiteration:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkitanimationstart:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkittransitionend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwheel: ((this: GlobalEventHandlers, ev: WheelEvent) => any) | null;
+  autofocus: boolean;
+  readonly dataset: DOMStringMap;
+  nonce?: string;
+  tabIndex: number;
+  blur(): void;
+  focus(options?: FocusOptions): void;
+}) &
+  typeof PreactCustomElement;
+declare class Button extends Button_base implements ButtonProps {
+  accessor disabled: ButtonProps['disabled'];
+  accessor icon: ButtonProps['icon'];
+  accessor loading: ButtonProps['loading'];
+  accessor variant: ButtonProps['variant'];
+  accessor tone: ButtonProps['tone'];
+  accessor target: ButtonProps['target'];
+  accessor href: ButtonProps['href'];
+  accessor download: ButtonProps['download'];
+  accessor onclick: EventListener | null;
+  accessor onblur: EventListener | null;
+  accessor onfocus: EventListener | null;
+  accessor type: ButtonProps['type'];
+  accessor accessibilityLabel: ButtonProps['accessibilityLabel'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$d]: Button;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$d]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
+    }
+  }
+}
+
+declare const tagName$d = 'shopify-button';
+export interface ButtonJSXProps
+  extends Partial<ButtonProps>,
+    Pick<ButtonProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
+
+export interface DividerProps {
+  direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
+  color: Extract<DividerProps$1['color'], 'subdued' | 'base' | 'strong'>;
+}
+
+declare class Divider extends PreactCustomElement implements DividerProps {
+  accessor direction: DividerProps['direction'];
+  accessor color: DividerProps['color'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$c]: Divider;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$c]: HTMLAttributes<HTMLElement> & DividerJSXProps;
+    }
+  }
+}
+
+declare const tagName$c = 'shopify-divider';
+export interface DividerJSXProps
+  extends Partial<DividerProps>,
+    Pick<DividerProps$1, 'id'> {}
+
+export type RequiredHeadingProps = Required<HeadingProps$1>;
+export interface HeadingProps {
+  accessibilityRole: RequiredHeadingProps['accessibilityRole'];
+  accessibilityVisibility: RequiredHeadingProps['accessibilityVisibility'];
+  lineClamp: RequiredHeadingProps['lineClamp'];
+}
+
+declare class Heading extends PreactCustomElement implements HeadingProps {
+  accessor accessibilityRole: HeadingProps['accessibilityRole'];
+  accessor lineClamp: HeadingProps['lineClamp'];
+  accessor accessibilityVisibility: HeadingProps['accessibilityVisibility'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$b]: Heading;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$b]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
+    }
+  }
+}
+
+declare const tagName$b = 'shopify-heading';
+export interface HeadingJSXProps
+  extends Partial<HeadingProps>,
+    Pick<HeadingProps$1, 'id'> {}
+
+declare class Icon extends PreactCustomElement implements IconProps {
+  accessor color: IconProps['color'];
+  accessor tone: IconProps['tone'];
+  accessor type: IconProps['type'];
+  accessor size: IconProps['size'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$a]: Icon;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$a]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
+    }
+  }
+}
+
+declare const tagName$a = 'shopify-icon';
+export interface IconJSXProps
+  extends Partial<IconProps>,
+    Pick<IconProps$1, 'id'> {}
+
+export interface ImageProps
+  extends Required<
+    Pick<
+      ImageProps$1,
+      | 'alt'
+      | 'loading'
+      | 'src'
+      | 'accessibilityRole'
+      | 'inlineSize'
+      | 'srcSet'
+      | 'sizes'
+      | 'aspectRatio'
+      | 'objectFit'
+    >
+  > {}
+
+declare class Image extends PreactCustomElement implements ImageProps {
+  accessor src: ImageProps['src'];
+  accessor srcSet: ImageProps['srcSet'];
+  accessor sizes: ImageProps['sizes'];
+  accessor alt: ImageProps['alt'];
+  accessor aspectRatio: ImageProps['aspectRatio'];
+  accessor objectFit: ImageProps['objectFit'];
+  accessor loading: ImageProps['loading'];
+  accessor accessibilityRole: ImageProps['accessibilityRole'];
+  accessor inlineSize: ImageProps['inlineSize'];
+  accessor onload: EventListener | null;
+  accessor onerror: OnErrorEventHandler;
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$9]: Image;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$9]: HTMLAttributes<HTMLElement> & ImageJSXProps;
+    }
+  }
+}
+
+declare const tagName$9 = 'shopify-image';
+export interface ImageJSXProps
+  extends Partial<ImageProps>,
+    Pick<ImageProps$1, 'onError' | 'onLoad' | 'id'> {}
+
+export type RequiredLinkProps = Required<LinkProps$1>;
+export interface LinkProps {
+  accessibilityLabel: RequiredLinkProps['accessibilityLabel'];
+  activateAction: RequiredLinkProps['activateAction'];
+  activateTarget: RequiredLinkProps['activateTarget'];
+  download: RequiredLinkProps['download'];
+  href: RequiredLinkProps['href'];
+  lang: RequiredLinkProps['lang'];
+  target: RequiredLinkProps['target'];
+  tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
+}
+
+declare const Link_base: (abstract new (...args: any) => {
+  activateTarget: PreactOverlayControlProps['activateTarget'];
+  activateAction: PreactOverlayControlProps['activateAction'];
+  '__#24463@#queueRender': (() => void) | undefined;
+  '__#24463@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  attributeChangedCallback(name: string): void;
+  connectedCallback(): void;
+  disconnectedCallback(): void;
+  queueRender(): void;
+  _addLegacyStyleComponent(style: string): void;
+  click({sourceEvent}?: ClickOptions): void;
+  accessKey: string;
+  readonly accessKeyLabel: string;
+  autocapitalize: string;
+  dir: string;
+  draggable: boolean;
+  hidden: boolean;
+  inert: boolean;
+  innerText: string;
+  lang: string;
+  readonly offsetHeight: number;
+  readonly offsetLeft: number;
+  readonly offsetParent: Element | null;
+  readonly offsetTop: number;
+  readonly offsetWidth: number;
+  outerText: string;
+  popover: string | null;
+  spellcheck: boolean;
+  title: string;
+  translate: boolean;
+  attachInternals(): ElementInternals;
+  hidePopover(): void;
+  showPopover(): void;
+  togglePopover(force?: boolean): boolean;
+  addEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  removeEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  readonly attributes: NamedNodeMap;
+  readonly classList: DOMTokenList;
+  className: string;
+  readonly clientHeight: number;
+  readonly clientLeft: number;
+  readonly clientTop: number;
+  readonly clientWidth: number;
+  id: string;
+  innerHTML: string;
+  readonly localName: string;
+  readonly namespaceURI: string | null;
+  onfullscreenchange: ((this: Element, ev: Event) => any) | null;
+  onfullscreenerror: ((this: Element, ev: Event) => any) | null;
+  outerHTML: string;
+  readonly ownerDocument: Document;
+  readonly part: DOMTokenList;
+  readonly prefix: string | null;
+  readonly scrollHeight: number;
+  scrollLeft: number;
+  scrollTop: number;
+  readonly scrollWidth: number;
+  readonly shadowRoot: ShadowRoot | null;
+  slot: string;
+  readonly tagName: string;
+  attachShadow(init: ShadowRootInit): ShadowRoot;
+  checkVisibility(options?: CheckVisibilityOptions): boolean;
+  closest<K extends keyof HTMLElementTagNameMap>(
+    selector: K,
+  ): HTMLElementTagNameMap[K] | null;
+  closest<K extends keyof SVGElementTagNameMap>(
+    selector: K,
+  ): SVGElementTagNameMap[K] | null;
+  closest<K extends keyof MathMLElementTagNameMap>(
+    selector: K,
+  ): MathMLElementTagNameMap[K] | null;
+  closest<E extends Element = Element>(selectors: string): E | null;
+  computedStyleMap(): StylePropertyMapReadOnly;
+  getAttribute(qualifiedName: string): string | null;
+  getAttributeNS(namespace: string | null, localName: string): string | null;
+  getAttributeNames(): string[];
+  getAttributeNode(qualifiedName: string): Attr | null;
+  getAttributeNodeNS(namespace: string | null, localName: string): Attr | null;
+  getBoundingClientRect(): DOMRect;
+  getClientRects(): DOMRectList;
+  getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
+  getElementsByTagName<K extends keyof HTMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof SVGElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<SVGElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof MathMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<MathMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;
+  getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1999/xhtml',
+    localName: string,
+  ): HTMLCollectionOf<HTMLElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/2000/svg',
+    localName: string,
+  ): HTMLCollectionOf<SVGElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1998/Math/MathML',
+    localName: string,
+  ): HTMLCollectionOf<MathMLElement>;
+  getElementsByTagNameNS(
+    namespace: string | null,
+    localName: string,
+  ): HTMLCollectionOf<Element>;
+  getHTML(options?: GetHTMLOptions): string;
+  hasAttribute(qualifiedName: string): boolean;
+  hasAttributeNS(namespace: string | null, localName: string): boolean;
+  hasAttributes(): boolean;
+  hasPointerCapture(pointerId: number): boolean;
+  insertAdjacentElement(
+    where: InsertPosition,
+    element: Element,
+  ): Element | null;
+  insertAdjacentHTML(position: InsertPosition, string: string): void;
+  insertAdjacentText(where: InsertPosition, data: string): void;
+  matches(selectors: string): boolean;
+  releasePointerCapture(pointerId: number): void;
+  removeAttribute(qualifiedName: string): void;
+  removeAttributeNS(namespace: string | null, localName: string): void;
+  removeAttributeNode(attr: Attr): Attr;
+  requestFullscreen(options?: FullscreenOptions): Promise<void>;
+  requestPointerLock(options?: PointerLockOptions): Promise<void>;
+  scroll(options?: ScrollToOptions): void;
+  scroll(x: number, y: number): void;
+  scrollBy(options?: ScrollToOptions): void;
+  scrollBy(x: number, y: number): void;
+  scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void;
+  scrollTo(options?: ScrollToOptions): void;
+  scrollTo(x: number, y: number): void;
+  setAttribute(qualifiedName: string, value: string): void;
+  setAttributeNS(
+    namespace: string | null,
+    qualifiedName: string,
+    value: string,
+  ): void;
+  setAttributeNode(attr: Attr): Attr | null;
+  setAttributeNodeNS(attr: Attr): Attr | null;
+  setHTMLUnsafe(html: string): void;
+  setPointerCapture(pointerId: number): void;
+  toggleAttribute(qualifiedName: string, force?: boolean): boolean;
+  webkitMatchesSelector(selectors: string): boolean;
+  readonly baseURI: string;
+  readonly childNodes: NodeListOf<ChildNode>;
+  readonly firstChild: ChildNode | null;
+  readonly isConnected: boolean;
+  readonly lastChild: ChildNode | null;
+  readonly nextSibling: ChildNode | null;
+  readonly nodeName: string;
+  readonly nodeType: number;
+  nodeValue: string | null;
+  readonly parentElement: HTMLElement | null;
+  readonly parentNode: ParentNode | null;
+  readonly previousSibling: ChildNode | null;
+  textContent: string | null;
+  appendChild<T extends Node>(node: T): T;
+  cloneNode(deep?: boolean): Node;
+  compareDocumentPosition(other: Node): number;
+  contains(other: Node | null): boolean;
+  getRootNode(options?: GetRootNodeOptions): Node;
+  hasChildNodes(): boolean;
+  insertBefore<T extends Node>(node: T, child: Node | null): T;
+  isDefaultNamespace(namespace: string | null): boolean;
+  isEqualNode(otherNode: Node | null): boolean;
+  isSameNode(otherNode: Node | null): boolean;
+  lookupNamespaceURI(prefix: string | null): string | null;
+  lookupPrefix(namespace: string | null): string | null;
+  normalize(): void;
+  removeChild<T extends Node>(child: T): T;
+  replaceChild<T extends Node>(node: Node, child: T): T;
+  readonly ELEMENT_NODE: 1;
+  readonly ATTRIBUTE_NODE: 2;
+  readonly TEXT_NODE: 3;
+  readonly CDATA_SECTION_NODE: 4;
+  readonly ENTITY_REFERENCE_NODE: 5;
+  readonly ENTITY_NODE: 6;
+  readonly PROCESSING_INSTRUCTION_NODE: 7;
+  readonly COMMENT_NODE: 8;
+  readonly DOCUMENT_NODE: 9;
+  readonly DOCUMENT_TYPE_NODE: 10;
+  readonly DOCUMENT_FRAGMENT_NODE: 11;
+  readonly NOTATION_NODE: 12;
+  readonly DOCUMENT_POSITION_DISCONNECTED: 1;
+  readonly DOCUMENT_POSITION_PRECEDING: 2;
+  readonly DOCUMENT_POSITION_FOLLOWING: 4;
+  readonly DOCUMENT_POSITION_CONTAINS: 8;
+  readonly DOCUMENT_POSITION_CONTAINED_BY: 16;
+  readonly DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32;
+  dispatchEvent(event: Event): boolean;
+  ariaAtomic: string | null;
+  ariaAutoComplete: string | null;
+  ariaBrailleLabel: string | null;
+  ariaBrailleRoleDescription: string | null;
+  ariaBusy: string | null;
+  ariaChecked: string | null;
+  ariaColCount: string | null;
+  ariaColIndex: string | null;
+  ariaColSpan: string | null;
+  ariaCurrent: string | null;
+  ariaDescription: string | null;
+  ariaDisabled: string | null;
+  ariaExpanded: string | null;
+  ariaHasPopup: string | null;
+  ariaHidden: string | null;
+  ariaInvalid: string | null;
+  ariaKeyShortcuts: string | null;
+  ariaLabel: string | null;
+  ariaLevel: string | null;
+  ariaLive: string | null;
+  ariaModal: string | null;
+  ariaMultiLine: string | null;
+  ariaMultiSelectable: string | null;
+  ariaOrientation: string | null;
+  ariaPlaceholder: string | null;
+  ariaPosInSet: string | null;
+  ariaPressed: string | null;
+  ariaReadOnly: string | null;
+  ariaRequired: string | null;
+  ariaRoleDescription: string | null;
+  ariaRowCount: string | null;
+  ariaRowIndex: string | null;
+  ariaRowSpan: string | null;
+  ariaSelected: string | null;
+  ariaSetSize: string | null;
+  ariaSort: string | null;
+  ariaValueMax: string | null;
+  ariaValueMin: string | null;
+  ariaValueNow: string | null;
+  ariaValueText: string | null;
+  role: string | null;
+  animate(
+    keyframes: Keyframe[] | PropertyIndexedKeyframes | null,
+    options?: number | KeyframeAnimationOptions,
+  ): Animation;
+  getAnimations(options?: GetAnimationsOptions): Animation[];
+  after(...nodes: (Node | string)[]): void;
+  before(...nodes: (Node | string)[]): void;
+  remove(): void;
+  replaceWith(...nodes: (Node | string)[]): void;
+  readonly nextElementSibling: Element | null;
+  readonly previousElementSibling: Element | null;
+  readonly childElementCount: number;
+  readonly children: HTMLCollection;
+  readonly firstElementChild: Element | null;
+  readonly lastElementChild: Element | null;
+  append(...nodes: (Node | string)[]): void;
+  prepend(...nodes: (Node | string)[]): void;
+  querySelector<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): HTMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): SVGElementTagNameMap[K] | null;
+  querySelector<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): MathMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): HTMLElementDeprecatedTagNameMap[K] | null;
+  querySelector<E extends Element = Element>(selectors: string): E | null;
+  querySelectorAll<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<SVGElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<MathMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>;
+  querySelectorAll<E extends Element = Element>(
+    selectors: string,
+  ): NodeListOf<E>;
+  replaceChildren(...nodes: (Node | string)[]): void;
+  readonly assignedSlot: HTMLSlotElement | null;
+  readonly attributeStyleMap: StylePropertyMap;
+  readonly style: CSSStyleDeclaration;
+  contentEditable: string;
+  enterKeyHint: string;
+  inputMode: string;
+  readonly isContentEditable: boolean;
+  onabort: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onanimationcancel:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationend:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationiteration:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationstart:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onauxclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onbeforeinput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
+  onbeforetoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onblur: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  oncancel: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplaythrough: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextlost: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextmenu: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  oncontextrestored: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncopy: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  oncuechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncut: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  ondblclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  ondrag: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragend: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragenter: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragleave: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragover: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragstart: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondrop: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondurationchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onemptied: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onended: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onerror: OnErrorEventHandler;
+  onfocus: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  onformdata: ((this: GlobalEventHandlers, ev: FormDataEvent) => any) | null;
+  ongotpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  oninput: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oninvalid: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onkeydown: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeypress: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeyup: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onload: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadeddata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadedmetadata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onlostpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onmousedown: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseenter: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseleave: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmousemove: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseout: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseover: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseup: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onpaste: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  onpause: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplaying: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onpointercancel:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onpointerdown: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerenter: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerleave: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointermove: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerout: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerover: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerup: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onprogress: ((this: GlobalEventHandlers, ev: ProgressEvent) => any) | null;
+  onratechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onreset: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onresize: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onscroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onscrollend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsecuritypolicyviolation:
+    | ((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any)
+    | null;
+  onseeked: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onseeking: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselect: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectionchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onslotchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onstalled: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsubmit: ((this: GlobalEventHandlers, ev: SubmitEvent) => any) | null;
+  onsuspend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontimeupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontouchcancel?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchend?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchmove?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchstart?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontransitioncancel:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionend:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionrun:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionstart:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  onvolumechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwaiting: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationiteration:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkitanimationstart:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkittransitionend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwheel: ((this: GlobalEventHandlers, ev: WheelEvent) => any) | null;
+  autofocus: boolean;
+  readonly dataset: DOMStringMap;
+  nonce?: string;
+  tabIndex: number;
+  blur(): void;
+  focus(options?: FocusOptions): void;
+}) &
+  typeof PreactCustomElement;
+declare class Link extends Link_base implements LinkProps {
+  accessor tone: LinkProps['tone'];
+  accessor accessibilityLabel: LinkProps['accessibilityLabel'];
+  accessor href: LinkProps['href'];
+  accessor target: LinkProps['target'];
+  accessor download: LinkProps['download'];
+  accessor lang: LinkProps['lang'];
+  accessor onclick: EventListener | null;
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$8]: Link;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$8]: HTMLAttributes<HTMLElement> & LinkJSXProps;
+    }
+  }
+}
+
+declare const tagName$8 = 'shopify-link';
+export interface LinkJSXProps
+  extends Partial<LinkProps>,
+    Pick<LinkProps$1, 'onClick' | 'id' | 'lang'> {}
+
+export interface ParagraphProps
+  extends Required<
+    Pick<
+      ParagraphProps$1,
+      'accessibilityVisibility' | 'fontVariantNumeric' | 'tone' | 'dir'
+    >
+  > {
+  color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
+  lineClamp: Extract<ParagraphProps$1['lineClamp'], number>;
+}
+
+declare class Paragraph extends PreactCustomElement implements ParagraphProps {
+  accessor fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
+  accessor lineClamp: ParagraphProps['lineClamp'];
+  accessor tone: ParagraphProps['tone'];
+  accessor color: ParagraphProps['color'];
+  accessor dir: ParagraphProps['dir'];
+  accessor accessibilityVisibility: ParagraphProps['accessibilityVisibility'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$7]: Paragraph;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$7]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
+    }
+  }
+}
+
+declare const tagName$7 = 'shopify-paragraph';
+export interface ParagraphJSXProps
+  extends Partial<ParagraphProps>,
+    Pick<ParagraphProps$1, 'id'> {}
+
+export type RequiredSectionProps = Required<SectionProps$1>;
+export interface SectionProps {
+  accessibilityLabel: RequiredSectionProps['accessibilityLabel'];
+  heading: RequiredSectionProps['heading'];
+  padding: RequiredSectionProps['padding'];
+}
+
+declare class Section extends PreactCustomElement implements SectionProps {
+  constructor();
+  connectedCallback(): void;
+  accessor accessibilityLabel: SectionProps['accessibilityLabel'];
+  accessor heading: SectionProps['heading'];
+  accessor padding: SectionProps['padding'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$6]: Section;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$6]: HTMLAttributes<HTMLElement> & SectionJSXProps;
+    }
+  }
+}
+
+declare const tagName$6 = 'shopify-section';
+export interface SectionJSXProps
+  extends Partial<SectionProps>,
+    Pick<SectionProps$1, 'id'> {}
+
+export interface SpinnerProps
+  extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
+  /**
+   * The size of the component.
+   *
+   * @default 'base'
+   */
+  size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
+}
+
+declare class Spinner extends PreactCustomElement implements SpinnerProps {
+  accessor accessibilityLabel: string;
+  accessor size: SpinnerProps['size'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$5]: Spinner;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$5]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
+    }
+  }
+}
+
+declare const tagName$5 = 'shopify-spinner';
+export interface SpinnerJSXProps
+  extends Partial<SpinnerProps>,
+    Pick<SpinnerProps$1, 'id'> {}
 
 export type AlignedBox = Required<BoxProps$1>;
 export interface BoxProps {
@@ -2831,13 +3684,13 @@ export interface BoxProps {
   inlineSize: AlignedBox['inlineSize'];
   minInlineSize: AlignedBox['minInlineSize'];
   maxInlineSize: AlignedBox['maxInlineSize'];
-  padding: MakeResponsive<AlignedBox['padding']>;
-  paddingBlock: MakeResponsive<AlignedBox['paddingBlock']>;
-  paddingBlockStart: MakeResponsive<AlignedBox['paddingBlockStart']>;
-  paddingBlockEnd: MakeResponsive<AlignedBox['paddingBlockEnd']>;
-  paddingInline: MakeResponsive<AlignedBox['paddingInline']>;
-  paddingInlineStart: MakeResponsive<AlignedBox['paddingInlineStart']>;
-  paddingInlineEnd: MakeResponsive<AlignedBox['paddingInlineEnd']>;
+  padding: AlignedBox['padding'];
+  paddingBlock: AlignedBox['paddingBlock'];
+  paddingBlockStart: AlignedBox['paddingBlockStart'];
+  paddingBlockEnd: AlignedBox['paddingBlockEnd'];
+  paddingInline: AlignedBox['paddingInline'];
+  paddingInlineStart: AlignedBox['paddingInlineStart'];
+  paddingInlineEnd: AlignedBox['paddingInlineEnd'];
   border: AlignedBox['border'] | 'none';
   borderWidth: MaybeAllValuesShorthandProperty<
     Extract<
@@ -2877,6 +3730,17 @@ export interface BoxProps {
   display: AlignedBox['display'];
 }
 
+export type AlignedStackProps = Required<StackProps$1>;
+export interface StackProps extends BoxProps {
+  justifyContent: AlignedStackProps['justifyContent'];
+  alignItems: AlignedStackProps['alignItems'];
+  alignContent: AlignedStackProps['alignContent'];
+  gap: AlignedStackProps['gap'];
+  rowGap: AlignedStackProps['rowGap'];
+  columnGap: AlignedStackProps['columnGap'];
+  direction: AlignedStackProps['direction'];
+}
+
 declare class BoxElement extends PreactCustomElement implements BoxProps {
   constructor(renderImpl: RenderImpl);
   accessor accessibilityRole: BoxProps['accessibilityRole'];
@@ -2904,592 +3768,6 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
   accessor display: BoxProps['display'];
 }
 
-declare class Box extends BoxElement implements BoxProps {
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$k]: Box;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$k]: HTMLAttributes<HTMLElement> & BoxJSXProps;
-    }
-  }
-}
-
-declare const tagName$k = 'shopify-box';
-export interface BoxJSXProps
-  extends Partial<BoxProps>,
-    Pick<BoxProps$1, 'id'> {}
-
-export type ButtonOnlyProps = Extract<
-  ButtonProps$1,
-  {
-    type?: unknown;
-  }
->;
-export type ButtonBaseProps = Required<
-  Pick<
-    ButtonOnlyProps,
-    | 'accessibilityLabel'
-    | 'disabled'
-    | 'activateAction'
-    | 'activateTarget'
-    | 'lang'
-    | 'loading'
-    | 'type'
-    | 'variant'
-    | 'target'
-    | 'href'
-    | 'download'
-  >
->;
-export interface ButtonProps extends ButtonBaseProps {
-  tone: Extract<ButtonProps$1['tone'], 'neutral' | 'critical' | 'auto'>;
-  icon: IconProps['type'];
-}
-
-export interface SharedProps$3
-  extends Required<Pick<InteractionProps, 'activateTarget'>> {
-  activateAction: Extract<
-    InteractionProps['activateAction'],
-    'show' | 'hide' | 'toggle' | 'auto'
-  >;
-}
-declare class PreactOverlayControl
-  extends PreactCustomElement
-  implements SharedProps$3
-{
-  accessor activateTarget: SharedProps$3['activateTarget'];
-  accessor activateAction: SharedProps$3['activateAction'];
-  constructor(renderImpl: RenderImpl);
-}
-
-declare class Button extends PreactOverlayControl implements ButtonProps {
-  accessor disabled: ButtonProps['disabled'];
-  accessor icon: ButtonProps['icon'];
-  accessor loading: ButtonProps['loading'];
-  accessor variant: ButtonProps['variant'];
-  accessor tone: ButtonProps['tone'];
-  accessor target: ButtonProps['target'];
-  accessor href: ButtonProps['href'];
-  accessor download: ButtonProps['download'];
-  accessor onclick: EventListener | null;
-  accessor onblur: EventListener | null;
-  accessor onfocus: EventListener | null;
-  accessor type: ButtonProps['type'];
-  accessor accessibilityLabel: ButtonProps['accessibilityLabel'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$j]: Button;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$j]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
-    }
-  }
-}
-
-declare const tagName$j = 'shopify-button';
-export interface ButtonJSXProps
-  extends Partial<ButtonProps>,
-    Pick<ButtonProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
-
-declare const internals: unique symbol;
-export type PreactInputProps = Required<
-  Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
->;
-declare class PreactInputElement
-  extends PreactCustomElement
-  implements PreactInputProps
-{
-  static formAssociated: boolean;
-  /** @private */
-  [internals]: ElementInternals;
-  protected getDefaultValue(): string;
-  accessor onchange: EventListener | null;
-  accessor oninput: EventListener | null;
-  accessor disabled: PreactInputProps['disabled'];
-  accessor id: PreactInputProps['id'];
-  accessor name: PreactInputProps['name'];
-  get value(): PreactInputProps['value'];
-  set value(value: PreactInputProps['value']);
-  constructor(renderImpl: RenderImpl);
-}
-
-export type CheckboxProps = PreactInputProps &
-  Required<
-    Pick<
-      CheckboxProps$1,
-      | 'accessibilityLabel'
-      | 'checked'
-      | 'details'
-      | 'error'
-      | 'indeterminate'
-      | 'label'
-      | 'required'
-      | 'defaultChecked'
-    >
-  >;
-
-declare class Checkbox extends PreactInputElement implements CheckboxProps {
-  get checked(): boolean;
-  set checked(checked: CheckboxProps['checked']);
-  get value(): string;
-  set value(value: string);
-  accessor defaultChecked: CheckboxProps['defaultChecked'];
-  accessor accessibilityLabel: CheckboxProps['accessibilityLabel'];
-  accessor details: CheckboxProps['details'];
-  accessor error: CheckboxProps['error'];
-  accessor indeterminate: CheckboxProps['indeterminate'];
-  accessor label: CheckboxProps['label'];
-  accessor required: CheckboxProps['required'];
-  formResetCallback(): void;
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$i]: Checkbox;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$i]: HTMLAttributes<HTMLElement> & CheckboxJSXProps;
-    }
-  }
-}
-
-declare const tagName$i = 'shopify-checkbox';
-export interface CheckboxJSXProps
-  extends Partial<CheckboxProps>,
-    Pick<CheckboxProps$1, 'onChange' | 'onInput'> {}
-
-export interface DividerProps {
-  direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
-  color: Extract<DividerProps$1['color'], 'subdued' | 'base' | 'strong'>;
-}
-
-declare class Divider extends PreactCustomElement implements DividerProps {
-  accessor direction: DividerProps['direction'];
-  accessor color: DividerProps['color'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$h]: Divider;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$h]: HTMLAttributes<HTMLElement> & DividerJSXProps;
-    }
-  }
-}
-
-declare const tagName$h = 'shopify-divider';
-export interface DividerJSXProps
-  extends Partial<DividerProps>,
-    Pick<DividerProps$1, 'id'> {}
-
-export type RequiredHeadingProps = Required<HeadingProps$1>;
-export interface HeadingProps {
-  accessibilityRole: RequiredHeadingProps['accessibilityRole'];
-  accessibilityVisibility: RequiredHeadingProps['accessibilityVisibility'];
-  lineClamp: RequiredHeadingProps['lineClamp'];
-}
-
-declare class Heading extends PreactCustomElement implements HeadingProps {
-  accessor accessibilityRole: HeadingProps['accessibilityRole'];
-  accessor lineClamp: HeadingProps['lineClamp'];
-  accessor accessibilityVisibility: HeadingProps['accessibilityVisibility'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$g]: Heading;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$g]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
-    }
-  }
-}
-
-declare const tagName$g = 'shopify-heading';
-export interface HeadingJSXProps
-  extends Partial<HeadingProps>,
-    Pick<HeadingProps$1, 'id'> {}
-
-declare class Icon extends PreactCustomElement implements IconProps {
-  accessor color: IconProps['color'];
-  accessor tone: IconProps['tone'];
-  accessor type: IconProps['type'];
-  accessor size: IconProps['size'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$f]: Icon;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$f]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
-    }
-  }
-}
-
-declare const tagName$f = 'shopify-icon';
-export interface IconJSXProps
-  extends Partial<IconProps>,
-    Pick<IconProps$1, 'id'> {}
-
-export interface ImageProps
-  extends Required<
-    Pick<
-      ImageProps$1,
-      | 'alt'
-      | 'loading'
-      | 'src'
-      | 'accessibilityRole'
-      | 'inlineSize'
-      | 'srcSet'
-      | 'sizes'
-      | 'aspectRatio'
-    >
-  > {}
-
-declare class Image extends PreactCustomElement implements ImageProps {
-  accessor src: ImageProps['src'];
-  accessor srcSet: ImageProps['srcSet'];
-  accessor sizes: ImageProps['sizes'];
-  accessor alt: ImageProps['alt'];
-  accessor aspectRatio: ImageProps['aspectRatio'];
-  accessor loading: ImageProps['loading'];
-  accessor accessibilityRole: ImageProps['accessibilityRole'];
-  accessor inlineSize: ImageProps['inlineSize'];
-  accessor onload: EventListener | null;
-  accessor onerror: OnErrorEventHandler;
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$e]: Image;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$e]: HTMLAttributes<HTMLElement> & ImageJSXProps;
-    }
-  }
-}
-
-declare const tagName$e = 'shopify-image';
-export interface ImageJSXProps
-  extends Partial<ImageProps>,
-    Pick<ImageProps$1, 'onError' | 'onLoad' | 'id'> {}
-
-export type RequiredLinkProps = Required<LinkProps$1>;
-export interface LinkProps {
-  tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
-  accessibilityLabel: RequiredLinkProps['accessibilityLabel'];
-  href: RequiredLinkProps['href'];
-  target: RequiredLinkProps['target'];
-}
-
-declare class Link extends PreactCustomElement implements LinkProps {
-  accessor tone: LinkProps['tone'];
-  accessor accessibilityLabel: LinkProps['accessibilityLabel'];
-  accessor href: LinkProps['href'];
-  accessor target: LinkProps['target'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$d]: Link;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$d]: HTMLAttributes<HTMLElement> & LinkJSXProps;
-    }
-  }
-}
-
-declare const tagName$d = 'shopify-link';
-export interface LinkJSXProps
-  extends Partial<LinkProps>,
-    Pick<LinkProps$1, 'onClick' | 'id' | 'lang'> {}
-
-export interface SharedProps$2
-  extends Required<Pick<OptionProps, 'disabled' | 'value'>> {}
-declare class Option extends PreactCustomElement implements SharedProps$2 {
-  accessor value: SharedProps$2['value'];
-  accessor disabled: SharedProps$2['disabled'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$c]: Option;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$c]: HTMLAttributes<HTMLElement> & OptionJSXProps;
-    }
-  }
-}
-
-declare const tagName$c = 'shopify-option';
-export interface OptionJSXProps extends Partial<SharedProps$2> {}
-
-export interface SharedProps$1
-  extends Required<Pick<OptionGroupProps, 'disabled' | 'label'>> {}
-declare class OptionGroup extends PreactCustomElement implements SharedProps$1 {
-  accessor disabled: SharedProps$1['disabled'];
-  accessor label: SharedProps$1['label'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$b]: OptionGroup;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$b]: HTMLAttributes<HTMLElement> & OptionGroupJSXProps;
-    }
-  }
-}
-
-declare const tagName$b = 'shopify-option-group';
-export interface OptionGroupJSXProps extends Partial<SharedProps$1> {}
-
-export interface ParagraphProps
-  extends Required<
-    Pick<
-      ParagraphProps$1,
-      'accessibilityVisibility' | 'fontVariantNumeric' | 'tone' | 'dir'
-    >
-  > {
-  color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
-  lineClamp: Extract<ParagraphProps$1['lineClamp'], number>;
-}
-
-declare class Paragraph extends PreactCustomElement implements ParagraphProps {
-  accessor fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
-  accessor lineClamp: ParagraphProps['lineClamp'];
-  accessor tone: ParagraphProps['tone'];
-  accessor color: ParagraphProps['color'];
-  accessor dir: ParagraphProps['dir'];
-  accessor accessibilityVisibility: ParagraphProps['accessibilityVisibility'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$a]: Paragraph;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$a]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
-    }
-  }
-}
-
-declare const tagName$a = 'shopify-paragraph';
-export interface ParagraphJSXProps
-  extends Partial<ParagraphProps>,
-    Pick<ParagraphProps$1, 'id'> {}
-
-export type RequiredSectionProps = Required<SectionProps$1>;
-export interface SectionProps {
-  accessibilityLabel: RequiredSectionProps['accessibilityLabel'];
-  heading: RequiredSectionProps['heading'];
-  padding: RequiredSectionProps['padding'];
-}
-
-declare class Section extends PreactCustomElement implements SectionProps {
-  constructor();
-  connectedCallback(): void;
-  accessor accessibilityLabel: SectionProps['accessibilityLabel'];
-  accessor heading: SectionProps['heading'];
-  accessor padding: SectionProps['padding'];
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$9]: Section;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$9]: HTMLAttributes<HTMLElement> & SectionJSXProps;
-    }
-  }
-}
-
-declare const tagName$9 = 'shopify-section';
-export interface SectionJSXProps
-  extends Partial<SectionProps>,
-    Pick<SectionProps$1, 'id'> {}
-
-export interface SharedProps
-  extends Required<
-    Pick<
-      SelectProps,
-      | 'details'
-      | 'disabled'
-      | 'error'
-      | 'label'
-      | 'name'
-      | 'placeholder'
-      | 'required'
-      | 'value'
-      | 'defaultValue'
-      | 'icon'
-      | 'labelAccessibilityVisibility'
-    >
-  > {}
-
-export type FieldReactProps = Pick<
-  TextFieldProps,
-  'onChange' | 'onFocus' | 'onInput' | 'onBlur'
->;
-
-export type PreactFieldProps<Autocomplete extends string = string> =
-  PreactInputProps &
-    Required<
-      Pick<
-        TextFieldProps,
-        | 'defaultValue'
-        | 'details'
-        | 'error'
-        | 'label'
-        | 'labelAccessibilityVisibility'
-        | 'placeholder'
-        | 'readOnly'
-        | 'required'
-      >
-    > & {
-      autocomplete: Autocomplete;
-    };
-declare class PreactFieldElement<Autocomplete extends string = string>
-  extends PreactInputElement
-  implements PreactFieldProps<Autocomplete>
-{
-  accessor onblur: EventListener | null;
-  accessor onfocus: EventListener | null;
-  accessor autocomplete: PreactFieldProps<Autocomplete>['autocomplete'];
-  accessor defaultValue: PreactFieldProps['defaultValue'];
-  accessor details: PreactFieldProps['details'];
-  accessor error: PreactFieldProps['error'];
-  accessor label: PreactFieldProps['label'];
-  accessor labelAccessibilityVisibility: PreactFieldProps['labelAccessibilityVisibility'];
-  accessor placeholder: PreactFieldProps['placeholder'];
-  accessor readOnly: PreactFieldProps['readOnly'];
-  accessor required: PreactFieldProps['required'];
-  protected getDefaultValue(): string;
-  formResetCallback(): void;
-  connectedCallback(): void;
-  constructor(renderImpl: RenderImpl);
-}
-
-declare const usedFirstOptionSymbol: unique symbol;
-
-declare class Select extends PreactFieldElement implements SharedProps {
-  accessor icon: SharedProps['icon'];
-  connectedCallback(): void;
-  disconnectedCallback(): void;
-  constructor();
-  /**
-   * used to determine if no value or defaultValue was set, in which case the first non-disabled option was used
-   *
-   * this is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form
-   */
-  [usedFirstOptionSymbol]: boolean;
-  get value(): string;
-  set value(value: string);
-  formResetCallback(): void;
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$8]: Select;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$8]: HTMLAttributes<HTMLElement> & SelectJSXProps;
-    }
-  }
-}
-
-declare const tagName$8 = 'shopify-select';
-export interface SelectJSXProps
-  extends Partial<SharedProps & FieldReactProps> {}
-
-export interface SpinnerProps
-  extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
-  /**
-   * The size of the component.
-   *
-   * @default 'base'
-   */
-  size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
-}
-
-declare class Spinner extends PreactCustomElement implements SpinnerProps {
-  accessor accessibilityLabel: string;
-  accessor size: SpinnerProps['size'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$7]: Spinner;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$7]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
-    }
-  }
-}
-
-declare const tagName$7 = 'shopify-spinner';
-export interface SpinnerJSXProps
-  extends Partial<SpinnerProps>,
-    Pick<SpinnerProps$1, 'id'> {}
-
-export type AlignedStackProps = Required<StackProps$1>;
-export interface StackProps extends BoxProps {
-  justifyContent: AlignedStackProps['justifyContent'];
-  alignItems: AlignedStackProps['alignItems'];
-  alignContent: AlignedStackProps['alignContent'];
-  gap: MakeResponsive<AlignedStackProps['gap']>;
-  rowGap: MakeResponsive<AlignedStackProps['rowGap']>;
-  columnGap: MakeResponsive<AlignedStackProps['columnGap']>;
-  direction: MakeResponsive<AlignedStackProps['direction']>;
-}
-
 declare class Stack extends BoxElement implements StackProps {
   constructor();
   accessor direction: StackProps['direction'];
@@ -3502,18 +3780,18 @@ declare class Stack extends BoxElement implements StackProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$6]: Stack;
+    [tagName$4]: Stack;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: HTMLAttributes<HTMLElement> & StackJSXProps;
+      [tagName$4]: HTMLAttributes<HTMLElement> & StackJSXProps;
     }
   }
 }
 
-declare const tagName$6 = 'shopify-stack';
+declare const tagName$4 = 'shopify-stack';
 export interface StackJSXProps
   extends Partial<StackProps>,
     Pick<StackProps$1, 'id'> {}
@@ -3549,23 +3827,23 @@ declare class Text extends PreactCustomElement implements TextProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$5]: Text;
+    [tagName$3]: Text;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$5]: HTMLAttributes<HTMLElement> & TextJSXProps;
+      [tagName$3]: HTMLAttributes<HTMLElement> & TextJSXProps;
     }
   }
 }
 
-declare const tagName$5 = 'shopify-text';
+declare const tagName$3 = 'shopify-text';
 export interface TextJSXProps
   extends Partial<TextProps>,
     Pick<TextProps$1, 'id'> {}
 
-declare const tagName$4 = 'shopify-admin-action';
+declare const tagName$2 = 'shopify-admin-action';
 export interface AdminActionProps {
   /**
    * Sets the title of the Action container. If empty, the name of the extension will be used. Titles longer than 40 characters will be truncated.
@@ -3585,13 +3863,13 @@ declare class AdminAction
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$4]: AdminAction;
+    [tagName$2]: AdminAction;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$4]: HTMLAttributes<HTMLElement> & AdminActionJSXProps;
+      [tagName$2]: HTMLAttributes<HTMLElement> & AdminActionJSXProps;
     }
   }
 }
@@ -3600,7 +3878,7 @@ export interface AdminActionJSXProps extends Partial<AdminActionProps> {
   id?: string;
 }
 
-declare const tagName$3 = 'shopify-admin-block';
+declare const tagName$1 = 'shopify-admin-block';
 export interface AdminBlockProps {
   /**
    * The title to display at the top of the app block. If empty, the name of the extension will be used. Titles longer than 40 characters will be truncated.
@@ -3621,13 +3899,13 @@ declare class AdminBlock
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$3]: AdminBlock;
+    [tagName$1]: AdminBlock;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$3]: HTMLAttributes<HTMLElement> & AdminBlockJSXProps;
+      [tagName$1]: HTMLAttributes<HTMLElement> & AdminBlockJSXProps;
     }
   }
 }
@@ -3636,7 +3914,7 @@ export interface AdminBlockJSXProps extends Partial<AdminBlockProps> {
   id?: string;
 }
 
-declare const tagName$2 = 'shopify-admin-print-action';
+declare const tagName = 'shopify-admin-print-action';
 export interface AdminPrintActionProps {
   /**
    * Sets the src URL of the preview and the document to print.
@@ -3654,116 +3932,19 @@ declare class AdminPrintAction
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$2]: AdminPrintAction;
+    [tagName]: AdminPrintAction;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$2]: HTMLAttributes<HTMLElement> & AdminPrintActionJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & AdminPrintActionJSXProps;
     }
   }
 }
 
 export interface AdminPrintActionJSXProps
   extends Partial<AdminPrintActionProps> {
-  id?: string;
-}
-
-declare const tagName$1 = 'shopify-customer-segment-template';
-/**
- * Reserved namespace and key for the customer standard metafield used in the template's query.
- * More info - https://shopify.dev/docs/apps/custom-data/metafields/definitions/standard
- */
-export type CustomerStandardMetafieldDependency = 'facts.birth_date';
-export interface CustomerSegmentTemplateProps {
-  /**
-   * The localized title of the template.
-   */
-  title: string;
-  /**
-   * The localized description of the template. An array can be used for multiple paragraphs.
-   */
-  description: string | string[];
-  /**
-   * The code snippet to render in the template with syntax highlighting. The `query` is not validated in the template.
-   */
-  query: string;
-  /**
-   * The code snippet to insert in the segment editor. If missing, `query` will be used. The `queryToInsert` is not validated in the template.
-   */
-  queryToInsert: string;
-  /**
-   * The list of customer standard metafields or custom metafields used in the template's query.
-   */
-  dependencies?: {
-    standardMetafields?: CustomerStandardMetafieldDependency[];
-    customMetafields?: string[];
-  };
-  /**
-   * ISO 8601-encoded date and time string. A "New" badge will be rendered for templates introduced in the last month.
-   */
-  createdOn: string;
-}
-declare class CustomerSegmentTemplate
-  extends PreactCustomElement
-  implements CustomerSegmentTemplateProps
-{
-  constructor();
-  description: string | string[];
-  query: string;
-  queryToInsert: string;
-  createdOn: string;
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$1]: CustomerSegmentTemplate;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$1]: HTMLAttributes<HTMLElement> &
-        CustomerSegmentTemplateJSXProps;
-    }
-  }
-}
-
-export interface CustomerSegmentTemplateJSXProps
-  extends Partial<CustomerSegmentTemplateProps> {
-  id?: string;
-}
-
-declare const tagName = 'shopify-function-settings';
-export interface FunctionSettingsProps {
-  /**
-   * A unique identifier for the form.
-   */
-  id?: string;
-}
-declare class FunctionSettings
-  extends PreactCustomElement
-  implements FunctionSettingsProps
-{
-  constructor();
-  accessor onsave: EventListener | null;
-  accessor onerror: OnErrorEventHandler;
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName]: FunctionSettings;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & FunctionSettingsJSXProps;
-    }
-  }
-}
-
-export interface FunctionSettingsJSXProps
-  extends Partial<FunctionSettingsProps> {
   id?: string;
 }
 
@@ -3778,18 +3959,10 @@ export {
   type BadgeJSXProps,
   Banner,
   type BannerJSXProps,
-  Box,
-  type BoxJSXProps,
   Button,
   type ButtonJSXProps,
-  Checkbox,
-  type CheckboxJSXProps,
-  CustomerSegmentTemplate,
-  type CustomerSegmentTemplateJSXProps,
   Divider,
   type DividerJSXProps,
-  FunctionSettings,
-  type FunctionSettingsJSXProps,
   Heading,
   type HeadingJSXProps,
   Icon,
@@ -3798,16 +3971,10 @@ export {
   type ImageJSXProps,
   Link,
   type LinkJSXProps,
-  Option,
-  OptionGroup,
-  type OptionGroupJSXProps,
-  type OptionJSXProps,
   Paragraph,
   type ParagraphJSXProps,
   Section,
   type SectionJSXProps,
-  Select,
-  type SelectJSXProps,
   Spinner,
   type SpinnerJSXProps,
   Stack,
