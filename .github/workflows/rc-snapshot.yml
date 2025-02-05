@@ -32,7 +32,10 @@ jobs:
         run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
         id: extract_branch
 
-      - name: Deploy snapshot versions
+      - name: Build snapshot version
+        run: yarn build
+
+      - name: Deploy snapshot version
         run: yarn changeset version --snapshot ${{ steps.extract_branch.outputs.branch }} && yarn changeset publish --tag ${{ steps.extract_branch.outputs.branch }} --no-git-tag
         env:
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
