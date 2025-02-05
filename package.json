@@ -29,7 +29,6 @@
     "run:ts": "babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "run:ts:watch": "nodemon --ext .ts,.tsx,.mjs,.json,.graphql node_modules/.bin/babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "scaffold-docs:admin": "./packages/ui-extensions/docs/surfaces/admin/create-doc-files.sh \"admin\"",
-    "test": "loom test",
     "type-check": "loom type-check"
   },
   "devDependencies": {

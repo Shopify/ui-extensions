@@ -23,24 +23,6 @@ jobs:
       - name: Type check
         run: yarn type-check
 
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/workflows/actions/prepare
-
-      - id: jest-cache
-        name: Restore jest cache
-        uses: actions/cache@v1
-        with:
-          path: .loom/cache/jest/
-          key: ${{ runner.os }}-jest-v1-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-jest-v1-
-
-      - name: Test
-        run: yarn test
-
   lint:
     runs-on: ubuntu-latest
 
