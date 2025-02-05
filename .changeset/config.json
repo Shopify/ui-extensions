@@ -10,8 +10,5 @@
   "access": "restricted",
   "baseBranch": "unstable",
   "updateInternalDependencies": "patch",
-  "ignore": [],
-  "snapshot": {
-    "useCalculatedVersion": true
-  }
+  "ignore": []
 }
