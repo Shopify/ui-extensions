@@ -11,7 +11,7 @@
   "baseBranch": "unstable",
   "updateInternalDependencies": "patch",
   "ignore": [],
-   "snapshot": {
+  "snapshot": {
     "useCalculatedVersion": true
-   }
+  }
 }
