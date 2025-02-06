@@ -7,7 +7,7 @@ export type BadgeVariant =
   | 'success'
   | 'highlight';
 
-export type BadgeStatus = 'empty' | 'partial' | 'complete' | null;
+export type BadgeStatus = 'empty' | 'partial' | 'complete';
 
 /**
  * @property text - The text displayed inside the badge.
@@ -26,7 +26,7 @@ export interface BadgeProps {
   variant: BadgeVariant;
 
   /**
-   * A circle icon displaying the status of the badge. Use `null` to hide the status icon.
+   * A circle icon displaying the status of the badge.
    */
   status?: BadgeStatus;
 }
