@@ -21,28 +21,33 @@ export interface PixelEventsAdvancedDomAvailable {
    * The name of the customer event.
    */
   name: 'advanced_dom_available';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
 
 export interface PixelEventsAdvancedDomChangedData {
   /**
-   * Fragments added to the document. Each fragment represents a sub-
-   * tree of the host document. Use the `parentSerializationId` and the
+   * Array of `DomFragment` added to the document. Each `DomFragment` represents
+   * a sub-tree of the document. Use the `parentSerializationId` and the
    * `prevSiblingSerializationId` to reconstruct the document.
    */
   addedFragments: DomFragment[];
 
   /**
-   * Element nodes that have had their attributes changed. Use the
+   * Array of `DomNode` that have had their attributes changed. Use the
    * `serializationId` of each to find it and update your own representation of
    * the document.
    */
   modifiedNodes: DomNode[];
 
   /**
-   * Element nodes removed from the document. Use the `serializationId` of each
-   * to find it and remove it from your own representation of the document.
+   * Array of `DomNode` removed from the document. Use the `serializationId` of
+   * each to find it and remove it from your own representation of the document.
    */
   removedNodes: DomNode[];
 }
@@ -60,6 +65,11 @@ export interface PixelEventsAdvancedDomChanged {
    * The name of the customer event.
    */
   name: 'advanced_dom_changed';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
@@ -77,6 +87,11 @@ export interface PixelEventsAdvancedDomClicked {
    * The name of the customer event
    */
   name: 'advanced_dom_clicked';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
@@ -115,6 +130,11 @@ export interface PixelEventsAdvancedDomClipboard {
    * The name of the customer event.
    */
   name: 'advanced_dom_clipboard';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
@@ -140,6 +160,11 @@ export interface PixelEventsAdvancedDomFormSubmitted {
    * The name of the customer event
    */
   name: 'advanced_dom_form_submitted';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
@@ -164,6 +189,11 @@ export interface PixelEventsAdvancedDomInputBlurred {
    * The name of the customer event
    */
   name: 'advanced_dom_input_blurred';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
@@ -188,6 +218,11 @@ export interface PixelEventsAdvancedDomInputChanged {
    * The name of the customer event
    */
   name: 'advanced_dom_input_changed';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
@@ -212,6 +247,11 @@ export interface PixelEventsAdvancedDomInputFocused {
    * The name of the customer event
    */
   name: 'advanced_dom_input_focused';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
@@ -229,6 +269,11 @@ export interface PixelEventsAdvancedDomMouseMoved {
    * The name of the customer event
    */
   name: 'advanced_dom_mouse_moved';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
@@ -254,6 +299,11 @@ export interface PixelEventsAdvancedDomScrolled {
    * The name of the customer event.
    */
   name: 'advanced_dom_scrolled';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
@@ -278,6 +328,11 @@ export interface PixelEventsAdvancedDomSelectionChanged {
    * The name of the customer event.
    */
   name: 'advanced_dom_selection_changed';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
@@ -306,6 +361,11 @@ export interface PixelEventsAdvancedDomWindowResized {
    * The name of the customer event.
    */
   name: 'advanced_dom_window_resized';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.AdvancedDom;
 }
@@ -328,6 +388,11 @@ export interface PixelEventsAlertDisplayed {
    * The name of the customer event
    */
   name: 'alert_displayed';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -350,6 +415,11 @@ export interface PixelEventsCartViewed {
    * The name of the customer event
    */
   name: 'cart_viewed';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -373,6 +443,11 @@ export interface PixelEventsCheckoutAddressInfoSubmitted {
    * The name of the customer event
    */
   name: 'checkout_address_info_submitted';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -395,6 +470,11 @@ export interface PixelEventsCheckoutCompleted {
    * The name of the customer event
    */
   name: 'checkout_completed';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -418,6 +498,11 @@ export interface PixelEventsCheckoutContactInfoSubmitted {
    * The name of the customer event
    */
   name: 'checkout_contact_info_submitted';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -441,6 +526,11 @@ export interface PixelEventsCheckoutShippingInfoSubmitted {
    * The name of the customer event
    */
   name: 'checkout_shipping_info_submitted';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -466,6 +556,11 @@ export interface PixelEventsCheckoutStarted {
    * The name of the customer event
    */
   name: 'checkout_started';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -483,6 +578,11 @@ export interface PixelEventsClicked {
    * The name of the customer event
    */
   name: 'clicked';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Dom;
 }
@@ -506,6 +606,11 @@ export interface PixelEventsCollectionViewed {
    * The name of the customer event
    */
   name: 'collection_viewed';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -527,6 +632,11 @@ export interface PixelEventsFormSubmitted {
    * The name of the customer event
    */
   name: 'form_submitted';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Dom;
 }
@@ -548,6 +658,11 @@ export interface PixelEventsInputBlurred {
    * The name of the customer event
    */
   name: 'input_blurred';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Dom;
 }
@@ -569,6 +684,11 @@ export interface PixelEventsInputChanged {
    * The name of the customer event
    */
   name: 'input_changed';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Dom;
 }
@@ -590,6 +710,11 @@ export interface PixelEventsInputFocused {
    * The name of the customer event
    */
   name: 'input_focused';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Dom;
 }
@@ -620,6 +745,11 @@ export interface PixelEventsPageViewed {
    * The name of the customer event
    */
   name: 'page_viewed';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -642,6 +772,11 @@ export interface PixelEventsPaymentInfoSubmitted {
    * The name of the customer event
    */
   name: 'payment_info_submitted';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -664,6 +799,11 @@ export interface PixelEventsProductAddedToCart {
    * The name of the customer event
    */
   name: 'product_added_to_cart';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -687,6 +827,11 @@ export interface PixelEventsProductRemovedFromCart {
    * The name of the customer event
    */
   name: 'product_removed_from_cart';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -711,6 +856,11 @@ export interface PixelEventsProductVariantViewed {
    * The name of the customer event
    */
   name: 'product_variant_viewed';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -733,6 +883,11 @@ export interface PixelEventsProductViewed {
    * The name of the customer event
    */
   name: 'product_viewed';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -755,6 +910,11 @@ export interface PixelEventsSearchSubmitted {
    * The name of the customer event
    */
   name: 'search_submitted';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -777,6 +937,11 @@ export interface PixelEventsUiExtensionErrored {
    * The name of the customer event
    */
   name: 'ui_extension_errored';
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Standard;
 }
@@ -1599,6 +1764,11 @@ export interface CustomEvent {
    * Arbitrary name of the custom event
    */
   name: string;
+
+  /**
+   * The sequence index number of the event.
+   */
+  seq: number;
   timestamp: Timestamp;
   type: EventType.Custom;
 }
@@ -1776,13 +1946,12 @@ export interface DiscountApplication {
  */
 export interface DomFragment {
   /**
-   * Each children of that fragment is also a fragment, forming the tree
-   * structure.
+   * Array of `DomFragment` representing children of the parent `DomFragment`.
    */
   children: DomFragment[];
 
   /**
-   * The node object of that sub-tree root fragment.
+   * The node object of the `DomFragment`.
    */
   node: DomNode;
 
@@ -1799,8 +1968,7 @@ export interface DomFragment {
 }
 
 /**
- * Representation of any node in the document. It can be an element, text,
- * doctype, etc.
+ * Representation of a node in the document.
  */
 export interface DomNode {
   /**
@@ -1840,7 +2008,8 @@ export interface DomNode {
   scroll?: ClientRect;
 
   /**
-   * A string representation of the tag of an element node.
+   * A string representation of the tag of a node. Only available on element
+   * nodes.
    */
   tagName?: string;
 
