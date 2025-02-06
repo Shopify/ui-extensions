@@ -2370,18 +2370,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: Badge;
+    [tagName$g]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
+      [tagName$g]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
     }
   }
 }
 
-declare const tagName$f = 'shopify-badge';
+declare const tagName$g = 'shopify-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -2404,18 +2404,18 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: Banner;
+    [tagName$f]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: HTMLAttributes<HTMLElement> & BannerJSXProps;
+      [tagName$f]: HTMLAttributes<HTMLElement> & BannerJSXProps;
     }
   }
 }
 
-declare const tagName$e = 'shopify-banner';
+declare const tagName$f = 'shopify-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id' | 'onDismiss'> {
@@ -2928,18 +2928,18 @@ declare class Button extends Button_base implements ButtonProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: Button;
+    [tagName$e]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
+      [tagName$e]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
     }
   }
 }
 
-declare const tagName$d = 'shopify-button';
+declare const tagName$e = 'shopify-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
@@ -2956,18 +2956,18 @@ declare class Divider extends PreactCustomElement implements DividerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: Divider;
+    [tagName$d]: Divider;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: HTMLAttributes<HTMLElement> & DividerJSXProps;
+      [tagName$d]: HTMLAttributes<HTMLElement> & DividerJSXProps;
     }
   }
 }
 
-declare const tagName$c = 'shopify-divider';
+declare const tagName$d = 'shopify-divider';
 export interface DividerJSXProps
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}
@@ -2987,18 +2987,18 @@ declare class Heading extends PreactCustomElement implements HeadingProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: Heading;
+    [tagName$c]: Heading;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
+      [tagName$c]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
     }
   }
 }
 
-declare const tagName$b = 'shopify-heading';
+declare const tagName$c = 'shopify-heading';
 export interface HeadingJSXProps
   extends Partial<HeadingProps>,
     Pick<HeadingProps$1, 'id'> {}
@@ -3012,18 +3012,18 @@ declare class Icon extends PreactCustomElement implements IconProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: Icon;
+    [tagName$b]: Icon;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
+      [tagName$b]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
     }
   }
 }
 
-declare const tagName$a = 'shopify-icon';
+declare const tagName$b = 'shopify-icon';
 export interface IconJSXProps
   extends Partial<IconProps>,
     Pick<IconProps$1, 'id'> {}
@@ -3060,18 +3060,18 @@ declare class Image extends PreactCustomElement implements ImageProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: Image;
+    [tagName$a]: Image;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: HTMLAttributes<HTMLElement> & ImageJSXProps;
+      [tagName$a]: HTMLAttributes<HTMLElement> & ImageJSXProps;
     }
   }
 }
 
-declare const tagName$9 = 'shopify-image';
+declare const tagName$a = 'shopify-image';
 export interface ImageJSXProps
   extends Partial<ImageProps>,
     Pick<ImageProps$1, 'onError' | 'onLoad' | 'id'> {}
@@ -3552,18 +3552,18 @@ declare class Link extends Link_base implements LinkProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: Link;
+    [tagName$9]: Link;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: HTMLAttributes<HTMLElement> & LinkJSXProps;
+      [tagName$9]: HTMLAttributes<HTMLElement> & LinkJSXProps;
     }
   }
 }
 
-declare const tagName$8 = 'shopify-link';
+declare const tagName$9 = 'shopify-link';
 export interface LinkJSXProps
   extends Partial<LinkProps>,
     Pick<LinkProps$1, 'onClick' | 'id' | 'lang'> {}
@@ -3590,18 +3590,18 @@ declare class Paragraph extends PreactCustomElement implements ParagraphProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$7]: Paragraph;
+    [tagName$8]: Paragraph;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
+      [tagName$8]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
     }
   }
 }
 
-declare const tagName$7 = 'shopify-paragraph';
+declare const tagName$8 = 'shopify-paragraph';
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,
     Pick<ParagraphProps$1, 'id'> {}
@@ -3622,18 +3622,18 @@ declare class Section extends PreactCustomElement implements SectionProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$6]: Section;
+    [tagName$7]: Section;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: HTMLAttributes<HTMLElement> & SectionJSXProps;
+      [tagName$7]: HTMLAttributes<HTMLElement> & SectionJSXProps;
     }
   }
 }
 
-declare const tagName$6 = 'shopify-section';
+declare const tagName$7 = 'shopify-section';
 export interface SectionJSXProps
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id'> {}
@@ -3655,18 +3655,18 @@ declare class Spinner extends PreactCustomElement implements SpinnerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$5]: Spinner;
+    [tagName$6]: Spinner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$5]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
+      [tagName$6]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
     }
   }
 }
 
-declare const tagName$5 = 'shopify-spinner';
+declare const tagName$6 = 'shopify-spinner';
 export interface SpinnerJSXProps
   extends Partial<SpinnerProps>,
     Pick<SpinnerProps$1, 'id'> {}
@@ -3780,18 +3780,18 @@ declare class Stack extends BoxElement implements StackProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$4]: Stack;
+    [tagName$5]: Stack;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$4]: HTMLAttributes<HTMLElement> & StackJSXProps;
+      [tagName$5]: HTMLAttributes<HTMLElement> & StackJSXProps;
     }
   }
 }
 
-declare const tagName$4 = 'shopify-stack';
+declare const tagName$5 = 'shopify-stack';
 export interface StackJSXProps
   extends Partial<StackProps>,
     Pick<StackProps$1, 'id'> {}
@@ -3827,23 +3827,23 @@ declare class Text extends PreactCustomElement implements TextProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$3]: Text;
+    [tagName$4]: Text;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$3]: HTMLAttributes<HTMLElement> & TextJSXProps;
+      [tagName$4]: HTMLAttributes<HTMLElement> & TextJSXProps;
     }
   }
 }
 
-declare const tagName$3 = 'shopify-text';
+declare const tagName$4 = 'shopify-text';
 export interface TextJSXProps
   extends Partial<TextProps>,
     Pick<TextProps$1, 'id'> {}
 
-declare const tagName$2 = 'shopify-admin-action';
+declare const tagName$3 = 'shopify-admin-action';
 export interface AdminActionProps {
   /**
    * Sets the title of the Action container. If empty, the name of the extension will be used. Titles longer than 40 characters will be truncated.
@@ -3863,13 +3863,13 @@ declare class AdminAction
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$2]: AdminAction;
+    [tagName$3]: AdminAction;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$2]: HTMLAttributes<HTMLElement> & AdminActionJSXProps;
+      [tagName$3]: HTMLAttributes<HTMLElement> & AdminActionJSXProps;
     }
   }
 }
@@ -3878,7 +3878,7 @@ export interface AdminActionJSXProps extends Partial<AdminActionProps> {
   id?: string;
 }
 
-declare const tagName$1 = 'shopify-admin-block';
+declare const tagName$2 = 'shopify-admin-block';
 export interface AdminBlockProps {
   /**
    * The title to display at the top of the app block. If empty, the name of the extension will be used. Titles longer than 40 characters will be truncated.
@@ -3899,13 +3899,13 @@ declare class AdminBlock
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$1]: AdminBlock;
+    [tagName$2]: AdminBlock;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$1]: HTMLAttributes<HTMLElement> & AdminBlockJSXProps;
+      [tagName$2]: HTMLAttributes<HTMLElement> & AdminBlockJSXProps;
     }
   }
 }
@@ -3914,7 +3914,7 @@ export interface AdminBlockJSXProps extends Partial<AdminBlockProps> {
   id?: string;
 }
 
-declare const tagName = 'shopify-admin-print-action';
+declare const tagName$1 = 'shopify-admin-print-action';
 export interface AdminPrintActionProps {
   /**
    * Sets the src URL of the preview and the document to print.
@@ -3932,19 +3932,82 @@ declare class AdminPrintAction
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: AdminPrintAction;
+    [tagName$1]: AdminPrintAction;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & AdminPrintActionJSXProps;
+      [tagName$1]: HTMLAttributes<HTMLElement> & AdminPrintActionJSXProps;
     }
   }
 }
 
 export interface AdminPrintActionJSXProps
   extends Partial<AdminPrintActionProps> {
+  id?: string;
+}
+
+declare const tagName = 'shopify-customer-segment-template';
+/**
+ * Reserved namespace and key for the customer standard metafield used in the template's query.
+ * More info - https://shopify.dev/docs/apps/custom-data/metafields/definitions/standard
+ */
+export type CustomerStandardMetafieldDependency = 'facts.birth_date';
+export interface CustomerSegmentTemplateProps {
+  /**
+   * The localized title of the template.
+   */
+  title: string;
+  /**
+   * The localized description of the template. An array can be used for multiple paragraphs.
+   */
+  description: string | string[];
+  /**
+   * The code snippet to render in the template with syntax highlighting. The `query` is not validated in the template.
+   */
+  query: string;
+  /**
+   * The code snippet to insert in the segment editor. If missing, `query` will be used. The `queryToInsert` is not validated in the template.
+   */
+  queryToInsert: string;
+  /**
+   * The list of customer standard metafields or custom metafields used in the template's query.
+   */
+  dependencies?: {
+    standardMetafields?: CustomerStandardMetafieldDependency[];
+    customMetafields?: string[];
+  };
+  /**
+   * ISO 8601-encoded date and time string. A "New" badge will be rendered for templates introduced in the last month.
+   */
+  createdOn: string;
+}
+declare class CustomerSegmentTemplate
+  extends PreactCustomElement
+  implements CustomerSegmentTemplateProps
+{
+  constructor();
+  description: string | string[];
+  query: string;
+  queryToInsert: string;
+  createdOn: string;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName]: CustomerSegmentTemplate;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: HTMLAttributes<HTMLElement> & CustomerSegmentTemplateJSXProps;
+    }
+  }
+}
+
+export interface CustomerSegmentTemplateJSXProps
+  extends Partial<CustomerSegmentTemplateProps> {
   id?: string;
 }
 
@@ -3961,6 +4024,8 @@ export {
   type BannerJSXProps,
   Button,
   type ButtonJSXProps,
+  CustomerSegmentTemplate,
+  type CustomerSegmentTemplateJSXProps,
   Divider,
   type DividerJSXProps,
   Heading,
