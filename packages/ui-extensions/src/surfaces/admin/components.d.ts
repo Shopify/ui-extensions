@@ -1,4 +1,4 @@
-/** VERSION: 0.29.0 **/
+/** VERSION: 0.30.1 **/
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -778,6 +778,20 @@ interface AccessibilityVisibilityProps {
    */
   accessibilityVisibility?: 'visible' | 'hidden' | 'exclusive';
 }
+interface LabelAccessibilityVisibilityProps {
+  /**
+   * Changes the visibility of the component's label.
+   *
+   * - `visible`: the label is visible to all users.
+   * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
+   *
+   * @default 'visible'
+   */
+  labelAccessibilityVisibility?: ExtractStrict<
+    AccessibilityVisibilityProps['accessibilityVisibility'],
+    'visible' | 'exclusive'
+  >;
+}
 type PaddingKeyword = SizeKeyword | 'none';
 interface PaddingProps {
   /**
@@ -1159,6 +1173,268 @@ interface ButtonProps$1 extends GlobalProps, BasePressableProps {
    */
   lang?: string;
 }
+interface BaseInputProps {
+  /**
+   * An identifier for the field that is unique within the nearest
+   * containing `Form` component.
+   */
+  name?: string;
+  /**
+   * Disables the field, disallowing any interaction.
+   */
+  disabled?: boolean;
+}
+interface InputProps extends BaseInputProps {
+  /**
+   * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+   */
+  onChange?: (newValue: string) => void;
+  /**
+   * Callback when the user makes any changes in the field.
+   */
+  onInput?: (newValue: string) => void;
+  /**
+   * The current value for the field. If omitted, the field will be empty.
+   */
+  value?: string;
+  /**
+   * The default value for the field.
+   */
+  defaultValue?: string;
+}
+interface FieldErrorProps {
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string;
+}
+interface BasicFieldProps
+  extends FieldErrorProps,
+    LabelAccessibilityVisibilityProps {
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` prop.
+   */
+  required?: boolean;
+  /**
+   * Content to use as the field label.
+   */
+  label?: string;
+}
+interface FieldDetailsProps {
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   */
+  details?: string;
+}
+interface FieldProps
+  extends BasicFieldProps,
+    InputProps,
+    FocusEventProps,
+    FieldDetailsProps {
+  /**
+   * A short hint that describes the expected value of the field.
+   */
+  placeholder?: string;
+}
+interface BaseTextFieldProps extends FieldProps {
+  /**
+   * The field cannot be edited by the user. It is focusable will be announced by screen readers.
+   */
+  readOnly?: boolean;
+}
+interface FieldDecorationProps {
+  /**
+   * A value to be displayed immediately after the editable portion of the field.
+   *
+   * This is useful for displaying an implied part of the value, such as "@shopify.com", or "%".
+   *
+   * This cannot be edited by the user, and it isn't included in the value of the field.
+   *
+   * It may not be displayed until the user has interacted with the input.
+   * For example, an inline label may take the place of the suffix until the user focuses the input.
+   *
+   * @default ''
+   */
+  suffix?: string;
+  /**
+   * A value to be displayed immediately before the editable portion of the field.
+   *
+   * This is useful for displaying an implied part of the value, such as "https://" or "+353".
+   *
+   * This cannot be edited by the user, and it isn't included in the value of the field.
+   *
+   * It may not be displayed until the user has interacted with the input.
+   * For example, an inline label may take the place of the prefix until the user focuses the input.
+   *
+   * @default ''
+   */
+  prefix?: string;
+  /**
+   * The type of icon to be displayed in the field.
+   *
+   * @default ''
+   */
+  icon?: IconType;
+  /**
+   * Additional content to be displayed in the field.
+   * Commonly used to display an icon that activates a tooltip providing more information.
+   */
+  accessory?: ComponentChildren;
+}
+interface MinMaxLengthProps {
+  /**
+   * Specifies the maximum number of characters allowed.
+   *
+   * @default Infinity
+   */
+  maxLength?: number;
+  /**
+   * Specifies the min number of characters allowed.
+   *
+   * @default 0
+   */
+  minLength?: number;
+}
+interface AutocompleteProps<AutocompleteField extends AnyAutocompleteField> {
+  /**
+   * A hint as to the intended content of the field.
+   *
+   * When set to `on` (the default), this property indicates that the field should support
+   * autofill, but you do not have any more semantic information on the intended
+   * contents.
+   *
+   * When set to `off`, you are indicating that this field contains sensitive
+   * information, or contents that are never saved, like one-time codes.
+   *
+   * Alternatively, you can provide value which describes the
+   * specific data you would like to be entered into this field during autofill.
+   *
+   * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
+   *
+   * @default 'on'
+   */
+  autocomplete?:
+    | AutocompleteField
+    | `${AutocompleteSection} ${AutocompleteField}`
+    | `${AutocompleteGroup} ${AutocompleteField}`
+    | `${AutocompleteSection} ${AutocompleteGroup} ${AutocompleteField}`
+    | 'on'
+    | 'off';
+}
+type AutocompleteSection = `section-${string}`;
+type AutocompleteGroup = 'shipping' | 'billing';
+type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
+type AutocompleteFieldTelephoneAlias = 'tel' | 'telephone';
+type AutocompleteFieldBirthdayAlias = 'bday' | 'birthday';
+type AutocompleteFieldCreditCardAlias = 'cc' | 'credit-card';
+type AutocompleteFieldInstantMessageAlias = 'impp' | 'instant-message';
+type AutocompleteFieldSecurityCodeAlias = 'csc' | 'security-code';
+type AnyAutocompleteField =
+  | 'additional-name'
+  | 'address-level1'
+  | 'address-level2'
+  | 'address-level3'
+  | 'address-level4'
+  | 'address-line1'
+  | 'address-line2'
+  | 'address-line3'
+  | 'country-name'
+  | 'country'
+  | 'current-password'
+  | 'email'
+  | 'family-name'
+  | 'given-name'
+  | 'honorific-prefix'
+  | 'honorific-suffix'
+  | 'language'
+  | 'name'
+  | 'new-password'
+  | 'nickname'
+  | 'one-time-code'
+  | 'organization-title'
+  | 'organization'
+  | 'photo'
+  | 'postal-code'
+  | 'sex'
+  | 'street-address'
+  | 'transaction-amount'
+  | 'transaction-currency'
+  | 'url'
+  | 'username'
+  | `${AutocompleteFieldBirthdayAlias}-day`
+  | `${AutocompleteFieldBirthdayAlias}-month`
+  | `${AutocompleteFieldBirthdayAlias}-year`
+  | `${AutocompleteFieldBirthdayAlias}`
+  | `${AutocompleteFieldCreditCardAlias}-additional-name`
+  | `${AutocompleteFieldCreditCardAlias}-expiry-month`
+  | `${AutocompleteFieldCreditCardAlias}-expiry-year`
+  | `${AutocompleteFieldCreditCardAlias}-expiry`
+  | `${AutocompleteFieldCreditCardAlias}-family-name`
+  | `${AutocompleteFieldCreditCardAlias}-given-name`
+  | `${AutocompleteFieldCreditCardAlias}-name`
+  | `${AutocompleteFieldCreditCardAlias}-number`
+  | `${AutocompleteFieldCreditCardAlias}-${AutocompleteFieldSecurityCodeAlias}`
+  | `${AutocompleteFieldCreditCardAlias}-type`
+  | `${AutocompleteAddressGroup} email`
+  | `${AutocompleteFieldInstantMessageAlias}`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldInstantMessageAlias}`
+  | `${AutocompleteFieldTelephoneAlias}`
+  | `${AutocompleteFieldTelephoneAlias}-area-code`
+  | `${AutocompleteFieldTelephoneAlias}-country-code`
+  | `${AutocompleteFieldTelephoneAlias}-extension`
+  | `${AutocompleteFieldTelephoneAlias}-local-prefix`
+  | `${AutocompleteFieldTelephoneAlias}-local-suffix`
+  | `${AutocompleteFieldTelephoneAlias}-local`
+  | `${AutocompleteFieldTelephoneAlias}-national`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-area-code`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-country-code`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-extension`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local-prefix`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local-suffix`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local`
+  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-national`;
+type TextAutocompleteField = ExtractStrict<
+  AnyAutocompleteField,
+  | 'additional-name'
+  | 'address-level1'
+  | 'address-level2'
+  | 'address-level3'
+  | 'address-level4'
+  | 'address-line1'
+  | 'address-line2'
+  | 'address-line3'
+  | 'country-name'
+  | 'country'
+  | 'family-name'
+  | 'given-name'
+  | 'honorific-prefix'
+  | 'honorific-suffix'
+  | 'language'
+  | 'name'
+  | 'nickname'
+  | 'one-time-code'
+  | 'organization-title'
+  | 'organization'
+  | 'postal-code'
+  | 'sex'
+  | 'street-address'
+  | 'transaction-currency'
+  | 'username'
+  | `${AutocompleteFieldCreditCardAlias}-name`
+  | `${AutocompleteFieldCreditCardAlias}-given-name`
+  | `${AutocompleteFieldCreditCardAlias}-additional-name`
+  | `${AutocompleteFieldCreditCardAlias}-family-name`
+  | `${AutocompleteFieldCreditCardAlias}-type`
+>;
 interface DividerProps$1 extends GlobalProps {
   /**
    * Specify the direction of the divider.
@@ -1652,480 +1928,498 @@ type TextType =
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
    */
   | 'generic';
+interface TextAreaProps$1
+  extends GlobalProps,
+    BaseTextFieldProps,
+    MinMaxLengthProps,
+    AutocompleteProps<TextAutocompleteField> {
+  /**
+   * A number of visible text lines.
+   *
+   * @default 2
+   */
+  rows?: number;
+}
+interface TextFieldProps$1
+  extends GlobalProps,
+    BaseTextFieldProps,
+    MinMaxLengthProps,
+    AutocompleteProps<TextAutocompleteField>,
+    FieldDecorationProps {}
 type IconType$1 =
   | 'wifi'
+  | 'wand'
   | 'wrench'
   | 'watch'
-  | 'wallet'
   | 'viewport-tall'
-  | 'wand'
+  | 'work'
+  | 'wallet'
   | 'viewport-wide'
   | 'viewport-narrow'
   | 'viewport-short'
-  | 'upload'
-  | 'work'
-  | 'unknown-device'
   | 'unlock'
+  | 'unknown-device'
+  | 'transaction'
+  | 'upload'
+  | 'transfer-internal'
+  | 'transfer-out'
+  | 'transfer-in'
   | 'undo'
   | 'transfer'
-  | 'transfer-out'
-  | 'transfer-internal'
-  | 'transfer-in'
-  | 'transaction'
+  | 'transaction-fee-rupee'
+  | 'transaction-fee-pound'
   | 'transaction-fee-dollar'
   | 'transaction-fee-euro'
-  | 'transaction-fee-rupee'
   | 'toggle-on'
-  | 'toggle-off'
-  | 'transaction-fee-pound'
-  | 'tip-jar'
   | 'transaction-fee-yen'
   | 'thumbs-up'
   | 'thumbs-down'
+  | 'tip-jar'
   | 'theme'
+  | 'theme-template'
   | 'theme-store'
   | 'theme-edit'
-  | 'text-underline'
-  | 'text-with-image'
-  | 'text-title'
-  | 'text-quote'
-  | 'text-italic'
-  | 'text-in-rows'
   | 'text'
-  | 'theme-template'
+  | 'text-with-image'
+  | 'text-underline'
+  | 'text-quote'
+  | 'text-title'
+  | 'text-italic'
   | 'text-indent'
-  | 'text-grammar'
-  | 'text-in-columns'
+  | 'text-in-rows'
   | 'text-font'
-  | 'text-color'
-  | 'text-align-right'
-  | 'text-align-center'
-  | 'text-align-left'
   | 'text-font-list'
-  | 'team'
-  | 'table'
-  | 'tablet'
-  | 'target'
-  | 'table-masonry'
-  | 'tax'
-  | 'sun'
-  | 'store-online'
-  | 'text-block'
-  | 'store'
-  | 'store-managed'
-  | 'store-import'
-  | 'status'
-  | 'status-active'
-  | 'sports'
-  | 'stop-circle'
-  | 'sound'
-  | 'sort-descending'
   | 'text-bold'
+  | 'toggle-off'
+  | 'text-grammar'
+  | 'text-block'
+  | 'text-align-right'
+  | 'text-color'
+  | 'text-in-columns'
+  | 'team'
+  | 'target'
+  | 'text-align-left'
+  | 'tax'
+  | 'tablet'
+  | 'sun'
+  | 'text-align-center'
+  | 'store'
+  | 'store-online'
+  | 'store-managed'
+  | 'table'
+  | 'status'
+  | 'store-import'
+  | 'stop-circle'
+  | 'table-masonry'
+  | 'status-active'
   | 'star-filled'
+  | 'sports'
+  | 'sort-descending'
+  | 'sound'
   | 'sort-ascending'
   | 'social-ad'
   | 'social-post'
-  | 'smiley-neutral'
-  | 'smiley-happy'
-  | 'smiley-joy'
   | 'smiley-sad'
-  | 'slideshow'
+  | 'smiley-happy'
+  | 'smiley-neutral'
+  | 'smiley-joy'
+  | 'shipping-label'
   | 'shopcodes'
-  | 'shield-person'
-  | 'shield-pending'
+  | 'slideshow'
   | 'shield-none'
-  | 'share'
   | 'send'
-  | 'shield-check-mark'
   | 'settings'
-  | 'search'
+  | 'shield-check-mark'
+  | 'shield-person'
+  | 'share'
+  | 'shield-pending'
   | 'search-recent'
   | 'save'
-  | 'search-resource'
+  | 'search-list'
   | 'rotate-right'
   | 'rotate-left'
-  | 'rocket'
   | 'sandbox'
-  | 'return'
-  | 'shipping-label'
-  | 'search-list'
-  | 'reset'
-  | 'refresh'
+  | 'rocket'
   | 'reward'
+  | 'search'
+  | 'return'
+  | 'reset'
   | 'remove-background'
-  | 'receivables'
-  | 'redo'
-  | 'replay'
-  | 'receipt'
-  | 'receipt-yen'
-  | 'receipt-refund'
-  | 'receipt-paid'
-  | 'receipt-pound'
-  | 'receipt-rupee'
   | 'replace'
+  | 'replay'
   | 'referral-code'
-  | 'receipt-dollar'
-  | 'question-circle'
-  | 'question-circle-filled'
-  | 'profile-filled'
-  | 'product-reference'
-  | 'product-unavailable'
-  | 'profile'
-  | 'product-remove'
-  | 'product-add'
-  | 'product-return'
+  | 'redo'
+  | 'receivables'
+  | 'search-resource'
+  | 'receipt-yen'
+  | 'refresh'
+  | 'receipt-rupee'
+  | 'receipt-refund'
+  | 'receipt-pound'
   | 'receipt-euro'
+  | 'receipt-paid'
+  | 'receipt'
+  | 'receipt-dollar'
+  | 'question-circle-filled'
+  | 'product-return'
+  | 'profile'
+  | 'profile-filled'
+  | 'product-remove'
+  | 'product-unavailable'
+  | 'question-circle'
+  | 'product-add'
+  | 'product-list'
   | 'product-cost'
   | 'price-list'
-  | 'play'
-  | 'point-of-sale'
-  | 'plan'
-  | 'play-circle'
-  | 'pin'
-  | 'personalized-text'
-  | 'product-list'
-  | 'phone-in'
+  | 'product-reference'
   | 'print'
-  | 'person-lock'
-  | 'person-remove'
+  | 'play'
+  | 'play-circle'
+  | 'plan'
   | 'phone-out'
+  | 'pin'
+  | 'phone-in'
+  | 'point-of-sale'
+  | 'person-segment'
+  | 'personalized-text'
   | 'person-exit'
-  | 'person-add'
+  | 'person-lock'
   | 'payout-rupee'
   | 'payout-yen'
-  | 'person-segment'
-  | 'payout-dollar'
   | 'payout-pound'
-  | 'payout-euro'
   | 'payout'
-  | 'payment-capture'
+  | 'payout-dollar'
+  | 'payout-euro'
+  | 'person-remove'
   | 'pause-circle'
+  | 'payment-capture'
   | 'paper-check'
-  | 'paint-brush-flat'
-  | 'paint-brush-round'
+  | 'person-add'
   | 'passkey'
+  | 'paint-brush-flat'
+  | 'page-up'
   | 'pagination-start'
   | 'pagination-end'
-  | 'page-up'
   | 'page-remove'
   | 'page-reference'
-  | 'page-down'
-  | 'page-heart'
   | 'page-clock'
+  | 'page-down'
   | 'page-add'
-  | 'package'
+  | 'paint-brush-round'
+  | 'page-attachment'
   | 'package-returned'
   | 'package-fulfilled'
-  | 'page-attachment'
   | 'outdent'
-  | 'organization'
-  | 'package-on-hold'
-  | 'orders-status'
   | 'outgoing'
+  | 'orders-status'
+  | 'package-on-hold'
+  | 'package'
+  | 'organization'
+  | 'page-heart'
   | 'order-repeat'
-  | 'notification'
-  | 'order-first'
-  | 'note-add'
   | 'order-draft'
   | 'note'
-  | 'nature'
-  | 'moon'
+  | 'notification'
+  | 'order-first'
   | 'money'
   | 'money-none'
+  | 'note-add'
+  | 'nature'
   | 'minimize'
-  | 'metafields'
-  | 'metaobject-list'
-  | 'menu'
-  | 'menu-vertical'
-  | 'mention'
-  | 'megaphone'
+  | 'moon'
   | 'metaobject'
+  | 'metafields'
   | 'menu-horizontal'
-  | 'media-receiver'
-  | 'measurement-volume'
-  | 'measurement-size'
-  | 'markets'
-  | 'maximize'
+  | 'metaobject-list'
   | 'metaobject-reference'
-  | 'markets-euro'
-  | 'map'
-  | 'markets-rupee'
+  | 'menu-vertical'
   | 'measurement-weight'
-  | 'lock'
+  | 'megaphone'
+  | 'mention'
+  | 'measurement-size'
+  | 'measurement-volume'
+  | 'maximize'
+  | 'markets'
   | 'markets-yen'
+  | 'menu'
+  | 'markets-euro'
+  | 'markets-rupee'
+  | 'lock'
   | 'location-none'
-  | 'list-numbered'
   | 'live'
+  | 'map'
+  | 'list-numbered'
   | 'list-bulleted'
+  | 'layout-sidebar-right'
   | 'layout-sidebar-left'
   | 'link'
   | 'layout-section'
   | 'layout-rows-2'
-  | 'layout-sidebar-right'
   | 'layout-popup'
+  | 'layout-footer'
   | 'layout-logo-block'
   | 'layout-header'
-  | 'layout-footer'
-  | 'layout-columns-3'
-  | 'layout-columns-2'
-  | 'layout-buy-button-vertical'
-  | 'layout-column-1'
+  | 'media-receiver'
   | 'layout-buy-button'
-  | 'layout-buy-button-horizontal'
-  | 'language-translate'
+  | 'layout-columns-3'
+  | 'layout-column-1'
+  | 'layout-buy-button-vertical'
   | 'layout-block'
+  | 'language-translate'
   | 'label-printer'
+  | 'layout-buy-button-horizontal'
   | 'keyboard'
-  | 'keyboard-filled'
-  | 'key'
   | 'inventory'
-  | 'inventory-updated'
-  | 'keyboard-hide'
   | 'iq'
+  | 'keyboard-hide'
+  | 'inventory-updated'
+  | 'layout-columns-2'
+  | 'key'
   | 'incoming'
   | 'import'
   | 'images'
-  | 'image-none'
   | 'image'
   | 'image-with-text-overlay'
-  | 'identity-card'
-  | 'image-explore'
+  | 'image-none'
   | 'image-magic'
-  | 'image-alt'
   | 'image-add'
-  | 'home'
   | 'icons'
-  | 'hide-filled'
-  | 'grid'
+  | 'image-alt'
+  | 'identity-card'
   | 'incentive'
-  | 'globe-lines'
-  | 'globe-asia'
+  | 'keyboard-filled'
+  | 'image-explore'
+  | 'home'
+  | 'hide-filled'
+  | 'hashtag-decimal'
   | 'heart'
-  | 'globe-europe'
   | 'hashtag'
+  | 'grid'
+  | 'globe-europe'
+  | 'globe-asia'
+  | 'globe-lines'
   | 'git-branch'
+  | 'git-repository'
   | 'gift-card'
+  | 'forms'
+  | 'games'
   | 'git-commit'
-  | 'gauge'
   | 'forklift'
   | 'foreground'
-  | 'folder-up'
-  | 'forms'
-  | 'git-repository'
-  | 'folder-remove'
-  | 'hashtag-decimal'
-  | 'games'
-  | 'folder-down'
   | 'folder'
+  | 'folder-up'
+  | 'gauge'
+  | 'folder-down'
   | 'folder-add'
-  | 'food'
   | 'flower'
+  | 'folder-remove'
   | 'flip-vertical'
+  | 'favicon'
   | 'flip-horizontal'
   | 'file'
-  | 'favicon'
-  | 'eyeglasses'
-  | 'eye-dropper'
+  | 'eye-first'
   | 'filter'
-  | 'eye-check-mark'
+  | 'eyeglasses'
+  | 'food'
   | 'flag'
-  | 'export'
+  | 'eye-check-mark'
+  | 'eye-dropper'
   | 'exchange'
   | 'exit'
-  | 'envelope'
-  | 'enter'
+  | 'export'
   | 'envelope-soft-pack'
+  | 'enter'
+  | 'envelope'
   | 'email-newsletter'
   | 'email-follow-up'
   | 'duplicate'
-  | 'domain'
-  | 'download'
-  | 'drag-handle'
   | 'drag-drop'
+  | 'download'
+  | 'domain'
   | 'domain-redirect'
-  | 'domain-landing-page'
-  | 'domain-new'
   | 'dock-side'
-  | 'discount-code'
   | 'dock-floating'
+  | 'drag-handle'
+  | 'domain-landing-page'
   | 'discount'
-  | 'eye-first'
+  | 'discount-code'
   | 'dns-settings'
-  | 'desktop'
+  | 'database'
   | 'delete'
-  | 'database-add'
   | 'database-connect'
   | 'data-table'
-  | 'data-presentation'
+  | 'database-add'
+  | 'desktop'
   | 'cursor'
-  | 'cursor-banner'
+  | 'domain-new'
+  | 'data-presentation'
   | 'cursor-option'
-  | 'crop'
-  | 'currency-convert'
   | 'credit-card'
-  | 'credit-card-reader'
+  | 'crop'
   | 'credit-card-tap-chip'
   | 'credit-card-secure'
-  | 'credit-card-reader-tap'
-  | 'credit-card-percent'
+  | 'cursor-banner'
   | 'credit-card-reader-chip'
   | 'corner-square'
-  | 'corner-round'
-  | 'credit-card-cancel'
+  | 'credit-card-reader-tap'
   | 'corner-pill'
-  | 'content'
-  | 'contract'
+  | 'credit-card-reader'
+  | 'credit-card-percent'
+  | 'currency-convert'
+  | 'credit-card-cancel'
   | 'connect'
-  | 'confetti'
   | 'compose'
+  | 'confetti'
+  | 'content'
+  | 'corner-round'
   | 'compass'
-  | 'color'
-  | 'collection-featured'
   | 'color-none'
-  | 'code'
-  | 'database'
   | 'collection-reference'
-  | 'collection-list'
-  | 'code-add'
+  | 'color'
+  | 'code'
   | 'clock-revert'
+  | 'code-add'
+  | 'contract'
+  | 'collection-list'
+  | 'collection-featured'
   | 'clipboard-checklist'
-  | 'clipboard'
-  | 'circle-dashed'
   | 'circle'
+  | 'clipboard'
   | 'clipboard-check'
+  | 'chevron-right'
   | 'chevron-right-circle'
-  | 'chevron-left-circle'
   | 'chevron-left'
+  | 'chevron-left-circle'
   | 'chevron-up-circle'
   | 'checkbox'
-  | 'chevron-down-circle'
-  | 'chat-referral'
-  | 'chevron-right'
-  | 'chat'
   | 'chat-new'
-  | 'chart-vertical'
-  | 'chart-stacked'
+  | 'circle-dashed'
+  | 'chat-referral'
   | 'chart-popular'
-  | 'chart-horizontal'
-  | 'chart-line'
-  | 'chart-histogram-second-last'
-  | 'chart-histogram-flat'
+  | 'chart-stacked'
+  | 'chart-vertical'
   | 'check-circle-filled'
+  | 'chart-histogram-second-last'
+  | 'chat'
+  | 'chart-horizontal'
   | 'chart-histogram-last'
-  | 'chart-histogram-growth'
+  | 'chevron-down-circle'
   | 'chart-histogram-full'
-  | 'chart-histogram-first-last'
+  | 'chart-histogram-growth'
   | 'chart-histogram-first'
   | 'chart-funnel'
-  | 'channels'
   | 'chart-donut'
+  | 'chart-cohort'
+  | 'chart-histogram-first-last'
   | 'categories'
-  | 'catalog-product'
-  | 'cash-rupee'
+  | 'channels'
   | 'cash-yen'
-  | 'cash-pound'
-  | 'cash-euro'
+  | 'chart-line'
+  | 'catalog-product'
   | 'cash-dollar'
+  | 'cash-rupee'
+  | 'cash-pound'
   | 'cart'
-  | 'cart-sale'
+  | 'cash-euro'
   | 'cart-up'
+  | 'cart-sale'
   | 'cart-down'
   | 'cart-discount'
-  | 'caret-down'
-  | 'camera-flip'
   | 'cart-abandoned'
   | 'caret-up'
   | 'camera'
-  | 'chart-cohort'
-  | 'calendar-time'
+  | 'camera-flip'
+  | 'chart-histogram-flat'
+  | 'caret-down'
   | 'calendar-compare'
-  | 'calculator'
   | 'button-press'
+  | 'calendar-time'
+  | 'calculator'
+  | 'bullet'
+  | 'book'
+  | 'book-open'
   | 'button'
   | 'bug'
-  | 'bolt'
-  | 'book'
-  | 'bullet'
-  | 'book-open'
-  | 'blog'
-  | 'bank'
-  | 'bill'
   | 'barcode'
-  | 'backspace'
-  | 'bolt-filled'
-  | 'automation'
-  | 'arrows-in-horizontal'
+  | 'bank'
+  | 'blog'
   | 'bag'
-  | 'arrows-out-horizontal'
-  | 'arrow-right'
-  | 'arrow-up'
-  | 'arrow-up-circle'
-  | 'arrow-left'
-  | 'arrow-down'
+  | 'automation'
+  | 'bolt-filled'
+  | 'backspace'
+  | 'bill'
+  | 'bolt'
+  | 'arrows-in-horizontal'
   | 'arrow-right-circle'
-  | 'arrow-down-circle'
-  | 'app-extension'
-  | 'alert-octagon'
+  | 'arrow-left'
+  | 'arrow-up'
+  | 'arrow-right'
+  | 'arrow-down'
   | 'arrow-left-circle'
-  | 'alert-octagon-filled'
-  | 'alert-diamond'
+  | 'app-extension'
   | 'alert-location'
+  | 'arrow-down-circle'
+  | 'arrows-out-horizontal'
   | 'airplane'
   | 'affiliate'
-  | 'adjust'
+  | 'alert-diamond'
+  | 'alert-octagon-filled'
+  | 'arrow-up-circle'
+  | 'alert-octagon'
   | '3d-environment'
+  | 'adjust'
   | 'x-circle'
   | 'x'
-  | 'view'
   | 'variant'
+  | 'view'
   | 'star'
-  | 'select'
-  | 'product'
   | 'sort'
-  | 'plus-circle'
+  | 'product'
+  | 'select'
   | 'plus'
   | 'phone'
-  | 'payment'
   | 'person'
-  | 'order-unfulfilled'
+  | 'plus-circle'
+  | 'payment'
   | 'page'
+  | 'order-unfulfilled'
   | 'order'
   | 'order-fulfilled'
+  | 'mobile'
   | 'minus'
   | 'minus-circle'
-  | 'mobile'
-  | 'merge'
   | 'microphone'
-  | 'location'
+  | 'merge'
   | 'lightbulb'
+  | 'location'
   | 'language'
-  | 'incomplete'
   | 'info'
+  | 'incomplete'
   | 'in-progress'
   | 'hide'
   | 'globe'
   | 'external'
-  | 'enabled'
   | 'email'
+  | 'enabled'
   | 'edit'
-  | 'disabled'
   | 'delivery'
-  | 'clock'
   | 'collection'
-  | 'chevron-up'
+  | 'clock'
+  | 'disabled'
   | 'chevron-down'
-  | 'check-circle'
+  | 'chevron-up'
   | 'check'
-  | 'calendar'
+  | 'check-circle'
   | 'calendar-check'
+  | 'calendar'
   | 'blank'
   | 'attachment'
-  | 'archive'
-  | 'apps'
-  | 'alert-triangle'
   | 'arrow-up-right'
-  | 'alert-bubble'
-  | 'alert-circle';
+  | 'alert-triangle'
+  | 'apps'
+  | 'archive'
+  | 'alert-circle'
+  | 'alert-bubble';
 interface VNode<P = {}> {
   type: ComponentType<P> | string;
   props: P & {
@@ -2370,18 +2664,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: Badge;
+    [tagName$h]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
+      [tagName$h]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
     }
   }
 }
 
-declare const tagName$f = 'shopify-badge';
+declare const tagName$h = 'shopify-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -2404,18 +2698,18 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: Banner;
+    [tagName$g]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: HTMLAttributes<HTMLElement> & BannerJSXProps;
+      [tagName$g]: HTMLAttributes<HTMLElement> & BannerJSXProps;
     }
   }
 }
 
-declare const tagName$e = 'shopify-banner';
+declare const tagName$g = 'shopify-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id' | 'onDismiss'> {
@@ -2461,8 +2755,8 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#24463@#queueRender': (() => void) | undefined;
-  '__#24463@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#24581@#queueRender': (() => void) | undefined;
+  '__#24581@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
@@ -2928,18 +3222,18 @@ declare class Button extends Button_base implements ButtonProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: Button;
+    [tagName$f]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
+      [tagName$f]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
     }
   }
 }
 
-declare const tagName$d = 'shopify-button';
+declare const tagName$f = 'shopify-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
@@ -2956,18 +3250,18 @@ declare class Divider extends PreactCustomElement implements DividerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: Divider;
+    [tagName$e]: Divider;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: HTMLAttributes<HTMLElement> & DividerJSXProps;
+      [tagName$e]: HTMLAttributes<HTMLElement> & DividerJSXProps;
     }
   }
 }
 
-declare const tagName$c = 'shopify-divider';
+declare const tagName$e = 'shopify-divider';
 export interface DividerJSXProps
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}
@@ -2987,18 +3281,18 @@ declare class Heading extends PreactCustomElement implements HeadingProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: Heading;
+    [tagName$d]: Heading;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
+      [tagName$d]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
     }
   }
 }
 
-declare const tagName$b = 'shopify-heading';
+declare const tagName$d = 'shopify-heading';
 export interface HeadingJSXProps
   extends Partial<HeadingProps>,
     Pick<HeadingProps$1, 'id'> {}
@@ -3012,18 +3306,18 @@ declare class Icon extends PreactCustomElement implements IconProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: Icon;
+    [tagName$c]: Icon;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
+      [tagName$c]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
     }
   }
 }
 
-declare const tagName$a = 'shopify-icon';
+declare const tagName$c = 'shopify-icon';
 export interface IconJSXProps
   extends Partial<IconProps>,
     Pick<IconProps$1, 'id'> {}
@@ -3060,18 +3354,18 @@ declare class Image extends PreactCustomElement implements ImageProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: Image;
+    [tagName$b]: Image;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: HTMLAttributes<HTMLElement> & ImageJSXProps;
+      [tagName$b]: HTMLAttributes<HTMLElement> & ImageJSXProps;
     }
   }
 }
 
-declare const tagName$9 = 'shopify-image';
+declare const tagName$b = 'shopify-image';
 export interface ImageJSXProps
   extends Partial<ImageProps>,
     Pick<ImageProps$1, 'onError' | 'onLoad' | 'id'> {}
@@ -3091,8 +3385,8 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#24463@#queueRender': (() => void) | undefined;
-  '__#24463@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#24581@#queueRender': (() => void) | undefined;
+  '__#24581@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
@@ -3552,18 +3846,18 @@ declare class Link extends Link_base implements LinkProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: Link;
+    [tagName$a]: Link;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: HTMLAttributes<HTMLElement> & LinkJSXProps;
+      [tagName$a]: HTMLAttributes<HTMLElement> & LinkJSXProps;
     }
   }
 }
 
-declare const tagName$8 = 'shopify-link';
+declare const tagName$a = 'shopify-link';
 export interface LinkJSXProps
   extends Partial<LinkProps>,
     Pick<LinkProps$1, 'onClick' | 'id' | 'lang'> {}
@@ -3590,18 +3884,18 @@ declare class Paragraph extends PreactCustomElement implements ParagraphProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$7]: Paragraph;
+    [tagName$9]: Paragraph;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
+      [tagName$9]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
     }
   }
 }
 
-declare const tagName$7 = 'shopify-paragraph';
+declare const tagName$9 = 'shopify-paragraph';
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,
     Pick<ParagraphProps$1, 'id'> {}
@@ -3622,18 +3916,18 @@ declare class Section extends PreactCustomElement implements SectionProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$6]: Section;
+    [tagName$8]: Section;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: HTMLAttributes<HTMLElement> & SectionJSXProps;
+      [tagName$8]: HTMLAttributes<HTMLElement> & SectionJSXProps;
     }
   }
 }
 
-declare const tagName$6 = 'shopify-section';
+declare const tagName$8 = 'shopify-section';
 export interface SectionJSXProps
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id'> {}
@@ -3655,18 +3949,18 @@ declare class Spinner extends PreactCustomElement implements SpinnerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$5]: Spinner;
+    [tagName$7]: Spinner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$5]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
+      [tagName$7]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
     }
   }
 }
 
-declare const tagName$5 = 'shopify-spinner';
+declare const tagName$7 = 'shopify-spinner';
 export interface SpinnerJSXProps
   extends Partial<SpinnerProps>,
     Pick<SpinnerProps$1, 'id'> {}
@@ -3780,18 +4074,18 @@ declare class Stack extends BoxElement implements StackProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$4]: Stack;
+    [tagName$6]: Stack;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$4]: HTMLAttributes<HTMLElement> & StackJSXProps;
+      [tagName$6]: HTMLAttributes<HTMLElement> & StackJSXProps;
     }
   }
 }
 
-declare const tagName$4 = 'shopify-stack';
+declare const tagName$6 = 'shopify-stack';
 export interface StackJSXProps
   extends Partial<StackProps>,
     Pick<StackProps$1, 'id'> {}
@@ -3827,21 +4121,155 @@ declare class Text extends PreactCustomElement implements TextProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$3]: Text;
+    [tagName$5]: Text;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$3]: HTMLAttributes<HTMLElement> & TextJSXProps;
+      [tagName$5]: HTMLAttributes<HTMLElement> & TextJSXProps;
     }
   }
 }
 
-declare const tagName$3 = 'shopify-text';
+declare const tagName$5 = 'shopify-text';
 export interface TextJSXProps
   extends Partial<TextProps>,
     Pick<TextProps$1, 'id'> {}
+
+declare const internals: unique symbol;
+export type PreactInputProps = Required<
+  Pick<TextFieldProps$1, 'disabled' | 'id' | 'name' | 'value'>
+>;
+declare class PreactInputElement
+  extends PreactCustomElement
+  implements PreactInputProps
+{
+  static formAssociated: boolean;
+  /** @private */
+  [internals]: ElementInternals;
+  protected getDefaultValue(): string;
+  accessor onchange: EventListener | null;
+  accessor oninput: EventListener | null;
+  accessor disabled: PreactInputProps['disabled'];
+  accessor id: PreactInputProps['id'];
+  accessor name: PreactInputProps['name'];
+  get value(): PreactInputProps['value'];
+  set value(value: PreactInputProps['value']);
+  constructor(renderImpl: RenderImpl);
+}
+
+export type PreactFieldProps<Autocomplete extends string = string> =
+  PreactInputProps &
+    Required<
+      Pick<
+        TextFieldProps$1,
+        | 'defaultValue'
+        | 'details'
+        | 'error'
+        | 'label'
+        | 'labelAccessibilityVisibility'
+        | 'placeholder'
+        | 'readOnly'
+        | 'required'
+      >
+    > & {
+      autocomplete: Autocomplete;
+    };
+declare class PreactFieldElement<Autocomplete extends string = string>
+  extends PreactInputElement
+  implements PreactFieldProps<Autocomplete>
+{
+  accessor onblur: EventListener | null;
+  accessor onfocus: EventListener | null;
+  accessor autocomplete: PreactFieldProps<Autocomplete>['autocomplete'];
+  accessor defaultValue: PreactFieldProps['defaultValue'];
+  accessor details: PreactFieldProps['details'];
+  accessor error: PreactFieldProps['error'];
+  accessor label: PreactFieldProps['label'];
+  accessor labelAccessibilityVisibility: PreactFieldProps['labelAccessibilityVisibility'];
+  accessor placeholder: PreactFieldProps['placeholder'];
+  accessor readOnly: PreactFieldProps['readOnly'];
+  accessor required: PreactFieldProps['required'];
+  protected getDefaultValue(): string;
+  formResetCallback(): void;
+  connectedCallback(): void;
+  constructor(renderImpl: RenderImpl);
+}
+
+export type TextAreaProps = PreactFieldProps<
+  Required<TextAreaProps$1>['autocomplete']
+> &
+  Required<Pick<TextAreaProps$1, 'maxLength' | 'minLength' | 'rows'>>;
+
+declare class TextArea
+  extends PreactFieldElement<TextAreaProps['autocomplete']>
+  implements TextAreaProps
+{
+  accessor maxLength: TextAreaProps['maxLength'];
+  accessor minLength: TextAreaProps['minLength'];
+  accessor rows: TextAreaProps['rows'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$4]: TextArea;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$4]: HTMLAttributes<HTMLElement> & TextAreaJSXProps;
+    }
+  }
+}
+
+declare const tagName$4 = 'shopify-text-area';
+export interface TextAreaJSXProps
+  extends Partial<TextAreaProps>,
+    Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {}
+
+export type TextFieldProps = PreactFieldProps<
+  Required<TextFieldProps$1>['autocomplete']
+> &
+  Required<
+    Pick<
+      TextFieldProps$1,
+      'accessory' | 'icon' | 'maxLength' | 'minLength' | 'prefix' | 'suffix'
+    >
+  >;
+
+declare class TextField
+  extends PreactFieldElement<TextFieldProps['autocomplete']>
+  implements TextFieldProps
+{
+  accessor accessory: TextFieldProps['accessory'];
+  accessor icon: TextFieldProps['icon'];
+  accessor maxLength: TextFieldProps['maxLength'];
+  accessor minLength: TextFieldProps['minLength'];
+  accessor prefix: TextFieldProps['prefix'];
+  accessor suffix: TextFieldProps['suffix'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$3]: TextField;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$3]: HTMLAttributes<HTMLElement> & TextFieldJSXProps;
+    }
+  }
+}
+
+declare const tagName$3 = 'shopify-text-field';
+export interface TextFieldJSXProps
+  extends Partial<Omit<TextFieldProps, 'accessory'>>,
+    Pick<TextFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
+  accessory?: ComponentChild;
+}
 
 declare const tagName$2 = 'shopify-admin-action';
 export interface AdminActionProps {
@@ -3980,5 +4408,9 @@ export {
   Stack,
   type StackJSXProps,
   Text,
+  TextArea,
+  type TextAreaJSXProps,
+  TextField,
+  type TextFieldJSXProps,
   type TextJSXProps,
 };
