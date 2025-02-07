@@ -1839,6 +1839,92 @@ interface StackProps$1 extends BaseBoxPropsWithRole, GapProps {
    */
   alignContent: AlignContentKeyword;
 }
+interface PaginationProps {
+  /**
+   * Whether to use pagination controls.
+   */
+  paginate?: boolean;
+  /**
+   * Called when the previous page button is clicked.
+   */
+  onPreviousPage?: () => void;
+  /**
+   * Called when the next page button is clicked.
+   */
+  onNextPage?: () => void;
+  /**
+   * Whether there's an additional page of data.
+   */
+  hasNextPage?: boolean;
+  /**
+   * Whether there's a previous page of data.
+   */
+  hasPreviousPage?: boolean;
+  /**
+   * Whether the table is in a loading state, such as initial page load or loading the next page in a paginated table.
+   * When true, the table could be in an inert state, which prevents user interaction.
+   */
+  loading?: boolean;
+}
+interface TableProps$1 extends GlobalProps, PaginationProps {
+  /**
+   * The content of the Table.
+   */
+  children?: ComponentChildren;
+  /**
+   * Sets the layout of the Table.
+   *
+   * - `list`: The Table is always displayed as a list.
+   * - `table`: The Table is always displayed as a table.
+   * - `auto`: The Table is displayed as a table on wide devices and as a list on narrow devices.
+   *
+   * @default 'auto'
+   */
+  variant?: 'list' | 'table' | 'auto';
+}
+interface TableBodyProps$1 extends GlobalProps {
+  /**
+   * The body of the table. May not have any semantic meaning in the Table's `list` variant.
+   */
+  children: ComponentChildren;
+}
+interface TableCellProps$1 extends GlobalProps {
+  /**
+   * The content of the table data.
+   */
+  children?: ComponentChildren;
+}
+type ListSlotType = 'primary' | 'secondary' | 'kicker' | 'inline' | 'labeled';
+interface TableHeaderProps$1 extends GlobalProps {
+  /**
+   * The heading of the column in the `table` variant, and the label of its data in `list` variant.
+   */
+  children?: ComponentChildren;
+  /**
+   * Content designation for the table's `list` variant.
+   *
+   * - `'primary'`   - The most important content. Only one column can have this designation.
+   * - `'secondary'` - The secondary content. Only one column can have this designation.
+   * - `'kicker'`    - Content that is displayed before primary and secondary content, but with less visual prominence. Only one column can have this designation.
+   * - `'inline'`    - Content that is displayed inline.
+   * - `'labeled'`   - Each column with this designation displays as a heading-content pair.
+   *
+   * @default 'labeled'
+   */
+  listSlot?: ListSlotType;
+}
+interface TableHeaderRowProps$1 extends GlobalProps {
+  /**
+   * Contents of the table heading row; children should be `TableHeading` components.
+   */
+  children?: ComponentChildren;
+}
+interface TableRowProps$1 extends GlobalProps {
+  /**
+   * The content of a TableRow, which should be `TableCell` components.
+   */
+  children?: ComponentChildren;
+}
 interface TextProps$1
   extends GlobalProps,
     AccessibilityVisibilityProps,
@@ -1947,479 +2033,479 @@ interface TextFieldProps$1
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
 type IconType$1 =
+  | 'wrench'
+  | 'work'
+  | 'watch'
   | 'wifi'
   | 'wand'
-  | 'wrench'
-  | 'watch'
-  | 'viewport-tall'
-  | 'work'
   | 'wallet'
+  | 'viewport-tall'
   | 'viewport-wide'
   | 'viewport-narrow'
+  | 'upload'
   | 'viewport-short'
   | 'unlock'
-  | 'unknown-device'
-  | 'transaction'
-  | 'upload'
+  | 'undo'
   | 'transfer-internal'
+  | 'unknown-device'
   | 'transfer-out'
   | 'transfer-in'
-  | 'undo'
-  | 'transfer'
-  | 'transaction-fee-rupee'
-  | 'transaction-fee-pound'
-  | 'transaction-fee-dollar'
-  | 'transaction-fee-euro'
-  | 'toggle-on'
+  | 'transaction'
   | 'transaction-fee-yen'
+  | 'transaction-fee-euro'
+  | 'transaction-fee-rupee'
+  | 'transaction-fee-dollar'
+  | 'transaction-fee-pound'
+  | 'toggle-off'
+  | 'toggle-on'
   | 'thumbs-up'
-  | 'thumbs-down'
   | 'tip-jar'
   | 'theme'
   | 'theme-template'
   | 'theme-store'
-  | 'theme-edit'
   | 'text'
+  | 'theme-edit'
   | 'text-with-image'
   | 'text-underline'
-  | 'text-quote'
   | 'text-title'
+  | 'text-quote'
+  | 'text-in-columns'
   | 'text-italic'
-  | 'text-indent'
-  | 'text-in-rows'
+  | 'text-grammar'
   | 'text-font'
+  | 'text-color'
   | 'text-font-list'
   | 'text-bold'
-  | 'toggle-off'
-  | 'text-grammar'
   | 'text-block'
-  | 'text-align-right'
-  | 'text-color'
-  | 'text-in-columns'
-  | 'team'
-  | 'target'
   | 'text-align-left'
-  | 'tax'
-  | 'tablet'
-  | 'sun'
   | 'text-align-center'
-  | 'store'
-  | 'store-online'
-  | 'store-managed'
+  | 'team'
+  | 'tax'
+  | 'target'
   | 'table'
-  | 'status'
-  | 'store-import'
-  | 'stop-circle'
+  | 'tablet'
+  | 'transfer'
+  | 'sun'
+  | 'store'
   | 'table-masonry'
+  | 'store-managed'
+  | 'store-online'
+  | 'stop-circle'
+  | 'store-import'
   | 'status-active'
   | 'star-filled'
   | 'sports'
-  | 'sort-descending'
   | 'sound'
-  | 'sort-ascending'
-  | 'social-ad'
+  | 'text-indent'
+  | 'status'
+  | 'sort-descending'
+  | 'text-align-right'
   | 'social-post'
-  | 'smiley-sad'
-  | 'smiley-happy'
+  | 'social-ad'
+  | 'sort-ascending'
   | 'smiley-neutral'
-  | 'smiley-joy'
-  | 'shipping-label'
+  | 'smiley-sad'
   | 'shopcodes'
-  | 'slideshow'
-  | 'shield-none'
-  | 'send'
-  | 'settings'
-  | 'shield-check-mark'
+  | 'smiley-happy'
+  | 'shipping-label'
   | 'shield-person'
+  | 'smiley-joy'
+  | 'shield-none'
+  | 'shield-check-mark'
+  | 'settings'
+  | 'text-in-rows'
+  | 'search-resource'
   | 'share'
-  | 'shield-pending'
+  | 'search'
+  | 'search-list'
   | 'search-recent'
   | 'save'
-  | 'search-list'
-  | 'rotate-right'
-  | 'rotate-left'
   | 'sandbox'
-  | 'rocket'
+  | 'rotate-left'
+  | 'rotate-right'
   | 'reward'
-  | 'search'
   | 'return'
   | 'reset'
-  | 'remove-background'
-  | 'replace'
+  | 'slideshow'
   | 'replay'
-  | 'referral-code'
-  | 'redo'
-  | 'receivables'
-  | 'search-resource'
-  | 'receipt-yen'
+  | 'replace'
   | 'refresh'
-  | 'receipt-rupee'
+  | 'referral-code'
+  | 'receivables'
+  | 'redo'
+  | 'remove-background'
+  | 'receipt-yen'
   | 'receipt-refund'
+  | 'receipt-rupee'
   | 'receipt-pound'
-  | 'receipt-euro'
-  | 'receipt-paid'
-  | 'receipt'
   | 'receipt-dollar'
+  | 'receipt-paid'
+  | 'receipt-euro'
+  | 'shield-pending'
+  | 'profile'
+  | 'receipt'
   | 'question-circle-filled'
   | 'product-return'
-  | 'profile'
-  | 'profile-filled'
-  | 'product-remove'
   | 'product-unavailable'
-  | 'question-circle'
-  | 'product-add'
   | 'product-list'
-  | 'product-cost'
-  | 'price-list'
   | 'product-reference'
+  | 'product-remove'
+  | 'product-cost'
+  | 'thumbs-down'
+  | 'product-add'
   | 'print'
+  | 'point-of-sale'
+  | 'question-circle'
   | 'play'
+  | 'price-list'
   | 'play-circle'
   | 'plan'
+  | 'send'
   | 'phone-out'
-  | 'pin'
-  | 'phone-in'
-  | 'point-of-sale'
-  | 'person-segment'
   | 'personalized-text'
-  | 'person-exit'
+  | 'person-segment'
+  | 'phone-in'
   | 'person-lock'
-  | 'payout-rupee'
-  | 'payout-yen'
-  | 'payout-pound'
-  | 'payout'
-  | 'payout-dollar'
-  | 'payout-euro'
   | 'person-remove'
-  | 'pause-circle'
+  | 'payout-rupee'
+  | 'person-exit'
+  | 'payout-pound'
+  | 'payout-euro'
+  | 'payout-dollar'
+  | 'payout'
+  | 'profile-filled'
+  | 'rocket'
   | 'payment-capture'
-  | 'paper-check'
-  | 'person-add'
   | 'passkey'
+  | 'person-add'
+  | 'pause-circle'
+  | 'pagination-start'
   | 'paint-brush-flat'
   | 'page-up'
-  | 'pagination-start'
-  | 'pagination-end'
   | 'page-remove'
-  | 'page-reference'
-  | 'page-clock'
+  | 'pin'
+  | 'pagination-end'
+  | 'paper-check'
+  | 'paint-brush-round'
   | 'page-down'
   | 'page-add'
-  | 'paint-brush-round'
-  | 'page-attachment'
+  | 'page-heart'
+  | 'package'
+  | 'page-clock'
   | 'package-returned'
   | 'package-fulfilled'
-  | 'outdent'
-  | 'outgoing'
+  | 'organization'
   | 'orders-status'
   | 'package-on-hold'
-  | 'package'
-  | 'organization'
-  | 'page-heart'
+  | 'outdent'
+  | 'outgoing'
   | 'order-repeat'
   | 'order-draft'
-  | 'note'
-  | 'notification'
   | 'order-first'
-  | 'money'
-  | 'money-none'
+  | 'note'
   | 'note-add'
+  | 'notification'
   | 'nature'
-  | 'minimize'
   | 'moon'
-  | 'metaobject'
-  | 'metafields'
-  | 'menu-horizontal'
-  | 'metaobject-list'
+  | 'money'
+  | 'minimize'
+  | 'money-none'
+  | 'page-reference'
   | 'metaobject-reference'
+  | 'metaobject-list'
+  | 'menu'
+  | 'metafields'
   | 'menu-vertical'
-  | 'measurement-weight'
-  | 'megaphone'
   | 'mention'
+  | 'megaphone'
+  | 'media-receiver'
+  | 'measurement-weight'
+  | 'metaobject'
   | 'measurement-size'
-  | 'measurement-volume'
   | 'maximize'
   | 'markets'
-  | 'markets-yen'
-  | 'menu'
-  | 'markets-euro'
+  | 'map'
   | 'markets-rupee'
   | 'lock'
-  | 'location-none'
+  | 'markets-euro'
+  | 'menu-horizontal'
   | 'live'
-  | 'map'
   | 'list-numbered'
   | 'list-bulleted'
   | 'layout-sidebar-right'
+  | 'markets-yen'
+  | 'layout-section'
   | 'layout-sidebar-left'
   | 'link'
-  | 'layout-section'
-  | 'layout-rows-2'
   | 'layout-popup'
-  | 'layout-footer'
+  | 'layout-rows-2'
+  | 'payout-yen'
   | 'layout-logo-block'
   | 'layout-header'
-  | 'media-receiver'
-  | 'layout-buy-button'
-  | 'layout-columns-3'
-  | 'layout-column-1'
-  | 'layout-buy-button-vertical'
-  | 'layout-block'
-  | 'language-translate'
-  | 'label-printer'
-  | 'layout-buy-button-horizontal'
-  | 'keyboard'
-  | 'inventory'
-  | 'iq'
-  | 'keyboard-hide'
-  | 'inventory-updated'
+  | 'layout-footer'
+  | 'location-none'
+  | 'measurement-volume'
   | 'layout-columns-2'
-  | 'key'
+  | 'layout-buy-button-vertical'
+  | 'layout-buy-button-horizontal'
+  | 'layout-column-1'
+  | 'language-translate'
+  | 'layout-block'
+  | 'label-printer'
+  | 'keyboard-hide'
+  | 'keyboard'
+  | 'keyboard-filled'
+  | 'iq'
+  | 'layout-buy-button'
+  | 'inventory'
+  | 'inventory-updated'
+  | 'page-attachment'
   | 'incoming'
+  | 'incentive'
+  | 'layout-columns-3'
   | 'import'
+  | 'key'
   | 'images'
   | 'image'
-  | 'image-with-text-overlay'
-  | 'image-none'
   | 'image-magic'
-  | 'image-add'
-  | 'icons'
+  | 'image-with-text-overlay'
+  | 'image-explore'
   | 'image-alt'
   | 'identity-card'
-  | 'incentive'
-  | 'keyboard-filled'
-  | 'image-explore'
+  | 'heart'
+  | 'icons'
   | 'home'
+  | 'image-none'
   | 'hide-filled'
   | 'hashtag-decimal'
-  | 'heart'
-  | 'hashtag'
   | 'grid'
-  | 'globe-europe'
-  | 'globe-asia'
+  | 'hashtag'
   | 'globe-lines'
+  | 'globe-europe'
+  | 'image-add'
+  | 'globe-asia'
+  | 'git-commit'
+  | 'gift-card'
   | 'git-branch'
   | 'git-repository'
-  | 'gift-card'
-  | 'forms'
-  | 'games'
-  | 'git-commit'
-  | 'forklift'
-  | 'foreground'
-  | 'folder'
-  | 'folder-up'
   | 'gauge'
+  | 'games'
+  | 'forms'
+  | 'folder'
+  | 'foreground'
+  | 'food'
+  | 'folder-remove'
+  | 'flower'
   | 'folder-down'
   | 'folder-add'
-  | 'flower'
-  | 'folder-remove'
+  | 'forklift'
   | 'flip-vertical'
-  | 'favicon'
   | 'flip-horizontal'
-  | 'file'
-  | 'eye-first'
   | 'filter'
-  | 'eyeglasses'
-  | 'food'
-  | 'flag'
-  | 'eye-check-mark'
+  | 'file'
+  | 'favicon'
+  | 'folder-up'
+  | 'eye-first'
   | 'eye-dropper'
-  | 'exchange'
+  | 'eyeglasses'
+  | 'eye-check-mark'
+  | 'flag'
   | 'exit'
   | 'export'
+  | 'exchange'
+  | 'envelope'
   | 'envelope-soft-pack'
   | 'enter'
-  | 'envelope'
   | 'email-newsletter'
   | 'email-follow-up'
   | 'duplicate'
-  | 'drag-drop'
+  | 'drag-handle'
   | 'download'
   | 'domain'
+  | 'domain-new'
   | 'domain-redirect'
-  | 'dock-side'
-  | 'dock-floating'
-  | 'drag-handle'
   | 'domain-landing-page'
-  | 'discount'
-  | 'discount-code'
+  | 'dock-floating'
+  | 'dock-side'
+  | 'drag-drop'
   | 'dns-settings'
-  | 'database'
+  | 'discount-code'
+  | 'discount'
+  | 'desktop'
   | 'delete'
   | 'database-connect'
-  | 'data-table'
   | 'database-add'
-  | 'desktop'
-  | 'cursor'
-  | 'domain-new'
-  | 'data-presentation'
+  | 'database'
   | 'cursor-option'
-  | 'credit-card'
-  | 'crop'
-  | 'credit-card-tap-chip'
-  | 'credit-card-secure'
+  | 'data-table'
   | 'cursor-banner'
-  | 'credit-card-reader-chip'
-  | 'corner-square'
-  | 'credit-card-reader-tap'
-  | 'corner-pill'
-  | 'credit-card-reader'
-  | 'credit-card-percent'
+  | 'crop'
+  | 'credit-card-secure'
   | 'currency-convert'
+  | 'credit-card-reader'
+  | 'cursor'
+  | 'credit-card'
+  | 'credit-card-tap-chip'
+  | 'credit-card-reader-tap'
+  | 'credit-card-reader-chip'
+  | 'data-presentation'
   | 'credit-card-cancel'
-  | 'connect'
-  | 'compose'
-  | 'confetti'
-  | 'content'
+  | 'corner-pill'
   | 'corner-round'
-  | 'compass'
-  | 'color-none'
-  | 'collection-reference'
-  | 'color'
-  | 'code'
-  | 'clock-revert'
-  | 'code-add'
+  | 'connect'
   | 'contract'
+  | 'content'
+  | 'confetti'
+  | 'compass'
+  | 'color'
+  | 'compose'
+  | 'collection-reference'
   | 'collection-list'
+  | 'color-none'
+  | 'code'
+  | 'code-add'
   | 'collection-featured'
-  | 'clipboard-checklist'
-  | 'circle'
+  | 'clock-revert'
   | 'clipboard'
   | 'clipboard-check'
+  | 'clipboard-checklist'
+  | 'circle'
+  | 'chevron-up-circle'
+  | 'circle-dashed'
   | 'chevron-right'
   | 'chevron-right-circle'
-  | 'chevron-left'
   | 'chevron-left-circle'
-  | 'chevron-up-circle'
-  | 'checkbox'
-  | 'chat-new'
-  | 'circle-dashed'
-  | 'chat-referral'
-  | 'chart-popular'
-  | 'chart-stacked'
-  | 'chart-vertical'
-  | 'check-circle-filled'
-  | 'chart-histogram-second-last'
-  | 'chat'
-  | 'chart-horizontal'
-  | 'chart-histogram-last'
+  | 'chevron-left'
   | 'chevron-down-circle'
-  | 'chart-histogram-full'
+  | 'checkbox'
+  | 'check-circle-filled'
+  | 'chat-referral'
+  | 'chat-new'
+  | 'chat'
+  | 'chart-vertical'
+  | 'chart-stacked'
+  | 'chart-popular'
+  | 'chart-horizontal'
+  | 'chart-line'
+  | 'chart-histogram-second-last'
+  | 'credit-card-percent'
+  | 'corner-square'
+  | 'chart-histogram-last'
   | 'chart-histogram-growth'
-  | 'chart-histogram-first'
+  | 'chart-histogram-flat'
   | 'chart-funnel'
-  | 'chart-donut'
-  | 'chart-cohort'
   | 'chart-histogram-first-last'
+  | 'chart-donut'
+  | 'chart-histogram-first'
   | 'categories'
   | 'channels'
-  | 'cash-yen'
-  | 'chart-line'
-  | 'catalog-product'
-  | 'cash-dollar'
-  | 'cash-rupee'
+  | 'chart-cohort'
   | 'cash-pound'
+  | 'chart-histogram-full'
+  | 'cash-yen'
   | 'cart'
   | 'cash-euro'
-  | 'cart-up'
   | 'cart-sale'
-  | 'cart-down'
-  | 'cart-discount'
   | 'cart-abandoned'
+  | 'cart-up'
+  | 'cash-rupee'
+  | 'cart-down'
+  | 'cash-dollar'
+  | 'cart-discount'
+  | 'caret-down'
   | 'caret-up'
   | 'camera'
-  | 'camera-flip'
-  | 'chart-histogram-flat'
-  | 'caret-down'
-  | 'calendar-compare'
-  | 'button-press'
-  | 'calendar-time'
   | 'calculator'
+  | 'camera-flip'
+  | 'calendar-time'
+  | 'button'
   | 'bullet'
+  | 'button-press'
   | 'book'
   | 'book-open'
-  | 'button'
-  | 'bug'
-  | 'barcode'
-  | 'bank'
   | 'blog'
-  | 'bag'
-  | 'automation'
-  | 'bolt-filled'
-  | 'backspace'
   | 'bill'
-  | 'bolt'
+  | 'bolt-filled'
+  | 'barcode'
+  | 'bug'
+  | 'bag'
+  | 'calendar-compare'
+  | 'bank'
+  | 'automation'
+  | 'backspace'
   | 'arrows-in-horizontal'
+  | 'bolt'
+  | 'arrow-right'
   | 'arrow-right-circle'
   | 'arrow-left'
-  | 'arrow-up'
-  | 'arrow-right'
-  | 'arrow-down'
   | 'arrow-left-circle'
-  | 'app-extension'
-  | 'alert-location'
+  | 'arrow-down'
   | 'arrow-down-circle'
-  | 'arrows-out-horizontal'
-  | 'airplane'
+  | 'arrow-up'
+  | 'app-extension'
+  | 'alert-octagon'
+  | 'arrow-up-circle'
+  | 'alert-octagon-filled'
+  | 'alert-location'
   | 'affiliate'
   | 'alert-diamond'
-  | 'alert-octagon-filled'
-  | 'arrow-up-circle'
-  | 'alert-octagon'
-  | '3d-environment'
   | 'adjust'
-  | 'x-circle'
+  | 'arrows-out-horizontal'
+  | 'catalog-product'
+  | '3d-environment'
+  | 'airplane'
   | 'x'
+  | 'x-circle'
   | 'variant'
-  | 'view'
   | 'star'
   | 'sort'
-  | 'product'
   | 'select'
   | 'plus'
+  | 'plus-circle'
   | 'phone'
   | 'person'
-  | 'plus-circle'
   | 'payment'
   | 'page'
-  | 'order-unfulfilled'
   | 'order'
-  | 'order-fulfilled'
-  | 'mobile'
-  | 'minus'
+  | 'order-unfulfilled'
   | 'minus-circle'
-  | 'microphone'
+  | 'minus'
+  | 'mobile'
+  | 'view'
   | 'merge'
-  | 'lightbulb'
+  | 'microphone'
+  | 'order-fulfilled'
   | 'location'
   | 'language'
-  | 'info'
+  | 'product'
   | 'incomplete'
   | 'in-progress'
-  | 'hide'
+  | 'lightbulb'
   | 'globe'
-  | 'external'
+  | 'info'
+  | 'hide'
+  | 'edit'
   | 'email'
   | 'enabled'
-  | 'edit'
-  | 'delivery'
-  | 'collection'
-  | 'clock'
+  | 'external'
   | 'disabled'
-  | 'chevron-down'
+  | 'collection'
+  | 'delivery'
+  | 'clock'
   | 'chevron-up'
-  | 'check'
+  | 'chevron-down'
   | 'check-circle'
   | 'calendar-check'
-  | 'calendar'
   | 'blank'
+  | 'check'
   | 'attachment'
   | 'arrow-up-right'
-  | 'alert-triangle'
   | 'apps'
-  | 'archive'
+  | 'calendar'
+  | 'alert-triangle'
   | 'alert-circle'
-  | 'alert-bubble';
+  | 'alert-bubble'
+  | 'archive';
 interface VNode<P = {}> {
   type: ComponentType<P> | string;
   props: P & {
@@ -2664,18 +2750,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$h]: Badge;
+    [tagName$n]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
+      [tagName$n]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
     }
   }
 }
 
-declare const tagName$h = 'shopify-badge';
+declare const tagName$n = 'shopify-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -2698,18 +2784,18 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$g]: Banner;
+    [tagName$m]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: HTMLAttributes<HTMLElement> & BannerJSXProps;
+      [tagName$m]: HTMLAttributes<HTMLElement> & BannerJSXProps;
     }
   }
 }
 
-declare const tagName$g = 'shopify-banner';
+declare const tagName$m = 'shopify-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id' | 'onDismiss'> {
@@ -3222,18 +3308,18 @@ declare class Button extends Button_base implements ButtonProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: Button;
+    [tagName$l]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
+      [tagName$l]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
     }
   }
 }
 
-declare const tagName$f = 'shopify-button';
+declare const tagName$l = 'shopify-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
@@ -3250,18 +3336,18 @@ declare class Divider extends PreactCustomElement implements DividerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: Divider;
+    [tagName$k]: Divider;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: HTMLAttributes<HTMLElement> & DividerJSXProps;
+      [tagName$k]: HTMLAttributes<HTMLElement> & DividerJSXProps;
     }
   }
 }
 
-declare const tagName$e = 'shopify-divider';
+declare const tagName$k = 'shopify-divider';
 export interface DividerJSXProps
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}
@@ -3281,18 +3367,18 @@ declare class Heading extends PreactCustomElement implements HeadingProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: Heading;
+    [tagName$j]: Heading;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
+      [tagName$j]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
     }
   }
 }
 
-declare const tagName$d = 'shopify-heading';
+declare const tagName$j = 'shopify-heading';
 export interface HeadingJSXProps
   extends Partial<HeadingProps>,
     Pick<HeadingProps$1, 'id'> {}
@@ -3306,18 +3392,18 @@ declare class Icon extends PreactCustomElement implements IconProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: Icon;
+    [tagName$i]: Icon;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
+      [tagName$i]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
     }
   }
 }
 
-declare const tagName$c = 'shopify-icon';
+declare const tagName$i = 'shopify-icon';
 export interface IconJSXProps
   extends Partial<IconProps>,
     Pick<IconProps$1, 'id'> {}
@@ -3354,18 +3440,18 @@ declare class Image extends PreactCustomElement implements ImageProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: Image;
+    [tagName$h]: Image;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: HTMLAttributes<HTMLElement> & ImageJSXProps;
+      [tagName$h]: HTMLAttributes<HTMLElement> & ImageJSXProps;
     }
   }
 }
 
-declare const tagName$b = 'shopify-image';
+declare const tagName$h = 'shopify-image';
 export interface ImageJSXProps
   extends Partial<ImageProps>,
     Pick<ImageProps$1, 'onError' | 'onLoad' | 'id'> {}
@@ -3846,18 +3932,18 @@ declare class Link extends Link_base implements LinkProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: Link;
+    [tagName$g]: Link;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: HTMLAttributes<HTMLElement> & LinkJSXProps;
+      [tagName$g]: HTMLAttributes<HTMLElement> & LinkJSXProps;
     }
   }
 }
 
-declare const tagName$a = 'shopify-link';
+declare const tagName$g = 'shopify-link';
 export interface LinkJSXProps
   extends Partial<LinkProps>,
     Pick<LinkProps$1, 'onClick' | 'id' | 'lang'> {}
@@ -3884,18 +3970,18 @@ declare class Paragraph extends PreactCustomElement implements ParagraphProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: Paragraph;
+    [tagName$f]: Paragraph;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
+      [tagName$f]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
     }
   }
 }
 
-declare const tagName$9 = 'shopify-paragraph';
+declare const tagName$f = 'shopify-paragraph';
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,
     Pick<ParagraphProps$1, 'id'> {}
@@ -3916,18 +4002,18 @@ declare class Section extends PreactCustomElement implements SectionProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: Section;
+    [tagName$e]: Section;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: HTMLAttributes<HTMLElement> & SectionJSXProps;
+      [tagName$e]: HTMLAttributes<HTMLElement> & SectionJSXProps;
     }
   }
 }
 
-declare const tagName$8 = 'shopify-section';
+declare const tagName$e = 'shopify-section';
 export interface SectionJSXProps
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id'> {}
@@ -3949,18 +4035,18 @@ declare class Spinner extends PreactCustomElement implements SpinnerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$7]: Spinner;
+    [tagName$d]: Spinner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
+      [tagName$d]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
     }
   }
 }
 
-declare const tagName$7 = 'shopify-spinner';
+declare const tagName$d = 'shopify-spinner';
 export interface SpinnerJSXProps
   extends Partial<SpinnerProps>,
     Pick<SpinnerProps$1, 'id'> {}
@@ -4074,21 +4160,209 @@ declare class Stack extends BoxElement implements StackProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$6]: Stack;
+    [tagName$c]: Stack;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: HTMLAttributes<HTMLElement> & StackJSXProps;
+      [tagName$c]: HTMLAttributes<HTMLElement> & StackJSXProps;
     }
   }
 }
 
-declare const tagName$6 = 'shopify-stack';
+declare const tagName$c = 'shopify-stack';
 export interface StackJSXProps
   extends Partial<StackProps>,
     Pick<StackProps$1, 'id'> {}
+
+export interface TableProps
+  extends Required<
+    Pick<
+      TableProps$1,
+      'loading' | 'paginate' | 'hasPreviousPage' | 'hasNextPage'
+    >
+  > {
+  variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
+}
+
+export interface TableHeaderProps {
+  listSlot: Extract<
+    TableHeaderProps$1['listSlot'],
+    'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
+  >;
+}
+
+declare class AddedContext<T> extends EventTarget {
+  constructor(defaultValue: T);
+  get value(): T;
+  set value(value: T);
+}
+
+declare const actualTableVariantSymbol: unique symbol;
+declare const tableHeadersSharedDataSymbol: unique symbol;
+export type ActualTableVariant = 'table' | 'list';
+
+declare class Table extends PreactCustomElement implements TableProps {
+  accessor variant: TableProps['variant'];
+  accessor loading: TableProps['loading'];
+  accessor paginate: TableProps['paginate'];
+  accessor hasPreviousPage: TableProps['hasPreviousPage'];
+  accessor hasNextPage: TableProps['hasNextPage'];
+  accessor onpreviouspage: EventListener | null;
+  accessor onnextpage: EventListener | null;
+  /**
+   * The actual table variant, which is either 'table' or 'list'.
+   */
+  [actualTableVariantSymbol]: AddedContext<ActualTableVariant>;
+  [tableHeadersSharedDataSymbol]: AddedContext<
+    {
+      listSlot: TableHeaderProps['listSlot'];
+      textContent: string;
+    }[]
+  >;
+
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$b]: Table;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$b]: HTMLAttributes<HTMLElement> & TableJSXProps;
+    }
+  }
+}
+
+declare const tagName$b = 'shopify-table';
+export interface TableJSXProps
+  extends Partial<TableProps>,
+    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {}
+
+export interface TableBodyProps extends TableBodyProps$1 {}
+
+declare class TableBody extends PreactCustomElement implements TableBodyProps {
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$a]: TableBody;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$a]: HTMLAttributes<HTMLElement> & TableBodyJSXProps;
+    }
+  }
+}
+
+declare const tagName$a = 'shopify-table-body';
+export interface TableBodyJSXProps
+  extends Partial<TableBodyProps>,
+    Pick<TableBodyProps$1, 'id'> {}
+
+export interface TableCellProps extends TableCellProps$1 {}
+
+declare class TableCell extends PreactCustomElement implements TableCellProps {
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$9]: TableCell;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$9]: HTMLAttributes<HTMLElement> & TableCellJSXProps;
+    }
+  }
+}
+
+declare const tagName$9 = 'shopify-table-cell';
+export interface TableCellJSXProps
+  extends Partial<TableCellProps>,
+    Pick<TableCellProps$1, 'id'> {}
+
+declare class TableHeader
+  extends PreactCustomElement
+  implements TableHeaderProps
+{
+  accessor listSlot: TableHeaderProps['listSlot'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$8]: TableHeader;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$8]: HTMLAttributes<HTMLElement> & TableHeaderJSXProps;
+    }
+  }
+}
+
+declare const tagName$8 = 'shopify-table-header';
+export interface TableHeaderJSXProps
+  extends Partial<TableHeaderProps>,
+    Pick<TableHeaderProps$1, 'id'> {}
+
+export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
+
+declare class TableHeaderRow
+  extends PreactCustomElement
+  implements TableHeaderRowProps
+{
+  constructor();
+  connectedCallback(): void;
+  disconnectedCallback(): void;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$7]: TableHeaderRow;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$7]: HTMLAttributes<HTMLElement> & TableHeaderRowJSXProps;
+    }
+  }
+}
+
+declare const tagName$7 = 'shopify-table-header-row';
+export interface TableHeaderRowJSXProps
+  extends Partial<TableHeaderRowProps>,
+    Pick<TableHeaderRowProps$1, 'id'> {}
+
+export interface TableRowProps extends TableRowProps$1 {}
+
+declare class TableRow extends PreactCustomElement implements TableRowProps {
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$6]: TableRow;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$6]: HTMLAttributes<HTMLElement> & TableRowJSXProps;
+    }
+  }
+}
+
+declare const tagName$6 = 'shopify-table-row';
+export interface TableRowJSXProps
+  extends Partial<TableRowProps>,
+    Pick<TableRowProps$1, 'id'> {}
 
 export interface TextProps
   extends Required<
@@ -4407,6 +4681,18 @@ export {
   type SpinnerJSXProps,
   Stack,
   type StackJSXProps,
+  Table,
+  TableBody,
+  type TableBodyJSXProps,
+  TableCell,
+  type TableCellJSXProps,
+  TableHeader,
+  type TableHeaderJSXProps,
+  TableHeaderRow,
+  type TableHeaderRowJSXProps,
+  type TableJSXProps,
+  TableRow,
+  type TableRowJSXProps,
   Text,
   TextArea,
   type TextAreaJSXProps,
