@@ -2664,18 +2664,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$h]: Badge;
+    [tagName$i]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
+      [tagName$i]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
     }
   }
 }
 
-declare const tagName$h = 'shopify-badge';
+declare const tagName$i = 's-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -2698,24 +2698,131 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$g]: Banner;
+    [tagName$h]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: HTMLAttributes<HTMLElement> & BannerJSXProps;
+      [tagName$h]: HTMLAttributes<HTMLElement> & BannerJSXProps;
     }
   }
 }
 
-declare const tagName$g = 'shopify-banner';
+declare const tagName$h = 's-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id' | 'onDismiss'> {
   primaryAction?: ComponentChild;
   secondaryActions?: ComponentChild;
 }
+
+export type AlignedBox = Required<BoxProps$1>;
+export interface BoxProps {
+  accessibilityRole: AlignedBox['accessibilityRole'];
+  background: Extract<
+    AlignedBox['background'],
+    'transparent' | 'base' | 'subdued' | 'strong'
+  >;
+  blockSize: AlignedBox['blockSize'];
+  minBlockSize: AlignedBox['minBlockSize'];
+  maxBlockSize: AlignedBox['maxBlockSize'];
+  inlineSize: AlignedBox['inlineSize'];
+  minInlineSize: AlignedBox['minInlineSize'];
+  maxInlineSize: AlignedBox['maxInlineSize'];
+  padding: AlignedBox['padding'];
+  paddingBlock: AlignedBox['paddingBlock'];
+  paddingBlockStart: AlignedBox['paddingBlockStart'];
+  paddingBlockEnd: AlignedBox['paddingBlockEnd'];
+  paddingInline: AlignedBox['paddingInline'];
+  paddingInlineStart: AlignedBox['paddingInlineStart'];
+  paddingInlineEnd: AlignedBox['paddingInlineEnd'];
+  border: AlignedBox['border'] | 'none';
+  borderWidth: MaybeAllValuesShorthandProperty<
+    Extract<
+      AlignedBox['borderWidth'],
+      | 'small-100'
+      | 'small'
+      | 'base'
+      | 'large'
+      | 'large-100'
+      | 'large-200'
+      | 'none'
+      | ''
+    >
+  >;
+  borderStyle: MaybeAllValuesShorthandProperty<
+    Extract<AlignedBox['borderStyle'], 'none' | 'solid' | 'dashed' | ''>
+  >;
+  borderColor: Extract<
+    AlignedBox['borderColor'],
+    'subdued' | 'base' | 'strong' | ''
+  >;
+  borderRadius: MaybeAllValuesShorthandProperty<
+    Extract<
+      AlignedBox['borderRadius'],
+      | 'none'
+      | 'small-200'
+      | 'small-100'
+      | 'small'
+      | 'base'
+      | 'large'
+      | 'large-100'
+      | 'large-200'
+    >
+  >;
+  accessibilityLabel: AlignedBox['accessibilityLabel'];
+  accessibilityVisibility: AlignedBox['accessibilityVisibility'];
+  display: AlignedBox['display'];
+}
+
+declare class BoxElement extends PreactCustomElement implements BoxProps {
+  constructor(renderImpl: RenderImpl);
+  accessor accessibilityRole: BoxProps['accessibilityRole'];
+  accessor background: BoxProps['background'];
+  accessor blockSize: BoxProps['blockSize'];
+  accessor minBlockSize: BoxProps['minBlockSize'];
+  accessor maxBlockSize: BoxProps['maxBlockSize'];
+  accessor inlineSize: BoxProps['inlineSize'];
+  accessor minInlineSize: BoxProps['minInlineSize'];
+  accessor maxInlineSize: BoxProps['maxInlineSize'];
+  accessor padding: BoxProps['padding'];
+  accessor paddingBlock: BoxProps['paddingBlock'];
+  accessor paddingBlockStart: BoxProps['paddingBlockStart'];
+  accessor paddingBlockEnd: BoxProps['paddingBlockEnd'];
+  accessor paddingInline: BoxProps['paddingInline'];
+  accessor paddingInlineStart: BoxProps['paddingInlineStart'];
+  accessor paddingInlineEnd: BoxProps['paddingInlineEnd'];
+  accessor border: BoxProps['border'];
+  accessor borderWidth: BoxProps['borderWidth'];
+  accessor borderStyle: BoxProps['borderStyle'];
+  accessor borderColor: BoxProps['borderColor'];
+  accessor borderRadius: BoxProps['borderRadius'];
+  accessor accessibilityLabel: BoxProps['accessibilityLabel'];
+  accessor accessibilityVisibility: BoxProps['accessibilityVisibility'];
+  accessor display: BoxProps['display'];
+}
+
+declare class Box extends BoxElement implements BoxProps {
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$g]: Box;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$g]: HTMLAttributes<HTMLElement> & BoxJSXProps;
+    }
+  }
+}
+
+declare const tagName$g = 's-box';
+export interface BoxJSXProps
+  extends Partial<BoxProps>,
+    Pick<BoxProps$1, 'id'> {}
 
 export type ButtonOnlyProps = Extract<
   ButtonProps$1,
@@ -2755,8 +2862,8 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#24581@#queueRender': (() => void) | undefined;
-  '__#24581@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49242@#queueRender': (() => void) | undefined;
+  '__#49242@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
@@ -3233,7 +3340,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$f = 'shopify-button';
+declare const tagName$f = 's-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
@@ -3261,7 +3368,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$e = 'shopify-divider';
+declare const tagName$e = 's-divider';
 export interface DividerJSXProps
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}
@@ -3292,7 +3399,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$d = 'shopify-heading';
+declare const tagName$d = 's-heading';
 export interface HeadingJSXProps
   extends Partial<HeadingProps>,
     Pick<HeadingProps$1, 'id'> {}
@@ -3317,7 +3424,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$c = 'shopify-icon';
+declare const tagName$c = 's-icon';
 export interface IconJSXProps
   extends Partial<IconProps>,
     Pick<IconProps$1, 'id'> {}
@@ -3365,7 +3472,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$b = 'shopify-image';
+declare const tagName$b = 's-image';
 export interface ImageJSXProps
   extends Partial<ImageProps>,
     Pick<ImageProps$1, 'onError' | 'onLoad' | 'id'> {}
@@ -3385,8 +3492,8 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#24581@#queueRender': (() => void) | undefined;
-  '__#24581@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49242@#queueRender': (() => void) | undefined;
+  '__#49242@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
@@ -3857,7 +3964,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$a = 'shopify-link';
+declare const tagName$a = 's-link';
 export interface LinkJSXProps
   extends Partial<LinkProps>,
     Pick<LinkProps$1, 'onClick' | 'id' | 'lang'> {}
@@ -3895,7 +4002,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$9 = 'shopify-paragraph';
+declare const tagName$9 = 's-paragraph';
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,
     Pick<ParagraphProps$1, 'id'> {}
@@ -3927,7 +4034,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$8 = 'shopify-section';
+declare const tagName$8 = 's-section';
 export interface SectionJSXProps
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id'> {}
@@ -3960,69 +4067,10 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$7 = 'shopify-spinner';
+declare const tagName$7 = 's-spinner';
 export interface SpinnerJSXProps
   extends Partial<SpinnerProps>,
     Pick<SpinnerProps$1, 'id'> {}
-
-export type AlignedBox = Required<BoxProps$1>;
-export interface BoxProps {
-  accessibilityRole: AlignedBox['accessibilityRole'];
-  background: Extract<
-    AlignedBox['background'],
-    'transparent' | 'base' | 'subdued' | 'strong'
-  >;
-  blockSize: AlignedBox['blockSize'];
-  minBlockSize: AlignedBox['minBlockSize'];
-  maxBlockSize: AlignedBox['maxBlockSize'];
-  inlineSize: AlignedBox['inlineSize'];
-  minInlineSize: AlignedBox['minInlineSize'];
-  maxInlineSize: AlignedBox['maxInlineSize'];
-  padding: AlignedBox['padding'];
-  paddingBlock: AlignedBox['paddingBlock'];
-  paddingBlockStart: AlignedBox['paddingBlockStart'];
-  paddingBlockEnd: AlignedBox['paddingBlockEnd'];
-  paddingInline: AlignedBox['paddingInline'];
-  paddingInlineStart: AlignedBox['paddingInlineStart'];
-  paddingInlineEnd: AlignedBox['paddingInlineEnd'];
-  border: AlignedBox['border'] | 'none';
-  borderWidth: MaybeAllValuesShorthandProperty<
-    Extract<
-      AlignedBox['borderWidth'],
-      | 'small-100'
-      | 'small'
-      | 'base'
-      | 'large'
-      | 'large-100'
-      | 'large-200'
-      | 'none'
-      | ''
-    >
-  >;
-  borderStyle: MaybeAllValuesShorthandProperty<
-    Extract<AlignedBox['borderStyle'], 'none' | 'solid' | 'dashed' | ''>
-  >;
-  borderColor: Extract<
-    AlignedBox['borderColor'],
-    'subdued' | 'base' | 'strong' | ''
-  >;
-  borderRadius: MaybeAllValuesShorthandProperty<
-    Extract<
-      AlignedBox['borderRadius'],
-      | 'none'
-      | 'small-200'
-      | 'small-100'
-      | 'small'
-      | 'base'
-      | 'large'
-      | 'large-100'
-      | 'large-200'
-    >
-  >;
-  accessibilityLabel: AlignedBox['accessibilityLabel'];
-  accessibilityVisibility: AlignedBox['accessibilityVisibility'];
-  display: AlignedBox['display'];
-}
 
 export type AlignedStackProps = Required<StackProps$1>;
 export interface StackProps extends BoxProps {
@@ -4033,33 +4081,6 @@ export interface StackProps extends BoxProps {
   rowGap: AlignedStackProps['rowGap'];
   columnGap: AlignedStackProps['columnGap'];
   direction: AlignedStackProps['direction'];
-}
-
-declare class BoxElement extends PreactCustomElement implements BoxProps {
-  constructor(renderImpl: RenderImpl);
-  accessor accessibilityRole: BoxProps['accessibilityRole'];
-  accessor background: BoxProps['background'];
-  accessor blockSize: BoxProps['blockSize'];
-  accessor minBlockSize: BoxProps['minBlockSize'];
-  accessor maxBlockSize: BoxProps['maxBlockSize'];
-  accessor inlineSize: BoxProps['inlineSize'];
-  accessor minInlineSize: BoxProps['minInlineSize'];
-  accessor maxInlineSize: BoxProps['maxInlineSize'];
-  accessor padding: BoxProps['padding'];
-  accessor paddingBlock: BoxProps['paddingBlock'];
-  accessor paddingBlockStart: BoxProps['paddingBlockStart'];
-  accessor paddingBlockEnd: BoxProps['paddingBlockEnd'];
-  accessor paddingInline: BoxProps['paddingInline'];
-  accessor paddingInlineStart: BoxProps['paddingInlineStart'];
-  accessor paddingInlineEnd: BoxProps['paddingInlineEnd'];
-  accessor border: BoxProps['border'];
-  accessor borderWidth: BoxProps['borderWidth'];
-  accessor borderStyle: BoxProps['borderStyle'];
-  accessor borderColor: BoxProps['borderColor'];
-  accessor borderRadius: BoxProps['borderRadius'];
-  accessor accessibilityLabel: BoxProps['accessibilityLabel'];
-  accessor accessibilityVisibility: BoxProps['accessibilityVisibility'];
-  accessor display: BoxProps['display'];
 }
 
 declare class Stack extends BoxElement implements StackProps {
@@ -4085,7 +4106,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$6 = 'shopify-stack';
+declare const tagName$6 = 's-stack';
 export interface StackJSXProps
   extends Partial<StackProps>,
     Pick<StackProps$1, 'id'> {}
@@ -4132,7 +4153,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$5 = 'shopify-text';
+declare const tagName$5 = 's-text';
 export interface TextJSXProps
   extends Partial<TextProps>,
     Pick<TextProps$1, 'id'> {}
@@ -4224,7 +4245,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$4 = 'shopify-text-area';
+declare const tagName$4 = 's-text-area';
 export interface TextAreaJSXProps
   extends Partial<TextAreaProps>,
     Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {}
@@ -4264,14 +4285,14 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$3 = 'shopify-text-field';
+declare const tagName$3 = 's-text-field';
 export interface TextFieldJSXProps
   extends Partial<Omit<TextFieldProps, 'accessory'>>,
     Pick<TextFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
   accessory?: ComponentChild;
 }
 
-declare const tagName$2 = 'shopify-admin-action';
+declare const tagName$2 = 's-admin-action';
 export interface AdminActionProps {
   /**
    * Sets the title of the Action container. If empty, the name of the extension will be used. Titles longer than 40 characters will be truncated.
@@ -4306,7 +4327,7 @@ export interface AdminActionJSXProps extends Partial<AdminActionProps> {
   id?: string;
 }
 
-declare const tagName$1 = 'shopify-admin-block';
+declare const tagName$1 = 's-admin-block';
 export interface AdminBlockProps {
   /**
    * The title to display at the top of the app block. If empty, the name of the extension will be used. Titles longer than 40 characters will be truncated.
@@ -4342,7 +4363,7 @@ export interface AdminBlockJSXProps extends Partial<AdminBlockProps> {
   id?: string;
 }
 
-declare const tagName = 'shopify-admin-print-action';
+declare const tagName = 's-admin-print-action';
 export interface AdminPrintActionProps {
   /**
    * Sets the src URL of the preview and the document to print.
@@ -4387,6 +4408,8 @@ export {
   type BadgeJSXProps,
   Banner,
   type BannerJSXProps,
+  Box,
+  type BoxJSXProps,
   Button,
   type ButtonJSXProps,
   Divider,
