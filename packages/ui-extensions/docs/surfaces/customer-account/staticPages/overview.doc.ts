@@ -239,7 +239,7 @@ const data: LandingTemplateSchema = {
           description:
             'Triggers a navigation to an extension using the `extension:` protocol. \
 The handle is the handle of the extension that will be navigated to in \
-the same application. Build a [full-page extension](/apps/customer-accounts/full-page-extension) to create a new page in \
+the same application. Build a [full-page extension](/docs/api/customer-account-ui-extensions/extension-targets-overview#full-page-extension-target) to create a new page in \
 customer accounts and handle the navigation.',
           codeblock: {
             title: 'extension:handle',
