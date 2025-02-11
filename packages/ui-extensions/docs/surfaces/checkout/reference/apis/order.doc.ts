@@ -9,6 +9,10 @@ import {
 
 // added temporarily to keep a note that the order status api docs have been moved to customer accounts
 // can be removed from 2025-01 on
+// An empty interface means any no-nullish value including values like strings.
+// That seems incorrect, but the lint rule was added after this interface and
+// I don't want to touch this public API.
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 interface OrderStatusApiEmpty {}
 
 const data: ReferenceEntityTemplateSchema = {
