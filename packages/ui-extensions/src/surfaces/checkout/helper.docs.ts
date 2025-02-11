@@ -4,12 +4,13 @@ const examplePath = '../../../../../docs/surfaces/checkout/reference/examples';
 
 type NonEmptyArray<T> = [T, ...T[]];
 type ExtensionExampleLanguage = 'js' | 'jsx';
-type ExtensionCodeTabConfig = {
-  [key in ExtensionExampleLanguage]: {
+type ExtensionCodeTabConfig = Record<
+  ExtensionExampleLanguage,
+  {
     title: string;
     fileExtension: 'ts' | 'tsx';
-  };
-};
+  }
+>;
 const codeExampleTabConfig: ExtensionCodeTabConfig = {
   js: {
     title: 'JavaScript',
