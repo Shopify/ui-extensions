@@ -3,7 +3,7 @@
 let buyerFirstName;
 
 // In the hosted application Javascript, listen for messages from the UI extension.
-shopify.extension.port.onMessage = async (event) => {
+shopify.extension.port.onmessage = async (event) => {
   // if the message's data has a ping action, respond with a pong
   if (event.data.action === 'ping') {
     buyerFirstName = event.data.buyer.firstName;

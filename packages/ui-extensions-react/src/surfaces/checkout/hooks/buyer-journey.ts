@@ -42,6 +42,9 @@ export function useBuyerJourneyCompleted<
  *
  * If you do, then you're expected to inform the buyer why navigation was blocked,
  * either by passing validation errors to the checkout UI or rendering the errors in your extension.
+ *
+ * `useBuyerJourneyIntercept()` should be called at the top level of the extension,
+ * not within an embedded or child component, to avoid errors should the child component get destroyed.
  */
 export function useBuyerJourneyIntercept<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
