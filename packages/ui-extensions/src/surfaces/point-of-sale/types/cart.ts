@@ -12,10 +12,14 @@ export interface Cart {
   properties: Record<string, string>;
 }
 
-export type CartUpdateInput = Omit<
-  Cart,
-  'subtotal' | 'taxTotal' | 'grandTotal'
->;
+export interface CartUpdateInput {
+  note?: string;
+  cartDiscount?: Discount;
+  cartDiscounts: Discount[];
+  customer?: Customer;
+  lineItems: LineItem[];
+  properties: Record<string, string>;
+}
 
 export interface Customer {
   id: number;
