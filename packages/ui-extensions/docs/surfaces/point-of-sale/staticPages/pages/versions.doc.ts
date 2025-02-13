@@ -50,6 +50,11 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 - Added support for the ${TargetLink.PosTransactionCompleteObserve} target.
 - Added support for cash tracking session. ${TargetLink.PosCashTrackingSessionStartObserve}, ${TargetLink.PosCashTrackingSessionCancelObserve}, ${TargetLink.PosCashTrackingSessionCompleteObserve} targets.
+- Added a new \`justifyContent\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'start'\`.
+- Added a new \`alignContents\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'start'\`. By default, \`'block'\` stacks may compress horizontally. Use \`'stretch'\` to take all of the horizontal space.
+- Added a new \`alignItems\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'stretch'\`. This may by default cause certain elements to stretch.
+- Added a new \`blockSize\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. This will allow setting a vertical size for the stack.
+- Added a new \`inlineSize\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. This will allow setting a horizontal size for the stack.
       `,
     },
     {
@@ -69,11 +74,12 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Removed the deprecated \`badge\` prop from the [List](/docs/api/pos-ui-extensions/components/list) component. Use \`badges\` instead.
 - Removed the deprecated \`TextFieldProps\` type from the [TextField](/docs/api/pos-ui-extensions/components/textfield) component.
 - Deprecated \`'vertical'\` and \`'horizontal'\` as values for the \`direction\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`'block'\` and \`'inline'\` instead.
-- Deprecated the \`flex'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Set \`blockSize\` or \`inlineSize\` to a value other than \`'auto'\` to create the desired size for your \`Stack\`.
-- Deprecated the \`flexWrap'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Content will now wrap automatically.
-- Deprecated the \`paddingHorizontal'\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`paddingInline\` and \`paddingBlock\` instead.
+- Deprecated the \`flex\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Set \`blockSize\` or \`inlineSize\` to a value other than \`'auto'\` to create the desired size for your \`Stack\`.
+- Deprecated the \`flexWrap\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Content will now wrap automatically.
+- Deprecated the \`paddingHorizontal\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`paddingInline\` and \`paddingBlock\` instead.
 - Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/components/formattedtextfield) component.
 - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+- \`Text\` now takes priority in growing over other components. To contain Text to its minimum width, wrap it in a \`Box\` component. 
 
 ### Features
 
