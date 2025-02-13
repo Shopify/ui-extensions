@@ -1,9 +1,8 @@
 import {Modal as BaseModal} from '@shopify/ui-extensions/checkout';
-import {createRemoteReactComponent} from '@remote-ui/react';
 import type {ReactPropsFromRemoteComponentType} from '@remote-ui/react';
+import {createRemoteComponent} from '@remote-dom/react';
 
+// @ts-ignore
 export type ModalProps = ReactPropsFromRemoteComponentType<typeof BaseModal>;
 
-export const Modal = createRemoteReactComponent(BaseModal, {
-  fragmentProps: ['primaryAction', 'secondaryActions'],
-});
+export const Modal = createRemoteComponent('ui-modal', BaseModal);

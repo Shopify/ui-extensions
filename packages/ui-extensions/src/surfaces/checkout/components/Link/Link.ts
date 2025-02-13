@@ -1,11 +1,10 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 import type {
   Appearance,
   OverlayActivatorProps,
   DisclosureActivatorProps,
   InteractionProps,
 } from '../shared';
+import {createRemoteElement} from '@remote-dom/core/elements';
 
 export interface LinkProps
   extends OverlayActivatorProps,
@@ -50,7 +49,9 @@ export interface LinkProps
   onPress?(): void;
 }
 
-/**
- * Link makes text interactive so customers can perform an action, such as navigating to another location.
- */
-export const Link = createRemoteComponent<'Link', LinkProps>('Link');
+export const Link = createRemoteElement<{}>({
+  properties: {to: String},
+});
+
+// @ts-ignore
+customElements.define('ui-link', Link);
