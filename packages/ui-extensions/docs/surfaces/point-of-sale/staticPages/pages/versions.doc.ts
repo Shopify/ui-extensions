@@ -50,9 +50,6 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 - Added support for the ${TargetLink.PosTransactionCompleteObserve} target.
 - Added support for cash tracking session. ${TargetLink.PosCashTrackingSessionStartObserve}, ${TargetLink.PosCashTrackingSessionCancelObserve}, ${TargetLink.PosCashTrackingSessionCompleteObserve} targets.
-- Added support for the ${TargetLink.PosPrepareReceiptInject} target.
-- Added support for adding custom lines to receipts. ${TargetLink.PosPrepareReceiptInject} target.
-- Added support for the ${TargetLink.PosCartUpdateObserve} target.
       `,
     },
     {
@@ -63,6 +60,14 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added in POS version: 9.26
 - Removed in POS version: N/A
 - Release day: 1/6/2025
+
+### Important fix in POS 9.29.0
+
+- Fixed an issue where the \`FormattedTextField\` component was rendering black input text in dark mode.
+
+### Important fix in POS 9.27.0
+
+- Fixed an issue where the \`Stack\` component was not rendering correctly. By default, \`Stack\` will now always wrap. Additionally, stacks using \`'block'\` will now compress horizontally. Use \`alignContents: 'stretch'\` to take all of the horizontal space. This will not have an impact on layout in previous POS versions.
 
 ### Breaking Changes
 
@@ -77,6 +82,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Deprecated the \`paddingHorizontal\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`paddingInline\` and \`paddingBlock\` instead.
 - Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/components/formattedtextfield) component.
 - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+- \`Text\` now takes priority in growing over other components. To contain Text to its minimum width, wrap it in a \`Box\` component. 
 
 ### Features
 
@@ -86,7 +92,11 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
   - Added \`bulkUpdateCart\` function for single-operation cart updates.
   - The \`addLineItem\` and \`addCustomSale\` functions now return a \`UUID\` for the added line item.
 - Added [Box](/docs/api/pos-ui-extensions/components/box) component.
-- Enhanced the [Stack](/docs/api/pos-ui-extensions/components/box) component. New fields include \`justifyContent\`, \`alignItems\`, and \`alignContent\`, as well as numerous new sizing and spacing options.
+- Added a new \`justifyContent\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'start'\`.
+- Added a new \`alignContents\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'start'\`. By default, \`'block'\` stacks may compress horizontally. Use \`'stretch'\` to take all of the horizontal space.
+- Added a new \`alignItems\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'stretch'\`. This may by default cause certain elements to stretch.
+- Added a new \`blockSize\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. This will allow setting a vertical size for the stack.
+- Added a new \`inlineSize\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. This will allow setting a horizontal size for the stack.
 - Added sizing and fill options to the [Image](/docs/api/pos-ui-extensions/components/image) component.
       `,
     },
@@ -101,7 +111,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 ### Features
 
-- Fixes long standing issue where \`useEffect\` teardown functions are not working in React',
+- Fixes long standing issue where \`useEffect\` teardown functions are not working in React
       `,
     },
     {
