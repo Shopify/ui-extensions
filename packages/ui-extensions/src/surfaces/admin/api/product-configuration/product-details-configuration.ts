@@ -1,6 +1,8 @@
-import type {StandardApi} from '../standard/standard';
+import type {BlockExtensionApi} from '../block/block';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
+import type {Data} from '../shared';
 
+/* @deprecated */
 interface Product {
   id: string;
   title: string;
@@ -21,6 +23,7 @@ interface Product {
   productComponents: ProductComponent[];
 }
 
+/* @deprecated */
 export interface ProductComponent {
   id: string;
   title: string;
@@ -37,9 +40,12 @@ export interface ProductComponent {
 
 export interface ProductDetailsConfigurationApi<
   ExtensionTarget extends AnyExtensionTarget,
-> extends StandardApi<ExtensionTarget> {
-  data: {
-    /* The product currently being viewed in the admin. */
+> extends BlockExtensionApi<ExtensionTarget> {
+  data: Data & {
+    /*
+      @deprecated 
+      The product currently being viewed in the admin.
+    */
     product: Product;
     app: {
       launchUrl: string;
