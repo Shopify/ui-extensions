@@ -466,7 +466,7 @@ export interface ExtensionTargets {
    */
   'admin.product-details.configuration.render': RenderExtension<
     ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>,
-    StandardComponents
+    BlockExtensionComponents
   >;
 
   /**
@@ -476,7 +476,7 @@ export interface ExtensionTargets {
    */
   'admin.product-variant-details.configuration.render': RenderExtension<
     ProductVariantDetailsConfigurationApi<'admin.product-variant-details.configuration.render'>,
-    StandardComponents
+    BlockExtensionComponents
   >;
 
   /**
