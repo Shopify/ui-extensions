@@ -1,7 +1,7 @@
-export interface RenderExtension<Api> {
-  (root: HTMLElement, api: Api):
-    | (void | (() => void))
-    | Promise<void | (() => void)>;
+export interface RenderExtension<Api, ComponentsSet extends string> {
+  api: Api;
+  components: ComponentsSet;
+  output: Promise<void | (() => void)>;
 }
 
 export interface ExtensionRegistrationFunction<ExtensionTargets> {
@@ -61,5 +61,6 @@ export function createExtensionRegistrationFunction<
 }
 
 export interface RunnableExtension<Api, Output> {
-  (api: Api): Output | Promise<Output>;
+  api: Api;
+  output: Output | Promise<Output>;
 }
