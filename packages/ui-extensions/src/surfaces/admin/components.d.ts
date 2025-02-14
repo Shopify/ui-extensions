@@ -1839,6 +1839,92 @@ interface StackProps$1 extends BaseBoxPropsWithRole, GapProps {
    */
   alignContent: AlignContentKeyword;
 }
+interface PaginationProps {
+  /**
+   * Whether to use pagination controls.
+   */
+  paginate?: boolean;
+  /**
+   * Called when the previous page button is clicked.
+   */
+  onPreviousPage?: () => void;
+  /**
+   * Called when the next page button is clicked.
+   */
+  onNextPage?: () => void;
+  /**
+   * Whether there's an additional page of data.
+   */
+  hasNextPage?: boolean;
+  /**
+   * Whether there's a previous page of data.
+   */
+  hasPreviousPage?: boolean;
+  /**
+   * Whether the table is in a loading state, such as initial page load or loading the next page in a paginated table.
+   * When true, the table could be in an inert state, which prevents user interaction.
+   */
+  loading?: boolean;
+}
+interface TableProps$1 extends GlobalProps, PaginationProps {
+  /**
+   * The content of the Table.
+   */
+  children?: ComponentChildren;
+  /**
+   * Sets the layout of the Table.
+   *
+   * - `list`: The Table is always displayed as a list.
+   * - `table`: The Table is always displayed as a table.
+   * - `auto`: The Table is displayed as a table on wide devices and as a list on narrow devices.
+   *
+   * @default 'auto'
+   */
+  variant?: 'list' | 'table' | 'auto';
+}
+interface TableBodyProps$1 extends GlobalProps {
+  /**
+   * The body of the table. May not have any semantic meaning in the Table's `list` variant.
+   */
+  children: ComponentChildren;
+}
+interface TableCellProps$1 extends GlobalProps {
+  /**
+   * The content of the table data.
+   */
+  children?: ComponentChildren;
+}
+type ListSlotType = 'primary' | 'secondary' | 'kicker' | 'inline' | 'labeled';
+interface TableHeaderProps$1 extends GlobalProps {
+  /**
+   * The heading of the column in the `table` variant, and the label of its data in `list` variant.
+   */
+  children?: ComponentChildren;
+  /**
+   * Content designation for the table's `list` variant.
+   *
+   * - `'primary'`   - The most important content. Only one column can have this designation.
+   * - `'secondary'` - The secondary content. Only one column can have this designation.
+   * - `'kicker'`    - Content that is displayed before primary and secondary content, but with less visual prominence. Only one column can have this designation.
+   * - `'inline'`    - Content that is displayed inline.
+   * - `'labeled'`   - Each column with this designation displays as a heading-content pair.
+   *
+   * @default 'labeled'
+   */
+  listSlot?: ListSlotType;
+}
+interface TableHeaderRowProps$1 extends GlobalProps {
+  /**
+   * Contents of the table heading row; children should be `TableHeading` components.
+   */
+  children?: ComponentChildren;
+}
+interface TableRowProps$1 extends GlobalProps {
+  /**
+   * The content of a TableRow, which should be `TableCell` components.
+   */
+  children?: ComponentChildren;
+}
 interface TextProps$1
   extends GlobalProps,
     AccessibilityVisibilityProps,
@@ -2664,18 +2750,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$i]: Badge;
+    [tagName$o]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$i]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
+      [tagName$o]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
     }
   }
 }
 
-declare const tagName$i = 's-badge';
+declare const tagName$o = 's-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -2698,18 +2784,18 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$h]: Banner;
+    [tagName$n]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: HTMLAttributes<HTMLElement> & BannerJSXProps;
+      [tagName$n]: HTMLAttributes<HTMLElement> & BannerJSXProps;
     }
   }
 }
 
-declare const tagName$h = 's-banner';
+declare const tagName$n = 's-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id' | 'onDismiss'> {
@@ -2741,14 +2827,7 @@ export interface BoxProps {
   borderWidth: MaybeAllValuesShorthandProperty<
     Extract<
       AlignedBox['borderWidth'],
-      | 'small-100'
-      | 'small'
-      | 'base'
-      | 'large'
-      | 'large-100'
-      | 'large-200'
-      | 'none'
-      | ''
+      'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'none' | ''
     >
   >;
   borderStyle: MaybeAllValuesShorthandProperty<
@@ -2808,18 +2887,18 @@ declare class Box extends BoxElement implements BoxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$g]: Box;
+    [tagName$m]: Box;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: HTMLAttributes<HTMLElement> & BoxJSXProps;
+      [tagName$m]: HTMLAttributes<HTMLElement> & BoxJSXProps;
     }
   }
 }
 
-declare const tagName$g = 's-box';
+declare const tagName$m = 's-box';
 export interface BoxJSXProps
   extends Partial<BoxProps>,
     Pick<BoxProps$1, 'id'> {}
@@ -2862,8 +2941,8 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49278@#queueRender': (() => void) | undefined;
-  '__#49278@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49314@#queueRender': (() => void) | undefined;
+  '__#49314@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
@@ -3329,18 +3408,18 @@ declare class Button extends Button_base implements ButtonProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: Button;
+    [tagName$l]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
+      [tagName$l]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
     }
   }
 }
 
-declare const tagName$f = 's-button';
+declare const tagName$l = 's-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
@@ -3357,18 +3436,18 @@ declare class Divider extends PreactCustomElement implements DividerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: Divider;
+    [tagName$k]: Divider;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: HTMLAttributes<HTMLElement> & DividerJSXProps;
+      [tagName$k]: HTMLAttributes<HTMLElement> & DividerJSXProps;
     }
   }
 }
 
-declare const tagName$e = 's-divider';
+declare const tagName$k = 's-divider';
 export interface DividerJSXProps
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}
@@ -3388,18 +3467,18 @@ declare class Heading extends PreactCustomElement implements HeadingProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: Heading;
+    [tagName$j]: Heading;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
+      [tagName$j]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
     }
   }
 }
 
-declare const tagName$d = 's-heading';
+declare const tagName$j = 's-heading';
 export interface HeadingJSXProps
   extends Partial<HeadingProps>,
     Pick<HeadingProps$1, 'id'> {}
@@ -3413,18 +3492,18 @@ declare class Icon extends PreactCustomElement implements IconProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: Icon;
+    [tagName$i]: Icon;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
+      [tagName$i]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
     }
   }
 }
 
-declare const tagName$c = 's-icon';
+declare const tagName$i = 's-icon';
 export interface IconJSXProps
   extends Partial<IconProps>,
     Pick<IconProps$1, 'id'> {}
@@ -3461,18 +3540,18 @@ declare class Image extends PreactCustomElement implements ImageProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: Image;
+    [tagName$h]: Image;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: HTMLAttributes<HTMLElement> & ImageJSXProps;
+      [tagName$h]: HTMLAttributes<HTMLElement> & ImageJSXProps;
     }
   }
 }
 
-declare const tagName$b = 's-image';
+declare const tagName$h = 's-image';
 export interface ImageJSXProps
   extends Partial<ImageProps>,
     Pick<ImageProps$1, 'onError' | 'onLoad' | 'id'> {}
@@ -3492,8 +3571,8 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49278@#queueRender': (() => void) | undefined;
-  '__#49278@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49314@#queueRender': (() => void) | undefined;
+  '__#49314@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
@@ -3953,18 +4032,18 @@ declare class Link extends Link_base implements LinkProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: Link;
+    [tagName$g]: Link;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: HTMLAttributes<HTMLElement> & LinkJSXProps;
+      [tagName$g]: HTMLAttributes<HTMLElement> & LinkJSXProps;
     }
   }
 }
 
-declare const tagName$a = 's-link';
+declare const tagName$g = 's-link';
 export interface LinkJSXProps
   extends Partial<LinkProps>,
     Pick<LinkProps$1, 'onClick' | 'id' | 'lang'> {}
@@ -3991,18 +4070,18 @@ declare class Paragraph extends PreactCustomElement implements ParagraphProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: Paragraph;
+    [tagName$f]: Paragraph;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
+      [tagName$f]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
     }
   }
 }
 
-declare const tagName$9 = 's-paragraph';
+declare const tagName$f = 's-paragraph';
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,
     Pick<ParagraphProps$1, 'id'> {}
@@ -4023,18 +4102,18 @@ declare class Section extends PreactCustomElement implements SectionProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: Section;
+    [tagName$e]: Section;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: HTMLAttributes<HTMLElement> & SectionJSXProps;
+      [tagName$e]: HTMLAttributes<HTMLElement> & SectionJSXProps;
     }
   }
 }
 
-declare const tagName$8 = 's-section';
+declare const tagName$e = 's-section';
 export interface SectionJSXProps
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id'> {}
@@ -4056,18 +4135,18 @@ declare class Spinner extends PreactCustomElement implements SpinnerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$7]: Spinner;
+    [tagName$d]: Spinner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
+      [tagName$d]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
     }
   }
 }
 
-declare const tagName$7 = 's-spinner';
+declare const tagName$d = 's-spinner';
 export interface SpinnerJSXProps
   extends Partial<SpinnerProps>,
     Pick<SpinnerProps$1, 'id'> {}
@@ -4095,21 +4174,209 @@ declare class Stack extends BoxElement implements StackProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$6]: Stack;
+    [tagName$c]: Stack;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: HTMLAttributes<HTMLElement> & StackJSXProps;
+      [tagName$c]: HTMLAttributes<HTMLElement> & StackJSXProps;
     }
   }
 }
 
-declare const tagName$6 = 's-stack';
+declare const tagName$c = 's-stack';
 export interface StackJSXProps
   extends Partial<StackProps>,
     Pick<StackProps$1, 'id'> {}
+
+export interface TableProps
+  extends Required<
+    Pick<
+      TableProps$1,
+      'loading' | 'paginate' | 'hasPreviousPage' | 'hasNextPage'
+    >
+  > {
+  variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
+}
+
+export interface TableHeaderProps {
+  listSlot: Extract<
+    TableHeaderProps$1['listSlot'],
+    'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
+  >;
+}
+
+declare class AddedContext<T> extends EventTarget {
+  constructor(defaultValue: T);
+  get value(): T;
+  set value(value: T);
+}
+
+declare const actualTableVariantSymbol: unique symbol;
+declare const tableHeadersSharedDataSymbol: unique symbol;
+export type ActualTableVariant = 'table' | 'list';
+
+declare class Table extends PreactCustomElement implements TableProps {
+  accessor variant: TableProps['variant'];
+  accessor loading: TableProps['loading'];
+  accessor paginate: TableProps['paginate'];
+  accessor hasPreviousPage: TableProps['hasPreviousPage'];
+  accessor hasNextPage: TableProps['hasNextPage'];
+  accessor onpreviouspage: EventListener | null;
+  accessor onnextpage: EventListener | null;
+  /**
+   * The actual table variant, which is either 'table' or 'list'.
+   */
+  [actualTableVariantSymbol]: AddedContext<ActualTableVariant>;
+  [tableHeadersSharedDataSymbol]: AddedContext<
+    {
+      listSlot: TableHeaderProps['listSlot'];
+      textContent: string;
+    }[]
+  >;
+
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$b]: Table;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$b]: HTMLAttributes<HTMLElement> & TableJSXProps;
+    }
+  }
+}
+
+declare const tagName$b = 's-table';
+export interface TableJSXProps
+  extends Partial<TableProps>,
+    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {}
+
+export interface TableBodyProps extends TableBodyProps$1 {}
+
+declare class TableBody extends PreactCustomElement implements TableBodyProps {
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$a]: TableBody;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$a]: HTMLAttributes<HTMLElement> & TableBodyJSXProps;
+    }
+  }
+}
+
+declare const tagName$a = 's-table-body';
+export interface TableBodyJSXProps
+  extends Partial<TableBodyProps>,
+    Pick<TableBodyProps$1, 'id'> {}
+
+export interface TableCellProps extends TableCellProps$1 {}
+
+declare class TableCell extends PreactCustomElement implements TableCellProps {
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$9]: TableCell;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$9]: HTMLAttributes<HTMLElement> & TableCellJSXProps;
+    }
+  }
+}
+
+declare const tagName$9 = 's-table-cell';
+export interface TableCellJSXProps
+  extends Partial<TableCellProps>,
+    Pick<TableCellProps$1, 'id'> {}
+
+declare class TableHeader
+  extends PreactCustomElement
+  implements TableHeaderProps
+{
+  accessor listSlot: TableHeaderProps['listSlot'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$8]: TableHeader;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$8]: HTMLAttributes<HTMLElement> & TableHeaderJSXProps;
+    }
+  }
+}
+
+declare const tagName$8 = 's-table-header';
+export interface TableHeaderJSXProps
+  extends Partial<TableHeaderProps>,
+    Pick<TableHeaderProps$1, 'id'> {}
+
+export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
+
+declare class TableHeaderRow
+  extends PreactCustomElement
+  implements TableHeaderRowProps
+{
+  constructor();
+  connectedCallback(): void;
+  disconnectedCallback(): void;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$7]: TableHeaderRow;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$7]: HTMLAttributes<HTMLElement> & TableHeaderRowJSXProps;
+    }
+  }
+}
+
+declare const tagName$7 = 's-table-header-row';
+export interface TableHeaderRowJSXProps
+  extends Partial<TableHeaderRowProps>,
+    Pick<TableHeaderRowProps$1, 'id'> {}
+
+export interface TableRowProps extends TableRowProps$1 {}
+
+declare class TableRow extends PreactCustomElement implements TableRowProps {
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$6]: TableRow;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$6]: HTMLAttributes<HTMLElement> & TableRowJSXProps;
+    }
+  }
+}
+
+declare const tagName$6 = 's-table-row';
+export interface TableRowJSXProps
+  extends Partial<TableRowProps>,
+    Pick<TableRowProps$1, 'id'> {}
 
 export interface TextProps
   extends Required<
@@ -4430,6 +4697,18 @@ export {
   type SpinnerJSXProps,
   Stack,
   type StackJSXProps,
+  Table,
+  TableBody,
+  type TableBodyJSXProps,
+  TableCell,
+  type TableCellJSXProps,
+  TableHeader,
+  type TableHeaderJSXProps,
+  TableHeaderRow,
+  type TableHeaderRowJSXProps,
+  type TableJSXProps,
+  TableRow,
+  type TableRowJSXProps,
   Text,
   TextArea,
   type TextAreaJSXProps,
