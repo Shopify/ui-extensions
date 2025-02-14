@@ -17,6 +17,7 @@ export {PinPad} from './components/PinPad/PinPad';
 export {PrintPreview} from './components/PrintPreview/PrintPreview';
 export {POSBlock} from './components/POSBlock/POSBlock';
 export {POSBlockRow} from './components/POSBlock/POSBlockRow';
+export {POSReceiptBlock} from './components/POSReceiptBlock/POSReceiptBlock';
 export {RadioButtonList} from './components/RadioButtonList/RadioButtonList';
 export {Screen} from './components/Screen/Screen';
 export {ScrollView} from './components/ScrollView/ScrollView';

@@ -65,6 +65,11 @@ export {POSBlock} from './render/components/POSBlock/POSBlock';
 export type {POSBlockProps} from './render/components/POSBlock/POSBlock';
 export {POSBlockRow} from './render/components/POSBlock/POSBlockRow';
 export type {POSBlockRowProps} from './render/components/POSBlock/POSBlockRow';
+export {
+  POSReceiptBlock,
+  type POSReceiptBlockProps,
+  type AllowedChildrenComponents,
+} from './render/components/POSReceiptBlock/POSReceiptBlock';
 export {PrintPreview} from './render/components/PrintPreview/PrintPreview';
 export type {PrintPreviewProps} from './render/components/PrintPreview/PrintPreview';
 export {RadioButtonList} from './render/components/RadioButtonList/RadioButtonList';
