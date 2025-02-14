@@ -61,11 +61,13 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Removed in POS version: N/A
 - Release day: 1/6/2025
 
-### Important fix in POS 9.29.0
+## Important Fixes
+
+- **POS 9.29.0:** 
 
 - Fixed an issue where the \`FormattedTextField\` component was rendering black input text in dark mode.
 
-### Important fix in POS 9.27.0
+- **POS 9.27.0:**
 
 - Fixed an issue where the \`Stack\` component was not rendering correctly. By default, \`Stack\` will now always wrap. Additionally, stacks using \`'block'\` will now compress horizontally. Use \`alignContents: 'stretch'\` to take all of the horizontal space. This will not have an impact on layout in previous POS versions.
 
