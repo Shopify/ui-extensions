@@ -9,6 +9,11 @@ const generateCodeBlockForStack = (title: string, fileName: string) => {
         code: `../examples/stack/${fileName}.tsx`,
         language: 'tsx',
       },
+      {
+        title: 'TS',
+        code: `../examples/stack/${fileName}.ts`,
+        language: 'ts',
+      },
     ],
   };
 };
@@ -123,16 +128,16 @@ You can center your block stack on the vertical axis by setting \`justifyContent
     },
     {
       type: 'Generic',
-      anchorLink: 'block-align-contents-stretch',
+      anchorLink: 'block-align-content-stretch',
       title: 'Block Stack with horizontal stretching',
       sectionContent: `
 This example demonstrates a block stack with elements stretched to fill the container width. By setting \`alignContents\` to \`stretch\`, the children will expand to fill the available horizontal space. This is useful when you want all elements to have consistent width, regardless of their content.
 `,
       codeblock: generateCodeBlockForStack(
         'Block Stack with stretched contents',
-        'block-align-contents-stretch',
+        'block-align-content-stretch',
       ),
-      image: 'extension-stack-block-align-contents-stretch.png',
+      image: 'extension-stack-block-align-content-stretch.png',
     },
     {
       type: 'Generic',
