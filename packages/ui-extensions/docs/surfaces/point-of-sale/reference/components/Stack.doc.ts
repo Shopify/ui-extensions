@@ -123,6 +123,19 @@ You can center your block stack on the vertical axis by setting \`justifyContent
     },
     {
       type: 'Generic',
+      anchorLink: 'block-align-contents-stretch',
+      title: 'Block Stack with horizontal stretching',
+      sectionContent: `
+This example demonstrates a block stack with elements stretched to fill the container width. By setting \`alignContents\` to \`stretch\`, the children will expand to fill the available horizontal space. This is useful when you want all elements to have consistent width, regardless of their content.
+`,
+      codeblock: generateCodeBlockForStack(
+        'Block Stack with stretched contents',
+        'block-align-contents-stretch',
+      ),
+      image: 'extension-stack-block-align-contents-stretch.png',
+    },
+    {
+      type: 'Generic',
       anchorLink: 'nested',
       title: 'Nested Stack',
       sectionContent: `
