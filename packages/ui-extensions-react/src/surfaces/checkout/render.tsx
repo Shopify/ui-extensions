@@ -47,6 +47,8 @@ export function reactExtension<Target extends RenderExtensionTarget>(
             <ExtensionApiContext.Provider value={api}>
               <ErrorBoundary>{element}</ErrorBoundary>
             </ExtensionApiContext.Provider>,
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
             root,
             () => {
               resolve();

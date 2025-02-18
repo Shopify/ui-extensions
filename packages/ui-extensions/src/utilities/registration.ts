@@ -1,10 +1,14 @@
-import {createRemoteRoot} from '@remote-ui/core';
-
 import type {
   RenderExtensionConnection,
   RenderExtension,
   RenderExtensionWithRemoteRoot,
 } from '../extension';
+
+import {
+  RemoteConnection,
+  BatchingRemoteConnection,
+  RemoteRootElement,
+} from '@remote-dom/core/elements';
 
 export interface ExtensionRegistrationFunction<ExtensionTargets> {
   <Target extends keyof ExtensionTargets>(
@@ -16,11 +20,8 @@ export interface ExtensionRegistrationFunction<ExtensionTargets> {
 export interface ExtensionRegistrationFunctionWithRoot<ExtensionTargets> {
   <Target extends keyof ExtensionTargets>(
     target: Target,
-    implementation: ExtensionTargets[Target] extends RenderExtension<
-      infer Api,
-      infer Components
-    >
-      ? RenderExtensionWithRemoteRoot<Api, Components>
+    implementation: ExtensionTargets[Target] extends RenderExtension<infer Api>
+      ? RenderExtensionWithRemoteRoot<Api>
       : ExtensionTargets[Target],
   ): ExtensionTargets[Target];
 }
@@ -46,15 +47,14 @@ export function createExtensionRegistrationFunction<
         return (implementation as any)(...args);
       }
 
-      const [{channel, components}, api] = args as [
-        RenderExtensionConnection,
-        any,
-      ];
+      const [{channel}, api] = args as [RenderExtensionConnection, any];
 
-      const root = createRemoteRoot(channel, {
-        components,
-        strict: true,
-      });
+      const batchingConnection = new BatchingRemoteConnection(
+        channel as RemoteConnection,
+      );
+
+      const root = document.createElement('remote-root') as RemoteRootElement;
+      document.body.append(root);
 
       let renderResult = (implementation as any)(root, api);
 
@@ -66,7 +66,8 @@ export function createExtensionRegistrationFunction<
         renderResult = await renderResult;
       }
 
-      root.mount();
+      root.connect(batchingConnection);
+      batchingConnection.flush();
 
       return renderResult;
     }
@@ -75,6 +76,5 @@ export function createExtensionRegistrationFunction<
 
     return extension as any;
   };
-
   return extensionWrapper;
 }

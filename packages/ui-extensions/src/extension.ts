@@ -1,8 +1,5 @@
-import type {
-  RemoteRoot,
-  RemoteChannel,
-  RemoteComponentType,
-} from '@remote-ui/core';
+import {RemoteConnection, RemoteRootElement} from '@remote-dom/core/elements';
+import type {RemoteChannel, RemoteComponentType} from '@remote-ui/core';
 
 export interface RenderExtensionConnection<
   AllowedComponents extends RemoteComponentType<
@@ -11,7 +8,7 @@ export interface RenderExtensionConnection<
     any
   > = RemoteComponentType<any, any, any>,
 > {
-  readonly channel: RemoteChannel;
+  readonly channel: RemoteChannel | RemoteConnection;
   readonly components: AllowedComponents;
 }
 
@@ -29,15 +26,8 @@ export interface RenderExtension<
   ): void | Promise<void>;
 }
 
-export interface RenderExtensionWithRemoteRoot<
-  Api,
-  AllowedComponents extends RemoteComponentType<
-    string,
-    any,
-    any
-  > = RemoteComponentType<any, any, any>,
-> {
-  (root: RemoteRoot<AllowedComponents, AllowedComponents>, api: Api):
+export interface RenderExtensionWithRemoteRoot<Api> {
+  (root: RemoteRootElement, api: Api):
     | void
     | Promise<void>
     | Promise<() => void>;
