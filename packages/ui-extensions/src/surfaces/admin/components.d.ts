@@ -1,11 +1,9 @@
-/** VERSION: 0.31.0 **/
+/** VERSION: 0.32.0 **/
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import * as preact from 'preact';
-
 type ComponentChildren = any;
 type SizeKeyword =
   | 'small-500'
@@ -44,7 +42,8 @@ type ToneKeyword =
   | 'success'
   | 'caution'
   | 'warning'
-  | 'critical';
+  | 'critical'
+  | 'custom';
 type IconType =
   | '3d-environment'
   | 'adjust'
@@ -358,6 +357,7 @@ type IconType =
   | 'page-heart'
   | 'page-reference'
   | 'page-remove'
+  | 'page-report'
   | 'page-up'
   | 'page'
   | 'pagination-end'
@@ -1121,13 +1121,13 @@ interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 }
 export interface InteractionProps {
   /**
-   * ID of a component that should respond to activations (e.g. clicks) on this pressable.
+   * ID of a component that should respond to activations (e.g. clicks) on this clickable.
    *
    * See `activateAction` for how to control the behavior of the target.
    */
   activateTarget?: string;
   /**
-   * Sets the action the `activateTarget` should take when this pressable is activated.
+   * Sets the action the `activateTarget` should take when this clickable is activated.
    *
    * See the documentation of particular components for the actions they support.
    *
@@ -1135,8 +1135,8 @@ export interface InteractionProps {
    */
   activateAction?: 'auto' | 'show' | 'hide' | 'toggle' | 'copy';
 }
-interface BasePressableProps extends ButtonBehaviorProps, LinkBehaviorProps {}
-interface ButtonProps$1 extends GlobalProps, BasePressableProps {
+interface BaseClickableProps extends ButtonBehaviorProps, LinkBehaviorProps {}
+interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
   /**
    * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
    *
@@ -1302,6 +1302,34 @@ interface MinMaxLengthProps {
    * @default 0
    */
   minLength?: number;
+}
+interface ClickableProps$1 extends BaseBoxProps, BaseClickableProps {
+  /**
+   * Disables the clickable, and indicates to assistive technology that the loading is in progress.
+   *
+   * This also disables the clickable.
+   */
+  loading?: BaseClickableProps['loading'];
+  /**
+   * Disables the clickable, meaning it cannot be clicked or receive focus.
+   *
+   * In this state, onClick will not fire.
+   * If the click event originates from a child element, the event will immediately stop propagating from this element.
+   *
+   * However, items within the clickable can still receive focus and be interacted with.
+   *
+   * This has no impact on the visual state by default,
+   * but developers are encouraged to style the clickable accordingly.
+   */
+  disabled?: BaseClickableProps['disabled'];
+  /**
+   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+   *
+   * @default ''
+   */
+  lang?: string;
 }
 interface AutocompleteProps<AutocompleteField extends AnyAutocompleteField> {
   /**
@@ -1508,9 +1536,63 @@ type AlignContentKeyword =
   | ContentDistribution
   | OverflowPosition
   | ContentPosition;
-interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps {
-  /** A unique identifier for the field. */
-  id?: string;
+interface BaseTypographyProps {
+  /**
+   * Sets the color of the Typography component, based on the intention of the information being conveyed.
+   *
+   * @default 'base'
+   */
+  color?: ColorKeyword;
+  /**
+   * Sets the tone of the Typography component, based on the intention of the information being conveyed.
+   *
+   * @default 'auto'
+   */
+  tone?: ToneKeyword;
+  /**
+   * Set the numeric properties of the font
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
+   *
+   * @default 'auto' - inherit from the parent element
+   */
+  fontVariantNumeric?: 'auto' | 'normal' | 'tabular-nums';
+  /**
+   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+   *
+   * It is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.
+   *
+   * @default ''
+   */
+  lang?: string;
+  /**
+   * Indicates the directionality of the element’s text.
+   *
+   * - `ltr`: languages written from left to right (e.g. English)
+   * - `rtl`: languages written from right to left (e.g. Arabic)
+   * - `auto`: the user agent determines the direction based on the content
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir
+   *
+   * @default ''
+   */
+  dir?: 'ltr' | 'rtl' | 'auto' | '';
+}
+interface BlockTypographyProps {
+  /**
+   * Truncates the text content to the specified number of lines.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
+   *
+   * @default Infinity - no truncation is applied
+   */
+  lineClamp?: number;
+}
+interface HeadingProps$1
+  extends GlobalProps,
+    AccessibilityVisibilityProps,
+    BlockTypographyProps {
   /**
    * The content of the Heading.
    */
@@ -1531,14 +1613,6 @@ interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps {
   accessibilityRole?:
     | 'heading'
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
-  /**
-   * Truncates the text content to the specified number of lines.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
-   *
-   * @default Infinity - no truncation is applied
-   */
-  lineClamp?: number;
 }
 interface IconProps$1 extends GlobalProps {
   /**
@@ -1558,7 +1632,7 @@ interface IconProps$1 extends GlobalProps {
    *
    * @default 'base'
    */
-  size?: SizeKeyword | 'fill';
+  size?: SizeKeyword;
   type?: IconType | AnyString;
 }
 interface BaseImageProps {
@@ -1696,62 +1770,42 @@ interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
    */
   lang?: string;
 }
-interface BaseTypographyProps {
-  /**
-   * Sets the color of the Typography component, based on the intention of the information being conveyed.
-   *
-   * @default 'base'
-   */
-  color?: ColorKeyword;
-  /**
-   * Sets the tone of the Typography component, based on the intention of the information being conveyed.
-   *
-   * @default 'auto'
-   */
-  tone?: ToneKeyword;
-  /**
-   * Set the numeric properties of the font
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
-   *
-   * @default 'auto' - inherit from the parent element
-   */
-  fontVariantNumeric?: 'auto' | 'normal' | 'tabular-nums';
-  /**
-   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
-   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
-   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
-   *
-   * It is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.
-   *
-   * @default ''
-   */
-  lang?: string;
-  /**
-   * Indicates the directionality of the element’s text.
-   *
-   * - `ltr`: languages written from left to right (e.g. English)
-   * - `rtl`: languages written from right to left (e.g. Arabic)
-   * - `auto`: the user agent determines the direction based on the content
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir
-   *
-   * @default ''
-   */
-  dir?: 'ltr' | 'rtl' | 'auto' | '';
-}
 interface ParagraphProps$1
   extends GlobalProps,
     BaseTypographyProps,
+    BlockTypographyProps,
     AccessibilityVisibilityProps {
   /**
-   * Truncates the text content to the specified number of lines.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
-   *
-   * @default Infinity - no truncation is applied
+   * The content of the Text.
    */
-  lineClamp?: number;
+  children?: ComponentChildren;
+  /**
+   * Provide semantic meaning and default styling to the paragraph.
+   *
+   * Other presentation properties on `<Paragraph>` override the default styling.
+   *
+   * @default 'paragraph'
+   */
+  type?: ParagraphType;
 }
+type ParagraphType =
+  /**
+   * Indicate the text is a structural grouping of related content.
+   *
+   * In an HTML host, the text will be rendered in an `<p>` element.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+   */
+  | 'paragraph'
+  /**
+   * Indicates the text is considered less important than the main content, but is still necessary for the reader to understand.
+   * It can be used for secondary content but also for disclaimers, terms and conditions, or legal information.
+   *
+   * Surfaces should apply a smaller font size than the default size for Paragraph.
+   *
+   * In an HTML host, the text will be rendered in a `<small>` element.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+   */
+  | 'small';
 interface SectionProps$1 extends GlobalProps {
   /**
    * The content of the Section.
@@ -1789,20 +1843,15 @@ interface SpinnerProps$1 extends GlobalProps {
    *
    * @default 'base'
    */
-  size?:
-    | SizeKeyword
-    /**
-     * `fill` will cause the spinner icon to take up 100% of the available inline space, and maintain a 1:1 aspect ratio.
-     */
-    | 'fill';
+  size?: SizeKeyword;
   /**
    * A label that describes the purpose of the progress. When set,
    * it will be announced to users using assistive technologies and will
-   * provide them with more context.
+   * provide them with more context. Providing an `accessibilityLabel` is
+   * recommended if there is no accompanying text describing that something
+   * is loading.
    *
    * Use it to provide context of what is loading.
-   *
-   * @default 'Loading...'
    */
   accessibilityLabel?: string;
 }
@@ -1935,8 +1984,6 @@ interface TextProps$1
    */
   children?: ComponentChildren;
   /**
-   * Use to emphasize a word or a group of words.
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-style
    * Provide semantic meaning and default styling to the text.
    *
    * Other presentation properties on `<Text>` override the default styling.
@@ -2531,9 +2578,9 @@ interface VNode<P = {}> {
   endTime?: number;
 }
 type Key = string | number | any;
-interface RefObject<T> {
+type RefObject<T> = {
   current: T | null;
-}
+};
 type RefCallback<T> = (instance: T | null) => void;
 type Ref<T> = RefObject<T> | RefCallback<T> | null;
 export type ComponentChild =
@@ -2616,7 +2663,6 @@ declare abstract class Component<P, S> {
     props: Readonly<object>,
     state: Readonly<object>,
   ): object | null;
-
   static getDerivedStateFromError?(error: any): object | null;
   state: Readonly<S>;
   props: RenderableProps<P>;
@@ -2634,7 +2680,6 @@ declare abstract class Component<P, S> {
       | (Pick<S, K> | Partial<S> | null),
     callback?: () => void,
   ): void;
-
   forceUpdate(callback?: () => void): void;
   abstract render(
     props?: RenderableProps<P>,
@@ -2656,6 +2701,8 @@ interface Context<T> {
   Provider: Provider<T>;
   displayName?: string;
 }
+
+import * as preact from 'preact';
 
 export interface IconProps {
   type: '' | IconType | 'empty';
@@ -2711,13 +2758,14 @@ declare abstract class PreactCustomElement extends BaseClass {
     delegatesFocus,
     ...options
   }: RenderImpl);
-
   /** @private */
   attributeChangedCallback(name: string): void;
   /** @private */
   connectedCallback(): void;
   /** @private */
   disconnectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
   /**
    * Queue a run of the render function.
    * You shouldn't need to call this manually - it should be handled by changes to @property values.
@@ -2750,18 +2798,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$o]: Badge;
+    [tagName$p]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
+      [tagName$p]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
     }
   }
 }
 
-declare const tagName$o = 's-badge';
+declare const tagName$p = 's-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -2784,18 +2832,18 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$n]: Banner;
+    [tagName$o]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$n]: HTMLAttributes<HTMLElement> & BannerJSXProps;
+      [tagName$o]: HTMLAttributes<HTMLElement> & BannerJSXProps;
     }
   }
 }
 
-declare const tagName$n = 's-banner';
+declare const tagName$o = 's-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id' | 'onDismiss'> {
@@ -2824,15 +2872,19 @@ export interface BoxProps {
   paddingInlineStart: AlignedBox['paddingInlineStart'];
   paddingInlineEnd: AlignedBox['paddingInlineEnd'];
   border: AlignedBox['border'] | 'none';
-  borderWidth: MaybeAllValuesShorthandProperty<
-    Extract<
-      AlignedBox['borderWidth'],
-      'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'none' | ''
-    >
-  >;
-  borderStyle: MaybeAllValuesShorthandProperty<
-    Extract<AlignedBox['borderStyle'], 'none' | 'solid' | 'dashed' | ''>
-  >;
+  borderWidth:
+    | MaybeAllValuesShorthandProperty<
+        Extract<
+          AlignedBox['borderWidth'],
+          'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'none'
+        >
+      >
+    | Extract<AlignedBox['borderWidth'], ''>;
+  borderStyle:
+    | MaybeAllValuesShorthandProperty<
+        Extract<AlignedBox['borderStyle'], 'none' | 'solid' | 'dashed'>
+      >
+    | Extract<AlignedBox['borderStyle'], ''>;
   borderColor: Extract<
     AlignedBox['borderColor'],
     'subdued' | 'base' | 'strong' | ''
@@ -2887,18 +2939,18 @@ declare class Box extends BoxElement implements BoxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$m]: Box;
+    [tagName$n]: Box;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$m]: HTMLAttributes<HTMLElement> & BoxJSXProps;
+      [tagName$n]: HTMLAttributes<HTMLElement> & BoxJSXProps;
     }
   }
 }
 
-declare const tagName$m = 's-box';
+declare const tagName$n = 's-box';
 export interface BoxJSXProps
   extends Partial<BoxProps>,
     Pick<BoxProps$1, 'id'> {}
@@ -2941,12 +2993,14 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49314@#queueRender': (() => void) | undefined;
-  '__#49314@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49246@#queueRender': (() => void) | undefined;
+  '__#49246@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
+  adoptedCallback(): void;
   queueRender(): void;
+  '__#49246@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -3408,21 +3462,523 @@ declare class Button extends Button_base implements ButtonProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$l]: Button;
+    [tagName$m]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$l]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
+      [tagName$m]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
     }
   }
 }
 
-declare const tagName$l = 's-button';
+declare const tagName$m = 's-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
+
+export type ClickableBaseProps = Required<
+  Pick<
+    ClickableProps$1,
+    | 'disabled'
+    | 'activateAction'
+    | 'activateTarget'
+    | 'lang'
+    | 'loading'
+    | 'type'
+    | 'target'
+    | 'href'
+    | 'download'
+  >
+>;
+export interface ClickableProps
+  extends Required<BoxProps>,
+    ClickableBaseProps {}
+
+declare const Clickable_base: (abstract new (...args: any) => {
+  activateTarget: PreactOverlayControlProps['activateTarget'];
+  activateAction: PreactOverlayControlProps['activateAction'];
+  '__#49246@#queueRender': (() => void) | undefined;
+  '__#49246@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  attributeChangedCallback(name: string): void;
+  connectedCallback(): void;
+  disconnectedCallback(): void;
+  adoptedCallback(): void;
+  queueRender(): void;
+  '__#49246@#checkElementPrototype'(): void;
+  _addLegacyStyleComponent(style: string): void;
+  click({sourceEvent}?: ClickOptions): void;
+  accessKey: string;
+  readonly accessKeyLabel: string;
+  autocapitalize: string;
+  dir: string;
+  draggable: boolean;
+  hidden: boolean;
+  inert: boolean;
+  innerText: string;
+  lang: string;
+  readonly offsetHeight: number;
+  readonly offsetLeft: number;
+  readonly offsetParent: Element | null;
+  readonly offsetTop: number;
+  readonly offsetWidth: number;
+  outerText: string;
+  popover: string | null;
+  spellcheck: boolean;
+  title: string;
+  translate: boolean;
+  attachInternals(): ElementInternals;
+  hidePopover(): void;
+  showPopover(): void;
+  togglePopover(force?: boolean): boolean;
+  addEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  removeEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  readonly attributes: NamedNodeMap;
+  readonly classList: DOMTokenList;
+  className: string;
+  readonly clientHeight: number;
+  readonly clientLeft: number;
+  readonly clientTop: number;
+  readonly clientWidth: number;
+  id: string;
+  innerHTML: string;
+  readonly localName: string;
+  readonly namespaceURI: string | null;
+  onfullscreenchange: ((this: Element, ev: Event) => any) | null;
+  onfullscreenerror: ((this: Element, ev: Event) => any) | null;
+  outerHTML: string;
+  readonly ownerDocument: Document;
+  readonly part: DOMTokenList;
+  readonly prefix: string | null;
+  readonly scrollHeight: number;
+  scrollLeft: number;
+  scrollTop: number;
+  readonly scrollWidth: number;
+  readonly shadowRoot: ShadowRoot | null;
+  slot: string;
+  readonly tagName: string;
+  attachShadow(init: ShadowRootInit): ShadowRoot;
+  checkVisibility(options?: CheckVisibilityOptions): boolean;
+  closest<K extends keyof HTMLElementTagNameMap>(
+    selector: K,
+  ): HTMLElementTagNameMap[K] | null;
+  closest<K extends keyof SVGElementTagNameMap>(
+    selector: K,
+  ): SVGElementTagNameMap[K] | null;
+  closest<K extends keyof MathMLElementTagNameMap>(
+    selector: K,
+  ): MathMLElementTagNameMap[K] | null;
+  closest<E extends Element = Element>(selectors: string): E | null;
+  computedStyleMap(): StylePropertyMapReadOnly;
+  getAttribute(qualifiedName: string): string | null;
+  getAttributeNS(namespace: string | null, localName: string): string | null;
+  getAttributeNames(): string[];
+  getAttributeNode(qualifiedName: string): Attr | null;
+  getAttributeNodeNS(namespace: string | null, localName: string): Attr | null;
+  getBoundingClientRect(): DOMRect;
+  getClientRects(): DOMRectList;
+  getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
+  getElementsByTagName<K extends keyof HTMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof SVGElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<SVGElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof MathMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<MathMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;
+  getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1999/xhtml',
+    localName: string,
+  ): HTMLCollectionOf<HTMLElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/2000/svg',
+    localName: string,
+  ): HTMLCollectionOf<SVGElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1998/Math/MathML',
+    localName: string,
+  ): HTMLCollectionOf<MathMLElement>;
+  getElementsByTagNameNS(
+    namespace: string | null,
+    localName: string,
+  ): HTMLCollectionOf<Element>;
+  getHTML(options?: GetHTMLOptions): string;
+  hasAttribute(qualifiedName: string): boolean;
+  hasAttributeNS(namespace: string | null, localName: string): boolean;
+  hasAttributes(): boolean;
+  hasPointerCapture(pointerId: number): boolean;
+  insertAdjacentElement(
+    where: InsertPosition,
+    element: Element,
+  ): Element | null;
+  insertAdjacentHTML(position: InsertPosition, string: string): void;
+  insertAdjacentText(where: InsertPosition, data: string): void;
+  matches(selectors: string): boolean;
+  releasePointerCapture(pointerId: number): void;
+  removeAttribute(qualifiedName: string): void;
+  removeAttributeNS(namespace: string | null, localName: string): void;
+  removeAttributeNode(attr: Attr): Attr;
+  requestFullscreen(options?: FullscreenOptions): Promise<void>;
+  requestPointerLock(options?: PointerLockOptions): Promise<void>;
+  scroll(options?: ScrollToOptions): void;
+  scroll(x: number, y: number): void;
+  scrollBy(options?: ScrollToOptions): void;
+  scrollBy(x: number, y: number): void;
+  scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void;
+  scrollTo(options?: ScrollToOptions): void;
+  scrollTo(x: number, y: number): void;
+  setAttribute(qualifiedName: string, value: string): void;
+  setAttributeNS(
+    namespace: string | null,
+    qualifiedName: string,
+    value: string,
+  ): void;
+  setAttributeNode(attr: Attr): Attr | null;
+  setAttributeNodeNS(attr: Attr): Attr | null;
+  setHTMLUnsafe(html: string): void;
+  setPointerCapture(pointerId: number): void;
+  toggleAttribute(qualifiedName: string, force?: boolean): boolean;
+  webkitMatchesSelector(selectors: string): boolean;
+  readonly baseURI: string;
+  readonly childNodes: NodeListOf<ChildNode>;
+  readonly firstChild: ChildNode | null;
+  readonly isConnected: boolean;
+  readonly lastChild: ChildNode | null;
+  readonly nextSibling: ChildNode | null;
+  readonly nodeName: string;
+  readonly nodeType: number;
+  nodeValue: string | null;
+  readonly parentElement: HTMLElement | null;
+  readonly parentNode: ParentNode | null;
+  readonly previousSibling: ChildNode | null;
+  textContent: string | null;
+  appendChild<T extends Node>(node: T): T;
+  cloneNode(deep?: boolean): Node;
+  compareDocumentPosition(other: Node): number;
+  contains(other: Node | null): boolean;
+  getRootNode(options?: GetRootNodeOptions): Node;
+  hasChildNodes(): boolean;
+  insertBefore<T extends Node>(node: T, child: Node | null): T;
+  isDefaultNamespace(namespace: string | null): boolean;
+  isEqualNode(otherNode: Node | null): boolean;
+  isSameNode(otherNode: Node | null): boolean;
+  lookupNamespaceURI(prefix: string | null): string | null;
+  lookupPrefix(namespace: string | null): string | null;
+  normalize(): void;
+  removeChild<T extends Node>(child: T): T;
+  replaceChild<T extends Node>(node: Node, child: T): T;
+  readonly ELEMENT_NODE: 1;
+  readonly ATTRIBUTE_NODE: 2;
+  readonly TEXT_NODE: 3;
+  readonly CDATA_SECTION_NODE: 4;
+  readonly ENTITY_REFERENCE_NODE: 5;
+  readonly ENTITY_NODE: 6;
+  readonly PROCESSING_INSTRUCTION_NODE: 7;
+  readonly COMMENT_NODE: 8;
+  readonly DOCUMENT_NODE: 9;
+  readonly DOCUMENT_TYPE_NODE: 10;
+  readonly DOCUMENT_FRAGMENT_NODE: 11;
+  readonly NOTATION_NODE: 12;
+  readonly DOCUMENT_POSITION_DISCONNECTED: 1;
+  readonly DOCUMENT_POSITION_PRECEDING: 2;
+  readonly DOCUMENT_POSITION_FOLLOWING: 4;
+  readonly DOCUMENT_POSITION_CONTAINS: 8;
+  readonly DOCUMENT_POSITION_CONTAINED_BY: 16;
+  readonly DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32;
+  dispatchEvent(event: Event): boolean;
+  ariaAtomic: string | null;
+  ariaAutoComplete: string | null;
+  ariaBrailleLabel: string | null;
+  ariaBrailleRoleDescription: string | null;
+  ariaBusy: string | null;
+  ariaChecked: string | null;
+  ariaColCount: string | null;
+  ariaColIndex: string | null;
+  ariaColSpan: string | null;
+  ariaCurrent: string | null;
+  ariaDescription: string | null;
+  ariaDisabled: string | null;
+  ariaExpanded: string | null;
+  ariaHasPopup: string | null;
+  ariaHidden: string | null;
+  ariaInvalid: string | null;
+  ariaKeyShortcuts: string | null;
+  ariaLabel: string | null;
+  ariaLevel: string | null;
+  ariaLive: string | null;
+  ariaModal: string | null;
+  ariaMultiLine: string | null;
+  ariaMultiSelectable: string | null;
+  ariaOrientation: string | null;
+  ariaPlaceholder: string | null;
+  ariaPosInSet: string | null;
+  ariaPressed: string | null;
+  ariaReadOnly: string | null;
+  ariaRequired: string | null;
+  ariaRoleDescription: string | null;
+  ariaRowCount: string | null;
+  ariaRowIndex: string | null;
+  ariaRowSpan: string | null;
+  ariaSelected: string | null;
+  ariaSetSize: string | null;
+  ariaSort: string | null;
+  ariaValueMax: string | null;
+  ariaValueMin: string | null;
+  ariaValueNow: string | null;
+  ariaValueText: string | null;
+  role: string | null;
+  animate(
+    keyframes: Keyframe[] | PropertyIndexedKeyframes | null,
+    options?: number | KeyframeAnimationOptions,
+  ): Animation;
+  getAnimations(options?: GetAnimationsOptions): Animation[];
+  after(...nodes: (Node | string)[]): void;
+  before(...nodes: (Node | string)[]): void;
+  remove(): void;
+  replaceWith(...nodes: (Node | string)[]): void;
+  readonly nextElementSibling: Element | null;
+  readonly previousElementSibling: Element | null;
+  readonly childElementCount: number;
+  readonly children: HTMLCollection;
+  readonly firstElementChild: Element | null;
+  readonly lastElementChild: Element | null;
+  append(...nodes: (Node | string)[]): void;
+  prepend(...nodes: (Node | string)[]): void;
+  querySelector<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): HTMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): SVGElementTagNameMap[K] | null;
+  querySelector<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): MathMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): HTMLElementDeprecatedTagNameMap[K] | null;
+  querySelector<E extends Element = Element>(selectors: string): E | null;
+  querySelectorAll<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<SVGElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<MathMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>;
+  querySelectorAll<E extends Element = Element>(
+    selectors: string,
+  ): NodeListOf<E>;
+  replaceChildren(...nodes: (Node | string)[]): void;
+  readonly assignedSlot: HTMLSlotElement | null;
+  readonly attributeStyleMap: StylePropertyMap;
+  readonly style: CSSStyleDeclaration;
+  contentEditable: string;
+  enterKeyHint: string;
+  inputMode: string;
+  readonly isContentEditable: boolean;
+  onabort: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onanimationcancel:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationend:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationiteration:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationstart:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onauxclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onbeforeinput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
+  onbeforetoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onblur: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  oncancel: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplaythrough: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextlost: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextmenu: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  oncontextrestored: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncopy: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  oncuechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncut: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  ondblclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  ondrag: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragend: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragenter: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragleave: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragover: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragstart: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondrop: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondurationchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onemptied: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onended: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onerror: OnErrorEventHandler;
+  onfocus: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  onformdata: ((this: GlobalEventHandlers, ev: FormDataEvent) => any) | null;
+  ongotpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  oninput: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oninvalid: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onkeydown: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeypress: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeyup: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onload: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadeddata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadedmetadata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onlostpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onmousedown: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseenter: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseleave: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmousemove: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseout: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseover: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseup: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onpaste: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  onpause: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplaying: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onpointercancel:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onpointerdown: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerenter: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerleave: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointermove: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerout: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerover: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerup: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onprogress: ((this: GlobalEventHandlers, ev: ProgressEvent) => any) | null;
+  onratechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onreset: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onresize: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onscroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onscrollend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsecuritypolicyviolation:
+    | ((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any)
+    | null;
+  onseeked: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onseeking: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselect: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectionchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onslotchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onstalled: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsubmit: ((this: GlobalEventHandlers, ev: SubmitEvent) => any) | null;
+  onsuspend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontimeupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontouchcancel?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchend?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchmove?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchstart?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontransitioncancel:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionend:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionrun:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionstart:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  onvolumechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwaiting: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationiteration:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkitanimationstart:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkittransitionend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwheel: ((this: GlobalEventHandlers, ev: WheelEvent) => any) | null;
+  autofocus: boolean;
+  readonly dataset: DOMStringMap;
+  nonce?: string;
+  tabIndex: number;
+  blur(): void;
+  focus(options?: FocusOptions): void;
+}) &
+  typeof BoxElement;
+declare class Clickable extends Clickable_base implements ClickableProps {
+  accessor disabled: ClickableProps['disabled'];
+  accessor loading: ClickableProps['loading'];
+  accessor target: ClickableProps['target'];
+  accessor href: ClickableProps['href'];
+  accessor download: ClickableProps['download'];
+  accessor onclick: EventListener | null;
+  accessor onblur: EventListener | null;
+  accessor onfocus: EventListener | null;
+  accessor type: ClickableProps['type'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$l]: Clickable;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$l]: HTMLAttributes<HTMLElement> & ClickableJSXProps;
+    }
+  }
+}
+
+declare const tagName$l = 's-unstable-clickable';
+export interface ClickableJSXProps
+  extends Partial<ClickableProps>,
+    Pick<ClickableProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
 
 export interface DividerProps {
   direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
@@ -3571,12 +4127,14 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49314@#queueRender': (() => void) | undefined;
-  '__#49314@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49246@#queueRender': (() => void) | undefined;
+  '__#49246@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
+  adoptedCallback(): void;
   queueRender(): void;
+  '__#49246@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -4062,7 +4620,10 @@ export interface ParagraphProps
 declare class Paragraph extends PreactCustomElement implements ParagraphProps {
   accessor fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
   accessor lineClamp: ParagraphProps['lineClamp'];
-  accessor tone: ParagraphProps['tone'];
+  accessor tone: Extract<
+    ParagraphProps['tone'],
+    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
+  >;
   accessor color: ParagraphProps['color'];
   accessor dir: ParagraphProps['dir'];
   accessor accessibilityVisibility: ParagraphProps['accessibilityVisibility'];
@@ -4235,7 +4796,6 @@ declare class Table extends PreactCustomElement implements TableProps {
       textContent: string;
     }[]
   >;
-
   constructor();
 }
 declare global {
@@ -4679,6 +5239,8 @@ export {
   type BoxJSXProps,
   Button,
   type ButtonJSXProps,
+  Clickable,
+  type ClickableJSXProps,
   Divider,
   type DividerJSXProps,
   Heading,
