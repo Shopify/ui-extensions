@@ -4,6 +4,8 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
+import * as preact from 'preact';
+
 type ComponentChildren = any;
 type SizeKeyword =
   | 'small-500'
@@ -2578,9 +2580,9 @@ interface VNode<P = {}> {
   endTime?: number;
 }
 type Key = string | number | any;
-type RefObject<T> = {
+interface RefObject<T> {
   current: T | null;
-};
+}
 type RefCallback<T> = (instance: T | null) => void;
 type Ref<T> = RefObject<T> | RefCallback<T> | null;
 export type ComponentChild =
@@ -2663,6 +2665,7 @@ declare abstract class Component<P, S> {
     props: Readonly<object>,
     state: Readonly<object>,
   ): object | null;
+
   static getDerivedStateFromError?(error: any): object | null;
   state: Readonly<S>;
   props: RenderableProps<P>;
@@ -2680,6 +2683,7 @@ declare abstract class Component<P, S> {
       | (Pick<S, K> | Partial<S> | null),
     callback?: () => void,
   ): void;
+
   forceUpdate(callback?: () => void): void;
   abstract render(
     props?: RenderableProps<P>,
@@ -2701,8 +2705,6 @@ interface Context<T> {
   Provider: Provider<T>;
   displayName?: string;
 }
-
-import * as preact from 'preact';
 
 export interface IconProps {
   type: '' | IconType | 'empty';
@@ -2758,6 +2760,7 @@ declare abstract class PreactCustomElement extends BaseClass {
     delegatesFocus,
     ...options
   }: RenderImpl);
+
   /** @private */
   attributeChangedCallback(name: string): void;
   /** @private */
@@ -2905,6 +2908,7 @@ export interface BoxProps {
   accessibilityLabel: AlignedBox['accessibilityLabel'];
   accessibilityVisibility: AlignedBox['accessibilityVisibility'];
   display: AlignedBox['display'];
+  overflow: AlignedBox['overflow'];
 }
 
 declare class BoxElement extends PreactCustomElement implements BoxProps {
@@ -2917,6 +2921,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
   accessor inlineSize: BoxProps['inlineSize'];
   accessor minInlineSize: BoxProps['minInlineSize'];
   accessor maxInlineSize: BoxProps['maxInlineSize'];
+  accessor overflow: BoxProps['overflow'];
   accessor padding: BoxProps['padding'];
   accessor paddingBlock: BoxProps['paddingBlock'];
   accessor paddingBlockStart: BoxProps['paddingBlockStart'];
@@ -2993,14 +2998,14 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49246@#queueRender': (() => void) | undefined;
-  '__#49246@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49270@#queueRender': (() => void) | undefined;
+  '__#49270@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49246@#checkElementPrototype'(): void;
+  '__#49270@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -3481,15 +3486,16 @@ export interface ButtonJSXProps
 export type ClickableBaseProps = Required<
   Pick<
     ClickableProps$1,
-    | 'disabled'
     | 'activateAction'
     | 'activateTarget'
+    | 'disabled'
+    | 'download'
+    | 'href'
     | 'lang'
     | 'loading'
-    | 'type'
+    | 'overflow'
     | 'target'
-    | 'href'
-    | 'download'
+    | 'type'
   >
 >;
 export interface ClickableProps
@@ -3499,14 +3505,14 @@ export interface ClickableProps
 declare const Clickable_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49246@#queueRender': (() => void) | undefined;
-  '__#49246@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49270@#queueRender': (() => void) | undefined;
+  '__#49270@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49246@#checkElementPrototype'(): void;
+  '__#49270@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -3975,7 +3981,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$l = 's-unstable-clickable';
+declare const tagName$l = 's-clickable';
 export interface ClickableJSXProps
   extends Partial<ClickableProps>,
     Pick<ClickableProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
@@ -4127,14 +4133,14 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49246@#queueRender': (() => void) | undefined;
-  '__#49246@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49270@#queueRender': (() => void) | undefined;
+  '__#49270@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49246@#checkElementPrototype'(): void;
+  '__#49270@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -4624,6 +4630,7 @@ declare class Paragraph extends PreactCustomElement implements ParagraphProps {
     ParagraphProps['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
   >;
+
   accessor color: ParagraphProps['color'];
   accessor dir: ParagraphProps['dir'];
   accessor accessibilityVisibility: ParagraphProps['accessibilityVisibility'];
@@ -4796,6 +4803,7 @@ declare class Table extends PreactCustomElement implements TableProps {
       textContent: string;
     }[]
   >;
+
   constructor();
 }
 declare global {
