@@ -25,7 +25,7 @@ export interface SectionProps {
    * to the edge of the Section. For example, a full-width image. In this case, rely on `Box` or any other layout
    * element to bring back the desired padding for the rest of the content.
    *
-   * @default: "base"
+   * @default "base"
    */
   padding?: 'base' | 'none';
 }
