@@ -127,6 +127,10 @@ export interface ExtensionTargets {
       ActionApi,
     BlockComponents
   >;
+  'pos.receipt-footer.block.render': RenderExtension<
+    StandardApi<'pos.receipt-footer.block.render'> & OrderApi,
+    BlockComponents
+  >;
 }
 
 export type ExtensionTarget = keyof ExtensionTargets;

@@ -2,13 +2,17 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: ExtensionTargetType.PosPrepareReceiptInject,
-  description:
-    'An event extension target that observes completed transactions and permits the addition of supplementary lines to the receipt.',
+  name: ExtensionTargetType.PosReceiptFooterBlockRender,
+  description: 'Renders a custom section within the POS receipt footer',
   category: 'Targets',
-  subCategory: 'Post-purchase',
+  subCategory: 'Receipts',
   isVisualComponent: false,
-  related: [],
+  related: [
+    {
+      name: 'Order API',
+      url: '/docs/api/pos-ui-extensions/apis/order-api',
+    },
+  ],
   type: 'Target',
 };
 
