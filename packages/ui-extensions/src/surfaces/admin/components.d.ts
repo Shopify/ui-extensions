@@ -1305,6 +1305,86 @@ interface MinMaxLengthProps {
    */
   minLength?: number;
 }
+interface BaseSelectableProps {
+  /**
+   * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.
+   * This can also be used to display a control without a visual label, while still providing context to users using screen readers.
+   */
+  accessibilityLabel?: string;
+  /**
+   * Disables the control, disallowing any interaction.
+   */
+  disabled?: boolean;
+  /**
+   * The value used in form data when the control is checked.
+   */
+  value?: string;
+}
+interface BaseCheckableProps extends BaseSelectableProps {
+  /**
+   * Visual content to use as the control label.
+   */
+  label?: string;
+  /**
+   * Whether the control is active.
+   */
+  checked?: boolean;
+  /**
+   * Whether the control is active by default.
+   */
+  defaultChecked?: boolean;
+  /**
+   * An identifier for the control that is unique within the nearest
+   * containing `Form` component.
+   */
+  name?: string;
+  /**
+   * A callback that is run whenever the control is changed.
+   */
+  onChange?: (checked: boolean) => void;
+  /**
+   * A callback that is run whenever the control is changed.
+   */
+  onInput?: (checked: boolean) => void;
+}
+interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps {
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string;
+  /**
+   * Additional text to provide context or guidance for the input.
+   * This text is displayed along with the input and its label
+   * to offer more information or instructions to the user.
+   */
+  details?: string;
+  /**
+   * Whether to display the checkbox in an indeterminate state (neither checked or unchecked).
+   *
+   * In terms of appearance, this takes priority over the `checked` prop.
+   * But this is purely a visual change.
+   * Whether the value is submitted along with a form is still down to the `checked` prop.
+   *
+   * In custom element implementations, this must not reflect to an attribute (similar to `.checked`).
+   */
+  indeterminate?: boolean;
+  /**
+   * Whether the checkbox is in an `indeterminate` state by default.
+   *
+   * Similar to `defaultValue` and `defaultChecked`, this value applies until `indeterminate` is set, or user changes the state of the checkbox.
+   *
+   * In custom element implementations, this must reflect to the `indeterminate` attribute (similar to how `.defaultChecked` reflects to the `checked` attribute).
+   */
+  defaultIndeterminate?: boolean;
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` prop.
+   */
+  required?: boolean;
+}
 interface ClickableProps$1 extends BaseBoxProps, BaseClickableProps {
   /**
    * Disables the clickable, and indicates to assistive technology that the loading is in progress.
@@ -2763,6 +2843,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 
   /** @private */
   attributeChangedCallback(name: string): void;
+
   /** @private */
   connectedCallback(): void;
   /** @private */
@@ -2801,18 +2882,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$p]: Badge;
+    [tagName$q]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$p]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
+      [tagName$q]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
     }
   }
 }
 
-declare const tagName$p = 's-badge';
+declare const tagName$q = 's-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -2835,18 +2916,18 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$o]: Banner;
+    [tagName$p]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: HTMLAttributes<HTMLElement> & BannerJSXProps;
+      [tagName$p]: HTMLAttributes<HTMLElement> & BannerJSXProps;
     }
   }
 }
 
-declare const tagName$o = 's-banner';
+declare const tagName$p = 's-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id' | 'onDismiss'> {
@@ -2944,18 +3025,18 @@ declare class Box extends BoxElement implements BoxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$n]: Box;
+    [tagName$o]: Box;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$n]: HTMLAttributes<HTMLElement> & BoxJSXProps;
+      [tagName$o]: HTMLAttributes<HTMLElement> & BoxJSXProps;
     }
   }
 }
 
-declare const tagName$n = 's-box';
+declare const tagName$o = 's-box';
 export interface BoxJSXProps
   extends Partial<BoxProps>,
     Pick<BoxProps$1, 'id'> {}
@@ -2998,14 +3079,14 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49270@#queueRender': (() => void) | undefined;
-  '__#49270@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49330@#queueRender': (() => void) | undefined;
+  '__#49330@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49270@#checkElementPrototype'(): void;
+  '__#49330@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -3467,21 +3548,94 @@ declare class Button extends Button_base implements ButtonProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$m]: Button;
+    [tagName$n]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$m]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
+      [tagName$n]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
     }
   }
 }
 
-declare const tagName$m = 's-button';
+declare const tagName$n = 's-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'onClick' | 'onFocus' | 'onBlur' | 'id'> {}
+
+declare const internals: unique symbol;
+export type PreactInputProps = Required<
+  Pick<TextFieldProps$1, 'disabled' | 'id' | 'name' | 'value'>
+>;
+declare class PreactInputElement
+  extends PreactCustomElement
+  implements PreactInputProps
+{
+  static formAssociated: boolean;
+  /** @private */
+  [internals]: ElementInternals;
+  protected getDefaultValue(): string;
+  accessor onchange: EventListener | null;
+  accessor oninput: EventListener | null;
+  accessor disabled: PreactInputProps['disabled'];
+  accessor id: PreactInputProps['id'];
+  accessor name: PreactInputProps['name'];
+  get value(): PreactInputProps['value'];
+  set value(value: PreactInputProps['value']);
+  constructor(renderImpl: RenderImpl);
+}
+
+export type CheckboxProps = PreactInputProps &
+  Required<
+    Pick<
+      CheckboxProps$1,
+      | 'accessibilityLabel'
+      | 'checked'
+      | 'details'
+      | 'error'
+      | 'indeterminate'
+      | 'label'
+      | 'required'
+      | 'defaultChecked'
+      | 'defaultIndeterminate'
+    >
+  >;
+
+declare class Checkbox extends PreactInputElement implements CheckboxProps {
+  get checked(): boolean;
+  set checked(checked: CheckboxProps['checked']);
+  get value(): string;
+  set value(value: string);
+  accessor defaultChecked: CheckboxProps['defaultChecked'];
+  accessor accessibilityLabel: CheckboxProps['accessibilityLabel'];
+  accessor details: CheckboxProps['details'];
+  accessor error: CheckboxProps['error'];
+  get indeterminate(): CheckboxProps['indeterminate'];
+  set indeterminate(indeterminate: CheckboxProps['indeterminate']);
+  accessor defaultIndeterminate: CheckboxProps['defaultIndeterminate'];
+  accessor label: CheckboxProps['label'];
+  accessor required: CheckboxProps['required'];
+  formResetCallback(): void;
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$m]: Checkbox;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$m]: HTMLAttributes<HTMLElement> & CheckboxJSXProps;
+    }
+  }
+}
+
+declare const tagName$m = 's-checkbox';
+export interface CheckboxJSXProps
+  extends Partial<CheckboxProps>,
+    Pick<CheckboxProps$1, 'onChange' | 'onInput'> {}
 
 export type ClickableBaseProps = Required<
   Pick<
@@ -3505,14 +3659,14 @@ export interface ClickableProps
 declare const Clickable_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49270@#queueRender': (() => void) | undefined;
-  '__#49270@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49330@#queueRender': (() => void) | undefined;
+  '__#49330@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49270@#checkElementPrototype'(): void;
+  '__#49330@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -4133,14 +4287,14 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49270@#queueRender': (() => void) | undefined;
-  '__#49270@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49330@#queueRender': (() => void) | undefined;
+  '__#49330@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49270@#checkElementPrototype'(): void;
+  '__#49330@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -4993,28 +5147,6 @@ export interface TextJSXProps
   extends Partial<TextProps>,
     Pick<TextProps$1, 'id'> {}
 
-declare const internals: unique symbol;
-export type PreactInputProps = Required<
-  Pick<TextFieldProps$1, 'disabled' | 'id' | 'name' | 'value'>
->;
-declare class PreactInputElement
-  extends PreactCustomElement
-  implements PreactInputProps
-{
-  static formAssociated: boolean;
-  /** @private */
-  [internals]: ElementInternals;
-  protected getDefaultValue(): string;
-  accessor onchange: EventListener | null;
-  accessor oninput: EventListener | null;
-  accessor disabled: PreactInputProps['disabled'];
-  accessor id: PreactInputProps['id'];
-  accessor name: PreactInputProps['name'];
-  get value(): PreactInputProps['value'];
-  set value(value: PreactInputProps['value']);
-  constructor(renderImpl: RenderImpl);
-}
-
 export type PreactFieldProps<Autocomplete extends string = string> =
   PreactInputProps &
     Required<
@@ -5048,6 +5180,21 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   accessor readOnly: PreactFieldProps['readOnly'];
   accessor required: PreactFieldProps['required'];
   protected getDefaultValue(): string;
+  /**
+   * Global keyboard event handlers for things like key bindings typically
+   * ignore keystrokes originating from within input elements. Unfortunately,
+   * these never account for a Custom Element being the input element.
+   *
+   * To fix this, we spoof getAttribute & hasAttribute to make a PreactFieldElement
+   * appear as a contentEditable "input" when it contains a focused input element.
+   */
+  getAttribute(qualifiedName: string): string | null;
+  hasAttribute(qualifiedName: string): boolean;
+  /**
+   * Checks if the shadow tree contains a focused input (input, textarea, select, <x contentEditable>).
+   * Note: this does _not_ return true for focussed non-field form elements like buttons.
+   */
+  get isContentEditable(): boolean;
   formResetCallback(): void;
   connectedCallback(): void;
   constructor(renderImpl: RenderImpl);
@@ -5247,6 +5394,8 @@ export {
   type BoxJSXProps,
   Button,
   type ButtonJSXProps,
+  Checkbox,
+  type CheckboxJSXProps,
   Clickable,
   type ClickableJSXProps,
   Divider,
