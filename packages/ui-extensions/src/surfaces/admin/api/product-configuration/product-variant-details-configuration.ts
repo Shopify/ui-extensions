@@ -1,6 +1,8 @@
-import type {StandardApi} from '../standard/standard';
+import type {BlockExtensionApi} from '../block/block';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
+import type {Data} from '../shared';
 
+/* @deprecated */
 interface ProductVariant {
   id: string;
   sku: string;
@@ -19,6 +21,7 @@ interface ProductVariant {
   productVariantComponents: ProductVariantComponent[];
 }
 
+/* @deprecated */
 export interface ProductVariantComponent {
   id: string;
   displayName: string;
@@ -38,9 +41,12 @@ export interface ProductVariantComponent {
 
 export interface ProductVariantDetailsConfigurationApi<
   ExtensionTarget extends AnyExtensionTarget,
-> extends StandardApi<ExtensionTarget> {
-  data: {
-    /* The product variant currently being viewed in the admin. */
+> extends BlockExtensionApi<ExtensionTarget> {
+  data: Data & {
+    /*
+      @deprecated
+      The product variant currently being viewed in the admin.
+    */
     variant: ProductVariant;
     app: {
       launchUrl: string;

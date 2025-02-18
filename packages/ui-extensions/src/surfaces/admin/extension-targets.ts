@@ -28,22 +28,6 @@ type CustomerSegmentTemplateComponent = AnyComponentBuilder<
   >
 >;
 
-type ProductConfigurationComponents = AnyComponentBuilder<
-  Pick<
-    Components,
-    | 'Box'
-    | 'InlineStack'
-    | 'BlockStack'
-    | 'Divider'
-    | 'HeadingGroup'
-    | 'Heading'
-    | 'Text'
-    | 'Link'
-    | 'Image'
-    | 'Icon'
-  >
->;
-
 type OrderRoutingComponents = AnyComponentBuilder<
   Pick<Components, 'InternalLocationList'>
 >;
@@ -510,7 +494,7 @@ export interface ExtensionTargets {
    */
   'admin.product-details.configuration.render': RenderExtension<
     ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>,
-    ProductConfigurationComponents
+    AllComponents
   >;
 
   /**
@@ -520,7 +504,7 @@ export interface ExtensionTargets {
    */
   'admin.product-variant-details.configuration.render': RenderExtension<
     ProductVariantDetailsConfigurationApi<'admin.product-variant-details.configuration.render'>,
-    ProductConfigurationComponents
+    AllComponents
   >;
 
   /**
