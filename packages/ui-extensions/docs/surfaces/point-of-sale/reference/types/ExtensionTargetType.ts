@@ -20,8 +20,8 @@ export enum ExtensionTargetType {
   PosCashTrackingSessionStartObserve = 'pos.cash-tracking-session-start.event.observe',
   PosCashTrackingSessionCancelObserve = 'pos.cash-tracking-session-cancel.event.observe',
   PosCashTrackingSessionCompleteObserve = 'pos.cash-tracking-session-complete.event.observe',
-  PosPrepareReceiptInject = 'pos.prepare-receipt.event.inject',
   PosCartUpdateObserve = 'pos.cart-update.event.observe',
+  PosReceiptFooterBlockRender = 'pos.receipt-footer.block.render',
 }
 
 export enum TargetLink {
@@ -46,6 +46,6 @@ export enum TargetLink {
   PosCashTrackingSessionStartObserve = '[pos.cash-tracking-session-start.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-start-observe)',
   PosCashTrackingSessionCancelObserve = '[pos.cash-tracking-session-cancel.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-cancel-observe)',
   PosCashTrackingSessionCompleteObserve = '[pos.cash-tracking-session-complete.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-complete-observe)',
-  PosPrepareReceiptInject = '[pos.prepare-receipt.event.inject](/docs/api/pos-ui-extensions/targets/prepare-receipt-inject)',
   PosCartUpdateObserve = '[pos.cart-update.event.observe](/docs/api/pos-ui-extensions/targets/cart-update-observe)',
+  PosReceiptFooterBlockRender = '[pos.receipt-footer.block.render](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render)',
 }
