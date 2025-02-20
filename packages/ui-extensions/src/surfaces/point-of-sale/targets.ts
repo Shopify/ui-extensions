@@ -10,6 +10,9 @@ import {DraftOrderApi} from './render/api/draft-order-api/draft-order-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
 type ActionComponents = AnyComponentBuilder<Pick<Components, 'Button'>>;
+type ReceiptComponents = AnyComponentBuilder<
+  Pick<Components, 'POSReceiptBlock' | 'Text' | 'Image'>
+>;
 type BasicComponents = AnyComponentBuilder<Omit<Components, 'Tile'>>;
 type BlockComponents = AnyComponentBuilder<
   Pick<
@@ -129,7 +132,7 @@ export interface ExtensionTargets {
   >;
   'pos.receipt-footer.block.render': RenderExtension<
     StandardApi<'pos.receipt-footer.block.render'> & OrderApi,
-    BlockComponents
+    ReceiptComponents
   >;
 }
 
