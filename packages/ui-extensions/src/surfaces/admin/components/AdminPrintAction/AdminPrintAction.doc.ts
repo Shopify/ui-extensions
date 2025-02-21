@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Set the source URL of the print action extension.',
       tabs: [
         {
+          title: 'Preact',
+          code: './examples/basic-adminprintaction.example.tsx',
+          language: 'tsx',
+        },
+        {
           title: 'JS',
           code: './examples/basic-adminprintaction.example.ts',
           language: 'js',
-        },
-        {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminPrintAction/examples/basic-adminprintaction.example.tsx',
-          language: 'tsx',
         },
       ],
     },

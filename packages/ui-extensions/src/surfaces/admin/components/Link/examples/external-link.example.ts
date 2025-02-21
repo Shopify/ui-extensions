@@ -1,9 +1,6 @@
-import {extension} from '@shopify/ui-extensions/admin';
-
-export default extension('Playground', (root) => {
-  const link = document.createElement('shopify-link');
+export default function extension() {
+  const link = document.createElement('s-link');
   link.href = 'https://www.shopify.ca/climate/sustainability-fund';
   link.textContent = 'Sustainability fund';
-
-  root.appendChild(link);
-});
+  document.body.appendChild(link);
+}
