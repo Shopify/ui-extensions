@@ -1,9 +1,6 @@
-import {extension} from '@shopify/ui-extensions/admin';
-
-export default extension('Playground', (root) => {
-  const image = document.createElement('shopify-image');
+export default function extension() {
+  const image = document.createElement('s-image');
   image.alt = 'Pickaxe';
   image.src = 'https://shopify.dev/assets/icons/64/pickaxe-1.png';
-
-  root.appendChild(image);
-});
+  document.body.appendChild(image);
+}

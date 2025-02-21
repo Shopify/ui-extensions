@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Use Box to build your layout',
       tabs: [
         {
+          title: 'Preact',
+          code: './examples/basic-box.example.tsx',
+          language: 'tsx',
+        },
+        {
           title: 'JS',
           code: './examples/basic-box.example.ts',
           language: 'js',
-        },
-        {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Box/examples/basic-box.example.tsx',
-          language: 'tsx',
         },
       ],
     },

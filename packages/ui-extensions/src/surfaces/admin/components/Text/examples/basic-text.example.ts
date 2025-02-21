@@ -1,18 +1,16 @@
-import {extension} from '@shopify/ui-extensions/admin';
-
-export default extension('Playground', (root) => {
-  const stack = document.createElement('shopify-text');
+export default function extension() {
+  const stack = document.createElement('s-stack');
   stack.direction = 'block';
-  stack.alignment = 'center';
   stack.gap = true;
-  root.appendChild(stack);
 
-  const label = document.createElement('shopify-text');
+  const label = document.createElement('s-text');
   label.type = 'strong';
   label.textContent = 'Name:';
   stack.appendChild(label);
 
-  const name = document.createElement('shopify-text');
+  const name = document.createElement('s-text');
   name.textContent = 'Jane Doe';
   stack.appendChild(name);
-});
+
+  document.body.appendChild(stack);
+}

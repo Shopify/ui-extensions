@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Set the primary and secondary action of the Action modal.',
       tabs: [
         {
+          title: 'Preact',
+          code: './examples/basic-adminaction.example.tsx',
+          language: 'tsx',
+        },
+        {
           title: 'JS',
           code: './examples/basic-adminaction.example.ts',
           language: 'js',
-        },
-        {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/AdminAction/examples/basic-adminaction.example.tsx',
-          language: 'tsx',
         },
       ],
     },

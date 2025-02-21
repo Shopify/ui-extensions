@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Simple Heading example',
       tabs: [
         {
+          title: 'Preact',
+          code: './examples/basic-heading.example.tsx',
+          language: 'tsx',
+        },
+        {
           title: 'JS',
           code: './examples/basic-heading.example.ts',
           language: 'js',
-        },
-        {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Heading/examples/basic-heading.example.tsx',
-          language: 'tsx',
         },
       ],
     },

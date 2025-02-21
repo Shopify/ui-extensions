@@ -27,11 +27,11 @@ const data: ReferenceEntityTemplateSchema = {
           code: './examples/basic-icon.example.ts',
           language: 'js',
         },
-        {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Icon/examples/basic-icon.example.tsx',
-          language: 'tsx',
-        },
+        // {
+        //   title: 'React',
+        //   code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Icon/examples/basic-icon.example.tsx',
+        //   language: 'tsx',
+        // },
       ],
     },
   },
