@@ -5,6 +5,7 @@ import {TaxLine} from './tax-line';
 
 export interface Checkout {
   uuid: string;
+  customerId?: number;
   discounts: Discount[];
   draftCheckoutUuid: string;
   lineItems: LineItem[];

@@ -1,11 +1,13 @@
 import {createExtensionRegistrationFunction} from '../../utilities/registration';
+import {EventExtensionTargets} from './event/targets';
 
 import type {ExtensionTargets} from './targets';
 
 export * from '../../extension';
 
-export const extension =
-  createExtensionRegistrationFunction<ExtensionTargets>();
+export const extension = createExtensionRegistrationFunction<
+  ExtensionTargets & EventExtensionTargets
+>();
 
 /**
  * Registers your UI Extension to run for the selected extension target.
