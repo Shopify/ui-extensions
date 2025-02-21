@@ -1,9 +1,5 @@
-import {extension} from '@shopify/ui-extensions/admin';
-
-extension('Playground', (root) => {
-  const icon = document.createElement('shopify-icon');
-
+export default function extension() {
+  const icon = document.createElement('s-icon');
   icon.type = 'apps';
-
-  root.appendChild(icon);
-});
+  document.body.appendChild(icon);
+}

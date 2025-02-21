@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Section to an app page',
       tabs: [
         {
+          title: 'Preact',
+          code: './examples/basic-section.example.tsx',
+          language: 'tsx',
+        },
+        {
           title: 'JS',
           code: './examples/basic-section.example.ts',
           language: 'js',
-        },
-        {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Section/examples/basic-section.example.tsx',
-          language: 'tsx',
         },
       ],
     },

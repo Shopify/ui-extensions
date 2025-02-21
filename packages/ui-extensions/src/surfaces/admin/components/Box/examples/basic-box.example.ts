@@ -1,9 +1,6 @@
-import {extension} from '@shopify/ui-extensions/admin';
-
-export default extension('Playground', (root) => {
-  const box = document.createElement('shopify-box');
-
+export default function extension() {
+  const box = document.createElement('s-box');
   box.padding = 'base';
   box.textContent = 'Box';
-  root.appendChild(box);
-});
+  document.body.appendChild(box);
+}
