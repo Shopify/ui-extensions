@@ -149,6 +149,11 @@ const data: LandingTemplateSchema = {
             language: 'tsx',
             title: 'Query Product data',
           },
+          {
+            code: './examples/direct-api-remix.jsx',
+            language: 'tsx',
+            title: 'Remix clientLoader data',
+          },
         ],
       },
       sectionCard: [
@@ -157,6 +162,7 @@ const data: LandingTemplateSchema = {
           subtitle: 'Note',
           url: '/docs/api/admin-extensions#direct-api-access',
           type: 'information',
+          url: '/docs/api/admin-graphql/2024-01/objects/StorefrontAccessToken',
         },
         {
           name: 'Learn more about access scopes',
