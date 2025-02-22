@@ -202,11 +202,11 @@ interface Filters {
   query?: string;
 }
 
-export interface ResourcePickerOptions {
+export interface ResourcePickerOptions<Type extends keyof ResourceTypes> {
   /**
    * The type of resource you want to pick.
    */
-  type: 'product' | 'variant' | 'collection';
+  type: Type;
   /**
    *  The action verb appears in the title and as the primary action of the Resource Picker.
    * @defaultValue 'add'
@@ -235,6 +235,6 @@ export interface ResourcePickerOptions {
   selectionIds?: BaseResource[];
 }
 
-export type ResourcePickerApi = (
-  options: ResourcePickerOptions,
-) => Promise<SelectPayload<ResourcePickerOptions['type']> | undefined>;
+export type ResourcePickerApi = <Type extends keyof ResourceTypes>(
+  options: ResourcePickerOptions<Type>,
+) => Promise<SelectPayload<Type> | undefined>;
