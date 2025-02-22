@@ -2,7 +2,6 @@ import {BaseIntent} from '../intent';
 import {
   CashTrackingSessionStartInput,
   CashTrackingSessionCompleteInput,
-  CashTrackingSessionCancelInput,
 } from './input/CashTrackingSessionInput';
 import {TransactionCompleteInput} from './input/TransactionCompleteInput';
 import {CartUpdateEventInput} from './input/CartUpdateEventInput';
@@ -13,9 +12,6 @@ export interface EventExtensionTargets {
   ) => BaseIntent;
   'pos.cash-tracking-session-start.event.observe': (
     input: CashTrackingSessionStartInput,
-  ) => BaseIntent;
-  'pos.cash-tracking-session-cancel.event.observe': (
-    input: CashTrackingSessionCancelInput,
   ) => BaseIntent;
   'pos.cash-tracking-session-complete.event.observe': (
     input: CashTrackingSessionCompleteInput,
