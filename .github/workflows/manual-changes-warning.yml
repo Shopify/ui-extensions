@@ -1,0 +1,24 @@
+name: Manual Changes Warning
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+    branches:
+      - jkv/manual-changes-warning
+    paths:
+      - 'packages/ui-extensions/src/surfaces/checkout/**'
+      - 'packages/ui-extensions/docs/surfaces/checkout/**'
+      - 'packages/ui-extensions-react/src/surfaces/checkout/**'
+      - 'packages/ui-extensions-react/docs/surfaces/checkout/**'
+
+jobs:
+  comment-on-pr:
+    name: Comment on PR
+    runs-on: ubuntu-latest
+    if: ${{ github.event.pull_request.base.ref == "unstable" && !contains(github.event.pull_request.labels.*.name, 'automation') }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Add comment
+        run: |
+          gh pr comment ${{ github.event.number }} -b "🔔 This PR appears to be modifying the checkout UI surface for 'unstable'. These are typically done via an automated Github action. Did you add these same changes to the private package? See the [vault docs](https://vault.shopify.io/teams/2083/pages/Extension-Libraries~gkKh.md) for details.  "
+        shell: bash

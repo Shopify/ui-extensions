@@ -6,6 +6,7 @@ import type {LandingTemplateSchema} from '@shopify/generate-docs';
 const data: LandingTemplateSchema = {
   title: 'Configuration',
   description: `
+TEST CHANGE 3
 When you create a [checkout UI extension](/api/checkout-ui-extensions/), an [app extension configuration](/docs/apps/app-extensions/configuration) \`shopify.extension.toml\` file is automatically generated in your extension's directory.
 
 This guide describes [extension targeting](#targets), [capabilities](#capabilities), [metafields](#metafields), and the [settings](#settings-definition) you can configure in the app extension configuration.
