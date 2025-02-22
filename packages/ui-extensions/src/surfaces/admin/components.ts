@@ -41,6 +41,8 @@ export {Heading} from './components/Heading/Heading';
 export type {HeadingProps} from './components/Heading/Heading';
 export {HeadingGroup} from './components/HeadingGroup/HeadingGroup';
 export type {HeadingGroupProps} from './components/HeadingGroup/HeadingGroup';
+export {HiddenField} from './components/HiddenField/HiddenField';
+export type {HiddenFieldProps} from './components/HiddenField/HiddenField';
 export {Icon} from './components/Icon/Icon';
 export type {IconProps} from './components/Icon/Icon';
 export {InlineStack} from './components/InlineStack/InlineStack';
