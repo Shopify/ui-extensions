@@ -1981,7 +1981,7 @@ interface SectionProps$1 extends GlobalProps {
    */
   padding?: 'auto' | 'none';
 }
-export interface SelectProps
+interface SelectProps$1
   extends GlobalProps,
     AutocompleteProps<AnyAutocompleteField>,
     Pick<FieldDecorationProps, 'icon'>,
@@ -3164,14 +3164,14 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49292@#queueRender': (() => void) | undefined;
-  '__#49292@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49586@#queueRender': (() => void) | undefined;
+  '__#49586@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49292@#checkElementPrototype'(): void;
+  '__#49586@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -3751,14 +3751,14 @@ export interface ClickableProps
 declare const Clickable_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49292@#queueRender': (() => void) | undefined;
-  '__#49292@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49586@#queueRender': (() => void) | undefined;
+  '__#49586@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49292@#checkElementPrototype'(): void;
+  '__#49586@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -4386,14 +4386,14 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#49292@#queueRender': (() => void) | undefined;
-  '__#49292@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#49586@#queueRender': (() => void) | undefined;
+  '__#49586@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49292@#checkElementPrototype'(): void;
+  '__#49586@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -5037,10 +5037,10 @@ export interface SectionJSXProps
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id'> {}
 
-export interface SharedProps
-  extends Required<
+export type SelectProps = PreactInputProps &
+  Required<
     Pick<
-      SelectProps,
+      SelectProps$1,
       | 'details'
       | 'disabled'
       | 'error'
@@ -5052,19 +5052,19 @@ export interface SharedProps
       | 'icon'
       | 'labelAccessibilityVisibility'
     >
-  > {}
+  >;
 
 declare const usedFirstOptionSymbol: unique symbol;
 declare const hasInitialValueSymbol: unique symbol;
 
-declare class Select extends PreactInputElement implements SharedProps {
-  accessor icon: SharedProps['icon'];
-  accessor details: SharedProps['details'];
-  accessor error: SharedProps['error'];
-  accessor label: SharedProps['label'];
-  accessor placeholder: SharedProps['placeholder'];
-  accessor required: SharedProps['required'];
-  accessor labelAccessibilityVisibility: SharedProps['labelAccessibilityVisibility'];
+declare class Select extends PreactInputElement implements SelectProps {
+  accessor icon: SelectProps['icon'];
+  accessor details: SelectProps['details'];
+  accessor error: SelectProps['error'];
+  accessor label: SelectProps['label'];
+  accessor placeholder: SelectProps['placeholder'];
+  accessor required: SelectProps['required'];
+  accessor labelAccessibilityVisibility: SelectProps['labelAccessibilityVisibility'];
   connectedCallback(): void;
   disconnectedCallback(): void;
   constructor();
@@ -5093,7 +5093,7 @@ declare module 'preact' {
 }
 
 declare const tagName$e = 's-select';
-export interface SelectJSXProps extends Partial<SharedProps> {}
+export interface SelectJSXProps extends Partial<SelectProps> {}
 
 export interface SpinnerProps
   extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
