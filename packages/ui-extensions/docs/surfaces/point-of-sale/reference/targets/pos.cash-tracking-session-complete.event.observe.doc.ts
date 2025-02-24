@@ -10,10 +10,6 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   related: [
     {
-      name: ExtensionTargetType.PosCashTrackingSessionCancelObserve,
-      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-cancel-observe',
-    },
-    {
       name: ExtensionTargetType.PosCashTrackingSessionStartObserve,
       url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-start-observe',
     },

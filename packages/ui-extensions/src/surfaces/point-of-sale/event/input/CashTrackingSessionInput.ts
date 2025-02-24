@@ -14,11 +14,3 @@ export interface CashTrackingSessionCompleteInput extends BaseInput {
     closingTime: string;
   };
 }
-
-export interface CashTrackingSessionCancelInput extends BaseInput {
-  cashTrackingSessionCancel: {
-    id: number;
-    openingTime?: string;
-    closingTime?: string;
-  };
-}
