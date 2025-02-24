@@ -78,7 +78,7 @@ This section covers how to view POS UI Extension logs and errors on iOS devices.
 
 ### Demo
 
-The following demo shows ow to debug a POS UI Extension on iOS by using the Safari dev tools. The example extension code has \`console.log\` statements that appear when we open the Safari dev tools.
+The following demo shows how to debug a POS UI Extension on iOS by using the Safari dev tools. The example extension code has \`console.log\` statements that appear when we open the Safari dev tools.
 
 ![Debugging demo](/assets/api/pos/debug-ui-extension-ios.gif)
 `,
