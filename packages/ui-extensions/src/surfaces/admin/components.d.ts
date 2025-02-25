@@ -3047,7 +3047,6 @@ declare const tagName$t = 's-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id'> {
-  primaryAction?: ComponentChild;
   secondaryActions?: ComponentChild;
   onDismiss?: ((event: CallbackEvent<typeof tagName$t>) => void) | null;
 }
@@ -3196,14 +3195,14 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#48888@#queueRender': (() => void) | undefined;
-  '__#48888@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#44918@#queueRender': (() => void) | undefined;
+  '__#44918@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#48888@#checkElementPrototype'(): void;
+  '__#44918@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -3783,14 +3782,14 @@ export interface ClickableProps
 declare const Clickable_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#48888@#queueRender': (() => void) | undefined;
-  '__#48888@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#44918@#queueRender': (() => void) | undefined;
+  '__#44918@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#48888@#checkElementPrototype'(): void;
+  '__#44918@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -4418,14 +4417,14 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#48888@#queueRender': (() => void) | undefined;
-  '__#48888@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#44918@#queueRender': (() => void) | undefined;
+  '__#44918@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#48888@#checkElementPrototype'(): void;
+  '__#44918@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
