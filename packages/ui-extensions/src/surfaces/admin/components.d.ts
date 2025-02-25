@@ -5604,8 +5604,6 @@ declare module 'preact' {
 
 export interface AdminActionJSXProps extends Partial<AdminActionProps> {
   id?: string;
-  primaryAction: ComponentChild;
-  secondaryAction: ComponentChild;
 }
 
 declare const tagName$1 = 's-admin-block';
