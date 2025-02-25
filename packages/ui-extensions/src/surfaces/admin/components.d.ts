@@ -225,6 +225,7 @@ type IconType =
   | 'favicon'
   | 'file'
   | 'filter'
+  | 'fingerprint'
   | 'flag'
   | 'flip-horizontal'
   | 'flip-vertical'
@@ -1494,11 +1495,6 @@ interface AutocompleteProps<AutocompleteField extends AnyAutocompleteField> {
 type AutocompleteSection = `section-${string}`;
 type AutocompleteGroup = 'shipping' | 'billing';
 type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
-type AutocompleteFieldTelephoneAlias = 'tel' | 'telephone';
-type AutocompleteFieldBirthdayAlias = 'bday' | 'birthday';
-type AutocompleteFieldCreditCardAlias = 'cc' | 'credit-card';
-type AutocompleteFieldInstantMessageAlias = 'impp' | 'instant-message';
-type AutocompleteFieldSecurityCodeAlias = 'csc' | 'security-code';
 type AnyAutocompleteField =
   | 'additional-name'
   | 'address-level1'
@@ -1531,39 +1527,39 @@ type AnyAutocompleteField =
   | 'transaction-currency'
   | 'url'
   | 'username'
-  | `${AutocompleteFieldBirthdayAlias}-day`
-  | `${AutocompleteFieldBirthdayAlias}-month`
-  | `${AutocompleteFieldBirthdayAlias}-year`
-  | `${AutocompleteFieldBirthdayAlias}`
-  | `${AutocompleteFieldCreditCardAlias}-additional-name`
-  | `${AutocompleteFieldCreditCardAlias}-expiry-month`
-  | `${AutocompleteFieldCreditCardAlias}-expiry-year`
-  | `${AutocompleteFieldCreditCardAlias}-expiry`
-  | `${AutocompleteFieldCreditCardAlias}-family-name`
-  | `${AutocompleteFieldCreditCardAlias}-given-name`
-  | `${AutocompleteFieldCreditCardAlias}-name`
-  | `${AutocompleteFieldCreditCardAlias}-number`
-  | `${AutocompleteFieldCreditCardAlias}-${AutocompleteFieldSecurityCodeAlias}`
-  | `${AutocompleteFieldCreditCardAlias}-type`
+  | 'bday-day'
+  | 'bday-month'
+  | 'bday-year'
+  | 'bday'
+  | 'cc-additional-name'
+  | 'cc-expiry-month'
+  | 'cc-expiry-year'
+  | 'cc-expiry'
+  | 'cc-family-name'
+  | 'cc-given-name'
+  | 'cc-name'
+  | 'cc-number'
+  | 'cc-csc'
+  | 'cc-type'
   | `${AutocompleteAddressGroup} email`
-  | `${AutocompleteFieldInstantMessageAlias}`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldInstantMessageAlias}`
-  | `${AutocompleteFieldTelephoneAlias}`
-  | `${AutocompleteFieldTelephoneAlias}-area-code`
-  | `${AutocompleteFieldTelephoneAlias}-country-code`
-  | `${AutocompleteFieldTelephoneAlias}-extension`
-  | `${AutocompleteFieldTelephoneAlias}-local-prefix`
-  | `${AutocompleteFieldTelephoneAlias}-local-suffix`
-  | `${AutocompleteFieldTelephoneAlias}-local`
-  | `${AutocompleteFieldTelephoneAlias}-national`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-area-code`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-country-code`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-extension`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local-prefix`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local-suffix`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-local`
-  | `${AutocompleteAddressGroup} ${AutocompleteFieldTelephoneAlias}-national`;
+  | 'impp'
+  | `${AutocompleteAddressGroup} impp`
+  | 'tel'
+  | 'tel-area-code'
+  | 'tel-country-code'
+  | 'tel-extension'
+  | 'tel-local-prefix'
+  | 'tel-local-suffix'
+  | 'tel-local'
+  | 'tel-national'
+  | `${AutocompleteAddressGroup} tel`
+  | `${AutocompleteAddressGroup} tel-area-code`
+  | `${AutocompleteAddressGroup} tel-country-code`
+  | `${AutocompleteAddressGroup} tel-extension`
+  | `${AutocompleteAddressGroup} tel-local-prefix`
+  | `${AutocompleteAddressGroup} tel-local-suffix`
+  | `${AutocompleteAddressGroup} tel-local`
+  | `${AutocompleteAddressGroup} tel-national`;
 type TextAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   | 'additional-name'
@@ -1591,11 +1587,11 @@ type TextAutocompleteField = ExtractStrict<
   | 'street-address'
   | 'transaction-currency'
   | 'username'
-  | `${AutocompleteFieldCreditCardAlias}-name`
-  | `${AutocompleteFieldCreditCardAlias}-given-name`
-  | `${AutocompleteFieldCreditCardAlias}-additional-name`
-  | `${AutocompleteFieldCreditCardAlias}-family-name`
-  | `${AutocompleteFieldCreditCardAlias}-type`
+  | 'cc-name'
+  | 'cc-given-name'
+  | 'cc-additional-name'
+  | 'cc-family-name'
+  | 'cc-type'
 >;
 interface DividerProps$1 extends GlobalProps {
   /**
@@ -1920,9 +1916,7 @@ interface NumberFieldProps$1
 }
 type NumberAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
-  | 'one-time-code'
-  | `${AutocompleteFieldCreditCardAlias}-number`
-  | `${AutocompleteFieldCreditCardAlias}-${AutocompleteFieldSecurityCodeAlias}`
+  'one-time-code' | 'cc-number' | 'cc-csc'
 >;
 interface OptionProps$1 extends GlobalProps, BaseOptionProps {
   /**
@@ -1976,7 +1970,7 @@ type ParagraphType =
    * Indicates the text is considered less important than the main content, but is still necessary for the reader to understand.
    * It can be used for secondary content but also for disclaimers, terms and conditions, or legal information.
    *
-   * Surfaces should apply a smaller font size than the default size for Paragraph.
+   * Surfaces should apply a smaller font size than the default size.
    *
    * In an HTML host, the text will be rendered in a `<small>` element.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
@@ -2017,7 +2011,7 @@ interface SelectProps$1
   extends GlobalProps,
     AutocompleteProps<AnyAutocompleteField>,
     Pick<FieldDecorationProps, 'icon'>,
-    Exclude<FieldProps, 'defaultValue'>,
+    Omit<FieldProps, 'defaultValue'>,
     FocusEventProps {
   /**
    * The options a user can select from.
@@ -2061,21 +2055,21 @@ interface StackProps$1 extends BaseBoxPropsWithRole, GapProps {
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    * @default 'normal'
    */
-  justifyContent: JustifyContentKeyword;
+  justifyContent?: JustifyContentKeyword;
   /**
    * Aligns the Stack's children along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
    * @default 'normal'
    */
-  alignItems: AlignItemsKeyword;
+  alignItems?: AlignItemsKeyword;
   /**
    * Aligns the Stack along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
    * @default 'normal'
    */
-  alignContent: AlignContentKeyword;
+  alignContent?: AlignContentKeyword;
 }
 interface PaginationProps {
   /**
@@ -2190,6 +2184,9 @@ type TextType =
    * Surfaces may apply styling to this type.
    *
    * In an HTML host, the text will be rendered in an `<address>` element.
+   *
+   * @implementation vertical alignment should be `baseline` (`vertical-align: baseline`)
+   *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
    */
   | 'address'
@@ -2241,6 +2238,16 @@ type TextType =
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
    */
   | 'strong'
+  /**
+   * Indicates the text is considered less important than the main content, but is still necessary for the reader to understand.
+   * It can be used for secondary content but also for disclaimers, terms and conditions, or legal information.
+   *
+   * Surfaces should apply a smaller font size than the default size.
+   *
+   * In an HTML host, the text will be rendered in a `<small>` element.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+   */
+  | 'small'
   /**
    * No additional semantics or styling is applied.
    *
@@ -3195,14 +3202,14 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#44918@#queueRender': (() => void) | undefined;
-  '__#44918@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#44926@#queueRender': (() => void) | undefined;
+  '__#44926@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#44918@#checkElementPrototype'(): void;
+  '__#44926@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -3782,14 +3789,14 @@ export interface ClickableProps
 declare const Clickable_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#44918@#queueRender': (() => void) | undefined;
-  '__#44918@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#44926@#queueRender': (() => void) | undefined;
+  '__#44926@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#44918@#checkElementPrototype'(): void;
+  '__#44926@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -4417,14 +4424,14 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#44918@#queueRender': (() => void) | undefined;
-  '__#44918@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#44926@#queueRender': (() => void) | undefined;
+  '__#44926@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#44918@#checkElementPrototype'(): void;
+  '__#44926@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
