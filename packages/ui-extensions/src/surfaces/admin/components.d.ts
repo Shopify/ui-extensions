@@ -1,4 +1,4 @@
-/** VERSION: 0.34.0 **/
+/** VERSION: 0.37.0 **/
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -93,6 +93,7 @@ type IconType =
   | 'calculator'
   | 'calendar-check'
   | 'calendar-compare'
+  | 'calendar-list'
   | 'calendar-time'
   | 'calendar'
   | 'camera-flip'
@@ -219,11 +220,13 @@ type IconType =
   | 'external'
   | 'eye-check-mark'
   | 'eye-dropper'
+  | 'eye-dropper-list'
   | 'eye-first'
   | 'eyeglasses'
   | 'fav'
   | 'favicon'
   | 'file'
+  | 'file-list'
   | 'filter'
   | 'fingerprint'
   | 'flag'
@@ -250,9 +253,11 @@ type IconType =
   | 'globe-asia'
   | 'globe-europe'
   | 'globe-lines'
+  | 'globe-list'
   | 'globe'
   | 'grid'
   | 'hashtag-decimal'
+  | 'hashtag-list'
   | 'hashtag'
   | 'heart'
   | 'hide'
@@ -300,6 +305,7 @@ type IconType =
   | 'layout-sidebar-left'
   | 'layout-sidebar-right'
   | 'lightbulb'
+  | 'link-list'
   | 'link'
   | 'list-bulleted'
   | 'list-numbered'
@@ -313,8 +319,11 @@ type IconType =
   | 'markets-yen'
   | 'markets'
   | 'maximize'
+  | 'measurement-size-list'
   | 'measurement-size'
+  | 'measurement-volume-list'
   | 'measurement-volume'
+  | 'measurement-weight-list'
   | 'measurement-weight'
   | 'media-receiver'
   | 'megaphone'
@@ -358,6 +367,7 @@ type IconType =
   | 'page-clock'
   | 'page-down'
   | 'page-heart'
+  | 'page-list'
   | 'page-reference'
   | 'page-remove'
   | 'page-report'
@@ -463,6 +473,7 @@ type IconType =
   | 'sound'
   | 'sports'
   | 'star-filled'
+  | 'star-list'
   | 'star'
   | 'status-active'
   | 'status'
@@ -1205,6 +1216,22 @@ interface InputProps extends BaseInputProps {
    */
   defaultValue?: string;
 }
+interface MultipleInputProps extends BaseInputProps {
+  /**
+   * Callback when the user has selected file(s).
+   */
+  onChange?: (newValue: string[]) => void;
+  /**
+   * Callback when the user has selected file(s).
+   */
+  onInput?: (newValue: string[]) => void;
+  /**
+   * An array of the `value`s of the selected options.
+   *
+   * This is a convenience prop for setting the `selected` prop on child options.
+   */
+  values?: string[];
+}
 interface FieldErrorProps {
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
@@ -1373,7 +1400,7 @@ interface BaseOptionProps extends BaseSelectableProps {
    */
   defaultSelected?: boolean;
 }
-interface BaseCheckableProps extends BaseSelectableProps {
+interface BaseCheckableProps extends BaseSelectableProps, InteractionProps {
   /**
    * Visual content to use as the control label.
    */
@@ -1437,6 +1464,51 @@ interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps {
    * so with the `error` prop.
    */
   required?: boolean;
+}
+interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
+  /**
+   * Content to use as the choice label.
+   */
+  label?: string;
+  /**
+   * Additional text to provide context or guidance for the input.
+   *
+   * This text is displayed along with the input and its label
+   * to offer more information or instructions to the user.
+   *
+   * @implementation this content should be linked to the input with an `aria-describedby` attribute.
+   */
+  details?: string;
+  /**
+   * Set to `true` to associate a choice with the error passed to `ChoiceList`
+   */
+  error?: boolean;
+}
+interface ChoiceListProps$1
+  extends GlobalProps,
+    MultipleInputProps,
+    FieldDetailsProps,
+    FieldErrorProps {
+  /**
+   * Whether multiple choices can be selected.
+   *
+   * @default false
+   */
+  multiple?: boolean;
+  /**
+   * The choices a user can select from.
+   *
+   * Accepts `Choice` components.
+   */
+  children?: ComponentChildren;
+  /**
+   * Disables the field, disallowing any interaction.
+   *
+   * `disabled` on any child choices is ignored when this is true.
+   *
+   * @default false
+   */
+  disabled?: MultipleInputProps['disabled'];
 }
 interface ClickableProps$1 extends BaseBoxProps, BaseClickableProps {
   /**
@@ -1649,6 +1721,12 @@ type ContentDistribution =
   | 'stretch';
 type ContentPosition = 'center' | 'start' | 'end';
 type OverflowPosition = `unsafe ${ContentPosition}` | `safe ${ContentPosition}`;
+type JustifyItemsKeyword =
+  | 'normal'
+  | 'stretch'
+  | BaselinePosition
+  | OverflowPosition
+  | ContentPosition;
 type AlignItemsKeyword =
   | 'normal'
   | 'stretch'
@@ -1666,6 +1744,76 @@ type AlignContentKeyword =
   | ContentDistribution
   | OverflowPosition
   | ContentPosition;
+interface GridProps$1 extends BaseBoxPropsWithRole, GapProps {
+  /**
+	  Define columns and specify their size.
+  
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
+	  @default 'none'
+	*/
+  gridTemplateColumns?: string;
+  /**
+	  Define rows and specify their size.
+  
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
+	  @default 'none'
+	*/
+  gridTemplateRows?: string;
+  /**
+	  Aligns the grid items along the inline (row) axis.
+  
+	  This overrides the inline value of `placeItems`.
+  
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
+	  @default '' - meaning no override
+	*/
+  justifyItems?: JustifyItemsKeyword | '';
+  /**
+	  Aligns the grid items along the block (column) axis.
+  
+	  This overrides the block value of `placeItems`.
+  
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+	  @default '' - meaning no override
+	*/
+  alignItems?: AlignItemsKeyword | '';
+  /**
+	  A shorthand property for `justify-items` and `align-items`.
+  
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-items
+	  @default 'normal normal'
+	*/
+  placeItems?:
+    | `${AlignItemsKeyword} ${JustifyItemsKeyword}`
+    | AlignItemsKeyword;
+  /**
+	  Aligns the grid along the inline (row) axis.
+  
+	  This overrides the inline value of `placeContent`.
+  
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+	  @default '' - meaning no override
+	*/
+  justifyContent?: JustifyContentKeyword | '';
+  /**
+	  Aligns the grid along the block (column) axis.
+  
+	  This overrides the block value of `placeContent`.
+  
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+	  @default '' - meaning no override
+	*/
+  alignContent?: AlignContentKeyword | '';
+  /**
+	  A shorthand property for `justify-content` and `align-content`.
+  
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-content
+	  @default 'normal normal'
+	*/
+  placeContent?:
+    | `${AlignContentKeyword} ${JustifyContentKeyword}`
+    | AlignContentKeyword;
+}
 interface BaseTypographyProps {
   /**
    * Sets the color of the Typography component, based on the intention of the information being conveyed.
@@ -2995,18 +3143,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$u]: Badge;
+    [tagName$x]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$u]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
+      [tagName$x]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
     }
   }
 }
 
-declare const tagName$u = 's-badge';
+declare const tagName$x = 's-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -3039,23 +3187,23 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$t]: Banner;
+    [tagName$w]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$t]: HTMLAttributes<HTMLElement> & BannerJSXProps;
+      [tagName$w]: HTMLAttributes<HTMLElement> & BannerJSXProps;
     }
   }
 }
 
-declare const tagName$t = 's-banner';
+declare const tagName$w = 's-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id'> {
   secondaryActions?: ComponentChild;
-  onDismiss?: ((event: CallbackEvent<typeof tagName$t>) => void) | null;
+  onDismiss?: ((event: CallbackEvent<typeof tagName$w>) => void) | null;
 }
 
 export type AlignedBox = Required<BoxProps$1>;
@@ -3148,18 +3296,18 @@ declare class Box extends BoxElement implements BoxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$s]: Box;
+    [tagName$v]: Box;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$s]: HTMLAttributes<HTMLElement> & BoxJSXProps;
+      [tagName$v]: HTMLAttributes<HTMLElement> & BoxJSXProps;
     }
   }
 }
 
-declare const tagName$s = 's-box';
+declare const tagName$v = 's-box';
 export interface BoxJSXProps
   extends Partial<BoxProps>,
     Pick<BoxProps$1, 'id'> {}
@@ -3202,14 +3350,14 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#44926@#queueRender': (() => void) | undefined;
-  '__#44926@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#45319@#queueRender': (() => void) | undefined;
+  '__#45319@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#44926@#checkElementPrototype'(): void;
+  '__#45319@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -3671,24 +3819,24 @@ declare class Button extends Button_base implements ButtonProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$r]: Button;
+    [tagName$u]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$r]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
+      [tagName$u]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
     }
   }
 }
 
-declare const tagName$r = 's-button';
+declare const tagName$u = 's-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$r>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$r>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$r>) => void) | null;
+  onClick?: ((event: CallbackEvent<typeof tagName$u>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$u>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$u>) => void) | null;
 }
 
 declare const internals: unique symbol;
@@ -3748,23 +3896,103 @@ declare class Checkbox extends PreactInputElement implements CheckboxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$q]: Checkbox;
+    [tagName$t]: Checkbox;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$q]: HTMLAttributes<HTMLElement> & CheckboxJSXProps;
+      [tagName$t]: HTMLAttributes<HTMLElement> & CheckboxJSXProps;
     }
   }
 }
 
-declare const tagName$q = 's-checkbox';
+declare const tagName$t = 's-checkbox';
 export interface CheckboxJSXProps
   extends Partial<CheckboxProps>,
     Pick<CheckboxProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$q>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$q>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$t>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$t>) => void) | null;
+}
+
+export interface ChoiceProps
+  extends Required<
+    Pick<
+      ChoiceProps$1,
+      | 'selected'
+      | 'defaultSelected'
+      | 'disabled'
+      | 'accessibilityLabel'
+      | 'value'
+      | 'label'
+      | 'details'
+    >
+  > {}
+
+declare class Choice extends PreactInputElement implements ChoiceProps {
+  accessor details: ChoiceProps['details'];
+  get selected(): boolean;
+  set selected(selected: ChoiceProps['selected']);
+  accessor accessibilityLabel: ChoiceProps['accessibilityLabel'];
+  accessor label: ChoiceProps['label'];
+  accessor defaultSelected: ChoiceProps['defaultSelected'];
+  formResetCallback(): void;
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$s]: Choice;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$s]: HTMLAttributes<HTMLElement> & ChoiceJSXProps;
+    }
+  }
+}
+
+declare const tagName$s = 's-choice';
+export interface ChoiceJSXProps
+  extends Partial<ChoiceProps>,
+    Pick<ChoiceProps$1, 'id'> {}
+
+export interface ChoiceListProps
+  extends Required<
+    Pick<
+      ChoiceListProps$1,
+      'multiple' | 'disabled' | 'error' | 'details' | 'values' | 'name'
+    >
+  > {}
+
+declare class ChoiceList extends PreactInputElement implements ChoiceListProps {
+  accessor error: ChoiceListProps['error'];
+  accessor details: ChoiceListProps['details'];
+  accessor multiple: ChoiceListProps['multiple'];
+  get values(): ChoiceListProps['values'];
+  set values(values: ChoiceListProps['values']);
+  formResetCallback(): void;
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$r]: ChoiceList;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$r]: HTMLAttributes<HTMLElement> & ChoiceListJSXProps;
+    }
+  }
+}
+
+declare const tagName$r = 's-choice-list';
+export interface ChoiceListJSXProps
+  extends Partial<ChoiceListProps>,
+    Pick<ChoiceListProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName$r>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$r>) => void) | null;
 }
 
 export type ClickableBaseProps = Required<
@@ -3789,14 +4017,14 @@ export interface ClickableProps
 declare const Clickable_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#44926@#queueRender': (() => void) | undefined;
-  '__#44926@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#45319@#queueRender': (() => void) | undefined;
+  '__#45319@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#44926@#checkElementPrototype'(): void;
+  '__#45319@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -4254,24 +4482,24 @@ declare class Clickable extends Clickable_base implements ClickableProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$p]: Clickable;
+    [tagName$q]: Clickable;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$p]: HTMLAttributes<HTMLElement> & ClickableJSXProps;
+      [tagName$q]: HTMLAttributes<HTMLElement> & ClickableJSXProps;
     }
   }
 }
 
-declare const tagName$p = 's-clickable';
+declare const tagName$q = 's-clickable';
 export interface ClickableJSXProps
   extends Partial<ClickableProps>,
     Pick<ClickableProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$p>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$p>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$p>) => void) | null;
+  onClick?: ((event: CallbackEvent<typeof tagName$q>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$q>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$q>) => void) | null;
 }
 
 export interface DividerProps {
@@ -4286,21 +4514,68 @@ declare class Divider extends PreactCustomElement implements DividerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$o]: Divider;
+    [tagName$p]: Divider;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: HTMLAttributes<HTMLElement> & DividerJSXProps;
+      [tagName$p]: HTMLAttributes<HTMLElement> & DividerJSXProps;
     }
   }
 }
 
-declare const tagName$o = 's-divider';
+declare const tagName$p = 's-divider';
 export interface DividerJSXProps
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}
+
+export type RequiredAlignedProps = Required<GridProps$1>;
+export interface GridProps extends Required<BoxProps> {
+  gridTemplateColumns: RequiredAlignedProps['gridTemplateColumns'];
+  gridTemplateRows: RequiredAlignedProps['gridTemplateRows'];
+  alignItems: RequiredAlignedProps['alignItems'];
+  justifyItems: RequiredAlignedProps['justifyItems'];
+  placeItems: RequiredAlignedProps['placeItems'];
+  alignContent: RequiredAlignedProps['alignContent'];
+  justifyContent: RequiredAlignedProps['justifyContent'];
+  placeContent: RequiredAlignedProps['placeContent'];
+  rowGap: RequiredAlignedProps['rowGap'];
+  columnGap: RequiredAlignedProps['columnGap'];
+  gap: RequiredAlignedProps['gap'];
+}
+
+declare class Grid extends BoxElement implements GridProps {
+  constructor();
+  accessor gridTemplateColumns: GridProps['gridTemplateColumns'];
+  accessor gridTemplateRows: GridProps['gridTemplateRows'];
+  accessor justifyItems: GridProps['justifyItems'];
+  accessor alignItems: GridProps['alignItems'];
+  accessor placeItems: GridProps['placeItems'];
+  accessor justifyContent: GridProps['justifyContent'];
+  accessor alignContent: GridProps['alignContent'];
+  accessor placeContent: GridProps['placeContent'];
+  accessor gap: GridProps['gap'];
+  accessor rowGap: GridProps['rowGap'];
+  accessor columnGap: GridProps['columnGap'];
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$o]: Grid;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$o]: HTMLAttributes<HTMLElement> & GridJSXProps;
+    }
+  }
+}
+
+declare const tagName$o = 's-grid';
+export interface GridJSXProps
+  extends Partial<GridProps>,
+    Pick<GridProps$1, 'id'> {}
 
 export type RequiredHeadingProps = Required<HeadingProps$1>;
 export interface HeadingProps {
@@ -4424,14 +4699,14 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#44926@#queueRender': (() => void) | undefined;
-  '__#44926@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#45319@#queueRender': (() => void) | undefined;
+  '__#45319@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#44926@#checkElementPrototype'(): void;
+  '__#45319@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -5186,7 +5461,12 @@ declare module 'preact' {
 }
 
 declare const tagName$e = 's-select';
-export interface SelectJSXProps extends Partial<SelectProps> {}
+export interface SelectJSXProps extends Partial<SelectProps> {
+  onChange?: (event: CallbackEvent<typeof tagName$e>) => void;
+  onInput?: (event: CallbackEvent<typeof tagName$e>) => void;
+  onBlur?: (event: CallbackEvent<typeof tagName$e>) => void;
+  onFocus?: (event: CallbackEvent<typeof tagName$e>) => void;
+}
 
 export interface SpinnerProps
   extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
@@ -5604,6 +5884,8 @@ declare module 'preact' {
 
 export interface AdminActionJSXProps extends Partial<AdminActionProps> {
   id?: string;
+  primaryAction: ComponentChild;
+  secondaryAction: ComponentChild;
 }
 
 declare const tagName$1 = 's-admin-block';
@@ -5693,10 +5975,16 @@ export {
   type ButtonJSXProps,
   Checkbox,
   type CheckboxJSXProps,
+  Choice,
+  type ChoiceJSXProps,
+  ChoiceList,
+  type ChoiceListJSXProps,
   Clickable,
   type ClickableJSXProps,
   Divider,
   type DividerJSXProps,
+  Grid,
+  type GridJSXProps,
   Heading,
   type HeadingJSXProps,
   Icon,
