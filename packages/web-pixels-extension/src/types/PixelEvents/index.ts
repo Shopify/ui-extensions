@@ -836,35 +836,6 @@ export interface PixelEventsProductRemovedFromCart {
   type: EventType.Standard;
 }
 
-export interface PixelEventsProductVariantViewedData {
-  productVariant: ProductVariant;
-}
-
-/**
- * The `product_variant_viewed` event logs an instance where a customer
- * interacts with the product page and views a different variant than the
- * initial `product_viewed` impression. This event is available on the Product
- * page
- */
-export interface PixelEventsProductVariantViewed {
-  clientId: ClientId;
-  context: Context;
-  data: PixelEventsProductVariantViewedData;
-  id: Id;
-
-  /**
-   * The name of the customer event
-   */
-  name: 'product_variant_viewed';
-
-  /**
-   * The sequence index number of the event.
-   */
-  seq: number;
-  timestamp: Timestamp;
-  type: EventType.Standard;
-}
-
 export interface PixelEventsProductViewedData {
   productVariant: ProductVariant;
 }
@@ -1130,14 +1101,6 @@ export interface PixelEvents {
    * store page
    */
   product_removed_from_cart: PixelEventsProductRemovedFromCart;
-
-  /**
-   * The `product_variant_viewed` event logs an instance where a customer
-   * interacts with the product page and views a different variant than the
-   * initial `product_viewed` impression. This event is available on the Product
-   * page
-   */
-  product_variant_viewed: PixelEventsProductVariantViewed;
 
   /**
    * The `product_viewed` event logs an instance where a customer visited a
