@@ -1,10 +1,11 @@
 import {createPackage} from '@shopify/loom';
-import {existsSync, readFileSync, writeFileSync} from 'fs';
+import {existsSync, readFileSync, mkdirSync, writeFileSync} from 'fs';
 import {join, resolve} from 'path';
 
 import {defaultProjectPlugin} from '../../config/loom';
 import {rollupPlugins} from '@shopify/loom-plugin-build-library';
 import replace from '@rollup/plugin-replace';
+import {Project} from 'ts-morph';
 
 const packageJSON = JSON.parse(
   readFileSync(resolve(__dirname, './package.json')).toString(),
@@ -28,6 +29,39 @@ export default createPackage((pkg) => {
         },
         preventAssignment: true,
       }),
+      {
+        name: 'add-target-types',
+        closeBundle: async () => {
+          const project = new Project();
+          const sourceFile = project.addSourceFileAtPath(
+            resolve(__dirname, `./src/surfaces/admin/extension-targets.ts`),
+          );
+          const node = sourceFile.getInterface('ExtensionTargets')!;
+          const targets = node
+            .getProperties()
+            .map((property: any) => property.getName());
+
+          targets.forEach((target) => {
+            const parts = target.replaceAll("'", '').split('.');
+            const surface = parts[0];
+            const fileName = `${parts.join('.')}.d.ts`;
+            const directory = resolve(
+              __dirname,
+              join(`./build/ts/surfaces/${surface}/targets`),
+            );
+            const targetPath = join(directory, fileName);
+
+            const template = `import type {TargetApi} from '../globals';\n
+declare global {
+  const shopify: TargetApi<${target}>;
+}\n`;
+            if (!existsSync(directory)) {
+              mkdirSync(directory);
+            }
+            writeFileSync(targetPath, template);
+          });
+        },
+      },
       {
         name: 'add-components-types',
         closeBundle: async () => {

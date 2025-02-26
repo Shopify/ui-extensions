@@ -16,6 +16,9 @@
     "*": {
       "admin": [
         "./build/ts/surfaces/admin.d.ts"
+      ],
+      "admin.*.d.ts": [
+        "./build/ts/surfaces/admin/targets/admin.*.d.ts"
       ]
     }
   },
@@ -53,5 +56,8 @@
     "rules": {
       "@shopify/strict-component-boundaries": "off"
     }
+  },
+  "dependencies": {
+    "ts-morph": "^25.0.1"
   }
 }

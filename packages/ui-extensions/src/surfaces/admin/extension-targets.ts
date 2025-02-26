@@ -1,7 +1,6 @@
 import type {RunnableExtension, RenderExtension} from '../../extension';
 
 import type {
-  StandardApi,
   CustomerSegmentTemplateApi,
   ActionExtensionApi,
   BlockExtensionApi,
@@ -17,11 +16,6 @@ import {
 } from './api/should-render/should-render';
 
 export interface ExtensionTargets {
-  /**
-   * @private
-   */
-  Playground: RenderExtension<StandardApi<'Playground'>>;
-
   /**
    * Renders a [`CustomerSegmentTemplate`](/docs/api/admin-extensions/components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
    */
