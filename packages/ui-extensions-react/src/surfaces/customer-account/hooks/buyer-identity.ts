@@ -1,7 +1,7 @@
 import type {
-  Customer,
+  OrderStatusCustomer,
   OrderStatusBuyerIdentity,
-  PurchasingCompany,
+  OrderStatusPurchasingCompany,
   RenderOrderStatusExtensionTarget,
 } from '@shopify/ui-extensions/customer-account';
 
@@ -17,7 +17,7 @@ import {useSubscription} from './subscription';
  */
 export function useCustomer<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
->(): Customer | undefined {
+>(): OrderStatusCustomer | undefined {
   const buyerIdentity = useInternalBuyerIdentity<Target>();
 
   return useSubscription(buyerIdentity.customer);
@@ -56,7 +56,7 @@ export function usePhone<
  */
 export function usePurchasingCompany<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,
->(): PurchasingCompany | undefined {
+>(): OrderStatusPurchasingCompany | undefined {
   const buyerIdentity = useInternalBuyerIdentity<Target>();
 
   return useSubscription(buyerIdentity.purchasingCompany);
