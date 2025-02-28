@@ -51,7 +51,7 @@ export default createPackage((pkg) => {
             );
             const targetPath = join(directory, fileName);
 
-            const template = `import type {TargetApi} from '../globals';\n
+            const template = `/// <reference types="@shopify/ui-extensions/admin" />\nimport type {TargetApi} from '../globals';\n
 declare global {
   const shopify: TargetApi<${target}>;
 }\n`;
