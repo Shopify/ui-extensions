@@ -32,6 +32,7 @@ export default createPackage((pkg) => {
       {
         name: 'add-target-types',
         closeBundle: async () => {
+          // See https://stackoverflow.com/questions/43909566/get-keys-of-a-typescript-interface-as-array-of-strings#answer-62477194
           const project = new Project();
           const sourceFile = project.addSourceFileAtPath(
             resolve(__dirname, `./src/surfaces/admin/extension-targets.ts`),
