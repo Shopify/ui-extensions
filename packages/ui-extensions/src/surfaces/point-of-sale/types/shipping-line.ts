@@ -1,7 +1,7 @@
 export interface ShippingLine {
-  handle: string;
+  handle?: string;
   price: string;
-  title: string;
+  title?: string;
 }
 
 export interface CalculatedShippingLine extends ShippingLine {
