@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'TODO: add example title',
       tabs: [
         {
+          title: 'Preact',
+          code: './examples/basic-divider.example.tsx',
+          language: 'tsx',
+        },
+        {
           title: 'JS',
           code: './examples/basic-divider.example.ts',
           language: 'js',
-        },
-        {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Divider/examples/basic-divider.example.tsx',
-          language: 'tsx',
         },
       ],
     },

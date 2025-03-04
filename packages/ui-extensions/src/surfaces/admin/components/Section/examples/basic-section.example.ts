@@ -1,9 +1,6 @@
-import {extension} from '@shopify/ui-extensions/admin';
-
-export default extension('Playground', (root) => {
-  const section = document.createElement('shopify-section');
+export default function extension() {
+  const section = document.createElement('s-section');
   section.heading = 'Section heading';
   section.textContent = 'Section content';
-
-  root.appendChild(section);
-});
+  document.body.appendChild(section);
+}

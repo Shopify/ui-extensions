@@ -1,10 +1,6 @@
-import {extension} from '@shopify/ui-extensions/admin';
-
-extension('Playground', (root) => {
-  const badge = document.createElement('shopify-badge');
-
+export default function extension() {
+  const badge = document.createElement('s-badge');
   badge.tone = 'info';
   badge.textContent = 'Fulfilled';
-
-  root.appendChild(badge);
-});
+  document.body.appendChild(badge);
+}

@@ -1,7 +1,5 @@
-import {extension} from '@shopify/ui-extensions/admin';
-
-export default extension('Playground', (root) => {
-  const adminPrintAction = document.createElement('shopify-admin-print-action');
+export default function extension() {
+  const adminPrintAction = document.createElement('s-admin-print-action');
   adminPrintAction.src = 'https://example.com';
-  root.appendChild(adminPrintAction);
-});
+  document.body.appendChild(adminPrintAction);
+}
