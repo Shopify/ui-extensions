@@ -1,4 +1,5 @@
 import {CountryCode} from './country-code';
+import {TaxLine} from './tax-line';
 
 export interface Cart {
   subtotal: string;
@@ -34,6 +35,7 @@ export interface LineItem {
   productId?: number;
   discounts: Discount[];
   taxable: boolean;
+  taxLines: TaxLine[];
   sku?: string;
   vendor?: string;
   properties: {[key: string]: string};
