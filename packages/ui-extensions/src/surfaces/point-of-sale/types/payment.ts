@@ -7,6 +7,7 @@ export type PaymentMethod =
   | 'GiftCard'
   | 'StripeCreditCard'
   | 'ShopPay'
+  | 'StoreCredit'
   | 'Unknown';
 export interface Payment {
   amount: number;
