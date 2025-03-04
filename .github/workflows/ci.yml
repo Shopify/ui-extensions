@@ -6,12 +6,12 @@ jobs:
   type-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/workflows/actions/prepare
 
       - id: typescript-cache
         name: Restore TypeScript cache
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: |
             packages/*/build/ts
@@ -45,12 +45,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/workflows/actions/prepare
 
       - id: eslint-cache
         name: Restore ESLint cache
-        uses: actions/cache@v1
+        uses: actions/cache@v4
         with:
           path: .loom/cache/eslint
           key: ${{ runner.os }}-eslint-v1-${{ github.sha }}
@@ -63,7 +63,7 @@ jobs:
   yarn-lockfile-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ./.github/workflows/actions/prepare
 
       - name: yarn.lock check
