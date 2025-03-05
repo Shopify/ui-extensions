@@ -17,8 +17,8 @@
       "admin": [
         "./build/ts/surfaces/admin.d.ts"
       ],
-      "admin.*.d.ts": [
-        "./build/ts/surfaces/admin/targets/admin.*.d.ts"
+      "admin.*": [
+        "./build/ts/surfaces/admin/targets/admin.*"
       ]
     }
   },

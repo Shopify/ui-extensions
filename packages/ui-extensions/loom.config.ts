@@ -1,5 +1,12 @@
 import {createPackage} from '@shopify/loom';
-import {existsSync, readFileSync, mkdirSync, writeFileSync} from 'fs';
+import {
+  existsSync,
+  readFileSync,
+  mkdirSync,
+  writeFileSync,
+  readdirSync,
+  copyFileSync,
+} from 'fs';
 import {join, resolve} from 'path';
 
 import {defaultProjectPlugin} from '../../config/loom';
@@ -30,6 +37,28 @@ export default createPackage((pkg) => {
         preventAssignment: true,
       }),
       {
+        name: 'add-components-types',
+        closeBundle: async () => {
+          const buildPath = join(
+            __dirname,
+            'build/ts/surfaces/admin/components',
+          );
+          const srcPath = join(__dirname, 'src/surfaces/admin/components');
+          if (existsSync(srcPath) && existsSync(buildPath)) {
+            const components = readdirSync(srcPath);
+
+            components.forEach((componentFile) => {
+              if (componentFile.endsWith('d.ts')) {
+                copyFileSync(
+                  join(srcPath, componentFile),
+                  join(buildPath, componentFile),
+                );
+              }
+            });
+          }
+        },
+      },
+      {
         name: 'add-target-types',
         closeBundle: async () => {
           // See https://stackoverflow.com/questions/43909566/get-keys-of-a-typescript-interface-as-array-of-strings#answer-62477194
@@ -38,11 +67,17 @@ export default createPackage((pkg) => {
             resolve(__dirname, `./src/surfaces/admin/extension-targets.ts`),
           );
           const node = sourceFile.getInterface('ExtensionTargets')!;
-          const targets = node
-            .getProperties()
-            .map((property: any) => property.getName());
+          const targets = node.getProperties().map((property) => {
+            const componentSet = property
+              .getType()
+              .getProperty('components')
+              ?.getTypeAtLocation(node)
+              .getText();
 
-          targets.forEach((target) => {
+            return {target: property.getName(), componentSet};
+          });
+
+          targets.forEach(({target, componentSet}) => {
             const parts = target.replaceAll("'", '').split('.');
             const surface = parts[0];
             const fileName = `${parts.join('.')}.d.ts`;
@@ -52,36 +87,23 @@ export default createPackage((pkg) => {
             );
             const targetPath = join(directory, fileName);
 
-            const template = `/// <reference types="@shopify/ui-extensions/admin" />\nimport type {TargetApi} from '../globals';\n
+            const template = `/// <reference types="../components/${componentSet?.replaceAll(
+              '"',
+              '',
+            )}" />\nimport type {ExtensionTargets} from '../extension-targets';
+type Target = ExtensionTargets[${target}];
+export type Api = Target['api'];
+export type Output = Target['output'];
+
 declare global {
-  const shopify: TargetApi<${target}>;
+  const shopify: Api;
+  export default function extension(): Output;
 }\n`;
             if (!existsSync(directory)) {
               mkdirSync(directory);
             }
             writeFileSync(targetPath, template);
           });
-        },
-      },
-      {
-        name: 'add-components-types',
-        closeBundle: async () => {
-          const mainTypesPath = join(__dirname, 'build/ts/surfaces/admin.d.ts');
-          const componentsTypes = join(
-            __dirname,
-            'src/surfaces/admin/components.d.ts',
-          );
-          if (existsSync(mainTypesPath) && existsSync(componentsTypes)) {
-            const mainTypesContent = readFileSync(mainTypesPath).toString();
-            const componentsTypesContent = readFileSync(componentsTypes)
-              .toString()
-              .replaceAll(/\/\*.*$/g, '');
-
-            writeFileSync(
-              mainTypesPath,
-              componentsTypesContent.concat(mainTypesContent),
-            );
-          }
         },
       },
     ]),
