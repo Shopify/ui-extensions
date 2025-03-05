@@ -1,4 +1,4 @@
-/** VERSION: 0.38.1 **/
+/** VERSION: 0.39.0 **/
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -46,506 +46,507 @@ type ToneKeyword =
   | 'warning'
   | 'critical'
   | 'custom';
-type IconType =
-  | '3d-environment'
-  | 'adjust'
-  | 'affiliate'
-  | 'airplane'
-  | 'alert-bubble'
-  | 'alert-circle'
-  | 'alert-diamond'
-  | 'alert-location'
-  | 'alert-octagon'
-  | 'alert-octagon-filled'
-  | 'alert-triangle'
-  | 'app-extension'
-  | 'apps'
-  | 'archive'
-  | 'arrow-down-circle'
-  | 'arrow-down-right'
-  | 'arrow-down'
-  | 'arrow-left-circle'
-  | 'arrow-left'
-  | 'arrow-right-circle'
-  | 'arrow-right'
-  | 'arrow-up-circle'
-  | 'arrow-up-right'
-  | 'arrow-up'
-  | 'arrows-in-horizontal'
-  | 'arrows-out-horizontal'
-  | 'attachment'
-  | 'automation'
-  | 'backspace'
-  | 'bag'
-  | 'bank'
-  | 'barcode'
-  | 'bill'
-  | 'blank'
-  | 'blog'
-  | 'bolt'
-  | 'bolt-filled'
-  | 'book-open'
-  | 'book'
-  | 'bug'
-  | 'bullet'
-  | 'button-press'
-  | 'button'
-  | 'calculator'
-  | 'calendar-check'
-  | 'calendar-compare'
-  | 'calendar-list'
-  | 'calendar-time'
-  | 'calendar'
-  | 'camera-flip'
-  | 'camera'
-  | 'caret-down'
-  | 'caret-up'
-  | 'cart-abandoned'
-  | 'cart-discount'
-  | 'cart-down'
-  | 'cart-sale'
-  | 'cart-up'
-  | 'cart'
-  | 'cash-dollar'
-  | 'cash-euro'
-  | 'cash-pound'
-  | 'cash-rupee'
-  | 'cash-yen'
-  | 'catalog-product'
-  | 'categories'
-  | 'channels'
-  | 'chart-cohort'
-  | 'chart-donut'
-  | 'chart-funnel'
-  | 'chart-histogram-first-last'
-  | 'chart-histogram-first'
-  | 'chart-histogram-flat'
-  | 'chart-histogram-full'
-  | 'chart-histogram-growth'
-  | 'chart-histogram-last'
-  | 'chart-histogram-second-last'
-  | 'chart-horizontal'
-  | 'chart-line'
-  | 'chart-popular'
-  | 'chart-stacked'
-  | 'chart-vertical'
-  | 'chat-new'
-  | 'chat-referral'
-  | 'chat'
-  | 'check-circle'
-  | 'check-circle-filled'
-  | 'check'
-  | 'checkbox'
-  | 'chevron-down-circle'
-  | 'chevron-down'
-  | 'chevron-left-circle'
-  | 'chevron-left'
-  | 'chevron-right-circle'
-  | 'chevron-right'
-  | 'chevron-up-circle'
-  | 'chevron-up'
-  | 'circle'
-  | 'circle-dashed'
-  | 'clipboard-check'
-  | 'clipboard-checklist'
-  | 'clipboard'
-  | 'clock-revert'
-  | 'clock'
-  | 'code-add'
-  | 'code'
-  | 'collection-featured'
-  | 'collection-list'
-  | 'collection-reference'
-  | 'collection'
-  | 'color-none'
-  | 'color'
-  | 'compass'
-  | 'complete'
-  | 'compose'
-  | 'confetti'
-  | 'connect'
-  | 'content'
-  | 'contract'
-  | 'corner-pill'
-  | 'corner-round'
-  | 'corner-square'
-  | 'credit-card-cancel'
-  | 'credit-card-percent'
-  | 'credit-card-reader-chip'
-  | 'credit-card-reader-tap'
-  | 'credit-card-reader'
-  | 'credit-card-secure'
-  | 'credit-card-tap-chip'
-  | 'credit-card'
-  | 'crop'
-  | 'currency-convert'
-  | 'cursor-banner'
-  | 'cursor-option'
-  | 'cursor'
-  | 'data-presentation'
-  | 'data-table'
-  | 'database-add'
-  | 'database-connect'
-  | 'database'
-  | 'delete'
-  | 'delivered'
-  | 'delivery'
-  | 'desktop'
-  | 'disabled'
-  | 'discount-code'
-  | 'discount'
-  | 'dns-settings'
-  | 'dock-floating'
-  | 'dock-side'
-  | 'domain-landing-page'
-  | 'domain-new'
-  | 'domain-redirect'
-  | 'domain'
-  | 'download'
-  | 'drag-drop'
-  | 'drag-handle'
-  | 'duplicate'
-  | 'edit'
-  | 'email-follow-up'
-  | 'email-newsletter'
-  | 'email'
-  | 'empty'
-  | 'enabled'
-  | 'enter'
-  | 'envelope-soft-pack'
-  | 'envelope'
-  | 'exchange'
-  | 'exit'
-  | 'export'
-  | 'external'
-  | 'eye-check-mark'
-  | 'eye-dropper'
-  | 'eye-dropper-list'
-  | 'eye-first'
-  | 'eyeglasses'
-  | 'fav'
-  | 'favicon'
-  | 'file'
-  | 'file-list'
-  | 'filter'
-  | 'fingerprint'
-  | 'flag'
-  | 'flip-horizontal'
-  | 'flip-vertical'
-  | 'flower'
-  | 'folder-add'
-  | 'folder-down'
-  | 'folder-remove'
-  | 'folder-up'
-  | 'folder'
-  | 'food'
-  | 'foreground'
-  | 'forklift'
-  | 'forms'
-  | 'games'
-  | 'gauge'
-  | 'geolocation'
-  | 'gift-card'
-  | 'gift'
-  | 'git-branch'
-  | 'git-commit'
-  | 'git-repository'
-  | 'globe-asia'
-  | 'globe-europe'
-  | 'globe-lines'
-  | 'globe-list'
-  | 'globe'
-  | 'grid'
-  | 'hashtag-decimal'
-  | 'hashtag-list'
-  | 'hashtag'
-  | 'heart'
-  | 'hide'
-  | 'hide-filled'
-  | 'home'
-  | 'icons'
-  | 'identity-card'
-  | 'image-add'
-  | 'image-alt'
-  | 'image-explore'
-  | 'image-magic'
-  | 'image-none'
-  | 'image-with-text-overlay'
-  | 'image'
-  | 'images'
-  | 'import'
-  | 'in-progress'
-  | 'incentive'
-  | 'incoming'
-  | 'incomplete'
-  | 'info'
-  | 'inventory-updated'
-  | 'inventory'
-  | 'iq'
-  | 'key'
-  | 'keyboard-filled'
-  | 'keyboard-hide'
-  | 'keyboard'
-  | 'label-printer'
-  | 'language-translate'
-  | 'language'
-  | 'layout-block'
-  | 'layout-buy-button-horizontal'
-  | 'layout-buy-button-vertical'
-  | 'layout-buy-button'
-  | 'layout-column-1'
-  | 'layout-columns-2'
-  | 'layout-columns-3'
-  | 'layout-footer'
-  | 'layout-header'
-  | 'layout-logo-block'
-  | 'layout-popup'
-  | 'layout-rows-2'
-  | 'layout-section'
-  | 'layout-sidebar-left'
-  | 'layout-sidebar-right'
-  | 'lightbulb'
-  | 'link-list'
-  | 'link'
-  | 'list-bulleted'
-  | 'list-numbered'
-  | 'live'
-  | 'location-none'
-  | 'location'
-  | 'lock'
-  | 'map'
-  | 'markets-euro'
-  | 'markets-rupee'
-  | 'markets-yen'
-  | 'markets'
-  | 'maximize'
-  | 'measurement-size-list'
-  | 'measurement-size'
-  | 'measurement-volume-list'
-  | 'measurement-volume'
-  | 'measurement-weight-list'
-  | 'measurement-weight'
-  | 'media-receiver'
-  | 'megaphone'
-  | 'mention'
-  | 'menu-horizontal'
-  | 'menu-vertical'
-  | 'menu'
-  | 'merge'
-  | 'metafields'
-  | 'metaobject-list'
-  | 'metaobject-reference'
-  | 'metaobject'
-  | 'microphone'
-  | 'minimize'
-  | 'minus-circle'
-  | 'minus'
-  | 'mobile'
-  | 'money-none'
-  | 'money'
-  | 'moon'
-  | 'nature'
-  | 'note-add'
-  | 'note'
-  | 'notification'
-  | 'order-draft'
-  | 'order-first'
-  | 'order-fulfilled'
-  | 'order-repeat'
-  | 'order-unfulfilled'
-  | 'order'
-  | 'orders-status'
-  | 'organization'
-  | 'outdent'
-  | 'outgoing'
-  | 'package-fulfilled'
-  | 'package-on-hold'
-  | 'package-returned'
-  | 'package'
-  | 'page-add'
-  | 'page-attachment'
-  | 'page-clock'
-  | 'page-down'
-  | 'page-heart'
-  | 'page-list'
-  | 'page-reference'
-  | 'page-remove'
-  | 'page-report'
-  | 'page-up'
-  | 'page'
-  | 'pagination-end'
-  | 'pagination-start'
-  | 'paint-brush-flat'
-  | 'paint-brush-round'
-  | 'paper-check'
-  | 'partially-complete'
-  | 'passkey'
-  | 'pause-circle'
-  | 'payment-capture'
-  | 'payment'
-  | 'payout-dollar'
-  | 'payout-euro'
-  | 'payout-pound'
-  | 'payout-rupee'
-  | 'payout-yen'
-  | 'payout'
-  | 'person-add'
-  | 'person-exit'
-  | 'person-lock'
-  | 'person-remove'
-  | 'person-segment'
-  | 'person'
-  | 'personalized-text'
-  | 'phone-in'
-  | 'phone-out'
-  | 'phone'
-  | 'pin'
-  | 'plan'
-  | 'play-circle'
-  | 'play'
-  | 'plus-circle'
-  | 'plus'
-  | 'point-of-sale'
-  | 'price-list'
-  | 'print'
-  | 'product-add'
-  | 'product-cost'
-  | 'product-list'
-  | 'product-reference'
-  | 'product-remove'
-  | 'product-return'
-  | 'product-unavailable'
-  | 'product'
-  | 'profile'
-  | 'profile-filled'
-  | 'question-circle'
-  | 'question-circle-filled'
-  | 'receipt-dollar'
-  | 'receipt-euro'
-  | 'receipt-folded'
-  | 'receipt-paid'
-  | 'receipt-pound'
-  | 'receipt-refund'
-  | 'receipt-rupee'
-  | 'receipt-yen'
-  | 'receipt'
-  | 'receivables'
-  | 'redo'
-  | 'referral-code'
-  | 'refresh'
-  | 'remove-background'
-  | 'reorder'
-  | 'replace'
-  | 'replay'
-  | 'reset'
-  | 'return'
-  | 'reward'
-  | 'rocket'
-  | 'rotate-left'
-  | 'rotate-right'
-  | 'sandbox'
-  | 'save'
-  | 'savings'
-  | 'search-list'
-  | 'search-recent'
-  | 'search-resource'
-  | 'search'
-  | 'select'
-  | 'send'
-  | 'settings'
-  | 'share'
-  | 'shield-check-mark'
-  | 'shield-none'
-  | 'shield-pending'
-  | 'shield-person'
-  | 'shipping-label'
-  | 'shopcodes'
-  | 'slideshow'
-  | 'smiley-happy'
-  | 'smiley-joy'
-  | 'smiley-neutral'
-  | 'smiley-sad'
-  | 'social-ad'
-  | 'social-post'
-  | 'sort-ascending'
-  | 'sort-descending'
-  | 'sort'
-  | 'sound'
-  | 'sports'
-  | 'star-filled'
-  | 'star-list'
-  | 'star'
-  | 'status-active'
-  | 'status'
-  | 'stop-circle'
-  | 'store-import'
-  | 'store-managed'
-  | 'store-online'
-  | 'store'
-  | 'sun'
-  | 'table'
-  | 'table-masonry'
-  | 'tablet'
-  | 'target'
-  | 'tax'
-  | 'team'
-  | 'text-align-center'
-  | 'text-align-left'
-  | 'text-align-right'
-  | 'text-block'
-  | 'text-bold'
-  | 'text-color'
-  | 'text-font-list'
-  | 'text-font'
-  | 'text-grammar'
-  | 'text-in-columns'
-  | 'text-in-rows'
-  | 'text-indent-remove'
-  | 'text-indent'
-  | 'text-italic'
-  | 'text-quote'
-  | 'text-title'
-  | 'text-underline'
-  | 'text-with-image'
-  | 'text'
-  | 'theme-edit'
-  | 'theme-store'
-  | 'theme-template'
-  | 'theme'
-  | 'thumbs-down'
-  | 'thumbs-up'
-  | 'tip-jar'
-  | 'toggle-off'
-  | 'toggle-on'
-  | 'transaction-fee-dollar'
-  | 'transaction-fee-euro'
-  | 'transaction-fee-pound'
-  | 'transaction-fee-rupee'
-  | 'transaction-fee-yen'
-  | 'transaction'
-  | 'transfer-in'
-  | 'transfer-internal'
-  | 'transfer-out'
-  | 'transfer'
-  | 'truck'
-  | 'undo'
-  | 'unknown-device'
-  | 'unlock'
-  | 'upload'
-  | 'variant'
-  | 'view'
-  | 'viewport-narrow'
-  | 'viewport-short'
-  | 'viewport-tall'
-  | 'viewport-wide'
-  | 'wallet'
-  | 'wand'
-  | 'watch'
-  | 'wifi'
-  | 'work'
-  | 'wrench'
-  | 'x-circle'
-  | 'x';
+declare const privateIconArray: readonly [
+  'adjust',
+  'affiliate',
+  'airplane',
+  'alert-bubble',
+  'alert-circle',
+  'alert-diamond',
+  'alert-location',
+  'alert-octagon-filled',
+  'alert-octagon',
+  'alert-triangle',
+  'app-extension',
+  'apps',
+  'archive',
+  'arrow-down-circle',
+  'arrow-down-right',
+  'arrow-down',
+  'arrow-left-circle',
+  'arrow-left',
+  'arrow-right-circle',
+  'arrow-right',
+  'arrow-up-circle',
+  'arrow-up-right',
+  'arrow-up',
+  'arrows-in-horizontal',
+  'arrows-out-horizontal',
+  'attachment',
+  'automation',
+  'backspace',
+  'bag',
+  'bank',
+  'barcode',
+  'bill',
+  'blank',
+  'blog',
+  'bolt-filled',
+  'bolt',
+  'book-open',
+  'book',
+  'bug',
+  'bullet',
+  'button-press',
+  'button',
+  'calculator',
+  'calendar-check',
+  'calendar-compare',
+  'calendar-list',
+  'calendar-time',
+  'calendar',
+  'camera-flip',
+  'camera',
+  'caret-down',
+  'caret-up',
+  'cart-abandoned',
+  'cart-discount',
+  'cart-down',
+  'cart-sale',
+  'cart-up',
+  'cart',
+  'cash-dollar',
+  'cash-euro',
+  'cash-pound',
+  'cash-rupee',
+  'cash-yen',
+  'catalog-product',
+  'categories',
+  'channels',
+  'chart-cohort',
+  'chart-donut',
+  'chart-funnel',
+  'chart-histogram-first-last',
+  'chart-histogram-first',
+  'chart-histogram-flat',
+  'chart-histogram-full',
+  'chart-histogram-growth',
+  'chart-histogram-last',
+  'chart-histogram-second-last',
+  'chart-horizontal',
+  'chart-line',
+  'chart-popular',
+  'chart-stacked',
+  'chart-vertical',
+  'chat-new',
+  'chat-referral',
+  'chat',
+  'check-circle-filled',
+  'check-circle',
+  'check',
+  'checkbox',
+  'chevron-down-circle',
+  'chevron-down',
+  'chevron-left-circle',
+  'chevron-left',
+  'chevron-right-circle',
+  'chevron-right',
+  'chevron-up-circle',
+  'chevron-up',
+  'circle-dashed',
+  'circle',
+  'clipboard-check',
+  'clipboard-checklist',
+  'clipboard',
+  'clock-revert',
+  'clock',
+  'code-add',
+  'code',
+  'collection-featured',
+  'collection-list',
+  'collection-reference',
+  'collection',
+  'color-none',
+  'color',
+  'compass',
+  'complete',
+  'compose',
+  'confetti',
+  'connect',
+  'content',
+  'contract',
+  'corner-pill',
+  'corner-round',
+  'corner-square',
+  'credit-card-cancel',
+  'credit-card-percent',
+  'credit-card-reader-chip',
+  'credit-card-reader-tap',
+  'credit-card-reader',
+  'credit-card-secure',
+  'credit-card-tap-chip',
+  'credit-card',
+  'crop',
+  'currency-convert',
+  'cursor-banner',
+  'cursor-option',
+  'cursor',
+  'data-presentation',
+  'data-table',
+  'database-add',
+  'database-connect',
+  'database',
+  'delete',
+  'delivered',
+  'delivery',
+  'desktop',
+  'disabled',
+  'discount-code',
+  'discount',
+  'dns-settings',
+  'dock-floating',
+  'dock-side',
+  'domain-landing-page',
+  'domain-new',
+  'domain-redirect',
+  'domain',
+  'download',
+  'drag-drop',
+  'drag-handle',
+  'duplicate',
+  'edit',
+  'email-follow-up',
+  'email-newsletter',
+  'email',
+  'empty',
+  'enabled',
+  'enter',
+  'envelope-soft-pack',
+  'envelope',
+  'exchange',
+  'exit',
+  'export',
+  'external',
+  'eye-check-mark',
+  'eye-dropper-list',
+  'eye-dropper',
+  'eye-first',
+  'eyeglasses',
+  'fav',
+  'favicon',
+  'file-list',
+  'file',
+  'filter',
+  'flag',
+  'flip-horizontal',
+  'flip-vertical',
+  'flower',
+  'folder-add',
+  'folder-down',
+  'folder-remove',
+  'folder-up',
+  'folder',
+  'food',
+  'foreground',
+  'forklift',
+  'forms',
+  'games',
+  'gauge',
+  'geolocation',
+  'gift-card',
+  'gift',
+  'git-branch',
+  'git-commit',
+  'git-repository',
+  'globe-asia',
+  'globe-europe',
+  'globe-lines',
+  'globe-list',
+  'globe',
+  'grid',
+  'hashtag-decimal',
+  'hashtag-list',
+  'hashtag',
+  'heart',
+  'hide-filled',
+  'hide',
+  'home',
+  'icons',
+  'identity-card',
+  'image-add',
+  'image-alt',
+  'image-explore',
+  'image-magic',
+  'image-none',
+  'image-with-text-overlay',
+  'image',
+  'images',
+  'import',
+  'in-progress',
+  'incentive',
+  'incoming',
+  'incomplete',
+  'info',
+  'inventory-updated',
+  'inventory',
+  'iq',
+  'key',
+  'keyboard-filled',
+  'keyboard-hide',
+  'keyboard',
+  'label-printer',
+  'language-translate',
+  'language',
+  'layout-block',
+  'layout-buy-button-horizontal',
+  'layout-buy-button-vertical',
+  'layout-buy-button',
+  'layout-column-1',
+  'layout-columns-2',
+  'layout-columns-3',
+  'layout-footer',
+  'layout-header',
+  'layout-logo-block',
+  'layout-popup',
+  'layout-rows-2',
+  'layout-section',
+  'layout-sidebar-left',
+  'layout-sidebar-right',
+  'lightbulb',
+  'link-list',
+  'link',
+  'list-bulleted',
+  'list-numbered',
+  'live',
+  'location-none',
+  'location',
+  'lock',
+  'map',
+  'markets-euro',
+  'markets-rupee',
+  'markets-yen',
+  'markets',
+  'maximize',
+  'measurement-size-list',
+  'measurement-size',
+  'measurement-volume-list',
+  'measurement-volume',
+  'measurement-weight-list',
+  'measurement-weight',
+  'media-receiver',
+  'megaphone',
+  'mention',
+  'menu-horizontal',
+  'menu-vertical',
+  'menu',
+  'merge',
+  'metafields',
+  'metaobject-list',
+  'metaobject-reference',
+  'metaobject',
+  'microphone',
+  'minimize',
+  'minus-circle',
+  'minus',
+  'mobile',
+  'money-none',
+  'money',
+  'moon',
+  'nature',
+  'note-add',
+  'note',
+  'notification',
+  'order-draft',
+  'order-first',
+  'order-fulfilled',
+  'order-repeat',
+  'order-unfulfilled',
+  'order',
+  'orders-status',
+  'organization',
+  'outdent',
+  'outgoing',
+  'package-fulfilled',
+  'package-on-hold',
+  'package-returned',
+  'package',
+  'page-add',
+  'page-attachment',
+  'page-clock',
+  'page-down',
+  'page-heart',
+  'page-list',
+  'page-reference',
+  'page-remove',
+  'page-report',
+  'page-up',
+  'page',
+  'pagination-end',
+  'pagination-start',
+  'paint-brush-flat',
+  'paint-brush-round',
+  'paper-check',
+  'partially-complete',
+  'passkey',
+  'pause-circle',
+  'payment-capture',
+  'payment',
+  'payout-dollar',
+  'payout-euro',
+  'payout-pound',
+  'payout-rupee',
+  'payout-yen',
+  'payout',
+  'person-add',
+  'person-exit',
+  'person-lock',
+  'person-remove',
+  'person-segment',
+  'person',
+  'personalized-text',
+  'phone-in',
+  'phone-out',
+  'phone',
+  'pin',
+  'plan',
+  'play-circle',
+  'play',
+  'plus-circle',
+  'plus',
+  'point-of-sale',
+  'price-list',
+  'print',
+  'product-add',
+  'product-cost',
+  'product-list',
+  'product-reference',
+  'product-remove',
+  'product-return',
+  'product-unavailable',
+  'product',
+  'profile-filled',
+  'profile',
+  'question-circle-filled',
+  'question-circle',
+  'receipt-dollar',
+  'receipt-euro',
+  'receipt-folded',
+  'receipt-paid',
+  'receipt-pound',
+  'receipt-refund',
+  'receipt-rupee',
+  'receipt-yen',
+  'receipt',
+  'receivables',
+  'redo',
+  'referral-code',
+  'refresh',
+  'remove-background',
+  'reorder',
+  'replace',
+  'replay',
+  'reset',
+  'return',
+  'reward',
+  'rocket',
+  'rotate-left',
+  'rotate-right',
+  'sandbox',
+  'save',
+  'savings',
+  'search-list',
+  'search-recent',
+  'search-resource',
+  'search',
+  'select',
+  'send',
+  'settings',
+  'share',
+  'shield-check-mark',
+  'shield-none',
+  'shield-pending',
+  'shield-person',
+  'shipping-label',
+  'shopcodes',
+  'slideshow',
+  'smiley-happy',
+  'smiley-joy',
+  'smiley-neutral',
+  'smiley-sad',
+  'social-ad',
+  'social-post',
+  'sort-ascending',
+  'sort-descending',
+  'sort',
+  'sound',
+  'sports',
+  'star-filled',
+  'star-list',
+  'star',
+  'status-active',
+  'status',
+  'stop-circle',
+  'store-import',
+  'store-managed',
+  'store-online',
+  'store',
+  'sun',
+  'table-masonry',
+  'table',
+  'tablet',
+  'target',
+  'tax',
+  'team',
+  'text-align-center',
+  'text-align-left',
+  'text-align-right',
+  'text-block',
+  'text-bold',
+  'text-color',
+  'text-font-list',
+  'text-font',
+  'text-grammar',
+  'text-in-columns',
+  'text-in-rows',
+  'text-indent-remove',
+  'text-indent',
+  'text-italic',
+  'text-quote',
+  'text-title',
+  'text-underline',
+  'text-with-image',
+  'text',
+  'theme-edit',
+  'theme-store',
+  'theme-template',
+  'theme',
+  'three-d-environment',
+  'thumbs-down',
+  'thumbs-up',
+  'tip-jar',
+  'toggle-off',
+  'toggle-on',
+  'transaction-fee-dollar',
+  'transaction-fee-euro',
+  'transaction-fee-pound',
+  'transaction-fee-rupee',
+  'transaction-fee-yen',
+  'transaction',
+  'transfer-in',
+  'transfer-internal',
+  'transfer-out',
+  'transfer',
+  'truck',
+  'undo',
+  'unknown-device',
+  'unlock',
+  'upload',
+  'variant',
+  'view',
+  'viewport-narrow',
+  'viewport-short',
+  'viewport-tall',
+  'viewport-wide',
+  'wallet',
+  'wand',
+  'watch',
+  'wifi',
+  'work',
+  'wrench',
+  'x-circle',
+  'x',
+];
+type IconType = (typeof privateIconArray)[number];
 interface BadgeProps$1 extends GlobalProps {
   /**
    * The content of the Badge.
@@ -1889,13 +1890,17 @@ interface HeadingProps$1
    * the role will be used by assistive technologies to help users
    * navigate the page.
    *
-   * @default 'heading'
-   *
-   * - `heading` defines the element as a heading to a page or section.
-   * - `presentation` means the heading level will be stripped,
+   * - `heading`: defines the element as a heading to a page or section.
+   * - `presentation`: the heading level will be stripped,
    * and will prevent the element’s implicit ARIA semantics from
    * being exposed to the accessibility tree.
-   * - `none` is a synonym for the `presentation` role.
+   * - `none`: a synonym for the `presentation` role.
+   *
+   * @default 'heading'
+   *
+   * @implementation The `heading` role doesn't need to be applied if
+   * the host applies it for you; for example, an HTML host rendering
+   * an `<h2>` element should not apply the `heading` role.
    */
   accessibilityRole?:
     | 'heading'
@@ -1969,9 +1974,11 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
    * the role will be used by assistive technologies to help users
    * navigate the page.
    *
-   * @default 'img'. Note that the `img` role doesn't need to be applied if
+   * @default 'img'
+   *
+   * @implementation The `img` role doesn't need to be applied if
    * the host applies it for you; for example, an HTML host rendering
-   * an `<img>` element should NOT apply the `img` role.
+   * an `<img>` element should not apply the `img` role.
    */
   accessibilityRole?:
     | 'img'
@@ -2615,7 +2622,6 @@ type URLAutocompleteField = ExtractStrict<
   'url' | 'photo' | 'impp' | `${AutocompleteAddressGroup} impp`
 >;
 type IconType$1 =
-  | '3d-environment'
   | 'adjust'
   | 'affiliate'
   | 'airplane'
@@ -3066,6 +3072,7 @@ type IconType$1 =
   | 'theme-edit'
   | 'theme-store'
   | 'theme-template'
+  | 'three-d-environment'
   | 'thumbs-down'
   | 'thumbs-up'
   | 'tip-jar'
@@ -3373,23 +3380,6 @@ export interface BannerProps
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   target: HTMLElementTagNameMap[T];
 };
-/** @deprecated: follow pattern in TextField component */
-export type FieldProps = Required<
-  Pick<
-    TextFieldProps$1,
-    | 'defaultValue'
-    | 'details'
-    | 'disabled'
-    | 'error'
-    | 'id'
-    | 'label'
-    | 'name'
-    | 'placeholder'
-    | 'readOnly'
-    | 'required'
-    | 'value'
-  >
->;
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   onInput?: ((event: CallbackEvent<T>) => void) | null;
   onChange?: ((event: CallbackEvent<T>) => void) | null;
@@ -3571,14 +3561,14 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#45512@#queueRender': (() => void) | undefined;
-  '__#45512@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#45718@#queueRender': (() => void) | undefined;
+  '__#45718@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#45512@#checkElementPrototype'(): void;
+  '__#45718@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -4242,14 +4232,14 @@ export interface ClickableProps
 declare const Clickable_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#45512@#queueRender': (() => void) | undefined;
-  '__#45512@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#45718@#queueRender': (() => void) | undefined;
+  '__#45718@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#45512@#checkElementPrototype'(): void;
+  '__#45718@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -5013,14 +5003,14 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#45512@#queueRender': (() => void) | undefined;
-  '__#45512@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#45718@#queueRender': (() => void) | undefined;
+  '__#45718@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#45512@#checkElementPrototype'(): void;
+  '__#45718@#checkElementPrototype'(): void;
   _addLegacyStyleComponent(style: string): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
@@ -5498,14 +5488,16 @@ export interface LinkJSXProps
   onClick?: ((event: CallbackEvent<typeof tagName$m>) => void) | null;
 }
 
-export type MoneyWithoutInput = Omit<MoneyFieldProps$1, keyof FieldProps>;
 export interface MoneyFieldProps
-  extends FieldProps,
+  extends PreactFieldProps,
     Required<
-      Pick<MoneyWithoutInput, 'max' | 'min' | 'step' | 'currencyCode'>
+      Pick<MoneyFieldProps$1, 'max' | 'min' | 'step' | 'currencyCode'>
     > {}
 
-declare class MoneyField extends PreactFieldElement implements MoneyFieldProps {
+declare class MoneyField
+  extends PreactFieldElement<MoneyFieldProps['autocomplete']>
+  implements MoneyFieldProps
+{
   accessor max: MoneyFieldProps['max'];
   accessor min: MoneyFieldProps['min'];
   accessor step: MoneyFieldProps['step'];
