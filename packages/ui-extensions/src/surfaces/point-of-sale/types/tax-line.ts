@@ -1,8 +1,10 @@
+import type {Money} from './money';
+
 export interface TaxLine {
-  uuid: string;
-  price: string;
-  rate: number;
-  rateRange?: {min: number; max: number};
   title: string;
-  enabled: boolean;
+  price: Money;
+  rate: number;
+  uuid?: string;
+  rateRange?: {min: number; max: number};
+  enabled?: boolean;
 }

@@ -8,3 +8,4 @@ export type {
 export type {CartUpdateEventInput} from './event/input/CartUpdateEventInput';
 
 export type {Device} from './types/device';
+export type {Money} from './types/money';

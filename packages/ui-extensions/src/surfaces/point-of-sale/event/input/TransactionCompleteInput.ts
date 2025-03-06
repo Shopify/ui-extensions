@@ -1,6 +1,11 @@
 import {BaseInput} from './BaseInput';
-import {Checkout} from '../../types/checkout';
+import type {SaleTransactionInput} from './SaleTransactionInput';
+import type {ExchangeTransactionInput} from './ExchangeTransactionInput';
+import type {ReturnTransactionInput} from './ReturnTransactionInput';
 
 export interface TransactionCompleteInput extends BaseInput {
-  checkout: Checkout;
+  transaction:
+    | SaleTransactionInput
+    | ReturnTransactionInput
+    | ExchangeTransactionInput;
 }
