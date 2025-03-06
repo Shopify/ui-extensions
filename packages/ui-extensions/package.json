@@ -16,6 +16,9 @@
     "*": {
       "admin": [
         "./build/ts/surfaces/admin.d.ts"
+      ],
+      "admin.*": [
+        "./build/ts/surfaces/admin/targets/admin.*"
       ]
     }
   },
@@ -31,6 +34,9 @@
       "esnext": "./build/esnext/surfaces/admin.esnext",
       "import": "./build/esm/surfaces/admin.mjs",
       "require": "./build/cjs/surfaces/admin.js"
+    },
+    "./admin.*": {
+      "types": "./build/ts/surfaces/admin/targets/admin.*.d.ts"
     }
   },
   "license": "MIT",
@@ -53,5 +59,8 @@
     "rules": {
       "@shopify/strict-component-boundaries": "off"
     }
+  },
+  "dependencies": {
+    "ts-morph": "^25.0.1"
   }
 }
