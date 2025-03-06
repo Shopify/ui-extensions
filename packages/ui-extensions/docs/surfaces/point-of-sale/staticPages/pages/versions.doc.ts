@@ -15,15 +15,15 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
-      anchorLink: 'support-policy',
-      title: 'Support Policy',
+      anchorLink: 'compatibility-policy',
+      title: 'Compatibility Policy',
       sectionContent: '',
       sectionNotice: [
         {
-          title: 'End of Support Plan',
+          title: 'End of Compatibility Plan',
           type: 'Warning',
           sectionContent: `
-          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end support for versions on a one-year rolling basis. This table details the end of support schedule.
+          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end compatibility for versions on a one-year rolling basis. This means that POS will no longer run extensions using removed versions. This table details the end of compatibility schedule.
 
 |released version|removed versions|
 |---:|---|
@@ -238,7 +238,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       ],
       sectionContent: `
 - Added in POS version: 9.4.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 03/13/2024.
 
 ### Features
@@ -255,7 +255,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '1.6.0',
       sectionContent: `
 - Added in POS version: 9.2.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 02/15/2024.
 
 ### Features
@@ -270,7 +270,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '1.5.1',
       sectionContent: `
 - Added in POS version: 8.22.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 11/13/2023.
 
 ### Features
@@ -285,7 +285,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '1.5.0',
       sectionContent: `
 - Added in POS version: 8.21.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 10/30/2023.
 
 ### Features
@@ -300,7 +300,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '1.4.0',
       sectionContent: `
 - Added in POS version: 8.18.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 9/27/2023.
 
 ### Features
@@ -316,7 +316,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '1.3.0',
       sectionContent: `
 - Added in POS version: 8.15.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 8/16/2023.
 
 ### Features
@@ -340,7 +340,7 @@ Introduced the following components:
       title: '1.2.0',
       sectionContent: `
 - Added in POS version: 8.12.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 6/26/2023.
 
 ### Features
@@ -359,7 +359,7 @@ Introduced the following components:
       title: '1.1.2',
       sectionContent: `
 - Added in POS version: 8.9.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/15/2023.
 
 ### Features
@@ -374,7 +374,7 @@ Introduced the following components:
       title: '1.0.1',
       sectionContent: `
 - Added in POS version: 8.8.1
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/3/2023.
 
 ### Fixes
@@ -388,7 +388,7 @@ Introduced the following components:
       title: '1.0.0',
       sectionContent: `
 - Added in POS version: 8.8.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/1/2023.
 
 ### Features
