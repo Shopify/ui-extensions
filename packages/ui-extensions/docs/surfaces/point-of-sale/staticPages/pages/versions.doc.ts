@@ -65,6 +65,10 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 ## Important Fixes
 
+- **POS 9.30.0**:
+
+  - Modal updated so neither swiping down nor tapping outside of modal will dismiss modal.
+
 - **POS 9.29.0**:
 
   - Fixed an issue where the \`FormattedTextField\` component was rendering black input text in dark mode.
@@ -86,7 +90,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Deprecated the \`paddingHorizontal\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`paddingInline\` and \`paddingBlock\` instead.
 - Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/components/formattedtextfield) component.
 - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
-- \`Text\` now takes priority in growing over other components. To contain Text to its minimum width, wrap it in a \`Box\` component. 
+- \`Text\` now takes priority in growing over other components. To contain Text to its minimum width, wrap it in a \`Box\` component.
 
 ### Features
 
