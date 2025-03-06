@@ -98,7 +98,7 @@ const data: LandingTemplateSchema = {
         },
       ],
       sectionContent: `
-- Added in POS version: 9.11.0
+- Added in POS version: 9.11
 - Removed in POS version: 9.31.0
 - Release day: 06/10/2024.
 
@@ -120,7 +120,7 @@ const data: LandingTemplateSchema = {
       ],
       sectionContent: `
 - Added in POS version: 9.4.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 03/13/2024.
 
 ### Features
@@ -137,7 +137,7 @@ const data: LandingTemplateSchema = {
       title: '1.6.0',
       sectionContent: `
 - Added in POS version: 9.2.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 02/15/2024.
 
 ### Features
@@ -152,7 +152,7 @@ const data: LandingTemplateSchema = {
       title: '1.5.1',
       sectionContent: `
 - Added in POS version: 8.22.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 11/13/2023.
 
 ### Features
@@ -167,7 +167,7 @@ const data: LandingTemplateSchema = {
       title: '1.5.0',
       sectionContent: `
 - Added in POS version: 8.21.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 10/30/2023.
 
 ### Features
@@ -182,7 +182,7 @@ const data: LandingTemplateSchema = {
       title: '1.4.0',
       sectionContent: `
 - Added in POS version: 8.18.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 9/27/2023.
 
 ### Features
@@ -198,7 +198,7 @@ const data: LandingTemplateSchema = {
       title: '1.3.0',
       sectionContent: `
 - Added in POS version: 8.15.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 8/16/2023.
 
 ### Features
@@ -222,7 +222,7 @@ Introduced the following components:
       title: '1.2.0',
       sectionContent: `
 - Added in POS version: 8.12.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 6/26/2023.
 
 ### Features
@@ -241,7 +241,7 @@ Introduced the following components:
       title: '1.1.2',
       sectionContent: `
 - Added in POS version: 8.9.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/15/2023.
 
 ### Features
@@ -256,7 +256,7 @@ Introduced the following components:
       title: '1.0.1',
       sectionContent: `
 - Added in POS version: 8.8.1
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/3/2023.
 
 ### Fixes
@@ -270,7 +270,7 @@ Introduced the following components:
       title: '1.0.0',
       sectionContent: `
 - Added in POS version: 8.8.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/1/2023.
 
 ### Features
