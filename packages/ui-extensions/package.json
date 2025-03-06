@@ -34,6 +34,9 @@
       "esnext": "./build/esnext/surfaces/admin.esnext",
       "import": "./build/esm/surfaces/admin.mjs",
       "require": "./build/cjs/surfaces/admin.js"
+    },
+    "./admin.*": {
+      "types": "./build/ts/surfaces/admin/targets/admin.*.d.ts"
     }
   },
   "license": "MIT",
