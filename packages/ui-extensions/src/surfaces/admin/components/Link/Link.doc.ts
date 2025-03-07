@@ -44,15 +44,15 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           tabs: [
             {
+              title: 'Preact',
+              code: './examples/external-link.example.tsx',
+              language: 'typescript',
+            },
+            {
               title: 'JS',
               code: './examples/external-link.example.ts',
               language: 'typescript',
             },
-            // {
-            //   title: 'React',
-            //   code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/external-link.example.tsx',
-            //   language: 'typescript',
-            // },
           ],
           title: 'External Link',
         },
@@ -63,15 +63,15 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           tabs: [
             {
+              title: 'Preact',
+              code: './examples/relative-link.example.tsx',
+              language: 'typescript',
+            },
+            {
               title: 'JS',
               code: './examples/relative-link.example.ts',
               language: 'typescript',
             },
-            // {
-            //   title: 'React',
-            //   code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/relative-link.example.tsx',
-            //   language: 'typescript',
-            // },
           ],
           title: 'Relative Link',
         },
@@ -82,15 +82,15 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           tabs: [
             {
+              title: 'Preact',
+              code: './examples/shopify-section-link.example.tsx',
+              language: 'typescript',
+            },
+            {
               title: 'JS',
               code: './examples/shopify-section-link.example.ts',
               language: 'typescript',
             },
-            // {
-            //   title: 'React',
-            //   code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Link/examples/shopify-section-link.example.tsx',
-            //   language: 'typescript',
-            // },
           ],
           title: 'Shopify Section Link',
         },
