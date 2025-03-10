@@ -1,7 +1,9 @@
+import type {Money} from './money';
+
 export interface ShippingLine {
-  handle: string;
-  price: string;
-  title: string;
+  handle?: string;
+  price: Money;
+  title?: string;
 }
 
 export interface CalculatedShippingLine extends ShippingLine {
