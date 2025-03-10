@@ -4,7 +4,9 @@ import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosReceiptFooterBlockRender,
-  description: 'Renders a custom section within the POS receipt footer',
+  description: `Renders a custom section within the POS receipt footer
+  > Note:
+  > This is part of a POS UI Extensions developer preview. More information to come.`,
   defaultExample: {
     codeblock: generateCodeBlock(
       'Block',

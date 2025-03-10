@@ -8,6 +8,8 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'POSReceiptBlock',
   description: `A component used to group other components together for display on POS receipts.
   > Note:
+  > This is part of a POS UI Extensions developer preview. More information to come.
+  >
   > This component only accepts \`Text\` and \`Image\` components as children.`,
   isVisualComponent: true,
   type: 'component',
