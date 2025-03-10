@@ -46,6 +46,9 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Removed in POS version: N/A
 - Release day: N/A
 
+### Breaking Changes
+- Renamed \`NewTextFieldProps\` to \`TextFieldProps\`.
+
 ### Features
 
 - Added support for the ${TargetLink.PosTransactionCompleteObserve} target.
