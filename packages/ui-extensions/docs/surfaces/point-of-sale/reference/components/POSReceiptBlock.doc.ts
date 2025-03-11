@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
   > Note:
   > This is part of a POS UI Extensions developer preview. More information to come.
   >
-  > This component only accepts \`Text\` and \`Image\` components as children.`,
+  > This component only accepts \`Text\` and \`QRCode\` components as children.`,
   isVisualComponent: true,
   type: 'component',
   // eslint-disable-next-line no-warning-comments
@@ -30,8 +30,8 @@ const data: ReferenceEntityTemplateSchema = {
       url: '/docs/api/pos-ui-extensions/components/text',
     },
     {
-      name: 'Image',
-      url: '/docs/api/pos-ui-extensions/components/image',
+      name: 'QRCode',
+      url: '/docs/api/pos-ui-extensions/components/qrcode',
     },
   ],
   defaultExample: {

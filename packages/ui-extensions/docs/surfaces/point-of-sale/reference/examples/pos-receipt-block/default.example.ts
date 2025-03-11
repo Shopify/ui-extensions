@@ -1,6 +1,6 @@
 import {
   POSReceiptBlock,
-  Image,
+  QRCode,
   Text,
   extension,
 } from '@shopify/ui-extensions/point-of-sale';
@@ -16,13 +16,12 @@ export default extension(
       {},
       'Submission ID: acde070d-8c2c-b0b0-9d8a-162843c10333',
     );
-    const image = root.createComponent(Image, {
-      src: 'example.png',
-      size: 's',
+    const qrCode = root.createComponent(QRCode, {
+      value: 'https://www.shopify.com',
     });
 
     block.append(text);
-    block.append(image);
+    block.append(qrCode);
     root.append(block);
   },
 );
