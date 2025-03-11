@@ -3,6 +3,6 @@ interface ExtensionError extends Error {
   message: string;
 }
 
-export interface BaseIntent {
+export interface BaseOutput {
   errors?: ExtensionError[];
 }

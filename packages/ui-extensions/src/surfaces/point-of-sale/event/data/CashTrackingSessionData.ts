@@ -1,13 +1,13 @@
-import {BaseInput} from './BaseInput';
+import {BaseData} from './BaseData';
 
-export interface CashTrackingSessionStartInput extends BaseInput {
+export interface CashTrackingSessionStartData extends BaseData {
   cashTrackingSessionStart: {
     id: number;
     openingTime: string;
   };
 }
 
-export interface CashTrackingSessionCompleteInput extends BaseInput {
+export interface CashTrackingSessionCompleteData extends BaseData {
   cashTrackingSessionComplete: {
     id: number;
     openingTime: string;

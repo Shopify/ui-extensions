@@ -1,22 +1,22 @@
-import {BaseIntent} from '../intent';
+import {BaseOutput} from '../output';
 import {
-  CashTrackingSessionStartInput,
-  CashTrackingSessionCompleteInput,
-} from './input/CashTrackingSessionInput';
-import {TransactionCompleteInput} from './input/TransactionCompleteInput';
-import {CartUpdateEventInput} from './input/CartUpdateEventInput';
+  CashTrackingSessionStartData,
+  CashTrackingSessionCompleteData,
+} from './data/CashTrackingSessionData';
+import {TransactionCompleteData} from './data/TransactionCompleteData';
+import {CartUpdateEventData} from './data/CartUpdateEventData';
 
 export interface EventExtensionTargets {
   'pos.transaction-complete.event.observe': (
-    input: TransactionCompleteInput,
-  ) => BaseIntent;
+    data: TransactionCompleteData,
+  ) => BaseOutput;
   'pos.cash-tracking-session-start.event.observe': (
-    input: CashTrackingSessionStartInput,
-  ) => BaseIntent;
+    data: CashTrackingSessionStartData,
+  ) => BaseOutput;
   'pos.cash-tracking-session-complete.event.observe': (
-    input: CashTrackingSessionCompleteInput,
-  ) => BaseIntent;
-  'pos.cart-update.event.observe': (input: CartUpdateEventInput) => BaseIntent;
+    data: CashTrackingSessionCompleteData,
+  ) => BaseOutput;
+  'pos.cart-update.event.observe': (data: CartUpdateEventData) => BaseOutput;
 }
 
 export type EventExtensionTarget = keyof EventExtensionTargets;
