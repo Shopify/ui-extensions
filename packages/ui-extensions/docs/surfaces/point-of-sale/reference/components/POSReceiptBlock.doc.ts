@@ -16,13 +16,13 @@ const data: ReferenceEntityTemplateSchema = {
   // eslint-disable-next-line no-warning-comments
   // TODO: add images (and update description, examples, types, related) after determining what child components are allowed.
   // thumbnail: 'pos-receipt-block-thumbnail.png',
-  definitions: [
-    {
-      title: 'POSReceiptBlock',
-      description: '',
-      type: 'POSReceiptBlockProps',
-    },
-  ],
+  // definitions: [
+  //   {
+  //     title: 'POSReceiptBlock',
+  //     description: '',
+  //     type: 'POSReceiptBlockProps',
+  //   },
+  // ],
   category: 'Components',
   related: [
     {
