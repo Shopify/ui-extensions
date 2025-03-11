@@ -5,6 +5,7 @@ import type {
   CartUpdateInput,
   Customer,
   CustomSale,
+  LineItem,
   SetLineItemDiscountInput,
   SetLineItemPropertiesInput,
 } from '../../../types/cart';
@@ -86,6 +87,11 @@ export interface CartApiContent {
    * @param uuid the uuid of the line item that should be removed
    */
   removeLineItem(uuid: string): Promise<void>;
+
+  /** Get the line item at this uuid from the cart
+   * @param uuid the uuid of the line item that should be retrieved
+   */
+  getLineItem(uuid: string): Promise<LineItem | undefined>;
 
   /** Adds custom properties to the cart
    * @param properties the custom key to value object to attribute to the cart

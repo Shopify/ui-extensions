@@ -7,6 +7,7 @@ import {ActionApi} from './render/api/action-api/action-api';
 import {ProductApi} from './render/api/product-api/product-api';
 import {ActionTargetApi} from './render/api/action-target-api/action-target-api';
 import {DraftOrderApi} from './render/api/draft-order-api/draft-order-api';
+import {CartLineItemApi} from './render/api/cart-line-item-api/cart-line-item-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
 type ActionComponents = AnyComponentBuilder<Pick<Components, 'Button'>>;
@@ -133,6 +134,30 @@ export interface ExtensionTargets {
   'pos.receipt-footer.block.render': RenderExtension<
     StandardApi<'pos.receipt-footer.block.render'> & OrderApi,
     ReceiptComponents
+  >;
+  // New targets for manage line items
+  'pos.manage-line.action.render': RenderExtension<
+    ActionTargetApi<'pos.manage-line.action.render'> &
+      CartApi &
+      ActionApi &
+      ProductApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.manage-line.block.render': RenderExtension<
+    StandardApi<'pos.manage-line.block.render'> &
+      CartApi &
+      ProductApi &
+      CartLineItemApi,
+    BlockComponents
+  >;
+  'pos.manage-line.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.manage-line.action.menu-item.render'> &
+      ActionApi &
+      CartApi &
+      ProductApi &
+      CartLineItemApi,
+    ActionComponents
   >;
 }
 
