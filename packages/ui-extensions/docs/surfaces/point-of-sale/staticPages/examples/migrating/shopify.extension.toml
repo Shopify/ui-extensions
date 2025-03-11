@@ -1,4 +1,4 @@
-api_version = "2024-04"
+api_version = "2025-04"
 
 [[extensions]]
 type = "ui_extension"
