@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'DatePickerProps',
+      title: 'DateFieldProps',
       description: '',
-      type: 'DatePickerProps',
+      type: 'DateFieldProps',
     },
   ],
   category: 'Components',
