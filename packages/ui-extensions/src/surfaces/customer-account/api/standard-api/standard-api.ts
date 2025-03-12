@@ -8,6 +8,8 @@ import {
   StorefrontApiVersion,
   Ui,
   SessionToken,
+  CustomerPrivacy,
+  ApplyTrackingConsentChangeType,
 } from '../shared';
 
 import type {ExtensionTarget} from '../../targets';
@@ -103,6 +105,20 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
     query: string,
     options?: {variables?: Variables; version?: StorefrontApiVersion},
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
+
+  /**
+   * Customer privacy consent settings and a flag denoting if consent has previously been collected.
+   */
+  customerPrivacy: StatefulRemoteSubscribable<CustomerPrivacy>;
+
+  /**
+   * Allows setting and updating customer privacy consent settings and tracking consent metafields.
+   *
+   * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) to be set to `true`.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  applyTrackingConsentChange: ApplyTrackingConsentChangeType;
 }
 
 export interface CompanyLocationApi {
