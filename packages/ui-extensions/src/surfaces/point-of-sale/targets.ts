@@ -7,6 +7,8 @@ import {ActionApi} from './render/api/action-api/action-api';
 import {ProductApi} from './render/api/product-api/product-api';
 import {ActionTargetApi} from './render/api/action-target-api/action-target-api';
 import {DraftOrderApi} from './render/api/draft-order-api/draft-order-api';
+import {TransactionCompleteData} from './event/data/TransactionCompleteData';
+import {ReprintReceiptData} from './event/data/ReprintReceiptData';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
 type ActionComponents = AnyComponentBuilder<Pick<Components, 'Button'>>;
@@ -124,10 +126,9 @@ export interface ExtensionTargets {
     BasicComponents
   >;
   'pos.customer-details.block.render': RenderExtension<
-    StandardApi<'pos.customer-details.block.render'> &
-      CartApi &
-      CustomerApi &
-      ActionApi,
+    {
+      [key: string]: any;
+    } & (TransactionCompleteData | {transaction: ReprintReceiptData}),
     BlockComponents
   >;
   'pos.receipt-footer.block.render': RenderExtension<
