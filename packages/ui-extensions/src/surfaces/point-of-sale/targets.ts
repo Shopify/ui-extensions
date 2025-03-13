@@ -1,17 +1,23 @@
-import {StandardApi} from './render/api/standard/standard-api';
-import {OrderApi, CartApi, CustomerApi} from './api';
-import {RenderExtension} from './extension';
+import type {
+  StandardApi,
+  ActionApi,
+  ActionTargetApi,
+  CartApi,
+  CustomerApi,
+  DraftOrderApi,
+  ProductApi,
+  OrderApi,
+} from './api';
+import type {RenderExtension} from './extension';
 import type {Components} from './shared';
-import {AnyComponentBuilder} from '../../shared';
-import {ActionApi} from './render/api/action-api/action-api';
-import {ProductApi} from './render/api/product-api/product-api';
-import {ActionTargetApi} from './render/api/action-target-api/action-target-api';
-import {DraftOrderApi} from './render/api/draft-order-api/draft-order-api';
+import type {AnyComponentBuilder} from '../../shared';
+import type {ReprintReceiptData} from './event/data/ReprintReceiptData';
+import type {TransactionCompleteData} from './event/data/TransactionCompleteData';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
 type ActionComponents = AnyComponentBuilder<Pick<Components, 'Button'>>;
 type ReceiptComponents = AnyComponentBuilder<
-  Pick<Components, 'POSReceiptBlock' | 'Text' | 'Image'>
+  Pick<Components, 'POSReceiptBlock' | 'Text' | 'QRCode'>
 >;
 type BasicComponents = AnyComponentBuilder<Omit<Components, 'Tile'>>;
 type BlockComponents = AnyComponentBuilder<
@@ -131,7 +137,12 @@ export interface ExtensionTargets {
     BlockComponents
   >;
   'pos.receipt-footer.block.render': RenderExtension<
-    StandardApi<'pos.receipt-footer.block.render'> & OrderApi,
+    // NOTE: key/any type is cause of no arg useApi() that includes all target types.
+    //   stop using useApi() with no args, instead specify the target type explicitly.
+    {[key: string]: any} & (
+      | TransactionCompleteData
+      | {transaction: ReprintReceiptData}
+    ),
     ReceiptComponents
   >;
 }

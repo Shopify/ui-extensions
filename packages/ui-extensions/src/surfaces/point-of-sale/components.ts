@@ -70,6 +70,7 @@ export {
   type POSReceiptBlockProps,
   type AllowedChildrenComponents,
 } from './render/components/POSReceiptBlock/POSReceiptBlock';
+export {QRCode, type QRCodeProps} from './render/components/QRCode/QRCode';
 export {PrintPreview} from './render/components/PrintPreview/PrintPreview';
 export type {PrintPreviewProps} from './render/components/PrintPreview/PrintPreview';
 export {RadioButtonList} from './render/components/RadioButtonList/RadioButtonList';

@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   POSReceiptBlock,
-  Image,
+  QRCode,
   Text,
   reactExtension,
 } from '@shopify/ui-extensions-react/point-of-sale';
@@ -12,7 +12,7 @@ const ReceiptFooterBlock = () => (
       Submission ID:
       acde070d-8c2c-b0b0-9d8a-162843c10333
     </Text>
-    <Image src="example.png" size="s" />
+    <QRCode value="https://www.shopify.com" />
   </POSReceiptBlock>
 );
 
