@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   render,
   DateField,
-  type Selected
 } from '@shopify/ui-extensions-react/admin';
 
 render('Playground', () => <App />);
 
 function App() {
-  const [selected, setSelected] = useState<Selected>('2023-11-08')
+  const [value, setValue] =
+    useState('2023-11-08');
   return (
-    <DateField selected={selected} onChange={setSelected} />
+    <DateField
+      label="DateField"
+      value={value}
+      onChange={setValue}
+    />
   );
 }
