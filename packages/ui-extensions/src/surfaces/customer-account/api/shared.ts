@@ -428,3 +428,175 @@ export interface SessionToken {
    */
   get(): Promise<string>;
 }
+
+export interface AllowedProcessing {
+  /**
+   * Can collect customer analytics about how the shop was used and interactions made on the shop.
+   */
+  analytics: boolean;
+  /**
+   * Can collect customer preference for marketing, attribution and targeted advertising from the merchant.
+   */
+  marketing: boolean;
+  /**
+   * Can collect customer preferences such as language, currency, size, and more.
+   */
+  preferences: boolean;
+  /**
+   * Can collect customer preference for sharing data with third parties, usually for behavioral advertising.
+   */
+  saleOfData: boolean;
+}
+
+export interface VisitorConsent {
+  /**
+   * Visitor consents to recording data to understand how customers interact with the site.
+   */
+  analytics?: boolean;
+  /**
+   * Visitor consents to ads and marketing communications based on customer interests.
+   */
+  marketing?: boolean;
+  /**
+   * Visitor consent to remembering customer preferences, such as country or language, to personalize visits to the website.
+   */
+  preferences?: boolean;
+  /**
+   * Opts the visitor out of data sharing / sales.
+   */
+  saleOfData?: boolean;
+}
+
+export interface TrackingConsentMetafield {
+  /**
+   * The name of the metafield. It must be between 3 and 30 characters in
+   * length (inclusive).
+   */
+  key: string;
+  /**
+   * The information to be stored as metadata.
+   *
+   * @example 'any string', '', or a stringified JSON object
+   */
+  value: string;
+}
+
+export interface TrackingConsentMetafieldChange {
+  /**
+   * The name of the metafield. It must be between 3 and 30 characters in
+   * length (inclusive).
+   */
+  key: string;
+  /**
+   * The information to be stored as metadata. If the value is `null`, the metafield will be deleted.
+   *
+   * @example 'any string', `null`, or a stringified JSON object
+   */
+  value: string | null;
+}
+
+export interface VisitorConsentChange extends VisitorConsent {
+  /**
+   * Tracking consent metafield data to be saved.
+   *
+   * If the value is `null`, the metafield will be deleted.
+   *
+   * @example `[{key: 'granularAnalytics', value: 'true'}, {key: 'granularMarketing', value: 'false'}]`
+   */
+  metafields?: TrackingConsentMetafieldChange[];
+  type: 'changeVisitorConsent';
+}
+
+export type ApplyTrackingConsentChangeType = (
+  visitorConsent: VisitorConsentChange,
+) => Promise<TrackingConsentChangeResult>;
+
+export interface CustomerPrivacyRegion {
+  /**
+   * The [ISO 3166 Alpha-2 format](https://www.iso.org/iso-3166-country-codes.html) for the buyer's country.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'CA' for Canada, 'US' for United States, 'GB' for Great Britain, or undefined if geolocation failed.
+   */
+  countryCode?: CountryCode;
+  /**
+   * The buyer's province code, such as state, province, prefecture, or region.
+   *
+   * Province codes can be found by clicking on the `Subdivisions assigned codes` column for countries listed [here](https://en.wikipedia.org/wiki/ISO_3166-2).
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'ON' for Ontario, 'ENG' for England, 'CA' for California, or undefined if geolocation failed or only the country was detected.
+   */
+  provinceCode?: string;
+}
+
+export interface CustomerPrivacy {
+  /**
+   * An object containing flags for each consent property denoting whether they can be processed based on visitor consent, merchant configuration, and user location.
+   */
+  allowedProcessing: AllowedProcessing;
+  /**
+   * Stored tracking consent metafield data.
+   *
+   * @example `[{key: 'analyticsType', value: 'granular'}, {key: 'marketingType', value: 'granular'}]`, or `[]`
+   */
+  metafields: TrackingConsentMetafield[];
+  /**
+   * An object containing the customer's current privacy consent settings.
+   * *
+   * @example `true` — the customer has actively granted consent, `false` — the customer has actively denied consent, or `undefined` — the customer has not yet made a decision.
+   */
+  visitorConsent: VisitorConsent;
+  /**
+   * Whether a consent banner should be displayed by default when the page loads. Use this as the initial open/expanded state of the consent banner.
+   *
+   * This is determined by the visitor's current privacy consent, the shop's [region visibility configuration](https://help.shopify.com/en/manual/privacy-and-security/privacy/customer-privacy-settings/privacy-settings#add-a-cookie-banner) settings, and the region in which the visitor is located.
+   */
+  shouldShowBanner: boolean;
+  /**
+   * Whether the visitor is in a region requiring data sale opt-outs.
+   */
+  saleOfDataRegion: boolean;
+  /**
+   * Details about the visitor's current location for use in evaluating if more granular consent controls should render.
+   *
+   * @example `{countryCode: 'CA', provinceCode: 'ON'}` for a visitor in Ontario, Canada; `{countryCode: 'US', provinceCode: undefined}` for a visitor in the United States if geolocation fails to detect the state; or `undefined` if neither country nor province is detected or geolocation fails.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  region?: CustomerPrivacyRegion;
+}
+
+export type TrackingConsentChangeResult =
+  | TrackingConsentChangeResultSuccess
+  | TrackingConsentChangeResultError;
+
+/**
+ * The returned result of a successful tracking consent preference update.
+ */
+export interface TrackingConsentChangeResultSuccess {
+  /**
+   * The type of the `TrackingConsentChangeResultSuccess` API.
+   */
+  type: 'success';
+}
+
+/**
+ * The returned result of an unsuccessful tracking consent preference update
+ * with a message detailing the type of error that occurred.
+ */
+export interface TrackingConsentChangeResultError {
+  /**
+   * The type of the `TrackingConsentChangeResultError` API.
+   */
+  type: 'error';
+
+  /**
+   * A message that explains the error. This message is useful for debugging.
+   * It is **not** localized, and therefore should not be presented directly
+   * to the buyer.
+   */
+  message: string;
+}

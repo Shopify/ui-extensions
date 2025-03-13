@@ -125,6 +125,10 @@ export interface CustomerAccountExtensionTargets {
     StandardApi<'customer-account.profile.addresses.render-after'>,
     AllComponents
   >;
+  'customer-account.footer.render-after': RenderExtension<
+    StandardApi<'customer-account.footer.render-after'>,
+    AllComponents
+  >;
   /**
    *  @experimental This is experimental and shouldn't be used until its not.
    */
