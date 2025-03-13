@@ -35,47 +35,6 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  examples: {
-    description: '',
-    examples: [
-      {
-        description: 'Use this when users need to select multiple dates.',
-        codeblock: {
-          title: 'Add a multi-date DateField',
-          tabs: [
-            {
-              title: 'React',
-              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/DateField/examples/multiple-datefield.example.tsx',
-              language: 'tsx',
-            },
-            {
-              title: 'JS',
-              code: './examples/multiple-datefield.example.ts',
-              language: 'js',
-            },
-          ],
-        },
-      },
-      {
-        description: 'Use this when users need to select a range of dates.',
-        codeblock: {
-          title: 'Add a range DateField',
-          tabs: [
-            {
-              title: 'React',
-              code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/DateField/examples/range-datefield.example.tsx',
-              language: 'tsx',
-            },
-            {
-              title: 'JS',
-              code: './examples/range-datefield.example.ts',
-              language: 'js',
-            },
-          ],
-        },
-      },
-    ],
-  },
 
   related: [],
 };
