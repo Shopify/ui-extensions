@@ -43,3 +43,4 @@ export {
 } from './authenticated-account';
 
 export {useAuthenticationState} from './authentication-state';
+export {useCustomerPrivacy} from './customer-privacy';
