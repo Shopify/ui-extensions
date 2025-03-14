@@ -32,6 +32,11 @@ const data: ReferenceEntityTemplateSchema = {
           code: './examples/basic-button.example.ts',
           language: 'js',
         },
+        {
+          title: 'Preview',
+          code: './examples/preview.html',
+          language: 'preview',
+        },
       ],
     },
   },
