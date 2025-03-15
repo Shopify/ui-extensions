@@ -24,14 +24,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Basic NumberField example',
       tabs: [
         {
-          title: 'Peact',
+          title: 'JSX',
           code: './examples/basic-number-field.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-number-field.example.ts',
-          language: 'js',
+          title: 'Preview',
+          code: './examples/preview.html',
+          language: 'preview',
         },
       ],
     },

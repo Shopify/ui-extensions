@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
+    <style>
+      body {
+        background-color: rgba(241, 241, 241, 1);
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  function handleChange(event) {
+    console.log(event.target.value);
+    if (!emailRegex.test(event.target.value)) {
+      event.target.error = 'Invalid email address';
+    } else {
+      event.target.error = '';
+    }
+  }
+</script>
+
+<s-email-field
+  label="Email"
+  value="test@test.com"
+  onchange="handleChange(event)"
+/>
+  </body>
+</html>

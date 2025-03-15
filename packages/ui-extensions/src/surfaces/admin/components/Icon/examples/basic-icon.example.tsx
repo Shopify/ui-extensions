@@ -1,6 +1,22 @@
-import '@shopify/ui-extensions/preact';
-import {render} from 'preact';
+<Fragment>
+  <s-stack gap="base" direction="column">
+    <s-stack gap="base">
+      <s-icon type="home"></s-icon>
+      <s-icon type="order"></s-icon>
+      <s-icon type="product"></s-icon>
+      <s-icon type="settings"></s-icon>
+    </s-stack>
 
-export default function extension() {
-  render(<s-icon type="apps" />, document.body);
-}
+    <s-stack gap="base">
+      <s-icon type="alert-circle" tone="critical"></s-icon>
+      <s-icon type="check-circle" tone="success"></s-icon>
+      <s-icon type="info-circle" tone="info"></s-icon>
+      <s-icon type="warning-circle" tone="warning"></s-icon>
+    </s-stack>
+
+    <s-stack gap="base">
+      <s-icon type="star" size="small"></s-icon>
+      <s-icon type="star" size="base"></s-icon>
+    </s-stack>
+  </s-stack>
+</Fragment>;

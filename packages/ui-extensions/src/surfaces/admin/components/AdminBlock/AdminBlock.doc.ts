@@ -23,14 +23,9 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Simple AdminBlock implementation',
       tabs: [
         {
-          title: 'Preact',
+          title: 'JSX',
           code: './examples/basic-adminblock.example.tsx',
           language: 'tsx',
-        },
-        {
-          title: 'JS',
-          code: './examples/basic-adminblock.example.ts',
-          language: 'js',
         },
       ],
     },

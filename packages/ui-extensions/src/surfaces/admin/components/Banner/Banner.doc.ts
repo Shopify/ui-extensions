@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Basic Banner example',
       tabs: [
         {
-          title: 'Peact',
+          title: 'JSX',
           code: './examples/basic-banner.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-banner.example.ts',
-          language: 'js',
+          title: 'Preview',
+          code: './examples/preview.html',
+          language: 'preview',
         },
       ],
     },

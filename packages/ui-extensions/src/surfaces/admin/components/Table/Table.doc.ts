@@ -28,9 +28,9 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-table.example.ts',
-          language: 'js',
+          title: 'Preview',
+          code: './examples/preview.html',
+          language: 'preview',
         },
       ],
     },

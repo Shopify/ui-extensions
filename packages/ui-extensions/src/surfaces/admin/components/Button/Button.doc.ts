@@ -23,14 +23,9 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Add a simple button to your app.',
       tabs: [
         {
-          title: 'Preact',
+          title: 'JSX',
           code: './examples/basic-button.example.tsx',
           language: 'tsx',
-        },
-        {
-          title: 'JS',
-          code: './examples/basic-button.example.ts',
-          language: 'js',
         },
         {
           title: 'Preview',

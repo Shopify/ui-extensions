@@ -1,20 +1,9 @@
-import '@shopify/ui-extensions/preact';
-import {render} from 'preact';
+<s-stack gap="base" direction="block">
+  <s-banner tone="info">
+    <s-text>This is a banner</s-text>
+  </s-banner>
 
-export default function extension() {
-  const onDismiss = () => {
-    console.log('Banner dismissed');
-  };
-
-  render(
-    <s-banner 
-      heading="Success" 
-      tone="success" 
-      dismissible 
-      onDismiss={onDismiss}
-    >
-      Your action was successful
-    </s-banner>,
-    document.body,
-  );
-}
+  <s-banner tone="success" dismissible onDismiss={onDismiss}>
+    <s-text>This is a success banner</s-text>
+  </s-banner>
+</s-stack>;

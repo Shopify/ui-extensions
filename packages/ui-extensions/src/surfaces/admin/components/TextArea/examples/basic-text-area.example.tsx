@@ -1,19 +1,7 @@
-import '@shopify/ui-extensions/preact';
-import {render} from 'preact';
-
-export default function extension() {
-  const onInput = (event: Event) => {
-    console.log(event.target.value);
-  };
-
-  render(
-    <s-text-area 
-      label="Description" 
-      placeholder="Enter your description" 
-      rows={4}
-      maxLength={1000}
-      onInput={onInput} 
-    />,
-    document.body,
-  );
-};
+<s-text-area
+  label="Description"
+  value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  rows="5"
+  max-length="1000"
+  onInput={onInput}
+/>;

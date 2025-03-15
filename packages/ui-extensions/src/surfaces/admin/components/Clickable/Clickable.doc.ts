@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Basic Clickable example',
       tabs: [
         {
-          title: 'Peact',
+          title: 'JSX',
           code: './examples/basic-clickable.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-clickable.example.ts',
-          language: 'js',
+          title: 'Preview',
+          code: './examples/preview.html',
+          language: 'preview',
         },
       ],
     },
