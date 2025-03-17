@@ -44,6 +44,6 @@ export enum TargetLink {
   PosTransactionCompleteObserve = '[pos.transaction-complete.event.observe](/docs/api/pos-ui-extensions/targets/post-purchase/pos-transaction-complete-event-observe)',
   PosCashTrackingSessionStartObserve = '[pos.cash-tracking-session-start.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-start-event-observe)',
   PosCashTrackingSessionCompleteObserve = '[pos.cash-tracking-session-complete.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-complete-event-observe)',
-  PosCartUpdateObserve = '[pos.cart-update.event.observe](/docs/api/pos-ui-extensions/targets/cart-update-observe)',
+  PosCartUpdateObserve = '[pos.cart-update.event.observe](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-update-event-observe)',
   PosReceiptFooterBlockRender = '[pos.receipt-footer.block.render](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render)',
 }
