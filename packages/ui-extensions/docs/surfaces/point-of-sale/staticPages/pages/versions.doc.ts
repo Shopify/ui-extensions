@@ -71,7 +71,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 ## Important Fixes
 
-- **POS 9.30.0**:
+- **POS 9.31.0**:
 
   - Modal updated so neither swiping down nor tapping outside of modal will dismiss modal.
 
