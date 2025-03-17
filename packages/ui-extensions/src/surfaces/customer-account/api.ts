@@ -66,6 +66,14 @@ export type {
   Company,
   Customer,
   SessionToken,
+  ApplyTrackingConsentChangeType,
+  CustomerPrivacy,
+  TrackingConsentChangeResult,
+  TrackingConsentChangeResultError,
+  TrackingConsentMetafield,
+  TrackingConsentMetafieldChange,
+  VisitorConsent,
+  VisitorConsentChange,
 } from './api/shared';
 
 export type {CartLineItemApi} from './api/cart-line/cart-line-item';
