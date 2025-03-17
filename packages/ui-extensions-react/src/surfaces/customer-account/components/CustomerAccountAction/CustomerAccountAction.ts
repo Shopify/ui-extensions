@@ -10,5 +10,5 @@ export type CustomerAccountActionProps = ReactPropsFromRemoteComponentType<
 
 export const CustomerAccountAction = createRemoteReactComponent(
   BaseCustomerAccountAction,
-  {fragmentProps: ['primaryAction', 'secondaryAction']},
+  {fragmentProps: ['primaryAction', 'secondaryActions']},
 );

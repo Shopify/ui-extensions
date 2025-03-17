@@ -7,5 +7,5 @@ import {
 export type PageProps = ReactPropsFromRemoteComponentType<typeof BasePage>;
 
 export const Page = createRemoteReactComponent(BasePage, {
-  fragmentProps: ['primaryAction', 'secondaryAction'],
+  fragmentProps: ['primaryAction', 'secondaryActions', 'breadcrumbActions'],
 });

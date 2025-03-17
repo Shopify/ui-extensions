@@ -42,7 +42,6 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-- Use with the [ResourceItem](/docs/api/customer-account-ui-extension/unstable/components/resourceitem) component
 - Optimize image file sizes and consider lazy loading for performance.
 `,
     },

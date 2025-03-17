@@ -97,6 +97,18 @@ export interface Docs_Page_Button_PrimaryAction
     | 'accessibilityLabel'
   > {}
 export interface Docs_Page_Button_SecondaryAction
+  extends Pick<
+    ButtonProps,
+    | 'onPress'
+    | 'overlay'
+    | 'to'
+    | 'loading'
+    | 'loadingLabel'
+    | 'disabled'
+    | 'accessibilityLabel'
+  > {}
+
+export interface Docs_Page_Button_BreadcrumbAction
   extends Pick<ButtonProps, 'onPress' | 'to'> {
   /**
    * A label used for buyers using assistive technologies. Needed because `children` passed to this component will be discarded.

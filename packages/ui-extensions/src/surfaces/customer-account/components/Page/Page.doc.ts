@@ -21,10 +21,16 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_Page_Button_PrimaryAction',
     },
     {
-      title: 'ButtonProps secondaryAction',
+      title: 'ButtonProps secondaryActions',
       description:
-        'Supported props for Button used inside Page `secondaryAction` prop.<br><br>`children` are not supported.<br>Use `accessibilityLabel` instead.',
+        'Supported props for Button used inside Page `secondaryActions` prop.<br><br>`children` are not supported.<br>Use `accessibilityLabel` instead.',
       type: 'Docs_Page_Button_SecondaryAction',
+    },
+    {
+      title: 'ButtonProps breadcrumbActions',
+      description:
+        'Supported props for Button used inside Page `breadcrumbActions` prop.<br><br>`children` are not supported.<br>Use `accessibilityLabel` instead.',
+      type: 'Docs_Page_Button_BreadcrumbAction',
     },
   ],
   category: 'components',
@@ -54,14 +60,14 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-**Title**
+**Heading**
 - Set clear expectations about the purpose and main topic of the page.
 - Aim for 1-3 words.
 - Use sentence case.
 
-**Subtitle**
+**Subheading**
 - Use to provide additional context or information that enhances the customer’s understanding of the page.
-- Use subtitles sparingly and only when they add useful information that is distinct from the title.
+- Use subheadings sparingly and only when they add useful information that is distinct from the heading.
 
 **Buttons**
 - Use for page-level actions only.

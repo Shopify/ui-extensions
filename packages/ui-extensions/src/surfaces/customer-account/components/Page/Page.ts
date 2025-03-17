@@ -3,49 +3,30 @@ import type {RemoteFragment} from '@remote-ui/core';
 
 export interface PageProps {
   /**
-   * The text to be used as title.
+   * The main page heading
    */
-  title: string;
+  heading?: string;
 
   /**
-   * The text to be used as subtitle.
+   * The text to be used as subheading.
    */
-  subtitle?: string;
+  subheading?: string;
 
   /**
-   * The action grouping, provided as button(s), that is placed in the primary position of the page.
+   * The primary action to perform, provided as a button.
+   * When a `Button` is added to the `primaryAction` it's variant is set to `primary`
    */
   primaryAction?: RemoteFragment;
 
   /**
-   * Label for the primary action grouping. If a label is not provided, default text is used.
-   *
-   * @defaultValue "More actions"
+   * The breadcrumb actions to perform, provided as buttons. This is typically used to navigate back to the previous page.
    */
-  primaryActionLabel?: string;
+  breadcrumbActions?: RemoteFragment;
 
   /**
-   * Accessibility label for the primary action grouping. If an accessibility label is not provided,
-   * default text is used.
-   *
-   * @defaultValue "More actions"
+   * The secondary action grouping, provided as button(s), that is placed in the secondary position of the page (to the right of the primary action).
    */
-  primaryActionAccessibilityLabel?: string;
-
-  /**
-   * The action grouping, provided as button(s), that is placed in the secondary position of the page.
-   */
-  secondaryAction?: RemoteFragment;
-
-  /**
-   * Indicates that the page is in a loading state.
-   *
-   * When `true`, the page shows loading indicators for the UI elements that it is owns.
-   * The page is not responsible for the loading indicators of any content that is passed as `children`.
-   *
-   * @defaultValue false
-   */
-  loading?: boolean;
+  secondaryActions?: RemoteFragment;
 }
 
 export const Page = createRemoteComponent<'Page', PageProps>('Page');

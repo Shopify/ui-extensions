@@ -10,15 +10,27 @@ export default reactExtension('customer-account.page.render', () => <App />);
 function App() {
   return (
     <Page
-      title="Order #1411"
-      subtitle="Confirmed Oct 5"
-      secondaryAction={<Button accessibilityLabel="Button" onPress={() => {}}/>}
-      primaryActionLabel="Manage"
+      heading="Order #1411"
+      subheading="Confirmed Oct 5"
+      breadcrumbActions={
+        <Button
+          accessibilityLabel="Button"
+          onPress={() => {}}
+        />
+      }
       primaryAction={
+        <Button onPress={() => {}}>
+          Buy again
+        </Button>
+      }
+      secondaryActions={
         <>
-          <Button onPress={() => {}}>Buy again</Button>
-          <Button onPress={() => {}}>Second action</Button>
-          <Button onPress={() => {}}>Third action</Button>
+          <Button onPress={() => {}}>
+            First secondary action
+          </Button>
+          <Button onPress={() => {}}>
+            Second secondary action
+          </Button>
         </>
       }
     >
