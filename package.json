@@ -21,14 +21,13 @@
     "deploy:unstable": "changeset version --snapshot unstable && changeset publish --tag unstable --no-git-tag",
     "predeploy:internal": "yarn build",
     "deploy:internal": "changeset version --snapshot internal && changeset publish --tag internal --no-git-tag",
-    "gen-docs:admin": "yarn workspace @shopify/ui-extensions gen-docs:admin",
+    "gen-docs:admin": "./packages/ui-extensions/docs/surfaces/admin/create-doc-files.sh",
     "lint": "loom lint",
     "nuke": "rm -rf node_modules && yarn cache clean && rm -rf .loom && git clean -xdf ./packages; rm -rf ./build",
     "restore-consumer": "./scripts/restore-consumer.sh",
     "restore-consumer-spin": "./scripts/restore-consumer-spin.sh",
     "run:ts": "babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "run:ts:watch": "nodemon --ext .ts,.tsx,.mjs,.json,.graphql node_modules/.bin/babel-node --extensions .ts,.tsx,.mjs,.js,.json",
-    "scaffold-docs:admin": "./packages/ui-extensions/docs/surfaces/admin/create-doc-files.sh \"admin\"",
     "type-check": "loom type-check"
   },
   "devDependencies": {
