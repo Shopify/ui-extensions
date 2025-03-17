@@ -14,7 +14,7 @@ const ReceiptFooterWithQRCodeBlock = () => {
   return (
     <POSReceiptBlock>
       <QRCode
-        value={`https://example.com?id=${encodeURIComponent(
+        value={`https://shopify.com?example=${encodeURIComponent(
           api.transaction.orderId ?? '',
         )}`}
       />

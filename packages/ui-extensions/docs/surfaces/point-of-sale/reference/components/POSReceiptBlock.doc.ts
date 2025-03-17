@@ -13,29 +13,30 @@ const data: ReferenceEntityTemplateSchema = {
   > This component only accepts \`Text\` and \`QRCode\` components as children.`,
   isVisualComponent: true,
   type: 'component',
-  // eslint-disable-next-line no-warning-comments
-  // TODO: add images (and update description, examples, types, related) after determining what child components are allowed.
-  // thumbnail: 'pos-receipt-block-thumbnail.png',
-  // definitions: [
-  //   {
-  //     title: 'POSReceiptBlock',
-  //     description: '',
-  //     type: 'POSReceiptBlockProps',
-  //   },
-  // ],
+  thumbnail: 'pos-receipt-block-thumbnail.png',
   category: 'Components',
   related: [
     {
       name: 'Text',
+      subtitle: 'Acceptable child components',
+      type: 'apps',
       url: '/docs/api/pos-ui-extensions/components/text',
     },
     {
       name: 'QRCode',
+      subtitle: 'Acceptable child components',
+      type: 'apps',
       url: '/docs/api/pos-ui-extensions/components/qrcode',
+    },
+    {
+      name: 'pos.receipt-footer.block.render',
+      subtitle: 'Target',
+      type: 'blocks',
+      url: '/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render',
     },
   ],
   defaultExample: {
-    // image: 'pos-receipt-block-default.png',
+    image: 'pos-receipt-block-default.png',
     codeblock: generateCodeBlockForPOSReceiptBlock(
       'Render a POSReceiptBlock in POS receipts',
       'default.example',

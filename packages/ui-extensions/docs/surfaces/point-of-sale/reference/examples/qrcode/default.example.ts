@@ -11,7 +11,7 @@ export default extension(
       POSReceiptBlock,
     );
     const qrCode = root.createComponent(QRCode, {
-      value: `https://example.com?id=${encodeURIComponent(
+      value: `https://shopify.com?example=${encodeURIComponent(
         api.transaction.orderId ?? '',
       )}`,
     });

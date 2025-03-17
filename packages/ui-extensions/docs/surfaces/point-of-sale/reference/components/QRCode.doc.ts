@@ -25,6 +25,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       name: 'POSReceiptBlock',
       subtitle: 'Required parent wrapper component',
+      type: 'apps',
       url: '/docs/api/pos-ui-extensions/components/posreceiptblock',
     },
   ],

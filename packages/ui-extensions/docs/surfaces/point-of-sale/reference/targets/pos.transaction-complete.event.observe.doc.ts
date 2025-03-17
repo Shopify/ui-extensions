@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {TRANSACTION_COMPLETE_DEFINITION} from '../helpers/helper.docs';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -9,8 +10,22 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   subCategory: 'Post-purchase',
   isVisualComponent: false,
-  related: [],
+  related: [
+    {
+      name: 'pos.receipt-footer.block.render',
+      subtitle: 'Target',
+      type: 'blocks',
+      url: '/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render',
+    },
+    {
+      name: 'POSReceiptBlock',
+      subtitle: 'Component',
+      type: 'apps',
+      url: '/docs/api/pos-ui-extensions/components/posreceiptblock',
+    },
+  ],
   type: 'Target',
+  ...TRANSACTION_COMPLETE_DEFINITION,
 };
 
 export default data;

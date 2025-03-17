@@ -1,5 +1,6 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {TRANSACTION_COMPLETE_DEFINITION} from '../helpers/helper.docs';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -19,15 +20,14 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   related: [
     {
-      name: 'Order API',
-      url: '/docs/api/pos-ui-extensions/apis/order-api',
-    },
-    {
       name: 'POSReceiptBlock',
+      subtitle: 'Component',
+      type: 'apps',
       url: '/docs/api/pos-ui-extensions/components/posreceiptblock',
     },
   ],
   type: 'Target',
+  ...TRANSACTION_COMPLETE_DEFINITION,
 };
 
 export default data;

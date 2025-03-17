@@ -7,17 +7,19 @@ import {
 
 export default extension(
   'pos.receipt-footer.block.render',
-  (root) => {
+  (root, api) => {
     const block = root.createComponent(
       POSReceiptBlock,
     );
     const text = root.createComponent(
       Text,
       {},
-      'Submission ID: acde070d-8c2c-b0b0-9d8a-162843c10333',
+      'Custom receipt text',
     );
     const qrCode = root.createComponent(QRCode, {
-      value: 'https://www.shopify.com',
+      value: `https://www.shopify.com/?example=${encodeURIComponent(
+        api.transaction.orderId ?? '',
+      )}`,
     });
 
     block.append(text);
