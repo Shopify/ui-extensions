@@ -429,6 +429,10 @@ export interface SessionToken {
   get(): Promise<string>;
 }
 
+export interface BuyerContextData {
+  selectedCountry?: string;
+}
+
 export interface AllowedProcessing {
   /**
    * Can collect customer analytics about how the shop was used and interactions made on the shop.

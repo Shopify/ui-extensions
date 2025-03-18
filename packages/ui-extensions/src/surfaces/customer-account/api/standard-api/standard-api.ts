@@ -8,6 +8,7 @@ import {
   StorefrontApiVersion,
   Ui,
   SessionToken,
+  BuyerContextData,
   CustomerPrivacy,
   ApplyTrackingConsentChangeType,
 } from '../shared';
@@ -78,6 +79,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    */
   sessionToken: SessionToken;
 
+  buyerContext: BuyerContextData;
   /**
    * The settings matching the settings definition written in the
    * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration) file.

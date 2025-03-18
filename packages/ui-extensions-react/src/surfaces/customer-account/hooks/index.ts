@@ -27,6 +27,7 @@ export {
   usePhone,
   usePurchasingCompany,
 } from './buyer-identity';
+export {useBuyerContext} from './buyer-context';
 export {useTranslate} from './translate';
 export {useI18n} from './i18n';
 export {useSessionToken} from './session-token';
