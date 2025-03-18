@@ -13,13 +13,38 @@ export interface Cart {
   properties: Record<string, string>;
 }
 
+/**
+ * @deprecated Use CartUpdateInputV2 instead. This will be removed in the next major version 2025-07.
+ */
 export interface CartUpdateInput {
   note?: string;
   cartDiscount?: Discount;
   cartDiscounts: Discount[];
   customer?: Customer;
   lineItems: LineItem[];
-  properties: Record<string, string>;
+  properties?: Record<string, string>;
+}
+
+export interface CartUpdateInputV2 {
+  note?: string;
+  cartDiscount?: Discount;
+  cartDiscounts: Discount[];
+  customer?: Customer;
+  lineItems: BulkUpdateLineItem[];
+  properties?: Record<string, string>;
+}
+
+export interface BulkUpdateLineItem {
+  uuid: string;
+  price?: number;
+  quantity: number;
+  title?: string;
+  variantId?: number;
+  productId?: number;
+  discounts: Discount[];
+  taxable: boolean;
+  properties: {[key: string]: string};
+  isGiftCard: boolean;
 }
 
 export interface Customer {
