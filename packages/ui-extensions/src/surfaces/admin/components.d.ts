@@ -1,4 +1,4 @@
-/** VERSION: 0.42.0 **/
+/** VERSION: 0.43.0 **/
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -5577,7 +5577,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$q = 's-unstable-list-item';
+declare const tagName$q = 's-list-item';
 export interface ListItemJSXProps
   extends Partial<ListItemProps>,
     Pick<ListItemProps$1, 'id'> {}
@@ -5738,7 +5738,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$l = 's-unstable-ordered-list';
+declare const tagName$l = 's-ordered-list';
 export interface OrderedListJSXProps
   extends Partial<OrderedListProps>,
     Pick<OrderedListProps$1, 'id'> {}
@@ -5828,7 +5828,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$j = 's-unstable-password-field';
+declare const tagName$j = 's-password-field';
 export interface PasswordFieldJSXProps
   extends Partial<PasswordFieldProps>,
     Pick<PasswordFieldProps$1, 'id'>,
@@ -6364,7 +6364,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$4 = 's-unstable-unordered-list';
+declare const tagName$4 = 's-unordered-list';
 export interface UnorderedListJSXProps
   extends Partial<UnorderedListProps>,
     Pick<UnorderedListProps$1, 'id'> {}
