@@ -9,5 +9,5 @@ yarn upgrade react@^18.2.0
 yarn upgrade @types/react@^18.2.0
 
 # 4. Install the new packages
-yarn add @shopify/ui-extensions@2024.4
-yarn add @shopify/ui-extensions-react@2024.4
+yarn add @shopify/ui-extensions@2025.4
+yarn add @shopify/ui-extensions-react@2025.4

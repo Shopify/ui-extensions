@@ -30,8 +30,6 @@ const data: LandingTemplateSchema = {
 POS UI Extensions are moving to the newer \`@shopify/ui-extensions\` package, shared with [Checkout UI Extensions](https://shopify.dev/docs/api/checkout-ui-extensions) and [Admin UI Extensions](https://shopify.dev/docs/api/admin-extensions). This will allow your extensions to use the same package regardless of the surface they extend, and for a single extension to implement multiple targets across different surfaces of Shopify more easily.
 
 \`@shopify/retail-ui-extensions\` and \`@shopify/retail-ui-extensions-react\` are deprecated. They are now maintained as part of \`@shopify/ui-extensions\` and \`@shopify/ui-extensions-react\`. This guide explains how to migrate from the old packages to the new ones.
-
-Aside from these migration steps, \`@shopify/ui-extensions@2024.4\` is backwards compatible with \`@shopify/retail-ui-extensions@1.7.0\`.
       `,
     },
     {
@@ -89,7 +87,7 @@ Migrate your \`shopify.extension.toml\` file to reflect the [new syntax](https:/
 - Specify which \`api_version\` you are using at the top of the file (above \`[[extensions]]\`). This will let POS know which version of the \`ui-extensions\` package you're using.
 
 > Note:
-> \`api_version\` needs to be declared in a \`yyyy-mm\` format. If you are using \`@shopify/ui-extensions\` version \`2024.4\` for example, you must declare your \`api_version\` as 2024-04. The patch is irrelevant to \`api_version\`.
+> \`api_version\` needs to be declared in a \`yyyy-mm\` format. If you are using \`@shopify/ui-extensions\` version \`2025.4\` for example, you must declare your \`api_version\` as 2025-04. The patch is irrelevant to \`api_version\`.
 
 - Declare each extension target and file path in \`shopify.extension.toml\`
       `,

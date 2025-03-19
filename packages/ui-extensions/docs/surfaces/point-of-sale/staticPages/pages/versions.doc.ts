@@ -42,7 +42,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '202504',
       title: '2025.04',
       sectionContent: `
-- Added in POS version: N/A
+- Added in POS version: 9.31
 - Removed in POS version: N/A
 - Release day: N/A
 
