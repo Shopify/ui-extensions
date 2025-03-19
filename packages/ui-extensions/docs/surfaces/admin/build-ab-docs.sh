@@ -35,6 +35,24 @@ else
   echo "If you need to update the 'unstable' version, run this command again without the '$API_VERSION' parameter."
 fi
 
+# Read tsconfig.ab.docs.json and extract include/exclude patterns
+# Find all .doc.ts files in SRC_PATH
+FIND_CMD="find ./$SRC_PATH -name '*.doc.ts'"
+
+# Store original files for restoration
+declare -a MODIFIED_FILES
+
+echo "Replacing JSX/tsx references..."
+while IFS= read -r file; do
+  if grep -q "JSX\|\.tsx" "$file"; then
+    cp "$file" "$file.bak"
+    MODIFIED_FILES+=("$file")
+    run_sed 's/JSX/HTML/g' "$file"
+    run_sed 's/\.tsx/\.html/g' "$file"
+  fi
+done < <(eval "$FIND_CMD")
+
+
 COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.ab.docs.json --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH --output ./$DOCS_PATH/generated"
 # COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
 
@@ -45,6 +63,13 @@ run_sed "s/typeof globalThis.HTMLElement/any/" $COMPONENTS_TS
 
 eval $COMPILE_DOCS 
 build_exit=$?
+
+# Restore original files
+for file in "${MODIFIED_FILES[@]}"; do
+  if [ -f "$file.bak" ]; then
+    mv "$file.bak" "$file"
+  fi
+done
 
 # Remove .doc.js files
 find ./ -name '*.doc*.js' -exec rm -r {} \;
@@ -58,6 +83,8 @@ fi
 # Make sure https://shopify.dev URLs are relative so they work in Spin.
 # See https://github.com/Shopify/generate-docs/issues/181
 run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
+
+
 sed_exit=$?
 if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
