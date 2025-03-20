@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "rootDir": "/"
+  },
+  "include": [
+    "./**/*.doc.ts",
+    "../../../src/surfaces/admin/components/**/*.doc.ts"
+  ],
+  "exclude": [
+    "../../../src/surfaces/admin/components/AdminAction/*",
+    "../../../src/surfaces/admin/components/AdminBlock/*",
+    "../../../src/surfaces/admin/components/AdminPrintAction/*"
+  ]
+}

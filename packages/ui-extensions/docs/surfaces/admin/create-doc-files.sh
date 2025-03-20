@@ -40,31 +40,31 @@ for componentName in "$@"; do
     docs_file="${folder}/${componentName}.doc.ts"
     lowercaseComponentName=$(echo "$componentName" | sed -E 's/([a-z])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
 
-     # Create TypeScript example file
-    ts_example="${examples_dir}/basic-${lowercaseComponentName}.example.ts"
-    if [ ! -f "$ts_example" ]; then
-        cat << EOF > "$ts_example"
-export default function extension() {
-  const ${componentName} = document.createElement('s-${lowercaseComponentName}');
-  // Add your s-${componentName} implementation here
-  document.body.appendChild(${componentName});
-};
-EOF
-        echo "Created TS example file for ${componentName}"
-    fi
-
     # Create TSX example file
     tsx_example="${examples_dir}/basic-${lowercaseComponentName}.example.tsx"
     if [ ! -f "$tsx_example" ]; then
         cat << EOF > "$tsx_example"
-import '@shopify/ui-extensions/preact';
-import {render} from 'preact';
-
-export default function extension() {
-  render(<s-${lowercaseComponentName} />, document.body);
+  <s-${lowercaseComponentName}></s-${lowercaseComponentName}>
 }
 EOF
         echo "Created TSX example file for ${componentName}"
+    fi
+
+    # Create preview file
+    preview_file="${examples_dir}/preview.html"
+    if [ ! -f "$preview_file" ]; then
+        cat << EOF > "$preview_file"
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
+  </head>
+  <body>
+    <s-${lowercaseComponentName}></s-${lowercaseComponentName}>
+  </body>
+</html>
+EOF
+        echo "Created preview file for ${componentName}"
     fi
 
     if [ ! -f "$docs_file" ]; then
@@ -93,14 +93,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'TODO: add example title',
       tabs: [
         {
-          title: 'Preact',
+          title: 'JSX',
           code: './examples/basic-${lowercaseComponentName}.example.tsx',
           language: 'jsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-${lowercaseComponentName}.example.ts',
-          language: 'js',
+          title: 'Preview',
+          code: './examples/preview.html',
+          language: 'preview',
         },
       ],
     },

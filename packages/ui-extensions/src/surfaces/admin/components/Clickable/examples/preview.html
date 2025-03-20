@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
+    <style>
+      body {
+        background-color: rgba(241, 241, 241, 1);
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+  function handleClick() {
+    console.log('clicked');
+    const badge = document.getElementById('clickable-badge');
+    badge.textContent = 'Clicked!';
+    badge.tone = 'success';
+  }
+</script>
+
+<s-stack gap="base" alignContent="center" justifyContent="center"></s-stack>
+  <s-clickable onclick="handleClick()">
+    <s-badge id="clickable-badge" tone="info">Click me!</s-badge>
+  </s-clickable>
+</s-stack>
+  </body>
+</html>

@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Link to an app page',
       tabs: [
         {
-          title: 'Preact',
+          title: 'JSX',
           code: './examples/app-link.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/app-link.example.ts',
-          language: 'js',
+          title: 'Preview',
+          code: './examples/preview.html',
+          language: 'preview',
         },
       ],
     },
@@ -44,13 +44,8 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           tabs: [
             {
-              title: 'Preact',
+              title: 'JSX',
               code: './examples/external-link.example.tsx',
-              language: 'typescript',
-            },
-            {
-              title: 'JS',
-              code: './examples/external-link.example.ts',
               language: 'typescript',
             },
           ],
@@ -63,13 +58,8 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           tabs: [
             {
-              title: 'Preact',
+              title: 'JSX',
               code: './examples/relative-link.example.tsx',
-              language: 'typescript',
-            },
-            {
-              title: 'JS',
-              code: './examples/relative-link.example.ts',
               language: 'typescript',
             },
           ],
@@ -82,13 +72,8 @@ const data: ReferenceEntityTemplateSchema = {
         codeblock: {
           tabs: [
             {
-              title: 'Preact',
+              title: 'JSX',
               code: './examples/shopify-section-link.example.tsx',
-              language: 'typescript',
-            },
-            {
-              title: 'JS',
-              code: './examples/shopify-section-link.example.ts',
               language: 'typescript',
             },
           ],

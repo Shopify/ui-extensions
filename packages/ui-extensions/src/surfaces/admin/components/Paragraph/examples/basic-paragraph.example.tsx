@@ -1,12 +1,4 @@
-import '@shopify/ui-extensions/preact';
-import {render} from 'preact';
-
-export default function extension() {
-  render(
-    <s-paragraph>
-      <s-text type="strong">Name:</s-text>
-      Jane Doe
-    </s-paragraph>,
-    document.body,
-  );
-}
+<s-paragraph>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua.
+</s-paragraph>;

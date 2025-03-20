@@ -23,14 +23,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Basic Spinner example',
       tabs: [
         {
-          title: 'Peact',
+          title: 'JSX',
           code: './examples/basic-spinner.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-spinner.example.ts',
-          language: 'js',
+          title: 'Preview',
+          code: './examples/preview.html',
+          language: 'preview',
         },
       ],
     },

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
+    <style>
+      body {
+        background-color: rgba(241, 241, 241, 1);
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+  const onInput = (event) => {
+    console.log(event.target.value);
+  };
+</script>
+
+<s-money-field label="Price" value="99.99" currency="EUR" oninput="onInput(event)" />
+  </body>
+</html>

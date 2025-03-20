@@ -1,6 +1,6 @@
-import '@shopify/ui-extensions/preact';
-import {render} from 'preact';
-
-export default function extension() {
-  render(<s-badge tone="info">Fulfilled</s-badge>, document.body);
-}
+<s-stack gap="base" justifycontent="center">
+  <s-badge tone="info">Info</s-badge>
+  <s-badge tone="success">Fulfilled</s-badge>
+  <s-badge tone="warning">Warning</s-badge>
+  <s-badge tone="error">Error</s-badge>
+</s-stack>;

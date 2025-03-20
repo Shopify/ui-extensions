@@ -21,25 +21,25 @@ A utility script to scaffold documentation files for UI components in the ui-ext
 
 ### Examples
 
-# Create documentation for a single component
+#### Create documentation for a single component
 
 ```bash
 ./create-doc-files.sh Button
 ```
 
-# Create documentation for multiple components
+#### Create documentation for multiple components
 
 ```bash
 ./create-doc-files.sh Button Card
 ```
 
-# Create API documentation
+#### Create API documentation
 
 ```bash
 ./create-doc-files.sh -t api Toast
 ```
 
-# Create multiple API docs
+#### Create multiple API docs
 
 ```bash
 ./create-doc-files.sh -t api Modal Toast

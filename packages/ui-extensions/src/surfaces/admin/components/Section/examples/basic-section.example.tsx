@@ -1,9 +1,7 @@
-import '@shopify/ui-extensions/preact';
-import {render} from 'preact';
-
-export default function extension() {
-  render(
-    <s-section heading="Section heading">Section content</s-section>,
-    document.body,
-  );
-}
+<s-section>
+  <s-heading>Section</s-heading>
+  <s-paragraph>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua.
+  </s-paragraph>
+</s-section>;

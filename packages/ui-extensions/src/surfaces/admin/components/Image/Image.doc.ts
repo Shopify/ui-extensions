@@ -22,14 +22,14 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Simple Image example',
       tabs: [
         {
-          title: 'Preact',
+          title: 'JSX',
           code: './examples/basic-image.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-image.example.ts',
-          language: 'js',
+          title: 'Preview',
+          code: './examples/preview.html',
+          language: 'preview',
         },
       ],
     },
