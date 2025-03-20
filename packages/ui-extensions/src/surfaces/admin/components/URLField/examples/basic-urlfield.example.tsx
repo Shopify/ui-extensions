@@ -1,2 +1,1 @@
-<s-urlfield label="Partner website"></s-urlfield>
-
+<s-url-field label="Partner website"></s-url-field>;

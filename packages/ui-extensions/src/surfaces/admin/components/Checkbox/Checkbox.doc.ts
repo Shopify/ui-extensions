@@ -20,23 +20,34 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'checkbox-default.png',
     codeblock: {
-      title: 'Add a simple Checkbox',
+      title: 'Basic Checkbox example',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/admin/components/Checkbox/examples/basic-checkbox.example.tsx',
+          title: 'HTML',
+          code: './examples/basic-checkbox.example.tsx',
           language: 'tsx',
         },
         {
-          title: 'JS',
-          code: './examples/basic-checkbox.example.ts',
-          language: 'js',
+          title: 'Preview',
+          code: './examples/preview.html',
+          language: 'preview',
         },
       ],
     },
   },
 
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Select',
+      url: '/docs/api/admin-extensions/components/forms/select',
+    },
+    {
+      type: 'component',
+      name: 'ChoiceList',
+      url: '/docs/api/admin-extensions/components/forms/choice-list',
+    },
+  ],
 };
 
 export default data;

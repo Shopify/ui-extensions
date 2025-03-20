@@ -45,7 +45,15 @@ for componentName in "$@"; do
     if [ ! -f "$tsx_example" ]; then
         cat << EOF > "$tsx_example"
   <s-${lowercaseComponentName}></s-${lowercaseComponentName}>
-}
+EOF
+        echo "Created TSX example file for ${componentName}"
+    fi
+
+    # Create HTML example file
+    html_example="${examples_dir}/basic-${lowercaseComponentName}.example.html"
+    if [ ! -f "$html_example" ]; then
+        cat << EOF > "$html_example"
+  <s-${lowercaseComponentName}></s-${lowercaseComponentName}>
 EOF
         echo "Created TSX example file for ${componentName}"
     fi
