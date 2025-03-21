@@ -16,6 +16,7 @@
     "deploy": "changeset publish",
     "predeploy:unstable": "yarn build",
     "docs:admin": "yarn workspace @shopify/ui-extensions docs:admin",
+    "docs:admin:dev": "yarn workspace @shopify/ui-extensions docs:admin:dev",
     "docs:checkout": "yarn workspace @shopify/ui-extensions docs:checkout",
     "docs:point-of-sale": "yarn workspace @shopify/ui-extensions docs:point-of-sale",
     "docs:customer-account": "yarn workspace @shopify/ui-extensions docs:customer-account",

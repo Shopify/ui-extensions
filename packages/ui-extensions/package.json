@@ -3,6 +3,7 @@
   "version": "0.0.0-unstable",
   "scripts": {
     "docs:admin": "bash ./docs/surfaces/admin/build-docs.sh",
+    "docs:admin:dev": "nodemon --watch src/surfaces/admin -e ts,tsx,json --exec 'yarn docs:admin'",
     "gen-docs:admin": "bash ./docs/surfaces/admin/create-doc-files.sh \"admin\"",
     "docs:checkout": "bash ./docs/surfaces/checkout/build-docs.sh",
     "docs:point-of-sale": "bash ./docs/surfaces/point-of-sale/build-docs.sh",
@@ -68,6 +69,7 @@
   },
   "devDependencies": {
     "@shopify/generate-docs": "0.16.4",
+    "nodemon": "^3.1.9",
     "typescript": "^4.9.0"
   },
   "publishConfig": {
