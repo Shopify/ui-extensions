@@ -10,8 +10,8 @@
     <s-stack gap="base">
       <s-icon type="alert-circle" tone="critical"></s-icon>
       <s-icon type="check-circle" tone="success"></s-icon>
-      <s-icon type="info-circle" tone="info"></s-icon>
-      <s-icon type="warning-circle" tone="warning"></s-icon>
+      <s-icon type="info" tone="info"></s-icon>
+      <s-icon type="alert-triangle" tone="warning"></s-icon>
     </s-stack>
 
     <s-stack gap="base">
