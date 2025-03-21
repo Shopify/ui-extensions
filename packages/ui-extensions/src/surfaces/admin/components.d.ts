@@ -1,4 +1,4 @@
-/** VERSION: 0.43.0 **/
+/** VERSION: 0.44.0 **/
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -345,6 +345,7 @@ declare const privateIconArray: readonly [
   'note-add',
   'note',
   'notification',
+  'order-batches',
   'order-draft',
   'order-first',
   'order-fulfilled',
@@ -581,6 +582,12 @@ interface BadgeProps$1 extends GlobalProps {
    * @default 'base'
    */
   size?: SizeKeyword;
+}
+interface ActionProps {
+  /**
+   * The text to use as the Action modal’s title. If not provided, the name of the extension will be used.
+   */
+  heading?: string;
 }
 interface ActionSlots {
   /**
@@ -2829,6 +2836,7 @@ type IconType$1 =
   | 'desktop'
   | 'disabled'
   | 'discount'
+  | 'discount-add'
   | 'discount-code'
   | 'dns-settings'
   | 'dock-floating'
@@ -3323,6 +3331,33 @@ interface Context<T> {
   Provider: Provider<T>;
   displayName?: string;
 }
+interface AdminActionProps$1 extends GlobalProps, ActionProps, ActionSlots {
+  /**
+   * Whether the action is in a loading state, such as initial page load or action opening.
+   * When true, the action could be in an inert state, which prevents user interaction.
+   */
+  loading?: boolean;
+}
+interface AdminBlockProps$1 extends GlobalProps {
+  /**
+   * The text to use as the Block title in the block header. If not provided, the name of the
+   * extension will be used.
+   */
+  heading?: string;
+  /**
+   * The summary to display when the app block is collapsed.
+   * Summary longer than 30 characters will be truncated.
+   */
+  collapsedSummary?: string;
+}
+interface AdminPrintActionProps$1 extends GlobalProps {
+  /**
+   * Sets the src URL of the preview and the document to print.
+   * If not provided, the preview will show an empty state and the print button will be disabled.
+   * HTML, PDFs and images are supported.
+   */
+  src?: string;
+}
 
 export interface IconProps {
   type: '' | IconType | 'empty';
@@ -3628,15 +3663,15 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#48494@#queueRender': (() => void) | undefined;
-  '__#48494@#shadowRoot': ShadowRoot | null;
-  '__#48494@#styles': string;
+  '__#49052@#queueRender': (() => void) | undefined;
+  '__#49052@#shadowRoot': ShadowRoot | null;
+  '__#49052@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#48494@#checkElementPrototype'(): void;
+  '__#49052@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -4301,15 +4336,15 @@ export interface ClickableProps
 declare const Clickable_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#48494@#queueRender': (() => void) | undefined;
-  '__#48494@#shadowRoot': ShadowRoot | null;
-  '__#48494@#styles': string;
+  '__#49052@#queueRender': (() => void) | undefined;
+  '__#49052@#shadowRoot': ShadowRoot | null;
+  '__#49052@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#48494@#checkElementPrototype'(): void;
+  '__#49052@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -5073,15 +5108,15 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#48494@#queueRender': (() => void) | undefined;
-  '__#48494@#shadowRoot': ShadowRoot | null;
-  '__#48494@#styles': string;
+  '__#49052@#queueRender': (() => void) | undefined;
+  '__#49052@#shadowRoot': ShadowRoot | null;
+  '__#49052@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#48494@#checkElementPrototype'(): void;
+  '__#49052@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -6369,22 +6404,23 @@ export interface UnorderedListJSXProps
   extends Partial<UnorderedListProps>,
     Pick<UnorderedListProps$1, 'id'> {}
 
+export interface AdminActionProps
+  extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
+
 declare const tagName$3 = 's-admin-action';
-export interface AdminActionProps {
-  /**
-   * Sets the title of the Action container. If empty, the name of the extension will be used. Titles longer than 40 characters will be truncated.
-   */
-  title: string;
-  /**
-   * Sets the loading state of the action modal
-   */
-  loading?: boolean;
+export interface AdminActionJSXProps
+  extends Partial<AdminActionProps>,
+    Pick<AdminActionProps$1, 'id'> {
+  primaryAction: ComponentChild;
+  secondaryActions: ComponentChild;
 }
+
 declare class AdminAction
   extends PreactCustomElement
   implements AdminActionProps
 {
-  title: string;
+  heading: string;
+  loading: boolean;
   constructor();
 }
 declare global {
@@ -6400,30 +6436,21 @@ declare module 'preact' {
   }
 }
 
-export interface AdminActionJSXProps extends Partial<AdminActionProps> {
-  id?: string;
-  primaryAction: ComponentChild;
-  secondaryAction: ComponentChild;
-}
+export interface AdminBlockProps
+  extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}
 
 declare const tagName$2 = 's-admin-block';
-export interface AdminBlockProps {
-  /**
-   * The title to display at the top of the app block. If empty, the name of the extension will be used. Titles longer than 40 characters will be truncated.
-   */
-  title: string;
-  /**
-   * The summary to display when the app block is collapsed.
-   */
-  collapsedSummary: string;
-}
+export interface AdminBlockJSXProps
+  extends Partial<AdminBlockProps>,
+    Pick<AdminBlockProps$1, 'id'> {}
+
 declare class AdminBlock
   extends PreactCustomElement
   implements AdminBlockProps
 {
-  constructor();
-  title: string;
+  heading: string;
   collapsedSummary: string;
+  constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -6438,19 +6465,14 @@ declare module 'preact' {
   }
 }
 
-export interface AdminBlockJSXProps extends Partial<AdminBlockProps> {
-  id?: string;
-}
+export interface AdminPrintActionProps
+  extends Pick<AdminPrintActionProps$1, 'src'> {}
 
 declare const tagName$1 = 's-admin-print-action';
-export interface AdminPrintActionProps {
-  /**
-   * Sets the src URL of the preview and the document to print.
-   * If not provided, the preview will show an empty state and the print button will be disabled.
-   * HTML, PDFs and images are supported.
-   */
-  src: string;
-}
+export interface AdminPrintActionJSXProps
+  extends Partial<AdminPrintActionProps>,
+    Pick<AdminPrintActionProps$1, 'id'> {}
+
 declare class AdminPrintAction
   extends PreactCustomElement
   implements AdminPrintActionProps
@@ -6469,11 +6491,6 @@ declare module 'preact' {
       [tagName$1]: HTMLAttributes<HTMLElement> & AdminPrintActionJSXProps;
     }
   }
-}
-
-export interface AdminPrintActionJSXProps
-  extends Partial<AdminPrintActionProps> {
-  id?: string;
 }
 
 declare const tagName = 's-form';
