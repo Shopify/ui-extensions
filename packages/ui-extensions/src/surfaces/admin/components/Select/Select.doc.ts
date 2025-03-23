@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Select',
       description: 'A list of options that merchants can select from.',
-      type: 'SelectProps',
+      type: 'Select',
     },
   ],
   category: 'Components',

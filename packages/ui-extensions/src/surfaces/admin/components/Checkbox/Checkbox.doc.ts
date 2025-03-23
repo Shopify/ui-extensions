@@ -10,9 +10,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'CheckboxProps',
+      title: 'Checkbox',
       description: '',
-      type: 'CheckboxProps',
+      type: 'Checkbox',
     },
   ],
   category: 'Components',

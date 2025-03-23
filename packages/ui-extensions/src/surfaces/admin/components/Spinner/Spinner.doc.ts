@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Spinner',
       description: 'A loading indicator component.',
-      type: 'SpinnerProps',
+      type: 'Spinner',
     },
   ],
   category: 'Components',

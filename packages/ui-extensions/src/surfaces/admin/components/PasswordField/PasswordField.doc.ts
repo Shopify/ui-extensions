@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'PasswordField',
       description: 'A specialized text input field for passwords.',
-      type: 'PasswordFieldProps',
+      type: 'PasswordField',
     },
   ],
   category: 'Components',

@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'UnorderedList',
       description: 'A list of items that are unordered.',
-      type: 'UnorderedListProps',
+      type: 'UnorderedList',
     },
   ],
   category: 'Components',

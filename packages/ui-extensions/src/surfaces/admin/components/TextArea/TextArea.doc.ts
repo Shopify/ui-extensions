@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'TextArea',
       description: 'A multi-line text input field.',
-      type: 'TextAreaProps',
+      type: 'TextArea',
     },
   ],
   category: 'Components',

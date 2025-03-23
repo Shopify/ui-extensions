@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Grid',
       description: 'A component for creating grid-based layouts.',
-      type: 'GridProps',
+      type: 'Grid',
     },
   ],
   category: 'Components',

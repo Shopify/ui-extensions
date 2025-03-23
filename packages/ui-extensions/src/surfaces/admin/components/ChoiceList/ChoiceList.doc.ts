@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'ChoiceList',
       description: 'A component for presenting a list of selectable options.',
-      type: 'ChoiceListProps',
+      type: 'ChoiceList',
     },
   ],
   category: 'Components',

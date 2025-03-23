@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'NumberField',
       description: 'A specialized text input field for numerical values.',
-      type: 'NumberFieldProps',
+      type: 'NumberField',
     },
   ],
   category: 'Components',

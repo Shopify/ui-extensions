@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Clickable',
       description: 'A component that makes its children interactive.',
-      type: 'ClickableProps',
+      type: 'Clickable',
     },
   ],
   category: 'Components',

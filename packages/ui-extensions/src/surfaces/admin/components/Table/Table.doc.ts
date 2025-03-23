@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Table',
       description: 'A component for displaying data in rows and columns.',
-      type: 'TableProps',
+      type: 'Table',
     },
   ],
   category: 'Components',

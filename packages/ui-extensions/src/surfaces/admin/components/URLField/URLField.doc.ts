@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'URLField',
       description: 'A specialized text input field for URLs.',
-      type: 'URLFieldProps',
+      type: 'URLField',
     },
   ],
   category: 'Components',

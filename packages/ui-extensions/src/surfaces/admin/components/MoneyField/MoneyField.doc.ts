@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'MoneyField',
       description: 'A specialized input field for monetary values.',
-      type: 'MoneyFieldProps',
+      type: 'MoneyField',
     },
   ],
   category: 'Components',

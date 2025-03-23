@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'TextField',
       description:
         'A text input field that allows users to enter and edit text.',
-      type: 'TextFieldProps',
+      type: 'TextField',
     },
   ],
   category: 'Components',

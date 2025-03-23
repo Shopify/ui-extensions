@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'OrderedList',
       description: 'A list of items that are ordered numerically.',
-      type: 'OrderedListProps',
+      type: 'OrderedList',
     },
   ],
   category: 'Components',

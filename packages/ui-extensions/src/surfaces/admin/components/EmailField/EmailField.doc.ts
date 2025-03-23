@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'EmailField',
       description: 'A specialized text input field for email addresses.',
-      type: 'EmailFieldProps',
+      type: 'EmailField',
     },
   ],
   category: 'Components',
