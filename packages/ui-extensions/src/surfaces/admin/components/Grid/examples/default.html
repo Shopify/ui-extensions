@@ -1,27 +1,15 @@
-<s-grid 
-  columns="1fr 1fr 1fr"
-  gap="10px"
-  justifycontent="center"
-> 
-  <s-box inlinesize="100px">
-    <s-image 
-      src="https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-shopping-bag-full-color-66166b2e55d67988b56b4bd28b63c271e2b9713358cb723070a92bde17ad7d63.svg"
-      alt="Shopify Logo" 
-      inlinesize="fill"
-    />
-  </s-box>
-  <s-box inlinesize="100px">
-    <s-image 
-      src="https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-shopping-bag-full-color-66166b2e55d67988b56b4bd28b63c271e2b9713358cb723070a92bde17ad7d63.svg"
-      alt="Shopify Logo" 
-      inlinesize="fill"
-    />
-  </s-box>
-  <s-box inlinesize="100px">
-    <s-image 
-      src="https://cdn.shopify.com/shopifycloud/brochure/assets/brand-assets/shopify-logo-shopping-bag-full-color-66166b2e55d67988b56b4bd28b63c271e2b9713358cb723070a92bde17ad7d63.svg"
-      alt="Shopify Logo" 
-      inlinesize="fill"
-    />
-  </s-box>
+<s-grid
+  gridTemplateColumns="repeat(2, 1fr)"
+  gap="small"
+  justifyContent="center"
+>
+  <s-grid-item gridColumn="span 2" border="base" borderStyle="dashed">
+    Summary of sales
+  </s-grid-item>
+  <s-grid-item gridColumn="span 1" border="base" borderStyle="dashed">
+    Orders
+  </s-grid-item>
+  <s-grid-item gridColumn="auto" border="base" borderStyle="dashed">
+    Customers
+  </s-grid-item>
 </s-grid>

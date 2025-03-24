@@ -30,7 +30,7 @@ const data: ReferenceEntityTemplateSchema = {
         {
           title: 'HTML',
           code: './examples/default.html',
-          language: 'preview',
+          language: 'preview-admin-inline',
         },
       ],
     },

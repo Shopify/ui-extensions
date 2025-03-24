@@ -53,34 +53,6 @@ const data: ReferenceEntityTemplateSchema = {
         },
       },
       {
-        description: 'Link to an external URL',
-        image: 'external-link.png',
-        codeblock: {
-          tabs: [
-            {
-              title: 'JSX',
-              code: './examples/external.html',
-              language: 'jsx',
-            },
-          ],
-          title: 'External Link',
-        },
-      },
-      {
-        description: 'Link to a relative URL',
-        image: 'relative-link.png',
-        codeblock: {
-          tabs: [
-            {
-              title: 'JSX',
-              code: './examples/relative.html',
-              language: 'jsx',
-            },
-          ],
-          title: 'Relative Link',
-        },
-      },
-      {
         description: 'Link to a Shopify admin page',
         image: 'shopify-section-link.png',
         codeblock: {

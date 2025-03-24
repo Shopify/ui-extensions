@@ -1,14 +1,13 @@
-<script>
-  function handleClick() {
-    console.log('clicked');
-    const badge = document.getElementById('clickable-badge');
-    badge.textContent = 'Clicked!';
-    badge.tone = 'success';
-  }
-</script>
+<s-clickable padding="base" onclick="console.log('clicked')">
+  Create Store
+</s-clickable>
 
-<s-stack gap="base" alignContent="center" justifyContent="center"></s-stack>
-  <s-clickable onclick="handleClick()">
-    <s-badge id="clickable-badge" tone="info">Click me!</s-badge>
-  </s-clickable>
-</s-stack>
+<s-clickable
+  border="base"
+  padding="base"
+  background="subdued"
+  onclick="console.log('clicked')"
+  borderRadius="base"
+>
+  View Shipping Settings
+</s-clickable>

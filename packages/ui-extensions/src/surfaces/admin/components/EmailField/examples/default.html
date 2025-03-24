@@ -1,18 +1,5 @@
-<script>
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  function handleChange(event) {
-    console.log(event.target.value);
-    if (!emailRegex.test(event.target.value)) {
-      event.target.error = 'Invalid email address';
-    } else {
-      event.target.error = '';
-    }
-  }
-</script>
-
 <s-email-field
   label="Email"
-  value="test@test.com"
-  onchange="handleChange(event)"
+  placeholder="bernadette.lapresse@jadedpixel.com"
+  details="Used for sending notifications"
 />
