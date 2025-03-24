@@ -1,1 +1,0 @@
-<s-number-field label="Amount" value={10} step={5} min={0} max={100} />;

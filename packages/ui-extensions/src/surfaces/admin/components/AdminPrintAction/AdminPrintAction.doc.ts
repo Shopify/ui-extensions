@@ -20,12 +20,12 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'adminprintaction-default.png',
     codeblock: {
-      title: 'Set the source URL of the print action extension.',
+      title: 'Default Example',
       tabs: [
         {
           title: 'JSX',
-          code: './examples/basic-adminprintaction.example.tsx',
-          language: 'tsx',
+          code: './examples/default.tsx',
+          language: 'jsx',
         },
       ],
     },

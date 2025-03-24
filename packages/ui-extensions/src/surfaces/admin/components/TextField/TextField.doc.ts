@@ -21,57 +21,21 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'text-field-default.png',
     codeblock: {
-      title: 'Basic TextField example',
+      title: 'Default Example',
       tabs: [
         {
           title: 'JSX',
-          code: './examples/basic-text-field.example.tsx',
-          language: 'tsx',
+          code: './examples/default.html',
+          language: 'jsx',
         },
         {
-          title: 'Preview',
-          code: './examples/preview.html',
+          title: 'HTML',
+          code: './examples/default.html',
           language: 'preview',
         },
       ],
     },
   },
-  //   subSections: [
-  //     {
-  //       type: 'Generic',
-  //       anchorLink: 'guidelines',
-  //       title: 'Guidelines',
-  //       sectionContent: `
-  // - Use clear and concise labels that describe the requested input
-  // - Use placeholder text to provide guidance on the expected value
-  // - Consider using prefix or suffix to provide additional context (e.g., "@" or ".com")
-  // - Use validation to ensure the input meets requirements
-  // - Indicate required fields clearly
-  // - Provide error messages when validation fails
-  //       `,
-  //     },
-  //     {
-  //       type: 'Generic',
-  //       anchorLink: 'properties',
-  //       title: 'Properties',
-  //       sectionContent: `
-  // | Prop | Type | Description |
-  // |------|------|-------------|
-  // | label | string | The label for the text field |
-  // | value | string | The current value of the text field |
-  // | placeholder | string | Placeholder text to show when the field is empty |
-  // | error | string | Error message to display when the input is invalid |
-  // | disabled | boolean | Whether the field is disabled |
-  // | readOnly | boolean | Whether the field is read-only |
-  // | required | boolean | Whether the field is required |
-  // | prefix | string | Text to display before the input |
-  // | suffix | string | Text to display after the input |
-  // | icon | IconType | Icon to display within the text field |
-  // | maxLength | number | Maximum number of characters allowed |
-  // | minLength | number | Minimum number of characters required |
-  //       `,
-  //     },
-  //   ],
   related: [
     {
       type: 'component',

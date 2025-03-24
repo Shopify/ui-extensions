@@ -3,6 +3,7 @@
   "bracketSpacing": false,
   "singleQuote": true,
   "trailingComma": "all",
+  "htmlWhitespaceSensitivity": "ignore",
   "overrides": [
     {
       "files": [

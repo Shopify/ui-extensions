@@ -40,15 +40,6 @@ for componentName in "$@"; do
     docs_file="${folder}/${componentName}.doc.ts"
     lowercaseComponentName=$(echo "$componentName" | sed -E 's/([a-z])([A-Z])/\1-\2/g' | tr '[:upper:]' '[:lower:]')
 
-    # Create TSX example file
-    tsx_example="${examples_dir}/basic-${lowercaseComponentName}.example.tsx"
-    if [ ! -f "$tsx_example" ]; then
-        cat << EOF > "$tsx_example"
-  <s-${lowercaseComponentName}></s-${lowercaseComponentName}>
-EOF
-        echo "Created TSX example file for ${componentName}"
-    fi
-
     # Create HTML example file
     html_example="${examples_dir}/basic-${lowercaseComponentName}.example.html"
     if [ ! -f "$html_example" ]; then
@@ -56,23 +47,6 @@ EOF
   <s-${lowercaseComponentName}></s-${lowercaseComponentName}>
 EOF
         echo "Created TSX example file for ${componentName}"
-    fi
-
-    # Create preview file
-    preview_file="${examples_dir}/preview.html"
-    if [ ! -f "$preview_file" ]; then
-        cat << EOF > "$preview_file"
-<!DOCTYPE html>
-<html>
-  <head>
-    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
-  </head>
-  <body>
-    <s-${lowercaseComponentName}></s-${lowercaseComponentName}>
-  </body>
-</html>
-EOF
-        echo "Created preview file for ${componentName}"
     fi
 
     if [ ! -f "$docs_file" ]; then
@@ -98,16 +72,16 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: '${lowercaseComponentName}-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Default Example',
       tabs: [
         {
           title: 'JSX',
-          code: './examples/basic-${lowercaseComponentName}.example.tsx',
+          code: './examples/default.html',
           language: 'jsx',
         },
         {
           title: 'Preview',
-          code: './examples/preview.html',
+          code: './examples/default.html',
           language: 'preview',
         },
       ],

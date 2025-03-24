@@ -20,16 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'checkbox-default.png',
     codeblock: {
-      title: 'Basic Checkbox example',
+      title: 'Default Example',
       tabs: [
         {
           title: 'HTML',
-          code: './examples/basic-checkbox.example.tsx',
-          language: 'tsx',
+          code: './examples/default.html',
+          language: 'jsx',
         },
         {
-          title: 'Preview',
-          code: './examples/preview.html',
+          title: 'HTML',
+          code: './examples/default.html',
           language: 'preview',
         },
       ],

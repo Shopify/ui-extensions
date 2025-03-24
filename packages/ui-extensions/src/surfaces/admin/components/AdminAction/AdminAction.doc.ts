@@ -20,12 +20,12 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'adminaction-default.png',
     codeblock: {
-      title: 'Set the primary and secondary action of the Action modal.',
+      title: 'Default Example',
       tabs: [
         {
           title: 'JSX',
-          code: './examples/basic-adminaction.example.tsx',
-          language: 'tsx',
+          code: './examples/default.tsx',
+          language: 'jsx',
         },
       ],
     },
