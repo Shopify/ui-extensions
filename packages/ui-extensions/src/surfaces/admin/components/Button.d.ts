@@ -1,6 +1,6 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/ban-types */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -52,9 +52,13 @@ export interface ButtonProps extends ButtonBaseProps {
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   target: HTMLElementTagNameMap[T];
 };
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
-export type Style = string | CSSStyleSheet;
-export type Styles = Style[] | Style;
+export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
@@ -80,7 +84,6 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
-  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -103,12 +106,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    */
   queueRender(): void;
   /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
-  /**
    * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
    *
    * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
@@ -130,15 +127,15 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#96376@#queueRender': (() => void) | undefined;
-  '__#96376@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#103662@#queueRender': (() => void) | undefined;
+  '__#103662@#shadowRoot': ShadowRoot | null;
+  '__#103662@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#96376@#checkElementPrototype'(): void;
-  _addLegacyStyleComponent(style: string): void;
+  '__#103662@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -342,6 +339,7 @@ declare const Button_base: (abstract new (...args: any) => {
   readonly DOCUMENT_POSITION_CONTAINS: 8;
   readonly DOCUMENT_POSITION_CONTAINED_BY: 16;
   readonly DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32;
+  dispatchEvent(event: Event): boolean;
   dispatchEvent(event: Event): boolean;
   ariaAtomic: string | null;
   ariaAutoComplete: string | null;
@@ -594,9 +592,9 @@ declare class Button extends Button_base implements ButtonProps {
   accessor target: ButtonProps['target'];
   accessor href: ButtonProps['href'];
   accessor download: ButtonProps['download'];
-  accessor onclick: EventListener | null;
-  accessor onblur: EventListener | null;
-  accessor onfocus: EventListener | null;
+  accessor onclick: CallbackEventListener<typeof tagName> | null;
+  accessor onblur: CallbackEventListener<typeof tagName> | null;
+  accessor onfocus: CallbackEventListener<typeof tagName> | null;
   accessor type: ButtonProps['type'];
   accessor accessibilityLabel: ButtonProps['accessibilityLabel'];
   constructor();

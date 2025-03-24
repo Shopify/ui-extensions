@@ -1,4 +1,4 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -8,7 +8,7 @@ import type {ComponentChild, BannerProps$1, JSXInternal} from './shared.d.ts';
 
 export type RequiredBannerProps = Required<BannerProps$1>;
 export interface BannerProps
-  extends Pick<RequiredBannerProps, 'heading' | 'dismissible'> {
+  extends Pick<RequiredBannerProps, 'heading' | 'dismissible' | 'hidden'> {
   tone: Extract<
     RequiredBannerProps['tone'],
     'critical' | 'warning' | 'success' | 'info'
@@ -18,9 +18,13 @@ export interface BannerProps
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   target: HTMLElementTagNameMap[T];
 };
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
-export type Style = string | CSSStyleSheet;
-export type Styles = Style[] | Style;
+export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
@@ -46,7 +50,6 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
-  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -69,12 +72,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    */
   queueRender(): void;
   /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
-  /**
    * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
    *
    * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
@@ -88,8 +85,10 @@ declare abstract class PreactCustomElement extends BaseClass {
 declare class Banner extends PreactCustomElement implements BannerProps {
   accessor heading: BannerProps['heading'];
   accessor tone: BannerProps['tone'];
+  accessor hidden: BannerProps['hidden'];
   accessor dismissible: BannerProps['dismissible'];
-  accessor ondismiss: EventListener | null;
+  accessor ondismiss: CallbackEventListener<typeof tagName> | null;
+  accessor onafterhide: CallbackEventListener<typeof tagName> | null;
   constructor();
 }
 declare global {
@@ -118,6 +117,7 @@ export interface BannerJSXProps
     Pick<BannerProps$1, 'id'> {
   secondaryActions?: ComponentChild;
   onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 
 export {Banner, type BannerJSXProps};

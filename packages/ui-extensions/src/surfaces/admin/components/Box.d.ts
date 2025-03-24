@@ -1,4 +1,4 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -69,8 +69,7 @@ export interface BoxProps {
   overflow: AlignedBox['overflow'];
 }
 
-export type Style = string | CSSStyleSheet;
-export type Styles = Style[] | Style;
+export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
@@ -96,7 +95,6 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
-  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -118,12 +116,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    * @private
    */
   queueRender(): void;
-  /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
   /**
    * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
    *

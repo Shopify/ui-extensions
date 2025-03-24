@@ -1,10 +1,74 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {ImageProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {
+  ImageProps$1,
+  MaybeAllValuesShorthandProperty,
+  ComponentChild,
+  JSXInternal,
+} from './shared.d.ts';
+
+export type MakeResponsive<T> = T | `@container${string}`;
+
+export type AlignedBox = Required<BoxProps$1>;
+export interface BoxProps {
+  accessibilityRole: AlignedBox['accessibilityRole'];
+  background: Extract<
+    AlignedBox['background'],
+    'transparent' | 'base' | 'subdued' | 'strong'
+  >;
+  blockSize: AlignedBox['blockSize'];
+  minBlockSize: AlignedBox['minBlockSize'];
+  maxBlockSize: AlignedBox['maxBlockSize'];
+  inlineSize: AlignedBox['inlineSize'];
+  minInlineSize: AlignedBox['minInlineSize'];
+  maxInlineSize: AlignedBox['maxInlineSize'];
+  padding: MakeResponsive<AlignedBox['padding']>;
+  paddingBlock: MakeResponsive<AlignedBox['paddingBlock']>;
+  paddingBlockStart: MakeResponsive<AlignedBox['paddingBlockStart']>;
+  paddingBlockEnd: MakeResponsive<AlignedBox['paddingBlockEnd']>;
+  paddingInline: MakeResponsive<AlignedBox['paddingInline']>;
+  paddingInlineStart: MakeResponsive<AlignedBox['paddingInlineStart']>;
+  paddingInlineEnd: MakeResponsive<AlignedBox['paddingInlineEnd']>;
+  border: AlignedBox['border'] | 'none';
+  borderWidth:
+    | MaybeAllValuesShorthandProperty<
+        Extract<
+          AlignedBox['borderWidth'],
+          'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'none'
+        >
+      >
+    | Extract<AlignedBox['borderWidth'], ''>;
+  borderStyle:
+    | MaybeAllValuesShorthandProperty<
+        Extract<AlignedBox['borderStyle'], 'none' | 'solid' | 'dashed'>
+      >
+    | Extract<AlignedBox['borderStyle'], ''>;
+  borderColor: Extract<
+    AlignedBox['borderColor'],
+    'subdued' | 'base' | 'strong' | ''
+  >;
+  borderRadius: MaybeAllValuesShorthandProperty<
+    Extract<
+      AlignedBox['borderRadius'],
+      | 'none'
+      | 'small-200'
+      | 'small-100'
+      | 'small'
+      | 'base'
+      | 'large'
+      | 'large-100'
+      | 'large-200'
+    >
+  >;
+  accessibilityLabel: AlignedBox['accessibilityLabel'];
+  accessibilityVisibility: AlignedBox['accessibilityVisibility'];
+  display: AlignedBox['display'];
+  overflow: AlignedBox['overflow'];
+}
 
 export interface ImageProps
   extends Required<
@@ -20,14 +84,24 @@ export interface ImageProps
       | 'aspectRatio'
       | 'objectFit'
     >
-  > {}
+  > {
+  border: BoxProps['border'];
+  borderColor: BoxProps['borderColor'];
+  borderRadius: BoxProps['borderRadius'];
+  borderStyle: BoxProps['borderStyle'];
+  borderWidth: BoxProps['borderWidth'];
+}
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   target: HTMLElementTagNameMap[T];
 };
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
-export type Style = string | CSSStyleSheet;
-export type Styles = Style[] | Style;
+export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
@@ -53,7 +127,6 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
-  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -76,12 +149,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    */
   queueRender(): void;
   /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
-  /**
    * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
    *
    * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
@@ -102,7 +169,12 @@ declare class Image extends PreactCustomElement implements ImageProps {
   accessor loading: ImageProps['loading'];
   accessor accessibilityRole: ImageProps['accessibilityRole'];
   accessor inlineSize: ImageProps['inlineSize'];
-  accessor onload: EventListener | null;
+  accessor border: ImageProps['border'];
+  accessor borderWidth: ImageProps['borderWidth'];
+  accessor borderStyle: ImageProps['borderStyle'];
+  accessor borderColor: ImageProps['borderColor'];
+  accessor borderRadius: ImageProps['borderRadius'];
+  accessor onload: CallbackEventListener<typeof tagName> | null;
   accessor onerror: OnErrorEventHandler;
   constructor();
 }

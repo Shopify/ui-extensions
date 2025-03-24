@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {SelectProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {PasswordFieldProps$1, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -72,6 +72,12 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
+export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
+  onInput?: ((event: CallbackEvent<T>) => void) | null;
+  onChange?: ((event: CallbackEvent<T>) => void) | null;
+  onFocus?: ((event: CallbackEvent<T>) => void) | null;
+  onBlur?: ((event: CallbackEvent<T>) => void) | null;
+}
 
 declare const internals: unique symbol;
 export type PreactInputProps = Required<
@@ -95,74 +101,107 @@ declare class PreactInputElement
   constructor(renderImpl: RenderImpl);
 }
 
-export type SelectProps = PreactInputProps &
+export type PreactFieldProps<Autocomplete extends string = string> =
+  PreactInputProps &
+    Required<
+      Pick<
+        TextFieldProps,
+        | 'defaultValue'
+        | 'details'
+        | 'error'
+        | 'label'
+        | 'labelAccessibilityVisibility'
+        | 'placeholder'
+        | 'readOnly'
+        | 'required'
+      >
+    > & {
+      autocomplete: Autocomplete;
+    };
+declare class PreactFieldElement<Autocomplete extends string = string>
+  extends PreactInputElement
+  implements PreactFieldProps<Autocomplete>
+{
+  accessor onblur: CallbackEventListener<'input'>;
+  accessor onfocus: CallbackEventListener<'input'>;
+  accessor autocomplete: PreactFieldProps<Autocomplete>['autocomplete'];
+  accessor defaultValue: PreactFieldProps['defaultValue'];
+  accessor details: PreactFieldProps['details'];
+  accessor error: PreactFieldProps['error'];
+  accessor label: PreactFieldProps['label'];
+  accessor labelAccessibilityVisibility: PreactFieldProps['labelAccessibilityVisibility'];
+  accessor placeholder: PreactFieldProps['placeholder'];
+  accessor readOnly: PreactFieldProps['readOnly'];
+  accessor required: PreactFieldProps['required'];
+  protected getDefaultValue(): string;
+  /**
+   * Global keyboard event handlers for things like key bindings typically
+   * ignore keystrokes originating from within input elements. Unfortunately,
+   * these never account for a Custom Element being the input element.
+   *
+   * To fix this, we spoof getAttribute & hasAttribute to make a PreactFieldElement
+   * appear as a contentEditable "input" when it contains a focused input element.
+   */
+  getAttribute(qualifiedName: string): string | null;
+  hasAttribute(qualifiedName: string): boolean;
+  /**
+   * Checks if the shadow tree contains a focused input (input, textarea, select, <x contentEditable>).
+   * Note: this does _not_ return true for focussed non-field form elements like buttons.
+   */
+  get isContentEditable(): boolean;
+  formResetCallback(): void;
+  connectedCallback(): void;
+  constructor(renderImpl: RenderImpl);
+}
+
+export type PasswordFieldProps = PreactFieldProps<
+  Required<PasswordFieldProps$1>['autocomplete']
+> &
   Required<
     Pick<
-      SelectProps$1,
+      PasswordFieldProps$1,
+      | 'defaultValue'
       | 'details'
       | 'disabled'
       | 'error'
+      | 'labelAccessibilityVisibility'
+      | 'minLength'
+      | 'maxLength'
       | 'label'
       | 'name'
       | 'placeholder'
+      | 'readOnly'
       | 'required'
       | 'value'
-      | 'icon'
-      | 'labelAccessibilityVisibility'
     >
   >;
 
-declare const usedFirstOptionSymbol: unique symbol;
-declare const hasInitialValueSymbol: unique symbol;
-
-declare class Select extends PreactInputElement implements SelectProps {
-  accessor icon: SelectProps['icon'];
-  accessor details: SelectProps['details'];
-  accessor error: SelectProps['error'];
-  accessor label: SelectProps['label'];
-  accessor placeholder: SelectProps['placeholder'];
-  accessor required: SelectProps['required'];
-  accessor labelAccessibilityVisibility: SelectProps['labelAccessibilityVisibility'];
-  connectedCallback(): void;
-  disconnectedCallback(): void;
+declare class PasswordField
+  extends PreactFieldElement<PasswordFieldProps['autocomplete']>
+  implements PasswordFieldProps
+{
+  accessor maxLength: PasswordFieldProps['maxLength'];
+  accessor minLength: PasswordFieldProps['minLength'];
   constructor();
-  /**
-   * used to determine if no value or defaultValue was set, in which case the first non-disabled option was used
-   *
-   * this is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form
-   */
-  [usedFirstOptionSymbol]: boolean;
-  [hasInitialValueSymbol]: boolean;
-  get value(): string;
-  set value(value: string);
-  formResetCallback(): void;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Select;
+    [tagName]: PasswordField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & SelectJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & SelectJSXProps;
+      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> &
+        PasswordFieldJSXProps;
     }
   }
 }
 
-declare const tagName = 's-select';
-export interface SelectJSXProps extends Partial<SelectProps> {
-  onChange?: (event: CallbackEvent<typeof tagName>) => void;
-  onInput?: (event: CallbackEvent<typeof tagName>) => void;
-  onBlur?: (event: CallbackEvent<typeof tagName>) => void;
-  onFocus?: (event: CallbackEvent<typeof tagName>) => void;
-}
+declare const tagName = 's-password-field';
+export interface PasswordFieldJSXProps
+  extends Partial<PasswordFieldProps>,
+    Pick<PasswordFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName> {}
 
-export {Select, type SelectJSXProps};
+export {PasswordField, type PasswordFieldJSXProps};

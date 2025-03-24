@@ -1,13 +1,23 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/member-ordering */
 
-import type {JSXInternal, ComponentChild} from './shared.d.ts';
+import type {
+  AdminBlockProps$1,
+  JSXInternal,
+  ComponentChild,
+} from './shared.d.ts';
 
-export type Style = string | CSSStyleSheet;
-export type Styles = Style[] | Style;
+export interface AdminBlockProps
+  extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}
+
+declare const tagName = 's-admin-block';
+export interface AdminBlockJSXProps
+  extends Partial<AdminBlockProps>,
+    Pick<AdminBlockProps$1, 'id'> {}
+
+export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
@@ -33,7 +43,6 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
-  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -56,12 +65,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    */
   queueRender(): void;
   /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
-  /**
    * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
    *
    * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
@@ -72,24 +75,13 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare const tagName = 's-admin-block';
-export interface AdminBlockProps {
-  /**
-   * The title to display at the top of the app block. If empty, the name of the extension will be used. Titles longer than 40 characters will be truncated.
-   */
-  title: string;
-  /**
-   * The summary to display when the app block is collapsed.
-   */
-  collapsedSummary: string;
-}
 declare class AdminBlock
   extends PreactCustomElement
   implements AdminBlockProps
 {
-  constructor();
-  title: string;
+  heading: string;
   collapsedSummary: string;
+  constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -109,10 +101,6 @@ declare global {
       [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & AdminBlockJSXProps;
     }
   }
-}
-
-export interface AdminBlockJSXProps extends Partial<AdminBlockProps> {
-  id?: string;
 }
 
 export {AdminBlock, type AdminBlockJSXProps};

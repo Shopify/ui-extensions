@@ -1,12 +1,26 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
-import type {ComponentChild, JSXInternal} from './shared.d.ts';
+import type {
+  ComponentChild,
+  AdminActionProps$1,
+  JSXInternal,
+} from './shared.d.ts';
 
-export type Style = string | CSSStyleSheet;
-export type Styles = Style[] | Style;
+export interface AdminActionProps
+  extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
+
+declare const tagName = 's-admin-action';
+export interface AdminActionJSXProps
+  extends Partial<AdminActionProps>,
+    Pick<AdminActionProps$1, 'id'> {
+  primaryAction: ComponentChild;
+  secondaryActions: ComponentChild;
+}
+
+export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
@@ -32,7 +46,6 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
-  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -55,12 +68,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    */
   queueRender(): void;
   /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
-  /**
    * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
    *
    * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
@@ -71,22 +78,12 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare const tagName = 's-admin-action';
-export interface AdminActionProps {
-  /**
-   * Sets the title of the Action container. If empty, the name of the extension will be used. Titles longer than 40 characters will be truncated.
-   */
-  title: string;
-  /**
-   * Sets the loading state of the action modal
-   */
-  loading?: boolean;
-}
 declare class AdminAction
   extends PreactCustomElement
   implements AdminActionProps
 {
-  title: string;
+  heading: string;
+  loading: boolean;
   constructor();
 }
 declare global {
@@ -107,12 +104,6 @@ declare global {
       [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & AdminActionJSXProps;
     }
   }
-}
-
-export interface AdminActionJSXProps extends Partial<AdminActionProps> {
-  id?: string;
-  primaryAction?: ComponentChild;
-  secondaryAction?: ComponentChild;
 }
 
 export {AdminAction, type AdminActionJSXProps};

@@ -1,4 +1,4 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -10,8 +10,7 @@ import type {
   JSXInternal,
 } from './shared.d.ts';
 
-export type Style = string | CSSStyleSheet;
-export type Styles = Style[] | Style;
+export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
@@ -37,7 +36,6 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
-  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -60,12 +58,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    */
   queueRender(): void;
   /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
-  /**
    * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
    *
    * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
@@ -74,6 +66,21 @@ declare abstract class PreactCustomElement extends BaseClass {
    * @param options
    */
   click({sourceEvent}?: ClickOptions): void;
+}
+
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  target: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
+export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
+  onInput?: ((event: CallbackEvent<T>) => void) | null;
+  onChange?: ((event: CallbackEvent<T>) => void) | null;
+  onFocus?: ((event: CallbackEvent<T>) => void) | null;
+  onBlur?: ((event: CallbackEvent<T>) => void) | null;
 }
 
 declare const internals: unique symbol;
@@ -88,8 +95,8 @@ declare class PreactInputElement
   /** @private */
   [internals]: ElementInternals;
   protected getDefaultValue(): string;
-  accessor onchange: EventListener | null;
-  accessor oninput: EventListener | null;
+  accessor onchange: CallbackEventListener<'input'>;
+  accessor oninput: CallbackEventListener<'input'>;
   accessor disabled: PreactInputProps['disabled'];
   accessor id: PreactInputProps['id'];
   accessor name: PreactInputProps['name'];
@@ -119,8 +126,8 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   extends PreactInputElement
   implements PreactFieldProps<Autocomplete>
 {
-  accessor onblur: EventListener | null;
-  accessor onfocus: EventListener | null;
+  accessor onblur: CallbackEventListener<'input'>;
+  accessor onfocus: CallbackEventListener<'input'>;
   accessor autocomplete: PreactFieldProps<Autocomplete>['autocomplete'];
   accessor defaultValue: PreactFieldProps['defaultValue'];
   accessor details: PreactFieldProps['details'];
@@ -160,16 +167,6 @@ export type TextFieldProps = PreactFieldProps<
       'icon' | 'maxLength' | 'minLength' | 'prefix' | 'suffix'
     >
   >;
-
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  target: HTMLElementTagNameMap[T];
-};
-export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
-  onInput?: ((event: CallbackEvent<T>) => void) | null;
-  onChange?: ((event: CallbackEvent<T>) => void) | null;
-  onFocus?: ((event: CallbackEvent<T>) => void) | null;
-  onBlur?: ((event: CallbackEvent<T>) => void) | null;
-}
 
 declare class TextField
   extends PreactFieldElement<TextFieldProps['autocomplete']>

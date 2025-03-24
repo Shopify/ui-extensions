@@ -1,4 +1,4 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -27,8 +27,7 @@ export interface TableHeaderProps {
   >;
 }
 
-export type Style = string | CSSStyleSheet;
-export type Styles = Style[] | Style;
+export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
@@ -54,7 +53,6 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
-  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -77,12 +75,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    */
   queueRender(): void;
   /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
-  /**
    * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
    *
    * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
@@ -103,14 +95,23 @@ declare const actualTableVariantSymbol: unique symbol;
 declare const tableHeadersSharedDataSymbol: unique symbol;
 export type ActualTableVariant = 'table' | 'list';
 
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  target: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
+
 declare class Table extends PreactCustomElement implements TableProps {
   accessor variant: TableProps['variant'];
   accessor loading: TableProps['loading'];
   accessor paginate: TableProps['paginate'];
   accessor hasPreviousPage: TableProps['hasPreviousPage'];
   accessor hasNextPage: TableProps['hasNextPage'];
-  accessor onpreviouspage: EventListener | null;
-  accessor onnextpage: EventListener | null;
+  accessor onpreviouspage: CallbackEventListener<typeof tagName> | null;
+  accessor onnextpage: CallbackEventListener<typeof tagName> | null;
   /**
    * The actual table variant, which is either 'table' or 'list'.
    */

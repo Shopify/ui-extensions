@@ -1,6 +1,6 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/ban-types */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -26,9 +26,13 @@ export interface LinkProps {
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   target: HTMLElementTagNameMap[T];
 };
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
-export type Style = string | CSSStyleSheet;
-export type Styles = Style[] | Style;
+export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
@@ -54,7 +58,6 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
-  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -77,12 +80,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    */
   queueRender(): void;
   /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
-  /**
    * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
    *
    * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
@@ -104,15 +101,15 @@ export interface PreactOverlayControlProps
 declare const Link_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#187010@#queueRender': (() => void) | undefined;
-  '__#187010@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#197418@#queueRender': (() => void) | undefined;
+  '__#197418@#shadowRoot': ShadowRoot | null;
+  '__#197418@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#187010@#checkElementPrototype'(): void;
-  _addLegacyStyleComponent(style: string): void;
+  '__#197418@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -316,6 +313,7 @@ declare const Link_base: (abstract new (...args: any) => {
   readonly DOCUMENT_POSITION_CONTAINS: 8;
   readonly DOCUMENT_POSITION_CONTAINED_BY: 16;
   readonly DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32;
+  dispatchEvent(event: Event): boolean;
   dispatchEvent(event: Event): boolean;
   ariaAtomic: string | null;
   ariaAutoComplete: string | null;
@@ -566,7 +564,7 @@ declare class Link extends Link_base implements LinkProps {
   accessor target: LinkProps['target'];
   accessor download: LinkProps['download'];
   accessor lang: LinkProps['lang'];
-  accessor onclick: EventListener | null;
+  accessor onclick: CallbackEventListener<typeof tagName> | null;
   constructor();
 }
 declare global {

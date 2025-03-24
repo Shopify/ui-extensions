@@ -2,23 +2,10 @@
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/member-ordering */
 
-import type {ChoiceProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {OrderedListProps$1, ComponentChild} from './shared.d.ts';
 
-export interface ChoiceProps
-  extends Required<
-    Pick<
-      ChoiceProps$1,
-      | 'selected'
-      | 'defaultSelected'
-      | 'disabled'
-      | 'accessibilityLabel'
-      | 'value'
-      | 'label'
-      | 'details'
-    >
-  > {}
+export interface OrderedListProps extends OrderedListProps$1 {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -78,40 +65,28 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare class Choice extends PreactCustomElement implements ChoiceProps {
-  accessor disabled: ChoiceProps['disabled'];
-  accessor details: ChoiceProps['details'];
-  get selected(): boolean;
-  set selected(selected: ChoiceProps['selected']);
-  accessor value: ChoiceProps['value'];
-  accessor accessibilityLabel: ChoiceProps['accessibilityLabel'];
-  accessor label: ChoiceProps['label'];
-  accessor defaultSelected: ChoiceProps['defaultSelected'];
+declare class OrderedList
+  extends PreactCustomElement
+  implements OrderedListProps
+{
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Choice;
+    [tagName]: OrderedList;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ChoiceJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ChoiceJSXProps;
+      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & OrderedListJSXProps;
     }
   }
 }
 
-declare const tagName = 's-choice';
-export interface ChoiceJSXProps
-  extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id'> {}
+declare const tagName = 's-ordered-list';
+export interface OrderedListJSXProps
+  extends Partial<OrderedListProps>,
+    Pick<OrderedListProps$1, 'id'> {}
 
-export {Choice, type ChoiceJSXProps};
+export {OrderedList, type OrderedListJSXProps};

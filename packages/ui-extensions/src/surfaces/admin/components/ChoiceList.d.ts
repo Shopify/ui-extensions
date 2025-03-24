@@ -1,4 +1,4 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -22,9 +22,13 @@ export interface ChoiceListProps
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   target: HTMLElementTagNameMap[T];
 };
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
-export type Style = string | CSSStyleSheet;
-export type Styles = Style[] | Style;
+export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
@@ -50,7 +54,6 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
-  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -72,12 +75,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    * @private
    */
   queueRender(): void;
-  /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
   /**
    * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
    *
@@ -101,8 +98,8 @@ declare class PreactInputElement
   /** @private */
   [internals]: ElementInternals;
   protected getDefaultValue(): string;
-  accessor onchange: EventListener | null;
-  accessor oninput: EventListener | null;
+  accessor onchange: CallbackEventListener<'input'>;
+  accessor oninput: CallbackEventListener<'input'>;
   accessor disabled: PreactInputProps['disabled'];
   accessor id: PreactInputProps['id'];
   accessor name: PreactInputProps['name'];

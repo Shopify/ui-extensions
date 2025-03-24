@@ -1,4 +1,4 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -192,6 +192,7 @@ declare const privateIconArray: readonly [
   'delivery',
   'desktop',
   'disabled',
+  'discount-add',
   'discount-code',
   'discount',
   'dns-settings',
@@ -347,6 +348,7 @@ declare const privateIconArray: readonly [
   'note-add',
   'note',
   'notification',
+  'order-batches',
   'order-draft',
   'order-first',
   'order-fulfilled',
@@ -390,6 +392,7 @@ declare const privateIconArray: readonly [
   'payout',
   'person-add',
   'person-exit',
+  'person-list',
   'person-lock',
   'person-remove',
   'person-segment',
@@ -542,6 +545,7 @@ declare const privateIconArray: readonly [
   'wand',
   'watch',
   'wifi',
+  'work-list',
   'work',
   'wrench',
   'x-circle',
@@ -582,6 +586,12 @@ interface BadgeProps$1 extends GlobalProps {
    */
   size?: SizeKeyword;
 }
+interface ActionProps {
+  /**
+   * The text to use as the Action modal’s title. If not provided, the name of the extension will be used.
+   */
+  heading?: string;
+}
 interface ActionSlots {
   /**
    * The primary action to perform, provided as a button or link type element.
@@ -595,6 +605,8 @@ interface ActionSlots {
 interface BannerProps$1 extends GlobalProps, ActionSlots {
   /**
    * The title of the banner.
+   *
+   * @default ''
    */
   heading?: string;
   /**
@@ -619,20 +631,51 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
   /**
    * Makes the content collapsible.
    * A collapsible banner will conceal child elements initially, but allow the user to expand the banner to see them.
+   *
+   * @default false
    */
   collapsible?: boolean;
   /**
-	 * Determines whether the close button of the banner is visible.
-  
-	 * This component is controlled, so you must manage the visibility of the banner in state by using the `onDismiss` callback,
-	 * or by listening to the `dismiss` event.
-	 */
+   * Determines whether the close button of the banner is present.
+   *
+   * When the close button is pressed, the `dismiss` event will fire,
+   * then `hidden` will be true,
+   * any animation will complete,
+   * and the `afterhide` event will fire.
+   *
+   * @default false
+   */
   dismissible?: boolean;
   /**
-   * Callback when banner is dismissed.
-   * This component is controlled, so you must manage the visibility of the banner in state by using the `onDismiss` callback.
+   * Event handler when the banner is dismissed by the user.
+   *
+   * This does not fire when setting `hidden` manually.
+   *
+   * The `hidden` property will be `false` when this event fires.
    */
   onDismiss?: () => void;
+  /**
+   * Event handler when the banner has fully hidden.
+   *
+   * The `hidden` property will be `true` when this event fires.
+   *
+   * @implementation If implementations animate the hiding of the banner,
+   * this event must fire after the banner has fully hidden.
+   * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
+   */
+  onAfterHide?: () => void;
+  /**
+   * Determines whether the banner is hidden.
+   *
+   * If this property is being set on each framework render (as in 'controlled' usage),
+   * and the banner is `dismissible`,
+   * ensure you update app state for this property when the `dismiss` event fires.
+   *
+   * If the banner is not `dismissible`, it can still be hidden by setting this property.
+   *
+   * @default false
+   */
+  hidden?: boolean;
 }
 type ExtractStrict<T, U extends T> = Extract<T, U>;
 export type MaybeAllValuesShorthandProperty<T extends string> =
@@ -939,7 +982,7 @@ interface SizingProps {
 }
 type BorderStyleKeyword = 'none' | 'solid' | 'dashed' | 'dotted' | 'auto';
 type BorderSizeKeyword = SizeKeyword | 'none';
-type BorderRadiusKeyword = SizeKeyword | 'none';
+type BorderRadiusKeyword = SizeKeyword | 'max' | 'none';
 type BorderShorthand =
   | BorderSizeKeyword
   | `${BorderSizeKeyword} ${ColorKeyword}`
@@ -1704,7 +1747,7 @@ interface GapProps {
    * A single value applies to both axes.
    * A pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
    *
-   * @default 'auto'
+   * @default 'none'
    */
   gap?: MaybeTwoValuesShorthandProperty<SpacingKeyword>;
   /**
@@ -1956,6 +1999,11 @@ interface BaseImageProps {
   /**
    * The image source (either a remote URL or a local file resource).
    *
+   * When the image is loading or no `src` is provided, a placeholder will be rendered.
+   *
+   * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
+   * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare.
+   *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
    */
   src?: string;
@@ -1997,13 +2045,22 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
   inlineSize?: 'fill' | 'auto';
   /**
    * The aspect ratio of the image.
-   * This will be respected even if the image hasn’t loaded yet.
+   *
+   * - `auto`: the image will be displayed at its natural aspect ratio.
+   *
+   * The ratio will be respected even if the image hasn’t loaded yet unless it is set to `auto`. In that case, the
+   * rendering will depends on the `inlineSize` value:
+   *
+   * - `inlineSize="fill"`: the aspect ratio will be `1/1`.
+   * - `inlineSize="auto"`: the image will not render until it has loaded.
    *
    * Getters for this value should return `auto` or the ratio in `number / number` form. Input fractions should not be ‘simplified’.
    * For example, if the value is set as `50 /    100`, the getter returns `50 / 100`.
    * If the value is set as `0.5`, the getter returns `0.5 / 1`.
    *
    * @default 'auto'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
    */
   aspectRatio?:
     | `${number}${optionalSpace}/${optionalSpace}${number}`
@@ -2064,6 +2121,12 @@ interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
    * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
    */
   lang?: string;
+}
+interface ListItemProps$1 extends GlobalProps {
+  /**
+   * The content of the ListItem.
+   */
+  children?: ComponentChildren;
 }
 interface MoneyFieldProps$1
   extends GlobalProps,
@@ -2278,6 +2341,7 @@ interface OptionGroupProps$1 extends GlobalProps {
    */
   children?: ComponentChildren;
 }
+interface OrderedListProps$1 extends GlobalProps {}
 interface ParagraphProps$1
   extends GlobalProps,
     BaseTypographyProps,
@@ -2314,6 +2378,15 @@ type ParagraphType =
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
    */
   | 'small';
+interface PasswordFieldProps$1
+  extends GlobalProps,
+    BaseTextFieldProps,
+    MinMaxLengthProps,
+    AutocompleteProps<PasswordAutocompleteField> {}
+type PasswordAutocompleteField = ExtractStrict<
+  AnyAutocompleteField,
+  'new-password' | 'current-password'
+>;
 interface SectionProps$1 extends GlobalProps {
   /**
    * The content of the Section.
@@ -2334,16 +2407,16 @@ interface SectionProps$1 extends GlobalProps {
   /**
    * Adjust the padding of all edges.
    *
-   * `auto`: applies padding that is appropriate for the element. Note that it may result in no padding if Shopify
-   * believes this is the right design decision in a particular context.
+   * `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
+   * this is the right design decision in a particular context.
    *
    * `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
    * to the edge of the Section. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
-   * @default "auto"
+   * @default 'base'
    */
-  padding?: 'auto' | 'none';
+  padding?: 'base' | 'none';
 }
 interface SelectProps$1
   extends GlobalProps,
@@ -2613,6 +2686,7 @@ interface TextFieldProps$1
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
+interface UnorderedListProps$1 extends GlobalProps {}
 interface URLFieldProps$1
   extends GlobalProps,
     BaseTextFieldProps,
@@ -6289,4 +6363,31 @@ declare namespace React$1 {
     callback: () => void,
   ): void;
   export const unstable_now: () => number;
+}
+interface AdminActionProps$1 extends GlobalProps, ActionProps, ActionSlots {
+  /**
+   * Whether the action is in a loading state, such as initial page load or action opening.
+   * When true, the action could be in an inert state, which prevents user interaction.
+   */
+  loading?: boolean;
+}
+interface AdminBlockProps$1 extends GlobalProps {
+  /**
+   * The text to use as the Block title in the block header. If not provided, the name of the
+   * extension will be used.
+   */
+  heading?: string;
+  /**
+   * The summary to display when the app block is collapsed.
+   * Summary longer than 30 characters will be truncated.
+   */
+  collapsedSummary?: string;
+}
+interface AdminPrintActionProps$1 extends GlobalProps {
+  /**
+   * Sets the src URL of the preview and the document to print.
+   * If not provided, the preview will show an empty state and the print button will be disabled.
+   * HTML, PDFs and images are supported.
+   */
+  src?: string;
 }

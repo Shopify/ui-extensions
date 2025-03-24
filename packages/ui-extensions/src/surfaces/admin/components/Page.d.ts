@@ -4,21 +4,11 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {ChoiceProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {PageProps$1, ComponentChild} from './shared.d.ts';
 
-export interface ChoiceProps
-  extends Required<
-    Pick<
-      ChoiceProps$1,
-      | 'selected'
-      | 'defaultSelected'
-      | 'disabled'
-      | 'accessibilityLabel'
-      | 'value'
-      | 'label'
-      | 'details'
-    >
-  > {}
+export interface PageProps {
+  inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large'>;
+}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -78,40 +68,26 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare class Choice extends PreactCustomElement implements ChoiceProps {
-  accessor disabled: ChoiceProps['disabled'];
-  accessor details: ChoiceProps['details'];
-  get selected(): boolean;
-  set selected(selected: ChoiceProps['selected']);
-  accessor value: ChoiceProps['value'];
-  accessor accessibilityLabel: ChoiceProps['accessibilityLabel'];
-  accessor label: ChoiceProps['label'];
-  accessor defaultSelected: ChoiceProps['defaultSelected'];
+declare class Page extends PreactCustomElement implements PageProps {
+  accessor inlineSize: PageProps['inlineSize'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Choice;
+    [tagName]: Page;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ChoiceJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ChoiceJSXProps;
+      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & PageJSXProps;
     }
   }
 }
 
-declare const tagName = 's-choice';
-export interface ChoiceJSXProps
-  extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id'> {}
+declare const tagName = 's-page';
+export interface PageJSXProps extends Partial<PageProps> {
+  aside?: ComponentChild;
+}
 
-export {Choice, type ChoiceJSXProps};
+export {Page, type PageJSXProps};

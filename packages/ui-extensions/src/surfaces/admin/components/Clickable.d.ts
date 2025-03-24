@@ -1,6 +1,6 @@
-/** VERSION: 0.39.0 **/
+/** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/ban-types */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -93,9 +93,13 @@ export interface ClickableProps
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   target: HTMLElementTagNameMap[T];
 };
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
-export type Style = string | CSSStyleSheet;
-export type Styles = Style[] | Style;
+export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
@@ -121,7 +125,6 @@ declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
   /** @private */
   static get observedAttributes(): string[];
-  static globalStylesApplied: boolean;
   constructor({
     styles,
     ShadowRoot: renderFunction,
@@ -143,12 +146,6 @@ declare abstract class PreactCustomElement extends BaseClass {
    * @private
    */
   queueRender(): void;
-  /**
-   * Internal function to add styles for legacy browsers.
-   *
-   * @private
-   */
-  _addLegacyStyleComponent(style: string): void;
   /**
    * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
    *
@@ -199,15 +196,15 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
 declare const Clickable_base: (abstract new (...args: any) => {
   activateTarget: PreactOverlayControlProps['activateTarget'];
   activateAction: PreactOverlayControlProps['activateAction'];
-  '__#129798@#queueRender': (() => void) | undefined;
-  '__#129798@#legacyStyleComponents': Map<string, preact.VNode<{}>>;
+  '__#137714@#queueRender': (() => void) | undefined;
+  '__#137714@#shadowRoot': ShadowRoot | null;
+  '__#137714@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#129798@#checkElementPrototype'(): void;
-  _addLegacyStyleComponent(style: string): void;
+  '__#137714@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -411,6 +408,7 @@ declare const Clickable_base: (abstract new (...args: any) => {
   readonly DOCUMENT_POSITION_CONTAINS: 8;
   readonly DOCUMENT_POSITION_CONTAINED_BY: 16;
   readonly DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32;
+  dispatchEvent(event: Event): boolean;
   dispatchEvent(event: Event): boolean;
   ariaAtomic: string | null;
   ariaAutoComplete: string | null;
@@ -660,9 +658,9 @@ declare class Clickable extends Clickable_base implements ClickableProps {
   accessor target: ClickableProps['target'];
   accessor href: ClickableProps['href'];
   accessor download: ClickableProps['download'];
-  accessor onclick: EventListener | null;
-  accessor onblur: EventListener | null;
-  accessor onfocus: EventListener | null;
+  accessor onclick: CallbackEventListener<typeof tagName> | null;
+  accessor onblur: CallbackEventListener<typeof tagName> | null;
+  accessor onfocus: CallbackEventListener<typeof tagName> | null;
   accessor type: ClickableProps['type'];
   constructor();
 }
