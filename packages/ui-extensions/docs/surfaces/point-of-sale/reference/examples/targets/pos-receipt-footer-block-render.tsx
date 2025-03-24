@@ -1,17 +1,25 @@
 import React from 'react';
 
 import {
-  Text,
-  useApi,
   reactExtension,
+  useApi,
   POSReceiptBlock,
+  QRCode,
+  Text,
 } from '@shopify/ui-extensions-react/point-of-sale';
 
 const Block = () => {
-  const api = useApi<'pos.receipt-footer.block.render'>();
+  const {transaction} = useApi<'pos.receipt-footer.block.render'>();
+  const qrCodeValue =
+    transaction.transactionType === 'Exchange'
+      ? `exampleExchange=${encodeURIComponent(transaction.exchangeId ?? '')}`
+      : `exampleOrder=${encodeURIComponent(transaction.orderId ?? '')}`;
+
   return (
     <POSReceiptBlock>
-      <Text>{`Order ID: ${api.order.id}`}</Text>
+      <Text>{`Transaction type: ${transaction.transactionType}`}</Text>
+      <Text>{`Total tax: ${transaction.taxTotal}`}</Text>
+      <QRCode value={`https://www.shopify.com?${qrCodeValue}`} />
     </POSReceiptBlock>
   );
 };

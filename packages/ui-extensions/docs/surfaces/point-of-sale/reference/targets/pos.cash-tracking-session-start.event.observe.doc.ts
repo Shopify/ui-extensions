@@ -1,4 +1,6 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
+import {CUSTOM_DATA} from '../helpers/helper.docs';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -12,10 +14,13 @@ const data: ReferenceEntityTemplateSchema = {
   related: [
     {
       name: ExtensionTargetType.PosCashTrackingSessionCompleteObserve,
+      subtitle: 'Target',
+      type: 'blocks',
       url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-complete-observe',
     },
   ],
   type: 'Target',
+  definitions: [CUSTOM_DATA('CashTrackingSessionStartData')],
 };
 
 export default data;
