@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'TextField',
       description:
         'Use a text field to allow merchants to input or modify multiline text.',
-      type: 'TextFieldProps',
+      type: 'NewTextFieldProps',
     },
   ],
   category: 'Components',

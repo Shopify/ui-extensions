@@ -7,7 +7,7 @@ const generateCodeBlockForComponent = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'FormattedTextField',
   description:
-    'This component is deprecated. Please use the [`TextField`](/docs/api/pos-ui-extensions/components/textfield) component instead. Use a formatted text field when you require additional functionality such as the text field input type or a custom validator.',
+    'Use a formatted text field when you require additional functionality such as the text field input type or a custom validator.',
   isVisualComponent: true,
   type: 'component',
   definitions: [
