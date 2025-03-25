@@ -20,16 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'moneyfield-default.png',
     codeblock: {
-      title: 'Basic MoneyField example',
+      title: 'Default Example',
       tabs: [
         {
           title: 'JSX',
-          code: './examples/basic-money-field.example.tsx',
-          language: 'tsx',
+          code: './examples/default.html',
+          language: 'jsx',
         },
         {
-          title: 'Preview',
-          code: './examples/preview.html',
+          title: 'HTML',
+          code: './examples/default.html',
           language: 'preview',
         },
       ],

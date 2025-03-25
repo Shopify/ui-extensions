@@ -1,0 +1,1 @@
+<s-heading>Online store dashboard</s-heading>

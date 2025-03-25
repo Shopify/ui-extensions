@@ -20,16 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'clickable-default.png',
     codeblock: {
-      title: 'Basic Clickable example',
+      title: 'Default Example',
       tabs: [
         {
           title: 'JSX',
-          code: './examples/basic-clickable.example.tsx',
-          language: 'tsx',
+          code: './examples/default.html',
+          language: 'jsx',
         },
         {
-          title: 'Preview',
-          code: './examples/preview.html',
+          title: 'HTML',
+          code: './examples/default.html',
           language: 'preview',
         },
       ],

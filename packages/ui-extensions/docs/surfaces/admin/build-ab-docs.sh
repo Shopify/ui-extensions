@@ -104,9 +104,9 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
   rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/app/assets/images/templated-apis-screenshots/admin-extensions/$API_VERSION
 
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
-    echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/admin-extensions"
+    echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/app-bridge-library"
   else
-    echo "Docs: https://shopify-dev.myshopify.io/docs/api/admin-extensions"
+    echo "Docs: https://shopify-dev.myshopify.io/docs/api/app-bridge-library"
   fi
 else
   echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."

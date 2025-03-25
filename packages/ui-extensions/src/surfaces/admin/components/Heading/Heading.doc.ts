@@ -20,16 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'heading-default.png',
     codeblock: {
-      title: 'Simple Heading example',
+      title: 'Default Example',
       tabs: [
         {
           title: 'JSX',
-          code: './examples/basic-heading.example.tsx',
-          language: 'tsx',
+          code: './examples/default.html',
+          language: 'jsx',
         },
         {
-          title: 'Preview',
-          code: './examples/preview.html',
+          title: 'HTML',
+          code: './examples/default.html',
           language: 'preview',
         },
       ],

@@ -19,16 +19,16 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'urlfield-default.png',
     codeblock: {
-      title: 'Add a URLField to your app.',
+      title: 'Default Example',
       tabs: [
         {
           title: 'JSX',
-          code: './examples/basic-urlfield.example.tsx',
+          code: './examples/default.html',
           language: 'jsx',
         },
         {
-          title: 'Preview',
-          code: './examples/preview.html',
+          title: 'HTML',
+          code: './examples/default.html',
           language: 'preview',
         },
       ],

@@ -1,3 +1,0 @@
-<s-link href="https://www.shopify.ca/climate/sustainability-fund">
-  Sustainability fund
-</s-link>;

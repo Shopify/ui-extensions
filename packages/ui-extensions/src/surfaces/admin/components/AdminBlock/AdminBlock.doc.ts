@@ -20,12 +20,12 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'adminblock-default.png',
     codeblock: {
-      title: 'Simple AdminBlock implementation',
+      title: 'Default Example',
       tabs: [
         {
           title: 'JSX',
-          code: './examples/basic-adminblock.example.tsx',
-          language: 'tsx',
+          code: './examples/default.tsx',
+          language: 'jsx',
         },
       ],
     },

@@ -20,16 +20,16 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'link-default.png',
     codeblock: {
-      title: 'Link to an app page',
+      title: 'Default Example',
       tabs: [
         {
           title: 'JSX',
-          code: './examples/app-link.example.tsx',
-          language: 'tsx',
+          code: './examples/default.html',
+          language: 'jsx',
         },
         {
-          title: 'Preview',
-          code: './examples/preview.html',
+          title: 'HTML',
+          code: './examples/default.html',
           language: 'preview',
         },
       ],
@@ -39,31 +39,17 @@ const data: ReferenceEntityTemplateSchema = {
     description: '',
     examples: [
       {
-        description: 'Link to an external URL',
-        image: 'external-link.png',
+        description: 'Link to an app page',
+        image: 'link-default.png',
         codeblock: {
           tabs: [
             {
               title: 'JSX',
-              code: './examples/external-link.example.tsx',
-              language: 'typescript',
+              code: './examples/app.html',
+              language: 'jsx',
             },
           ],
-          title: 'External Link',
-        },
-      },
-      {
-        description: 'Link to a relative URL',
-        image: 'relative-link.png',
-        codeblock: {
-          tabs: [
-            {
-              title: 'JSX',
-              code: './examples/relative-link.example.tsx',
-              language: 'typescript',
-            },
-          ],
-          title: 'Relative Link',
+          title: 'App Link',
         },
       },
       {
@@ -73,8 +59,8 @@ const data: ReferenceEntityTemplateSchema = {
           tabs: [
             {
               title: 'JSX',
-              code: './examples/shopify-section-link.example.tsx',
-              language: 'typescript',
+              code: './examples/shopify-section.html',
+              language: 'jsx',
             },
           ],
           title: 'Shopify Section Link',

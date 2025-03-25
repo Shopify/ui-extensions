@@ -20,17 +20,17 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'divider-default.png',
     codeblock: {
-      title: 'TODO: add example title',
+      title: 'Default Example',
       tabs: [
         {
           title: 'JSX',
-          code: './examples/basic-divider.example.tsx',
-          language: 'tsx',
+          code: './examples/default.html',
+          language: 'jsx',
         },
         {
-          title: 'Preview',
-          code: './examples/preview.html',
-          language: 'preview',
+          title: 'HTML',
+          code: './examples/default.html',
+          language: 'preview-admin-in-section',
         },
       ],
     },

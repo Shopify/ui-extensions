@@ -20,17 +20,17 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'table-default.png',
     codeblock: {
-      title: 'Basic Table example',
+      title: 'Default Example',
       tabs: [
         {
           title: 'Peact',
-          code: './examples/basic-table.example.tsx',
-          language: 'tsx',
+          code: './examples/default.html',
+          language: 'jsx',
         },
         {
-          title: 'Preview',
-          code: './examples/preview.html',
-          language: 'preview',
+          title: 'HTML',
+          code: './examples/default.html',
+          language: 'preview-admin-in-section',
         },
       ],
     },
