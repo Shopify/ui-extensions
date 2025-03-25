@@ -1,0 +1,58 @@
+// Documentation file for NumberField
+import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
+const data: ReferenceEntityTemplateSchema = {
+  name: 'NumberField',
+  description:
+    'Use a number field when you need to collect numerical input from merchants. It provides appropriate keyboard settings and validation for numerical values.',
+  requires: '',
+  thumbnail: 'numberfield-thumbnail.png',
+  isVisualComponent: true,
+  type: 'component',
+  definitions: [
+    {
+      title: 'NumberField',
+      description: 'A specialized text input field for numerical values.',
+      type: 'NumberField',
+    },
+  ],
+  category: 'Components',
+  subCategory: 'Forms',
+  defaultExample: {
+    image: 'numberfield-default.png',
+    codeblock: {
+      title: 'Default Example',
+      tabs: [
+        {
+          title: 'JSX',
+          code: './examples/default.html',
+          language: 'jsx',
+        },
+        {
+          title: 'HTML',
+          code: './examples/default.html',
+          language: 'html',
+        },
+        {
+          title: 'HTML',
+          code: './examples/default.html', // This gets updated in build-ab-docs.sh
+          language: 'preview', // Do not edit. This is required for Live Previews
+        },
+      ],
+    },
+  },
+  related: [
+    {
+      type: 'component',
+      name: 'TextField',
+      url: '/docs/api/admin-extensions/components/forms/textfield',
+    },
+    {
+      type: 'component',
+      name: 'MoneyField',
+      url: '/docs/api/admin-extensions/components/forms/moneyfield',
+    },
+  ],
+};
+
+export default data;

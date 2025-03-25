@@ -42,16 +42,46 @@ FIND_CMD="find ./$SRC_PATH -name '*.doc.ts'"
 # Store original files for restoration
 declare -a MODIFIED_FILES
 
-echo "Replacing JSX/tsx references..."
+echo "Creating preview files and updating references..."
 while IFS= read -r file; do
-  if grep -q "JSX\|\.tsx" "$file"; then
-    cp "$file" "$file.bak"
-    MODIFIED_FILES+=("$file")
-    run_sed 's/JSX/HTML/g' "$file"
-    run_sed 's/\.tsx/\.html/g' "$file"
+  # Check if the file contains a reference to default.html with preview language
+  if grep -q "language: 'preview'" "$file"; then
+    # Add file to modified list if not already there
+    if [[ ! " ${MODIFIED_FILES[@]} " =~ " ${file} " ]]; then
+      cp "$file" "$file.bak"
+      MODIFIED_FILES+=("$file")
+    fi
+    
+    # Replace default.html with preview.html in preview code blocks
+    run_sed "s|code: './examples/default.html', // This gets updated in build-ab-docs.sh|code: './examples/preview.html',|" "$file"
+    
+    # Get the directory containing the examples
+    EXAMPLES_DIR=$(dirname "$file")/examples
+    
+    # Check if default.html exists and create preview.html
+    if [ -f "$EXAMPLES_DIR/default.html" ]; then
+      cp "$EXAMPLES_DIR/default.html" "$EXAMPLES_DIR/preview.html"
+      
+      # Add prefix and suffix content to preview.html
+      echo "<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
+    <style>
+      body {
+        background-color: rgba(241, 241, 241, 1);
+        margin: 20px;
+      }
+    </style>
+  </head>
+  <body>" > temp_file
+      cat "$EXAMPLES_DIR/preview.html" >> temp_file
+      echo "</body>
+</html>" >> temp_file
+      mv temp_file "$EXAMPLES_DIR/preview.html"
+    fi
   fi
 done < <(eval "$FIND_CMD")
-
 
 COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.ab.docs.json --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH --output ./$DOCS_PATH/generated"
 # COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
@@ -83,6 +113,17 @@ fi
 # Make sure https://shopify.dev URLs are relative so they work in Spin.
 # See https://github.com/Shopify/generate-docs/issues/181
 run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
+
+# Restore original files
+for file in "${MODIFIED_FILES[@]}"; do
+  if [ -f "$file.bak" ]; then
+    mv "$file.bak" "$file"
+  fi
+done
+
+# Clean up any preview.html files we created
+echo "Cleaning up preview files..."
+find ./$SRC_PATH -name 'preview.html' -exec rm {} \;
 
 
 sed_exit=$?
