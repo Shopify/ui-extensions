@@ -3,6 +3,7 @@ import {
   I18n,
   Storage,
   Language,
+  Country,
   AuthenticatedAccount,
   GraphQLError,
   StorefrontApiVersion,
@@ -161,6 +162,11 @@ export interface Localization {
    * extension (that is, the one matching your .default.json file).
    */
   extensionLanguage: StatefulRemoteSubscribable<Language>;
+
+  /**
+   * TBD
+   */
+  country: StatefulRemoteSubscribable<Country | undefined>;
 }
 
 /**
