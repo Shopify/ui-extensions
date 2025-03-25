@@ -1,7 +1,7 @@
 export interface RenderExtension<Api, ComponentsSet extends string> {
   api: Api;
   components: ComponentsSet;
-  output: Promise<void | (() => void)>;
+  output: void | Promise<void>;
 }
 
 export interface ExtensionRegistrationFunction<ExtensionTargets> {
