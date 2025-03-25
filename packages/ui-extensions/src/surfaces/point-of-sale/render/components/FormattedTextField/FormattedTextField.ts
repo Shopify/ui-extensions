@@ -22,6 +22,9 @@ export interface FormattedTextFieldProps extends BaseTextFieldProps {
   autoCapitalize?: AutoCapitalizationType;
 }
 
+/**
+ * @deprecated Use the `TextField` component instead.
+ */
 export const FormattedTextField = createRemoteComponent<
   'FormattedTextField',
   FormattedTextFieldProps
