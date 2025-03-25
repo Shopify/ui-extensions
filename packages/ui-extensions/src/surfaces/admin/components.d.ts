@@ -2161,7 +2161,12 @@ interface MoneyFieldProps$1
     BaseTextFieldProps,
     NumberConstraintsProps,
     AutocompleteProps<MoneyAutocompleteField> {
-  currencyCode?: CurrencyCode;
+  /**
+   * Specifies the currencyCode that will be displayed.
+   *
+   * @default ''
+   */
+  currencyCode?: CurrencyCode | AnyString;
 }
 type MoneyAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -3699,15 +3704,15 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (...args: any) => {
   commandFor: PreactOverlayControlProps['commandFor'];
   command: PreactOverlayControlProps['command'];
-  '__#49432@#queueRender': (() => void) | undefined;
-  '__#49432@#shadowRoot': ShadowRoot | null;
-  '__#49432@#styles': string;
+  '__#49710@#queueRender': (() => void) | undefined;
+  '__#49710@#shadowRoot': ShadowRoot | null;
+  '__#49710@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49432@#checkElementPrototype'(): void;
+  '__#49710@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -4372,15 +4377,15 @@ export interface ClickableProps
 declare const Clickable_base: (abstract new (...args: any) => {
   commandFor: PreactOverlayControlProps['commandFor'];
   command: PreactOverlayControlProps['command'];
-  '__#49432@#queueRender': (() => void) | undefined;
-  '__#49432@#shadowRoot': ShadowRoot | null;
-  '__#49432@#styles': string;
+  '__#49710@#queueRender': (() => void) | undefined;
+  '__#49710@#shadowRoot': ShadowRoot | null;
+  '__#49710@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49432@#checkElementPrototype'(): void;
+  '__#49710@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -4977,7 +4982,7 @@ export interface EmailFieldJSXProps
     FieldReactProps<typeof tagName$x> {}
 
 export type RequiredAlignedProps = Required<GridProps$1>;
-export interface GridProps extends Required<BoxProps> {
+export interface GridProps extends BoxProps {
   gridTemplateColumns: RequiredAlignedProps['gridTemplateColumns'];
   gridTemplateRows: RequiredAlignedProps['gridTemplateRows'];
   alignItems: RequiredAlignedProps['alignItems'];
@@ -5024,7 +5029,7 @@ export interface GridJSXProps
     Pick<GridProps$1, 'id'> {}
 
 export type RequiredGridItemProps = Required<GridItemProps$1>;
-export interface GridItemProps {
+export interface GridItemProps extends BoxProps {
   gridColumn: RequiredGridItemProps['gridColumn'];
   gridRow: RequiredGridItemProps['gridRow'];
 }
@@ -5185,15 +5190,15 @@ export interface LinkProps {
 declare const Link_base: (abstract new (...args: any) => {
   commandFor: PreactOverlayControlProps['commandFor'];
   command: PreactOverlayControlProps['command'];
-  '__#49432@#queueRender': (() => void) | undefined;
-  '__#49432@#shadowRoot': ShadowRoot | null;
-  '__#49432@#styles': string;
+  '__#49710@#queueRender': (() => void) | undefined;
+  '__#49710@#shadowRoot': ShadowRoot | null;
+  '__#49710@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#49432@#checkElementPrototype'(): void;
+  '__#49710@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -5694,11 +5699,10 @@ export interface ListItemJSXProps
   extends Partial<ListItemProps>,
     Pick<ListItemProps$1, 'id'> {}
 
+export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
   extends PreactFieldProps,
-    Required<
-      Pick<MoneyFieldProps$1, 'max' | 'min' | 'step' | 'currencyCode'>
-    > {}
+    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step' | 'currencyCode'> {}
 
 declare class MoneyField
   extends PreactFieldElement<MoneyFieldProps['autocomplete']>
