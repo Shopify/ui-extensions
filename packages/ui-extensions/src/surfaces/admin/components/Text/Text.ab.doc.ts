@@ -1,22 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import shared from './shared';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Text',
-  description:
-    'This component renders text. Remember, you can also add your own styling.',
-  requires: '',
-  thumbnail: 'text-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Text',
-      description: '',
-      type: 'Text',
-    },
-  ],
-  category: 'Components',
-  subCategory: 'Titles and text',
+  ...shared,
   defaultExample: {
     image: 'text-default.png',
     codeblock: {
@@ -40,14 +26,6 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-
-  related: [
-    {
-      type: 'component',
-      name: 'Heading',
-      url: '/docs/api/admin-extensions/components/titles-and-text/heading',
-    },
-  ],
 };
 
 export default data;

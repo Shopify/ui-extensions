@@ -3,14 +3,14 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'Heading',
   description:
-    "Use this to display a title. It's similar to the h1-h6 tags in HTML",
+    "Use `s-heading` to display a title. It's similar to the h1-h6 tags in HTML",
   requires: '',
   thumbnail: 'heading-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'Heading',
+      title: 'Properties',
       description: '',
       type: 'Heading',
     },

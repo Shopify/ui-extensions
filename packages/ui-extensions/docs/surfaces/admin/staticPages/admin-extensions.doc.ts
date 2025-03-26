@@ -119,65 +119,6 @@ const data: LandingTemplateSchema = {
       },
     },
     {
-      type: 'GenericAccordion',
-      title: 'Custom Protocols',
-      sectionContent:
-        'Custom protocols make it easier to navigate to common locations, and construct URLs.',
-      anchorLink: 'custom-protocols',
-      accordionContent: [
-        {
-          title: 'Shopify Protocol',
-          description:
-            'Use the `shopify:admin` protocol when you want to construct a URL with a root of the Shopify Admin.',
-          codeblock: {
-            title: 'shopify:admin',
-            tabs: [
-              {
-                title: 'Link to Product Page',
-                language: 'tsx',
-                code: './examples/link-to-product-page.jsx',
-              },
-              {
-                title: 'Fetch data',
-                language: 'ts',
-                code: './examples/fetch-data.js',
-              },
-            ],
-          },
-        },
-        {
-          title: 'Extension Protocol',
-          description:
-            'Triggers an action extension from a block extension using the `extension:` protocol. The `extensionTarget` is the target of the action extension. The handle is the handle of the action extension that will be opened.',
-          codeblock: {
-            title: 'extension:',
-            tabs: [
-              {
-                title: 'Trigger Action Extension from a Block extension',
-                language: 'tsx',
-                code: './examples/link-to-action.jsx',
-              },
-            ],
-          },
-        },
-        {
-          title: 'Relative Urls',
-          description:
-            'Relative urls are relative to your app and are useful when you want to link to a route within your app. This works for both embedded and non-embedded apps.',
-          codeblock: {
-            title: '/relative/urls',
-            tabs: [
-              {
-                title: 'Link to route in your app',
-                language: 'tsx',
-                code: './examples/link-to-route.jsx',
-              },
-            ],
-          },
-        },
-      ],
-    },
-    {
       type: 'Generic',
       title: 'Deploying',
       anchorLink: 'deploying',
@@ -193,13 +134,6 @@ const data: LandingTemplateSchema = {
           },
         ],
       },
-    },
-    {
-      type: 'Generic',
-      title: 'Security',
-      anchorLink: 'security',
-      sectionContent:
-        'UI Extensions run on a different origin than the Shopify Admin. For network calls to succeed, your server must support [cross-origin resource sharing (CORS)](https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS) for the origin `https://extensions.shopifycdn.com`.\n\nIf you have a custom [`Access-Control-Allow-Origin` header](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin) set, you must include `https://extensions.shopifycdn.com` in the list of allowed origins.\n\nIf you are using the [Shopify App Remix Template](https://github.com/Shopify/shopify-app-template-remix), this is done automatically for you.',
     },
   ],
 };

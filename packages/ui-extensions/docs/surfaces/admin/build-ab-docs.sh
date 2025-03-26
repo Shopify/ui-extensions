@@ -106,6 +106,9 @@ find ./ -name '*.doc*.js' -exec rm -r {} \;
 # Remove components.ts as it's no longer needed
 rm $COMPONENTS_TS
 
+# Remove shared.js files
+find . -name "shared.js" -type f -delete
+
 if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit
 fi

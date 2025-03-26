@@ -1,21 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import shared from './shared';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'URLField',
-  description: 'Use a URLField when you need to collect URLs from merchants.',
-  requires: '',
-  thumbnail: 'urlfield-thumbnail.png',
-  isVisualComponent: true,
-  type: 'component',
-  definitions: [
-    {
-      title: 'URLField',
-      description: 'A specialized text input field for URLs.',
-      type: 'URLField',
-    },
-  ],
-  category: 'Components',
-  subCategory: 'Forms',
+  ...shared,
   defaultExample: {
     image: 'urlfield-default.png',
     codeblock: {
@@ -39,7 +26,6 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [],
 };
 
 export default data;

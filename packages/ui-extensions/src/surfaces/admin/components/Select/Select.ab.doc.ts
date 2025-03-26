@@ -1,22 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import shared from './shared';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Select',
-  description:
-    'Select lets merchants choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.',
-  requires: '',
-  thumbnail: 'select-thumbnail.png',
-  isVisualComponent: true,
-  type: 'component',
-  definitions: [
-    {
-      title: 'Select',
-      description: 'A list of options that merchants can select from.',
-      type: 'Select',
-    },
-  ],
-  category: 'Components',
-  subCategory: 'Forms',
+  ...shared,
   defaultExample: {
     image: 'select-default.png',
     codeblock: {
@@ -40,7 +26,6 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [],
 };
 
 export default data;

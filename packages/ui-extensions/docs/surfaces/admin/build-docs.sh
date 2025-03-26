@@ -97,6 +97,9 @@ find ./ -name '*.doc*.js' -exec rm -r {} \;
 # Remove components.ts as it's no longer needed
 rm $COMPONENTS_TS
 
+# Remove shared.js files
+find . -name "shared.js" -type f -delete
+
 # Restore original files
 for file in "${MODIFIED_FILES[@]}"; do
   if [ -f "$file.bak" ]; then

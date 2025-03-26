@@ -1,3 +1,4 @@
+import '@shopify/ui-extensions/preact';
 import { Fragment, render } from 'preact';
 import { useState } from 'preact/hooks';
 

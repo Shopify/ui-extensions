@@ -1,22 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import shared from './shared';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Banner',
-  description:
-    "Use banners to communicate important messages to merchants. They are designed to be noticeable but not disruptive to the merchant's workflow.",
-  requires: '',
-  thumbnail: 'banner-thumbnail.png',
-  isVisualComponent: true,
-  type: 'component',
-  definitions: [
-    {
-      title: 'Banner',
-      description: 'A component for displaying prominent messages or alerts.',
-      type: 'Banner',
-    },
-  ],
-  category: 'Components',
-  subCategory: 'Feedback',
+  ...shared,
   defaultExample: {
     image: 'banner-default.png',
     codeblock: {
@@ -40,26 +26,6 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'tone',
-      title: 'Tone',
-      sectionContent: `
-- Use \`info\` for general information or updates
-- Use \`success\` for successful operations or positive messages
-- Use \`warning\` for important notices that require attention
-- Use \`critical\` for errors or critical issues that need immediate attention
-      `,
-    },
-  ],
-  related: [
-    {
-      type: 'component',
-      name: 'Badge',
-      url: '/docs/api/admin-extensions/components/feedback/badge',
-    },
-  ],
 };
 
 export default data;
