@@ -2,7 +2,7 @@ import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 import type {
   CurrencyCode,
-  CountryCode,
+  Country,
   Timezone,
   SellingPlan,
   Attribute,
@@ -120,14 +120,6 @@ export interface Currency {
    * @see https://www.iso.org/iso-4217-currency-codes.html
    */
   isoCode: CurrencyCode;
-}
-
-export interface Country {
-  /**
-   * The ISO-3166-1 code for this country.
-   * @see https://www.iso.org/iso-3166-country-codes.html
-   */
-  isoCode: CountryCode;
 }
 
 export interface Market {
