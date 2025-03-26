@@ -15,7 +15,18 @@ const shared = {
   ],
   category: 'Components',
   subCategory: 'Forms',
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'ChoiceList',
+      url: '/docs/api/admin-extensions/components/forms/choice-list',
+    },
+    {
+      type: 'component',
+      name: 'Checkbox',
+      url: '/docs/api/admin-extensions/components/forms/checkbox',
+    },
+  ],
 };
 
 export default shared;

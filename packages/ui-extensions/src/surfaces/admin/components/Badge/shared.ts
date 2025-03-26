@@ -15,7 +15,18 @@ const shared = {
   ],
   category: 'Components',
   subCategory: 'Titles and text',
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Banner',
+      url: '/docs/api/admin-extensions/components/feedback/banner',
+    },
+    {
+      type: 'component',
+      name: 'Text',
+      url: '/docs/api/admin-extensions/components/titles-and-text/text',
+    },
+  ],
 };
 
 export default shared;

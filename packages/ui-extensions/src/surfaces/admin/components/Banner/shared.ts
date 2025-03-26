@@ -15,19 +15,6 @@ const shared = {
   ],
   category: 'Components',
   subCategory: 'Feedback',
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'tone',
-      title: 'Tone',
-      sectionContent: `
-- Use \`info\` for general information or updates
-- Use \`success\` for successful operations or positive messages
-- Use \`warning\` for important notices that require attention
-- Use \`critical\` for errors or critical issues that need immediate attention
-      `,
-    },
-  ],
   related: [
     {
       type: 'component',

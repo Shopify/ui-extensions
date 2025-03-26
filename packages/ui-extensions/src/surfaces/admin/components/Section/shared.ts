@@ -15,7 +15,23 @@ const shared = {
   ],
   category: 'Components',
   subCategory: 'Structure',
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'Box',
+      url: '/docs/api/admin-extensions/components/structure/box',
+    },
+    {
+      type: 'component',
+      name: 'Stack',
+      url: '/docs/api/admin-extensions/components/structure/stack',
+    },
+    {
+      type: 'component',
+      name: 'Heading',
+      url: '/docs/api/admin-extensions/components/titles-and-text/heading',
+    },
+  ],
 };
 
 export default shared;

@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     // Codebase was originally written without some strict Shopify conventions
     'import/order': 'off',
+    'line-comment-position': 'off',
     '@typescript-eslint/naming-convention': 'off',
 
     // This rule is just bad

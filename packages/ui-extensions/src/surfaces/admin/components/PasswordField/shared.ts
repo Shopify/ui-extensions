@@ -15,7 +15,18 @@ const shared = {
   ],
   category: 'Components',
   subCategory: 'Forms',
-  related: [],
+  related: [
+    {
+      type: 'component',
+      name: 'TextField',
+      url: '/docs/api/admin-extensions/components/forms/textfield',
+    },
+    {
+      type: 'component',
+      name: 'EmailField',
+      url: '/docs/api/admin-extensions/components/forms/emailfield',
+    },
+  ],
 };
 
 export default shared;
