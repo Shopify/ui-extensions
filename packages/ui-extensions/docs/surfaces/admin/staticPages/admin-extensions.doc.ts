@@ -38,34 +38,10 @@ const data: LandingTemplateSchema = {
           type: 'app',
         },
         {
-          subtitle: 'App authentication',
-          name: "Make authenticated requests to your app's backend",
-          url: '#app-authentication',
-          type: 'tool',
-        },
-        {
-          subtitle: 'Using Forms',
-          name: 'Use the Form component to integrate with the contextual save bar of the resource page',
-          url: '#using-forms',
-          type: 'tool',
-        },
-        {
-          subtitle: 'Direct API access',
-          name: 'Access the Shopify GraphQL API directly',
-          url: '#direct-api-access',
-          type: 'tool',
-        },
-        {
-          subtitle: 'Custom protocols',
-          name: 'Easily construct URLs to navigate to common locations',
-          url: '#custom-protocols',
-          type: 'gear',
-        },
-        {
-          subtitle: 'UI reference',
-          name: 'Figma UI Kit',
-          url: 'https://www.figma.com/community/file/1265417558571498993',
-          type: 'figma',
+          subtitle: 'Network Features',
+          name: 'Learn about the network features available to admin extensions',
+          url: '/docs/api/admin-extensions/api/network-features',
+          type: 'globe',
         },
       ],
     },
@@ -88,22 +64,34 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
-      title: 'App Authentication',
+      title: 'Scaffolded with Preact',
       sectionContent:
-        "Admin UI extensions can also make authenticated calls to your app's backend. When you use `fetch()` to make a request to your app's configured auth domain or any of its subdomains, an `Authorization` header is automatically added with a Shopify [OpenID Connect ID Token](https://shopify.dev/docs/api/app-bridge-library/reference/id-token). There's no need to manually manage ID tokens.\n\nRelative URLs passed to `fetch()` are resolved against your app's `app_url`. This means if your app's backend is on the same domain as your `app_url`, you can make requests to it using `fetch('/path')`.\n\nIf you need to make requests to a different domain, you can use the [`auth.idToken()` method](/docs/api/admin-extensions/api/standard-api#standardapi-propertydetail-auth) to retrieve the ID token and manually add it to your request headers.",
-      anchorLink: 'app-authentication',
+        'UI Extensions are scaffolded with Preact by default. This means that you can use Preact patterns and principles within your extension.',
+      anchorLink: 'scaffolded-with-preact',
       codeblock: {
-        title: "Make requests to your app's backend",
+        title: 'Scaffolded with Preact',
         tabs: [
           {
-            code: './examples/authenticated-fetch.jsx',
-            language: 'tsx',
-            title: 'Get Product Data',
+            code: './examples/scaffolded-with-preact.jsx',
+            language: 'jsx',
+            title: 'JSX',
           },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
+      title: 'Handling events',
+      sectionContent:
+        'Handling events in admin extensions are the same as you would handle them in a web app. You can use the `addEventListener` method to listen for events on the components or use the `on[event]` prop to listen for events from the components.',
+      anchorLink: 'handling-events',
+      codeblock: {
+        title: 'Handling events',
+        tabs: [
           {
-            code: './examples/custom-authenticated-fetch.jsx',
-            language: 'tsx',
-            title: 'Get Data from a different domain',
+            code: './examples/handling-events.jsx',
+            language: 'jsx',
+            title: 'JSX',
           },
         ],
       },
@@ -131,42 +119,6 @@ const data: LandingTemplateSchema = {
       },
     },
     {
-      type: 'Generic',
-      title: 'Direct API access',
-      sectionContent:
-        "You can make Shopify Admin API requests directly from your extension using the [query API](/docs/api/admin-extensions/api/standard-api#standardapi-propertydetail-query) or the standard [web fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)!\n\nAny `fetch()` calls from your extension to Shopify's Admin GraphQL API are automatically authenticated by default. These calls are fast too, because Shopify handles requests directly.\n\nDirect API requests use [online access](https://shopify.dev/docs/apps/build/authentication-authorization/access-token-types/online-access-tokens) mode by default. If you want to use [offline access](https://shopify.dev/docs/apps/build/authentication-authorization/access-token-types/offline-access-tokens) mode, you can set the `direct_api_mode` property to `offline` in your [app TOML file](/docs/apps/tools/cli/configuration#admin).\n\nNote: Direct API can't be used to manage storefront access tokens.",
-      anchorLink: 'direct-api-access',
-      codeblock: {
-        title: 'Query Shopify data',
-        tabs: [
-          {
-            code: './examples/direct-api-fetch.jsx',
-            language: 'tsx',
-            title: 'Fetch Product data',
-          },
-          {
-            code: './examples/direct-api-query.jsx',
-            language: 'tsx',
-            title: 'Query Product data',
-          },
-        ],
-      },
-      sectionCard: [
-        {
-          name: "Direct API can't be used to manage storefront access tokens.",
-          subtitle: 'Note',
-          url: '/docs/api/admin-extensions#direct-api-access',
-          type: 'information',
-        },
-        {
-          name: 'Learn more about access scopes',
-          subtitle: 'Developer guide',
-          url: '/docs/api/usage/access-scopes',
-          type: 'information',
-        },
-      ],
-    },
-    {
       type: 'GenericAccordion',
       title: 'Custom Protocols',
       sectionContent:
@@ -189,21 +141,6 @@ const data: LandingTemplateSchema = {
                 title: 'Fetch data',
                 language: 'ts',
                 code: './examples/fetch-data.js',
-              },
-            ],
-          },
-        },
-        {
-          title: 'App Protocol',
-          description:
-            'Use the `app:` protocol to construct a URL for your app. Shopify will handle constructing the base URL for your app. This works for both embedded and non-embedded apps.',
-          codeblock: {
-            title: 'app:',
-            tabs: [
-              {
-                title: 'Link to Settings',
-                language: 'tsx',
-                code: './examples/link-to-settings.jsx',
               },
             ],
           },
