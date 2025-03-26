@@ -3,6 +3,7 @@ import {
   I18n,
   Storage,
   Language,
+  Country,
   AuthenticatedAccount,
   GraphQLError,
   StorefrontApiVersion,
@@ -161,6 +162,13 @@ export interface Localization {
    * extension (that is, the one matching your .default.json file).
    */
   extensionLanguage: StatefulRemoteSubscribable<Language>;
+
+  /**
+   * The country context of the buyer sees in the customer account.
+   * It will update if the buyer changes the country in the customer account
+   * If the country is unknown, then the value is undefined.
+   */
+  country: StatefulRemoteSubscribable<Country | undefined>;
 }
 
 /**
