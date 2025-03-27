@@ -9,7 +9,6 @@ import type {
   MaybeAllValuesShorthandProperty,
   ComponentChild,
   InteractionProps,
-  JSXInternal,
 } from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -74,8 +73,8 @@ export interface BoxProps {
 export type ClickableBaseProps = Required<
   Pick<
     ClickableProps$1,
-    | 'activateAction'
-    | 'activateTarget'
+    | 'command'
+    | 'commandFor'
     | 'disabled'
     | 'download'
     | 'href'
@@ -98,6 +97,15 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
+
+declare const tagName = 's-clickable';
+export interface ReactProps
+  extends Partial<ClickableProps>,
+    Pick<ClickableProps$1, 'id'> {
+  onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -158,10 +166,10 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 export interface PreactOverlayControlProps
-  extends Required<Pick<InteractionProps, 'activateTarget'>> {
-  activateAction: Extract<
-    InteractionProps['activateAction'],
-    'show' | 'hide' | 'toggle' | 'auto'
+  extends Required<Pick<InteractionProps, 'commandFor'>> {
+  command: Extract<
+    InteractionProps['command'],
+    '--show' | '--hide' | '--toggle' | '--auto'
   >;
 }
 
@@ -194,17 +202,17 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
 }
 
 declare const Clickable_base: (abstract new (...args: any) => {
-  activateTarget: PreactOverlayControlProps['activateTarget'];
-  activateAction: PreactOverlayControlProps['activateAction'];
-  '__#137714@#queueRender': (() => void) | undefined;
-  '__#137714@#shadowRoot': ShadowRoot | null;
-  '__#137714@#styles': string;
+  commandFor: PreactOverlayControlProps['commandFor'];
+  command: PreactOverlayControlProps['command'];
+  '__#132621@#queueRender': (() => void) | undefined;
+  '__#132621@#shadowRoot': ShadowRoot | null;
+  '__#132621@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#137714@#checkElementPrototype'(): void;
+  '__#132621@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -672,25 +680,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ClickableJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ClickableJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-clickable';
-export interface ClickableJSXProps
-  extends Partial<ClickableProps>,
-    Pick<ClickableProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-
-export {Clickable, type ClickableJSXProps};
+export {Clickable};

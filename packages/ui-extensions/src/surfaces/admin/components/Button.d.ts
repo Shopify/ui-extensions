@@ -9,7 +9,6 @@ import type {
   IconType,
   ComponentChild,
   InteractionProps,
-  JSXInternal,
 } from './shared.d.ts';
 
 export interface IconProps {
@@ -33,8 +32,8 @@ export type ButtonBaseProps = Required<
     ButtonOnlyProps,
     | 'accessibilityLabel'
     | 'disabled'
-    | 'activateAction'
-    | 'activateTarget'
+    | 'command'
+    | 'commandFor'
     | 'lang'
     | 'loading'
     | 'type'
@@ -57,6 +56,15 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
+
+declare const tagName = 's-button';
+export interface ReactProps
+  extends Partial<ButtonProps>,
+    Pick<ButtonProps$1, 'id'> {
+  onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -117,25 +125,25 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 export interface PreactOverlayControlProps
-  extends Required<Pick<InteractionProps, 'activateTarget'>> {
-  activateAction: Extract<
-    InteractionProps['activateAction'],
-    'show' | 'hide' | 'toggle' | 'auto'
+  extends Required<Pick<InteractionProps, 'commandFor'>> {
+  command: Extract<
+    InteractionProps['command'],
+    '--show' | '--hide' | '--toggle' | '--auto'
   >;
 }
 
 declare const Button_base: (abstract new (...args: any) => {
-  activateTarget: PreactOverlayControlProps['activateTarget'];
-  activateAction: PreactOverlayControlProps['activateAction'];
-  '__#103662@#queueRender': (() => void) | undefined;
-  '__#103662@#shadowRoot': ShadowRoot | null;
-  '__#103662@#styles': string;
+  commandFor: PreactOverlayControlProps['commandFor'];
+  command: PreactOverlayControlProps['command'];
+  '__#100321@#queueRender': (() => void) | undefined;
+  '__#100321@#shadowRoot': ShadowRoot | null;
+  '__#100321@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#103662@#checkElementPrototype'(): void;
+  '__#100321@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -607,25 +615,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ButtonJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ButtonJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-button';
-export interface ButtonJSXProps
-  extends Partial<ButtonProps>,
-    Pick<ButtonProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-
-export {Button, type ButtonJSXProps};
+export {Button};

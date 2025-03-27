@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {SpinnerProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {SpinnerProps$1, ComponentChild} from './shared.d.ts';
 
 export interface SpinnerProps
   extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
@@ -15,6 +15,11 @@ export interface SpinnerProps
    */
   size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
 }
+
+declare const tagName = 's-spinner';
+export interface ReactProps
+  extends Partial<SpinnerProps>,
+    Pick<SpinnerProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -87,21 +92,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & SpinnerJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & SpinnerJSXProps;
+      [tagName]: Omit<HTMLAttributes<HTMLElement>, 'size'> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-spinner';
-export interface SpinnerJSXProps
-  extends Partial<SpinnerProps>,
-    Pick<SpinnerProps$1, 'id'> {}
-
-export {Spinner, type SpinnerJSXProps};
+export {Spinner};

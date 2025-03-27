@@ -7,7 +7,6 @@ import type {
   StackProps$1,
   MaybeAllValuesShorthandProperty,
   ComponentChild,
-  JSXInternal,
 } from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -79,6 +78,11 @@ export interface StackProps extends BoxProps {
   columnGap: MakeResponsive<AlignedStackProps['columnGap']>;
   direction: MakeResponsive<AlignedStackProps['direction']>;
 }
+
+declare const tagName = 's-stack';
+export interface ReactProps
+  extends Partial<StackProps>,
+    Pick<StackProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -184,21 +188,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & StackJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & StackJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-stack';
-export interface StackJSXProps
-  extends Partial<StackProps>,
-    Pick<StackProps$1, 'id'> {}
-
-export {Stack, type StackJSXProps};
+export {Stack};

@@ -8,7 +8,6 @@ import type {
   ImageProps$1,
   MaybeAllValuesShorthandProperty,
   ComponentChild,
-  JSXInternal,
 } from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -101,6 +100,14 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
     })
   | null;
 
+declare const tagName = 's-image';
+export interface ReactProps
+  extends Partial<ImageProps>,
+    Pick<ImageProps$1, 'id'> {
+  onError?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onLoad?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -186,24 +193,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ImageJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ImageJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-image';
-export interface ImageJSXProps
-  extends Partial<ImageProps>,
-    Pick<ImageProps$1, 'id'> {
-  onError?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onLoad?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-
-export {Image, type ImageJSXProps};
+export {Image};

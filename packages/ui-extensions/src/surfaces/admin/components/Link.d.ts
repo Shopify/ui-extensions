@@ -8,14 +8,13 @@ import type {
   LinkProps$1,
   ComponentChild,
   InteractionProps,
-  JSXInternal,
 } from './shared.d.ts';
 
 export type RequiredLinkProps = Required<LinkProps$1>;
 export interface LinkProps {
   accessibilityLabel: RequiredLinkProps['accessibilityLabel'];
-  activateAction: RequiredLinkProps['activateAction'];
-  activateTarget: RequiredLinkProps['activateTarget'];
+  command: RequiredLinkProps['command'];
+  commandFor: RequiredLinkProps['commandFor'];
   download: RequiredLinkProps['download'];
   href: RequiredLinkProps['href'];
   lang: RequiredLinkProps['lang'];
@@ -31,6 +30,13 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
+
+declare const tagName = 's-link';
+export interface ReactProps
+  extends Partial<LinkProps>,
+    Pick<LinkProps$1, 'id' | 'lang'> {
+  onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -91,25 +97,25 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 export interface PreactOverlayControlProps
-  extends Required<Pick<InteractionProps, 'activateTarget'>> {
-  activateAction: Extract<
-    InteractionProps['activateAction'],
-    'show' | 'hide' | 'toggle' | 'auto'
+  extends Required<Pick<InteractionProps, 'commandFor'>> {
+  command: Extract<
+    InteractionProps['command'],
+    '--show' | '--hide' | '--toggle' | '--auto'
   >;
 }
 
 declare const Link_base: (abstract new (...args: any) => {
-  activateTarget: PreactOverlayControlProps['activateTarget'];
-  activateAction: PreactOverlayControlProps['activateAction'];
-  '__#197418@#queueRender': (() => void) | undefined;
-  '__#197418@#shadowRoot': ShadowRoot | null;
-  '__#197418@#styles': string;
+  commandFor: PreactOverlayControlProps['commandFor'];
+  command: PreactOverlayControlProps['command'];
+  '__#189820@#queueRender': (() => void) | undefined;
+  '__#189820@#shadowRoot': ShadowRoot | null;
+  '__#189820@#styles': string;
   attributeChangedCallback(name: string): void;
   connectedCallback(): void;
   disconnectedCallback(): void;
   adoptedCallback(): void;
   queueRender(): void;
-  '__#197418@#checkElementPrototype'(): void;
+  '__#189820@#checkElementPrototype'(): void;
   click({sourceEvent}?: ClickOptions): void;
   accessKey: string;
   readonly accessKeyLabel: string;
@@ -575,23 +581,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & LinkJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & LinkJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-link';
-export interface LinkJSXProps
-  extends Partial<LinkProps>,
-    Pick<LinkProps$1, 'id' | 'lang'> {
-  onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-
-export {Link, type LinkJSXProps};
+export {Link};

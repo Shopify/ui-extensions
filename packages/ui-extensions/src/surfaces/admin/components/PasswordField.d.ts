@@ -176,6 +176,12 @@ export type PasswordFieldProps = PreactFieldProps<
     >
   >;
 
+declare const tagName = 's-password-field';
+export interface ReactProps
+  extends Partial<PasswordFieldProps>,
+    Pick<PasswordFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName> {}
+
 declare class PasswordField
   extends PreactFieldElement<PasswordFieldProps['autocomplete']>
   implements PasswordFieldProps
@@ -192,16 +198,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> &
-        PasswordFieldJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-password-field';
-export interface PasswordFieldJSXProps
-  extends Partial<PasswordFieldProps>,
-    Pick<PasswordFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName> {}
-
-export {PasswordField, type PasswordFieldJSXProps};
+export {PasswordField};

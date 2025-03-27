@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {HeadingProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {HeadingProps$1, ComponentChild} from './shared.d.ts';
 
 export type RequiredHeadingProps = Required<HeadingProps$1>;
 export interface HeadingProps {
@@ -12,6 +12,11 @@ export interface HeadingProps {
   accessibilityVisibility: RequiredHeadingProps['accessibilityVisibility'];
   lineClamp: RequiredHeadingProps['lineClamp'];
 }
+
+declare const tagName = 's-heading';
+export interface ReactProps
+  extends Partial<HeadingProps>,
+    Pick<HeadingProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -85,21 +90,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & HeadingJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & HeadingJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-heading';
-export interface HeadingJSXProps
-  extends Partial<HeadingProps>,
-    Pick<HeadingProps$1, 'id'> {}
-
-export {Heading, type HeadingJSXProps};
+export {Heading};

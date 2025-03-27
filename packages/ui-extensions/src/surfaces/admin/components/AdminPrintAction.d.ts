@@ -3,17 +3,13 @@
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
-import type {
-  AdminPrintActionProps$1,
-  JSXInternal,
-  ComponentChild,
-} from './shared.d.ts';
+import type {AdminPrintActionProps$1, ComponentChild} from './shared.d.ts';
 
 export interface AdminPrintActionProps
   extends Pick<AdminPrintActionProps$1, 'src'> {}
 
 declare const tagName = 's-admin-print-action';
-export interface AdminPrintActionJSXProps
+export interface ReactProps
   extends Partial<AdminPrintActionProps>,
     Pick<AdminPrintActionProps$1, 'id'> {}
 
@@ -90,18 +86,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> &
-        AdminPrintActionJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> &
-        AdminPrintActionJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-export {AdminPrintAction, type AdminPrintActionJSXProps};
+export {AdminPrintAction};

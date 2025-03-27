@@ -4,11 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {
-  TableHeaderProps$1,
-  ComponentChild,
-  JSXInternal,
-} from './shared.d.ts';
+import type {ComponentChild, TableHeaderProps$1} from './shared.d.ts';
 
 export interface TableProps
   extends Required<
@@ -18,6 +14,13 @@ export interface TableProps
     >
   > {
   variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
+}
+
+declare const tagName = 's-table';
+export interface ReactProps
+  extends Partial<TableProps>,
+    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
+  filters?: ComponentChild;
 }
 
 export interface TableHeaderProps {
@@ -133,21 +136,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TableJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TableJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-table';
-export interface TableJSXProps
-  extends Partial<TableProps>,
-    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {}
-
-export {Table, type TableJSXProps};
+export {Table};

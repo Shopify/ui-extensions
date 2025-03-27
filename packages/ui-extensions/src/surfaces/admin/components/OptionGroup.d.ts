@@ -4,14 +4,13 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {
-  OptionGroupProps$1,
-  ComponentChild,
-  JSXInternal,
-} from './shared.d.ts';
+import type {OptionGroupProps$1, ComponentChild} from './shared.d.ts';
 
 export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
+
+declare const tagName = 's-option-group';
+export interface ReactProps extends Partial<OptionGroupProps> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -87,19 +86,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & OptionGroupJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & OptionGroupJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-option-group';
-export interface OptionGroupJSXProps extends Partial<OptionGroupProps> {}
-
-export {OptionGroup, type OptionGroupJSXProps};
+export {OptionGroup};

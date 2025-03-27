@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {SelectProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {SelectProps$1, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -112,6 +112,14 @@ export type SelectProps = PreactInputProps &
     >
   >;
 
+declare const tagName = 's-select';
+export interface ReactProps extends Partial<SelectProps> {
+  onChange?: (event: CallbackEvent<typeof tagName>) => void;
+  onInput?: (event: CallbackEvent<typeof tagName>) => void;
+  onBlur?: (event: CallbackEvent<typeof tagName>) => void;
+  onFocus?: (event: CallbackEvent<typeof tagName>) => void;
+}
+
 declare const usedFirstOptionSymbol: unique symbol;
 declare const hasInitialValueSymbol: unique symbol;
 
@@ -145,24 +153,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & SelectJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & SelectJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-select';
-export interface SelectJSXProps extends Partial<SelectProps> {
-  onChange?: (event: CallbackEvent<typeof tagName>) => void;
-  onInput?: (event: CallbackEvent<typeof tagName>) => void;
-  onBlur?: (event: CallbackEvent<typeof tagName>) => void;
-  onFocus?: (event: CallbackEvent<typeof tagName>) => void;
-}
-
-export {Select, type SelectJSXProps};
+export {Select};

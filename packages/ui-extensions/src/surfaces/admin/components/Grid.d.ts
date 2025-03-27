@@ -7,7 +7,6 @@ import type {
   GridProps$1,
   MaybeAllValuesShorthandProperty,
   ComponentChild,
-  JSXInternal,
 } from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -70,7 +69,7 @@ export interface BoxProps {
 }
 
 export type RequiredAlignedProps = Required<GridProps$1>;
-export interface GridProps extends Required<BoxProps> {
+export interface GridProps extends BoxProps {
   gridTemplateColumns: RequiredAlignedProps['gridTemplateColumns'];
   gridTemplateRows: RequiredAlignedProps['gridTemplateRows'];
   alignItems: RequiredAlignedProps['alignItems'];
@@ -83,6 +82,11 @@ export interface GridProps extends Required<BoxProps> {
   columnGap: MakeResponsive<RequiredAlignedProps['columnGap']>;
   gap: MakeResponsive<RequiredAlignedProps['gap']>;
 }
+
+declare const tagName = 's-grid';
+export interface ReactProps
+  extends Partial<GridProps>,
+    Pick<GridProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -192,21 +196,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & GridJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & GridJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-grid';
-export interface GridJSXProps
-  extends Partial<GridProps>,
-    Pick<GridProps$1, 'id'> {}
-
-export {Grid, type GridJSXProps};
+export {Grid};

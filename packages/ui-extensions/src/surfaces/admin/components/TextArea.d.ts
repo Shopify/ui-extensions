@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {TextAreaProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {TextAreaProps$1, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -159,6 +159,12 @@ export type TextAreaProps = PreactFieldProps<
 > &
   Required<Pick<TextAreaProps$1, 'maxLength' | 'minLength' | 'rows'>>;
 
+declare const tagName = 's-text-area';
+export interface ReactProps
+  extends Partial<TextAreaProps>,
+    Pick<TextAreaProps$1, 'id'>,
+    FieldReactProps<typeof tagName> {}
+
 declare class TextArea
   extends PreactFieldElement<TextAreaProps['autocomplete']>
   implements TextAreaProps
@@ -176,22 +182,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TextAreaJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TextAreaJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-text-area';
-export interface TextAreaJSXProps
-  extends Partial<TextAreaProps>,
-    Pick<TextAreaProps$1, 'id'>,
-    FieldReactProps<typeof tagName> {}
-
-export {TextArea, type TextAreaJSXProps};
+export {TextArea};

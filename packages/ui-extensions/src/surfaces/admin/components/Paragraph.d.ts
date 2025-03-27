@@ -4,11 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {
-  ParagraphProps$1,
-  ComponentChild,
-  JSXInternal,
-} from './shared.d.ts';
+import type {ParagraphProps$1, ComponentChild} from './shared.d.ts';
 
 export interface ParagraphProps
   extends Required<
@@ -20,6 +16,11 @@ export interface ParagraphProps
   color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
   lineClamp: Extract<ParagraphProps$1['lineClamp'], number>;
 }
+
+declare const tagName = 's-paragraph';
+export interface ReactProps
+  extends Partial<ParagraphProps>,
+    Pick<ParagraphProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -100,21 +101,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ParagraphJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ParagraphJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-paragraph';
-export interface ParagraphJSXProps
-  extends Partial<ParagraphProps>,
-    Pick<ParagraphProps$1, 'id'> {}
-
-export {Paragraph, type ParagraphJSXProps};
+export {Paragraph};

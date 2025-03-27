@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {URLFieldProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {URLFieldProps$1, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -159,10 +159,17 @@ export type URLFieldProps = PreactFieldProps<
 > &
   Required<Pick<URLFieldProps$1, 'maxLength' | 'minLength'>>;
 
+declare const tagName = 's-url-field';
+export interface ReactProps
+  extends Partial<Omit<URLFieldProps, 'accessory'>>,
+    Pick<URLFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName> {}
+
 declare class URLField
   extends PreactFieldElement<URLFieldProps['autocomplete']>
   implements URLFieldProps
 {
+  accessor autocomplete: URLFieldProps['autocomplete'];
   accessor maxLength: URLFieldProps['maxLength'];
   accessor minLength: URLFieldProps['minLength'];
   constructor();
@@ -175,22 +182,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & URLFieldJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & URLFieldJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-url-field';
-export interface URLFieldJSXProps
-  extends Partial<Omit<URLFieldProps, 'accessory'>>,
-    Pick<URLFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName> {}
-
-export {URLField, type URLFieldJSXProps};
+export {URLField};

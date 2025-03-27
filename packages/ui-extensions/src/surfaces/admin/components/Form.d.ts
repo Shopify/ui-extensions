@@ -2,37 +2,19 @@
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/member-ordering */
 
-import type {
-  ChoiceListProps$1,
-  TextFieldProps,
-  ComponentChild,
-} from './shared.d.ts';
+import type {ComponentChild} from './shared.d.ts';
 
-export interface ChoiceListProps
-  extends Required<
-    Pick<
-      ChoiceListProps$1,
-      'multiple' | 'disabled' | 'error' | 'details' | 'values' | 'name'
-    >
-  > {}
-
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  target: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
-
-declare const tagName = 's-choice-list';
-export interface ReactProps
-  extends Partial<ChoiceListProps>,
-    Pick<ChoiceListProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+export interface ReactProps extends Partial<FormProps> {
+  id?: string;
+  /**
+   * A callback that is run when the form is submitted.
+   */
+  onSubmit?: ((event: ExtendableEvent) => void) | null;
+  /**
+   * A callback that is run when the form is reset.
+   */
+  onReset?: ((event: ExtendableEvent) => void) | null;
 }
 
 export type Styles = string;
@@ -93,40 +75,16 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare const internals: unique symbol;
-export type PreactInputProps = Required<
-  Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
->;
-declare class PreactInputElement
-  extends PreactCustomElement
-  implements PreactInputProps
-{
-  static formAssociated: boolean;
-  /** @private */
-  [internals]: ElementInternals;
-  protected getDefaultValue(): string;
-  accessor onchange: CallbackEventListener<'input'>;
-  accessor oninput: CallbackEventListener<'input'>;
-  accessor disabled: PreactInputProps['disabled'];
-  accessor id: PreactInputProps['id'];
-  accessor name: PreactInputProps['name'];
-  get value(): PreactInputProps['value'];
-  set value(value: PreactInputProps['value']);
-  constructor(renderImpl: RenderImpl);
-}
-
-declare class ChoiceList extends PreactInputElement implements ChoiceListProps {
-  accessor error: ChoiceListProps['error'];
-  accessor details: ChoiceListProps['details'];
-  accessor multiple: ChoiceListProps['multiple'];
-  get values(): ChoiceListProps['values'];
-  set values(values: ChoiceListProps['values']);
-  formResetCallback(): void;
+declare const tagName = 's-form';
+export interface FormProps {}
+declare class Form extends PreactCustomElement implements FormProps {
   constructor();
+  accessor onsubmit: ((event: ExtendableEvent) => void) | null;
+  accessor onreset: ((event: ExtendableEvent) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ChoiceList;
+    [tagName]: Form;
   }
 }
 declare module 'preact' {
@@ -137,4 +95,4 @@ declare module 'preact' {
   }
 }
 
-export {ChoiceList};
+export {Form};

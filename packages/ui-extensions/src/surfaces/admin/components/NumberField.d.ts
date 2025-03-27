@@ -5,7 +5,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 
 import type {NumberFieldProps$1, ComponentChild} from './shared.d.ts';
-import * as preact_compat from 'preact/compat';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -165,6 +164,12 @@ export type NumberFieldProps = PreactFieldProps<
     >
   >;
 
+declare const tagName = 's-number-field';
+export interface ReactProps
+  extends Partial<NumberFieldProps>,
+    Pick<NumberFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName> {}
+
 declare class NumberField
   extends PreactFieldElement<NumberFieldProps['autocomplete']>
   implements NumberFieldProps
@@ -187,23 +192,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & NumberFieldJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: preact_compat.JSXInternal.HTMLAttributes<HTMLElement> &
-        NumberFieldJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-number-field';
-export interface NumberFieldJSXProps
-  extends Partial<NumberFieldProps>,
-    Pick<NumberFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName> {}
-
-export {NumberField, type NumberFieldJSXProps};
+export {NumberField};

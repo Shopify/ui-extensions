@@ -3,9 +3,14 @@
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
-import type {TableRowProps$1, JSXInternal, ComponentChild} from './shared.d.ts';
+import type {TableRowProps$1, ComponentChild} from './shared.d.ts';
 
 export interface TableRowProps extends TableRowProps$1 {}
+
+declare const tagName = 's-table-row';
+export interface ReactProps
+  extends Partial<TableRowProps>,
+    Pick<TableRowProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -76,21 +81,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TableRowJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TableRowJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-table-row';
-export interface TableRowJSXProps
-  extends Partial<TableRowProps>,
-    Pick<TableRowProps$1, 'id'> {}
-
-export {TableRow, type TableRowJSXProps};
+export {TableRow};

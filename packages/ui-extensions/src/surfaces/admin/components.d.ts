@@ -1,9 +1,9 @@
 /** VERSION: 0.45.0 **/
-
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
 type ComponentChildren = any;
 type SizeKeyword =
   | 'small-500'
@@ -55,7 +55,6 @@ declare const privateIconArray: readonly [
   'alert-octagon-filled',
   'alert-octagon',
   'alert-triangle',
-  'alert-triangle-filled',
   'app-extension',
   'apps',
   'archive',
@@ -277,7 +276,6 @@ declare const privateIconArray: readonly [
   'incoming',
   'incomplete',
   'info',
-  'info-filled',
   'inventory-updated',
   'inventory',
   'iq',
@@ -474,7 +472,6 @@ declare const privateIconArray: readonly [
   'sound',
   'sports',
   'star-filled',
-  'star-half',
   'star-list',
   'star',
   'status-active',
@@ -548,7 +545,6 @@ declare const privateIconArray: readonly [
   'work-list',
   'work',
   'wrench',
-  'x-circle-filled',
   'x-circle',
   'x',
 ];
@@ -1483,11 +1479,18 @@ interface BaseCheckableProps extends BaseSelectableProps, InteractionProps {
    */
   onInput?: (checked: boolean) => void;
 }
-interface CheckboxProps$1
-  extends GlobalProps,
-    BaseCheckableProps,
-    FieldErrorProps,
-    FieldDetailsProps {
+interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps {
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string;
+  /**
+   * Additional text to provide context or guidance for the input.
+   * This text is displayed along with the input and its label
+   * to offer more information or instructions to the user.
+   */
+  details?: string;
   /**
    * Whether to display the checkbox in an indeterminate state (neither checked or unchecked).
    *
@@ -2372,46 +2375,6 @@ interface OptionGroupProps$1 extends GlobalProps {
   children?: ComponentChildren;
 }
 interface OrderedListProps$1 extends GlobalProps {}
-interface PageProps$1 extends GlobalProps {
-  /**
-   * The content of the Page.
-   */
-  children?: ComponentChildren;
-  /**
-   * The main page heading
-   */
-  heading?: string;
-  /**
-   * The text to be used as subtitle.
-   */
-  subheading?: string;
-  /**
-   * The primary action to perform, provided as a button or link type element.
-   * When a `Button` is added to the `primaryAction` it's variant is set to `primary`
-   */
-  primaryAction?: ComponentChildren;
-  /**
-   * The breadcrumb actions to perform, provided as link elements.
-   */
-  breadcrumbActions?: ComponentChildren;
-  /**
-   * Secondary actions. These are `Button`s that will be contextually the 'secondary' variant.
-   */
-  secondaryActions?: ComponentChildren;
-  /**
-   * The aside element is section of a page that contains content that is tangentially related to the content around the aside element, and which could be considered separate from that content.
-   * Such sections are often represented as sidebars in printed typography.
-   * @implementation surfaces built ontop of the web platform should implement this using the <aside> element https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
-   */
-  aside?: ComponentChildren;
-  /**
-   * The inline size of the page
-   * @default base
-   * base corresponds to a set default inline size
-   * `large` expands the component to match the width of the page header
-   */
-  inlineSize?: SizeKeyword;
-}
 interface ParagraphProps$1
   extends GlobalProps,
     BaseTypographyProps,
@@ -3453,11 +3416,6 @@ export interface BadgeProps {
   >;
 }
 
-declare const tagName$K = 's-badge';
-export interface ReactProps$K
-  extends Partial<BadgeProps>,
-    Pick<BadgeProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -3525,23 +3483,28 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$K]: Badge;
+    [tagName$G]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$K]: HTMLAttributes<HTMLElement> & ReactProps$K;
+      [tagName$G]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
     }
   }
 }
+
+declare const tagName$G = 's-badge';
+export interface BadgeJSXProps
+  extends Partial<BadgeProps>,
+    Pick<BadgeProps$1, 'id'> {}
 
 export type RequiredBannerProps = Required<BannerProps$1>;
 export interface BannerProps
   extends Pick<RequiredBannerProps, 'heading' | 'dismissible' | 'hidden'> {
   tone: Extract<
     RequiredBannerProps['tone'],
-    'auto' | 'critical' | 'warning' | 'success' | 'info'
+    'critical' | 'warning' | 'success' | 'info'
   >;
 }
 
@@ -3560,35 +3523,35 @@ export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   onBlur?: ((event: CallbackEvent<T>) => void) | null;
 }
 
-declare const tagName$J = 's-banner';
-export interface ReactProps$J
-  extends Partial<BannerProps>,
-    Pick<BannerProps$1, 'id'> {
-  secondaryActions?: ComponentChild;
-  onDismiss?: ((event: CallbackEvent<typeof tagName$J>) => void) | null;
-  onAfterHide?: ((event: CallbackEvent<typeof tagName$J>) => void) | null;
-}
-
 declare class Banner extends PreactCustomElement implements BannerProps {
   accessor heading: BannerProps['heading'];
   accessor tone: BannerProps['tone'];
   accessor hidden: BannerProps['hidden'];
   accessor dismissible: BannerProps['dismissible'];
-  accessor ondismiss: CallbackEventListener<typeof tagName$J> | null;
-  accessor onafterhide: CallbackEventListener<typeof tagName$J> | null;
+  accessor ondismiss: CallbackEventListener<typeof tagName$F> | null;
+  accessor onafterhide: CallbackEventListener<typeof tagName$F> | null;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$J]: Banner;
+    [tagName$F]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$J]: HTMLAttributes<HTMLElement> & ReactProps$J;
+      [tagName$F]: HTMLAttributes<HTMLElement> & BannerJSXProps;
     }
   }
+}
+
+declare const tagName$F = 's-banner';
+export interface BannerJSXProps
+  extends Partial<BannerProps>,
+    Pick<BannerProps$1, 'id'> {
+  secondaryActions?: ComponentChild;
+  onDismiss?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
 }
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -3650,11 +3613,6 @@ export interface BoxProps {
   overflow: AlignedBox['overflow'];
 }
 
-declare const tagName$I = 's-box';
-export interface ReactProps$I
-  extends Partial<BoxProps>,
-    Pick<BoxProps$1, 'id'> {}
-
 declare class BoxElement extends PreactCustomElement implements BoxProps {
   constructor(renderImpl: RenderImpl);
   accessor accessibilityRole: BoxProps['accessibilityRole'];
@@ -3688,16 +3646,21 @@ declare class Box extends BoxElement implements BoxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$I]: Box;
+    [tagName$E]: Box;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$I]: HTMLAttributes<HTMLElement> & ReactProps$I;
+      [tagName$E]: HTMLAttributes<HTMLElement> & BoxJSXProps;
     }
   }
 }
+
+declare const tagName$E = 's-box';
+export interface BoxJSXProps
+  extends Partial<BoxProps>,
+    Pick<BoxProps$1, 'id'> {}
 
 export type ButtonOnlyProps = Extract<
   ButtonProps$1,
@@ -3726,15 +3689,6 @@ export interface ButtonProps extends ButtonBaseProps {
   icon: IconProps['type'];
 }
 
-declare const tagName$H = 's-button';
-export interface ReactProps$H
-  extends Partial<ButtonProps>,
-    Pick<ButtonProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$H>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$H>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$H>) => void) | null;
-}
-
 export interface PreactOverlayControlProps
   extends Required<Pick<InteractionProps, 'commandFor'>> {
   command: Extract<
@@ -3743,10 +3697,465 @@ export interface PreactOverlayControlProps
   >;
 }
 
-declare const Button_base: (abstract new (
-  args_0: RenderImpl,
-) => PreactCustomElement & PreactOverlayControlProps) &
-  Pick<typeof PreactCustomElement, 'observedAttributes' | 'prototype'>;
+declare const Button_base: (abstract new (...args: any) => {
+  commandFor: PreactOverlayControlProps['commandFor'];
+  command: PreactOverlayControlProps['command'];
+  '__#49710@#queueRender': (() => void) | undefined;
+  '__#49710@#shadowRoot': ShadowRoot | null;
+  '__#49710@#styles': string;
+  attributeChangedCallback(name: string): void;
+  connectedCallback(): void;
+  disconnectedCallback(): void;
+  adoptedCallback(): void;
+  queueRender(): void;
+  '__#49710@#checkElementPrototype'(): void;
+  click({sourceEvent}?: ClickOptions): void;
+  accessKey: string;
+  readonly accessKeyLabel: string;
+  autocapitalize: string;
+  dir: string;
+  draggable: boolean;
+  hidden: boolean;
+  inert: boolean;
+  innerText: string;
+  lang: string;
+  readonly offsetHeight: number;
+  readonly offsetLeft: number;
+  readonly offsetParent: Element | null;
+  readonly offsetTop: number;
+  readonly offsetWidth: number;
+  outerText: string;
+  popover: string | null;
+  spellcheck: boolean;
+  title: string;
+  translate: boolean;
+  writingSuggestions: string;
+  attachInternals(): ElementInternals;
+  hidePopover(): void;
+  showPopover(): void;
+  togglePopover(force?: boolean): boolean;
+  addEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  removeEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  readonly attributes: NamedNodeMap;
+  readonly classList: DOMTokenList;
+  className: string;
+  readonly clientHeight: number;
+  readonly clientLeft: number;
+  readonly clientTop: number;
+  readonly clientWidth: number;
+  readonly currentCSSZoom: number;
+  id: string;
+  innerHTML: string;
+  readonly localName: string;
+  readonly namespaceURI: string | null;
+  onfullscreenchange: ((this: Element, ev: Event) => any) | null;
+  onfullscreenerror: ((this: Element, ev: Event) => any) | null;
+  outerHTML: string;
+  readonly ownerDocument: Document;
+  readonly part: DOMTokenList;
+  readonly prefix: string | null;
+  readonly scrollHeight: number;
+  scrollLeft: number;
+  scrollTop: number;
+  readonly scrollWidth: number;
+  readonly shadowRoot: ShadowRoot | null;
+  slot: string;
+  readonly tagName: string;
+  attachShadow(init: ShadowRootInit): ShadowRoot;
+  checkVisibility(options?: CheckVisibilityOptions): boolean;
+  closest<K extends keyof HTMLElementTagNameMap>(
+    selector: K,
+  ): HTMLElementTagNameMap[K] | null;
+  closest<K extends keyof SVGElementTagNameMap>(
+    selector: K,
+  ): SVGElementTagNameMap[K] | null;
+  closest<K extends keyof MathMLElementTagNameMap>(
+    selector: K,
+  ): MathMLElementTagNameMap[K] | null;
+  closest<E extends Element = Element>(selectors: string): E | null;
+  computedStyleMap(): StylePropertyMapReadOnly;
+  getAttribute(qualifiedName: string): string | null;
+  getAttributeNS(namespace: string | null, localName: string): string | null;
+  getAttributeNames(): string[];
+  getAttributeNode(qualifiedName: string): Attr | null;
+  getAttributeNodeNS(namespace: string | null, localName: string): Attr | null;
+  getBoundingClientRect(): DOMRect;
+  getClientRects(): DOMRectList;
+  getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
+  getElementsByTagName<K extends keyof HTMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof SVGElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<SVGElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof MathMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<MathMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;
+  getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1999/xhtml',
+    localName: string,
+  ): HTMLCollectionOf<HTMLElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/2000/svg',
+    localName: string,
+  ): HTMLCollectionOf<SVGElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1998/Math/MathML',
+    localName: string,
+  ): HTMLCollectionOf<MathMLElement>;
+  getElementsByTagNameNS(
+    namespace: string | null,
+    localName: string,
+  ): HTMLCollectionOf<Element>;
+  getHTML(options?: GetHTMLOptions): string;
+  hasAttribute(qualifiedName: string): boolean;
+  hasAttributeNS(namespace: string | null, localName: string): boolean;
+  hasAttributes(): boolean;
+  hasPointerCapture(pointerId: number): boolean;
+  insertAdjacentElement(
+    where: InsertPosition,
+    element: Element,
+  ): Element | null;
+  insertAdjacentHTML(position: InsertPosition, string: string): void;
+  insertAdjacentText(where: InsertPosition, data: string): void;
+  matches(selectors: string): boolean;
+  releasePointerCapture(pointerId: number): void;
+  removeAttribute(qualifiedName: string): void;
+  removeAttributeNS(namespace: string | null, localName: string): void;
+  removeAttributeNode(attr: Attr): Attr;
+  requestFullscreen(options?: FullscreenOptions): Promise<void>;
+  requestPointerLock(options?: PointerLockOptions): Promise<void>;
+  scroll(options?: ScrollToOptions): void;
+  scroll(x: number, y: number): void;
+  scrollBy(options?: ScrollToOptions): void;
+  scrollBy(x: number, y: number): void;
+  scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void;
+  scrollTo(options?: ScrollToOptions): void;
+  scrollTo(x: number, y: number): void;
+  setAttribute(qualifiedName: string, value: string): void;
+  setAttributeNS(
+    namespace: string | null,
+    qualifiedName: string,
+    value: string,
+  ): void;
+  setAttributeNode(attr: Attr): Attr | null;
+  setAttributeNodeNS(attr: Attr): Attr | null;
+  setHTMLUnsafe(html: string): void;
+  setPointerCapture(pointerId: number): void;
+  toggleAttribute(qualifiedName: string, force?: boolean): boolean;
+  webkitMatchesSelector(selectors: string): boolean;
+  readonly baseURI: string;
+  readonly childNodes: NodeListOf<ChildNode>;
+  readonly firstChild: ChildNode | null;
+  readonly isConnected: boolean;
+  readonly lastChild: ChildNode | null;
+  readonly nextSibling: ChildNode | null;
+  readonly nodeName: string;
+  readonly nodeType: number;
+  nodeValue: string | null;
+  readonly parentElement: HTMLElement | null;
+  readonly parentNode: ParentNode | null;
+  readonly previousSibling: ChildNode | null;
+  textContent: string | null;
+  appendChild<T extends Node>(node: T): T;
+  cloneNode(deep?: boolean): Node;
+  compareDocumentPosition(other: Node): number;
+  contains(other: Node | null): boolean;
+  getRootNode(options?: GetRootNodeOptions): Node;
+  hasChildNodes(): boolean;
+  insertBefore<T extends Node>(node: T, child: Node | null): T;
+  isDefaultNamespace(namespace: string | null): boolean;
+  isEqualNode(otherNode: Node | null): boolean;
+  isSameNode(otherNode: Node | null): boolean;
+  lookupNamespaceURI(prefix: string | null): string | null;
+  lookupPrefix(namespace: string | null): string | null;
+  normalize(): void;
+  removeChild<T extends Node>(child: T): T;
+  replaceChild<T extends Node>(node: Node, child: T): T;
+  readonly ELEMENT_NODE: 1;
+  readonly ATTRIBUTE_NODE: 2;
+  readonly TEXT_NODE: 3;
+  readonly CDATA_SECTION_NODE: 4;
+  readonly ENTITY_REFERENCE_NODE: 5;
+  readonly ENTITY_NODE: 6;
+  readonly PROCESSING_INSTRUCTION_NODE: 7;
+  readonly COMMENT_NODE: 8;
+  readonly DOCUMENT_NODE: 9;
+  readonly DOCUMENT_TYPE_NODE: 10;
+  readonly DOCUMENT_FRAGMENT_NODE: 11;
+  readonly NOTATION_NODE: 12;
+  readonly DOCUMENT_POSITION_DISCONNECTED: 1;
+  readonly DOCUMENT_POSITION_PRECEDING: 2;
+  readonly DOCUMENT_POSITION_FOLLOWING: 4;
+  readonly DOCUMENT_POSITION_CONTAINS: 8;
+  readonly DOCUMENT_POSITION_CONTAINED_BY: 16;
+  readonly DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32;
+  dispatchEvent(event: Event): boolean;
+  dispatchEvent(event: Event): boolean;
+  ariaAtomic: string | null;
+  ariaAutoComplete: string | null;
+  ariaBrailleLabel: string | null;
+  ariaBrailleRoleDescription: string | null;
+  ariaBusy: string | null;
+  ariaChecked: string | null;
+  ariaColCount: string | null;
+  ariaColIndex: string | null;
+  ariaColIndexText: string | null;
+  ariaColSpan: string | null;
+  ariaCurrent: string | null;
+  ariaDescription: string | null;
+  ariaDisabled: string | null;
+  ariaExpanded: string | null;
+  ariaHasPopup: string | null;
+  ariaHidden: string | null;
+  ariaInvalid: string | null;
+  ariaKeyShortcuts: string | null;
+  ariaLabel: string | null;
+  ariaLevel: string | null;
+  ariaLive: string | null;
+  ariaModal: string | null;
+  ariaMultiLine: string | null;
+  ariaMultiSelectable: string | null;
+  ariaOrientation: string | null;
+  ariaPlaceholder: string | null;
+  ariaPosInSet: string | null;
+  ariaPressed: string | null;
+  ariaReadOnly: string | null;
+  ariaRequired: string | null;
+  ariaRoleDescription: string | null;
+  ariaRowCount: string | null;
+  ariaRowIndex: string | null;
+  ariaRowIndexText: string | null;
+  ariaRowSpan: string | null;
+  ariaSelected: string | null;
+  ariaSetSize: string | null;
+  ariaSort: string | null;
+  ariaValueMax: string | null;
+  ariaValueMin: string | null;
+  ariaValueNow: string | null;
+  ariaValueText: string | null;
+  role: string | null;
+  animate(
+    keyframes: Keyframe[] | PropertyIndexedKeyframes | null,
+    options?: number | KeyframeAnimationOptions,
+  ): Animation;
+  getAnimations(options?: GetAnimationsOptions): Animation[];
+  after(...nodes: (Node | string)[]): void;
+  before(...nodes: (Node | string)[]): void;
+  remove(): void;
+  replaceWith(...nodes: (Node | string)[]): void;
+  readonly nextElementSibling: Element | null;
+  readonly previousElementSibling: Element | null;
+  readonly childElementCount: number;
+  readonly children: HTMLCollection;
+  readonly firstElementChild: Element | null;
+  readonly lastElementChild: Element | null;
+  append(...nodes: (Node | string)[]): void;
+  prepend(...nodes: (Node | string)[]): void;
+  querySelector<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): HTMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): SVGElementTagNameMap[K] | null;
+  querySelector<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): MathMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): HTMLElementDeprecatedTagNameMap[K] | null;
+  querySelector<E extends Element = Element>(selectors: string): E | null;
+  querySelectorAll<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<SVGElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<MathMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>;
+  querySelectorAll<E extends Element = Element>(
+    selectors: string,
+  ): NodeListOf<E>;
+  replaceChildren(...nodes: (Node | string)[]): void;
+  readonly assignedSlot: HTMLSlotElement | null;
+  readonly attributeStyleMap: StylePropertyMap;
+  readonly style: CSSStyleDeclaration;
+  contentEditable: string;
+  enterKeyHint: string;
+  inputMode: string;
+  readonly isContentEditable: boolean;
+  onabort: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onanimationcancel:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationend:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationiteration:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationstart:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onauxclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onbeforeinput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
+  onbeforetoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onblur: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  oncancel: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplaythrough: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextlost: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextmenu: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  oncontextrestored: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncopy: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  oncuechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncut: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  ondblclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  ondrag: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragend: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragenter: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragleave: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragover: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragstart: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondrop: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondurationchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onemptied: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onended: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onerror: OnErrorEventHandler;
+  onfocus: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  onformdata: ((this: GlobalEventHandlers, ev: FormDataEvent) => any) | null;
+  ongotpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  oninput: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oninvalid: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onkeydown: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeypress: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeyup: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onload: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadeddata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadedmetadata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onlostpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onmousedown: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseenter: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseleave: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmousemove: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseout: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseover: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseup: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onpaste: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  onpause: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplaying: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onpointercancel:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onpointerdown: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerenter: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerleave: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointermove: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerout: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerover: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerup: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onprogress: ((this: GlobalEventHandlers, ev: ProgressEvent) => any) | null;
+  onratechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onreset: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onresize: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onscroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onscrollend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsecuritypolicyviolation:
+    | ((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any)
+    | null;
+  onseeked: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onseeking: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselect: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectionchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onslotchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onstalled: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsubmit: ((this: GlobalEventHandlers, ev: SubmitEvent) => any) | null;
+  onsuspend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontimeupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontouchcancel?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchend?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchmove?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchstart?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontransitioncancel:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionend:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionrun:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionstart:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  onvolumechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwaiting: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationiteration:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkitanimationstart:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkittransitionend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwheel: ((this: GlobalEventHandlers, ev: WheelEvent) => any) | null;
+  autofocus: boolean;
+  readonly dataset: DOMStringMap;
+  nonce?: string;
+  tabIndex: number;
+  blur(): void;
+  focus(options?: FocusOptions): void;
+}) &
+  typeof PreactCustomElement;
 declare class Button extends Button_base implements ButtonProps {
   accessor disabled: ButtonProps['disabled'];
   accessor icon: ButtonProps['icon'];
@@ -3756,24 +4165,33 @@ declare class Button extends Button_base implements ButtonProps {
   accessor target: ButtonProps['target'];
   accessor href: ButtonProps['href'];
   accessor download: ButtonProps['download'];
-  accessor onclick: CallbackEventListener<typeof tagName$H> | null;
-  accessor onblur: CallbackEventListener<typeof tagName$H> | null;
-  accessor onfocus: CallbackEventListener<typeof tagName$H> | null;
+  accessor onclick: CallbackEventListener<typeof tagName$D> | null;
+  accessor onblur: CallbackEventListener<typeof tagName$D> | null;
+  accessor onfocus: CallbackEventListener<typeof tagName$D> | null;
   accessor type: ButtonProps['type'];
   accessor accessibilityLabel: ButtonProps['accessibilityLabel'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$H]: Button;
+    [tagName$D]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$H]: HTMLAttributes<HTMLElement> & ReactProps$H;
+      [tagName$D]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
     }
   }
+}
+
+declare const tagName$D = 's-button';
+export interface ButtonJSXProps
+  extends Partial<ButtonProps>,
+    Pick<ButtonProps$1, 'id'> {
+  onClick?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
 }
 
 declare const internals: unique symbol;
@@ -3814,64 +4232,42 @@ export type CheckboxProps = PreactInputProps &
     >
   >;
 
-declare const tagName$G = 's-checkbox';
-export interface ReactProps$G
-  extends Partial<CheckboxProps>,
-    Pick<CheckboxProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
-}
-
-export type PreactCheckboxProps = Required<
-  Pick<
-    CheckboxProps,
-    | 'accessibilityLabel'
-    | 'checked'
-    | 'defaultChecked'
-    | 'details'
-    | 'error'
-    | 'label'
-    | 'required'
-    | 'name'
-    | 'disabled'
-    | 'value'
-  >
->;
-declare class PreactCheckboxElement
-  extends PreactInputElement
-  implements PreactCheckboxProps
-{
+declare class Checkbox extends PreactInputElement implements CheckboxProps {
   get checked(): boolean;
-  set checked(checked: PreactCheckboxProps['checked']);
+  set checked(checked: CheckboxProps['checked']);
   get value(): string;
   set value(value: string);
-  accessor defaultChecked: PreactCheckboxProps['defaultChecked'];
-  accessor accessibilityLabel: PreactCheckboxProps['accessibilityLabel'];
-  accessor details: PreactCheckboxProps['details'];
-  accessor error: PreactCheckboxProps['error'];
-  accessor label: PreactCheckboxProps['label'];
-  accessor required: PreactCheckboxProps['required'];
-  formResetCallback(): void;
-  constructor(renderImpl: RenderImpl);
-}
-
-declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
+  accessor defaultChecked: CheckboxProps['defaultChecked'];
+  accessor accessibilityLabel: CheckboxProps['accessibilityLabel'];
+  accessor details: CheckboxProps['details'];
+  accessor error: CheckboxProps['error'];
   get indeterminate(): CheckboxProps['indeterminate'];
   set indeterminate(indeterminate: CheckboxProps['indeterminate']);
   accessor defaultIndeterminate: CheckboxProps['defaultIndeterminate'];
+  accessor label: CheckboxProps['label'];
+  accessor required: CheckboxProps['required'];
+  formResetCallback(): void;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$G]: Checkbox;
+    [tagName$C]: Checkbox;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$G]: HTMLAttributes<HTMLElement> & ReactProps$G;
+      [tagName$C]: HTMLAttributes<HTMLElement> & CheckboxJSXProps;
     }
   }
+}
+
+declare const tagName$C = 's-checkbox';
+export interface CheckboxJSXProps
+  extends Partial<CheckboxProps>,
+    Pick<CheckboxProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName$C>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$C>) => void) | null;
 }
 
 export interface ChoiceProps
@@ -3888,11 +4284,6 @@ export interface ChoiceProps
     >
   > {}
 
-declare const tagName$F = 's-choice';
-export interface ReactProps$F
-  extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id'> {}
-
 declare class Choice extends PreactCustomElement implements ChoiceProps {
   accessor disabled: ChoiceProps['disabled'];
   accessor details: ChoiceProps['details'];
@@ -3906,16 +4297,21 @@ declare class Choice extends PreactCustomElement implements ChoiceProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$F]: Choice;
+    [tagName$B]: Choice;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$F]: HTMLAttributes<HTMLElement> & ReactProps$F;
+      [tagName$B]: HTMLAttributes<HTMLElement> & ChoiceJSXProps;
     }
   }
 }
+
+declare const tagName$B = 's-choice';
+export interface ChoiceJSXProps
+  extends Partial<ChoiceProps>,
+    Pick<ChoiceProps$1, 'id'> {}
 
 export interface ChoiceListProps
   extends Required<
@@ -3924,14 +4320,6 @@ export interface ChoiceListProps
       'multiple' | 'disabled' | 'error' | 'details' | 'values' | 'name'
     >
   > {}
-
-declare const tagName$E = 's-choice-list';
-export interface ReactProps$E
-  extends Partial<ChoiceListProps>,
-    Pick<ChoiceListProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$E>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$E>) => void) | null;
-}
 
 declare class ChoiceList extends PreactInputElement implements ChoiceListProps {
   accessor error: ChoiceListProps['error'];
@@ -3944,15 +4332,23 @@ declare class ChoiceList extends PreactInputElement implements ChoiceListProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$E]: ChoiceList;
+    [tagName$A]: ChoiceList;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$E]: HTMLAttributes<HTMLElement> & ReactProps$E;
+      [tagName$A]: HTMLAttributes<HTMLElement> & ChoiceListJSXProps;
     }
   }
+}
+
+declare const tagName$A = 's-choice-list';
+export interface ChoiceListJSXProps
+  extends Partial<ChoiceListProps>,
+    Pick<ChoiceListProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName$A>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$A>) => void) | null;
 }
 
 export type ClickableBaseProps = Required<
@@ -3974,53 +4370,503 @@ export interface ClickableProps
   extends Required<BoxProps>,
     ClickableBaseProps {}
 
-declare const tagName$D = 's-clickable';
-export interface ReactProps$D
-  extends Partial<ClickableProps>,
-    Pick<ClickableProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
-}
-
-declare const Clickable_base: (abstract new (
-  renderImpl: RenderImpl,
-) => BoxElement & PreactOverlayControlProps) &
-  Pick<typeof BoxElement, 'observedAttributes' | 'prototype'>;
+declare const Clickable_base: (abstract new (...args: any) => {
+  commandFor: PreactOverlayControlProps['commandFor'];
+  command: PreactOverlayControlProps['command'];
+  '__#49710@#queueRender': (() => void) | undefined;
+  '__#49710@#shadowRoot': ShadowRoot | null;
+  '__#49710@#styles': string;
+  attributeChangedCallback(name: string): void;
+  connectedCallback(): void;
+  disconnectedCallback(): void;
+  adoptedCallback(): void;
+  queueRender(): void;
+  '__#49710@#checkElementPrototype'(): void;
+  click({sourceEvent}?: ClickOptions): void;
+  accessKey: string;
+  readonly accessKeyLabel: string;
+  autocapitalize: string;
+  dir: string;
+  draggable: boolean;
+  hidden: boolean;
+  inert: boolean;
+  innerText: string;
+  lang: string;
+  readonly offsetHeight: number;
+  readonly offsetLeft: number;
+  readonly offsetParent: Element | null;
+  readonly offsetTop: number;
+  readonly offsetWidth: number;
+  outerText: string;
+  popover: string | null;
+  spellcheck: boolean;
+  title: string;
+  translate: boolean;
+  writingSuggestions: string;
+  attachInternals(): ElementInternals;
+  hidePopover(): void;
+  showPopover(): void;
+  togglePopover(force?: boolean): boolean;
+  addEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  removeEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  readonly attributes: NamedNodeMap;
+  readonly classList: DOMTokenList;
+  className: string;
+  readonly clientHeight: number;
+  readonly clientLeft: number;
+  readonly clientTop: number;
+  readonly clientWidth: number;
+  readonly currentCSSZoom: number;
+  id: string;
+  innerHTML: string;
+  readonly localName: string;
+  readonly namespaceURI: string | null;
+  onfullscreenchange: ((this: Element, ev: Event) => any) | null;
+  onfullscreenerror: ((this: Element, ev: Event) => any) | null;
+  outerHTML: string;
+  readonly ownerDocument: Document;
+  readonly part: DOMTokenList;
+  readonly prefix: string | null;
+  readonly scrollHeight: number;
+  scrollLeft: number;
+  scrollTop: number;
+  readonly scrollWidth: number;
+  readonly shadowRoot: ShadowRoot | null;
+  slot: string;
+  readonly tagName: string;
+  attachShadow(init: ShadowRootInit): ShadowRoot;
+  checkVisibility(options?: CheckVisibilityOptions): boolean;
+  closest<K extends keyof HTMLElementTagNameMap>(
+    selector: K,
+  ): HTMLElementTagNameMap[K] | null;
+  closest<K extends keyof SVGElementTagNameMap>(
+    selector: K,
+  ): SVGElementTagNameMap[K] | null;
+  closest<K extends keyof MathMLElementTagNameMap>(
+    selector: K,
+  ): MathMLElementTagNameMap[K] | null;
+  closest<E extends Element = Element>(selectors: string): E | null;
+  computedStyleMap(): StylePropertyMapReadOnly;
+  getAttribute(qualifiedName: string): string | null;
+  getAttributeNS(namespace: string | null, localName: string): string | null;
+  getAttributeNames(): string[];
+  getAttributeNode(qualifiedName: string): Attr | null;
+  getAttributeNodeNS(namespace: string | null, localName: string): Attr | null;
+  getBoundingClientRect(): DOMRect;
+  getClientRects(): DOMRectList;
+  getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
+  getElementsByTagName<K extends keyof HTMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof SVGElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<SVGElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof MathMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<MathMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;
+  getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1999/xhtml',
+    localName: string,
+  ): HTMLCollectionOf<HTMLElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/2000/svg',
+    localName: string,
+  ): HTMLCollectionOf<SVGElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1998/Math/MathML',
+    localName: string,
+  ): HTMLCollectionOf<MathMLElement>;
+  getElementsByTagNameNS(
+    namespace: string | null,
+    localName: string,
+  ): HTMLCollectionOf<Element>;
+  getHTML(options?: GetHTMLOptions): string;
+  hasAttribute(qualifiedName: string): boolean;
+  hasAttributeNS(namespace: string | null, localName: string): boolean;
+  hasAttributes(): boolean;
+  hasPointerCapture(pointerId: number): boolean;
+  insertAdjacentElement(
+    where: InsertPosition,
+    element: Element,
+  ): Element | null;
+  insertAdjacentHTML(position: InsertPosition, string: string): void;
+  insertAdjacentText(where: InsertPosition, data: string): void;
+  matches(selectors: string): boolean;
+  releasePointerCapture(pointerId: number): void;
+  removeAttribute(qualifiedName: string): void;
+  removeAttributeNS(namespace: string | null, localName: string): void;
+  removeAttributeNode(attr: Attr): Attr;
+  requestFullscreen(options?: FullscreenOptions): Promise<void>;
+  requestPointerLock(options?: PointerLockOptions): Promise<void>;
+  scroll(options?: ScrollToOptions): void;
+  scroll(x: number, y: number): void;
+  scrollBy(options?: ScrollToOptions): void;
+  scrollBy(x: number, y: number): void;
+  scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void;
+  scrollTo(options?: ScrollToOptions): void;
+  scrollTo(x: number, y: number): void;
+  setAttribute(qualifiedName: string, value: string): void;
+  setAttributeNS(
+    namespace: string | null,
+    qualifiedName: string,
+    value: string,
+  ): void;
+  setAttributeNode(attr: Attr): Attr | null;
+  setAttributeNodeNS(attr: Attr): Attr | null;
+  setHTMLUnsafe(html: string): void;
+  setPointerCapture(pointerId: number): void;
+  toggleAttribute(qualifiedName: string, force?: boolean): boolean;
+  webkitMatchesSelector(selectors: string): boolean;
+  readonly baseURI: string;
+  readonly childNodes: NodeListOf<ChildNode>;
+  readonly firstChild: ChildNode | null;
+  readonly isConnected: boolean;
+  readonly lastChild: ChildNode | null;
+  readonly nextSibling: ChildNode | null;
+  readonly nodeName: string;
+  readonly nodeType: number;
+  nodeValue: string | null;
+  readonly parentElement: HTMLElement | null;
+  readonly parentNode: ParentNode | null;
+  readonly previousSibling: ChildNode | null;
+  textContent: string | null;
+  appendChild<T extends Node>(node: T): T;
+  cloneNode(deep?: boolean): Node;
+  compareDocumentPosition(other: Node): number;
+  contains(other: Node | null): boolean;
+  getRootNode(options?: GetRootNodeOptions): Node;
+  hasChildNodes(): boolean;
+  insertBefore<T extends Node>(node: T, child: Node | null): T;
+  isDefaultNamespace(namespace: string | null): boolean;
+  isEqualNode(otherNode: Node | null): boolean;
+  isSameNode(otherNode: Node | null): boolean;
+  lookupNamespaceURI(prefix: string | null): string | null;
+  lookupPrefix(namespace: string | null): string | null;
+  normalize(): void;
+  removeChild<T extends Node>(child: T): T;
+  replaceChild<T extends Node>(node: Node, child: T): T;
+  readonly ELEMENT_NODE: 1;
+  readonly ATTRIBUTE_NODE: 2;
+  readonly TEXT_NODE: 3;
+  readonly CDATA_SECTION_NODE: 4;
+  readonly ENTITY_REFERENCE_NODE: 5;
+  readonly ENTITY_NODE: 6;
+  readonly PROCESSING_INSTRUCTION_NODE: 7;
+  readonly COMMENT_NODE: 8;
+  readonly DOCUMENT_NODE: 9;
+  readonly DOCUMENT_TYPE_NODE: 10;
+  readonly DOCUMENT_FRAGMENT_NODE: 11;
+  readonly NOTATION_NODE: 12;
+  readonly DOCUMENT_POSITION_DISCONNECTED: 1;
+  readonly DOCUMENT_POSITION_PRECEDING: 2;
+  readonly DOCUMENT_POSITION_FOLLOWING: 4;
+  readonly DOCUMENT_POSITION_CONTAINS: 8;
+  readonly DOCUMENT_POSITION_CONTAINED_BY: 16;
+  readonly DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32;
+  dispatchEvent(event: Event): boolean;
+  dispatchEvent(event: Event): boolean;
+  ariaAtomic: string | null;
+  ariaAutoComplete: string | null;
+  ariaBrailleLabel: string | null;
+  ariaBrailleRoleDescription: string | null;
+  ariaBusy: string | null;
+  ariaChecked: string | null;
+  ariaColCount: string | null;
+  ariaColIndex: string | null;
+  ariaColIndexText: string | null;
+  ariaColSpan: string | null;
+  ariaCurrent: string | null;
+  ariaDescription: string | null;
+  ariaDisabled: string | null;
+  ariaExpanded: string | null;
+  ariaHasPopup: string | null;
+  ariaHidden: string | null;
+  ariaInvalid: string | null;
+  ariaKeyShortcuts: string | null;
+  ariaLabel: string | null;
+  ariaLevel: string | null;
+  ariaLive: string | null;
+  ariaModal: string | null;
+  ariaMultiLine: string | null;
+  ariaMultiSelectable: string | null;
+  ariaOrientation: string | null;
+  ariaPlaceholder: string | null;
+  ariaPosInSet: string | null;
+  ariaPressed: string | null;
+  ariaReadOnly: string | null;
+  ariaRequired: string | null;
+  ariaRoleDescription: string | null;
+  ariaRowCount: string | null;
+  ariaRowIndex: string | null;
+  ariaRowIndexText: string | null;
+  ariaRowSpan: string | null;
+  ariaSelected: string | null;
+  ariaSetSize: string | null;
+  ariaSort: string | null;
+  ariaValueMax: string | null;
+  ariaValueMin: string | null;
+  ariaValueNow: string | null;
+  ariaValueText: string | null;
+  role: string | null;
+  animate(
+    keyframes: Keyframe[] | PropertyIndexedKeyframes | null,
+    options?: number | KeyframeAnimationOptions,
+  ): Animation;
+  getAnimations(options?: GetAnimationsOptions): Animation[];
+  after(...nodes: (Node | string)[]): void;
+  before(...nodes: (Node | string)[]): void;
+  remove(): void;
+  replaceWith(...nodes: (Node | string)[]): void;
+  readonly nextElementSibling: Element | null;
+  readonly previousElementSibling: Element | null;
+  readonly childElementCount: number;
+  readonly children: HTMLCollection;
+  readonly firstElementChild: Element | null;
+  readonly lastElementChild: Element | null;
+  append(...nodes: (Node | string)[]): void;
+  prepend(...nodes: (Node | string)[]): void;
+  querySelector<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): HTMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): SVGElementTagNameMap[K] | null;
+  querySelector<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): MathMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): HTMLElementDeprecatedTagNameMap[K] | null;
+  querySelector<E extends Element = Element>(selectors: string): E | null;
+  querySelectorAll<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<SVGElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<MathMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>;
+  querySelectorAll<E extends Element = Element>(
+    selectors: string,
+  ): NodeListOf<E>;
+  replaceChildren(...nodes: (Node | string)[]): void;
+  readonly assignedSlot: HTMLSlotElement | null;
+  readonly attributeStyleMap: StylePropertyMap;
+  readonly style: CSSStyleDeclaration;
+  contentEditable: string;
+  enterKeyHint: string;
+  inputMode: string;
+  readonly isContentEditable: boolean;
+  onabort: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onanimationcancel:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationend:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationiteration:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationstart:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onauxclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onbeforeinput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
+  onbeforetoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onblur: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  oncancel: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplaythrough: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextlost: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextmenu: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  oncontextrestored: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncopy: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  oncuechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncut: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  ondblclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  ondrag: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragend: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragenter: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragleave: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragover: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragstart: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondrop: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondurationchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onemptied: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onended: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onerror: OnErrorEventHandler;
+  onfocus: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  onformdata: ((this: GlobalEventHandlers, ev: FormDataEvent) => any) | null;
+  ongotpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  oninput: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oninvalid: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onkeydown: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeypress: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeyup: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onload: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadeddata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadedmetadata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onlostpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onmousedown: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseenter: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseleave: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmousemove: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseout: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseover: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseup: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onpaste: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  onpause: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplaying: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onpointercancel:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onpointerdown: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerenter: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerleave: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointermove: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerout: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerover: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerup: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onprogress: ((this: GlobalEventHandlers, ev: ProgressEvent) => any) | null;
+  onratechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onreset: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onresize: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onscroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onscrollend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsecuritypolicyviolation:
+    | ((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any)
+    | null;
+  onseeked: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onseeking: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselect: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectionchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onslotchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onstalled: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsubmit: ((this: GlobalEventHandlers, ev: SubmitEvent) => any) | null;
+  onsuspend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontimeupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontouchcancel?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchend?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchmove?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchstart?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontransitioncancel:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionend:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionrun:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionstart:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  onvolumechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwaiting: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationiteration:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkitanimationstart:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkittransitionend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwheel: ((this: GlobalEventHandlers, ev: WheelEvent) => any) | null;
+  autofocus: boolean;
+  readonly dataset: DOMStringMap;
+  nonce?: string;
+  tabIndex: number;
+  blur(): void;
+  focus(options?: FocusOptions): void;
+}) &
+  typeof BoxElement;
 declare class Clickable extends Clickable_base implements ClickableProps {
   accessor disabled: ClickableProps['disabled'];
   accessor loading: ClickableProps['loading'];
   accessor target: ClickableProps['target'];
   accessor href: ClickableProps['href'];
   accessor download: ClickableProps['download'];
-  accessor onclick: CallbackEventListener<typeof tagName$D> | null;
-  accessor onblur: CallbackEventListener<typeof tagName$D> | null;
-  accessor onfocus: CallbackEventListener<typeof tagName$D> | null;
+  accessor onclick: CallbackEventListener<typeof tagName$z> | null;
+  accessor onblur: CallbackEventListener<typeof tagName$z> | null;
+  accessor onfocus: CallbackEventListener<typeof tagName$z> | null;
   accessor type: ClickableProps['type'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$D]: Clickable;
+    [tagName$z]: Clickable;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$D]: HTMLAttributes<HTMLElement> & ReactProps$D;
+      [tagName$z]: HTMLAttributes<HTMLElement> & ClickableJSXProps;
     }
   }
 }
 
-export interface DividerProps {
-  direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
-  color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
+declare const tagName$z = 's-clickable';
+export interface ClickableJSXProps
+  extends Partial<ClickableProps>,
+    Pick<ClickableProps$1, 'id'> {
+  onClick?: ((event: CallbackEvent<typeof tagName$z>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$z>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$z>) => void) | null;
 }
 
-declare const tagName$C = 's-divider';
-export interface ReactProps$C
-  extends Partial<DividerProps>,
-    Pick<DividerProps$1, 'id'> {}
+export interface DividerProps {
+  direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
+  color: Extract<DividerProps$1['color'], 'subdued' | 'base' | 'strong'>;
+}
 
 declare class Divider extends PreactCustomElement implements DividerProps {
   accessor direction: DividerProps['direction'];
@@ -4029,16 +4875,21 @@ declare class Divider extends PreactCustomElement implements DividerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$C]: Divider;
+    [tagName$y]: Divider;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$C]: HTMLAttributes<HTMLElement> & ReactProps$C;
+      [tagName$y]: HTMLAttributes<HTMLElement> & DividerJSXProps;
     }
   }
 }
+
+declare const tagName$y = 's-divider';
+export interface DividerJSXProps
+  extends Partial<DividerProps>,
+    Pick<DividerProps$1, 'id'> {}
 
 export type PreactFieldProps<Autocomplete extends string = string> =
   PreactInputProps &
@@ -4098,12 +4949,6 @@ export type EmailFieldProps = PreactFieldProps<
 > &
   Required<Pick<EmailFieldProps$1, 'maxLength' | 'minLength'>>;
 
-declare const tagName$B = 's-email-field';
-export interface ReactProps$B
-  extends Partial<Omit<EmailFieldProps, 'accessory'>>,
-    Pick<EmailFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$B> {}
-
 declare class EmailField
   extends PreactFieldElement<EmailFieldProps['autocomplete']>
   implements EmailFieldProps
@@ -4115,19 +4960,25 @@ declare class EmailField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$B]: EmailField;
+    [tagName$x]: EmailField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$B]: HTMLAttributes<HTMLElement> & ReactProps$B;
+      [tagName$x]: HTMLAttributes<HTMLElement> & EmailFieldJSXProps;
     }
   }
 }
 
+declare const tagName$x = 's-email-field';
+export interface EmailFieldJSXProps
+  extends Partial<Omit<EmailFieldProps, 'accessory'>>,
+    Pick<EmailFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName$x> {}
+
 export type RequiredAlignedProps = Required<GridProps$1>;
-export interface GridProps extends BoxProps {
+export interface GridProps extends Required<BoxProps> {
   gridTemplateColumns: RequiredAlignedProps['gridTemplateColumns'];
   gridTemplateRows: RequiredAlignedProps['gridTemplateRows'];
   alignItems: RequiredAlignedProps['alignItems'];
@@ -4140,11 +4991,6 @@ export interface GridProps extends BoxProps {
   columnGap: MakeResponsive<RequiredAlignedProps['columnGap']>;
   gap: MakeResponsive<RequiredAlignedProps['gap']>;
 }
-
-declare const tagName$A = 's-grid';
-export interface ReactProps$A
-  extends Partial<GridProps>,
-    Pick<GridProps$1, 'id'> {}
 
 declare class Grid extends BoxElement implements GridProps {
   constructor();
@@ -4162,27 +5008,27 @@ declare class Grid extends BoxElement implements GridProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$A]: Grid;
+    [tagName$w]: Grid;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$A]: HTMLAttributes<HTMLElement> & ReactProps$A;
+      [tagName$w]: HTMLAttributes<HTMLElement> & GridJSXProps;
     }
   }
 }
+
+declare const tagName$w = 's-grid';
+export interface GridJSXProps
+  extends Partial<GridProps>,
+    Pick<GridProps$1, 'id'> {}
 
 export type RequiredGridItemProps = Required<GridItemProps$1>;
 export interface GridItemProps extends BoxProps {
   gridColumn: RequiredGridItemProps['gridColumn'];
   gridRow: RequiredGridItemProps['gridRow'];
 }
-
-declare const tagName$z = 's-grid-item';
-export interface ReactProps$z
-  extends Partial<GridItemProps>,
-    Pick<GridItemProps$1, 'id'> {}
 
 declare class GridItem extends BoxElement implements GridItemProps {
   accessor gridColumn: GridItemProps['gridColumn'];
@@ -4191,16 +5037,21 @@ declare class GridItem extends BoxElement implements GridItemProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$z]: GridItem;
+    [tagName$v]: GridItem;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$z]: HTMLAttributes<HTMLElement> & ReactProps$z;
+      [tagName$v]: HTMLAttributes<HTMLElement> & GridItemJSXProps;
     }
   }
 }
+
+declare const tagName$v = 's-grid-item';
+export interface GridItemJSXProps
+  extends Partial<GridItemProps>,
+    Pick<GridItemProps$1, 'id'> {}
 
 export type RequiredHeadingProps = Required<HeadingProps$1>;
 export interface HeadingProps {
@@ -4208,11 +5059,6 @@ export interface HeadingProps {
   accessibilityVisibility: RequiredHeadingProps['accessibilityVisibility'];
   lineClamp: RequiredHeadingProps['lineClamp'];
 }
-
-declare const tagName$y = 's-heading';
-export interface ReactProps$y
-  extends Partial<HeadingProps>,
-    Pick<HeadingProps$1, 'id'> {}
 
 declare class Heading extends PreactCustomElement implements HeadingProps {
   accessor accessibilityRole: HeadingProps['accessibilityRole'];
@@ -4222,21 +5068,21 @@ declare class Heading extends PreactCustomElement implements HeadingProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$y]: Heading;
+    [tagName$u]: Heading;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$y]: HTMLAttributes<HTMLElement> & ReactProps$y;
+      [tagName$u]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
     }
   }
 }
 
-declare const tagName$x = 's-icon';
-export interface ReactProps$x
-  extends Partial<IconProps>,
-    Pick<IconProps$1, 'id'> {}
+declare const tagName$u = 's-heading';
+export interface HeadingJSXProps
+  extends Partial<HeadingProps>,
+    Pick<HeadingProps$1, 'id'> {}
 
 declare class Icon extends PreactCustomElement implements IconProps {
   accessor color: IconProps['color'];
@@ -4247,16 +5093,21 @@ declare class Icon extends PreactCustomElement implements IconProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$x]: Icon;
+    [tagName$t]: Icon;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$x]: Omit<HTMLAttributes<HTMLElement>, 'size'> & ReactProps$x;
+      [tagName$t]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
     }
   }
 }
+
+declare const tagName$t = 's-icon';
+export interface IconJSXProps
+  extends Partial<IconProps>,
+    Pick<IconProps$1, 'id'> {}
 
 export interface ImageProps
   extends Required<
@@ -4280,14 +5131,6 @@ export interface ImageProps
   borderWidth: BoxProps['borderWidth'];
 }
 
-declare const tagName$w = 's-image';
-export interface ReactProps$w
-  extends Partial<ImageProps>,
-    Pick<ImageProps$1, 'id'> {
-  onError?: ((event: CallbackEvent<typeof tagName$w>) => void) | null;
-  onLoad?: ((event: CallbackEvent<typeof tagName$w>) => void) | null;
-}
-
 declare class Image extends PreactCustomElement implements ImageProps {
   accessor src: ImageProps['src'];
   accessor srcSet: ImageProps['srcSet'];
@@ -4303,21 +5146,29 @@ declare class Image extends PreactCustomElement implements ImageProps {
   accessor borderStyle: ImageProps['borderStyle'];
   accessor borderColor: ImageProps['borderColor'];
   accessor borderRadius: ImageProps['borderRadius'];
-  accessor onload: CallbackEventListener<typeof tagName$w> | null;
+  accessor onload: CallbackEventListener<typeof tagName$s> | null;
   accessor onerror: OnErrorEventHandler;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$w]: Image;
+    [tagName$s]: Image;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$w]: HTMLAttributes<HTMLElement> & ReactProps$w;
+      [tagName$s]: HTMLAttributes<HTMLElement> & ImageJSXProps;
     }
   }
+}
+
+declare const tagName$s = 's-image';
+export interface ImageJSXProps
+  extends Partial<ImageProps>,
+    Pick<ImageProps$1, 'id'> {
+  onError?: ((event: CallbackEvent<typeof tagName$s>) => void) | null;
+  onLoad?: ((event: CallbackEvent<typeof tagName$s>) => void) | null;
 }
 
 export type RequiredLinkProps = Required<LinkProps$1>;
@@ -4332,17 +5183,465 @@ export interface LinkProps {
   tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
 }
 
-declare const tagName$v = 's-link';
-export interface ReactProps$v
-  extends Partial<LinkProps>,
-    Pick<LinkProps$1, 'id' | 'lang'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$v>) => void) | null;
-}
-
-declare const Link_base: (abstract new (
-  args_0: RenderImpl,
-) => PreactCustomElement & PreactOverlayControlProps) &
-  Pick<typeof PreactCustomElement, 'observedAttributes' | 'prototype'>;
+declare const Link_base: (abstract new (...args: any) => {
+  commandFor: PreactOverlayControlProps['commandFor'];
+  command: PreactOverlayControlProps['command'];
+  '__#49710@#queueRender': (() => void) | undefined;
+  '__#49710@#shadowRoot': ShadowRoot | null;
+  '__#49710@#styles': string;
+  attributeChangedCallback(name: string): void;
+  connectedCallback(): void;
+  disconnectedCallback(): void;
+  adoptedCallback(): void;
+  queueRender(): void;
+  '__#49710@#checkElementPrototype'(): void;
+  click({sourceEvent}?: ClickOptions): void;
+  accessKey: string;
+  readonly accessKeyLabel: string;
+  autocapitalize: string;
+  dir: string;
+  draggable: boolean;
+  hidden: boolean;
+  inert: boolean;
+  innerText: string;
+  lang: string;
+  readonly offsetHeight: number;
+  readonly offsetLeft: number;
+  readonly offsetParent: Element | null;
+  readonly offsetTop: number;
+  readonly offsetWidth: number;
+  outerText: string;
+  popover: string | null;
+  spellcheck: boolean;
+  title: string;
+  translate: boolean;
+  writingSuggestions: string;
+  attachInternals(): ElementInternals;
+  hidePopover(): void;
+  showPopover(): void;
+  togglePopover(force?: boolean): boolean;
+  addEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  addEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | AddEventListenerOptions,
+  ): void;
+  removeEventListener<K extends keyof HTMLElementEventMap>(
+    type: K,
+    listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  removeEventListener(
+    type: string,
+    listener: EventListenerOrEventListenerObject,
+    options?: boolean | EventListenerOptions,
+  ): void;
+  readonly attributes: NamedNodeMap;
+  readonly classList: DOMTokenList;
+  className: string;
+  readonly clientHeight: number;
+  readonly clientLeft: number;
+  readonly clientTop: number;
+  readonly clientWidth: number;
+  readonly currentCSSZoom: number;
+  id: string;
+  innerHTML: string;
+  readonly localName: string;
+  readonly namespaceURI: string | null;
+  onfullscreenchange: ((this: Element, ev: Event) => any) | null;
+  onfullscreenerror: ((this: Element, ev: Event) => any) | null;
+  outerHTML: string;
+  readonly ownerDocument: Document;
+  readonly part: DOMTokenList;
+  readonly prefix: string | null;
+  readonly scrollHeight: number;
+  scrollLeft: number;
+  scrollTop: number;
+  readonly scrollWidth: number;
+  readonly shadowRoot: ShadowRoot | null;
+  slot: string;
+  readonly tagName: string;
+  attachShadow(init: ShadowRootInit): ShadowRoot;
+  checkVisibility(options?: CheckVisibilityOptions): boolean;
+  closest<K extends keyof HTMLElementTagNameMap>(
+    selector: K,
+  ): HTMLElementTagNameMap[K] | null;
+  closest<K extends keyof SVGElementTagNameMap>(
+    selector: K,
+  ): SVGElementTagNameMap[K] | null;
+  closest<K extends keyof MathMLElementTagNameMap>(
+    selector: K,
+  ): MathMLElementTagNameMap[K] | null;
+  closest<E extends Element = Element>(selectors: string): E | null;
+  computedStyleMap(): StylePropertyMapReadOnly;
+  getAttribute(qualifiedName: string): string | null;
+  getAttributeNS(namespace: string | null, localName: string): string | null;
+  getAttributeNames(): string[];
+  getAttributeNode(qualifiedName: string): Attr | null;
+  getAttributeNodeNS(namespace: string | null, localName: string): Attr | null;
+  getBoundingClientRect(): DOMRect;
+  getClientRects(): DOMRectList;
+  getElementsByClassName(classNames: string): HTMLCollectionOf<Element>;
+  getElementsByTagName<K extends keyof HTMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof SVGElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<SVGElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof MathMLElementTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<MathMLElementTagNameMap[K]>;
+  getElementsByTagName<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    qualifiedName: K,
+  ): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>;
+  getElementsByTagName(qualifiedName: string): HTMLCollectionOf<Element>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1999/xhtml',
+    localName: string,
+  ): HTMLCollectionOf<HTMLElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/2000/svg',
+    localName: string,
+  ): HTMLCollectionOf<SVGElement>;
+  getElementsByTagNameNS(
+    namespaceURI: 'http://www.w3.org/1998/Math/MathML',
+    localName: string,
+  ): HTMLCollectionOf<MathMLElement>;
+  getElementsByTagNameNS(
+    namespace: string | null,
+    localName: string,
+  ): HTMLCollectionOf<Element>;
+  getHTML(options?: GetHTMLOptions): string;
+  hasAttribute(qualifiedName: string): boolean;
+  hasAttributeNS(namespace: string | null, localName: string): boolean;
+  hasAttributes(): boolean;
+  hasPointerCapture(pointerId: number): boolean;
+  insertAdjacentElement(
+    where: InsertPosition,
+    element: Element,
+  ): Element | null;
+  insertAdjacentHTML(position: InsertPosition, string: string): void;
+  insertAdjacentText(where: InsertPosition, data: string): void;
+  matches(selectors: string): boolean;
+  releasePointerCapture(pointerId: number): void;
+  removeAttribute(qualifiedName: string): void;
+  removeAttributeNS(namespace: string | null, localName: string): void;
+  removeAttributeNode(attr: Attr): Attr;
+  requestFullscreen(options?: FullscreenOptions): Promise<void>;
+  requestPointerLock(options?: PointerLockOptions): Promise<void>;
+  scroll(options?: ScrollToOptions): void;
+  scroll(x: number, y: number): void;
+  scrollBy(options?: ScrollToOptions): void;
+  scrollBy(x: number, y: number): void;
+  scrollIntoView(arg?: boolean | ScrollIntoViewOptions): void;
+  scrollTo(options?: ScrollToOptions): void;
+  scrollTo(x: number, y: number): void;
+  setAttribute(qualifiedName: string, value: string): void;
+  setAttributeNS(
+    namespace: string | null,
+    qualifiedName: string,
+    value: string,
+  ): void;
+  setAttributeNode(attr: Attr): Attr | null;
+  setAttributeNodeNS(attr: Attr): Attr | null;
+  setHTMLUnsafe(html: string): void;
+  setPointerCapture(pointerId: number): void;
+  toggleAttribute(qualifiedName: string, force?: boolean): boolean;
+  webkitMatchesSelector(selectors: string): boolean;
+  readonly baseURI: string;
+  readonly childNodes: NodeListOf<ChildNode>;
+  readonly firstChild: ChildNode | null;
+  readonly isConnected: boolean;
+  readonly lastChild: ChildNode | null;
+  readonly nextSibling: ChildNode | null;
+  readonly nodeName: string;
+  readonly nodeType: number;
+  nodeValue: string | null;
+  readonly parentElement: HTMLElement | null;
+  readonly parentNode: ParentNode | null;
+  readonly previousSibling: ChildNode | null;
+  textContent: string | null;
+  appendChild<T extends Node>(node: T): T;
+  cloneNode(deep?: boolean): Node;
+  compareDocumentPosition(other: Node): number;
+  contains(other: Node | null): boolean;
+  getRootNode(options?: GetRootNodeOptions): Node;
+  hasChildNodes(): boolean;
+  insertBefore<T extends Node>(node: T, child: Node | null): T;
+  isDefaultNamespace(namespace: string | null): boolean;
+  isEqualNode(otherNode: Node | null): boolean;
+  isSameNode(otherNode: Node | null): boolean;
+  lookupNamespaceURI(prefix: string | null): string | null;
+  lookupPrefix(namespace: string | null): string | null;
+  normalize(): void;
+  removeChild<T extends Node>(child: T): T;
+  replaceChild<T extends Node>(node: Node, child: T): T;
+  readonly ELEMENT_NODE: 1;
+  readonly ATTRIBUTE_NODE: 2;
+  readonly TEXT_NODE: 3;
+  readonly CDATA_SECTION_NODE: 4;
+  readonly ENTITY_REFERENCE_NODE: 5;
+  readonly ENTITY_NODE: 6;
+  readonly PROCESSING_INSTRUCTION_NODE: 7;
+  readonly COMMENT_NODE: 8;
+  readonly DOCUMENT_NODE: 9;
+  readonly DOCUMENT_TYPE_NODE: 10;
+  readonly DOCUMENT_FRAGMENT_NODE: 11;
+  readonly NOTATION_NODE: 12;
+  readonly DOCUMENT_POSITION_DISCONNECTED: 1;
+  readonly DOCUMENT_POSITION_PRECEDING: 2;
+  readonly DOCUMENT_POSITION_FOLLOWING: 4;
+  readonly DOCUMENT_POSITION_CONTAINS: 8;
+  readonly DOCUMENT_POSITION_CONTAINED_BY: 16;
+  readonly DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC: 32;
+  dispatchEvent(event: Event): boolean;
+  dispatchEvent(event: Event): boolean;
+  ariaAtomic: string | null;
+  ariaAutoComplete: string | null;
+  ariaBrailleLabel: string | null;
+  ariaBrailleRoleDescription: string | null;
+  ariaBusy: string | null;
+  ariaChecked: string | null;
+  ariaColCount: string | null;
+  ariaColIndex: string | null;
+  ariaColIndexText: string | null;
+  ariaColSpan: string | null;
+  ariaCurrent: string | null;
+  ariaDescription: string | null;
+  ariaDisabled: string | null;
+  ariaExpanded: string | null;
+  ariaHasPopup: string | null;
+  ariaHidden: string | null;
+  ariaInvalid: string | null;
+  ariaKeyShortcuts: string | null;
+  ariaLabel: string | null;
+  ariaLevel: string | null;
+  ariaLive: string | null;
+  ariaModal: string | null;
+  ariaMultiLine: string | null;
+  ariaMultiSelectable: string | null;
+  ariaOrientation: string | null;
+  ariaPlaceholder: string | null;
+  ariaPosInSet: string | null;
+  ariaPressed: string | null;
+  ariaReadOnly: string | null;
+  ariaRequired: string | null;
+  ariaRoleDescription: string | null;
+  ariaRowCount: string | null;
+  ariaRowIndex: string | null;
+  ariaRowIndexText: string | null;
+  ariaRowSpan: string | null;
+  ariaSelected: string | null;
+  ariaSetSize: string | null;
+  ariaSort: string | null;
+  ariaValueMax: string | null;
+  ariaValueMin: string | null;
+  ariaValueNow: string | null;
+  ariaValueText: string | null;
+  role: string | null;
+  animate(
+    keyframes: Keyframe[] | PropertyIndexedKeyframes | null,
+    options?: number | KeyframeAnimationOptions,
+  ): Animation;
+  getAnimations(options?: GetAnimationsOptions): Animation[];
+  after(...nodes: (Node | string)[]): void;
+  before(...nodes: (Node | string)[]): void;
+  remove(): void;
+  replaceWith(...nodes: (Node | string)[]): void;
+  readonly nextElementSibling: Element | null;
+  readonly previousElementSibling: Element | null;
+  readonly childElementCount: number;
+  readonly children: HTMLCollection;
+  readonly firstElementChild: Element | null;
+  readonly lastElementChild: Element | null;
+  append(...nodes: (Node | string)[]): void;
+  prepend(...nodes: (Node | string)[]): void;
+  querySelector<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): HTMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): SVGElementTagNameMap[K] | null;
+  querySelector<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): MathMLElementTagNameMap[K] | null;
+  querySelector<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): HTMLElementDeprecatedTagNameMap[K] | null;
+  querySelector<E extends Element = Element>(selectors: string): E | null;
+  querySelectorAll<K extends keyof HTMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof SVGElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<SVGElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof MathMLElementTagNameMap>(
+    selectors: K,
+  ): NodeListOf<MathMLElementTagNameMap[K]>;
+  querySelectorAll<K extends keyof HTMLElementDeprecatedTagNameMap>(
+    selectors: K,
+  ): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>;
+  querySelectorAll<E extends Element = Element>(
+    selectors: string,
+  ): NodeListOf<E>;
+  replaceChildren(...nodes: (Node | string)[]): void;
+  readonly assignedSlot: HTMLSlotElement | null;
+  readonly attributeStyleMap: StylePropertyMap;
+  readonly style: CSSStyleDeclaration;
+  contentEditable: string;
+  enterKeyHint: string;
+  inputMode: string;
+  readonly isContentEditable: boolean;
+  onabort: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onanimationcancel:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationend:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationiteration:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onanimationstart:
+    | ((this: GlobalEventHandlers, ev: AnimationEvent) => any)
+    | null;
+  onauxclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onbeforeinput: ((this: GlobalEventHandlers, ev: InputEvent) => any) | null;
+  onbeforetoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onblur: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  oncancel: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncanplaythrough: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onclose: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextlost: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncontextmenu: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  oncontextrestored: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncopy: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  oncuechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oncut: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  ondblclick: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  ondrag: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragend: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragenter: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragleave: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragover: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondragstart: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondrop: ((this: GlobalEventHandlers, ev: DragEvent) => any) | null;
+  ondurationchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onemptied: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onended: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onerror: OnErrorEventHandler;
+  onfocus: ((this: GlobalEventHandlers, ev: FocusEvent) => any) | null;
+  onformdata: ((this: GlobalEventHandlers, ev: FormDataEvent) => any) | null;
+  ongotpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  oninput: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  oninvalid: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onkeydown: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeypress: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onkeyup: ((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null;
+  onload: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadeddata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadedmetadata: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onloadstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onlostpointercapture:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onmousedown: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseenter: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseleave: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmousemove: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseout: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseover: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onmouseup: ((this: GlobalEventHandlers, ev: MouseEvent) => any) | null;
+  onpaste: ((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null;
+  onpause: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplay: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onplaying: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onpointercancel:
+    | ((this: GlobalEventHandlers, ev: PointerEvent) => any)
+    | null;
+  onpointerdown: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerenter: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerleave: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointermove: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerout: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerover: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onpointerup: ((this: GlobalEventHandlers, ev: PointerEvent) => any) | null;
+  onprogress: ((this: GlobalEventHandlers, ev: ProgressEvent) => any) | null;
+  onratechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onreset: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onresize: ((this: GlobalEventHandlers, ev: UIEvent) => any) | null;
+  onscroll: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onscrollend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsecuritypolicyviolation:
+    | ((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any)
+    | null;
+  onseeked: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onseeking: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselect: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectionchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onselectstart: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onslotchange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onstalled: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onsubmit: ((this: GlobalEventHandlers, ev: SubmitEvent) => any) | null;
+  onsuspend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontimeupdate: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontoggle: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  ontouchcancel?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchend?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchmove?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontouchstart?:
+    | ((this: GlobalEventHandlers, ev: TouchEvent) => any)
+    | null
+    | undefined;
+  ontransitioncancel:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionend:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionrun:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  ontransitionstart:
+    | ((this: GlobalEventHandlers, ev: TransitionEvent) => any)
+    | null;
+  onvolumechange: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwaiting: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwebkitanimationiteration:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkitanimationstart:
+    | ((this: GlobalEventHandlers, ev: Event) => any)
+    | null;
+  onwebkittransitionend: ((this: GlobalEventHandlers, ev: Event) => any) | null;
+  onwheel: ((this: GlobalEventHandlers, ev: WheelEvent) => any) | null;
+  autofocus: boolean;
+  readonly dataset: DOMStringMap;
+  nonce?: string;
+  tabIndex: number;
+  blur(): void;
+  focus(options?: FocusOptions): void;
+}) &
+  typeof PreactCustomElement;
 declare class Link extends Link_base implements LinkProps {
   accessor tone: LinkProps['tone'];
   accessor accessibilityLabel: LinkProps['accessibilityLabel'];
@@ -4350,55 +5649,56 @@ declare class Link extends Link_base implements LinkProps {
   accessor target: LinkProps['target'];
   accessor download: LinkProps['download'];
   accessor lang: LinkProps['lang'];
-  accessor onclick: CallbackEventListener<typeof tagName$v> | null;
+  accessor onclick: CallbackEventListener<typeof tagName$r> | null;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$v]: Link;
+    [tagName$r]: Link;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$v]: HTMLAttributes<HTMLElement> & ReactProps$v;
+      [tagName$r]: HTMLAttributes<HTMLElement> & LinkJSXProps;
     }
   }
 }
 
-export interface ListItemProps extends ListItemProps$1 {}
+declare const tagName$r = 's-link';
+export interface LinkJSXProps
+  extends Partial<LinkProps>,
+    Pick<LinkProps$1, 'id' | 'lang'> {
+  onClick?: ((event: CallbackEvent<typeof tagName$r>) => void) | null;
+}
 
-declare const tagName$u = 's-list-item';
-export interface ReactProps$u
-  extends Partial<ListItemProps>,
-    Pick<ListItemProps$1, 'id'> {}
+export interface ListItemProps extends ListItemProps$1 {}
 
 declare class ListItem extends PreactCustomElement implements ListItemProps {
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$u]: ListItem;
+    [tagName$q]: ListItem;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$u]: HTMLAttributes<HTMLElement> & ReactProps$u;
+      [tagName$q]: HTMLAttributes<HTMLElement> & ListItemJSXProps;
     }
   }
 }
+
+declare const tagName$q = 's-list-item';
+export interface ListItemJSXProps
+  extends Partial<ListItemProps>,
+    Pick<ListItemProps$1, 'id'> {}
 
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
   extends PreactFieldProps,
     Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step' | 'currencyCode'> {}
-
-declare const tagName$t = 's-money-field';
-export interface ReactProps$t
-  extends Partial<MoneyFieldProps>,
-    FieldReactProps<typeof tagName$t>,
-    Pick<MoneyFieldProps$1, 'id'> {}
 
 declare class MoneyField
   extends PreactFieldElement<MoneyFieldProps['autocomplete']>
@@ -4414,16 +5714,22 @@ declare class MoneyField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$t]: MoneyField;
+    [tagName$p]: MoneyField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$t]: HTMLAttributes<HTMLElement> & ReactProps$t;
+      [tagName$p]: HTMLAttributes<HTMLElement> & MoneyFieldJSXProps;
     }
   }
 }
+
+declare const tagName$p = 's-money-field';
+export interface MoneyFieldJSXProps
+  extends Partial<MoneyFieldProps>,
+    FieldReactProps<typeof tagName$p>,
+    Pick<MoneyFieldProps$1, 'id'> {}
 
 export type NumberFieldProps = PreactFieldProps<
   Required<NumberFieldProps$1>['autocomplete']
@@ -4434,12 +5740,6 @@ export type NumberFieldProps = PreactFieldProps<
       'inputMode' | 'max' | 'min' | 'prefix' | 'step' | 'suffix'
     >
   >;
-
-declare const tagName$s = 's-number-field';
-export interface ReactProps$s
-  extends Partial<NumberFieldProps>,
-    Pick<NumberFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$s> {}
 
 declare class NumberField
   extends PreactFieldElement<NumberFieldProps['autocomplete']>
@@ -4457,24 +5757,27 @@ declare class NumberField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$s]: NumberField;
+    [tagName$o]: NumberField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$s]: HTMLAttributes<HTMLElement> & ReactProps$s;
+      [tagName$o]: HTMLAttributes<HTMLElement> & NumberFieldJSXProps;
     }
   }
 }
+
+declare const tagName$o = 's-number-field';
+export interface NumberFieldJSXProps
+  extends Partial<NumberFieldProps>,
+    Pick<NumberFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName$o> {}
 
 export interface OptionProps
   extends Required<
     Pick<OptionProps$1, 'disabled' | 'value' | 'selected' | 'defaultSelected'>
   > {}
-
-declare const tagName$r = 's-option';
-export interface ReactProps$r extends Partial<OptionProps> {}
 
 declare class Option extends PreactCustomElement implements OptionProps {
   accessor selected: OptionProps['selected'];
@@ -4485,22 +5788,22 @@ declare class Option extends PreactCustomElement implements OptionProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$r]: Option;
+    [tagName$n]: Option;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$r]: HTMLAttributes<HTMLElement> & ReactProps$r;
+      [tagName$n]: HTMLAttributes<HTMLElement> & OptionJSXProps;
     }
   }
 }
 
+declare const tagName$n = 's-option';
+export interface OptionJSXProps extends Partial<OptionProps> {}
+
 export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
-
-declare const tagName$q = 's-option-group';
-export interface ReactProps$q extends Partial<OptionGroupProps> {}
 
 declare class OptionGroup
   extends PreactCustomElement
@@ -4512,23 +5815,21 @@ declare class OptionGroup
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$q]: OptionGroup;
+    [tagName$m]: OptionGroup;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$q]: HTMLAttributes<HTMLElement> & ReactProps$q;
+      [tagName$m]: HTMLAttributes<HTMLElement> & OptionGroupJSXProps;
     }
   }
 }
 
-export interface OrderedListProps extends OrderedListProps$1 {}
+declare const tagName$m = 's-option-group';
+export interface OptionGroupJSXProps extends Partial<OptionGroupProps> {}
 
-declare const tagName$p = 's-ordered-list';
-export interface ReactProps$p
-  extends Partial<OrderedListProps>,
-    Pick<OrderedListProps$1, 'id'> {}
+export interface OrderedListProps extends OrderedListProps$1 {}
 
 declare class OrderedList
   extends PreactCustomElement
@@ -4538,42 +5839,21 @@ declare class OrderedList
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$p]: OrderedList;
+    [tagName$l]: OrderedList;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$p]: HTMLAttributes<HTMLElement> & ReactProps$p;
+      [tagName$l]: HTMLAttributes<HTMLElement> & OrderedListJSXProps;
     }
   }
 }
 
-export interface PageProps {
-  inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large'>;
-}
-
-declare const tagName$o = 's-page';
-export interface ReactProps$o extends Partial<PageProps> {
-  aside?: ComponentChild;
-}
-
-declare class Page extends PreactCustomElement implements PageProps {
-  accessor inlineSize: PageProps['inlineSize'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$o]: Page;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$o]: HTMLAttributes<HTMLElement> & ReactProps$o;
-    }
-  }
-}
+declare const tagName$l = 's-ordered-list';
+export interface OrderedListJSXProps
+  extends Partial<OrderedListProps>,
+    Pick<OrderedListProps$1, 'id'> {}
 
 export interface ParagraphProps
   extends Required<
@@ -4585,11 +5865,6 @@ export interface ParagraphProps
   color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
   lineClamp: Extract<ParagraphProps$1['lineClamp'], number>;
 }
-
-declare const tagName$n = 's-paragraph';
-export interface ReactProps$n
-  extends Partial<ParagraphProps>,
-    Pick<ParagraphProps$1, 'id'> {}
 
 declare class Paragraph extends PreactCustomElement implements ParagraphProps {
   accessor fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
@@ -4606,16 +5881,21 @@ declare class Paragraph extends PreactCustomElement implements ParagraphProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$n]: Paragraph;
+    [tagName$k]: Paragraph;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$n]: HTMLAttributes<HTMLElement> & ReactProps$n;
+      [tagName$k]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
     }
   }
 }
+
+declare const tagName$k = 's-paragraph';
+export interface ParagraphJSXProps
+  extends Partial<ParagraphProps>,
+    Pick<ParagraphProps$1, 'id'> {}
 
 export type PasswordFieldProps = PreactFieldProps<
   Required<PasswordFieldProps$1>['autocomplete']
@@ -4639,12 +5919,6 @@ export type PasswordFieldProps = PreactFieldProps<
     >
   >;
 
-declare const tagName$m = 's-password-field';
-export interface ReactProps$m
-  extends Partial<PasswordFieldProps>,
-    Pick<PasswordFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$m> {}
-
 declare class PasswordField
   extends PreactFieldElement<PasswordFieldProps['autocomplete']>
   implements PasswordFieldProps
@@ -4655,65 +5929,22 @@ declare class PasswordField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$m]: PasswordField;
+    [tagName$j]: PasswordField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$m]: HTMLAttributes<HTMLElement> & ReactProps$m;
+      [tagName$j]: HTMLAttributes<HTMLElement> & PasswordFieldJSXProps;
     }
   }
 }
 
-export type SearchFieldProps = PreactFieldProps<
-  Required<TextFieldProps$1>['autocomplete']
-> &
-  Required<
-    Pick<
-      TextFieldProps$1,
-      | 'defaultValue'
-      | 'details'
-      | 'disabled'
-      | 'error'
-      | 'labelAccessibilityVisibility'
-      | 'minLength'
-      | 'maxLength'
-      | 'label'
-      | 'name'
-      | 'placeholder'
-      | 'readOnly'
-      | 'required'
-      | 'value'
-    >
-  >;
-
-declare const tagName$l = 's-search-field';
-export interface ReactProps$l
-  extends Partial<SearchFieldProps>,
-    Pick<TextFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$l> {}
-
-declare class SearchField
-  extends PreactFieldElement<SearchFieldProps['autocomplete']>
-  implements SearchFieldProps
-{
-  accessor maxLength: SearchFieldProps['maxLength'];
-  accessor minLength: SearchFieldProps['minLength'];
-  constructor();
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$l]: SearchField;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$l]: HTMLAttributes<HTMLElement> & ReactProps$l;
-    }
-  }
-}
+declare const tagName$j = 's-password-field';
+export interface PasswordFieldJSXProps
+  extends Partial<PasswordFieldProps>,
+    Pick<PasswordFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName$j> {}
 
 export type RequiredSectionProps = Required<SectionProps$1>;
 export interface SectionProps {
@@ -4721,11 +5952,6 @@ export interface SectionProps {
   heading: RequiredSectionProps['heading'];
   padding: RequiredSectionProps['padding'];
 }
-
-declare const tagName$k = 's-section';
-export interface ReactProps$k
-  extends Partial<SectionProps>,
-    Pick<SectionProps$1, 'id'> {}
 
 declare class Section extends PreactCustomElement implements SectionProps {
   constructor();
@@ -4736,16 +5962,21 @@ declare class Section extends PreactCustomElement implements SectionProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$k]: Section;
+    [tagName$i]: Section;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$k]: HTMLAttributes<HTMLElement> & ReactProps$k;
+      [tagName$i]: HTMLAttributes<HTMLElement> & SectionJSXProps;
     }
   }
 }
+
+declare const tagName$i = 's-section';
+export interface SectionJSXProps
+  extends Partial<SectionProps>,
+    Pick<SectionProps$1, 'id'> {}
 
 export type SelectProps = PreactInputProps &
   Required<
@@ -4763,14 +5994,6 @@ export type SelectProps = PreactInputProps &
       | 'labelAccessibilityVisibility'
     >
   >;
-
-declare const tagName$j = 's-select';
-export interface ReactProps$j extends Partial<SelectProps> {
-  onChange?: (event: CallbackEvent<typeof tagName$j>) => void;
-  onInput?: (event: CallbackEvent<typeof tagName$j>) => void;
-  onBlur?: (event: CallbackEvent<typeof tagName$j>) => void;
-  onFocus?: (event: CallbackEvent<typeof tagName$j>) => void;
-}
 
 declare const usedFirstOptionSymbol: unique symbol;
 declare const hasInitialValueSymbol: unique symbol;
@@ -4799,15 +6022,23 @@ declare class Select extends PreactInputElement implements SelectProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$j]: Select;
+    [tagName$h]: Select;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$j]: HTMLAttributes<HTMLElement> & ReactProps$j;
+      [tagName$h]: HTMLAttributes<HTMLElement> & SelectJSXProps;
     }
   }
+}
+
+declare const tagName$h = 's-select';
+export interface SelectJSXProps extends Partial<SelectProps> {
+  onChange?: (event: CallbackEvent<typeof tagName$h>) => void;
+  onInput?: (event: CallbackEvent<typeof tagName$h>) => void;
+  onBlur?: (event: CallbackEvent<typeof tagName$h>) => void;
+  onFocus?: (event: CallbackEvent<typeof tagName$h>) => void;
 }
 
 export interface SpinnerProps
@@ -4820,11 +6051,6 @@ export interface SpinnerProps
   size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
 }
 
-declare const tagName$i = 's-spinner';
-export interface ReactProps$i
-  extends Partial<SpinnerProps>,
-    Pick<SpinnerProps$1, 'id'> {}
-
 declare class Spinner extends PreactCustomElement implements SpinnerProps {
   accessor accessibilityLabel: string;
   accessor size: SpinnerProps['size'];
@@ -4832,16 +6058,21 @@ declare class Spinner extends PreactCustomElement implements SpinnerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$i]: Spinner;
+    [tagName$g]: Spinner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$i]: Omit<HTMLAttributes<HTMLElement>, 'size'> & ReactProps$i;
+      [tagName$g]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
     }
   }
 }
+
+declare const tagName$g = 's-spinner';
+export interface SpinnerJSXProps
+  extends Partial<SpinnerProps>,
+    Pick<SpinnerProps$1, 'id'> {}
 
 export type AlignedStackProps = Required<StackProps$1>;
 export interface StackProps extends BoxProps {
@@ -4853,11 +6084,6 @@ export interface StackProps extends BoxProps {
   columnGap: MakeResponsive<AlignedStackProps['columnGap']>;
   direction: MakeResponsive<AlignedStackProps['direction']>;
 }
-
-declare const tagName$h = 's-stack';
-export interface ReactProps$h
-  extends Partial<StackProps>,
-    Pick<StackProps$1, 'id'> {}
 
 declare class Stack extends BoxElement implements StackProps {
   constructor();
@@ -4871,16 +6097,21 @@ declare class Stack extends BoxElement implements StackProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$h]: Stack;
+    [tagName$f]: Stack;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: HTMLAttributes<HTMLElement> & ReactProps$h;
+      [tagName$f]: HTMLAttributes<HTMLElement> & StackJSXProps;
     }
   }
 }
+
+declare const tagName$f = 's-stack';
+export interface StackJSXProps
+  extends Partial<StackProps>,
+    Pick<StackProps$1, 'id'> {}
 
 export interface TableProps
   extends Required<
@@ -4890,13 +6121,6 @@ export interface TableProps
     >
   > {
   variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
-}
-
-declare const tagName$g = 's-table';
-export interface ReactProps$g
-  extends Partial<TableProps>,
-    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
-  filters?: ComponentChild;
 }
 
 export interface TableHeaderProps {
@@ -4922,8 +6146,8 @@ declare class Table extends PreactCustomElement implements TableProps {
   accessor paginate: TableProps['paginate'];
   accessor hasPreviousPage: TableProps['hasPreviousPage'];
   accessor hasNextPage: TableProps['hasNextPage'];
-  accessor onpreviouspage: CallbackEventListener<typeof tagName$g> | null;
-  accessor onnextpage: CallbackEventListener<typeof tagName$g> | null;
+  accessor onpreviouspage: CallbackEventListener<typeof tagName$e> | null;
+  accessor onnextpage: CallbackEventListener<typeof tagName$e> | null;
   /**
    * The actual table variant, which is either 'table' or 'list'.
    */
@@ -4939,67 +6163,67 @@ declare class Table extends PreactCustomElement implements TableProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$g]: Table;
+    [tagName$e]: Table;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: HTMLAttributes<HTMLElement> & ReactProps$g;
+      [tagName$e]: HTMLAttributes<HTMLElement> & TableJSXProps;
     }
   }
 }
 
-export interface TableBodyProps extends TableBodyProps$1 {}
+declare const tagName$e = 's-table';
+export interface TableJSXProps
+  extends Partial<TableProps>,
+    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {}
 
-declare const tagName$f = 's-table-body';
-export interface ReactProps$f
-  extends Partial<TableBodyProps>,
-    Pick<TableBodyProps$1, 'id'> {}
+export interface TableBodyProps extends TableBodyProps$1 {}
 
 declare class TableBody extends PreactCustomElement implements TableBodyProps {
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: TableBody;
+    [tagName$d]: TableBody;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: HTMLAttributes<HTMLElement> & ReactProps$f;
+      [tagName$d]: HTMLAttributes<HTMLElement> & TableBodyJSXProps;
     }
   }
 }
 
-export interface TableCellProps extends TableCellProps$1 {}
+declare const tagName$d = 's-table-body';
+export interface TableBodyJSXProps
+  extends Partial<TableBodyProps>,
+    Pick<TableBodyProps$1, 'id'> {}
 
-declare const tagName$e = 's-table-cell';
-export interface ReactProps$e
-  extends Partial<TableCellProps>,
-    Pick<TableCellProps$1, 'id'> {}
+export interface TableCellProps extends TableCellProps$1 {}
 
 declare class TableCell extends PreactCustomElement implements TableCellProps {
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: TableCell;
+    [tagName$c]: TableCell;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: HTMLAttributes<HTMLElement> & ReactProps$e;
+      [tagName$c]: HTMLAttributes<HTMLElement> & TableCellJSXProps;
     }
   }
 }
 
-declare const tagName$d = 's-table-header';
-export interface ReactProps$d
-  extends Partial<TableHeaderProps>,
-    Pick<TableHeaderProps$1, 'id'> {}
+declare const tagName$c = 's-table-cell';
+export interface TableCellJSXProps
+  extends Partial<TableCellProps>,
+    Pick<TableCellProps$1, 'id'> {}
 
 declare class TableHeader
   extends PreactCustomElement
@@ -5010,23 +6234,23 @@ declare class TableHeader
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: TableHeader;
+    [tagName$b]: TableHeader;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: HTMLAttributes<HTMLElement> & ReactProps$d;
+      [tagName$b]: HTMLAttributes<HTMLElement> & TableHeaderJSXProps;
     }
   }
 }
 
-export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
+declare const tagName$b = 's-table-header';
+export interface TableHeaderJSXProps
+  extends Partial<TableHeaderProps>,
+    Pick<TableHeaderProps$1, 'id'> {}
 
-declare const tagName$c = 's-table-header-row';
-export interface ReactProps$c
-  extends Partial<TableHeaderRowProps>,
-    Pick<TableHeaderRowProps$1, 'id'> {}
+export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
 
 declare class TableHeaderRow
   extends PreactCustomElement
@@ -5038,39 +6262,44 @@ declare class TableHeaderRow
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: TableHeaderRow;
+    [tagName$a]: TableHeaderRow;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: HTMLAttributes<HTMLElement> & ReactProps$c;
+      [tagName$a]: HTMLAttributes<HTMLElement> & TableHeaderRowJSXProps;
     }
   }
 }
 
-export interface TableRowProps extends TableRowProps$1 {}
+declare const tagName$a = 's-table-header-row';
+export interface TableHeaderRowJSXProps
+  extends Partial<TableHeaderRowProps>,
+    Pick<TableHeaderRowProps$1, 'id'> {}
 
-declare const tagName$b = 's-table-row';
-export interface ReactProps$b
-  extends Partial<TableRowProps>,
-    Pick<TableRowProps$1, 'id'> {}
+export interface TableRowProps extends TableRowProps$1 {}
 
 declare class TableRow extends PreactCustomElement implements TableRowProps {
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: TableRow;
+    [tagName$9]: TableRow;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: HTMLAttributes<HTMLElement> & ReactProps$b;
+      [tagName$9]: HTMLAttributes<HTMLElement> & TableRowJSXProps;
     }
   }
 }
+
+declare const tagName$9 = 's-table-row';
+export interface TableRowJSXProps
+  extends Partial<TableRowProps>,
+    Pick<TableRowProps$1, 'id'> {}
 
 export interface TextProps
   extends Required<
@@ -5091,11 +6320,6 @@ export interface TextProps
   >;
 }
 
-declare const tagName$a = 's-text';
-export interface ReactProps$a
-  extends Partial<TextProps>,
-    Pick<TextProps$1, 'id'> {}
-
 declare class Text extends PreactCustomElement implements TextProps {
   accessor display: TextProps['display'];
   accessor fontVariantNumeric: TextProps['fontVariantNumeric'];
@@ -5108,27 +6332,26 @@ declare class Text extends PreactCustomElement implements TextProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: Text;
+    [tagName$8]: Text;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: HTMLAttributes<HTMLElement> & ReactProps$a;
+      [tagName$8]: HTMLAttributes<HTMLElement> & TextJSXProps;
     }
   }
 }
+
+declare const tagName$8 = 's-text';
+export interface TextJSXProps
+  extends Partial<TextProps>,
+    Pick<TextProps$1, 'id'> {}
 
 export type TextAreaProps = PreactFieldProps<
   Required<TextAreaProps$1>['autocomplete']
 > &
   Required<Pick<TextAreaProps$1, 'maxLength' | 'minLength' | 'rows'>>;
-
-declare const tagName$9 = 's-text-area';
-export interface ReactProps$9
-  extends Partial<TextAreaProps>,
-    Pick<TextAreaProps$1, 'id'>,
-    FieldReactProps<typeof tagName$9> {}
 
 declare class TextArea
   extends PreactFieldElement<TextAreaProps['autocomplete']>
@@ -5141,16 +6364,22 @@ declare class TextArea
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: TextArea;
+    [tagName$7]: TextArea;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: HTMLAttributes<HTMLElement> & ReactProps$9;
+      [tagName$7]: HTMLAttributes<HTMLElement> & TextAreaJSXProps;
     }
   }
 }
+
+declare const tagName$7 = 's-text-area';
+export interface TextAreaJSXProps
+  extends Partial<TextAreaProps>,
+    Pick<TextAreaProps$1, 'id'>,
+    FieldReactProps<typeof tagName$7> {}
 
 export type TextFieldProps = PreactFieldProps<
   Required<TextFieldProps$1>['autocomplete']
@@ -5161,14 +6390,6 @@ export type TextFieldProps = PreactFieldProps<
       'icon' | 'maxLength' | 'minLength' | 'prefix' | 'suffix'
     >
   >;
-
-declare const tagName$8 = 's-text-field';
-export interface ReactProps$8
-  extends Partial<Omit<TextFieldProps, 'accessory'>>,
-    Pick<TextFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$8> {
-  accessory?: ComponentChild;
-}
 
 declare class TextField
   extends PreactFieldElement<TextFieldProps['autocomplete']>
@@ -5183,27 +6404,29 @@ declare class TextField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: TextField;
+    [tagName$6]: TextField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: HTMLAttributes<HTMLElement> & ReactProps$8;
+      [tagName$6]: HTMLAttributes<HTMLElement> & TextFieldJSXProps;
     }
   }
+}
+
+declare const tagName$6 = 's-text-field';
+export interface TextFieldJSXProps
+  extends Partial<Omit<TextFieldProps, 'accessory'>>,
+    Pick<TextFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName$6> {
+  accessory?: ComponentChild;
 }
 
 export type URLFieldProps = PreactFieldProps<
   Required<URLFieldProps$1>['autocomplete']
 > &
   Required<Pick<URLFieldProps$1, 'maxLength' | 'minLength'>>;
-
-declare const tagName$7 = 's-url-field';
-export interface ReactProps$7
-  extends Partial<Omit<URLFieldProps, 'accessory'>>,
-    Pick<URLFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$7> {}
 
 declare class URLField
   extends PreactFieldElement<URLFieldProps['autocomplete']>
@@ -5216,23 +6439,24 @@ declare class URLField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$7]: URLField;
+    [tagName$5]: URLField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: HTMLAttributes<HTMLElement> & ReactProps$7;
+      [tagName$5]: HTMLAttributes<HTMLElement> & URLFieldJSXProps;
     }
   }
 }
 
-export interface UnorderedListProps extends UnorderedListProps$1 {}
+declare const tagName$5 = 's-url-field';
+export interface URLFieldJSXProps
+  extends Partial<Omit<URLFieldProps, 'accessory'>>,
+    Pick<URLFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName$5> {}
 
-declare const tagName$6 = 's-unordered-list';
-export interface ReactProps$6
-  extends Partial<UnorderedListProps>,
-    Pick<UnorderedListProps$1, 'id'> {}
+export interface UnorderedListProps extends UnorderedListProps$1 {}
 
 declare class UnorderedList
   extends PreactCustomElement
@@ -5242,22 +6466,27 @@ declare class UnorderedList
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$6]: UnorderedList;
+    [tagName$4]: UnorderedList;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: HTMLAttributes<HTMLElement> & ReactProps$6;
+      [tagName$4]: HTMLAttributes<HTMLElement> & UnorderedListJSXProps;
     }
   }
 }
 
+declare const tagName$4 = 's-unordered-list';
+export interface UnorderedListJSXProps
+  extends Partial<UnorderedListProps>,
+    Pick<UnorderedListProps$1, 'id'> {}
+
 export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
 
-declare const tagName$5 = 's-admin-action';
-export interface ReactProps$5
+declare const tagName$3 = 's-admin-action';
+export interface AdminActionJSXProps
   extends Partial<AdminActionProps>,
     Pick<AdminActionProps$1, 'id'> {
   primaryAction: ComponentChild;
@@ -5274,13 +6503,13 @@ declare class AdminAction
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$5]: AdminAction;
+    [tagName$3]: AdminAction;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$5]: HTMLAttributes<HTMLElement> & ReactProps$5;
+      [tagName$3]: HTMLAttributes<HTMLElement> & AdminActionJSXProps;
     }
   }
 }
@@ -5288,8 +6517,8 @@ declare module 'preact' {
 export interface AdminBlockProps
   extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}
 
-declare const tagName$4 = 's-admin-block';
-export interface ReactProps$4
+declare const tagName$2 = 's-admin-block';
+export interface AdminBlockJSXProps
   extends Partial<AdminBlockProps>,
     Pick<AdminBlockProps$1, 'id'> {}
 
@@ -5303,13 +6532,13 @@ declare class AdminBlock
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$4]: AdminBlock;
+    [tagName$2]: AdminBlock;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$4]: HTMLAttributes<HTMLElement> & ReactProps$4;
+      [tagName$2]: HTMLAttributes<HTMLElement> & AdminBlockJSXProps;
     }
   }
 }
@@ -5317,8 +6546,8 @@ declare module 'preact' {
 export interface AdminPrintActionProps
   extends Pick<AdminPrintActionProps$1, 'src'> {}
 
-declare const tagName$3 = 's-admin-print-action';
-export interface ReactProps$3
+declare const tagName$1 = 's-admin-print-action';
+export interface AdminPrintActionJSXProps
   extends Partial<AdminPrintActionProps>,
     Pick<AdminPrintActionProps$1, 'id'> {}
 
@@ -5331,80 +6560,38 @@ declare class AdminPrintAction
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$3]: AdminPrintAction;
+    [tagName$1]: AdminPrintAction;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$3]: HTMLAttributes<HTMLElement> & ReactProps$3;
+      [tagName$1]: HTMLAttributes<HTMLElement> & AdminPrintActionJSXProps;
     }
   }
 }
 
-export interface ReactProps$2 extends Partial<CustomerSegmentTemplateProps> {
-  id?: string;
-}
-
-declare const tagName$2 = 's-customer-segment-template';
-/**
- * Reserved namespace and key for the customer standard metafield used in the template's query.
- * More info - https://shopify.dev/docs/apps/custom-data/metafields/definitions/standard
- */
-export type CustomerStandardMetafieldDependency = 'facts.birth_date';
-export interface CustomerSegmentTemplateProps {
-  /**
-   * The localized title of the template.
-   */
-  title: string;
-  /**
-   * The localized description of the template. An array can be used for multiple paragraphs.
-   */
-  description: string | string[];
-  /**
-   * The code snippet to render in the template with syntax highlighting. The `query` is not validated in the template.
-   */
-  query: string;
-  /**
-   * The code snippet to insert in the segment editor. If missing, `query` will be used. The `queryToInsert` is not validated in the template.
-   */
-  queryToInsert: string;
-  /**
-   * The list of customer standard metafields or custom metafields used in the template's query.
-   */
-  dependencies?: {
-    standardMetafields?: CustomerStandardMetafieldDependency[];
-    customMetafields?: string[];
-  };
-  /**
-   * ISO 8601-encoded date and time string. A "New" badge will be rendered for templates introduced in the last month.
-   */
-  createdOn: string;
-}
-declare class CustomerSegmentTemplate
-  extends PreactCustomElement
-  implements CustomerSegmentTemplateProps
-{
+declare const tagName = 's-form';
+export interface FormProps {}
+declare class Form extends PreactCustomElement implements FormProps {
   constructor();
-  description: string | string[];
-  query: string;
-  queryToInsert: string;
-  createdOn: string;
+  accessor onsubmit: ((event: ExtendableEvent) => void) | null;
+  accessor onreset: ((event: ExtendableEvent) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$2]: CustomerSegmentTemplate;
+    [tagName]: Form;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$2]: HTMLAttributes<HTMLElement> & ReactProps$2;
+      [tagName]: HTMLAttributes<HTMLElement> & FormJSXProps;
     }
   }
 }
 
-export interface ReactProps$1 extends Partial<FormProps> {
+export interface FormJSXProps extends Partial<FormProps> {
   id?: string;
   /**
    * A callback that is run when the form is submitted.
@@ -5416,104 +6603,91 @@ export interface ReactProps$1 extends Partial<FormProps> {
   onReset?: ((event: ExtendableEvent) => void) | null;
 }
 
-declare const tagName$1 = 's-form';
-export interface FormProps {}
-declare class Form extends PreactCustomElement implements FormProps {
-  constructor();
-  accessor onsubmit: ((event: ExtendableEvent) => void) | null;
-  accessor onreset: ((event: ExtendableEvent) => void) | null;
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$1]: Form;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$1]: HTMLAttributes<HTMLElement> & ReactProps$1;
-    }
-  }
-}
-
-export interface ReactProps extends Partial<FunctionSettingsProps> {
-  id?: string;
-}
-
-declare const tagName = 's-function-settings';
-export interface FunctionSettingsProps {
-  /**
-   * A unique identifier for the form.
-   */
-  id?: string;
-}
-declare class FunctionSettings
-  extends PreactCustomElement
-  implements FunctionSettingsProps
-{
-  constructor();
-  accessor onsave: CallbackEventListener<typeof tagName> | null;
-  accessor onerror: OnErrorEventHandler;
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName]: FunctionSettings;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
-    }
-  }
-}
-
 export {
   AdminAction,
+  type AdminActionJSXProps,
   AdminBlock,
+  type AdminBlockJSXProps,
   AdminPrintAction,
+  type AdminPrintActionJSXProps,
   Badge,
+  type BadgeJSXProps,
   Banner,
+  type BannerJSXProps,
   Box,
+  type BoxJSXProps,
   Button,
+  type ButtonJSXProps,
   Checkbox,
+  type CheckboxJSXProps,
   Choice,
+  type ChoiceJSXProps,
   ChoiceList,
+  type ChoiceListJSXProps,
   Clickable,
-  CustomerSegmentTemplate,
+  type ClickableJSXProps,
   Divider,
+  type DividerJSXProps,
   EmailField,
+  type EmailFieldJSXProps,
   Form,
-  FunctionSettings,
+  type FormJSXProps,
   Grid,
   GridItem,
+  type GridItemJSXProps,
+  type GridJSXProps,
   Heading,
+  type HeadingJSXProps,
   Icon,
+  type IconJSXProps,
   Image,
+  type ImageJSXProps,
   Link,
+  type LinkJSXProps,
   ListItem,
+  type ListItemJSXProps,
   MoneyField,
+  type MoneyFieldJSXProps,
   NumberField,
+  type NumberFieldJSXProps,
   Option,
   OptionGroup,
+  type OptionGroupJSXProps,
+  type OptionJSXProps,
   OrderedList,
-  Page,
+  type OrderedListJSXProps,
   Paragraph,
+  type ParagraphJSXProps,
   PasswordField,
-  SearchField,
+  type PasswordFieldJSXProps,
   Section,
+  type SectionJSXProps,
   Select,
+  type SelectJSXProps,
   Spinner,
+  type SpinnerJSXProps,
   Stack,
+  type StackJSXProps,
   Table,
   TableBody,
+  type TableBodyJSXProps,
   TableCell,
+  type TableCellJSXProps,
   TableHeader,
+  type TableHeaderJSXProps,
   TableHeaderRow,
+  type TableHeaderRowJSXProps,
+  type TableJSXProps,
   TableRow,
+  type TableRowJSXProps,
   Text,
   TextArea,
+  type TextAreaJSXProps,
   TextField,
+  type TextFieldJSXProps,
+  type TextJSXProps,
   URLField,
+  type URLFieldJSXProps,
   UnorderedList,
+  type UnorderedListJSXProps,
 };

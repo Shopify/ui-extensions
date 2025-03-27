@@ -4,11 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {
-  MoneyFieldProps$1,
-  ComponentChild,
-  JSXInternal,
-} from './shared.d.ts';
+import type {MoneyFieldProps$1, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -158,11 +154,16 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
+export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
   extends PreactFieldProps,
-    Required<
-      Pick<MoneyFieldProps$1, 'max' | 'min' | 'step' | 'currencyCode'>
-    > {}
+    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step' | 'currencyCode'> {}
+
+declare const tagName = 's-money-field';
+export interface ReactProps
+  extends Partial<MoneyFieldProps>,
+    FieldReactProps<typeof tagName>,
+    Pick<MoneyFieldProps$1, 'id'> {}
 
 declare class MoneyField
   extends PreactFieldElement<MoneyFieldProps['autocomplete']>
@@ -184,22 +185,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & MoneyFieldJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & MoneyFieldJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-money-field';
-export interface MoneyFieldJSXProps
-  extends Partial<MoneyFieldProps>,
-    FieldReactProps<typeof tagName>,
-    Pick<MoneyFieldProps$1, 'id'> {}
-
-export {MoneyField, type MoneyFieldJSXProps};
+export {MoneyField};

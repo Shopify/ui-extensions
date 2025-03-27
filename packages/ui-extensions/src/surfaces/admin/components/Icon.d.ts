@@ -4,12 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {
-  IconProps$1,
-  IconType,
-  ComponentChild,
-  JSXInternal,
-} from './shared.d.ts';
+import type {IconProps$1, IconType, ComponentChild} from './shared.d.ts';
 
 export interface IconProps {
   type: '' | IconType | 'empty';
@@ -20,6 +15,11 @@ export interface IconProps {
   color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
   size: Extract<IconProps$1['size'], 'small' | 'base'>;
 }
+
+declare const tagName = 's-icon';
+export interface ReactProps
+  extends Partial<IconProps>,
+    Pick<IconProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -94,21 +94,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & IconJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & IconJSXProps;
+      [tagName]: Omit<HTMLAttributes<HTMLElement>, 'size'> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-icon';
-export interface IconJSXProps
-  extends Partial<IconProps>,
-    Pick<IconProps$1, 'id'> {}
-
-export {Icon, type IconJSXProps};
+export {Icon};

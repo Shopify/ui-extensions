@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {CheckboxProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {CheckboxProps$1, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -111,6 +111,14 @@ export type CheckboxProps = PreactInputProps &
     >
   >;
 
+declare const tagName = 's-checkbox';
+export interface ReactProps
+  extends Partial<CheckboxProps>,
+    Pick<CheckboxProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+
 declare class Checkbox extends PreactInputElement implements CheckboxProps {
   get checked(): boolean;
   set checked(checked: CheckboxProps['checked']);
@@ -136,24 +144,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & CheckboxJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & CheckboxJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-checkbox';
-export interface CheckboxJSXProps
-  extends Partial<CheckboxProps>,
-    Pick<CheckboxProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-
-export {Checkbox, type CheckboxJSXProps};
+export {Checkbox};

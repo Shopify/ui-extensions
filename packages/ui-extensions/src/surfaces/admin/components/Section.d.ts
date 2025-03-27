@@ -3,7 +3,7 @@
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
-import type {SectionProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {SectionProps$1, ComponentChild} from './shared.d.ts';
 
 export type RequiredSectionProps = Required<SectionProps$1>;
 export interface SectionProps {
@@ -11,6 +11,11 @@ export interface SectionProps {
   heading: RequiredSectionProps['heading'];
   padding: RequiredSectionProps['padding'];
 }
+
+declare const tagName = 's-section';
+export interface ReactProps
+  extends Partial<SectionProps>,
+    Pick<SectionProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -85,21 +90,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & SectionJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & SectionJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-section';
-export interface SectionJSXProps
-  extends Partial<SectionProps>,
-    Pick<SectionProps$1, 'id'> {}
-
-export {Section, type SectionJSXProps};
+export {Section};

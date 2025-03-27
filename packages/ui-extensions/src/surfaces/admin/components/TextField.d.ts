@@ -4,11 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {
-  ComponentChild,
-  TextFieldProps$1,
-  JSXInternal,
-} from './shared.d.ts';
+import type {ComponentChild, TextFieldProps$1} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -168,6 +164,14 @@ export type TextFieldProps = PreactFieldProps<
     >
   >;
 
+declare const tagName = 's-text-field';
+export interface ReactProps
+  extends Partial<Omit<TextFieldProps, 'accessory'>>,
+    Pick<TextFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName> {
+  accessory?: ComponentChild;
+}
+
 declare class TextField
   extends PreactFieldElement<TextFieldProps['autocomplete']>
   implements TextFieldProps
@@ -187,24 +191,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TextFieldJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TextFieldJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-text-field';
-export interface TextFieldJSXProps
-  extends Partial<Omit<TextFieldProps, 'accessory'>>,
-    Pick<TextFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName> {
-  accessory?: ComponentChild;
-}
-
-export {TextField, type TextFieldJSXProps};
+export {TextField};

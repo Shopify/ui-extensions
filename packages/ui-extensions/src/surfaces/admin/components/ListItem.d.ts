@@ -7,6 +7,11 @@ import type {ListItemProps$1, ComponentChild} from './shared.d.ts';
 
 export interface ListItemProps extends ListItemProps$1 {}
 
+declare const tagName = 's-list-item';
+export interface ReactProps
+  extends Partial<ListItemProps>,
+    Pick<ListItemProps$1, 'id'> {}
+
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -76,14 +81,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ListItemJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-list-item';
-export interface ListItemJSXProps
-  extends Partial<ListItemProps>,
-    Pick<ListItemProps$1, 'id'> {}
-
-export {ListItem, type ListItemJSXProps};
+export {ListItem};

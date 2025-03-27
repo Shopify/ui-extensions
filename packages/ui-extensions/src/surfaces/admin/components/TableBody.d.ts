@@ -3,13 +3,14 @@
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
-import type {
-  TableBodyProps$1,
-  ComponentChild,
-  JSXInternal,
-} from './shared.d.ts';
+import type {TableBodyProps$1, ComponentChild} from './shared.d.ts';
 
 export interface TableBodyProps extends TableBodyProps$1 {}
+
+declare const tagName = 's-table-body';
+export interface ReactProps
+  extends Partial<TableBodyProps>,
+    Pick<TableBodyProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -80,21 +81,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TableBodyJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TableBodyJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-table-body';
-export interface TableBodyJSXProps
-  extends Partial<TableBodyProps>,
-    Pick<TableBodyProps$1, 'id'> {}
-
-export {TableBody, type TableBodyJSXProps};
+export {TableBody};

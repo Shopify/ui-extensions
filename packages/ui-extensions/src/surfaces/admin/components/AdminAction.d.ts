@@ -3,22 +3,15 @@
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
-import type {
-  ComponentChild,
-  AdminActionProps$1,
-  JSXInternal,
-} from './shared.d.ts';
+import type {ComponentChild, AdminActionProps$1} from './shared.d.ts';
 
 export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
 
 declare const tagName = 's-admin-action';
-export interface AdminActionJSXProps
+export interface ReactProps
   extends Partial<AdminActionProps>,
-    Pick<AdminActionProps$1, 'id'> {
-  primaryAction: ComponentChild;
-  secondaryActions: ComponentChild;
-}
+    Pick<AdminActionProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -94,16 +87,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & AdminActionJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & AdminActionJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-export {AdminAction, type AdminActionJSXProps};
+export {AdminAction};

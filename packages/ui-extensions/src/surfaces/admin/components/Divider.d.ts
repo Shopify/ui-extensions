@@ -4,12 +4,17 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {DividerProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {DividerProps$1, ComponentChild} from './shared.d.ts';
 
 export interface DividerProps {
   direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
   color: Extract<DividerProps$1['color'], 'subdued' | 'base' | 'strong'>;
 }
+
+declare const tagName = 's-divider';
+export interface ReactProps
+  extends Partial<DividerProps>,
+    Pick<DividerProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -82,21 +87,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & DividerJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & DividerJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-divider';
-export interface DividerJSXProps
-  extends Partial<DividerProps>,
-    Pick<DividerProps$1, 'id'> {}
-
-export {Divider, type DividerJSXProps};
+export {Divider};

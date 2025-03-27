@@ -3,17 +3,13 @@
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
-import type {
-  AdminBlockProps$1,
-  JSXInternal,
-  ComponentChild,
-} from './shared.d.ts';
+import type {AdminBlockProps$1, ComponentChild} from './shared.d.ts';
 
 export interface AdminBlockProps
   extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}
 
 declare const tagName = 's-admin-block';
-export interface AdminBlockJSXProps
+export interface ReactProps
   extends Partial<AdminBlockProps>,
     Pick<AdminBlockProps$1, 'id'> {}
 
@@ -91,16 +87,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & AdminBlockJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & AdminBlockJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-export {AdminBlock, type AdminBlockJSXProps};
+export {AdminBlock};

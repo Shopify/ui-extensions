@@ -4,11 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {
-  TableHeaderProps$1,
-  ComponentChild,
-  JSXInternal,
-} from './shared.d.ts';
+import type {TableHeaderProps$1, ComponentChild} from './shared.d.ts';
 
 export interface TableHeaderProps {
   listSlot: Extract<
@@ -16,6 +12,11 @@ export interface TableHeaderProps {
     'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
   >;
 }
+
+declare const tagName = 's-table-header';
+export interface ReactProps
+  extends Partial<TableHeaderProps>,
+    Pick<TableHeaderProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -90,21 +91,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TableHeaderJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TableHeaderJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-table-header';
-export interface TableHeaderJSXProps
-  extends Partial<TableHeaderProps>,
-    Pick<TableHeaderProps$1, 'id'> {}
-
-export {TableHeader, type TableHeaderJSXProps};
+export {TableHeader};

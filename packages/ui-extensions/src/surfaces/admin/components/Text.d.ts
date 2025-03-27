@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {TextProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {TextProps$1, ComponentChild} from './shared.d.ts';
 
 export interface TextProps
   extends Required<
@@ -24,6 +24,11 @@ export interface TextProps
     'auto' | 'normal' | 'tabular-nums'
   >;
 }
+
+declare const tagName = 's-text';
+export interface ReactProps
+  extends Partial<TextProps>,
+    Pick<TextProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -101,21 +106,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TextJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & TextJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-text';
-export interface TextJSXProps
-  extends Partial<TextProps>,
-    Pick<TextProps$1, 'id'> {}
-
-export {Text, type TextJSXProps};
+export {Text};

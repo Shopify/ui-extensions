@@ -4,12 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {
-  BadgeProps$1,
-  IconType,
-  ComponentChild,
-  JSXInternal,
-} from './shared.d.ts';
+import type {BadgeProps$1, IconType, ComponentChild} from './shared.d.ts';
 
 export interface IconProps {
   type: '' | IconType | 'empty';
@@ -30,6 +25,11 @@ export interface BadgeProps {
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
   >;
 }
+
+declare const tagName = 's-badge';
+export interface ReactProps
+  extends Partial<BadgeProps>,
+    Pick<BadgeProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -104,21 +104,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & BadgeJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & BadgeJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-badge';
-export interface BadgeJSXProps
-  extends Partial<BadgeProps>,
-    Pick<BadgeProps$1, 'id'> {}
-
-export {Badge, type BadgeJSXProps};
+export {Badge};

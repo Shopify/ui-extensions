@@ -4,14 +4,14 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {ComponentChild, BannerProps$1, JSXInternal} from './shared.d.ts';
+import type {ComponentChild, BannerProps$1} from './shared.d.ts';
 
 export type RequiredBannerProps = Required<BannerProps$1>;
 export interface BannerProps
   extends Pick<RequiredBannerProps, 'heading' | 'dismissible' | 'hidden'> {
   tone: Extract<
     RequiredBannerProps['tone'],
-    'critical' | 'warning' | 'success' | 'info'
+    'auto' | 'critical' | 'warning' | 'success' | 'info'
   >;
 }
 
@@ -23,6 +23,15 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
+
+declare const tagName = 's-banner';
+export interface ReactProps
+  extends Partial<BannerProps>,
+    Pick<BannerProps$1, 'id'> {
+  secondaryActions?: ComponentChild;
+  onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -99,25 +108,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & BannerJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & BannerJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-banner';
-export interface BannerJSXProps
-  extends Partial<BannerProps>,
-    Pick<BannerProps$1, 'id'> {
-  secondaryActions?: ComponentChild;
-  onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-
-export {Banner, type BannerJSXProps};
+export {Banner};

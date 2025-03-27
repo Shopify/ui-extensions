@@ -5,7 +5,6 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 
 import type {EmailFieldProps$1, ComponentChild} from './shared.d.ts';
-import * as preact_compat from 'preact/compat';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -160,10 +159,17 @@ export type EmailFieldProps = PreactFieldProps<
 > &
   Required<Pick<EmailFieldProps$1, 'maxLength' | 'minLength'>>;
 
+declare const tagName = 's-email-field';
+export interface ReactProps
+  extends Partial<Omit<EmailFieldProps, 'accessory'>>,
+    Pick<EmailFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName> {}
+
 declare class EmailField
   extends PreactFieldElement<EmailFieldProps['autocomplete']>
   implements EmailFieldProps
 {
+  accessor autocomplete: EmailFieldProps['autocomplete'];
   accessor maxLength: EmailFieldProps['maxLength'];
   accessor minLength: EmailFieldProps['minLength'];
   constructor();
@@ -176,23 +182,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & EmailFieldJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: preact_compat.JSXInternal.HTMLAttributes<HTMLElement> &
-        EmailFieldJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-email-field';
-export interface EmailFieldJSXProps
-  extends Partial<Omit<EmailFieldProps, 'accessory'>>,
-    Pick<EmailFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName> {}
-
-export {EmailField, type EmailFieldJSXProps};
+export {EmailField};

@@ -7,7 +7,6 @@ import type {
   BoxProps$1,
   MaybeAllValuesShorthandProperty,
   ComponentChild,
-  JSXInternal,
 } from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -68,6 +67,9 @@ export interface BoxProps {
   display: AlignedBox['display'];
   overflow: AlignedBox['overflow'];
 }
+
+declare const tagName = 's-box';
+export interface ReactProps extends Partial<BoxProps>, Pick<BoxProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -166,21 +168,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & BoxJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & BoxJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-box';
-export interface BoxJSXProps
-  extends Partial<BoxProps>,
-    Pick<BoxProps$1, 'id'> {}
-
-export {Box, type BoxJSXProps};
+export {Box};

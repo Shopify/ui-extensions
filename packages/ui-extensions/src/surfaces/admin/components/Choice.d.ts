@@ -4,7 +4,7 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {ChoiceProps$1, ComponentChild, JSXInternal} from './shared.d.ts';
+import type {ChoiceProps$1, ComponentChild} from './shared.d.ts';
 
 export interface ChoiceProps
   extends Required<
@@ -19,6 +19,11 @@ export interface ChoiceProps
       | 'details'
     >
   > {}
+
+declare const tagName = 's-choice';
+export interface ReactProps
+  extends Partial<ChoiceProps>,
+    Pick<ChoiceProps$1, 'id'> {}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -97,21 +102,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ChoiceJSXProps;
-    }
-  }
-}
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & ChoiceJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-declare const tagName = 's-choice';
-export interface ChoiceJSXProps
-  extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id'> {}
-
-export {Choice, type ChoiceJSXProps};
+export {Choice};
