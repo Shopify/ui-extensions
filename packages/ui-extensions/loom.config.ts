@@ -87,11 +87,13 @@ export default createPackage((pkg) => {
               join(`./build/ts/surfaces/${surface}/targets`),
             );
             const targetPath = join(directory, fileName);
-
-            const template = `/// <reference types="../components/${componentSet?.replaceAll(
-              '"',
-              '',
-            )}" />\nimport type {ExtensionTargets} from '../extension-targets';
+            const componentsReference = componentSet
+              ? `/// <reference types="../components/${componentSet?.replaceAll(
+                  '"',
+                  '',
+                )}" />\n`
+              : '';
+            const template = `import type {ExtensionTargets} from '../extension-targets';
 type Target = ExtensionTargets[${target}];
 export type Api = Target['api'];
 export type Output = Target['output'];
@@ -103,7 +105,7 @@ declare global {
             if (!existsSync(directory)) {
               mkdirSync(directory);
             }
-            writeFileSync(targetPath, template);
+            writeFileSync(targetPath, componentsReference.concat(template));
           });
         },
       },

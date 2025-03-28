@@ -6488,10 +6488,7 @@ export interface AdminActionProps
 declare const tagName$3 = 's-admin-action';
 export interface AdminActionJSXProps
   extends Partial<AdminActionProps>,
-    Pick<AdminActionProps$1, 'id'> {
-  primaryAction: ComponentChild;
-  secondaryActions: ComponentChild;
-}
+    Pick<AdminActionProps$1, 'id'> {}
 
 declare class AdminAction
   extends PreactCustomElement
