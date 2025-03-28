@@ -60,22 +60,66 @@ while IFS= read -r file; do
     if [ -f "$EXAMPLES_DIR/default.html" ]; then
       cp "$EXAMPLES_DIR/default.html" "$EXAMPLES_DIR/preview.html"
       
-      # Add prefix and suffix content to preview.html
-      echo "<!DOCTYPE html>
+      # Determine the layout type from the doc file
+      LAYOUT="default"
+      if grep -q "layout: 'inline'" "$file"; then
+        LAYOUT="inline"
+      elif grep -q "layout: 'section'" "$file"; then
+        LAYOUT="section"
+      fi
+      
+      # Add prefix and suffix content based on layout type
+      if [ "$LAYOUT" = "inline" ]; then
+        echo "<!DOCTYPE html>
 <html>
   <head>
-    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script></head><body><div>
     <style>
-      body {
-        background-color: rgba(241, 241, 241, 1);
-        margin: 20px;
-      }
+      html, body {height:100%}
+      body { box-sizing: border-box; margin: 0; padding:0.5rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;}
     </style>
   </head>
   <body>" > temp_file
+      elif [ "$LAYOUT" = "section" ]; then
+        echo "<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script></head><body><div>
+    <style>
+      html, body {height:100%}
+      body { box-sizing: border-box; margin: 0; padding:0.5rem; display: grid; place-items: center; background: #F1F1F1;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <s-section padding="none">" > temp_file
+      else # default layout
+        echo "<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script></head><body><div>
+    <style>
+      html, body {height:100%}
+      body { box-sizing: border-box; margin: 0; padding:0.5rem; display: grid; place-items: center; gap: 0.5rem;}
+    </style>
+  </head>
+  <body>
+    <div>" > temp_file
+      fi
+
       cat "$EXAMPLES_DIR/preview.html" >> temp_file
-      echo "</body>
+
+      if [ "$LAYOUT" = "section" ]; then
+        echo "</s-section>
+    </div>
+</body>
 </html>" >> temp_file
+      else
+        echo "</div>
+</body>
+</html>" >> temp_file
+      fi
+      
       mv temp_file "$EXAMPLES_DIR/preview.html"
     fi
   fi
