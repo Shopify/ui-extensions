@@ -734,12 +734,8 @@ type ExtractedAllowedComponentsFromRenderExtension<T> =
 /**
  * @deprecated Use `ExtractedApiFromExtensionDefinition` instead.
  */
-type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
-  infer Api,
-  any
->
-  ? Api
-  : never;
+type ExtractedApiFromRenderExtension<T> =
+  T extends RenderExtension<infer Api, any> ? Api : never;
 
 /**
  * Deprecated. Use `ApiForExtension` instead.

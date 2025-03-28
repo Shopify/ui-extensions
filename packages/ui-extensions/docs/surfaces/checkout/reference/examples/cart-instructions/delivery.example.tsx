@@ -35,7 +35,7 @@ function Extension() {
     );
   } else {
     return (
-      <Banner status="warning">
+      <Banner tone="warning">
         Shipping address cannot be modified
       </Banner>
     );

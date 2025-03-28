@@ -57,7 +57,6 @@ export type {
   MaybeShorthandProperty,
   NonPresentationalAccessibilityRole,
   OverlayActivatorProps,
-  PaymentMethod,
   PopoverPosition,
   RenderExtension,
   RenderExtensions,

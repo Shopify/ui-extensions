@@ -10,12 +10,13 @@ export const REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2 =
 
 type NonEmptyArray<T> = [T, ...T[]];
 type ExtensionExampleLanguage = 'js' | 'jsx' | 'toml';
-type ExtensionCodeTabConfig = {
-  [key in ExtensionExampleLanguage]: {
+type ExtensionCodeTabConfig = Record<
+  ExtensionExampleLanguage,
+  {
     title: string;
     fileExtension: 'ts' | 'tsx' | 'toml';
-  };
-};
+  }
+>;
 const codeExampleTabConfig: ExtensionCodeTabConfig = {
   js: {
     title: 'JavaScript',

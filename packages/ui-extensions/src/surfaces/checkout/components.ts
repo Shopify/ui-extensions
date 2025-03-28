@@ -1,3 +1,5 @@
+export type {AbbreviationProps} from './components/Abbreviation/Abbreviation';
+
 export {Badge} from './components/Badge/Badge';
 export type {BadgeProps} from './components/Badge/Badge';
 
@@ -123,10 +125,7 @@ export {Modal} from './components/Modal/Modal';
 export type {ModalProps} from './components/Modal/Modal';
 
 export {PaymentIcon} from './components/PaymentIcon/PaymentIcon';
-export type {
-  PaymentIconProps,
-  PaymentMethod,
-} from './components/PaymentIcon/PaymentIcon';
+export type {PaymentIconProps} from './components/PaymentIcon/PaymentIcon';
 
 export {PhoneField} from './components/PhoneField/PhoneField';
 export type {PhoneFieldProps} from './components/PhoneField/PhoneField';
@@ -188,6 +187,8 @@ export type {TextBlockProps} from './components/TextBlock/TextBlock';
 export {TextField} from './components/TextField/TextField';
 export type {TextFieldProps} from './components/TextField/TextField';
 
+export type {TimeProps} from './components/Time/Time';
+
 export {Tooltip} from './components/Tooltip/Tooltip';
 export type {TooltipProps} from './components/Tooltip/Tooltip';
 
@@ -243,6 +244,7 @@ export type {
   Spacing,
   SizingProps,
   SpacingProps,
+  TextSize,
   ViewLikeAccessibilityRole,
   VisibilityProps,
 } from './components/shared';

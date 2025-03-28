@@ -33,7 +33,7 @@ function Extension() {
     );
   } else {
     return (
-      <Banner status="warning">
+      <Banner tone="warning">
         Loyalty discounts are unavailable
       </Banner>
     );
