@@ -26,6 +26,39 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description: 'Link to an app page',
+        image: 'link-default.png',
+        codeblock: {
+          tabs: [
+            {
+              title: 'JSX',
+              code: './examples/app.html',
+              language: 'jsx',
+            },
+          ],
+          title: 'App Link',
+        },
+      },
+      {
+        description: 'Link to a Shopify admin page',
+        image: 'shopify-section-link.png',
+        codeblock: {
+          tabs: [
+            {
+              title: 'JSX',
+              code: './examples/shopify-section.html',
+              language: 'jsx',
+            },
+          ],
+          title: 'Shopify Section Link',
+        },
+      },
+    ],
+  },
 };
 
 export default data;
