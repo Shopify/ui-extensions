@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'JSX',
-          code: './examples/default.html',
+          code: './examples/default.jsx',
           language: 'jsx',
         },
         {
