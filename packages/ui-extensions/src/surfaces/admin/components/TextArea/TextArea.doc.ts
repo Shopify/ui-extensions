@@ -4,6 +4,7 @@ import shared from './shared';
 
 const data: ReferenceEntityTemplateSchema = {
   ...shared,
+  category: 'Components',
   defaultExample: {
     image: 'textarea-default.png',
     codeblock: {

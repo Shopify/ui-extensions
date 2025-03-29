@@ -13,7 +13,6 @@ const shared = {
       type: 'PasswordField',
     },
   ],
-  category: 'Components',
   subCategory: 'Forms',
   related: [
     {

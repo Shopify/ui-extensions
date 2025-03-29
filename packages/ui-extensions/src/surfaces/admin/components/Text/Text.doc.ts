@@ -3,6 +3,7 @@ import shared from './shared';
 
 const data: ReferenceEntityTemplateSchema = {
   ...shared,
+  category: 'Components',
   defaultExample: {
     image: 'text-default.png',
     codeblock: {
@@ -10,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'JSX',
-          code: './examples/default.html',
+          code: './examples/default.jsx',
           language: 'jsx',
         },
         {

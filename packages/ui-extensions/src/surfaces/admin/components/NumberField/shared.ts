@@ -13,7 +13,6 @@ const shared = {
       type: 'NumberField',
     },
   ],
-  category: 'Components',
   subCategory: 'Forms',
   related: [
     {

@@ -13,7 +13,6 @@ const shared = {
       type: 'Icon',
     },
   ],
-  category: 'Components',
   subCategory: 'Media',
   related: [
     {

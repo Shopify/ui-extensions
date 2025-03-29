@@ -13,7 +13,6 @@ const shared = {
       type: 'MoneyField',
     },
   ],
-  category: 'Components',
   subCategory: 'Forms',
   related: [
     {

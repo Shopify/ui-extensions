@@ -13,7 +13,6 @@ const shared = {
       type: 'UnorderedList',
     },
   ],
-  category: 'Components',
   subCategory: 'Structure',
   related: [
     {

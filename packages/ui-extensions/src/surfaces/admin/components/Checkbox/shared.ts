@@ -13,7 +13,6 @@ const shared = {
       type: 'Checkbox',
     },
   ],
-  category: 'Components',
   subCategory: 'Forms',
   related: [
     {

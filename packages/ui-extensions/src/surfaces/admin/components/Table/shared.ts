@@ -13,7 +13,6 @@ const shared = {
       type: 'Table',
     },
   ],
-  category: 'Components',
   subCategory: 'Structure',
   related: [
     {

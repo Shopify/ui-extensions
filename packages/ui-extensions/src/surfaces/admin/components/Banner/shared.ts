@@ -13,7 +13,6 @@ const shared = {
       type: 'Banner',
     },
   ],
-  category: 'Components',
   subCategory: 'Feedback',
   related: [
     {

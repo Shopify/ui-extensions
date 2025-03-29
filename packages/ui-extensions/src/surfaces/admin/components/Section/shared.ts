@@ -13,7 +13,6 @@ const shared = {
       type: 'Section',
     },
   ],
-  category: 'Components',
   subCategory: 'Structure',
   related: [
     {

@@ -12,7 +12,6 @@ const shared = {
       type: 'Image',
     },
   ],
-  category: 'Components',
   subCategory: 'Media',
   related: [
     {
