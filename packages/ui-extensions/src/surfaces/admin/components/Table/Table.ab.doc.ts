@@ -17,6 +17,9 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'HTML',
           code: './examples/default.html', // This gets updated in build-ab-docs.sh
           language: 'preview', // Do not edit. This is required for Live Previews
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          layout: 'section',
         },
       ],
     },
