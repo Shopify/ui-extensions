@@ -13,7 +13,6 @@ const shared = {
       type: 'Select',
     },
   ],
-  category: 'Components',
   subCategory: 'Forms',
   related: [
     {

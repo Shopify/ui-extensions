@@ -5,6 +5,7 @@ import shared from './shared';
 // @ts-ignore
 const data: ReferenceEntityTemplateSchema = {
   ...shared,
+  category: 'Experimental Components',
   defaultExample: {
     image: 'banner-default.png',
     codeblock: {

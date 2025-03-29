@@ -13,7 +13,6 @@ const shared = {
       type: 'EmailField',
     },
   ],
-  category: 'Components',
   subCategory: 'Forms',
   related: [
     {

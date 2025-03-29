@@ -14,7 +14,6 @@ const shared = {
       type: 'TextField',
     },
   ],
-  category: 'Components',
   subCategory: 'Forms',
   related: [
     {

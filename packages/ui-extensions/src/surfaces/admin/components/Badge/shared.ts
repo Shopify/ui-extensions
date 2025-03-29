@@ -13,7 +13,6 @@ const shared = {
       type: 'Badge',
     },
   ],
-  category: 'Components',
   subCategory: 'Titles and text',
   related: [
     {

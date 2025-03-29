@@ -13,7 +13,6 @@ const shared = {
       type: 'Heading',
     },
   ],
-  category: 'Components',
   subCategory: 'Titles and text',
   related: [
     {

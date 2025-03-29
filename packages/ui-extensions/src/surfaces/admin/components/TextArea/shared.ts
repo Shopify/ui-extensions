@@ -13,7 +13,6 @@ const shared = {
       type: 'TextArea',
     },
   ],
-  category: 'Components',
   subCategory: 'Forms',
   related: [
     {

@@ -12,7 +12,6 @@ const shared = {
       type: 'URLField',
     },
   ],
-  category: 'Components',
   subCategory: 'Forms',
   related: [
     {

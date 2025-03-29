@@ -3,6 +3,7 @@ import shared from './shared';
 
 const data: ReferenceEntityTemplateSchema = {
   ...shared,
+  category: 'Components',
   defaultExample: {
     image: 'table-default.png',
     codeblock: {

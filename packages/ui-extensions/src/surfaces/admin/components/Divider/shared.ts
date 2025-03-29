@@ -13,7 +13,6 @@ const shared = {
       type: 'Divider',
     },
   ],
-  category: 'Components',
   subCategory: 'Structure',
   related: [
     {

@@ -13,7 +13,6 @@ const shared = {
       type: 'Spinner',
     },
   ],
-  category: 'Components',
   subCategory: 'Feedback',
   related: [
     {

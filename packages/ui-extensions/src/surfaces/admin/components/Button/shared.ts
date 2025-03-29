@@ -13,7 +13,6 @@ const shared = {
       type: 'Button',
     },
   ],
-  category: 'Components',
   subCategory: 'Actions',
   related: [
     {

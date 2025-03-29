@@ -13,7 +13,6 @@ const shared = {
       type: 'Clickable',
     },
   ],
-  category: 'Components',
   subCategory: 'Actions',
   related: [
     {

@@ -13,7 +13,6 @@ const shared = {
       type: 'Grid',
     },
   ],
-  category: 'Components',
   subCategory: 'Structure',
   related: [
     {

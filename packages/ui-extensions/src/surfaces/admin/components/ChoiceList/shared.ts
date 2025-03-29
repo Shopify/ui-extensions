@@ -13,7 +13,6 @@ const shared = {
       type: 'ChoiceList',
     },
   ],
-  category: 'Components',
   subCategory: 'Forms',
   related: [
     {
