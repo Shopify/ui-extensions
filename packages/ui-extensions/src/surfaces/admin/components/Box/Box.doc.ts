@@ -1,22 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import shared from './shared';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Box',
-  description:
-    'This is your foundational structural element for composing UI. It can be styled using predefined tokens. Use it to build your layout.',
-  requires: '',
-  thumbnail: 'box-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Box',
-      description: '',
-      type: 'Box',
-    },
-  ],
-  category: 'Components',
-  subCategory: 'Structure',
+  ...shared,
   defaultExample: {
     image: 'box-default.png',
     codeblock: {
@@ -29,14 +15,12 @@ const data: ReferenceEntityTemplateSchema = {
         },
         {
           title: 'HTML',
-          code: './examples/default.html',
-          language: 'preview',
+          code: './examples/default.html', // This gets updated in build-ab-docs.sh
+          language: 'preview', // Do not edit. This is required for Live Previews
         },
       ],
     },
   },
-
-  related: [],
 };
 
 export default data;

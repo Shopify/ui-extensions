@@ -1,22 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import shared from './shared';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Divider',
-  description:
-    'Use this to create a clear visual separation between different elements in your user interface.',
-  requires: '',
-  thumbnail: 'divider-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Divider',
-      description: '',
-      type: 'Divider',
-    },
-  ],
-  category: 'Components',
-  subCategory: 'Structure',
+  ...shared,
   defaultExample: {
     image: 'divider-default.png',
     codeblock: {
@@ -29,14 +15,15 @@ const data: ReferenceEntityTemplateSchema = {
         },
         {
           title: 'HTML',
-          code: './examples/default.html',
-          language: 'preview-admin-in-section',
+          code: './examples/default.html', // This gets updated in build-ab-docs.sh
+          language: 'preview', // Do not edit. This is required for Live Previews
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          layout: 'section',
         },
       ],
     },
   },
-
-  related: [],
 };
 
 export default data;

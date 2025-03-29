@@ -3,14 +3,14 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'AdminPrintAction',
   description:
-    'AdminPrintAction is a component used by admin print action extensions to denote a URL to print. Admin print action extensions require the use of this component.',
+    '`s-admin-print-action` is a component used by admin print action extensions to denote a URL to print. Admin print action extensions require the use of this component.',
   requires: '',
   thumbnail: 'adminprintaction-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'AdminPrintActionProps',
+      title: 'Properties',
       description: '',
       type: 'AdminPrintActionProps',
     },

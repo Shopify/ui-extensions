@@ -1,21 +1,8 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import shared from './shared';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Image',
-  description: 'Use this when you want to display an image.',
-  requires: '',
-  thumbnail: 'image-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Image',
-      description: '',
-      type: 'Image',
-    },
-  ],
-  category: 'Components',
-  subCategory: 'Media',
+  ...shared,
   defaultExample: {
     image: 'image-default.png',
     codeblock: {
@@ -28,20 +15,12 @@ const data: ReferenceEntityTemplateSchema = {
         },
         {
           title: 'HTML',
-          code: './examples/default.html',
-          language: 'preview',
+          code: './examples/default.html', // This gets updated in build-ab-docs.sh
+          language: 'preview', // Do not edit. This is required for Live Previews
         },
       ],
     },
   },
-
-  related: [
-    {
-      type: 'component',
-      name: 'Icon',
-      url: '/docs/api/admin-extensions/components/media/icon',
-    },
-  ],
 };
 
 export default data;

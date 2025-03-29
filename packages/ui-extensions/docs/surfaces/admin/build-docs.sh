@@ -33,9 +33,97 @@ else
   echo "If you need to update the 'unstable' version, run this command again without the '$API_VERSION' parameter."
 fi
 
-# COMPILE_COMPONENT_DOCS="yarn tsc --project ./docs/surfaces/${surface}/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && generate-docs --input ./src/surfaces/${surface}/components/* ./src/surfaces/${surface}/api/* --typesInput ./src --output ./docs/surfaces/${surface}/generated && rm -rf ../../src/surfaces/${surface}/**/**/*.doc.js"
-# COMPILE_API_DOCS="yarn tsc --project ./docs/${surface}/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && generate-docs --input ./src/surfaces/${surface}/components/* --typesInput ./src --output ./docs/surfaces/${surface}/generated && rm -rf ./src/surfaces/${surface}/components/**/*.doc.js"
-# COMPILE_STATIC_PAGES="yarn tsc ./docs/surfaces/${surface}/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && generate-docs --isLandingPage --input ./docs/surfaces/${surface}/staticPages --output ./docs/surfaces/${surface}/generated && rm -rf ./docs/surfaces/${surface}/staticPages/*.doc.js"
+# Read tsconfig.ab.docs.json and extract include/exclude patterns
+# Find all .doc.ts files in SRC_PATH
+FIND_CMD="find ./$SRC_PATH -name '*.doc.ts'"
+
+# Store original files for restoration
+declare -a MODIFIED_FILES
+
+echo "Creating preview files and updating references..."
+while IFS= read -r file; do
+  # Check if the file contains a reference to default.html with preview language
+  if grep -q "language: 'preview'" "$file"; then
+    # Add file to modified list if not already there
+    if [[ ! " ${MODIFIED_FILES[@]} " =~ " ${file} " ]]; then
+      cp "$file" "$file.bak"
+      MODIFIED_FILES+=("$file")
+    fi
+    
+    # Replace default.html with preview.html in preview code blocks
+    run_sed "s|code: './examples/default.html', // This gets updated in build-ab-docs.sh|code: './examples/preview.html',|" "$file"
+    
+    # Get the directory containing the examples
+    EXAMPLES_DIR=$(dirname "$file")/examples
+    
+    # Check if default.html exists and create preview.html
+    if [ -f "$EXAMPLES_DIR/default.html" ]; then
+      cp "$EXAMPLES_DIR/default.html" "$EXAMPLES_DIR/preview.html"
+      
+      # Determine the layout type from the doc file
+      LAYOUT="default"
+      if grep -q "layout: 'inline'" "$file"; then
+        LAYOUT="inline"
+      elif grep -q "layout: 'section'" "$file"; then
+        LAYOUT="section"
+      fi
+      
+      # Add prefix and suffix content based on layout type
+      if [ "$LAYOUT" = "inline" ]; then
+        echo "<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script></head><body><div>
+    <style>
+      html, body {height:100%}
+      body { box-sizing: border-box; margin: 0; padding:0.5rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;}
+    </style>
+  </head>
+  <body>" > temp_file
+      elif [ "$LAYOUT" = "section" ]; then
+        echo "<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script></head><body><div>
+    <style>
+      html, body {height:100%}
+      body { box-sizing: border-box; margin: 0; padding:0.5rem; display: grid; place-items: center; background: #F1F1F1;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <s-section padding="none">" > temp_file
+      else # default layout
+        echo "<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script></head><body><div>
+    <style>
+      html, body {height:100%}
+      body { box-sizing: border-box; margin: 0; padding:0.5rem; display: grid; place-items: center; gap: 0.5rem;}
+    </style>
+  </head>
+  <body>
+    <div>" > temp_file
+      fi
+
+      cat "$EXAMPLES_DIR/preview.html" >> temp_file
+
+      if [ "$LAYOUT" = "section" ]; then
+        echo "</s-section>
+    </div>
+</body>
+</html>" >> temp_file
+      else
+        echo "</div>
+</body>
+</html>" >> temp_file
+      fi
+      
+      mv temp_file "$EXAMPLES_DIR/preview.html"
+    fi
+  fi
+done < <(eval "$FIND_CMD")
 
 COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH --output ./$DOCS_PATH/generated"
 COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
@@ -52,6 +140,20 @@ build_exit=$?
 find ./ -name '*.doc*.js' -exec rm -r {} \;
 # Remove components.ts as it's no longer needed
 rm $COMPONENTS_TS
+
+# Remove shared.js files
+find . -name "shared.js" -type f -delete
+
+# Restore original files
+for file in "${MODIFIED_FILES[@]}"; do
+  if [ -f "$file.bak" ]; then
+    mv "$file.bak" "$file"
+  fi
+done
+
+# Clean up any preview.html files we created
+echo "Cleaning up preview files..."
+find ./$SRC_PATH -name 'preview.html' -exec rm {} \;
 
 if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit

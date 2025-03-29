@@ -1,47 +1,39 @@
-import {useState} from 'react';
-import {
-  reactExtension,
-  AdminBlock,
-  BlockStack,
-  TextField,
-  NumberField,
-  Form,
-} from '@shopify/ui-extensions-react/admin';
+import { useState } from 'preact/hooks';
 
-const TARGET = 'admin.product-details.block.render';
-
-export default reactExtension(TARGET, () => <App />);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 const defaultValues = {
   text: 'default value',
   number: 50,
 };
 
-function App() {
+function Extension() {
   const [textValue, setTextValue] = useState('');
   const [numberValue, setNumberValue] = useState('');
 
   return (
-    <AdminBlock title="My Block Extension">
-      <Form
+    <s-admin-block title="My Block Extension">
+      <s-form
         onSubmit={() => console.log('submit', {textValue, numberValue})}
         onReset={() => console.log('automatically reset values')}
       >
-        <BlockStack>
-          <TextField
+        <s-stack direction="block" gap="base">
+          <s-text-field
             label="Default Value"
             defaultValue={defaultValues.text}
             value={textValue}
             onChange={setTextValue}
           />
-          <NumberField
+          <s-number-field
             label="Percentage field"
             defaultValue={defaultValues.number}
             value={numberValue}
             onChange={setNumberValue}
           />
-        </BlockStack>
-      </Form>
-    </AdminBlock>
+        </s-stack>
+      </s-form>
+    </s-admin-block>
   );
 }

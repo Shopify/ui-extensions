@@ -3,14 +3,14 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'AdminBlock',
   description:
-    'This component is similar to the AdminBlock, providing a deeper integration with the container your UI is rendered into. However, this only applies to Block Extensions which render inline on a resource page.',
+    '`s-admin-block` is similar to the AdminBlock, providing a deeper integration with the container your UI is rendered into. However, this only applies to Block Extensions which render inline on a resource page.',
   requires: '',
   thumbnail: 'adminblock-thumbnail.png',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'AdminBlockProps',
+      title: 'Properties',
       description: '',
       type: 'AdminBlockProps',
     },

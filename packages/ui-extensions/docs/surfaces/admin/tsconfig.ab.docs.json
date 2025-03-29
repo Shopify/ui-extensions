@@ -3,8 +3,8 @@
     "rootDir": "/"
   },
   "include": [
-    "./**/*.doc.ts",
-    "../../../src/surfaces/admin/components/**/*.doc.ts"
+    "./**/*.ab.doc.ts",
+    "../../../src/surfaces/admin/components/**/*.ab.doc.ts"
   ],
   "exclude": [
     "../../../src/surfaces/admin/components/AdminAction/*",
