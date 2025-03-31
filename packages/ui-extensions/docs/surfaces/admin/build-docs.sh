@@ -159,6 +159,9 @@ if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit
 fi
 
+echo "Adding isOptional: true to members that don't have it..."
+node "$(dirname "$0")/remove-required.js" "$GENERATED_DOCS_JSON"
+
 # Make sure https://shopify.dev URLs are relative so they work in Spin.
 # See https://github.com/Shopify/generate-docs/issues/181
 run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json

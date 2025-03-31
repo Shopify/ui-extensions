@@ -1,7 +1,7 @@
 /* eslint-disable no-undef, no-console */
 const fs = require('fs');
 
-const generatedDocsPath = process.argv[1];
+const generatedDocsPath = process.argv[2];
 const data = JSON.parse(fs.readFileSync(generatedDocsPath, 'utf8'));
 
 let modified = false;
