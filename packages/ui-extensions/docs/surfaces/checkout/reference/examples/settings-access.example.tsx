@@ -11,5 +11,5 @@ export default reactExtension(
 
 function Extension() {
   const {banner_title} = useSettings();
-  return <Banner heading={banner_title} />;
+  return <Banner title={banner_title} />;
 }

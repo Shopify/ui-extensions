@@ -59,8 +59,8 @@ function Extension() {
   return (
     <BlockStack spacing="base">
       <Banner
-        tone="info"
-        heading={`${title}${deliverySelectionGroupInfo}`}
+        status="info"
+        title={`${title}${deliverySelectionGroupInfo}`}
       />
       <Checkbox
         onChange={onCheckboxChange}

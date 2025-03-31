@@ -9,5 +9,5 @@ export default reactExtension(
 );
 
 function Extension() {
-  return <PaymentIcon type="shop-pay" />;
+  return <PaymentIcon name="shop-pay" />;
 }

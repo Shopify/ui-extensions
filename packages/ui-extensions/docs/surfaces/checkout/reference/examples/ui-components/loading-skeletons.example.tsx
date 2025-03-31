@@ -63,8 +63,8 @@ export const LoadingStateSkeletons = () => {
       </>
     ) : (
       <>
-        <Text type="strong">{title}</Text>
-        <Text color="subdued">
+        <Text emphasis="bold">{title}</Text>
+        <Text appearance="subdued">
           {variantTitle}
         </Text>
       </>
@@ -89,7 +89,7 @@ export const LoadingStateSkeletons = () => {
       {loading ? (
         <SkeletonText>{item.price}</SkeletonText>
       ) : (
-        <Text type="strong">{item.price}</Text>
+        <Text emphasis="bold">{item.price}</Text>
       )}
     </InlineLayout>
   );

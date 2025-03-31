@@ -11,8 +11,8 @@ export default reactExtension(
 function Extension() {
   return (
     <Banner
-      tone="critical"
-      heading="Your payment details couldn’t be verified. Check your card details and try again."
+      status="critical"
+      title="Your payment details couldn’t be verified. Check your card details and try again."
     />
   );
 }

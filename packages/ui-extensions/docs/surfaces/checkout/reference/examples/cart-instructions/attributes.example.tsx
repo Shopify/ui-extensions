@@ -34,7 +34,7 @@ function Extension() {
     );
   } else {
     return (
-      <Banner tone="warning">
+      <Banner status="warning">
         Loyalty points are unavailable
       </Banner>
     );

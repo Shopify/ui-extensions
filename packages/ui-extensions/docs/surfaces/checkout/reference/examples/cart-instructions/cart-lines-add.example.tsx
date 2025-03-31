@@ -33,7 +33,7 @@ function Extension() {
     );
   } else {
     return (
-      <Banner tone="warning">
+      <Banner status="warning">
         The products in your cart cannot be
         modified
       </Banner>
