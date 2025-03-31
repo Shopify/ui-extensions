@@ -1,12 +1,29 @@
 import {createRemoteComponent} from '@remote-ui/core';
-import type {SpinnerProps as BaseSpinnerProps} from '@shopify/ui-api-design/dist/components/Spinner';
 
-export interface SpinnerProps
-  extends Pick<BaseSpinnerProps, 'accessibilityLabel' | 'id'> {
-  size?: Extract<
-    BaseSpinnerProps['size'],
-    'small-100' | 'small' | 'base' | 'large' | 'large-100'
-  >;
+import type {Appearance, IdProps, Size} from '../shared';
+
+export interface SpinnerProps extends IdProps {
+  /**
+   * Adjusts the size of the icon.
+   *
+   * @defaultValue 'base'
+   */
+  size?: Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'fill'>;
+
+  /**
+   * Sets the appearance (color) of the icon.
+   *
+   * @defaultValue 'accent'
+   */
+  appearance?: Extract<Appearance, 'accent' | 'monochrome'>;
+
+  /**
+   * A label to use for the Spinner that will be used for buyers using
+   * assistive technologies like screen readers. If will also be used to replace
+   * the animated loading indicator when buyers prefers reduced motion. If not included,
+   * it will use the loading indicator for all buyers.
+   */
+  accessibilityLabel?: string;
 }
 
 /**
