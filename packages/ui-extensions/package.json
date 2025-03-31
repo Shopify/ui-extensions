@@ -40,13 +40,17 @@
     }
   },
   "license": "MIT",
-  "sideEffects": true,
+  "sideEffects": [
+    "./build/esnext/preact.esnext",
+    "./build/esm/preact.mjs",
+    "./build/cjs/preact.js"
+  ],
   "devDependencies": {
     "@shopify/generate-docs": "0.16.4",
     "typescript": "^4.9.0"
   },
   "optionalDependencies": {
-    "@preact/signals": "^2.0.2"
+    "@preact/signals": "*"
   },
   "publishConfig": {
     "access": "public",
