@@ -179,7 +179,7 @@ if [ $sed_exit -ne 0 ]; then
 fi
 
 echo "Adding isOptional: true to members that don't have it..."
-node ./remove-required.js "$GENERATED_DOCS_JSON"
+node "$(dirname "$0")/remove-required.js" "$GENERATED_DOCS_JSON"
 
 if [ -d $SHOPIFY_DEV_PATH ]; then
   mkdir -p $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/app_bridge
