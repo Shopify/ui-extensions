@@ -39,9 +39,7 @@ function Extension() {
             spacing="none"
           >
             <Text>100</Text>
-            <Text appearance="subdued">
-              points
-            </Text>
+            <Text color="subdued">points</Text>
           </BlockStack>
         </ToggleButton>
         <ToggleButton id="points-200">
@@ -50,9 +48,7 @@ function Extension() {
             spacing="none"
           >
             <Text>200</Text>
-            <Text appearance="subdued">
-              points
-            </Text>
+            <Text color="subdued">points</Text>
           </BlockStack>
         </ToggleButton>
         <ToggleButton id="points-300">
@@ -61,9 +57,7 @@ function Extension() {
             spacing="none"
           >
             <Text>300</Text>
-            <Text appearance="subdued">
-              points
-            </Text>
+            <Text color="subdued">points</Text>
           </BlockStack>
         </ToggleButton>
       </InlineLayout>

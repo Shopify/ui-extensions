@@ -30,7 +30,7 @@ function Extension() {
     );
   } else {
     return (
-      <Banner status="warning">
+      <Banner tone="warning">
         Free gifts cannot be added to this order
       </Banner>
     );
