@@ -31,13 +31,26 @@
       "esnext": "./build/esnext/surfaces/admin.esnext",
       "import": "./build/esm/surfaces/admin.mjs",
       "require": "./build/cjs/surfaces/admin.js"
+    },
+    "./preact": {
+      "types": "./build/ts/preact.d.ts",
+      "esnext": "./build/esnext/preact.esnext",
+      "import": "./build/esm/preact.mjs",
+      "require": "./build/cjs/preact.js"
     }
   },
   "license": "MIT",
-  "sideEffects": false,
+  "sideEffects": [
+    "./build/esnext/preact.esnext",
+    "./build/esm/preact.mjs",
+    "./build/cjs/preact.js"
+  ],
   "devDependencies": {
     "@shopify/generate-docs": "0.16.4",
     "typescript": "^4.9.0"
+  },
+  "optionalDependencies": {
+    "@preact/signals": "*"
   },
   "publishConfig": {
     "access": "public",
