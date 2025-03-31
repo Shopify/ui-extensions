@@ -21,6 +21,11 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseLanguageGeneratedType',
     },
     {
+      title: 'useLocalizationCountry',
+      description: 'TDB',
+      type: 'UseLocalizationCountryGeneratedType',
+    },
+    {
       title: 'useExtensionLanguage',
       description:
         'Returns the language the buyer sees in the customer account hub.',

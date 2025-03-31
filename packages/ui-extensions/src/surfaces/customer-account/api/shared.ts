@@ -6,6 +6,7 @@ import type {
   Capability,
   CurrencyCode,
   Timezone,
+  Country,
   CountryCode,
   GraphQLError,
   StorefrontApiVersion,
@@ -16,6 +17,7 @@ export {
   Capability,
   CurrencyCode,
   Timezone,
+  Country,
   CountryCode,
   GraphQLError,
   StorefrontApiVersion,
@@ -369,6 +371,15 @@ export interface PurchasingCompany {
    * Include information of the company of the logged in business customer.
    */
   company: Company;
+
+  location: CompanyLocation;
+}
+
+export interface CompanyLocation {
+  /**
+   * Company location ID.
+   */
+  id: string;
 }
 
 export interface Company {
