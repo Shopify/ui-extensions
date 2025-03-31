@@ -3690,9 +3690,6 @@ export interface ButtonProps extends ButtonBaseProps {
   icon: IconProps['type'];
 }
 
-export interface PublicPreactCustomElementAPI {
-  queueRender(): void;
-}
 export interface PreactOverlayControlProps
   extends Required<Pick<InteractionProps, 'commandFor'>> {
   command: Extract<
@@ -3702,8 +3699,7 @@ export interface PreactOverlayControlProps
 }
 
 declare const Button_base: new (args_0: RenderImpl) => PreactCustomElement &
-  PreactOverlayControlProps &
-  PublicPreactCustomElementAPI;
+  PreactOverlayControlProps;
 declare class Button extends Button_base implements ButtonProps {
   accessor disabled: ButtonProps['disabled'];
   accessor icon: ButtonProps['icon'];
@@ -3941,8 +3937,7 @@ export interface ClickableProps
     ClickableBaseProps {}
 
 declare const Clickable_base: new (renderImpl: RenderImpl) => BoxElement &
-  PreactOverlayControlProps &
-  PublicPreactCustomElementAPI;
+  PreactOverlayControlProps;
 declare class Clickable extends Clickable_base implements ClickableProps {
   accessor disabled: ClickableProps['disabled'];
   accessor loading: ClickableProps['loading'];
@@ -4298,8 +4293,7 @@ export interface LinkProps {
 }
 
 declare const Link_base: new (args_0: RenderImpl) => PreactCustomElement &
-  PreactOverlayControlProps &
-  PublicPreactCustomElementAPI;
+  PreactOverlayControlProps;
 declare class Link extends Link_base implements LinkProps {
   accessor tone: LinkProps['tone'];
   accessor accessibilityLabel: LinkProps['accessibilityLabel'];
