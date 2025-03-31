@@ -104,4 +104,3 @@ else
   SHOPIFY_DEV_PATH="../../../../../../shopify-dev"
   copy_generated_docs_to_shopify_dev
 fi
-
