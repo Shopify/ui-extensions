@@ -3698,8 +3698,10 @@ export interface PreactOverlayControlProps
   >;
 }
 
-declare const Button_base: new (args_0: RenderImpl) => PreactCustomElement &
-  PreactOverlayControlProps;
+declare const Button_base: (abstract new (
+  args_0: RenderImpl,
+) => PreactCustomElement & PreactOverlayControlProps) &
+  Pick<typeof PreactCustomElement, 'observedAttributes' | 'prototype'>;
 declare class Button extends Button_base implements ButtonProps {
   accessor disabled: ButtonProps['disabled'];
   accessor icon: ButtonProps['icon'];
@@ -3936,8 +3938,10 @@ export interface ClickableProps
   extends Required<BoxProps>,
     ClickableBaseProps {}
 
-declare const Clickable_base: new (renderImpl: RenderImpl) => BoxElement &
-  PreactOverlayControlProps;
+declare const Clickable_base: (abstract new (
+  renderImpl: RenderImpl,
+) => BoxElement & PreactOverlayControlProps) &
+  Pick<typeof BoxElement, 'observedAttributes' | 'prototype'>;
 declare class Clickable extends Clickable_base implements ClickableProps {
   accessor disabled: ClickableProps['disabled'];
   accessor loading: ClickableProps['loading'];
@@ -4292,8 +4296,10 @@ export interface LinkProps {
   tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
 }
 
-declare const Link_base: new (args_0: RenderImpl) => PreactCustomElement &
-  PreactOverlayControlProps;
+declare const Link_base: (abstract new (
+  args_0: RenderImpl,
+) => PreactCustomElement & PreactOverlayControlProps) &
+  Pick<typeof PreactCustomElement, 'observedAttributes' | 'prototype'>;
 declare class Link extends Link_base implements LinkProps {
   accessor tone: LinkProps['tone'];
   accessor accessibilityLabel: LinkProps['accessibilityLabel'];
