@@ -369,11 +369,23 @@ export interface PurchasingCompany {
    * Include information of the company of the logged in business customer.
    */
   company: Company;
+
+  /**
+   * Include information of the company location of the logged in business customer.
+   */
+  location?: CompanyLocation;
 }
 
 export interface Company {
   /**
    * Company ID.
+   */
+  id: string;
+}
+
+export interface CompanyLocation {
+  /**
+   * Company location ID.
    */
   id: string;
 }

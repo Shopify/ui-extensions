@@ -9,20 +9,17 @@ import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
 function createMockCustomer() {
   return {
-    id: `gid://shopify/Customer/${faker.datatype.number({
-      min: 1,
-      precision: 1,
-    })}`,
+    id: `gid://shopify/Customer/${faker.number.int({min: 1})}`,
   };
 }
 
 function createMockPurchasingCompany() {
   return {
     company: {
-      id: `gid://shopify/Company/${faker.datatype.number({
-        min: 1,
-        precision: 1,
-      })}`,
+      id: `gid://shopify/Company/${faker.number.int({min: 1})}`,
+    },
+    location: {
+      id: `gid://shopify/CompanyLocation/${faker.number.int({min: 1})}`,
     },
   };
 }
@@ -60,7 +57,9 @@ describe('account Hooks', () => {
       );
       expect(purchasingCompany).toBeDefined();
       expect(purchasingCompany.company.id).toBeDefined();
+      expect(purchasingCompany.location.id).toBeDefined();
       expect(value.company.id).toBe(purchasingCompany.company.id);
+      expect(value.location.id).toBe(purchasingCompany.location.id);
     });
   });
 });
