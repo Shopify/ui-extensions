@@ -119,21 +119,43 @@ export interface ReactProps
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 
-declare class Checkbox extends PreactInputElement implements CheckboxProps {
+export type PreactCheckboxProps = Required<
+  Pick<
+    CheckboxProps,
+    | 'accessibilityLabel'
+    | 'checked'
+    | 'defaultChecked'
+    | 'details'
+    | 'error'
+    | 'label'
+    | 'required'
+    | 'name'
+    | 'disabled'
+    | 'value'
+  >
+>;
+declare class PreactCheckboxElement
+  extends PreactInputElement
+  implements PreactCheckboxProps
+{
   get checked(): boolean;
-  set checked(checked: CheckboxProps['checked']);
+  set checked(checked: PreactCheckboxProps['checked']);
   get value(): string;
   set value(value: string);
-  accessor defaultChecked: CheckboxProps['defaultChecked'];
-  accessor accessibilityLabel: CheckboxProps['accessibilityLabel'];
-  accessor details: CheckboxProps['details'];
-  accessor error: CheckboxProps['error'];
+  accessor defaultChecked: PreactCheckboxProps['defaultChecked'];
+  accessor accessibilityLabel: PreactCheckboxProps['accessibilityLabel'];
+  accessor details: PreactCheckboxProps['details'];
+  accessor error: PreactCheckboxProps['error'];
+  accessor label: PreactCheckboxProps['label'];
+  accessor required: PreactCheckboxProps['required'];
+  formResetCallback(): void;
+  constructor(renderImpl: RenderImpl);
+}
+
+declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
   get indeterminate(): CheckboxProps['indeterminate'];
   set indeterminate(indeterminate: CheckboxProps['indeterminate']);
   accessor defaultIndeterminate: CheckboxProps['defaultIndeterminate'];
-  accessor label: CheckboxProps['label'];
-  accessor required: CheckboxProps['required'];
-  formResetCallback(): void;
   constructor();
 }
 declare global {

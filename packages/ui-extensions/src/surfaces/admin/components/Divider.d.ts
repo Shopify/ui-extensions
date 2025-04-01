@@ -8,7 +8,7 @@ import type {DividerProps$1, ComponentChild} from './shared.d.ts';
 
 export interface DividerProps {
   direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
-  color: Extract<DividerProps$1['color'], 'subdued' | 'base' | 'strong'>;
+  color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
 }
 
 declare const tagName = 's-divider';

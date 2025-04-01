@@ -55,6 +55,7 @@ declare const privateIconArray: readonly [
   'alert-octagon-filled',
   'alert-octagon',
   'alert-triangle',
+  'alert-triangle-filled',
   'app-extension',
   'apps',
   'archive',
@@ -276,6 +277,7 @@ declare const privateIconArray: readonly [
   'incoming',
   'incomplete',
   'info',
+  'info-filled',
   'inventory-updated',
   'inventory',
   'iq',
@@ -472,6 +474,7 @@ declare const privateIconArray: readonly [
   'sound',
   'sports',
   'star-filled',
+  'star-half',
   'star-list',
   'star',
   'status-active',
@@ -545,6 +548,7 @@ declare const privateIconArray: readonly [
   'work-list',
   'work',
   'wrench',
+  'x-circle-filled',
   'x-circle',
   'x',
 ];
@@ -1479,18 +1483,11 @@ interface BaseCheckableProps extends BaseSelectableProps, InteractionProps {
    */
   onInput?: (checked: boolean) => void;
 }
-interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps {
-  /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
-   */
-  error?: string;
-  /**
-   * Additional text to provide context or guidance for the input.
-   * This text is displayed along with the input and its label
-   * to offer more information or instructions to the user.
-   */
-  details?: string;
+interface CheckboxProps$1
+  extends GlobalProps,
+    BaseCheckableProps,
+    FieldErrorProps,
+    FieldDetailsProps {
   /**
    * Whether to display the checkbox in an indeterminate state (neither checked or unchecked).
    *
@@ -1877,6 +1874,24 @@ interface GridProps$1 extends BaseBoxPropsWithRole, GapProps {
   placeContent?:
     | `${AlignContentKeyword} ${JustifyContentKeyword}`
     | AlignContentKeyword;
+}
+interface GridItemProps$1 extends BaseBoxPropsWithRole {
+  /**
+   * Number of columns the item will span across
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column
+   *
+   * @default 'auto'
+   */
+  gridColumn?: `span ${number}` | 'auto';
+  /**
+   * Number of rows the item will span across
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
+   *
+   * @default 'auto'
+   */
+  gridRow?: `span ${number}` | 'auto';
 }
 interface BaseTypographyProps {
   /**
@@ -2357,6 +2372,46 @@ interface OptionGroupProps$1 extends GlobalProps {
   children?: ComponentChildren;
 }
 interface OrderedListProps$1 extends GlobalProps {}
+interface PageProps$1 extends GlobalProps {
+  /**
+   * The content of the Page.
+   */
+  children?: ComponentChildren;
+  /**
+   * The main page heading
+   */
+  heading?: string;
+  /**
+   * The text to be used as subtitle.
+   */
+  subheading?: string;
+  /**
+   * The primary action to perform, provided as a button or link type element.
+   * When a `Button` is added to the `primaryAction` it's variant is set to `primary`
+   */
+  primaryAction?: ComponentChildren;
+  /**
+   * The breadcrumb actions to perform, provided as link elements.
+   */
+  breadcrumbActions?: ComponentChildren;
+  /**
+   * Secondary actions. These are `Button`s that will be contextually the 'secondary' variant.
+   */
+  secondaryActions?: ComponentChildren;
+  /**
+   * The aside element is section of a page that contains content that is tangentially related to the content around the aside element, and which could be considered separate from that content.
+   * Such sections are often represented as sidebars in printed typography.
+   * @implementation surfaces built ontop of the web platform should implement this using the <aside> element https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside
+   */
+  aside?: ComponentChildren;
+  /**
+   * The inline size of the page
+   * @default base
+   * base corresponds to a set default inline size
+   * `large` expands the component to match the width of the page header
+   */
+  inlineSize?: SizeKeyword;
+}
 interface ParagraphProps$1
   extends GlobalProps,
     BaseTypographyProps,

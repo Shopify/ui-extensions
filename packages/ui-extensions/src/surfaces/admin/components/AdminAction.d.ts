@@ -11,7 +11,10 @@ export interface AdminActionProps
 declare const tagName = 's-admin-action';
 export interface ReactProps
   extends Partial<AdminActionProps>,
-    Pick<AdminActionProps$1, 'id'> {}
+    Pick<AdminActionProps$1, 'id'> {
+  primaryAction: ComponentChild;
+  secondaryActions: ComponentChild;
+}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
