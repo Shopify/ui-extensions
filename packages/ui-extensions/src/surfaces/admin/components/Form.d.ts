@@ -1,44 +1,38 @@
 /** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/ban-types */
+
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable line-comment-position */
-/* eslint-disable @typescript-eslint/unified-signatures */
-/* eslint-disable no-var */
-/* eslint-disable import/no-deprecated */
-/* eslint-disable import/namespace */
-/* eslint-disable import/no-deprecated */
+
 import type {ComponentChild} from './shared.d.ts';
 
 export interface ReactProps extends Partial<FormProps> {
-    id?: string;
-    /**
-     * A callback that is run when the form is submitted.
-     */
-    onSubmit?: ((event: ExtendableEvent) => void) | null;
-    /**
-     * A callback that is run when the form is reset.
-     */
-    onReset?: ((event: ExtendableEvent) => void) | null;
+  id?: string;
+  /**
+   * A callback that is run when the form is submitted.
+   */
+  onSubmit?: ((event: ExtendableEvent) => void) | null;
+  /**
+   * A callback that is run when the form is reset.
+   */
+  onReset?: ((event: ExtendableEvent) => void) | null;
 }
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-    ShadowRoot: (element: any) => ComponentChild;
-    styles?: Styles;
+  ShadowRoot: (element: any) => ComponentChild;
+  styles?: Styles;
 };
 export interface ActivationEventEsque {
-    shiftKey: boolean;
-    metaKey: boolean;
-    ctrlKey: boolean;
-    button: number;
+  shiftKey: boolean;
+  metaKey: boolean;
+  ctrlKey: boolean;
+  button: number;
 }
 export interface ClickOptions {
-    /**
-     * The event you want to influence the synthetic click.
-     */
-    sourceEvent?: ActivationEventEsque;
+  /**
+   * The event you want to influence the synthetic click.
+   */
+  sourceEvent?: ActivationEventEsque;
 }
 /**
  * Base class for creating custom elements with Preact.
@@ -47,53 +41,58 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
-        /** @private */
-    static get observedAttributes(): string[];
-    constructor({ styles, ShadowRoot: renderFunction, delegatesFocus, ...options }: RenderImpl);
-    /** @private */
-    attributeChangedCallback(name: string): void;
-    /** @private */
-    connectedCallback(): void;
-    /** @private */
-    disconnectedCallback(): void;
-    /** @private */
-    adoptedCallback(): void;
-    /**
-     * Queue a run of the render function.
-     * You shouldn't need to call this manually - it should be handled by changes to @property values.
-     * @private
-     */
-    queueRender(): void;
-    /**
-     * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-     *
-     * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-     * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-     * @private
-     * @param options
-     */
-    click({ sourceEvent }?: ClickOptions): void;
+  /** @private */
+  static get observedAttributes(): string[];
+  constructor({
+    styles,
+    ShadowRoot: renderFunction,
+    delegatesFocus,
+    ...options
+  }: RenderImpl);
+
+  /** @private */
+  attributeChangedCallback(name: string): void;
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
+  /**
+   * Queue a run of the render function.
+   * You shouldn't need to call this manually - it should be handled by changes to @property values.
+   * @private
+   */
+  queueRender(): void;
+  /**
+   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+   *
+   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
+   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
+   * @private
+   * @param options
+   */
+  click({sourceEvent}?: ClickOptions): void;
 }
 
-declare const tagName = "s-form";
-export interface FormProps {
-}
+declare const tagName = 's-form';
+export interface FormProps {}
 declare class Form extends PreactCustomElement implements FormProps {
-    constructor();
-    accessor onsubmit: ((event: ExtendableEvent) => void) | null;
-    accessor onreset: ((event: ExtendableEvent) => void) | null;
+  constructor();
+  accessor onsubmit: ((event: ExtendableEvent) => void) | null;
+  accessor onreset: ((event: ExtendableEvent) => void) | null;
 }
 declare global {
-    interface HTMLElementTagNameMap {
-        [tagName]: Form;
-    }
+  interface HTMLElementTagNameMap {
+    [tagName]: Form;
+  }
 }
 declare module 'preact' {
-    namespace createElement.JSX {
-        interface IntrinsicElements {
-            [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
-        }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
+  }
 }
 
-export { Form };
+export {Form};

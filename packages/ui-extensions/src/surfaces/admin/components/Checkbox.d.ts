@@ -1,32 +1,27 @@
 /** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/ban-types */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable line-comment-position */
-/* eslint-disable @typescript-eslint/unified-signatures */
-/* eslint-disable no-var */
-/* eslint-disable import/no-deprecated */
-/* eslint-disable import/namespace */
-/* eslint-disable import/no-deprecated */
-import type {CheckboxProps$1,ComponentChild} from './shared.d.ts';
+
+import type {CheckboxProps$1, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-    ShadowRoot: (element: any) => ComponentChild;
-    styles?: Styles;
+  ShadowRoot: (element: any) => ComponentChild;
+  styles?: Styles;
 };
 export interface ActivationEventEsque {
-    shiftKey: boolean;
-    metaKey: boolean;
-    ctrlKey: boolean;
-    button: number;
+  shiftKey: boolean;
+  metaKey: boolean;
+  ctrlKey: boolean;
+  button: number;
 }
 export interface ClickOptions {
-    /**
-     * The event you want to influence the synthetic click.
-     */
-    sourceEvent?: ActivationEventEsque;
+  /**
+   * The event you want to influence the synthetic click.
+   */
+  sourceEvent?: ActivationEventEsque;
 }
 /**
  * Base class for creating custom elements with Preact.
@@ -35,99 +30,145 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
-        /** @private */
-    static get observedAttributes(): string[];
-    constructor({ styles, ShadowRoot: renderFunction, delegatesFocus, ...options }: RenderImpl);
-    /** @private */
-    attributeChangedCallback(name: string): void;
-    /** @private */
-    connectedCallback(): void;
-    /** @private */
-    disconnectedCallback(): void;
-    /** @private */
-    adoptedCallback(): void;
-    /**
-     * Queue a run of the render function.
-     * You shouldn't need to call this manually - it should be handled by changes to @property values.
-     * @private
-     */
-    queueRender(): void;
-    /**
-     * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-     *
-     * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-     * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-     * @private
-     * @param options
-     */
-    click({ sourceEvent }?: ClickOptions): void;
+  /** @private */
+  static get observedAttributes(): string[];
+  constructor({
+    styles,
+    ShadowRoot: renderFunction,
+    delegatesFocus,
+    ...options
+  }: RenderImpl);
+
+  /** @private */
+  attributeChangedCallback(name: string): void;
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
+  /**
+   * Queue a run of the render function.
+   * You shouldn't need to call this manually - it should be handled by changes to @property values.
+   * @private
+   */
+  queueRender(): void;
+  /**
+   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+   *
+   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
+   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
+   * @private
+   * @param options
+   */
+  click({sourceEvent}?: ClickOptions): void;
 }
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-    target: HTMLElementTagNameMap[T];
+  target: HTMLElementTagNameMap[T];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> = (EventListener & {
-    (event: CallbackEvent<T>): void;
-}) | null;
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
 declare const internals: unique symbol;
-export type PreactInputProps = Required<Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>>;
-declare class PreactInputElement extends PreactCustomElement implements PreactInputProps {
-        static formAssociated: boolean;
-    /** @private */
-    [internals]: ElementInternals;
-    protected getDefaultValue(): string;
-    accessor onchange: CallbackEventListener<'input'>;
-    accessor oninput: CallbackEventListener<'input'>;
-    accessor disabled: PreactInputProps['disabled'];
-    accessor id: PreactInputProps['id'];
-    accessor name: PreactInputProps['name'];
-    get value(): PreactInputProps["value"];
-    set value(value: PreactInputProps['value']);
-    constructor(renderImpl: RenderImpl);
+export type PreactInputProps = Required<
+  Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
+>;
+declare class PreactInputElement
+  extends PreactCustomElement
+  implements PreactInputProps
+{
+  static formAssociated: boolean;
+  /** @private */
+  [internals]: ElementInternals;
+  protected getDefaultValue(): string;
+  accessor onchange: CallbackEventListener<'input'>;
+  accessor oninput: CallbackEventListener<'input'>;
+  accessor disabled: PreactInputProps['disabled'];
+  accessor id: PreactInputProps['id'];
+  accessor name: PreactInputProps['name'];
+  get value(): PreactInputProps['value'];
+  set value(value: PreactInputProps['value']);
+  constructor(renderImpl: RenderImpl);
 }
 
-export type CheckboxProps = PreactInputProps & Required<Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'details' | 'error' | 'indeterminate' | 'label' | 'required' | 'defaultChecked' | 'defaultIndeterminate'>>;
+export type CheckboxProps = PreactInputProps &
+  Required<
+    Pick<
+      CheckboxProps$1,
+      | 'accessibilityLabel'
+      | 'checked'
+      | 'details'
+      | 'error'
+      | 'indeterminate'
+      | 'label'
+      | 'required'
+      | 'defaultChecked'
+      | 'defaultIndeterminate'
+    >
+  >;
 
-declare const tagName = "s-checkbox";
-export interface ReactProps extends Partial<CheckboxProps>, Pick<CheckboxProps$1, 'id'> {
-    onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+declare const tagName = 's-checkbox';
+export interface ReactProps
+  extends Partial<CheckboxProps>,
+    Pick<CheckboxProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 
-export type PreactCheckboxProps = Required<Pick<CheckboxProps, 'accessibilityLabel' | 'checked' | 'defaultChecked' | 'details' | 'error' | 'label' | 'required' | 'name' | 'disabled' | 'value'>>;
-declare class PreactCheckboxElement extends PreactInputElement implements PreactCheckboxProps {
-        get checked(): boolean;
-    set checked(checked: PreactCheckboxProps['checked']);
-    get value(): string;
-    set value(value: string);
-    accessor defaultChecked: PreactCheckboxProps['defaultChecked'];
-    accessor accessibilityLabel: PreactCheckboxProps['accessibilityLabel'];
-    accessor details: PreactCheckboxProps['details'];
-    accessor error: PreactCheckboxProps['error'];
-    accessor label: PreactCheckboxProps['label'];
-    accessor required: PreactCheckboxProps['required'];
-    formResetCallback(): void;
-    constructor(renderImpl: RenderImpl);
+export type PreactCheckboxProps = Required<
+  Pick<
+    CheckboxProps,
+    | 'accessibilityLabel'
+    | 'checked'
+    | 'defaultChecked'
+    | 'details'
+    | 'error'
+    | 'label'
+    | 'required'
+    | 'name'
+    | 'disabled'
+    | 'value'
+  >
+>;
+declare class PreactCheckboxElement
+  extends PreactInputElement
+  implements PreactCheckboxProps
+{
+  get checked(): boolean;
+  set checked(checked: PreactCheckboxProps['checked']);
+  get value(): string;
+  set value(value: string);
+  accessor defaultChecked: PreactCheckboxProps['defaultChecked'];
+  accessor accessibilityLabel: PreactCheckboxProps['accessibilityLabel'];
+  accessor details: PreactCheckboxProps['details'];
+  accessor error: PreactCheckboxProps['error'];
+  accessor label: PreactCheckboxProps['label'];
+  accessor required: PreactCheckboxProps['required'];
+  formResetCallback(): void;
+  constructor(renderImpl: RenderImpl);
 }
 
 declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
-        get indeterminate(): CheckboxProps["indeterminate"];
-    set indeterminate(indeterminate: CheckboxProps['indeterminate']);
-    accessor defaultIndeterminate: CheckboxProps['defaultIndeterminate'];
-    constructor();
+  get indeterminate(): CheckboxProps['indeterminate'];
+  set indeterminate(indeterminate: CheckboxProps['indeterminate']);
+  accessor defaultIndeterminate: CheckboxProps['defaultIndeterminate'];
+  constructor();
 }
 declare global {
-    interface HTMLElementTagNameMap {
-        [tagName]: Checkbox;
-    }
+  interface HTMLElementTagNameMap {
+    [tagName]: Checkbox;
+  }
 }
 declare module 'preact' {
-    namespace createElement.JSX {
-        interface IntrinsicElements {
-            [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
-        }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
+  }
 }
 
-export { Checkbox };
+export {Checkbox};

@@ -1,80 +1,128 @@
 /** VERSION: 0.45.0 **/
 /* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/ban-types */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable line-comment-position */
-/* eslint-disable @typescript-eslint/unified-signatures */
-/* eslint-disable no-var */
-/* eslint-disable import/no-deprecated */
-/* eslint-disable import/namespace */
-/* eslint-disable import/no-deprecated */
-import type {ClickableProps$1,MaybeAllValuesShorthandProperty,InteractionProps,ComponentChild} from './shared.d.ts';
+
+import type {
+  ClickableProps$1,
+  MaybeAllValuesShorthandProperty,
+  InteractionProps,
+  ComponentChild,
+} from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
 
 export type AlignedBox = Required<BoxProps$1>;
 export interface BoxProps {
-    accessibilityRole: AlignedBox['accessibilityRole'];
-    background: Extract<AlignedBox['background'], 'transparent' | 'base' | 'subdued' | 'strong'>;
-    blockSize: AlignedBox['blockSize'];
-    minBlockSize: AlignedBox['minBlockSize'];
-    maxBlockSize: AlignedBox['maxBlockSize'];
-    inlineSize: AlignedBox['inlineSize'];
-    minInlineSize: AlignedBox['minInlineSize'];
-    maxInlineSize: AlignedBox['maxInlineSize'];
-    padding: MakeResponsive<AlignedBox['padding']>;
-    paddingBlock: MakeResponsive<AlignedBox['paddingBlock']>;
-    paddingBlockStart: MakeResponsive<AlignedBox['paddingBlockStart']>;
-    paddingBlockEnd: MakeResponsive<AlignedBox['paddingBlockEnd']>;
-    paddingInline: MakeResponsive<AlignedBox['paddingInline']>;
-    paddingInlineStart: MakeResponsive<AlignedBox['paddingInlineStart']>;
-    paddingInlineEnd: MakeResponsive<AlignedBox['paddingInlineEnd']>;
-    border: AlignedBox['border'] | 'none';
-    borderWidth: MaybeAllValuesShorthandProperty<Extract<AlignedBox['borderWidth'], 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'none'>> | Extract<AlignedBox['borderWidth'], ''>;
-    borderStyle: MaybeAllValuesShorthandProperty<Extract<AlignedBox['borderStyle'], 'none' | 'solid' | 'dashed'>> | Extract<AlignedBox['borderStyle'], ''>;
-    borderColor: Extract<AlignedBox['borderColor'], 'subdued' | 'base' | 'strong' | ''>;
-    borderRadius: MaybeAllValuesShorthandProperty<Extract<AlignedBox['borderRadius'], 'none' | 'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'large-200'>>;
-    accessibilityLabel: AlignedBox['accessibilityLabel'];
-    accessibilityVisibility: AlignedBox['accessibilityVisibility'];
-    display: AlignedBox['display'];
-    overflow: AlignedBox['overflow'];
+  accessibilityRole: AlignedBox['accessibilityRole'];
+  background: Extract<
+    AlignedBox['background'],
+    'transparent' | 'base' | 'subdued' | 'strong'
+  >;
+  blockSize: AlignedBox['blockSize'];
+  minBlockSize: AlignedBox['minBlockSize'];
+  maxBlockSize: AlignedBox['maxBlockSize'];
+  inlineSize: AlignedBox['inlineSize'];
+  minInlineSize: AlignedBox['minInlineSize'];
+  maxInlineSize: AlignedBox['maxInlineSize'];
+  padding: MakeResponsive<AlignedBox['padding']>;
+  paddingBlock: MakeResponsive<AlignedBox['paddingBlock']>;
+  paddingBlockStart: MakeResponsive<AlignedBox['paddingBlockStart']>;
+  paddingBlockEnd: MakeResponsive<AlignedBox['paddingBlockEnd']>;
+  paddingInline: MakeResponsive<AlignedBox['paddingInline']>;
+  paddingInlineStart: MakeResponsive<AlignedBox['paddingInlineStart']>;
+  paddingInlineEnd: MakeResponsive<AlignedBox['paddingInlineEnd']>;
+  border: AlignedBox['border'] | 'none';
+  borderWidth:
+    | MaybeAllValuesShorthandProperty<
+        Extract<
+          AlignedBox['borderWidth'],
+          'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'none'
+        >
+      >
+    | Extract<AlignedBox['borderWidth'], ''>;
+  borderStyle:
+    | MaybeAllValuesShorthandProperty<
+        Extract<AlignedBox['borderStyle'], 'none' | 'solid' | 'dashed'>
+      >
+    | Extract<AlignedBox['borderStyle'], ''>;
+  borderColor: Extract<
+    AlignedBox['borderColor'],
+    'subdued' | 'base' | 'strong' | ''
+  >;
+  borderRadius: MaybeAllValuesShorthandProperty<
+    Extract<
+      AlignedBox['borderRadius'],
+      | 'none'
+      | 'small-200'
+      | 'small-100'
+      | 'small'
+      | 'base'
+      | 'large'
+      | 'large-100'
+      | 'large-200'
+    >
+  >;
+  accessibilityLabel: AlignedBox['accessibilityLabel'];
+  accessibilityVisibility: AlignedBox['accessibilityVisibility'];
+  display: AlignedBox['display'];
+  overflow: AlignedBox['overflow'];
 }
 
-export type ClickableBaseProps = Required<Pick<ClickableProps$1, 'command' | 'commandFor' | 'disabled' | 'download' | 'href' | 'lang' | 'loading' | 'overflow' | 'target' | 'type'>>;
-export interface ClickableProps extends Required<BoxProps>, ClickableBaseProps {
-}
+export type ClickableBaseProps = Required<
+  Pick<
+    ClickableProps$1,
+    | 'command'
+    | 'commandFor'
+    | 'disabled'
+    | 'download'
+    | 'href'
+    | 'lang'
+    | 'loading'
+    | 'overflow'
+    | 'target'
+    | 'type'
+  >
+>;
+export interface ClickableProps
+  extends Required<BoxProps>,
+    ClickableBaseProps {}
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-    target: HTMLElementTagNameMap[T];
+  target: HTMLElementTagNameMap[T];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> = (EventListener & {
-    (event: CallbackEvent<T>): void;
-}) | null;
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
 
-declare const tagName = "s-clickable";
-export interface ReactProps extends Partial<ClickableProps>, Pick<ClickableProps$1, 'id'> {
-    onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+declare const tagName = 's-clickable';
+export interface ReactProps
+  extends Partial<ClickableProps>,
+    Pick<ClickableProps$1, 'id'> {
+  onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-    ShadowRoot: (element: any) => ComponentChild;
-    styles?: Styles;
+  ShadowRoot: (element: any) => ComponentChild;
+  styles?: Styles;
 };
 export interface ActivationEventEsque {
-    shiftKey: boolean;
-    metaKey: boolean;
-    ctrlKey: boolean;
-    button: number;
+  shiftKey: boolean;
+  metaKey: boolean;
+  ctrlKey: boolean;
+  button: number;
 }
 export interface ClickOptions {
-    /**
-     * The event you want to influence the synthetic click.
-     */
-    sourceEvent?: ActivationEventEsque;
+  /**
+   * The event you want to influence the synthetic click.
+   */
+  sourceEvent?: ActivationEventEsque;
 }
 /**
  * Base class for creating custom elements with Preact.
@@ -83,90 +131,103 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
-        /** @private */
-    static get observedAttributes(): string[];
-    constructor({ styles, ShadowRoot: renderFunction, delegatesFocus, ...options }: RenderImpl);
-    /** @private */
-    attributeChangedCallback(name: string): void;
-    /** @private */
-    connectedCallback(): void;
-    /** @private */
-    disconnectedCallback(): void;
-    /** @private */
-    adoptedCallback(): void;
-    /**
-     * Queue a run of the render function.
-     * You shouldn't need to call this manually - it should be handled by changes to @property values.
-     * @private
-     */
-    queueRender(): void;
-    /**
-     * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-     *
-     * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-     * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-     * @private
-     * @param options
-     */
-    click({ sourceEvent }?: ClickOptions): void;
+  /** @private */
+  static get observedAttributes(): string[];
+  constructor({
+    styles,
+    ShadowRoot: renderFunction,
+    delegatesFocus,
+    ...options
+  }: RenderImpl);
+
+  /** @private */
+  attributeChangedCallback(name: string): void;
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
+  /**
+   * Queue a run of the render function.
+   * You shouldn't need to call this manually - it should be handled by changes to @property values.
+   * @private
+   */
+  queueRender(): void;
+  /**
+   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+   *
+   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
+   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
+   * @private
+   * @param options
+   */
+  click({sourceEvent}?: ClickOptions): void;
 }
 
-export interface PreactOverlayControlProps extends Required<Pick<InteractionProps, 'commandFor'>> {
-    command: Extract<InteractionProps['command'], '--show' | '--hide' | '--toggle' | '--auto'>;
+export interface PreactOverlayControlProps
+  extends Required<Pick<InteractionProps, 'commandFor'>> {
+  command: Extract<
+    InteractionProps['command'],
+    '--show' | '--hide' | '--toggle' | '--auto'
+  >;
 }
 
 declare class BoxElement extends PreactCustomElement implements BoxProps {
-    constructor(renderImpl: RenderImpl);
-    accessor accessibilityRole: BoxProps['accessibilityRole'];
-    accessor background: BoxProps['background'];
-    accessor blockSize: BoxProps['blockSize'];
-    accessor minBlockSize: BoxProps['minBlockSize'];
-    accessor maxBlockSize: BoxProps['maxBlockSize'];
-    accessor inlineSize: BoxProps['inlineSize'];
-    accessor minInlineSize: BoxProps['minInlineSize'];
-    accessor maxInlineSize: BoxProps['maxInlineSize'];
-    accessor overflow: BoxProps['overflow'];
-    accessor padding: BoxProps['padding'];
-    accessor paddingBlock: BoxProps['paddingBlock'];
-    accessor paddingBlockStart: BoxProps['paddingBlockStart'];
-    accessor paddingBlockEnd: BoxProps['paddingBlockEnd'];
-    accessor paddingInline: BoxProps['paddingInline'];
-    accessor paddingInlineStart: BoxProps['paddingInlineStart'];
-    accessor paddingInlineEnd: BoxProps['paddingInlineEnd'];
-    accessor border: BoxProps['border'];
-    accessor borderWidth: BoxProps['borderWidth'];
-    accessor borderStyle: BoxProps['borderStyle'];
-    accessor borderColor: BoxProps['borderColor'];
-    accessor borderRadius: BoxProps['borderRadius'];
-    accessor accessibilityLabel: BoxProps['accessibilityLabel'];
-    accessor accessibilityVisibility: BoxProps['accessibilityVisibility'];
-    accessor display: BoxProps['display'];
+  constructor(renderImpl: RenderImpl);
+  accessor accessibilityRole: BoxProps['accessibilityRole'];
+  accessor background: BoxProps['background'];
+  accessor blockSize: BoxProps['blockSize'];
+  accessor minBlockSize: BoxProps['minBlockSize'];
+  accessor maxBlockSize: BoxProps['maxBlockSize'];
+  accessor inlineSize: BoxProps['inlineSize'];
+  accessor minInlineSize: BoxProps['minInlineSize'];
+  accessor maxInlineSize: BoxProps['maxInlineSize'];
+  accessor overflow: BoxProps['overflow'];
+  accessor padding: BoxProps['padding'];
+  accessor paddingBlock: BoxProps['paddingBlock'];
+  accessor paddingBlockStart: BoxProps['paddingBlockStart'];
+  accessor paddingBlockEnd: BoxProps['paddingBlockEnd'];
+  accessor paddingInline: BoxProps['paddingInline'];
+  accessor paddingInlineStart: BoxProps['paddingInlineStart'];
+  accessor paddingInlineEnd: BoxProps['paddingInlineEnd'];
+  accessor border: BoxProps['border'];
+  accessor borderWidth: BoxProps['borderWidth'];
+  accessor borderStyle: BoxProps['borderStyle'];
+  accessor borderColor: BoxProps['borderColor'];
+  accessor borderRadius: BoxProps['borderRadius'];
+  accessor accessibilityLabel: BoxProps['accessibilityLabel'];
+  accessor accessibilityVisibility: BoxProps['accessibilityVisibility'];
+  accessor display: BoxProps['display'];
 }
 
-declare const Clickable_base: (abstract new (renderImpl: RenderImpl) => BoxElement & PreactOverlayControlProps) & Pick<typeof BoxElement, "observedAttributes" | "prototype">;
+declare const Clickable_base: (abstract new (
+  renderImpl: RenderImpl,
+) => BoxElement & PreactOverlayControlProps) &
+  Pick<typeof BoxElement, 'observedAttributes' | 'prototype'>;
 declare class Clickable extends Clickable_base implements ClickableProps {
-    accessor disabled: ClickableProps['disabled'];
-    accessor loading: ClickableProps['loading'];
-    accessor target: ClickableProps['target'];
-    accessor href: ClickableProps['href'];
-    accessor download: ClickableProps['download'];
-    accessor onclick: CallbackEventListener<typeof tagName> | null;
-    accessor onblur: CallbackEventListener<typeof tagName> | null;
-    accessor onfocus: CallbackEventListener<typeof tagName> | null;
-    accessor type: ClickableProps['type'];
-    constructor();
+  accessor disabled: ClickableProps['disabled'];
+  accessor loading: ClickableProps['loading'];
+  accessor target: ClickableProps['target'];
+  accessor href: ClickableProps['href'];
+  accessor download: ClickableProps['download'];
+  accessor onclick: CallbackEventListener<typeof tagName> | null;
+  accessor onblur: CallbackEventListener<typeof tagName> | null;
+  accessor onfocus: CallbackEventListener<typeof tagName> | null;
+  accessor type: ClickableProps['type'];
+  constructor();
 }
 declare global {
-    interface HTMLElementTagNameMap {
-        [tagName]: Clickable;
-    }
+  interface HTMLElementTagNameMap {
+    [tagName]: Clickable;
+  }
 }
 declare module 'preact' {
-    namespace createElement.JSX {
-        interface IntrinsicElements {
-            [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
-        }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
+  }
 }
 
-export { Clickable };
+export {Clickable};
