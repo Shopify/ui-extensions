@@ -1407,6 +1407,12 @@ export interface Customer {
    * @private
    */
   storeCreditAccounts: StoreCreditAccount[];
+  /**
+   * The number of previous orders made by this customer.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   */
+  ordersCount: number;
 }
 
 /**

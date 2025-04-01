@@ -486,6 +486,14 @@ The contents of the token are signed using your shared app secret.  The optional
         tabs: getExtensionCodeTabs('attribute-values'),
       },
     },
+    'attributes/attribute-change': {
+      description:
+        'You can add or remove cart and checkout attributes by using the `applyAttributeChange` API.',
+      codeblock: {
+        title: 'Applying changes to attributes',
+        tabs: getExtensionCodeTabs('attributes/attribute-change'),
+      },
+    },
     'ui-close-overlay': {
       description: '',
       codeblock: {

@@ -76,7 +76,23 @@ export interface AttributeUpdateChange {
   value: string;
 }
 
-export type AttributeChange = AttributeUpdateChange;
+/**
+ * Removes an attribute on the order if an attribute with the
+ * provided key already exists.
+ */
+export interface AttributeRemoveChange {
+  /**
+   * The type of the `AttributeRemoveChange` API.
+   */
+  type: 'removeAttribute';
+
+  /**
+   * Key of the attribute to remove
+   */
+  key: string;
+}
+
+export type AttributeChange = AttributeUpdateChange | AttributeRemoveChange;
 
 /**
  * The returned result of a successful update to an attribute.
