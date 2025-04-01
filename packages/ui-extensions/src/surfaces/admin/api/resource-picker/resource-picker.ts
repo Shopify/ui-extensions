@@ -42,7 +42,7 @@ enum ProductStatus {
   Draft = 'DRAFT',
 }
 
-interface Image {
+interface ResourceImage {
   id: string;
   altText?: string;
   originalSrc: string;
@@ -74,7 +74,7 @@ interface Collection extends Resource {
   descriptionHtml: string;
   handle: string;
   id: string;
-  image?: Image | null;
+  image?: ResourceImage | null;
   productsAutomaticallySortedCount: number;
   productsCount: number;
   productsManuallySortedCount: number;
@@ -104,7 +104,7 @@ interface ProductVariant extends Resource {
     serviceName: string;
     type: FulfillmentServiceType;
   };
-  image?: Image | null;
+  image?: ResourceImage | null;
   inventoryItem: {id: string};
   inventoryManagement: ProductVariantInventoryManagement;
   inventoryPolicy: ProductVariantInventoryPolicy;
@@ -128,7 +128,7 @@ interface Product extends Resource {
   descriptionHtml: string;
   handle: string;
   hasOnlyDefaultVariant: boolean;
-  images: Image[];
+  images: ResourceImage[];
   options: {
     id: string;
     name: string;
