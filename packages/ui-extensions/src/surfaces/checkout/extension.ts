@@ -2,7 +2,6 @@ import {createExtensionRegistrationFunction} from '../../utilities/registration'
 
 import type {ExtensionTargets} from './targets';
 
-// eslint-disable-next-line no-restricted-syntax
 export * from '../../extension';
 
 export const extension =
