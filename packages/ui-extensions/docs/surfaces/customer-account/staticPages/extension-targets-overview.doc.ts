@@ -266,6 +266,23 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
         },
       ],
     },
+    {
+      type: 'GenericAccordion',
+      anchorLink: 'footer',
+      title: 'Footer',
+      sectionContent:
+        'The footer is the bottom section of the customer account page.',
+      accordionContent: [
+        {
+          title: 'Footer',
+          description: `A static extension target that appears below the footer. Since the footer appears across all customer account pages, this is an ideal location for elements like cookie banners that need to be consistently visible throughout the customer accounts experience.
+          \nSee all [extension targets](/docs/api/customer-account-ui-extensions/targets).`,
+          image: 'target-overview-full-page-extension.png',
+          altText:
+            'A desktop view of the customer-account.footer.render-after extension target that renders after the footer.',
+        },
+      ],
+    },
   ],
 };
 
