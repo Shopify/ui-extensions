@@ -1,9 +1,13 @@
 <Fragment>
-  <s-paragraph>
-    Manage your Shopify store on-the-go with real-time notifications
-  </s-paragraph>
+  <s-box padding="small-100">
+    <s-paragraph>
+      Manage your Shopify store on-the-go with real-time notifications
+    </s-paragraph>
+  </s-box>
   <s-divider></s-divider>
-  <s-paragraph>
-    Shopify POS is the easiest way to sell your products in person.
-  </s-paragraph>
+  <s-box padding="small-100" paddingblockstart="small-500">
+    <s-paragraph>
+      Shopify POS is the easiest way to sell your products in person.
+    </s-paragraph>
+  </s-box>
 </Fragment>
