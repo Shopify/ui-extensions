@@ -27,7 +27,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'third-party-libraries',
       title: 'Third party libraries',
       sectionContent: `
-You can use error reporting libraries like [Bugsnag](https://www.bugsnag.com/) or [Sentry](https://sentry.io/). However, they might require extra configuration because UI extensions run inside of a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API).
+You can use error reporting libraries like [Bugsnag](https://www.bugsnag.com/) or [Sentry](https://sentry.io/). However, they might require extra configuration because UI extensions run inside of a [Web Worker](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API). You should also consider using [source maps](https://shopify.dev/docs/apps/build/checkout/test-checkout-ui-extensions#troubleshooting-with-source-maps) to help debug errors.
 
 > Tip:
 > You must request [network access](/api/checkout-ui-extensions/configuration#network-access) to transmit errors to a third party service.

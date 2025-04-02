@@ -4,12 +4,7 @@ import {
   getLinksByTag,
   ORDER_CONFIRMATION_API_PROPERTIES_DESCRIPTION,
   getExample,
-  ORDER_STATUS_API_PROPERTIES_DESCRIPTION,
 } from '../helper.docs';
-
-// added temporarily to keep a note that the order status api docs have been moved to customer accounts
-// can be removed from 2025-01 on
-interface OrderStatusApiEmpty {}
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Order',
@@ -24,11 +19,6 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'OrderConfirmationApi',
       description: ORDER_CONFIRMATION_API_PROPERTIES_DESCRIPTION,
       type: 'OrderConfirmationApi',
-    },
-    {
-      title: 'OrderStatusApi',
-      description: ORDER_STATUS_API_PROPERTIES_DESCRIPTION,
-      type: 'OrderStatusApiEmpty',
     },
   ],
   related: getLinksByTag('apis'),

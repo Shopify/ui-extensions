@@ -24,6 +24,7 @@ export type ApiVersion =
   | '2024-07'
   | '2024-10'
   | '2025-01'
+  | '2025-04'
   | 'unstable';
 
 /**
@@ -917,6 +918,7 @@ export type StorefrontApiVersion =
   | '2024-07'
   | '2024-10'
   | '2025-01'
+  | '2025-04'
   | 'unstable';
 
 /**

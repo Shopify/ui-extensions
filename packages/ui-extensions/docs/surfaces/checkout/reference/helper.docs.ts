@@ -10,12 +10,13 @@ export const REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2 =
 
 type NonEmptyArray<T> = [T, ...T[]];
 type ExtensionExampleLanguage = 'js' | 'jsx' | 'toml';
-type ExtensionCodeTabConfig = {
-  [key in ExtensionExampleLanguage]: {
+type ExtensionCodeTabConfig = Record<
+  ExtensionExampleLanguage,
+  {
     title: string;
     fileExtension: 'ts' | 'tsx' | 'toml';
-  };
-};
+  }
+>;
 const codeExampleTabConfig: ExtensionCodeTabConfig = {
   js: {
     title: 'JavaScript',
@@ -485,6 +486,14 @@ The contents of the token are signed using your shared app secret.  The optional
         tabs: getExtensionCodeTabs('attribute-values'),
       },
     },
+    'attributes/attribute-change': {
+      description:
+        'You can add or remove cart and checkout attributes by using the `applyAttributeChange` API.',
+      codeblock: {
+        title: 'Applying changes to attributes',
+        tabs: getExtensionCodeTabs('attributes/attribute-change'),
+      },
+    },
     'ui-close-overlay': {
       description: '',
       codeblock: {
@@ -883,6 +892,3 @@ export const CHECKOUT_API_PROPERTIES_DESCRIPTION =
 
 export const ORDER_CONFIRMATION_API_PROPERTIES_DESCRIPTION =
   'The API object provided to `purchase.thank-you` extension targets.';
-
-export const ORDER_STATUS_API_PROPERTIES_DESCRIPTION =
-  '> Note: This documentation has moved to customer accounts. Refer to [Order API](/docs/api/customer-account-ui-extensions/apis/order)';
