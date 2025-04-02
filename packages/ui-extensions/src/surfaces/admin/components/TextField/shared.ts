@@ -32,6 +32,18 @@ const shared = {
       url: '/docs/api/admin-extensions/components/forms/numberfield',
     },
   ],
+  defaultExample: {
+    image: 'text-field-default.png',
+    codeblock: {
+      title: 'Default Example',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default shared;

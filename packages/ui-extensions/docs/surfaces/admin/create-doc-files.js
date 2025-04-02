@@ -68,6 +68,17 @@ componentNames.forEach((componentName) => {
   ],
   subCategory: '',
   related: [],
+  defaultExample: {
+    codeblock: {
+      title: 'Default Example',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default shared;`;
@@ -78,28 +89,6 @@ import shared from './shared';
 const data: ReferenceEntityTemplateSchema = {
   ...shared,
   category: 'Experimental Components',
-  defaultExample: {
-    codeblock: {
-      title: 'Default Example',
-      tabs: [
-        {
-          title: 'JSX',
-          code: './examples/default.jsx',
-          language: 'jsx',
-        },
-        {
-          title: 'HTML',
-          code: './examples/default.html',
-          language: 'html',
-        },
-        {
-          title: 'Preview',
-          code: './examples/default.html', // This gets updated in build-ab-docs.sh
-          language: 'preview', // Do not edit. This is required for Live Previews
-        },
-      ],
-    },
-  },
 };
 
 export default data;
@@ -111,23 +100,6 @@ import shared from './shared';
 const data: ReferenceEntityTemplateSchema = {
   ...shared,
   category: 'Components',
-  defaultExample: {
-    codeblock: {
-      title: 'Default Example',
-      tabs: [
-        {
-          title: 'JSX',
-          code: './examples/default.jsx',
-          language: 'jsx',
-        },
-        {
-          title: 'Preview',
-          code: './examples/default.html', // This gets updated in build-ab-docs.sh
-          language: 'preview', // Do not edit. This is required for Live Previews
-        },
-      ],
-    },
-  },
 };
 
 export default data;

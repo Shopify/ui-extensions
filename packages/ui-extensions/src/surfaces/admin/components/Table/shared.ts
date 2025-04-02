@@ -21,6 +21,19 @@ const shared = {
       url: '/docs/api/admin-extensions/components/structure/grid',
     },
   ],
+  defaultExample: {
+    image: 'table-default.png',
+    codeblock: {
+      title: 'Default Example',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+          layout: 'section',
+        },
+      ],
+    },
+  },
 };
 
 export default shared;

@@ -20,6 +20,18 @@ const shared = {
       url: '/docs/api/admin-extensions/components/media/icon',
     },
   ],
+  defaultExample: {
+    image: 'image-default.png',
+    codeblock: {
+      title: 'Default Example',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default shared;

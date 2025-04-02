@@ -2,8 +2,7 @@
   "name": "@shopify/ui-extensions",
   "version": "2025.7.0",
   "scripts": {
-    "docs:admin": "bash ./docs/surfaces/admin/build-docs.sh",
-    "docs:ab": "bash ./docs/surfaces/admin/build-ab-docs.sh",
+    "docs:admin": "node ./docs/surfaces/admin/build-docs.mjs",
     "docs:checkout": "bash ./docs/surfaces/checkout/build-docs.sh",
     "docs:point-of-sale": "bash ./docs/surfaces/point-of-sale/build-docs.sh",
     "docs:customer-account": "bash ./docs/surfaces/customer-account/build-docs.sh"

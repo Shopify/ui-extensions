@@ -26,6 +26,19 @@ const shared = {
       url: '/docs/api/admin-extensions/components/structure/stack',
     },
   ],
+  defaultExample: {
+    image: 'divider-default.png',
+    codeblock: {
+      title: 'Default Example',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+          layout: 'section',
+        },
+      ],
+    },
+  },
 };
 
 export default shared;

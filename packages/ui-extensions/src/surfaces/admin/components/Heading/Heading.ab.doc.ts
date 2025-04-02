@@ -1,53 +1,9 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
+import shared from './shared';
 
-const data: ReferenceEntityTemplateSchema = {
-  name: 'Heading',
-  description:
-    "Use `s-heading` to display a title. It's similar to the h1-h6 tags in HTML",
-  requires: '',
-  thumbnail: 'heading-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
-  definitions: [
-    {
-      title: 'Properties',
-      description: '',
-      type: 'Heading',
-    },
-  ],
-  category: 'Components',
-  subCategory: 'Titles and text',
-  defaultExample: {
-    image: 'heading-default.png',
-    codeblock: {
-      title: 'Default Example',
-      tabs: [
-        {
-          title: 'JSX',
-          code: './examples/default.html',
-          language: 'jsx',
-        },
-        {
-          title: 'HTML',
-          code: './examples/default.html',
-          language: 'html',
-        },
-        {
-          title: 'HTML',
-          code: './examples/default.html', // This gets updated in build-ab-docs.sh
-          language: 'preview', // Do not edit. This is required for Live Previews
-        },
-      ],
-    },
-  },
-
-  related: [
-    {
-      type: 'component',
-      name: 'Text',
-      url: '/docs/api/admin-extensions/components/titles-and-text/text',
-    },
-  ],
+const data: AdminReferenceEntityTemplateSchema = {
+  ...shared,
+  category: 'Experimental Components',
 };
 
 export default data;
