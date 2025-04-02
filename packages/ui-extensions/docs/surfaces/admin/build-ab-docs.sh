@@ -75,7 +75,7 @@ while IFS= read -r file; do
         echo "<!DOCTYPE html>
 <html>
   <head>
-    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script></head><body><div>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
     <style>
       html, body {height:100%}
       body { box-sizing: border-box; margin: 0; padding:0.5rem; display: flex; justify-content: center; align-items: center; gap: 0.5rem;}
@@ -86,7 +86,7 @@ while IFS= read -r file; do
         echo "<!DOCTYPE html>
 <html>
   <head>
-    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script></head><body><div>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
     <style>
       html, body {height:100%}
       body { box-sizing: border-box; margin: 0; padding:0.5rem; display: grid; place-items: center; background: #F1F1F1;}
@@ -99,7 +99,7 @@ while IFS= read -r file; do
         echo "<!DOCTYPE html>
 <html>
   <head>
-    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script></head><body><div>
+    <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
     <style>
       html, body {height:100%}
       body { box-sizing: border-box; margin: 0; padding:0.5rem; display: grid; place-items: center; gap: 0.5rem;}
