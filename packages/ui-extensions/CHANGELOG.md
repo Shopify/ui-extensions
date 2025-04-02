@@ -1,5 +1,73 @@
 # @shopify/ui-extensions
 
+## 0.0.0
+
+### Minor Changes
+
+- [#2717](https://github.com/Shopify/ui-extensions/pull/2717) [`316b82e53b75a5aac81baa03ac98a50578f72e6f`](https://github.com/Shopify/ui-extensions/commit/316b82e53b75a5aac81baa03ac98a50578f72e6f) Thanks [@lrsterrett](https://github.com/lrsterrett)! - addition of removeAttribute type to applyAttributeChange api in checkout surface
+
+- [#2608](https://github.com/Shopify/ui-extensions/pull/2608) [`0f320951fd2fa4b15456516567049a6dfde16a3c`](https://github.com/Shopify/ui-extensions/commit/0f320951fd2fa4b15456516567049a6dfde16a3c) Thanks [@ProdigyXable](https://github.com/ProdigyXable)! - Add `pos.cart-update.event.observe`
+
+- [#2562](https://github.com/Shopify/ui-extensions/pull/2562) [`4395476bc2f68ef0184ea7a553f9f4f61554b1ee`](https://github.com/Shopify/ui-extensions/commit/4395476bc2f68ef0184ea7a553f9f4f61554b1ee) Thanks [@NathanJolly](https://github.com/NathanJolly)! - Add pos.transaction-completed.observe
+
+- [#2567](https://github.com/Shopify/ui-extensions/pull/2567) [`b50a76ad5f8fb79bd7d44cc73e6bc291eb3d623a`](https://github.com/Shopify/ui-extensions/commit/b50a76ad5f8fb79bd7d44cc73e6bc291eb3d623a) Thanks [@fatbattk](https://github.com/fatbattk)! - Add "pos.cash-tracking-session-start.event.observe" and "pos.cash-tracking-session-complete.event.observe" and renamed "pos.transaction-completed.event.observe".
+
+- [#2675](https://github.com/Shopify/ui-extensions/pull/2675) [`422d7931d1da9185c9be4500aed33cb0b143941d`](https://github.com/Shopify/ui-extensions/commit/422d7931d1da9185c9be4500aed33cb0b143941d) Thanks [@fatbattk](https://github.com/fatbattk)! - Rename event target input,intent terminology.
+
+- [#2663](https://github.com/Shopify/ui-extensions/pull/2663) [`dd596baa7c15cb50eafd9d21df3bff67d4264fcf`](https://github.com/Shopify/ui-extensions/commit/dd596baa7c15cb50eafd9d21df3bff67d4264fcf) Thanks [@fatbattk](https://github.com/fatbattk)! - Update transaction complete input.
+
+- [#2577](https://github.com/Shopify/ui-extensions/pull/2577) [`5074ca065bc8453dbf1f85b5eea283a07651e26a`](https://github.com/Shopify/ui-extensions/commit/5074ca065bc8453dbf1f85b5eea283a07651e26a) Thanks [@vctrchu](https://github.com/vctrchu)! - Adds POS UI Extension: TransactionCompleteInput property typing and payment interfaces
+
+- [#2588](https://github.com/Shopify/ui-extensions/pull/2588) [`f5c01f579873957b7a8cc7b5ac6795d10242105f`](https://github.com/Shopify/ui-extensions/commit/f5c01f579873957b7a8cc7b5ac6795d10242105f) Thanks [@js-goupil](https://github.com/js-goupil)! - MAde draftOrderUuid a string
+
+- [#2644](https://github.com/Shopify/ui-extensions/pull/2644) [`27fa595991438b45f9626d4cfbb88cfbf9c74c98`](https://github.com/Shopify/ui-extensions/commit/27fa595991438b45f9626d4cfbb88cfbf9c74c98) Thanks [@fatbattk](https://github.com/fatbattk)! - Add "POSReceiptBlock" component.
+
+- [#2681](https://github.com/Shopify/ui-extensions/pull/2681) [`0fb4f029ac682ffafe5087ae9ddc21b014d96042`](https://github.com/Shopify/ui-extensions/commit/0fb4f029ac682ffafe5087ae9ddc21b014d96042) Thanks [@fatbattk](https://github.com/fatbattk)! - Add `QRCode` component and update `POSReceiptBlock` allowed children.
+
+- [#2643](https://github.com/Shopify/ui-extensions/pull/2643) [`4d16f33ed7af0792c538931bb30ee8d69ab64bc8`](https://github.com/Shopify/ui-extensions/commit/4d16f33ed7af0792c538931bb30ee8d69ab64bc8) Thanks [@fatbattk](https://github.com/fatbattk)! - Add `pos.receipt-footer.block.render` extension target.
+
+- [#2557](https://github.com/Shopify/ui-extensions/pull/2557) [`53ffd5a4afede122fae016667835df10d3fb63fa`](https://github.com/Shopify/ui-extensions/commit/53ffd5a4afede122fae016667835df10d3fb63fa) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - Addition of `DropZone` UI component for checkout UI extensions
+
+- [#2697](https://github.com/Shopify/ui-extensions/pull/2697) [`c4fa9793934b58fb04c429b762fb8f242aab3aaf`](https://github.com/Shopify/ui-extensions/commit/c4fa9793934b58fb04c429b762fb8f242aab3aaf) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Make DiscountFunctionSettingsApi extend BlockExtensionApi
+
+- [#2597](https://github.com/Shopify/ui-extensions/pull/2597) [`a677b878c3c85a2a9743eabd66d3ec6ea2159d64`](https://github.com/Shopify/ui-extensions/commit/a677b878c3c85a2a9743eabd66d3ec6ea2159d64) Thanks [@Alex-Palad](https://github.com/Alex-Palad)! - Adds "pos.prepare-receipt.event.inject" extension target
+
+- [#2612](https://github.com/Shopify/ui-extensions/pull/2612) [`6298921ea11ea6e0bef06dd5c87a040ffbcf2fc4`](https://github.com/Shopify/ui-extensions/commit/6298921ea11ea6e0bef06dd5c87a040ffbcf2fc4) Thanks [@NathanJolly](https://github.com/NathanJolly)! - Signal support for null in Badge status prop
+
+- [#2580](https://github.com/Shopify/ui-extensions/pull/2580) [`20c0febbc4274e8d35bb47d8741aac444e65ab47`](https://github.com/Shopify/ui-extensions/commit/20c0febbc4274e8d35bb47d8741aac444e65ab47) Thanks [@js-goupil](https://github.com/js-goupil)! - Made shippingLines a simpler type
+
+- [#2639](https://github.com/Shopify/ui-extensions/pull/2639) [`de53e8b3cff590123b65446513881348a2f24ac5`](https://github.com/Shopify/ui-extensions/commit/de53e8b3cff590123b65446513881348a2f24ac5) Thanks [@kmdavis](https://github.com/kmdavis)! - Update Product Configuration extension points to use block extension api and data
+
+- [#2645](https://github.com/Shopify/ui-extensions/pull/2645) [`b045fca8e99556223c579af0b4d1dbd230ed377e`](https://github.com/Shopify/ui-extensions/commit/b045fca8e99556223c579af0b4d1dbd230ed377e) Thanks [@js-goupil](https://github.com/js-goupil)! - Fixed some POS UI Extension types
+
+- [#2674](https://github.com/Shopify/ui-extensions/pull/2674) [`875fe1ace46c607876d9a39283a07089385db7d1`](https://github.com/Shopify/ui-extensions/commit/875fe1ace46c607876d9a39283a07089385db7d1) Thanks [@js-goupil](https://github.com/js-goupil)! - Marked FormattedTextField as deprecated for pos ui
+
+### Patch Changes
+
+- [#2677](https://github.com/Shopify/ui-extensions/pull/2677) [`726d831692889f3c79a54a14430bda8468042d32`](https://github.com/Shopify/ui-extensions/commit/726d831692889f3c79a54a14430bda8468042d32) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Use correct props for DateField
+
+- [#2694](https://github.com/Shopify/ui-extensions/pull/2694) [`86d76f2476b8187229b7e93ea64b1b2b92dbd4ef`](https://github.com/Shopify/ui-extensions/commit/86d76f2476b8187229b7e93ea64b1b2b92dbd4ef) Thanks [@fatbattk](https://github.com/fatbattk)! - Update `BaseTransactionComplete.customer` to use existing type. Update examples and screenshots.
+
+- [#2642](https://github.com/Shopify/ui-extensions/pull/2642) [`6b1c73def8b3d2f2f3acae82650a2d7948578c9f`](https://github.com/Shopify/ui-extensions/commit/6b1c73def8b3d2f2f3acae82650a2d7948578c9f) Thanks [@vividviolet](https://github.com/vividviolet)! - Fix tsdocs for Admin's Section component's padding prop
+
+- [#2717](https://github.com/Shopify/ui-extensions/pull/2717) [`316b82e53b75a5aac81baa03ac98a50578f72e6f`](https://github.com/Shopify/ui-extensions/commit/316b82e53b75a5aac81baa03ac98a50578f72e6f) Thanks [@lrsterrett](https://github.com/lrsterrett)! - addition of isFirstOrder to the orderConfirmation api and ordersCount to the standard api in checkout surface
+
+- [#2660](https://github.com/Shopify/ui-extensions/pull/2660) [`db91daa7441278a4d78034699d603e52e5d64c0b`](https://github.com/Shopify/ui-extensions/commit/db91daa7441278a4d78034699d603e52e5d64c0b) Thanks [@brianshen1990](https://github.com/brianshen1990)! - fix customer account useCustomer hook type
+
+- [#2564](https://github.com/Shopify/ui-extensions/pull/2564) [`e95a44403bb4b24960eb0dc94f435266cc04c9d6`](https://github.com/Shopify/ui-extensions/commit/e95a44403bb4b24960eb0dc94f435266cc04c9d6) Thanks [@belalsj](https://github.com/belalsj)! - Add docs for conditional print extensions
+
+- [#2607](https://github.com/Shopify/ui-extensions/pull/2607) [`c1cbad3918c3157a979e805839f0e761b1358920`](https://github.com/Shopify/ui-extensions/commit/c1cbad3918c3157a979e805839f0e761b1358920) Thanks [@thomas-marcucci](https://github.com/thomas-marcucci)! - Bumps @remote-ui dependencies
+
+  - @remote-ui/core version to 2.2.5
+  - @remote-ui/react version to 5.0.6
+  - @remote-ui/async-subscription version to 2.1.16
+
+- [#2690](https://github.com/Shopify/ui-extensions/pull/2690) [`ee7f5aa6a45413d6851aed0e86ab3ad44296c5db`](https://github.com/Shopify/ui-extensions/commit/ee7f5aa6a45413d6851aed0e86ab3ad44296c5db) Thanks [@brianshen1990](https://github.com/brianshen1990)! - export customer privacy types and hooks
+
+- [#2679](https://github.com/Shopify/ui-extensions/pull/2679) [`a265ed36fc22a48dfe2bcfe093ed2251e08e545e`](https://github.com/Shopify/ui-extensions/commit/a265ed36fc22a48dfe2bcfe093ed2251e08e545e) Thanks [@brianshen1990](https://github.com/brianshen1990)! - add new footer target and customer privacy types to unstable customer account api
+
+- [#2683](https://github.com/Shopify/ui-extensions/pull/2683) [`c9693693bf9998f1f959f0ffdc6b3abaac4b48cb`](https://github.com/Shopify/ui-extensions/commit/c9693693bf9998f1f959f0ffdc6b3abaac4b48cb) Thanks [@MitchLillie](https://github.com/MitchLillie)! - Update DateField examples and type
+
 ## 2025.1.0
 
 ### Minor Changes
