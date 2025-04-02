@@ -45,6 +45,7 @@ export interface LineItem {
 
 export interface Discount {
   amount: number;
+  currency?: string;
   discountDescription?: string;
   type?: string;
 }

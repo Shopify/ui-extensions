@@ -39,6 +39,20 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
     },
     {
       type: 'Generic',
+      anchorLink: '202507',
+      title: '2025.07',
+      sectionContent: `
+- Added in POS version: 10.6
+- Removed in POS version: N/A
+- Release day: N/A
+
+### Features
+
+- Added optional \`currency\` property to \`Discount\` interface.
+  `,
+    },
+    {
+      type: 'Generic',
       anchorLink: '202504',
       title: '2025.04',
       sectionContent: `
@@ -55,7 +69,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
   - Added support for the ${TargetLink.PosReceiptFooterBlockRender} target.
   - Introduced a [POSReceiptBlock component](/docs/api/pos-ui-extensions/components/posreceiptblock). It's the required parent component for ${TargetLink.PosReceiptFooterBlockRender} targets.
   - Introduced a [QRCode component](/docs/api/pos-ui-extensions/components/qrcode). It can be used to render a QR code in POS receipts but must be within a [POSReceiptBlock component](/docs/api/pos-ui-extensions/components/posreceiptblock).
-      `,
+  `,
     },
     {
       type: 'Generic',
