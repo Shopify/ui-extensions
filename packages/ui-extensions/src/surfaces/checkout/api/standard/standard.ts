@@ -515,7 +515,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
    *
    * > Caution: As of version `2024-07`, UI extension code must check for instructions before calling select APIs in case those APIs are not available.
-   *  See the [update guide](/docs/api/checkout-ui-extensions/unstable/apis/cart-instructions#examples) for more information.
+   *  See the [update guide](/docs/api/checkout-ui-extensions/apis/cart-instructions#examples) for more information.
    *
    */
   instructions: StatefulRemoteSubscribable<CartInstructions>;
