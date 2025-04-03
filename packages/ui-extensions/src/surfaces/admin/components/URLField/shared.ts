@@ -25,6 +25,19 @@ const shared = {
       url: '/docs/api/admin-extensions/components/forms/emailfield',
     },
   ],
+  defaultExample: {
+    image: 'urlfield-default.png',
+    codeblock: {
+      title: 'Default Example',
+      tabs: [
+        {
+          title: 'HTML',
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default shared;

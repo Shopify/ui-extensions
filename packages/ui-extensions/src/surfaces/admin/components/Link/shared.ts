@@ -21,6 +21,49 @@ const shared = {
       url: '/docs/api/admin-extensions/components/actions/button',
     },
   ],
+  defaultExample: {
+    image: 'link-default.png',
+    codeblock: {
+      title: 'Default Example',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description: 'Link to an app page',
+        image: 'link-default.png',
+        codeblock: {
+          tabs: [
+            {
+              code: './examples/app.html',
+              language: 'html',
+            },
+          ],
+          title: 'App Link',
+        },
+      },
+      {
+        description: 'Link to a Shopify admin page',
+        image: 'shopify-section-link.png',
+        codeblock: {
+          tabs: [
+            {
+              code: './examples/shopify-section.html',
+              language: 'html',
+            },
+          ],
+          title: 'Shopify Section Link',
+        },
+      },
+    ],
+  },
 };
 
 export default shared;

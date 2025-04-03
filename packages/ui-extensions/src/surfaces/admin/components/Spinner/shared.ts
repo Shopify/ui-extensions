@@ -21,6 +21,18 @@ const shared = {
       url: '/docs/api/admin-extensions/components/actions/button',
     },
   ],
+  defaultExample: {
+    image: 'spinner-default.png',
+    codeblock: {
+      title: 'Default Example',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default shared;

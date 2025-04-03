@@ -26,6 +26,18 @@ const shared = {
       url: '/docs/api/admin-extensions/components/titles-and-text/text',
     },
   ],
+  defaultExample: {
+    image: 'ordered-list-default.png',
+    codeblock: {
+      title: 'Default Example',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default shared;

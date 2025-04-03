@@ -1,40 +1,9 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 import shared from './shared';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
   ...shared,
   category: 'Components',
-  defaultExample: {
-    image: 'banner-default.png',
-    codeblock: {
-      title: 'Default Example',
-      tabs: [
-        {
-          title: 'JSX',
-          code: './examples/default.html',
-          language: 'jsx',
-        },
-        {
-          title: 'HTML',
-          code: './examples/default.html', // This gets updated in build-ab-docs.sh
-          language: 'preview', // Do not edit. This is required for Live Previews
-        },
-      ],
-    },
-  },
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'tone',
-      title: 'Tone',
-      sectionContent: `
-- Use \`info\` for general information or updates
-- Use \`success\` for successful operations or positive messages
-- Use \`warning\` for important notices that require attention
-- Use \`critical\` for errors or critical issues that need immediate attention
-      `,
-    },
-  ],
 };
 
 export default data;

@@ -26,6 +26,19 @@ const shared = {
       url: '/docs/api/admin-extensions/components/titles-and-text/text',
     },
   ],
+  defaultExample: {
+    image: 'badge-default.png',
+    codeblock: {
+      title: 'Default Example',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+          layout: 'inline',
+        },
+      ],
+    },
+  },
 };
 
 export default shared;
