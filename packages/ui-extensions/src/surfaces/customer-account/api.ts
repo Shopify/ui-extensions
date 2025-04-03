@@ -24,7 +24,6 @@ export type {
   CartCustomDiscountAllocation,
   AppliedGiftCard,
   Currency,
-  Country,
   Market,
   DeliveryGroup,
   DeliveryGroupType,
@@ -47,6 +46,7 @@ export type {
 export type {
   Attribute,
   CurrencyCode,
+  Country,
   CountryCode,
   Timezone,
   GraphQLError,

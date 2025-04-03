@@ -3,7 +3,6 @@ import type {
   AppMetafieldEntry,
   Capability,
   CheckoutToken,
-  Country,
   Currency,
   Editor,
   ExtensionSettings,
@@ -19,6 +18,7 @@ import type {
 import type {Attribute, MailingAddress} from '../shared';
 import type {
   ApiVersion,
+  Country,
   GraphQLError,
   StorefrontApiVersion,
   Timezone,
