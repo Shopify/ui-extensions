@@ -1,7 +1,7 @@
 const shared = {
   name: 'Heading',
   description:
-    "Use `s-heading` to display a title. It's similar to the h1-h6 tags in HTML",
+    'Use `s-heading` to display a title, similar to the h1-h6 tags in HTML. `s-heading` will automatically update its design based on how deeply it is nested within `s-section` components.',
   requires: '',
   thumbnail: 'heading-thumbnail.png',
   isVisualComponent: true,
