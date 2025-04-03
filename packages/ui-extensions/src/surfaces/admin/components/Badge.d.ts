@@ -4,7 +4,12 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
-import type {BadgeProps$1, IconType, ComponentChild} from './shared.d.ts';
+import type {
+  BadgeProps$1,
+  IconType,
+  ComponentChild,
+  HTMLAttributes,
+} from './shared.d.ts';
 
 export interface IconProps {
   type: '' | IconType | 'empty';

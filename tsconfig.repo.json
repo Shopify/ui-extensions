@@ -5,6 +5,11 @@
     "baseUrl": ".",
     "rootDir": "."
   },
-  "include": ["**/loom.config.ts", "./config/loom/**/*"],
+  "include": [
+    "**/loom.config.ts",
+    "./config/loom/**/*",
+    "**/loom/*",
+    "**/buildTargetDts.ts"
+  ],
   "references": []
 }

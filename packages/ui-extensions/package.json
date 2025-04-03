@@ -35,7 +35,7 @@
       "require": "./build/cjs/surfaces/admin.js"
     },
     "./admin.*": {
-      "types": "./build/ts/surfaces/admin/targets/admin.*.d.ts"
+      "default": "./build/ts/surfaces/admin/targets/admin.*.d.ts"
     },
     "./preact": {
       "types": "./build/ts/preact.d.ts",
