@@ -15,7 +15,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       type: 'Page',
     },
   ],
-  category: 'Experimental Components',
+  category: 'Polaris web components',
   subCategory: 'Structure',
   related: [
     {

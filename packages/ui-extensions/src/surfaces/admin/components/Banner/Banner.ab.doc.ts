@@ -5,7 +5,7 @@ import shared from './shared';
 // @ts-ignore
 const data: AdminReferenceEntityTemplateSchema = {
   ...shared,
-  category: 'Experimental Components',
+  category: 'Polaris web components',
 };
 
 export default data;
