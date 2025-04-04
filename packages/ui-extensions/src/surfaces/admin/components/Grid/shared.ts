@@ -1,7 +1,7 @@
 const shared = {
   name: 'Grid',
   description:
-    'Use `s-grid` to create responsive layouts with consistent spacing. Grid helps organize content into columns and rows with proper alignment and spacing.',
+    'Use `s-grid` to create responsive layouts with consistent spacing. Grid follows the same pattern as the [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout). Grid helps organize content into columns and rows with proper alignment and spacing. \n\n Grid does not include any padding by default. If you need padding around your grid, use `base` to apply the default padding. Grid will allow children to overflow unless template rows/columns are properly set.',
   requires: '',
   thumbnail: 'grid-thumbnail.png',
   isVisualComponent: true,
