@@ -1,7 +1,7 @@
 const shared = {
   name: 'Text',
   description:
-    'Use `s-text` to render text. Remember, you can also add your own styling.',
+    'Use `s-text` to render inline text with different visual styles.',
   requires: '',
   thumbnail: 'text-thumbnail.png',
   isVisualComponent: true,
