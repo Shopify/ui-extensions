@@ -3834,19 +3834,19 @@ declare class PreactInputElement
   constructor(renderImpl: RenderImpl);
 }
 
-export type CheckboxProps = PreactInputProps &
-  Required<
+export interface PreactCheckboxProps
+  extends Required<
     Pick<
       CheckboxProps$1,
       | 'accessibilityLabel'
       | 'checked'
+      | 'defaultChecked'
       | 'details'
       | 'error'
-      | 'indeterminate'
       | 'label'
       | 'required'
-      | 'defaultChecked'
-      | 'defaultIndeterminate'
+      | 'name'
+      | 'disabled'
     >
   >;
 
@@ -3879,6 +3879,9 @@ declare class PreactCheckboxElement
 {
   get checked(): boolean;
   set checked(checked: PreactCheckboxProps['checked']);
+  /**
+   * The value used in form data when the checkbox is checked.
+   */
   get value(): string;
   set value(value: string);
   accessor defaultChecked: PreactCheckboxProps['defaultChecked'];
@@ -3889,6 +3892,11 @@ declare class PreactCheckboxElement
   accessor required: PreactCheckboxProps['required'];
   formResetCallback(): void;
   constructor(renderImpl: RenderImpl);
+}
+
+export interface CheckboxProps extends PreactCheckboxElement {
+  indeterminate: Required<CheckboxProps$1>['indeterminate'];
+  defaultIndeterminate: Required<CheckboxProps$1>['defaultIndeterminate'];
 }
 
 declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
@@ -4485,8 +4493,10 @@ declare module 'preact' {
 
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
-  extends PreactFieldProps,
-    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step' | 'currencyCode'> {}
+  extends Omit<PreactFieldProps, 'value'>,
+    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step' | 'currencyCode'> {
+  value: Required<MoneyFieldProps$1>['value'];
+}
 
 declare const tagName$u = 's-money-field';
 export interface ReactProps$u
