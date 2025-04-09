@@ -1,4 +1,10 @@
-import {createRemoteComponent} from '@remote-ui/core';
+/* eslint-disable @typescript-eslint/no-namespace */
+
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
+
 import type {RemoteFragment} from '@remote-ui/core';
 
 export interface PageProps {
@@ -48,4 +54,15 @@ export interface PageProps {
   loading?: boolean;
 }
 
-export const Page = createRemoteComponent<'Page', PageProps>('Page');
+declare class PageComponent extends HTMLElement implements PageProps {}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    ['s-page']: PageComponent;
+  }
+  namespace JSX {
+    interface IntrinsicElements {
+      ['s-page']: Page;
+    }
+  }
+}

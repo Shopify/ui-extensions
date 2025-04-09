@@ -12,10 +12,6 @@ import {
   ReturnApi,
 } from './api/standard-api/standard-api';
 
-type Components = typeof import('./components');
-
-type AllComponents = Components[keyof Components];
-
 /**
  * A UI extension will register for one or more extension targets using `shopify.extend()`.
  * An extension target in a UI extension is a plain JavaScript function.
@@ -95,7 +91,7 @@ export interface OrderStatusExtensionTargets {
     OrderStatusApi<'customer-account.order.page.render'> &
       Omit<StandardApi<'customer-account.order.page.render'>, 'navigation'> &
       FullPageApi,
-    AllComponents
+    AnyComponent
   >;
 }
 export type OrderStatusExtensionTarget = keyof OrderStatusExtensionTargets;
@@ -108,61 +104,61 @@ export interface CustomerAccountExtensionTargets {
   'customer-account.page.render': RenderExtension<
     Omit<StandardApi<'customer-account.page.render'>, 'navigation'> &
       FullPageApi,
-    AllComponents
+    AnyComponent
   >;
   'CustomerAccount::KitchenSink': RenderExtension<
     StandardApi<'CustomerAccount::KitchenSink'> & {name: string},
-    AllComponents
+    AnyComponent
   >;
   'customer-account.order-index.block.render': RenderExtension<
     StandardApi<'customer-account.order-index.block.render'>,
-    AllComponents
+    AnyComponent
   >;
   'customer-account.profile.block.render': RenderExtension<
     StandardApi<'customer-account.profile.block.render'>,
-    AllComponents
+    AnyComponent
   >;
   'customer-account.profile.addresses.render-after': RenderExtension<
     StandardApi<'customer-account.profile.addresses.render-after'>,
-    AllComponents
+    AnyComponent
   >;
   'customer-account.footer.render-after': RenderExtension<
     StandardApi<'customer-account.footer.render-after'>,
-    AllComponents
+    AnyComponent
   >;
   /**
    *  @experimental This is experimental and shouldn't be used until its not.
    */
   'customer-account.profile.payment.render-after': RenderExtension<
     StandardApi<'customer-account.profile.payment.render-after'>,
-    AllComponents
+    AnyComponent
   >;
   'customer-account.profile.company-details.render-after': RenderExtension<
     StandardApi<'customer-account.profile.company-details.render-after'>,
-    AllComponents
+    AnyComponent
   >;
   'customer-account.profile.company-location-addresses.render-after': RenderExtension<
     StandardApi<'customer-account.profile.company-location-addresses.render-after'> &
       CompanyLocationApi,
-    AllComponents
+    AnyComponent
   >;
   'customer-account.profile.company-location-payment.render-after': RenderExtension<
     StandardApi<'customer-account.profile.company-location-payment.render-after'> &
       CompanyLocationApi,
-    AllComponents
+    AnyComponent
   >;
   'customer-account.profile.company-location-staff.render-after': RenderExtension<
     StandardApi<'customer-account.profile.company-location-staff.render-after'> &
       CompanyLocationApi,
-    AllComponents
+    AnyComponent
   >;
   'customer-account.order.action.menu-item.render': RenderExtension<
     StandardApi & OrderApi,
-    AllComponents
+    AnyComponent
   >;
   'customer-account.order.action.render': RenderExtension<
     StandardApi & ActionExtensionApi & OrderApi,
-    AllComponents
+    AnyComponent
   >;
 }
 

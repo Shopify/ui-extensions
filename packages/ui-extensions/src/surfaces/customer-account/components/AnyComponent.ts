@@ -1,3 +1,3 @@
-export type AnyComponent = 'Page';
+export type AnyComponent = 'Page' | 'Card';
 
 export default AnyComponent;
