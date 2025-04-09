@@ -8,31 +8,7 @@
 /// <reference lib="DOM" />
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="WebWorker" />
-import type {ComponentChild, TableHeaderProps$1} from './shared.d.ts';
-
-export interface TableProps
-  extends Required<
-    Pick<
-      TableProps$1,
-      'loading' | 'paginate' | 'hasPreviousPage' | 'hasNextPage' | 'variant'
-    >
-  > {
-  variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
-}
-
-declare const tagName = 's-table';
-export interface ReactProps
-  extends Partial<TableProps>,
-    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
-  filters?: ComponentChild;
-}
-
-export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
-  listSlot: Extract<
-    TableHeaderProps$1['listSlot'],
-    'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
-  >;
-}
+import type {SwitchProps$1, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -92,16 +68,6 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare class AddedContext<T> extends EventTarget {
-  constructor(defaultValue: T);
-  get value(): T;
-  set value(value: T);
-}
-
-declare const actualTableVariantSymbol: unique symbol;
-declare const tableHeadersSharedDataSymbol: unique symbol;
-export type ActualTableVariant = 'table' | 'list';
-
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   target: HTMLElementTagNameMap[T];
 };
@@ -111,38 +77,103 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
     })
   | null;
 
-declare class Table extends PreactCustomElement implements TableProps {
-  accessor variant: TableProps['variant'];
-  accessor loading: TableProps['loading'];
-  accessor paginate: TableProps['paginate'];
-  accessor hasPreviousPage: TableProps['hasPreviousPage'];
-  accessor hasNextPage: TableProps['hasNextPage'];
-  accessor onpreviouspage: CallbackEventListener<typeof tagName> | null;
-  accessor onnextpage: CallbackEventListener<typeof tagName> | null;
-  /**
-   * The actual table variant, which is either 'table' or 'list'.
-   */
-  [actualTableVariantSymbol]: AddedContext<ActualTableVariant>;
-  [tableHeadersSharedDataSymbol]: AddedContext<
-    {
-      listSlot: TableHeaderProps['listSlot'];
-      textContent: string;
-    }[]
+declare const internals: unique symbol;
+export type PreactInputProps = Required<
+  Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
+>;
+declare class PreactInputElement
+  extends PreactCustomElement
+  implements PreactInputProps
+{
+  static formAssociated: boolean;
+  /** @private */
+  [internals]: ElementInternals;
+  accessor onchange: CallbackEventListener<'input'>;
+  accessor oninput: CallbackEventListener<'input'>;
+  accessor disabled: PreactInputProps['disabled'];
+  accessor id: PreactInputProps['id'];
+  accessor name: PreactInputProps['name'];
+  get value(): PreactInputProps['value'];
+  set value(value: PreactInputProps['value']);
+  constructor(renderImpl: RenderImpl);
+}
+
+export type CheckboxProps = PreactInputProps &
+  Required<
+    Pick<
+      CheckboxProps$1,
+      | 'accessibilityLabel'
+      | 'checked'
+      | 'details'
+      | 'error'
+      | 'indeterminate'
+      | 'label'
+      | 'required'
+      | 'defaultChecked'
+      | 'defaultIndeterminate'
+    >
   >;
 
+export type PreactCheckboxProps = Required<
+  Pick<
+    CheckboxProps,
+    | 'accessibilityLabel'
+    | 'checked'
+    | 'defaultChecked'
+    | 'details'
+    | 'error'
+    | 'label'
+    | 'required'
+    | 'name'
+    | 'disabled'
+    | 'value'
+  >
+>;
+declare class PreactCheckboxElement
+  extends PreactInputElement
+  implements PreactCheckboxProps
+{
+  get checked(): boolean;
+  set checked(checked: PreactCheckboxProps['checked']);
+  get value(): string;
+  set value(value: string);
+  accessor defaultChecked: PreactCheckboxProps['defaultChecked'];
+  accessor accessibilityLabel: PreactCheckboxProps['accessibilityLabel'];
+  accessor details: PreactCheckboxProps['details'];
+  accessor error: PreactCheckboxProps['error'];
+  accessor label: PreactCheckboxProps['label'];
+  accessor required: PreactCheckboxProps['required'];
+  formResetCallback(): void;
+  constructor(renderImpl: RenderImpl);
+}
+
+export interface SwitchProps
+  extends PreactCheckboxProps,
+    Required<Pick<SwitchProps$1, 'labelAccessibilityVisibility'>> {}
+
+declare const tagName = 's-switch';
+export interface ReactProps
+  extends Partial<SwitchProps>,
+    Pick<SwitchProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+
+declare class Switch extends PreactCheckboxElement implements SwitchProps {
+  accessor labelAccessibilityVisibility: SwitchProps['labelAccessibilityVisibility'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Table;
+    [tagName]: Switch;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & Omit<ReactProps, 'filters'>;
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
     }
   }
 }
 
-export {Table};
+export {Switch};

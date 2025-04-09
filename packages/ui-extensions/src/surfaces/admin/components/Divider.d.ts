@@ -1,12 +1,17 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {DividerProps$1, ComponentChild} from './shared.d.ts';
 
-export interface DividerProps {
+export interface DividerProps
+  extends Pick<DividerProps$1, 'direction' | 'color'> {
   direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
   color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
 }

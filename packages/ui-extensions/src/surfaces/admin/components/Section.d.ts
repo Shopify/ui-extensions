@@ -1,12 +1,20 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {SectionProps$1, ComponentChild} from './shared.d.ts';
 
 export type RequiredSectionProps = Required<SectionProps$1>;
-export interface SectionProps {
+export interface SectionProps
+  extends Pick<
+    RequiredSectionProps,
+    'accessibilityLabel' | 'heading' | 'padding'
+  > {
   accessibilityLabel: RequiredSectionProps['accessibilityLabel'];
   heading: RequiredSectionProps['heading'];
   padding: RequiredSectionProps['padding'];

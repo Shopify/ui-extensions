@@ -1,9 +1,13 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {CheckboxProps$1, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
@@ -84,7 +88,6 @@ declare class PreactInputElement
   static formAssociated: boolean;
   /** @private */
   [internals]: ElementInternals;
-  protected getDefaultValue(): string;
   accessor onchange: CallbackEventListener<'input'>;
   accessor oninput: CallbackEventListener<'input'>;
   accessor disabled: PreactInputProps['disabled'];

@@ -1,8 +1,12 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {
   StackProps$1,
   MaybeAllValuesShorthandProperty,
@@ -12,7 +16,25 @@ import type {
 export type MakeResponsive<T> = T | `@container${string}`;
 
 export type AlignedBox = Required<BoxProps$1>;
-export interface BoxProps {
+export interface BoxProps
+  extends Pick<
+    AlignedBox,
+    | 'accessibilityRole'
+    | 'background'
+    | 'blockSize'
+    | 'minBlockSize'
+    | 'maxBlockSize'
+    | 'inlineSize'
+    | 'minInlineSize'
+    | 'maxInlineSize'
+    | 'border'
+    | 'borderWidth'
+    | 'borderRadius'
+    | 'borderColor'
+    | 'borderStyle'
+    | 'display'
+    | 'overflow'
+  > {
   accessibilityRole: AlignedBox['accessibilityRole'];
   background: Extract<
     AlignedBox['background'],
@@ -69,7 +91,12 @@ export interface BoxProps {
 }
 
 export type AlignedStackProps = Required<StackProps$1>;
-export interface StackProps extends BoxProps {
+export interface StackProps
+  extends BoxProps,
+    Pick<
+      Required<AlignedStackProps>,
+      'justifyContent' | 'alignItems' | 'alignContent'
+    > {
   justifyContent: AlignedStackProps['justifyContent'];
   alignItems: AlignedStackProps['alignItems'];
   alignContent: AlignedStackProps['alignContent'];

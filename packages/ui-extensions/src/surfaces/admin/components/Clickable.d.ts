@@ -1,9 +1,13 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {
   ClickableProps$1,
   MaybeAllValuesShorthandProperty,
@@ -14,7 +18,25 @@ import type {
 export type MakeResponsive<T> = T | `@container${string}`;
 
 export type AlignedBox = Required<BoxProps$1>;
-export interface BoxProps {
+export interface BoxProps
+  extends Pick<
+    AlignedBox,
+    | 'accessibilityRole'
+    | 'background'
+    | 'blockSize'
+    | 'minBlockSize'
+    | 'maxBlockSize'
+    | 'inlineSize'
+    | 'minInlineSize'
+    | 'maxInlineSize'
+    | 'border'
+    | 'borderWidth'
+    | 'borderRadius'
+    | 'borderColor'
+    | 'borderStyle'
+    | 'display'
+    | 'overflow'
+  > {
   accessibilityRole: AlignedBox['accessibilityRole'];
   background: Extract<
     AlignedBox['background'],

@@ -1,9 +1,13 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {
   LinkProps$1,
   InteractionProps,
@@ -11,7 +15,18 @@ import type {
 } from './shared.d.ts';
 
 export type RequiredLinkProps = Required<LinkProps$1>;
-export interface LinkProps {
+export interface LinkProps
+  extends Pick<
+    LinkProps$1,
+    | 'accessibilityLabel'
+    | 'command'
+    | 'commandFor'
+    | 'download'
+    | 'href'
+    | 'lang'
+    | 'target'
+    | 'tone'
+  > {
   accessibilityLabel: RequiredLinkProps['accessibilityLabel'];
   command: RequiredLinkProps['command'];
   commandFor: RequiredLinkProps['commandFor'];

@@ -1,13 +1,21 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {HeadingProps$1, ComponentChild} from './shared.d.ts';
 
 export type RequiredHeadingProps = Required<HeadingProps$1>;
-export interface HeadingProps {
+export interface HeadingProps
+  extends Pick<
+    HeadingProps$1,
+    'accessibilityRole' | 'accessibilityVisibility' | 'lineClamp'
+  > {
   accessibilityRole: RequiredHeadingProps['accessibilityRole'];
   accessibilityVisibility: RequiredHeadingProps['accessibilityVisibility'];
   lineClamp: RequiredHeadingProps['lineClamp'];

@@ -1,9 +1,13 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {
   ButtonProps$1,
   IconType,
@@ -11,7 +15,8 @@ import type {
   ComponentChild,
 } from './shared.d.ts';
 
-export interface IconProps {
+export interface IconProps
+  extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
   type: '' | IconType | 'empty';
   tone: Extract<
     IconProps$1['tone'],
@@ -37,6 +42,7 @@ export type ButtonBaseProps = Required<
     | 'lang'
     | 'loading'
     | 'type'
+    | 'tone'
     | 'variant'
     | 'target'
     | 'href'

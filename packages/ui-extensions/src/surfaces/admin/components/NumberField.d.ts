@@ -1,9 +1,13 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {NumberFieldProps$1, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
@@ -90,7 +94,6 @@ declare class PreactInputElement
   static formAssociated: boolean;
   /** @private */
   [internals]: ElementInternals;
-  protected getDefaultValue(): string;
   accessor onchange: CallbackEventListener<'input'>;
   accessor oninput: CallbackEventListener<'input'>;
   accessor disabled: PreactInputProps['disabled'];
@@ -116,6 +119,26 @@ export type PreactFieldProps<Autocomplete extends string = string> =
         | 'required'
       >
     > & {
+      /**
+       * A hint as to the intended content of the field.
+       *
+       * When set to `on` (the default), this property indicates that the field should support
+       * autofill, but you do not have any more semantic information on the intended
+       * contents.
+       *
+       * When set to `off`, you are indicating that this field contains sensitive
+       * information, or contents that are never saved, like one-time codes.
+       *
+       * Alternatively, you can provide value which describes the
+       * specific data you would like to be entered into this field during autofill.
+       *
+       * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
+       *
+       * @default 'tel' for PhoneField
+       * @default 'email' for EmailField
+       * @default 'url' for URLField
+       * @default 'on' for everything else
+       */
       autocomplete: Autocomplete;
     };
 declare class PreactFieldElement<Autocomplete extends string = string>
@@ -133,7 +156,6 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   accessor placeholder: PreactFieldProps['placeholder'];
   accessor readOnly: PreactFieldProps['readOnly'];
   accessor required: PreactFieldProps['required'];
-  protected getDefaultValue(): string;
   /**
    * Global keyboard event handlers for things like key bindings typically
    * ignore keystrokes originating from within input elements. Unfortunately,

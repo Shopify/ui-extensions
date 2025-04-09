@@ -1,13 +1,22 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {PageProps$1, ComponentChild} from './shared.d.ts';
 
-export interface PageProps {
-  inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large'>;
+export interface PageProps extends Required<Pick<PageProps$1, 'inlineSize'>> {
+  inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
+}
+
+declare const tagName = 's-page';
+export interface ReactProps extends Partial<PageProps> {
+  aside?: ComponentChild;
 }
 
 export type Styles = string;
@@ -80,14 +89,9 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: JSXInternal.HTMLAttributes<HTMLElement> & PageJSXProps;
+      [tagName]: HTMLAttributes<HTMLElement> & Omit<ReactProps, 'aside'>;
     }
   }
 }
 
-declare const tagName = 's-page';
-export interface PageJSXProps extends Partial<PageProps> {
-  aside?: ComponentChild;
-}
-
-export {Page, type PageJSXProps};
+export {Page};

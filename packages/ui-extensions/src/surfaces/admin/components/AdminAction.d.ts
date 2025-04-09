@@ -1,8 +1,12 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {ComponentChild, AdminActionProps$1} from './shared.d.ts';
 
 export interface AdminActionProps
@@ -90,7 +94,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
+      [tagName]: HTMLAttributes<HTMLElement> &
+        Omit<ReactProps, 'primaryAction' | 'secondaryActions'>;
     }
   }
 }

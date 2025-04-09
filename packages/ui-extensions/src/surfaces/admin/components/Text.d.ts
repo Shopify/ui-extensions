@@ -1,14 +1,27 @@
-/** VERSION: 0.45.0 **/
+/** VERSION: 0.47.2 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 import type {TextProps$1, ComponentChild} from './shared.d.ts';
 
 export interface TextProps
   extends Required<
-    Pick<TextProps$1, 'display' | 'accessibilityVisibility' | 'dir'>
+    Pick<
+      TextProps$1,
+      | 'display'
+      | 'accessibilityVisibility'
+      | 'dir'
+      | 'color'
+      | 'type'
+      | 'tone'
+      | 'fontVariantNumeric'
+    >
   > {
   color: Extract<TextProps$1['color'], 'base' | 'subdued'>;
   type: Extract<

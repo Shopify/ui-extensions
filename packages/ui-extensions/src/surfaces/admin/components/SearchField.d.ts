@@ -8,7 +8,7 @@
 /// <reference lib="DOM" />
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="WebWorker" />
-import type {URLFieldProps$1, ComponentChild} from './shared.d.ts';
+import type {TextFieldProps, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -176,29 +176,45 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
-export type URLFieldProps = PreactFieldProps<
-  Required<URLFieldProps$1>['autocomplete']
+export type SearchFieldProps = PreactFieldProps<
+  Required<TextFieldProps>['autocomplete']
 > &
-  Required<Pick<URLFieldProps$1, 'maxLength' | 'minLength'>>;
+  Required<
+    Pick<
+      TextFieldProps,
+      | 'defaultValue'
+      | 'details'
+      | 'disabled'
+      | 'error'
+      | 'labelAccessibilityVisibility'
+      | 'minLength'
+      | 'maxLength'
+      | 'label'
+      | 'name'
+      | 'placeholder'
+      | 'readOnly'
+      | 'required'
+      | 'value'
+    >
+  >;
 
-declare const tagName = 's-url-field';
+declare const tagName = 's-search-field';
 export interface ReactProps
-  extends Partial<Omit<URLFieldProps, 'accessory'>>,
-    Pick<URLFieldProps$1, 'id'>,
+  extends Partial<SearchFieldProps>,
+    Pick<TextFieldProps, 'id'>,
     FieldReactProps<typeof tagName> {}
 
-declare class URLField
-  extends PreactFieldElement<URLFieldProps['autocomplete']>
-  implements URLFieldProps
+declare class SearchField
+  extends PreactFieldElement<SearchFieldProps['autocomplete']>
+  implements SearchFieldProps
 {
-  accessor autocomplete: URLFieldProps['autocomplete'];
-  accessor maxLength: URLFieldProps['maxLength'];
-  accessor minLength: URLFieldProps['minLength'];
+  accessor maxLength: SearchFieldProps['maxLength'];
+  accessor minLength: SearchFieldProps['minLength'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: URLField;
+    [tagName]: SearchField;
   }
 }
 declare module 'preact' {
@@ -209,4 +225,4 @@ declare module 'preact' {
   }
 }
 
-export {URLField};
+export {SearchField};

@@ -1,9 +1,13 @@
 /** VERSION: 0.47.2 **/
+
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
+
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />
 type ComponentChildren = any;
 type SizeKeyword =
   | 'small-500'
@@ -3466,6 +3470,11 @@ export interface BadgeProps
   >;
 }
 
+declare const tagName$L = 's-badge';
+export interface ReactProps$L
+  extends Partial<BadgeProps>,
+    Pick<BadgeProps$1, 'id'> {}
+
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -3533,21 +3542,16 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$J]: Badge;
+    [tagName$L]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$J]: HTMLAttributes<HTMLElement> & BadgeJSXProps;
+      [tagName$L]: HTMLAttributes<HTMLElement> & ReactProps$L;
     }
   }
 }
-
-declare const tagName$J = 's-badge';
-export interface BadgeJSXProps
-  extends Partial<BadgeProps>,
-    Pick<BadgeProps$1, 'id'> {}
 
 export type RequiredBannerProps = Required<BannerProps$1>;
 export interface BannerProps
@@ -3573,35 +3577,36 @@ export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   onBlur?: ((event: CallbackEvent<T>) => void) | null;
 }
 
+declare const tagName$K = 's-banner';
+export interface ReactProps$K
+  extends Partial<BannerProps>,
+    Pick<BannerProps$1, 'id'> {
+  secondaryActions?: ComponentChild;
+  onDismiss?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
+}
+
 declare class Banner extends PreactCustomElement implements BannerProps {
   accessor heading: BannerProps['heading'];
   accessor tone: BannerProps['tone'];
   accessor hidden: BannerProps['hidden'];
   accessor dismissible: BannerProps['dismissible'];
-  accessor ondismiss: CallbackEventListener<typeof tagName$I> | null;
-  accessor onafterhide: CallbackEventListener<typeof tagName$I> | null;
+  accessor ondismiss: CallbackEventListener<typeof tagName$K> | null;
+  accessor onafterhide: CallbackEventListener<typeof tagName$K> | null;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$I]: Banner;
+    [tagName$K]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$I]: HTMLAttributes<HTMLElement> & BannerJSXProps;
+      [tagName$K]: HTMLAttributes<HTMLElement> &
+        Omit<ReactProps$K, 'secondaryActions'>;
     }
   }
-}
-
-declare const tagName$I = 's-banner';
-export interface BannerJSXProps
-  extends Partial<BannerProps>,
-    Pick<BannerProps$1, 'id'> {
-  secondaryActions?: ComponentChild;
-  onDismiss?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
-  onAfterHide?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
 }
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -3681,6 +3686,11 @@ export interface BoxProps
   overflow: AlignedBox['overflow'];
 }
 
+declare const tagName$J = 's-box';
+export interface ReactProps$J
+  extends Partial<BoxProps>,
+    Pick<BoxProps$1, 'id'> {}
+
 declare class BoxElement extends PreactCustomElement implements BoxProps {
   constructor(renderImpl: RenderImpl);
   accessor accessibilityRole: BoxProps['accessibilityRole'];
@@ -3714,21 +3724,16 @@ declare class Box extends BoxElement implements BoxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$H]: Box;
+    [tagName$J]: Box;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$H]: HTMLAttributes<HTMLElement> & BoxJSXProps;
+      [tagName$J]: HTMLAttributes<HTMLElement> & ReactProps$J;
     }
   }
 }
-
-declare const tagName$H = 's-box';
-export interface BoxJSXProps
-  extends Partial<BoxProps>,
-    Pick<BoxProps$1, 'id'> {}
 
 export type ButtonOnlyProps = Extract<
   ButtonProps$1,
@@ -3758,6 +3763,15 @@ export interface ButtonProps extends ButtonBaseProps {
   icon: IconProps['type'];
 }
 
+declare const tagName$I = 's-button';
+export interface ReactProps$I
+  extends Partial<ButtonProps>,
+    Pick<ButtonProps$1, 'id'> {
+  onClick?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
+}
+
 export interface PreactOverlayControlProps
   extends Required<Pick<InteractionProps, 'commandFor'>> {
   command: Extract<
@@ -3779,33 +3793,24 @@ declare class Button extends Button_base implements ButtonProps {
   accessor target: ButtonProps['target'];
   accessor href: ButtonProps['href'];
   accessor download: ButtonProps['download'];
-  accessor onclick: CallbackEventListener<typeof tagName$G> | null;
-  accessor onblur: CallbackEventListener<typeof tagName$G> | null;
-  accessor onfocus: CallbackEventListener<typeof tagName$G> | null;
+  accessor onclick: CallbackEventListener<typeof tagName$I> | null;
+  accessor onblur: CallbackEventListener<typeof tagName$I> | null;
+  accessor onfocus: CallbackEventListener<typeof tagName$I> | null;
   accessor type: ButtonProps['type'];
   accessor accessibilityLabel: ButtonProps['accessibilityLabel'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$G]: Button;
+    [tagName$I]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$G]: HTMLAttributes<HTMLElement> & ButtonJSXProps;
+      [tagName$I]: HTMLAttributes<HTMLElement> & ReactProps$I;
     }
   }
-}
-
-declare const tagName$G = 's-button';
-export interface ButtonJSXProps
-  extends Partial<ButtonProps>,
-    Pick<ButtonProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
 }
 
 declare const internals: unique symbol;
@@ -3819,7 +3824,6 @@ declare class PreactInputElement
   static formAssociated: boolean;
   /** @private */
   [internals]: ElementInternals;
-  protected getDefaultValue(): string;
   accessor onchange: CallbackEventListener<'input'>;
   accessor oninput: CallbackEventListener<'input'>;
   accessor disabled: PreactInputProps['disabled'];
@@ -3845,6 +3849,14 @@ export type CheckboxProps = PreactInputProps &
       | 'defaultIndeterminate'
     >
   >;
+
+declare const tagName$H = 's-checkbox';
+export interface ReactProps$H
+  extends Partial<CheckboxProps>,
+    Pick<CheckboxProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName$H>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$H>) => void) | null;
+}
 
 export type PreactCheckboxProps = Required<
   Pick<
@@ -3887,23 +3899,15 @@ declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$F]: Checkbox;
+    [tagName$H]: Checkbox;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$F]: HTMLAttributes<HTMLElement> & CheckboxJSXProps;
+      [tagName$H]: HTMLAttributes<HTMLElement> & ReactProps$H;
     }
   }
-}
-
-declare const tagName$F = 's-checkbox';
-export interface CheckboxJSXProps
-  extends Partial<CheckboxProps>,
-    Pick<CheckboxProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
 }
 
 export interface ChoiceProps
@@ -3920,6 +3924,11 @@ export interface ChoiceProps
     >
   > {}
 
+declare const tagName$G = 's-choice';
+export interface ReactProps$G
+  extends Partial<ChoiceProps>,
+    Pick<ChoiceProps$1, 'id'> {}
+
 declare class Choice extends PreactCustomElement implements ChoiceProps {
   accessor disabled: ChoiceProps['disabled'];
   accessor details: ChoiceProps['details'];
@@ -3933,21 +3942,16 @@ declare class Choice extends PreactCustomElement implements ChoiceProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$E]: Choice;
+    [tagName$G]: Choice;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$E]: HTMLAttributes<HTMLElement> & ChoiceJSXProps;
+      [tagName$G]: HTMLAttributes<HTMLElement> & ReactProps$G;
     }
   }
 }
-
-declare const tagName$E = 's-choice';
-export interface ChoiceJSXProps
-  extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id'> {}
 
 export interface ChoiceListProps
   extends Required<
@@ -3956,6 +3960,14 @@ export interface ChoiceListProps
       'multiple' | 'disabled' | 'error' | 'details' | 'values' | 'name'
     >
   > {}
+
+declare const tagName$F = 's-choice-list';
+export interface ReactProps$F
+  extends Partial<ChoiceListProps>,
+    Pick<ChoiceListProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
+}
 
 declare class ChoiceList extends PreactInputElement implements ChoiceListProps {
   accessor error: ChoiceListProps['error'];
@@ -3968,23 +3980,15 @@ declare class ChoiceList extends PreactInputElement implements ChoiceListProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$D]: ChoiceList;
+    [tagName$F]: ChoiceList;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$D]: HTMLAttributes<HTMLElement> & ChoiceListJSXProps;
+      [tagName$F]: HTMLAttributes<HTMLElement> & ReactProps$F;
     }
   }
-}
-
-declare const tagName$D = 's-choice-list';
-export interface ChoiceListJSXProps
-  extends Partial<ChoiceListProps>,
-    Pick<ChoiceListProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
 }
 
 export type ClickableBaseProps = Required<
@@ -4006,6 +4010,15 @@ export interface ClickableProps
   extends Required<BoxProps>,
     ClickableBaseProps {}
 
+declare const tagName$E = 's-clickable';
+export interface ReactProps$E
+  extends Partial<ClickableProps>,
+    Pick<ClickableProps$1, 'id'> {
+  onClick?: ((event: CallbackEvent<typeof tagName$E>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$E>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$E>) => void) | null;
+}
+
 declare const Clickable_base: (abstract new (
   renderImpl: RenderImpl,
 ) => BoxElement & PreactOverlayControlProps) &
@@ -4016,32 +4029,23 @@ declare class Clickable extends Clickable_base implements ClickableProps {
   accessor target: ClickableProps['target'];
   accessor href: ClickableProps['href'];
   accessor download: ClickableProps['download'];
-  accessor onclick: CallbackEventListener<typeof tagName$C> | null;
-  accessor onblur: CallbackEventListener<typeof tagName$C> | null;
-  accessor onfocus: CallbackEventListener<typeof tagName$C> | null;
+  accessor onclick: CallbackEventListener<typeof tagName$E> | null;
+  accessor onblur: CallbackEventListener<typeof tagName$E> | null;
+  accessor onfocus: CallbackEventListener<typeof tagName$E> | null;
   accessor type: ClickableProps['type'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$C]: Clickable;
+    [tagName$E]: Clickable;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$C]: HTMLAttributes<HTMLElement> & ClickableJSXProps;
+      [tagName$E]: HTMLAttributes<HTMLElement> & ReactProps$E;
     }
   }
-}
-
-declare const tagName$C = 's-clickable';
-export interface ClickableJSXProps
-  extends Partial<ClickableProps>,
-    Pick<ClickableProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$C>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$C>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$C>) => void) | null;
 }
 
 export interface DividerProps
@@ -4050,6 +4054,11 @@ export interface DividerProps
   color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
 }
 
+declare const tagName$D = 's-divider';
+export interface ReactProps$D
+  extends Partial<DividerProps>,
+    Pick<DividerProps$1, 'id'> {}
+
 declare class Divider extends PreactCustomElement implements DividerProps {
   accessor direction: DividerProps['direction'];
   accessor color: DividerProps['color'];
@@ -4057,21 +4066,16 @@ declare class Divider extends PreactCustomElement implements DividerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$B]: Divider;
+    [tagName$D]: Divider;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$B]: HTMLAttributes<HTMLElement> & DividerJSXProps;
+      [tagName$D]: HTMLAttributes<HTMLElement> & ReactProps$D;
     }
   }
 }
-
-declare const tagName$B = 's-divider';
-export interface DividerJSXProps
-  extends Partial<DividerProps>,
-    Pick<DividerProps$1, 'id'> {}
 
 export type PreactFieldProps<Autocomplete extends string = string> =
   PreactInputProps &
@@ -4125,7 +4129,6 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   accessor placeholder: PreactFieldProps['placeholder'];
   accessor readOnly: PreactFieldProps['readOnly'];
   accessor required: PreactFieldProps['required'];
-  protected getDefaultValue(): string;
   /**
    * Global keyboard event handlers for things like key bindings typically
    * ignore keystrokes originating from within input elements. Unfortunately,
@@ -4151,6 +4154,12 @@ export type EmailFieldProps = PreactFieldProps<
 > &
   Required<Pick<EmailFieldProps$1, 'maxLength' | 'minLength'>>;
 
+declare const tagName$C = 's-email-field';
+export interface ReactProps$C
+  extends Partial<Omit<EmailFieldProps, 'accessory'>>,
+    Pick<EmailFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName$C> {}
+
 declare class EmailField
   extends PreactFieldElement<EmailFieldProps['autocomplete']>
   implements EmailFieldProps
@@ -4162,22 +4171,16 @@ declare class EmailField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$A]: EmailField;
+    [tagName$C]: EmailField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$A]: HTMLAttributes<HTMLElement> & EmailFieldJSXProps;
+      [tagName$C]: HTMLAttributes<HTMLElement> & ReactProps$C;
     }
   }
 }
-
-declare const tagName$A = 's-email-field';
-export interface EmailFieldJSXProps
-  extends Partial<Omit<EmailFieldProps, 'accessory'>>,
-    Pick<EmailFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$A> {}
 
 export type RequiredAlignedProps = Required<GridProps$1>;
 export interface GridProps
@@ -4205,6 +4208,11 @@ export interface GridProps
   gap: MakeResponsive<RequiredAlignedProps['gap']>;
 }
 
+declare const tagName$B = 's-grid';
+export interface ReactProps$B
+  extends Partial<GridProps>,
+    Pick<GridProps$1, 'id'> {}
+
 declare class Grid extends BoxElement implements GridProps {
   constructor();
   accessor gridTemplateColumns: GridProps['gridTemplateColumns'];
@@ -4221,21 +4229,16 @@ declare class Grid extends BoxElement implements GridProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$z]: Grid;
+    [tagName$B]: Grid;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$z]: HTMLAttributes<HTMLElement> & GridJSXProps;
+      [tagName$B]: HTMLAttributes<HTMLElement> & ReactProps$B;
     }
   }
 }
-
-declare const tagName$z = 's-grid';
-export interface GridJSXProps
-  extends Partial<GridProps>,
-    Pick<GridProps$1, 'id'> {}
 
 export type RequiredGridItemProps = Required<GridItemProps$1>;
 export interface GridItemProps
@@ -4245,6 +4248,11 @@ export interface GridItemProps
   gridRow: RequiredGridItemProps['gridRow'];
 }
 
+declare const tagName$A = 's-grid-item';
+export interface ReactProps$A
+  extends Partial<GridItemProps>,
+    Pick<GridItemProps$1, 'id'> {}
+
 declare class GridItem extends BoxElement implements GridItemProps {
   accessor gridColumn: GridItemProps['gridColumn'];
   accessor gridRow: GridItemProps['gridRow'];
@@ -4252,21 +4260,16 @@ declare class GridItem extends BoxElement implements GridItemProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$y]: GridItem;
+    [tagName$A]: GridItem;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$y]: HTMLAttributes<HTMLElement> & GridItemJSXProps;
+      [tagName$A]: HTMLAttributes<HTMLElement> & ReactProps$A;
     }
   }
 }
-
-declare const tagName$y = 's-grid-item';
-export interface GridItemJSXProps
-  extends Partial<GridItemProps>,
-    Pick<GridItemProps$1, 'id'> {}
 
 export type RequiredHeadingProps = Required<HeadingProps$1>;
 export interface HeadingProps
@@ -4279,6 +4282,11 @@ export interface HeadingProps
   lineClamp: RequiredHeadingProps['lineClamp'];
 }
 
+declare const tagName$z = 's-heading';
+export interface ReactProps$z
+  extends Partial<HeadingProps>,
+    Pick<HeadingProps$1, 'id'> {}
+
 declare class Heading extends PreactCustomElement implements HeadingProps {
   accessor accessibilityRole: HeadingProps['accessibilityRole'];
   accessor lineClamp: HeadingProps['lineClamp'];
@@ -4287,21 +4295,21 @@ declare class Heading extends PreactCustomElement implements HeadingProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$x]: Heading;
+    [tagName$z]: Heading;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$x]: HTMLAttributes<HTMLElement> & HeadingJSXProps;
+      [tagName$z]: HTMLAttributes<HTMLElement> & ReactProps$z;
     }
   }
 }
 
-declare const tagName$x = 's-heading';
-export interface HeadingJSXProps
-  extends Partial<HeadingProps>,
-    Pick<HeadingProps$1, 'id'> {}
+declare const tagName$y = 's-icon';
+export interface ReactProps$y
+  extends Partial<IconProps>,
+    Pick<IconProps$1, 'id'> {}
 
 declare class Icon extends PreactCustomElement implements IconProps {
   accessor color: IconProps['color'];
@@ -4312,21 +4320,16 @@ declare class Icon extends PreactCustomElement implements IconProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$w]: Icon;
+    [tagName$y]: Icon;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$w]: Omit<HTMLAttributes<HTMLElement>, 'size'> & IconJSXProps;
+      [tagName$y]: Omit<HTMLAttributes<HTMLElement>, 'size'> & ReactProps$y;
     }
   }
 }
-
-declare const tagName$w = 's-icon';
-export interface IconJSXProps
-  extends Partial<IconProps>,
-    Pick<IconProps$1, 'id'> {}
 
 export interface ImageProps
   extends Required<
@@ -4360,6 +4363,14 @@ export interface ImageProps
   borderWidth: BoxProps['borderWidth'];
 }
 
+declare const tagName$x = 's-image';
+export interface ReactProps$x
+  extends Partial<ImageProps>,
+    Pick<ImageProps$1, 'id'> {
+  onError?: ((event: CallbackEvent<typeof tagName$x>) => void) | null;
+  onLoad?: ((event: CallbackEvent<typeof tagName$x>) => void) | null;
+}
+
 declare class Image extends PreactCustomElement implements ImageProps {
   accessor src: ImageProps['src'];
   accessor srcSet: ImageProps['srcSet'];
@@ -4375,29 +4386,21 @@ declare class Image extends PreactCustomElement implements ImageProps {
   accessor borderStyle: ImageProps['borderStyle'];
   accessor borderColor: ImageProps['borderColor'];
   accessor borderRadius: ImageProps['borderRadius'];
-  accessor onload: CallbackEventListener<typeof tagName$v> | null;
+  accessor onload: CallbackEventListener<typeof tagName$x> | null;
   accessor onerror: OnErrorEventHandler;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$v]: Image;
+    [tagName$x]: Image;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$v]: HTMLAttributes<HTMLElement> & ImageJSXProps;
+      [tagName$x]: HTMLAttributes<HTMLElement> & ReactProps$x;
     }
   }
-}
-
-declare const tagName$v = 's-image';
-export interface ImageJSXProps
-  extends Partial<ImageProps>,
-    Pick<ImageProps$1, 'id'> {
-  onError?: ((event: CallbackEvent<typeof tagName$v>) => void) | null;
-  onLoad?: ((event: CallbackEvent<typeof tagName$v>) => void) | null;
 }
 
 export type RequiredLinkProps = Required<LinkProps$1>;
@@ -4423,6 +4426,13 @@ export interface LinkProps
   tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
 }
 
+declare const tagName$w = 's-link';
+export interface ReactProps$w
+  extends Partial<LinkProps>,
+    Pick<LinkProps$1, 'id' | 'lang'> {
+  onClick?: ((event: CallbackEvent<typeof tagName$w>) => void) | null;
+}
+
 declare const Link_base: (abstract new (
   args_0: RenderImpl,
 ) => PreactCustomElement & PreactOverlayControlProps) &
@@ -4434,56 +4444,55 @@ declare class Link extends Link_base implements LinkProps {
   accessor target: LinkProps['target'];
   accessor download: LinkProps['download'];
   accessor lang: LinkProps['lang'];
-  accessor onclick: CallbackEventListener<typeof tagName$u> | null;
+  accessor onclick: CallbackEventListener<typeof tagName$w> | null;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$u]: Link;
+    [tagName$w]: Link;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$u]: HTMLAttributes<HTMLElement> & LinkJSXProps;
+      [tagName$w]: HTMLAttributes<HTMLElement> & ReactProps$w;
     }
   }
 }
 
-declare const tagName$u = 's-link';
-export interface LinkJSXProps
-  extends Partial<LinkProps>,
-    Pick<LinkProps$1, 'id' | 'lang'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$u>) => void) | null;
-}
-
 export interface ListItemProps extends ListItemProps$1 {}
+
+declare const tagName$v = 's-list-item';
+export interface ReactProps$v
+  extends Partial<ListItemProps>,
+    Pick<ListItemProps$1, 'id'> {}
 
 declare class ListItem extends PreactCustomElement implements ListItemProps {
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$t]: ListItem;
+    [tagName$v]: ListItem;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$t]: HTMLAttributes<HTMLElement> & ListItemJSXProps;
+      [tagName$v]: HTMLAttributes<HTMLElement> & ReactProps$v;
     }
   }
 }
-
-declare const tagName$t = 's-list-item';
-export interface ListItemJSXProps
-  extends Partial<ListItemProps>,
-    Pick<ListItemProps$1, 'id'> {}
 
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
   extends PreactFieldProps,
     Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step' | 'currencyCode'> {}
+
+declare const tagName$u = 's-money-field';
+export interface ReactProps$u
+  extends Partial<MoneyFieldProps>,
+    FieldReactProps<typeof tagName$u>,
+    Pick<MoneyFieldProps$1, 'id'> {}
 
 declare class MoneyField
   extends PreactFieldElement<MoneyFieldProps['autocomplete']>
@@ -4499,22 +4508,16 @@ declare class MoneyField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$s]: MoneyField;
+    [tagName$u]: MoneyField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$s]: HTMLAttributes<HTMLElement> & MoneyFieldJSXProps;
+      [tagName$u]: HTMLAttributes<HTMLElement> & ReactProps$u;
     }
   }
 }
-
-declare const tagName$s = 's-money-field';
-export interface MoneyFieldJSXProps
-  extends Partial<MoneyFieldProps>,
-    FieldReactProps<typeof tagName$s>,
-    Pick<MoneyFieldProps$1, 'id'> {}
 
 export type NumberFieldProps = PreactFieldProps<
   Required<NumberFieldProps$1>['autocomplete']
@@ -4525,6 +4528,12 @@ export type NumberFieldProps = PreactFieldProps<
       'inputMode' | 'max' | 'min' | 'prefix' | 'step' | 'suffix'
     >
   >;
+
+declare const tagName$t = 's-number-field';
+export interface ReactProps$t
+  extends Partial<NumberFieldProps>,
+    Pick<NumberFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName$t> {}
 
 declare class NumberField
   extends PreactFieldElement<NumberFieldProps['autocomplete']>
@@ -4542,27 +4551,24 @@ declare class NumberField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$r]: NumberField;
+    [tagName$t]: NumberField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$r]: HTMLAttributes<HTMLElement> & NumberFieldJSXProps;
+      [tagName$t]: HTMLAttributes<HTMLElement> & ReactProps$t;
     }
   }
 }
-
-declare const tagName$r = 's-number-field';
-export interface NumberFieldJSXProps
-  extends Partial<NumberFieldProps>,
-    Pick<NumberFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$r> {}
 
 export interface OptionProps
   extends Required<
     Pick<OptionProps$1, 'disabled' | 'value' | 'selected' | 'defaultSelected'>
   > {}
+
+declare const tagName$s = 's-option';
+export interface ReactProps$s extends Partial<OptionProps> {}
 
 declare class Option extends PreactCustomElement implements OptionProps {
   accessor selected: OptionProps['selected'];
@@ -4573,22 +4579,22 @@ declare class Option extends PreactCustomElement implements OptionProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$q]: Option;
+    [tagName$s]: Option;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$q]: HTMLAttributes<HTMLElement> & OptionJSXProps;
+      [tagName$s]: HTMLAttributes<HTMLElement> & ReactProps$s;
     }
   }
 }
 
-declare const tagName$q = 's-option';
-export interface OptionJSXProps extends Partial<OptionProps> {}
-
 export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
+
+declare const tagName$r = 's-option-group';
+export interface ReactProps$r extends Partial<OptionGroupProps> {}
 
 declare class OptionGroup
   extends PreactCustomElement
@@ -4600,21 +4606,23 @@ declare class OptionGroup
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$p]: OptionGroup;
+    [tagName$r]: OptionGroup;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$p]: HTMLAttributes<HTMLElement> & OptionGroupJSXProps;
+      [tagName$r]: HTMLAttributes<HTMLElement> & ReactProps$r;
     }
   }
 }
 
-declare const tagName$p = 's-option-group';
-export interface OptionGroupJSXProps extends Partial<OptionGroupProps> {}
-
 export interface OrderedListProps extends OrderedListProps$1 {}
+
+declare const tagName$q = 's-ordered-list';
+export interface ReactProps$q
+  extends Partial<OrderedListProps>,
+    Pick<OrderedListProps$1, 'id'> {}
 
 declare class OrderedList
   extends PreactCustomElement
@@ -4624,24 +4632,24 @@ declare class OrderedList
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$o]: OrderedList;
+    [tagName$q]: OrderedList;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: HTMLAttributes<HTMLElement> & OrderedListJSXProps;
+      [tagName$q]: HTMLAttributes<HTMLElement> & ReactProps$q;
     }
   }
 }
 
-declare const tagName$o = 's-ordered-list';
-export interface OrderedListJSXProps
-  extends Partial<OrderedListProps>,
-    Pick<OrderedListProps$1, 'id'> {}
-
 export interface PageProps extends Required<Pick<PageProps$1, 'inlineSize'>> {
-  inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large'>;
+  inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
+}
+
+declare const tagName$p = 's-page';
+export interface ReactProps$p extends Partial<PageProps> {
+  aside?: ComponentChild;
 }
 
 declare class Page extends PreactCustomElement implements PageProps {
@@ -4650,20 +4658,15 @@ declare class Page extends PreactCustomElement implements PageProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$n]: Page;
+    [tagName$p]: Page;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$n]: HTMLAttributes<HTMLElement> & PageJSXProps;
+      [tagName$p]: HTMLAttributes<HTMLElement> & Omit<ReactProps$p, 'aside'>;
     }
   }
-}
-
-declare const tagName$n = 's-page';
-export interface PageJSXProps extends Partial<PageProps> {
-  aside?: ComponentChild;
 }
 
 export interface ParagraphProps
@@ -4682,6 +4685,11 @@ export interface ParagraphProps
   lineClamp: Extract<ParagraphProps$1['lineClamp'], number>;
 }
 
+declare const tagName$o = 's-paragraph';
+export interface ReactProps$o
+  extends Partial<ParagraphProps>,
+    Pick<ParagraphProps$1, 'id'> {}
+
 declare class Paragraph extends PreactCustomElement implements ParagraphProps {
   accessor fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
   accessor lineClamp: ParagraphProps['lineClamp'];
@@ -4697,21 +4705,16 @@ declare class Paragraph extends PreactCustomElement implements ParagraphProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$m]: Paragraph;
+    [tagName$o]: Paragraph;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$m]: HTMLAttributes<HTMLElement> & ParagraphJSXProps;
+      [tagName$o]: HTMLAttributes<HTMLElement> & ReactProps$o;
     }
   }
 }
-
-declare const tagName$m = 's-paragraph';
-export interface ParagraphJSXProps
-  extends Partial<ParagraphProps>,
-    Pick<ParagraphProps$1, 'id'> {}
 
 export type PasswordFieldProps = PreactFieldProps<
   Required<PasswordFieldProps$1>['autocomplete']
@@ -4735,6 +4738,12 @@ export type PasswordFieldProps = PreactFieldProps<
     >
   >;
 
+declare const tagName$n = 's-password-field';
+export interface ReactProps$n
+  extends Partial<PasswordFieldProps>,
+    Pick<PasswordFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName$n> {}
+
 declare class PasswordField
   extends PreactFieldElement<PasswordFieldProps['autocomplete']>
   implements PasswordFieldProps
@@ -4745,22 +4754,16 @@ declare class PasswordField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$l]: PasswordField;
+    [tagName$n]: PasswordField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$l]: HTMLAttributes<HTMLElement> & PasswordFieldJSXProps;
+      [tagName$n]: HTMLAttributes<HTMLElement> & ReactProps$n;
     }
   }
 }
-
-declare const tagName$l = 's-password-field';
-export interface PasswordFieldJSXProps
-  extends Partial<PasswordFieldProps>,
-    Pick<PasswordFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$l> {}
 
 export type SearchFieldProps = PreactFieldProps<
   Required<TextFieldProps$1>['autocomplete']
@@ -4784,6 +4787,12 @@ export type SearchFieldProps = PreactFieldProps<
     >
   >;
 
+declare const tagName$m = 's-search-field';
+export interface ReactProps$m
+  extends Partial<SearchFieldProps>,
+    Pick<TextFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName$m> {}
+
 declare class SearchField
   extends PreactFieldElement<SearchFieldProps['autocomplete']>
   implements SearchFieldProps
@@ -4794,22 +4803,16 @@ declare class SearchField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$k]: SearchField;
+    [tagName$m]: SearchField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$k]: HTMLAttributes<HTMLElement> & SearchFieldJSXProps;
+      [tagName$m]: HTMLAttributes<HTMLElement> & ReactProps$m;
     }
   }
 }
-
-declare const tagName$k = 's-search-field';
-export interface SearchFieldJSXProps
-  extends Partial<SearchFieldProps>,
-    Pick<TextFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$k> {}
 
 export type RequiredSectionProps = Required<SectionProps$1>;
 export interface SectionProps
@@ -4822,6 +4825,11 @@ export interface SectionProps
   padding: RequiredSectionProps['padding'];
 }
 
+declare const tagName$l = 's-section';
+export interface ReactProps$l
+  extends Partial<SectionProps>,
+    Pick<SectionProps$1, 'id'> {}
+
 declare class Section extends PreactCustomElement implements SectionProps {
   constructor();
   connectedCallback(): void;
@@ -4831,21 +4839,16 @@ declare class Section extends PreactCustomElement implements SectionProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$j]: Section;
+    [tagName$l]: Section;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$j]: HTMLAttributes<HTMLElement> & SectionJSXProps;
+      [tagName$l]: HTMLAttributes<HTMLElement> & ReactProps$l;
     }
   }
 }
-
-declare const tagName$j = 's-section';
-export interface SectionJSXProps
-  extends Partial<SectionProps>,
-    Pick<SectionProps$1, 'id'> {}
 
 export type SelectProps = PreactInputProps &
   Required<
@@ -4863,6 +4866,14 @@ export type SelectProps = PreactInputProps &
       | 'labelAccessibilityVisibility'
     >
   >;
+
+declare const tagName$k = 's-select';
+export interface ReactProps$k extends Partial<SelectProps> {
+  onChange?: (event: CallbackEvent<typeof tagName$k>) => void;
+  onInput?: (event: CallbackEvent<typeof tagName$k>) => void;
+  onBlur?: (event: CallbackEvent<typeof tagName$k>) => void;
+  onFocus?: (event: CallbackEvent<typeof tagName$k>) => void;
+}
 
 declare const usedFirstOptionSymbol: unique symbol;
 declare const hasInitialValueSymbol: unique symbol;
@@ -4891,23 +4902,15 @@ declare class Select extends PreactInputElement implements SelectProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$i]: Select;
+    [tagName$k]: Select;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$i]: HTMLAttributes<HTMLElement> & SelectJSXProps;
+      [tagName$k]: HTMLAttributes<HTMLElement> & ReactProps$k;
     }
   }
-}
-
-declare const tagName$i = 's-select';
-export interface SelectJSXProps extends Partial<SelectProps> {
-  onChange?: (event: CallbackEvent<typeof tagName$i>) => void;
-  onInput?: (event: CallbackEvent<typeof tagName$i>) => void;
-  onBlur?: (event: CallbackEvent<typeof tagName$i>) => void;
-  onFocus?: (event: CallbackEvent<typeof tagName$i>) => void;
 }
 
 export interface SpinnerProps
@@ -4920,6 +4923,11 @@ export interface SpinnerProps
   size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
 }
 
+declare const tagName$j = 's-spinner';
+export interface ReactProps$j
+  extends Partial<SpinnerProps>,
+    Pick<SpinnerProps$1, 'id'> {}
+
 declare class Spinner extends PreactCustomElement implements SpinnerProps {
   accessor accessibilityLabel: string;
   accessor size: SpinnerProps['size'];
@@ -4927,21 +4935,16 @@ declare class Spinner extends PreactCustomElement implements SpinnerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$h]: Spinner;
+    [tagName$j]: Spinner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: Omit<HTMLAttributes<HTMLElement>, 'size'> & SpinnerJSXProps;
+      [tagName$j]: Omit<HTMLAttributes<HTMLElement>, 'size'> & ReactProps$j;
     }
   }
 }
-
-declare const tagName$h = 's-spinner';
-export interface SpinnerJSXProps
-  extends Partial<SpinnerProps>,
-    Pick<SpinnerProps$1, 'id'> {}
 
 export type AlignedStackProps = Required<StackProps$1>;
 export interface StackProps
@@ -4959,6 +4962,11 @@ export interface StackProps
   direction: MakeResponsive<AlignedStackProps['direction']>;
 }
 
+declare const tagName$i = 's-stack';
+export interface ReactProps$i
+  extends Partial<StackProps>,
+    Pick<StackProps$1, 'id'> {}
+
 declare class Stack extends BoxElement implements StackProps {
   constructor();
   accessor direction: StackProps['direction'];
@@ -4971,25 +4979,28 @@ declare class Stack extends BoxElement implements StackProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$g]: Stack;
+    [tagName$i]: Stack;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: HTMLAttributes<HTMLElement> & StackJSXProps;
+      [tagName$i]: HTMLAttributes<HTMLElement> & ReactProps$i;
     }
   }
 }
 
-declare const tagName$g = 's-stack';
-export interface StackJSXProps
-  extends Partial<StackProps>,
-    Pick<StackProps$1, 'id'> {}
-
 export interface SwitchProps
   extends PreactCheckboxProps,
     Required<Pick<SwitchProps$1, 'labelAccessibilityVisibility'>> {}
+
+declare const tagName$h = 's-switch';
+export interface ReactProps$h
+  extends Partial<SwitchProps>,
+    Pick<SwitchProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
+}
 
 declare class Switch extends PreactCheckboxElement implements SwitchProps {
   accessor labelAccessibilityVisibility: SwitchProps['labelAccessibilityVisibility'];
@@ -4997,23 +5008,15 @@ declare class Switch extends PreactCheckboxElement implements SwitchProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: Switch;
+    [tagName$h]: Switch;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: HTMLAttributes<HTMLElement> & SwitchJSXProps;
+      [tagName$h]: HTMLAttributes<HTMLElement> & ReactProps$h;
     }
   }
-}
-
-declare const tagName$f = 's-switch';
-export interface SwitchJSXProps
-  extends Partial<SwitchProps>,
-    Pick<SwitchProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
 }
 
 export interface TableProps
@@ -5024,6 +5027,13 @@ export interface TableProps
     >
   > {
   variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
+}
+
+declare const tagName$g = 's-table';
+export interface ReactProps$g
+  extends Partial<TableProps>,
+    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
+  filters?: ComponentChild;
 }
 
 export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
@@ -5049,8 +5059,8 @@ declare class Table extends PreactCustomElement implements TableProps {
   accessor paginate: TableProps['paginate'];
   accessor hasPreviousPage: TableProps['hasPreviousPage'];
   accessor hasNextPage: TableProps['hasNextPage'];
-  accessor onpreviouspage: CallbackEventListener<typeof tagName$e> | null;
-  accessor onnextpage: CallbackEventListener<typeof tagName$e> | null;
+  accessor onpreviouspage: CallbackEventListener<typeof tagName$g> | null;
+  accessor onnextpage: CallbackEventListener<typeof tagName$g> | null;
   /**
    * The actual table variant, which is either 'table' or 'list'.
    */
@@ -5066,69 +5076,67 @@ declare class Table extends PreactCustomElement implements TableProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: Table;
+    [tagName$g]: Table;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: HTMLAttributes<HTMLElement> & TableJSXProps;
+      [tagName$g]: HTMLAttributes<HTMLElement> & Omit<ReactProps$g, 'filters'>;
     }
   }
 }
 
-declare const tagName$e = 's-table';
-export interface TableJSXProps
-  extends Partial<TableProps>,
-    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
-  filters?: ComponentChild;
-}
-
 export interface TableBodyProps extends TableBodyProps$1 {}
+
+declare const tagName$f = 's-table-body';
+export interface ReactProps$f
+  extends Partial<TableBodyProps>,
+    Pick<TableBodyProps$1, 'id'> {}
 
 declare class TableBody extends PreactCustomElement implements TableBodyProps {
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: TableBody;
+    [tagName$f]: TableBody;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: HTMLAttributes<HTMLElement> & TableBodyJSXProps;
+      [tagName$f]: HTMLAttributes<HTMLElement> & ReactProps$f;
     }
   }
 }
 
-declare const tagName$d = 's-table-body';
-export interface TableBodyJSXProps
-  extends Partial<TableBodyProps>,
-    Pick<TableBodyProps$1, 'id'> {}
-
 export interface TableCellProps extends TableCellProps$1 {}
+
+declare const tagName$e = 's-table-cell';
+export interface ReactProps$e
+  extends Partial<TableCellProps>,
+    Pick<TableCellProps$1, 'id'> {}
 
 declare class TableCell extends PreactCustomElement implements TableCellProps {
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: TableCell;
+    [tagName$e]: TableCell;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: HTMLAttributes<HTMLElement> & TableCellJSXProps;
+      [tagName$e]: HTMLAttributes<HTMLElement> & ReactProps$e;
     }
   }
 }
 
-declare const tagName$c = 's-table-cell';
-export interface TableCellJSXProps
-  extends Partial<TableCellProps>,
-    Pick<TableCellProps$1, 'id'> {}
+declare const tagName$d = 's-table-header';
+export interface ReactProps$d
+  extends Partial<TableHeaderProps>,
+    Pick<TableHeaderProps$1, 'id'> {}
 
 declare class TableHeader
   extends PreactCustomElement
@@ -5139,23 +5147,23 @@ declare class TableHeader
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: TableHeader;
+    [tagName$d]: TableHeader;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: HTMLAttributes<HTMLElement> & TableHeaderJSXProps;
+      [tagName$d]: HTMLAttributes<HTMLElement> & ReactProps$d;
     }
   }
 }
 
-declare const tagName$b = 's-table-header';
-export interface TableHeaderJSXProps
-  extends Partial<TableHeaderProps>,
-    Pick<TableHeaderProps$1, 'id'> {}
-
 export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
+
+declare const tagName$c = 's-table-header-row';
+export interface ReactProps$c
+  extends Partial<TableHeaderRowProps>,
+    Pick<TableHeaderRowProps$1, 'id'> {}
 
 declare class TableHeaderRow
   extends PreactCustomElement
@@ -5167,44 +5175,39 @@ declare class TableHeaderRow
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: TableHeaderRow;
+    [tagName$c]: TableHeaderRow;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: HTMLAttributes<HTMLElement> & TableHeaderRowJSXProps;
+      [tagName$c]: HTMLAttributes<HTMLElement> & ReactProps$c;
     }
   }
 }
 
-declare const tagName$a = 's-table-header-row';
-export interface TableHeaderRowJSXProps
-  extends Partial<TableHeaderRowProps>,
-    Pick<TableHeaderRowProps$1, 'id'> {}
-
 export interface TableRowProps extends TableRowProps$1 {}
+
+declare const tagName$b = 's-table-row';
+export interface ReactProps$b
+  extends Partial<TableRowProps>,
+    Pick<TableRowProps$1, 'id'> {}
 
 declare class TableRow extends PreactCustomElement implements TableRowProps {
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: TableRow;
+    [tagName$b]: TableRow;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: HTMLAttributes<HTMLElement> & TableRowJSXProps;
+      [tagName$b]: HTMLAttributes<HTMLElement> & ReactProps$b;
     }
   }
 }
-
-declare const tagName$9 = 's-table-row';
-export interface TableRowJSXProps
-  extends Partial<TableRowProps>,
-    Pick<TableRowProps$1, 'id'> {}
 
 export interface TextProps
   extends Required<
@@ -5234,6 +5237,11 @@ export interface TextProps
   >;
 }
 
+declare const tagName$a = 's-text';
+export interface ReactProps$a
+  extends Partial<TextProps>,
+    Pick<TextProps$1, 'id'> {}
+
 declare class Text extends PreactCustomElement implements TextProps {
   accessor display: TextProps['display'];
   accessor fontVariantNumeric: TextProps['fontVariantNumeric'];
@@ -5246,26 +5254,27 @@ declare class Text extends PreactCustomElement implements TextProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: Text;
+    [tagName$a]: Text;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: HTMLAttributes<HTMLElement> & TextJSXProps;
+      [tagName$a]: HTMLAttributes<HTMLElement> & ReactProps$a;
     }
   }
 }
-
-declare const tagName$8 = 's-text';
-export interface TextJSXProps
-  extends Partial<TextProps>,
-    Pick<TextProps$1, 'id'> {}
 
 export type TextAreaProps = PreactFieldProps<
   Required<TextAreaProps$1>['autocomplete']
 > &
   Required<Pick<TextAreaProps$1, 'maxLength' | 'minLength' | 'rows'>>;
+
+declare const tagName$9 = 's-text-area';
+export interface ReactProps$9
+  extends Partial<TextAreaProps>,
+    Pick<TextAreaProps$1, 'id'>,
+    FieldReactProps<typeof tagName$9> {}
 
 declare class TextArea
   extends PreactFieldElement<TextAreaProps['autocomplete']>
@@ -5278,22 +5287,16 @@ declare class TextArea
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$7]: TextArea;
+    [tagName$9]: TextArea;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: HTMLAttributes<HTMLElement> & TextAreaJSXProps;
+      [tagName$9]: HTMLAttributes<HTMLElement> & ReactProps$9;
     }
   }
 }
-
-declare const tagName$7 = 's-text-area';
-export interface TextAreaJSXProps
-  extends Partial<TextAreaProps>,
-    Pick<TextAreaProps$1, 'id'>,
-    FieldReactProps<typeof tagName$7> {}
 
 export type TextFieldProps = PreactFieldProps<
   Required<TextFieldProps$1>['autocomplete']
@@ -5304,6 +5307,14 @@ export type TextFieldProps = PreactFieldProps<
       'icon' | 'maxLength' | 'minLength' | 'prefix' | 'suffix'
     >
   >;
+
+declare const tagName$8 = 's-text-field';
+export interface ReactProps$8
+  extends Partial<Omit<TextFieldProps, 'accessory'>>,
+    Pick<TextFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName$8> {
+  accessory?: ComponentChild;
+}
 
 declare class TextField
   extends PreactFieldElement<TextFieldProps['autocomplete']>
@@ -5318,29 +5329,28 @@ declare class TextField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$6]: TextField;
+    [tagName$8]: TextField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: HTMLAttributes<HTMLElement> & TextFieldJSXProps;
+      [tagName$8]: HTMLAttributes<HTMLElement> &
+        Omit<ReactProps$8, 'accessory'>;
     }
   }
-}
-
-declare const tagName$6 = 's-text-field';
-export interface TextFieldJSXProps
-  extends Partial<Omit<TextFieldProps, 'accessory'>>,
-    Pick<TextFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$6> {
-  accessory?: ComponentChild;
 }
 
 export type URLFieldProps = PreactFieldProps<
   Required<URLFieldProps$1>['autocomplete']
 > &
   Required<Pick<URLFieldProps$1, 'maxLength' | 'minLength'>>;
+
+declare const tagName$7 = 's-url-field';
+export interface ReactProps$7
+  extends Partial<Omit<URLFieldProps, 'accessory'>>,
+    Pick<URLFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName$7> {}
 
 declare class URLField
   extends PreactFieldElement<URLFieldProps['autocomplete']>
@@ -5353,24 +5363,23 @@ declare class URLField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$5]: URLField;
+    [tagName$7]: URLField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$5]: HTMLAttributes<HTMLElement> & URLFieldJSXProps;
+      [tagName$7]: HTMLAttributes<HTMLElement> & ReactProps$7;
     }
   }
 }
 
-declare const tagName$5 = 's-url-field';
-export interface URLFieldJSXProps
-  extends Partial<Omit<URLFieldProps, 'accessory'>>,
-    Pick<URLFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$5> {}
-
 export interface UnorderedListProps extends UnorderedListProps$1 {}
+
+declare const tagName$6 = 's-unordered-list';
+export interface ReactProps$6
+  extends Partial<UnorderedListProps>,
+    Pick<UnorderedListProps$1, 'id'> {}
 
 declare class UnorderedList
   extends PreactCustomElement
@@ -5380,27 +5389,22 @@ declare class UnorderedList
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$4]: UnorderedList;
+    [tagName$6]: UnorderedList;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$4]: HTMLAttributes<HTMLElement> & UnorderedListJSXProps;
+      [tagName$6]: HTMLAttributes<HTMLElement> & ReactProps$6;
     }
   }
 }
 
-declare const tagName$4 = 's-unordered-list';
-export interface UnorderedListJSXProps
-  extends Partial<UnorderedListProps>,
-    Pick<UnorderedListProps$1, 'id'> {}
-
 export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
 
-declare const tagName$3 = 's-admin-action';
-export interface AdminActionJSXProps
+declare const tagName$5 = 's-admin-action';
+export interface ReactProps$5
   extends Partial<AdminActionProps>,
     Pick<AdminActionProps$1, 'id'> {
   primaryAction: ComponentChild;
@@ -5417,13 +5421,14 @@ declare class AdminAction
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$3]: AdminAction;
+    [tagName$5]: AdminAction;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$3]: HTMLAttributes<HTMLElement> & AdminActionJSXProps;
+      [tagName$5]: HTMLAttributes<HTMLElement> &
+        Omit<ReactProps$5, 'primaryAction' | 'secondaryActions'>;
     }
   }
 }
@@ -5431,8 +5436,8 @@ declare module 'preact' {
 export interface AdminBlockProps
   extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}
 
-declare const tagName$2 = 's-admin-block';
-export interface AdminBlockJSXProps
+declare const tagName$4 = 's-admin-block';
+export interface ReactProps$4
   extends Partial<AdminBlockProps>,
     Pick<AdminBlockProps$1, 'id'> {}
 
@@ -5446,13 +5451,13 @@ declare class AdminBlock
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$2]: AdminBlock;
+    [tagName$4]: AdminBlock;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$2]: HTMLAttributes<HTMLElement> & AdminBlockJSXProps;
+      [tagName$4]: HTMLAttributes<HTMLElement> & ReactProps$4;
     }
   }
 }
@@ -5460,8 +5465,8 @@ declare module 'preact' {
 export interface AdminPrintActionProps
   extends Pick<AdminPrintActionProps$1, 'src'> {}
 
-declare const tagName$1 = 's-admin-print-action';
-export interface AdminPrintActionJSXProps
+declare const tagName$3 = 's-admin-print-action';
+export interface ReactProps$3
   extends Partial<AdminPrintActionProps>,
     Pick<AdminPrintActionProps$1, 'id'> {}
 
@@ -5474,38 +5479,80 @@ declare class AdminPrintAction
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$1]: AdminPrintAction;
+    [tagName$3]: AdminPrintAction;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$1]: HTMLAttributes<HTMLElement> & AdminPrintActionJSXProps;
+      [tagName$3]: HTMLAttributes<HTMLElement> & ReactProps$3;
     }
   }
 }
 
-declare const tagName = 's-form';
-export interface FormProps {}
-declare class Form extends PreactCustomElement implements FormProps {
+export interface ReactProps$2 extends Partial<CustomerSegmentTemplateProps> {
+  id?: string;
+}
+
+declare const tagName$2 = 's-customer-segment-template';
+/**
+ * Reserved namespace and key for the customer standard metafield used in the template's query.
+ * More info - https://shopify.dev/docs/apps/custom-data/metafields/definitions/standard
+ */
+export type CustomerStandardMetafieldDependency = 'facts.birth_date';
+export interface CustomerSegmentTemplateProps {
+  /**
+   * The localized title of the template.
+   */
+  title: string;
+  /**
+   * The localized description of the template. An array can be used for multiple paragraphs.
+   */
+  description: string | string[];
+  /**
+   * The code snippet to render in the template with syntax highlighting. The `query` is not validated in the template.
+   */
+  query: string;
+  /**
+   * The code snippet to insert in the segment editor. If missing, `query` will be used. The `queryToInsert` is not validated in the template.
+   */
+  queryToInsert: string;
+  /**
+   * The list of customer standard metafields or custom metafields used in the template's query.
+   */
+  dependencies?: {
+    standardMetafields?: CustomerStandardMetafieldDependency[];
+    customMetafields?: string[];
+  };
+  /**
+   * ISO 8601-encoded date and time string. A "New" badge will be rendered for templates introduced in the last month.
+   */
+  createdOn: string;
+}
+declare class CustomerSegmentTemplate
+  extends PreactCustomElement
+  implements CustomerSegmentTemplateProps
+{
   constructor();
-  accessor onsubmit: ((event: ExtendableEvent) => void) | null;
-  accessor onreset: ((event: ExtendableEvent) => void) | null;
+  description: string | string[];
+  query: string;
+  queryToInsert: string;
+  createdOn: string;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Form;
+    [tagName$2]: CustomerSegmentTemplate;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & FormJSXProps;
+      [tagName$2]: HTMLAttributes<HTMLElement> & ReactProps$2;
     }
   }
 }
 
-export interface FormJSXProps extends Partial<FormProps> {
+export interface ReactProps$1 extends Partial<FormProps> {
   id?: string;
   /**
    * A callback that is run when the form is submitted.
@@ -5517,97 +5564,105 @@ export interface FormJSXProps extends Partial<FormProps> {
   onReset?: ((event: ExtendableEvent) => void) | null;
 }
 
+declare const tagName$1 = 's-form';
+export interface FormProps {}
+declare class Form extends PreactCustomElement implements FormProps {
+  constructor();
+  accessor onsubmit: ((event: ExtendableEvent) => void) | null;
+  accessor onreset: ((event: ExtendableEvent) => void) | null;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$1]: Form;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$1]: HTMLAttributes<HTMLElement> & ReactProps$1;
+    }
+  }
+}
+
+export interface ReactProps extends Partial<FunctionSettingsProps> {
+  id?: string;
+}
+
+declare const tagName = 's-function-settings';
+export interface FunctionSettingsProps {
+  /**
+   * A unique identifier for the form.
+   */
+  id?: string;
+}
+declare class FunctionSettings
+  extends PreactCustomElement
+  implements FunctionSettingsProps
+{
+  constructor();
+  accessor onsave: CallbackEventListener<typeof tagName> | null;
+  accessor onerror: OnErrorEventHandler;
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName]: FunctionSettings;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
+    }
+  }
+}
+
 export {
   AdminAction,
-  type AdminActionJSXProps,
   AdminBlock,
-  type AdminBlockJSXProps,
   AdminPrintAction,
-  type AdminPrintActionJSXProps,
   Badge,
-  type BadgeJSXProps,
   Banner,
-  type BannerJSXProps,
   Box,
-  type BoxJSXProps,
   Button,
-  type ButtonJSXProps,
   Checkbox,
-  type CheckboxJSXProps,
   Choice,
-  type ChoiceJSXProps,
   ChoiceList,
-  type ChoiceListJSXProps,
   Clickable,
-  type ClickableJSXProps,
+  CustomerSegmentTemplate,
   Divider,
-  type DividerJSXProps,
   EmailField,
-  type EmailFieldJSXProps,
   Form,
-  type FormJSXProps,
+  FunctionSettings,
   Grid,
   GridItem,
-  type GridItemJSXProps,
-  type GridJSXProps,
   Heading,
-  type HeadingJSXProps,
   Icon,
-  type IconJSXProps,
   Image,
-  type ImageJSXProps,
   Link,
-  type LinkJSXProps,
   ListItem,
-  type ListItemJSXProps,
   MoneyField,
-  type MoneyFieldJSXProps,
   NumberField,
-  type NumberFieldJSXProps,
   Option,
   OptionGroup,
-  type OptionGroupJSXProps,
-  type OptionJSXProps,
   OrderedList,
-  type OrderedListJSXProps,
   Page,
-  type PageJSXProps,
   Paragraph,
-  type ParagraphJSXProps,
   PasswordField,
-  type PasswordFieldJSXProps,
   SearchField,
-  type SearchFieldJSXProps,
   Section,
-  type SectionJSXProps,
   Select,
-  type SelectJSXProps,
   Spinner,
-  type SpinnerJSXProps,
   Stack,
-  type StackJSXProps,
   Switch,
-  type SwitchJSXProps,
   Table,
   TableBody,
-  type TableBodyJSXProps,
   TableCell,
-  type TableCellJSXProps,
   TableHeader,
-  type TableHeaderJSXProps,
   TableHeaderRow,
-  type TableHeaderRowJSXProps,
-  type TableJSXProps,
   TableRow,
-  type TableRowJSXProps,
   Text,
   TextArea,
-  type TextAreaJSXProps,
   TextField,
-  type TextFieldJSXProps,
-  type TextJSXProps,
   URLField,
-  type URLFieldJSXProps,
   UnorderedList,
-  type UnorderedListJSXProps,
 };
