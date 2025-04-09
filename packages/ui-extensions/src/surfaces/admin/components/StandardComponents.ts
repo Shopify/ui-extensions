@@ -5,7 +5,7 @@ export type StandardComponents =
   | 'Button'
   | 'Checkbox'
   | 'Choice'
-  | 'Choicelist'
+  | 'ChoiceList'
   | 'Clickable'
   | 'Divider'
   | 'EmailField'
