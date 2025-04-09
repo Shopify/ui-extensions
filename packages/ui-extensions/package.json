@@ -74,6 +74,8 @@
     }
   },
   "dependencies": {
-    "ts-morph": "^25.0.1"
+    "ts-morph": "^25.0.1",
+    "@remote-ui/async-subscription": "^2.1.16",
+    "@remote-ui/core": "^2.2.5"
   }
 }

@@ -159,22 +159,39 @@ function updateReferences(
   node.replaceWithText(text);
 }
 
-// Target definitions
-function extractTargetComponents(sourceFile: SourceFile) {
-  const extensionTargets = sourceFile.getInterface('ExtensionTargets')!;
-  return extensionTargets.getProperties().map((property) => {
-    const components = property
-      .getType()
-      .getProperty('components')
-      ?.getTypeAtLocation(extensionTargets)
-      .getUnionTypes()
-      .map((t) => t.getText().replaceAll('"', ''));
+function getTargets(sourceFile: SourceFile, surface: string) {
+  if (surface === 'customer-account') {
+    return [
+      sourceFile.getInterface('OrderStatusExtensionTargets')!,
+      sourceFile.getInterface('CustomerAccountExtensionTargets')!,
+    ];
+  }
+  return [sourceFile.getInterface('ExtensionTargets')!];
+}
 
-    return {
-      name: property.getName(),
-      components,
-    };
-  });
+// Target definitions
+function extractTargetComponents(
+  sourceFile: SourceFile,
+  surface: string,
+): {name: string; components?: string[]}[] {
+  const extensionTargetArray = getTargets(sourceFile, surface);
+  return extensionTargetArray
+    .map((extensionTargets) => {
+      return extensionTargets.getProperties().map((property) => {
+        const components = property
+          .getType()
+          .getProperty('components')
+          ?.getTypeAtLocation(extensionTargets)
+          .getUnionTypes()
+          .map((t) => t.getText().replaceAll('"', ''));
+
+        return {
+          name: property.getName(),
+          components,
+        };
+      });
+    })
+    .flat();
 }
 
 function createTargetDefinition({
@@ -224,7 +241,7 @@ export function buildTargetsDefinitions(directory: string, surface: string) {
     join(srcPath, 'extension-targets.ts'),
   );
 
-  const targets = extractTargetComponents(sourceFile);
+  const targets = extractTargetComponents(sourceFile, surface);
   targets.forEach((target) => {
     createTargetDefinition({
       srcPath,

@@ -860,6 +860,14 @@ export type StorefrontApiVersion =
   | '2024-10'
   | 'unstable';
 
+export interface Country {
+  /**
+   * The ISO-3166-1 code for this country.
+   * @see https://www.iso.org/iso-3166-country-codes.html
+   */
+  isoCode: CountryCode;
+}
+
 /**
  * GraphQL error returned by the Shopify Storefront APIs.
  */
