@@ -22,6 +22,7 @@ function copyComponentDefinitions({
   buildPath: string;
   surface: string;
 }) {
+  return;
   const componentsSrcPath = resolve(srcPath, `${surface}/components`);
   const componentsBuildPath = resolve(
     buildPath,
@@ -88,6 +89,7 @@ function processComponentDefinitions({
   names: Set<string>;
   targetFile: SourceFile;
 }) {
+  return;
   const componentSourcePath = resolve(
     srcPath,
     `surfaces/${surface}/components/${componentName}.d.ts`,
@@ -149,7 +151,15 @@ function updateReferences(
 
 // Target definitions
 function extractTargetComponents(sourceFile: SourceFile) {
-  const extensionTargets = sourceFile.getInterface('ExtensionTargets')!;
+  //HACK: This is a workaround to get the correct type for the extension targets
+  let extensionTargets: InterfaceDeclaration;
+
+  extensionTargets = sourceFile.getInterface('ExtensionTargets')!;
+
+  if (!extensionTargets) {
+    extensionTargets = sourceFile.getInterface('RenderExtensionTargets')!;
+  }
+
   return extensionTargets.getProperties().map((property) => {
     const components = property
       .getType()
