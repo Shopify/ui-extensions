@@ -82,11 +82,13 @@ const transformJson = async (filePath, isExtensions) => {
         if (definition.typeDefinitions) {
           Object.values(definition.typeDefinitions).forEach((typeDef) => {
             if (typeDef.members && Array.isArray(typeDef.members)) {
-              typeDef.members.forEach((member) => {
-                // eslint-disable-next-line no-prototype-builtins
-                if (member.hasOwnProperty('isOptional')) return;
-                member.isOptional = true;
-              });
+              typeDef.members
+                .sort((first, second) => first.name.localeCompare(second.name))
+                .forEach((member) => {
+                  // eslint-disable-next-line no-prototype-builtins
+                  if (member.hasOwnProperty('isOptional')) return;
+                  member.isOptional = true;
+                });
             }
           });
         }
