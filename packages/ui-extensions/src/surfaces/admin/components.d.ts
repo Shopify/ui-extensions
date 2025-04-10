@@ -3291,9 +3291,9 @@ interface VNode<P = {}> {
   endTime?: number;
 }
 type Key = string | number | any;
-type RefObject<T> = {
+interface RefObject<T> {
   current: T | null;
-};
+}
 type RefCallback<T> = (instance: T | null) => void;
 type Ref<T> = RefObject<T> | RefCallback<T> | null;
 export type ComponentChild =
@@ -3376,6 +3376,7 @@ declare abstract class Component<P, S> {
     props: Readonly<object>,
     state: Readonly<object>,
   ): object | null;
+
   static getDerivedStateFromError?(error: any): object | null;
   state: Readonly<S>;
   props: RenderableProps<P>;
@@ -3393,6 +3394,7 @@ declare abstract class Component<P, S> {
       | (Pick<S, K> | Partial<S> | null),
     callback?: () => void,
   ): void;
+
   forceUpdate(callback?: () => void): void;
   abstract render(
     props?: RenderableProps<P>,
@@ -3496,6 +3498,7 @@ declare abstract class PreactCustomElement extends BaseClass {
     delegatesFocus,
     ...options
   }: RenderImpl);
+
   /** @private */
   attributeChangedCallback(name: string): void;
   /** @private */
@@ -3563,12 +3566,12 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
-export type FieldReactProps<T extends keyof HTMLElementTagNameMap> = {
+export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   onInput?: ((event: CallbackEvent<T>) => void) | null;
   onChange?: ((event: CallbackEvent<T>) => void) | null;
   onFocus?: ((event: CallbackEvent<T>) => void) | null;
   onBlur?: ((event: CallbackEvent<T>) => void) | null;
-};
+}
 
 declare class Banner extends PreactCustomElement implements BannerProps {
   accessor heading: BannerProps['heading'];
@@ -4687,6 +4690,7 @@ declare class Paragraph extends PreactCustomElement implements ParagraphProps {
     ParagraphProps['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
   >;
+
   accessor color: ParagraphProps['color'];
   accessor dir: ParagraphProps['dir'];
   accessor accessibilityVisibility: ParagraphProps['accessibilityVisibility'];
@@ -5064,6 +5068,7 @@ declare class Table extends PreactCustomElement implements TableProps {
       textContent: string;
     }[]
   >;
+
   constructor();
 }
 declare global {
