@@ -3612,29 +3612,6 @@ declare module 'preact' {
 export type MakeResponsive<T> = T | `@container${string}`;
 
 export type AlignedBox = Required<BoxProps$1>;
-export type BackgroundType = Extract<
-  AlignedBox['background'],
-  'transparent' | 'base' | 'subdued' | 'strong'
->;
-export type BorderColorType = Extract<
-  AlignedBox['borderColor'],
-  'subdued' | 'base' | 'strong' | ''
->;
-export type BorderRadiusType = Extract<
-  AlignedBox['borderRadius'],
-  | 'none'
-  | 'small-200'
-  | 'small-100'
-  | 'small'
-  | 'base'
-  | 'large'
-  | 'large-100'
-  | 'large-200'
->;
-export type BorderStyleType = Extract<
-  AlignedBox['borderStyle'],
-  'none' | 'solid' | 'dashed' | 'auto'
->;
 export interface BoxProps
   extends Pick<
     AlignedBox,
@@ -3655,7 +3632,10 @@ export interface BoxProps
     | 'overflow'
   > {
   accessibilityRole: AlignedBox['accessibilityRole'];
-  background: BackgroundType;
+  background: Extract<
+    AlignedBox['background'],
+    'transparent' | 'base' | 'subdued' | 'strong'
+  >;
   blockSize: AlignedBox['blockSize'];
   minBlockSize: AlignedBox['minBlockSize'];
   maxBlockSize: AlignedBox['maxBlockSize'];
@@ -3679,10 +3659,27 @@ export interface BoxProps
       >
     | Extract<AlignedBox['borderWidth'], ''>;
   borderStyle:
-    | MaybeAllValuesShorthandProperty<BorderStyleType>
+    | MaybeAllValuesShorthandProperty<
+        Extract<AlignedBox['borderStyle'], 'none' | 'solid' | 'dashed'>
+      >
     | Extract<AlignedBox['borderStyle'], ''>;
-  borderColor: BorderColorType;
-  borderRadius: MaybeAllValuesShorthandProperty<BorderRadiusType>;
+  borderColor: Extract<
+    AlignedBox['borderColor'],
+    'subdued' | 'base' | 'strong' | ''
+  >;
+  borderRadius: MaybeAllValuesShorthandProperty<
+    Extract<
+      AlignedBox['borderRadius'],
+      | 'none'
+      | 'small-200'
+      | 'small-100'
+      | 'small'
+      | 'base'
+      | 'large'
+      | 'large-100'
+      | 'large-200'
+    >
+  >;
   accessibilityLabel: AlignedBox['accessibilityLabel'];
   accessibilityVisibility: AlignedBox['accessibilityVisibility'];
   display: AlignedBox['display'];
@@ -3837,19 +3834,19 @@ declare class PreactInputElement
   constructor(renderImpl: RenderImpl);
 }
 
-export interface PreactCheckboxProps
-  extends Required<
+export type CheckboxProps = PreactInputProps &
+  Required<
     Pick<
       CheckboxProps$1,
       | 'accessibilityLabel'
       | 'checked'
-      | 'defaultChecked'
       | 'details'
       | 'error'
+      | 'indeterminate'
       | 'label'
       | 'required'
-      | 'name'
-      | 'disabled'
+      | 'defaultChecked'
+      | 'defaultIndeterminate'
     >
   >;
 
@@ -3882,9 +3879,6 @@ declare class PreactCheckboxElement
 {
   get checked(): boolean;
   set checked(checked: PreactCheckboxProps['checked']);
-  /**
-   * The value used in form data when the checkbox is checked.
-   */
   get value(): string;
   set value(value: string);
   accessor defaultChecked: PreactCheckboxProps['defaultChecked'];
@@ -3895,11 +3889,6 @@ declare class PreactCheckboxElement
   accessor required: PreactCheckboxProps['required'];
   formResetCallback(): void;
   constructor(renderImpl: RenderImpl);
-}
-
-export interface CheckboxProps extends PreactCheckboxElement {
-  indeterminate: Required<CheckboxProps$1>['indeterminate'];
-  defaultIndeterminate: Required<CheckboxProps$1>['defaultIndeterminate'];
 }
 
 declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
@@ -4496,10 +4485,14 @@ declare module 'preact' {
 
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
-  extends Omit<PreactFieldProps, 'value'>,
-    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step' | 'currencyCode'> {
-  value: Required<MoneyFieldProps$1>['value'];
-}
+  extends PreactFieldProps,
+    Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step' | 'currencyCode'> {}
+
+declare const tagName$u = 's-money-field';
+export interface ReactProps$u
+  extends Partial<MoneyFieldProps>,
+    FieldReactProps<typeof tagName$u>,
+    Pick<MoneyFieldProps$1, 'id'> {}
 
 declare const tagName$u = 's-money-field';
 export interface ReactProps$u
@@ -4906,12 +4899,8 @@ declare class Select extends PreactInputElement implements SelectProps {
    * used to determine if no value or defaultValue was set, in which case the first non-disabled option was used
    *
    * this is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form
-   * @private
    */
   [usedFirstOptionSymbol]: boolean;
-  /**
-   * @private
-   */
   [hasInitialValueSymbol]: boolean;
   get value(): string;
   set value(value: string);
