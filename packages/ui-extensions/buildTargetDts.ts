@@ -70,9 +70,8 @@ type Target = ExtensionTargets[${name}];
 export type Api = Target['api'];
 export type Output = Target['output'];
 
-declare global {
-  const shopify: Api;
-  export default function extension(): Output;
+export type GlobalThis = typeof globalThis & {
+  shopify: Api;
 }\n`;
 
   if (!existsSync(directory)) {
@@ -206,6 +205,21 @@ function createTargetDefinition({
 
   targetFile.fixMissingImports();
   targetFile.organizeImports();
+
+  // Add DOM and WebWorker references if there are components
+  if (components?.length) {
+    targetFile.insertText(
+      0,
+      `// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="DOM" />\n`,
+    );
+    targetFile.insertText(
+      0,
+      `// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
+/// <reference lib="WebWorker" />\n`,
+    );
+  }
+
   targetFile.saveSync();
 }
 
