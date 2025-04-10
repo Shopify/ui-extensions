@@ -401,7 +401,7 @@ export interface ExtensionTargets {
    */
   'admin.product-purchase-option.action.render': RenderExtension<
     PurchaseOptionsCardConfigurationApi<'admin.product-purchase-option.action.render'>,
-    StandardComponents
+    ActionExtensionComponents
   >;
 
   /**
@@ -411,7 +411,7 @@ export interface ExtensionTargets {
    */
   'admin.product-variant-purchase-option.action.render': RenderExtension<
     PurchaseOptionsCardConfigurationApi<'admin.product-variant-purchase-option.action.render'>,
-    StandardComponents
+    ActionExtensionComponents
   >;
 
   // Print actions and bulk print actions
