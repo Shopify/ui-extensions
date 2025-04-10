@@ -3612,6 +3612,29 @@ declare module 'preact' {
 export type MakeResponsive<T> = T | `@container${string}`;
 
 export type AlignedBox = Required<BoxProps$1>;
+export type BackgroundType = Extract<
+  AlignedBox['background'],
+  'transparent' | 'base' | 'subdued' | 'strong'
+>;
+export type BorderColorType = Extract<
+  AlignedBox['borderColor'],
+  'subdued' | 'base' | 'strong' | ''
+>;
+export type BorderRadiusType = Extract<
+  AlignedBox['borderRadius'],
+  | 'none'
+  | 'small-200'
+  | 'small-100'
+  | 'small'
+  | 'base'
+  | 'large'
+  | 'large-100'
+  | 'large-200'
+>;
+export type BorderStyleType = Extract<
+  AlignedBox['borderStyle'],
+  'none' | 'solid' | 'dashed' | 'auto'
+>;
 export interface BoxProps
   extends Pick<
     AlignedBox,
@@ -3632,10 +3655,7 @@ export interface BoxProps
     | 'overflow'
   > {
   accessibilityRole: AlignedBox['accessibilityRole'];
-  background: Extract<
-    AlignedBox['background'],
-    'transparent' | 'base' | 'subdued' | 'strong'
-  >;
+  background: BackgroundType;
   blockSize: AlignedBox['blockSize'];
   minBlockSize: AlignedBox['minBlockSize'];
   maxBlockSize: AlignedBox['maxBlockSize'];
@@ -3659,27 +3679,10 @@ export interface BoxProps
       >
     | Extract<AlignedBox['borderWidth'], ''>;
   borderStyle:
-    | MaybeAllValuesShorthandProperty<
-        Extract<AlignedBox['borderStyle'], 'none' | 'solid' | 'dashed'>
-      >
+    | MaybeAllValuesShorthandProperty<BorderStyleType>
     | Extract<AlignedBox['borderStyle'], ''>;
-  borderColor: Extract<
-    AlignedBox['borderColor'],
-    'subdued' | 'base' | 'strong' | ''
-  >;
-  borderRadius: MaybeAllValuesShorthandProperty<
-    Extract<
-      AlignedBox['borderRadius'],
-      | 'none'
-      | 'small-200'
-      | 'small-100'
-      | 'small'
-      | 'base'
-      | 'large'
-      | 'large-100'
-      | 'large-200'
-    >
-  >;
+  borderColor: BorderColorType;
+  borderRadius: MaybeAllValuesShorthandProperty<BorderRadiusType>;
   accessibilityLabel: AlignedBox['accessibilityLabel'];
   accessibilityVisibility: AlignedBox['accessibilityVisibility'];
   display: AlignedBox['display'];
@@ -4903,8 +4906,12 @@ declare class Select extends PreactInputElement implements SelectProps {
    * used to determine if no value or defaultValue was set, in which case the first non-disabled option was used
    *
    * this is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form
+   * @private
    */
   [usedFirstOptionSymbol]: boolean;
+  /**
+   * @private
+   */
   [hasInitialValueSymbol]: boolean;
   get value(): string;
   set value(value: string);
