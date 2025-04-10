@@ -21,7 +21,7 @@ function Extension() {
   ) {
     return (
       <Button
-        onPress={() =>
+        onClick={() =>
           applyAttributeChange({
             type: 'updateAttribute',
             key: 'loyaltyPoints',
@@ -34,7 +34,7 @@ function Extension() {
     );
   } else {
     return (
-      <Banner status="warning">
+      <Banner tone="warning">
         Loyalty points are unavailable
       </Banner>
     );

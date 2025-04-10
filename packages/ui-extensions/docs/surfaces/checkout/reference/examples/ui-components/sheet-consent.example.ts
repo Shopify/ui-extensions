@@ -53,8 +53,8 @@ export default extension(
           root.createComponent(
             Button,
             {
-              kind: 'secondary',
-              onPress: () =>
+              variant: 'secondary',
+              onClick: () =>
                 handleConsentChange({
                   analytics: false,
                   marketing: false,
@@ -68,8 +68,8 @@ export default extension(
         const agreeButton = root.createComponent(
           Button,
           {
-            kind: 'secondary',
-            onPress: () =>
+            variant: 'secondary',
+            onClick: () =>
               handleConsentChange({
                 analytics: true,
                 marketing: true,
@@ -84,7 +84,7 @@ export default extension(
           root.createComponent(
             Button,
             {
-              kind: 'secondary',
+              variant: 'secondary',
             },
             'Settings',
           );

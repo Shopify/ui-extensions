@@ -27,7 +27,7 @@ function Extension() {
             We have a 30-day return policy.
           </TextBlock>
           <Button
-            onPress={() =>
+            onClick={() =>
               ui.overlay.close('my-modal')
             }
           >

@@ -18,7 +18,7 @@ function Extension() {
   if (instructions.notes.canUpdateNote) {
     return (
       <Button
-        onPress={() =>
+        onClick={() =>
           applyNoteChange({
             type: 'updateNote',
             note: 'Please include a free gift.',
@@ -30,7 +30,7 @@ function Extension() {
     );
   } else {
     return (
-      <Banner status="warning">
+      <Banner tone="warning">
         Free gifts cannot be added to this order
       </Banner>
     );

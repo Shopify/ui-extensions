@@ -34,7 +34,7 @@ export const ProductThumbnail = ({
       />
     ) : (
       <View maxInlineSize={33}>
-        <Icon source="camera" size="fill" />
+        <Icon type="camera" size="fill" />
       </View>
     )}
   </View>
@@ -63,8 +63,8 @@ export const LoadingStateSkeletons = () => {
       </>
     ) : (
       <>
-        <Text emphasis="bold">{title}</Text>
-        <Text appearance="subdued">
+        <Text type="strong">{title}</Text>
+        <Text color="subdued">
           {variantTitle}
         </Text>
       </>
@@ -89,7 +89,7 @@ export const LoadingStateSkeletons = () => {
       {loading ? (
         <SkeletonText>{item.price}</SkeletonText>
       ) : (
-        <Text emphasis="bold">{item.price}</Text>
+        <Text type="strong">{item.price}</Text>
       )}
     </InlineLayout>
   );

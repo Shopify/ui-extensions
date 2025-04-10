@@ -21,7 +21,7 @@ function Extension() {
   ) {
     return (
       <Button
-        onPress={() =>
+        onClick={() =>
           applyDiscountCodeChange({
             type: 'addDiscountCode',
             code: 'FREE_SHIPPING',
@@ -33,7 +33,7 @@ function Extension() {
     );
   } else {
     return (
-      <Banner status="warning">
+      <Banner tone="warning">
         Loyalty discounts are unavailable
       </Banner>
     );

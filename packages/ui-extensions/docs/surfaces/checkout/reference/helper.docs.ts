@@ -9,13 +9,14 @@ export const REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2 =
   'level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).';
 
 type NonEmptyArray<T> = [T, ...T[]];
-type ExtensionExampleLanguage = 'js' | 'jsx';
-type ExtensionCodeTabConfig = {
-  [key in ExtensionExampleLanguage]: {
+type ExtensionExampleLanguage = 'js' | 'jsx' | 'toml';
+type ExtensionCodeTabConfig = Record<
+  ExtensionExampleLanguage,
+  {
     title: string;
-    fileExtension: 'ts' | 'tsx';
-  };
-};
+    fileExtension: 'ts' | 'tsx' | 'toml';
+  }
+>;
 const codeExampleTabConfig: ExtensionCodeTabConfig = {
   js: {
     title: 'JavaScript',
@@ -24,6 +25,10 @@ const codeExampleTabConfig: ExtensionCodeTabConfig = {
   jsx: {
     title: 'React',
     fileExtension: 'tsx',
+  },
+  toml: {
+    title: 'TOML',
+    fileExtension: 'toml',
   },
 };
 
@@ -339,6 +344,12 @@ Ensure your extension can use this API by [enabling the \`api_access\` capabilit
       description: `
 You can access the [Storefront GraphQL API](/docs/api/storefront) using global \`fetch()\`.
 Ensure your extension can access the Storefront API via the [\`api_access\` capability](/docs/api/checkout-ui-extensions/configuration#api-access).
+
+The \`shopify:storefront\` protocol will automatically infer your Storefront URL and API version declared in your extension config.
+
+By omitting the API version (recommended), Shopify will use your API version configured in \`shopify.extension.toml\`. To change the API version, simply add it to the URL like \`shopify:storefront/api/2024-04/graphql.json\`.
+
+See [Storefront GraphQL API endpoints](/docs/api/storefront#endpoints) for more information.
       `,
       codeblock: {
         title: 'Accessing the Storefront API with fetch()',
@@ -411,6 +422,13 @@ You can apply changes to customer consent by using the \`applyTrackingConsentCha
         tabs: getExtensionCodeTabs('subscription'),
       },
     },
+    'localized-fields/default': {
+      description: '',
+      codeblock: {
+        title: 'Read localized fields',
+        tabs: getExtensionCodeTabs('localized-fields/default'),
+      },
+    },
     'session-token': {
       description: `
 You can request a session token from Shopify to use on your application server.  The contents of the token claims are signed using your shared app secret so you can trust the claims came from Shopify unaltered.
@@ -468,6 +486,14 @@ The contents of the token are signed using your shared app secret.  The optional
         tabs: getExtensionCodeTabs('attribute-values'),
       },
     },
+    'attributes/attribute-change': {
+      description:
+        'You can add or remove cart and checkout attributes by using the `applyAttributeChange` API.',
+      codeblock: {
+        title: 'Applying changes to attributes',
+        tabs: getExtensionCodeTabs('attributes/attribute-change'),
+      },
+    },
     'ui-close-overlay': {
       description: '',
       codeblock: {
@@ -510,6 +536,11 @@ The contents of the token are signed using your shared app secret.  The optional
       description: `
       Check \`instructions.notes.canUpdateNote\` before calling \`applyNoteChange()\`.
       `,
+    }),
+    ...createExample('metafields/default', {
+      title: 'Use app owned metafields',
+      description:
+        'Use the `$app` format to request metafields that are owned by your app in your extension configuration file. Your app exclusively controls structure, data, permissions and optional features for this type of metafield. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.',
     }),
   };
 }
