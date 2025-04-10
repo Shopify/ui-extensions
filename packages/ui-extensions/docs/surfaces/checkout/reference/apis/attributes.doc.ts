@@ -5,6 +5,7 @@ import {
   CHECKOUT_API_PROPERTIES_DESCRIPTION,
   getLinksByTag,
   getHookExample,
+  getExample,
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -42,7 +43,11 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseAttributeValuesGeneratedType',
     },
   ],
-  defaultExample: getHookExample('attribute-values'),
+  defaultExample: getExample('attribute-values', ['jsx', 'js']),
+  examples: {
+    description: '',
+    examples: [getExample('attributes/attribute-change', ['jsx', 'js'])],
+  },
   related: getLinksByTag('apis'),
 };
 

@@ -22,15 +22,15 @@ run_sed() {
 if [ -z $API_VERSION ]
 then
   API_VERSION="unstable"
-  echo "Building docs for 'unstable' checkout UI extensions API. You can add a calver version argument (e.g. 'yarn docs:checkout 2023-07') to generate the docs for a stable version."
+  echo "Building docs for 'unstable' checkout UI extensions API. You can add a calver version argument (e.g. 'pnpm docs:checkout 2023-07') to generate the docs for a stable version."
 else
   echo "Building docs for '$API_VERSION' checkout UI extensions API."
   echo "When generating docs for a stable version, 'unstable' docs are not regenerated. This avoids overwriting other unstable changes that are not included in this version."
   echo "If you need to update the 'unstable' version, run this command again without the '$API_VERSION' parameter."
 fi
 
-COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH ../ui-extensions-react/$SRC_PATH --output ./$DOCS_PATH/generated"
-COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
+COMPILE_DOCS="pnpm tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && pnpm generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH ../ui-extensions-react/$SRC_PATH --output ./$DOCS_PATH/generated"
+COMPILE_STATIC_PAGES="pnpm tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && pnpm generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
 
 
 if echo "$PWD" | grep -q '\checkout-web'; then
@@ -72,6 +72,7 @@ if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
+copy_generated_docs_to_shopify_dev() {
 # Copy the generated docs to shopify-dev
 if [ -d $SHOPIFY_DEV_PATH ]; then
   mkdir -p $SHOPIFY_DEV_PATH/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
@@ -92,5 +93,15 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
     echo "Docs: https://shopify-dev.myshopify.io/docs/api/checkout-ui-extensions"
   fi
 else
-  echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
+    echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
+  fi
+}
+
+if [ -d $SHOPIFY_DEV_PATH ]; then
+  copy_generated_docs_to_shopify_dev
+else
+  # We could be in the monorepo and need to go up several more directories to find shopify-dev
+  SHOPIFY_DEV_PATH="../../../../../../shopify-dev"
+  copy_generated_docs_to_shopify_dev
 fi
+

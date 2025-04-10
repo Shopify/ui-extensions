@@ -27,5 +27,5 @@ function Extension() {
     },
   );
 
-  return <Banner title={loyaltyPointsMsg} />;
+  return <Banner heading={loyaltyPointsMsg} />;
 }

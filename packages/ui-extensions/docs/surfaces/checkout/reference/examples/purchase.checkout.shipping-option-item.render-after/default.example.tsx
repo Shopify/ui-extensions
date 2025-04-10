@@ -63,7 +63,7 @@ function Extension() {
             </TextBlock>
           </View>
           <Button
-            onPress={() =>
+            onClick={() =>
               ui.overlay.close('my-modal')
             }
           >

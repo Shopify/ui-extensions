@@ -1,0 +1,35 @@
+import {createRemoteComponent} from '@remote-ui/core';
+import type {FormProps as BaseFormProps} from '@shopify/ui-api-design/dist/components/Form';
+
+export interface FormProps
+  extends Omit<BaseFormProps, 'autocomplete' | 'onReset' | 'onSubmit'> {
+  /**
+   * A callback that is run when the form is submitted.
+   */
+  onSubmit?: () => void;
+}
+
+/**
+ * The form component should be used to wrap one or more form controls. This
+ * component provides an "implicit submit" behavior, where customers can submit
+ * the form from any input by pressing "Enter" on their keyboards. This
+ * behavior is widely expected, and should be respected as often as possible.
+ *
+ * Unlike an HTML `form` element, this component does not support configuring
+ * the descendant fields to be submitted via HTTP automatically. Instead, you
+ * must provide an `onSubmit` callback that will perform the necessary HTTP
+ * requests in JavaScript.
+ */
+export interface FormElement
+  extends Omit<FormProps, 'onSubmit'>,
+    Omit<HTMLElement, 'id' | 'onsubmit'> {
+  onsubmit: FormProps['onSubmit'];
+}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    's-form': FormElement;
+  }
+}
+
+export const Form = createRemoteComponent<'Form', FormProps>('Form');

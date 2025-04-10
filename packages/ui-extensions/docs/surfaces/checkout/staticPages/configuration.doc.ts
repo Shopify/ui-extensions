@@ -155,7 +155,7 @@ Defines the [capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#pro
         {
           name: 'API access examples',
           subtitle: 'See',
-          url: '/docs/api/checkout-ui-extensions/apis/standardapi#example-storefront-api-access',
+          url: '/docs/api/checkout-ui-extensions/apis/storefront-api#examples',
           type: 'blocks',
         },
       ],
@@ -170,7 +170,7 @@ Defines the [capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#pro
         },
         {
           title: 'Methods for accessing the Storefront API',
-          sectionContent: `Enabling the \`api_access\` capability allows you to use the Standard API [\`query\`](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-query) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
+          sectionContent: `Enabling the \`api_access\` capability allows you to use the Standard API [\`query\`](/docs/api/checkout-ui-extensions/apis/storefront-api) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
 
 \`query\` lets you request a single GraphQL response from the Storefront API.
 
@@ -193,6 +193,12 @@ Your extensions will have the following unauthenticated access scopes to the Sto
 - <code>unauthenticated_read_collection_listings</code>
 - <code>unauthenticated_read_metaobjects</code>
 `,
+        },
+        {
+          title: 'Protocol Links',
+          sectionContent: `
+Protocol links are an easy way for Shopify to infer the type of request you are trying to make. If you would like to make a request to the [Storefront GraphQL API](/docs/api/storefront), you can use our [Storefront Protocol](/docs/api/checkout-ui-extensions/unstable/apis/storefront-api#examples) to infer your Storefront URL and API version.
+          `,
         },
       ],
     },
@@ -367,10 +373,38 @@ When developing a local extension, you can remove the \`block_progress\` capabil
       anchorLink: 'metafields',
       title: 'Metafields',
       sectionContent: `
-Defines the [metafields](/docs/apps/custom-data/metafields) that are available to your extension.
+Defines the [metafields](/docs/apps/custom-data/metafields) that are available to your extension. You retrieve these metafields in your extension by reading [\`appMetafields\`](/docs/api/checkout-ui-extensions/unstable/apis/metafields#standardapi-propertydetail-appmetafields).
 
-Each extension target uses the metafields defined in \`[[extensions.metafields]]\` unless they specify their own \`[[extensions.targeting.metafields]]\`.
+Define the metafields your extension needs using \`[[extensions.metafields]]\` and \`[[extensions.targeting.metafields]]\`.
 
+You can use \`[[extensions.metafields]]\` for metafields that your extension always needs, while you can use \`[[extensions.targeting.metafields]]\` if you only want to fetch metafields when your extension is placed in a specific extension target.
+
+> Tip:
+> You may write to \`cart\` metafields by using [\`applyMetafieldsChange\`](/docs/api/checkout-ui-extensions/apis/checkoutapi#properties-propertydetail-applymetafieldchange) with \`type: "updateCartMetafield"\`.
+      `,
+      sectionSubContent: [
+        {
+          title: 'App owned metafields',
+          sectionContent: `
+[App owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) are supported. You can use app owned metafields when your app needs to control the data and visibility of the metafield.
+
+Your extension can access app owned metafields that are requested in its toml using the \`$app\` format. Your extension can only access app owned metafields that belong to its parent app.
+
+> Caution:
+> When accessing app owned metafields, you must use the \`$app\` format. The fully qualified reserved namespace format such as \`app--{your-app-id}[--{optional-namespace}]\` is not supported.
+          `,
+          sectionCard: [
+            {
+              name: 'App owned metafields',
+              subtitle: 'Learn more',
+              url: '/docs/apps/build/custom-data/ownership#reserved-prefixes',
+              type: 'tutorial',
+            },
+          ],
+        },
+        {
+          title: 'Supported resource metafield types',
+          sectionContent: `
 Supported resource metafield types include:
 
 | Resource | Description |
@@ -384,11 +418,10 @@ Supported resource metafield types include:
 | \`shopUser\` | The Shop App user that is associated with the current checkout if there is one. |
 | \`variant\` | The product variants that the customer intends to purchase. |
 
-You retrieve these metafields in your extension by reading [\`appMetafields\`](/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-appmetafields).
-
-> Tip:
-> You may write to \`cart\` metafields by using [\`applyMetafieldsChange\`](/docs/api/checkout-ui-extensions/apis/checkoutapi#properties-propertydetail-applymetafieldchange) with \`type: "updateCartMetafield"\`.
-      `,
+Other resource metafield types outside of the above list are not supported.
+          `,
+        },
+      ],
       codeblock: {
         title: 'Metafields',
         tabs: [
@@ -434,7 +467,7 @@ You retrieve these metafields in your extension by reading [\`appMetafields\`](/
         {
           title: 'Validation options',
           sectionContent:
-            'Each setting can include validation options. Validation options enable you to apply additional constraints to the data that a setting can store, such as a minimum or maximum value, or a regular expression. The setting\'s `type` determines the available validation options. \n\n You can include a validation option for a setting using the validation `name` and a corresponding `value`. The appropriate value depends on the setting type to which the validation applies.\n\n The following table outlines the available validation options with supported types for applying constraints to a setting:\n\n | Validation option | Description | Supported types | Example |\n|---|---|---|---|\n| Minimum length | The minimum length of a text value. | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "8"</pre> |\n| Maximum length | The maximum length of a text value. | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "25"</pre> |\n| Regular expression | A regular expression. Shopify supports [RE2](https://github.com/google/re2/wiki/Syntax). | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "regex"<br> value = "(@)(.+)$"</pre> |\n| Choices | A list of up to 128 predefined options that limits the values allowed for the metafield.  | `single_line_text_field` | <pre>[[extensions.settings.fields.validations]]<br> name = "choices"<br> value = "[&#92"red&#92", &#92"green&#92", &#92"blue&#92"]"</pre> |\n| Minimum date | The minimum date in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. | `date` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "2022-01-01"</pre> |\n| Maximum date | The maximum date in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. | `date` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "2022-03-03"</pre> |\n| Minimum datetime | The minimum date and time in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. | `date_time` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "2022-03-03T16:30:00"</pre> |\n| Maximum datetime | The maximum date and time in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. |  `date_time` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "2022-03-03T17:30:00"</pre> |\n| Minimum integer | The minimum integer number. | `number_integer` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "9"</pre> |\n| Maximum integer | The maximum integer number. | `number_integer` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "15"</pre> |\n| Minimum decimal | The minimum decimal number. |  `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "0.5"</pre> |\n| Maximum decimal | The maximum decimal number. |  `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "1.99"</pre> |\n| Maximum precision | The maximum number of decimal places to store for a decimal number. | `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "max_precision"<br> value = "2"</pre> |',
+            'Each setting can include validation options. Validation options enable you to apply additional constraints to the data that a setting can store, such as a minimum or maximum value, or a regular expression. The setting\'s `type` determines the available validation options. \n\n You can include a validation option for a setting using the validation `name` and a corresponding `value`. The appropriate value depends on the setting type to which the validation applies.\n\n The following table outlines the available validation options with supported types for applying constraints to a setting:\n\n | Validation option | Description | Supported types | Example |\n|---|---|---|---|\n| Minimum length | The minimum length of a text value. | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "8"</pre> |\n| Maximum length | The maximum length of a text value. | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "25"</pre> |\n| Regular expression | A regular expression. Shopify supports [RE2](https://github.com/google/re2/wiki/Syntax). | <ul><li><code>single_line_text_field</code></li><li><code>multi_line_text_field</code></li></ul> | <pre>[[extensions.settings.fields.validations]]<br> name = "regex"<br> value = "(@)(.+)$"</pre> |\n| Choices | A list of up to 128 predefined options that limits the values allowed for the metafield.  | `single_line_text_field` | <pre>[[extensions.settings.fields.validations]]<br> name = "choices"<br> value = "[\\\\"red\\\\", \\\\"green\\\\", \\\\"blue\\\\"]"</pre> |\n| Minimum date | The minimum date in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. | `date` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "2022-01-01"</pre> |\n| Maximum date | The maximum date in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. | `date` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "2022-03-03"</pre> |\n| Minimum datetime | The minimum date and time in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. | `date_time` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "2022-03-03T16:30:00"</pre> |\n| Maximum datetime | The maximum date and time in [ISO 8601](https://www.iso.org/iso-8601-date-and-time-format.html) format. |  `date_time` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "2022-03-03T17:30:00"</pre> |\n| Minimum integer | The minimum integer number. | `number_integer` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "9"</pre> |\n| Maximum integer | The maximum integer number. | `number_integer` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "15"</pre> |\n| Minimum decimal | The minimum decimal number. |  `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "min"<br> value = "0.5"</pre> |\n| Maximum decimal | The maximum decimal number. |  `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "max"<br> value = "1.99"</pre> |\n| Maximum precision | The maximum number of decimal places to store for a decimal number. | `number_decimal` | <pre>[[extensions.settings.fields.validations]]<br> name = "max_precision"<br> value = "2"</pre> |',
         },
       ],
     },
@@ -473,6 +506,7 @@ For specific targets, you must provide the URL of assets or pages loaded by UI c
 The \`chat\` property specifies the URL for the iframe used in this extension target. The URL can be absolute or relative. Relative URLs are resolved against the app URL defined in the app configuration.
 
 For example,
+
 * if the app URL is \`https://example.com\` and \`chat = "/my-chat-application"\`, the resolved URL will be \`https://example.com/my-chat-application\`.
 * if \`chat = "https://my-chat-application.com"\`, the resolved URL will be \`https://my-chat-application.com\`.
       `,

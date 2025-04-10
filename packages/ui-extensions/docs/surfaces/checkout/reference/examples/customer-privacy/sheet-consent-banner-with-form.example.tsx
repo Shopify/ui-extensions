@@ -126,9 +126,7 @@ function Extension() {
             Sale of data
           </Checkbox>
         </Grid>
-        <Button accessibilityRole="submit">
-          Save
-        </Button>
+        <Button type="submit">Save</Button>
       </BlockStack>
     </Form>
   );
@@ -141,8 +139,7 @@ function Extension() {
       primaryAction={
         <>
           <Button
-            kind="secondary"
-            onPress={() =>
+            onClick={() =>
               handleConsentChange({
                 analytics: false,
                 marketing: false,
@@ -154,8 +151,7 @@ function Extension() {
             I decline
           </Button>
           <Button
-            kind="secondary"
-            onPress={() =>
+            onClick={() =>
               handleConsentChange({
                 analytics: true,
                 marketing: true,
@@ -170,7 +166,7 @@ function Extension() {
       }
       secondaryAction={
         <Button
-          kind="plain"
+          variant="plain"
           overlay={
             <Modal id={modalId} padding>
               {consentFormMarkup}
