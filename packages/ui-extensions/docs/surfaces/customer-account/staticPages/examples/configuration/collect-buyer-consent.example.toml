@@ -1,9 +1,5 @@
 # ...
 
-[extensions.capabilities]
-api_access = true
-network_access = true
-
 [extensions.capabilities.collect_buyer_consent]
 customer_privacy = true
 
