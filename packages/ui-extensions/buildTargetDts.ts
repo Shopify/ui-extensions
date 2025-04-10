@@ -10,6 +10,7 @@ import type {
   InterfaceDeclaration,
   ModuleDeclaration,
   SourceFile,
+  ModuleDeclarationStructure,
 } from 'ts-morph';
 import {Project} from 'ts-morph';
 
@@ -87,12 +88,17 @@ function processComponentDefinitions({
   componentName,
   names,
   targetFile,
+  combinedPreactJSX,
 }: {
   srcPath: string;
   project: Project;
   componentName: string;
   names: Set<string>;
   targetFile: SourceFile;
+  combinedPreactJSX: Map<
+    string,
+    {structure: ModuleDeclarationStructure; statements: string[]}
+  >;
 }) {
   const componentSourcePath = join(srcPath, `components/${componentName}.d.ts`);
   if (!existsSync(componentSourcePath)) {
@@ -140,10 +146,32 @@ function processComponentDefinitions({
     targetFile.insertInterface(0, componentInterface.getStructure());
   });
 
-  // Process modules
   componentSource.getModules().forEach((module) => {
+    const structure = module.getStructure();
+    const name = module.getName();
+
     updateReferences(module, variablesAliasMap);
-    targetFile.insertModule(0, module.getStructure());
+
+    // Initialize the map entry for this module once
+    if (!combinedPreactJSX.has(name)) {
+      combinedPreactJSX.set(name, {structure, statements: []});
+    }
+
+    module.getStatements().forEach((statement) => {
+      const statementText = statement.getText();
+      if (statementText.match(matchPreactJSX)) {
+        const replacedText = statementText.replace(
+          /namespace createElement\.JSX \{\n?\s*interface IntrinsicElements \{\n?\s*(\[[^\]]+\]:[^;]+;)\n?\s*\}\n?\s*\}/,
+          '$1',
+        );
+        const combined = combinedPreactJSX.get(name);
+        combined!.statements = combined!.statements.concat(replacedText);
+      }
+    });
+    // @todo make this work for global
+    // if (!combinedPreactJSX.get(name)?.statements.length) {
+    //   targetFile.insertModule(0, module.getStructure());
+    // }
   });
 }
 
@@ -175,6 +203,8 @@ function extractTargetComponents(sourceFile: SourceFile) {
     };
   });
 }
+const matchPreactJSX =
+  /namespace createElement\.JSX \{\n?\s*interface IntrinsicElements \{\n?\s*(\[[^\]]+\]:[^;]+;)\n?\s*\}\n?\s*\}/;
 
 function createTargetDefinition({
   srcPath,
@@ -193,6 +223,11 @@ function createTargetDefinition({
   const targetFile = project.addSourceFileAtPath(targetPath);
   const names = new Set<string>();
 
+  const combinedPreactJSX = new Map<
+    string,
+    {structure: ModuleDeclarationStructure; statements: string[]}
+  >();
+
   components?.forEach((componentName) => {
     processComponentDefinitions({
       project,
@@ -200,7 +235,17 @@ function createTargetDefinition({
       names,
       targetFile,
       srcPath,
+      combinedPreactJSX,
     });
+  });
+
+  combinedPreactJSX.forEach(({statements}) => {
+    if (statements.length) {
+      const combinedStatements = `\nexport interface IntrinsicElements{\n${statements.join(
+        '\n',
+      )}\n}\n`;
+      targetFile.insertText(0, combinedStatements);
+    }
   });
 
   targetFile.fixMissingImports();
