@@ -159,22 +159,44 @@ function updateReferences(
   node.replaceWithText(text);
 }
 
-// Target definitions
-function extractTargetComponents(sourceFile: SourceFile) {
-  const extensionTargets = sourceFile.getInterface('ExtensionTargets')!;
-  return extensionTargets.getProperties().map((property) => {
-    const components = property
-      .getType()
-      .getProperty('components')
-      ?.getTypeAtLocation(extensionTargets)
-      .getUnionTypes()
-      .map((t) => t.getText().replaceAll('"', ''));
+function getTargets(sourceFile: SourceFile) {
+  const base = sourceFile.getInterface('ExtensionTargets')!;
+  const structure = base.getStructure();
+  const allInterfaces = [base];
 
-    return {
-      name: property.getName(),
-      components,
-    };
-  });
+  if (Array.isArray(structure?.extends)) {
+    structure.extends.forEach((inherited) => {
+      if (typeof inherited === 'string') {
+        allInterfaces.push(sourceFile.getInterface(inherited)!);
+      }
+    });
+  }
+
+  return allInterfaces;
+}
+
+// Target definitions
+function extractTargetComponents(
+  sourceFile: SourceFile,
+): {name: string; components?: string[]}[] {
+  const extensionTargetArray = getTargets(sourceFile);
+  return extensionTargetArray
+    .map((extensionTargets) => {
+      return extensionTargets.getProperties().map((property) => {
+        const components = property
+          .getType()
+          .getProperty('components')
+          ?.getTypeAtLocation(extensionTargets)
+          .getUnionTypes()
+          .map((t) => t.getText().replaceAll('"', ''));
+
+        return {
+          name: property.getName(),
+          components,
+        };
+      });
+    })
+    .flat();
 }
 
 function createTargetDefinition({

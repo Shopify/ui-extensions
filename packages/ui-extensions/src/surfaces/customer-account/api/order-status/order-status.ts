@@ -9,7 +9,7 @@ import type {
   MailingAddress,
   Language,
 } from '../shared';
-import type {ExtensionTarget} from '../../targets';
+import type {ExtensionTarget} from '../../extension-targets';
 import {Extension} from '../shared';
 
 /**

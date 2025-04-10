@@ -1,8 +1,19 @@
 import {OrderStatusApi} from './order-status/order-status';
 import {StandardApi} from './standard-api/standard-api';
 import {CartLineItemApi} from './cart-line/cart-line-item';
-import {FullPageApi} from '../targets';
-import {ButtonProps} from '../components';
+import {FullPageApi} from '../extension-targets';
+
+interface ButtonProps {
+  onPress?(): void;
+  to?: string;
+  loading?: boolean;
+  loadingLabel?: string;
+  disabled?: boolean;
+  accessibilityLabel?: string;
+  accessibilityRole?: 'button' | 'submit';
+  overlay?: any;
+  kind?: 'primary' | 'secondary' | 'plain';
+}
 
 export interface Docs_OrderStatus_MetafieldsApi
   extends Pick<OrderStatusApi<any>, 'appMetafields' | 'metafields'> {}

@@ -13,7 +13,7 @@ import {
   ApplyTrackingConsentChangeType,
 } from '../shared';
 
-import type {ExtensionTarget} from '../../targets';
+import type {ExtensionTarget} from '../../extension-targets';
 import {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 /**

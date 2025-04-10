@@ -4,3 +4,11 @@ export interface IdProps {
    */
   id?: string;
 }
+
+export type Size =
+  | 'extraSmall'
+  | 'small'
+  | 'base'
+  | 'large'
+  | 'extraLarge'
+  | 'fill';

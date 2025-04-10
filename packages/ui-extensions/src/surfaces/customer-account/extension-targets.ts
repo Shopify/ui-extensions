@@ -1,8 +1,8 @@
-import {AnyComponent} from '../checkout/shared';
+import {StandardComponents} from './components/StandardComponents';
 
 import {CartLineItemApi} from './api/cart-line/cart-line-item';
 import type {OrderStatusApi} from './api/order-status/order-status';
-import type {RenderExtension} from './extension';
+import type {RenderExtension} from '../../extension';
 import {
   StandardApi,
   FullExtensionNavigation,
@@ -12,10 +12,6 @@ import {
   ReturnApi,
 } from './api/standard-api/standard-api';
 
-type Components = typeof import('./components');
-
-type AllComponents = Components[keyof Components];
-
 /**
  * A UI extension will register for one or more extension targets using `shopify.extend()`.
  * An extension target in a UI extension is a plain JavaScript function.
@@ -24,8 +20,9 @@ type AllComponents = Components[keyof Components];
  * The input arguments and the output type are different
  * for each extension target.
  */
-export type ExtensionTargets = OrderStatusExtensionTargets &
-  CustomerAccountExtensionTargets;
+export interface ExtensionTargets
+  extends OrderStatusExtensionTargets,
+    CustomerAccountExtensionTargets {}
 export type ExtensionTarget = keyof ExtensionTargets;
 
 export interface OrderStatusExtensionTargets {
@@ -40,7 +37,7 @@ export interface OrderStatusExtensionTargets {
   'customer-account.order-status.block.render': RenderExtension<
     OrderStatusApi<'customer-account.order-status.block.render'> &
       StandardApi<'customer-account.order-status.block.render'>,
-    AnyComponent
+    StandardComponents
   >;
   /**
    * A static extension target that renders on every line item, inside the details
@@ -50,7 +47,7 @@ export interface OrderStatusExtensionTargets {
     CartLineItemApi &
       OrderStatusApi<'customer-account.order-status.cart-line-item.render-after'> &
       StandardApi<'customer-account.order-status.cart-line-item.render-after'>,
-    AnyComponent
+    StandardComponents
   >;
   /**
    * A static extension target that is rendered after all line items on the **Order status** page.
@@ -58,29 +55,29 @@ export interface OrderStatusExtensionTargets {
   'customer-account.order-status.cart-line-list.render-after': RenderExtension<
     OrderStatusApi<'customer-account.order-status.cart-line-list.render-after'> &
       StandardApi<'customer-account.order-status.cart-line-list.render-after'>,
-    AnyComponent
+    StandardComponents
   >;
   'customer-account.order-status.return-details.render-after': RenderExtension<
     OrderStatusApi<'customer-account.order-status.return-details.render-after'> &
       StandardApi<'customer-account.order-status.return-details.render-after'> &
       ReturnApi,
-    AnyComponent
+    StandardComponents
   >;
   'customer-account.order-status.fulfillment-details.render-after': RenderExtension<
     OrderStatusApi<'customer-account.order-status.fulfillment-details.render-after'> &
       StandardApi<'customer-account.order-status.fulfillment-details.render-after'> &
       FulfillmentApi,
-    AnyComponent
+    StandardComponents
   >;
   'customer-account.order-status.unfulfilled-items.render-after': RenderExtension<
     OrderStatusApi<'customer-account.order-status.unfulfilled-items.render-after'> &
       StandardApi<'customer-account.order-status.unfulfilled-items.render-after'>,
-    AnyComponent
+    StandardComponents
   >;
   'customer-account.order-status.payment-details.render-after': RenderExtension<
     OrderStatusApi<'customer-account.order-status.payment-details.render-after'> &
       StandardApi<'customer-account.order-status.payment-details.render-after'>,
-    AnyComponent
+    StandardComponents
   >;
   /**
    * A static extension target that is rendered after a purchase below the customer information on the **Order status** page.
@@ -88,13 +85,13 @@ export interface OrderStatusExtensionTargets {
   'customer-account.order-status.customer-information.render-after': RenderExtension<
     OrderStatusApi<'customer-account.order-status.cart-line-list.render-after'> &
       StandardApi<'customer-account.order-status.cart-line-list.render-after'>,
-    AnyComponent
+    StandardComponents
   >;
   'customer-account.order.page.render': RenderExtension<
     OrderStatusApi<'customer-account.order.page.render'> &
       Omit<StandardApi<'customer-account.order.page.render'>, 'navigation'> &
       FullPageApi,
-    AllComponents
+    StandardComponents
   >;
 }
 export type OrderStatusExtensionTarget = keyof OrderStatusExtensionTargets;
@@ -107,80 +104,80 @@ export interface CustomerAccountExtensionTargets {
   'customer-account.page.render': RenderExtension<
     Omit<StandardApi<'customer-account.page.render'>, 'navigation'> &
       FullPageApi,
-    AllComponents
+    StandardComponents
   >;
   'CustomerAccount::KitchenSink': RenderExtension<
     StandardApi<'CustomerAccount::KitchenSink'> & {name: string},
-    AllComponents
+    StandardComponents
   >;
   'customer-account.order-index.block.render': RenderExtension<
     StandardApi<'customer-account.order-index.block.render'>,
-    AllComponents
+    StandardComponents
   >;
   'customer-account.profile.block.render': RenderExtension<
     StandardApi<'customer-account.profile.block.render'>,
-    AllComponents
+    StandardComponents
   >;
   'customer-account.profile.addresses.render-after': RenderExtension<
     StandardApi<'customer-account.profile.addresses.render-after'>,
-    AllComponents
+    StandardComponents
   >;
   'customer-account.footer.render-after': RenderExtension<
     StandardApi<'customer-account.footer.render-after'>,
-    AllComponents
+    StandardComponents
   >;
   /**
    *  @experimental This is experimental and shouldn't be used until its not.
    */
   'customer-account.profile.payment.render-after': RenderExtension<
     StandardApi<'customer-account.profile.payment.render-after'>,
-    AllComponents
+    StandardComponents
   >;
   'customer-account.profile.company-details.render-after': RenderExtension<
     StandardApi<'customer-account.profile.company-details.render-after'>,
-    AllComponents
+    StandardComponents
   >;
   'customer-account.profile.company-location-addresses.render-after': RenderExtension<
     StandardApi<'customer-account.profile.company-location-addresses.render-after'> &
       CompanyLocationApi,
-    AllComponents
+    StandardComponents
   >;
   'customer-account.profile.company-location-payment.render-after': RenderExtension<
     StandardApi<'customer-account.profile.company-location-payment.render-after'> &
       CompanyLocationApi,
-    AllComponents
+    StandardComponents
   >;
   'customer-account.profile.company-location-staff.render-after': RenderExtension<
     StandardApi<'customer-account.profile.company-location-staff.render-after'> &
       CompanyLocationApi,
-    AllComponents
+    StandardComponents
   >;
   'customer-account.order.action.menu-item.render': RenderExtension<
     StandardApi & OrderApi,
-    AllComponents
+    StandardComponents
   >;
   'customer-account.order.action.render': RenderExtension<
     StandardApi & ActionExtensionApi & OrderApi,
-    AllComponents
+    StandardComponents
   >;
 }
 
 export type CustomerAccountExtensionTarget =
   keyof CustomerAccountExtensionTargets;
 
-/**
- * For a given extension target, returns the value that is expected to be
- * returned by that extension target’s callback type.
- */
-export type ReturnTypeForExtension<Target extends keyof ExtensionTargets> =
-  ReturnType<ExtensionTargets[Target]>;
+// /**
+//  * For a given extension target, returns the value that is expected to be
+//  * returned by that extension target’s callback type.
+//  */
+// export type ReturnTypeForExtension<Target extends keyof ExtensionTargets> =
+//   ReturnType<ExtensionTargets[Target]>;
 
-/**
- * For a given extension target, returns the tuple of arguments that would
- * be provided to that extension target’s callback type.
- */
-export type ArgumentsForExtension<Target extends keyof ExtensionTargets> =
-  Parameters<ExtensionTargets[Target]>;
+// /**
+//  * For a given extension target, returns the tuple of arguments that would
+//  * be provided to that extension target’s callback type.
+//  */
+// export type ArgumentsForExtension<Target extends keyof ExtensionTargets> =
+//   Parameters<ExtensionTargets[Target]>;
 
 /**
  * A union type containing all of the extension targets that follow the pattern of

@@ -1,5 +1,3 @@
-import {createRemoteComponent} from '@remote-ui/core';
-
 type PolicyType = 'refund';
 
 // The interface is duplicated in the `ui-extensions-react` package because it no longer can be imported
@@ -27,7 +25,21 @@ export interface PolicyModalProps {
   type: PolicyType;
 }
 
-export const PolicyModal = createRemoteComponent<
-  'PolicyModal',
-  PolicyModalProps
->('PolicyModal');
+declare class PolicyModalComponent
+  extends HTMLElement
+  implements PolicyModalProps {}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    ['s-policy-modal']: PolicyModalComponent;
+  }
+}
+
+declare module 'preact' {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      ['s-policy-modal']: HTMLAttributes<HTMLElement> & PolicyModalProps;
+    }
+  }
+}

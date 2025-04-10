@@ -1,4 +1,4 @@
-import type {ExtensionTarget} from '../targets';
+import type {ExtensionTarget} from '../extension-targets';
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 import type {
