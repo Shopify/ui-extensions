@@ -5,6 +5,8 @@ export type {
   LineItemDiscountType,
 } from './render/api/cart-api/cart-api';
 
+export type {CartLineItemApi} from './render/api/cart-line-item-api/cart-line-item-api';
+
 export type {
   ActionApi,
   ActionApiContent,

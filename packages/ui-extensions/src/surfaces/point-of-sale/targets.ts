@@ -3,6 +3,7 @@ import type {
   ActionApi,
   ActionTargetApi,
   CartApi,
+  CartLineItemApi,
   CustomerApi,
   DraftOrderApi,
   ProductApi,
@@ -134,6 +135,27 @@ export interface ExtensionTargets {
       CartApi &
       CustomerApi &
       ActionApi,
+    BlockComponents
+  >;
+  'pos.cart.line-item-details.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &
+      ActionApi &
+      CartApi &
+      CartLineItemApi,
+    ActionComponents
+  >;
+  'pos.cart.line-item-details.action.render': RenderExtension<
+    ActionTargetApi<'pos.cart.line-item-details.action.render'> &
+      ActionApi &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.cart.line-item-details.block.render': RenderExtension<
+    StandardApi<'pos.cart.line-item-details.block.render'> &
+      ActionApi &
+      CartApi &
+      CartLineItemApi,
     BlockComponents
   >;
   'pos.receipt-footer.block.render': RenderExtension<

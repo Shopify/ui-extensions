@@ -21,6 +21,9 @@ export enum ExtensionTargetType {
   PosCashTrackingSessionCompleteObserve = 'pos.cash-tracking-session-complete.event.observe',
   PosCartUpdateObserve = 'pos.cart-update.event.observe',
   PosReceiptFooterBlockRender = 'pos.receipt-footer.block.render',
+  PosCartLineItemDetailsActionMenuItemRender = 'pos.cart.line-item-details.action.menu-item.render',
+  PosCartLineItemDetailsActionRender = 'pos.cart.line-item-details.action.render',
+  PosCartLineItemDetailsBlockRender = 'pos.cart.line-item-details.block.render',
 }
 
 export enum TargetLink {
@@ -46,4 +49,7 @@ export enum TargetLink {
   PosCashTrackingSessionCompleteObserve = '[pos.cash-tracking-session-complete.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-complete-event-observe)',
   PosCartUpdateObserve = '[pos.cart-update.event.observe](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-update-event-observe)',
   PosReceiptFooterBlockRender = '[pos.receipt-footer.block.render](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render)',
+  PosCartLineItemDetailsActionMenuItemRender = '[pos.cart.line-item-details.action.menu-item.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-action-menu-item-render)',
+  PosCartLineItemDetailsActionRender = '[pos.cart.line-item-details.action.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-action-render)',
+  PosCartLineItemDetailsBlockRender = '[pos.cart.line-item-details.block.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-block-render)',
 }
