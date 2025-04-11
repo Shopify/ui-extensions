@@ -2,10 +2,8 @@ const shared = {
   name: 'Paragraph',
   description:
     'Use `s-paragraph` to display a block of text similar to the `<p>` tag in HTML.',
-  requires: '',
   thumbnail: 'paragraph-thumbnail.png',
   isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',

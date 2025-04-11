@@ -2,10 +2,8 @@ const shared = {
   name: 'EmailField',
   description:
     'Use `s-email-field` to allow merchants to input email addresses. This component provides built-in email validation and appropriate keyboard settings.',
-  requires: '',
   thumbnail: 'emailfield-thumbnail.png',
   isVisualComponent: true,
-  type: 'component',
   definitions: [
     {
       title: 'Properties',

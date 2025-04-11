@@ -1,10 +1,8 @@
 const shared = {
   name: 'URLField',
   description: 'Use a URLField when you need to collect URLs from merchants.',
-  requires: '',
   thumbnail: 'urlfield-thumbnail.png',
   isVisualComponent: true,
-  type: 'component',
   definitions: [
     {
       title: 'URLField',

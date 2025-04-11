@@ -2,10 +2,8 @@ const shared = {
   name: 'TextField',
   description:
     'Use a text field to allow merchants to enter or edit text. Text fields provide a single-line input area for collecting string values from users.',
-  requires: '',
   thumbnail: 'textfield-thumbnail.png',
   isVisualComponent: true,
-  type: 'component',
   definitions: [
     {
       title: 'TextField',

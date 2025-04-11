@@ -2,10 +2,8 @@ const shared = {
   name: 'Checkbox',
   description:
     'Use `s-checkbox` when you want to provide users with a clear selection option, such as for agreeing to terms and conditions or selecting multiple options from a list.',
-  requires: '',
   thumbnail: 'checkbox-thumbnail.png',
   isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',
