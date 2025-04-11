@@ -7,7 +7,7 @@ const shared = {
   definitions: [
     {
       title: 'Properties',
-      description: 'A component for presenting a list of selectable options.',
+      description: '',
       type: 'ChoiceList',
     },
   ],

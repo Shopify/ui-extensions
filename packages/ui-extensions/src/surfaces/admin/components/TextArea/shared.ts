@@ -7,7 +7,7 @@ const shared = {
   definitions: [
     {
       title: 'Properties',
-      description: 'A multi-line text input field.',
+      description: '',
       type: 'TextArea',
     },
   ],

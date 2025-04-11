@@ -7,7 +7,7 @@ const shared = {
   definitions: [
     {
       title: 'Properties',
-      description: 'A loading indicator component.',
+      description: '',
       type: 'Spinner',
     },
   ],

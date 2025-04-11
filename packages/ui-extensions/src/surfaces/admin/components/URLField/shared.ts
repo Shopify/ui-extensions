@@ -6,7 +6,7 @@ const shared = {
   definitions: [
     {
       title: 'URLField',
-      description: 'A specialized text input field for URLs.',
+      description: '',
       type: 'URLField',
     },
   ],

@@ -7,7 +7,7 @@ const shared = {
   definitions: [
     {
       title: 'Properties',
-      description: 'A specialized text input field for email addresses.',
+      description: '',
       type: 'EmailField',
     },
   ],

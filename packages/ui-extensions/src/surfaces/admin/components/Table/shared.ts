@@ -7,7 +7,7 @@ const shared = {
   definitions: [
     {
       title: 'Properties',
-      description: 'A component for displaying data in rows and columns.',
+      description: '',
       type: 'Table',
     },
   ],

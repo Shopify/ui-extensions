@@ -7,7 +7,7 @@ const shared = {
   definitions: [
     {
       title: 'Properties',
-      description: 'A component that makes its children interactive.',
+      description: '',
       type: 'Clickable',
     },
   ],

@@ -7,7 +7,7 @@ const shared = {
   definitions: [
     {
       title: 'Properties',
-      description: 'A list of options that merchants can select from.',
+      description: '',
       type: 'Select',
     },
   ],
