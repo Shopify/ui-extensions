@@ -91,7 +91,6 @@
     }
   },
   "dependencies": {
-    "@shopify/ui-api-design": "0.37.0",
     "ts-morph": "^25.0.1"
   }
 }

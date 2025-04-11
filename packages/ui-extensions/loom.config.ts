@@ -35,13 +35,13 @@ export default createPackage((pkg) => {
       {
         name: 'add-target-types',
         closeBundle: async () => {
-          if (!completedSurfaces.has('admin')) {
-            buildTargetsDefinitions(
-              resolve(process.cwd(), 'packages/ui-extensions'),
-              'admin',
-            );
-            completedSurfaces.add('admin');
-          }
+          // if (!completedSurfaces.has('admin')) {
+          //   buildTargetsDefinitions(
+          //     resolve(process.cwd(), 'packages/ui-extensions'),
+          //     'admin',
+          //   );
+          //   completedSurfaces.add('admin');
+          // }
           if (!completedSurfaces.has('checkout')) {
             buildTargetsDefinitions(
               resolve(process.cwd(), 'packages/ui-extensions'),

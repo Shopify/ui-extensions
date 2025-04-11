@@ -1,9 +1,3 @@
-import type {ComponentsBuilder} from '../../shared';
-
-import type * as ComponentsModule from './components';
-
-export type Components = ComponentsBuilder<typeof ComponentsModule>;
-
 export type AnyComponent =
   | 'Abbreviation'
   | 'Badge'
