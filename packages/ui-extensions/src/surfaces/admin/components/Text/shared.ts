@@ -27,6 +27,7 @@ const shared = {
         {
           code: './examples/default.html',
           language: 'preview',
+          layout: 'wrapped',
         },
       ],
     },

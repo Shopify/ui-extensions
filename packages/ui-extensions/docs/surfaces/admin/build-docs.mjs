@@ -59,6 +59,11 @@ const htmlWrapper = (htmlString, layout) => {
 const templates = {
   default: (htmlString) =>
     htmlWrapper(htmlString, 'display: grid; place-items: center; gap: 0.5rem;'),
+  wrapped: (htmlString) =>
+    htmlWrapper(
+      `<div>${htmlString}</div>`,
+      'display: grid; place-items: center; gap: 0.5rem;',
+    ),
   inline: (htmlString) =>
     htmlWrapper(
       htmlString,
