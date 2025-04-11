@@ -7,7 +7,7 @@ import type {
   MailingAddress,
   ShippingAddress,
 } from '../shared';
-import type {ExtensionTarget} from '../../targets';
+import type {ExtensionTarget} from '../../extension-targets';
 import type {
   ApiVersion,
   Capability,

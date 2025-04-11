@@ -188,7 +188,7 @@ export type {
 // eslint-disable-next-line no-restricted-syntax
 export * from './checkout/components';
 // eslint-disable-next-line no-restricted-syntax
-export * from './checkout/targets';
+export * from './checkout/extension-targets';
 // eslint-disable-next-line no-restricted-syntax
 export * from './checkout/shared';
 export {
