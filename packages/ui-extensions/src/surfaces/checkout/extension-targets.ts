@@ -680,8 +680,9 @@ export interface RunnableExtensionTargets {
   >;
 }
 
-export type ExtensionTargets = RenderExtensionTargets &
-  RunnableExtensionTargets;
+export interface ExtensionTargets
+  extends RenderExtensionTargets,
+    RunnableExtensionTargets {}
 
 export type ExtensionTarget = keyof ExtensionTargets;
 
@@ -727,8 +728,12 @@ type ExtractedAllowedComponentsFromRenderExtension<T> =
 /**
  * @deprecated Use `ExtractedApiFromExtensionDefinition` instead.
  */
-type ExtractedApiFromRenderExtension<T> =
-  T extends RenderExtension<infer Api, any> ? Api : never;
+type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
+  infer Api,
+  any
+>
+  ? Api
+  : never;
 
 /**
  * Deprecated. Use `ApiForExtension` instead.

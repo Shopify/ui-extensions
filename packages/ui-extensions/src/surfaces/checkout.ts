@@ -185,11 +185,8 @@ export type {
   PaymentOptionItemApi,
 } from './checkout/api/payment/payment-option-item';
 
-// eslint-disable-next-line no-restricted-syntax
-export * from './checkout/components';
-// eslint-disable-next-line no-restricted-syntax
-export * from './checkout/targets';
-// eslint-disable-next-line no-restricted-syntax
+export * from './checkout/extension-targets';
+
 export * from './checkout/shared';
 export {
   Style,
@@ -208,7 +205,6 @@ export type {
   ViewportSizeCondition,
 } from './checkout/style/types';
 
-// eslint-disable-next-line no-restricted-syntax
 export * from './checkout/globals';
-// eslint-disable-next-line no-restricted-syntax
+
 export * from '../shared';

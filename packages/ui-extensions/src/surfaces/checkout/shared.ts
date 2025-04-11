@@ -1,11 +1,74 @@
-import type {ComponentsBuilder, AnyComponentBuilder} from '../../shared';
+export type AnyComponent =
+  | 'Abbreviation'
+  | 'Badge'
+  | 'Banner'
+  | 'BlockLayout'
+  | 'BlockSpacer'
+  | 'BlockStack'
+  | 'Box'
+  | 'Button'
+  | 'Chat'
+  | 'ConsentCheckbox'
+  | 'ConsentPhoneField'
+  | 'Checkbox'
+  | 'Choice'
+  | 'ChoiceList'
+  | 'ClipboardItem'
+  | 'DatePicker'
+  | 'DateField'
+  | 'Disclosure'
+  | 'Divider'
+  | 'DropZone'
+  | 'EmailField'
+  | 'Form'
+  | 'Grid'
+  | 'GridItem'
+  | 'Heading'
+  | 'HeadingGroup'
+  | 'Icon'
+  | 'Image'
+  | 'InlineLayout'
+  | 'InlineStack'
+  | 'InlineSpacer'
+  | 'Link'
+  | 'List'
+  | 'ListItem'
+  | 'LoginWithShop'
+  | 'Map'
+  | 'MapMarker'
+  | 'MapPopover'
+  | 'Modal'
+  | 'NumberField'
+  | 'Paragraph'
+  | 'OrderedList'
+  | 'PaymentIcon'
+  | 'PhoneField'
+  | 'Pressable'
+  | 'ProductThumbnail'
+  | 'Progress'
+  | 'QRCode'
+  | 'Popover'
+  | 'ScrollView'
+  | 'Section'
+  | 'Select'
+  | 'Sheet'
+  | 'SkeletonImage'
+  | 'SkeletonText'
+  | 'SkeletonTextBlock'
+  | 'Spinner'
+  | 'Stepper'
+  | 'Stack'
+  | 'Switch'
+  | 'Tag'
+  | 'Text'
+  | 'TextArea'
+  | 'TextBlock'
+  | 'TextField'
+  | 'UnorderedList'
+  | 'URLField';
 
-import type * as ComponentsModule from './components';
-
-export type Components = ComponentsBuilder<typeof ComponentsModule>;
-export type AnyComponent = AnyComponentBuilder<typeof ComponentsModule>;
-
-export type AllowedComponents<Allowed extends keyof typeof ComponentsModule> =
-  AnyComponentBuilder<Pick<typeof ComponentsModule, Allowed>>;
-export type AnyComponentExcept<Except extends keyof typeof ComponentsModule> =
-  AnyComponentBuilder<Omit<typeof ComponentsModule, Except>>;
+export type AllowedComponents<Allowed extends AnyComponent> = Allowed;
+export type AnyComponentExcept<Except extends AnyComponent> = Exclude<
+  AnyComponent,
+  Except
+>;
