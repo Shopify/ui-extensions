@@ -69,6 +69,11 @@ const templates = {
       `<s-section padding="none">${htmlString}</s-section>`,
       'display: grid; place-items: center; background: #F1F1F1',
     ),
+  page: (htmlString) =>
+    htmlWrapper(
+      htmlString,
+      'display: grid; place-items: center; background: #F1F1F1;',
+    ),
   none: (htmlString) => htmlWrapper(htmlString, 'padding: 0'),
 };
 
