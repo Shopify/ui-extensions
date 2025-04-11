@@ -8,18 +8,88 @@ const data: AdminReferenceEntityTemplateSchema = {
   related: [],
   examples: {
     description: '',
-    examples: [
+    exampleGroups: [
       {
-        description: 'Yo',
-        codeblock: {
-          title: 'Yo',
-          tabs: [
-            {
-              code: 'console.log("yo")',
-              language: 'html',
+        title: 'Yo',
+        examples: [
+          {
+            description:
+              'Navigates to the specified screen. It is important to note that any screens you wish to navigate to must already exist in the Navigator.',
+            codeblock: {
+              title: 'Yo',
+              tabs: [
+                {
+                  code: './Button/examples/default.html',
+                },
+              ],
             },
-          ],
-        },
+          },
+          {
+            description:
+              'Navigates to the specified screen. It is important to note that any screens you wish to navigate to must already exist in the Navigator.',
+            codeblock: {
+              title: 'Yo',
+              tabs: [
+                {
+                  code: './Button/examples/default.html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Navigates to the specified screen. It is important to note that any screens you wish to navigate to must already exist in the Navigator.',
+            codeblock: {
+              title: 'Yo',
+              tabs: [
+                {
+                  code: './Button/examples/default.html',
+                },
+              ],
+            },
+          },
+        ],
+      },
+      {
+        title: 'Ayyyyyy',
+        examples: [
+          {
+            description:
+              'Navigates to the specified screen. It is important to note that any screens you wish to navigate to must already exist in the Navigator.',
+            codeblock: {
+              title: 'Yo',
+              tabs: [
+                {
+                  code: './Button/examples/default.html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Navigates to the specified screen. It is important to note that any screens you wish to navigate to must already exist in the Navigator.',
+            codeblock: {
+              title: 'Yo',
+              tabs: [
+                {
+                  code: './Button/examples/default.html',
+                },
+              ],
+            },
+          },
+          {
+            description:
+              'Navigates to the specified screen. It is important to note that any screens you wish to navigate to must already exist in the Navigator.',
+            codeblock: {
+              title: 'Yo',
+              tabs: [
+                {
+                  code: './Button/examples/default.html',
+                },
+              ],
+            },
+          },
+        ],
       },
     ],
   },
