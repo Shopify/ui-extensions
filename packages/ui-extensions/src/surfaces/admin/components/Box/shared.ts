@@ -1,7 +1,7 @@
 const shared = {
   name: 'Box',
   description:
-    'Use `s-box` as your foundational structural element for composing UI. It can be styled using predefined tokens. Use it to build your layout. \n\n Box is useful for wrapping and isolating content with specific styling, such as background color, border or padding. It can also help nest other components. In general, avoid using Box as a layout element. Instead, rely on [`s-stack`](/docs/api/app-home/polaris-web-components/structure/stack) and [`s-grid`](/docs/api/app-home/polaris-web-components/structure/grid) for layout.',
+    'The `s-box` component is an escape hatch for building custom user interfaces. You should only use `s-box` when you cannot build what you need with the existing components.',
   thumbnail: 'box-thumbnail.png',
   isVisualComponent: true,
   definitions: [
