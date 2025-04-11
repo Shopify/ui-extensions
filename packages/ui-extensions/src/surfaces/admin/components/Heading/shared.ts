@@ -1,7 +1,7 @@
 const shared = {
   name: 'Heading',
   description:
-    'Use `s-heading` to display a title, similar to the h1-h6 tags in HTML. `s-heading` will automatically update its design based on how deeply it is nested within `s-section` components.',
+    "The `s-heading` component renders hierarchical titles similar to HTML's `h1-h6` elements. Heading levels are automatically determined by parent `s-section` nesting depth starting from h2. Always prefer using the `heading` property on `s-section` and `s-banner` components before constructing custom layout with `s-heading`.",
   thumbnail: 'heading-thumbnail.png',
   isVisualComponent: true,
   definitions: [
