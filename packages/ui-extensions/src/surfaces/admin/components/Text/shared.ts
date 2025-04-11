@@ -1,7 +1,7 @@
 const shared = {
   name: 'Text',
   description:
-    'Use `s-text` to render inline text with different visual styles.',
+    'The `s-text` component is used for inline text styling, similar to HTML `span` elements, not for paragraph-level content. Use it to apply different visual tones and text styles to specific words or phrases within a `s-paragraph`, such as a `strong` type or `critical` tone.',
   thumbnail: 'text-thumbnail.png',
   isVisualComponent: true,
   definitions: [
