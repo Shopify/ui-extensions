@@ -94,11 +94,12 @@ export interface IconProps
 }
 
 export const iconSizes = [
-  'extraSmall',
+  'small-200',
+  'small-100',
   'small',
   'base',
   'large',
-  'fill',
+  'large-100',
 ] satisfies IconProps['size'][];
 
 export const iconTypes = [
