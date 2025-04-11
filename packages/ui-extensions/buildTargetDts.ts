@@ -70,9 +70,8 @@ type Target = ExtensionTargets[${name}];
 export type Api = Target['api'];
 export type Output = Target['output'];
 
-declare global {
-  const shopify: Api;
-  export default function extension(): Output;
+export type GlobalThis = typeof globalThis & {
+  shopify: Api;
 }\n`;
 
   if (!existsSync(directory)) {
