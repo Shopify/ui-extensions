@@ -1,7 +1,7 @@
 const shared = {
   name: 'Link',
   description:
-    '`s-link` is an interactive component that directs users to a specified URL. It even supports custom protocols.',
+    '`s-link` is an interactive component that directs users to a specified URL. It even supports custom protocols.\n\n To link to a Shopify admin page, use `href="shopify://admin/orders"`. To link to an app page, use `href="app://orders"`.',
   thumbnail: 'link-thumbnail.png',
   isVisualComponent: true,
   definitions: [
@@ -30,37 +30,6 @@ const shared = {
         },
       ],
     },
-  },
-  examples: {
-    description: '',
-    examples: [
-      {
-        description: 'Link to an app page',
-        image: 'link-default.png',
-        codeblock: {
-          tabs: [
-            {
-              code: './examples/app.html',
-              language: 'html',
-            },
-          ],
-          title: 'App Link',
-        },
-      },
-      {
-        description: 'Link to a Shopify admin page',
-        image: 'shopify-section-link.png',
-        codeblock: {
-          tabs: [
-            {
-              code: './examples/shopify-section.html',
-              language: 'html',
-            },
-          ],
-          title: 'Shopify Section Link',
-        },
-      },
-    ],
   },
 };
 
