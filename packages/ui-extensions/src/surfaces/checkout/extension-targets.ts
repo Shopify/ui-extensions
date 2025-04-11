@@ -680,8 +680,9 @@ export interface RunnableExtensionTargets {
   >;
 }
 
-export type ExtensionTargets = RenderExtensionTargets &
-  RunnableExtensionTargets;
+export interface ExtensionTargets
+  extends RenderExtensionTargets,
+    RunnableExtensionTargets {}
 
 export type ExtensionTarget = keyof ExtensionTargets;
 
