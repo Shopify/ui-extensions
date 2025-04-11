@@ -1,4 +1,4 @@
-import type {ComponentsBuilder, AnyComponentBuilder} from '../../shared';
+import type {ComponentsBuilder} from '../../shared';
 
 import type * as ComponentsModule from './components';
 
