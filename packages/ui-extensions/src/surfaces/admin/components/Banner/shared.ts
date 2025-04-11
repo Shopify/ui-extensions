@@ -7,7 +7,7 @@ const shared = {
   definitions: [
     {
       title: 'Properties',
-      description: 'A component for displaying prominent messages or alerts.',
+      description: '',
       type: 'Banner',
     },
   ],

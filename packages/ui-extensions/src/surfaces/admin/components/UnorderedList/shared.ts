@@ -4,13 +4,6 @@ const shared = {
     'UnorderedList displays a set of related text-only content beginning with a bullet.',
   thumbnail: 'unordered-list-thumbnail.png',
   isVisualComponent: true,
-  definitions: [
-    {
-      title: 'UnorderedList',
-      description: 'A list of items that are unordered.',
-      type: 'UnorderedList',
-    },
-  ],
   subCategory: 'Structure',
   related: [
     {

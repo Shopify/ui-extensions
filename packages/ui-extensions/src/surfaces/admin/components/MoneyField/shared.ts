@@ -7,7 +7,7 @@ const shared = {
   definitions: [
     {
       title: 'Properties',
-      description: 'A specialized input field for monetary values.',
+      description: '',
       type: 'MoneyField',
     },
   ],

@@ -4,13 +4,6 @@ const shared = {
     '`s-ordered-list` displays a set of related text-only content beginning with a number.',
   thumbnail: 'ordered-list-thumbnail.png',
   isVisualComponent: true,
-  definitions: [
-    {
-      title: 'Properties',
-      description: 'A list of items that are ordered numerically.',
-      type: 'OrderedList',
-    },
-  ],
   subCategory: 'Structure',
   related: [
     {

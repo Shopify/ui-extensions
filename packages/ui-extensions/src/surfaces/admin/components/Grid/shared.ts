@@ -7,7 +7,7 @@ const shared = {
   definitions: [
     {
       title: 'Properties',
-      description: 'A component for creating grid-based layouts.',
+      description: '',
       type: 'Grid',
     },
   ],

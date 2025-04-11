@@ -7,7 +7,7 @@ const shared = {
   definitions: [
     {
       title: 'Properties',
-      description: 'A specialized text input field for passwords.',
+      description: '',
       type: 'PasswordField',
     },
   ],
