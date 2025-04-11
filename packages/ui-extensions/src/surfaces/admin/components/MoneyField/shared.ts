@@ -2,10 +2,8 @@ const shared = {
   name: 'MoneyField',
   description:
     'Use `s-money-field` when you need to collect monetary values from merchants. It provides appropriate formatting and validation for currency amounts.',
-  requires: '',
   thumbnail: 'moneyfield-thumbnail.png',
   isVisualComponent: true,
-  type: 'component',
   definitions: [
     {
       title: 'Properties',

@@ -240,17 +240,24 @@ const generateAppBridgeDocs = async () => {
   );
 };
 
-if (existsSync(generatedDocsPath)) {
-  await fs.rm(generatedDocsPath, {recursive: true});
-}
-await fs.copyFile(componentDefs, tempComponentDefs);
-await replaceFileContent(
-  tempComponentDefs,
-  /typeof globalThis\.HTMLElement/g,
-  'any',
-);
-await generateExtensionsDocs();
-await generateAppBridgeDocs();
-await copyGeneratedToShopifyDev();
+try {
+  if (existsSync(generatedDocsPath)) {
+    await fs.rm(generatedDocsPath, {recursive: true});
+  }
+  await fs.copyFile(componentDefs, tempComponentDefs);
+  await replaceFileContent(
+    tempComponentDefs,
+    /typeof globalThis\.HTMLElement/g,
+    'any',
+  );
+  await generateExtensionsDocs();
+  await generateAppBridgeDocs();
+  await copyGeneratedToShopifyDev();
 
-await fs.rm(tempComponentDefs);
+  await fs.rm(tempComponentDefs);
+} catch (error) {
+  console.error(error);
+  console.log(error.stdout.toString());
+  console.log(error.stderr.toString());
+  process.exit(1);
+}

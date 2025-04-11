@@ -55,10 +55,8 @@ componentNames.forEach((componentName) => {
   const sharedContent = `const shared = {
   name: '${componentName}',
   description: '${componentName} is used to ...',
-  requires: '',
   thumbnail: '${lowercaseComponentName}-thumbnail.png',
   isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: '${componentName}',

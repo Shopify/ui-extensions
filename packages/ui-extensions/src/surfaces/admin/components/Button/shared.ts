@@ -2,10 +2,8 @@ const shared = {
   name: 'Button',
   description:
     'Use `s-button` when you want to provide users the ability to perform specific actions, like saving data.',
-  requires: '',
   thumbnail: 'button-thumbnail.png',
   isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',
