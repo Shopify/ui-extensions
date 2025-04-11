@@ -1,7 +1,7 @@
 const shared = {
   name: 'Section',
   description:
-    "The `s-section` component organizes your content into separate blocks. At the top level it looks like a card, and when nested inside another `s-section` it displays as a related content area. It automatically handles `s-heading` levels based on nesting.\n\nThe `s-section` component adds spacing between children, so you often don't need to use `s-stack` or `s-grid` for basic layouts.",
+    "The `s-section` component organizes your content into separate blocks. At the top level it looks like a card, and when nested inside another `s-section` it displays as a related content area. It automatically handles `s-heading` levels based on nesting.\n\nThe `s-section` component adds spacing between children, so you don't need to use `s-stack` or `s-grid` for basic layouts.",
   thumbnail: 'section-thumbnail.png',
   isVisualComponent: true,
   definitions: [
