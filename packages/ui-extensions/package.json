@@ -50,7 +50,7 @@
       "require": "./build/cjs/surfaces/checkout.js"
     },
     "./checkout.*": {
-      "default": "./build/ts/surfaces/checkout/targets/checkout.*.d.ts"
+      "default": "./build/ts/surfaces/checkout/targets/purchase.*.d.ts"
     },
     "./preact": {
       "types": "./build/ts/preact.d.ts",
