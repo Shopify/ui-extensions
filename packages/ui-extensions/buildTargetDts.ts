@@ -162,8 +162,11 @@ function updateReferences(
 function getTargets(sourceFile: SourceFile, surface: string) {
   switch (surface) {
     case 'checkout':
-      return [sourceFile.getInterface('RenderExtensionTargets')!];
-      return [sourceFile.getInterface('RunnableExtensionTargets')!];
+      return [
+        sourceFile.getInterface('RenderExtensionTargets')!,
+        sourceFile.getInterface('RunnableExtensionTargets')!,
+      ];
+
     case 'customer-account':
       return [
         sourceFile.getInterface('OrderStatusExtensionTargets')!,
@@ -175,6 +178,41 @@ function getTargets(sourceFile: SourceFile, surface: string) {
       return [sourceFile.getInterface('ExtensionTargets')!];
   }
 }
+
+// Alternative way to get the targets which can handle interfaces or types, but is more brittle
+// function getTargets(sourceFile: SourceFile, surface: string) {
+//   try {
+//     const extensionTargetsInterface =
+//       sourceFile.getInterface('ExtensionTargets');
+//     if (extensionTargetsInterface) {
+//       return [extensionTargetsInterface];
+//     }
+
+//     // ExtensionTargets could be a type composed of multiple interfaces
+//     const extensionTargetsType = sourceFile.getTypeAlias('ExtensionTargets')!;
+//     if (extensionTargetsType) {
+//       const typeText = extensionTargetsType.getText();
+//       if (typeText.includes('&')) {
+//         // Extract just the interface names from the type definition
+//         const typeDefinition = typeText
+//           .replace('export type ExtensionTargets =', '')
+//           .trim();
+//         const interfaceNames = typeDefinition
+//           .split('&')
+//           .map((name) => name.trim())
+//           .map((name) => name.replace(';', '').trim());
+
+//         console.log('interfaceNames', interfaceNames);
+//         return interfaceNames.map((name) => sourceFile.getInterface(name)!);
+//       }
+//     }
+//   } catch (error) {
+//     throw new Error(
+//       `Error retrieving ExtensionTargets for surface: ${surface}`,
+//       {cause: error},
+//     );
+//   }
+// }
 
 // Target definitions
 function extractTargetComponents(
