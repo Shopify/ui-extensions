@@ -1,7 +1,7 @@
 const shared = {
   name: 'Clickable',
   description:
-    'Use `s-clickable` to make elements interactive. This component provides consistent keyboard navigation and accessibility features for clickable elements.',
+    'The `s-clickable` component is an escape hatch for when `s-button` and `s-link` are not sufficient to create an interactive element.',
   thumbnail: 'clickable-thumbnail.png',
   isVisualComponent: true,
   definitions: [
