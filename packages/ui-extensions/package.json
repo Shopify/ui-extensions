@@ -23,7 +23,7 @@
         "./build/ts/surfaces/checkout.d.ts"
       ],
       "checkout.*": [
-        "./build/ts/surfaces/checkout/targets/checkout.*"
+        "./build/ts/surfaces/checkout/targets/purchase.*"
       ]
     }
   },
