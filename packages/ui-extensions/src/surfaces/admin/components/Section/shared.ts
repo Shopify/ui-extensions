@@ -6,7 +6,7 @@ Use \`s-section\` to organize your page content so it matches the Admin design. 
 #### Useful for:
 - Organizing content into cards.
 - Creating consistency across pages.
-- Keeping your layout in line with the admin design.
+- Keeping your layout in line with the Admin design.
 
 #### Level 1
 - Display as responsive cards with background color, rounded corners, and shadow effects. 
