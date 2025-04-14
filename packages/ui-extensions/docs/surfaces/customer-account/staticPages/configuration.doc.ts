@@ -117,6 +117,7 @@ Defines the [capabilities](/docs/api/customer-account-ui-extensions/apis/extensi
 |---|---|
 | [\`api_access\`](#api-access) | Allows your extension to query the Storefront API.
 | [\`network_access\`](#network-access) | Allows your extension make external network calls.
+| [\`collect_buyer_consent\`](#collect-buyer-consent) | Allows your extension to collect buyer consent for specific policies such as SMS marketing.
     `,
       codeblock: {
         title: 'Capabilities',
@@ -268,6 +269,30 @@ Your extension can pass a [session token](/docs/api/customer-account-ui-extensio
 `,
         },
       ],
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'collect-buyer-consent',
+      title: 'Collect buyer consent',
+      sectionContent:
+        'If your extension utilizes the [Customer Privacy API](/docs/api/customer-account-ui-extensions/apis/customer-privacy) to collecting buyer consent, you must first declare that capability in your configuration file.',
+      sectionSubContent: [
+        {
+          title: 'Customer Privacy',
+          sectionContent:
+            "In order to collect customer privacy consent, you'll need to add `customer_privacy = true` in your toml configuration. This will let you use our [Customer Privacy API](/docs/api/customer-account-ui-extensions/apis/customer-privacy).",
+        },
+      ],
+      codeblock: {
+        title: 'Collect buyer consent',
+        tabs: [
+          {
+            title: 'shopify.extension.toml',
+            code: './examples/configuration/collect-buyer-consent.example.toml',
+            language: 'toml',
+          },
+        ],
+      },
     },
     {
       type: 'Generic',

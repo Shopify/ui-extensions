@@ -18,6 +18,12 @@
       ],
       "admin.*": [
         "./build/ts/surfaces/admin/targets/admin.*"
+      ],
+      "customer-account": [
+        "./build/ts/surfaces/customer-account.d.ts"
+      ],
+      "customer-account.*": [
+        "./build/ts/surfaces/customer-account/targets/customer-account.*.d.ts"
       ]
     }
   },
@@ -37,6 +43,15 @@
     "./admin.*": {
       "default": "./build/ts/surfaces/admin/targets/admin.*.d.ts"
     },
+    "./customer-account": {
+      "types": "./build/ts/surfaces/customer-account.d.ts",
+      "esnext": "./build/esnext/surfaces/customer-account.esnext",
+      "import": "./build/esm/surfaces/customer-account.mjs",
+      "require": "./build/cjs/surfaces/customer-account.js"
+    },
+    "./customer-account.*": {
+      "default": "./build/ts/surfaces/customer-account/targets/customer-account.*.d.ts"
+    },
     "./preact": {
       "types": "./build/ts/preact.d.ts",
       "esnext": "./build/esnext/preact.esnext",
@@ -52,7 +67,9 @@
   ],
   "devDependencies": {
     "@shopify/generate-docs": "0.16.4",
-    "typescript": "^4.9.0"
+    "typescript": "^4.9.0",
+    "@remote-ui/async-subscription": "^2.1.16",
+    "@remote-ui/core": "^2.2.5"
   },
   "optionalDependencies": {
     "@preact/signals": "*"

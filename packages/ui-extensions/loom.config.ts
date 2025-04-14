@@ -19,10 +19,10 @@ export default createPackage((pkg) => {
   // pkg.entry({name: 'checkout', root: './src/surfaces/checkout.ts'});
   pkg.entry({name: 'admin', root: './src/surfaces/admin.ts'});
   // pkg.entry({name: 'point-of-sale', root: './src/surfaces/point-of-sale.ts'});
-  // pkg.entry({
-  //   name: 'customer-account',
-  //   root: './src/surfaces/customer-account.ts',
-  // });
+  pkg.entry({
+    name: 'customer-account',
+    root: './src/surfaces/customer-account.ts',
+  });
   pkg.use(
     defaultProjectPlugin(),
     rollupPlugins([
@@ -41,6 +41,13 @@ export default createPackage((pkg) => {
               'admin',
             );
             completedSurfaces.add('admin');
+          }
+          if (!completedSurfaces.has('customer-account')) {
+            buildTargetsDefinitions(
+              resolve(process.cwd(), 'packages/ui-extensions'),
+              'customer-account',
+            );
+            completedSurfaces.add('customer-account');
           }
         },
       },

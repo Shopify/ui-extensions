@@ -21,6 +21,12 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseLanguageGeneratedType',
     },
     {
+      title: 'useLocalizationCountry',
+      description:
+        "Returns the country of the buyer's current session, and automatically re-renders your component if the country changes.",
+      type: 'UseLocalizationCountryGeneratedType',
+    },
+    {
       title: 'useExtensionLanguage',
       description:
         'Returns the language the buyer sees in the customer account hub.',
