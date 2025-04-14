@@ -65,7 +65,7 @@
       "require": "./build/cjs/surfaces/customer-account.js"
     },
     "./customer-account.*": {
-      "default": "./build/ts/surfaces/customer-account/targets/customer-account.*.d.ts",
+      "default": "./build/ts/surfaces/customer-account/targets/customer-account.*.d.ts"
     },
     "./preact": {
       "types": "./build/ts/preact.d.ts",
