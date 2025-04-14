@@ -24,11 +24,6 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Basic ImageGroup',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/customer-account/components/ImageGroup/examples/basic-ImageGroup-react.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/basic-ImageGroup-js.example.ts',
           language: 'js',

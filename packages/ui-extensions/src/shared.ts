@@ -9,7 +9,10 @@ export type ApiVersion =
   | '2024-04'
   | '2024-07'
   | '2024-10'
-  | 'unstable';
+  | '2025-01'
+  | '2025-04'
+  | 'unstable'
+  | '2025-07';
 
 /**
  * The capabilities an extension has access to.
@@ -858,7 +861,10 @@ export type StorefrontApiVersion =
   | '2024-04'
   | '2024-07'
   | '2024-10'
-  | 'unstable';
+  | '2025-01'
+  | '2025-04'
+  | 'unstable'
+  | '2025-07';
 
 export interface Country {
   /**
