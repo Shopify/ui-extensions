@@ -1,7 +1,7 @@
 const shared = {
   name: 'Paragraph',
   description: `
-  Use \`s-paragraph\` to display a block of text similar to the \`<p>\` tag in HTML. This component can also contain other elements such as buttons, links or text.
+  Use \`s-paragraph\` to display a block of text similar to the \`<p>\` tag in HTML. This component can also contain other elements such as buttons, links, or text.
 
   #### Useful for:
   - Displaying text content in a paragraph format.
