@@ -4167,6 +4167,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
    */
   get isContentEditable(): boolean;
   formResetCallback(): void;
+  /** @private */
   connectedCallback(): void;
   constructor(renderImpl: RenderImpl);
 }
@@ -4855,6 +4856,7 @@ export interface SectionProps
 
 declare class Section extends PreactCustomElement implements SectionProps {
   constructor();
+  /** @private */
   connectedCallback(): void;
   accessor accessibilityLabel: SectionProps['accessibilityLabel'];
   accessor heading: SectionProps['heading'];
@@ -4908,6 +4910,7 @@ declare class Select extends PreactInputElement implements SelectProps {
   accessor placeholder: SelectProps['placeholder'];
   accessor required: SelectProps['required'];
   accessor labelAccessibilityVisibility: SelectProps['labelAccessibilityVisibility'];
+  /** @private */
   connectedCallback(): void;
   disconnectedCallback(): void;
   constructor();
@@ -5089,13 +5092,11 @@ declare class Table extends PreactCustomElement implements TableProps {
   accessor onpreviouspage: CallbackEventListener<typeof tagName$e> | null;
   accessor onnextpage: CallbackEventListener<typeof tagName$e> | null;
   /**
-   * The actual table variant, which is either 'table' or 'list'.
    * @private
+   * The actual table variant, which is either 'table' or 'list'.
    */
   [actualTableVariantSymbol]: AddedContext<ActualTableVariant>;
-  /**
-   * @private
-   */
+  /** @private */
   [tableHeadersSharedDataSymbol]: AddedContext<
     {
       listSlot: TableHeaderProps['listSlot'];
@@ -5203,6 +5204,7 @@ declare class TableHeaderRow
   implements TableHeaderRowProps
 {
   constructor();
+  /** @private */
   connectedCallback(): void;
   disconnectedCallback(): void;
 }
