@@ -68,7 +68,7 @@ componentNames.forEach((componentName) => {
   related: [],
   defaultExample: {
     codeblock: {
-      title: 'Default Example',
+      title: '',
       tabs: [
         {
           code: './examples/default.html',
