@@ -25,6 +25,7 @@ export type ApiVersion =
   | '2024-10'
   | '2025-01'
   | '2025-04'
+  | '2025-07'
   | 'unstable';
 
 /**
