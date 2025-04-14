@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.48.0 **/
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -603,7 +603,31 @@ interface ActionSlots {
    */
   secondaryActions?: ComponentChildren;
 }
-interface BannerProps$1 extends GlobalProps, ActionSlots {
+interface ContainerProps {
+  /**
+   * The name of the container used for Container Queries.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-name
+   *
+   * @default ''
+   *
+   * @implementation All components that implement this interface must put a containerName of `s-default` on the root element of that component, regardless of the value of `containerType`.
+   * The developer-supplied containerName here would be in addition to the above-mentioned containerName.
+   */
+  containerName?: string;
+  /**
+   * The type of container used for Container Queries.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-type
+   *
+   * - `normal`: The element is not a query container for any container size queries.
+   * - `inline-size`: Establishes a query container for dimensional queries on the inline axis of the container. Applies layout, style, and inline-size containment to the element.
+   *
+   * @default 'normal'
+   */
+  containerType?: 'normal' | 'inline-size';
+}
+interface BannerProps$1 extends GlobalProps, ActionSlots, ContainerProps {
   /**
    * The title of the banner.
    *
@@ -1094,7 +1118,8 @@ interface BaseBoxProps
     SizingProps,
     PaddingProps,
     BorderProps,
-    OverflowProps {
+    OverflowProps,
+    ContainerProps {
   /**
    * The content of the Box.
    */
@@ -1153,7 +1178,7 @@ interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
    * The URL to link to.
    *
    * - If set, it will navigate to the location specified by `href` after executing the `onClick` callback.
-   * - If an `commandFor` is set, the `command` will be executed instead of the navigation.
+   * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
    */
   href?: string;
   /**
@@ -1949,7 +1974,8 @@ interface BlockTypographyProps {
 interface HeadingProps$1
   extends GlobalProps,
     AccessibilityVisibilityProps,
-    BlockTypographyProps {
+    BlockTypographyProps,
+    ContainerProps {
   /**
    * The content of the Heading.
    */
@@ -2083,14 +2109,13 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
    * For example, if the value is set as `50 /    100`, the getter returns `50 / 100`.
    * If the value is set as `0.5`, the getter returns `0.5 / 1`.
    *
-   * @default 'auto'
+   * @default '1/1'
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
    */
   aspectRatio?:
     | `${number}${optionalSpace}/${optionalSpace}${number}`
-    | `${number}`
-    | 'auto';
+    | `${number}`;
   /**
    * Determines how the content of the image is resized to fit its container.
    * The image is positioned in the center of the container.
@@ -2372,7 +2397,7 @@ interface OptionGroupProps$1 extends GlobalProps {
   children?: ComponentChildren;
 }
 interface OrderedListProps$1 extends GlobalProps {}
-interface PageProps$1 extends GlobalProps {
+interface PageProps$1 extends GlobalProps, ContainerProps {
   /**
    * The content of the Page.
    */
@@ -2416,7 +2441,8 @@ interface ParagraphProps$1
   extends GlobalProps,
     BaseTypographyProps,
     BlockTypographyProps,
-    AccessibilityVisibilityProps {
+    AccessibilityVisibilityProps,
+    ContainerProps {
   /**
    * The content of the Text.
    */
@@ -2457,7 +2483,7 @@ type PasswordAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'new-password' | 'current-password'
 >;
-interface SectionProps$1 extends GlobalProps {
+interface SectionProps$1 extends GlobalProps, ContainerProps {
   /**
    * The content of the Section.
    */
@@ -2585,7 +2611,7 @@ interface PaginationProps {
    */
   loading?: boolean;
 }
-interface TableProps$1 extends GlobalProps, PaginationProps {
+interface TableProps$1 extends GlobalProps, PaginationProps, ContainerProps {
   /**
    * The content of the Table.
    */
@@ -4128,8 +4154,12 @@ declare class PreactFieldElement<Autocomplete extends string = string>
    *
    * To fix this, we spoof getAttribute & hasAttribute to make a PreactFieldElement
    * appear as a contentEditable "input" when it contains a focused input element.
+   * @private technically not private, but we don't want to expose this as public API
    */
   getAttribute(qualifiedName: string): string | null;
+  /**
+   * @private technically not private, but we don't want to expose this as public API
+   */
   hasAttribute(qualifiedName: string): boolean;
   /**
    * Checks if the shadow tree contains a focused input (input, textarea, select, <x contentEditable>).
@@ -5060,8 +5090,12 @@ declare class Table extends PreactCustomElement implements TableProps {
   accessor onnextpage: CallbackEventListener<typeof tagName$e> | null;
   /**
    * The actual table variant, which is either 'table' or 'list'.
+   * @private
    */
   [actualTableVariantSymbol]: AddedContext<ActualTableVariant>;
+  /**
+   * @private
+   */
   [tableHeadersSharedDataSymbol]: AddedContext<
     {
       listSlot: TableHeaderProps['listSlot'];
