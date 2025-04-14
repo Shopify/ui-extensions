@@ -1,7 +1,7 @@
 const shared = {
   name: 'Text',
   description: `
-  Use \`s-text\` for inline text styling, similar to HTML's span elements. When adding an icon inside \`s-text\`, it automatically adopts the text's tone.
+  Use \`s-text\` for inline text styling, similar to HTML's span elements. When adding an icon inside \`s-text\`, it automatically adopts the tone of the text.
 
   #### Useful for:
   - Adding inline text elements such as labels or line errors.
