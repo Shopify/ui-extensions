@@ -212,8 +212,8 @@ export default extension(
     const declineButton = root.createComponent(
       Button,
       {
-        kind: 'secondary',
-        onPress: () =>
+        variant: 'secondary',
+        onClick: () =>
           handleConsentChange({
             analytics: false,
             marketing: false,
@@ -227,8 +227,8 @@ export default extension(
     const acceptButton = root.createComponent(
       Button,
       {
-        kind: 'secondary',
-        onPress: () =>
+        variant: 'secondary',
+        onClick: () =>
           handleConsentChange({
             analytics: true,
             marketing: true,
@@ -242,7 +242,7 @@ export default extension(
     const settingsButton = root.createComponent(
       Button,
       {
-        kind: 'plain',
+        variant: 'plain',
         overlay: modalFragment,
       },
       'Settings',

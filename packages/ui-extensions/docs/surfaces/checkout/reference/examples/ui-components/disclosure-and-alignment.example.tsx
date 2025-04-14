@@ -92,10 +92,7 @@ export const DisclosureAndAlignment = () => {
                   id="message0"
                 />
                 <View>
-                  <Button
-                    accessibilityRole="submit"
-                    kind="secondary"
-                  >
+                  <Button type="submit">
                     Save
                   </Button>
                 </View>

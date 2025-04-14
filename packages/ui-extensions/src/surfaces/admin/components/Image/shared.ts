@@ -1,6 +1,6 @@
 const shared = {
   name: 'Image',
-  description:`
+  description: `
   Use \`s-image\` to display images in your app. 
 
   #### Useful for:

@@ -18,8 +18,8 @@ export default extension(
     const declineButton = root.createComponent(
       Button,
       {
-        kind: 'secondary',
-        onPress: () => {},
+        variant: 'secondary',
+        onClick: () => {},
       },
       'I decline',
     );
@@ -27,8 +27,8 @@ export default extension(
     const agreeButton = root.createComponent(
       Button,
       {
-        kind: 'secondary',
-        onPress: () => {},
+        variant: 'secondary',
+        onClick: () => {},
       },
       'I agree',
     );
@@ -37,7 +37,7 @@ export default extension(
       root.createComponent(
         Button,
         {
-          kind: 'plain',
+          variant: 'plain',
         },
         'Preferences',
       );

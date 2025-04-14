@@ -57,8 +57,7 @@ function Extension() {
       primaryAction={
         <>
           <Button
-            kind="secondary"
-            onPress={() =>
+            onClick={() =>
               handleConsentChange({
                 // values derived from local form state
                 analytics: false,
@@ -71,8 +70,7 @@ function Extension() {
             I decline
           </Button>
           <Button
-            kind="secondary"
-            onPress={() =>
+            onClick={() =>
               handleConsentChange({
                 analytics: true,
                 marketing: true,
@@ -87,7 +85,7 @@ function Extension() {
       }
       secondaryAction={
         <Button
-          kind="plain"
+          variant="plain"
           overlay={
             // Open a settings modal
           }

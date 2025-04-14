@@ -18,9 +18,7 @@ function Extension() {
     <BlockStack>
       <Grid columns={['fill', 'auto']}>
         <Text>{label}</Text>
-        <Text appearance="subdued">
-          45% completed
-        </Text>
+        <Text color="subdued">45% completed</Text>
       </Grid>
       <Progress
         value={45}

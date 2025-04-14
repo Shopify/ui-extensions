@@ -5,6 +5,7 @@ import {
   REQUIRES_PROTECTED_CUSTOMER_DATA,
   STANDARD_API_PROPERTIES_DESCRIPTION,
   CHECKOUT_API_PROPERTIES_DESCRIPTION,
+  getExample,
 } from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -49,6 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseApplyMetafieldsChangeGeneratedType',
     },
   ],
+  defaultExample: getExample('metafields/default', ['jsx', 'js', 'toml']),
   related: getLinksByTag('apis'),
 };
 

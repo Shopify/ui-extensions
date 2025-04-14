@@ -14,7 +14,7 @@ const shared = {
   - Don't duplicate content.
 
 `,
-  
+
   thumbnail: 'text-thumbnail.png',
   isVisualComponent: true,
   definitions: [

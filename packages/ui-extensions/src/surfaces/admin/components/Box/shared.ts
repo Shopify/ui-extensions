@@ -7,7 +7,7 @@ const shared = {
   - Creating custom designs when you can't build what you need with the existing components.
   - Setting up specific stylings such as background colors, paddings, and borders.
   - Nesting with other components.
-    `,   
+    `,
   thumbnail: 'box-thumbnail.png',
   isVisualComponent: true,
   definitions: [

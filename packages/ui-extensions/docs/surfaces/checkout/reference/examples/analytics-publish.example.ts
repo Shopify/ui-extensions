@@ -1,5 +1,6 @@
-import {extension} from '@shopify/ui-extensions-react/checkout';
 import {useEffect} from 'react';
+
+import {extension} from '@shopify/ui-extensions/checkout';
 
 export default extension(
   'purchase.checkout.block.render',

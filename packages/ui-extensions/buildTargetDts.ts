@@ -22,6 +22,10 @@ function copyComponentDefinitions({
   buildPath: string;
   surface: string;
 }) {
+  if (surface === 'checkout') {
+    // HACK: Checkout doesn't yet have `<component>.d.ts` files, so we can't process them
+    return true;
+  }
   const componentsSrcPath = join(srcPath, 'components');
   const componentsBuildPath = join(
     buildPath,

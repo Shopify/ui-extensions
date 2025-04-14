@@ -25,16 +25,10 @@ function Extension() {
       defaultOpen={shouldShowBanner}
       primaryAction={
         <>
-          <Button
-            kind="secondary"
-            onPress={() => {}}
-          >
+          <Button onClick={() => {}}>
             I decline
           </Button>
-          <Button
-            kind="secondary"
-            onPress={() => {}}
-          >
+          <Button onClick={() => {}}>
             I agree
           </Button>
         </>

@@ -7,10 +7,6 @@ import {
   ORDER_STATUS_API_PROPERTIES_DESCRIPTION,
 } from '../helper.docs';
 
-// added temporarily to keep a note that the order status api docs have been moved to customer accounts
-// can be removed from 2025-01 on
-interface OrderStatusApiEmpty {}
-
 const data: ReferenceEntityTemplateSchema = {
   name: 'Order',
   description:

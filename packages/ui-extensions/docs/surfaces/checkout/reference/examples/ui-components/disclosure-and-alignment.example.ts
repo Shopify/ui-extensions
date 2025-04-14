@@ -101,7 +101,7 @@ export default extension(
                   Button,
                   {
                     accessibilityRole: 'submit',
-                    kind: 'secondary',
+                    variant: 'secondary',
                   },
                   'Save',
                 ),

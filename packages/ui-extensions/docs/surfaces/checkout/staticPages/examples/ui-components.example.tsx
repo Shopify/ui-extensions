@@ -21,7 +21,7 @@ function Extension() {
         <Text size="small">Description</Text>
       </BlockStack>
       <Button
-        onPress={() => {
+        onClick={() => {
           console.log('button was pressed');
         }}
       >
