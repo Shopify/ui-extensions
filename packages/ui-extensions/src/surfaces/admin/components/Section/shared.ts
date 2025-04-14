@@ -47,7 +47,7 @@ Use \`s-section\` to organize your page content so it matches the Admin design. 
   defaultExample: {
     image: 'section-default.png',
     codeblock: {
-      title: 'Default Example',
+      title: '',
       tabs: [
         {
           code: './examples/default.html',

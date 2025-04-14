@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'adminprintaction-default.png',
     codeblock: {
-      title: 'Default Example',
+      title: '',
       tabs: [
         {
           title: 'JSX',

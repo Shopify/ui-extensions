@@ -46,7 +46,7 @@ Banners can have different tones depending on the type of message to communicate
   defaultExample: {
     image: 'banner-default.png',
     codeblock: {
-      title: 'Default Example',
+      title: '',
       tabs: [
         {
           code: './examples/default.html',
