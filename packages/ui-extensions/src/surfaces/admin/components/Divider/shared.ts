@@ -1,7 +1,13 @@
 const shared = {
   name: 'Divider',
-  description:
-    'Use `s-divider` to create a clear visual separation between different elements in your user interface. Use dividers to separate related, but distinct information within sections.',
+  description: `
+  Use \`s-divider\` to create a clear visual separation between different elements in your user interface.
+
+  #### Useful for:
+  - Separating elements inside sections.
+  - Visually grouping related content in forms and lists.
+  `,
+
   thumbnail: 'divider-thumbnail.png',
   isVisualComponent: true,
   definitions: [

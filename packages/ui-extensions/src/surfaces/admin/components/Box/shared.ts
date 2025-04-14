@@ -1,7 +1,13 @@
 const shared = {
   name: 'Box',
-  description:
-    'The `s-box` component is an escape hatch for building custom user interfaces. You should only use `s-box` when you cannot build what you need with the existing components.',
+  description: `
+  Use \`s-box\` to build custom interfaces with your own design language. 
+
+  #### Useful for:
+  - Creating custom designs when you cannot build what you need with the existing components.
+  - Setting up specific stylings such as background colors, paddings and borders.
+  - Nesting with other components.
+    `,   
   thumbnail: 'box-thumbnail.png',
   isVisualComponent: true,
   definitions: [

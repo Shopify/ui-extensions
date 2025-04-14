@@ -1,8 +1,23 @@
 const shared = {
   name: 'Section',
-  description:
-    "The `s-section` component organizes your content into separate blocks. At the top level it looks like a card, and when nested inside another `s-section` it displays as a related content area. It automatically handles `s-heading` levels based on nesting.\n\nThe `s-section` component adds spacing between children, so you don't need to use `s-stack` or `s-grid` for basic layouts.",
-  thumbnail: 'section-thumbnail.png',
+  description: `
+Use \`s-section\` to organize your page content so it matches the Admin design. Sections have defined styling, and will display differently depending on how deeply they are nested in the page. They have built-in spacing so there's no need to wrap children inside \`s-grid/\`, \`s-stack/\`, or \`s-box/\`. 
+
+#### Useful for:
+- Organizing content into cards.
+- Creating consistency across pages.
+- Keeping your layout in line with the admin design.
+
+#### Level 1
+- Display as responsive cards with background color, rounded corners, and shadow effects. 
+- Include built-in spacing for nested sections and outer padding, but this padding can be removed when content like \`s-table\` needs to expand to the full width of the section. 
+- When you add headings at this level, they automatically use a specific style, which helps keep the content organized and clear.
+
+#### Nested sections
+- Don't have any background color or effects by default. 
+- When you add headings at this level, they automatically use a specific style and built-in spacing is added between the heading and the content.
+    `,
+
   isVisualComponent: true,
   definitions: [
     {

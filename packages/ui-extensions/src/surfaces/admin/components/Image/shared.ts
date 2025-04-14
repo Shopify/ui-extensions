@@ -1,7 +1,17 @@
 const shared = {
   name: 'Image',
-  description:
-    'Use `s-image` when you want to display an image. \n\n When using images or illustrations in your app, ensure that they add clarity and clearly direct merchants to the next step. Make sure to use high-resolution images to ensure a professional, high-quality experience.',
+  description:`
+  Use \`s-image\` to display images in your app. 
+
+  #### Useful for:
+  - Adding illustrations and photos.
+
+  #### Best practices
+  - Use high-resolution images to ensure a professional and high-quality experience.
+  - Use optimized images so your app loads as fast as possible.
+  - Use images intentionally, these should add clarity and lead users to the next step.
+
+  `,
   thumbnail: 'image-thumbnail.png',
   isVisualComponent: true,
   definitions: [

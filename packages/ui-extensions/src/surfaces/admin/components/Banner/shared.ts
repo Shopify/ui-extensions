@@ -1,7 +1,31 @@
 const shared = {
   name: 'Banner',
-  description:
-    'Use `s-banner` to communicate important status updates or indicate that there are important actions that users must take. \n\n You can use banners both as a standalone component on a page or inside of a `s-section`. Banners will automatically update their deisgn to match the context in which they are used.',
+  description: `
+  Use \`s-banner\` to communicate important status updates or required actions that users must take. Banners will automatically adjust their design to match the context in which they are used.
+
+#### Outside of a section
+Banners placed outside of a section will display in their own card and should be located at the top of the page. 
+They're useful for conveying messages that apply to the entire page or areas not visible within the viewport, such as validation errors further down the page.
+
+#### In a section
+Banners placed inside a section will have styles applied contextually. They're useful for conveying messages relevant to a specific section or piece of content.
+
+#### Tones
+Banners can have different tones depending on the type of message to communicate:
+
+- **Info:** Updating users about changes or giving them advice.
+- **Success:** Confirming successful actions or positive statuses.
+- **Warning:** Highlighting information that needs attention or immediate action. 
+- **Critical:** Indicating urgent issues that must be fixed right away.
+
+#### Best practices
+- Seeing these banners can be stressful, so use them sparingly to avoid overwhelming users.
+- Focus on a single piece of information or required action to avoid overwhelming users.
+- Make the message concise and scannable. Users shouldn’t need to spend a lot of time figuring out what they need to know and do. 
+- Info, Warning and Critical banners should contain a call to action and clear next steps. Users should know what to do after seeing the banner.
+- Avoid banners that can't be dismissed unless the user is required to take action.
+
+  `,
   thumbnail: 'banner-thumbnail.png',
   isVisualComponent: true,
   definitions: [

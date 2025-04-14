@@ -1,7 +1,24 @@
 const shared = {
   name: 'Heading',
-  description:
-    "The `s-heading` component renders hierarchical titles similar to HTML's `h1-h6` elements. Heading levels are automatically determined by parent `s-section` nesting depth starting from h2. Always prefer using the `heading` property on `s-section` and `s-banner` components before constructing custom layout with `s-heading`.",
+  description: `
+  Use \`s-heading\` to create hierarchical titles similar to HTML's \`h1-h6\` elements.
+
+  #### Useful for:
+  - Creating titles and subtitles for your content that are consistent across your app.
+  - Helping users with visual impairments navigate through content effectively using assistive technologies like screen readers.
+
+  #### Considerations
+  - The level of the heading is automatically determined by how deeply it is nested inside other components, starting from h2.
+  - Default to using the \`heading\` property in \`s-section\`. The \`s-heading\` component should only be used if you need to implement a custom layout for your heading in the UI.
+  
+  #### Best practices
+  - Use short headings to make your content scannable.
+  - Use plain and clear terms.
+  - Don't use jargon or technical language.
+  - Don't use different terms to describe the same thing.
+  - Don't duplicate content.
+
+  `,
   thumbnail: 'heading-thumbnail.png',
   isVisualComponent: true,
   definitions: [

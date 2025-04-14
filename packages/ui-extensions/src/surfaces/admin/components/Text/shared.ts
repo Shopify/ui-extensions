@@ -1,7 +1,20 @@
 const shared = {
   name: 'Text',
-  description:
-    'The `s-text` component is used for inline text styling, similar to HTML `span` elements, not for paragraph-level content. Use it to apply different visual tones and text styles to specific words or phrases within a `s-paragraph`, such as a `strong` type or `critical` tone.',
+  description: `
+  Use \`s-text\` for inline text styling, similar to HTML's span elements. When adding an icon inside \`s-text\`, it automatically adopts the text's tone.
+
+  #### Useful for:
+  - Adding inline text elements such as labels or line errors.
+  - Applying different visual tones and text styles to specific words or phrases within a \`s-paragraph\`, such as a \`strong\` type or \`critical\` tone.
+
+  #### Best practices
+  - Use plain and clear terms.
+  - Don't use jargon or technical language.
+  - Don't use different terms to describe the same thing.
+  - Don't duplicate content.
+
+`,
+  
   thumbnail: 'text-thumbnail.png',
   isVisualComponent: true,
   definitions: [
