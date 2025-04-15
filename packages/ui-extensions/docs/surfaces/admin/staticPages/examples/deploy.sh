@@ -2,6 +2,6 @@
 cd my-app
 
 # deploy your app and its extensions:
-npm run deploy
+shopify app deploy
 
 # follow the steps to deploy
