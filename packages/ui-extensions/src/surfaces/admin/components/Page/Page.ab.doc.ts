@@ -3,7 +3,7 @@ import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 const data: AdminReferenceEntityTemplateSchema = {
   name: 'Page',
   description: `
-  Use \`s-page\` as the main container for placing content in your app. Page comes with preset layouts and automatically adds spacing between elements. This means you don't need to wrap your content inside \`s-grid\`, \`s-stack\`, or \`s-box\`.
+  Use \`s-page\` as the main container for placing content in your app. Page comes with preset layouts and automatically adds spacing between elements. 
   
   #### Useful for:
   - Creating flexible, responsive page layouts.
