@@ -10,11 +10,9 @@ export interface PageProps {
   subheading?: string;
 }
 
-declare class PageComponent extends HTMLElement implements PageProps {}
-
 declare global {
   interface HTMLElementTagNameMap {
-    ['s-page']: PageComponent;
+    ['s-page']: HTMLElement & PageProps;
   }
 }
 

@@ -25,13 +25,9 @@ export interface PolicyModalProps {
   type: PolicyType;
 }
 
-declare class PolicyModalComponent
-  extends HTMLElement
-  implements PolicyModalProps {}
-
 declare global {
   interface HTMLElementTagNameMap {
-    ['s-policy-modal']: PolicyModalComponent;
+    ['s-policy-modal']: HTMLElement & PolicyModalProps;
   }
 }
 

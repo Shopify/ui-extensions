@@ -5,13 +5,9 @@ export interface CustomerAccountActionProps {
   heading: string;
 }
 
-declare class CustomerAccountActionComponent
-  extends HTMLElement
-  implements CustomerAccountActionProps {}
-
 declare global {
   interface HTMLElementTagNameMap {
-    ['s-customer-account-action']: CustomerAccountActionComponent;
+    ['s-customer-account-action']: HTMLElement & CustomerAccountActionProps;
   }
 }
 
