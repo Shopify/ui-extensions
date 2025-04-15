@@ -55,7 +55,7 @@ const data: LandingTemplateSchema = {
         {
           subtitle: 'Figma UI Kit',
           name: 'Use the Figma UI kit to design your extension.',
-          url: 'https://www.figma.com/community/file/1255225508400961281',
+          url: 'https://www.figma.com/community/file/1493617217926107705',
           type: 'star',
         },
       ],
