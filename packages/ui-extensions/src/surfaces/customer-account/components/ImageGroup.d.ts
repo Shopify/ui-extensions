@@ -6,13 +6,9 @@ export interface ImageGroupProps {
   totalItems?: number;
 }
 
-declare class ImageGroupComponent
-  extends HTMLElement
-  implements ImageGroupProps {}
-
 declare global {
   interface HTMLElementTagNameMap {
-    ['s-image-group']: ImageGroupComponent;
+    ['s-image-group']: HTMLElement & ImageGroupProps;
   }
 }
 
