@@ -30,10 +30,10 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   related: getLinksByTag('apis'),
-  defaultExample: getHookExample('payments/use-selected-payment-options'),
+  defaultExample: getHookExample('payments/use-available-payment-options'),
   examples: {
     description: '',
-    examples: [getHookExample('payments/use-available-payment-options')],
+    examples: [getHookExample('payments/use-selected-payment-options')],
   },
 };
 

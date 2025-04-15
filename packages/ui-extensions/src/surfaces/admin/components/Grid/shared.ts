@@ -8,7 +8,7 @@ const shared = {
   - Creating responsive layouts with consistent spacing.
   
   #### Considerations
-  - Grid does not include any padding by default. If you need padding around your grid, use \`base\` to apply the default padding. 
+  - Grid doesn't include any padding by default. If you need padding around your grid, use \`base\` to apply the default padding. 
   - Grid will allow children to overflow unless template rows/columns are properly set.
   - Grid will always wrap children to a new line. If you need to control the wrapping behavior, use \`s-stack\` or \`s-box\`.
  `,

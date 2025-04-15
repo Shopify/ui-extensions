@@ -8,7 +8,7 @@ const shared = {
   - Helping users with visual impairments navigate through content effectively using assistive technologies like screen readers.
 
   #### Considerations
-  - The level of the heading is automatically determined by how deeply it is nested inside other components, starting from h2.
+  - The level of the heading is automatically determined by how deeply it's nested inside other components, starting from h2.
   - Default to using the \`heading\` property in \`s-section\`. The \`s-heading\` component should only be used if you need to implement a custom layout for your heading in the UI.
   
   #### Best practices
