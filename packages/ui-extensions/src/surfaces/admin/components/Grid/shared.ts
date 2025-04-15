@@ -1,11 +1,11 @@
 const shared = {
   name: 'Grid',
   description: `
-  Use \`s-grid\` to create responsive layouts with consistent spacing. Grid follows the same pattern as the [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout). 
+  Use \`s-grid\` to organize your content in a matrix of rows and columns. Grid follows the same pattern as the [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout). 
   
   #### Useful for:
-  - Organizing content into columns and rows.
-  - Creating responsive layouts with consistent spacing, in grid the layout automatically adapts to the viewport size.
+  - Organizing content into a grid-like layout with columns and rows with consistent alignment and spacing.
+  - Creating responsive layouts with consistent spacing.
   
   #### Considerations
   - Grid does not include any padding by default. If you need padding around your grid, use \`base\` to apply the default padding. 
