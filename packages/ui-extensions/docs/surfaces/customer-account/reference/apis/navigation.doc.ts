@@ -28,11 +28,11 @@ const data: ReferenceEntityTemplateSchema = {
         'Only available for full-page extension `customer-account.page.render`',
       type: 'FullExtensionNavigation',
     },
-    {
-      title: 'useNavigationCurrentEntry',
-      description: 'Returns the live navigation current entry',
-      type: 'UseNavigationCurrentEntryGeneratedType',
-    },
+    // {
+    //   title: 'useNavigationCurrentEntry',
+    //   description: 'Returns the live navigation current entry',
+    //   type: 'UseNavigationCurrentEntryGeneratedType',
+    // },
   ],
   defaultExample: {
     description: '',

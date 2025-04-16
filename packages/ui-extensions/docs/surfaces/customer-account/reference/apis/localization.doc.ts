@@ -14,36 +14,36 @@ const data: ReferenceEntityTemplateSchema = {
       description: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.description,
       type: 'Docs_Standard_LocalizationApi',
     },
-    {
-      title: 'useLanguage',
-      description:
-        "Returns the buyer's language, as supported by the extension. If the buyer's actual language is not supported by the extension, it will return the fallback locale used for translations.",
-      type: 'UseLanguageGeneratedType',
-    },
-    {
-      title: 'useLocalizationCountry',
-      description:
-        "Returns the country of the buyer's current session, and automatically re-renders your component if the country changes.",
-      type: 'UseLocalizationCountryGeneratedType',
-    },
-    {
-      title: 'useExtensionLanguage',
-      description:
-        'Returns the language the buyer sees in the customer account hub.',
-      type: 'UseExtensionLanguageGeneratedType',
-    },
-    {
-      title: 'useI18n',
-      description:
-        'Returns utilities for translating content and formatting values according to the current localization of the user.',
-      type: 'UseI18nGeneratedType',
-    },
-    {
-      title: 'useTranslate',
-      description:
-        'Returns the `I18nTranslate` interface used to translate strings.',
-      type: 'UseTranslateGeneratedType',
-    },
+    // {
+    //   title: 'useLanguage',
+    //   description:
+    //     "Returns the buyer's language, as supported by the extension. If the buyer's actual language is not supported by the extension, it will return the fallback locale used for translations.",
+    //   type: 'UseLanguageGeneratedType',
+    // },
+    // {
+    //   title: 'useLocalizationCountry',
+    //   description:
+    //     "Returns the country of the buyer's current session, and automatically re-renders your component if the country changes.",
+    //   type: 'UseLocalizationCountryGeneratedType',
+    // },
+    // {
+    //   title: 'useExtensionLanguage',
+    //   description:
+    //     'Returns the language the buyer sees in the customer account hub.',
+    //   type: 'UseExtensionLanguageGeneratedType',
+    // },
+    // {
+    //   title: 'useI18n',
+    //   description:
+    //     'Returns utilities for translating content and formatting values according to the current localization of the user.',
+    //   type: 'UseI18nGeneratedType',
+    // },
+    // {
+    //   title: 'useTranslate',
+    //   description:
+    //     'Returns the `I18nTranslate` interface used to translate strings.',
+    //   type: 'UseTranslateGeneratedType',
+    // },
   ],
   defaultExample: {
     codeblock: {
