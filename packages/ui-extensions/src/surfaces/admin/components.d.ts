@@ -1,4 +1,4 @@
-/** VERSION: 0.48.0 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
@@ -3472,6 +3472,9 @@ interface AdminPrintActionProps$1 extends GlobalProps {
 
 export interface IconProps
   extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
+  /**
+   * Specifies the type of icon that will be displayed.
+   */
   type: '' | IconType | 'empty';
   tone: Extract<
     IconProps$1['tone'],
@@ -3577,7 +3580,10 @@ export interface BadgeJSXProps
 
 export type RequiredBannerProps = Required<BannerProps$1>;
 export interface BannerProps
-  extends Pick<RequiredBannerProps, 'heading' | 'dismissible' | 'hidden'> {
+  extends Pick<
+    RequiredBannerProps,
+    'heading' | 'dismissible' | 'hidden' | 'tone'
+  > {
   tone: Extract<
     RequiredBannerProps['tone'],
     'auto' | 'critical' | 'warning' | 'success' | 'info'
@@ -3892,6 +3898,7 @@ declare class PreactCheckboxElement
   accessor error: PreactCheckboxProps['error'];
   accessor label: PreactCheckboxProps['label'];
   accessor required: PreactCheckboxProps['required'];
+  /** @private */
   formResetCallback(): void;
   constructor(renderImpl: RenderImpl);
 }
@@ -3985,6 +3992,7 @@ declare class ChoiceList extends PreactInputElement implements ChoiceListProps {
   accessor multiple: ChoiceListProps['multiple'];
   get values(): ChoiceListProps['values'];
   set values(values: ChoiceListProps['values']);
+  /** @private */
   formResetCallback(): void;
   constructor();
 }
@@ -4166,6 +4174,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
    * Note: this does _not_ return true for focussed non-field form elements like buttons.
    */
   get isContentEditable(): boolean;
+  /** @private */
   formResetCallback(): void;
   /** @private */
   connectedCallback(): void;
@@ -4927,6 +4936,7 @@ declare class Select extends PreactInputElement implements SelectProps {
   [hasInitialValueSymbol]: boolean;
   get value(): string;
   set value(value: string);
+  /** @private */
   formResetCallback(): void;
 }
 declare global {
@@ -4952,11 +4962,6 @@ export interface SelectJSXProps extends Partial<SelectProps> {
 
 export interface SpinnerProps
   extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
-  /**
-   * The size of the component.
-   *
-   * @default 'base'
-   */
   size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
 }
 
@@ -5253,7 +5258,6 @@ export interface TextProps
   extends Required<
     Pick<
       TextProps$1,
-      | 'display'
       | 'accessibilityVisibility'
       | 'dir'
       | 'color'
@@ -5278,7 +5282,6 @@ export interface TextProps
 }
 
 declare class Text extends PreactCustomElement implements TextProps {
-  accessor display: TextProps['display'];
   accessor fontVariantNumeric: TextProps['fontVariantNumeric'];
   accessor color: TextProps['color'];
   accessor tone: TextProps['tone'];
