@@ -10,14 +10,6 @@ They're useful for conveying messages that apply to the entire page or areas not
 #### In a section
 Banners placed inside a section will have styles applied contextually. They're useful for conveying messages relevant to a specific section or piece of content.
 
-#### Tones
-Banners can have different tones depending on the type of message to communicate:
-
-- **Info:** Updating users about changes or giving them advice.
-- **Success:** Confirming successful actions or positive statuses.
-- **Warning:** Highlighting information that needs attention or immediate action. 
-- **Critical:** Indicating urgent issues that must be fixed right away.
-
 #### Best practices
 - Seeing these banners can be stressful, so use them sparingly to avoid overwhelming users.
 - Focus on a single piece of information or required action to avoid overwhelming users.
