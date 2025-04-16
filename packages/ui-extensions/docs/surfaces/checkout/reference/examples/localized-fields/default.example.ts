@@ -8,15 +8,14 @@ export default extension(
 
     localizedFields?.subscribe(
       (localizedFields) => {
-        // 2. Access localized field values
+        // 2. Access localized field value
         taxIdField = localizedFields?.find(
-          ({key}) =>
-            key.startsWith('TAX_CREDENTIAL'),
+          ({key}) => key === 'TAX_CREDENTIAL_BR',
         );
       },
     );
 
-    // 3. Validate localized field values
+    // 3. Validate localized field value
     buyerJourney.intercept(
       ({canBlockProgress}) => {
         return canBlockProgress &&
