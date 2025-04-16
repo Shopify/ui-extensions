@@ -1,38 +1,17 @@
-import {
-  Image,
-  ImageGroup,
-  View,
-  extension,
-} from '@shopify/ui-extensions/customer-account';
+export default function extension() {
+  const imageGroup = document.createElement('s-image-group');
+  const firstImage = document.createElement('s-image');
+  firstImage.src = '../assets/flower.jpg';
 
-export default extension(
-  'customer-account.page.render',
-  (root, api) => {
-    renderApp(root, api);
-  },
-)
+  const secondImage = document.createElement('s-image');
+  secondImage.src = '../assets/flower.jpg';
 
-function renderApp(root, api) {
-  const firstImage = root.createComponent(Image, {
-    source: "../assets/flower.jpg"
-  });
-
-  const secondeImage = root.createComponent(Image, {
-    source: "../assets/flower.jpg"
-  });
-
-  const thirdImage = root.createComponent(Image, {
-    source: "../assets/flower.jpg"
-  });
-
-  const imageGroup = root.createComponent(ImageGroup);
+  const thirdImage = document.createElement('s-image');
+  thirdImage.src = '../assets/flower.jpg';
 
   imageGroup.append(firstImage);
-  imageGroup.append(secondeImage);
+  imageGroup.append(secondImage);
   imageGroup.append(thirdImage);
 
-  const view = root.createComponent(View, {maxInlineSize: 300});
-  view.append(imageGroup);
-
-  root.append(view);
+  document.body.append(imageGroup);
 }
