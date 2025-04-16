@@ -1,7 +1,6 @@
 API_VERSION=$1
 DOCS_PATH=docs/surfaces/checkout
 SRC_PATH=src/surfaces/checkout
-SHOPIFY_DEV_PATH="../../../shopify-dev"
 
 fail_and_exit() {
   echo "** Failed to generate docs"
@@ -19,18 +18,22 @@ run_sed() {
   fi
 }
 
-if [ -z $API_VERSION ]
-then
-  API_VERSION="unstable"
-  echo "Building docs for 'unstable' checkout UI extensions API. You can add a calver version argument (e.g. 'yarn docs:checkout 2023-07') to generate the docs for a stable version."
-else
-  echo "Building docs for '$API_VERSION' checkout UI extensions API."
-  echo "When generating docs for a stable version, 'unstable' docs are not regenerated. This avoids overwriting other unstable changes that are not included in this version."
-  echo "If you need to update the 'unstable' version, run this command again without the '$API_VERSION' parameter."
+if [ "$API_VERSION" = "unstable" ]; then
+  echo "Publishing docs for the 'unstable' checkout UI extensions API is not supported. You must specify a calver version YYYY-MM or YYYY-MM-rc (for a release candidate)."
+  exit 1;
 fi
 
-COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH ../ui-extensions-react/$SRC_PATH --output ./$DOCS_PATH/generated"
-COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
+if [ -z $API_VERSION ]
+then
+  echo "You must specify a calver version YYYY-MM or YYYY-MM-rc (for a release candidate)."
+  exit 1;
+else
+  echo "Building docs for '$API_VERSION' checkout UI extensions API."
+fi
+
+COMPILE_DOCS="pnpm tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && pnpm generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH  --output ./$DOCS_PATH/generated"
+COMPILE_STATIC_PAGES="pnpm tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && pnpm generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
+
 
 if echo "$PWD" | grep -q '\checkout-web'; then
   # We are generating docs from the private package, which does not have other surfaces aside from checkout
@@ -41,18 +44,10 @@ else
   # so we erase their contents and replace them afterwards
   echo "export {}" > src/surfaces/customer-account.ts
   echo "export {}" > src/surfaces/admin.ts
-  echo "export {}" > src/surfaces/point-of-sale.ts
-  echo "export {}" > ../ui-extensions-react/src/surfaces/customer-account.ts
-  echo "export {}" > ../ui-extensions-react/src/surfaces/admin.ts
-  echo "export {}" > ../ui-extensions-react/src/surfaces/point-of-sale.ts
   eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
   build_exit=$?
   git checkout HEAD -- src/surfaces/customer-account.ts
   git checkout HEAD -- src/surfaces/admin.ts
-  git checkout HEAD -- src/surfaces/point-of-sale.ts
-  git checkout HEAD -- ../ui-extensions-react/src/surfaces/customer-account.ts
-  git checkout HEAD -- ../ui-extensions-react/src/surfaces/admin.ts
-  git checkout HEAD -- ../ui-extensions-react/src/surfaces/point-of-sale.ts
 fi
 
 # TODO: get generate-docs to stop requiring JS files:
@@ -70,6 +65,8 @@ sed_exit=$?
 if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
+
+
 
 copy_generated_docs_to_shopify_dev() {
 # Copy the generated docs to shopify-dev
@@ -96,11 +93,15 @@ else
   fi
 }
 
+# Assume we have a relative path to shopify-dev (for non-local environments like CI, and Github Actions)
+SHOPIFY_DEV_PATH="../../../shopify-dev"
+
 if [ -d $SHOPIFY_DEV_PATH ]; then
   copy_generated_docs_to_shopify_dev
 else
-  # We could be in the monorepo and need to go up several more directories to find shopify-dev
-  SHOPIFY_DEV_PATH="../../../../../../shopify-dev"
+  # We could be in the shop/world repo and its in a different location on your local machine
+  # This is a best guess as to where it might be located in local dev environments
+  SHOPIFY_DEV_PATH="$HOME/src/github.com/Shopify/shopify-dev"
   copy_generated_docs_to_shopify_dev
 fi
 
