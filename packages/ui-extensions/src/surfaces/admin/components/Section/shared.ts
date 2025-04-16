@@ -7,7 +7,7 @@ Use \`s-section\` to organize your page content. Sections have defined styling, 
 - **Nested sections:** Don't have any background color or effects by default. 
 
 #### Useful for:
-- Organizing content into cards.
+- Organizing your page in a logical structure based on nesting levels.
 - Creating consistency across pages.
 
 #### Considerations
