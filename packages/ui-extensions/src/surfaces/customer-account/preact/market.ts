@@ -1,11 +1,9 @@
-import {
-  Market,
-  RenderOrderStatusExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderOrderStatusExtensionTarget} from '../extension-targets';
+import type {Market} from '../api';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
+import {ExtensionHasNoFieldError} from './errors';
 
 /**
  * Returns the market of the checkout, and automatically re-renders

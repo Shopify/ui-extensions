@@ -1,10 +1,8 @@
-import {
-  RenderExtensionTarget,
-  SessionToken,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderExtensionTarget} from '../extension-targets';
+import type {SessionToken} from '../api';
 
 import {useApi} from './api';
-import {ExtensionHasNoFieldError} from '../errors';
+import {ExtensionHasNoFieldError} from './errors';
 
 /**
  * Provides access to session tokens, which can be used to verify token claims on your app's server.

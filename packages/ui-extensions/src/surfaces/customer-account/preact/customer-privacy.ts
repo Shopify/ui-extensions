@@ -1,11 +1,9 @@
-import type {
-  CustomerPrivacy,
-  RenderExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderExtensionTarget} from '../extension-targets';
+import type {CustomerPrivacy} from '../api';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
+import {ExtensionHasNoFieldError} from './errors';
 
 /**
  * Returns the current customer privacy settings and metadata and

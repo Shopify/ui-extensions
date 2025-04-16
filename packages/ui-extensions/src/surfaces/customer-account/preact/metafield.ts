@@ -1,6 +1,6 @@
-import {Metafield} from '@shopify/ui-extensions/customer-account';
+import type {Metafield} from '../api';
 
-import {CustomerAccountUIExtensionError} from '../errors';
+import {CustomerAccountUIExtensionError} from './errors';
 
 import {useMetafields} from './metafields';
 

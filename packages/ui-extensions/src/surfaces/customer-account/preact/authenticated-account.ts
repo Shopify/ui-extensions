@@ -1,8 +1,5 @@
-import type {
-  Customer,
-  PurchasingCompany,
-  RenderExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderExtensionTarget} from '../extension-targets';
+import type {Customer, PurchasingCompany} from '../api';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';

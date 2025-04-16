@@ -1,11 +1,9 @@
-import {
-  RenderOrderStatusExtensionTarget,
-  Timezone,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderOrderStatusExtensionTarget} from '../extension-targets';
+import type {Timezone} from '../api';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
+import {ExtensionHasNoFieldError} from './errors';
 
 /**
  * Returns the time zone of the checkout, and automatically re-renders

@@ -1,11 +1,9 @@
-import {
-  Country,
-  RenderExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import {Country} from '../api';
+import {RenderExtensionTarget} from '../extension-targets';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
+import {ExtensionHasNoFieldError} from './errors';
 
 /**
  * Returns the country associated with either the current order on the order status page

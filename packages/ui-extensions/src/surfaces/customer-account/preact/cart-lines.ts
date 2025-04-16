@@ -1,11 +1,9 @@
-import type {
-  CartLine,
-  RenderOrderStatusExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderOrderStatusExtensionTarget} from '../extension-targets';
+import type {CartLine} from '../api';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
+import {ExtensionHasNoFieldError} from './errors';
 
 /**
  * Returns the current line items for the checkout, and automatically re-renders

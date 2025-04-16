@@ -1,9 +1,7 @@
-import type {
-  MailingAddress,
-  RenderOrderStatusExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderOrderStatusExtensionTarget} from '../extension-targets';
+import type {MailingAddress} from '../api';
 
-import {ExtensionHasNoFieldError, ScopeNotGrantedError} from '../errors';
+import {ExtensionHasNoFieldError, ScopeNotGrantedError} from './errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';

@@ -1,13 +1,12 @@
-import type {
-  Metafield,
-  RenderOrderStatusExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
-import {useMemo} from 'react';
+import type {RenderOrderStatusExtensionTarget} from '../extension-targets';
+import type {Metafield} from '../api';
+
+import {useMemo} from 'preact/hooks';
 
 import {
   CustomerAccountUIExtensionError,
   ExtensionHasNoFieldError,
-} from '../errors';
+} from './errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';

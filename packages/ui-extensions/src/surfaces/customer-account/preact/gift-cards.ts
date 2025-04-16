@@ -1,11 +1,9 @@
-import type {
-  AppliedGiftCard,
-  RenderOrderStatusExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderOrderStatusExtensionTarget} from '../extension-targets';
+import type {AppliedGiftCard} from '../api';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
+import {ExtensionHasNoFieldError} from './errors';
 
 /**
  * Returns the current gift cards applied to the cart, and automatically re-renders

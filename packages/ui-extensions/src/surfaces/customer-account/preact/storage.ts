@@ -1,7 +1,5 @@
-import type {
-  RenderExtensionTarget,
-  Storage,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderExtensionTarget} from '../extension-targets';
+import type {Storage} from '../api';
 
 import {useApi} from './api';
 

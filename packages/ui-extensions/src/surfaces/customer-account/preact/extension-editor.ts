@@ -1,4 +1,4 @@
-import type {Editor} from '@shopify/ui-extensions/customer-account';
+import type {Editor} from '../api';
 
 import {useApi} from './api';
 

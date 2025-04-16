@@ -1,9 +1,7 @@
-import {
-  Order,
-  RenderExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderExtensionTarget} from '../extension-targets';
+import type {Order} from '../api';
 
-import {ExtensionHasNoMethodError} from '../errors';
+import {ExtensionHasNoMethodError} from './errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';

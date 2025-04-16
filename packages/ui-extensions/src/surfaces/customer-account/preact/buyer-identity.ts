@@ -1,11 +1,11 @@
+import type {RenderOrderStatusExtensionTarget} from '../extension-targets';
 import type {
   OrderStatusCustomer,
   OrderStatusBuyerIdentity,
   OrderStatusPurchasingCompany,
-  RenderOrderStatusExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+} from '../api';
 
-import {ExtensionHasNoFieldError, ScopeNotGrantedError} from '../errors';
+import {ExtensionHasNoFieldError, ScopeNotGrantedError} from './errors';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';

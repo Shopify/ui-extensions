@@ -1,11 +1,9 @@
-import {useContext} from 'react';
 import {
   RenderExtensionTarget,
   ApiForRenderExtension,
-} from '@shopify/ui-extensions/customer-account';
+} from '../extension-targets';
 
-import {CustomerAccountUIExtensionError} from '../errors';
-import {ExtensionApiContext} from '../context';
+import {CustomerAccountUIExtensionError} from './errors';
 
 /**
  * Returns the full API object that was passed in to your extension when it was created.
@@ -20,7 +18,7 @@ import {ExtensionApiContext} from '../context';
 export function useApi<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
 >(): ApiForRenderExtension<Target> {
-  const api = useContext(ExtensionApiContext);
+  const api = (globalThis as any)?.shopify as ApiForRenderExtension<Target>;
 
   if (api == null) {
     throw new CustomerAccountUIExtensionError(

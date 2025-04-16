@@ -1,5 +1,6 @@
-import {Metafield} from '@shopify/ui-extensions/customer-account';
 import {faker} from '@faker-js/faker';
+
+import type {Metafield} from '../../api';
 
 import {useAppMetafields} from '..';
 

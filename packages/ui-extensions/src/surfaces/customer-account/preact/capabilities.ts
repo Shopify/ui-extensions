@@ -1,4 +1,4 @@
-import type {Capability} from '@shopify/ui-extensions/customer-account';
+import type {Capability} from '../api';
 
 import {useSubscription} from './subscription';
 import {useApi} from './api';

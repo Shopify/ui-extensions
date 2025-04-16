@@ -1,7 +1,6 @@
-import {
-  I18n,
-  RenderCustomerAccountExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderCustomerAccountExtensionTarget} from '../extension-targets';
+import type {I18n} from '../api';
+
 import {useApi} from './api';
 
 /**

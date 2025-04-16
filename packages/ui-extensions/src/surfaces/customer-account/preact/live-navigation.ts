@@ -1,9 +1,8 @@
-import {
-  NavigationHistoryEntry,
-  RenderCustomerAccountFullPageExtensionTarget,
-} from '@shopify/ui-extensions/src/surfaces/customer-account';
+import type {RenderCustomerAccountFullPageExtensionTarget} from '../extension-targets';
+import type {NavigationHistoryEntry} from '../api';
+
 import {useApi} from './api';
-import {useEffect, useReducer} from 'react';
+import {useEffect, useReducer} from 'preact/hooks';
 
 export function useNavigationCurrentEntry<
   Target extends RenderCustomerAccountFullPageExtensionTarget = RenderCustomerAccountFullPageExtensionTarget,

@@ -1,10 +1,8 @@
-import type {
-  RenderOrderStatusExtensionTarget,
-  Shop,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderOrderStatusExtensionTarget} from '../extension-targets';
+import type {Shop} from '../api';
 
 import {useApi} from './api';
-import {ExtensionHasNoFieldError} from '../errors';
+import {ExtensionHasNoFieldError} from './errors';
 
 /**
  * Returns the `Shop` where the checkout is taking place.

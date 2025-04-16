@@ -1,7 +1,7 @@
-import {
-  ApiForExtension,
+import type {
   RenderCustomerAccountExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+  ApiForExtension,
+} from '../extension-targets';
 
 import {useApi} from './api';
 

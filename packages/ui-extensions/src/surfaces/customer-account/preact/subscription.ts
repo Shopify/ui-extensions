@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState} from 'preact/hooks';
 import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 type Subscriber<T> = Parameters<StatefulRemoteSubscribable<T>['subscribe']>[0];

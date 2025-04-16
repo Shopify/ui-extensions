@@ -30,6 +30,9 @@
       ],
       "customer-account.*": [
         "./build/ts/surfaces/customer-account/targets/customer-account.*.d.ts"
+      ],
+      "customer-account/preact": [
+        "./build/ts/surfaces/customer-account/preact/index.d.ts"
       ]
     }
   },
@@ -67,6 +70,12 @@
     "./customer-account.*": {
       "default": "./build/ts/surfaces/customer-account/targets/customer-account.*.d.ts"
     },
+    "./customer-account/preact": {
+      "types": "./build/ts/surfaces/customer-account/preact/index.d.ts",
+      "esnext": "./build/esnext/surfaces/customer-account/preact/index.esnext",
+      "import": "./build/esm/surfaces/customer-account/preact/index.mjs",
+      "require": "./build/cjs/surfaces/customer-account/preact/index.js"
+    },
     "./preact": {
       "types": "./build/ts/preact.d.ts",
       "esnext": "./build/esnext/preact.esnext",
@@ -83,9 +92,11 @@
   "devDependencies": {
     "@remote-ui/async-subscription": "^2.1.16",
     "@shopify/generate-docs": "0.16.4",
-    "typescript": "^4.9.0"
+    "typescript": "^4.9.0",
+    "@faker-js/faker": "^8.4.1"
   },
   "optionalDependencies": {
+    "preact": "*",
     "@preact/signals": "*"
   },
   "publishConfig": {

@@ -1,7 +1,5 @@
-import {
-  ExtensionTarget,
-  CartLine,
-} from '@shopify/ui-extensions/customer-account';
+import type {ExtensionTarget} from '../extension-targets';
+import type {CartLine} from '../api';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';

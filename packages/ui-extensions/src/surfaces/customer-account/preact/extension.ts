@@ -1,4 +1,4 @@
-import type {Extension} from '@shopify/ui-extensions/customer-account';
+import type {Extension} from '../api';
 
 import {useApi} from './api';
 

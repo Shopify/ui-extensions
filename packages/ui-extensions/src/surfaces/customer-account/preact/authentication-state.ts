@@ -1,7 +1,5 @@
-import type {
-  AuthenticationState,
-  RenderOrderStatusExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderOrderStatusExtensionTarget} from '../extension-targets';
+import type {AuthenticationState} from '../api';
 
 import {useSubscription} from './subscription';
 import {useApi} from './api';

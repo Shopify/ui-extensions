@@ -1,9 +1,7 @@
-import {isValidElement, cloneElement, useCallback} from 'react';
-import type {
-  RenderExtensionTarget,
-  I18nTranslate,
-} from '@shopify/ui-extensions/customer-account';
-import type {RemoteComponentType} from '@remote-ui/types';
+import {isValidElement, cloneElement} from 'preact';
+import {useCallback} from 'preact/hooks';
+import type {RenderExtensionTarget} from '../extension-targets';
+import type {I18nTranslate} from '../api';
 
 import {useApi} from './api';
 
@@ -25,8 +23,7 @@ export function useTranslate<
 
       return translation.map((part, index) => {
         if (isValidElement(part)) {
-          // eslint-disable-next-line react/no-array-index-key
-          return cloneElement(part as RemoteComponentType<any>, {key: index});
+          return cloneElement(part, {key: index});
         }
         return part;
       });

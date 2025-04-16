@@ -1,7 +1,5 @@
-import {
-  Language,
-  RenderExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderExtensionTarget} from '../extension-targets';
+import type {Language} from '../api';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';

@@ -1,12 +1,9 @@
-import type {
-  CartDiscountAllocation,
-  CartDiscountCode,
-  RenderOrderStatusExtensionTarget,
-} from '@shopify/ui-extensions/customer-account';
+import type {RenderOrderStatusExtensionTarget} from '../extension-targets';
+import type {CartDiscountAllocation, CartDiscountCode} from '../api';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
-import {ExtensionHasNoFieldError} from '../errors';
+import {ExtensionHasNoFieldError} from './errors';
 
 /**
  * Returns the current discount codes applied to the cart, and automatically re-renders
