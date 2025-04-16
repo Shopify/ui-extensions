@@ -15,17 +15,17 @@ const data: ReferenceEntityTemplateSchema = {
       description: ORDER_STATUS_API_DEFINITION.description,
       type: 'Docs_OrderStatus_DiscountsApi',
     },
-    {
-      title: 'useDiscountAllocations',
-      description:
-        'Returns the current discount allocations applied to the cart.',
-      type: 'UseDiscountAllocationsGeneratedType',
-    },
-    {
-      title: 'useDiscountCodes',
-      description: 'Returns the current discount codes applied to the cart.',
-      type: 'UseDiscountCodesGeneratedType',
-    },
+    // {
+    //   title: 'useDiscountAllocations',
+    //   description:
+    //     'Returns the current discount allocations applied to the cart.',
+    //   type: 'UseDiscountAllocationsGeneratedType',
+    // },
+    // {
+    //   title: 'useDiscountCodes',
+    //   description: 'Returns the current discount codes applied to the cart.',
+    //   type: 'UseDiscountCodesGeneratedType',
+    // },
   ],
   related: [],
 };

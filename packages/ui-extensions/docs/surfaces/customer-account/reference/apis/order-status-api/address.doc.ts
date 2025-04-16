@@ -19,17 +19,17 @@ const data: ReferenceEntityTemplateSchema = {
       description: ORDER_STATUS_API_DEFINITION.description,
       type: 'Docs_OrderStatus_AddressApi',
     },
-    {
-      title: 'useShippingAddress',
-      description:
-        'Returns the proposed `shippingAddress` applied to the checkout.',
-      type: 'UseShippingAddressGeneratedType',
-    },
-    {
-      title: 'useBillingAddress',
-      description: 'Returns `billingAddress` specified in the order.',
-      type: 'UseBillingAddressGeneratedType',
-    },
+    // {
+    //   title: 'useShippingAddress',
+    //   description:
+    //     'Returns the proposed `shippingAddress` applied to the checkout.',
+    //   type: 'UseShippingAddressGeneratedType',
+    // },
+    // {
+    //   title: 'useBillingAddress',
+    //   description: 'Returns `billingAddress` specified in the order.',
+    //   type: 'UseBillingAddressGeneratedType',
+    // },
   ],
   related: [],
 };

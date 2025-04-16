@@ -42,11 +42,6 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Basic Page',
       tabs: [
         {
-          title: 'React',
-          code: '../../../../../../ui-extensions-react/src/surfaces/customer-account/components/Page/examples/basic-Page-react.example.tsx',
-          language: 'tsx',
-        },
-        {
           title: 'JS',
           code: './examples/basic-Page-js.example.ts',
           language: 'js',

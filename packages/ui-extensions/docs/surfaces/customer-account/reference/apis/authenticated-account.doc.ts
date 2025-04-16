@@ -15,18 +15,18 @@ const data: ReferenceEntityTemplateSchema = {
       description: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.description,
       type: 'Docs_Standard_AuthenticatedAccountApi',
     },
-    {
-      title: 'useAuthenticatedAccountCustomer',
-      description:
-        "Returns the current authenticated `Customer`. The value is `undefined` if the customer isn't authenticated.",
-      type: 'UseAuthenticatedAccountCustomerGeneratedType',
-    },
-    {
-      title: 'useAuthenticatedAccountPurchasingCompany',
-      description:
-        "Provides information about the company of the authenticated business customer. The value is `undefined` if a business customer isn't authenticated.",
-      type: 'UseAuthenticatedAccountPurchasingCompanyGeneratedType',
-    },
+    // {
+    //   title: 'useAuthenticatedAccountCustomer',
+    //   description:
+    //     "Returns the current authenticated `Customer`. The value is `undefined` if the customer isn't authenticated.",
+    //   type: 'UseAuthenticatedAccountCustomerGeneratedType',
+    // },
+    // {
+    //   title: 'useAuthenticatedAccountPurchasingCompany',
+    //   description:
+    //     "Provides information about the company of the authenticated business customer. The value is `undefined` if a business customer isn't authenticated.",
+    //   type: 'UseAuthenticatedAccountPurchasingCompanyGeneratedType',
+    // },
   ],
   related: [],
 };

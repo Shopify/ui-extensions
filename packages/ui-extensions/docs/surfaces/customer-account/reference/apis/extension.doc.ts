@@ -14,17 +14,17 @@ const data: ReferenceEntityTemplateSchema = {
       description: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.description,
       type: 'Docs_Standard_ExtensionApi',
     },
-    {
-      title: 'useExtension',
-      description: 'Returns the metadata of the extension.',
-      type: 'UseExtensionGeneratedType',
-    },
-    {
-      title: 'useExtensionEditor',
-      description:
-        'Returns information about the editor where the extension is being rendered.',
-      type: 'UseExtensionEditorGeneratedType',
-    },
+    // {
+    //   title: 'useExtension',
+    //   description: 'Returns the metadata of the extension.',
+    //   type: 'UseExtensionGeneratedType',
+    // },
+    // {
+    //   title: 'useExtensionEditor',
+    //   description:
+    //     'Returns information about the editor where the extension is being rendered.',
+    //   type: 'UseExtensionEditorGeneratedType',
+    // },
   ],
   related: [],
 };

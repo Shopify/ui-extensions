@@ -106,10 +106,6 @@ export interface CustomerAccountExtensionTargets {
       FullPageApi,
     StandardComponents
   >;
-  'CustomerAccount::KitchenSink': RenderExtension<
-    StandardApi<'CustomerAccount::KitchenSink'> & {name: string},
-    StandardComponents
-  >;
   'customer-account.order-index.block.render': RenderExtension<
     StandardApi<'customer-account.order-index.block.render'>,
     StandardComponents

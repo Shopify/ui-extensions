@@ -14,11 +14,11 @@ const data: ReferenceEntityTemplateSchema = {
       description: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.description,
       type: 'Docs_Standard_SessionTokenApi',
     },
-    {
-      title: 'useSessionToken',
-      description: 'Returns a the session token API object.',
-      type: 'UseSessionTokenGeneratedType',
-    },
+    // {
+    //   title: 'useSessionToken',
+    //   description: 'Returns a the session token API object.',
+    //   type: 'UseSessionTokenGeneratedType',
+    // },
   ],
   defaultExample: {
     codeblock: {
