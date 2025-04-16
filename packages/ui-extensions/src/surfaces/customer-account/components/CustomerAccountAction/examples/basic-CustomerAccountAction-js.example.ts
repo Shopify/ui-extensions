@@ -1,27 +1,15 @@
-import {
-  Button,
-  CustomerAccountAction,
-  extension
-} from '@shopify/ui-extensions/customer-account';
+export default function extension() {
+  const accountAction = document.createElement('s-customer-account-action');
 
-export default extension(
-  'customer-account.order.action.render',
-  (root, api) => {
-    renderApp(root, api);
-  },
-)
+  const closeButton = document.createElement('s-button');
+  closeButton.innerHTML = 'Click to close';
+  closeButton.slot = 'primaryAction';
+  closeButton.addEventListener('click', () => shopify.close());
 
-async function renderApp(root, api) {
-  const primaryAction = root.createFragment();
-  await primaryAction.append(root.createComponent(Button, {onPress: () => {api.close()}}, 'Click to close'));
+  accountAction.append('Extension content');
+  accountAction.append(closeButton);
 
-  const customerAccountAction = root.createComponent(
-    CustomerAccountAction,
-    {
-      title: 'Extension title',
-      primaryAction,
-    },
-    root.createComponent('TextBlock', {}, 'Extension content')
-  );
-  root.append(customerAccountAction);
+  accountAction.heading = 'Extension title';
+
+  document.body.append(accountAction);
 }
