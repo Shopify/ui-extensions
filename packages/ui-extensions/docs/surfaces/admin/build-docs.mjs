@@ -1,9 +1,14 @@
 /* eslint-disable no-undef, no-console */
-import childProcess from 'child_process';
 import fs from 'fs/promises';
 import {existsSync} from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
+
+import {
+  generateFiles,
+  copyGeneratedToShopifyDev,
+  replaceFileContent,
+} from '../build-doc-shared.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2] || 'unstable';
 
@@ -31,15 +36,8 @@ const generatedStaticPagesFile = 'generated_static_pages.json';
 const componentDefs = path.join(srcPath, 'components.d.ts');
 const tempComponentDefs = path.join(srcPath, 'components.ts');
 
-const replaceFileContent = async (filePaths, searchValue, replaceValue) => {
-  const files = Array.isArray(filePaths) ? filePaths : [filePaths];
-  for (const filePath of files) {
-    const content = await fs.readFile(filePath, 'utf8');
-    // @ts-ignore -- TS should know this is a string but it doesn't
-    const replacedContent = content.replaceAll(searchValue, replaceValue);
-    await fs.writeFile(filePath, replacedContent);
-  }
-};
+const tsconfig = 'tsconfig.docs.json';
+const tsconfigAppBridge = 'tsconfig.ab.docs.json';
 
 const decodeHTML = (str) => {
   return str
@@ -156,57 +154,6 @@ const transformJson = async (filePath, isExtensions) => {
   await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
 };
 
-const generateFiles = async (tsconfig, outputDir, isExtensions = true) => {
-  const scripts = [
-    `yarn tsc --project ${docsRelativePath}/${tsconfig} --moduleResolution node  --target esNext  --module CommonJS`,
-    `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
-  ];
-
-  if (isExtensions) {
-    scripts.push(
-      `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
-      `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
-    );
-  }
-
-  scripts.forEach((script) => childProcess.execSync(script, {stdio: 'pipe'}));
-
-  const srcFiles = await fs.readdir(rootPath, {recursive: true});
-  const builtFiles = srcFiles.filter((file) => file.endsWith('.ts'));
-  await Promise.all(
-    builtFiles.map((file) => {
-      const jsFilePath = path.join(rootPath, file.replace('.ts', '.js'));
-      return existsSync(jsFilePath) ? fs.rm(jsFilePath) : Promise.resolve();
-    }),
-  );
-
-  const generatedFiles = [path.join(outputDir, generatedDocsDataFile)];
-  if (isExtensions) {
-    generatedFiles.push(path.join(outputDir, generatedStaticPagesFile));
-  }
-
-  // Make sure https://shopify.dev URLs are relative so they work in Spin.
-  // See https://github.com/Shopify/generate-docs/issues/181
-  await replaceFileContent(generatedFiles, 'https://shopify.dev', '');
-
-  // @ts-ignore
-  await transformJson(
-    path.join(outputDir, generatedDocsDataFile),
-    isExtensions,
-  );
-};
-
-const copyGeneratedToShopifyDev = async () => {
-  if (!shopifyDevExists) {
-    console.log(
-      `Not copying docs to shopify-dev because it was not found at ${shopifyDevPath}.`,
-    );
-    process.exit();
-  }
-
-  await fs.cp(generatedDocsPath, shopifyDevDBPath, {recursive: true});
-};
-
 const generateExtensionsDocs = async () => {
   console.log(
     `Building Admin UI Extensions docs for ${EXTENSIONS_API_VERSION} version`,
@@ -218,16 +165,30 @@ const generateExtensionsDocs = async () => {
     );
   }
 
-  const extensionsOutputDir = `${docsGeneratedRelativePath}/admin_extensions/${EXTENSIONS_API_VERSION}`;
+  const outputDir = `${docsGeneratedRelativePath}/admin_extensions/${EXTENSIONS_API_VERSION}`;
 
-  await generateFiles('tsconfig.docs.json', extensionsOutputDir);
+  const scripts = [
+    `yarn tsc --project ${docsRelativePath}/${tsconfig} --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
+    `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
+  ];
+
+  await generateFiles({
+    scripts,
+    outputDir,
+    rootPath,
+    generatedDocsDataFile,
+    generatedStaticPagesFile,
+    transformJson: (filePath) => transformJson(filePath, true),
+  });
 
   // Replace 'unstable' with the exact API version in relative doc links
-  await replaceFileContent(
-    path.join(extensionsOutputDir, generatedDocsDataFile),
-    '/docs/api/admin-extensions/unstable/',
-    `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
-  );
+  await replaceFileContent({
+    filePaths: path.join(outputDir, generatedDocsDataFile),
+    searchValue: '/docs/api/admin-extensions/unstable/',
+    replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
+  });
 
   await fs.cp(
     path.join(docsPath, 'screenshots'),
@@ -243,11 +204,19 @@ const generateExtensionsDocs = async () => {
 const generateAppBridgeDocs = async () => {
   console.log('Building App Bridge docs');
 
-  await generateFiles(
-    'tsconfig.ab.docs.json',
-    `${docsGeneratedRelativePath}/app_bridge`,
-    false,
-  );
+  const outputDir = `${docsGeneratedRelativePath}/app_bridge`;
+  const scripts = [
+    `yarn tsc --project ${docsRelativePath}/${tsconfigAppBridge} --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
+  ];
+
+  await generateFiles({
+    scripts,
+    outputDir,
+    rootPath,
+    generatedDocsDataFile,
+    transformJson: (filePath) => transformJson(filePath, false),
+  });
 };
 
 try {
@@ -255,14 +224,18 @@ try {
     await fs.rm(generatedDocsPath, {recursive: true});
   }
   await fs.copyFile(componentDefs, tempComponentDefs);
-  await replaceFileContent(
-    tempComponentDefs,
-    /typeof globalThis\.HTMLElement/g,
-    'any',
-  );
+  await replaceFileContent({
+    filePaths: tempComponentDefs,
+    searchValue: /typeof globalThis\.HTMLElement/g,
+    replaceValue: 'any',
+  });
   await generateExtensionsDocs();
   await generateAppBridgeDocs();
-  await copyGeneratedToShopifyDev();
+  await copyGeneratedToShopifyDev({
+    generatedDocsPath,
+    shopifyDevPath,
+    shopifyDevDBPath,
+  });
 
   await fs.rm(tempComponentDefs);
 } catch (error) {
