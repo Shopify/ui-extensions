@@ -134,6 +134,12 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Removed in POS version: N/A
 - Release day: 11/11/2024.
 
+## Important Fixes
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+
 ### Features
 
 - Fixes long standing issue where \`useEffect\` teardown functions are not working in React
@@ -147,6 +153,12 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added in POS version: 9.19
 - Removed in POS version: N/A
 - Release day: 10/1/2024.
+
+## Important Fixes
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
 
 ### Features
 
@@ -169,6 +181,12 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added in POS version: 9.15
 - Removed in POS version: N/A
 - Release day: 08/14/2024.
+
+## Important Fixes
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
 
 ### Features
 
