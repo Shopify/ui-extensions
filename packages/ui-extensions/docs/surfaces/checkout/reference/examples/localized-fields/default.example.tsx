@@ -1,24 +1,22 @@
 import {
   reactExtension,
   useBuyerJourneyIntercept,
-  useLocalizedFields,
+  useLocalizedField,
 } from '@shopify/ui-extensions-react/checkout';
 
+// 1. Choose an extension target
 export default reactExtension(
   'purchase.checkout.block.render',
   () => <Extension />,
 );
 
 function Extension() {
-  // 1. Access localized field values
-  const localizedFields = useLocalizedFields([
+  // 2. Access localized field value
+  const taxIdField = useLocalizedField(
     'TAX_CREDENTIAL_BR',
-  ]);
+  );
 
-  // 2. Access localized field values
-  const taxIdField = localizedFields?.[0];
-
-  // 3. Validate localized field values
+  // 3. Validate localized field value
   useBuyerJourneyIntercept(
     ({canBlockProgress}) => {
       return canBlockProgress &&

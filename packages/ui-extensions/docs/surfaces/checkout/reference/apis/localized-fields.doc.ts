@@ -29,7 +29,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'useLocalizedField',
       description:
-        'Returns the current localized fields and re-renders your component if the values change.',
+        'Returns the requested localized field and re-renders your component if the value changes.',
       type: 'UseLocalizedFieldGeneratedType',
     },
   ],
