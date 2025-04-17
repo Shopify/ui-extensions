@@ -19,12 +19,6 @@ interface ButtonProps {
   onClick?(): void;
 }
 
-interface ActionButtonProps
-  extends Pick<
-    ButtonProps,
-    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
-  > {}
-
 export interface Docs_OrderStatus_MetafieldsApi
   extends Pick<OrderStatusApi<any>, 'appMetafields' | 'metafields'> {}
 
@@ -106,8 +100,16 @@ export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
 export interface Docs_FullPageApi extends FullPageApi {}
 
-export interface Docs_Page_Button_PrimaryAction extends ActionButtonProps {}
-export interface Docs_Page_Button_SecondaryAction extends ActionButtonProps {}
+export interface Docs_Page_Button_PrimaryAction
+  extends Pick<
+    ButtonProps,
+    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+  > {}
+export interface Docs_Page_Button_SecondaryAction
+  extends Pick<
+    ButtonProps,
+    'onClick' | 'loading' | 'accessibilityLabel' | 'href'
+  > {}
 
 export interface Docs_Page_Button_BreadcrumbAction
   extends Pick<ButtonProps, 'onClick' | 'href'> {
@@ -117,7 +119,11 @@ export interface Docs_Page_Button_BreadcrumbAction
   accessibilityLabel: ButtonProps['accessibilityLabel'];
 }
 
-export interface Docs_ResourceItem_Button_Action extends ActionButtonProps {}
+export interface Docs_ResourceItem_Button_Action
+  extends Pick<
+    ButtonProps,
+    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+  > {}
 
 export interface Docs_Menu_Button_Action
   extends Omit<
@@ -125,7 +131,11 @@ export interface Docs_Menu_Button_Action
     'kind' | 'textDecoration' | 'inlineAlignment' | 'inlineSize' | 'size'
   > {}
 
-export interface Docs_OrderActionMenu_Button extends ActionButtonProps {
+export interface Docs_OrderActionMenu_Button
+  extends Pick<
+    ButtonProps,
+    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+  > {
   /**
    * Destination URL to link to.
    *
@@ -135,7 +145,13 @@ export interface Docs_OrderActionMenu_Button extends ActionButtonProps {
 }
 
 export interface Docs_CustomerAccountAction_Button_PrimaryAction
-  extends ActionButtonProps {}
+  extends Pick<
+    ButtonProps,
+    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+  > {}
 
 export interface Docs_CustomerAccountAction_Button_SecondaryAction
-  extends ActionButtonProps {}
+  extends Pick<
+    ButtonProps,
+    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+  > {}
