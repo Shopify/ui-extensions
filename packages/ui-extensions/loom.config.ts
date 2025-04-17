@@ -21,6 +21,10 @@ export default createPackage((pkg) => {
     name: 'customer-account',
     root: './src/surfaces/customer-account.ts',
   });
+  pkg.entry({
+    name: 'customer-account/preact',
+    root: './src/surfaces/customer-account/preact/index.ts',
+  });
   // pkg.entry({name: 'point-of-sale', root: './src/surfaces/point-of-sale.ts'});
   pkg.entry({name: 'preact', root: './src/preact.ts'});
   pkg.use(
