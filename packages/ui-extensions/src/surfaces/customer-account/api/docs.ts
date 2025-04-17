@@ -4,16 +4,26 @@ import {CartLineItemApi} from './cart-line/cart-line-item';
 import {FullPageApi} from '../extension-targets';
 
 interface ButtonProps {
-  onPress?(): void;
-  to?: string;
-  loading?: boolean;
-  loadingLabel?: string;
-  disabled?: boolean;
   accessibilityLabel?: string;
-  accessibilityRole?: 'button' | 'submit';
-  overlay?: any;
-  kind?: 'primary' | 'secondary' | 'plain';
+  command?: '--auto' | '--toggle' | '--copy';
+  commandFor?: string;
+  disabled?: boolean;
+  href?: string;
+  id?: string;
+  loading?: boolean;
+  target?: 'auto' | '_self' | '_blank';
+  tone?: 'auto' | 'neutral' | 'critical';
+  type?: 'button' | 'submit';
+  variant?: 'auto' | 'primary' | 'secondary';
+
+  onClick?(): void;
 }
+
+interface ActionButtonProps
+  extends Pick<
+    ButtonProps,
+    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
+  > {}
 
 export interface Docs_OrderStatus_MetafieldsApi
   extends Pick<OrderStatusApi<any>, 'appMetafields' | 'metafields'> {}
@@ -96,49 +106,18 @@ export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
 export interface Docs_FullPageApi extends FullPageApi {}
 
-export interface Docs_Page_Button_PrimaryAction
-  extends Pick<
-    ButtonProps,
-    | 'onPress'
-    | 'overlay'
-    | 'to'
-    | 'loading'
-    | 'loadingLabel'
-    | 'disabled'
-    | 'accessibilityLabel'
-  > {}
-export interface Docs_Page_Button_SecondaryAction
-  extends Pick<
-    ButtonProps,
-    | 'onPress'
-    | 'overlay'
-    | 'to'
-    | 'loading'
-    | 'loadingLabel'
-    | 'disabled'
-    | 'accessibilityLabel'
-  > {}
+export interface Docs_Page_Button_PrimaryAction extends ActionButtonProps {}
+export interface Docs_Page_Button_SecondaryAction extends ActionButtonProps {}
 
 export interface Docs_Page_Button_BreadcrumbAction
-  extends Pick<ButtonProps, 'onPress' | 'to'> {
+  extends Pick<ButtonProps, 'onClick' | 'href'> {
   /**
    * A label used for buyers using assistive technologies. Needed because `children` passed to this component will be discarded.
    */
   accessibilityLabel: ButtonProps['accessibilityLabel'];
 }
 
-export interface Docs_ResourceItem_Button_Action
-  extends Pick<
-    ButtonProps,
-    | 'onPress'
-    | 'overlay'
-    | 'to'
-    | 'loading'
-    | 'loadingLabel'
-    | 'disabled'
-    | 'accessibilityLabel'
-    | 'kind'
-  > {}
+export interface Docs_ResourceItem_Button_Action extends ActionButtonProps {}
 
 export interface Docs_Menu_Button_Action
   extends Omit<
@@ -146,32 +125,17 @@ export interface Docs_Menu_Button_Action
     'kind' | 'textDecoration' | 'inlineAlignment' | 'inlineSize' | 'size'
   > {}
 
-export interface Docs_OrderActionMenu_Button
-  extends Pick<
-    ButtonProps,
-    'onPress' | 'loading' | 'loadingLabel' | 'disabled' | 'accessibilityLabel'
-  > {
+export interface Docs_OrderActionMenu_Button extends ActionButtonProps {
   /**
    * Destination URL to link to.
    *
    * E.g. `extension:/` to navigate to the Full-page extension.
    */
-  to: ButtonProps['to'];
+  href: ButtonProps['href'];
 }
 
 export interface Docs_CustomerAccountAction_Button_PrimaryAction
-  extends Pick<
-    ButtonProps,
-    | 'onPress'
-    | 'loading'
-    | 'loadingLabel'
-    | 'disabled'
-    | 'accessibilityLabel'
-    | 'accessibilityRole'
-  > {}
+  extends ActionButtonProps {}
 
 export interface Docs_CustomerAccountAction_Button_SecondaryAction
-  extends Pick<
-    ButtonProps,
-    'onPress' | 'loading' | 'loadingLabel' | 'disabled' | 'accessibilityLabel'
-  > {}
+  extends ActionButtonProps {}
