@@ -892,6 +892,3 @@ export const CHECKOUT_API_PROPERTIES_DESCRIPTION =
 
 export const ORDER_CONFIRMATION_API_PROPERTIES_DESCRIPTION =
   'The API object provided to `purchase.thank-you` extension targets.';
-
-export const ORDER_STATUS_API_PROPERTIES_DESCRIPTION =
-  '> Note: This documentation has moved to customer accounts. Refer to [Order API](/docs/api/customer-account-ui-extensions/apis/order)';
