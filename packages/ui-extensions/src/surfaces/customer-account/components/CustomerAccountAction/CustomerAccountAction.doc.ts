@@ -36,6 +36,11 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Basic CustomerAccountAction',
       tabs: [
         {
+          title: 'Preact',
+          code: './examples/basic-CustomerAccountAction-preact.example.tsx',
+          language: 'tsx',
+        },
+        {
           title: 'JS',
           code: './examples/basic-CustomerAccountAction-js.example.ts',
           language: 'js',

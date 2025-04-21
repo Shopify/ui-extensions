@@ -24,6 +24,11 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Basic ImageGroup',
       tabs: [
         {
+          title: 'Preact',
+          code: './examples/basic-ImageGroup-preact.example.tsx',
+          language: 'tsx',
+        },
+        {
           title: 'JS',
           code: './examples/basic-ImageGroup-js.example.ts',
           language: 'js',
