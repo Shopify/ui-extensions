@@ -1,6 +1,6 @@
 export default function HandlingEvents() {
   const handleClick = () => {
-    console.log('Button clicked');
+    console.log('s-button clicked');
   };
 
   return <s-button onClick={handleClick}>Click me</s-button>;
@@ -10,7 +10,7 @@ export default function HandlingEvents() {
 
 export default function HandlingEvents() {
   const handleClick = () => {
-    console.log('Button clicked');
+    console.log('s-button clicked');
   };
 
   const button = document.createElement('s-button');
