@@ -34,7 +34,7 @@ function Extension() {
 
   return (
     <s-admin-block title="Product Info">
-      <s-text strong>The selected product title is {product?.title}</s-text>
+      <s-text>The selected product title is {product?.title}</s-text>
     </s-admin-block>
   );
 }
