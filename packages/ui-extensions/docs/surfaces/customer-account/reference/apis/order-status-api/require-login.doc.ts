@@ -24,29 +24,29 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'growth',
     },
   ],
-  // examples: {
-  //   description: '',
-  //   examples: [
-  //     {
-  //       description: 'Call requireLogin before triggering an action',
-  //       codeblock: {
-  //         title: 'Call requireLogin before triggering an action',
-  //         tabs: [
-  //           {
-  //             code: '../../examples/apis/require-login.example.tsx',
-  //             language: 'jsx',
-  //             title: 'React',
-  //           },
-  //           {
-  //             code: '../../examples/apis/require-login.example.ts',
-  //             language: 'js',
-  //             title: 'JavaScript',
-  //           },
-  //         ],
-  //       },
-  //     },
-  //   ],
-  // },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description: 'Call requireLogin before triggering an action',
+        codeblock: {
+          title: 'Call requireLogin before triggering an action',
+          tabs: [
+            {
+              code: '../../examples/apis/require-login.example.tsx',
+              language: 'jsx',
+              title: 'Preact',
+            },
+            {
+              code: '../../examples/apis/require-login.example.ts',
+              language: 'js',
+              title: 'JavaScript',
+            },
+          ],
+        },
+      },
+    ],
+  },
 };
 
 export default data;

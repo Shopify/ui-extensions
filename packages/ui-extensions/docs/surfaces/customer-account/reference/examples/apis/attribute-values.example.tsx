@@ -1,27 +1,41 @@
-import {
-  Text,
-  reactExtension,
-  useAttributeValues,
-} from '@shopify/ui-extensions-react/customer-account';
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
 
-export default reactExtension(
-  'customer-account.order-status.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<App />, document.body);
+}
 
-function Extension() {
-  const [buyerSelectedFreeTShirt, tshirtSize] =
-    useAttributeValues([
-      'buyerSelectedFreeTShirt',
-      'tshirtSize',
-    ]);
+function App() {
+  const [
+    buyerSelectedFreeTShirt,
+    setBuyerSelectedFreeTShirt,
+  ] = useState(
+    shopify.attributes.current
+      ?.buyerSelectedFreeTShirt || false,
+  );
+  const [tshirtSize, setTshirtSize] = useState(
+    shopify.attributes.current?.tshirtSize || '',
+  );
+
+  useEffect(() => {
+    shopify.attributes.subscribe(
+      (updatedAttributes) => {
+        setBuyerSelectedFreeTShirt(
+          updatedAttributes.buyerSelectedFreeTShirt,
+        );
+        setTshirtSize(
+          updatedAttributes.tshirtSize,
+        );
+      },
+    );
+  }, []);
 
   if (Boolean(buyerSelectedFreeTShirt) === true) {
     return (
-      <Text>
+      <s-text>
         You selected a free t-shirt, size:{' '}
         {tshirtSize}
-      </Text>
+      </s-text>
     );
   }
 

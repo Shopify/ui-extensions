@@ -1,22 +1,18 @@
-import React, { useEffect, useState } from "react";
-import {
-  Button,
-  reactExtension,
-  useApi,
-} from "@shopify/ui-extensions-react/customer-account";
+import {render} from 'preact';
 
-export default reactExtension(
-  "customer-account.order-status.block.render",
-  () => <BlockExtension />
-);
+export default function extension() {
+  render(<App />, document.body);
+}
 
-function BlockExtension() {
-  const { requireLogin } = useApi<"customer-account.order-status.block.render">();
-
+function App() {
   async function reportAnIssue() {
-    await requireLogin();
-
+    await shopify.requireLogin();
     // send a request to backend
   }
-  return <Button onPress={reportAnIssue}>Report an issue</Button>;
+
+  return (
+    <s-button onClick={reportAnIssue}>
+      Report an issue
+    </s-button>
+  );
 }
