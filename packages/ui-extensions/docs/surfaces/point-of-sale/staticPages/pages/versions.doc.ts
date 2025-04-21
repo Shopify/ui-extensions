@@ -85,7 +85,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
         },
       ],
       sectionContent: `
-- Added in POS version: 9.11
+- Added in POS version: 9.11.0
 - Removed in POS version: 9.31.0
 - Release day: 06/10/2024.
 
