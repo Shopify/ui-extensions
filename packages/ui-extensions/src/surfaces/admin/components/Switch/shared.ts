@@ -1,22 +1,22 @@
 const shared = {
-  name: 'Checkbox',
+  name: 'Switch',
   description:
-    'Use `s-checkbox` when you want to provide users with a clear selection option, such as for agreeing to terms and conditions or selecting multiple options from a list.',
-  thumbnail: 'checkbox-thumbnail.png',
+    'Use `s-switch` when you want to provide users with a clear selection option, such as toggling options on/off.',
+  thumbnail: 'switch-thumbnail.png',
   isVisualComponent: true,
   definitions: [
     {
       title: 'Properties',
       description: '',
-      type: 'Checkbox',
+      type: 'Switch',
     },
   ],
   subCategory: 'Forms',
   related: [
     {
       type: 'component',
-      name: 'Switch',
-      url: '/docs/api/admin-extensions/components/forms/switch',
+      name: 'Checkbox',
+      url: '/docs/api/admin-extensions/components/forms/checkbox',
     },
     {
       type: 'component',
@@ -30,7 +30,7 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'checkbox-default.png',
+    image: 'sw-default.png',
     codeblock: {
       title: '',
       tabs: [
