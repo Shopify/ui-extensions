@@ -1,29 +1,44 @@
-import {useState} from 'react';
-import {
-  reactExtension,
-  useCustomerPrivacy,
-} from '@shopify/ui-extensions-react/customer-account';
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
 
-// 1. Choose an extension target
-export default reactExtension(
-  'customer-account.order-status.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<App />, document.body);
+}
 
-function Extension() {
-  // 2. Subscribe to customer privacy consent values
-  const {
-    visitorConsent: {
-      analytics,
-      marketing,
-      preferences,
-      saleOfData,
-    },
-  } = useCustomerPrivacy();
+function App() {
+  const [visitorConsent, setVisitorConsent] =
+    useState(
+      shopify.customerPrivacy.current
+        .visitorConsent || {},
+    );
 
-  // 3. Use consent values
-  console.log('analytics', analytics);
-  console.log('marketing', marketing);
-  console.log('preferences', preferences);
-  console.log('saleOfData', saleOfData);
+  useEffect(() => {
+    shopify.customerPrivacy.subscribe(
+      (updatedConsent) => {
+        setVisitorConsent(
+          updatedConsent.visitorConsent,
+        );
+      },
+    );
+  }, []);
+
+  // Use consent values
+  console.log(
+    'analytics',
+    visitorConsent.analytics,
+  );
+  console.log(
+    'marketing',
+    visitorConsent.marketing,
+  );
+  console.log(
+    'preferences',
+    visitorConsent.preferences,
+  );
+  console.log(
+    'saleOfData',
+    visitorConsent.saleOfData,
+  );
+
+  return null;
 }
