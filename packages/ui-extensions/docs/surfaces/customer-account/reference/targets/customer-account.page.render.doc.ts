@@ -20,24 +20,24 @@ A full-page extension target cannot coexist with any other targets in the same e
   category: 'Targets',
   isVisualComponent: false,
   subCategory: 'Full page',
-  defaultExample: {
-    description: '',
-    codeblock: {
-      title: 'Customer account wishlist full-page extension example',
-      tabs: [
-        {
-          code: '../examples/targets/customer-account.page.render/default.example.tsx',
-          language: 'jsx',
-          title: 'React',
-        },
-        {
-          code: '../examples/targets/customer-account.page.render/default.example.ts',
-          language: 'js',
-          title: 'Javascript',
-        },
-      ],
-    },
-  },
+  // defaultExample: {
+  //   description: '',
+  //   codeblock: {
+  //     title: 'Customer account wishlist full-page extension example',
+  //     tabs: [
+  //       {
+  //         code: '../examples/targets/customer-account.page.render/default.example.tsx',
+  //         language: 'jsx',
+  //         title: 'React',
+  //       },
+  //       {
+  //         code: '../examples/targets/customer-account.page.render/default.example.ts',
+  //         language: 'js',
+  //         title: 'Javascript',
+  //       },
+  //     ],
+  //   },
+  // },
   related: [],
   definitions: [
     CUSTOMER_ACCOUNT_FULL_PAGE_API_DEFINITION,

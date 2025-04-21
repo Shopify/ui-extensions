@@ -36,23 +36,23 @@ const data: ReferenceEntityTemplateSchema = {
     //   type: 'UseTargetGeneratedType',
     // },
   ],
-  defaultExample: {
-    codeblock: {
-      title: '',
-      tabs: [
-        {
-          code: '../../examples/apis/cart-line-item.example.tsx',
-          language: 'jsx',
-          title: 'React',
-        },
-        {
-          code: '../../examples/apis/cart-line-item.example.ts',
-          language: 'js',
-          title: 'JavaScript',
-        },
-      ],
-    },
-  },
+  // defaultExample: {
+  //   codeblock: {
+  //     title: '',
+  //     tabs: [
+  //       {
+  //         code: '../../examples/apis/cart-line-item.example.tsx',
+  //         language: 'jsx',
+  //         title: 'React',
+  //       },
+  //       {
+  //         code: '../../examples/apis/cart-line-item.example.ts',
+  //         language: 'js',
+  //         title: 'JavaScript',
+  //       },
+  //     ],
+  //   },
+  // },
   related: [],
 };
 

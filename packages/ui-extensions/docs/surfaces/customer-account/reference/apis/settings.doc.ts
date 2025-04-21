@@ -21,42 +21,42 @@ const data: ReferenceEntityTemplateSchema = {
     //   type: 'UseSettingsGeneratedType',
     // },
   ],
-  defaultExample: {
-    codeblock: {
-      title: 'Accessing merchant settings',
-      tabs: [
-        {
-          code: '../examples/apis/settings-access.example.tsx',
-          language: 'jsx',
-          title: 'React',
-        },
-        {
-          code: '../examples/apis/settings-access.example.ts',
-          language: 'js',
-          title: 'JavaScript',
-        },
-      ],
-    },
-  },
-  examples: {
-    description: '',
-    examples: [
-      {
-        description:
-          'You can define settings that merchants can edit within the checkout editor. See [settings](/docs/api/customer-account-ui-extensions/configuration#settings-definition) for more information on how to define these.',
-        codeblock: {
-          title: 'Define merchant settings',
-          tabs: [
-            {
-              code: '../examples/apis/settings.example.toml',
-              language: 'toml',
-              title: 'shopify.extension.toml',
-            },
-          ],
-        },
-      },
-    ],
-  },
+  // defaultExample: {
+  //   codeblock: {
+  //     title: 'Accessing merchant settings',
+  //     tabs: [
+  //       {
+  //         code: '../examples/apis/settings-access.example.tsx',
+  //         language: 'jsx',
+  //         title: 'React',
+  //       },
+  //       {
+  //         code: '../examples/apis/settings-access.example.ts',
+  //         language: 'js',
+  //         title: 'JavaScript',
+  //       },
+  //     ],
+  //   },
+  // },
+  // examples: {
+  //   description: '',
+  //   examples: [
+  //     {
+  //       description:
+  //         'You can define settings that merchants can edit within the checkout editor. See [settings](/docs/api/customer-account-ui-extensions/configuration#settings-definition) for more information on how to define these.',
+  //       codeblock: {
+  //         title: 'Define merchant settings',
+  //         tabs: [
+  //           {
+  //             code: '../examples/apis/settings.example.toml',
+  //             language: 'toml',
+  //             title: 'shopify.extension.toml',
+  //           },
+  //         ],
+  //       },
+  //     },
+  //   ],
+  // },
   related: [],
 };
 

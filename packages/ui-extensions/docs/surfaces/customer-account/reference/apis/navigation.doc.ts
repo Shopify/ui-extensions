@@ -34,65 +34,65 @@ const data: ReferenceEntityTemplateSchema = {
     //   type: 'UseNavigationCurrentEntryGeneratedType',
     // },
   ],
-  defaultExample: {
-    description: '',
-    codeblock: {
-      title: 'Navigation example',
-      tabs: [
-        {
-          code: '../examples/navigation/default-react.example.tsx',
-          language: 'React',
-          title: 'React',
-        },
-        {
-          code: '../examples/navigation/default-js.example.ts',
-          language: 'js',
-          title: 'js',
-        },
-      ],
-    },
-  },
-  examples: {
-    description: 'Navigation api examples',
-    examples: [
-      {
-        codeblock: {
-          title: 'Listening for navigation current entry events',
-          tabs: [
-            {
-              code: '../examples/navigation/event-listeners.example.tsx',
-              language: 'jsx',
-              title: 'React',
-            },
-          ],
-        },
-      },
-      {
-        codeblock: {
-          title: 'Using the live current entry value in a full-page extension',
-          tabs: [
-            {
-              code: '../examples/navigation/use-current-entry.example.tsx',
-              language: 'jsx',
-              title: 'React',
-            },
-          ],
-        },
-      },
-      {
-        codeblock: {
-          title: 'Navigating to customer account native order index page',
-          tabs: [
-            {
-              code: '../examples/navigation/navigating-to-customer-account-page.example.tsx',
-              language: 'jsx',
-              title: 'React',
-            },
-          ],
-        },
-      },
-    ],
-  },
+  // defaultExample: {
+  //   description: '',
+  //   codeblock: {
+  //     title: 'Navigation example',
+  //     tabs: [
+  //       {
+  //         code: '../examples/navigation/default-react.example.tsx',
+  //         language: 'React',
+  //         title: 'React',
+  //       },
+  //       {
+  //         code: '../examples/navigation/default-js.example.ts',
+  //         language: 'js',
+  //         title: 'js',
+  //       },
+  //     ],
+  //   },
+  // },
+  // examples: {
+  //   description: 'Navigation api examples',
+  //   examples: [
+  //     {
+  //       codeblock: {
+  //         title: 'Listening for navigation current entry events',
+  //         tabs: [
+  //           {
+  //             code: '../examples/navigation/event-listeners.example.tsx',
+  //             language: 'jsx',
+  //             title: 'React',
+  //           },
+  //         ],
+  //       },
+  //     },
+  //     {
+  //       codeblock: {
+  //         title: 'Using the live current entry value in a full-page extension',
+  //         tabs: [
+  //           {
+  //             code: '../examples/navigation/use-current-entry.example.tsx',
+  //             language: 'jsx',
+  //             title: 'React',
+  //           },
+  //         ],
+  //       },
+  //     },
+  //     {
+  //       codeblock: {
+  //         title: 'Navigating to customer account native order index page',
+  //         tabs: [
+  //           {
+  //             code: '../examples/navigation/navigating-to-customer-account-page.example.tsx',
+  //             language: 'jsx',
+  //             title: 'React',
+  //           },
+  //         ],
+  //       },
+  //     },
+  //   ],
+  // },
   related: [
     {
       name: 'StandardApi',

@@ -18,24 +18,24 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   isVisualComponent: false,
   subCategory: 'Order action menu',
-  defaultExample: {
-    description: '',
-    codeblock: {
-      title: 'Customer account order action extension example',
-      tabs: [
-        {
-          code: '../examples/targets/customer-account.order.action.render/default.example.tsx',
-          language: 'jsx',
-          title: 'React',
-        },
-        {
-          code: '../examples/targets/customer-account.order.action.render/default.example.ts',
-          language: 'js',
-          title: 'Javascript',
-        },
-      ],
-    },
-  },
+  // defaultExample: {
+  //   description: '',
+  //   codeblock: {
+  //     title: 'Customer account order action extension example',
+  //     tabs: [
+  //       {
+  //         code: '../examples/targets/customer-account.order.action.render/default.example.tsx',
+  //         language: 'jsx',
+  //         title: 'React',
+  //       },
+  //       {
+  //         code: '../examples/targets/customer-account.order.action.render/default.example.ts',
+  //         language: 'js',
+  //         title: 'Javascript',
+  //       },
+  //     ],
+  //   },
+  // },
   related: [],
   definitions: [
     ORDER_ACTION_API,
