@@ -1,16 +1,10 @@
-import {
-  extension,
-  Banner,
-} from '@shopify/ui-extensions/customer-account';
+export default function extension() {
+  const banner =
+    document.createElement('s-banner');
 
-extension(
-  'customer-account.order-status.block.render',
-  (root, api) => {
-    const banner = root.createComponent(
-      Banner,
-      {},
-      api.i18n.translate('welcomeMessage'),
-    );
-    root.appendChild(banner);
-  },
-);
+  banner.textContent = shopify.i18n.translate(
+    'welcomeMessage',
+  );
+
+  document.body.append(banner);
+}

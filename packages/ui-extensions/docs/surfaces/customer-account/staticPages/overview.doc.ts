@@ -75,8 +75,8 @@ const data: LandingTemplateSchema = {
         title: 'Extension targets',
         tabs: [
           {
-            title: 'React',
-            code: './examples/extension-targets-react.example.tsx',
+            title: 'Preact',
+            code: './examples/extension-targets-preact.example.tsx',
             language: 'tsx',
           },
           {
@@ -132,8 +132,8 @@ const data: LandingTemplateSchema = {
         title: 'Extension APIs',
         tabs: [
           {
-            title: 'React',
-            code: './examples/extension-apis-react.example.tsx',
+            title: 'Preact',
+            code: './examples/extension-apis-preact.example.tsx',
             language: 'tsx',
           },
           {
@@ -179,8 +179,8 @@ const data: LandingTemplateSchema = {
         title: 'UI components',
         tabs: [
           {
-            title: 'React',
-            code: './examples/ui-components-react.example.tsx',
+            title: 'Preact',
+            code: './examples/ui-components-preact.example.tsx',
             language: 'tsx',
           },
           {

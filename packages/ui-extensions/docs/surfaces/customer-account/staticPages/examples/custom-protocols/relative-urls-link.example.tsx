@@ -1,1 +1,3 @@
-<Link to={`/subscriptions/${subscription.id}`} />
+<s-link
+  href={`/subscriptions/${subscription.id}`}
+/>;
