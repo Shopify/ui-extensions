@@ -46,6 +46,18 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Removed in POS version: N/A
 - Release day: N/A
 
+## Important Fixes
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
+
 ### Features
 
 **Developer Preview**:
@@ -62,11 +74,21 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '202501',
       title: '2025.01',
       sectionContent: `
-- Added in POS version: 9.26
+- Added in POS version: 9.26.0
 - Removed in POS version: N/A
 - Release day: 1/6/2025
 
 ## Important Fixes
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
 
 - **POS 9.31.0**:
 
@@ -116,9 +138,21 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '2024101',
       title: '2024.10.1',
       sectionContent: `
-- Added in POS version: 9.22
+- Added in POS version: 9.22.0
 - Removed in POS version: N/A
 - Release day: 11/11/2024.
+
+## Important Fixes
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
 
 ### Features
 
@@ -130,9 +164,20 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '202410',
       title: '2024.10',
       sectionContent: `
-- Added in POS version: 9.19
+- Added in POS version: 9.19.0
 - Removed in POS version: N/A
 - Release day: 10/1/2024.
+
+## Important Fixes
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
 
 ### Features
 
@@ -152,9 +197,21 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '202407',
       title: '2024.07',
       sectionContent: `
-- Added in POS version: 9.15
+- Added in POS version: 9.15.0
 - Removed in POS version: N/A
 - Release day: 08/14/2024.
+
+## Important Fixes
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
 
 ### Features
 
@@ -180,7 +237,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
         },
       ],
       sectionContent: `
-- Added in POS version: 9.11
+- Added in POS version: 9.11.0
 - Removed in POS version: 9.31.0
 - Release day: 06/10/2024.
 

@@ -3,8 +3,9 @@ import {generateCodeBlock} from '../helpers/generateCodeBlock';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'List',
-  description:
-    'The list is a scrollable component in which the list rows are rendered.',
+  description: `The list is a scrollable component in which the list rows are rendered.
+  > Note:
+  > List items no longer have dividers as of POS 10.0.0.`,
   isVisualComponent: true,
   type: 'component',
   definitions: [
