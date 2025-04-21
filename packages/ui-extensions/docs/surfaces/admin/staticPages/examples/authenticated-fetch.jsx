@@ -1,5 +1,9 @@
-import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
-import {useEffect, useState} from 'react';
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
+
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 // Get product info from app backend
 async function getProductInfo(id) {
@@ -7,13 +11,9 @@ async function getProductInfo(id) {
   return res.json();
 }
 
-const TARGET = 'admin.product-details.block.render';
-
-export default reactExtension(TARGET, () => <App />);
-
-function App() {
+function Extension() {
   // Contextual "input" data passed to this extension:
-  const {data} = useApi(TARGET);
+  const {data} = shopify;
   const productId = data.selected?.[0]?.id;
 
   const [productInfo, setProductInfo] = useState();
@@ -21,5 +21,9 @@ function App() {
     getProductInfo(productId).then(setProductInfo);
   }, [productId]);
 
-  return <s-text>Info: {productInfo?.title}</s-text>;
+  return (
+    <s-admin-block title="Product Info">
+      <s-text>Info: {productInfo?.title}</s-text>
+    </s-admin-block>
+  );
 }
