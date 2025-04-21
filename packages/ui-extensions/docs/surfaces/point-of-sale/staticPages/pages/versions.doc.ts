@@ -18,9 +18,20 @@ const data: LandingTemplateSchema = {
       anchorLink: '202410',
       title: '2024.10',
       sectionContent: `
-- Added in POS version: 9.19
+- Added in POS version: 9.19.0
 - Removed in POS version: N/A
 - Release day: 10/1/2024.
+
+## Important Fixes
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
 
 ### Features
 
@@ -39,9 +50,21 @@ const data: LandingTemplateSchema = {
       anchorLink: '202407',
       title: '2024.07',
       sectionContent: `
-- Added in POS version: 9.15
+- Added in POS version: 9.15.0
 - Removed in POS version: N/A
 - Release day: 08/14/2024.
+
+## Important Fixes
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
 
 ### Features
 
@@ -67,8 +90,8 @@ const data: LandingTemplateSchema = {
         },
       ],
       sectionContent: `
-- Added in POS version: 9.11
-- Removed in POS version: N/A
+- Added in POS version: 9.11.0
+- Removed in POS version: 9.31.0
 - Release day: 06/10/2024.
 
 ### Features
