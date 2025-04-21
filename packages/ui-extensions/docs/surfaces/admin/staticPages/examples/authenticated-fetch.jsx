@@ -1,4 +1,4 @@
-import {reactExtension, useApi, Text} from '@shopify/ui-extensions-react/admin';
+import {reactExtension, useApi} from '@shopify/ui-extensions-react/admin';
 import {useEffect, useState} from 'react';
 
 // Get product info from app backend
@@ -21,5 +21,5 @@ function App() {
     getProductInfo(productId).then(setProductInfo);
   }, [productId]);
 
-  return <Text>Info: {productInfo?.title}</Text>;
+  return <s-text>Info: {productInfo?.title}</s-text>;
 }
