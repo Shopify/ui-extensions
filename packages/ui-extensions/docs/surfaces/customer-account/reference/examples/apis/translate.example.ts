@@ -1,13 +1,11 @@
 /* See the locales/en.default.json tab for the translation keys and values for this example */
-import {extension} from '@shopify/ui-extensions/customer-account';
+export default function extension() {
+  const welcomeMsg = shopify.i18n.translate(
+    'welcomeMessage',
+  );
 
-export default extension(
-  'customer-account.order-status.block.render',
-  (root, {i18n}) => {
-    const welcomeMsg = i18n.translate(
-      'welcomeMessage',
-    );
+  const text = document.createElement('s-text');
+  text.textContent = welcomeMsg;
 
-    root.appendChild(root.createText(welcomeMsg));
-  },
-);
+  document.body.append(text);
+}

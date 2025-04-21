@@ -1,18 +1,14 @@
 /* See the locales/en.default.json tab for the translation keys and values for this example */
-import {
-  reactExtension,
-  Text,
-  useTranslate,
-} from '@shopify/ui-extensions-react/customer-account';
+import {render} from 'preact';
 
-export default reactExtension(
-  'customer-account.order-status.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<App />, document.body);
+}
 
-function Extension() {
-  const translate = useTranslate();
+function App() {
   return (
-    <Text>{translate('welcomeMessage')}</Text>
+    <s-text>
+      {shopify.i18n.translate('welcomeMessage')}
+    </s-text>
   );
 }

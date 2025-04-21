@@ -45,57 +45,57 @@ const data: ReferenceEntityTemplateSchema = {
     //   type: 'UseTranslateGeneratedType',
     // },
   ],
-  // defaultExample: {
-  //   codeblock: {
-  //     title: 'Translating strings',
-  //     tabs: [
-  //       {
-  //         code: '../examples/apis/translate.example.tsx',
-  //         language: 'jsx',
-  //         title: 'React',
-  //       },
-  //       {
-  //         code: '../examples/apis/translate.example.ts',
-  //         language: 'js',
-  //         title: 'JavaScript',
-  //       },
-  //       {
-  //         code: '../examples/apis/translate.locale.example.json',
-  //         language: 'json',
-  //         title: 'locales/en.default.json',
-  //       },
-  //     ],
-  //   },
-  // },
-  // examples: {
-  //   description: '',
-  //   examples: [
-  //     {
-  //       description:
-  //         'You can use the count option to get a pluralized string based on the current locale.',
-  //       codeblock: {
-  //         title: 'Translating strings with pluralization',
-  //         tabs: [
-  //           {
-  //             code: '../examples/apis/translate-pluralization.example.tsx',
-  //             language: 'jsx',
-  //             title: 'React',
-  //           },
-  //           {
-  //             code: '../examples/apis/translate-pluralization.example.ts',
-  //             language: 'js',
-  //             title: 'JavaScript',
-  //           },
-  //           {
-  //             code: '../examples/apis/translate-pluralization.locale.example.json',
-  //             language: 'json',
-  //             title: 'locales/en.default.json',
-  //           },
-  //         ],
-  //       },
-  //     },
-  //   ],
-  // },
+  defaultExample: {
+    codeblock: {
+      title: 'Translating strings',
+      tabs: [
+        {
+          code: '../examples/apis/translate.example.tsx',
+          language: 'jsx',
+          title: 'Preact',
+        },
+        {
+          code: '../examples/apis/translate.example.ts',
+          language: 'js',
+          title: 'JavaScript',
+        },
+        {
+          code: '../examples/apis/translate.locale.example.json',
+          language: 'json',
+          title: 'locales/en.default.json',
+        },
+      ],
+    },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'You can use the count option to get a pluralized string based on the current locale.',
+        codeblock: {
+          title: 'Translating strings with pluralization',
+          tabs: [
+            {
+              code: '../examples/apis/translate-pluralization.example.tsx',
+              language: 'jsx',
+              title: 'Preact',
+            },
+            {
+              code: '../examples/apis/translate-pluralization.example.ts',
+              language: 'js',
+              title: 'JavaScript',
+            },
+            {
+              code: '../examples/apis/translate-pluralization.locale.example.json',
+              language: 'json',
+              title: 'locales/en.default.json',
+            },
+          ],
+        },
+      },
+    ],
+  },
   related: [],
 };
 

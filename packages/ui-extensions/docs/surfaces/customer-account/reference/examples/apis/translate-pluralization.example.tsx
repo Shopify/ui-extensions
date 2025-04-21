@@ -1,25 +1,17 @@
 /* See the locales/en.default.json tab for the translation keys and values for this example */
-import {
-  reactExtension,
-  Banner,
-  useApi,
-  useTranslate,
-} from '@shopify/ui-extensions-react/customer-account';
+import {render} from 'preact';
 
-export default reactExtension(
-  'customer-account.order-status.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<App />, document.body);
+}
 
-function Extension() {
-  const {i18n} = useApi();
-  const translate = useTranslate();
-
+function App() {
   const points = 10000;
   const formattedPoints =
-    i18n.formatNumber(points);
+    shopify.i18n.formatNumber(points);
+
   // Translate the loyalty points message, using pluralization to differentiate messages
-  const loyaltyPointsMsg = translate(
+  const loyaltyPointsMsg = shopify.i18n.translate(
     'loyaltyPoints',
     {
       count: points,
@@ -27,5 +19,5 @@ function Extension() {
     },
   );
 
-  return <Banner title={loyaltyPointsMsg} />;
+  return <s-banner>{loyaltyPointsMsg}</s-banner>;
 }
