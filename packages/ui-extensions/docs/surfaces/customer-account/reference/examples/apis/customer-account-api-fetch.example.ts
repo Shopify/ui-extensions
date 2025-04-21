@@ -1,31 +1,39 @@
-import React from "react";
-import {
-  Banner,
-  extension,
-} from "@shopify/ui-extensions-react/customer-account";
-
-export default extension(
-  "customer-account.order-status.block.render",
-  (root, api) => {
+export default function extension() {
   const getCustomerNameQuery = {
     query: `query {
       customer {
         firstName
       }
-    }`
+    }`,
   };
 
-  fetch("shopify://customer-account/api/unstable/graphql.json",
+  fetch(
+    'shopify://customer-account/api/unstable/graphql.json',
     {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(getCustomerNameQuery),
-    }).then((response) => response.json())
-    .then(({data: {customer: {firstName}}}) => {
-      if (firstName) {
-        root.appendChild(root.createComponent(Banner, {}, `${api.i18n.translate('welcomeMsg', {name: firstName})}` ));
-      }
-    }).catch(console.error);
-});
+    },
+  )
+    .then((response) => response.json())
+    .then(
+      ({
+        data: {
+          customer: {firstName},
+        },
+      }) => {
+        if (firstName) {
+          const banner =
+            document.createElement('s-banner');
+          banner.textContent =
+            shopify.i18n.translate('welcomeMsg', {
+              name: firstName,
+            });
+          document.body.append(banner);
+        }
+      },
+    )
+    .catch(console.error);
+}

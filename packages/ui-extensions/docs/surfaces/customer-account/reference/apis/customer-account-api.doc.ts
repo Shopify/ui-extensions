@@ -6,30 +6,30 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   category: 'APIs',
   type: 'API',
-  // examples: {
-  //   description: '',
-  //   examples: [
-  //     {
-  //       description: `
-  //       You can access the [Customer Account GraphQL API](/docs/api/customer) using the global \`fetch()\`.`,
-  //       codeblock: {
-  //         title: 'Accessing the Customer Account API with fetch()',
-  //         tabs: [
-  //           {
-  //             code: '../examples/apis/customer-account-api-fetch.example.tsx',
-  //             language: 'jsx',
-  //             title: 'React',
-  //           },
-  //           {
-  //             code: '../examples/apis/customer-account-api-fetch.example.ts',
-  //             language: 'js',
-  //             title: 'JavaScript',
-  //           },
-  //         ],
-  //       },
-  //     },
-  //   ],
-  // },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description: `
+        You can access the [Customer Account GraphQL API](/docs/api/customer) using the global \`fetch()\`.`,
+        codeblock: {
+          title: 'Accessing the Customer Account API with fetch()',
+          tabs: [
+            {
+              code: '../examples/apis/customer-account-api-fetch.example.tsx',
+              language: 'jsx',
+              title: 'Preact',
+            },
+            {
+              code: '../examples/apis/customer-account-api-fetch.example.ts',
+              language: 'js',
+              title: 'JavaScript',
+            },
+          ],
+        },
+      },
+    ],
+  },
   related: [
     {
       name: 'GraphQL Customer Account API',

@@ -1,41 +1,53 @@
-import React, { useEffect, useState } from "react";
-import {
-  Banner,
-  reactExtension,
-  useTranslate,
-} from "@shopify/ui-extensions-react/customer-account";
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
 
-export default reactExtension(
-  "customer-account.order-status.block.render",
-  () => <BlockExtension />
-);
+export default function extension() {
+  render(<App />, document.body);
+}
 
-function BlockExtension() {
-  const [customerName, setCustomerName] = useState("");
-  const translate = useTranslate();
+function App() {
+  const [customerName, setCustomerName] =
+    useState('');
+
   const getCustomerNameQuery = {
     query: `query {
       customer {
         firstName
       }
-    }`
+    }`,
   };
 
   useEffect(() => {
-    fetch("shopify://customer-account/api/unstable/graphql.json",
+    fetch(
+      'shopify://customer-account/api/unstable/graphql.json',
       {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(getCustomerNameQuery),
-      }).then((response) => response.json())
-      .then(({data: { customer: {firstName}}}) => {
-        setCustomerName(firstName)
-      }).catch(console.error);
+        body: JSON.stringify(
+          getCustomerNameQuery,
+        ),
+      },
+    )
+      .then((response) => response.json())
+      .then(
+        ({
+          data: {
+            customer: {firstName},
+          },
+        }) => {
+          setCustomerName(firstName);
+        },
+      )
+      .catch(console.error);
   });
 
   return customerName ? (
-    <Banner>{translate('welcomeMsg', {name: customerName})}</Banner>
-  ): null;
+    <s-banner>
+      {shopify.i18n.translate('welcomeMsg', {
+        name: customerName,
+      })}
+    </s-banner>
+  ) : null;
 }
