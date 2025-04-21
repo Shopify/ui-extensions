@@ -18,6 +18,10 @@ export default createPackage((pkg) => {
   pkg.entry({name: 'admin', root: './src/surfaces/admin.ts'});
   pkg.entry({name: 'checkout', root: './src/surfaces/checkout.ts'});
   pkg.entry({
+    name: 'checkout/preact',
+    root: './src/surfaces/checkout/preact/index.ts',
+  });
+  pkg.entry({
     name: 'customer-account',
     root: './src/surfaces/customer-account.ts',
   });
