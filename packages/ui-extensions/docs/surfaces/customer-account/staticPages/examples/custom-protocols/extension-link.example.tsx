@@ -1,11 +1,11 @@
-<Link
-  to={`extension:${extension.handle}/${path}`}
+<s-link
+  href={`extension:${extension.handle}/${path}`}
 >
   To full-page extension
-</Link>;
+</s-link>;
 
-<Link
-  to={`extension:${extension.handle}/customer-account.order.page.render/${orderId}/${path}`}
+<s-link
+  href={`extension:${extension.handle}/customer-account.order.page.render/${orderId}/${path}`}
 >
   To full-page extension (order-specific)
-</Link>;
+</s-link>;

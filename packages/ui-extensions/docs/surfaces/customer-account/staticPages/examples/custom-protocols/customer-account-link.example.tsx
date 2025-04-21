@@ -1,1 +1,1 @@
-<Link to="shopify:customer-account/orders" />
+<s-link href="shopify:customer-account/orders" />;

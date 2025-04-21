@@ -1,46 +1,36 @@
-import {
-  extension,
-  BlockStack,
-  Button,
-  Image,
-  InlineStack,
-  Text,
-} from '@shopify/ui-extensions/customer-account';
+export default function extension() {
+  const stack = document.createElement('s-stack');
 
-extension(
-  'customer-account.order-status.block.render',
-  (root) => {
-    const inlineStack = root.createComponent(
-      InlineStack,
-      {},
-      [
-        root.createComponent(Image, {
-          source: '/url/for/image',
-        }),
-        root.createComponent(BlockStack, {}, [
-          root.createComponent(
-            Text,
-            {size: 'large'},
-            'Heading',
-          ),
-          root.createComponent(
-            Text,
-            {size: 'small'},
-            'Description',
-          ),
-        ]),
-        root.createComponent(
-          Button,
-          {
-            onPress: () => {
-              console.log('button was pressed');
-            },
-          },
-          'Button',
-        ),
-      ],
-    );
+  const image = document.createElement('s-image');
+  image.src = '/url/for/image';
 
-    void root.appendChild(inlineStack);
-  },
-);
+  const blockStack =
+    document.createElement('s-stack');
+  blockStack.direction = 'block';
+
+  const textHeading =
+    document.createElement('s-text');
+  textHeading.type = 'strong';
+  textHeading.textContent = 'Heading';
+
+  const textDescription =
+    document.createElement('s-text');
+  textDescription.type = 'small';
+  textDescription.textContent = 'Description';
+
+  blockStack.append(textHeading);
+  blockStack.append(textDescription);
+
+  const button =
+    document.createElement('s-button');
+  button.textContent = 'Button';
+  button.onclick = () => {
+    console.log('button was pressed');
+  };
+
+  stack.append(image);
+  stack.append(blockStack);
+  stack.append(button);
+
+  document.body.append(stack);
+}
