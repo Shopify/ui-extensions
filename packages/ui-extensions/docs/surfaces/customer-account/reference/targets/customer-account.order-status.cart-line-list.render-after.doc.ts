@@ -10,24 +10,24 @@ const data: ReferenceEntityTemplateSchema = {
   ${ORDER_STATUS_SURFACE_NOTE}
   `,
   subCategory: 'Order status',
-  defaultExample: {
-    description: '',
-    codeblock: {
-      title: 'Customer account order status cart line list extension example',
-      tabs: [
-        {
-          code: '../examples/targets/customer-account.order-status.cart-line-list.render-after/default.example.tsx',
-          language: 'jsx',
-          title: 'React',
-        },
-        {
-          code: '../examples/targets/customer-account.order-status.cart-line-list.render-after/default.example.ts',
-          language: 'js',
-          title: 'Javascript',
-        },
-      ],
-    },
-  },
+  // defaultExample: {
+  //   description: '',
+  //   codeblock: {
+  //     title: 'Customer account order status cart line list extension example',
+  //     tabs: [
+  //       {
+  //         code: '../examples/targets/customer-account.order-status.cart-line-list.render-after/default.example.tsx',
+  //         language: 'jsx',
+  //         title: 'React',
+  //       },
+  //       {
+  //         code: '../examples/targets/customer-account.order-status.cart-line-list.render-after/default.example.ts',
+  //         language: 'js',
+  //         title: 'Javascript',
+  //       },
+  //     ],
+  //   },
+  // },
   related: [],
   ...ORDER_STATUS_API,
 };

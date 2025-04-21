@@ -20,42 +20,42 @@ const data: ReferenceEntityTemplateSchema = {
     //   type: 'UseSessionTokenGeneratedType',
     // },
   ],
-  defaultExample: {
-    codeblock: {
-      title: 'Using a session token with fetch()',
-      tabs: [
-        {
-          code: '../examples/apis/session-token.example.tsx',
-          language: 'jsx',
-          title: 'React',
-        },
-        {
-          code: '../examples/apis/session-token.example.ts',
-          language: 'js',
-          title: 'JavaScript',
-        },
-      ],
-    },
-  },
-  examples: {
-    description: '',
-    examples: [
-      {
-        description:
-          "The contents of the token are signed using your shared app secret. The optional `sub` claim contains the customer's `gid` if they are logged in and your app has permission to read customer accounts. For example, a loyalty app that needs to check a customer's point balance can use the `sub` claim to verify the customer's account.",
-        codeblock: {
-          title: 'Session token claims',
-          tabs: [
-            {
-              code: '../examples/apis/session-token-jwt.example.json',
-              language: 'json',
-              title: 'Session token claims',
-            },
-          ],
-        },
-      },
-    ],
-  },
+  // defaultExample: {
+  //   codeblock: {
+  //     title: 'Using a session token with fetch()',
+  //     tabs: [
+  //       {
+  //         code: '../examples/apis/session-token.example.tsx',
+  //         language: 'jsx',
+  //         title: 'React',
+  //       },
+  //       {
+  //         code: '../examples/apis/session-token.example.ts',
+  //         language: 'js',
+  //         title: 'JavaScript',
+  //       },
+  //     ],
+  //   },
+  // },
+  // examples: {
+  //   description: '',
+  //   examples: [
+  //     {
+  //       description:
+  //         "The contents of the token are signed using your shared app secret. The optional `sub` claim contains the customer's `gid` if they are logged in and your app has permission to read customer accounts. For example, a loyalty app that needs to check a customer's point balance can use the `sub` claim to verify the customer's account.",
+  //       codeblock: {
+  //         title: 'Session token claims',
+  //         tabs: [
+  //           {
+  //             code: '../examples/apis/session-token-jwt.example.json',
+  //             language: 'json',
+  //             title: 'Session token claims',
+  //           },
+  //         ],
+  //       },
+  //     },
+  //   ],
+  // },
   related: [],
 };
 

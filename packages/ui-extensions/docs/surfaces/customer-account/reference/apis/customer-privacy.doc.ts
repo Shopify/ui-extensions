@@ -25,49 +25,49 @@ const data: ReferenceEntityTemplateSchema = {
     //   type: 'UseCustomerPrivacyGeneratedType',
     // },
   ],
-  defaultExample: {
-    codeblock: {
-      title: 'Read Customer Privacy',
-      tabs: [
-        {
-          code: '../examples/apis/customer-privacy.example.tsx',
-          language: 'jsx',
-          title: 'React',
-        },
-        {
-          code: '../examples/apis/customer-privacy.example.ts',
-          language: 'js',
-          title: 'JavaScript',
-        },
-      ],
-    },
-  },
-  examples: {
-    description: '',
-    examples: [
-      {
-        description: `
-        You can apply changes to customer consent by using the \`applyTrackingConsentChanges\` API.
-        
-> Note: Requires the [\`customer_privacy\` capability](/docs/api/customer-account-ui-extensions/configuration#collect-buyer-consent) to be set to \`true\`.`,
-        codeblock: {
-          title: 'Use a Sheet to manage customer privacy consent',
-          tabs: [
-            {
-              code: '../examples/apis/sheet-consent-banner-with-form.example.tsx',
-              language: 'jsx',
-              title: 'React',
-            },
-            {
-              code: '../examples/apis/sheet-consent-banner-with-form.example.ts',
-              language: 'js',
-              title: 'JavaScript',
-            },
-          ],
-        },
-      },
-    ],
-  },
+  //   defaultExample: {
+  //     codeblock: {
+  //       title: 'Read Customer Privacy',
+  //       tabs: [
+  //         {
+  //           code: '../examples/apis/customer-privacy.example.tsx',
+  //           language: 'jsx',
+  //           title: 'React',
+  //         },
+  //         {
+  //           code: '../examples/apis/customer-privacy.example.ts',
+  //           language: 'js',
+  //           title: 'JavaScript',
+  //         },
+  //       ],
+  //     },
+  //   },
+  //   examples: {
+  //     description: '',
+  //     examples: [
+  //       {
+  //         description: `
+  //         You can apply changes to customer consent by using the \`applyTrackingConsentChanges\` API.
+
+  // > Note: Requires the [\`customer_privacy\` capability](/docs/api/customer-account-ui-extensions/configuration#collect-buyer-consent) to be set to \`true\`.`,
+  //         codeblock: {
+  //           title: 'Use a Sheet to manage customer privacy consent',
+  //           tabs: [
+  //             {
+  //               code: '../examples/apis/sheet-consent-banner-with-form.example.tsx',
+  //               language: 'jsx',
+  //               title: 'React',
+  //             },
+  //             {
+  //               code: '../examples/apis/sheet-consent-banner-with-form.example.ts',
+  //               language: 'js',
+  //               title: 'JavaScript',
+  //             },
+  //           ],
+  //         },
+  //       },
+  //     ],
+  //   },
   related: [],
 };
 

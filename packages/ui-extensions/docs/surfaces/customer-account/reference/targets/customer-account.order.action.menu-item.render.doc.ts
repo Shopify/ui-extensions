@@ -12,24 +12,24 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   isVisualComponent: false,
   subCategory: 'Order action menu',
-  defaultExample: {
-    description: '',
-    codeblock: {
-      title: 'Customer account order menu item extension example',
-      tabs: [
-        {
-          code: '../examples/targets/customer-account.order.action.menu-item.render/default.example.tsx',
-          language: 'jsx',
-          title: 'React',
-        },
-        {
-          code: '../examples/targets/customer-account.order.action.menu-item.render/default.example.ts',
-          language: 'js',
-          title: 'Javascript',
-        },
-      ],
-    },
-  },
+  // defaultExample: {
+  //   description: '',
+  //   codeblock: {
+  //     title: 'Customer account order menu item extension example',
+  //     tabs: [
+  //       {
+  //         code: '../examples/targets/customer-account.order.action.menu-item.render/default.example.tsx',
+  //         language: 'jsx',
+  //         title: 'React',
+  //       },
+  //       {
+  //         code: '../examples/targets/customer-account.order.action.menu-item.render/default.example.ts',
+  //         language: 'js',
+  //         title: 'Javascript',
+  //       },
+  //     ],
+  //   },
+  // },
   examples: {
     description: 'Additional examples for menu item extensions.',
     examples: [

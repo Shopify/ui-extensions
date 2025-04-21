@@ -11,24 +11,24 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Targets',
   isVisualComponent: false,
   subCategory: 'Profile (B2B)',
-  defaultExample: {
-    description: '',
-    codeblock: {
-      title: 'Customer account company location addresses extension example',
-      tabs: [
-        {
-          code: '../examples/targets/customer-account.profile.company-location-addresses.render-after/default.example.tsx',
-          language: 'jsx',
-          title: 'React',
-        },
-        {
-          code: '../examples/targets/customer-account.profile.company-location-addresses.render-after/default.example.ts',
-          language: 'js',
-          title: 'Javascript',
-        },
-      ],
-    },
-  },
+  // defaultExample: {
+  //   description: '',
+  //   codeblock: {
+  //     title: 'Customer account company location addresses extension example',
+  //     tabs: [
+  //       {
+  //         code: '../examples/targets/customer-account.profile.company-location-addresses.render-after/default.example.tsx',
+  //         language: 'jsx',
+  //         title: 'React',
+  //       },
+  //       {
+  //         code: '../examples/targets/customer-account.profile.company-location-addresses.render-after/default.example.ts',
+  //         language: 'js',
+  //         title: 'Javascript',
+  //       },
+  //     ],
+  //   },
+  // },
   related: [],
   definitions: [COMPANY_LOCATION_API, CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION],
   type: 'Target',

@@ -27,18 +27,18 @@ const data: ReferenceEntityTemplateSchema = {
     //   type: 'UseAttributeValuesGeneratedType',
     // },
   ],
-  defaultExample: {
-    codeblock: {
-      title: 'Attribute values',
-      tabs: [
-        {
-          code: '../../examples/apis/attribute-values.example.tsx',
-          language: 'jsx',
-          title: 'React',
-        },
-      ],
-    },
-  },
+  // defaultExample: {
+  //   codeblock: {
+  //     title: 'Attribute values',
+  //     tabs: [
+  //       {
+  //         code: '../../examples/apis/attribute-values.example.tsx',
+  //         language: 'jsx',
+  //         title: 'React',
+  //       },
+  //     ],
+  //   },
+  // },
   related: [],
 };
 
