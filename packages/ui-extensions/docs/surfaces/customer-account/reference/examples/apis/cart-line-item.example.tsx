@@ -1,17 +1,20 @@
-import {
-  reactExtension,
-  Text,
-  useTarget,
-} from '@shopify/ui-extensions-react/customer-account';
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
+export default function extension() {
+  render(<App />, document.body);
+}
 
-export default reactExtension(
-  'customer-account.order-status.cart-line-item.render-after',
-  () => <Extension />,
-);
+function App() {
+  const [title, setTitle] = useState(
+    shopify.target.current.merchandise?.title,
+  );
+  useEffect(() => {
+    shopify.target.subscribe((updatedTarget) => {
+      setTitle(updatedTarget.merchandise?.title);
+    });
+  }, []);
 
-function Extension() {
-  const {
-    merchandise: {title},
-  } = useTarget();
-  return <Text>Line item title: {title}</Text>;
+  return (
+    <s-text>Line item title: {title}</s-text>
+  );
 }

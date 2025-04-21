@@ -1,21 +1,12 @@
-import React from "react";
-import {
-  extension,
-  Button
-} from "@shopify/ui-extensions-react/customer-account";
+export default function extension() {
+  const button =
+    document.createElement('s-button');
+  button.textContent = 'Report an issue';
 
-export default extension(
-  "customer-account.order-status.block.render",
-  (root, api) => {
+  button.addEventListener('click', async () => {
+    await shopify.requireLogin();
+    // send a request to backend
+  });
 
-    async function reportAnIssue() {
-      await api.requireLogin();
-
-      // send a request to backend
-    }
-    root.appendChild(
-      root.createComponent(Button, {
-        onPress: reportAnIssue
-      }, "Report an issue"),
-    );
-});
+  document.body.append(button);
+}
