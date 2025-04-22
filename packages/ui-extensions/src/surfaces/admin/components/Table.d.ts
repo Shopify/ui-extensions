@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,9 +6,11 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
-import type {ComponentChild, TableHeaderProps$1} from './shared.d.ts';
+import type {
+  ComponentChild,
+  TableProps$1,
+  TableHeaderProps$1,
+} from './shared.d.ts';
 
 export interface TableProps
   extends Required<
@@ -103,7 +105,7 @@ declare const tableHeadersSharedDataSymbol: unique symbol;
 export type ActualTableVariant = 'table' | 'list';
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  target: HTMLElementTagNameMap[T];
+  currentTarget: HTMLElementTagNameMap[T];
 };
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -120,9 +122,11 @@ declare class Table extends PreactCustomElement implements TableProps {
   accessor onpreviouspage: CallbackEventListener<typeof tagName> | null;
   accessor onnextpage: CallbackEventListener<typeof tagName> | null;
   /**
+   * @private
    * The actual table variant, which is either 'table' or 'list'.
    */
   [actualTableVariantSymbol]: AddedContext<ActualTableVariant>;
+  /** @private */
   [tableHeadersSharedDataSymbol]: AddedContext<
     {
       listSlot: TableHeaderProps['listSlot'];
@@ -140,7 +144,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & Omit<ReactProps, 'filters'>;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }

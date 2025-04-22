@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,15 +6,12 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
 import type {TextProps$1, ComponentChild} from './shared.d.ts';
 
 export interface TextProps
   extends Required<
     Pick<
       TextProps$1,
-      | 'display'
       | 'accessibilityVisibility'
       | 'dir'
       | 'color'
@@ -102,7 +99,6 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 declare class Text extends PreactCustomElement implements TextProps {
-  accessor display: TextProps['display'];
   accessor fontVariantNumeric: TextProps['fontVariantNumeric'];
   accessor color: TextProps['color'];
   accessor tone: TextProps['tone'];
@@ -119,7 +115,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }

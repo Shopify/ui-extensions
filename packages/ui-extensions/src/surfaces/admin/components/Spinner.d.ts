@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,17 +6,10 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
 import type {SpinnerProps$1, ComponentChild} from './shared.d.ts';
 
 export interface SpinnerProps
   extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
-  /**
-   * The size of the component.
-   *
-   * @default 'base'
-   */
   size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
 }
 
@@ -96,7 +89,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<HTMLAttributes<HTMLElement>, 'size'> & ReactProps;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }

@@ -1,14 +1,25 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
 import type {ComponentChild} from './shared.d.ts';
 
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+  currentTarget: HTMLElementTagNameMap[T];
+};
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+  | (EventListener & {
+      (event: CallbackEvent<T>): void;
+    })
+  | null;
+
+declare const tagName = 's-form';
+export interface ExtendableEvent extends CallbackEvent<typeof tagName> {
+  waitUntil(f: Promise<unknown>): void;
+}
 export interface ReactProps extends Partial<FormProps> {
   id?: string;
   /**
@@ -18,7 +29,7 @@ export interface ReactProps extends Partial<FormProps> {
   /**
    * A callback that is run when the form is reset.
    */
-  onReset?: ((event: ExtendableEvent) => void) | null;
+  onReset?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 
 export type Styles = string;
@@ -79,12 +90,11 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare const tagName = 's-form';
 export interface FormProps {}
 declare class Form extends PreactCustomElement implements FormProps {
   constructor();
   accessor onsubmit: ((event: ExtendableEvent) => void) | null;
-  accessor onreset: ((event: ExtendableEvent) => void) | null;
+  accessor onreset: CallbackEventListener<typeof tagName> | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -94,7 +104,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }

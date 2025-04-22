@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,9 +6,8 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
 import type {
+  BoxProps$1,
   ImageProps$1,
   MaybeAllValuesShorthandProperty,
   ComponentChild,
@@ -16,79 +15,70 @@ import type {
 
 export type MakeResponsive<T> = T | `@container${string}`;
 
-export type AlignedBox = Required<BoxProps$1>;
+export type RequiredBoxProps = Required<BoxProps$1>;
+export type BoxBorderRadii = Extract<
+  RequiredBoxProps['borderRadius'],
+  | 'none'
+  | 'small-200'
+  | 'small-100'
+  | 'small'
+  | 'base'
+  | 'large'
+  | 'large-100'
+  | 'large-200'
+>;
+export type BoxBorderStyles = Extract<
+  RequiredBoxProps['borderStyle'],
+  'none' | 'solid' | 'dashed' | 'auto'
+>;
 export interface BoxProps
   extends Pick<
-    AlignedBox,
+    RequiredBoxProps,
+    | 'accessibilityLabel'
     | 'accessibilityRole'
+    | 'accessibilityVisibility'
     | 'background'
     | 'blockSize'
-    | 'minBlockSize'
-    | 'maxBlockSize'
-    | 'inlineSize'
-    | 'minInlineSize'
-    | 'maxInlineSize'
     | 'border'
-    | 'borderWidth'
-    | 'borderRadius'
     | 'borderColor'
+    | 'borderRadius'
     | 'borderStyle'
+    | 'borderWidth'
     | 'display'
+    | 'inlineSize'
+    | 'maxBlockSize'
+    | 'maxInlineSize'
+    | 'minBlockSize'
+    | 'minInlineSize'
     | 'overflow'
   > {
-  accessibilityRole: AlignedBox['accessibilityRole'];
   background: Extract<
-    AlignedBox['background'],
+    RequiredBoxProps['background'],
     'transparent' | 'base' | 'subdued' | 'strong'
   >;
-  blockSize: AlignedBox['blockSize'];
-  minBlockSize: AlignedBox['minBlockSize'];
-  maxBlockSize: AlignedBox['maxBlockSize'];
-  inlineSize: AlignedBox['inlineSize'];
-  minInlineSize: AlignedBox['minInlineSize'];
-  maxInlineSize: AlignedBox['maxInlineSize'];
-  padding: MakeResponsive<AlignedBox['padding']>;
-  paddingBlock: MakeResponsive<AlignedBox['paddingBlock']>;
-  paddingBlockStart: MakeResponsive<AlignedBox['paddingBlockStart']>;
-  paddingBlockEnd: MakeResponsive<AlignedBox['paddingBlockEnd']>;
-  paddingInline: MakeResponsive<AlignedBox['paddingInline']>;
-  paddingInlineStart: MakeResponsive<AlignedBox['paddingInlineStart']>;
-  paddingInlineEnd: MakeResponsive<AlignedBox['paddingInlineEnd']>;
-  border: AlignedBox['border'] | 'none';
+  padding: MakeResponsive<RequiredBoxProps['padding']>;
+  paddingBlock: MakeResponsive<RequiredBoxProps['paddingBlock']>;
+  paddingBlockStart: MakeResponsive<RequiredBoxProps['paddingBlockStart']>;
+  paddingBlockEnd: MakeResponsive<RequiredBoxProps['paddingBlockEnd']>;
+  paddingInline: MakeResponsive<RequiredBoxProps['paddingInline']>;
+  paddingInlineStart: MakeResponsive<RequiredBoxProps['paddingInlineStart']>;
+  paddingInlineEnd: MakeResponsive<RequiredBoxProps['paddingInlineEnd']>;
   borderWidth:
     | MaybeAllValuesShorthandProperty<
         Extract<
-          AlignedBox['borderWidth'],
+          RequiredBoxProps['borderWidth'],
           'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'none'
         >
       >
-    | Extract<AlignedBox['borderWidth'], ''>;
+    | Extract<RequiredBoxProps['borderWidth'], ''>;
   borderStyle:
-    | MaybeAllValuesShorthandProperty<
-        Extract<AlignedBox['borderStyle'], 'none' | 'solid' | 'dashed'>
-      >
-    | Extract<AlignedBox['borderStyle'], ''>;
+    | MaybeAllValuesShorthandProperty<BoxBorderStyles>
+    | Extract<RequiredBoxProps['borderStyle'], ''>;
   borderColor: Extract<
-    AlignedBox['borderColor'],
+    RequiredBoxProps['borderColor'],
     'subdued' | 'base' | 'strong' | ''
   >;
-  borderRadius: MaybeAllValuesShorthandProperty<
-    Extract<
-      AlignedBox['borderRadius'],
-      | 'none'
-      | 'small-200'
-      | 'small-100'
-      | 'small'
-      | 'base'
-      | 'large'
-      | 'large-100'
-      | 'large-200'
-    >
-  >;
-  accessibilityLabel: AlignedBox['accessibilityLabel'];
-  accessibilityVisibility: AlignedBox['accessibilityVisibility'];
-  display: AlignedBox['display'];
-  overflow: AlignedBox['overflow'];
+  borderRadius: MaybeAllValuesShorthandProperty<BoxBorderRadii>;
 }
 
 export interface ImageProps
@@ -124,7 +114,7 @@ export interface ImageProps
 }
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  target: HTMLElementTagNameMap[T];
+  currentTarget: HTMLElementTagNameMap[T];
 };
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -225,7 +215,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }

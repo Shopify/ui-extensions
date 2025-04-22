@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,13 +6,14 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
 import type {ComponentChild, BannerProps$1} from './shared.d.ts';
 
 export type RequiredBannerProps = Required<BannerProps$1>;
 export interface BannerProps
-  extends Pick<RequiredBannerProps, 'heading' | 'dismissible' | 'hidden'> {
+  extends Pick<
+    RequiredBannerProps,
+    'heading' | 'dismissible' | 'hidden' | 'tone'
+  > {
   tone: Extract<
     RequiredBannerProps['tone'],
     'auto' | 'critical' | 'warning' | 'success' | 'info'
@@ -20,7 +21,7 @@ export interface BannerProps
 }
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  target: HTMLElementTagNameMap[T];
+  currentTarget: HTMLElementTagNameMap[T];
 };
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -112,8 +113,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> &
-        Omit<ReactProps, 'secondaryActions'>;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }

@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,9 +6,12 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
-import type {SwitchProps$1, ComponentChild} from './shared.d.ts';
+import type {
+  TextFieldProps,
+  CheckboxProps,
+  SwitchProps$1,
+  ComponentChild,
+} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -69,7 +72,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  target: HTMLElementTagNameMap[T];
+  currentTarget: HTMLElementTagNameMap[T];
 };
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -98,43 +101,32 @@ declare class PreactInputElement
   constructor(renderImpl: RenderImpl);
 }
 
-export type CheckboxProps = PreactInputProps &
-  Required<
+export interface PreactCheckboxProps
+  extends Required<
     Pick<
-      CheckboxProps$1,
+      CheckboxProps,
       | 'accessibilityLabel'
       | 'checked'
+      | 'defaultChecked'
       | 'details'
       | 'error'
-      | 'indeterminate'
       | 'label'
       | 'required'
-      | 'defaultChecked'
-      | 'defaultIndeterminate'
+      | 'name'
+      | 'disabled'
     >
-  >;
-
-export type PreactCheckboxProps = Required<
-  Pick<
-    CheckboxProps,
-    | 'accessibilityLabel'
-    | 'checked'
-    | 'defaultChecked'
-    | 'details'
-    | 'error'
-    | 'label'
-    | 'required'
-    | 'name'
-    | 'disabled'
-    | 'value'
-  >
->;
+  > {
+  value: Required<CheckboxProps>['value'];
+}
 declare class PreactCheckboxElement
   extends PreactInputElement
   implements PreactCheckboxProps
 {
   get checked(): boolean;
   set checked(checked: PreactCheckboxProps['checked']);
+  /**
+   * The value used in form data when the checkbox is checked.
+   */
   get value(): string;
   set value(value: string);
   accessor defaultChecked: PreactCheckboxProps['defaultChecked'];
@@ -143,6 +135,7 @@ declare class PreactCheckboxElement
   accessor error: PreactCheckboxProps['error'];
   accessor label: PreactCheckboxProps['label'];
   accessor required: PreactCheckboxProps['required'];
+  /** @private */
   formResetCallback(): void;
   constructor(renderImpl: RenderImpl);
 }
@@ -171,7 +164,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }
