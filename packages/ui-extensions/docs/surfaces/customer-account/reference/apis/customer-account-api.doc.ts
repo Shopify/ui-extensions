@@ -20,11 +20,6 @@ const data: ReferenceEntityTemplateSchema = {
               language: 'jsx',
               title: 'Preact',
             },
-            {
-              code: '../examples/apis/customer-account-api-fetch.example.ts',
-              language: 'js',
-              title: 'JavaScript',
-            },
           ],
         },
       },

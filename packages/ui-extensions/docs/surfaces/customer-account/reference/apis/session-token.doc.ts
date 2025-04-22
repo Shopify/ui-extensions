@@ -29,11 +29,6 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'jsx',
           title: 'Preact',
         },
-        {
-          code: '../examples/apis/session-token.example.ts',
-          language: 'js',
-          title: 'JavaScript',
-        },
       ],
     },
   },

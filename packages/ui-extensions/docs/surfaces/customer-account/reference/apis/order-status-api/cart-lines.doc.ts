@@ -45,11 +45,6 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'jsx',
           title: 'Preact',
         },
-        {
-          code: '../../examples/apis/cart-line-item.example.ts',
-          language: 'js',
-          title: 'JavaScript',
-        },
       ],
     },
   },

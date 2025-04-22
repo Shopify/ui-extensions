@@ -27,11 +27,6 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'jsx',
           title: 'Preact',
         },
-        {
-          code: '../examples/apis/query.example.ts',
-          language: 'js',
-          title: 'JavaScript',
-        },
       ],
     },
   },
@@ -49,11 +44,6 @@ const data: ReferenceEntityTemplateSchema = {
               code: '../examples/apis/query-fetch.example.tsx',
               language: 'jsx',
               title: 'Preact',
-            },
-            {
-              code: '../examples/apis/query-fetch.example.ts',
-              language: 'js',
-              title: 'JavaScript',
             },
           ],
         },

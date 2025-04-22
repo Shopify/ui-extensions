@@ -55,11 +55,6 @@ const data: ReferenceEntityTemplateSchema = {
           title: 'Preact',
         },
         {
-          code: '../examples/apis/translate.example.ts',
-          language: 'js',
-          title: 'JavaScript',
-        },
-        {
           code: '../examples/apis/translate.locale.example.json',
           language: 'json',
           title: 'locales/en.default.json',
@@ -80,11 +75,6 @@ const data: ReferenceEntityTemplateSchema = {
               code: '../examples/apis/translate-pluralization.example.tsx',
               language: 'jsx',
               title: 'Preact',
-            },
-            {
-              code: '../examples/apis/translate-pluralization.example.ts',
-              language: 'js',
-              title: 'JavaScript',
             },
             {
               code: '../examples/apis/translate-pluralization.locale.example.json',

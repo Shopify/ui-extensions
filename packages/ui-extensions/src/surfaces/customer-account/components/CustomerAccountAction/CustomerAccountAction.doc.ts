@@ -40,11 +40,6 @@ const data: ReferenceEntityTemplateSchema = {
           code: './examples/basic-CustomerAccountAction-preact.example.tsx',
           language: 'tsx',
         },
-        {
-          title: 'JS',
-          code: './examples/basic-CustomerAccountAction-js.example.ts',
-          language: 'js',
-        },
       ],
     },
   },

@@ -34,11 +34,6 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'jsx',
           title: 'Preact',
         },
-        {
-          code: '../examples/apis/customer-privacy.example.ts',
-          language: 'js',
-          title: 'JavaScript',
-        },
       ],
     },
   },
