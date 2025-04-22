@@ -1,26 +1,21 @@
-import {useEffect} from 'react';
-import {
-  reactExtension,
-  Banner,
-  useApi,
-} from '@shopify/ui-extensions-react/customer-account';
+import {render} from 'preact';
+import {useEffect} from 'preact/hooks';
 
-export default reactExtension(
-  'customer-account.order-status.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<App />, document.body);
+}
 
-function Extension() {
-  const {sessionToken} = useApi();
-
+function App() {
   useEffect(() => {
     async function queryApi() {
       // Request a new (or cached) session token from Shopify
-      const token = await sessionToken.get();
+      const token =
+        await shopify.sessionToken.get();
       console.log('sessionToken.get()', token);
 
-      const apiResponse =
-        await fetchWithToken(token);
+      const apiResponse = await fetchWithToken(
+        token,
+      );
       // Use your response
       console.log('API response', apiResponse);
     }
@@ -38,9 +33,11 @@ function Extension() {
     }
 
     queryApi();
-  }, [sessionToken]);
+  }, []);
 
   return (
-    <Banner>See console for API response</Banner>
+    <s-banner>
+      See console for API response
+    </s-banner>
   );
 }
