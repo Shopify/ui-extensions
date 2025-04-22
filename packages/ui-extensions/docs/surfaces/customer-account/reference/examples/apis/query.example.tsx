@@ -1,23 +1,17 @@
-import {useEffect, useState} from 'react';
-import {
-  useApi,
-  reactExtension,
-  List,
-  ListItem,
-} from '@shopify/ui-extensions-react/customer-account';
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
 
-export default reactExtension(
-  'customer-account.order-status.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<App />, document.body);
+}
 
-function Extension() {
-  const [data, setData] = useState();
-  const {query} = useApi();
+function App() {
+  const [data, setData] = useState({});
 
   useEffect(() => {
-    query(
-      `query ($first: Int!) {
+    shopify
+      .query(
+        `query ($first: Int!) {
         products(first: $first) {
           nodes {
             id
@@ -25,21 +19,25 @@ function Extension() {
           }
         }
       }`,
-      {
-        variables: {first: 5},
-      },
-    )
-      .then(({data, errors}) => setData(data))
+        {
+          variables: {first: 5},
+        },
+      )
+      .then(({data, errors}) => {
+        setData(data);
+      })
       .catch(console.error);
-  }, [query]);
+  }, [setData]);
 
   return (
-    <List>
-      {data?.products?.nodes.map((node) => (
-        <ListItem key={node.id}>
-          {node.title}
-        </ListItem>
-      ))}
-    </List>
+    <s-unordered-list>
+      {data?.products?.nodes.map((node) => {
+        return (
+          <s-list-item id={node.id} key={node.id}>
+            {node.title}
+          </s-list-item>
+        );
+      })}
+    </s-unordered-list>
   );
 }

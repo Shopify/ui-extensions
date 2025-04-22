@@ -1,22 +1,13 @@
-import {
-  extension,
-  Banner,
-} from '@shopify/ui-extensions/customer-account';
+export default function extension() {
+  const banner =
+    document.createElement('s-banner');
+  banner.textContent =
+    shopify.settings.current.banner_title;
 
-export default extension(
-  'customer-account.order-status.block.render',
-  (root, {settings}) => {
-    const banner = root.createComponent(Banner, {
-      title: settings.current.banner_title,
-    });
+  // When the merchant updates the banner title in the checkout editor, re-render the banner
+  shopify.settings.subscribe((newSettings) => {
+    banner.textContent = newSettings.banner_title;
+  });
 
-    // When the merchant updates the banner title in the checkout editor, re-render the banner
-    settings.subscribe((newSettings) => {
-      banner.updateProps({
-        title: newSettings.banner_title,
-      });
-    });
-
-    root.appendChild(banner);
-  },
-);
+  document.body.append(banner);
+}

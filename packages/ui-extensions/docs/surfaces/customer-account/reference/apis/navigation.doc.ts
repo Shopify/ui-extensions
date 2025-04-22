@@ -34,24 +34,24 @@ const data: ReferenceEntityTemplateSchema = {
     //   type: 'UseNavigationCurrentEntryGeneratedType',
     // },
   ],
-  // defaultExample: {
-  //   description: '',
-  //   codeblock: {
-  //     title: 'Navigation example',
-  //     tabs: [
-  //       {
-  //         code: '../examples/navigation/default-react.example.tsx',
-  //         language: 'React',
-  //         title: 'React',
-  //       },
-  //       {
-  //         code: '../examples/navigation/default-js.example.ts',
-  //         language: 'js',
-  //         title: 'js',
-  //       },
-  //     ],
-  //   },
-  // },
+  defaultExample: {
+    description: '',
+    codeblock: {
+      title: 'Navigation example',
+      tabs: [
+        {
+          code: '../examples/navigation/default-preact.example.tsx',
+          language: 'jsx',
+          title: 'Preact',
+        },
+        {
+          code: '../examples/navigation/default-js.example.ts',
+          language: 'js',
+          title: 'js',
+        },
+      ],
+    },
+  },
   // examples: {
   //   description: 'Navigation api examples',
   //   examples: [

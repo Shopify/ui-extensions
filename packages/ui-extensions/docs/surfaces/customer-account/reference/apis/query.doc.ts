@@ -15,51 +15,51 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_Standard_QueryApi',
     },
   ],
-  // defaultExample: {
-  //   description: `
-  //   You can access the [Storefront GraphQL API](/docs/api/storefront) via the \`query()\` helper function.
-  //   Ensure your extension can use this API by [enabling the \`api_access\` capability](/docs/api/customer-account-ui-extensions/configuration#api-access).`,
-  //   codeblock: {
-  //     title: 'Access the Storefront API with query',
-  //     tabs: [
-  //       {
-  //         code: '../examples/apis/query.example.tsx',
-  //         language: 'jsx',
-  //         title: 'React',
-  //       },
-  //       {
-  //         code: '../examples/apis/query.example.ts',
-  //         language: 'js',
-  //         title: 'JavaScript',
-  //       },
-  //     ],
-  //   },
-  // },
-  // examples: {
-  //   description: '',
-  //   examples: [
-  //     {
-  //       description: `
-  //       You can access the [Storefront GraphQL API](/docs/api/storefront) using global \`fetch()\`.
-  //       Ensure your extension can access the Storefront API via the [\`api_access\` capability](/docs/api/customer-account-ui-extensions/configuration#api-access).`,
-  //       codeblock: {
-  //         title: 'Accessing the Storefront API with fetch()',
-  //         tabs: [
-  //           {
-  //             code: '../examples/apis/query-fetch.example.tsx',
-  //             language: 'jsx',
-  //             title: 'React',
-  //           },
-  //           {
-  //             code: '../examples/apis/query-fetch.example.ts',
-  //             language: 'js',
-  //             title: 'JavaScript',
-  //           },
-  //         ],
-  //       },
-  //     },
-  //   ],
-  // },
+  defaultExample: {
+    description: `
+    You can access the [Storefront GraphQL API](/docs/api/storefront) via the \`query()\` helper function.
+    Ensure your extension can use this API by [enabling the \`api_access\` capability](/docs/api/customer-account-ui-extensions/configuration#api-access).`,
+    codeblock: {
+      title: 'Access the Storefront API with query',
+      tabs: [
+        {
+          code: '../examples/apis/query.example.tsx',
+          language: 'jsx',
+          title: 'Preact',
+        },
+        {
+          code: '../examples/apis/query.example.ts',
+          language: 'js',
+          title: 'JavaScript',
+        },
+      ],
+    },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description: `
+        You can access the [Storefront GraphQL API](/docs/api/storefront) using global \`fetch()\`.
+        Ensure your extension can access the Storefront API via the [\`api_access\` capability](/docs/api/customer-account-ui-extensions/configuration#api-access).`,
+        codeblock: {
+          title: 'Accessing the Storefront API with fetch()',
+          tabs: [
+            {
+              code: '../examples/apis/query-fetch.example.tsx',
+              language: 'jsx',
+              title: 'Preact',
+            },
+            {
+              code: '../examples/apis/query-fetch.example.ts',
+              language: 'js',
+              title: 'JavaScript',
+            },
+          ],
+        },
+      },
+    ],
+  },
   related: [],
 };
 

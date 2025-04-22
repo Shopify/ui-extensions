@@ -1,45 +1,45 @@
-import {extension} from '@shopify/ui-extensions/customer-account';
+export default function extension() {
+  const visitorConsent =
+    shopify.customerPrivacy.current
+      .visitorConsent || {};
 
-// 1. Choose an extension target
-export default extension(
-  'customer-account.order-status.block.render',
-  (root, {customerPrivacy}) => {
-    const {
-      visitorConsent: {
-        analytics,
-        marketing,
-        preferences,
-        saleOfData,
-      },
-    } = customerPrivacy.current;
+  // Log initial consent values
+  console.log(
+    'analytics',
+    visitorConsent.analytics,
+  );
+  console.log(
+    'marketing',
+    visitorConsent.marketing,
+  );
+  console.log(
+    'preferences',
+    visitorConsent.preferences,
+  );
+  console.log(
+    'saleOfData',
+    visitorConsent.saleOfData,
+  );
 
-    // 2. Use consent values
-    console.log('initialValues');
-    console.log('analytics', analytics);
-    console.log('marketing', marketing);
-    console.log('preferences', preferences);
-    console.log('saleOfData', saleOfData);
-
-    // 3. Update component state when customerPrivacy changes
-    customerPrivacy.subscribe((value) => {
-      if (!value) {
-        return;
-      }
-
-      const {
-        visitorConsent: {
-          analytics,
-          marketing,
-          preferences,
-          saleOfData,
-        },
-      } = value;
-
-      console.log('updatedValues');
-      console.log('analytics', analytics);
-      console.log('marketing', marketing);
-      console.log('preferences', preferences);
-      console.log('saleOfData', saleOfData);
-    });
-  },
-);
+  // Subscribe to consent changes
+  shopify.customerPrivacy.subscribe(
+    (updatedConsent) => {
+      console.log(
+        'analytics',
+        updatedConsent.visitorConsent.analytics,
+      );
+      console.log(
+        'marketing',
+        updatedConsent.visitorConsent.marketing,
+      );
+      console.log(
+        'preferences',
+        updatedConsent.visitorConsent.preferences,
+      );
+      console.log(
+        'saleOfData',
+        updatedConsent.visitorConsent.saleOfData,
+      );
+    },
+  );
+}

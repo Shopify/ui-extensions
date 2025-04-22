@@ -25,23 +25,23 @@ const data: ReferenceEntityTemplateSchema = {
     //   type: 'UseCustomerPrivacyGeneratedType',
     // },
   ],
-  //   defaultExample: {
-  //     codeblock: {
-  //       title: 'Read Customer Privacy',
-  //       tabs: [
-  //         {
-  //           code: '../examples/apis/customer-privacy.example.tsx',
-  //           language: 'jsx',
-  //           title: 'React',
-  //         },
-  //         {
-  //           code: '../examples/apis/customer-privacy.example.ts',
-  //           language: 'js',
-  //           title: 'JavaScript',
-  //         },
-  //       ],
-  //     },
-  //   },
+  defaultExample: {
+    codeblock: {
+      title: 'Read Customer Privacy',
+      tabs: [
+        {
+          code: '../examples/apis/customer-privacy.example.tsx',
+          language: 'jsx',
+          title: 'Preact',
+        },
+        {
+          code: '../examples/apis/customer-privacy.example.ts',
+          language: 'js',
+          title: 'JavaScript',
+        },
+      ],
+    },
+  },
   //   examples: {
   //     description: '',
   //     examples: [
