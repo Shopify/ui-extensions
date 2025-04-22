@@ -1,13 +1,6 @@
-import {
-  extension,
-  List,
-  ListItem,
-} from '@shopify/ui-extensions/customer-account';
-
-export default extension(
-  'customer-account.order-status.block.render',
-  (root, {query}) => {
-    query<any>(
+export default function extension() {
+  shopify
+    .query(
       `query ($first: Int!) {
       products(first: $first) {
         nodes {
@@ -20,24 +13,21 @@ export default extension(
         variables: {first: 5},
       },
     )
-      .then(({data}) => {
-        const listItems =
-          data?.products?.nodes.map((node) =>
-            root.createComponent(
-              ListItem,
-              undefined,
-              node.title,
-            ),
-          );
+    .then(({data}) => {
+      const list = document.createElement(
+        's-unordered-list',
+      );
 
-        root.appendChild(
-          root.createComponent(
-            List,
-            undefined,
-            listItems,
-          ),
+      data?.products?.nodes.forEach((node) => {
+        const listItem = document.createElement(
+          's-list-item',
         );
-      })
-      .catch(console.error);
-  },
-);
+        listItem.id = node.id;
+        listItem.textContent = node.title;
+        list.append(listItem);
+      });
+
+      document.body.append(list);
+    })
+    .catch(console.error);
+}

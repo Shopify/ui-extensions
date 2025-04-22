@@ -1,16 +1,11 @@
-import {useEffect, useState} from 'react';
-import {
-  reactExtension,
-  List,
-  ListItem,
-} from '@shopify/ui-extensions-react/customer-account';
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
 
-export default reactExtension(
-  'customer-account.order-status.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<App />, document.body);
+}
 
-function Extension() {
+function App() {
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -44,12 +39,12 @@ function Extension() {
   }, []);
 
   return (
-    <List>
+    <s-unordered-list>
       {data?.products?.nodes.map((node) => (
-        <ListItem key={node.id}>
+        <s-list-item key={node.id}>
           {node.title}
-        </ListItem>
+        </s-list-item>
       ))}
-    </List>
+    </s-unordered-list>
   );
 }
