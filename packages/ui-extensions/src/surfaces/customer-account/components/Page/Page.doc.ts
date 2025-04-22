@@ -46,11 +46,6 @@ const data: ReferenceEntityTemplateSchema = {
           code: './examples/basic-Page-preact.example.tsx',
           language: 'tsx',
         },
-        {
-          title: 'JS',
-          code: './examples/basic-Page-js.example.ts',
-          language: 'js',
-        },
       ],
     },
   },

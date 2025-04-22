@@ -44,11 +44,6 @@ const data: ReferenceEntityTemplateSchema = {
           language: 'jsx',
           title: 'Preact',
         },
-        {
-          code: '../examples/navigation/default-js.example.ts',
-          language: 'js',
-          title: 'js',
-        },
       ],
     },
   },
