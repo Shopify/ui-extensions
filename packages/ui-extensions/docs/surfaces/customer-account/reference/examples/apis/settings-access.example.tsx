@@ -1,15 +1,24 @@
-import {
-  reactExtension,
-  Banner,
-  useSettings,
-} from '@shopify/ui-extensions-react/customer-account';
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
 
-export default reactExtension(
-  'customer-account.order-status.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<App />, document.body);
+}
 
-function Extension() {
-  const {banner_title} = useSettings();
-  return <Banner title={banner_title} />;
+function App() {
+  const [bannerTitle, setBannerTitle] = useState(
+    shopify.settings.current?.banner_title || '',
+  );
+
+  useEffect(() => {
+    shopify.settings.subscribe(
+      (updatedSettings) => {
+        setBannerTitle(
+          updatedSettings.banner_title,
+        );
+      },
+    );
+  }, []);
+
+  return <s-banner title={bannerTitle} />;
 }
