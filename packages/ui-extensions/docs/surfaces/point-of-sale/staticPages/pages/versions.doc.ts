@@ -70,7 +70,7 @@ The POS app uses Shopify's design system, which evolves over time. These design 
 ### Automatic Updates vs. Manual Updates
 
 #### Automatic Updates
-- Shopify automatically applies minor design adjustments (colors, spacing, typography)
+- Minor design adjustments (colors, spacing, typography)
 - UI component refinements that maintain the same API
 - Accessibility improvements
 - Performance optimizations
