@@ -24,7 +24,7 @@ This guide explains how versioning works for POS UI Extensions, including how to
 
 ## Understanding POS UI Extensions Versioning
 
-POS UI Extensions follow Shopify's quarterly API versioning system while also depending on the Shopify POS app release schedule. You need to understand both aspects to plan your development and release strategy effectively.
+POS UI Extensions follow Shopify's quarterly API versioning system while also depending on the POS app release schedule. You need to understand both aspects to plan your development and release strategy effectively.
 
 ### API Versioning
 - Shopify releases POS UI Extensions versions quarterly following the [Shopify API versioning schedule](https://shopify.dev/docs/api/usage/versioning)
