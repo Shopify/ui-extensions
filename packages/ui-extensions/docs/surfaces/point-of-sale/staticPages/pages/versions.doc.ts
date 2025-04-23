@@ -67,7 +67,7 @@ Generally, only POS app versions released on or after the API release date can a
 
 The POS app uses Shopify's design system, which evolves over time. These design changes can affect how your extensions look and function.
 
-### Automatic Updates vs. Manual Updates
+### Automatic updates vs. breaking changes
 
 #### Automatic Updates
 - Minor design adjustments (colors, spacing, typography)
