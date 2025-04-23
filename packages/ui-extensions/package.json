@@ -5,7 +5,8 @@
     "docs:admin": "node ./docs/surfaces/admin/build-docs.mjs",
     "docs:checkout": "bash ./docs/surfaces/checkout/build-docs.sh",
     "docs:point-of-sale": "bash ./docs/surfaces/point-of-sale/build-docs.sh",
-    "docs:customer-account": "node ./docs/surfaces/customer-account/build-docs.mjs"
+    "docs:customer-account": "node ./docs/surfaces/customer-account/build-docs.mjs",
+    "build-components": "rollup -c rollup.config.mjs"
   },
   "main": "index.js",
   "module": "index.mjs",
@@ -102,7 +103,11 @@
     "@remote-ui/async-subscription": "^2.1.16",
     "@shopify/generate-docs": "0.16.4",
     "typescript": "^4.9.0",
-    "@faker-js/faker": "^8.4.1"
+    "@faker-js/faker": "^8.4.1",
+    "@shopify/ui-api-design": "0.37.0",
+    "dts-bundle-generator": "^9.5.1",
+    "rollup": "^4.32.1",
+    "rollup-plugin-dts": "^6.2.1"
   },
   "optionalDependencies": {
     "preact": "*",
