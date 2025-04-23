@@ -76,9 +76,8 @@ The POS app uses Shopify's design system, which evolves over time. These design 
 - Performance optimizations
 
 #### Breaking Changes
-- Major component API changes
-- New component features you want to adopt
-- Deprecated component replacements
+- New component and API features you want to adopt
+- Removal of deprecated component and API features
 - Structural layout changes
 
 ### How Design Changes Affect Your Extensions
