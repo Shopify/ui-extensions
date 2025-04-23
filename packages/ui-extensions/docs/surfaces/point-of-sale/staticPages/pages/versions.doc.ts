@@ -27,7 +27,7 @@ This guide explains how versioning works for POS UI Extensions, including how to
 POS UI Extensions follow Shopify's quarterly API versioning system while also depending on the Shopify POS app release schedule. You need to understand both aspects to plan your development and release strategy effectively.
 
 ### API Versioning
-- Shopify releases POS UI Extensions versions quarterly (January, April, July, October) following the [Shopify API versioning schedule](https://shopify.dev/docs/api/usage/versioning)
+- Shopify releases POS UI Extensions versions quarterly following the [Shopify API versioning schedule](https://shopify.dev/docs/api/usage/versioning)
 - Versions use the format \`YYYY-MM\` (e.g., \`2025-04\`)
 - Shopify supports each version for 12 months from its release date
 - Quarterly releases introduce new features
