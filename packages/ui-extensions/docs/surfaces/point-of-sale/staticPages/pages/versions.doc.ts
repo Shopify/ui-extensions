@@ -27,72 +27,36 @@ This guide explains how versioning works for POS UI Extensions, including how to
 POS UI Extensions follow Shopify's quarterly API versioning system while also depending on the POS app release schedule. You need to understand both aspects to plan your development and release strategy effectively.
 
 ### API Versioning
-- Shopify releases POS UI Extensions versions quarterly following the [Shopify API versioning schedule](https://shopify.dev/docs/api/usage/versioning)
-- Versions use the format \`YYYY-MM\` (e.g., \`2025-04\`)
+- Shopify releases POS UI Extensions versions following the [Shopify API versioning schedule](https://shopify.dev/docs/api/usage/versioning)
 - Shopify supports each version for 12 months from its release date
-- Quarterly releases introduce new features
 
 ### POS App Release Cycle
 The Shopify POS app follows its own release schedule, which determines when merchants can access new extension features:
 - Shopify releases POS app updates approximately every two weeks (please note that there will be exceptions)
 - Merchants can access new API version features only when:
   1. You update your extension to use the appropriate API version
-  2. Merchants install a compatible POS app version released on or after the API release date
+  2. Merchants install a compatible POS app version
 
-## Version Support Timeline
-
-| API Version | Release Date | Supported Until |
-|-------------|--------------|-----------------|
-| 2025-10     | October 1, 2025 | October 1, 2026 |
-| 2025-07     | July 1, 2025 | July 1, 2026 |
-| 2025-04     | April 1, 2025 | April 1, 2026 |
-| 2025-01     | January 1, 2025 | January 1, 2026 |
-| 2024-10     | October 1, 2024 | October 1, 2025 |
-| 2024-07     | July 1, 2024 | July 1, 2025 |
-| 2024-04     | April 1, 2024 | April 1, 2025 |
-
-## Planning Your Development Cycle
-
-### Feature Availability Timeline
-
-New features for POS UI Extensions follow this general timeline:
-
-1. **Unstable Release**: Shopify first makes features available in the \`unstable\` version for you to develop and test
-2. **API Version Release**: Shopify moves features to an official quarterly version (e.g., \`2025-07\`)
-3. **Merchant Availability**: Merchants can access features when they update to a compatible POS app version
-
-Generally, only POS app versions released on or after the API release date can access features from that API version.
-
-## POS Design System and Your Extensions
+## POS Visual Design and Your Extensions
 
 The POS app uses Shopify's visual design language, which evolves over time. These design changes can affect how your extensions look and function.
 
-### Automatic updates vs. breaking changes
+### Automatic Updates vs. Breaking Changes
+
+1. **Automatic Updates**: Your extension inherits visual refinements automatically when merchants update their POS app
+2. **Breaking Changes**: Shopify introduces these only with new quarterly API versions
 
 #### Automatic Updates
 - Minor design adjustments (colors, spacing, typography)
-- UI component refinements that maintain the same API
+- UI component refinements 
 - Accessibility improvements
 - Performance optimizations
 
 #### Breaking Changes
-- New component and API features you want to adopt
+- New component and API features 
 - Removal of deprecated component and API features
 - Structural layout changes
 
-### How Design Changes Affect Your Extensions
-
-When Shopify updates the POS design system:
-
-1. **Minor Updates**: Your extension inherits visual refinements automatically when merchants update their POS app
-2. **Breaking Changes**: Shopify introduces these only with new quarterly API versions, giving you time to update your extension code to adopt significant component changes
-
-### Best Practices for Design System Changes
-
-- Regularly test your extension with the \`unstable\` version to identify design changes early
-- Review the [changelog](https://shopify.dev/docs/api/release-notes) for each quarterly release
-- Update your extensions to use the latest API version to benefit from design improvements
-- Use Shopify's component library as intended, avoiding custom styling that might conflict with future updates
 
 ## Staying Current
 
@@ -105,23 +69,15 @@ We strongly recommend keeping your extensions updated to the latest API version 
 
 When you update to the latest version, both you and your merchants benefit from Shopify's continuous improvements to the platform.
 
-## Need Help?
+## Resources
+- Review the [changelog](https://shopify.dev/docs/api/release-notes) for releases
+- If you have questions about POS UI Extensions, visit the [Shopify Community forums](https://community.shopify.com/).`,
 
-If you have questions about POS UI Extensions, visit the [Shopify Community forums](https://community.shopify.com/).`,
       sectionNotice: [
         {
           title: 'End of Compatibility Plan',
           type: 'Warning',
           sectionContent: `
-          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end compatibility for versions on a one-year rolling basis. This means that POS will no longer run extensions using removed versions. This table details the end of compatibility schedule.
-
-|released version|removed versions|
-|---:|---|
-|2025-04|1.0.0, 1.0.1, 1.1.2, 1.2.0, 1.3.0, 1.4.0, 1.5.1, 1.6.0, 1.7.0, 2024-04|
-|2025-07|2024-07|
-|2025-10|2024-10|
-|2026-01|2025-01|
-|2026-04|2025-04|
 
 Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.`,
         },
