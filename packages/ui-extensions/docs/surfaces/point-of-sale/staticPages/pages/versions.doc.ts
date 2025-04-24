@@ -41,8 +41,15 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       type: 'Generic',
       anchorLink: '202507',
       title: '2025.07',
+      sectionNotice: [
+        {
+          type: 'critical',
+          title: 'Not yet supported',
+          sectionContent: `This version is not yet supported by POS. Deploying extensions using this version will result in POS refusing to run them. Please wait to deploy extensions targeting this version.`,
+        },
+      ],
       sectionContent: `
-- Added in POS version: 10.6
+- Added in POS version: N/A
 - Removed in POS version: N/A
 - Release day: N/A
 
