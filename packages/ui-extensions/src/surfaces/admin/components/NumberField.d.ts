@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,9 +6,11 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
-import type {NumberFieldProps$1, ComponentChild} from './shared.d.ts';
+import type {
+  TextFieldProps,
+  NumberFieldProps$1,
+  ComponentChild,
+} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -69,7 +71,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  target: HTMLElementTagNameMap[T];
+  currentTarget: HTMLElementTagNameMap[T];
 };
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -163,28 +165,36 @@ declare class PreactFieldElement<Autocomplete extends string = string>
    *
    * To fix this, we spoof getAttribute & hasAttribute to make a PreactFieldElement
    * appear as a contentEditable "input" when it contains a focused input element.
+   * @private technically not private, but we don't want to expose this as public API
    */
   getAttribute(qualifiedName: string): string | null;
+  /**
+   * @private technically not private, but we don't want to expose this as public API
+   */
   hasAttribute(qualifiedName: string): boolean;
   /**
    * Checks if the shadow tree contains a focused input (input, textarea, select, <x contentEditable>).
    * Note: this does _not_ return true for focussed non-field form elements like buttons.
    */
   get isContentEditable(): boolean;
+  /** @private */
   formResetCallback(): void;
-  connectedCallback(): void;
   constructor(renderImpl: RenderImpl);
 }
 
-export type NumberFieldProps = PreactFieldProps<
-  Required<NumberFieldProps$1>['autocomplete']
-> &
-  Required<
-    Pick<
-      NumberFieldProps$1,
-      'inputMode' | 'max' | 'min' | 'prefix' | 'step' | 'suffix'
-    >
-  >;
+export interface NumberFieldProps
+  extends Omit<
+      PreactFieldProps<Required<NumberFieldProps$1>['autocomplete']>,
+      'value'
+    >,
+    Required<
+      Pick<
+        NumberFieldProps$1,
+        'inputMode' | 'max' | 'min' | 'prefix' | 'step' | 'suffix'
+      >
+    > {
+  value: Required<NumberFieldProps$1>['value'];
+}
 
 declare const tagName = 's-number-field';
 export interface ReactProps
@@ -214,7 +224,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }

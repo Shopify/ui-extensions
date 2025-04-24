@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,9 +6,11 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
-import type {SelectProps$1, ComponentChild} from './shared.d.ts';
+import type {
+  TextFieldProps,
+  SelectProps$1,
+  ComponentChild,
+} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -69,7 +71,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  target: HTMLElementTagNameMap[T];
+  currentTarget: HTMLElementTagNameMap[T];
 };
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -98,22 +100,24 @@ declare class PreactInputElement
   constructor(renderImpl: RenderImpl);
 }
 
-export type SelectProps = PreactInputProps &
-  Required<
-    Pick<
-      SelectProps$1,
-      | 'details'
-      | 'disabled'
-      | 'error'
-      | 'label'
-      | 'name'
-      | 'placeholder'
-      | 'required'
-      | 'value'
-      | 'icon'
-      | 'labelAccessibilityVisibility'
-    >
-  >;
+export interface SelectProps
+  extends Omit<PreactInputProps, 'value'>,
+    Required<
+      Pick<
+        SelectProps$1,
+        | 'details'
+        | 'disabled'
+        | 'error'
+        | 'label'
+        | 'name'
+        | 'placeholder'
+        | 'required'
+        | 'icon'
+        | 'labelAccessibilityVisibility'
+      >
+    > {
+  value: Required<SelectProps$1>['value'];
+}
 
 declare const tagName = 's-select';
 export interface ReactProps extends Partial<SelectProps> {
@@ -134,6 +138,7 @@ declare class Select extends PreactInputElement implements SelectProps {
   accessor placeholder: SelectProps['placeholder'];
   accessor required: SelectProps['required'];
   accessor labelAccessibilityVisibility: SelectProps['labelAccessibilityVisibility'];
+  /** @private */
   connectedCallback(): void;
   disconnectedCallback(): void;
   constructor();
@@ -141,11 +146,16 @@ declare class Select extends PreactInputElement implements SelectProps {
    * used to determine if no value or defaultValue was set, in which case the first non-disabled option was used
    *
    * this is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form
+   * @private
    */
   [usedFirstOptionSymbol]: boolean;
+  /**
+   * @private
+   */
   [hasInitialValueSymbol]: boolean;
   get value(): string;
   set value(value: string);
+  /** @private */
   formResetCallback(): void;
 }
 declare global {
@@ -156,7 +166,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }

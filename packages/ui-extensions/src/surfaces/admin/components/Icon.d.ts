@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,12 +6,13 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
 import type {IconProps$1, IconType, ComponentChild} from './shared.d.ts';
 
 export interface IconProps
   extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
+  /**
+   * Specifies the type of icon that will be displayed.
+   */
   type: '' | IconType | 'empty';
   tone: Extract<
     IconProps$1['tone'],
@@ -99,7 +100,12 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<HTMLAttributes<HTMLElement>, 'size'> & ReactProps;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        | 'size'
+        | Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }

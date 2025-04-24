@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,13 +6,7 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
-import type {
-  ChoiceListProps$1,
-  TextFieldProps,
-  ComponentChild,
-} from './shared.d.ts';
+import type {ChoiceListProps$1, ComponentChild} from './shared.d.ts';
 
 export interface ChoiceListProps
   extends Required<
@@ -23,13 +17,8 @@ export interface ChoiceListProps
   > {}
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  target: HTMLElementTagNameMap[T];
+  currentTarget: HTMLElementTagNameMap[T];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
 
 declare const tagName = 's-choice-list';
 export interface ReactProps
@@ -61,8 +50,8 @@ export interface ClickOptions {
  * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
  * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
  */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
+declare const BaseClass$1: typeof globalThis.HTMLElement;
+declare abstract class PreactCustomElement extends BaseClass$1 {
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -98,34 +87,27 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 declare const internals: unique symbol;
-export type PreactInputProps = Required<
-  Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
->;
-declare class PreactInputElement
-  extends PreactCustomElement
-  implements PreactInputProps
-{
+declare class BaseClass extends PreactCustomElement {
   static formAssociated: boolean;
+  constructor(renderImpl: RenderImpl);
   /** @private */
   [internals]: ElementInternals;
-  accessor onchange: CallbackEventListener<'input'>;
-  accessor oninput: CallbackEventListener<'input'>;
-  accessor disabled: PreactInputProps['disabled'];
-  accessor id: PreactInputProps['id'];
-  accessor name: PreactInputProps['name'];
-  get value(): PreactInputProps['value'];
-  set value(value: PreactInputProps['value']);
-  constructor(renderImpl: RenderImpl);
 }
-
-declare class ChoiceList extends PreactInputElement implements ChoiceListProps {
+declare class ChoiceList extends BaseClass implements ChoiceListProps {
+  accessor disabled: ChoiceListProps['disabled'];
+  accessor name: ChoiceListProps['name'];
   accessor error: ChoiceListProps['error'];
   accessor details: ChoiceListProps['details'];
   accessor multiple: ChoiceListProps['multiple'];
   get values(): ChoiceListProps['values'];
   set values(values: ChoiceListProps['values']);
+  /** @private */
   formResetCallback(): void;
   constructor();
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -135,7 +117,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }

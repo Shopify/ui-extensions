@@ -1,12 +1,10 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
 import type {SectionProps$1, ComponentChild} from './shared.d.ts';
 
 export type RequiredSectionProps = Required<SectionProps$1>;
@@ -85,6 +83,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 declare class Section extends PreactCustomElement implements SectionProps {
   constructor();
+  /** @private */
   connectedCallback(): void;
   accessor accessibilityLabel: SectionProps['accessibilityLabel'];
   accessor heading: SectionProps['heading'];
@@ -98,7 +97,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & ReactProps;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }

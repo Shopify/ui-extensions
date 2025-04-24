@@ -1,4 +1,4 @@
-/** VERSION: 0.47.2 **/
+/** VERSION: 0.49.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,8 +6,6 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="WebWorker" />
 import type {ComponentChild, TextFieldProps$1} from './shared.d.ts';
 
 export type Styles = string;
@@ -69,7 +67,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  target: HTMLElementTagNameMap[T];
+  currentTarget: HTMLElementTagNameMap[T];
 };
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -163,16 +161,20 @@ declare class PreactFieldElement<Autocomplete extends string = string>
    *
    * To fix this, we spoof getAttribute & hasAttribute to make a PreactFieldElement
    * appear as a contentEditable "input" when it contains a focused input element.
+   * @private technically not private, but we don't want to expose this as public API
    */
   getAttribute(qualifiedName: string): string | null;
+  /**
+   * @private technically not private, but we don't want to expose this as public API
+   */
   hasAttribute(qualifiedName: string): boolean;
   /**
    * Checks if the shadow tree contains a focused input (input, textarea, select, <x contentEditable>).
    * Note: this does _not_ return true for focussed non-field form elements like buttons.
    */
   get isContentEditable(): boolean;
+  /** @private */
   formResetCallback(): void;
-  connectedCallback(): void;
   constructor(renderImpl: RenderImpl);
 }
 
@@ -213,7 +215,11 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: HTMLAttributes<HTMLElement> & Omit<ReactProps, 'accessory'>;
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        ReactProps;
     }
   }
 }
