@@ -19,5 +19,12 @@ declare global {
         's-ordered-list': OrderedListElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-ordered-list': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & OrderedListProps;
+        }
+    }
+}
 
 export type { OrderedListElement, OrderedListProps };

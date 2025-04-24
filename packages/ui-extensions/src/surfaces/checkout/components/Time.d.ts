@@ -19,5 +19,12 @@ declare global {
         's-time': TimeElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-time': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & TimeProps;
+        }
+    }
+}
 
 export type { TimeElement, TimeProps };

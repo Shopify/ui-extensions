@@ -19,5 +19,12 @@ declare global {
         's-list-item': ListItem;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-list-item': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ListItemProps;
+        }
+    }
+}
 
 export type { ListItem, ListItemProps };

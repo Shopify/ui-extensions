@@ -20,5 +20,12 @@ declare global {
         's-progress': ProgressElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-progress': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ProgressProps;
+        }
+    }
+}
 
 export type { ProgressElement, ProgressProps };

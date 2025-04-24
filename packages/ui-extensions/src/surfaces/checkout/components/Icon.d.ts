@@ -22,5 +22,12 @@ declare global {
         's-icon': IconElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-icon': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & IconProps;
+        }
+    }
+}
 
 export type { IconElement, IconProps };

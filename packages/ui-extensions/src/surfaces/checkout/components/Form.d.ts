@@ -21,5 +21,12 @@ declare global {
         's-form': FormElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-form': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & FormProps;
+        }
+    }
+}
 
 export type { FormElement, FormProps };

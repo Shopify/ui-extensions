@@ -22,5 +22,12 @@ declare global {
         's-banner': BannerElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-banner': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & BannerProps;
+        }
+    }
+}
 
 export type { BannerElement, BannerProps };

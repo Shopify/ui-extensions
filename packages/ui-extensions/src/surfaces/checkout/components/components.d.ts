@@ -2052,6 +2052,13 @@ declare global {
         's-abbreviation': AbbreviationElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-abbreviation': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & AbbreviationProps;
+        }
+    }
+}
 
 interface BannerProps extends Omit<BannerProps$1, 'children' | 'primaryAction' | 'secondaryActions' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
@@ -2063,6 +2070,13 @@ interface BannerElement extends Omit<BannerProps, 'onAfterHide' | 'onDismiss'>, 
 declare global {
     interface HTMLElementTagNameMap {
         's-banner': BannerElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-banner': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & BannerProps;
+        }
     }
 }
 
@@ -2084,6 +2098,13 @@ declare global {
         's-box': BoxElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-box': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & BoxProps;
+        }
+    }
+}
 
 interface ButtonProps extends Omit<ButtonProps$1, 'children' | 'download' | 'icon' | 'lang' | 'onBlur' | 'onFocus' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_self' | '_blank'>;
@@ -2099,6 +2120,13 @@ declare global {
         's-button': ButtonElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-button': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ButtonProps;
+        }
+    }
+}
 
 interface ClipboardItemProps extends ClipboardItemProps$1 {
 }
@@ -2109,6 +2137,13 @@ interface ClipboardItemElement extends Omit<ClipboardItemProps, 'onCopy' | 'onCo
 declare global {
     interface HTMLElementTagNameMap {
         's-clipboard-item': ClipboardItemElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-clipboard-item': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ClipboardItemProps;
+        }
     }
 }
 
@@ -2123,6 +2158,13 @@ declare global {
         's-drop-zone': DropZoneElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-drop-zone': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & DropZoneProps;
+        }
+    }
+}
 
 interface FormProps extends Omit<FormProps$1, 'autocomplete' | 'onReset' | 'onSubmit'> {
     onSubmit?: () => void;
@@ -2135,6 +2177,13 @@ declare global {
         's-form': FormElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-form': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & FormProps;
+        }
+    }
+}
 
 interface HeadingProps extends Omit<HeadingProps$1, 'children' | 'lineClamp' | 'accessibilityVisibility'> {
 }
@@ -2143,6 +2192,13 @@ interface HeadingElement extends HeadingProps, Omit<HTMLElement, 'id'> {
 declare global {
     interface HTMLElementTagNameMap {
         's-heading': HeadingElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-heading': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & HeadingProps;
+        }
     }
 }
 
@@ -2158,6 +2214,13 @@ declare global {
         's-icon': IconElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-icon': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & IconProps;
+        }
+    }
+}
 
 interface ImageProps extends Omit<ImageProps$1, 'border' | 'borderColor' | 'borderRadius' | 'borderWidth' | 'inlineSize' | 'onLoad' | 'onError'> {
     border?: BorderShorthand;
@@ -2169,6 +2232,13 @@ interface ImageElement extends ImageProps, Omit<HTMLElement, 'id'> {
 declare global {
     interface HTMLElementTagNameMap {
         's-image': ImageElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-image': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ImageProps;
+        }
     }
 }
 
@@ -2184,6 +2254,13 @@ declare global {
         's-link': LinkElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-link': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & LinkProps;
+        }
+    }
+}
 
 interface ListItemProps extends Omit<ListItemProps$1, 'children'> {
 }
@@ -2194,6 +2271,13 @@ declare global {
         's-list-item': ListItem;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-list-item': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ListItemProps;
+        }
+    }
+}
 
 interface OrderedListProps extends OrderedListProps$1 {
 }
@@ -2202,6 +2286,13 @@ interface OrderedListElement extends OrderedListProps, Omit<HTMLElement, 'id'> {
 declare global {
     interface HTMLElementTagNameMap {
         's-ordered-list': OrderedListElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-ordered-list': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & OrderedListProps;
+        }
     }
 }
 
@@ -2216,6 +2307,13 @@ declare global {
         's-paragraph': ParagraphElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-paragraph': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ParagraphProps;
+        }
+    }
+}
 
 interface PaymentIconProps extends PaymentIconProps$1 {
 }
@@ -2224,6 +2322,13 @@ interface PaymentIconElement extends PaymentIconProps, Omit<HTMLElement, 'id'> {
 declare global {
     interface HTMLElementTagNameMap {
         's-payment-icon': PaymentIconElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-payment-icon': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & PaymentIconProps;
+        }
     }
 }
 
@@ -2237,6 +2342,13 @@ declare global {
         's-progress': ProgressElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-progress': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ProgressProps;
+        }
+    }
+}
 
 interface SpinnerProps extends Omit<SpinnerProps$1, 'size'> {
     size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
@@ -2246,6 +2358,13 @@ interface SpinnerElement extends SpinnerProps, Omit<HTMLElement, 'id'> {
 declare global {
     interface HTMLElementTagNameMap {
         's-spinner': SpinnerElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-spinner': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & SpinnerProps;
+        }
     }
 }
 
@@ -2266,6 +2385,13 @@ declare global {
         's-stack': StackElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-stack': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & StackProps;
+        }
+    }
+}
 
 interface TextProps extends Omit<TextProps$1, 'children' | 'fontVariantNumeric' | 'type'> {
     color?: Extract<TextProps$1['color'], 'subdued' | 'base'>;
@@ -2277,6 +2403,13 @@ interface TextElement extends TextProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'
 declare global {
     interface HTMLElementTagNameMap {
         's-text': TextElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-text': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & TextProps;
+        }
     }
 }
 
@@ -2293,6 +2426,13 @@ declare global {
         's-text-field': TextFieldElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-text-field': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & TextFieldProps;
+        }
+    }
+}
 
 interface TimeProps extends Pick<TimeProps$1, 'dateTime'> {
 }
@@ -2303,6 +2443,13 @@ declare global {
         's-time': TimeElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-time': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & TimeProps;
+        }
+    }
+}
 
 interface UnorderedListProps extends UnorderedListProps$1 {
 }
@@ -2311,6 +2458,13 @@ interface UnorderedListElement extends UnorderedListProps, Omit<HTMLElement, 'id
 declare global {
     interface HTMLElementTagNameMap {
         's-unordered-list': UnorderedListElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-unordered-list': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & UnorderedListProps;
+        }
     }
 }
 

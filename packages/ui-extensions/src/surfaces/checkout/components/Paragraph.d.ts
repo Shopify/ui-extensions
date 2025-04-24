@@ -21,5 +21,12 @@ declare global {
         's-paragraph': ParagraphElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-paragraph': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ParagraphProps;
+        }
+    }
+}
 
 export type { ParagraphElement, ParagraphProps };

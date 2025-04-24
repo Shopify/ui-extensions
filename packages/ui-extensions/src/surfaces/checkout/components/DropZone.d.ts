@@ -21,5 +21,12 @@ declare global {
         's-drop-zone': DropZoneElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-drop-zone': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & DropZoneProps;
+        }
+    }
+}
 
 export type { DropZoneElement, DropZoneProps };

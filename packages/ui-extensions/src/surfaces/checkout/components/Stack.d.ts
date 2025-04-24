@@ -31,5 +31,12 @@ declare global {
         's-stack': StackElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-stack': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & StackProps;
+        }
+    }
+}
 
 export type { StackElement, StackProps };

@@ -28,5 +28,12 @@ declare global {
         's-box': BoxElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-box': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & BoxProps;
+        }
+    }
+}
 
 export type { BoxElement, BoxProps };

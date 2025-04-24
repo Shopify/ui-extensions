@@ -19,5 +19,12 @@ declare global {
         's-unordered-list': UnorderedListElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-unordered-list': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & UnorderedListProps;
+        }
+    }
+}
 
 export type { UnorderedListElement, UnorderedListProps };

@@ -24,5 +24,12 @@ declare global {
         's-button': ButtonElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-button': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ButtonProps;
+        }
+    }
+}
 
 export type { ButtonElement, ButtonProps };

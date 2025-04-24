@@ -19,5 +19,12 @@ declare global {
         's-abbreviation': AbbreviationElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-abbreviation': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & AbbreviationProps;
+        }
+    }
+}
 
 export type { AbbreviationElement, AbbreviationProps };

@@ -19,5 +19,12 @@ declare global {
         's-heading': HeadingElement;
     }
 }
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-heading': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & HeadingProps;
+        }
+    }
+}
 
 export type { HeadingElement, HeadingProps };
