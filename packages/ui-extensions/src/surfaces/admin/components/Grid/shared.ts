@@ -1,7 +1,7 @@
 const shared = {
   name: 'Grid',
   description: `
-  Use \`s-grid\` to organize your content in a matrix of rows and columns. Grid follows the same pattern as the [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout). 
+  Use \`s-grid\` to organize your content in a matrix of rows and columns and make responsive layouts for pages. Grid follows the same pattern as the [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout). 
   
   #### Useful for:
   - Organizing content into a grid-like layout with columns and rows with consistent alignment and spacing.
