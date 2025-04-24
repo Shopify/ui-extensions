@@ -29,24 +29,14 @@ interface AbbreviationProps$1 {
 	 */
 	title?: string;
 }
+export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
+export type ColorKeyword = "subdued" | "base" | "strong";
 export interface GlobalProps {
 	/**
 	 * A unique identifier for the element.
 	 */
 	id?: string;
 }
-export interface ActionSlots {
-	/**
-	 * The primary action to perform, provided as a button or link type element.
-	 */
-	primaryAction?: ComponentChildren;
-	/**
-	 * The secondary actions to perform, provided as button or link type elements.
-	 */
-	secondaryActions?: ComponentChildren;
-}
-export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
-export type ColorKeyword = "subdued" | "base" | "strong";
 export type BackgroundColorKeyword = "transparent" | ColorKeyword;
 export interface BackgroundProps {
 	/**
@@ -67,6 +57,521 @@ export interface BackgroundProps {
  * @default 'auto'
  */
 export type ToneKeyword = "auto" | "neutral" | "info" | "success" | "caution" | "warning" | "critical" | "custom";
+declare const privateIconArray: readonly [
+	"adjust",
+	"affiliate",
+	"airplane",
+	"alert-bubble",
+	"alert-circle",
+	"alert-diamond",
+	"alert-location",
+	"alert-octagon-filled",
+	"alert-octagon",
+	"alert-triangle",
+	"app-extension",
+	"apps",
+	"archive",
+	"arrow-down-circle",
+	"arrow-down-right",
+	"arrow-down",
+	"arrow-left-circle",
+	"arrow-left",
+	"arrow-right-circle",
+	"arrow-right",
+	"arrow-up-circle",
+	"arrow-up-right",
+	"arrow-up",
+	"arrows-in-horizontal",
+	"arrows-out-horizontal",
+	"attachment",
+	"automation",
+	"backspace",
+	"bag",
+	"bank",
+	"barcode",
+	"bill",
+	"blank",
+	"blog",
+	"bolt-filled",
+	"bolt",
+	"book-open",
+	"book",
+	"bug",
+	"bullet",
+	"button-press",
+	"button",
+	"calculator",
+	"calendar-check",
+	"calendar-compare",
+	"calendar-list",
+	"calendar-time",
+	"calendar",
+	"camera-flip",
+	"camera",
+	"caret-down",
+	"caret-up",
+	"cart-abandoned",
+	"cart-discount",
+	"cart-down",
+	"cart-sale",
+	"cart-up",
+	"cart",
+	"cash-dollar",
+	"cash-euro",
+	"cash-pound",
+	"cash-rupee",
+	"cash-yen",
+	"catalog-product",
+	"categories",
+	"channels",
+	"chart-cohort",
+	"chart-donut",
+	"chart-funnel",
+	"chart-histogram-first-last",
+	"chart-histogram-first",
+	"chart-histogram-flat",
+	"chart-histogram-full",
+	"chart-histogram-growth",
+	"chart-histogram-last",
+	"chart-histogram-second-last",
+	"chart-horizontal",
+	"chart-line",
+	"chart-popular",
+	"chart-stacked",
+	"chart-vertical",
+	"chat-new",
+	"chat-referral",
+	"chat",
+	"check-circle-filled",
+	"check-circle",
+	"check",
+	"checkbox",
+	"chevron-down-circle",
+	"chevron-down",
+	"chevron-left-circle",
+	"chevron-left",
+	"chevron-right-circle",
+	"chevron-right",
+	"chevron-up-circle",
+	"chevron-up",
+	"circle-dashed",
+	"circle",
+	"clipboard-check",
+	"clipboard-checklist",
+	"clipboard",
+	"clock-revert",
+	"clock",
+	"code-add",
+	"code",
+	"collection-featured",
+	"collection-list",
+	"collection-reference",
+	"collection",
+	"color-none",
+	"color",
+	"compass",
+	"complete",
+	"compose",
+	"confetti",
+	"connect",
+	"content",
+	"contract",
+	"corner-pill",
+	"corner-round",
+	"corner-square",
+	"credit-card-cancel",
+	"credit-card-percent",
+	"credit-card-reader-chip",
+	"credit-card-reader-tap",
+	"credit-card-reader",
+	"credit-card-secure",
+	"credit-card-tap-chip",
+	"credit-card",
+	"crop",
+	"currency-convert",
+	"cursor-banner",
+	"cursor-option",
+	"cursor",
+	"data-presentation",
+	"data-table",
+	"database-add",
+	"database-connect",
+	"database",
+	"delete",
+	"delivered",
+	"delivery",
+	"desktop",
+	"disabled",
+	"discount-add",
+	"discount-code",
+	"discount",
+	"dns-settings",
+	"dock-floating",
+	"dock-side",
+	"domain-landing-page",
+	"domain-new",
+	"domain-redirect",
+	"domain",
+	"download",
+	"drag-drop",
+	"drag-handle",
+	"duplicate",
+	"edit",
+	"email-follow-up",
+	"email-newsletter",
+	"email",
+	"empty",
+	"enabled",
+	"enter",
+	"envelope-soft-pack",
+	"envelope",
+	"exchange",
+	"exit",
+	"export",
+	"external",
+	"eye-check-mark",
+	"eye-dropper-list",
+	"eye-dropper",
+	"eye-first",
+	"eyeglasses",
+	"fav",
+	"favicon",
+	"file-list",
+	"file",
+	"filter",
+	"flag",
+	"flip-horizontal",
+	"flip-vertical",
+	"flower",
+	"folder-add",
+	"folder-down",
+	"folder-remove",
+	"folder-up",
+	"folder",
+	"food",
+	"foreground",
+	"forklift",
+	"forms",
+	"games",
+	"gauge",
+	"geolocation",
+	"gift-card",
+	"gift",
+	"git-branch",
+	"git-commit",
+	"git-repository",
+	"globe-asia",
+	"globe-europe",
+	"globe-lines",
+	"globe-list",
+	"globe",
+	"grid",
+	"hashtag-decimal",
+	"hashtag-list",
+	"hashtag",
+	"heart",
+	"hide-filled",
+	"hide",
+	"home",
+	"icons",
+	"identity-card",
+	"image-add",
+	"image-alt",
+	"image-explore",
+	"image-magic",
+	"image-none",
+	"image-with-text-overlay",
+	"image",
+	"images",
+	"import",
+	"in-progress",
+	"incentive",
+	"incoming",
+	"incomplete",
+	"info",
+	"inventory-updated",
+	"inventory",
+	"iq",
+	"key",
+	"keyboard-filled",
+	"keyboard-hide",
+	"keyboard",
+	"label-printer",
+	"language-translate",
+	"language",
+	"layout-block",
+	"layout-buy-button-horizontal",
+	"layout-buy-button-vertical",
+	"layout-buy-button",
+	"layout-column-1",
+	"layout-columns-2",
+	"layout-columns-3",
+	"layout-footer",
+	"layout-header",
+	"layout-logo-block",
+	"layout-popup",
+	"layout-rows-2",
+	"layout-section",
+	"layout-sidebar-left",
+	"layout-sidebar-right",
+	"lightbulb",
+	"link-list",
+	"link",
+	"list-bulleted",
+	"list-numbered",
+	"live",
+	"location-none",
+	"location",
+	"lock",
+	"map",
+	"markets-euro",
+	"markets-rupee",
+	"markets-yen",
+	"markets",
+	"maximize",
+	"measurement-size-list",
+	"measurement-size",
+	"measurement-volume-list",
+	"measurement-volume",
+	"measurement-weight-list",
+	"measurement-weight",
+	"media-receiver",
+	"megaphone",
+	"mention",
+	"menu-horizontal",
+	"menu-vertical",
+	"menu",
+	"merge",
+	"metafields",
+	"metaobject-list",
+	"metaobject-reference",
+	"metaobject",
+	"microphone",
+	"minimize",
+	"minus-circle",
+	"minus",
+	"mobile",
+	"money-none",
+	"money",
+	"moon",
+	"nature",
+	"note-add",
+	"note",
+	"notification",
+	"order-batches",
+	"order-draft",
+	"order-first",
+	"order-fulfilled",
+	"order-repeat",
+	"order-unfulfilled",
+	"order",
+	"orders-status",
+	"organization",
+	"outdent",
+	"outgoing",
+	"package-fulfilled",
+	"package-on-hold",
+	"package-returned",
+	"package",
+	"page-add",
+	"page-attachment",
+	"page-clock",
+	"page-down",
+	"page-heart",
+	"page-list",
+	"page-reference",
+	"page-remove",
+	"page-report",
+	"page-up",
+	"page",
+	"pagination-end",
+	"pagination-start",
+	"paint-brush-flat",
+	"paint-brush-round",
+	"paper-check",
+	"partially-complete",
+	"passkey",
+	"pause-circle",
+	"payment-capture",
+	"payment",
+	"payout-dollar",
+	"payout-euro",
+	"payout-pound",
+	"payout-rupee",
+	"payout-yen",
+	"payout",
+	"person-add",
+	"person-exit",
+	"person-list",
+	"person-lock",
+	"person-remove",
+	"person-segment",
+	"person",
+	"personalized-text",
+	"phone-in",
+	"phone-out",
+	"phone",
+	"pin",
+	"plan",
+	"play-circle",
+	"play",
+	"plus-circle",
+	"plus",
+	"point-of-sale",
+	"price-list",
+	"print",
+	"product-add",
+	"product-cost",
+	"product-list",
+	"product-reference",
+	"product-remove",
+	"product-return",
+	"product-unavailable",
+	"product",
+	"profile-filled",
+	"profile",
+	"question-circle-filled",
+	"question-circle",
+	"receipt-dollar",
+	"receipt-euro",
+	"receipt-folded",
+	"receipt-paid",
+	"receipt-pound",
+	"receipt-refund",
+	"receipt-rupee",
+	"receipt-yen",
+	"receipt",
+	"receivables",
+	"redo",
+	"referral-code",
+	"refresh",
+	"remove-background",
+	"reorder",
+	"replace",
+	"replay",
+	"reset",
+	"return",
+	"reward",
+	"rocket",
+	"rotate-left",
+	"rotate-right",
+	"sandbox",
+	"save",
+	"savings",
+	"search-list",
+	"search-recent",
+	"search-resource",
+	"search",
+	"select",
+	"send",
+	"settings",
+	"share",
+	"shield-check-mark",
+	"shield-none",
+	"shield-pending",
+	"shield-person",
+	"shipping-label",
+	"shopcodes",
+	"slideshow",
+	"smiley-happy",
+	"smiley-joy",
+	"smiley-neutral",
+	"smiley-sad",
+	"social-ad",
+	"social-post",
+	"sort-ascending",
+	"sort-descending",
+	"sort",
+	"sound",
+	"sports",
+	"star-filled",
+	"star-list",
+	"star",
+	"status-active",
+	"status",
+	"stop-circle",
+	"store-import",
+	"store-managed",
+	"store-online",
+	"store",
+	"sun",
+	"table-masonry",
+	"table",
+	"tablet",
+	"target",
+	"tax",
+	"team",
+	"text-align-center",
+	"text-align-left",
+	"text-align-right",
+	"text-block",
+	"text-bold",
+	"text-color",
+	"text-font-list",
+	"text-font",
+	"text-grammar",
+	"text-in-columns",
+	"text-in-rows",
+	"text-indent-remove",
+	"text-indent",
+	"text-italic",
+	"text-quote",
+	"text-title",
+	"text-underline",
+	"text-with-image",
+	"text",
+	"theme-edit",
+	"theme-store",
+	"theme-template",
+	"theme",
+	"three-d-environment",
+	"thumbs-down",
+	"thumbs-up",
+	"tip-jar",
+	"toggle-off",
+	"toggle-on",
+	"transaction-fee-dollar",
+	"transaction-fee-euro",
+	"transaction-fee-pound",
+	"transaction-fee-rupee",
+	"transaction-fee-yen",
+	"transaction",
+	"transfer-in",
+	"transfer-internal",
+	"transfer-out",
+	"transfer",
+	"truck",
+	"undo",
+	"unknown-device",
+	"unlock",
+	"upload",
+	"variant",
+	"view",
+	"viewport-narrow",
+	"viewport-short",
+	"viewport-tall",
+	"viewport-wide",
+	"wallet",
+	"wand",
+	"watch",
+	"wifi",
+	"work-list",
+	"work",
+	"wrench",
+	"x-circle",
+	"x"
+];
+export type IconType = (typeof privateIconArray)[number];
+export interface ActionSlots {
+	/**
+	 * The primary action to perform, provided as a button or link type element.
+	 */
+	primaryAction?: ComponentChildren;
+	/**
+	 * The secondary actions to perform, provided as button or link type elements.
+	 */
+	secondaryActions?: ComponentChildren;
+}
 interface BannerProps$1 extends GlobalProps, ActionSlots {
 	/**
 	 * The title of the banner.
@@ -669,511 +1174,6 @@ export interface InteractionProps {
 }
 export interface BaseClickableProps extends ButtonBehaviorProps, LinkBehaviorProps {
 }
-declare const privateIconArray: readonly [
-	"adjust",
-	"affiliate",
-	"airplane",
-	"alert-bubble",
-	"alert-circle",
-	"alert-diamond",
-	"alert-location",
-	"alert-octagon-filled",
-	"alert-octagon",
-	"alert-triangle",
-	"app-extension",
-	"apps",
-	"archive",
-	"arrow-down-circle",
-	"arrow-down-right",
-	"arrow-down",
-	"arrow-left-circle",
-	"arrow-left",
-	"arrow-right-circle",
-	"arrow-right",
-	"arrow-up-circle",
-	"arrow-up-right",
-	"arrow-up",
-	"arrows-in-horizontal",
-	"arrows-out-horizontal",
-	"attachment",
-	"automation",
-	"backspace",
-	"bag",
-	"bank",
-	"barcode",
-	"bill",
-	"blank",
-	"blog",
-	"bolt-filled",
-	"bolt",
-	"book-open",
-	"book",
-	"bug",
-	"bullet",
-	"button-press",
-	"button",
-	"calculator",
-	"calendar-check",
-	"calendar-compare",
-	"calendar-list",
-	"calendar-time",
-	"calendar",
-	"camera-flip",
-	"camera",
-	"caret-down",
-	"caret-up",
-	"cart-abandoned",
-	"cart-discount",
-	"cart-down",
-	"cart-sale",
-	"cart-up",
-	"cart",
-	"cash-dollar",
-	"cash-euro",
-	"cash-pound",
-	"cash-rupee",
-	"cash-yen",
-	"catalog-product",
-	"categories",
-	"channels",
-	"chart-cohort",
-	"chart-donut",
-	"chart-funnel",
-	"chart-histogram-first-last",
-	"chart-histogram-first",
-	"chart-histogram-flat",
-	"chart-histogram-full",
-	"chart-histogram-growth",
-	"chart-histogram-last",
-	"chart-histogram-second-last",
-	"chart-horizontal",
-	"chart-line",
-	"chart-popular",
-	"chart-stacked",
-	"chart-vertical",
-	"chat-new",
-	"chat-referral",
-	"chat",
-	"check-circle-filled",
-	"check-circle",
-	"check",
-	"checkbox",
-	"chevron-down-circle",
-	"chevron-down",
-	"chevron-left-circle",
-	"chevron-left",
-	"chevron-right-circle",
-	"chevron-right",
-	"chevron-up-circle",
-	"chevron-up",
-	"circle-dashed",
-	"circle",
-	"clipboard-check",
-	"clipboard-checklist",
-	"clipboard",
-	"clock-revert",
-	"clock",
-	"code-add",
-	"code",
-	"collection-featured",
-	"collection-list",
-	"collection-reference",
-	"collection",
-	"color-none",
-	"color",
-	"compass",
-	"complete",
-	"compose",
-	"confetti",
-	"connect",
-	"content",
-	"contract",
-	"corner-pill",
-	"corner-round",
-	"corner-square",
-	"credit-card-cancel",
-	"credit-card-percent",
-	"credit-card-reader-chip",
-	"credit-card-reader-tap",
-	"credit-card-reader",
-	"credit-card-secure",
-	"credit-card-tap-chip",
-	"credit-card",
-	"crop",
-	"currency-convert",
-	"cursor-banner",
-	"cursor-option",
-	"cursor",
-	"data-presentation",
-	"data-table",
-	"database-add",
-	"database-connect",
-	"database",
-	"delete",
-	"delivered",
-	"delivery",
-	"desktop",
-	"disabled",
-	"discount-add",
-	"discount-code",
-	"discount",
-	"dns-settings",
-	"dock-floating",
-	"dock-side",
-	"domain-landing-page",
-	"domain-new",
-	"domain-redirect",
-	"domain",
-	"download",
-	"drag-drop",
-	"drag-handle",
-	"duplicate",
-	"edit",
-	"email-follow-up",
-	"email-newsletter",
-	"email",
-	"empty",
-	"enabled",
-	"enter",
-	"envelope-soft-pack",
-	"envelope",
-	"exchange",
-	"exit",
-	"export",
-	"external",
-	"eye-check-mark",
-	"eye-dropper-list",
-	"eye-dropper",
-	"eye-first",
-	"eyeglasses",
-	"fav",
-	"favicon",
-	"file-list",
-	"file",
-	"filter",
-	"flag",
-	"flip-horizontal",
-	"flip-vertical",
-	"flower",
-	"folder-add",
-	"folder-down",
-	"folder-remove",
-	"folder-up",
-	"folder",
-	"food",
-	"foreground",
-	"forklift",
-	"forms",
-	"games",
-	"gauge",
-	"geolocation",
-	"gift-card",
-	"gift",
-	"git-branch",
-	"git-commit",
-	"git-repository",
-	"globe-asia",
-	"globe-europe",
-	"globe-lines",
-	"globe-list",
-	"globe",
-	"grid",
-	"hashtag-decimal",
-	"hashtag-list",
-	"hashtag",
-	"heart",
-	"hide-filled",
-	"hide",
-	"home",
-	"icons",
-	"identity-card",
-	"image-add",
-	"image-alt",
-	"image-explore",
-	"image-magic",
-	"image-none",
-	"image-with-text-overlay",
-	"image",
-	"images",
-	"import",
-	"in-progress",
-	"incentive",
-	"incoming",
-	"incomplete",
-	"info",
-	"inventory-updated",
-	"inventory",
-	"iq",
-	"key",
-	"keyboard-filled",
-	"keyboard-hide",
-	"keyboard",
-	"label-printer",
-	"language-translate",
-	"language",
-	"layout-block",
-	"layout-buy-button-horizontal",
-	"layout-buy-button-vertical",
-	"layout-buy-button",
-	"layout-column-1",
-	"layout-columns-2",
-	"layout-columns-3",
-	"layout-footer",
-	"layout-header",
-	"layout-logo-block",
-	"layout-popup",
-	"layout-rows-2",
-	"layout-section",
-	"layout-sidebar-left",
-	"layout-sidebar-right",
-	"lightbulb",
-	"link-list",
-	"link",
-	"list-bulleted",
-	"list-numbered",
-	"live",
-	"location-none",
-	"location",
-	"lock",
-	"map",
-	"markets-euro",
-	"markets-rupee",
-	"markets-yen",
-	"markets",
-	"maximize",
-	"measurement-size-list",
-	"measurement-size",
-	"measurement-volume-list",
-	"measurement-volume",
-	"measurement-weight-list",
-	"measurement-weight",
-	"media-receiver",
-	"megaphone",
-	"mention",
-	"menu-horizontal",
-	"menu-vertical",
-	"menu",
-	"merge",
-	"metafields",
-	"metaobject-list",
-	"metaobject-reference",
-	"metaobject",
-	"microphone",
-	"minimize",
-	"minus-circle",
-	"minus",
-	"mobile",
-	"money-none",
-	"money",
-	"moon",
-	"nature",
-	"note-add",
-	"note",
-	"notification",
-	"order-batches",
-	"order-draft",
-	"order-first",
-	"order-fulfilled",
-	"order-repeat",
-	"order-unfulfilled",
-	"order",
-	"orders-status",
-	"organization",
-	"outdent",
-	"outgoing",
-	"package-fulfilled",
-	"package-on-hold",
-	"package-returned",
-	"package",
-	"page-add",
-	"page-attachment",
-	"page-clock",
-	"page-down",
-	"page-heart",
-	"page-list",
-	"page-reference",
-	"page-remove",
-	"page-report",
-	"page-up",
-	"page",
-	"pagination-end",
-	"pagination-start",
-	"paint-brush-flat",
-	"paint-brush-round",
-	"paper-check",
-	"partially-complete",
-	"passkey",
-	"pause-circle",
-	"payment-capture",
-	"payment",
-	"payout-dollar",
-	"payout-euro",
-	"payout-pound",
-	"payout-rupee",
-	"payout-yen",
-	"payout",
-	"person-add",
-	"person-exit",
-	"person-list",
-	"person-lock",
-	"person-remove",
-	"person-segment",
-	"person",
-	"personalized-text",
-	"phone-in",
-	"phone-out",
-	"phone",
-	"pin",
-	"plan",
-	"play-circle",
-	"play",
-	"plus-circle",
-	"plus",
-	"point-of-sale",
-	"price-list",
-	"print",
-	"product-add",
-	"product-cost",
-	"product-list",
-	"product-reference",
-	"product-remove",
-	"product-return",
-	"product-unavailable",
-	"product",
-	"profile-filled",
-	"profile",
-	"question-circle-filled",
-	"question-circle",
-	"receipt-dollar",
-	"receipt-euro",
-	"receipt-folded",
-	"receipt-paid",
-	"receipt-pound",
-	"receipt-refund",
-	"receipt-rupee",
-	"receipt-yen",
-	"receipt",
-	"receivables",
-	"redo",
-	"referral-code",
-	"refresh",
-	"remove-background",
-	"reorder",
-	"replace",
-	"replay",
-	"reset",
-	"return",
-	"reward",
-	"rocket",
-	"rotate-left",
-	"rotate-right",
-	"sandbox",
-	"save",
-	"savings",
-	"search-list",
-	"search-recent",
-	"search-resource",
-	"search",
-	"select",
-	"send",
-	"settings",
-	"share",
-	"shield-check-mark",
-	"shield-none",
-	"shield-pending",
-	"shield-person",
-	"shipping-label",
-	"shopcodes",
-	"slideshow",
-	"smiley-happy",
-	"smiley-joy",
-	"smiley-neutral",
-	"smiley-sad",
-	"social-ad",
-	"social-post",
-	"sort-ascending",
-	"sort-descending",
-	"sort",
-	"sound",
-	"sports",
-	"star-filled",
-	"star-list",
-	"star",
-	"status-active",
-	"status",
-	"stop-circle",
-	"store-import",
-	"store-managed",
-	"store-online",
-	"store",
-	"sun",
-	"table-masonry",
-	"table",
-	"tablet",
-	"target",
-	"tax",
-	"team",
-	"text-align-center",
-	"text-align-left",
-	"text-align-right",
-	"text-block",
-	"text-bold",
-	"text-color",
-	"text-font-list",
-	"text-font",
-	"text-grammar",
-	"text-in-columns",
-	"text-in-rows",
-	"text-indent-remove",
-	"text-indent",
-	"text-italic",
-	"text-quote",
-	"text-title",
-	"text-underline",
-	"text-with-image",
-	"text",
-	"theme-edit",
-	"theme-store",
-	"theme-template",
-	"theme",
-	"three-d-environment",
-	"thumbs-down",
-	"thumbs-up",
-	"tip-jar",
-	"toggle-off",
-	"toggle-on",
-	"transaction-fee-dollar",
-	"transaction-fee-euro",
-	"transaction-fee-pound",
-	"transaction-fee-rupee",
-	"transaction-fee-yen",
-	"transaction",
-	"transfer-in",
-	"transfer-internal",
-	"transfer-out",
-	"transfer",
-	"truck",
-	"undo",
-	"unknown-device",
-	"unlock",
-	"upload",
-	"variant",
-	"view",
-	"viewport-narrow",
-	"viewport-short",
-	"viewport-tall",
-	"viewport-wide",
-	"wallet",
-	"wand",
-	"watch",
-	"wifi",
-	"work-list",
-	"work",
-	"wrench",
-	"x-circle",
-	"x"
-];
-export type IconType = (typeof privateIconArray)[number];
 interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 	/**
 	 * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
@@ -1222,6 +1222,24 @@ export interface BaseInputProps {
 	 */
 	disabled?: boolean;
 }
+export interface InputProps extends BaseInputProps {
+	/**
+	 * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+	 */
+	onChange?: (newValue: string) => void;
+	/**
+	 * Callback when the user makes any changes in the field.
+	 */
+	onInput?: (newValue: string) => void;
+	/**
+	 * The current value for the field. If omitted, the field will be empty.
+	 */
+	value?: string;
+	/**
+	 * The default value for the field.
+	 */
+	defaultValue?: string;
+}
 export interface FileInputProps<T extends File[] | File = File[]> extends BaseInputProps {
 	/**
 	 * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
@@ -1259,6 +1277,81 @@ export interface BasicFieldProps extends FieldErrorProps, LabelAccessibilityVisi
 	 */
 	label?: string;
 }
+export interface FieldDetailsProps {
+	/**
+	 * Additional text to provide context or guidance for the field.
+	 * This text is displayed along with the field and its label
+	 * to offer more information or instructions to the user.
+	 *
+	 * This will also be exposed to screen reader users.
+	 */
+	details?: string;
+}
+export interface FieldProps extends BasicFieldProps, InputProps, FocusEventProps, FieldDetailsProps {
+	/**
+	 * A short hint that describes the expected value of the field.
+	 */
+	placeholder?: string;
+}
+export interface BaseTextFieldProps extends FieldProps {
+	/**
+	 * The field cannot be edited by the user. It is focusable will be announced by screen readers.
+	 */
+	readOnly?: boolean;
+}
+export interface FieldDecorationProps {
+	/**
+	 * A value to be displayed immediately after the editable portion of the field.
+	 *
+	 * This is useful for displaying an implied part of the value, such as "@shopify.com", or "%".
+	 *
+	 * This cannot be edited by the user, and it isn't included in the value of the field.
+	 *
+	 * It may not be displayed until the user has interacted with the input.
+	 * For example, an inline label may take the place of the suffix until the user focuses the input.
+	 *
+	 * @default ''
+	 */
+	suffix?: string;
+	/**
+	 * A value to be displayed immediately before the editable portion of the field.
+	 *
+	 * This is useful for displaying an implied part of the value, such as "https://" or "+353".
+	 *
+	 * This cannot be edited by the user, and it isn't included in the value of the field.
+	 *
+	 * It may not be displayed until the user has interacted with the input.
+	 * For example, an inline label may take the place of the prefix until the user focuses the input.
+	 *
+	 * @default ''
+	 */
+	prefix?: string;
+	/**
+	 * The type of icon to be displayed in the field.
+	 *
+	 * @default ''
+	 */
+	icon?: IconType;
+	/**
+	 * Additional content to be displayed in the field.
+	 * Commonly used to display an icon that activates a tooltip providing more information.
+	 */
+	accessory?: ComponentChildren;
+}
+export interface MinMaxLengthProps {
+	/**
+	 * Specifies the maximum number of characters allowed.
+	 *
+	 * @default Infinity
+	 */
+	maxLength?: number;
+	/**
+	 * Specifies the min number of characters allowed.
+	 *
+	 * @default 0
+	 */
+	minLength?: number;
+}
 interface ClipboardItemProps$1 extends GlobalProps {
 	/**
 	 * Plain text to be written to the clipboard.
@@ -1275,6 +1368,47 @@ interface ClipboardItemProps$1 extends GlobalProps {
 	 */
 	onCopyError?: () => void;
 }
+export interface AutocompleteProps<AutocompleteField extends AnyAutocompleteField> {
+	/**
+	 * A hint as to the intended content of the field.
+	 *
+	 * When set to `on` (the default), this property indicates that the field should support
+	 * autofill, but you do not have any more semantic information on the intended
+	 * contents.
+	 *
+	 * When set to `off`, you are indicating that this field contains sensitive
+	 * information, or contents that are never saved, like one-time codes.
+	 *
+	 * Alternatively, you can provide value which describes the
+	 * specific data you would like to be entered into this field during autofill.
+	 *
+	 * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
+	 *
+	 * @default 'tel' for PhoneField
+	 * @default 'email' for EmailField
+	 * @default 'url' for URLField
+	 * @default 'on' for everything else
+	 */
+	autocomplete?: AutocompleteField | `${AutocompleteSection} ${AutocompleteField}` | `${AutocompleteGroup} ${AutocompleteField}` | `${AutocompleteSection} ${AutocompleteGroup} ${AutocompleteField}` | "on" | "off";
+}
+/**
+ * The “section” scopes the autocomplete data that should be inserted
+ * to a specific area of the page.
+ *
+ * Commonly used when there are multiple fields with the same autocomplete needs
+ * in the same page. For example: 2 shipping address forms in the same page.
+ */
+export type AutocompleteSection = `section-${string}`;
+/**
+ * The contact information group the autocomplete data should be sourced from.
+ */
+export type AutocompleteGroup = "shipping" | "billing";
+/**
+ * The contact information subgroup the autocomplete data should be sourced from.
+ */
+export type AutocompleteAddressGroup = "fax" | "home" | "mobile" | "pager";
+export type AnyAutocompleteField = "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "current-password" | "email" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "new-password" | "nickname" | "one-time-code" | "organization-title" | "organization" | "photo" | "postal-code" | "sex" | "street-address" | "transaction-amount" | "transaction-currency" | "url" | "username" | "bday-day" | "bday-month" | "bday-year" | "bday" | "cc-additional-name" | "cc-expiry-month" | "cc-expiry-year" | "cc-expiry" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-csc" | "cc-type" | `${AutocompleteAddressGroup} email` | "impp" | `${AutocompleteAddressGroup} impp` | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local-prefix" | "tel-local-suffix" | "tel-local" | "tel-national" | `${AutocompleteAddressGroup} tel` | `${AutocompleteAddressGroup} tel-area-code` | `${AutocompleteAddressGroup} tel-country-code` | `${AutocompleteAddressGroup} tel-extension` | `${AutocompleteAddressGroup} tel-local-prefix` | `${AutocompleteAddressGroup} tel-local-suffix` | `${AutocompleteAddressGroup} tel-local` | `${AutocompleteAddressGroup} tel-national`;
+export type TextAutocompleteField = ExtractStrict<AnyAutocompleteField, "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "nickname" | "one-time-code" | "organization-title" | "organization" | "postal-code" | "sex" | "street-address" | "transaction-currency" | "username" | "cc-name" | "cc-given-name" | "cc-additional-name" | "cc-family-name" | "cc-type">;
 interface DropZoneProps$1 extends GlobalProps, FileInputProps<File[]>, BasicFieldProps {
 	/**
 	 * A string representing the types of files that are accepted by the dropzone.
@@ -1885,6 +2019,8 @@ export type TextType =
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
  */
  | "generic";
+interface TextFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<TextAutocompleteField>, FieldDecorationProps {
+}
 interface TimeProps$1 {
 	/**
 	 * The content of the Time.
@@ -2144,6 +2280,20 @@ declare global {
     }
 }
 
+interface TextFieldProps extends Omit<TextFieldProps$1, 'icon'> {
+}
+interface TextFieldElement extends Omit<TextFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+    onblur: TextFieldProps['onBlur'];
+    onchange: TextFieldProps['onChange'];
+    onfocus: TextFieldProps['onFocus'];
+    oninput: TextFieldProps['onInput'];
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        's-text-field': TextFieldElement;
+    }
+}
+
 interface TimeProps extends Pick<TimeProps$1, 'dateTime'> {
 }
 interface TimeElement extends TimeProps, Omit<HTMLElement, 'id'> {
@@ -2164,4 +2314,4 @@ declare global {
     }
 }
 
-export type { AbbreviationProps, BannerProps, BoxProps, ButtonProps, ClipboardItemProps, DropZoneProps, FormProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, OrderedListProps, ParagraphProps, PaymentIconProps, ProgressProps, SpinnerProps, StackProps, TextProps, TimeProps, UnorderedListProps };
+export type { AbbreviationProps, BannerProps, BoxProps, ButtonProps, ClipboardItemProps, DropZoneProps, FormProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, OrderedListProps, ParagraphProps, PaymentIconProps, ProgressProps, SpinnerProps, StackProps, TextFieldProps, TextProps, TimeProps, UnorderedListProps };
