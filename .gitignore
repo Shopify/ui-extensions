@@ -3,13 +3,13 @@ node_modules
 .sewing-kit
 .DS_STORE
 **/build
-packages/*/*.esnext
-packages/*/*.node
-packages/*/*.mjs
-packages/*/*.d.ts
-packages/*/*.js
-packages/*/bin
-!packages/*/.eslintrc.js
+packages/**/*.esnext
+packages/**/*.node
+packages/**/*.mjs
+packages/**/*.d.ts
+packages/**/*.js
+packages/**/bin
+!packages/**/.eslintrc.js
 *.log
 packages/ui-extensions/docs/**/generated
 
