@@ -103,11 +103,7 @@
     "@remote-ui/async-subscription": "^2.1.16",
     "@shopify/generate-docs": "0.16.4",
     "typescript": "^4.9.0",
-    "@faker-js/faker": "^8.4.1",
-    "@shopify/ui-api-design": "0.37.0",
-    "dts-bundle-generator": "^9.5.1",
-    "rollup": "^4.32.1",
-    "rollup-plugin-dts": "^6.2.1"
+    "@faker-js/faker": "^8.4.1"
   },
   "optionalDependencies": {
     "preact": "*",
