@@ -3,15 +3,12 @@ import {readFileSync, writeFileSync, unlinkSync} from 'node:fs';
 import {generateDtsBundle} from 'dts-bundle-generator';
 
 const DISABLE_LINTING_COMMENT = `/* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable line-comment-position */
 /* eslint-disable @typescript-eslint/unified-signatures */
 /* eslint-disable no-var */
-/* eslint-disable import/no-deprecated */
-/* eslint-disable import/namespace */
-/* eslint-disable import/no-deprecated */`;
+/* eslint-disable import/namespace */`;
 const DOM_TYPE_REFERENCE =
   '// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment\n/// <reference lib="DOM" />';
 const IMPORT_REGEX =
@@ -198,10 +195,7 @@ function renameInterfaces(content, interfacesToRename) {
   let match;
   while ((match = interfacesToRename.pop())) {
     const matchRegex = new RegExp(
-      `(?<!\\$|[a-zA-Z0-9])${match.original.replace(
-        '$',
-        '\\$',
-      )}(?!\\$|[a-zA-Z0-9])`,
+      `(?<!\\$|[a-zA-Z0-9])${match.original.replace('$', '\\$')}(?!\\$|[a-zA-Z0-9])`,
       'g',
     );
     replacedContent = replacedContent.replaceAll(matchRegex, match.alias);

@@ -72,7 +72,8 @@ function createSharedImportsAndRemoteDefinitions({sharedFilePath}) {
 }
 
 function buildSingleComponentDts({filePath, sharedFileName}) {
-  const outputPath = filePath.replace(/\.ts$/, '.d.ts');
+  const componentName = filePath.split('/').pop().replace(/\.ts$/, '');
+  const outputPath = join(COMPONENTS_ROOT, `${componentName}.d.ts`);
 
   if (existsSync(outputPath)) {
     unlinkSync(outputPath);
