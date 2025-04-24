@@ -38,6 +38,18 @@ const data: LandingTemplateSchema = {
           url: '/docs/api/pos-ui-extensions/components',
           type: 'blocks',
         },
+        {
+          subtitle: 'App authentication',
+          name: "Make authenticated requests to your app's backend",
+          url: '#app-authentication',
+          type: 'tool',
+        },
+        {
+          subtitle: 'Direct API access',
+          name: 'Access the Shopify GraphQL API directly',
+          url: '#direct-api-access',
+          type: 'tool',
+        },
       ],
     },
     {
@@ -57,6 +69,73 @@ const data: LandingTemplateSchema = {
           name: 'Use the Figma UI kit to design your extension.',
           url: 'https://www.figma.com/community/file/1493617217926107705',
           type: 'star',
+        },
+      ],
+    },
+    {
+      type: 'Generic',
+      title: 'App Authentication',
+      sectionNotice: [
+        {
+          title: 'Note',
+          type: 'info',
+          sectionContent: `App Authentication is available as of POS version 10.2.0 for extensions targeting \`unstable\`. This feature will be available for all extensions targeting stable API versions in the future.`,
+        },
+      ],
+      sectionContent:
+        "POS UI extensions can also make authenticated calls to your app's backend. When you use `fetch()` to make a request to your app's configured auth domain or any of its subdomains, an `Authorization` header is automatically added with a Shopify [OpenID Connect ID Token (formerly known as a Session Token)](https://shopify.dev/docs/api/app-bridge-library/reference/id-token). There's no need to manually manage ID tokens.\n\nRelative URLs passed to `fetch()` are resolved against your app's `app_url`. This means if your app's backend is on the same domain as your `app_url`, you can make requests to it using `fetch('/path')`.\n\nIf you need to make requests to a different domain, you can use the [`session.getSessionToken()` method](/docs/api/pos-ui-extensions/apis/session-api#sessionapi-propertydetail-getsessiontoken) to retrieve the ID token and manually add it to your request headers.",
+      anchorLink: 'app-authentication',
+      codeblock: {
+        title: "Make requests to your app's backend",
+        tabs: [
+          {
+            code: '../examples/authenticated-fetch/authenticated-fetch.tsx',
+            language: 'tsx',
+            title: 'React',
+          },
+          {
+            code: '../examples/authenticated-fetch/authenticated-fetch.ts',
+            language: 'ts',
+            title: 'TS',
+          },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
+      title: 'Direct API access',
+      sectionNotice: [
+        {
+          title: 'Note',
+          type: 'info',
+          sectionContent: `Direct API access is available as of POS version 10.2.0 for extensions targeting \`unstable\`. This feature will be available for all extensions targeting stable API versions in the future.`,
+        },
+      ],
+      sectionContent:
+        "You can make Shopify Admin API requests directly from your extension using the standard [web fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)!\n\nAny `fetch()` calls from your extension to Shopify's Admin GraphQL API are automatically authenticated by default. These calls are fast too, because Shopify handles requests directly.\n\nDirect API requests use [online access](https://shopify.dev/docs/apps/build/authentication-authorization/access-token-types/online-access-tokens) mode by default.",
+      anchorLink: 'direct-api-access',
+
+      codeblock: {
+        title: 'Query Shopify data',
+        tabs: [
+          {
+            code: '../examples/direct-api-access/direct-api-access.tsx',
+            language: 'tsx',
+            title: 'React',
+          },
+          {
+            code: '../examples/direct-api-access/direct-api-access.ts',
+            language: 'ts',
+            title: 'TS',
+          },
+        ],
+      },
+      sectionCard: [
+        {
+          name: 'Learn more about access scopes',
+          subtitle: 'Developer guide',
+          url: '/docs/api/usage/access-scopes',
+          type: 'information',
         },
       ],
     },

@@ -93,6 +93,8 @@ export type {
   Address,
 } from './types/cart';
 
+export type {DirectApiRequestBody} from './types/direct-api-request-body';
+
 export type {
   ShippingLine,
   CalculatedShippingLine,
