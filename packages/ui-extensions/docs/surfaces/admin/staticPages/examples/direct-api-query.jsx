@@ -1,13 +1,13 @@
-import {reactExtension, useApi, Text} from '@shopify/ui-extensions-react/admin';
-import {useEffect, useState} from 'react';
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
 
-const TARGET = 'admin.product-details.block.render';
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
-export default reactExtension(TARGET, () => <App />);
-
-function App() {
+function Extension() {
   // Contextual "input" data passed to this extension:
-  const {data, query} = useApi(TARGET);
+  const {data, query} = shopify;
 
   const [product, setProduct] = useState();
   useEffect(() => {
@@ -23,5 +23,9 @@ function App() {
     ).then(({data}) => setProduct(data.product));
   }, [data]);
 
-  return <Text strong>The selected product title is {product?.title}</Text>;
+  return (
+    <s-admin-block title="Product Info">
+      <s-text>The selected product title is {product?.title}</s-text>
+    </s-admin-block>
+  );
 }
