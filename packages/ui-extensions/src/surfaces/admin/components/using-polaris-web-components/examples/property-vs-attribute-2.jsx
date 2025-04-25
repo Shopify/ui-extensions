@@ -5,4 +5,4 @@
 <s-checkbox checked={true}>...</s-checkbox>
 
 // This does not work - complex values are set as properties
-<s-choicelist values={['Shopify', 'Shopify Plus']}>...</s-choicelist>
+<s-choice-list values={['Shopify', 'Shopify Plus']}>...</s-choice-list>
