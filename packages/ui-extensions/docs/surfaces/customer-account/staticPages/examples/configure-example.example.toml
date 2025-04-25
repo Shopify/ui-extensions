@@ -1,4 +1,4 @@
-api_version = "2025-07-rc"
+api_version = "2025-07"
 
 [[extensions]]
 name = "My customer account ui extension"
