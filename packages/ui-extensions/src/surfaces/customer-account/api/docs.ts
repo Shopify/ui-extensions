@@ -108,7 +108,7 @@ export interface Docs_Page_Button_PrimaryAction
 export interface Docs_Page_Button_SecondaryAction
   extends Pick<
     ButtonProps,
-    'onClick' | 'loading' | 'accessibilityLabel' | 'href'
+    'onClick' | 'loading' | 'disabled' | 'accessibilityLabel' | 'href'
   > {}
 
 export interface Docs_Page_Button_BreadcrumbAction
