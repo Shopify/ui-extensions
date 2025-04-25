@@ -30,7 +30,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'sw-default.png',
     codeblock: {
       title: '',
       tabs: [
