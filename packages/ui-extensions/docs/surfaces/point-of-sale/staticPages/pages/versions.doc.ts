@@ -45,7 +45,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
         {
           type: 'critical',
           title: 'Not yet supported',
-          sectionContent: `This version is not yet supported by POS. Deploying extensions using this version will result in POS refusing to run them. Please wait to deploy extensions targeting this version.`,
+          sectionContent: `This version is not yet compatible with POS. Extensions targeting this version will be rejected by POS and will not run. Please wait for a compatible POS update before deploying extensions targeting this version.`,
         },
       ],
       sectionContent: `
