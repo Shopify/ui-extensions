@@ -4,6 +4,9 @@ const data: AdminReferenceEntityTemplateSchema = {
   name: 'Page',
   description: `
   Use \`s-page\` as the main container for placing content in your app. Page comes with preset layouts and automatically adds spacing between elements. 
+
+  #### With an aside
+  Use the \`aside\` slot to add an aside to the page. The aside will be displayed on the right side of the page and wraps below the main content on mobile.
   
   #### Useful for:
   - Creating flexible, responsive page layouts.
