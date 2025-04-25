@@ -6,9 +6,7 @@
   "htmlWhitespaceSensitivity": "ignore",
   "overrides": [
     {
-      "files": [
-        "packages/ui-extensions/docs/**/*.example.*"
-      ],
+      "files": ["packages/ui-extensions/docs/**/*.example.*"],
       "options": {
         "printWidth": 50
       }
