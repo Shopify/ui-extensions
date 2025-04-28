@@ -72,7 +72,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'You can use the count option to get a pluralized string based on the current locale.',
+          'You can use the count option in the translate method to get a pluralized string based on the current locale.',
         codeblock: {
           title: 'Translating strings with pluralization',
           tabs: [
@@ -88,6 +88,30 @@ const data: ReferenceEntityTemplateSchema = {
             },
             {
               code: '../examples/apis/translate-pluralization.locale.example.json',
+              language: 'json',
+              title: 'locales/en.default.json',
+            },
+          ],
+        },
+      },
+      {
+        description:
+          'You can use access the current country of a customer to implement country specific logic.',
+        codeblock: {
+          title: 'Getting the country of the customer',
+          tabs: [
+            {
+              code: '../examples/apis/localization-country.example.tsx',
+              language: 'jsx',
+              title: 'React',
+            },
+            {
+              code: '../examples/apis/localization-country.example.ts',
+              language: 'js',
+              title: 'JavaScript',
+            },
+            {
+              code: '../examples/apis/localization-country.locale.example.json',
               language: 'json',
               title: 'locales/en.default.json',
             },
