@@ -28,6 +28,35 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseAuthenticatedAccountPurchasingCompanyGeneratedType',
     },
   ],
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'You can use access the company and location of the authenticated business customer to implement location specific logic.',
+        codeblock: {
+          title: 'Getting the company and location of the customer',
+          tabs: [
+            {
+              code: '../examples/apis/authenticated-account-company-and-location.example.tsx',
+              language: 'jsx',
+              title: 'React',
+            },
+            {
+              code: '../examples/apis/authenticated-account-company-and-location.example.ts',
+              language: 'js',
+              title: 'JavaScript',
+            },
+            {
+              code: '../examples/apis/authenticated-account-company-and-location.locale.example.json',
+              language: 'json',
+              title: 'locales/en.default.json',
+            },
+          ],
+        },
+      },
+    ],
+  },
   related: [],
 };
 
