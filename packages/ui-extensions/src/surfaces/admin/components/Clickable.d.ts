@@ -1,4 +1,4 @@
-/** VERSION: 0.49.0 **/
+/** VERSION: 0.50.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -15,6 +15,25 @@ import type {
 } from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
+/**
+ * Makes a property's value potentially responsive.
+ *
+ * @example
+ * type Example = {
+ *   color: boolean;
+ *   margin: string;
+ *   padding: number;
+ * }
+ * type Result = MakeResponsivePick<Example, 'color' | 'margin' | 'padding'>;
+ * // Result = {
+ *   color: boolean | `@container${string}`;
+ *   margin: string | `@container${string}`;
+ *   padding: number | `@container${string}`;
+ * }
+ */
+export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
+  [P in TProperty]: MakeResponsive<TType[P]>;
+};
 
 export type RequiredBoxProps = Required<BoxProps$1>;
 export type BoxBorderRadii = Extract<
@@ -34,36 +53,39 @@ export type BoxBorderStyles = Extract<
 >;
 export interface BoxProps
   extends Pick<
-    RequiredBoxProps,
-    | 'accessibilityLabel'
-    | 'accessibilityRole'
-    | 'accessibilityVisibility'
-    | 'background'
-    | 'blockSize'
-    | 'border'
-    | 'borderColor'
-    | 'borderRadius'
-    | 'borderStyle'
-    | 'borderWidth'
-    | 'display'
-    | 'inlineSize'
-    | 'maxBlockSize'
-    | 'maxInlineSize'
-    | 'minBlockSize'
-    | 'minInlineSize'
-    | 'overflow'
-  > {
+      RequiredBoxProps,
+      | 'accessibilityLabel'
+      | 'accessibilityRole'
+      | 'accessibilityVisibility'
+      | 'background'
+      | 'blockSize'
+      | 'border'
+      | 'borderColor'
+      | 'borderRadius'
+      | 'borderStyle'
+      | 'borderWidth'
+      | 'display'
+      | 'inlineSize'
+      | 'maxBlockSize'
+      | 'maxInlineSize'
+      | 'minBlockSize'
+      | 'minInlineSize'
+      | 'overflow'
+    >,
+    MakeResponsivePick<
+      RequiredBoxProps,
+      | 'padding'
+      | 'paddingBlock'
+      | 'paddingBlockStart'
+      | 'paddingBlockEnd'
+      | 'paddingInline'
+      | 'paddingInlineStart'
+      | 'paddingInlineEnd'
+    > {
   background: Extract<
     RequiredBoxProps['background'],
     'transparent' | 'base' | 'subdued' | 'strong'
   >;
-  padding: MakeResponsive<RequiredBoxProps['padding']>;
-  paddingBlock: MakeResponsive<RequiredBoxProps['paddingBlock']>;
-  paddingBlockStart: MakeResponsive<RequiredBoxProps['paddingBlockStart']>;
-  paddingBlockEnd: MakeResponsive<RequiredBoxProps['paddingBlockEnd']>;
-  paddingInline: MakeResponsive<RequiredBoxProps['paddingInline']>;
-  paddingInlineStart: MakeResponsive<RequiredBoxProps['paddingInlineStart']>;
-  paddingInlineEnd: MakeResponsive<RequiredBoxProps['paddingInlineEnd']>;
   borderWidth:
     | MaybeAllValuesShorthandProperty<
         Extract<
@@ -143,6 +165,7 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
+  #private;
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -216,7 +239,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
 declare const Clickable_base: (abstract new (
   renderImpl: RenderImpl,
 ) => BoxElement & PreactOverlayControlProps) &
-  Pick<typeof BoxElement, 'observedAttributes' | 'prototype'>;
+  Pick<typeof BoxElement, 'prototype' | 'observedAttributes'>;
 declare class Clickable extends Clickable_base implements ClickableProps {
   accessor disabled: ClickableProps['disabled'];
   accessor loading: ClickableProps['loading'];

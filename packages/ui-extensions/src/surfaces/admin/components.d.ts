@@ -1,4 +1,4 @@
-/** VERSION: 0.49.0 **/
+/** VERSION: 0.50.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -102,6 +102,7 @@ declare const privateIconArray: readonly [
   'book',
   'bug',
   'bullet',
+  'business-entity',
   'button-press',
   'button',
   'calculator',
@@ -396,6 +397,7 @@ declare const privateIconArray: readonly [
   'paper-check',
   'partially-complete',
   'passkey',
+  'paste',
   'pause-circle',
   'payment-capture',
   'payment',
@@ -421,6 +423,8 @@ declare const privateIconArray: readonly [
   'play-circle',
   'play',
   'plus-circle',
+  'plus-circle-down',
+  'plus-circle-up',
   'plus',
   'point-of-sale',
   'price-list',
@@ -1604,9 +1608,9 @@ interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
 }
 interface ChoiceListProps$1
   extends GlobalProps,
+    Pick<BasicFieldProps, 'label' | 'labelAccessibilityVisibility' | 'error'>,
     MultipleInputProps,
-    FieldDetailsProps,
-    FieldErrorProps {
+    FieldDetailsProps {
   /**
    * Whether multiple choices can be selected.
    *
@@ -2035,6 +2039,7 @@ export interface BaseTypographyProps {
    * - `ltr`: languages written from left to right (e.g. English)
    * - `rtl`: languages written from right to left (e.g. Arabic)
    * - `auto`: the user agent determines the direction based on the content
+   * - `''`: direction is inherited from parent elements (equivalent to not setting the attribute)
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir
    *
@@ -2184,13 +2189,10 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
   /**
    * The aspect ratio of the image.
    *
-   * - `auto`: the image will be displayed at its natural aspect ratio.
+   * The rendering of the image will depend on the `inlineSize` value:
    *
-   * The ratio will be respected even if the image hasn’t loaded yet unless it is set to `auto`. In that case, the
-   * rendering will depends on the `inlineSize` value:
-   *
-   * - `inlineSize="fill"`: the aspect ratio will be `1/1`.
-   * - `inlineSize="auto"`: the image will not render until it has loaded.
+   * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
+   * - `inlineSize="auto"`: the image will not render until it has loaded and at this point, it will respect the aspect ratio specified.
    *
    * Getters for this value should return `auto` or the ratio in `number / number` form. Input fractions should not be ‘simplified’.
    * For example, if the value is set as `50 /    100`, the getter returns `50 / 100`.
@@ -2646,9 +2648,11 @@ interface StackProps$1 extends BaseBoxPropsWithRole, GapProps {
   /**
    * Sets how the Stack's children are placed within the Stack.
    *
-   * @default 'inline'
+   * @default 'block'
+   *
+   * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
    */
-  direction?: 'inline' | 'block';
+  direction?: 'block' | 'inline';
   /**
    * Aligns the Stack along the main axis.
    *
@@ -3226,6 +3230,7 @@ type IconType$1 =
   | 'paint-brush-round'
   | 'paper-check'
   | 'passkey'
+  | 'paste'
   | 'pause-circle'
   | 'payment'
   | 'payment-capture'
@@ -3252,6 +3257,8 @@ type IconType$1 =
   | 'play-circle'
   | 'plus'
   | 'plus-circle'
+  | 'plus-circle-down'
+  | 'plus-circle-up'
   | 'point-of-sale'
   | 'price-list'
   | 'print'
@@ -3544,7 +3551,7 @@ export interface Provider<T>
     value: T;
     children?: ComponentChildren$1;
   }> {}
-export interface Context<T> {
+export interface Context<T> extends Provider<T> {
   Consumer: Consumer<T>;
   Provider: Provider<T>;
   displayName?: string;
@@ -3748,6 +3755,25 @@ declare module 'preact' {
 }
 
 type MakeResponsive<T> = T | `@container${string}`;
+/**
+ * Makes a property's value potentially responsive.
+ *
+ * @example
+ * type Example = {
+ *   color: boolean;
+ *   margin: string;
+ *   padding: number;
+ * }
+ * type Result = MakeResponsivePick<Example, 'color' | 'margin' | 'padding'>;
+ * // Result = {
+ *   color: boolean | `@container${string}`;
+ *   margin: string | `@container${string}`;
+ *   padding: number | `@container${string}`;
+ * }
+ */
+type MakeResponsivePick<TType, TProperty extends keyof TType> = {
+  [P in TProperty]: MakeResponsive<TType[P]>;
+};
 
 type RequiredBoxProps = Required<BoxProps$1>;
 type BoxBorderRadii = Extract<
@@ -3767,36 +3793,39 @@ type BoxBorderStyles = Extract<
 >;
 interface BoxProps
   extends Pick<
-    RequiredBoxProps,
-    | 'accessibilityLabel'
-    | 'accessibilityRole'
-    | 'accessibilityVisibility'
-    | 'background'
-    | 'blockSize'
-    | 'border'
-    | 'borderColor'
-    | 'borderRadius'
-    | 'borderStyle'
-    | 'borderWidth'
-    | 'display'
-    | 'inlineSize'
-    | 'maxBlockSize'
-    | 'maxInlineSize'
-    | 'minBlockSize'
-    | 'minInlineSize'
-    | 'overflow'
-  > {
+      RequiredBoxProps,
+      | 'accessibilityLabel'
+      | 'accessibilityRole'
+      | 'accessibilityVisibility'
+      | 'background'
+      | 'blockSize'
+      | 'border'
+      | 'borderColor'
+      | 'borderRadius'
+      | 'borderStyle'
+      | 'borderWidth'
+      | 'display'
+      | 'inlineSize'
+      | 'maxBlockSize'
+      | 'maxInlineSize'
+      | 'minBlockSize'
+      | 'minInlineSize'
+      | 'overflow'
+    >,
+    MakeResponsivePick<
+      RequiredBoxProps,
+      | 'padding'
+      | 'paddingBlock'
+      | 'paddingBlockStart'
+      | 'paddingBlockEnd'
+      | 'paddingInline'
+      | 'paddingInlineStart'
+      | 'paddingInlineEnd'
+    > {
   background: Extract<
     RequiredBoxProps['background'],
     'transparent' | 'base' | 'subdued' | 'strong'
   >;
-  padding: MakeResponsive<RequiredBoxProps['padding']>;
-  paddingBlock: MakeResponsive<RequiredBoxProps['paddingBlock']>;
-  paddingBlockStart: MakeResponsive<RequiredBoxProps['paddingBlockStart']>;
-  paddingBlockEnd: MakeResponsive<RequiredBoxProps['paddingBlockEnd']>;
-  paddingInline: MakeResponsive<RequiredBoxProps['paddingInline']>;
-  paddingInlineStart: MakeResponsive<RequiredBoxProps['paddingInlineStart']>;
-  paddingInlineEnd: MakeResponsive<RequiredBoxProps['paddingInlineEnd']>;
   borderWidth:
     | MaybeAllValuesShorthandProperty<
         Extract<
@@ -3912,7 +3941,7 @@ interface PreactOverlayControlProps
 declare const Button_base: (abstract new (
   args_0: RenderImpl,
 ) => PreactCustomElement & PreactOverlayControlProps) &
-  Pick<typeof PreactCustomElement, 'observedAttributes' | 'prototype'>;
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
 declare class Button extends Button_base implements ButtonProps {
   accessor disabled: ButtonProps['disabled'];
   accessor icon: ButtonProps['icon'];
@@ -4097,7 +4126,14 @@ interface ChoiceListProps
   extends Required<
     Pick<
       ChoiceListProps$1,
-      'multiple' | 'disabled' | 'error' | 'details' | 'values' | 'name'
+      | 'details'
+      | 'disabled'
+      | 'error'
+      | 'label'
+      | 'labelAccessibilityVisibility'
+      | 'multiple'
+      | 'name'
+      | 'values'
     >
   > {}
 
@@ -4123,6 +4159,8 @@ declare class ChoiceList extends BaseClass implements ChoiceListProps {
   accessor error: ChoiceListProps['error'];
   accessor details: ChoiceListProps['details'];
   accessor multiple: ChoiceListProps['multiple'];
+  accessor label: ChoiceListProps['label'];
+  accessor labelAccessibilityVisibility: ChoiceListProps['labelAccessibilityVisibility'];
   get values(): ChoiceListProps['values'];
   set values(values: ChoiceListProps['values']);
   /** @private */
@@ -4179,7 +4217,7 @@ interface ReactProps$E
 declare const Clickable_base: (abstract new (
   renderImpl: RenderImpl,
 ) => BoxElement & PreactOverlayControlProps) &
-  Pick<typeof BoxElement, 'observedAttributes' | 'prototype'>;
+  Pick<typeof BoxElement, 'prototype' | 'observedAttributes'>;
 declare class Clickable extends Clickable_base implements ClickableProps {
   accessor disabled: ClickableProps['disabled'];
   accessor loading: ClickableProps['loading'];
@@ -4368,15 +4406,13 @@ interface GridProps
         | 'justifyContent'
         | 'placeContent'
       >
-    > {
+    >,
+    MakeResponsivePick<RequiredAlignedProps, 'rowGap' | 'columnGap' | 'gap'> {
   gridTemplateColumns: RequiredAlignedProps['gridTemplateColumns'];
   gridTemplateRows: RequiredAlignedProps['gridTemplateRows'];
   alignItems: RequiredAlignedProps['alignItems'];
   justifyContent: RequiredAlignedProps['justifyContent'];
   placeContent: RequiredAlignedProps['placeContent'];
-  rowGap: MakeResponsive<RequiredAlignedProps['rowGap']>;
-  columnGap: MakeResponsive<RequiredAlignedProps['columnGap']>;
-  gap: MakeResponsive<RequiredAlignedProps['gap']>;
 }
 
 declare const tagName$B = 's-grid';
@@ -4622,7 +4658,7 @@ interface ReactProps$w
 declare const Link_base: (abstract new (
   args_0: RenderImpl,
 ) => PreactCustomElement & PreactOverlayControlProps) &
-  Pick<typeof PreactCustomElement, 'observedAttributes' | 'prototype'>;
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
 declare class Link extends Link_base implements LinkProps {
   accessor tone: LinkProps['tone'];
   accessor accessibilityLabel: LinkProps['accessibilityLabel'];
@@ -5206,14 +5242,14 @@ interface StackProps
     Pick<
       Required<AlignedStackProps>,
       'justifyContent' | 'alignItems' | 'alignContent'
+    >,
+    MakeResponsivePick<
+      AlignedStackProps,
+      'rowGap' | 'columnGap' | 'direction' | 'gap'
     > {
   justifyContent: AlignedStackProps['justifyContent'];
   alignItems: AlignedStackProps['alignItems'];
   alignContent: AlignedStackProps['alignContent'];
-  gap: MakeResponsive<AlignedStackProps['gap']>;
-  rowGap: MakeResponsive<AlignedStackProps['rowGap']>;
-  columnGap: MakeResponsive<AlignedStackProps['columnGap']>;
-  direction: MakeResponsive<AlignedStackProps['direction']>;
 }
 
 declare const tagName$i = 's-stack';

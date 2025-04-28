@@ -1,4 +1,4 @@
-/** VERSION: 0.49.0 **/
+/** VERSION: 0.50.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -12,7 +12,14 @@ export interface ChoiceListProps
   extends Required<
     Pick<
       ChoiceListProps$1,
-      'multiple' | 'disabled' | 'error' | 'details' | 'values' | 'name'
+      | 'details'
+      | 'disabled'
+      | 'error'
+      | 'label'
+      | 'labelAccessibilityVisibility'
+      | 'multiple'
+      | 'name'
+      | 'values'
     >
   > {}
 
@@ -52,6 +59,7 @@ export interface ClickOptions {
  */
 declare const BaseClass$1: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass$1 {
+  #private;
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -94,11 +102,14 @@ declare class BaseClass extends PreactCustomElement {
   [internals]: ElementInternals;
 }
 declare class ChoiceList extends BaseClass implements ChoiceListProps {
+  #private;
   accessor disabled: ChoiceListProps['disabled'];
   accessor name: ChoiceListProps['name'];
   accessor error: ChoiceListProps['error'];
   accessor details: ChoiceListProps['details'];
   accessor multiple: ChoiceListProps['multiple'];
+  accessor label: ChoiceListProps['label'];
+  accessor labelAccessibilityVisibility: ChoiceListProps['labelAccessibilityVisibility'];
   get values(): ChoiceListProps['values'];
   set values(values: ChoiceListProps['values']);
   /** @private */

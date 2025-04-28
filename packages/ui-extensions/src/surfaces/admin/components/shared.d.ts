@@ -1,4 +1,4 @@
-/** VERSION: 0.49.0 **/
+/** VERSION: 0.50.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -100,6 +100,7 @@ declare const privateIconArray: readonly [
   'book',
   'bug',
   'bullet',
+  'business-entity',
   'button-press',
   'button',
   'calculator',
@@ -394,6 +395,7 @@ declare const privateIconArray: readonly [
   'paper-check',
   'partially-complete',
   'passkey',
+  'paste',
   'pause-circle',
   'payment-capture',
   'payment',
@@ -419,6 +421,8 @@ declare const privateIconArray: readonly [
   'play-circle',
   'play',
   'plus-circle',
+  'plus-circle-down',
+  'plus-circle-up',
   'plus',
   'point-of-sale',
   'price-list',
@@ -1602,9 +1606,9 @@ interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
 }
 interface ChoiceListProps$1
   extends GlobalProps,
+    Pick<BasicFieldProps, 'label' | 'labelAccessibilityVisibility' | 'error'>,
     MultipleInputProps,
-    FieldDetailsProps,
-    FieldErrorProps {
+    FieldDetailsProps {
   /**
    * Whether multiple choices can be selected.
    *
@@ -2033,6 +2037,7 @@ export interface BaseTypographyProps {
    * - `ltr`: languages written from left to right (e.g. English)
    * - `rtl`: languages written from right to left (e.g. Arabic)
    * - `auto`: the user agent determines the direction based on the content
+   * - `''`: direction is inherited from parent elements (equivalent to not setting the attribute)
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir
    *
@@ -2182,13 +2187,10 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
   /**
    * The aspect ratio of the image.
    *
-   * - `auto`: the image will be displayed at its natural aspect ratio.
+   * The rendering of the image will depend on the `inlineSize` value:
    *
-   * The ratio will be respected even if the image hasn’t loaded yet unless it is set to `auto`. In that case, the
-   * rendering will depends on the `inlineSize` value:
-   *
-   * - `inlineSize="fill"`: the aspect ratio will be `1/1`.
-   * - `inlineSize="auto"`: the image will not render until it has loaded.
+   * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
+   * - `inlineSize="auto"`: the image will not render until it has loaded and at this point, it will respect the aspect ratio specified.
    *
    * Getters for this value should return `auto` or the ratio in `number / number` form. Input fractions should not be ‘simplified’.
    * For example, if the value is set as `50 /    100`, the getter returns `50 / 100`.
@@ -2644,9 +2646,11 @@ interface StackProps$1 extends BaseBoxPropsWithRole, GapProps {
   /**
    * Sets how the Stack's children are placed within the Stack.
    *
-   * @default 'inline'
+   * @default 'block'
+   *
+   * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
    */
-  direction?: 'inline' | 'block';
+  direction?: 'block' | 'inline';
   /**
    * Aligns the Stack along the main axis.
    *
@@ -3224,6 +3228,7 @@ type IconType$1 =
   | 'paint-brush-round'
   | 'paper-check'
   | 'passkey'
+  | 'paste'
   | 'pause-circle'
   | 'payment'
   | 'payment-capture'
@@ -3250,6 +3255,8 @@ type IconType$1 =
   | 'play-circle'
   | 'plus'
   | 'plus-circle'
+  | 'plus-circle-down'
+  | 'plus-circle-up'
   | 'point-of-sale'
   | 'price-list'
   | 'print'
@@ -3542,7 +3549,7 @@ export interface Provider<T>
     value: T;
     children?: ComponentChildren$1;
   }> {}
-export interface Context<T> {
+export interface Context<T> extends Provider<T> {
   Consumer: Consumer<T>;
   Provider: Provider<T>;
   displayName?: string;
