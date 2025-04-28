@@ -16,6 +16,7 @@ module.exports = {
     'packages/*/*.mjs',
     'packages/*/*.node',
     'packages/*/*.esnext',
+    'packages/ui-extensions/src/surfaces/**/*.d.ts',
   ],
   rules: {
     // Codebase was originally written without some strict Shopify conventions
@@ -25,6 +26,7 @@ module.exports = {
 
     // This rule is just bad
     '@typescript-eslint/consistent-indexed-object-style': 'off',
+    'eslint-comments/no-unused-disables': 'off',
   },
   overrides: [
     {
