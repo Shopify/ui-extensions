@@ -25,13 +25,15 @@ function App({text, number}) {
         <s-stack direction="block" gap="base">
           <s-text-field
             label="Default Value"
+            name="my-text"
             value={textValue}
-            onChange={setTextValue}
+            onChange={(e) => setTextValue(e.target.value)}
           />
           <s-number-field
             label="Percentage field"
+            name="my-number"
             value={numberValue}
-            onChange={setNumberValue}
+            onChange={(e) => setNumberValue(e.target.value)}
           />
         </s-stack>
       </s-form>
