@@ -1,4 +1,4 @@
-/** VERSION: 0.49.0 **/
+/** VERSION: 0.50.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -13,6 +13,25 @@ import type {
 } from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
+/**
+ * Makes a property's value potentially responsive.
+ *
+ * @example
+ * type Example = {
+ *   color: boolean;
+ *   margin: string;
+ *   padding: number;
+ * }
+ * type Result = MakeResponsivePick<Example, 'color' | 'margin' | 'padding'>;
+ * // Result = {
+ *   color: boolean | `@container${string}`;
+ *   margin: string | `@container${string}`;
+ *   padding: number | `@container${string}`;
+ * }
+ */
+export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
+  [P in TProperty]: MakeResponsive<TType[P]>;
+};
 
 export type RequiredBoxProps = Required<BoxProps$1>;
 export type BoxBorderRadii = Extract<
@@ -32,36 +51,39 @@ export type BoxBorderStyles = Extract<
 >;
 export interface BoxProps
   extends Pick<
-    RequiredBoxProps,
-    | 'accessibilityLabel'
-    | 'accessibilityRole'
-    | 'accessibilityVisibility'
-    | 'background'
-    | 'blockSize'
-    | 'border'
-    | 'borderColor'
-    | 'borderRadius'
-    | 'borderStyle'
-    | 'borderWidth'
-    | 'display'
-    | 'inlineSize'
-    | 'maxBlockSize'
-    | 'maxInlineSize'
-    | 'minBlockSize'
-    | 'minInlineSize'
-    | 'overflow'
-  > {
+      RequiredBoxProps,
+      | 'accessibilityLabel'
+      | 'accessibilityRole'
+      | 'accessibilityVisibility'
+      | 'background'
+      | 'blockSize'
+      | 'border'
+      | 'borderColor'
+      | 'borderRadius'
+      | 'borderStyle'
+      | 'borderWidth'
+      | 'display'
+      | 'inlineSize'
+      | 'maxBlockSize'
+      | 'maxInlineSize'
+      | 'minBlockSize'
+      | 'minInlineSize'
+      | 'overflow'
+    >,
+    MakeResponsivePick<
+      RequiredBoxProps,
+      | 'padding'
+      | 'paddingBlock'
+      | 'paddingBlockStart'
+      | 'paddingBlockEnd'
+      | 'paddingInline'
+      | 'paddingInlineStart'
+      | 'paddingInlineEnd'
+    > {
   background: Extract<
     RequiredBoxProps['background'],
     'transparent' | 'base' | 'subdued' | 'strong'
   >;
-  padding: MakeResponsive<RequiredBoxProps['padding']>;
-  paddingBlock: MakeResponsive<RequiredBoxProps['paddingBlock']>;
-  paddingBlockStart: MakeResponsive<RequiredBoxProps['paddingBlockStart']>;
-  paddingBlockEnd: MakeResponsive<RequiredBoxProps['paddingBlockEnd']>;
-  paddingInline: MakeResponsive<RequiredBoxProps['paddingInline']>;
-  paddingInlineStart: MakeResponsive<RequiredBoxProps['paddingInlineStart']>;
-  paddingInlineEnd: MakeResponsive<RequiredBoxProps['paddingInlineEnd']>;
   borderWidth:
     | MaybeAllValuesShorthandProperty<
         Extract<
@@ -86,15 +108,11 @@ export interface StackProps
     Pick<
       Required<AlignedStackProps>,
       'justifyContent' | 'alignItems' | 'alignContent'
-    > {
-  justifyContent: AlignedStackProps['justifyContent'];
-  alignItems: AlignedStackProps['alignItems'];
-  alignContent: AlignedStackProps['alignContent'];
-  gap: MakeResponsive<AlignedStackProps['gap']>;
-  rowGap: MakeResponsive<AlignedStackProps['rowGap']>;
-  columnGap: MakeResponsive<AlignedStackProps['columnGap']>;
-  direction: MakeResponsive<AlignedStackProps['direction']>;
-}
+    >,
+    MakeResponsivePick<
+      AlignedStackProps,
+      'rowGap' | 'columnGap' | 'direction' | 'gap'
+    > {}
 
 declare const tagName = 's-stack';
 export interface ReactProps

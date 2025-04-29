@@ -1,4 +1,4 @@
-/** VERSION: 0.49.0 **/
+/** VERSION: 0.50.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -143,7 +143,7 @@ export interface PreactOverlayControlProps
 declare const Button_base: (abstract new (
   args_0: RenderImpl,
 ) => PreactCustomElement & PreactOverlayControlProps) &
-  Pick<typeof PreactCustomElement, 'observedAttributes' | 'prototype'>;
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
 declare class Button extends Button_base implements ButtonProps {
   accessor disabled: ButtonProps['disabled'];
   accessor icon: ButtonProps['icon'];
