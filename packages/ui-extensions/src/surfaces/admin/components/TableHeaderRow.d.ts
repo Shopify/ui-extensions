@@ -1,4 +1,4 @@
-/** VERSION: 0.49.0 **/
+/** VERSION: 0.50.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -38,6 +38,7 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
+  #private;
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -76,6 +77,7 @@ declare class TableHeaderRow
   extends PreactCustomElement
   implements TableHeaderRowProps
 {
+  #private;
   constructor();
   /** @private */
   connectedCallback(): void;
