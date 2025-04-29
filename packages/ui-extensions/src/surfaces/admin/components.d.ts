@@ -3584,7 +3584,7 @@ interface AdminPrintActionProps$1 extends GlobalProps {
   src?: string;
 }
 
-interface IconProps
+export interface IconProps
   extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
   /**
    * Specifies the type of icon that will be displayed.
@@ -3598,7 +3598,8 @@ interface IconProps
   size: Extract<IconProps$1['size'], 'small' | 'base'>;
 }
 
-interface BadgeProps extends Pick<BadgeProps$1, 'color' | 'size' | 'tone'> {
+export interface BadgeProps
+  extends Pick<BadgeProps$1, 'color' | 'size' | 'tone'> {
   color: Extract<BadgeProps$1['color'], 'base' | 'strong'>;
   icon: IconProps['type'] | '';
   size: Extract<BadgeProps$1['size'], 'base' | 'large' | 'large-100'>;
@@ -3609,20 +3610,22 @@ interface BadgeProps extends Pick<BadgeProps$1, 'color' | 'size' | 'tone'> {
 }
 
 declare const tagName$L = 's-badge';
-interface ReactProps$L extends Partial<BadgeProps>, Pick<BadgeProps$1, 'id'> {}
+export interface ReactProps$L
+  extends Partial<BadgeProps>,
+    Pick<BadgeProps$1, 'id'> {}
 
-type Styles = string;
-type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+export type Styles = string;
+export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
   styles?: Styles;
 };
-interface ActivationEventEsque {
+export interface ActivationEventEsque {
   shiftKey: boolean;
   metaKey: boolean;
   ctrlKey: boolean;
   button: number;
 }
-interface ClickOptions {
+export interface ClickOptions {
   /**
    * The event you want to influence the synthetic click.
    */
@@ -3635,7 +3638,6 @@ interface ClickOptions {
  */
 declare const BaseClass$1: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass$1 {
-  #private;
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -3694,8 +3696,8 @@ declare module 'preact' {
   }
 }
 
-type RequiredBannerProps = Required<BannerProps$1>;
-interface BannerProps
+export type RequiredBannerProps = Required<BannerProps$1>;
+export interface BannerProps
   extends Pick<
     RequiredBannerProps,
     'heading' | 'dismissible' | 'hidden' | 'tone'
@@ -3706,15 +3708,15 @@ interface BannerProps
   >;
 }
 
-type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
+export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
 };
-type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
     })
   | null;
-interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
+export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   onInput?: ((event: CallbackEvent<T>) => void) | null;
   onChange?: ((event: CallbackEvent<T>) => void) | null;
   onFocus?: ((event: CallbackEvent<T>) => void) | null;
@@ -3722,7 +3724,9 @@ interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName$K = 's-banner';
-interface ReactProps$K extends Partial<BannerProps>, Pick<BannerProps$1, 'id'> {
+export interface ReactProps$K
+  extends Partial<BannerProps>,
+    Pick<BannerProps$1, 'id'> {
   secondaryActions?: ComponentChild;
   onDismiss?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
   onAfterHide?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
@@ -3754,7 +3758,7 @@ declare module 'preact' {
   }
 }
 
-type MakeResponsive<T> = T | `@container${string}`;
+export type MakeResponsive<T> = T | `@container${string}`;
 /**
  * Makes a property's value potentially responsive.
  *
@@ -3771,12 +3775,12 @@ type MakeResponsive<T> = T | `@container${string}`;
  *   padding: number | `@container${string}`;
  * }
  */
-type MakeResponsivePick<TType, TProperty extends keyof TType> = {
+export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
   [P in TProperty]: MakeResponsive<TType[P]>;
 };
 
-type RequiredBoxProps = Required<BoxProps$1>;
-type BoxBorderRadii = Extract<
+export type RequiredBoxProps = Required<BoxProps$1>;
+export type BoxBorderRadii = Extract<
   RequiredBoxProps['borderRadius'],
   | 'none'
   | 'small-200'
@@ -3787,11 +3791,11 @@ type BoxBorderRadii = Extract<
   | 'large-100'
   | 'large-200'
 >;
-type BoxBorderStyles = Extract<
+export type BoxBorderStyles = Extract<
   RequiredBoxProps['borderStyle'],
   'none' | 'solid' | 'dashed' | 'auto'
 >;
-interface BoxProps
+export interface BoxProps
   extends Pick<
       RequiredBoxProps,
       | 'accessibilityLabel'
@@ -3845,7 +3849,9 @@ interface BoxProps
 }
 
 declare const tagName$J = 's-box';
-interface ReactProps$J extends Partial<BoxProps>, Pick<BoxProps$1, 'id'> {}
+export interface ReactProps$J
+  extends Partial<BoxProps>,
+    Pick<BoxProps$1, 'id'> {}
 
 declare class BoxElement extends PreactCustomElement implements BoxProps {
   constructor(renderImpl: RenderImpl);
@@ -3895,13 +3901,13 @@ declare module 'preact' {
   }
 }
 
-type ButtonOnlyProps = Extract<
+export type ButtonOnlyProps = Extract<
   ButtonProps$1,
   {
     type?: unknown;
   }
 >;
-type ButtonBaseProps = Required<
+export type ButtonBaseProps = Required<
   Pick<
     ButtonOnlyProps,
     | 'accessibilityLabel'
@@ -3918,19 +3924,21 @@ type ButtonBaseProps = Required<
     | 'download'
   >
 >;
-interface ButtonProps extends ButtonBaseProps {
+export interface ButtonProps extends ButtonBaseProps {
   tone: Extract<ButtonProps$1['tone'], 'neutral' | 'critical' | 'auto'>;
   icon: IconProps['type'];
 }
 
 declare const tagName$I = 's-button';
-interface ReactProps$I extends Partial<ButtonProps>, Pick<ButtonProps$1, 'id'> {
+export interface ReactProps$I
+  extends Partial<ButtonProps>,
+    Pick<ButtonProps$1, 'id'> {
   onClick?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
   onBlur?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
 }
 
-interface PreactOverlayControlProps
+export interface PreactOverlayControlProps
   extends Required<Pick<InteractionProps, 'commandFor'>> {
   command: Extract<
     InteractionProps['command'],
@@ -3976,14 +3984,13 @@ declare module 'preact' {
 }
 
 declare const internals$1: unique symbol;
-type PreactInputProps = Required<
+export type PreactInputProps = Required<
   Pick<TextFieldProps$1, 'disabled' | 'id' | 'name' | 'value'>
 >;
 declare class PreactInputElement
   extends PreactCustomElement
   implements PreactInputProps
 {
-  #private;
   static formAssociated: boolean;
   /** @private */
   [internals$1]: ElementInternals;
@@ -3997,7 +4004,7 @@ declare class PreactInputElement
   constructor(renderImpl: RenderImpl);
 }
 
-interface PreactCheckboxProps
+export interface PreactCheckboxProps
   extends Required<
     Pick<
       CheckboxProps$1,
@@ -4018,7 +4025,6 @@ declare class PreactCheckboxElement
   extends PreactInputElement
   implements PreactCheckboxProps
 {
-  #private;
   get checked(): boolean;
   set checked(checked: PreactCheckboxProps['checked']);
   /**
@@ -4037,13 +4043,13 @@ declare class PreactCheckboxElement
   constructor(renderImpl: RenderImpl);
 }
 
-interface CheckboxProps extends PreactCheckboxProps {
+export interface CheckboxProps extends PreactCheckboxProps {
   indeterminate: Required<CheckboxProps$1>['indeterminate'];
   defaultIndeterminate: Required<CheckboxProps$1>['defaultIndeterminate'];
 }
 
 declare const tagName$H = 's-checkbox';
-interface ReactProps$H
+export interface ReactProps$H
   extends Partial<CheckboxProps>,
     Pick<CheckboxProps$1, 'id'> {
   onChange?: ((event: CallbackEvent<typeof tagName$H>) => void) | null;
@@ -4051,7 +4057,6 @@ interface ReactProps$H
 }
 
 declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
-  #private;
   get indeterminate(): CheckboxProps['indeterminate'];
   set indeterminate(indeterminate: CheckboxProps['indeterminate']);
   accessor defaultIndeterminate: CheckboxProps['defaultIndeterminate'];
@@ -4074,7 +4079,7 @@ declare module 'preact' {
   }
 }
 
-interface ChoiceProps
+export interface ChoiceProps
   extends Required<
     Pick<
       ChoiceProps$1,
@@ -4089,12 +4094,11 @@ interface ChoiceProps
   > {}
 
 declare const tagName$G = 's-choice';
-interface ReactProps$G
+export interface ReactProps$G
   extends Partial<ChoiceProps>,
     Pick<ChoiceProps$1, 'id'> {}
 
 declare class Choice extends PreactCustomElement implements ChoiceProps {
-  #private;
   accessor disabled: ChoiceProps['disabled'];
   accessor details: ChoiceProps['details'];
   get selected(): boolean;
@@ -4122,7 +4126,7 @@ declare module 'preact' {
   }
 }
 
-interface ChoiceListProps
+export interface ChoiceListProps
   extends Required<
     Pick<
       ChoiceListProps$1,
@@ -4138,7 +4142,7 @@ interface ChoiceListProps
   > {}
 
 declare const tagName$F = 's-choice-list';
-interface ReactProps$F
+export interface ReactProps$F
   extends Partial<ChoiceListProps>,
     Pick<ChoiceListProps$1, 'id'> {
   onChange?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
@@ -4153,7 +4157,6 @@ declare class BaseClass extends PreactCustomElement {
   [internals]: ElementInternals;
 }
 declare class ChoiceList extends BaseClass implements ChoiceListProps {
-  #private;
   accessor disabled: ChoiceListProps['disabled'];
   accessor name: ChoiceListProps['name'];
   accessor error: ChoiceListProps['error'];
@@ -4188,7 +4191,7 @@ declare module 'preact' {
   }
 }
 
-type ClickableBaseProps = Required<
+export type ClickableBaseProps = Required<
   Pick<
     ClickableProps$1,
     | 'command'
@@ -4203,10 +4206,12 @@ type ClickableBaseProps = Required<
     | 'type'
   >
 >;
-interface ClickableProps extends Required<BoxProps>, ClickableBaseProps {}
+export interface ClickableProps
+  extends Required<BoxProps>,
+    ClickableBaseProps {}
 
 declare const tagName$E = 's-clickable';
-interface ReactProps$E
+export interface ReactProps$E
   extends Partial<ClickableProps>,
     Pick<ClickableProps$1, 'id'> {
   onClick?: ((event: CallbackEvent<typeof tagName$E>) => void) | null;
@@ -4247,13 +4252,14 @@ declare module 'preact' {
   }
 }
 
-interface DividerProps extends Pick<DividerProps$1, 'direction' | 'color'> {
+export interface DividerProps
+  extends Pick<DividerProps$1, 'direction' | 'color'> {
   direction: Extract<DividerProps$1['direction'], 'inline' | 'block'>;
   color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
 }
 
 declare const tagName$D = 's-divider';
-interface ReactProps$D
+export interface ReactProps$D
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}
 
@@ -4279,42 +4285,43 @@ declare module 'preact' {
   }
 }
 
-type PreactFieldProps<Autocomplete extends string = string> = PreactInputProps &
-  Required<
-    Pick<
-      TextFieldProps$1,
-      | 'defaultValue'
-      | 'details'
-      | 'error'
-      | 'label'
-      | 'labelAccessibilityVisibility'
-      | 'placeholder'
-      | 'readOnly'
-      | 'required'
-    >
-  > & {
-    /**
-     * A hint as to the intended content of the field.
-     *
-     * When set to `on` (the default), this property indicates that the field should support
-     * autofill, but you do not have any more semantic information on the intended
-     * contents.
-     *
-     * When set to `off`, you are indicating that this field contains sensitive
-     * information, or contents that are never saved, like one-time codes.
-     *
-     * Alternatively, you can provide value which describes the
-     * specific data you would like to be entered into this field during autofill.
-     *
-     * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
-     *
-     * @default 'tel' for PhoneField
-     * @default 'email' for EmailField
-     * @default 'url' for URLField
-     * @default 'on' for everything else
-     */
-    autocomplete: Autocomplete;
-  };
+export type PreactFieldProps<Autocomplete extends string = string> =
+  PreactInputProps &
+    Required<
+      Pick<
+        TextFieldProps$1,
+        | 'defaultValue'
+        | 'details'
+        | 'error'
+        | 'label'
+        | 'labelAccessibilityVisibility'
+        | 'placeholder'
+        | 'readOnly'
+        | 'required'
+      >
+    > & {
+      /**
+       * A hint as to the intended content of the field.
+       *
+       * When set to `on` (the default), this property indicates that the field should support
+       * autofill, but you do not have any more semantic information on the intended
+       * contents.
+       *
+       * When set to `off`, you are indicating that this field contains sensitive
+       * information, or contents that are never saved, like one-time codes.
+       *
+       * Alternatively, you can provide value which describes the
+       * specific data you would like to be entered into this field during autofill.
+       *
+       * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
+       *
+       * @default 'tel' for PhoneField
+       * @default 'email' for EmailField
+       * @default 'url' for URLField
+       * @default 'on' for everything else
+       */
+      autocomplete: Autocomplete;
+    };
 declare class PreactFieldElement<Autocomplete extends string = string>
   extends PreactInputElement
   implements PreactFieldProps<Autocomplete>
@@ -4354,13 +4361,13 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
-type EmailFieldProps = PreactFieldProps<
+export type EmailFieldProps = PreactFieldProps<
   Required<EmailFieldProps$1>['autocomplete']
 > &
   Required<Pick<EmailFieldProps$1, 'maxLength' | 'minLength'>>;
 
 declare const tagName$C = 's-email-field';
-interface ReactProps$C
+export interface ReactProps$C
   extends Partial<Omit<EmailFieldProps, 'accessory'>>,
     Pick<EmailFieldProps$1, 'id'>,
     FieldReactProps<typeof tagName$C> {}
@@ -4391,8 +4398,8 @@ declare module 'preact' {
   }
 }
 
-type RequiredAlignedProps = Required<GridProps$1>;
-interface GridProps
+export type RequiredAlignedProps = Required<GridProps$1>;
+export interface GridProps
   extends BoxProps,
     Required<
       Pick<
@@ -4410,7 +4417,9 @@ interface GridProps
     MakeResponsivePick<RequiredAlignedProps, 'rowGap' | 'columnGap' | 'gap'> {}
 
 declare const tagName$B = 's-grid';
-interface ReactProps$B extends Partial<GridProps>, Pick<GridProps$1, 'id'> {}
+export interface ReactProps$B
+  extends Partial<GridProps>,
+    Pick<GridProps$1, 'id'> {}
 
 declare class Grid extends BoxElement implements GridProps {
   constructor();
@@ -4443,8 +4452,8 @@ declare module 'preact' {
   }
 }
 
-type RequiredGridItemProps = Required<GridItemProps$1>;
-interface GridItemProps
+export type RequiredGridItemProps = Required<GridItemProps$1>;
+export interface GridItemProps
   extends BoxProps,
     Required<Pick<GridItemProps$1, 'gridColumn' | 'gridRow'>> {
   gridColumn: RequiredGridItemProps['gridColumn'];
@@ -4452,7 +4461,7 @@ interface GridItemProps
 }
 
 declare const tagName$A = 's-grid-item';
-interface ReactProps$A
+export interface ReactProps$A
   extends Partial<GridItemProps>,
     Pick<GridItemProps$1, 'id'> {}
 
@@ -4478,8 +4487,8 @@ declare module 'preact' {
   }
 }
 
-type RequiredHeadingProps = Required<HeadingProps$1>;
-interface HeadingProps
+export type RequiredHeadingProps = Required<HeadingProps$1>;
+export interface HeadingProps
   extends Pick<
     HeadingProps$1,
     'accessibilityRole' | 'accessibilityVisibility' | 'lineClamp'
@@ -4490,7 +4499,7 @@ interface HeadingProps
 }
 
 declare const tagName$z = 's-heading';
-interface ReactProps$z
+export interface ReactProps$z
   extends Partial<HeadingProps>,
     Pick<HeadingProps$1, 'id'> {}
 
@@ -4518,7 +4527,9 @@ declare module 'preact' {
 }
 
 declare const tagName$y = 's-icon';
-interface ReactProps$y extends Partial<IconProps>, Pick<IconProps$1, 'id'> {}
+export interface ReactProps$y
+  extends Partial<IconProps>,
+    Pick<IconProps$1, 'id'> {}
 
 declare class Icon extends PreactCustomElement implements IconProps {
   accessor color: IconProps['color'];
@@ -4545,7 +4556,7 @@ declare module 'preact' {
   }
 }
 
-interface ImageProps
+export interface ImageProps
   extends Required<
       Pick<
         ImageProps$1,
@@ -4578,7 +4589,9 @@ interface ImageProps
 }
 
 declare const tagName$x = 's-image';
-interface ReactProps$x extends Partial<ImageProps>, Pick<ImageProps$1, 'id'> {
+export interface ReactProps$x
+  extends Partial<ImageProps>,
+    Pick<ImageProps$1, 'id'> {
   onError?: ((event: CallbackEvent<typeof tagName$x>) => void) | null;
   onLoad?: ((event: CallbackEvent<typeof tagName$x>) => void) | null;
 }
@@ -4619,8 +4632,8 @@ declare module 'preact' {
   }
 }
 
-type RequiredLinkProps = Required<LinkProps$1>;
-interface LinkProps
+export type RequiredLinkProps = Required<LinkProps$1>;
+export interface LinkProps
   extends Pick<
     LinkProps$1,
     | 'accessibilityLabel'
@@ -4643,7 +4656,7 @@ interface LinkProps
 }
 
 declare const tagName$w = 's-link';
-interface ReactProps$w
+export interface ReactProps$w
   extends Partial<LinkProps>,
     Pick<LinkProps$1, 'id' | 'lang'> {
   onClick?: ((event: CallbackEvent<typeof tagName$w>) => void) | null;
@@ -4680,10 +4693,10 @@ declare module 'preact' {
   }
 }
 
-interface ListItemProps extends ListItemProps$1 {}
+export interface ListItemProps extends ListItemProps$1 {}
 
 declare const tagName$v = 's-list-item';
-interface ReactProps$v
+export interface ReactProps$v
   extends Partial<ListItemProps>,
     Pick<ListItemProps$1, 'id'> {}
 
@@ -4707,15 +4720,15 @@ declare module 'preact' {
   }
 }
 
-type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
-interface MoneyFieldProps
+export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
+export interface MoneyFieldProps
   extends Omit<PreactFieldProps, 'value'>,
     Pick<RequiredMoneyFieldProps, 'max' | 'min' | 'step' | 'currencyCode'> {
   value: Required<MoneyFieldProps$1>['value'];
 }
 
 declare const tagName$u = 's-money-field';
-interface ReactProps$u
+export interface ReactProps$u
   extends Partial<MoneyFieldProps>,
     FieldReactProps<typeof tagName$u>,
     Pick<MoneyFieldProps$1, 'id'> {}
@@ -4749,7 +4762,7 @@ declare module 'preact' {
   }
 }
 
-interface NumberFieldProps
+export interface NumberFieldProps
   extends Omit<
       PreactFieldProps<Required<NumberFieldProps$1>['autocomplete']>,
       'value'
@@ -4764,7 +4777,7 @@ interface NumberFieldProps
 }
 
 declare const tagName$t = 's-number-field';
-interface ReactProps$t
+export interface ReactProps$t
   extends Partial<NumberFieldProps>,
     Pick<NumberFieldProps$1, 'id'>,
     FieldReactProps<typeof tagName$t> {}
@@ -4800,13 +4813,13 @@ declare module 'preact' {
   }
 }
 
-interface OptionProps
+export interface OptionProps
   extends Required<
     Pick<OptionProps$1, 'disabled' | 'value' | 'selected' | 'defaultSelected'>
   > {}
 
 declare const tagName$s = 's-option';
-interface ReactProps$s extends Partial<OptionProps> {}
+export interface ReactProps$s extends Partial<OptionProps> {}
 
 declare class Option extends PreactCustomElement implements OptionProps {
   accessor selected: OptionProps['selected'];
@@ -4832,11 +4845,11 @@ declare module 'preact' {
   }
 }
 
-interface OptionGroupProps
+export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
 
 declare const tagName$r = 's-option-group';
-interface ReactProps$r extends Partial<OptionGroupProps> {}
+export interface ReactProps$r extends Partial<OptionGroupProps> {}
 
 declare class OptionGroup
   extends PreactCustomElement
@@ -4863,10 +4876,10 @@ declare module 'preact' {
   }
 }
 
-interface OrderedListProps extends OrderedListProps$1 {}
+export interface OrderedListProps extends OrderedListProps$1 {}
 
 declare const tagName$q = 's-ordered-list';
-interface ReactProps$q
+export interface ReactProps$q
   extends Partial<OrderedListProps>,
     Pick<OrderedListProps$1, 'id'> {}
 
@@ -4893,12 +4906,12 @@ declare module 'preact' {
   }
 }
 
-interface PageProps extends Required<Pick<PageProps$1, 'inlineSize'>> {
+export interface PageProps extends Required<Pick<PageProps$1, 'inlineSize'>> {
   inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
 }
 
 declare const tagName$p = 's-page';
-interface ReactProps$p extends Partial<PageProps> {
+export interface ReactProps$p extends Partial<PageProps> {
   aside?: ComponentChild;
 }
 
@@ -4923,7 +4936,7 @@ declare module 'preact' {
   }
 }
 
-interface ParagraphProps
+export interface ParagraphProps
   extends Required<
     Pick<
       ParagraphProps$1,
@@ -4940,7 +4953,7 @@ interface ParagraphProps
 }
 
 declare const tagName$o = 's-paragraph';
-interface ReactProps$o
+export interface ReactProps$o
   extends Partial<ParagraphProps>,
     Pick<ParagraphProps$1, 'id'> {}
 
@@ -4974,7 +4987,7 @@ declare module 'preact' {
   }
 }
 
-type PasswordFieldProps = PreactFieldProps<
+export type PasswordFieldProps = PreactFieldProps<
   Required<PasswordFieldProps$1>['autocomplete']
 > &
   Required<
@@ -4997,7 +5010,7 @@ type PasswordFieldProps = PreactFieldProps<
   >;
 
 declare const tagName$n = 's-password-field';
-interface ReactProps$n
+export interface ReactProps$n
   extends Partial<PasswordFieldProps>,
     Pick<PasswordFieldProps$1, 'id'>,
     FieldReactProps<typeof tagName$n> {}
@@ -5027,7 +5040,7 @@ declare module 'preact' {
   }
 }
 
-type SearchFieldProps = PreactFieldProps<
+export type SearchFieldProps = PreactFieldProps<
   Required<TextFieldProps$1>['autocomplete']
 > &
   Required<
@@ -5050,7 +5063,7 @@ type SearchFieldProps = PreactFieldProps<
   >;
 
 declare const tagName$m = 's-search-field';
-interface ReactProps$m
+export interface ReactProps$m
   extends Partial<SearchFieldProps>,
     Pick<TextFieldProps$1, 'id'>,
     FieldReactProps<typeof tagName$m> {}
@@ -5080,8 +5093,8 @@ declare module 'preact' {
   }
 }
 
-type RequiredSectionProps = Required<SectionProps$1>;
-interface SectionProps
+export type RequiredSectionProps = Required<SectionProps$1>;
+export interface SectionProps
   extends Pick<
     RequiredSectionProps,
     'accessibilityLabel' | 'heading' | 'padding'
@@ -5092,12 +5105,11 @@ interface SectionProps
 }
 
 declare const tagName$l = 's-section';
-interface ReactProps$l
+export interface ReactProps$l
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id'> {}
 
 declare class Section extends PreactCustomElement implements SectionProps {
-  #private;
   constructor();
   /** @private */
   connectedCallback(): void;
@@ -5122,7 +5134,7 @@ declare module 'preact' {
   }
 }
 
-interface SelectProps
+export interface SelectProps
   extends Omit<PreactInputProps, 'value'>,
     Required<
       Pick<
@@ -5142,7 +5154,7 @@ interface SelectProps
 }
 
 declare const tagName$k = 's-select';
-interface ReactProps$k extends Partial<SelectProps> {
+export interface ReactProps$k extends Partial<SelectProps> {
   onChange?: (event: CallbackEvent<typeof tagName$k>) => void;
   onInput?: (event: CallbackEvent<typeof tagName$k>) => void;
   onBlur?: (event: CallbackEvent<typeof tagName$k>) => void;
@@ -5153,7 +5165,6 @@ declare const usedFirstOptionSymbol: unique symbol;
 declare const hasInitialValueSymbol: unique symbol;
 
 declare class Select extends PreactInputElement implements SelectProps {
-  #private;
   accessor icon: SelectProps['icon'];
   accessor details: SelectProps['details'];
   accessor error: SelectProps['error'];
@@ -5198,13 +5209,13 @@ declare module 'preact' {
   }
 }
 
-interface SpinnerProps
+export interface SpinnerProps
   extends Required<Pick<SpinnerProps$1, 'accessibilityLabel'>> {
   size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
 }
 
 declare const tagName$j = 's-spinner';
-interface ReactProps$j
+export interface ReactProps$j
   extends Partial<SpinnerProps>,
     Pick<SpinnerProps$1, 'id'> {}
 
@@ -5230,8 +5241,8 @@ declare module 'preact' {
   }
 }
 
-type AlignedStackProps = Required<StackProps$1>;
-interface StackProps
+export type AlignedStackProps = Required<StackProps$1>;
+export interface StackProps
   extends BoxProps,
     Pick<
       Required<AlignedStackProps>,
@@ -5243,7 +5254,9 @@ interface StackProps
     > {}
 
 declare const tagName$i = 's-stack';
-interface ReactProps$i extends Partial<StackProps>, Pick<StackProps$1, 'id'> {}
+export interface ReactProps$i
+  extends Partial<StackProps>,
+    Pick<StackProps$1, 'id'> {}
 
 declare class Stack extends BoxElement implements StackProps {
   constructor();
@@ -5272,12 +5285,14 @@ declare module 'preact' {
   }
 }
 
-interface SwitchProps
+export interface SwitchProps
   extends PreactCheckboxProps,
     Required<Pick<SwitchProps$1, 'labelAccessibilityVisibility'>> {}
 
 declare const tagName$h = 's-switch';
-interface ReactProps$h extends Partial<SwitchProps>, Pick<SwitchProps$1, 'id'> {
+export interface ReactProps$h
+  extends Partial<SwitchProps>,
+    Pick<SwitchProps$1, 'id'> {
   onChange?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
   onInput?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
 }
@@ -5303,7 +5318,7 @@ declare module 'preact' {
   }
 }
 
-interface TableProps
+export interface TableProps
   extends Required<
     Pick<
       TableProps$1,
@@ -5314,13 +5329,13 @@ interface TableProps
 }
 
 declare const tagName$g = 's-table';
-interface ReactProps$g
+export interface ReactProps$g
   extends Partial<TableProps>,
     Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
   filters?: ComponentChild;
 }
 
-interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
+export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
   listSlot: Extract<
     TableHeaderProps$1['listSlot'],
     'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
@@ -5328,7 +5343,6 @@ interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
 }
 
 declare class AddedContext<T> extends EventTarget {
-  #private;
   constructor(defaultValue: T);
   get value(): T;
   set value(value: T);
@@ -5336,7 +5350,7 @@ declare class AddedContext<T> extends EventTarget {
 
 declare const actualTableVariantSymbol: unique symbol;
 declare const tableHeadersSharedDataSymbol: unique symbol;
-type ActualTableVariant = 'table' | 'list';
+export type ActualTableVariant = 'table' | 'list';
 
 declare class Table extends PreactCustomElement implements TableProps {
   accessor variant: TableProps['variant'];
@@ -5378,10 +5392,10 @@ declare module 'preact' {
   }
 }
 
-interface TableBodyProps extends TableBodyProps$1 {}
+export interface TableBodyProps extends TableBodyProps$1 {}
 
 declare const tagName$f = 's-table-body';
-interface ReactProps$f
+export interface ReactProps$f
   extends Partial<TableBodyProps>,
     Pick<TableBodyProps$1, 'id'> {}
 
@@ -5405,10 +5419,10 @@ declare module 'preact' {
   }
 }
 
-interface TableCellProps extends TableCellProps$1 {}
+export interface TableCellProps extends TableCellProps$1 {}
 
 declare const tagName$e = 's-table-cell';
-interface ReactProps$e
+export interface ReactProps$e
   extends Partial<TableCellProps>,
     Pick<TableCellProps$1, 'id'> {}
 
@@ -5433,7 +5447,7 @@ declare module 'preact' {
 }
 
 declare const tagName$d = 's-table-header';
-interface ReactProps$d
+export interface ReactProps$d
   extends Partial<TableHeaderProps>,
     Pick<TableHeaderProps$1, 'id'> {}
 
@@ -5461,10 +5475,10 @@ declare module 'preact' {
   }
 }
 
-interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
+export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
 
 declare const tagName$c = 's-table-header-row';
-interface ReactProps$c
+export interface ReactProps$c
   extends Partial<TableHeaderRowProps>,
     Pick<TableHeaderRowProps$1, 'id'> {}
 
@@ -5472,7 +5486,6 @@ declare class TableHeaderRow
   extends PreactCustomElement
   implements TableHeaderRowProps
 {
-  #private;
   constructor();
   /** @private */
   connectedCallback(): void;
@@ -5495,10 +5508,10 @@ declare module 'preact' {
   }
 }
 
-interface TableRowProps extends TableRowProps$1 {}
+export interface TableRowProps extends TableRowProps$1 {}
 
 declare const tagName$b = 's-table-row';
-interface ReactProps$b
+export interface ReactProps$b
   extends Partial<TableRowProps>,
     Pick<TableRowProps$1, 'id'> {}
 
@@ -5522,7 +5535,7 @@ declare module 'preact' {
   }
 }
 
-interface TextProps
+export interface TextProps
   extends Required<
     Pick<
       TextProps$1,
@@ -5550,7 +5563,9 @@ interface TextProps
 }
 
 declare const tagName$a = 's-text';
-interface ReactProps$a extends Partial<TextProps>, Pick<TextProps$1, 'id'> {}
+export interface ReactProps$a
+  extends Partial<TextProps>,
+    Pick<TextProps$1, 'id'> {}
 
 declare class Text extends PreactCustomElement implements TextProps {
   accessor fontVariantNumeric: TextProps['fontVariantNumeric'];
@@ -5578,13 +5593,13 @@ declare module 'preact' {
   }
 }
 
-type TextAreaProps = PreactFieldProps<
+export type TextAreaProps = PreactFieldProps<
   Required<TextAreaProps$1>['autocomplete']
 > &
   Required<Pick<TextAreaProps$1, 'maxLength' | 'minLength' | 'rows'>>;
 
 declare const tagName$9 = 's-text-area';
-interface ReactProps$9
+export interface ReactProps$9
   extends Partial<TextAreaProps>,
     Pick<TextAreaProps$1, 'id'>,
     FieldReactProps<typeof tagName$9> {}
@@ -5615,7 +5630,7 @@ declare module 'preact' {
   }
 }
 
-type TextFieldProps = PreactFieldProps<
+export type TextFieldProps = PreactFieldProps<
   Required<TextFieldProps$1>['autocomplete']
 > &
   Required<
@@ -5626,7 +5641,7 @@ type TextFieldProps = PreactFieldProps<
   >;
 
 declare const tagName$8 = 's-text-field';
-interface ReactProps$8
+export interface ReactProps$8
   extends Partial<Omit<TextFieldProps, 'accessory'>>,
     Pick<TextFieldProps$1, 'id'>,
     FieldReactProps<typeof tagName$8> {
@@ -5661,13 +5676,13 @@ declare module 'preact' {
   }
 }
 
-type URLFieldProps = PreactFieldProps<
+export type URLFieldProps = PreactFieldProps<
   Required<URLFieldProps$1>['autocomplete']
 > &
   Required<Pick<URLFieldProps$1, 'maxLength' | 'minLength'>>;
 
 declare const tagName$7 = 's-url-field';
-interface ReactProps$7
+export interface ReactProps$7
   extends Partial<Omit<URLFieldProps, 'accessory'>>,
     Pick<URLFieldProps$1, 'id'>,
     FieldReactProps<typeof tagName$7> {}
@@ -5698,10 +5713,10 @@ declare module 'preact' {
   }
 }
 
-interface UnorderedListProps extends UnorderedListProps$1 {}
+export interface UnorderedListProps extends UnorderedListProps$1 {}
 
 declare const tagName$6 = 's-unordered-list';
-interface ReactProps$6
+export interface ReactProps$6
   extends Partial<UnorderedListProps>,
     Pick<UnorderedListProps$1, 'id'> {}
 
@@ -5728,11 +5743,11 @@ declare module 'preact' {
   }
 }
 
-interface AdminActionProps
+export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
 
 declare const tagName$5 = 's-admin-action';
-interface ReactProps$5
+export interface ReactProps$5
   extends Partial<AdminActionProps>,
     Pick<AdminActionProps$1, 'id'> {
   primaryAction: ComponentChild;
@@ -5764,11 +5779,11 @@ declare module 'preact' {
   }
 }
 
-interface AdminBlockProps
+export interface AdminBlockProps
   extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}
 
 declare const tagName$4 = 's-admin-block';
-interface ReactProps$4
+export interface ReactProps$4
   extends Partial<AdminBlockProps>,
     Pick<AdminBlockProps$1, 'id'> {}
 
@@ -5797,10 +5812,11 @@ declare module 'preact' {
   }
 }
 
-interface AdminPrintActionProps extends Pick<AdminPrintActionProps$1, 'src'> {}
+export interface AdminPrintActionProps
+  extends Pick<AdminPrintActionProps$1, 'src'> {}
 
 declare const tagName$3 = 's-admin-print-action';
-interface ReactProps$3
+export interface ReactProps$3
   extends Partial<AdminPrintActionProps>,
     Pick<AdminPrintActionProps$1, 'id'> {}
 
@@ -5828,7 +5844,7 @@ declare module 'preact' {
   }
 }
 
-interface ReactProps$2 extends Partial<CustomerSegmentTemplateProps> {
+export interface ReactProps$2 extends Partial<CustomerSegmentTemplateProps> {
   id?: string;
 }
 
@@ -5837,8 +5853,8 @@ declare const tagName$2 = 's-customer-segment-template';
  * Reserved namespace and key for the customer standard metafield used in the template's query.
  * More info - https://shopify.dev/docs/apps/custom-data/metafields/definitions/standard
  */
-type CustomerStandardMetafieldDependency = 'facts.birth_date';
-interface CustomerSegmentTemplateProps {
+export type CustomerStandardMetafieldDependency = 'facts.birth_date';
+export interface CustomerSegmentTemplateProps {
   /**
    * The localized title of the template.
    */
@@ -5895,10 +5911,10 @@ declare module 'preact' {
 }
 
 declare const tagName$1 = 's-form';
-interface ExtendableEvent extends CallbackEvent<typeof tagName$1> {
+export interface ExtendableEvent extends CallbackEvent<typeof tagName$1> {
   waitUntil(f: Promise<unknown>): void;
 }
-interface ReactProps$1 extends Partial<FormProps> {
+export interface ReactProps$1 extends Partial<FormProps> {
   id?: string;
   /**
    * A callback that is run when the form is submitted.
@@ -5910,7 +5926,7 @@ interface ReactProps$1 extends Partial<FormProps> {
   onReset?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
 }
 
-interface FormProps {}
+export interface FormProps {}
 declare class Form extends PreactCustomElement implements FormProps {
   constructor();
   accessor onsubmit: ((event: ExtendableEvent) => void) | null;
@@ -5933,12 +5949,12 @@ declare module 'preact' {
   }
 }
 
-interface ReactProps extends Partial<FunctionSettingsProps> {
+export interface ReactProps extends Partial<FunctionSettingsProps> {
   id?: string;
 }
 
 declare const tagName = 's-function-settings';
-interface FunctionSettingsProps {
+export interface FunctionSettingsProps {
   /**
    * A unique identifier for the form.
    */
