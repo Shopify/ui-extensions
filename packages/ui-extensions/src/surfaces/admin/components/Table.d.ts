@@ -60,7 +60,6 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
-  #private;
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -96,7 +95,6 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 declare class AddedContext<T> extends EventTarget {
-  #private;
   constructor(defaultValue: T);
   get value(): T;
   set value(value: T);

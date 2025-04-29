@@ -36,7 +36,6 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
-  #private;
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -88,7 +87,6 @@ declare class PreactInputElement
   extends PreactCustomElement
   implements PreactInputProps
 {
-  #private;
   static formAssociated: boolean;
   /** @private */
   [internals]: ElementInternals;
@@ -133,7 +131,6 @@ declare const usedFirstOptionSymbol: unique symbol;
 declare const hasInitialValueSymbol: unique symbol;
 
 declare class Select extends PreactInputElement implements SelectProps {
-  #private;
   accessor icon: SelectProps['icon'];
   accessor details: SelectProps['details'];
   accessor error: SelectProps['error'];

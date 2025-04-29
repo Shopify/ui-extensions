@@ -47,7 +47,6 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
-  #private;
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -83,7 +82,6 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 declare class Section extends PreactCustomElement implements SectionProps {
-  #private;
   constructor();
   /** @private */
   connectedCallback(): void;

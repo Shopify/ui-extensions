@@ -36,7 +36,6 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
-  #private;
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -88,7 +87,6 @@ declare class PreactInputElement
   extends PreactCustomElement
   implements PreactInputProps
 {
-  #private;
   static formAssociated: boolean;
   /** @private */
   [internals]: ElementInternals;
@@ -123,7 +121,6 @@ declare class PreactCheckboxElement
   extends PreactInputElement
   implements PreactCheckboxProps
 {
-  #private;
   get checked(): boolean;
   set checked(checked: PreactCheckboxProps['checked']);
   /**
@@ -156,7 +153,6 @@ export interface ReactProps
 }
 
 declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
-  #private;
   get indeterminate(): CheckboxProps['indeterminate'];
   set indeterminate(indeterminate: CheckboxProps['indeterminate']);
   accessor defaultIndeterminate: CheckboxProps['defaultIndeterminate'];

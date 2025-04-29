@@ -59,7 +59,6 @@ export interface ClickOptions {
  */
 declare const BaseClass$1: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass$1 {
-  #private;
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -102,7 +101,6 @@ declare class BaseClass extends PreactCustomElement {
   [internals]: ElementInternals;
 }
 declare class ChoiceList extends BaseClass implements ChoiceListProps {
-  #private;
   accessor disabled: ChoiceListProps['disabled'];
   accessor name: ChoiceListProps['name'];
   accessor error: ChoiceListProps['error'];
