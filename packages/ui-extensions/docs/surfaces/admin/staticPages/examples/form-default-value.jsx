@@ -1,3 +1,4 @@
+import { render } from 'preact';
 import { useState } from 'preact/hooks';
 
 export default function extension() {
@@ -22,15 +23,17 @@ function Extension() {
         <s-stack direction="block" gap="base">
           <s-text-field
             label="Default Value"
+            name="my-text"
             defaultValue={defaultValues.text}
             value={textValue}
-            onChange={setTextValue}
+            onChange={(e) => setTextValue(e.target.value)}
           />
           <s-number-field
             label="Percentage field"
+            name="my-number"
             defaultValue={defaultValues.number}
             value={numberValue}
-            onChange={setNumberValue}
+            onChange={(e) => setNumberValue(e.target.value)}
           />
         </s-stack>
       </s-form>

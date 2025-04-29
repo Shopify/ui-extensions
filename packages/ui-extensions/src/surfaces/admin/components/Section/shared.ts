@@ -17,6 +17,7 @@ Use \`s-section\` to organize your page content. Sections have defined styling, 
     `,
 
   isVisualComponent: true,
+  thumbnail: 'section-thumbnail.png',
   definitions: [
     {
       title: 'Properties',
