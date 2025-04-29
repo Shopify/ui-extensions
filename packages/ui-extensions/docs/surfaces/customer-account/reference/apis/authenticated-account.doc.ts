@@ -33,7 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
     examples: [
       {
         description:
-          'You can use access the company and location of the authenticated business customer to implement location specific logic.',
+          'You can access the company and location of the authenticated business customer to implement location specific logic.',
         codeblock: {
           title: 'Getting the company and location of the customer',
           tabs: [

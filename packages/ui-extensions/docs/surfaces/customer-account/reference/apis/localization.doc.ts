@@ -96,7 +96,7 @@ const data: ReferenceEntityTemplateSchema = {
       },
       {
         description:
-          'You can use access the current country of a customer to implement country specific logic.',
+          'You can access the current country of a customer to implement country specific logic.',
         codeblock: {
           title: 'Getting the country of the customer',
           tabs: [
