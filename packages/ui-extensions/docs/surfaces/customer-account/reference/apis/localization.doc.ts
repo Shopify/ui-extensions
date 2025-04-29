@@ -84,6 +84,25 @@ const data: ReferenceEntityTemplateSchema = {
           ],
         },
       },
+      {
+        description:
+          'You can access the current country of a customer to implement country specific logic.',
+        codeblock: {
+          title: 'Getting the country of the customer',
+          tabs: [
+            {
+              code: '../examples/apis/localization-country.example.tsx',
+              language: 'jsx',
+              title: 'Preact',
+            },
+            {
+              code: '../examples/apis/localization-country.locale.example.json',
+              language: 'json',
+              title: 'locales/en.default.json',
+            },
+          ],
+        },
+      },
     ],
   },
   related: [],
