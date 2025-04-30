@@ -1,16 +1,16 @@
-name: Unstable Snapshot
+name: Internal Snapshot
 
 on:
   workflow_dispatch:
   push:
     branches:
-      - unstable
+      - internal
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
-  unstable-snapshot:
-    name: Unstable Snapshot
+  internal-snapshot:
+    name: Internal Snapshot
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
@@ -28,6 +28,6 @@ jobs:
           EOF
 
       - name: Deploy snapshot versions
-        run: yarn run deploy:unstable
+        run: yarn run deploy:internal
         env:
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}

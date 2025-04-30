@@ -6,12 +6,12 @@ jobs:
   type-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: ./.github/workflows/actions/prepare
 
       - id: typescript-cache
         name: Restore TypeScript cache
-        uses: actions/cache@v1
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
           path: |
             packages/*/build/ts
@@ -26,12 +26,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: ./.github/workflows/actions/prepare
 
       - id: jest-cache
         name: Restore jest cache
-        uses: actions/cache@v1
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
           path: .loom/cache/jest/
           key: ${{ runner.os }}-jest-v1-${{ github.sha }}
@@ -45,12 +45,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: ./.github/workflows/actions/prepare
 
       - id: eslint-cache
         name: Restore ESLint cache
-        uses: actions/cache@v1
+        uses: actions/cache@5a3ec84eff668545956fd18022155c47e93e2684 # v4.2.3
         with:
           path: .loom/cache/eslint
           key: ${{ runner.os }}-eslint-v1-${{ github.sha }}
@@ -60,16 +60,13 @@ jobs:
       - name: Lint
         run: yarn lint
 
-  yarn-lockfile-check:
+  test-build:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
       - uses: ./.github/workflows/actions/prepare
 
-      - name: yarn.lock check
-        run: |
-          yarn
-          if [ -n "$(git status --porcelain yarn.lock)" ]; then
-            echo "yarn.lock has changed"
-            exit 1
-          fi
+      - id: test-build
+        name: Build docs locally to ensure they can be built in CI
+        run: yarn docs:admin
