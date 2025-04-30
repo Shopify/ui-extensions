@@ -174,7 +174,7 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
       anchorLink: 'profile-b2b',
       title: 'Profile (B2B)',
       sectionContent:
-        'For B2B customers, the **Profile** page includes information about the customer, company, and the company location(s) the customer has access to. Learn more about the differences between the [default and B2B experiences](/docs/apps/customer-accounts#default-and-b2b-experiences).',
+        'For B2B customers, the **Profile** page includes information about the customer, company, and the company location(s) the customer has access to. Currently, extensions can be developed using these targets, but merchants cannot enable them via the Checkout and Accounts Editor. We recommend relying on [Profile (Default) targets](/docs/api/customer-account-ui-extensions/2025-04/extension-targets-overview#profile-default) and the [companyLocation field](/docs/api/customer/latest/queries/companyLocation) to create a similar experience.',
       accordionContent: [
         {
           title: 'Customer details',
