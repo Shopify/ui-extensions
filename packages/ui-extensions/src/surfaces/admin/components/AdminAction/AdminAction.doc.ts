@@ -14,6 +14,11 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'AdminActionProps',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'AdminActionSlots',
+    },
   ],
   category: 'Components',
   subCategory: 'Other',

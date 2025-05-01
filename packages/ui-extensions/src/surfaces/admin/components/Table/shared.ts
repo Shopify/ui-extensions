@@ -10,6 +10,11 @@ const shared = {
       description: '',
       type: 'Table',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'TableSlots',
+    },
   ],
   subCategory: 'Structure',
   related: [
