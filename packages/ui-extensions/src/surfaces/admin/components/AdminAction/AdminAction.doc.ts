@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AdminActionSlots',
     },
   ],
-  category: 'Components',
+  category: 'Polaris web components',
   subCategory: 'Other',
   defaultExample: {
     image: 'adminaction-default.png',

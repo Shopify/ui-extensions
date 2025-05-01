@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AdminBlockProps',
     },
   ],
-  category: 'Components',
+  category: 'Polaris web components',
   subCategory: 'Other',
   defaultExample: {
     image: 'adminblock-default.png',

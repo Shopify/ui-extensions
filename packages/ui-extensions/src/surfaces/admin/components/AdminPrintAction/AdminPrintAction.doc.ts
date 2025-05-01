@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AdminPrintActionProps',
     },
   ],
-  category: 'Components',
+  category: 'Polaris web components',
   subCategory: 'Other',
   defaultExample: {
     image: 'adminprintaction-default.png',
