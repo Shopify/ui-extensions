@@ -29,7 +29,7 @@ const shared = {
     {
       type: 'component',
       name: 'Heading',
-      url: '/docs/api/admin-extensions/components/titles-and-text/heading',
+      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/heading',
     },
   ],
   defaultExample: {

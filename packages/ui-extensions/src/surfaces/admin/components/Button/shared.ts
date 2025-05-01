@@ -16,12 +16,12 @@ const shared = {
     {
       type: 'component',
       name: 'Pressable',
-      url: '/docs/api/admin-extensions/components/actions/pressable',
+      url: '/docs/api/admin-extensions/polaris-web-components/actions/pressable',
     },
     {
       type: 'component',
       name: 'Link',
-      url: '/docs/api/admin-extensions/components/actions/link',
+      url: '/docs/api/admin-extensions/polaris-web-components/actions/link',
     },
   ],
   defaultExample: {

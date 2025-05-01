@@ -16,12 +16,12 @@ const shared = {
     {
       type: 'component',
       name: 'Banner',
-      url: '/docs/api/admin-extensions/components/feedback/banner',
+      url: '/docs/api/admin-extensions/polaris-web-components/feedback/banner',
     },
     {
       type: 'component',
       name: 'Text',
-      url: '/docs/api/admin-extensions/components/titles-and-text/text',
+      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/text',
     },
   ],
   defaultExample: {

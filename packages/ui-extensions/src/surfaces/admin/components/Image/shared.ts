@@ -1,7 +1,7 @@
 const shared = {
   name: 'Image',
   description: `
-  Use \`s-image\` to display images in your app. 
+  Use \`s-image\` to display images in your app.
 
   #### Useful for:
   - Adding illustrations and photos.
@@ -26,7 +26,7 @@ const shared = {
     {
       type: 'component',
       name: 'Icon',
-      url: '/docs/api/admin-extensions/components/media/icon',
+      url: '/docs/api/admin-extensions/polaris-web-components/media/icon',
     },
   ],
   defaultExample: {
