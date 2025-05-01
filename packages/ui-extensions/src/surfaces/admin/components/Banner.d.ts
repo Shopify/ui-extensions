@@ -33,6 +33,9 @@ declare const tagName = 's-banner';
 export interface ReactProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id'> {
+  /**
+   * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
+   */
   secondaryActions?: ComponentChild;
   onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
@@ -71,6 +74,8 @@ declare abstract class PreactCustomElement extends BaseClass {
     ...options
   }: RenderImpl);
 
+  /** @private */
+  setAttribute(name: string, value: string): void;
   /** @private */
   attributeChangedCallback(name: string): void;
   /** @private */

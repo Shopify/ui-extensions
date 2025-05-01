@@ -11,6 +11,11 @@ const shared = {
         'A text input field that allows users to enter and edit text.',
       type: 'TextField',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'TextFieldSlots',
+    },
   ],
   subCategory: 'Forms',
   related: [

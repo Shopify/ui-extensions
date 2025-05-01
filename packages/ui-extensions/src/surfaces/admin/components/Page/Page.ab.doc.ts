@@ -18,6 +18,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: 'Use as the outer wrapper of a page',
       type: 'Page',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'PageSlots',
+    },
   ],
   category: 'Polaris web components',
   subCategory: 'Structure',

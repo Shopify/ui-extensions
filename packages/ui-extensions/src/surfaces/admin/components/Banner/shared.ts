@@ -26,6 +26,11 @@ Banners placed inside a section will have styles applied contextually. They're u
       description: '',
       type: 'Banner',
     },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'BannerSlots',
+    },
   ],
   subCategory: 'Feedback',
   related: [
