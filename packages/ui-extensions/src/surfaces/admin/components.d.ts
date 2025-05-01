@@ -3648,6 +3648,8 @@ declare abstract class PreactCustomElement extends BaseClass$1 {
   }: RenderImpl);
 
   /** @private */
+  setAttribute(name: string, value: string): void;
+  /** @private */
   attributeChangedCallback(name: string): void;
   /** @private */
   connectedCallback(): void;
@@ -3727,6 +3729,9 @@ declare const tagName$K = 's-banner';
 export interface ReactProps$K
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id'> {
+  /**
+   * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
+   */
   secondaryActions?: ComponentChild;
   onDismiss?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
   onAfterHide?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
@@ -4358,6 +4363,8 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   get isContentEditable(): boolean;
   /** @private */
   formResetCallback(): void;
+  /** @private */
+  connectedCallback(): void;
   constructor(renderImpl: RenderImpl);
 }
 
@@ -4912,6 +4919,9 @@ export interface PageProps extends Required<Pick<PageProps$1, 'inlineSize'>> {
 
 declare const tagName$p = 's-page';
 export interface ReactProps$p extends Partial<PageProps> {
+  /**
+   * The content to display in the aside section of the page.
+   */
   aside?: ComponentChild;
 }
 
@@ -5332,6 +5342,9 @@ declare const tagName$g = 's-table';
 export interface ReactProps$g
   extends Partial<TableProps>,
     Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
+  /**
+   * Additional filters to display in the table. For example, the `s-search-field` component can be used to filter the table data.
+   */
   filters?: ComponentChild;
 }
 
@@ -5645,6 +5658,9 @@ export interface ReactProps$8
   extends Partial<Omit<TextFieldProps, 'accessory'>>,
     Pick<TextFieldProps$1, 'id'>,
     FieldReactProps<typeof tagName$8> {
+  /**
+   * The accessory to display in the text field.
+   */
   accessory?: ComponentChild;
 }
 
@@ -5750,7 +5766,13 @@ declare const tagName$5 = 's-admin-action';
 export interface ReactProps$5
   extends Partial<AdminActionProps>,
     Pick<AdminActionProps$1, 'id'> {
+  /**
+   * The primary action to display in the admin action.
+   */
   primaryAction: ComponentChild;
+  /**
+   * The secondary actions to display in the admin action.
+   */
   secondaryActions: ComponentChild;
 }
 
@@ -6035,3 +6057,42 @@ export {
   URLField,
   UnorderedList,
 };
+
+export interface BannerSlots {
+  /**
+   * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
+   */
+  'secondary-actions'?: HTMLElement;
+}
+
+export interface PageSlots {
+  /**
+   * The content to display in the aside section of the page.
+   */
+  aside?: HTMLElement;
+}
+
+export interface TableSlots {
+  /**
+   * Additional filters to display in the table. For example, the `s-search-field` component can be used to filter the table data.
+   */
+  filters?: HTMLElement;
+}
+
+export interface TextFieldSlots {
+  /**
+   * The accessory to display in the text field.
+   */
+  accessory?: HTMLElement;
+}
+
+export interface AdminActionSlots {
+  /**
+   * The primary action to display in the admin action.
+   */
+  'primary-action': HTMLElement;
+  /**
+   * The secondary actions to display in the admin action.
+   */
+  'secondary-actions': HTMLElement;
+}

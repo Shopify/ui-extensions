@@ -14,7 +14,13 @@ declare const tagName = 's-admin-action';
 export interface ReactProps
   extends Partial<AdminActionProps>,
     Pick<AdminActionProps$1, 'id'> {
+  /**
+   * The primary action to display in the admin action.
+   */
   primaryAction: ComponentChild;
+  /**
+   * The secondary actions to display in the admin action.
+   */
   secondaryActions: ComponentChild;
 }
 
@@ -51,6 +57,8 @@ declare abstract class PreactCustomElement extends BaseClass {
     ...options
   }: RenderImpl);
 
+  /** @private */
+  setAttribute(name: string, value: string): void;
   /** @private */
   attributeChangedCallback(name: string): void;
   /** @private */

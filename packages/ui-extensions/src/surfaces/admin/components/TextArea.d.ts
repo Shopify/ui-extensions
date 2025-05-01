@@ -46,6 +46,8 @@ declare abstract class PreactCustomElement extends BaseClass {
   }: RenderImpl);
 
   /** @private */
+  setAttribute(name: string, value: string): void;
+  /** @private */
   attributeChangedCallback(name: string): void;
   /** @private */
   connectedCallback(): void;
@@ -179,6 +181,8 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   get isContentEditable(): boolean;
   /** @private */
   formResetCallback(): void;
+  /** @private */
+  connectedCallback(): void;
   constructor(renderImpl: RenderImpl);
 }
 

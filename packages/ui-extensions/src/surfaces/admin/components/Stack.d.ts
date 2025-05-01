@@ -153,6 +153,8 @@ declare abstract class PreactCustomElement extends BaseClass {
   }: RenderImpl);
 
   /** @private */
+  setAttribute(name: string, value: string): void;
+  /** @private */
   attributeChangedCallback(name: string): void;
   /** @private */
   connectedCallback(): void;

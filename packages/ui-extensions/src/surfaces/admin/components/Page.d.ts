@@ -14,6 +14,9 @@ export interface PageProps extends Required<Pick<PageProps$1, 'inlineSize'>> {
 
 declare const tagName = 's-page';
 export interface ReactProps extends Partial<PageProps> {
+  /**
+   * The content to display in the aside section of the page.
+   */
   aside?: ComponentChild;
 }
 
@@ -50,6 +53,8 @@ declare abstract class PreactCustomElement extends BaseClass {
     ...options
   }: RenderImpl);
 
+  /** @private */
+  setAttribute(name: string, value: string): void;
   /** @private */
   attributeChangedCallback(name: string): void;
   /** @private */

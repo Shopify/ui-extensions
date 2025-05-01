@@ -26,6 +26,9 @@ declare const tagName = 's-table';
 export interface ReactProps
   extends Partial<TableProps>,
     Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
+  /**
+   * Additional filters to display in the table. For example, the `s-search-field` component can be used to filter the table data.
+   */
   filters?: ComponentChild;
 }
 
@@ -69,6 +72,8 @@ declare abstract class PreactCustomElement extends BaseClass {
     ...options
   }: RenderImpl);
 
+  /** @private */
+  setAttribute(name: string, value: string): void;
   /** @private */
   attributeChangedCallback(name: string): void;
   /** @private */
