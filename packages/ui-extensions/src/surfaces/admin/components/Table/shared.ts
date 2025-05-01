@@ -16,7 +16,7 @@ const shared = {
     {
       type: 'component',
       name: 'Grid',
-      url: '/docs/api/admin-extensions/components/structure/grid',
+      url: '/docs/api/admin-extensions/polaris-web-components/structure/grid',
     },
   ],
   defaultExample: {

@@ -22,7 +22,7 @@ import type {PrintActionExtensionComponents} from './components/PrintActionExten
 
 export interface ExtensionTargets {
   /**
-   * Renders a [`CustomerSegmentTemplate`](/docs/api/admin-extensions/components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
+   * Renders a [`CustomerSegmentTemplate`](/docs/api/admin-extensions/polaris-web-components/customersegmenttemplate) in the [customer segment editor](https://help.shopify.com/en/manual/customers/customer-segmentation/customer-segments).
    */
   'admin.customers.segmentation-templates.render': RenderExtension<
     CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.render'>,
@@ -33,7 +33,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the product details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.product-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.product-details.block.render'>,
@@ -43,7 +43,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the order details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.order-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.order-details.block.render'>,
@@ -53,7 +53,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the discount details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.discount-details.function-settings.render': RenderExtension<
     BlockExtensionApi<'admin.discount-details.function-settings.render'>,
@@ -63,7 +63,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the customer details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.customer-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.customer-details.block.render'>,
@@ -73,7 +73,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the collection details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.collection-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.collection-details.block.render'>,
@@ -83,7 +83,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the draft order details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.draft-order-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.draft-order-details.block.render'>,
@@ -93,7 +93,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the abandoned checkout details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.abandoned-checkout-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.abandoned-checkout-details.block.render'>,
@@ -103,7 +103,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the catalog details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.catalog-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.catalog-details.block.render'>,
@@ -113,7 +113,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the company details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.company-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.company-details.block.render'>,
@@ -123,7 +123,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the company location details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.company-location-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.company-location-details.block.render'>,
@@ -133,7 +133,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the gift card details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.gift-card-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.gift-card-details.block.render'>,
@@ -143,7 +143,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the product variant details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.product-variant-details.block.render': RenderExtension<
     BlockExtensionApi<'admin.product-variant-details.block.render'>,
@@ -153,7 +153,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin block in the product details page.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.product-details.reorder.render': RenderExtension<
     BlockExtensionApi<'admin.product-details.reorder.render'>,
@@ -164,7 +164,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the product details page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.product-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.product-details.action.render'>,
@@ -174,7 +174,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the catalog details page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.catalog-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.catalog-details.action.render'>,
@@ -184,7 +184,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the company details page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.company-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.company-details.action.render'>,
@@ -194,7 +194,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the gift card details page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.gift-card-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.gift-card-details.action.render'>,
@@ -204,7 +204,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the order details page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.order-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.order-details.action.render'>,
@@ -214,7 +214,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the customer details page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.customer-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-details.action.render'>,
@@ -224,7 +224,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the customer segment details page. Open this extension from the "Use segment" button.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.customer-segment-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-segment-details.action.render'>,
@@ -234,7 +234,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the product index page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.product-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.product-index.action.render'>,
@@ -244,7 +244,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the order index page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.order-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.order-index.action.render'>,
@@ -254,7 +254,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the customer index page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.customer-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-index.action.render'>,
@@ -264,7 +264,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the discount index page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.discount-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.discount-index.action.render'>,
@@ -274,7 +274,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the collection details page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.collection-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.collection-details.action.render'>,
@@ -284,7 +284,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the collection index page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.collection-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.collection-index.action.render'>,
@@ -294,7 +294,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the abandoned checkout page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.abandoned-checkout-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.abandoned-checkout-details.action.render'>,
@@ -304,7 +304,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the product variant details page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.product-variant-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.product-variant-details.action.render'>,
@@ -314,7 +314,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the draft order details page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.draft-order-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.draft-order-details.action.render'>,
@@ -324,7 +324,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the draft orders page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.draft-order-index.action.render': RenderExtension<
     ActionExtensionApi<'admin.draft-order-index.action.render'>,
@@ -334,7 +334,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the discount details page. Open this extension from the "More Actions" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.discount-details.action.render': RenderExtension<
     ActionExtensionApi<'admin.discount-details.action.render'>,
@@ -345,7 +345,7 @@ export interface ExtensionTargets {
    * Renders an admin action extension in the order fulfilled card. Open this extension from the "3-dot" menu inside the order fulfilled card.
    * Note: This extension will only be visible on orders which were fulfilled by your app.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.order-fulfilled-card.action.render': RenderExtension<
     ActionExtensionApi<'admin.order-fulfilled-card.action.render'>,
@@ -357,7 +357,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the product index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.product-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.product-index.selection-action.render'>,
@@ -367,7 +367,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the order index page when multiple resources are selected. Open this extension from the "More Actions"  menu of the resource list. The resource ids are available to this extension at runtime.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.order-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.order-index.selection-action.render'>,
@@ -377,7 +377,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the customer index page when multiple resources are selected. Open this extension from the "More Actions" menu of the resource list. The resource ids are available to this extension at runtime.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.customer-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.customer-index.selection-action.render'>,
@@ -387,7 +387,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the draft order page when multiple resources are selected. Open this extension from the "3-dot" menu.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.draft-order-index.selection-action.render': RenderExtension<
     ActionExtensionApi<'admin.draft-order-index.selection-action.render'>,
@@ -397,7 +397,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the product details page when a selling plan group is present. Open this extension from the "Purchase Options card".
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.product-purchase-option.action.render': RenderExtension<
     PurchaseOptionsCardConfigurationApi<'admin.product-purchase-option.action.render'>,
@@ -407,7 +407,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin action extension in the product variant details page when a selling plan group is present. Open this extension from the "Purchase Options card".
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.product-variant-purchase-option.action.render': RenderExtension<
     PurchaseOptionsCardConfigurationApi<'admin.product-variant-purchase-option.action.render'>,
@@ -419,7 +419,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin print action extension in the order index page when multiple resources are selected. Open this extension from the "Print" menu of the resource list. The resource ids are available to this extension at runtime.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.order-details.print-action.render': RenderExtension<
     PrintActionExtensionApi<'admin.order-details.print-action.render'>,
@@ -429,7 +429,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin print action extension in the product index page when multiple resources are selected. Open this extension from the "Print" menu of the resource list. The resource ids are available to this extension at runtime.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.product-details.print-action.render': RenderExtension<
     PrintActionExtensionApi<'admin.product-details.print-action.render'>,
@@ -439,7 +439,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin print action extension in the order index page when multiple resources are selected. Open this extension from the "Print" menu of the resource list. The resource ids are available to this extension at runtime.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.order-index.selection-print-action.render': RenderExtension<
     PrintActionExtensionApi<'admin.order-index.selection-print-action.render'>,
@@ -449,7 +449,7 @@ export interface ExtensionTargets {
   /**
    * Renders an admin print action extension in the product index page when multiple resources are selected. Open this extension from the "Print" menu of the resource list. The resource ids are available to this extension at runtime.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.product-index.selection-print-action.render': RenderExtension<
     PrintActionExtensionApi<'admin.product-index.selection-print-action.render'>,
@@ -481,7 +481,7 @@ export interface ExtensionTargets {
   /**
    * Renders Order Routing Rule Configuration on order routing settings.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.settings.internal-order-routing-rule.render': RenderExtension<
     OrderRoutingRuleApi<'admin.settings.internal-order-routing-rule.render'>,
@@ -495,7 +495,7 @@ export interface ExtensionTargets {
   /**
    * Renders Validation Settings within a given validation's add and edit views.
    *
-   * See the [list of available components](/docs/api/admin-extensions/components).
+   * See the [list of available components](/docs/api/admin-extensions/polaris-web-components).
    */
   'admin.settings.validation.render': RenderExtension<
     ValidationSettingsApi<'admin.settings.validation.render'>,

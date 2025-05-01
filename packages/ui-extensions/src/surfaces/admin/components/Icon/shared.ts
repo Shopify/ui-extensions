@@ -16,7 +16,7 @@ const shared = {
     {
       type: 'component',
       name: 'Image',
-      url: '/docs/api/admin-extensions/components/media/image',
+      url: '/docs/api/admin-extensions/polaris-web-components/media/image',
     },
   ],
   defaultExample: {

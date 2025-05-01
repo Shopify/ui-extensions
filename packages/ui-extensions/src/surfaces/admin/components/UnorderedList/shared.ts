@@ -9,12 +9,12 @@ const shared = {
     {
       type: 'component',
       name: 'OrderedList',
-      url: '/docs/api/admin-extensions/components/structure/ordered-list',
+      url: '/docs/api/admin-extensions/polaris-web-components/structure/ordered-list',
     },
     {
       type: 'component',
       name: 'Text',
-      url: '/docs/api/admin-extensions/components/titles-and-text/text',
+      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/text',
     },
   ],
   defaultExample: {

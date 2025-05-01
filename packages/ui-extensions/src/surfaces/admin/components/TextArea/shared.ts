@@ -16,7 +16,7 @@ const shared = {
     {
       type: 'component',
       name: 'TextField',
-      url: '/docs/api/admin-extensions/components/forms/textfield',
+      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
     },
   ],
   defaultExample: {
