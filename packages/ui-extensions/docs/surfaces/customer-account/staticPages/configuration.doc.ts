@@ -284,7 +284,7 @@ Access to metafields on a read-only basis through the [Order Status API](/docs/a
       anchorLink: 'settings-definition',
       title: 'Settings definition',
       sectionContent:
-        "The settings for a customer account UI extension define a set of fields that the merchant will be able to set a value for from the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor). You can use validation options to apply additional constraints to the data that the setting can store, such as a minimum or maximum value. \n\n Each settings definition can include up to 20 settings. \n\n > Note: \n > All setting inputs are optional. You should code the extension so that it still works if the merchant hasn't set a value for the setting. The settings are only available to order status [targets](/api/customer-account-ui-extensions/targets).",
+        "The settings for a customer account UI extension define a set of fields that the merchant will be able to set a value for from the [checkout editor](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor). You can use validation options to apply additional constraints to the data that the setting can store, such as a minimum or maximum value. \n\n Each settings definition can include up to 20 settings. \n\n > Note: \n > All setting inputs are optional. You should code the extension so that it still works if the merchant hasn't set a value for the setting.",
       sectionSubContent: [
         {
           title: 'Properties',
