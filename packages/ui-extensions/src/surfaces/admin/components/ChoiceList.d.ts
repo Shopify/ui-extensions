@@ -23,17 +23,12 @@ export interface ChoiceListProps
     >
   > {}
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-
-declare const tagName = 's-choice-list';
-export interface ReactProps
-  extends Partial<ChoiceListProps>,
-    Pick<ChoiceListProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -132,9 +127,18 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        ChoiceListJSXProps;
     }
   }
 }
 
+declare const tagName = 's-choice-list';
+export interface ChoiceListJSXProps
+  extends Partial<ChoiceListProps>,
+    Pick<ChoiceListProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+
 export {ChoiceList};
+export type {ChoiceListJSXProps};

@@ -20,26 +20,20 @@ export interface BannerProps
   >;
 }
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
   | (EventListener & {
-      (event: CallbackEvent<T>): void;
+      (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
-
-declare const tagName = 's-banner';
-export interface ReactProps
-  extends Partial<BannerProps>,
-    Pick<BannerProps$1, 'id'> {
-  /**
-   * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
-   */
-  secondaryActions?: ComponentChild;
-  onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -120,11 +114,25 @@ declare module 'preact' {
     interface IntrinsicElements {
       [tagName]: Omit<
         HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+        | Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+        | 'secondaryActions'
       > &
-        ReactProps;
+        BannerJSXProps;
     }
   }
 }
 
+declare const tagName = 's-banner';
+export interface BannerJSXProps
+  extends Partial<BannerProps>,
+    Pick<BannerProps$1, 'id'> {
+  /**
+   * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
+   */
+  secondaryActions?: ComponentChild;
+  onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+
 export {Banner};
+export type {BannerJSXProps};

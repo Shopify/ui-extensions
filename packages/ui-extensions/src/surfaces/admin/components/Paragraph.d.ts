@@ -24,11 +24,6 @@ export interface ParagraphProps
   lineClamp: Extract<ParagraphProps$1['lineClamp'], number>;
 }
 
-declare const tagName = 's-paragraph';
-export interface ReactProps
-  extends Partial<ParagraphProps>,
-    Pick<ParagraphProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -114,9 +109,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        ParagraphJSXProps;
     }
   }
 }
 
+declare const tagName = 's-paragraph';
+export interface ParagraphJSXProps
+  extends Partial<ParagraphProps>,
+    Pick<ParagraphProps$1, 'id'> {}
+
 export {Paragraph};
+export type {ParagraphJSXProps};

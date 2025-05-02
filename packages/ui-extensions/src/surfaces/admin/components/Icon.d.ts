@@ -22,11 +22,6 @@ export interface IconProps
   size: Extract<IconProps$1['size'], 'small' | 'base'>;
 }
 
-declare const tagName = 's-icon';
-export interface ReactProps
-  extends Partial<IconProps>,
-    Pick<IconProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -107,9 +102,15 @@ declare module 'preact' {
         | 'size'
         | Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        IconJSXProps;
     }
   }
 }
 
+declare const tagName = 's-icon';
+export interface IconJSXProps
+  extends Partial<IconProps>,
+    Pick<IconProps$1, 'id'> {}
+
 export {Icon};
+export type {IconJSXProps};

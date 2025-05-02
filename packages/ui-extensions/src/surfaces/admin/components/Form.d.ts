@@ -7,31 +7,6 @@
 /// <reference lib="DOM" />
 import type {ComponentChild} from './shared.d.ts';
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
-};
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
-  | (EventListener & {
-      (event: CallbackEvent<T>): void;
-    })
-  | null;
-
-declare const tagName = 's-form';
-export interface ExtendableEvent extends CallbackEvent<typeof tagName> {
-  waitUntil(f: Promise<unknown>): void;
-}
-export interface ReactProps extends Partial<FormProps> {
-  id?: string;
-  /**
-   * A callback that is run when the form is submitted.
-   */
-  onSubmit?: ((event: ExtendableEvent) => void) | null;
-  /**
-   * A callback that is run when the form is reset.
-   */
-  onReset?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -92,6 +67,21 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
+};
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
+  | (EventListener & {
+      (event: CallbackEvent<TTagName, TEvent>): void;
+    })
+  | null;
+
 export interface FormProps {}
 declare class Form extends PreactCustomElement implements FormProps {
   constructor();
@@ -110,9 +100,26 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        FormJSXProps;
     }
   }
 }
 
+declare const tagName = 's-form';
+export interface ExtendableEvent extends CallbackEvent<typeof tagName> {
+  waitUntil(f: Promise<unknown>): void;
+}
+export interface FormJSXProps extends Partial<FormProps> {
+  id?: string;
+  /**
+   * A callback that is run when the form is submitted.
+   */
+  onSubmit?: ((event: ExtendableEvent) => void) | null;
+  /**
+   * A callback that is run when the form is reset.
+   */
+  onReset?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+
 export {Form};
+export type {FormJSXProps};

@@ -101,9 +101,6 @@ export interface BoxProps
   borderRadius: MaybeAllValuesShorthandProperty<BoxBorderRadii>;
 }
 
-declare const tagName = 's-box';
-export interface ReactProps extends Partial<BoxProps>, Pick<BoxProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -207,9 +204,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        BoxJSXProps;
     }
   }
 }
 
+declare const tagName = 's-box';
+export interface BoxJSXProps
+  extends Partial<BoxProps>,
+    Pick<BoxProps$1, 'id'> {}
+
 export {Box};
+export type {BoxJSXProps};

@@ -11,7 +11,7 @@ export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
 
 declare const tagName = 's-admin-action';
-export interface ReactProps
+export interface AdminActionJSXProps
   extends Partial<AdminActionProps>,
     Pick<AdminActionProps$1, 'id'> {
   /**
@@ -102,11 +102,14 @@ declare module 'preact' {
     interface IntrinsicElements {
       [tagName]: Omit<
         HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+        | Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+        | 'primaryAction'
+        | 'secondaryActions'
       > &
-        ReactProps;
+        AdminActionJSXProps;
     }
   }
 }
 
 export {AdminAction};
+export type {AdminActionJSXProps};

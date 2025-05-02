@@ -72,12 +72,18 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
   | (EventListener & {
-      (event: CallbackEvent<T>): void;
+      (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
@@ -193,12 +199,6 @@ export interface MoneyFieldProps
   value: Required<MoneyFieldProps$1>['value'];
 }
 
-declare const tagName = 's-money-field';
-export interface ReactProps
-  extends Partial<MoneyFieldProps>,
-    FieldReactProps<typeof tagName>,
-    Pick<MoneyFieldProps$1, 'id'> {}
-
 declare class MoneyField
   extends PreactFieldElement<MoneyFieldProps['autocomplete']>
   implements MoneyFieldProps
@@ -223,9 +223,16 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        MoneyFieldJSXProps;
     }
   }
 }
 
+declare const tagName = 's-money-field';
+export interface MoneyFieldJSXProps
+  extends Partial<MoneyFieldProps>,
+    FieldReactProps<typeof tagName>,
+    Pick<MoneyFieldProps$1, 'id'> {}
+
 export {MoneyField};
+export type {MoneyFieldJSXProps};

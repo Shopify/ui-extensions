@@ -18,11 +18,6 @@ export interface SectionProps
   padding: RequiredSectionProps['padding'];
 }
 
-declare const tagName = 's-section';
-export interface ReactProps
-  extends Partial<SectionProps>,
-    Pick<SectionProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -103,9 +98,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        SectionJSXProps;
     }
   }
 }
 
+declare const tagName = 's-section';
+export interface SectionJSXProps
+  extends Partial<SectionProps>,
+    Pick<SectionProps$1, 'id'> {}
+
 export {Section};
+export type {SectionJSXProps};

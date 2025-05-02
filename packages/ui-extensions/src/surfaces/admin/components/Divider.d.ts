@@ -14,11 +14,6 @@ export interface DividerProps
   color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
 }
 
-declare const tagName = 's-divider';
-export interface ReactProps
-  extends Partial<DividerProps>,
-    Pick<DividerProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -96,9 +91,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        DividerJSXProps;
     }
   }
 }
 
+declare const tagName = 's-divider';
+export interface DividerJSXProps
+  extends Partial<DividerProps>,
+    Pick<DividerProps$1, 'id'> {}
+
 export {Divider};
+export type {DividerJSXProps};

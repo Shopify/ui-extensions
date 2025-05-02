@@ -19,11 +19,6 @@ export interface HeadingProps
   lineClamp: RequiredHeadingProps['lineClamp'];
 }
 
-declare const tagName = 's-heading';
-export interface ReactProps
-  extends Partial<HeadingProps>,
-    Pick<HeadingProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -102,9 +97,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        HeadingJSXProps;
     }
   }
 }
 
+declare const tagName = 's-heading';
+export interface HeadingJSXProps
+  extends Partial<HeadingProps>,
+    Pick<HeadingProps$1, 'id'> {}
+
 export {Heading};
+export type {HeadingJSXProps};

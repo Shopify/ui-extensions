@@ -9,11 +9,6 @@ import type {OrderedListProps$1, ComponentChild} from './shared.d.ts';
 
 export interface OrderedListProps extends OrderedListProps$1 {}
 
-declare const tagName = 's-ordered-list';
-export interface ReactProps
-  extends Partial<OrderedListProps>,
-    Pick<OrderedListProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -92,9 +87,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        OrderedListJSXProps;
     }
   }
 }
 
+declare const tagName = 's-ordered-list';
+export interface OrderedListJSXProps
+  extends Partial<OrderedListProps>,
+    Pick<OrderedListProps$1, 'id'> {}
+
 export {OrderedList};
+export type {OrderedListJSXProps};

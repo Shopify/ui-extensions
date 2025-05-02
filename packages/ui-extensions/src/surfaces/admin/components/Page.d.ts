@@ -12,14 +12,6 @@ export interface PageProps extends Required<Pick<PageProps$1, 'inlineSize'>> {
   inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
 }
 
-declare const tagName = 's-page';
-export interface ReactProps extends Partial<PageProps> {
-  /**
-   * The content to display in the aside section of the page.
-   */
-  aside?: ComponentChild;
-}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -94,11 +86,21 @@ declare module 'preact' {
     interface IntrinsicElements {
       [tagName]: Omit<
         HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+        | Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+        | 'aside'
       > &
-        ReactProps;
+        PageJSXProps;
     }
   }
 }
 
+declare const tagName = 's-page';
+export interface PageJSXProps extends Partial<PageProps> {
+  /**
+   * The content to display in the aside section of the page.
+   */
+  aside?: ComponentChild;
+}
+
 export {Page};
+export type {PageJSXProps};

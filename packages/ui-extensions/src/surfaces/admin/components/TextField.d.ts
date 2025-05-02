@@ -68,12 +68,18 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
   | (EventListener & {
-      (event: CallbackEvent<T>): void;
+      (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
@@ -192,17 +198,6 @@ export type TextFieldProps = PreactFieldProps<
     >
   >;
 
-declare const tagName = 's-text-field';
-export interface ReactProps
-  extends Partial<Omit<TextFieldProps, 'accessory'>>,
-    Pick<TextFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName> {
-  /**
-   * The accessory to display in the text field.
-   */
-  accessory?: ComponentChild;
-}
-
 declare class TextField
   extends PreactFieldElement<TextFieldProps['autocomplete']>
   implements TextFieldProps
@@ -224,11 +219,24 @@ declare module 'preact' {
     interface IntrinsicElements {
       [tagName]: Omit<
         HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+        | Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+        | 'accessory'
       > &
-        ReactProps;
+        TextFieldJSXProps;
     }
   }
 }
 
+declare const tagName = 's-text-field';
+export interface TextFieldJSXProps
+  extends Partial<Omit<TextFieldProps, 'accessory'>>,
+    Pick<TextFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName> {
+  /**
+   * The accessory to display in the text field.
+   */
+  accessory?: ComponentChild;
+}
+
 export {TextField};
+export type {TextFieldJSXProps};

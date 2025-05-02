@@ -15,11 +15,6 @@ export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
   >;
 }
 
-declare const tagName = 's-table-header';
-export interface ReactProps
-  extends Partial<TableHeaderProps>,
-    Pick<TableHeaderProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -99,9 +94,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        TableHeaderJSXProps;
     }
   }
 }
 
+declare const tagName = 's-table-header';
+export interface TableHeaderJSXProps
+  extends Partial<TableHeaderProps>,
+    Pick<TableHeaderProps$1, 'id'> {}
+
 export {TableHeader};
+export type {TableHeaderJSXProps};
