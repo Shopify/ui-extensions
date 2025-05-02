@@ -1,10 +1,10 @@
 const shared = {
   name: 'Section',
   description: `
-Use \`s-section\` to organize your page content. Sections have defined styling, and will display differently depending on how deeply they are nested in the page. 
+Use \`s-section\` to organize your page content. Sections have defined styling, and will display differently depending on how deeply they are nested in the page.
 
-- **Level 1:** Display as responsive cards with background color, rounded corners, and shadow effects. Includes outer padding that can be removed when content like \`s-table\` needs to expand to the full width of the section. 
-- **Nested sections:** Don't have any background color or effects by default. 
+- **Level 1:** Display as responsive cards with background color, rounded corners, and shadow effects. Includes outer padding that can be removed when content like \`s-table\` needs to expand to the full width of the section.
+- **Nested sections:** Don't have any background color or effects by default.
 
 #### Useful for:
 - Organizing your page in a logical structure based on nesting levels.
@@ -30,17 +30,17 @@ Use \`s-section\` to organize your page content. Sections have defined styling, 
     {
       type: 'component',
       name: 'Box',
-      url: '/docs/api/admin-extensions/components/structure/box',
+      url: '/docs/api/admin-extensions/polaris-web-components/structure/box',
     },
     {
       type: 'component',
       name: 'Stack',
-      url: '/docs/api/admin-extensions/components/structure/stack',
+      url: '/docs/api/admin-extensions/polaris-web-components/structure/stack',
     },
     {
       type: 'component',
       name: 'Heading',
-      url: '/docs/api/admin-extensions/components/titles-and-text/heading',
+      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/heading',
     },
   ],
   defaultExample: {

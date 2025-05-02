@@ -16,17 +16,17 @@ const shared = {
     {
       type: 'component',
       name: 'Checkbox',
-      url: '/docs/api/admin-extensions/components/forms/checkbox',
+      url: '/docs/api/admin-extensions/polaris-web-components/forms/checkbox',
     },
     {
       type: 'component',
       name: 'Select',
-      url: '/docs/api/admin-extensions/components/forms/select',
+      url: '/docs/api/admin-extensions/polaris-web-components/forms/select',
     },
     {
       type: 'component',
       name: 'ChoiceList',
-      url: '/docs/api/admin-extensions/components/forms/choice-list',
+      url: '/docs/api/admin-extensions/polaris-web-components/forms/choice-list',
     },
   ],
   defaultExample: {
