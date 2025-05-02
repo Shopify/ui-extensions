@@ -1,7 +1,7 @@
 const shared = {
   name: 'Box',
   description: `
-  Use \`s-box\` to build custom interfaces with your own design language. 
+  Use \`s-box\` to build custom interfaces with your own design language.
 
   #### Useful for:
   - Creating custom designs when you can't build what you need with the existing components.
@@ -22,17 +22,17 @@ const shared = {
     {
       type: 'component',
       name: 'Stack',
-      url: '/docs/api/admin-extensions/components/structure/stack',
+      url: '/docs/api/admin-extensions/polaris-web-components/structure/stack',
     },
     {
       type: 'component',
       name: 'Grid',
-      url: '/docs/api/admin-extensions/components/structure/grid',
+      url: '/docs/api/admin-extensions/polaris-web-components/structure/grid',
     },
     {
       type: 'component',
       name: 'Section',
-      url: '/docs/api/admin-extensions/components/structure/section',
+      url: '/docs/api/admin-extensions/polaris-web-components/structure/section',
     },
   ],
   defaultExample: {

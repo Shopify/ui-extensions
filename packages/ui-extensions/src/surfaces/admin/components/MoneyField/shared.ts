@@ -16,12 +16,12 @@ const shared = {
     {
       type: 'component',
       name: 'NumberField',
-      url: '/docs/api/admin-extensions/components/forms/numberfield',
+      url: '/docs/api/admin-extensions/polaris-web-components/forms/numberfield',
     },
     {
       type: 'component',
       name: 'TextField',
-      url: '/docs/api/admin-extensions/components/forms/textfield',
+      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
     },
   ],
   defaultExample: {

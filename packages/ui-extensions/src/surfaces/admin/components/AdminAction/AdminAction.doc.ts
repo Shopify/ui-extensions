@@ -20,7 +20,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AdminActionSlots',
     },
   ],
-  category: 'Components',
+  category: 'Polaris web components',
   subCategory: 'Other',
   defaultExample: {
     image: 'adminaction-default.png',
@@ -39,7 +39,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       type: 'component',
       name: 'AdminBlock',
-      url: '/docs/api/admin-extensions/components/other/adminblock',
+      url: '/docs/api/admin-extensions/polaris-web-components/other/adminblock',
     },
   ],
 };

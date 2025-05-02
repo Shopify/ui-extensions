@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AdminBlockProps',
     },
   ],
-  category: 'Components',
+  category: 'Polaris web components',
   subCategory: 'Other',
   defaultExample: {
     image: 'adminblock-default.png',
@@ -34,7 +34,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       type: 'component',
       name: 'Adminaction',
-      url: '/docs/api/admin-extensions/components/other/adminaction',
+      url: '/docs/api/admin-extensions/polaris-web-components/other/adminaction',
     },
   ],
 };
