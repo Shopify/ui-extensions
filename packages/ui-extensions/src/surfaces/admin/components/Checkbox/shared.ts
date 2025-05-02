@@ -16,17 +16,17 @@ const shared = {
     {
       type: 'component',
       name: 'Switch',
-      url: '/docs/api/admin-extensions/components/forms/switch',
+      url: '/docs/api/admin-extensions/polaris-web-components/forms/switch',
     },
     {
       type: 'component',
       name: 'Select',
-      url: '/docs/api/admin-extensions/components/forms/select',
+      url: '/docs/api/admin-extensions/polaris-web-components/forms/select',
     },
     {
       type: 'component',
       name: 'ChoiceList',
-      url: '/docs/api/admin-extensions/components/forms/choice-list',
+      url: '/docs/api/admin-extensions/polaris-web-components/forms/choice-list',
     },
   ],
   defaultExample: {

@@ -22,12 +22,12 @@ const shared = {
     {
       type: 'component',
       name: 'Section',
-      url: '/docs/api/admin-extensions/components/structure/section',
+      url: '/docs/api/admin-extensions/polaris-web-components/structure/section',
     },
     {
       type: 'component',
       name: 'Stack',
-      url: '/docs/api/admin-extensions/components/structure/stack',
+      url: '/docs/api/admin-extensions/polaris-web-components/structure/stack',
     },
   ],
   defaultExample: {

@@ -10,7 +10,7 @@ const shared = {
   #### Considerations
   - The level of the heading is automatically determined by how deeply it's nested inside other components, starting from h2.
   - Default to using the \`heading\` property in \`s-section\`. The \`s-heading\` component should only be used if you need to implement a custom layout for your heading in the UI.
-  
+
   #### Best practices
   - Use short headings to make your content scannable.
   - Use plain and clear terms.
@@ -33,7 +33,7 @@ const shared = {
     {
       type: 'component',
       name: 'Text',
-      url: '/docs/api/admin-extensions/components/titles-and-text/text',
+      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/text',
     },
   ],
   defaultExample: {

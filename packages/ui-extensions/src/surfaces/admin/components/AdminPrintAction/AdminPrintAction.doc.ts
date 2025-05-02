@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AdminPrintActionProps',
     },
   ],
-  category: 'Components',
+  category: 'Polaris web components',
   subCategory: 'Other',
   defaultExample: {
     image: 'adminprintaction-default.png',
@@ -34,12 +34,12 @@ const data: ReferenceEntityTemplateSchema = {
     {
       type: 'component',
       name: 'AdminAction',
-      url: '/docs/api/admin-extensions/components/other/adminaction',
+      url: '/docs/api/admin-extensions/polaris-web-components/other/adminaction',
     },
     {
       type: 'component',
       name: 'AdminBlock',
-      url: '/docs/api/admin-extensions/components/other/adminblock',
+      url: '/docs/api/admin-extensions/polaris-web-components/other/adminblock',
     },
   ],
 };

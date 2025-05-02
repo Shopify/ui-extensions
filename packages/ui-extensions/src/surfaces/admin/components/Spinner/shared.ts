@@ -16,7 +16,7 @@ const shared = {
     {
       type: 'component',
       name: 'Button',
-      url: '/docs/api/admin-extensions/components/actions/button',
+      url: '/docs/api/admin-extensions/polaris-web-components/actions/button',
     },
   ],
   defaultExample: {
