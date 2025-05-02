@@ -5,6 +5,6 @@ shopify app init --name my-app
 cd my-app
 
 # generate a new extension:
-shopify app generate extension
+POLARIS_UNIFIED=true shopify app generate extension
 # follow the steps to create a new
 # extension in ./extensions.
