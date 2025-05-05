@@ -5,6 +5,7 @@ import {SessionApi} from '../session-api/session-api';
 import {ToastApi} from '../toast-api/toast-api';
 import {ProductSearchApi} from '../product-search-api/product-search-api';
 import {PrintApi} from '../print-api/print-api';
+import {StorageApi} from '../storage-api/storage-api';
 
 export type StandardApi<T> = {[key: string]: any} & {
   extensionPoint: T;
@@ -14,4 +15,5 @@ export type StandardApi<T> = {[key: string]: any} & {
   PrintApi &
   ProductSearchApi &
   DeviceApi &
-  ConnectivityApi;
+  ConnectivityApi &
+  StorageApi;
