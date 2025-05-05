@@ -97,7 +97,7 @@ import shared from './shared';
 
 const data: ReferenceEntityTemplateSchema = {
   ...shared,
-  category: 'Components',
+  category: 'Polaris web components',
 };
 
 export default data;
