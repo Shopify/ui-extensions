@@ -22,6 +22,11 @@ const shared = {
       name: 'EmailField',
       url: '/docs/api/admin-extensions/polaris-web-components/forms/emailfield',
     },
+    {
+      type: 'information',
+      name: 'Event handling',
+      url: '/docs/api/admin-extensions/2025-10-rc#handling-events',
+    },
   ],
   defaultExample: {
     image: 'urlfield-default.png',

@@ -39,6 +39,11 @@ Banners placed inside a section will have styles applied contextually. They're u
       name: 'Badge',
       url: '/docs/api/admin-extensions/polaris-web-components/feedback/badge',
     },
+    {
+      type: 'information',
+      name: 'Event handling',
+      url: '/docs/api/admin-extensions/2025-10-rc#handling-events',
+    },
   ],
   defaultExample: {
     image: 'banner-default.png',

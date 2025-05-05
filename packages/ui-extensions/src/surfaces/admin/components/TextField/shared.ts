@@ -34,6 +34,11 @@ const shared = {
       name: 'NumberField',
       url: '/docs/api/admin-extensions/polaris-web-components/forms/numberfield',
     },
+    {
+      type: 'information',
+      name: 'Event handling',
+      url: '/docs/api/admin-extensions/2025-10-rc#handling-events',
+    },
   ],
   defaultExample: {
     image: 'text-field-default.png',

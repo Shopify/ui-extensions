@@ -28,6 +28,11 @@ const shared = {
       name: 'ChoiceList',
       url: '/docs/api/admin-extensions/polaris-web-components/forms/choice-list',
     },
+    {
+      type: 'information',
+      name: 'Event handling',
+      url: '/docs/api/admin-extensions/2025-10-rc#handling-events',
+    },
   ],
   defaultExample: {
     codeblock: {

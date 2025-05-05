@@ -23,6 +23,11 @@ const shared = {
       name: 'MoneyField',
       url: '/docs/api/admin-extensions/polaris-web-components/forms/moneyfield',
     },
+    {
+      type: 'information',
+      name: 'Event handling',
+      url: '/docs/api/admin-extensions/2025-10-rc#handling-events',
+    },
   ],
   defaultExample: {
     image: 'numberfield-default.png',

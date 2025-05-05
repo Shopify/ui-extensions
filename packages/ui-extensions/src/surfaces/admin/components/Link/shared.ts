@@ -18,6 +18,11 @@ const shared = {
       name: 'Button',
       url: '/docs/api/admin-extensions/polaris-web-components/actions/button',
     },
+    {
+      type: 'information',
+      name: 'Event handling',
+      url: '/docs/api/admin-extensions/2025-10-rc#handling-events',
+    },
   ],
   defaultExample: {
     image: 'link-default.png',
