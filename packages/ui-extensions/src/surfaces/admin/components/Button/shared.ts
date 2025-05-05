@@ -15,8 +15,8 @@ const shared = {
   related: [
     {
       type: 'component',
-      name: 'Pressable',
-      url: '/docs/api/admin-extensions/polaris-web-components/actions/pressable',
+      name: 'Clickable',
+      url: '/docs/api/admin-extensions/polaris-web-components/actions/clickable',
     },
     {
       type: 'component',
