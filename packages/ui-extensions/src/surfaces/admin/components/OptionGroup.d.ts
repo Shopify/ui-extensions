@@ -11,9 +11,6 @@ import type {OptionGroupProps$1, ComponentChild} from './shared.d.ts';
 export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
 
-declare const tagName = 's-option-group';
-export interface ReactProps extends Partial<OptionGroupProps> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -94,9 +91,13 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        OptionGroupJSXProps;
     }
   }
 }
 
+declare const tagName = 's-option-group';
+export interface OptionGroupJSXProps extends Partial<OptionGroupProps> {}
+
 export {OptionGroup};
+export type {OptionGroupJSXProps};

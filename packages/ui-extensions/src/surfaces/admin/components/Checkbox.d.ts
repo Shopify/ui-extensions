@@ -72,12 +72,18 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
   | (EventListener & {
-      (event: CallbackEvent<T>): void;
+      (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
 
@@ -146,14 +152,6 @@ export interface CheckboxProps extends PreactCheckboxProps {
   defaultIndeterminate: Required<CheckboxProps$1>['defaultIndeterminate'];
 }
 
-declare const tagName = 's-checkbox';
-export interface ReactProps
-  extends Partial<CheckboxProps>,
-    Pick<CheckboxProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-
 declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
   get indeterminate(): CheckboxProps['indeterminate'];
   set indeterminate(indeterminate: CheckboxProps['indeterminate']);
@@ -172,9 +170,18 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        CheckboxJSXProps;
     }
   }
 }
 
+declare const tagName = 's-checkbox';
+export interface CheckboxJSXProps
+  extends Partial<CheckboxProps>,
+    Pick<CheckboxProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+
 export {Checkbox};
+export type {CheckboxJSXProps};

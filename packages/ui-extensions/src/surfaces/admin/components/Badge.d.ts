@@ -38,11 +38,6 @@ export interface BadgeProps
   >;
 }
 
-declare const tagName = 's-badge';
-export interface ReactProps
-  extends Partial<BadgeProps>,
-    Pick<BadgeProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -122,9 +117,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        BadgeJSXProps;
     }
   }
 }
 
+declare const tagName = 's-badge';
+export interface BadgeJSXProps
+  extends Partial<BadgeProps>,
+    Pick<BadgeProps$1, 'id'> {}
+
 export {Badge};
+export type {BadgeJSXProps};

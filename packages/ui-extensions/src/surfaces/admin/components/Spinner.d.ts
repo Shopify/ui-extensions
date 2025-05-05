@@ -13,11 +13,6 @@ export interface SpinnerProps
   size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
 }
 
-declare const tagName = 's-spinner';
-export interface ReactProps
-  extends Partial<SpinnerProps>,
-    Pick<SpinnerProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -95,9 +90,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        SpinnerJSXProps;
     }
   }
 }
 
+declare const tagName = 's-spinner';
+export interface SpinnerJSXProps
+  extends Partial<SpinnerProps>,
+    Pick<SpinnerProps$1, 'id'> {}
+
 export {Spinner};
+export type {SpinnerJSXProps};

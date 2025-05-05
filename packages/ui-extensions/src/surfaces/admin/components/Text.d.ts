@@ -35,11 +35,6 @@ export interface TextProps
   >;
 }
 
-declare const tagName = 's-text';
-export interface ReactProps
-  extends Partial<TextProps>,
-    Pick<TextProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -121,9 +116,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        TextJSXProps;
     }
   }
 }
 
+declare const tagName = 's-text';
+export interface TextJSXProps
+  extends Partial<TextProps>,
+    Pick<TextProps$1, 'id'> {}
+
 export {Text};
+export type {TextJSXProps};

@@ -120,11 +120,6 @@ export interface GridProps
     >,
     MakeResponsivePick<RequiredAlignedProps, 'rowGap' | 'columnGap' | 'gap'> {}
 
-declare const tagName = 's-grid';
-export interface ReactProps
-  extends Partial<GridProps>,
-    Pick<GridProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -239,9 +234,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        GridJSXProps;
     }
   }
 }
 
+declare const tagName = 's-grid';
+export interface GridJSXProps
+  extends Partial<GridProps>,
+    Pick<GridProps$1, 'id'> {}
+
 export {Grid};
+export type {GridJSXProps};

@@ -9,11 +9,6 @@ import type {TableHeaderRowProps$1, ComponentChild} from './shared.d.ts';
 
 export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
 
-declare const tagName = 's-table-header-row';
-export interface ReactProps
-  extends Partial<TableHeaderRowProps>,
-    Pick<TableHeaderRowProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -95,9 +90,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        TableHeaderRowJSXProps;
     }
   }
 }
 
+declare const tagName = 's-table-header-row';
+export interface TableHeaderRowJSXProps
+  extends Partial<TableHeaderRowProps>,
+    Pick<TableHeaderRowProps$1, 'id'> {}
+
 export {TableHeaderRow};
+export type {TableHeaderRowJSXProps};

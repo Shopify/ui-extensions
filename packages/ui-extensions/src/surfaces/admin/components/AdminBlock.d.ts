@@ -11,7 +11,7 @@ export interface AdminBlockProps
   extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}
 
 declare const tagName = 's-admin-block';
-export interface ReactProps
+export interface AdminBlockJSXProps
   extends Partial<AdminBlockProps>,
     Pick<AdminBlockProps$1, 'id'> {}
 
@@ -95,9 +95,10 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        AdminBlockJSXProps;
     }
   }
 }
 
 export {AdminBlock};
+export type {AdminBlockJSXProps};
