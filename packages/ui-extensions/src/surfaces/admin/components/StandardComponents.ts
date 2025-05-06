@@ -7,6 +7,7 @@ export type StandardComponents =
   | 'Choice'
   | 'ChoiceList'
   | 'Clickable'
+  | 'DatePicker'
   | 'Divider'
   | 'EmailField'
   | 'Grid'
