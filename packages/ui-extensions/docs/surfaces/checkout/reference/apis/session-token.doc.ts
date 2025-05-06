@@ -24,10 +24,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseSessionTokenGeneratedType',
     },
   ],
-  defaultExample: getExample('session-token', ['jsx', 'js']),
+  defaultExample: getExample('session-token', ['jsx']),
   examples: {
     description: '',
-    examples: [getExample('session-token-jwt', ['jsx', 'js'])],
+    examples: [getExample('session-token-jwt', ['jsx'])],
   },
   related: getLinksByTag('apis'),
 };

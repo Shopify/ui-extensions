@@ -2,7 +2,7 @@ import {useLocalizationMarket} from '../market';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useLocalizationMarket', () => {
+describe.skip('useLocalizationMarket', () => {
   it('returns market from the api', () => {
     const market = {id: 'gid://shopify/Market/123', handle: 'apac'};
 

@@ -1,13 +1,9 @@
-import {
-  reactExtension,
-  Text,
-  usePickupLocationOptionTarget,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {usePickupLocationOptionTarget} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.pickup-location-option-item.render-after',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const {
@@ -18,7 +14,7 @@ function Extension() {
   const title = pickupLocationOptionTarget?.title;
 
   if (isTargetSelected) {
-    return <Text>{title}</Text>;
+    return <s-text>{title}</s-text>;
   }
 
   return null;

@@ -1,13 +1,9 @@
-import {
-  Text,
-  reactExtension,
-  useAttributeValues,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useAttributeValues} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const [buyerSelectedFreeTShirt, tshirtSize] =
@@ -18,10 +14,10 @@ function Extension() {
 
   if (Boolean(buyerSelectedFreeTShirt) === true) {
     return (
-      <Text>
+      <s-text>
         You selected a free t-shirt, size:{' '}
         {tshirtSize}
-      </Text>
+      </s-text>
     );
   }
 

@@ -1,71 +1,35 @@
+/**
+ * The list of supported components.
+ * As of April 15th, 2025, this is a subset of the components that will be available in the 2025-07 stable release.
+ */
 export type AnyComponent =
   | 'Abbreviation'
-  | 'Badge'
   | 'Banner'
-  | 'BlockLayout'
-  | 'BlockSpacer'
-  | 'BlockStack'
   | 'Box'
   | 'Button'
+  /**
+   * Note: Chat is not supported in the 2025-07 release candidate, but it is tied to a target, and we don't want to remove the target documentation.
+   * Once Chat is supported, you can remove this note.
+   * @private
+   */
   | 'Chat'
-  | 'ConsentCheckbox'
-  | 'ConsentPhoneField'
-  | 'Checkbox'
-  | 'Choice'
-  | 'ChoiceList'
   | 'ClipboardItem'
-  | 'DatePicker'
-  | 'DateField'
-  | 'Disclosure'
-  | 'Divider'
   | 'DropZone'
-  | 'EmailField'
   | 'Form'
-  | 'Grid'
-  | 'GridItem'
   | 'Heading'
-  | 'HeadingGroup'
   | 'Icon'
   | 'Image'
-  | 'InlineLayout'
-  | 'InlineStack'
-  | 'InlineSpacer'
   | 'Link'
-  | 'List'
   | 'ListItem'
-  | 'LoginWithShop'
-  | 'Map'
-  | 'MapMarker'
-  | 'MapPopover'
-  | 'Modal'
-  | 'NumberField'
-  | 'Paragraph'
   | 'OrderedList'
+  | 'Paragraph'
   | 'PaymentIcon'
-  | 'PhoneField'
-  | 'Pressable'
-  | 'ProductThumbnail'
   | 'Progress'
-  | 'QRCode'
-  | 'Popover'
-  | 'ScrollView'
-  | 'Section'
-  | 'Select'
-  | 'Sheet'
-  | 'SkeletonImage'
-  | 'SkeletonText'
-  | 'SkeletonTextBlock'
   | 'Spinner'
-  | 'Stepper'
   | 'Stack'
-  | 'Switch'
-  | 'Tag'
   | 'Text'
-  | 'TextArea'
-  | 'TextBlock'
-  | 'TextField'
-  | 'UnorderedList'
-  | 'URLField';
+  | 'Time'
+  | 'UnorderedList';
 
 export type AllowedComponents<Allowed extends AnyComponent> = Allowed;
 export type AnyComponentExcept<Except extends AnyComponent> = Exclude<

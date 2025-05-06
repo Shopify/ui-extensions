@@ -30,16 +30,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseCustomerPrivacyGeneratedType',
     },
   ],
-  defaultExample: getExample('customer-privacy/default', ['jsx', 'js']),
-  examples: {
-    description: '',
-    examples: [
-      getExample('customer-privacy/sheet-consent-banner-with-form', [
-        'jsx',
-        'js',
-      ]),
-    ],
-  },
+  defaultExample: getExample('customer-privacy/default', ['jsx']),
   related: getLinksByTag('apis'),
 };
 

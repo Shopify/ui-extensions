@@ -1,17 +1,12 @@
-import {useState} from 'react';
-import {
-  reactExtension,
-  useCustomerPrivacy,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useCustomerPrivacy} from '@shopify/ui-extensions/checkout/preact';
 
-// 1. Choose an extension target
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
-  // 2. Subscribe to customer privacy consent values
+  // 1. Subscribe to customer privacy consent values
   const {
     visitorConsent: {
       analytics,
@@ -21,7 +16,7 @@ function Extension() {
     },
   } = useCustomerPrivacy();
 
-  // 3. Use consent values
+  // 2. Use consent values
   console.log('analytics', analytics);
   console.log('marketing', marketing);
   console.log('preferences', preferences);

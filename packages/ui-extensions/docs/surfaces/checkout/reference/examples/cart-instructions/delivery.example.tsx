@@ -1,15 +1,12 @@
+import {render} from 'preact';
 import {
-  Banner,
-  Button,
   useApplyShippingAddressChange,
   useInstructions,
-  reactExtension,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const applyShippingAddressChange =
@@ -20,7 +17,7 @@ function Extension() {
     instructions.delivery.canSelectCustomAddress
   ) {
     return (
-      <Button
+      <s-button
         onClick={() =>
           applyShippingAddressChange({
             type: 'updateShippingAddress',
@@ -31,13 +28,13 @@ function Extension() {
         }
       >
         Change your postal code
-      </Button>
+      </s-button>
     );
   } else {
     return (
-      <Banner tone="warning">
+      <s-banner tone="warning">
         Shipping address cannot be modified
-      </Banner>
+      </s-banner>
     );
   }
 }

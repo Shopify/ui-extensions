@@ -1,13 +1,12 @@
+import {render} from 'preact';
 import {
-  reactExtension,
   useBuyerJourneyIntercept,
   useShippingAddress,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.delivery-address.render-before',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const address = useShippingAddress();

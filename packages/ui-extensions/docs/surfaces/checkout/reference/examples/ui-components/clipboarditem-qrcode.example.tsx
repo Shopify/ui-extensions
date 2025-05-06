@@ -1,33 +1,27 @@
-import {
-  reactExtension,
-  BlockStack,
-  Button,
-  ClipboardItem,
-  QRCode,
-} from '@shopify/ui-extensions-react/checkout';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
-
-function Extension() {
+export default function extension() {
   const bitcoinAddress =
     '14qViLJfdGaP4EeHnDyJbEGQysnCpwk3gd';
 
-  return (
-    <BlockStack maxInlineSize={200}>
-      <QRCode
+  render(
+    <s-stack
+      maxInlineSize={200}
+      direction="block"
+    >
+      <s-qrcode
         size="fill"
         content={`bitcoin:${bitcoinAddress}`}
       />
-      <Button commandFor="bitcoin-address">
+      <s-button commandFor="bitcoin-address">
         Copy Bitcoin address
-      </Button>
-      <ClipboardItem
+      </s-button>
+      <s-clipboard-item
         text={bitcoinAddress}
         id="bitcoin-address"
       />
-    </BlockStack>
+    </s-stack>,
+    document.body,
   );
 }

@@ -1,50 +1,40 @@
-import {
-  extension,
-  BlockStack,
-  Button,
-  ClipboardItem,
-  QRCode,
-} from '@shopify/ui-extensions/checkout';
+export default function extension() {
+  const bitcoinAddress =
+    '14qViLJfdGaP4EeHnDyJbEGQysnCpwk3gd';
+  const qrCodeContent = `bitcoin:${bitcoinAddress}`;
 
-export default extension(
-  'purchase.checkout.block.render',
-  (root) => {
-    const bitcoinAddress =
-      '14qViLJfdGaP4EeHnDyJbEGQysnCpwk3gd';
-    const qrCodeContent = `bitcoin:${bitcoinAddress}`;
+  const stack = document.createElement('s-stack');
+  stack.setAttribute('max-inline-size', '200');
+  stack.setAttribute('direction', 'block');
 
-    const qrCode = root.createComponent(QRCode, {
-      content: qrCodeContent,
-      size: 'fill',
-    });
+  const qrCode =
+    document.createElement('s-qrcode');
+  qrCode.setAttribute('content', qrCodeContent);
+  qrCode.setAttribute('size', 'fill');
 
-    const clipboardItem = root.createComponent(
-      ClipboardItem,
-      {
-        text: bitcoinAddress,
-        id: 'bitcoin-address',
-      },
-    );
+  const button =
+    document.createElement('s-button');
+  button.setAttribute(
+    'commandFor',
+    'bitcoin-address',
+  );
+  button.textContent = 'Copy Bitcoin address';
 
-    const button = root.createComponent(
-      Button,
-      {
-        commandFor: 'bitcoin-address',
-      },
-      'Copy Bitcoin address',
-    );
+  const clipboardItem = document.createElement(
+    's-clipboard-item',
+  );
+  clipboardItem.setAttribute(
+    'text',
+    bitcoinAddress,
+  );
+  clipboardItem.setAttribute(
+    'id',
+    'bitcoin-address',
+  );
 
-    const blockStack = root.createComponent(
-      BlockStack,
-      {
-        maxInlineSize: 200,
-      },
-    );
+  stack.appendChild(qrCode);
+  stack.appendChild(button);
+  stack.appendChild(clipboardItem);
 
-    blockStack.appendChild(qrCode);
-    blockStack.appendChild(button);
-    blockStack.appendChild(clipboardItem);
-
-    root.appendChild(blockStack);
-  },
-);
+  document.body.appendChild(stack);
+}

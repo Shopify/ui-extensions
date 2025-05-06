@@ -7,10 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A static extension target that is rendered after all line items on the **Thank you** page.',
   subCategory: 'Order Summary',
-  defaultExample: getExample(
-    'purchase.thank-you.cart-line-list.render-after/default',
-    ['jsx', 'js'],
-  ),
+  defaultExample: getExample('generic', ['jsx']),
   related: getLinksByTag('targets'),
   ...THANK_YOU_API,
 };

@@ -1,9 +1,10 @@
 import {createRender} from '@quilted/react-testing';
+import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
+
 import type {
   ApiForExtension,
   RenderExtensionTarget,
 } from '@shopify/ui-extensions/checkout';
-import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
 
 // eslint-disable-next-line no-warning-comments
 // TODO: remove the context and change all tests to use a mock

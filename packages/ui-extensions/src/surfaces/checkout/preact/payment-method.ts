@@ -3,8 +3,8 @@ import type {
   PaymentMethodAttributesChange,
   PaymentMethodAttributesResult,
 } from '../api/payment/payment-option-item';
-import {ExtensionHasNoMethodError, ScopeNotGrantedError} from './errors';
 
+import {ExtensionHasNoMethodError, ScopeNotGrantedError} from './errors';
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

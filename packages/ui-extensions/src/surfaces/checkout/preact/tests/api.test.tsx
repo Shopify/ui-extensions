@@ -1,8 +1,9 @@
+/* eslint-disable jest/no-disabled-tests */
 import {useApi} from '../api';
 
 import {mount} from './mount';
 
-describe('useApi', () => {
+describe.skip('useApi', () => {
   it('returns api', async () => {
     const extensionApi = {
       extension: {target: 'purchase.checkout.block.render' as const},

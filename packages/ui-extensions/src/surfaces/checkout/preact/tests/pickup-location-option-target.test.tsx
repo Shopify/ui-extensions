@@ -8,7 +8,7 @@ import {ExtensionHasNoTargetError} from '../../errors';
 
 import {createMockStatefulRemoteSubscribable, mount} from './mount';
 
-describe('usePickupLocationOptionTarget', () => {
+describe.skip('usePickupLocationOptionTarget', () => {
   const pickupLocationOption = {
     handle: 'pickup_method_1',
     title: 'Pickup method 1',

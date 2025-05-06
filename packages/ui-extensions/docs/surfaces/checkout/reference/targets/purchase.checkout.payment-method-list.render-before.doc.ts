@@ -7,10 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A static extension target that renders between the payment heading and payment method list.',
   subCategory: 'Payments',
-  defaultExample: getExample(
-    'purchase.checkout.payment-method-list.render-before/default',
-    ['jsx', 'js'],
-  ),
+  defaultExample: getExample('checkout/default', ['jsx']),
   related: getLinksByTag('targets'),
   ...CHECKOUT_API,
 };

@@ -1,22 +1,18 @@
-import {useEffect} from 'react';
-import {
-  reactExtension,
-  Banner,
-  useApi,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useEffect} from 'preact/hooks';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
-  const {sessionToken} = useApi();
+  const {sessionToken} = shopify;
 
   useEffect(() => {
     async function queryApi() {
       // Request a new (or cached) session token from Shopify
-      const token = await sessionToken.get();
+      const token =
+        await shopify.sessionToken.get();
       console.log('sessionToken.get()', token);
 
       const apiResponse =
@@ -41,6 +37,8 @@ function Extension() {
   }, [sessionToken]);
 
   return (
-    <Banner>See console for API response</Banner>
+    <s-banner>
+      See console for API response
+    </s-banner>
   );
 }

@@ -1,13 +1,9 @@
-import {
-  reactExtension,
-  Text,
-  useShippingOptionTarget,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useShippingOptionTarget} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.shipping-option-item.render-after',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const {shippingOptionTarget, isTargetSelected} =
@@ -15,9 +11,9 @@ function Extension() {
   const title = shippingOptionTarget.title;
 
   return (
-    <Text>
+    <s-text>
       Shipping method: {title} is{' '}
       {isTargetSelected ? '' : 'not'} selected.
-    </Text>
+    </s-text>
   );
 }

@@ -1,33 +1,27 @@
-import {
-  reactExtension,
-  useApi,
-  useSubscription,
-  Text,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useSubscription} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.pickup-point-list.render-before',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
-  const {isLocationFormVisible} =
-    useApi<'purchase.checkout.pickup-point-list.render-before'>();
-
   const locationFormShown = useSubscription(
-    isLocationFormVisible,
+    shopify.isLocationFormVisible,
   );
 
   if (locationFormShown) {
     return (
-      <Text>
+      <s-text>
         The customer is being asked to provide
         their location.
-      </Text>
+      </s-text>
     );
   } else {
     return (
-      <Text>Pickup points are being shown.</Text>
+      <s-text>
+        Pickup points are being shown.
+      </s-text>
     );
   }
 }

@@ -8,10 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
 
   The [supported locations](/docs/api/checkout-ui-extensions/extension-targets-overview#supported-locations) for block extension targets can be previewed during development by [using a URL parameter](/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).`,
   subCategory: 'Block',
-  defaultExample: getExample('purchase.thank-you.block.render/default', [
-    'jsx',
-    'js',
-  ]),
+  defaultExample: getExample('generic', ['jsx']),
   related: getLinksByTag('targets'),
   ...THANK_YOU_API,
 };

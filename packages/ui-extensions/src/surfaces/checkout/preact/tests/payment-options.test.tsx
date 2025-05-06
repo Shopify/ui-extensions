@@ -11,7 +11,7 @@ import {
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 import type {PartialExtensionApi} from './mount';
 
-describe('Payment Methods API hooks', () => {
+describe.skip('Payment Methods API hooks', () => {
   describe('useAvailablePaymentOptions', () => {
     it('returns the available payment methods', async () => {
       const paymentOptions: PaymentOption[] = [

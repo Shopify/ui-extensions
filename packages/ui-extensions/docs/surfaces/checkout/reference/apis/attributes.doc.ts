@@ -43,10 +43,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseAttributeValuesGeneratedType',
     },
   ],
-  defaultExample: getExample('attribute-values', ['jsx', 'js']),
+  defaultExample: getExample('attribute-values', ['jsx']),
   examples: {
     description: '',
-    examples: [getExample('attributes/attribute-change', ['jsx', 'js'])],
+    examples: [getExample('attributes/attribute-change', ['jsx'])],
   },
   related: getLinksByTag('apis'),
 };

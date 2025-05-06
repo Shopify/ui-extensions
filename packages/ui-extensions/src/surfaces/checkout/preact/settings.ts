@@ -1,4 +1,5 @@
 import type {ExtensionSettings} from '../api/standard/standard';
+
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

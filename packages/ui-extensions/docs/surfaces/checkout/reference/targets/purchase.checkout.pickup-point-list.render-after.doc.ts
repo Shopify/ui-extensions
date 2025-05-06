@@ -6,10 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: 'purchase.checkout.pickup-point-list.render-after',
   description:
     'A static extension target that is rendered immediately after the pickup points.',
-  defaultExample: getExample(
-    'purchase.checkout.pickup-point-list.render-after/default',
-    ['jsx', 'js'],
-  ),
+  defaultExample: getExample('checkout/default', ['jsx']),
   related: getLinksByTag('targets'),
   ...PICKUP_POINT_LIST_API,
 };

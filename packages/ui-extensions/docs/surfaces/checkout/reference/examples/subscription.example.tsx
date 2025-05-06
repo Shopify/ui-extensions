@@ -1,22 +1,17 @@
-import {
-  reactExtension,
-  Banner,
-  useApi,
-  useSubscription,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useSubscription} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
-  const {cost} = useApi();
-
   // Equivalent to the useTotalAmount() hook to subscribe and re-render your extension on changes
   const totalAmount = useSubscription(
-    cost.totalAmount,
+    shopify.cost.totalAmount,
   );
 
-  return <Banner>{totalAmount.amount}</Banner>;
+  return (
+    <s-banner>{totalAmount.amount}</s-banner>
+  );
 }

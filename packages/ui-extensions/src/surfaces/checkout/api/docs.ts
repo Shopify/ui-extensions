@@ -1,7 +1,6 @@
 import type {StandardApi} from './standard/standard';
 import type {CheckoutApi} from './checkout/checkout';
 import type {CartLineItemApi} from './cart-line/cart-line-item';
-import type {OrderStatusApi} from './order-status/order-status';
 
 /**
  * These types are used to generate the documentation for the API and decipher which properties are available for which APIs.
@@ -66,9 +65,6 @@ export interface Docs_Standard_ShopApi extends Pick<StandardApi, 'shop'> {}
 export interface Docs_Standard_NoteApi extends Pick<StandardApi, 'note'> {}
 export interface Docs_Checkout_NoteApi
   extends Pick<CheckoutApi, 'applyNoteChange'> {}
-
-export interface Docs_OrderStatus_OrderApi
-  extends Pick<OrderStatusApi, 'order'> {}
 
 export interface Docs_Standard_PaymentOptionsApi
   extends Pick<

@@ -59,14 +59,13 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: getExample('buyer-journey-intercept/target-native-field', [
     'jsx',
-    'js',
   ]),
   examples: {
     description:
       'In addition to targeting checkout UI fields, you can also pass errors to the page level or render the error in your extension.',
     examples: [
-      getExample('buyer-journey-intercept/page-level-error', ['jsx', 'js']),
-      getExample('buyer-journey-intercept/extension-banner', ['jsx', 'js']),
+      getExample('buyer-journey-intercept/page-level-error', ['jsx']),
+      getExample('buyer-journey-intercept/extension-banner', ['jsx']),
     ],
   },
   related: [

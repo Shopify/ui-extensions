@@ -7,10 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A static extension target that is rendered immediately after the contact form element.',
   subCategory: 'Information',
-  defaultExample: getExample('purchase.checkout.contact.render-after/default', [
-    'jsx',
-    'js',
-  ]),
+  defaultExample: getExample('checkout/default', ['jsx']),
   related: getLinksByTag('targets'),
   ...CHECKOUT_API,
 };

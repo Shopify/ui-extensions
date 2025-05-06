@@ -79,11 +79,6 @@ const data: LandingTemplateSchema = {
             code: './examples/extension-targets.example.tsx',
             language: 'tsx',
           },
-          {
-            title: 'JS',
-            code: './examples/extension-targets.example.ts',
-            language: 'js',
-          },
         ],
       },
       initialLanguage: 'tsx',
@@ -136,11 +131,6 @@ const data: LandingTemplateSchema = {
             code: './examples/extension-apis.example.tsx',
             language: 'tsx',
           },
-          {
-            title: 'JS',
-            code: './examples/extension-apis.example.ts',
-            language: 'js',
-          },
         ],
       },
       initialLanguage: 'tsx',
@@ -173,11 +163,6 @@ const data: LandingTemplateSchema = {
             title: 'React',
             code: './examples/ui-components.example.tsx',
             language: 'tsx',
-          },
-          {
-            title: 'JS',
-            code: './examples/ui-components.example.ts',
-            language: 'js',
           },
         ],
       },
@@ -226,12 +211,12 @@ Checkout UI extensions don't have access to the DOM and can't return DOM nodes. 
       anchorLink: 'troubleshooting',
       title: 'Troubleshooting',
       sectionContent:
-        "Find an end-to-end guide to testing your extensions in [Testing checkout UI extensions](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).\n\nIf you're encountering errors when you run `dev` for an app that contains checkout UI extensions, follow this [troubleshooting guide](/apps/checkout/delivery-instructions/getting-started#troubleshooting).",
+        "Find an end-to-end guide to testing your extensions in [Testing checkout UI extensions](/apps/checkout/test-ui-extensions#test-the-extension-in-the-checkout-editor).\n\nIf you're encountering errors when you run `dev` for an app that contains checkout UI extensions, follow this [troubleshooting guide](/apps/build/checkout/localized-checkout-ui-extensions/localize#troubleshooting).",
       sectionCard: [
         {
           name: 'Troubleshooting guide',
           subtitle: 'Learn more',
-          url: '/apps/checkout/delivery-instructions/getting-started#troubleshooting',
+          url: '/apps/build/checkout/localized-checkout-ui-extensions/localize#troubleshooting',
           type: 'apps',
         },
       ],

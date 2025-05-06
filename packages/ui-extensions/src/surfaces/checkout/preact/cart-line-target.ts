@@ -1,7 +1,6 @@
 import type {CartLine} from '../api/standard/standard';
 
 import {ExtensionHasNoTargetError} from './errors';
-
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

@@ -7,10 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A static extension target that is rendered after a purchase below the customer information on the **Thank you** page.',
   subCategory: 'Information',
-  defaultExample: getExample(
-    'purchase.thank-you.customer-information.render-after/default',
-    ['jsx', 'js'],
-  ),
+  defaultExample: getExample('generic', ['jsx']),
   related: getLinksByTag('targets'),
   ...THANK_YOU_API,
 };

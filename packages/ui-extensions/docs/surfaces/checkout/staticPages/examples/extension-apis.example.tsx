@@ -1,23 +1,19 @@
-import {
-  reactExtension,
-  useShippingAddress,
-  Banner,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useShippingAddress} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.delivery-address.render-before',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const {countryCode} = useShippingAddress();
 
   if (countryCode !== 'CA') {
     return (
-      <Banner>
+      <s-banner>
         Sorry, we can only ship to Canada at this
         time
-      </Banner>
+      </s-banner>
     );
   }
 }

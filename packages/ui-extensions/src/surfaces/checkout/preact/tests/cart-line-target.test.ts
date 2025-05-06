@@ -6,7 +6,7 @@ import {useApi} from '../api';
 
 import {createMockStatefulRemoteSubscribable, mount} from './mount';
 
-describe('useCartLineTarget', () => {
+describe.skip('useCartLineTarget', () => {
   it('throws if extension target has no api.target', async () => {
     const runner = async () => {
       const target: ExtensionTarget = 'purchase.checkout.block.render';

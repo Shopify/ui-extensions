@@ -1,13 +1,9 @@
-import {
-  reactExtension,
-  Banner,
-  useSelectedPaymentOptions,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useSelectedPaymentOptions} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const options = useSelectedPaymentOptions();
@@ -18,9 +14,9 @@ function Extension() {
     )
   ) {
     return (
-      <Banner>
+      <s-banner>
         All credit card transactions are secure
-      </Banner>
+      </s-banner>
     );
   }
 

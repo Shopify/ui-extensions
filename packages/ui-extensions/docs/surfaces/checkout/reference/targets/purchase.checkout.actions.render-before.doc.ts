@@ -7,10 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A static extension target that is rendered immediately before any actions within each step.',
   subCategory: 'Navigation',
-  defaultExample: getExample(
-    'purchase.checkout.actions.render-before/default',
-    ['jsx', 'js'],
-  ),
+  defaultExample: getExample('checkout/default', ['jsx']),
   related: getLinksByTag('targets'),
   ...CHECKOUT_API,
 };

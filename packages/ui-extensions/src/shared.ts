@@ -916,7 +916,8 @@ export type StorefrontApiVersion =
   | '2025-01'
   | '2025-04'
   | 'unstable'
-  | '2025-07';
+  | '2025-07'
+  | '2025-10';
 
 export interface Country {
   /**

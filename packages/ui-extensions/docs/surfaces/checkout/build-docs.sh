@@ -1,6 +1,8 @@
 API_VERSION=$1
 DOCS_PATH=docs/surfaces/checkout
 SRC_PATH=src/surfaces/checkout
+COMPONENTS_DEFINITIONS=src/surfaces/checkout/components/components.d.ts
+COMPONENTS_TS=src/surfaces/checkout/components/components.ts
 
 fail_and_exit() {
   echo "** Failed to generate docs"
@@ -11,10 +13,10 @@ fail_and_exit() {
 run_sed() {
   if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS
-    sed -i '' "$1" "$2"
+    sed -Ei '' "$1" "$2"
   else
     # Linux and other Unix-like systems
-    sed -i "$1" "$2"
+    sed -ri "$1" "$2"
   fi
 }
 
@@ -31,9 +33,11 @@ else
   echo "Building docs for '$API_VERSION' checkout UI extensions API."
 fi
 
-COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH  --output ./$DOCS_PATH/generated"
+COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH --output ./$DOCS_PATH/generated"
 COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
 
+# Rename components.d.ts to components.ts so it can be picked up be the generate-docs tool
+cp $COMPONENTS_DEFINITIONS $COMPONENTS_TS
 
 if echo "$PWD" | grep -q '\checkout-web'; then
   # We are generating docs from the private package, which does not have other surfaces aside from checkout
@@ -44,10 +48,12 @@ else
   # so we erase their contents and replace them afterwards
   echo "export {}" > src/surfaces/customer-account.ts
   echo "export {}" > src/surfaces/admin.ts
+  echo "export {}" > src/surfaces/point-of-sale.ts
   eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
   build_exit=$?
   git checkout HEAD -- src/surfaces/customer-account.ts
   git checkout HEAD -- src/surfaces/admin.ts
+  git checkout HEAD -- src/surfaces/point-of-sale.ts
 fi
 
 # TODO: get generate-docs to stop requiring JS files:
@@ -65,6 +71,21 @@ sed_exit=$?
 if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
+
+echo
+if [ $API_VERSION == "2025-10-rc" ]
+then
+  echo "**** ${API_VERSION}: prefixing generate commands with POLARIS_UNIFIED=true"
+  run_sed 's/(npm run shopify app generate extension)/POLARIS_UNIFIED=true \1/gi' \
+    ./$DOCS_PATH/generated/generated_static_pages.json
+  run_sed 's/(pnpm shopify app generate extension)/POLARIS_UNIFIED=true \1/gi' \
+    ./$DOCS_PATH/generated/generated_static_pages.json
+  run_sed 's/(yarn shopify app generate extension)/POLARIS_UNIFIED=true \1/gi' \
+    ./$DOCS_PATH/generated/generated_static_pages.json
+else
+  echo "**** ${API_VERSION}: NOT prefixing generate commands with POLARIS_UNIFIED=true"
+fi
+echo
 
 
 
@@ -99,7 +120,7 @@ SHOPIFY_DEV_PATH="../../../shopify-dev"
 if [ -d $SHOPIFY_DEV_PATH ]; then
   copy_generated_docs_to_shopify_dev
 else
-  # We could be in the shop/world repo and its in a different location on your local machine
+  # We could be in the shop/world repo and it's in a different location on your local machine
   # This is a best guess as to where it might be located in local dev environments
   SHOPIFY_DEV_PATH="$HOME/src/github.com/Shopify/shopify-dev"
   copy_generated_docs_to_shopify_dev

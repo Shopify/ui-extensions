@@ -38,7 +38,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'useTotalAmount',
       description:
-        'Returns a `Money` value representing the minimum a buyer can expect to pay at the current step of checkout. This value excludes amounts yet to be negotiated. For example, the information step might not have delivery costs calculated.',
+        'Returns a `Money` value representing the minimum a buyer can expect to pay at the current step of checkout. This value excludes amounts yet to be negotiated. For example, the information step might not have delivery costs calculated. Applied gift cards and store credit are excluded.',
       type: 'UseTotalAmountGeneratedType',
     },
   ],

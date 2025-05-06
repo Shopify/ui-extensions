@@ -2,7 +2,6 @@ import type {NoteChange, NoteChangeResult} from '../api/checkout/checkout';
 import type {RenderExtensionTarget} from '../extension-targets';
 
 import {ExtensionHasNoMethodError} from './errors';
-
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

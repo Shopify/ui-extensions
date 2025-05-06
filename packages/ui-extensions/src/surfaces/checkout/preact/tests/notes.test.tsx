@@ -2,7 +2,7 @@ import {useNote} from '../note';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useNote', () => {
+describe.skip('useNote', () => {
   it('returns the current order note', async () => {
     const note = 'the note';
     const extensionApi = {

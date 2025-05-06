@@ -9,10 +9,7 @@ A static extension target that floats above the Thank you page in the bottom rig
 
 > Note: This target only accepts the [Chat](https://shopify.dev/docs/api/checkout-ui-extensions/unstable/components/overlays/chat) component. Any other components will not render.
   `,
-  defaultExample: getExample('purchase.thank-you.chat.render/default', [
-    'jsx',
-    'js',
-  ]),
+  defaultExample: getExample('purchase.thank-you.chat.render/default', ['jsx']),
   subCategory: 'Overlays',
   related: getLinksByTag('targets'),
   ...THANK_YOU_API,

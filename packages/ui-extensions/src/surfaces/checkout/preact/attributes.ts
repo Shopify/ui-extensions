@@ -6,7 +6,6 @@ import type {RenderExtensionTarget} from '../extension-targets';
 import type {Attribute} from '../api/shared';
 
 import {ExtensionHasNoMethodError} from './errors';
-
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

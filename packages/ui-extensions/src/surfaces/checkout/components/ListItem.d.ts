@@ -10,7 +10,7 @@
 /// <reference lib="DOM" />
 import type {ListItemProps$1} from './components-shared.d.ts';
 
-export interface ListItemProps extends Omit<ListItemProps$1, 'children'> {
+export interface ListItemProps extends Pick<ListItemProps$1, 'id'> {
 }
 export interface ListItem extends ListItemProps, Omit<HTMLElement, 'id'> {
 }

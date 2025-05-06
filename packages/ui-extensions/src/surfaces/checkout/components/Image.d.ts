@@ -14,7 +14,7 @@ export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 
-export interface ImageProps extends Omit<ImageProps$1, 'border' | 'borderColor' | 'borderRadius' | 'borderWidth' | 'inlineSize' | 'onLoad' | 'onError'> {
+export interface ImageProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<ImageProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;

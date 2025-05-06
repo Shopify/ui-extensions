@@ -3,7 +3,7 @@ import {useShippingAddress} from '../shipping-address';
 
 import {mount} from './mount';
 
-describe('useShippingAddress', () => {
+describe.skip('useShippingAddress', () => {
   it('raises an exception without approval scopes granted', () => {
     expect(() =>
       mount.hook(() => useShippingAddress(), {

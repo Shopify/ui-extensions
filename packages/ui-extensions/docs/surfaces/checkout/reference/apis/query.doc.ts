@@ -19,10 +19,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_Standard_QueryApi',
     },
   ],
-  defaultExample: getExample('storefront-query-api', ['jsx', 'js']),
+  defaultExample: getExample('storefront-query-api', ['jsx']),
   examples: {
     description: '',
-    examples: [getExample('storefront-query-with-fetch', ['jsx', 'js'])],
+    examples: [getExample('storefront-query-with-fetch', ['jsx'])],
   },
   related: getLinksByTag('apis'),
 };

@@ -23,9 +23,8 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Basic Icon',
       tabs: [
         {
-          title: 'JS',
-          code: './examples/basic-icon.example.ts',
-          language: 'js',
+          code: './examples/basic-icon.example.html',
+          language: 'html',
         },
       ],
     },

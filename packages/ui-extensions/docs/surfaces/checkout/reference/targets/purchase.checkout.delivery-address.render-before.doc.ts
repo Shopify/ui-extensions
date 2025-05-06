@@ -7,10 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A static extension target that is rendered between the shipping address header and shipping address form elements.',
   subCategory: 'Shipping',
-  defaultExample: getExample(
-    'purchase.checkout.delivery-address.render-before/default',
-    ['jsx', 'js'],
-  ),
+  defaultExample: getExample('checkout/default', ['jsx']),
   related: getLinksByTag('targets'),
   ...CHECKOUT_API,
 };

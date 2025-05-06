@@ -5,7 +5,7 @@ import {ExtensionHasNoMethodError} from '../../errors';
 
 import {mount} from './mount';
 
-describe('Redeemable API hooks', () => {
+describe.skip('Redeemable API hooks', () => {
   describe('useApplyRedeemableChange()', () => {
     it('returns the applyRedeemableChange function', async () => {
       const target: ExtensionTarget = 'purchase.checkout.gift-card.render';

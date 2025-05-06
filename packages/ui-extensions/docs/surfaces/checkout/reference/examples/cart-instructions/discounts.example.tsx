@@ -1,15 +1,12 @@
+import {render} from 'preact';
 import {
-  Banner,
-  Button,
   useApplyDiscountCodeChange,
   useInstructions,
-  reactExtension,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const applyDiscountCodeChange =
@@ -20,7 +17,7 @@ function Extension() {
     instructions.discounts.canUpdateDiscountCodes
   ) {
     return (
-      <Button
+      <s-button
         onClick={() =>
           applyDiscountCodeChange({
             type: 'addDiscountCode',
@@ -29,13 +26,13 @@ function Extension() {
         }
       >
         Apply your loyalty discount
-      </Button>
+      </s-button>
     );
   } else {
     return (
-      <Banner tone="warning">
+      <s-banner tone="warning">
         Loyalty discounts are unavailable
-      </Banner>
+      </s-banner>
     );
   }
 }

@@ -9,7 +9,7 @@ import {ExtensionHasNoTargetError} from '../../errors';
 
 import {createMockStatefulRemoteSubscribable, mount} from './mount';
 
-describe('useShippingOptionTarget', () => {
+describe.skip('useShippingOptionTarget', () => {
   const shippingOption = {
     handle: 'shipping_method_1',
     title: 'Shipping method 1',

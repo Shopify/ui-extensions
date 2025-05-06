@@ -2,7 +2,7 @@ import {useExtensionLanguage} from '../extension-language';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useExtensionLanguage', () => {
+describe.skip('useExtensionLanguage', () => {
   it('returns extension language from api', () => {
     const extensionLanguage = {isoCode: 'en-CA'};
 

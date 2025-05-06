@@ -1,14 +1,12 @@
+import {render} from 'preact';
 import {
-  reactExtension,
-  Text,
   useAppMetafields,
   useCartLineTarget,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.cart-line-item.render-after',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const {
@@ -26,10 +24,10 @@ function Extension() {
 
   return (
     energyRating && (
-      <Text>
+      <s-text>
         Energy rating:{' '}
         {energyRating.metafield.value}
-      </Text>
+      </s-text>
     )
   );
 }

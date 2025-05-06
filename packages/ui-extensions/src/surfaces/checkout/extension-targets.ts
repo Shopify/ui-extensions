@@ -10,7 +10,6 @@ import type {RenderExtension, RunnableExtension} from '../../extension';
 import type {CartLineItemApi} from './api/cart-line/cart-line-item';
 import type {CheckoutApi} from './api/checkout/checkout';
 import type {OrderConfirmationApi} from './api/order-confirmation/order-confirmation';
-import type {OrderStatusApi} from './api/order-status/order-status';
 import type {PaymentOptionItemApi} from './api/payment/payment-option-item';
 import type {PickupPointListApi} from './api/pickup/pickup-point-list';
 import type {PickupLocationItemApi} from './api/pickup/pickup-location-item';
@@ -45,6 +44,7 @@ export interface RenderExtensionTargets {
    * A static extension target that is rendered immediately before any actions within each step.
    *
    * @deprecated Use `purchase.checkout.actions.render-before` instead.
+   * @private
    */
   'Checkout::Actions::RenderBefore': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Actions::RenderBefore'>,
@@ -61,11 +61,10 @@ export interface RenderExtensionTargets {
    * A static extension target that is rendered after all line items.
    *
    * @deprecated Use `purchase.checkout.cart-line-list.render-after` instead.
+   * @private
    */
   'Checkout::CartLines::RenderAfter': RenderExtension<
-    CheckoutApi &
-      StandardApi<'Checkout::CartLines::RenderAfter'> &
-      OrderStatusApi,
+    CheckoutApi & StandardApi<'Checkout::CartLines::RenderAfter'>,
     AnyComponent
   >;
   /**
@@ -83,12 +82,12 @@ export interface RenderExtensionTargets {
    * under the line item properties element.
    *
    * @deprecated Use `purchase.checkout.cart-line-item.render-after` instead.
+   * @private
    */
   'Checkout::CartLineDetails::RenderAfter': RenderExtension<
     CheckoutApi &
       CartLineItemApi &
-      StandardApi<'Checkout::CartLineDetails::RenderAfter'> &
-      OrderStatusApi,
+      StandardApi<'Checkout::CartLineDetails::RenderAfter'>,
     AnyComponent
   >;
   /**
@@ -124,6 +123,7 @@ export interface RenderExtensionTargets {
    * A static extension target that is rendered immediately after the contact form element.
    *
    * @deprecated Use `purchase.checkout.contact.render-after` instead.
+   * @private
    */
   'Checkout::Contact::RenderAfter': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Contact::RenderAfter'>,
@@ -134,11 +134,10 @@ export interface RenderExtensionTargets {
    *
    * @deprecated Use `purchase.thank-you.customer-information.render-after` or
    * `customer-account.order-status.customer-information.render-after` from `@shopify/ui-extension/customer-account` instead.
+   * @private
    */
   'Checkout::CustomerInformation::RenderAfter': RenderExtension<
-    OrderStatusApi &
-      CheckoutApi &
-      StandardApi<'Checkout::CustomerInformation::RenderAfter'>,
+    CheckoutApi & StandardApi<'Checkout::CustomerInformation::RenderAfter'>,
     AnyComponent
   >;
   /**
@@ -155,6 +154,7 @@ export interface RenderExtensionTargets {
    * and shipping address form elements.
    *
    * @deprecated Use `purchase.checkout.delivery-address.render-before` instead.
+   * @private
    */
   'Checkout::DeliveryAddress::RenderBefore': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::DeliveryAddress::RenderBefore'>,
@@ -189,9 +189,10 @@ export interface RenderExtensionTargets {
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    * @deprecated Use `purchase.checkout.block.render` instead.
+   * @private
    */
   'Checkout::Dynamic::Render': RenderExtension<
-    CheckoutApi & OrderStatusApi & StandardApi<'Checkout::Dynamic::Render'>,
+    CheckoutApi & StandardApi<'Checkout::Dynamic::Render'>,
     AnyComponent
   >;
   /**
@@ -216,6 +217,7 @@ export interface RenderExtensionTargets {
    * by [using a URL parameter](https://shopify.dev/docs/apps/checkout/best-practices/testing-ui-extensions#block-extension-targets).
    *
    * @deprecated Use `purchase.thank-you.block.render` instead.
+   * @private
    */
   'Checkout::ThankYou::Dynamic::Render': RenderExtension<
     OrderConfirmationApi & StandardApi<'Checkout::ThankYou::Dynamic::Render'>,
@@ -236,6 +238,7 @@ export interface RenderExtensionTargets {
    * under the line item properties element on the **Thank you** page.
    *
    * @deprecated Use `purchase.thank-you.cart-line-item.render-after` instead.
+   * @private
    */
   'Checkout::ThankYou::CartLineDetails::RenderAfter': RenderExtension<
     OrderConfirmationApi &
@@ -255,6 +258,7 @@ export interface RenderExtensionTargets {
    * A static extension target that is rendered after all line items on the **Thank you** page.
    *
    * @deprecated Use `purchase.thank-you.cart-line-list.render-after` instead.
+   * @private
    */
   'Checkout::ThankYou::CartLines::RenderAfter': RenderExtension<
     OrderConfirmationApi &
@@ -273,6 +277,7 @@ export interface RenderExtensionTargets {
    * A static extension target that is rendered after a purchase below the customer information on the **Thank you** page.
    *
    * @deprecated Use `purchase.thank-you.customer-information.render-after` instead.
+   * @private
    */
   'Checkout::ThankYou::CustomerInformation::RenderAfter': RenderExtension<
     OrderConfirmationApi &
@@ -400,6 +405,7 @@ export interface RenderExtensionTargets {
    * A static extension target that is rendered in the order summary, before the discount form element.
    *
    * @deprecated Use `purchase.checkout.reductions.render-before` instead.
+   * @private
    */
   'Checkout::Reductions::RenderBefore': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Reductions::RenderBefore'>,
@@ -418,6 +424,7 @@ export interface RenderExtensionTargets {
    * and discount tag elements.
    *
    * @deprecated Use `purchase.checkout.reductions.render-after` instead.
+   * @private
    */
   'Checkout::Reductions::RenderAfter': RenderExtension<
     CheckoutApi & StandardApi<'Checkout::Reductions::RenderAfter'>,
@@ -438,6 +445,7 @@ export interface RenderExtensionTargets {
    * header and shipping method options.
    *
    * @deprecated Use `purchase.checkout.shipping-option-list.render-before` instead.
+   * @private
    */
   'Checkout::ShippingMethods::RenderBefore': RenderExtension<
     ShippingOptionListApi &
@@ -460,6 +468,7 @@ export interface RenderExtensionTargets {
    * options.
    *
    * @deprecated Use `purchase.checkout.shipping-option-list.render-after` instead.
+   * @private
    */
   'Checkout::ShippingMethods::RenderAfter': RenderExtension<
     ShippingOptionListApi &
@@ -480,6 +489,7 @@ export interface RenderExtensionTargets {
    * A static extension target that is rendered before pickup location options.
    *
    * @deprecated Use `purchase.checkout.pickup-location-list.render-before` instead.
+   * @private
    */
   'Checkout::PickupLocations::RenderBefore': RenderExtension<
     PickupLocationListApi &
@@ -500,6 +510,7 @@ export interface RenderExtensionTargets {
    * A static extension target that is rendered after pickup location options.
    *
    * @deprecated Use `purchase.checkout.pickup-location-list.render-after` instead.
+   * @private
    */
   'Checkout::PickupLocations::RenderAfter': RenderExtension<
     PickupLocationListApi &
@@ -522,6 +533,7 @@ export interface RenderExtensionTargets {
    * details within the shipping method option list, for each option.
    *
    * @deprecated Use `purchase.checkout.shipping-option-item.render-after` instead.
+   * @private
    */
   'Checkout::ShippingMethodDetails::RenderAfter': RenderExtension<
     ShippingOptionItemApi &
@@ -544,6 +556,7 @@ export interface RenderExtensionTargets {
    * within the shipping method option list, for each option.
    *
    * @deprecated Use `purchase.checkout.shipping-option-item.details.render` instead.
+   * @private
    */
   'Checkout::ShippingMethodDetails::RenderExpanded': RenderExtension<
     ShippingOptionItemApi &
@@ -564,6 +577,7 @@ export interface RenderExtensionTargets {
    * A static extension target that is rendered immediately before the pickup points.
    *
    * @deprecated Use `purchase.checkout.pickup-point-list.render-before` instead.
+   * @private
    */
   'Checkout::PickupPoints::RenderBefore': RenderExtension<
     PickupPointListApi &
@@ -584,6 +598,7 @@ export interface RenderExtensionTargets {
    * A static extension target that is rendered immediately after the pickup points.
    *
    * @deprecated Use `purchase.checkout.pickup-point-list.render-after` instead.
+   * @private
    */
   'Checkout::PickupPoints::RenderAfter': RenderExtension<
     PickupPointListApi &
@@ -680,6 +695,11 @@ export interface RunnableExtensionTargets {
   >;
 }
 
+/**
+ * A union of all extension targets.
+ * This is a special interface that is referenced by name "ExtensionTargets", in the `buildTargetDts.ts` script in ui-extensions.
+ * It is used to to generate the `shopify.d.ts` file, to provide type safety when coding UI extensions.
+ */
 export interface ExtensionTargets
   extends RenderExtensionTargets,
     RunnableExtensionTargets {}

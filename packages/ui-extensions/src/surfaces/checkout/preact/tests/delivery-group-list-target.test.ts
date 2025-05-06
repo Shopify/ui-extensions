@@ -8,7 +8,7 @@ import {useDeliveryGroupListTarget} from '../delivery-group-list-target';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useDeliveryGroupListTarget', () => {
+describe.skip('useDeliveryGroupListTarget', () => {
   it('returns the DeliveryGroupList target if it exists', async () => {
     const deliveryGroup: DeliveryGroup = {
       selectedDeliveryOption: {

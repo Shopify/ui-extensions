@@ -7,10 +7,7 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'A static extension target that is rendered in the order summary, before the discount form element.',
   subCategory: 'Order Summary',
-  defaultExample: getExample(
-    'purchase.checkout.reductions.render-before/default',
-    ['jsx', 'js'],
-  ),
+  defaultExample: getExample('checkout/default', ['jsx']),
   related: getLinksByTag('targets'),
   ...CHECKOUT_API,
 };

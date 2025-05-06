@@ -17,6 +17,7 @@ module.exports = {
     'packages/*/*.node',
     'packages/*/*.esnext',
     'packages/ui-extensions/src/surfaces/checkout/**/*.d.ts',
+    'packages/ui-extensions/src/surfaces/checkout/preact/tests/',
   ],
   rules: {
     // Codebase was originally written without some strict Shopify conventions

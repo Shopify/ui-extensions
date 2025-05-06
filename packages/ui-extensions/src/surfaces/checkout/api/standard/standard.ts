@@ -63,7 +63,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The API version that was set in the extension config file.
    *
-   * @example '2024-07', '2024-10', '2025-01', '2025-04', 'unstable'
+   * @example '2024-10', '2025-01', '2025-04', '2025-07', '2025-10', 'unstable'
    */
   apiVersion: ApiVersion;
 
@@ -156,7 +156,7 @@ export interface Metafield {
   namespace: string;
 
   /**
-   * The information to be stored as metadata.
+   * The information to be stored as metadata. Always stored as a string, regardless of the metafield's type.
    */
   value: string | number;
 
@@ -179,7 +179,7 @@ export interface AppMetafield {
   namespace: string;
 
   /** The value of a metafield. */
-  value: string | number | boolean;
+  value: string;
 
   /** The metafield’s information type. */
   valueType: 'boolean' | 'float' | 'integer' | 'json_string' | 'string';
@@ -508,7 +508,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
    *
    * > Caution: As of version `2024-07`, UI extension code must check for instructions before calling select APIs in case those APIs are not available.
-   *  See the [update guide](/docs/api/checkout-ui-extensions/instructions-update) for more information.
+   *  See the [update guide](/docs/api/checkout-ui-extensions/apis/cart-instructions#examples) for more information.
    *
    */
   instructions: StatefulRemoteSubscribable<CartInstructions>;

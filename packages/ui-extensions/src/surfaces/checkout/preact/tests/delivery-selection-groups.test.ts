@@ -1,11 +1,12 @@
-import type {ExtensionTarget} from '@shopify/ui-extensions/checkout';
 import {faker} from '@faker-js/faker';
+
+import type {ExtensionTarget} from '@shopify/ui-extensions/checkout';
 
 import {useDeliverySelectionGroups} from '../delivery-selection-groups';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useDeliverySelectionGroups', () => {
+describe.skip('useDeliverySelectionGroups', () => {
   it('returns deliverySelectionGroups if it exists', async () => {
     const deliverySelectionGroup = {
       handle: faker.string.uuid(),

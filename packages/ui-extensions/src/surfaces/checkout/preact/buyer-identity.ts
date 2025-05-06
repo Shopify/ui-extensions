@@ -2,7 +2,6 @@ import type {Customer, PurchasingCompany} from '../api/standard/standard';
 import type {RenderExtensionTarget} from '../extension-targets';
 
 import {ScopeNotGrantedError} from './errors';
-
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

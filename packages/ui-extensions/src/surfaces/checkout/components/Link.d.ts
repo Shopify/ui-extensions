@@ -10,7 +10,7 @@
 /// <reference lib="DOM" />
 import type {LinkProps$1} from './components-shared.d.ts';
 
-export interface LinkProps extends Omit<LinkProps$1, 'children' | 'download' | 'onBlur' | 'onFocus' | 'target' | 'tone'> {
+export interface LinkProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'lang' | 'onClick' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_self' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }

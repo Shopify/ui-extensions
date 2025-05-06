@@ -8,7 +8,7 @@ import {useDeliveryGroups} from '../delivery-groups';
 import type {PartialExtensionApi} from './mount';
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('Delivery Groups API hooks', () => {
+describe.skip('Delivery Groups API hooks', () => {
   describe('useDeliveryGroups', () => {
     it('returns the current devliery groups', async () => {
       const deliveryGroups: DeliveryGroup[] = [

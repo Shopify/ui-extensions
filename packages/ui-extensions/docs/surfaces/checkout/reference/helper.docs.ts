@@ -23,7 +23,7 @@ const codeExampleTabConfig: ExtensionCodeTabConfig = {
     fileExtension: 'ts',
   },
   jsx: {
-    title: 'React',
+    title: 'Preact',
     fileExtension: 'tsx',
   },
   toml: {
@@ -88,46 +88,23 @@ export function getExamples(
       // Shown on the right-hand side of the page.
       codeblock: {
         // Shared for each code tab.
-        title: 'How extensions work',
+        title: '',
         // Use `generateCodeTabs(name)` to ensure you have both "JavaScript" and "React" examples available.
+        tabs: getExtensionCodeTabs('default'),
+      },
+    },
+    generic: {
+      description: '',
+      codeblock: {
+        title: '',
         tabs: getExtensionCodeTabs('default'),
       },
     },
     ...createExample('purchase.address-autocomplete.suggest/default'),
     ...createExample('purchase.address-autocomplete.format-suggestion/default'),
-    ...createExample('purchase.cart-line-item.line-components.render/default'),
-    ...createExample('purchase.checkout.actions.render-before/default'),
-    ...createExample('purchase.checkout.block.render/default'),
-    ...createExample('purchase.checkout.cart-line-item.render-after/default'),
-    ...createExample('purchase.checkout.cart-line-list.render-after/default'),
-    ...createExample('purchase.checkout.contact.render-after/default'),
-    ...createExample('purchase.checkout.delivery-address.render-after/default'),
-    ...createExample(
-      'purchase.checkout.delivery-address.render-before/default',
-    ),
-    ...createExample(
-      'purchase.checkout.payment-method-list.render-after/default',
-    ),
-    ...createExample(
-      'purchase.checkout.payment-method-list.render-before/default',
-    ),
-    ...createExample(
-      'purchase.checkout.pickup-location-list.render-after/default',
-    ),
-    ...createExample(
-      'purchase.checkout.pickup-location-list.render-before/default',
-    ),
     ...createExample(
       'purchase.checkout.pickup-location-option-item.render-after/default',
     ),
-    ...createExample(
-      'purchase.checkout.pickup-point-list.render-after/default',
-    ),
-    ...createExample(
-      'purchase.checkout.pickup-point-list.render-before/default',
-    ),
-    ...createExample('purchase.checkout.reductions.render-after/default'),
-    ...createExample('purchase.checkout.reductions.render-before/default'),
     ...createExample(
       'purchase.checkout.shipping-option-item.details.render/default',
     ),
@@ -140,16 +117,6 @@ export function getExamples(
     ...createExample(
       'purchase.checkout.shipping-option-list.render-before/default',
     ),
-    ...createExample('purchase.thank-you.block.render/default'),
-    ...createExample('purchase.thank-you.cart-line-item.render-after/default'),
-    ...createExample('purchase.thank-you.cart-line-list.render-after/default'),
-    ...createExample(
-      'purchase.thank-you.customer-information.render-after/default',
-    ),
-    ...createExample('purchase.checkout.header.render-after/default'),
-    ...createExample('purchase.checkout.footer.render-after/default'),
-    ...createExample('purchase.thank-you.header.render-after/default'),
-    ...createExample('purchase.thank-you.footer.render-after/default'),
     ...createExample('purchase.checkout.chat.render/default'),
     ...createExample('purchase.thank-you.chat.render/default'),
     'analytics-publish': {
@@ -892,3 +859,6 @@ export const CHECKOUT_API_PROPERTIES_DESCRIPTION =
 
 export const ORDER_CONFIRMATION_API_PROPERTIES_DESCRIPTION =
   'The API object provided to `purchase.thank-you` extension targets.';
+
+export const ORDER_STATUS_API_PROPERTIES_DESCRIPTION =
+  '> Note: This documentation has moved to customer accounts. Refer to [Order API](/docs/api/customer-account-ui-extensions/apis/order)';

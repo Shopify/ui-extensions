@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     'A static extension target that is rendered between the shipping method header and shipping method options.',
   defaultExample: getExample(
     'purchase.checkout.shipping-option-list.render-before/default',
-    ['jsx', 'js'],
+    ['jsx'],
   ),
   related: getLinksByTag('targets'),
   ...SHIPPING_OPTION_LIST_API,

@@ -1,15 +1,12 @@
+import {render} from 'preact';
 import {
-  Banner,
-  Button,
   useApplyNoteChange,
   useInstructions,
-  reactExtension,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const applyNoteChange = useApplyNoteChange();
@@ -17,7 +14,7 @@ function Extension() {
 
   if (instructions.notes.canUpdateNote) {
     return (
-      <Button
+      <s-button
         onClick={() =>
           applyNoteChange({
             type: 'updateNote',
@@ -26,13 +23,13 @@ function Extension() {
         }
       >
         Include a free gift with your order
-      </Button>
+      </s-button>
     );
   } else {
     return (
-      <Banner tone="warning">
+      <s-banner tone="warning">
         Free gifts cannot be added to this order
-      </Banner>
+      </s-banner>
     );
   }
 }

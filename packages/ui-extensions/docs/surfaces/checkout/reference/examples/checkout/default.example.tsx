@@ -1,31 +1,40 @@
+import {render} from 'preact';
 import {
-  reactExtension,
-  Checkbox,
   useApplyAttributeChange,
+  useAttributeValues,
   useInstructions,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
 
-// 1. Choose an extension target
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
+  const [freeGiftRequested] = useAttributeValues([
+    'requestedFreeGift',
+  ]);
   const applyAttributeChange =
     useApplyAttributeChange();
   const instructions = useInstructions();
 
-  // 2. Render a UI
+  // 1. Render a UI
   return (
-    <Checkbox onChange={onCheckboxChange}>
-      I would like to receive a free gift with my
-      order
-    </Checkbox>
+    <s-button
+      onClick={onButtonClick}
+      variant={
+        freeGiftRequested === 'yes'
+          ? 'secondary'
+          : 'primary'
+      }
+    >
+      {freeGiftRequested === 'yes'
+        ? 'Remove free gift'
+        : 'Request a free gift with my order'}
+    </s-button>
   );
 
-  async function onCheckboxChange(isChecked) {
-    // 3. Check if the API is available
+  async function onButtonClick() {
+    // 2. Check if the API is available
     if (
       !instructions.attributes.canUpdateAttributes
     ) {
@@ -34,11 +43,15 @@ function Extension() {
       );
       return;
     }
-    // 4. Call the API to modify checkout
+
+    // 3. Call the API to modify checkout
     const result = await applyAttributeChange({
       key: 'requestedFreeGift',
       type: 'updateAttribute',
-      value: isChecked ? 'yes' : 'no',
+      value:
+        freeGiftRequested === 'yes'
+          ? 'no'
+          : 'yes',
     });
     console.log(
       'applyAttributeChange result',
