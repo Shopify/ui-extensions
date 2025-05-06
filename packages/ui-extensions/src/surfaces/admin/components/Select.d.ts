@@ -72,12 +72,18 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
   | (EventListener & {
-      (event: CallbackEvent<T>): void;
+      (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
 
@@ -119,14 +125,6 @@ export interface SelectProps
       >
     > {
   value: Required<SelectProps$1>['value'];
-}
-
-declare const tagName = 's-select';
-export interface ReactProps extends Partial<SelectProps> {
-  onChange?: (event: CallbackEvent<typeof tagName>) => void;
-  onInput?: (event: CallbackEvent<typeof tagName>) => void;
-  onBlur?: (event: CallbackEvent<typeof tagName>) => void;
-  onFocus?: (event: CallbackEvent<typeof tagName>) => void;
 }
 
 declare const usedFirstOptionSymbol: unique symbol;
@@ -172,9 +170,18 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        SelectJSXProps;
     }
   }
 }
 
+declare const tagName = 's-select';
+export interface SelectJSXProps extends Partial<SelectProps> {
+  onChange?: (event: CallbackEvent<typeof tagName>) => void;
+  onInput?: (event: CallbackEvent<typeof tagName>) => void;
+  onBlur?: (event: CallbackEvent<typeof tagName>) => void;
+  onFocus?: (event: CallbackEvent<typeof tagName>) => void;
+}
+
 export {Select};
+export type {SelectJSXProps};

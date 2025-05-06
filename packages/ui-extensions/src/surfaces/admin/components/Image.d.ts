@@ -135,22 +135,20 @@ export interface ImageProps
   borderWidth: BoxProps['borderWidth'];
 }
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
   | (EventListener & {
-      (event: CallbackEvent<T>): void;
+      (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
-
-declare const tagName = 's-image';
-export interface ReactProps
-  extends Partial<ImageProps>,
-    Pick<ImageProps$1, 'id'> {
-  onError?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onLoad?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -243,9 +241,18 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        ImageJSXProps;
     }
   }
 }
 
+declare const tagName = 's-image';
+export interface ImageJSXProps
+  extends Partial<ImageProps>,
+    Pick<ImageProps$1, 'id'> {
+  onError?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onLoad?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+
 export {Image};
+export type {ImageJSXProps};

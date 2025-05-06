@@ -11,7 +11,7 @@ export interface AdminPrintActionProps
   extends Pick<AdminPrintActionProps$1, 'src'> {}
 
 declare const tagName = 's-admin-print-action';
-export interface ReactProps
+export interface AdminPrintActionJSXProps
   extends Partial<AdminPrintActionProps>,
     Pick<AdminPrintActionProps$1, 'id'> {}
 
@@ -94,9 +94,10 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        AdminPrintActionJSXProps;
     }
   }
 }
 
 export {AdminPrintAction};
+export type {AdminPrintActionJSXProps};

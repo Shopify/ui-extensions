@@ -114,11 +114,6 @@ export interface StackProps
       'rowGap' | 'columnGap' | 'direction' | 'gap'
     > {}
 
-declare const tagName = 's-stack';
-export interface ReactProps
-  extends Partial<StackProps>,
-    Pick<StackProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -229,9 +224,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        StackJSXProps;
     }
   }
 }
 
+declare const tagName = 's-stack';
+export interface StackJSXProps
+  extends Partial<StackProps>,
+    Pick<StackProps$1, 'id'> {}
+
 export {Stack};
+export type {StackJSXProps};

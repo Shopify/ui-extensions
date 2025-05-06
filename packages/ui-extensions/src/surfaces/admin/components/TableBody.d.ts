@@ -9,11 +9,6 @@ import type {TableBodyProps$1, ComponentChild} from './shared.d.ts';
 
 export interface TableBodyProps extends TableBodyProps$1 {}
 
-declare const tagName = 's-table-body';
-export interface ReactProps
-  extends Partial<TableBodyProps>,
-    Pick<TableBodyProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -89,9 +84,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        TableBodyJSXProps;
     }
   }
 }
 
+declare const tagName = 's-table-body';
+export interface TableBodyJSXProps
+  extends Partial<TableBodyProps>,
+    Pick<TableBodyProps$1, 'id'> {}
+
 export {TableBody};
+export type {TableBodyJSXProps};

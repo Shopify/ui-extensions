@@ -22,16 +22,6 @@ export interface TableProps
   variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
 }
 
-declare const tagName = 's-table';
-export interface ReactProps
-  extends Partial<TableProps>,
-    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
-  /**
-   * Additional filters to display in the table. For example, the `s-search-field` component can be used to filter the table data.
-   */
-  filters?: ComponentChild;
-}
-
 export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
   listSlot: Extract<
     TableHeaderProps$1['listSlot'],
@@ -109,12 +99,18 @@ declare const actualTableVariantSymbol: unique symbol;
 declare const tableHeadersSharedDataSymbol: unique symbol;
 export type ActualTableVariant = 'table' | 'list';
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
   | (EventListener & {
-      (event: CallbackEvent<T>): void;
+      (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
 
@@ -153,9 +149,20 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        TableJSXProps;
     }
   }
 }
 
+declare const tagName = 's-table';
+export interface TableJSXProps
+  extends Partial<TableProps>,
+    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
+  /**
+   * Additional filters to display in the table. For example, the `s-search-field` component can be used to filter the table data.
+   */
+  filters?: ComponentChild;
+}
+
 export {Table};
+export type {TableJSXProps};

@@ -22,11 +22,6 @@ export interface ChoiceProps
     >
   > {}
 
-declare const tagName = 's-choice';
-export interface ReactProps
-  extends Partial<ChoiceProps>,
-    Pick<ChoiceProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -110,9 +105,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        ChoiceJSXProps;
     }
   }
 }
 
+declare const tagName = 's-choice';
+export interface ChoiceJSXProps
+  extends Partial<ChoiceProps>,
+    Pick<ChoiceProps$1, 'id'> {}
+
 export {Choice};
+export type {ChoiceJSXProps};

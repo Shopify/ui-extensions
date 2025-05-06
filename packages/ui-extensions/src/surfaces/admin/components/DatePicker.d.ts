@@ -6,18 +6,24 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChild, BannerProps$1} from './shared.d.ts';
+import type {DatePickerProps$1, ComponentChild} from './shared.d.ts';
 
-export type RequiredBannerProps = Required<BannerProps$1>;
-export interface BannerProps
-  extends Pick<
-    RequiredBannerProps,
-    'heading' | 'dismissible' | 'hidden' | 'tone'
+export interface DatePickerProps
+  extends Required<
+    Pick<
+      DatePickerProps$1,
+      | 'defaultView'
+      | 'view'
+      | 'allow'
+      | 'disallow'
+      | 'allowDays'
+      | 'disallowDays'
+      | 'value'
+      | 'defaultValue'
+      | 'name'
+    >
   > {
-  tone: Extract<
-    RequiredBannerProps['tone'],
-    'auto' | 'critical' | 'warning' | 'success' | 'info'
-  >;
+  type: Extract<DatePickerProps$1['type'], 'single' | 'multiple' | 'range'>;
 }
 
 export type CallbackEvent<
@@ -57,8 +63,8 @@ export interface ClickOptions {
  * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
  * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
  */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
+declare const BaseClass$1: typeof globalThis.HTMLElement;
+declare abstract class PreactCustomElement extends BaseClass$1 {
   /** @private */
   static get observedAttributes(): string[];
   constructor({
@@ -95,18 +101,54 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare class Banner extends PreactCustomElement implements BannerProps {
-  accessor heading: BannerProps['heading'];
-  accessor tone: BannerProps['tone'];
-  accessor hidden: BannerProps['hidden'];
-  accessor dismissible: BannerProps['dismissible'];
-  accessor ondismiss: CallbackEventListener<typeof tagName> | null;
-  accessor onafterhide: CallbackEventListener<typeof tagName> | null;
+declare class ViewChangeEvent extends Event {
+  /** The new month to display in `YYYY-MM` format. */
+  view: string;
+  constructor(view: string);
+}
+
+declare const internals: unique symbol;
+declare const dirtyStateSymbol: unique symbol;
+declare class BaseClass extends PreactCustomElement {
+  static formAssociated: boolean;
+  constructor(renderImpl: RenderImpl);
+  /** @private */
+  [internals]: ElementInternals;
+}
+declare class DatePicker extends BaseClass implements DatePickerProps {
+  accessor defaultView: string;
+  set view(view: string);
+  get view(): string;
+  accessor allow: DatePickerProps['allow'];
+  accessor disallow: DatePickerProps['disallow'];
+  accessor allowDays: DatePickerProps['allowDays'];
+  accessor disallowDays: DatePickerProps['disallowDays'];
+  accessor type: DatePickerProps['type'];
+  accessor defaultValue: DatePickerProps['defaultValue'];
+  accessor name: DatePickerProps['name'];
+  set value(value: string);
+  get value(): string;
+  /** @private */
+  [dirtyStateSymbol]: boolean;
+  /** @private */
+  formResetCallback(): void;
+  accessor onviewchange: CallbackEventListener<
+    typeof tagName,
+    HTMLElementEventMap['viewchange']
+  > | null;
+
+  accessor onfocus: CallbackEventListener<typeof tagName> | null;
+  accessor onblur: CallbackEventListener<typeof tagName> | null;
+  accessor oninput: CallbackEventListener<typeof tagName> | null;
+  accessor onchange: CallbackEventListener<typeof tagName> | null;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Banner;
+    [tagName]: DatePicker;
+  }
+  interface HTMLElementEventMap {
+    viewchange: ViewChangeEvent;
   }
 }
 declare module 'preact' {
@@ -116,22 +158,25 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        BannerJSXProps;
+        DatePickerJSXProps;
     }
   }
 }
 
-declare const tagName = 's-banner';
-export interface BannerJSXProps
-  extends Partial<BannerProps>,
-    Pick<BannerProps$1, 'id'> {
-  /**
-   * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
-   */
-  secondaryActions?: ComponentChild;
-  onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+declare const tagName = 's-date-picker';
+export interface DatePickerJSXProps
+  extends Partial<DatePickerProps>,
+    Pick<DatePickerProps$1, 'id'> {
+  onViewChange?:
+    | ((
+        event: CallbackEvent<typeof tagName, HTMLElementEventMap['viewchange']>,
+      ) => void)
+    | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 
-export {Banner};
-export type {BannerJSXProps};
+export {DatePicker};
+export type {DatePickerJSXProps};

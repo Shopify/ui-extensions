@@ -72,12 +72,18 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
   | (EventListener & {
-      (event: CallbackEvent<T>): void;
+      (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
@@ -200,12 +206,6 @@ export interface NumberFieldProps
   value: Required<NumberFieldProps$1>['value'];
 }
 
-declare const tagName = 's-number-field';
-export interface ReactProps
-  extends Partial<NumberFieldProps>,
-    Pick<NumberFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName> {}
-
 declare class NumberField
   extends PreactFieldElement<NumberFieldProps['autocomplete']>
   implements NumberFieldProps
@@ -232,9 +232,16 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        NumberFieldJSXProps;
     }
   }
 }
 
+declare const tagName = 's-number-field';
+export interface NumberFieldJSXProps
+  extends Partial<NumberFieldProps>,
+    Pick<NumberFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName> {}
+
 export {NumberField};
+export type {NumberFieldJSXProps};

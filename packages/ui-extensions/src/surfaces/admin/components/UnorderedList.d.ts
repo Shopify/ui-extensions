@@ -9,11 +9,6 @@ import type {UnorderedListProps$1, ComponentChild} from './shared.d.ts';
 
 export interface UnorderedListProps extends UnorderedListProps$1 {}
 
-declare const tagName = 's-unordered-list';
-export interface ReactProps
-  extends Partial<UnorderedListProps>,
-    Pick<UnorderedListProps$1, 'id'> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -92,9 +87,15 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        UnorderedListJSXProps;
     }
   }
 }
 
+declare const tagName = 's-unordered-list';
+export interface UnorderedListJSXProps
+  extends Partial<UnorderedListProps>,
+    Pick<UnorderedListProps$1, 'id'> {}
+
 export {UnorderedList};
+export type {UnorderedListJSXProps};

@@ -13,9 +13,6 @@ export interface OptionProps
     Pick<OptionProps$1, 'disabled' | 'value' | 'selected' | 'defaultSelected'>
   > {}
 
-declare const tagName = 's-option';
-export interface ReactProps extends Partial<OptionProps> {}
-
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChild;
@@ -95,9 +92,13 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        OptionJSXProps;
     }
   }
 }
 
+declare const tagName = 's-option';
+export interface OptionJSXProps extends Partial<OptionProps> {}
+
 export {Option};
+export type {OptionJSXProps};

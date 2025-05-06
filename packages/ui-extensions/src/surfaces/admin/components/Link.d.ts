@@ -35,21 +35,20 @@ export interface LinkProps
   tone: Extract<RequiredLinkProps['tone'], 'auto' | 'neutral' | 'critical'>;
 }
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
   | (EventListener & {
-      (event: CallbackEvent<T>): void;
+      (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
-
-declare const tagName = 's-link';
-export interface ReactProps
-  extends Partial<LinkProps>,
-    Pick<LinkProps$1, 'id' | 'lang'> {
-  onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -145,9 +144,17 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        LinkJSXProps;
     }
   }
 }
 
+declare const tagName = 's-link';
+export interface LinkJSXProps
+  extends Partial<LinkProps>,
+    Pick<LinkProps$1, 'id' | 'lang'> {
+  onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+
 export {Link};
+export type {LinkJSXProps};

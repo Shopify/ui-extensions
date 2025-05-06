@@ -1658,6 +1658,159 @@ interface ClickableProps$1 extends BaseBoxProps, BaseClickableProps {
    */
   lang?: string;
 }
+interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
+  /**
+   * Default month to display in `YYYY-MM` format.
+   *
+   * This value is used until `view` is set, either directly or as a result of user interaction.
+   *
+   * Defaults to the current month in the user's locale.
+   */
+  defaultView?: string;
+  /**
+   * Displayed month in `YYYY-MM` format.
+   *
+   * `onViewChange` is called when this value changes.
+   *
+   * Defaults to `defaultView`.
+   */
+  view?: string;
+  /**
+   * Called whenever the month to display changes.
+   *
+   * @param view The new month to display in `YYYY-MM` format.
+   */
+  onViewChange?: (view: string) => void;
+  /**
+   * The type of selection the date picker allows.
+   *
+   * - `single` (default) allows selecting a single date.
+   * - `multiple` allows selecting multiple non-contiguous dates.
+   * - `range` allows selecting a single range of dates.
+   */
+  type?: 'single' | 'multiple' | 'range';
+  /**
+   * Dates that can be selected.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default '' allows all dates.
+   *
+   * Dates in `YYYY-MM-DD` format allow a single date.
+   *
+   * Dates in `YYYY-MM` format allow a whole month.
+   *
+   * Dates in `YYYY` format allow a whole year.
+   *
+   * Ranges are expressed as `start--end`.
+   *
+   * Ranges are inclusive.
+   *
+   * If either `start` or `end` is omitted, the range is unbounded in that direction.
+   *
+   * If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+   * So `2024--` is equivalent to `2024-01-01--`.
+   *
+   * If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+   * So `--2024` is equivalent to `--2024-12-31`.
+   *
+   * Whitespace is allowed either side of `--`.
+   *
+   * @example
+   * `2024-02--2025` - allow any date from February 2024 to the end of 2025
+   * `2024-02--` - allow any date from February 2024
+   * `2024-05-09, 2024-05-11` - allow only the 9th and 11th of May 2024
+   */
+  allow?: string;
+  /**
+   * Dates that cannot be selected. These subtract from `allowDates`.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default '' has no effect on `allowDates`.
+   *
+   * Dates in `YYYY-MM-DD` format disallow a single date.
+   *
+   * Dates in `YYYY-MM` format disallow a whole month.
+   *
+   * Dates in `YYYY` format disallow a whole year.
+   *
+   * Ranges are expressed as `start--end`.
+   *
+   * Ranges are inclusive.
+   *
+   * If either `start` or `end` is omitted, the range is unbounded in that direction.
+   *
+   * If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+   * So `2024--` is equivalent to `2024-01-01--`.
+   *
+   * If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+   * So `--2024` is equivalent to `--2024-12-31`.
+   *
+   * Whitespace is allowed either side of `--`.
+   *
+   * @example
+   * `--2024-02` - disallow any date before February 2024
+   * `2024-05-09, 2024-05-11` - disallow the 9th and 11th of May 2024
+   */
+  disallow?: string;
+  /**
+   * Days of the week that can be selected. These intersect with the result of `allowDates` and `disallowDates`.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default '' has no effect on the result of `allowDates` and `disallowDates`.
+   *
+   * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+   *
+   * @example
+   * 'saturday, sunday' - allow only weekends within the result of `allowDates` and `disallowDates`.
+   */
+  allowDays?: string;
+  /**
+   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allowDates` and `disallowDates`.
+   *
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+   *
+   * The default '' has no effect on `allowDays`.
+   *
+   * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
+   *
+   * @example
+   * 'saturday, sunday' - disallow weekends within the result of `allowDates` and `disallowDates`.
+   */
+  disallowDays?: string;
+  /**
+   * Default selected value.
+   *
+   * The default, '', means no date is selected.
+   *
+   * If the provided value is invalid, no date is selected.
+   *
+   * If `type` is `single`, this is a date in `YYYY-MM-DD` format.
+   *
+   * If `type` is `multiple`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   *
+   * If `type` is `range`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   */
+  defaultValue?: string;
+  /**
+   * Current selected value.
+   *
+   * The default, '', means no date is selected.
+   *
+   * If the provided value is invalid, no date is selected.
+   *
+   * Otherwise:
+   *
+   * If `type` is `single`, this is a date in `YYYY-MM-DD` format.
+   *
+   * If `type` is `multiple`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   *
+   * If `type` is `range`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   */
+  value?: string;
+}
 export interface AutocompleteProps<
   AutocompleteField extends AnyAutocompleteField,
 > {

@@ -73,12 +73,18 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
   | (EventListener & {
-      (event: CallbackEvent<T>): void;
+      (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
 
@@ -146,14 +152,6 @@ export interface SwitchProps
   extends PreactCheckboxProps,
     Required<Pick<SwitchProps$1, 'labelAccessibilityVisibility'>> {}
 
-declare const tagName = 's-switch';
-export interface ReactProps
-  extends Partial<SwitchProps>,
-    Pick<SwitchProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-
 declare class Switch extends PreactCheckboxElement implements SwitchProps {
   accessor labelAccessibilityVisibility: SwitchProps['labelAccessibilityVisibility'];
   constructor();
@@ -170,9 +168,18 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        SwitchJSXProps;
     }
   }
 }
 
+declare const tagName = 's-switch';
+export interface SwitchJSXProps
+  extends Partial<SwitchProps>,
+    Pick<SwitchProps$1, 'id'> {
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+
 export {Switch};
+export type {SwitchJSXProps};

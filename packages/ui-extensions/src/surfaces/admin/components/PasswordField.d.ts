@@ -72,12 +72,18 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  currentTarget: HTMLElementTagNameMap[T];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
   | (EventListener & {
-      (event: CallbackEvent<T>): void;
+      (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
@@ -208,12 +214,6 @@ export type PasswordFieldProps = PreactFieldProps<
     >
   >;
 
-declare const tagName = 's-password-field';
-export interface ReactProps
-  extends Partial<PasswordFieldProps>,
-    Pick<PasswordFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName> {}
-
 declare class PasswordField
   extends PreactFieldElement<PasswordFieldProps['autocomplete']>
   implements PasswordFieldProps
@@ -234,9 +234,16 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        ReactProps;
+        PasswordFieldJSXProps;
     }
   }
 }
 
+declare const tagName = 's-password-field';
+export interface PasswordFieldJSXProps
+  extends Partial<PasswordFieldProps>,
+    Pick<PasswordFieldProps$1, 'id'>,
+    FieldReactProps<typeof tagName> {}
+
 export {PasswordField};
+export type {PasswordFieldJSXProps};
