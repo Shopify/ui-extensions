@@ -136,7 +136,7 @@ const transformJson = async (filePath, isExtensions) => {
   if (!isExtensions && shopifyDevExists) {
     const shopifyDevDocs = path.join(
       shopifyDevDBPath,
-      'app_bridge/generated_docs_data.json',
+      'app_home/generated_docs_data.json',
     );
     const shopifyDevDocsContent = await fs.readFile(shopifyDevDocs, 'utf8');
     const shopifyDevDocsDocsParsed = JSON.parse(
@@ -202,9 +202,9 @@ const generateExtensionsDocs = async () => {
 };
 
 const generateAppBridgeDocs = async () => {
-  console.log('Building App Bridge docs');
+  console.log('Building App Home docs');
 
-  const outputDir = `${docsGeneratedRelativePath}/app_bridge`;
+  const outputDir = `${docsGeneratedRelativePath}/app_home`;
   const scripts = [
     `yarn tsc --project ${docsRelativePath}/${tsconfigAppBridge} --moduleResolution node  --target esNext  --module CommonJS`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
