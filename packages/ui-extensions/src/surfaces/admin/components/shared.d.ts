@@ -1,4 +1,4 @@
-/** VERSION: 0.50.0 **/
+/** VERSION: 0.51.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -3381,7 +3381,6 @@ type IconType$1 =
   | 'paint-brush-round'
   | 'paper-check'
   | 'passkey'
-  | 'paste'
   | 'pause-circle'
   | 'payment'
   | 'payment-capture'
@@ -3408,8 +3407,6 @@ type IconType$1 =
   | 'play-circle'
   | 'plus'
   | 'plus-circle'
-  | 'plus-circle-down'
-  | 'plus-circle-up'
   | 'point-of-sale'
   | 'price-list'
   | 'print'
