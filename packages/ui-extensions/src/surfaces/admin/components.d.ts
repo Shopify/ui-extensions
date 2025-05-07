@@ -1,4 +1,4 @@
-/** VERSION: 0.50.0 **/
+/** VERSION: 0.51.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -3383,7 +3383,6 @@ type IconType$1 =
   | 'paint-brush-round'
   | 'paper-check'
   | 'passkey'
-  | 'paste'
   | 'pause-circle'
   | 'payment'
   | 'payment-capture'
@@ -3410,8 +3409,6 @@ type IconType$1 =
   | 'play-circle'
   | 'plus'
   | 'plus-circle'
-  | 'plus-circle-down'
-  | 'plus-circle-up'
   | 'point-of-sale'
   | 'price-list'
   | 'print'
@@ -3905,7 +3902,7 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        BannerJSXProps;
+        Omit<BannerJSXProps, 'secondaryActions'>;
     }
   }
 }
@@ -5190,7 +5187,7 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        PageJSXProps;
+        Omit<PageJSXProps, 'aside'>;
     }
   }
 }
@@ -5647,7 +5644,7 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        TableJSXProps;
+        Omit<TableJSXProps, 'filters'>;
     }
   }
 }
@@ -5933,7 +5930,7 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        TextFieldJSXProps;
+        Omit<TextFieldJSXProps, 'accessory'>;
     }
   }
 }
@@ -6053,7 +6050,7 @@ declare module 'preact' {
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
-        AdminActionJSXProps;
+        Omit<AdminActionJSXProps, 'primaryAction' | 'secondaryActions'>;
     }
   }
 }

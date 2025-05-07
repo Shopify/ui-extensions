@@ -1,4 +1,4 @@
-/** VERSION: 0.50.0 **/
+/** VERSION: 0.51.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */

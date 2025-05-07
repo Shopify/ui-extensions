@@ -19,6 +19,9 @@
       "admin.*": [
         "./build/ts/surfaces/admin/targets/admin.*"
       ],
+      "admin/components/*": [
+        "./build/ts/surfaces/admin/components/*.d.ts"
+      ],
       "checkout": [
         "./build/ts/surfaces/checkout.d.ts"
       ],
@@ -54,6 +57,9 @@
     },
     "./admin.*": {
       "default": "./build/ts/surfaces/admin/targets/admin.*.d.ts"
+    },
+    "./admin/components/*": {
+      "default": "./build/ts/surfaces/admin/components/*.d.ts"
     },
     "./checkout": {
       "types": "./build/ts/surfaces/checkout.d.ts",
