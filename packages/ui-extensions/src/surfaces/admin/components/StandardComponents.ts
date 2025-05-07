@@ -11,6 +11,7 @@ export type StandardComponents =
   | 'Divider'
   | 'EmailField'
   | 'Grid'
+  | 'GridItem'
   | 'Heading'
   | 'Icon'
   | 'Image'
