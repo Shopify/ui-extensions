@@ -11,7 +11,7 @@
 /* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {BoxProps$1,MaybeAllValuesShorthandProperty,ComponentChild} from './shared.d.ts';
+import type {BoxProps$1, GridItemProps$1,MaybeAllValuesShorthandProperty,ComponentChild} from './shared.d.ts';
 
 export type MakeResponsive<T> = T | `@container${string}`;
 /**
@@ -43,6 +43,12 @@ export interface BoxProps extends Pick<RequiredBoxProps, 'accessibilityLabel' | 
     borderStyle: MaybeAllValuesShorthandProperty<BoxBorderStyles> | Extract<RequiredBoxProps['borderStyle'], ''>;
     borderColor: Extract<RequiredBoxProps['borderColor'], 'subdued' | 'base' | 'strong' | ''>;
     borderRadius: MaybeAllValuesShorthandProperty<BoxBorderRadii>;
+}
+
+export type RequiredGridItemProps = Required<GridItemProps$1>;
+export interface GridItemProps extends BoxProps, Required<Pick<GridItemProps$1, 'gridColumn' | 'gridRow'>> {
+    gridColumn: RequiredGridItemProps['gridColumn'];
+    gridRow: RequiredGridItemProps['gridRow'];
 }
 
 export type Styles = string;
@@ -127,25 +133,27 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
     accessor display: BoxProps['display'];
 }
 
-declare class Box extends BoxElement implements BoxProps {
+declare class GridItem extends BoxElement implements GridItemProps {
+    accessor gridColumn: GridItemProps['gridColumn'];
+    accessor gridRow: GridItemProps['gridRow'];
     constructor();
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: Box;
+        [tagName]: GridItem;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & BoxJSXProps;
+            [tagName]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & GridItemJSXProps;
         }
     }
 }
 
-declare const tagName = "s-box";
-export interface BoxJSXProps extends Partial<BoxProps>, Pick<BoxProps$1, 'id'> {
+declare const tagName = "s-grid-item";
+export interface GridItemJSXProps extends Partial<GridItemProps>, Pick<GridItemProps$1, 'id'> {
 }
 
-export { Box };
-export type { BoxJSXProps };
+export { GridItem };
+export type { GridItemJSXProps };
