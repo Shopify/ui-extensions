@@ -1,14 +1,14 @@
 /** VERSION: 0.51.1 **/
-/* eslint-disable import/extensions */
+ 
 /* eslint-disable @typescript-eslint/ban-types */
-/* eslint-disable @typescript-eslint/no-namespace */
+ 
 /* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable line-comment-position */
-/* eslint-disable @typescript-eslint/unified-signatures */
-/* eslint-disable no-var */
-/* eslint-disable import/no-deprecated */
-/* eslint-disable import/namespace */
-/* eslint-disable import/no-deprecated */
+ 
+ 
+ 
+ 
+ 
+ 
 /**
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
@@ -2664,9 +2664,9 @@ export interface VNode<P = {}> {
 // Preact Component interface
 // -----------------------------------
 export type Key = string | number | any;
-export type RefObject<T> = {
+export interface RefObject<T> {
 	current: T | null;
-};
+}
 export type RefCallback<T> = (instance: T | null) => void;
 export type Ref<T> = RefObject<T> | RefCallback<T> | null;
 export type ComponentChild = VNode<any> | object | string | number | bigint | boolean | null | undefined;

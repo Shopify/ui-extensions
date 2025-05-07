@@ -1,14 +1,14 @@
 /** VERSION: 0.51.1 **/
-/* eslint-disable import/extensions */
+ 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable line-comment-position */
-/* eslint-disable @typescript-eslint/unified-signatures */
-/* eslint-disable no-var */
-/* eslint-disable import/no-deprecated */
-/* eslint-disable import/namespace */
-/* eslint-disable import/no-deprecated */
+ 
+ 
+ 
+ 
+ 
+ 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 /**
@@ -2666,9 +2666,9 @@ export interface VNode<P = {}> {
 // Preact Component interface
 // -----------------------------------
 export type Key = string | number | any;
-export type RefObject<T> = {
+export interface RefObject<T> {
 	current: T | null;
-};
+}
 export type RefCallback<T> = (instance: T | null) => void;
 export type Ref<T> = RefObject<T> | RefCallback<T> | null;
 export type ComponentChild = VNode<any> | object | string | number | bigint | boolean | null | undefined;
@@ -2888,12 +2888,12 @@ export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent e
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
     (event: CallbackEvent<TTagName, TEvent>): void;
 }) | null;
-export type FieldReactProps<T extends keyof HTMLElementTagNameMap> = {
+export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
     onInput?: ((event: CallbackEvent<T>) => void) | null;
     onChange?: ((event: CallbackEvent<T>) => void) | null;
     onFocus?: ((event: CallbackEvent<T>) => void) | null;
     onBlur?: ((event: CallbackEvent<T>) => void) | null;
-};
+}
 
 declare class Banner extends PreactCustomElement implements BannerProps {
     accessor heading: BannerProps['heading'];
@@ -4100,6 +4100,7 @@ declare class Table extends PreactCustomElement implements TableProps {
         listSlot: TableHeaderProps["listSlot"];
         textContent: string;
     }[]>;
+
     constructor();
 }
 declare global {
