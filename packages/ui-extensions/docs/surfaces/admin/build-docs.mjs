@@ -189,16 +189,6 @@ const generateExtensionsDocs = async () => {
     searchValue: '/docs/api/admin-extensions/unstable/',
     replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
   });
-
-  await fs.cp(
-    path.join(docsPath, 'screenshots'),
-    path.join(
-      shopifyDevPath,
-      'app/assets/images/templated-apis-screenshots/admin-extensions',
-      EXTENSIONS_API_VERSION,
-    ),
-    {recursive: true},
-  );
 };
 
 const generateAppBridgeDocs = async () => {
@@ -217,15 +207,6 @@ const generateAppBridgeDocs = async () => {
     generatedDocsDataFile,
     transformJson: (filePath) => transformJson(filePath, false),
   });
-
-  await fs.cp(
-    path.join(docsPath, 'screenshots'),
-    path.join(
-      shopifyDevPath,
-      'app/assets/images/templated-apis-screenshots/app-home',
-    ),
-    {recursive: true},
-  );
 };
 
 try {
@@ -245,6 +226,15 @@ try {
     shopifyDevPath,
     shopifyDevDBPath,
   });
+
+  await fs.cp(
+    path.join(docsPath, 'screenshots'),
+    path.join(
+      shopifyDevPath,
+      'app/assets/images/templated-apis-screenshots/admin',
+    ),
+    {recursive: true},
+  );
 
   await fs.rm(tempComponentDefs);
 } catch (error) {
