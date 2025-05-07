@@ -217,6 +217,15 @@ const generateAppBridgeDocs = async () => {
     generatedDocsDataFile,
     transformJson: (filePath) => transformJson(filePath, false),
   });
+
+  await fs.cp(
+    path.join(docsPath, 'screenshots'),
+    path.join(
+      shopifyDevPath,
+      'app/assets/images/templated-apis-screenshots/app-home',
+    ),
+    {recursive: true},
+  );
 };
 
 try {
