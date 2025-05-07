@@ -86,13 +86,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        OptionJSXProps;
+      [tagName]: OptionJSXProps & BaseProps;
     }
   }
 }

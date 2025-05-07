@@ -152,13 +152,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        DatePickerJSXProps;
+      [tagName]: DatePickerJSXProps & BaseProps;
     }
   }
 }

@@ -3835,13 +3835,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$M]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        BadgeJSXProps;
+      [tagName$M]: BadgeJSXProps & BaseProps;
     }
   }
 }
@@ -3899,13 +3899,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$L]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<BannerJSXProps, 'secondaryActions'>;
+      [tagName$L]: Omit<BannerJSXProps, 'secondaryActions'> & BaseProps;
     }
   }
 }
@@ -4049,13 +4049,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$K]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        BoxJSXProps;
+      [tagName$K]: BoxJSXProps & BaseProps;
     }
   }
 }
@@ -4127,13 +4127,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$J]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ButtonJSXProps;
+      [tagName$J]: ButtonJSXProps & BaseProps;
     }
   }
 }
@@ -4226,11 +4226,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$I]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        CheckboxJSXProps;
+      [tagName$I]: CheckboxJSXProps;
     }
   }
 }
@@ -4276,11 +4272,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$H]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ChoiceJSXProps;
+      [tagName$H]: ChoiceJSXProps;
     }
   }
 }
@@ -4336,13 +4328,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$G]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ChoiceListJSXProps;
+      [tagName$G]: ChoiceListJSXProps & BaseProps;
     }
   }
 }
@@ -4396,13 +4388,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$F]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ClickableJSXProps;
+      [tagName$F]: ClickableJSXProps & BaseProps;
     }
   }
 }
@@ -4485,13 +4477,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$E]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        DatePickerJSXProps;
+      [tagName$E]: DatePickerJSXProps & BaseProps;
     }
   }
 }
@@ -4531,13 +4522,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$D]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        DividerJSXProps;
+      [tagName$D]: DividerJSXProps & BaseProps;
     }
   }
 }
@@ -4645,13 +4635,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$C]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        EmailFieldJSXProps;
+      [tagName$C]: EmailFieldJSXProps & BaseProps;
     }
   }
 }
@@ -4700,13 +4689,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$B]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        GridJSXProps;
+      [tagName$B]: GridJSXProps & BaseProps;
     }
   }
 }
@@ -4735,13 +4724,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$A]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        GridItemJSXProps;
+      [tagName$A]: GridItemJSXProps & BaseProps;
     }
   }
 }
@@ -4774,13 +4763,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$z]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        HeadingJSXProps;
+      [tagName$z]: HeadingJSXProps & BaseProps;
     }
   }
 }
@@ -4803,14 +4792,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$y]: Omit<
-        HTMLAttributes<HTMLElement>,
-        | 'size'
-        | Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        IconJSXProps;
+      [tagName$y]: IconJSXProps & BaseProps;
     }
   }
 }
@@ -4877,13 +4864,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$x]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ImageJSXProps;
+      [tagName$x]: ImageJSXProps & BaseProps;
     }
   }
 }
@@ -4939,13 +4925,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$w]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        LinkJSXProps;
+      [tagName$w]: LinkJSXProps & BaseProps;
     }
   }
 }
@@ -4968,13 +4954,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$v]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ListItemJSXProps;
+      [tagName$v]: ListItemJSXProps & BaseProps;
     }
   }
 }
@@ -5009,13 +4995,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$u]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        MoneyFieldJSXProps;
+      [tagName$u]: MoneyFieldJSXProps & BaseProps;
     }
   }
 }
@@ -5060,13 +5046,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$t]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        NumberFieldJSXProps;
+      [tagName$t]: NumberFieldJSXProps & BaseProps;
     }
   }
 }
@@ -5095,13 +5080,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$s]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        OptionJSXProps;
+      [tagName$s]: OptionJSXProps & BaseProps;
     }
   }
 }
@@ -5126,13 +5110,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$r]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        OptionGroupJSXProps;
+      [tagName$r]: OptionGroupJSXProps & BaseProps;
     }
   }
 }
@@ -5154,13 +5137,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$q]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        OrderedListJSXProps;
+      [tagName$q]: OrderedListJSXProps & BaseProps;
     }
   }
 }
@@ -5184,13 +5167,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$p]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<PageJSXProps, 'aside'>;
+      [tagName$p]: Omit<PageJSXProps, 'aside'> & BaseProps;
     }
   }
 }
@@ -5238,13 +5220,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ParagraphJSXProps;
+      [tagName$o]: ParagraphJSXProps & BaseProps;
     }
   }
 }
@@ -5290,13 +5272,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$n]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        PasswordFieldJSXProps;
+      [tagName$n]: PasswordFieldJSXProps & BaseProps;
     }
   }
 }
@@ -5343,13 +5324,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$m]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        SearchFieldJSXProps;
+      [tagName$m]: SearchFieldJSXProps & BaseProps;
     }
   }
 }
@@ -5385,13 +5366,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$l]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        SectionJSXProps;
+      [tagName$l]: SectionJSXProps & BaseProps;
     }
   }
 }
@@ -5457,13 +5438,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$k]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        SelectJSXProps;
+      [tagName$k]: SelectJSXProps & BaseProps;
     }
   }
 }
@@ -5494,11 +5475,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$j]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        SpinnerJSXProps;
+      [tagName$j]: SpinnerJSXProps;
     }
   }
 }
@@ -5536,13 +5513,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$i]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        StackJSXProps;
+      [tagName$i]: StackJSXProps & BaseProps;
     }
   }
 }
@@ -5568,11 +5545,7 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        SwitchJSXProps;
+      [tagName$h]: SwitchJSXProps;
     }
   }
 }
@@ -5641,13 +5614,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<TableJSXProps, 'filters'>;
+      [tagName$g]: Omit<TableJSXProps, 'filters'> & BaseProps;
     }
   }
 }
@@ -5673,13 +5646,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TableBodyJSXProps;
+      [tagName$f]: TableBodyJSXProps & BaseProps;
     }
   }
 }
@@ -5700,13 +5673,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TableCellJSXProps;
+      [tagName$e]: TableCellJSXProps & BaseProps;
     }
   }
 }
@@ -5729,13 +5702,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TableHeaderJSXProps;
+      [tagName$d]: TableHeaderJSXProps & BaseProps;
     }
   }
 }
@@ -5762,13 +5735,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TableHeaderRowJSXProps;
+      [tagName$c]: TableHeaderRowJSXProps & BaseProps;
     }
   }
 }
@@ -5789,13 +5762,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TableRowJSXProps;
+      [tagName$b]: TableRowJSXProps & BaseProps;
     }
   }
 }
@@ -5847,13 +5820,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TextJSXProps;
+      [tagName$a]: TextJSXProps & BaseProps;
     }
   }
 }
@@ -5883,13 +5856,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TextAreaJSXProps;
+      [tagName$9]: TextAreaJSXProps & BaseProps;
     }
   }
 }
@@ -5927,13 +5899,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<TextFieldJSXProps, 'accessory'>;
+      [tagName$8]: Omit<TextFieldJSXProps, 'accessory'> & BaseProps;
     }
   }
 }
@@ -5969,13 +5940,12 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$7]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        URLFieldJSXProps;
+      [tagName$7]: URLFieldJSXProps & BaseProps;
     }
   }
 }
@@ -6000,13 +5970,13 @@ declare global {
   }
 }
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$6]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        UnorderedListJSXProps;
+      [tagName$6]: UnorderedListJSXProps & BaseProps;
     }
   }
 }
@@ -6408,476 +6378,446 @@ export interface AdminActionSlots {
   'secondary-actions': HTMLElement;
 }
 declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$M]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        BadgeJSXProps;
+      [tagName$M]: BadgeJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$L]: Omit<BannerJSXProps, 'secondaryActions'> & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$K]: BoxJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$J]: ButtonJSXProps & BaseProps;
     }
   }
 }
 declare module 'react' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$L]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<BannerJSXProps, 'secondaryActions'>;
+      [tagName$I]: CheckboxJSXProps;
     }
   }
 }
 declare module 'react' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$K]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        BoxJSXProps;
+      [tagName$H]: ChoiceJSXProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$G]: ChoiceListJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$F]: ClickableJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$E]: DatePickerJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$D]: DividerJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$C]: EmailFieldJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$B]: GridJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$A]: GridItemJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$z]: HeadingJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$y]: IconJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$x]: ImageJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$w]: LinkJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$v]: ListItemJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$u]: MoneyFieldJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$t]: NumberFieldJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$s]: OptionJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$r]: OptionGroupJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$q]: OrderedListJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$p]: Omit<PageJSXProps, 'aside'> & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$o]: ParagraphJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$n]: PasswordFieldJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$m]: SearchFieldJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$l]: SectionJSXProps & BaseProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$k]: SelectJSXProps & BaseProps;
     }
   }
 }
 declare module 'react' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$J]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ButtonJSXProps;
+      [tagName$j]: SpinnerJSXProps;
+    }
+  }
+}
+declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$i]: StackJSXProps & BaseProps;
     }
   }
 }
 declare module 'react' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$I]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        CheckboxJSXProps;
+      [tagName$h]: SwitchJSXProps;
     }
   }
 }
 declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$H]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ChoiceJSXProps;
+      [tagName$g]: Omit<TableJSXProps, 'filters'> & BaseProps;
     }
   }
 }
 declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$G]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ChoiceListJSXProps;
+      [tagName$f]: TableBodyJSXProps & BaseProps;
     }
   }
 }
 declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$F]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ClickableJSXProps;
+      [tagName$e]: TableCellJSXProps & BaseProps;
     }
   }
 }
 declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$E]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        DatePickerJSXProps;
+      [tagName$d]: TableHeaderJSXProps & BaseProps;
     }
   }
 }
 declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$D]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        DividerJSXProps;
+      [tagName$c]: TableHeaderRowJSXProps & BaseProps;
     }
   }
 }
 declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$C]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        EmailFieldJSXProps;
+      [tagName$b]: TableRowJSXProps & BaseProps;
     }
   }
 }
 declare module 'react' {
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$B]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        GridJSXProps;
+      [tagName$a]: TextJSXProps & BaseProps;
     }
   }
 }
 declare module 'react' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$A]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        GridItemJSXProps;
+      [tagName$9]: TextAreaJSXProps & BaseProps;
     }
   }
 }
 declare module 'react' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$z]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        HeadingJSXProps;
+      [tagName$8]: Omit<TextFieldJSXProps, 'accessory'> & BaseProps;
     }
   }
 }
 declare module 'react' {
+  interface BaseProps {
+    slot?: Lowercase<string>;
+  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$y]: Omit<
-        HTMLAttributes<HTMLElement>,
-        | 'size'
-        | Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        IconJSXProps;
+      [tagName$7]: URLFieldJSXProps & BaseProps;
     }
   }
 }
 declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$x]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ImageJSXProps;
-    }
+  interface BaseProps {
+    children?: JSX.Element;
+    slot?: Lowercase<string>;
   }
-}
-declare module 'react' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$w]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        LinkJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$v]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ListItemJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$u]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        MoneyFieldJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$t]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        NumberFieldJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$s]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        OptionJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$r]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        OptionGroupJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$q]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        OrderedListJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$p]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<PageJSXProps, 'aside'>;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$o]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        ParagraphJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$n]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        PasswordFieldJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$m]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        SearchFieldJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$l]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        SectionJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$k]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        SelectJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$j]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        SpinnerJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$i]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        StackJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$h]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        SwitchJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$g]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<TableJSXProps, 'filters'>;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$f]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TableBodyJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$e]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TableCellJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$d]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TableHeaderJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$c]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TableHeaderRowJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$b]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TableRowJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$a]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TextJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$9]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        TextAreaJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$8]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        Omit<TextFieldJSXProps, 'accessory'>;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$7]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        URLFieldJSXProps;
-    }
-  }
-}
-declare module 'react' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$6]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        UnorderedListJSXProps;
+      [tagName$6]: UnorderedListJSXProps & BaseProps;
     }
   }
 }
