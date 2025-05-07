@@ -6370,7 +6370,7 @@ export interface AdminActionSlots {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6381,7 +6381,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6392,7 +6392,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6403,7 +6403,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6428,7 +6428,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6439,7 +6439,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6480,7 +6480,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6491,7 +6491,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6502,7 +6502,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6533,7 +6533,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6544,7 +6544,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6555,7 +6555,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6576,7 +6576,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
   }
   namespace JSX {
     interface IntrinsicElements {
@@ -6586,7 +6586,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
   }
   namespace JSX {
     interface IntrinsicElements {
@@ -6596,7 +6596,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6607,7 +6607,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
   }
   namespace JSX {
     interface IntrinsicElements {
@@ -6617,7 +6617,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6638,7 +6638,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6649,7 +6649,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6660,7 +6660,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6678,7 +6678,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6696,7 +6696,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6707,7 +6707,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6718,7 +6718,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6729,7 +6729,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6740,7 +6740,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6751,7 +6751,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6762,7 +6762,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6803,7 +6803,7 @@ declare module 'react' {
 }
 declare module 'react' {
   interface BaseProps {
-    children?: JSX.Element;
+    children?: react.ReactNode;
     slot?: Lowercase<string>;
   }
   namespace JSX {
@@ -6819,7 +6819,7 @@ declare module 'react' {
         AdminActionJSXProps,
         'primaryAction' | 'secondaryActions'
       > & {
-        children?: JSX.Element;
+        children?: react.ReactNode;
       };
     }
   }
@@ -6828,7 +6828,7 @@ declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
       [tagName$4]: AdminBlockJSXProps & {
-        children?: JSX.Element;
+        children?: react.ReactNode;
       };
     }
   }
@@ -6837,7 +6837,7 @@ declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
       [tagName$3]: AdminPrintActionJSXProps & {
-        children?: JSX.Element;
+        children?: react.ReactNode;
       };
     }
   }
@@ -6846,7 +6846,7 @@ declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
       [tagName$2]: CustomerSegmentTemplateJSXProps & {
-        children?: JSX.Element;
+        children?: react.ReactNode;
       };
     }
   }
@@ -6855,7 +6855,7 @@ declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
       [tagName$1]: FormJSXProps & {
-        children?: JSX.Element;
+        children?: react.ReactNode;
       };
     }
   }
@@ -6864,7 +6864,7 @@ declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
       [tagName]: FunctionSettingsJSXProps & {
-        children?: JSX.Element;
+        children?: react.ReactNode;
       };
     }
   }
