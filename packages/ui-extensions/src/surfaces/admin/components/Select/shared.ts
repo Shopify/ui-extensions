@@ -2,7 +2,7 @@ const shared = {
   name: 'Select',
   description:
     '`s-select` lets merchants choose one option from an options menu. Consider `s-select` when you have 4 or more options, to avoid cluttering the interface.',
-  thumbnail: 'select-thumbnail.png',
+  thumbnail: 'select.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -25,7 +25,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'select-default.png',
     codeblock: {
       title: '',
       tabs: [

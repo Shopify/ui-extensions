@@ -12,7 +12,7 @@ const shared = {
   - Use images intentionally, these should add clarity and lead users to the next step.
 
   `,
-  thumbnail: 'image-thumbnail.png',
+  thumbnail: 'image.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -30,7 +30,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'image-default.png',
     codeblock: {
       title: '',
       tabs: [

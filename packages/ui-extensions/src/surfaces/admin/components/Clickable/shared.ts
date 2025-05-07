@@ -2,7 +2,7 @@ const shared = {
   name: 'Clickable',
   description:
     'The `s-clickable` component is an escape hatch for when `s-button` and `s-link` are not sufficient to create an interactive element.',
-  thumbnail: 'clickable-thumbnail.png',
+  thumbnail: 'clickable.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -25,7 +25,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'clickable-default.png',
     codeblock: {
       title: '',
       tabs: [

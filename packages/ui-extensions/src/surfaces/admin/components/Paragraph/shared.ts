@@ -15,7 +15,7 @@ const shared = {
   - Don't duplicate content.
 
   `,
-  thumbnail: 'paragraph-thumbnail.png',
+  thumbnail: 'paragraph.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -33,7 +33,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'paragraph-default.png',
     codeblock: {
       title: '',
       tabs: [

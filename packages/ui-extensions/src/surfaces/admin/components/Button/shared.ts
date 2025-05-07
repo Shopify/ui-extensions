@@ -2,7 +2,7 @@ const shared = {
   name: 'Button',
   description:
     'Use `s-button` when you want to provide users the ability to perform specific actions, like saving data.',
-  thumbnail: 'button-thumbnail.png',
+  thumbnail: 'button.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -25,7 +25,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'button-default.png',
     codeblock: {
       title: '',
       tabs: [

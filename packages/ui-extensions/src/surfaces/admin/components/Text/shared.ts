@@ -15,7 +15,7 @@ const shared = {
 
 `,
 
-  thumbnail: 'text-thumbnail.png',
+  thumbnail: 'text.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -33,7 +33,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'text-default.png',
     codeblock: {
       title: '',
       tabs: [

@@ -8,7 +8,7 @@ const shared = {
   - Visually grouping related content in forms and lists.
   `,
 
-  thumbnail: 'divider-thumbnail.png',
+  thumbnail: 'divider.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -31,7 +31,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'divider-default.png',
     codeblock: {
       title: '',
       tabs: [

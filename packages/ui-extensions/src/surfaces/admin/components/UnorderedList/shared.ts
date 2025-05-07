@@ -2,7 +2,7 @@ const shared = {
   name: 'UnorderedList',
   description:
     'UnorderedList displays a set of related text-only content beginning with a bullet.',
-  thumbnail: 'unordered-list-thumbnail.png',
+  thumbnail: 'unordered-list.png',
   isVisualComponent: true,
   subCategory: 'Structure',
   related: [
@@ -18,7 +18,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'unordered-list-default.png',
     codeblock: {
       title: '',
       tabs: [

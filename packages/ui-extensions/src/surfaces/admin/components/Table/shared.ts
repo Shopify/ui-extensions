@@ -2,7 +2,7 @@ const shared = {
   name: 'Table',
   description:
     'Use `s-table` to organize and display data in a grid format. Tables help merchants view, analyze, and compare data.',
-  thumbnail: 'table-thumbnail.png',
+  thumbnail: 'table.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -25,7 +25,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'table-default.png',
     codeblock: {
       title: '',
       tabs: [

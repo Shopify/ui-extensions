@@ -8,7 +8,7 @@ const shared = {
   - Setting up specific stylings such as background colors, paddings, and borders.
   - Nesting with other components.
     `,
-  thumbnail: 'box-thumbnail.png',
+  thumbnail: 'box.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -36,7 +36,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'box-default.png',
     codeblock: {
       title: '',
       tabs: [

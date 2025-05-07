@@ -2,7 +2,7 @@ const shared = {
   name: 'TextField',
   description:
     'Use a text field to allow merchants to enter or edit text. Text fields provide a single-line input area for collecting string values from users.',
-  thumbnail: 'textfield-thumbnail.png',
+  thumbnail: 'textfield.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -36,7 +36,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'text-field-default.png',
     codeblock: {
       title: '',
       tabs: [

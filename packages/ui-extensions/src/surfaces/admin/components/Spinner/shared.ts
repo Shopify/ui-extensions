@@ -2,7 +2,7 @@ const shared = {
   name: 'Spinner',
   description:
     'Use `s-spinner` to let merchants know that content is being loaded. For loading states on buttons, use the loading prop on the Button component instead.',
-  thumbnail: 'spinner-thumbnail.png',
+  thumbnail: 'spinner.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -20,7 +20,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'spinner-default.png',
     codeblock: {
       title: '',
       tabs: [

@@ -2,7 +2,7 @@ const shared = {
   name: 'MoneyField',
   description:
     'Use `s-money-field` when you need to collect monetary values from merchants. It provides appropriate formatting and validation for currency amounts.',
-  thumbnail: 'moneyfield-thumbnail.png',
+  thumbnail: 'moneyfield.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -25,7 +25,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'moneyfield-default.png',
     codeblock: {
       title: '',
       tabs: [

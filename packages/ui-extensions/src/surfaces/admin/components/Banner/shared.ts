@@ -18,7 +18,7 @@ Banners placed inside a section will have styles applied contextually. They're u
 - Avoid banners that can't be dismissed unless the user is required to take action.
 
   `,
-  thumbnail: 'banner-thumbnail.png',
+  thumbnail: 'banner.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -41,7 +41,6 @@ Banners placed inside a section will have styles applied contextually. They're u
     },
   ],
   defaultExample: {
-    image: 'banner-default.png',
     codeblock: {
       title: '',
       tabs: [

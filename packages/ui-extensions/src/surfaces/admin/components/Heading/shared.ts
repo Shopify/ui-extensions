@@ -19,7 +19,7 @@ const shared = {
   - Don't duplicate content.
 
   `,
-  thumbnail: 'heading-thumbnail.png',
+  thumbnail: 'heading.png',
   isVisualComponent: true,
   definitions: [
     {
@@ -37,7 +37,6 @@ const shared = {
     },
   ],
   defaultExample: {
-    image: 'heading-default.png',
     codeblock: {
       title: '',
       tabs: [

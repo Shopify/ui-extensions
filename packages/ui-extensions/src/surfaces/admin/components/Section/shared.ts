@@ -17,7 +17,7 @@ Use \`s-section\` to organize your page content. Sections have defined styling, 
     `,
 
   isVisualComponent: true,
-  thumbnail: 'section-thumbnail.png',
+  thumbnail: 'section.png',
   definitions: [
     {
       title: 'Properties',
@@ -44,7 +44,6 @@ Use \`s-section\` to organize your page content. Sections have defined styling, 
     },
   ],
   defaultExample: {
-    image: 'section-default.png',
     codeblock: {
       title: '',
       tabs: [
