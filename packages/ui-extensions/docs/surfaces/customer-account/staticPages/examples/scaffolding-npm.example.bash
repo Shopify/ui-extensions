@@ -1,3 +1,4 @@
-npm init @shopify/app@latest
+npm i -g @shopify/cli@latest
+POLARIS_UNIFIED=true shopify app init
 cd your-app
-npm run shopify app generate extension
+POLARIS_UNIFIED=true shopify app generate extension

@@ -1,3 +1,4 @@
-yarn create @shopify/app
+yarn global add @shopify/cli@latest
+POLARIS_UNIFIED=true shopify app init
 cd your-app
-yarn shopify app generate extension
+POLARIS_UNIFIED=true shopify app generate extension

@@ -4,18 +4,75 @@ import {CartLineItemApi} from './cart-line/cart-line-item';
 import {FullPageApi} from '../extension-targets';
 
 interface ButtonProps {
+  /**
+   * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
+   *
+   * Use this when using only an icon or the button text is not enough context
+   * for users using assistive technologies.
+   */
   accessibilityLabel?: string;
   command?: '--auto' | '--toggle' | '--copy';
   commandFor?: string;
+  /**
+   * Disables the button, disallowing any interaction.
+   *
+   * @defaultValue false
+   */
   disabled?: boolean;
+  /**
+   * The URL to link to.
+   *
+   * - If set, it will navigate to the location specified by `href` after executing the `onClick` callback.
+   * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
+   */
   href?: string;
   id?: string;
+  /**
+   * Replaces content with a loading indicator.
+   *
+   * @defaultValue false
+   */
   loading?: boolean;
+  /**
+   * Specifies where to display the linked URL
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
+   *
+   * 'auto' - The target is automatically determined based on the origin of the URL. Surfaces can set specific rules on how they handle each URL.
+   * It’s expected that the behavior of `auto` is as `_self` except in specific cases.
+   * For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).
+   *
+   * @default 'auto'
+   */
   target?: 'auto' | '_self' | '_blank';
+  /**
+   * Sets the tone of the Button, based on the intention of the information being conveyed.
+   *
+   * @default 'auto'
+   */
   tone?: 'auto' | 'neutral' | 'critical';
+  /**
+   * The behavior of the button.
+   *
+   * - `'submit'` - Used to indicate the component acts as a submit button, meaning it submits the closest form.
+   * - `'button'` - Used to indicate the component acts as a button, meaning it has no default action.
+   * - `'reset'` - Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
+   *
+   * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.
+   *
+   * @default 'button'
+   */
   type?: 'button' | 'submit';
+  /**
+   * Changes the visual appearance of the Button.
+   *
+   * @default 'auto' - the variant is automatically determined by the Button's context
+   */
   variant?: 'auto' | 'primary' | 'secondary';
 
+  /**
+   * Callback when the button is activated.
+   * This will be called before the action indicated by `type`.
+   */
   onClick?(): void;
 }
 
