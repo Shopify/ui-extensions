@@ -2912,7 +2912,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$L]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & BannerJSXProps;
+            [tagName$L]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<BannerJSXProps, 'secondaryActions'>;
         }
     }
 }
@@ -3801,7 +3801,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$p]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & PageJSXProps;
+            [tagName$p]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<PageJSXProps, 'aside'>;
         }
     }
 }
@@ -4110,7 +4110,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$g]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & TableJSXProps;
+            [tagName$g]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<TableJSXProps, 'filters'>;
         }
     }
 }
@@ -4315,7 +4315,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$8]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & TextFieldJSXProps;
+            [tagName$8]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<TextFieldJSXProps, 'accessory'>;
         }
     }
 }
@@ -4404,7 +4404,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$5]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & AdminActionJSXProps;
+            [tagName$5]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<AdminActionJSXProps, 'primaryAction' | 'secondaryActions'>;
         }
     }
 }
@@ -4633,7 +4633,7 @@ declare module 'react' {
 declare module 'react' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$L]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & BannerJSXProps;
+            [tagName$L]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<BannerJSXProps, 'secondaryActions'>;
         }
     }
 }
@@ -4787,7 +4787,7 @@ declare module 'react' {
 declare module 'react' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$p]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & PageJSXProps;
+            [tagName$p]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<PageJSXProps, 'aside'>;
         }
     }
 }
@@ -4850,7 +4850,7 @@ declare module 'react' {
 declare module 'react' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$g]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & TableJSXProps;
+            [tagName$g]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<TableJSXProps, 'filters'>;
         }
     }
 }
@@ -4906,7 +4906,7 @@ declare module 'react' {
 declare module 'react' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$8]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & TextFieldJSXProps;
+            [tagName$8]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<TextFieldJSXProps, 'accessory'>;
         }
     }
 }
@@ -4927,7 +4927,7 @@ declare module 'react' {
 declare module 'react' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName$5]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & AdminActionJSXProps;
+            [tagName$5]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<AdminActionJSXProps, 'primaryAction' | 'secondaryActions'>;
         }
     }
 }
