@@ -1,42 +1,50 @@
 /** VERSION: 0.51.1 **/
 /* eslint-disable import/extensions */
- 
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
- 
- 
- 
- 
- 
- 
+
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChild,TableProps$1, TableHeaderProps$1} from './shared.d.ts';
+import type {
+  ComponentChild,
+  TableProps$1,
+  TableHeaderProps$1,
+} from './shared.d.ts';
 
-export interface TableProps extends Required<Pick<TableProps$1, 'loading' | 'paginate' | 'hasPreviousPage' | 'hasNextPage' | 'variant'>> {
-    variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
+export interface TableProps
+  extends Required<
+    Pick<
+      TableProps$1,
+      'loading' | 'paginate' | 'hasPreviousPage' | 'hasNextPage' | 'variant'
+    >
+  > {
+  variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
 }
 
 export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
-    listSlot: Extract<TableHeaderProps$1['listSlot'], 'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'>;
+  listSlot: Extract<
+    TableHeaderProps$1['listSlot'],
+    'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
+  >;
 }
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-    ShadowRoot: (element: any) => ComponentChild;
-    styles?: Styles;
+  ShadowRoot: (element: any) => ComponentChild;
+  styles?: Styles;
 };
 export interface ActivationEventEsque {
-    shiftKey: boolean;
-    metaKey: boolean;
-    ctrlKey: boolean;
-    button: number;
+  shiftKey: boolean;
+  metaKey: boolean;
+  ctrlKey: boolean;
+  button: number;
 }
 export interface ClickOptions {
-    /**
-     * The event you want to influence the synthetic click.
-     */
-    sourceEvent?: ActivationEventEsque;
+  /**
+   * The event you want to influence the synthetic click.
+   */
+  sourceEvent?: ActivationEventEsque;
 }
 /**
  * Base class for creating custom elements with Preact.
@@ -45,94 +53,116 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
-        /** @private */
-    static get observedAttributes(): string[];
-    constructor({ styles, ShadowRoot: renderFunction, delegatesFocus, ...options }: RenderImpl);
-    /** @private */
-    setAttribute(name: string, value: string): void;
-    /** @private */
-    attributeChangedCallback(name: string): void;
-    /** @private */
-    connectedCallback(): void;
-    /** @private */
-    disconnectedCallback(): void;
-    /** @private */
-    adoptedCallback(): void;
-    /**
-     * Queue a run of the render function.
-     * You shouldn't need to call this manually - it should be handled by changes to @property values.
-     * @private
-     */
-    queueRender(): void;
-    /**
-     * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-     *
-     * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-     * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-     * @private
-     * @param options
-     */
-    click({ sourceEvent }?: ClickOptions): void;
+  /** @private */
+  static get observedAttributes(): string[];
+  constructor({
+    styles,
+    ShadowRoot: renderFunction,
+    delegatesFocus,
+    ...options
+  }: RenderImpl);
+
+  /** @private */
+  setAttribute(name: string, value: string): void;
+  /** @private */
+  attributeChangedCallback(name: string): void;
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
+  /**
+   * Queue a run of the render function.
+   * You shouldn't need to call this manually - it should be handled by changes to @property values.
+   * @private
+   */
+  queueRender(): void;
+  /**
+   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+   *
+   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
+   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
+   * @private
+   * @param options
+   */
+  click({sourceEvent}?: ClickOptions): void;
 }
 
 declare class AddedContext<T> extends EventTarget {
-        constructor(defaultValue: T);
-    get value(): T;
-    set value(value: T);
+  constructor(defaultValue: T);
+  get value(): T;
+  set value(value: T);
 }
 
 declare const actualTableVariantSymbol: unique symbol;
 declare const tableHeadersSharedDataSymbol: unique symbol;
 export type ActualTableVariant = 'table' | 'list';
 
-export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
-    currentTarget: HTMLElementTagNameMap[TTagName];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
-}) | null;
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
+  | (EventListener & {
+      (event: CallbackEvent<TTagName, TEvent>): void;
+    })
+  | null;
 
 declare class Table extends PreactCustomElement implements TableProps {
-    accessor variant: TableProps['variant'];
-    accessor loading: TableProps['loading'];
-    accessor paginate: TableProps['paginate'];
-    accessor hasPreviousPage: TableProps['hasPreviousPage'];
-    accessor hasNextPage: TableProps['hasNextPage'];
-    accessor onpreviouspage: CallbackEventListener<typeof tagName> | null;
-    accessor onnextpage: CallbackEventListener<typeof tagName> | null;
-    /**
-     * @private
-     * The actual table variant, which is either 'table' or 'list'.
-     */
-    [actualTableVariantSymbol]: AddedContext<ActualTableVariant>;
-    /** @private */
-    [tableHeadersSharedDataSymbol]: AddedContext<{
-        listSlot: TableHeaderProps["listSlot"];
-        textContent: string;
-    }[]>;
+  accessor variant: TableProps['variant'];
+  accessor loading: TableProps['loading'];
+  accessor paginate: TableProps['paginate'];
+  accessor hasPreviousPage: TableProps['hasPreviousPage'];
+  accessor hasNextPage: TableProps['hasNextPage'];
+  accessor onpreviouspage: CallbackEventListener<typeof tagName> | null;
+  accessor onnextpage: CallbackEventListener<typeof tagName> | null;
+  /**
+   * @private
+   * The actual table variant, which is either 'table' or 'list'.
+   */
+  [actualTableVariantSymbol]: AddedContext<ActualTableVariant>;
+  /** @private */
+  [tableHeadersSharedDataSymbol]: AddedContext<
+    {
+      listSlot: TableHeaderProps['listSlot'];
+      textContent: string;
+    }[]
+  >;
 
-    constructor();
+  constructor();
 }
 declare global {
-    interface HTMLElementTagNameMap {
-        [tagName]: Table;
-    }
+  interface HTMLElementTagNameMap {
+    [tagName]: Table;
+  }
 }
 declare module 'preact' {
-    namespace createElement.JSX {
-        interface IntrinsicElements {
-            [tagName]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<TableJSXProps, 'filters'>;
-        }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        Omit<TableJSXProps, 'filters'>;
     }
+  }
 }
 
-declare const tagName = "s-table";
-export interface TableJSXProps extends Partial<TableProps>, Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
-    /**
-     * Additional filters to display in the table. For example, the `s-search-field` component can be used to filter the table data.
-     */
-    filters?: ComponentChild;
+declare const tagName = 's-table';
+export interface TableJSXProps
+  extends Partial<TableProps>,
+    Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
+  /**
+   * Additional filters to display in the table. For example, the `s-search-field` component can be used to filter the table data.
+   */
+  filters?: ComponentChild;
 }
 
-export { Table };
-export type { TableJSXProps };
+export {Table};
+export type {TableJSXProps};

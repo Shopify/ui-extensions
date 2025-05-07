@@ -1,46 +1,56 @@
 /** VERSION: 0.51.1 **/
 /* eslint-disable import/extensions */
- 
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
- 
- 
- 
- 
- 
- 
+
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChild,BannerProps$1} from './shared.d.ts';
+import type {ComponentChild, BannerProps$1} from './shared.d.ts';
 
 export type RequiredBannerProps = Required<BannerProps$1>;
-export interface BannerProps extends Pick<RequiredBannerProps, 'heading' | 'dismissible' | 'hidden' | 'tone'> {
-    tone: Extract<RequiredBannerProps['tone'], 'auto' | 'critical' | 'warning' | 'success' | 'info'>;
+export interface BannerProps
+  extends Pick<
+    RequiredBannerProps,
+    'heading' | 'dismissible' | 'hidden' | 'tone'
+  > {
+  tone: Extract<
+    RequiredBannerProps['tone'],
+    'auto' | 'critical' | 'warning' | 'success' | 'info'
+  >;
 }
 
-export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
-    currentTarget: HTMLElementTagNameMap[TTagName];
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
 };
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
-    (event: CallbackEvent<TTagName, TEvent>): void;
-}) | null;
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
+  | (EventListener & {
+      (event: CallbackEvent<TTagName, TEvent>): void;
+    })
+  | null;
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-    ShadowRoot: (element: any) => ComponentChild;
-    styles?: Styles;
+  ShadowRoot: (element: any) => ComponentChild;
+  styles?: Styles;
 };
 export interface ActivationEventEsque {
-    shiftKey: boolean;
-    metaKey: boolean;
-    ctrlKey: boolean;
-    button: number;
+  shiftKey: boolean;
+  metaKey: boolean;
+  ctrlKey: boolean;
+  button: number;
 }
 export interface ClickOptions {
-    /**
-     * The event you want to influence the synthetic click.
-     */
-    sourceEvent?: ActivationEventEsque;
+  /**
+   * The event you want to influence the synthetic click.
+   */
+  sourceEvent?: ActivationEventEsque;
 }
 /**
  * Base class for creating custom elements with Preact.
@@ -49,67 +59,79 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
-        /** @private */
-    static get observedAttributes(): string[];
-    constructor({ styles, ShadowRoot: renderFunction, delegatesFocus, ...options }: RenderImpl);
-    /** @private */
-    setAttribute(name: string, value: string): void;
-    /** @private */
-    attributeChangedCallback(name: string): void;
-    /** @private */
-    connectedCallback(): void;
-    /** @private */
-    disconnectedCallback(): void;
-    /** @private */
-    adoptedCallback(): void;
-    /**
-     * Queue a run of the render function.
-     * You shouldn't need to call this manually - it should be handled by changes to @property values.
-     * @private
-     */
-    queueRender(): void;
-    /**
-     * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-     *
-     * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-     * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-     * @private
-     * @param options
-     */
-    click({ sourceEvent }?: ClickOptions): void;
+  /** @private */
+  static get observedAttributes(): string[];
+  constructor({
+    styles,
+    ShadowRoot: renderFunction,
+    delegatesFocus,
+    ...options
+  }: RenderImpl);
+
+  /** @private */
+  setAttribute(name: string, value: string): void;
+  /** @private */
+  attributeChangedCallback(name: string): void;
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
+  /**
+   * Queue a run of the render function.
+   * You shouldn't need to call this manually - it should be handled by changes to @property values.
+   * @private
+   */
+  queueRender(): void;
+  /**
+   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+   *
+   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
+   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
+   * @private
+   * @param options
+   */
+  click({sourceEvent}?: ClickOptions): void;
 }
 
 declare class Banner extends PreactCustomElement implements BannerProps {
-    accessor heading: BannerProps['heading'];
-    accessor tone: BannerProps['tone'];
-    accessor hidden: BannerProps['hidden'];
-    accessor dismissible: BannerProps['dismissible'];
-    accessor ondismiss: CallbackEventListener<typeof tagName> | null;
-    accessor onafterhide: CallbackEventListener<typeof tagName> | null;
-    constructor();
+  accessor heading: BannerProps['heading'];
+  accessor tone: BannerProps['tone'];
+  accessor hidden: BannerProps['hidden'];
+  accessor dismissible: BannerProps['dismissible'];
+  accessor ondismiss: CallbackEventListener<typeof tagName> | null;
+  accessor onafterhide: CallbackEventListener<typeof tagName> | null;
+  constructor();
 }
 declare global {
-    interface HTMLElementTagNameMap {
-        [tagName]: Banner;
-    }
+  interface HTMLElementTagNameMap {
+    [tagName]: Banner;
+  }
 }
 declare module 'preact' {
-    namespace createElement.JSX {
-        interface IntrinsicElements {
-            [tagName]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & Omit<BannerJSXProps, 'secondaryActions'>;
-        }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: Omit<
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        Omit<BannerJSXProps, 'secondaryActions'>;
     }
+  }
 }
 
-declare const tagName = "s-banner";
-export interface BannerJSXProps extends Partial<BannerProps>, Pick<BannerProps$1, 'id'> {
-    /**
-     * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
-     */
-    secondaryActions?: ComponentChild;
-    onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+declare const tagName = 's-banner';
+export interface BannerJSXProps
+  extends Partial<BannerProps>,
+    Pick<BannerProps$1, 'id'> {
+  /**
+   * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
+   */
+  secondaryActions?: ComponentChild;
+  onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 
-export { Banner };
-export type { BannerJSXProps };
+export {Banner};
+export type {BannerJSXProps};
