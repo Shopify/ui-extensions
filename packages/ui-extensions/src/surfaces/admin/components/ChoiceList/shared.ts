@@ -12,23 +12,6 @@ const shared = {
     },
   ],
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'Select',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/select',
-    },
-    {
-      type: 'component',
-      name: 'Checkbox',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/checkbox',
-    },
-    {
-      type: 'information',
-      name: 'Event handling',
-      url: '/docs/api/admin-extensions/2025-10-rc#handling-events',
-    },
-  ],
   defaultExample: {
     image: 'choicelist-default.png',
     codeblock: {

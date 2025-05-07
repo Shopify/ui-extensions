@@ -12,23 +12,6 @@ const shared = {
     },
   ],
   subCategory: 'Actions',
-  related: [
-    {
-      type: 'component',
-      name: 'Button',
-      url: '/docs/api/admin-extensions/polaris-web-components/actions/button',
-    },
-    {
-      type: 'component',
-      name: 'Link',
-      url: '/docs/api/admin-extensions/polaris-web-components/actions/link',
-    },
-    {
-      type: 'information',
-      name: 'Event handling',
-      url: '/docs/api/admin-extensions/2025-10-rc#handling-events',
-    },
-  ],
   defaultExample: {
     image: 'clickable-default.png',
     codeblock: {

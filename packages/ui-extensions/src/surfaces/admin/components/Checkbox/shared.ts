@@ -12,28 +12,6 @@ const shared = {
     },
   ],
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'Switch',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/switch',
-    },
-    {
-      type: 'component',
-      name: 'Select',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/select',
-    },
-    {
-      type: 'component',
-      name: 'ChoiceList',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/choice-list',
-    },
-    {
-      type: 'information',
-      name: 'Event handling',
-      url: '/docs/api/admin-extensions/2025-10-rc#handling-events',
-    },
-  ],
   defaultExample: {
     image: 'checkbox-default.png',
     codeblock: {
