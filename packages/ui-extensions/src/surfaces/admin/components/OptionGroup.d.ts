@@ -1,32 +1,37 @@
-/** VERSION: 0.51.0 **/
+/** VERSION: 0.51.1 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {OptionGroupProps$1, ComponentChild} from './shared.d.ts';
+import type {OptionGroupProps$1,ComponentChild} from './shared.d.ts';
 
-export interface OptionGroupProps
-  extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
+export interface OptionGroupProps extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {
+}
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChild;
-  styles?: Styles;
+    ShadowRoot: (element: any) => ComponentChild;
+    styles?: Styles;
 };
 export interface ActivationEventEsque {
-  shiftKey: boolean;
-  metaKey: boolean;
-  ctrlKey: boolean;
-  button: number;
+    shiftKey: boolean;
+    metaKey: boolean;
+    ctrlKey: boolean;
+    button: number;
 }
 export interface ClickOptions {
-  /**
-   * The event you want to influence the synthetic click.
-   */
-  sourceEvent?: ActivationEventEsque;
+    /**
+     * The event you want to influence the synthetic click.
+     */
+    sourceEvent?: ActivationEventEsque;
 }
 /**
  * Base class for creating custom elements with Preact.
@@ -35,69 +40,57 @@ export interface ClickOptions {
  */
 declare const BaseClass: typeof globalThis.HTMLElement;
 declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
+        /** @private */
+    static get observedAttributes(): string[];
+    constructor({ styles, ShadowRoot: renderFunction, delegatesFocus, ...options }: RenderImpl);
+    /** @private */
+    setAttribute(name: string, value: string): void;
+    /** @private */
+    attributeChangedCallback(name: string): void;
+    /** @private */
+    connectedCallback(): void;
+    /** @private */
+    disconnectedCallback(): void;
+    /** @private */
+    adoptedCallback(): void;
+    /**
+     * Queue a run of the render function.
+     * You shouldn't need to call this manually - it should be handled by changes to @property values.
+     * @private
+     */
+    queueRender(): void;
+    /**
+     * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+     *
+     * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
+     * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
+     * @private
+     * @param options
+     */
+    click({ sourceEvent }?: ClickOptions): void;
 }
 
-declare class OptionGroup
-  extends PreactCustomElement
-  implements OptionGroupProps
-{
-  accessor disabled: OptionGroupProps['disabled'];
-  accessor label: OptionGroupProps['label'];
-  constructor();
+declare class OptionGroup extends PreactCustomElement implements OptionGroupProps {
+    accessor disabled: OptionGroupProps['disabled'];
+    accessor label: OptionGroupProps['label'];
+    constructor();
 }
 declare global {
-  interface HTMLElementTagNameMap {
-    [tagName]: OptionGroup;
-  }
+    interface HTMLElementTagNameMap {
+        [tagName]: OptionGroup;
+    }
 }
 declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName]: Omit<
-        HTMLAttributes<HTMLElement>,
-        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
-      > &
-        OptionGroupJSXProps;
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            [tagName]: Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & OptionGroupJSXProps;
+        }
     }
-  }
 }
 
-declare const tagName = 's-option-group';
-export interface OptionGroupJSXProps extends Partial<OptionGroupProps> {}
+declare const tagName = "s-option-group";
+export interface OptionGroupJSXProps extends Partial<OptionGroupProps> {
+}
 
-export {OptionGroup};
-export type {OptionGroupJSXProps};
+export { OptionGroup };
+export type { OptionGroupJSXProps };
