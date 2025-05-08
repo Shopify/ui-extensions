@@ -51,37 +51,37 @@ export type BoxBorderStyles = Extract<
   RequiredBoxProps['borderStyle'],
   'none' | 'solid' | 'dashed' | 'auto'
 >;
+export type ResponsiveBoxProps = MakeResponsivePick<
+  RequiredBoxProps,
+  | 'padding'
+  | 'paddingBlock'
+  | 'paddingBlockStart'
+  | 'paddingBlockEnd'
+  | 'paddingInline'
+  | 'paddingInlineStart'
+  | 'paddingInlineEnd'
+>;
 export interface BoxProps
   extends Pick<
-      RequiredBoxProps,
-      | 'accessibilityLabel'
-      | 'accessibilityRole'
-      | 'accessibilityVisibility'
-      | 'background'
-      | 'blockSize'
-      | 'border'
-      | 'borderColor'
-      | 'borderRadius'
-      | 'borderStyle'
-      | 'borderWidth'
-      | 'display'
-      | 'inlineSize'
-      | 'maxBlockSize'
-      | 'maxInlineSize'
-      | 'minBlockSize'
-      | 'minInlineSize'
-      | 'overflow'
-    >,
-    MakeResponsivePick<
-      RequiredBoxProps,
-      | 'padding'
-      | 'paddingBlock'
-      | 'paddingBlockStart'
-      | 'paddingBlockEnd'
-      | 'paddingInline'
-      | 'paddingInlineStart'
-      | 'paddingInlineEnd'
-    > {
+    RequiredBoxProps,
+    | 'accessibilityLabel'
+    | 'accessibilityRole'
+    | 'accessibilityVisibility'
+    | 'background'
+    | 'blockSize'
+    | 'border'
+    | 'borderColor'
+    | 'borderRadius'
+    | 'borderStyle'
+    | 'borderWidth'
+    | 'display'
+    | 'inlineSize'
+    | 'maxBlockSize'
+    | 'maxInlineSize'
+    | 'minBlockSize'
+    | 'minInlineSize'
+    | 'overflow'
+  > {
   background: Extract<
     RequiredBoxProps['background'],
     'transparent' | 'base' | 'subdued' | 'strong'
@@ -102,6 +102,103 @@ export interface BoxProps
     'subdued' | 'base' | 'strong' | ''
   >;
   borderRadius: MaybeAllValuesShorthandProperty<BoxBorderRadii>;
+  /**
+   * Adjust the padding of all edges.
+   *
+   * 1-to-4-value syntax (@see https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+   *
+   * `padding` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   *
+   * This also accepts up to 4 values (e.g. `@container (inline-size > 500px) large-300 small-300 large-100 small-100, small-200`)
+   *
+   * @default 'none'
+   */
+  padding: ResponsiveBoxProps['padding'];
+  /**
+   * Adjust the block-padding.
+   *
+   * - `large none` means block-start padding is `large`, block-end padding is `none`.
+   *
+   * This overrides the block value of `padding`.
+   *
+   * `paddingBlock` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   *
+   * This also accepts up to 2 values (e.g. `@container (inline-size > 500px) large-300 small-300, small-200`)
+   *
+   * @default '' - meaning no override
+   */
+  paddingBlock: ResponsiveBoxProps['paddingBlock'];
+  /**
+   * Adjust the block-start padding.
+   *
+   * This overrides the block-start value of `paddingBlock`.
+   *
+   * `paddingBlockStart` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   *
+   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   * @default '' - meaning no override
+   */
+  paddingBlockStart: ResponsiveBoxProps['paddingBlockStart'];
+  /**
+   * Adjust the block-end padding.
+   *
+   * This overrides the block-end value of `paddingBlock`.
+   *
+   * `paddingBlockEnd` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   *
+   * This only accepts up to 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   * @default '' - meaning no override
+   */
+  paddingBlockEnd: ResponsiveBoxProps['paddingBlockEnd'];
+  /**
+   * Adjust the inline padding.
+   *
+   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
+   *
+   * This overrides the inline value of `padding`.
+   *
+   * `paddingInline` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   *
+   * This also accepts up to 2 values (e.g. `@container (inline-size > 500px) large-300 small-300, small-200`)
+   *
+   * @default '' - meaning no override
+   */
+  paddingInline: ResponsiveBoxProps['paddingInline'];
+  /**
+   * Adjust the inline-start padding.
+   *
+   * This overrides the inline-start value of `paddingInline`.
+   *
+   * `paddingInlineStart` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   *
+   * @default '' - meaning no override
+   */
+  paddingInlineStart: ResponsiveBoxProps['paddingInlineStart'];
+  /**
+   * Adjust the inline-end padding.
+   *
+   * This overrides the inline-end value of `paddingInline`.
+   *
+   * `paddingInlineEnd` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   *
+   * @default '' - meaning no override
+   */
+  paddingInlineEnd: ResponsiveBoxProps['paddingInlineEnd'];
 }
 
 export type ClickableBaseProps = Required<

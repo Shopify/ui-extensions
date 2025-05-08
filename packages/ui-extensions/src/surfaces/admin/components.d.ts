@@ -3889,8 +3889,6 @@ declare class Banner extends PreactCustomElement implements BannerProps {
   accessor tone: BannerProps['tone'];
   accessor hidden: BannerProps['hidden'];
   accessor dismissible: BannerProps['dismissible'];
-  accessor ondismiss: CallbackEventListener<typeof tagName$L> | null;
-  accessor onafterhide: CallbackEventListener<typeof tagName$L> | null;
   constructor();
 }
 declare global {
@@ -3959,37 +3957,37 @@ export type BoxBorderStyles = Extract<
   RequiredBoxProps['borderStyle'],
   'none' | 'solid' | 'dashed' | 'auto'
 >;
+export type ResponsiveBoxProps = MakeResponsivePick<
+  RequiredBoxProps,
+  | 'padding'
+  | 'paddingBlock'
+  | 'paddingBlockStart'
+  | 'paddingBlockEnd'
+  | 'paddingInline'
+  | 'paddingInlineStart'
+  | 'paddingInlineEnd'
+>;
 export interface BoxProps
   extends Pick<
-      RequiredBoxProps,
-      | 'accessibilityLabel'
-      | 'accessibilityRole'
-      | 'accessibilityVisibility'
-      | 'background'
-      | 'blockSize'
-      | 'border'
-      | 'borderColor'
-      | 'borderRadius'
-      | 'borderStyle'
-      | 'borderWidth'
-      | 'display'
-      | 'inlineSize'
-      | 'maxBlockSize'
-      | 'maxInlineSize'
-      | 'minBlockSize'
-      | 'minInlineSize'
-      | 'overflow'
-    >,
-    MakeResponsivePick<
-      RequiredBoxProps,
-      | 'padding'
-      | 'paddingBlock'
-      | 'paddingBlockStart'
-      | 'paddingBlockEnd'
-      | 'paddingInline'
-      | 'paddingInlineStart'
-      | 'paddingInlineEnd'
-    > {
+    RequiredBoxProps,
+    | 'accessibilityLabel'
+    | 'accessibilityRole'
+    | 'accessibilityVisibility'
+    | 'background'
+    | 'blockSize'
+    | 'border'
+    | 'borderColor'
+    | 'borderRadius'
+    | 'borderStyle'
+    | 'borderWidth'
+    | 'display'
+    | 'inlineSize'
+    | 'maxBlockSize'
+    | 'maxInlineSize'
+    | 'minBlockSize'
+    | 'minInlineSize'
+    | 'overflow'
+  > {
   background: Extract<
     RequiredBoxProps['background'],
     'transparent' | 'base' | 'subdued' | 'strong'
@@ -4010,6 +4008,103 @@ export interface BoxProps
     'subdued' | 'base' | 'strong' | ''
   >;
   borderRadius: MaybeAllValuesShorthandProperty<BoxBorderRadii>;
+  /**
+   * Adjust the padding of all edges.
+   *
+   * 1-to-4-value syntax (@see https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `block-start inline-end block-end inline-start`
+   * - 3 values: `block-start inline block-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
+   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
+   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
+   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
+   *
+   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+   *
+   * `padding` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   *
+   * This also accepts up to 4 values (e.g. `@container (inline-size > 500px) large-300 small-300 large-100 small-100, small-200`)
+   *
+   * @default 'none'
+   */
+  padding: ResponsiveBoxProps['padding'];
+  /**
+   * Adjust the block-padding.
+   *
+   * - `large none` means block-start padding is `large`, block-end padding is `none`.
+   *
+   * This overrides the block value of `padding`.
+   *
+   * `paddingBlock` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   *
+   * This also accepts up to 2 values (e.g. `@container (inline-size > 500px) large-300 small-300, small-200`)
+   *
+   * @default '' - meaning no override
+   */
+  paddingBlock: ResponsiveBoxProps['paddingBlock'];
+  /**
+   * Adjust the block-start padding.
+   *
+   * This overrides the block-start value of `paddingBlock`.
+   *
+   * `paddingBlockStart` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   *
+   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   * @default '' - meaning no override
+   */
+  paddingBlockStart: ResponsiveBoxProps['paddingBlockStart'];
+  /**
+   * Adjust the block-end padding.
+   *
+   * This overrides the block-end value of `paddingBlock`.
+   *
+   * `paddingBlockEnd` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   *
+   * This only accepts up to 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   * @default '' - meaning no override
+   */
+  paddingBlockEnd: ResponsiveBoxProps['paddingBlockEnd'];
+  /**
+   * Adjust the inline padding.
+   *
+   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
+   *
+   * This overrides the inline value of `padding`.
+   *
+   * `paddingInline` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   *
+   * This also accepts up to 2 values (e.g. `@container (inline-size > 500px) large-300 small-300, small-200`)
+   *
+   * @default '' - meaning no override
+   */
+  paddingInline: ResponsiveBoxProps['paddingInline'];
+  /**
+   * Adjust the inline-start padding.
+   *
+   * This overrides the inline-start value of `paddingInline`.
+   *
+   * `paddingInlineStart` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   *
+   * @default '' - meaning no override
+   */
+  paddingInlineStart: ResponsiveBoxProps['paddingInlineStart'];
+  /**
+   * Adjust the inline-end padding.
+   *
+   * This overrides the inline-end value of `paddingInline`.
+   *
+   * `paddingInlineEnd` also accepts a container query string with the supported PaddingKeyword as a query value e.g. (`@container (inline-size > 500px) large-300, small-300`)
+   * This only accepts 1 value per predicate (e.g. `@container (inline-size > 500px) large-300, small-200`)
+   *
+   * @default '' - meaning no override
+   */
+  paddingInlineEnd: ResponsiveBoxProps['paddingInlineEnd'];
 }
 
 declare class BoxElement extends PreactCustomElement implements BoxProps {
@@ -4114,9 +4209,6 @@ declare class Button extends Button_base implements ButtonProps {
   accessor target: ButtonProps['target'];
   accessor href: ButtonProps['href'];
   accessor download: ButtonProps['download'];
-  accessor onclick: CallbackEventListener<typeof tagName$J> | null;
-  accessor onblur: CallbackEventListener<typeof tagName$J> | null;
-  accessor onfocus: CallbackEventListener<typeof tagName$J> | null;
   accessor type: ButtonProps['type'];
   accessor accessibilityLabel: ButtonProps['accessibilityLabel'];
   constructor();
@@ -4376,9 +4468,6 @@ declare class Clickable extends Clickable_base implements ClickableProps {
   accessor target: ClickableProps['target'];
   accessor href: ClickableProps['href'];
   accessor download: ClickableProps['download'];
-  accessor onclick: CallbackEventListener<typeof tagName$F> | null;
-  accessor onblur: CallbackEventListener<typeof tagName$F> | null;
-  accessor onfocus: CallbackEventListener<typeof tagName$F> | null;
   accessor type: ClickableProps['type'];
   constructor();
 }
@@ -4457,15 +4546,6 @@ declare class DatePicker extends BaseClass implements DatePickerProps {
   [dirtyStateSymbol]: boolean;
   /** @private */
   formResetCallback(): void;
-  accessor onviewchange: CallbackEventListener<
-    typeof tagName$E,
-    HTMLElementEventMap['viewchange']
-  > | null;
-
-  accessor onfocus: CallbackEventListener<typeof tagName$E> | null;
-  accessor onblur: CallbackEventListener<typeof tagName$E> | null;
-  accessor oninput: CallbackEventListener<typeof tagName$E> | null;
-  accessor onchange: CallbackEventListener<typeof tagName$E> | null;
   constructor();
 }
 declare global {
@@ -4652,6 +4732,10 @@ export interface EmailFieldJSXProps
     FieldReactProps<typeof tagName$C> {}
 
 export type RequiredAlignedProps = Required<GridProps$1>;
+export type ResponsiveGridProps = MakeResponsivePick<
+  RequiredAlignedProps,
+  'rowGap' | 'columnGap' | 'gap'
+>;
 export interface GridProps
   extends BoxProps,
     Required<
@@ -4666,8 +4750,41 @@ export interface GridProps
         | 'justifyContent'
         | 'placeContent'
       >
-    >,
-    MakeResponsivePick<RequiredAlignedProps, 'rowGap' | 'columnGap' | 'gap'> {}
+    > {
+  /**
+   * Adjust spacing between elements.
+   *
+   * `gap` can either accept:
+   * * a single SpacingKeyword value applied to both axes (e.g. `large-100`).
+   * *OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
+   * OR a container query string with supported SpacingKeyword values as query values (e.g.@container (inline-size > 500px) large-300, small-300)
+   *
+   * @default 'none'
+   */
+  gap: ResponsiveGridProps['gap'];
+  /**
+   * Adjust spacing between elements in the block axis.
+   *
+   * This overrides the row value of `gap`.
+   * `rowGap` either accepts:
+   * * a single SpacingKeyword value (e.g. `large-100`)
+   * *OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   *
+   * @default '' - meaning no override
+   */
+  rowGap: ResponsiveGridProps['rowGap'];
+  /**
+   * Adjust spacing between elements in the inline axis.
+   *
+   * This overrides the column value of `gap`.
+   * `columnGap` either accepts:
+   * * a single SpacingKeyword value (e.g. `large-100`)
+   * * OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   *
+   * @default '' - meaning no override
+   */
+  columnGap: ResponsiveGridProps['columnGap'];
+}
 
 declare class Grid extends BoxElement implements GridProps {
   constructor();
@@ -4854,7 +4971,6 @@ declare class Image extends PreactCustomElement implements ImageProps {
   accessor borderStyle: ImageProps['borderStyle'];
   accessor borderColor: ImageProps['borderColor'];
   accessor borderRadius: ImageProps['borderRadius'];
-  accessor onload: CallbackEventListener<typeof tagName$x> | null;
   accessor onerror: OnErrorEventHandler;
   constructor();
 }
@@ -4916,7 +5032,6 @@ declare class Link extends Link_base implements LinkProps {
   accessor target: LinkProps['target'];
   accessor download: LinkProps['download'];
   accessor lang: LinkProps['lang'];
-  accessor onclick: CallbackEventListener<typeof tagName$w> | null;
   constructor();
 }
 declare global {
@@ -5486,16 +5601,61 @@ export interface SpinnerJSXProps
     Pick<SpinnerProps$1, 'id'> {}
 
 export type AlignedStackProps = Required<StackProps$1>;
+export type ResponsiveStackProps = MakeResponsivePick<
+  AlignedStackProps,
+  'gap' | 'rowGap' | 'columnGap' | 'direction'
+>;
 export interface StackProps
   extends BoxProps,
     Pick<
       Required<AlignedStackProps>,
       'justifyContent' | 'alignItems' | 'alignContent'
-    >,
-    MakeResponsivePick<
-      AlignedStackProps,
-      'rowGap' | 'columnGap' | 'direction' | 'gap'
-    > {}
+    > {
+  /**
+   * Adjust spacing between elements.
+   *
+   * `gap` can either accept:
+   * * a single SpacingKeyword value applied to both axes (e.g. `large-100`).
+   * * OR a pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
+   * * OR a container query string with supported SpacingKeyword values as query values (e.g.@container (inline-size > 500px) large-300, small-300)
+   *
+   * @default 'none'
+   */
+  gap: ResponsiveStackProps['gap'];
+  /**
+   * Adjust spacing between elements in the block axis.
+   *
+   * This overrides the row value of `gap`.
+   * `rowGap` either accepts a single SpacingKeyword value (e.g. `large-100`)
+   * OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   *
+   * @default '' - meaning no override
+   */
+  rowGap: ResponsiveStackProps['rowGap'];
+  /**
+   * Adjust spacing between elements in the inline axis.
+   *
+   * This overrides the column value of `gap`.
+   * `columnGap` either accepts:
+   * * a single SpacingKeyword value (e.g. `large-100`)
+   * OR a container query string with supported SpacingKeyword values as query values (e.g. @container (inline-size > 500px) large-300, small-300)
+   *
+   * @default '' - meaning no override
+   */
+  columnGap: ResponsiveStackProps['columnGap'];
+  /**
+     * Sets how the Stack's children are placed within the Stack.
+     *
+     * `direction` either accepts:
+     * * a single value either `inline` or `block`
+     * *OR a container query string with either of these values as a query value (e.g. `@container (inline-size > 500px) inline, block`)
+  
+    * @default 'block'
+     *
+     * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
+     */
+  direction: ResponsiveStackProps['direction'];
+}
 
 declare class Stack extends BoxElement implements StackProps {
   constructor();
@@ -5591,8 +5751,6 @@ declare class Table extends PreactCustomElement implements TableProps {
   accessor paginate: TableProps['paginate'];
   accessor hasPreviousPage: TableProps['hasPreviousPage'];
   accessor hasNextPage: TableProps['hasNextPage'];
-  accessor onpreviouspage: CallbackEventListener<typeof tagName$g> | null;
-  accessor onnextpage: CallbackEventListener<typeof tagName$g> | null;
   /**
    * @private
    * The actual table variant, which is either 'table' or 'list'.
@@ -6159,7 +6317,6 @@ export interface FormProps {}
 declare class Form extends PreactCustomElement implements FormProps {
   constructor();
   accessor onsubmit: ((event: ExtendableEvent) => void) | null;
-  accessor onreset: CallbackEventListener<typeof tagName$1> | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -6204,7 +6361,6 @@ declare class FunctionSettings
   implements FunctionSettingsProps
 {
   constructor();
-  accessor onsave: CallbackEventListener<typeof tagName> | null;
   accessor onerror: OnErrorEventHandler;
 }
 declare global {
@@ -6330,6 +6486,11 @@ export type {
   UnorderedListJSXProps,
 };
 
+export interface BannerEvents {
+  dismiss: CallbackEventListener<typeof tagName> | null = null;
+  afterhide: CallbackEventListener<typeof tagName> | null = null;
+}
+
 export interface BannerSlots {
   /**
    * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
@@ -6337,11 +6498,47 @@ export interface BannerSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+export interface ButtonEvents {
+  click: CallbackEventListener<typeof tagName> | null = null;
+  blur: CallbackEventListener<typeof tagName> | null = null;
+  focus: CallbackEventListener<typeof tagName> | null = null;
+}
+
+export interface ClickableEvents {
+  click: CallbackEventListener<typeof tagName> | null = null;
+  blur: CallbackEventListener<typeof tagName> | null = null;
+  focus: CallbackEventListener<typeof tagName> | null = null;
+}
+
+export interface DatePickerEvents {
+  viewchange: CallbackEventListener<
+    typeof tagName,
+    HTMLElementEventMap['viewchange']
+  > | null = null;
+  focus: CallbackEventListener<typeof tagName> | null = null;
+  blur: CallbackEventListener<typeof tagName> | null = null;
+  input: CallbackEventListener<typeof tagName> | null = null;
+  change: CallbackEventListener<typeof tagName> | null = null;
+}
+
+export interface ImageEvents {
+  load: CallbackEventListener<typeof tagName> | null = null;
+}
+
+export interface LinkEvents {
+  click: CallbackEventListener<typeof tagName> | null = null;
+}
+
 export interface PageSlots {
   /**
    * The content to display in the aside section of the page.
    */
   aside?: HTMLElement;
+}
+
+export interface TableEvents {
+  previouspage: CallbackEventListener<typeof tagName> | null = null;
+  nextpage: CallbackEventListener<typeof tagName> | null = null;
 }
 
 export interface TableSlots {
@@ -6367,6 +6564,14 @@ export interface AdminActionSlots {
    * The secondary actions to display in the admin action.
    */
   'secondary-actions': HTMLElement;
+}
+
+export interface FormEvents {
+  reset: CallbackEventListener<typeof tagName> | null = null;
+}
+
+export interface FunctionSettingsEvents {
+  save: CallbackEventListener<typeof tagName> | null = null;
 }
 declare module 'react' {
   interface BaseProps {
