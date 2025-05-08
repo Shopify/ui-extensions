@@ -14,15 +14,17 @@ import type {
 import {Project} from 'ts-morph';
 
 function copyComponentDefinitions({
-  srcPath,
+  srcPaths,
   buildPath,
   surface,
 }: {
-  srcPath: string;
+  srcPaths: string[];
   buildPath: string;
   surface: string;
 }) {
-  const componentsSrcPath = join(srcPath, 'components');
+  const componentsSrcPaths = srcPaths.map((srcPath) =>
+    join(srcPath, 'components'),
+  );
   const componentsBuildPath = join(
     buildPath,
     `ts/surfaces/${surface}/components`,
@@ -31,23 +33,28 @@ function copyComponentDefinitions({
     mkdirSync(buildPath, {recursive: true});
   }
 
-  if (!existsSync(componentsSrcPath)) {
+  const exists = componentsSrcPaths.every((path) => existsSync(path));
+
+  if (!exists) {
     // eslint-disable-next-line no-console
     console.log('No components to copy');
     return false;
   }
 
-  const components = readdirSync(componentsSrcPath);
-  components
-    .filter((file) => {
-      return file.endsWith('d.ts');
-    })
-    .forEach((file) => {
-      copyFileSync(
-        join(componentsSrcPath, file),
-        join(componentsBuildPath, file),
-      );
-    });
+  componentsSrcPaths.forEach((componentsSrcPath) => {
+    const components = readdirSync(componentsSrcPath);
+    components
+      .filter((file) => {
+        return file.endsWith('d.ts');
+      })
+      .forEach((file) => {
+        copyFileSync(
+          join(componentsSrcPath, file),
+          join(componentsBuildPath, file),
+        );
+      });
+  });
+
   return true;
 }
 
@@ -82,20 +89,23 @@ export type GlobalThis = typeof globalThis & {
 }
 
 function processComponentDefinitions({
-  srcPath,
+  srcPaths,
   project,
   componentName,
   names,
   targetFile,
 }: {
-  srcPath: string;
+  srcPaths: string[];
   project: Project;
   componentName: string;
   names: Set<string>;
   targetFile: SourceFile;
 }) {
-  const componentSourcePath = join(srcPath, `components/${componentName}.d.ts`);
-  if (!existsSync(componentSourcePath)) {
+  const componentSourcePath = srcPaths
+    .map((srcPath) => join(srcPath, `components/${componentName}.d.ts`))
+    .find((path) => existsSync(path));
+
+  if (!componentSourcePath) {
     // eslint-disable-next-line no-console
     console.log(
       `Component ${componentName} not found in ${componentSourcePath}`,
@@ -199,13 +209,13 @@ function extractTargetComponents(
 }
 
 function createTargetDefinition({
-  srcPath,
+  srcPaths,
   buildPath,
   project,
   surface,
   target: {name, components},
 }: {
-  srcPath: string;
+  srcPaths: string[];
   buildPath: string;
   project: Project;
   surface: string;
@@ -221,7 +231,7 @@ function createTargetDefinition({
       componentName,
       names,
       targetFile,
-      srcPath,
+      srcPaths,
     });
   });
 
@@ -230,11 +240,25 @@ function createTargetDefinition({
   targetFile.saveSync();
 }
 
-export function buildTargetsDefinitions(directory: string, surface: string) {
+export function buildTargetsDefinitions(
+  directory: string,
+  surface: string,
+  additionalComponentPaths: string[] = [],
+) {
   const project = new Project();
   const buildPath = resolve(directory, 'build');
   const srcPath = resolve(directory, `src/surfaces/${surface}`);
-  const success = copyComponentDefinitions({srcPath, buildPath, surface});
+
+  const componentSrcPaths = [
+    srcPath,
+    ...additionalComponentPaths.map((path) => resolve(directory, path)),
+  ];
+  const success = copyComponentDefinitions({
+    srcPaths: componentSrcPaths,
+    buildPath,
+    surface,
+  });
+
   if (!success) {
     // eslint-disable-next-line no-console
     console.log('Failed to copy components');
@@ -248,7 +272,7 @@ export function buildTargetsDefinitions(directory: string, surface: string) {
   const targets = extractTargetComponents(sourceFile);
   targets.forEach((target) => {
     createTargetDefinition({
-      srcPath,
+      srcPaths: componentSrcPaths,
       buildPath,
       project,
       surface,

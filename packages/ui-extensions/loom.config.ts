@@ -61,6 +61,7 @@ export default createPackage((pkg) => {
             buildTargetsDefinitions(
               resolve(process.cwd(), 'packages/ui-extensions'),
               'customer-account',
+              ['src/surfaces/checkout'],
             );
             completedSurfaces.add('customer-account');
           }
