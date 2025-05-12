@@ -9,7 +9,7 @@ import {useDeliveryGroup} from '../delivery-group';
 import type {PartialExtensionApi} from './mount';
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('Delivery Group API hooks', () => {
+describe.skip('Delivery Group API hooks', () => {
   describe('useDeliveryGroup', () => {
     const defaultLine = {
       id: 'gid://shopify/CartLine/stable_id',

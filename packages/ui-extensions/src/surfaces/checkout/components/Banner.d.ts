@@ -10,7 +10,7 @@
 /// <reference lib="DOM" />
 import type {BannerProps$1} from './components-shared.d.ts';
 
-export interface BannerProps extends Omit<BannerProps$1, 'children' | 'primaryAction' | 'secondaryActions' | 'tone' | 'containerName' | 'containerType'> {
+export interface BannerProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'onAfterHide' | 'onDismiss' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }
 export interface BannerElement extends Omit<BannerProps, 'onAfterHide' | 'onDismiss'>, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {

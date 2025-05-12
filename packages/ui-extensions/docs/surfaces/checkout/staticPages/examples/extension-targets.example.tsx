@@ -1,13 +1,8 @@
-import {
-  reactExtension,
-  Banner,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
-
+export default function extension() {
+  render(<Extension />, document.body);
+}
 function Extension() {
-  return <Banner>Your extension</Banner>;
+  return <s-banner>Your extension</s-banner>;
 }

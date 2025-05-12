@@ -1,15 +1,11 @@
-import {
-  reactExtension,
-  Banner,
-  useSettings,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useSettings} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const {banner_title} = useSettings();
-  return <Banner heading={banner_title} />;
+  return <s-banner>{banner_title}</s-banner>;
 }

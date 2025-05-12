@@ -3,7 +3,6 @@ import {useMemo} from 'preact/hooks';
 import type {PickupLocationOption} from '../api/standard/standard';
 
 import {ExtensionHasNoTargetError} from './errors';
-
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

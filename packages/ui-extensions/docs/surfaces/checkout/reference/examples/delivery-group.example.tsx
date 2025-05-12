@@ -1,14 +1,12 @@
+import {render} from 'preact';
 import {
-  reactExtension,
-  Banner,
   useDeliveryGroups,
   useDeliveryGroup,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const deliveryGroups = useDeliveryGroups();
@@ -24,9 +22,9 @@ function Extension() {
     firstDeliveryGroup?.selectedDeliveryOption;
 
   return (
-    <Banner>
+    <s-banner>
       Selected delivery option:{' '}
       {selectedDeliveryOption?.title}
-    </Banner>
+    </s-banner>
   );
 }

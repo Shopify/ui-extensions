@@ -55,7 +55,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseCartLineTargetGeneratedType',
     },
   ],
-  defaultExample: getExample('cart-line-item/default', ['jsx', 'js']),
+  defaultExample: getExample('cart-line-item/default', ['jsx']),
   related: getLinksByTag('apis'),
 };
 

@@ -103,12 +103,12 @@ const data: ReferenceEntityTemplateSchema = {
     description:
       'Learn how to use the API with JavaScript (JS) and React. See [React Hooks](../react-hooks) for all available hooks.',
     examples: [
-      getExample('shipping-option-item/default', ['jsx', 'js']),
+      getExample('shipping-option-item/default', ['jsx']),
       getExample(
         'purchase.checkout.pickup-location-option-item.render-after/default',
-        ['jsx', 'js'],
+        ['jsx'],
       ),
-      getExample('pickup-point-list/default', ['jsx', 'js']),
+      getExample('pickup-point-list/default', ['jsx']),
       getHookExample('delivery-groups'),
     ],
   },

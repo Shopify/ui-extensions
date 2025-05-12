@@ -1,8 +1,8 @@
 import type {LocalizedField} from '../api/standard/standard';
 import type {LocalizedFieldKey} from '../../../shared';
 import type {RenderExtensionTarget} from '../extension-targets';
-import {ScopeNotGrantedError} from './errors';
 
+import {ScopeNotGrantedError} from './errors';
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

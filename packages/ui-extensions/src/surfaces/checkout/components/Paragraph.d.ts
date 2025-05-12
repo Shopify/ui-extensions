@@ -10,7 +10,7 @@
 /// <reference lib="DOM" />
 import type {ParagraphProps$1} from './components-shared.d.ts';
 
-export interface ParagraphProps extends Omit<ParagraphProps$1, 'children' | 'fontVariantNumeric' | 'lineClamp' | 'containerName' | 'containerType' | 'tone'> {
+export interface ParagraphProps extends Pick<ParagraphProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
 }

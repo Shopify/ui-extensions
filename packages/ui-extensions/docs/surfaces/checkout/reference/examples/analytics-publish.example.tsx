@@ -1,20 +1,11 @@
-import {useState, useEffect} from 'react';
-import {
-  Banner,
-  reactExtension,
-  useApi,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
 
-export const purchaseCheckoutBlockRender =
-  reactExtension(
-    'purchase.checkout.block.render',
-    () => <Extension />,
-  );
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
-  const {analytics} = useApi();
-
-  analytics
+  shopify.analytics
     .publish('checkout-extension-loaded', {
       extensionName: 'My Extension',
     })
@@ -32,5 +23,7 @@ function Extension() {
       console.log('error', error);
     });
 
-  return <Banner>See console for result</Banner>;
+  return (
+    <s-banner>See console for result</s-banner>
+  );
 }

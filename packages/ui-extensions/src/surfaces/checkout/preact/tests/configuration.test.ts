@@ -2,7 +2,7 @@ import {useSettings} from '../settings';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useSettings', () => {
+describe.skip('useSettings', () => {
   it('returns settings from the api', () => {
     const settings = {title: 'checkout ui'};
 

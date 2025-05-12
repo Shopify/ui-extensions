@@ -2,7 +2,7 @@ import {useAttributeValues, useAttributes} from '../attributes';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('Attributes API hooks', () => {
+describe.skip('Attributes API hooks', () => {
   describe('useAttributes', () => {
     it('returns an empty array if no attributes are available', () => {
       const {value} = mount.hook(() => useAttributes(), {

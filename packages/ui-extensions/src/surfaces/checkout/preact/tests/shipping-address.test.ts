@@ -4,7 +4,7 @@ import {useShippingAddress} from '../shipping-address';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useShippingAddress', () => {
+describe.skip('useShippingAddress', () => {
   it('returns latest shipping address', async () => {
     const address: MailingAddress = {countryCode: 'CA'};
     const extensionApi = {

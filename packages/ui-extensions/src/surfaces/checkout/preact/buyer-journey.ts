@@ -8,7 +8,6 @@ import type {
 import type {RenderExtensionTarget} from '../extension-targets';
 
 import {ExtensionHasNoMethodError} from './errors';
-
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

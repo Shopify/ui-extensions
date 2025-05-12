@@ -1,8 +1,9 @@
-import {CheckoutUIExtensionError} from './errors';
 import type {
   RenderExtensionTarget,
   ApiForExtension,
 } from '../extension-targets';
+
+import {CheckoutUIExtensionError} from './errors';
 
 /**
  * Returns the full API object that was passed in to your extension when it was created.

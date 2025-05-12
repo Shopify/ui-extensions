@@ -10,7 +10,7 @@
 /// <reference lib="DOM" />
 import type {FormProps$1} from './components-shared.d.ts';
 
-export interface FormProps extends Omit<FormProps$1, 'autocomplete' | 'children' | 'onReset' | 'onSubmit' | 'containerName' | 'containerType'> {
+export interface FormProps extends Pick<FormProps$1, 'id' | 'disabled' | 'onSubmit'> {
     onSubmit?: () => void;
 }
 export interface FormElement extends Omit<FormProps, 'onSubmit' | 'children'>, Omit<HTMLElement, 'id' | 'onsubmit'> {

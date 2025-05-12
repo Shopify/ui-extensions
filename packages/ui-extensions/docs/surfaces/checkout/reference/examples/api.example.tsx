@@ -1,15 +1,13 @@
-import {
-  reactExtension,
-  Text,
-  useApi,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
-  const {shop} = useApi();
-  return <Text>Shop name: {shop.name}</Text>;
+  return (
+    <s-text>
+      Shop name: {shopify.shop.name}
+    </s-text>
+  );
 }

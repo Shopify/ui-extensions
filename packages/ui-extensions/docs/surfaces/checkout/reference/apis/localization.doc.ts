@@ -60,10 +60,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseTranslateGeneratedType',
     },
   ],
-  defaultExample: getExample('translate', ['jsx', 'js']),
+  defaultExample: getExample('translate', ['jsx']),
   examples: {
     description: '',
-    examples: [getExample('translate-pluralization', ['jsx', 'js'])],
+    examples: [getExample('translate-pluralization', ['jsx'])],
   },
   related: getLinksByTag('apis'),
 };

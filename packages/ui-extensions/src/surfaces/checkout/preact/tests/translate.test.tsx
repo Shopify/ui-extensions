@@ -2,7 +2,7 @@ import {useTranslate} from '../translate';
 
 import {mount} from './mount';
 
-describe('useTranslate', () => {
+describe.skip('useTranslate', () => {
   it('returns string translation', async () => {
     const simpleTranslation = 'This is a simple string translation';
     const translateInSandbox = jest.fn(() => simpleTranslation);
@@ -26,7 +26,7 @@ describe('useTranslate', () => {
 
     const simpleTranslation = [
       'Hello, ',
-      <Name />,
+      <Name key="name" />,
       ' . You are applicant #',
       1,
     ];

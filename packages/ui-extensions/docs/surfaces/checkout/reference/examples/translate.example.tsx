@@ -1,18 +1,14 @@
 /* See the locales/en.default.json tab for the translation keys and values for this example */
-import {
-  reactExtension,
-  Text,
-  useTranslate,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useTranslate} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const translate = useTranslate();
   return (
-    <Text>{translate('welcomeMessage')}</Text>
+    <s-text>{translate('welcomeMessage')}</s-text>
   );
 }

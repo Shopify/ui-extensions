@@ -1,21 +1,14 @@
-import {
-  reactExtension,
-  QRCode,
-  View,
-} from '@shopify/ui-extensions-react/checkout';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
-
-function Extension() {
-  return (
-    <View maxInlineSize={300}>
-      <QRCode
+export default function extension() {
+  render(
+    <s-box maxInlineSize={300}>
+      <s-qrcode
         content="https://shopify.com"
         size="fill"
       />
-    </View>
+    </s-box>,
+    document.body,
   );
 }

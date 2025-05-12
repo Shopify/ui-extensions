@@ -13,10 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
   > Caution:
   > This extension target will not be rendered if the line item is a custom line item belonging to a draft order invoice.
   `,
-  defaultExample: getExample(
-    'purchase.checkout.cart-line-item.render-after/default',
-    ['jsx', 'js'],
-  ),
+  defaultExample: getExample('cart-line-item/default', ['jsx']),
   related: getLinksByTag('targets'),
   ...CHECKOUT_CART_LINE_ITEM_API,
 };

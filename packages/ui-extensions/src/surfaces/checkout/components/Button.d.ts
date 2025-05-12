@@ -10,7 +10,7 @@
 /// <reference lib="DOM" />
 import type {ButtonProps$1} from './components-shared.d.ts';
 
-export interface ButtonProps extends Omit<ButtonProps$1, 'children' | 'download' | 'icon' | 'lang' | 'onBlur' | 'onFocus' | 'target' | 'tone' | 'type' | 'variant'> {
+export interface ButtonProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'loading' | 'onClick' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_self' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;

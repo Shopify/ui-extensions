@@ -1,17 +1,15 @@
-import {
-  reactExtension,
-  Text,
-  useCartLineTarget,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useCartLineTarget} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.cart-line-item.render-after',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const {
     merchandise: {title},
   } = useCartLineTarget();
-  return <Text>Line item title: {title}</Text>;
+  return (
+    <s-text>Line item title: {title}</s-text>
+  );
 }

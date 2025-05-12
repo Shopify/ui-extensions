@@ -1,13 +1,9 @@
-import {
-  reactExtension,
-  Banner,
-  useAvailablePaymentOptions,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useAvailablePaymentOptions} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const options = useAvailablePaymentOptions();
@@ -18,10 +14,10 @@ function Extension() {
     )
   ) {
     return (
-      <Banner>
+      <s-banner>
         Select an express payment method for
         faster checkout
-      </Banner>
+      </s-banner>
     );
   }
 

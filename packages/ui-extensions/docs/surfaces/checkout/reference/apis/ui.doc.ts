@@ -23,7 +23,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: getHookExample('ui-close-overlay'),
   examples: {
     description: 'Examples',
-    examples: [getExample('ui-close-overlay', ['jsx', 'js'])],
+    examples: [getExample('ui-close-overlay', ['jsx'])],
   },
   related: getLinksByTag('apis'),
 };

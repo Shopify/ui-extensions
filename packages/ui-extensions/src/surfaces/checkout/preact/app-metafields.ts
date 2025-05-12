@@ -6,8 +6,8 @@ import type {
   AppMetafieldEntry,
 } from '../api/standard/standard';
 import type {RenderExtensionTarget} from '../extension-targets';
-import {CheckoutUIExtensionError} from './errors';
 
+import {CheckoutUIExtensionError} from './errors';
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

@@ -25,10 +25,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseSettingsGeneratedType',
     },
   ],
-  defaultExample: getExample('settings-access', ['jsx', 'js']),
+  defaultExample: getExample('settings-access', ['jsx']),
   examples: {
     description: '',
-    examples: [getExample('settings', ['jsx', 'js'])],
+    examples: [getExample('settings', ['jsx'])],
   },
   related: getLinksByTag('apis'),
 };

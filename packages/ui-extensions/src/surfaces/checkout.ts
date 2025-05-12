@@ -138,10 +138,6 @@ export type {
   ShippingAddressChangeResultSuccess,
   CheckoutApi,
 } from './checkout/api/checkout/checkout';
-export type {
-  Order,
-  OrderStatusApi,
-} from './checkout/api/order-status/order-status';
 export type {OrderConfirmationApi} from './checkout/api/order-confirmation/order-confirmation';
 
 export type {CartLineItemApi} from './checkout/api/cart-line/cart-line-item';

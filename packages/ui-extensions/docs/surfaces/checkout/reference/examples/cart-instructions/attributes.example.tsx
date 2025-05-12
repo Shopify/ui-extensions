@@ -1,15 +1,12 @@
+import {render} from 'preact';
 import {
-  Banner,
-  Button,
   useApplyAttributeChange,
   useInstructions,
-  reactExtension,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const applyAttributeChange =
@@ -20,7 +17,7 @@ function Extension() {
     instructions.attributes.canUpdateAttributes
   ) {
     return (
-      <Button
+      <s-button
         onClick={() =>
           applyAttributeChange({
             type: 'updateAttribute',
@@ -30,13 +27,13 @@ function Extension() {
         }
       >
         Apply 100 loyalty points
-      </Button>
+      </s-button>
     );
   } else {
     return (
-      <Banner tone="warning">
+      <s-banner tone="warning">
         Loyalty points are unavailable
-      </Banner>
+      </s-banner>
     );
   }
 }

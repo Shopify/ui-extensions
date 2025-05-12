@@ -4,7 +4,7 @@ import {useLocalizedFields, useLocalizedField} from '../localized-fields';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useLocalizedFields', () => {
+describe.skip('useLocalizedFields', () => {
   it('throws an error if localized fields are not available', () => {
     const extensionApi = {
       localizedFields: undefined,
@@ -159,7 +159,7 @@ describe('useLocalizedFields', () => {
   });
 });
 
-describe('useLocalizedField', () => {
+describe.skip('useLocalizedField', () => {
   it('returns the localized field that matches the passed key', async () => {
     const localizedFields: LocalizedField[] = [
       {

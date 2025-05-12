@@ -10,7 +10,7 @@
 /// <reference lib="DOM" />
 import type {ProgressProps$1} from './components-shared.d.ts';
 
-export interface ProgressProps extends Omit<ProgressProps$1, 'tone'> {
+export interface ProgressProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {
     tone?: Extract<ProgressProps$1['tone'], 'auto' | 'critical'>;
 }
 export interface ProgressElement extends ProgressProps, Omit<HTMLElement, 'id'> {

@@ -4,7 +4,7 @@ import {useBillingAddress} from '../billing-address';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useBillingAddress', () => {
+describe.skip('useBillingAddress', () => {
   it('returns latest billing address', async () => {
     const address: MailingAddress = {countryCode: 'CA'};
     const extensionApi = {

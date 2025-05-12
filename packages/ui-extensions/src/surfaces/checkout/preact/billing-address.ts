@@ -2,7 +2,6 @@ import type {RenderExtensionTarget} from '../extension-targets';
 import type {MailingAddress} from '../api/shared';
 
 import {ScopeNotGrantedError} from './errors';
-
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

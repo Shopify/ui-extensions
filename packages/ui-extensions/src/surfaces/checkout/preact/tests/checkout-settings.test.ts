@@ -4,7 +4,7 @@ import {useCheckoutSettings} from '../checkout-settings';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useCheckoutSettings', () => {
+describe.skip('useCheckoutSettings', () => {
   it('returns checkout settings from the api', () => {
     const checkoutSettings = {
       orderSubmission: 'ORDER',

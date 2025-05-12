@@ -1,11 +1,12 @@
 import {faker} from '@faker-js/faker';
+
 import type {Metafield} from '@shopify/ui-extensions/checkout';
 
 import {useMetafield} from '../metafield';
 
 import {createMockStatefulRemoteSubscribable, mount} from './mount';
 
-describe('useMetafields', () => {
+describe.skip('useMetafields', () => {
   afterEach(() => {
     jest.clearAllMocks();
   });

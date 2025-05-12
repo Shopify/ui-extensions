@@ -4,8 +4,8 @@ import type {
 } from '../api/checkout/checkout';
 import type {AppliedGiftCard} from '../api/standard/standard';
 import type {RenderExtensionTarget} from '../extension-targets';
-import {ExtensionHasNoMethodError} from './errors';
 
+import {ExtensionHasNoMethodError} from './errors';
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

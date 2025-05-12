@@ -6,7 +6,6 @@ import type {CartLine} from '../api/standard/standard';
 import type {RenderExtensionTarget} from '../extension-targets';
 
 import {ExtensionHasNoMethodError} from './errors';
-
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

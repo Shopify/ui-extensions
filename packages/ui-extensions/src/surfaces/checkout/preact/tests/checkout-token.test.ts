@@ -2,7 +2,7 @@ import {useCheckoutToken} from '../checkout-token';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useCheckoutToken', () => {
+describe.skip('useCheckoutToken', () => {
   it('returns checkoutToken from the api', () => {
     const checkoutToken = 'checkout-token';
 

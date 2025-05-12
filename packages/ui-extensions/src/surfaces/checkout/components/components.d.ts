@@ -2099,7 +2099,7 @@ declare module 'preact' {
     }
 }
 
-interface BannerProps extends Omit<BannerProps$1, 'children' | 'primaryAction' | 'secondaryActions' | 'tone' | 'containerName' | 'containerType'> {
+interface BannerProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'onAfterHide' | 'onDismiss' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }
 interface BannerElement extends Omit<BannerProps, 'onAfterHide' | 'onDismiss'>, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
@@ -2123,7 +2123,7 @@ type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'la
 type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
 type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 
-interface BoxProps extends Omit<BoxProps$1, 'accessibilityRole' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderWidth' | 'children' | 'inlineSize' | 'containerName' | 'containerType'> {
+interface BoxProps extends Pick<BoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     accessibilityRole?: Extract<BoxProps$1['accessibilityRole'], 'main' | 'header' | 'footer' | 'section' | 'aside' | 'navigation' | 'ordered-list' | 'list-item' | 'list-item-separator' | 'unordered-list' | 'separator' | 'status' | 'alert' | 'generic' | 'presentation' | 'none'>;
     background?: Extract<BoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -2145,7 +2145,7 @@ declare module 'preact' {
     }
 }
 
-interface ButtonProps extends Omit<ButtonProps$1, 'children' | 'download' | 'icon' | 'lang' | 'onBlur' | 'onFocus' | 'target' | 'tone' | 'type' | 'variant'> {
+interface ButtonProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'loading' | 'onClick' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_self' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;
@@ -2186,7 +2186,7 @@ declare module 'preact' {
     }
 }
 
-interface DropZoneProps extends Omit<DropZoneProps$1, 'onChange' | 'value' | 'labelAccessibilityVisibility'> {
+interface DropZoneProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'onDropRejected' | 'onInput' | 'required'> {
 }
 interface DropZoneElement extends Omit<DropZoneProps, 'onDropRejected' | 'onInput'>, Omit<HTMLElement, 'id' | 'oninput'> {
     ondroprejected: DropZoneProps['onDropRejected'];
@@ -2205,7 +2205,7 @@ declare module 'preact' {
     }
 }
 
-interface FormProps extends Omit<FormProps$1, 'autocomplete' | 'children' | 'onReset' | 'onSubmit' | 'containerName' | 'containerType'> {
+interface FormProps extends Pick<FormProps$1, 'id' | 'disabled' | 'onSubmit'> {
     onSubmit?: () => void;
 }
 interface FormElement extends Omit<FormProps, 'onSubmit' | 'children'>, Omit<HTMLElement, 'id' | 'onsubmit'> {
@@ -2224,7 +2224,7 @@ declare module 'preact' {
     }
 }
 
-interface HeadingProps extends Omit<HeadingProps$1, 'children' | 'lineClamp' | 'accessibilityVisibility' | 'containerName' | 'containerType'> {
+interface HeadingProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
 }
 interface HeadingElement extends HeadingProps, Omit<HTMLElement, 'id'> {
 }
@@ -2241,10 +2241,10 @@ declare module 'preact' {
     }
 }
 
-interface IconProps extends Omit<IconProps$1, 'tone' | 'size' | 'type' | 'color'> {
+interface IconProps extends Pick<IconProps$1, 'id' | 'size' | 'tone' | 'type'> {
     tone?: Extract<IconProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
     size?: Extract<IconProps$1['size'], 'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
-    type?: Extract<IconProps$1['type'], 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'circle' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'filter' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'image' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'map' | 'menu-horizontal' | 'menu-vertical' | 'menu' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'reset' | 'return' | 'savings' | 'search' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'>;
+    type?: '' | Extract<IconProps$1['type'], 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'circle' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'filter' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'image' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'map' | 'menu-horizontal' | 'menu-vertical' | 'menu' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'reset' | 'return' | 'savings' | 'search' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'>;
 }
 interface IconElement extends IconProps, Omit<HTMLElement, 'id'> {
 }
@@ -2261,7 +2261,7 @@ declare module 'preact' {
     }
 }
 
-interface ImageProps extends Omit<ImageProps$1, 'border' | 'borderColor' | 'borderRadius' | 'borderWidth' | 'inlineSize' | 'onLoad' | 'onError'> {
+interface ImageProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<ImageProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
@@ -2281,7 +2281,7 @@ declare module 'preact' {
     }
 }
 
-interface LinkProps extends Omit<LinkProps$1, 'children' | 'download' | 'onBlur' | 'onFocus' | 'target' | 'tone'> {
+interface LinkProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'lang' | 'onClick' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_self' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }
@@ -2301,7 +2301,7 @@ declare module 'preact' {
     }
 }
 
-interface ListItemProps extends Omit<ListItemProps$1, 'children'> {
+interface ListItemProps extends Pick<ListItemProps$1, 'id'> {
 }
 interface ListItem extends ListItemProps, Omit<HTMLElement, 'id'> {
 }
@@ -2335,7 +2335,7 @@ declare module 'preact' {
     }
 }
 
-interface ParagraphProps extends Omit<ParagraphProps$1, 'children' | 'fontVariantNumeric' | 'lineClamp' | 'containerName' | 'containerType' | 'tone'> {
+interface ParagraphProps extends Pick<ParagraphProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
 }
@@ -2371,7 +2371,7 @@ declare module 'preact' {
     }
 }
 
-interface ProgressProps extends Omit<ProgressProps$1, 'tone'> {
+interface ProgressProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {
     tone?: Extract<ProgressProps$1['tone'], 'auto' | 'critical'>;
 }
 interface ProgressElement extends ProgressProps, Omit<HTMLElement, 'id'> {
@@ -2389,7 +2389,7 @@ declare module 'preact' {
     }
 }
 
-interface SpinnerProps extends Omit<SpinnerProps$1, 'size'> {
+interface SpinnerProps extends SpinnerProps$1 {
     size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
 }
 interface SpinnerElement extends SpinnerProps, Omit<HTMLElement, 'id'> {
@@ -2407,7 +2407,7 @@ declare module 'preact' {
     }
 }
 
-interface StackProps extends Omit<StackProps$1, 'accessibilityVisibility' | 'accessibilityRole' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderWidth' | 'children' | 'justifyContent' | 'inlineSize'> {
+interface StackProps extends Pick<StackProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'alignContent' | 'alignItems' | 'background' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'direction' | 'display' | 'gap' | 'id' | 'justifyContent' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'rowGap'> {
     accessibilityRole?: Extract<StackProps$1['accessibilityRole'], 'main' | 'header' | 'footer' | 'section' | 'aside' | 'navigation' | 'ordered-list' | 'list-item' | 'list-item-separator' | 'unordered-list' | 'separator' | 'status' | 'alert' | 'generic' | 'none'>;
     background?: Extract<StackProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -2432,7 +2432,7 @@ declare module 'preact' {
     }
 }
 
-interface TextProps extends Omit<TextProps$1, 'children' | 'fontVariantNumeric' | 'type'> {
+interface TextProps extends Pick<TextProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'display' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<TextProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<TextProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
     type?: Extract<TextProps$1['type'], 'address' | 'redundant' | 'mark' | 'emphasis' | 'offset' | 'small' | 'strong' | 'generic'>;
@@ -2452,7 +2452,8 @@ declare module 'preact' {
     }
 }
 
-interface TextFieldProps extends Omit<TextFieldProps$1, 'icon'> {
+interface TextFieldProps extends Pick<TextFieldProps$1, 'accessory' | 'autocomplete' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'placeholder' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
+    icon?: IconProps['type'];
 }
 interface TextFieldElement extends Omit<TextFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: TextFieldProps['onBlur'];

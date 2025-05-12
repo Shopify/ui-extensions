@@ -1,17 +1,12 @@
-import {useEffect, useState} from 'react';
-import {
-  reactExtension,
-  Checkbox,
-  useApi,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
-  const {storage} = useApi();
+  const {storage} = shopify;
   const [tosConsent, setTosConsent] =
     useState(false);
 
@@ -33,13 +28,13 @@ function Extension() {
   }
 
   return (
-    <Checkbox
-      id="tos"
-      name="tos"
-      onChange={cacheConsent}
-      checked={tosConsent}
+    <s-button
+      onClick={() => cacheConsent(!tosConsent)}
+      variant={
+        tosConsent ? 'primary' : 'secondary'
+      }
     >
       I agree with the terms of service
-    </Checkbox>
+    </s-button>
   );
 }

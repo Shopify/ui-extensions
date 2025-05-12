@@ -6,7 +6,6 @@ import type {
 } from '../api/checkout/checkout';
 
 import {ScopeNotGrantedError, ExtensionHasNoMethodError} from './errors';
-
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 

@@ -1,32 +1,25 @@
-import {
-  extension,
-  QRCode,
-  TextBlock,
-  Link,
-} from '@shopify/ui-extensions/checkout';
+export default function extension() {
+  const qrCode =
+    document.createElement('s-qrcode');
+  qrCode.setAttribute(
+    'content',
+    'https://shopify.com',
+  );
+  qrCode.setAttribute(
+    'logo',
+    'https://cdn.shopify.com/YOUR_IMAGE_HERE',
+  );
 
-export default extension(
-  'purchase.checkout.block.render',
-  (root) => {
-    const qrCode = root.createComponent(QRCode, {
-      content: 'https://shopify.com',
-      logo: 'https://cdn.shopify.com/YOUR_IMAGE_HERE',
-    });
+  const paragraph = document.createElement(
+    's-paragraph',
+  );
+  paragraph.textContent = 'Scan to visit ';
 
-    const textBlock = root.createComponent(
-      TextBlock,
-      null,
-      [
-        'Scan to visit ',
-        root.createComponent(
-          Link,
-          {to: 'https://shopify.com'},
-          'Shopify.com',
-        ),
-      ],
-    );
+  const link = document.createElement('s-link');
+  link.href = 'https://shopify.com';
+  link.textContent = 'Shopify.com';
+  paragraph.appendChild(link);
 
-    root.appendChild(qrCode);
-    root.appendChild(textBlock);
-  },
-);
+  document.body.appendChild(qrCode);
+  document.body.appendChild(paragraph);
+}

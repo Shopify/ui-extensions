@@ -1,25 +1,21 @@
-import {
-  reactExtension,
-  Banner,
-  useApi,
-  useSubscription,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useSubscription} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.thank-you.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
-  const {orderConfirmation} = useApi();
-  const {id} = useSubscription(orderConfirmation);
+  const {id} = useSubscription(
+    shopify.orderConfirmation,
+  );
 
   if (id) {
     return (
-      <Banner>
+      <s-banner>
         Please include your order confirmation ID
         ({id}) in support requests
-      </Banner>
+      </s-banner>
     );
   }
 

@@ -1,18 +1,11 @@
-import {useEffect, useState} from 'react';
-import {
-  useApi,
-  reactExtension,
-  List,
-  ListItem,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
-  const {shop} = useApi();
   const [data, setData] = useState();
 
   useEffect(() => {
@@ -41,12 +34,12 @@ function Extension() {
   });
 
   return (
-    <List>
+    <s-unordered-list>
       {data?.products?.nodes.map((node) => (
-        <ListItem key={node.id}>
+        <s-list-item id={node.id} key={node.id}>
           {node.title}
-        </ListItem>
+        </s-list-item>
       ))}
-    </List>
+    </s-unordered-list>
   );
 }

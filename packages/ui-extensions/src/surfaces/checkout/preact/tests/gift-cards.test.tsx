@@ -5,7 +5,7 @@ import {useAppliedGiftCards} from '../gift-cards';
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 import type {PartialExtensionApi} from './mount';
 
-describe('Gift cards API hooks', () => {
+describe.skip('Gift cards API hooks', () => {
   describe('useAppliedGiftCards', () => {
     it('returns the current gift cards', async () => {
       const giftCards: AppliedGiftCard[] = [

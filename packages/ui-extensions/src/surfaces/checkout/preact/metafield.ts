@@ -1,6 +1,6 @@
 import type {Metafield} from '../api/standard/standard';
-import {CheckoutUIExtensionError} from './errors';
 
+import {CheckoutUIExtensionError} from './errors';
 import {useMetafields} from './metafields';
 
 interface MetafieldFilter {

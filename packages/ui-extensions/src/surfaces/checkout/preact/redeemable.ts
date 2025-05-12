@@ -2,8 +2,8 @@ import type {
   RedeemableChange,
   RedeemableChangeResult,
 } from '../api/redeemable/redeemable';
-import {ExtensionHasNoMethodError} from './errors';
 
+import {ExtensionHasNoMethodError} from './errors';
 import {useApi} from './api';
 
 /**

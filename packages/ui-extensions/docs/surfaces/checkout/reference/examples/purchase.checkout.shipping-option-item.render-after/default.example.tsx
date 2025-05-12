@@ -1,19 +1,9 @@
-import {
-  Button,
-  Link,
-  Modal,
-  reactExtension,
-  Text,
-  TextBlock,
-  useShippingOptionTarget,
-  useApi,
-  View,
-} from '@shopify/ui-extensions-react/checkout';
+import {render, Fragment} from 'preact';
+import {useShippingOptionTarget} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.shipping-option-item.render-after',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const {
@@ -21,7 +11,6 @@ function Extension() {
     isTargetSelected,
     renderMode,
   } = useShippingOptionTarget();
-  const {ui} = useApi();
   const {
     cost: {amount, currencyCode},
     title,
@@ -30,50 +19,45 @@ function Extension() {
   // When the target is rendered inside the "More shipping options" modal for split shipping scenarios, `renderMode.overlay` is true. This check allows to render an alternative UI to avoid nested modals.
   if (renderMode.overlay) {
     return (
-      <Text>
+      <s-text>
         Shipping method: {title} is{' '}
         {isTargetSelected ? '' : 'not'} selected.
-      </Text>
+      </s-text>
     );
   }
 
   // When the target is rendered inline for both split shipping and non-split shipping scenarios, a Modal can be rendered if desired.
   return (
-    <Link
-      overlay={
-        <Modal
-          id="my-modal"
-          padding
-          title={`Shipping option: ${title}`}
-        >
-          <View
-            padding={[
-              'none',
-              'none',
-              'base',
-              'none',
-            ]}
-          >
-            <TextBlock>
-              Cost:{' '}
-              {Intl.NumberFormat(undefined, {
-                style: 'currency',
-                currency: currencyCode,
-              }).format(amount)}
-            </TextBlock>
-          </View>
-          <Button
+    <Fragment>
+      <s-link
+        command="--show"
+        commandFor="my-modal"
+      >
+        View details ({title} is{' '}
+        {isTargetSelected ? '' : 'not'} selected)
+      </s-link>
+      <s-modal
+        id="my-modal"
+        padding
+        title={`Shipping option: ${title}`}
+      >
+        <s-box padding="none none base none">
+          <s-paragraph>
+            Cost:{' '}
+            {Intl.NumberFormat(undefined, {
+              style: 'currency',
+              currency: currencyCode,
+            }).format(amount)}
+          </s-paragraph>
+          <s-button
             onClick={() =>
-              ui.overlay.close('my-modal')
+              shopify.ui.overlay.close('my-modal')
             }
           >
             Close
-          </Button>
-        </Modal>
-      }
-    >
-      View details ({title} is{' '}
-      {isTargetSelected ? '' : 'not'} selected)
-    </Link>
+          </s-button>
+        </s-box>
+      </s-modal>
+    </Fragment>
   );
 }

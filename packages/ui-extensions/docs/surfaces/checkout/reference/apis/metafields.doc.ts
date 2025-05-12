@@ -50,7 +50,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UseApplyMetafieldsChangeGeneratedType',
     },
   ],
-  defaultExample: getExample('metafields/default', ['jsx', 'js', 'toml']),
+  defaultExample: getExample('metafields/default', ['jsx', 'toml']),
   related: getLinksByTag('apis'),
 };
 

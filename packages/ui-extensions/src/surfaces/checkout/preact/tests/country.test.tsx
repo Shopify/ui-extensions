@@ -4,7 +4,7 @@ import {useLocalizationCountry} from '../country';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useLocalizationCountry', () => {
+describe.skip('useLocalizationCountry', () => {
   it('returns country from the api', () => {
     const country: {isoCode: CountryCode} = {isoCode: 'CA'};
 

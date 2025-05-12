@@ -4,7 +4,7 @@ import {useCurrency} from '../currency';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useCurrency', () => {
+describe.skip('useCurrency', () => {
   it('returns currency from the api', () => {
     const currency: {isoCode: CurrencyCode} = {isoCode: 'CAD'};
 

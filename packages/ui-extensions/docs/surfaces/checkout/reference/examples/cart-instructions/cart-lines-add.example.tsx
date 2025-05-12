@@ -1,15 +1,12 @@
+import {render} from 'preact';
 import {
-  Banner,
-  Button,
   useApplyCartLinesChange,
   useInstructions,
-  reactExtension,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const applyCartLinesChange =
@@ -18,7 +15,7 @@ function Extension() {
 
   if (instructions.lines.canAddCartLine) {
     return (
-      <Button
+      <s-button
         onClick={() =>
           applyCartLinesChange({
             type: 'addCartLine',
@@ -29,14 +26,14 @@ function Extension() {
         }
       >
         Add a free gift to your order
-      </Button>
+      </s-button>
     );
   } else {
     return (
-      <Banner tone="warning">
+      <s-banner tone="warning">
         The products in your cart cannot be
         modified
-      </Banner>
+      </s-banner>
     );
   }
 }

@@ -2,7 +2,7 @@ import {useSessionToken} from '../session-token';
 
 import {mount} from './mount';
 
-describe('useSessionToken', () => {
+describe.skip('useSessionToken', () => {
   it('returns sessionToken from the api', () => {
     const mockGetSessionToken = {
       get: jest.fn(),

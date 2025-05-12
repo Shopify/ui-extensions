@@ -10,7 +10,7 @@
 /// <reference lib="DOM" />
 import type {SpinnerProps$1} from './components-shared.d.ts';
 
-export interface SpinnerProps extends Omit<SpinnerProps$1, 'size'> {
+export interface SpinnerProps extends SpinnerProps$1 {
     size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
 }
 export interface SpinnerElement extends SpinnerProps, Omit<HTMLElement, 'id'> {

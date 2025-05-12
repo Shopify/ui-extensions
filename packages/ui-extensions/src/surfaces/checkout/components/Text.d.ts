@@ -10,7 +10,7 @@
 /// <reference lib="DOM" />
 import type {TextProps$1} from './components-shared.d.ts';
 
-export interface TextProps extends Omit<TextProps$1, 'children' | 'fontVariantNumeric' | 'type'> {
+export interface TextProps extends Pick<TextProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'display' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<TextProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<TextProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
     type?: Extract<TextProps$1['type'], 'address' | 'redundant' | 'mark' | 'emphasis' | 'offset' | 'small' | 'strong' | 'generic'>;

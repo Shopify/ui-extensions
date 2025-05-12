@@ -1,25 +1,21 @@
-import {
-  BlockStack,
-  reactExtension,
-  Text,
-  useApi,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useTotalAmount} from '@shopify/ui-extensions/checkout/preact';
 
-// 1. Choose an extension target
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
-  // 2. Use the extension API to gather context from the checkout and shop
-  const {cost, shop} = useApi();
+  // 1. Use the extension API to gather context from the checkout and shop
+  const totalAmount = useTotalAmount();
 
-  // 3. Render a UI
+  // 2. Render a UI
   return (
-    <BlockStack>
-      <Text>Shop name: {shop.name}</Text>
-      <Text>cost: {cost.totalAmount}</Text>
-    </BlockStack>
+    <s-stack>
+      <s-text>
+        Shop name: {shopify.shop.name}
+      </s-text>
+      <s-text>cost: {totalAmount}</s-text>
+    </s-stack>
   );
 }

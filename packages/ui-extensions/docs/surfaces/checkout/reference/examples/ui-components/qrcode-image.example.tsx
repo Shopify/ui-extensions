@@ -1,29 +1,20 @@
-import {
-  reactExtension,
-  Link,
-  QRCode,
-  TextBlock,
-} from '@shopify/ui-extensions-react/checkout';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
-
-function Extension() {
-  return (
+export default function extension() {
+  render(
     <>
-      <QRCode
+      <s-qrcode
         content="https://shopify.com"
         logo="https://cdn.shopify.com/YOUR_IMAGE_HERE"
       />
-
-      <TextBlock>
+      <s-paragraph>
         Scan to visit{' '}
-        <Link href="https://shopify.com">
+        <s-link href="https://shopify.com">
           Shopify.com
-        </Link>
-      </TextBlock>
-    </>
+        </s-link>
+      </s-paragraph>
+    </>,
+    document.body,
   );
 }

@@ -1,15 +1,13 @@
-import {
-  Chat,
-  reactExtension,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
 
-// 1. Choose an extension target
-export default reactExtension(
-  'purchase.checkout.chat.render',
-  () => <Extension />,
-);
+// 1. Export the extension
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   // 2. Render a Chat application. This target only accepts the Chat component. Any other components will not render.
-  return <Chat inlineSize={100} blockSize={50} />;
+  return (
+    <s-chat inlineSize={100} blockSize={50} />
+  );
 }

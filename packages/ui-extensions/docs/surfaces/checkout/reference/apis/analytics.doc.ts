@@ -19,10 +19,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_Standard_AnalyticsApi',
     },
   ],
-  defaultExample: getExample('analytics-publish', ['jsx', 'js']),
+  defaultExample: getExample('analytics-publish', ['jsx']),
   examples: {
     description: '',
-    examples: [getExample('analytics-visitor', ['jsx', 'js'])],
+    examples: [getExample('analytics-visitor', ['jsx'])],
   },
   related: getLinksByTag('apis'),
 };

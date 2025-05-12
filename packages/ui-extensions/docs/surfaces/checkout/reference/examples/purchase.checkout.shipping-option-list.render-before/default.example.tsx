@@ -1,19 +1,14 @@
-import {useState} from 'react';
+import {render} from 'preact';
 import {
-  reactExtension,
-  Banner,
-  Checkbox,
   useDeliverySelectionGroups,
   useDeliveryGroupListTarget,
   useApplyMetafieldsChange,
-  BlockStack,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
+import {useState} from 'preact/hooks';
 
-// 1. Choose an extension target
-export default reactExtension(
-  'purchase.checkout.shipping-option-list.render-before',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const metafieldNamespace = 'yourAppNamespace';
@@ -25,7 +20,7 @@ function Extension() {
     useApplyMetafieldsChange();
   const [checked, setChecked] = useState(false);
 
-  // 2. Render a UI
+  // 1. Render a UI
   if (!deliveryGroupList) {
     return null;
   }
@@ -57,21 +52,25 @@ function Extension() {
   }
 
   return (
-    <BlockStack spacing="base">
-      <Banner
+    <s-stack>
+      <s-banner
         tone="info"
         heading={`${title}${deliverySelectionGroupInfo}`}
       />
-      <Checkbox
-        onChange={onCheckboxChange}
-        checked={checked}
+      <s-button
+        onClick={() => onCheckboxChange(!checked)}
+        variant={
+          checked ? 'primary' : 'secondary'
+        }
       >
-        The {groupLabel} section contains gifts
-      </Checkbox>
-    </BlockStack>
+        {checked
+          ? 'Gifts included'
+          : `Mark the ${groupLabel} section as gifts`}
+      </s-button>
+    </s-stack>
   );
 
-  // 3. Call API methods to modify the checkout
+  // 2. Call API methods to modify the checkout
   async function onCheckboxChange(isChecked) {
     setChecked(isChecked);
     const result = await applyMetafieldsChange({

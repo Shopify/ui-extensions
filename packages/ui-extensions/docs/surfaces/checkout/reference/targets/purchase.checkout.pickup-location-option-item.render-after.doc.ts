@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     'A static extension target that is rendered after the pickup location details within the local pickup option list, for each option.',
   defaultExample: getExample(
     'purchase.checkout.pickup-location-option-item.render-after/default',
-    ['jsx', 'js'],
+    ['jsx'],
   ),
   related: getLinksByTag('targets'),
   ...PICKUP_LOCATION_ITEM_API,

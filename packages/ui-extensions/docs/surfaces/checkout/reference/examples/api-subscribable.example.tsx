@@ -1,15 +1,11 @@
-import {
-  reactExtension,
-  Text,
-  useNote,
-} from '@shopify/ui-extensions-react/checkout';
+import {render} from 'preact';
+import {useNote} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const note = useNote();
-  return <Text>Note: {note}</Text>;
+  return <s-text>Note: {note}</s-text>;
 }

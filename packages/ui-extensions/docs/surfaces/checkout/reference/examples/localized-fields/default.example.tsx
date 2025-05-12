@@ -1,24 +1,20 @@
+import {render} from 'preact';
 import {
-  reactExtension,
   useBuyerJourneyIntercept,
-  useLocalizedFields,
-} from '@shopify/ui-extensions-react/checkout';
+  useLocalizedField,
+} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
-  // 1. Access localized field values
-  const localizedFields = useLocalizedFields([
+  // 1. Access localized field
+  const taxIdField = useLocalizedField(
     'TAX_CREDENTIAL_BR',
-  ]);
+  );
 
-  // 2. Access localized field values
-  const taxIdField = localizedFields?.[0];
-
-  // 3. Validate localized field values
+  // 2. Validate localized field value
   useBuyerJourneyIntercept(
     ({canBlockProgress}) => {
       return canBlockProgress &&

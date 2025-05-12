@@ -1,22 +1,15 @@
-import {
-  extension,
-  View,
-  QRCode,
-} from '@shopify/ui-extensions/checkout';
+export default function extension() {
+  const box = document.createElement('s-box');
+  box.setAttribute('max-inline-size', '300');
 
-export default extension(
-  'purchase.checkout.block.render',
-  (root) => {
-    const view = root.createComponent(View, {
-      maxInlineSize: 300,
-    });
+  const qrCode =
+    document.createElement('s-qrcode');
+  qrCode.setAttribute(
+    'content',
+    'https://shopify.com',
+  );
+  qrCode.setAttribute('size', 'fill');
 
-    const qrCode = root.createComponent(QRCode, {
-      content: 'https://shopify.com',
-      size: 'fill',
-    });
-
-    view.appendChild(qrCode);
-    root.appendChild(view);
-  },
-);
+  box.appendChild(qrCode);
+  document.body.appendChild(box);
+}

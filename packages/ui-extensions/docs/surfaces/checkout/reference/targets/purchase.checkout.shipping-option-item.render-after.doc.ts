@@ -16,7 +16,7 @@ A static extension target that is rendered after the shipping method details wit
 `,
   defaultExample: getExample(
     'purchase.checkout.shipping-option-item.render-after/default',
-    ['jsx', 'js'],
+    ['jsx'],
   ),
   related: getLinksByTag('targets'),
   ...SHIPPING_OPTION_ITEM_API,

@@ -1,17 +1,13 @@
+import {render} from 'preact';
 import {
-  reactExtension,
-  BlockStack,
-  Button,
-  Text,
   useAttributeValues,
   useApplyAttributeChange,
   useInstructions,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.block.render',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const [giftWrapValue] = useAttributeValues([
@@ -39,13 +35,13 @@ function Extension() {
   }
 
   return (
-    <BlockStack spacing="tight">
-      <Text>
+    <s-stack>
+      <s-text>
         Gift wrapping:{' '}
         {giftWrap ? 'Added' : 'Not set'}
-      </Text>
-      <Button
-        onPress={toggleGiftWrap}
+      </s-text>
+      <s-button
+        onClick={toggleGiftWrap}
         disabled={
           !instructions.attributes
             .canUpdateAttributes
@@ -54,7 +50,7 @@ function Extension() {
         {giftWrap
           ? 'Remove gift wrap'
           : 'Add gift wrap'}
-      </Button>
-    </BlockStack>
+      </s-button>
+    </s-stack>
   );
 }

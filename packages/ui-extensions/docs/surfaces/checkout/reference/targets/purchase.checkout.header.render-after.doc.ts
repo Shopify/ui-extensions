@@ -10,10 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
   > To prevent layout shifting, avoid dynamic data fetching & rendering in this target. If you need to render dynamic content, consider reserving space for your content while it is loading.
   > See: [Spinner](https://shopify.dev/docs/api/checkout-ui-extensions/components/feedback/spinner), [SkeletonText](https://shopify.dev/docs/api/checkout-ui-extensions/components/feedback/skeletontext), or [BlockSpacer](https://shopify.dev/docs/api/checkout-ui-extensions/components/structure/blockspacer).
   `,
-  defaultExample: getExample('purchase.checkout.header.render-after/default', [
-    'jsx',
-    'js',
-  ]),
+  defaultExample: getExample('generic', ['jsx']),
   subCategory: 'Header',
   related: getLinksByTag('targets'),
   ...CHECKOUT_API,

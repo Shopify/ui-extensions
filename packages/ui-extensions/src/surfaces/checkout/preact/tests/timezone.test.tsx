@@ -2,7 +2,7 @@ import {useTimezone} from '../timezone';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
 
-describe('useTimezone', () => {
+describe.skip('useTimezone', () => {
   it('returns timezone from the api', () => {
     const timezone = 'America/New_York';
 

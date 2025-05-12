@@ -1,15 +1,13 @@
-import {useState} from 'react';
+import {render} from 'preact';
+import {useState} from 'preact/hooks';
 import {
-  reactExtension,
-  Banner,
   useBuyerJourneyIntercept,
   useCartLineTarget,
-} from '@shopify/ui-extensions-react/checkout';
+} from '@shopify/ui-extensions/checkout/preact';
 
-export default reactExtension(
-  'purchase.checkout.cart-line-item.render-after',
-  () => <Extension />,
-);
+export default function extension() {
+  render(<Extension />, document.body);
+}
 
 function Extension() {
   const [showError, setShowError] =
@@ -38,8 +36,8 @@ function Extension() {
   );
 
   return showError ? (
-    <Banner>
+    <s-banner>
       This item has a limit of one per customer.
-    </Banner>
+    </s-banner>
   ) : null;
 }

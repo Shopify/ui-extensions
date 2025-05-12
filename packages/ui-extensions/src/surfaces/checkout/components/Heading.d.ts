@@ -10,7 +10,7 @@
 /// <reference lib="DOM" />
 import type {HeadingProps$1} from './components-shared.d.ts';
 
-export interface HeadingProps extends Omit<HeadingProps$1, 'children' | 'lineClamp' | 'accessibilityVisibility' | 'containerName' | 'containerType'> {
+export interface HeadingProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
 }
 export interface HeadingElement extends HeadingProps, Omit<HTMLElement, 'id'> {
 }

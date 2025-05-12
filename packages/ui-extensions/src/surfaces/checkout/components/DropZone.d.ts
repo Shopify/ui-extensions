@@ -10,7 +10,7 @@
 /// <reference lib="DOM" />
 import type {DropZoneProps$1} from './components-shared.d.ts';
 
-export interface DropZoneProps extends Omit<DropZoneProps$1, 'onChange' | 'value' | 'labelAccessibilityVisibility'> {
+export interface DropZoneProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'onDropRejected' | 'onInput' | 'required'> {
 }
 export interface DropZoneElement extends Omit<DropZoneProps, 'onDropRejected' | 'onInput'>, Omit<HTMLElement, 'id' | 'oninput'> {
     ondroprejected: DropZoneProps['onDropRejected'];

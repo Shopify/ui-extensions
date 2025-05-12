@@ -38,9 +38,7 @@ You can use error reporting libraries like [Bugsnag](https://www.bugsnag.com/) o
       anchorLink: 'sentry',
       title: 'Sentry (recommended)',
       sectionContent: `
-Initialize Sentry following their [Web Worker guide](https://docs.sentry.io/platforms/javascript/configuration/webworkers/). We recommend disabling the default integrations to be sure it will run within a Web Worker. You'll need to add event listeners manually.
-
-If you are writing your UI extension in React, you can follow Sentry's [React integration guide](https://docs.sentry.io/platforms/javascript/guides/react/) to get additional context on errors thrown while rendering your components. Integrations like tracing do not currently run in Web Workers ([issue](https://github.com/getsentry/sentry-javascript/issues/5289)).`,
+      Initialize Sentry following their [Web Worker guide](https://docs.sentry.io/platforms/javascript/configuration/webworkers/). We recommend disabling the default integrations to be sure it will run within a Web Worker. You'll need to add event listeners manually.`,
       codeblock: {
         title: 'Sentry',
         tabs: [
@@ -58,9 +56,7 @@ If you are writing your UI extension in React, you can follow Sentry's [React in
       sectionContent: `
 Follow [Bugsnag's documentation](https://docs.bugsnag.com/platforms/javascript/) to install it for your extension. Bugsnag adds event listeners by default so there's no need to add them manually.
 
-If you use the [CDN version](https://docs.bugsnag.com/platforms/javascript/cdn-guide/), you'll need to add polyfill code (see example) before importing Bugsnag because it tries to access some variables that are not available in Web Workers ([details](https://github.com/bugsnag/bugsnag-js/issues/1506)).
-
-If you are writing your UI extension in React, you can follow Bugsnag's [React integration guide](https://docs.bugsnag.com/platforms/javascript/legacy/react/) to get additional context on errors thrown while rendering your components.`,
+If you use the [CDN version](https://docs.bugsnag.com/platforms/javascript/cdn-guide/), you'll need to add polyfill code (see example) before importing Bugsnag because it tries to access some variables that are not available in Web Workers ([details](https://github.com/bugsnag/bugsnag-js/issues/1506)).`,
       codeblock: {
         title: 'Bugsnag',
         tabs: [

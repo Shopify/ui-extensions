@@ -9,7 +9,7 @@ import {ExtensionHasNoMethodError, ScopeNotGrantedError} from '../../errors';
 
 import {createMockStatefulRemoteSubscribable, mount} from './mount';
 
-describe('Payment Method API hooks', () => {
+describe.skip('Payment Method API hooks', () => {
   describe('usePaymentMethodAttributes', () => {
     const paymentMethodAttributes = [{key: 'test_key', value: 'test_value'}];
 

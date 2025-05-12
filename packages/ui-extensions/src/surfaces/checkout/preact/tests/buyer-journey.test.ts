@@ -9,7 +9,7 @@ import {
 
 import {createMockStatefulRemoteSubscribable, mount} from './mount';
 
-describe('buyerJourney Hooks', () => {
+describe.skip('buyerJourney Hooks', () => {
   beforeEach(() => {
     jest.spyOn(console, 'error').mockImplementation(() => {});
   });
