@@ -1,7 +1,7 @@
 const shared = {
   name: 'Table',
   description:
-    'Use `s-table` to organize and display data in a grid format. Tables help merchants view, analyze, and compare data.',
+    'Use `s-table` to organize and display data in a tabular format. Tables help merchants view, analyze, and compare data. By default the `s-table` renders as a list on mobile devices and a table on desktop devices.',
   thumbnail: 'table-thumbnail.png',
   isVisualComponent: true,
   definitions: [
