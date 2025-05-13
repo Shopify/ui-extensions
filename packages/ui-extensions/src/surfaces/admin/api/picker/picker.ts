@@ -1,5 +1,3 @@
-import {BadgeProps} from '../../components/Badge';
-
 interface Picker {
   /**
    * A Promise that resolves with the selected item IDs when the user presses the "Select" button in the picker.
@@ -40,11 +38,12 @@ interface PickerOptions {
   headers?: Header[];
 }
 
+export type Tone = 'info' | 'success' | 'warning' | 'critical';
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 type DataPoint = string | number | undefined;
 interface Badge {
   content: string;
-  tone?: BadgeProps['tone'];
+  tone?: Tone;
   progress?: Progress;
 }
 
