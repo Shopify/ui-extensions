@@ -35,7 +35,7 @@ fi
 
 COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH --output ./$DOCS_PATH/generated"
 COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
-COMPILE_CATEGORIES="pnpm exec tsc $DOCS_PATH/categories/*.doc.ts --moduleResolution node --target esNext --module CommonJS && pnpm exec generate-docs --isCategoryPage --input ./$DOCS_PATH/categories --output ./$DOCS_PATH/generated"
+COMPILE_CATEGORIES="yarn tsc $DOCS_PATH/categories/*.doc.ts --moduleResolution node --target esNext --module CommonJS && pnpm exec generate-docs --isCategoryPage --input ./$DOCS_PATH/categories --output ./$DOCS_PATH/generated"
 
 # Rename components.d.ts to components.ts so it can be picked up be the generate-docs tool
 cp $COMPONENTS_DEFINITIONS $COMPONENTS_TS
