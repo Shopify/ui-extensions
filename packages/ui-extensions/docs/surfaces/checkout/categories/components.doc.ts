@@ -1,7 +1,7 @@
 import type {CategoryTemplateSchema} from '@shopify/generate-docs';
 
 const data: CategoryTemplateSchema = {
-  category: 'components',
+  category: 'polaris-web-components',
   sections: [
     {
       type: 'Generic',
