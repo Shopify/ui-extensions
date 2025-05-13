@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/Text';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Text',
-  description:
-    'The `s-text` component is used for inline text styling, similar to HTML `span` elements, not for paragraph-level content. Use it to apply different visual tones and text styles to specific words or phrases within a `s-paragraph`, such as a `strong` type or `critical` tone.',
+  ...sharedContent,
   requires: '',
   thumbnail: 'text-thumbnail.png',
   isVisualComponent: true,
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TextProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Titles and text',
   defaultExample: {
     image: 'text-default.png',
     codeblock: {

@@ -13,8 +13,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ClipboardItemProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'utilities',
   defaultExample: {
     image: 'clipboard-basic.png',
     codeblock: {
