@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/Time';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Time',
-  description:
-    'Represents a specific period in time. It may include the datetime attribute to translate dates into machine-readable format.',
+  ...sharedContent,
   isVisualComponent: true,
   thumbnail: 'time-thumbnail.png',
   requires: '',
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TimeProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Titles and text',
   defaultExample: {
     image: 'time-default.png',
     codeblock: {

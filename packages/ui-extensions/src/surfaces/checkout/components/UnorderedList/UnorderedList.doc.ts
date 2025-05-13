@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/UnorderedList';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'UnorderedList',
-  description:
-    'UnorderedList displays a set of related text-only content beginning with a bullet.',
+  ...sharedContent,
   isVisualComponent: true,
   thumbnail: 'unorderedlist-thumbnail.png',
   requires: '',
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'UnorderedListProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Other',
   defaultExample: {
     image: 'unorderedlist-default.png',
     codeblock: {

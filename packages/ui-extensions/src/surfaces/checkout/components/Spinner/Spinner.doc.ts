@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/Spinner';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Spinner',
-  description:
-    'Use `s-spinner` to let users know that content is being loaded. For loading states on buttons, use the loading prop on the `Button` component instead.',
+  ...sharedContent,
   requires: '',
   thumbnail: 'spinner-thumbnail.png',
   isVisualComponent: true,
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'SpinnerProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Feedback',
   defaultExample: {
     image: 'spinner-default.png',
     codeblock: {
