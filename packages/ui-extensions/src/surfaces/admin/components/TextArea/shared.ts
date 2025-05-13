@@ -22,7 +22,7 @@ const shared = {
   defaultExample: {
     image: 'textarea-default.png',
     codeblock: {
-      title: '',
+      title: 'Code',
       tabs: [
         {
           code: './examples/default.html',

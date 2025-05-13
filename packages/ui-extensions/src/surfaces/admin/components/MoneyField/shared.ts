@@ -27,7 +27,7 @@ const shared = {
   defaultExample: {
     image: 'moneyfield-default.png',
     codeblock: {
-      title: '',
+      title: 'Code',
       tabs: [
         {
           code: './examples/default.html',

@@ -46,7 +46,7 @@ Use \`s-section\` to organize your page content. Sections have defined styling, 
   defaultExample: {
     image: 'section-default.png',
     codeblock: {
-      title: '',
+      title: 'Code',
       tabs: [
         {
           code: './examples/default.html',
