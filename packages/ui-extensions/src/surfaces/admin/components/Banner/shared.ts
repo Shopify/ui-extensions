@@ -49,7 +49,7 @@ Banners placed inside a section will have styles applied contextually. They're u
   defaultExample: {
     image: 'banner-default.png',
     codeblock: {
-      title: '',
+      title: 'Code',
       tabs: [
         {
           code: './examples/default.html',

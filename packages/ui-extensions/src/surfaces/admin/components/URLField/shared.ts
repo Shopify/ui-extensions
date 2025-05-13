@@ -26,7 +26,7 @@ const shared = {
   defaultExample: {
     image: 'urlfield-default.png',
     codeblock: {
-      title: '',
+      title: 'Code',
       tabs: [
         {
           title: 'HTML',

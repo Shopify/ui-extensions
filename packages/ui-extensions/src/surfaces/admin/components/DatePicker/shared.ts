@@ -21,7 +21,7 @@ const shared = {
   related: [],
   defaultExample: {
     codeblock: {
-      title: '',
+      title: 'Code',
       tabs: [
         {
           code: './examples/default.html',

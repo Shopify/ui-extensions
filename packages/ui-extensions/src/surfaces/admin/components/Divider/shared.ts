@@ -33,7 +33,7 @@ const shared = {
   defaultExample: {
     image: 'divider-default.png',
     codeblock: {
-      title: '',
+      title: 'Code',
       tabs: [
         {
           code: './examples/default.html',
