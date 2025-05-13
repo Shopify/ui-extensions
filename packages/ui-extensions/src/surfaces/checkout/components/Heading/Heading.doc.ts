@@ -14,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'HeadingProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Titles and text',
   defaultExample: {
     image: 'heading-default.png',
     codeblock: {

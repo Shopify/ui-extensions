@@ -35,13 +35,14 @@ fi
 
 COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH --output ./$DOCS_PATH/generated"
 COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
+COMPILE_CATEGORIES="yarn tsc $DOCS_PATH/categories/*.doc.ts --moduleResolution node --target esNext --module CommonJS && pnpm exec generate-docs --isCategoryPage --input ./$DOCS_PATH/categories --output ./$DOCS_PATH/generated"
 
 # Rename components.d.ts to components.ts so it can be picked up be the generate-docs tool
 cp $COMPONENTS_DEFINITIONS $COMPONENTS_TS
 
 if echo "$PWD" | grep -q '\checkout-web'; then
   # We are generating docs from the private package, which does not have other surfaces aside from checkout
-  eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
+  eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES && eval $COMPILE_CATEGORIES
   build_exit=$?
 else
   # Other surfaces may have duplicate types that cause issues with documentation generation,
@@ -49,7 +50,7 @@ else
   echo "export {}" > src/surfaces/customer-account.ts
   echo "export {}" > src/surfaces/admin.ts
   echo "export {}" > src/surfaces/point-of-sale.ts
-  eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
+  eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES && eval $COMPILE_CATEGORIES
   build_exit=$?
   git checkout HEAD -- src/surfaces/customer-account.ts
   git checkout HEAD -- src/surfaces/admin.ts

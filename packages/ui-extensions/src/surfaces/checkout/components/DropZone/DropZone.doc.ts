@@ -1,10 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/DropZone';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'DropZone',
-  description: `DropZone allows file uploads through drag-and-drop functionality into a designated area on a page, or by activating a button. At present, DropZone does not offer image upload preview capabilities. The use of object URLs directly in an image component is not possible due to the extension and host operating on separate domains.
-    \n Any element focused within the Dropzone component, including child elements such as the 'Add file' button, will initiate the file selector when the Enter or Spacebar key is pressed.
-    `,
+  ...sharedContent,
   thumbnail: 'dropzone-thumbnail.png',
   requires: '',
   isVisualComponent: true,
@@ -16,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'DropZoneProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Forms',
   defaultExample: {
     image: 'dropzone-preview.png',
     altText:

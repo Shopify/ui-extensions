@@ -29,13 +29,6 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'tone',
-      title: 'Tone',
-      sectionContent:
-        '| Value | Description |\n| --- | --- |\n| <code>"critical"</code> | Conveys a problem has arisen. |',
-    },
-    {
-      type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent:

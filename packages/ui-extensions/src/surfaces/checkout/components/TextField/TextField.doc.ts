@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/TextField';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'TextField',
-  description:
-    'Use a text field to allow users to enter or edit text. Text fields provide a single-line input area for collecting string values from users.',
+  ...sharedContent,
   requires: '',
   thumbnail: 'textfield-thumbnail.png',
   isVisualComponent: true,
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'TextFieldProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Forms',
   defaultExample: {
     image: 'textfield-default.png',
     codeblock: {
