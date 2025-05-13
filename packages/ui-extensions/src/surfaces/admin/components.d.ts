@@ -1,4 +1,4 @@
-/** VERSION: 0.51.1 **/
+/** VERSION: 0.51.2 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -419,6 +419,7 @@ declare const privateIconArray: readonly [
   'phone-out',
   'phone',
   'pin',
+  'pin-remove',
   'plan',
   'play-circle',
   'play',
@@ -573,6 +574,25 @@ declare const privateIconArray: readonly [
   'x',
 ];
 export type IconType = (typeof privateIconArray)[number];
+/**
+ * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
+ */
+export type ExtractStrict<T, U extends T> = Extract<T, U>;
+export type MaybeAllValuesShorthandProperty<T extends string> =
+  | T
+  | `${T} ${T}`
+  | `${T} ${T} ${T}`
+  | `${T} ${T} ${T} ${T}`;
+export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
+/**
+ * Prevents widening string literal types in a union to `string`.
+ * @example
+ * type PropName = 'foo' | 'bar' | string
+ * //   ^? string
+ * type PropName = 'foo' | 'bar' | (string & {})
+ * //   ^? 'foo' | 'bar' | (string & {})
+ */
+export type AnyString = string & {};
 interface BadgeProps$1 extends GlobalProps {
   /**
    * The content of the Badge.
@@ -595,7 +615,7 @@ interface BadgeProps$1 extends GlobalProps {
    *
    * @default ''
    */
-  icon?: IconType;
+  icon?: IconType | AnyString;
   /**
    * The position of the icon in relation to the text.
    */
@@ -725,25 +745,6 @@ interface BannerProps$1 extends GlobalProps, ActionSlots, ContainerProps {
    */
   hidden?: boolean;
 }
-/**
- * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
- */
-export type ExtractStrict<T, U extends T> = Extract<T, U>;
-export type MaybeAllValuesShorthandProperty<T extends string> =
-  | T
-  | `${T} ${T}`
-  | `${T} ${T} ${T}`
-  | `${T} ${T} ${T} ${T}`;
-export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
-/**
- * Prevents widening string literal types in a union to `string`.
- * @example
- * type PropName = 'foo' | 'bar' | string
- * //   ^? string
- * type PropName = 'foo' | 'bar' | (string & {})
- * //   ^? 'foo' | 'bar' | (string & {})
- */
-export type AnyString = string & {};
 export interface DisplayProps {
   /**
    * Sets the outer display type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
@@ -1294,7 +1295,17 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
    *
    * @default ''
    */
-  icon?: IconType;
+  icon?: IconType | AnyString;
+  /**
+   * The displayed inline width of the button.
+   *
+   * `auto`: the size of the button depends on the surface and context.
+   * `fill`: the button will takes up 100% of the available inline-size.
+   * `fit-content`: the button will take up the minimum inline-size required to fit its content.
+   *
+   * @default 'auto'
+   */
+  inlineSize?: 'auto' | 'fill' | 'fit-content';
   /**
    * Changes the visual appearance of the Button.
    *
@@ -1439,7 +1450,7 @@ export interface FieldDecorationProps {
    *
    * @default ''
    */
-  icon?: IconType;
+  icon?: IconType | AnyString;
   /**
    * Additional content to be displayed in the field.
    * Commonly used to display an icon that activates a tooltip providing more information.
@@ -2345,9 +2356,9 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
    * The rendering of the image will depend on the `inlineSize` value:
    *
    * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
-   * - `inlineSize="auto"`: the image will not render until it has loaded and at this point, it will respect the aspect ratio specified.
+   * - `inlineSize="auto"`: the image will not render until it has loaded and the aspect ratio will be ignored.
    *
-   * Getters for this value should return `auto` or the ratio in `number / number` form. Input fractions should not be ‘simplified’.
+   * @implementation Getters for this value should return `auto` or the ratio in `number / number` form. Input fractions should not be ‘simplified’.
    * For example, if the value is set as `50 /    100`, the getter returns `50 / 100`.
    * If the value is set as `0.5`, the getter returns `0.5 / 1`.
    *
@@ -3405,6 +3416,7 @@ type IconType$1 =
   | 'phone-in'
   | 'phone-out'
   | 'pin'
+  | 'pin-remove'
   | 'plan'
   | 'play'
   | 'play-circle'
