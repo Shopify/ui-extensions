@@ -32,13 +32,6 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       type: 'Generic',
-      anchorLink: 'tone',
-      title: 'Tone',
-      sectionContent:
-        '| Value | Description |\n| --- | --- |\n| <code>"info"</code> | Conveys that the element is informative or has information. |\n| <code>"success"</code> | Convey a successful interaction. |\n| <code>"warning"</code> | Convey something needs attention or an action needs to be taken. |\n| <code>"critical"</code> | Conveys a problem has arisen. |',
-    },
-    {
-      type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent:
