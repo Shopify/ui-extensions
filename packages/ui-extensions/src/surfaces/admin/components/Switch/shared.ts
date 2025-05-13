@@ -31,7 +31,7 @@ const shared = {
   ],
   defaultExample: {
     codeblock: {
-      title: '',
+      title: 'Code',
       tabs: [
         {
           code: './examples/default.html',

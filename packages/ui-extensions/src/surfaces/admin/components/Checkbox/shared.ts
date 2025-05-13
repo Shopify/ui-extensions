@@ -32,7 +32,7 @@ const shared = {
   defaultExample: {
     image: 'checkbox-default.png',
     codeblock: {
-      title: '',
+      title: 'Code',
       tabs: [
         {
           code: './examples/default.html',

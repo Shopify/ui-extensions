@@ -27,7 +27,7 @@ const shared = {
   defaultExample: {
     image: 'choicelist-default.png',
     codeblock: {
-      title: '',
+      title: 'Code',
       tabs: [
         {
           code: './examples/default.html',

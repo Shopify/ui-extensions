@@ -20,7 +20,7 @@ const shared = {
   defaultExample: {
     image: 'ordered-list-default.png',
     codeblock: {
-      title: '',
+      title: 'Code',
       tabs: [
         {
           code: './examples/default.html',
