@@ -1,6 +1,6 @@
 import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
-const sharedContent: SharedReferenceEntityTemplateSchema = {
+const data: SharedReferenceEntityTemplateSchema = {
   name: 'ClipboardItem',
   description: `
   This component is used alongside a \`Button\` or \`Link\` component to facilitate writing to the user's clipboard.
@@ -13,4 +13,4 @@ const sharedContent: SharedReferenceEntityTemplateSchema = {
   subCategory: 'utilities',
 };
 
-export default sharedContent;
+export default data;
