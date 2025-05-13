@@ -41,7 +41,7 @@ interface PickerOptions {
 export type Tone = 'info' | 'success' | 'warning' | 'critical';
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 type DataPoint = string | number | undefined;
-interface Badge {
+interface PickerBadge {
   content: string;
   tone?: Tone;
   progress?: Progress;
@@ -72,7 +72,7 @@ interface Item {
   /**
    * The badges to display in the first column of the row. These are used to display additional information about the item, such as progress of an action or tone indicating the status of that item.
    */
-  badges?: Badge[];
+  badges?: PickerBadge[];
   /**
    * The thumbnail to display at the start of the row. This is used to display an image or icon for the item.
    */
