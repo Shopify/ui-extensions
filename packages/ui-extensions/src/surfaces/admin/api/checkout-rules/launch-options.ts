@@ -6,7 +6,6 @@ interface Metafield {
   value: string;
   type: string;
 }
-
 interface Validation {
   /**
    * the validation's gid when active in a shop

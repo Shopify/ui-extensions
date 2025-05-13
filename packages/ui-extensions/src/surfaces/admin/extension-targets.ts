@@ -10,6 +10,7 @@ import type {
   OrderRoutingRuleApi,
   ValidationSettingsApi,
   PurchaseOptionsCardConfigurationApi,
+  DiscountFunctionSettingsApi,
 } from './api';
 import {
   ShouldRenderApi,
@@ -56,7 +57,7 @@ export interface ExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.discount-details.function-settings.render': RenderExtension<
-    BlockExtensionApi<'admin.discount-details.function-settings.render'>,
+    DiscountFunctionSettingsApi<'admin.discount-details.function-settings.render'>,
     BlockExtensionComponents
   >;
 
@@ -465,7 +466,7 @@ export interface ExtensionTargets {
    */
   'admin.product-details.configuration.render': RenderExtension<
     ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>,
-    StandardComponents
+    BlockExtensionComponents
   >;
 
   /**
@@ -475,7 +476,7 @@ export interface ExtensionTargets {
    */
   'admin.product-variant-details.configuration.render': RenderExtension<
     ProductVariantDetailsConfigurationApi<'admin.product-variant-details.configuration.render'>,
-    StandardComponents
+    BlockExtensionComponents
   >;
 
   /**
