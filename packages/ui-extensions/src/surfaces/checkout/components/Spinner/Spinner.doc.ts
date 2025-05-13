@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'spinner-default.png',
+    image: 'spinner-default.mp4',
     codeblock: {
       title: 'Default example',
       tabs: [
