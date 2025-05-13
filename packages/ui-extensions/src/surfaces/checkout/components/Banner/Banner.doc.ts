@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/Banner';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Banner',
-  description:
-    'Use `s-banner` to communicate important status updates or indicate that there are important actions that users must take. \n\n You can use banners both as a standalone component on a page or inside of a `s-section`.',
+  ...sharedContent,
   isVisualComponent: true,
   thumbnail: 'banner-thumbnail.png',
   requires: '',
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'BannerProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Feedback',
   defaultExample: {
     image: 'banner-default.png',
     codeblock: {

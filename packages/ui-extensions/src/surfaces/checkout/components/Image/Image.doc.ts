@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/Image';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Image',
-  description:
-    'Use `s-image` when you want to display an image. \n\n When using images or illustrations in your app, ensure that they add clarity and clearly direct users to the next step. Make sure to use high-resolution images to ensure a professional, high-quality experience.',
+  ...sharedContent,
   thumbnail: 'image-thumbnail.png',
   requires: '',
   isVisualComponent: true,
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ImageProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Media',
   defaultExample: {
     image: 'image-default.png',
     codeblock: {

@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/Button';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Button',
-  description:
-    'Use `s-button` when you want to provide users the ability to perform specific actions, submitting forms, or opening dialogs.',
+  ...sharedContent,
   thumbnail: 'button-thumbnail.png',
   requires: '',
   isVisualComponent: true,
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ButtonProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Actions',
   defaultExample: {
     image: 'button-default.png',
     codeblock: {

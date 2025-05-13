@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/Abbreviation';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Abbreviation',
-  description:
-    'A text that represents an abbreviation or acronym. Abbreviation has an inline layout. Surfaces may apply styling to this component.',
+  ...sharedContent,
   isVisualComponent: true,
   thumbnail: 'abbreviation-thumbnail.png',
   requires: '',
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'AbbreviationProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Titles and text',
   defaultExample: {
     image: 'abbreviation-default.png',
     codeblock: {

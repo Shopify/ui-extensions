@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/OrderedList';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'OrderedList',
-  description:
-    '`s-ordered-list` displays a set of related text-only content beginning with a number.',
+  ...sharedContent,
   isVisualComponent: true,
   thumbnail: 'orderedlist-thumbnail.png',
   requires: '',
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'OrderedListProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Other',
   defaultExample: {
     image: 'orderedlist-default.png',
     codeblock: {

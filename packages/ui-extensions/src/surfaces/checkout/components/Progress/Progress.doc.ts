@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/Progress';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Progress',
-  description:
-    'Progress displays a progress bar in determinate or indeterminate state.',
+  ...sharedContent,
   requires: '',
   isVisualComponent: true,
   thumbnail: 'progress-thumbnail.png',
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ProgressProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Feedback',
   defaultExample: {
     image: 'progress-default.png',
     codeblock: {
