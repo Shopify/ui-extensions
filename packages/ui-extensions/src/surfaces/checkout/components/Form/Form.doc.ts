@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/Form';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Form',
-  description:
-    'The form component should be used to wrap one or more form controls. This component provides an "implicit submit" behavior, where customers can submit the form from any input by pressing "Enter" on their keyboards. This behavior is widely expected, and should be respected as often as possible.\n\nUnlike an HTML `form` element, this component does not support configuring the descendant fields to be submitted via HTTP automatically. Instead, you must provide an `onSubmit` callback that will perform the necessary HTTP requests in JavaScript.',
+  ...sharedContent,
   thumbnail: 'form-thumbnail.png',
   requires: '',
   isVisualComponent: true,
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'FormProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Forms',
   defaultExample: {
     image: 'form-default.png',
     codeblock: {

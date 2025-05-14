@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/Link';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Link',
-  description:
-    '`s-link` is an interactive component that directs users to a specified URL. It even supports custom protocols.',
+  ...sharedContent,
   requires: '',
   isVisualComponent: true,
   thumbnail: 'link-thumbnail.png',
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'LinkProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Actions',
   defaultExample: {
     image: 'link-default.png',
     codeblock: {

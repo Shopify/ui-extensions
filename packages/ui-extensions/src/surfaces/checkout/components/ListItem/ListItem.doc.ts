@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/ListItem';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'ListItem',
-  description:
-    'List items are used as children of the `UnorderedList` or `OrderedList` component.',
+  ...sharedContent,
   requires: '',
   thumbnail: 'listitem-thumbnail.png',
   isVisualComponent: true,
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ListItemProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Other',
   defaultExample: {
     image: 'listitem-default.png',
     codeblock: {

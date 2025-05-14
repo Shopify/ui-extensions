@@ -1,9 +1,8 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import sharedContent from '../../../../docs/shared/components/Paragraph';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'Paragraph',
-  description:
-    'Use `s-paragraph` to display a block of text similar to the `<p>` tag in HTML.',
+  ...sharedContent,
   requires: '',
   thumbnail: 'paragraph-thumbnail.png',
   isVisualComponent: true,
@@ -15,8 +14,6 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ParagraphProps',
     },
   ],
-  category: 'Components',
-  subCategory: 'Titles and text',
   defaultExample: {
     image: 'paragraph-default.png',
     codeblock: {
@@ -30,13 +27,6 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'tone',
-      title: 'Tone',
-      sectionContent:
-        '| Value | Description |\n| --- | --- |\n| <code>"info"</code> | Conveys that the element is informative or has information. |\n| <code>"success"</code> | Convey a successful interaction. |\n| <code>"warning"</code> | Convey something needs attention or an action needs to be taken. |\n| <code>"critical"</code> | Conveys a problem has arisen. |',
-    },
     {
       type: 'Generic',
       anchorLink: 'best-practices',
