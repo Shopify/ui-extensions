@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'ImageGroupProps',
     },
   ],
-  category: 'components',
+  category: 'Polaris web components',
   defaultExample: {
     image: 'imagegroup-preview.png',
     altText:
