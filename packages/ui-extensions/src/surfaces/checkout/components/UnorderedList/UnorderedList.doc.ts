@@ -1,5 +1,6 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import sharedContent from '../../../../docs/shared/components/UnorderedList';
+import listItemSharedContent from '../../../../docs/shared/components/ListItem';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
@@ -12,6 +13,11 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Properties',
       description: '',
       type: 'UnorderedListProps',
+    },
+    {
+      title: listItemSharedContent.name,
+      description: listItemSharedContent.description,
+      type: 'ListItemProps',
     },
   ],
   defaultExample: {
@@ -31,22 +37,13 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best Practices',
-      sectionContent:
-        '- Use UnorderedList when you need to present a list of related items or options.\n\n- Each item in the list should be wrapped in a ListItem component.\n\n- Keep list items concise and consistent in length when possible.\n\n- Use UnorderedList for navigation menus, feature lists, or any collection of related items.\n\n- Consider using UnorderedList when you want to present information in a clear, scannable format.',
-    },
-  ],
-  related: [
-    {
-      subtitle: 'Related components',
-      name: 'ListItem',
-      url: 'listitem',
-      type: 'component',
-    },
-    {
-      subtitle: 'Related components',
-      name: 'OrderedList',
-      url: 'orderedlist',
-      type: 'component',
+      sectionContent: `
+        - Use \`s-unordered-list\` when you need to present a list of related items or options.
+        - Each item in the list should be wrapped in a \`s-list-item\` component.
+        - Keep list items concise and consistent in length when possible.
+        - Use \`s-unordered-list\` for navigation menus, feature lists, or any collection of related items.
+        - Consider using \`s-unordered-list\` when you want to present information in a clear, scannable format.
+      `,
     },
   ],
 };

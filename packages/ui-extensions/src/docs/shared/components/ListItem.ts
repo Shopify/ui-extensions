@@ -3,9 +3,10 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'ListItem',
   description:
-    'List items are used as children of the `UnorderedList` or `OrderedList` component.',
+    'Use `s-list-item` as children of the `s-unordered-list` or `s-ordered-list` component.',
   category: 'Polaris web components',
   subCategory: 'Structure',
+  related: [],
 };
 
 export default data;
