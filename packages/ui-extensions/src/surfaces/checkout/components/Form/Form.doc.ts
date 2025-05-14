@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'form-default.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-form.example.html',
@@ -31,11 +31,12 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best Practices',
-      sectionContent:
-        '- Wrap around all form input elements.\n\n- Forms can have only one submit button and it must be at the end of the form.',
+      sectionContent: `
+        - Wrap around all form input elements.
+        - Forms can have only one submit button and it must be at the end of the form.
+      `,
     },
   ],
-  related: [],
 };
 
 export default data;

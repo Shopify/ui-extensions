@@ -1,27 +1,27 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import sharedContent from '../../../../docs/shared/components/Image';
+import sharedContent from '../../../../docs/shared/components/PaymentIcon';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  thumbnail: 'image-thumbnail.png',
+  thumbnail: 'paymenticon-thumbnail.png',
   requires: '',
   isVisualComponent: true,
   type: '',
   definitions: [
     {
-      title: 'ImageProps',
+      title: 'Properties',
       description: '',
-      type: 'ImageProps',
+      type: 'PaymentIconProps',
     },
   ],
   defaultExample: {
-    image: 'image-default.png',
+    image: 'paymenticon-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-image.example.html',
-          language: '',
+          code: './examples/basic-paymenticon.example.html',
+          language: 'html',
         },
       ],
     },

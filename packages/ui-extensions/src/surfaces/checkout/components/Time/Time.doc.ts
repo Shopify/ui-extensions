@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'time-default.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-time.example.html',
@@ -33,14 +33,6 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best Practices',
       sectionContent:
         '- Use Time component for displaying time values to ensure consistent formatting.\n\n- Provide time values in a clear, readable format.\n\n- Consider using 24-hour format for international audiences.\n\n- Include timezone information when relevant.\n\n- Use Time component for any time-related content to maintain semantic meaning.',
-    },
-  ],
-  related: [
-    {
-      subtitle: 'Related components',
-      name: 'Paragraph',
-      url: 'paragraph',
-      type: 'component',
     },
   ],
 };

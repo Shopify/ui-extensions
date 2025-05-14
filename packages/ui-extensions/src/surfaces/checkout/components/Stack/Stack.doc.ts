@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'stack-default.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-stack.example.html',
@@ -35,7 +35,6 @@ const data: ReferenceEntityTemplateSchema = {
         '- Use Stack when you need to arrange elements vertically or horizontally with consistent spacing.\n\n- Stack is particularly useful for forms, lists, and any content that needs to flow vertically or horizontally.\n\n- Consider using Stack when you need to maintain consistent rhythm between elements in a single direction.',
     },
   ],
-  related: [],
 };
 
 export default data;

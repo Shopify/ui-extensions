@@ -23,7 +23,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'orderedlist-default.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-orderedlist.example.html',
