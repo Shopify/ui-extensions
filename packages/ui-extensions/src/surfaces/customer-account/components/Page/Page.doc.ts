@@ -33,7 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_Page_Button_BreadcrumbAction',
     },
   ],
-  category: 'components',
+  category: 'Polaris web components',
   defaultExample: {
     image: 'page-preview.png',
     altText:

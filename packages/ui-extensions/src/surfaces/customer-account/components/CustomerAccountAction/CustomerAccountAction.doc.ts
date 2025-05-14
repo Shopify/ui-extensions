@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Docs_CustomerAccountAction_Button_SecondaryAction',
     },
   ],
-  category: 'components',
+  category: 'Polaris web components',
   defaultExample: {
     image: 'customeraccountaction-preview.png',
     altText:
