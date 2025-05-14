@@ -2,7 +2,8 @@ const shared = {
   name: 'DatePicker',
   description:
     'Use a date picker to allow merchants to select a date or a date range.',
-  thumbnail: 'datepicker-thumbnail.png',
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/datepicker.png',
   isVisualComponent: true,
   definitions: [
     {

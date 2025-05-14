@@ -15,7 +15,7 @@ const shared = {
   - Use smaller gaps between small elements and larger gaps between big ones.
   - Maintain consistent spacing in stacks across all pages of your app.
   `,
-  thumbnail: 'stack-thumbnail.png',
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/stack.png',
   isVisualComponent: true,
   definitions: [
     {

@@ -2,7 +2,8 @@ const shared = {
   name: 'ChoiceList',
   description:
     'Use `s-choice-list` to present multiple options to merchants. Choice lists can present options with either radio buttons for single selection or checkboxes for multiple selection.',
-  thumbnail: 'choicelist-thumbnail.png',
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/choicelist.png',
   isVisualComponent: true,
   definitions: [
     {

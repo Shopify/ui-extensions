@@ -15,7 +15,8 @@ const shared = {
   - Don't duplicate content.
 
   `,
-  thumbnail: 'paragraph-thumbnail.png',
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/paragraph.png',
   isVisualComponent: true,
   definitions: [
     {

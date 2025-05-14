@@ -2,7 +2,8 @@ const shared = {
   name: 'OrderedList',
   description:
     '`s-ordered-list` displays a set of related text-only content beginning with a number.',
-  thumbnail: 'ordered-list-thumbnail.png',
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/ordered-list.png',
   isVisualComponent: true,
   subCategory: 'Structure',
   related: [
