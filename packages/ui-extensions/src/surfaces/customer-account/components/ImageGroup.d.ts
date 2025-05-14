@@ -6,17 +6,22 @@ export interface ImageGroupProps {
   totalItems?: number;
 }
 
+export interface ImageGroupElement extends HTMLElement, ImageGroupProps {}
+
 declare global {
   interface HTMLElementTagNameMap {
-    ['s-image-group']: HTMLElement & ImageGroupProps;
+    ['s-image-group']: ImageGroupElement;
   }
 }
 
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+  }
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace createElement.JSX {
     interface IntrinsicElements {
-      ['s-image-group']: HTMLAttributes<HTMLElement> & ImageGroupProps;
+      ['s-image-group']: BaseProps & ImageGroupProps;
     }
   }
 }
