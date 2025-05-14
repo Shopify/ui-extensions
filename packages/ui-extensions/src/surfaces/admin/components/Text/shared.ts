@@ -15,7 +15,7 @@ const shared = {
 
 `,
 
-  thumbnail: 'text-thumbnail.png',
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/text.png',
   isVisualComponent: true,
   definitions: [
     {

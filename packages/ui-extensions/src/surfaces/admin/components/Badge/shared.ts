@@ -2,7 +2,7 @@ const shared = {
   name: 'Badge',
   description:
     "Use `s-badge` to inform merchants of the status of an object or of an action that's been taken.",
-  thumbnail: 'badge-thumbnail.png',
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/badge.png',
   isVisualComponent: true,
   definitions: [
     {

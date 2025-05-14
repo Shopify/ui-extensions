@@ -8,7 +8,7 @@ const shared = {
   - Setting up specific stylings such as background colors, paddings, and borders.
   - Nesting with other components.
     `,
-  thumbnail: 'box-thumbnail.png',
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/box.png',
   isVisualComponent: true,
   definitions: [
     {

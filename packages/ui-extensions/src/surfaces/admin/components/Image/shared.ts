@@ -12,7 +12,7 @@ const shared = {
   - Use images intentionally, these should add clarity and lead users to the next step.
 
   `,
-  thumbnail: 'image-thumbnail.png',
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/image.png',
   isVisualComponent: true,
   definitions: [
     {

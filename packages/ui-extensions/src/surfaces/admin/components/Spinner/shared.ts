@@ -2,7 +2,7 @@ const shared = {
   name: 'Spinner',
   description:
     'Use `s-spinner` to let merchants know that content is being loaded. For loading states on buttons, use the loading prop on the Button component instead.',
-  thumbnail: 'spinner-thumbnail.png',
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/spinner.png',
   isVisualComponent: true,
   definitions: [
     {

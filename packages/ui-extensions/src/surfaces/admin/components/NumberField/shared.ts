@@ -2,7 +2,8 @@ const shared = {
   name: 'NumberField',
   description:
     'Use `s-number-field` when you need to collect numerical input from merchants. It provides appropriate keyboard settings and validation for numerical values.',
-  thumbnail: 'numberfield-thumbnail.png',
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/numberfield.png',
   isVisualComponent: true,
   definitions: [
     {

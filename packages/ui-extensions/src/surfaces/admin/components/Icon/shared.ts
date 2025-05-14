@@ -2,7 +2,7 @@ const shared = {
   name: 'Icon',
   description:
     'Use `s-icon` to render an icon from a predefined list. Choose the one that suits your needs.',
-  thumbnail: 'icon-thumbnail.png',
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/icon.png',
   isVisualComponent: true,
   definitions: [
     {

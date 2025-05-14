@@ -5,7 +5,8 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     '`s-admin-print-action` is a component used by admin print action extensions to denote a URL to print. Admin print action extensions require the use of this component.',
   requires: '',
-  thumbnail: 'adminprintaction-thumbnail.png',
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/adminprintaction.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -18,7 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Other',
   defaultExample: {
-    image: 'adminprintaction-default.png',
+    image:
+      '/assets/templated-apis-screenshots/admin/components/adminprintaction-example.png',
     codeblock: {
       title: '',
       tabs: [

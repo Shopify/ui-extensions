@@ -13,7 +13,7 @@ const shared = {
   - Grid will always wrap children to a new line. If you need to control the wrapping behavior, use \`s-stack\` or \`s-box\`.
  `,
 
-  thumbnail: 'grid-thumbnail.png',
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/grid.png',
   isVisualComponent: true,
   definitions: [
     {

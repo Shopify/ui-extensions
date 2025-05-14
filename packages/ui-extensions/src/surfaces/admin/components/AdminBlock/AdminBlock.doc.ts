@@ -5,7 +5,8 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     '`s-admin-block` is similar to the AdminBlock, providing a deeper integration with the container your UI is rendered into. However, this only applies to Block Extensions which render inline on a resource page.',
   requires: '',
-  thumbnail: 'adminblock-thumbnail.png',
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/adminblock.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -18,7 +19,8 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Other',
   defaultExample: {
-    image: 'adminblock-default.png',
+    image:
+      '/assets/templated-apis-screenshots/admin/components/adminblock-example.png',
     codeblock: {
       title: '',
       tabs: [

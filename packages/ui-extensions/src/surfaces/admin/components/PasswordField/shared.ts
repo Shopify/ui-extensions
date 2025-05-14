@@ -2,7 +2,8 @@ const shared = {
   name: 'PasswordField',
   description:
     'Use `s-password-field` when you need to collect sensitive information from merchants.',
-  thumbnail: 'password-field-thumbnail.png',
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/passwordfield.png',
   isVisualComponent: true,
   definitions: [
     {

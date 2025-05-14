@@ -9,7 +9,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   - Creating flexible, responsive page layouts.
   `,
   requires: '',
-  thumbnail: 'page-thumbnail.png',
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/page.png',
   isVisualComponent: true,
   type: 'component',
   definitions: [

@@ -5,7 +5,8 @@ const data: ReferenceEntityTemplateSchema = {
   description:
     'Use `s-admin-action` to configure a primary and secondary action and title. Use of this component is required in order to use Admin action extensions.',
   requires: '',
-  thumbnail: 'adminaction-thumbnail.png',
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/adminaction.png',
   isVisualComponent: true,
   type: '',
   definitions: [
@@ -23,7 +24,8 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Polaris web components',
   subCategory: 'Other',
   defaultExample: {
-    image: 'adminaction-default.png',
+    image:
+      '/assets/templated-apis-screenshots/admin/components/adminaction-example.png',
     codeblock: {
       title: '',
       tabs: [
