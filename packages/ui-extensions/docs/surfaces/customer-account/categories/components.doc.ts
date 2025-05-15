@@ -14,7 +14,7 @@ const data: CategoryTemplateSchema = {
           type: 'blocks',
           name: 'Checkout components',
           subtitle: 'More components',
-          url: '/docs/api/checkout-ui-extensions/components',
+          url: '/docs/api/checkout-ui-extensions/polaris-web-components',
         },
       ],
     },
