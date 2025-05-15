@@ -1,18 +1,24 @@
 const shared = {
   name: 'Grid',
-  description: `
-  Use \`s-grid\` to organize your content in a matrix of rows and columns and make responsive layouts for pages. Grid follows the same pattern as the [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout).
-
-  #### Useful for:
-  - Organizing content into a grid-like layout with columns and rows with consistent alignment and spacing.
-  - Creating responsive layouts with consistent spacing.
-
-  #### Considerations
-  - Grid doesn't include any padding by default. If you need padding around your grid, use \`base\` to apply the default padding.
-  - Grid will allow children to overflow unless template rows/columns are properly set.
-  - Grid will always wrap children to a new line. If you need to control the wrapping behavior, use \`s-stack\` or \`s-box\`.
- `,
-
+  description:
+    'Use `s-grid` to organize your content in a matrix of rows and columns and make responsive layouts for pages. Grid follows the same pattern as the [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout).',
+  subSections: [
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Organizing content into a grid-like layout with columns and rows with consistent alignment and spacing.
+- Creating responsive layouts with consistent spacing.`,
+    },
+    {
+      title: 'Considerations',
+      type: 'Generic' as const,
+      anchorLink: 'considerations',
+      sectionContent: `- Grid doesn't include any padding by default. If you need padding around your grid, use \`base\` to apply the default padding.
+- Grid will allow children to overflow unless template rows/columns are properly set.
+- Grid will always wrap children to a new line. If you need to control the wrapping behavior, use \`s-stack\` or \`s-box\`.`,
+    },
+  ],
   thumbnail: '/assets/templated-apis-screenshots/admin/components/grid.png',
   isVisualComponent: true,
   definitions: [
