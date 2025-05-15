@@ -1,0 +1,8 @@
+{
+  "mode": "pre",
+  "tag": "rc",
+  "initialVersions": {
+    "@shopify/ui-extensions": "2025.10.0-rc.0"
+  },
+  "changesets": []
+}
