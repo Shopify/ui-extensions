@@ -13,6 +13,7 @@ const shared = {
   ],
   thumbnail: '/assets/templated-apis-screenshots/admin/components/divider.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',

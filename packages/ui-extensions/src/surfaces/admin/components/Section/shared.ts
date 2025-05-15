@@ -3,6 +3,7 @@ const shared = {
   description:
     'Use `s-section` to organize your page content. Sections have defined styling, and will display differently depending on how deeply they are nested in the page.',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/section.png',
   subSections: [
     {

@@ -4,6 +4,7 @@ const shared = {
     "Use `s-heading` to create hierarchical titles similar to HTML's `h1-h6` elements.",
   thumbnail: '/assets/templated-apis-screenshots/admin/components/heading.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   subSections: [
     {
       title: 'Useful for',

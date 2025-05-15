@@ -3,6 +3,7 @@ const shared = {
   description: 'Use a URLField when you need to collect URLs from merchants.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/urlfield.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'URLField',

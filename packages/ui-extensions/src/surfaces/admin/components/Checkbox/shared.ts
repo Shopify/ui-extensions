@@ -4,6 +4,7 @@ const shared = {
     'Use `s-checkbox` when you want to provide users with a clear selection option, such as for agreeing to terms and conditions or selecting multiple options from a list.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/checkbox.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',

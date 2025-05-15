@@ -4,6 +4,7 @@ const shared = {
     'Use `s-banner` to communicate important status updates or required actions that users must take. Banners will automatically adjust their design to match the context in which they are used.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/banner.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   subSections: [
     {
       title: 'Outside of a section',

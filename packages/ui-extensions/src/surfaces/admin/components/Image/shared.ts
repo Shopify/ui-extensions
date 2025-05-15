@@ -3,6 +3,7 @@ const shared = {
   description: 'Use `s-image` to display images in your app.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/image.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   subSections: [
     {
       title: 'Useful for',

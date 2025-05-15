@@ -4,6 +4,7 @@ const shared = {
     "Use `s-text` for inline text styling, similar to HTML's span elements. When adding an icon inside `s-text`, it automatically adopts the tone of the text.",
   thumbnail: '/assets/templated-apis-screenshots/admin/components/text.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   subSections: [
     {
       title: 'Useful for',

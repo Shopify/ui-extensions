@@ -4,6 +4,7 @@ const shared = {
     'Use `s-box` to build custom interfaces with your own design language.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/box.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   subSections: [
     {
       title: 'Useful for',

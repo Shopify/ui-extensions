@@ -4,6 +4,7 @@ const shared = {
     'Use `s-icon` to render an icon from a predefined list. Choose the one that suits your needs.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/icon.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',

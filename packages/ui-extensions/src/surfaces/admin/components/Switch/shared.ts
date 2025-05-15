@@ -4,6 +4,7 @@ const shared = {
     'Use `s-switch` when you want to provide users with a clear selection option, such as toggling options on/off.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/switch.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',
