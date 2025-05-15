@@ -31,4 +31,9 @@ export interface Session {
    * The currency code associated with the location currently in on POS.
    */
   currency: CurrencyCode;
+
+  /**
+   * The POS version.
+   */
+  posVersion: string;
 }
