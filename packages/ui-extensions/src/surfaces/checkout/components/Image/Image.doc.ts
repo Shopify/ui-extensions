@@ -9,7 +9,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'ImageProps',
+      title: 'Properties',
       description: '',
       type: 'ImageProps',
     },
