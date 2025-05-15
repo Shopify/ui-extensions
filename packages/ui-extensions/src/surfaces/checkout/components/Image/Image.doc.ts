@@ -9,7 +9,7 @@ const data: ReferenceEntityTemplateSchema = {
   type: '',
   definitions: [
     {
-      title: 'ImageProps',
+      title: 'Properties',
       description: '',
       type: 'ImageProps',
     },
@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'image-default.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-image.example.html',
@@ -26,16 +26,6 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  subSections: [
-    {
-      type: 'Generic',
-      anchorLink: 'loading',
-      title: 'Loading',
-      sectionContent:
-        '| Value | Description |\n| --- | --- |\n| <code>"eager"</code> | Image is loaded immediately, regardless of whether or not the image is currently within the visible viewport. |\n| <code>"lazy"</code> | Image is loaded when it’s within the visible viewport. |',
-    },
-  ],
-  related: [],
 };
 
 export default data;

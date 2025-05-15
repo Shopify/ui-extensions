@@ -19,7 +19,7 @@ const data: ReferenceEntityTemplateSchema = {
     altText:
       'An image showcasing the DropZone component with a button to add files with error and dragged over states.',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-dropzone.example.html',
@@ -52,7 +52,6 @@ To prevent cut-off text and spacing issues, the minimum size of a Dropzone shoul
       `,
     },
   ],
-  related: [],
 };
 
 export default data;

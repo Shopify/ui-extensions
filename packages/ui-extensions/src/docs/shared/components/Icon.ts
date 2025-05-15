@@ -1,15 +1,15 @@
 import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
-  name: 'Progress',
+  name: 'Icon',
   description:
-    'Progress displays a progress bar in determinate or indeterminate state.',
+    'Icons are pictograms or graphic symbols. They can act as wayfinding tools or as a means of communicating functionality.',
   category: 'Polaris web components',
-  subCategory: 'Feedback',
+  subCategory: 'Media',
   related: [
     {
-      name: 'Spinner',
-      url: 'spinner',
+      name: 'PaymentIcon',
+      url: 'paymenticon',
       type: 'Component',
     },
   ],

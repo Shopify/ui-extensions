@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'text-default.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-text.example.html',
@@ -33,20 +33,6 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best Practices',
       sectionContent:
         '- Create contrast between more and less important text with properties such as `color`.',
-    },
-  ],
-  related: [
-    {
-      name: 'Heading',
-      subtitle: 'Component',
-      url: 'heading',
-      type: 'Component',
-    },
-    {
-      name: 'Paragraph',
-      subtitle: 'Component',
-      url: 'paragraph',
-      type: 'Component',
     },
   ],
 };

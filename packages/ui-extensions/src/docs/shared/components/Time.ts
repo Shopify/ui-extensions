@@ -6,6 +6,18 @@ const data: SharedReferenceEntityTemplateSchema = {
     'Represents a specific period in time. It may include the datetime attribute to translate dates into machine-readable format.',
   category: 'Polaris web components',
   subCategory: 'Titles and text',
+  related: [
+    {
+      name: 'Text',
+      url: 'text',
+      type: 'Component',
+    },
+    {
+      name: 'Paragraph',
+      url: 'paragraph',
+      type: 'Component',
+    },
+  ],
 };
 
 export default data;

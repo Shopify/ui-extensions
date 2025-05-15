@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'link-default.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-link.example.html',
@@ -31,16 +31,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best Practices',
-      sectionContent:
-        '- Use links primarily for navigation and use buttons primarily for actions.\n\n- The HTML that renders for the Button and `Link` components includes style and accessibility information. Use these components intentionally and consistently to provide a more inclusive experience for assistive technology users and a more cohesive visual experience for sighted users.',
-    },
-  ],
-  related: [
-    {
-      name: 'Button',
-      subtitle: 'Component',
-      url: 'button',
-      type: 'Component',
+      sectionContent: `
+        - Use links primarily for navigation and use buttons primarily for actions.
+        - The HTML that renders for the \`s-button\` and \`s-link\` components includes style and accessibility information. Use these components intentionally and consistently to provide a more inclusive experience for assistive technology users and a more cohesive visual experience for sighted users.
+      `,
     },
   ],
 };

@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'spinner-default.gif',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-spinner.example.html',
@@ -27,14 +27,6 @@ const data: ReferenceEntityTemplateSchema = {
     },
   },
   subSections: [],
-  related: [
-    {
-      name: 'Progress',
-      subtitle: 'Component',
-      url: 'progress',
-      type: 'Component',
-    },
-  ],
 };
 
 export default data;

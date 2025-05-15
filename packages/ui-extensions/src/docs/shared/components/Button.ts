@@ -6,6 +6,13 @@ const data: SharedReferenceEntityTemplateSchema = {
     'Use `s-button` when you want to provide users the ability to perform specific actions, submitting forms, or opening dialogs.',
   category: 'Polaris web components',
   subCategory: 'Actions',
+  related: [
+    {
+      name: 'Link',
+      url: 'link',
+      type: 'Component',
+    },
+  ],
 };
 
 export default data;

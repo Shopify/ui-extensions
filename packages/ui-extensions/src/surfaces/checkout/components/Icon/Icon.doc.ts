@@ -1,32 +1,31 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import sharedContent from '../../../../docs/shared/components/Abbreviation';
+import sharedContent from '../../../../docs/shared/components/Icon';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  isVisualComponent: true,
-  thumbnail: 'abbreviation-thumbnail.png',
+  thumbnail: 'icon-thumbnail.png',
   requires: '',
+  isVisualComponent: true,
   type: '',
   definitions: [
     {
       title: 'Properties',
       description: '',
-      type: 'AbbreviationProps',
+      type: 'IconProps',
     },
   ],
   defaultExample: {
-    image: 'abbreviation-default.png',
+    image: 'icon-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
         {
-          code: './examples/basic-abbreviation.example.html',
+          code: './examples/basic-code.example.html',
           language: 'html',
         },
       ],
     },
   },
-  subSections: [],
 };
 
 export default data;
