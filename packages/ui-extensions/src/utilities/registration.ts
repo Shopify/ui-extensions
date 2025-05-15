@@ -39,6 +39,9 @@ export function createExtensionRegistrationFunction<
     ExtensionTargets
   > = (target, implementation) => {
     async function extension(...args: any[]) {
+      const baseTarget = target.toString().split('~')[0];
+      const extensionHandle = target.toString().split('~')[1];
+
       // Rendering extensions have two arguments. Non-rendering extensions don’t have
       // a `RemoteChannel` that needs to be normalized, so we can just pass the arguments
       // through.
@@ -56,7 +59,20 @@ export function createExtensionRegistrationFunction<
         strict: true,
       });
 
-      let renderResult = (implementation as any)(root, api);
+      let renderResult = (implementation as any)(root, {
+        ...api,
+        data: {
+          ...api.data,
+          fetch: async () => {
+            const response = await fetch(
+              `app:/extension-prefetch/${extensionHandle}`,
+            );
+            const data = await response.json();
+            return data;
+          },
+          prefetched: null,
+        },
+      });
 
       if (
         typeof renderResult === 'object' &&
