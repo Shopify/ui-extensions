@@ -1,7 +1,4 @@
 const shared = {
-  name: 'Badge',
-  description:
-    "Use `s-badge` to inform merchants of the status of an object or of an action that's been taken.",
   thumbnail: '/assets/templated-apis-screenshots/admin/components/badge.png',
   isVisualComponent: true,
   definitions: [
@@ -9,19 +6,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'Badge',
-    },
-  ],
-  subCategory: 'Titles and text',
-  related: [
-    {
-      type: 'component',
-      name: 'Banner',
-      url: '/docs/api/admin-extensions/polaris-web-components/feedback/banner',
-    },
-    {
-      type: 'component',
-      name: 'Text',
-      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/text',
     },
   ],
   defaultExample: {
