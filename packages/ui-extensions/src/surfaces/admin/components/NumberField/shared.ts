@@ -1,7 +1,4 @@
 const shared = {
-  name: 'NumberField',
-  description:
-    'Use `s-number-field` when you need to collect numerical input from merchants. It provides appropriate keyboard settings and validation for numerical values.',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/numberfield.png',
   isVisualComponent: true,
@@ -10,19 +7,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'NumberField',
-    },
-  ],
-  subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
-    },
-    {
-      type: 'component',
-      name: 'MoneyField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/moneyfield',
     },
   ],
   defaultExample: {

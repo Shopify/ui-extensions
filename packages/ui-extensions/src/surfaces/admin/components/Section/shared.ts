@@ -1,7 +1,4 @@
 const shared = {
-  name: 'Section',
-  description:
-    'Use `s-section` to organize your page content. Sections have defined styling, and will display differently depending on how deeply they are nested in the page.',
   isVisualComponent: true,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/section.png',
   subSections: [
@@ -27,24 +24,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'Section',
-    },
-  ],
-  subCategory: 'Structure',
-  related: [
-    {
-      type: 'component',
-      name: 'Box',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/box',
-    },
-    {
-      type: 'component',
-      name: 'Stack',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/stack',
-    },
-    {
-      type: 'component',
-      name: 'Heading',
-      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/heading',
     },
   ],
   defaultExample: {

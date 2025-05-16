@@ -1,11 +1,12 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
+import {setRelatedUrl} from '../../uitls';
+
+import globalShared from '../../../../docs/shared/components/Banner';
 import shared from './shared';
 
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 const data: AdminReferenceEntityTemplateSchema = {
+  ...setRelatedUrl(globalShared, 'app-home'),
   ...shared,
-  category: 'Polaris web components',
 };
 
 export default data;

@@ -1,7 +1,4 @@
 const shared = {
-  name: 'Banner',
-  description:
-    'Use `s-banner` to communicate important status updates or required actions that users must take. Banners will automatically adjust their design to match the context in which they are used.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/banner.png',
   isVisualComponent: true,
   subSections: [
@@ -44,14 +41,6 @@ const shared = {
       title: 'Slots',
       description: '',
       type: 'BannerSlots',
-    },
-  ],
-  subCategory: 'Feedback',
-  related: [
-    {
-      type: 'component',
-      name: 'Badge',
-      url: '/docs/api/admin-extensions/polaris-web-components/feedback/badge',
     },
   ],
   defaultExample: {

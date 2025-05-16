@@ -1,6 +1,4 @@
 const shared = {
-  name: 'Image',
-  description: 'Use `s-image` to display images in your app.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/image.png',
   isVisualComponent: true,
   subSections: [
@@ -30,14 +28,6 @@ const shared = {
       description:
         'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
       type: 'ImageEvents',
-    },
-  ],
-  subCategory: 'Media',
-  related: [
-    {
-      type: 'component',
-      name: 'Icon',
-      url: '/docs/api/admin-extensions/polaris-web-components/media/icon',
     },
   ],
   defaultExample: {

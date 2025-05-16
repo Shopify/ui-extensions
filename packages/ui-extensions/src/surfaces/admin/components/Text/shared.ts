@@ -1,7 +1,4 @@
 const shared = {
-  name: 'Text',
-  description:
-    "Use `s-text` for inline text styling, similar to HTML's span elements. When adding an icon inside `s-text`, it automatically adopts the tone of the text.",
   thumbnail: '/assets/templated-apis-screenshots/admin/components/text.png',
   isVisualComponent: true,
   subSections: [
@@ -29,14 +26,6 @@ const shared = {
       type: 'Text',
     },
   ],
-  subCategory: 'Titles and text',
-  related: [
-    {
-      type: 'component',
-      name: 'Heading',
-      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/heading',
-    },
-  ],
   defaultExample: {
     image: 'text-default.png',
     codeblock: {
@@ -51,5 +40,4 @@ const shared = {
     },
   },
 };
-
 export default shared;

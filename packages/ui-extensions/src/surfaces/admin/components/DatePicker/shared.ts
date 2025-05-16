@@ -1,7 +1,4 @@
 const shared = {
-  name: 'DatePicker',
-  description:
-    'Use a date picker to allow merchants to select a date or a date range.',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/datepicker.png',
   isVisualComponent: true,
@@ -18,8 +15,6 @@ const shared = {
       type: 'DatePickerEvents',
     },
   ],
-  subCategory: 'Forms',
-  related: [],
   defaultExample: {
     codeblock: {
       title: 'Code',

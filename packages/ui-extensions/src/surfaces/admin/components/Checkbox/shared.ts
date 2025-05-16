@@ -1,7 +1,4 @@
 const shared = {
-  name: 'Checkbox',
-  description:
-    'Use `s-checkbox` when you want to provide users with a clear selection option, such as for agreeing to terms and conditions or selecting multiple options from a list.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/checkbox.png',
   isVisualComponent: true,
   definitions: [
@@ -9,24 +6,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'Checkbox',
-    },
-  ],
-  subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'Switch',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/switch',
-    },
-    {
-      type: 'component',
-      name: 'Select',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/select',
-    },
-    {
-      type: 'component',
-      name: 'ChoiceList',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/choice-list',
     },
   ],
   defaultExample: {

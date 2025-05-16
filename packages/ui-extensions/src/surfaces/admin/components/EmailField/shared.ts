@@ -1,7 +1,4 @@
 const shared = {
-  name: 'EmailField',
-  description:
-    'Use `s-email-field` to allow merchants to input email addresses. This component provides built-in email validation and appropriate keyboard settings.',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/emailfield.png',
   isVisualComponent: true,
@@ -10,19 +7,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'EmailField',
-    },
-  ],
-  subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
-    },
-    {
-      type: 'component',
-      name: 'TextArea',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textarea',
     },
   ],
   defaultExample: {

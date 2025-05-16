@@ -1,7 +1,4 @@
 const shared = {
-  name: 'Heading',
-  description:
-    "Use `s-heading` to create hierarchical titles similar to HTML's `h1-h6` elements.",
   thumbnail: '/assets/templated-apis-screenshots/admin/components/heading.png',
   isVisualComponent: true,
   subSections: [
@@ -35,14 +32,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'Heading',
-    },
-  ],
-  subCategory: 'Titles and text',
-  related: [
-    {
-      type: 'component',
-      name: 'Text',
-      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/text',
     },
   ],
   defaultExample: {

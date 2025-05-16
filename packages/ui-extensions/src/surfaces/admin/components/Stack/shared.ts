@@ -1,7 +1,4 @@
 const shared = {
-  name: 'Stack',
-  description:
-    'Use `s-stack` to organize elements along the [block or inline axes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_display/Block_and_inline_layout_in_normal_flow) of the page.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/stack.png',
   isVisualComponent: true,
   subSections: [
@@ -32,19 +29,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'Stack',
-    },
-  ],
-  subCategory: 'Structure',
-  related: [
-    {
-      type: 'component',
-      name: 'Box',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/box',
-    },
-    {
-      type: 'component',
-      name: 'Grid',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/grid',
     },
   ],
   defaultExample: {

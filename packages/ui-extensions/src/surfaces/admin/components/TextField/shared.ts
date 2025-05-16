@@ -1,7 +1,4 @@
 const shared = {
-  name: 'TextField',
-  description:
-    'Use a text field to allow merchants to enter or edit text. Text fields provide a single-line input area for collecting string values from users.',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/textfield.png',
   isVisualComponent: true,
@@ -16,24 +13,6 @@ const shared = {
       title: 'Slots',
       description: '',
       type: 'TextFieldSlots',
-    },
-  ],
-  subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextArea',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textarea',
-    },
-    {
-      type: 'component',
-      name: 'EmailField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/emailfield',
-    },
-    {
-      type: 'component',
-      name: 'NumberField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/numberfield',
     },
   ],
   defaultExample: {

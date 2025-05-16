@@ -1,7 +1,4 @@
 const shared = {
-  name: 'MoneyField',
-  description:
-    'Use `s-money-field` when you need to collect monetary values from merchants. It provides appropriate formatting and validation for currency amounts.',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/moneyfield.png',
   isVisualComponent: true,
@@ -10,19 +7,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'MoneyField',
-    },
-  ],
-  subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'NumberField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/numberfield',
-    },
-    {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
     },
   ],
   defaultExample: {

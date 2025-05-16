@@ -1,6 +1,4 @@
 const shared = {
-  name: 'URLField',
-  description: 'Use a URLField when you need to collect URLs from merchants.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/urlfield.png',
   isVisualComponent: true,
   definitions: [
@@ -8,19 +6,6 @@ const shared = {
       title: 'URLField',
       description: '',
       type: 'URLField',
-    },
-  ],
-  subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
-    },
-    {
-      type: 'component',
-      name: 'EmailField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/emailfield',
     },
   ],
   defaultExample: {

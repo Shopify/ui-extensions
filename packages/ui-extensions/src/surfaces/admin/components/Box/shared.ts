@@ -1,7 +1,4 @@
 const shared = {
-  name: 'Box',
-  description:
-    'Use `s-box` to build custom interfaces with your own design language.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/box.png',
   isVisualComponent: true,
   subSections: [
@@ -19,24 +16,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'Box',
-    },
-  ],
-  subCategory: 'Structure',
-  related: [
-    {
-      type: 'component',
-      name: 'Stack',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/stack',
-    },
-    {
-      type: 'component',
-      name: 'Grid',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/grid',
-    },
-    {
-      type: 'component',
-      name: 'Section',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/section',
     },
   ],
   defaultExample: {

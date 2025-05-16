@@ -1,7 +1,4 @@
 const shared = {
-  name: 'PasswordField',
-  description:
-    'Use `s-password-field` when you need to collect sensitive information from merchants.',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/passwordfield.png',
   isVisualComponent: true,
@@ -10,19 +7,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'PasswordField',
-    },
-  ],
-  subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
-    },
-    {
-      type: 'component',
-      name: 'EmailField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/emailfield',
     },
   ],
   defaultExample: {

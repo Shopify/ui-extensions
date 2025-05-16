@@ -1,7 +1,4 @@
 const shared = {
-  name: 'Divider',
-  description:
-    'Use `s-divider` to create a clear visual separation between different elements in your user interface.',
   subSections: [
     {
       title: 'Useful for',
@@ -18,19 +15,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'Divider',
-    },
-  ],
-  subCategory: 'Structure',
-  related: [
-    {
-      type: 'component',
-      name: 'Section',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/section',
-    },
-    {
-      type: 'component',
-      name: 'Stack',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/stack',
     },
   ],
   defaultExample: {

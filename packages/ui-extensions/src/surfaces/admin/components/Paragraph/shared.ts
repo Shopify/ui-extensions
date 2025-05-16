@@ -1,7 +1,4 @@
 const shared = {
-  name: 'Paragraph',
-  description:
-    'Use `s-paragraph` to display a block of text similar to the `<p>` tag in HTML. This component can also contain other elements such as buttons, links, or text.',
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/paragraph.png',
   isVisualComponent: true,
@@ -29,14 +26,6 @@ const shared = {
       title: 'Properties',
       description: '',
       type: 'Paragraph',
-    },
-  ],
-  subCategory: 'Titles and text',
-  related: [
-    {
-      type: 'component',
-      name: 'Heading',
-      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/heading',
     },
   ],
   defaultExample: {

@@ -1,9 +1,12 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
+import {setRelatedUrl} from '../../uitls';
+
+import globalShared from '../../../../docs/shared/components/Switch';
 import shared from './shared';
 
-const data: ReferenceEntityTemplateSchema = {
+const data: AdminReferenceEntityTemplateSchema = {
+  ...setRelatedUrl(globalShared, 'admin-extensions'),
   ...shared,
-  category: 'Polaris web components',
 };
 
 export default data;
