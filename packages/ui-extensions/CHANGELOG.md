@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.2
+
+### Patch Changes
+
+- [#2887](https://github.com/Shopify/ui-extensions/pull/2887) [`989dea5248c694488ebd1eeeaac1cbcde31883d6`](https://github.com/Shopify/ui-extensions/commit/989dea5248c694488ebd1eeeaac1cbcde31883d6) Thanks [@robin-drexler](https://github.com/robin-drexler)! - test release
+
 ## 2025.10.0-rc.1
 
 ### Minor Changes
