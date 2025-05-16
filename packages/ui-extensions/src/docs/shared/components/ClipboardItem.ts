@@ -2,13 +2,8 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'ClipboardItem',
-  description: `
-  This component is used alongside a \`Button\` or \`Link\` component to facilitate writing to the user's clipboard.
-
-  ClipboardItem's \`--auto\` command is \`--copy\`, which copies the content of the text prop to the clipboard.
-
-  \`ClipboardItem\` is a non-rendering component.
-`,
+  description:
+    'Enables copying text to the user’s clipboard. Use alongside Button or Link components to let users easily copy content. `<s-clipboard-item>` doesn’t render visually.',
   category: 'Polaris web components',
   subCategory: 'utilities',
   related: [
