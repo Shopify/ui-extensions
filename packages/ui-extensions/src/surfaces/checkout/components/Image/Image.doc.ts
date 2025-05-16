@@ -29,7 +29,7 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       title: 'Best practices',
-      type: 'Generic' as const,
+      type: 'Generic',
       anchorLink: 'best-practices',
       sectionContent: `
 - Use high-resolution images to ensure a professional and high-quality experience.

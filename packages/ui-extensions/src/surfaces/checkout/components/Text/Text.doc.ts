@@ -29,7 +29,7 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       title: 'Useful for',
-      type: 'Generic' as const,
+      type: 'Generic',
       anchorLink: 'useful-for',
       sectionContent: `
 - Adding inline text elements such as labels or line errors.
@@ -37,7 +37,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Best practices',
-      type: 'Generic' as const,
+      type: 'Generic',
       anchorLink: 'best-practices',
       sectionContent: `
 - Use plain and clear terms.

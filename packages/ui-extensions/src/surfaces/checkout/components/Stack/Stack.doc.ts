@@ -29,7 +29,7 @@ const data: ReferenceEntityTemplateSchema = {
   subSections: [
     {
       title: 'Useful for',
-      type: 'Generic' as const,
+      type: 'Generic',
       anchorLink: 'useful-for',
       sectionContent: `
 - Placing items in rows or columns when sections don't work for your layout.
@@ -37,7 +37,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Considerations',
-      type: 'Generic' as const,
+      type: 'Generic',
       anchorLink: 'considerations',
       sectionContent: `
 - Stack doesn't add any padding by default. If you want padding around your stacked elements, use \`base\` to apply the default padding.
@@ -45,7 +45,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
     {
       title: 'Best practices',
-      type: 'Generic' as const,
+      type: 'Generic',
       anchorLink: 'best-practices',
       sectionContent: `
 - Use smaller gaps between small elements and larger gaps between big ones.
