@@ -55,6 +55,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 ### Features
 
+- Added required \`posVersion\` property to \`Session\` interface.
 - Added optional \`currency\` property to \`Discount\` interface.
   `,
     },
