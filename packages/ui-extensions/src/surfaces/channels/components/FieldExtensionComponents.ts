@@ -1,8 +1,8 @@
 import {StandardComponents} from './StandardComponents';
 
-export type BlockExtensionComponents =
+export type FieldExtensionComponents =
   | StandardComponents
   | 'AdminBlock'
   | 'Form';
 
-export default BlockExtensionComponents;
+export default FieldExtensionComponents;

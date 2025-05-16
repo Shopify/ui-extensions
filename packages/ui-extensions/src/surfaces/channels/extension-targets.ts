@@ -1,10 +1,10 @@
 import type {RenderExtension, RunnableExtension} from '../../extension';
 
-import type {BlockExtensionApi} from './api';
+import type {FieldExtensionApi} from './api';
 import {FieldPrefetchApi, FieldPrefetchOutput} from './api/prefetch/prefetch';
 import {FieldPrefetchStandardApi} from './api/prefetch/standard';
 
-import type {BlockExtensionComponents} from './components/BlockExtensionComponents';
+import type {FieldExtensionComponents} from './components/FieldExtensionComponents';
 
 export interface RenderExtensionTargets {
   // Blocks
@@ -14,8 +14,8 @@ export interface RenderExtensionTargets {
    * See the [list of available components](/docs/api/admin-extensions/components).
    */
   'admin.product-details.dynamic.render': RenderExtension<
-    BlockExtensionApi<'admin.product-details.dynamic.render'>,
-    BlockExtensionComponents
+    FieldExtensionApi<'admin.product-details.dynamic.render'>,
+    FieldExtensionComponents
   >;
 }
 

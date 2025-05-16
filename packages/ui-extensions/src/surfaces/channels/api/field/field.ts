@@ -11,7 +11,7 @@ export interface Navigation {
   navigate: (url: string | URL) => void;
 }
 
-export interface BlockExtensionApi<ExtensionTarget extends AnyExtensionTarget>
+export interface FieldExtensionApi<ExtensionTarget extends AnyExtensionTarget>
   extends StandardApi<ExtensionTarget> {
   /**
    * Information about the currently viewed or selected items.
