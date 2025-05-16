@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'heading-default.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-heading.example.html',
@@ -31,28 +31,10 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best Practices',
-      sectionContent:
-        '- Add a heading at the top of each section that clearly describe what’s below.\n\n- Use the heading to highlight the most important concepts or pieces of information that customers need to know.',
-    },
-  ],
-  related: [
-    {
-      name: 'Text',
-      subtitle: 'Component',
-      url: 'text',
-      type: 'Component',
-    },
-    {
-      name: 'Paragraph',
-      subtitle: 'Component',
-      url: 'paragraph',
-      type: 'Component',
-    },
-    {
-      name: 'Section',
-      subtitle: 'Component',
-      url: 'section',
-      type: 'Component',
+      sectionContent: `
+        - Add a heading at the top of each section that clearly describe what’s below.
+        - Use the heading to highlight the most important concepts or pieces of information that customers need to know.
+      `,
     },
   ],
 };

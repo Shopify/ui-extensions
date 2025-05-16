@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'progress-default.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-progress.example.html',
@@ -32,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-Use components like [Paragraph](../titles-and-text/paragraph) or [Text](../titles-and-text/text), along with the Progress component, to display text indicating the status of the progress bar.
+Use components like [Paragraph](../titles-and-text/paragraph) or [Text](../titles-and-text/text), along with the \`s-progress\` component, to display text indicating the status of the progress bar.
 
 ### Loading states
 
@@ -58,14 +58,6 @@ Here's an example of using a progress bar to show how much more a customer needs
 
 ![A progress bar at checkout, showing that the customer is $43 away from free shipping.](/assets/templated-apis-screenshots/checkout-ui-extensions/unstable/progress-free-shipping.png)
       `,
-    },
-  ],
-  related: [
-    {
-      name: 'Spinner',
-      subtitle: 'Component',
-      url: 'spinner',
-      type: 'Component',
     },
   ],
 };

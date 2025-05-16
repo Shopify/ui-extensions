@@ -11,6 +11,18 @@ const data: SharedReferenceEntityTemplateSchema = {
 `,
   category: 'Polaris web components',
   subCategory: 'utilities',
+  related: [
+    {
+      name: 'Button',
+      url: 'button',
+      type: 'Component',
+    },
+    {
+      name: 'Link',
+      url: 'link',
+      type: 'Component',
+    },
+  ],
 };
 
 export default data;

@@ -1,15 +1,14 @@
 import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
-  name: 'Progress',
-  description:
-    'Progress displays a progress bar in determinate or indeterminate state.',
+  name: 'QRCode',
+  description: 'Used to quickly access scannable data.',
   category: 'Polaris web components',
-  subCategory: 'Feedback',
+  subCategory: 'Other',
   related: [
     {
-      name: 'Spinner',
-      url: 'spinner',
+      name: 'ClipboardItem',
+      url: 'clipboarditem',
       type: 'Component',
     },
   ],

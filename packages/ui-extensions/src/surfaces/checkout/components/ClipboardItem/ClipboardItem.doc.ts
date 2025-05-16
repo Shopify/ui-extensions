@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'clipboard-basic.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-clipboarditem.example.html',
@@ -25,20 +25,6 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [
-    {
-      name: 'Button',
-      subtitle: 'Component',
-      url: 'button',
-      type: 'Component',
-    },
-    {
-      name: 'Link',
-      subtitle: 'Component',
-      url: 'link',
-      type: 'Component',
-    },
-  ],
 };
 
 export default data;

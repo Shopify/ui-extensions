@@ -1,7 +1,6 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
-export interface SharedReferenceEntityTemplateSchema
-  extends Pick<
-    ReferenceEntityTemplateSchema,
-    'name' | 'description' | 'category' | 'subCategory'
-  > {}
+export type SharedReferenceEntityTemplateSchema = Pick<
+  ReferenceEntityTemplateSchema,
+  'name' | 'description' | 'category' | 'subCategory' | 'related'
+>;

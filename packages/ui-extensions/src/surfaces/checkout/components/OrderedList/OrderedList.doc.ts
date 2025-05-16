@@ -1,5 +1,6 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import sharedContent from '../../../../docs/shared/components/OrderedList';
+import listItemSharedContent from '../../../../docs/shared/components/ListItem';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
@@ -13,11 +14,16 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'OrderedListProps',
     },
+    {
+      title: listItemSharedContent.name,
+      description: listItemSharedContent.description,
+      type: 'ListItemProps',
+    },
   ],
   defaultExample: {
     image: 'orderedlist-default.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-orderedlist.example.html',
@@ -31,22 +37,13 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best Practices',
-      sectionContent:
-        '- Use OrderedList when you need to present items in a specific sequence or order.\n\n- Each item in the list should be wrapped in a ListItem component.\n\n- Keep list items concise and consistent in length when possible.\n\n- Use OrderedList for step-by-step instructions, numbered procedures, or ranked items.\n\n- Consider using OrderedList when the order of items is important for understanding.',
-    },
-  ],
-  related: [
-    {
-      subtitle: 'Related components',
-      name: 'ListItem',
-      url: 'listitem',
-      type: 'component',
-    },
-    {
-      subtitle: 'Related components',
-      name: 'UnorderedList',
-      url: 'unorderedlist',
-      type: 'component',
+      sectionContent: `
+        - Use \`s-ordered-list\` when you need to present items in a specific sequence or order.
+        - Each item in the list should be wrapped in a \`s-list-item\` component.
+        - Keep list items concise and consistent in length when possible.
+        - Use \`s-ordered-list\` for step-by-step instructions, numbered procedures, or ranked items.
+        - Consider using \`s-ordered-list\` when the order of items is important for understanding.
+      `,
     },
   ],
 };

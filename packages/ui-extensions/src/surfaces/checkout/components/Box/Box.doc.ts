@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
   defaultExample: {
     image: 'box-default.png',
     codeblock: {
-      title: 'Default example',
+      title: 'Code',
       tabs: [
         {
           code: './examples/basic-box.example.html',
@@ -31,11 +31,15 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'Generic',
       anchorLink: 'best-practices',
       title: 'Best Practices',
-      sectionContent:
-        "- Use Box when you need a container that preserves the natural size of its contents.\n\n- Box is particularly useful in layout components like Stack where you want to prevent children from stretching to fit.\n\n- Box has a `display: block` layout by default.\n\n- Use Box for simple container needs where you don't need the additional features of more specialized components like Stack.\n\n- Consider using Box when you need to apply specific styling or layout properties to a group of elements without affecting their natural dimensions.",
+      sectionContent: `
+        - Use \`s-box\` when you need a container that preserves the natural size of its contents.
+        - \`s-box\` is particularly useful in layout components like \`s-stack\` where you want to prevent children from stretching to fit.
+        - \`s-box\` has a \`display: block\` layout by default.
+        - Use \`s-box\` for simple container needs where you don't need the additional features of more specialized components like \`s-stack\`.
+        - Consider using \`s-box\` when you need to apply specific styling or layout properties to a group of elements without affecting their natural dimensions.
+      `,
     },
   ],
-  related: [],
 };
 
 export default data;
