@@ -6,5 +6,5 @@ export interface BaseData {
   device: Device;
   locale: string;
   session: Session;
-  storage: Storage;
+  storage?: Storage;
 }
