@@ -41,9 +41,9 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       sectionContent: `
 - Use plain and clear terms.
-- Don't use jargon or technical language.
-- Don't use different terms to describe the same thing.
-- Don't duplicate content.`,
+- Don’t use jargon or technical language.
+- Don’t use different terms to describe the same thing.
+- Don’t duplicate content.`,
     },
   ],
 };
