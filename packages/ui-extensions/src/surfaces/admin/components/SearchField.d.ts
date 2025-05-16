@@ -1,4 +1,4 @@
-/** VERSION: 0.51.1 **/
+/** VERSION: 1.0.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -179,6 +179,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   /**
    * Checks if the shadow tree contains a focused input (input, textarea, select, <x contentEditable>).
    * Note: this does _not_ return true for focussed non-field form elements like buttons.
+   * @private
    */
   get isContentEditable(): boolean;
   /** @private */
