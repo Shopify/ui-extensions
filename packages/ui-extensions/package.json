@@ -22,6 +22,12 @@
       "admin/components/*": [
         "./build/ts/surfaces/admin/components/*.d.ts"
       ],
+      "channels": [
+        "./build/ts/surfaces/channels.d.ts"
+      ],
+      "channels/preact": [
+        "./build/ts/surfaces/channels/preact/index.d.ts"
+      ],
       "checkout": [
         "./build/ts/surfaces/checkout.d.ts"
       ],

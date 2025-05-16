@@ -1,18 +1,18 @@
-import type {ExtensionTarget} from '../extension-targets';
-import type {CartLine} from '../api/standard/standard';
+// import type {ExtensionTarget} from '../extension-targets';
+// import type {CartLine} from '../api/standard/standard';
 
-import {useApi} from './api';
-import {useSubscription} from './subscription';
+// import {useApi} from './api';
+// import {useSubscription} from './subscription';
 
-class ExtensionHasNoTargetError extends Error {
-  name = 'ExtensionHasNoTargetError';
+// class ExtensionHasNoTargetError extends Error {
+//   name = 'ExtensionHasNoTargetError';
 
-  constructor(target: ExtensionTarget) {
-    super(
-      `Cannot call 'useTarget()' on target '${target}'. Property 'target' is not found on api.`,
-    );
-  }
-}
+//   constructor(target: ExtensionTarget) {
+//     super(
+//       `Cannot call 'useTarget()' on target '${target}'. Property 'target' is not found on api.`,
+//     );
+//   }
+// }
 
 /**
  * Returns the cart line the extension is attached to. This hook can only be used by extensions in the
@@ -24,15 +24,19 @@ class ExtensionHasNoTargetError extends Error {
  *
  * @deprecated Deprecated as of version `2023-10`, use `useCartLineTarget()` instead.
  */
-export function useTarget(): CartLine {
-  const api = useApi<
-    | 'purchase.cart-line-item.line-components.render'
-    | 'purchase.checkout.cart-line-item.render-after'
-    | 'purchase.thank-you.cart-line-item.render-after'
-  >();
-  if (!api.target) {
-    throw new ExtensionHasNoTargetError(api.extension.target);
-  }
+// export function useTarget(): CartLine {
+//   const api = useApi<
+//     | 'purchase.cart-line-item.line-components.render'
+//     | 'purchase.checkout.cart-line-item.render-after'
+//     | 'purchase.thank-you.cart-line-item.render-after'
+//   >();
+//   if (!api.target) {
+//     throw new ExtensionHasNoTargetError(api.extension.target);
+//   }
 
-  return useSubscription(api.target);
+//   return useSubscription(api.target);
+// }
+
+export function useTarget() {
+  return {};
 }
