@@ -28,11 +28,28 @@ const data: ReferenceEntityTemplateSchema = {
   },
   subSections: [
     {
-      type: 'Generic',
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `
+- Placing items in rows or columns when sections don't work for your layout.
+- Controlling the spacing between elements.`,
+    },
+    {
+      title: 'Considerations',
+      type: 'Generic' as const,
+      anchorLink: 'considerations',
+      sectionContent: `
+- Stack doesn't add any padding by default. If you want padding around your stacked elements, use \`base\` to apply the default padding.
+- When spacing becomes limited, Stack will always wrap children to a new line.`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
       anchorLink: 'best-practices',
-      title: 'Best Practices',
-      sectionContent:
-        '- Use Stack when you need to arrange elements vertically or horizontally with consistent spacing.\n\n- Stack is particularly useful for forms, lists, and any content that needs to flow vertically or horizontally.\n\n- Consider using Stack when you need to maintain consistent rhythm between elements in a single direction.',
+      sectionContent: `
+- Use smaller gaps between small elements and larger gaps between big ones.
+- Maintain consistent spacing in stacks across all pages of your app.`,
     },
   ],
 };
