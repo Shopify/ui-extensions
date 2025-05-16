@@ -17,7 +17,7 @@ const shared = {
       type: 'Generic' as const,
       anchorLink: 'considerations',
       sectionContent: `- The level of the heading is automatically determined by how deeply it's nested inside other components, starting from h2.
-- Default to using the \`heading\` property in \`s-section\`. The \`s-heading\` component should only be used if you need to implement a custom layout for your heading in the UI.`,
+- Default to using the \`heading\` property in components that support it (e.g. Section and Banner). The \`s-heading\` component should only be used if you need to implement a custom layout for your heading in the UI.`,
     },
     {
       title: 'Best practices',

@@ -1,7 +1,7 @@
 const shared = {
   name: 'Box',
   description:
-    'A generic container that provides a flexible alternative for custom designs not achievable with existing components. Use it to apply styling such as backgrounds, padding, or borders, or to nest and group other components. The contents of Box always maintain their natural size, making it especially useful within layout components that would otherwise stretch their children.',
+    'Use `s-box` to build custom interfaces with your own design language.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/box.png',
   isVisualComponent: true,
   subSections: [
