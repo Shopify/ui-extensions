@@ -1,5 +1,37 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.1
+
+### Minor Changes
+
+- [#2862](https://github.com/Shopify/ui-extensions/pull/2862) [`c9f2f882cf952b005960ca282276be32160f72df`](https://github.com/Shopify/ui-extensions/commit/c9f2f882cf952b005960ca282276be32160f72df) Thanks [@vividviolet](https://github.com/vividviolet)! - Defaulting to string type for enabled features passed to the templates
+
+- [#2862](https://github.com/Shopify/ui-extensions/pull/2862) [`4551f8afdd44979c9074b8c1807ac42323861721`](https://github.com/Shopify/ui-extensions/commit/4551f8afdd44979c9074b8c1807ac42323861721) Thanks [@vividviolet](https://github.com/vividviolet)! - Add Picker
+
+- [#2566](https://github.com/Shopify/ui-extensions/pull/2566) [`16c4403f810ec436889131a5cdbc4ecb7696529d`](https://github.com/Shopify/ui-extensions/commit/16c4403f810ec436889131a5cdbc4ecb7696529d) Thanks [@vividviolet](https://github.com/vividviolet)! - Support remote-dom for Admin surface
+
+- [#2862](https://github.com/Shopify/ui-extensions/pull/2862) [`2437fdf57129a85be463af9a6562d1fa8919a391`](https://github.com/Shopify/ui-extensions/commit/2437fdf57129a85be463af9a6562d1fa8919a391) Thanks [@vividviolet](https://github.com/vividviolet)! - Add discount function settings api
+
+### Patch Changes
+
+- [#2721](https://github.com/Shopify/ui-extensions/pull/2721) [`f1d75899f9927ce56ca574ed89d34f00c69bd399`](https://github.com/Shopify/ui-extensions/commit/f1d75899f9927ce56ca574ed89d34f00c69bd399) Thanks [@henrytao-me](https://github.com/henrytao-me)! - Add preact entry to ui-extensions
+
+- [#2848](https://github.com/Shopify/ui-extensions/pull/2848) [`48e87d9ee7746eb40f0a493df02f26cafc106ce7`](https://github.com/Shopify/ui-extensions/commit/48e87d9ee7746eb40f0a493df02f26cafc106ce7) Thanks [@vividviolet](https://github.com/vividviolet)! - Add Grid Item component for Admin
+
+- [#2766](https://github.com/Shopify/ui-extensions/pull/2766) [`cd06fbdec2e09ee50e4b0ef8c530fddf70cdcf97`](https://github.com/Shopify/ui-extensions/commit/cd06fbdec2e09ee50e4b0ef8c530fddf70cdcf97) Thanks [@vividviolet](https://github.com/vividviolet)! - Remove global declaration from target d.ts as this was causing conflicting types
+
+- [#2735](https://github.com/Shopify/ui-extensions/pull/2735) [`7cf6153a97a94d7dcbf9708c43deaab90f5d2131`](https://github.com/Shopify/ui-extensions/commit/7cf6153a97a94d7dcbf9708c43deaab90f5d2131) Thanks [@henrytao-me](https://github.com/henrytao-me)! - Patch preact signal
+
+- [#2570](https://github.com/Shopify/ui-extensions/pull/2570) [`9cb03b55ad6e47a3defad22a11932ccf51dc5dcf`](https://github.com/Shopify/ui-extensions/commit/9cb03b55ad6e47a3defad22a11932ccf51dc5dcf) Thanks [@vividviolet](https://github.com/vividviolet)! - Update components types for Admin surface
+
+- [#2491](https://github.com/Shopify/ui-extensions/pull/2491) [`1e1f82e4f05af62246421851638db5dff4c79046`](https://github.com/Shopify/ui-extensions/commit/1e1f82e4f05af62246421851638db5dff4c79046) Thanks [@belalsj](https://github.com/belalsj)! - AdminBlock remove summary prop and add collapsedSummary
+
+- [#2493](https://github.com/Shopify/ui-extensions/pull/2493) [`4f8ebb54dea1a1b93d4c8e515b1e0f8f32651caa`](https://github.com/Shopify/ui-extensions/commit/4f8ebb54dea1a1b93d4c8e515b1e0f8f32651caa) Thanks [@vividviolet](https://github.com/vividviolet)! - Fix shopify global declaration
+
+- [#2862](https://github.com/Shopify/ui-extensions/pull/2862) [`13e58950a65c5ecbfbc3a6046b7bd7c93884334d`](https://github.com/Shopify/ui-extensions/commit/13e58950a65c5ecbfbc3a6046b7bd7c93884334d) Thanks [@vividviolet](https://github.com/vividviolet)! - Sync picker and resourcePicker docs with app-bridge
+
+- [#2502](https://github.com/Shopify/ui-extensions/pull/2502) [`b82774f5250ad69ad12ef39eee9d2c96b120bff0`](https://github.com/Shopify/ui-extensions/commit/b82774f5250ad69ad12ef39eee9d2c96b120bff0) Thanks [@vividviolet](https://github.com/vividviolet)! - Add new remote-dom components for Admin
+
 ## 2024.10.0
 
 ### Major Changes
