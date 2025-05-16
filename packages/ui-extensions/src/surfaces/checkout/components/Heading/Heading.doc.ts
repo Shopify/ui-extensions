@@ -52,6 +52,7 @@ const data: ReferenceEntityTemplateSchema = {
 - Don't use different terms to describe the same thing.
 - Don't duplicate content.`,
     },
+  ],
 };
 
 export default data;
