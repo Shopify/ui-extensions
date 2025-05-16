@@ -3,7 +3,7 @@ import {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'EmailField',
   description:
-    'Use `s-email-field` to allow merchants to input email addresses. This component provides built-in email validation and appropriate keyboard settings.',
+    'Let users enter email addresses with built-in validation and optimized keyboard settings.',
   category: 'Polaris web components',
   subCategory: 'Forms',
   related: [],
