@@ -34,6 +34,7 @@
     "@babel/node": "^7.8.7",
     "@changesets/changelog-github": "^0.4.7",
     "@changesets/cli": "^2.25.2",
+    "@rollup/plugin-replace": "^6.0.1",
     "@shopify/babel-preset": "^24.1.0",
     "@shopify/browserslist-config": "^3.0.0",
     "@shopify/eslint-plugin": "^42.0.0",
@@ -44,10 +45,9 @@
     "@shopify/loom-plugin-eslint": "^2.0.0",
     "@shopify/loom-plugin-prettier": "^2.0.0",
     "@shopify/typescript-configs": "^5.1.0",
-    "@rollup/plugin-replace": "^6.0.1",
     "eslint": "^8.28.0",
     "nodemon": "^2.0.4",
-    "prettier": "^2.8.0",
+    "prettier": "^2.8.8",
     "typescript": "^4.9.0"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
