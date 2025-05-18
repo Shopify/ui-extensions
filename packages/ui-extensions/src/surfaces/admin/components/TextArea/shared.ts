@@ -12,13 +12,7 @@ const shared = {
     },
   ],
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'textarea-default.png',
     codeblock: {

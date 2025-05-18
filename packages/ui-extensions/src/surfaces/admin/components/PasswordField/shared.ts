@@ -13,18 +13,7 @@ const shared = {
     },
   ],
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
-    },
-    {
-      type: 'component',
-      name: 'EmailField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/emailfield',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'password-field-default.png',
     codeblock: {

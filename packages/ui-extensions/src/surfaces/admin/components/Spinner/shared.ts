@@ -12,13 +12,7 @@ const shared = {
     },
   ],
   subCategory: 'Feedback',
-  related: [
-    {
-      type: 'component',
-      name: 'Button',
-      url: '/docs/api/admin-extensions/polaris-web-components/actions/button',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'spinner-default.png',
     codeblock: {

@@ -30,13 +30,7 @@ const shared = {
     },
   ],
   subCategory: 'Titles and text',
-  related: [
-    {
-      type: 'component',
-      name: 'Heading',
-      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/heading',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'text-default.png',
     codeblock: {
