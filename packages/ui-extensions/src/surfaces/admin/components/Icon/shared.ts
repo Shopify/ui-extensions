@@ -13,13 +13,7 @@ const shared = {
     },
   ],
   subCategory: 'Media',
-  related: [
-    {
-      type: 'component',
-      name: 'Image',
-      url: '/docs/api/admin-extensions/polaris-web-components/media/image',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'icon-default.png',
     codeblock: {

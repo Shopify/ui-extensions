@@ -14,18 +14,7 @@ const shared = {
     },
   ],
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'NumberField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/numberfield',
-    },
-    {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'moneyfield-default.png',
     codeblock: {

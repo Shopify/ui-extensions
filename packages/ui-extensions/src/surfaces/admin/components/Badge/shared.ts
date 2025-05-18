@@ -9,6 +9,7 @@ const shared = {
       type: 'Badge',
     },
   ],
+  related: [],
   defaultExample: {
     image: 'badge-default.png',
     codeblock: {

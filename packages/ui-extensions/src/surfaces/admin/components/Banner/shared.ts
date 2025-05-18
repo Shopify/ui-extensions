@@ -48,13 +48,7 @@ const shared = {
     },
   ],
   subCategory: 'Feedback',
-  related: [
-    {
-      type: 'component',
-      name: 'Badge',
-      url: '/docs/api/admin-extensions/polaris-web-components/feedback/badge',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'banner-default.png',
     codeblock: {

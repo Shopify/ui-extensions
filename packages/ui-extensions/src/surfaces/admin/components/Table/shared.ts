@@ -24,13 +24,7 @@ const shared = {
     },
   ],
   subCategory: 'Structure',
-  related: [
-    {
-      type: 'component',
-      name: 'Grid',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/grid',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'table-default.png',
     codeblock: {

@@ -23,23 +23,7 @@ const shared = {
     },
   ],
   subCategory: 'Structure',
-  related: [
-    {
-      type: 'component',
-      name: 'Stack',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/stack',
-    },
-    {
-      type: 'component',
-      name: 'Grid',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/grid',
-    },
-    {
-      type: 'component',
-      name: 'Section',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/section',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'box-default.png',
     codeblock: {

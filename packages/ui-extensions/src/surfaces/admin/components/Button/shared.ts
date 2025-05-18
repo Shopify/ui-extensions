@@ -19,18 +19,7 @@ const shared = {
     },
   ],
   subCategory: 'Actions',
-  related: [
-    {
-      type: 'component',
-      name: 'Clickable',
-      url: '/docs/api/admin-extensions/polaris-web-components/actions/clickable',
-    },
-    {
-      type: 'component',
-      name: 'Link',
-      url: '/docs/api/admin-extensions/polaris-web-components/actions/link',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'button-default.png',
     codeblock: {

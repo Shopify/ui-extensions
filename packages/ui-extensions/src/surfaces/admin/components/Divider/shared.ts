@@ -22,18 +22,7 @@ const shared = {
     },
   ],
   subCategory: 'Structure',
-  related: [
-    {
-      type: 'component',
-      name: 'Section',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/section',
-    },
-    {
-      type: 'component',
-      name: 'Stack',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/stack',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'divider-default.png',
     codeblock: {

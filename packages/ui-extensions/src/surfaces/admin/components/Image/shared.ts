@@ -34,13 +34,7 @@ const shared = {
     },
   ],
   subCategory: 'Media',
-  related: [
-    {
-      type: 'component',
-      name: 'Icon',
-      url: '/docs/api/admin-extensions/polaris-web-components/media/icon',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'image-default.png',
     codeblock: {

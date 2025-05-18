@@ -14,18 +14,7 @@ const shared = {
     },
   ],
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
-    },
-    {
-      type: 'component',
-      name: 'TextArea',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textarea',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'emailfield-default.png',
     codeblock: {

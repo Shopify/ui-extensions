@@ -20,23 +20,7 @@ const shared = {
     },
   ],
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextArea',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textarea',
-    },
-    {
-      type: 'component',
-      name: 'EmailField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/emailfield',
-    },
-    {
-      type: 'component',
-      name: 'NumberField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/numberfield',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'text-field-default.png',
     codeblock: {

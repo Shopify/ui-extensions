@@ -13,23 +13,7 @@ const shared = {
     },
   ],
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'Checkbox',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/checkbox',
-    },
-    {
-      type: 'component',
-      name: 'Select',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/select',
-    },
-    {
-      type: 'component',
-      name: 'ChoiceList',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/choice-list',
-    },
-  ],
+  related: [],
   defaultExample: {
     codeblock: {
       title: 'Code',
