@@ -30,23 +30,7 @@ const shared = {
     },
   ],
   subCategory: 'Structure',
-  related: [
-    {
-      type: 'component',
-      name: 'Box',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/box',
-    },
-    {
-      type: 'component',
-      name: 'Stack',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/stack',
-    },
-    {
-      type: 'component',
-      name: 'Heading',
-      url: '/docs/api/admin-extensions/polaris-web-components/titles-and-text/heading',
-    },
-  ],
+  related: [],
   defaultExample: {
     image: 'section-default.png',
     codeblock: {

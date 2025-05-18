@@ -14,23 +14,7 @@ const shared = {
     },
   ],
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/textfield',
-    },
-    {
-      type: 'component',
-      name: 'EmailField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/emailfield',
-    },
-    {
-      type: 'component',
-      name: 'NumberField',
-      url: '/docs/api/admin-extensions/polaris-web-components/forms/numberfield',
-    },
-  ],
+  related: [],
   defaultExample: {
     codeblock: {
       title: 'Code',
