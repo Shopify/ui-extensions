@@ -1,5 +1,6 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 import sharedContent from '../../../../docs/shared/components/Grid';
+import gridItemSharedContent from '../../../../docs/shared/components/GridItem';
 
 const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
@@ -27,6 +28,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Properties',
       description: '',
       type: 'Grid',
+    },
+    {
+      title: gridItemSharedContent.name,
+      description: gridItemSharedContent.description,
+      type: 'GridItem',
     },
   ],
   defaultExample: {
