@@ -96,6 +96,8 @@ declare const tagName = 's-page';
 export interface PageJSXProps extends Partial<PageProps> {
   /**
    * The content to display in the aside section of the page.
+   *
+   * This slot is only rendered when `inlineSize` is "base".
    */
   aside?: ComponentChild;
 }

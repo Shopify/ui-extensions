@@ -3276,6 +3276,7 @@ type IconType$1 =
   | 'enter'
   | 'envelope'
   | 'envelope-soft-pack'
+  | 'eraser'
   | 'exchange'
   | 'exit'
   | 'export'
@@ -3971,7 +3972,9 @@ export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id'> {
   /**
-   * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
+   * The secondary actions to display at the bottom of the banner.
+   *
+   * A maximum of two `s-button` components are allowed, and only buttons with the `variant` of "secondary" are permitted.
    */
   secondaryActions?: ComponentChild;
   onDismiss?: ((event: CallbackEvent<typeof tagName$L>) => void) | null;
@@ -5355,6 +5358,8 @@ declare const tagName$p = 's-page';
 export interface PageJSXProps extends Partial<PageProps> {
   /**
    * The content to display in the aside section of the page.
+   *
+   * This slot is only rendered when `inlineSize` is "base".
    */
   aside?: ComponentChild;
 }
@@ -6552,7 +6557,9 @@ export interface BannerEvents {
 
 export interface BannerSlots {
   /**
-   * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
+   * The secondary actions to display at the bottom of the banner.
+   *
+   * A maximum of two `s-button` components are allowed, and only buttons with the `variant` of "secondary" are permitted.
    */
   'secondary-actions'?: HTMLElement;
 }
@@ -6591,6 +6598,8 @@ export interface LinkEvents {
 export interface PageSlots {
   /**
    * The content to display in the aside section of the page.
+   *
+   * This slot is only rendered when `inlineSize` is "base".
    */
   aside?: HTMLElement;
 }
