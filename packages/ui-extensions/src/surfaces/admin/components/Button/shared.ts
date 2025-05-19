@@ -4,6 +4,7 @@ const shared = {
     'Use `s-button` when you want to provide users the ability to perform specific actions, like saving data.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/button.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',

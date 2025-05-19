@@ -4,6 +4,7 @@ const shared = {
     'Use `s-stack` to organize elements along the [block or inline axes](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_display/Block_and_inline_layout_in_normal_flow) of the page.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/stack.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   subSections: [
     {
       title: 'Useful for',

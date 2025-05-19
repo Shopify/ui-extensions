@@ -8,6 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/adminblock.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   type: '',
   definitions: [
     {

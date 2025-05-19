@@ -5,6 +5,7 @@ const shared = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/textfield.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'TextField',

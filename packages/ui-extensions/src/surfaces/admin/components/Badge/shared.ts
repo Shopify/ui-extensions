@@ -1,6 +1,7 @@
 const shared = {
   thumbnail: '/assets/templated-apis-screenshots/admin/components/badge.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',

@@ -4,6 +4,7 @@ const shared = {
     'Use `s-text-area` when you need to collect longer text content from merchants. Text areas allow for multiple lines of text and automatically expand to fit the content.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/textarea.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',

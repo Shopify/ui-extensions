@@ -4,6 +4,7 @@ const shared = {
     '`s-link` is an interactive component that directs users to a specified URL. It even supports custom protocols.\n\n To link to a Shopify admin page, use `href="shopify://admin/orders"`. To link to an app page, use `href="app://orders"`.',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/link.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',

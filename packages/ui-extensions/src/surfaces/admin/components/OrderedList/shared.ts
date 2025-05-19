@@ -5,6 +5,7 @@ const shared = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/ordered-list.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   subCategory: 'Structure',
   related: [],
   defaultExample: {

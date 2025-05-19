@@ -57,6 +57,7 @@ componentNames.forEach((componentName) => {
   description: '${componentName} is used to ...',
   thumbnail: '${lowercaseComponentName}-thumbnail.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: '${componentName}',
