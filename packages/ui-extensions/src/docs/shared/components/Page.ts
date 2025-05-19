@@ -1,11 +1,11 @@
 import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
-  name: 'PaymentIcon',
+  name: 'Page',
   description:
-    'Displays icons representing payment methods. Use to visually communicate available or saved payment options clearly',
+    ' Use `s-page` as the main container for placing content in your app. Page comes with preset layouts and automatically adds spacing between elements.',
   category: 'Polaris web components',
-  subCategory: 'Media',
+  subCategory: 'Structure',
   related: [],
 };
 

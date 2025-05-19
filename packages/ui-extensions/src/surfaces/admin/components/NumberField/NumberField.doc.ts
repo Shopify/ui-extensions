@@ -1,10 +1,31 @@
-// Documentation file for NumberField
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import shared from './shared';
+import sharedContent from '../../../../docs/shared/components/NumberField';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  ...shared,
-  category: 'Polaris web components',
+  ...sharedContent,
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/numberfield.png',
+  isVisualComponent: true,
+  isOneColumnLayout: true,
+  definitions: [
+    {
+      title: 'Properties',
+      description: '',
+      type: 'NumberField',
+    },
+  ],
+  defaultExample: {
+    image: 'numberfield-default.png',
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

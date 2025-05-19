@@ -1,9 +1,30 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import shared from './shared';
+import sharedContent from '../../../../docs/shared/components/Spinner';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  ...shared,
-  category: 'Polaris web components',
+  ...sharedContent,
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/spinner.png',
+  isVisualComponent: true,
+  isOneColumnLayout: true,
+  definitions: [
+    {
+      title: 'Properties',
+      description: '',
+      type: 'Spinner',
+    },
+  ],
+  defaultExample: {
+    image: 'spinner-default.png',
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

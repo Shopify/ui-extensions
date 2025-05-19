@@ -1,12 +1,12 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
-  name: 'AdminBlock',
+  name: 'AdminPrintAction',
   description:
-    '`s-admin-block` is similar to the AdminBlock, providing a deeper integration with the container your UI is rendered into. However, this only applies to Block Extensions which render inline on a resource page.',
+    '`s-admin-print-action` is a component used by admin print action extensions to denote a URL to print. Admin print action extensions require the use of this component.',
   requires: '',
   thumbnail:
-    '/assets/templated-apis-screenshots/admin/components/adminblock.png',
+    '/assets/templated-apis-screenshots/admin/components/adminprintaction.png',
   isVisualComponent: true,
   isOneColumnLayout: true,
   type: '',
@@ -14,14 +14,14 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'AdminBlockProps',
+      type: 'AdminPrintActionProps',
     },
   ],
   category: 'Polaris web components',
   subCategory: 'Other',
   defaultExample: {
     image:
-      '/assets/templated-apis-screenshots/admin/components/adminblock-example.png',
+      '/assets/templated-apis-screenshots/admin/components/adminprintaction-example.png',
     codeblock: {
       title: '',
       tabs: [
@@ -33,13 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [
-    {
-      type: 'component',
-      name: 'Adminaction',
-      url: '/docs/api/admin-extensions/polaris-web-components/other/adminaction',
-    },
-  ],
+  related: [],
 };
 
 export default data;

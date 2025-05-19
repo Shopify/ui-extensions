@@ -6,18 +6,7 @@ const data: SharedReferenceEntityTemplateSchema = {
     'Enables copying text to the user’s clipboard. Use alongside Button or Link components to let users easily copy content. `<s-clipboard-item>` doesn’t render visually.',
   category: 'Polaris web components',
   subCategory: 'utilities',
-  related: [
-    {
-      name: 'Button',
-      url: 'button',
-      type: 'Component',
-    },
-    {
-      name: 'Link',
-      url: 'link',
-      type: 'Component',
-    },
-  ],
+  related: [],
 };
 
 export default data;
