@@ -6,7 +6,6 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/datepicker.png',
   isVisualComponent: true,
-  isOneColumnLayout: true,
   definitions: [
     {
       title: 'DatePicker',

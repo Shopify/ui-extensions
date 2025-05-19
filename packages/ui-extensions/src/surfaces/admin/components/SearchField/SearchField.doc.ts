@@ -6,7 +6,6 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/searchfield.png',
   isVisualComponent: true,
-  isOneColumnLayout: true,
   definitions: [
     {
       title: 'SearchField',

@@ -5,7 +5,6 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/banner.png',
   isVisualComponent: true,
-  isOneColumnLayout: true,
   subSections: [
     {
       title: 'Outside of a section',

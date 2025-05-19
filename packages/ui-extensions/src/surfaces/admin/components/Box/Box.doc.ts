@@ -5,7 +5,6 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/box.png',
   isVisualComponent: true,
-  isOneColumnLayout: true,
   subSections: [
     {
       title: 'Useful for',
