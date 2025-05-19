@@ -21,8 +21,6 @@ const data: AdminReferenceEntityTemplateSchema = {
     },
   ],
   thumbnail: '/assets/templated-apis-screenshots/admin/components/grid.png',
-  isVisualComponent: true,
-  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',

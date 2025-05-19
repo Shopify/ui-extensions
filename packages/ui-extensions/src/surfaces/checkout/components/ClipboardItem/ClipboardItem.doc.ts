@@ -3,9 +3,7 @@ import sharedContent from '../../../../docs/shared/components/ClipboardItem';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  requires: '',
   isVisualComponent: false,
-  type: '',
   definitions: [
     {
       title: 'Properties',

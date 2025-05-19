@@ -3,10 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Spinner';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  requires: '',
   thumbnail: 'spinner-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',

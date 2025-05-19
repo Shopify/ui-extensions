@@ -4,8 +4,6 @@ import sharedContent from '../../../../docs/shared/components/Image';
 const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/image.png',
-  isVisualComponent: true,
-  isOneColumnLayout: true,
   subSections: [
     {
       title: 'Useful for',

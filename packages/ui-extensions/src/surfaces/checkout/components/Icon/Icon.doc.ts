@@ -4,9 +4,6 @@ import sharedContent from '../../../../docs/shared/components/Icon';
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: 'icon-thumbnail.png',
-  requires: '',
-  isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',

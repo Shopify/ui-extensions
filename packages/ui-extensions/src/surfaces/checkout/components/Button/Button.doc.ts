@@ -4,9 +4,6 @@ import sharedContent from '../../../../docs/shared/components/Button';
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: 'button-thumbnail.png',
-  requires: '',
-  isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',

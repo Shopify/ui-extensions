@@ -4,8 +4,6 @@ import sharedContent from '../../../../docs/shared/components/Switch';
 const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/switch.png',
-  isVisualComponent: true,
-  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',

@@ -3,10 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Time';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  isVisualComponent: true,
   thumbnail: 'time-thumbnail.png',
-  requires: '',
-  type: '',
   definitions: [
     {
       title: 'Properties',

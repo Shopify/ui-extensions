@@ -3,10 +3,7 @@ import sharedContent from '../../../../docs/shared/components/QRCode';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  requires: '',
-  isVisualComponent: true,
   thumbnail: 'qrcode-thumbnail.png',
-  type: '',
   definitions: [
     {
       title: 'Properties',

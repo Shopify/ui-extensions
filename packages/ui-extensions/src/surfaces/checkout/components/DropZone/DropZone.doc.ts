@@ -4,9 +4,6 @@ import sharedContent from '../../../../docs/shared/components/DropZone';
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: 'dropzone-thumbnail.png',
-  requires: '',
-  isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',

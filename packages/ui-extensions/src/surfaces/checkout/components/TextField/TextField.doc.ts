@@ -3,10 +3,7 @@ import sharedContent from '../../../../docs/shared/components/TextField';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  requires: '',
   thumbnail: 'textfield-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',

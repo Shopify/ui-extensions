@@ -3,10 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Banner';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  isVisualComponent: true,
   thumbnail: 'banner-thumbnail.png',
-  requires: '',
-  type: '',
   definitions: [
     {
       title: 'Properties',

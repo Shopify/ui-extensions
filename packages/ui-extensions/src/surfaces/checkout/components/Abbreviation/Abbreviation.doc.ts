@@ -3,10 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Abbreviation';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  isVisualComponent: true,
   thumbnail: 'abbreviation-thumbnail.png',
-  requires: '',
-  type: '',
   definitions: [
     {
       title: 'Properties',

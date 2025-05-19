@@ -3,10 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Box';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  isVisualComponent: true,
   thumbnail: 'box-thumbnail.png',
-  requires: '',
-  type: '',
   definitions: [
     {
       title: 'Properties',

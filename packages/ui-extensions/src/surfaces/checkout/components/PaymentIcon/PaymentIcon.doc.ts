@@ -4,9 +4,6 @@ import sharedContent from '../../../../docs/shared/components/PaymentIcon';
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: 'paymenticon-thumbnail.png',
-  requires: '',
-  isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',

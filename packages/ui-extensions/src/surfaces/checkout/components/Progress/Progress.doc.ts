@@ -3,10 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Progress';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  requires: '',
-  isVisualComponent: true,
   thumbnail: 'progress-thumbnail.png',
-  type: '',
   definitions: [
     {
       title: 'Properties',

@@ -3,10 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Stack';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  isVisualComponent: true,
   thumbnail: 'stack-thumbnail.png',
-  requires: '',
-  type: '',
   definitions: [
     {
       title: 'Properties',

@@ -238,7 +238,7 @@ try {
 
   await fs.rm(tempComponentDefs);
 } catch (error) {
-  console.error(error);
+  console.error(error.toString());
   console.log(error.stdout.toString());
   console.log(error.stderr.toString());
   process.exit(1);

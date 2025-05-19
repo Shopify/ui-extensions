@@ -5,8 +5,6 @@ const data: ReferenceEntityTemplateSchema = {
   ...shared,
   category: 'Polaris web components',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/form.png',
-  isVisualComponent: true,
-  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',

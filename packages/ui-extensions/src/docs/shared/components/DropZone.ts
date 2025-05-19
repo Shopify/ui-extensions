@@ -1,12 +1,15 @@
-import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
+import {
+  type SharedReferenceEntityTemplateSchema,
+  globalShared,
+} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
+  ...globalShared,
   name: 'DropZone',
   description:
     'Lets users upload files through drag-and-drop functionality into a designated area on a page, or by activating a button.',
   category: 'Polaris web components',
   subCategory: 'Forms',
-  related: [],
 };
 
 export default data;

@@ -3,10 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Link';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  requires: '',
-  isVisualComponent: true,
   thumbnail: 'link-thumbnail.png',
-  type: '',
   definitions: [
     {
       title: 'Properties',

@@ -4,9 +4,6 @@ import sharedContent from '../../../../docs/shared/components/Heading';
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: 'heading-thumbnail.png',
-  requires: '',
-  isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',

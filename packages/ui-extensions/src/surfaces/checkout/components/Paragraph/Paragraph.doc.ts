@@ -3,10 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Paragraph';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  requires: '',
   thumbnail: 'paragraph-thumbnail.png',
-  isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',

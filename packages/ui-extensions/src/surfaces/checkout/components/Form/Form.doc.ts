@@ -4,9 +4,6 @@ import sharedContent from '../../../../docs/shared/components/Form';
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: 'form-thumbnail.png',
-  requires: '',
-  isVisualComponent: true,
-  type: '',
   definitions: [
     {
       title: 'Properties',

@@ -4,10 +4,7 @@ import listItemSharedContent from '../../../../docs/shared/components/ListItem';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  isVisualComponent: true,
   thumbnail: 'unorderedlist-thumbnail.png',
-  requires: '',
-  type: '',
   definitions: [
     {
       title: 'Properties',
