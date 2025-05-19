@@ -3,16 +3,10 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Progress',
   description:
-    'Progress displays a progress bar in determinate or indeterminate state.',
+    'Displays an indicator showing the completion status of a task. Use to visually communicate progress in either determinate (known percentage) or indeterminate (unknown duration) states.',
   category: 'Polaris web components',
   subCategory: 'Feedback',
-  related: [
-    {
-      name: 'Spinner',
-      url: 'spinner',
-      type: 'Component',
-    },
-  ],
+  related: [],
 };
 
 export default data;

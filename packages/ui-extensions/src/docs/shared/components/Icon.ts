@@ -3,16 +3,10 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Icon',
   description:
-    'Icons are pictograms or graphic symbols. They can act as wayfinding tools or as a means of communicating functionality.',
+    'Renders a graphic symbol to visually communicate core parts of the product and available actions. Icons can act as wayfinding tools to help users quickly understand their location within the interface and common interaction patterns.',
   category: 'Polaris web components',
   subCategory: 'Media',
-  related: [
-    {
-      name: 'PaymentIcon',
-      url: 'paymenticon',
-      type: 'Component',
-    },
-  ],
+  related: [],
 };
 
 export default data;

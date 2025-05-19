@@ -1,16 +1,12 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
+import sharedContent from '../../../../docs/shared/components/Page';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  name: 'Page',
-  description: `
-  Use \`s-page\` as the main container for placing content in your app. Page comes with preset layouts and automatically adds spacing between elements.
-
-  #### Useful for:
-  - Creating flexible, responsive page layouts.
-  `,
+  ...sharedContent,
   requires: '',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/page.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   type: 'component',
   definitions: [
     {
@@ -22,20 +18,6 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Slots',
       description: '',
       type: 'PageSlots',
-    },
-  ],
-  category: 'Polaris web components',
-  subCategory: 'Structure',
-  related: [
-    {
-      type: 'component',
-      name: 'Section',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/section',
-    },
-    {
-      type: 'component',
-      name: 'Box',
-      url: '/docs/api/admin-extensions/polaris-web-components/structure/box',
     },
   ],
   defaultExample: {
@@ -51,6 +33,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  related: [],
 };
 
 export default data;

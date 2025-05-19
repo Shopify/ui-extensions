@@ -28,11 +28,22 @@ const data: ReferenceEntityTemplateSchema = {
   },
   subSections: [
     {
+      title: 'Useful for',
+      type: 'Generic',
+      anchorLink: 'useful-for',
+      sectionContent: `
+- Adding inline text elements such as labels or line errors.
+- Applying different visual tones and text styles to specific words or phrases within a \`s-paragraph\`, such as a \`strong\` type or \`critical\` tone.`,
+    },
+    {
+      title: 'Best practices',
       type: 'Generic',
       anchorLink: 'best-practices',
-      title: 'Best Practices',
-      sectionContent:
-        '- Create contrast between more and less important text with properties such as `color`.',
+      sectionContent: `
+- Use plain and clear terms.
+- Don’t use jargon or technical language.
+- Don’t use different terms to describe the same thing.
+- Don’t duplicate content.`,
     },
   ],
 };

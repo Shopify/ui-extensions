@@ -6,18 +6,7 @@ const data: SharedReferenceEntityTemplateSchema = {
     'Use `s-password-field` when you need to collect sensitive information from merchants.',
   category: 'Polaris web components',
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: 'textfield',
-    },
-    {
-      type: 'component',
-      name: 'EmailField',
-      url: 'emailfield',
-    },
-  ],
+  related: [],
 };
 
 export default data;

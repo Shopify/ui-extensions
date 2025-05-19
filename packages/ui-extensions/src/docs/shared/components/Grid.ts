@@ -6,18 +6,7 @@ const data: SharedReferenceEntityTemplateSchema = {
     'Use `s-grid` to organize your content in a matrix of rows and columns and make responsive layouts for pages. Grid follows the same pattern as the [CSS grid layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout).',
   category: 'Polaris web components',
   subCategory: 'Structure',
-  related: [
-    {
-      type: 'component',
-      name: 'Box',
-      url: 'box',
-    },
-    {
-      type: 'component',
-      name: 'Stack',
-      url: 'stack',
-    },
-  ],
+  related: [],
 };
 
 export default data;

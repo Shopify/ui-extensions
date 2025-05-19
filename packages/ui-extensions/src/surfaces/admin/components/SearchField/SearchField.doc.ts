@@ -1,9 +1,31 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import shared from './shared';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
+import sharedContent from '../../../../docs/shared/components/SearchField';
 
-const data: ReferenceEntityTemplateSchema = {
-  ...shared,
-  category: 'Polaris web components',
+const data: AdminReferenceEntityTemplateSchema = {
+  ...sharedContent,
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/searchfield.png',
+  isVisualComponent: true,
+  isOneColumnLayout: true,
+  definitions: [
+    {
+      title: 'SearchField',
+      description:
+        'A search input field that allows users to enter a search term.',
+      type: 'SearchField',
+    },
+  ],
+  defaultExample: {
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

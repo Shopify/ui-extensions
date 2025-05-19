@@ -1,9 +1,31 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import shared from './shared';
+import sharedContent from '../../../../docs/shared/components/URLField';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  ...shared,
-  category: 'Polaris web components',
+  ...sharedContent,
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/urlfield.png',
+  isVisualComponent: true,
+  isOneColumnLayout: true,
+  definitions: [
+    {
+      title: 'URLField',
+      description: '',
+      type: 'URLField',
+    },
+  ],
+  defaultExample: {
+    image: 'urlfield-default.png',
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          title: 'HTML',
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

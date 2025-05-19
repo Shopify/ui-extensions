@@ -8,6 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/adminblock.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   type: '',
   definitions: [
     {
@@ -32,13 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [
-    {
-      type: 'component',
-      name: 'Adminaction',
-      url: '/docs/api/admin-extensions/polaris-web-components/other/adminaction',
-    },
-  ],
+  related: [],
 };
 
 export default data;

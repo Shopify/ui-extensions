@@ -1,11 +1,11 @@
 import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
-  name: 'Image',
+  name: 'Page',
   description:
-    'Embeds an image within the interface and controls its presentation. Use to visually illustrate concepts, showcase products, or support user tasks and interactions.',
+    ' Use `s-page` as the main container for placing content in your app. Page comes with preset layouts and automatically adds spacing between elements.',
   category: 'Polaris web components',
-  subCategory: 'Media',
+  subCategory: 'Structure',
   related: [],
 };
 

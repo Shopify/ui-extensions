@@ -1,12 +1,31 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import {setRelatedUrl} from '../../uitls';
-
-import globalShared from '../../../../docs/shared/components/Badge';
-import shared from './shared';
+import sharedContent from '../../../../docs/shared/components/Badge';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  ...setRelatedUrl(globalShared, 'admin-extensions'),
-  ...shared,
+  ...sharedContent,
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/badge.png',
+  isVisualComponent: true,
+  isOneColumnLayout: true,
+  definitions: [
+    {
+      title: 'Properties',
+      description: '',
+      type: 'Badge',
+    },
+  ],
+  defaultExample: {
+    image: 'badge-default.png',
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+          layout: 'inline',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

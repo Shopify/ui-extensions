@@ -6,23 +6,7 @@ const data: SharedReferenceEntityTemplateSchema = {
     'Use a search field to allow merchants to search for a specific item or search term. Search fields provide a single-line input area for collecting string values from users.',
   category: 'Polaris web components',
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: 'textfield',
-    },
-    {
-      type: 'component',
-      name: 'EmailField',
-      url: 'emailfield',
-    },
-    {
-      type: 'component',
-      name: 'NumberField',
-      url: 'numberfield',
-    },
-  ],
+  related: [],
 };
 
 export default data;
