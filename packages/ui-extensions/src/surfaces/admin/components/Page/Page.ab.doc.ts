@@ -6,6 +6,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   requires: '',
   thumbnail: '/assets/templated-apis-screenshots/admin/components/page.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   type: 'component',
   definitions: [
     {
