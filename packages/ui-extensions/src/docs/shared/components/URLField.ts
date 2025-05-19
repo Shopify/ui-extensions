@@ -5,18 +5,7 @@ const data: SharedReferenceEntityTemplateSchema = {
   description: 'Use a URLField when you need to collect URLs from merchants.',
   category: 'Polaris web components',
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: 'textfield',
-    },
-    {
-      type: 'component',
-      name: 'EmailField',
-      url: 'emailfield',
-    },
-  ],
+  related: [],
 };
 
 export default data;

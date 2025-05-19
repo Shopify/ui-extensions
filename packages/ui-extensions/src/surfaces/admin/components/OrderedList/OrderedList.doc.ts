@@ -1,12 +1,23 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import {setRelatedUrl} from '../../uitls';
-
-import globalShared from '../../../../docs/shared/components/OrderedList';
-import shared from './shared';
+import sharedContent from '../../../../docs/shared/components/OrderedList';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  ...setRelatedUrl(globalShared, 'admin-extensions'),
-  ...shared,
+  ...sharedContent,
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/ordered-list.png',
+  isVisualComponent: true,
+  defaultExample: {
+    image: 'ordered-list-default.png',
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

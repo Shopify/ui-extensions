@@ -1,12 +1,52 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import {setRelatedUrl} from '../../uitls';
-
-import globalShared from '../../../../docs/shared/components/Stack';
-import shared from './shared';
+import sharedContent from '../../../../docs/shared/components/Stack';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  ...setRelatedUrl(globalShared, 'admin-extensions'),
-  ...shared,
+  ...sharedContent,
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/stack.png',
+  isVisualComponent: true,
+  subSections: [
+    {
+      title: 'Useful for',
+      type: 'Generic' as const,
+      anchorLink: 'useful-for',
+      sectionContent: `- Placing items in rows or columns when sections don't work for your layout.
+- Controlling the spacing between elements.`,
+    },
+    {
+      title: 'Considerations',
+      type: 'Generic' as const,
+      anchorLink: 'considerations',
+      sectionContent: `- Stack doesn't add any padding by default. If you want padding around your stacked elements, use \`base\` to apply the default padding.
+- When spacing becomes limited, Stack will always wrap children to a new line.`,
+    },
+    {
+      title: 'Best practices',
+      type: 'Generic' as const,
+      anchorLink: 'best-practices',
+      sectionContent: `- Use smaller gaps between small elements and larger gaps between big ones.
+- Maintain consistent spacing in stacks across all pages of your app.`,
+    },
+  ],
+  definitions: [
+    {
+      title: 'Properties',
+      description: '',
+      type: 'Stack',
+    },
+  ],
+  defaultExample: {
+    image: 'stack-default.png',
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

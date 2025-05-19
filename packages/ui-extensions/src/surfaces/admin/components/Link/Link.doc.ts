@@ -1,12 +1,35 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import {setRelatedUrl} from '../../uitls';
-
-import globalShared from '../../../../docs/shared/components/Link';
-import shared from './shared';
+import sharedContent from '../../../../docs/shared/components/Link';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  ...setRelatedUrl(globalShared, 'admin-extensions'),
-  ...shared,
+  ...sharedContent,
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/link.png',
+  isVisualComponent: true,
+  definitions: [
+    {
+      title: 'Properties',
+      description: '',
+      type: 'Link',
+    },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'LinkEvents',
+    },
+  ],
+  defaultExample: {
+    image: 'link-default.png',
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

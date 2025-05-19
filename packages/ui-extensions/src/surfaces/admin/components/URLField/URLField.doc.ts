@@ -1,12 +1,30 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import {setRelatedUrl} from '../../uitls';
-
-import globalShared from '../../../../docs/shared/components/URLField';
-import shared from './shared';
+import sharedContent from '../../../../docs/shared/components/URLField';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  ...setRelatedUrl(globalShared, 'admin-extensions'),
-  ...shared,
+  ...sharedContent,
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/urlfield.png',
+  isVisualComponent: true,
+  definitions: [
+    {
+      title: 'URLField',
+      description: '',
+      type: 'URLField',
+    },
+  ],
+  defaultExample: {
+    image: 'urlfield-default.png',
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          title: 'HTML',
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

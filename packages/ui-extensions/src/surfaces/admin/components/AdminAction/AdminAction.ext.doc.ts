@@ -37,13 +37,6 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [
-    {
-      type: 'component',
-      name: 'AdminBlock',
-      url: '/docs/api/admin-extensions/polaris-web-components/other/adminblock',
-    },
-  ],
 };
 
 export default data;

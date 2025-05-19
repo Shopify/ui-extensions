@@ -1,12 +1,30 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import {setRelatedUrl} from '../../uitls';
-
-import globalShared from '../../../../docs/shared/components/ChoiceList';
-import shared from './shared';
+import sharedContent from '../../../../docs/shared/components/ChoiceList';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  ...setRelatedUrl(globalShared, 'admin-extensions'),
-  ...shared,
+  ...sharedContent,
+  thumbnail:
+    '/assets/templated-apis-screenshots/admin/components/choicelist.png',
+  isVisualComponent: true,
+  definitions: [
+    {
+      title: 'Properties',
+      description: '',
+      type: 'ChoiceList',
+    },
+  ],
+  defaultExample: {
+    image: 'choicelist-default.png',
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

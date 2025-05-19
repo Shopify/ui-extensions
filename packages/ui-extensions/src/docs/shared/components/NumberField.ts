@@ -6,18 +6,7 @@ const data: SharedReferenceEntityTemplateSchema = {
     'Use `s-number-field` when you need to collect numerical input from merchants. It provides appropriate keyboard settings and validation for numerical values.',
   category: 'Polaris web components',
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: 'textfield',
-    },
-    {
-      type: 'component',
-      name: 'MoneyField',
-      url: 'moneyfield',
-    },
-  ],
+  related: [],
 };
 
 export default data;

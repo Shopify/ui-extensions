@@ -1,12 +1,36 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import {setRelatedUrl} from '../../uitls';
-
-import globalShared from '../../../../docs/shared/components/Button';
-import shared from './shared';
+import sharedContent from '../../../../docs/shared/components/Button';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  ...setRelatedUrl(globalShared, 'admin-extensions'),
-  ...shared,
+  ...sharedContent,
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/button.png',
+  isVisualComponent: true,
+  definitions: [
+    {
+      title: 'Properties',
+      description: '',
+      type: 'Button',
+    },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'ButtonEvents',
+    },
+  ],
+  defaultExample: {
+    image: 'button-default.png',
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+          layout: 'inline',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

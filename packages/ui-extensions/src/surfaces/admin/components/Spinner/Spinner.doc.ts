@@ -1,12 +1,29 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
-import {setRelatedUrl} from '../../uitls';
-
-import globalShared from '../../../../docs/shared/components/Spinner';
-import shared from './shared';
+import sharedContent from '../../../../docs/shared/components/Spinner';
 
 const data: AdminReferenceEntityTemplateSchema = {
-  ...setRelatedUrl(globalShared, 'admin-extensions'),
-  ...shared,
+  ...sharedContent,
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/spinner.png',
+  isVisualComponent: true,
+  definitions: [
+    {
+      title: 'Properties',
+      description: '',
+      type: 'Spinner',
+    },
+  ],
+  defaultExample: {
+    image: 'spinner-default.png',
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

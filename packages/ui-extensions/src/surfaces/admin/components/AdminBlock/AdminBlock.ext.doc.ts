@@ -32,13 +32,6 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
-  related: [
-    {
-      type: 'component',
-      name: 'Adminaction',
-      url: '/docs/api/admin-extensions/polaris-web-components/other/adminaction',
-    },
-  ],
 };
 
 export default data;
