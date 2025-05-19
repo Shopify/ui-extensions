@@ -6,6 +6,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/paragraph.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   subSections: [
     {
       title: 'Useful for',

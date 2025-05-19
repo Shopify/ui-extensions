@@ -33,6 +33,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       ],
     },
   },
+  related: [],
 };
 
 export default data;

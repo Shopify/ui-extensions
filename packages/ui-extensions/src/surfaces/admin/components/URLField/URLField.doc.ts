@@ -5,6 +5,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/urlfield.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'URLField',

@@ -33,6 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  related: [],
 };
 
 export default data;

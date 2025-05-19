@@ -5,6 +5,7 @@ const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
   thumbnail: '/assets/templated-apis-screenshots/admin/components/checkbox.png',
   isVisualComponent: true,
+  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',
