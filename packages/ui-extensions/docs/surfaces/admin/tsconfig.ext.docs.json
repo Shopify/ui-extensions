@@ -2,5 +2,6 @@
   "compilerOptions": {
     "rootDir": "/"
   },
-  "include": ["./**/*.doc.ts", "./**/*.ext.doc.ts"]
+  "include": ["./**/*.doc.ts", "../../../src/surfaces/admin/**/*.doc.ts"],
+  "exclude": ["./**/*.ab.doc.ts", "../../../src/surfaces/admin/**/*.ab.doc.ts"]
 }
