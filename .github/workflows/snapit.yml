@@ -22,5 +22,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
-          build_script: yarn build
+          build_script: yarn build; yarn changeset pre exit
           comment_command: /snapit

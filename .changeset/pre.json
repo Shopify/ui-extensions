@@ -1,0 +1,24 @@
+{
+  "mode": "pre",
+  "tag": "rc",
+  "initialVersions": {
+    "@shopify/ui-extensions": "2025.10.0-rc.0"
+  },
+  "changesets": [
+    "brave-birds-travel",
+    "clever-jars-invite",
+    "cold-snakes-return",
+    "famous-parents-punch",
+    "heavy-melons-greet",
+    "late-gorillas-worry",
+    "lemon-dots-rhyme",
+    "orange-emus-whisper",
+    "pretty-terms-switch",
+    "rotten-donuts-clap",
+    "slimy-knives-decide",
+    "smart-cups-carry",
+    "spicy-mugs-drop",
+    "sweet-toes-taste",
+    "wet-laws-explain"
+  ]
+}
