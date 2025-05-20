@@ -20,9 +20,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-list-item': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ListItemProps;
+            's-list-item': ListItemProps & BaseProps;
         }
     }
 }

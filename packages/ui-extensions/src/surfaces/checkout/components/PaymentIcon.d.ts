@@ -8,29 +8,26 @@
 /* eslint-disable import/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ParagraphProps$1} from './components-shared.d.ts';
+import type {PaymentIconProps$1} from './components-shared.d.ts';
 
-export interface ParagraphProps extends Pick<ParagraphProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'id' | 'lang' | 'tone' | 'type'> {
-    color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
-    tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
+export interface PaymentIconProps extends PaymentIconProps$1 {
 }
-export interface ParagraphElement extends ParagraphProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
+export interface PaymentIconElement extends PaymentIconProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-paragraph': ParagraphElement;
+        's-payment-icon': PaymentIconElement;
     }
 }
 declare module 'preact' {
     interface BaseProps {
-        children?: preact.ComponentChildren;
         slot?: Lowercase<string>;
     }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-paragraph': ParagraphProps & BaseProps;
+            's-payment-icon': PaymentIconProps & BaseProps;
         }
     }
 }
 
-export type { ParagraphElement, ParagraphProps };
+export type { PaymentIconElement, PaymentIconProps };

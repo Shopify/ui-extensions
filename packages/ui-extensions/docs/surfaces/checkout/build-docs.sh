@@ -2,7 +2,7 @@ API_VERSION=$1
 DOCS_PATH=docs/surfaces/checkout
 SRC_PATH=src/surfaces/checkout
 COMPONENTS_DEFINITIONS=src/surfaces/checkout/components/components.d.ts
-COMPONENTS_TS=src/surfaces/checkout/components/components.ts
+COMPONENTS_TEMP_TS=src/surfaces/checkout/components/components.ts
 
 fail_and_exit() {
   echo "** Failed to generate docs"
@@ -35,10 +35,10 @@ fi
 
 COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH --output ./$DOCS_PATH/generated"
 COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
-COMPILE_CATEGORIES="yarn tsc $DOCS_PATH/categories/*.doc.ts --moduleResolution node --target esNext --module CommonJS && pnpm exec generate-docs --isCategoryPage --input ./$DOCS_PATH/categories --output ./$DOCS_PATH/generated"
+COMPILE_CATEGORIES="yarn tsc $DOCS_PATH/categories/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isCategoryPage --input ./$DOCS_PATH/categories --output ./$DOCS_PATH/generated"
 
 # Rename components.d.ts to components.ts so it can be picked up be the generate-docs tool
-cp $COMPONENTS_DEFINITIONS $COMPONENTS_TS
+cp $COMPONENTS_DEFINITIONS $COMPONENTS_TEMP_TS
 
 if echo "$PWD" | grep -q '\checkout-web'; then
   # We are generating docs from the private package, which does not have other surfaces aside from checkout
@@ -60,6 +60,11 @@ fi
 # TODO: get generate-docs to stop requiring JS files:
 # https://github.com/Shopify/generate-docs#important-note
 find ./ -name '*.doc*.js' -exec rm -r {} \;
+find ./src/docs/shared -name '*.js' -exec rm -r {} \;
+find ./src/docs/shared/components -name '*.js' -exec rm -r {} \;
+
+# Remove the components.ts file that was created by the build-docs.sh script
+rm -f $COMPONENTS_TEMP_TS
 
 if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit
@@ -126,4 +131,3 @@ else
   SHOPIFY_DEV_PATH="$HOME/src/github.com/Shopify/shopify-dev"
   copy_generated_docs_to_shopify_dev
 fi
-

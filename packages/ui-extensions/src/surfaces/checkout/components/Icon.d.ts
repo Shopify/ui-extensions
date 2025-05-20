@@ -8,7 +8,7 @@
 /* eslint-disable import/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {IconProps$1, TextFieldProps$1} from './components-shared.d.ts';
+import type {IconProps$1} from './components-shared.d.ts';
 
 export interface IconProps extends Pick<IconProps$1, 'id' | 'size' | 'tone' | 'type'> {
     tone?: Extract<IconProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
@@ -33,29 +33,4 @@ declare module 'preact' {
     }
 }
 
-export interface TextFieldProps extends Pick<TextFieldProps$1, 'accessory' | 'autocomplete' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'id' | 'icon' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'placeholder' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
-    icon?: IconProps['type'];
-}
-export interface TextFieldElement extends Omit<TextFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
-    onblur: TextFieldProps['onBlur'];
-    onchange: TextFieldProps['onChange'];
-    onfocus: TextFieldProps['onFocus'];
-    oninput: TextFieldProps['onInput'];
-}
-declare global {
-    interface HTMLElementTagNameMap {
-        's-text-field': TextFieldElement;
-    }
-}
-declare module 'preact' {
-    interface BaseProps {
-        slot?: Lowercase<string>;
-    }
-    namespace createElement.JSX {
-        interface IntrinsicElements {
-            's-text-field': TextFieldProps & BaseProps;
-        }
-    }
-}
-
-export type { TextFieldElement, TextFieldProps };
+export type { IconElement, IconProps };
