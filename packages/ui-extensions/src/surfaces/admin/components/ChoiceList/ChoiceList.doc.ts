@@ -18,6 +18,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: choiceSharedContent.description,
       type: 'Choice',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'ChoiceListEvents',
+    },
   ],
   defaultExample: {
     image: 'choicelist-default.png',

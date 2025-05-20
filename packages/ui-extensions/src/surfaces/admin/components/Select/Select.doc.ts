@@ -11,6 +11,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'Select',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'SelectEvents',
+    },
   ],
   defaultExample: {
     image: 'select-default.png',

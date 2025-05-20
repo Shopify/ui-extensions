@@ -11,6 +11,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'TextArea',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'TextAreaEvents',
+    },
   ],
   defaultExample: {
     image: 'textarea-default.png',

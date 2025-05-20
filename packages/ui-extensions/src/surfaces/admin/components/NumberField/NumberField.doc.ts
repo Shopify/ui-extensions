@@ -12,6 +12,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'NumberField',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'NumberFieldEvents',
+    },
   ],
   defaultExample: {
     image: 'numberfield-default.png',
