@@ -116,7 +116,7 @@ export interface ExtensionTargets {
       ActionApi &
       CartApi &
       DraftOrderApi,
-    ActionComponents
+    BlockComponents
   >;
   'pos.customer-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.customer-details.action.menu-item.render'> &

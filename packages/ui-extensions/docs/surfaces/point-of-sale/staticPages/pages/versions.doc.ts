@@ -53,10 +53,15 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Removed in POS version: N/A
 - Release day: N/A
 
+## Important Fixes
+
+- Update pos.draft-order-details.block.render allowed components to \`BlockComponents\`.
+
 ### Features
 
 - Added required \`posVersion\` property to \`Session\` interface.
 - Added optional \`currency\` property to \`Discount\` interface.
+
   `,
     },
     {
