@@ -126,7 +126,9 @@ export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id'> {
   /**
-   * The secondary actions to display at the bottom of the banner. Only a maximum of two `s-button` components are allowed.
+   * The secondary actions to display at the bottom of the banner.
+   *
+   * A maximum of two `s-button` components are allowed, and only buttons with the `variant` of "secondary" are permitted.
    */
   secondaryActions?: ComponentChild;
   onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
