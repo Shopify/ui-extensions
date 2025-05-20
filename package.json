@@ -32,7 +32,8 @@
     "run:ts:watch": "nodemon --ext .ts,.tsx,.mjs,.json,.graphql node_modules/.bin/babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "scaffold-docs:admin": "./packages/ui-extensions/docs/surfaces/admin/create-doc-files.sh \"admin\"",
     "test": "loom test",
-    "type-check": "loom type-check"
+    "type-check": "loom type-check",
+    "changeset:exit-pre-mode": "test -f .changeset/pre.json && jq -e '.mode == \"pre\"' .changeset/pre.json > /dev/null && yarn changeset pre exit || true"
   },
   "devDependencies": {
     "@babel/node": "^7.8.7",

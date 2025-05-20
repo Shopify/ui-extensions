@@ -16,15 +16,11 @@ jobs:
 
       - uses: ./.github/workflows/actions/prepare
 
-      - name: Exit pre mode
-        if: contains(github.base_ref, '-rc')
-        run: yarn changeset pre exit
-
       - name: Create snapshot
         uses: Shopify/snapit@main
         env:
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         with:
-          build_script: yarn build
+          build_script: yarn build; yarn changeset:exit-pre-mode
           comment_command: /snapit
