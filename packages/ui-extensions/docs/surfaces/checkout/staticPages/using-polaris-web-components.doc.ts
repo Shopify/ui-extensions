@@ -28,7 +28,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'custom-layout',
       title: 'Custom layout',
       sectionContent:
-        'When you need to build custom layouts you can use `s-stack`, `s-grid` (coming soon) and `s-box`. \n\n- `s-stack` and `s-grid` do not include spacing between children by default. To apply white space between children use the `gap=` property\n- When `s-stack` is `display="inline"` it will automatically wrap children to a new line when space is limited.\n- `s-grid` (coming soon) will allow children to overflow unless template rows/columns are properly set.\n- Order is important for shorthand properties, e.g. border takes `size-keyword`, `color-keyword`, `style-keyword`',
+        'When you need to build custom layouts you can use `s-stack`, `s-grid` (coming soon) and `s-box`. \n\n- `s-stack` and `s-grid` (coming soon) do not include spacing between children by default. To apply white space between children use the `gap` property\n- When `s-stack` is `display="inline"` it will automatically wrap children to a new line when space is limited.\n- `s-grid` (coming soon) will allow children to overflow unless template rows/columns are properly set.\n- Order is important for shorthand properties, e.g. border takes `size-keyword`, `color-keyword`, `style-keyword`',
     },
     {
       type: 'Generic',
@@ -59,7 +59,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'variant-tone-and-color',
       title: 'Variant tone and color',
       sectionContent:
-        'The `tone` is used to apply a group of color design tokens to the component such as `critical` `success` or `info`.\n\nThe `color` adjusts the intensity of the `tone` making it more `subdued` or `strong`.\n\nThe `variant` is used to change how the component is rendered to match the design language this is different for each component.',
+        'The `tone` is used to apply a group of color design tokens to the component such as `critical`, `success` or `info`.\n\nThe `color` adjusts the intensity of the `tone` making it more `subdued` or `strong`.\n\nThe `variant` is used to change how the component is rendered to match the design language this is different for each component.',
       codeblock: {
         title: 'Example',
         tabs: [
@@ -76,7 +76,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'using-with-preact',
       title: 'Using with Preact',
       sectionContent:
-        'For UI Extensions, Shopify provides Preact as the framework of choice. Using Polaris web components with Preact is very similar to using them with React:',
+        'For UI Extensions, Shopify provides Preact as the framework of choice. Using Polaris web components with Preact is very similar to using them with React.  ',
       codeblock: {
         title: 'Example',
         tabs: [
@@ -91,12 +91,12 @@ const data: LandingTemplateSchema = {
     {
       type: 'GenericAccordion',
       anchorLink: 'properties-vs-attributes',
-      title: 'Properties vs Attributes',
+      title: 'Properties vs attributes',
       sectionContent:
         'Polaris web components follow the same property and attribute patterns as standard HTML elements. Understanding this distinction is important for using the components effectively.',
       accordionContent: [
         {
-          title: 'Key Concepts',
+          title: 'Key concepts',
           description:
             "1. **Attributes** are HTML attributes that appear in the HTML markup.\n2. **Properties** are JavaScript object properties accessed directly on the DOM element.\n3. Most attributes in Polaris web components are reflected as properties, with a few exceptions like `value` and `checked` which follow HTML's standard behavior.",
           codeblock: {
@@ -107,7 +107,7 @@ const data: LandingTemplateSchema = {
           initialLanguage: '',
         },
         {
-          title: 'How JSX Props Are Applied',
+          title: 'How JSX properties are aspplied',
           description:
             "When using Polaris web components in JSX, the framework determines how to apply your props based on whether the element has a matching property name.\n\nIf the element has a property with the exact same name as your prop, the value is set as a property. Otherwise, it's applied as an attribute. Here's how this works in pseudocode:",
           codeblock: {
@@ -225,7 +225,7 @@ const data: LandingTemplateSchema = {
         'Common issues and debugging tips for using Polaris web components.',
       accordionContent: [
         {
-          title: 'Common Issues',
+          title: 'Common issues',
           description:
             "1. **Properties not updating**: Ensure you're using the property name as documented, not a different casing or naming convention.\n\n2. **Event handlers not firing**: Check that you're using the correct event name (e.g., `onClick` for click events).\n\n3. **Form values not being submitted**: Make sure your form elements have `name` attributes.",
           codeblock: {
@@ -236,7 +236,7 @@ const data: LandingTemplateSchema = {
           initialLanguage: '',
         },
         {
-          title: 'Debugging Tips',
+          title: 'Debugging tips',
           description:
             "1. Inspect the element in your browser's developer tools to see the current property and attribute values.\n\n2. Use `console.log` to verify that event handlers are being called and receiving the expected event objects.\n\n3. Check for any errors in the browser console that might indicate issues with your component usage.",
           codeblock: {
