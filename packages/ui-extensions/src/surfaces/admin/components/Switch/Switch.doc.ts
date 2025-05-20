@@ -11,6 +11,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'Switch',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'SwitchEvents',
+    },
   ],
   defaultExample: {
     codeblock: {

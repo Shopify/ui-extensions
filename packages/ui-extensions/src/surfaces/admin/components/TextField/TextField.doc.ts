@@ -18,6 +18,12 @@ const data: AdminReferenceEntityTemplateSchema = {
       description: '',
       type: 'TextFieldSlots',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'TextFieldEvents',
+    },
   ],
   defaultExample: {
     image: 'text-field-default.png',
