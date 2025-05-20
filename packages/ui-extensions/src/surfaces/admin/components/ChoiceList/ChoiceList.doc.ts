@@ -1,5 +1,6 @@
 import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
 import sharedContent from '../../../../docs/shared/components/ChoiceList';
+import choiceSharedContent from '../../../../docs/shared/components/Choice';
 
 const data: AdminReferenceEntityTemplateSchema = {
   ...sharedContent,
@@ -11,6 +12,11 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Properties',
       description: '',
       type: 'ChoiceList',
+    },
+    {
+      title: choiceSharedContent.name,
+      description: choiceSharedContent.description,
+      type: 'Choice',
     },
   ],
   defaultExample: {
