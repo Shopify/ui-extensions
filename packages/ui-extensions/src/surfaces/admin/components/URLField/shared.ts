@@ -9,6 +9,12 @@ const shared = {
       description: '',
       type: 'URLField',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'URLFieldEvents',
+    },
   ],
   subCategory: 'Forms',
   related: [

@@ -10,6 +10,12 @@ const shared = {
       description: '',
       type: 'Checkbox',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'CheckboxEvents',
+    },
   ],
   subCategory: 'Forms',
   related: [

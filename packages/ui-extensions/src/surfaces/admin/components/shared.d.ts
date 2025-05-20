@@ -228,6 +228,7 @@ declare const privateIconArray: readonly [
   'enter',
   'envelope-soft-pack',
   'envelope',
+  'eraser',
   'exchange',
   'exit',
   'export',
@@ -682,10 +683,10 @@ interface BannerProps$1 extends GlobalProps, ActionSlots, ContainerProps {
   /**
    * Sets the tone of the Banner, based on the intention of the information being conveyed.
    *
-   * In an HTML host, the Banner is a live region and the type of status will be dictated by the Tone selected.
+   * The banner is a live region and the type of status will be dictated by the Tone selected.
    *
-   * - `critical` and `warning` creates an assertive live region (`role="alert"`) that is announced by screen readers immediately.
-   * - `neutral`, `info`, `success`, and `caution` creates an informative live region (`role="status"`) that is announced by screen readers after the current message.
+   * - `critical` creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) that is announced by screen readers immediately.
+   * - `neutral`, `info`, `success`, `warning` and `caution` creates an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) that is announced by screen readers after the current message.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
    * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role
@@ -745,10 +746,10 @@ interface BannerProps$1 extends GlobalProps, ActionSlots, ContainerProps {
 }
 export interface DisplayProps {
   /**
-   * Sets the outer display type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
+   * Sets the outer display type of the component. The outer type sets a component’s participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
    *
-   * - `auto` the component's initial value. The actual value depends on the component and context.
-   * - `none` hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
+   * - `auto`: the component’s initial value. The actual value depends on the component and context.
+   * - `none`: hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
    * @default 'auto'
@@ -761,7 +762,7 @@ export interface AccessibilityRoleProps {
    * the role will be used by assistive technologies to help users
    * navigate the page.
    *
-   * Although, in HTML hosts, this property changes the element used,
+   * @implementation Although, in HTML hosts, this property changes the element used,
    * changing this property must not impact the visual styling of inside or outside of the box.
    *
    * @default 'generic'
@@ -914,7 +915,7 @@ export interface PaddingProps {
   /**
    * Adjust the padding of all edges.
    *
-   * 1-to-4-value syntax (@see https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
    * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
    *
    * - 4 values: `block-start inline-end block-end inline-start`
@@ -1120,7 +1121,7 @@ export interface BorderProps {
   /**
    * Set the radius of the border.
    *
-   * 1-to-4-value syntax (@see https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
    * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
    *
    * - 4 values: `start-start start-end end-end end-start`
@@ -1141,11 +1142,10 @@ export interface OverflowProps {
   /**
    * Sets the overflow behavior of the element.
    *
-   * `hidden`: clips the content when it is larger than the element’s container.
+   * - `hidden`: clips the content when it is larger than the element’s container.
    * The element will not be scrollable and the users will not be able
    * to access the clipped content by dragging or using a scroll wheel on a mouse.
-   *
-   * `visible`: the content that extends beyond the element’s container is visible.
+   * - `visible`: the content that extends beyond the element’s container is visible.
    *
    * @default 'visible'
    */
@@ -1191,9 +1191,9 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The behavior of the button.
    *
-   * - `'submit'` - Used to indicate the component acts as a submit button, meaning it submits the closest form.
-   * - `'button'` - Used to indicate the component acts as a button, meaning it has no default action.
-   * - `'reset'` - Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
+   * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
+   * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
+   * - `reset`: Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
    *
    * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.
    *
@@ -1207,12 +1207,16 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   onClick?: () => void;
   /**
    * Disables the button, meaning it cannot be clicked or receive focus.
+   *
+   * @default false
    */
   disabled?: boolean;
   /**
    * Replaces content with a loading indicator while a background action is being performed.
    *
    * This also disables the button.
+   *
+   * @default false
    */
   loading?: boolean;
 }
@@ -1220,17 +1224,20 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The URL to link to.
    *
-   * - If set, it will navigate to the location specified by `href` after executing the `onClick` callback.
+   * - If set, it will navigate to the location specified by `href` after executing the `click` event.
    * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
    */
   href?: string;
   /**
-   * Specifies where to display the linked URL
+   * Specifies where to display the linked URL.
+   *
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
    *
-   * 'auto' - The target is automatically determined based on the origin of the URL. Surfaces can set specific rules on how they handle each URL.
-   * It’s expected that the behavior of `auto` is as `_self` except in specific cases.
-   * For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).
+   * 'auto': The target is automatically determined based on the origin of the URL.
+   *
+   * @implementation Surfaces can set specific rules on how they handle each URL.
+   * @implementation It’s expected that the behavior of `auto` is as `_self` except in specific cases.
+   * @implementation For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).
    *
    * @default 'auto'
    */
@@ -1249,7 +1256,7 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 }
 export interface InteractionProps {
   /**
-   * ID of a component that should respond to activations (e.g. clicks) on this clickable.
+   * ID of a component that should respond to activations (e.g. clicks) on this component.
    *
    * See `command` for how to control the behavior of the target.
    *
@@ -1261,11 +1268,11 @@ export interface InteractionProps {
    *
    * See the documentation of particular components for the actions they support.
    *
-   * - `'--auto'`: a default action for the target component.
-   * - `'--show'`: shows the target component.
-   * - `'--hide'`: hides the target component.
-   * - `'--toggle'`: toggles the target component.
-   * - `'--copy'`: copies the target ClipboardItem.
+   * - `--auto`: a default action for the target component.
+   * - `--show`: shows the target component.
+   * - `--hide`: hides the target component.
+   * - `--toggle`: toggles the target component.
+   * - `--copy`: copies the target ClipboardItem.
    *
    * @default '--auto'
    *
@@ -1297,9 +1304,9 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
   /**
    * The displayed inline width of the button.
    *
-   * `auto`: the size of the button depends on the surface and context.
-   * `fill`: the button will takes up 100% of the available inline-size.
-   * `fit-content`: the button will take up the minimum inline-size required to fit its content.
+   * - `auto`: the size of the button depends on the surface and context.
+   * - `fill`: the button will takes up 100% of the available inline size.
+   * - `fit-content`: the button will take up the minimum inline-size required to fit its content.
    *
    * @default 'auto'
    */
@@ -1325,12 +1332,13 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 }
 export interface BaseInputProps {
   /**
-   * An identifier for the field that is unique within the nearest
-   * containing `Form` component.
+   * An identifier for the field that is unique within the nearest containing form.
    */
   name?: string;
   /**
    * Disables the field, disallowing any interaction.
+   *
+   * @default false
    */
   disabled?: boolean;
 }
@@ -1349,6 +1357,8 @@ export interface InputProps extends BaseInputProps {
   value?: string;
   /**
    * The default value for the field.
+   *
+   * @implementation `defaultValue` reflects to the `value` attribute.
    */
   defaultValue?: string;
 }
@@ -1382,7 +1392,9 @@ export interface BasicFieldProps
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
    * If you want to present an error when this field is empty, you can do
-   * so with the `error` prop.
+   * so with the `error` property.
+   *
+   * @default false
    */
   required?: boolean;
   /**
@@ -1413,6 +1425,8 @@ export interface FieldProps
 export interface BaseTextFieldProps extends FieldProps {
   /**
    * The field cannot be edited by the user. It is focusable will be announced by screen readers.
+   *
+   * @default false
    */
   readOnly?: boolean;
 }
@@ -1519,6 +1533,8 @@ export interface BaseSelectableProps {
   accessibilityLabel?: string;
   /**
    * Disables the control, disallowing any interaction.
+   *
+   * @default false
    */
   disabled?: boolean;
   /**
@@ -1529,10 +1545,16 @@ export interface BaseSelectableProps {
 export interface BaseOptionProps extends BaseSelectableProps {
   /**
    * Whether the control is active.
+   *
+   * @default false
    */
   selected?: boolean;
   /**
    * Whether the control is active by default.
+   *
+   * @implementation `defaultSelected` reflects to the `selected` attribute.
+   *
+   * @default false
    */
   defaultSelected?: boolean;
 }
@@ -1545,10 +1567,16 @@ export interface BaseCheckableProps
   label?: string;
   /**
    * Whether the control is active.
+   *
+   * @default false
    */
   checked?: boolean;
   /**
    * Whether the control is active by default.
+   *
+   * @implementation `defaultChecked` reflects to the `checked` attribute.
+   *
+   * @default false
    */
   defaultChecked?: boolean;
   /**
@@ -1577,7 +1605,10 @@ interface CheckboxProps$1
    * But this is purely a visual change.
    * Whether the value is submitted along with a form is still down to the `checked` prop.
    *
-   * In custom element implementations, this must not reflect to an attribute (similar to `.checked`).
+   * If `indeterminate` has not been explicitly set, and the `indeterminate` state hasn't been modified by the user (via clicking),
+   * then `indeterminate` returns the value of `defaultIndeterminate`.
+   *
+   * @implementation The `indeterminate` property doesn't reflect to any attribute.
    */
   indeterminate?: boolean;
   /**
@@ -1585,14 +1616,18 @@ interface CheckboxProps$1
    *
    * Similar to `defaultValue` and `defaultChecked`, this value applies until `indeterminate` is set, or user changes the state of the checkbox.
    *
-   * In custom element implementations, this must reflect to the `indeterminate` attribute (similar to how `.defaultChecked` reflects to the `checked` attribute).
+   * @implementation `defaultIndeterminate` reflects to the `indeterminate` attribute.
+   *
+   * @default false
    */
   defaultIndeterminate?: boolean;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
    * If you want to present an error when this field is empty, you can do
-   * so with the `error` prop.
+   * so with the `error` property.
+   *
+   * @default false
    */
   required?: boolean;
 }
@@ -1612,6 +1647,8 @@ interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
   details?: string;
   /**
    * Set to `true` to associate a choice with the error passed to `ChoiceList`
+   *
+   * @default false
    */
   error?: boolean;
 }
@@ -1695,9 +1732,11 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
   /**
    * The type of selection the date picker allows.
    *
-   * - `single` (default) allows selecting a single date.
+   * - `single` allows selecting a single date.
    * - `multiple` allows selecting multiple non-contiguous dates.
    * - `range` allows selecting a single range of dates.
+   *
+   * @default "single"
    */
   type?: 'single' | 'multiple' | 'range';
   /**
@@ -1705,32 +1744,26 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    *
    * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
    *
-   * The default '' allows all dates.
+   * The default `''` allows all dates.
    *
-   * Dates in `YYYY-MM-DD` format allow a single date.
+   * - Dates in `YYYY-MM-DD` format allow a single date.
+   * - Dates in `YYYY-MM` format allow a whole month.
+   * - Dates in `YYYY` format allow a whole year.
+   * - Ranges are expressed as `start--end`.
+   *     - Ranges are inclusive.
+   *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+   *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+   *       So `2024--` is equivalent to `2024-01-01--`.
+   *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+   *       So `--2024` is equivalent to `--2024-12-31`.
+   *     - Whitespace is allowed either side of `--`.
    *
-   * Dates in `YYYY-MM` format allow a whole month.
-   *
-   * Dates in `YYYY` format allow a whole year.
-   *
-   * Ranges are expressed as `start--end`.
-   *
-   * Ranges are inclusive.
-   *
-   * If either `start` or `end` is omitted, the range is unbounded in that direction.
-   *
-   * If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
-   * So `2024--` is equivalent to `2024-01-01--`.
-   *
-   * If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
-   * So `--2024` is equivalent to `--2024-12-31`.
-   *
-   * Whitespace is allowed either side of `--`.
+   * @default ""
    *
    * @example
-   * `2024-02--2025` - allow any date from February 2024 to the end of 2025
-   * `2024-02--` - allow any date from February 2024
-   * `2024-05-09, 2024-05-11` - allow only the 9th and 11th of May 2024
+   * `2024-02--2025` // allow any date from February 2024 to the end of 2025
+   * `2024-02--` // allow any date from February 2024 to the end of the month
+   * `2024-05-09, 2024-05-11` // allow only the 9th and 11th of May 2024
    */
   allow?: string;
   /**
@@ -1738,31 +1771,25 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    *
    * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
    *
-   * The default '' has no effect on `allowDates`.
+   * The default `''` has no effect on `allowDates`.
    *
-   * Dates in `YYYY-MM-DD` format disallow a single date.
+   * - Dates in `YYYY-MM-DD` format disallow a single date.
+   * - Dates in `YYYY-MM` format disallow a whole month.
+   * - Dates in `YYYY` format disallow a whole year.
+   * - Ranges are expressed as `start--end`.
+   *     - Ranges are inclusive.
+   *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+   *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+   *       So `2024--` is equivalent to `2024-01-01--`.
+   *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+   *       So `--2024` is equivalent to `--2024-12-31`.
+   *     - Whitespace is allowed either side of `--`.
    *
-   * Dates in `YYYY-MM` format disallow a whole month.
-   *
-   * Dates in `YYYY` format disallow a whole year.
-   *
-   * Ranges are expressed as `start--end`.
-   *
-   * Ranges are inclusive.
-   *
-   * If either `start` or `end` is omitted, the range is unbounded in that direction.
-   *
-   * If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
-   * So `2024--` is equivalent to `2024-01-01--`.
-   *
-   * If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
-   * So `--2024` is equivalent to `--2024-12-31`.
-   *
-   * Whitespace is allowed either side of `--`.
+   * @default ""
    *
    * @example
-   * `--2024-02` - disallow any date before February 2024
-   * `2024-05-09, 2024-05-11` - disallow the 9th and 11th of May 2024
+   * `--2024-02` // disallow any date before February 2024
+   * `2024-05-09, 2024-05-11` // disallow the 9th and 11th of May 2024
    */
   disallow?: string;
   /**
@@ -1770,12 +1797,14 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    *
    * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
    *
-   * The default '' has no effect on the result of `allowDates` and `disallowDates`.
+   * The default `''` has no effect on the result of `allowDates` and `disallowDates`.
    *
    * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
    *
+   * @default ""
+   *
    * @example
-   * 'saturday, sunday' - allow only weekends within the result of `allowDates` and `disallowDates`.
+   * 'saturday, sunday' // allow only weekends within the result of `allowDates` and `disallowDates`.
    */
   allowDays?: string;
   /**
@@ -1783,42 +1812,50 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    *
    * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
    *
-   * The default '' has no effect on `allowDays`.
+   * The default `''` has no effect on `allowDays`.
    *
    * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
    *
+   * @default ""
+   *
    * @example
-   * 'saturday, sunday' - disallow weekends within the result of `allowDates` and `disallowDates`.
+   * 'saturday, sunday' // disallow weekends within the result of `allowDates` and `disallowDates`.
    */
   disallowDays?: string;
   /**
    * Default selected value.
    *
-   * The default, '', means no date is selected.
+   * The default means no date is selected.
    *
    * If the provided value is invalid, no date is selected.
    *
-   * If `type` is `single`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
    *
-   * If `type` is `multiple`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
-   *
-   * If `type` is `range`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   * @default ""
    */
   defaultValue?: string;
   /**
    * Current selected value.
    *
-   * The default, '', means no date is selected.
+   * The default means no date is selected.
    *
    * If the provided value is invalid, no date is selected.
    *
    * Otherwise:
    *
-   * If `type` is `single`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
    *
-   * If `type` is `multiple`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   * Events:
    *
-   * If `type` is `range`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   * - `onInput` - Invoked when any date is selected. Will fire before `onChange`.
+   * - `onChange` - Invoked when the `value` is changed. For `type="single"` and `type="multiple"`, this is the same as `onInput`.
+   *      For `type="range"`, this is only called when the range is completed by selecting the end date of the range.
+   *
+   * @default ""
    */
   value?: string;
 }
@@ -2167,19 +2204,20 @@ interface GridItemProps$1 extends BaseBoxPropsWithRole {
 }
 export interface BaseTypographyProps {
   /**
-   * Sets the color of the Typography component, based on the intention of the information being conveyed.
+   * Modify the color to be more or less intense.
    *
    * @default 'base'
    */
   color?: ColorKeyword;
   /**
-   * Sets the tone of the Typography component, based on the intention of the information being conveyed.
+   * Sets the tone of the component, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * Set the numeric properties of the font
+   * Set the numeric properties of the font.
+   *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
    *
    * @default 'auto' - inherit from the parent element
@@ -2251,7 +2289,7 @@ interface HeadingProps$1
 }
 interface IconProps$1 extends GlobalProps {
   /**
-   * Sets the tone of the Icon, based on the intention of the information being conveyed.
+   * Sets the tone of the icon, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -2274,15 +2312,15 @@ export interface BaseImageProps {
   /**
    * An alternative text description that describe the image for the reader to
    * understand what it is about. It is extremely useful for both users using
-   * assistive technology and sighted users. A well written `description`
+   * assistive technology and sighted users. A well written description
    * provides people with visual impairments the ability to participate in
-   * consuming non-text content. When a screen readers encounters an `Image`,
+   * consuming non-text content. When a screen readers encounters an `s-image`,
    * the description is read and announced aloud. If an image fails to load,
-   * potentially due to a poor connection, the `description` is displayed on
+   * potentially due to a poor connection, the `alt` is displayed on
    * screen instead. This has the benefit of letting a sighted buyer know an
    * image was meant to load here, but as an alternative, they’re still able to
    * consume the text content. Read
-   * [considerations when writing alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204)
+   * [considerations when writing alternative text](https://www.shopify.com/ca/blog/image-alt-text#4)
    * to learn more.
    *
    * @default `''`
@@ -2340,8 +2378,8 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
   /**
    * The displayed inline width of the image.
    *
-   * `fill`: the image will takes up 100% of the available inline-size.
-   * `auto`: the image will be displayed at its natural size.
+   * - `fill`: the image will takes up 100% of the available inline size.
+   * - `auto`: the image will be displayed at its natural size.
    *
    * @default 'fill'
    *
@@ -2356,8 +2394,7 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
    * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
    * - `inlineSize="auto"`: the image will not render until it has loaded and the aspect ratio will be ignored.
    *
-   * @implementation Getters for this value should return `auto` or the ratio in `number / number` form. Input fractions should not be ‘simplified’.
-   * For example, if the value is set as `50 /    100`, the getter returns `50 / 100`.
+   * For example, if the value is set as `50 / 100`, the getter returns `50 / 100`.
    * If the value is set as `0.5`, the getter returns `0.5 / 1`.
    *
    * @default '1/1'
@@ -2435,7 +2472,7 @@ interface MoneyFieldProps$1
     NumberConstraintsProps,
     AutocompleteProps<MoneyAutocompleteField> {
   /**
-   * Specifies the currencyCode that will be displayed.
+   * Specifies the currency code that will be displayed.
    *
    * @default ''
    */
@@ -2446,7 +2483,7 @@ export type MoneyAutocompleteField = ExtractStrict<
   'transaction-amount'
 >;
 /**
- * Supported monetary currencies from ISO 4217.
+ * Supported monetary currencies from [ISO 4217](https://www.iso.org/iso-4217-currency-codes.html).
  *
  * @see https://www.iso.org/iso-4217-currency-codes.html
  */
@@ -2639,6 +2676,8 @@ interface OptionProps$1 extends GlobalProps, BaseOptionProps {
 interface OptionGroupProps$1 extends GlobalProps {
   /**
    * Whether the options within this group can be selected or not.
+   *
+   * @default false
    */
   disabled?: boolean;
   /**
@@ -2707,7 +2746,7 @@ interface ParagraphProps$1
   /**
    * Provide semantic meaning and default styling to the paragraph.
    *
-   * Other presentation properties on `<Paragraph>` override the default styling.
+   * Other presentation properties on `s-paragraph` override the default styling.
    *
    * @default 'paragraph'
    */
@@ -2760,11 +2799,10 @@ interface SectionProps$1 extends GlobalProps, ContainerProps {
   /**
    * Adjust the padding of all edges.
    *
-   * `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
+   * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
    * this is the right design decision in a particular context.
-   *
-   * `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
-   * to the edge of the Section. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
+   * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
+   * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
@@ -2797,8 +2835,6 @@ interface SpinnerProps$1 extends GlobalProps {
    * provide them with more context. Providing an `accessibilityLabel` is
    * recommended if there is no accompanying text describing that something
    * is loading.
-   *
-   * Use it to provide context of what is loading.
    */
   accessibilityLabel?: string;
 }
@@ -2808,7 +2844,7 @@ interface StackProps$1 extends BaseBoxPropsWithRole, GapProps {
    */
   children?: ComponentChildren;
   /**
-   * Sets how the Stack's children are placed within the Stack.
+   * Sets how the children are placed within the Stack.
    *
    * @default 'block'
    *
@@ -2846,6 +2882,8 @@ interface SwitchProps$1
 export interface PaginationProps {
   /**
    * Whether to use pagination controls.
+   *
+   * @default false
    */
   paginate?: boolean;
   /**
@@ -2858,15 +2896,21 @@ export interface PaginationProps {
   onNextPage?: () => void;
   /**
    * Whether there's an additional page of data.
+   *
+   * @default false
    */
   hasNextPage?: boolean;
   /**
    * Whether there's a previous page of data.
+   *
+   * @default false
    */
   hasPreviousPage?: boolean;
   /**
    * Whether the table is in a loading state, such as initial page load or loading the next page in a paginated table.
    * When true, the table could be in an inert state, which prevents user interaction.
+   *
+   * @default false
    */
   loading?: boolean;
 }
@@ -2916,11 +2960,11 @@ interface TableHeaderProps$1 extends GlobalProps {
   /**
    * Content designation for the table's `list` variant.
    *
-   * - `'primary'`   - The most important content. Only one column can have this designation.
-   * - `'secondary'` - The secondary content. Only one column can have this designation.
-   * - `'kicker'`    - Content that is displayed before primary and secondary content, but with less visual prominence. Only one column can have this designation.
-   * - `'inline'`    - Content that is displayed inline.
-   * - `'labeled'`   - Each column with this designation displays as a heading-content pair.
+   * - `primary'`: The most important content. Only one column can have this designation.
+   * - `secondary`: The secondary content. Only one column can have this designation.
+   * - `kicker`: Content that is displayed before primary and secondary content, but with less visual prominence. Only one column can have this designation.
+   * - `inline`: Content that is displayed inline.
+   * - `labeled`: Each column with this designation displays as a heading-content pair.
    *
    * @default 'labeled'
    */
@@ -2950,7 +2994,7 @@ interface TextProps$1
   /**
    * Provide semantic meaning and default styling to the text.
    *
-   * Other presentation properties on `<Text>` override the default styling.
+   * Other presentation properties on `<s-text>` override the default styling.
    *
    * @default 'generic'
    */
@@ -3230,6 +3274,7 @@ type IconType$1 =
   | 'enter'
   | 'envelope'
   | 'envelope-soft-pack'
+  | 'eraser'
   | 'exchange'
   | 'exit'
   | 'export'
@@ -3723,6 +3768,8 @@ interface AdminActionProps$1 extends GlobalProps, ActionProps, ActionSlots {
   /**
    * Whether the action is in a loading state, such as initial page load or action opening.
    * When true, the action could be in an inert state, which prevents user interaction.
+   *
+   * @default false
    */
   loading?: boolean;
 }

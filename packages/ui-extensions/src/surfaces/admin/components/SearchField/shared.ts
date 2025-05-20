@@ -12,6 +12,12 @@ const shared = {
         'A search input field that allows users to enter a search term.',
       type: 'SearchField',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'SearchFieldEvents',
+    },
   ],
   subCategory: 'Forms',
   related: [

@@ -11,6 +11,12 @@ const shared = {
       description: '',
       type: 'ChoiceList',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'ChoiceListEvents',
+    },
   ],
   subCategory: 'Forms',
   related: [

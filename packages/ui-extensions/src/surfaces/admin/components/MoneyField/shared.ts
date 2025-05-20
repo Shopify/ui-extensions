@@ -11,6 +11,12 @@ const shared = {
       description: '',
       type: 'MoneyField',
     },
+    {
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'MoneyFieldEvents',
+    },
   ],
   subCategory: 'Forms',
   related: [
