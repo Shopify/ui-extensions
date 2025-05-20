@@ -8,17 +8,15 @@
 /* eslint-disable import/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ParagraphProps$1} from './components-shared.d.ts';
+import type {SectionProps$1} from './components-shared.d.ts';
 
-export interface ParagraphProps extends Pick<ParagraphProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'id' | 'lang' | 'tone' | 'type'> {
-    color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
-    tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
+export interface SectionProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {
 }
-export interface ParagraphElement extends ParagraphProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
+export interface SectionElement extends SectionProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-paragraph': ParagraphElement;
+        's-section': SectionElement;
     }
 }
 declare module 'preact' {
@@ -28,9 +26,9 @@ declare module 'preact' {
     }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-paragraph': ParagraphProps & BaseProps;
+            's-section': SectionProps & BaseProps;
         }
     }
 }
 
-export type { ParagraphElement, ParagraphProps };
+export type { SectionElement, SectionProps };

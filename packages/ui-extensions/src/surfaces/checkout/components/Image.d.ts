@@ -27,9 +27,12 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-image': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ImageProps;
+            's-image': ImageProps & BaseProps;
         }
     }
 }

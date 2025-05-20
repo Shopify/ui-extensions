@@ -8,24 +8,24 @@
 /* eslint-disable import/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {SpinnerProps$1} from './components-shared.d.ts';
+import type {QRCodeProps$1} from './components-shared.d.ts';
 
-export interface SpinnerProps extends SpinnerProps$1 {
-    size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
+export interface QRCodeProps extends QRCodeProps$1 {
 }
-export interface SpinnerElement extends SpinnerProps, Omit<HTMLElement, 'id'> {
+export interface QRCodelement extends Omit<QRCodeProps, 'onError'>, Omit<HTMLElement, 'id' | 'onerror'> {
+    onerror: QRCodeProps['onError'];
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-spinner': SpinnerElement;
+        's-qr-code': QRCodelement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-spinner': SpinnerProps;
+            's-qr-code': QRCodeProps;
         }
     }
 }
 
-export type { SpinnerElement, SpinnerProps };
+export type { QRCodeProps, QRCodelement };
