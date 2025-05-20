@@ -33,6 +33,7 @@
     "scaffold-docs:admin": "./packages/ui-extensions/docs/surfaces/admin/create-doc-files.sh \"admin\"",
     "test": "loom test",
     "type-check": "loom type-check",
+    "snapit:prepare": "changeset:exit-pre-mode && yarn build",
     "changeset:exit-pre-mode": "test -f .changeset/pre.json && jq -e '.mode == \"pre\"' .changeset/pre.json > /dev/null && yarn changeset pre exit || true"
   },
   "devDependencies": {
