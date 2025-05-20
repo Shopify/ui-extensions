@@ -6,7 +6,6 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/unordered-list.png',
   isVisualComponent: true,
-  isOneColumnLayout: true,
   defaultExample: {
     image: 'unordered-list-default.png',
     codeblock: {

@@ -6,7 +6,6 @@ const data: AdminReferenceEntityTemplateSchema = {
   thumbnail:
     '/assets/templated-apis-screenshots/admin/components/moneyfield.png',
   isVisualComponent: true,
-  isOneColumnLayout: true,
   definitions: [
     {
       title: 'Properties',
