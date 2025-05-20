@@ -17,7 +17,7 @@ const data: LandingTemplateSchema = {
         tabs: [
           {
             title: 'JSX',
-            code: '&lt;s-box\n  padding="base"\n  background="subdued"\n  border="base"\n  borderRadius="base"\n&gt;\n  Content\n&lt;/s-box&gt;\n',
+            code: './examples/styling.jsx',
             language: 'jsx',
           },
         ],
@@ -40,7 +40,7 @@ const data: LandingTemplateSchema = {
         title: 'Example',
         tabs: [
           {
-            code: "export type Scale =\n  | 'small-300'\n  | 'small-200'\n  | 'small-100'\n  | 'small' // alias of small-100\n  | 'base'\n  | 'large' // alias of large-100\n  | 'large-100'\n  | 'large-200'\n  | 'large-300';\n",
+            code: './examples/scale.ts',
             language: 'ts',
           },
         ],
@@ -64,8 +64,8 @@ const data: LandingTemplateSchema = {
         title: 'Example',
         tabs: [
           {
-            code: '&lt;s-button tone="critical" variant="primary"&gt; Primary Critical Button &lt;/s-button&gt;\n\n&lt;s-badge tone="success" color="strong"&gt; Success Strong Badge &lt;/s-badge&gt;\n',
-            language: 'html',
+            code: './examples/variant-tone-and-color.jsx',
+            language: 'jsx',
           },
         ],
       },
@@ -82,7 +82,7 @@ const data: LandingTemplateSchema = {
         tabs: [
           {
             title: 'JSX',
-            code: 'export function ProductExtension() {\n  return (\n    &lt;s-box padding="base"&gt;\n      &lt;s-stack gap="base"&gt;\n        &lt;s-text&gt;Enable special pricing&lt;/s-text&gt;\n        &lt;s-checkbox\n          onChange={() =&gt; console.log(\'Checkbox toggled\')}\n        /&gt;\n        &lt;s-number-field\n          label="Discount percentage"\n          suffix="%"\n          min="0"\n          max="100"\n        /&gt;\n      &lt;/s-stack&gt;\n    &lt;/s-box&gt;\n  );\n}\n',
+            code: './examples/using-with-preact.jsx',
             language: 'jsx',
           },
         ],
@@ -114,7 +114,7 @@ const data: LandingTemplateSchema = {
             tabs: [
               {
                 title: 'JavaScript',
-                code: 'if (propName in element) {\n  // Set as a property\n  element[propName] = propValue;\n} else {\n  // Set as an attribute\n  element.setAttribute(propName, propValue);\n}\n',
+                code: './examples/properties-vs-attributes-jsx-props.js',
                 language: 'javascript',
               },
             ],
@@ -131,7 +131,7 @@ const data: LandingTemplateSchema = {
             tabs: [
               {
                 title: 'JSX',
-                code: '// This works as expected - the "gap" property accepts string values\n&lt;s-stack gap="base"&gt;...&lt;/s-stack&gt;\n\n// This also works - the "checked" property accepts boolean values\n&lt;s-checkbox checked={true}&gt;...&lt;/s-checkbox&gt;',
+                code: './examples/properties-vs-attributes-examples.jsx',
                 language: 'jsx',
               },
             ],
@@ -170,7 +170,7 @@ const data: LandingTemplateSchema = {
         tabs: [
           {
             title: 'Banner',
-            code: '&lt;s-banner heading="Order created" status="success"&gt;\n  The order has been created successfully.\n  &lt;s-button slot="secondary-actions"&gt;\n    View order\n  &lt;/s-button&gt;\n  &lt;s-button slot="secondary-actions"&gt;\n    Download invoice\n  &lt;/s-button&gt;\n&lt;/s-banner&gt;\n',
+            code: './examples/slots-banner.jsx',
             language: 'jsx',
           },
         ],
@@ -211,7 +211,7 @@ const data: LandingTemplateSchema = {
         tabs: [
           {
             title: 'JSX',
-            code: '// Good - provides a label\n&lt;s-text-field label="Email address" /&gt;\n\n// Bad - missing a label\n&lt;s-text-field placeholder="Enter email" /&gt;\n',
+            code: './examples/accessibility.jsx',
             language: 'jsx',
           },
         ],
