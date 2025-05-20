@@ -16,9 +16,6 @@ jobs:
 
       - uses: ./.github/workflows/actions/prepare
 
-      - name: Exit pre mode
-        run: yarn changeset:exit-pre-mode
-
       - name: Create snapshot
         uses: Shopify/snapit@main
         env:
