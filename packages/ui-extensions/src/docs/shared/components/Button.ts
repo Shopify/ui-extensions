@@ -3,16 +3,10 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Button',
   description:
-    'Use `s-button` when you want to provide users the ability to perform specific actions, submitting forms, or opening dialogs.',
+    'Triggers actions or events, such as submitting forms, opening dialogs, or navigating to other pages. Use Button to let users perform specific tasks or initiate interactions throughout the interface. Buttons can also function as links, guiding users to internal or external destinations.',
   category: 'Polaris web components',
   subCategory: 'Actions',
-  related: [
-    {
-      name: 'Link',
-      url: 'link',
-      type: 'Component',
-    },
-  ],
+  related: [],
 };
 
 export default data;

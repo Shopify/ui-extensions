@@ -3232,6 +3232,7 @@ type IconType$1 =
   | 'enter'
   | 'envelope'
   | 'envelope-soft-pack'
+  | 'eraser'
   | 'exchange'
   | 'exit'
   | 'export'

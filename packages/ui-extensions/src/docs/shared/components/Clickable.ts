@@ -3,21 +3,10 @@ import {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Clickable',
   description:
-    'The `s-clickable` component is an escape hatch for when `s-button` and `s-link` are not sufficient to create an interactive element.',
+    'A generic interactive container component that provides a flexible alternative for custom interactive elements not achievable with existing components like Button or Link. Use it to apply specific styling such as backgrounds, padding, or borders.',
   category: 'Polaris web components',
   subCategory: 'Actions',
-  related: [
-    {
-      type: 'component',
-      name: 'Button',
-      url: 'button',
-    },
-    {
-      type: 'component',
-      name: 'Link',
-      url: 'link',
-    },
-  ],
+  related: [],
 };
 
 export default data;

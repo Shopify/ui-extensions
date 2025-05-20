@@ -3,12 +3,11 @@
     "rootDir": "/"
   },
   "include": [
-    "./**/*.ab.doc.ts",
-    "../../../src/surfaces/admin/components/**/*.ab.doc.ts"
+    "./**/*.doc.ts",
+    "../../../src/surfaces/admin/components/**/*.doc.ts"
   ],
   "exclude": [
-    "../../../src/surfaces/admin/components/AdminAction/*",
-    "../../../src/surfaces/admin/components/AdminBlock/*",
-    "../../../src/surfaces/admin/components/AdminPrintAction/*"
+    "./**/*.ext.doc.ts",
+    "../../../src/surfaces/admin/components/**/*.ext.doc.ts"
   ]
 }

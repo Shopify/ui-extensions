@@ -2,16 +2,11 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'QRCode',
-  description: 'Used to quickly access scannable data.',
+  description:
+    'Displays a scannable QR code representing data such as URLs or text. Use to let users quickly access information by scanning with a smartphone or other device.',
   category: 'Polaris web components',
   subCategory: 'Other',
-  related: [
-    {
-      name: 'ClipboardItem',
-      url: 'clipboarditem',
-      type: 'Component',
-    },
-  ],
+  related: [],
 };
 
 export default data;
