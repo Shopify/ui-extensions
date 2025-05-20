@@ -1980,6 +1980,36 @@ interface QRCodeProps$1 extends GlobalProps {
 	 */
 	logo?: string;
 }
+interface SectionProps$1 extends GlobalProps, ContainerProps {
+	/**
+	 * The content of the Section.
+	 */
+	children?: ComponentChildren;
+	/**
+	 * A label used to describe the section that will be announced by assistive technologies.
+	 *
+	 * When no `heading` property is provided or included as a children of the Section, you **must** provide an
+	 * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
+	 * the right context to users.
+	 */
+	accessibilityLabel?: string;
+	/**
+	 * A title that describes the content of the section.
+	 */
+	heading?: string;
+	/**
+	 * Adjust the padding of all edges.
+	 *
+	 * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
+	 * this is the right design decision in a particular context.
+	 * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
+	 * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
+	 * to bring back the desired padding for the rest of the content.
+	 *
+	 * @default 'base'
+	 */
+	padding?: "base" | "none";
+}
 interface SpinnerProps$1 extends GlobalProps {
 	/**
 	 * Adjusts the size of the spinner icon.
@@ -2524,6 +2554,27 @@ declare module 'preact' {
     }
 }
 
+interface SectionProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {
+}
+interface SectionElement extends SectionProps, Omit<HTMLElement, 'id'> {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        's-section': SectionElement;
+    }
+}
+declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-section': SectionProps & BaseProps;
+        }
+    }
+}
+
 interface SpinnerProps extends SpinnerProps$1 {
     size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
 }
@@ -2662,4 +2713,4 @@ declare module 'preact' {
     }
 }
 
-export type { AbbreviationProps, BannerProps, BoxProps, ButtonProps, ClipboardItemProps, DropZoneProps, FormProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, OrderedListProps, ParagraphProps, PaymentIconProps, ProgressProps, QRCodeProps, SpinnerProps, StackProps, TextFieldProps, TextProps, TimeProps, UnorderedListProps };
+export type { AbbreviationProps, BannerProps, BoxProps, ButtonProps, ClipboardItemProps, DropZoneProps, FormProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, OrderedListProps, ParagraphProps, PaymentIconProps, ProgressProps, QRCodeProps, SectionProps, SpinnerProps, StackProps, TextFieldProps, TextProps, TimeProps, UnorderedListProps };
