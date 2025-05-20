@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  robin-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/workflows/actions/prepare
+
+      - name: Show pre.json before
+        run: cat .changeset/pre.json
+
+      - name: Test exit pre mode
+        run: yarn changeset:exit-pre-mode
+
+      - name: Show pre.json after
+        run: cat .changeset/pre.json

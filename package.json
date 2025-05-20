@@ -29,6 +29,7 @@
     "run:ts": "babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "run:ts:watch": "nodemon --ext .ts,.tsx,.mjs,.json,.graphql node_modules/.bin/babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "type-check": "loom type-check",
+    "snapit:prepare": "yarn changeset:exit-pre-mode && yarn build",
     "changeset:exit-pre-mode": "test -f .changeset/pre.json && jq -e '.mode == \"pre\"' .changeset/pre.json > /dev/null && yarn changeset pre exit || true"
   },
   "devDependencies": {
