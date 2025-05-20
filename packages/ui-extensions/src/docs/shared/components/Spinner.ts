@@ -3,16 +3,10 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Spinner',
   description:
-    'Use `s-spinner` to let users know that content is being loaded. For loading states on buttons, use the `loading` property on the `s-button` component instead.',
+    'Displays an animated indicator showing users that content or actions are loading. Use to communicate ongoing processes, such as fetching data from a server. For loading states on buttons, use the “loading” property on the Button component instead.',
   category: 'Polaris web components',
   subCategory: 'Feedback',
-  related: [
-    {
-      name: 'Progress',
-      url: 'progress',
-      type: 'Component',
-    },
-  ],
+  related: [],
 };
 
 export default data;

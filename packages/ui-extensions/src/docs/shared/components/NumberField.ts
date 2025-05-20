@@ -3,21 +3,10 @@ import {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'NumberField',
   description:
-    'Use `s-number-field` when you need to collect numerical input from merchants. It provides appropriate keyboard settings and validation for numerical values.',
+    'Collect numerical values from users with optimized keyboard settings and built-in validation.',
   category: 'Polaris web components',
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: 'textfield',
-    },
-    {
-      type: 'component',
-      name: 'MoneyField',
-      url: 'moneyfield',
-    },
-  ],
+  related: [],
 };
 
 export default data;

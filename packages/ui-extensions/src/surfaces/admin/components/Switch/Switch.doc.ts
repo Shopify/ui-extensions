@@ -1,9 +1,28 @@
-import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
-import shared from './shared';
+import {AdminReferenceEntityTemplateSchema} from '../../docs-types';
+import sharedContent from '../../../../docs/shared/components/Switch';
 
-const data: ReferenceEntityTemplateSchema = {
-  ...shared,
-  category: 'Polaris web components',
+const data: AdminReferenceEntityTemplateSchema = {
+  ...sharedContent,
+  thumbnail: '/assets/templated-apis-screenshots/admin/components/switch.png',
+  isVisualComponent: true,
+  definitions: [
+    {
+      title: 'Properties',
+      description: '',
+      type: 'Switch',
+    },
+  ],
+  defaultExample: {
+    codeblock: {
+      title: 'Code',
+      tabs: [
+        {
+          code: './examples/default.html',
+          language: 'preview',
+        },
+      ],
+    },
+  },
 };
 
 export default data;

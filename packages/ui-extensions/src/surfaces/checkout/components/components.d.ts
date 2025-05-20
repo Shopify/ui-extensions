@@ -19,9 +19,9 @@ interface AbbreviationProps$1 {
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Provides an expansion for the abbreviation or acronym when a full expansion is not present in the interface.
+	 * Defines the full expansion of the abbreviation or acronym.
 	 *
-	 * This provides a hint to user agents on how to announce/display the content while informing all users what the abbreviation means.
+	 * Helps user agents and users understand the meaning of the abbreviated text.
 	 *
 	 * @default ''
 	 *
@@ -227,6 +227,7 @@ declare const privateIconArray: readonly [
 	"enter",
 	"envelope-soft-pack",
 	"envelope",
+	"eraser",
 	"exchange",
 	"exit",
 	"export",
@@ -416,6 +417,7 @@ declare const privateIconArray: readonly [
 	"phone-out",
 	"phone",
 	"pin",
+	"pin-remove",
 	"plan",
 	"play-circle",
 	"play",
@@ -570,6 +572,21 @@ declare const privateIconArray: readonly [
 	"x"
 ];
 export type IconType = (typeof privateIconArray)[number];
+/**
+ * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
+ */
+export type ExtractStrict<T, U extends T> = Extract<T, U>;
+export type MaybeAllValuesShorthandProperty<T extends string> = T | `${T} ${T}` | `${T} ${T} ${T}` | `${T} ${T} ${T} ${T}`;
+export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
+/**
+ * Prevents widening string literal types in a union to `string`.
+ * @example
+ * type PropName = 'foo' | 'bar' | string
+ * //   ^? string
+ * type PropName = 'foo' | 'bar' | (string & {})
+ * //   ^? 'foo' | 'bar' | (string & {})
+ */
+export type AnyString = string & {};
 export interface ActionSlots {
 	/**
 	 * The primary action to perform, provided as a button or link type element.
@@ -621,10 +638,10 @@ interface BannerProps$1 extends GlobalProps, ActionSlots, ContainerProps {
 	/**
 	 * Sets the tone of the Banner, based on the intention of the information being conveyed.
 	 *
-	 * In an HTML host, the Banner is a live region and the type of status will be dictated by the Tone selected.
+	 * The banner is a live region and the type of status will be dictated by the Tone selected.
 	 *
-	 * - `critical` and `warning` creates an assertive live region (`role="alert"`) that is announced by screen readers immediately.
-	 * - `neutral`, `info`, `success`, and `caution` creates an informative live region (`role="status"`) that is announced by screen readers after the current message.
+	 * - `critical` creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) that is announced by screen readers immediately.
+	 * - `neutral`, `info`, `success`, `warning` and `caution` creates an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) that is announced by screen readers after the current message.
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
 	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role
@@ -682,27 +699,12 @@ interface BannerProps$1 extends GlobalProps, ActionSlots, ContainerProps {
 	 */
 	hidden?: boolean;
 }
-/**
- * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
- */
-export type ExtractStrict<T, U extends T> = Extract<T, U>;
-export type MaybeAllValuesShorthandProperty<T extends string> = T | `${T} ${T}` | `${T} ${T} ${T}` | `${T} ${T} ${T} ${T}`;
-export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
-/**
- * Prevents widening string literal types in a union to `string`.
- * @example
- * type PropName = 'foo' | 'bar' | string
- * //   ^? string
- * type PropName = 'foo' | 'bar' | (string & {})
- * //   ^? 'foo' | 'bar' | (string & {})
- */
-export type AnyString = string & {};
 export interface DisplayProps {
 	/**
-	 * Sets the outer display type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
+	 * Sets the outer display type of the component. The outer type sets a component’s participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
 	 *
-	 * - `auto` the component's initial value. The actual value depends on the component and context.
-	 * - `none` hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
+	 * - `auto`: the component’s initial value. The actual value depends on the component and context.
+	 * - `none`: hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
 	 * @default 'auto'
@@ -715,7 +717,7 @@ export interface AccessibilityRoleProps {
 	 * the role will be used by assistive technologies to help users
 	 * navigate the page.
 	 *
-	 * Although, in HTML hosts, this property changes the element used,
+	 * @implementation Although, in HTML hosts, this property changes the element used,
 	 * changing this property must not impact the visual styling of inside or outside of the box.
 	 *
 	 * @default 'generic'
@@ -865,7 +867,7 @@ export interface PaddingProps {
 	/**
 	 * Adjust the padding of all edges.
 	 *
-	 * 1-to-4-value syntax (@see https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+	 * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
 	 * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
 	 *
 	 * - 4 values: `block-start inline-end block-end inline-start`
@@ -1063,7 +1065,7 @@ export interface BorderProps {
 	/**
 	 * Set the radius of the border.
 	 *
-	 * 1-to-4-value syntax (@see https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+	 * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
 	 * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
 	 *
 	 * - 4 values: `start-start start-end end-end end-start`
@@ -1084,11 +1086,10 @@ export interface OverflowProps {
 	/**
 	 * Sets the overflow behavior of the element.
 	 *
-	 * `hidden`: clips the content when it is larger than the element’s container.
+	 * - `hidden`: clips the content when it is larger than the element’s container.
 	 * The element will not be scrollable and the users will not be able
 	 * to access the clipped content by dragging or using a scroll wheel on a mouse.
-	 *
-	 * `visible`: the content that extends beyond the element’s container is visible.
+	 * - `visible`: the content that extends beyond the element’s container is visible.
 	 *
 	 * @default 'visible'
 	 */
@@ -1125,9 +1126,9 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
 	 * The behavior of the button.
 	 *
-	 * - `'submit'` - Used to indicate the component acts as a submit button, meaning it submits the closest form.
-	 * - `'button'` - Used to indicate the component acts as a button, meaning it has no default action.
-	 * - `'reset'` - Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
+	 * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
+	 * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
+	 * - `reset`: Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
 	 *
 	 * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.
 	 *
@@ -1141,12 +1142,16 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	onClick?: () => void;
 	/**
 	 * Disables the button, meaning it cannot be clicked or receive focus.
+	 *
+	 * @default false
 	 */
 	disabled?: boolean;
 	/**
 	 * Replaces content with a loading indicator while a background action is being performed.
 	 *
 	 * This also disables the button.
+	 *
+	 * @default false
 	 */
 	loading?: boolean;
 }
@@ -1154,17 +1159,20 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
 	 * The URL to link to.
 	 *
-	 * - If set, it will navigate to the location specified by `href` after executing the `onClick` callback.
+	 * - If set, it will navigate to the location specified by `href` after executing the `click` event.
 	 * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
 	 */
 	href?: string;
 	/**
-	 * Specifies where to display the linked URL
+	 * Specifies where to display the linked URL.
+	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
 	 *
-	 * 'auto' - The target is automatically determined based on the origin of the URL. Surfaces can set specific rules on how they handle each URL.
-	 * It’s expected that the behavior of `auto` is as `_self` except in specific cases.
-	 * For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).
+	 * 'auto': The target is automatically determined based on the origin of the URL.
+	 *
+	 * @implementation Surfaces can set specific rules on how they handle each URL.
+	 * @implementation It’s expected that the behavior of `auto` is as `_self` except in specific cases.
+	 * @implementation For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).
 	 *
 	 * @default 'auto'
 	 */
@@ -1183,7 +1191,7 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 }
 export interface InteractionProps {
 	/**
-	 * ID of a component that should respond to activations (e.g. clicks) on this clickable.
+	 * ID of a component that should respond to activations (e.g. clicks) on this component.
 	 *
 	 * See `command` for how to control the behavior of the target.
 	 *
@@ -1195,11 +1203,11 @@ export interface InteractionProps {
 	 *
 	 * See the documentation of particular components for the actions they support.
 	 *
-	 * - `'--auto'`: a default action for the target component.
-	 * - `'--show'`: shows the target component.
-	 * - `'--hide'`: hides the target component.
-	 * - `'--toggle'`: toggles the target component.
-	 * - `'--copy'`: copies the target ClipboardItem.
+	 * - `--auto`: a default action for the target component.
+	 * - `--show`: shows the target component.
+	 * - `--hide`: hides the target component.
+	 * - `--toggle`: toggles the target component.
+	 * - `--copy`: copies the target ClipboardItem.
 	 *
 	 * @default '--auto'
 	 *
@@ -1226,7 +1234,17 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 	 *
 	 * @default ''
 	 */
-	icon?: IconType;
+	icon?: IconType | AnyString;
+	/**
+	 * The displayed inline width of the button.
+	 *
+	 * - `auto`: the size of the button depends on the surface and context.
+	 * - `fill`: the button will takes up 100% of the available inline size.
+	 * - `fit-content`: the button will take up the minimum inline-size required to fit its content.
+	 *
+	 * @default 'auto'
+	 */
+	inlineSize?: "auto" | "fill" | "fit-content";
 	/**
 	 * Changes the visual appearance of the Button.
 	 *
@@ -1248,12 +1266,13 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 }
 export interface BaseInputProps {
 	/**
-	 * An identifier for the field that is unique within the nearest
-	 * containing `Form` component.
+	 * An identifier for the field that is unique within the nearest containing form.
 	 */
 	name?: string;
 	/**
 	 * Disables the field, disallowing any interaction.
+	 *
+	 * @default false
 	 */
 	disabled?: boolean;
 }
@@ -1272,6 +1291,8 @@ export interface InputProps extends BaseInputProps {
 	value?: string;
 	/**
 	 * The default value for the field.
+	 *
+	 * @implementation `defaultValue` reflects to the `value` attribute.
 	 */
 	defaultValue?: string;
 }
@@ -1304,7 +1325,9 @@ export interface BasicFieldProps extends FieldErrorProps, LabelAccessibilityVisi
 	 * Whether the field needs a value. This requirement adds semantic value
 	 * to the field, but it will not cause an error to appear automatically.
 	 * If you want to present an error when this field is empty, you can do
-	 * so with the `error` prop.
+	 * so with the `error` property.
+	 *
+	 * @default false
 	 */
 	required?: boolean;
 	/**
@@ -1331,6 +1354,8 @@ export interface FieldProps extends BasicFieldProps, InputProps, FocusEventProps
 export interface BaseTextFieldProps extends FieldProps {
 	/**
 	 * The field cannot be edited by the user. It is focusable will be announced by screen readers.
+	 *
+	 * @default false
 	 */
 	readOnly?: boolean;
 }
@@ -1366,7 +1391,7 @@ export interface FieldDecorationProps {
 	 *
 	 * @default ''
 	 */
-	icon?: IconType;
+	icon?: IconType | AnyString;
 	/**
 	 * Additional content to be displayed in the field.
 	 * Commonly used to display an icon that activates a tooltip providing more information.
@@ -1495,6 +1520,8 @@ interface FormProps$1 extends GlobalProps, ContainerProps {
 	 * Whether the form is able to be submitted.
 	 *
 	 * When set to `true`, this will also disable the implicit submit behavior of the form.
+	 *
+	 * @default false
 	 */
 	disabled?: boolean;
 	/**
@@ -1565,19 +1592,20 @@ export type JustifyContentKeyword = "normal" | ContentDistribution | OverflowPos
 export type AlignContentKeyword = "normal" | BaselinePosition | ContentDistribution | OverflowPosition | ContentPosition;
 export interface BaseTypographyProps {
 	/**
-	 * Sets the color of the Typography component, based on the intention of the information being conveyed.
+	 * Modify the color to be more or less intense.
 	 *
 	 * @default 'base'
 	 */
 	color?: ColorKeyword;
 	/**
-	 * Sets the tone of the Typography component, based on the intention of the information being conveyed.
+	 * Sets the tone of the component, based on the intention of the information being conveyed.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Set the numeric properties of the font
+	 * Set the numeric properties of the font.
+	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
 	 *
 	 * @default 'auto' - inherit from the parent element
@@ -1643,7 +1671,7 @@ interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps, Bloc
 }
 interface IconProps$1 extends GlobalProps {
 	/**
-	 * Sets the tone of the Icon, based on the intention of the information being conveyed.
+	 * Sets the tone of the icon, based on the intention of the information being conveyed.
 	 *
 	 * @default 'auto'
 	 */
@@ -1666,15 +1694,15 @@ export interface BaseImageProps {
 	/**
 	 * An alternative text description that describe the image for the reader to
 	 * understand what it is about. It is extremely useful for both users using
-	 * assistive technology and sighted users. A well written `description`
+	 * assistive technology and sighted users. A well written description
 	 * provides people with visual impairments the ability to participate in
-	 * consuming non-text content. When a screen readers encounters an `Image`,
+	 * consuming non-text content. When a screen readers encounters an `s-image`,
 	 * the description is read and announced aloud. If an image fails to load,
-	 * potentially due to a poor connection, the `description` is displayed on
+	 * potentially due to a poor connection, the `alt` is displayed on
 	 * screen instead. This has the benefit of letting a sighted buyer know an
 	 * image was meant to load here, but as an alternative, they’re still able to
 	 * consume the text content. Read
-	 * [considerations when writing alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204)
+	 * [considerations when writing alternative text](https://www.shopify.com/ca/blog/image-alt-text#4)
 	 * to learn more.
 	 *
 	 * @default `''`
@@ -1730,8 +1758,8 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
 	/**
 	 * The displayed inline width of the image.
 	 *
-	 * `fill`: the image will takes up 100% of the available inline-size.
-	 * `auto`: the image will be displayed at its natural size.
+	 * - `fill`: the image will takes up 100% of the available inline size.
+	 * - `auto`: the image will be displayed at its natural size.
 	 *
 	 * @default 'fill'
 	 *
@@ -1744,10 +1772,9 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
 	 * The rendering of the image will depend on the `inlineSize` value:
 	 *
 	 * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
-	 * - `inlineSize="auto"`: the image will not render until it has loaded and at this point, it will respect the aspect ratio specified.
+	 * - `inlineSize="auto"`: the image will not render until it has loaded and the aspect ratio will be ignored.
 	 *
-	 * Getters for this value should return `auto` or the ratio in `number / number` form. Input fractions should not be ‘simplified’.
-	 * For example, if the value is set as `50 /    100`, the getter returns `50 / 100`.
+	 * For example, if the value is set as `50 / 100`, the getter returns `50 / 100`.
 	 * If the value is set as `0.5`, the getter returns `0.5 / 1`.
 	 *
 	 * @default '1/1'
@@ -1827,7 +1854,7 @@ interface ParagraphProps$1 extends GlobalProps, BaseTypographyProps, BlockTypogr
 	/**
 	 * Provide semantic meaning and default styling to the paragraph.
 	 *
-	 * Other presentation properties on `<Paragraph>` override the default styling.
+	 * Other presentation properties on `s-paragraph` override the default styling.
 	 *
 	 * @default 'paragraph'
 	 */
@@ -1878,21 +1905,20 @@ interface ProgressProps$1 extends GlobalProps {
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Sets the tone of the Progress, based on the intention of the information being conveyed.
+	 * Sets the tone of the progress, based on the intention of the information being conveyed.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * This attribute specifies how much of the task has been completed.
+	 * Specifies how much of the task has been completed.
 	 *
 	 * It must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted.
 	 * If there is no value attribute, the progress bar is indeterminate;
 	 * this indicates that an activity is ongoing with no indication of how long it is expected to take.
 	 *
-	 * Surfaces should apply styling to cover that indeterminate state.
-	 *
-	 * In a HTML host, you can customize the progress animation via the :indeterminate pseudo-class.
+	 * @implementation Surfaces should apply styling to cover that indeterminate state.
+	 * @implementation In a HTML host, you can customize the progress animation via the :indeterminate pseudo-class.
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value
 	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#progress_bar
@@ -1909,6 +1935,81 @@ interface ProgressProps$1 extends GlobalProps {
 	 */
 	max?: number;
 }
+interface QRCodeProps$1 extends GlobalProps {
+	/**
+	 * Set the border of the QR code.
+	 *
+	 * `base`: applies border that is appropriate for the element.
+	 * `none`: removes the border from the element.
+	 *
+	 * @default 'base'
+	 */
+	border?: "base" | "none";
+	/**
+	 * The content to be encoded in the QR code, which can be any string such as a URL, email address, plain text, etc.
+	 * Specific string formatting can trigger actions on the user's device when scanned, like opening geolocation
+	 * coordinates on a map, opening a preferred app or app store entry, preparing an email, text message, and more.
+	 */
+	content?: string;
+	/**
+	 * The displayed size of the QR code.
+	 *
+	 * `fill`: the QR code will takes up 100% of the available inline-size and maintain a 1:1 aspect ratio.
+	 * `base`: the QR code will be displayed at its default size.
+	 *
+	 * @default 'base'
+	 */
+	size?: "base" | "fill";
+	/**
+	 * A label that describes the purpose or contents of the QR code. When set,
+	 * it will be announced to users using assistive technologies and will
+	 * provide more context about what the QR code may do when scanned.
+	 *
+	 * @default 'QR code' (translated to the user's locale)
+	 */
+	accessibilityLabel?: string;
+	/**
+	 * Invoked when the conversion of `content` to a QR code fails.
+	 * If an error occurs, the QR code and its child elements will not be displayed.
+	 */
+	onError?: () => void;
+	/**
+	 * URL of an image to be displayed in the center of the QR code.
+	 * This is useful for branding or to indicate to the user what scanning the QR code will do.
+	 * By default, no image is displayed.
+	 */
+	logo?: string;
+}
+interface SectionProps$1 extends GlobalProps, ContainerProps {
+	/**
+	 * The content of the Section.
+	 */
+	children?: ComponentChildren;
+	/**
+	 * A label used to describe the section that will be announced by assistive technologies.
+	 *
+	 * When no `heading` property is provided or included as a children of the Section, you **must** provide an
+	 * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
+	 * the right context to users.
+	 */
+	accessibilityLabel?: string;
+	/**
+	 * A title that describes the content of the section.
+	 */
+	heading?: string;
+	/**
+	 * Adjust the padding of all edges.
+	 *
+	 * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
+	 * this is the right design decision in a particular context.
+	 * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
+	 * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
+	 * to bring back the desired padding for the rest of the content.
+	 *
+	 * @default 'base'
+	 */
+	padding?: "base" | "none";
+}
 interface SpinnerProps$1 extends GlobalProps {
 	/**
 	 * Adjusts the size of the spinner icon.
@@ -1922,8 +2023,6 @@ interface SpinnerProps$1 extends GlobalProps {
 	 * provide them with more context. Providing an `accessibilityLabel` is
 	 * recommended if there is no accompanying text describing that something
 	 * is loading.
-	 *
-	 * Use it to provide context of what is loading.
 	 */
 	accessibilityLabel?: string;
 }
@@ -1933,7 +2032,7 @@ interface StackProps$1 extends BaseBoxPropsWithRole, GapProps {
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Sets how the Stack's children are placed within the Stack.
+	 * Sets how the children are placed within the Stack.
 	 *
 	 * @default 'block'
 	 *
@@ -1970,7 +2069,7 @@ interface TextProps$1 extends GlobalProps, AccessibilityVisibilityProps, BaseTyp
 	/**
 	 * Provide semantic meaning and default styling to the text.
 	 *
-	 * Other presentation properties on `<Text>` override the default styling.
+	 * Other presentation properties on `<s-text>` override the default styling.
 	 *
 	 * @default 'generic'
 	 */
@@ -2068,7 +2167,7 @@ interface TimeProps$1 {
 	/**
 	 * Set the time and/or date of the element.
 	 *
-	 * It must be a valid date string.
+	 * It must be a [valid date string](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/time#valid_datetime_values).
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#valid_datetime_values
 	 *
@@ -2092,9 +2191,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-abbreviation': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & AbbreviationProps;
+            's-abbreviation': AbbreviationProps & BaseProps;
         }
     }
 }
@@ -2112,9 +2215,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-banner': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & BannerProps;
+            's-banner': BannerProps & BaseProps;
         }
     }
 }
@@ -2123,8 +2230,7 @@ type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'la
 type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
 type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 
-interface BoxProps extends Pick<BoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
-    accessibilityRole?: Extract<BoxProps$1['accessibilityRole'], 'main' | 'header' | 'footer' | 'section' | 'aside' | 'navigation' | 'ordered-list' | 'list-item' | 'list-item-separator' | 'unordered-list' | 'separator' | 'status' | 'alert' | 'generic' | 'presentation' | 'none'>;
+interface BoxProps extends Pick<BoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<BoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
@@ -2138,14 +2244,18 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-box': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & BoxProps;
+            's-box': BoxProps & BaseProps;
         }
     }
 }
 
-interface ButtonProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'loading' | 'onClick' | 'target' | 'tone' | 'type' | 'variant'> {
+interface ButtonProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'loading' | 'onClick' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_self' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;
@@ -2160,9 +2270,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-button': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ButtonProps;
+            's-button': ButtonProps & BaseProps;
         }
     }
 }
@@ -2181,7 +2295,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-clipboard-item': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ClipboardItemProps;
+            's-clipboard-item': ClipboardItemProps;
         }
     }
 }
@@ -2200,7 +2314,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-drop-zone': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & DropZoneProps;
+            's-drop-zone': DropZoneProps;
         }
     }
 }
@@ -2217,9 +2331,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-form': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & FormProps;
+            's-form': FormProps & BaseProps;
         }
     }
 }
@@ -2234,9 +2352,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-heading': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & HeadingProps;
+            's-heading': HeadingProps & BaseProps;
         }
     }
 }
@@ -2254,9 +2376,12 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-icon': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & IconProps;
+            's-icon': IconProps & BaseProps;
         }
     }
 }
@@ -2274,9 +2399,12 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-image': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ImageProps;
+            's-image': ImageProps & BaseProps;
         }
     }
 }
@@ -2294,9 +2422,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-link': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & LinkProps;
+            's-link': LinkProps & BaseProps;
         }
     }
 }
@@ -2311,9 +2443,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-list-item': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ListItemProps;
+            's-list-item': ListItemProps & BaseProps;
         }
     }
 }
@@ -2328,9 +2464,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-ordered-list': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & OrderedListProps;
+            's-ordered-list': OrderedListProps & BaseProps;
         }
     }
 }
@@ -2347,9 +2487,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-paragraph': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ParagraphProps;
+            's-paragraph': ParagraphProps & BaseProps;
         }
     }
 }
@@ -2364,9 +2508,30 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-payment-icon': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & PaymentIconProps;
+            's-payment-icon': PaymentIconProps & BaseProps;
+        }
+    }
+}
+
+interface QRCodeProps extends QRCodeProps$1 {
+}
+interface QRCodelement extends Omit<QRCodeProps, 'onError'>, Omit<HTMLElement, 'id' | 'onerror'> {
+    onerror: QRCodeProps['onError'];
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        's-qr-code': QRCodelement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-qr-code': QRCodeProps;
         }
     }
 }
@@ -2384,7 +2549,28 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-progress': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & ProgressProps;
+            's-progress': ProgressProps;
+        }
+    }
+}
+
+interface SectionProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {
+}
+interface SectionElement extends SectionProps, Omit<HTMLElement, 'id'> {
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        's-section': SectionElement;
+    }
+}
+declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-section': SectionProps & BaseProps;
         }
     }
 }
@@ -2402,7 +2588,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-spinner': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & SpinnerProps;
+            's-spinner': SpinnerProps;
         }
     }
 }
@@ -2413,9 +2599,9 @@ interface StackProps extends Pick<StackProps$1, 'accessibilityLabel' | 'accessib
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<StackProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
-    alignContent?: Extract<StackProps$1['alignContent'], 'start' | 'center' | 'end' | 'normal'>;
-    alignItems?: Extract<StackProps$1['alignItems'], 'start' | 'center' | 'end' | 'normal'>;
-    justifyContent?: Extract<StackProps$1['justifyContent'], 'start' | 'center' | 'end' | 'normal'>;
+    alignContent?: Extract<StackProps$1['alignContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
+    alignItems?: Extract<StackProps$1['alignItems'], 'normal' | 'stretch' | 'center' | 'start' | 'end'>;
+    justifyContent?: Extract<StackProps$1['justifyContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
 }
 interface StackElement extends StackProps, Omit<HTMLElement, 'id'> {
 }
@@ -2425,9 +2611,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-stack': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & StackProps;
+            's-stack': StackProps & BaseProps;
         }
     }
 }
@@ -2445,14 +2635,18 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-text': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & TextProps;
+            's-text': TextProps & BaseProps;
         }
     }
 }
 
-interface TextFieldProps extends Pick<TextFieldProps$1, 'accessory' | 'autocomplete' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'placeholder' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
+interface TextFieldProps extends Pick<TextFieldProps$1, 'accessory' | 'autocomplete' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'id' | 'icon' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'placeholder' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
 }
 interface TextFieldElement extends Omit<TextFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
@@ -2467,9 +2661,12 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-text-field': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & TextFieldProps;
+            's-text-field': TextFieldProps & BaseProps;
         }
     }
 }
@@ -2484,9 +2681,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-time': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & TimeProps;
+            's-time': TimeProps & BaseProps;
         }
     }
 }
@@ -2501,11 +2702,15 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-unordered-list': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & UnorderedListProps;
+            's-unordered-list': UnorderedListProps & BaseProps;
         }
     }
 }
 
-export type { AbbreviationProps, BannerProps, BoxProps, ButtonProps, ClipboardItemProps, DropZoneProps, FormProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, OrderedListProps, ParagraphProps, PaymentIconProps, ProgressProps, SpinnerProps, StackProps, TextFieldProps, TextProps, TimeProps, UnorderedListProps };
+export type { AbbreviationProps, BannerProps, BoxProps, ButtonProps, ClipboardItemProps, DropZoneProps, FormProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, OrderedListProps, ParagraphProps, PaymentIconProps, ProgressProps, QRCodeProps, SectionProps, SpinnerProps, StackProps, TextFieldProps, TextProps, TimeProps, UnorderedListProps };

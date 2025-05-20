@@ -3,7 +3,7 @@ import type {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Box',
   description:
-    'The `s-box` component is an escape hatch for building custom user interfaces. You should only use `s-box` when you cannot build what you need with the existing components.',
+    'A generic container that provides a flexible alternative for custom designs not achievable with existing components. Use it to apply styling such as backgrounds, padding, or borders, or to nest and group other components. The contents of Box always maintain their natural size, making it especially useful within layout components that would otherwise stretch their children.',
   category: 'Polaris web components',
   subCategory: 'Structure',
   related: [],

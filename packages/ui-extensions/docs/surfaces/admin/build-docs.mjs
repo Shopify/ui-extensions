@@ -36,7 +36,7 @@ const generatedStaticPagesFile = 'generated_static_pages.json';
 const componentDefs = path.join(srcPath, 'components.d.ts');
 const tempComponentDefs = path.join(srcPath, 'components.ts');
 
-const tsconfig = 'tsconfig.docs.json';
+const tsconfigExtensions = 'tsconfig.ext.docs.json';
 const tsconfigAppBridge = 'tsconfig.ab.docs.json';
 
 const decodeHTML = (str) => {
@@ -168,7 +168,7 @@ const generateExtensionsDocs = async () => {
   const outputDir = `${docsGeneratedRelativePath}/admin_extensions/${EXTENSIONS_API_VERSION}`;
 
   const scripts = [
-    `yarn tsc --project ${docsRelativePath}/${tsconfig} --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn tsc --project ${docsRelativePath}/${tsconfigExtensions} --moduleResolution node  --target esNext  --module CommonJS`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
     `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
     `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,

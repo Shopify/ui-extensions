@@ -2,22 +2,10 @@ import {SharedReferenceEntityTemplateSchema} from '../docs-type';
 
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'PasswordField',
-  description:
-    'Use `s-password-field` when you need to collect sensitive information from merchants.',
+  description: 'Securely collect sensitive information from users.',
   category: 'Polaris web components',
   subCategory: 'Forms',
-  related: [
-    {
-      type: 'component',
-      name: 'TextField',
-      url: 'textfield',
-    },
-    {
-      type: 'component',
-      name: 'EmailField',
-      url: 'emailfield',
-    },
-  ],
+  related: [],
 };
 
 export default data;
