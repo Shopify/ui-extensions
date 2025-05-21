@@ -7,20 +7,27 @@ import {useEffect, useReducer} from 'preact/hooks';
 export function useNavigationCurrentEntry<
   Target extends RenderCustomerAccountFullPageExtensionTarget = RenderCustomerAccountFullPageExtensionTarget,
 >(): NavigationHistoryEntry {
-  const {currentEntry, removeEventListener, addEventListener} =
-    useApi<Target>().navigation;
+  const navigation = useApi<Target>().navigation;
 
-  const [entry, update] = useReducer(() => currentEntry, currentEntry);
+  const [entry, update] = useReducer(
+    () => navigation.currentEntry,
+    navigation.currentEntry,
+  );
 
   useEffect(() => {
-    if (!currentEntry || !removeEventListener || !addEventListener) {
+    if (
+      !navigation ||
+      !navigation.currentEntry ||
+      !navigation.removeEventListener ||
+      !navigation.addEventListener
+    ) {
       throw new Error(
         'useNavigationCurrentEntry must be used in an extension with the customer-account.page.render or customer-account.order.page.render target only',
       );
     }
-    addEventListener('currententrychange', update);
-    return () => removeEventListener('currententrychange', update);
-  }, [addEventListener, currentEntry, removeEventListener]);
+    navigation.addEventListener('currententrychange', update);
+    return () => navigation.removeEventListener('currententrychange', update);
+  }, [navigation]);
 
   return entry;
 }
