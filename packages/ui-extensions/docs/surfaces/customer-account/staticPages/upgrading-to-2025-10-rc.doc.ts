@@ -18,7 +18,9 @@ const data: LandingTemplateSchema = {
       sectionNotice: [
         {
           title: 'Early access preview',
-          sectionContent: `These components are an early access preview of the [Polaris](https://shopify.dev/beta/next-gen-dev-platform/polaris) UI framework. We do not recommend migrating your production customer account UI extension to Polaris until the release is stable. However, now is a great time to explore this new version to begin mapping our your migration.`,
+          sectionContent: `This is an early access preview of the [Polaris](https://shopify.dev/beta/next-gen-dev-platform/polaris) UI framework. We will be adding more components over time, so please refer to the comparison table below to see which components are currently available, which ones are coming soon, and how they correspond to their legacy versions.
+
+We advise against migrating your production customer account UI extension to Polaris until the release is stable. However, this is a great opportunity to explore the new version and start planning your migration.`,
           type: 'info',
         },
       ],
