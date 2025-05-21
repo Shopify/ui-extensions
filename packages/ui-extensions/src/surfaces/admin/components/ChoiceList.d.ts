@@ -29,6 +29,14 @@ export type CallbackEvent<
 > = TEvent & {
   currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
+  | (EventListener & {
+      (event: CallbackEvent<TTagName, TEvent>): void;
+    })
+  | null;
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -104,6 +112,8 @@ declare class ChoiceList extends BaseClass implements ChoiceListProps {
   accessor details: ChoiceListProps['details'];
   accessor multiple: ChoiceListProps['multiple'];
   accessor label: ChoiceListProps['label'];
+  accessor onchange: CallbackEventListener<typeof tagName> | null;
+  accessor oninput: CallbackEventListener<typeof tagName> | null;
   accessor labelAccessibilityVisibility: ChoiceListProps['labelAccessibilityVisibility'];
   get values(): ChoiceListProps['values'];
   set values(values: ChoiceListProps['values']);

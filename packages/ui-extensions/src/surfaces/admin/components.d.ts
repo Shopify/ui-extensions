@@ -5047,7 +5047,6 @@ declare class Image extends PreactCustomElement implements ImageProps {
   accessor borderStyle: ImageProps['borderStyle'];
   accessor borderColor: ImageProps['borderColor'];
   accessor borderRadius: ImageProps['borderRadius'];
-  accessor onerror: OnErrorEventHandler;
   constructor();
 }
 declare global {
@@ -6439,7 +6438,6 @@ declare class FunctionSettings
   implements FunctionSettingsProps
 {
   constructor();
-  accessor onerror: OnErrorEventHandler;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -6584,6 +6582,16 @@ export interface ButtonEvents {
   focus: CallbackEventListener<typeof tagName> | null = null;
 }
 
+export interface CheckboxEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
+}
+
+export interface ChoiceListEvents {
+  change: CallbackEventListener<typeof tagName> | null = null;
+  input: CallbackEventListener<typeof tagName> | null = null;
+}
+
 export interface ClickableEvents {
   click: CallbackEventListener<typeof tagName> | null = null;
   blur: CallbackEventListener<typeof tagName> | null = null;
@@ -6601,12 +6609,34 @@ export interface DatePickerEvents {
   change: CallbackEventListener<typeof tagName> | null = null;
 }
 
+export interface EmailFieldEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
+  blur: CallbackEventListener<'input'>;
+  focus: CallbackEventListener<'input'>;
+}
+
 export interface ImageEvents {
   load: CallbackEventListener<typeof tagName> | null = null;
+  error: OnErrorEventHandler = null;
 }
 
 export interface LinkEvents {
   click: CallbackEventListener<typeof tagName> | null = null;
+}
+
+export interface MoneyFieldEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
+  blur: CallbackEventListener<'input'>;
+  focus: CallbackEventListener<'input'>;
+}
+
+export interface NumberFieldEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
+  blur: CallbackEventListener<'input'>;
+  focus: CallbackEventListener<'input'>;
 }
 
 export interface PageSlots {
@@ -6616,6 +6646,30 @@ export interface PageSlots {
    * This slot is only rendered when `inlineSize` is "base".
    */
   aside?: HTMLElement;
+}
+
+export interface PasswordFieldEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
+  blur: CallbackEventListener<'input'>;
+  focus: CallbackEventListener<'input'>;
+}
+
+export interface SearchFieldEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
+  blur: CallbackEventListener<'input'>;
+  focus: CallbackEventListener<'input'>;
+}
+
+export interface SelectEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
+}
+
+export interface SwitchEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
 }
 
 export interface TableEvents {
@@ -6630,11 +6684,32 @@ export interface TableSlots {
   filters?: HTMLElement;
 }
 
+export interface TextAreaEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
+  blur: CallbackEventListener<'input'>;
+  focus: CallbackEventListener<'input'>;
+}
+
+export interface TextFieldEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
+  blur: CallbackEventListener<'input'>;
+  focus: CallbackEventListener<'input'>;
+}
+
 export interface TextFieldSlots {
   /**
    * The accessory to display in the text field.
    */
   accessory?: HTMLElement;
+}
+
+export interface URLFieldEvents {
+  change: CallbackEventListener<'input'>;
+  input: CallbackEventListener<'input'>;
+  blur: CallbackEventListener<'input'>;
+  focus: CallbackEventListener<'input'>;
 }
 
 export interface AdminActionSlots {
@@ -6654,6 +6729,7 @@ export interface FormEvents {
 
 export interface FunctionSettingsEvents {
   save: CallbackEventListener<typeof tagName> | null = null;
+  error: OnErrorEventHandler = null;
 }
 declare module 'react' {
   interface BaseProps {

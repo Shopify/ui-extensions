@@ -3,7 +3,7 @@ import {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Badge',
   description:
-    "Use `s-badge` to inform merchants of the status of an object or of an action that's been taken.",
+    'Inform users about the status of an object or indicate that an action has been completed.',
   category: 'Polaris web components',
   subCategory: 'Titles and text',
   related: [],

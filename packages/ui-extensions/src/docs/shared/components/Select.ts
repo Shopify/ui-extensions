@@ -3,7 +3,7 @@ import {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'Select',
   description:
-    '`s-select` lets merchants choose one option from an options menu. Consider `s-select` when you have 4 or more options, to avoid cluttering the interface.',
+    'Allow users to pick one option from a menu. Ideal when presenting four or more choices to keep interfaces uncluttered.',
   category: 'Polaris web components',
   subCategory: 'Forms',
   related: [],

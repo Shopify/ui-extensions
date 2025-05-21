@@ -20,9 +20,9 @@ export interface StackProps extends Pick<StackProps$1, 'accessibilityLabel' | 'a
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<StackProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
-    alignContent?: Extract<StackProps$1['alignContent'], 'start' | 'center' | 'end' | 'normal'>;
-    alignItems?: Extract<StackProps$1['alignItems'], 'start' | 'center' | 'end' | 'normal'>;
-    justifyContent?: Extract<StackProps$1['justifyContent'], 'start' | 'center' | 'end' | 'normal'>;
+    alignContent?: Extract<StackProps$1['alignContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
+    alignItems?: Extract<StackProps$1['alignItems'], 'normal' | 'stretch' | 'center' | 'start' | 'end'>;
+    justifyContent?: Extract<StackProps$1['justifyContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
 }
 export interface StackElement extends StackProps, Omit<HTMLElement, 'id'> {
 }
@@ -32,9 +32,13 @@ declare global {
     }
 }
 declare module 'preact' {
+    interface BaseProps {
+        children?: preact.ComponentChildren;
+        slot?: Lowercase<string>;
+    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-stack': Omit<HTMLAttributes<HTMLElement>, Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>> & StackProps;
+            's-stack': StackProps & BaseProps;
         }
     }
 }

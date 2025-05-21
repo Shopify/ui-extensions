@@ -54,6 +54,23 @@ const data: LandingTemplateSchema = {
     },
     {
       type: 'Generic',
+      title: 'Scaffolded with Preact',
+      sectionContent:
+        'UI Extensions are scaffolded with Preact by default. This means that you can use Preact patterns and principles within your extension.',
+      anchorLink: 'scaffolded-with-preact',
+      codeblock: {
+        title: 'Scaffolded with Preact',
+        tabs: [
+          {
+            code: './examples/scaffolded-with-preact.jsx',
+            language: 'jsx',
+            title: 'JSX',
+          },
+        ],
+      },
+    },
+    {
+      type: 'Generic',
       anchorLink: 'extension-targets',
       title: 'Extension Targets',
       sectionContent: `Extension targets provide locations where merchants can insert custom content.

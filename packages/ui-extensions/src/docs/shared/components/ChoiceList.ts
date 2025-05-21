@@ -3,7 +3,7 @@ import {SharedReferenceEntityTemplateSchema} from '../docs-type';
 const data: SharedReferenceEntityTemplateSchema = {
   name: 'ChoiceList',
   description:
-    'Use `s-choice-list` to present multiple options to merchants. Choice lists can present options with either radio buttons for single selection or checkboxes for multiple selection.',
+    'Present multiple options to users, allowing either single selections with radio buttons or multiple selections with checkboxes.',
   category: 'Polaris web components',
   subCategory: 'Forms',
   related: [],

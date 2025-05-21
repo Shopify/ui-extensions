@@ -32,9 +32,9 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-        - Clearly label text fields so that it’s obvious what customers should enter.
-        - Label text fields as optional when input isn’t required. For example, use the label <b>First name (optional)</b>.
-        - Don’t have optional fields pass true to the required property.
+- Clearly label text fields so that it’s obvious what customers should enter.
+- Label text fields as optional when input isn’t required. For example, use the label <b>First name (optional)</b>.
+- Don’t have optional fields pass true to the required property.
       `,
     },
   ],

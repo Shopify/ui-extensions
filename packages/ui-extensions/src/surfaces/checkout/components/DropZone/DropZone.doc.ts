@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: 'dropzone-preview.png',
+    image: 'dropzone-default.png',
     altText:
       'An image showcasing the DropZone component with a button to add files with error and dragged over states.',
     codeblock: {
