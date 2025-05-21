@@ -19,7 +19,10 @@ function App({text, number}) {
   return (
     <s-admin-block title="My Block Extension">
       <s-form
-        onSubmit={() => console.log('submit', {textValue, numberValue})}
+        onSubmit={(event) => {
+          event.waitUntil(fetch('app:data/save'));
+          console.log('submit', {textValue, numberValue});
+        }
         onReset={() => console.log('automatically reset values')}
       >
         <s-stack direction="block" gap="base">
