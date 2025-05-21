@@ -296,11 +296,25 @@ declare abstract class PreactCustomElement extends BaseClass {
 }
 
 export interface PreactOverlayControlProps
-  extends Required<Pick<InteractionProps, 'commandFor'>> {
+  extends Pick<InteractionProps, 'commandFor'> {
+  /**
+   * Sets the action the `commandFor` should take when this clickable is activated.
+   *
+   * See the documentation of particular components for the actions they support.
+   *
+   * - `--auto`: a default action for the target component.
+   * - `--show`: shows the target component.
+   * - `--hide`: hides the target component.
+   * - `--toggle`: toggles the target component.
+   *
+   * @default '--auto'
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
+   */
   command: Extract<
     InteractionProps['command'],
     '--show' | '--hide' | '--toggle' | '--auto'
   >;
+  commandFor: Extract<InteractionProps['commandFor'], string>;
 }
 
 declare class BoxElement extends PreactCustomElement implements BoxProps {
