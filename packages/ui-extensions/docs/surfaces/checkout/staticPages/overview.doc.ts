@@ -21,31 +21,13 @@ const data: LandingTemplateSchema = {
       anchorLink: 'scaffolding-extension',
       title: 'Scaffolding an extension',
       sectionContent:
-        'Use Shopify CLI to [generate a new extension](/apps/tools/cli/commands#generate-extension) in the directory of your app.',
-      sectionCard: [
-        {
-          name: 'Getting started video',
-          subtitle: 'Watch',
-          url: 'https://www.youtube.com/watch?v=jr_AIUDUSMw',
-          type: 'youtube',
-        },
-      ],
+        'Use the Shopify CLI to [generate a new extension](/apps/tools/cli/commands#generate-extension) in the directory of your app.',
       codeblock: {
         title: 'Scaffolding',
         tabs: [
           {
-            title: 'npm',
-            code: './examples/scaffolding-npm.example.bash',
-            language: 'bash',
-          },
-          {
-            title: 'yarn',
-            code: './examples/scaffolding-yarn.example.bash',
-            language: 'bash',
-          },
-          {
-            title: 'pnpm',
-            code: './examples/scaffolding-pnpm.example.bash',
+            title: 'CLI',
+            code: './examples/scaffolding.example.bash',
             language: 'bash',
           },
         ],
@@ -56,7 +38,7 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       title: 'Scaffolded with Preact',
       sectionContent:
-        'UI Extensions are scaffolded with Preact by default. This means that you can use Preact patterns and principles within your extension.',
+        'UI Extensions are scaffolded with [Preact](https://preactjs.com/) by default. This means that you can use Preact patterns and principles within your extension.',
       anchorLink: 'scaffolded-with-preact',
       codeblock: {
         title: 'Scaffolded with Preact',
@@ -77,7 +59,7 @@ const data: LandingTemplateSchema = {
         Static extension targets are tied to core checkout features like contact information, shipping methods, and order summary line items.
         Block extension targets can be displayed at any point in the checkout process and will always render regardless of which checkout features are available.
         An example is a field to capture order notes from the customer.
-        \n\nExtension UIs are rendered using [remote UI](https://github.com/Shopify/remote-dom/tree/remote-ui),
+        \nExtension UIs are rendered using [remote DOM](https://github.com/Shopify/remote-dom/),
         a fast and secure environment for custom [(non-DOM)](#security) UIs.`,
       sectionCard: [
         {
@@ -92,7 +74,7 @@ const data: LandingTemplateSchema = {
         title: 'Extension targets',
         tabs: [
           {
-            title: 'React',
+            title: 'Preact',
             code: './examples/extension-targets.example.tsx',
             language: 'tsx',
           },
@@ -144,7 +126,7 @@ const data: LandingTemplateSchema = {
         title: 'Extension APIs',
         tabs: [
           {
-            title: 'React',
+            title: 'Preact',
             code: './examples/extension-apis.example.tsx',
             language: 'tsx',
           },
@@ -177,7 +159,7 @@ const data: LandingTemplateSchema = {
         title: 'UI components',
         tabs: [
           {
-            title: 'React',
+            title: 'Preact',
             code: './examples/ui-components.example.tsx',
             language: 'tsx',
           },
@@ -203,7 +185,7 @@ Checkout UI extensions are a safe and secure way to customize the appearance and
           sectionContent: `
 You can't override the CSS for UI components. The checkout UI will always render the merchant's own branding as shown in the image in the UI components section above.
 
-Checkout UI extensions don't have access to the DOM and can't return DOM nodes. They can't return \`<div>\` elements, for example. Building an arbitrary tree of HTML and loading additional scripts using script tags are also not supported.
+Checkout UI extensions don't have access to the real checkout DOM and can't render arbitrary HTML such as \`<div>\` elements or \`<script>\` tags, etc. They can only render custom HTML elements provided by Shopify.
 `,
           type: 'info',
         },
@@ -244,10 +226,10 @@ Checkout UI extensions don't have access to the DOM and can't return DOM nodes. 
       title: 'Resources',
       resources: [
         {
-          name: 'remote-ui',
+          name: 'remote-dom',
           subtitle:
             'Learn more about the underlying technology that powers checkout UI extensions.',
-          url: 'https://github.com/Shopify/remote-dom/tree/remote-ui',
+          url: 'https://github.com/Shopify/remote-dom/',
           type: 'gitHub',
         },
         {

@@ -1,3 +1,4 @@
+import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 import {useShippingAddress} from '@shopify/ui-extensions/checkout/preact';
 

@@ -49,12 +49,10 @@ else
   # so we erase their contents and replace them afterwards
   echo "export {}" > src/surfaces/customer-account.ts
   echo "export {}" > src/surfaces/admin.ts
-  echo "export {}" > src/surfaces/point-of-sale.ts
   eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES && eval $COMPILE_CATEGORIES
   build_exit=$?
   git checkout HEAD -- src/surfaces/customer-account.ts
   git checkout HEAD -- src/surfaces/admin.ts
-  git checkout HEAD -- src/surfaces/point-of-sale.ts
 fi
 
 # TODO: get generate-docs to stop requiring JS files:
@@ -82,11 +80,7 @@ echo
 if [ $API_VERSION == "2025-10-rc" ]
 then
   echo "**** ${API_VERSION}: prefixing generate commands with POLARIS_UNIFIED=true"
-  run_sed 's/(npm run shopify app generate extension)/POLARIS_UNIFIED=true \1/gi' \
-    ./$DOCS_PATH/generated/generated_static_pages.json
-  run_sed 's/(pnpm shopify app generate extension)/POLARIS_UNIFIED=true \1/gi' \
-    ./$DOCS_PATH/generated/generated_static_pages.json
-  run_sed 's/(yarn shopify app generate extension)/POLARIS_UNIFIED=true \1/gi' \
+  run_sed 's/(shopify app generate extension)/POLARIS_UNIFIED=true \1/gi' \
     ./$DOCS_PATH/generated/generated_static_pages.json
 else
   echo "**** ${API_VERSION}: NOT prefixing generate commands with POLARIS_UNIFIED=true"
@@ -131,3 +125,4 @@ else
   SHOPIFY_DEV_PATH="$HOME/src/github.com/Shopify/shopify-dev"
   copy_generated_docs_to_shopify_dev
 fi
+
