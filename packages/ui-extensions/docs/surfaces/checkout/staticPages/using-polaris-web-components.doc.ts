@@ -114,8 +114,8 @@ const data: LandingTemplateSchema = {
             tabs: [
               {
                 title: 'JavaScript',
-                code: './examples/properties-vs-attributes-jsx-props.js',
-                language: 'javascript',
+                code: './examples/properties-vs-attributes-jsx-props.ts',
+                language: 'ts',
               },
             ],
             title: 'Pseudocode',

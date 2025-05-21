@@ -38,7 +38,7 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       title: 'Scaffolded with Preact',
       sectionContent:
-        'UI Extensions are scaffolded with Preact by default. This means that you can use Preact patterns and principles within your extension.',
+        'UI Extensions are scaffolded with [Preact](https://preactjs.com/) by default. This means that you can use Preact patterns and principles within your extension.',
       anchorLink: 'scaffolded-with-preact',
       codeblock: {
         title: 'Scaffolded with Preact',
@@ -185,7 +185,7 @@ Checkout UI extensions are a safe and secure way to customize the appearance and
           sectionContent: `
 You can't override the CSS for UI components. The checkout UI will always render the merchant's own branding as shown in the image in the UI components section above.
 
-Checkout UI extensions don't have access to the DOM and can't return DOM nodes. They can't return \`<div>\` elements, for example. Building an arbitrary tree of HTML and loading additional scripts using script tags are also not supported.
+Checkout UI extensions don't have access to the real checkout DOM and can't render arbitrary HTML such as \`<div>\` elements or \`<script>\` tags, etc. They can only render custom HTML elements provided by Shopify.
 `,
           type: 'info',
         },

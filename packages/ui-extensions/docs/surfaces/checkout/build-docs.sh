@@ -49,12 +49,10 @@ else
   # so we erase their contents and replace them afterwards
   echo "export {}" > src/surfaces/customer-account.ts
   echo "export {}" > src/surfaces/admin.ts
-  echo "export {}" > src/surfaces/point-of-sale.ts
   eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES && eval $COMPILE_CATEGORIES
   build_exit=$?
   git checkout HEAD -- src/surfaces/customer-account.ts
   git checkout HEAD -- src/surfaces/admin.ts
-  git checkout HEAD -- src/surfaces/point-of-sale.ts
 fi
 
 # TODO: get generate-docs to stop requiring JS files:

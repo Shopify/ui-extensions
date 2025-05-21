@@ -1,16 +1,20 @@
 import '@shopify/ui-extensions/preact';
-import { Fragment, render } from 'preact';
-import { useState } from 'preact/hooks';
+import {render} from 'preact';
+import {useState} from 'preact/hooks';
 
-export default function ScaffoldedWithPreact() {
+export default function extension() {
+  render(<Extension />, document.body);
+}
+
+function Extension() {
   const [count, setCount] = useState(0);
 
   return (
-    <Fragment>
+    <>
       <s-text>Count: {count}</s-text>
-      <s-button onClick={() => setCount(count + 1)}>Increment</s-button>
-    </Fragment>
+      <s-button onClick={() => setCount(count + 1)}>
+        Increment
+      </s-button>
+    </>
   );
 }
-
-render(<ScaffoldedWithPreact />, document.body);
