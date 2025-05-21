@@ -75,6 +75,10 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 ## Important Fixes
 
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
 - **POS 10.2.0**:
 
   - Fixed a sizing issue with the \`Button\` component.
@@ -106,6 +110,10 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Release day: 1/6/2025
 
 ## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
 
 - **POS 10.2.0**:
 
@@ -171,6 +179,10 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 ## Important Fixes
 
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
 - **POS 10.2.0**:
 
   - Fixed a sizing issue with the \`Button\` component.
@@ -196,6 +208,10 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Release day: 10/1/2024.
 
 ## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
 
 - **POS 10.2.0**:
 
@@ -229,6 +245,10 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Release day: 08/14/2024.
 
 ## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
 
 - **POS 10.2.0**:
 
@@ -267,6 +287,12 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added in POS version: 9.11.0
 - Removed in POS version: 9.31.0
 - Release day: 06/10/2024.
+
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
 
 ### Features
 
