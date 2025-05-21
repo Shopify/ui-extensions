@@ -3,7 +3,7 @@ import sharedContent from '../../../../docs/shared/components/Section';
 
 const data: ReferenceEntityTemplateSchema = {
   ...sharedContent,
-  thumbnail: '',
+  thumbnail: 'section-thumbnail.png',
   isVisualComponent: true,
   subSections: [
     {
@@ -28,7 +28,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   defaultExample: {
-    image: '',
+    image: 'section-default.png',
     codeblock: {
       title: 'Code',
       tabs: [
