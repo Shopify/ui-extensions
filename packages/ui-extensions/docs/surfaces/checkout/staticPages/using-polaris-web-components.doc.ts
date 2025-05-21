@@ -107,15 +107,15 @@ const data: LandingTemplateSchema = {
           initialLanguage: '',
         },
         {
-          title: 'How JSX properties are aspplied',
+          title: 'How JSX properties are applied',
           description:
             "When using Polaris web components in JSX, the framework determines how to apply your props based on whether the element has a matching property name.\n\nIf the element has a property with the exact same name as your prop, the value is set as a property. Otherwise, it's applied as an attribute. Here's how this works in pseudocode:",
           codeblock: {
             tabs: [
               {
                 title: 'JavaScript',
-                code: './examples/properties-vs-attributes-jsx-props.ts',
-                language: 'ts',
+                code: './examples/properties-vs-attributes-jsx-props.js',
+                language: 'javascript',
               },
             ],
             title: 'Pseudocode',
