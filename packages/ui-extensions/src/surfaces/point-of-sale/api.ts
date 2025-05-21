@@ -76,6 +76,8 @@ export type {
   SessionApi,
 } from './render/api/session-api/session-api';
 
+export type {StorageApi} from './render/api/storage-api/storage-api';
+
 export type {
   ShowToastOptions,
   ToastApiContent,
@@ -122,3 +124,5 @@ export type {
 export type {CountryCode} from './types/country-code';
 
 export type {Session} from './types/session';
+export type {Storage} from './types/storage';
+export {StorageError} from './types/storage';
