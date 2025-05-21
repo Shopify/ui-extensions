@@ -61,7 +61,7 @@ We do not recommend migrating your production checkout UI extension to Polaris y
 |   \`Grid\`                   |   \`Grid\`                                                |   Coming soon                          |
 |   \`GridItem\`               |   \`GridItem\`                                            |   Coming soon                          |
 |   \`Heading\`                |   [Heading](/api/checkout-ui-extensions/2025-10-rc/components/titles-and-text/heading)                                             |   Available today                      |
-|   \`HeadingGroup\`           |   \`Section\`                                             |   Coming soon                          |
+|   \`HeadingGroup\`           |   [Section](/api/checkout-ui-extensions/2025-10-rc/components/structure/section)                                             |   Available today                          |
 |   \`Icon\`                   |   [Icon](/api/checkout-ui-extensions/2025-10-rc/components/media/icon)                                                |   Available today                          |
 |   \`Image\`                  |   [Image](/api/checkout-ui-extensions/2025-10-rc/components/media/image)                                               |   Available today                      |
 |   \`InlineLayout\`           |                                                      |   Removed. Use \`Grid\`                   |
