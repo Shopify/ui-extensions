@@ -10,17 +10,23 @@ export interface PageProps {
   subheading?: string;
 }
 
+export interface PageElement extends HTMLElement, PageProps {}
+
 declare global {
   interface HTMLElementTagNameMap {
-    ['s-page']: HTMLElement & PageProps;
+    ['s-page']: PageElement;
   }
 }
 
 declare module 'preact' {
+  interface BaseProps {
+    children?: preact.ComponentChildren;
+    slot?: Lowercase<string>;
+  }
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace createElement.JSX {
     interface IntrinsicElements {
-      ['s-page']: HTMLAttributes<HTMLElement> & PageProps;
+      ['s-page']: BaseProps & PageProps;
     }
   }
 }
