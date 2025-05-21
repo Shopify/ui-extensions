@@ -53,7 +53,7 @@ const data: LandingTemplateSchema = {
           url: '/docs/api/checkout-ui-extensions/2025-10-rc/upgrading-to-2025-10',
         },
       ],
-    }
+    },
   ],
 };
 
