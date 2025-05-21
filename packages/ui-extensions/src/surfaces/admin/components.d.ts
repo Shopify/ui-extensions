@@ -4325,8 +4325,6 @@ declare class PreactInputElement
   static formAssociated: boolean;
   /** @private */
   [internals$2]: ElementInternals;
-  accessor onchange: CallbackEventListener<'input'>;
-  accessor oninput: CallbackEventListener<'input'>;
   accessor disabled: PreactInputProps['disabled'];
   accessor id: PreactInputProps['id'];
   accessor name: PreactInputProps['name'];
@@ -4733,8 +4731,6 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   extends PreactInputElement
   implements PreactFieldProps<Autocomplete>
 {
-  accessor onblur: CallbackEventListener<'input'>;
-  accessor onfocus: CallbackEventListener<'input'>;
   accessor autocomplete: PreactFieldProps<Autocomplete>['autocomplete'];
   accessor defaultValue: PreactFieldProps['defaultValue'];
   accessor details: PreactFieldProps['details'];
