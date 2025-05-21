@@ -288,12 +288,6 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Removed in POS version: 9.31.0
 - Release day: 06/10/2024.
 
-## Important Fixes
-
-- **POS 10.3.0**:
-
-  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
-
 ### Features
 
 - Added support for the ${TargetLink.PosPurchasePostActionMenuItemRender} and ${TargetLink.PosPurchasePostActionRender} targets.
