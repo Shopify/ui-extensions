@@ -1,5 +1,5 @@
 # create an app if you don't already have one:
-shopify app init --name my-app
+POLARIS_UNIFIED=true shopify app init --name my-app
 
 # navigate to your app's root directory:
 cd my-app
