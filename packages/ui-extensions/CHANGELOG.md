@@ -1,5 +1,24 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.3
+
+### Patch Changes
+
+- [#2927](https://github.com/Shopify/ui-extensions/pull/2927) [`edfa4895c29d46a8e7648e17771bca75ec74182d`](https://github.com/Shopify/ui-extensions/commit/edfa4895c29d46a8e7648e17771bca75ec74182d) Thanks [@robin-drexler](https://github.com/robin-drexler)! - fix `useNavigationCurrentEntry` hook returning stale value
+
+- [#2932](https://github.com/Shopify/ui-extensions/pull/2932) [`ee4bc8cc3fbf255c33ba83b28ab644680cf156e7`](https://github.com/Shopify/ui-extensions/commit/ee4bc8cc3fbf255c33ba83b28ab644680cf156e7) Thanks [@oliverigor](https://github.com/oliverigor)! - - Added customer account migration guide with comparison tables mapping legacy components to new Polaris web components
+  - Removed extended form field event properties from the documentation to simplify component APIs
+  - Added documentation for Section component with visual examples
+  - Improved parent-child component relationship documentation for admin components
+  - Added script to exit pre-release mode
+  - Updated component descriptions and documentation for Admin UI components
+  - Fixed Preact native types for customer account
+  - Moved example country selector to top of documentation
+  - Fixed form components events and HTML examples
+  - Added support for Polaris web components in checkout extensions
+  - Added scaffolded with Preact section for checkout extensions
+  - Updated documentation for various components with copy edits and improved examples
+
 ## 2025.10.0-rc.2
 
 ### Patch Changes
