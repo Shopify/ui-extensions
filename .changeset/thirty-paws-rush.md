@@ -1,5 +1,5 @@
 ---
-'@shopify/ui-extensions': minor
+'@shopify/ui-extensions': patch
 ---
 
 - Added customer account migration guide with comparison tables mapping legacy components to new Polaris web components
