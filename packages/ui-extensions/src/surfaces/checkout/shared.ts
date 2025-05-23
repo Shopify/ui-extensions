@@ -28,6 +28,7 @@ export type AnyComponent =
   | 'Spinner'
   | 'Stack'
   | 'Text'
+  | 'TextField'
   | 'Time'
   | 'UnorderedList';
 
