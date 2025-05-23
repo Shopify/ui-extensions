@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.4
+
+### Patch Changes
+
+- [#2935](https://github.com/Shopify/ui-extensions/pull/2935) [`f97f97c7df5cf9520c5252e825f606d8ce56a1e1`](https://github.com/Shopify/ui-extensions/commit/f97f97c7df5cf9520c5252e825f606d8ce56a1e1) Thanks [@oliverigor](https://github.com/oliverigor)! - Missing component types for targets
+
 ## 2025.10.0-rc.3
 
 ### Patch Changes
