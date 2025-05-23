@@ -1,6 +1,11 @@
-export interface StorageExceededError extends Error {
-  name: 'StorageExceededError';
-  code: 'RecordsCount' | 'RecordSize';
+export class StorageError extends Error {
+  public name = 'StorageError';
+  constructor(
+    public code: 'RecordsCount' | 'RecordSize' | 'KeyType' | 'KeySize',
+    message: string,
+  ) {
+    super(message);
+  }
 }
 export interface Storage<
   BaseStorageTypes extends Record<string, any> = Record<string, unknown>,
@@ -11,8 +16,10 @@ export interface Storage<
    * @param key - The key to set the value for.
    * @param value - The value to set for the key.
    * Can be any primitive type supported by `JSON.stringify`.
-   * @throws StorageExceededError if the extension exceeds its allotted storage limit.
-   * @throws StorageExceededError if value exceeds its allotted storage limit.
+   * @throws StorageError when:
+   *    the extension exceeds its allotted storage limit.
+   *    the value exceeds its allotted storage limit.
+   *    the key is not a string or exceeds its allotted size.
    */
   set<
     StorageTypes extends BaseStorageTypes = BaseStorageTypes,
@@ -28,6 +35,7 @@ export interface Storage<
    * @param key - The key to get the value for.
    * @returns The value of the key.
    * If no value for the key exists, the resolved value is undefined.
+   * @throws StorageError when the key is not a string or exceeds its allotted size.
    */
   get<
     StorageTypes extends BaseStorageTypes = BaseStorageTypes,
@@ -56,10 +64,10 @@ export interface Storage<
   /**
    * Gets all the keys and values in the storage.
    *
-   * @returns An iterator containing all the keys and values in the storage.
+   * @returns An array containing all the keys and values in the storage.
    */
   entries<
     StorageTypes extends BaseStorageTypes = BaseStorageTypes,
     Keys extends keyof StorageTypes = keyof StorageTypes,
-  >(): Promise<IterableIterator<[Keys, StorageTypes[Keys]]>>;
+  >(): Promise<[Keys, StorageTypes[Keys]][]>;
 }
