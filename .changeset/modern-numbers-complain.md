@@ -2,4 +2,4 @@
 '@shopify/ui-extensions': patch
 ---
 
-TextField typing for targets
+Missing component types for targets
