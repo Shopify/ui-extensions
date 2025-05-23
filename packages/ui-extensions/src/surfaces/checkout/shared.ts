@@ -25,9 +25,12 @@ export type AnyComponent =
   | 'Paragraph'
   | 'PaymentIcon'
   | 'Progress'
+  | 'QRCode'
+  | 'Section'
   | 'Spinner'
   | 'Stack'
   | 'Text'
+  | 'TextField'
   | 'Time'
   | 'UnorderedList';
 
