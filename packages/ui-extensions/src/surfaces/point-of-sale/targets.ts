@@ -173,7 +173,7 @@ export interface ExtensionTargets {
   >;
   'pos.smart-grid.render': RenderExtension<
     StandardApi<'pos.smart-grid.render'> & ActionApi & CartApi,
-    SmartGridComponents
+    BlockComponents
   >;
   'pos.cart-line-item.render': RenderExtension<
     StandardApi<'pos.cart-line-item.render'> & CartApi & CartLineItemApi,
