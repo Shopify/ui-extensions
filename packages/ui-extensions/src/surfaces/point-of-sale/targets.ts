@@ -167,56 +167,60 @@ export interface ExtensionTargets {
       (TransactionCompleteData | {transaction: ReprintReceiptData}),
     ReceiptComponents
   >;
-  'pos.navigation.tab-bar.render': RenderExtension<
-    ActionTargetApi<'pos.navigation.tab-bar.render'>,
+  'pos.navigation.tab-bar.block.render': RenderExtension<
+    ActionTargetApi<'pos.navigation.tab-bar.block.render'>,
     ActionComponents
   >;
-  'pos.smart-grid.render': RenderExtension<
-    StandardApi<'pos.smart-grid.render'> & ActionApi & CartApi,
+  'pos.smart-grid.block.render': RenderExtension<
+    StandardApi<'pos.smart-grid.block.render'> & ActionApi & CartApi,
     BlockComponents
   >;
-  'pos.cart-line-item.render': RenderExtension<
-    StandardApi<'pos.cart-line-item.render'> & CartApi & CartLineItemApi,
+  'pos.cart-line-item.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.block.render'> & CartApi & CartLineItemApi,
     BasicComponents
   >;
-  'pos.cart-line-item.delivery.render': RenderExtension<
-    StandardApi<'pos.cart-line-item.delivery.render'> &
+  'pos.cart-line-item.delivery.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.delivery.block.render'> &
       CartApi &
       CartLineItemApi,
     BasicComponents
   >;
-  'pos.cart-line-item.inventory.render': RenderExtension<
-    StandardApi<'pos.cart-line-item.inventory.render'> &
+  'pos.cart-line-item.inventory.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.inventory.block.render'> &
       CartApi &
       CartLineItemApi,
     BasicComponents
   >;
-  'pos.cart-line-item.pricing.render': RenderExtension<
-    StandardApi<'pos.cart-line-item.pricing.render'> &
+  'pos.cart-line-item.pricing.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.pricing.block.render'> &
       CartApi &
       CartLineItemApi,
     BasicComponents
   >;
-  'pos.cart-line-item.discounts.render': RenderExtension<
-    StandardApi<'pos.cart-line-item.discounts.render'> &
+  'pos.cart-line-item.discounts.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.discounts.block.render'> &
       CartApi &
       CartLineItemApi,
     BasicComponents
   >;
-  'pos.cart-line-item.staff.render': RenderExtension<
-    StandardApi<'pos.cart-line-item.staff.render'> & CartApi & CartLineItemApi,
+  'pos.cart-line-item.staff.block.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.staff.block.render'> &
+      CartApi &
+      CartLineItemApi,
     BasicComponents
   >;
-  'pos.product-details.render': RenderExtension<
-    StandardApi<'pos.product-details.render'> & CartApi & FullProductApi,
+  'pos.product-details-screen.block.render': RenderExtension<
+    StandardApi<'pos.product-details.block.render'> & CartApi & FullProductApi,
     BasicComponents
   >;
-  'pos.cart.render': RenderExtension<
-    StandardApi<'pos.cart.render'> & CartApi,
+  'pos.cart.block.render': RenderExtension<
+    StandardApi<'pos.cart.block.render'> & CartApi,
     BasicComponents
   >;
-  'pos.cart.payment-actions.render': RenderExtension<
-    StandardApi<'pos.cart.payment-actions.render'> & CartApi & CartLineItemApi,
+  'pos.cart.payment-actions.block.render': RenderExtension<
+    StandardApi<'pos.cart.payment-actions.block.render'> &
+      CartApi &
+      CartLineItemApi,
     BasicComponents
   >;
 }
