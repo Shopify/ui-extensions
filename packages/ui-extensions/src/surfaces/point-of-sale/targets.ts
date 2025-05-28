@@ -15,6 +15,7 @@ import type {AnyComponentBuilder} from '../../shared';
 import type {ReprintReceiptData} from './event/data/ReprintReceiptData';
 import type {TransactionCompleteData} from './event/data/TransactionCompleteData';
 import {StorageApi} from './render/api/storage-api/storage-api';
+import {FullProductApi} from './render/api/product-api/product-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
 type ActionComponents = AnyComponentBuilder<Pick<Components, 'Button'>>;
@@ -165,6 +166,60 @@ export interface ExtensionTargets {
     {[key: string]: any} & StorageApi &
       (TransactionCompleteData | {transaction: ReprintReceiptData}),
     ReceiptComponents
+  >;
+  'pos.navigation.tab-bar.render': RenderExtension<
+    ActionTargetApi<'pos.navigation.tab-bar.render'>,
+    ActionComponents
+  >;
+  'pos.smart-grid.render': RenderExtension<
+    StandardApi<'pos.smart-grid.render'> & ActionApi & CartApi,
+    SmartGridComponents
+  >;
+  'pos.cart-line-item.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.render'> & CartApi & CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.cart-line-item.delivery.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.delivery.render'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.cart-line-item.delivery.inventory': RenderExtension<
+    StandardApi<'pos.cart-line-item.delivery.inventory'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.cart-line-item.delivery.pricing': RenderExtension<
+    StandardApi<'pos.cart-line-item.delivery.pricing'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.cart-line-item.delivery.discounts': RenderExtension<
+    StandardApi<'pos.cart-line-item.delivery.discounts'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.cart-line-item.delivery.staff': RenderExtension<
+    StandardApi<'pos.cart-line-item.delivery.staff'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
+  'pos.product-details.render': RenderExtension<
+    StandardApi<'pos.product-details.render'> & CartApi & FullProductApi,
+    BasicComponents
+  >;
+  'pos.cart.render': RenderExtension<
+    StandardApi<'pos.cart.render'> & CartApi,
+    BasicComponents
+  >;
+  'pos.cart.payment-actions.render': RenderExtension<
+    StandardApi<'pos.cart.payment-actions.render'> & CartApi & CartLineItemApi,
+    BasicComponents
   >;
 }
 
