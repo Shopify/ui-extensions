@@ -116,8 +116,7 @@ export interface ExtensionTargets {
     StandardApi<'pos.draft-order-details.block.render'> &
       ActionApi &
       CartApi &
-      DraftOrderApi,
-    BlockComponents
+      BlockComponents
   >;
   'pos.customer-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.customer-details.action.menu-item.render'> &
@@ -171,7 +170,12 @@ export interface ExtensionTargets {
     StandardApi<'pos.navigation.tab-bar.block.render'> & BlockComponents
   >;
   'pos.smart-grid.block.render': RenderExtension<
-    StandardApi<'pos.smart-grid.block.render'> & ActionApi & CartApi,
+    StandardApi<'pos.smart-grid.block.render'> &
+      ActionApi &
+      CartApi &
+      DraftOrderApi &
+      OrderApi &
+      ProductApi,
     BlockComponents
   >;
   'pos.cart-line-item.block.render': RenderExtension<
