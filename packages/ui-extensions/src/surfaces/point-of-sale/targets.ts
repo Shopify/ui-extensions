@@ -185,28 +185,26 @@ export interface ExtensionTargets {
       CartLineItemApi,
     BasicComponents
   >;
-  'pos.cart-line-item.delivery.inventory': RenderExtension<
-    StandardApi<'pos.cart-line-item.delivery.inventory'> &
+  'pos.cart-line-item.inventory.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.inventory.render'> &
       CartApi &
       CartLineItemApi,
     BasicComponents
   >;
-  'pos.cart-line-item.delivery.pricing': RenderExtension<
-    StandardApi<'pos.cart-line-item.delivery.pricing'> &
+  'pos.cart-line-item.pricing.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.pricing.render'> &
       CartApi &
       CartLineItemApi,
     BasicComponents
   >;
-  'pos.cart-line-item.delivery.discounts': RenderExtension<
-    StandardApi<'pos.cart-line-item.delivery.discounts'> &
+  'pos.cart-line-item.discounts.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.discounts.render'> &
       CartApi &
       CartLineItemApi,
     BasicComponents
   >;
-  'pos.cart-line-item.delivery.staff': RenderExtension<
-    StandardApi<'pos.cart-line-item.delivery.staff'> &
-      CartApi &
-      CartLineItemApi,
+  'pos.cart-line-item.staff.render': RenderExtension<
+    StandardApi<'pos.cart-line-item.staff.render'> & CartApi & CartLineItemApi,
     BasicComponents
   >;
   'pos.product-details.render': RenderExtension<
