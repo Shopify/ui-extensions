@@ -5,11 +5,12 @@ import {
   POSBlockRow,
   DirectApiRequestBody,
 } from '@shopify/ui-extensions/point-of-sale';
+import type {DirectApiRequestBody} from '@shopify/ui-extensions/point-of-sale';
 
 async function mutateMetafield(productId: number) {
   const requestBody: DirectApiRequestBody = {
     query: `
-        mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) { 
+        mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {
           metafieldsSet(metafields: $metafields) {
             metafields {
               key
