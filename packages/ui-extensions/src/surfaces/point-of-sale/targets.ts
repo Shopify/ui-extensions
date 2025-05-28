@@ -168,8 +168,7 @@ export interface ExtensionTargets {
     ReceiptComponents
   >;
   'pos.navigation.tab-bar.block.render': RenderExtension<
-    ActionTargetApi<'pos.navigation.tab-bar.block.render'>,
-    ActionComponents
+    StandardApi<'pos.navigation.tab-bar.block.render'> & BlockComponents
   >;
   'pos.smart-grid.block.render': RenderExtension<
     StandardApi<'pos.smart-grid.block.render'> & ActionApi & CartApi,
