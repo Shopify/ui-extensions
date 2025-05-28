@@ -4,14 +4,14 @@ import {
   Text,
   POSBlock,
   POSBlockRow,
-  DirectApiRequestBody,
 } from '@shopify/ui-extensions-react/point-of-sale';
+import type {DirectApiRequestBody} from '@shopify/ui-extensions-react/point-of-sale';
 import {useEffect, useState} from 'react';
 
 async function mutateMetafield(productId: number) {
   const requestBody: DirectApiRequestBody = {
     query: `
-        mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) { 
+        mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {
           metafieldsSet(metafields: $metafields) {
             metafields {
               key
