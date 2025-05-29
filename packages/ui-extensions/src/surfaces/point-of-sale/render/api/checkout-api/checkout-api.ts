@@ -7,5 +7,4 @@ export interface CheckoutApiContent {
    * Continue the checkout process.
    */
   continue(): void;
-  id: number;
 }
