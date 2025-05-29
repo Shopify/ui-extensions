@@ -48,6 +48,12 @@ The Action API allows an action extension to modally present its corresponding m
           'present-modal-tile',
         ),
       },
+      {
+        codeblock: generateCodeBlockForActionApi(
+          'Present adaptive selling interface.',
+          'present-adaptive-selling',
+        ),
+      },
     ],
   },
 };
