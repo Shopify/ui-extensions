@@ -229,8 +229,11 @@ export interface ExtensionTargets {
 
   'pos.checkout.post.payment-selection.block.render': RenderExtension<
     StandardApi<'pos.checkout.post.payment-selection.block.render'> &
+      ActionApi &
       CartApi &
-      CartLineItemApi,
+      DraftOrderApi &
+      OrderApi &
+      ProductApi,
     BasicComponents
   >;
 }
