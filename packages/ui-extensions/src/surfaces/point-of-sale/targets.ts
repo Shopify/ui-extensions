@@ -173,7 +173,6 @@ export interface ExtensionTargets {
     StandardApi<'pos.smart-grid.block.render'> &
       ActionApi &
       CartApi &
-      DraftOrderApi &
       OrderApi &
       ProductApi,
     BlockComponents
@@ -231,7 +230,6 @@ export interface ExtensionTargets {
     StandardApi<'pos.checkout.post.payment-selection.block.render'> &
       ActionApi &
       CartApi &
-      DraftOrderApi &
       OrderApi &
       ProductApi,
     BasicComponents
