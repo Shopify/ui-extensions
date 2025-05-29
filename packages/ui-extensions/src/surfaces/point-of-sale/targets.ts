@@ -175,6 +175,10 @@ export interface ExtensionTargets {
     StandardApi<'pos.smart-grid.block.render'> & ActionApi & CartApi,
     BlockComponents
   >;
+  'pos.smart-grid.modal.render': RenderExtension<
+    StandardApi<'pos.smart-grid.modal.render'> & ActionApi & CartApi,
+    BasicComponents
+  >;
   'pos.cart-line-item.block.render': RenderExtension<
     StandardApi<'pos.cart-line-item.block.render'> & CartApi & CartLineItemApi,
     BasicComponents
