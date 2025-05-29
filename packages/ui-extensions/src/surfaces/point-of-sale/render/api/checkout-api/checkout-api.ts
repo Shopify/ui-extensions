@@ -6,5 +6,5 @@ export interface CheckoutApiContent {
   /**
    * Continue the checkout process.
    */
-  continue(): Promise<void>;
+  continue(): void;
 }
