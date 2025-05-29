@@ -9,6 +9,7 @@ import type {
   DraftOrderApi,
   ProductApi,
   OrderApi,
+  NavigationApi,
 } from './api';
 import type {RenderExtension} from './extension';
 import type {Components} from './shared';
@@ -227,6 +228,7 @@ export interface ExtensionTargets {
     StandardApi<'pos.checkout.post.payment-selection.block.render'> &
       ActionApi &
       CartApi &
+      NavigationApi &
       CheckoutApi,
     BasicComponents
   >;
