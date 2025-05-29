@@ -16,6 +16,11 @@ export default createPackage((pkg) => {
   const completedSurfaces = new Set<string>();
   pkg.entry({root: './src/index.ts'});
   pkg.entry({name: 'admin', root: './src/surfaces/admin.ts'});
+  pkg.entry({name: 'channels', root: './src/surfaces/channels.ts'});
+  pkg.entry({
+    name: 'channels/preact',
+    root: './src/surfaces/channels/preact/index.ts',
+  });
   pkg.entry({name: 'checkout', root: './src/surfaces/checkout.ts'});
   pkg.entry({
     name: 'checkout/preact',
@@ -47,6 +52,13 @@ export default createPackage((pkg) => {
             buildTargetsDefinitions(
               resolve(process.cwd(), 'packages/ui-extensions'),
               'admin',
+            );
+            completedSurfaces.add('admin');
+          }
+          if (!completedSurfaces.has('channels')) {
+            buildTargetsDefinitions(
+              resolve(process.cwd(), 'packages/ui-extensions'),
+              'channels',
             );
             completedSurfaces.add('admin');
           }
