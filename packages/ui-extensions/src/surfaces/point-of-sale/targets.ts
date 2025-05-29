@@ -170,11 +170,7 @@ export interface ExtensionTargets {
     StandardApi<'pos.navigation.tab-bar.block.render'> & BlockComponents
   >;
   'pos.smart-grid.block.render': RenderExtension<
-    StandardApi<'pos.smart-grid.block.render'> &
-      ActionApi &
-      CartApi &
-      OrderApi &
-      ProductApi,
+    StandardApi<'pos.smart-grid.block.render'> & ActionApi & CartApi,
     BlockComponents
   >;
   'pos.cart-line-item.block.render': RenderExtension<
@@ -229,9 +225,7 @@ export interface ExtensionTargets {
   'pos.checkout.post.payment-selection.block.render': RenderExtension<
     StandardApi<'pos.checkout.post.payment-selection.block.render'> &
       ActionApi &
-      CartApi &
-      OrderApi &
-      ProductApi,
+      CartApi,
     BasicComponents
   >;
 }
