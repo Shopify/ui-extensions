@@ -2,6 +2,7 @@ import type {
   StandardApi,
   ActionApi,
   ActionTargetApi,
+  CheckoutApi,
   CartApi,
   CartLineItemApi,
   CustomerApi,
@@ -225,7 +226,8 @@ export interface ExtensionTargets {
   'pos.checkout.post.payment-selection.block.render': RenderExtension<
     StandardApi<'pos.checkout.post.payment-selection.block.render'> &
       ActionApi &
-      CartApi,
+      CartApi &
+      CheckoutApi,
     BasicComponents
   >;
 }
