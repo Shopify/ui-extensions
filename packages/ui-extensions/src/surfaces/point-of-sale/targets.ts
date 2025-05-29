@@ -226,6 +226,13 @@ export interface ExtensionTargets {
       CartLineItemApi,
     BasicComponents
   >;
+
+  'pos.checkout.post.payment-selection.block.render': RenderExtension<
+    StandardApi<'pos.checkout.post.payment-selection.block.render'> &
+      CartApi &
+      CartLineItemApi,
+    BasicComponents
+  >;
 }
 
 export type ExtensionTarget = keyof ExtensionTargets;
