@@ -80,4 +80,6 @@ export type {
   SizeUnitsOrNone,
   BoxProps,
   SizeKeyword,
+  BasicTileProps,
+  ThemeProviderProps,
 } from '@shopify/ui-extensions/point-of-sale';

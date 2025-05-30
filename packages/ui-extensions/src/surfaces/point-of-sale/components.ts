@@ -128,6 +128,8 @@ export type {
   EmbeddedElementProps,
 } from './render/components/TextField/TextField';
 export {Tile} from './render/components/Tile/Tile';
+export {BasicTile} from './render/components/BasicTile/BasicTile';
+export type {BasicTileProps} from './render/components/BasicTile/BasicTile';
 export type {TileProps} from './render/components/Tile/Tile';
 export {TimeField} from './render/components/TimeField/TimeField';
 export type {TimeFieldProps} from './render/components/TimeField/TimeField';
@@ -150,3 +152,5 @@ export type {
   SizeUnitsOrNone,
 } from './render/components/shared/box';
 export type {SizeKeyword} from './render/components/shared/sizes';
+export {ThemeProvider} from './render/components/ThemeProvider/ThemeProvider';
+export type {ThemeProviderProps} from './render/components/ThemeProvider/ThemeProvider';

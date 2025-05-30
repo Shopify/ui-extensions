@@ -33,5 +33,7 @@ export {Text} from './components/Text/Text';
 export {TextArea} from './components/TextArea/TextArea';
 export {TextField} from './components/TextField/TextField';
 export {Tile} from './components/Tile/Tile';
+export {BasicTile} from './components/BasicTile/BasicTile';
+export {ThemeProvider} from './components/ThemeProvider/ThemeProvider';
 export {TimeField} from './components/TimeField/TimeField';
 export {TimePicker} from './components/TimePicker/TimePicker';

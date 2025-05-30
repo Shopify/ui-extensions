@@ -39,7 +39,15 @@ type BlockComponents = AnyComponentBuilder<
   >
 >;
 
+type ThemeComponents = AnyComponentBuilder<Pick<Components, 'ThemeProvider'>>;
+
 export interface ExtensionTargets {
+  'pos.theme.render': RenderExtension<
+    StandardApi<'pos.theme.render'> &
+      ActionApi &
+      CartApi & {children: React.ReactNode},
+    ThemeComponents
+  >;
   'pos.home.tile.render': RenderExtension<
     StandardApi<'pos.home.tile.render'> & ActionApi & CartApi,
     SmartGridComponents
