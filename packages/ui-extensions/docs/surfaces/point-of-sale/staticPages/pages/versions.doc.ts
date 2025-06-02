@@ -61,6 +61,8 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 - Added required \`posVersion\` property to \`Session\` interface.
 - Added optional \`currency\` property to \`Discount\` interface.
+- Added \`executedAt\` property to \`BaseTransactionComplete\` interface.
+- Added optional \`exchangeId\` and \`returnId\` property to \`ReturnTransactionData\` interface.
 
   `,
     },
