@@ -394,12 +394,6 @@ export interface CompanyLocation {
 
 export interface Ui {
   /**
-   * An overlay is a contextual element on top of the main interface that provides additional information or functionality.
-   */
-  overlay: {
-    close(overlayId: string): void;
-  };
-  /**
    * The Toast API displays a non-disruptive message that displays at the bottom
    * of the interface to provide quick, at-a-glance feedback on the outcome
    * of an action.
