@@ -19,13 +19,35 @@ const data: LandingTemplateSchema = {
 APIs and components will report if they receive parameters of an unexpected type. For further debugging, you can use \`console.log\` to print any additional information in the console.
 
 ### APIs
-If an API receives an incorrect parameter, it won't attempt to perform the action and it will \`throw\` an error instead. This error can be viewed either by implementing a \`try/catch\` block or by using the Chrome console.
+If an API receives an incorrect parameter, it won't attempt to perform the action and it will \`throw\` an error instead. This error can be viewed either by implementing a \`try/catch\` block or by using the browser console.
 
 ### Components
 
 If a component is given an incorrect parameter, the extension will be replaced with a non-descriptive user interface that indicates an issue has occurred. In case the extension is running locally, the developer will also see the exact error displayed as a toast message.
 
-**In the future we plan to modify this behavior to display the error in the Chrome console instead, aligning with the API approach.**`,
+**In the future we plan to modify this behavior to display the error in the console instead, aligning with the API approach.**`,
+    },
+    {
+      type: 'Generic',
+      anchorLink: 'accessing-the-console',
+      title: 'Accessing the console',
+      sectionContent: `
+You can now view your POS UI Extension's JavaScript console output (\`console.log\`, etc.) directly in your terminal when running \`shopify app dev\`. This feature doesn't require your test device to be physically connected to your computer.
+
+### How it works
+1. Launch your extension in development mode: \`shopify app dev\`
+
+2. As your extension runs in the Shopify POS app on your test device, any console logging statements you use (such as \`console.log("My data", data);\`) will appear in the terminal output where you launched shopify app dev.
+
+### Benefits
+- Console logs are viewable without connecting a test device to a computer
+- Real-time console log viewing while developing extensions without having to open the browser dev tools
+- Standard browser console logging statements work in extension code
+
+### Limitations
+
+- Console logs are only available when running \`shopify app dev\`. They are not available for production extensions.
+- Network requests are not supported in the console. To view network requests, you can use the browser dev tools or manually log the network requests in your code.`,
     },
     {
       type: 'Generic',
