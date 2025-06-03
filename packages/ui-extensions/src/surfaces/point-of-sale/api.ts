@@ -124,5 +124,4 @@ export type {
 export type {CountryCode} from './types/country-code';
 
 export type {Session} from './types/session';
-export type {Storage} from './types/storage';
-export {StorageError} from './types/storage';
+export type {Storage, StorageError} from './types/storage';

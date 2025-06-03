@@ -1,12 +1,8 @@
-export class StorageError extends Error {
-  public name = 'StorageError';
-  constructor(
-    public code: 'RecordsCount' | 'RecordSize' | 'KeyType' | 'KeySize',
-    message: string,
-  ) {
-    super(message);
-  }
+export interface StorageError extends Error {
+  name: 'StorageError';
+  code: 'RecordsCount' | 'RecordSize' | 'KeyType' | 'KeySize';
 }
+
 export interface Storage<
   BaseStorageTypes extends Record<string, any> = Record<string, unknown>,
 > {
@@ -16,6 +12,7 @@ export interface Storage<
    * @param key - The key to set the value for.
    * @param value - The value to set for the key.
    * Can be any primitive type supported by `JSON.stringify`.
+   * @throws Error when the API version is lower than 2025-04.
    * @throws StorageError when:
    *    the extension exceeds its allotted storage limit.
    *    the value exceeds its allotted storage limit.
@@ -35,6 +32,7 @@ export interface Storage<
    * @param key - The key to get the value for.
    * @returns The value of the key.
    * If no value for the key exists, the resolved value is undefined.
+   * @throws Error when the API version is lower than 2025-04.
    * @throws StorageError when the key is not a string or exceeds its allotted size.
    */
   get<
@@ -46,12 +44,14 @@ export interface Storage<
 
   /**
    * Clears the storage.
+   * @throws Error when the API version is lower than 2025-04.
    */
   clear: () => Promise<void>;
 
   /**
    * Deletes a key from the storage.
    *
+   * @throws Error when the API version is lower than 2025-04.
    * @param key - The key to delete.
    */
   delete<
@@ -64,6 +64,7 @@ export interface Storage<
   /**
    * Gets all the keys and values in the storage.
    *
+   * @throws Error when the API version is lower than 2025-04.
    * @returns An array containing all the keys and values in the storage.
    */
   entries<
