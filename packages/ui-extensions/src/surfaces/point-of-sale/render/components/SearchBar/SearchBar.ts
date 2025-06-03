@@ -18,6 +18,10 @@ export interface SearchBarProps {
    */
   onFocus?: () => void;
   /**
+   * A callback when focus is removed.
+   */
+  onBlur?: () => void;
+  /**
    * Whether the text can be changed.
    */
   editable?: boolean;
