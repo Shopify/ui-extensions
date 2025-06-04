@@ -56,6 +56,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 ## Important Fixes
 
 - Update pos.draft-order-details.block.render allowed components to \`BlockComponents\`.
+- Added support for a product variant id field in the \`ProductApi\` interface.
 
 ### Features
 
@@ -64,6 +65,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added \`executedAt\` property to \`BaseTransactionComplete\` interface.
 - Added optional \`exchangeId\` and \`returnId\` property to \`ReturnTransactionData\` interface.
 - Added optional \`onBlur\` handler to \`SearchBar\` component.
+- Added required \`variantId\` property to \`ProductApi\` interface.
 
   `,
     },
