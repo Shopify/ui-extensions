@@ -21,18 +21,26 @@ export type AnyComponent =
   | 'Image'
   | 'Link'
   | 'ListItem'
+  | 'Option'
   | 'OrderedList'
   | 'Paragraph'
   | 'PaymentIcon'
   | 'Progress'
-  | 'QRCode'
-  | 'Section'
   | 'Spinner'
   | 'Stack'
   | 'Text'
-  | 'TextField'
   | 'Time'
-  | 'UnorderedList';
+  | 'UnorderedList'
+  | 'Map'
+  | 'MapMarker'
+  | 'Checkbox'
+  | 'Select'
+  | 'Modal'
+  | 'ProductThumbnail'
+  | 'EmailField'
+  | 'NumberField'
+  | 'PhoneField'
+  | 'TextArea';
 
 export type AllowedComponents<Allowed extends AnyComponent> = Allowed;
 export type AnyComponentExcept<Except extends AnyComponent> = Exclude<
