@@ -1,7 +1,7 @@
 import {render} from 'preact';
 import {useEffect} from 'preact/hooks';
 
-export default function extension() {
+export default async () => {
   render(<Extension />, document.body);
 }
 

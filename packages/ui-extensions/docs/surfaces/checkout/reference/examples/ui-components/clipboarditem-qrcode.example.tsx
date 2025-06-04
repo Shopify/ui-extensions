@@ -1,7 +1,7 @@
 import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 
-export default function extension() {
+export default async () => {
   const bitcoinAddress =
     '14qViLJfdGaP4EeHnDyJbEGQysnCpwk3gd';
 

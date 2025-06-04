@@ -1,4 +1,4 @@
-export default function extension() {
+export default async () => {
   const accountAction = document.createElement('s-customer-account-action');
 
   const closeButton = document.createElement('s-button');

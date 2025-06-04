@@ -4,7 +4,7 @@ import {
   useShippingAddress,
 } from '@shopify/ui-extensions/checkout/preact';
 
-export default function extension() {
+export default async () => {
   render(<Extension />, document.body);
 }
 

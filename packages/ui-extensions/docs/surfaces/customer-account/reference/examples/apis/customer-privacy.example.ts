@@ -1,4 +1,4 @@
-export default function extension() {
+export default async () => {
   const visitorConsent =
     shopify.customerPrivacy.current
       .visitorConsent || {};
