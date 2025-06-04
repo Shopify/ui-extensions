@@ -1,31 +1,55 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+/* eslint-disable import-x/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable line-comment-position */
 /* eslint-disable @typescript-eslint/unified-signatures */
 /* eslint-disable no-var */
-/* eslint-disable import/namespace */
+/* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {QRCodeProps$1} from './components-shared.d.ts';
 
-export interface QRCodeProps extends QRCodeProps$1 {
+/**
+ * Used when an element does not have children.
+ */
+export interface BaseElementProps<TClass = HTMLElement> {
+    key?: preact.Key;
+    ref?: preact.Ref<TClass>;
+    slot?: Lowercase<string>;
 }
-export interface QRCodelement extends Omit<QRCodeProps, 'onError'>, Omit<HTMLElement, 'id' | 'onerror'> {
-    onerror: QRCodeProps['onError'];
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
+
+declare const tagName = "s-qr-code";
+export interface QRCodeBaseProps extends QRCodeProps$1 {
+}
+export interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
+}
+export interface QRCodeElementEvents {
+    /**
+     * Invoked when the conversion of `content` to a QR code fails.
+     * If an error occurs, the QR code and its child elements will not be displayed.
+     */
+    error?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface QRCodelement extends QRCodeBaseProps, Omit<QRCodeEvents, 'onError'>, Omit<HTMLElement, 'id' | 'onerror'> {
+    onerror: QRCodeEvents['onError'];
+}
+export interface QRCodeProps extends QRCodeBaseProps, QRCodeEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-qr-code': QRCodelement;
+        [tagName]: QRCodelement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-qr-code': QRCodeProps;
+            [tagName]: QRCodeProps & BaseElementProps<QRCodelement>;
         }
     }
 }
 
-export type { QRCodeProps, QRCodelement };
+export type { QRCodeBaseProps, QRCodeElementEvents, QRCodeEvents, QRCodeProps, QRCodelement };

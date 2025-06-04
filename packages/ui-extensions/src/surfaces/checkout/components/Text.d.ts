@@ -1,15 +1,31 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+/* eslint-disable import-x/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable line-comment-position */
 /* eslint-disable @typescript-eslint/unified-signatures */
 /* eslint-disable no-var */
-/* eslint-disable import/namespace */
+/* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {TextProps$1} from './components-shared.d.ts';
 
+/**
+ * Used when an element does not have children.
+ */
+export interface BaseElementProps<TClass = HTMLElement> {
+    key?: preact.Key;
+    ref?: preact.Ref<TClass>;
+    slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    children?: preact.ComponentChildren;
+}
+
+declare const tagName = "s-text";
 export interface TextProps extends Pick<TextProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'display' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<TextProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<TextProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
@@ -19,17 +35,13 @@ export interface TextElement extends TextProps, Omit<HTMLElement, 'id' | 'dir' |
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-text': TextElement;
+        [tagName]: TextElement;
     }
 }
 declare module 'preact' {
-    interface BaseProps {
-        children?: preact.ComponentChildren;
-        slot?: Lowercase<string>;
-    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-text': TextProps & BaseProps;
+            [tagName]: TextProps & BaseElementPropsWithChildren<TextElement>;
         }
     }
 }

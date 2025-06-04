@@ -1,32 +1,59 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+/* eslint-disable import-x/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable line-comment-position */
 /* eslint-disable @typescript-eslint/unified-signatures */
 /* eslint-disable no-var */
-/* eslint-disable import/namespace */
+/* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {ClipboardItemProps$1} from './components-shared.d.ts';
 
-export interface ClipboardItemProps extends ClipboardItemProps$1 {
+/**
+ * Used when an element does not have children.
+ */
+export interface BaseElementProps<TClass = HTMLElement> {
+    key?: preact.Key;
+    ref?: preact.Ref<TClass>;
+    slot?: Lowercase<string>;
 }
-export interface ClipboardItemElement extends Omit<ClipboardItemProps, 'onCopy' | 'onCopyError'>, Omit<HTMLElement, 'id' | 'oncopy'> {
-    oncopy: ClipboardItemProps['onCopy'];
-    oncopyerror: ClipboardItemProps['onCopyError'];
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
+
+declare const tagName = "s-clipboard-item";
+export interface ClipboardItemBaseProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
+}
+export interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
+}
+export interface ClipboardItemElementEvents {
+    /**
+     * Callback run when the copy to clipboard succeeds.
+     */
+    copy?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    /**
+     * Callback run when the copy to clipboard fails.
+     */
+    copyerror?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface ClipboardItemElement extends ClipboardItemBaseProps, Omit<ClipboardItemEvents, 'onCopy' | 'onCopyError'>, Omit<HTMLElement, 'id' | 'oncopy'> {
+    oncopy: ClipboardItemEvents['onCopy'];
+    oncopyerror: ClipboardItemEvents['onCopyError'];
+}
+export interface ClipboardItemProps extends ClipboardItemBaseProps, ClipboardItemEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-clipboard-item': ClipboardItemElement;
+        [tagName]: ClipboardItemElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-clipboard-item': ClipboardItemProps;
+            [tagName]: ClipboardItemProps & BaseElementProps<ClipboardItemElement>;
         }
     }
 }
 
-export type { ClipboardItemElement, ClipboardItemProps };
+export type { ClipboardItemBaseProps, ClipboardItemElement, ClipboardItemElementEvents, ClipboardItemEvents, ClipboardItemProps };
