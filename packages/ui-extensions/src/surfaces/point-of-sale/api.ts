@@ -44,6 +44,17 @@ export type {
 
 export type {OrderApiContent, OrderApi} from './render/api/order-api/order-api';
 
+export type {PaymentDetailsApi} from './render/api/payment-details-api/payment-details-api';
+
+export type {
+  PaymentApi,
+  PaymentApiContent,
+  PaymentAttemptResult,
+  PaymentAttemptOptions,
+  PaymentAttemptStatus,
+  PaymentResultCallback,
+} from './render/api/payment-api/payment-api';
+
 export type {
   ProductApi,
   ProductApiContent,
@@ -107,7 +118,12 @@ export type {
 
 export type {TaxLine} from './types/tax-line';
 
-export type {PaymentMethod, Payment} from './types/payment';
+export type {
+  PaymentMethod,
+  Payment,
+  PaymentTerminal,
+  PaymentWithDetails,
+} from './types/payment';
 
 export type {MultipleResourceResult} from './types/multiple-resource-result';
 

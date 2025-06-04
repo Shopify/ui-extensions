@@ -8,6 +8,8 @@ import type {
   DraftOrderApi,
   ProductApi,
   OrderApi,
+  PaymentDetailsApi,
+  PaymentApi,
 } from './api';
 import type {RenderExtension} from './extension';
 import type {Components} from './shared';
@@ -159,6 +161,21 @@ export interface ExtensionTargets {
       CartLineItemApi,
     BlockComponents
   >;
+  'pos.checkout.payment-options.action.render': RenderExtension<
+    ActionTargetApi<'pos.checkout.payment-options.action.render'> &
+      CartApi &
+      PaymentDetailsApi &
+      PaymentApi,
+    BasicComponents
+  >;
+  'pos.checkout.payment-options.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.checkout.payment-options.action.menu-item.render'> &
+      ActionApi &
+      CartApi &
+      PaymentDetailsApi &
+      PaymentApi,
+    ActionComponents
+  >;
   'pos.receipt-footer.block.render': RenderExtension<
     // NOTE: key/any type is cause of no arg useApi() that includes all target types.
     //   stop using useApi() with no args, instead specify the target type explicitly.
@@ -175,14 +192,14 @@ export type ExtensionForExtensionTarget<T extends ExtensionTarget> =
 
 /**
  * For a given extension target, returns the value that is expected to be
- * returned by that extension target’s callback type.
+ * returned by that extension target's callback type.
  */
 export type ReturnTypeForExtension<ID extends keyof ExtensionTargets> =
   ReturnType<ExtensionTargets[ID]>;
 
 /**
  * For a given extension target, returns the tuple of arguments that would
- * be provided to that extension target’s callback type.
+ * be provided to that extension target's callback type.
  */
 export type ArgumentsForExtension<ID extends keyof ExtensionTargets> =
   Parameters<ExtensionTargets[ID]>;
@@ -203,7 +220,7 @@ export type RenderExtensionTarget = {
 }[keyof ExtensionTargets];
 
 /**
- * A mapping of each “render extension” name to its callback type.
+ * A mapping of each "render extension" name to its callback type.
  */
 export type RenderExtensions = {
   [ID in RenderExtensionTarget]: ExtensionTargets[ID];
