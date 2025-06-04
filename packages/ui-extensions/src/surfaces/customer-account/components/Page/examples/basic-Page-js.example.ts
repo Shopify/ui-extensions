@@ -3,25 +3,25 @@ export default function extension() {
 
   const primaryAction = document.createElement('s-button');
   primaryAction.innerHTML = 'Primary action';
-  primaryAction.slot = 'primaryAction';
+  primaryAction.slot = 'primary-action';
   primaryAction.addEventListener('click', () => console.log('Primary action'));
 
   const secondaryActions1 = document.createElement('s-button');
-  secondaryActions1.slot = 'secondaryActions';
+  secondaryActions1.slot = 'secondary-actions';
   secondaryActions1.textContent = 'Secondary action 1';
   secondaryActions1.addEventListener('click', () =>
     console.log('Secondary action 1'),
   );
 
   const secondaryActions2 = document.createElement('s-button');
-  secondaryActions2.slot = 'secondaryActions';
+  secondaryActions2.slot = 'secondary-actions';
   secondaryActions2.textContent = 'Secondary action 2';
   secondaryActions2.addEventListener('click', () =>
     console.log('Secondary action 2'),
   );
 
   const breadcrumbActions = document.createElement('s-button');
-  breadcrumbActions.slot = 'breadcrumbActions';
+  breadcrumbActions.slot = 'breadcrumb-actions';
   breadcrumbActions.setAttribute('accessibilitylabel', 'Button');
   breadcrumbActions.setAttribute('href', 'shopify://customer-account/orders');
 

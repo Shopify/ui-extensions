@@ -8,7 +8,7 @@ function App() {
   return (
     <s-customer-account-action heading="Extension title">
       Extension content
-      <s-button slot="primaryAction" onClick={() => shopify.close()}>
+      <s-button slot="primary-action" onClick={() => shopify.close()}>
         Click to close
       </s-button>
     </s-customer-account-action>
