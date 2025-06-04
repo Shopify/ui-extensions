@@ -1208,7 +1208,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   onClick?: () => void;
   /**
-   * Disables the button, meaning it cannot be clicked or receive focus.
+   * Whoop Disables the button, meaning it cannot be clicked or receive focus.
    *
    * @default false
    */
