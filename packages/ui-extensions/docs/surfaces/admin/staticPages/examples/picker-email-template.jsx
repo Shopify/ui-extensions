@@ -5,10 +5,8 @@ export default function extension() {
 }
 
 function Extension() {
-  const { picker } = shopify;
-
   const handleSelectEmailTemplate = async () => {
-    const pickerInstance = await picker({
+    const pickerInstance = await shopify.picker({
       heading: 'Select a template',
       multiple: false,
       headers: [
