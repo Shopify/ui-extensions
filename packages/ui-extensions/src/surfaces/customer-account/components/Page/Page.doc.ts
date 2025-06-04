@@ -15,19 +15,19 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'PageProps',
     },
     {
-      title: 'ButtonSlot primary-action',
+      title: 'Button slot primary-action',
       description:
         'Supported props for Buttons used inside Page `primary-action` slot.<br><br>`children` only support text.',
       type: 'Docs_Page_Button_PrimaryAction',
     },
     {
-      title: 'ButtonSlot secondary-actions',
+      title: 'Button slot secondary-actions',
       description:
         'Supported props for Button used inside Page `secondary-actions` slot.<br><br>`children` are not supported.<br>Use `accessibilityLabel` instead.',
       type: 'Docs_Page_Button_SecondaryAction',
     },
     {
-      title: 'ButtonSlot breadcrumb-actions',
+      title: 'Button slot breadcrumb-actions',
       description:
         'Supported props for Button used inside Page `breadcrumb-actions` slot.<br><br>`children` are not supported.<br>Use `accessibilityLabel` instead.',
       type: 'Docs_Page_Button_BreadcrumbAction',
