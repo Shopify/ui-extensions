@@ -1,31 +1,26 @@
 import {render} from 'preact';
-import {useEffect, useState} from 'preact/hooks';
 
-export default function extension() {
-  render(<Extension />, document.body);
-}
+export default async () => {
+  const productId = shopify.data.selected?.[0]?.id;
+  const {
+    data: {product},
+  } = await shopify.query(
+    `
+    query GetProduct($id: ID!) {
+      product(id: $id) {
+        title
+      }
+    }
+  `,
+    {variables: {id: productId}},
+  );
+  render(<Extension product={product} />, document.body);
+};
 
-function Extension() {
-  // Contextual "input" data passed to this extension:
-  const {data, query} = shopify;
-
-  const [product, setProduct] = useState();
-  useEffect(() => {
-    const productId = data.selected?.[0]?.id;
-    query(
-      `query GetProduct($id: ID!) {
-          product(id: $id) {
-            title
-          }
-        }
-      `,
-      {variables: {id: productId}},
-    ).then(({data}) => setProduct(data.product));
-  }, [data]);
-
+function Extension({product}) {
   return (
-    <s-admin-block title="Product Info">
-      <s-text>The selected product title is {product?.title}</s-text>
+    <s-admin-block heading="Product Info">
+      <s-text>The selected product title is {product.title}</s-text>
     </s-admin-block>
   );
 }
