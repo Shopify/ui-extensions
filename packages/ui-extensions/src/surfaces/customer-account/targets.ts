@@ -90,6 +90,14 @@ export interface OrderStatusExtensionTargets {
       StandardApi<'customer-account.order-status.cart-line-list.render-after'>,
     AnyComponent
   >;
+  /**
+   * A static extension target that renders an extension in a prominent and noticeable area of the **Order status** page.
+   */
+  'customer-account.order-status.announcement.render': RenderExtension<
+    OrderStatusApi<'customer-account.order-status.announcement.render'> &
+      StandardApi<'customer-account.order-status.announcement.render'>,
+    AnyComponent
+  >;
   'customer-account.order.page.render': RenderExtension<
     OrderStatusApi<'customer-account.order.page.render'> &
       Omit<StandardApi<'customer-account.order.page.render'>, 'navigation'> &
