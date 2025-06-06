@@ -35,9 +35,11 @@ If a component is given an incorrect parameter, the extension will be replaced w
 You can now view your POS UI Extension's JavaScript console output (\`console.log\`, etc.) directly in your terminal when running \`shopify app dev\`. This feature doesn't require your test device to be physically connected to your computer.
 
 ### How it works
-1. Launch your extension in development mode: \`shopify app dev\`
+1. Ensure you are using at least version 3.82 of the Shopify CLI and version 10.XXXXXX of the POS app.
 
-2. As your extension runs in the Shopify POS app on your test device, any console logging statements you use (such as \`console.log("My data", data);\`) will appear in the terminal output where you launched shopify app dev.
+2. Launch your extension in development mode: \`shopify app dev\`
+
+3. As your extension runs in the Shopify POS app on your test device, any console logging statements you use (such as \`console.log("My data", data);\`) will appear in the terminal output where you launched shopify app dev.
 
 ### Benefits
 - Console logs are viewable without connecting a test device to a computer
@@ -46,8 +48,7 @@ You can now view your POS UI Extension's JavaScript console output (\`console.lo
 
 ### Limitations
 
-- Console logs are only available when running \`shopify app dev\`. They are not available for production extensions.
-- Network requests are not supported in the console. To view network requests, you can use the browser dev tools or manually log the network requests in your code.`,
+- Console logs are only available when running \`shopify app dev\`. They are not available for production extensions.`,
     },
     {
       type: 'Generic',
