@@ -145,8 +145,8 @@ const data: LandingTemplateSchema = {
     {
       type: 'Generic',
       title: 'Handling events',
-      sectionContent:
-        'Handling events in UI extensions are the same as you would handle them in a web app. You can use the `addEventListener` method to listen for events on the components or use the `on[event]` property to listen for events from the components.',
+      sectionContent: `Handling events in UI extensions are the same as you would handle them in a web app. You can use the \`addEventListener\` method to listen for events on the components or use the \`on[event]\` property to listen for events from the components.
+        \n\nWhen using Preact, event handlers can be registered by passing props beginning with \`on\`, and the event handler name is case-insensitive. For example, the JSX \`<s-button onClick={fn}>\` registers fn as a "click" event listener on the button.`,
       anchorLink: 'handling-events',
       codeblock: {
         title: 'Handling events',
