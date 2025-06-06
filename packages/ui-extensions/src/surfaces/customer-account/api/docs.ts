@@ -126,7 +126,12 @@ export interface Docs_Menu_Button_Action
 export interface Docs_OrderActionMenu_Button
   extends Pick<
     ButtonProps,
-    'onPress' | 'loading' | 'loadingLabel' | 'disabled' | 'accessibilityLabel'
+    | 'onPress'
+    | 'loading'
+    | 'loadingLabel'
+    | 'disabled'
+    | 'accessibilityLabel'
+    | 'appearance'
   > {
   /**
    * Destination URL to link to.
