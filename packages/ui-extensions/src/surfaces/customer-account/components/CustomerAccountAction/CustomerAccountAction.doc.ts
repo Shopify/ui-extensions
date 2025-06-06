@@ -15,15 +15,15 @@ const data: ReferenceEntityTemplateSchema = {
       type: 'CustomerAccountActionProps',
     },
     {
-      title: 'ButtonProps primaryAction',
+      title: 'Button slot primary-action',
       description:
-        'Supported props for Buttons used inside CustomerAccountAction `primaryAction` prop.<br><br>`children` only support text.',
+        'Supported props for Buttons used inside CustomerAccountAction `primary-action` slot.<br><br>`children` only support text.',
       type: 'Docs_CustomerAccountAction_Button_PrimaryAction',
     },
     {
-      title: 'ButtonProps secondaryAction',
+      title: 'Button slot secondary-actions',
       description:
-        'Supported props for Button used inside CustomerAccountAction `secondaryAction` prop.<br><br>`children` only support text.',
+        'Supported props for Button used inside CustomerAccountAction `secondary-actions` slot.<br><br>`children` only support text.',
       type: 'Docs_CustomerAccountAction_Button_SecondaryAction',
     },
   ],

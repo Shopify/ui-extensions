@@ -3,7 +3,7 @@ export default function extension() {
 
   const closeButton = document.createElement('s-button');
   closeButton.innerHTML = 'Click to close';
-  closeButton.slot = 'primaryAction';
+  closeButton.slot = 'primary-action';
   closeButton.addEventListener('click', () => shopify.close());
 
   accountAction.append('Extension content');
