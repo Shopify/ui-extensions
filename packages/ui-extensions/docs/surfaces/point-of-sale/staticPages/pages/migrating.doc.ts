@@ -19,12 +19,17 @@ const data: LandingTemplateSchema = {
       type: 'Generic',
       anchorLink: 'overview',
       title: 'Overview',
+      sectionNotice: [
+        {
+          type: 'warning',
+          title: 'Minimum CLI Version',
+          sectionContent: 'Migration requires a minimum CLI version of 3.64.0.',
+        },
+      ],
       sectionContent: `
 POS UI Extensions are moving to the newer \`@shopify/ui-extensions\` package, shared with [Checkout UI Extensions](https://shopify.dev/docs/api/checkout-ui-extensions) and [Admin UI Extensions](https://shopify.dev/docs/api/admin-extensions). This will allow your extensions to use the same package regardless of the surface they extend, and for a single extension to implement multiple targets across different surfaces of Shopify more easily.
 
 \`@shopify/retail-ui-extensions\` and \`@shopify/retail-ui-extensions-react\` are deprecated. They are now maintained as part of \`@shopify/ui-extensions\` and \`@shopify/ui-extensions-react\`. This guide explains how to migrate from the old packages to the new ones.
-
-Aside from these migration steps, \`@shopify/ui-extensions@2024.4\` is backwards compatible with \`@shopify/retail-ui-extensions@1.7.0\`.
       `,
     },
     {
@@ -48,9 +53,9 @@ Aside from these migration steps, \`@shopify/ui-extensions@2024.4\` is backwards
       },
       sectionContent: `
 1. Before starting, make sure you have the most up to date version of the [Shopify CLI](https://shopify.dev/docs/api/shopify-cli).
-1. Navigate to your \`package.json\` in the directory of your UI Extension. You'll need to remove \`@shopify/retail-ui-extensions\` or \`@shopify/retail-ui-extensions-react\` (whichever you're using).
-2. If you use React, replace your version of \`react\` and \`@types/react\` (if you use typescript) with version 18 and up. \`@shopify/ui-extensions-react\` does not support any version prior to React 18.
-3. Next you'll need to add the new dependencies, \`@shopify/ui-extensions\` or \`@shopify/ui-extensions-react\`. Currently we support \`2024.4\`. If you are using the \`@shopify/ui-extensions-react\` package, you will also need to install \`@shopify/ui-extensions\`.
+2. Navigate to your \`package.json\` in the directory of your UI Extension. You'll need to remove \`@shopify/retail-ui-extensions\` or \`@shopify/retail-ui-extensions-react\` (whichever you're using).
+3. If you use React, replace your version of \`react\` and \`@types/react\` (if you use typescript) with version 18 and up. \`@shopify/ui-extensions-react\` does not support any version prior to React 18.
+4. Next you'll need to add the new dependencies, \`@shopify/ui-extensions\` or \`@shopify/ui-extensions-react\`. Consult our [changelog](https://shopify.dev/docs/api/pos-ui-extensions/unstable/versions) to see supported versions. If you are using the \`@shopify/ui-extensions-react\` package, you will also need to install \`@shopify/ui-extensions\`.
       `,
     },
     {
