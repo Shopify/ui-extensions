@@ -1,4 +1,9 @@
+/* eslint-disable @typescript-eslint/triple-slash-reference */
+/* eslint-disable spaced-comment */
+/* eslint-disable @typescript-eslint/no-namespace */
+/// <reference types="preact" />
 import {createRemoteComponent} from '@remote-ui/core';
+import type {BaseElementPropsWithChildren} from '../shared';
 
 export interface ImageGroupProps {
   /**
@@ -28,6 +33,25 @@ export interface ImageGroupProps {
    * Indicates the total number of items that could be displayed in the image group. It is used to determine the remaining number to show when all the available image slots have been filled.
    */
   totalItems?: number;
+}
+
+export interface ImageGroupElement
+  extends ImageGroupProps,
+    Omit<HTMLElement, 'id'> {}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    's-image-group': ImageGroupElement;
+  }
+}
+
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      's-image-group': ImageGroupProps &
+        BaseElementPropsWithChildren<ImageGroupElement>;
+    }
+  }
 }
 
 export const ImageGroup = createRemoteComponent<'ImageGroup', ImageGroupProps>(

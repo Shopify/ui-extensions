@@ -1,5 +1,10 @@
+/* eslint-disable @typescript-eslint/triple-slash-reference */
+/* eslint-disable spaced-comment */
+/* eslint-disable @typescript-eslint/no-namespace */
+/// <reference types="preact" />
 import {createRemoteComponent} from '@remote-ui/core';
 import type {RemoteFragment} from '@remote-ui/core';
+import type {BaseElementPropsWithChildren} from '../shared';
 
 export interface PageProps {
   /**
@@ -46,6 +51,22 @@ export interface PageProps {
    * @defaultValue false
    */
   loading?: boolean;
+}
+
+export interface PageElement extends PageProps, Omit<HTMLElement, 'id'> {}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    's-page': PageElement;
+  }
+}
+
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      's-page': PageProps & BaseElementPropsWithChildren<PageElement>;
+    }
+  }
 }
 
 export const Page = createRemoteComponent<'Page', PageProps>('Page');

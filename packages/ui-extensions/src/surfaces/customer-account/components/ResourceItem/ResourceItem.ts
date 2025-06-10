@@ -1,6 +1,11 @@
+/* eslint-disable @typescript-eslint/triple-slash-reference */
+/* eslint-disable spaced-comment */
+/* eslint-disable @typescript-eslint/no-namespace */
+/// <reference types="preact" />
 import {createRemoteComponent} from '@remote-ui/core';
 import type {RemoteFragment} from '@remote-ui/core';
 import {LinkProps} from '../shared-checkout-components';
+import type {BaseElementPropsWithChildren} from '../shared';
 
 export interface ResourceItemProps
   extends Pick<LinkProps, 'accessibilityLabel' | 'to' | 'onPress'> {
@@ -33,6 +38,25 @@ export interface ResourceItemProps
    * @defaultValue false
    */
   loading?: boolean;
+}
+
+export interface ResourceItemElement
+  extends ResourceItemProps,
+    Omit<HTMLElement, 'id'> {}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    's-resource-item': ResourceItemElement;
+  }
+}
+
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      's-resource-item': ResourceItemProps &
+        BaseElementPropsWithChildren<ResourceItemElement>;
+    }
+  }
 }
 
 export const ResourceItem = createRemoteComponent<

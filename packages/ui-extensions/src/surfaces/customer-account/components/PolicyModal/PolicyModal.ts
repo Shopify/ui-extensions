@@ -1,4 +1,9 @@
+/* eslint-disable @typescript-eslint/triple-slash-reference */
+/* eslint-disable spaced-comment */
+/* eslint-disable @typescript-eslint/no-namespace */
+/// <reference types="preact" />
 import {createRemoteComponent} from '@remote-ui/core';
+import type {BaseElementPropsWithChildren} from '../shared';
 
 type PolicyType = 'refund';
 
@@ -14,7 +19,7 @@ export interface PolicyModalProps {
    * Callback when either the close button, the backdrop, or the `escape` key is pressed.
    * `onClose` is only called while the modal is open and attempts to be closed,
    * not when it exits the viewport.
-   * You’ll usually want to use this callback to set the `open` prop to `false`.
+   * You'll usually want to use this callback to set the `open` prop to `false`.
    */
   onClose: () => void;
   /**
@@ -25,6 +30,25 @@ export interface PolicyModalProps {
    * Type of policy to render.
    */
   type: PolicyType;
+}
+
+export interface PolicyModalElement
+  extends PolicyModalProps,
+    Omit<HTMLElement, 'id'> {}
+
+declare global {
+  interface HTMLElementTagNameMap {
+    's-policy-modal': PolicyModalElement;
+  }
+}
+
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      's-policy-modal': PolicyModalProps &
+        BaseElementPropsWithChildren<PolicyModalElement>;
+    }
+  }
 }
 
 export const PolicyModal = createRemoteComponent<
