@@ -1,3 +1,5 @@
+import {BaseElementPropsWithChildren} from './shared';
+
 export interface CustomerAccountActionProps {
   /**
    * Sets the heading of the Action container.
@@ -16,14 +18,11 @@ declare global {
 }
 
 declare module 'preact' {
-  interface BaseProps {
-    children?: preact.ComponentChildren;
-    slot?: Lowercase<string>;
-  }
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace createElement.JSX {
     interface IntrinsicElements {
-      ['s-customer-account-action']: BaseProps & CustomerAccountActionProps;
+      ['s-customer-account-action']: BaseElementPropsWithChildren<CustomerAccountActionElement> &
+        CustomerAccountActionProps;
     }
   }
 }
