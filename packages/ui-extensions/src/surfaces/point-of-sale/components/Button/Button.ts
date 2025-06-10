@@ -1,6 +1,11 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export type ButtonType = 'primary' | 'basic' | 'destructive' | 'plain';
+export type ButtonType =
+  | 'primary'
+  | 'basic'
+  | 'destructive'
+  /** @deprecated No longer supported as of POS 10.0.0. */
+  | 'plain';
 
 /**
  * @property `title` the text set on the `Button`.
@@ -16,6 +21,7 @@ export interface ButtonProps {
   title: string;
   /**
    * The type of `Button` to render. Determines the appearance of the button.
+   * Note: The 'plain' type is no longer supported as of POS 10.0.0. Using it will default to 'basic'.
    */
   type?: ButtonType;
   /**

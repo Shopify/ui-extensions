@@ -15,12 +15,52 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
+      anchorLink: 'compatibility-policy',
+      title: 'Compatibility Policy',
+      sectionContent: '',
+      sectionNotice: [
+        {
+          title: 'End of Compatibility Plan',
+          type: 'Warning',
+          sectionContent: `
+          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end compatibility for versions on a one-year rolling basis. This means that POS will no longer run extensions using removed versions. This table details the end of compatibility schedule.
+
+|released version|removed versions|
+|---:|---|
+|2025-04|1.0.0, 1.0.1, 1.1.2, 1.2.0, 1.3.0, 1.4.0, 1.5.1, 1.6.0, 1.7.0, 2024-04|
+|2025-07|2024-07|
+|2025-10|2024-10|
+|2026-01|2025-01|
+|2026-04|2025-04|
+
+Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.`,
+        },
+      ],
+    },
+    {
+      type: 'Generic',
       anchorLink: '202407',
       title: '2024.07',
       sectionContent: `
-- Added in POS version: N/A
+- Added in POS version: 9.15.0
 - Removed in POS version: N/A
-- Release day: TBD.
+- Release day: 08/14/2024.
+
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
 
 ### Features
 
@@ -45,8 +85,8 @@ const data: LandingTemplateSchema = {
         },
       ],
       sectionContent: `
-- Added in POS version: 9.11
-- Removed in POS version: N/A
+- Added in POS version: 9.11.0
+- Removed in POS version: 9.31.0
 - Release day: 06/10/2024.
 
 ### Features
@@ -67,7 +107,7 @@ const data: LandingTemplateSchema = {
       ],
       sectionContent: `
 - Added in POS version: 9.4.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 03/13/2024.
 
 ### Features
@@ -84,7 +124,7 @@ const data: LandingTemplateSchema = {
       title: '1.6.0',
       sectionContent: `
 - Added in POS version: 9.2.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 02/15/2024.
 
 ### Features
@@ -99,7 +139,7 @@ const data: LandingTemplateSchema = {
       title: '1.5.1',
       sectionContent: `
 - Added in POS version: 8.22.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 11/13/2023.
 
 ### Features
@@ -114,7 +154,7 @@ const data: LandingTemplateSchema = {
       title: '1.5.0',
       sectionContent: `
 - Added in POS version: 8.21.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 10/30/2023.
 
 ### Features
@@ -129,7 +169,7 @@ const data: LandingTemplateSchema = {
       title: '1.4.0',
       sectionContent: `
 - Added in POS version: 8.18.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 9/27/2023.
 
 ### Features
@@ -145,7 +185,7 @@ const data: LandingTemplateSchema = {
       title: '1.3.0',
       sectionContent: `
 - Added in POS version: 8.15.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 8/16/2023.
 
 ### Features
@@ -169,7 +209,7 @@ Introduced the following components:
       title: '1.2.0',
       sectionContent: `
 - Added in POS version: 8.12.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 6/26/2023.
 
 ### Features
@@ -188,7 +228,7 @@ Introduced the following components:
       title: '1.1.2',
       sectionContent: `
 - Added in POS version: 8.9.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/15/2023.
 
 ### Features
@@ -203,7 +243,7 @@ Introduced the following components:
       title: '1.0.1',
       sectionContent: `
 - Added in POS version: 8.8.1
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/3/2023.
 
 ### Fixes
@@ -217,7 +257,7 @@ Introduced the following components:
       title: '1.0.0',
       sectionContent: `
 - Added in POS version: 8.8.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/1/2023.
 
 ### Features
