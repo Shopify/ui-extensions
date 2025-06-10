@@ -99,6 +99,24 @@ This error is most likely from missing a dependency in package.json in the app r
 
 This issue commonly happens when \`Yarn\` is used for dependency management. The package's version was updated but \`npm\` conflicts with \`Yarn\`. In the root of your application run \`npm install\` to get it up to date as well. Restart your IDE if necessary.`,
     },
+    {
+      type: 'Generic',
+      anchorLink: 'session-token-null',
+      title: 'Session tokens are being returned as null',
+      sectionContent: `
+### Resolution
+
+The \`getSessionToken()\` function returns \`null\` when the authenticated user (the user that logged into Shopify POS with their email address) doesn't have the correct app permissions enabled for your app. Session tokens are only returned for authenticated users who have enabled the correct app permission for the app making the request. This is irrelevant of POS Staff members, as those are not authenticated users. 
+
+To resolve this issue:
+
+1. **Check app permissions**: Verify that the authenticated user has the correct app permission enabled for your app. This can be seen in the Shopify Admin by navigating to Settings > Users > Select a user > Scroll down to view the permissions summary.
+
+2. **Enable app permissions**: If the user does not have permissions to use your app, it can be added to one of the roles that is assigned to that user. This can be done in the Shopify Admin by navigating to Settings > Users > Roles > Select a role. You can then scroll down to the apps section and select the app for which you want to grant the user permissions.
+
+For more information on configuring and managing app permissions, see the [Shopify app permissions documentation](https://help.shopify.com/en/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).
+      `,
+    },
   ],
 };
 
