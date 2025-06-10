@@ -75,17 +75,19 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
   - Fixed an issue where the \`Stack\` component was not rendering correctly. By default, \`Stack\` will now always wrap. Additionally, stacks using \`'block'\` will now compress horizontally. Use \`alignContents: 'stretch'\` to take all of the horizontal space. This will not have an impact on layout in previous POS versions.
 
 ### Breaking Changes
-- Removed the deprecated ActionItem component. Use a [Button](/docs/api/pos-ui-extensions/components/button) instead.
-- Removed the deprecated SmartGridApi. Use the [ActionApi](/docs/api/pos-ui-extensions/apis/action-api) instead.
+
+- Removed the deprecated \`ActionItem\` component. Use a [Button](/docs/api/pos-ui-extensions/components/button) instead.
+- Removed the deprecated \`SmartGridApi\`. Use the [ActionApi](/docs/api/pos-ui-extensions/apis/action-api) instead.
 - Removed the deprecated DiscountType. Use [CartDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-applycartdiscount) and [LineItemDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-setlineitemdiscount) instead.
 - Removed the deprecated \`badge\` prop from the [List](/docs/api/pos-ui-extensions/components/list) component. Use \`badges\` instead.
 - Removed the deprecated \`TextFieldProps\` type from the [TextField](/docs/api/pos-ui-extensions/components/textfield) component.
 - Deprecated \`'vertical'\` and \`'horizontal'\` as values for the \`direction\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`'block'\` and \`'inline'\` instead.
-- Deprecated the \`flex'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Set \`blockSize\` or \`inlineSize\` to a value other than \`'auto'\` to create the desired size for your \`Stack\`.
-- Deprecated the \`flexWrap'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Content will now wrap automatically.
-- Deprecated the \`paddingHorizontal'\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`paddingInline\` and \`paddingBlock\` instead.
+- Deprecated the \`flex\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Set \`blockSize\` or \`inlineSize\` to a value other than \`'auto'\` to create the desired size for your \`Stack\`.
+- Deprecated the \`flexWrap\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Content will now wrap automatically.
+- Deprecated the \`paddingHorizontal\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`paddingInline\` and \`paddingBlock\` instead.
 - Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/components/formattedtextfield) component.
 - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+- \`Text\` now takes priority in growing over other components. To contain Text to its minimum width, wrap it in a \`Box\` component.
 
 ### Features
 
@@ -95,8 +97,12 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
   - Added \`bulkUpdateCart\` function for single-operation cart updates.
   - The \`addLineItem\` and \`addCustomSale\` functions now return a \`UUID\` for the added line item.
 - Added [Box](/docs/api/pos-ui-extensions/components/box) component.
-- Enhanced the [Stack](/docs/api/pos-ui-extensions/components/box) component. New fields include \`justifyContent\`, \`alignItems\`, and \`alignContent\`, as well as numerous new sizing and spacing options.
-- Added sizing and fill options to the[Image](/docs/api/pos-ui-extensions/components/image) component.
+- Added a new \`justifyContent\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'start'\`.
+- Added a new \`alignContents\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'start'\`. By default, \`'block'\` stacks may compress horizontally. Use \`'stretch'\` to take all of the horizontal space.
+- Added a new \`alignItems\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'stretch'\`. This may by default cause certain elements to stretch.
+- Added a new \`blockSize\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. This will allow setting a vertical size for the stack.
+- Added a new \`inlineSize\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. This will allow setting a horizontal size for the stack.
+- Added sizing and fill options to the [Image](/docs/api/pos-ui-extensions/components/image) component.
       `,
     },
     {
@@ -126,7 +132,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 
 ### Features
 
-- Fixes long standing issue where \`useEffect\` teardown functions are not working in React',
+- Fixes long standing issue where \`useEffect\` teardown functions are not working in React
       `,
     },
     {
