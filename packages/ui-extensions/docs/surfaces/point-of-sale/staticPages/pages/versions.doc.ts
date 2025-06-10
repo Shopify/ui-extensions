@@ -64,8 +64,9 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added optional \`currency\` property to \`Discount\` interface.
 - Added \`executedAt\` property to \`BaseTransactionComplete\` interface.
 - Added optional \`exchangeId\` and \`returnId\` property to \`ReturnTransactionData\` interface.
-- Added optional \`onBlur\` handler to \`SearchBar\` component.
 - Added required \`variantId\` property to \`ProductApi\` interface.
+- Added optional \`taxLines\` property to \`ShippingLine\` interface.
+- Added optional \`onBlur\` handler to \`SearchBar\` component.
 
   `,
     },
