@@ -15,6 +15,60 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
+      anchorLink: 'compatibility-policy',
+      title: 'Compatibility Policy',
+      sectionContent: '',
+      sectionNotice: [
+        {
+          title: 'End of Compatibility Plan',
+          type: 'Warning',
+          sectionContent: `
+          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end compatibility for versions on a one-year rolling basis. This means that POS will no longer run extensions using removed versions. This table details the end of compatibility schedule.
+
+|released version|removed versions|
+|---:|---|
+|2025-04|1.0.0, 1.0.1, 1.1.2, 1.2.0, 1.3.0, 1.4.0, 1.5.1, 1.6.0, 1.7.0, 2024-04|
+|2025-07|2024-07|
+|2025-10|2024-10|
+|2026-01|2025-01|
+|2026-04|2025-04|
+
+Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.`,
+        },
+      ],
+    },
+    {
+      type: 'Generic',
+      anchorLink: '2024101',
+      title: '2024.10.1',
+      sectionContent: `
+- Added in POS version: 9.22.0
+- Removed in POS version: N/A
+- Release day: 11/11/2024.
+
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
+
+### Features
+
+- Fixes long standing issue where \`useEffect\` teardown functions are not working in React
+      `,
+    },
+    {
+      type: 'Generic',
       anchorLink: '202410',
       title: '2024.10',
       sectionContent: `
@@ -40,6 +94,7 @@ const data: LandingTemplateSchema = {
 ### Features
 
 - Added support for iOS debugging with the Safari dev tools.
+- On iOS, modals now appear in windowed mode.
 - Introduced a [POSBlock component](/docs/api/pos-ui-extensions/components/POSBlock). It's the required parent component for block extension targets.
 - Introduced a [POSBlockRow component](/docs/api/pos-ui-extensions/components/POSBlockRow). It's the required child component for POSBlock, and can be used to wrap other components.
 - Added support for the ${TargetLink.PosProductDetailsBlockRender} target.
