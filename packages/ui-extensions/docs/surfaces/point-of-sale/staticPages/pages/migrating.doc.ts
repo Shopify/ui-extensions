@@ -29,10 +29,7 @@ const data: LandingTemplateSchema = {
       sectionContent: `
 POS UI Extensions are moving to the newer \`@shopify/ui-extensions\` package, shared with [Checkout UI Extensions](https://shopify.dev/docs/api/checkout-ui-extensions) and [Admin UI Extensions](https://shopify.dev/docs/api/admin-extensions). This will allow your extensions to use the same package regardless of the surface they extend, and for a single extension to implement multiple targets across different surfaces of Shopify more easily.
 
-\`@shopify/retail-ui-extensions\` and \`@shopify/retail-ui-extensions-react\` are deprecated. They are now maintained as part of \`@shopify/ui-extensions\` and \`@shopify/ui-extensions-react\`. This guide explains how to migrate from the old packages to the new ones.
-
-Aside from these migration steps, \`@shopify/ui-extensions@2024.4\` is backwards compatible with \`@shopify/retail-ui-extensions@1.7.0\`.
-      `,
+\`@shopify/retail-ui-extensions\` and \`@shopify/retail-ui-extensions-react\` are deprecated. They are now maintained as part of \`@shopify/ui-extensions\` and \`@shopify/ui-extensions-react\`. This guide explains how to migrate from the old packages to the new ones.`,
     },
     {
       type: 'Generic',

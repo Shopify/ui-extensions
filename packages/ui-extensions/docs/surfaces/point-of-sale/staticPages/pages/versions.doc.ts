@@ -15,15 +15,15 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
-      anchorLink: 'support-policy',
-      title: 'Support Policy',
+      anchorLink: 'compatibility-policy',
+      title: 'Compatibility Policy',
       sectionContent: '',
       sectionNotice: [
         {
-          title: 'End of Support Plan',
+          title: 'End of Compatibility Plan',
           type: 'Warning',
           sectionContent: `
-          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end support for versions on a one-year rolling basis. This table details the end of support schedule.
+          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end compatibility for versions on a one-year rolling basis. This means that POS will no longer run extensions using removed versions. This table details the end of compatibility schedule.
 
 |released version|removed versions|
 |---:|---|
@@ -42,23 +42,52 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '202501',
       title: '2025.01',
       sectionContent: `
-- Added in POS version: 9.26
+- Added in POS version: 9.26.0
 - Removed in POS version: N/A
 - Release day: 1/6/2025
 
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
+
+- **POS 9.31.0**:
+
+  - Modal updated so neither swiping down nor tapping outside of modal will dismiss modal.
+
+- **POS 9.29.0**:
+
+  - Fixed an issue where the \`FormattedTextField\` component was rendering black input text in dark mode.
+
+- **POS 9.27.0**:
+
+  - Fixed an issue where the \`Stack\` component was not rendering correctly. By default, \`Stack\` will now always wrap. Additionally, stacks using \`'block'\` will now compress horizontally. Use \`alignContents: 'stretch'\` to take all of the horizontal space. This will not have an impact on layout in previous POS versions.
+
 ### Breaking Changes
-- Removed the deprecated ActionItem component. Use a [Button](/docs/api/pos-ui-extensions/components/button) instead.
-- Removed the deprecated SmartGridApi. Use the [ActionApi](/docs/api/pos-ui-extensions/apis/action-api) instead.
+
+- Removed the deprecated \`ActionItem\` component. Use a [Button](/docs/api/pos-ui-extensions/components/button) instead.
+- Removed the deprecated \`SmartGridApi\`. Use the [ActionApi](/docs/api/pos-ui-extensions/apis/action-api) instead.
 - Removed the deprecated DiscountType. Use [CartDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-applycartdiscount) and [LineItemDiscountType](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-setlineitemdiscount) instead.
 - Removed the deprecated \`badge\` prop from the [List](/docs/api/pos-ui-extensions/components/list) component. Use \`badges\` instead.
 - Removed the deprecated \`TextFieldProps\` type from the [TextField](/docs/api/pos-ui-extensions/components/textfield) component.
-- Deprecated \`'vertical'\` and \`'horizontal'\` as values for the \`direction\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
-- Deprecated the \`flexChildren'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
-- Deprecated the \`flex'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
-- Deprecated the \`flexWrap'\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
-- Deprecated the \`paddingHorizontal'\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component.
+- Deprecated \`'vertical'\` and \`'horizontal'\` as values for the \`direction\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`'block'\` and \`'inline'\` instead.
+- Deprecated the \`flex\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Set \`blockSize\` or \`inlineSize\` to a value other than \`'auto'\` to create the desired size for your \`Stack\`.
+- Deprecated the \`flexWrap\` field in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Content will now wrap automatically.
+- Deprecated the \`paddingHorizontal\` and \`paddingVertical\` fields in the [Stack](/docs/api/pos-ui-extensions/components/Stack) component. Use \`paddingInline\` and \`paddingBlock\` instead.
 - Removed \`customValidator\` prop from the [FormattedTextField](/docs/api/pos-ui-extensions/components/formattedtextfield) component.
 - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+- \`Text\` now takes priority in growing over other components. To contain Text to its minimum width, wrap it in a \`Box\` component.
 
 ### Features
 
@@ -66,10 +95,14 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added \`currency\` prop to the [SessionApi](/docs/api/pos-ui-extensions/apis/session-api).
 - [Cart API](/docs/api/pos-ui-extensions/apis/cart-api) updates:
   - Added \`bulkUpdateCart\` function for single-operation cart updates.
-  - The \`addLineItem\` and \`addCustomSale\` functions now return a UUID for the added line item.
+  - The \`addLineItem\` and \`addCustomSale\` functions now return a \`UUID\` for the added line item.
 - Added [Box](/docs/api/pos-ui-extensions/components/box) component.
-- Enhanced the [Stack](/docs/api/pos-ui-extensions/components/box) component. New fields include \`justifyContent\`, \`alignItems\`, and \`alignContent\`, as well as numerous new sizing and spacing options.
-- Added Sizing and fill options to the[Image](/docs/api/pos-ui-extensions/components/image) component.
+- Added a new \`justifyContent\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'start'\`.
+- Added a new \`alignContents\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'start'\`. By default, \`'block'\` stacks may compress horizontally. Use \`'stretch'\` to take all of the horizontal space.
+- Added a new \`alignItems\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. The default value is \`'stretch'\`. This may by default cause certain elements to stretch.
+- Added a new \`blockSize\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. This will allow setting a vertical size for the stack.
+- Added a new \`inlineSize\` prop to [Stack](/docs/api/pos-ui-extensions/components/Stack) component. This will allow setting a horizontal size for the stack.
+- Added sizing and fill options to the [Image](/docs/api/pos-ui-extensions/components/image) component.
       `,
     },
     {
@@ -77,13 +110,29 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '2024101',
       title: '2024.10.1',
       sectionContent: `
-- Added in POS version: 9.22
+- Added in POS version: 9.22.0
 - Removed in POS version: N/A
 - Release day: 11/11/2024.
 
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
+
 ### Features
 
-- Fixes long standing issue where \`useEffect\` teardown functions are not working in React',
+- Fixes long standing issue where \`useEffect\` teardown functions are not working in React
       `,
     },
     {
@@ -91,9 +140,24 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '202410',
       title: '2024.10',
       sectionContent: `
-- Added in POS version: 9.19
+- Added in POS version: 9.19.0
 - Removed in POS version: N/A
 - Release day: 10/1/2024.
+
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
 
 ### Features
 
@@ -113,9 +177,25 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '202407',
       title: '2024.07',
       sectionContent: `
-- Added in POS version: 9.15
+- Added in POS version: 9.15.0
 - Removed in POS version: N/A
 - Release day: 08/14/2024.
+
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
 
 ### Features
 
@@ -141,8 +221,8 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
         },
       ],
       sectionContent: `
-- Added in POS version: 9.11
-- Removed in POS version: N/A
+- Added in POS version: 9.11.0
+- Removed in POS version: 9.31.0
 - Release day: 06/10/2024.
 
 ### Features
@@ -163,7 +243,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       ],
       sectionContent: `
 - Added in POS version: 9.4.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 03/13/2024.
 
 ### Features
@@ -180,7 +260,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '1.6.0',
       sectionContent: `
 - Added in POS version: 9.2.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 02/15/2024.
 
 ### Features
@@ -195,7 +275,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '1.5.1',
       sectionContent: `
 - Added in POS version: 8.22.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 11/13/2023.
 
 ### Features
@@ -210,7 +290,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '1.5.0',
       sectionContent: `
 - Added in POS version: 8.21.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 10/30/2023.
 
 ### Features
@@ -225,7 +305,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '1.4.0',
       sectionContent: `
 - Added in POS version: 8.18.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 9/27/2023.
 
 ### Features
@@ -241,7 +321,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '1.3.0',
       sectionContent: `
 - Added in POS version: 8.15.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 8/16/2023.
 
 ### Features
@@ -265,7 +345,7 @@ Introduced the following components:
       title: '1.2.0',
       sectionContent: `
 - Added in POS version: 8.12.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 6/26/2023.
 
 ### Features
@@ -284,7 +364,7 @@ Introduced the following components:
       title: '1.1.2',
       sectionContent: `
 - Added in POS version: 8.9.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/15/2023.
 
 ### Features
@@ -299,7 +379,7 @@ Introduced the following components:
       title: '1.0.1',
       sectionContent: `
 - Added in POS version: 8.8.1
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/3/2023.
 
 ### Fixes
@@ -313,7 +393,7 @@ Introduced the following components:
       title: '1.0.0',
       sectionContent: `
 - Added in POS version: 8.8.0
-- Removed in POS version: N/A
+- Removed in POS version: 9.31.0
 - Release day: 5/1/2023.
 
 ### Features

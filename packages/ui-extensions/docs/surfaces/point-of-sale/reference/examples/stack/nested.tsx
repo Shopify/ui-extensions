@@ -1,27 +1,42 @@
-<Screen name="Home">
-  <Selectable onPress={() => console.log('You tapped this row!')}>
-    // Parent stack
-    <Stack
-      direction="horizontal"
-      alignment="space-between"
-      paddingVertical={'Medium'}
-      paddingHorizontal={'ExtraExtraLarge'}
-    >
-      // First child stack
-      <Stack direction="vertical" spacing={0.5}>
-        <Text>Hello world!</Text>
-        <Text variant="captionRegular">
-          This is an example of nested stacks!
-        </Text>
-      </Stack>
-      // Second child stack
-      <Stack direction="vertical" flex={1} alignment="center">
-        // Horizontal stack for the right label and chevron icon
-        <Stack direction="horizontal" spacing={2}>
-          <Text variant="captionRegular">Let's go!</Text>
+import {
+  reactExtension,
+  Text,
+  Icon,
+  Stack,
+  Screen,
+  Selectable,
+} from '@shopify/ui-extensions-react/point-of-sale';
+import React from 'react';
+
+export default reactExtension('pos.home.modal.render', () => (
+  <Screen name="Stack" title="Stack">
+    <Selectable onPress={() => console.log('Pressed')}>
+      <Stack
+        direction="inline"
+        gap="400"
+        justifyContent="space-between"
+        alignItems="center"
+        alignContent="center"
+        paddingInline="450"
+        paddingBlock="600"
+        inlineSize="100%"
+      >
+        <Stack direction="block" gap="100">
+          <Text>Hello world!</Text>
+          <Text variant="captionRegular">
+            This is an example of a nested stack!
+          </Text>
+        </Stack>
+        <Stack
+          direction="inline"
+          gap="600"
+          alignItems="center"
+          alignContent="center"
+        >
+          <Text>Let's go!</Text>
           <Icon name="chevron-right" />
         </Stack>
       </Stack>
-    </Stack>
-  </Selectable>
-</Screen>;
+    </Selectable>
+  </Screen>
+));

@@ -4,7 +4,8 @@ import {createRemoteComponent} from '@remote-ui/core';
  * @property `title` the text set on the main label of the tile.
  * @property `subtitle` the text set on the secondary label of the tile.
  * @property `enabled` sets whether or not the tile can be tapped.
- * @property `destructive` sets whether or not the tile is in a red destructive appearance.
+ * @property `destructive` sets whether or not the tile has a destructive appearance and active state as of POS
+ * 10.0.0.
  * @property `badgeValue` the number value displayed in the top right corner of the tile.
  * @property `onPress` the callback that is executed when the tile is tapped.
  */
