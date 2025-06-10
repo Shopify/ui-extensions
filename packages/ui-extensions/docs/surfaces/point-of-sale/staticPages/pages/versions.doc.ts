@@ -42,9 +42,37 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '202501',
       title: '2025.01',
       sectionContent: `
-- Added in POS version: 9.26
+- Added in POS version: 9.26.0
 - Removed in POS version: N/A
 - Release day: 1/6/2025
+
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
+
+- **POS 9.31.0**:
+
+  - Modal updated so neither swiping down nor tapping outside of modal will dismiss modal.
+
+- **POS 9.29.0**:
+
+  - Fixed an issue where the \`FormattedTextField\` component was rendering black input text in dark mode.
+
+- **POS 9.27.0**:
+
+  - Fixed an issue where the \`Stack\` component was not rendering correctly. By default, \`Stack\` will now always wrap. Additionally, stacks using \`'block'\` will now compress horizontally. Use \`alignContents: 'stretch'\` to take all of the horizontal space. This will not have an impact on layout in previous POS versions.
 
 ### Breaking Changes
 - Removed the deprecated ActionItem component. Use a [Button](/docs/api/pos-ui-extensions/components/button) instead.
@@ -77,9 +105,25 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '2024101',
       title: '2024.10.1',
       sectionContent: `
-- Added in POS version: 9.22
+- Added in POS version: 9.22.0
 - Removed in POS version: N/A
 - Release day: 11/11/2024.
+
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
 
 ### Features
 
@@ -91,9 +135,24 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '202410',
       title: '2024.10',
       sectionContent: `
-- Added in POS version: 9.19
+- Added in POS version: 9.19.0
 - Removed in POS version: N/A
 - Release day: 10/1/2024.
+
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
 
 ### Features
 
@@ -113,9 +172,25 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       anchorLink: '202407',
       title: '2024.07',
       sectionContent: `
-- Added in POS version: 9.15
+- Added in POS version: 9.15.0
 - Removed in POS version: N/A
 - Release day: 08/14/2024.
+
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
 
 ### Features
 
@@ -141,8 +216,8 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
         },
       ],
       sectionContent: `
-- Added in POS version: 9.11
-- Removed in POS version: N/A
+- Added in POS version: 9.11.0
+- Removed in POS version: 9.31.0
 - Release day: 06/10/2024.
 
 ### Features
