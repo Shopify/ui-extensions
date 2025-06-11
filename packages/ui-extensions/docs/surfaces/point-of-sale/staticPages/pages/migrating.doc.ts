@@ -86,7 +86,7 @@ Migrate your \`shopify.extension.toml\` file to reflect the [new syntax](https:/
 - Specify which \`api_version\` you are using at the top of the file (above \`[[extensions]]\`). This will let POS know which version of the \`ui-extensions\` package you're using.
 
 > Note:
-> \`api_version\` needs to be declared in a \`yyyy-mm\` format. If you are using \`@shopify/ui-extensions\` version \`2024.4\` for example, you must declare your \`api_version\` as 2024-04. The patch is irrelevant to \`api_version\`.
+> \`api_version\` needs to be declared in a \`yyyy-mm\` format. If you are using \`@shopify/ui-extensions\` version \`2025.1\` for example, you must declare your \`api_version\` as 2025-01. The patch is irrelevant to \`api_version\`.
 
 - Declare each extension target and file path in \`shopify.extension.toml\`
       `,
