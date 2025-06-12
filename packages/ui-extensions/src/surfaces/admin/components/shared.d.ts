@@ -1,4 +1,4 @@
-/** VERSION: 1.0.0 **/
+/** VERSION: 1.1.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -9,6 +9,12 @@
  * https://github.com/Shopify/ui-api-design/issues/139
  */
 export type ComponentChildren = any;
+export interface GlobalProps {
+  /**
+   * A unique identifier for the element.
+   */
+  id?: string;
+}
 export type SizeKeyword =
   | 'small-500'
   | 'small-400'
@@ -24,12 +30,6 @@ export type SizeKeyword =
   | 'large-400'
   | 'large-500';
 export type ColorKeyword = 'subdued' | 'base' | 'strong';
-export interface GlobalProps {
-  /**
-   * A unique identifier for the element.
-   */
-  id?: string;
-}
 export type BackgroundColorKeyword = 'transparent' | ColorKeyword;
 export interface BackgroundProps {
   /**
@@ -642,34 +642,7 @@ export interface ActionSlots {
    */
   secondaryActions?: ComponentChildren;
 }
-/**
- * Used for Container Query-related props.
- */
-export interface ContainerProps {
-  /**
-   * The name of the container used for Container Queries.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-name
-   *
-   * @default ''
-   *
-   * @implementation All components that implement this interface must put a containerName of `s-default` on the root element of that component, regardless of the value of `containerType`.
-   * The developer-supplied containerName here would be in addition to the above-mentioned containerName.
-   */
-  containerName?: string;
-  /**
-   * The type of container used for Container Queries.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-type
-   *
-   * - `normal`: The element is not a query container for any container size queries.
-   * - `inline-size`: Establishes a query container for dimensional queries on the inline axis of the container. Applies layout, style, and inline-size containment to the element.
-   *
-   * @default 'normal'
-   */
-  containerType?: 'normal' | 'inline-size';
-}
-interface BannerProps$1 extends GlobalProps, ActionSlots, ContainerProps {
+interface BannerProps$1 extends GlobalProps, ActionSlots {
   /**
    * The title of the banner.
    *
@@ -1159,8 +1132,7 @@ export interface BaseBoxProps
     SizingProps,
     PaddingProps,
     BorderProps,
-    OverflowProps,
-    ContainerProps {
+    OverflowProps {
   /**
    * The content of the Box.
    */
@@ -2260,8 +2232,7 @@ export interface BlockTypographyProps {
 interface HeadingProps$1
   extends GlobalProps,
     AccessibilityVisibilityProps,
-    BlockTypographyProps,
-    ContainerProps {
+    BlockTypographyProps {
   /**
    * The content of the Heading.
    */
@@ -2692,7 +2663,7 @@ interface OptionGroupProps$1 extends GlobalProps {
   children?: ComponentChildren;
 }
 interface OrderedListProps$1 extends GlobalProps {}
-interface PageProps$1 extends GlobalProps, ContainerProps {
+interface PageProps$1 extends GlobalProps {
   /**
    * The content of the Page.
    */
@@ -2737,8 +2708,7 @@ interface ParagraphProps$1
   extends GlobalProps,
     BaseTypographyProps,
     BlockTypographyProps,
-    AccessibilityVisibilityProps,
-    ContainerProps {
+    AccessibilityVisibilityProps {
   /**
    * The content of the Text.
    */
@@ -2779,7 +2749,27 @@ export type PasswordAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'new-password' | 'current-password'
 >;
-interface SectionProps$1 extends GlobalProps, ContainerProps {
+interface QueryContainerProps$1 extends GlobalProps {
+  /**
+   * The content of the container.
+   */
+  children?: ComponentChildren;
+  /**
+   * The name of the container, which can be used in your container queries to target this container specifically.
+   *
+   * We place the container name of `s-default` on every container. Because of this, it is not required to add a `containerName` identifier in your queries. For example, a `@container (inline-size <= 300px) none, auto` query is equivalent to `@container s-default (inline-size <= 300px) none, auto`.
+   *
+   * Any value set in `containerName` will be set alongside alongside `s-default`. For example, `containerName="my-container-name"` will result in a value of `s-default my-container-name` set on the `container-name` CSS property of the rendered HTML.
+   *
+   * @default ''
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-name
+   *
+   * @implementation You must always have a CSS `container-name` of `s-default` for this component.
+   */
+  containerName?: string;
+}
+interface SectionProps$1 extends GlobalProps {
   /**
    * The content of the Section.
    */
@@ -2914,7 +2904,7 @@ export interface PaginationProps {
    */
   loading?: boolean;
 }
-interface TableProps$1 extends GlobalProps, PaginationProps, ContainerProps {
+interface TableProps$1 extends GlobalProps, PaginationProps {
   /**
    * The content of the Table.
    */
