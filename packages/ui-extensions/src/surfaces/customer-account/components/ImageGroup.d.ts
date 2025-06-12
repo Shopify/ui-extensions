@@ -1,3 +1,5 @@
+import {BaseElementPropsWithChildren} from './shared';
+
 export interface ImageGroupProps {
   /**
    * Indicates the total number of items that could be displayed in the image group.
@@ -15,13 +17,11 @@ declare global {
 }
 
 declare module 'preact' {
-  interface BaseProps {
-    children?: preact.ComponentChildren;
-  }
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace createElement.JSX {
     interface IntrinsicElements {
-      ['s-image-group']: BaseProps & ImageGroupProps;
+      ['s-image-group']: BaseElementPropsWithChildren<ImageGroupElement> &
+        ImageGroupProps;
     }
   }
 }
