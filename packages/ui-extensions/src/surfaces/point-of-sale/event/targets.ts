@@ -5,6 +5,7 @@ import {
 } from './data/CashTrackingSessionData';
 import {TransactionCompleteData} from './data/TransactionCompleteData';
 import {CartUpdateEventData} from './data/CartUpdateEventData';
+import {CartUpdateEventOutput} from './output/CartUpdateEventOutput';
 
 export interface EventExtensionTargets {
   'pos.transaction-complete.event.observe': (
@@ -19,6 +20,9 @@ export interface EventExtensionTargets {
   'pos.cart-update.event.observe': (
     data: CartUpdateEventData,
   ) => Promise<BaseOutput>;
+  'pos.cart-update.event.inject': (
+    data: CartUpdateEventData,
+  ) => Promise<CartUpdateEventOutput>;
 }
 
 export type EventExtensionTarget = keyof EventExtensionTargets;

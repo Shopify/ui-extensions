@@ -168,6 +168,15 @@ export interface ExtensionTargets {
   >;
 }
 
+export type ActionExtensionTarget = keyof ActionExtensionTargets;
+export interface ActionExtensionTargets {
+  'pos.home.modal.render': RenderExtension<
+    ActionTargetApi<'pos.home.modal.render'> & CartApi,
+    BasicComponents
+  >;
+  // TODO: Add more action targets here
+}
+
 export type ExtensionTarget = keyof ExtensionTargets;
 
 export type ExtensionForExtensionTarget<T extends ExtensionTarget> =
