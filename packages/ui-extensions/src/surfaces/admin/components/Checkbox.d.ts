@@ -1,4 +1,4 @@
-/** VERSION: 1.0.0 **/
+/** VERSION: 1.1.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -86,6 +86,20 @@ export type CallbackEventListener<
       (event: CallbackEvent<TTagName, TEvent>): void;
     })
   | null;
+/** Used when an element does not have children. */
+export interface PreactBaseElementProps<TClass extends HTMLElement> {
+  /** Assigns a unique key to this element. */
+  key?: preact.Key;
+  /** Assigns a ref (generally from `useRef()`) to this element. */
+  ref?: preact.Ref<TClass>;
+  /** Assigns this element to a parent's slot. */
+  slot?: Lowercase<string>;
+}
+/** Used when an element has children. */
+export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
+  extends PreactBaseElementProps<TClass> {
+  children?: preact.ComponentChildren;
+}
 
 declare const internals: unique symbol;
 export type PreactInputProps = Required<
@@ -166,7 +180,8 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: CheckboxJSXProps;
+      [tagName]: CheckboxJSXProps &
+        PreactBaseElementPropsWithChildren<Checkbox>;
     }
   }
 }

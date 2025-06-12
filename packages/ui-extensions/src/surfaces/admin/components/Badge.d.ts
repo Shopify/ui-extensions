@@ -1,4 +1,4 @@
-/** VERSION: 1.0.0 **/
+/** VERSION: 1.1.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -98,6 +98,21 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
+/** Used when an element does not have children. */
+export interface PreactBaseElementProps<TClass extends HTMLElement> {
+  /** Assigns a unique key to this element. */
+  key?: preact.Key;
+  /** Assigns a ref (generally from `useRef()`) to this element. */
+  ref?: preact.Ref<TClass>;
+  /** Assigns this element to a parent's slot. */
+  slot?: Lowercase<string>;
+}
+/** Used when an element has children. */
+export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
+  extends PreactBaseElementProps<TClass> {
+  children?: preact.ComponentChildren;
+}
+
 declare class Badge extends PreactCustomElement implements BadgeProps {
   accessor color: BadgeProps['color'];
   accessor icon: BadgeProps['icon'];
@@ -111,13 +126,9 @@ declare global {
   }
 }
 declare module 'preact' {
-  interface BaseProps {
-    children?: preact.ComponentChildren;
-    slot?: Lowercase<string>;
-  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BadgeJSXProps & BaseProps;
+      [tagName]: BadgeJSXProps & PreactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
