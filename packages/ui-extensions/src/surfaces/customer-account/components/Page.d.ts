@@ -1,3 +1,5 @@
+import {BaseElementPropsWithChildren} from './shared';
+
 export interface PageProps {
   /**
    * The main page heading
@@ -19,14 +21,10 @@ declare global {
 }
 
 declare module 'preact' {
-  interface BaseProps {
-    children?: preact.ComponentChildren;
-    slot?: Lowercase<string>;
-  }
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace createElement.JSX {
     interface IntrinsicElements {
-      ['s-page']: BaseProps & PageProps;
+      ['s-page']: BaseElementPropsWithChildren<PageElement> & PageProps;
     }
   }
 }
