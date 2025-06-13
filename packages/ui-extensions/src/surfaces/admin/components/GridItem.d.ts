@@ -1,4 +1,4 @@
-/** VERSION: 1.0.0 **/
+/** VERSION: 1.1.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -59,6 +59,7 @@ export type ResponsiveBoxProps = MakeResponsivePick<
   | 'paddingInline'
   | 'paddingInlineStart'
   | 'paddingInlineEnd'
+  | 'display'
 >;
 export interface BoxProps
   extends Pick<
@@ -73,7 +74,6 @@ export interface BoxProps
     | 'borderRadius'
     | 'borderStyle'
     | 'borderWidth'
-    | 'display'
     | 'inlineSize'
     | 'maxBlockSize'
     | 'maxInlineSize'
@@ -198,6 +198,16 @@ export interface BoxProps
    * @default '' - meaning no override
    */
   paddingInlineEnd: ResponsiveBoxProps['paddingInlineEnd'];
+  /**
+   * Sets the outer display type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
+   *
+   * - `auto` the component's initial value. The actual value depends on the component and context.
+   * - `none` hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
+   * @default 'auto'
+   */
+  display: ResponsiveBoxProps['display'];
 }
 
 export type RequiredGridItemProps = Required<GridItemProps$1>;
@@ -296,6 +306,21 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
   accessor display: BoxProps['display'];
 }
 
+/** Used when an element does not have children. */
+export interface PreactBaseElementProps<TClass extends HTMLElement> {
+  /** Assigns a unique key to this element. */
+  key?: preact.Key;
+  /** Assigns a ref (generally from `useRef()`) to this element. */
+  ref?: preact.Ref<TClass>;
+  /** Assigns this element to a parent's slot. */
+  slot?: Lowercase<string>;
+}
+/** Used when an element has children. */
+export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
+  extends PreactBaseElementProps<TClass> {
+  children?: preact.ComponentChildren;
+}
+
 declare class GridItem extends BoxElement implements GridItemProps {
   accessor gridColumn: GridItemProps['gridColumn'];
   accessor gridRow: GridItemProps['gridRow'];
@@ -307,13 +332,10 @@ declare global {
   }
 }
 declare module 'preact' {
-  interface BaseProps {
-    children?: preact.ComponentChildren;
-    slot?: Lowercase<string>;
-  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: GridItemJSXProps & BaseProps;
+      [tagName]: GridItemJSXProps &
+        PreactBaseElementPropsWithChildren<GridItem>;
     }
   }
 }

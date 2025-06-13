@@ -2,27 +2,11 @@
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
+/* eslint-disable @typescript-eslint/member-ordering */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChild, AdminActionProps$1} from './shared.d.ts';
-
-export interface AdminActionProps
-  extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
-
-declare const tagName = 's-admin-action';
-export interface AdminActionJSXProps
-  extends Partial<AdminActionProps>,
-    Pick<AdminActionProps$1, 'id'> {
-  /**
-   * The primary action to display in the admin action.
-   */
-  primaryAction: ComponentChild;
-  /**
-   * The secondary actions to display in the admin action.
-   */
-  secondaryActions: ComponentChild;
-}
+import type {QueryContainerProps$1, ComponentChild} from './shared.d.ts';
 
 export type Styles = string;
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
@@ -84,31 +68,39 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-declare class AdminAction
+export interface QueryContainerProps
+  extends Required<Pick<QueryContainerProps$1, 'id' | 'containerName'>> {}
+
+declare class QueryContainer
   extends PreactCustomElement
-  implements AdminActionProps
+  implements QueryContainerProps
 {
-  heading: string;
-  loading: boolean;
+  accessor containerName: QueryContainerProps['containerName'];
+  /** @private */
+  static globalStylesApplied: boolean;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: AdminAction;
+    [tagName]: QueryContainer;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
       [tagName]: Omit<
-        AdminActionJSXProps,
-        'primaryAction' | 'secondaryActions'
-      > & {
-        children?: preact.ComponentChildren;
-      };
+        HTMLAttributes<HTMLElement>,
+        Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        QueryContainerJSXProps;
     }
   }
 }
 
-export {AdminAction};
-export type {AdminActionJSXProps};
+declare const tagName = 's-query-container';
+export interface QueryContainerJSXProps
+  extends Partial<QueryContainerProps$1>,
+    Pick<QueryContainerProps$1, 'id'> {}
+
+export {QueryContainer};
+export type {QueryContainerJSXProps};
