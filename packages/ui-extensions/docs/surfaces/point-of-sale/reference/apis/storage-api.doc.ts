@@ -52,21 +52,6 @@ const data: ReferenceEntityTemplateSchema = {
         ),
       },
     ],
-    exampleGroups: [
-      {
-        title: 'Use cases',
-        examples: [
-          {
-            description:
-              "In this example, we use a Smart Grid Tile to show the contents of the extension's Storage API.",
-            codeblock: generateCodeBlockForStorageApi(
-              'Debugging StorageAPI',
-              'debugging-storage-api',
-            ),
-          },
-        ],
-      },
-    ],
   },
 };
 
