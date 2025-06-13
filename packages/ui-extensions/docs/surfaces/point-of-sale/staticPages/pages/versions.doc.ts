@@ -68,6 +68,8 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added optional \`taxLines\` property to \`ShippingLine\` interface.
 - Added optional \`onBlur\` handler to \`SearchBar\` component.
 
+**Developer Preview**:
+  - Introduced a [Storage API](/docs/api/pos-ui-extensions/apis/storage-api). The Storage API gives the UI Extension access to store data on the POS device that the extension is running on.
   `,
     },
     {
