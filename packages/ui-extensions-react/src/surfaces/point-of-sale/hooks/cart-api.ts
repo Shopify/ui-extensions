@@ -1,10 +1,8 @@
 import type {Cart} from '@shopify/ui-extensions/point-of-sale';
 import {useApi} from './api';
 import {useEffect, useRef, useState} from 'react';
-import {
-  StatefulRemoteSubscribable,
-  makeStatefulSubscribable,
-} from '@remote-ui/async-subscription';
+import type {StatefulRemoteSubscribable} from '@remote-ui/async-subscription';
+import {makeStatefulSubscribable} from '@remote-ui/async-subscription';
 
 /**
  * Global instance of the subscribable that is created on the first `useStatefulSubscribableCart` call.
@@ -17,6 +15,34 @@ let statefulSubscribable: StatefulRemoteSubscribable<Cart> | undefined;
  */
 const isCartApi = (api: any): boolean => {
   return 'cart' in api;
+};
+
+/**
+ * A hook for checking if the cart has been determined to be editable.
+ *
+ * This hook is stateful and can be used to trigger a re-render when the value of this editable state changes.
+ *
+ * If the cart's `editable` property is not set, defaults to `true`.
+ *
+ * @returns true if the cart is editable, false otherwise.
+ */
+export const useCartEditable = (): boolean => {
+  const statefulSubscribableCart = useStatefulSubscribableCart();
+  const [editable, setEditable] = useState<boolean>(
+    statefulSubscribableCart.current.editable ?? true,
+  );
+
+  const unsubscribeRef = useRef<() => void>();
+
+  useEffect(() => {
+    if (!unsubscribeRef.current) {
+      statefulSubscribableCart.subscribe((cart: Cart) => {
+        setEditable(cart.editable ?? true);
+      });
+    }
+  }, [statefulSubscribableCart]);
+
+  return editable;
 };
 
 /**
@@ -57,6 +83,7 @@ export function useStatefulSubscribableCart(): StatefulRemoteSubscribable<Cart> 
 
   return statefulSubscribable;
 }
+
 /**
  * A function destroying the subscriptions `useStatefulSubscribableCart` has.
  */

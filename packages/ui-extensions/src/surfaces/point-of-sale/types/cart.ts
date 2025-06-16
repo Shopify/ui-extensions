@@ -1,6 +1,12 @@
 import {CountryCode} from './country-code';
 
 export interface Cart {
+  /**
+   * Indicates whether the cart is currently editable.
+   *
+   * An undefined value should be treated as `true` for backward compatibility.
+   */
+  editable?: boolean;
   subtotal: string;
   taxTotal: string;
   grandTotal: string;
