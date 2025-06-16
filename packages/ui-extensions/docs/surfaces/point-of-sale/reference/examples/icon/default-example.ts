@@ -10,11 +10,11 @@ import {
 
 export default extension('pos.home.modal.render', (root, api) => {
   const iconsData: {name: IconName; size: IconSize}[] = [
-    {name: 'call', size: 'minor'},
-    {name: 'card-reader', size: 'major'},
-    {name: 'circle-cancel', size: 'spot'},
-    {name: 'orders', size: 'caption'},
-    {name: 'star', size: 'badge'},
+    {name: 'call', size: 's', tone: 'icon-success'},
+    {name: 'card-reader', size: 'l'},
+    {name: 'circle-cancel', size: 'xl', tone: 'icon-critical'},
+    {name: 'orders-filled', size: 's'},
+    {name: 'star', size: 'm'},
   ];
   const scrollView = root.createComponent(ScrollView);
 

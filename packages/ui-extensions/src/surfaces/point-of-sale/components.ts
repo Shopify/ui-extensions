@@ -32,7 +32,10 @@ export {Icon} from './render/components/Icon/Icon';
 export type {
   IconProps,
   IconName,
+  IconTone,
   IconSize,
+  DeprecatedIconSize,
+  DeprecatedIconName,
 } from './render/components/Icon/Icon';
 export {Image} from './render/components/Image/Image';
 export type {

@@ -1,6 +1,9 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-export type IconName =
+/**
+ * @deprecated Use `IconName` instead. These deprecated icon names will be removed in 2025-10.
+ */
+export type DeprecatedIconName =
   | 'add-customer'
   | 'analytics'
   | 'apps'
@@ -83,18 +86,195 @@ export type IconName =
   | 'delivery'
   | 'shop-pay';
 
-export type IconSize = 'minor' | 'major' | 'spot' | 'caption' | 'badge';
+/**
+ * @deprecated Use `IconSize` instead. These deprecated icon sizes will be removed in 2025-10.
+ */
+export type DeprecatedIconSize =
+  | 'minor'
+  | 'major'
+  | 'spot'
+  | 'caption'
+  | 'badge';
+
+export type IconName =
+  | 'add-customer'
+  | 'activity'
+  | 'analytics'
+  | 'apps'
+  | 'arrow-down'
+  | 'arrow-left'
+  | 'arrow-right'
+  | 'arrow-up'
+  | 'backspace'
+  | 'call'
+  | 'cancel-fulfillment'
+  | 'cancel'
+  | 'card-reader'
+  | 'caret-down'
+  | 'caret-up'
+  | 'cart-filled'
+  | 'cart-outlined'
+  | 'cash'
+  | 'checklist'
+  | 'checkmark'
+  | 'checkmark-active'
+  | 'checkmark-inactive'
+  | 'chevron-down'
+  | 'chevron-left'
+  | 'chevron-right'
+  | 'chevron-up'
+  | 'circle-alert'
+  | 'circle-cancel'
+  | 'circle-checkmark'
+  | 'circle-disconnected'
+  | 'circle-info'
+  | 'circle-outline'
+  | 'clock'
+  | 'collection'
+  | 'connectivity'
+  | 'connectivity-issue'
+  | 'connectivity-critical-issue'
+  | 'copy'
+  | 'credit-card'
+  | 'custom-payment'
+  | 'custom-sale'
+  | 'customer-filled'
+  | 'customer-outlined'
+  | 'delete'
+  | 'desktop'
+  | 'discount'
+  | 'discount-automatic'
+  | 'discount-code'
+  | 'discount-custom'
+  | 'discount-remove'
+  | 'dockside'
+  | 'draft-orders'
+  | 'drawer'
+  | 'exchange'
+  | 'external-link'
+  | 'fees'
+  | 'flag'
+  | 'flip-camera'
+  | 'fulfillment-delivery'
+  | 'fulfillment-shipment'
+  | 'gallery-view'
+  | 'gift-card'
+  | 'help'
+  | 'hide'
+  | 'hide-keyboard'
+  | 'home-filled'
+  | 'home-outlined'
+  | 'horizontal-dots'
+  | 'image'
+  | 'images'
+  | 'inventory-adjustments'
+  | 'inventory-counts'
+  | 'inventory-po'
+  | 'inventory-transfer'
+  | 'keypad'
+  | 'learn'
+  | 'lightning'
+  | 'link'
+  | 'list'
+  | 'list-view'
+  | 'location'
+  | 'lock'
+  | 'low-battery'
+  | 'mail'
+  | 'maximize'
+  | 'minimize'
+  | 'minus'
+  | 'mobile'
+  | 'more-filled'
+  | 'more-outlined'
+  | 'no-internet'
+  | 'note-report'
+  | 'not-stocked'
+  | 'orders-filled'
+  | 'orders-outlined'
+  | 'pencil'
+  | 'play-button'
+  | 'plus'
+  | 'point-of-sale'
+  | 'print'
+  | 'pro'
+  | 'products-filled'
+  | 'products-outlined'
+  | 'radio-active'
+  | 'radio-inactive'
+  | 'reassign-fulfillment'
+  | 'rearrange'
+  | 'receipt'
+  | 'refresh'
+  | 'register'
+  | 'return'
+  | 'retrieve-cart'
+  | 'save-cart'
+  | 'scan-barcode'
+  | 'scan-qr-code'
+  | 'search'
+  | 'send'
+  | 'send-cart'
+  | 'settings'
+  | 'shop-app'
+  | 'shop-pay'
+  | 'shopify-payments'
+  | 'sort'
+  | 'split-payment'
+  | 'staff'
+  | 'star'
+  | 'store'
+  | 'tablet-l'
+  | 'tablet-s'
+  | 'tap-to-pay'
+  | 'unlock'
+  | 'unordered-list'
+  | 'variant'
+  | 'view'
+  | 'void-shipping-label';
+
+export type IconSize = 's' | 'm' | 'l' | 'xl';
+
+export type IconTone =
+  | 'icon-primary'
+  | 'icon-inverse'
+  | 'icon-subdued'
+  | 'icon-disabled'
+  | 'icon-warning'
+  | 'icon-critical'
+  | 'icon-success'
+  | 'icon-interactive'
+  | 'icon-highlight'
+  | 'icon-shoppay'
+  | 'icon-static-light'
+  | 'icon-static-dark'
+  | 'icon-inactive'
+  | 'icon-badge-neutral'
+  | 'icon-search'
+  | 'icon-tile-default'
+  | 'icon-tile-stack'
+  | 'icon-tile-disabled'
+  | 'icon-tile-pink'
+  | 'icon-tile-purple'
+  | 'icon-tile-orange'
+  | 'icon-subnavigation-inactive'
+  | 'icon-primary-pressed';
 
 export interface IconProps {
   /**
    * A name used to render the icon.
    */
-  name: IconName;
+  name: IconName | DeprecatedIconName;
   /**
    * Size of the icon.
-   * @defaultValue 'major'
+   * @defaultValue 'l'
    */
-  size?: IconSize;
+  size?: IconSize | DeprecatedIconSize;
+  /**
+   * Color of the icon.
+   * @defaultValue 'icon-primary'
+   */
+  tone?: IconTone;
 }
 
 export const Icon = createRemoteComponent<'Icon', IconProps>('Icon');

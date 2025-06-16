@@ -67,6 +67,9 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Added required \`variantId\` property to \`ProductApi\` interface.
 - Added optional \`taxLines\` property to \`ShippingLine\` interface.
 - Added optional \`onBlur\` handler to \`SearchBar\` component.
+- Added optional \`tone\` property to \`Icon\` component and expanded \`name\` and \`size\` options.
+- Deprecated \`'minor'\`, \`'major'\`, \`'spot'\`, \`'caption'\`, \`'badge'\` as values for the \`size\` prop in the [Icon](/docs/api/pos-ui-extensions/components/icon) component. Use \`'s'\`, \`'m'\`, \`'l'\`, \`'xl'\` instead.
+- Deprecated \`'arrow'\`, \`'available-at-other-locations'\`, \`'collections'\`, \`'connectivity-warning'\`, \`'delivery'\`, \`'home'\`, \`'image-placeholder'\`, \`'internet'\`, \`'menu'\`, \`'orders'\`, \`'products'\`, \`'shipment'\` as values for the \`name\` prop in the [Icon](/docs/api/pos-ui-extensions/components/icon) component. See the available icon list names in the \`name\` prop documentation.
 
 **Developer Preview**:
   - Introduced a [Storage API](/docs/api/pos-ui-extensions/apis/storage-api). The Storage API gives the UI Extension access to store data on the POS device that the extension is running on.
