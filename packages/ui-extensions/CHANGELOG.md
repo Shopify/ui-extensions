@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.6
+
+### Patch Changes
+
+- [#2983](https://github.com/Shopify/ui-extensions/pull/2983) [`5f5091fac8d031524cef7f1a264842539781e0db`](https://github.com/Shopify/ui-extensions/commit/5f5091fac8d031524cef7f1a264842539781e0db) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - fix QueryContainer types not registering for 3P extensions code
+
 ## 2025.10.0-rc.5
 
 ### Minor Changes
