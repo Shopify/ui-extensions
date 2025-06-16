@@ -24,6 +24,7 @@ export type StandardComponents =
   | 'OrderedList'
   | 'Paragraph'
   | 'PasswordField'
+  | 'QueryContainer'
   | 'Section'
   | 'Select'
   | 'Spinner'
