@@ -1,7 +1,7 @@
 import {BaseTransactionComplete} from '../../types/base-transaction-complete';
-import {LineItem} from '../../types/cart';
+import {OrderLineItem} from '../../types/order';
 
 export interface ReprintReceiptData extends BaseTransactionComplete {
   transactionType: 'Reprint';
-  lineItems: LineItem[];
+  lineItems: OrderLineItem[];
 }
