@@ -21,10 +21,6 @@ const data: ReferenceEntityTemplateSchema = {
       name: ExtensionTargetType.PosCartLineItemDetailsActionMenuItemRender,
       url: '/docs/api/pos-ui-extensions/targets/pos-cart-line-item-details-action-menu-item-render',
     },
-    {
-      name: ExtensionTargetType.PosCartLineItemDetailsBlockRender,
-      url: '/docs/api/pos-ui-extensions/targets/pos-cart-line-item-details-block-render',
-    },
   ],
   type: 'Target',
 };

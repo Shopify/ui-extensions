@@ -23,7 +23,6 @@ export enum ExtensionTargetType {
   PosReceiptFooterBlockRender = 'pos.receipt-footer.block.render',
   PosCartLineItemDetailsActionMenuItemRender = 'pos.cart.line-item-details.action.menu-item.render',
   PosCartLineItemDetailsActionRender = 'pos.cart.line-item-details.action.render',
-  PosCartLineItemDetailsBlockRender = 'pos.cart.line-item-details.block.render',
 }
 
 export enum TargetLink {
@@ -51,5 +50,4 @@ export enum TargetLink {
   PosReceiptFooterBlockRender = '[pos.receipt-footer.block.render](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render)',
   PosCartLineItemDetailsActionMenuItemRender = '[pos.cart.line-item-details.action.menu-item.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-action-menu-item-render)',
   PosCartLineItemDetailsActionRender = '[pos.cart.line-item-details.action.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-action-render)',
-  PosCartLineItemDetailsBlockRender = '[pos.cart.line-item-details.block.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-block-render)',
 }
