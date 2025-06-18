@@ -29,14 +29,14 @@ interface AbbreviationProps$1 {
 	 */
 	title?: string;
 }
+export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
+export type ColorKeyword = "subdued" | "base" | "strong";
 export interface GlobalProps {
 	/**
 	 * A unique identifier for the element.
 	 */
 	id?: string;
 }
-export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
-export type ColorKeyword = "subdued" | "base" | "strong";
 export type BackgroundColorKeyword = "transparent" | ColorKeyword;
 export interface BackgroundProps {
 	/**
@@ -597,7 +597,34 @@ export interface ActionSlots {
 	 */
 	secondaryActions?: ComponentChildren;
 }
-interface BannerProps$1 extends GlobalProps, ActionSlots {
+/**
+ * Used for Container Query-related props.
+ */
+export interface ContainerProps {
+	/**
+	 * The name of the container used for Container Queries.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-name
+	 *
+	 * @default ''
+	 *
+	 * @implementation All components that implement this interface must put a containerName of `s-default` on the root element of that component, regardless of the value of `containerType`.
+	 * The developer-supplied containerName here would be in addition to the above-mentioned containerName.
+	 */
+	containerName?: string;
+	/**
+	 * The type of container used for Container Queries.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-type
+	 *
+	 * - `normal`: The element is not a query container for any container size queries.
+	 * - `inline-size`: Establishes a query container for dimensional queries on the inline axis of the container. Applies layout, style, and inline-size containment to the element.
+	 *
+	 * @default 'normal'
+	 */
+	containerType?: "normal" | "inline-size";
+}
+interface BannerProps$1 extends GlobalProps, ActionSlots, ContainerProps {
 	/**
 	 * The title of the banner.
 	 *
@@ -1068,7 +1095,7 @@ export interface OverflowProps {
 	 */
 	overflow?: "hidden" | "visible";
 }
-export interface BaseBoxProps extends GlobalProps, AccessibilityVisibilityProps, BackgroundProps, DisplayProps, SizingProps, PaddingProps, BorderProps, OverflowProps {
+export interface BaseBoxProps extends GlobalProps, AccessibilityVisibilityProps, BackgroundProps, DisplayProps, SizingProps, PaddingProps, BorderProps, OverflowProps, ContainerProps {
 	/**
 	 * The content of the Box.
 	 */
@@ -1123,17 +1150,6 @@ export interface ToggleEventProps {
 	onToggle?: (oldState: ToggleState, newState: ToggleState) => void;
 }
 export type ToggleState = "open" | "closed";
-export interface ExtendableEvent extends Event {
-	/**
-	 * Provide a promise that signals the length, and eventual success or failure of actions relating to the event.
-	 *
-	 * This may be called many times, which adds promises to the event.
-	 *
-	 * However, this may only be called synchronously during the dispatch of the event.
-	 * As in, you cannot call it after a `setTimeout` or microtask.
-	 */
-	waitUntil: (promise: Promise<void>) => void;
-}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
 	 * The behavior of the button.
@@ -1651,7 +1667,7 @@ export type AutocompleteGroup = "shipping" | "billing";
 export type AutocompleteAddressGroup = "fax" | "home" | "mobile" | "pager";
 export type AnyAutocompleteField = "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "current-password" | "email" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "new-password" | "nickname" | "one-time-code" | "organization-title" | "organization" | "photo" | "postal-code" | "sex" | "street-address" | "transaction-amount" | "transaction-currency" | "url" | "username" | "bday-day" | "bday-month" | "bday-year" | "bday" | "cc-additional-name" | "cc-expiry-month" | "cc-expiry-year" | "cc-expiry" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-csc" | "cc-type" | `${AutocompleteAddressGroup} email` | "impp" | `${AutocompleteAddressGroup} impp` | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local-prefix" | "tel-local-suffix" | "tel-local" | "tel-national" | `${AutocompleteAddressGroup} tel` | `${AutocompleteAddressGroup} tel-area-code` | `${AutocompleteAddressGroup} tel-country-code` | `${AutocompleteAddressGroup} tel-extension` | `${AutocompleteAddressGroup} tel-local-prefix` | `${AutocompleteAddressGroup} tel-local-suffix` | `${AutocompleteAddressGroup} tel-local` | `${AutocompleteAddressGroup} tel-national`;
 export type TextAutocompleteField = ExtractStrict<AnyAutocompleteField, "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "nickname" | "one-time-code" | "organization-title" | "organization" | "postal-code" | "sex" | "street-address" | "transaction-currency" | "username" | "cc-name" | "cc-given-name" | "cc-additional-name" | "cc-family-name" | "cc-type">;
-interface DetailsProps$1 extends GlobalProps, ToggleEventProps {
+interface DetailsProps$1 extends GlobalProps, ToggleEventProps, ContainerProps {
 	/**
 	 * The content of the details.
 	 *
@@ -1713,7 +1729,32 @@ interface DropZoneProps$1 extends GlobalProps, FileInputProps<File[]>, BasicFiel
 interface EmailFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<EmailAutocompleteField> {
 }
 export type EmailAutocompleteField = ExtractStrict<AnyAutocompleteField, "email" | `${AutocompleteAddressGroup} email`>;
-interface FormProps$1 extends GlobalProps {
+export interface ExtendableEvent extends Event {
+	/**
+	 * Provide a promise that signals the length, and eventual success or failure of actions relating to the event.
+	 *
+	 * This may be called many times, which adds promises to the event.
+	 *
+	 * However, this may only be called synchronously during the dispatch of the event.
+	 * As in, you cannot call it after a `setTimeout` or microtask.
+	 */
+	waitUntil: (promise: Promise<void>) => void;
+}
+interface FormProps$1 extends GlobalProps, ContainerProps {
+	/**
+	 * Whether input elements within the form can be automatically completed by the browser.
+	 *
+	 * @default 'on'
+	 */
+	autocomplete?: "on" | "off";
+	/**
+	 * Whether the form is able to be submitted.
+	 *
+	 * When set to `true`, this will also disable the implicit submit behavior of the form.
+	 *
+	 * @default false
+	 */
+	disabled?: boolean;
 	/**
 	 * A callback that is run when the form is submitted.
 	 *
@@ -1724,7 +1765,7 @@ interface FormProps$1 extends GlobalProps {
 	/**
 	 * A callback that is run when the form is reset.
 	 */
-	onReset?: (event: Event) => void;
+	onReset?: () => void;
 	/**
 	 * The content of the form.
 	 */
@@ -1835,7 +1876,7 @@ export interface BlockTypographyProps {
 	 */
 	lineClamp?: number;
 }
-interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps, BlockTypographyProps {
+interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps, BlockTypographyProps, ContainerProps {
 	/**
 	 * The content of the Heading.
 	 */
@@ -2165,7 +2206,7 @@ export interface BaseOverlayProps {
 	 */
 	onAfterHide?: () => void;
 }
-interface ModalProps$1 extends GlobalProps, BaseOverlayProps, ActionSlots {
+interface ModalProps$1 extends GlobalProps, BaseOverlayProps, ActionSlots, ContainerProps {
 	/**
 	 * A label that describes the purpose of the modal. When set,
 	 * it will be announced to users using assistive technologies and will
@@ -2222,7 +2263,7 @@ interface OptionProps$1 extends GlobalProps, BaseOptionProps {
 }
 interface OrderedListProps$1 extends GlobalProps {
 }
-interface ParagraphProps$1 extends GlobalProps, BaseTypographyProps, BlockTypographyProps, AccessibilityVisibilityProps {
+interface ParagraphProps$1 extends GlobalProps, BaseTypographyProps, BlockTypographyProps, AccessibilityVisibilityProps, ContainerProps {
 	/**
 	 * The content of the Text.
 	 */
@@ -2391,7 +2432,7 @@ interface QRCodeProps$1 extends GlobalProps {
 	 */
 	logo?: string;
 }
-interface SectionProps$1 extends GlobalProps {
+interface SectionProps$1 extends GlobalProps, ContainerProps {
 	/**
 	 * The content of the Section.
 	 */
@@ -2623,6 +2664,7 @@ interface UnorderedListProps$1 extends GlobalProps {
 
 
 
+import { ReactNode } from 'react';
 
 type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
 type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
@@ -3000,22 +3042,36 @@ declare module 'preact' {
     }
 }
 
-interface ModalProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow' | 'padding' | 'primaryAction' | 'secondaryActions' | 'size'> {
+declare const tagName = "s-modal";
+interface ModalBaseProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
-interface ModalElement extends Omit<ModalProps, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
-    onhide: ModalProps['onHide'];
-    onshow: ModalProps['onShow'];
+interface ModalSlots extends Pick<ModalProps$1, 'primaryAction' | 'secondaryActions'> {
+    /**
+     * The primary action to perform, provided as a button type element.
+     */
+    primaryAction?: ReactNode;
+    /**
+     * The secondary actions to perform, provided as button type elements.
+     */
+    secondaryActions?: ReactNode;
 }
+interface ModalEvents extends Pick<ModalProps$1, 'onHide' | 'onShow' | 'onAfterHide' | 'onAfterShow'> {
+}
+interface ModalElement extends ModalProps, ModalSlots, Omit<ModalEvents, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
+    onhide: ModalEvents['onHide'];
+    onshow: ModalEvents['onShow'];
+}
+type ModalProps = ModalBaseProps & ModalSlots & ModalEvents;
 declare global {
     interface HTMLElementTagNameMap {
-        's-modal': ModalElement;
+        [tagName]: ModalElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-modal': ModalProps & BaseElementPropsWithChildren<ModalElement>;
+            [tagName]: ModalProps & ModalSlots & BaseElementPropsWithChildren<ModalElement>;
         }
     }
 }

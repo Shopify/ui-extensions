@@ -1,6 +1,7 @@
 API_VERSION=$1
 DOCS_PATH=docs/surfaces/checkout
 SRC_PATH=src/surfaces/checkout
+COMPONENTS_DIR=src/surfaces/checkout/components
 COMPONENTS_DEFINITIONS=src/surfaces/checkout/components/components.d.ts
 COMPONENTS_TEMP_TS=src/surfaces/checkout/components/components.ts
 
@@ -37,8 +38,17 @@ COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --m
 COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
 COMPILE_CATEGORIES="yarn tsc $DOCS_PATH/categories/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isCategoryPage --input ./$DOCS_PATH/categories --output ./$DOCS_PATH/generated"
 
-# Rename components.d.ts to components.ts so it can be picked up be the generate-docs tool
-cp $COMPONENTS_DEFINITIONS $COMPONENTS_TEMP_TS
+# Copy all .d.ts files in components directory to .ts files so they can be picked up by the generate-docs tool
+echo "Copying .d.ts files to temporary .ts files..."
+TEMP_FILES=()
+for dts_file in $COMPONENTS_DIR/*.d.ts; do
+  if [ -f "$dts_file" ]; then
+    # Convert .d.ts to .ts (e.g., components.d.ts -> components.ts)
+    temp_file="${dts_file%.d.ts}.ts"
+    cp "$dts_file" "$temp_file"
+    TEMP_FILES+=("$temp_file")
+  fi
+done
 
 if echo "$PWD" | grep -q '\checkout-web'; then
   # We are generating docs from the private package, which does not have other surfaces aside from checkout
@@ -61,8 +71,13 @@ find ./ -name '*.doc*.js' -exec rm -r {} \;
 find ./src/docs/shared -name '*.js' -exec rm -r {} \;
 find ./src/docs/shared/components -name '*.js' -exec rm -r {} \;
 
-# Remove the components.ts file that was created by the build-docs.sh script
-rm -f $COMPONENTS_TEMP_TS
+# Remove all temporary .ts files that were created from .d.ts files
+echo "Removing temporary .ts files..."
+for temp_file in "${TEMP_FILES[@]}"; do
+  if [ -f "$temp_file" ]; then
+    rm -f "$temp_file"
+  fi
+done
 
 if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit

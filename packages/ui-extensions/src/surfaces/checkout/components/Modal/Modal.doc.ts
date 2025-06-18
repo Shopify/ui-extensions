@@ -14,6 +14,16 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'ModalProps',
     },
+    {
+      title: 'Events',
+      description: '',
+      type: 'ModalElementEvents',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'ModalElementSlots',
+    },
   ],
   defaultExample: {
     image: 'modal-default.png',

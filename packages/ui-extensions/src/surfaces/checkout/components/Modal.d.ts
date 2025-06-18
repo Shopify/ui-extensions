@@ -9,6 +9,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {ModalProps$1} from './components-shared.d.ts';
+import { ReactNode } from 'react';
 
 /**
  * Used when an element does not have children.
@@ -24,25 +25,56 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface ModalProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow' | 'padding' | 'primaryAction' | 'secondaryActions' | 'size'> {
+declare const tagName = "s-modal";
+export interface ModalBaseProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
-export interface ModalElement extends Omit<ModalProps, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
-    onhide: ModalProps['onHide'];
-    onshow: ModalProps['onShow'];
+export interface ModalSlots extends Pick<ModalProps$1, 'primaryAction' | 'secondaryActions'> {
+    /**
+     * The primary action to perform, provided as a button type element.
+     */
+    primaryAction?: ReactNode;
+    /**
+     * The secondary actions to perform, provided as button type elements.
+     */
+    secondaryActions?: ReactNode;
 }
+export interface ModalElementSlots {
+    /**
+     * The primary action to perform, provided as a button type element.
+     */
+    'primary-action'?: HTMLElement;
+    /**
+     * The secondary actions to perform, provided as button type elements.
+     */
+    'secondary-actions'?: HTMLElement;
+}
+export interface ModalEvents extends Pick<ModalProps$1, 'onHide' | 'onShow' | 'onAfterHide' | 'onAfterShow'> {
+}
+export interface ModalElementEvents {
+    hide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    show?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface ModalElement extends ModalProps, ModalSlots, Omit<ModalEvents, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
+    onhide: ModalEvents['onHide'];
+    onshow: ModalEvents['onShow'];
+}
+export type ModalProps = ModalBaseProps & ModalSlots & ModalEvents;
 declare global {
     interface HTMLElementTagNameMap {
-        's-modal': ModalElement;
+        [tagName]: ModalElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-modal': ModalProps & BaseElementPropsWithChildren<ModalElement>;
+            [tagName]: ModalProps & ModalSlots & BaseElementPropsWithChildren<ModalElement>;
         }
     }
 }
 
-export type { ModalElement, ModalProps };
+export type { ModalBaseProps, ModalElement, ModalElementEvents, ModalElementSlots, ModalProps };
