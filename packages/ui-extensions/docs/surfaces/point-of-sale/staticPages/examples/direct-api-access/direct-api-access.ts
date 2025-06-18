@@ -1,15 +1,16 @@
 import {
   extension,
   POSBlock,
-  Text,
   POSBlockRow,
-  DirectApiRequestBody,
+  Text,
 } from '@shopify/ui-extensions/point-of-sale';
 import type {DirectApiRequestBody} from '@shopify/ui-extensions/point-of-sale';
 
+// This mutation requires the `write_products` access scope.
+// https://shopify.dev/docs/api/admin-graphql/latest/mutations/metafieldsset
 async function mutateMetafield(productId: number) {
   const requestBody: DirectApiRequestBody = {
-    query: `
+    query: `#graphql
         mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {
           metafieldsSet(metafields: $metafields) {
             metafields {
@@ -40,9 +41,10 @@ async function mutateMetafield(productId: number) {
   });
 }
 
+// https://shopify.dev/docs/api/admin-graphql/latest/queries/product
 async function queryProductMetafields(productId: number) {
   const requestBody: DirectApiRequestBody = {
-    query: `
+    query: `#graphql
       query GetProduct($id: ID!) {
         product(id: $id) {
           id

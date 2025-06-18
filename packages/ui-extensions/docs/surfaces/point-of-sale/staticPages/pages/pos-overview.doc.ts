@@ -110,13 +110,18 @@ const data: LandingTemplateSchema = {
           type: 'info',
           sectionContent: `Direct API access is available as of POS version 10.2.0 for extensions targeting \`unstable\`. This feature will be available for all extensions targeting stable API versions in the future.`,
         },
+        {
+          title: 'Access scopes',
+          type: 'note',
+          sectionContent: `Be sure to declare all required access scopes in your app's TOML file. For local development, access scopes are only registered or updated when the app is deployed and installed on your test store.`,
+        },
       ],
       sectionContent:
         "You can make Shopify Admin API requests directly from your extension using the standard [web fetch API](https://developer.mozilla.org/en-US/docs/Web/API/fetch)!\n\nAny `fetch()` calls from your extension to Shopify's Admin GraphQL API are automatically authenticated by default. These calls are fast too, because Shopify handles requests directly.\n\nDirect API requests use [online access](https://shopify.dev/docs/apps/build/authentication-authorization/access-token-types/online-access-tokens) mode by default.",
       anchorLink: 'direct-api-access',
 
       codeblock: {
-        title: 'Query Shopify data',
+        title: 'Query Shopify data directly',
         tabs: [
           {
             code: '../examples/direct-api-access/direct-api-access.tsx',
