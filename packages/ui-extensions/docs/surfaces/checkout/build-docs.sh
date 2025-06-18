@@ -43,6 +43,10 @@ echo "Copying .d.ts files to temporary .ts files..."
 TEMP_FILES=()
 for dts_file in $COMPONENTS_DIR/*.d.ts; do
   if [ -f "$dts_file" ]; then
+    # Skip components-shared.d.ts
+    if [[ "$dts_file" == *"components-shared.d.ts" ]]; then
+      continue
+    fi
     # Convert .d.ts to .ts (e.g., components.d.ts -> components.ts)
     temp_file="${dts_file%.d.ts}.ts"
     cp "$dts_file" "$temp_file"

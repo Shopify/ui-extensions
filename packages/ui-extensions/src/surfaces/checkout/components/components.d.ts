@@ -3062,7 +3062,8 @@ interface ModalElement extends ModalProps, ModalSlots, Omit<ModalEvents, 'onHide
     onhide: ModalEvents['onHide'];
     onshow: ModalEvents['onShow'];
 }
-type ModalProps = ModalBaseProps & ModalSlots & ModalEvents;
+interface ModalProps extends ModalBaseProps, ModalSlots, ModalEvents {
+}
 declare global {
     interface HTMLElementTagNameMap {
         [tagName]: ModalElement;

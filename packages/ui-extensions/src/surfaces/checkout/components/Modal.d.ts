@@ -63,7 +63,8 @@ export interface ModalElement extends ModalProps, ModalSlots, Omit<ModalEvents, 
     onhide: ModalEvents['onHide'];
     onshow: ModalEvents['onShow'];
 }
-export type ModalProps = ModalBaseProps & ModalSlots & ModalEvents;
+export interface ModalProps extends ModalBaseProps, ModalSlots, ModalEvents {
+}
 declare global {
     interface HTMLElementTagNameMap {
         [tagName]: ModalElement;
