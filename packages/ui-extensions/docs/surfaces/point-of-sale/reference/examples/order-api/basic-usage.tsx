@@ -6,16 +6,16 @@ import {
   ScrollView,
   Text,
   Section,
-  useOrder,
+  useApi,
 } from '@shopify/ui-extensions-react/point-of-sale';
 
-const SmartGridModal = () => {
-  // Use the useOrder hook to access order information
-  const order = useOrder();
+const PostPurchaseAction = () => {
+  const api = useApi<'pos.purchase.post.action.render'>();
+  const order = api.order;
 
   return (
     <Navigator>
-      <Screen name="OrderDetails" title="Order Details">
+      <Screen name="PostPurchaseAction" title="Post Purchase Action">
         <ScrollView>
           <Section title="Order Information">
             <Text>Order ID: {order.id}</Text>
@@ -28,6 +28,6 @@ const SmartGridModal = () => {
   );
 };
 
-export default reactExtension('pos.purchase.post.block.render', () => (
-  <SmartGridModal />
+export default reactExtension('pos.purchase.post.action.render', () => (
+  <PostPurchaseAction />
 ));

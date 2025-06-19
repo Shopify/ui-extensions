@@ -14,7 +14,6 @@ export {
   useStatefulSubscribableLocale,
   destroyStatefulSubscribableLocale,
 } from './locale-api';
-export {useOrder} from './order-api';
 
 export {
   useScannerDataSubscription,
