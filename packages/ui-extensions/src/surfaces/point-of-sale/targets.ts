@@ -152,13 +152,6 @@ export interface ExtensionTargets {
       CartLineItemApi,
     BasicComponents
   >;
-  'pos.cart.line-item-details.block.render': RenderExtension<
-    StandardApi<'pos.cart.line-item-details.block.render'> &
-      ActionApi &
-      CartApi &
-      CartLineItemApi,
-    BlockComponents
-  >;
   'pos.receipt-footer.block.render': RenderExtension<
     // NOTE: key/any type is cause of no arg useApi() that includes all target types.
     //   stop using useApi() with no args, instead specify the target type explicitly.

@@ -199,6 +199,22 @@ Review [all extension targets](/docs/api/pos-ui-extensions/targets).
         },
       ],
     },
+    {
+      type: 'GenericAccordion',
+      title: 'Cart line item details',
+      anchorLink: 'cart-line-item-details',
+      sectionContent: 'The cart line item details screen',
+      accordionContent: [
+        {
+          title: 'Action',
+          description: `
+Displays an action target in the cart line item details screen.
+
+Review [all extension targets](/docs/api/pos-ui-extensions/targets).
+`,
+        },
+      ],
+    },
   ],
 };
 
