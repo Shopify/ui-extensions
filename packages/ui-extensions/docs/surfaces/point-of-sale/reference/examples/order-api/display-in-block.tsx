@@ -3,24 +3,27 @@ import {
   reactExtension,
   POSBlock,
   POSBlockRow,
-  useOrder,
+  useApi,
+  Text,
 } from '@shopify/ui-extensions-react/point-of-sale';
 
 const OrderDetailsBlock = () => {
-  // Use the useOrder hook directly
-  const order = useOrder();
+  const api = useApi<'pos.purchase.post.action.render'>();
+  const order = api.order;
 
   return (
     <POSBlock>
-      <POSBlockRow label="Order" value={order.name} />
-      <POSBlockRow label="Order ID" value={order.id.toString()} />
-      {order.customerId && (
-        <POSBlockRow label="Customer ID" value={order.customerId.toString()} />
-      )}
+      <POSBlockRow>
+        <Text>Order {order.name}</Text>
+        <Text>Order ID {order.id.toString()}</Text>
+        {order.customerId && (
+          <Text>Customer ID {order.customerId.toString()}</Text>
+        )}
+      </POSBlockRow>
     </POSBlock>
   );
 };
 
-export default reactExtension('pos.order-details.block.render', () => (
+export default reactExtension('pos.purchase.post.block.render', () => (
   <OrderDetailsBlock />
 ));
