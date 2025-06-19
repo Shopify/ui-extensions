@@ -34,26 +34,14 @@ The Order API provides an extension with data about the current order.
     examples: [
       {
         codeblock: generateCodeBlockForOrderApi(
-          'Basic usage of the Order API with useOrder hook',
+          'Basic usage of the Order API in an action',
           'basic-usage',
         ),
       },
       {
         codeblock: generateCodeBlockForOrderApi(
-          'Display order details in a custom block',
+          'Display order details in a block',
           'display-in-block',
-        ),
-      },
-      {
-        codeblock: generateCodeBlockForOrderApi(
-          'Use Order API with navigation',
-          'with-navigation',
-        ),
-      },
-      {
-        codeblock: generateCodeBlockForOrderApi(
-          'Simple useOrder hook example',
-          'use-order-hook',
         ),
       },
     ],
