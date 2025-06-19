@@ -1,30 +1,37 @@
 import {
   extension,
-  POSBlock,
-  POSBlockRow,
+  Screen,
+  Navigator,
+  ScrollView,
+  Text,
+  Section,
 } from '@shopify/ui-extensions/point-of-sale';
 
-export default extension('pos.order-details.block.render', (root, api) => {
+export default extension('pos.purchase.post.action.render', (root, api) => {
   const order = api.order;
 
-  const posBlock = root.createComponent(POSBlock, {});
-
-  posBlock.createComponent(POSBlockRow, {
-    label: 'Order',
-    value: order.name,
+  const screen = root.createComponent(Screen, {
+    name: 'PostPurchaseAction',
+    title: 'Post Purchase Action',
   });
 
-  posBlock.createComponent(POSBlockRow, {
-    label: 'Order ID',
-    value: order.id.toString(),
-  });
+  const scrollView = root.createComponent(ScrollView, {});
 
-  if (order.customerId) {
-    posBlock.createComponent(POSBlockRow, {
-      label: 'Customer ID',
-      value: order.customerId.toString(),
-    });
-  }
+  const orderName = root.createComponent(Text, {}, `Order Name: ${order.name}`);
+  const orderId = root.createComponent(Text, {}, `Order ID: ${order.id}`);
+  const orderCustomerId = root.createComponent(
+    Text,
+    {},
+    `Order Customer ID: ${order.customerId}`,
+  );
+
+  scrollView.append(orderName);
+  scrollView.append(orderId);
+  scrollView.append(orderCustomerId);
+
+  screen.append(scrollView);
+
+  root.append(screen);
 
   root.mount();
 });
