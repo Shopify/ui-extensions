@@ -1,6 +1,7 @@
 export {useApi, useExtensionApi} from './api';
 export {
   useCartSubscription,
+  useCartEditable,
   useStatefulSubscribableCart,
   destroyStatefulSubscribableCart,
 } from './cart-api';
