@@ -47,6 +47,12 @@ The Cart API enables UI Extensions to manage and interact with POS cart contents
       },
       {
         codeblock: generateCodeBlockForCartApi(
+          'Check editable state of the cart',
+          'check-cart-editable',
+        ),
+      },
+      {
+        codeblock: generateCodeBlockForCartApi(
           'Apply a cart level discount',
           'apply-cart-discount',
         ),
