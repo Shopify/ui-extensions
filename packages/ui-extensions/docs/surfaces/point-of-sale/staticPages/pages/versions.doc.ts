@@ -58,6 +58,10 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
 - Update pos.draft-order-details.block.render allowed components to \`BlockComponents\`.
 - Added support for a product variant id field in the \`ProductApi\` interface.
 
+### Breaking Changes
+
+- Removed the deprecated \`FormattedTextField\` component. Use the \`TextField\` component instead.
+
 ### Features
 
 - Added required \`posVersion\` property to \`Session\` interface.

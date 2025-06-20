@@ -7,7 +7,6 @@ export {DateField} from './components/DateField/DateField';
 export {DatePicker} from './components/DatePicker/DatePicker';
 export {Dialog} from './components/Dialog/Dialog';
 export {EmailField} from './components/EmailField/EmailField';
-export {FormattedTextField} from './components/FormattedTextField/FormattedTextField';
 export {Icon} from './components/Icon/Icon';
 export {Image} from './components/Image/Image';
 export {List} from './components/List/List';
