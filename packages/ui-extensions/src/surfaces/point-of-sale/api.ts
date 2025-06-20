@@ -97,6 +97,8 @@ export type {
   Address,
 } from './types/cart';
 
+export type {OrderLineItem, LineItemRefund} from './types/order';
+
 export type {DirectApiRequestBody} from './types/direct-api-request-body';
 
 export type {
