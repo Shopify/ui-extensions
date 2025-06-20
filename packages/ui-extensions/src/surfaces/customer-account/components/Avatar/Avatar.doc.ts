@@ -42,23 +42,23 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-- By default, if a user does not provide their first or last name, the avatar component will display a placeholder icon. However, if at least one of the names is provided, the avatar will be replaced with one or two initials representing the user.
-- There are 4 sizes for the avatar component:
-  * Base (32x32 px): Use by default.
-  * Large (39×39 px): Use when the avatar is a focal point, such as a customer details card.
-  * Extra-large (47x47 px): Use when placing more emphasis on the avatar
-  * Fill to fit: Use when there is a particular size that does not match any of the three sizes provided. If using images please ensure the resolution meets the size requirements.
+  - By default, if a user does not provide their first or last name, the avatar component will display a placeholder icon. However, if at least one of the names is provided, the avatar will be replaced with one or two initials representing the user.
+  - There are 4 sizes for the avatar component:
+    * Base (32x32 px): Use by default.
+    * Large (39×39 px): Use when the avatar is a focal point, such as a customer details card.
+    * Extra-large (47x47 px): Use when placing more emphasis on the avatar
+    * Fill to fit: Use when there is a particular size that does not match any of the three sizes provided. If using images please ensure the resolution meets the size requirements.
 
-- Provide alt text for avatars to assist customers using assistive technologies.
+  - Provide alt text for avatars to assist customers using assistive technologies.
 
-**Dos**
-- When using multiple avatars on the same page, maintain a consistent style and size to create a unified visual pattern for users.
+  **Dos**
+  - When using multiple avatars on the same page, maintain a consistent style and size to create a unified visual pattern for users.
 
-**Don'ts**
-- Don't use different size avatars on the same page.
+  **Don'ts**
+  - Don't use different size avatars on the same page.
 
-<img src='/assets/templated-apis-screenshots/customer-account-ui-extensions/unstable/avatar-best-practices.png' alt="An example showing dos and don'ts of the Avatar component" />
-`,
+  <img src='/assets/templated-apis-screenshots/customer-account-ui-extensions/unstable/avatar-best-practices.png' alt="An example showing dos and don'ts of the Avatar component" />
+  `,
     },
   ],
   related: [],

@@ -5,5 +5,5 @@ export default function extension() {
 }
 
 function App() {
-  return <s-avatar initials="JD" alt="John Doe" size="base" />;
+  return <s-avatar initials="EW" alt="Evan White" size="base" />;
 }
