@@ -20,7 +20,7 @@ const PostPurchaseAction = () => {
           <Section title="Order Information">
             <Text>Order ID: {order.id}</Text>
             <Text>Order Name: {order.name}</Text>
-            {order.customerId && <Text>Customer ID: {order.customerId}</Text>}
+            {order.customerId && <Text>Order Customer ID: {order.customerId}</Text>}
           </Section>
         </ScrollView>
       </Screen>
