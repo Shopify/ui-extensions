@@ -4,6 +4,8 @@ type CartApiMethods = Omit<CartApiContent, 'subscribable'>;
 
 /**
  * An error thrown when an attempt to edit the cart is made while it is not editable.
+ *
+ * @deprecated the cart will now throw a generic `Error`
  */
 export class CartNotEditableError extends Error {
   constructor(
