@@ -14,10 +14,10 @@ const OrderDetailsBlock = () => {
   return (
     <POSBlock>
       <POSBlockRow>
-        <Text>Order {order.name}</Text>
+        <Text>Order Name: {order.name}</Text>
         <Text>Order ID {order.id.toString()}</Text>
         {order.customerId && (
-          <Text>Customer ID {order.customerId.toString()}</Text>
+          <Text>Order Customer ID {order.customerId.toString()}</Text>
         )}
       </POSBlockRow>
     </POSBlock>
