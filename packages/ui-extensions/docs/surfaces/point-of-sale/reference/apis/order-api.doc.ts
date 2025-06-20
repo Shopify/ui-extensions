@@ -1,5 +1,9 @@
 import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+import {generateCodeBlock} from '../helpers/generateCodeBlock';
 import {ExtensionTargetType, TargetLink} from '../types/ExtensionTargetType';
+
+const generateCodeBlockForOrderApi = (title: string, fileName: string) =>
+  generateCodeBlock(title, 'order-api', fileName);
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Order API',
@@ -25,6 +29,23 @@ The Order API provides an extension with data about the current order.
   ],
   category: 'APIs',
   related: [],
+  examples: {
+    description: 'Examples of using the Order API',
+    examples: [
+      {
+        codeblock: generateCodeBlockForOrderApi(
+          'Basic usage of the Order API in an action',
+          'basic-usage',
+        ),
+      },
+      {
+        codeblock: generateCodeBlockForOrderApi(
+          'Display order details in a block',
+          'display-in-block',
+        ),
+      },
+    ],
+  },
 };
 
 export default data;
