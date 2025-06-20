@@ -130,7 +130,7 @@ Merchants can manage their POS UI extensions across locations from the POS chann
       anchorLink: 'next-steps',
       title: 'Next steps',
       sectionContent: `
-- Follow along with an [example discount extension](/docs/api/pos-ui-extensions/example-discount-extension).
+- Follow along with an [example discount extension](/docs/apps/build/pos/build-discount-extension).
 - Explore the full [reference of Shopify retail APIs and components](/docs/api/pos-ui-extensions) that you can use for your POS UI extension.
 - Learn how to [deploy and release an app extension](/docs/apps/deployment/app-versions).
         `,
