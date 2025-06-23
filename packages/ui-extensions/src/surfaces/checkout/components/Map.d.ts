@@ -24,11 +24,28 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
 declare const tagName = "s-map";
-export interface MapProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange' | 'zoom'> {
+export interface MapBaseProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
 }
-export interface MapElement extends MapProps, Omit<HTMLElement, 'id'> {
+export interface MapEvents extends Pick<MapProps$1, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'> {
+}
+export interface MapElementEvents {
+    boundschange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    click?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    dblclick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    viewchange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface MapElement extends MapBaseProps, Omit<MapEvents, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
+    onboundschange: MapEvents['onBoundsChange'];
+    onclick: MapEvents['onClick'];
+    ondblclick: MapEvents['onDblClick'];
+    onviewchange: MapEvents['onViewChange'];
+}
+export interface MapProps extends MapBaseProps, MapEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -43,4 +60,4 @@ declare module 'preact' {
     }
 }
 
-export type { MapElement, MapProps };
+export type { MapBaseProps, MapElement, MapElementEvents, MapEvents, MapProps };

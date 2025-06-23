@@ -3038,9 +3038,17 @@ declare module 'preact' {
 }
 
 declare const tagName$l = "s-map";
-interface MapProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange' | 'zoom'> {
+interface MapBaseProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
 }
-interface MapElement extends MapProps, Omit<HTMLElement, 'id'> {
+interface MapEvents extends Pick<MapProps$1, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'> {
+}
+interface MapElement extends MapBaseProps, Omit<MapEvents, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
+    onboundschange: MapEvents['onBoundsChange'];
+    onclick: MapEvents['onClick'];
+    ondblclick: MapEvents['onDblClick'];
+    onviewchange: MapEvents['onViewChange'];
+}
+interface MapProps extends MapBaseProps, MapEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {

@@ -13,7 +13,12 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'MapProps',
+      type: 'MapBaseProps',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'MapElementEvents',
     },
     {
       title: mapMarkerSharedContent.name,
