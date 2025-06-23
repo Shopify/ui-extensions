@@ -2460,7 +2460,7 @@ interface SectionProps$1 extends GlobalProps, ContainerProps {
 	 */
 	padding?: "base" | "none";
 }
-interface SelectProps$1 extends GlobalProps, AutocompleteProps<AnyAutocompleteField>, Pick<FieldDecorationProps, "icon">, Omit<FieldProps, "defaultValue">, FocusEventProps {
+interface SelectProps$1 extends GlobalProps, Pick<FieldDecorationProps, "icon">, AutocompleteProps<AnyAutocompleteField>, Omit<FieldProps, "defaultValue">, FocusEventProps {
 	/**
 	 * The options a user can select from.
 	 *

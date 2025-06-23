@@ -2462,7 +2462,7 @@ interface SectionProps$1 extends GlobalProps, ContainerProps {
 	 */
 	padding?: "base" | "none";
 }
-interface SelectProps$1 extends GlobalProps, AutocompleteProps<AnyAutocompleteField>, Pick<FieldDecorationProps, "icon">, Omit<FieldProps, "defaultValue">, FocusEventProps {
+interface SelectProps$1 extends GlobalProps, Pick<FieldDecorationProps, "icon">, AutocompleteProps<AnyAutocompleteField>, Omit<FieldProps, "defaultValue">, FocusEventProps {
 	/**
 	 * The options a user can select from.
 	 *
@@ -3207,6 +3207,10 @@ interface PhoneFieldBaseProps extends Pick<PhoneFieldProps$1, 'autocomplete' | '
 interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 interface PhoneFieldSlots extends Pick<PhoneFieldProps$1, 'accessory'> {
+    /**
+     * Additional content to be displayed in the field.
+     * Commonly used to display an icon that activates a tooltip providing more information.
+     */
     accessory?: ReactNode;
 }
 interface PhoneFieldElement extends PhoneFieldBaseProps, PhoneFieldSlots, Omit<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
@@ -3422,6 +3426,10 @@ interface TextFieldBaseProps extends Pick<TextFieldProps$1, 'autocomplete' | 'de
 interface TextFieldEvents extends Pick<TextFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 interface TextFieldSlots {
+    /**
+     * Additional content to be displayed in the field.
+     * Commonly used to display an icon that activates a tooltip providing more information.
+     */
     accessory?: ReactNode;
 }
 interface TextFieldElement extends TextFieldBaseProps, TextFieldSlots, Omit<TextFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {

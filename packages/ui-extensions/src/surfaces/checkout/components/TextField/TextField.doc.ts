@@ -14,6 +14,16 @@ const data: ReferenceEntityTemplateSchema = {
       description: '',
       type: 'TextFieldBaseProps',
     },
+    {
+      title: 'Events',
+      description: '',
+      type: 'TextFieldElementEvents',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'TextFieldElementSlots',
+    },
   ],
   defaultExample: {
     image: 'textfield-default.png',

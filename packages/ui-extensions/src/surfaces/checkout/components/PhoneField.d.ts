@@ -35,9 +35,17 @@ export interface PhoneFieldElementEvents {
     input?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 export interface PhoneFieldSlots extends Pick<PhoneFieldProps$1, 'accessory'> {
+    /**
+     * Additional content to be displayed in the field.
+     * Commonly used to display an icon that activates a tooltip providing more information.
+     */
     accessory?: ReactNode;
 }
 export interface PhoneFieldElementSlots {
+    /**
+     * Additional content to be displayed in the field.
+     * Commonly used to display an icon that activates a tooltip providing more information.
+     */
     accessory?: HTMLElement;
 }
 export interface PhoneFieldElement extends PhoneFieldBaseProps, PhoneFieldSlots, Omit<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {

@@ -63,9 +63,17 @@ export interface TextFieldElementEvents {
     input?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 export interface TextFieldSlots {
+    /**
+     * Additional content to be displayed in the field.
+     * Commonly used to display an icon that activates a tooltip providing more information.
+     */
     accessory?: ReactNode;
 }
 export interface TextFieldElementSlots {
+    /**
+     * Additional content to be displayed in the field.
+     * Commonly used to display an icon that activates a tooltip providing more information.
+     */
     accessory?: HTMLElement;
 }
 export interface TextFieldElement extends TextFieldBaseProps, TextFieldSlots, Omit<TextFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
