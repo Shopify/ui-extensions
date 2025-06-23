@@ -3063,9 +3063,22 @@ declare module 'preact' {
 }
 
 declare const tagName$k = "s-map-marker";
-interface MapMarkerProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'clusterable' | 'graphic' | 'inlineSize' | 'latitude' | 'longitude' | 'onClick'> {
+interface MapMarkerBaseProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
 }
-interface MapMarkerElement extends MapMarkerProps, Omit<HTMLElement, 'id'> {
+interface MapMarkerEvents extends Pick<MapMarkerProps$1, 'onClick'> {
+}
+interface MapMarkerSlots {
+    /**
+     * The graphic to use as the marker.
+     *
+     * If unset, it will default to the provider’s default marker.
+     */
+    graphic?: ReactNode;
+}
+interface MapMarkerElement extends MapMarkerBaseProps, MapMarkerSlots, Omit<HTMLElement, 'id' | 'onclick'> {
+    onclick: MapMarkerEvents['onClick'];
+}
+interface MapMarkerProps extends MapMarkerBaseProps, MapMarkerEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {

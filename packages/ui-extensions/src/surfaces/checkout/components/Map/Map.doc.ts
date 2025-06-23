@@ -25,6 +25,16 @@ const data: ReferenceEntityTemplateSchema = {
       description: mapMarkerSharedContent.description,
       type: 'MapMarkerProps',
     },
+    {
+      title: 'Events',
+      description: '',
+      type: 'MapMarkerElementEvents',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'MapMarkerElementSlots',
+    },
   ],
   defaultExample: {
     image: 'map-default.png',
