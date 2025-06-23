@@ -6,10 +6,8 @@ export default function extension() {
 
 
 function Extension() {
-  const { resourcePicker } = shopify;
-
   const handleSelectProduct = async () => {
-    const selected = await resourcePicker({ type: 'product' });
+    const selected = await shopify.resourcePicker({ type: 'product' });
     console.log(selected);
   };
 
