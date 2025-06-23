@@ -13,11 +13,11 @@ const SmartGridModal = () => {
     <Navigator>
       <Screen name="Image" title="Image Example">
         <ScrollView>
-          <Icon name="call" size="minor" />
-          <Icon name="card-reader" size="major" />
-          <Icon name="circle-cancel" size="spot" />
-          <Icon name="orders" size="caption" />
-          <Icon name="star" size="badge" />
+          <Icon name="call" size="s" tone="icon-success" />
+          <Icon name="card-reader" size="l" />
+          <Icon name="circle-cancel" size="xl" tone="icon-critical" />
+          <Icon name="orders-filled" size="s" />
+          <Icon name="star" size="m" />
         </ScrollView>
       </Screen>
     </Navigator>
