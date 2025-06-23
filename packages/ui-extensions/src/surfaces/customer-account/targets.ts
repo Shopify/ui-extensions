@@ -125,8 +125,16 @@ export interface CustomerAccountExtensionTargets {
     StandardApi<'customer-account.order-index.block.render'>,
     AllComponents
   >;
+  'customer-account.order-index.announcement.render': RenderExtension<
+    StandardApi<'customer-account.order-index.announcement.render'>,
+    AllComponents
+  >;
   'customer-account.profile.block.render': RenderExtension<
     StandardApi<'customer-account.profile.block.render'>,
+    AllComponents
+  >;
+  'customer-account.profile.announcement.render': RenderExtension<
+    StandardApi<'customer-account.profile.announcement.render'>,
     AllComponents
   >;
   'customer-account.profile.addresses.render-after': RenderExtension<
