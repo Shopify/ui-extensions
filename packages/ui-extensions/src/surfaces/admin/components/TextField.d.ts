@@ -1,4 +1,4 @@
-/** VERSION: 1.0.0 **/
+/** VERSION: 1.1.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -87,6 +87,15 @@ export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   onChange?: ((event: CallbackEvent<T>) => void) | null;
   onFocus?: ((event: CallbackEvent<T>) => void) | null;
   onBlur?: ((event: CallbackEvent<T>) => void) | null;
+}
+/** Used when an element does not have children. */
+export interface PreactBaseElementProps<TClass extends HTMLElement> {
+  /** Assigns a unique key to this element. */
+  key?: preact.Key;
+  /** Assigns a ref (generally from `useRef()`) to this element. */
+  ref?: preact.Ref<TClass>;
+  /** Assigns this element to a parent's slot. */
+  slot?: Lowercase<string>;
 }
 
 declare const internals: unique symbol;
@@ -190,6 +199,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 }
 
 export type TextFieldProps = PreactFieldProps<
+  /** @default 'on' */
   Required<TextFieldProps$1>['autocomplete']
 > &
   Required<
@@ -216,12 +226,10 @@ declare global {
   }
 }
 declare module 'preact' {
-  interface BaseProps {
-    slot?: Lowercase<string>;
-  }
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<TextFieldJSXProps, 'accessory'> & BaseProps;
+      [tagName]: Omit<TextFieldJSXProps, 'accessory'> &
+        PreactBaseElementProps<TextField>;
     }
   }
 }

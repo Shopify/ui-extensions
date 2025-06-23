@@ -1,5 +1,21 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.6
+
+### Patch Changes
+
+- [#2983](https://github.com/Shopify/ui-extensions/pull/2983) [`5f5091fac8d031524cef7f1a264842539781e0db`](https://github.com/Shopify/ui-extensions/commit/5f5091fac8d031524cef7f1a264842539781e0db) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - fix QueryContainer types not registering for 3P extensions code
+
+## 2025.10.0-rc.5
+
+### Minor Changes
+
+- [#2979](https://github.com/Shopify/ui-extensions/pull/2979) [`b700870d1149e3be518aea79b0cc3b6a405224ab`](https://github.com/Shopify/ui-extensions/commit/b700870d1149e3be518aea79b0cc3b6a405224ab) Thanks [@gwyneplaine](https://github.com/gwyneplaine)! - [Admin] Add QueryContainer component
+
+### Patch Changes
+
+- [#2970](https://github.com/Shopify/ui-extensions/pull/2970) [`e56d363e59cacfcd027343e8d58bfecd8838cc63`](https://github.com/Shopify/ui-extensions/commit/e56d363e59cacfcd027343e8d58bfecd8838cc63) Thanks [@SHAZAM28](https://github.com/SHAZAM28)! - Add key, ref for customer account components
+
 ## 2025.10.0-rc.4
 
 ### Patch Changes
