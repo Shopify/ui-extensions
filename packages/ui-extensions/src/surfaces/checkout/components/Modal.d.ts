@@ -59,7 +59,7 @@ export interface ModalElementEvents {
     hide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
     show?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
-export interface ModalElement extends ModalProps, ModalSlots, Omit<ModalEvents, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
+export interface ModalElement extends ModalBaseProps, ModalSlots, Omit<ModalEvents, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
     onhide: ModalEvents['onHide'];
     onshow: ModalEvents['onShow'];
 }
@@ -78,4 +78,4 @@ declare module 'preact' {
     }
 }
 
-export type { ModalBaseProps, ModalElement, ModalElementEvents, ModalElementSlots, ModalProps };
+export type { ModalBaseProps, ModalElement, ModalElementEvents, ModalElementSlots, ModalProps, ModalSlots };

@@ -25,19 +25,20 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
     children?: preact.ComponentChildren;
 }
 
+declare const tagName = "s-heading";
 export interface HeadingProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
 }
 export interface HeadingElement extends HeadingProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-heading': HeadingElement;
+        [tagName]: HeadingElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-heading': HeadingProps & BaseElementPropsWithChildren<HeadingElement>;
+            [tagName]: HeadingProps & BaseElementPropsWithChildren<HeadingElement>;
         }
     }
 }

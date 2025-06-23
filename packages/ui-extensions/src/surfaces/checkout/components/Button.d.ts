@@ -24,27 +24,38 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface ButtonProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'loading' | 'onClick' | 'target' | 'tone' | 'type' | 'variant'> {
+declare const tagName = "s-button";
+export interface ButtonBaseProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;
     variant?: Extract<ButtonProps$1['variant'], 'auto' | 'primary' | 'secondary'>;
 }
-export interface ButtonElement extends Omit<ButtonProps, 'onClick'>, Omit<HTMLElement, 'id' | 'onclick'> {
-    onclick: ButtonProps['onClick'];
+export interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
+}
+export interface ButtonElementEvents {
+    click?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface ButtonElement extends ButtonBaseProps, Omit<ButtonEvents, 'onClick'>, Omit<HTMLElement, 'id' | 'onclick'> {
+    onclick: ButtonEvents['onClick'];
+}
+export interface ButtonProps extends ButtonBaseProps, ButtonEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-button': ButtonElement;
+        [tagName]: ButtonElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-button': ButtonProps & BaseElementPropsWithChildren<ButtonElement>;
+            [tagName]: ButtonProps & BaseElementPropsWithChildren<ButtonElement>;
         }
     }
 }
 
-export type { ButtonElement, ButtonProps };
+export type { ButtonBaseProps, ButtonElement, ButtonElementEvents, ButtonEvents, ButtonProps };

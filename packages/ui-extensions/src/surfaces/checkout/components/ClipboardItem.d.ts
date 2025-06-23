@@ -18,24 +18,36 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface ClipboardItemProps extends ClipboardItemProps$1 {
+declare const tagName = "s-clipboard-item";
+export interface ClipboardItemBaseProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
 }
-export interface ClipboardItemElement extends Omit<ClipboardItemProps, 'onCopy' | 'onCopyError'>, Omit<HTMLElement, 'id' | 'oncopy'> {
-    oncopy: ClipboardItemProps['onCopy'];
-    oncopyerror: ClipboardItemProps['onCopyError'];
+export interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
+}
+export interface ClipboardItemElementEvents {
+    copy?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    copyerror?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface ClipboardItemElement extends ClipboardItemBaseProps, Omit<ClipboardItemEvents, 'onCopy' | 'onCopyError'>, Omit<HTMLElement, 'id' | 'oncopy'> {
+    oncopy: ClipboardItemEvents['onCopy'];
+    oncopyerror: ClipboardItemEvents['onCopyError'];
+}
+export interface ClipboardItemProps extends ClipboardItemBaseProps, ClipboardItemEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-clipboard-item': ClipboardItemElement;
+        [tagName]: ClipboardItemElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-clipboard-item': ClipboardItemProps & BaseElementProps<ClipboardItemElement>;
+            [tagName]: ClipboardItemProps & BaseElementProps<ClipboardItemElement>;
         }
     }
 }
 
-export type { ClipboardItemElement, ClipboardItemProps };
+export type { ClipboardItemBaseProps, ClipboardItemElement, ClipboardItemElementEvents, ClipboardItemEvents, ClipboardItemProps };

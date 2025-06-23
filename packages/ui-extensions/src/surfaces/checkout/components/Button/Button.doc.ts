@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
 import sharedContent from '../../../../docs/shared/components/Button';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -11,7 +12,12 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'ButtonProps',
+      type: 'ButtonBaseProps',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'ButtonElementEvents',
     },
   ],
   defaultExample: {

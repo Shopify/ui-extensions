@@ -25,19 +25,20 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
     children?: preact.ComponentChildren;
 }
 
+declare const tagName = "s-time";
 export interface TimeProps extends Pick<TimeProps$1, 'dateTime'> {
 }
 export interface TimeElement extends TimeProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-time': TimeElement;
+        [tagName]: TimeElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-time': TimeProps & BaseElementPropsWithChildren<TimeElement>;
+            [tagName]: TimeProps & BaseElementPropsWithChildren<TimeElement>;
         }
     }
 }

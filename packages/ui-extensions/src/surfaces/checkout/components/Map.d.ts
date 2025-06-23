@@ -25,19 +25,20 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
     children?: preact.ComponentChildren;
 }
 
+declare const tagName = "s-map";
 export interface MapProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange' | 'zoom'> {
 }
 export interface MapElement extends MapProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-map': MapElement;
+        [tagName]: MapElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-map': MapProps & BaseElementPropsWithChildren<MapElement>;
+            [tagName]: MapProps & BaseElementPropsWithChildren<MapElement>;
         }
     }
 }

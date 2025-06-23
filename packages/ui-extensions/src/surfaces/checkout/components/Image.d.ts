@@ -22,6 +22,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
     slot?: Lowercase<string>;
 }
 
+declare const tagName = "s-image";
 export interface ImageProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
@@ -31,13 +32,13 @@ export interface ImageElement extends ImageProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-image': ImageElement;
+        [tagName]: ImageElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-image': ImageProps & BaseElementProps<ImageElement>;
+            [tagName]: ImageProps & BaseElementProps<ImageElement>;
         }
     }
 }

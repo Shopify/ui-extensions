@@ -25,19 +25,20 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
     children?: preact.ComponentChildren;
 }
 
+declare const tagName = "s-ordered-list";
 export interface OrderedListProps extends OrderedListProps$1 {
 }
 export interface OrderedListElement extends OrderedListProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-ordered-list': OrderedListElement;
+        [tagName]: OrderedListElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-ordered-list': OrderedListProps & BaseElementPropsWithChildren<OrderedListElement>;
+            [tagName]: OrderedListProps & BaseElementPropsWithChildren<OrderedListElement>;
         }
     }
 }

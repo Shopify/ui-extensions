@@ -24,25 +24,37 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface BannerProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'onAfterHide' | 'onDismiss' | 'tone'> {
+declare const tagName = "s-banner";
+export interface BannerBaseProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }
-export interface BannerElement extends Omit<BannerProps, 'onAfterHide' | 'onDismiss'>, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
-    onafterhide: BannerProps['onAfterHide'];
-    ondismiss: BannerProps['onDismiss'];
+export interface BannerEvents extends Pick<BannerProps$1, 'onAfterHide' | 'onDismiss'> {
+}
+export interface BannerElementEvents {
+    afterhide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    dismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface BannerElement extends BannerBaseProps, Omit<BannerEvents, 'onAfterHide' | 'onDismiss'>, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
+    onafterhide: BannerEvents['onAfterHide'];
+    ondismiss: BannerEvents['onDismiss'];
+}
+export interface BannerProps extends BannerBaseProps, BannerEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-banner': BannerElement;
+        [tagName]: BannerElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-banner': BannerProps & BaseElementPropsWithChildren<BannerElement>;
+            [tagName]: BannerProps & BaseElementPropsWithChildren<BannerElement>;
         }
     }
 }
 
-export type { BannerElement, BannerProps };
+export type { BannerBaseProps, BannerElement, BannerElementEvents, BannerEvents, BannerProps };

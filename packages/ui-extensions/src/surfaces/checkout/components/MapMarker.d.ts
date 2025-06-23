@@ -19,19 +19,20 @@ export interface BaseElementProps<TClass = HTMLElement> {
     slot?: Lowercase<string>;
 }
 
+declare const tagName = "s-map-marker";
 export interface MapMarkerProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'clusterable' | 'graphic' | 'inlineSize' | 'latitude' | 'longitude' | 'onClick'> {
 }
 export interface MapMarkerElement extends MapMarkerProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-map-marker': MapMarkerElement;
+        [tagName]: MapMarkerElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-map-marker': MapMarkerProps & BaseElementProps<MapMarkerElement>;
+            [tagName]: MapMarkerProps & BaseElementProps<MapMarkerElement>;
         }
     }
 }

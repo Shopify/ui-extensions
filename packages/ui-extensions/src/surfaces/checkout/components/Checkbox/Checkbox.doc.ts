@@ -12,7 +12,12 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'CheckboxProps',
+      type: 'CheckboxBaseProps',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'CheckboxElementEvents',
     },
   ],
   defaultExample: {

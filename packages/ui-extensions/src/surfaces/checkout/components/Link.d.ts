@@ -24,25 +24,36 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface LinkProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'lang' | 'onClick' | 'target' | 'tone'> {
+declare const tagName = "s-link";
+export interface LinkBaseProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'lang' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }
-export interface LinkElement extends Omit<LinkProps, 'onClick'>, Omit<HTMLElement, 'id' | 'lang' | 'onclick'> {
-    onclick: LinkProps['onClick'];
+export interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
+}
+export interface LinkElementEvents {
+    click?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface LinkElement extends LinkBaseProps, Omit<LinkEvents, 'onClick'>, Omit<HTMLElement, 'id' | 'lang' | 'onclick'> {
+    onclick: LinkEvents['onClick'];
+}
+export interface LinkProps extends LinkBaseProps, LinkEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-link': LinkElement;
+        [tagName]: LinkElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-link': LinkProps & BaseElementPropsWithChildren<LinkElement>;
+            [tagName]: LinkProps & BaseElementPropsWithChildren<LinkElement>;
         }
     }
 }
 
-export type { LinkElement, LinkProps };
+export type { LinkBaseProps, LinkElement, LinkElementEvents, LinkEvents, LinkProps };

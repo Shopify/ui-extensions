@@ -25,6 +25,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
     children?: preact.ComponentChildren;
 }
 
+declare const tagName = "s-text";
 export interface TextProps extends Pick<TextProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'display' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<TextProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<TextProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
@@ -34,13 +35,13 @@ export interface TextElement extends TextProps, Omit<HTMLElement, 'id' | 'dir' |
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-text': TextElement;
+        [tagName]: TextElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-text': TextProps & BaseElementPropsWithChildren<TextElement>;
+            [tagName]: TextProps & BaseElementPropsWithChildren<TextElement>;
         }
     }
 }

@@ -12,7 +12,17 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'PhoneFieldProps',
+      type: 'PhoneFieldBaseProps',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'PhoneFieldElementEvents',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'PhoneFieldElementSlots',
     },
   ],
   defaultExample: {

@@ -12,7 +12,12 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'TextAreaProps',
+      type: 'TextAreaBaseProps',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'TextAreaElementEvents',
     },
   ],
   defaultExample: {

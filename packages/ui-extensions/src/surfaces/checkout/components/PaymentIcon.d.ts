@@ -19,19 +19,20 @@ export interface BaseElementProps<TClass = HTMLElement> {
     slot?: Lowercase<string>;
 }
 
+declare const tagName = "s-payment-icon";
 export interface PaymentIconProps extends PaymentIconProps$1 {
 }
 export interface PaymentIconElement extends PaymentIconProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-payment-icon': PaymentIconElement;
+        [tagName]: PaymentIconElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-payment-icon': PaymentIconProps & BaseElementProps<PaymentIconElement>;
+            [tagName]: PaymentIconProps & BaseElementProps<PaymentIconElement>;
         }
     }
 }

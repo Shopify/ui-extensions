@@ -18,26 +18,40 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface TextAreaProps extends TextAreaProps$1 {
+declare const tagName = "s-text-area";
+export interface TextAreaBaseProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'details' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
 }
-export interface TextAreaElement extends Omit<TextAreaProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
-    onblur: TextAreaProps['onBlur'];
-    onchange: TextAreaProps['onChange'];
-    onfocus: TextAreaProps['onFocus'];
-    oninput: TextAreaProps['onInput'];
+export interface TextAreaEvents extends Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
+}
+export interface TextAreaElementEvents {
+    blur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    change?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    focus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    input?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface TextAreaElement extends TextAreaBaseProps, Omit<TextAreaEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
+    onblur: TextAreaEvents['onBlur'];
+    onchange: TextAreaEvents['onChange'];
+    onfocus: TextAreaEvents['onFocus'];
+    oninput: TextAreaEvents['onInput'];
+}
+export interface TextAreaProps extends TextAreaBaseProps, TextAreaEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-text-area': TextAreaElement;
+        [tagName]: TextAreaElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-text-area': TextAreaProps & BaseElementProps<TextAreaElement>;
+            [tagName]: TextAreaProps & BaseElementProps<TextAreaElement>;
         }
     }
 }
 
-export type { TextAreaElement, TextAreaProps };
+export type { TextAreaBaseProps, TextAreaElement, TextAreaElementEvents, TextAreaEvents, TextAreaProps };

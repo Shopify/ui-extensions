@@ -24,24 +24,35 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface FormProps extends Pick<FormProps$1, 'id' | 'disabled' | 'onSubmit'> {
+declare const tagName = "s-form";
+export interface FormBaseProps extends Pick<FormProps$1, 'id' | 'disabled'> {
+}
+export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
     onSubmit?: () => void;
 }
-export interface FormElement extends Omit<FormProps, 'onSubmit' | 'children'>, Omit<HTMLElement, 'id' | 'onsubmit'> {
-    onsubmit: FormProps['onSubmit'];
+export interface FormElementEvents {
+    submit?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface FormElement extends Omit<FormBaseProps, 'children'>, Omit<FormEvents, 'onSubmit'>, Omit<HTMLElement, 'id' | 'onsubmit'> {
+    onsubmit: FormEvents['onSubmit'];
+}
+export interface FormProps extends FormBaseProps, FormEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-form': FormElement;
+        [tagName]: FormElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-form': FormProps & BaseElementPropsWithChildren<FormElement>;
+            [tagName]: FormProps & BaseElementPropsWithChildren<FormElement>;
         }
     }
 }
 
-export type { FormElement, FormProps };
+export type { FormBaseProps, FormElement, FormElementEvents, FormEvents, FormProps };

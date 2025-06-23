@@ -19,6 +19,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
     slot?: Lowercase<string>;
 }
 
+declare const tagName = "s-spinner";
 export interface SpinnerProps extends SpinnerProps$1 {
     size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
 }
@@ -26,13 +27,13 @@ export interface SpinnerElement extends SpinnerProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-spinner': SpinnerElement;
+        [tagName]: SpinnerElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-spinner': SpinnerProps & BaseElementProps<SpinnerElement>;
+            [tagName]: SpinnerProps & BaseElementProps<SpinnerElement>;
         }
     }
 }

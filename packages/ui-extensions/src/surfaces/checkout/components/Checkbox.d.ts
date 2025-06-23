@@ -18,23 +18,34 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface CheckboxProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'onChange' | 'required' | 'value'> {
+declare const tagName = "s-checkbox";
+export interface CheckboxBaseProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
 }
-export interface CheckboxElement extends Omit<CheckboxProps, 'onChange'>, Omit<HTMLElement, 'id' | 'onchange'> {
-    onchange: CheckboxProps['onChange'];
+export interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
+}
+export interface CheckboxElementEvents {
+    change?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface CheckboxElement extends CheckboxBaseProps, Omit<CheckboxEvents, 'onChange'>, Omit<HTMLElement, 'id' | 'onchange'> {
+    onchange: CheckboxEvents['onChange'];
+}
+export interface CheckboxProps extends CheckboxBaseProps, CheckboxEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-checkbox': CheckboxElement;
+        [tagName]: CheckboxElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-checkbox': CheckboxProps & BaseElementProps<CheckboxElement>;
+            [tagName]: CheckboxProps & BaseElementProps<CheckboxElement>;
         }
     }
 }
 
-export type { CheckboxElement, CheckboxProps };
+export type { CheckboxBaseProps, CheckboxElement, CheckboxElementEvents, CheckboxEvents, CheckboxProps };

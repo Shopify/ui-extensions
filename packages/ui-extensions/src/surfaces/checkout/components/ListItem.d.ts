@@ -25,19 +25,20 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
     children?: preact.ComponentChildren;
 }
 
+declare const tagName = "s-list-item";
 export interface ListItemProps extends Pick<ListItemProps$1, 'id'> {
 }
 export interface ListItemElement extends ListItemProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-list-item': ListItemElement;
+        [tagName]: ListItemElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-list-item': ListItemProps & BaseElementPropsWithChildren<ListItemElement>;
+            [tagName]: ListItemProps & BaseElementPropsWithChildren<ListItemElement>;
         }
     }
 }

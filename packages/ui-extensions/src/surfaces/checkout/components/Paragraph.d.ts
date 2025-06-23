@@ -25,6 +25,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
     children?: preact.ComponentChildren;
 }
 
+declare const tagName = "s-paragraph";
 export interface ParagraphProps extends Pick<ParagraphProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
@@ -33,13 +34,13 @@ export interface ParagraphElement extends ParagraphProps, Omit<HTMLElement, 'id'
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-paragraph': ParagraphElement;
+        [tagName]: ParagraphElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-paragraph': ParagraphProps & BaseElementPropsWithChildren<ParagraphElement>;
+            [tagName]: ParagraphProps & BaseElementPropsWithChildren<ParagraphElement>;
         }
     }
 }

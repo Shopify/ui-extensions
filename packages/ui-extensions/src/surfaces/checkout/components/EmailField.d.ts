@@ -18,26 +18,40 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface EmailFieldProps extends EmailFieldProps$1 {
+declare const tagName = "s-email-field";
+export interface EmailFieldBaseProps extends EmailFieldProps$1 {
 }
-export interface EmailFieldElement extends Omit<EmailFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
-    onblur: EmailFieldProps['onBlur'];
-    onchange: EmailFieldProps['onChange'];
-    onfocus: EmailFieldProps['onFocus'];
-    oninput: EmailFieldProps['onInput'];
+export interface EmailFieldEvents extends Pick<EmailFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
+}
+export interface EmailFieldElementEvents {
+    blur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    change?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    focus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    input?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface EmailFieldElement extends EmailFieldBaseProps, Omit<EmailFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+    onblur: EmailFieldEvents['onBlur'];
+    onchange: EmailFieldEvents['onChange'];
+    onfocus: EmailFieldEvents['onFocus'];
+    oninput: EmailFieldEvents['onInput'];
+}
+export interface EmailFieldProps extends EmailFieldBaseProps, EmailFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-email-field': EmailFieldElement;
+        [tagName]: EmailFieldElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-email-field': EmailFieldProps & BaseElementProps<EmailFieldElement>;
+            [tagName]: EmailFieldProps & BaseElementProps<EmailFieldElement>;
         }
     }
 }
 
-export type { EmailFieldElement, EmailFieldProps };
+export type { EmailFieldBaseProps, EmailFieldElement, EmailFieldElementEvents, EmailFieldEvents, EmailFieldProps };

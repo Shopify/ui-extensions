@@ -25,19 +25,20 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
     children?: preact.ComponentChildren;
 }
 
+declare const tagName = "s-unordered-list";
 export interface UnorderedListProps extends UnorderedListProps$1 {
 }
 export interface UnorderedListElement extends UnorderedListProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-unordered-list': UnorderedListElement;
+        [tagName]: UnorderedListElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-unordered-list': UnorderedListProps & BaseElementPropsWithChildren<UnorderedListElement>;
+            [tagName]: UnorderedListProps & BaseElementPropsWithChildren<UnorderedListElement>;
         }
     }
 }

@@ -12,7 +12,12 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'EmailFieldProps',
+      type: 'EmailFieldBaseProps',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'EmailFieldElementEvents',
     },
   ],
   defaultExample: {

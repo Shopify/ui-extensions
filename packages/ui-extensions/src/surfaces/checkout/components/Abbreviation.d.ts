@@ -25,19 +25,20 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
     children?: preact.ComponentChildren;
 }
 
+declare const tagName = "s-abbreviation";
 export interface AbbreviationProps extends Pick<AbbreviationProps$1, 'title'> {
 }
 export interface AbbreviationElement extends AbbreviationProps, Omit<HTMLElement, 'id' | 'title'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-abbreviation': AbbreviationElement;
+        [tagName]: AbbreviationElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-abbreviation': AbbreviationProps & BaseElementPropsWithChildren<AbbreviationElement>;
+            [tagName]: AbbreviationProps & BaseElementPropsWithChildren<AbbreviationElement>;
         }
     }
 }

@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
 import sharedContent from '../../../../docs/shared/components/Link';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -11,7 +12,12 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'LinkProps',
+      type: 'LinkBaseProps',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'LinkElementEvents',
     },
   ],
   defaultExample: {
@@ -32,8 +38,8 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-- Use links primarily for navigation and use buttons primarily for actions.
-- The HTML that renders for the \`s-button\` and \`s-link\` components includes style and accessibility information. Use these components intentionally and consistently to provide a more inclusive experience for assistive technology users and a more cohesive visual experience for sighted users.
+        - Use links primarily for navigation and use buttons primarily for actions.
+        - The HTML that renders for the \`s-button\` and \`s-link\` components includes style and accessibility information. Use these components intentionally and consistently to provide a more inclusive experience for assistive technology users and a more cohesive visual experience for sighted users.
       `,
     },
   ],

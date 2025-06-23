@@ -19,6 +19,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
     slot?: Lowercase<string>;
 }
 
+declare const tagName = "s-progress";
 export interface ProgressProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {
     tone?: Extract<ProgressProps$1['tone'], 'auto' | 'critical'>;
 }
@@ -26,13 +27,13 @@ export interface ProgressElement extends ProgressProps, Omit<HTMLElement, 'id'> 
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-progress': ProgressElement;
+        [tagName]: ProgressElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-progress': ProgressProps & BaseElementProps<ProgressElement>;
+            [tagName]: ProgressProps & BaseElementProps<ProgressElement>;
         }
     }
 }

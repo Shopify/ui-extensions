@@ -18,24 +18,36 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface DropZoneProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'onDropRejected' | 'onInput' | 'required'> {
+declare const tagName = "s-drop-zone";
+export interface DropZoneBaseProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required'> {
 }
-export interface DropZoneElement extends Omit<DropZoneProps, 'onDropRejected' | 'onInput'>, Omit<HTMLElement, 'id' | 'oninput'> {
-    ondroprejected: DropZoneProps['onDropRejected'];
-    oninput: DropZoneProps['onInput'];
+export interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput'> {
+}
+export interface DropZoneElementEvents {
+    droprejected?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    input?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface DropZoneElement extends DropZoneBaseProps, Omit<DropZoneEvents, 'onDropRejected' | 'onInput'>, Omit<HTMLElement, 'id' | 'oninput'> {
+    ondroprejected: DropZoneEvents['onDropRejected'];
+    oninput: DropZoneEvents['onInput'];
+}
+export interface DropZoneProps extends DropZoneBaseProps, DropZoneEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-drop-zone': DropZoneElement;
+        [tagName]: DropZoneElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-drop-zone': DropZoneProps & BaseElementProps<DropZoneElement>;
+            [tagName]: DropZoneProps & BaseElementProps<DropZoneElement>;
         }
     }
 }
 
-export type { DropZoneElement, DropZoneProps };
+export type { DropZoneBaseProps, DropZoneElement, DropZoneElementEvents, DropZoneEvents, DropZoneProps };

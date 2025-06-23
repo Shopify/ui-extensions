@@ -9,6 +9,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {PhoneFieldProps$1} from './components-shared.d.ts';
+import { ReactNode } from 'react';
 
 /**
  * Used when an element does not have children.
@@ -18,26 +19,46 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface PhoneFieldProps extends PhoneFieldProps$1 {
+declare const tagName = "s-phone-field";
+export interface PhoneFieldBaseProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'details' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value' | 'type'> {
 }
-export interface PhoneFieldElement extends Omit<PhoneFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
-    onblur: PhoneFieldProps['onBlur'];
-    onchange: PhoneFieldProps['onChange'];
-    onfocus: PhoneFieldProps['onFocus'];
-    oninput: PhoneFieldProps['onInput'];
+export interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
+}
+export interface PhoneFieldElementEvents {
+    blur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    change?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    focus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    input?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface PhoneFieldSlots extends Pick<PhoneFieldProps$1, 'accessory'> {
+    accessory?: ReactNode;
+}
+export interface PhoneFieldElementSlots {
+    accessory?: HTMLElement;
+}
+export interface PhoneFieldElement extends PhoneFieldBaseProps, PhoneFieldSlots, Omit<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+    onblur: PhoneFieldEvents['onBlur'];
+    onchange: PhoneFieldEvents['onChange'];
+    onfocus: PhoneFieldEvents['onFocus'];
+    oninput: PhoneFieldEvents['onInput'];
+}
+export interface PhoneFieldProps extends PhoneFieldBaseProps, PhoneFieldSlots, PhoneFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-phone-field': PhoneFieldElement;
+        [tagName]: PhoneFieldElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-phone-field': PhoneFieldProps & BaseElementProps<PhoneFieldElement>;
+            [tagName]: PhoneFieldProps & BaseElementProps<PhoneFieldElement>;
         }
     }
 }
 
-export type { PhoneFieldElement, PhoneFieldProps };
+export type { PhoneFieldBaseProps, PhoneFieldElement, PhoneFieldElementEvents, PhoneFieldElementSlots, PhoneFieldEvents, PhoneFieldProps, PhoneFieldSlots };

@@ -18,23 +18,34 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-export interface QRCodeProps extends QRCodeProps$1 {
+declare const tagName = "s-qr-code";
+export interface QRCodeBaseProps extends QRCodeProps$1 {
 }
-export interface QRCodelement extends Omit<QRCodeProps, 'onError'>, Omit<HTMLElement, 'id' | 'onerror'> {
-    onerror: QRCodeProps['onError'];
+export interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
+}
+export interface QRCodeElementEvents {
+    error?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface QRCodelement extends QRCodeBaseProps, Omit<QRCodeEvents, 'onError'>, Omit<HTMLElement, 'id' | 'onerror'> {
+    onerror: QRCodeEvents['onError'];
+}
+export interface QRCodeProps extends QRCodeBaseProps, QRCodeEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-qr-code': QRCodelement;
+        [tagName]: QRCodelement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-qr-code': QRCodeProps & BaseElementProps<QRCodelement>;
+            [tagName]: QRCodeProps & BaseElementProps<QRCodelement>;
         }
     }
 }
 
-export type { QRCodeProps, QRCodelement };
+export type { QRCodeBaseProps, QRCodeElementEvents, QRCodeEvents, QRCodeProps, QRCodelement };

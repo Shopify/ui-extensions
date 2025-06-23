@@ -25,19 +25,20 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
     children?: preact.ComponentChildren;
 }
 
+declare const tagName = "s-section";
 export interface SectionProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {
 }
 export interface SectionElement extends SectionProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-section': SectionElement;
+        [tagName]: SectionElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-section': SectionProps & BaseElementPropsWithChildren<SectionElement>;
+            [tagName]: SectionProps & BaseElementPropsWithChildren<SectionElement>;
         }
     }
 }
