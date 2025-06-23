@@ -1,16 +1,18 @@
 import {
   reactExtension,
   useApi,
-  Text,
   POSBlock,
   POSBlockRow,
+  Text,
 } from '@shopify/ui-extensions-react/point-of-sale';
-import type {DirectApiRequestBody} from '@shopify/ui-extensions-react/point-of-sale';
-import {useEffect, useState} from 'react';
+import type {DirectApiRequestBody} from '@shopify/ui-extensions/point-of-sale';
+import React, {useEffect, useState} from 'react';
 
+// This mutation requires the `write_products` access scope.
+// https://shopify.dev/docs/api/admin-graphql/latest/mutations/metafieldsset
 async function mutateMetafield(productId: number) {
   const requestBody: DirectApiRequestBody = {
-    query: `
+    query: `#graphql
         mutation MetafieldsSet($metafields: [MetafieldsSetInput!]!) {
           metafieldsSet(metafields: $metafields) {
             metafields {
@@ -41,9 +43,10 @@ async function mutateMetafield(productId: number) {
   });
 }
 
+// https://shopify.dev/docs/api/admin-graphql/latest/queries/product
 async function queryProductMetafields(productId: number) {
   const requestBody: DirectApiRequestBody = {
-    query: `
+    query: `#graphql
       query GetProduct($id: ID!) {
         product(id: $id) {
           id
@@ -71,7 +74,7 @@ async function queryProductMetafields(productId: number) {
 
 const ProductDetailsBlock = () => {
   const {product} = useApi<'pos.product-details.block.render'>();
-  const [productInfo, setProductInfo] = useState<any>();
+  const [productInfo, setProductInfo] = useState<string>('');
   useEffect(() => {
     async function getProductInfo() {
       const result = await queryProductMetafields(product.id);
