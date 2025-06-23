@@ -47,6 +47,34 @@ export interface ExtensionTargets {
     ActionTargetApi<'pos.home.modal.render'> & CartApi,
     BasicComponents
   >;
+  'pos.return.post.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.return.post.action.menu-item.render'> &
+      ActionApi &
+      OrderApi,
+    ActionComponents
+  >;
+  'pos.return.post.action.render': RenderExtension<
+    ActionTargetApi<'pos.return.post.action.render'> & OrderApi,
+    BasicComponents
+  >;
+  'pos.return.post.block.render': RenderExtension<
+    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,
+    BlockComponents
+  >;
+  'pos.exchange.post.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.exchange.post.action.menu-item.render'> &
+      ActionApi &
+      OrderApi,
+    ActionComponents
+  >;
+  'pos.exchange.post.action.render': RenderExtension<
+    ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,
+    BasicComponents
+  >;
+  'pos.exchange.post.block.render': RenderExtension<
+    StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,
+    BlockComponents
+  >;
   'pos.purchase.post.action.menu-item.render': RenderExtension<
     StandardApi<'pos.purchase.post.action.menu-item.render'> &
       ActionApi &
