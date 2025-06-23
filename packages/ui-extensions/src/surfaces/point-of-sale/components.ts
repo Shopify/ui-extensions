@@ -23,11 +23,6 @@ export {Dialog} from './render/components/Dialog/Dialog';
 export type {DialogProps, DialogType} from './render/components/Dialog/Dialog';
 export {EmailField} from './render/components/EmailField/EmailField';
 export type {EmailFieldProps} from './render/components/EmailField/EmailField';
-export {FormattedTextField} from './render/components/FormattedTextField/FormattedTextField';
-export type {
-  FormattedTextFieldProps,
-  InputType,
-} from './render/components/FormattedTextField/FormattedTextField';
 export {Icon} from './render/components/Icon/Icon';
 export type {
   IconProps,
@@ -134,7 +129,6 @@ export type {TimeFieldProps} from './render/components/TimeField/TimeField';
 export {TimePicker} from './render/components/TimePicker/TimePicker';
 export type {TimePickerProps} from './render/components/TimePicker/TimePicker';
 export type {BaseTextFieldProps} from './render/components/shared/BaseTextField';
-export type {AutoCapitalizationType} from './render/components/shared/auto-capitalization-type';
 export type {
   InputAction,
   InputProps,
