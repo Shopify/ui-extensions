@@ -12,8 +12,7 @@ import type {
 import type {RenderExtension} from './extension';
 import type {Components} from './shared';
 import type {AnyComponentBuilder} from '../../shared';
-import type {ReprintReceiptData} from './event/data/ReprintReceiptData';
-import type {TransactionCompleteData} from './event/data/TransactionCompleteData';
+import type {TransactionCompleteWithReprintData} from './event/data/TransactionCompleteData';
 import {StorageApi} from './render/api/storage-api/storage-api';
 
 type SmartGridComponents = AnyComponentBuilder<Pick<Components, 'Tile'>>;
@@ -155,8 +154,7 @@ export interface ExtensionTargets {
   'pos.receipt-footer.block.render': RenderExtension<
     // NOTE: key/any type is cause of no arg useApi() that includes all target types.
     //   stop using useApi() with no args, instead specify the target type explicitly.
-    {[key: string]: any} & StorageApi &
-      (TransactionCompleteData | {transaction: ReprintReceiptData}),
+    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,
     ReceiptComponents
   >;
 }
