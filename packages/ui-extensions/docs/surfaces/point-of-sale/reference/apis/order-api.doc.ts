@@ -14,6 +14,12 @@ The Order API provides an extension with data about the current order.
 - ${TargetLink.PosPurchasePostActionMenuItemRender}
 - ${TargetLink.PosPurchasePostActionRender}
 - ${TargetLink.PosPurchasePostBlockRender}
+- ${TargetLink.PosReturnPostActionMenuItemRender}
+- ${TargetLink.PosReturnPostActionRender}
+- ${TargetLink.PosReturnPostBlockRender}
+- ${TargetLink.PosExchangePostActionMenuItemRender}
+- ${TargetLink.PosExchangePostActionRender}
+- ${TargetLink.PosExchangePostBlockRender}
 - ${TargetLink.PosOrderDetailsActionMenuItemRender}
 - ${TargetLink.PosOrderDetailsActionRender}
 - ${TargetLink.PosOrderDetailsBlockRender}
