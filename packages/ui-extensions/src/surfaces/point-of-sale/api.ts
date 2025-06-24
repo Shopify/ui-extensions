@@ -7,6 +7,8 @@ export type {
 
 export type {CartLineItemApi} from './render/api/cart-line-item-api/cart-line-item-api';
 
+export type {DrawerApi} from './render/api/drawer-api/drawer-api';
+
 export type {
   ActionApi,
   ActionApiContent,

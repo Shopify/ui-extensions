@@ -4,6 +4,7 @@ import type {
   ActionTargetApi,
   CartApi,
   CartLineItemApi,
+  DrawerApi,
   CustomerApi,
   DraftOrderApi,
   ProductApi,
@@ -152,6 +153,34 @@ export interface ExtensionTargets {
       CartLineItemApi,
     BasicComponents
   >;
+  'pos.cart.line-item-details.block.render': RenderExtension<
+    StandardApi<'pos.cart.line-item-details.block.render'> &
+      ActionApi &
+      CartApi &
+      CartLineItemApi,
+    BlockComponents
+  >;
+  'pos.drawer-details.action.menu-item.render': RenderExtension<
+    StandardApi<'pos.drawer-details.action.menu-item.render'> &
+      ActionApi &
+      CartApi &
+      DrawerApi,
+    ActionComponents
+  >;
+  'pos.drawer-details.action.render': RenderExtension<
+    ActionTargetApi<'pos.drawer-details.action.render'> &
+      ActionApi &
+      CartApi &
+      DrawerApi,
+    BasicComponents
+  >;
+  'pos.drawer-details.block.render': RenderExtension<
+    StandardApi<'pos.drawer-details.block.render'> &
+      ActionApi &
+      CartApi &
+      DrawerApi,
+    BlockComponents
+  >;
   'pos.receipt-footer.block.render': RenderExtension<
     // NOTE: key/any type is cause of no arg useApi() that includes all target types.
     //   stop using useApi() with no args, instead specify the target type explicitly.
@@ -168,14 +197,14 @@ export type ExtensionForExtensionTarget<T extends ExtensionTarget> =
 
 /**
  * For a given extension target, returns the value that is expected to be
- * returned by that extension target’s callback type.
+ * returned by that extension target's callback type.
  */
 export type ReturnTypeForExtension<ID extends keyof ExtensionTargets> =
   ReturnType<ExtensionTargets[ID]>;
 
 /**
  * For a given extension target, returns the tuple of arguments that would
- * be provided to that extension target’s callback type.
+ * be provided to that extension target's callback type.
  */
 export type ArgumentsForExtension<ID extends keyof ExtensionTargets> =
   Parameters<ExtensionTargets[ID]>;
@@ -196,7 +225,7 @@ export type RenderExtensionTarget = {
 }[keyof ExtensionTargets];
 
 /**
- * A mapping of each “render extension” name to its callback type.
+ * A mapping of each "render extension" name to its callback type.
  */
 export type RenderExtensions = {
   [ID in RenderExtensionTarget]: ExtensionTargets[ID];
