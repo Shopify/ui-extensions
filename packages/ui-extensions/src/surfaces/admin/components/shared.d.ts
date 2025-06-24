@@ -1,4 +1,4 @@
-/** VERSION: 1.1.0 **/
+/** VERSION: 1.1.1 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -113,6 +113,8 @@ declare const privateIconArray: readonly [
   'camera',
   'caret-down',
   'caret-up',
+  'caret-left',
+  'caret-right',
   'cart-abandoned',
   'cart-discount',
   'cart-down',
@@ -3090,6 +3092,26 @@ interface TextFieldProps$1
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
+interface ThumbnailProps$1 extends GlobalProps, BaseImageProps {
+  /**
+   * Invoked when load of provided image completes successfully.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+   */
+  onLoad?: () => void;
+  /**
+   * Invoked on load error of provided image.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+   */
+  onError?: () => void;
+  /**
+   * Adjusts the size the product thumbnail image.
+   *
+   * @default 'base'
+   */
+  size?: SizeKeyword;
+}
 interface UnorderedListProps$1 extends GlobalProps {}
 interface URLFieldProps$1
   extends GlobalProps,
@@ -3151,6 +3173,8 @@ type IconType$1 =
   | 'camera'
   | 'camera-flip'
   | 'caret-down'
+  | 'caret-left'
+  | 'caret-right'
   | 'caret-up'
   | 'cart'
   | 'cart-abandoned'

@@ -1,4 +1,4 @@
-/** VERSION: 1.1.0 **/
+/** VERSION: 1.1.1 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -115,6 +115,8 @@ declare const privateIconArray: readonly [
   'camera',
   'caret-down',
   'caret-up',
+  'caret-left',
+  'caret-right',
   'cart-abandoned',
   'cart-discount',
   'cart-down',
@@ -3092,6 +3094,26 @@ interface TextFieldProps$1
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
+interface ThumbnailProps$1 extends GlobalProps, BaseImageProps {
+  /**
+   * Invoked when load of provided image completes successfully.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+   */
+  onLoad?: () => void;
+  /**
+   * Invoked on load error of provided image.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+   */
+  onError?: () => void;
+  /**
+   * Adjusts the size the product thumbnail image.
+   *
+   * @default 'base'
+   */
+  size?: SizeKeyword;
+}
 interface UnorderedListProps$1 extends GlobalProps {}
 interface URLFieldProps$1
   extends GlobalProps,
@@ -3153,6 +3175,8 @@ type IconType$1 =
   | 'camera'
   | 'camera-flip'
   | 'caret-down'
+  | 'caret-left'
+  | 'caret-right'
   | 'caret-up'
   | 'cart'
   | 'cart-abandoned'
@@ -3915,18 +3939,18 @@ declare class Badge extends PreactCustomElement implements BadgeProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$N]: Badge;
+    [tagName$O]: Badge;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$N]: BadgeJSXProps & PreactBaseElementPropsWithChildren<Badge>;
+      [tagName$O]: BadgeJSXProps & PreactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
 
-declare const tagName$N = 's-badge';
+declare const tagName$O = 's-badge';
 export interface BadgeJSXProps
   extends Partial<BadgeProps>,
     Pick<BadgeProps$1, 'id'> {}
@@ -3952,19 +3976,19 @@ declare class Banner extends PreactCustomElement implements BannerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$M]: Banner;
+    [tagName$N]: Banner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$M]: Omit<BannerJSXProps, 'secondaryActions'> &
+      [tagName$N]: Omit<BannerJSXProps, 'secondaryActions'> &
         PreactBaseElementPropsWithChildren<Banner>;
     }
   }
 }
 
-declare const tagName$M = 's-banner';
+declare const tagName$N = 's-banner';
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id'> {
@@ -3974,8 +3998,8 @@ export interface BannerJSXProps
    * A maximum of two `s-button` components are allowed, and only buttons with the `variant` of "secondary" are permitted.
    */
   secondaryActions?: ComponentChild;
-  onDismiss?: ((event: CallbackEvent<typeof tagName$M>) => void) | null;
-  onAfterHide?: ((event: CallbackEvent<typeof tagName$M>) => void) | null;
+  onDismiss?: ((event: CallbackEvent<typeof tagName$N>) => void) | null;
+  onAfterHide?: ((event: CallbackEvent<typeof tagName$N>) => void) | null;
 }
 
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -4208,18 +4232,18 @@ declare class Box extends BoxElement implements BoxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$L]: Box;
+    [tagName$M]: Box;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$L]: BoxJSXProps & PreactBaseElementPropsWithChildren<Box>;
+      [tagName$M]: BoxJSXProps & PreactBaseElementPropsWithChildren<Box>;
     }
   }
 }
 
-declare const tagName$L = 's-box';
+declare const tagName$M = 's-box';
 export interface BoxJSXProps
   extends Partial<BoxProps>,
     Pick<BoxProps$1, 'id'> {}
@@ -4293,24 +4317,24 @@ declare class Button extends Button_base implements ButtonProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$K]: Button;
+    [tagName$L]: Button;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$K]: ButtonJSXProps & PreactBaseElementPropsWithChildren<Button>;
+      [tagName$L]: ButtonJSXProps & PreactBaseElementPropsWithChildren<Button>;
     }
   }
 }
 
-declare const tagName$K = 's-button';
+declare const tagName$L = 's-button';
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
     Pick<ButtonProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
+  onClick?: ((event: CallbackEvent<typeof tagName$L>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$L>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$L>) => void) | null;
 }
 
 declare const internals$2: unique symbol;
@@ -4384,24 +4408,24 @@ declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$J]: Checkbox;
+    [tagName$K]: Checkbox;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$J]: CheckboxJSXProps &
+      [tagName$K]: CheckboxJSXProps &
         PreactBaseElementPropsWithChildren<Checkbox>;
     }
   }
 }
 
-declare const tagName$J = 's-checkbox';
+declare const tagName$K = 's-checkbox';
 export interface CheckboxJSXProps
   extends Partial<CheckboxProps>,
     Pick<CheckboxProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$J>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$J>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$K>) => void) | null;
 }
 
 export interface ChoiceProps
@@ -4431,18 +4455,18 @@ declare class Choice extends PreactCustomElement implements ChoiceProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$I]: Choice;
+    [tagName$J]: Choice;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$I]: ChoiceJSXProps & PreactBaseElementPropsWithChildren<Choice>;
+      [tagName$J]: ChoiceJSXProps & PreactBaseElementPropsWithChildren<Choice>;
     }
   }
 }
 
-declare const tagName$I = 's-choice';
+declare const tagName$J = 's-choice';
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
     Pick<ChoiceProps$1, 'id'> {}
@@ -4489,24 +4513,24 @@ declare class ChoiceList extends BaseClass$1 implements ChoiceListProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$H]: ChoiceList;
+    [tagName$I]: ChoiceList;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$H]: ChoiceListJSXProps &
+      [tagName$I]: ChoiceListJSXProps &
         PreactBaseElementPropsWithChildren<ChoiceList>;
     }
   }
 }
 
-declare const tagName$H = 's-choice-list';
+declare const tagName$I = 's-choice-list';
 export interface ChoiceListJSXProps
   extends Partial<ChoiceListProps>,
     Pick<ChoiceListProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$H>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$H>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$I>) => void) | null;
 }
 
 export type ClickableBaseProps = Required<
@@ -4543,25 +4567,25 @@ declare class Clickable extends Clickable_base implements ClickableProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$G]: Clickable;
+    [tagName$H]: Clickable;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$G]: ClickableJSXProps &
+      [tagName$H]: ClickableJSXProps &
         PreactBaseElementPropsWithChildren<Clickable>;
     }
   }
 }
 
-declare const tagName$G = 's-clickable';
+declare const tagName$H = 's-clickable';
 export interface ClickableJSXProps
   extends Partial<ClickableProps>,
     Pick<ClickableProps$1, 'id'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
+  onClick?: ((event: CallbackEvent<typeof tagName$H>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$H>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$H>) => void) | null;
 }
 
 export interface DatePickerProps
@@ -4617,7 +4641,7 @@ declare class DatePicker extends BaseClass implements DatePickerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$F]: DatePicker;
+    [tagName$G]: DatePicker;
   }
   interface HTMLElementEventMap {
     viewchange: ViewChangeEvent;
@@ -4626,27 +4650,27 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$F]: DatePickerJSXProps & PreactBaseElementProps<DatePicker>;
+      [tagName$G]: DatePickerJSXProps & PreactBaseElementProps<DatePicker>;
     }
   }
 }
 
-declare const tagName$F = 's-date-picker';
+declare const tagName$G = 's-date-picker';
 export interface DatePickerJSXProps
   extends Partial<DatePickerProps>,
     Pick<DatePickerProps$1, 'id'> {
   onViewChange?:
     | ((
         event: CallbackEvent<
-          typeof tagName$F,
+          typeof tagName$G,
           HTMLElementEventMap['viewchange']
         >,
       ) => void)
     | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$G>) => void) | null;
 }
 
 export interface DividerProps
@@ -4662,18 +4686,18 @@ declare class Divider extends PreactCustomElement implements DividerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$E]: Divider;
+    [tagName$F]: Divider;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$E]: DividerJSXProps & PreactBaseElementProps<Divider>;
+      [tagName$F]: DividerJSXProps & PreactBaseElementProps<Divider>;
     }
   }
 }
 
-declare const tagName$E = 's-divider';
+declare const tagName$F = 's-divider';
 export interface DividerJSXProps
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}
@@ -4771,22 +4795,22 @@ declare class EmailField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$D]: EmailField;
+    [tagName$E]: EmailField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$D]: EmailFieldJSXProps & PreactBaseElementProps<EmailField>;
+      [tagName$E]: EmailFieldJSXProps & PreactBaseElementProps<EmailField>;
     }
   }
 }
 
-declare const tagName$D = 's-email-field';
+declare const tagName$E = 's-email-field';
 export interface EmailFieldJSXProps
   extends Partial<Omit<EmailFieldProps, 'accessory'>>,
     Pick<EmailFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$D> {}
+    FieldReactProps<typeof tagName$E> {}
 
 export type RequiredAlignedProps = Required<GridProps$1>;
 export type ResponsiveGridProps = MakeResponsivePick<
@@ -4859,18 +4883,18 @@ declare class Grid extends BoxElement implements GridProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$C]: Grid;
+    [tagName$D]: Grid;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$C]: GridJSXProps & PreactBaseElementPropsWithChildren<Grid>;
+      [tagName$D]: GridJSXProps & PreactBaseElementPropsWithChildren<Grid>;
     }
   }
 }
 
-declare const tagName$C = 's-grid';
+declare const tagName$D = 's-grid';
 export interface GridJSXProps
   extends Partial<GridProps>,
     Pick<GridProps$1, 'id'> {}
@@ -4890,19 +4914,19 @@ declare class GridItem extends BoxElement implements GridItemProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$B]: GridItem;
+    [tagName$C]: GridItem;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$B]: GridItemJSXProps &
+      [tagName$C]: GridItemJSXProps &
         PreactBaseElementPropsWithChildren<GridItem>;
     }
   }
 }
 
-declare const tagName$B = 's-grid-item';
+declare const tagName$C = 's-grid-item';
 export interface GridItemJSXProps
   extends Partial<GridItemProps>,
     Pick<GridItemProps$1, 'id'> {}
@@ -4926,19 +4950,19 @@ declare class Heading extends PreactCustomElement implements HeadingProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$A]: Heading;
+    [tagName$B]: Heading;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$A]: HeadingJSXProps &
+      [tagName$B]: HeadingJSXProps &
         PreactBaseElementPropsWithChildren<Heading>;
     }
   }
 }
 
-declare const tagName$A = 's-heading';
+declare const tagName$B = 's-heading';
 export interface HeadingJSXProps
   extends Partial<HeadingProps>,
     Pick<HeadingProps$1, 'id'> {}
@@ -4952,18 +4976,18 @@ declare class Icon extends PreactCustomElement implements IconProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$z]: Icon;
+    [tagName$A]: Icon;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$z]: IconJSXProps & PreactBaseElementProps<Icon>;
+      [tagName$A]: IconJSXProps & PreactBaseElementProps<Icon>;
     }
   }
 }
 
-declare const tagName$z = 's-icon';
+declare const tagName$A = 's-icon';
 export interface IconJSXProps
   extends Partial<IconProps>,
     Pick<IconProps$1, 'id'> {}
@@ -5019,23 +5043,23 @@ declare class Image extends PreactCustomElement implements ImageProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$y]: Image;
+    [tagName$z]: Image;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$y]: ImageJSXProps & PreactBaseElementProps<Image>;
+      [tagName$z]: ImageJSXProps & PreactBaseElementProps<Image>;
     }
   }
 }
 
-declare const tagName$y = 's-image';
+declare const tagName$z = 's-image';
 export interface ImageJSXProps
   extends Partial<ImageProps>,
     Pick<ImageProps$1, 'id'> {
-  onError?: ((event: CallbackEvent<typeof tagName$y>) => void) | null;
-  onLoad?: ((event: CallbackEvent<typeof tagName$y>) => void) | null;
+  onError?: ((event: CallbackEvent<typeof tagName$z>) => void) | null;
+  onLoad?: ((event: CallbackEvent<typeof tagName$z>) => void) | null;
 }
 
 export type RequiredLinkProps = Required<LinkProps$1>;
@@ -5076,22 +5100,22 @@ declare class Link extends Link_base implements LinkProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$x]: Link;
+    [tagName$y]: Link;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$x]: LinkJSXProps & PreactBaseElementPropsWithChildren<Link>;
+      [tagName$y]: LinkJSXProps & PreactBaseElementPropsWithChildren<Link>;
     }
   }
 }
 
-declare const tagName$x = 's-link';
+declare const tagName$y = 's-link';
 export interface LinkJSXProps
   extends Partial<LinkProps>,
     Pick<LinkProps$1, 'id' | 'lang'> {
-  onClick?: ((event: CallbackEvent<typeof tagName$x>) => void) | null;
+  onClick?: ((event: CallbackEvent<typeof tagName$y>) => void) | null;
 }
 
 export interface ListItemProps extends ListItemProps$1 {}
@@ -5101,19 +5125,19 @@ declare class ListItem extends PreactCustomElement implements ListItemProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$w]: ListItem;
+    [tagName$x]: ListItem;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$w]: ListItemJSXProps &
+      [tagName$x]: ListItemJSXProps &
         PreactBaseElementPropsWithChildren<ListItem>;
     }
   }
 }
 
-declare const tagName$w = 's-list-item';
+declare const tagName$x = 's-list-item';
 export interface ListItemJSXProps
   extends Partial<ListItemProps>,
     Pick<ListItemProps$1, 'id'> {}
@@ -5139,21 +5163,21 @@ declare class MoneyField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$v]: MoneyField;
+    [tagName$w]: MoneyField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$v]: MoneyFieldJSXProps & PreactBaseElementProps<MoneyField>;
+      [tagName$w]: MoneyFieldJSXProps & PreactBaseElementProps<MoneyField>;
     }
   }
 }
 
-declare const tagName$v = 's-money-field';
+declare const tagName$w = 's-money-field';
 export interface MoneyFieldJSXProps
   extends Partial<MoneyFieldProps>,
-    FieldReactProps<typeof tagName$v>,
+    FieldReactProps<typeof tagName$w>,
     Pick<MoneyFieldProps$1, 'id'> {}
 
 export interface NumberFieldProps
@@ -5186,22 +5210,22 @@ declare class NumberField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$u]: NumberField;
+    [tagName$v]: NumberField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$u]: NumberFieldJSXProps & PreactBaseElementProps<NumberField>;
+      [tagName$v]: NumberFieldJSXProps & PreactBaseElementProps<NumberField>;
     }
   }
 }
 
-declare const tagName$u = 's-number-field';
+declare const tagName$v = 's-number-field';
 export interface NumberFieldJSXProps
   extends Partial<NumberFieldProps>,
     Pick<NumberFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$u> {}
+    FieldReactProps<typeof tagName$v> {}
 
 export interface OptionProps
   extends Required<
@@ -5217,18 +5241,18 @@ declare class Option extends PreactCustomElement implements OptionProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$t]: Option;
+    [tagName$u]: Option;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$t]: OptionJSXProps & PreactBaseElementPropsWithChildren<Option>;
+      [tagName$u]: OptionJSXProps & PreactBaseElementPropsWithChildren<Option>;
     }
   }
 }
 
-declare const tagName$t = 's-option';
+declare const tagName$u = 's-option';
 export interface OptionJSXProps extends Partial<OptionProps> {}
 
 export interface OptionGroupProps
@@ -5244,19 +5268,19 @@ declare class OptionGroup
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$s]: OptionGroup;
+    [tagName$t]: OptionGroup;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$s]: OptionGroupJSXProps &
+      [tagName$t]: OptionGroupJSXProps &
         PreactBaseElementPropsWithChildren<OptionGroup>;
     }
   }
 }
 
-declare const tagName$s = 's-option-group';
+declare const tagName$t = 's-option-group';
 export interface OptionGroupJSXProps extends Partial<OptionGroupProps> {}
 
 export interface OrderedListProps extends OrderedListProps$1 {}
@@ -5269,19 +5293,19 @@ declare class OrderedList
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$r]: OrderedList;
+    [tagName$s]: OrderedList;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$r]: OrderedListJSXProps &
+      [tagName$s]: OrderedListJSXProps &
         PreactBaseElementPropsWithChildren<OrderedList>;
     }
   }
 }
 
-declare const tagName$r = 's-ordered-list';
+declare const tagName$s = 's-ordered-list';
 export interface OrderedListJSXProps
   extends Partial<OrderedListProps>,
     Pick<OrderedListProps$1, 'id'> {}
@@ -5298,19 +5322,19 @@ declare class Page extends PreactCustomElement implements PageProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$q]: Page;
+    [tagName$r]: Page;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$q]: Omit<PageJSXProps, 'aside'> &
+      [tagName$r]: Omit<PageJSXProps, 'aside'> &
         PreactBaseElementPropsWithChildren<Page>;
     }
   }
 }
 
-declare const tagName$q = 's-page';
+declare const tagName$r = 's-page';
 export interface PageJSXProps extends Partial<PageProps> {
   /**
    * The content to display in the aside section of the page.
@@ -5351,19 +5375,19 @@ declare class Paragraph extends PreactCustomElement implements ParagraphProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$p]: Paragraph;
+    [tagName$q]: Paragraph;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$p]: ParagraphJSXProps &
+      [tagName$q]: ParagraphJSXProps &
         PreactBaseElementPropsWithChildren<Paragraph>;
     }
   }
 }
 
-declare const tagName$p = 's-paragraph';
+declare const tagName$q = 's-paragraph';
 export interface ParagraphJSXProps
   extends Partial<ParagraphProps>,
     Pick<ParagraphProps$1, 'id'> {}
@@ -5400,23 +5424,23 @@ declare class PasswordField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$o]: PasswordField;
+    [tagName$p]: PasswordField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: PasswordFieldJSXProps &
+      [tagName$p]: PasswordFieldJSXProps &
         PreactBaseElementProps<PasswordField>;
     }
   }
 }
 
-declare const tagName$o = 's-password-field';
+declare const tagName$p = 's-password-field';
 export interface PasswordFieldJSXProps
   extends Partial<PasswordFieldProps>,
     Pick<PasswordFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$o> {}
+    FieldReactProps<typeof tagName$p> {}
 
 export interface QueryContainerProps
   extends Required<Pick<QueryContainerProps$1, 'id' | 'containerName'>> {}
@@ -5432,13 +5456,13 @@ declare class QueryContainer
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$n]: QueryContainer;
+    [tagName$o]: QueryContainer;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$n]: Omit<
+      [tagName$o]: Omit<
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
       > &
@@ -5447,7 +5471,7 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$n = 's-query-container';
+declare const tagName$o = 's-query-container';
 export interface QueryContainerJSXProps
   extends Partial<QueryContainerProps$1>,
     Pick<QueryContainerProps$1, 'id'> {}
@@ -5487,22 +5511,22 @@ declare class SearchField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$m]: SearchField;
+    [tagName$n]: SearchField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$m]: SearchFieldJSXProps & PreactBaseElementProps<SearchField>;
+      [tagName$n]: SearchFieldJSXProps & PreactBaseElementProps<SearchField>;
     }
   }
 }
 
-declare const tagName$m = 's-search-field';
+declare const tagName$n = 's-search-field';
 export interface SearchFieldJSXProps
   extends Partial<SearchFieldProps>,
     Pick<TextFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$m> {}
+    FieldReactProps<typeof tagName$n> {}
 
 export type RequiredSectionProps = Required<SectionProps$1>;
 export interface SectionProps
@@ -5525,19 +5549,19 @@ declare class Section extends PreactCustomElement implements SectionProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$l]: Section;
+    [tagName$m]: Section;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$l]: SectionJSXProps &
+      [tagName$m]: SectionJSXProps &
         PreactBaseElementPropsWithChildren<Section>;
     }
   }
 }
 
-declare const tagName$l = 's-section';
+declare const tagName$m = 's-section';
 export interface SectionJSXProps
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id'> {}
@@ -5594,23 +5618,23 @@ declare class Select extends PreactInputElement implements SelectProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$k]: Select;
+    [tagName$l]: Select;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$k]: SelectJSXProps & PreactBaseElementPropsWithChildren<Select>;
+      [tagName$l]: SelectJSXProps & PreactBaseElementPropsWithChildren<Select>;
     }
   }
 }
 
-declare const tagName$k = 's-select';
+declare const tagName$l = 's-select';
 export interface SelectJSXProps extends Partial<SelectProps> {
-  onChange?: (event: CallbackEvent<typeof tagName$k>) => void;
-  onInput?: (event: CallbackEvent<typeof tagName$k>) => void;
-  onBlur?: (event: CallbackEvent<typeof tagName$k>) => void;
-  onFocus?: (event: CallbackEvent<typeof tagName$k>) => void;
+  onChange?: (event: CallbackEvent<typeof tagName$l>) => void;
+  onInput?: (event: CallbackEvent<typeof tagName$l>) => void;
+  onBlur?: (event: CallbackEvent<typeof tagName$l>) => void;
+  onFocus?: (event: CallbackEvent<typeof tagName$l>) => void;
 }
 
 export interface SpinnerProps
@@ -5625,18 +5649,18 @@ declare class Spinner extends PreactCustomElement implements SpinnerProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$j]: Spinner;
+    [tagName$k]: Spinner;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$j]: SpinnerJSXProps & PreactBaseElementProps<Spinner>;
+      [tagName$k]: SpinnerJSXProps & PreactBaseElementProps<Spinner>;
     }
   }
 }
 
-declare const tagName$j = 's-spinner';
+declare const tagName$k = 's-spinner';
 export interface SpinnerJSXProps
   extends Partial<SpinnerProps>,
     Pick<SpinnerProps$1, 'id'> {}
@@ -5710,18 +5734,18 @@ declare class Stack extends BoxElement implements StackProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$i]: Stack;
+    [tagName$j]: Stack;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$i]: StackJSXProps & PreactBaseElementPropsWithChildren<Stack>;
+      [tagName$j]: StackJSXProps & PreactBaseElementPropsWithChildren<Stack>;
     }
   }
 }
 
-declare const tagName$i = 's-stack';
+declare const tagName$j = 's-stack';
 export interface StackJSXProps
   extends Partial<StackProps>,
     Pick<StackProps$1, 'id'> {}
@@ -5736,23 +5760,23 @@ declare class Switch extends PreactCheckboxElement implements SwitchProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$h]: Switch;
+    [tagName$i]: Switch;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: SwitchJSXProps & PreactBaseElementProps<Switch>;
+      [tagName$i]: SwitchJSXProps & PreactBaseElementProps<Switch>;
     }
   }
 }
 
-declare const tagName$h = 's-switch';
+declare const tagName$i = 's-switch';
 export interface SwitchJSXProps
   extends Partial<SwitchProps>,
     Pick<SwitchProps$1, 'id'> {
-  onChange?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
-  onInput?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$i>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$i>) => void) | null;
 }
 
 export interface TableProps
@@ -5805,19 +5829,19 @@ declare class Table extends PreactCustomElement implements TableProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$g]: Table;
+    [tagName$h]: Table;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: Omit<TableJSXProps, 'filters'> &
+      [tagName$h]: Omit<TableJSXProps, 'filters'> &
         PreactBaseElementPropsWithChildren<Table>;
     }
   }
 }
 
-declare const tagName$g = 's-table';
+declare const tagName$h = 's-table';
 export interface TableJSXProps
   extends Partial<TableProps>,
     Pick<TableProps$1, 'id' | 'onNextPage' | 'onPreviousPage'> {
@@ -5834,19 +5858,19 @@ declare class TableBody extends PreactCustomElement implements TableBodyProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: TableBody;
+    [tagName$g]: TableBody;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: TableBodyJSXProps &
+      [tagName$g]: TableBodyJSXProps &
         PreactBaseElementPropsWithChildren<TableBody>;
     }
   }
 }
 
-declare const tagName$f = 's-table-body';
+declare const tagName$g = 's-table-body';
 export interface TableBodyJSXProps
   extends Partial<TableBodyProps>,
     Pick<TableBodyProps$1, 'id'> {}
@@ -5858,19 +5882,19 @@ declare class TableCell extends PreactCustomElement implements TableCellProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: TableCell;
+    [tagName$f]: TableCell;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: TableCellJSXProps &
+      [tagName$f]: TableCellJSXProps &
         PreactBaseElementPropsWithChildren<TableCell>;
     }
   }
 }
 
-declare const tagName$e = 's-table-cell';
+declare const tagName$f = 's-table-cell';
 export interface TableCellJSXProps
   extends Partial<TableCellProps>,
     Pick<TableCellProps$1, 'id'> {}
@@ -5884,19 +5908,19 @@ declare class TableHeader
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: TableHeader;
+    [tagName$e]: TableHeader;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: TableHeaderJSXProps &
+      [tagName$e]: TableHeaderJSXProps &
         PreactBaseElementPropsWithChildren<TableHeader>;
     }
   }
 }
 
-declare const tagName$d = 's-table-header';
+declare const tagName$e = 's-table-header';
 export interface TableHeaderJSXProps
   extends Partial<TableHeaderProps>,
     Pick<TableHeaderProps$1, 'id'> {}
@@ -5914,19 +5938,19 @@ declare class TableHeaderRow
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: TableHeaderRow;
+    [tagName$d]: TableHeaderRow;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: TableHeaderRowJSXProps &
+      [tagName$d]: TableHeaderRowJSXProps &
         PreactBaseElementPropsWithChildren<TableHeaderRow>;
     }
   }
 }
 
-declare const tagName$c = 's-table-header-row';
+declare const tagName$d = 's-table-header-row';
 export interface TableHeaderRowJSXProps
   extends Partial<TableHeaderRowProps>,
     Pick<TableHeaderRowProps$1, 'id'> {}
@@ -5938,19 +5962,19 @@ declare class TableRow extends PreactCustomElement implements TableRowProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: TableRow;
+    [tagName$c]: TableRow;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: TableRowJSXProps &
+      [tagName$c]: TableRowJSXProps &
         PreactBaseElementPropsWithChildren<TableRow>;
     }
   }
 }
 
-declare const tagName$b = 's-table-row';
+declare const tagName$c = 's-table-row';
 export interface TableRowJSXProps
   extends Partial<TableRowProps>,
     Pick<TableRowProps$1, 'id'> {}
@@ -5993,18 +6017,18 @@ declare class Text extends PreactCustomElement implements TextProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$a]: Text;
+    [tagName$b]: Text;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$a]: TextJSXProps & PreactBaseElementPropsWithChildren<Text>;
+      [tagName$b]: TextJSXProps & PreactBaseElementPropsWithChildren<Text>;
     }
   }
 }
 
-declare const tagName$a = 's-text';
+declare const tagName$b = 's-text';
 export interface TextJSXProps
   extends Partial<TextProps>,
     Pick<TextProps$1, 'id'> {}
@@ -6025,22 +6049,22 @@ declare class TextArea
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$9]: TextArea;
+    [tagName$a]: TextArea;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$9]: TextAreaJSXProps & PreactBaseElementProps<TextArea>;
+      [tagName$a]: TextAreaJSXProps & PreactBaseElementProps<TextArea>;
     }
   }
 }
 
-declare const tagName$9 = 's-text-area';
+declare const tagName$a = 's-text-area';
 export interface TextAreaJSXProps
   extends Partial<TextAreaProps>,
     Pick<TextAreaProps$1, 'id'>,
-    FieldReactProps<typeof tagName$9> {}
+    FieldReactProps<typeof tagName$a> {}
 
 export type TextFieldProps = PreactFieldProps<
   /** @default 'on' */
@@ -6066,27 +6090,62 @@ declare class TextField
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$8]: TextField;
+    [tagName$9]: TextField;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$8]: Omit<TextFieldJSXProps, 'accessory'> &
+      [tagName$9]: Omit<TextFieldJSXProps, 'accessory'> &
         PreactBaseElementProps<TextField>;
     }
   }
 }
 
-declare const tagName$8 = 's-text-field';
+declare const tagName$9 = 's-text-field';
 export interface TextFieldJSXProps
   extends Partial<Omit<TextFieldProps, 'accessory'>>,
     Pick<TextFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName$8> {
+    FieldReactProps<typeof tagName$9> {
   /**
    * The accessory to display in the text field.
    */
   accessory?: ComponentChild;
+}
+
+export interface ThumbnailProps
+  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt'>> {
+  size: Extract<
+    ThumbnailProps$1['size'],
+    'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'
+  >;
+}
+
+declare class Thumbnail extends PreactCustomElement implements ThumbnailProps {
+  accessor src: ThumbnailProps['src'];
+  accessor alt: ThumbnailProps['alt'];
+  accessor size: ThumbnailProps['size'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$8]: Thumbnail;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$8]: ThumbnailJSXProps & PreactBaseElementProps<Thumbnail>;
+    }
+  }
+}
+
+declare const tagName$8 = 's-thumbnail';
+export interface ThumbnailJSXProps
+  extends Partial<ThumbnailProps>,
+    Pick<ThumbnailProps$1, 'id'> {
+  onLoad?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
+  onError?: ((event: CallbackEvent<typeof tagName$8>) => void) | null;
 }
 
 export type URLFieldProps = PreactFieldProps<
@@ -6436,6 +6495,7 @@ export {
   Text,
   TextArea,
   TextField,
+  Thumbnail,
   URLField,
   UnorderedList,
 };
@@ -6488,6 +6548,7 @@ export type {
   TextAreaJSXProps,
   TextFieldJSXProps,
   TextJSXProps,
+  ThumbnailJSXProps,
   URLFieldJSXProps,
   UnorderedListJSXProps,
 };
@@ -6635,6 +6696,11 @@ export interface TextFieldSlots {
   accessory?: HTMLElement;
 }
 
+export interface ThumbnailEvents {
+  load: CallbackEventListener<typeof tagName> | null = null;
+  error: OnErrorEventHandler = null;
+}
+
 export interface URLFieldEvents {
   change: CallbackEventListener<'input'>;
   input: CallbackEventListener<'input'>;
@@ -6664,14 +6730,29 @@ export interface FunctionSettingsEvents {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$N]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
+      [tagName$O]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$O]: BadgeJSXProps & ReactBaseElementPropsWithChildren<Badge>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$M]: Omit<BannerJSXProps, 'secondaryActions'> &
+      [tagName$N]: Omit<BannerJSXProps, 'secondaryActions'> &
+        ReactBaseElementPropsWithChildren<Banner>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$N]: Omit<BannerJSXProps, 'secondaryActions'> &
         ReactBaseElementPropsWithChildren<Banner>;
     }
   }
@@ -6679,21 +6760,43 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$L]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
+      [tagName$M]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$M]: BoxJSXProps & ReactBaseElementPropsWithChildren<Box>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$K]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
+      [tagName$L]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$L]: ButtonJSXProps & ReactBaseElementPropsWithChildren<Button>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$J]: CheckboxJSXProps &
+      [tagName$K]: CheckboxJSXProps &
+        ReactBaseElementPropsWithChildren<Checkbox>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$K]: CheckboxJSXProps &
         ReactBaseElementPropsWithChildren<Checkbox>;
     }
   }
@@ -6701,14 +6804,29 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$I]: ChoiceJSXProps & ReactBaseElementPropsWithChildren<Choice>;
+      [tagName$J]: ChoiceJSXProps & ReactBaseElementPropsWithChildren<Choice>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$J]: ChoiceJSXProps & ReactBaseElementPropsWithChildren<Choice>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$H]: ChoiceListJSXProps &
+      [tagName$I]: ChoiceListJSXProps &
+        ReactBaseElementPropsWithChildren<ChoiceList>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$I]: ChoiceListJSXProps &
         ReactBaseElementPropsWithChildren<ChoiceList>;
     }
   }
@@ -6716,7 +6834,15 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$G]: ClickableJSXProps &
+      [tagName$H]: ClickableJSXProps &
+        ReactBaseElementPropsWithChildren<Clickable>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$H]: ClickableJSXProps &
         ReactBaseElementPropsWithChildren<Clickable>;
     }
   }
@@ -6724,35 +6850,71 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$F]: DatePickerJSXProps & ReactBaseElementProps<DatePicker>;
+      [tagName$G]: DatePickerJSXProps & ReactBaseElementProps<DatePicker>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$G]: DatePickerJSXProps & ReactBaseElementProps<DatePicker>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$E]: DividerJSXProps & ReactBaseElementProps<Divider>;
+      [tagName$F]: DividerJSXProps & ReactBaseElementProps<Divider>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$F]: DividerJSXProps & ReactBaseElementProps<Divider>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$D]: EmailFieldJSXProps & ReactBaseElementProps<EmailField>;
+      [tagName$E]: EmailFieldJSXProps & ReactBaseElementProps<EmailField>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$E]: EmailFieldJSXProps & ReactBaseElementProps<EmailField>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$C]: GridJSXProps & ReactBaseElementPropsWithChildren<Grid>;
+      [tagName$D]: GridJSXProps & ReactBaseElementPropsWithChildren<Grid>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$D]: GridJSXProps & ReactBaseElementPropsWithChildren<Grid>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$B]: GridItemJSXProps &
+      [tagName$C]: GridItemJSXProps &
+        ReactBaseElementPropsWithChildren<GridItem>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$C]: GridItemJSXProps &
         ReactBaseElementPropsWithChildren<GridItem>;
     }
   }
@@ -6760,35 +6922,71 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$A]: HeadingJSXProps & ReactBaseElementPropsWithChildren<Heading>;
+      [tagName$B]: HeadingJSXProps & ReactBaseElementPropsWithChildren<Heading>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$B]: HeadingJSXProps & ReactBaseElementPropsWithChildren<Heading>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$z]: IconJSXProps & ReactBaseElementProps<Icon>;
+      [tagName$A]: IconJSXProps & ReactBaseElementProps<Icon>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$A]: IconJSXProps & ReactBaseElementProps<Icon>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$y]: ImageJSXProps & ReactBaseElementProps<Image>;
+      [tagName$z]: ImageJSXProps & ReactBaseElementProps<Image>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$z]: ImageJSXProps & ReactBaseElementProps<Image>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$x]: LinkJSXProps & ReactBaseElementPropsWithChildren<Link>;
+      [tagName$y]: LinkJSXProps & ReactBaseElementPropsWithChildren<Link>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$y]: LinkJSXProps & ReactBaseElementPropsWithChildren<Link>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$w]: ListItemJSXProps &
+      [tagName$x]: ListItemJSXProps &
+        ReactBaseElementPropsWithChildren<ListItem>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$x]: ListItemJSXProps &
         ReactBaseElementPropsWithChildren<ListItem>;
     }
   }
@@ -6796,28 +6994,57 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$v]: MoneyFieldJSXProps & ReactBaseElementProps<MoneyField>;
+      [tagName$w]: MoneyFieldJSXProps & ReactBaseElementProps<MoneyField>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$w]: MoneyFieldJSXProps & ReactBaseElementProps<MoneyField>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$u]: NumberFieldJSXProps & ReactBaseElementProps<NumberField>;
+      [tagName$v]: NumberFieldJSXProps & ReactBaseElementProps<NumberField>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$v]: NumberFieldJSXProps & ReactBaseElementProps<NumberField>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$t]: OptionJSXProps & ReactBaseElementPropsWithChildren<Option>;
+      [tagName$u]: OptionJSXProps & ReactBaseElementPropsWithChildren<Option>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$u]: OptionJSXProps & ReactBaseElementPropsWithChildren<Option>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$s]: OptionGroupJSXProps &
+      [tagName$t]: OptionGroupJSXProps &
+        ReactBaseElementPropsWithChildren<OptionGroup>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$t]: OptionGroupJSXProps &
         ReactBaseElementPropsWithChildren<OptionGroup>;
     }
   }
@@ -6825,7 +7052,15 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$r]: OrderedListJSXProps &
+      [tagName$s]: OrderedListJSXProps &
+        ReactBaseElementPropsWithChildren<OrderedList>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$s]: OrderedListJSXProps &
         ReactBaseElementPropsWithChildren<OrderedList>;
     }
   }
@@ -6833,7 +7068,15 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$q]: Omit<PageJSXProps, 'aside'> &
+      [tagName$r]: Omit<PageJSXProps, 'aside'> &
+        ReactBaseElementPropsWithChildren<Page>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$r]: Omit<PageJSXProps, 'aside'> &
         ReactBaseElementPropsWithChildren<Page>;
     }
   }
@@ -6841,7 +7084,15 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$p]: ParagraphJSXProps &
+      [tagName$q]: ParagraphJSXProps &
+        ReactBaseElementPropsWithChildren<Paragraph>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$q]: ParagraphJSXProps &
         ReactBaseElementPropsWithChildren<Paragraph>;
     }
   }
@@ -6849,16 +7100,37 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: PasswordFieldJSXProps & ReactBaseElementProps<PasswordField>;
+      [tagName$p]: PasswordFieldJSXProps & ReactBaseElementProps<PasswordField>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$p]: PasswordFieldJSXProps & ReactBaseElementProps<PasswordField>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$n]: Omit<
+      [tagName$o]: Omit<
         HTMLAttributes<HTMLElement>,
         Extract<keyof HTMLAttributes<HTMLElement>, `on${Capitalize<string>}`>
+      > &
+        QueryContainerJSXProps;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$o]: Omit<
+        React.HTMLAttributes<HTMLElement>,
+        Extract<
+          keyof React.HTMLAttributes<HTMLElement>,
+          `on${Capitalize<string>}`
+        >
       > &
         QueryContainerJSXProps;
     }
@@ -6867,49 +7139,99 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$m]: SearchFieldJSXProps & ReactBaseElementProps<SearchField>;
+      [tagName$n]: SearchFieldJSXProps & ReactBaseElementProps<SearchField>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$n]: SearchFieldJSXProps & ReactBaseElementProps<SearchField>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$l]: SectionJSXProps & ReactBaseElementPropsWithChildren<Section>;
+      [tagName$m]: SectionJSXProps & ReactBaseElementPropsWithChildren<Section>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$m]: SectionJSXProps & ReactBaseElementPropsWithChildren<Section>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$k]: SelectJSXProps & ReactBaseElementPropsWithChildren<Select>;
+      [tagName$l]: SelectJSXProps & ReactBaseElementPropsWithChildren<Select>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$l]: SelectJSXProps & ReactBaseElementPropsWithChildren<Select>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$j]: SpinnerJSXProps & ReactBaseElementProps<Spinner>;
+      [tagName$k]: SpinnerJSXProps & ReactBaseElementProps<Spinner>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$k]: SpinnerJSXProps & ReactBaseElementProps<Spinner>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$i]: StackJSXProps & ReactBaseElementPropsWithChildren<Stack>;
+      [tagName$j]: StackJSXProps & ReactBaseElementPropsWithChildren<Stack>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$j]: StackJSXProps & ReactBaseElementPropsWithChildren<Stack>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$h]: SwitchJSXProps & ReactBaseElementProps<Switch>;
+      [tagName$i]: SwitchJSXProps & ReactBaseElementProps<Switch>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$i]: SwitchJSXProps & ReactBaseElementProps<Switch>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$g]: Omit<TableJSXProps, 'filters'> &
+      [tagName$h]: Omit<TableJSXProps, 'filters'> &
+        ReactBaseElementPropsWithChildren<Table>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$h]: Omit<TableJSXProps, 'filters'> &
         ReactBaseElementPropsWithChildren<Table>;
     }
   }
@@ -6917,7 +7239,15 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$f]: TableBodyJSXProps &
+      [tagName$g]: TableBodyJSXProps &
+        ReactBaseElementPropsWithChildren<TableBody>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$g]: TableBodyJSXProps &
         ReactBaseElementPropsWithChildren<TableBody>;
     }
   }
@@ -6925,7 +7255,15 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: TableCellJSXProps &
+      [tagName$f]: TableCellJSXProps &
+        ReactBaseElementPropsWithChildren<TableCell>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$f]: TableCellJSXProps &
         ReactBaseElementPropsWithChildren<TableCell>;
     }
   }
@@ -6933,7 +7271,15 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: TableHeaderJSXProps &
+      [tagName$e]: TableHeaderJSXProps &
+        ReactBaseElementPropsWithChildren<TableHeader>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$e]: TableHeaderJSXProps &
         ReactBaseElementPropsWithChildren<TableHeader>;
     }
   }
@@ -6941,7 +7287,15 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: TableHeaderRowJSXProps &
+      [tagName$d]: TableHeaderRowJSXProps &
+        ReactBaseElementPropsWithChildren<TableHeaderRow>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$d]: TableHeaderRowJSXProps &
         ReactBaseElementPropsWithChildren<TableHeaderRow>;
     }
   }
@@ -6949,7 +7303,15 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: TableRowJSXProps &
+      [tagName$c]: TableRowJSXProps &
+        ReactBaseElementPropsWithChildren<TableRow>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$c]: TableRowJSXProps &
         ReactBaseElementPropsWithChildren<TableRow>;
     }
   }
@@ -6957,26 +7319,69 @@ declare module 'react' {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$a]: TextJSXProps & ReactBaseElementPropsWithChildren<Text>;
+      [tagName$b]: TextJSXProps & ReactBaseElementPropsWithChildren<Text>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$b]: TextJSXProps & ReactBaseElementPropsWithChildren<Text>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: TextAreaJSXProps & ReactBaseElementProps<TextArea>;
+      [tagName$a]: TextAreaJSXProps & ReactBaseElementProps<TextArea>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$a]: TextAreaJSXProps & ReactBaseElementProps<TextArea>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$8]: Omit<TextFieldJSXProps, 'accessory'> &
+      [tagName$9]: Omit<TextFieldJSXProps, 'accessory'> &
+        ReactBaseElementProps<TextField>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$9]: Omit<TextFieldJSXProps, 'accessory'> &
         ReactBaseElementProps<TextField>;
     }
   }
 }
 declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$8]: ThumbnailJSXProps & ReactBaseElementProps<Thumbnail>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$8]: ThumbnailJSXProps & ReactBaseElementProps<Thumbnail>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$7]: URLFieldJSXProps & ReactBaseElementProps<URLField>;
+    }
+  }
+}
+declare global {
   namespace JSX {
     interface IntrinsicElements {
       [tagName$7]: URLFieldJSXProps & ReactBaseElementProps<URLField>;
@@ -6991,7 +7396,27 @@ declare module 'react' {
     }
   }
 }
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$6]: UnorderedListJSXProps &
+        ReactBaseElementPropsWithChildren<UnorderedList>;
+    }
+  }
+}
 declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$5]: Omit<
+        AdminActionJSXProps,
+        'primaryAction' | 'secondaryActions'
+      > & {
+        children?: React.ReactNode;
+      };
+    }
+  }
+}
+declare global {
   namespace JSX {
     interface IntrinsicElements {
       [tagName$5]: Omit<
@@ -7012,7 +7437,25 @@ declare module 'react' {
     }
   }
 }
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$4]: AdminBlockJSXProps & {
+        children?: React.ReactNode;
+      };
+    }
+  }
+}
 declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$3]: AdminPrintActionJSXProps & {
+        children?: React.ReactNode;
+      };
+    }
+  }
+}
+declare global {
   namespace JSX {
     interface IntrinsicElements {
       [tagName$3]: AdminPrintActionJSXProps & {
@@ -7030,6 +7473,15 @@ declare module 'react' {
     }
   }
 }
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$2]: CustomerSegmentTemplateJSXProps & {
+        children?: React.ReactNode;
+      };
+    }
+  }
+}
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
@@ -7039,7 +7491,25 @@ declare module 'react' {
     }
   }
 }
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$1]: FormJSXProps & {
+        children?: React.ReactNode;
+      };
+    }
+  }
+}
 declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName]: FunctionSettingsJSXProps & {
+        children?: React.ReactNode;
+      };
+    }
+  }
+}
+declare global {
   namespace JSX {
     interface IntrinsicElements {
       [tagName]: FunctionSettingsJSXProps & {

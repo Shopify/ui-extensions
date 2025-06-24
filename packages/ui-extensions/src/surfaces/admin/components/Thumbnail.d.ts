@@ -6,13 +6,38 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {TableHeaderProps$1, ComponentChild} from './shared.d.ts';
+import type {ThumbnailProps$1, ComponentChild} from './shared.d.ts';
 
-export interface TableHeaderProps extends Pick<TableHeaderProps$1, 'listSlot'> {
-  listSlot: Extract<
-    TableHeaderProps$1['listSlot'],
-    'primary' | 'secondary' | 'labeled' | 'kicker' | 'inline'
+export interface ThumbnailProps
+  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt'>> {
+  size: Extract<
+    ThumbnailProps$1['size'],
+    'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'
   >;
+}
+
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
+};
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
+  | (EventListener & {
+      (event: CallbackEvent<TTagName, TEvent>): void;
+    })
+  | null;
+/** Used when an element does not have children. */
+export interface PreactBaseElementProps<TClass extends HTMLElement> {
+  /** Assigns a unique key to this element. */
+  key?: preact.Key;
+  /** Assigns a ref (generally from `useRef()`) to this element. */
+  ref?: preact.Ref<TClass>;
+  /** Assigns this element to a parent's slot. */
+  slot?: Lowercase<string>;
 }
 
 export type Styles = string;
@@ -75,46 +100,34 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
-/** Used when an element does not have children. */
-export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /** Assigns a unique key to this element. */
-  key?: preact.Key;
-  /** Assigns a ref (generally from `useRef()`) to this element. */
-  ref?: preact.Ref<TClass>;
-  /** Assigns this element to a parent's slot. */
-  slot?: Lowercase<string>;
-}
-/** Used when an element has children. */
-export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
-  extends PreactBaseElementProps<TClass> {
-  children?: preact.ComponentChildren;
-}
-
-declare class TableHeader
-  extends PreactCustomElement
-  implements TableHeaderProps
-{
-  accessor listSlot: TableHeaderProps['listSlot'];
+declare class Thumbnail extends PreactCustomElement implements ThumbnailProps {
+  accessor src: ThumbnailProps['src'];
+  accessor alt: ThumbnailProps['alt'];
+  accessor size: ThumbnailProps['size'];
+  accessor onload: CallbackEventListener<typeof tagName> | null;
+  accessor onerror: OnErrorEventHandler;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: TableHeader;
+    [tagName]: Thumbnail;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: TableHeaderJSXProps &
-        PreactBaseElementPropsWithChildren<TableHeader>;
+      [tagName]: ThumbnailJSXProps & PreactBaseElementProps<Thumbnail>;
     }
   }
 }
 
-declare const tagName = 's-table-header';
-export interface TableHeaderJSXProps
-  extends Partial<TableHeaderProps>,
-    Pick<TableHeaderProps$1, 'id'> {}
+declare const tagName = 's-thumbnail';
+export interface ThumbnailJSXProps
+  extends Partial<ThumbnailProps>,
+    Pick<ThumbnailProps$1, 'id'> {
+  onLoad?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onError?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
 
-export {TableHeader};
-export type {TableHeaderJSXProps};
+export {Thumbnail};
+export type {ThumbnailJSXProps};
