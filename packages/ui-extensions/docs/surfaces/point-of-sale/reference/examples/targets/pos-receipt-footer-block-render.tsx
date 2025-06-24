@@ -18,7 +18,7 @@ const Block = () => {
   return (
     <POSReceiptBlock>
       <Text>{`Transaction type: ${transaction.transactionType}`}</Text>
-      <Text>{`Total tax: ${transaction.taxTotal}`}</Text>
+      <Text>{`Total tax (${transaction.taxTotal.currency}): ${transaction.taxTotal.amount}`}</Text>
       <QRCode value={`https://www.shopify.com?${qrCodeValue}`} />
     </POSReceiptBlock>
   );
