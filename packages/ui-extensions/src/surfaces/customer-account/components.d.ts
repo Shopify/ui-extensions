@@ -96,6 +96,13 @@ interface GlobalProps {
   id?: string;
 }
 
+export type Size =
+  | 'extraSmall'
+  | 'small'
+  | 'base'
+  | 'large'
+  | 'extraLarge'
+  | 'fill';
 export interface AvatarProps extends GlobalProps {
   /**
    * Initials to display in the avatar.
