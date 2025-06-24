@@ -1,4 +1,4 @@
-export default function extension() {
+export default async () => {
   const apiVersion = 'unstable';
   const getProductsQuery = {
     query: `query ($first: Int!) {

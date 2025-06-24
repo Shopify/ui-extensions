@@ -1,7 +1,7 @@
 import {render} from 'preact';
 import {useAvailablePaymentOptions} from '@shopify/ui-extensions/checkout/preact';
 
-export default function extension() {
+export default async () => {
   render(<Extension />, document.body);
 }
 

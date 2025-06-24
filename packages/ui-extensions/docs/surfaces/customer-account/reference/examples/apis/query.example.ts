@@ -1,4 +1,4 @@
-export default function extension() {
+export default async () => {
   shopify
     .query(
       `query ($first: Int!) {

@@ -1,4 +1,4 @@
-export default function extension() {
+export default async () => {
   const stack = document.createElement('s-stack');
 
   const image = document.createElement('s-image');

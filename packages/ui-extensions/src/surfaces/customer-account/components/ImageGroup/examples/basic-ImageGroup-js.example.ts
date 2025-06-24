@@ -1,4 +1,4 @@
-export default function extension() {
+export default async () => {
   const imageGroup = document.createElement('s-image-group');
   const firstImage = document.createElement('s-image');
   firstImage.src = '../assets/flower.jpg';
