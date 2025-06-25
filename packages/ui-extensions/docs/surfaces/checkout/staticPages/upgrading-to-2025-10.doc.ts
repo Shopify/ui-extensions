@@ -94,7 +94,7 @@ As of \`2025-10\`, Shopify recommends Preact for UI extensions. Update the depen
       anchorLink: 'migrate-api-calls',
       title: 'Migrate API calls',
       sectionContent:
-        'Instead of accessing APIs from a callback parameter, access them from the global `shopify` object. If you had previously been using React hooks, import those same hooks from a new Preact-specific package.',
+        "Instead of accessing APIs from a callback parameter, access them from the global `shopify` object. Here's an example of migrating the `applyAttributeChange` API call.",
       accordionContent: [
         {
           title: 'New API calls in Preact',
@@ -306,18 +306,11 @@ Use the comparison table below to see which Polaris web components are available
 |   \`Stepper\`                |   \`NumberField\`                                         |   Coming soon                      |
 |   \`Switch\`                 |   \`Switch\`                                              |   Coming soon                          |
 |   \`Tag\`                    |   \`Tag\`                                                 |   Coming soon                          |
-<<<<<<< HEAD
-|   \`Text\`                   |   [Text](/docs/api/checkout-ui-extensions/2025-10-rc/components/titles-and-text/text)                                                |   Available today                      |
-|   \`TextBlock\`              |   [Paragraph](/docs/api/checkout-ui-extensions/2025-10-rc/components/titles-and-text/paragraph)                                         |   Available today                   |
-|   \`TextField\`              |   [TextField](/docs/api/checkout-ui-extensions/2025-10-rc/components/forms/textfield)                                           |   Available today                      |
-|                              |   [Time](/docs/api/checkout-ui-extensions/2025-10-rc/components/titles-and-text/time)                                                |   Available today                      |
-=======
 |   \`Text\`                   |   [Text](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/titles-and-text/text)                                                |   Available today                      |
 |   \`TextArea\`               |   [TextArea](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/forms/textarea)                                            |   Available today                      |
 |   \`TextBlock\`              |   [Paragraph](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/titles-and-text/paragraph)                                         |   Available today                   |
 |   \`TextField\`              |   [TextField](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/forms/textfield)                                           |   Available today                      |
 |                              |   [Time](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/titles-and-text/time)                                                |   Available today                      |
->>>>>>> a4c7c6f22 (migration guide additions)
 |   \`ToggleButton\`           |   TBD                                         |   Coming soon                 |
 |   \`ToggleButtonGroup\`      |   TBD                                         |   Coming soon            |
 |   \`Tooltip\`                |   \`Tooltip\`                                             |   Coming soon                          |
