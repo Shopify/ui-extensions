@@ -647,6 +647,14 @@ export interface RenderExtensionTargets {
     OrderConfirmationApi & StandardApi<'purchase.thank-you.chat.render'>,
     AllowedComponents<'Chat'>
   >;
+  /**
+   * A static extension target that is rendered on top of the **Thank you page** as a dismissable announcement.
+   */
+  'purchase.thank-you.announcement.render': RenderExtension<
+    OrderConfirmationApi &
+      StandardApi<'purchase.thank-you.announcement.render'>,
+    AnyComponent
+  >;
 }
 
 export interface RunnableExtensionTargets {
