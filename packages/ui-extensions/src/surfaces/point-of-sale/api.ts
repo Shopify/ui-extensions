@@ -40,6 +40,8 @@ export type {
 export type {
   NavigationApiContent,
   NavigationApi,
+  NativeScreen,
+  NativeScreenParams,
 } from './render/api/navigation-api/navigation-api';
 
 export type {OrderApiContent, OrderApi} from './render/api/order-api/order-api';

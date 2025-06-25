@@ -11,6 +11,12 @@ export interface NavigationApiContent {
 
   /** Dismisses the extension. */
   dismiss(): void;
+
+  /**
+   * Navigate to a native screen
+   * @param screen takes in a native screen name and its parameters
+   */
+  navigateToNativeScreen(screen: NativeScreen): void;
 }
 
 /**
@@ -19,3 +25,21 @@ export interface NavigationApiContent {
 export interface NavigationApi {
   navigation: NavigationApiContent;
 }
+
+/**
+ * The different native screens and their parameters
+ */
+export interface NativeScreenParams {
+  productDetails: {productId: number; variantId?: number};
+  orderDetails: {orderId: number};
+  customerDetails: {customerId: number};
+  staffDetails: {staffId: number};
+  draftOrderDetails: {draftOrderId: number};
+}
+
+export type NativeScreen = {
+  [K in keyof NativeScreenParams]: {
+    screenName: K;
+    params: NativeScreenParams[K];
+  };
+}[keyof NativeScreenParams];
