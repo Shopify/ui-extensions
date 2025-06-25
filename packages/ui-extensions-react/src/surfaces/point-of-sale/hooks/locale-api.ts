@@ -5,6 +5,7 @@ import {
   makeStatefulSubscribable,
 } from '@remote-ui/async-subscription';
 
+import type {LocaleApiContent} from '@shopify/ui-extensions/point-of-sale';
 import {useApi} from './api';
 
 /**
@@ -16,7 +17,7 @@ let statefulSubscribable: StatefulRemoteSubscribable<string> | undefined;
 /**
  * Verifies that the API has a Locale in it.
  */
-const isLocaleApi = (api: any): boolean => {
+const isLocaleApi = (api: any): api is {locale: LocaleApiContent} => {
   return 'locale' in api;
 };
 

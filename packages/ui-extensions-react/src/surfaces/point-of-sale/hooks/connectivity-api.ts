@@ -1,6 +1,9 @@
 import {useEffect, useRef, useState} from 'react';
 
-import {ConnectivityState} from '@shopify/ui-extensions/point-of-sale';
+import type {
+  ConnectivityApiContent,
+  ConnectivityState,
+} from '@shopify/ui-extensions/point-of-sale';
 import {
   StatefulRemoteSubscribable,
   makeStatefulSubscribable,
@@ -19,7 +22,9 @@ let statefulSubscribable:
 /**
  * Verifies that the API has a Connectivity in it.
  */
-const isConnectivityApi = (api: any): boolean => {
+const isConnectivityApi = (
+  api: any,
+): api is {connectivity: ConnectivityApiContent} => {
   return 'connectivity' in api;
 };
 
