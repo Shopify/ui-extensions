@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'FormProps',
+      type: 'FormBaseProps',
     },
   ],
   defaultExample: {

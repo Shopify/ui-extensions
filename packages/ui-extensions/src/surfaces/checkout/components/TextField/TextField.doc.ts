@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
 import sharedContent from '../../../../docs/shared/components/TextField';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -11,7 +12,17 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'TextFieldProps',
+      type: 'TextFieldBaseProps',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'TextFieldElementEvents',
+    },
+    {
+      title: 'Slots',
+      description: '',
+      type: 'TextFieldElementSlots',
     },
   ],
   defaultExample: {
@@ -21,7 +32,7 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           code: './examples/basic-textfield.example.html',
-          language: '',
+          language: 'html',
         },
       ],
     },

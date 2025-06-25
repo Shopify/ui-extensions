@@ -1,11 +1,11 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+/* eslint-disable import-x/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable line-comment-position */
 /* eslint-disable @typescript-eslint/unified-signatures */
 /* eslint-disable no-var */
-/* eslint-disable import/namespace */
+/* eslint-disable import-x/namespace */
 /**
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
@@ -1120,6 +1120,34 @@ export interface FocusEventProps {
 	 */
 	onFocus?: () => void;
 }
+export interface ToggleEventProps {
+	/**
+	 * Callback fired when the element state changes **after** any animations have finished.
+	 *
+	 * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the
+	 *   `newState` property will be set to `open`.
+	 * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
+	 *   `newState` will be `closed`.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+	 */
+	onAfterToggle?: (oldState: ToggleState, newState: ToggleState) => void;
+	/**
+	 * Callback straight after the element state changes.
+	 *
+	 * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
+	 *   `newState` property will be set to `open`.
+	 * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
+	 *   `newState` will be `closed`.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+	 */
+	onToggle?: (oldState: ToggleState, newState: ToggleState) => void;
+}
+export type ToggleState = "open" | "closed";
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
 	 * The behavior of the button.
@@ -1396,6 +1424,48 @@ export interface FieldDecorationProps {
 	 */
 	accessory?: ComponentChildren;
 }
+export interface NumberConstraintsProps {
+	/**
+	 * The highest decimal or integer to be accepted for the field.
+	 * When used with `step` the value will round down to the max number.
+	 *
+	 * Note: a user will still be able to use the keyboard to input a number higher than
+	 * the max. It is up to the developer to add appropriate validation.
+	 *
+	 * @default Infinity
+	 */
+	max?: number;
+	/**
+	 * The lowest decimal or integer to be accepted for the field.
+	 * When used with `step` the value will round up to the min number.
+	 *
+	 * Note: a user will still be able to use the keyboard to input a number lower than
+	 * the min. It is up to the developer to add appropriate validation.
+	 *
+	 * @default -Infinity
+	 */
+	min?: number;
+	/**
+	 * The amount the value can increase or decrease by. This can be an integer or decimal.
+	 * If a `max` or `min` is specified with `step` when increasing/decreasing the value
+	 * via the buttons, the final value will always round to the `max` or `min`
+	 * rather than the closest valid amount.
+	 *
+	 * @default 1
+	 */
+	step?: number;
+	/**
+	 * Sets the type of controls displayed in the field.
+	 *
+	 * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
+	 * Appropriate mouse and [keyboard interactions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role#keyboard_interactions) to control the value of the field are enabled.
+	 * - `none`: no controls are displayed and users must input the value manually. Arrow keys and scroll wheels can’t be used either to avoid accidental changes.
+	 * - `auto`: the presence of the controls depends on the surface and context.
+	 *
+	 * @default 'auto'
+	 */
+	controls?: "auto" | "stepper" | "none";
+}
 export interface MinMaxLengthProps {
 	/**
 	 * Specifies the maximum number of characters allowed.
@@ -1409,6 +1479,134 @@ export interface MinMaxLengthProps {
 	 * @default 0
 	 */
 	minLength?: number;
+}
+export interface BaseSelectableProps {
+	/**
+	 * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.
+	 * This can also be used to display a control without a visual label, while still providing context to users using screen readers.
+	 */
+	accessibilityLabel?: string;
+	/**
+	 * Disables the control, disallowing any interaction.
+	 *
+	 * @default false
+	 */
+	disabled?: boolean;
+	/**
+	 * The value used in form data when the control is checked.
+	 */
+	value?: string;
+}
+export interface BaseOptionProps extends BaseSelectableProps {
+	/**
+	 * Whether the control is active.
+	 *
+	 * @default false
+	 */
+	selected?: boolean;
+	/**
+	 * Whether the control is active by default.
+	 *
+	 * @implementation `defaultSelected` reflects to the `selected` attribute.
+	 *
+	 * @default false
+	 */
+	defaultSelected?: boolean;
+}
+export interface BaseCheckableProps extends BaseSelectableProps, InteractionProps {
+	/**
+	 * Visual content to use as the control label.
+	 */
+	label?: string;
+	/**
+	 * Whether the control is active.
+	 *
+	 * @default false
+	 */
+	checked?: boolean;
+	/**
+	 * Whether the control is active by default.
+	 *
+	 * @implementation `defaultChecked` reflects to the `checked` attribute.
+	 *
+	 * @default false
+	 */
+	defaultChecked?: boolean;
+	/**
+	 * An identifier for the control that is unique within the nearest
+	 * containing `Form` component.
+	 */
+	name?: string;
+	/**
+	 * A callback that is run whenever the control is changed.
+	 */
+	onChange?: (checked: boolean) => void;
+	/**
+	 * A callback that is run whenever the control is changed.
+	 */
+	onInput?: (checked: boolean) => void;
+}
+interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps, FieldErrorProps, FieldDetailsProps {
+	/**
+	 * Whether to display the checkbox in an indeterminate state (neither checked or unchecked).
+	 *
+	 * In terms of appearance, this takes priority over the `checked` prop.
+	 * But this is purely a visual change.
+	 * Whether the value is submitted along with a form is still down to the `checked` prop.
+	 *
+	 * If `indeterminate` has not been explicitly set, and the `indeterminate` state hasn't been modified by the user (via clicking),
+	 * then `indeterminate` returns the value of `defaultIndeterminate`.
+	 *
+	 * @implementation The `indeterminate` property doesn't reflect to any attribute.
+	 */
+	indeterminate?: boolean;
+	/**
+	 * Whether the checkbox is in an `indeterminate` state by default.
+	 *
+	 * Similar to `defaultValue` and `defaultChecked`, this value applies until `indeterminate` is set, or user changes the state of the checkbox.
+	 *
+	 * @implementation `defaultIndeterminate` reflects to the `indeterminate` attribute.
+	 *
+	 * @default false
+	 */
+	defaultIndeterminate?: boolean;
+	/**
+	 * Whether the field needs a value. This requirement adds semantic value
+	 * to the field, but it will not cause an error to appear automatically.
+	 * If you want to present an error when this field is empty, you can do
+	 * so with the `error` property.
+	 *
+	 * @default false
+	 */
+	required?: boolean;
+}
+interface ClickableProps$1 extends BaseBoxProps, BaseClickableProps {
+	/**
+	 * Disables the clickable, and indicates to assistive technology that the loading is in progress.
+	 *
+	 * This also disables the clickable.
+	 */
+	loading?: BaseClickableProps["loading"];
+	/**
+	 * Disables the clickable, meaning it cannot be clicked or receive focus.
+	 *
+	 * In this state, onClick will not fire.
+	 * If the click event originates from a child element, the event will immediately stop propagating from this element.
+	 *
+	 * However, items within the clickable can still receive focus and be interacted with.
+	 *
+	 * This has no impact on the visual state by default,
+	 * but developers are encouraged to style the clickable accordingly.
+	 */
+	disabled?: BaseClickableProps["disabled"];
+	/**
+	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+	 *
+	 * @default ''
+	 */
+	lang?: string;
 }
 interface ClipboardItemProps$1 extends GlobalProps {
 	/**
@@ -1467,6 +1665,36 @@ export type AutocompleteGroup = "shipping" | "billing";
 export type AutocompleteAddressGroup = "fax" | "home" | "mobile" | "pager";
 export type AnyAutocompleteField = "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "current-password" | "email" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "new-password" | "nickname" | "one-time-code" | "organization-title" | "organization" | "photo" | "postal-code" | "sex" | "street-address" | "transaction-amount" | "transaction-currency" | "url" | "username" | "bday-day" | "bday-month" | "bday-year" | "bday" | "cc-additional-name" | "cc-expiry-month" | "cc-expiry-year" | "cc-expiry" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-csc" | "cc-type" | `${AutocompleteAddressGroup} email` | "impp" | `${AutocompleteAddressGroup} impp` | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local-prefix" | "tel-local-suffix" | "tel-local" | "tel-national" | `${AutocompleteAddressGroup} tel` | `${AutocompleteAddressGroup} tel-area-code` | `${AutocompleteAddressGroup} tel-country-code` | `${AutocompleteAddressGroup} tel-extension` | `${AutocompleteAddressGroup} tel-local-prefix` | `${AutocompleteAddressGroup} tel-local-suffix` | `${AutocompleteAddressGroup} tel-local` | `${AutocompleteAddressGroup} tel-national`;
 export type TextAutocompleteField = ExtractStrict<AnyAutocompleteField, "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "nickname" | "one-time-code" | "organization-title" | "organization" | "postal-code" | "sex" | "street-address" | "transaction-currency" | "username" | "cc-name" | "cc-given-name" | "cc-additional-name" | "cc-family-name" | "cc-type">;
+interface DetailsProps$1 extends GlobalProps, ToggleEventProps, ContainerProps {
+	/**
+	 * The content of the details.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+	 */
+	children?: ComponentChildren;
+	/**
+	 * Name of the element.
+	 *
+	 * This can be used to create multiple named disclosure boxes that where only one can be open at a time.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#multiple_named_disclosure_boxes
+	 */
+	name?: string;
+	/**
+	 * Indicates whether the element should be open by default.
+	 *
+	 * This reflects to the `defaultopen` attribute.
+	 *
+	 * @default false
+	 */
+	defaultOpen?: boolean;
+	/**
+	 * Sets the transition between the two states.
+	 *
+	 * @default 'auto'
+	 */
+	toggleTransition?: "none" | "auto";
+}
 interface DropZoneProps$1 extends GlobalProps, FileInputProps<File[]>, BasicFieldProps {
 	/**
 	 * A string representing the types of files that are accepted by the dropzone.
@@ -1496,6 +1724,9 @@ interface DropZoneProps$1 extends GlobalProps, FileInputProps<File[]>, BasicFiel
 	 */
 	onDropRejected?(files: File[]): void;
 }
+interface EmailFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<EmailAutocompleteField> {
+}
+export type EmailAutocompleteField = ExtractStrict<AnyAutocompleteField, "email" | `${AutocompleteAddressGroup} email`>;
 export interface ExtendableEvent extends Event {
 	/**
 	 * Provide a promise that signals the length, and eventual success or failure of actions relating to the event.
@@ -1842,6 +2073,192 @@ interface ListItemProps$1 extends GlobalProps {
 	 */
 	children?: ComponentChildren;
 }
+interface MapProps$1 extends GlobalProps, SizingProps {
+	/**
+	 * A valid API key for the map service provider.
+	 *
+	 * The map service provider may require an API key. Without an API key the map could be hidden or render in a limited developer mode.
+	 */
+	apiKey?: string;
+	/**
+	 * Map center’s latitude in degrees.
+	 *
+	 * @default 0
+	 */
+	latitude?: number;
+	/**
+	 * Map center’s longitude in degrees.
+	 *
+	 * @default 0
+	 */
+	longitude?: number;
+	/**
+	 * A label that describes the purpose or contents of the map.
+	 *
+	 * When set, it will be announced to users using assistive technologies and will provide them with more context.
+	 */
+	accessibilityLabel?: string;
+	/**
+	 * The initial Map zoom level.
+	 *
+	 * Valid zoom values are numbers from zero up to 18.
+	 * Larger zoom values correspond to a higher resolution.
+	 *
+	 * @default 4
+	 */
+	zoom?: number;
+	/**
+	 * The maximum zoom level which will be displayed on the map.
+	 *
+	 * Valid zoom values are numbers from zero up to 18.
+	 *
+	 * @default 18
+	 */
+	maxZoom?: number;
+	/**
+	 * The minimum zoom level which will be displayed on the map.
+	 *
+	 * Valid zoom values are numbers from zero up to 18.
+	 *
+	 * @default 0
+	 */
+	minZoom?: number;
+	/**
+	 * Callback when the viewport bounds have changed or the map is resized.
+	 */
+	onBoundsChange?: (bounds: Bounds) => void;
+	/**
+	 * Callback when the map view changes.
+	 */
+	onViewChange?: (location: Location$1, zoom: number) => void;
+	/**
+	 * Callback when the user clicks on the map.
+	 */
+	onClick?: (location: Location$1) => void;
+	/**
+	 * Callback when the user double-clicks on the map.
+	 */
+	onDblClick?: (location: Location$1) => void;
+}
+interface Location$1 {
+	latitude?: number;
+	longitude?: number;
+}
+export interface Bounds {
+	northEast?: Location$1;
+	southWest?: Location$1;
+}
+interface MapMarkerProps$1 extends GlobalProps, InteractionProps, Pick<SizingProps, "blockSize" | "inlineSize"> {
+	/**
+	 * Marker’s location latitude in degrees.
+	 *
+	 * @default 0
+	 */
+	latitude?: number;
+	/**
+	 * Marker’s longitude latitude in degrees.
+	 *
+	 * @default 0
+	 */
+	longitude?: number;
+	/**
+	 * A label that describes the purpose of the marker. When set,
+	 * it will be announced to users using assistive technologies and will
+	 * provide them with more context.
+	 */
+	accessibilityLabel?: string;
+	/**
+	 * Allows grouping the marker in clusters when zoomed out.
+	 *
+	 * @default false
+	 */
+	clusterable?: boolean;
+	/**
+	 * The graphic to use as the marker.
+	 *
+	 * If unset, it will default to the provider’s default marker.
+	 */
+	graphic?: ComponentChildren;
+	/**
+	 * Callback when a marker is clicked.
+	 *
+	 * It does not trigger a click event on the map itself.
+	 */
+	onClick?: () => void;
+}
+export interface BaseOverlayProps {
+	/**
+	 * Callback fired after the overlay is shown.
+	 */
+	onShow?: () => void;
+	/**
+	 * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+	 */
+	onAfterShow?: () => void;
+	/**
+	 * Callback fired after the overlay is hidden.
+	 */
+	onHide?: () => void;
+	/**
+	 * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+	 */
+	onAfterHide?: () => void;
+}
+interface ModalProps$1 extends GlobalProps, BaseOverlayProps, ActionSlots, ContainerProps {
+	/**
+	 * A label that describes the purpose of the modal. When set,
+	 * it will be announced to users using assistive technologies and will
+	 * provide them with more context.
+	 *
+	 * This overrides the `heading` prop for screen readers.
+	 */
+	accessibilityLabel?: string;
+	/**
+	 * A title that describes the content of the Modal.
+	 *
+	 */
+	heading?: string;
+	/**
+	 * Adjust the padding around the Modal content.
+	 *
+	 * `base`: applies padding that is appropriate for the element.
+	 *
+	 * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
+	 * to the edge of the Modal. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
+	 * to bring back the desired padding for the rest of the content.
+	 *
+	 * @default 'base'
+	 */
+	padding?: "base" | "none";
+	/**
+	 * Adjust the size of the Modal.
+	 *
+	 * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+	 *
+	 * @default 'base'
+	 */
+	size?: SizeKeyword | "max";
+	/**
+	 * The content of the Modal.
+	 */
+	children?: ComponentChildren;
+}
+interface NumberFieldProps$1 extends GlobalProps, BaseTextFieldProps, AutocompleteProps<NumberAutocompleteField>, NumberConstraintsProps, FieldDecorationProps {
+	/**
+	 * Sets the virtual keyboard.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
+	 * @default 'decimal'
+	 */
+	inputMode?: "decimal" | "numeric";
+}
+export type NumberAutocompleteField = ExtractStrict<AnyAutocompleteField, "one-time-code" | "cc-number" | "cc-csc">;
+interface OptionProps$1 extends GlobalProps, BaseOptionProps {
+	/**
+	 * The content to use as the label.
+	 */
+	children?: ComponentChildren;
+}
 interface OrderedListProps$1 extends GlobalProps {
 }
 interface ParagraphProps$1 extends GlobalProps, BaseTypographyProps, BlockTypographyProps, AccessibilityVisibilityProps, ContainerProps {
@@ -1893,6 +2310,41 @@ interface PaymentIconProps$1 extends GlobalProps {
 	accessibilityLabel?: string;
 }
 export type PaymentIconName = "abn" | "acima-leasing" | "acuotaz" | "ada" | "addi" | "adyen" | "aeropay" | "affin-bank" | "affirm" | "aftee" | "afterpay-paynl-version" | "afterpay" | "airtel-money" | "airteltigo-mobile-money" | "aktia" | "akulaku-paylater" | "akulaku" | "alandsbanken" | "alfamart" | "alfamidi" | "alipay-hk" | "alipay-paynl-version" | "alipay" | "alliance-bank" | "alma" | "aman" | "amazon" | "ambank" | "american-express" | "amex" | "ansa-stored-value" | "ansa" | "anyday" | "apecoin" | "aplazo" | "apple-pay" | "aqsat" | "arbitrum" | "arhaus" | "arvato" | "ashley-plcc" | "ask" | "astrapay" | "atm-bersama" | "atobaraidotcom" | "atome" | "atone" | "atrato" | "au-kantan-kessai" | "au-pay" | "authorize-net" | "avalanche" | "axs" | "bancnet" | "banco-azteca" | "bancomat" | "bancontact" | "bangkok-bank" | "bank-islam" | "bank-muamalat" | "bank-rakyat" | "barclays" | "base" | "bbva-cie" | "bc-card" | "bca-klikpay" | "bca" | "bdo" | "belfius" | "benefit" | "best-buy-card" | "biercheque-paynl-version" | "bigc" | "billease" | "biller-paynl-version" | "billie" | "billink-method" | "billink" | "bitcoin-cash" | "bitcoin" | "bizum" | "blik" | "bnbchain" | "bni" | "bnp" | "bogus-app-coin" | "bogus" | "boleto" | "boodil" | "boost" | "bpi" | "braintree" | "bread-pay" | "bread" | "bri-direct-debit" | "bri" | "brimo" | "bsi" | "bsn" | "bss" | "busd" | "careem-pay" | "cartes-bancaires" | "cash-app-pay" | "cash" | "cashew" | "cashinvoice-latin-america" | "catch-payments" | "cebuana" | "cembrapay" | "centi" | "cetelem" | "checkout-finance" | "chinabank" | "cimb-clicks" | "cimb" | "circle-k" | "citadele" | "citi-pay" | "clave-telered" | "clearpay" | "clerq" | "cleverpay" | "clip" | "cliq" | "codensa" | "coinsph" | "collector-bank" | "coop" | "coppel-pay" | "credit-agricole" | "credit-key" | "creditclick-paynl-version" | "credix" | "cuotas" | "d-barai" | "dai" | "daily-yamazaki" | "dan-dan" | "dana" | "danamon-online" | "dankort" | "danske-bank" | "dappmx" | "dash" | "daviplata" | "de-cadeaukaart" | "depay" | "deutsche-bank" | "dinacard" | "diners-club" | "direct-bank-transfer-latin-america" | "directa24" | "directpay" | "discover" | "divido" | "dnb" | "docomo-barai" | "dogecoin" | "dropp" | "duitnow" | "duologi" | "dwolla" | "easywallet" | "ebucks" | "echelon-financing" | "ecpay" | "edenred" | "efecty" | "eft-secure" | "eftpos-au" | "eghl" | "elo" | "elv" | "empty" | "enets" | "eos" | "epayments" | "epospay" | "eps" | "erste" | "escrowcom" | "esr-paymentslip-switzerland" | "ethereum" | "etihad-guest-pay" | "etika" | "ewallet-indonesia" | "ewallet-philippines" | "ewallet-southkorea" | "facebook-pay" | "fairstone-payments" | "fam" | "familymart" | "fantom" | "farmlands" | "fashion-giftcard-paynlversion" | "fashioncheque" | "favepay" | "fawry" | "finloup" | "fintecture" | "fintoc" | "flexiti" | "float-payments" | "flying-blue-plus" | "forbrugsforeningen" | "forsa" | "fortiva" | "fps" | "fpx" | "freecharge" | "freedompay" | "futurepay-mytab" | "gcash" | "generalfinancing" | "generic" | "genoapay" | "gezondheidsbon-paynl-version" | "giftcard" | "giropay" | "givacard" | "glbe-paypal" | "glbe-plus" | "gmo-atokara" | "gmo-bank-transfer" | "gmo-postpay" | "gmo-virtualaccount" | "gnosis" | "google-pay" | "google-wallet" | "gopay" | "grabpay" | "grailpay" | "gusd" | "hana-card" | "handelsbanken" | "happy-pay" | "hello-clever" | "heylight" | "hitrustpay-transfer" | "home-credit" | "hong-leong-bank" | "hong-leong-connect" | "hsbc" | "huis-tuin-cadeau" | "humm" | "hyper" | "hypercard" | "hypercash" | "hyundai-card" | "ibexpay" | "ideal" | "in3-via-ideal" | "in3" | "inbank" | "indomaret" | "ing-homepay" | "interac" | "ivy" | "iwocapay-pay-later" | "jcb" | "jenius" | "jko" | "jousto" | "kakao-pay" | "kakebaraidotcom" | "kasikornbank" | "kasssh" | "katapult" | "kb-card" | "kbc-cbc" | "kcp-credit-card" | "kfast" | "khqr" | "klarna-pay-later" | "klarna-pay-now" | "klarna-slice-it" | "klarna" | "knaken-settle" | "knet" | "koalafi" | "koin" | "krediidipank" | "kredivo" | "krungsri" | "krungthai-bank" | "kueski-pay" | "kunst-en-cultuur-cadeaukaart" | "kuwait-finance-house" | "land-bank" | "laser" | "latitude-creditline-au" | "latitude-gem-au" | "latitude-gem-nz" | "latitude-go-au" | "latitudepay" | "lawson" | "laybuy-heart" | "laybuy" | "lbc" | "lhv" | "line-pay" | "linkaja" | "linkpay" | "litecoin" | "lku" | "lloyds" | "lotte-card" | "lpb" | "luminor" | "lunch-check" | "lydia" | "mach" | "mada" | "maestro" | "mandiri" | "mash" | "master" | "mastercard" | "masterpass" | "maxima" | "maya-bank" | "maya" | "maybank-qrpay" | "maybank" | "maybankm2u" | "mb-way" | "mb" | "mcash" | "medicinos-bankas" | "meeza" | "mercado-credito" | "mercado-pago" | "merpay" | "meta-pay" | "metro-bank" | "military-starcard" | "minicuotas" | "ministop" | "mobicred" | "mobikwik" | "mobilepay" | "mode" | "mokka" | "momopay" | "mondido" | "monero" | "monzo" | "mpesa" | "mtn-mobile-money" | "multisafepay" | "mybank" | "myfatoorah" | "n26" | "naps" | "nationale-bioscoopbon" | "nationale-entertainmentcard" | "natwest" | "naver-pay" | "nelo" | "nequi" | "netbanking" | "neteller" | "nh-card" | "nordea" | "notyd" | "novuna" | "npatobarai" | "npkakebarai" | "oca" | "ocbc-bank" | "octo-clicks" | "octopus" | "offline-bank-transfer-latin-america" | "ola-money" | "omannet" | "omasp" | "oney" | "online-banking" | "online-banktransfer" | "op" | "opay" | "openpay" | "optimism" | "orange-mobile-money" | "overstock-citicobrand" | "overstock-citiplcc" | "ovo" | "oxxo" | "ozow" | "pagoefectivo" | "paid" | "paidy" | "palawa" | "palawan" | "pastpay" | "pay-after-delivery-instalments" | "pay-by-bank-us" | "pay-by-bank" | "pay-easy" | "pay-pay" | "paybylink" | "paycash" | "payco" | "payconiq" | "payd" | "payfast-instant-eft" | "payflex" | "payid" | "payitmonthly" | "payjustnow" | "paymark-online-eftpos" | "paymaya" | "payme" | "paynow-mbank" | "paynow" | "payoo-qr" | "payoo" | "paypal" | "payplan" | "paypo" | "payrexx-bank-transfer" | "payright" | "paysafecard-paynl-version" | "paysafecard" | "paysafecash" | "paysera" | "paysquad" | "paytm" | "payto" | "paytomorrow" | "payu" | "payzapp" | "pei" | "perlasfinance" | "permata" | "pf-pay" | "pivo" | "pix" | "podium-cadeaukaart" | "pointspay" | "poli" | "polygon" | "poppankki" | "postfinance-card" | "postfinance-efinance" | "postpay" | "powered-by-ansa-stored-value" | "powered-by-ansa" | "powerpay" | "pps" | "prepaysolutions" | "progressive-leasing" | "przelew24" | "przelewy24-paynl-version" | "przelewy24" | "pse" | "public-bank" | "publicbank-pbe" | "qasitli" | "qliro" | "qr-promptpay" | "qris" | "qrph" | "rabbit-line-pay" | "rabobank" | "rakuten-pay" | "rapid-transfer" | "ratepay" | "raty-pekao" | "rcbc" | "rcs" | "reka" | "resolve-pay" | "revolut" | "rhb-bank" | "rhb-now" | "rietumu" | "riverty-paynl-version" | "riverty" | "rupay" | "saastopankki" | "sadad" | "sam" | "samsung-card" | "samsung-pay" | "santander" | "satisfi" | "satispay" | "sbpl" | "scalapay" | "scream-truck-wallet" | "scream-truck" | "seb" | "seicomart" | "sepa-bank-transfer" | "sepa-direct-debit" | "sequra" | "seven-eleven" | "sezzle" | "shib" | "shinhan-card" | "shop-pay" | "shopeepay" | "shopify-pay" | "siam-commercial" | "siauliu-bankas" | "siirto" | "sika-fsa" | "sika-hsa" | "sika" | "simpl" | "simple-pay" | "sinpe-movil" | "sistecredito" | "skeps" | "skrill-digital-wallet" | "slice-fnbo" | "smartpay" | "snap-checkout" | "snapmint" | "societe-generale" | "sofort" | "softbank" | "solana-pay-helio" | "solana-pay" | "solana" | "souhoola" | "spankki" | "sparkasse" | "spei" | "splitit" | "spotii" | "spraypay" | "standard-chartered" | "stc-pay" | "stoov" | "store-credit" | "stripe" | "sunkus" | "super-payments" | "svea-b2b-faktura" | "svea-b2b-invoice" | "svea-checkout" | "svea-credit-account" | "svea-delbetalning" | "svea-faktura" | "svea-invoice" | "svea-lasku" | "svea-ostukonto" | "svea-part-payment" | "svea-yrityslasku" | "sveaeramaksu" | "swedbank" | "swiftpay" | "swish" | "swissbilling" | "sympl" | "synchrony-pay" | "synchrony" | "tabby" | "tabit" | "taly" | "tamara" | "tandympayment" | "tasa-cero" | "tbi-bank" | "tcf" | "tendopay" | "tensile" | "tesco-lotus" | "thanachart-bank" | "timepayment" | "tiptop" | "todopay" | "toss" | "touch-n-go" | "tpay" | "trevipay" | "truelayer" | "truemoney-pay" | "trustly" | "twig-pay" | "twint" | "twoinvoice" | "uae-visa" | "uangme" | "ubp" | "underpay" | "unionpay" | "unipay" | "uob-ez-pay" | "uob-thai" | "uob" | "upi" | "urbo" | "urpay" | "usdc" | "usdp" | "v-pay" | "valu" | "venmo" | "ventipay" | "venus-plcc" | "viabill" | "vipps" | "visa-electron" | "visa" | "volksbank" | "volt" | "vvv-cadeaukaart-paynl-version" | "vvv-giftcard" | "waave-pay-by-bank" | "wallet" | "walley" | "wbtc" | "webshop-giftcard" | "wechat-pay" | "wechat-paynl-version" | "wegetfinancing" | "whish-checkout" | "whish-pay" | "wise" | "wissel" | "world-chain" | "xrp" | "yape" | "yappy" | "ymobile" | "younited-pay" | "zalopay" | "zapper" | "zingala" | "zinia" | "zip" | "zoodpay" | "zulily-credit-card" | "zustaina";
+export type PhoneAutocompleteField = ExtractStrict<AnyAutocompleteField, "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local-prefix" | "tel-local-suffix" | "tel-local" | "tel-national" | `${AutocompleteAddressGroup} tel` | `${AutocompleteAddressGroup} tel-area-code` | `${AutocompleteAddressGroup} tel-country-code` | `${AutocompleteAddressGroup} tel-extension` | `${AutocompleteAddressGroup} tel-local-prefix` | `${AutocompleteAddressGroup} tel-local-suffix` | `${AutocompleteAddressGroup} tel-local` | `${AutocompleteAddressGroup} tel-national`>;
+interface PhoneFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<FieldDecorationProps, "accessory">, AutocompleteProps<PhoneAutocompleteField> {
+	/**
+	 * The type of number to collect.
+	 *
+	 * Specific style may be applied to each type to provide extra guidance to users. Note that no extra validation is performed based on the type.
+	 *
+	 * @default '' meaning no specific kind of phone number
+	 */
+	type?: "mobile" | "";
+}
+interface ProductThumbnailProps$1 extends GlobalProps, BaseImageProps {
+	/**
+	 * Decorates the product thumbnail with the quantity of the product.
+	 */
+	totalItems?: number;
+	/**
+	 * Adjusts the size the product thumbnail image.
+	 *
+	 * @default 'base'
+	 */
+	size?: SizeKeyword;
+	/**
+	 * Invoked when load of provided image completes successfully.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+	 */
+	onLoad?: () => void;
+	/**
+	 * Invoked on load error of provided image.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+	 */
+	onError?: () => void;
+}
 interface ProgressProps$1 extends GlobalProps {
 	/**
 	 * A label that describes the purpose of the progress. When set,
@@ -2008,6 +2460,14 @@ interface SectionProps$1 extends GlobalProps, ContainerProps {
 	 */
 	padding?: "base" | "none";
 }
+interface SelectProps$1 extends GlobalProps, AutocompleteProps<AnyAutocompleteField>, Pick<FieldDecorationProps, "icon">, Omit<FieldProps, "defaultValue">, FocusEventProps {
+	/**
+	 * The options a user can select from.
+	 *
+	 * Accepts `Option` and `OptionGroup` components.
+	 */
+	children?: ComponentChildren;
+}
 interface SpinnerProps$1 extends GlobalProps {
 	/**
 	 * Adjusts the size of the spinner icon.
@@ -2058,6 +2518,22 @@ interface StackProps$1 extends BaseBoxPropsWithRole, GapProps {
 	 * @default 'normal'
 	 */
 	alignContent?: AlignContentKeyword;
+}
+interface SummaryProps$1 extends GlobalProps {
+	/**
+	 * The content to use as the label.
+	 *
+	 * Interactive content is disallowed. For example, you can use a `<Text>` element for extra formatting but
+	 * elements like buttons and fields are not allowed.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
+	 *
+	 * @implementation Surfaces may apply styling to this element. An icon suggesting the state (open or closed) of the
+	 * details element is recommended.
+	 *
+	 * @implementation Surface may decide to warn when interactive elements are used.
+	 */
+	children?: ComponentChildren;
 }
 interface TextProps$1 extends GlobalProps, AccessibilityVisibilityProps, BaseTypographyProps, DisplayProps {
 	/**
@@ -2155,6 +2631,14 @@ export type TextType =
  * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
  */
  | "generic";
+interface TextAreaProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<TextAutocompleteField> {
+	/**
+	 * A number of visible text lines.
+	 *
+	 * @default 2
+	 */
+	rows?: number;
+}
 interface TextFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<TextAutocompleteField>, FieldDecorationProps {
 }
 interface TimeProps$1 {

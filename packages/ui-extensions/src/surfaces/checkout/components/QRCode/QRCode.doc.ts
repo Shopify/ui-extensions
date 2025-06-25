@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
 import sharedContent from '../../../../docs/shared/components/QRCode';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -11,7 +12,12 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'QRCodeProps',
+      type: 'QRCodeBaseProps',
+    },
+    {
+      title: 'Events',
+      description: '',
+      type: 'QRCodeElementEvents',
     },
   ],
   defaultExample: {

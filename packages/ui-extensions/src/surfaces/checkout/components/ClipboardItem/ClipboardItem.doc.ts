@@ -10,7 +10,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'ClipboardItemProps',
+      type: 'ClipboardItemBaseProps',
     },
   ],
   defaultExample: {

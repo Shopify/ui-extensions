@@ -272,8 +272,8 @@ Use the comparison table below to see which Polaris web components are available
 |   \`TextBlock\`              |   [Paragraph](/docs/api/checkout-ui-extensions/2025-10-rc/components/titles-and-text/paragraph)                                         |   Available today                   |
 |   \`TextField\`              |   [TextField](/docs/api/checkout-ui-extensions/2025-10-rc/components/forms/textfield)                                           |   Available today                      |
 |                              |   [Time](/docs/api/checkout-ui-extensions/2025-10-rc/components/titles-and-text/time)                                                |   Available today                      |
-|   \`ToggleButton\`           |   \`Option\`                                         |   Coming soon                 |
-|   \`ToggleButtonGroup\`      |   \`OptionGroup\`                                         |   Coming soon            |
+|   \`ToggleButton\`           |   TBD                                         |   Coming soon                 |
+|   \`ToggleButtonGroup\`      |   TBD                                         |   Coming soon            |
 |   \`Tooltip\`                |   \`Tooltip\`                                             |   Coming soon                          |
 |   \`View\`                   |   [Box](/docs/api/checkout-ui-extensions/2025-10-rc/components/structure/box)                                                 |   Available today                      |
 `,

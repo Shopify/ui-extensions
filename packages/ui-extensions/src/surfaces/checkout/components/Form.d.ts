@@ -1,36 +1,64 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+/* eslint-disable import-x/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable line-comment-position */
 /* eslint-disable @typescript-eslint/unified-signatures */
 /* eslint-disable no-var */
-/* eslint-disable import/namespace */
+/* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {FormProps$1} from './components-shared.d.ts';
 
-export interface FormProps extends Pick<FormProps$1, 'id' | 'disabled' | 'onSubmit'> {
+/**
+ * Used when an element does not have children.
+ */
+export interface BaseElementProps<TClass = HTMLElement> {
+    key?: preact.Key;
+    ref?: preact.Ref<TClass>;
+    slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    children?: preact.ComponentChildren;
+}
+export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
+
+declare const tagName = "s-form";
+export interface FormBaseProps extends Pick<FormProps$1, 'id' | 'disabled'> {
+}
+export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
     onSubmit?: () => void;
 }
-export interface FormElement extends Omit<FormProps, 'onSubmit' | 'children'>, Omit<HTMLElement, 'id' | 'onsubmit'> {
-    onsubmit: FormProps['onSubmit'];
+export interface FormElementEvents {
+    /**
+     * A callback that is run when the form is submitted.
+     *
+     * Use `event.waitUntil` to signal how long it takes to save the data,
+     * and whether it was successful or not.
+     */
+    submit?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface FormElement extends Omit<FormBaseProps, 'children'>, Omit<FormEvents, 'onSubmit'>, Omit<HTMLElement, 'id' | 'onsubmit'> {
+    onsubmit: FormEvents['onSubmit'];
+}
+export interface FormProps extends FormBaseProps, FormEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        's-form': FormElement;
+        [tagName]: FormElement;
     }
 }
 declare module 'preact' {
-    interface BaseProps {
-        children?: preact.ComponentChildren;
-        slot?: Lowercase<string>;
-    }
     namespace createElement.JSX {
         interface IntrinsicElements {
-            's-form': FormProps & BaseProps;
+            [tagName]: FormProps & BaseElementPropsWithChildren<FormElement>;
         }
     }
 }
 
-export type { FormElement, FormProps };
+export type { FormBaseProps, FormElement, FormElementEvents, FormEvents, FormProps };
