@@ -28,11 +28,6 @@ const data: ReferenceEntityTemplateSchema = {
           code: './examples/basic-Avatar-preact.example.tsx',
           language: 'tsx',
         },
-        {
-          title: 'JS',
-          code: './examples/basic-Avatar-js.example.ts',
-          language: 'js',
-        },
       ],
     },
   },
