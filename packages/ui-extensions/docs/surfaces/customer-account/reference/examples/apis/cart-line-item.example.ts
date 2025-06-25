@@ -1,4 +1,4 @@
-export default function extension() {
+export default async () => {
   const target = shopify.target;
 
   const text = document.createElement('s-text');

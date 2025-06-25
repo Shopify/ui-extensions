@@ -1,6 +1,6 @@
 import {render} from 'preact';
 import {useEffect, useState} from 'preact/hooks';
-export default function extension() {
+export default async () => {
   render(<App />, document.body);
 }
 

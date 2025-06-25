@@ -1,15 +1,13 @@
 import { render } from 'preact';
 
-export default function extension() {
+export default async () => {
   render(<Extension />, document.body);
 }
 
 
 function Extension() {
-  const { resourcePicker } = shopify;
-
   const handleSelectProduct = async () => {
-    const selected = await resourcePicker({ type: 'product' });
+    const selected = await shopify.resourcePicker({ type: 'product' });
     console.log(selected);
   };
 

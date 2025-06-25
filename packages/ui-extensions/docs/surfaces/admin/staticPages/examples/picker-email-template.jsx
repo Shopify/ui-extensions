@@ -1,14 +1,12 @@
 import { render } from 'preact';
 
-export default function extension() {
+export default async () => {
   render(<Extension />, document.body);
 }
 
 function Extension() {
-  const { picker } = shopify;
-
   const handleSelectEmailTemplate = async () => {
-    const pickerInstance = await picker({
+    const pickerInstance = await shopify.picker({
       heading: 'Select a template',
       multiple: false,
       headers: [

@@ -1,4 +1,4 @@
-export default function extension() {
+export default async () => {
   async function queryApi() {
     // Request a new (or cached) session token from Shopify
     const token =

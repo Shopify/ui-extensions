@@ -1,7 +1,7 @@
 import {render} from 'preact';
 
 // 1. Export the extension
-export default function extension() {
+export default async () => {
   render(<Extension />, document.body);
 }
 

@@ -1,4 +1,4 @@
-export default function extension() {
+export default async () => {
   const bitcoinAddress =
     '14qViLJfdGaP4EeHnDyJbEGQysnCpwk3gd';
   const qrCodeContent = `bitcoin:${bitcoinAddress}`;

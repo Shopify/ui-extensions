@@ -1,4 +1,4 @@
-export default function extension() {
+export default async () => {
   const page = document.createElement('s-page');
 
   const primaryAction = document.createElement('s-button');

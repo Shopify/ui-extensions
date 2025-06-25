@@ -1,4 +1,4 @@
-export default function extension() {
+export default async () => {
   const button =
     document.createElement('s-button');
   button.textContent = 'Report an issue';

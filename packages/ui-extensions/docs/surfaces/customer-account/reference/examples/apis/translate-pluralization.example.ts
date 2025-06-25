@@ -1,5 +1,5 @@
 /* See the locales/en.default.json tab for the translation keys and values for this example */
-export default function extension() {
+export default async () => {
   const points = 10000;
   const formattedPoints =
     shopify.i18n.formatNumber(points);
