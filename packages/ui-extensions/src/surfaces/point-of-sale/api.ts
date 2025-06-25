@@ -31,6 +31,8 @@ export type {LocaleApi, LocaleApiContent} from './api/locale-api/locale-api';
 export type {
   NavigationApiContent,
   NavigationApi,
+  PosScreen,
+  PosScreenParams,
 } from './api/navigation-api/navigation-api';
 
 export type {OrderApiContent, OrderApi} from './api/order-api/order-api';
