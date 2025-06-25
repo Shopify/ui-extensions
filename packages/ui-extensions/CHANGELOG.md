@@ -1,5 +1,20 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.7
+
+### Minor Changes
+
+- [#2954](https://github.com/Shopify/ui-extensions/pull/2954) [`d01259b7b68ac5905ff745906f625eea0ed5dbd8`](https://github.com/Shopify/ui-extensions/commit/d01259b7b68ac5905ff745906f625eea0ed5dbd8) Thanks [@oliverigor](https://github.com/oliverigor)! - Add checkout components:
+
+  - Checkbox
+  - Modal
+  - ProductThumbnail
+  - EmailField
+  - PhoneField
+  - TextArea
+  - Map
+  - MapMarker
+
 ## 2025.10.0-rc.6
 
 ### Patch Changes
