@@ -15,67 +15,38 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
-      anchorLink: 'compatibility-policy',
-      title: 'Compatibility Policy',
-      sectionContent: '',
-      sectionNotice: [
-        {
-          title: 'End of Compatibility Plan',
-          type: 'Warning',
-          sectionContent: `
-          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end compatibility for versions on a one-year rolling basis. This means that POS will no longer run extensions using removed versions. This table details the end of compatibility schedule.
-
-|released version|removed versions|
-|---:|---|
-|2025-04|1.0.0, 1.0.1, 1.1.2, 1.2.0, 1.3.0, 1.4.0, 1.5.1, 1.6.0, 1.7.0, 2024-04|
-|2025-07|2024-07|
-|2025-10|2024-10|
-|2026-01|2025-01|
-|2026-04|2025-04|
-
-Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.`,
-        },
-      ],
-    },
-    {
-      type: 'Generic',
       anchorLink: '202507',
       title: '2025.07',
-      sectionNotice: [
-        {
-          type: 'critical',
-          title: 'Not yet supported',
-          sectionContent: `This version is not yet compatible with POS. Extensions targeting this version will be rejected by POS and will not run. Please wait for a compatible POS update before deploying extensions targeting this version.`,
-        },
-      ],
       sectionContent: `
-- Added in POS version: N/A
-- Removed in POS version: N/A
-- Release day: N/A
+- Added in POS version: 10.6
+- Release day: 07/03/2025
+
+## Breaking Changes
+
+- Removed the deprecated \`FormattedTextField\` component. Use the [TextField](/docs/api/pos-ui-extensions/components/textfield) component instead. It will continue to work in POS 10.6.0, but will no longer function in POS 10.7.0.
+
+## Deprecations
+
+- Deprecated \`'minor'\`, \`'major'\`, \`'spot'\`, \`'caption'\`, \`'badge'\` as values for the \`size\` prop in the [Icon](/docs/api/pos-ui-extensions/components/icon) component. Use \`'s'\`, \`'m'\`, \`'l'\`, \`'xl'\` instead.
+- Deprecated \`'arrow'\`, \`'available-at-other-locations'\`, \`'collections'\`, \`'connectivity-warning'\`, \`'delivery'\`, \`'home'\`, \`'image-placeholder'\`, \`'internet'\`, \`'menu'\`, \`'orders'\`, \`'products'\`, \`'shipment'\` as values for the \`name\` prop in the [Icon](/docs/api/pos-ui-extensions/components/icon) component. See valid values for [\`IconName\`](/docs/api/pos-ui-extensions/latest/components/icon#icon-propertydetail-name).
 
 ## Important Fixes
 
-- Update pos.draft-order-details.block.render allowed components to \`BlockComponents\`.
-- Added support for a product variant id field in the \`ProductApi\` interface.
-
-### Breaking Changes
-
-- Removed the deprecated \`FormattedTextField\` component. Use the \`TextField\` component instead.
+- Updated [pos.draft-order-details.block.render](https://shopify.dev/docs/api/pos-ui-extensions/targets/draft-order-details/pos-draft-order-details-block-render) to allow the proper set of components, called \`BlockComponents\`. Previously, this target erroneously accepted \`ActionComponents\`, which are intended for targets like \`pos.draft-order-details.action.render\`.
 
 ### Features
 
-- Added required \`posVersion\` property to \`Session\` interface.
-- Added optional \`currency\` property to \`Discount\` interface.
-- Added \`executedAt\` property to \`BaseTransactionComplete\` interface.
-- Added optional \`exchangeId\` and \`returnId\` property to \`ReturnTransactionData\` interface.
-- Added required \`variantId\` property to \`ProductApi\` interface.
-- Added optional \`taxLines\` property to \`ShippingLine\` interface.
-- Added optional \`onBlur\` handler to \`SearchBar\` component.
-- Added optional \`tone\` property to \`Icon\` component and expanded \`name\` and \`size\` options.
-- Deprecated \`'minor'\`, \`'major'\`, \`'spot'\`, \`'caption'\`, \`'badge'\` as values for the \`size\` prop in the [Icon](/docs/api/pos-ui-extensions/components/icon) component. Use \`'s'\`, \`'m'\`, \`'l'\`, \`'xl'\` instead.
-- Deprecated \`'arrow'\`, \`'available-at-other-locations'\`, \`'collections'\`, \`'connectivity-warning'\`, \`'delivery'\`, \`'home'\`, \`'image-placeholder'\`, \`'internet'\`, \`'menu'\`, \`'orders'\`, \`'products'\`, \`'shipment'\` as values for the \`name\` prop in the [Icon](/docs/api/pos-ui-extensions/components/icon) component. See the available icon list names in the \`name\` prop documentation.
+- Added required \`posVersion\` property to [Session](/docs/api/pos-ui-extensions/apis/session-api) interface.
+- Added optional \`currency\` property to [Discount](/docs/api/pos-ui-extensions/apis/cart-line-item-api#cartlineitemapi-propertydetail-cartlineitem) interface.
+- Added \`executedAt\` property to [BaseTransactionComplete](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render#transactioncompletewithreprintdata-propertydetail-transaction) interface.
+- Added optional \`exchangeId\` and \`returnId\` property to [ReturnTransactionData](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render#transactioncompletewithreprintdata-propertydetail-transaction) interface.
+- Added required \`variantId\` property to [ProductApi](/docs/api/pos-ui-extensions/apis/product-api#productapi-propertydetail-variantid) interface.
+- Added optional \`taxLines\` property to [ShippingLine](/docs/api/pos-ui-extensions/targets/post-transaction/pos-transaction-complete-event-observe#transactioncompletedata-propertydetail-transaction) interface.
+- Added optional \`onBlur\` handler to [SearchBar](/docs/api/pos-ui-extensions/components/searchbar) component.
+- Added optional \`tone\` property to [Icon](/docs/api/pos-ui-extensions/components/icon) component and expanded \`name\` and \`size\` options.
 
-**Developer Preview**:
+### Developer Preview
+
   - Introduced a [Storage API](/docs/api/pos-ui-extensions/apis/storage-api). The Storage API gives the UI Extension access to store data on the POS device that the extension is running on.
   `,
     },
@@ -85,8 +56,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '2025.04',
       sectionContent: `
 - Added in POS version: 9.31
-- Removed in POS version: N/A
-- Release day: N/A
+- Release day: 04/01/2025
 
 ## Important Fixes
 
@@ -121,7 +91,6 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '2025.01',
       sectionContent: `
 - Added in POS version: 9.26.0
-- Removed in POS version: N/A
 - Release day: 1/6/2025
 
 ## Important Fixes
@@ -189,8 +158,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '2024.10.1',
       sectionContent: `
 - Added in POS version: 9.22.0
-- Removed in POS version: N/A
-- Release day: 11/11/2024.
+- Release day: 11/11/2024
 
 ## Important Fixes
 
@@ -219,8 +187,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '2024.10',
       sectionContent: `
 - Added in POS version: 9.19.0
-- Removed in POS version: N/A
-- Release day: 10/1/2024.
+- Release day: 10/1/2024
 
 ## Important Fixes
 
@@ -256,8 +223,7 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       title: '2024.07',
       sectionContent: `
 - Added in POS version: 9.15.0
-- Removed in POS version: N/A
-- Release day: 08/14/2024.
+- Release day: 08/14/2024
 
 ## Important Fixes
 
@@ -300,193 +266,12 @@ Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more i
       ],
       sectionContent: `
 - Added in POS version: 9.11.0
-- Removed in POS version: 9.31.0
-- Release day: 06/10/2024.
+- Release day: 06/10/2024
 
 ### Features
 
 - Added support for the ${TargetLink.PosPurchasePostActionMenuItemRender} and ${TargetLink.PosPurchasePostActionRender} targets.
       `,
-    },
-    {
-      type: 'Generic',
-      anchorLink: '170',
-      title: '1.7.0',
-      sectionNotice: [
-        {
-          sectionContent: `This is the final version using the \`retail-ui-extensions(-react)\` package. Please see the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.`,
-          title: 'Note',
-          type: 'Info',
-        },
-      ],
-      sectionContent: `
-- Added in POS version: 9.4.0
-- Removed in POS version: 9.31.0
-- Release day: 03/13/2024.
-
-### Features
-
-- Added \`discounts\` property to the [Cart](/docs/api/pos-ui-extensions/apis/cart-api) object in the Cart API.
-- Added \`addCartCodeDiscount\` function to the [Cart API](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-addcartcodediscount).
-- Added \`removeAllDiscounts\` function to the [Cart API](/docs/api/pos-ui-extensions/apis/cart-api#cartapi-propertydetail-removealldiscounts).
-- Added \`listHeaderComponent\` property to the [List](/docs/api/pos-ui-extensions/components/list#list-propertydetail-listheadercomponent) component.
-      `,
-    },
-    {
-      type: 'Generic',
-      anchorLink: '160',
-      title: '1.6.0',
-      sectionContent: `
-- Added in POS version: 9.2.0
-- Removed in POS version: 9.31.0
-- Release day: 02/15/2024.
-
-### Features
-
-- Added \`bannerProps\` prop to [CameraScanner](/docs/api/pos-ui-extensions/components/camerascanner#camerascanner-propertydetail-bannerprops).
-- Added \`fetchPaginatedProductVariantsWithProductId\` to [ProductSearch](/docs/api/pos-ui-extensions/api/productsearch-api#productsearchapi-propertydetail-fetchpaginatedproductvariantswithproductid).
-      `,
-    },
-    {
-      type: 'Generic',
-      anchorLink: '151',
-      title: '1.5.1',
-      sectionContent: `
-- Added in POS version: 8.22.0
-- Removed in POS version: 9.31.0
-- Release day: 11/13/2023.
-
-### Features
-
-- Added \`isGiftCard\` prop to [lineItem](/docs/api/pos-ui-extensions/apis/cart-api) in the Cart API.
-- Deprecated \`DiscountType\` and introduced \`CartDiscountType\` and \`LineItemDiscountType\` in the Cart API.
-      `,
-    },
-    {
-      type: 'Generic',
-      anchorLink: '150',
-      title: '1.5.0',
-      sectionContent: `
-- Added in POS version: 8.21.0
-- Removed in POS version: 9.31.0
-- Release day: 10/30/2023.
-
-### Features
-
-- Added \`bulkAddLineItemProperties\` to the [Cart API](/docs/api/pos-ui-extensions/apis/cart-api), which allows updating multiple line item properties in one call.
-- Added \`bulkSetLineItemDiscounts\` to the [Cart API](/docs/api/pos-ui-extensions/apis/cart-api), which allows updating multiple line item discounts in one call.
-      `,
-    },
-    {
-      type: 'Generic',
-      anchorLink: '140',
-      title: '1.4.0',
-      sectionContent: `
-- Added in POS version: 8.18.0
-- Removed in POS version: 9.31.0
-- Release day: 9/27/2023.
-
-### Features
-
-- Added optional \`BadgeStatus\` prop to the [Badge component](/docs/api/pos-ui-extensions/components/badge).
-- Added \`isDevice\` function to the [Device API](/docs/api/pos-ui-extensions/apis/device-api).
-- Introduced a [\`Connectivity API\`](/docs/api/pos-ui-extensions/apis/connectivity-api). The Connectivity API gives the UI extension access to the information about the device connectivity.
-- Added optional \`overrideNavigateBack\` prop to the [Screen component](/docs/api/pos-ui-extensions/components/screen).`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: '130',
-      title: '1.3.0',
-      sectionContent: `
-- Added in POS version: 8.15.0
-- Removed in POS version: 9.31.0
-- Release day: 8/16/2023.
-
-### Features
-
-Introduced the following components:
-
-- [\`DatePicker\`](/docs/api/pos-ui-extensions/components/datepicker): Used to select dates.
-- [\`TimePicker\`](/docs/api/pos-ui-extensions/components/timepicker): Used to select times.
-- [\`DateField\`](/docs/api/pos-ui-extensions/components/datefield): Used to select dates using a text input.
-- [\`TimeField\`](/docs/api/pos-ui-extensions/components/timefield): Used to select times using a text input.
-- [\`TextArea\`](/docs/api/pos-ui-extensions/components/textarea): A text field to allow merchants to input or modify multiline text.
-- [\`NumberField\`](/docs/api/pos-ui-extensions/components/numberfield): A text field to capture numerical values.
-- [\`EmailField\`](/docs/api/pos-ui-extensions/components/emailfield): A text field to capture email addresses.
-- [\`TextField\`](/docs/api/pos-ui-extensions/components/textfield): A updated text field supporting text input.
-- [\`Tile component\`](/docs/api/pos-ui-extensions/components/tile): Updated to support \`badgeValue\`. The \`enabled\` and \`onPress\` properties are now optional.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: '120',
-      title: '1.2.0',
-      sectionContent: `
-- Added in POS version: 8.12.0
-- Removed in POS version: 9.31.0
-- Release day: 6/26/2023.
-
-### Features
-
-- Introduced a [PinPad component](/docs/api/pos-ui-extensions/components/pinpad). It can be used to authenticate or identify individuals through a standardized number pad.
-- Introduced [Product Search API](/docs/api/pos-ui-extensions/apis/productsearch-api). The Product Search API gives the UI Extension access to the native product search and fetching functionality of Shopify POS.
-- Added a function for setting an attributed staff to the cart and line items to [Cart API](/docs/api/pos-ui-extensions/api/cart-api).
-- The [Navigator component](/docs/api/pos-ui-extensions/components/navigator) now supports a new prop called \`initialScreenName\`. It can be used to set the name of the \`Screen\` to initialize to.
-- Introduced a [Device API](/docs/api/pos-ui-extensions/apis/device-api). The Device API gives the UI Extension access to the information about the device that the extension is running on.
-- The [List component](/docs/api/pos-ui-extensions/components/list) was updated to support \`badge\` property for \`leftSide\` image, and \`toggleSwitch\` property for \`rightSide\`.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: '112',
-      title: '1.1.2',
-      sectionContent: `
-- Added in POS version: 8.9.0
-- Removed in POS version: 9.31.0
-- Release day: 5/15/2023.
-
-### Features
-
-- Introduces new \`CameraScanner\` component.
-- Introduces new \`Scanner\` API.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: '101',
-      title: '1.0.1',
-      sectionContent: `
-- Added in POS version: 8.8.1
-- Removed in POS version: 9.31.0
-- Release day: 5/3/2023.
-
-### Fixes
-
-- Addresses a problem where certain published extensions could not be launched on POS.
-`,
-    },
-    {
-      type: 'Generic',
-      anchorLink: '100',
-      title: '1.0.0',
-      sectionContent: `
-- Added in POS version: 8.8.0
-- Removed in POS version: 9.31.0
-- Release day: 5/1/2023.
-
-### Features
-
-- The \`Banner\` component now can hide the action button.
-- The \`Stepper\` component now has \`minimumValue\`, \`maximumValue\`, and \`value\` props.
-
-### Fixes
-
-- An unremovable scanning icon was removed from \`SearchBar\`.
-- Icon sizes were adjusted for \`SearchBar\` to avoid cropping.
-- \`FormattedTextField\` now doesn't crash on \`currency\` value for \`inputType\`.
-- Removed multiple broken \`inputType\` values for \`FormattedTextField\`.
-- Resolved multiple path issues with the package.
-`,
     },
   ],
 };
