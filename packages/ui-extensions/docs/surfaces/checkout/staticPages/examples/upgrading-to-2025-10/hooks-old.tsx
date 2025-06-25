@@ -1,7 +1,8 @@
 import {
   reactExtension,
   Checkbox,
-  useApi,
+  useAttributeValues,
+  useApplyAttributeChange,
 } from '@shopify/ui-extensions-react/checkout';
 
 export default reactExtension('purchase.checkout.block.render', () => (
@@ -9,10 +10,11 @@ export default reactExtension('purchase.checkout.block.render', () => (
 ));
 
 function Extension() {
-  const api = useApi();
+  const [includeGift] = useAttributeValues(['includeGift']);
+  const applyAttributeChange = useApplyAttributeChange();
 
   async function onCheckboxChange(isChecked) {
-    const result = await api.applyAttributeChange({
+    const result = await applyAttributeChange({
       type: 'updateAttribute',
       key: 'includeGift',
       value: isChecked ? 'yes' : 'no',
@@ -22,7 +24,7 @@ function Extension() {
   }
 
   return (
-    <Checkbox onChange={onCheckboxChange}>
+    <Checkbox checked={includeGift === 'yes'} onChange={onCheckboxChange}>
       Include a complimentary gift
     </Checkbox>
   );

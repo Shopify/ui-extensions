@@ -14,7 +14,10 @@ fail_and_exit() {
 run_sed() {
   if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS
-    sed -Ei '' "$1" "$2"
+    # The --in-place flag is only needed for sed Gnu 4.9 which is what
+    # checkout-web uses in its nix store. This is NOT compatible with the
+    # ui-extensions repo.
+    sed --in-place='' -E "$1" "$2"
   else
     # Linux and other Unix-like systems
     sed -ri "$1" "$2"

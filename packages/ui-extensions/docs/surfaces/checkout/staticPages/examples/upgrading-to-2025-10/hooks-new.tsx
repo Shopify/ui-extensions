@@ -1,13 +1,16 @@
 import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
+import {useAttributeValues} from '@shopify/ui-extensions/checkout/preact';
 
 export default function extension() {
   render(<Extension />, document.body);
 }
 
 function Extension() {
+  const [includeGift] = useAttributeValues(['includeGift']);
   return (
     <s-checkbox
+      checked={includeGift === 'yes'}
       onChange={onCheckboxChange}
       label="Include a complimentary gift"
     />
