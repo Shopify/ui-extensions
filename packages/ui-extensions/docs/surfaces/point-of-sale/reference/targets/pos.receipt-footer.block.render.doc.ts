@@ -1,6 +1,6 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {generateCodeBlock} from '../helpers/generateCodeBlock';
-import {TRANSACTION_COMPLETE_DEFINITION} from '../helpers/helper.docs';
+import {CUSTOM_DATA} from '../helpers/helper.docs';
 import {ExtensionTargetType} from '../types/ExtensionTargetType';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -27,7 +27,7 @@ const data: ReferenceEntityTemplateSchema = {
     },
   ],
   type: 'Target',
-  ...TRANSACTION_COMPLETE_DEFINITION,
+  definitions: [CUSTOM_DATA('TransactionCompleteWithReprintData')],
 };
 
 export default data;

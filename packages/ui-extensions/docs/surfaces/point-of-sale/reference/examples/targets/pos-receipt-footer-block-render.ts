@@ -7,22 +7,21 @@ import {
 
 export default extension('pos.receipt-footer.block.render', (root, api) => {
   const block = root.createComponent(POSReceiptBlock);
+  const transaction = api.transaction;
   const textTransactionType = root.createComponent(
     Text,
     {},
-    `Transaction type: ${api.transaction.transactionType}`,
+    `Transaction type: ${transaction.transactionType}`,
   );
   const textTaxTotal = root.createComponent(
     Text,
     {},
-    `Total tax: ${api.transaction.taxTotal}`,
+    `Total tax (${transaction.taxTotal.currency}): ${transaction.taxTotal.amount}`,
   );
   const qrCodeValue =
-    api.transaction.transactionType === 'Exchange'
-      ? `exampleExchange=${encodeURIComponent(
-          api.transaction.exchangeId ?? '',
-        )}`
-      : `exampleOrder=${encodeURIComponent(api.transaction.orderId ?? '')}`;
+    transaction.transactionType === 'Exchange'
+      ? `exampleExchange=${encodeURIComponent(transaction.exchangeId ?? '')}`
+      : `exampleOrder=${encodeURIComponent(transaction.orderId ?? '')}`;
 
   const qrCode = root.createComponent(QRCode, {
     value: `https://www.shopify.com?${qrCodeValue}`,

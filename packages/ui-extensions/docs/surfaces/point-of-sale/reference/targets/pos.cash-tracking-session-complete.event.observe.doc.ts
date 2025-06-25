@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
       name: ExtensionTargetType.PosCashTrackingSessionStartObserve,
       subtitle: 'Target',
       type: 'blocks',
-      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-start-observe',
+      url: '/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-start-event-observe',
     },
   ],
   type: 'Target',
