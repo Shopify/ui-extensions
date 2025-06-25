@@ -94,7 +94,7 @@ As of \`2025-10\`, Shopify recommends Preact for UI extensions. Update the depen
       anchorLink: 'migrate-api-calls',
       title: 'Migrate API calls',
       sectionContent:
-        'Instead of accessing APIs from a callback parameter, access them from the global `shopify` object. If you had previously been using React hooks, import those same hooks from a new Preact-specific package.',
+        "Instead of accessing APIs from a callback parameter, access them from the global `shopify` object. Here's an example of migrating the `applyAttributeChange` API call.",
       accordionContent: [
         {
           title: 'New API calls in Preact',
@@ -134,6 +134,43 @@ As of \`2025-10\`, Shopify recommends Preact for UI extensions. Update the depen
                 title: 'JavaScript',
                 code: './examples/upgrading-to-2025-10/apis-old-js.ts',
                 language: 'ts',
+              },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      type: 'GenericAccordion',
+      anchorLink: 'migrate-hooks',
+      title: 'Migrate hooks',
+      sectionContent:
+        "If you had previously been using React hooks, import those same hooks from a new Preact-specific package. Here's an example of migrating the `useAttributeValues` hook.",
+      accordionContent: [
+        {
+          title: 'New hooks in Preact',
+          description: '',
+          codeblock: {
+            title: 'New hooks in Preact',
+            tabs: [
+              {
+                title: 'Preact',
+                code: './examples/upgrading-to-2025-10/hooks-new.tsx',
+                language: 'tsx',
+              },
+            ],
+          },
+        },
+        {
+          title: 'Previous hooks in React',
+          description: '',
+          codeblock: {
+            title: 'Previous hooks in React',
+            tabs: [
+              {
+                title: 'React',
+                code: './examples/upgrading-to-2025-10/hooks-old.tsx',
+                language: 'tsx',
               },
             ],
           },
@@ -215,48 +252,49 @@ Use the comparison table below to see which Polaris web components are available
       sectionContent: `
 |   **Legacy&nbsp;Component**   |   **Polaris&nbsp;Web&nbsp;Component**   |   **Migration&nbsp;Notes**   |
 | :----------------------: | :-------------------------------: | :---------------------: |
-|                          |   [Abbreviation](/docs/api/checkout-ui-extensions/2025-10-rc/components/titles-and-text/abbreviation)   |   Available today                      |
+|                          |   [Abbreviation](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/titles-and-text/abbreviation)   |   Available today                      |
 |   \`Badge\`                  |   \`Badge\`                                               |   Coming soon                          |
-|   \`Banner\`                 |   [Banner](/docs/api/checkout-ui-extensions/2025-10-rc/components/feedback/banner)                                              |   Available today                      |
+|   \`Banner\`                 |   [Banner](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/feedback/banner)                                              |   Available today                      |
 |   \`BlockLayout\`            |                                                      |   Removed. Use \`Grid\`                  |
-|   \`BlockSpacer\`            |                                                      |   Removed. Use [Stack](/docs/api/checkout-ui-extensions/2025-10-rc/components/structure/stack) with \`gap\` property          |
-|   \`BlockStack\`             |                                                      |   Removed. Use [Stack](/docs/api/checkout-ui-extensions/2025-10-rc/components/structure/stack) with \`direction=block\`       |
-|   \`Button\`                 |   [Button](/docs/api/checkout-ui-extensions/2025-10-rc/components/actions/button)                                              |   Available today                      |
+|   \`BlockSpacer\`            |                                                      |   Removed. Use [Stack](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/structure/stack) with \`gap\` property          |
+|   \`BlockStack\`             |                                                      |   Removed. Use [Stack](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/structure/stack) with \`direction=block\`       |
+|   \`Button\`                 |   [Button](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/actions/button)                                              |   Available today                      |
 |   \`Chat\`                   |   \`Chat\`                                                |   Coming soon                          |
-|   \`Checkbox\`               |   \`Checkbox\`                                            |   Coming soon                          |
+|   \`Checkbox\`               |   [Checkbox](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/forms/checkbox)                                            |   Available today                          |
 |   \`Choice\`                 |   \`Choice\`                                              |   Coming soon                          |
 |   \`ChoiceList\`             |   \`ChoiceList\`                                          |   Coming soon                          |
-|   \`ClipboardItem\`          |   [ClipboardItem](/docs/api/checkout-ui-extensions/2025-10-rc/components/utilities/clipboarditem)                                       |   Available today                      |
+|   \`ClipboardItem\`          |   [ClipboardItem](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/utilities/clipboarditem)                                       |   Available today                      |
 |   \`ConsentCheckbox\`        |   \`ConsentCheckbox\`                                     |   Coming soon                          |
 |   \`ConsentPhoneField\`      |   \`ConsentPhoneField\`                                   |   Coming soon                          |
 |   \`DateField\`              |   \`DateField\`                                           |   Coming soon                          |
 |   \`DatePicker\`             |   \`DatePicker\`                                          |   Coming soon                          |
 |   \`Disclosure\`             |   \`Details\` and \`Summary\`                         |   Coming soon                          |
 |   \`Divider\`                |   \`Divider\`                                             |   Coming soon                          |
-|   \`DropZone\`               |   [DropZone](/docs/api/checkout-ui-extensions/2025-10-rc/components/forms/dropzone)                                            |   Available today                      |
-|   \`Form\`                   |   [Form](/docs/api/checkout-ui-extensions/2025-10-rc/components/forms/form)                                                |   Available today                      |
+|   \`DropZone\`               |   [DropZone](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/forms/dropzone)                                            |   Available today                      |
+|   \`EmailField\`             |   [EmailField](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/forms/emailfield)                                            |   Available today                      |
+|   \`Form\`                   |   [Form](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/forms/form)                                                |   Available today                      |
 |   \`Grid\`                   |   \`Grid\`                                                |   Coming soon                          |
 |   \`GridItem\`               |   \`GridItem\`                                            |   Coming soon                          |
-|   \`Heading\`                |   [Heading](/docs/api/checkout-ui-extensions/2025-10-rc/components/titles-and-text/heading)                                             |   Available today                      |
-|   \`HeadingGroup\`           |   [Section](/docs/api/checkout-ui-extensions/2025-10-rc/components/structure/section)                                             |   Available today                          |
-|   \`Icon\`                   |   [Icon](/docs/api/checkout-ui-extensions/2025-10-rc/components/media/icon)                                                |   Available today                          |
-|   \`Image\`                  |   [Image](/docs/api/checkout-ui-extensions/2025-10-rc/components/media/image)                                               |   Available today                      |
+|   \`Heading\`                |   [Heading](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/titles-and-text/heading)                                             |   Available today                      |
+|   \`HeadingGroup\`           |   [Section](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/structure/section)                                             |   Available today                          |
+|   \`Icon\`                   |   [Icon](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/media/icon)                                                |   Available today                          |
+|   \`Image\`                  |   [Image](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/media/image)                                               |   Available today                      |
 |   \`InlineLayout\`           |                                                      |   Removed. Use \`Grid\`                   |
-|   \`InlineSpacer\`           |                                                      |   Removed. Use [Stack](/docs/api/checkout-ui-extensions/2025-10-rc/components/structure/stack)                  |
-|   \`InlineStack\`            |   \`Stack\`                                              |   Use [Stack](/docs/api/checkout-ui-extensions/2025-10-rc/components/structure/stack) with \`direction=inline\`                  |
-|   \`Link\`                   |   [Link](/docs/api/checkout-ui-extensions/2025-10-rc/components/actions/link)                                                |   Available today                      |
-|   \`List\`                   |   [UnorderedList](/docs/api/checkout-ui-extensions/2025-10-rc/components/other/unorderedlist) or [OrderedList](/docs/api/checkout-ui-extensions/2025-10-rc/components/other/orderedlist)                                         |   Available today      |
-|   \`ListItem\`               |   [ListItem](/docs/api/checkout-ui-extensions/2025-10-rc/components/other/listitem)                                            |   Available today                      |
-|   \`Map\`                    |   \`Map\`                                                 |   Coming soon                          |
-|   \`MapMarker\`              |   \`MapMarker\`                                           |   Coming soon                          |
+|   \`InlineSpacer\`           |                                                      |   Removed. Use [Stack](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/structure/stack)                  |
+|   \`InlineStack\`            |   \`Stack\`                                              |   Use [Stack](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/structure/stack) with \`direction=inline\`                  |
+|   \`Link\`                   |   [Link](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/actions/link)                                                |   Available today                      |
+|   \`List\`                   |   [UnorderedList](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/other/unorderedlist) or [OrderedList](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/other/orderedlist)                                         |   Available today      |
+|   \`ListItem\`               |   [ListItem](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/other/listitem)                                            |   Available today                      |
+|   \`Map\`                    |   [Map](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/interactive/map)                                                 |   Available today                          |
+|   \`MapMarker\`              |   [MapMarker](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/interactive/map#mapmarker)                                           |   Available today                          |
 |   \`MapPopover\`             |   \`Popover\`                                             |   Coming soon                          |
-|   \`Modal\`                  |   \`Modal\`                                               |   Coming soon                          |
+|   \`Modal\`                  |   [Modal](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/overlay/modal)                                               |   Available today                          |
 |   \`PaymentIcon\`            |   \`PaymentIcon\`                                         |   Coming soon                          |
-|   \`PhoneField\`             |   \`PhoneField\`                                          |   Coming soon                          |
+|   \`PhoneField\`             |   [PhoneField](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/forms/phonefield)                                          |   Available today                          |
 |   \`Popover\`                |   \`Popover\`                                             |   Coming soon                          |
 |   \`Pressable\`              |   \`Clickable\`                                           |   Coming soon                          |
-|   \`ProductThumbnail\`       |   \`ProductThumbnail\`                                    |   Coming soon                          |
-|   \`Progress\`               |   [Progress](/docs/api/checkout-ui-extensions/2025-10-rc/components/feedback/progress)                                            |   Available today                      |
+|   \`ProductThumbnail\`       |   [ProductThumbnail](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/media/productthumbnail)                                    |   Available today                          |
+|   \`Progress\`               |   [Progress](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/feedback/progress)                                            |   Available today                      |
 |   \`QRCode\`                 |   \`QRCode\`                                              |   Available today                      |
 |   \`ScrollView\`             |   \`ScrollBox\`                                           |   Coming soon                          |
 |   \`Select\`                 |   \`Select\`                                              |   Coming soon                          |
@@ -264,18 +302,19 @@ Use the comparison table below to see which Polaris web components are available
 |   \`SkeletonImage\`          |                                                       |   Removed                                     |
 |   \`SkeletonText\`           |   \`SkeletonText\`                                                    |   Coming soon                                     |
 |   \`SkeletonTextBlock\`      |   \`SkeletonTextBlock\`                                                    |   Coming soon                                     |
-|   \`Spinner\`                |   [Spinner](/docs/api/checkout-ui-extensions/2025-10-rc/components/feedback/spinner)                                             |   Available today                      |
+|   \`Spinner\`                |   [Spinner](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/feedback/spinner)                                             |   Available today                      |
 |   \`Stepper\`                |   \`NumberField\`                                         |   Coming soon                      |
 |   \`Switch\`                 |   \`Switch\`                                              |   Coming soon                          |
 |   \`Tag\`                    |   \`Tag\`                                                 |   Coming soon                          |
-|   \`Text\`                   |   [Text](/docs/api/checkout-ui-extensions/2025-10-rc/components/titles-and-text/text)                                                |   Available today                      |
-|   \`TextBlock\`              |   [Paragraph](/docs/api/checkout-ui-extensions/2025-10-rc/components/titles-and-text/paragraph)                                         |   Available today                   |
-|   \`TextField\`              |   [TextField](/docs/api/checkout-ui-extensions/2025-10-rc/components/forms/textfield)                                           |   Available today                      |
-|                              |   [Time](/docs/api/checkout-ui-extensions/2025-10-rc/components/titles-and-text/time)                                                |   Available today                      |
+|   \`Text\`                   |   [Text](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/titles-and-text/text)                                                |   Available today                      |
+|   \`TextArea\`               |   [TextArea](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/forms/textarea)                                            |   Available today                      |
+|   \`TextBlock\`              |   [Paragraph](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/titles-and-text/paragraph)                                         |   Available today                   |
+|   \`TextField\`              |   [TextField](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/forms/textfield)                                           |   Available today                      |
+|                              |   [Time](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/titles-and-text/time)                                                |   Available today                      |
 |   \`ToggleButton\`           |   TBD                                         |   Coming soon                 |
 |   \`ToggleButtonGroup\`      |   TBD                                         |   Coming soon            |
 |   \`Tooltip\`                |   \`Tooltip\`                                             |   Coming soon                          |
-|   \`View\`                   |   [Box](/docs/api/checkout-ui-extensions/2025-10-rc/components/structure/box)                                                 |   Available today                      |
+|   \`View\`                   |   [Box](/docs/api/checkout-ui-extensions/2025-10-rc/polaris-web-components/structure/box)                                                 |   Available today                      |
 `,
     },
   ],
