@@ -12,6 +12,7 @@ import type {
   DiscountFunctionSettingsApi,
   CustomerSegmentTemplateApi,
   CustomerSegmentTemplate,
+  StandardApi,
 } from './api';
 import {
   ShouldRenderApi,
@@ -21,6 +22,7 @@ import type {BlockExtensionComponents} from './components/BlockExtensionComponen
 import type {ActionExtensionComponents} from './components/ActionExtensionComponents';
 import type {PrintActionExtensionComponents} from './components/PrintActionExtensionComponents';
 import type {FunctionSettingsComponents} from './components/FunctionSettingsComponents';
+import {FormExtensionComponents} from './components/FormExtensionComponents';
 
 export interface ExtensionTargets {
   /**
@@ -724,6 +726,11 @@ export interface ExtensionTargets {
   'admin.product-index.selection-print-action.should-render': RunnableExtension<
     ShouldRenderApi<'admin.product-index.selection-print-action.should-render'>,
     ShouldRenderOutput
+  >;
+
+  'admin.app.home.render': RenderExtension<
+    StandardApi<'admin.app.home.render'>,
+    FormExtensionComponents
   >;
 }
 
