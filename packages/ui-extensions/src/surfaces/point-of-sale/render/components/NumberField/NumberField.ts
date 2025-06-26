@@ -8,7 +8,13 @@ import type {InputProps} from '../shared/InputField';
  */
 export interface NumberFieldProps extends InputProps {
   inputMode?: 'decimal' | 'numeric';
+  /**
+   * @deprecated Implement validation logic instead. This prop will be removed in 2025-10.
+   */
   max?: number;
+  /**
+   * @deprecated Implement validation logic instead. This prop will be removed in 2025-10.
+   */
   min?: number;
 }
 
