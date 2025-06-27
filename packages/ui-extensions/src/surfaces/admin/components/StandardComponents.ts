@@ -38,6 +38,7 @@ export type StandardComponents =
   | 'Text'
   | 'TextArea'
   | 'TextField'
+  | 'Thumbnail'
   | 'UnorderedList'
   | 'URLField';
 
