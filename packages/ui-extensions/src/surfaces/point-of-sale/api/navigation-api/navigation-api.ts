@@ -44,6 +44,13 @@ export interface NavigationApiContent {
    * @returns A promise that resolves when the POS screen is opened, rejects when an error occurs like an unsupported GID or POS screen.
    */
   open(url: string | URL): Promise<void>;
+
+  /**
+   * Check if a POS screen can be opened with `open` due to staff permissions and the current location's plan.
+   * @param url - The POS screen to check
+   * @returns A boolean indicating if the POS screen can be opened
+   */
+  canOpen(url: string | URL): boolean;
 }
 
 /**
