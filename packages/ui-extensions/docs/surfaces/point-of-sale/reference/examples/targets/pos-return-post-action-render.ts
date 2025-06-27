@@ -15,7 +15,7 @@ export default extension('pos.return.post.action.render', (root, api) => {
   const scrollView = root.createComponent(ScrollView);
   const text = root.createComponent(Text);
 
-  text.append(`Return ID: ${api.return.id}`);
+  text.append(`Order ID: ${api.order.id}`);
   scrollView.append(text);
   screen.append(scrollView);
   navigator.append(screen);

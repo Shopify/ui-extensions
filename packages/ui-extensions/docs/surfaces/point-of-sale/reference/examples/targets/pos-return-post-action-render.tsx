@@ -15,7 +15,7 @@ const ReturnAction = () => {
     <Navigator>
       <Screen name="ReturnDetails" title="Return Details">
         <ScrollView>
-          <Text>{`Return ID: ${api.return.id}`}</Text>
+          <Text>{`Order ID: ${api.order.id}`}</Text>
         </ScrollView>
       </Screen>
     </Navigator>

@@ -16,7 +16,7 @@ const ReturnBlock = () => {
     >
       <POSBlockRow>
         <Text>{'Return block extension'}</Text>
-        <Text>{`Return ID: ${api.return.id}`}</Text>
+        <Text>{`Order ID: ${api.order.id}`}</Text>
       </POSBlockRow>
     </POSBlock>
   );

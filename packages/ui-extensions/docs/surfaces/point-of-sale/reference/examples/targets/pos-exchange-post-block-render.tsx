@@ -19,7 +19,7 @@ const ExchangeBlock = () => {
     >
       <POSBlockRow>
         <Text>{'Exchange block extension'}</Text>
-        <Text>{`Exchange ID: ${api.exchange.id}`}</Text>
+        <Text>{`Order ID: ${api.order.id}`}</Text>
       </POSBlockRow>
     </POSBlock>
   );
