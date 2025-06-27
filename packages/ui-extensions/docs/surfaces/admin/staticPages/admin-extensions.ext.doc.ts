@@ -34,13 +34,13 @@ const data: LandingTemplateSchema = {
         {
           subtitle: 'Reference',
           name: 'View a list of available extension targets',
-          url: '/docs/api/admin-extensions/api/extension-targets',
+          url: '/docs/api/admin-extensions/2025-10-rc/extension-targets',
           type: 'app',
         },
         {
           subtitle: 'Network Features',
           name: 'Learn about the network features available to admin extensions',
-          url: '/docs/api/admin-extensions/api/network-features',
+          url: '/docs/api/admin-extensions/2025-10-rc/network-features',
           type: 'globe',
         },
         {
