@@ -14,7 +14,7 @@ export default extension('pos.return.post.block.render', (root, api) => {
   mainText.append('Return block extension');
 
   const subtitleText = root.createComponent(Text);
-  subtitleText.append(`Return ID: ${api.return.id}`);
+  subtitleText.append(`Order ID: ${api.order.id}`);
 
   const blockMainRow = root.createComponent(POSBlockRow);
   blockMainRow.append(mainText);

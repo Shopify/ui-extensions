@@ -15,7 +15,7 @@ const ExchangeAction = () => {
     <Navigator>
       <Screen name="ExchangeDetails" title="Exchange Details">
         <ScrollView>
-          <Text>{`Exchange ID: ${api.exchange.id}`}</Text>
+          <Text>{`Order ID: ${api.order.id}`}</Text>
         </ScrollView>
       </Screen>
     </Navigator>

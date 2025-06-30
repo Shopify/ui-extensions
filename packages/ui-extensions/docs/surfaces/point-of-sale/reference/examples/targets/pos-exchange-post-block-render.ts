@@ -14,7 +14,7 @@ export default extension('pos.exchange.post.block.render', (root, api) => {
   mainText.append('Exchange block extension');
 
   const subtitleText = root.createComponent(Text);
-  subtitleText.append(`Exchange ID: ${api.exchange.id}`);
+  subtitleText.append(`Order ID: ${api.order.id}`);
 
   const blockMainRow = root.createComponent(POSBlockRow);
   blockMainRow.append(mainText);
