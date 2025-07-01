@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.8
+
+### Patch Changes
+
+- [#3025](https://github.com/Shopify/ui-extensions/pull/3025) [`313fbfa44fd659691185181ac6fba7be3f9bd48f`](https://github.com/Shopify/ui-extensions/commit/313fbfa44fd659691185181ac6fba7be3f9bd48f) Thanks [@billfienberg](https://github.com/billfienberg)! - Add Thumbnail to Admin UI Extensions
+
 ## 2025.10.0-rc.7
 
 ### Minor Changes
