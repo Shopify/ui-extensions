@@ -9,11 +9,11 @@ import type {InputProps} from '../shared/InputField';
 export interface NumberFieldProps extends InputProps {
   inputMode?: 'decimal' | 'numeric';
   /**
-   * @deprecated Implement validation logic instead. This prop will be removed in 2025-10.
+   * The highest decimal or integer to be accepted for the field.
    */
   max?: number;
   /**
-   * @deprecated Implement validation logic instead. This prop will be removed in 2025-10.
+   * The lowest decimal or integer to be accepted for the field.
    */
   min?: number;
 }
