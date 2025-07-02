@@ -6,22 +6,14 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ParagraphProps$1, ComponentChild} from './shared.d.ts';
+import type {AvatarProps$1, ComponentChild} from './shared.d.ts';
 
-export interface ParagraphProps
-  extends Required<
-    Pick<
-      ParagraphProps$1,
-      | 'accessibilityVisibility'
-      | 'fontVariantNumeric'
-      | 'tone'
-      | 'dir'
-      | 'color'
-      | 'lineClamp'
-    >
-  > {
-  color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
-  lineClamp: Extract<ParagraphProps$1['lineClamp'], number>;
+export interface AvatarProps
+  extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt'>> {
+  size: Extract<
+    AvatarProps$1['size'],
+    'small-200' | 'small' | 'base' | 'large' | 'large-200'
+  >;
 }
 
 export type Styles = string;
@@ -84,6 +76,20 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
+export type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
+};
+export type CallbackEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> =
+  | (EventListener & {
+      (event: CallbackEvent<TTagName, TEvent>): void;
+    })
+  | null;
 /** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
@@ -99,37 +105,35 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
-declare class Paragraph extends PreactCustomElement implements ParagraphProps {
-  accessor fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
-  accessor lineClamp: ParagraphProps['lineClamp'];
-  accessor tone: Extract<
-    ParagraphProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
-  >;
-
-  accessor color: ParagraphProps['color'];
-  accessor dir: ParagraphProps['dir'];
-  accessor accessibilityVisibility: ParagraphProps['accessibilityVisibility'];
+declare class Avatar extends PreactCustomElement implements AvatarProps {
+  accessor initials: AvatarProps['initials'];
+  accessor src: AvatarProps['src'];
+  accessor size: AvatarProps['size'];
+  accessor alt: AvatarProps['alt'];
+  accessor onload: CallbackEventListener<typeof tagName> | null;
+  accessor onerror: OnErrorEventHandler;
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Paragraph;
+    [tagName]: Avatar;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ParagraphJSXProps &
-        PreactBaseElementPropsWithChildren<Paragraph>;
+      [tagName]: AvatarJSXProps & PreactBaseElementPropsWithChildren<Avatar>;
     }
   }
 }
 
-declare const tagName = 's-paragraph';
-export interface ParagraphJSXProps
-  extends Partial<ParagraphProps>,
-    Pick<ParagraphProps$1, 'id'> {}
+declare const tagName = 's-avatar';
+export interface AvatarJSXProps
+  extends Partial<AvatarProps>,
+    Pick<AvatarProps$1, 'id'> {
+  onLoad?: () => void;
+  onError?: () => void;
+}
 
-export {Paragraph};
-export type {ParagraphJSXProps};
+export {Avatar};
+export type {AvatarJSXProps};

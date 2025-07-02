@@ -1,4 +1,4 @@
-/** VERSION: 1.1.1 **/
+/** VERSION: 1.2.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -32,6 +32,41 @@ export type SizeKeyword =
   | 'large-400'
   | 'large-500';
 export type ColorKeyword = 'subdued' | 'base' | 'strong';
+interface AvatarProps$1 extends GlobalProps {
+  /**
+   * Initials to display in the avatar.
+   */
+  initials?: string;
+  /**
+   * The URL or path to the image.
+   *
+   * Initials will be rendered as a fallback if `src` is not provided, fails to load or does not load quickly
+   */
+  src?: string;
+  /**
+   * Invoked when load of provided image completes successfully.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+   */
+  onLoad?: () => void;
+  /**
+   * Invoked on load error of provided image.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+   */
+  onError?: () => void;
+  /**
+   * Size of the avatar.
+   *
+   * @default 'base'
+   */
+  size?: SizeKeyword;
+  /**
+   * An alternative text that describes the avatar for the reader
+   * to understand what it is about or identify the user the avatar belongs to.
+   */
+  alt?: string;
+}
 export type BackgroundColorKeyword = 'transparent' | ColorKeyword;
 export interface BackgroundProps {
   /**
@@ -3124,6 +3159,165 @@ export type URLAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'url' | 'photo' | 'impp' | `${AutocompleteAddressGroup} impp`
 >;
+//
+// Preact Virtual DOM
+// -----------------------------------
+export interface VNode<P = {}> {
+  type: ComponentType<P> | string;
+  props: P & {
+    children: ComponentChildren$1;
+  };
+  key: Key;
+  /**
+   * ref is not guaranteed by React.ReactElement, for compatibility reasons
+   * with popular react libs we define it as optional too
+   */
+  ref?: Ref<any> | null;
+  /**
+   * The time this `vnode` started rendering. Will only be set when
+   * the devtools are attached.
+   * Default value: `0`
+   */
+  startTime?: number;
+  /**
+   * The time that the rendering of this `vnode` was completed. Will only be
+   * set when the devtools are attached.
+   * Default value: `-1`
+   */
+  endTime?: number;
+}
+//
+// Preact Component interface
+// -----------------------------------
+export type Key = string | number | any;
+export interface RefObject<T> {
+  current: T | null;
+}
+export type RefCallback<T> = (instance: T | null) => void;
+export type Ref<T> = RefObject<T> | RefCallback<T> | null;
+export type ComponentChild =
+  | VNode<any>
+  | object
+  | string
+  | number
+  | bigint
+  | boolean
+  | null
+  | undefined;
+type ComponentChildren$1 = ComponentChild[] | ComponentChild;
+export interface Attributes {
+  key?: Key | undefined;
+  jsx?: boolean | undefined;
+}
+export interface ErrorInfo {
+  componentStack?: string;
+}
+export type RenderableProps<P, RefType = any> = P &
+  Readonly<
+    Attributes & {
+      children?: ComponentChildren$1;
+      ref?: Ref<RefType>;
+    }
+  >;
+export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
+export interface FunctionComponent<P = {}> {
+  (props: RenderableProps<P>, context?: any): ComponentChildren$1;
+  displayName?: string;
+  defaultProps?: Partial<P> | undefined;
+}
+export interface ComponentClass<P = {}, S = {}> {
+  new (props: P, context?: any): Component<P, S>;
+  displayName?: string;
+  defaultProps?: Partial<P>;
+  contextType?: Context<any>;
+  getDerivedStateFromProps?(
+    props: Readonly<P>,
+    state: Readonly<S>,
+  ): Partial<S> | null;
+  getDerivedStateFromError?(error: any): Partial<S> | null;
+}
+export interface Component<P = {}, S = {}> {
+  componentWillMount?(): void;
+  componentDidMount?(): void;
+  componentWillUnmount?(): void;
+  getChildContext?(): object;
+  componentWillReceiveProps?(nextProps: Readonly<P>, nextContext: any): void;
+  shouldComponentUpdate?(
+    nextProps: Readonly<P>,
+    nextState: Readonly<S>,
+    nextContext: any,
+  ): boolean;
+  componentWillUpdate?(
+    nextProps: Readonly<P>,
+    nextState: Readonly<S>,
+    nextContext: any,
+  ): void;
+  getSnapshotBeforeUpdate?(oldProps: Readonly<P>, oldState: Readonly<S>): any;
+  componentDidUpdate?(
+    previousProps: Readonly<P>,
+    previousState: Readonly<S>,
+    snapshot: any,
+  ): void;
+  componentDidCatch?(error: any, errorInfo: ErrorInfo): void;
+}
+declare abstract class Component<P, S> {
+  constructor(props?: P, context?: any);
+  static displayName?: string;
+  static defaultProps?: any;
+  static contextType?: Context<any>;
+  // Static members cannot reference class type parameters. This is not
+  // supported in TypeScript. Reusing the same type arguments from `Component`
+  // will lead to an impossible state where one cannot satisfy the type
+  // constraint under no circumstances, see #1356.In general type arguments
+  // seem to be a bit buggy and not supported well at the time of this
+  // writing with TS 3.3.3333.
+  static getDerivedStateFromProps?(
+    props: Readonly<object>,
+    state: Readonly<object>,
+  ): object | null;
+
+  static getDerivedStateFromError?(error: any): object | null;
+  state: Readonly<S>;
+  props: RenderableProps<P>;
+  context: any;
+  base?: Element | Text;
+  // From https://github.com/DefinitelyTyped/DefinitelyTyped/blob/e836acc75a78cf0655b5dfdbe81d69fdd4d8a252/types/react/index.d.ts#L402
+  // // We MUST keep setState() as a unified signature because it allows proper checking of the method return type.
+  // // See: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18365#issuecomment-351013257
+  setState<K extends keyof S>(
+    state:
+      | ((
+          prevState: Readonly<S>,
+          props: Readonly<P>,
+        ) => Pick<S, K> | Partial<S> | null)
+      | (Pick<S, K> | Partial<S> | null),
+    callback?: () => void,
+  ): void;
+
+  forceUpdate(callback?: () => void): void;
+  abstract render(
+    props?: RenderableProps<P>,
+    state?: Readonly<S>,
+    context?: any,
+  ): ComponentChildren$1;
+}
+//
+// Context
+// -----------------------------------
+export interface Consumer<T>
+  extends FunctionComponent<{
+    children: (value: T) => ComponentChildren$1;
+  }> {}
+export interface Provider<T>
+  extends FunctionComponent<{
+    value: T;
+    children?: ComponentChildren$1;
+  }> {}
+export interface Context<T> extends Provider<T> {
+  Consumer: Consumer<T>;
+  Provider: Provider<T>;
+  displayName?: string;
+}
 type IconType$1 =
   | 'adjust'
   | 'affiliate'
@@ -3621,165 +3815,6 @@ type IconType$1 =
   | 'wrench'
   | 'x'
   | 'x-circle';
-//
-// Preact Virtual DOM
-// -----------------------------------
-export interface VNode<P = {}> {
-  type: ComponentType<P> | string;
-  props: P & {
-    children: ComponentChildren$1;
-  };
-  key: Key;
-  /**
-   * ref is not guaranteed by React.ReactElement, for compatibility reasons
-   * with popular react libs we define it as optional too
-   */
-  ref?: Ref<any> | null;
-  /**
-   * The time this `vnode` started rendering. Will only be set when
-   * the devtools are attached.
-   * Default value: `0`
-   */
-  startTime?: number;
-  /**
-   * The time that the rendering of this `vnode` was completed. Will only be
-   * set when the devtools are attached.
-   * Default value: `-1`
-   */
-  endTime?: number;
-}
-//
-// Preact Component interface
-// -----------------------------------
-export type Key = string | number | any;
-export interface RefObject<T> {
-  current: T | null;
-}
-export type RefCallback<T> = (instance: T | null) => void;
-export type Ref<T> = RefObject<T> | RefCallback<T> | null;
-export type ComponentChild =
-  | VNode<any>
-  | object
-  | string
-  | number
-  | bigint
-  | boolean
-  | null
-  | undefined;
-type ComponentChildren$1 = ComponentChild[] | ComponentChild;
-export interface Attributes {
-  key?: Key | undefined;
-  jsx?: boolean | undefined;
-}
-export interface ErrorInfo {
-  componentStack?: string;
-}
-export type RenderableProps<P, RefType = any> = P &
-  Readonly<
-    Attributes & {
-      children?: ComponentChildren$1;
-      ref?: Ref<RefType>;
-    }
-  >;
-export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
-export interface FunctionComponent<P = {}> {
-  (props: RenderableProps<P>, context?: any): ComponentChildren$1;
-  displayName?: string;
-  defaultProps?: Partial<P> | undefined;
-}
-export interface ComponentClass<P = {}, S = {}> {
-  new (props: P, context?: any): Component<P, S>;
-  displayName?: string;
-  defaultProps?: Partial<P>;
-  contextType?: Context<any>;
-  getDerivedStateFromProps?(
-    props: Readonly<P>,
-    state: Readonly<S>,
-  ): Partial<S> | null;
-  getDerivedStateFromError?(error: any): Partial<S> | null;
-}
-export interface Component<P = {}, S = {}> {
-  componentWillMount?(): void;
-  componentDidMount?(): void;
-  componentWillUnmount?(): void;
-  getChildContext?(): object;
-  componentWillReceiveProps?(nextProps: Readonly<P>, nextContext: any): void;
-  shouldComponentUpdate?(
-    nextProps: Readonly<P>,
-    nextState: Readonly<S>,
-    nextContext: any,
-  ): boolean;
-  componentWillUpdate?(
-    nextProps: Readonly<P>,
-    nextState: Readonly<S>,
-    nextContext: any,
-  ): void;
-  getSnapshotBeforeUpdate?(oldProps: Readonly<P>, oldState: Readonly<S>): any;
-  componentDidUpdate?(
-    previousProps: Readonly<P>,
-    previousState: Readonly<S>,
-    snapshot: any,
-  ): void;
-  componentDidCatch?(error: any, errorInfo: ErrorInfo): void;
-}
-declare abstract class Component<P, S> {
-  constructor(props?: P, context?: any);
-  static displayName?: string;
-  static defaultProps?: any;
-  static contextType?: Context<any>;
-  // Static members cannot reference class type parameters. This is not
-  // supported in TypeScript. Reusing the same type arguments from `Component`
-  // will lead to an impossible state where one cannot satisfy the type
-  // constraint under no circumstances, see #1356.In general type arguments
-  // seem to be a bit buggy and not supported well at the time of this
-  // writing with TS 3.3.3333.
-  static getDerivedStateFromProps?(
-    props: Readonly<object>,
-    state: Readonly<object>,
-  ): object | null;
-
-  static getDerivedStateFromError?(error: any): object | null;
-  state: Readonly<S>;
-  props: RenderableProps<P>;
-  context: any;
-  base?: Element | Text;
-  // From https://github.com/DefinitelyTyped/DefinitelyTyped/blob/e836acc75a78cf0655b5dfdbe81d69fdd4d8a252/types/react/index.d.ts#L402
-  // // We MUST keep setState() as a unified signature because it allows proper checking of the method return type.
-  // // See: https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18365#issuecomment-351013257
-  setState<K extends keyof S>(
-    state:
-      | ((
-          prevState: Readonly<S>,
-          props: Readonly<P>,
-        ) => Pick<S, K> | Partial<S> | null)
-      | (Pick<S, K> | Partial<S> | null),
-    callback?: () => void,
-  ): void;
-
-  forceUpdate(callback?: () => void): void;
-  abstract render(
-    props?: RenderableProps<P>,
-    state?: Readonly<S>,
-    context?: any,
-  ): ComponentChildren$1;
-}
-//
-// Context
-// -----------------------------------
-export interface Consumer<T>
-  extends FunctionComponent<{
-    children: (value: T) => ComponentChildren$1;
-  }> {}
-export interface Provider<T>
-  extends FunctionComponent<{
-    value: T;
-    children?: ComponentChildren$1;
-  }> {}
-export interface Context<T> extends Provider<T> {
-  Consumer: Consumer<T>;
-  Provider: Provider<T>;
-  displayName?: string;
-}
 interface AdminActionProps$1 extends GlobalProps, ActionProps, ActionSlots {
   /**
    * Whether the action is in a loading state, such as initial page load or action opening.
@@ -3810,28 +3845,11 @@ interface AdminPrintActionProps$1 extends GlobalProps {
   src?: string;
 }
 
-export interface IconProps
-  extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
-  /**
-   * Specifies the type of icon that will be displayed.
-   */
-  type: '' | IconType | 'empty';
-  tone: Extract<
-    IconProps$1['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
-  >;
-  color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
-  size: Extract<IconProps$1['size'], 'small' | 'base'>;
-}
-
-export interface BadgeProps
-  extends Pick<BadgeProps$1, 'color' | 'size' | 'tone'> {
-  color: Extract<BadgeProps$1['color'], 'base' | 'strong'>;
-  icon: IconProps['type'] | '';
-  size: Extract<BadgeProps$1['size'], 'base' | 'large' | 'large-100'>;
-  tone: Extract<
-    BadgeProps$1['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
+export interface AvatarProps
+  extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt'>> {
+  size: Extract<
+    AvatarProps$1['size'],
+    'small-200' | 'small' | 'base' | 'large' | 'large-200'
   >;
 }
 
@@ -3928,6 +3946,59 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
+}
+
+declare class Avatar extends PreactCustomElement implements AvatarProps {
+  accessor initials: AvatarProps['initials'];
+  accessor src: AvatarProps['src'];
+  accessor size: AvatarProps['size'];
+  accessor alt: AvatarProps['alt'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$P]: Avatar;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$P]: AvatarJSXProps & PreactBaseElementPropsWithChildren<Avatar>;
+    }
+  }
+}
+
+declare const tagName$P = 's-avatar';
+export interface AvatarJSXProps
+  extends Partial<AvatarProps>,
+    Pick<AvatarProps$1, 'id'> {
+  onLoad?: () => void;
+  onError?: () => void;
+}
+
+export interface IconProps
+  extends Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size'> {
+  /**
+   * Specifies the type of icon that will be displayed.
+   */
+  type: '' | IconType | 'empty';
+  tone: Extract<
+    IconProps$1['tone'],
+    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
+  >;
+  color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
+  size: Extract<IconProps$1['size'], 'small' | 'base'>;
+}
+
+export interface BadgeProps
+  extends Pick<BadgeProps$1, 'color' | 'size' | 'tone'> {
+  color: Extract<BadgeProps$1['color'], 'base' | 'strong'>;
+  icon: IconProps['type'] | '';
+  size: Extract<BadgeProps$1['size'], 'base' | 'large' | 'large-100'>;
+  tone: Extract<
+    BadgeProps$1['tone'],
+    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
+  >;
 }
 
 declare class Badge extends PreactCustomElement implements BadgeProps {
@@ -6450,6 +6521,7 @@ export {
   AdminAction,
   AdminBlock,
   AdminPrintAction,
+  Avatar,
   Badge,
   Banner,
   Box,
@@ -6503,6 +6575,7 @@ export type {
   AdminActionJSXProps,
   AdminBlockJSXProps,
   AdminPrintActionJSXProps,
+  AvatarJSXProps,
   BadgeJSXProps,
   BannerJSXProps,
   BoxJSXProps,
@@ -6552,6 +6625,11 @@ export type {
   URLFieldJSXProps,
   UnorderedListJSXProps,
 };
+
+export interface AvatarEvents {
+  load: CallbackEventListener<typeof tagName> | null = null;
+  error: OnErrorEventHandler = null;
+}
 
 export interface BannerEvents {
   dismiss: CallbackEventListener<typeof tagName> | null = null;
@@ -6726,6 +6804,20 @@ export interface FormEvents {
 export interface FunctionSettingsEvents {
   save: CallbackEventListener<typeof tagName> | null = null;
   error: OnErrorEventHandler = null;
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$P]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$P]: AvatarJSXProps & ReactBaseElementPropsWithChildren<Avatar>;
+    }
+  }
 }
 declare module 'react' {
   namespace JSX {
