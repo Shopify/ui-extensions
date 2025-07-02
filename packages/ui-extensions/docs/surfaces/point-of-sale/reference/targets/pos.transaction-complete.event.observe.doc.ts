@@ -8,7 +8,7 @@ const data: ReferenceEntityTemplateSchema = {
   > Note:
   > This is part of a POS UI Extensions developer preview. More information to come.`,
   category: 'Targets',
-  subCategory: 'Post-purchase',
+  subCategory: 'Post-transaction',
   isVisualComponent: false,
   related: [
     {

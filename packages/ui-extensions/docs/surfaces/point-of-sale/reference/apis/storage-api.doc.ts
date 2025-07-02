@@ -8,6 +8,8 @@ const generateCodeBlockForStorageApi = (title: string, fileName: string) =>
 const data: ReferenceEntityTemplateSchema = {
   name: 'Storage API',
   description: `The Storage API allows fetching, setting, updating, and clearing an extension's data from the POS local storage.
+  - An extension can store up to 100 entries.
+  - The maximum size for a key is ~1 KB, and for a value is ~1 MB.
   - If a target (such as \`pos.home.tile.render\`) is disabled or removed, the extension data remains.
   - All stored extension data that has not been updated for a month is cleared automatically after that period.
 

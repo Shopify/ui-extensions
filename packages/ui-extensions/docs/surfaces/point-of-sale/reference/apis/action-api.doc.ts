@@ -14,6 +14,10 @@ The Action API allows an action extension to modally present its corresponding m
 - ${TargetLink.PosHomeTileRender}
 - ${TargetLink.PosPurchasePostActionMenuItemRender}
 - ${TargetLink.PosPurchasePostBlockRender}
+- ${TargetLink.PosReturnPostActionMenuItemRender}
+- ${TargetLink.PosReturnPostBlockRender}
+- ${TargetLink.PosExchangePostActionMenuItemRender}
+- ${TargetLink.PosExchangePostBlockRender}
 - ${TargetLink.PosOrderDetailsActionMenuItemRender}
 - ${TargetLink.PosOrderDetailsBlockRender}
 - ${TargetLink.PosProductDetailsActionMenuItemRender}
