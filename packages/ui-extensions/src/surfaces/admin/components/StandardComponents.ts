@@ -1,4 +1,5 @@
 export type StandardComponents =
+  | 'Avatar'
   | 'Badge'
   | 'Banner'
   | 'Box'
