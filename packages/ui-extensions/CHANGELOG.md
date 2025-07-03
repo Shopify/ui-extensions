@@ -1,5 +1,79 @@
 # @shopify/ui-extensions
 
+## 2025.7.0
+
+### Major Changes
+
+- [#2993](https://github.com/Shopify/ui-extensions/pull/2993) [`f59e5c5ad666e26ed8044bc67061b0309f20b9a9`](https://github.com/Shopify/ui-extensions/commit/f59e5c5ad666e26ed8044bc67061b0309f20b9a9) Thanks [@henryStelle](https://github.com/henryStelle)! - Drop support for deprecated FormattedTextField
+
+### Minor Changes
+
+- [#3001](https://github.com/Shopify/ui-extensions/pull/3001) [`4b7dd0d22d5fb571ea6ac3854493db05283ab06e`](https://github.com/Shopify/ui-extensions/commit/4b7dd0d22d5fb571ea6ac3854493db05283ab06e) Thanks [@MrGVSV](https://github.com/MrGVSV)! - Added `editable` Cart property
+
+- [#2800](https://github.com/Shopify/ui-extensions/pull/2800) [`27037b1a3ff43340ad82cdf573b0acf3b61c57f2`](https://github.com/Shopify/ui-extensions/commit/27037b1a3ff43340ad82cdf573b0acf3b61c57f2) Thanks [@js-goupil](https://github.com/js-goupil)! - Added new type for direct api
+
+- [#3012](https://github.com/Shopify/ui-extensions/pull/3012) [`cbb2c96c36232bcc59d182ac8f890209bc893c0d`](https://github.com/Shopify/ui-extensions/commit/cbb2c96c36232bcc59d182ac8f890209bc893c0d) Thanks [@dnagoda](https://github.com/dnagoda)! - Add Checkout Thank You page announcement extension target
+
+- [#2872](https://github.com/Shopify/ui-extensions/pull/2872) [`f3d2ee47c85dd38c3feda28555e49c41acea96a5`](https://github.com/Shopify/ui-extensions/commit/f3d2ee47c85dd38c3feda28555e49c41acea96a5) Thanks [@andrewmcgov](https://github.com/andrewmcgov)! - Add recurringDeliveries to SellingPlan
+
+- [#2951](https://github.com/Shopify/ui-extensions/pull/2951) [`e660e7354f9aeb5c9e8986976d78fdb7057be944`](https://github.com/Shopify/ui-extensions/commit/e660e7354f9aeb5c9e8986976d78fdb7057be944) Thanks [@thunderfern](https://github.com/thunderfern)! - Added variantId field to productApi
+
+- [#2714](https://github.com/Shopify/ui-extensions/pull/2714) [`3fd80627f9bc16d54b84eae20500dcf15ee8d09c`](https://github.com/Shopify/ui-extensions/commit/3fd80627f9bc16d54b84eae20500dcf15ee8d09c) Thanks [@ottocho](https://github.com/ottocho)! - Add country to customer account Standard API.
+
+- [#2943](https://github.com/Shopify/ui-extensions/pull/2943) [`5bc30524cd9d24fe9478dccee5f17aacb4a36aa5`](https://github.com/Shopify/ui-extensions/commit/5bc30524cd9d24fe9478dccee5f17aacb4a36aa5) Thanks [@fatbattk](https://github.com/fatbattk)! - add `executedAt`, `exchangeId`, `returnId` to transaction complete event interface.
+
+- [#2723](https://github.com/Shopify/ui-extensions/pull/2723) [`a7317883bc44a1feb64df63bff2c6819eb4af522`](https://github.com/Shopify/ui-extensions/commit/a7317883bc44a1feb64df63bff2c6819eb4af522) Thanks [@ottocho](https://github.com/ottocho)! - Add purchasingCompany.location to customer account Standard API.
+
+- [#2987](https://github.com/Shopify/ui-extensions/pull/2987) [`568ef8ec20de7c885bce3a2209d10bff40650fdf`](https://github.com/Shopify/ui-extensions/commit/568ef8ec20de7c885bce3a2209d10bff40650fdf) Thanks [@wimhaanstra](https://github.com/wimhaanstra)! - Remove Cart Line Item Details Block Render target
+
+- [#2926](https://github.com/Shopify/ui-extensions/pull/2926) [`03a67f4aa834a0d023fa84e8e00520f83b68fb7d`](https://github.com/Shopify/ui-extensions/commit/03a67f4aa834a0d023fa84e8e00520f83b68fb7d) Thanks [@kangjoa](https://github.com/kangjoa)! - SearchBar - add onBlur handler
+
+- [#2867](https://github.com/Shopify/ui-extensions/pull/2867) [`8f84b36fcd9ea6d737dd5f88aef78cbe0bf21ddf`](https://github.com/Shopify/ui-extensions/commit/8f84b36fcd9ea6d737dd5f88aef78cbe0bf21ddf) Thanks [@andy-chhuon](https://github.com/andy-chhuon)! - Add posVersionNumber to session api
+
+- [#3005](https://github.com/Shopify/ui-extensions/pull/3005) [`a545724839ac1d0b0320d2db1cf790bfd893ea22`](https://github.com/Shopify/ui-extensions/commit/a545724839ac1d0b0320d2db1cf790bfd893ea22) Thanks [@Alex-Palad](https://github.com/Alex-Palad)! - Add extension targets:
+
+  pos.return.post.action.menu-item.render
+  pos.return.post.action.render
+  pos.return.post.block.render
+
+  pos.exchange.post.action.menu-item.render
+  pos.exchange.post.action.render
+  pos.exchange.post.block.render
+
+- [#2947](https://github.com/Shopify/ui-extensions/pull/2947) [`c1b466cb3e340d603aa02eba0f66c1b6f9d6ff82`](https://github.com/Shopify/ui-extensions/commit/c1b466cb3e340d603aa02eba0f66c1b6f9d6ff82) Thanks [@Alex-Palad](https://github.com/Alex-Palad)! - add storageapi documentation
+
+- [#2779](https://github.com/Shopify/ui-extensions/pull/2779) [`742eb0399d1f8c7a6192254feb46d1be5f27323a`](https://github.com/Shopify/ui-extensions/commit/742eb0399d1f8c7a6192254feb46d1be5f27323a) Thanks [@aishad](https://github.com/aishad)! - Add new icon types for segment templates
+
+- [#2757](https://github.com/Shopify/ui-extensions/pull/2757) [`d9340a6b0e2fb7c8668133fec7070d198d92409b`](https://github.com/Shopify/ui-extensions/commit/d9340a6b0e2fb7c8668133fec7070d198d92409b) Thanks [@wimhaanstra](https://github.com/wimhaanstra)! - Introduce Manage Cart Line Item extension targets
+
+- [#2971](https://github.com/Shopify/ui-extensions/pull/2971) [`8ad7e6e45e60df4050062dce1c6c9032ff2bf0a2`](https://github.com/Shopify/ui-extensions/commit/8ad7e6e45e60df4050062dce1c6c9032ff2bf0a2) Thanks [@kangjoa](https://github.com/kangjoa)! - Icon - update to new icon names, sizing, and tone
+
+- [#3019](https://github.com/Shopify/ui-extensions/pull/3019) [`2576793be5b3247df7463c670e7240436bdcb9d4`](https://github.com/Shopify/ui-extensions/commit/2576793be5b3247df7463c670e7240436bdcb9d4) Thanks [@kangjoa](https://github.com/kangjoa)! - NumberField - deprecate min and max props
+
+- [#2843](https://github.com/Shopify/ui-extensions/pull/2843) [`d58be8aa7074a089de355c53bdbff8d452692a30`](https://github.com/Shopify/ui-extensions/commit/d58be8aa7074a089de355c53bdbff8d452692a30) Thanks [@fatbattk](https://github.com/fatbattk)! - updated event target EventExtensionTargets output type.
+
+### Patch Changes
+
+- [#2734](https://github.com/Shopify/ui-extensions/pull/2734) [`6aae61b27c52436359476704bd891b7023f4e72a`](https://github.com/Shopify/ui-extensions/commit/6aae61b27c52436359476704bd891b7023f4e72a) Thanks [@fatbattk](https://github.com/fatbattk)! - Add currency property to Discount interface.
+
+- [#2957](https://github.com/Shopify/ui-extensions/pull/2957) [`250ee2ce18a178712bee2ffce905ddeaaea99545`](https://github.com/Shopify/ui-extensions/commit/250ee2ce18a178712bee2ffce905ddeaaea99545) Thanks [@brianshen1990](https://github.com/brianshen1990)! - add customer account order status announcement render target
+
+- [#3030](https://github.com/Shopify/ui-extensions/pull/3030) [`45443ba63995476fd94716ba1d1e70e17a24ead6`](https://github.com/Shopify/ui-extensions/commit/45443ba63995476fd94716ba1d1e70e17a24ead6) Thanks [@kangjoa](https://github.com/kangjoa)! - NumberField - remove deprecation of min and max props
+
+- [#2897](https://github.com/Shopify/ui-extensions/pull/2897) [`3e8bd3a74c7d55772816774402f88901c276900f`](https://github.com/Shopify/ui-extensions/commit/3e8bd3a74c7d55772816774402f88901c276900f) Thanks [@andy-chhuon](https://github.com/andy-chhuon)! - Fix pos.draft-order-details.block.render allowed component to BlockComponents
+
+- [#2921](https://github.com/Shopify/ui-extensions/pull/2921) [`e00be6697e8a11eddbc35022ac85810e6ef49c53`](https://github.com/Shopify/ui-extensions/commit/e00be6697e8a11eddbc35022ac85810e6ef49c53) Thanks [@Alex-Palad](https://github.com/Alex-Palad)! - Export storage API interfaces and update Storage.entries return type
+
+- [#3028](https://github.com/Shopify/ui-extensions/pull/3028) [`11c69a420dac0882ffc2c2263f083fa485fc8ce3`](https://github.com/Shopify/ui-extensions/commit/11c69a420dac0882ffc2c2263f083fa485fc8ce3) Thanks [@brianshen1990](https://github.com/brianshen1990)! - Add announcement api to announcement targets
+
+- [#2988](https://github.com/Shopify/ui-extensions/pull/2988) [`97adec9754eb612d6d679c2bb0bc528a362b5326`](https://github.com/Shopify/ui-extensions/commit/97adec9754eb612d6d679c2bb0bc528a362b5326) Thanks [@Alex-Palad](https://github.com/Alex-Palad)! - Add `refunds` and `currentQuantity` fields to Receipt Reprint LineItems
+
+- [#3004](https://github.com/Shopify/ui-extensions/pull/3004) [`5b49d74066218ec00331531a14baa1f77af2889b`](https://github.com/Shopify/ui-extensions/commit/5b49d74066218ec00331531a14baa1f77af2889b) Thanks [@brianshen1990](https://github.com/brianshen1990)! - add customer account profile and order index announcement render
+
+- [#2837](https://github.com/Shopify/ui-extensions/pull/2837) [`d39e3a6e340d0dba13c3d62332b0411a2cb38a6e`](https://github.com/Shopify/ui-extensions/commit/d39e3a6e340d0dba13c3d62332b0411a2cb38a6e) Thanks [@Alex-Palad](https://github.com/Alex-Palad)! - Adds storage API to BaseData and StandardApi (should be available in all extension targets)
+
+- [#2972](https://github.com/Shopify/ui-extensions/pull/2972) [`1940232dc06da547552b72afa812a29624734c30`](https://github.com/Shopify/ui-extensions/commit/1940232dc06da547552b72afa812a29624734c30) Thanks [@fatbattk](https://github.com/fatbattk)! - add optional `shippingLines.taxLines` property.
+
 ## 2025.4.0
 
 ### Minor Changes
