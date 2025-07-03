@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.9
+
+### Patch Changes
+
+- [#3031](https://github.com/Shopify/ui-extensions/pull/3031) [`9a6d9031d577e67b12293a655283869cb3606d0a`](https://github.com/Shopify/ui-extensions/commit/9a6d9031d577e67b12293a655283869cb3606d0a) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Add Avatar to Admin UI Extensions
+
 ## 2025.10.0-rc.8
 
 ### Patch Changes
