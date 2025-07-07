@@ -65,6 +65,13 @@ export default createPackage((pkg) => {
             );
             completedSurfaces.add('customer-account');
           }
+          // if (!completedSurfaces.has('point-of-sale')) {
+          //   buildTargetsDefinitions(
+          //     resolve(process.cwd(), 'packages/ui-extensions'),
+          //     'point-of-sale',
+          //   );
+          //   completedSurfaces.add('point-of-sale');
+          // }
         },
       },
     ]),
