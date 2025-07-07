@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
 import sharedContent from '../../../../docs/shared/components/Time';
 
 const data: ReferenceEntityTemplateSchema = {

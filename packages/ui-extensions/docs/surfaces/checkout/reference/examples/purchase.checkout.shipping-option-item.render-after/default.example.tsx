@@ -1,7 +1,7 @@
 import {render, Fragment} from 'preact';
 import {useShippingOptionTarget} from '@shopify/ui-extensions/checkout/preact';
 
-export default async () => {
+export default function extension() {
   render(<Extension />, document.body);
 }
 
@@ -38,25 +38,23 @@ function Extension() {
       </s-link>
       <s-modal
         id="my-modal"
-        padding
-        title={`Shipping option: ${title}`}
+        heading={`Shipping option: ${title}`}
       >
-        <s-box padding="none none base none">
-          <s-paragraph>
-            Cost:{' '}
-            {Intl.NumberFormat(undefined, {
-              style: 'currency',
-              currency: currencyCode,
-            }).format(amount)}
-          </s-paragraph>
-          <s-button
-            onClick={() =>
-              shopify.ui.overlay.close('my-modal')
-            }
-          >
-            Close
-          </s-button>
-        </s-box>
+        <s-paragraph>
+          Cost:{' '}
+          {Intl.NumberFormat(undefined, {
+            style: 'currency',
+            currency: currencyCode,
+          }).format(amount)}
+        </s-paragraph>
+        <s-button
+          variant="primary"
+          onClick={() =>
+            shopify.ui.overlay.close('my-modal')
+          }
+        >
+          Close
+        </s-button>
       </s-modal>
     </Fragment>
   );

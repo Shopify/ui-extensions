@@ -5,7 +5,7 @@ import {
   useCartLineTarget,
 } from '@shopify/ui-extensions/checkout/preact';
 
-export default async () => {
+export default function extension() {
   render(<Extension />, document.body);
 }
 
@@ -36,7 +36,7 @@ function Extension() {
   );
 
   return showError ? (
-    <s-banner>
+    <s-banner tone="critical">
       This item has a limit of one per customer.
     </s-banner>
   ) : null;

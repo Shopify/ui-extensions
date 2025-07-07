@@ -27,9 +27,12 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-form";
-export interface FormBaseProps extends Pick<FormProps$1, 'id' | 'disabled'> {
+export interface FormElementProps extends Pick<FormProps$1, 'id' | 'disabled'> {
 }
 export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
     onSubmit?: () => void;
@@ -41,12 +44,12 @@ export interface FormElementEvents {
      * Use `event.waitUntil` to signal how long it takes to save the data,
      * and whether it was successful or not.
      */
-    submit?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    submit?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface FormElement extends Omit<FormBaseProps, 'children'>, Omit<FormEvents, 'onSubmit'>, Omit<HTMLElement, 'id' | 'onsubmit'> {
+export interface FormElement extends Omit<FormElementProps, 'children'>, Omit<FormEvents, 'onSubmit'>, Omit<HTMLElement, 'id' | 'onsubmit'> {
     onsubmit: FormEvents['onSubmit'];
 }
-export interface FormProps extends FormBaseProps, FormEvents {
+export interface FormProps extends FormElementProps, FormEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -61,4 +64,4 @@ declare module 'preact' {
     }
 }
 
-export type { FormBaseProps, FormElement, FormElementEvents, FormEvents, FormProps };
+export type { FormElement, FormElementEvents, FormElementProps, FormEvents, FormProps };

@@ -14,7 +14,7 @@ import {useSubscription} from './subscription';
  */
 export function useAttributes<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
->(): Attribute[] | undefined {
+>(): Attribute[] {
   return useSubscription(useApi<Target>().attributes);
 }
 
@@ -28,7 +28,7 @@ export function useAttributeValues<
 >(keys: string[]): (string | undefined)[] {
   const attributes = useAttributes<Target>();
 
-  if (!attributes?.length) {
+  if (!attributes.length) {
     return [];
   }
 

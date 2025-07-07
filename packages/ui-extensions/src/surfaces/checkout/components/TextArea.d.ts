@@ -21,9 +21,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-text-area";
-export interface TextAreaBaseProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
+export interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
 }
 export interface TextAreaEvents extends Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
@@ -31,27 +34,27 @@ export interface TextAreaElementEvents {
     /**
      * Callback when the element loses focus.
      */
-    blur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
      */
-    change?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the element receives focus.
      */
-    focus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user makes any changes in the field.
      */
-    input?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface TextAreaElement extends TextAreaBaseProps, Omit<TextAreaEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
+export interface TextAreaElement extends TextAreaElementProps, Omit<TextAreaEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
     onblur: TextAreaEvents['onBlur'];
     onchange: TextAreaEvents['onChange'];
     onfocus: TextAreaEvents['onFocus'];
     oninput: TextAreaEvents['onInput'];
 }
-export interface TextAreaProps extends TextAreaBaseProps, TextAreaEvents {
+export interface TextAreaProps extends TextAreaElementProps, TextAreaEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -66,4 +69,4 @@ declare module 'preact' {
     }
 }
 
-export type { TextAreaBaseProps, TextAreaElement, TextAreaElementEvents, TextAreaEvents, TextAreaProps };
+export type { TextAreaElement, TextAreaElementEvents, TextAreaElementProps, TextAreaEvents, TextAreaProps };

@@ -21,9 +21,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-clipboard-item";
-export interface ClipboardItemBaseProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
+export interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
 }
 export interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
 }
@@ -31,17 +34,17 @@ export interface ClipboardItemElementEvents {
     /**
      * Callback run when the copy to clipboard succeeds.
      */
-    copy?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    copy?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback run when the copy to clipboard fails.
      */
-    copyerror?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    copyerror?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface ClipboardItemElement extends ClipboardItemBaseProps, Omit<ClipboardItemEvents, 'onCopy' | 'onCopyError'>, Omit<HTMLElement, 'id' | 'oncopy'> {
+export interface ClipboardItemElement extends ClipboardItemElementProps, Omit<ClipboardItemEvents, 'onCopy' | 'onCopyError'>, Omit<HTMLElement, 'id' | 'oncopy'> {
     oncopy: ClipboardItemEvents['onCopy'];
     oncopyerror: ClipboardItemEvents['onCopyError'];
 }
-export interface ClipboardItemProps extends ClipboardItemBaseProps, ClipboardItemEvents {
+export interface ClipboardItemProps extends ClipboardItemElementProps, ClipboardItemEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -56,4 +59,4 @@ declare module 'preact' {
     }
 }
 
-export type { ClipboardItemBaseProps, ClipboardItemElement, ClipboardItemElementEvents, ClipboardItemEvents, ClipboardItemProps };
+export type { ClipboardItemElement, ClipboardItemElementEvents, ClipboardItemElementProps, ClipboardItemEvents, ClipboardItemProps };

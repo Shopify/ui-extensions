@@ -1,4 +1,4 @@
-export default async () => {
+export default function extension() {
   const box = document.createElement('s-box');
   box.setAttribute('max-inline-size', '300');
 

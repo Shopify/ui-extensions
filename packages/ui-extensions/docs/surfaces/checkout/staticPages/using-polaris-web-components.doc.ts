@@ -35,7 +35,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'scale',
       title: 'Scale',
       sectionContent:
-        'Our components use a middle-out scale for mulitple properties like `padding`, `size` and `gap`.\n\nOur scale moves from the middle out:\n  - `small-300` is smaller than `small-100`\n  - `large-300` is bigger than `large-100`\n  - `small-100` and `large-100` have aliases of `small` and `large`\n  - `base` is the default value',
+        'Our components use a middle-out scale for multiple properties like `padding`, `size` and `gap`.\n\nOur scale moves from the middle out:\n  - `small-300` is smaller than `small-100`\n  - `large-300` is bigger than `large-100`\n  - `small-100` and `large-100` have aliases of `small` and `large`\n  - `base` is the default value',
       codeblock: {
         title: 'Example',
         tabs: [
@@ -52,7 +52,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'interactive-elements',
       title: 'Interactive elements',
       sectionContent:
-        '`s-button`, `s-link` and `s-clickable` (coming soon) render as anchor elements when they have a `href` and render as a button element when they have an `onClick` without a `href`. The HTML specification stats that interactive elements cannot have interactive children.\n\n`s-clickable` is an escape hatch for when `s-link` and `s-button` are not able to implement a specific design. You should always try to use `s-link` and `s-button` first.\n\nInteactive components with `target="auto"` automatically use `_self` for internal links and `_blank` for external URLs. This behavior ensures a consistent navigation experience for users without requiring developers to manually set the correct target for each link.',
+        '`s-button`, `s-link` and `s-clickable` (coming soon) render as anchor elements when they have a `href` and render as a button element when they have an `onClick` without a `href`. The HTML specification states that interactive elements cannot have interactive children.\n\n`s-clickable` is an escape hatch for when `s-link` and `s-button` are not able to implement a specific design. You should always try to use `s-link` and `s-button` first.\n\nInteactive components with `target="auto"` automatically use `_self` for internal links and `_blank` for external URLs. This behavior ensures a consistent navigation experience for users without requiring developers to manually set the correct target for each link.',
     },
     {
       type: 'Generic',

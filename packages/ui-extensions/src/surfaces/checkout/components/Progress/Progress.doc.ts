@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
 import sharedContent from '../../../../docs/shared/components/Progress';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -32,7 +33,7 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-Use components like [Paragraph](../titles-and-text/paragraph) or [Text](../titles-and-text/text), along with the \`s-progress\` component, to display text indicating the status of the progress bar.
+Use components like [Paragraph](../titles-and-text/paragraph) or [Text](../titles-and-text/text), along with the Progress component, to display text indicating the status of the progress bar.
 
 ### Loading states
 

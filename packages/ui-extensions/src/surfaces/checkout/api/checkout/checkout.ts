@@ -375,7 +375,7 @@ export interface MetafieldRemoveCartChange {
   /**
    * The namespace of the metafield to remove.
    */
-  namespace: string;
+  namespace?: string;
 }
 
 /**
@@ -418,7 +418,7 @@ export interface MetafieldUpdateCartChange {
     key: string;
 
     /** The namespace of the metafield to add. */
-    namespace: string;
+    namespace?: string;
 
     /** The new information to store in the metafield. */
     value: string;

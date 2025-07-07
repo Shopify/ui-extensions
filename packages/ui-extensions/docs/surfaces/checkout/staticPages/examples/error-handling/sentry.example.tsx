@@ -22,7 +22,7 @@ self.addEventListener('error', (error) => {
 });
 
 // Your normal extension code.
-export default async () => {
+export default function extension() {
   render(<Extension />, document.body);
 }
 

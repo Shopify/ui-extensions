@@ -1,4 +1,4 @@
-export default async () => {
+export default function extension() {
   const qrCode =
     document.createElement('s-qrcode');
   qrCode.setAttribute(

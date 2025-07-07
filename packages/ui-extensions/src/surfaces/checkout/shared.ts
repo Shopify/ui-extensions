@@ -7,13 +7,13 @@ export type AnyComponent =
   | 'Banner'
   | 'Box'
   | 'Button'
+  | 'Checkbox'
   /**
    * Note: Chat is not supported in the 2025-07 release candidate, but it is tied to a target, and we don't want to remove the target documentation.
    * Once Chat is supported, you can remove this note.
    * @private
    */
   | 'Chat'
-  | 'Checkbox'
   | 'ClipboardItem'
   | 'DropZone'
   | 'EmailField'
@@ -27,18 +27,18 @@ export type AnyComponent =
   | 'MapMarker'
   | 'Modal'
   | 'NumberField'
+  | 'Option'
   | 'OrderedList'
   | 'Paragraph'
   | 'PaymentIcon'
   | 'PhoneField'
   | 'Progress'
-  | 'QRCode'
-  | 'Section'
+  | 'ProductThumbnail'
+  | 'Select'
   | 'Spinner'
   | 'Stack'
   | 'Text'
   | 'TextArea'
-  | 'TextField'
   | 'Time'
   | 'UnorderedList';
 
