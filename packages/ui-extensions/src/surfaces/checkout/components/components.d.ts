@@ -2323,6 +2323,12 @@ interface PhoneFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<FieldD
 	 */
 	type?: "mobile" | "";
 }
+interface PopoverProps$1 extends GlobalProps, BaseOverlayProps, ToggleEventProps, SizingProps, ContainerProps {
+	/**
+	 * The content of the popover.
+	 */
+	children?: ComponentChildren;
+}
 interface ProductThumbnailProps$1 extends GlobalProps, BaseImageProps {
 	/**
 	 * Decorates the product thumbnail with the quantity of the product.
@@ -2708,16 +2714,16 @@ declare module 'preact' {
 }
 
 declare const tagName$A = "s-banner";
-interface BannerBaseProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
+interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }
 interface BannerEvents extends Pick<BannerProps$1, 'onAfterHide' | 'onDismiss'> {
 }
-interface BannerElement extends BannerBaseProps, Omit<BannerEvents, 'onAfterHide' | 'onDismiss'>, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
+interface BannerElement extends BannerElementProps, Omit<BannerEvents, 'onAfterHide' | 'onDismiss'>, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
     onafterhide: BannerEvents['onAfterHide'];
     ondismiss: BannerEvents['onDismiss'];
 }
-interface BannerProps extends BannerBaseProps, BannerEvents {
+interface BannerProps extends BannerElementProps, BannerEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -2753,7 +2759,7 @@ declare module 'preact' {
 }
 
 declare const tagName$y = "s-button";
-interface ButtonBaseProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
+interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;
@@ -2761,10 +2767,10 @@ interface ButtonBaseProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'co
 }
 interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
 }
-interface ButtonElement extends ButtonBaseProps, Omit<ButtonEvents, 'onClick'>, Omit<HTMLElement, 'id' | 'onclick'> {
+interface ButtonElement extends ButtonElementProps, Omit<ButtonEvents, 'onClick'>, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: ButtonEvents['onClick'];
 }
-interface ButtonProps extends ButtonBaseProps, ButtonEvents {
+interface ButtonProps extends ButtonElementProps, ButtonEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -2779,18 +2785,18 @@ declare module 'preact' {
 }
 
 declare const tagName$x = "s-checkbox";
-interface CheckboxBaseProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
+interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
+    command?: Extract<CheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
 interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 }
-interface CheckboxElement extends CheckboxBaseProps, Omit<CheckboxEvents, 'onChange'>, Omit<HTMLElement, 'id' | 'onchange'> {
+interface CheckboxElement extends CheckboxElementProps, Omit<CheckboxEvents, 'onChange'>, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: CheckboxEvents['onChange'];
 }
-interface CheckboxProps extends CheckboxBaseProps, CheckboxEvents {
+interface CheckboxProps extends CheckboxElementProps, CheckboxEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$x]: CheckboxElement;
     }
 }
 declare module 'preact' {
@@ -2817,7 +2823,6 @@ interface ClickableElement extends Omit<ClickableProps, 'onBlur' | 'onClick' | '
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$w]: ClickableElement;
     }
 }
 declare module 'preact' {
@@ -2829,15 +2834,15 @@ declare module 'preact' {
 }
 
 declare const tagName$v = "s-clipboard-item";
-interface ClipboardItemBaseProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
+interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
 }
 interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
 }
-interface ClipboardItemElement extends ClipboardItemBaseProps, Omit<ClipboardItemEvents, 'onCopy' | 'onCopyError'>, Omit<HTMLElement, 'id' | 'oncopy'> {
+interface ClipboardItemElement extends ClipboardItemElementProps, Omit<ClipboardItemEvents, 'onCopy' | 'onCopyError'>, Omit<HTMLElement, 'id' | 'oncopy'> {
     oncopy: ClipboardItemEvents['onCopy'];
     oncopyerror: ClipboardItemEvents['onCopyError'];
 }
-interface ClipboardItemProps extends ClipboardItemBaseProps, ClipboardItemEvents {
+interface ClipboardItemProps extends ClipboardItemElementProps, ClipboardItemEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -2852,14 +2857,10 @@ declare module 'preact' {
 }
 
 declare const tagName$u = "s-details";
-interface DetailsProps extends Pick<DetailsProps$1, 'defaultOpen' | 'onToggle' | 'name' | 'id'> {
-}
-interface DetailsElement extends Omit<DetailsProps, 'onToggle'>, Omit<HTMLElement, 'ontoggle' | 'id'> {
-    ontoggle: DetailsProps['onToggle'];
+interface DetailsProps extends Pick<DetailsProps$1, 'defaultOpen' | 'onToggle' | 'id' | 'toggleTransition'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$u]: DetailsElement;
     }
 }
 declare module 'preact' {
@@ -2875,15 +2876,15 @@ declare module 'preact' {
 }
 
 declare const tagName$t = "s-drop-zone";
-interface DropZoneBaseProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required'> {
+interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required'> {
 }
 interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput'> {
 }
-interface DropZoneElement extends DropZoneBaseProps, Omit<DropZoneEvents, 'onDropRejected' | 'onInput'>, Omit<HTMLElement, 'id' | 'oninput'> {
+interface DropZoneElement extends DropZoneElementProps, Omit<DropZoneEvents, 'onDropRejected' | 'onInput'>, Omit<HTMLElement, 'id' | 'oninput'> {
     ondroprejected: DropZoneEvents['onDropRejected'];
     oninput: DropZoneEvents['onInput'];
 }
-interface DropZoneProps extends DropZoneBaseProps, DropZoneEvents {
+interface DropZoneProps extends DropZoneElementProps, DropZoneEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -2898,21 +2899,20 @@ declare module 'preact' {
 }
 
 declare const tagName$s = "s-email-field";
-interface EmailFieldBaseProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value'> {
+interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value'> {
 }
 interface EmailFieldEvents extends Pick<EmailFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-interface EmailFieldElement extends EmailFieldBaseProps, Omit<EmailFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+interface EmailFieldElement extends EmailFieldElementProps, Omit<EmailFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: EmailFieldEvents['onBlur'];
     onchange: EmailFieldEvents['onChange'];
     onfocus: EmailFieldEvents['onFocus'];
     oninput: EmailFieldEvents['onInput'];
 }
-interface EmailFieldProps extends EmailFieldBaseProps, EmailFieldEvents {
+interface EmailFieldProps extends EmailFieldElementProps, EmailFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$s]: EmailFieldElement;
     }
 }
 declare module 'preact' {
@@ -2924,15 +2924,15 @@ declare module 'preact' {
 }
 
 declare const tagName$r = "s-form";
-interface FormBaseProps extends Pick<FormProps$1, 'id' | 'disabled'> {
+interface FormElementProps extends Pick<FormProps$1, 'id' | 'disabled'> {
 }
 interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
     onSubmit?: () => void;
 }
-interface FormElement extends Omit<FormBaseProps, 'children'>, Omit<FormEvents, 'onSubmit'>, Omit<HTMLElement, 'id' | 'onsubmit'> {
+interface FormElement extends Omit<FormElementProps, 'children'>, Omit<FormEvents, 'onSubmit'>, Omit<HTMLElement, 'id' | 'onsubmit'> {
     onsubmit: FormEvents['onSubmit'];
 }
-interface FormProps extends FormBaseProps, FormEvents {
+interface FormProps extends FormElementProps, FormEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -3004,16 +3004,16 @@ declare module 'preact' {
 }
 
 declare const tagName$n = "s-link";
-interface LinkBaseProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'lang' | 'target' | 'tone'> {
+interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'lang' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }
 interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
 }
-interface LinkElement extends LinkBaseProps, Omit<LinkEvents, 'onClick'>, Omit<HTMLElement, 'id' | 'lang' | 'onclick'> {
+interface LinkElement extends LinkElementProps, Omit<LinkEvents, 'onClick'>, Omit<HTMLElement, 'id' | 'lang' | 'onclick'> {
     onclick: LinkEvents['onClick'];
 }
-interface LinkProps extends LinkBaseProps, LinkEvents {
+interface LinkProps extends LinkElementProps, LinkEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -3045,21 +3045,20 @@ declare module 'preact' {
 }
 
 declare const tagName$l = "s-map";
-interface MapBaseProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
+interface MapElementProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
 }
 interface MapEvents extends Pick<MapProps$1, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'> {
 }
-interface MapElement extends MapBaseProps, Omit<MapEvents, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
+interface MapElement extends MapElementProps, Omit<MapEvents, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
     onboundschange: MapEvents['onBoundsChange'];
     onclick: MapEvents['onClick'];
     ondblclick: MapEvents['onDblClick'];
     onviewchange: MapEvents['onViewChange'];
 }
-interface MapProps extends MapBaseProps, MapEvents {
+interface MapProps extends MapElementProps, MapEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$l]: MapElement;
     }
 }
 declare module 'preact' {
@@ -3071,7 +3070,7 @@ declare module 'preact' {
 }
 
 declare const tagName$k = "s-map-marker";
-interface MapMarkerBaseProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
+interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
 }
 interface MapMarkerEvents extends Pick<MapMarkerProps$1, 'onClick'> {
 }
@@ -3083,14 +3082,13 @@ interface MapMarkerSlots {
      */
     graphic?: ReactNode;
 }
-interface MapMarkerElement extends MapMarkerBaseProps, MapMarkerSlots, Omit<HTMLElement, 'id' | 'onclick'> {
+interface MapMarkerElement extends MapMarkerElementProps, MapMarkerSlots, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: MapMarkerEvents['onClick'];
 }
-interface MapMarkerProps extends MapMarkerBaseProps, MapMarkerEvents {
+interface MapMarkerProps extends MapMarkerElementProps, MapMarkerEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$k]: MapMarkerElement;
     }
 }
 declare module 'preact' {
@@ -3102,7 +3100,7 @@ declare module 'preact' {
 }
 
 declare const tagName$j = "s-modal";
-interface ModalBaseProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
+interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
 interface ModalSlots extends Pick<ModalProps$1, 'primaryAction' | 'secondaryActions'> {
@@ -3117,15 +3115,14 @@ interface ModalSlots extends Pick<ModalProps$1, 'primaryAction' | 'secondaryActi
 }
 interface ModalEvents extends Pick<ModalProps$1, 'onHide' | 'onShow' | 'onAfterHide' | 'onAfterShow'> {
 }
-interface ModalElement extends ModalBaseProps, ModalSlots, Omit<ModalEvents, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
+interface ModalElement extends ModalElementProps, ModalSlots, Omit<ModalEvents, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
     onhide: ModalEvents['onHide'];
     onshow: ModalEvents['onShow'];
 }
-interface ModalProps extends ModalBaseProps, ModalSlots, ModalEvents {
+interface ModalProps extends ModalElementProps, ModalSlots, ModalEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$j]: ModalElement;
     }
 }
 declare module 'preact' {
@@ -3137,21 +3134,20 @@ declare module 'preact' {
 }
 
 declare const tagName$i = "s-number-field";
-interface NumberFieldBaseProps extends NumberFieldProps$1 {
+interface NumberFieldElementProps extends NumberFieldProps$1 {
 }
 interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-interface NumberFieldElement extends NumberFieldBaseProps, Omit<NumberFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+interface NumberFieldElement extends NumberFieldElementProps, Omit<NumberFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: NumberFieldEvents['onBlur'];
     onchange: NumberFieldEvents['onChange'];
     onfocus: NumberFieldEvents['onFocus'];
     oninput: NumberFieldEvents['onInput'];
 }
-interface NumberFieldProps extends NumberFieldBaseProps, NumberFieldEvents {
+interface NumberFieldProps extends NumberFieldElementProps, NumberFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$i]: NumberFieldElement;
     }
 }
 declare module 'preact' {
@@ -3186,7 +3182,6 @@ interface OptionElement extends OptionProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$g]: OptionElement;
     }
 }
 declare module 'preact' {
@@ -3216,6 +3211,25 @@ declare module 'preact' {
     }
 }
 
+interface PopoverProps extends Pick<PopoverProps$1, 'blockSize' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'onHide' | 'onShow'> {
+}
+interface PopoverElement extends Omit<PopoverProps, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
+    onhide: PopoverProps['onHide'];
+    onshow: PopoverProps['onShow'];
+}
+declare global {
+    interface HTMLElementTagNameMap {
+        's-popover': PopoverElement;
+    }
+}
+declare module 'preact' {
+    namespace createElement.JSX {
+        interface IntrinsicElements {
+            's-popover': PopoverProps & BaseElementPropsWithChildren<PopoverElement>;
+        }
+    }
+}
+
 declare const tagName$e = "s-payment-icon";
 interface PaymentIconProps extends PaymentIconProps$1 {
 }
@@ -3234,7 +3248,7 @@ declare module 'preact' {
 }
 
 declare const tagName$d = "s-phone-field";
-interface PhoneFieldBaseProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value' | 'type'> {
+interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value' | 'type'> {
 }
 interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
@@ -3245,17 +3259,16 @@ interface PhoneFieldSlots extends Pick<PhoneFieldProps$1, 'accessory'> {
      */
     accessory?: ReactNode;
 }
-interface PhoneFieldElement extends PhoneFieldBaseProps, PhoneFieldSlots, Omit<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+interface PhoneFieldElement extends PhoneFieldElementProps, PhoneFieldSlots, Omit<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: PhoneFieldEvents['onBlur'];
     onchange: PhoneFieldEvents['onChange'];
     onfocus: PhoneFieldEvents['onFocus'];
     oninput: PhoneFieldEvents['onInput'];
 }
-interface PhoneFieldProps extends PhoneFieldBaseProps, PhoneFieldSlots, PhoneFieldEvents {
+interface PhoneFieldProps extends PhoneFieldElementProps, PhoneFieldSlots, PhoneFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$d]: PhoneFieldElement;
     }
 }
 declare module 'preact' {
@@ -3274,7 +3287,6 @@ interface ProductThumbnailElement extends ProductThumbnailProps, Omit<HTMLElemen
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$c]: ProductThumbnailElement;
     }
 }
 declare module 'preact' {
@@ -3304,18 +3316,17 @@ declare module 'preact' {
 }
 
 declare const tagName$a = "s-qr-code";
-interface QRCodeBaseProps extends QRCodeProps$1 {
+interface QRCodeElementProps extends QRCodeProps$1 {
 }
 interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
 }
-interface QRCodelement extends QRCodeBaseProps, Omit<QRCodeEvents, 'onError'>, Omit<HTMLElement, 'id' | 'onerror'> {
+interface QRCodelement extends QRCodeElementProps, Omit<QRCodeEvents, 'onError'>, Omit<HTMLElement, 'id' | 'onerror'> {
     onerror: QRCodeEvents['onError'];
 }
-interface QRCodeProps extends QRCodeBaseProps, QRCodeEvents {
+interface QRCodeProps extends QRCodeElementProps, QRCodeEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$a]: QRCodelement;
     }
 }
 declare module 'preact' {
@@ -3333,7 +3344,6 @@ interface SectionElement extends SectionProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$9]: SectionElement;
     }
 }
 declare module 'preact' {
@@ -3345,20 +3355,19 @@ declare module 'preact' {
 }
 
 declare const tagName$8 = "s-select";
-interface SelectBaseProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {
+interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {
 }
 interface SelectEvents extends Pick<SelectProps$1, 'onBlur' | 'onChange' | 'onFocus'> {
 }
-interface SelectElement extends SelectBaseProps, Omit<SelectEvents, 'onBlur' | 'onChange' | 'onFocus'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus'> {
+interface SelectElement extends SelectElementProps, Omit<SelectEvents, 'onBlur' | 'onChange' | 'onFocus'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus'> {
     onblur: SelectEvents['onBlur'];
     onchange: SelectEvents['onChange'];
     onfocus: SelectEvents['onFocus'];
 }
-interface SelectProps extends SelectBaseProps, SelectEvents {
+interface SelectProps extends SelectElementProps, SelectEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$8]: SelectElement;
     }
 }
 declare module 'preact' {
@@ -3415,11 +3424,8 @@ declare module 'preact' {
 declare const tagName$5 = "s-summary";
 interface SummaryProps extends Pick<SummaryProps$1, 'id'> {
 }
-interface SummaryElement extends SummaryProps, Omit<HTMLElement, 'id'> {
-}
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$5]: SummaryElement;
     }
 }
 declare module 'preact' {
@@ -3435,21 +3441,20 @@ declare module 'preact' {
 }
 
 declare const tagName$4 = "s-text-area";
-interface TextAreaBaseProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
+interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
 }
 interface TextAreaEvents extends Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-interface TextAreaElement extends TextAreaBaseProps, Omit<TextAreaEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
+interface TextAreaElement extends TextAreaElementProps, Omit<TextAreaEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
     onblur: TextAreaEvents['onBlur'];
     onchange: TextAreaEvents['onChange'];
     onfocus: TextAreaEvents['onFocus'];
     oninput: TextAreaEvents['onInput'];
 }
-interface TextAreaProps extends TextAreaBaseProps, TextAreaEvents {
+interface TextAreaProps extends TextAreaElementProps, TextAreaEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName$4]: TextAreaElement;
     }
 }
 declare module 'preact' {
@@ -3461,7 +3466,7 @@ declare module 'preact' {
 }
 
 declare const tagName$3 = "s-text-field";
-interface TextFieldBaseProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'icon' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'placeholder' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
+interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'icon' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'placeholder' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
 }
 interface TextFieldEvents extends Pick<TextFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
@@ -3473,13 +3478,13 @@ interface TextFieldSlots {
      */
     accessory?: ReactNode;
 }
-interface TextFieldElement extends TextFieldBaseProps, TextFieldSlots, Omit<TextFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+interface TextFieldElement extends TextFieldElementProps, TextFieldSlots, Omit<TextFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: TextFieldEvents['onBlur'];
     onchange: TextFieldEvents['onChange'];
     onfocus: TextFieldEvents['onFocus'];
     oninput: TextFieldEvents['onInput'];
 }
-interface TextFieldProps extends TextFieldBaseProps, TextFieldSlots, TextFieldEvents {
+interface TextFieldProps extends TextFieldElementProps, TextFieldSlots, TextFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -3547,4 +3552,4 @@ declare module 'preact' {
     }
 }
 
-export type { AbbreviationProps, BannerProps, BoxProps, ButtonProps, CheckboxProps, ClickableProps, ClipboardItemProps, DetailsProps, DropZoneProps, EmailFieldProps, FormProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, MapMarkerProps, MapProps, ModalProps, NumberFieldProps, OptionProps, OrderedListProps, ParagraphProps, PaymentIconProps, PhoneFieldProps, ProductThumbnailProps, ProgressProps, QRCodeProps, SectionProps, SelectProps, SpinnerProps, StackProps, SummaryProps, TextAreaProps, TextFieldProps, TextProps, TimeProps, UnorderedListProps };
+export type { AbbreviationProps, BannerProps, BoxProps, ButtonProps, CheckboxProps, ClickableProps, ClipboardItemProps, DetailsProps, DropZoneProps, EmailFieldProps, FormProps, HeadingProps, IconProps, ImageProps, LinkProps, ListItemProps, MapMarkerProps, MapProps, ModalProps, NumberFieldProps, OptionProps, OrderedListProps, ParagraphProps, PaymentIconProps, PhoneFieldProps, PopoverProps, ProductThumbnailProps, ProgressProps, QRCodeProps, SectionProps, SelectProps, SpinnerProps, StackProps, SummaryProps, TextAreaProps, TextFieldProps, TextProps, TimeProps, UnorderedListProps };

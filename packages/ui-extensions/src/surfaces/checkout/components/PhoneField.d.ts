@@ -22,9 +22,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-phone-field";
-export interface PhoneFieldBaseProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value' | 'type'> {
+export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value' | 'type'> {
 }
 export interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
@@ -32,19 +35,19 @@ export interface PhoneFieldElementEvents {
     /**
      * Callback when the element loses focus.
      */
-    blur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
      */
-    change?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the element receives focus.
      */
-    focus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user makes any changes in the field.
      */
-    input?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
 export interface PhoneFieldSlots extends Pick<PhoneFieldProps$1, 'accessory'> {
     /**
@@ -60,13 +63,13 @@ export interface PhoneFieldElementSlots {
      */
     accessory?: HTMLElement;
 }
-export interface PhoneFieldElement extends PhoneFieldBaseProps, PhoneFieldSlots, Omit<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+export interface PhoneFieldElement extends PhoneFieldElementProps, PhoneFieldSlots, Omit<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: PhoneFieldEvents['onBlur'];
     onchange: PhoneFieldEvents['onChange'];
     onfocus: PhoneFieldEvents['onFocus'];
     oninput: PhoneFieldEvents['onInput'];
 }
-export interface PhoneFieldProps extends PhoneFieldBaseProps, PhoneFieldSlots, PhoneFieldEvents {
+export interface PhoneFieldProps extends PhoneFieldElementProps, PhoneFieldSlots, PhoneFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -81,4 +84,4 @@ declare module 'preact' {
     }
 }
 
-export type { PhoneFieldBaseProps, PhoneFieldElement, PhoneFieldElementEvents, PhoneFieldElementSlots, PhoneFieldEvents, PhoneFieldProps, PhoneFieldSlots };
+export type { PhoneFieldElement, PhoneFieldElementEvents, PhoneFieldElementProps, PhoneFieldElementSlots, PhoneFieldEvents, PhoneFieldProps, PhoneFieldSlots };

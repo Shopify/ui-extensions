@@ -27,9 +27,12 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-button";
-export interface ButtonBaseProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
+export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;
@@ -42,12 +45,12 @@ export interface ButtonElementEvents {
      * Callback when the button is activated.
      * This will be called before the action indicated by `type`.
      */
-    click?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    click?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface ButtonElement extends ButtonBaseProps, Omit<ButtonEvents, 'onClick'>, Omit<HTMLElement, 'id' | 'onclick'> {
+export interface ButtonElement extends ButtonElementProps, Omit<ButtonEvents, 'onClick'>, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: ButtonEvents['onClick'];
 }
-export interface ButtonProps extends ButtonBaseProps, ButtonEvents {
+export interface ButtonProps extends ButtonElementProps, ButtonEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -62,4 +65,4 @@ declare module 'preact' {
     }
 }
 
-export type { ButtonBaseProps, ButtonElement, ButtonElementEvents, ButtonEvents, ButtonProps };
+export type { ButtonElement, ButtonElementEvents, ButtonElementProps, ButtonEvents, ButtonProps };

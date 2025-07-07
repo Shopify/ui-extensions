@@ -22,9 +22,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-map-marker";
-export interface MapMarkerBaseProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
+export interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
 }
 export interface MapMarkerEvents extends Pick<MapMarkerProps$1, 'onClick'> {
 }
@@ -34,7 +37,7 @@ export interface MapMarkerElementEvents {
      *
      * It does not trigger a click event on the map itself.
      */
-    click?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    click?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
 export interface MapMarkerSlots {
     /**
@@ -52,10 +55,10 @@ export interface MapMarkerElementSlots {
      */
     graphic?: HTMLElement;
 }
-export interface MapMarkerElement extends MapMarkerBaseProps, MapMarkerSlots, Omit<HTMLElement, 'id' | 'onclick'> {
+export interface MapMarkerElement extends MapMarkerElementProps, MapMarkerSlots, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: MapMarkerEvents['onClick'];
 }
-export interface MapMarkerProps extends MapMarkerBaseProps, MapMarkerEvents {
+export interface MapMarkerProps extends MapMarkerElementProps, MapMarkerEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -70,4 +73,4 @@ declare module 'preact' {
     }
 }
 
-export type { MapMarkerBaseProps, MapMarkerElement, MapMarkerElementEvents, MapMarkerElementSlots, MapMarkerEvents, MapMarkerProps, MapMarkerSlots };
+export type { MapMarkerElement, MapMarkerElementEvents, MapMarkerElementProps, MapMarkerElementSlots, MapMarkerEvents, MapMarkerProps, MapMarkerSlots };

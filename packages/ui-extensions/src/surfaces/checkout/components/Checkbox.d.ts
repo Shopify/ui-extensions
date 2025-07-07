@@ -21,9 +21,13 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-checkbox";
-export interface CheckboxBaseProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
+export interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
+    command?: Extract<CheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
 export interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 }
@@ -31,12 +35,12 @@ export interface CheckboxElementEvents {
     /**
      * A callback that is run whenever the control is changed.
      */
-    change?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface CheckboxElement extends CheckboxBaseProps, Omit<CheckboxEvents, 'onChange'>, Omit<HTMLElement, 'id' | 'onchange'> {
+export interface CheckboxElement extends CheckboxElementProps, Omit<CheckboxEvents, 'onChange'>, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: CheckboxEvents['onChange'];
 }
-export interface CheckboxProps extends CheckboxBaseProps, CheckboxEvents {
+export interface CheckboxProps extends CheckboxElementProps, CheckboxEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -51,4 +55,4 @@ declare module 'preact' {
     }
 }
 
-export type { CheckboxBaseProps, CheckboxElement, CheckboxElementEvents, CheckboxEvents, CheckboxProps };
+export type { CheckboxElement, CheckboxElementEvents, CheckboxElementProps, CheckboxEvents, CheckboxProps };

@@ -28,6 +28,9 @@ export type ReducedIconTypes = Extract<IconType, 'alert-circle' | 'alert-triangl
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName$1 = "s-icon";
 export interface IconProps extends Pick<IconProps$1, 'id' | 'size' | 'tone' | 'type'> {
@@ -51,7 +54,7 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-text-field";
-export interface TextFieldBaseProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'icon' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'placeholder' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
+export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'icon' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'placeholder' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
 }
 export interface TextFieldEvents extends Pick<TextFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
@@ -60,19 +63,19 @@ export interface TextFieldElementEvents {
     /**
      * Callback when the element loses focus.
      */
-    blur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
      */
-    change?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the element receives focus.
      */
-    focus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user makes any changes in the field.
      */
-    input?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
 export interface TextFieldSlots {
     /**
@@ -88,13 +91,13 @@ export interface TextFieldElementSlots {
      */
     accessory?: HTMLElement;
 }
-export interface TextFieldElement extends TextFieldBaseProps, TextFieldSlots, Omit<TextFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+export interface TextFieldElement extends TextFieldElementProps, TextFieldSlots, Omit<TextFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: TextFieldEvents['onBlur'];
     onchange: TextFieldEvents['onChange'];
     onfocus: TextFieldEvents['onFocus'];
     oninput: TextFieldEvents['onInput'];
 }
-export interface TextFieldProps extends TextFieldBaseProps, TextFieldSlots, TextFieldEvents {
+export interface TextFieldProps extends TextFieldElementProps, TextFieldSlots, TextFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -109,4 +112,4 @@ declare module 'preact' {
     }
 }
 
-export type { TextFieldBaseProps, TextFieldElement, TextFieldElementEvents, TextFieldElementSlots, TextFieldEvents, TextFieldProps, TextFieldSlots };
+export type { TextFieldElement, TextFieldElementEvents, TextFieldElementProps, TextFieldElementSlots, TextFieldEvents, TextFieldProps, TextFieldSlots };

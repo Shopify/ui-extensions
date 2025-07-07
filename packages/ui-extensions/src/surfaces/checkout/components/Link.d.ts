@@ -27,9 +27,12 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-link";
-export interface LinkBaseProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'lang' | 'target' | 'tone'> {
+export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'lang' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }
@@ -40,12 +43,12 @@ export interface LinkElementEvents {
      * Callback when the link is activated.
      * This will be called before navigating to the location specified by `href`.
      */
-    click?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    click?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface LinkElement extends LinkBaseProps, Omit<LinkEvents, 'onClick'>, Omit<HTMLElement, 'id' | 'lang' | 'onclick'> {
+export interface LinkElement extends LinkElementProps, Omit<LinkEvents, 'onClick'>, Omit<HTMLElement, 'id' | 'lang' | 'onclick'> {
     onclick: LinkEvents['onClick'];
 }
-export interface LinkProps extends LinkBaseProps, LinkEvents {
+export interface LinkProps extends LinkElementProps, LinkEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -60,4 +63,4 @@ declare module 'preact' {
     }
 }
 
-export type { LinkBaseProps, LinkElement, LinkElementEvents, LinkEvents, LinkProps };
+export type { LinkElement, LinkElementEvents, LinkElementProps, LinkEvents, LinkProps };

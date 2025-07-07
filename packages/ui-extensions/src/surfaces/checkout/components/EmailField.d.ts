@@ -21,9 +21,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-email-field";
-export interface EmailFieldBaseProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value'> {
+export interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value'> {
 }
 export interface EmailFieldEvents extends Pick<EmailFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
@@ -31,27 +34,27 @@ export interface EmailFieldElementEvents {
     /**
      * Callback when the element loses focus.
      */
-    blur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
      */
-    change?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the element receives focus.
      */
-    focus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user makes any changes in the field.
      */
-    input?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface EmailFieldElement extends EmailFieldBaseProps, Omit<EmailFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+export interface EmailFieldElement extends EmailFieldElementProps, Omit<EmailFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: EmailFieldEvents['onBlur'];
     onchange: EmailFieldEvents['onChange'];
     onfocus: EmailFieldEvents['onFocus'];
     oninput: EmailFieldEvents['onInput'];
 }
-export interface EmailFieldProps extends EmailFieldBaseProps, EmailFieldEvents {
+export interface EmailFieldProps extends EmailFieldElementProps, EmailFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -66,4 +69,4 @@ declare module 'preact' {
     }
 }
 
-export type { EmailFieldBaseProps, EmailFieldElement, EmailFieldElementEvents, EmailFieldEvents, EmailFieldProps };
+export type { EmailFieldElement, EmailFieldElementEvents, EmailFieldElementProps, EmailFieldEvents, EmailFieldProps };

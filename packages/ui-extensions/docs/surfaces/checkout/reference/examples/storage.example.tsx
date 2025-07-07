@@ -1,7 +1,7 @@
 import {render} from 'preact';
 import {useEffect, useState} from 'preact/hooks';
 
-export default async () => {
+export default function extension() {
   render(<Extension />, document.body);
 }
 
@@ -28,13 +28,10 @@ function Extension() {
   }
 
   return (
-    <s-button
-      onClick={() => cacheConsent(!tosConsent)}
-      variant={
-        tosConsent ? 'primary' : 'secondary'
-      }
-    >
-      I agree with the terms of service
-    </s-button>
+    <s-checkbox
+      checked={tosConsent}
+      onChange={() => cacheConsent(!tosConsent)}
+      label="I agree with the terms of service"
+    />
   );
 }

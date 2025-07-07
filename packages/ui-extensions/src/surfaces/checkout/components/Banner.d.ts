@@ -27,9 +27,12 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-banner";
-export interface BannerBaseProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
+export interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }
 export interface BannerEvents extends Pick<BannerProps$1, 'onAfterHide' | 'onDismiss'> {
@@ -44,7 +47,7 @@ export interface BannerElementEvents {
      * this event must fire after the banner has fully hidden.
      * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
      */
-    afterhide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    afterhide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Event handler when the banner is dismissed by the user.
      *
@@ -52,13 +55,13 @@ export interface BannerElementEvents {
      *
      * The `hidden` property will be `false` when this event fires.
      */
-    dismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    dismiss?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface BannerElement extends BannerBaseProps, Omit<BannerEvents, 'onAfterHide' | 'onDismiss'>, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
+export interface BannerElement extends BannerElementProps, Omit<BannerEvents, 'onAfterHide' | 'onDismiss'>, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
     onafterhide: BannerEvents['onAfterHide'];
     ondismiss: BannerEvents['onDismiss'];
 }
-export interface BannerProps extends BannerBaseProps, BannerEvents {
+export interface BannerProps extends BannerElementProps, BannerEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -73,4 +76,4 @@ declare module 'preact' {
     }
 }
 
-export type { BannerBaseProps, BannerElement, BannerElementEvents, BannerEvents, BannerProps };
+export type { BannerElement, BannerElementEvents, BannerElementProps, BannerEvents, BannerProps };
