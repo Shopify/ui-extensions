@@ -1196,6 +1196,23 @@ export interface FocusEventProps {
    */
   onFocus?: () => void;
 }
+export interface ExtendableEvent extends Event {
+  /**
+   * Provide a promise that signals the length, and eventual success or failure of actions relating to the event.
+   *
+   * This may be called many times, which adds promises to the event.
+   *
+   * However, this may only be called synchronously during the dispatch of the event.
+   * As in, you cannot call it after a `setTimeout` or microtask.
+   */
+  waitUntil: (promise: Promise<void>) => void;
+}
+interface AggregateError$1<T extends Error> extends Error {
+  errors: T[];
+}
+export interface ArgregatedErrorEvent<T extends Error> extends ErrorEvent {
+  error: AggregateError$1<T>;
+}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The behavior of the button.
@@ -2042,6 +2059,23 @@ export type EmailAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'email' | `${AutocompleteAddressGroup} email`
 >;
+interface FormProps$1 extends GlobalProps {
+  /**
+   * A callback that is run when the form is submitted.
+   *
+   * Use `event.waitUntil` to signal how long it takes to save the data,
+   * and whether it was successful or not.
+   */
+  onSubmit?: (event: ExtendableEvent) => void;
+  /**
+   * A callback that is run when the form is reset.
+   */
+  onReset?: (event: Event) => void;
+  /**
+   * The content of the form.
+   */
+  children?: ComponentChildren;
+}
 export type SpacingKeyword = SizeKeyword | 'none';
 export interface GapProps {
   /**
@@ -3841,4 +3875,38 @@ interface AdminPrintActionProps$1 extends GlobalProps {
    * HTML, PDFs and images are supported.
    */
   src?: string;
+}
+interface FunctionSettingsProps$1 extends GlobalProps, FormProps$1 {
+  /**
+   * An optional callback function that will be run by the admin when the user
+   * commits their changes in the admin-rendered part of the function settings
+   * experience. If `event.waitUntil` is called with a promise, the admin will wait for the
+   * promise to resolve before committing any changes to Shopify’s servers. If
+   * the promise rejects, the admin will abort the changes and display an error,
+   * using the `message` property of the error you reject with.
+   */
+  onSubmit?: (event: ExtendableEvent) => void;
+  /**
+   * An optional callback function that will be run by the admin when
+   * committing the changes to Shopify’s servers fails. The error event you receive includes
+   * an `error` property that is an `AggregateError` object. This object includes
+   * an array of errors that were caused by data your extension provided.
+   * Network errors and user errors that are out of your control will not be reported here.
+   *
+   * In the `onError` callback, you should update your extension’s UI to
+   * highlight the fields that caused the errors, and display the error messages
+   * to the user.
+   */
+  onError?: (event: ArgregatedErrorEvent<FunctionSettingsError>) => void;
+}
+export interface FunctionSettingsError extends Error {
+  /**
+   * A unique identifier describing the “class” of error. These will match
+   * the GraphQL error codes as closely as possible. For example the enums
+   * returned by the `metafieldsSet` mutation
+   *
+   * @see https://shopify.dev/docs/api/admin-graphql/latest/enums/MetafieldsSetUserErrorCode
+   */
+  code: string;
+  name: 'FunctionSettingsError';
 }
