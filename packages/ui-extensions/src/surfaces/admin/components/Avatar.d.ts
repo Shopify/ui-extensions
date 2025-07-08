@@ -1,4 +1,4 @@
-/** VERSION: 1.2.0 **/
+/** VERSION: 1.3.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -9,7 +9,7 @@
 import type {AvatarProps$1, ComponentChild} from './shared.d.ts';
 
 export interface AvatarProps
-  extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt'>> {
+  extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt' | 'size'>> {
   size: Extract<
     AvatarProps$1['size'],
     'small-200' | 'small' | 'base' | 'large' | 'large-200'

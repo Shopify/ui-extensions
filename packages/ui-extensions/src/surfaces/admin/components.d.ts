@@ -1,4 +1,4 @@
-/** VERSION: 1.2.0 **/
+/** VERSION: 1.3.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -3846,7 +3846,7 @@ interface AdminPrintActionProps$1 extends GlobalProps {
 }
 
 export interface AvatarProps
-  extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt'>> {
+  extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt' | 'size'>> {
   size: Extract<
     AvatarProps$1['size'],
     'small-200' | 'small' | 'base' | 'large' | 'large-200'
@@ -6185,7 +6185,7 @@ export interface TextFieldJSXProps
 }
 
 export interface ThumbnailProps
-  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt'>> {
+  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt' | 'size'>> {
   size: Extract<
     ThumbnailProps$1['size'],
     'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'

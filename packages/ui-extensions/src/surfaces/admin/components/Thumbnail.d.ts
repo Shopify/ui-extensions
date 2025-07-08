@@ -1,4 +1,4 @@
-/** VERSION: 1.2.0 **/
+/** VERSION: 1.3.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -9,7 +9,7 @@
 import type {ThumbnailProps$1, ComponentChild} from './shared.d.ts';
 
 export interface ThumbnailProps
-  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt'>> {
+  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt' | 'size'>> {
   size: Extract<
     ThumbnailProps$1['size'],
     'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'
