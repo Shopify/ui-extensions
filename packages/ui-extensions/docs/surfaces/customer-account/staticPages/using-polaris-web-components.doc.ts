@@ -28,7 +28,7 @@ const data: LandingTemplateSchema = {
       anchorLink: 'custom-layout',
       title: 'Custom layout',
       sectionContent:
-        'When you need to build custom layouts you can use `s-stack`, `s-grid` (coming soon) and `s-box`. \n\n- `s-stack` and `s-grid` (coming soon) do not include spacing between children by default. To apply white space between children use the `gap` property\n- When `s-stack` is `display="inline"` it will automatically wrap children to a new line when space is limited.\n- `s-grid` (coming soon) will allow children to overflow unless template rows/columns are properly set.\n- Order is important for shorthand properties, e.g. border takes `size-keyword`, `color-keyword`, `style-keyword`',
+        'When you need to build custom layouts you can use `s-stack`, `s-grid` (coming soon) and `s-box`. \n\n- `s-stack` and `s-grid` (coming soon) do not include spacing between children by default. To apply white space between children use the `gap` property\n- When `s-stack` is `direction="inline"` it will automatically wrap children to a new line when space is limited.\n- `s-grid` (coming soon) will allow children to overflow unless template rows/columns are properly set.\n- Order is important for shorthand properties, e.g. border takes `size-keyword`, `color-keyword`, `style-keyword`',
     },
     {
       type: 'Generic',
