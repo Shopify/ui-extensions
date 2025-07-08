@@ -1,2 +1,1 @@
-// Point of Sale component type definitions
-// Components will be defined here
+export type {TileProps, TileJSXProps, Tile} from './render/components/Tile';
