@@ -6451,7 +6451,6 @@ export interface CustomerSegmentTemplateJSXProps
 export interface FormProps {}
 declare class Form extends PreactCustomElement implements FormProps {
   constructor();
-  accessor onsubmit: ((event: ExtendableEvent) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -6798,6 +6797,7 @@ export interface AdminActionSlots {
 }
 
 export interface FormEvents {
+  submit: ((event: ExtendableEvent) => void) | null = null;
   reset: CallbackEventListener<typeof tagName> | null = null;
 }
 

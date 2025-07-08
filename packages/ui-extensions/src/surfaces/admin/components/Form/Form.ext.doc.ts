@@ -8,9 +8,10 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: true,
   definitions: [
     {
-      title: 'Properties',
-      description: '',
-      type: 'Form',
+      title: 'Events',
+      description:
+        'Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).',
+      type: 'FormEvents',
     },
   ],
   defaultExample: {
