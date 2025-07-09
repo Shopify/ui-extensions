@@ -1,6 +1,6 @@
-import {BaseElementPropsWithChildren, GlobalProps} from './shared';
+import {BaseElementPropsWithChildren, IdProps} from './shared';
 
-export interface PageProps extends GlobalProps {
+export interface PageProps extends IdProps {
   /**
    * The main page heading
    */

@@ -1,6 +1,6 @@
-import {BaseElementPropsWithChildren, Size, GlobalProps} from './shared';
+import {BaseElementPropsWithChildren, Size, IdProps} from './shared';
 
-export interface AvatarProps extends GlobalProps {
+export interface AvatarProps extends IdProps {
   /**
    * Initials to display in the avatar.
    */
