@@ -1,6 +1,6 @@
-import {Size} from './components/shared';
+import {Size, IdProps} from './components/shared';
 
-export interface CustomerAccountActionProps {
+export interface CustomerAccountActionProps extends IdProps {
   /**
    * Sets the heading of the Action container.
    */
@@ -30,7 +30,7 @@ declare module 'preact' {
   }
 }
 
-export interface ImageGroupProps {
+export interface ImageGroupProps extends IdProps {
   /**
    * Indicates the total number of items that could be displayed in the image group.
    * It is used to determine the remaining number to show when all the available image slots have been filled.
@@ -58,7 +58,7 @@ declare module 'preact' {
   }
 }
 
-export interface PageProps {
+export interface PageProps extends IdProps {
   /**
    * The main page heading
    */
@@ -91,14 +91,7 @@ declare module 'preact' {
   }
 }
 
-interface GlobalProps {
-  /**
-   * A unique identifier for the element.
-   */
-  id?: string;
-}
-
-export interface AvatarProps extends GlobalProps {
+export interface AvatarProps extends IdProps {
   /**
    * Initials to display in the avatar.
    */

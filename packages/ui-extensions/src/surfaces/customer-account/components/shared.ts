@@ -1,6 +1,6 @@
 export interface IdProps {
   /**
-   * A unique identifier for the component.
+   * A unique identifier for the element.
    */
   id?: string;
 }
