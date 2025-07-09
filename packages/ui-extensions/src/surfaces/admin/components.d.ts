@@ -1198,6 +1198,23 @@ export interface FocusEventProps {
    */
   onFocus?: () => void;
 }
+export interface ExtendableEvent extends Event {
+  /**
+   * Provide a promise that signals the length, and eventual success or failure of actions relating to the event.
+   *
+   * This may be called many times, which adds promises to the event.
+   *
+   * However, this may only be called synchronously during the dispatch of the event.
+   * As in, you cannot call it after a `setTimeout` or microtask.
+   */
+  waitUntil: (promise: Promise<void>) => void;
+}
+interface AggregateError$1<T extends Error> extends Error {
+  errors: T[];
+}
+export interface ArgregatedErrorEvent<T extends Error> extends ErrorEvent {
+  error: AggregateError$1<T>;
+}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The behavior of the button.
@@ -2044,6 +2061,23 @@ export type EmailAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'email' | `${AutocompleteAddressGroup} email`
 >;
+interface FormProps$1 extends GlobalProps {
+  /**
+   * A callback that is run when the form is submitted.
+   *
+   * Use `event.waitUntil` to signal how long it takes to save the data,
+   * and whether it was successful or not.
+   */
+  onSubmit?: (event: ExtendableEvent) => void;
+  /**
+   * A callback that is run when the form is reset.
+   */
+  onReset?: (event: Event) => void;
+  /**
+   * The content of the form.
+   */
+  children?: ComponentChildren;
+}
 export type SpacingKeyword = SizeKeyword | 'none';
 export interface GapProps {
   /**
@@ -3844,6 +3878,40 @@ interface AdminPrintActionProps$1 extends GlobalProps {
    */
   src?: string;
 }
+interface FunctionSettingsProps$1 extends GlobalProps, FormProps$1 {
+  /**
+   * An optional callback function that will be run by the admin when the user
+   * commits their changes in the admin-rendered part of the function settings
+   * experience. If `event.waitUntil` is called with a promise, the admin will wait for the
+   * promise to resolve before committing any changes to Shopify’s servers. If
+   * the promise rejects, the admin will abort the changes and display an error,
+   * using the `message` property of the error you reject with.
+   */
+  onSubmit?: (event: ExtendableEvent) => void;
+  /**
+   * An optional callback function that will be run by the admin when
+   * committing the changes to Shopify’s servers fails. The error event you receive includes
+   * an `error` property that is an `AggregateError` object. This object includes
+   * an array of errors that were caused by data your extension provided.
+   * Network errors and user errors that are out of your control will not be reported here.
+   *
+   * In the `onError` callback, you should update your extension’s UI to
+   * highlight the fields that caused the errors, and display the error messages
+   * to the user.
+   */
+  onError?: (event: ArgregatedErrorEvent<FunctionSettingsError>) => void;
+}
+export interface FunctionSettingsError extends Error {
+  /**
+   * A unique identifier describing the “class” of error. These will match
+   * the GraphQL error codes as closely as possible. For example the enums
+   * returned by the `metafieldsSet` mutation
+   *
+   * @see https://shopify.dev/docs/api/admin-graphql/latest/enums/MetafieldsSetUserErrorCode
+   */
+  code: string;
+  name: 'FunctionSettingsError';
+}
 
 export interface AvatarProps
   extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt' | 'size'>> {
@@ -3925,6 +3993,29 @@ export type CallbackEventListener<
 > =
   | (EventListener & {
       (event: CallbackEvent<TTagName, TEvent>): void;
+    })
+  | null;
+export type CallbackErrorEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TError extends Error = Error,
+> =
+  | (EventListener & {
+      (
+        event: CallbackEvent<TTagName> & {
+          error: TError;
+        },
+      ): void;
+    })
+  | null;
+export interface CallbackExtendableEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+> extends CallbackEvent<TTagName>,
+    Pick<ExtendableEvent, 'waitUntil'> {}
+export type CallbackExtendableEventListener<
+  TTagName extends keyof HTMLElementTagNameMap,
+> =
+  | (EventListener & {
+      (event: CallbackExtendableEvent<TTagName>): void;
     })
   | null;
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
@@ -6448,10 +6539,24 @@ export interface CustomerSegmentTemplateJSXProps
   id?: string;
 }
 
-export interface FormProps {}
+export interface FormProps extends Pick<FormProps$1, 'id'> {}
+
+declare const tagName$1 = 's-form';
+export interface FormJSXProps extends Partial<FormProps> {
+  /**
+   * A callback that is run when the form is submitted.
+   */
+  onSubmit?:
+    | ((event: CallbackExtendableEvent<typeof tagName$1>) => void)
+    | null;
+  /**
+   * A callback that is run when the form is reset.
+   */
+  onReset?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+}
+
 declare class Form extends PreactCustomElement implements FormProps {
   constructor();
-  accessor onsubmit: ((event: ExtendableEvent) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -6468,34 +6573,49 @@ declare module 'preact' {
   }
 }
 
-declare const tagName$1 = 's-form';
-export interface ExtendableEvent extends CallbackEvent<typeof tagName$1> {
-  waitUntil(f: Promise<unknown>): void;
-}
-export interface FormJSXProps extends Partial<FormProps> {
-  id?: string;
-  /**
-   * A callback that is run when the form is submitted.
-   */
-  onSubmit?: ((event: ExtendableEvent) => void) | null;
-  /**
-   * A callback that is run when the form is reset.
-   */
-  onReset?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
-}
+export interface FunctionSettingsProps
+  extends Pick<FunctionSettingsProps$1, 'id'> {}
 
 declare const tagName = 's-function-settings';
-export interface FunctionSettingsProps {
+export interface FunctionSettingsJSXProps
+  extends Partial<
+    FunctionSettingsProps & Pick<FunctionSettingsProps$1, 'onError'>
+  > {
   /**
-   * A unique identifier for the form.
+   * An optional callback function that will be run by the admin when the user
+   * commits their changes in the admin-rendered part of the function settings
+   * experience. If `event.waitUntil` is called with a promise, the admin will wait for the
+   * promise to resolve before committing any changes to Shopify’s servers. If
+   * the promise rejects, the admin will abort the changes and display an error,
+   * using the `message` property of the error you reject with.
    */
-  id?: string;
+  onSubmit?: ((event: CallbackExtendableEvent<typeof tagName>) => void) | null;
+  /**
+   * A callback that is run when the function settings form is reset.
+   */
+  onReset?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
+
 declare class FunctionSettings
   extends PreactCustomElement
   implements FunctionSettingsProps
 {
   constructor();
+  /**
+   * An optional callback function that will be run by the admin when
+   * committing the changes to Shopify’s servers fails. The error event you receive includes
+   * an `error` property that is an `AggregateError` object. This object includes
+   * an array of errors that were caused by data your extension provided.
+   * Network errors and user errors that are out of your control will not be reported here.
+   *
+   * In the `onError` callback, you should update your extension’s UI to
+   * highlight the fields that caused the errors, and display the error messages
+   * to the user.
+   */
+  accessor onerror: CallbackErrorEventListener<
+    typeof tagName,
+    FunctionSettingsError
+  > | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -6510,11 +6630,6 @@ declare module 'preact' {
       };
     }
   }
-}
-
-export interface FunctionSettingsJSXProps
-  extends Partial<FunctionSettingsProps> {
-  id?: string;
 }
 
 export {
@@ -6798,12 +6913,30 @@ export interface AdminActionSlots {
 }
 
 export interface FormEvents {
+  /**
+   * A callback that is run when the form is submitted.
+   */
+  submit: CallbackExtendableEventListener<typeof tagName> | null = null;
+  /**
+   * A callback that is run when the form is reset.
+   */
   reset: CallbackEventListener<typeof tagName> | null = null;
 }
 
 export interface FunctionSettingsEvents {
-  save: CallbackEventListener<typeof tagName> | null = null;
-  error: OnErrorEventHandler = null;
+  /**
+   * An optional callback function that will be run by the admin when the user
+   * commits their changes in the admin-rendered part of the function settings
+   * experience. If `event.waitUntil` is called with a promise, the admin will wait for the
+   * promise to resolve before committing any changes to Shopify’s servers. If
+   * the promise rejects, the admin will abort the changes and display an error,
+   * using the `message` property of the error you reject with.
+   */
+  submit: CallbackExtendableEventListener<typeof tagName> | null = null;
+  /**
+   * A callback that is run when the function settings form is reset.
+   */
+  reset: CallbackEventListener<typeof tagName> | null = null;
 }
 declare module 'react' {
   namespace JSX {
