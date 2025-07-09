@@ -5,6 +5,13 @@ export interface IdProps {
   id?: string;
 }
 
+export interface GlobalProps {
+  /**
+   * A unique identifier for the element.
+   */
+  id?: string;
+}
+
 export type Size =
   | 'extraSmall'
   | 'small'
