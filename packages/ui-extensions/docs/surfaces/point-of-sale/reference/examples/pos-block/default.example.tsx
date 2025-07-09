@@ -1,27 +1,16 @@
-import React from 'react';
-import {
-  reactExtension,
-  useApi,
-  POSBlock,
-} from '@shopify/ui-extensions-react/point-of-sale';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-const PostPurchaseBlock = () => {
-  const api =
-    useApi<'pos.purchase.post.block.render'>();
-
-  return (
-    <POSBlock
-      action={{
-        title: 'A toast message',
-        onPress: () => {
-          api.Toast.show('A toast message');
-        },
-      }}
-    />
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-export default reactExtension(
-  'pos.purchase.post.block.render',
-  () => <PostPurchaseBlock />,
-);
+function Extension() {
+  return (
+    <s-pos-block
+          action={{
+            title: 'A toast message',
+            onpress: () => {
+              api.Toast.show('A toast message'
+  );
+}

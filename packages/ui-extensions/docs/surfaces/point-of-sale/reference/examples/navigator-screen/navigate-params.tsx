@@ -1,49 +1,15 @@
-import React, {useState} from 'react';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-import {
-  Screen,
-  Text,
-  Navigator,
-  reactExtension,
-  Button,
-  useApi,
-} from '@shopify/ui-extensions-react/point-of-sale';
-
-const Modal = () => {
-  return (
-    <Navigator>
-      <HomeScreen />
-      <DetailsScreen />
-    </Navigator>
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-const HomeScreen = () => {
-  const api = useApi<'pos.home.modal.render'>();
+function Extension() {
   return (
-    <Screen name="Home" title="Home">
-      <Text>Home screen</Text>
-      <Button
-        title="Navigate to details"
-        onPress={() => api.navigation.navigate('Details', {orderId: '123'})}
-      />
-    </Screen>
+    <s-navigator>
+          <HomeScreen />
+          <DetailsScreen />
+        </s-navigator>
   );
-};
-
-const DetailsScreen = () => {
-  const [params, setParams] = useState<pos.home.modal.render>();
-
-  return (
-    <Screen
-      name="Details"
-      title="Details"
-      presentation={{sheet: true}}
-      onReceiveParams={setParams}
-    >
-      <Text>{`Order ID: ${params.orderId}`}</Text>
-    </Screen>
-  );
-};
-
-export default reactExtension('pos.home.modal.render', () => <Modal />);
+}

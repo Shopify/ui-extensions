@@ -1,27 +1,19 @@
-import React, {useState} from 'react';
-import {
-  TimeField,
-  Screen,
-  ScrollView,
-  Navigator,
-  Text,
-  reactExtension,
-} from '@shopify/ui-extensions-react/point-of-sale';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-const SmartGridModal = () => {
-  const [time, setTime] = useState('');
-  return (
-    <Navigator>
-      <Screen name="TimeField" title="TimeField Example">
-        <ScrollView>
-          <TimeField label="Time" value={time} onChange={setTime} />
-          <Text>Selected Time: {time}</Text>
-        </ScrollView>
-      </Screen>
-    </Navigator>
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-export default reactExtension('pos.home.modal.render', () => (
-  <SmartGridModal />
-));
+function Extension() {
+  return (
+    <s-navigator>
+          <s-screen name="TimeField" title="TimeField Example">
+            <s-scroll-view>
+              <s-time-field label="Time" value={time} onchange={setTime} />
+              <s-text>Selected Time: {time}</s-text>
+            </s-scroll-view>
+          </s-screen>
+        </s-navigator>
+  );
+}

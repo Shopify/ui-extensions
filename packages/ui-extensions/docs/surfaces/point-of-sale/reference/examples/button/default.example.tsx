@@ -1,17 +1,22 @@
-import React from 'react'
-import { Button, Navigator, Screen, reactExtension, useApi } from '@shopify/ui-extensions-react/point-of-sale'
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
+import {useState} from 'preact/hooks';
 
-const ModalComponent = () => {
-  const api = useApi()
+export default async () => {
+  render(<Extension />, document.body);
+};
+
+function Extension() {
+  const [count, setCount] = useState(0);
+
   return (
-    <Navigator>
-      <Screen title="Home" name="Home">
-        <Button title="Press me!" onPress={() => api.toast.show('Button tapped!')} />
-      </Screen>
-    </Navigator>
-  )
+    <s-navigator>
+      <s-screen title="Home" name="Home">
+        <s-button
+          title="Increment"
+          onPress={() => setCount(count + 1)}
+        />
+      </s-screen>
+    </s-navigator>
+  );
 }
-
-export default reactExtension('pos.home.modal.render', () => {
-  return <ModalComponent />
-})

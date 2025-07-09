@@ -1,29 +1,22 @@
-import React from 'react';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-import {
-  Icon,
-  Screen,
-  ScrollView,
-  Navigator,
-  reactExtension,
-} from '@shopify/ui-extensions-react/point-of-sale';
-
-const SmartGridModal = () => {
-  return (
-    <Navigator>
-      <Screen name="Image" title="Image Example">
-        <ScrollView>
-          <Icon name="call" size="minor" />
-          <Icon name="card-reader" size="major" />
-          <Icon name="circle-cancel" size="spot" />
-          <Icon name="orders" size="caption" />
-          <Icon name="star" size="badge" />
-        </ScrollView>
-      </Screen>
-    </Navigator>
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-export default reactExtension('pos.home.modal.render', () => (
-  <SmartGridModal />
-));
+function Extension() {
+  return (
+    <s-navigator>
+          <s-screen name="Image" title="Image Example">
+            <s-scroll-view>
+              <s-icon name="call" size="minor" />
+              <s-icon name="card-reader" size="major" />
+              <s-icon name="circle-cancel" size="spot" />
+              <s-icon name="orders" size="caption" />
+              <s-icon name="star" size="badge" />
+            </s-scroll-view>
+          </s-screen>
+        </s-navigator>
+  );
+}

@@ -39,6 +39,15 @@
       ],
       "customer-account/preact": [
         "./build/ts/surfaces/customer-account/preact/index.d.ts"
+      ],
+      "point-of-sale": [
+        "./build/ts/surfaces/point-of-sale.d.ts"
+      ],
+      "pos.*": [
+        "./build/ts/surfaces/point-of-sale/targets/pos.*.d.ts"
+      ],
+      "point-of-sale/preact": [
+        "./build/ts/surfaces/point-of-sale/preact.d.ts"
       ]
     }
   },
@@ -90,6 +99,21 @@
       "esnext": "./build/esnext/surfaces/customer-account/preact/index.esnext",
       "import": "./build/esm/surfaces/customer-account/preact/index.mjs",
       "require": "./build/cjs/surfaces/customer-account/preact/index.js"
+    },
+    "./point-of-sale": {
+      "types": "./build/ts/surfaces/point-of-sale.d.ts",
+      "esnext": "./build/esnext/surfaces/point-of-sale.esnext",
+      "import": "./build/esm/surfaces/point-of-sale.mjs",
+      "require": "./build/cjs/surfaces/point-of-sale.js"
+    },
+    "./pos.*": {
+      "default": "./build/ts/surfaces/point-of-sale/targets/pos.*.d.ts"
+    },
+    "./point-of-sale/preact": {
+      "types": "./build/ts/surfaces/point-of-sale/preact.d.ts",
+      "esnext": "./build/esnext/surfaces/point-of-sale/preact.esnext",
+      "import": "./build/esm/surfaces/point-of-sale/preact.mjs",
+      "require": "./build/cjs/surfaces/point-of-sale/preact.js"
     },
     "./preact": {
       "types": "./build/ts/preact.d.ts",

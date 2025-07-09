@@ -1,21 +1,24 @@
-import React from 'react'
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-import { Screen, Text, Navigator, reactExtension, Button, useApi } from '@shopify/ui-extensions-react/point-of-sale';
+export default async () => {
+  render(<Extension />, document.body);
+};
 
-const Modal = () => {
-  const api = useApi<'pos.home.modal.render'>();
-
+function Extension() {
   return (
-    <Navigator>
-      <Screen name="Home" title="Home">
-        <Text>Home screen</Text>
-        <Button title="Navigate to details" onPress={() => api.navigation.navigate('Details')} />
-      </Screen>
-      <Screen name="Details" title="Details">
-        <Text>Details screen</Text>
-      </Screen>
-    </Navigator>
-  )
-}
+    <s-navigator>
+          <s-screen name="Home" title="Home">
+            <s-text>Home screen</s-text>
+            <s-button title="Navigate to details" onpress={() => api.navigation.navigate('Details')} />
+          </s-screen>
+          <s-screen name="Details" title="Details">
+            <s-text>Details screen</s-text>
+          </s-screen>
+        </s-navigator>
+      )
+    }
 
-export default reactExtension('pos.home.modal.render', () => <Modal />);
+    export default reactExtension('pos.home.modal.render', () => <Modal />
+  );
+}

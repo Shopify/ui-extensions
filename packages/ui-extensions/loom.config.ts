@@ -15,21 +15,21 @@ const packageJSON = JSON.parse(
 export default createPackage((pkg) => {
   const completedSurfaces = new Set<string>();
   pkg.entry({root: './src/index.ts'});
-  pkg.entry({name: 'admin', root: './src/surfaces/admin.ts'});
-  pkg.entry({name: 'checkout', root: './src/surfaces/checkout.ts'});
-  pkg.entry({
-    name: 'checkout/preact',
-    root: './src/surfaces/checkout/preact/index.ts',
-  });
-  pkg.entry({
-    name: 'customer-account',
-    root: './src/surfaces/customer-account.ts',
-  });
-  pkg.entry({
-    name: 'customer-account/preact',
-    root: './src/surfaces/customer-account/preact/index.ts',
-  });
-  // pkg.entry({name: 'point-of-sale', root: './src/surfaces/point-of-sale.ts'});
+  // pkg.entry({name: 'admin', root: './src/surfaces/admin.ts'});
+  // pkg.entry({name: 'checkout', root: './src/surfaces/checkout.ts'});
+  // pkg.entry({
+  //   name: 'checkout/preact',
+  //   root: './src/surfaces/checkout/preact/index.ts',
+  // });
+  // pkg.entry({
+  //   name: 'customer-account',
+  //   root: './src/surfaces/customer-account.ts',
+  // });
+  // pkg.entry({
+  //   name: 'customer-account/preact',
+  //   root: './src/surfaces/customer-account/preact/index.ts',
+  // });
+  pkg.entry({name: 'point-of-sale', root: './src/surfaces/point-of-sale.ts'});
   pkg.entry({name: 'preact', root: './src/preact.ts'});
   pkg.use(
     defaultProjectPlugin(),
@@ -43,35 +43,35 @@ export default createPackage((pkg) => {
       {
         name: 'add-target-types',
         closeBundle: async () => {
-          if (!completedSurfaces.has('admin')) {
-            buildTargetsDefinitions(
-              resolve(process.cwd(), 'packages/ui-extensions'),
-              'admin',
-            );
-            completedSurfaces.add('admin');
-          }
-          if (!completedSurfaces.has('checkout')) {
-            buildTargetsDefinitions(
-              resolve(process.cwd(), 'packages/ui-extensions'),
-              'checkout',
-            );
-            completedSurfaces.add('checkout');
-          }
-          if (!completedSurfaces.has('customer-account')) {
-            buildTargetsDefinitions(
-              resolve(process.cwd(), 'packages/ui-extensions'),
-              'customer-account',
-              ['src/surfaces/checkout'],
-            );
-            completedSurfaces.add('customer-account');
-          }
-          // if (!completedSurfaces.has('point-of-sale')) {
+          // if (!completedSurfaces.has('admin')) {
           //   buildTargetsDefinitions(
           //     resolve(process.cwd(), 'packages/ui-extensions'),
-          //     'point-of-sale',
+          //     'admin',
           //   );
-          //   completedSurfaces.add('point-of-sale');
+          //   completedSurfaces.add('admin');
           // }
+          // if (!completedSurfaces.has('checkout')) {
+          //   buildTargetsDefinitions(
+          //     resolve(process.cwd(), 'packages/ui-extensions'),
+          //     'checkout',
+          //   );
+          //   completedSurfaces.add('checkout');
+          // }
+          // if (!completedSurfaces.has('customer-account')) {
+          //   buildTargetsDefinitions(
+          //     resolve(process.cwd(), 'packages/ui-extensions'),
+          //     'customer-account',
+          //     ['src/surfaces/checkout'],
+          //   );
+          //   completedSurfaces.add('customer-account');
+          // }
+          if (!completedSurfaces.has('point-of-sale')) {
+            buildTargetsDefinitions(
+              resolve(process.cwd(), 'packages/ui-extensions'),
+              'point-of-sale',
+            );
+            completedSurfaces.add('point-of-sale');
+          }
         },
       },
     ]),

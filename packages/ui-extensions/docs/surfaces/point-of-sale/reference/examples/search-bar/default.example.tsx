@@ -1,34 +1,22 @@
-import React from 'react';
-import {
-  reactExtension,
-  Text,
-  Screen,
-  SearchBar,
-  ScrollView,
-} from '@shopify/ui-extensions-react/point-of-sale';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-const SmartGridModal = () => {
-  const [searched, setSearched] =
-    React.useState('');
-
-  return (
-    <Screen name="SearchBar" title="SearchBar">
-      <ScrollView>
-        <SearchBar
-          onSearch={setSearched}
-          editable
-          initialValue="initial value"
-          placeholder="placeholder"
-        />
-        <Text>Searched: {searched}</Text>
-      </ScrollView>
-    </Screen>
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-export default reactExtension(
-  'pos.home.modal.render',
-  () => {
-    return <SmartGridModal />;
-  },
-);
+function Extension() {
+  return (
+    <s-screen name="SearchBar" title="SearchBar">
+          <s-scroll-view>
+            <s-search-bar
+              onSearch={setSearched}
+              editable
+              initialValue="initial value"
+              placeholder="placeholder"
+            />
+            <s-text>Searched: {searched}</s-text>
+          </s-scroll-view>
+        </s-screen>
+  );
+}

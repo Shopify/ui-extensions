@@ -1,20 +1,37 @@
-import React from 'react'
-import { Tile, reactExtension, useApi } from '@shopify/ui-extensions-react/point-of-sale'
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-const TileComponent = () => {
-  const api = useApi()
+export default async () => {
+  render(<Extension />, document.body);
+};
+
+function Extension() {
   return (
-    <Tile
-      title="My app"
-      subtitle="Hello world!"
-      onPress={() => {
-        api.action.presentModal()
-      }}
-      enabled
-    />
-  )
+    <s-screen name="Tile" title="Tile">
+      <s-stack direction="vertical" spacing="Small" padding="Small">
+        <s-tile
+          title="Basic Tile"
+          subtitle="This is a subtitle"
+          onpress={() => console.log('Tile pressed!')}
+        />
+        <s-tile
+          title="Tile with Badge"
+          subtitle="Shows a badge"
+          badge={{ text: "New", variant: "information" }}
+          onpress={() => console.log('Badge tile pressed!')}
+        />
+        <s-tile
+          title="Destructive Tile"
+          subtitle="This performs a destructive action"
+          destructive
+          onpress={() => console.log('Destructive tile pressed!')}
+        />
+        <s-tile
+          title="Disabled Tile"
+          subtitle="This tile is disabled"
+          enabled={false}
+        />
+      </s-stack>
+    </s-screen>
+  );
 }
-
-export default reactExtension('pos.home.tile.render', () => {
-  return <TileComponent />
-})

@@ -1,38 +1,30 @@
-import React, {useState} from 'react';
-import {
-  EmailField,
-  Screen,
-  ScrollView,
-  Navigator,
-  Text,
-  reactExtension,
-} from '@shopify/ui-extensions-react/point-of-sale';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-const SmartGridModal = () => {
-  const [email, setEmail] = useState('');
-  return (
-    <Navigator>
-      <Screen name="DateField" title="DateField Example">
-        <ScrollView>
-          <EmailField
-            label="Email"
-            placeholder="example@email.com"
-            helpText="Please enter a valid email"
-            value={email}
-            onChange={setEmail}
-            required={true}
-            action={{
-              label: 'Clear',
-              onPress: () => setEmail(''),
-            }}
-          />
-          <Text>Entered Email: {email}</Text>
-        </ScrollView>
-      </Screen>
-    </Navigator>
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-export default reactExtension('pos.home.modal.render', () => (
-  <SmartGridModal />
-));
+function Extension() {
+  return (
+    <s-navigator>
+          <s-screen name="DateField" title="DateField Example">
+            <s-scroll-view>
+              <s-email-field
+                label="Email"
+                placeholder="example@email.com"
+                helpText="Please enter a valid email"
+                value={email}
+                onchange={setEmail}
+                required={true}
+                action={{
+                  label: 'Clear',
+                  onpress: () => setEmail(''),
+                }}
+              />
+              <s-text>Entered Email: {email}</s-text>
+            </s-scroll-view>
+          </s-screen>
+        </s-navigator>
+  );
+}

@@ -1,30 +1,20 @@
-import React from 'react';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-import {
-  Screen,
-  reactExtension,
-  Button,
-  PrintPreview,
-  useApi,
-} from '@shopify/ui-extensions-react/point-of-sale';
-
-const Modal = () => {
-  const api = useApi<'pos.home.modal.render'>();
-
-  return (
-    <Screen name="Home" title="Home">
-      <Button
-        title="Print"
-        onPress={() =>
-          api.print.print('/documents/test-print')
-        }
-      />
-      <PrintPreview src="/documents/test-print" />
-    </Screen>
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-export default reactExtension(
-  'pos.home.modal.render',
-  () => <Modal />,
-);
+function Extension() {
+  return (
+    <s-screen name="Home" title="Home">
+          <s-button
+            title="Print"
+            onpress={() =>
+              api.print.print('/documents/test-print')
+            }
+          />
+          <s-print-preview src="/documents/test-print" />
+        </s-screen>
+  );
+}
