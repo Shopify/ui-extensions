@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,14 +10,15 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 export type BannerVariant = 'information' | 'confirmation' | 'alert' | 'error';
 
 /**
  * A banner informs merchants about important changes or persistent conditions.
  */
-export interface BannerProps {
+export interface BannerProps extends GlobalProps {
   /**
    * The title text displayed in the banner.
    */
@@ -44,13 +45,17 @@ export interface BannerProps {
   onDismiss?: () => void;
 }
 
-declare class Banner extends PreactCustomElement implements BannerProps {
+declare const Banner_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Banner extends Banner_base implements BannerProps {
   accessor title: BannerProps['title'];
   accessor variant: BannerProps['variant'];
   accessor action: BannerProps['action'];
   accessor visible: BannerProps['visible'];
   accessor onaction: CallbackEventListener<typeof tagName> | null;
   accessor ondismiss: CallbackEventListener<typeof tagName> | null;
+  accessor id?: string;
   constructor();
 }
 
@@ -78,7 +83,6 @@ export interface BannerJSXProps
   visible: boolean;
   onAction?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {Banner};

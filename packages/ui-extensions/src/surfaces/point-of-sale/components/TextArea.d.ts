@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,12 +10,13 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * Use a text area to allow merchants to input or modify multiline text.
  */
-export interface TextAreaProps {
+export interface TextAreaProps extends GlobalProps {
   /**
    * The label displayed above the text area.
    */
@@ -42,13 +43,19 @@ export interface TextAreaProps {
   required?: boolean;
 }
 
-declare class TextArea extends PreactCustomElement implements TextAreaProps {
+declare const TextArea_base: (abstract new (
+  args_0: any,
+) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class TextArea extends TextArea_base implements TextAreaProps {
   accessor label: TextAreaProps['label'];
   accessor value: TextAreaProps['value'];
   accessor onchange: CallbackEventListener<typeof tagName> | null;
   accessor rows: TextAreaProps['rows'];
   accessor placeholder: TextAreaProps['placeholder'];
   accessor required: TextAreaProps['required'];
+  accessor id?: string;
   constructor();
 }
 
@@ -71,7 +78,6 @@ declare const tagName = 's-text-area';
 
 export interface TextAreaJSXProps extends Partial<TextAreaProps> {
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {TextArea};

@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,12 +8,13 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * Box is a generic container component for layout purposes.
  */
-export interface BoxProps {
+export interface BoxProps extends GlobalProps {
   /**
    * The padding inside the box.
    */
@@ -28,10 +29,14 @@ export interface BoxProps {
   backgroundColor?: string;
 }
 
-declare class Box extends PreactCustomElement implements BoxProps {
+declare const Box_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Box extends Box_base implements BoxProps {
   accessor padding: BoxProps['padding'];
   accessor margin: BoxProps['margin'];
   accessor backgroundColor: BoxProps['backgroundColor'];
+  accessor id?: string;
   constructor();
 }
 
@@ -51,9 +56,7 @@ declare module 'preact' {
 
 declare const tagName = 's-box';
 
-export interface BoxJSXProps extends Partial<BoxProps> {
-  id?: string;
-}
+export interface BoxJSXProps extends Partial<BoxProps> {}
 
 export {Box};
 export type {BoxJSXProps};

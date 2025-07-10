@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,7 +10,8 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * The action button configuration for the number field.
@@ -29,7 +30,7 @@ export interface NumberFieldAction {
 /**
  * Use a number field to conveniently and accurately capture numerical values.
  */
-export interface NumberFieldProps {
+export interface NumberFieldProps extends GlobalProps {
   /**
    * The label displayed above the number field.
    */
@@ -76,6 +77,7 @@ declare class NumberField
   accessor required: NumberFieldProps['required'];
   accessor placeholder: NumberFieldProps['placeholder'];
   accessor helpText: NumberFieldProps['helpText'];
+  accessor id?: string;
   constructor();
 }
 
@@ -98,7 +100,6 @@ declare const tagName = 's-number-field';
 
 export interface NumberFieldJSXProps extends Partial<NumberFieldProps> {
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {NumberField};

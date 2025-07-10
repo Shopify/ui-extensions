@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,7 +8,8 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 export interface POSBlockAction {
   /**
@@ -24,15 +25,21 @@ export interface POSBlockAction {
 /**
  * The POSBlock provides a surface on the specified extension target as an entry point to an extension.
  */
-export interface POSBlockProps {
+export interface POSBlockProps extends GlobalProps {
   /**
    * The action configuration for the block.
    */
   action?: POSBlockAction;
 }
 
-declare class POSBlock extends PreactCustomElement implements POSBlockProps {
+declare const POSBlock_base: (abstract new (
+  args_0: any,
+) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class POSBlock extends POSBlock_base implements POSBlockProps {
   accessor action: POSBlockProps['action'];
+  accessor id?: string;
   constructor();
 }
 
@@ -53,9 +60,7 @@ declare module 'preact' {
 
 declare const tagName = 's-pos-block';
 
-export interface POSBlockJSXProps extends Partial<POSBlockProps> {
-  id?: string;
-}
+export interface POSBlockJSXProps extends Partial<POSBlockProps> {}
 
 export {POSBlock};
 export type {POSBlockJSXProps};

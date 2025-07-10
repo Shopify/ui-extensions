@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,20 +8,27 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * A component used to navigate between different screens.
  */
-export interface NavigatorProps {
+export interface NavigatorProps extends GlobalProps {
   /**
    * The name of the screen to show initially.
    */
   initialScreenName?: string;
 }
 
-declare class Navigator extends PreactCustomElement implements NavigatorProps {
+declare const Navigator_base: (abstract new (
+  args_0: any,
+) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Navigator extends Navigator_base implements NavigatorProps {
   accessor initialScreenName: NavigatorProps['initialScreenName'];
+  accessor id?: string;
   constructor();
 }
 
@@ -42,9 +49,7 @@ declare module 'preact' {
 
 declare const tagName = 's-navigator';
 
-export interface NavigatorJSXProps extends Partial<NavigatorProps> {
-  id?: string;
-}
+export interface NavigatorJSXProps extends Partial<NavigatorProps> {}
 
 export {Navigator};
 export type {NavigatorJSXProps};

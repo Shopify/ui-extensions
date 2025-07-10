@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,12 +10,13 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * A component used for increasing or decreasing quantities.
  */
-export interface StepperProps {
+export interface StepperProps extends GlobalProps {
   /**
    * The initial value of the stepper.
    */
@@ -38,12 +39,18 @@ export interface StepperProps {
   maximumValue?: number;
 }
 
-declare class Stepper extends PreactCustomElement implements StepperProps {
+declare const Stepper_base: (abstract new (
+  args_0: any,
+) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Stepper extends Stepper_base implements StepperProps {
   accessor initialValue: StepperProps['initialValue'];
   accessor value: StepperProps['value'];
   accessor onvaluechanged: CallbackEventListener<typeof tagName> | null;
   accessor minimumValue: StepperProps['minimumValue'];
   accessor maximumValue: StepperProps['maximumValue'];
+  accessor id?: string;
   constructor();
 }
 
@@ -65,7 +72,6 @@ declare const tagName = 's-stepper';
 
 export interface StepperJSXProps extends Partial<StepperProps> {
   onValueChanged?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {Stepper};

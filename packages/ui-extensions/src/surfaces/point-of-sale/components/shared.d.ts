@@ -1,8 +1,23 @@
 /** VERSION: 0.0.0 **/
+/* eslint-disable @typescript-eslint/ban-types */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 
+// Common types shared across POS components
+export type ComponentChildren = any;
+
+export interface GlobalProps {
+  /**
+   * A unique identifier for the element.
+   */
+  id?: string;
+}
+
+// Re-export PreactCustomElement from admin for consistency
+export {PreactCustomElement} from '../../admin/components/shared';
+
+// Common event types
 export type CallbackEvent<
   TTagName extends keyof HTMLElementTagNameMap,
   TEvent extends Event = Event,
@@ -19,6 +34,7 @@ export type CallbackEventListener<
     })
   | null;
 
+// Base Preact element props
 /** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
@@ -35,42 +51,21 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
-export type Styles = string;
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => preact.ComponentChild;
-  styles?: Styles;
-};
+// Type aliases
+export type AnyString = string & {};
 
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-export declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-}
+// Common enums and types for POS components
+export type POSColor =
+  | 'primary'
+  | 'secondary'
+  | 'success'
+  | 'error'
+  | 'warning'
+  | 'info';
+export type POSSize = 'small' | 'medium' | 'large';
+export type POSVariant =
+  | 'primary'
+  | 'secondary'
+  | 'tertiary'
+  | 'plain'
+  | 'destructive';

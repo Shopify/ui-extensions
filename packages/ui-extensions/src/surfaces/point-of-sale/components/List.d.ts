@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,7 +10,8 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * The image configuration for a list row.
@@ -129,7 +130,7 @@ export type ImageDisplayStrategy = 'always' | 'never' | 'ifPresent';
 /**
  * The list is a scrollable component in which the list rows are rendered.
  */
-export interface ListProps {
+export interface ListProps extends GlobalProps {
   /**
    * The array of list rows to display.
    */
@@ -152,12 +153,16 @@ export interface ListProps {
   onItemTap?: (row: ListRow) => void;
 }
 
-declare class List extends PreactCustomElement implements ListProps {
+declare const List_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class List extends List_base implements ListProps {
   accessor data: ListProps['data'];
   accessor title: ListProps['title'];
   accessor listHeaderComponent: ListProps['listHeaderComponent'];
   accessor imageDisplayStrategy: ListProps['imageDisplayStrategy'];
   accessor onitemtap: CallbackEventListener<typeof tagName> | null;
+  accessor id?: string;
   constructor();
 }
 
@@ -179,7 +184,6 @@ declare const tagName = 's-list';
 
 export interface ListJSXProps extends Partial<ListProps> {
   onItemTap?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {List};

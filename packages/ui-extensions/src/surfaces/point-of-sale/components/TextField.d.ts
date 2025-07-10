@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,12 +10,13 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * Use a text field to allow merchants to enter or edit text.
  */
-export interface TextFieldProps {
+export interface TextFieldProps extends GlobalProps {
   /**
    * The label displayed above the text field.
    */
@@ -50,7 +51,12 @@ export interface TextFieldProps {
   keyboardType?: 'default' | 'email' | 'numeric' | 'phone';
 }
 
-declare class TextField extends PreactCustomElement implements TextFieldProps {
+declare const TextField_base: (abstract new (
+  args_0: any,
+) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class TextField extends TextField_base implements TextFieldProps {
   accessor label: TextFieldProps['label'];
   accessor placeholder: TextFieldProps['placeholder'];
   accessor required: TextFieldProps['required'];
@@ -59,6 +65,7 @@ declare class TextField extends PreactCustomElement implements TextFieldProps {
   accessor editable: TextFieldProps['editable'];
   accessor secure: TextFieldProps['secure'];
   accessor keyboardType: TextFieldProps['keyboardType'];
+  accessor id?: string;
   constructor();
 }
 
@@ -81,7 +88,6 @@ declare const tagName = 's-text-field';
 
 export interface TextFieldJSXProps extends Partial<TextFieldProps> {
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {TextField};

@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,7 +10,8 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * A single segment in the segmented control.
@@ -33,7 +34,7 @@ export interface Segment {
 /**
  * The segmented control lets the merchant easily switch between different lists or views on the same page.
  */
-export interface SegmentedControlProps {
+export interface SegmentedControlProps extends GlobalProps {
   /**
    * The segments to display.
    */
@@ -55,6 +56,7 @@ declare class SegmentedControl
   accessor segments: SegmentedControlProps['segments'];
   accessor selected: SegmentedControlProps['selected'];
   accessor onselect: CallbackEventListener<typeof tagName> | null;
+  accessor id?: string;
   constructor();
 }
 
@@ -80,7 +82,6 @@ export interface SegmentedControlJSXProps
   // segments is required
   segments: Segment[];
   onSelect?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {SegmentedControl};

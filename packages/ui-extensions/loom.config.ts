@@ -30,6 +30,10 @@ export default createPackage((pkg) => {
     root: './src/surfaces/customer-account/preact/index.ts',
   });
   pkg.entry({name: 'point-of-sale', root: './src/surfaces/point-of-sale.ts'});
+  pkg.entry({
+    name: 'point-of-sale/preact',
+    root: './src/surfaces/point-of-sale/preact.ts',
+  });
   pkg.entry({name: 'preact', root: './src/preact.ts'});
   pkg.use(
     defaultProjectPlugin(),

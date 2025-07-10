@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
@@ -7,12 +7,13 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * A row component used within POSBlock to organize content.
  */
-export interface POSBlockRowProps {
+export interface POSBlockRowProps extends GlobalProps {
   // POSBlockRow doesn't have any specific props based on the examples
 }
 
@@ -21,6 +22,7 @@ declare class POSBlockRow
   implements POSBlockRowProps
 {
   constructor();
+  accessor id?: string;
 }
 
 declare global {
@@ -40,9 +42,7 @@ declare module 'preact' {
 
 declare const tagName = 's-pos-block-row';
 
-export interface POSBlockRowJSXProps {
-  id?: string;
-}
+export interface POSBlockRowJSXProps extends GlobalProps {}
 
 export {POSBlockRow};
 export type {POSBlockRowJSXProps};

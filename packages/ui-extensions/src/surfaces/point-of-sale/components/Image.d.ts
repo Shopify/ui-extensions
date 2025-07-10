@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,12 +8,13 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * The image component displays an image to a merchant in Shopify POS.
  */
-export interface ImageProps {
+export interface ImageProps extends GlobalProps {
   /**
    * The source URL or path of the image.
    */
@@ -32,11 +33,15 @@ export interface ImageProps {
   height?: number;
 }
 
-declare class Image extends PreactCustomElement implements ImageProps {
+declare const Image_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Image extends Image_base implements ImageProps {
   accessor src: ImageProps['src'];
   accessor alt: ImageProps['alt'];
   accessor width: ImageProps['width'];
   accessor height: ImageProps['height'];
+  accessor id?: string;
   constructor();
 }
 
@@ -59,7 +64,6 @@ declare const tagName = 's-image';
 export interface ImageJSXProps extends Partial<Omit<ImageProps, 'src'>> {
   // src is required
   src: string;
-  id?: string;
 }
 
 export {Image};

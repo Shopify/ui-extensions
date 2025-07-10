@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,12 +10,13 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * The search bar lets merchants enter search queries for objects throughout the app.
  */
-export interface SearchBarProps {
+export interface SearchBarProps extends GlobalProps {
   /**
    * The initial value for the search bar.
    */
@@ -42,13 +43,19 @@ export interface SearchBarProps {
   onFocus?: () => void;
 }
 
-declare class SearchBar extends PreactCustomElement implements SearchBarProps {
+declare const SearchBar_base: (abstract new (
+  args_0: any,
+) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class SearchBar extends SearchBar_base implements SearchBarProps {
   accessor initialValue: SearchBarProps['initialValue'];
   accessor placeholder: SearchBarProps['placeholder'];
   accessor editable: SearchBarProps['editable'];
   accessor onsearch: CallbackEventListener<typeof tagName> | null;
   accessor ontextchange: CallbackEventListener<typeof tagName> | null;
   accessor onfocus: CallbackEventListener<typeof tagName> | null;
+  accessor id?: string;
   constructor();
 }
 
@@ -73,7 +80,6 @@ export interface SearchBarJSXProps extends Partial<SearchBarProps> {
   onSearch?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onTextChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {SearchBar};

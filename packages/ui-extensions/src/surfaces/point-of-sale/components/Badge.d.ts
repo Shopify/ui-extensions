@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,7 +8,8 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 export type BadgeVariant = 'info' | 'success' | 'warning' | 'critical';
 export type BadgeStatus = 'new' | 'active' | 'complete';
@@ -16,7 +17,7 @@ export type BadgeStatus = 'new' | 'active' | 'complete';
 /**
  * Badges are used to inform merchants of the status of an item or action that's been taken.
  */
-export interface BadgeProps {
+export interface BadgeProps extends GlobalProps {
   /**
    * The text displayed within the badge.
    */
@@ -31,10 +32,14 @@ export interface BadgeProps {
   status?: BadgeStatus;
 }
 
-declare class Badge extends PreactCustomElement implements BadgeProps {
+declare const Badge_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Badge extends Badge_base implements BadgeProps {
   accessor text: BadgeProps['text'];
   accessor variant: BadgeProps['variant'];
   accessor status: BadgeProps['status'];
+  accessor id?: string;
   constructor();
 }
 
@@ -57,7 +62,6 @@ declare const tagName = 's-badge';
 export interface BadgeJSXProps extends Partial<Omit<BadgeProps, 'text'>> {
   // text is required, so we add it back without Partial
   text: string;
-  id?: string;
 }
 
 export {Badge};

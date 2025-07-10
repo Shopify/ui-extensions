@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,7 +10,8 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * The action button configuration for the date field.
@@ -29,7 +30,7 @@ export interface DateFieldAction {
 /**
  * A component that enables users to open a dialog and select a date through a text input.
  */
-export interface DateFieldProps {
+export interface DateFieldProps extends GlobalProps {
   /**
    * The label displayed above the date field.
    */
@@ -60,7 +61,12 @@ export interface DateFieldProps {
   placeholder?: string;
 }
 
-declare class DateField extends PreactCustomElement implements DateFieldProps {
+declare const DateField_base: (abstract new (
+  args_0: any,
+) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class DateField extends DateField_base implements DateFieldProps {
   accessor label: DateFieldProps['label'];
   accessor value: DateFieldProps['value'];
   accessor action: DateFieldProps['action'];
@@ -68,6 +74,7 @@ declare class DateField extends PreactCustomElement implements DateFieldProps {
   accessor editable: DateFieldProps['editable'];
   accessor required: DateFieldProps['required'];
   accessor placeholder: DateFieldProps['placeholder'];
+  accessor id?: string;
   constructor();
 }
 
@@ -90,7 +97,6 @@ declare const tagName = 's-date-field';
 
 export interface DateFieldJSXProps extends Partial<DateFieldProps> {
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {DateField};

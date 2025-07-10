@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,7 +10,8 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * The validation result for PIN submission.
@@ -34,7 +35,7 @@ export interface PinPadAction {
 /**
  * A component used to authenticate or identify individuals through a standardized number pad.
  */
-export interface PinPadProps {
+export interface PinPadProps extends GlobalProps {
   /**
    * Whether the PIN should be masked (shown as dots).
    */
@@ -65,7 +66,10 @@ export interface PinPadProps {
   onPinEntry?: (pin: number[]) => void;
 }
 
-declare class PinPad extends PreactCustomElement implements PinPadProps {
+declare const PinPad_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class PinPad extends PinPad_base implements PinPadProps {
   accessor masked: PinPadProps['masked'];
   accessor minPinLength: PinPadProps['minPinLength'];
   accessor maxPinLength: PinPadProps['maxPinLength'];
@@ -73,6 +77,7 @@ declare class PinPad extends PreactCustomElement implements PinPadProps {
   accessor pinPadAction: PinPadProps['pinPadAction'];
   accessor onsubmit: CallbackEventListener<typeof tagName> | null;
   accessor onpinentry: CallbackEventListener<typeof tagName> | null;
+  accessor id?: string;
   constructor();
 }
 
@@ -95,7 +100,6 @@ declare const tagName = 's-pin-pad';
 export interface PinPadJSXProps extends Partial<PinPadProps> {
   onSubmit?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onPinEntry?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {PinPad};

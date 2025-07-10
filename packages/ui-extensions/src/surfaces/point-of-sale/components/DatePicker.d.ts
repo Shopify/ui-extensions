@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,7 +10,8 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * The visibility state tuple for the picker.
@@ -25,7 +26,7 @@ export type InputMode = 'spinner' | 'calendar';
 /**
  * A component used to select a date through a dialog.
  */
-export interface DatePickerProps {
+export interface DatePickerProps extends GlobalProps {
   /**
    * The currently selected date as a string.
    */
@@ -52,6 +53,7 @@ declare class DatePicker
   accessor onchange: CallbackEventListener<typeof tagName> | null;
   accessor visibleState: DatePickerProps['visibleState'];
   accessor inputMode: DatePickerProps['inputMode'];
+  accessor id?: string;
   constructor();
 }
 
@@ -74,7 +76,6 @@ declare const tagName = 's-date-picker';
 
 export interface DatePickerJSXProps extends Partial<DatePickerProps> {
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {DatePicker};

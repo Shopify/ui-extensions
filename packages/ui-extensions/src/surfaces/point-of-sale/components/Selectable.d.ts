@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,12 +10,13 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * The selectable component allows you to wrap any non-interactive UI component to make it selectable.
  */
-export interface SelectableProps {
+export interface SelectableProps extends GlobalProps {
   /**
    * The callback executed when the selectable is pressed.
    */
@@ -32,6 +33,7 @@ declare class Selectable
 {
   accessor onpress: CallbackEventListener<typeof tagName> | null;
   accessor disabled: SelectableProps['disabled'];
+  accessor id?: string;
   constructor();
 }
 
@@ -54,7 +56,6 @@ declare const tagName = 's-selectable';
 
 export interface SelectableJSXProps extends Partial<SelectableProps> {
   onPress?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {Selectable};

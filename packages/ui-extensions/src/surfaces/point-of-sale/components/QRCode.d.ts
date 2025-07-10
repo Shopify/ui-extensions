@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,12 +8,13 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * A component that renders a QR code.
  */
-export interface QRCodeProps {
+export interface QRCodeProps extends GlobalProps {
   /**
    * The content to encode in the QR code.
    */
@@ -24,9 +25,13 @@ export interface QRCodeProps {
   size?: number;
 }
 
-declare class QRCode extends PreactCustomElement implements QRCodeProps {
+declare const QRCode_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class QRCode extends QRCode_base implements QRCodeProps {
   accessor content: QRCodeProps['content'];
   accessor size: QRCodeProps['size'];
+  accessor id?: string;
   constructor();
 }
 
@@ -49,7 +54,6 @@ declare const tagName = 's-qr-code';
 export interface QRCodeJSXProps extends Partial<Omit<QRCodeProps, 'content'>> {
   // content is required
   content: string;
-  id?: string;
 }
 
 export {QRCode};

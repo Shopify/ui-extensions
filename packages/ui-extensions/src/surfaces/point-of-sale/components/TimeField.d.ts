@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,12 +10,13 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * A component that enables users to open a dialog and select a time through a text input.
  */
-export interface TimeFieldProps {
+export interface TimeFieldProps extends GlobalProps {
   /**
    * The label displayed above the time field.
    */
@@ -30,10 +31,16 @@ export interface TimeFieldProps {
   onChange?: (value: string) => void;
 }
 
-declare class TimeField extends PreactCustomElement implements TimeFieldProps {
+declare const TimeField_base: (abstract new (
+  args_0: any,
+) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class TimeField extends TimeField_base implements TimeFieldProps {
   accessor label: TimeFieldProps['label'];
   accessor value: TimeFieldProps['value'];
   accessor onchange: CallbackEventListener<typeof tagName> | null;
+  accessor id?: string;
   constructor();
 }
 
@@ -56,7 +63,6 @@ declare const tagName = 's-time-field';
 
 export interface TimeFieldJSXProps extends Partial<TimeFieldProps> {
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {TimeField};

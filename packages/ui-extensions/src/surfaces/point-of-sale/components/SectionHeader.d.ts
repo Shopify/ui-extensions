@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,12 +8,13 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * A header component for sections.
  */
-export interface SectionHeaderProps {
+export interface SectionHeaderProps extends GlobalProps {
   /**
    * The title text displayed in the section header.
    */
@@ -25,6 +26,7 @@ declare class SectionHeader
   implements SectionHeaderProps
 {
   accessor title: SectionHeaderProps['title'];
+  accessor id?: string;
   constructor();
 }
 
@@ -49,7 +51,6 @@ export interface SectionHeaderJSXProps
   extends Partial<Omit<SectionHeaderProps, 'title'>> {
   // title is required
   title: string;
-  id?: string;
 }
 
 export {SectionHeader};

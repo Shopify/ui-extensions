@@ -1,27 +1,20 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  CallbackEvent,
-  CallbackEventListener,
-  PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  CallbackEventListener,
+  CallbackEvent,
+  PreactBaseElementPropsWithChildren,
+  GlobalProps,
+} from './shared';
 
 export type ButtonType = 'primary' | 'secondary' | 'basic' | 'destructive';
 
-/**
- * @property `title` the text set on the `Button`.
- * @property `type` the type of `Button` to render. Determines the appearance of the button.
- * @property `onPress` the callback that is executed when the user taps the button.
- * @property `isDisabled` sets whether the `Button` can be tapped.
- * @property `isLoading` sets whether the `Button` is displaying an animated loading state.
- */
-export interface ButtonProps {
+export interface ButtonProps extends GlobalProps {
   /**
    * The text set on the `Button`.
    *
@@ -46,12 +39,16 @@ export interface ButtonProps {
   isLoading?: boolean;
 }
 
-declare class Button extends PreactCustomElement implements ButtonProps {
-  accessor title: ButtonProps['title'];
-  accessor type: ButtonProps['type'];
-  accessor isDisabled: ButtonProps['isDisabled'];
-  accessor isLoading: ButtonProps['isLoading'];
+declare const Button_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Button extends Button_base implements ButtonProps {
+  accessor title: string;
+  accessor type: ButtonType;
+  accessor isDisabled: boolean;
+  accessor isLoading: boolean;
   accessor onpress: CallbackEventListener<typeof tagName> | null;
+  accessor id?: string;
   constructor();
 }
 
@@ -72,8 +69,8 @@ declare module 'preact' {
 declare const tagName = 's-button';
 
 export interface ButtonJSXProps extends Partial<ButtonProps> {
+  /** Event handler when pressed - maps to onPress prop */
   onPress?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {Button};

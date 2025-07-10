@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,7 +8,8 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 export interface SectionHeaderAction {
   /**
@@ -24,7 +25,7 @@ export interface SectionHeaderAction {
 /**
  * A component used to group other components together in a card-like UI.
  */
-export interface SectionProps {
+export interface SectionProps extends GlobalProps {
   /**
    * The title of the section.
    */
@@ -35,9 +36,15 @@ export interface SectionProps {
   action?: SectionHeaderAction;
 }
 
-declare class Section extends PreactCustomElement implements SectionProps {
+declare const Section_base: (abstract new (
+  args_0: any,
+) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Section extends Section_base implements SectionProps {
   accessor title: SectionProps['title'];
   accessor action: SectionProps['action'];
+  accessor id?: string;
   constructor();
 }
 
@@ -57,9 +64,7 @@ declare module 'preact' {
 
 declare const tagName = 's-section';
 
-export interface SectionJSXProps extends Partial<SectionProps> {
-  id?: string;
-}
+export interface SectionJSXProps extends Partial<SectionProps> {}
 
 export {Section};
 export type {SectionJSXProps};

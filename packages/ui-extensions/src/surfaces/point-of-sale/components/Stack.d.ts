@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,7 +8,8 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 export type SpacingType =
   | 'None'
@@ -28,7 +29,7 @@ export type FlexWrapType = 'wrap' | 'nowrap' | 'wrap-reverse';
 /**
  * Stack is a layout component that makes it easy to stack elements together and apply a space between them.
  */
-export interface StackProps {
+export interface StackProps extends GlobalProps {
   /**
    * The direction to stack the components.
    */
@@ -63,7 +64,10 @@ export interface StackProps {
   flex?: number;
 }
 
-declare class Stack extends PreactCustomElement implements StackProps {
+declare const Stack_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Stack extends Stack_base implements StackProps {
   accessor direction: StackProps['direction'];
   accessor paddingVertical: StackProps['paddingVertical'];
   accessor paddingHorizontal: StackProps['paddingHorizontal'];
@@ -72,6 +76,7 @@ declare class Stack extends PreactCustomElement implements StackProps {
   accessor flexWrap: StackProps['flexWrap'];
   accessor flexChildren: StackProps['flexChildren'];
   accessor flex: StackProps['flex'];
+  accessor id?: string;
   constructor();
 }
 
@@ -91,9 +96,7 @@ declare module 'preact' {
 
 declare const tagName = 's-stack';
 
-export interface StackJSXProps extends Partial<StackProps> {
-  id?: string;
-}
+export interface StackJSXProps extends Partial<StackProps> {}
 
 export {Stack};
 export type {StackJSXProps};

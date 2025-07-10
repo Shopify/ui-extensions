@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
@@ -7,12 +7,13 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * A block component for receipt extensions.
  */
-export interface POSReceiptBlockProps {
+export interface POSReceiptBlockProps extends GlobalProps {
   // POSReceiptBlock doesn't have any specific props based on documentation
 }
 
@@ -21,6 +22,7 @@ declare class POSReceiptBlock
   implements POSReceiptBlockProps
 {
   constructor();
+  accessor id?: string;
 }
 
 declare global {
@@ -40,9 +42,7 @@ declare module 'preact' {
 
 declare const tagName = 's-pos-receipt-block';
 
-export interface POSReceiptBlockJSXProps {
-  id?: string;
-}
+export interface POSReceiptBlockJSXProps extends GlobalProps {}
 
 export {POSReceiptBlock};
 export type {POSReceiptBlockJSXProps};

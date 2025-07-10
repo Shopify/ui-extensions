@@ -1,26 +1,18 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  CallbackEvent,
-  CallbackEventListener,
-  PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  CallbackEventListener,
+  CallbackEvent,
+  PreactBaseElementPropsWithChildren,
+  GlobalProps,
+} from './shared';
 
-/**
- * @property `title` the text set on the main label of the tile.
- * @property `subtitle` the text set on the secondary label of the tile.
- * @property `enabled` sets whether or not the tile can be tapped.
- * @property `destructive` sets whether or not the tile has a destructive appearance and active state.
- * @property `badgeValue` the number value displayed in the top right corner of the tile.
- * @property `onPress` the callback that is executed when the tile is tapped.
- */
-export interface TileProps {
+export interface TileProps extends GlobalProps {
   /**
    * The text set on the main label of the tile.
    */
@@ -47,13 +39,17 @@ export interface TileProps {
   onPress?: () => void;
 }
 
-declare class Tile extends PreactCustomElement implements TileProps {
-  accessor title: TileProps['title'];
-  accessor subtitle: TileProps['subtitle'];
-  accessor enabled: TileProps['enabled'];
-  accessor destructive: TileProps['destructive'];
-  accessor badgeValue: TileProps['badgeValue'];
+declare const Tile_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Tile extends Tile_base implements TileProps {
+  accessor title: string;
+  accessor subtitle: string;
+  accessor enabled: boolean;
+  accessor destructive: boolean;
+  accessor badgeValue: number;
   accessor onpress: CallbackEventListener<typeof tagName> | null;
+  accessor id?: string;
   constructor();
 }
 
@@ -76,8 +72,8 @@ declare const tagName = 's-tile';
 export interface TileJSXProps extends Partial<Omit<TileProps, 'title'>> {
   // title is required, so we add it back without Partial
   title: string;
+  /** Event handler when pressed - maps to onPress prop */
   onPress?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {Tile};

@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,7 +8,8 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * A component that displays a preview of a printable document.
@@ -16,7 +17,7 @@ import type {
  *
  * Note: Must be a direct child of Screen component.
  */
-export interface PrintPreviewProps {
+export interface PrintPreviewProps extends GlobalProps {
   /**
    * The source URL of the document to preview.
    * Accepts either:
@@ -31,6 +32,7 @@ declare class PrintPreview
   implements PrintPreviewProps
 {
   accessor src: PrintPreviewProps['src'];
+  accessor id?: string;
   constructor();
 }
 
@@ -55,7 +57,6 @@ export interface PrintPreviewJSXProps
   extends Partial<Omit<PrintPreviewProps, 'src'>> {
   // src is required
   src: string;
-  id?: string;
 }
 
 export {PrintPreview};

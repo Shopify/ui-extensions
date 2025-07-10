@@ -1,4 +1,4 @@
-import '@shopify/ui-extensions/preact';
+import '@shopify/ui-extensions/point-of-sale/preact';
 import {render} from 'preact';
 import {useApi} from '@shopify/ui-extensions/preact';
 

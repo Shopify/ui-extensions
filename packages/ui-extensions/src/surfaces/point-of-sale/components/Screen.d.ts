@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,16 +10,17 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
-export interface ScreenPresentationProps {
+export interface ScreenPresentationProps extends GlobalProps {
   /**
    * Whether the screen should be presented as a sheet.
    */
   sheet?: boolean;
 }
 
-export interface SecondaryActionProps {
+export interface SecondaryActionProps extends GlobalProps {
   /**
    * The text displayed on the secondary action button.
    */
@@ -37,7 +38,7 @@ export interface SecondaryActionProps {
 /**
  * A component used in the root of a modal extension to define a screen.
  */
-export interface ScreenProps {
+export interface ScreenProps extends GlobalProps {
   /**
    * The unique name identifier for the screen.
    */
@@ -60,12 +61,16 @@ export interface ScreenProps {
   overrideNavigateBack?: () => void;
 }
 
-declare class Screen extends PreactCustomElement implements ScreenProps {
+declare const Screen_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Screen extends Screen_base implements ScreenProps {
   accessor name: ScreenProps['name'];
   accessor title: ScreenProps['title'];
   accessor presentation: ScreenProps['presentation'];
   accessor secondaryAction: ScreenProps['secondaryAction'];
   accessor overrideNavigateBack: CallbackEventListener<typeof tagName> | null;
+  accessor id?: string;
   constructor();
 }
 
@@ -93,7 +98,6 @@ export interface ScreenJSXProps
   overrideNavigateBack?:
     | ((event: CallbackEvent<typeof tagName>) => void)
     | null;
-  id?: string;
 }
 
 export {Screen};

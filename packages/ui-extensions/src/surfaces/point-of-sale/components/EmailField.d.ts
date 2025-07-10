@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,7 +10,8 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * The action button configuration for the email field.
@@ -29,7 +30,7 @@ export interface EmailFieldAction {
 /**
  * Use an email field to conveniently and accurately capture merchant email addresses.
  */
-export interface EmailFieldProps {
+export interface EmailFieldProps extends GlobalProps {
   /**
    * The label displayed above the email field.
    */
@@ -76,6 +77,7 @@ declare class EmailField
   accessor required: EmailFieldProps['required'];
   accessor placeholder: EmailFieldProps['placeholder'];
   accessor helpText: EmailFieldProps['helpText'];
+  accessor id?: string;
   constructor();
 }
 
@@ -98,7 +100,6 @@ declare const tagName = 's-email-field';
 
 export interface EmailFieldJSXProps extends Partial<EmailFieldProps> {
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {EmailField};

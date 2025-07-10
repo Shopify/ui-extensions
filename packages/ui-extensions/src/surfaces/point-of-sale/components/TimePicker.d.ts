@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,7 +10,8 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * The visibility state tuple for the picker.
@@ -25,7 +26,7 @@ export type InputMode = 'spinner' | 'clock';
 /**
  * A component used to select a time through a dialog.
  */
-export interface TimePickerProps {
+export interface TimePickerProps extends GlobalProps {
   /**
    * The currently selected time as a string.
    */
@@ -57,6 +58,7 @@ declare class TimePicker
   accessor visibleState: TimePickerProps['visibleState'];
   accessor is24Hour: TimePickerProps['is24Hour'];
   accessor inputMode: TimePickerProps['inputMode'];
+  accessor id?: string;
   constructor();
 }
 
@@ -79,7 +81,6 @@ declare const tagName = 's-time-picker';
 
 export interface TimePickerJSXProps extends Partial<TimePickerProps> {
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {TimePicker};

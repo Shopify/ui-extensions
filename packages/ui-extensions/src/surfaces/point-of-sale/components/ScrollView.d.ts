@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,12 +8,13 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * A scrollable view component that can contain other components.
  */
-export interface ScrollViewProps {
+export interface ScrollViewProps extends GlobalProps {
   /**
    * Whether the scroll view should scroll horizontally.
    */
@@ -30,6 +31,7 @@ declare class ScrollView
 {
   accessor horizontal: ScrollViewProps['horizontal'];
   accessor showsScrollIndicator: ScrollViewProps['showsScrollIndicator'];
+  accessor id?: string;
   constructor();
 }
 
@@ -50,9 +52,7 @@ declare module 'preact' {
 
 declare const tagName = 's-scroll-view';
 
-export interface ScrollViewJSXProps extends Partial<ScrollViewProps> {
-  id?: string;
-}
+export interface ScrollViewJSXProps extends Partial<ScrollViewProps> {}
 
 export {ScrollView};
 export type {ScrollViewJSXProps};

@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,12 +10,13 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 /**
  * A radio button list lets merchants select from a given set of options.
  */
-export interface RadioButtonListProps {
+export interface RadioButtonListProps extends GlobalProps {
   /**
    * The items to display in the radio button list.
    */
@@ -42,6 +43,7 @@ declare class RadioButtonList
   accessor onitemselected: CallbackEventListener<typeof tagName> | null;
   accessor initialSelectedItem: RadioButtonListProps['initialSelectedItem'];
   accessor initialOffsetToShowSelectedItem: RadioButtonListProps['initialOffsetToShowSelectedItem'];
+  accessor id?: string;
   constructor();
 }
 
@@ -67,7 +69,6 @@ export interface RadioButtonListJSXProps
   // items is required
   items: string[];
   onItemSelected?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {RadioButtonList};

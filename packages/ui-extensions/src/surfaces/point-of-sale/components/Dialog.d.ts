@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -10,14 +10,15 @@ import type {
   CallbackEventListener,
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 export type DialogType = 'basic' | 'error';
 
 /**
  * A dialog is a high-priority, intentionally disruptive message that requires action from the merchant before they can continue using POS.
  */
-export interface DialogProps {
+export interface DialogProps extends GlobalProps {
   /**
    * The type of dialog to display.
    */
@@ -52,7 +53,10 @@ export interface DialogProps {
   isVisible: boolean;
 }
 
-declare class Dialog extends PreactCustomElement implements DialogProps {
+declare const Dialog_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Dialog extends Dialog_base implements DialogProps {
   accessor type: DialogProps['type'];
   accessor title: DialogProps['title'];
   accessor content: DialogProps['content'];
@@ -61,6 +65,7 @@ declare class Dialog extends PreactCustomElement implements DialogProps {
   accessor secondaryActionText: DialogProps['secondaryActionText'];
   accessor onsecondaryaction: CallbackEventListener<typeof tagName> | null;
   accessor isVisible: DialogProps['isVisible'];
+  accessor id?: string;
   constructor();
 }
 
@@ -91,7 +96,6 @@ export interface DialogJSXProps
   isVisible: boolean;
   onAction: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onSecondaryAction?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
 }
 
 export {Dialog};

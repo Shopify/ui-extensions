@@ -1,5 +1,5 @@
 /** VERSION: 0.0.0 **/
-/* eslint-disable import/extensions */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 
@@ -8,7 +8,8 @@
 import type {
   PreactBaseElementPropsWithChildren,
   PreactCustomElement,
-} from './shared.d.ts';
+  GlobalProps,
+} from './shared';
 
 export type TextVariant =
   | 'heading1'
@@ -27,7 +28,7 @@ export type ColorType =
 /**
  * Text can be rendered in different sizes and colors in order to structure content.
  */
-export interface TextProps {
+export interface TextProps extends GlobalProps {
   /**
    * The visual style variant of the text.
    */
@@ -38,9 +39,13 @@ export interface TextProps {
   color?: ColorType;
 }
 
-declare class Text extends PreactCustomElement implements TextProps {
+declare const Text_base: (abstract new (args_0: any) => PreactCustomElement) &
+  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+
+declare class Text extends Text_base implements TextProps {
   accessor variant: TextProps['variant'];
   accessor color: TextProps['color'];
+  accessor id?: string;
   constructor();
 }
 
@@ -60,9 +65,7 @@ declare module 'preact' {
 
 declare const tagName = 's-text';
 
-export interface TextJSXProps extends Partial<TextProps> {
-  id?: string;
-}
+export interface TextJSXProps extends Partial<TextProps> {}
 
 export {Text};
 export type {TextJSXProps};
