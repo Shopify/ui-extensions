@@ -1,6 +1,6 @@
-import {BaseElementPropsWithChildren} from './shared';
+import {BaseElementPropsWithChildren, IdProps} from './shared';
 
-export interface CustomerAccountActionProps {
+export interface CustomerAccountActionProps extends IdProps {
   /**
    * Sets the heading of the Action container.
    */

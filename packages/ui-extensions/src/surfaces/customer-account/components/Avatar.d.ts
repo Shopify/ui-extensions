@@ -1,13 +1,6 @@
-import {BaseElementPropsWithChildren, Size} from './shared';
+import {BaseElementPropsWithChildren, Size, IdProps} from './shared';
 
-interface GlobalProps {
-  /**
-   * A unique identifier for the element.
-   */
-  id?: string;
-}
-
-export interface AvatarProps extends GlobalProps {
+export interface AvatarProps extends IdProps {
   /**
    * Initials to display in the avatar.
    */
