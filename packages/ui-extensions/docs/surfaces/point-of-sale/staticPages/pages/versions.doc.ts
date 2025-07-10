@@ -33,6 +33,7 @@ const data: LandingTemplateSchema = {
 ## Important Fixes
 
 - Updated [pos.draft-order-details.block.render](https://shopify.dev/docs/api/pos-ui-extensions/targets/draft-order-details/pos-draft-order-details-block-render) to allow the proper set of components, called \`BlockComponents\`. Previously, this target erroneously accepted \`ActionComponents\`, which are intended for targets like \`pos.draft-order-details.action.render\`.
+- Fixed an issue where the [SearchBar](/docs/api/pos-ui-extensions/components/searchbar) component's \`onTextChange\` handler was not being called when the clear button was pressed. Available from POS 10.8.0.
 
 ### Features
 
