@@ -45,9 +45,6 @@
       ],
       "pos.*": [
         "./build/ts/surfaces/point-of-sale/targets/pos.*.d.ts"
-      ],
-      "point-of-sale/preact": [
-        "./build/ts/surfaces/point-of-sale/preact.d.ts"
       ]
     }
   },
