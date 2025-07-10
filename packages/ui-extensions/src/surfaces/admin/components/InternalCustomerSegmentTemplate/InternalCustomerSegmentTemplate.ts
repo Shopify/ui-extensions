@@ -58,6 +58,7 @@ export type CustomerSegmentTemplateCategory =
   | 'reEngageCustomers'
   | 'abandonedCheckout'
   | 'purchaseBehaviour'
+  | 'shopifyEmail'
   | 'location';
 
 /**
