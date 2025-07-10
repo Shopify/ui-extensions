@@ -187,6 +187,10 @@ export interface RenderExtensionTargets {
     {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,
     ReceiptComponents
   >;
+  'pos.receipt-header.block.render': RenderExtension<
+    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,
+    ReceiptComponents
+  >;
 }
 
 export interface ExtensionTargets
