@@ -15,30 +15,6 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
-      anchorLink: 'compatibility-policy',
-      title: 'Compatibility Policy',
-      sectionContent: '',
-      sectionNotice: [
-        {
-          title: 'End of Compatibility Plan',
-          type: 'Warning',
-          sectionContent: `
-          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end compatibility for versions on a one-year rolling basis. This means that POS will no longer run extensions using removed versions. This table details the end of compatibility schedule.
-
-|released version|removed versions|
-|---:|---|
-|2025-04|1.0.0, 1.0.1, 1.1.2, 1.2.0, 1.3.0, 1.4.0, 1.5.1, 1.6.0, 1.7.0, 2024-04|
-|2025-07|2024-07|
-|2025-10|2024-10|
-|2026-01|2025-01|
-|2026-04|2025-04|
-
-Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.`,
-        },
-      ],
-    },
-    {
-      type: 'Generic',
       anchorLink: '202504',
       title: '2025.04',
       sectionContent: `
