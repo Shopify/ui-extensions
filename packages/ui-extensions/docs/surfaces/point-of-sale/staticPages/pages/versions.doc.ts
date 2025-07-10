@@ -36,6 +36,7 @@ const data: LandingTemplateSchema = {
 
 ### Features
 
+- Added support for [Direct API access](/docs/api/pos-ui-extensions#direct-api-access), and [authenticated requests](/docs/api/pos-ui-extensions#app-authentication).
 - Added required \`posVersion\` property to [Session](/docs/api/pos-ui-extensions/apis/session-api) interface.
 - Added optional \`currency\` property to [Discount](/docs/api/pos-ui-extensions/apis/cart-line-item-api#cartlineitemapi-propertydetail-cartlineitem) interface.
 - Added \`executedAt\` property to [BaseTransactionComplete](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render#transactioncompletewithreprintdata-propertydetail-transaction) interface.
