@@ -79,7 +79,7 @@ const data: LandingTemplateSchema = {
         {
           title: 'Note',
           type: 'info',
-          sectionContent: `App Authentication is available as of POS version 10.2.0 for extensions targeting \`unstable\`. This feature will be available for all extensions targeting stable API versions in the future.`,
+          sectionContent: `App Authentication is available as of POS version 10.6.0 for extensions targeting \`2025-07\` or later. This feature will be available for all extensions targeting stable API versions in the future.`,
         },
       ],
       sectionContent:
@@ -108,7 +108,7 @@ const data: LandingTemplateSchema = {
         {
           title: 'Note',
           type: 'info',
-          sectionContent: `Direct API access is available as of POS version 10.2.0 for extensions targeting \`unstable\`. This feature will be available for all extensions targeting stable API versions in the future.`,
+          sectionContent: `Direct API access is available as of POS version 10.6.0 for extensions targeting \`2025-07\` or later. This feature will be available for all extensions targeting stable API versions in the future.`,
         },
         {
           title: 'Access scopes',
