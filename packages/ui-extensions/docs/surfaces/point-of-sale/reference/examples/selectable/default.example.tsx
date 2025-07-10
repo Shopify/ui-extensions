@@ -1,21 +1,18 @@
-import React, { useState } from 'react';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-import { Screen, reactExtension, Text, ScrollView, Selectable } from '@shopify/ui-extensions-react/point-of-sale';
+export default async () => {
+  render(<Extension />, document.body);
+};
 
-const SmartGridModal = () => {
-  const [count, setCount] = useState(0);
-
+function Extension() {
   return (
-    <Screen name='selectable' title='Selectable'>
-      <ScrollView>
-        <Selectable onPress={() => {setCount(count + 1)}}>
-          <Text variant="body">{count}</Text>
-        </Selectable>
-      </ScrollView>
-    </Screen>
+    <s-screen name='selectable' title='Selectable'>
+          <s-scroll-view>
+            <s-selectable onpress={() => {setCount(count + 1)}}>
+              <s-text variant="body">{count}</s-text>
+            </s-selectable>
+          </s-scroll-view>
+        </s-screen>
   );
 }
-
-export default reactExtension('pos.home.modal.render', () => {
-  return <SmartGridModal />
-})

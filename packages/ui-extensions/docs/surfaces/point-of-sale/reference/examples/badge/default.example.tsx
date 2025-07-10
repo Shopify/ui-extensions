@@ -1,23 +1,18 @@
-import React from 'react';
-import {
-  Badge,
-  Screen,
-  reactExtension,
-} from '@shopify/ui-extensions-react/point-of-sale';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-const SmartGridModal = () => {
+export default async () => {
+  render(<Extension />, document.body);
+};
+
+function Extension() {
   return (
-    <Screen title="Home" name="Home">
-      <Badge
+    <s-screen title="Home" name="Home">
+      <s-badge
         text="Badge"
         variant="success"
         status="complete"
       />
-    </Screen>
+    </s-screen>
   );
-};
-
-export default reactExtension(
-  'pos.home.modal.render',
-  () => <SmartGridModal />,
-);
+}

@@ -1,36 +1,24 @@
-import React from 'react';
-import {
-  reactExtension,
-  RadioButtonList,
-  Screen,
-  ScrollView,
-  Text,
-} from '@shopify/ui-extensions-react/point-of-sale';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-const SmartGridModal = () => {
-  const [selected, setSelected] =
-    React.useState('');
-
-  return (
-    <Screen
-      name="RadioButtonList"
-      title="RadioButtonList"
-    >
-      <ScrollView>
-        <RadioButtonList
-          items={['1', '2', '3']}
-          onItemSelected={setSelected}
-          initialSelectedItem={selected}
-        />
-        <Text>{selected}</Text>
-      </ScrollView>
-    </Screen>
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-export default reactExtension(
-  'pos.home.modal.render',
-  () => {
-    return <SmartGridModal />;
-  },
-);
+function Extension() {
+  return (
+    <s-screen
+          name="RadioButtonList"
+          title="RadioButtonList"
+        >
+          <s-scroll-view>
+            <s-radio-button-list
+              items={['1', '2', '3']}
+              onitemselected={setSelected}
+              initialSelectedItem={selected}
+            />
+            <s-text>{selected}</s-text>
+          </s-scroll-view>
+        </s-screen>
+  );
+}

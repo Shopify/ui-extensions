@@ -1,42 +1,36 @@
-import React from 'react';
-import {
-  Banner,
-  ScrollView,
-  Screen,
-  reactExtension,
-} from '@shopify/ui-extensions-react/point-of-sale';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-const SmartGridModal = () => {
+export default async () => {
+  render(<Extension />, document.body);
+};
+
+function Extension() {
   return (
-    <Screen title="Home" name="Home">
-      <ScrollView>
-        <Banner
+    <s-screen title="Home" name="Home">
+      <s-scroll-view>
+        <s-banner
           title="Information Banner"
           variant="information"
           action="Ok"
           visible
         />
-        <Banner
+        <s-banner
           title="Confirmation Banner"
           variant="confirmation"
           visible
         />
-        <Banner
+        <s-banner
           title="Alert Banner"
           variant="alert"
           visible
         />
-        <Banner
+        <s-banner
           title="Error Banner"
           variant="error"
           visible
         />
-      </ScrollView>
-    </Screen>
+      </s-scroll-view>
+    </s-screen>
   );
-};
-
-export default reactExtension(
-  'pos.home.modal.render',
-  () => <SmartGridModal />,
-);
+}

@@ -1,27 +1,18 @@
-import React from 'react';
-import {
-  CameraScanner,
-  Screen,
-  Text,
-  useScannerDataSubscription,
-  reactExtension,
-} from '@shopify/ui-extensions-react/point-of-sale';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-const SmartGridModal = () => {
-  const {data} = useScannerDataSubscription();
-
-  return (
-    <Screen
-      name="CameraScanner"
-      title="Camera Scanner Title"
-    >
-      <CameraScanner />
-      <Text>{`Scanned data: ${data || ''}`}</Text>
-    </Screen>
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-export default reactExtension(
-  'pos.home.modal.render',
-  () => <SmartGridModal />,
-);
+function Extension() {
+  return (
+    <s-screen
+          name="CameraScanner"
+          title="Camera Scanner Title"
+        >
+          <s-camera-scanner />
+          <s-text>{`Scanned data: ${data || ''}`}</s-text>
+        </s-screen>
+  );
+}

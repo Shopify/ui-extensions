@@ -1,52 +1,42 @@
-import React from 'react';
-import {
-  reactExtension,
-  Screen,
-  SegmentedControl,
-  Stack,
-} from '@shopify/ui-extensions-react/point-of-sale';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-export const SmartGridModal = () => {
-  const [selected, setSelected] =
-    React.useState('1');
-  return (
-    <Screen
-      name="SegmentedControl"
-      title="SegmentedControl"
-    >
-      <Stack
-        direction="vertical"
-        paddingHorizontal="ExtraExtraLarge"
-      >
-        <SegmentedControl
-          segments={[
-            {
-              id: '1',
-              label: '1',
-              disabled: false,
-            },
-            {
-              id: '2',
-              label: '2',
-              disabled: false,
-            },
-            {
-              id: '3',
-              label: '3 (disabled)',
-              disabled: true,
-            },
-          ]}
-          selected={selected}
-          onSelect={setSelected}
-        />
-      </Stack>
-    </Screen>
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-export default reactExtension(
-  'pos.home.modal.render',
-  () => {
-    return <SmartGridModal />;
-  },
-);
+function Extension() {
+  return (
+    <s-screen
+          name="SegmentedControl"
+          title="SegmentedControl"
+        >
+          <s-stack
+            direction="vertical"
+            paddingHorizontal="ExtraExtraLarge"
+          >
+            <s-segmented-control
+              segments={[
+                {
+                  id: '1',
+                  label: '1',
+                  disabled: false,
+                },
+                {
+                  id: '2',
+                  label: '2',
+                  disabled: false,
+                },
+                {
+                  id: '3',
+                  label: '3 (disabled)',
+                  disabled: true,
+                },
+              ]}
+              selected={selected}
+              onselect={setSelected}
+            />
+          </s-stack>
+        </s-screen>
+  );
+}

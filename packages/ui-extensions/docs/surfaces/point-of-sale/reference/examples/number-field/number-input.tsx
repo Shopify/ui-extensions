@@ -1,38 +1,30 @@
-import React, {useState} from 'react';
-import {
-  NumberField,
-  Screen,
-  ScrollView,
-  Navigator,
-  Text,
-  reactExtension,
-} from '@shopify/ui-extensions-react/point-of-sale';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-const SmartGridModal = () => {
-  const [number, setNumber] = useState('');
-  return (
-    <Navigator>
-      <Screen name="NumberField" title="NumberField Example">
-        <ScrollView>
-          <NumberField
-            label="Number"
-            placeholder="1234"
-            helpText="Enter a numeric value."
-            value={number}
-            onChange={setNumber}
-            required={true}
-            action={{
-              label: 'Clear',
-              onPress: () => setNumber(''),
-            }}
-          />
-          <Text>Entered Value: {number}</Text>
-        </ScrollView>
-      </Screen>
-    </Navigator>
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-export default reactExtension('pos.home.modal.render', () => (
-  <SmartGridModal />
-));
+function Extension() {
+  return (
+    <s-navigator>
+          <s-screen name="NumberField" title="NumberField Example">
+            <s-scroll-view>
+              <s-number-field
+                label="Number"
+                placeholder="1234"
+                helpText="Enter a numeric value."
+                value={number}
+                onchange={setNumber}
+                required={true}
+                action={{
+                  label: 'Clear',
+                  onpress: () => setNumber(''),
+                }}
+              />
+              <s-text>Entered Value: {number}</s-text>
+            </s-scroll-view>
+          </s-screen>
+        </s-navigator>
+  );
+}

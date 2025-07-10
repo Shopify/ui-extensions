@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-import { Screen, reactExtension, Text, Stepper, ScrollView } from '@shopify/ui-extensions-react/point-of-sale';
+export default async () => {
+  render(<Extension />, document.body);
+};
 
-const SmartGridModal = () => {
-  const [value, setValue] = useState(4);
-
+function Extension() {
   return (
-    <Screen name='stepper' title='Stepper'>
-      <ScrollView>
-        <Stepper initialValue={value} onValueChanged={setValue} />
-        <Text>{value}</Text>
-      </ScrollView>
-    </Screen>
+    <s-screen name='stepper' title='Stepper'>
+          <s-scroll-view>
+            <s-stepper initialValue={value} onvaluechanged={setValue} />
+            <s-text>{value}</s-text>
+          </s-scroll-view>
+        </s-screen>
   );
 }
-
-export default reactExtension('pos.home.modal.render', () => {
-  return <SmartGridModal />
-})

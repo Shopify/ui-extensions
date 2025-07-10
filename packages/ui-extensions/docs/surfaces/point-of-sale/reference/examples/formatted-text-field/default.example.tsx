@@ -1,37 +1,26 @@
-import React, {useState} from 'react';
-import {
-  Navigator,
-  Screen,
-  Text,
-  ScrollView,
-  FormattedTextField,
-  reactExtension,
-} from '@shopify/ui-extensions-react/point-of-sale';
+import '@shopify/ui-extensions/preact';
+import {render} from 'preact';
 
-const SmartGridModal = () => {
-  const [textFieldValue, setTextFieldValue] =
-    useState('');
-
-  return (
-    <Navigator>
-      <Screen
-        name="FormattedTextField"
-        title="FormattedTextField Example"
-      >
-        <ScrollView>
-          <FormattedTextField
-            placeholder="Email address"
-            inputType="email"
-            onChangeText={setTextFieldValue}
-          />
-          <Text>{textFieldValue}</Text>
-        </ScrollView>
-      </Screen>
-    </Navigator>
-  );
+export default async () => {
+  render(<Extension />, document.body);
 };
 
-export default reactExtension(
-  'pos.home.modal.render',
-  () => <SmartGridModal />,
-);
+function Extension() {
+  return (
+    <s-navigator>
+          <s-screen
+            name="FormattedTextField"
+            title="FormattedTextField Example"
+          >
+            <s-scroll-view>
+              <s-formatted-text-field
+                placeholder="Email address"
+                inputType="email"
+                onChangeText={setTextFieldValue}
+              />
+              <s-text>{textFieldValue}</s-text>
+            </s-scroll-view>
+          </s-screen>
+        </s-navigator>
+  );
+}
