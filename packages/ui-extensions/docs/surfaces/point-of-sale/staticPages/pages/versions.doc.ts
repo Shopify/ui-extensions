@@ -19,7 +19,6 @@ const data: LandingTemplateSchema = {
       title: '2024.10.1',
       sectionContent: `
 - Added in POS version: 9.22.0
-- Removed in POS version: N/A
 - Release day: 11/11/2024.
 
 ## Important Fixes
@@ -49,7 +48,6 @@ const data: LandingTemplateSchema = {
       title: '2024.10',
       sectionContent: `
 - Added in POS version: 9.19.0
-- Removed in POS version: N/A
 - Release day: 10/1/2024.
 
 ## Important Fixes
@@ -86,7 +84,6 @@ const data: LandingTemplateSchema = {
       title: '2024.07',
       sectionContent: `
 - Added in POS version: 9.15.0
-- Removed in POS version: N/A
 - Release day: 08/14/2024.
 
 ## Important Fixes
@@ -130,7 +127,6 @@ const data: LandingTemplateSchema = {
       ],
       sectionContent: `
 - Added in POS version: 9.11
-- Removed in POS version: 9.31.0
 - Release day: 06/10/2024.
 
 ### Features
