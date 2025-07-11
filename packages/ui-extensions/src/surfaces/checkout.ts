@@ -31,6 +31,7 @@ export type {
   AppMetafieldEntryTarget,
   AppMetafieldEntry,
   CartLine,
+  CartLineParentRelationship,
   PaymentOption,
   SelectedPaymentOption,
   CartDiscountCode,
