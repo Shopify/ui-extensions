@@ -448,6 +448,50 @@ export interface SessionToken {
   get(): Promise<string>;
 }
 
+export interface Analytics {
+  /**
+   * Publish method to emit analytics events to [Web Pixels](https://shopify.dev/docs/apps/marketing).
+   */
+  publish(name: string, data: Record<string, unknown>): Promise<boolean>;
+
+  /**
+   * A method for capturing details about a visitor on the online store.
+   */
+  visitor(data: {email?: string; phone?: string}): Promise<VisitorResult>;
+}
+/**
+ * Represents a visitor result.
+ */
+export type VisitorResult = VisitorSuccess | VisitorError;
+
+/**
+ * Represents a successful visitor result.
+ */
+export interface VisitorSuccess {
+  /**
+   * Indicates that the visitor information was validated and submitted.
+   */
+  type: 'success';
+}
+
+/**
+ * Represents an unsuccessful visitor result.
+ */
+export interface VisitorError {
+  /**
+   * Indicates that the visitor information is invalid and wasn't submitted.
+   * Examples are using the wrong data type or missing a required property.
+   */
+  type: 'error';
+
+  /**
+   * A message that explains the error. This message is useful for debugging.
+   * It's **not** localized, and therefore should not be presented directly
+   * to the buyer.
+   */
+  message: string;
+}
+
 export interface AllowedProcessing {
   /**
    * Can collect customer analytics about how the shop was used and interactions made on the shop.
