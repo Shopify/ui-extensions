@@ -1,5 +1,19 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.10
+
+### Minor Changes
+
+- [#3053](https://github.com/Shopify/ui-extensions/pull/3053) [`a5166d4b875fb22ed44124bb31f061081476baeb`](https://github.com/Shopify/ui-extensions/commit/a5166d4b875fb22ed44124bb31f061081476baeb) Thanks [@alexgraffeocohen](https://github.com/alexgraffeocohen)! - Adds pos.receipt-header.block.render extension target
+
+### Patch Changes
+
+- [#3054](https://github.com/Shopify/ui-extensions/pull/3054) [`9ee0c98d0ffdfed65b949b0276893a255944b7d7`](https://github.com/Shopify/ui-extensions/commit/9ee0c98d0ffdfed65b949b0276893a255944b7d7) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Update customer account ui extensions component props to include id
+
+- [#3041](https://github.com/Shopify/ui-extensions/pull/3041) [`ef6d1de8c3008c5677c90d7e6eddf35658bd8f06`](https://github.com/Shopify/ui-extensions/commit/ef6d1de8c3008c5677c90d7e6eddf35658bd8f06) Thanks [@sam-b-rose](https://github.com/sam-b-rose)! - Update Admin UI Extensions component definitions to 1.3.0
+
+- [#3069](https://github.com/Shopify/ui-extensions/pull/3069) [`9a7aebda7a460fc2db50af976ed96595ce72c46c`](https://github.com/Shopify/ui-extensions/commit/9a7aebda7a460fc2db50af976ed96595ce72c46c) Thanks [@NathanJolly](https://github.com/NathanJolly)! - Add target definitions to point of sale
+
 ## 2025.10.0-rc.9
 
 ### Patch Changes
