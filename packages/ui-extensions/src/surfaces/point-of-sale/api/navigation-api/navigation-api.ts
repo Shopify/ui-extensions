@@ -11,12 +11,6 @@ export interface NavigationApiContent {
 
   /** Dismisses the extension. */
   dismiss(): void;
-
-  /**
-   * Navigate to a POS screen. Screens will present in a modal.
-   * @param screen takes in a POS screen name and its parameters
-   */
-  navigateToPosScreen(screen: PosScreen): void;
 }
 
 /**
@@ -25,21 +19,3 @@ export interface NavigationApiContent {
 export interface NavigationApi {
   navigation: NavigationApiContent;
 }
-
-/**
- * The different POS screens and their parameters
- */
-export interface PosScreenParams {
-  productDetails: {productId: number; variantId?: number};
-  orderDetails: {orderId: number};
-  customerDetails: {customerId: number};
-  staffDetails: {staffId: number};
-  draftOrderDetails: {draftOrderId: number};
-}
-
-export type PosScreen = {
-  [K in keyof PosScreenParams]: {
-    screenName: K;
-    params: PosScreenParams[K];
-  };
-}[keyof PosScreenParams];
