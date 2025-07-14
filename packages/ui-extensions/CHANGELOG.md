@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.11
+
+### Minor Changes
+
+- [#3038](https://github.com/Shopify/ui-extensions/pull/3038) [`3d22570be57efc416c3b677ac749629c6aff0b95`](https://github.com/Shopify/ui-extensions/commit/3d22570be57efc416c3b677ac749629c6aff0b95) Thanks [@oliverigor](https://github.com/oliverigor)! - - Adding ProductThumbnail
+  - Add Events type changes
+  - Improve documentation examples
+
 ## 2025.10.0-rc.10
 
 ### Minor Changes
