@@ -15,27 +15,80 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
-      anchorLink: 'support-policy',
-      title: 'Support Policy',
-      sectionContent: '',
-      sectionNotice: [
-        {
-          title: 'End of Support Plan',
-          type: 'Warning',
-          sectionContent: `
-          To ensure the best possible ongoing POS UI Extension development experience, starting in April 2025, we will end support for versions on a one-year rolling basis. This table details the end of support schedule.
+      anchorLink: '202507',
+      title: '2025.07',
+      sectionContent: `
+- Added in POS version: 10.6
+- Release day: 07/03/2025
 
-|released version|removed versions|
-|---:|---|
-|2025-04|1.0.0, 1.0.1, 1.1.2, 1.2.0, 1.3.0, 1.4.0, 1.5.1, 1.6.0, 1.7.0, 2024-04|
-|2025-07|2024-07|
-|2025-10|2024-10|
-|2026-01|2025-01|
-|2026-04|2025-04|
+## Breaking Changes
 
-Refer to the [migration guide](/docs/api/pos-ui-extensions/migrating) for more information.`,
-        },
-      ],
+- Removed the deprecated \`FormattedTextField\` component. Use the [TextField](/docs/api/pos-ui-extensions/components/textfield) component instead. It will continue to work in POS 10.6.0, but will no longer function in POS 10.7.0.
+
+## Deprecations
+
+- Deprecated \`'minor'\`, \`'major'\`, \`'spot'\`, \`'caption'\`, \`'badge'\` as values for the \`size\` prop in the [Icon](/docs/api/pos-ui-extensions/components/icon) component. Use \`'s'\`, \`'m'\`, \`'l'\`, \`'xl'\` instead.
+- Deprecated \`'arrow'\`, \`'available-at-other-locations'\`, \`'collections'\`, \`'connectivity-warning'\`, \`'delivery'\`, \`'home'\`, \`'image-placeholder'\`, \`'internet'\`, \`'menu'\`, \`'orders'\`, \`'products'\`, \`'shipment'\` as values for the \`name\` prop in the [Icon](/docs/api/pos-ui-extensions/components/icon) component. See valid values for [\`IconName\`](/docs/api/pos-ui-extensions/latest/components/icon#icon-propertydetail-name).
+
+## Important Fixes
+
+- Updated [pos.draft-order-details.block.render](https://shopify.dev/docs/api/pos-ui-extensions/targets/draft-order-details/pos-draft-order-details-block-render) to allow the proper set of components, called \`BlockComponents\`. Previously, this target erroneously accepted \`ActionComponents\`, which are intended for targets like \`pos.draft-order-details.action.render\`.
+
+### Features
+
+- Added support for [Direct API access](/docs/api/pos-ui-extensions#direct-api-access), and [authenticated requests](/docs/api/pos-ui-extensions#app-authentication).
+- Added required \`posVersion\` property to [Session](/docs/api/pos-ui-extensions/apis/session-api) interface.
+- Added optional \`currency\` property to [Discount](/docs/api/pos-ui-extensions/apis/cart-line-item-api#cartlineitemapi-propertydetail-cartlineitem) interface.
+- Added \`executedAt\` property to [BaseTransactionComplete](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render#transactioncompletewithreprintdata-propertydetail-transaction) interface.
+- Added optional \`exchangeId\` and \`returnId\` property to [ReturnTransactionData](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render#transactioncompletewithreprintdata-propertydetail-transaction) interface.
+- Added required \`variantId\` property to [ProductApi](/docs/api/pos-ui-extensions/apis/product-api#productapi-propertydetail-variantid) interface.
+- Added optional \`taxLines\` property to [ShippingLine](/docs/api/pos-ui-extensions/targets/post-transaction/pos-transaction-complete-event-observe#transactioncompletedata-propertydetail-transaction) interface.
+- Added optional \`onBlur\` handler to [SearchBar](/docs/api/pos-ui-extensions/components/searchbar) component.
+- Added optional \`tone\` property to [Icon](/docs/api/pos-ui-extensions/components/icon) component and expanded \`name\` and \`size\` options.
+- Added optional \`editable\` property to \`Cart\` interface.
+- Added \`useCartEditable\` hook to access the cart's editable state.
+
+### Developer Preview
+
+  - Introduced a [Storage API](/docs/api/pos-ui-extensions/apis/storage-api). The Storage API gives the UI Extension access to store data on the POS device that the extension is running on.
+  - Added support for the ${TargetLink.PosExchangePostActionMenuItemRender}, ${TargetLink.PosExchangePostActionRender}, ${TargetLink.PosExchangePostBlockRender} targets.
+  - Added support for the ${TargetLink.PosReturnPostActionMenuItemRender}, ${TargetLink.PosReturnPostActionRender}, ${TargetLink.PosReturnPostBlockRender} targets.
+  `,
+    },
+    {
+      type: 'Generic',
+      anchorLink: '202504',
+      title: '2025.04',
+      sectionContent: `
+- Added in POS version: 9.31
+- Release day: 04/01/2025
+
+## Important Fixes
+
+- **POS 10.3.0**:
+
+  - Fixed an issue where the \`TextField\` component failed to apply the \`maxLength\` parameter.
+
+- **POS 10.2.0**:
+
+  - Fixed a sizing issue with the \`Button\` component.
+  - Fixed an issue where the \`Section\` component was displaying a divider between child components.
+
+- **POS 10.0.0**:
+
+  - Removed \`email\`, \`firstName\`, \`lastName\`, and \`note\` from the [Customer](/docs/api/pos-ui-extensions/apis/cart-api#customer) object.
+  - POS UI Extensions components automatically use our new POS visual design language.
+
+### Features
+
+**Developer Preview**:
+  - Added support for the ${TargetLink.PosTransactionCompleteObserve} target.
+  - Added support for cash tracking session. ${TargetLink.PosCashTrackingSessionStartObserve}, ${TargetLink.PosCashTrackingSessionCompleteObserve} targets.
+  - Added support for the ${TargetLink.PosCartUpdateObserve} target.
+  - Added support for the ${TargetLink.PosReceiptFooterBlockRender} target.
+  - Introduced a [POSReceiptBlock component](/docs/api/pos-ui-extensions/components/posreceiptblock). It's the required parent component for ${TargetLink.PosReceiptFooterBlockRender} targets.
+  - Introduced a [QRCode component](/docs/api/pos-ui-extensions/components/qrcode). It can be used to render a QR code in POS receipts but must be within a [POSReceiptBlock component](/docs/api/pos-ui-extensions/components/posreceiptblock).
+  `,
     },
     {
       type: 'Generic',
