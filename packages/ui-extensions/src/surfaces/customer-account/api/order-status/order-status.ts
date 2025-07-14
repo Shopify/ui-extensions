@@ -185,11 +185,6 @@ export type AuthenticationState = 'fully_authenticated' | 'pre_authenticated';
 
 export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
-   * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
-   */
-  analytics: Analytics;
-
-  /**
    * Gift Cards that have been applied to the order.
    */
   appliedGiftCards: StatefulRemoteSubscribable<AppliedGiftCard[]>;
@@ -950,13 +945,6 @@ export interface StoreCreditAccount {
    * The current balance of the Store Credit Account.
    */
   balance: Money;
-}
-
-export interface Analytics {
-  /**
-   * Publish method to emit analytics events to [Web Pixels](https://shopify.dev/docs/apps/marketing).
-   */
-  publish(name: string, data: {[key: string]: unknown}): Promise<boolean>;
 }
 
 /**

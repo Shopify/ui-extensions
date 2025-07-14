@@ -9,6 +9,7 @@ import {
   StorefrontApiVersion,
   Ui,
   SessionToken,
+  Analytics,
   CustomerPrivacy,
   ApplyTrackingConsentChangeType,
 } from '../shared';
@@ -78,6 +79,11 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * See [session token examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/session-token#examples) for more information.
    */
   sessionToken: SessionToken;
+
+  /**
+   * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
+   */
+  analytics: Analytics;
 
   /**
    * The settings matching the settings definition written in the

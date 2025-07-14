@@ -66,6 +66,7 @@ export type {
   Company,
   Customer,
   SessionToken,
+  Analytics,
   ApplyTrackingConsentChangeType,
   CustomerPrivacy,
   TrackingConsentChangeResult,
