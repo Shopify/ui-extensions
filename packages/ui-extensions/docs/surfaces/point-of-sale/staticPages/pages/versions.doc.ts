@@ -45,6 +45,8 @@ const data: LandingTemplateSchema = {
 - Added optional \`taxLines\` property to [ShippingLine](/docs/api/pos-ui-extensions/targets/post-transaction/pos-transaction-complete-event-observe#transactioncompletedata-propertydetail-transaction) interface.
 - Added optional \`onBlur\` handler to [SearchBar](/docs/api/pos-ui-extensions/components/searchbar) component.
 - Added optional \`tone\` property to [Icon](/docs/api/pos-ui-extensions/components/icon) component and expanded \`name\` and \`size\` options.
+- Added optional \`editable\` property to \`Cart\` interface.
+- Added \`useCartEditable\` hook to access the cart's editable state.
 
 ### Developer Preview
 
