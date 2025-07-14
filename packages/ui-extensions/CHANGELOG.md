@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.13
+
+### Minor Changes
+
+- [#3072](https://github.com/Shopify/ui-extensions/pull/3072) [`c364a95e662e95bcad28701e0842d90fd6fb8b0d`](https://github.com/Shopify/ui-extensions/commit/c364a95e662e95bcad28701e0842d90fd6fb8b0d) Thanks [@patrickDouglas](https://github.com/patrickDouglas)! - Add parent/parentRelationship property to CartLines for Checkout.
+
 ## 2025.10.0-rc.12
 
 ### Patch Changes
