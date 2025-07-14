@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'BannerBaseProps',
+      type: 'BannerElementProps',
     },
     {
       title: 'Events',

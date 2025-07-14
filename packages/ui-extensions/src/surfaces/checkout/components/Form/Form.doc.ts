@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
 import sharedContent from '../../../../docs/shared/components/Form';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -11,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'FormBaseProps',
+      type: 'FormElementProps',
     },
   ],
   defaultExample: {
@@ -32,8 +33,8 @@ const data: ReferenceEntityTemplateSchema = {
       anchorLink: 'best-practices',
       title: 'Best Practices',
       sectionContent: `
-- Wrap around all form input elements.
-- Forms can have only one submit button and it must be at the end of the form.
+        - Wrap around all form input elements.
+        - Forms can have only one submit button and it must be at the end of the form.
       `,
     },
   ],

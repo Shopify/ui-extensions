@@ -1,7 +1,7 @@
 import {render} from 'preact';
 import {useTotalAmount} from '@shopify/ui-extensions/checkout/preact';
 
-export default async () => {
+export default function extension() {
   render(<Extension />, document.body);
 }
 
@@ -11,11 +11,13 @@ function Extension() {
 
   // 2. Render a UI
   return (
-    <s-stack>
-      <s-text>
+    <s-stack gap="base">
+      <s-paragraph>
         Shop name: {shopify.shop.name}
-      </s-text>
-      <s-text>cost: {totalAmount}</s-text>
+      </s-paragraph>
+      <s-paragraph>
+        cost: {totalAmount}
+      </s-paragraph>
     </s-stack>
   );
 }

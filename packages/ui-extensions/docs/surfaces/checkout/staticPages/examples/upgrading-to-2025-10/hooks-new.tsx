@@ -7,7 +7,9 @@ export default function extension() {
 }
 
 function Extension() {
-  const [includeGift] = useAttributeValues(['includeGift']);
+  const [includeGift] = useAttributeValues([
+    'includeGift',
+  ]);
   return (
     <s-checkbox
       checked={includeGift === 'yes'}
@@ -20,11 +22,15 @@ function Extension() {
 async function onCheckboxChange(event) {
   const isChecked = event.target.checked;
 
-  const result = await shopify.applyAttributeChange({
-    type: 'updateAttribute',
-    key: 'includeGift',
-    value: isChecked ? 'yes' : 'no',
-  });
+  const result =
+    await shopify.applyAttributeChange({
+      type: 'updateAttribute',
+      key: 'includeGift',
+      value: isChecked ? 'yes' : 'no',
+    });
 
-  console.log('applyAttributeChange result', result);
+  console.log(
+    'applyAttributeChange result',
+    result,
+  );
 }

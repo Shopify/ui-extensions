@@ -28,9 +28,12 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-modal";
-export interface ModalBaseProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
+export interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
 export interface ModalSlots extends Pick<ModalProps$1, 'primaryAction' | 'secondaryActions'> {
@@ -59,17 +62,17 @@ export interface ModalElementEvents {
     /**
      * Callback fired after the overlay is hidden.
      */
-    hide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    hide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback fired after the overlay is shown.
      */
-    show?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    show?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface ModalElement extends ModalBaseProps, ModalSlots, Omit<ModalEvents, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
+export interface ModalElement extends ModalElementProps, ModalSlots, Omit<ModalEvents, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
     onhide: ModalEvents['onHide'];
     onshow: ModalEvents['onShow'];
 }
-export interface ModalProps extends ModalBaseProps, ModalSlots, ModalEvents {
+export interface ModalProps extends ModalElementProps, ModalSlots, ModalEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -84,4 +87,4 @@ declare module 'preact' {
     }
 }
 
-export type { ModalBaseProps, ModalElement, ModalElementEvents, ModalElementSlots, ModalProps, ModalSlots };
+export type { ModalElement, ModalElementEvents, ModalElementProps, ModalElementSlots, ModalProps, ModalSlots };

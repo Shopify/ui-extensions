@@ -37,9 +37,8 @@ const data: LandingTemplateSchema = {
     {
       type: 'Generic',
       title: 'Scaffolded with Preact',
-      sectionContent: `UI Extensions are scaffolded with [Preact](https://preactjs.com/) by default.
-      \nThis means that you can use Preact patterns and principles within your extension. Since Preact is included as a standard dependency, you have access to all of its features including [hooks](https://preactjs.com/guide/v10/hooks/) like \`useState\` and \`useEffect\` for managing component state and side effects.
-      \nYou can also use [Preact Signals](https://preactjs.com/guide/v10/signals) for reactive state management, and take advantage of standard web APIs just like you would in a regular Preact application.`,
+      sectionContent:
+        'UI Extensions are scaffolded with [Preact](https://preactjs.com/) by default. This means that you can use Preact patterns and principles within your extension.',
       anchorLink: 'scaffolded-with-preact',
       codeblock: {
         title: 'Scaffolded with Preact',

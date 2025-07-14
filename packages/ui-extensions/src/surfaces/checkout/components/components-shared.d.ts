@@ -2321,6 +2321,12 @@ interface PhoneFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<FieldD
 	 */
 	type?: "mobile" | "";
 }
+interface PopoverProps$1 extends GlobalProps, BaseOverlayProps, ToggleEventProps, SizingProps, ContainerProps {
+	/**
+	 * The content of the popover.
+	 */
+	children?: ComponentChildren;
+}
 interface ProductThumbnailProps$1 extends GlobalProps, BaseImageProps {
 	/**
 	 * Decorates the product thumbnail with the quantity of the product.

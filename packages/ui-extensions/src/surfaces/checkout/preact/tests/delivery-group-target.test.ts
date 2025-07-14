@@ -4,7 +4,7 @@ import type {
   ShippingOption,
 } from '@shopify/ui-extensions/checkout';
 
-// eslint-disable-next-line import/no-deprecated
+// eslint-disable-next-line import-x/no-deprecated
 import {useDeliveryGroupTarget} from '../delivery-group-target';
 
 import {mount, createMockStatefulRemoteSubscribable} from './mount';
@@ -61,7 +61,7 @@ describe.skip('useDeliveryGroupTarget', () => {
     const target: ExtensionTarget =
       'purchase.checkout.shipping-option-list.render-before';
 
-    // eslint-disable-next-line import/no-deprecated
+    // eslint-disable-next-line import-x/no-deprecated
     const {value} = mount.hook(() => useDeliveryGroupTarget(), {
       extensionApi: {
         extension: {target},

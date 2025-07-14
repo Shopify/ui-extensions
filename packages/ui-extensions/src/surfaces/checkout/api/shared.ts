@@ -22,6 +22,11 @@ export interface SellingPlan {
    * @example 'gid://shopify/SellingPlan/1'
    */
   id: string;
+
+  /**
+   * Whether purchasing the selling plan will result in multiple deliveries.
+   */
+  recurringDeliveries: boolean;
 }
 
 export interface Attribute {

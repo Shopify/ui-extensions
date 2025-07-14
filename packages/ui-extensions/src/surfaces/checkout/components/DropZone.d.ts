@@ -21,9 +21,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-drop-zone";
-export interface DropZoneBaseProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required'> {
+export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required'> {
 }
 export interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput'> {
 }
@@ -31,17 +34,17 @@ export interface DropZoneElementEvents {
     /**
      * Callback when rejected files are dropped. Files are rejected based on the `accept` prop.
      */
-    droprejected?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    droprejected?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user makes any changes in the field.
      */
-    input?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface DropZoneElement extends DropZoneBaseProps, Omit<DropZoneEvents, 'onDropRejected' | 'onInput'>, Omit<HTMLElement, 'id' | 'oninput'> {
+export interface DropZoneElement extends DropZoneElementProps, Omit<DropZoneEvents, 'onDropRejected' | 'onInput'>, Omit<HTMLElement, 'id' | 'oninput'> {
     ondroprejected: DropZoneEvents['onDropRejected'];
     oninput: DropZoneEvents['onInput'];
 }
-export interface DropZoneProps extends DropZoneBaseProps, DropZoneEvents {
+export interface DropZoneProps extends DropZoneElementProps, DropZoneEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -56,4 +59,4 @@ declare module 'preact' {
     }
 }
 
-export type { DropZoneBaseProps, DropZoneElement, DropZoneElementEvents, DropZoneEvents, DropZoneProps };
+export type { DropZoneElement, DropZoneElementEvents, DropZoneElementProps, DropZoneEvents, DropZoneProps };

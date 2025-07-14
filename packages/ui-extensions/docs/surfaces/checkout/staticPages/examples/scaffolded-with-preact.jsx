@@ -2,7 +2,7 @@ import '@shopify/ui-extensions/preact';
 import {render} from 'preact';
 import {useState} from 'preact/hooks';
 
-export default async () => {
+export default function extension() {
   render(<Extension />, document.body);
 }
 
@@ -12,7 +12,9 @@ function Extension() {
   return (
     <>
       <s-text>Count: {count}</s-text>
-      <s-button onClick={() => setCount(count + 1)}>
+      <s-button
+        onClick={() => setCount(count + 1)}
+      >
         Increment
       </s-button>
     </>

@@ -6,7 +6,7 @@ import {
   useApplyMetafieldsChange,
 } from '@shopify/ui-extensions/checkout/preact';
 
-export default async () => {
+export default function extension() {
   render(<Extension />, document.body);
 }
 
@@ -52,21 +52,16 @@ function Extension() {
   }
 
   return (
-    <s-stack>
+    <s-stack gap="base">
       <s-banner
         tone="info"
         heading={`${title}${deliverySelectionGroupInfo}`}
       />
-      <s-button
-        onClick={() => onCheckboxChange(!checked)}
-        variant={
-          checked ? 'primary' : 'secondary'
-        }
-      >
-        {checked
-          ? 'Gifts included'
-          : `Mark the ${groupLabel} section as gifts`}
-      </s-button>
+      <s-checkbox
+        onChange={onCheckboxChange}
+        checked={checked}
+        label={`The ${groupLabel} section contains gifts`}
+      />
     </s-stack>
   );
 

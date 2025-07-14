@@ -1,7 +1,7 @@
 import {render} from 'preact';
 import {useEffect, useState} from 'preact/hooks';
 
-export default async () => {
+export default function extension() {
   render(<Extension />, document.body);
 }
 
@@ -31,7 +31,7 @@ function Extension() {
   return (
     <s-unordered-list>
       {data?.products?.nodes.map((node) => (
-        <s-list-item id={node.id} key={node.id}>
+        <s-list-item key={node.id}>
           {node.title}
         </s-list-item>
       ))}

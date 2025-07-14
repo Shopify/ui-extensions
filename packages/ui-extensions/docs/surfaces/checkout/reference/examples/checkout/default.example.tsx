@@ -5,7 +5,7 @@ import {
   useInstructions,
 } from '@shopify/ui-extensions/checkout/preact';
 
-export default async () => {
+export default function extension() {
   render(<Extension />, document.body);
 }
 
@@ -19,21 +19,15 @@ function Extension() {
 
   // 1. Render a UI
   return (
-    <s-button
-      onClick={onButtonClick}
-      variant={
-        freeGiftRequested === 'yes'
-          ? 'secondary'
-          : 'primary'
-      }
-    >
-      {freeGiftRequested === 'yes'
-        ? 'Remove free gift'
-        : 'Request a free gift with my order'}
-    </s-button>
+    <s-checkbox
+      checked={freeGiftRequested === 'yes'}
+      onChange={onCheckboxChange}
+      label="I would like to receive a free gift with my order"
+    />
   );
 
-  async function onButtonClick() {
+  async function onCheckboxChange(event) {
+    const isChecked = event.target.checked;
     // 2. Check if the API is available
     if (
       !instructions.attributes.canUpdateAttributes
@@ -43,15 +37,11 @@ function Extension() {
       );
       return;
     }
-
     // 3. Call the API to modify checkout
     const result = await applyAttributeChange({
       key: 'requestedFreeGift',
       type: 'updateAttribute',
-      value:
-        freeGiftRequested === 'yes'
-          ? 'no'
-          : 'yes',
+      value: isChecked ? 'yes' : 'no',
     });
     console.log(
       'applyAttributeChange result',

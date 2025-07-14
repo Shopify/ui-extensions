@@ -21,9 +21,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-qr-code";
-export interface QRCodeBaseProps extends QRCodeProps$1 {
+export interface QRCodeElementProps extends QRCodeProps$1 {
 }
 export interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
 }
@@ -32,12 +35,12 @@ export interface QRCodeElementEvents {
      * Invoked when the conversion of `content` to a QR code fails.
      * If an error occurs, the QR code and its child elements will not be displayed.
      */
-    error?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    error?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface QRCodelement extends QRCodeBaseProps, Omit<QRCodeEvents, 'onError'>, Omit<HTMLElement, 'id' | 'onerror'> {
+export interface QRCodelement extends QRCodeElementProps, Omit<QRCodeEvents, 'onError'>, Omit<HTMLElement, 'id' | 'onerror'> {
     onerror: QRCodeEvents['onError'];
 }
-export interface QRCodeProps extends QRCodeBaseProps, QRCodeEvents {
+export interface QRCodeProps extends QRCodeElementProps, QRCodeEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -52,4 +55,4 @@ declare module 'preact' {
     }
 }
 
-export type { QRCodeBaseProps, QRCodeElementEvents, QRCodeEvents, QRCodeProps, QRCodelement };
+export type { QRCodeElementEvents, QRCodeElementProps, QRCodeEvents, QRCodeProps, QRCodelement };

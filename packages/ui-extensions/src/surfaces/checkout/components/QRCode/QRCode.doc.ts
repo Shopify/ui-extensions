@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'QRCodeBaseProps',
+      type: 'QRCodeElementProps',
     },
     {
       title: 'Events',

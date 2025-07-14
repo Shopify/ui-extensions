@@ -1,4 +1,5 @@
 import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
+
 import sharedContent from '../../../../docs/shared/components/ClipboardItem';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -10,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Properties',
       description: '',
-      type: 'ClipboardItemBaseProps',
+      type: 'ClipboardItemElementProps',
     },
   ],
   defaultExample: {

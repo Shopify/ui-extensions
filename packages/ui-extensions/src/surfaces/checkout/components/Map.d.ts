@@ -27,9 +27,12 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = (EventListener & {
+    (event: CallbackEvent<TTagName, TEvent>): void;
+}) | null;
 
 declare const tagName = "s-map";
-export interface MapBaseProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
+export interface MapElementProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
 }
 export interface MapEvents extends Pick<MapProps$1, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'> {
 }
@@ -37,27 +40,27 @@ export interface MapElementEvents {
     /**
      * Callback when the viewport bounds have changed or the map is resized.
      */
-    boundschange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    boundschange?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user clicks on the map.
      */
-    click?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    click?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user double-clicks on the map.
      */
-    dblclick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    dblclick?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the map view changes.
      */
-    viewchange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+    viewchange?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface MapElement extends MapBaseProps, Omit<MapEvents, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
+export interface MapElement extends MapElementProps, Omit<MapEvents, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
     onboundschange: MapEvents['onBoundsChange'];
     onclick: MapEvents['onClick'];
     ondblclick: MapEvents['onDblClick'];
     onviewchange: MapEvents['onViewChange'];
 }
-export interface MapProps extends MapBaseProps, MapEvents {
+export interface MapProps extends MapElementProps, MapEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
@@ -72,4 +75,4 @@ declare module 'preact' {
     }
 }
 
-export type { MapBaseProps, MapElement, MapElementEvents, MapEvents, MapProps };
+export type { MapElement, MapElementEvents, MapElementProps, MapEvents, MapProps };

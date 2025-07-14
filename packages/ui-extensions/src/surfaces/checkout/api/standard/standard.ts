@@ -528,7 +528,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The custom attributes left by the customer to the merchant, either in their cart or during checkout.
    */
-  attributes: StatefulRemoteSubscribable<Attribute[] | undefined>;
+  attributes: StatefulRemoteSubscribable<Attribute[]>;
 
   /**
    * All available payment options.

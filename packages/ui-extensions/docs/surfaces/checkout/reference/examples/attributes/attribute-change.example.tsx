@@ -5,7 +5,7 @@ import {
   useInstructions,
 } from '@shopify/ui-extensions/checkout/preact';
 
-export default async () => {
+export default function extension() {
   render(<Extension />, document.body);
 }
 
