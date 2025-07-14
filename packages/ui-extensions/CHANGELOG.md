@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.12
+
+### Patch Changes
+
+- [#3073](https://github.com/Shopify/ui-extensions/pull/3073) [`49a2b92b9724734fc36e27912404bbe86efd71c5`](https://github.com/Shopify/ui-extensions/commit/49a2b92b9724734fc36e27912404bbe86efd71c5) Thanks [@lihaokx](https://github.com/lihaokx)! - Move analytics api from osp api to standard api in customer account ui extension.
+
 ## 2025.10.0-rc.11
 
 ### Minor Changes
