@@ -977,6 +977,26 @@ export interface CartLine {
    * Sub lines of the merchandise line. If no sub lines are present, this will be an empty array.
    */
   lineComponents: CartLineComponentType[];
+
+  /**
+   * The relationship details between cart lines.
+   */
+  parentRelationship: CartLineParentRelationship | null;
+}
+export interface CartLineParentRelationship {
+  /**
+   * The parent cart line that a cart line is associated with.
+   */
+  parent: {
+    /**
+     * These line item IDs are not stable at the moment, they might change after
+     * any operations on the line items. You should always look up for an updated
+     * ID before any call to `applyCartLinesChange` because you'll need the ID to
+     * create a `CartLineChange` object.
+     * @example 'gid://shopify/CartLine/123'
+     */
+    id: string;
+  };
 }
 
 type CartLineComponentType = CartBundleLineComponent;

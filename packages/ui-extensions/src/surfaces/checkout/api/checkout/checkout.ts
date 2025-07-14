@@ -183,6 +183,11 @@ export interface CartLineAddChange {
    * with.
    */
   sellingPlanId?: SellingPlan['id'];
+
+  /**
+   * The identifier for the associated parent cart line.
+   */
+  parent?: {lineId: string} | {merchandiseId: string};
 }
 
 export interface CartLineRemoveChange {
@@ -236,6 +241,11 @@ export interface CartLineUpdateChange {
    * with or `null` to remove the the product from the selling plan.
    */
   sellingPlanId?: SellingPlan['id'] | null;
+
+  /**
+   * The identifier for the associated parent cart line.
+   */
+  parent?: {lineId: string} | {merchandiseId: string};
 }
 
 export type DiscountCodeChange =
