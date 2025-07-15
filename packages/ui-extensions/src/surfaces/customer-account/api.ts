@@ -75,6 +75,9 @@ export type {
   TrackingConsentMetafieldChange,
   VisitorConsent,
   VisitorConsentChange,
+  VisitorResult,
+  VisitorSuccess,
+  VisitorError,
 } from './api/shared';
 
 export type {CartLineItemApi} from './api/cart-line/cart-line-item';
