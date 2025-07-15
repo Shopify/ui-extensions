@@ -149,7 +149,10 @@ export interface Docs_Standard_StorageApi
   extends Pick<StandardApi<any>, 'storage'> {}
 
 export interface Docs_Standard_CustomerPrivacyApi
-  extends Pick<StandardApi<any>, 'customerPrivacy'> {}
+  extends Pick<
+    StandardApi<any>,
+    'customerPrivacy' | 'applyTrackingConsentChange'
+  > {}
 
 export interface Docs_Standard_ToastApi
   extends Pick<StandardApi<any>, 'toast'> {}
