@@ -24,7 +24,7 @@ import type {
   AllowedComponents,
   AnyComponentExcept,
 } from './shared';
-import {Announcement} from './api/announcement/announcement';
+import type {Announcement} from './api/announcement/announcement';
 
 /**
  * A UI extension will register for one or more extension targets using `shopify.extend()`.
