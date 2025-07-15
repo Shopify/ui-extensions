@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.14
+
+### Patch Changes
+
+- [#3083](https://github.com/Shopify/ui-extensions/pull/3083) [`64517288aa63bf224e5781c8f8c01139f4578eed`](https://github.com/Shopify/ui-extensions/commit/64517288aa63bf224e5781c8f8c01139f4578eed) Thanks [@lihaokx](https://github.com/lihaokx)! - Export visitor result type on customer account ui extension
+
 ## 2025.10.0-rc.13
 
 ### Minor Changes
