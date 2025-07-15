@@ -47,6 +47,21 @@ export interface LineItem {
   properties: {[key: string]: string};
   isGiftCard: boolean;
   attributedUserId?: number;
+  /**
+   * Information about the currently selected selling plan for the line item.
+   */
+  currentSellingPlan?: {
+    id: string;
+    name: string;
+  };
+  /**
+   * Indicates if the product associated with the line item has selling plans available.
+   */
+  hasSellingPlans: boolean;
+  /**
+   * Total number of selling plans available for the product.
+   */
+  sellingPlanCount: number;
 }
 
 export interface Discount {

@@ -29,6 +29,8 @@ export enum ExtensionTargetType {
   PosReceiptFooterBlockRender = 'pos.receipt-footer.block.render',
   PosCartLineItemDetailsActionMenuItemRender = 'pos.cart.line-item-details.action.menu-item.render',
   PosCartLineItemDetailsActionRender = 'pos.cart.line-item-details.action.render',
+  PosCartLineItemSubscriptionActionMenuItemRender = 'pos.cart.line-item-subscription.action.menu-item.render',
+  PosCartLineItemSubscriptionActionRender = 'pos.cart.line-item-subscription.action.render',
 }
 
 export enum TargetLink {
@@ -62,4 +64,6 @@ export enum TargetLink {
   PosReceiptFooterBlockRender = '[pos.receipt-footer.block.render](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render)',
   PosCartLineItemDetailsActionMenuItemRender = '[pos.cart.line-item-details.action.menu-item.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-action-menu-item-render)',
   PosCartLineItemDetailsActionRender = '[pos.cart.line-item-details.action.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-action-render)',
+  PosCartLineItemSubscriptionActionMenuItemRender = '[pos.cart.line-item-subscription.action.menu-item.render](/docs/api/pos-ui-extensions/targets/cart-line-item/pos-cart-line-item-subscription-action-menu-item-render)',
+  PosCartLineItemSubscriptionActionRender = '[pos.cart.line-item-subscription.action.render](/docs/api/pos-ui-extensions/targets/cart-line-item/pos-cart-line-item-subscription-action-render)',
 }
