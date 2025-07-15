@@ -1,11 +1,14 @@
 
-/* eslint-disable import-x/extensions */
+/* eslint-disable import/extensions */
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable line-comment-position */
 /* eslint-disable @typescript-eslint/unified-signatures */
 /* eslint-disable no-var */
-/* eslint-disable import-x/namespace */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 /**
@@ -748,10 +751,19 @@ interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElement
     children?: preact.ComponentChildren;
 }
 
-interface ButtonProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'disabled' | 'loading' | 'onClick' | 'variant' | 'tone'> {
+interface ButtonProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'disabled' | 'loading' | 'onClick' | 'variant' | 'tone' | 'id'> {
 }
 
-declare class Button implements ButtonProps {
+declare const tagName = "s-button";
+interface ReactProps extends ButtonProps {
+    id?: string;
+    onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
+    currentTarget: HTMLElementTagNameMap[TTagName];
+};
+
+declare class Button implements ReactProps {
 }
 declare global {
     interface HTMLElementTagNameMap {

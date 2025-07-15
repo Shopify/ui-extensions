@@ -1,11 +1,14 @@
 
-/* eslint-disable import-x/extensions */
+/* eslint-disable import/extensions */
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable line-comment-position */
 /* eslint-disable @typescript-eslint/unified-signatures */
 /* eslint-disable no-var */
-/* eslint-disable import-x/namespace */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 /**
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
