@@ -6,8 +6,6 @@
 /* eslint-disable @typescript-eslint/unified-signatures */
 /* eslint-disable no-var */
 /* eslint-disable import-x/namespace */
-// eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
-/// <reference lib="DOM" />
 /**
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
@@ -720,52 +718,3 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 }
 
 
-
-
-declare global {
-    namespace preact {
-        interface Key {
-        }
-        interface Ref<T> {
-            current: T;
-        }
-        interface ComponentChildren {
-        }
-    }
-}
-/**
- * Used when an element does not have children.
- */
-interface BaseElementProps<TClass = HTMLElement> {
-    key?: preact.Key;
-    ref?: preact.Ref<TClass>;
-    slot?: Lowercase<string>;
-}
-/**
- * Used when an element has children.
- */
-interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
-    children?: preact.ComponentChildren;
-}
-
-interface ButtonProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'disabled' | 'loading' | 'onClick' | 'variant' | 'tone'> {
-}
-
-declare class Button implements ButtonProps {
-}
-declare global {
-    interface HTMLElementTagNameMap {
-        's-button': Button;
-    }
-    namespace preact {
-        namespace createElement {
-            namespace JSX {
-                interface IntrinsicElements {
-                    's-button': ButtonProps & BaseElementPropsWithChildren<Button>;
-                }
-            }
-        }
-    }
-}
-
-export { Button };
