@@ -67,6 +67,9 @@ export interface Docs_Standard_LocalizationApi
 export interface Docs_Standard_SessionTokenApi
   extends Pick<StandardApi<any>, 'sessionToken'> {}
 
+export interface Docs_Standard_AnalyticsApi
+  extends Pick<StandardApi<any>, 'analytics'> {}
+
 export interface Docs_Standard_SettingsApi
   extends Pick<StandardApi, 'settings'> {}
 

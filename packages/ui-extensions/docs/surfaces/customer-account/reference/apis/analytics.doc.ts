@@ -1,3 +1,4 @@
+import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 import {CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION} from '../helper.docs';
 
 const data: ReferenceEntityTemplateSchema = {
@@ -18,17 +19,41 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Using a session token with fetch()',
       tabs: [
         {
-          code: '../examples/apis/session-token.example.tsx',
+          code: '../examples/apis/analytics-publish.example.tsx',
           language: 'jsx',
           title: 'React',
         },
         {
-          code: '../examples/apis/session-token.example.ts',
+          code: '../examples/apis/analytics-publish.example.ts',
           language: 'js',
           title: 'JavaScript',
         },
       ],
     },
+  },
+  examples: {
+    description: '',
+    examples: [
+      {
+        description:
+          'You can submit visitor information to Shopify, these will be sent to the shop backend and not be propagated to web pixels on the page.',
+        codeblock: {
+          title: 'Visitor',
+          tabs: [
+            {
+              code: '../examples/apis/analytics-visitor.example.tsx',
+              language: 'jsx',
+              title: 'React',
+            },
+            {
+              code: '../examples/apis/analytics-visitor.example.ts',
+              language: 'js',
+              title: 'JavaScript',
+            },
+          ],
+        },
+      },
+    ],
   },
   related: [],
 };
