@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2025.7.1
+
+### Patch Changes
+
+- [#3074](https://github.com/Shopify/ui-extensions/pull/3074) [`59e320721b80da5c8a2ec2627f31a632bbafea3d`](https://github.com/Shopify/ui-extensions/commit/59e320721b80da5c8a2ec2627f31a632bbafea3d) Thanks [@lihaokx](https://github.com/lihaokx)! - Move analytics api from osp api to standard api in customer account ui extension.
+
+- [#3084](https://github.com/Shopify/ui-extensions/pull/3084) [`11a31c91a6e8da392c837849fa1ff917c149123f`](https://github.com/Shopify/ui-extensions/commit/11a31c91a6e8da392c837849fa1ff917c149123f) Thanks [@lihaokx](https://github.com/lihaokx)! - Export visitor result type on customer account ui extension
+
+- [#3080](https://github.com/Shopify/ui-extensions/pull/3080) [`dd22accd900f23be1f9bb4eb22e23ec270e9cd4f`](https://github.com/Shopify/ui-extensions/commit/dd22accd900f23be1f9bb4eb22e23ec270e9cd4f) Thanks [@vctrchu](https://github.com/vctrchu)! - Remove CartNotEditableError for POS CartApi
+
 ## 2025.7.0
 
 ### Major Changes
