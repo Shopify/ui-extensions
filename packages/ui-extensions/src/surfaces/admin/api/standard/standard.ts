@@ -1,5 +1,6 @@
 import type {I18n} from '../../../../api';
 import {ApiVersion} from '../../../../shared';
+import type {Storage} from '../storage/storage';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 
 export interface Intents {
@@ -53,6 +54,11 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
    * Provides information to the receiver the of an intent.
    */
   intents: Intents;
+
+  /**
+   * Provides methods for storing data in the extension.
+   */
+  storage: Storage;
 
   /**
    * Used to query the Admin GraphQL API
