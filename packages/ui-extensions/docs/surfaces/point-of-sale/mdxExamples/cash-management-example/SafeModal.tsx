@@ -8,21 +8,23 @@ import {
   useApi,
   Button,
   Stack,
-  Section,
   TextField,
   List,
   ListRowSubtitle,
+  Navigator,
+  SectionHeader,
 } from '@shopify/ui-extensions-react/point-of-sale';
 
 import type {Storage} from '@shopify/ui-extensions/point-of-sale';
 
 // [START safe-modal.data-interfaces]
-// 2. Define the interfaces for storing safe management data
+// 2. Define the data structures for safe activity data and safe details.
 interface SafeActivity {
   id: number;
   type: string;
   amount: number;
   timestamp: Date;
+  staffName?: string;
 }
 
 interface SafeDetails {
@@ -36,20 +38,19 @@ interface SafeDetails {
 const SafeModal = () => {
   const [activityType, setActivityType] = useState('deposit');
   const [amount, setAmount] = useState('');
-  // [END safe-modal.component]
-
-  // [START safe-modal.storage-setup]
-  // 4. Setup the api and storage
-  const api = useApi<'pos.product-details.action.render'>();
-  const storage: Storage<SafeDetails> = api.storage;
-
-  // 5. Setup the states for the safe management data
   const [balance, setBalance] = useState<number>(0);
   const [activities, setActivities] = useState<SafeActivity[]>([]);
-  // [END safe-modal.storage-setup]
+  // [END safe-modal.component]
+
+  // [START safe-modal.api-storage]
+  // 4. Setup the api and storage
+  const api = useApi<'pos.cash-session-details.action.render'>();
+  const storage: Storage<SafeDetails> = api.storage;
+  const {staffMemberId} = api.session.currentSession;
+  // [END safe-modal.api-storage]
 
   // [START safe-modal.load-data]
-  // 6. Load the data from the storage
+  // 5. Intalize or load the data from the storage
   useEffect(() => {
     const loadData = async () => {
       try {
@@ -68,31 +69,30 @@ const SafeModal = () => {
   // [END safe-modal.load-data]
 
   // [START safe-modal.handle-activity]
-  // 7. Implement deposit and withdrawal logic
+  // 6. Implement deposit and withdraw logic
   const handleActivity = async () => {
     const activityAmount = parseFloat(amount);
 
     try {
-      let newBalance = balance;
       if (activityType === 'deposit') {
-        newBalance = balance + activityAmount;
-      } else if (activityType === 'withdrawal') {
-        newBalance = balance - activityAmount;
+        setBalance(balance + activityAmount);
+      } else if (activityType === 'withdraw') {
+        setBalance(balance - activityAmount);
       }
-      setBalance(newBalance);
-      await storage.set('balance', newBalance);
+      await storage.set('balance', balance);
 
       const newActivity: SafeActivity = {
         id: activities.length + 1,
         type: activityType,
         amount: activityAmount,
         timestamp: new Date(),
+        staffName: staffMemberId?.toString(),
       };
-      const updatedActivities = [...activities, newActivity];
-      setActivities(updatedActivities);
-      await storage.set('activities', updatedActivities);
+      setActivities([...activities, newActivity]);
+      await storage.set('activities', activities);
 
       setAmount('');
+      api.navigation.pop();
     } catch (error) {
       console.error('Error saving activity:', error);
     }
@@ -100,76 +100,135 @@ const SafeModal = () => {
   // [END safe-modal.handle-activity]
 
   // [START safe-modal.validation]
-  // 8. Check if the activity amount is valid
+  // 7. Check if the activity amount is valid
   const canSubmit = () => {
     const activityAmount = parseFloat(amount);
     if (isNaN(activityAmount) || activityAmount <= 0) return false;
-    if (activityType === 'withdrawal' && activityAmount > balance) return false;
+    if (activityType === 'withdraw' && activityAmount > balance) return false;
     return true;
   };
   // [END safe-modal.validation]
 
   // [START safe-modal.format-activities]
-  // 9. Format the activities in to a list
+  // 8. Format the activities into a list
   const activityListData = (activities || []).map((activity: SafeActivity) => ({
     id: activity.id.toString(),
     leftSide: {
-      label: `$${(activity.amount || 0).toFixed(2)}`,
+      label: new Date(activity.timestamp).toLocaleString('en-US', {
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+      }),
       subtitle: [
         {
-          content: activity.type === 'deposit' ? 'Deposit' : 'Withdrawal',
+          content: activity.staffName,
         },
       ] as [ListRowSubtitle],
     },
     rightSide: {
-      label: new Date(activity.timestamp).toLocaleString(),
+      label: `${activity.type === 'deposit' ? '+' : '-'} $${(
+        activity.amount || 0
+      ).toFixed(2)}`,
     },
   }));
   // [END safe-modal.format-activities]
 
-  // 10. Render the SafeModal component to use the safe management solution
+  // [START safe-modal.format-overview]
+  // 9. Format the safe overview into a list
+  const overviewListData = [
+    {
+      id: 'current-balance',
+      leftSide: {
+        label: 'Current balance:',
+      },
+      rightSide: {
+        label: `$${(balance || 0).toFixed(2)}`,
+      },
+    },
+    {
+      id: 'last-activity',
+      leftSide: {
+        label: 'Last activity:',
+      },
+      rightSide: {
+        label:
+          activities.length > 0
+            ? new Date(
+                activities[activities.length - 1].timestamp,
+              ).toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: 'numeric',
+                minute: '2-digit',
+              })
+            : 'No activities yet',
+      },
+    },
+  ];
+  // [END safe-modal.format-overview]
+
+  // [START safe-modal.render-ui]
+  // 10. Render the SafeModal component to display the safe management solution
   return (
-    <Screen name="SafeManagement" title="Safe Management">
-      <ScrollView>
-        {/* [START safe-modal.overview-section] */}
-        <Section title="Overview">
-          <Stack padding="200">
-            <Text>Current Balance</Text>
-            <Text>${(balance || 0).toFixed(2)}</Text>
-          </Stack>
-          <Stack padding="200">
-            <Text>Activities Count</Text>
-            <Text>{activities.length}</Text>
-          </Stack>
-        </Section>
-        {/* [END safe-modal.overview-section] */}
+    <Navigator>
+      <Screen name="SafeManagement" title="Manage Safe">
+        <ScrollView>
+          <Stack
+            direction="inline"
+            gap="300"
+            inlineSize="100%"
+            alignItems="stretch"
+          >
+            <Stack direction="block" flex={3} inlineSize="100%">
+              <Text variant="display">Manage Safe</Text>
 
-        {/* [START safe-modal.activity-form] */}
-        <Section title="New Activity">
-          <Stack direction="inline" gap="200" inlineSize="100%">
-            <Stack flex={1} flexChildren>
-              <Button
-                title="Deposit"
-                onPress={() => setActivityType('deposit')}
-                type={activityType === 'deposit' ? 'primary' : undefined}
-              />
+              <SectionHeader title="Overview" />
+              <Stack inlineSize="100%">
+                <List data={overviewListData} />
+              </Stack>
+
+              <SectionHeader title="Recent activity" />
+              <Stack inlineSize="100%">
+                <List data={activityListData.reverse()} />
+              </Stack>
             </Stack>
-            <Stack flex={1} flexChildren>
-              <Button
-                title="Withdrawal"
-                onPress={() => setActivityType('withdrawal')}
-                type={activityType === 'withdrawal' ? 'primary' : undefined}
-              />
+
+            <Stack direction="block" gap="200" flex={1} paddingBlockStart="400">
+              <Stack inlineSize="100%" flexChildren>
+                <Button
+                  title="+ Deposit"
+                  onPress={() => {
+                    setActivityType('deposit');
+                    api.navigation.navigate('ActivityModal');
+                  }}
+                  type="basic"
+                />
+              </Stack>
+              <Stack inlineSize="100%" flexChildren>
+                <Button
+                  title="- Withdraw"
+                  onPress={() => {
+                    setActivityType('withdraw');
+                    api.navigation.navigate('ActivityModal');
+                  }}
+                  type="basic"
+                />
+              </Stack>
             </Stack>
           </Stack>
+        </ScrollView>
+      </Screen>
 
+      <Screen name="ActivityModal" title="Activity Modal">
+        <ScrollView>
           <TextField
             label="Amount ($)"
             value={amount}
             onChange={setAmount}
             placeholder="0.00"
             error={
-              activityType === 'withdrawal' && parseFloat(amount) > balance
+              activityType === 'withdraw' && parseFloat(amount) > balance
                 ? `Cannot exceed balance of $${(balance || 0).toFixed(2)}`
                 : undefined
             }
@@ -177,38 +236,22 @@ const SafeModal = () => {
 
           <Button
             title={`Confirm ${
-              activityType === 'deposit' ? 'Deposit' : 'Withdrawal'
+              activityType === 'deposit' ? 'Deposit' : 'Withdraw'
             }`}
             onPress={handleActivity}
             type="primary"
             isDisabled={!canSubmit()}
           />
-        </Section>
-        {/* [END safe-modal.activity-form] */}
-
-        {/* [START safe-modal.activities-list] */}
-        <Section title="Recent Activities">
-          <List data={activityListData} />
-          {/* [START safe-modal.clear-activities] */}
-          <Button
-            title="Clear Activities"
-            type="destructive"
-            onPress={() => {
-              storage.set('activities', []);
-              setActivities([]);
-            }}
-          />
-          {/* [END safe-modal.clear-activities] */}
-        </Section>
-        {/* [END safe-modal.activities-list] */}
-      </ScrollView>
-    </Screen>
+        </ScrollView>
+      </Screen>
+    </Navigator>
   );
 };
+// [END safe-modal.render-ui]
 
 // [START safe-modal.render-extension]
-// 1. Render the SafeModal component at the `pos.product-details.action.render` target
-export default reactExtension('pos.product-details.action.render', () => (
+// 1. Render the SafeModal component at the `pos.cash-session-details.action.render` target
+export default reactExtension('pos.cash-session-details.action.render', () => (
   <SafeModal />
 ));
 // [END safe-modal.render-extension]
