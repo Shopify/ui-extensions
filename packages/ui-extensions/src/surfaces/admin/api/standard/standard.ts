@@ -56,7 +56,7 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
   intents: Intents;
 
   /**
-   * Provides methods for storing data in the extension.
+   * Provides methods for setting, getting, and clearing browser data from the extension
    */
   storage: Storage;
 
