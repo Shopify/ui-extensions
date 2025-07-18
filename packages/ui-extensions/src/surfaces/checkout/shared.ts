@@ -39,6 +39,7 @@ export type AnyComponent =
   | 'Stack'
   | 'Text'
   | 'TextArea'
+  | 'TextField'
   | 'Time'
   | 'UnorderedList';
 
