@@ -82,6 +82,8 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
+   *
+   * > Note: Requires to [connect a third-party domain](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-customer-account) to Shopify for your customer account pages.
    */
   analytics: Analytics;
 

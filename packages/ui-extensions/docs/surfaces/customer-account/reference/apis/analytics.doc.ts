@@ -16,7 +16,7 @@ const data: ReferenceEntityTemplateSchema = {
   ],
   defaultExample: {
     codeblock: {
-      title: 'Using a session token with fetch()',
+      title: 'Publish',
       tabs: [
         {
           code: '../examples/apis/analytics-publish.example.tsx',

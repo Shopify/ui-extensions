@@ -1,7 +1,7 @@
-import {extension} from '@shopify/ui-extensions-react/customer-account';
+import {extension} from '@shopify/ui-extensions/customer-account';
 
 export default extension(
-  'purchase.checkout.block.render',
+  'customer-account.order-status.block.render',
   (root, {analytics}) => {
     analytics
       .visitor({

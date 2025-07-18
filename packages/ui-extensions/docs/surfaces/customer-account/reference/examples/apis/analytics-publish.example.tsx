@@ -1,13 +1,12 @@
-import {useState, useEffect} from 'react';
 import {
   Banner,
   reactExtension,
   useApi,
 } from '@shopify/ui-extensions-react/customer-account';
 
-export const purchaseCheckoutBlockRender =
+export const orderStatusBlockRender =
   reactExtension(
-    'purchase.checkout.block.render',
+    'customer-account.order-status.block.render',
     () => <Extension />,
   );
 
@@ -15,9 +14,12 @@ function Extension() {
   const {analytics} = useApi();
 
   analytics
-    .publish('checkout-extension-loaded', {
-      extensionName: 'My Extension',
-    })
+    .publish(
+      'customer-account-extension-loaded',
+      {
+        extensionName: 'My Extension',
+      },
+    )
     .then((result) => {
       if (result) {
         console.log(
