@@ -652,3 +652,10 @@ export interface TrackingConsentChangeResultError {
    */
   message: string;
 }
+
+export interface ToastApiResult {
+  hide: () => void;
+}
+export interface ToastApi {
+  show: (content: string) => ToastApiResult;
+}

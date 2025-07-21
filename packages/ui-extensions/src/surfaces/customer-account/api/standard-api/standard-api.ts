@@ -12,6 +12,7 @@ import {
   Analytics,
   CustomerPrivacy,
   ApplyTrackingConsentChangeType,
+  ToastApi,
 } from '../shared';
 
 import type {ExtensionTarget} from '../../extension-targets';
@@ -100,6 +101,23 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * Methods to interact with the extension's UI.
    */
   ui: Ui;
+
+  /**
+   * The Toast API displays a non-disruptive message that displays at the bottom
+   * of the interface to provide quick, at-a-glance feedback on the outcome
+   * of an action.
+   *
+   * How to use:
+   *
+   * - Use toasts to confirm successful actions.
+   *
+   * - Aim for two words.
+   *
+   * - Use noun + past tense verb format. For example, \`Changes saved\`.
+   *
+   * For errors, or information that needs to persist on the page, use a [banner](/docs/api/checkout-ui-extensions/unstable/components/feedback/banner) component.
+   */
+  toast: ToastApi;
 
   navigation: StandardExtensionNavigation;
 
