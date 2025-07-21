@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.15
+
+### Patch Changes
+
+- [#3077](https://github.com/Shopify/ui-extensions/pull/3077) [`505d5fb18170e7903f00a608039bbd67cf70715a`](https://github.com/Shopify/ui-extensions/commit/505d5fb18170e7903f00a608039bbd67cf70715a) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Add toast api on customer accounts standard api
+
 ## 2025.10.0-rc.14
 
 ### Patch Changes
