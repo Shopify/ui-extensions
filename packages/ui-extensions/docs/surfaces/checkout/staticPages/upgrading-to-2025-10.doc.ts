@@ -91,6 +91,52 @@ As of \`2025-10\`, Shopify recommends Preact for UI extensions. Update the depen
     },
     {
       type: 'GenericAccordion',
+      anchorLink: 'make-typescript-adjustments',
+      title: 'Make TypeScript adjustments',
+      sectionContent: `
+These steps make TypeScript aware of the new global \`shopify\` object. Skip these steps if your app was not built using TypeScript.
+`,
+      accordionContent: [
+        {
+          title: "Update your extension's tsconfig.json",
+          description:
+            "Update your extension config at a path like `extensions/{extension-name}/tsconfig.json`. You do **not** need to change your app's root `tsconfig.json` file.",
+          codeblock: {
+            title: "Update your extension's tsconfig.json",
+            tabs: [
+              {
+                title: 'New tsconfig.json',
+                code: './examples/upgrading-to-2025-10/new-tsconfig.example.json',
+                language: 'json',
+              },
+              {
+                title: 'Old tsconfig.json',
+                code: './examples/upgrading-to-2025-10/old-tsconfig.example.json',
+                language: 'json',
+              },
+            ],
+          },
+        },
+        {
+          title:
+            'Generate type definition file to support new global shopify object',
+          description:
+            'These commands generate a `shopify.d.ts` file in your extension directory.',
+          codeblock: {
+            title: 'Support new global shopify object',
+            tabs: [
+              {
+                title: 'CLI',
+                code: './examples/upgrading-to-2025-10/support-new-shopify-global.example.bash',
+                language: 'bash',
+              },
+            ],
+          },
+        },
+      ],
+    },
+    {
+      type: 'GenericAccordion',
       anchorLink: 'migrate-api-calls',
       title: 'Migrate API calls',
       sectionContent:
