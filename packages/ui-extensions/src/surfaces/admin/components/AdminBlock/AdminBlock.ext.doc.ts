@@ -26,7 +26,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `- Initial height is limited to 300px.
 - When content exceeds the height limit, a "Show more" button appears.
 - In development, the following warning also displays: "Warning! This Block is too tall."
-- After expanding, content outside the container is cut off with a link to navigate to the extension's app.`,
+- After expanding to the max height, content that exceeds the limit is cut off, and the merchant must navigate to the extension's app via the provided link.`,
     },
   ],
   defaultExample: {
