@@ -7,7 +7,6 @@ import {
   AuthenticatedAccount,
   GraphQLError,
   StorefrontApiVersion,
-  Ui,
   SessionToken,
   Analytics,
   CustomerPrivacy,
@@ -98,11 +97,6 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
    */
   settings: StatefulRemoteSubscribable<ExtensionSettings>;
-
-  /**
-   * Methods to interact with the extension's UI.
-   */
-  ui: Ui;
 
   /**
    * The Toast API displays a non-disruptive message that displays at the bottom

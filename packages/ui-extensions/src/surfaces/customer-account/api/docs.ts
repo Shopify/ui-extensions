@@ -151,10 +151,14 @@ export interface Docs_Standard_StorageApi
 export interface Docs_Standard_CustomerPrivacyApi
   extends Pick<StandardApi<any>, 'customerPrivacy'> {}
 
-export interface Docs_Standard_UIApi extends Pick<StandardApi<any>, 'ui'> {}
-
 export interface Docs_Standard_QueryApi
   extends Pick<StandardApi<any>, 'query'> {}
+
+export interface Docs_Standard_ToastApi
+  extends Pick<StandardApi<any>, 'toast'> {}
+
+export interface Docs_Standard_ForceDataRefreshApi
+  extends Pick<StandardApi<any>, 'forceDataRefresh'> {}
 
 export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
