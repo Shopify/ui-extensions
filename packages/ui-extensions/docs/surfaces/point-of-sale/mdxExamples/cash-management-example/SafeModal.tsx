@@ -18,7 +18,7 @@ import {
 import type {Storage} from '@shopify/ui-extensions/point-of-sale';
 
 // [START safe-modal.data-interfaces]
-// 2. Define the data structures for safe activity data and safe details.
+// 2. Define safe management data
 interface SafeActivity {
   id: number;
   type: string;

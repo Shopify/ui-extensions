@@ -12,6 +12,7 @@ import {useBusinessRules} from './useBusinessRules';
 // 2. Implement the `BannerAlert` component
 const BannerAlert = () => {
   // [END banner-alert.component]
+
   // [START banner-alert.api]
   // 3. Setup the api
   const api = useApi<'pos.cash-session-details.banner.render'>();
@@ -34,12 +35,10 @@ const BannerAlert = () => {
   // [END banner-alert.loading-state]
 
   // [START banner-alert.render-implementation]
-  // 6. Display an alert banner if a business rule is violated
+  // 6. Display an alert banner when a business rule is violated
   if (isViolated) {
     return <Banner title={alertMessage} variant="alert" visible />;
   }
-
-  return null;
   // [END banner-alert.render-implementation]
 };
 

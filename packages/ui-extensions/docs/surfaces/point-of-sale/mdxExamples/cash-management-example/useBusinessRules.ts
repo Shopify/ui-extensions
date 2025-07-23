@@ -46,8 +46,38 @@ export const fetchDrawerAmount = async (pointOfSaleDeviceId: string) => {
 };
 // [END use-business-rules.direct-api]
 
+// [START use-business-rules.check-drawer-amount]
+// 3. Check if the drawer amount is within the min/max threshold
+export const checkDrawerAmount = async (
+  pointOfSaleDeviceId: string,
+): Promise<BusinessRuleViolation> => {
+  const drawerAmount = await fetchDrawerAmount(pointOfSaleDeviceId);
+  if (drawerAmount < MIN_CASH_THRESHOLD) {
+    return {
+      isViolated: true,
+      ruleType: 'drawer_amount',
+      message: `Drawer amount is $${
+        MIN_CASH_THRESHOLD - drawerAmount
+      } below the minimum threshold`,
+    };
+  }
+  if (drawerAmount > MAX_CASH_THRESHOLD) {
+    return {
+      isViolated: true,
+      ruleType: 'drawer_amount',
+      message: `Drawer amount is $${
+        drawerAmount - MAX_CASH_THRESHOLD
+      } above the maximum threshold`,
+    };
+  }
+  return {
+    isViolated: false,
+  };
+};
+// [END use-business-rules.check-drawer-amount]
+
 // [START use-business-rules.hook]
-// 3. Implement the useBusinessRules hook
+// 4. Implement the useBusinessRules hook
 export const useBusinessRules = (pointOfSaleDeviceId: string) => {
   const [isViolated, setIsViolated] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
@@ -78,33 +108,3 @@ export const useBusinessRules = (pointOfSaleDeviceId: string) => {
   };
 };
 // [END use-business-rules.hook]
-
-// [START use-business-rules.check-drawer-amount]
-// 4. Check if the drawer amount is within the min/max threshold
-export const checkDrawerAmount = async (
-  pointOfSaleDeviceId: string,
-): Promise<BusinessRuleViolation> => {
-  const drawerAmount = await fetchDrawerAmount(pointOfSaleDeviceId);
-  if (drawerAmount < MIN_CASH_THRESHOLD) {
-    return {
-      isViolated: true,
-      ruleType: 'drawer_amount',
-      message: `Drawer amount is $${
-        MIN_CASH_THRESHOLD - drawerAmount
-      } below the minimum threshold`,
-    };
-  }
-  if (drawerAmount > MAX_CASH_THRESHOLD) {
-    return {
-      isViolated: true,
-      ruleType: 'drawer_amount',
-      message: `Drawer amount is $${
-        drawerAmount - MAX_CASH_THRESHOLD
-      } above the maximum threshold`,
-    };
-  }
-  return {
-    isViolated: false,
-  };
-};
-// [END use-business-rules.check-drawer-amount]
