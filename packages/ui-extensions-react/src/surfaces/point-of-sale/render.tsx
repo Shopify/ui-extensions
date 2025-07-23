@@ -1,5 +1,5 @@
 import type {ReactElement, PropsWithChildren} from 'react';
-import {Component} from 'react';
+import {Component, isValidElement, useContext} from 'react';
 import {extension} from '@shopify/ui-extensions/point-of-sale';
 import type {
   ExtensionTargets,
@@ -9,6 +9,25 @@ import type {
 
 import {ExtensionApiContext} from './context';
 import {remoteRootRender} from '../../utilities/remoteRootRender';
+
+function ElementRenderer<Target extends RenderExtensionTarget>({
+  render,
+}: {
+  render: (
+    api: ApiForRenderExtension<Target>,
+  ) => ReactElement<any> | Promise<ReactElement<any>>;
+}) {
+  const api = useContext(ExtensionApiContext) as ApiForRenderExtension<Target>;
+
+  const result = render(api);
+
+  if (isValidElement(result)) {
+    return result;
+  }
+
+  // Invalid element, return empty element
+  return <></>;
+}
 
 /**
  * Registers your React-based UI Extension to run for the selected extension target.
@@ -36,11 +55,20 @@ export function reactExtension<Target extends RenderExtensionTarget>(
   // type. To get around it, we’ll just fake like we are rendering the
   // customer-account.order-status.block.render extension, since all render extensions have the same general
   // shape (`RenderExtension`).
+
   return extension<'pos.home.tile.render'>(target as any, async (root, api) => {
-    const element = await render(api as ApiForRenderExtension<Target>);
+    let element: ReactElement<any> | null = null;
+    const isAsync = /^\s*\([^)]*\)\s*=>\s*__async/.test(render.toString());
+
+    if (isAsync) {
+      element = await render(api as ApiForRenderExtension<Target>);
+    }
+
     return remoteRootRender(
       <ExtensionApiContext.Provider value={api}>
-        <ErrorBoundary>{element}</ErrorBoundary>
+        <ErrorBoundary>
+          {element || <ElementRenderer render={render} />}
+        </ErrorBoundary>
       </ExtensionApiContext.Provider>,
       root,
     );
