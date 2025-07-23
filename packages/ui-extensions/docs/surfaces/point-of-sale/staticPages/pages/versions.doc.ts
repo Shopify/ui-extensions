@@ -47,6 +47,7 @@ const data: LandingTemplateSchema = {
 - Added optional \`tone\` property to [Icon](/docs/api/pos-ui-extensions/components/icon) component and expanded \`name\` and \`size\` options.
 - Added optional \`editable\` property to \`Cart\` interface.
 - Added \`useCartEditable\` hook to access the cart's editable state.
+- Added support for the ${TargetLink.PosCartLineItemDetailsActionMenuItemRender} and ${TargetLink.PosCartLineItemDetailsActionRender} targets on the cart line item details screen.
 
 ### Developer Preview
 
