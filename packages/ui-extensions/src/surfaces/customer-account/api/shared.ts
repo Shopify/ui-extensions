@@ -657,5 +657,5 @@ export interface ToastApiResult {
   hide: () => void;
 }
 export interface ToastApi {
-  show: (content: string) => ToastApiResult;
+  show: (content: string) => Promise<ToastApiResult>;
 }
