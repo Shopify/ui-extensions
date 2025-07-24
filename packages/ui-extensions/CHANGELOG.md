@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.16
+
+### Patch Changes
+
+- [#3108](https://github.com/Shopify/ui-extensions/pull/3108) [`0acece7bebe7e27beec0187da0c8281cd6d5966e`](https://github.com/Shopify/ui-extensions/commit/0acece7bebe7e27beec0187da0c8281cd6d5966e) Thanks [@oluwatimio](https://github.com/oluwatimio)! - Toast api returns Promise<ToastResult>
+
 ## 2025.10.0-rc.15
 
 ### Patch Changes
