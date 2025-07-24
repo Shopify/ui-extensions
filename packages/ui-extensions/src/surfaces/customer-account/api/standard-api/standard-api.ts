@@ -7,6 +7,7 @@ import {
   AuthenticatedAccount,
   GraphQLError,
   StorefrontApiVersion,
+  Ui,
   SessionToken,
   Analytics,
   CustomerPrivacy,
@@ -99,6 +100,11 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   settings: StatefulRemoteSubscribable<ExtensionSettings>;
 
   /**
+   * Methods to interact with the extension's UI.
+   */
+  ui: Ui;
+
+  /**
    * The Toast API displays a non-disruptive message that displays at the bottom
    * of the interface to provide quick, at-a-glance feedback on the outcome
    * of an action.
@@ -114,21 +120,6 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * For errors, or information that needs to persist on the page, use a [banner](/docs/api/checkout-ui-extensions/unstable/components/feedback/banner) component.
    */
   toast: ToastApi;
-
-  /**
-   * Refresh data so the surrounding information on the page is updated. The `content` string will appear in a toast message after refresh, to confirm the action was successful.
-   *
-   * To request access to this API:
-   *
-   * 1. Go to your partner dashboard and click **Apps**.
-   *
-   * 2. Select the app you need to request access for.
-   *
-   * 3. Click **API access**.
-   *
-   * 4. Under **Access force data refresh**, click **Request access**.
-   */
-  forceDataRefresh(content: string): Promise<void>;
 
   navigation: StandardExtensionNavigation;
 
