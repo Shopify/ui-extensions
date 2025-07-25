@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosExchangePostActionRender,
   description: `A full-screen extension target that renders when a \`pos.exchange.post.action.menu-item.render\` target calls for it
   > Note:
-  > This is part of a POS UI Extensions developer preview. More information to come.`,
+  > This is part of a [POS UI Extensions developer preview](/docs/api/developer-previews#pos-ui-extensions-developer-preview). More information to come.`,
   defaultExample: {
     codeblock: generateCodeBlock(
       'Action',
