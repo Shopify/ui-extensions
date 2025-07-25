@@ -1,6 +1,6 @@
 import type {I18n} from '../../../../api';
 import {ApiVersion} from '../../../../shared';
-import type {Storage} from '../storage/storage';
+import type {Storage} from './storage';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 
 export interface Intents {
