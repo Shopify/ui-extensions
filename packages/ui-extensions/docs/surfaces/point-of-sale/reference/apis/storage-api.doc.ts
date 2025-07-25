@@ -11,10 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   - An extension can store up to 100 entries.
   - The maximum size for a key is ~1 KB, and for a value is ~1 MB.
   - If a target (such as \`pos.home.tile.render\`) is disabled or removed, the extension data remains.
-  - All stored extension data that has not been updated for a month is cleared automatically after that period.
-
-  > Note:
-  > This is part of a POS UI Extensions developer preview. More information to come.`,
+  - All stored extension data that has not been updated for a month is cleared automatically after that period.`,
   isVisualComponent: false,
   type: 'APIs',
   category: 'APIs',
