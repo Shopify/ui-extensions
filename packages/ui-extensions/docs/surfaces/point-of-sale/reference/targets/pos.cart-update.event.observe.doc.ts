@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosCartUpdateObserve,
   description: `An event extension target that observes cart updates
   > Note:
-  > This is part of a POS UI Extensions developer preview. More information to come.`,
+  > This is part of a [POS UI Extensions developer preview](/docs/api/developer-previews#pos-ui-extensions-developer-preview). More information to come.`,
   category: 'Targets',
   subCategory: 'Cart details',
   isVisualComponent: false,
