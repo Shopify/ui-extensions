@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosTransactionCompleteObserve,
   description: `An event extension target that observes completed transactions
   > Note:
-  > This is part of a POS UI Extensions developer preview. More information to come.`,
+  > This is part of a [POS UI Extensions developer preview](/docs/api/developer-previews#pos-ui-extensions-developer-preview). More information to come.`,
   category: 'Targets',
   subCategory: 'Post-transaction',
   isVisualComponent: false,

@@ -6,7 +6,7 @@ const data: ReferenceEntityTemplateSchema = {
   name: ExtensionTargetType.PosReturnPostActionMenuItemRender,
   description: `A static extension target that renders as a menu item on the post-return screen
   > Note:
-  > This is part of a POS UI Extensions developer preview. More information to come.`,
+  > This is part of a [POS UI Extensions developer preview](/docs/api/developer-previews#pos-ui-extensions-developer-preview). More information to come.`,
   defaultExample: {
     codeblock: generateCodeBlock(
       'Menu item',

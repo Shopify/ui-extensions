@@ -49,10 +49,10 @@ const data: LandingTemplateSchema = {
 - Added optional \`editable\` property to \`Cart\` interface.
 - Added \`useCartEditable\` hook to access the cart's editable state.
 - Added support for the ${TargetLink.PosCartLineItemDetailsActionMenuItemRender} and ${TargetLink.PosCartLineItemDetailsActionRender} targets on the cart line item details screen.
+- Introduced a [Storage API](/docs/api/pos-ui-extensions/apis/storage-api). The Storage API gives the UI Extension access to store data on the POS device that the extension is running on.
 
 ### Developer Preview
 
-  - Introduced a [Storage API](/docs/api/pos-ui-extensions/apis/storage-api). The Storage API gives the UI Extension access to store data on the POS device that the extension is running on.
   - Added support for the ${TargetLink.PosExchangePostActionMenuItemRender}, ${TargetLink.PosExchangePostActionRender}, ${TargetLink.PosExchangePostBlockRender} targets.
   - Added support for the ${TargetLink.PosReturnPostActionMenuItemRender}, ${TargetLink.PosReturnPostActionRender}, ${TargetLink.PosReturnPostBlockRender} targets.
   `,
