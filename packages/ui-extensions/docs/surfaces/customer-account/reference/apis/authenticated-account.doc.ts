@@ -28,6 +28,23 @@ const data: ReferenceEntityTemplateSchema = {
     //   type: 'UseAuthenticatedAccountPurchasingCompanyGeneratedType',
     // },
   ],
+  defaultExample: {
+    codeblock: {
+      title: 'Show Loyalty Banner',
+      tabs: [
+        {
+          code: '../examples/apis/authenticated-account.example.tsx',
+          language: 'jsx',
+          title: 'Preact',
+        },
+        {
+          code: '../examples/apis/authenticated-account.locale.example.json',
+          language: 'json',
+          title: 'locales/en.default.json',
+        },
+      ],
+    },
+  },
   examples: {
     description: '',
     examples: [
