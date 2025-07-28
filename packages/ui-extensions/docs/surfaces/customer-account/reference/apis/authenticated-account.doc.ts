@@ -9,6 +9,28 @@ const data: ReferenceEntityTemplateSchema = {
   isVisualComponent: false,
   category: 'APIs',
   type: 'API',
+  defaultExample: {
+    codeblock: {
+      title: 'Show Loyalty Banner',
+      tabs: [
+        {
+          code: '../examples/apis/authenticated-account.example.tsx',
+          language: 'jsx',
+          title: 'React',
+        },
+        {
+          code: '../examples/apis/authenticated-account.example.ts',
+          language: 'js',
+          title: 'JavaScript',
+        },
+        {
+          code: '../examples/apis/authenticated-account.locale.example.json',
+          language: 'json',
+          title: 'locales/en.default.json',
+        },
+      ],
+    },
+  },
   definitions: [
     {
       title: CUSTOMER_ACCOUNT_STANDARD_API_DEFINITION.title,
