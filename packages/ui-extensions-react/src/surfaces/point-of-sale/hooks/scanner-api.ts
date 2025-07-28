@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState} from 'react';
+import {useCallback, useEffect, useRef, useState} from 'react';
 
 import type {
   ScannerSubscriptionResult,
@@ -38,23 +38,31 @@ const isScannerApi = (api: any): boolean => {
  */
 export function useScannerDataSubscription(): ScannerSubscriptionResult {
   const statefulSubscribableScanner = useStatefulSubscribableScannerData();
-  const [scanResult, setScanResult] = useState<ScannerSubscriptionResult>(
-    statefulSubscribableScanner.current,
-  );
+  const [scanResult, setScanResult] = useState<
+    Omit<ScannerSubscriptionResult, 'reset'>
+  >(statefulSubscribableScanner.current);
 
   const unsubscribeRef = useRef<() => void>();
 
+  const reset = useCallback(() => {
+    setScanResult({
+      data: undefined,
+      source: undefined,
+    });
+  }, []);
+
   useEffect(() => {
     if (!unsubscribeRef.current) {
-      statefulSubscribableScanner.subscribe(
-        (scanResult: ScannerSubscriptionResult) => {
-          setScanResult(scanResult);
-        },
+      unsubscribeRef.current = statefulSubscribableScanner.subscribe(
+        (result: ScannerSubscriptionResult) => setScanResult(result),
       );
     }
   }, [statefulSubscribableScanner]);
 
-  return scanResult;
+  return {
+    ...scanResult,
+    reset,
+  };
 }
 
 /**
@@ -111,7 +119,7 @@ export function useScannerSourcesSubscription(): ScannerSource[] {
 
   useEffect(() => {
     if (!unsubscribeRef.current) {
-      statefulSubscribableScannerSources.subscribe(
+      unsubscribeRef.current = statefulSubscribableScannerSources.subscribe(
         (scannerSources: ScannerSource[]) => {
           setScannerSources(scannerSources);
         },

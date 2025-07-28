@@ -8,6 +8,8 @@ export interface ScannerSubscriptionResult {
   data?: string;
   /** The scanning source from which the scan event came. */
   source?: ScannerSource;
+  /** Resets the scanner data. */
+  reset?: () => void;
 }
 
 export interface ScannerApiContent {

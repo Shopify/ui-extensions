@@ -65,6 +65,14 @@ The Scanner API enables an extension to access scanner data and available scanni
               'conditional-scanner-example',
             ),
           },
+          {
+            description:
+              'The useScannerDataSubscription hook provides a reset function that allows you to clear the current scanner data. This can be useful when you want to clear the scanned data after processing it or provide a manual reset option to users.',
+            codeblock: generateCodeBlockForScannerApi(
+              'Reset scanner data example',
+              'reset-scanner-example',
+            ),
+          },
         ],
       },
     ],
