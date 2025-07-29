@@ -55,8 +55,6 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Patterns',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/homepage.png',
   defaultExample: {
-    image:
-      '/assets/templated-apis-screenshots/admin/patterns/homepage-example.png',
     codeblock: {
       title: 'Homepage',
       tabs: [
