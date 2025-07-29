@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Index',
-  isOneColumnLayout: true,
   overviewPreviewDescription:
     'Manage objects efficiently with dynamic table actions.',
   description: `The index layout lets merchants view and manage all their objects at once in a table format. They can filter, sort and do quick actions on their objects. To prevent tables from becoming visually cluttered, reveal actions only when the row is hovered over or selected
@@ -14,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
 
   ![Preview of the index pattern](/assets/templated-apis-screenshots/admin/patterns/index-example.png)
 
-  This pattern uses \`Section\`, \`Stack\`, \`Heading\`, \`Button\`, \`Table\`, \`Paragraph\`, \`Box\` and \`Grid\` components.
+  This pattern uses \`Badge\`, \`Box\`, \`Button\`, \`Clickable\`, \`Grid\`, \`Heading\`, \`Image\`, \`Link\`, \`Paragraph\`, \`Section\`, \`Stack\`, and \`Table\` components.
 
   ---
 
@@ -36,8 +35,8 @@ const data: ReferenceEntityTemplateSchema = {
   ---
 
   <style>
-    div[class*="CodeBlock-module-CodeBlock_"] {
-      max-height: calc(100vh - 80px) !important;
+          div[class*="CodeBlock-module-CodeBlock_"] {
+        max-height: calc(100vh - 400px) !important;
     }
     div[class*="Tabs-module-TabsContent_"] {
       overflow: auto !important;

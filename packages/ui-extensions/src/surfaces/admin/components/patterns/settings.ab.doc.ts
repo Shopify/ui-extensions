@@ -2,17 +2,16 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Settings',
-  isOneColumnLayout: false,
   overviewPreviewDescription:
     'Organize settings into categories for easy navigation.',
-  description: `This layout groups settings into categories with a heading and description, to make it easier for merchants to scan the page and quickly find what they are looking for.
+  description: `Make settings pages easy to scan by grouping related information in a logical order. For complex or lengthy settings, organize content into distinct, themed sections that link to their own pages.
   | Used to    | Examples |
 | -------- | ------- |
 | Find and change app settings  | Membership settings, app appearance, set up theme blocks     |
 
   ![Preview of the settings pattern](/assets/templated-apis-screenshots/admin/patterns/settings-example.png)
 
-  This pattern uses \`Section\`, \`Stack\`, \`Heading\`, \`Button\`, \`Table\`, \`Paragraph\`, \`Box\` and \`Grid\` components.
+  This pattern uses \`Box\`, \`Button\`, \`ChoiceList\`, \`Clickable\`, \`Divider\`, \`Grid\`, \`Heading\`, \`Icon\`, \`Paragraph\`, \`Section\`, \`Select\`, \`Stack\`, and \`TextField\` components.
 
   ---
 
@@ -50,8 +49,6 @@ const data: ReferenceEntityTemplateSchema = {
   category: 'Patterns',
   thumbnail: '/assets/templated-apis-screenshots/admin/patterns/settings.png',
   defaultExample: {
-    image:
-      '/assets/templated-apis-screenshots/admin/patterns/settings-example.png',
     codeblock: {
       title: 'Settings',
       tabs: [
