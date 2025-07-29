@@ -2,7 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Details',
-  isOneColumnLayout: true,
+  isOneColumnLayout: false,
   overviewPreviewDescription:
     'Edit and view objects with efficient dual-column layout.',
   description: `The details page allows merchants to view, create and edit objects. Use the right column to provide editable fields, and the right column for supporting information such as status, metadata, and summaries.
@@ -13,7 +13,7 @@ const data: ReferenceEntityTemplateSchema = {
 
   ![Preview of the details page pattern](/assets/templated-apis-screenshots/admin/patterns/details-example.png)
 
-  This pattern uses \`Section\`, \`Stack\`, \`Heading\`, \`Button\`, \`Table\`, \`Paragraph\`, \`Box\` and \`Grid\` components.
+  This pattern uses \`Badge\`, \`Box\`, \`Button\`, \`Grid\`, \`Heading\`, \`Image\`, \`Link\`, \`MoneyField\`, \`NumberField\`, \`SearchField\`, \`Section\`, \`Select\`, \`Stack\`, \`Switch\`, \`Table\`, \`TextArea\`, \`TextField\`, \`UnorderedList\`, and \`URLField\` components.
 
   ---
 
@@ -73,12 +73,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'JSX',
-          code: './examples/details.jsx',
+          code: '../../examples/patterns/details.jsx',
           language: 'jsx',
         },
         {
           title: 'HTML',
-          code: './examples/details.html',
+          code: '../../examples/patterns/details.html',
           language: 'html',
         },
       ],

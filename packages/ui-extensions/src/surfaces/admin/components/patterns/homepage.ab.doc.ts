@@ -2,7 +2,7 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Homepage',
-  isOneColumnLayout: true,
+  isOneColumnLayout: false,
   overviewPreviewDescription:
     'Design your app homepage for daily merchant value.',
   description: `The app URL specified in the Partner Dashboard should point to your app homepage. The home page of your app is the first thing merchants will see, and it should provide daily value to them. Design the page to provide status updates and show merchants what actions they can take.
@@ -15,7 +15,7 @@ const data: ReferenceEntityTemplateSchema = {
 
   ![Preview of the homepage pattern](/assets/templated-apis-screenshots/admin/patterns/homepage-example.png)
 
-  This pattern uses \`Section\`, \`Stack\`, \`Heading\`, \`Button\`, \`Table\`, \`Paragraph\`, \`Box\` and \`Grid\` components.
+  This pattern uses \`Badge\`, \`Banner\`, \`Box\`, \`Button\`, \`Checkbox\`, \`Clickable\`, \`Divider\`, \`Grid\`, \`Heading\`, \`Image\`, \`Link\`, \`Paragraph\`, \`Section\`, \`Stack\`, and \`Text\` components.
 
   ---
 
@@ -63,12 +63,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'JSX',
-          code: './examples/homepage.jsx',
+          code: '../../examples/patterns/homepage.jsx',
           language: 'jsx',
         },
         {
           title: 'HTML',
-          code: './examples/homepage.html',
+          code: '../../examples/patterns/homepage.html',
           language: 'html',
         },
       ],
