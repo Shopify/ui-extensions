@@ -56,12 +56,12 @@ const data: ReferenceEntityTemplateSchema = {
       tabs: [
         {
           title: 'JSX',
-          code: '../../examples/patterns/settings.jsx',
+          code: './examples/settings.jsx',
           language: 'jsx',
         },
         {
           title: 'HTML',
-          code: '../../examples/patterns/settings.html',
+          code: './examples/settings.html',
           language: 'html',
         },
       ],
