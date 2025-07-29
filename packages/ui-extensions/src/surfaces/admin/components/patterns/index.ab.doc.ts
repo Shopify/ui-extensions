@@ -35,8 +35,8 @@ const data: ReferenceEntityTemplateSchema = {
   ---
 
   <style>
-    div[class*="CodeBlock-module-CodeBlock_"] {
-      max-height: calc(100vh - 80px) !important;
+          div[class*="CodeBlock-module-CodeBlock_"] {
+        max-height: calc(100vh - 400px) !important;
     }
     div[class*="Tabs-module-TabsContent_"] {
       overflow: auto !important;
