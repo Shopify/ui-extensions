@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Homepage',
-  isOneColumnLayout: false,
   overviewPreviewDescription:
     'Design your app homepage for daily merchant value.',
   description: `The app URL specified in the Partner Dashboard should point to your app homepage. The home page of your app is the first thing merchants will see, and it should provide daily value to them. Design the page to provide status updates and show merchants what actions they can take.

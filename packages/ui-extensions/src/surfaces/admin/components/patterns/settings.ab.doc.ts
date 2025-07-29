@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Settings',
-  isOneColumnLayout: false,
   overviewPreviewDescription:
     'Organize settings into categories for easy navigation.',
   description: `Make settings pages easy to scan by grouping related information in a logical order. For complex or lengthy settings, organize content into distinct, themed sections that link to their own pages.

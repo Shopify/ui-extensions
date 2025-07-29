@@ -2,7 +2,6 @@ import {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'Details',
-  isOneColumnLayout: false,
   overviewPreviewDescription:
     'Edit and view objects with efficient dual-column layout.',
   description: `The details page allows merchants to view, create and edit objects. Use the right column to provide editable fields, and the right column for supporting information such as status, metadata, and summaries.
