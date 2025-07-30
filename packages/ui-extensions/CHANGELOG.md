@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.10.0-rc.17
+
+### Minor Changes
+
+- [#3112](https://github.com/Shopify/ui-extensions/pull/3112) [`731844214f517929b1eed20c3320b0799c675ddd`](https://github.com/Shopify/ui-extensions/commit/731844214f517929b1eed20c3320b0799c675ddd) Thanks [@Bruno125](https://github.com/Bruno125)! - Add selling plan functionality to Cart API and line item types
+
 ## 2025.10.0-rc.16
 
 ### Patch Changes
