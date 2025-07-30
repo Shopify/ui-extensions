@@ -183,6 +183,18 @@ The Cart API enables UI Extensions to manage and interact with POS cart contents
           'update-default-address',
         ),
       },
+      {
+        codeblock: generateCodeBlockForCartApi(
+          'Add a selling plan to a line item in the cart',
+          'add-line-item-selling-plan',
+        ),
+      },
+      {
+        codeblock: generateCodeBlockForCartApi(
+          'Remove a selling plan from a line item in the cart',
+          'remove-line-item-selling-plan',
+        ),
+      },
     ],
   },
 };

@@ -219,4 +219,19 @@ export interface CartApiContent {
    * @param addressId the address ID to set as the default address
    */
   updateDefaultAddress(addressId: number): Promise<void>;
+
+  /**
+   * Add a selling plan to a line item in the cart.
+   *
+   * @param uuid the uuid of the line item that should receive the selling plan
+   * @param sellingPlanId the ID of the selling plan to add to the line item
+   */
+  addLineItemSellingPlan(uuid: string, sellingPlanId: number): Promise<void>;
+
+  /**
+   * Remove the selling plan from a line item in the cart.
+   *
+   * @param uuid the uuid of the line item whose selling plan should be removed
+   */
+  removeLineItemSellingPlan(uuid: string): Promise<void>;
 }
