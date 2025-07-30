@@ -51,7 +51,7 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
   i18n: I18n;
 
   /**
-   * Provides information to the receiver the of an intent.
+   * Provides information to the receiver of an intent.
    */
   intents: Intents;
 
