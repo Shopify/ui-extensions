@@ -47,6 +47,38 @@ export interface LineItem {
   properties: {[key: string]: string};
   isGiftCard: boolean;
   attributedUserId?: number;
+  requiresSellingPlan?: boolean;
+  hasSellingPlanGroups?: boolean;
+  /**
+   * The currently selected selling plan for this line item.
+   */
+  sellingPlan?: SellingPlan;
+}
+
+/**
+ * Represents a selling plan associated with a line item.
+ */
+export interface SellingPlan {
+  /**
+   * The unique identifier of the selling plan.
+   */
+  id: number;
+  /**
+   * The name of the selling plan.
+   */
+  name: string;
+  /**
+   * The fingerprint of the applied selling plan within this cart session.
+   */
+  digest: string;
+  /**
+   * The interval of the selling plan. i.e. "every 2 weeks"
+   */
+  deliveryInterval?: string;
+  /**
+   * The interval count of the selling plan. i.e. "2"
+   */
+  deliveryIntervalCount?: number;
 }
 
 export interface Discount {
