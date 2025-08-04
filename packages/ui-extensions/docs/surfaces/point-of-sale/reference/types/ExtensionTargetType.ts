@@ -26,7 +26,10 @@ export enum ExtensionTargetType {
   PosCashTrackingSessionStartObserve = 'pos.cash-tracking-session-start.event.observe',
   PosCashTrackingSessionCompleteObserve = 'pos.cash-tracking-session-complete.event.observe',
   PosCartUpdateObserve = 'pos.cart-update.event.observe',
+<<<<<<< HEAD
   PosReceiptHeaderBlockRender = 'pos.receipt-header.block.render',
+=======
+>>>>>>> 0d3187af3 (Introduce new types for 2025-10)
   PosReceiptFooterBlockRender = 'pos.receipt-footer.block.render',
   PosCartLineItemDetailsActionMenuItemRender = 'pos.cart.line-item-details.action.menu-item.render',
   PosCartLineItemDetailsActionRender = 'pos.cart.line-item-details.action.render',
@@ -60,7 +63,10 @@ export enum TargetLink {
   PosCashTrackingSessionStartObserve = '[pos.cash-tracking-session-start.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-start-event-observe)',
   PosCashTrackingSessionCompleteObserve = '[pos.cash-tracking-session-complete.event.observe](/docs/api/pos-ui-extensions/targets/cash-tracking/pos-cash-tracking-session-complete-event-observe)',
   PosCartUpdateObserve = '[pos.cart-update.event.observe](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-update-event-observe)',
+<<<<<<< HEAD
   PosReceiptHeaderBlockRender = '[pos.receipt-header.block.render](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-header-block-render)',
+=======
+>>>>>>> 0d3187af3 (Introduce new types for 2025-10)
   PosReceiptFooterBlockRender = '[pos.receipt-footer.block.render](/docs/api/pos-ui-extensions/targets/receipts/pos-receipt-footer-block-render)',
   PosCartLineItemDetailsActionMenuItemRender = '[pos.cart.line-item-details.action.menu-item.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-action-menu-item-render)',
   PosCartLineItemDetailsActionRender = '[pos.cart.line-item-details.action.render](/docs/api/pos-ui-extensions/targets/cart-details/pos-cart-line-item-details-action-render)',
