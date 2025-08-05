@@ -1,6 +1,9 @@
+#!/bin/bash
+
 API_VERSION=$1
 DOCS_PATH=docs/surfaces/point-of-sale
 SRC_PATH=src/surfaces/point-of-sale
+COMPONENTS_DIR=src/surfaces/point-of-sale/components
 SHOPIFY_DEV_PATH="../../../shopify-dev"
 
 fail_and_exit() {
@@ -29,7 +32,23 @@ else
   echo "If you need to update the 'unstable' version, run this command again without the '$API_VERSION' parameter."
 fi
 
-COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH ../ui-extensions-react/$SRC_PATH --output ./$DOCS_PATH/generated"
+# Copy all .d.ts files in components directory to .ts files so they can be picked up by the generate-docs tool
+echo "Copying .d.ts files to temporary .ts files..."
+TEMP_FILES=()
+for dts_file in $COMPONENTS_DIR/*.d.ts; do
+  if [[ -f "$dts_file" ]]; then
+    # Skip shared.d.ts
+    if [[ "$dts_file" == *"shared.d.ts" ]]; then
+      continue
+    fi
+    # Convert .d.ts to .ts (e.g., Badge.d.ts -> Badge.ts)
+    temp_file="${dts_file%.d.ts}.ts"
+    cp "$dts_file" "$temp_file"
+    TEMP_FILES+=("$temp_file")
+  fi
+done
+
+COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH --output ./$DOCS_PATH/generated"
 COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/pages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
 
 eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES
@@ -39,6 +58,14 @@ build_exit=$?
 find ./ -name '*.doc*.js' -exec rm -r {} \;
 find ./ -wholename '*/point-of-sale/reference/helpers/*.js' -exec rm -r {} \;
 find ./ -wholename '*/point-of-sale/reference/types/*.js' -exec rm -r {} \;
+
+# Remove all temporary .ts files that were created from .d.ts files
+echo "Removing temporary .ts files..."
+for temp_file in "${TEMP_FILES[@]}"; do
+  if [ -f "$temp_file" ]; then
+    rm -f "$temp_file"
+  fi
+done
 
 if [ $build_exit -ne 0 ]; then
   fail_and_exit $build_exit
