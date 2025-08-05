@@ -7,7 +7,7 @@ import type {
   SetLineItemDiscountInput,
   SetLineItemPropertiesInput,
 } from '../../types/cart';
-import {Signal} from '@preact/signals';
+import {ReadonlySignal} from '@preact/signals';
 
 /**
  * Access and modify the merchant’s current cart.
@@ -25,7 +25,7 @@ export interface CartApiContent {
    * Provides a stateful signal to the POS cart.
    * More documentation on how to utilize signals can be found here: https://preactjs.com/guide/signals
    */
-  subscribable: Signal<Cart>;
+  subscribable: ReadonlySignal<Cart>;
 
   /** Bulk update the cart
    *
