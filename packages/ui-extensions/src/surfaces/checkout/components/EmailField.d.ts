@@ -26,29 +26,42 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-email-field";
-export interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'placeholder' | 'readOnly' | 'required' | 'value'> {
+export interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value'> {
+    /**
+     * @deprecated Use `label` instead.
+     * @private
+     */
+    placeholder?: string;
 }
 export interface EmailFieldEvents extends Pick<EmailFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 export interface EmailFieldElementEvents {
     /**
      * Callback when the element loses focus.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
      */
     blur?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
      */
     change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the element receives focus.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
      */
     focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
     /**
      * Callback when the user makes any changes in the field.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
      */
     input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface EmailFieldElement extends EmailFieldElementProps, Omit<EmailFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
+export interface EmailFieldElement extends EmailFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: EmailFieldEvents['onBlur'];
     onchange: EmailFieldEvents['onChange'];
     onfocus: EmailFieldEvents['onFocus'];

@@ -54,7 +54,7 @@ export interface MapElementEvents {
      */
     viewchange?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface MapElement extends MapElementProps, Omit<MapEvents, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
+export interface MapElement extends MapElementProps, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
     onboundschange: MapEvents['onBoundsChange'];
     onclick: MapEvents['onClick'];
     ondblclick: MapEvents['onDblClick'];

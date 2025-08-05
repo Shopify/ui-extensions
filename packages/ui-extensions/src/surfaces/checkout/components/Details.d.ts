@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {LinkProps$1} from './components-shared.d.ts';
+import type {DetailsProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -31,38 +31,40 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
     (event: CallbackEvent<TTagName, TEvent>): void;
 }) | null;
 
-declare const tagName = "s-link";
-export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'lang' | 'target' | 'tone'> {
-    target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
-    tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
+declare const tagName = "s-details";
+export interface DetailsProps extends Pick<DetailsProps$1, 'defaultOpen' | 'open' | 'id' | 'toggleTransition'> {
 }
-export interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
+export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle'> {
 }
-export interface LinkElementEvents {
+export interface DetailsElementEvents {
     /**
-     * Callback when the link is activated.
-     * This will be called before navigating to the location specified by `href`.
+     * Callback straight after the element state changes.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+     * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
+     *   `newState` property will be set to `open`.
+     * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
+     *   `newState` will be `closed`.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
      */
-    click?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    toggle?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface LinkElement extends LinkElementProps, Omit<HTMLElement, 'id' | 'lang' | 'onclick'> {
-    onclick: LinkEvents['onClick'];
-}
-export interface LinkProps extends LinkElementProps, LinkEvents {
+export interface DetailsElement extends Omit<HTMLElement, 'ontoggle' | 'id'> {
+    ontoggle: DetailsEvents['onToggle'];
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: LinkElement;
+        [tagName]: DetailsElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: LinkProps & BaseElementPropsWithChildren<LinkElement>;
+            [tagName]: DetailsProps & BaseElementPropsWithChildren<DetailsElement>;
         }
     }
 }
 
-export type { LinkElement, LinkElementEvents, LinkElementProps, LinkEvents, LinkProps };
+export type { DetailsElement, DetailsElementEvents, DetailsEvents, DetailsProps };

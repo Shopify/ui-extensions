@@ -44,10 +44,12 @@ export interface ButtonElementEvents {
     /**
      * Callback when the button is activated.
      * This will be called before the action indicated by `type`.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
      */
     click?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface ButtonElement extends ButtonElementProps, Omit<ButtonEvents, 'onClick'>, Omit<HTMLElement, 'id' | 'onclick'> {
+export interface ButtonElement extends ButtonElementProps, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: ButtonEvents['onClick'];
 }
 export interface ButtonProps extends ButtonElementProps, ButtonEvents {

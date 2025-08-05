@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {TextAreaProps$1} from './components-shared.d.ts';
+import type {SelectProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -18,6 +18,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    children?: preact.ComponentChildren;
+}
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
@@ -25,17 +31,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
     (event: CallbackEvent<TTagName, TEvent>): void;
 }) | null;
 
-declare const tagName = "s-text-area";
-export interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
-    /**
-     * @deprecated Use `label` instead.
-     * @private
-     */
-    placeholder?: string;
+declare const tagName = "s-select";
+export interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {
 }
-export interface TextAreaEvents extends Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
+export interface SelectEvents extends Pick<SelectProps$1, 'onBlur' | 'onChange' | 'onFocus'> {
 }
-export interface TextAreaElementEvents {
+export interface SelectElementEvents {
     /**
      * Callback when the element loses focus.
      *
@@ -54,32 +55,25 @@ export interface TextAreaElementEvents {
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
      */
     focus?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
-    /**
-     * Callback when the user makes any changes in the field.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
-     */
-    input?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface TextAreaElement extends TextAreaElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
-    onblur: TextAreaEvents['onBlur'];
-    onchange: TextAreaEvents['onChange'];
-    onfocus: TextAreaEvents['onFocus'];
-    oninput: TextAreaEvents['onInput'];
+export interface SelectElement extends SelectElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus'> {
+    onblur: SelectEvents['onBlur'];
+    onchange: SelectEvents['onChange'];
+    onfocus: SelectEvents['onFocus'];
 }
-export interface TextAreaProps extends TextAreaElementProps, TextAreaEvents {
+export interface SelectProps extends SelectElementProps, SelectEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: TextAreaElement;
+        [tagName]: SelectElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: TextAreaProps & BaseElementProps<TextAreaElement>;
+            [tagName]: SelectProps & BaseElementPropsWithChildren<SelectElement>;
         }
     }
 }
 
-export type { TextAreaElement, TextAreaElementEvents, TextAreaElementProps, TextAreaEvents, TextAreaProps };
+export type { SelectElement, SelectElementEvents, SelectElementProps, SelectEvents, SelectProps };

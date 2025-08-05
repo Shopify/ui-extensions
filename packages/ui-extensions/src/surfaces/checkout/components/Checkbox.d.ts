@@ -34,10 +34,12 @@ export interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 export interface CheckboxElementEvents {
     /**
      * A callback that is run whenever the control is changed.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
      */
     change?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface CheckboxElement extends CheckboxElementProps, Omit<CheckboxEvents, 'onChange'>, Omit<HTMLElement, 'id' | 'onchange'> {
+export interface CheckboxElement extends CheckboxElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: CheckboxEvents['onChange'];
 }
 export interface CheckboxProps extends CheckboxElementProps, CheckboxEvents {

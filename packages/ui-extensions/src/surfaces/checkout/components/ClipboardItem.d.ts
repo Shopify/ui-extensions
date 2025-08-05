@@ -40,7 +40,7 @@ export interface ClipboardItemElementEvents {
      */
     copyerror?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface ClipboardItemElement extends ClipboardItemElementProps, Omit<ClipboardItemEvents, 'onCopy' | 'onCopyError'>, Omit<HTMLElement, 'id' | 'oncopy'> {
+export interface ClipboardItemElement extends ClipboardItemElementProps, Omit<HTMLElement, 'id' | 'oncopy'> {
     oncopy: ClipboardItemEvents['onCopy'];
     oncopyerror: ClipboardItemEvents['onCopyError'];
 }

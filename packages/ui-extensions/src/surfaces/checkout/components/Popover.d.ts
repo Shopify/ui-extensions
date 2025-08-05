@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {LinkProps$1} from './components-shared.d.ts';
+import type {PopoverProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
@@ -31,38 +31,38 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
     (event: CallbackEvent<TTagName, TEvent>): void;
 }) | null;
 
-declare const tagName = "s-link";
-export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'lang' | 'target' | 'tone'> {
-    target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
-    tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
+declare const tagName = "s-popover";
+export interface PopoverElementProps extends Pick<PopoverProps$1, 'blockSize' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize'> {
 }
-export interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
+export interface PopoverEvents extends Pick<PopoverProps$1, 'onHide' | 'onShow'> {
 }
-export interface LinkElementEvents {
+export interface PopoverElementEvents {
     /**
-     * Callback when the link is activated.
-     * This will be called before navigating to the location specified by `href`.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+     * Callback fired after the overlay is hidden.
      */
-    click?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    hide?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
+    /**
+     * Callback fired after the overlay is shown.
+     */
+    show?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface LinkElement extends LinkElementProps, Omit<HTMLElement, 'id' | 'lang' | 'onclick'> {
-    onclick: LinkEvents['onClick'];
+export interface PopoverElement extends Omit<PopoverProps, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
+    onhide: PopoverProps['onHide'];
+    onshow: PopoverProps['onShow'];
 }
-export interface LinkProps extends LinkElementProps, LinkEvents {
+export interface PopoverProps extends PopoverElementProps, PopoverEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
-        [tagName]: LinkElement;
+        [tagName]: PopoverElement;
     }
 }
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: LinkProps & BaseElementPropsWithChildren<LinkElement>;
+            [tagName]: PopoverProps & BaseElementPropsWithChildren<PopoverElement>;
         }
     }
 }
 
-export type { LinkElement, LinkElementEvents, LinkElementProps, LinkEvents, LinkProps };
+export type { PopoverElement, PopoverElementEvents, PopoverElementProps, PopoverEvents, PopoverProps };

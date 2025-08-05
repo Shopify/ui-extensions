@@ -32,21 +32,18 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-form";
-export interface FormElementProps extends Pick<FormProps$1, 'id' | 'disabled'> {
+export interface FormElementProps extends Pick<FormProps$1, 'disabled' | 'id'> {
 }
 export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
+    /**
+     * A callback that is run when the form is submitted.
+     */
     onSubmit?: () => void;
 }
 export interface FormElementEvents {
-    /**
-     * A callback that is run when the form is submitted.
-     *
-     * Use `event.waitUntil` to signal how long it takes to save the data,
-     * and whether it was successful or not.
-     */
     submit?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
-export interface FormElement extends Omit<FormElementProps, 'children'>, Omit<FormEvents, 'onSubmit'>, Omit<HTMLElement, 'id' | 'onsubmit'> {
+export interface FormElement extends FormElementProps, Omit<HTMLElement, 'id' | 'onsubmit'> {
     onsubmit: FormEvents['onSubmit'];
 }
 export interface FormProps extends FormElementProps, FormEvents {
