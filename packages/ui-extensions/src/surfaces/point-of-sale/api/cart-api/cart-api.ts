@@ -1,4 +1,3 @@
-import type {RemoteSubscribable} from '@remote-ui/async-subscription';
 import type {
   Address,
   Cart,
@@ -8,6 +7,7 @@ import type {
   SetLineItemDiscountInput,
   SetLineItemPropertiesInput,
 } from '../../types/cart';
+import {Signal} from '@preact/signals';
 
 /**
  * Access and modify the merchant’s current cart.
@@ -22,12 +22,10 @@ export type LineItemDiscountType = 'Percentage' | 'FixedAmount';
 
 export interface CartApiContent {
   /**
-   * Provides a subscription to POS cart changes.
-   * Provides an initial value and a callback to subscribe to value changes. Currently supports only one subscription.
-   * You can utilize `makeStatefulSubscribable` on a `RemoteSubscribable` to implement multiple subscriptions.
-   * Using `makeStatefulSubscribable` or the corresponding hooks counts as a subscription.
+   * Provides a stateful signal to the POS cart.
+   * More documentation on how to utilize signals can be found here: https://preactjs.com/guide/signals
    */
-  subscribable: RemoteSubscribable<Cart>;
+  subscribable: Signal<Cart>;
 
   /** Bulk update the cart
    *
