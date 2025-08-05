@@ -4,7 +4,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  ButtonProps,
+  ModalProps,
   ComponentChildren$1,
   Key,
   Ref,
@@ -32,39 +32,38 @@ type CallbackEvent<
 > = TEvent & {
   currentTarget: HTMLElementTagNameMap[TTagName];
 };
+type CallbackToggleEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends ToggleEvent = ToggleEvent,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-declare const tagName = 's-button';
-type AlignedProps = Pick<
-  ButtonProps,
-  | 'accessibilityLabel'
-  | 'disabled'
-  | 'command'
-  | 'commandFor'
-  | 'loading'
-  | 'tone'
-  | 'variant'
-  | 'id'
->;
-export interface ButtonEventProps {
-  onClick?: (event: CallbackEvent<typeof tagName>) => void;
+declare const tagName = 's-modal';
+type AlignedProps = Pick<ModalProps, 'id'>;
+export interface ModalEventProps {
+  onHide?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onShow?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onAfterHide?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onAfterShow?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onToggle?: (event: CallbackToggleEvent<typeof tagName>) => void | null;
+  onAfterToggle?: (event: CallbackToggleEvent<typeof tagName>) => void | null;
 }
-export interface ButtonJSXProps extends AlignedProps, ButtonEventProps {
-  tone?: Extract<ButtonProps['tone'], 'auto' | 'critical'>;
-  variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
+export interface ModalJSXProps extends AlignedProps, ModalEventProps {
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ButtonJSXProps;
+    [tagName]: ModalJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<ButtonJSXProps>;
+      [tagName]: BaseElementPropsWithChildren<ModalJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {ButtonEventProps, ButtonJSXProps};
+export type {ModalEventProps, ModalJSXProps};

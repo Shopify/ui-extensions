@@ -1,85 +1,61 @@
-/** VERSION: 0.0.0 **/
+/* VERSION: latest */
 /* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/member-ordering */
-
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  CallbackEvent,
-  CallbackEventListener,
-  PreactBaseElementPropsWithChildren,
-  PreactCustomElement,
-} from './shared.d.ts';
+  BannerProps,
+  ComponentChild$1,
+  ComponentChildren$1,
+  Key,
+  Ref,
+} from './components-shared.d.ts';
 
-export type BannerVariant = 'information' | 'confirmation' | 'alert' | 'error';
-
+type ComponentChildren = ComponentChildren$1;
+type ComponentChild = ComponentChild$1;
 /**
- * A banner informs merchants about important changes or persistent conditions.
+ * Used when an element does not have children.
  */
-export interface BannerProps {
-  /**
-   * The title text displayed in the banner.
-   */
-  title: string;
-  /**
-   * The visual style variant of the banner.
-   */
-  variant: BannerVariant;
-  /**
-   * The action button text.
-   */
-  action?: string;
-  /**
-   * Whether the banner is visible.
-   */
-  visible: boolean;
-  /**
-   * Callback executed when the action button is pressed.
-   */
-  onAction?: () => void;
-  /**
-   * Callback executed when the banner is dismissed.
-   */
-  onDismiss?: () => void;
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren$1;
 }
 
-declare class Banner extends PreactCustomElement implements BannerProps {
-  accessor title: BannerProps['title'];
-  accessor variant: BannerProps['variant'];
-  accessor action: BannerProps['action'];
-  accessor visible: BannerProps['visible'];
-  accessor onaction: CallbackEventListener<typeof tagName> | null;
-  accessor ondismiss: CallbackEventListener<typeof tagName> | null;
-  constructor();
+declare const tagName = 's-banner';
+type AlignedProps = Pick<BannerProps, 'heading' | 'hidden' | 'tone' | 'id'>;
+export interface BannerSlotProps {
+  primaryAction?: ComponentChild;
 }
-
+export interface BannerJSXProps extends AlignedProps, BannerSlotProps {
+  tone?: Extract<
+    BannerProps['tone'],
+    'success' | 'info' | 'warning' | 'critical'
+  >;
+  primaryAction?: ComponentChild;
+  children?: ComponentChildren;
+}
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Banner;
+    [tagName]: BannerJSXProps;
   }
 }
-
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BannerJSXProps & PreactBaseElementPropsWithChildren<Banner>;
+      [tagName]: BaseElementPropsWithChildren<
+        Omit<BannerJSXProps, 'primaryAction'>
+      >;
     }
   }
 }
 
-declare const tagName = 's-banner';
-
-export interface BannerJSXProps
-  extends Partial<Omit<BannerProps, 'title' | 'variant' | 'visible'>> {
-  // Required props
-  title: string;
-  variant: BannerVariant;
-  visible: boolean;
-  onAction?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
-}
-
-export {Banner};
-export type {BannerJSXProps};
+export {tagName};
+export type {BannerJSXProps, BannerSlotProps};

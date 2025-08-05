@@ -4,7 +4,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  BadgeProps,
+  ScrollBoxProps,
   ComponentChildren$1,
   Key,
   Ref,
@@ -27,27 +27,23 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   children?: ComponentChildren$1;
 }
 
-declare const tagName = 's-badge';
-type AlignedProps = Pick<BadgeProps, 'id'>;
-export interface BadgeJSXProps extends AlignedProps {
-  tone?: Extract<
-    BadgeProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical'
-  >;
+declare const tagName = 's-scroll-box';
+type AlignedProps = Pick<ScrollBoxProps, 'id'>;
+export interface ScrollBoxJSXProps extends AlignedProps {
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: BadgeJSXProps;
+    [tagName]: ScrollBoxJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName]: BaseElementPropsWithChildren<ScrollBoxJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {BadgeJSXProps};
+export type {ScrollBoxJSXProps};

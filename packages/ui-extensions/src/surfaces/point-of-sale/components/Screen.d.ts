@@ -1,100 +1,99 @@
-/** VERSION: 0.0.0 **/
+/* VERSION: latest */
 /* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/member-ordering */
-
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  CallbackEvent,
-  CallbackEventListener,
-  PreactBaseElementPropsWithChildren,
-  PreactCustomElement,
-} from './shared.d.ts';
+  ComponentChild$1,
+  Key,
+  Ref,
+  ComponentChildren,
+} from './components-shared.d.ts';
 
-export interface ScreenPresentationProps {
-  /**
-   * Whether the screen should be presented as a sheet.
-   */
-  sheet?: boolean;
-}
-
-export interface SecondaryActionProps {
-  /**
-   * The text displayed on the secondary action button.
-   */
-  title: string;
-  /**
-   * Whether the secondary action is enabled.
-   */
-  isEnabled?: boolean;
-  /**
-   * The callback executed when the secondary action is pressed.
-   */
-  onPress?: () => void;
-}
-
+type ComponentChild = ComponentChild$1;
 /**
- * A component used in the root of a modal extension to define a screen.
+ * Used when an element does not have children.
  */
-export interface ScreenProps {
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
+}
+
+declare const tagName = 's-screen';
+export interface ScreenSlotProps {
   /**
-   * The unique name identifier for the screen.
+   * Displays a secondary action button on the screen.
+   */
+  secondaryActions?: ComponentChild;
+}
+export interface ScreenEventProps {
+  /**
+   * Triggered when the screen is navigated to.
+   */
+  onNavigate?: () => void;
+  /**
+   * Triggered when the user navigates back from this screen. Runs after screen is unmounted.
+   */
+  onNavigateBack?: () => void;
+  /**
+   * A callback that gets triggered when the navigation event completes and the screen receives the parameters.
+   */
+  onReceiveParams?: (params: any) => void;
+}
+export interface ScreenJSXProps extends ScreenSlotProps, ScreenEventProps {
+  /**
+   * Used to identify this screen as a destination in the navigation stack.
    */
   name: string;
   /**
-   * The title displayed in the navigation bar.
+   * The title of the screen which will be displayed on the UI.
    */
   title: string;
   /**
-   * Presentation options for the screen.
+   * Displays a loading indicator when `true`.
+   * Set this to `true` when performing an asynchronous task, and then to false when the data becomes available to the UI.
+   */
+  isLoading?: boolean;
+  /**
+   * Dictates how the `Screen` will be presented when navigated to.
    */
   presentation?: ScreenPresentationProps;
-  /**
-   * Secondary action configuration for the screen.
-   */
-  secondaryAction?: SecondaryActionProps;
-  /**
-   * Callback executed when the back button is pressed.
-   */
-  overrideNavigateBack?: () => void;
+  children?: React.ReactNode;
 }
-
-declare class Screen extends PreactCustomElement implements ScreenProps {
-  accessor name: ScreenProps['name'];
-  accessor title: ScreenProps['title'];
-  accessor presentation: ScreenProps['presentation'];
-  accessor secondaryAction: ScreenProps['secondaryAction'];
-  accessor overrideNavigateBack: CallbackEventListener<typeof tagName> | null;
-  constructor();
+/** Represents the presentation of a screen in the navigation stack.
+ * @property `sheet` displays the screen from the bottom on `navigate` when `true`.
+ */
+export interface ScreenPresentationProps {
+  /**
+   * Displays the screen from the bottom on `navigate` when `true`.
+   */
+  sheet?: boolean;
 }
-
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Screen;
+    [tagName]: ScreenJSXProps;
   }
 }
-
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: ScreenJSXProps & PreactBaseElementPropsWithChildren<Screen>;
+      [tagName]: BaseElementPropsWithChildren<ScreenJSXProps>;
     }
   }
 }
 
-declare const tagName = 's-screen';
-
-export interface ScreenJSXProps
-  extends Partial<Omit<ScreenProps, 'name' | 'title'>> {
-  // name and title are required
-  name: string;
-  title: string;
-  overrideNavigateBack?:
-    | ((event: CallbackEvent<typeof tagName>) => void)
-    | null;
-  id?: string;
-}
-
-export {Screen};
-export type {ScreenJSXProps};
+export {tagName};
+export type {
+  ScreenEventProps,
+  ScreenJSXProps,
+  ScreenPresentationProps,
+  ScreenSlotProps,
+};

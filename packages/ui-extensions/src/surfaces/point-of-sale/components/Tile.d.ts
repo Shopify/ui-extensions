@@ -1,84 +1,50 @@
-/** VERSION: 0.0.0 **/
+/* VERSION: latest */
 /* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/member-ordering */
-
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  CallbackEvent,
-  CallbackEventListener,
-  PreactBaseElementPropsWithChildren,
-  PreactCustomElement,
-} from './shared.d.ts';
+import type {Key, Ref, ComponentChildren} from './components-shared.d.ts';
 
 /**
- * @property `title` the text set on the main label of the tile.
- * @property `subtitle` the text set on the secondary label of the tile.
- * @property `enabled` sets whether or not the tile can be tapped.
- * @property `destructive` sets whether or not the tile has a destructive appearance and active state.
- * @property `badgeValue` the number value displayed in the top right corner of the tile.
- * @property `onPress` the callback that is executed when the tile is tapped.
+ * Used when an element does not have children.
  */
-export interface TileProps {
-  /**
-   * The text set on the main label of the tile.
-   */
-  title: string;
-  /**
-   * The text set on the secondary label of the tile.
-   */
-  subtitle?: string;
-  /**
-   * Sets whether or not the tile can be tapped.
-   */
-  enabled?: boolean;
-  /**
-   * Sets whether or not the tile has a destructive appearance and active state.
-   */
-  destructive?: boolean;
-  /**
-   * The number value displayed in the top right corner of the tile.
-   */
-  badgeValue?: number;
-  /**
-   * The callback that is executed when the tile is tapped.
-   */
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
+}
+
+declare const tagName = 's-tile';
+export interface TileEventProps {
   onPress?: () => void;
 }
-
-declare class Tile extends PreactCustomElement implements TileProps {
-  accessor title: TileProps['title'];
-  accessor subtitle: TileProps['subtitle'];
-  accessor enabled: TileProps['enabled'];
-  accessor destructive: TileProps['destructive'];
-  accessor badgeValue: TileProps['badgeValue'];
-  accessor onpress: CallbackEventListener<typeof tagName> | null;
-  constructor();
+export interface TileJSXProps extends TileEventProps {
+  title: string;
+  subtitle?: string;
+  enabled?: boolean;
+  destructive?: boolean;
+  badgeValue?: string;
+  testID?: string;
 }
-
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Tile;
+    [tagName]: TileJSXProps;
   }
 }
-
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: TileJSXProps & PreactBaseElementPropsWithChildren<Tile>;
+      [tagName]: BaseElementPropsWithChildren<TileJSXProps>;
     }
   }
 }
 
-declare const tagName = 's-tile';
-
-export interface TileJSXProps extends Partial<Omit<TileProps, 'title'>> {
-  // title is required, so we add it back without Partial
-  title: string;
-  onPress?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  id?: string;
-}
-
-export {Tile};
-export type {TileJSXProps};
+export {tagName};
+export type {TileEventProps, TileJSXProps};

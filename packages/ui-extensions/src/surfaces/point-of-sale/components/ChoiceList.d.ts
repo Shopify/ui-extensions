@@ -4,7 +4,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  BadgeProps,
+  ChoiceListProps,
   ComponentChildren$1,
   Key,
   Ref,
@@ -26,28 +26,34 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren$1;
 }
+type CallbackEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends Event = Event,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-declare const tagName = 's-badge';
-type AlignedProps = Pick<BadgeProps, 'id'>;
-export interface BadgeJSXProps extends AlignedProps {
-  tone?: Extract<
-    BadgeProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical'
-  >;
+declare const tagName = 's-choice-list';
+type AlignedProps = Pick<ChoiceListProps, 'values' | 'multiple'>;
+export interface ChoiceListEventProps {
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+}
+export interface ChoiceListJSXProps extends AlignedProps, ChoiceListEventProps {
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: BadgeJSXProps;
+    [tagName]: ChoiceListJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {BadgeJSXProps};
+export type {ChoiceListEventProps, ChoiceListJSXProps};

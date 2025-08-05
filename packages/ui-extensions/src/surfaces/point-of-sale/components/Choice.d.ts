@@ -4,7 +4,7 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  BadgeProps,
+  ChoiceProps,
   ComponentChildren$1,
   Key,
   Ref,
@@ -27,27 +27,23 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   children?: ComponentChildren$1;
 }
 
-declare const tagName = 's-badge';
-type AlignedProps = Pick<BadgeProps, 'id'>;
-export interface BadgeJSXProps extends AlignedProps {
-  tone?: Extract<
-    BadgeProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical'
-  >;
+declare const tagName = 's-choice';
+type AlignedProps = Pick<ChoiceProps, 'value' | 'disabled' | 'selected'>;
+export interface ChoiceJSXProps extends AlignedProps {
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: BadgeJSXProps;
+    [tagName]: ChoiceJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<BadgeJSXProps>;
+      [tagName]: BaseElementPropsWithChildren<ChoiceJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {BadgeJSXProps};
+export type {ChoiceJSXProps};

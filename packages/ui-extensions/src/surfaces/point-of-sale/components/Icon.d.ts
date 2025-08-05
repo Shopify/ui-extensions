@@ -1,79 +1,96 @@
-/** VERSION: 0.0.0 **/
+/* VERSION: latest */
 /* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/member-ordering */
-
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  PreactBaseElementPropsWithChildren,
-  PreactCustomElement,
-} from './shared.d.ts';
+import type {IconProps, Key, Ref} from './components-shared.d.ts';
 
-// Common icon names used in POS
-export type IconName =
-  | 'call'
-  | 'card-reader'
-  | 'circle-cancel'
-  | 'orders'
-  | 'star'
-  | 'cart'
-  | 'customer'
-  | 'search'
-  | 'settings'
-  | 'check'
-  | 'close'
-  | 'plus'
-  | 'minus'
+/**
+ * Used when an element does not have children.
+ */
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
+}
+
+declare const tagName = 's-icon';
+type SupportedIconNames = Extract<
+  IconProps['type'],
+  | 'arrow-down'
   | 'arrow-left'
   | 'arrow-right'
   | 'arrow-up'
-  | 'arrow-down';
-
-export type IconSize = 'minor' | 'major' | 'spot' | 'caption' | 'badge';
-
-/**
- * A component that renders an icon from the POS asset catalog.
- */
-export interface IconProps {
+  | 'apps'
+  | 'analytics'
+  | 'backspace'
+  | 'call'
+  | 'cancel'
+  | 'cash'
+  | 'checkmark'
+  | 'cart'
+  | 'cart-filled'
+  | 'check'
+  | 'check-circle'
+  | 'alert-circle'
+  | 'info'
+  | 'phone'
+  | 'edit'
+  | 'delete'
+  | 'settings'
+  | 'search'
+  | 'print'
+  | 'refresh'
+  | 'help'
+  | 'plus'
+  | 'minus'
+  | 'email'
+  | 'gift-card'
+  | 'discount'
+  | 'receipt'
+  | 'chevron-down'
+  | 'chevron-left'
+  | 'chevron-right'
+  | 'chevron-up'
+  | 'menu'
+  | 'home'
+  | 'location'
+  | 'time'
+  | 'calendar'
+  | 'products'
+  | 'orders'
+  | 'customers'
+  | 'collection'
+>;
+type SupportedSizes = Extract<
+  IconProps['size'],
+  'small' | 'base' | 'large' | 'large-100'
+>;
+type AlignedProps = Pick<IconProps, 'tone' | 'color'>;
+export interface IconJSXProps extends AlignedProps {
   /**
-   * The name of the icon to render.
+   * The type of icon to display. Maps to PDS icon names.
+   * @default ''
    */
-  name: IconName;
+  type?: SupportedIconNames;
   /**
    * The size of the icon.
-   * @default 'major'
+   * @default 'base'
    */
-  size?: IconSize;
+  size?: SupportedSizes;
 }
-
-declare class Icon extends PreactCustomElement implements IconProps {
-  accessor name: IconProps['name'];
-  accessor size: IconProps['size'];
-  constructor();
-}
-
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Icon;
+    [tagName]: IconJSXProps;
   }
 }
-
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: IconJSXProps & PreactBaseElementPropsWithChildren<Icon>;
+      [tagName]: BaseElementProps<IconJSXProps>;
     }
   }
 }
 
-declare const tagName = 's-icon';
-
-export interface IconJSXProps extends Partial<Omit<IconProps, 'name'>> {
-  // name is required
-  name: IconName;
-  id?: string;
-}
-
-export {Icon};
+export {tagName};
 export type {IconJSXProps};

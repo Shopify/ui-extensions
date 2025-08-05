@@ -1,59 +1,73 @@
-/** VERSION: 0.0.0 **/
+/* VERSION: latest */
 /* eslint-disable import/extensions */
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/member-ordering */
-
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  PreactBaseElementPropsWithChildren,
-  PreactCustomElement,
-} from './shared.d.ts';
+  BoxProps,
+  ComponentChildren$1,
+  Key,
+  Ref,
+} from './components-shared.d.ts';
 
+type ComponentChildren = ComponentChildren$1;
 /**
- * Box is a generic container component for layout purposes.
+ * Used when an element does not have children.
  */
-export interface BoxProps {
-  /**
-   * The padding inside the box.
-   */
-  padding?: string;
-  /**
-   * The margin outside the box.
-   */
-  margin?: string;
-  /**
-   * The background color of the box.
-   */
-  backgroundColor?: string;
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren$1;
 }
 
-declare class Box extends PreactCustomElement implements BoxProps {
-  accessor padding: BoxProps['padding'];
-  accessor margin: BoxProps['margin'];
-  accessor backgroundColor: BoxProps['backgroundColor'];
-  constructor();
+declare const tagName = 's-box';
+type AlignedProps = Pick<
+  BoxProps,
+  | 'id'
+  | 'padding'
+  | 'paddingBlock'
+  | 'paddingBlockStart'
+  | 'paddingBlockEnd'
+  | 'paddingInline'
+  | 'paddingInlineStart'
+  | 'paddingInlineEnd'
+  | 'blockSize'
+  | 'minBlockSize'
+  | 'maxBlockSize'
+  | 'inlineSize'
+  | 'minInlineSize'
+  | 'maxInlineSize'
+  | 'accessibilityRole'
+  | 'accessibilityLabel'
+  | 'border'
+  | 'borderColor'
+  | 'borderRadius'
+  | 'borderWidth'
+  | 'background'
+>;
+export interface BoxJSXProps extends AlignedProps {
+  children?: ComponentChildren;
+  overflow?: Extract<BoxProps['overflow'], 'hidden' | 'visible'>;
 }
-
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: Box;
+    [tagName]: BoxJSXProps;
   }
 }
-
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BoxJSXProps & PreactBaseElementPropsWithChildren<Box>;
+      [tagName]: BaseElementPropsWithChildren<BoxJSXProps>;
     }
   }
 }
 
-declare const tagName = 's-box';
-
-export interface BoxJSXProps extends Partial<BoxProps> {
-  id?: string;
-}
-
-export {Box};
+export {tagName};
 export type {BoxJSXProps};
