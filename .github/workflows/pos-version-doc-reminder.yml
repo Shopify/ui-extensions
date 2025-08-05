@@ -1,0 +1,60 @@
+name: POS Version Doc Reminder
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches:
+      - 2023-04
+      - 2023-07
+      - 2023-10
+      - 2024-01
+      - 2024-04
+      - 2024-07
+      - 2024-10
+      - unstable
+      - 20[0-9][0-9]-[01][1470]
+    paths:
+      - 'packages/ui-extensions/src/surfaces/point-of-sale/**'
+      - 'packages/ui-extensions-react/src/surfaces/point-of-sale/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check-version-doc:
+    name: Check POS Version Documentation
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    if: ${{ !github.event.pull_request.draft && !startsWith(github.head_ref, 'changeset-release/') }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Verify if POS version doc was updated
+        id: changed-files-version-doc
+        uses: tj-actions/changed-files@ed68ef82c095e0d48ec87eccea555d944a631a4c # v46
+        with:
+          files: |
+            packages/ui-extensions/docs/surfaces/point-of-sale/staticPages/pages/versions.doc.ts
+
+      - name: Check if version doc needs updating
+        if: steps.changed-files-version-doc.outputs.any_changed == 'false'
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const comment = `## 📝 POS Version Documentation Reminder
+
+            We detected changes in \`packages/*/src/surfaces/point-of-sale\`, but there are no updates to the POS versions documentation.
+
+            If these changes are user-facing and should be documented in the version changelog, please update:
+            \`packages/ui-extensions/docs/surfaces/point-of-sale/staticPages/pages/versions.doc.ts\`
+
+            If you are making internal changes that don't affect the public API, you can ignore this reminder.`;
+
+            // Post a comment on the PR
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: comment
+            });
