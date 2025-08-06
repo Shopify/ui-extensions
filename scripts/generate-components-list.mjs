@@ -12,7 +12,6 @@ const __dirname = dirname(__filename);
 
 const SURFACES_DIR = join(__dirname, '../packages/ui-extensions/src/surfaces');
 const UI_API_DESIGN_BASE_URL = 'https://ui-api-design.shopify.io/components';
-
 // Helper function to generate component spec URL
 function generateSpecUrl(componentName) {
   // Convert PascalCase to kebab-case for URL
@@ -20,6 +19,39 @@ function generateSpecUrl(componentName) {
     .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
     .toLowerCase();
   return `${UI_API_DESIGN_BASE_URL}/${kebabCase}/`;
+}
+
+// Get canonical list of components from ui-api-design package
+async function getCanonicalComponents() {
+  try {
+    console.log(
+      '📦 Installing/updating @shopify/ui-api-design to latest version...',
+    );
+
+    // Always install the latest version to ensure we have the most up-to-date components
+    execSync('npm install @shopify/ui-api-design@latest', {
+      stdio: 'inherit',
+      cwd: `${__dirname}/..`,
+    });
+
+    // Read the components from the installed package
+    const componentsDir = join(
+      __dirname,
+      '../node_modules/@shopify/ui-api-design/dist/components',
+    );
+    const componentDirs = await readdir(componentsDir, {withFileTypes: true});
+
+    return componentDirs
+      .filter((dir) => dir.isDirectory())
+      .map((dir) => dir.name)
+      .sort();
+  } catch (error) {
+    console.warn(
+      '⚠️  Could not install/read ui-api-design components:',
+      error.message,
+    );
+    return [];
+  }
 }
 
 async function findComponentsFiles() {
@@ -54,26 +86,9 @@ async function findComponentsFiles() {
             type: 'web-components',
           });
         } catch {
-          // Fallback: if it's point-of-sale, scan individual component files
-          if (surface.name === 'point-of-sale') {
-            const componentsDir = join(surfacePath, 'components');
-            try {
-              await access(componentsDir);
-              componentFiles.push({
-                surface: surface.name,
-                path: componentsDir,
-                type: 'individual-exports',
-              });
-            } catch {
-              console.warn(
-                `⚠️  No components found for surface: ${surface.name}`,
-              );
-            }
-          } else {
-            console.warn(
-              `⚠️  No components.d.ts found for surface: ${surface.name}`,
-            );
-          }
+          console.warn(
+            `⚠️  No components.d.ts found for surface: ${surface.name}`,
+          );
         }
       }
 
@@ -103,27 +118,6 @@ async function findComponentsFiles() {
   }
 
   return componentFiles;
-}
-
-async function extractComponentsFromPOS(componentsDir) {
-  const components = new Set();
-  const files = await readdir(componentsDir);
-
-  const componentFiles = files.filter(
-    (file) =>
-      file.endsWith('.d.ts') &&
-      !file.includes('shared') &&
-      !file.includes('components.d.ts'),
-  );
-
-  for (const file of componentFiles) {
-    const componentName = file.replace('.d.ts', '');
-    if (componentName.match(/^[A-Z][a-zA-Z]*$/)) {
-      components.add(componentName);
-    }
-  }
-
-  return Array.from(components).sort();
 }
 
 function extractWebComponents(content) {
@@ -231,6 +225,7 @@ async function generateHTMLPage(masterList, outputDir) {
       surfaces: surfaceMap,
       surfaceCount: surfaces.length,
       isShared: surfaces.length > 1,
+      isImplemented: surfaces.length > 0,
       specUrl: generateSpecUrl(component),
     });
   });
@@ -245,7 +240,7 @@ async function generateHTMLPage(masterList, outputDir) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>UI Extensions Components</title>
+  <title>Polaris Web Components</title>
   <script src="https://cdn.shopify.com/shopifycloud/app-bridge-ui-experimental.js"></script>
 </head>
 <body>
@@ -265,7 +260,16 @@ async function generateHTMLPage(masterList, outputDir) {
               <s-text type="strong">${
                 masterList.metadata.totalComponents
               }</s-text>
-              <s-text color="subdued">Total Components</s-text>
+              <s-text color="subdued">Total Components (Canonical)</s-text>
+            </s-stack>
+          </s-box>
+          
+          <s-box padding="base" background="base" borderRadius="base">
+            <s-stack gap="small">
+              <s-text type="strong">${
+                masterList.metadata.implementedComponents
+              }</s-text>
+              <s-text color="subdued">Implemented Components</s-text>
             </s-stack>
           </s-box>
           
@@ -310,8 +314,10 @@ async function generateHTMLPage(masterList, outputDir) {
                   <s-box id="filter-all" borderRadius="base" background="strong" padding="small-400 small-100">
                     All
                   </s-box>
-                  <s-button id="filter-shared" variant="tertiary">Shared Components</s-button>
+                  <s-button id="filter-implemented" variant="tertiary">Implemented</s-button>
+                  <s-button id="filter-shared" variant="tertiary">Shared</s-button>
                   <s-button id="filter-single" variant="tertiary">Single Surface</s-button>
+                  <s-button id="filter-unimplemented" variant="tertiary">Not Implemented</s-button>
                 </s-stack>
                 <s-stack direction="inline" gap="small-200" alignContent="center" alignItems="center">
                   <s-button id="search-toggle" variant="secondary" icon="search"></s-button>
@@ -360,18 +366,24 @@ async function generateHTMLPage(masterList, outputDir) {
                 return `
             <s-table-row class="component-row" data-component="${row.component.toLowerCase()}" data-surfaces="${surfacesList
                   .join(' ')
-                  .toLowerCase()}" data-shared="${row.isShared}">
+                  .toLowerCase()}" data-shared="${
+                  row.isShared
+                }" data-implemented="${row.isImplemented}">
               <s-table-cell>
                 <s-stack direction="inline" gap="small-200" alignContent="center" alignItems="center">
                   <s-checkbox class="row-checkbox" data-component="${
                     row.component
                   }"></s-checkbox>
-                  <s-text type="strong">${row.component}</s-text>
-                  ${
-                    row.isShared
-                      ? '<s-badge tone="success">Shared</s-badge>'
-                      : ''
-                  }
+                                    <s-text type="strong" ${
+                                      row.isImplemented ? '' : 'color="subdued"'
+                                    }>${row.component}</s-text>
+                  ${(() => {
+                    if (!row.isImplemented)
+                      return '<s-badge tone="subdued">Not Implemented</s-badge>';
+                    if (row.isShared)
+                      return '<s-badge tone="success">Shared</s-badge>';
+                    return '';
+                  })()}
                 </s-stack>
               </s-table-cell>
               ${allSurfaces
@@ -386,12 +398,20 @@ async function generateHTMLPage(masterList, outputDir) {
                 <s-text type="strong">${row.surfaceCount}</s-text>
               </s-table-cell>
               <s-table-cell>
+                ${
+                  row.specUrl
+                    ? `
                 <s-link href="${row.specUrl}" target="_blank">
                   <s-stack direction="inline" gap="small-200" alignContent="center" alignItems="center">
                     <s-text>View Spec</s-text>
                     <s-icon type="external" />
                   </s-stack>
                 </s-link>
+                `
+                    : `
+                <s-text color="subdued">—</s-text>
+                `
+                }
               </s-table-cell>
             </s-table-row>`;
               })
@@ -421,8 +441,10 @@ async function generateHTMLPage(masterList, outputDir) {
     const searchCancel = document.getElementById('search-cancel');
     const headerCheckbox = document.getElementById('header-checkbox');
     const filterAll = document.getElementById('filter-all');
+    const filterImplemented = document.getElementById('filter-implemented');
     const filterShared = document.getElementById('filter-shared');
     const filterSingle = document.getElementById('filter-single');
+    const filterUnimplemented = document.getElementById('filter-unimplemented');
     
     // Initialize row checkboxes state
     document.querySelectorAll('.component-row').forEach(row => {
@@ -432,7 +454,7 @@ async function generateHTMLPage(masterList, outputDir) {
     
     // Filter functions
     function updateFilterButtons() {
-      [filterAll, filterShared, filterSingle].forEach(btn => {
+      [filterAll, filterImplemented, filterShared, filterSingle, filterUnimplemented].forEach(btn => {
         btn.style.background = '';
         btn.style.padding = 'small-400 small-100';
         btn.classList.remove('selected');
@@ -452,13 +474,18 @@ async function generateHTMLPage(masterList, outputDir) {
         const component = row.dataset.component;
         const surfaces = row.dataset.surfaces;
         const isShared = row.dataset.shared === 'true';
+        const isImplemented = row.dataset.implemented === 'true';
         
         // Filter by type
         let matchesFilter = true;
-        if (currentFilter === 'shared') {
+        if (currentFilter === 'implemented') {
+          matchesFilter = isImplemented;
+        } else if (currentFilter === 'shared') {
           matchesFilter = isShared;
         } else if (currentFilter === 'single') {
-          matchesFilter = !isShared;
+          matchesFilter = isImplemented && !isShared;
+        } else if (currentFilter === 'unimplemented') {
+          matchesFilter = !isImplemented;
         }
         
         // Filter by search
@@ -546,7 +573,7 @@ async function generateHTMLPage(masterList, outputDir) {
     }
     
     // Filter button event listeners
-    [filterAll, filterShared, filterSingle].forEach(btn => {
+    [filterAll, filterImplemented, filterShared, filterSingle, filterUnimplemented].forEach(btn => {
       if (btn) {
         btn.addEventListener('click', () => {
           currentFilter = btn.id.replace('filter-', '');
@@ -577,12 +604,28 @@ async function generateHTMLPage(masterList, outputDir) {
 }
 
 async function main() {
-  console.log('🔍 Scanning surfaces for components...\n');
+  console.log('🔍 Getting canonical component list from ui-api-design...\n');
+
+  // Get the canonical list of components from ui-api-design
+  const canonicalComponents = await getCanonicalComponents();
+  console.log(
+    `📦 Found ${canonicalComponents.length} canonical components from ui-api-design`,
+  );
+
+  console.log('\n🔍 Scanning surfaces for component implementations...\n');
 
   const componentFiles = await findComponentsFiles();
   const surfaceComponents = {};
   const componentToSurfaces = {};
 
+  // Initialize all surfaces
+  for (const {surface} of componentFiles) {
+    if (!surfaceComponents[surface]) {
+      surfaceComponents[surface] = [];
+    }
+  }
+
+  // For each surface, check which canonical components are implemented
   for (const {surface, path, type, sourceNote} of componentFiles) {
     console.log(
       `📁 Processing ${surface} (${type})${
@@ -590,24 +633,22 @@ async function main() {
       }...`,
     );
 
-    let components = [];
+    let implementedComponents = [];
 
     try {
-      if (type === 'individual-exports') {
-        components = await extractComponentsFromPOS(path);
-      } else if (type === 'web-components') {
+      if (type === 'web-components') {
         const content = await readFile(path, 'utf-8');
-        components = extractWebComponents(content);
-      }
+        const extractedComponents = extractWebComponents(content);
 
-      // Initialize or merge components for this surface
-      if (!surfaceComponents[surface]) {
-        surfaceComponents[surface] = [];
+        // Only include components that exist in the canonical list
+        implementedComponents = extractedComponents.filter((component) =>
+          canonicalComponents.includes(component),
+        );
       }
 
       // Merge components, avoiding duplicates
       const existingComponents = new Set(surfaceComponents[surface]);
-      for (const component of components) {
+      for (const component of implementedComponents) {
         if (!existingComponents.has(component)) {
           surfaceComponents[surface].push(component);
           existingComponents.add(component);
@@ -618,13 +659,15 @@ async function main() {
       surfaceComponents[surface].sort();
 
       console.log(
-        `   Found ${components.length} components: ${components
+        `   Found ${
+          implementedComponents.length
+        } implemented components: ${implementedComponents
           .slice(0, 10)
-          .join(', ')}${components.length > 10 ? '...' : ''}`,
+          .join(', ')}${implementedComponents.length > 10 ? '...' : ''}`,
       );
 
       // Build reverse mapping
-      for (const component of components) {
+      for (const component of implementedComponents) {
         if (!componentToSurfaces[component]) {
           componentToSurfaces[component] = [];
         }
@@ -634,9 +677,13 @@ async function main() {
       }
     } catch (error) {
       console.error(`❌ Error processing ${surface}:`, error.message);
-      if (!surfaceComponents[surface]) {
-        surfaceComponents[surface] = [];
-      }
+    }
+  }
+
+  // Add unimplemented components to the componentToSurfaces mapping
+  for (const component of canonicalComponents) {
+    if (!componentToSurfaces[component]) {
+      componentToSurfaces[component] = []; // No surfaces implement this component yet
     }
   }
 
@@ -645,7 +692,10 @@ async function main() {
     surfaces: surfaceComponents,
     components: componentToSurfaces,
     metadata: {
-      totalComponents: Object.keys(componentToSurfaces).length,
+      totalComponents: canonicalComponents.length, // Total canonical components
+      implementedComponents: Object.keys(componentToSurfaces).filter(
+        (comp) => componentToSurfaces[comp].length > 0,
+      ).length,
       totalSurfaces: Object.keys(surfaceComponents).length,
       generatedAt: new Date().toISOString(),
       specBaseUrl: UI_API_DESIGN_BASE_URL,
