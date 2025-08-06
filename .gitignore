@@ -19,3 +19,6 @@ packages/ui-extensions/docs/**/generated
 .idea
 
 tsconfig.tsbuildinfo
+
+# Component list deployment directory
+.temp-deploy
