@@ -16,6 +16,21 @@ const data: LandingTemplateSchema = {
   sections: [
     {
       type: 'Generic',
+      anchorLink: 'extension-not-rendering-qr-code',
+      title: 'Extension is not rendering when scanning the QR code',
+      sectionContent: `
+### Resolution
+
+The extension only renders on the [development store](/docs/apps/tools/development-stores) chosen when running \`shopify app dev\`.
+
+If you're experiencing issues, verify that:
+
+1. You're using the correct development store that was selected during the \`shopify app dev\` setup
+2. You're logged into Shopify POS with the same store account
+      `,
+    },
+    {
+      type: 'Generic',
       anchorLink: `api-or-component-not-working`,
       title: `An API or a component doesn't work despite following the documentation`,
       codeblock: {

@@ -112,6 +112,9 @@ You can install your app and preview your extension in Shopify POS from the deve
 > Tip:
 > If you're using Android and your extension isn't loading, then refer to the [troubleshooting guide](/docs/apps/pos/ui-extensions/troubleshooting).
 
+> Caution:
+> This only works on [development stores](/docs/apps/tools/development-stores) and you need to be logged into the same store you selected while running \`shopify app dev\`. Refer to the [troubleshooting guide](/docs/apps/pos/ui-extensions/troubleshooting) for more information.
+
 ![The developer console showing a POS UI extension](/assets/apps/pos/ui-ext-dev-console.png)
       `,
     },
