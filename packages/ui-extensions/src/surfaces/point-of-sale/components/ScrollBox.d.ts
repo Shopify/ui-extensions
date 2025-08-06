@@ -3,14 +3,9 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  ScrollBoxProps,
-  ComponentChildren$1,
-  Key,
-  Ref,
-} from './components-shared.d.ts';
+import type {ScrollBoxProps, Key, Ref} from './components-shared.d.ts';
 
-type ComponentChildren = ComponentChildren$1;
+type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -24,12 +19,11 @@ export interface BaseElementProps<TClass = HTMLElement> {
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  children?: ComponentChildren$1;
+  children?: ComponentChildren;
 }
 
 declare const tagName = 's-scroll-box';
-type AlignedProps = Pick<ScrollBoxProps, 'id'>;
-export interface ScrollBoxJSXProps extends AlignedProps {
+export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
   children?: ComponentChildren;
 }
 declare global {

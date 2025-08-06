@@ -3,14 +3,9 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  TextProps,
-  ComponentChildren$1,
-  Key,
-  Ref,
-} from './components-shared.d.ts';
+import type {TextProps, Key, Ref} from './components-shared.d.ts';
 
-type ComponentChildren = ComponentChildren$1;
+type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -24,12 +19,11 @@ export interface BaseElementProps<TClass = HTMLElement> {
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  children?: ComponentChildren$1;
+  children?: ComponentChildren;
 }
 
 declare const tagName = 's-text';
-type AlignedProps = Pick<TextProps, 'tone' | 'type'>;
-export interface TextJSXProps extends AlignedProps {
+export interface TextJSXProps extends Pick<TextProps, 'tone' | 'type'> {
   color?: 'subdued' | 'base' | 'strong';
   type?: Extract<TextProps['type'], 'emphasis' | 'strong' | 'small' | 'offset'>;
   tone?: Extract<

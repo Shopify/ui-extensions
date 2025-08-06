@@ -3,14 +3,9 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  ComponentChild$1,
-  Key,
-  Ref,
-  ComponentChildren,
-} from './components-shared.d.ts';
+import type {Key, Ref, ComponentChild} from './components-shared.d.ts';
 
-type ComponentChild = ComponentChild$1;
+type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -28,27 +23,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 }
 
 declare const tagName = 's-screen';
-export interface ScreenSlotProps {
-  /**
-   * Displays a secondary action button on the screen.
-   */
-  secondaryActions?: ComponentChild;
-}
-export interface ScreenEventProps {
-  /**
-   * Triggered when the screen is navigated to.
-   */
-  onNavigate?: () => void;
-  /**
-   * Triggered when the user navigates back from this screen. Runs after screen is unmounted.
-   */
-  onNavigateBack?: () => void;
-  /**
-   * A callback that gets triggered when the navigation event completes and the screen receives the parameters.
-   */
-  onReceiveParams?: (params: any) => void;
-}
-export interface ScreenJSXProps extends ScreenSlotProps, ScreenEventProps {
+export interface ScreenJSXProps {
   /**
    * Used to identify this screen as a destination in the navigation stack.
    */
@@ -66,6 +41,22 @@ export interface ScreenJSXProps extends ScreenSlotProps, ScreenEventProps {
    * Dictates how the `Screen` will be presented when navigated to.
    */
   presentation?: ScreenPresentationProps;
+  /**
+   * Displays a secondary action button on the screen.
+   */
+  secondaryActions?: ComponentChild;
+  /**
+   * Triggered when the screen is navigated to.
+   */
+  onNavigate?: () => void;
+  /**
+   * Triggered when the user navigates back from this screen. Runs after screen is unmounted.
+   */
+  onNavigateBack?: () => void;
+  /**
+   * A callback that gets triggered when the navigation event completes and the screen receives the parameters.
+   */
+  onReceiveParams?: (params: any) => void;
   children?: React.ReactNode;
 }
 /** Represents the presentation of a screen in the navigation stack.
@@ -91,9 +82,4 @@ declare module 'preact' {
 }
 
 export {tagName};
-export type {
-  ScreenEventProps,
-  ScreenJSXProps,
-  ScreenPresentationProps,
-  ScreenSlotProps,
-};
+export type {ScreenJSXProps, ScreenPresentationProps};

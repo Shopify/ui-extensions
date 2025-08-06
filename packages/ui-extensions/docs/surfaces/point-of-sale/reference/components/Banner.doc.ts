@@ -12,9 +12,9 @@ const data: ReferenceEntityTemplateSchema = {
   type: 'component',
   definitions: [
     {
-      title: 'Banner',
+      title: 'Properties',
       description: '',
-      type: 'BannerProps',
+      type: 'BannerJSXProps',
     },
   ],
   category: 'Components',

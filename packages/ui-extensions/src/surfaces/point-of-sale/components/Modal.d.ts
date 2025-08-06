@@ -3,14 +3,9 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  ModalProps,
-  ComponentChildren$1,
-  Key,
-  Ref,
-} from './components-shared.d.ts';
+import type {ModalProps, Key, Ref} from './components-shared.d.ts';
 
-type ComponentChildren = ComponentChildren$1;
+type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -24,14 +19,17 @@ export interface BaseElementProps<TClass = HTMLElement> {
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  children?: ComponentChildren$1;
+  children?: ComponentChildren;
 }
-type CallbackEvent<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> = TEvent & {
-  currentTarget: HTMLElementTagNameMap[TTagName];
-};
+export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  currentTarget: HTMLElementTagNameMap[T];
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+  eventPhase: number;
+  target: HTMLElementTagNameMap[T] | null;
+}
 type CallbackToggleEvent<
   TTagName extends keyof HTMLElementTagNameMap,
   TEvent extends ToggleEvent = ToggleEvent,
@@ -40,16 +38,13 @@ type CallbackToggleEvent<
 };
 
 declare const tagName = 's-modal';
-type AlignedProps = Pick<ModalProps, 'id'>;
-export interface ModalEventProps {
+export interface ModalJSXProps extends Pick<ModalProps, 'id'> {
   onHide?: (event: CallbackEvent<typeof tagName>) => void | null;
   onShow?: (event: CallbackEvent<typeof tagName>) => void | null;
   onAfterHide?: (event: CallbackEvent<typeof tagName>) => void | null;
   onAfterShow?: (event: CallbackEvent<typeof tagName>) => void | null;
   onToggle?: (event: CallbackToggleEvent<typeof tagName>) => void | null;
   onAfterToggle?: (event: CallbackToggleEvent<typeof tagName>) => void | null;
-}
-export interface ModalJSXProps extends AlignedProps, ModalEventProps {
   children?: ComponentChildren;
 }
 declare global {
@@ -66,4 +61,4 @@ declare module 'preact' {
 }
 
 export {tagName};
-export type {ModalEventProps, ModalJSXProps};
+export type {ModalJSXProps};

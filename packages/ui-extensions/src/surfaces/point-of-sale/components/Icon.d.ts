@@ -66,8 +66,7 @@ type SupportedSizes = Extract<
   IconProps['size'],
   'small' | 'base' | 'large' | 'large-100'
 >;
-type AlignedProps = Pick<IconProps, 'tone' | 'color'>;
-export interface IconJSXProps extends AlignedProps {
+export interface IconJSXProps extends Pick<IconProps, 'tone' | 'color'> {
   /**
    * The type of icon to display. Maps to PDS icon names.
    * @default ''

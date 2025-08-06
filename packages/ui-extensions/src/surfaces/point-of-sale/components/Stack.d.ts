@@ -3,14 +3,9 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  StackProps,
-  ComponentChildren$1,
-  Key,
-  Ref,
-} from './components-shared.d.ts';
+import type {StackProps, Key, Ref} from './components-shared.d.ts';
 
-type ComponentChildren = ComponentChildren$1;
+type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -24,43 +19,43 @@ export interface BaseElementProps<TClass = HTMLElement> {
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  children?: ComponentChildren$1;
+  children?: ComponentChildren;
 }
 
 declare const tagName = 's-stack';
-type AlignedProps = Pick<
-  StackProps,
-  | 'id'
-  | 'accessibilityLabel'
-  | 'alignItems'
-  | 'alignContent'
-  | 'gap'
-  | 'background'
-  | 'blockSize'
-  | 'border'
-  | 'borderColor'
-  | 'borderRadius'
-  | 'borderStyle'
-  | 'borderWidth'
-  | 'columnGap'
-  | 'direction'
-  | 'inlineSize'
-  | 'justifyContent'
-  | 'maxBlockSize'
-  | 'maxInlineSize'
-  | 'minBlockSize'
-  | 'minInlineSize'
-  | 'overflow'
-  | 'padding'
-  | 'paddingBlock'
-  | 'paddingBlockStart'
-  | 'paddingBlockEnd'
-  | 'paddingInline'
-  | 'paddingInlineStart'
-  | 'paddingInlineEnd'
-  | 'rowGap'
->;
-export interface StackJSXProps extends AlignedProps {
+export interface StackJSXProps
+  extends Pick<
+    StackProps,
+    | 'id'
+    | 'accessibilityLabel'
+    | 'alignItems'
+    | 'alignContent'
+    | 'gap'
+    | 'background'
+    | 'blockSize'
+    | 'border'
+    | 'borderColor'
+    | 'borderRadius'
+    | 'borderStyle'
+    | 'borderWidth'
+    | 'columnGap'
+    | 'direction'
+    | 'inlineSize'
+    | 'justifyContent'
+    | 'maxBlockSize'
+    | 'maxInlineSize'
+    | 'minBlockSize'
+    | 'minInlineSize'
+    | 'overflow'
+    | 'padding'
+    | 'paddingBlock'
+    | 'paddingBlockStart'
+    | 'paddingBlockEnd'
+    | 'paddingInline'
+    | 'paddingInlineStart'
+    | 'paddingInlineEnd'
+    | 'rowGap'
+  > {
   children?: ComponentChildren;
 }
 declare global {

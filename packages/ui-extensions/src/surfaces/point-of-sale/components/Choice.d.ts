@@ -3,14 +3,9 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  ChoiceProps,
-  ComponentChildren$1,
-  Key,
-  Ref,
-} from './components-shared.d.ts';
+import type {ChoiceProps, Key, Ref} from './components-shared.d.ts';
 
-type ComponentChildren = ComponentChildren$1;
+type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -24,12 +19,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  children?: ComponentChildren$1;
+  children?: ComponentChildren;
 }
 
 declare const tagName = 's-choice';
-type AlignedProps = Pick<ChoiceProps, 'value' | 'disabled' | 'selected'>;
-export interface ChoiceJSXProps extends AlignedProps {
+export interface ChoiceJSXProps
+  extends Pick<ChoiceProps, 'value' | 'disabled' | 'selected'> {
   children?: ComponentChildren;
 }
 declare global {

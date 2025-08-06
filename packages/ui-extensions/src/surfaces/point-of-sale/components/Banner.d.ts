@@ -5,14 +5,12 @@
 /// <reference lib="DOM" />
 import type {
   BannerProps,
-  ComponentChild$1,
-  ComponentChildren$1,
   Key,
   Ref,
+  ComponentChild,
 } from './components-shared.d.ts';
 
-type ComponentChildren = ComponentChildren$1;
-type ComponentChild = ComponentChild$1;
+type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -26,15 +24,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  children?: ComponentChildren$1;
+  children?: ComponentChildren;
 }
 
 declare const tagName = 's-banner';
-type AlignedProps = Pick<BannerProps, 'heading' | 'hidden' | 'tone' | 'id'>;
-export interface BannerSlotProps {
-  primaryAction?: ComponentChild;
-}
-export interface BannerJSXProps extends AlignedProps, BannerSlotProps {
+export interface BannerJSXProps
+  extends Pick<BannerProps, 'heading' | 'hidden' | 'tone' | 'id'> {
   tone?: Extract<
     BannerProps['tone'],
     'success' | 'info' | 'warning' | 'critical'
@@ -58,4 +53,4 @@ declare module 'preact' {
 }
 
 export {tagName};
-export type {BannerJSXProps, BannerSlotProps};
+export type {BannerJSXProps};

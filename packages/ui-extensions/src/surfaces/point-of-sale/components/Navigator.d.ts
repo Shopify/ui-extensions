@@ -3,8 +3,9 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {Key, Ref, ComponentChildren} from './components-shared.d.ts';
+import type {Key, Ref} from './components-shared.d.ts';
 
+type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */

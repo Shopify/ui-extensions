@@ -14,12 +14,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Button',
       description: '',
-      type: 'ButtonProps',
-    },
-    {
-      title: 'ButtonType',
-      description: 'Determines the appearance of the button.',
-      type: 'ButtonType',
+      type: 'ButtonJSXProps',
     },
   ],
   category: 'Components',

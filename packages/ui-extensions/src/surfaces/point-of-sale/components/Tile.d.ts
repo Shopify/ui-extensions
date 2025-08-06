@@ -3,8 +3,9 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {Key, Ref, ComponentChildren} from './components-shared.d.ts';
+import type {Key, Ref} from './components-shared.d.ts';
 
+type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -22,15 +23,13 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 }
 
 declare const tagName = 's-tile';
-export interface TileEventProps {
-  onPress?: () => void;
-}
-export interface TileJSXProps extends TileEventProps {
+export interface TileJSXProps {
   title: string;
   subtitle?: string;
   enabled?: boolean;
   destructive?: boolean;
   badgeValue?: string;
+  onPress?: () => void;
   testID?: string;
 }
 declare global {
@@ -47,4 +46,4 @@ declare module 'preact' {
 }
 
 export {tagName};
-export type {TileEventProps, TileJSXProps};
+export type {TileJSXProps};

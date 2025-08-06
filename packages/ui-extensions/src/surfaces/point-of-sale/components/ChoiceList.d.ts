@@ -3,14 +3,9 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  ChoiceListProps,
-  ComponentChildren$1,
-  Key,
-  Ref,
-} from './components-shared.d.ts';
+import type {ChoiceListProps, Key, Ref} from './components-shared.d.ts';
 
-type ComponentChildren = ComponentChildren$1;
+type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -24,22 +19,23 @@ export interface BaseElementProps<TClass = HTMLElement> {
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  children?: ComponentChildren$1;
+  children?: ComponentChildren;
 }
-type CallbackEvent<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> = TEvent & {
-  currentTarget: HTMLElementTagNameMap[TTagName];
-};
+export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  currentTarget: HTMLElementTagNameMap[T];
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+  eventPhase: number;
+  target: HTMLElementTagNameMap[T] | null;
+}
 
 declare const tagName = 's-choice-list';
-type AlignedProps = Pick<ChoiceListProps, 'values' | 'multiple'>;
-export interface ChoiceListEventProps {
+export interface ChoiceListJSXProps
+  extends Pick<ChoiceListProps, 'values' | 'multiple'> {
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-export interface ChoiceListJSXProps extends AlignedProps, ChoiceListEventProps {
   children?: ComponentChildren;
 }
 declare global {
@@ -56,4 +52,4 @@ declare module 'preact' {
 }
 
 export {tagName};
-export type {ChoiceListEventProps, ChoiceListJSXProps};
+export type {ChoiceListJSXProps};

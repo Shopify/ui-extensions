@@ -3,14 +3,9 @@
 /* eslint-disable @typescript-eslint/no-namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  ButtonProps,
-  ComponentChildren$1,
-  Key,
-  Ref,
-} from './components-shared.d.ts';
+import type {ButtonProps, Key, Ref} from './components-shared.d.ts';
 
-type ComponentChildren = ComponentChildren$1;
+type ComponentChildren = any;
 /**
  * Used when an element does not have children.
  */
@@ -24,33 +19,34 @@ export interface BaseElementProps<TClass = HTMLElement> {
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  children?: ComponentChildren$1;
+  children?: ComponentChildren;
 }
-type CallbackEvent<
-  TTagName extends keyof HTMLElementTagNameMap,
-  TEvent extends Event = Event,
-> = TEvent & {
-  currentTarget: HTMLElementTagNameMap[TTagName];
-};
+export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  currentTarget: HTMLElementTagNameMap[T];
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+  eventPhase: number;
+  target: HTMLElementTagNameMap[T] | null;
+}
 
 declare const tagName = 's-button';
-type AlignedProps = Pick<
-  ButtonProps,
-  | 'accessibilityLabel'
-  | 'disabled'
-  | 'command'
-  | 'commandFor'
-  | 'loading'
-  | 'tone'
-  | 'variant'
-  | 'id'
->;
-export interface ButtonEventProps {
-  onClick?: (event: CallbackEvent<typeof tagName>) => void;
-}
-export interface ButtonJSXProps extends AlignedProps, ButtonEventProps {
+export interface ButtonJSXProps
+  extends Pick<
+    ButtonProps,
+    | 'accessibilityLabel'
+    | 'disabled'
+    | 'command'
+    | 'commandFor'
+    | 'loading'
+    | 'tone'
+    | 'variant'
+    | 'id'
+  > {
   tone?: Extract<ButtonProps['tone'], 'auto' | 'critical'>;
   variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
+  onClick?: (event: CallbackEvent<typeof tagName>) => void;
   children?: ComponentChildren;
 }
 declare global {
@@ -67,4 +63,4 @@ declare module 'preact' {
 }
 
 export {tagName};
-export type {ButtonEventProps, ButtonJSXProps};
+export type {ButtonJSXProps};

@@ -14,7 +14,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Badge',
       description: '',
-      type: 'BadgeProps',
+      type: 'BadgeJSXProps',
     },
   ],
   category: 'Components',
