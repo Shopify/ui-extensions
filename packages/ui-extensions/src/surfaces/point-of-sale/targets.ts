@@ -20,6 +20,7 @@ type ActionComponents = AnyComponentBuilder<Pick<Components, 'Button'>>;
 type ReceiptComponents = AnyComponentBuilder<
   Pick<Components, 'POSReceiptBlock' | 'Text' | 'QRCode'>
 >;
+type BannerComponents = AnyComponentBuilder<Pick<Components, 'Banner'>>;
 type BasicComponents = AnyComponentBuilder<Omit<Components, 'Tile'>>;
 type BlockComponents = AnyComponentBuilder<
   Pick<
@@ -88,6 +89,10 @@ export interface ExtensionTargets {
   'pos.purchase.post.block.render': RenderExtension<
     StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,
     BlockComponents
+  >;
+  'pos.purchase.post.banner.render': RenderExtension<
+    StandardApi<'pos.purchase.post.banner.render'> & OrderApi & ActionApi,
+    BannerComponents
   >;
   'pos.product-details.action.menu-item.render': RenderExtension<
     StandardApi<'pos.product-details.action.menu-item.render'> &
@@ -188,6 +193,10 @@ export interface ExtensionTargets {
   'pos.receipt-header.block.render': RenderExtension<
     {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,
     ReceiptComponents
+  >;
+  'pos.cash-tracking-session-float.banner.render': RenderExtension<
+    StandardApi<'pos.cash-tracking-session-float.banner.render'>,
+    BannerComponents
   >;
 }
 
