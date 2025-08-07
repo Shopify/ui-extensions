@@ -465,21 +465,12 @@ function generateSurfacePropCard(propName, propInfo, canonicalProp) {
                               
                               ${
                                 canonicalProp && !matchesSpec
-                                  ? `
-                                <s-box padding="small-200" background="warning" borderRadius="small">
-                                  <s-stack gap="small-100">
-                                    <s-text size="small" type="strong" color="critical">Specification Difference:</s-text>
-                                    <s-text size="small">
-                                      Spec: <strong>${canonicalType}${
-                                      canonicalProp.optional ? '?' : ''
-                                    }</strong> vs 
-                                      Implementation: <strong>${propType}${
-                                      propInfo.optional ? '?' : ''
-                                    }</strong>
-                                    </s-text>
-                                  </s-stack>
-                                </s-box>
-                              `
+                                  ? generateSpecDiff(
+                                      canonicalProp,
+                                      propInfo,
+                                      canonicalType,
+                                      propType,
+                                    )
                                   : ''
                               }
                               
@@ -497,6 +488,197 @@ function generateSurfacePropCard(propName, propInfo, canonicalProp) {
                               }
                             </s-stack>
                           </s-box>`;
+}
+
+/**
+ * Generate a detailed spec difference with visual highlighting
+ */
+function generateSpecDiff(canonicalProp, propInfo, canonicalType, propType) {
+  // Check if both are union types (contain |)
+  const isCanonicalUnion = canonicalType.includes('|');
+  const isPropUnion = propType.includes('|');
+
+  if (isCanonicalUnion && isPropUnion) {
+    return generateUnionTypeDiff(
+      canonicalProp,
+      propInfo,
+      canonicalType,
+      propType,
+    );
+  } else {
+    return generateSimpleTypeDiff(
+      canonicalProp,
+      propInfo,
+      canonicalType,
+      propType,
+    );
+  }
+}
+
+/**
+ * Generate diff for union types with added/removed values highlighted
+ */
+function generateUnionTypeDiff(
+  canonicalProp,
+  propInfo,
+  canonicalType,
+  propType,
+) {
+  // Parse union values
+  const canonicalValues = parseUnionType(canonicalType);
+  const propValues = parseUnionType(propType);
+
+  // Find differences
+  const missingValues = canonicalValues.filter(
+    (val) => !propValues.includes(val),
+  );
+  const extraValues = propValues.filter(
+    (val) => !canonicalValues.includes(val),
+  );
+
+  const commonValues = canonicalValues.filter((val) =>
+    propValues.includes(val),
+  );
+
+  const optionalDiff = canonicalProp.optional !== propInfo.optional;
+  const hasDifferences =
+    missingValues.length > 0 || extraValues.length > 0 || optionalDiff;
+
+  if (!hasDifferences) return '';
+
+  return `
+    <s-box padding="small-200" background="warning" borderRadius="small">
+      <s-stack gap="small-100">
+        <s-text size="small" type="strong" color="critical">Spec Difference</s-text>
+        
+        ${
+          optionalDiff
+            ? `
+          <s-text size="small" color="critical">
+            ${
+              canonicalProp.optional
+                ? 'Should be optional'
+                : 'Should be required'
+            }
+          </s-text>
+        `
+            : ''
+        }
+        
+        ${
+          commonValues.length > 0
+            ? `
+          <s-stack direction="inline" gap="small-100">
+            ${commonValues
+              .map(
+                (val) =>
+                  `<s-badge tone="success" size="small">${val}</s-badge>`,
+              )
+              .join('')}
+          </s-stack>
+        `
+            : ''
+        }
+        
+                ${
+                  missingValues.length > 0
+                    ? `
+           <s-stack direction="inline" gap="small-100">
+             ${missingValues
+               .map(
+                 (val) =>
+                   `<s-badge tone="critical" size="small">${val}</s-badge>`,
+               )
+               .join('')}
+           </s-stack>
+         `
+                    : ''
+                }
+         
+         ${
+           extraValues.length > 0
+             ? `
+           <s-stack direction="inline" gap="small-100">
+             ${extraValues
+               .map(
+                 (val) =>
+                   `<s-badge tone="warning" size="small">${val}</s-badge>`,
+               )
+               .join('')}
+           </s-stack>
+         `
+             : ''
+         }
+      </s-stack>
+    </s-box>
+  `;
+}
+
+/**
+ * Generate diff for non-union types
+ */
+function generateSimpleTypeDiff(
+  canonicalProp,
+  propInfo,
+  canonicalType,
+  propType,
+) {
+  const optionalDiff = canonicalProp.optional !== propInfo.optional;
+  const typeDiff = canonicalType !== propType;
+
+  if (!optionalDiff && !typeDiff) return '';
+
+  return `
+    <s-box padding="small-200" background="warning" borderRadius="small">
+      <s-stack gap="small-100">
+        <s-text size="small" type="strong" color="critical">Spec Difference</s-text>
+        
+        ${
+          optionalDiff
+            ? `
+          <s-text size="small" color="critical">
+            ${
+              canonicalProp.optional
+                ? 'Should be optional'
+                : 'Should be required'
+            }
+          </s-text>
+        `
+            : ''
+        }
+        
+        ${
+          typeDiff
+            ? `
+          <s-stack direction="inline" gap="small-100">
+            <s-badge tone="critical" size="small">Expected: ${canonicalType}${
+                canonicalProp.optional ? '?' : ''
+              }</s-badge>
+            <s-badge tone="warning" size="small">Actual: ${propType}${
+                propInfo.optional ? '?' : ''
+              }</s-badge>
+          </s-stack>
+        `
+            : ''
+        }
+      </s-stack>
+    </s-box>
+  `;
+}
+
+/**
+ * Parse union type string into individual values
+ */
+function parseUnionType(typeString) {
+  if (!typeString.includes('|')) {
+    return [typeString.trim()];
+  }
+
+  return typeString
+    .split('|')
+    .map((val) => val.trim())
+    .map((val) => val.replace(/^['"`]|['"`]$/g, '')) // Remove surrounding quotes
+    .filter((val) => val.length > 0);
 }
 
 /**
