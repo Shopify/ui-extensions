@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {TextFieldProps, Key, Ref} from './components-shared.d.ts';
+import type {ModalProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -35,27 +35,35 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   eventPhase: number;
   target: HTMLElementTagNameMap[T] | null;
 }
+export type CallbackToggleEvent<
+  TTagName extends keyof HTMLElementTagNameMap,
+  TEvent extends ToggleEvent = ToggleEvent,
+> = TEvent & {
+  currentTarget: HTMLElementTagNameMap[TTagName];
+};
 
-declare const tagName = 's-text-field';
-export interface TextFieldJSXProps
-  extends Pick<TextFieldProps, 'label' | 'details' | 'value' | 'placeholder'> {
-  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+declare const tagName = 's-modal';
+export interface ModalJSXProps extends Pick<ModalProps, 'id'> {
+  onHide?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onShow?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onAfterHide?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onAfterShow?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onToggle?: (event: CallbackToggleEvent<typeof tagName>) => void | null;
+  onAfterToggle?: (event: CallbackToggleEvent<typeof tagName>) => void | null;
+  children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: TextFieldJSXProps;
+    [tagName]: ModalJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<TextFieldJSXProps>;
+      [tagName]: BaseElementPropsWithChildren<ModalJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {TextFieldJSXProps};
+export type {ModalJSXProps};

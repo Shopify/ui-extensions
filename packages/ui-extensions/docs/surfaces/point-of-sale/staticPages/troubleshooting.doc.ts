@@ -1,6 +1,6 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
-const examplePath = '../examples/troubleshooting';
+const examplePath = './examples/troubleshooting';
 
 const data: LandingTemplateSchema = {
   title: 'Troubleshooting',

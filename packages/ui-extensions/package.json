@@ -4,7 +4,7 @@
   "scripts": {
     "docs:admin": "node ./docs/surfaces/admin/build-docs.mjs",
     "docs:checkout": "bash ./docs/surfaces/checkout/build-docs.sh",
-    "docs:point-of-sale": "bash ./docs/surfaces/point-of-sale/build-docs.sh",
+    "docs:point-of-sale": "node ./docs/surfaces/point-of-sale/build-docs.mjs",
     "docs:customer-account": "node ./docs/surfaces/customer-account/build-docs.mjs"
   },
   "main": "index.js",

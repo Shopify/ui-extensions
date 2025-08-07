@@ -1,6 +1,6 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
 
-const examplePath = '../examples/server-communication';
+const examplePath = './examples/server-communication';
 
 const data: LandingTemplateSchema = {
   title: 'Communicate with a server',

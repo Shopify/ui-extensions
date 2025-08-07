@@ -8,12 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  BannerProps,
-  Key,
-  Ref,
-  ComponentChild,
-} from './components-shared.d.ts';
+import type {ChoiceListProps, Key, Ref} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -31,31 +26,35 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  currentTarget: HTMLElementTagNameMap[T];
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+  eventPhase: number;
+  target: HTMLElementTagNameMap[T] | null;
+}
 
-declare const tagName = 's-banner';
-export interface BannerJSXProps
-  extends Pick<BannerProps, 'heading' | 'hidden' | 'tone' | 'id'> {
-  tone?: Extract<
-    BannerProps['tone'],
-    'success' | 'info' | 'warning' | 'critical'
-  >;
-  primaryAction?: ComponentChild;
+declare const tagName = 's-choice-list';
+export interface ChoiceListJSXProps
+  extends Pick<ChoiceListProps, 'values' | 'multiple'> {
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: BannerJSXProps;
+    [tagName]: ChoiceListJSXProps;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: BaseElementPropsWithChildren<
-        Omit<BannerJSXProps, 'primaryAction'>
-      >;
+      [tagName]: BaseElementPropsWithChildren<ChoiceListJSXProps>;
     }
   }
 }
 
 export {tagName};
-export type {BannerJSXProps};
+export type {ChoiceListJSXProps};

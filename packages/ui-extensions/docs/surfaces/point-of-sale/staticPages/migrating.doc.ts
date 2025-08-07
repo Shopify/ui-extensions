@@ -1,7 +1,7 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../../reference/helpers/generateCodeBlock';
+import {generateCodeBlock} from '../reference/helpers/generateCodeBlock-staticpages';
 
-const examplePath = '../examples/migrating';
+const examplePath = './examples/migrating';
 
 const data: LandingTemplateSchema = {
   title: 'Migrating',

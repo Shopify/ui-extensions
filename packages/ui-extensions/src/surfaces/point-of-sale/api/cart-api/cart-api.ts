@@ -93,13 +93,13 @@ export interface CartApiContent {
   addCustomSale(customSale: CustomSale): Promise<string>;
 
   /**
-   * Add a line item by variant ID to the cart
+   * Add a line item by variant ID to the cart. Returns the uuid of the line item added, or undefined if the user dismissed an oversell guard modal without adding anything. Throws if POS fails to add the line item.
    *
    * @param variantId the product variant's numeric ID to add to the cart
    * @param quantity the number of this variant to add to the cart
-   * @returns {string} the uuid of the line item added
+   * @returns {string | undefined} the uuid of the line item added, or undefined if the user dismissed an oversell guard modal
    */
-  addLineItem(variantId: number, quantity: number): Promise<string>;
+  addLineItem(variantId: number, quantity: number): Promise<string | undefined>;
 
   /**
    * Remove the line item at this uuid from the cart

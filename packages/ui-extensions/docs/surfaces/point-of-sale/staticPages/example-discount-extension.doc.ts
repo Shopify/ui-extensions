@@ -1,7 +1,7 @@
 import type {LandingTemplateSchema} from '@shopify/generate-docs';
-import {generateCodeBlock} from '../../reference/helpers/generateCodeBlock';
+import {generateCodeBlock} from '../reference/helpers/generateCodeBlock-staticpages';
 
-const examplePath = '../examples/discount-example';
+const examplePath = './examples/discount-example';
 
 const data: LandingTemplateSchema = {
   title: 'Build a discount extension',
