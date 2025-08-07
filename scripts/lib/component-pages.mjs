@@ -366,7 +366,9 @@ function generatePropCard(propName, propInfo) {
     propInfo.optional ? '?' : ''
   }</s-text>
                       <s-badge tone="info" size="small">${
-                        propInfo.type || 'unknown'
+                        propInfo.expandedType?.resolvedType ||
+                        propInfo.type ||
+                        'unknown'
                       }</s-badge>
                       ${
                         propInfo.optional
@@ -406,9 +408,14 @@ function generatePropCard(propName, propInfo) {
  * Generate a prop card for surface props with comparison
  */
 function generateSurfacePropCard(propName, propInfo, canonicalProp) {
+  // Use resolved types for comparison
+  const propType = propInfo.expandedType?.resolvedType || propInfo.type;
+  const canonicalType =
+    canonicalProp?.expandedType?.resolvedType || canonicalProp?.type;
+
   const matchesSpec =
     canonicalProp &&
-    canonicalProp.type === propInfo.type &&
+    canonicalType === propType &&
     canonicalProp.optional === propInfo.optional;
 
   return `<s-box padding="base" background="${
@@ -420,7 +427,9 @@ function generateSurfacePropCard(propName, propInfo, canonicalProp) {
     propInfo.optional ? '?' : ''
   }</s-text>
                                 <s-badge tone="info" size="small">${
-                                  propInfo.type || 'unknown'
+                                  propInfo.expandedType?.resolvedType ||
+                                  propInfo.type ||
+                                  'unknown'
                                 }</s-badge>
                                 ${
                                   propInfo.optional
@@ -464,10 +473,10 @@ function generateSurfacePropCard(propName, propInfo, canonicalProp) {
                                   <s-stack gap="small-100">
                                     <s-text size="small" type="strong" color="critical">Specification Difference:</s-text>
                                     <s-text size="small">
-                                      Spec: <strong>${canonicalProp.type}${
+                                      Spec: <strong>${canonicalType}${
                                       canonicalProp.optional ? '?' : ''
                                     }</strong> vs 
-                                      Implementation: <strong>${propInfo.type}${
+                                      Implementation: <strong>${propType}${
                                       propInfo.optional ? '?' : ''
                                     }</strong>
                                     </s-text>

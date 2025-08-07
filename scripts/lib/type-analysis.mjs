@@ -3,6 +3,40 @@
 import ts from 'typescript';
 
 /**
+ * Build a map of type definitions for reference resolution
+ */
+function buildTypeDefinitionsMap(sourceFile) {
+  const typeDefinitions = new Map();
+
+  function visitTypeDefinitions(node) {
+    // Type aliases: export type SizeKeyword = 'small' | 'base' | ...
+    if (ts.isTypeAliasDeclaration(node)) {
+      const typeName = node.name.text;
+      typeDefinitions.set(typeName, {
+        kind: 'alias',
+        node,
+        type: node.type,
+      });
+    }
+
+    // Interface definitions: export interface MyInterface { ... }
+    if (ts.isInterfaceDeclaration(node)) {
+      const interfaceName = node.name.text;
+      typeDefinitions.set(interfaceName, {
+        kind: 'interface',
+        node,
+        members: node.members,
+      });
+    }
+
+    ts.forEachChild(node, visitTypeDefinitions);
+  }
+
+  visitTypeDefinitions(sourceFile);
+  return typeDefinitions;
+}
+
+/**
  * Extract detailed component props using TypeScript AST parsing
  */
 export function extractDetailedComponentProps(content, componentName) {
@@ -14,8 +48,16 @@ export function extractDetailedComponentProps(content, componentName) {
       true,
     );
 
+    // First pass: build type definitions map
+    const typeDefinitions = buildTypeDefinitionsMap(sourceFile);
+
     const propsDetails = {};
-    visitNodeForDetailedProps(sourceFile, componentName, propsDetails);
+    visitNodeForDetailedProps(
+      sourceFile,
+      componentName,
+      propsDetails,
+      typeDefinitions,
+    );
     return propsDetails;
   } catch (error) {
     console.warn(
@@ -29,7 +71,12 @@ export function extractDetailedComponentProps(content, componentName) {
 /**
  * Extract detailed prop information including types, descriptions, and defaults
  */
-function visitNodeForDetailedProps(node, componentName, propsDetails) {
+function visitNodeForDetailedProps(
+  node,
+  componentName,
+  propsDetails,
+  typeDefinitions,
+) {
   if (ts.isInterfaceDeclaration(node)) {
     const interfaceName = node.name.text;
 
@@ -48,7 +95,7 @@ function visitNodeForDetailedProps(node, componentName, propsDetails) {
           const propInfo = {
             name: propName,
             type: getTypeString(member.type),
-            expandedType: getExpandedTypeString(member.type),
+            expandedType: getExpandedTypeString(member.type, typeDefinitions),
             optional: Boolean(member.questionToken),
             description: extractJSDocComment(member),
             defaultValue: extractDefaultValue(member),
@@ -79,7 +126,12 @@ function visitNodeForDetailedProps(node, componentName, propsDetails) {
   }
 
   ts.forEachChild(node, (child) =>
-    visitNodeForDetailedProps(child, componentName, propsDetails),
+    visitNodeForDetailedProps(
+      child,
+      componentName,
+      propsDetails,
+      typeDefinitions,
+    ),
   );
 }
 
@@ -176,10 +228,43 @@ function getTypeString(typeNode) {
 }
 
 /**
+ * Resolve a type reference to its actual definition
+ */
+function resolveTypeReference(typeNode, typeDefinitions) {
+  if (!ts.isTypeReferenceNode(typeNode)) return null;
+
+  const typeName = ts.isIdentifier(typeNode.typeName)
+    ? typeNode.typeName.text
+    : null;
+  if (!typeName) return null;
+
+  // Handle Extract<T, U> utility type
+  if (
+    typeName === 'Extract' &&
+    typeNode.typeArguments &&
+    typeNode.typeArguments.length === 2
+  ) {
+    const [, extractedType] = typeNode.typeArguments;
+    const extractedString = getTypeString(extractedType);
+
+    // For Extract<SizeKeyword, 'small' | 'base'>, show the extracted values
+    return extractedString;
+  }
+
+  // Handle regular type aliases like SizeKeyword
+  const definition = typeDefinitions.get(typeName);
+  if (definition && definition.kind === 'alias') {
+    return getTypeString(definition.type);
+  }
+
+  return null;
+}
+
+/**
  * Get expanded type string with more detailed information
  * This is where we can enhance type expansion for better analysis
  */
-function getExpandedTypeString(typeNode) {
+function getExpandedTypeString(typeNode, typeDefinitions = new Map()) {
   if (!typeNode) return {type: 'any', details: {}};
 
   const result = {
@@ -193,10 +278,17 @@ function getExpandedTypeString(typeNode) {
       ? typeNode.typeName.text
       : 'unknown';
 
+    // Try to resolve the type reference
+    const resolvedType = resolveTypeReference(typeNode, typeDefinitions);
+    if (resolvedType) {
+      result.resolvedType = resolvedType;
+      result.type = resolvedType; // Update the display type
+    }
+
     // Handle type arguments (generics)
     if (typeNode.typeArguments && typeNode.typeArguments.length > 0) {
       result.details.typeArguments = typeNode.typeArguments.map((arg) =>
-        getExpandedTypeString(arg),
+        getExpandedTypeString(arg, typeDefinitions),
       );
     }
   }
@@ -204,7 +296,7 @@ function getExpandedTypeString(typeNode) {
   if (ts.isUnionTypeNode(typeNode)) {
     result.details.isUnion = true;
     result.details.unionTypes = typeNode.types.map((type) =>
-      getExpandedTypeString(type),
+      getExpandedTypeString(type, typeDefinitions),
     );
     result.details.unionCount = typeNode.types.length;
   }
@@ -212,19 +304,22 @@ function getExpandedTypeString(typeNode) {
   if (ts.isIntersectionTypeNode(typeNode)) {
     result.details.isIntersection = true;
     result.details.intersectionTypes = typeNode.types.map((type) =>
-      getExpandedTypeString(type),
+      getExpandedTypeString(type, typeDefinitions),
     );
   }
 
   if (ts.isArrayTypeNode(typeNode)) {
     result.details.isArray = true;
-    result.details.elementType = getExpandedTypeString(typeNode.elementType);
+    result.details.elementType = getExpandedTypeString(
+      typeNode.elementType,
+      typeDefinitions,
+    );
   }
 
   if (ts.isTupleTypeNode(typeNode)) {
     result.details.isTuple = true;
     result.details.tupleElements = typeNode.elements.map((element) =>
-      getExpandedTypeString(element),
+      getExpandedTypeString(element, typeDefinitions),
     );
   }
 
@@ -240,7 +335,7 @@ function getExpandedTypeString(typeNode) {
       ) {
         const propName = member.name.text;
         result.details.properties[propName] = {
-          type: getExpandedTypeString(member.type),
+          type: getExpandedTypeString(member.type, typeDefinitions),
           optional: Boolean(member.questionToken),
         };
       }
@@ -272,10 +367,22 @@ function getExpandedTypeString(typeNode) {
 
   if (ts.isConditionalTypeNode(typeNode)) {
     result.details.isConditional = true;
-    result.details.checkType = getExpandedTypeString(typeNode.checkType);
-    result.details.extendsType = getExpandedTypeString(typeNode.extendsType);
-    result.details.trueType = getExpandedTypeString(typeNode.trueType);
-    result.details.falseType = getExpandedTypeString(typeNode.falseType);
+    result.details.checkType = getExpandedTypeString(
+      typeNode.checkType,
+      typeDefinitions,
+    );
+    result.details.extendsType = getExpandedTypeString(
+      typeNode.extendsType,
+      typeDefinitions,
+    );
+    result.details.trueType = getExpandedTypeString(
+      typeNode.trueType,
+      typeDefinitions,
+    );
+    result.details.falseType = getExpandedTypeString(
+      typeNode.falseType,
+      typeDefinitions,
+    );
   }
 
   // Add complexity score for analysis

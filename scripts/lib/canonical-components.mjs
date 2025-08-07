@@ -10,6 +10,87 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 /**
+ * Load shared type definitions from ui-api-design
+ */
+async function loadSharedCanonicalTypes() {
+  const sharedTypes = {};
+
+  try {
+    // Load scales (SizeKeyword, ColorKeyword, etc.)
+    const scalesPath = join(
+      __dirname,
+      '../../node_modules/@shopify/ui-api-design/dist/shared/scales.d.ts',
+    );
+    const scalesContent = await readFile(scalesPath, 'utf-8');
+    sharedTypes.scales = scalesContent;
+
+    // Load theming (ToneKeyword, BackgroundColorKeyword, etc.)
+    try {
+      const themingPath = join(
+        __dirname,
+        '../../node_modules/@shopify/ui-api-design/dist/shared/theming.d.ts',
+      );
+      const themingContent = await readFile(themingPath, 'utf-8');
+      sharedTypes.theming = themingContent;
+    } catch (error) {
+      console.warn('⚠️  Could not load theming types:', error.message);
+    }
+
+    // Load global props if they exist
+    try {
+      const globalPath = join(
+        __dirname,
+        '../../node_modules/@shopify/ui-api-design/dist/shared/global.d.ts',
+      );
+      const globalContent = await readFile(globalPath, 'utf-8');
+      sharedTypes.global = globalContent;
+    } catch {
+      // Global file might not exist, that's okay
+    }
+  } catch (error) {
+    console.warn('⚠️  Could not load shared canonical types:', error.message);
+  }
+
+  return sharedTypes;
+}
+
+/**
+ * Merge component content with shared types for proper resolution
+ */
+function mergeContentWithSharedTypes(componentContent, sharedTypes) {
+  let mergedContent = componentContent;
+
+  // Add shared type definitions at the beginning
+  if (sharedTypes.scales) {
+    // Remove import statements and add the actual type definitions
+    mergedContent = mergedContent.replace(
+      /import\s*{\s*[^}]*\s*}\s*from\s*['"][^'"]*scales['"];?\s*/g,
+      '',
+    );
+    mergedContent = `${sharedTypes.scales}\n${mergedContent}`;
+  }
+
+  if (sharedTypes.theming) {
+    // Remove import statements and add the actual type definitions
+    mergedContent = mergedContent.replace(
+      /import\s*{\s*[^}]*\s*}\s*from\s*['"][^'"]*theming['"];?\s*/g,
+      '',
+    );
+    mergedContent = `${sharedTypes.theming}\n${mergedContent}`;
+  }
+
+  if (sharedTypes.global) {
+    mergedContent = mergedContent.replace(
+      /import\s*{\s*[^}]*\s*}\s*from\s*['"][^'"]*global['"];?\s*/g,
+      '',
+    );
+    mergedContent = `${sharedTypes.global}\n${mergedContent}`;
+  }
+
+  return mergedContent;
+}
+
+/**
  * Get canonical list of components from ui-api-design package
  */
 export async function getCanonicalComponents() {
@@ -55,6 +136,9 @@ export async function getCanonicalComponentSpecs() {
       '../../node_modules/@shopify/ui-api-design/dist/components',
     );
 
+    // First, load shared type definitions
+    const sharedTypes = await loadSharedCanonicalTypes();
+
     const componentDirs = await readdir(componentsDir, {withFileTypes: true});
 
     for (const dir of componentDirs) {
@@ -63,8 +147,15 @@ export async function getCanonicalComponentSpecs() {
         try {
           const specContent = await readFile(componentSpecPath, 'utf-8');
           const componentName = dir.name;
-          const specDetails = extractDetailedComponentProps(
+
+          // Merge component content with shared types for resolution
+          const mergedContent = mergeContentWithSharedTypes(
             specContent,
+            sharedTypes,
+          );
+
+          const specDetails = extractDetailedComponentProps(
+            mergedContent,
             componentName,
           );
           if (Object.keys(specDetails).length > 0) {

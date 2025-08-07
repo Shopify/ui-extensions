@@ -8,7 +8,7 @@ import {fileURLToPath} from 'url';
 import {execSync} from 'child_process';
 
 // Import our modular components
-import {SURFACES_DIR, UI_API_DESIGN_BASE_URL} from './lib/config.mjs';
+import {UI_API_DESIGN_BASE_URL} from './lib/config.mjs';
 import {extractAllDetailedComponentProps} from './lib/type-analysis.mjs';
 import {
   findComponentsFiles,
