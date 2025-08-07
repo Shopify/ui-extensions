@@ -14,41 +14,35 @@ const __dirname = dirname(__filename);
  */
 async function loadSharedCanonicalTypes() {
   const sharedTypes = {};
-
   try {
-    // Load scales (SizeKeyword, ColorKeyword, etc.)
-    const scalesPath = join(
+    const sharedDir = join(
       __dirname,
-      '../../node_modules/@shopify/ui-api-design/dist/shared/scales.d.ts',
+      '../../node_modules/@shopify/ui-api-design/dist/shared',
     );
-    const scalesContent = await readFile(scalesPath, 'utf-8');
-    sharedTypes.scales = scalesContent;
+    const sharedFiles = await readdir(sharedDir);
 
-    // Load theming (ToneKeyword, BackgroundColorKeyword, etc.)
-    try {
-      const themingPath = join(
-        __dirname,
-        '../../node_modules/@shopify/ui-api-design/dist/shared/theming.d.ts',
-      );
-      const themingContent = await readFile(themingPath, 'utf-8');
-      sharedTypes.theming = themingContent;
-    } catch (error) {
-      console.warn('⚠️  Could not load theming types:', error.message);
-    }
-
-    // Load global props if they exist
-    try {
-      const globalPath = join(
-        __dirname,
-        '../../node_modules/@shopify/ui-api-design/dist/shared/global.d.ts',
-      );
-      const globalContent = await readFile(globalPath, 'utf-8');
-      sharedTypes.global = globalContent;
-    } catch {
-      // Global file might not exist, that's okay
+    // Load all .d.ts files from the shared directory
+    for (const file of sharedFiles) {
+      if (file.endsWith('.d.ts')) {
+        try {
+          const filePath = join(sharedDir, file);
+          const content = await readFile(filePath, 'utf-8');
+          const fileName = file.replace('.d.ts', '');
+          sharedTypes[fileName] = content;
+          console.log(`📋 Loaded shared type: ${fileName}`);
+        } catch (error) {
+          console.warn(
+            `⚠️  Could not load shared type ${file}:`,
+            error.message,
+          );
+        }
+      }
     }
   } catch (error) {
-    console.warn('⚠️  Could not load shared canonical types:', error.message);
+    console.warn(
+      '⚠️  Could not load shared canonical types directory:',
+      error.message,
+    );
   }
 
   return sharedTypes;
@@ -60,31 +54,17 @@ async function loadSharedCanonicalTypes() {
 function mergeContentWithSharedTypes(componentContent, sharedTypes) {
   let mergedContent = componentContent;
 
-  // Add shared type definitions at the beginning
-  if (sharedTypes.scales) {
-    // Remove import statements and add the actual type definitions
-    mergedContent = mergedContent.replace(
-      /import\s*{\s*[^}]*\s*}\s*from\s*['"][^'"]*scales['"];?\s*/g,
-      '',
-    );
-    mergedContent = `${sharedTypes.scales}\n${mergedContent}`;
-  }
-
-  if (sharedTypes.theming) {
-    // Remove import statements and add the actual type definitions
-    mergedContent = mergedContent.replace(
-      /import\s*{\s*[^}]*\s*}\s*from\s*['"][^'"]*theming['"];?\s*/g,
-      '',
-    );
-    mergedContent = `${sharedTypes.theming}\n${mergedContent}`;
-  }
-
-  if (sharedTypes.global) {
-    mergedContent = mergedContent.replace(
-      /import\s*{\s*[^}]*\s*}\s*from\s*['"][^'"]*global['"];?\s*/g,
-      '',
-    );
-    mergedContent = `${sharedTypes.global}\n${mergedContent}`;
+  // Add all shared type definitions at the beginning
+  for (const [fileName, content] of Object.entries(sharedTypes)) {
+    if (content) {
+      // Remove import statements for this shared file and add the actual type definitions
+      const importRegex = new RegExp(
+        `import\\s*{\\s*[^}]*\\s*}\\s*from\\s*['"][^'"]*${fileName}['"];?\\s*`,
+        'g',
+      );
+      mergedContent = mergedContent.replace(importRegex, '');
+      mergedContent = `${content}\n${mergedContent}`;
+    }
   }
 
   return mergedContent;

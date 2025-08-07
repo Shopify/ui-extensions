@@ -100,12 +100,13 @@ function visitNodeForDetailedProps(
             description: extractJSDocComment(member),
             defaultValue: extractDefaultValue(member),
             tags: extractJSDocTags(member),
+            isSlot: isSlotProperty(propName, member.type),
           };
           propsDetails[propName] = propInfo;
         }
       }
 
-      // Handle extends clauses
+      // Handle extends clauses - resolve inherited properties
       if (node.heritageClauses) {
         for (const heritage of node.heritageClauses) {
           for (const type of heritage.types) {
@@ -118,6 +119,21 @@ function visitNodeForDetailedProps(
                 propsDetails._extends = [];
               }
               propsDetails._extends.push(extendedType);
+
+              // Recursively resolve inherited properties
+              const inheritedProps = resolveInheritedProperties(
+                extendedType,
+                typeDefinitions,
+                node.getSourceFile(),
+              );
+              for (const [propName, propInfo] of Object.entries(
+                inheritedProps,
+              )) {
+                // Only add if not already defined directly in this interface
+                if (!propsDetails[propName]) {
+                  propsDetails[propName] = propInfo;
+                }
+              }
             }
           }
         }
@@ -133,6 +149,108 @@ function visitNodeForDetailedProps(
       typeDefinitions,
     ),
   );
+}
+
+/**
+ * Recursively resolve inherited properties from extended interfaces
+ */
+function resolveInheritedProperties(
+  interfaceName,
+  typeDefinitions,
+  sourceFile,
+) {
+  const inheritedProps = {};
+
+  // First check if the interface is defined in the same source file
+  const localDefinition = typeDefinitions.get(interfaceName);
+  if (localDefinition && localDefinition.kind === 'interface') {
+    return extractPropsFromInterface(localDefinition.node, typeDefinitions);
+  }
+
+  // If not found locally, search through the entire source file
+  // This handles cases where interfaces are defined in merged shared types
+  function findInterface(node) {
+    if (ts.isInterfaceDeclaration(node) && node.name.text === interfaceName) {
+      const props = extractPropsFromInterface(node, typeDefinitions);
+      Object.assign(inheritedProps, props);
+    }
+    ts.forEachChild(node, findInterface);
+  }
+
+  findInterface(sourceFile);
+  return inheritedProps;
+}
+
+/**
+ * Extract properties from an interface node
+ */
+function extractPropsFromInterface(interfaceNode, typeDefinitions) {
+  const props = {};
+
+  // Extract direct members
+  for (const member of interfaceNode.members) {
+    if (
+      ts.isPropertySignature(member) &&
+      member.name &&
+      ts.isIdentifier(member.name)
+    ) {
+      const propName = member.name.text;
+      const propInfo = {
+        name: propName,
+        type: getTypeString(member.type),
+        expandedType: getExpandedTypeString(member.type, typeDefinitions),
+        optional: Boolean(member.questionToken),
+        description: extractJSDocComment(member),
+        defaultValue: extractDefaultValue(member),
+        tags: extractJSDocTags(member),
+        isSlot: isSlotProperty(propName, member.type),
+      };
+      props[propName] = propInfo;
+    }
+  }
+
+  // Handle inheritance in the extended interface
+  if (interfaceNode.heritageClauses) {
+    for (const heritage of interfaceNode.heritageClauses) {
+      for (const type of heritage.types) {
+        if (
+          ts.isExpressionWithTypeArguments(type) &&
+          ts.isIdentifier(type.expression)
+        ) {
+          const extendedType = type.expression.text;
+          const inheritedProps = resolveInheritedProperties(
+            extendedType,
+            typeDefinitions,
+            interfaceNode.getSourceFile(),
+          );
+          // Add inherited props, but don't override direct props
+          for (const [propName, propInfo] of Object.entries(inheritedProps)) {
+            if (!props[propName]) {
+              props[propName] = propInfo;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  return props;
+}
+
+/**
+ * Determine if a property is a slot based on its type
+ */
+function isSlotProperty(propName, typeNode) {
+  // Check if type is ComponentChildren or similar
+  const typeString = getTypeString(typeNode);
+  const isChildrenType =
+    typeString === 'ComponentChildren' ||
+    typeString.includes('ComponentChildren') ||
+    typeString === 'ReactNode' ||
+    typeString.includes('ReactNode');
+
+  // A property is a slot if it's typed as ComponentChildren/ReactNode
+  return isChildrenType;
 }
 
 /**

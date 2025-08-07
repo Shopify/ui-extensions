@@ -267,6 +267,12 @@ function generateCanonicalSpecSection(componentName, canonicalProps) {
     return '';
   }
 
+  // Separate slots from regular props
+  const slots = canonicalPropEntries.filter(([, propInfo]) => propInfo.isSlot);
+  const regularProps = canonicalPropEntries.filter(
+    ([, propInfo]) => !propInfo.isSlot,
+  );
+
   return `<!-- Canonical Specification -->
       <s-section heading="📋 Canonical Specification">
         <s-stack gap="base">
@@ -274,14 +280,40 @@ function generateCanonicalSpecSection(componentName, canonicalProps) {
             This is the official specification from the ui-api-design package.
           </s-text>
           
-          <s-stack gap="small-200">
-            ${canonicalPropEntries
-              .sort(([propA], [propB]) => propA.localeCompare(propB))
-              .map(([propName, propInfo]) =>
-                generatePropCard(propName, propInfo),
-              )
-              .join('')}
-          </s-stack>
+          ${
+            regularProps.length > 0
+              ? `
+            <s-stack gap="small-200">
+              <s-heading level="3">Props</s-heading>
+              ${regularProps
+                .sort(([propA], [propB]) => propA.localeCompare(propB))
+                .map(([propName, propInfo]) =>
+                  generatePropCard(propName, propInfo),
+                )
+                .join('')}
+            </s-stack>
+          `
+              : ''
+          }
+          
+          ${
+            slots.length > 0
+              ? `
+            <s-stack gap="small-200">
+              <s-heading level="3">Slots</s-heading>
+              <s-text size="small" color="subdued">
+                Slots accept child components or content to be rendered within the component.
+              </s-text>
+              ${slots
+                .sort(([propA], [propB]) => propA.localeCompare(propB))
+                .map(([propName, propInfo]) =>
+                  generateSlotCard(propName, propInfo),
+                )
+                .join('')}
+            </s-stack>
+          `
+              : ''
+          }
         </s-stack>
       </s-section>`;
 }
@@ -331,14 +363,19 @@ function generateSurfaceSection(surface, props, canonicalProps) {
     ([key]) => !key.startsWith('_'),
   );
 
+  // Separate slots from regular props
+  const slots = propsEntries.filter(([, propInfo]) => propInfo.isSlot);
+  const regularProps = propsEntries.filter(([, propInfo]) => !propInfo.isSlot);
+
   return `<s-stack gap="base">
                 <s-heading level="3">${surface}</s-heading>
                 
                 ${
-                  propsEntries.length > 0
+                  regularProps.length > 0
                     ? `
                   <s-stack gap="small-200">
-                    ${propsEntries
+                    <s-heading level="4">Props</s-heading>
+                    ${regularProps
                       .sort(([propA], [propB]) => propA.localeCompare(propB))
                       .map(([propName, propInfo]) =>
                         generateSurfacePropCard(
@@ -350,7 +387,33 @@ function generateSurfaceSection(surface, props, canonicalProps) {
                       .join('')}
                   </s-stack>
                 `
-                    : '<s-text color="subdued">No detailed props information available for this surface.</s-text>'
+                    : ''
+                }
+                
+                ${
+                  slots.length > 0
+                    ? `
+                  <s-stack gap="small-200">
+                    <s-heading level="4">Slots</s-heading>
+                    ${slots
+                      .sort(([propA], [propB]) => propA.localeCompare(propB))
+                      .map(([propName, propInfo]) =>
+                        generateSurfaceSlotCard(
+                          propName,
+                          propInfo,
+                          canonicalProps[propName],
+                        ),
+                      )
+                      .join('')}
+                  </s-stack>
+                `
+                    : ''
+                }
+                
+                ${
+                  propsEntries.length === 0
+                    ? '<s-text color="subdued">No detailed props information available for this surface.</s-text>'
+                    : ''
                 }
               </s-stack>`;
 }
@@ -401,6 +464,54 @@ function generatePropCard(propName, propInfo) {
                     }
                   </s-stack>
                 </s-box>`;
+}
+
+/**
+ * Generate a slot card for displaying slot information
+ */
+function generateSlotCard(slotName, slotInfo) {
+  return `<s-box padding="base" background="success" borderRadius="base">
+                        <s-stack gap="small-200">
+                          <s-stack direction="inline" gap="small-200" alignItems="center">
+                            <s-text type="strong">${slotName}${
+    slotInfo.optional ? '?' : ''
+  }</s-text>
+                            <s-badge tone="success" size="small">Slot</s-badge>
+                            <s-badge tone="info" size="small">${
+                              slotInfo.expandedType?.resolvedType ||
+                              slotInfo.type ||
+                              'ComponentChildren'
+                            }</s-badge>
+                            ${
+                              slotInfo.optional
+                                ? '<s-badge tone="neutral" size="small">Optional</s-badge>'
+                                : '<s-badge tone="warning" size="small">Required</s-badge>'
+                            }
+                          </s-stack>
+                          
+                          ${
+                            slotInfo.description
+                              ? `<s-text>${slotInfo.description}</s-text>`
+                              : ''
+                          }
+                          
+                          ${generateExpandedTypeInfo(slotInfo)}
+                          ${generateJSDocTags(slotInfo.tags)}
+                          
+                          ${
+                            slotInfo.defaultValue
+                              ? `
+                            <s-stack gap="small-100">
+                              <s-text size="small" type="strong" color="subdued">Default:</s-text>
+                              <s-box padding="small-200" background="strong" borderRadius="small">
+                                <s-text size="small" style="font-family: monospace;">${slotInfo.defaultValue}</s-text>
+                              </s-box>
+                            </s-stack>
+                          `
+                              : ''
+                          }
+                        </s-stack>
+                      </s-box>`;
 }
 
 /**
@@ -481,6 +592,95 @@ function generateSurfacePropCard(propName, propInfo, canonicalProp) {
                                   <s-text size="small" type="strong" color="subdued">Default:</s-text>
                                   <s-box padding="small-200" background="strong" borderRadius="small">
                                     <s-text size="small" style="font-family: monospace;">${propInfo.defaultValue}</s-text>
+                                  </s-box>
+                                </s-stack>
+                              `
+                                  : ''
+                              }
+                            </s-stack>
+                          </s-box>`;
+}
+
+/**
+ * Generate a slot card for surface implementations with comparison
+ */
+function generateSurfaceSlotCard(slotName, slotInfo, canonicalSlot) {
+  // Use resolved types for comparison
+  const slotType = slotInfo.expandedType?.resolvedType || slotInfo.type;
+  const canonicalType =
+    canonicalSlot?.expandedType?.resolvedType || canonicalSlot?.type;
+
+  const matchesSpec =
+    canonicalSlot &&
+    canonicalType === slotType &&
+    canonicalSlot.optional === slotInfo.optional;
+
+  const backgroundColor = matchesSpec ? 'success' : 'caution';
+
+  let specBadge = '';
+  if (canonicalSlot) {
+    if (matchesSpec) {
+      specBadge = '<s-badge tone="success" size="small">Matches spec</s-badge>';
+    } else {
+      specBadge =
+        '<s-badge tone="warning" size="small">Differs from spec</s-badge>';
+    }
+  }
+
+  return `<s-box padding="base" background="${backgroundColor}" borderRadius="base">
+                            <s-stack gap="small-200">
+                              <s-stack direction="inline" gap="small-200" alignItems="center">
+                                <s-text type="strong">${slotName}${
+    slotInfo.optional ? '?' : ''
+  }</s-text>
+                                <s-badge tone="success" size="small">Slot</s-badge>
+                                <s-badge tone="info" size="small">${
+                                  slotInfo.expandedType?.resolvedType ||
+                                  slotInfo.type ||
+                                  'ComponentChildren'
+                                }</s-badge>
+                                ${
+                                  slotInfo.optional
+                                    ? '<s-badge tone="neutral" size="small">Optional</s-badge>'
+                                    : '<s-badge tone="warning" size="small">Required</s-badge>'
+                                }
+                                
+                                ${
+                                  canonicalSlot
+                                    ? ''
+                                    : '<s-badge tone="info" size="small">Surface-specific</s-badge>'
+                                }
+                                
+                                ${specBadge}
+                              </s-stack>
+                              
+                              ${
+                                slotInfo.description
+                                  ? `<s-text>${slotInfo.description}</s-text>`
+                                  : ''
+                              }
+                              
+                              ${generateExpandedTypeInfo(slotInfo)}
+                              ${generateJSDocTags(slotInfo.tags)}
+                              
+                              ${
+                                canonicalSlot && !matchesSpec
+                                  ? generateSpecDiff(
+                                      canonicalSlot,
+                                      slotInfo,
+                                      canonicalType,
+                                      slotType,
+                                    )
+                                  : ''
+                              }
+                              
+                              ${
+                                slotInfo.defaultValue
+                                  ? `
+                                <s-stack gap="small-100">
+                                  <s-text size="small" type="strong" color="subdued">Default:</s-text>
+                                  <s-box padding="small-200" background="strong" borderRadius="small">
+                                    <s-text size="small" style="font-family: monospace;">${slotInfo.defaultValue}</s-text>
                                   </s-box>
                                 </s-stack>
                               `
