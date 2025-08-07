@@ -375,7 +375,6 @@ function generatePropCard(propName, propInfo) {
                           ? '<s-badge tone="neutral" size="small">Optional</s-badge>'
                           : '<s-badge tone="warning" size="small">Required</s-badge>'
                       }
-                      ${generateComplexityBadge(propInfo)}
                     </s-stack>
                     
                     ${
@@ -436,8 +435,6 @@ function generateSurfacePropCard(propName, propInfo, canonicalProp) {
                                     ? '<s-badge tone="neutral" size="small">Optional</s-badge>'
                                     : '<s-badge tone="warning" size="small">Required</s-badge>'
                                 }
-                                
-                                ${generateComplexityBadge(propInfo)}
                                 
                                 ${
                                   canonicalProp
@@ -500,24 +497,6 @@ function generateSurfacePropCard(propName, propInfo, canonicalProp) {
                               }
                             </s-stack>
                           </s-box>`;
-}
-
-/**
- * Generate complexity badge based on type complexity
- */
-function generateComplexityBadge(propInfo) {
-  if (!propInfo.expandedType?.details?.complexity) return '';
-
-  const complexity = propInfo.expandedType.details.complexity;
-  if (complexity <= 3) return '';
-
-  let tone = 'info';
-  if (complexity > 10) {
-    tone = 'critical';
-  } else if (complexity > 6) {
-    tone = 'warning';
-  }
-  return `<s-badge tone="${tone}" size="small">Complex (${complexity})</s-badge>`;
 }
 
 /**
