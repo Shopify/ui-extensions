@@ -685,7 +685,10 @@ function generateStatusCell(surfaceProp, canonicalProp, surface) {
           <s-text size="small" color="warning">Differs</s-text>
         </s-stack>
         <s-stack gap="small-50">
-          <s-badge tone="critical" size="small">${surfaceDisplay}</s-badge>
+          <s-stack gap="small-50">
+            <s-text size="small" color="subdued" type="strong">Surface implements:</s-text>
+            ${parseTypeIntoBadges(surfaceDisplay)}
+          </s-stack>
           ${
             optionalityDiffers
               ? `<s-text size="small" color="subdued">${

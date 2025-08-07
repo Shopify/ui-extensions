@@ -29,6 +29,55 @@ function buildTypeDefinitionsMap(sourceFile) {
       });
     }
 
+    // Variable declarations: const privateIconArray = ["icon1", "icon2", ...]
+    // Also handles: export declare const privateIconArray: readonly ["icon1", "icon2", ...]
+    if (ts.isVariableStatement(node)) {
+      for (const declaration of node.declarationList.declarations) {
+        if (ts.isIdentifier(declaration.name)) {
+          const varName = declaration.name.text;
+
+          // Handle array literals in initializer
+          if (
+            declaration.initializer &&
+            ts.isArrayLiteralExpression(declaration.initializer)
+          ) {
+            const values = declaration.initializer.elements
+              .filter(ts.isStringLiteral)
+              .map((element) => `'${element.text}'`)
+              .join(' | ');
+
+            typeDefinitions.set(varName, {
+              kind: 'const',
+              node: declaration,
+              value: values,
+            });
+          }
+
+          // Handle declared constants with type annotations like: declare const array: readonly ["a", "b"]
+          else if (
+            declaration.type &&
+            ts.isTypeOperatorNode(declaration.type) &&
+            declaration.type.operator === ts.SyntaxKind.ReadonlyKeyword &&
+            ts.isTupleTypeNode(declaration.type.type)
+          ) {
+            const values = declaration.type.type.elements
+              .filter(ts.isLiteralTypeNode)
+              .filter((element) => ts.isStringLiteral(element.literal))
+              .map((element) => `'${element.literal.text}'`)
+              .join(' | ');
+
+            if (values) {
+              typeDefinitions.set(varName, {
+                kind: 'const',
+                node: declaration,
+                value: values,
+              });
+            }
+          }
+        }
+      }
+    }
+
     ts.forEachChild(node, visitTypeDefinitions);
   }
 
@@ -372,6 +421,35 @@ function resolveTypeReference(typeNode, typeDefinitions) {
   // Handle regular type aliases like SizeKeyword
   const definition = typeDefinitions.get(typeName);
   if (definition && definition.kind === 'alias') {
+    return getTypeString(definition.type);
+  }
+
+  // Handle indexed access types like IconType = (typeof array)[number]
+  if (definition && definition.kind === 'alias' && definition.type) {
+    // Check if the type is an indexed access type
+    if (ts.isIndexedAccessTypeNode(definition.type)) {
+      const objectType = definition.type.objectType;
+      const indexType = definition.type.indexType;
+
+      // Check for (typeof array)[number] pattern
+      if (
+        ts.isTypeOperatorNode(objectType) &&
+        objectType.operator === ts.SyntaxKind.TypeOfKeyword &&
+        ts.isTypeReferenceNode(objectType.type) &&
+        ts.isIdentifier(objectType.type.typeName) &&
+        ts.isLiteralTypeNode(indexType) &&
+        ts.isNumericLiteral(indexType.literal) &&
+        indexType.literal.text === 'number'
+      ) {
+        const arrayName = objectType.type.typeName.text;
+        const arrayDef = typeDefinitions.get(arrayName);
+        if (arrayDef && arrayDef.kind === 'const' && arrayDef.value) {
+          return arrayDef.value;
+        }
+      }
+    }
+
+    // Fallback to basic type string
     return getTypeString(definition.type);
   }
 
