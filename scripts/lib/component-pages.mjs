@@ -114,12 +114,11 @@ function generateComponentPageHTML(componentName, data) {
         surfaceProps,
       )}
 
-      ${generateCanonicalSpecSection(componentName, canonicalProps)}
-
-      ${generateSurfaceImplementationsSection(
-        surfaces,
-        surfaceProps,
+      ${generateUnifiedPropsComparison(
+        componentName,
         canonicalProps,
+        surfaceProps,
+        surfaces,
       )}
 
       ${generateFooter(metadata)}
@@ -256,41 +255,76 @@ function generateImplementationOverview(
 }
 
 /**
- * Generate canonical specification section
+ * Generate unified props comparison section
  */
-function generateCanonicalSpecSection(componentName, canonicalProps) {
-  const canonicalPropEntries = Object.entries(canonicalProps).filter(
-    ([key]) => !key.startsWith('_'),
-  );
+function generateUnifiedPropsComparison(
+  componentName,
+  canonicalProps,
+  surfaceProps,
+  surfaces,
+) {
+  // Get all unique prop names from canonical and all surfaces
+  const allPropNames = new Set();
 
-  if (canonicalPropEntries.length === 0) {
-    return '';
+  // Add canonical prop names
+  Object.keys(canonicalProps).forEach((prop) => {
+    if (!prop.startsWith('_')) {
+      allPropNames.add(prop);
+    }
+  });
+
+  // Add surface prop names
+  surfaces.forEach((surface) => {
+    const props = surfaceProps[surface] || {};
+    Object.keys(props).forEach((prop) => {
+      if (!prop.startsWith('_')) {
+        allPropNames.add(prop);
+      }
+    });
+  });
+
+  if (allPropNames.size === 0) {
+    return '<s-section heading="📋 Properties"><s-text color="subdued">No properties found for this component.</s-text></s-section>';
   }
 
-  // Separate slots from regular props
-  const slots = canonicalPropEntries.filter(([, propInfo]) => propInfo.isSlot);
-  const regularProps = canonicalPropEntries.filter(
-    ([, propInfo]) => !propInfo.isSlot,
-  );
+  // Separate props and slots
+  const regularProps = [];
+  const slots = [];
 
-  return `<!-- Canonical Specification -->
-      <s-section heading="📋 Canonical Specification">
+  Array.from(allPropNames)
+    .sort()
+    .forEach((propName) => {
+      const canonicalProp = canonicalProps[propName];
+      const isSlot =
+        canonicalProp?.isSlot ||
+        surfaces.some((surface) => surfaceProps[surface]?.[propName]?.isSlot);
+
+      if (isSlot) {
+        slots.push(propName);
+      } else {
+        regularProps.push(propName);
+      }
+    });
+
+  return `<!-- Properties Comparison Table -->
+      <s-section heading="📋 Properties & Implementation Matrix">
         <s-stack gap="base">
           <s-text color="subdued">
-            This is the official specification from the ui-api-design package.
+            Quick comparison matrix showing how each surface implements the canonical specification.
           </s-text>
           
           ${
             regularProps.length > 0
               ? `
             <s-stack gap="small-200">
-              <s-heading level="3">Props</s-heading>
-              ${regularProps
-                .sort(([propA], [propB]) => propA.localeCompare(propB))
-                .map(([propName, propInfo]) =>
-                  generatePropCard(propName, propInfo),
-                )
-                .join('')}
+              <s-heading level="3">Props (${regularProps.length})</s-heading>
+              ${generateComparisonTable(
+                regularProps,
+                canonicalProps,
+                surfaceProps,
+                surfaces,
+                false,
+              )}
             </s-stack>
           `
               : ''
@@ -300,16 +334,14 @@ function generateCanonicalSpecSection(componentName, canonicalProps) {
             slots.length > 0
               ? `
             <s-stack gap="small-200">
-              <s-heading level="3">Slots</s-heading>
-              <s-text size="small" color="subdued">
-                Slots accept child components or content to be rendered within the component.
-              </s-text>
-              ${slots
-                .sort(([propA], [propB]) => propA.localeCompare(propB))
-                .map(([propName, propInfo]) =>
-                  generateSlotCard(propName, propInfo),
-                )
-                .join('')}
+              <s-heading level="3">Slots (${slots.length})</s-heading>
+              ${generateComparisonTable(
+                slots,
+                canonicalProps,
+                surfaceProps,
+                surfaces,
+                true,
+              )}
             </s-stack>
           `
               : ''
@@ -317,6 +349,401 @@ function generateCanonicalSpecSection(componentName, canonicalProps) {
         </s-stack>
       </s-section>`;
 }
+
+/**
+ * Generate unified prop card showing canonical spec and all surface implementations
+ */
+function generateUnifiedPropCard(
+  propName,
+  canonicalProp,
+  surfaceProps,
+  surfaces,
+) {
+  const isSlot =
+    canonicalProp?.isSlot ||
+    surfaces.some((surface) => surfaceProps[surface]?.[propName]?.isSlot);
+
+  // Get surface implementations for this prop
+  const surfaceImplementations = surfaces
+    .map((surface) => ({
+      surface,
+      prop: surfaceProps[surface]?.[propName] || null,
+    }))
+    .filter((impl) => impl.prop !== null);
+
+  // Determine overall implementation status
+  const implementedSurfaces = surfaceImplementations.length;
+  const totalSurfaces = surfaces.length;
+  const allMatch = surfaceImplementations.every((impl) => {
+    if (!canonicalProp) return false;
+    const propType = impl.prop.expandedType?.resolvedType || impl.prop.type;
+    const canonicalType =
+      canonicalProp.expandedType?.resolvedType || canonicalProp.type;
+    return (
+      canonicalType === propType &&
+      canonicalProp.optional === impl.prop.optional
+    );
+  });
+
+  let cardColor = 'base';
+  let statusBadge = '';
+
+  if (!canonicalProp) {
+    cardColor = 'info';
+    statusBadge =
+      '<s-badge tone="info" size="small">Surface-specific</s-badge>';
+  } else if (implementedSurfaces === 0) {
+    cardColor = 'critical';
+    statusBadge =
+      '<s-badge tone="critical" size="small">Not implemented</s-badge>';
+  } else if (implementedSurfaces < totalSurfaces) {
+    cardColor = 'warning';
+    statusBadge = `<s-badge tone="warning" size="small">Partial (${implementedSurfaces}/${totalSurfaces})</s-badge>`;
+  } else if (allMatch) {
+    cardColor = 'success';
+    statusBadge =
+      '<s-badge tone="success" size="small">Fully implemented</s-badge>';
+  } else {
+    cardColor = 'caution';
+    statusBadge =
+      '<s-badge tone="warning" size="small">Implementation differs</s-badge>';
+  }
+
+  return `<s-box padding="base" background="${cardColor}" borderRadius="base">
+    <s-stack gap="base">
+      <!-- Property Header -->
+      <s-stack direction="inline" gap="small-200" alignItems="center" justifyContent="space-between">
+        <s-stack direction="inline" gap="small-200" alignItems="center">
+          <s-text type="strong" size="large">${propName}${
+    canonicalProp?.optional ? '?' : ''
+  }</s-text>
+          ${
+            isSlot
+              ? '<s-badge tone="success" size="small">Slot</s-badge>'
+              : '<s-badge tone="neutral" size="small">Prop</s-badge>'
+          }
+          ${statusBadge}
+        </s-stack>
+        <s-text size="small" color="subdued">${implementedSurfaces}/${totalSurfaces} surfaces</s-text>
+      </s-stack>
+      
+      <!-- Canonical Specification -->
+      ${
+        canonicalProp
+          ? `
+        <s-stack gap="small-200">
+          <s-heading level="4">📋 Canonical Specification</s-heading>
+          <s-box padding="small-200" background="base" borderRadius="small">
+            <s-stack gap="small-200">
+              <s-stack direction="inline" gap="small-200" alignItems="center">
+                <s-badge tone="info" size="small">${
+                  canonicalProp.expandedType?.resolvedType ||
+                  canonicalProp.type ||
+                  'unknown'
+                }</s-badge>
+                ${
+                  canonicalProp.optional
+                    ? '<s-badge tone="neutral" size="small">Optional</s-badge>'
+                    : '<s-badge tone="warning" size="small">Required</s-badge>'
+                }
+              </s-stack>
+              ${
+                canonicalProp.description
+                  ? `<s-text size="small">${canonicalProp.description}</s-text>`
+                  : ''
+              }
+              ${
+                canonicalProp.defaultValue
+                  ? `<s-text size="small" color="subdued"><strong>Default:</strong> ${canonicalProp.defaultValue}</s-text>`
+                  : ''
+              }
+            </s-stack>
+          </s-box>
+        </s-stack>
+      `
+          : ''
+      }
+      
+      <!-- Surface Implementations -->
+      ${
+        implementedSurfaces > 0
+          ? `
+        <s-stack gap="small-200">
+          <s-heading level="4">🔧 Surface Implementations</s-heading>
+          <s-grid columns="2" gap="small-200">
+            ${surfaceImplementations
+              .map((impl) =>
+                generateSurfaceImplSummary(
+                  impl.surface,
+                  impl.prop,
+                  canonicalProp,
+                ),
+              )
+              .join('')}
+          </s-grid>
+        </s-stack>
+      `
+          : ''
+      }
+      
+      ${
+        implementedSurfaces < totalSurfaces
+          ? `
+        <s-stack gap="small-100">
+          <s-text size="small" type="strong" color="subdued">Missing from:</s-text>
+          <s-stack direction="inline" gap="small-100">
+            ${surfaces
+              .filter((surface) => !surfaceProps[surface]?.[propName])
+              .map(
+                (surface) =>
+                  `<s-badge tone="subdued" size="small">${surface}</s-badge>`,
+              )
+              .join('')}
+          </s-stack>
+        </s-stack>
+      `
+          : ''
+      }
+    </s-stack>
+  </s-box>`;
+}
+
+/**
+ * Generate comparison table for properties
+ */
+function generateComparisonTable(
+  propNames,
+  canonicalProps,
+  surfaceProps,
+  surfaces,
+  isSlots,
+) {
+  if (propNames.length === 0) return '';
+  return `<s-table>
+    <s-table-header-row>
+      <s-table-header>Property</s-table-header>
+      <s-table-header>Canonical Spec</s-table-header>
+      ${surfaces
+        .map((surface) => `<s-table-header>${surface}</s-table-header>`)
+        .join('')}
+    </s-table-header-row>
+    <s-table-body>
+      ${propNames
+        .map((propName) =>
+          generateTableRow(
+            propName,
+            canonicalProps[propName],
+            surfaceProps,
+            surfaces,
+            isSlots,
+          ),
+        )
+        .join('')}
+    </s-table-body>
+  </s-table>`;
+}
+
+/**
+ * Parse type string and split union types into individual badges
+ */
+function parseTypeIntoBadges(typeString) {
+  if (!typeString)
+    return '<s-badge tone="subdued" size="small">unknown</s-badge>';
+
+  // Check if it's a union type (contains |)
+  if (typeString.includes(' | ')) {
+    const isOptional = typeString.endsWith('?');
+    const baseType = isOptional ? typeString.slice(0, -1) : typeString;
+
+    // Split by | and clean up each part
+    const unionParts = baseType.split(' | ').map((part) => part.trim());
+
+    const badges = unionParts
+      .map((part) => `<s-badge tone="info" size="small">${part}</s-badge>`)
+      .join('');
+
+    const optionalBadge = isOptional
+      ? '<s-badge tone="subdued" size="small">optional</s-badge>'
+      : '';
+
+    return `<s-stack direction="inline" gap="small-200" wrap>${badges}${optionalBadge}</s-stack>`;
+  }
+
+  // For non-union types, just return a single badge
+  const isOptional = typeString.endsWith('?');
+  const baseType = isOptional ? typeString.slice(0, -1) : typeString;
+  const optionalBadge = isOptional
+    ? '<s-badge tone="subdued" size="small">optional</s-badge>'
+    : '';
+
+  return `<s-stack direction="inline" gap="small-200"><s-badge tone="info" size="small">${baseType}</s-badge>${optionalBadge}</s-stack>`;
+}
+
+/**
+ * Generate a single table row for property comparison
+ */
+function generateTableRow(
+  propName,
+  canonicalProp,
+  surfaceProps,
+  surfaces,
+  isSlot,
+) {
+  const canonicalType =
+    canonicalProp?.expandedType?.resolvedType || canonicalProp?.type;
+  const canonicalDisplay = canonicalProp
+    ? parseTypeIntoBadges(
+        `${canonicalType}${canonicalProp.optional ? '?' : ''}`,
+      )
+    : '<s-badge tone="subdued" size="small">Not in spec</s-badge>';
+
+  // Get description from canonical prop if available
+  const description = canonicalProp?.description;
+  const hasDescription = description && description.trim();
+
+  return `<s-table-row>
+    <s-table-cell>
+      <s-stack gap="small-100">
+        <s-stack direction="inline" gap="small-100" alignItems="center">
+          <s-text type="strong">${propName}</s-text>
+          ${isSlot ? '<s-badge size="small" tone="success">SLOT</s-badge>' : ''}
+        </s-stack>
+        ${
+          hasDescription
+            ? `<s-text size="small" color="subdued">${description}</s-text>`
+            : ''
+        }
+      </s-stack>
+    </s-table-cell>
+    <s-table-cell>
+      ${canonicalDisplay}
+    </s-table-cell>
+    ${surfaces
+      .map((surface) => {
+        const surfaceProp = surfaceProps[surface]?.[propName];
+        return generateStatusCell(surfaceProp, canonicalProp, surface);
+      })
+      .join('')}
+  </s-table-row>`;
+}
+
+/**
+ * Generate status cell for surface implementation
+ */
+function generateStatusCell(surfaceProp, canonicalProp, surface) {
+  if (!surfaceProp) {
+    return `<s-table-cell>
+      <s-stack gap="small-100" alignItems="center">
+        <s-icon type="close" color="critical" />
+        <s-text size="small" color="critical">Missing</s-text>
+      </s-stack>
+    </s-table-cell>`;
+  }
+
+  if (!canonicalProp) {
+    const surfaceType =
+      surfaceProp.expandedType?.resolvedType || surfaceProp.type;
+    const surfaceDisplay = `${surfaceType}${surfaceProp.optional ? '?' : ''}`;
+
+    return `<s-table-cell>
+      <s-stack gap="small-100">
+        <s-stack direction="inline" gap="small-100" alignItems="center">
+          <s-icon type="info" color="info" />
+          <s-text size="small" color="info">Surface-only</s-text>
+        </s-stack>
+        <s-badge tone="info" size="small">${surfaceDisplay}</s-badge>
+      </s-stack>
+    </s-table-cell>`;
+  }
+
+  const surfaceType =
+    surfaceProp.expandedType?.resolvedType || surfaceProp.type;
+  const canonicalType =
+    canonicalProp.expandedType?.resolvedType || canonicalProp.type;
+  const matches =
+    canonicalType === surfaceType &&
+    canonicalProp.optional === surfaceProp.optional;
+
+  if (matches) {
+    return `<s-table-cell>
+      <s-stack gap="small-100" alignItems="center">
+        <s-icon type="check" color="success" />
+        <s-text size="small" color="success">Match</s-text>
+      </s-stack>
+    </s-table-cell>`;
+  } else {
+    // Build cleaner visual diff
+    const surfaceDisplay = `${surfaceType}${surfaceProp.optional ? '?' : ''}`;
+
+    // Show the surface type and optionality differences visually
+    const optionalityDiffers = canonicalProp.optional !== surfaceProp.optional;
+
+    return `<s-table-cell>
+      <s-stack gap="small-100">
+        <s-stack direction="inline" gap="small-100" alignItems="center">
+          <s-icon type="alert" color="warning" />
+          <s-text size="small" color="warning">Differs</s-text>
+        </s-stack>
+        <s-stack gap="small-50">
+          <s-badge tone="critical" size="small">${surfaceDisplay}</s-badge>
+          ${
+            optionalityDiffers
+              ? `<s-text size="small" color="subdued">${
+                  surfaceProp.optional
+                    ? 'Surface is optional, spec requires it'
+                    : 'Surface requires, spec is optional'
+                }</s-text>`
+              : ''
+          }
+        </s-stack>
+      </s-stack>
+    </s-table-cell>`;
+  }
+}
+
+/**
+ * Generate compact surface implementation summary
+ */
+function generateSurfaceImplSummary(surface, prop, canonicalProp) {
+  const propType = prop.expandedType?.resolvedType || prop.type;
+  const canonicalType =
+    canonicalProp?.expandedType?.resolvedType || canonicalProp?.type;
+
+  const matches =
+    canonicalProp &&
+    canonicalType === propType &&
+    canonicalProp.optional === prop.optional;
+
+  return `<s-box padding="small-200" background="${
+    matches ? 'success' : 'caution'
+  }" borderRadius="small">
+    <s-stack gap="small-100">
+      <s-stack direction="inline" gap="small-100" alignItems="center" justifyContent="space-between">
+        <s-text type="strong" size="small">${surface}</s-text>
+        ${
+          matches
+            ? '<s-icon type="check" color="success" />'
+            : '<s-icon type="alert" color="warning" />'
+        }
+      </s-stack>
+      <s-stack direction="inline" gap="small-100" alignItems="center">
+        <s-badge tone="info" size="small">${propType || 'unknown'}</s-badge>
+        ${
+          prop.optional
+            ? '<s-badge tone="neutral" size="small">Optional</s-badge>'
+            : '<s-badge tone="warning" size="small">Required</s-badge>'
+        }
+      </s-stack>
+      ${
+        !matches && canonicalProp
+          ? generateSpecDiff(canonicalProp, prop, canonicalType, propType)
+          : ''
+      }
+    </s-stack>
+  </s-box>`;
+}
+
+// REMOVED: generateCanonicalSpecSection and generateSurfaceImplementationsSection (replaced by unified comparison)
 
 /**
  * Generate surface implementations section
