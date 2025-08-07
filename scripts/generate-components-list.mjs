@@ -6,6 +6,8 @@ import {readdir, readFile, writeFile, access, mkdir} from 'fs/promises';
 import {join, dirname} from 'path';
 import {fileURLToPath} from 'url';
 import {execSync} from 'child_process';
+// Add TypeScript for AST parsing
+import ts from 'typescript';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -210,6 +212,177 @@ function extractWebComponents(content) {
   return Array.from(components).sort();
 }
 
+// Helper function to extract property names from union types
+function extractPropsFromUnionType(unionType, propsSet) {
+  if (ts.isUnionTypeNode(unionType)) {
+    for (const type of unionType.types) {
+      if (ts.isLiteralTypeNode(type) && ts.isStringLiteral(type.literal)) {
+        propsSet.add(type.literal.text);
+      }
+    }
+  } else if (
+    ts.isLiteralTypeNode(unionType) &&
+    ts.isStringLiteral(unionType.literal)
+  ) {
+    propsSet.add(unionType.literal.text);
+  }
+}
+
+// Helper function to extract props from type references like Required<Pick<...>>
+function extractPropsFromTypeReference(typeRef, propsSet) {
+  if (ts.isTypeReferenceNode(typeRef)) {
+    const typeName = typeRef.typeName;
+
+    // Handle Required<Pick<...>> patterns
+    if (
+      ts.isIdentifier(typeName) &&
+      typeName.text === 'Required' &&
+      typeRef.typeArguments
+    ) {
+      for (const arg of typeRef.typeArguments) {
+        extractPropsFromTypeReference(arg, propsSet);
+      }
+      return;
+    }
+
+    // Handle Pick<Interface, 'prop1' | 'prop2' | ...> patterns
+    if (
+      ts.isIdentifier(typeName) &&
+      typeName.text === 'Pick' &&
+      typeRef.typeArguments &&
+      typeRef.typeArguments.length >= 2
+    ) {
+      const unionType = typeRef.typeArguments[1];
+      extractPropsFromUnionType(unionType, propsSet);
+    }
+  } else if (ts.isExpressionWithTypeArguments(typeRef)) {
+    // Handle ExpressionWithTypeArguments (heritage clauses)
+    if (ts.isIdentifier(typeRef.expression)) {
+      const typeName = typeRef.expression;
+
+      // Handle Required<Pick<...>> patterns
+      if (typeName.text === 'Required' && typeRef.typeArguments) {
+        for (const arg of typeRef.typeArguments) {
+          extractPropsFromTypeReference(arg, propsSet);
+        }
+      }
+    }
+  }
+}
+
+// Extract component props using TypeScript AST parsing
+function extractComponentProps(content, componentName) {
+  try {
+    // Create a source file from the content
+    const sourceFile = ts.createSourceFile(
+      'temp.ts',
+      content,
+      ts.ScriptTarget.Latest,
+      true,
+    );
+
+    const props = new Set();
+    visitNodeForProps(sourceFile, componentName, props);
+    return Array.from(props).sort();
+  } catch (error) {
+    console.warn(
+      `⚠️  Error parsing TypeScript for ${componentName}:`,
+      error.message,
+    );
+    // Fall back to regex as a last resort
+    return extractComponentPropsRegex(content, componentName);
+  }
+}
+
+// Visit AST nodes to extract props
+function visitNodeForProps(node, componentName, props) {
+  // Look for interface declarations
+  if (ts.isInterfaceDeclaration(node)) {
+    const interfaceName = node.name.text;
+
+    // Check if this is a component props interface
+    if (
+      interfaceName === `${componentName}Props` ||
+      interfaceName.match(new RegExp(`^${componentName}Props\\$\\d+$`))
+    ) {
+      // Extract props from direct members
+      for (const member of node.members) {
+        if (
+          ts.isPropertySignature(member) &&
+          member.name &&
+          ts.isIdentifier(member.name)
+        ) {
+          props.add(member.name.text);
+        }
+      }
+
+      // Handle extends clauses (like extends Required<Pick<...>>)
+      if (node.heritageClauses) {
+        for (const heritage of node.heritageClauses) {
+          for (const type of heritage.types) {
+            extractPropsFromTypeReference(type, props);
+          }
+        }
+      }
+    }
+  }
+
+  // Continue visiting child nodes
+  ts.forEachChild(node, (child) =>
+    visitNodeForProps(child, componentName, props),
+  );
+}
+
+// Fallback regex-based extraction (keep the original as backup)
+function extractComponentPropsRegex(content, componentName) {
+  const props = new Set();
+
+  // Look for interface definitions like "ComponentNameProps"
+  const interfaceRegex = new RegExp(
+    `interface\\s+${componentName}Props(?:\\$\\d+)?\\s*(?:extends[^{]*)?\\s*\\{([^}]*(?:\\{[^}]*\\}[^}]*)*)\\}`,
+    'gs',
+  );
+
+  const interfaceMatches = content.match(interfaceRegex);
+
+  if (interfaceMatches) {
+    for (const match of interfaceMatches) {
+      // Extract property names from the interface
+      // Match patterns like: propertyName?: type; or propertyName: type;
+      const propRegex = /^\s*(?:\/\*\*[\s\S]*?\*\/\s*)?(\w+)\s*[?:]?\s*:/gm;
+      let propMatch;
+
+      while ((propMatch = propRegex.exec(match)) !== null) {
+        const propName = propMatch[1];
+        // Skip common TypeScript keywords and inherited props
+        if (
+          !['extends', 'interface', 'export', 'declare', 'type'].includes(
+            propName,
+          )
+        ) {
+          props.add(propName);
+        }
+      }
+    }
+  }
+
+  return Array.from(props).sort();
+}
+
+// Extract props for all components in a surface
+function extractAllComponentProps(content, componentNames) {
+  const componentProps = {};
+
+  for (const componentName of componentNames) {
+    const props = extractComponentProps(content, componentName);
+    if (props.length > 0) {
+      componentProps[componentName] = props;
+    }
+  }
+
+  return componentProps;
+}
+
 async function generateHTMLPage(masterList, outputDir) {
   // Ensure the output directory exists
   try {
@@ -242,6 +415,30 @@ async function generateHTMLPage(masterList, outputDir) {
       isShared: surfaces.length > 1,
       isImplemented: surfaces.length > 0,
       specUrl: generateSpecUrl(component),
+      props: masterList.props[component] || {},
+      hasPropsDifferences: (() => {
+        const componentProps = masterList.props[component] || {};
+        const allProps = Object.values(componentProps).flat();
+        const uniqueProps = [...new Set(allProps)];
+
+        // Check if there are differences across surfaces
+        if (uniqueProps.length === 0) return false;
+
+        const implementedSurfaces = surfaces.filter(
+          (surface) =>
+            componentProps[surface] && componentProps[surface].length > 0,
+        );
+
+        if (implementedSurfaces.length <= 1) return false;
+
+        // Check if all implemented surfaces have the same props
+        const firstSurfaceProps = componentProps[implementedSurfaces[0]] || [];
+        return !implementedSurfaces.every(
+          (surface) =>
+            JSON.stringify(componentProps[surface]?.sort()) ===
+            JSON.stringify(firstSurfaceProps.sort()),
+        );
+      })(),
     });
   });
 
@@ -333,9 +530,11 @@ async function generateHTMLPage(masterList, outputDir) {
                   <s-button id="filter-shared" variant="tertiary">Shared</s-button>
                   <s-button id="filter-single" variant="tertiary">Single Surface</s-button>
                   <s-button id="filter-unimplemented" variant="tertiary">Not Implemented</s-button>
+                  <s-button id="filter-props-diff" variant="tertiary">Props Differences</s-button>
                 </s-stack>
                 <s-stack direction="inline" gap="small-200" alignContent="center" alignItems="center">
                   <s-button id="search-toggle" variant="secondary" icon="search"></s-button>
+                  <s-button id="view-toggle" variant="secondary" icon="view">Props View</s-button>
                   <s-button variant="secondary" icon="sort"></s-button>
                 </s-stack>
               </s-grid>
@@ -370,6 +569,7 @@ async function generateHTMLPage(masterList, outputDir) {
                 .join('')}
               <s-table-header>Total</s-table-header>
               <s-table-header>Spec</s-table-header>
+              <s-table-header id="props-header" style="display: none;">Props Details</s-table-header>
             </s-table-header-row>
           
           <s-table-body>
@@ -383,7 +583,9 @@ async function generateHTMLPage(masterList, outputDir) {
                   .join(' ')
                   .toLowerCase()}" data-shared="${
                   row.isShared
-                }" data-implemented="${row.isImplemented}">
+                }" data-implemented="${row.isImplemented}" data-props-diff="${
+                  row.hasPropsDifferences
+                }">
               <s-table-cell>
                 <s-stack direction="inline" gap="small-200" alignContent="center" alignItems="center">
                   <s-checkbox class="row-checkbox" data-component="${
@@ -395,6 +597,8 @@ async function generateHTMLPage(masterList, outputDir) {
                   ${(() => {
                     if (!row.isImplemented)
                       return '<s-badge tone="subdued">Not Implemented</s-badge>';
+                    if (row.hasPropsDifferences)
+                      return '<s-badge tone="warning">Props Differ</s-badge>';
                     if (row.isShared)
                       return '<s-badge tone="success">Shared</s-badge>';
                     return '';
@@ -428,6 +632,15 @@ async function generateHTMLPage(masterList, outputDir) {
                 `
                 }
               </s-table-cell>
+              <s-table-cell class="props-cell" style="display: none;">
+                <div class="props-data" data-props='${JSON.stringify(
+                  row.props,
+                )}' data-implemented="${row.isImplemented}">
+                  ${
+                    row.isImplemented ? 'Props details will be shown here' : '—'
+                  }
+                </div>
+              </s-table-cell>
             </s-table-row>`;
               })
               .join('')}
@@ -460,6 +673,9 @@ async function generateHTMLPage(masterList, outputDir) {
     const filterShared = document.getElementById('filter-shared');
     const filterSingle = document.getElementById('filter-single');
     const filterUnimplemented = document.getElementById('filter-unimplemented');
+    const filterPropsDiff = document.getElementById('filter-props-diff');
+    const viewToggle = document.getElementById('view-toggle');
+    const propsHeader = document.getElementById('props-header');
     
     // Initialize row checkboxes state
     document.querySelectorAll('.component-row').forEach(row => {
@@ -467,12 +683,74 @@ async function generateHTMLPage(masterList, outputDir) {
       rowsChecked[component] = false;
     });
     
+    // Props view toggle
+    let showPropsView = false;
+    
+    function togglePropsView() {
+      showPropsView = !showPropsView;
+      const propsCells = document.querySelectorAll('.props-cell');
+      
+      if (showPropsView) {
+        propsHeader.style.display = '';
+        propsCells.forEach(cell => {
+          cell.style.display = '';
+          // Render props data
+          const propsData = cell.querySelector('.props-data');
+          if (propsData && propsData.dataset.implemented === 'true') {
+            const props = JSON.parse(propsData.dataset.props);
+            renderPropsData(propsData, props);
+          }
+        });
+        viewToggle.textContent = 'Hide Props';
+      } else {
+        propsHeader.style.display = 'none';
+        propsCells.forEach(cell => {
+          cell.style.display = 'none';
+        });
+        viewToggle.textContent = 'Props View';
+      }
+    }
+    
+    function renderPropsData(container, propsBySurface) {
+      const implementedSurfaces = Object.keys(propsBySurface).filter(surface => 
+        propsBySurface[surface] && propsBySurface[surface].length > 0
+      );
+      
+      if (implementedSurfaces.length === 0) {
+        container.innerHTML = '<s-text color="subdued">No props detected</s-text>';
+        return;
+      }
+      
+      let html = '<s-stack gap="small-200">';
+      
+      for (const surface of implementedSurfaces) {
+        const props = propsBySurface[surface] || [];
+        const uniqueProps = [...new Set(props)];
+        
+        html += \`
+          <s-box padding="small-200" background="base" borderRadius="small">
+            <s-stack gap="small-100">
+              <s-text type="strong" size="small">\${surface}</s-text>
+              <s-text size="small" color="subdued">
+                \${uniqueProps.length > 0 ? uniqueProps.join(', ') : 'No props'}
+              </s-text>
+            </s-stack>
+          </s-box>
+        \`;
+      }
+      
+      html += '</s-stack>';
+      container.innerHTML = html;
+    }
+
     // Filter functions
     function updateFilterButtons() {
-      [filterAll, filterImplemented, filterShared, filterSingle, filterUnimplemented].forEach(btn => {
-        btn.style.background = '';
-        btn.style.padding = 'small-400 small-100';
-        btn.classList.remove('selected');
+      [filterAll, filterImplemented, filterShared, filterSingle, filterUnimplemented, filterPropsDiff].forEach(btn => {
+        if (btn) {
+          btn.style.background = '';
+          btn.style.padding = 'small-400 small-100';
+          btn.classList.remove('selected');
+        }
       });
       
       const activeFilter = document.getElementById('filter-' + currentFilter);
@@ -501,6 +779,8 @@ async function generateHTMLPage(masterList, outputDir) {
           matchesFilter = isImplemented && !isShared;
         } else if (currentFilter === 'unimplemented') {
           matchesFilter = !isImplemented;
+        } else if (currentFilter === 'props-diff') {
+          matchesFilter = row.dataset.propsDiff === 'true';
         }
         
         // Filter by search
@@ -587,8 +867,13 @@ async function generateHTMLPage(masterList, outputDir) {
       });
     }
     
+    // View toggle event listener
+    if (viewToggle) {
+      viewToggle.addEventListener('click', togglePropsView);
+    }
+
     // Filter button event listeners
-    [filterAll, filterImplemented, filterShared, filterSingle, filterUnimplemented].forEach(btn => {
+    [filterAll, filterImplemented, filterShared, filterSingle, filterUnimplemented, filterPropsDiff].forEach(btn => {
       if (btn) {
         btn.addEventListener('click', () => {
           currentFilter = btn.id.replace('filter-', '');
@@ -659,6 +944,18 @@ async function main() {
         implementedComponents = extractedComponents.filter((component) =>
           canonicalComponents.includes(component),
         );
+
+        // Extract props for implemented components
+        const surfaceProps = extractAllComponentProps(
+          content,
+          implementedComponents,
+        );
+
+        // Store props in the surface data (we'll need this later for comparison)
+        if (!surfaceComponents[`${surface}_props`]) {
+          surfaceComponents[`${surface}_props`] = {};
+        }
+        Object.assign(surfaceComponents[`${surface}_props`], surfaceProps);
       }
 
       // Merge components, avoiding duplicates
@@ -702,16 +999,46 @@ async function main() {
     }
   }
 
+  // Build props comparison data
+  const componentPropsComparison = {};
+  const allSurfaces = Object.keys(surfaceComponents).filter(
+    (key) => !key.endsWith('_props'),
+  );
+
+  for (const component of canonicalComponents) {
+    componentPropsComparison[component] = {};
+
+    for (const surface of allSurfaces) {
+      const surfacePropsKey = `${surface}_props`;
+      const surfaceProps = surfaceComponents[surfacePropsKey];
+
+      if (surfaceProps && surfaceProps[component]) {
+        componentPropsComparison[component][surface] = surfaceProps[component];
+      } else {
+        componentPropsComparison[component][surface] = [];
+      }
+    }
+  }
+
+  // Clean up props data from main surfaces object for cleaner output
+  const cleanSurfaces = {};
+  for (const [key, value] of Object.entries(surfaceComponents)) {
+    if (!key.endsWith('_props')) {
+      cleanSurfaces[key] = value;
+    }
+  }
+
   // Generate the master list
   const masterList = {
-    surfaces: surfaceComponents,
+    surfaces: cleanSurfaces,
     components: componentToSurfaces,
+    props: componentPropsComparison,
     metadata: {
       totalComponents: canonicalComponents.length, // Total canonical components
       implementedComponents: Object.keys(componentToSurfaces).filter(
         (comp) => componentToSurfaces[comp].length > 0,
       ).length,
-      totalSurfaces: Object.keys(surfaceComponents).length,
+      totalSurfaces: Object.keys(cleanSurfaces).length,
       generatedAt: new Date().toISOString(),
       specBaseUrl: UI_API_DESIGN_BASE_URL,
     },
